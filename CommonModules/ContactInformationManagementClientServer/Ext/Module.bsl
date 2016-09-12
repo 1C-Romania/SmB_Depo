@@ -291,23 +291,23 @@ Function LocalityAddressPartsStructure(ClassifierVariant = "FIAS") Export
 	
 	Result = New Structure;
 	
-	Result.Insert("State",           ItemAddressStructure(NStr("en = 'State'"),      NStr("en = 'Addresses state'"),           "RFTerritorialEntity",     1));
+	Result.Insert("State",           ItemAddressStructure(NStr("en='State';ru='Состояние'"),      NStr("en='Addresses state';ru='Регион адреса'"),           "RFTerritorialEntity",     1));
 	If ClassifierVariant = "FIAS" Then
-		Result.Insert("District",        ItemAddressStructure(NStr("en = 'District'"),       NStr("en = 'Address region'"),            "District",         2));
+		Result.Insert("District",        ItemAddressStructure(NStr("en='District';ru='Район'"),       NStr("en='Address region';ru='Округ адреса'"),            "District",         2));
 	EndIf;
-	Result.Insert("Region",            ItemAddressStructure(NStr("en = 'Region'"),       NStr("en = 'Address region'"),            "PrRayMO/Region", 3));
-	Result.Insert("City",            ItemAddressStructure(NStr("en = 'City'"),       NStr("en = 'Address city'"),            "City",         4));
+	Result.Insert("Region",            ItemAddressStructure(NStr("en='Region';ru='Регион'"),       NStr("en='Address region';ru='Округ адреса'"),            "PrRayMO/Region", 3));
+	Result.Insert("City",            ItemAddressStructure(NStr("en='City';ru='Город'"),       NStr("en='Address city';ru='Город адреса'"),            "City",         4));
 	If ClassifierVariant = "FIAS" Then
-		Result.Insert("UrbDistrict", ItemAddressStructure(NStr("en = 'Ext. dis.'"), NStr("en = 'Urban district'"),   "UrbDistrict",  5));
+		Result.Insert("UrbDistrict", ItemAddressStructure(NStr("en='Ext. dis.';ru='Внутр. р-н.'"), NStr("en='Urban district';ru='Внутригородской район'"),   "UrbDistrict",  5));
 	EndIf;
-	Result.Insert("Settlement", ItemAddressStructure(NStr("en = 'Us.Item'"),
-		NStr("en = 'Addresses of settlement'"), "Settlement",  6, True));
-	Result.Insert("Street", ItemAddressStructure(NStr("en = 'Street'"),
-		NStr("en = 'Address street'"), "Street", 7));
-	Result.Insert("AdditionalItem", ItemAddressStructure(NStr("en = 'AdditionalItem'"),
-		NStr("en = 'Additional address item'"), "AddEMailAddress[TypeAdrEl='10200000']", 90));
-	Result.Insert("SubordinateItem", ItemAddressStructure(NStr("en = 'Subordinate item'"),
-		NStr("en = 'Subordinate address item'"), "AddEMailAddress[TypeAdrEl='10400000']", 91));
+	Result.Insert("Settlement", ItemAddressStructure(NStr("en='Us.Item';ru='Us.Item'"),
+		NStr("en='Addresses of settlement';ru='Населенный пункт адреса'"), "Settlement",  6, True));
+	Result.Insert("Street", ItemAddressStructure(NStr("en='Street';ru='Улица'"),
+		NStr("en='Address street';ru='Улица адреса'"), "Street", 7));
+	Result.Insert("AdditionalItem", ItemAddressStructure(NStr("en='AdditionalItem';ru='AdditionalItem'"),
+		NStr("en='Additional address item';ru='Дополнительный элемент адреса'"), "AddEMailAddress[TypeAdrEl='10200000']", 90));
+	Result.Insert("SubordinateItem", ItemAddressStructure(NStr("en='Subordinate item';ru='Подчиненный элемент'"),
+		NStr("en='Subordinate address item';ru='Подчиненный элемент адреса'"), "AddEMailAddress[TypeAdrEl='10400000']", 91));
 		
 	Return Result;
 	

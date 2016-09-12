@@ -76,7 +76,7 @@ Function FillIndicators(AccrualDeductionKind)
 		If Not ValueIsFilled(CalculationParameter) Then
 			
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Parameter is not found '") + CalculationParameter + NStr("en = ' for accrual (deduction) formula '") + AccrualDeductionKind;
+			Message.Text = NStr("en='Parameter is not found ';ru='Не найден параметр '") + CalculationParameter + NStr("en=' for accrual (deduction) formula ';ru=' для формулы начисления (удержания) '") + AccrualDeductionKind;
 			Message.Message();
 			Continue;
 			
@@ -593,7 +593,7 @@ Procedure FillByDivision()
 			TabularSectionRow.DaysWorked = 0;
 			TabularSectionRow.HoursWorked = 0;
 			
-			MessageText = NStr("en = '%Employee%, %AccrualKind%: Working hours data has been entered consolidated. Time calculation for each accrual (deduction) kind is not possible!'");
+			MessageText = NStr("en='%Employee%, %AccrualKind%: Working hours data has been entered consolidated. Time calculation for each accrual (deduction) kind is not possible!';ru='%Сотрудник%, %ВидНачисления%: Данные об отработанном времени введены сводно. Расчет времени по каждому виду начисления (удержания) невозможен!'");
 			MessageText = StrReplace(MessageText, "%Employee%", TabularSectionRow.Employee);
 			MessageText = StrReplace(MessageText, "%AccrualKind%", TabularSectionRow.AccrualDeductionKind);
 			MessageField = "Object.AccrualsDeductions[" + Object.AccrualsDeductions.IndexOf(TabularSectionRow) + "].Employee";
@@ -626,7 +626,7 @@ Procedure FillByDivision()
 			CalculationParameter = Catalogs.CalculationsParameters.FindByAttribute("ID", ParameterStructures.Key);
 		 	If Not ValueIsFilled(CalculationParameter) Then		
 				Message = New UserMessage();
-				Message.Text = NStr("en = 'Parameter is not found '") + CalculationParameter + NStr("en = ' for the employee in row No. '") + (Object.AccrualsDeductions.IndexOf(TabularSectionRow) + 1);
+				Message.Text = NStr("en='Parameter is not found ';ru='Не найден параметр '") + CalculationParameter + NStr("en=' for the employee in row No. ';ru=' для сотрудника в строке № '") + (Object.AccrualsDeductions.IndexOf(TabularSectionRow) + 1);
 				Message.Message();
 		    EndIf; 
 			
@@ -693,7 +693,7 @@ Procedure FillByDivision()
 				
 			EndIf;
 			
-			TabularSectionRow["Value" + Counter] = SmallBusinessServer.CalculateParameterValue(StructureOfSelections, CalculationParameter, NStr("en = ' for the employee in row No.'") + (Object.AccrualsDeductions.IndexOf(TabularSectionRow) + 1));
+			TabularSectionRow["Value" + Counter] = SmallBusinessServer.CalculateParameterValue(StructureOfSelections, CalculationParameter, NStr("en=' for the employee in row No.';ru=' для сотрудника в строке №'") + (Object.AccrualsDeductions.IndexOf(TabularSectionRow) + 1));
 		
 		EndDo;
 		
@@ -737,7 +737,7 @@ Procedure CalculateByFormulas()
 		Try
 			CalculatedSum = Eval(Formula);
 		Except
-			MessageText = NStr("en = 'Failed to calculate the accrual amount in the row No.%LineNumber%. The formula probably contains an error, or indicators are not filled.'");
+			MessageText = NStr("en='Failed to calculate the accrual amount in the row No.%LineNumber%. The formula probably contains an error, or indicators are not filled.';ru='Не удалось рассчитать сумму начисления в строке №%НомерСтроки%. Возможно, формула содержит ошибку или не заполнены показатели.'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", (Object.AccrualsDeductions.IndexOf(AccrualsRow) + 1));
 			MessageField = "Object.AccrualsDeductions[" + Object.AccrualsDeductions.IndexOf(AccrualsRow) + "].AccrualDeductionKind";
 			
@@ -931,7 +931,7 @@ Procedure Fill(Command)
 	If Not ValueIsFilled(Object.StructuralUnit) Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'The division is not filled! Document filling is cancelled.'");
+		Message.Text = NStr("en='The division is not filled! Document filling is cancelled.';ru='Не заполнено подразделение! Заполнение документа отменено.'");
 		Message.Field = "Object.StructuralUnit";
 		Message.Message();
 		
@@ -944,12 +944,12 @@ Procedure Fill(Command)
 		Response = Undefined;
 
 		
-		ShowQueryBox(New NotifyDescription("FillEnd1", ThisObject), NStr("en = 'Document tabular sections will be cleared! Continue?'"), QuestionDialogMode.YesNo, 0);
+		ShowQueryBox(New NotifyDescription("FillEnd1", ThisObject), NStr("en='Document tabular sections will be cleared! Continue?';ru='Табличные части документа будут очищены! Продолжить?'"), QuestionDialogMode.YesNo, 0);
         Return;
 		
 	ElsIf Object.AccrualsDeductions.Count() > 0 OR Object.IncomeTaxes.Count() > 0 Then
 		
-		ShowQueryBox(New NotifyDescription("FillEnd", ThisObject), NStr("en = 'Tabular section of the document will be cleared. Continue?'"), QuestionDialogMode.YesNo, 0);
+		ShowQueryBox(New NotifyDescription("FillEnd", ThisObject), NStr("en='Tabular section of the document will be cleared. Continue?';ru='Табличная часть документа будет очищена! Продолжить?'"), QuestionDialogMode.YesNo, 0);
         Return; 
 		
 	EndIf;
@@ -1056,7 +1056,7 @@ Procedure DocumentCurrencyOnChange(Item)
 		Mode = QuestionDialogMode.YesNo;
 		Response = Undefined;
 		
-		ShowQueryBox(New NotifyDescription("DocumentCurrencyOnChangeEnd", ThisObject), NStr("en = 'Tabular section will be cleared. Continue?'"), Mode, 0);
+		ShowQueryBox(New NotifyDescription("DocumentCurrencyOnChangeEnd", ThisObject), NStr("en='Tabular section will be cleared. Continue?';ru='Табличная часть будет очищена! Продолжить выполнение операции?'"), Mode, 0);
 		Return;
 		
 	EndIf; 

@@ -12,7 +12,7 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 		OR Parameters.Filter.Owner.StructuralUnitType = Enums.StructuralUnitsTypes.RetailAccrualAccounting) Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Cells can not be used for this type of structural unit!'");
+		Message.Text = NStr("en='Cells can not be used for this type of structural unit!';ru='Для структурной единицы данного типа нельзя использовать ячейки!'");
 		Message.Message();
 		StandardProcessing = False;
 		

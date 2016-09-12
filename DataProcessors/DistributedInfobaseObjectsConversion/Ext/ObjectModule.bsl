@@ -336,8 +336,9 @@ Procedure ReadPriorityChangesFromExchangeMessages(Val MessageReader, CommonDataN
 			If NonUniqueRecordsAreFound("Catalog.MetadataObjectIDs") Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					NonUniqueRecordErrorTemplate(),
-					NStr("en = 'Before exporting of the
-					           |metadata object IDs non unique records were found in catalog.'"));
+					NStr("en='Before exporting of the"
+"metadata object IDs non unique records were found in catalog.';ru='Перед загрузкой идентификаторов объектов метаданных"
+"в справочнике найдены не уникальные записи.'"));
 			EndIf;
 			
 			While CanReadXML(MessageReader.XMLReader) Do
@@ -380,23 +381,27 @@ Procedure ReadPriorityChangesFromExchangeMessages(Val MessageReader, CommonDataN
 			
 			If Cancel Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Import of important changes is not completed.
-					           |While importing predefined items, non-unique records were found.
-					           |For the following reasons the continuation is impossible.
-					           |%1'"),
+					NStr("en='Import of important changes is not completed."
+"While importing predefined items, non-unique records were found."
+"For the following reasons the continuation is impossible."
+"%1';ru='Загрузка важных изменений не выполнена."
+"При загрузке предопределенных элементов найдены не уникальные записи."
+"По следующим причинам продолжение невозможно."
+"%1'"),
 					DenialDescription);
 			EndIf;
 			
 			If ValueIsFilled(PredefinedItemDoubles) Then
 				WriteLogEvent(
-					NStr("en = 'Predefined items.Non-unique records are found.'",
+					NStr("en='Predefined items.Non-unique records are found.';ru='Предопределенные элементы.Найдены не уникальные записи.'",
 						CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					,
 					,
 					StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'While importing predefined items, non-unique records were found.
-						           |%1'"),
+						NStr("en='While importing predefined items, non-unique records were found."
+"%1';ru='При загрузке предопределенных элементов найдены не уникальные записи."
+"%1'"),
 						PredefinedItemDoubles));
 			EndIf;
 			
@@ -530,7 +535,7 @@ Procedure AddPredefinedItemDoubleDescription(WrittenObject, PredefinedItemDouble
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
 				NonUniqueRecordErrorTemplate(),
-				NStr("en = 'While importing predefined items, non-unique records were found.'"));
+				NStr("en='While importing predefined items, non-unique records were found.';ru='При загрузке предопределенных элементов найдены не уникальные записи.'"));
 		EndIf;
 		// Definition of predefined item duplicates.
 		If Ref = Selection.Ref AND Not ExportedRefIsFound Then
@@ -565,9 +570,9 @@ Procedure AddPredefinedItemDoubleDescription(WrittenObject, PredefinedItemDouble
 
 	If WriteInJournal Then
 		If DoubleNumber = 1 Then
-			Pattern = NStr("en = '(exported ref: %1, duplicate ref: %2)'");
+			Pattern = NStr("en='(exported ref: %1, duplicate ref: %2)';ru='(загружаемая ссылка: %1, ссылка дубля: %2)'");
 		Else
-			Pattern = NStr("en = '(exported ref: %1, duplicate refs: %2)'");
+			Pattern = NStr("en='(exported ref: %1, duplicate refs: %2)';ru='(загружаемая ссылка: %1, ссылки дублей: %2)'");
 		EndIf;
 		PredefinedItemDoubles = PredefinedItemDoubles + Chars.LF
 			+ Table + "." + PredefinedDataName + Chars.LF
@@ -601,16 +606,25 @@ EndFunction
 
 Function NonUniqueRecordErrorTemplate()
 	Return
-		NStr("en = 'Import of important changes is not completed.
-		           |%1
-		           |Information base correction is required.
-		           |1. Open the configurator, go to
-		           |   the Administration menu, select item ""Testing and correction ..."".
-		           |2. IN the
-		           |   opened form - activate the Checking of the logical infobase integrity item only"";
-		           |   - select the Testing and correction variant and not Testing only"";
-		           |   - click Execute.
-		           |3. After this, launch 1C:Enterprise and resync data.'");
+		NStr("en='Import of important changes is not completed."
+"%1"
+"Information base correction is required."
+"1. Open the configurator, go to"
+"   the Administration menu, select item ""Testing and correction ...""."
+"2. IN the"
+"   opened form - activate the Checking of the logical infobase integrity item only"";"
+"   - select the Testing and correction variant and not Testing only"";"
+"   - click Execute."
+"3. After this, launch 1C:Enterprise and resync data.';ru='Загрузка важных изменений не выполнена."
+"%1"
+"Требуется исправление информационной базы."
+"1. Откройте конфигуратор, перейдите в меню Администрирование,"
+"   выберите пункт ""Тестирование и исправление ...""."
+"2. В открывшейся форме"
+"   - включите только пункт ""Проверка логической целостности информационной базы"";"
+"   - выберите вариант ""Тестирование и исправление"", а не ""Только тестирование"";"
+"   - нажмите Выполнить."
+"3. После этого запустите 1С:Предприятие и выполните повторную синхронизацию данных.'");
 EndFunction
 
 Procedure RefreshPredefinedDeletion()
@@ -686,37 +700,37 @@ EndFunction
 
 Function ErrorOfOpeningOfExchangeMessageFile()
 	
-	Return NStr("en = 'Exchange message file opening error'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Exchange message file opening error';ru='Ошибка открытия файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
 Function ErrorOfStartReadOfExchangeMessageFile()
 	
-	Return NStr("en = 'An error occurred while starting to read the exchange message file'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='An error occurred while starting to read the exchange message file';ru='Ошибка при начале чтения файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
 Function ErrorBeginningRecordsExchangeMessageFile()
 	
-	Return NStr("en = 'An error occurred while starting to write the exchange message file'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='An error occurred while starting to write the exchange message file';ru='Ошибка при начале записи файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
 Function ErrorOfReadingOFExchangeMessageFile()
 	
-	Return NStr("en = 'Error reading data exchange file'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Error reading data exchange file';ru='Ошибка чтения файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
 Function ErrorOfExchangeMessageFileWrite()
 	
-	Return NStr("en = 'An error occurred while writing data to the exchange message file'");
+	Return NStr("en='An error occurred while writing data to the exchange message file';ru='Ошибка записи данных в файл сообщения обмена'");
 	
 EndFunction
 
 Function ErrorOfDataExchangeKind()
 	
-	Return NStr("en = 'Exchange not according to the conversion rules is not supported'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Exchange not according to the conversion rules is not supported';ru='Обмен не по правилам конвертации не поддерживается'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

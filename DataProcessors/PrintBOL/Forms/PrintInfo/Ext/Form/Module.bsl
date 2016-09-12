@@ -62,7 +62,7 @@ Procedure FillPrintingReasons(OrdersArray)
 	
 	If ValueIsFilled(CounterpartyContract) Then
 		
-		Items.StampBase.ChoiceList.Add(NStr("en = 'Contract: '") + String(CounterpartyContract.Description));
+		Items.StampBase.ChoiceList.Add(NStr("en='Contract: ';ru='Договор: '") + String(CounterpartyContract.Description));
 		
 	EndIf;
 	

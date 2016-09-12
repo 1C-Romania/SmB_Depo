@@ -28,7 +28,7 @@ Procedure FormGetProcessing(FormKind, Parameters, SelectedForm, AdditionalInform
 	Else
 #EndIf
 		
-		Raise(NStr("en = 'The service manager does not support the applications backup'"));
+		Raise(NStr("en='The service manager does not support the applications backup';ru='Менеджер сервиса не поддерживает резервное копирование приложений'"));
 		
 #If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 	EndIf;

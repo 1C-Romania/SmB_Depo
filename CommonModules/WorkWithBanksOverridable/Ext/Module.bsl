@@ -327,16 +327,17 @@ Function RefreshBanksFromClassifier(Val BankList = Undefined, Val DataArea) Expo
 				Try
 					Parent.Write();
 				Except
-					MessagePattern   = NStr("en = 'Error when recording the bank-group (state) %1.
-						|%2'");
+					MessagePattern   = NStr("en='Error when recording the bank-group (state) %1."
+"%2';ru='Ошибка при записи банка-группы (региона) %1."
+"%2'");
 					MessageText    = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 						BanksSelection.ParentDescription,
 					DetailErrorDescription(ErrorInfo()));
 					DataAreaNumber      = ?(CommonUseReUse.DataSeparationEnabled(),
-						StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = ' in area %1'"), DataArea),
+						StringFunctionsClientServer.PlaceParametersIntoString(NStr("en=' in area %1';ru=' в области %1'"), DataArea),
 						"");
 					EventName        = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'Banks refresh %1'"), DataAreaNumber);
+						NStr("en='Banks refresh %1';ru='Обновление банков%1'"), DataAreaNumber);
 					WriteLogEvent(EventName, 
 						EventLogLevel.Error,,, MessageText);
 					
@@ -351,16 +352,17 @@ Function RefreshBanksFromClassifier(Val BankList = Undefined, Val DataArea) Expo
 		Try
 			Bank.Write();
 		Except
-			MessagePattern   = NStr("en = 'Error when recording the bank
-				|with BIC %1 %2'");
+			MessagePattern   = NStr("en='Error when recording the bank"
+"with BIC %1 %2';ru='Ошибка при записи"
+"банка с БИКом %1 %2'");
 			MessageText    = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				BanksSelection.Code,
 				DetailErrorDescription(ErrorInfo()));
 			DataAreaNumber      = ?(CommonUseReUse.DataSeparationEnabled(),
-				StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = ' in area %1'"), DataArea),
+				StringFunctionsClientServer.PlaceParametersIntoString(NStr("en=' in area %1';ru=' в области %1'"), DataArea),
 				"");
 			EventName        = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Banks refresh %1'"), DataAreaNumber);
+				NStr("en='Banks refresh %1';ru='Обновление банков%1'"), DataAreaNumber);
 			WriteLogEvent(EventName, 
 			EventLogLevel.Error,,, MessageText);
 			
@@ -414,8 +416,9 @@ Function RefreshBanksFromClassifier(Val BankList = Undefined, Val DataArea) Expo
 		Try
 			Bank.Write();
 		Except
-			MessagePattern   = NStr("en = 'Error when recording the bank
-				|with BIC %1 %2'");
+			MessagePattern   = NStr("en='Error when recording the bank"
+"with BIC %1 %2';ru='Ошибка при записи"
+"банка с БИКом %1 %2'");
 			MessageText    = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				BanksSelection.Code,
 				DetailErrorDescription(ErrorInfo()));
@@ -423,7 +426,7 @@ Function RefreshBanksFromClassifier(Val BankList = Undefined, Val DataArea) Expo
 				StringFunctionsClientServer.PlaceParametersIntoString(NStr("en ' in %1 field'"), DataArea),
 				"");
 			EventName        = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Banks refresh %1'"), DataAreaNumber);
+				NStr("en='Banks refresh %1';ru='Обновление банков%1'"), DataAreaNumber);
 			WriteLogEvent(EventName, 
 			EventLogLevel.Error,,, MessageText);
 			
@@ -447,7 +450,7 @@ Procedure ProcessManualEditFlag(Val Form)
 		If Form.ActivityDiscontinued Then
 			Form.ManualEditText = "";
 		Else
-			Form.ManualEditText = NStr("en = 'The item is created manually. Automatic update is impossible.'");
+			Form.ManualEditText = NStr("en='The item is created manually. Automatic update is impossible.';ru='Элемент создан вручную. Автоматическое обновление не возможно.'");
 		EndIf;
 		
 		Items.UpdateFromClassifier.Enabled = False;
@@ -459,7 +462,7 @@ Procedure ProcessManualEditFlag(Val Form)
 			Items.CorrAccount.Enabled = True;
 		EndIf;
 	ElsIf Form.ManualChanging = True Then
-		Form.ManualEditText = NStr("en = 'Automatic item update is disabled.'");
+		Form.ManualEditText = NStr("en='Automatic item update is disabled.';ru='Автоматическое обновление элемента отключено.'");
 		
 		Items.UpdateFromClassifier.Enabled = True;
 		Items.Change.Enabled = False;
@@ -470,7 +473,7 @@ Procedure ProcessManualEditFlag(Val Form)
 			Items.CorrAccount.Enabled = False;
 		EndIf;
 	Else
-		Form.ManualEditText = NStr("en = 'Item is updated automatically.'");
+		Form.ManualEditText = NStr("en='Item is updated automatically.';ru='Элемент обновляется автоматически.'");
 		
 		Items.UpdateFromClassifier.Enabled = False;
 		Items.Change.Enabled = True;
@@ -602,9 +605,9 @@ Function RefreshCreateBanksWIB(Refs, IgnoreManualChanging)
 			
 			If Not ValueIsFilled(BankObject.Parent) Then
 				EventName = ?(EventName = "",
-					NStr("en = 'Pick from ACC'"), EventName);
+					NStr("en='Pick from ACC';ru='Подбор из классификатора'"), EventName);
 				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Failed to obtain the parent from the item with BIC %1'"), TrimAll(ParametersObject.Code));
+					NStr("en='Failed to obtain the parent from the item with BIC %1';ru='Не смогли получить родителя у элемента с БИК %1'"), TrimAll(ParametersObject.Code));
 				WriteLogEvent(EventName, 
 					EventLogLevel.Error,,, ErrorText);
 				Break;
@@ -619,7 +622,7 @@ Function RefreshCreateBanksWIB(Refs, IgnoreManualChanging)
 			RollbackTransaction();
 			
 			EventName = ?(EventName = "",
-				NStr("en = 'Pick from ACC'"), EventName);
+				NStr("en='Pick from ACC';ru='Подбор из классификатора'"), EventName);
 			WriteLogEvent(EventName, 
 				EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 			
@@ -789,7 +792,7 @@ Procedure RestoreItemFromSharedData(Val Form) Export
 		CommitTransaction();
 	Except
 		RollbackTransaction();
-		WriteLogEvent(NStr("en = 'Recovery from common data'"), 
+		WriteLogEvent(NStr("en='Recovery from common data';ru='Восстановление из общих данных'"), 
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 		Raise;
 	EndTry;

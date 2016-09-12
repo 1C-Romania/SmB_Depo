@@ -159,7 +159,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
 	If Object.FillTemplate.FindRows(New Structure("DayIncludedInSchedule", True)).Count() = 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Days included in the work schedule are not marked'"), , "Object.FillTemplate", , Cancel);
+			NStr("en='Days included in the work schedule are not marked';ru='Не отмечены дни, включаемые в график работы'"), , "Object.FillTemplate", , Cancel);
 	EndIf;
 	
 EndProcedure
@@ -344,7 +344,7 @@ Procedure CurrentYearNumberOnChange(Item)
 	
 	If ModifiedResults Then
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-							NStr("en = 'Write modified data for %1 year?'"), 
+							NStr("en='Write modified data for %1 year?';ru='Записать измененные данные за %1 год?'"), 
 							Format(PreviousYearNumber, "NG=0"));
 		
 		Notification = New NotifyDescription("CurrentYearNumberOnChangeEnd", ThisObject);
@@ -430,7 +430,7 @@ Procedure SetConditionalAppearance()
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
 	FilterElement.RightValue = True;
 
-	Item.Appearance.SetParameterValue("Text", NStr("en = 'Fill in schedule'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='Fill in schedule';ru='Заполнить расписание'"));
 
 	//
 
@@ -498,7 +498,7 @@ Procedure SetConditionalAppearance()
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
 	FilterElement.RightValue = True;
 
-	Item.Appearance.SetParameterValue("Text", NStr("en = 'Fill in schedule'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='Fill in schedule';ru='Заполнить расписание'"));
 
 EndProcedure
 
@@ -533,13 +533,13 @@ Procedure GenerateFillTemplate(FillMethod, FillTemplate, Val CycleLength, Val Be
 	EndDo;
 	
 	If FillMethod = PredefinedValue("Enum.WorkScheduleFillingMethods.ByWeeks") Then
-		FillTemplate[0].DayPresentation = NStr("en = 'Monday'");
-		FillTemplate[1].DayPresentation = NStr("en = 'Tuesday'");
-		FillTemplate[2].DayPresentation = NStr("en = 'Wednesday'");
-		FillTemplate[3].DayPresentation = NStr("en = 'Thursday'");
-		FillTemplate[4].DayPresentation = NStr("en = 'Friday'");
-		FillTemplate[5].DayPresentation = NStr("en = 'Saturday'");
-		FillTemplate[6].DayPresentation = NStr("en = 'Sunday'");
+		FillTemplate[0].DayPresentation = NStr("en='Monday';ru='Понедельник'");
+		FillTemplate[1].DayPresentation = NStr("en='Tuesday';ru='Вторник'");
+		FillTemplate[2].DayPresentation = NStr("en='Wednesday';ru='Среда'");
+		FillTemplate[3].DayPresentation = NStr("en='Thursday';ru='Четверг'");
+		FillTemplate[4].DayPresentation = NStr("en='Friday';ru='Пятница'");
+		FillTemplate[5].DayPresentation = NStr("en='Saturday';ru='Суббота'");
+		FillTemplate[6].DayPresentation = NStr("en='Sunday';ru='Воскресенье'");
 	Else
 		DateOfDay = BeginnigDate;
 		For Each RowDay IN FillTemplate Do
@@ -584,12 +584,12 @@ Function ScheduleForDayPresentation(Form, DayNumber)
 	StringFunctionsClientServer.DeleteLatestCharInRow(IntervalsPresentation, 2);
 	
 	If Seconds = 0 Then
-		Return NStr("en = 'Fill in schedule'");
+		Return NStr("en='Fill in schedule';ru='Заполнить расписание'");
 	EndIf;
 	
 	Hours = Round(Seconds / 3600, 1);
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '% p. (%2)'"), Hours, IntervalsPresentation);
+	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='% p. (%2)';ru='%1 ч. (%2)'"), Hours, IntervalsPresentation);
 	
 EndFunction
 
@@ -652,12 +652,12 @@ Procedure ClarifyOccupancyGraphics(Form)
 	EndIf;
 	
 	If Not ValueIsFilled(Form.DateOccupancyRate) Then
-		Form.OccupancyInformationText = NStr("en = 'The work schedule is not filled'");
+		Form.OccupancyInformationText = NStr("en='The work schedule is not filled';ru='График работы не заполнен'");
 		Form.RequiresFill = True;
 	Else	
 		If Not ValueIsFilled(Form.Object.PlanningHorizon) Then
 			Form.OccupancyInformationText = StringFunctionsClientServer.PlaceParametersIntoString(
-													NStr("en = 'Work schedule is filled to %1'"), 
+													NStr("en='Work schedule is filled to %1';ru='График работы заполнен до %1'"), 
 													Format(Form.DateOccupancyRate, "DLF=D"));
 		Else											
 			#If Client Then
@@ -667,7 +667,7 @@ Procedure ClarifyOccupancyGraphics(Form)
 			#EndIf
 			EndPlanningHorizon = AddMonth(CurrentDate, Form.Object.PlanningHorizon);
 			Form.OccupancyInformationText = StringFunctionsClientServer.PlaceParametersIntoString(
-													NStr("en = 'Work schedule is filled till %1, in terms of the planning horizon the schedule must be filled till %2'"), 
+													NStr("en='Work schedule is filled till %1, in terms of the planning horizon the schedule must be filled till %2';ru='График работы заполнен до %1, с учетом горизонта планирования график должен быть заполнен до %2'"), 
 													Format(Form.DateOccupancyRate, "DLF=D"),
 													Format(EndPlanningHorizon, "DLF=D"));
 			If EndPlanningHorizon > Form.DateOccupancyRate Then
@@ -889,17 +889,17 @@ Procedure FillTextFillResultInformation(Form)
 	InformationalPicture = New Picture;
 	AvailableFillingPattern = False;
 	If Form.ManualEdit Then
-		InformationalText = NStr("en = 'Work schedule for the current year is changed manually. Click ""Populate from template"" to return to automatic filling.'");
+		InformationalText = NStr("en='Work schedule for the current year is changed manually. Click ""Populate from template"" to return to automatic filling.';ru='График работы на текущий год изменен вручную. Нажмите «Заполнить по шаблону» чтобы вернуться к автоматическому заполнению.'");
 		InformationalPicture = PictureLib.Warning;
 		AvailableFillingPattern = True;
 	Else
 		If Form.ResultFillByPattern Then
 			If ValueIsFilled(Form.Object.BusinessCalendar) Then
-				InformationalText = NStr("en = 'Work schedule is automatically updated when changing the production calendar for the current period.'");
+				InformationalText = NStr("en='Work schedule is automatically updated when changing the production calendar for the current period.';ru='График работы автоматически обновляется при изменении производственного календаря за текущий год.'");
 				InformationalPicture = PictureLib.Information;
 			EndIf;
 		Else
-			InformationalText = NStr("en = 'The displayed result does not match the template setting. Click ""Populate from template"" to see how the work schedule looks like with respect to the template modifications.'");
+			InformationalText = NStr("en='The displayed result does not match the template setting. Click ""Populate from template"" to see how the work schedule looks like with respect to the template modifications.';ru='Нажмите «Заполнить по шаблону», чтобы увидеть как выглядит график работы с учетом изменений шаблона.'");
 			InformationalPicture = PictureLib.Warning;
 			AvailableFillingPattern = True;
 		EndIf;
@@ -920,7 +920,7 @@ Procedure FillInformationTextEditing(Form)
 	InformationalPicture = New Picture;
 	If Form.ManualEdit Then
 		InformationalPicture = PictureLib.Warning;
-		InformationalText = NStr("en = 'Work schedule for the current year is changed manually. Changes are highlighted in the filling results.'");
+		InformationalText = NStr("en='Work schedule for the current year is changed manually. Changes are highlighted in the filling results.';ru='График работы на текущий год изменен вручную. Изменения выделены в результатах заполнения.'");
 	EndIf;
 	
 	Form.ManualEditTextInformation = InformationalText;

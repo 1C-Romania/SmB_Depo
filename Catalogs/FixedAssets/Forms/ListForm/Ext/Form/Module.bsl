@@ -80,7 +80,7 @@ Function GetPeriodOfLastDepreciation(Val Company)
 	Selection = Query.Execute().Select();
 	
 	If Selection.Next() Then
-		Return NStr("en='Last accrual: '") + Format(Selection.Date, "DLF=DD");
+		Return NStr("en='Last accrual: ';ru='Последнее начисление: '") + Format(Selection.Date, "DLF=DD");
 	Else
 		Return "";
 	EndIf;

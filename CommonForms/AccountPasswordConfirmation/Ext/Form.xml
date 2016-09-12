@@ -39,6 +39,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Enter the account password</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Введите пароль учетной записи</v8:content>
+				</v8:item>
 			</ToolTip>
 			<Wrap>false</Wrap>
 			<PasswordMode>true</PasswordMode>
@@ -52,11 +56,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Confirmation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подтверждение</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enter the account password once again</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Введите пароль учетной записи ещё раз</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Wrap>false</Wrap>
@@ -72,6 +84,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Save password in the infobase</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранять пароль в информационной базе</v8:content>
+				</v8:item>
 			</ToolTip>
 			<CheckBoxType>Auto</CheckBoxType>
 			<ContextMenu name="StorePasswordContextMenu" id="9"/>
@@ -84,6 +100,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Password</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -100,6 +120,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Password confirmation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подтверждение пароля</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -115,6 +139,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Save Password</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранять пароль</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -126,6 +154,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Profile</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Учетная запись</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.EmailAccounts</v8:Type>
@@ -136,6 +168,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Verify possibility of sending and receiving</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить возможность отправки и получения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -150,11 +186,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Continue</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продолжить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Save the password in the infobase and send a message</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить пароль в информационной базе и отправить сообщение</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>SavePasswordAndContinueExecute</Action>

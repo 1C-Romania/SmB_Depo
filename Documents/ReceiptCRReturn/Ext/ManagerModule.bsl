@@ -124,9 +124,9 @@ Procedure GenerateTableCashAssetsInCashRegisters(DocumentRefReceiptCRReturn, Str
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("CheckIssued", StructureAdditionalProperties.ForPosting.CheckIssued);
 	Query.SetParameter("Archival", StructureAdditionalProperties.ForPosting.Archival);
-	Query.SetParameter("CashFundsReceipt", NStr("en = 'Cash receipt to the cash registers'"));
-	Query.SetParameter("PaymentWithPaymentCards", NStr("en = 'Payment by cards'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("CashFundsReceipt", NStr("en='Cash receipt to the cash registers';ru='Поступление денежных средств в кассу ККМ'"));
+	Query.SetParameter("PaymentWithPaymentCards", NStr("en='Payment by cards';ru='Оплата платежными картами'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Execute();
 	
@@ -242,10 +242,10 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReceiptCRReturn, StructureAd
 	
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("IncomeReflection", NStr("en='Income accounting'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
 	Query.SetParameter("CheckIssued", StructureAdditionalProperties.ForPosting.CheckIssued);
 	Query.SetParameter("Archival", StructureAdditionalProperties.ForPosting.Archival);
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -501,14 +501,14 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCRReturn, StructureAdditiona
 	|	Order,
 	|	LineNumber";
 	
-	Query.SetParameter("IncomeReflection", NStr("en = 'Sales revenue'"));
-	Query.SetParameter("ReflectionOfPaymentByCards", NStr("en = 'Payment by cards'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Sales revenue';ru='Выручка от продажи'"));
+	Query.SetParameter("ReflectionOfPaymentByCards", NStr("en='Payment by cards';ru='Оплата платежными картами'"));
 	Query.SetParameter("AccountingCurrency", Constants.AccountingCurrency.Get());
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
 	Query.SetParameter("CheckIssued", StructureAdditionalProperties.ForPosting.CheckIssued);
 	Query.SetParameter("Archival", StructureAdditionalProperties.ForPosting.Archival);
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	//( elmi #11
 	Query.SetParameter("VAT", NStr("en=' VAT '"));
 	Query.SetParameter("TextVAT",  ChartsOfAccounts.Managerial.Taxes);
@@ -1220,21 +1220,21 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "KM3,SalesReceipt";
-	PrintCommand.Presentation = NStr("en = 'Custom kit of documents'");
+	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "KM3";
-	PrintCommand.Presentation = NStr("en = 'KM3 (Customers money repayment certificate)'");
+	PrintCommand.Presentation = NStr("en='KM3 (Customers money repayment certificate)';ru='КМ3 (Акт о возврате денежных сумм покупателям)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
 
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "SalesReceipt";
-	PrintCommand.Presentation = NStr("en = 'Sales receipt'");
+	PrintCommand.Presentation = NStr("en='Sales receipt';ru='Товарный чек'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;

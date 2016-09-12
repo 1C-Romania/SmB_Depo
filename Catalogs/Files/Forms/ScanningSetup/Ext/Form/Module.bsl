@@ -112,9 +112,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	OnePageStorageFormatPrevious = OnePageStorageFormat;
 	
 	If Not UseImageMagickForConvertionToPDF Then
-		Items.FormatOfScannedImage.Title = NStr("en = 'Format'");
+		Items.FormatOfScannedImage.Title = NStr("en='Format';ru='Формат'");
 	Else
-		Items.FormatOfScannedImage.Title = NStr("en = 'Type'");
+		Items.FormatOfScannedImage.Title = NStr("en='Type';ru='Тип'");
 	EndIf;
 	
 	StandardSubsystemsServer.SetGroupHeadersDisplay(ThisObject,
@@ -172,10 +172,10 @@ Procedure PathToConversionApplicationStartChoice(Item, ChoiceData, StandardProce
 		
 	FileOpeningDialog = New FileDialog(FileDialogMode.Open);
 	FileOpeningDialog.FullFileName = PathToConversionApplication;
-	Filter = NStr("en = 'Executable files(*.exe)|*.exe'");
+	Filter = NStr("en='Executable files(*.exe)|*.exe';ru='Исполняемые файлы(*.exe)|*.exe'");
 	FileOpeningDialog.Filter = Filter;
 	FileOpeningDialog.Multiselect = False;
-	FileOpeningDialog.Title = NStr("en = 'Select file for PDF conversion'");
+	FileOpeningDialog.Title = NStr("en='Select file for PDF conversion';ru='Выберите файл для преобразования в PDF'");
 	If FileOpeningDialog.Choose() Then
 		PathToConversionApplication = FileOpeningDialog.FullFileName;
 	EndIf;
@@ -274,7 +274,7 @@ Procedure RefreshStatus1()
 	Items.SetStandardSettings.Enabled = False;
 	
 	If Not FileOperationsServiceClient.InitializeComponent() Then
-		ScanComponentVersion = NStr("en= 'Scan component is not installed'");
+		ScanComponentVersion = NStr("en='Scan component is not installed';ru='Компонента сканирования не установлена'");
 		Items.DeviceName.Enabled = False;
 		Return;
 	EndIf;
@@ -381,7 +381,7 @@ Procedure ReadScannerSettings()
 	EndIf;
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Collecting information on scanner ""%1""...'"), DeviceName);
+		NStr("en='Collecting information on scanner ""%1""...';ru='Идет сбор сведений о сканере ""%1""...'"), DeviceName);
 	
 	Status(MessageText);
 	
@@ -468,10 +468,10 @@ Procedure WorkChangesUseImageMagick()
 	If Not UseImageMagickForConvertionToPDF Then
 		MultiPageStorageFormat = MultiplePagesTIFFormat;
 		FormatOfScannedImage = ConvertStorageFormatIntoScanningFormat(OnePageStorageFormat);
-		Items.FormatOfScannedImage.Title = NStr("en = 'Format'");
+		Items.FormatOfScannedImage.Title = NStr("en='Format';ru='Формат'");
 	Else
 		OnePageStorageFormat = ConvertScanningFormatIntoStorageFormat(FormatOfScannedImage);
-		Items.FormatOfScannedImage.Title = NStr("en = 'Type'");
+		Items.FormatOfScannedImage.Title = NStr("en='Type';ru='Тип'");
 	EndIf;	
 	
 	DecorationsVisible = (UseImageMagickForConvertionToPDF AND (OnePageStorageFormat = OnePagePDFFormat));

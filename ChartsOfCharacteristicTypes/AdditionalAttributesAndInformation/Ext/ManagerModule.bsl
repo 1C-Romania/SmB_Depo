@@ -112,8 +112,9 @@ Procedure ChangePropertiesConfiguration(Parameters, StorageAddress) Export
 		
 		If OwnerMetadata = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Error when changing settings of the %1 property.
-				           |Properties set %2 is not associated with any owner of property values.'"),
+				NStr("en='Error when changing settings of the %1 property."
+"Properties set %2 is not associated with any owner of property values.';ru='Ошибка при изменении настройки свойства %1."
+"Набор свойств %2 не связан ни с одним владельцем значений свойств.'"),
 				Property,
 				PropertyObject.PropertySet);
 		EndIf;
@@ -156,8 +157,9 @@ Procedure ChangePropertiesConfiguration(Parameters, StorageAddress) Export
 			
 		ElsIf Property = PropertyObject.Ref Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Error when changing settings of the %1 property.
-				           |Value type does not contain the additional values.'"),
+				NStr("en='Error when changing settings of the %1 property."
+"Value type does not contain the additional values.';ru='Ошибка при изменении настройки свойства %1."
+"Тип значения не содержит дополнительных значений.'"),
 				Property);
 		EndIf;
 		

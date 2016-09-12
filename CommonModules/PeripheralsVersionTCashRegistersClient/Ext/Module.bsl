@@ -59,10 +59,13 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 	 Or PartialCuttingSymbolCode = Undefined
 	 Or LogDriver     = Undefined Then
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device parameters are not set.
-		|For the correct work of the device it is necessary to specify the parameters of its work.
-		|You can do it using the Parameters setting
-		|form of the peripheral model in the Connection and equipment setting form.'"));
+		Output_Parameters.Add(NStr("en='Device parameters are not set."
+"For the correct work of the device it is necessary to specify the parameters of its work."
+"You can do it using the Parameters setting"
+"form of the peripheral model in the Connection and equipment setting form.';ru='Не настроены параметры устройства."
+"Для корректной работы устройства необходимо задать параметры его работы."
+"Сделать это можно при помощи формы"
+"""Настройка параметров"" модели подключаемого оборудования в форме ""Подключение и настройка оборудования"".'"));
 
 		Result = False;
 	EndIf;
@@ -214,7 +217,7 @@ Function RunCommand(Command, InputParameters = Undefined, Output_Parameters = Un
 	// This command is not supported by the current driver.
 	Else
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.'"));
+		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.';ru='Команда ""%Команда%"" не поддерживается данным драйвером.'"));
 		Output_Parameters[1] = StrReplace(Output_Parameters[1], "%Command%", Command);
 		Result = False;
 
@@ -492,7 +495,7 @@ Function PrintBarcode(DriverObject, Parameters, ConnectionParameters, BarCodeTyp
 	
 	Result = True;
 	
-	TextString = NStr("en='Barcode:'") + Barcode; 
+	TextString = NStr("en='Barcode:';ru='ШТРИХКОД:'") + Barcode; 
 	Result = DriverObject.PrintNonFiscalLine(ConnectionParameters.DeviceID, TextString);
 	If Not Result Then
 		Output_Parameters.Clear();
@@ -517,7 +520,7 @@ Function OpenCashDrawer(DriverObject, Parameters, ConnectionParameters, Output_P
 		Result = DriverObject.OpenCashDrawer(ConnectionParameters.DeviceID);
 	Except
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='The ""Open cash drawer"" command is not supported by this driver.'"));
+		Output_Parameters.Add(NStr("en='The ""Open cash drawer"" command is not supported by this driver.';ru='Команда ""Открыть денежный ящик"" не поддерживается данным драйвером.'"));
 		Return Result;
 	EndTry;
 	
@@ -592,8 +595,8 @@ Function GetDriverVersion(DriverObject, Parameters, ConnectionParameters, Output
 
 	Result = True;
 
-	Output_Parameters.Add(NStr("en='Installed'"));
-	Output_Parameters.Add(NStr("en='Not defined'"));
+	Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
+	Output_Parameters.Add(NStr("en='Not defined';ru='Не определена'"));
 
 	Try
 		Output_Parameters[1] = DriverObject.GetVersionNumber();

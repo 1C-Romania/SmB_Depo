@@ -284,14 +284,14 @@ EndFunction
 //     String - title for filter presentation generating by all documents.
 //
 Function AllDocumentsFilterTitleGroup() Export
-	Return NStr("en='All documents'");
+	Return NStr("en='All documents';ru='Все документы'");
 EndFunction
 
 // Returns:
 //     String - title for filter presentation generating by all catalogs.
 //
 Function AllCatalogsFilterGroupsTitle() Export
-	Return NStr("en='All catalogs'");
+	Return NStr("en='All catalogs';ru='Все справочники'");
 EndFunction
 
 //  Returns description of the period and filter as a string.
@@ -846,13 +846,13 @@ Function InitializeComposer(ListOfMetadataNames = Undefined, LimitUseOfSelection
 	Parameters.Find("InfobaseNode").Value = InfobaseNode;
 	
 	AutoParameter = Parameters.Find("ReasonForRegistrationAutomatically");
-	AutoParameter.Value = NStr("en = 'By common rules'");
+	AutoParameter.Value = NStr("en='By common rules';ru='По общим правилам'");
 	
 	AdditionalParameter = Parameters.Find("ReasonForRegistrationAdvanced");
-	AdditionalParameter.Value = NStr("en = 'Additionally'");
+	AdditionalParameter.Value = NStr("en='Additionally';ru='Дополнительно'");
 	
 	ReferenceParameter = Parameters.Find("ReasonForRegistrationLink");
-	ReferenceParameter.Value = NStr("en = 'By ref'");
+	ReferenceParameter.Value = NStr("en='By ref';ru='По ссылке'");
 	
 	If LimitUseOfSelection Then
 		Fields = CompositionSchema.DataSets.ChangeRecords.Fields;
@@ -952,7 +952,7 @@ Procedure AddAdditionalSetsOfTabularLayoutParts(SourceItems, AddingParameters)
 	ObjectMetadata = Metadata.FindByFullName(NameOfAddedTables);
 	If ObjectMetadata = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='The %1 incorrect name of metadata for registration at the %2 node'"),
+			NStr("en='The %1 incorrect name of metadata for registration at the %2 node';ru='Некорректное имя метаданных ""%1"" для регистрации на узле ""%2""'"),
 				NameOfAddedTables, InfobaseNode);
 	EndIf;
 		
@@ -1240,7 +1240,7 @@ Function TextAddOptions()
 	
 	If ExportVariant = 0 Then
 		// All automatic data
-		Return NStr("en='Without additional data.'");
+		Return NStr("en='Without additional data.';ru='Без дополнительных данных.'");
 		
 	ElsIf ExportVariant = 1 Then
 		TextAllDocuments = AllDocumentsFilterTitleGroup();

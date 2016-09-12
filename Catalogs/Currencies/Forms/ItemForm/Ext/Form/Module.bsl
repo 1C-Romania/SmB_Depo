@@ -255,25 +255,25 @@ Procedure SetWritingParametersDeclensions(Form)
 	Items = Form.Items;
 	
 	If Form.InWordsField4HomeLanguage = "Female" Then
-		Items.InWordsField1HomeLanguage.Title = NStr("en = 'One'");
-		Items.InWordsField2HomeLanguage.Title = NStr("en = 'Two'");
+		Items.InWordsField1HomeLanguage.Title = NStr("en='One';ru='Одно'");
+		Items.InWordsField2HomeLanguage.Title = NStr("en='Two';ru='Две'");
 	ElsIf Form.InWordsField4HomeLanguage = "Male" Then
-		Items.InWordsField1HomeLanguage.Title = NStr("en = 'One'");
-		Items.InWordsField2HomeLanguage.Title = NStr("en = 'Two'");
+		Items.InWordsField1HomeLanguage.Title = NStr("en='One';ru='Одно'");
+		Items.InWordsField2HomeLanguage.Title = NStr("en='Two';ru='Две'");
 	Else
-		Items.InWordsField1HomeLanguage.Title = NStr("en = 'One'");
-		Items.InWordsField2HomeLanguage.Title = NStr("en = 'Two'");
+		Items.InWordsField1HomeLanguage.Title = NStr("en='One';ru='Одно'");
+		Items.InWordsField2HomeLanguage.Title = NStr("en='Two';ru='Две'");
 	EndIf;
 	
 	If Form.InWordsField8HomeLanguage = "Female" Then
-		Items.InWordsField5HomeLanguage.Title = NStr("en = 'One'");
-		Items.InWordsField6HomeLanguage.Title = NStr("en = 'Two'");
+		Items.InWordsField5HomeLanguage.Title = NStr("en='One';ru='Одно'");
+		Items.InWordsField6HomeLanguage.Title = NStr("en='Two';ru='Две'");
 	ElsIf Form.InWordsField8HomeLanguage = "Male" Then
-		Items.InWordsField5HomeLanguage.Title = NStr("en = 'One'");
-		Items.InWordsField6HomeLanguage.Title = NStr("en = 'Two'");
+		Items.InWordsField5HomeLanguage.Title = NStr("en='One';ru='Одно'");
+		Items.InWordsField6HomeLanguage.Title = NStr("en='Two';ru='Две'");
 	Else
-		Items.InWordsField5HomeLanguage.Title = NStr("en = 'One'");
-		Items.InWordsField6HomeLanguage.Title = NStr("en = 'Two'");
+		Items.InWordsField5HomeLanguage.Title = NStr("en='One';ru='Одно'");
+		Items.InWordsField6HomeLanguage.Title = NStr("en='Two';ru='Две'");
 	EndIf;
 	
 EndProcedure

@@ -35,7 +35,7 @@ Procedure MarkToDeleteSubjectNotes(Source, Cancel) Export
 			NoteObject.Write();
 		Except
 			ErrorText = DetailErrorDescription(ErrorInfo());
-			WriteLogEvent(NStr("en = 'User notes.Selecting deletion mark'", CommonUseClientServer.MainLanguageCode()),
+			WriteLogEvent(NStr("en='User notes.Selecting deletion mark';ru='Заметки пользователя.Установка пометки удаления'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error, NoteObject.Metadata(), NoteObject.Ref, ErrorText);
 		EndTry;
 	EndDo;

@@ -216,7 +216,7 @@ Procedure DeleteFilesAtServer(FormerPathOnVolume) Export
 			DeleteFiles(FormerPathOnVolume);
 		Except
 			WriteLogEvent(
-				NStr("en = 'Files.Files deletion in the volume at exchange'",
+				NStr("en='Files.Files deletion in the volume at exchange';ru='Файлы.Удаление файлов в томе при обмене'",
 				     CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -234,7 +234,7 @@ Procedure DeleteFilesAtServer(FormerPathOnVolume) Export
 		EndIf;
 	Except
 		WriteLogEvent(
-			NStr("en = 'Files.Files deletion in the volume at exchange'",
+			NStr("en='Files.Files deletion in the volume at exchange';ru='Файлы.Удаление файлов в томе при обмене'",
 			     CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
@@ -369,7 +369,7 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 	Selection = Query.Execute().Select();
 	
 	If Selection.Count() = 0 Then
-		Raise NStr("en = 'No volumes to place the files'");
+		Raise NStr("en='No volumes to place the files';ru='Нет ни одного тома для размещения файлов'");
 	EndIf;
 	
 	While Selection.Next() Do
@@ -414,7 +414,7 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 				If NewSize > VolumeRef.MaximumSize Then
 					
 					Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'Maximal volume size (%1 Mb) is exceeded.'"),
+						NStr("en='Maximal volume size (%1 Mb) is exceeded.';ru='Превышен максимальный размер тома (%1 Мб).'"),
 						VolumeRef.MaximumSize);
 				EndIf;
 			EndIf;
@@ -455,9 +455,11 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 			EndIf;
 			
 			ErrorDescriptionTemplate =
-				NStr("en = 'Failed to add
-				           |file ""%1"" to volume
-				           |""%2"" (%3): ""%4"".'");
+				NStr("en='Failed to add"
+"file ""%1"" to volume"
+"""%2"" (%3): ""%4"".';ru='Ошибка"
+"при добавлении файла"
+"""%1"" в том ""%2"" (%3): ""%4"".'");
 			
 			AllErrorsDetailedDescription = AllErrorsDetailedDescription
 				+ StringFunctionsClientServer.PlaceParametersIntoString(
@@ -485,13 +487,16 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 	
 	// Record in the event
 	// log monitor for the administrator - display errors from all volumes.
-	MessageAboutErrorTemplate = NStr("en = 'Failed to add the file to the volumes.
-		|List
-		|
-		|of errors: %1'");
+	MessageAboutErrorTemplate = NStr("en='Failed to add the file to the volumes."
+"List"
+""
+"of errors: %1';ru='Не удалось добавить файл ни в один из томов."
+"Список"
+""
+"ошибок: %1'");
 	
 	WriteLogEvent(
-		NStr("en = 'Files. File adding'", CommonUseClientServer.MainLanguageCode()),
+		NStr("en='Files. File adding';ru='Файлы.Добавление файла'", CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Error,,,
 		StringFunctionsClientServer.PlaceParametersIntoString(MessageAboutErrorTemplate, AllErrorsDetailedDescription));
 	
@@ -500,10 +505,13 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 	Else
 		// Message to ordinary user.
 		ExceptionString = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Failed to add
-			           |the file: ""%1.%2"".
-			           |
-			           |Contact your administrator.'"),
+			NStr("en='Failed to add"
+"the file: ""%1.%2""."
+""
+"Contact your administrator.';ru='Не удалось"
+"добавить файл: ""%1.%2""."
+""
+"Обратитесь к администратору.'"),
 			BaseName, Extension);
 	EndIf;
 	
@@ -584,16 +592,16 @@ Procedure CryptographyOnCreateFormAtServer(Form, ThisIsListForm = True, RowsPict
 	EndIf;
 	
 	If ESigning AND Encryption Then
-		Title = NStr("en = 'Digital signature and encryption'");
-		ToolTip = NStr("en = 'Existence of electronic signature or encryption'");
+		Title = NStr("en='Digital signature and encryption';ru='ЭЦП и шифрование'");
+		ToolTip = NStr("en='Existence of electronic signature or encryption';ru='Наличие электронной подписи или шифрования'");
 		Picture  = PictureLib["DigitallySignedEncryptedTitle"];
 	ElsIf ESigning Then
-		Title = NStr("en = 'Digital signature'");
-		ToolTip = NStr("en = 'Existence of digital signature'");
+		Title = NStr("en='Digital signature';ru='Электронная подпись'");
+		ToolTip = NStr("en='Existence of digital signature';ru='Наличие электронной подписи'");
 		Picture  = PictureLib["DigitallySigned"];
 	Else // Encryption
-		Title = NStr("en = 'Encryption'");
-		ToolTip = NStr("en = 'Existence of encryption'");
+		Title = NStr("en='Encryption';ru='Шифрование'");
+		ToolTip = NStr("en='Existence of encryption';ru='Наличие шифрования'");
 		Picture  = PictureLib["Encrypted"];
 	EndIf;
 	
@@ -916,8 +924,9 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 				 OR Find(PathToArchiveWithVolumeFiles, ":") <> 0) Then
 					
 					CommonUseClientServer.MessageToUser(
-						NStr("en = 'Path to archive volume files must
-						           |be in the UNC format (\\servername\resource)'"),
+						NStr("en='Path to archive volume files must"
+"be in the UNC format (\\servername\resource)';ru='Путь к файловой базе"
+"должен быть в формате UNC (\\servername\resource)'"),
 						,
 						"PathToArchiveWithWindowsVolumesFiles");
 					Return False;
@@ -929,8 +938,9 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 			If Not IsBlankString(FileBaseFullName) AND (Left(FileBaseFullName, 2) <> "\\" OR Find(FileBaseFullName, ":") <> 0) Then
 				
 				CommonUseClientServer.MessageToUser(
-					NStr("en = 'Path to archive volume
-					           |files must be in the UNC format (\\servername\resource)'"),
+					NStr("en='Path to archive volume"
+"files must be in the UNC format (\\servername\resource)';ru='Путь к"
+"файловой базе должен быть в формате UNC (\\servername\resource)'"),
 					,
 					"WindowsFileBaseFullName");
 				Return False;
@@ -945,7 +955,7 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 	If IsBlankString(FileBaseFullName) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Specify full name of the file base (1cv8.1cd)'"),,
+			NStr("en='Specify full name of the file base (1cv8.1cd)';ru='Укажите полное имя файловой базы (файл 1cv8.1cd)'"),,
 			"WindowsFileBaseFullName");
 		Return False;
 		
@@ -956,8 +966,9 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 	If BaseFile.Exist() Then
 		CommonUseClientServer.MessageToUser(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'File ""%1"" already exists.
-				           |Enter another attachment file name.'"),
+				NStr("en='File ""%1"" already exists."
+"Enter another attachment file name.';ru='Файл ""%1"" уже существует."
+"Введите другое имя файла.'"),
 				FileBaseFullName),, "WindowsFileBaseFullName");
 		Return False;
 	EndIf;
@@ -966,7 +977,7 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 		
 		If IsBlankString(PathToArchiveWithVolumeFiles) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Specify the full name of the archive with files of volumes (file *.zip)'"),, 
+				NStr("en='Specify the full name of the archive with files of volumes (file *.zip)';ru='Укажите полное имя архива с файлами томов (файл *.zip)'"),, 
 				"PathToArchiveWithWindowsVolumesFiles");
 			Return False;
 		EndIf;
@@ -976,8 +987,9 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 		If File.Exist() Then
 			CommonUseClientServer.MessageToUser(
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'File ""%1"" already exists.
-					           |Enter another attachment file name.'"),
+					NStr("en='File ""%1"" already exists."
+"Enter another attachment file name.';ru='Файл ""%1"" уже существует."
+"Введите другое имя файла.'"),
 					PathToArchiveWithVolumeFiles),, "PathToArchiveWithWindowsVolumesFiles");
 			Return False;
 		EndIf;
@@ -1068,8 +1080,9 @@ Function CreateServerInitialImageAtServer(Node, ConnectionString, PathToArchiveW
 			 OR Find(PathToArchiveWithVolumeFiles, ":") <> 0) Then
 				
 				CommonUseClientServer.MessageToUser(
-					NStr("en = 'Path to the archive with files
-					           |of the volumes must be in UNC format (\\servername\resource).'"),
+					NStr("en='Path to the archive with files"
+"of the volumes must be in UNC format (\\servername\resource).';ru='Путь к архиву с"
+"файлами томов должен быть в формате UNC (\\servername\resource).'"),
 					,
 					"PathToArchiveWithWindowsVolumesFiles");
 				Return False;
@@ -1083,7 +1096,7 @@ Function CreateServerInitialImageAtServer(Node, ConnectionString, PathToArchiveW
 	If AreFilesInVolumes Then
 		If IsBlankString(PathToArchiveWithVolumeFiles) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Specify the full name of the archive with files of volumes (file *.zip)'"),
+				NStr("en='Specify the full name of the archive with files of volumes (file *.zip)';ru='Укажите полное имя архива с файлами томов (файл *.zip)'"),
 				,
 				"PathToArchiveWithWindowsVolumesFiles");
 			Return False;
@@ -1094,8 +1107,9 @@ Function CreateServerInitialImageAtServer(Node, ConnectionString, PathToArchiveW
 		If File.Exist() Then
 			CommonUseClientServer.MessageToUser(
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'File ""%1"" already exists.
-					           |Enter another attachment file name.'"),
+					NStr("en='File ""%1"" already exists."
+"Enter another attachment file name.';ru='Файл ""%1"" уже существует."
+"Введите другое имя файла.'"),
 					FilePath));
 			Return False;
 		EndIf;
@@ -1257,12 +1271,12 @@ Procedure ExtractTextFromFilesOnServer() Export
 	NameWithExtensionFile = "";
 	
 	WriteLogEvent(
-		NStr("en = 'Files. Text extraction'",
+		NStr("en='Files. Text extraction';ru='Файлы.Извлечение текста'",
 		     CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,
 		,
 		,
-		NStr("en = 'Scheduled text extraction has been started'"));
+		NStr("en='Scheduled text extraction has been started';ru='Начато регламентное извлечения текста'"));
 		
 	FinalQueryText = "";
 	
@@ -1350,16 +1364,19 @@ Procedure ExtractTextFromFilesOnServer() Export
 			EndDo;
 		Except
 			WriteLogEvent(
-				NStr("en = 'Files. Text extraction'",
+				NStr("en='Files. Text extraction';ru='Файлы.Извлечение текста'",
 				     CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
 				,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'During scheduled text extraction from
-					           |file
-					           |""%1"" an
-					           |error occurred: ""%2"".'"),
+					NStr("en='During scheduled text extraction from"
+"file"
+"""%1"" an"
+"error occurred: ""%2"".';ru='Во время регламентного извлечения"
+"текста"
+"из файла"
+"""%1"" произошла ошибка: ""%2"".'"),
 					NameWithExtensionFile,
 					DetailErrorDescription(ErrorInfo()) ));
 		EndTry;
@@ -1367,12 +1384,12 @@ Procedure ExtractTextFromFilesOnServer() Export
 	EndDo;
 	
 	WriteLogEvent(
-		NStr("en = 'Files. Text extraction'",
+		NStr("en='Files. Text extraction';ru='Файлы.Извлечение текста'",
 		     CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,
 		,
 		,
-		NStr("en = 'Scheduled extraction of the text has been completed'"));
+		NStr("en='Scheduled extraction of the text has been completed';ru='Закончено регламентное извлечение текста'"));
 	
 EndProcedure
 

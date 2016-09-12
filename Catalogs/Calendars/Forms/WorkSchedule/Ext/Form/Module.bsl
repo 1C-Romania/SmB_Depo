@@ -76,13 +76,13 @@ Function DailySchedule()
 		If TimetableString.BeginTime > TimetableString.EndTime 
 			AND ValueIsFilled(TimetableString.EndTime) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Starting time exceeds the ending time'"), ,
+				NStr("en='Starting time exceeds the ending time';ru='Время начала больше времени окончания'"), ,
 				StringFunctionsClientServer.PlaceParametersIntoString("WorkSchedule[%1].EndTime", RowIndex), ,
 				Cancel);
 		EndIf;
 		If TimetableString.BeginTime = TimetableString.EndTime Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Interval duration is not determined'"), ,
+				NStr("en='Interval duration is not determined';ru='Длительность интервала не определена'"), ,
 				StringFunctionsClientServer.PlaceParametersIntoString("WorkSchedule[%1].EndTime", RowIndex), ,
 				Cancel);
 		EndIf;
@@ -90,7 +90,7 @@ Function DailySchedule()
 			If EndOfDay > TimetableString.BeginTime 
 				Or Not ValueIsFilled(EndOfDay) Then
 				CommonUseClientServer.MessageToUser(
-					NStr("en = 'Intersected intervals are detected'"), ,
+					NStr("en='Intersected intervals are detected';ru='Обнаружены пересекающиеся интервалы'"), ,
 					StringFunctionsClientServer.PlaceParametersIntoString("WorkSchedule[%1].BeginTime", RowIndex), ,
 					Cancel);
 			EndIf;

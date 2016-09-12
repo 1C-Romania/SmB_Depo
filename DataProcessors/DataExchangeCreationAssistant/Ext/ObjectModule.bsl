@@ -107,7 +107,7 @@ Procedure SetUpNewDataExchangeOverWebServiceInTwoBases(Cancel,
 		AssistantParameterStringXML = RunAssistantParametersDump(Cancel);
 		
 		If Cancel Then
-			Raise NStr("en = 'Errors occurred when creating an exchange setting in the second infobase.'");
+			Raise NStr("en='Errors occurred when creating an exchange setting in the second infobase.';ru='При создании настройки обмена во второй информационной базе возникли ошибки.'");
 		EndIf;
 		
 		// {Handler: OnSendingSenderData} Start
@@ -221,7 +221,7 @@ Procedure SetUpNewDataExchangeOverExternalConnection(Cancel,
 		AssistantParameterStringXML = RunAssistantParametersDump(Cancel);
 		
 		If Cancel Then
-			Raise NStr("en = 'Errors occurred when creating an exchange setting in the second infobase.'");
+			Raise NStr("en='Errors occurred when creating an exchange setting in the second infobase.';ru='При создании настройки обмена во второй информационной базе возникли ошибки.'");
 		EndIf;
 		
 		// Get data processor of the exchange settings assistant on the second base.
@@ -232,7 +232,7 @@ Procedure SetUpNewDataExchangeOverExternalConnection(Cancel,
 		DataExchangeCreationAssistant.ExternalConnectionImportAssistantParameters(Cancel, AssistantParameterStringXML);
 		
 		If Cancel Then
-			Message = NStr("en = 'An error occurred when creating an exchange setting in the second infobase: %1'");
+			Message = NStr("en='An error occurred when creating an exchange setting in the second infobase: %1';ru='При создании настройки обмена во второй информационной базе возникли ошибки: %1'");
 			Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, DataExchangeCreationAssistant.ErrorMessageString());
 			Raise Message;
 		EndIf;
@@ -257,7 +257,7 @@ Procedure SetUpNewDataExchangeOverExternalConnection(Cancel,
 		EndIf;
 		
 		If Cancel Then
-			Message = NStr("en = 'An error occurred when creating an exchange setting in the second infobase: %1'");
+			Message = NStr("en='An error occurred when creating an exchange setting in the second infobase: %1';ru='При создании настройки обмена во второй информационной базе возникли ошибки: %1'");
 			Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, DataExchangeCreationAssistant.ErrorMessageString());
 			Raise Message;
 		EndIf;
@@ -844,8 +844,9 @@ Procedure CreateRefreshExchangePlanNodes(FilterSsettingsAtNode, DefaultValuesAtN
 		
 		If MasterNode = Undefined Then
 			
-			Raise NStr("en = 'The main node for the current infobase is not determined.
-							|Perhaps, the infobase is not a subordinate node in the RIB.'");
+			Raise NStr("en='The main node for the current infobase is not determined."
+"Perhaps, the infobase is not a subordinate node in the RIB.';ru='Главный узел для текущей информационной базы не определен."
+"Возможно, информационная база не является подчиненным узлом в РИБ.'");
 		EndIf;
 		
 		NewNode = MasterNode.GetObject();
@@ -1114,7 +1115,7 @@ Procedure RunAssistantParametersImport(Cancel, XMLString) Export
 	If SettingsStructure.Property("ExchangePlanName")
 		AND SettingsStructure.ExchangePlanName <> ExchangePlanName Then
 		
-		ErrorMessageStringField = NStr("en = 'File contains exchange settings for another infobase.'");
+		ErrorMessageStringField = NStr("en='File contains exchange settings for another infobase.';ru='Файл содержит настройки обмена для другой информационной базы.'");
 		DataExchangeServer.ShowMessageAboutError(ErrorMessageString(), Cancel);
 		
 	EndIf;
@@ -1136,7 +1137,7 @@ Procedure RunAssistantParametersImport(Cancel, XMLString) Export
 		// Support the format exchange settings file of the version 1.0.
 		If ExchangeDataSettingsFileFormatVersion = "1.0" Then
 			
-			ThisObject.ThisInfobaseDescription = NStr("en = 'This infobase'");
+			ThisObject.ThisInfobaseDescription = NStr("en='This infobase';ru='Эта информационная база'");
 			ThisObject.SecondInfobaseDescription = SettingsStructure.ExchangeProcessingSettingName;
 			ThisObject.SecondInfobaseNewNodeCode = SettingsStructure.NewNodeCode;
 			
@@ -1149,8 +1150,9 @@ Procedure RunAssistantParametersImport(Cancel, XMLString) Export
 	If Not IsBlankString(InfobasePrefix)
 		AND InfobasePrefix <> SourceInfobasePrefix Then
 		
-		ErrorMessageStringField = NStr("en = 'Prefix of the second infobase was specified incorrectly at the first stage of the exchange setting.
-				|Exchange setup is required to be restarted.'");
+		ErrorMessageStringField = NStr("en='Prefix of the second infobase was specified incorrectly at the first stage of the exchange setting."
+"Exchange setup is required to be restarted.';ru='На первом этапе настройки обмена был неправильно указан префикс второй информационной базы."
+"Настройку обмена требуется начать заново.'");
 		//
 		DataExchangeServer.ShowMessageAboutError(ErrorMessageString(), Cancel);
 		
@@ -1165,7 +1167,7 @@ Function CalculateDataToStructure(XMLReader)
 	
 	If XMLReader.NodeType <> XMLNodeType.StartElement Then
 		
-		Raise NStr("en = 'XML reading error'");
+		Raise NStr("en='XML reading error';ru='Ошибка чтения XML'");
 		
 	EndIf;
 	

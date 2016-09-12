@@ -16,7 +16,7 @@ Procedure ExportToMXL(Command)
 		msg.Message();
 	Else
 		GetFile(ExportToMXLAtServer(), FileName, False);
-		Status(NStr("en = 'Done'; ru = 'Выполнено'"));
+		Status(NStr("en='Done';ru='Готово'"));
 	EndIf; 
 EndProcedure
 

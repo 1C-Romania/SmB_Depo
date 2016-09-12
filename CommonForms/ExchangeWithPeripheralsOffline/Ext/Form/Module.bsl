@@ -116,7 +116,7 @@ Procedure ScalesViewProductsList(Command)
 		
 	Else
 		
-		ShowMessageBox(Undefined,NStr("en = 'Command can not be executed for the specified object'"));
+		ShowMessageBox(Undefined,NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'"));
 		
 	EndIf;
 	
@@ -139,7 +139,7 @@ Procedure ScalesSetRuleForSelected(Command)
 		
 	Else
 		
-		ShowMessageBox(Undefined,NStr("en = 'Command can not be executed for the specified object'"));
+		ShowMessageBox(Undefined,NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'"));
 		
 	EndIf;
 	
@@ -212,7 +212,7 @@ Procedure CashesViewProductList(Command)
 		
 	Else
 		
-		ShowMessageBox(Undefined,NStr("en = 'Command can not be executed for the specified object'"));
+		ShowMessageBox(Undefined,NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'"));
 		
 	EndIf;
 	
@@ -235,7 +235,7 @@ Procedure PettyCashesSetRuleForSelected(Command)
 		
 	Else
 		
-		ShowMessageBox(Undefined,NStr("en = 'Command can not be executed for the specified object'"));
+		ShowMessageBox(Undefined,NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'"));
 		
 	EndIf;
 	
@@ -319,7 +319,7 @@ Procedure ScalesOpenExchangeRule(Command)
 		
 	Else
 		
-		ShowMessageBox(Undefined,NStr("en = 'Command can not be executed for the specified object'"));
+		ShowMessageBox(Undefined,NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'"));
 		
 	EndIf;
 	
@@ -335,7 +335,7 @@ Procedure PettyCashesOpenExchangeRule(Command)
 		
 	Else
 		
-		ShowMessageBox(Undefined,NStr("en = 'Command can not be executed for the specified object'"));
+		ShowMessageBox(Undefined,NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'"));
 		
 	EndIf;
 	
@@ -406,7 +406,7 @@ Procedure CashRegistersChoice(Item, SelectedRow, Field, StandardProcessing)
 		If ValueIsFilled(Report) Then
 			ShowValue(Undefined,Report);
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Retail sales report is not found.'"));
+			ShowMessageBox(Undefined,NStr("en='Retail sales report is not found.';ru='Отчет о розничных продажах не найден.'"));
 		EndIf;
 		
 	EndIf;

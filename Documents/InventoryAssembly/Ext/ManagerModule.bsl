@@ -53,7 +53,7 @@ Procedure FillProductsTableByNodsStructure(StringProducts, TableProduction, Node
 	While Selection.Next() Do
 		If Selection.ContentRowType = Enums.SpecificationContentRowTypes.Node Then
 			If Not NodesSpecificationStack.Find(Selection.Specification) = Undefined Then
-				MessageText = NStr("en = 'Detected a recursive item occurrence'")+" "+Selection.ProductsAndServices+" "+NStr("en = 'in specifications'")+" "+StringProducts.SpecificationCorr+"
+				MessageText = NStr("en='Detected a recursive item occurrence';ru='Обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in specifications';ru='в спецификации'")+" "+StringProducts.SpecificationCorr+"
 									|The operation failed.";
 				Raise MessageText;
 			EndIf;
@@ -354,8 +354,8 @@ Procedure GenerateTableInventoryDisposals(DocumentRefInventoryAssembly, Structur
 			TableRowExpense.BatchCorr = RowTableInventory.Batch;
 			TableRowExpense.CustomerCorrOrder = RowTableInventory.CustomerOrder;
 			
-			TableRowExpense.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-            TableRowExpense.Content = NStr("en = 'Inventory transfer'");
+			TableRowExpense.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+            TableRowExpense.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 			
 			// Receipt.
 			TableRowReceipt = StructureAdditionalProperties.TableForRegisterRecords.TableInventory.Add();
@@ -372,8 +372,8 @@ Procedure GenerateTableInventoryDisposals(DocumentRefInventoryAssembly, Structur
 			TableRowReceipt.BatchCorr = RowTableInventory.Batch;
 			TableRowReceipt.CustomerCorrOrder = RowTableInventory.CustomerOrder;
 			
-			TableRowReceipt.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-			TableRowReceipt.Content = NStr("en = 'Inventory transfer'");
+			TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+			TableRowReceipt.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 			
 		EndIf;
 		
@@ -650,7 +650,7 @@ Procedure DataInitializationByDisposals(DocumentRefInventoryAssembly, StructureA
 	UpdateDateToRelease_1_2_1 = Constants.UpdateDateToRelease_1_2_1.Get();
 	Query.SetParameter("UpdateDateToRelease_1_2_1", UpdateDateToRelease_1_2_1);
 	
-	Query.SetParameter("ReturnWaste", NStr("en = 'Return waste'"));
+	Query.SetParameter("ReturnWaste", NStr("en='Return waste';ru='Возвратные отходы'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -1187,8 +1187,8 @@ Procedure GenerateTableInventoryProduction(DocumentRefInventoryAssembly, Structu
 		TableRowReceipt.Amount = StringProductsToBeTransferred.Amount;
 		TableRowReceipt.Quantity = 0;
 		
-		TableRowReceipt.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-		TableRowReceipt.Content = NStr("en = 'Inventory transfer'");
+		TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+		TableRowReceipt.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 		
 		// Generate postings.
 		RowTableManagerial = StructureAdditionalProperties.TableForRegisterRecords.TableManagerial.Add();
@@ -1266,7 +1266,7 @@ Procedure GenerateTableInventoryProductionTransfer(DocumentRefInventoryAssembly,
 	|	TableInventory.GLAccount,
 	|	TableInventory.InventoryGLAccount";
 	
-	Query.SetParameter("InventoryTransfer", NStr("en = 'Inventory transfer'"));
+	Query.SetParameter("InventoryTransfer", NStr("en='Inventory transfer';ru='Перемещение запасов'"));
 	
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryMove", Query.Execute().Unload());
 	
@@ -1956,8 +1956,8 @@ Procedure GenerateTableInventoryProductionTransfer(DocumentRefInventoryAssembly,
 		TableRowReceipt.Amount = StringProductsToBeTransferred.Amount;
 		TableRowReceipt.Quantity = 0;
 		
-		TableRowReceipt.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-		TableRowReceipt.Content = NStr("en = 'Inventory transfer'");
+		TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+		TableRowReceipt.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 		
 		// Generate postings.
 		RowTableManagerial = StructureAdditionalProperties.TableForRegisterRecords.TableManagerial.Add();
@@ -2714,7 +2714,7 @@ Procedure DataInitializationByProduction(DocumentRefInventoryAssembly, Structure
 	UpdateDateToRelease_1_2_1 = Constants.UpdateDateToRelease_1_2_1.Get();
 	Query.SetParameter("UpdateDateToRelease_1_2_1", UpdateDateToRelease_1_2_1);
 	
-	Query.SetParameter("InventoryDistribution", NStr("en = 'Inventory distribution'"));
+	Query.SetParameter("InventoryDistribution", NStr("en='Inventory distribution';ru='Распределение запасов'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -2844,8 +2844,8 @@ Procedure GenerateTableInventoryProductsAssembly(DocumentRefInventoryAssembly, S
 			TableRowExpense.SpecificationCorr = Undefined;
 			TableRowExpense.CustomerCorrOrder = RowTableInventoryProducts.CustomerOrder;
 			
-			TableRowExpense.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-			TableRowExpense.Content = NStr("en = 'Inventory transfer'");
+			TableRowExpense.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+			TableRowExpense.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 			
 			// Receipt.
 			TableRowReceipt = StructureAdditionalProperties.TableForRegisterRecords.TableInventory.Add();
@@ -2866,8 +2866,8 @@ Procedure GenerateTableInventoryProductsAssembly(DocumentRefInventoryAssembly, S
 			TableRowReceipt.SpecificationCorr = Undefined;
 			TableRowReceipt.CustomerCorrOrder = RowTableInventoryProducts.CustomerOrder;
 			
-			TableRowReceipt.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-			TableRowReceipt.Content = NStr("en = 'Inventory transfer'");
+			TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+			TableRowReceipt.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 			
 		EndIf;
 		
@@ -3470,8 +3470,8 @@ Procedure GenerateTableInventoryInventoryDisassembly(DocumentRefInventoryAssembl
 					TableRowReceipt.Amount = AmountToBeWrittenOff;
 					TableRowReceipt.Quantity = 0;
 					
-					TableRowReceipt.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-					TableRowReceipt.Content = NStr("en = 'Inventory transfer'");
+					TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+					TableRowReceipt.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 					
 					// Generate postings.
 					If Round(AmountToBeWrittenOff, 2, 1) <> 0 Then
@@ -3617,8 +3617,8 @@ Procedure GenerateTableInventoryInventoryDisassembly(DocumentRefInventoryAssembl
 					TableRowReceipt.Amount = AmountToBeWrittenOff;
 					TableRowReceipt.Quantity = 0;
 					
-					TableRowReceipt.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-					TableRowReceipt.Content = NStr("en = 'Inventory transfer'");
+					TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+					TableRowReceipt.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 					
 					// Generate postings.
 					If Round(AmountToBeWrittenOff, 2, 1) <> 0 Then
@@ -3703,7 +3703,7 @@ Procedure GenerateTableInventoryInventoryDisassemblyTransfer(DocumentRefInventor
 	|	TableInventory.InventoryGLAccount,
 	|	TableInventory.Amount";
 	
-	Query.SetParameter("InventoryTransfer", NStr("en = 'Inventory transfer'"));
+	Query.SetParameter("InventoryTransfer", NStr("en='Inventory transfer';ru='Перемещение запасов'"));
 	
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryMove", Query.Execute().Unload());
 	
@@ -4263,8 +4263,8 @@ Procedure GenerateTableInventoryInventoryDisassemblyTransfer(DocumentRefInventor
 					TableRowReceipt.Amount = AmountToBeWrittenOff;
 					TableRowReceipt.Quantity = 0;
 					
-					TableRowReceipt.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-					TableRowReceipt.Content = NStr("en = 'Inventory transfer'");
+					TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+					TableRowReceipt.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 					
 					// Generate postings.
 					If Round(AmountToBeWrittenOff, 2, 1) <> 0 Then
@@ -4416,8 +4416,8 @@ Procedure GenerateTableInventoryInventoryDisassemblyTransfer(DocumentRefInventor
 					TableRowReceipt.Amount = AmountToBeWrittenOff;
 					TableRowReceipt.Quantity = 0;
 					
-					TableRowReceipt.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-					TableRowReceipt.Content = NStr("en = 'Inventory transfer'");
+					TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+					TableRowReceipt.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 					
 					// Generate postings.
 					If Round(AmountToBeWrittenOff, 2, 1) <> 0 Then
@@ -5184,8 +5184,8 @@ Procedure DataInitializationByInventoryDisassembly(DocumentRefInventoryAssembly,
 	UpdateDateToRelease_1_2_1 = Constants.UpdateDateToRelease_1_2_1.Get();
 	Query.SetParameter("UpdateDateToRelease_1_2_1", UpdateDateToRelease_1_2_1);
 	
-	Query.SetParameter("InventoryDistribution", NStr("en = 'Inventory distribution'"));
-	Query.SetParameter("InventoryTransfer", NStr("en = 'Inventory transfer'"));
+	Query.SetParameter("InventoryDistribution", NStr("en='Inventory distribution';ru='Распределение запасов'"));
+	Query.SetParameter("InventoryTransfer", NStr("en='Inventory transfer';ru='Перемещение запасов'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -5313,8 +5313,8 @@ Procedure GenerateTableInventoryProductsDisassembly(DocumentRefInventoryAssembly
 			TableRowExpense.SpecificationCorr = Undefined;
 			TableRowExpense.CustomerCorrOrder = RowTableInventoryProducts.CustomerOrder;
 			
-			TableRowExpense.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-			TableRowExpense.Content = NStr("en = 'Inventory transfer'");
+			TableRowExpense.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+			TableRowExpense.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 			
 			// Receipt.
 			TableRowReceipt = StructureAdditionalProperties.TableForRegisterRecords.TableInventory.Add();
@@ -5335,8 +5335,8 @@ Procedure GenerateTableInventoryProductsDisassembly(DocumentRefInventoryAssembly
 			TableRowReceipt.SpecificationCorr = Undefined;
 			TableRowReceipt.CustomerCorrOrder = RowTableInventoryProducts.CustomerOrder;
 			
-			TableRowReceipt.ContentOfAccountingRecord = NStr("en = 'Inventory transfer'");
-			TableRowReceipt.Content = NStr("en = 'Inventory transfer'");
+			TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+			TableRowReceipt.Content = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 			
 		EndIf;
 		
@@ -6037,7 +6037,7 @@ Procedure InitializeDocumentDataAssembly(DocumentRefInventoryAssembly, Structure
 	UpdateDateToRelease_1_2_1 = Constants.UpdateDateToRelease_1_2_1.Get();
 	Query.SetParameter("UpdateDateToRelease_1_2_1", UpdateDateToRelease_1_2_1);
 	
-	Query.SetParameter("InventoryAssembly", NStr("en = 'Production'"));
+	Query.SetParameter("InventoryAssembly", NStr("en='Production';ru='Производство'"));
 
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -6624,7 +6624,7 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	UpdateDateToRelease_1_2_1 = Constants.UpdateDateToRelease_1_2_1.Get();
 	Query.SetParameter("UpdateDateToRelease_1_2_1", UpdateDateToRelease_1_2_1);
 	
-	Query.SetParameter("InventoryAssembly", NStr("en = 'Production'"));
+	Query.SetParameter("InventoryAssembly", NStr("en='Production';ru='Производство'"));
 
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -7509,28 +7509,28 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "M11,MX18";
-	PrintCommand.Presentation = NStr("en = 'Custom kit of documents'");
+	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "M11";
-	PrintCommand.Presentation = NStr("en = 'M11 (Shipment request)'");
+	PrintCommand.Presentation = NStr("en='M11 (Shipment request)';ru='М11 (Требование-накладная)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MX18";
-	PrintCommand.Presentation = NStr("en = 'MH18 (Finished products customer invoice)'");
+	PrintCommand.Presentation = NStr("en='MH18 (Finished products customer invoice)';ru='МХ18 (Накладная на передачу готовой продукции)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MerchandiseFillingForm";
-	PrintCommand.Presentation = NStr("en = 'Merchandise filling form'");
+	PrintCommand.Presentation = NStr("en='Merchandise filling form';ru='Бланк товарного наполнения'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 10;

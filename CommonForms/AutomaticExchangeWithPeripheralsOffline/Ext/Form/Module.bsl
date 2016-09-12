@@ -41,14 +41,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		NewRow.ExecuteExchange         = True;
 		NewRow.Device                  = Selection.Device;
 		NewRow.EquipmentType           = Selection.EquipmentType;
-		NewRow.ExportStatus          = NStr("en = '<Exporting was not made>'");
+		NewRow.ExportStatus          = NStr("en='<Exporting was not made>';ru='<Выгрузка не производилась>'");
 		NewRow.ImportingPictureIndex   = 1;
 		NewRow.ExportingPictureIndex = 1;
 		
 		If NewRow.EquipmentType = Enums.PeripheralTypes.LabelsPrintingScales Then
-			NewRow.ImportStatus = NStr("en = '<Not needed>'");
+			NewRow.ImportStatus = NStr("en='<Not needed>';ru='<Not needed>'");
 		Else
-			NewRow.ImportStatus = NStr("en = '<Importing was not made>'");
+			NewRow.ImportStatus = NStr("en='<Importing was not made>';ru='<Загрузка не производилась>'");
 		EndIf;
 		
 	EndDo;
@@ -69,12 +69,12 @@ Procedure Start(Command)
 	ClearMessages();
 	
 	If Not ValueIsFilled(ExchangePeriodicity) Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Exchange peiodicity with equipment is not specified'"),,"ExchangePeriodicity");
+		CommonUseClientServer.MessageToUser(NStr("en='Exchange peiodicity with equipment is not specified';ru='Не задана периодичность обмена с оборудованием'"),,"ExchangePeriodicity");
 		Return;
 	EndIf;
 	
 	If Not IsEquipmentForExchange() Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Equipment for exchange is not selected'"),,"Equipment");
+		CommonUseClientServer.MessageToUser(NStr("en='Equipment for exchange is not selected';ru='Не выбрано оборудование для обмена'"),,"Equipment");
 		Return;
 	EndIf;
 	
@@ -88,7 +88,7 @@ Procedure Start(Command)
 	Items.Start.Enabled              = False;
 	Items.Complete.Enabled           = True;
 	
-	State = NStr("en = 'Exchange with the peripherals is executed...'");
+	State = NStr("en='Exchange with the peripherals is executed...';ru='Выполняется обмен с подключенным оборудованием...'");
 	
 	AttachIdleHandler("ExchangeExpectationsHandler", ExchangePeriodicity * 60, False);
 	
@@ -109,7 +109,7 @@ Procedure Complete(Command)
 	Items.Start.Enabled              = True;
 	Items.Complete.Enabled           = False;
 	
-	State = NStr("en = 'Exchange completed'");
+	State = NStr("en='Exchange completed';ru='Обмен завершен.'");
 	
 	DetachIdleHandler("ExchangeExpectationsHandler");
 	
@@ -122,7 +122,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	If ExchangeInProgress Then
 		
-		ShowMessageBox(, NStr("en='After form closing the exchange with equipment will not be executed.'"));
+		ShowMessageBox(, NStr("en='After form closing the exchange with equipment will not be executed.';ru='После закрытия формы обмен с оборудованием выполняться не будет.'"));
 		
 	EndIf;
 	
@@ -141,9 +141,9 @@ EndProcedure
 &AtClient
 Procedure ExecuteNow(Command)
 	
-	State = NStr("en = 'Exchange with the peripherals is executed...'");
+	State = NStr("en='Exchange with the peripherals is executed...';ru='Выполняется обмен с подключенным оборудованием...'");
 	RunExchange();
-	State = NStr("en = 'Exchange completed'");
+	State = NStr("en='Exchange completed';ru='Обмен завершен.'");
 	
 EndProcedure
 

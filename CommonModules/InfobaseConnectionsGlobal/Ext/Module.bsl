@@ -39,8 +39,9 @@ Procedure ControlOfUserSessionTerminationMode() Export
 	
 	MessageText = InfobaseConnectionsClientServer.ExtractLockMessage(CurrentMode.Message);
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'It is recommended to end current work and save all data. The application will be closed down %1 in %2. 
-		|%3'"),
+		NStr("en='It is recommended to end current work and save all data. The application will be closed down %1 in %2. "
+"%3';ru='Рекомендуется завершить текущую работу и сохранить все свои данные. Работа программы будет завершена %1 в %2. "
+"%3'"),
 		DateTimeBeginningLock, TimeTimeBeginningLock, MessageText);
 	
 	If Not WorkParameters.DataSeparationEnabled
@@ -80,10 +81,10 @@ Procedure TerminateUserSessions() Export
 	CurrentMoment = CurrentMode.CurrentSessionDate;
 	
 	If CurrentMoment < BeginTimeLock Then
-		MessageText = NStr("en = 'Locking of the users work is scheduled for %1.'");
+		MessageText = NStr("en='Locking of the users work is scheduled for %1.';ru='Блокировка работы пользователей запланирована на %1.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 			MessageText, BeginTimeLock);
-		ShowUserNotification(NStr("en = 'Users disconnection'"), 
+		ShowUserNotification(NStr("en='Users disconnection';ru='Завершение работы пользователей'"), 
 			"e1cib/app/DataProcessor.UserWorkBlocking", 
 			MessageText, PictureLib.Information32);
 		Return;
@@ -111,11 +112,12 @@ Procedure TerminateUserSessions() Export
 		
 	If Not ForceTermination Then
 		
-		MessageText = NStr("en = 'Active sessions: %1
-			|Next sessions check will be executed in a minute.'");
+		MessageText = NStr("en='Active sessions: %1"
+"Next sessions check will be executed in a minute.';ru='Активных сеансов: %1."
+"Следующая проверка сеансов будет выполнена через минуту.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 			MessageText, NumberOfSessions);
-		ShowUserNotification(NStr("en = 'Users disconnection'"), 
+		ShowUserNotification(NStr("en='Users disconnection';ru='Завершение работы пользователей'"), 
 			"e1cib/app/DataProcessor.UserWorkBlocking", 
 			MessageText, PictureLib.Information32);
 		Notify("UserSessions", New Structure("Status,NumberOfSessions", "Running", NumberOfSessions));
@@ -139,16 +141,16 @@ Procedure TerminateUserSessions() Export
 	
 	If Result Then
 		InfobaseConnectionsClient.SetUserTerminationInProgressFlag(False);
-		ShowUserNotification(NStr("en = 'Users disconnection'"), 
+		ShowUserNotification(NStr("en='Users disconnection';ru='Завершение работы пользователей'"), 
 			"e1cib/app/DataProcessor.UserWorkBlocking", 
-			NStr("en = 'End of session has been successfully completed'"), PictureLib.Information32);
+			NStr("en='End of session has been successfully completed';ru='Завершение сеансов выполнено успешно'"), PictureLib.Information32);
 		Notify("UserSessions", New Structure("Status,NumberOfSessions", "Done", NumberOfSessions));
 		InfobaseConnectionsClient.TerminateThisSession();
 	Else
 		InfobaseConnectionsClient.SetUserTerminationInProgressFlag(False);
-		ShowUserNotification(NStr("en = 'Users disconnection'"), 
+		ShowUserNotification(NStr("en='Users disconnection';ru='Завершение работы пользователей'"), 
 			"e1cib/app/DataProcessor.UserWorkBlocking", 
-			NStr("en = 'End of sessions has not been completed! Look for details in event log.'"), PictureLib.Warning32);
+			NStr("en='End of sessions has not been completed! Look for details in event log.';ru='Завершение сеансов не выполнено! Подробности см. в журнале регистрации.'"), PictureLib.Warning32);
 		Notify("UserSessions", New Structure("Status,NumberOfSessions", "Error", NumberOfSessions));
 	EndIf;
 	

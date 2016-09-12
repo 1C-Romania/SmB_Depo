@@ -37,7 +37,7 @@ Procedure RunPreliminaryControl(Cancel)
 	For Each RowOfFixedAssets IN FixedAssets Do
 			
 		If ArrayVAStatus.Find(RowOfFixedAssets.FixedAsset) = Undefined Then
-			MessageText = NStr("en = 'For property %FixedAssets% specified in string %LineNumber% of list ""Property"" states are not registered.'");
+			MessageText = NStr("en='For property %FixedAssets% specified in string %LineNumber% of list ""Property"" states are not registered.';ru='Для имущества %ВнеоборотныйАктив% указанного в строке %НомерСтроки% списка ""Имущество"", текущее состояние ""Снят с учета"".'");
 			MessageText = StrReplace(MessageText, "%FixedAsset%", TrimAll(String(RowOfFixedAssets.FixedAsset)));
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(RowOfFixedAssets.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
@@ -49,7 +49,7 @@ Procedure RunPreliminaryControl(Cancel)
 				Cancel
 			);
 		ElsIf ArrayVAAcceptedForAccounting.Find(RowOfFixedAssets.FixedAsset) = Undefined Then
-			MessageText = NStr("en = 'For property %FixedAssets% specified in string %LineNumber% of list ""Property"", current state is ""It is struck off the register"".'");
+			MessageText = NStr("en='For property %FixedAssets% specified in string %LineNumber% of list ""Property"", current state is ""It is struck off the register"".';ru='Для имущества %ВнеоборотныйАктив% указанного в строке %НомерСтроки% списка ""Имущество"", текущее состояние ""Снят с учета"".'");
 			MessageText = StrReplace(MessageText, "%FixedAsset%", TrimAll(String(RowOfFixedAssets.FixedAsset)));
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(RowOfFixedAssets.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
@@ -117,7 +117,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	For Each RowOfFixedAssets IN FixedAssets Do
 			
 		If RowOfFixedAssets.FixedAsset.DepreciationMethod <> Enums.FixedAssetsDepreciationMethods.ProportionallyToProductsVolume Then
-			MessageText = NStr("en = 'For property %FixedAssets% specified in string %LineNumber% of list ""Property"", depreciation method other than ""In proportion to production volume (works)"" is used.'");
+			MessageText = NStr("en='For property %FixedAssets% specified in string %LineNumber% of list ""Property"", depreciation method other than ""In proportion to production volume (works)"" is used.';ru='Для имущества %ВнеоборотныйАктив% указанного в строке %НомерСтроки% списка ""Имущество"", используется способ начисления амортизации отличный от ""Пропорционально объему продукции (работ)"".'");
 			MessageText = StrReplace(MessageText, "%FixedAsset%", TrimAll(String(RowOfFixedAssets.FixedAsset)));
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(RowOfFixedAssets.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(

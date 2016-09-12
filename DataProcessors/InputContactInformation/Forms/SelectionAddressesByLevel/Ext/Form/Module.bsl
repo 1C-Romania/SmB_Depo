@@ -44,11 +44,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If ClassifierData.Cancel Then
 		// Service at maintenance
-		BriefErrorDescription = NStr("en = 'AutoComplete and Address Checking are not available:'") + Chars.LF + ClassifierData.BriefErrorDescription;
+		BriefErrorDescription = NStr("en='AutoComplete and Address Checking are not available:';ru='Автоподбор и проверка адреса недоступны:'") + Chars.LF + ClassifierData.BriefErrorDescription;
 		Return;
 		
 	ElsIf ClassifierData.Data.Count() = 0 Then
-		BriefErrorDescription = NStr("en = 'Field ""'") + Parameters.Presentation + NStr("en = '"" does not contain address information for selection.'");;
+		BriefErrorDescription = NStr("en='Field ""';ru='Поле ""'") + Parameters.Presentation + NStr("en='"" does not contain address information for selection.';ru='"" не содержит адресных сведений для выбора.'");;
 		// No data, selection functions are not applicable.
 		
 	EndIf;
@@ -117,12 +117,13 @@ Procedure MakeSelection(Val LineNumber)
 	Notification = New NotifyDescription("MakeSelectionEndQuestion", ThisObject, Data);
 	
 	WarningIrrelevant = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Address ""%1"" is not applicable.
-		           |Continue?'"),
+		NStr("en='Address ""%1"" is not applicable."
+"Continue?';ru='Адрес ""%1"" неактуален."
+"Продолжить?'"),
 		Data.Presentation
 	);
 		
-	TitleWarnings = NStr("en = 'Confirmation'");
+	TitleWarnings = NStr("en='Confirmation';ru='Подтверждение'");
 	
 	ShowQueryBox(Notification, WarningIrrelevant, QuestionDialogMode.YesNo, , ,TitleWarnings);
 		

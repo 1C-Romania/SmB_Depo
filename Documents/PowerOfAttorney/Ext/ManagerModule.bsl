@@ -176,7 +176,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// M2
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "M2";
-	PrintCommand.Presentation = NStr("en = 'M-2'");
+	PrintCommand.Presentation = NStr("en='M-2';ru='М-2'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
@@ -184,7 +184,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// M2a
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "M2a";
-	PrintCommand.Presentation = NStr("en = 'M-2a'");
+	PrintCommand.Presentation = NStr("en='M-2a';ru='M-2a'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;

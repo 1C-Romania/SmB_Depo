@@ -41,10 +41,13 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 	 Or Password				= Undefined
 	 Then
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device parameters are not set.
-		|For the correct work of the device it is necessary to specify the parameters of its work.
-		|You can do it using the Parameters setting
-		|form of the peripheral model in the Connection and equipment setting form.'"));
+		Output_Parameters.Add(NStr("en='Device parameters are not set."
+"For the correct work of the device it is necessary to specify the parameters of its work."
+"You can do it using the Parameters setting"
+"form of the peripheral model in the Connection and equipment setting form.';ru='Не настроены параметры устройства."
+"Для корректной работы устройства необходимо задать параметры его работы."
+"Сделать это можно при помощи формы"
+"""Настройка параметров"" модели подключаемого оборудования в форме ""Подключение и настройка оборудования"".'"));
 
 		Result = False;
 	EndIf; // End: Checks device parameters.
@@ -100,7 +103,7 @@ Function DisableDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 	Except
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device disabling error'"));
+		Output_Parameters.Add(NStr("en='Device disabling error';ru='Ошибка отключения устройства'"));
     	Result = False;	
 	EndTry;
 	
@@ -138,7 +141,7 @@ Function RunCommand(Command, InputParameters = Undefined, Output_Parameters = Un
 	Else
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.'"));
+		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.';ru='Команда ""%Команда%"" не поддерживается данным драйвером.'"));
 		Output_Parameters[1] = StrReplace(Output_Parameters[1], "%Command%", Command);
 
 		Result = False;
@@ -161,12 +164,12 @@ Function ExportProducts(DriverObject, Parameters, ConnectionParameters, Products
 	If Products.Count() = 0 Then
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='There is no data to export.'"));
+		Output_Parameters.Add(NStr("en='There is no data to export.';ru='Нет данных для выгрузки.'"));
 		Return False;
 	EndIf;
 		
 	CurrentPercent = 0;
-	Status(NStr("en='Initializing export...'"), Round(CurrentPercent));
+	Status(NStr("en='Initializing export...';ru='Инициализация выгрузки...'"), Round(CurrentPercent));
 	
 	DriverObject.LDNumber = ConnectionParameters.DeviceID;
 	DriverObject.SetActiveLD();
@@ -194,7 +197,7 @@ Function ExportProducts(DriverObject, Parameters, ConnectionParameters, Products
 			If DriverObject.ClearProductsAndMessagesBase() <> 0 Then
 				Output_Parameters.Clear();
 				Output_Parameters.Add(999);
-				Output_Parameters.Add(NStr("en='Failed to clear the items data base.'") + DriverObject.ResultDescription);
+				Output_Parameters.Add(NStr("en='Failed to clear the items data base.';ru='Не удалось очистить базу товаров.'") + DriverObject.ResultDescription);
 				Result = False;	
 			EndIf;
 		EndIf;
@@ -246,7 +249,7 @@ Function ExportProducts(DriverObject, Parameters, ConnectionParameters, Products
 				EndIf;
 				
 				CurrentPercent = CurrentPercent + PercentIncrement;
-				Status(NStr("en='Exporting products...'"), Round(CurrentPercent));
+				Status(NStr("en='Exporting products...';ru='Выгрузка товаров...'"), Round(CurrentPercent));
 				
 			EndDo;
 			
@@ -443,7 +446,7 @@ Function ClearProductsInScales(DriverObject, Parameters, ConnectionParameters, O
 	Output_Parameters = New Array();
 	Result = True;
 	
-	Status(NStr("en = 'The products are being cleared in the scales with labels printing...'"));
+	Status(NStr("en='The products are being cleared in the scales with labels printing...';ru='Выполняется очистка товаров в весах с печатью этикеток...'"));
 	
 	DriverObject.LDNumber = ConnectionParameters.DeviceID;
 	DriverObject.SetActiveLD();
@@ -500,7 +503,7 @@ Function DeviceTest(DriverObject, Parameters, ConnectionParameters, Output_Param
 	Except
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Not recognized error.'"));
+		Output_Parameters.Add(NStr("en='Not recognized error.';ru='Не опознанная ошибка.'"));
    		Result = False;	
 	EndTry;
 				
@@ -514,8 +517,8 @@ Function GetDriverVersion(DriverObject, Parameters, ConnectionParameters, Output
 
 	Result = True;
 
-	Output_Parameters.Add(NStr("en='Installed'"));
-	Output_Parameters.Add(NStr("en='Not defined'"));
+	Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
+	Output_Parameters.Add(NStr("en='Not defined';ru='Не определена'"));
 
 	Try
 		Output_Parameters[1] = StrReplace(ProcessDriverVersion(DriverObject.STFileVersion), "1.", "A ")  + "."

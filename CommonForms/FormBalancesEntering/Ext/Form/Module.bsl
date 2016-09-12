@@ -417,7 +417,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 	If mCurrentPageNumber = 1 Then
 		
 		If Not ValueIsFilled(AccountingCurrency) Then
-			MessageText = NStr("en = 'Specify currency of accounting.'");
+			MessageText = NStr("en='Specify currency of accounting.';ru='Укажите валюту учета.'");
 			CommonUseClientServer.MessageToUser(
 				MessageText,
 				,
@@ -428,7 +428,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 		EndIf;
 		
 		If Not ValueIsFilled(NationalCurrency) Then
-			MessageText = NStr("en = 'Specify national currency.'");
+			MessageText = NStr("en='Specify national currency.';ru='Укажите национальную валюту.'");
 			CommonUseClientServer.MessageToUser(
 				MessageText,
 				,
@@ -440,7 +440,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 		
 		For Each CurRow IN EnterOpeningBalanceBankAndPettyCash.CashAssets Do
 			If Not ValueIsFilled(CurRow.BankAccountPettyCash) Then
-				MessageText = NStr("en = 'Specify banking account or petty cash in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify banking account or petty cash in the line ';ru='Укажите банковский счет или кассу в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -450,7 +450,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 				);
 			EndIf;
 			If Not ValueIsFilled(CurRow.CashCurrency) Then
-				MessageText = NStr("en = 'Specify currency in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify currency in the line ';ru='Укажите валюту в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -460,7 +460,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 				);
 			EndIf;
 			If Not ValueIsFilled(CurRow.AmountCur) Then
-				MessageText = NStr("en = 'Specify amount in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify amount in the line ';ru='Укажите сумму в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -471,7 +471,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 			EndIf;
 			If CurrencyTransactionsAccounting = PredefinedValue("Enum.YesNo.Yes")
 			AND Not ValueIsFilled(CurRow.Amount) Then
-				MessageText = NStr("en = 'Specify amount by accounting currency in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify amount by accounting currency in the line ';ru='Укажите сумму в валюте учета в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -486,7 +486,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 		
 		For Each CurRow IN EnterOpeningBalanceProducts.Inventory Do
 			If Not ValueIsFilled(CurRow.StructuralUnit) Then
-				MessageText = NStr("en = 'Specify structural unit in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify structural unit in the line ';ru='Укажите структурную единицу в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -496,7 +496,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 				);
 			EndIf;
 			If Not ValueIsFilled(CurRow.ProductsAndServices) Then
-				MessageText = NStr("en = 'Specify item of list of goods in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify item of list of goods in the line ';ru='Укажите номенклатуру в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -506,7 +506,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 				);
 			EndIf;
 			If Not ValueIsFilled(CurRow.MeasurementUnit) Then
-				MessageText = NStr("en = 'Specify unit of measurement in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify unit of measurement in the line ';ru='Укажите единицу измерения в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -516,7 +516,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 				);
 			EndIf;
 			If Not ValueIsFilled(CurRow.Quantity) Then
-				MessageText = NStr("en = 'Specify quantity in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify quantity in the line ';ru='Укажите количество в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -531,7 +531,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 		
 		For Each CurRow IN EnterOpeningBalanceCounterpartiesSettlements.AccountsPayable Do
 			If Not ValueIsFilled(CurRow.Counterparty) Then
-				MessageText = NStr("en = 'Specify counterparty in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify counterparty in the line ';ru='Укажите контрагента в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -541,7 +541,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 				);
 			EndIf;
 			If Not ValueIsFilled(CurRow.Contract) Then
-				MessageText = NStr("en = 'Specify contract in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify contract in the line ';ru='Укажите договор в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -551,7 +551,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 				);
 			EndIf;
 			If Not ValueIsFilled(CurRow.AmountCur) Then
-				MessageText = NStr("en = 'Specify amount in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify amount in the line ';ru='Укажите сумму в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -562,7 +562,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 			EndIf;
 			If CurrencyTransactionsAccounting = PredefinedValue("Enum.YesNo.Yes")
 			AND Not ValueIsFilled(CurRow.Amount) Then
-				MessageText = NStr("en = 'Specify amount by accounting currency in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify amount by accounting currency in the line ';ru='Укажите сумму в валюте учета в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -577,7 +577,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 		
 		For Each CurRow IN EnterOpeningBalanceCounterpartiesSettlements.AccountsReceivable Do
 			If Not ValueIsFilled(CurRow.Counterparty) Then
-				MessageText = NStr("en = 'Specify counterparty in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify counterparty in the line ';ru='Укажите контрагента в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -587,7 +587,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 				);
 			EndIf;
 			If Not ValueIsFilled(CurRow.Contract) Then
-				MessageText = NStr("en = 'Specify contract in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify contract in the line ';ru='Укажите договор в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -597,7 +597,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 				);
 			EndIf;
 			If Not ValueIsFilled(CurRow.AmountCur) Then
-				MessageText = NStr("en = 'Specify amount in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify amount in the line ';ru='Укажите сумму в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -608,7 +608,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 			EndIf;
 			If CurrencyTransactionsAccounting = PredefinedValue("Enum.YesNo.Yes")
 			AND Not ValueIsFilled(CurRow.Amount) Then
-				MessageText = NStr("en = 'Specify amount by accounting currency in the line '") + CurRow.LineNumber + ".";
+				MessageText = NStr("en='Specify amount by accounting currency in the line ';ru='Укажите сумму в валюте учета в строке '") + CurRow.LineNumber + ".";
 				CommonUseClientServer.MessageToUser(
 					MessageText,
 					,
@@ -794,7 +794,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		
 		Cancel = True;
 		NotifyDescription = New NotifyDescription("BeforeCloseEnd", ThisObject);
-		Text = NStr("en='To want to save the changes made?'");
+		Text = NStr("en='To want to save the changes made?';ru='Сохранить внесенные изменения?'");
 		ShowQueryBox(NOTifyDescription, Text, QuestionDialogMode.YesNoCancel);
 		
 	EndIf;
@@ -903,7 +903,7 @@ EndProcedure // Back()
 Procedure AddProductsAndServices(Command)
 	
 	If Not ValueIsFilled(ProductsAndServices) Then
-		MessageText = NStr("en='Fill in the ProductsAndServices description first!'");
+		MessageText = NStr("en='Fill in the ProductsAndServices description first!';ru='Вначале заполните наименование номенклатуры!'");
 		ShowMessageBox(Undefined,MessageText);
 		Return;
 	EndIf;
@@ -981,7 +981,7 @@ EndProcedure
 Procedure DocumentsListEnterOpeningBalance(Command)
 	
 	If Modified Then
-		Text = NStr("en='All the entered data will be saved. Continue?'");
+		Text = NStr("en='All the entered data will be saved. Continue?';ru='Все введенные данные будут сохранены. Продолжить?'");
 		Mode = QuestionDialogMode.YesNo;
 		Response = Undefined;
 
@@ -1184,7 +1184,7 @@ Procedure EnterOpeningBalanceBankAndPettyCashCashAssetsCurrencyOfCashAssetsStart
 	
 	// If type of cash assets is changed, appropriate actions are required.
 	If TypeOf(TabularSectionRow.BankAccountPettyCash) = Type("CatalogRef.BankAccounts") Then
-		ShowMessageBox(Undefined,NStr("en='It is prohibited to change currency of the bank account!'"));
+		ShowMessageBox(Undefined,NStr("en='It is prohibited to change currency of the bank account!';ru='Для банковского счета нельзя изменить валюту денежных средств!'"));
 		StandardProcessing = False;
 	EndIf;
 	
@@ -1778,17 +1778,17 @@ Procedure ImportDataFromExternalSourceResultDataProcessor(ImportResult, Addition
 			If FillingObjectFullName = "Document.EnterOpeningBalance.TabularSection.Inventory" Then
 				
 				ProcessPreparedDataInventory(ImportResult);
-				ShowMessageBox(,NStr("en ='The data import is completed.'"));
+				ShowMessageBox(,NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
 				
 			ElsIf FillingObjectFullName = "Document.EnterOpeningBalance.TabularSection.AccountsPayable" Then
 				
 				ProcessPreparedDataAccountsPayable(ImportResult);
-				ShowMessageBox(,NStr("en ='The data import is completed.'"));
+				ShowMessageBox(,NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
 				
 			ElsIf FillingObjectFullName = "Document.EnterOpeningBalance.TabularSection.AccountsReceivable" Then
 				
 				ProcessPreparedDataAccountsReceivable(ImportResult);
-				ShowMessageBox(,NStr("en ='The data import is completed.'"));
+				ShowMessageBox(,NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
 				
 			EndIf;
 			
@@ -1825,7 +1825,7 @@ Procedure ProcessPreparedDataInventory(ImportResult)
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Data Import'"), EventLogLevel.Error, Metadata.Catalogs.ProductsAndServices, , ErrorDescription());
+		WriteLogEvent(NStr("en='Data Import';ru='Загрузка данных'"), EventLogLevel.Error, Metadata.Catalogs.ProductsAndServices, , ErrorDescription());
 		RollbackTransaction();
 		
 	EndTry;
@@ -1888,7 +1888,7 @@ Procedure ProcessPreparedDataAccountsPayable(ImportResult)
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Data Import'"), EventLogLevel.Error, Metadata.Catalogs.ProductsAndServices, , ErrorDescription());
+		WriteLogEvent(NStr("en='Data Import';ru='Загрузка данных'"), EventLogLevel.Error, Metadata.Catalogs.ProductsAndServices, , ErrorDescription());
 		RollbackTransaction();
 		
 	EndTry;
@@ -1951,7 +1951,7 @@ Procedure ProcessPreparedDataAccountsReceivable(ImportResult)
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Data Import'"), EventLogLevel.Error, Metadata.Catalogs.ProductsAndServices, , ErrorDescription());
+		WriteLogEvent(NStr("en='Data Import';ru='Загрузка данных'"), EventLogLevel.Error, Metadata.Catalogs.ProductsAndServices, , ErrorDescription());
 		RollbackTransaction();
 		
 	EndTry;

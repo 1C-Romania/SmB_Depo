@@ -12,10 +12,13 @@ Procedure BeforeWrite(Cancel)
 	EndIf;
 	
 	Raise
-		NStr("en = 'You can
-		           |change access kinds only via configurator.
-		           |
-		           |Deleting is admissible.'");
+		NStr("en='You can"
+"change access kinds only via configurator."
+""
+"Deleting is admissible.';ru='Изменение"
+"видов доступа выполняется только через конфигуратор."
+""
+"Удаление допустимо.'");
 	
 EndProcedure
 

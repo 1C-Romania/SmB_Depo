@@ -92,38 +92,38 @@ EndFunction
 //
 Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, CorrespondentVersion, SettingID) Export
 	
-	TextDescription = NStr("en = 'All normative-reference information is automatically registered for sending;'");
+	TextDescription = NStr("en='All normative-reference information is automatically registered for sending;';ru='Вся нормативно-справочная информация автоматически регистрируется к отправке;'");
 	
 	If FilterSsettingsAtNode.ManualExchange Then
 		
-		TextDescription = NStr("en = 'User individually selects and registers the documents for sending;'");
+		TextDescription = NStr("en='User individually selects and registers the documents for sending;';ru='Пользователь самостоятельно отбирает и регистрирует документы к отправке;'");
 		
 	Else
 		
 		If FilterSsettingsAtNode.UseDocumentTypesFilter Then
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'Document are automatically registered for sending:'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='Document are automatically registered for sending:';ru='Документы автоматически регистрируются к отправке:'");
 		Else
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'All the documents are automatically registered for sending:'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='All the documents are automatically registered for sending:';ru='Все документы автоматически регистрируются к отправке:'");
 		EndIf;
 		
 		If ValueIsFilled(FilterSsettingsAtNode.DocumentsDumpStartDate) Then
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'since %StartDate%'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='since %StartDate%';ru='начиная с %ДатаНачала%'");
 			TextDescription = StrReplace(TextDescription,"%StartDate%", Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DF=dd.MM.yyyy"));
 		EndIf;
 		
 		If FilterSsettingsAtNode.UseCompaniesFilter Then
 			CollectionValues = FilterSsettingsAtNode.Companies.Company;
 			PresentationCollections = ShortPresentationOfCollectionsOfValues(CollectionValues);
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'with filter by companies: %CollectionPresentation%'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='with filter by companies: %CollectionPresentation%';ru='с отбором по организациям: %ПредставлениеКоллекции%'");
 			TextDescription = StrReplace(TextDescription, "%CollectionPresentation%", PresentationCollections);
 		Else
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'By all companies'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='By all companies';ru='по всем организациям'");
 		EndIf;
 		
 		If FilterSsettingsAtNode.UseDocumentTypesFilter Then
 			CollectionValues = FilterSsettingsAtNode.DocumentKinds.Presentation;
 			PresentationCollections = ShortPresentationOfCollectionsOfValues(CollectionValues);
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'with filter by document kinds: %CollectionPresentation%'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='with filter by document kinds: %CollectionPresentation%';ru='с отбором по видам документов: %ПредставлениеКоллекции%'");
 			TextDescription = StrReplace(TextDescription, "%CollectionPresentation%", PresentationCollections);
 		EndIf;
 		
@@ -155,11 +155,11 @@ EndFunction
 //  String, Unlimited - presentation of a command displayed in the user interface.
 //
 // ForExample:
-// Return NStr("en = 'Create an exchange in the distributed infobase'");
+// Return NStr("en='Create an exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
 //
 Function CommandTitleForCreationOfNewDataExchange() Export
 	
-	Return NStr("en = 'Create an exchange with configuration ""1C: Accounting Enterprise 8, ed. 3.0""'");
+	Return NStr("en='Create an exchange with configuration ""1C: Accounting Enterprise 8, ed. 3.0""';ru='Создать обмен с конфигурацией ""1C: Бухгалтерия предприятия 8, ред. 3.0""'");
 	
 EndFunction
 
@@ -248,7 +248,7 @@ EndFunction
 //
 Function BriefInformationOnExchange(SettingID) Export
 	
-	ExplanationText = NStr("en = '	Enables data synchronization between the applications of 1C:Small business, ed. 1.5 and 1C:Accounting 8, ed. 3.0. From Small Business application to Accounting Enterprise application all catalogs and necessary documents are transferred; from Accounting Enterprise application to Small Business application catalogs and documents of cash management are transferred. For more information click on the Detailed Description link.'");
+	ExplanationText = NStr("en='	Enables data synchronization between the applications of 1C:Small business, ed. 1.5 and 1C:Accounting 8, ed. 3.0. From Small Business application to Accounting Enterprise application all catalogs and necessary documents are transferred; from Accounting Enterprise application to Small Business application catalogs and documents of cash management are transferred. For more information click on the Detailed Description link.';ru='	Позволяет синхронизировать данные между приложениями 1С:Управление небольшой фирмой, ред. 1.5 и 1С:Бухгалтерия предприятия 8, ред. 3.0. Из приложения Управление небольшой фирмой в приложение Бухгалтерия предприятия переносятся справочники и все необходимые документы, а из приложения Бухгалтерия предприятия в приложение Управление небольшой фирмой - справочники и документы учета денежных средств. Для получения более подробной информации нажмите на ссылку Подробное описание.'");
 	
 	Return ExplanationText;
 	
@@ -380,32 +380,32 @@ Function CorrespondentInfobaseDefaultValueDetails(DefaultValuesAtNode, Correspon
 	
 	If Not CommonUseReUse.DataSeparationEnabled() Then
 		
-		TextDescription = NStr("en = 'Main budget item to insert into the documents by default: %Value%';");
+		TextDescription = NStr("en='Main budget item to insert into the documents by default: %Value%';ru='Основная статья затрат для подстановки в документы по умолчанию: %Значение%'");
 		If ValueIsFilled(DefaultValuesAtNode.CostsItem) Then
 			TextDescription = StrReplace(TextDescription, "%Value%", String(DefaultValuesAtNode.CostsItem));
 		Else
-			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en = 'not specified'"));
+			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en='not specified';ru='не указан'"));
 		EndIf;
 		
-		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en = 'Main item of other revenues and expenses to insert into the documents by default: %Value%';");
+		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en='Main item of other revenues and expenses to insert into the documents by default: %Value%';ru='Основная статья прочих доходов и расходов для подстановки в документы по умолчанию: %Значение%'");
 		If ValueIsFilled(DefaultValuesAtNode.OtherIncomeCostsItem) Then
 			TextDescription = StrReplace(TextDescription, "%Value%", String(DefaultValuesAtNode.OtherIncomeCostsItem));
 		Else
-			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en = 'not specified'"));
+			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en='not specified';ru='не указан'"));
 		EndIf;
 		
-		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en = 'Commission fee service to insert into document Report to principal by default: %Value%';");
+		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en='Commission fee service to insert into document Report to principal by default: %Value%';ru='Услуга по комиссионному вознаграждению для подстановки в документ Отчет комитенту по умолчанию: %Значение%'");
 		If ValueIsFilled(DefaultValuesAtNode.ServiceRewards) Then
 			TextDescription = StrReplace(TextDescription, "%Value%", String(DefaultValuesAtNode.ServiceRewards));
 		Else
-			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en = 'not specified'"));
+			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en='not specified';ru='не указан'"));
 		EndIf;
 		
-		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en = 'Method of expense reflection for filling of document Transfer of materials into operation: %Value%';");
+		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en='Method of expense reflection for filling of document Transfer of materials into operation: %Value%';ru='Способ отражения расходов для заполнения документа Передача материалов в эксплуатацию: %Значение%'");
 		If ValueIsFilled(DefaultValuesAtNode.CostsReflectionMethod) Then
 			TextDescription = StrReplace(TextDescription, "%Value%", String(DefaultValuesAtNode.CostsReflectionMethod));
 		Else
-			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en = 'Is not specified'"));
+			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en='Is not specified';ru='Не указан'"));
 		EndIf;
 		
 	EndIf;

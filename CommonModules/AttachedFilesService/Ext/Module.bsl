@@ -582,7 +582,7 @@ Procedure OnFileSending(DataItem,
 				Except
 					// File may not have been found. Do not abort data sending.
 					WriteLogEvent(
-						NStr("en = 'Files. Failed to send the file when exchanging the data'",
+						NStr("en='Files. Failed to send the file when exchanging the data';ru='Файлы.Не удалось отправить файл при обмене данными'",
 						     CommonUseClientServer.MainLanguageCode()),
 						EventLogLevel.Error,
 						,
@@ -951,7 +951,7 @@ Procedure UpdateBinaryDataOfFileAtServer(Val AttachedFile,
 			Except
 				ErrorInfo = ErrorInfo();
 				WriteLogEvent(
-					NStr("en = 'Files. The file record on a disk'", CommonUseClientServer.MainLanguageCode()),
+					NStr("en='Files. The file record on a disk';ru='Файлы.Запись файла на диск'", CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					Metadata.Catalogs[FileRef.Metadata().Name],
 					FileRef,
@@ -979,7 +979,7 @@ Procedure UpdateBinaryDataOfFileAtServer(Val AttachedFile,
 			RollbackTransaction();
 		EndIf;
 		WriteLogEvent(
-			NStr("en = 'Files. Update of the attached file data to the files storage'",
+			NStr("en='Files. Update of the attached file data to the files storage';ru='Файлы.Обновление данных присоединенного файла в хранилище файлов'",
 			     CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
@@ -1230,7 +1230,7 @@ Function ExtractText(Val BinaryData, Val Extension, ExtractedText) Export
 			DeleteFiles(TempFileName);
 		Except
 			WriteLogEvent(
-				NStr("en = 'Files. Text extraction'",
+				NStr("en='Files. Text extraction';ru='Файлы.Извлечение текста'",
 				     CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -1318,19 +1318,24 @@ Function CatalogsNamesFilesStorage(FilesOwner, NotCallingException = False) Expo
 		If Metadata.Catalogs.Find(KeyAndValue.Key) = Undefined Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while determining catalogs names to store files.
-				           |In files owner of
-				           |the type ""%1"" nonexistent catalog ""%2"" is specified.'"),
+				NStr("en='An error occurred while determining catalogs names to store files."
+"In files owner of"
+"the type ""%1"" nonexistent catalog ""%2"" is specified.';ru='Ошибка при определении имен справочников для хранения файлов."
+"У владельца файлов"
+"типа ""%1"" указан несуществующий справочник ""%2"".'"),
 				String(TypeOfOwnerFiles),
 				String(KeyAndValue.Key));
 				
 		ElsIf Right(KeyAndValue.Key, StrLen("AttachedFiles"))<> "AttachedFiles" Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while determining catalogs names to store files.
-				           |In files owner of
-				           |the type ""%1"" catalog
-				           |name ""%2"" is specified without ending ""AttachedFiles"".'"),
+				NStr("en='An error occurred while determining catalogs names to store files."
+"In files owner of"
+"the type ""%1"" catalog"
+"name ""%2"" is specified without ending ""AttachedFiles"".';ru='Ошибка при определении имен справочников для хранения файлов."
+"У владельца файлов"
+"типа ""%1"" указано"
+"имя справочника ""%2"" без окончания ""ПрисоединенныеФайлы"".'"),
 				String(TypeOfOwnerFiles),
 				String(KeyAndValue.Key));
 			
@@ -1340,9 +1345,11 @@ Function CatalogsNamesFilesStorage(FilesOwner, NotCallingException = False) Expo
 		ElsIf KeyAndValue.Value = True Then
 			If MainCatalogSpecified Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'An error occurred while determining catalogs names to store files.
-					           |Files owner of the
-					           |type ""%1"" has main catalog specified more than ones.'"),
+					NStr("en='An error occurred while determining catalogs names to store files."
+"Files owner of the"
+"type ""%1"" has main catalog specified more than ones.';ru='Ошибка при определении имен справочников для хранения файлов."
+"У владельца"
+"файлов типа ""%1"" основной справочник указан более одного раза.'"),
 					String(TypeOfOwnerFiles),
 					String(KeyAndValue.Key));
 			EndIf;
@@ -1357,9 +1364,11 @@ Function CatalogsNamesFilesStorage(FilesOwner, NotCallingException = False) Expo
 		EndIf;
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'An error occurred while determining catalogs names to store files.
-			           |Files owner of the
-			           |type ""%1"" does not have catalogs to store files.'"),
+			NStr("en='An error occurred while determining catalogs names to store files."
+"Files owner of the"
+"type ""%1"" does not have catalogs to store files.';ru='Ошибка при определении имен справочников для хранения файлов."
+"У владельца"
+"файлов типа ""%1"" не имеется справочников для хранения файлов.'"),
 			String(TypeOfOwnerFiles));
 	EndIf;
 	
@@ -1393,8 +1402,9 @@ Function CatalogNameStorageFiles(FilesOwner, CatalogName = "",
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF +
-			NStr("en = 'Owner of file ""%1"" of
-			           |the type ""%2"" does not have catalogs to store files.'"),
+			NStr("en='Owner of file ""%1"" of"
+"the type ""%2"" does not have catalogs to store files.';ru='У владельца файлов"
+"""%1"" типа ""%2"" нет справочников для хранения файлов.'"),
 			String(FilesOwner),
 			String(TypeOf(FilesOwner)));
 	EndIf;
@@ -1410,8 +1420,9 @@ Function CatalogNameStorageFiles(FilesOwner, CatalogName = "",
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF +
-			NStr("en = 'Owner of file ""%1"" of
-			           |the type ""%2"" does not have catalog ""%3"" to store files.'"),
+			NStr("en='Owner of file ""%1"" of"
+"the type ""%2"" does not have catalog ""%3"" to store files.';ru='У владельца файлов"
+"""%1"" типа ""%2"" нет справочника ""%3"" для хранения файлов.'"),
 			String(FilesOwner),
 			String(TypeOf(FilesOwner)),
 			String(CatalogName));
@@ -1434,8 +1445,9 @@ Function CatalogNameStorageFiles(FilesOwner, CatalogName = "",
 	EndIf;
 	
 	TemplateErrorReasons = 
-		NStr("en = 'Main catalog for file storage
-			|is not specified in owner of file ""%1"" of the type ""%2"".'") + Chars.LF;
+		NStr("en='Main catalog for file storage"
+"is not specified in owner of file ""%1"" of the type ""%2"".';ru='У владельца файлов"
+"""%1"" типа ""%2"" не указан основной справочник для хранения файлов.'") + Chars.LF;
 			
 	CauseErrors = StringFunctionsClientServer.PlaceParametersIntoString(
 		TemplateErrorReasons, String(FilesOwner), String(TypeOf(FilesOwner)));
@@ -1721,7 +1733,7 @@ Procedure PlaceFileIntoCatalogAttribute(DataItem)
 	Except
 		// File may not have been found. Do not abort data sending.
 		WriteLogEvent(
-			NStr("en = 'Files. Failed to send the file when exchanging the data'",
+			NStr("en='Files. Failed to send the file when exchanging the data';ru='Файлы.Не удалось отправить файл при обмене данными'",
 			     CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
@@ -1855,10 +1867,13 @@ EndFunction
 Function ErrorTextOnSavingFileInVolume(Val ErrorInfo, Val File)
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'An error occurred while saving
-		           |file in volume: ""%1"".
-		           |
-		           |Ref to file: ""%2"".'"),
+		NStr("en='An error occurred while saving"
+"file in volume: ""%1""."
+""
+"Ref to file: ""%2"".';ru='Ошибка, при сохранении"
+"файла в томе: ""%1""."
+""
+"Ссылка на файл: ""%2"".'"),
 		ErrorInfo,
 		GetURL(File) );
 	

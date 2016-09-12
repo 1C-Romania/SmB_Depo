@@ -46,9 +46,9 @@ Procedure CheckFillOfFormAttributes(Cancel)
 		LineNumber = LineNumber + 1;
 		If Not ValueIsFilled(RowDocumentsBases.BasisDocument) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Column ""Basis document"" is not filled in line '")
+			Message.Text = NStr("en='Column ""Basis document"" is not filled in line ';ru='Не заполнена колонка ""Документ основание"" в строке '")
 				+ String(LineNumber)
-				+ NStr("en = ' of list ""Basis documents""'");
+				+ NStr("en=' of list ""Basis documents""';ru=' списка ""Документы основания"".'");
 			Message.Field = "Document";
 			Message.Message();
 			Cancel = True;
@@ -129,7 +129,7 @@ Procedure BasisDocumentsBasisDocumentChoiceProcessing(Item, ValueSelected, Stand
 	Cancel = BasisDocumentsBasisDocumentChoiceProcessingAtServer(ValueSelected);
 	
 	If Cancel Then
-		MessageText = NStr("en='Counterparty, agreement and currency of the selected document differs from the previously selected documents.'");
+		MessageText = NStr("en='Counterparty, agreement and currency of the selected document differs from the previously selected documents.';ru='Контрагент, договор или валюта выбираемого документа отличается от выбранных ранее документов.'");
 		ClearMessages();
 		CommonUseClientServer.MessageToUser(MessageText);
 		StandardProcessing = False;

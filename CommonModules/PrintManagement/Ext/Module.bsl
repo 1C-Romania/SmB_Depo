@@ -504,7 +504,7 @@ Function PrintedFormsTemplate(FullPathToTemplate) Export
 		PathToMetadata = StrGetLine(PartsWays, 1);
 		PathToMetadataObject = StrGetLine(PartsWays, 2);
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Layout ""%1"" is not found. Operation is aborted.'"), FullPathToTemplate);
+		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Layout ""%1"" is not found. Operation is aborted.';ru='Макет ""%1"" не найден. Операция прервана.'"), FullPathToTemplate);
 	EndIf;
 	
 	Query = New Query;
@@ -539,7 +539,7 @@ Function PrintedFormsTemplate(FullPathToTemplate) Export
 	EndIf;
 	
 	If Result = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Layout ""%1"" is not found. Operation is aborted.'"), FullPathToTemplate);
+		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Layout ""%1"" is not found. Operation is aborted.';ru='Макет ""%1"" не найден. Операция прервана.'"), FullPathToTemplate);
 	EndIf;
 		
 	Return Result;
@@ -644,7 +644,7 @@ Function QRCodeData(QRString, CorrectionLevel, Size) Export
 	Try
 		BinaryDataImages = QRCodeGenerator.GenerateQRCode(QRString, CorrectionLevel, Size);
 	Except
-		WriteLogEvent(NStr("en = 'Creating QR code'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Creating QR code';ru='Формирование QR-кода'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -915,7 +915,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	Work = CurrentWorks.Add();
 	Work.ID = "PrintFormsTemplates";
 	Work.ThereIsWork      = OutputToDo AND QuantityCustomLayouts > 0;
-	Work.Presentation = NStr("en = 'Print form templates'");
+	Work.Presentation = NStr("en='Print form templates';ru='Макеты печатных форм'");
 	Work.Quantity    = QuantityCustomLayouts;
 	Work.Form         = "InformationRegister.UserPrintTemplates.Form.PrintingFormsChecking";
 	Work.Owner      = "CheckCompatibilityWithCurrentVersion";
@@ -926,7 +926,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		ToDosGroup = CurrentWorks.Add();
 		ToDosGroup.ID = "CheckCompatibilityWithCurrentVersion";
 		ToDosGroup.ThereIsWork      = Work.ThereIsWork;
-		ToDosGroup.Presentation = NStr("en = 'Check compatibility'");
+		ToDosGroup.Presentation = NStr("en='Check compatibility';ru='Проверить совместимость'");
 		If Work.ThereIsWork Then
 			ToDosGroup.Quantity = Work.Quantity;
 		EndIf;
@@ -952,7 +952,7 @@ Function permissions()
 	
 	permissions = New Array;
 	permissions.Add( 
-		WorkInSafeMode.PermissionToUseExternalComponent("CommonTemplate.QRCodePrintComponent", NStr("en = 'Print QR codes.'"))
+		WorkInSafeMode.PermissionToUseExternalComponent("CommonTemplate.QRCodePrintComponent", NStr("en='Print QR codes.';ru='Печать QR кодов.'"))
 	);
 	
 	Return permissions;
@@ -1157,7 +1157,7 @@ Function GeneratePrintForms(Val PrintManagerName, Val TemplateNames, Val Objects
 			CommonUseClientServer.Validate(
 				TypeOf(PrintFormDescription.Copies) = Type("Number") AND PrintFormDescription.Copies > 0,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Specify a number of instances for print form ""%1"".'"),
+					NStr("en='Specify a number of instances for print form ""%1"".';ru='Не задано количество экземпляров для печатной формы ""%1"".'"),
 					?(IsBlankString(PrintFormDescription.TemplateSynonym), PrintFormDescription.TemplateName, PrintFormDescription.TemplateSynonym)));
 		EndDo;
 				
@@ -1181,7 +1181,7 @@ Function GeneratePrintForms(Val PrintManagerName, Val TemplateNames, Val Objects
 		// Calling an exception if an error occurs.
 		If Cancel Then
 			ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'When generating print form ""%1"", an error occurred. Contact your administrator.'"), TemplateName);
+				NStr("en='When generating print form ""%1"", an error occurred. Contact your administrator.';ru='При формировании печатной формы ""%1"" возникла ошибка. Обратитесь к администратору.'"), TemplateName);
 			Raise ErrorMessageText;
 		EndIf;
 		
@@ -1446,7 +1446,7 @@ Procedure AddPrintCommands(Form, PrintCommands, Val CommandsPlacementPlace = Und
 		If Not OnePrintCommand Then
 			PopupPrint = Form.Items.Add(CommandsPlacementPlace.Name + "PopupPrint", Type("FormGroup"), CommandsPlacementPlace);
 			PopupPrint.Type = FormGroupType.Popup;
-			PopupPrint.Title = NStr("en = 'Print'");
+			PopupPrint.Title = NStr("en='Print';ru='Печать'");
 			PopupPrint.Picture = PictureLib.Print;
 			
 			CommandsPlacementPlace = PopupPrint;
@@ -1550,7 +1550,7 @@ Function RequiredAttributesString(DocumentData, MessageText)
 	
 	For Each Item IN MandatoryAttributes Do
 		If Not ValueIsFilled(DocumentData[Item.Key]) Then
-			MessageText = NStr("en = 'Required attribute is not filled in: %1'");
+			MessageText = NStr("en='Required attribute is not filled in: %1';ru='Не заполнен обязательный реквизит: %1'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Item.Key);
 			Return "";
 		EndIf;
@@ -1563,9 +1563,11 @@ Function RequiredAttributesString(DocumentData, MessageText)
 	EndDo;
 	
 	If StrLen(MandatoryData) > 300 Then
-		Pattern = NStr("en = 'Cannot generate QR code for
-		                    |document %1 A line of required attributes must
-		                    |be shorter than 300 characters: ""%2""'");
+		Pattern = NStr("en='Cannot generate QR code for"
+"document %1 A line of required attributes must"
+"be shorter than 300 characters: ""%2""';ru='Невозможно создать"
+"QR-код для документа %1 Строка обязательных реквизитов"
+"должна быть меньше 300 символов: ""%2""'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(Pattern,
 		                                                                         DocumentData.Ref,
 		                                                                         MandatoryData);
@@ -1643,7 +1645,7 @@ Function ComponentQRCodeGeneration(Cancel)
 	SystemInfo = New SystemInfo;
 	Platform = SystemInfo.PlatformType;
 	
-	ErrorText = NStr("en = 'Cannot connect an external component to generate QR code.'");
+	ErrorText = NStr("en='Cannot connect an external component to generate QR code.';ru='Не удалось подключить внешнюю компоненту для генерации QR-кода'");
 	
 	Try
 		If AttachAddIn("CommonTemplate.QRCodePrintComponent", "QR") Then
@@ -1744,7 +1746,7 @@ EndFunction
 
 Procedure MessagePrintingFormIsUnavailable(Object)
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Print %1 is not performed: the selected print form is unavailable.'"),
+		NStr("en='Print %1 is not performed: the selected print form is unavailable.';ru='Печать %1 не выполнена: выбранная печатная форма недоступна.'"),
 		Object);
 	CommonUseClientServer.MessageToUser(MessageText, Object);
 EndProcedure

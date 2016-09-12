@@ -117,9 +117,11 @@ Procedure ChangeContentOfAdditionalInformation(Command)
 	 OR Not ValueIsFilled(AvailableSetsOfProperties[0].Value) Then
 		
 		ShowMessageBox(,
-			NStr("en = 'Failed to get the additional information sets of the object.
-			           |
-			           |Perhaps, the necessary attributes have not been filled for the document.'"));
+			NStr("en='Failed to get the additional information sets of the object."
+""
+"Perhaps, the necessary attributes have not been filled for the document.';ru='Не удалось получить наборы дополнительных сведений объекта."
+""
+"Возможно у объекта не заполнены необходимые реквизиты.'"));
 	Else
 		FormParameters = New Structure;
 		FormParameters.Insert("ShowAdditionalAttributes");

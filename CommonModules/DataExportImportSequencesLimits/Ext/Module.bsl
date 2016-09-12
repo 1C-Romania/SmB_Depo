@@ -119,7 +119,7 @@ Procedure BeforeExportType(Container, Serializer, MetadataObject, Cancel) Export
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'The %1 metadata object can not be processed by the DataExportImportSequencesLimits.BeforeObjectExport() handler!'"),
+			NStr("en='The %1 metadata object can not be processed by the DataExportImportSequencesLimits.BeforeObjectExport() handler!';ru='Объект метаданных %1 не может быть обработан обработчиком ВыгрузкаЗагрузкаДанныхГраницПоследовательностей.ПередВыгрузкойОбъекта()!'"),
 			MetadataObject.FullName());
 		
 	EndIf;
@@ -243,7 +243,7 @@ Procedure AfterImportType(Container, MetadataObject) Export
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'The %1 metadata object can not be processed by the DataExportImportSequencesLimits.BeforeObjectExport() handler!'"),
+			NStr("en='The %1 metadata object can not be processed by the DataExportImportSequencesLimits.BeforeObjectExport() handler!';ru='Объект метаданных %1 не может быть обработан обработчиком ВыгрузкаЗагрузкаДанныхГраницПоследовательностей.ПередВыгрузкойОбъекта()!'"),
 			MetadataObject.FullName());
 		
 	EndIf;

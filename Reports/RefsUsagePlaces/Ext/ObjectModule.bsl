@@ -97,14 +97,14 @@ Function TitleByLinksSet(Val RefsSet)
 			EndDo;
 			
 			If SameType Then
-				Result = StrReplace(NStr("en = 'Usage locations %1'"), "%1", 
+				Result = StrReplace(NStr("en='Usage locations %1';ru='Места использования %1'"), "%1", 
 					RefsSet[0].Value.Metadata().Presentation() );
 			EndIf;
 		EndIf;
 	EndIf;
 	
 	If Result = Undefined Then
-		Result = NStr("en = 'Item usage locations'");
+		Result = NStr("en='Item usage locations';ru='Места использования элементов'");
 	EndIf;
 	
 	Return Result;

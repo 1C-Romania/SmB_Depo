@@ -12,8 +12,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	MinimalEffect = Parameters.MinimalEffect;
 	Items.MinimalEffect.Visible = Parameters.RebuildingMode;
 	Title = ?(Parameters.RebuildingMode,
-	              NStr("en='Rebuilding parameters'"),
-	              NStr("en='Optimal aggregate calculation parameter'"));
+	              NStr("en='Rebuilding parameters';ru='Параметры перестроения'"),
+	              NStr("en='Optimal aggregate calculation parameter';ru='Параметр расчета оптимальных агрегатов'"));
 	
 EndProcedure
 

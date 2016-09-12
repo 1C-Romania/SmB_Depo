@@ -92,6 +92,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Description</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Description</v8:content>
+								</v8:item>
 							</Title>
 							<Width>20</Width>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -104,6 +108,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Currency</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вал.</v8:content>
 								</v8:item>
 							</Title>
 							<ShowInHeader>false</ShowInHeader>
@@ -120,6 +128,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Incl. VAT</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вкл. НДС</v8:content>
+						</v8:item>
 					</Title>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="PriceIncludedVATContextMenu" id="11"/>
@@ -135,6 +147,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Round precision</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок округления</v8:content>
+						</v8:item>
 					</Title>
 					<ContextMenu name="RoundingOrderContextMenu" id="13"/>
 					<ExtendedTooltip name="RoundingOrderExtendedTooltip" id="34"/>
@@ -149,6 +165,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Round up</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Округлять в большую сторону</v8:content>
+						</v8:item>
 					</Title>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="RoundUpContextMenu" id="15"/>
@@ -160,6 +180,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CommentContextMenu" id="17"/>
@@ -174,6 +198,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>код</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CodeContextMenu" id="7"/>
@@ -221,11 +249,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Set main type of sale prices</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить основной вид цен продажи</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Selected item will be populated to the user's documents by default</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбранный элемент будет по умолчанию подставляться в документы пользователя</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CommandSetMainItem</Action>

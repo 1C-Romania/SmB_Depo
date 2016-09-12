@@ -140,7 +140,7 @@ Procedure FillCheckProcessing(Form, Cancel, CheckedAttributes) Export
 				CommonUseClientServer.AddUserError(Errors,
 					String.AttributeNameValue,
 					StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'Field ""%1"" is not filled.'"), String.Description),
+						NStr("en='Field ""%1"" is not filled.';ru='Поле ""%1"" не заполнено.'"), String.Description),
 					"");
 			EndIf;
 		EndIf;
@@ -384,7 +384,7 @@ Procedure AdditionalAttributesInFormFill(Form, Object = Undefined, InscriptionFi
 				If DescriptionOfSet = Undefined Then
 					DescriptionOfSet = ObjectPropertiesSets.Add();
 					DescriptionOfSet.Set     = PropertyDetails.Set;
-					DescriptionOfSet.Title = NStr("en = 'Deleted attributes'")
+					DescriptionOfSet.Title = NStr("en='Deleted attributes';ru='Удаленные реквизиты'")
 				EndIf;
 				
 				If Not ValueIsFilled(DescriptionOfSet.Title) Then
@@ -1061,9 +1061,9 @@ Procedure CreateMainFormObjects(Form, ItemNameForPlacement,
 			If Users.RolesAvailable("AddChangeBasicReferenceData") Then
 				// Addition of a command.
 				Command = Form.Commands.Add("EditAdditionalAttributesContent");
-				Command.Title = NStr("en = 'Change the additional attributes structure'");
+				Command.Title = NStr("en='Change the additional attributes structure';ru='Изменить состав дополнительных реквизитов'");
 				Command.Action = "Attachable_EditContentOfProperties";
-				Command.ToolTip = NStr("en = 'Change the additional attributes structure'");
+				Command.ToolTip = NStr("en='Change the additional attributes structure';ru='Изменить состав дополнительных реквизитов'");
 				Command.Picture = PictureLib.ListSettings;
 				
 				Button = Form.Items.Add(

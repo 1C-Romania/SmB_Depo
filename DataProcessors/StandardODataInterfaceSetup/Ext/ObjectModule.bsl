@@ -14,21 +14,21 @@ Var StandardInterfaceContent;
 Function InitializeDataToSetupStandardODataInterface() Export
 	
 	// Fill tree root strings (by metadata objects collections)
-	AddTreeRootString("Constant", NStr("en = 'Constants'"), 1, PictureLib.Constant);
-	AddTreeRootString("Catalog", NStr("en = 'Catalogs'"), 2, PictureLib.Catalog);
-	AddTreeRootString("Document", NStr("en = 'Documents'"), 3, PictureLib.Document);
-	AddTreeRootString("DocumentJournal", NStr("en = 'Document journals'"), 4, PictureLib.DocumentJournal);
-	AddTreeRootString("Enum", NStr("en = 'Enum'"), 5, PictureLib.Enum);
-	AddTreeRootString("ChartOfCharacteristicTypes", NStr("en = 'Charts of characteristics types'"), 6, PictureLib.ChartOfCharacteristicTypes);
-	AddTreeRootString("ChartOfAccounts", NStr("en = 'Charts of accounts'"), 7, PictureLib.ChartOfAccounts);
-	AddTreeRootString("ChartOfCalculationTypes", NStr("en = 'Charts of calculation types'"), 8, PictureLib.ChartOfCalculationTypes);
-	AddTreeRootString("InformationRegister", NStr("en = 'Information registers'"), 9, PictureLib.InformationRegister);
-	AddTreeRootString("AccumulationRegister", NStr("en = 'Accumulation registers'"), 10, PictureLib.AccumulationRegister);
-	AddTreeRootString("AccountingRegister", NStr("en = 'Accounting registers'"), 11, PictureLib.AccountingRegister);
-	AddTreeRootString("CalculationRegister", NStr("en = 'Calculation registers'"), 12, PictureLib.CalculationRegister);
-	AddTreeRootString("BusinessProcess", NStr("en = 'Business-processes'"), 13, PictureLib.BusinessProcess);
-	AddTreeRootString("Task", NStr("en = 'Tasks'"), 14, PictureLib.Task);
-	AddTreeRootString("ExchangePlan", NStr("en = 'Exchange plans'"), 15, PictureLib.ExchangePlan);
+	AddTreeRootString("Constant", NStr("en='Constants';ru='Константы'"), 1, PictureLib.Constant);
+	AddTreeRootString("Catalog", NStr("en='Catalogs';ru='Справочники'"), 2, PictureLib.Catalog);
+	AddTreeRootString("Document", NStr("en='Documents';ru='Документы'"), 3, PictureLib.Document);
+	AddTreeRootString("DocumentJournal", NStr("en='Document journals';ru='Журналы документов'"), 4, PictureLib.DocumentJournal);
+	AddTreeRootString("Enum", NStr("en='Enum';ru='Перечисление'"), 5, PictureLib.Enum);
+	AddTreeRootString("ChartOfCharacteristicTypes", NStr("en='Charts of characteristics types';ru='Планы видов характеристик'"), 6, PictureLib.ChartOfCharacteristicTypes);
+	AddTreeRootString("ChartOfAccounts", NStr("en='Charts of accounts';ru='Планы счетов'"), 7, PictureLib.ChartOfAccounts);
+	AddTreeRootString("ChartOfCalculationTypes", NStr("en='Charts of calculation types';ru='Планы видов расчета'"), 8, PictureLib.ChartOfCalculationTypes);
+	AddTreeRootString("InformationRegister", NStr("en='Information registers';ru='Регистры сведений'"), 9, PictureLib.InformationRegister);
+	AddTreeRootString("AccumulationRegister", NStr("en='Accumulation registers';ru='Регистры накопления'"), 10, PictureLib.AccumulationRegister);
+	AddTreeRootString("AccountingRegister", NStr("en='Accounting registers';ru='Регистры бухгалтерии'"), 11, PictureLib.AccountingRegister);
+	AddTreeRootString("CalculationRegister", NStr("en='Calculation registers';ru='Регистры расчета'"), 12, PictureLib.CalculationRegister);
+	AddTreeRootString("BusinessProcess", NStr("en='Business-processes';ru='Деловые процессы'"), 13, PictureLib.BusinessProcess);
+	AddTreeRootString("Task", NStr("en='Tasks';ru='Задания'"), 14, PictureLib.Task);
+	AddTreeRootString("ExchangePlan", NStr("en='Exchange plans';ru='Планы обмена'"), 15, PictureLib.ExchangePlan);
 	
 	// Read current content of standard OData interface
 	SystemContent = WorkInSafeMode.EvalInSafeMode("GetStandardODataInterfaceContent()");
@@ -101,7 +101,7 @@ Procedure AddTreeSubstring(Val DescriptionFull, Val ReadOnly, Val Use, Val Depen
 	
 	If RowOwner = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unknown metadata object: %1'"), DescriptionFull);
+			NStr("en='Unknown metadata object: %1';ru='Неизвестный объект метаданных: %1'"), DescriptionFull);
 	EndIf;
 	
 	NewRow = RowOwner.Rows.Add();

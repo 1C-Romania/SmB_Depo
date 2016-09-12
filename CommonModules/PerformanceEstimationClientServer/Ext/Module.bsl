@@ -23,7 +23,7 @@ Function StartTimeMeasurement(KeyOperation = Undefined) Export
 		BeginTime = TimerValue();
 		#If Client Then
 			If Not ValueIsFilled(KeyOperation) Then
-				Raise NStr("en = 'Key operation is not specified.'");
+				Raise NStr("en='Key operation is not specified.';ru='Не указана ключевая операция.'");
 			EndIf;
 			
 			ParameterName = "StandardSubsystems.PerformanceEstimationTimeMeasurement";
@@ -146,7 +146,7 @@ Procedure WriteToEventLogMonitor(EventName, Level, MessageText) Export
 	WriteLogEvent(EventName,
 		Level,
 		,
-		NStr("en = 'Performance estimation'"),
+		NStr("en='Performance estimation';ru='Оценка производительности'"),
 		MessageText);
 	
 EndProcedure

@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Selection of the certificate for data signing</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выбор сертификата для подписания данных</v8:content>
+		</v8:item>
 	</Title>
 	<Width>60</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -25,11 +29,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Main pages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страница основных настроек обмена с сайтом</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Main pages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страница основных настроек обмена с сайтом</v8:content>
 				</v8:item>
 			</ToolTip>
 			<PagesRepresentation>None</PagesRepresentation>
@@ -41,6 +53,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Page certificate selection</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница выбор сертификата</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="PageCertificateChoiceExtendedTooltip" id="240"/>
 					<ChildItems>
@@ -49,6 +65,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Personal certificates on computer</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Личные сертификаты на компьютере</v8:content>
 								</v8:item>
 							</Title>
 							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
@@ -62,11 +82,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Group warnings that certificates are unavailable</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа предупреждения недоступности сертификатов</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group warnings that certificates are unavailable</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа предупреждения недоступности сертификатов</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -79,6 +107,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group certificates are not available on the client</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа сертификаты недоступны на клиенте</v8:content>
 												</v8:item>
 											</Title>
 											<Group>Horizontal</Group>
@@ -94,6 +126,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>Certificates are not available on client icon</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сертификаты недоступны на клиенте значок</v8:content>
+														</v8:item>
 													</Title>
 													<Picture>
 														<xr:Ref>CommonPicture.Warning</xr:Ref>
@@ -107,6 +143,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Certificates are not available on computer</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сертификаты недоступны на компьютере</v8:content>
 														</v8:item>
 													</Title>
 													<Hyperlink>true</Hyperlink>
@@ -123,6 +163,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group certificates are not available on the server</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа сертификаты недоступны на сервере</v8:content>
 												</v8:item>
 											</Title>
 											<Group>Horizontal</Group>
@@ -145,6 +189,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Certificates not available on server</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сертификаты недоступны на сервере</v8:content>
 														</v8:item>
 													</Title>
 													<Hyperlink>true</Hyperlink>
@@ -199,6 +247,10 @@
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Certificates context menu standard commands</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Сертификаты контекстное меню стандартные команды</v8:content>
 													</v8:item>
 												</Title>
 												<CommandSource>Item.Certificates</CommandSource>
@@ -292,6 +344,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Show all certificates without filter (for example, including expired)</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Показывать все сертификаты без отбора (например, включая просроченные)</v8:content>
+										</v8:item>
 									</ToolTip>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ShowAllContextMenu" id="806"/>
@@ -305,6 +361,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Instructions on how to work with electronic signature and encryption applications</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Инструкции по работе с программами электронной подписи и шифрования</v8:content>
 										</v8:item>
 									</Title>
 									<Hyperlink>true</Hyperlink>
@@ -321,6 +381,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Commands next cancel</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Команды далее отмена</v8:content>
 								</v8:item>
 							</Title>
 							<HorizontalLocation>Right</HorizontalLocation>
@@ -341,6 +405,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Cancel</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отменить</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="Cancel1ExtendedTooltip" id="373"/>
 								</Button>
@@ -356,6 +424,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Input additional certificate info</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Введите дополнительные сведения о сертификате</v8:content>
 								</v8:item>
 							</Title>
 							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
@@ -374,6 +446,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Vertical group 4</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Вертикальная группа 4</v8:content>
 												</v8:item>
 											</Title>
 											<Group>Vertical</Group>
@@ -471,6 +547,21 @@ purpose by different users the presentation needs to be
 replaced for  the purpose description, for example: "For invoice signature, up to 05.2019",
 " For tax reporting signature, before 12.2015".</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Уникальное представление сертификата используется в полях выбора при подписании и
+шифровании. Оно формируется из фамилии, имени, организации, должности и срока действия.
+Например: "Иванов Иван, ООО 1С, Программист, до 03.2017".
+
+Когда у пользователя два сертификата от разных удостоверяющих центров (УЦ),
+тогда представление нужно дополнить именем УЦ.
+Например: "Иванов Иван, ООО 1С, Программист, до 03.2017, УЦ 1С".
+
+Когда сертификат используется для специальной цели разными пользователями,
+тогда представление нужно заменить на описание этой цели, например:
+"Для подписания счетов-фактур, до 05.2019",
+"Для подписания налоговой отчетности, до 12.2015".</v8:content>
+															</v8:item>
 														</Title>
 													</ExtendedTooltip>
 												</InputField>
@@ -480,6 +571,10 @@ replaced for  the purpose description, for example: "For invoice signature, up t
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Text of a hint is set from catalog attribute.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Текст подсказки устанавливается из реквизита справочника.</v8:content>
 														</v8:item>
 													</ToolTip>
 													<Width>35</Width>
@@ -494,6 +589,10 @@ replaced for  the purpose description, for example: "For invoice signature, up t
 															<v8:lang>en</v8:lang>
 															<v8:content>Text of a hint is set from catalog attribute.</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Текст подсказки устанавливается из реквизита справочника.</v8:content>
+														</v8:item>
 													</ToolTip>
 													<Width>35</Width>
 													<HorizontalStretch>false</HorizontalStretch>
@@ -506,6 +605,10 @@ replaced for  the purpose description, for example: "For invoice signature, up t
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Vertical group 3</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Вертикальная группа 3</v8:content>
 														</v8:item>
 													</Title>
 													<Group>Vertical</Group>
@@ -524,6 +627,13 @@ be entered in a separate window by digital signature and encryption application 
 
 For certificates released with private key enhanced protection only.</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Уточняет, что пароль к закрытому ключу
+сертификата будет вводиться в отдельном окне программой электронной подписи и шифрования, а не программой 1С:Предприятие.
+
+Только для сертификатов, которые выпущены с усиленной защитой закрытого ключа.</v8:content>
+																</v8:item>
 															</ToolTip>
 															<ToolTipRepresentation>Button</ToolTipRepresentation>
 															<CheckBoxType>Auto</CheckBoxType>
@@ -539,6 +649,10 @@ For certificates released with private key enhanced protection only.</v8:content
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Group certificate password</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Группа сертификат пароль</v8:content>
+																</v8:item>
 															</Title>
 															<Group>Horizontal</Group>
 															<Representation>None</Representation>
@@ -553,6 +667,10 @@ For certificates released with private key enhanced protection only.</v8:content
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Indent</v8:content>
 																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Отступ</v8:content>
+																		</v8:item>
 																	</Title>
 																	<ContextMenu name="IndentContextMenu" id="850"/>
 																	<ExtendedTooltip name="IndentExtendedTooltip" id="851"/>
@@ -562,6 +680,10 @@ For certificates released with private key enhanced protection only.</v8:content
 																		<v8:item>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Vertical group 1</v8:content>
+																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Вертикальная группа 1</v8:content>
 																		</v8:item>
 																	</Title>
 																	<Group>Vertical</Group>
@@ -574,6 +696,10 @@ For certificates released with private key enhanced protection only.</v8:content
 																				<v8:item>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Password:</v8:content>
+																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Пароль:</v8:content>
 																				</v8:item>
 																			</Title>
 																			<ContextMenu name="PasswordHeaderContextMenu" id="838"/>
@@ -591,6 +717,10 @@ For certificates released with private key enhanced protection only.</v8:content
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Vertical group 2</v8:content>
 																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Вертикальная группа 2</v8:content>
+																		</v8:item>
 																	</Title>
 																	<Group>Vertical</Group>
 																	<Representation>None</Representation>
@@ -602,6 +732,10 @@ For certificates released with private key enhanced protection only.</v8:content
 																				<v8:item>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Horizontal group 2</v8:content>
+																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Горизонтальная группа 2</v8:content>
 																				</v8:item>
 																			</Title>
 																			<Group>Horizontal</Group>
@@ -617,6 +751,11 @@ For certificates released with private key enhanced protection only.</v8:content
 																							<v8:lang>en</v8:lang>
 																							<v8:content>Enter a password for the
 certificate private key to check the key before certificate selection.</v8:content>
+																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Введите пароль к
+закрытому ключу сертификата для проверки ключа перед выбором сертификата.</v8:content>
 																						</v8:item>
 																					</ToolTip>
 																					<HorizontalStretch>false</HorizontalStretch>
@@ -635,6 +774,10 @@ certificate private key to check the key before certificate selection.</v8:conte
 																							<v8:lang>en</v8:lang>
 																							<v8:content>(for check)</v8:content>
 																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>(для проверки)</v8:content>
+																						</v8:item>
 																					</Title>
 																					<ContextMenu name="PasswordExplanationContextMenu" id="742"/>
 																					<ExtendedTooltip name="PasswordExplanationExtendedTooltip" id="743"/>
@@ -647,11 +790,19 @@ certificate private key to check the key before certificate selection.</v8:conte
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Pages</v8:content>
 																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Странницы</v8:content>
+																				</v8:item>
 																			</Title>
 																			<ToolTip>
 																				<v8:item>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Pages</v8:content>
+																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Странницы</v8:content>
 																				</v8:item>
 																			</ToolTip>
 																			<PagesRepresentation>None</PagesRepresentation>
@@ -663,6 +814,10 @@ certificate private key to check the key before certificate selection.</v8:conte
 																							<v8:lang>en</v8:lang>
 																							<v8:content>Page password remembering</v8:content>
 																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Страница запоминание пароля</v8:content>
+																						</v8:item>
 																					</Title>
 																					<ExtendedTooltip name="PagePasswordRememberingExtendedTooltip" id="819"/>
 																					<ChildItems>
@@ -673,6 +828,10 @@ certificate private key to check the key before certificate selection.</v8:conte
 																								<v8:item>
 																									<v8:lang>en</v8:lang>
 																									<v8:content>Remember password certificate before the application is closed . When check box is cleared, the password is erased from memory in case it was previously remembered.</v8:content>
+																								</v8:item>
+																								<v8:item>
+																									<v8:lang>ru</v8:lang>
+																									<v8:content>Запомнить пароль сертификата до закрытия программы. При снятии флажка пароль стирается из памяти, если запоминался ранее.</v8:content>
 																								</v8:item>
 																							</ToolTip>
 																							<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -691,6 +850,10 @@ certificate private key to check the key before certificate selection.</v8:conte
 																							<v8:lang>en</v8:lang>
 																							<v8:content>Page explanation of enhanced password</v8:content>
 																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Страница пояснение усиленного пароля</v8:content>
+																						</v8:item>
 																					</Title>
 																					<ExtendedTooltip name="PageExplanationEnhancedPasswordExtendedTooltip" id="824"/>
 																					<ChildItems>
@@ -702,12 +865,22 @@ certificate private key to check the key before certificate selection.</v8:conte
 																									<v8:content>Click Select to start password entry.
 </v8:content>
 																								</v8:item>
+																								<v8:item>
+																									<v8:lang>ru</v8:lang>
+																									<v8:content>Нажмите Выбрать, чтобы перейти к вводу пароля.
+</v8:content>
+																								</v8:item>
 																							</Title>
 																							<ToolTip>
 																								<v8:item>
 																									<v8:lang>en</v8:lang>
 																									<v8:content>Password is requested by digital signature software, not
 by 1C:Enterprise, as private key enhanced protection is specified for the selected certificate.</v8:content>
+																								</v8:item>
+																								<v8:item>
+																									<v8:lang>ru</v8:lang>
+																									<v8:content>Пароль запрашивает программа электронной подписи,
+а не программа 1С:Предприятие, так как для выбранного сертификата указана усиленная защита закрытого ключа.</v8:content>
 																								</v8:item>
 																							</ToolTip>
 																							<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -721,6 +894,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 																						<v8:item>
 																							<v8:lang>en</v8:lang>
 																							<v8:content>Page explanation of set password</v8:content>
+																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Страница пояснение установленного пароля</v8:content>
 																						</v8:item>
 																					</Title>
 																					<ExtendedTooltip name="PageExplanationSetPasswordExtendedTooltip" id="829"/>
@@ -772,6 +949,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 									<v8:lang>en</v8:lang>
 									<v8:content>Commands back select cancel</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Команды назад выбрать отмена</v8:content>
+								</v8:item>
 							</Title>
 							<HorizontalLocation>Right</HorizontalLocation>
 							<ExtendedTooltip name="CommandsBackSelectCancelExtendedTooltip" id="536"/>
@@ -789,6 +970,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 											<v8:lang>en</v8:lang>
 											<v8:content>Select</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Выбрать</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="ChooseExtendedTooltip" id="540"/>
 								</Button>
@@ -800,6 +985,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Cancel</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отменить</v8:content>
 										</v8:item>
 									</Title>
 									<ExtendedTooltip name="Cancel2ExtendedTooltip" id="542"/>
@@ -818,6 +1007,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificates</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификаты</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -828,6 +1021,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Presentation</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -844,6 +1041,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 							<v8:lang>en</v8:lang>
 							<v8:content>Issued by</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кем выдан</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -858,6 +1059,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Imprint</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отпечаток</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -874,6 +1079,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 							<v8:lang>en</v8:lang>
 							<v8:content>on client</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>на клиенте</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -885,6 +1094,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 							<v8:lang>en</v8:lang>
 							<v8:content>At server</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>на сервере</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -895,6 +1108,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>This request</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это заявление</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -908,6 +1125,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Presentation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -936,6 +1157,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Password</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -951,6 +1176,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Enhanced protection of the private key</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Усиленная защита закрытого ключа</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -961,6 +1190,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Imprint of the selected certificate</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отпечаток выбранного сертификата</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -977,6 +1210,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
@@ -987,6 +1224,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес сертификата</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1003,6 +1244,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate thumbprint</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отпечаток сертификата</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1018,6 +1263,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>For encryption and decryption</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Для шифрования и расшифровки</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1027,6 +1276,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate parameters of attributes</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат параметры реквизитов</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1035,6 +1288,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Insert into list</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавление в список</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1047,6 +1304,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Personal list on adding</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Личный список при добавлении</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1058,6 +1319,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate data description</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат описание данных</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1068,6 +1333,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Property</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Свойство</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1083,6 +1352,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Value</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1101,6 +1374,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>User</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Users</v8:Type>
@@ -1111,6 +1388,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate on client</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат на клиенте</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1123,6 +1404,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate on server</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат на сервере</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1134,6 +1419,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Error certificates receiving on the client</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибка получения сертификатов на клиенте</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1142,6 +1431,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Error certificates receiving on the server</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибка получения сертификатов на сервере</v8:content>
 				</v8:item>
 			</Title>
 			<Type/>
@@ -1152,6 +1445,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Selected certificate imprint not found</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отпечаток выбранного сертификата не найден</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1160,6 +1457,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Remember password</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запомнить пароль</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1172,6 +1473,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Perform on server</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнять на сервере</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1180,6 +1485,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Return password</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вернуть пароль</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1191,6 +1500,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show all certificates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать все сертификаты</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1205,11 +1518,19 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Next &gt;</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Далее  &gt;</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Next</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Далее</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Next</Action>
@@ -1220,6 +1541,10 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Select</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
 			</Title>
 			<Action>Select</Action>
 		</Command>
@@ -1229,11 +1554,19 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>&lt; Back</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt; Back</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Back</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назад</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Back</Action>
@@ -1244,11 +1577,19 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update list of certificates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить список сертификатов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F5</Shortcut>
@@ -1264,11 +1605,19 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Show the certificate data</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать данные сертификата</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show certificate data saved in file</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать данные сертификата, которые сохраняются в файле</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1283,11 +1632,19 @@ by 1C:Enterprise, as private key enhanced protection is specified for the select
 					<v8:lang>en</v8:lang>
 					<v8:content>Show the certificate data</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать данные сертификата</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show certificate data saved in file</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать данные сертификата, которые сохраняются в файле</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>

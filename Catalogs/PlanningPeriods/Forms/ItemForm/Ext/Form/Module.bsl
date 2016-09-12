@@ -84,7 +84,7 @@ Procedure BeginDateOnChange(Item)
 		AND ValueIsFilled(Object.EndDate) Then
 				
 		Message = New UserMessage;
-		Message.Text = NStr("en = '""Start date"" is greater than ""Ending date"" field value.'");
+		Message.Text = NStr("en='""Start date"" is greater than ""Ending date"" field value.';ru='Значение поля ""Дата начала"" больше значения поля ""Дата окончания""'");
 		Message.Field = "Object.StartDate";
 		Message.Message();
 				
@@ -136,7 +136,7 @@ Procedure EndingDateOnChange(Item)
 		AND ValueIsFilled(Object.StartDate) Then
 				
 		Message = New UserMessage;
-		Message.Text = NStr("en = '""Ending date"" is less than ""Start date"" field value.'");
+		Message.Text = NStr("en='""Ending date"" is less than ""Start date"" field value.';ru='Значение поля ""Дата окончания"" меньше значения поля ""Дата начала""'");
 		Message.Field = "Object.EndDate";
 		Message.Message();
 						

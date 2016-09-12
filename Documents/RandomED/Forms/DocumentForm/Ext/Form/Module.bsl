@@ -120,9 +120,9 @@ Procedure AttachmentsBeforeDelete(Item, Cancel)
 		OR Object.DocumentStatus = PredefinedValue("Enum.EDStatuses.Created")) Then
 		Cancel = True;
 	Else
-		QuestionText = NStr("en = 'Delete document attachment?'");
+		QuestionText = NStr("en='Delete document attachment?';ru='Удалить вложение из документа?'");
 		If DS.Count() > 0 Then
-			QuestionText = NStr("en = 'The set signatures will be deleted while deleting an attachment.'") + Chars.LF + QuestionText;
+			QuestionText = NStr("en='The set signatures will be deleted while deleting an attachment.';ru='При удалении вложения будут удалены установленные подписи.'") + Chars.LF + QuestionText;
 		EndIf;
 		NotifyDescription = New NotifyDescription("ProcessDeletionQuestionAnswerAttachments", ThisObject);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -267,8 +267,8 @@ EndProcedure
 &AtClient
 Procedure ShowSignatureResult(DigitallySigned)
 	
-	StatusText = NStr("en = 'Signed: (0)'");
-	HeaderText = NStr("en = 'Electronic document exchange'");
+	StatusText = NStr("en='Signed: (0)';ru='Подписано: (0)'");
+	HeaderText = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 	If DigitallySigned Then
 		DocumentParameters = New Structure;
 		DocumentParameters.Insert("DigitallySigned", True);
@@ -278,7 +278,7 @@ Procedure ShowSignatureResult(DigitallySigned)
 		Read();
 		SetEnabledOfItems();
 		
-		StatusText = NStr("en = 'Signed: (1)'");
+		StatusText = NStr("en='Signed: (1)';ru='Подписано: (1)'");
 	EndIf;
 	
 	Notify("RefreshStateED");
@@ -323,7 +323,7 @@ Procedure OpenCertificate(Command)
 		ShowCertificate(Items.DS.CurrentData.LineNumber, Items.DS.CurrentData.Imprint);
 	Else
 		ClearMessages();
-		ErrorText = NStr("en = 'Select the certificates in the installed signatures list.'");
+		ErrorText = NStr("en='Select the certificates in the installed signatures list.';ru='Выберите сертификат в списке установленных подписей.'");
 		CommonUseClientServer.MessageToUser(ErrorText);
 	EndIf;
 	
@@ -409,11 +409,11 @@ EndProcedure
 Procedure RefreshFormTitle()
 	
 	If Object.Direction = Enums.EDDirections.Outgoing Then
-		HeaderText = NStr("en = 'Outgoing document %1 from %2'");
+		HeaderText = NStr("en='Outgoing document %1 from %2';ru='Исходящий документ %1 от %2'");
 		Title = StringFunctionsClientServer.PlaceParametersIntoString(
 			HeaderText, Object.Number, Object.Date);
 	Else
-		HeaderText = NStr("en = 'The incoming document %1 from %2'");
+		HeaderText = NStr("en='The incoming document %1 from %2';ru='Входящий документ %1 от %2'");
 		Title = StringFunctionsClientServer.PlaceParametersIntoString(
 			HeaderText, Object.Number, Object.Date);
 	EndIf;
@@ -565,7 +565,7 @@ Function GetEDArrayToSend(Cancel)
 	
 	If EDFProfileSettings.EDExchangeMethod = Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom
 		AND DS.Count() = 0 Then
-		MessageText = NStr("en = 'Operation is canceled. It is required to send the attachment.'");
+		MessageText = NStr("en='Operation is canceled. It is required to send the attachment.';ru='Операция отменена. Необходимо подписать вложение.'");
 		CommonUseClientServer.MessageToUser(MessageText, , , , Cancel);
 	EndIf;
 	ReturnStructure = "";
@@ -606,20 +606,20 @@ Procedure AfterSendingEDP(Result, AdditionalParameters) Export
 			AND TypeOf(SentCnt) = Type("Number")
 			AND SentCnt > 0 Then
 			
-			StatusText = NStr("en = 'Sent: (%1)'");
+			StatusText = NStr("en='Sent: (%1)';ru='Отправлено: (%1)'");
 			Quantity = SentCnt;
 		ElsIf Result.Property("PreparedCnt", PreparedCnt)
 			AND TypeOf(PreparedCnt) = Type("Number")
 			AND PreparedCnt > 0 Then
 			
-			StatusText = NStr("en = 'Prepared for sending: (%1)'");
+			StatusText = NStr("en='Prepared for sending: (%1)';ru='Подготовлено к отправке: (%1)'");
 			Quantity = PreparedCnt;
 		EndIf;
 	EndIf;
 	
 	If Quantity > 0 Then
 		StatusText = StringFunctionsClientServer.PlaceParametersIntoString(StatusText, Quantity);
-		HeaderText = NStr("en = 'Electronic document exchange'");
+		HeaderText = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 		ShowUserNotification(HeaderText, , StatusText);
 	EndIf;
 	
@@ -744,10 +744,10 @@ EndProcedure
 Procedure FillSignatureStatus(NewRow, CurRow)
 	
 	If ValueIsFilled(CurRow.SignatureVerificationDate) Then
-		NewRow.SignatureIsCorrect = ?(CurRow.SignatureIsCorrect, NStr("en = 'Correct'"), NStr("en = 'Wrong'"))
+		NewRow.SignatureIsCorrect = ?(CurRow.SignatureIsCorrect, NStr("en='Correct';ru='Исправить'"), NStr("en='Wrong';ru='Неверна'"))
 			+" (" + CurRow.SignatureVerificationDate + ")";
 	Else
-		NewRow.SignatureIsCorrect = NStr("en = 'Not checked'");
+		NewRow.SignatureIsCorrect = NStr("en='Not checked';ru='Не проверена'");
 	EndIf
 	
 EndProcedure
@@ -969,7 +969,7 @@ Procedure ShowCertificate(LineNumber, Imprint)
 	
 	SelectedCertificate = New CryptoCertificate(CertificateBinaryData);
 	If SelectedCertificate=Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Certificate is not found.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Certificate is not found.';ru='Сертификат не найден.'"));
 		Return;
 	EndIf;
 	
@@ -1007,7 +1007,7 @@ EndProcedure
 Procedure AddCertificateToTrusted(SignatureData)
 	
 	If SignatureData <> Undefined AND SignatureData.MissingInList Then
-		Text = NStr("en = 'Do you want to add the %1 certificate to the list of expected counterparty certificates?'");
+		Text = NStr("en='Do you want to add the %1 certificate to the list of expected counterparty certificates?';ru='Добавить сертификат %1 в список ожидаемых сертификатов контрагента?'");
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(Text, SignatureData.CertificateIsIssuedTo);
 		AdditParameters = New Structure("CurrentData, SignatureData", Items.DS.CurrentData, SignatureData);
 		NotifyDescription = New NotifyDescription("HandleQuestionAnswerByCertificate", ThisObject, AdditParameters);
@@ -1051,7 +1051,7 @@ Procedure HandleQuestionAnswerByCertificate(Result, AdditionalParameters) Export
 		CertificateAdded = False;
 		AddSigningCertificateInAgreement(SignatureData.Imprint, CertificateAdded);
 		If Not CertificateAdded Then 
-			MessageText = NStr("en = 'Error of adding the signature certificate to the list of the expected certificates!'");
+			MessageText = NStr("en='Error of adding the signature certificate to the list of the expected certificates!';ru='Ошибка добавления сертификата подписи в список ожидаемых сертификатов!'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			FillTableDS();
@@ -1110,8 +1110,9 @@ EndProcedure
 Procedure CheckDocumentRecord(ContinuationProcessor)
 	
 	If Modified OR Object.Ref.IsEmpty() Then
-		QuestionText = NStr("en = 'To continue operation, it is required to write the document.
-			|Write document?'");
+		QuestionText = NStr("en='To continue operation, it is required to write the document."
+"Write document?';ru='Для продолжения операции необходимо записать документ."
+"Записать документ?'");
 		AdditParameters = New Structure("ProcedureName", ContinuationProcessor);
 		NotifyDescription = New NotifyDescription("EndDocumentWritingCheck", ThisObject, AdditParameters);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
@@ -1135,7 +1136,7 @@ Procedure FinishAddingFile(NOTSpecified, AdditionalParameters) Export
 	
 	// Limit the Taxcom operator to the passed attachments quantity.
 	If Attachments.Count() > 0 Then
-		MessageText = NStr("en = 'Operation is canceled. Only one enclosure is possible to add.'");
+		MessageText = NStr("en='Operation is canceled. Only one enclosure is possible to add.';ru='Операция отменена. Добавить возможно только одно вложение.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;

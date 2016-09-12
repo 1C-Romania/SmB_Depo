@@ -10,18 +10,18 @@ Procedure CheckFillOfFormAttributes(Cancel)
 		LineNumber = LineNumber + 1;
 		If Not ValueIsFilled(RowPrepayment.Document) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'The ""Document"" column is not filled in the row '")
+			Message.Text = NStr("en='The ""Document"" column is not filled in the row ';ru='Не заполнена колонка ""Документ"" в строке '")
 				+ String(LineNumber)
-				+ NStr("en = ' of the ""Filtered advances"" list.'");
+				+ NStr("en=' of the ""Filtered advances"" list.';ru=' списка ""Отобранные авансы"".'");
 			Message.Field = "Document";
 			Message.Message();
 			Cancel = True;
 		EndIf;
 		If Not ValueIsFilled(RowPrepayment.Amount) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'The ""Amount"" column is not filled in the row '")
+			Message.Text = NStr("en='The ""Amount"" column is not filled in the row ';ru='Не заполнена колонка ""Сумма"" в строке '")
 				+ String(LineNumber)
-				+ NStr("en = ' of the ""Filtered advances"" list.'");
+				+ NStr("en=' of the ""Filtered advances"" list.';ru=' списка ""Отобранные авансы"".'");
 			Message.Field = "Document";
 			Message.Message();
 			Cancel = True;

@@ -7,6 +7,6 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	
 	CallParameters.Insert("Uniqueness", "Panel_PayrollAndHumanResources");
 	
-	ReportsVariantsClient.ShowReportsPanel("PayrollAndHumanResources", CallParameters, NStr("en = 'Payroll and human resources reports'"));
+	ReportsVariantsClient.ShowReportsPanel("PayrollAndHumanResources", CallParameters, NStr("en='Payroll and human resources reports';ru='Отчеты по зарплате и персоналу'"));
 	
 EndProcedure

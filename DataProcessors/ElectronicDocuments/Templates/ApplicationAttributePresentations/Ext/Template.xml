@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -40,6 +110,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0001</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0001</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -50,6 +124,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Invoice number</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер товарной накладной</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -67,6 +145,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0002</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0002</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -77,6 +159,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of invoice</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата товарной накладной</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -94,6 +180,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0012</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0012</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -104,6 +194,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignor name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия грузоотправителя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -121,6 +215,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0013</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0013</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -131,6 +229,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Shipper name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя грузоотправителя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -148,6 +250,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0014</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0014</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -158,6 +264,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя грузополучателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -175,6 +285,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0015</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0015</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -185,6 +299,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя грузополучателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -202,6 +320,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0016</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0016</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -212,6 +334,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Supplier name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия поставщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -229,6 +355,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0017</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0017</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -239,6 +369,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Vendor's name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя поставщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -256,6 +390,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0018</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0018</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -266,6 +404,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя плательщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -283,6 +425,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0019</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0019</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -293,6 +439,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя плательщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -310,6 +460,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0020</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0020</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -320,6 +474,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name of the respinsible for the shipping</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия ответственного за отпуск груза</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -337,6 +495,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0021</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0021</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -347,6 +509,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the responsible for shipping</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя ответственного за отпуск груза</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -364,6 +530,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0022</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0022</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -374,6 +544,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Chief accountant last name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия главного бухгалтера</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -391,6 +565,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0023</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0023</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -401,6 +579,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Chief accountant's name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя главного бухгалтера</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -418,6 +600,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0024</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0024</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -428,6 +614,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name of the person who has shipped the cargo</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия лица, который произвел отпуск груза</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -445,6 +635,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0025</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0025</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -455,6 +649,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the person who has shipped the cargo</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя лица, который произвел отпуск груза</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -472,6 +670,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0026</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0026</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -482,6 +684,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -499,6 +705,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0027</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0027</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -509,6 +719,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Line number</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер строки</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -526,6 +740,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0028</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0028</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -536,6 +754,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Unit of measure</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Единица измерения</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -553,6 +775,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0029</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0029</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -563,6 +789,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Net weight before correcting</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Масса нетто до корректировки</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -580,6 +810,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0030</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0030</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -590,6 +824,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Net weight</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Масса нетто</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -607,6 +845,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0031</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0031</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -617,6 +859,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Shipper type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип грузоотправителя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -634,6 +880,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0032</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0032</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -644,6 +894,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignee type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип грузополучателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -661,6 +915,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0033</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0033</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -671,6 +929,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Vendor type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип поставщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -688,6 +950,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0034</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0034</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -698,6 +964,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payer type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип плательщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -715,6 +985,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0048</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0048</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -725,6 +999,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя грузополучателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -742,6 +1020,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0049</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0049</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -752,6 +1034,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the freight recipient</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя принимающего груз</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -769,6 +1055,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0050</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0050</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -779,6 +1069,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя грузополучателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -796,6 +1090,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0051</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0051</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -806,6 +1104,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cargo receiver name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя получающего груз</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -823,6 +1125,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0052</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0052</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -833,6 +1139,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name of the letter of attorney issuer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия лица, выдавшего доверенность</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -850,6 +1160,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0053</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0053</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -860,6 +1174,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the letter of power of attorney issuer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя лица, выдавшего доверенность</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -877,6 +1195,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0054</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0054</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -887,6 +1209,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Trustee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия доверенного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -904,6 +1230,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0055</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0055</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -914,6 +1244,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Substituted trustee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя доверенного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -931,6 +1265,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0060</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0060</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -941,6 +1279,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty(Owner) of directory</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация(Владелец) каталога</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -958,6 +1300,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0061</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0061</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -968,6 +1314,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Legal company ot individual (Owner)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Юридическое или физическое лицо (Владелец)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -985,6 +1335,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0062</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0062</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -995,6 +1349,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN of legal entity (Owner)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН юр.лица (Владелец)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1012,6 +1370,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0063</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0063</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1022,6 +1384,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty name (Owner)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование организации (Владелец)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1039,6 +1405,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0064</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0064</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1049,6 +1419,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Natural person's TIN (Owner)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН физ.лица (Владелец)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1066,6 +1440,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0065</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0065</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1076,6 +1454,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>IP description (Owner)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование ИП (Владелец)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1093,6 +1475,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0066</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0066</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1103,6 +1489,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name (Owner)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия (Владелец)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1120,6 +1510,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0067</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0067</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1130,6 +1524,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name (Owner)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя (Владелец)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1147,6 +1545,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0068</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0068</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1157,6 +1559,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name of the executive (Owner)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия руководителя (Владелец)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1174,6 +1580,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0069</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0069</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1184,6 +1594,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the head (Owner)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя руководителя (Владелец)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1201,6 +1615,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0070</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0070</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1211,6 +1629,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Manager position (Owner)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Должность руководителя (Владелец)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1228,6 +1650,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0071</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0071</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1238,6 +1664,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1255,6 +1685,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0072</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0072</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1265,6 +1699,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Product description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование товара</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1282,6 +1720,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0073</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0073</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1292,6 +1734,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Basic unit, code by OKEI</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Базовая единица, код по ОКЕИ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1309,6 +1755,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0074</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0074</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1319,6 +1769,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Basic unit, name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Базовая единица, наименование</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1336,6 +1790,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0075</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0075</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1346,6 +1804,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Basic unit, full name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Базовая единица, полное наименование</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1363,6 +1825,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0076</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0076</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1373,6 +1839,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Basic unit, international abbreviation</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Базовая единица, международное сокращение</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1390,6 +1860,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0077</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0077</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1400,6 +1874,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Reference to product</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка на товар</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1417,6 +1895,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0078</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0078</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1427,6 +1909,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Signer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя подписанта</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1444,6 +1930,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0079</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0079</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1454,6 +1944,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Signer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя подписанта</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1471,6 +1965,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0080</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0080</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1481,6 +1979,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Signer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя подписанта</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1498,6 +2000,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0081</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0081</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1508,6 +2014,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Signer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя подписанта</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1525,6 +2035,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0090</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0090</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1534,6 +2048,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
 					</tl>
@@ -1552,6 +2070,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0091</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0091</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1562,6 +2084,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional description data</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительные данные описания</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1579,6 +2105,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0092</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0092</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1589,6 +2119,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the additional description data</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя дополнительных данных описания</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1606,6 +2140,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0093</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0093</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1616,6 +2154,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional data value description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение дполнительных данных описания</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1633,6 +2175,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0094</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0094</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1643,6 +2189,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Sender</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отправитель</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1660,6 +2210,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0100</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0100</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1670,6 +2224,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Electronic document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Электронный документ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1687,6 +2245,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0101</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0101</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1697,6 +2259,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Electronic document status order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок статуса электронного документа</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1714,6 +2280,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0102</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0102</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1724,6 +2294,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name(path) of the electronic document main file</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя(путь) главного файла электронного документа</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1741,6 +2315,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0103</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0103</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1751,6 +2329,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name (path) of electronic document main file signature</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя(путь) подписи главного файла электронного документа</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1768,6 +2350,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0104</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0104</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1778,6 +2364,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name (path) of the additional electronic document file</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя(путь) дополнительного файла электронного документа</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1795,6 +2385,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0105</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0105</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1805,6 +2399,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name(path) of the additional electronic document file signature</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя(путь) подписи дополнительного файла электронного документа</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1822,6 +2420,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0106</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0106</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1832,6 +2434,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name(path) of the electronic document external card</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя(путь) внешней карточки электронного документа</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1849,6 +2455,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0120</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0120</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1859,6 +2469,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document currency code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код валюты документа</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1876,6 +2490,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0121</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0121</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1886,6 +2504,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Exchange rate of the specified currency in relation to the national currency</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Курс указанной валюты по отношению к национальной валюте</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1903,6 +2525,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0122</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0122</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1913,6 +2539,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Total amount of the document. Taxes, discounts and additional costs are included in this amount according to the selected "IncludedInTotalAmount" check boxes </v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Общая сумма по документу. Налоги, скидки и дополнительные расходы включаются в данную сумму в зависимости от установленных флажков "УчтеноВСумме" </v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1930,6 +2560,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0123</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0123</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1940,6 +2574,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Partner code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код партнера</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1957,6 +2595,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0124</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0124</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1967,6 +2609,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Address row presentation</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Строковое представление адреса</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1984,6 +2630,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0125</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0125</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1994,6 +2644,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Software supplier</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поставщик программного обеспечения</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2011,6 +2665,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0126</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0126</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2021,6 +2679,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Legal company or individual (Supplier)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Юридическое или физическое лицо (Поставщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2038,6 +2700,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0127</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0127</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2048,6 +2714,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN of legal entity (Vendor)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН юр.лица (Поставщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2065,6 +2735,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0128</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0128</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2075,6 +2749,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty name (Supplier)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование организации (Поставщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2092,6 +2770,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0129</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0129</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2102,6 +2784,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN of natural person (Vendor)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН физ.лица (Поставщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2119,6 +2805,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0130</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0130</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2129,6 +2819,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>IP description (Vendor)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование ИП (Поставщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2146,6 +2840,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0131</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0131</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2156,6 +2854,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name (Supplier)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия (Поставщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2173,6 +2875,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0132</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0132</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2183,6 +2889,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name (Vendor)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя (Поставщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2200,6 +2910,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0133</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0133</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2210,6 +2924,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Executive's last name (Supplier)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия руководителя (Поставщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2227,6 +2945,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0134</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0134</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2237,6 +2959,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Executive's name (Supplier)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя руководителя (Поставщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2254,6 +2980,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0135</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0135</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2264,6 +2994,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Manager position (Supplier)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Должность руководителя (Поставщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2281,6 +3015,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0136</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0136</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2291,6 +3029,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Software recipient</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Получатель программного обеспечения</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2308,6 +3050,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0137</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0137</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2318,6 +3064,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Legal company or individual (Customer)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Юридическое или физическое лицо (Получатель)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2335,6 +3085,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0138</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0138</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2345,6 +3099,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN of legal entity (Recipient)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН юр.лица (Получатель)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2362,6 +3120,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0139</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0139</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2372,6 +3134,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty name (recipient)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование организации (Получатель)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2389,6 +3155,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0140</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0140</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2399,6 +3169,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN nat.person (Recipient)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН физ.лица (Получатель)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2416,6 +3190,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0141</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0141</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2426,6 +3204,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>IE name (Recipient)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование ИП (Получатель)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2443,6 +3225,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0142</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0142</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2453,6 +3239,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name (Payee)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия (Получатель)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2470,6 +3260,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0143</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0143</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2480,6 +3274,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name (Recipient)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя (Получатель)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2497,6 +3295,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0144</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0144</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2507,6 +3309,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name of the executive (Recipient)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия руководителя (Получатель)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2524,6 +3330,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0145</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0145</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2534,6 +3344,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Executive's name (Recipient)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя руководителя (Получатель)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2551,6 +3365,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0146</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0146</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2561,6 +3379,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Manager position (Recipient)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Должность руководителя (Получатель)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2578,6 +3400,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0147</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0147</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2588,6 +3414,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Legal company or individual (Payer)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Юридическое или физическое лицо (Плательщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2605,6 +3435,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0148</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0148</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2615,6 +3449,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN of legal entity (Payer)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН юр.лица (Плательщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2632,6 +3470,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0149</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0149</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2642,6 +3484,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty name (Payer)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование организации (Плательщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2659,6 +3505,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0150</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0150</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2669,6 +3519,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN nat.person (Payer)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН физ.лица (Плательщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2686,6 +3540,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0151</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0151</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2696,6 +3554,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>IE name (Payer)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование ИП (Плательщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2713,6 +3575,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0152</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0152</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2723,6 +3589,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name (Payer)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия (Плательщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2740,6 +3610,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0153</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0153</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2750,6 +3624,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name (Payer)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя (Плательщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2767,6 +3645,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0154</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0154</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2777,6 +3659,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name of the executive (Payer)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия руководителя (Плательщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2794,6 +3680,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0155</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0155</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2804,6 +3694,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Executive's name (Payer)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя руководителя (Плательщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2821,6 +3715,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0156</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0156</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2831,6 +3729,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Manager position (Payer)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Должность руководителя (Плательщик)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2848,6 +3750,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0157</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0157</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2858,6 +3764,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Tax name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование налога</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2875,6 +3785,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0158</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0158</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2885,6 +3799,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Tax amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма налога</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2902,6 +3820,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0159</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0159</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2912,6 +3834,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Discount description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование скидки</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2929,6 +3855,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0160</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0160</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2939,6 +3869,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Discount amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма скидки</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2956,6 +3890,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0161</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0161</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2966,6 +3904,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional expense name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование дополнительного расхода</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2983,6 +3925,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0162</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0162</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2993,6 +3939,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional expense amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма дополнительного расхода</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3010,6 +3960,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0163</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0163</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3020,6 +3974,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Software products</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Программные продукты</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3037,6 +3995,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0164</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0164</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3047,6 +4009,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Software name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование программного продукта</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3064,6 +4030,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0165</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0165</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3074,6 +4044,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Software product</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Программный продукт</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3091,6 +4065,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0166</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0166</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3101,6 +4079,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Basic unit, code by OKEI</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Базовая единица, код по ОКЕИ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3118,6 +4100,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0167</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0167</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3128,6 +4114,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Basic unit, name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Базовая единица, наименование</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3145,6 +4135,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0168</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0168</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3155,6 +4149,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Basic unit, full name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Базовая единица, полное наименование</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3172,6 +4170,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0169</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0169</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3182,6 +4184,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Basic unit, international abbreviation</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Базовая единица, международное сокращение</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3199,6 +4205,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0170</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0170</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3209,6 +4219,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Price</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3226,6 +4240,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0171</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0171</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3235,6 +4253,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Quantity</v8:content>
 						</v8:item>
 					</tl>
@@ -3253,6 +4275,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0172</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0172</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3263,6 +4289,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount. VAT is included to this amount depending on the "VATIncludedInAmount" flag installed</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма. НДС включается в данную сумму в зависимости от установленного флажка "НДСУчтеноВСумме"</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3280,6 +4310,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0173</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0173</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3290,6 +4324,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT inamount/top</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>НДС всумме/сверху</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3307,6 +4345,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0174</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0174</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3317,6 +4359,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается сумма НДС</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3334,6 +4380,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0175</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0175</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3344,6 +4394,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT rate</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается ставка НДС</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3361,6 +4415,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0176</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0176</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3371,6 +4429,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Signer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя подписанта</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3388,6 +4450,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0177</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0177</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3398,6 +4464,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Signer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя подписанта</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3415,6 +4485,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0178</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0178</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3425,6 +4499,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Signer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя подписанта</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3442,6 +4520,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0179</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0179</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3452,6 +4534,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Signer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя подписанта</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3469,6 +4555,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0191</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0191</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3479,6 +4569,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of act</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата акта</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3496,6 +4590,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0192</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0192</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3506,6 +4604,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Title</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>НАЗВАНИЕ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3523,6 +4625,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0193</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0193</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3533,6 +4639,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Works performer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исполнитель работ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3550,6 +4660,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0194</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0194</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3560,6 +4674,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Executor type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип исполнителя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3577,6 +4695,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0195</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0195</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3587,6 +4709,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>наименование организации</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3604,6 +4730,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0196</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0196</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3614,6 +4744,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Private entrepreneur last name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия частного предпринимателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3631,6 +4765,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0197</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0197</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3641,6 +4779,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Private entrepreneur name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя частного предпринимателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3658,6 +4800,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0198</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0198</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3668,6 +4814,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Customer of works</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заказчик работ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3685,6 +4835,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0199</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0199</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3695,6 +4849,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Customer type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип заказчика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3712,6 +4870,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0200</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0200</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3722,6 +4884,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>наименование организации</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3739,6 +4905,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0201</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0201</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3749,6 +4919,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Private entrepreneur last name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия частного предпринимателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3766,6 +4940,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0202</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0202</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3776,6 +4954,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Private entrepreneur name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя частного предпринимателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3793,6 +4975,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0203</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0203</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3803,6 +4989,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The person who has delivered the executed works</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лицо сдавшее выполненные работы</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3820,6 +5010,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0204</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0204</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3830,6 +5024,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Official's last name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия должностного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3847,6 +5045,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0205</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0205</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3857,6 +5059,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Responsible person name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя должностного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3874,6 +5080,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0206</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0206</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3884,6 +5094,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name of the letter of attorney issuer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия лица, выдавшего доверенность</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3901,6 +5115,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0207</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0207</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3911,6 +5129,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the letter of power of attorney issuer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя лица, выдавшего доверенность</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3928,6 +5150,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0208</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0208</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3938,6 +5164,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Trustee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия доверенного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3955,6 +5185,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0209</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0209</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3965,6 +5199,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Substituted trustee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя доверенного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3982,6 +5220,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0210</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0210</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3992,6 +5234,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The description of the rendered service</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание оказанной услуги</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4009,6 +5255,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0211</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0211</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4019,6 +5269,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Total amount with VAT</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итоговая сумма с НДС</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4036,6 +5290,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0212</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0212</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4046,6 +5304,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Completed tasks list</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список выполненных работ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4063,6 +5325,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0213</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0213</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4073,6 +5339,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Line number</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер строки</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4090,6 +5360,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0214</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0214</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4100,6 +5374,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Unit of measure</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Единица измерения</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4117,6 +5395,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0215</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0215</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4127,6 +5409,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Service (ProductsAndServices)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Услуга (номенклатура)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4144,6 +5430,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0238</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0238</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4154,6 +5444,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data on works acceptance</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сведения по принятию работ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4171,6 +5465,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0239</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0239</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4181,6 +5479,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Person who accepted work</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лицо принявшее работы</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4198,6 +5500,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0240</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0240</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4208,6 +5514,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Official's last name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия должностного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4225,6 +5535,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0241</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0241</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4235,6 +5549,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Responsible person name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя должностного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4252,6 +5570,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0242</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0242</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4262,6 +5584,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name of the letter of attorney issuer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия лица, выдавшего доверенность</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4279,6 +5605,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0243</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0243</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4289,6 +5619,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the letter of power of attorney issuer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя лица, выдавшего доверенность</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4306,6 +5640,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0244</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0244</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4316,6 +5654,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Trustee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия доверенного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4333,6 +5675,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0245</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0245</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4343,6 +5689,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Substituted trustee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя доверенного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4360,6 +5710,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0230</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0230</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4370,6 +5724,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Invoice number</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер товарной накладной</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4387,6 +5745,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0231</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0231</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4397,6 +5759,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of invoice</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата товарной накладной</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4414,6 +5780,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0241</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0241</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4424,6 +5794,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Shipper type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип грузоотправителя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4441,6 +5815,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0242</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0242</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4451,6 +5829,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignor name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия грузоотправителя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4468,6 +5850,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0243</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0243</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4478,6 +5864,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Shipper name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя грузоотправителя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4495,6 +5885,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0244</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0244</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4505,6 +5899,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignee type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип грузополучателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4522,6 +5920,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0245</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0245</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4532,6 +5934,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя грузополучателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4549,6 +5955,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0246</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0246</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4559,6 +5969,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя грузополучателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4576,6 +5990,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0247</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0247</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4586,6 +6004,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Vendor type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип поставщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4603,6 +6025,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0248</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0248</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4613,6 +6039,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Supplier name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия поставщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4630,6 +6060,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0249</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0249</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4640,6 +6074,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Vendor's name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя поставщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4657,6 +6095,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0250</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0250</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4667,6 +6109,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payer type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип плательщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4684,6 +6130,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0251</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0251</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4694,6 +6144,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя плательщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4711,6 +6165,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0252</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0252</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4721,6 +6179,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payer name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя плательщика</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4738,6 +6200,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0253</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0253</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4748,6 +6214,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name of the respinsible for the shipping</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия ответственного за отпуск груза</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4765,6 +6235,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0254</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0254</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4775,6 +6249,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the responsible for shipping</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя ответственного за отпуск груза</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4792,6 +6270,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0255</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0255</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4802,6 +6284,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Chief accountant last name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия главного бухгалтера</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4819,6 +6305,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0256</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0256</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4829,6 +6319,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Chief accountant's name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя главного бухгалтера</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4846,6 +6340,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0257</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0257</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4856,6 +6354,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name of the person who has shipped the cargo</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия лица, который произвел отпуск груза</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4873,6 +6375,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0258</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0258</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4883,6 +6389,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the person who has shipped the cargo</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя лица, который произвел отпуск груза</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4900,6 +6410,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0259</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0259</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4910,6 +6424,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4927,6 +6445,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0260</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0260</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4937,6 +6459,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Line number</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер строки</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4954,6 +6480,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0261</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0261</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4964,6 +6494,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Unit of measure</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Единица измерения</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4981,6 +6515,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0262</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0262</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4991,6 +6529,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Net weight (quantity)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Масса нетто (количество)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -5008,6 +6550,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0263</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0263</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5018,6 +6564,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products and services</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция и услуги</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -5035,6 +6585,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0278</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0278</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5045,6 +6599,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя грузополучателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -5062,6 +6620,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0279</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0279</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5072,6 +6634,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the freight recipient</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя принимающего груз</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -5089,6 +6655,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0280</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0280</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5099,6 +6669,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Consignee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя грузополучателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -5116,6 +6690,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0281</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0281</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5126,6 +6704,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cargo receiver name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя получающего груз</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -5143,6 +6725,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0282</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0282</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5153,6 +6739,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name of the letter of attorney issuer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия лица, выдавшего доверенность</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -5170,6 +6760,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0283</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0283</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5180,6 +6774,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the letter of power of attorney issuer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя лица, выдавшего доверенность</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -5197,6 +6795,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0284</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0284</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5207,6 +6809,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Trustee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия доверенного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -5224,6 +6830,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0285</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0285</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5234,6 +6844,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Substituted trustee name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя доверенного лица</v8:content>
 						</v8:item>
 					</tl>
 				</c>

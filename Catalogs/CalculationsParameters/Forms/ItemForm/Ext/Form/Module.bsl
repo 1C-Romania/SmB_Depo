@@ -333,13 +333,13 @@ Function QueryCorrect()
 		QueryBuilder.FillSettings();
         If QueryBuilder.Dimensions.Count() > 0 Then
 		    Message = New UserMessage();
-			Message.Text = NStr("en = 'Query must not contain totals!'");
+			Message.Text = NStr("en='Query must not contain totals!';ru='Запрос не должен содержать итоги!'");
 			Message.Message();			
 			Return False;
 		EndIf; 
 		If QueryBuilder.SelectedFields.Count() > 1 Then
 		    Message = New UserMessage();
-			Message.Text = NStr("en = 'The query must contain no more than one indicator!'");
+			Message.Text = NStr("en='The query must contain no more than one indicator!';ru='Запрос должен содержать не более одного показателя!'");
 			Message.Message();			
 			Return False;
 		EndIf;
@@ -397,7 +397,7 @@ Function CheckForIDDuplication(Cancel)
 	If Cancel Then
 	
 	  	Message = New UserMessage();
-		Message.Text = NStr("en = 'The calculation parameter with such an identifier does already exist!'");
+		Message.Text = NStr("en='The calculation parameter with such an identifier does already exist!';ru='Параметр расчета с таким идентификатором уже существует!'");
 		Message.Message();
 		
 	EndIf;
@@ -418,7 +418,7 @@ Function CheckForIndicatorChoice()
 	EndDo; 
 	 
 	Message = New UserMessage();
-	Message.Text = NStr("en = 'Index is not selected!'");
+	Message.Text = NStr("en='Index is not selected!';ru='Не выбран показатель!'");
 	Message.Message();
 
 	Return True;
@@ -975,7 +975,7 @@ Procedure EditQuery(Command)
 			If Not QueryCorrect() Then
 				Response = Undefined;
 
-				ShowQueryBox(New NotifyDescription("EditQueryEnd", ThisObject), NStr("en = 'Query contains error! Clear query and return to original one?'"), QuestionDialogMode.YesNo, 0);
+				ShowQueryBox(New NotifyDescription("EditQueryEnd", ThisObject), NStr("en='Query contains error! Clear query and return to original one?';ru='Запрос содержит ошибку! Очистить запрос и вернуться к исходному?'"), QuestionDialogMode.YesNo, 0);
                 Return;
 			Else
 				FillParametersByQuery();
@@ -1029,7 +1029,7 @@ Procedure SpecifyValueAtPayrollCalculationOnChange(Item)
 	
 	If Object.SpecifyValueAtPayrollCalculation Then
 	
-		MessageText = NStr("en = 'After the flag is set, all attributes will be cleared! Continue?'");
+		MessageText = NStr("en='After the flag is set, all attributes will be cleared! Continue?';ru='После установки флага все реквизиты будут очищены! Продолжить?'");
 		QuestionResult = Undefined;
 
 		ShowQueryBox(New NotifyDescription("SpecifyValueAtPayrollCalculationOnChangeEnd", ThisObject), MessageText, QuestionDialogMode.YesNo);
@@ -1198,7 +1198,7 @@ EndProcedure
 Procedure CreateFixedAmount(Command)
 	
 	Notification = New NotifyDescription("FillByTemplateEnd",ThisForm,"FixedAmount");
-	ShowQueryBox(Notification,NStr("en = 'Calculation parameter will be completely refilled! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(Notification,NStr("en='Calculation parameter will be completely refilled! Continue?';ru='Параметр расчета будет полностью перезаполнен! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 		
 EndProcedure
 
@@ -1206,7 +1206,7 @@ EndProcedure
 Procedure CreateNormOfDays(Command)
 	
 	Notification = New NotifyDescription("FillByTemplateEnd",ThisForm,"NormDays");
-	ShowQueryBox(Notification,NStr("en = 'Calculation parameter will be completely refilled! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(Notification,NStr("en='Calculation parameter will be completely refilled! Continue?';ru='Параметр расчета будет полностью перезаполнен! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -1214,7 +1214,7 @@ EndProcedure
 Procedure CreateNormOfHours(Command)
 	
 	Notification = New NotifyDescription("FillByTemplateEnd",ThisForm,"NormHours");
-	ShowQueryBox(Notification,NStr("en = 'Calculation parameter will be completely refilled! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(Notification,NStr("en='Calculation parameter will be completely refilled! Continue?';ru='Параметр расчета будет полностью перезаполнен! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -1222,7 +1222,7 @@ EndProcedure
 Procedure CreateDaysWorked(Command)
 	
 	Notification = New NotifyDescription("FillByTemplateEnd",ThisForm,"DaysWorked");
-	ShowQueryBox(Notification,NStr("en = 'Calculation parameter will be completely refilled! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(Notification,NStr("en='Calculation parameter will be completely refilled! Continue?';ru='Параметр расчета будет полностью перезаполнен! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -1230,7 +1230,7 @@ EndProcedure
 Procedure CreateHoursWorked(Command)
 	
 	Notification = New NotifyDescription("FillByTemplateEnd",ThisForm,"HoursWorked");
-	ShowQueryBox(Notification,NStr("en = 'Calculation parameter will be completely refilled! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(Notification,NStr("en='Calculation parameter will be completely refilled! Continue?';ru='Параметр расчета будет полностью перезаполнен! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -1238,7 +1238,7 @@ EndProcedure
 Procedure CreateTariffRate(Command)
 	
 	Notification = New NotifyDescription("FillByTemplateEnd",ThisForm,"TariffRate");
-	ShowQueryBox(Notification,NStr("en = 'Calculation parameter will be completely refilled! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(Notification,NStr("en='Calculation parameter will be completely refilled! Continue?';ru='Параметр расчета будет полностью перезаполнен! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -1246,7 +1246,7 @@ EndProcedure
 Procedure CreateHoursWorkedByJobs(Command)
 	
 	Notification = New NotifyDescription("FillByTemplateEnd",ThisForm,"HoursWorkedByJobs");
-	ShowQueryBox(Notification,NStr("en = 'Calculation parameter will be completely refilled! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(Notification,NStr("en='Calculation parameter will be completely refilled! Continue?';ru='Параметр расчета будет полностью перезаполнен! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 

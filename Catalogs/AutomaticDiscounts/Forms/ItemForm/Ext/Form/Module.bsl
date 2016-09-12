@@ -27,7 +27,7 @@ Function FormAutoNamingAtClient()
 	
 	If Object.AssignmentMethod = AssignmentMethodPercent Then
 		
-		DescriptionString = "" + Object.DiscountMarkupValue + NStr("en = '%'");
+		DescriptionString = "" + Object.DiscountMarkupValue + NStr("en='%';ru='%'");
 		
 	ElsIf Object.AssignmentMethod = AssignmentMethodAmount Then
 		
@@ -45,29 +45,29 @@ Function FormAutoNamingAtClient()
 		ConditionsNumber = Object.ConditionsOfAssignment.Count();
 		
 		If ConditionsNumber >= 2 Then
-			DescriptionString = DescriptionString + " " +NStr("en = '(several conditions)'");
+			DescriptionString = DescriptionString + " " +NStr("en='(several conditions)';ru='(несколько условий)'");
 			Items.Description.ChoiceList.Add(DescriptionString);
 		EndIf;
 		
 	ElsIf Object.ConditionsOfAssignment.Count() = 0 Then
-		DescriptionString = DescriptionString + " " + NStr("en = 'without conditions'");
+		DescriptionString = DescriptionString + " " + NStr("en='without conditions';ru='без условий'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 	EndIf;
 	
 	AmountInDocument = (Object.AssignmentMethod = AssignmentMethodAmount AND Object.AssignmentArea = AreaInDocument);
 	If Object.ProductsAndServicesGroupsPriceGroups.Count() > 0 AND Not AmountInDocument Then
-		DescriptionString = DescriptionString + NStr("en = ', with clarification'");
+		DescriptionString = DescriptionString + NStr("en=', with clarification';ru=', с уточнением'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 	EndIf;
 	
 	If (Object.DiscountRecipientsCounterparties.Count() > 0 AND Object.Purpose <> PurposeRetail) 
 		OR (Object.DiscountRecipientsWarehouses.Count() > 0 AND Object.Purpose <> PurposeWholesale) Then
-		DescriptionString = DescriptionString + NStr("en = ',  recipients indicated'");
+		DescriptionString = DescriptionString + NStr("en=',  recipients indicated';ru=', указаны получатели'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 	EndIf;
 	
 	If Object.TimeByDaysOfWeek.Count() > 0 Then
-		DescriptionString = DescriptionString + NStr("en = ', on schedule'");
+		DescriptionString = DescriptionString + NStr("en=', on schedule';ru=', по расписанию'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 	EndIf;
 	
@@ -86,7 +86,7 @@ Function FormAutoNamingAtServer()
 	
 	If Object.AssignmentMethod = AssignmentMethodPercent Then
 		
-		DescriptionString = "" + Object.DiscountMarkupValue + NStr("en = '%'");
+		DescriptionString = "" + Object.DiscountMarkupValue + NStr("en='%';ru='%'");
 		
 	ElsIf Object.AssignmentMethod = AssignmentMethodAmount Then
 		
@@ -106,31 +106,31 @@ Function FormAutoNamingAtServer()
 		ConditionsNumber = Object.ConditionsOfAssignment.Count();
 		
 		If ConditionsNumber >= 2 Then
-			DescriptionString = DescriptionString + " " +NStr("en = '(several conditions)'");
+			DescriptionString = DescriptionString + " " +NStr("en='(several conditions)';ru='(несколько условий)'");
 			Items.Description.ChoiceList.Add(DescriptionString);
 		EndIf;
 		
 	ElsIf Object.ConditionsOfAssignment.Count() = 0 Then
 		
-		DescriptionString = DescriptionString + " " + NStr("en = 'without conditions'");
+		DescriptionString = DescriptionString + " " + NStr("en='without conditions';ru='без условий'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 		
 	EndIf;
 	
 	AmountInDocument = (Object.AssignmentMethod = AssignmentMethodAmount AND Object.AssignmentArea = AreaInDocument);
 	If Object.ProductsAndServicesGroupsPriceGroups.Count() > 0 AND Not AmountInDocument Then
-		DescriptionString = DescriptionString + NStr("en = ', with clarification'");
+		DescriptionString = DescriptionString + NStr("en=', with clarification';ru=', с уточнением'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 	EndIf;
 	
 	If (Object.DiscountRecipientsCounterparties.Count() > 0 AND Object.Purpose <> PurposeRetail) 
 		OR (Object.DiscountRecipientsWarehouses.Count() > 0 AND Object.Purpose <> PurposeWholesale) Then
-		DescriptionString = DescriptionString + NStr("en = ',  recipients indicated'");
+		DescriptionString = DescriptionString + NStr("en=',  recipients indicated';ru=', указаны получатели'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 	EndIf;
 	
 	If Object.TimeByDaysOfWeek.Count() > 0 Then
-		DescriptionString = DescriptionString + NStr("en = ', on schedule'");
+		DescriptionString = DescriptionString + NStr("en=', on schedule';ru=', по расписанию'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 	EndIf;
 	
@@ -364,7 +364,7 @@ Procedure DiscountMarkupValueOnChange(Item)
 	
 	If Object.AssignmentMethod = AssignmentMethodPercent Then
 		If Object.DiscountMarkupValue > 100 Then
-			MessageText = NStr("en = 'Discount shall not exceed 100%'");
+			MessageText = NStr("en='Discount shall not exceed 100%';ru='Процент скидки должен быть не более 100%'");
 			CommonUseClientServer.MessageToUser(MessageText, 
 																,
 																"DiscountMarkupValue",
@@ -475,7 +475,7 @@ Procedure ProductsAndServicesGroupsPriceGroupsDiscountMarkupValueOnChange(Item)
 	If CurrentRow <> Undefined Then
 		If Object.AssignmentMethod = AssignmentMethodPercent Then
 			If CurrentRow.DiscountMarkupValue > 100 Then
-				MessageText = NStr("en = 'Discount shall not exceed 100%'");
+				MessageText = NStr("en='Discount shall not exceed 100%';ru='Процент скидки должен быть не более 100%'");
 				CommonUseClientServer.MessageToUser(MessageText, 
 																	,
 																	"ProductsAndServicesGroupsPriceGroups["+(CurrentRow.LineNumber-1)+"].DiscountMarkupValue",

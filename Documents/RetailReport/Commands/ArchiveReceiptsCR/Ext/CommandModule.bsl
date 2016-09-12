@@ -48,6 +48,6 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	
 	Notify("RefreshFormsAfterClosingCashCRSession");
 	
-	ShowUserNotification(NStr("en = 'Cash register receipts'' archiving completed'"));
+	ShowUserNotification(NStr("en=""Cash register receipts' archiving completed"";ru='Архивация чеков ККМ выполнена'"));
 	
 EndProcedure // CommandProcessing()

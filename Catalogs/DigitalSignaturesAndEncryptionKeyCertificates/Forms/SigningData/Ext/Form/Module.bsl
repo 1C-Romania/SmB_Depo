@@ -342,8 +342,9 @@ Procedure SignData(Notification)
 	
 	If CertificateValidUntil < CommonUseClient.SessionDate() Then
 		Context.ErrorOnClient.Insert("ErrorDescription",
-			NStr("en = 'Selected certificate has expired.
-			           |Select another certificate.'"));
+			NStr("en='Selected certificate has expired."
+"Select another certificate.';ru='У выбранного сертификата истек срок действия."
+"Выберите другой сертификат.'"));
 		ShowError(Context.ErrorOnClient, Context.ErrorOnServer);
 		ExecuteNotifyProcessing(Context.Notification, False);
 		Return;
@@ -351,8 +352,9 @@ Procedure SignData(Notification)
 	
 	If Not ValueIsFilled(CertificateApplication) Then
 		Context.ErrorOnClient.Insert("ErrorDescription",
-			NStr("en = 'Selected certificate has no indicated application for a closed key.
-			           |Select another certificate.'"));
+			NStr("en='Selected certificate has no indicated application for a closed key."
+"Select another certificate.';ru='У выбранного сертификата не указана программа для закрытого ключа."
+"Выберите другой сертификат.'"));
 		ShowError(Context.ErrorOnClient, Context.ErrorOnServer);
 		ExecuteNotifyProcessing(Context.Notification, False);
 		Return;
@@ -504,7 +506,7 @@ Procedure ShowError(ErrorOnClient, ErrorOnServer)
 	EndIf;
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en = 'Failed to sign data'"), "",
+		NStr("en='Failed to sign data';ru='Не удалось подписать данные'"), "",
 		ErrorOnClient, ErrorOnServer, , ProcessingAfterWarning);
 	
 EndProcedure

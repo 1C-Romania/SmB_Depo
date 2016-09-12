@@ -69,7 +69,7 @@ Procedure CheckFillOfFormAttributes(Cancel)
 	
 	If Not ValueIsFilled(DocumentCurrency) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Currency has not been selected!'");
+		Message.Text = NStr("en='Currency has not been selected!';ru='Не выбрана валюта для заполнения!'");
 		Message.Field = "DocumentCurrency";
 		Message.Message();
 		Cancel = True;
@@ -77,7 +77,7 @@ Procedure CheckFillOfFormAttributes(Cancel)
 	
 	If Not ValueIsFilled(ExchangeRate) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Settlements currency exchange rate is equal to zero!'");
+		Message.Text = NStr("en='Settlements currency exchange rate is equal to zero!';ru='Обнаружен нулевой курс валюты расчетов!'");
 		Message.Field = "ExchangeRate";
 		Message.Message();
 		Cancel = True;
@@ -85,7 +85,7 @@ Procedure CheckFillOfFormAttributes(Cancel)
 	
 	If Not ValueIsFilled(Multiplicity) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Settlements currency exchange rate multiplicity is equal to zero! '");
+		Message.Text = NStr("en='Settlements currency exchange rate multiplicity is equal to zero! ';ru='Обнаружена нулевая кратность курса валюты документа!'");
 		Message.Field = "SettlementsMultiplicity";
 		Message.Message();
 		Cancel = True;
@@ -93,7 +93,7 @@ Procedure CheckFillOfFormAttributes(Cancel)
 	
 	If Not ValueIsFilled(SettlementsCurrency) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Currency to fill in has not been selected!'");
+		Message.Text = NStr("en='Currency to fill in has not been selected!';ru='Не выбрана валюта расчетов для заполнения!'");
 		Message.Field = "SettlementsCurrency";
 		Message.Message();
 		Cancel = True;

@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Addition of the certificate for data encryption</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Добавление сертификата для шифрования данных</v8:content>
+		</v8:item>
 	</Title>
 	<Width>60</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -25,11 +29,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<PagesRepresentation>None</PagesRepresentation>
@@ -41,6 +53,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Page certificate selection</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница выбор сертификата</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="PageCertificateChoiceExtendedTooltip" id="240"/>
 					<ChildItems>
@@ -49,6 +65,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Certificates on computer</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сертификаты на компьютере</v8:content>
 								</v8:item>
 							</Title>
 							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
@@ -62,11 +82,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Group warnings that certificates are unavailable</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа предупреждения недоступности сертификатов</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group warnings that certificates are unavailable</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа предупреждения недоступности сертификатов</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -79,6 +107,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group certificates are not available on the client</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа сертификаты недоступны на клиенте</v8:content>
 												</v8:item>
 											</Title>
 											<Group>Horizontal</Group>
@@ -94,6 +126,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>Certificates are not available on client icon</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сертификаты недоступны на клиенте значок</v8:content>
+														</v8:item>
 													</Title>
 													<Picture>
 														<xr:Ref>CommonPicture.Warning</xr:Ref>
@@ -107,6 +143,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Certificates are not available on computer</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сертификаты недоступны на компьютере</v8:content>
 														</v8:item>
 													</Title>
 													<Hyperlink>true</Hyperlink>
@@ -123,6 +163,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group certificates are not available on the server</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа сертификаты недоступны на сервере</v8:content>
 												</v8:item>
 											</Title>
 											<Group>Horizontal</Group>
@@ -145,6 +189,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Certificates not available on server</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сертификаты недоступны на сервере</v8:content>
 														</v8:item>
 													</Title>
 													<Hyperlink>true</Hyperlink>
@@ -198,6 +246,10 @@
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Certificates context menu standard commands</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Сертификаты контекстное меню стандартные команды</v8:content>
 													</v8:item>
 												</Title>
 												<CommandSource>Item.Certificates</CommandSource>
@@ -291,6 +343,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Show all certificates without filter (for example including the added and expired ones)</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Показать все сертификаты без отбора (например, включая добавленные и просроченные)</v8:content>
+										</v8:item>
 									</ToolTip>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ShowAllContextMenu" id="817"/>
@@ -304,6 +360,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Instructions on how to work with digital signature and encryption applications</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Инструкции по работе с программами электронной подписи и шифрования</v8:content>
 										</v8:item>
 									</Title>
 									<Hyperlink>true</Hyperlink>
@@ -320,6 +380,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Commands next cancel</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Команды далее отмена</v8:content>
 								</v8:item>
 							</Title>
 							<HorizontalLocation>Right</HorizontalLocation>
@@ -340,6 +404,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Cancel</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отменить</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="Cancel1ExtendedTooltip" id="373"/>
 								</Button>
@@ -355,6 +423,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Input additional certificate info</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Введите дополнительные сведения о сертификате</v8:content>
 								</v8:item>
 							</Title>
 							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
@@ -468,6 +540,21 @@ special purpose by the different users the presentation shall
 be replaced by the purpose description, for example: " For invoices encryption up to 05.2019
 ", " For tax reporting encryption, until 12.2015".</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Уникальное представление сертификата используется в полях выбора при шифровании.
+Оно формируется из фамилии, имени, организации, должности и срока действия.
+Например: "Иванов Иван, ООО 1С, Программист, до 03.2017".
+
+Когда у пользователя два сертификата от разных удостоверяющих центров (УЦ),
+тогда представление нужно дополнить именем УЦ.
+Например: "Иванов Иван, ООО 1С, Программист, до 03.2017, УЦ 1С".
+
+Когда сертификат используется для специальной цели разными пользователями,
+тогда представление нужно заменить на описание этой цели, например:
+"Для шифрования счетов-фактур, до 05.2019",
+"Для шифрования налоговой отчетности, до 12.2015".</v8:content>
+											</v8:item>
 										</Title>
 									</ExtendedTooltip>
 								</InputField>
@@ -477,6 +564,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Text of a hint is set from catalog attribute.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Текст подсказки устанавливается из реквизита справочника.</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Width>35</Width>
@@ -490,6 +581,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Text of a hint is set from catalog attribute.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Текст подсказки устанавливается из реквизита справочника.</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Width>35</Width>
@@ -510,6 +605,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 									<v8:lang>en</v8:lang>
 									<v8:content>Commands back add cancel</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Команды назад добавить отмена</v8:content>
+								</v8:item>
 							</Title>
 							<HorizontalLocation>Right</HorizontalLocation>
 							<ExtendedTooltip name="CommandsBackAddCancelExtendedTooltip" id="536"/>
@@ -527,6 +626,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 											<v8:lang>en</v8:lang>
 											<v8:content>Add</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Добавить</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="AddExtendedTooltip" id="540"/>
 								</Button>
@@ -538,6 +641,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Cancel</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отменить</v8:content>
 										</v8:item>
 									</Title>
 									<ExtendedTooltip name="Cancel2ExtendedTooltip" id="542"/>
@@ -556,6 +663,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificates</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификаты</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -566,6 +677,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Presentation</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -582,6 +697,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 							<v8:lang>en</v8:lang>
 							<v8:content>Issued by</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кем выдан</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -596,6 +715,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Imprint</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отпечаток</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -612,6 +735,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 							<v8:lang>en</v8:lang>
 							<v8:content>on client</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>на клиенте</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -623,6 +750,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 							<v8:lang>en</v8:lang>
 							<v8:content>At server</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>на сервере</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -633,6 +764,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>This request</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это заявление</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -646,6 +781,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Presentation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -663,6 +802,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Imprint of the selected certificate</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отпечаток выбранного сертификата</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -678,6 +821,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
@@ -688,6 +835,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес сертификата</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -704,6 +855,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate thumbprint</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отпечаток сертификата</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -719,6 +874,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate parameters of attributes</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат параметры реквизитов</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -727,6 +886,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate data description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат описание данных</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -738,6 +901,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Property</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Свойство</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -753,6 +920,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Value</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -770,6 +941,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>User</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -793,6 +968,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Error certificates receiving on the client</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибка получения сертификатов на клиенте</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -801,6 +980,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Error certificates receiving on the server</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибка получения сертификатов на сервере</v8:content>
 				</v8:item>
 			</Title>
 			<Type/>
@@ -811,6 +994,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Perform on server</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнять на сервере</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -819,6 +1006,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show all certificates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать все сертификаты</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -833,11 +1024,19 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Next &gt;</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Далее  &gt;</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Next</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Далее</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Next</Action>
@@ -848,6 +1047,10 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Add</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить</v8:content>
+				</v8:item>
 			</Title>
 			<Action>Add</Action>
 		</Command>
@@ -857,11 +1060,19 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>&lt; Back</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt; Back</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Back</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назад</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Back</Action>
@@ -872,11 +1083,19 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update list of certificates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить список сертификатов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F5</Shortcut>
@@ -892,11 +1111,19 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Show the certificate data</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать данные сертификата</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show certificate data saved in file</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать данные сертификата, которые сохраняются в файле</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -911,11 +1138,19 @@ be replaced by the purpose description, for example: " For invoices encryption u
 					<v8:lang>en</v8:lang>
 					<v8:content>Show the certificate data</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать данные сертификата</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show certificate data saved in file</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать данные сертификата, которые сохраняются в файле</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>

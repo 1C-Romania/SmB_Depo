@@ -327,7 +327,7 @@ Procedure AcceptAllAsSeparateFiles(Command)
 		If ErrorsCount = 1 Then
 			Result.OutputWarning.Text = FullAllTextErrors;
 		Else
-			ShortAllTextErrors = StrReplace(NStr("en = 'During execution, errors occurred (%1).'"), "%1", String(ErrorsCount));
+			ShortAllTextErrors = StrReplace(NStr("en='During execution, errors occurred (%1).';ru='При выполнении возникли ошибки (%1).'"), "%1", String(ErrorsCount));
 			Result.OutputWarning.Text = ShortAllTextErrors;
 			Result.OutputWarning.ErrorsText = FullAllTextErrors;
 		EndIf;
@@ -730,51 +730,51 @@ Procedure ConvertEnumsToParametersAndGetPresentation()
 		If OnePageStorageFormat = Enums.OnePageFilesStorageFormats.PDF Then
 			PictureFormat = String(FormatOfScannedImage);
 			
-			Presentation = Presentation + NStr("en = 'Scanning format:'") + " ";
+			Presentation = Presentation + NStr("en='Scanning format:';ru='Формат хранения:'") + " ";
 			Presentation = Presentation + "PDF";
 			Presentation = Presentation + ". ";
-			Presentation = Presentation + NStr("en = 'Scanning format:'") + " ";
+			Presentation = Presentation + NStr("en='Scanning format:';ru='Формат хранения:'") + " ";
 			Presentation = Presentation + PictureFormat;
 			Presentation = Presentation + ". ";
 		Else	
 			PictureFormat = String(OnePageStorageFormat);
-			Presentation = Presentation + NStr("en = 'Scanning format:'") + " ";
+			Presentation = Presentation + NStr("en='Scanning format:';ru='Формат хранения:'") + " ";
 			Presentation = Presentation + PictureFormat;
 			Presentation = Presentation + ". ";
 		EndIf;
 	Else	
 		PictureFormat = String(FormatOfScannedImage);
-		Presentation = Presentation + NStr("en = 'Scanning format:'") + " ";
+		Presentation = Presentation + NStr("en='Scanning format:';ru='Формат хранения:'") + " ";
 		Presentation = Presentation + PictureFormat;
 		Presentation = Presentation + ". ";
 	EndIf;
 
 	If Upper(PictureFormat) = "JPG" Then
-		Presentation = Presentation +  NStr("en = 'Quality:'") + " " + String(JPGQuality) + ". ";
+		Presentation = Presentation +  NStr("en='Quality:';ru='Качество:'") + " " + String(JPGQuality) + ". ";
 	EndIf;	
 	
 	If Upper(PictureFormat) = "TIF" Then
-		Presentation = Presentation +  NStr("en = 'Deflate:'") + " " + String(TIFFCompression) + ". ";
+		Presentation = Presentation +  NStr("en='Deflate:';ru='дефлятируем:'") + " " + String(TIFFCompression) + ". ";
 	EndIf;
 	
-	Presentation = Presentation + NStr("en = 'Multipage storage format:'") + " ";
+	Presentation = Presentation + NStr("en='Multipage storage format:';ru='Формат хранения многостраничный:'") + " ";
 	Presentation = Presentation + String(MultiPageStorageFormat);
 	Presentation = Presentation + ". ";
 	
 	Presentation = Presentation + StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Resolution: %1 dpi. %2.'") + " ",
+		NStr("en='Resolution: %1 dpi. %2.';ru='Разрешение: %1 dpi. %2.'") + " ",
 		String(Resolution), String(ChromaticityEnum));
 	
 	If Not RotationEnum.IsEmpty() Then
-		Presentation = Presentation +  NStr("en = 'Rotation:'")+ " " + String(RotationEnum) + ". ";
+		Presentation = Presentation +  NStr("en='Rotation:';ru='Поворот:'")+ " " + String(RotationEnum) + ". ";
 	EndIf;	
 	
 	If Not PaperSizeEnum.IsEmpty() Then
-		Presentation = Presentation +  NStr("en = 'Paper size:'") + " " + String(PaperSizeEnum) + ". ";
+		Presentation = Presentation +  NStr("en='Paper size:';ru='Размер бумаги:'") + " " + String(PaperSizeEnum) + ". ";
 	EndIf;	
 	
 	If DoubleSidedScan = True Then
-		Presentation = Presentation +  NStr("en = 'Double sided scanning'") + ". ";
+		Presentation = Presentation +  NStr("en='Double sided scanning';ru='Двустороннее сканирование'") + ". ";
 	EndIf;	
 	
 	SettingsText = Presentation;
@@ -859,10 +859,13 @@ EndProcedure
 Function MessageTextErrorsInPDFConversions(ResultFile)
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'File ""%1"" is not found.
-		           |Check whether application ImageMagick
-		           |is installed and a correct path to
-		           |PDF conversion application is specified in the scan settings form.'"),
+		NStr("en='File ""%1"" is not found."
+"Check whether application ImageMagick"
+"is installed and a correct path to"
+"PDF conversion application is specified in the scan settings form.';ru='Не найден файл ""%1""."
+"Проверьте, что"
+"установлена программа ImageMagick и указан правильный"
+"путь к программе преобразования в PDF в форме настроек сканирования.'"),
 		ResultFile);
 		
 	Return MessageText;

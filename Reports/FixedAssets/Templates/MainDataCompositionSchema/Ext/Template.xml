@@ -113,6 +113,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Inventory Number</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инвентарный номер</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -122,6 +126,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Initial cost</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начальная стоимость</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -133,6 +141,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Depreciation method</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Способ амортизации</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -142,6 +154,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cost Change</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стоимость изменение</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -153,6 +169,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Depreciation account</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет амортизации</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -162,6 +182,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>GL account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Указывается счет учета</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -173,6 +197,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Division</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>разделение</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -182,6 +210,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Depreciated cost</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаточная стоимость имущества</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -351,6 +383,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Begin of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -369,6 +405,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>End of period</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Окончание периода</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -389,6 +429,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>отчетный период</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -408,6 +452,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>отчетный период</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>v8:StandardPeriod</v8:Type>
@@ -426,6 +474,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Output title</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:boolean</v8:Type>
@@ -440,6 +492,10 @@
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>Depreciation accrued</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>Depreciation accrued</v8:content>
 			</v8:item>
 		</dcsset:presentation>
@@ -574,6 +630,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Depreciation accrued</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Depreciation accrued</v8:content>
+						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -649,6 +709,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Inventory card</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Инвентарная карточка</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
@@ -704,7 +768,72 @@
 					<dcscor:parameter>EndOfPeriod</dcscor:parameter>
 					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
 					<dcsset:userSettingID>b3c529d3-bc29-4ccd-83b9-fbf97350268a</dcsset:userSettingID>
-					<dcsset:userSettingPresentation xsi:type="xs:string">As of</dcsset:userSettingPresentation>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>az</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>am</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>bg</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>et</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>fr</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ka</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>de</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>lv</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>lt</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>mn</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ro</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>sl</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>tr</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ItmPeriod</dcscor:parameter>
@@ -747,6 +876,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Inventory card</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Инвентарная карточка</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>

@@ -12,7 +12,7 @@
 Procedure OpenScanSettingsForm() Export
 	
 	If CommonUseClientServer.IsLinuxClient() Then
-		MessageText = NStr("en = 'Scanning is not supported in the client under OS Linux.'");
+		MessageText = NStr("en='Scanning is not supported in the client under OS Linux.';ru='Сканирование не поддерживается в клиенте под управлением ОС Linux.'");
 		ShowMessageBox(, MessageText);
 		Return;
 	EndIf;
@@ -142,9 +142,11 @@ Procedure ShowFormClosingConfirmationWithFiles(Form, Cancel, ObjectRef, Attribut
 	EndIf;
 	
 	Cancel = True;
-	QuestionText = NStr("en = 'One or several files are occupied by you for editing.
-	                          |
-	                          |Continue?'");
+	QuestionText = NStr("en='One or several files are occupied by you for editing."
+""
+"Continue?';ru='Один или несколько файлов заняты вами для редактирования."
+""
+"Продолжить?'");
 	CommonUseClient.ShowArbitraryFormClosingConfirmation(Form, Cancel, QuestionText, AttributeName);
 	
 EndProcedure

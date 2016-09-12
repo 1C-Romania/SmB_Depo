@@ -1381,8 +1381,9 @@ Procedure OperationKindChoiceProcessing(Item, ValueSelected, StandardProcessing)
 			
 			If Not StringProducts.ProductsAndServicesTypeInventory Then
 				
-				MessageText = NStr("en = 'Disassembling operation is invalid for works and services!
-				|The %ProductsAndServicesPresentation% products and services could be a work(service) in the %Number% string of the tabular section ""Products""'");
+				MessageText = NStr("en='Disassembling operation is invalid for works and services!"
+"The %ProductsAndServicesPresentation% products and services could be a work(service) in the %Number% string of the tabular section ""Products""';ru='Операция разборки не выполняется для работ и услуг!"
+"В строке №%Номер% табличной части ""Продукция"" номенклатура ""%НоменклатураПредставление%"" является работой (услугой)'");
 				MessageText = StrReplace(MessageText, "%Number%", StringProducts.LineNumber);
 				MessageText = StrReplace(MessageText, "%ProductsAndServicesPresentation%", String(StringProducts.ProductsAndServices));
 				
@@ -1514,7 +1515,7 @@ Procedure StartOnChange(Item)
 	
 	If Object.Start > Object.Finish Then
 		Object.Start = WhenChangingStart;
-		Message(NStr("en='Start date can not be later than the end date.'"));
+		Message(NStr("en='Start date can not be later than the end date.';ru='Дата старта не может быть больше даты финиша.'"));
 	Else
 		WhenChangingStart = Object.Start;
 	EndIf;
@@ -1532,7 +1533,7 @@ Procedure FinishOnChange(Item)
 	
 	If Object.Finish < Object.Start Then
 		Object.Finish = WhenChangingFinish;
-		Message(NStr("en='Finish date can not be less than the start date.'"));
+		Message(NStr("en='Finish date can not be less than the start date.';ru='Дата финиша не может быть меньше даты старта.'"));
 	Else
 		WhenChangingFinish = Object.Finish;
 	EndIf;

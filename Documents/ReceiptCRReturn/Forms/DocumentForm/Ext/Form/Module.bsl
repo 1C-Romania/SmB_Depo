@@ -314,7 +314,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en = '%Currency%'");
+			LabelText = NStr("en='%Currency%';ru='%Вал%'");
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
@@ -322,9 +322,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%PriceKind%'");
+			LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %PriceKind%'");
+			LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
@@ -332,9 +332,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Discount card.
 	If ValueIsFilled(LabelStructure.DiscountCard) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%DiscountCard%'");
+			LabelText = LabelText + NStr("en='%DiscountCard%';ru='%ДисконтнаяКарта%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %DiscountCard%'");
+			LabelText = LabelText + NStr("en=' • %DiscountCard%';ru=' • %ДисконтнаяКарта%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%DiscountCard%", String(LabelStructure.DiscountPercentByDiscountCard)+"% by map"); //ShortLP(String(LabelStructure.DiscountCard)));
 	EndIf;	
@@ -342,9 +342,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%VATTaxation%'");
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %VATTaxation%'");
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
 		EndIf;	
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
@@ -352,9 +352,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then	
 		If LabelStructure.AmountIncludesVAT Then	
-			LabelText = NStr("en = 'Amount includes VAT'");
+			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
 		Else
-			LabelText = NStr("en = 'Amount does not include VAT'");
+			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
 		EndIf;
 	EndIf;
 	
@@ -623,7 +623,7 @@ Procedure IssueReceipt()
 	If Object.ReceiptCRNumber <> 0
 	AND Not CashCRUseWithoutEquipmentConnection Then
 		
-		MessageText = NStr("en = 'Check has already been issued on the fiscal record!'");
+		MessageText = NStr("en='Check has already been issued on the fiscal record!';ru='Чек уже пробит на фискальном регистраторе!'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -715,10 +715,11 @@ Procedure IssueReceipt()
 										
 										If Not ResultET Then
 											
-											MessageText = NStr(
-												"en = 'When operation execution there
-												|was error: ""%ErrorDescription%"".
-												|Cancellation by card has not been performed.'"
+											MessageText = NStr("en='When operation execution there"
+"was error: ""%ErrorDescription%""."
+"Cancellation by card has not been performed.';ru='При выполнении операции возникла ошибка:"
+"""%ОписаниеОшибки%""."
+"Отмена по карте не была произведена.'"
 											);
 											MessageText = StrReplace(
 												MessageText,
@@ -761,10 +762,11 @@ Procedure IssueReceipt()
 											
 											ErrorDescriptionFR = Output_Parameters[1];
 											
-											MessageText = NStr(
-												"en = 'When printing slip receipt
-												|there was error: ""%ErrorDescription%"".
-												|Operation by card has been cancelled.'"
+											MessageText = NStr("en='When printing slip receipt"
+"there was error: ""%ErrorDescription%""."
+"Operation by card has been cancelled.';ru='При печати слип-чека"
+"возникла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте была отменена.'"
 											);
 											MessageText = StrReplace(
 												MessageText,
@@ -789,10 +791,11 @@ Procedure IssueReceipt()
 									
 								Else
 									
-									MessageText = NStr(
-										"en = 'When POS terminal connection there
-										|was error: ""%ErrorDescription%"".
-										|Operation by card has not been performed.'"
+									MessageText = NStr("en='When POS terminal connection there"
+"was error: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении эквайрингового"
+"терминала произошла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'"
 									);
 									MessageText = StrReplace(
 										MessageText,
@@ -930,11 +933,13 @@ Procedure IssueReceipt()
 								
 							Else
 								
-								MessageText = NStr(
-									"en = 'When printing a receipt, an error occurred.
-									|Receipt is not printed on the fiscal register.
-									|Additional
-									|description: %AdditionalDetails%'"
+								MessageText = NStr("en='When printing a receipt, an error occurred."
+"Receipt is not printed on the fiscal register."
+"Additional"
+"description: %AdditionalDetails%';ru='При печати чека произошла ошибка."
+"Чек не напечатан на фискальном регистраторе."
+"Дополнительное"
+"описание: %ДополнительноеОписание%'"
 								);
 								
 								MessageText = StrReplace(
@@ -958,10 +963,11 @@ Procedure IssueReceipt()
 						
 					Else
 						
-						MessageText = NStr(
-							"en = 'When fiscal registrar connection there
-							|was error: ""%ErrorDescription%"".
-							|Operation by card has not been performed.'"
+						MessageText = NStr("en='When fiscal registrar connection there"
+"was error: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении фискального регистратора произошла ошибка:"
+"""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'"
 						);
 						MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 						CommonUseClientServer.MessageToUser(MessageText);
@@ -972,7 +978,7 @@ Procedure IssueReceipt()
 				
 			Else
 				
-				MessageText = NStr("en = 'First, you need to select the workplace of the current session peripherals.'");
+				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				
 			EndIf;
@@ -996,7 +1002,7 @@ Procedure IssueReceipt()
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en = 'Failed to post the document'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 	Notify("RefreshFormListDocumentsReceiptsCRReturn");
@@ -1014,7 +1020,7 @@ Procedure IssueReceiptExecute()
 	
 	If Object.DeletionMark Then
 		
-		ErrorText = NStr("en='The document is marked for deletion.'");
+		ErrorText = NStr("en='The document is marked for deletion.';ru='Документ помечен на удаление'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -1046,12 +1052,12 @@ Procedure CancelPayment(Command)
 	//Check selected string in payment table by payment cards
 	CurrentData = Items.PaymentWithPaymentCards.CurrentData;
 	If CurrentData = Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en='Select string of canceled payment card.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Select string of canceled payment card.';ru='Выберите строку отменяемой оплаты картой.'"));
 		Return;
 	EndIf;
 	
 	If CurrentData.PaymentCanceled Then
-		CommonUseClientServer.MessageToUser(NStr("en='This payment is already cancelled.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='This payment is already cancelled.';ru='Данная оплата уже отменена.'"));
 		Return;
 	EndIf;
 	
@@ -1141,10 +1147,11 @@ Procedure CancelPayment(Command)
 							
 						Else
 							
-							MessageText = NStr(
-								"en = 'When operation execution there
-								|was error: ""%ErrorDescription%"".
-								|Cancellation by card has not been performed.'"
+							MessageText = NStr("en='When operation execution there"
+"was error: ""%ErrorDescription%""."
+"Cancellation by card has not been performed.';ru='При выполнении операции возникла ошибка:"
+"""%ОписаниеОшибки%""."
+"Отмена по карте не была произведена.'"
 							);
 							
 							MessageText = StrReplace(
@@ -1161,10 +1168,11 @@ Procedure CancelPayment(Command)
 							
 							ErrorDescriptionFR = Output_Parameters[1];
 							
-							MessageText = NStr(
-								"en = 'When printing slip receipt
-								|there was error: ""%ErrorDescription%"".
-								|Operation by card has been cancelled.'"
+							MessageText = NStr("en='When printing slip receipt"
+"there was error: ""%ErrorDescription%""."
+"Operation by card has been cancelled.';ru='При печати слип-чека"
+"возникла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте была отменена.'"
 							);
 							
 							MessageText = StrReplace(
@@ -1194,10 +1202,11 @@ Procedure CancelPayment(Command)
 						
 					Else
 						
-						MessageText = NStr(
-							"en = 'When fiscal registrar connection there
-							|was error: ""%ErrorDescription%"".
-							|Operation by card has not been performed.'"
+						MessageText = NStr("en='When fiscal registrar connection there"
+"was error: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении фискального регистратора произошла ошибка:"
+"""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'"
 						);
 						MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 						CommonUseClientServer.MessageToUser(MessageText);
@@ -1206,10 +1215,11 @@ Procedure CancelPayment(Command)
 					
 				Else
 					
-					MessageText = NStr(
-						"en = 'When POS terminal connection there
-						|was error: ""%ErrorDescription%"".
-						|Operation by card has not been performed.'"
+					MessageText = NStr("en='When POS terminal connection there"
+"was error: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении эквайрингового"
+"терминала произошла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'"
 					);
 					MessageText = StrReplace(
 						MessageText,
@@ -1226,7 +1236,7 @@ Procedure CancelPayment(Command)
 		
 	Else
 		
-		MessageText = NStr("en = 'First, you need to select the workplace of the current session peripherals.'");
+		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;
@@ -1875,7 +1885,7 @@ Procedure OpenInformationAboutDiscountsClient()
 	ParameterStructure.Insert("Workplace", Workplace);
 	
 	If Not Object.DiscountsAreCalculated Then
-		QuestionText = NStr("en='Discounts (markups) are not calculated, calculate?'");
+		QuestionText = NStr("en='Discounts (markups) are not calculated, calculate?';ru='Скидки (наценки) не рассчитаны, рассчитать?'");
 		
 		AdditionalParameters = New Structure; 
 		AdditionalParameters.Insert("ParameterStructure", ParameterStructure);

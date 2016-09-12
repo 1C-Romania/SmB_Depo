@@ -71,19 +71,24 @@ Procedure OnOpen(Cancel)
 	
 	If EnhancedProtectionPrivateKey Then
 		ShowMessageBox(,
-			NStr("en = 'Certificate has a strong protection of a private key.
-			           |In this case, the electronic signature and encryption is
-			           |requesting a password and 1C:Enterprise application should pass a blank password to prevent error.
-			           |
-			           |Unable to remember and write password.'"));
+			NStr("en='Certificate has a strong protection of a private key."
+"In this case, the electronic signature and encryption is"
+"requesting a password and 1C:Enterprise application should pass a blank password to prevent error."
+""
+"Unable to remember and write password.';ru='У сертификата установлена усиленная защита закрытого ключа."
+"В таком случае пароль запрашивает программа электронной подписи и шифрования,"
+"а программа 1С:Предприятия должна передать пустой пароль, чтобы не было ошибки."
+""
+"Запоминание и запись пароля невозможны'"));
 		Cancel = True;
 		Return;
 	EndIf;
 	
 	If Not (ValueIsFilled(Application) OR ValueIsFilled(BankApplication)) Then
 		ShowMessageBox(,
-			NStr("en = 'Certificate does not have application for a private key.
-			           |Unable to verify the password before writing.'"));
+			NStr("en='Certificate does not have application for a private key."
+"Unable to verify the password before writing.';ru='У сертификата не указана программа для закрытого ключа."
+"Невозможно проверить пароль перед записью.'"));
 		Cancel = True;
 		Return;
 	EndIf;
@@ -136,10 +141,10 @@ Procedure WritePassword(Command)
 				WritePasswordAtServer();
 			Else
 				ErrorDescription =
-					  NStr("en = 'ON SERVER:'")
+					  NStr("en='ON SERVER:';ru='НА СЕРВЕРЕ:'")
 					+ Chars.LF + Chars.LF + ErrorDescription
 					+ Chars.LF + Chars.LF
-					+ NStr("en = 'ON COMPUTER:'")
+					+ NStr("en='ON COMPUTER:';ru='НА КОМПЬЮТЕРЕ:'")
 					+ Chars.LF + Chars.LF + ErrorAtClientDescription;
 			EndIf;
 		EndIf;
@@ -238,8 +243,9 @@ Function CheckSigning(Form, Application, CertificateData, Password, ErrorDescrip
 		ErrorInfo = ErrorInfo();
 		ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
 			+ StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Unable to check the signing using the %1 application because
-				           |of: %2'"),
+				NStr("en='Unable to check the signing using the %1 application because"
+"of: %2';ru='Не удалось пройти проверку подписания с помощью"
+"программы %1 по причине: %2'"),
 				Application,
 				BriefErrorDescription(ErrorInfo));
 		Return False;
@@ -277,7 +283,7 @@ Function WritePasswordAtServer()
 			 Or Not Properties.Property("Password")
 			 Or Not TypeOf(Properties.Password) = Type("String") Then
 				
-				Raise NStr("en = 'Enter the password again.'");
+				Raise NStr("en='Enter the password again.';ru='Введите пароль повторно.'");
 			EndIf;
 		EndIf;
 		Properties.Insert("User", User);
@@ -321,10 +327,13 @@ EndFunction
 Function ErrorDescriptionAccessRights()
 	
 	Return
-		NStr("en = 'You have no right to write password.
-		           |
-		           |Writing of a password can be performed
-		           |by the user specified in the Uder and Added fields of the certificate or administrator.'");
+		NStr("en='You have no right to write password."
+""
+"Writing of a password can be performed"
+"by the user specified in the Uder and Added fields of the certificate or administrator.';ru='Недостаточно прав для записи пароля."
+""
+"Запись пароля может сделать"
+"пользователь, указанный в полях сертификата ""Пользователь"" и ""Добавил"" или администратор.'");
 	
 EndFunction
 
@@ -344,10 +353,10 @@ EndProcedure
 Procedure SetLableTitleAndCommandMarkAvailableToAll()
 	
 	If ValueIsFilled(User) Then
-		Items.LabelAvailableToUser.Title = NStr("en = 'The password is available to user:'")
+		Items.LabelAvailableToUser.Title = NStr("en='The password is available to user:';ru='Пароль доступен пользователю:'")
 			+ " " + User;
 	Else
-		Items.LabelAvailableToUser.Title = NStr("en = 'The password is available to all users.'")
+		Items.LabelAvailableToUser.Title = NStr("en='The password is available to all users.';ru='Пароль доступен всем пользователям.'")
 	EndIf;
 	Items.PasswordUsersAvailableToAll.Check = Not ValueIsFilled(User);
 	

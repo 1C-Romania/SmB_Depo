@@ -87,10 +87,13 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 	 Or SlipReceiptCopiesCount = Undefined
 	 Or SlipReceiptTemplateData    = Undefined Then
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device parameters are not set.
-		|For the correct work of the device it is necessary to specify the parameters of its work.
-		|You can do it using the Parameters setting
-		|form of the peripheral model in the Connection and equipment setting form.'"));
+		Output_Parameters.Add(NStr("en='Device parameters are not set."
+"For the correct work of the device it is necessary to specify the parameters of its work."
+"You can do it using the Parameters setting"
+"form of the peripheral model in the Connection and equipment setting form.';ru='Не настроены параметры устройства."
+"Для корректной работы устройства необходимо задать параметры его работы."
+"Сделать это можно при помощи формы"
+"""Настройка параметров"" модели подключаемого оборудования в форме ""Подключение и настройка оборудования"".'"));
 
 		Result = False;
 	EndIf;
@@ -223,7 +226,7 @@ Function RunCommand(Command, InputParameters = Undefined, Output_Parameters = Un
 	// This command is not supported by the current driver.
 	Else
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.'"));
+		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.';ru='Команда ""%Команда%"" не поддерживается данным драйвером.'"));
 		Output_Parameters[1] = StrReplace(Output_Parameters[1], "%Command%", Command);
 		Result = False;
 
@@ -247,7 +250,7 @@ Function PayByPaymentCard(DriverObject, Parameters, ConnectionParameters,
 	RefNo = "";
 	ReceiptNumber      = "";
 
-	ConnectionParameters.OperationKind = NStr("en='Pay'");
+	ConnectionParameters.OperationKind = NStr("en='Pay';ru='Оплатить'");
 
 	SetDriverParameters(DriverObject, Parameters);
 
@@ -263,7 +266,7 @@ Function PayByPaymentCard(DriverObject, Parameters, ConnectionParameters,
 			DriverObject.CardValidityPeriod = ValidityPeriod;
 		Else
 			Output_Parameters.Add(999);
-			Output_Parameters.Add(NStr("en='Invalid card number.'"));
+			Output_Parameters.Add(NStr("en='Invalid card number.';ru='Указан неверный номер карты.'"));
 
 			Result = False;
 		EndIf;
@@ -317,7 +320,7 @@ Function ReturnPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 	//RefNumber = Undefined;
 	//ReceiptNumber      = Undefined.
 
-	ConnectionParameters.OperationKind = NStr("en='Payment return'");
+	ConnectionParameters.OperationKind = NStr("en='Payment return';ru='Возврат платежа'");
 
 	SetDriverParameters(DriverObject, Parameters);
 
@@ -333,7 +336,7 @@ Function ReturnPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 			DriverObject.CardValidityPeriod = ValidityPeriod;
 		Else
 			Output_Parameters.Add(999);
-			Output_Parameters.Add(NStr("en='Invalid card number.'"));
+			Output_Parameters.Add(NStr("en='Invalid card number.';ru='Указан неверный номер карты.'"));
 
 			Result = False;
 		EndIf;
@@ -387,7 +390,7 @@ Function CancelPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 	RefNo = Undefined;
 	ReceiptNumber      = Undefined;
 
-	ConnectionParameters.OperationKind = NStr("en='Cancel payment'");
+	ConnectionParameters.OperationKind = NStr("en='Cancel payment';ru='Отменить платеж'");
 
 	SetDriverParameters(DriverObject, Parameters);
 
@@ -398,7 +401,7 @@ Function CancelPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 		                                                       tempAmount,
 		                                                       RefNo);
 		If Not Response Then
-			ConnectionParameters.OperationKind = NStr("en='Cancel'");
+			ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 			Output_Parameters.Add(999);
 			Output_Parameters.Add("");
 			OperationCode = DriverObject.GetError(Output_Parameters[1]);
@@ -456,7 +459,7 @@ Function DayTotalsByCards(DriverObject, Parameters, ConnectionParameters, Output
 	Result = True;
 	Response     = Undefined;
 
-	ConnectionParameters.OperationKind = NStr("en='Totals revision'");
+	ConnectionParameters.OperationKind = NStr("en='Totals revision';ru='Сверка итогов'");
 
 	SetDriverParameters(DriverObject, Parameters);
 
@@ -487,7 +490,7 @@ Function PreauthorizeByPaymentCard(DriverObject, Parameters, ConnectionParameter
 	RefNo = Undefined;
 	ReceiptNumber      = Undefined;
 
-	ConnectionParameters.OperationKind = NStr("en='Pre-authorize payment'");
+	ConnectionParameters.OperationKind = NStr("en='Pre-authorize payment';ru='Преавторизовать платеж'");
 
 	SetDriverParameters(DriverObject, Parameters);
 
@@ -503,7 +506,7 @@ Function PreauthorizeByPaymentCard(DriverObject, Parameters, ConnectionParameter
 			DriverObject.CardValidityPeriod = ValidityPeriod;
 		Else
 			Output_Parameters.Add(999);
-			Output_Parameters.Add(NStr("en='Invalid card number.'"));
+			Output_Parameters.Add(NStr("en='Invalid card number.';ru='Указан неверный номер карты.'"));
 
 			Result = False;
 		EndIf;
@@ -517,7 +520,7 @@ Function PreauthorizeByPaymentCard(DriverObject, Parameters, ConnectionParameter
 		                                                      RefNo,
 		                                                      ReceiptNumber);
 		If Not Response Then
-			ConnectionParameters.OperationKind = NStr("en='Cancel'");
+			ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 			Output_Parameters.Add(999);
 			Output_Parameters.Add("");
 			OperationCode = DriverObject.GetError(Output_Parameters[1]);
@@ -554,7 +557,7 @@ Function FinishPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 
 	Result = True;
 
-	ConnectionParameters.OperationKind = NStr("en='Finish preauthorization'");
+	ConnectionParameters.OperationKind = NStr("en='Finish preauthorization';ru='Завершить преавторизацию'");
 
 	SetDriverParameters(DriverObject, Parameters);
 
@@ -570,7 +573,7 @@ Function FinishPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 			DriverObject.CardValidityPeriod = ValidityPeriod;
 		Else
 			Output_Parameters.Add(999);
-			Output_Parameters.Add(NStr("en='Invalid card number.'"));
+			Output_Parameters.Add(NStr("en='Invalid card number.';ru='Указан неверный номер карты.'"));
 
 			Result = False;
 		EndIf;
@@ -584,7 +587,7 @@ Function FinishPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 		                                                                RefNo,
 		                                                                ReceiptNumber);
 		If Not Response Then
-			ConnectionParameters.OperationKind = NStr("en='Cancel'");
+			ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 			Output_Parameters.Add(999);
 			Output_Parameters.Add("");
 			OperationCode = DriverObject.GetError(Output_Parameters[1]);
@@ -617,7 +620,7 @@ Function CancelPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 
 	Result = True;
 
-	ConnectionParameters.OperationKind = NStr("en='Cancel preauthorization'");
+	ConnectionParameters.OperationKind = NStr("en='Cancel preauthorization';ru='Отменить преавторизацию'");
 
 	SetDriverParameters(DriverObject, Parameters);
 
@@ -633,7 +636,7 @@ Function CancelPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 			DriverObject.CardValidityPeriod = ValidityPeriod;
 		Else
 			Output_Parameters.Add(999);
-			Output_Parameters.Add(NStr("en='Invalid card number.'"));
+			Output_Parameters.Add(NStr("en='Invalid card number.';ru='Указан неверный номер карты.'"));
 
 			Result = False;
 		EndIf;
@@ -646,7 +649,7 @@ Function CancelPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 		                                                              tempAmount,
 		                                                              RefNo);
 		If Not Response Then
-			ConnectionParameters.OperationKind = NStr("en='Cancel'");
+			ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 			Output_Parameters.Add(999);
 			Output_Parameters.Add("");
 			OperationCode = DriverObject.GetError(Output_Parameters[1]);
@@ -695,8 +698,8 @@ Function GetDriverVersion(DriverObject, Parameters, ConnectionParameters, Output
 
 	Result = True;
 
-	Output_Parameters.Add(NStr("en='Installed'"));
-	Output_Parameters.Add(NStr("en='Not defined'"));
+	Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
+	Output_Parameters.Add(NStr("en='Not defined';ru='Не определена'"));
 
 	Try
 		Output_Parameters[1] = DriverObject.GetVersionNumber();
@@ -738,12 +741,12 @@ Function GetSlipReceiptLines(DriverObject, Parameters, ConnectionParameters, Sli
 	CodesOfCurrency.Insert("392", "JPY");
 	CodesOfCurrency.Insert("999", "BONUS");
 
-	If ConnectionParameters.OperationKind = NStr("en='Pay'")
-	 Or ConnectionParameters.OperationKind = NStr("en='Payment return'")
-	 Or ConnectionParameters.OperationKind = NStr("en='Cancel payment'")
-	 Or ConnectionParameters.OperationKind = NStr("en='Pre-authorize payment'")
-	 Or ConnectionParameters.OperationKind = NStr("en='Finish preauthorization'")
-	 Or ConnectionParameters.OperationKind = NStr("en='Cancel preauthorization'") Then
+	If ConnectionParameters.OperationKind = NStr("en='Pay';ru='Оплатить'")
+	 Or ConnectionParameters.OperationKind = NStr("en='Payment return';ru='Возврат платежа'")
+	 Or ConnectionParameters.OperationKind = NStr("en='Cancel payment';ru='Отменить платеж'")
+	 Or ConnectionParameters.OperationKind = NStr("en='Pre-authorize payment';ru='Преавторизовать платеж'")
+	 Or ConnectionParameters.OperationKind = NStr("en='Finish preauthorization';ru='Завершить преавторизацию'")
+	 Or ConnectionParameters.OperationKind = NStr("en='Cancel preauthorization';ru='Отменить преавторизацию'") Then
 		AreaParameters = New Structure();
 
 		AreaParameters.Insert("Bank"       , Parameters.SlipReceiptTemplateData[0].Value);
@@ -754,18 +757,18 @@ Function GetSlipReceiptLines(DriverObject, Parameters, ConnectionParameters, Sli
 		AreaParameters.Insert("Cashier"     , Parameters.SlipReceiptTemplateData[5].Value);
 		AreaParameters.Insert("TID"        , DriverObject.TerminalIdentifier);
 		AreaParameters.Insert("MID"        , DriverObject.IDSeller);
-		If ConnectionParameters.OperationKind = NStr("en='Pay'") Then
-			AreaParameters.Insert("Operation", NStr("en='PAYMENT FOR PRODUCTS'"));
-		ElsIf ConnectionParameters.OperationKind = NStr("en='Payment return'") Then
-			AreaParameters.Insert("Operation", NStr("en='RETURN PRODUCTS'"));
-		ElsIf ConnectionParameters.OperationKind = NStr("en='Cancel payment'") Then
-			AreaParameters.Insert("Operation", NStr("en='CANCEL PAYMENT FOR PRODUCTS'"));
-		ElsIf ConnectionParameters.OperationKind = NStr("en='Pre-authorize payment'") Then
-			AreaParameters.Insert("Operation", NStr("en='Preauthorization'"));
-		ElsIf ConnectionParameters.OperationKind = NStr("en='Finish preauthorization'") Then
-			AreaParameters.Insert("Operation", NStr("en='END PREAUTHORIZATION'"));
-		ElsIf ConnectionParameters.OperationKind = NStr("en='Cancel preauthorization'") Then
-			AreaParameters.Insert("Operation", NStr("en='CANCEL PREAUTHORIZATION'"));
+		If ConnectionParameters.OperationKind = NStr("en='Pay';ru='Оплатить'") Then
+			AreaParameters.Insert("Operation", NStr("en='PAYMENT FOR PRODUCTS';ru='ОПЛАТА ТОВАРА'"));
+		ElsIf ConnectionParameters.OperationKind = NStr("en='Payment return';ru='Возврат платежа'") Then
+			AreaParameters.Insert("Operation", NStr("en='RETURN PRODUCTS';ru='ВОЗВРАТ ТОВАРА'"));
+		ElsIf ConnectionParameters.OperationKind = NStr("en='Cancel payment';ru='Отменить платеж'") Then
+			AreaParameters.Insert("Operation", NStr("en='CANCEL PAYMENT FOR PRODUCTS';ru='ОТМЕНА ОПЛАТЫ ТОВАРА'"));
+		ElsIf ConnectionParameters.OperationKind = NStr("en='Pre-authorize payment';ru='Преавторизовать платеж'") Then
+			AreaParameters.Insert("Operation", NStr("en='Preauthorization';ru='ПРЕАВТОРИЗАЦИЯ'"));
+		ElsIf ConnectionParameters.OperationKind = NStr("en='Finish preauthorization';ru='Завершить преавторизацию'") Then
+			AreaParameters.Insert("Operation", NStr("en='END PREAUTHORIZATION';ru='ЗАВЕРШЕНИЕ ПРЕАВТОРИЗАЦИИ'"));
+		ElsIf ConnectionParameters.OperationKind = NStr("en='Cancel preauthorization';ru='Отменить преавторизацию'") Then
+			AreaParameters.Insert("Operation", NStr("en='CANCEL PREAUTHORIZATION';ru='ОТМЕНА ПРЕАВТОРИЗАЦИИ'"));
 		EndIf;
 		AreaParameters.Insert("Amount",
 		                          Format(Number(DriverObject.Amount),
@@ -799,7 +802,7 @@ Function GetSlipReceiptLines(DriverObject, Parameters, ConnectionParameters, Sli
 		
 		SlipReceipt = EquipmentManagerClient.GetSlipReceipt(TemplateName, Parameters.SlipReceiptWidth, AreaParameters);
 		
-	ElsIf ConnectionParameters.OperationKind <> NStr("en='TotalsRevision'") Then
+	ElsIf ConnectionParameters.OperationKind <> NStr("en='TotalsRevision';ru='СверкаИтогов'") Then
 		Result = False;
 		Output_Parameters.Add(999);
 		Output_Parameters.Add("Unknown operation type: data processor does not support operation kind (%OperationKind%).

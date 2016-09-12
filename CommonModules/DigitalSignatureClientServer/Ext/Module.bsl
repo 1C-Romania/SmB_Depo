@@ -21,7 +21,7 @@ Function CertificatePresentation(Certificate, Patronymic = False, ValidityPeriod
 	
 	Return SubjectPresentation(Certificate, Patronymic) + ", "
 		+ StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'up to %1'"), Format(Certificate.EndDate, "DF=MM.yyyy"));
+			NStr("en='up to %1';ru='до %1'"), Format(Certificate.EndDate, "DF=MM.yyyy"));
 	
 EndFunction
 
@@ -491,29 +491,29 @@ Function FillCertificateDataDescription(Table, Certificate) Export
 	CertificateStructure = FillCertificateStructure(Certificate);
 	
 	If Certificate.UseToSign AND Certificate.UseForEncryption Then
-		Purpose = NStr("en = 'Sign data, Encrypt data'");
+		Purpose = NStr("en='Sign data, Encrypt data';ru='Подписание данных, Шифрование данных'");
 		
 	ElsIf Certificate.UseToSign Then
-		Purpose = NStr("en = 'Data signing'");
+		Purpose = NStr("en='Data signing';ru='Подписание данных'");
 	Else
-		Purpose = NStr("en = 'Data encryption'");
+		Purpose = NStr("en='Data encryption';ru='Шифрование данных'");
 	EndIf;
 	
 	Table.Clear();
 	String = Table.Add();
-	String.Property = NStr("en = 'Issued to:'");
+	String.Property = NStr("en='Issued to:';ru='Кому выдан:'");
 	String.Value = CertificateStructure.IssuedToWhom;
 	
 	String = Table.Add();
-	String.Property = NStr("en = 'Issued by:'");
+	String.Property = NStr("en='Issued by:';ru='Кем выдан:'");
 	String.Value = CertificateStructure.WhoIssued;
 	
 	String = Table.Add();
-	String.Property = NStr("en = 'Valid until:'");
+	String.Property = NStr("en='Valid until:';ru='Действителен до:'");
 	String.Value = Format(CertificateStructure.ValidUntil, "DF=dd.MM.yyyy");
 	
 	String = Table.Add();
-	String.Property = NStr("en = 'Purpose:'");
+	String.Property = NStr("en='Purpose:';ru='Назначение:'");
 	String.Value = Purpose;
 	
 EndFunction

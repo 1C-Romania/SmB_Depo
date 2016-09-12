@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Data change prohibition dates</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Даты запрета изменения данных</v8:content>
+		</v8:item>
 	</Title>
 	<Width>60</Width>
 	<AutoTitle>false</AutoTitle>
@@ -17,12 +21,21 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Reports</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отчеты</v8:content>
+					</v8:item>
 				</Title>
 				<ToolTip>
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Reports by dates of
 data modification prohibition established For users</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отчеты по
+датам запрета изменения данных, установленным "По пользователям"</v8:content>
 					</v8:item>
 				</ToolTip>
 				<Picture>
@@ -80,6 +93,10 @@ data modification prohibition established For users</v8:content>
 								<v8:lang>en</v8:lang>
 								<v8:content>No prohibition to change data</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Нет запрета изменения данных</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:string">NoProhibition</Value>
 					</xr:Value>
@@ -93,6 +110,10 @@ data modification prohibition established For users</v8:content>
 								<v8:lang>en</v8:lang>
 								<v8:content>For all users</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>У всех пользователей</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:string">ForAllUsers</Value>
 					</xr:Value>
@@ -105,6 +126,10 @@ data modification prohibition established For users</v8:content>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>By users</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>По пользователям</v8:content>
 							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:string">ByUsers</Value>
@@ -125,11 +150,19 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prohibition date setting</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка даты запрета</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prohibition date setting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка даты запрета</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -143,11 +176,19 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Setting by users</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Установка по пользователям</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Setting by users</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Установка по пользователям</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
@@ -205,11 +246,19 @@ data modification prohibition established For users</v8:content>
 												<v8:lang>en</v8:lang>
 												<v8:content>Users standard commands</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Пользователи стандартные команды</v8:content>
+											</v8:item>
 										</Title>
 										<ToolTip>
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>Users standard commands</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Пользователи стандартные команды</v8:content>
 											</v8:item>
 										</ToolTip>
 										<CommandSource>Item.Users</CommandSource>
@@ -260,6 +309,10 @@ data modification prohibition established For users</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>User or user group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пользователь или группа пользователей</v8:content>
+										</v8:item>
 									</ToolTip>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>31</Width>
@@ -284,6 +337,10 @@ data modification prohibition established For users</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Reason of a separate prohibition for the user or user group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Причина отдельного запрета для пользователя или группы пользователей</v8:content>
 										</v8:item>
 									</ToolTip>
 									<EditMode>EnterOnInput</EditMode>
@@ -315,11 +372,19 @@ data modification prohibition established For users</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Page user is not selected</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница пользователь не выбран</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Page user is not selected</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница пользователь не выбран</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ExtendedTooltip name="PageUserNotSelectedExtendedTooltip" id="332"/>
@@ -329,6 +394,10 @@ data modification prohibition established For users</v8:content>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>User is not selected</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Пользователь не выбран</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="UserNotSelectedContextMenu" id="270"/>
@@ -342,11 +411,19 @@ data modification prohibition established For users</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Page user is selected</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница пользователь выбран</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Page user is selected</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница пользователь выбран</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ExtendedTooltip name="PageSelectedUserExtendedTooltip" id="334"/>
@@ -367,6 +444,10 @@ data modification prohibition established For users</v8:content>
 																<v8:lang>en</v8:lang>
 																<v8:content>Common date</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Общая дата</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">CommonDate</Value>
 													</xr:Value>
@@ -379,6 +460,10 @@ data modification prohibition established For users</v8:content>
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>By Sections</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>По разделам</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">BySections</Value>
@@ -393,6 +478,10 @@ data modification prohibition established For users</v8:content>
 																<v8:lang>en</v8:lang>
 																<v8:content>By Sections And Objects</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>По разделам и объектам</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">BySectionsAndObjects</Value>
 													</xr:Value>
@@ -405,6 +494,10 @@ data modification prohibition established For users</v8:content>
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>By Objects</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>По объектам</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">ByObjects</Value>
@@ -425,11 +518,19 @@ data modification prohibition established For users</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Specification modes</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Способы указания</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Specification modes</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Способы указания</v8:content>
 												</v8:item>
 											</ToolTip>
 											<PagesRepresentation>None</PagesRepresentation>
@@ -441,11 +542,19 @@ data modification prohibition established For users</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Specified mode common date</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Способ указания общая дата</v8:content>
+														</v8:item>
 													</Title>
 													<ToolTip>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Specified mode common date</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Способ указания общая дата</v8:content>
 														</v8:item>
 													</ToolTip>
 													<ExtendedTooltip name="InstructionMethodCommonDateExtendedTooltip" id="337"/>
@@ -460,11 +569,19 @@ data modification prohibition established For users</v8:content>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Prohibition date with description</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Дата запрета с описанием</v8:content>
+																</v8:item>
 															</Title>
 															<ToolTip>
 																<v8:item>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Prohibition date with description</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Дата запрета с описанием</v8:content>
 																</v8:item>
 															</ToolTip>
 															<Group>Horizontal</Group>
@@ -478,6 +595,10 @@ data modification prohibition established For users</v8:content>
 																		<v8:item>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Prohibition date</v8:content>
+																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Дата запрета</v8:content>
 																		</v8:item>
 																	</Title>
 																	<HorizontalStretch>false</HorizontalStretch>
@@ -493,6 +614,10 @@ data modification prohibition established For users</v8:content>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Arbitrary date</v8:content>
 																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Произвольная дата</v8:content>
+																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">Custom</Value>
 																			</xr:Value>
@@ -505,6 +630,10 @@ data modification prohibition established For users</v8:content>
 																					<v8:item>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Last year end</v8:content>
+																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Конец прошлого года</v8:content>
 																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">LastYearEnd</Value>
@@ -519,6 +648,10 @@ data modification prohibition established For users</v8:content>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>End of the last quarter</v8:content>
 																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Конец прошлого квартала</v8:content>
+																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">LastQuarterEnd</Value>
 																			</xr:Value>
@@ -531,6 +664,10 @@ data modification prohibition established For users</v8:content>
 																					<v8:item>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>End of the last month</v8:content>
+																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Конец прошлого месяца</v8:content>
 																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">LastMonthEnd</Value>
@@ -545,6 +682,10 @@ data modification prohibition established For users</v8:content>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>End of the last week</v8:content>
 																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Конец прошлой недели</v8:content>
+																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">LastWeekEnd</Value>
 																			</xr:Value>
@@ -557,6 +698,10 @@ data modification prohibition established For users</v8:content>
 																					<v8:item>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Previous day</v8:content>
+																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Предыдущий день</v8:content>
 																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">PreviousDay</Value>
@@ -576,11 +721,19 @@ data modification prohibition established For users</v8:content>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Arbitrary date</v8:content>
 																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Произвольная дата</v8:content>
+																		</v8:item>
 																	</Title>
 																	<ToolTip>
 																		<v8:item>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Arbitrary date</v8:content>
+																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Произвольная дата</v8:content>
 																		</v8:item>
 																	</ToolTip>
 																	<PagesRepresentation>None</PagesRepresentation>
@@ -592,11 +745,19 @@ data modification prohibition established For users</v8:content>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Custom date used</v8:content>
 																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Произвольная дата используется</v8:content>
+																				</v8:item>
 																			</Title>
 																			<ToolTip>
 																				<v8:item>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Custom date used</v8:content>
+																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Произвольная дата используется</v8:content>
 																				</v8:item>
 																			</ToolTip>
 																			<ExtendedTooltip name="CustomDateInUseExtendedTooltip" id="342"/>
@@ -625,11 +786,19 @@ data modification prohibition established For users</v8:content>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Custom date not used</v8:content>
 																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Произвольная дата не используется</v8:content>
+																				</v8:item>
 																			</Title>
 																			<ToolTip>
 																				<v8:item>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Custom date not used</v8:content>
+																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Произвольная дата не используется</v8:content>
 																				</v8:item>
 																			</ToolTip>
 																			<ExtendedTooltip name="CustomDateNotUsedExtendedTooltip" id="344"/>
@@ -650,11 +819,19 @@ data modification prohibition established For users</v8:content>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Automatical date properties</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Свойства непроизвольной даты</v8:content>
+																</v8:item>
 															</Title>
 															<ToolTip>
 																<v8:item>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Automatical date properties</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Свойства непроизвольной даты</v8:content>
 																</v8:item>
 															</ToolTip>
 															<PagesRepresentation>None</PagesRepresentation>
@@ -666,11 +843,19 @@ data modification prohibition established For users</v8:content>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Automatical date used</v8:content>
 																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Непроизвольная дата используется</v8:content>
+																		</v8:item>
 																	</Title>
 																	<ToolTip>
 																		<v8:item>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Automatical date used</v8:content>
+																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Непроизвольная дата используется</v8:content>
 																		</v8:item>
 																	</ToolTip>
 																	<ShowTitle>false</ShowTitle>
@@ -692,11 +877,19 @@ data modification prohibition established For users</v8:content>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Property permission days count changes</v8:content>
 																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Свойство количество дней разрешения изменения</v8:content>
+																				</v8:item>
 																			</Title>
 																			<ToolTip>
 																				<v8:item>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Property permission days count changes</v8:content>
+																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Свойство количество дней разрешения изменения</v8:content>
 																				</v8:item>
 																			</ToolTip>
 																			<PagesRepresentation>None</PagesRepresentation>
@@ -708,11 +901,19 @@ data modification prohibition established For users</v8:content>
 																							<v8:lang>en</v8:lang>
 																							<v8:content>Data changing to prohibition date allowed</v8:content>
 																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Изменение данных до даты запрета разрешено</v8:content>
+																						</v8:item>
 																					</Title>
 																					<ToolTip>
 																						<v8:item>
 																							<v8:lang>en</v8:lang>
 																							<v8:content>Data changing to prohibition date allowed</v8:content>
+																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Изменение данных до даты запрета разрешено</v8:content>
 																						</v8:item>
 																					</ToolTip>
 																					<Group>Horizontal</Group>
@@ -724,6 +925,10 @@ data modification prohibition established For users</v8:content>
 																									<v8:lang>en</v8:lang>
 																									<v8:content>During</v8:content>
 																								</v8:item>
+																								<v8:item>
+																									<v8:lang>ru</v8:lang>
+																									<v8:content>В течение</v8:content>
+																								</v8:item>
 																							</Title>
 																							<ContextMenu name="NumberOfPermissionDaysHeaderContextMenu" id="239"/>
 																							<ExtendedTooltip name="NumberOfPermissionDaysHeaderExtendedTooltip" id="351"/>
@@ -734,6 +939,10 @@ data modification prohibition established For users</v8:content>
 																								<v8:item>
 																									<v8:lang>en</v8:lang>
 																									<v8:content>  days after prohibition date</v8:content>
+																								</v8:item>
+																								<v8:item>
+																									<v8:lang>ru</v8:lang>
+																									<v8:content>  дней после даты запрета</v8:content>
 																								</v8:item>
 																							</Title>
 																							<TitleLocation>Right</TitleLocation>
@@ -752,11 +961,19 @@ data modification prohibition established For users</v8:content>
 																							<v8:lang>en</v8:lang>
 																							<v8:content>Data changing to prohibition date not allowed</v8:content>
 																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Изменение данных до даты запрета не разрешено</v8:content>
+																						</v8:item>
 																					</Title>
 																					<ToolTip>
 																						<v8:item>
 																							<v8:lang>en</v8:lang>
 																							<v8:content>Data changing to prohibition date not allowed</v8:content>
+																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Изменение данных до даты запрета не разрешено</v8:content>
 																						</v8:item>
 																					</ToolTip>
 																					<ExtendedTooltip name="DataChangeToProhibitionDateNotAllowedExtendedTooltip" id="353"/>
@@ -784,11 +1001,19 @@ data modification prohibition established For users</v8:content>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Automatical date not used</v8:content>
 																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Непроизвольная дата не используется</v8:content>
+																		</v8:item>
 																	</Title>
 																	<ToolTip>
 																		<v8:item>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Automatical date not used</v8:content>
+																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Непроизвольная дата не используется</v8:content>
 																		</v8:item>
 																	</ToolTip>
 																	<ExtendedTooltip name="CustomDateNotUsedExtendedTooltip" id="356"/>
@@ -809,11 +1034,19 @@ data modification prohibition established For users</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Specified mode by sections objects</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Способ указания по разделам объектам</v8:content>
+														</v8:item>
 													</Title>
 													<ToolTip>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Specified mode by sections objects</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Способ указания по разделам объектам</v8:content>
 														</v8:item>
 													</ToolTip>
 													<ExtendedTooltip name="MethodOfInstructionBySectionsObjectsExtendedTooltip" id="358"/>
@@ -867,6 +1100,10 @@ data modification prohibition established For users</v8:content>
 																				<v8:lang>en</v8:lang>
 																				<v8:content>Prohibition dates context menu standard commands</v8:content>
 																			</v8:item>
+																			<v8:item>
+																				<v8:lang>ru</v8:lang>
+																				<v8:content>Даты запрета контекстное меню стандартные команды</v8:content>
+																			</v8:item>
 																		</Title>
 																		<CommandSource>Item.ProhibitionDates</CommandSource>
 																		<ExtendedTooltip name="ProhibitionDatesContextMenuStandardCommandsExtendedTooltip" id="392"/>
@@ -903,11 +1140,19 @@ data modification prohibition established For users</v8:content>
 																				<v8:lang>en</v8:lang>
 																				<v8:content>Prohibition dates standard commands</v8:content>
 																			</v8:item>
+																			<v8:item>
+																				<v8:lang>ru</v8:lang>
+																				<v8:content>Даты запрета стандартные команды</v8:content>
+																			</v8:item>
 																		</Title>
 																		<ToolTip>
 																			<v8:item>
 																				<v8:lang>en</v8:lang>
 																				<v8:content>Prohibition dates standard commands</v8:content>
+																			</v8:item>
+																			<v8:item>
+																				<v8:lang>ru</v8:lang>
+																				<v8:content>Даты запрета стандартные команды</v8:content>
 																			</v8:item>
 																		</ToolTip>
 																		<CommandSource>Item.ProhibitionDates</CommandSource>
@@ -958,6 +1203,10 @@ data modification prohibition established For users</v8:content>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Prohibition dates section change and sections objects</v8:content>
 																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Раздел дат запрета изменения и объекты разделов</v8:content>
+																		</v8:item>
 																	</ToolTip>
 																	<EditMode>EnterOnInput</EditMode>
 																	<Width>16</Width>
@@ -978,6 +1227,10 @@ data modification prohibition established For users</v8:content>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Prohibition date</v8:content>
 																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Дата запрета</v8:content>
+																		</v8:item>
 																	</Title>
 																	<EditMode>EnterOnInput</EditMode>
 																	<Width>16</Width>
@@ -992,6 +1245,10 @@ data modification prohibition established For users</v8:content>
 																		<v8:item>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Restrict changes to</v8:content>
+																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Запрет изменения по</v8:content>
 																		</v8:item>
 																	</Title>
 																	<EditMode>EnterOnInput</EditMode>
@@ -1025,6 +1282,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prohibition dates</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Даты запрета</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTree</v8:Type>
@@ -1035,6 +1296,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Section, object</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Раздел, объект</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1051,6 +1316,10 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Presentation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1066,6 +1335,10 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Section</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Раздел</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:ChartOfCharacteristicTypesRef.ChangingProhibitionDatesSections</v8:Type>
@@ -1077,6 +1350,10 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Object</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>объект</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:TypeSet>cfg:Characteristic.ChangingProhibitionDatesSections</v8:TypeSet>
@@ -1087,6 +1364,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Prohibition date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата запрета</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1101,6 +1382,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Prohibition date description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание даты запрета</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1117,6 +1402,10 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Prohibition date description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание даты запрета</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1131,6 +1420,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Permission days count</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество дней разрешения</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1148,6 +1441,10 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>This is section</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это раздел</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1158,6 +1455,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Without prohibition date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без даты запрета</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1170,6 +1471,10 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Section without objects</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Раздел без объектов</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1180,6 +1485,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Write exists</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запись существует</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1194,6 +1503,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prohibition dates users</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователи дат запрета</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1204,6 +1517,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>User, group of users</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь, группа пользователей</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1219,6 +1536,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>User</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1236,6 +1557,10 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Presentation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1250,6 +1575,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1266,6 +1595,10 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Prohibition date</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата запрета</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:dateTime</v8:Type>
@@ -1279,6 +1612,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Prohibition date description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание даты запрета</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1295,6 +1632,10 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Without prohibition date</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без даты запрета</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1305,6 +1646,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture no</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер картинки</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1324,6 +1669,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>All sections without objects</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все разделы без объектов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1334,6 +1683,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Section object types</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Типы объектов разделов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1346,6 +1699,10 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Section</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Раздел</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:ChartOfCharacteristicTypesRef.ChangingProhibitionDatesSections</v8:Type>
@@ -1356,6 +1713,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Object types</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Типы объекта</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1370,6 +1731,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Without sections and objects</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Без разделов и объектов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1380,6 +1745,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Single section</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Единственный раздел</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1392,6 +1761,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show current user sections</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать разделы текущего пользователя</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1402,6 +1775,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Use external users</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать внешних пользователей</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1414,6 +1791,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Catalog of external users is available</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Справочник внешние пользователи доступен</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1424,6 +1805,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>List of user types</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список типов пользователей</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1436,6 +1821,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Set locks</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установленные блокировки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1446,6 +1835,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Section</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Раздел</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1458,6 +1851,10 @@ data modification prohibition established For users</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Object</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>объект</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:TypeSet>cfg:Characteristic.ChangingProhibitionDatesSections</v8:TypeSet>
@@ -1468,6 +1865,10 @@ data modification prohibition established For users</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>User</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1487,6 +1888,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Section empty ref</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Раздел пустая ссылка</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:ChartOfCharacteristicTypesRef.ChangingProhibitionDatesSections</v8:Type>
@@ -1497,6 +1902,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Current user</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий пользователь</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1514,6 +1923,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Users current row</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователи текущая строка</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1522,6 +1935,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Sections without objects</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Разделы без объектов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1534,6 +1951,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show sections</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать разделы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1544,6 +1965,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prohibition date setting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка даты запрета</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1559,6 +1984,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Permission days count</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество дней разрешения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1576,6 +2005,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Allow data changing to prohibition date</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Разрешить изменение данных до даты запрета</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1586,6 +2019,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prohibition date</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата запрета</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1600,6 +2037,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prohibition date description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание даты запрета</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1616,6 +2057,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prohibition date specified mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Способ указания даты запрета</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1631,6 +2076,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Current date at server</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая дата на сервере</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
@@ -1645,6 +2094,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>First section</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Первый раздел</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:ChartOfCharacteristicTypesRef.ChangingProhibitionDatesSections</v8:Type>
@@ -1655,6 +2108,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Value for all users</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Значение для всех пользователей</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1667,6 +2124,10 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Close form without confirmation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму без подтверждения</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1677,6 +2138,10 @@ data modification prohibition established For users</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Interface version 82</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Интерфейс версия82</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1691,12 +2156,21 @@ data modification prohibition established For users</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prohibition dates by users</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Даты запрета по пользователям</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Dates of the
 data changing prohibition by users and user groups</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Даты
+запрета изменения данных по пользователям и группам пользователей</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1712,11 +2186,19 @@ data changing prohibition by users and user groups</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick objects</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать объекты раздела</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>PickObjects</Action>
@@ -1727,11 +2209,19 @@ data changing prohibition by users and user groups</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F5</Shortcut>
@@ -1747,11 +2237,19 @@ data changing prohibition by users and user groups</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick users</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать пользователей</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>SelectUsers</Action>
@@ -1762,12 +2260,21 @@ data changing prohibition by users and user groups</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prohibition dates by sections and objects for the users</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Даты запрета по разделам и объектам для пользователей</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Dates of the
 data changing prohibition by sections and objects for the users and user groups</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Даты
+запрета изменения данных по разделам и объектам для пользователей и групп пользователей</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1783,11 +2290,19 @@ data changing prohibition by sections and objects for the users and user groups<
 					<v8:lang>en</v8:lang>
 					<v8:content>Sections</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>секции</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Sections</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>секции</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Sections</Action>
@@ -1818,11 +2333,19 @@ data changing prohibition by sections and objects for the users and user groups<
 					<v8:lang>en</v8:lang>
 					<v8:content>Recalculate dates</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать даты</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Recalculate the current values of the relative prohibition dates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать текущие значения относительных дат запрета</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>RecalculateDates</Action>

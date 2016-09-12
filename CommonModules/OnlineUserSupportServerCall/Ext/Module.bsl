@@ -584,11 +584,11 @@ Procedure ServiceCommandsDataProcessor(
 		HandlerContext.ErrorOccurred = True;
 		HandlerContext.ActionsOnErrorForServer.Add("CreateLogRegistrationRecord");
 		HandlerContext.ActionsOnErrorForServer.Add("BreakBusinessProcess");
-		HandlerContext.FullErrorDescription = NStr("en = 'An unhandled exception occurred.'")
+		HandlerContext.FullErrorDescription = NStr("en='An unhandled exception occurred.';ru='Произошло необрабатываемое исключение.'")
 			+ " " + DetailErrorDescription(ErrorInfo());
 		
 		HandlerContext.UserErrorDescription =
-			NStr("en = 'Unknown error. For more details see the event log.'");
+			NStr("en='Unknown error. For more details see the event log.';ru='Неизвестная ошибка. Подробнее см. в журнале регистрации.'");
 		HandlerContext.ActionOnErrorForClient = "ShowMessage";
 		
 	EndTry;
@@ -626,7 +626,7 @@ Procedure AddServiceCommands(
 			HandlerContext.ActionsOnErrorForServer.Add("CreateLogRegistrationRecord");
 			HandlerContext.ActionOnErrorForClient = "DisplayFormConnectionNotAvailable";
 			HandlerContext.UserErrorDescription =
-				NStr("en = 'Error at connecting online support service.'");
+				NStr("en='Error at connecting online support service.';ru='Ошибка при подключении к сервису Интернет-поддержки'");
 		EndIf;
 		
 		Return;
@@ -656,7 +656,7 @@ Procedure AddServiceCommands(
 			HandlerContext.ActionsOnErrorForServer.Add("CreateLogRegistrationRecord");
 			HandlerContext.ActionOnErrorForClient = "DisplayFormConnectionNotAvailable";
 			HandlerContext.UserErrorDescription =
-				NStr("en = 'An error occurred while retrieving data from the online support server.'");
+				NStr("en='An error occurred while retrieving data from the online support server.';ru='Ошибка при получении данных с сервера Интернет-поддержки.'");
 		EndIf;
 		
 	EndTry;
@@ -914,7 +914,7 @@ Procedure ClearUserUOSSettings() Export
 	Try
 		OnlineUserSupportOverridable.WhenUserExitsOnlineSupport();
 	Except
-		ErrorInfo = NStr("en = 'Error occurred at handling user logout from Online Support. %1'");
+		ErrorInfo = NStr("en='Error occurred at handling user logout from Online Support. %1';ru='Ошибка при обработке выхода пользователя из Интернет-поддержки. %1'");
 		ErrorInfo = StrReplace(ErrorInfo,
 			"%1",
 			DetailErrorDescription(ErrorInfo()));
@@ -960,7 +960,7 @@ EndProcedure
 //
 Function LogEventOnlineUserSupportError()
 	
-	Return NStr("en = 'Online user support. Error'",
+	Return NStr("en='Online user support. Error';ru='Интернет-поддержка пользователей.Ошибка'",
 		CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
@@ -973,7 +973,7 @@ EndFunction
 //
 Function LogEventOnlineUserSupportInformation()
 	
-	Return NStr("en = 'Online user support.Info'",
+	Return NStr("en='Online user support.Info';ru='Интернет-поддержка пользователей.Информация'",
 		CommonUseClientServer.MainLanguageCode());
 	
 EndFunction

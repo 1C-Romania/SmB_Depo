@@ -85,23 +85,23 @@ Procedure SetConditionalAppearance()
 		EndIf;
 		
 		IssueValue(CommonUse.ObjectManagerByFullName(MetadataObject.FullName()).EmptyRef(),
-			MetadataObject.Presentation() + ": " + NStr("en = '<All infobases>'"));
+			MetadataObject.Presentation() + ": " + NStr("en='<All infobases>';ru='<Все информационные базы>'"));
 	EndDo;
 	
 	IssueValue(Undefined,
-		NStr("en = 'Undefined'"));
+		NStr("en='Undefined';ru='Неопределено'"));
 	
 	IssueValue(Catalogs.Users.EmptyRef(),
-		NStr("en = 'Empty user'"));
+		NStr("en='Empty user';ru='Пустой пользователь'"));
 	
 	IssueValue(Catalogs.UsersGroups.EmptyRef(),
-		NStr("en = 'Empty group of users'"));
+		NStr("en='Empty group of users';ru='Пустая группа пользователей'"));
 	
 	IssueValue(Catalogs.ExternalUsers.EmptyRef(),
-		NStr("en = 'Empty external user'"));
+		NStr("en='Empty external user';ru='Пустой внешний пользователь'"));
 	
 	IssueValue(Catalogs.ExternalUsersGroups.EmptyRef(),
-		NStr("en = 'Empty group of external users'"));
+		NStr("en='Empty group of external users';ru='Пустая группа внешних пользователей'"));
 	
 	IssueValue(Enums.ProhibitionDatesPurposeKinds.ForAllUsers,
 		"<" + Enums.ProhibitionDatesPurposeKinds.ForAllUsers + ">");

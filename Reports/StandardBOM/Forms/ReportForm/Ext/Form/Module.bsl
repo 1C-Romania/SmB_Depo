@@ -18,7 +18,7 @@ Procedure DisplayProductContent()
 	If ContentTable.Count() < 2 Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Standard bill of materials is not filled'");
+		Message.Text = NStr("en='Standard bill of materials is not filled';ru='Не заполнен нормативный состав изделия'");
 		Message.Message();
 		
 		Return;
@@ -311,7 +311,7 @@ Procedure GenerateReport(ProductsAndServices, Characteristic, Specification)
 	
 	If Not ValueIsFilled(ProductsAndServices) Then
 		
-		MessageText = NStr("en = 'The Products and services field is not filled'");
+		MessageText = NStr("en='The Products and services field is not filled';ru='Поле Номенклатура не заполнено'");
 		MessageField = "ProductsAndServices";
 		SmallBusinessServer.ShowMessageAboutError(Report, MessageText,,,MessageField);
 		
@@ -321,7 +321,7 @@ Procedure GenerateReport(ProductsAndServices, Characteristic, Specification)
 	
 	If Not ValueIsFilled(Specification) Then
 		
-		MessageText = NStr("en = 'The Specification field is not filled'");
+		MessageText = NStr("en='The Specification field is not filled';ru='Поле Спецификация не заполнено'");
 		MessageField = "Specification";
 		SmallBusinessServer.ShowMessageAboutError(Report, MessageText,,,MessageField);
 		

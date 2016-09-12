@@ -61,8 +61,8 @@ EndFunction //CreateMapPattern()
 //
 Procedure UpdateFormTitleAtServer()
 	
-	ThisForm.Title	= NStr("en = 'Counterparties'' price lists'") + 
-		?(ValueIsFilled(ToDate), NStr("en = ' on '") + Format(ToDate, "DLF=DD"), NStr("en = '.'"));
+	ThisForm.Title	= NStr("en=""Counterparties' price lists"";ru='прайс-листы контрагентов'") + 
+		?(ValueIsFilled(ToDate), NStr("en=' on ';ru=' на '") + Format(ToDate, "DLF=DD"), NStr("en='.';ru='.'"));
 	
 EndProcedure // UpdateFormTitleAtServer()
 
@@ -1039,8 +1039,9 @@ Procedure Copy(Command)
 	If Not TypeOf(DetailFromArea) = Type("Structure") Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Impossible to copy the price.
-					|Perhaps, empty cell is selected.'")
+			NStr("en='Impossible to copy the price."
+"Perhaps, empty cell is selected.';ru='Невозможно скопировать цену."
+"Возможно выбрана пустая ячейка.'")
 					);
 		Return;
 		
@@ -1050,7 +1051,7 @@ Procedure Copy(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'No prices available for copying exist for the current products and services in the current price list.'")
+				NStr("en='No prices available for copying exist for the current products and services in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для копирования.'")
 						);
 						
 			Return;
@@ -1075,8 +1076,9 @@ Procedure Copy(Command)
 		Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Perhaps a blank cell is selected.
-				|Copying is not possible.'")
+			NStr("en='Perhaps a blank cell is selected."
+"Copying is not possible.';ru='Возможно указана пустая ячейка."
+"Копирование не возможно.'")
 				);
 				
 		Return;
@@ -1106,8 +1108,9 @@ Procedure Change(Command)
 		Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Impossible to change the price.
-					|Perhaps, empty cell is selected.'")
+			NStr("en='Impossible to change the price."
+"Perhaps, empty cell is selected.';ru='Невозможно изменить цену."
+"Возможно выбрана пустая ячейка.'")
 					);
 		Return;
 		
@@ -1117,7 +1120,7 @@ Procedure Change(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'No prices available for editing exist for the current products and services in current price list.'")
+				NStr("en='No prices available for editing exist for the current products and services in current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для изменения.'")
 						);
 						
 			Return;
@@ -1158,8 +1161,9 @@ Procedure Delete(Command)
 		Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'It is impossible to delete the price.
-					|Perhaps, empty cell is selected.'")
+			NStr("en='It is impossible to delete the price."
+"Perhaps, empty cell is selected.';ru='Невозможно удалить цену."
+"Возможно выбрана пустая ячейка.'")
 					);
 		Return;
 		
@@ -1169,7 +1173,7 @@ Procedure Delete(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'No prices available for deletion exist for the current products and services in the current price list.'")
+				NStr("en='No prices available for deletion exist for the current products and services in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для удаления.'")
 						);
 						
 			Return;
@@ -1210,7 +1214,7 @@ Procedure History(Command)
 		Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Can not show history of the prices generation.'")
+			NStr("en='Can not show history of the prices generation.';ru='Невозможно отобразить историю формирования цен.'")
 					);
 		Return;
 		
@@ -1220,7 +1224,7 @@ Procedure History(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Cannot show history of price generation for the current products and services.'")
+				NStr("en='Cannot show history of price generation for the current products and services.';ru='Невозможно отобразить историю формирорвания цен для данной номенклатурной позиции.'")
 						);
 						
 			Return;

@@ -409,13 +409,13 @@ Function FormAutoNamingAtClient()
 	
 	If Object.AssignmentCondition = PredefinedValue("Enum.DiscountsMarkupsProvidingConditions.ForOneTimeSalesVolume") Then
 		DescriptionString = ""+?(Object.UseRestrictionCriterionForSalesVolume = PredefinedValue("Enum.DiscountMarkupUseLimitCriteriaForSalesVolume.Quantity"), "Count-in", Object.UseRestrictionCriterionForSalesVolume) + " " + 
-		?(Object.RestrictionArea = PredefinedValue("Enum.DiscountMarkupRestrictionAreasVariants.InDocument"),NStr("en = 'in document'"),NStr("en = 'In line'")) + " "+Object.ComparisonType + " "+Object.RestrictionConditionValue + 
-		?(Object.UseRestrictionCriterionForSalesVolume = PredefinedValue("Enum.DiscountMarkupUseLimitCriteriaForSalesVolume.Quantity"), NStr("en = ' unit'"), " "+Object.RestrictionCurrency);
+		?(Object.RestrictionArea = PredefinedValue("Enum.DiscountMarkupRestrictionAreasVariants.InDocument"),NStr("en='in document';ru='в документе'"),NStr("en='In line';ru='в строке'")) + " "+Object.ComparisonType + " "+Object.RestrictionConditionValue + 
+		?(Object.UseRestrictionCriterionForSalesVolume = PredefinedValue("Enum.DiscountMarkupUseLimitCriteriaForSalesVolume.Quantity"), NStr("en=' unit';ru=' ед'"), " "+Object.RestrictionCurrency);
 		If Object.SalesFilterByProductsAndServices.Count() > 0 Then
 			DescriptionString = DescriptionString + ": " + TabularSectionDescriptionClient("SalesFilterByProductsAndServices", "ProductsAndServices");
 		EndIf;
 	ElsIf Object.AssignmentCondition = PredefinedValue("Enum.DiscountsMarkupsProvidingConditions.ForKitPurchase") Then
-		DescriptionString = NStr("en = 'Kit:'");
+		DescriptionString = NStr("en='Kit:';ru='Комплект:'");
 		DescriptionString = DescriptionString + " " + TabularSectionDescriptionClient("PurchaseKit", "ProductsAndServices");
 	EndIf;
 	
@@ -434,13 +434,13 @@ Function FormAutoNamingAtServer()
 	
 	If Object.AssignmentCondition = Enums.DiscountsMarkupsProvidingConditions.ForOneTimeSalesVolume Then
 		DescriptionString = ""+?(Object.UseRestrictionCriterionForSalesVolume = Enums.DiscountMarkupUseLimitCriteriaForSalesVolume.Quantity, "Count-in", Object.UseRestrictionCriterionForSalesVolume) + " " + 
-		?(Object.RestrictionArea = Enums.DiscountMarkupRestrictionAreasVariants.InDocument,NStr("en = 'in document'"),NStr("en = 'In line'")) + " "+Object.ComparisonType + " "+Object.RestrictionConditionValue + 
-		?(Object.UseRestrictionCriterionForSalesVolume = Enums.DiscountMarkupUseLimitCriteriaForSalesVolume.Quantity, NStr("en = ' unit'"), " "+Object.RestrictionCurrency);
+		?(Object.RestrictionArea = Enums.DiscountMarkupRestrictionAreasVariants.InDocument,NStr("en='in document';ru='в документе'"),NStr("en='In line';ru='в строке'")) + " "+Object.ComparisonType + " "+Object.RestrictionConditionValue + 
+		?(Object.UseRestrictionCriterionForSalesVolume = Enums.DiscountMarkupUseLimitCriteriaForSalesVolume.Quantity, NStr("en=' unit';ru=' ед'"), " "+Object.RestrictionCurrency);
 		If Object.SalesFilterByProductsAndServices.Count() > 0 Then
 			DescriptionString = DescriptionString + ": " + TabularSectionDescriptionServer("SalesFilterByProductsAndServices", "ProductsAndServices");
 		EndIf;
 	ElsIf Object.AssignmentCondition = Enums.DiscountsMarkupsProvidingConditions.ForKitPurchase Then
-		DescriptionString = NStr("en = 'Kit:'");
+		DescriptionString = NStr("en='Kit:';ru='Комплект:'");
 		DescriptionString = DescriptionString + " " + TabularSectionDescriptionServer("PurchaseKit", "ProductsAndServices");
 	EndIf;
 	

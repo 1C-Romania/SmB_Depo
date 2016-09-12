@@ -226,7 +226,7 @@ Procedure ExecuteClosingMonthInLongOperation(ParametersStructureBackgroundJob)
 		UUID,
 		"DataProcessors.MonthEnd.ExecuteMonthEnd",
 		ParametersStructureBackgroundJob,
-		NStr("en = 'Month closing is in progress'")
+		NStr("en='Month closing is in progress';ru='Выполняется закрытие месяца'")
 	);
 	
 	Completed = AssignmentResult.JobCompleted;
@@ -292,7 +292,7 @@ EndFunction // InProgressBackgroundJob()
 Procedure WarnAboutActiveBackgroundJob(Cancel = True)
 	
 	Cancel = True;
-	WarningText = NStr("en = 'Wait until the work process will be finished (recommended) or terminate it manually.'");
+	WarningText = NStr("en='Wait until the work process will be finished (recommended) or terminate it manually.';ru='Дождитесь окончания рабочего процесса (рекомендуется) либо прервите его самостоятельно.'");
 	ShowMessageBox(Undefined,WarningText, 10, "it is impossible to close form.");
 	
 EndProcedure // WarnAboutActiveBackgroundJob()
@@ -891,14 +891,14 @@ Procedure GetInfoAboutPeriodsClosing()
 		
 		If Not ValueIsFilled(ThisForm["TextErrorCostAllocation" + Ct]) Then
 			If Items.Find("CostAllocationPicture" + Ct).Picture = Items.Green.Picture Then
-				ThisForm["TextErrorCostAllocation" + Ct] = NStr("en='Costing completed successfully!'");
+				ThisForm["TextErrorCostAllocation" + Ct] = NStr("en='Costing completed successfully!';ru='Расчет себестоимости в рознице (суммовой учет) выполнен успешно!'");
 				MonthClosed = True; // month is closed if distribution was completed successfully
 			ElsIf Items.Find("CostAllocationPicture" + Ct).Picture = Items.GreenIsNotRequired.Picture Then
-				ThisForm["TextErrorCostAllocation" + Ct] = NStr("en='Costing is not required.'");
+				ThisForm["TextErrorCostAllocation" + Ct] = NStr("en='Costing is not required.';ru='Расчет себестоимости в рознице (суммовой учет) не требуется.'");
 			ElsIf Items.Find("CostAllocationPicture" + Ct).Picture = Items.Gray.Picture Then
-				ThisForm["TextErrorCostAllocation" + Ct] = NStr("en='Costing was n''t performed.'");
+				ThisForm["TextErrorCostAllocation" + Ct] = NStr("en=""Costing was n't performed."";ru='Распределение затрат не производилось.'");
 			ElsIf Items.Find("CostAllocationPicture" + Ct).Picture = Items.Red.Picture Then
-				ThisForm["TextErrorCostAllocation" + Ct] = NStr("en='Costing is required.'");
+				ThisForm["TextErrorCostAllocation" + Ct] = NStr("en='Costing is required.';ru='Требуется выполнить распределение затрат.'");
 			EndIf;
 		Else
 			MonthClosed = True; // month is closed if there are any errors
@@ -906,14 +906,14 @@ Procedure GetInfoAboutPeriodsClosing()
 		
 		If Not ValueIsFilled(ThisForm["TextErrorDirectCostCalculation" + Ct]) Then
 			If Items.Find("DirectCostCalculationPicture" + Ct).Picture = Items.Green.Picture Then
-				ThisForm["TextErrorDirectCostCalculation" + Ct] = NStr("en='Direct cost calculation completed successfully!'");
+				ThisForm["TextErrorDirectCostCalculation" + Ct] = NStr("en='Direct cost calculation completed successfully!';ru='Расчет прямых затрат выполнен успешно!'");
 				MonthClosed = True; // month is closed if distribution was completed successfully
 			ElsIf Items.Find("DirectCostCalculationPicture" + Ct).Picture = Items.GreenIsNotRequired.Picture Then
-				ThisForm["TextErrorDirectCostCalculation" + Ct] = NStr("en='Direct cost calculation is not required.'");
+				ThisForm["TextErrorDirectCostCalculation" + Ct] = NStr("en='Direct cost calculation is not required.';ru='Расчет прямых затрат не требуется.'");
 			ElsIf Items.Find("DirectCostCalculationPicture" + Ct).Picture = Items.Gray.Picture Then
-				ThisForm["TextErrorDirectCostCalculation" + Ct] = NStr("en='Direct cost calculation was not performed.'");
+				ThisForm["TextErrorDirectCostCalculation" + Ct] = NStr("en='Direct cost calculation was not performed.';ru='Расчет прямых затрат не производился.'");
 			ElsIf Items.Find("DirectCostCalculationPicture" + Ct).Picture = Items.Red.Picture Then
-				ThisForm["TextErrorDirectCostCalculation" + Ct] = NStr("en='Direct cost calculation is required.'");
+				ThisForm["TextErrorDirectCostCalculation" + Ct] = NStr("en='Direct cost calculation is required.';ru='Требуется выполнить расчет прямых затрат.'");
 			EndIf;
 		Else
 			MonthClosed = True; // month is closed if there are any errors
@@ -921,14 +921,14 @@ Procedure GetInfoAboutPeriodsClosing()
 		
 		If Not ValueIsFilled(ThisForm["TextErrorActualCostCalculation" + Ct]) Then
 			If Items.Find("ActualCostCalculationPicture" + Ct).Picture = Items.Green.Picture Then
-				ThisForm["TextErrorActualCostCalculation" + Ct] = NStr("en='Actual cost calculation completed successfully!'");
+				ThisForm["TextErrorActualCostCalculation" + Ct] = NStr("en='Actual cost calculation completed successfully!';ru='Расчет фактической себестоимости выполнен успешно!'");
 				MonthClosed = True; // month is closed if distribution was completed successfully
 			ElsIf Items.Find("ActualCostCalculationPicture" + Ct).Picture = Items.GreenIsNotRequired.Picture Then
-				ThisForm["TextErrorActualCostCalculation" + Ct] = NStr("en='Actual cost calculation is not required.'");
+				ThisForm["TextErrorActualCostCalculation" + Ct] = NStr("en='Actual cost calculation is not required.';ru='Расчет фактической себестоимости не требуется.'");
 			ElsIf Items.Find("ActualCostCalculationPicture" + Ct).Picture = Items.Gray.Picture Then
-				ThisForm["TextErrorActualCostCalculation" + Ct] = NStr("en='Actual cost calculation was not performed.'");
+				ThisForm["TextErrorActualCostCalculation" + Ct] = NStr("en='Actual cost calculation was not performed.';ru='Расчет фактической себестоимости не производился.'");
 			ElsIf Items.Find("ActualCostCalculationPicture" + Ct).Picture = Items.Red.Picture Then
-				ThisForm["TextErrorActualCostCalculation" + Ct] = NStr("en='Actual cost calculation is required.'");
+				ThisForm["TextErrorActualCostCalculation" + Ct] = NStr("en='Actual cost calculation is required.';ru='Требуется выполнить расчет фактической себестоимости.'");
 			EndIf;
 		Else
 			MonthClosed = True; // month is closed if there are any errors
@@ -936,14 +936,14 @@ Procedure GetInfoAboutPeriodsClosing()
 		
 		If Not ValueIsFilled(ThisForm["TextErrorFinancialResultCalculation" + Ct]) Then
 			If Items.Find("FinancialResultCalculationPicture" + Ct).Picture = Items.Green.Picture Then
-				ThisForm["TextErrorFinancialResultCalculation" + Ct] = NStr("en='Financial result calculation completed successfully!'");
+				ThisForm["TextErrorFinancialResultCalculation" + Ct] = NStr("en='Financial result calculation completed successfully!';ru='Расчет финансового результата выполнен успешно!'");
 				MonthClosed = True; // month is closed if distribution was completed successfully
 			ElsIf Items.Find("FinancialResultCalculationPicture" + Ct).Picture = Items.GreenIsNotRequired.Picture Then
-				ThisForm["TextErrorFinancialResultCalculation" + Ct] = NStr("en='Financial result calculation is not required.'");
+				ThisForm["TextErrorFinancialResultCalculation" + Ct] = NStr("en='Financial result calculation is not required.';ru='Расчет финансового результата не требуется.'");
 			ElsIf Items.Find("FinancialResultCalculationPicture" + Ct).Picture = Items.Gray.Picture Then
-				ThisForm["TextErrorFinancialResultCalculation" + Ct] = NStr("en='Financial result calculation was not performed.'");
+				ThisForm["TextErrorFinancialResultCalculation" + Ct] = NStr("en='Financial result calculation was not performed.';ru='Расчет финансового результата не производился.'");
 			ElsIf Items.Find("FinancialResultCalculationPicture" + Ct).Picture = Items.Red.Picture Then
-				ThisForm["TextErrorFinancialResultCalculation" + Ct] = NStr("en='Financial result calculation is required.'");
+				ThisForm["TextErrorFinancialResultCalculation" + Ct] = NStr("en='Financial result calculation is required.';ru='Требуется выполнить расчет финансового результата.'");
 			EndIf;
 		Else
 			MonthClosed = True; // month is closed if there are any errors
@@ -951,14 +951,14 @@ Procedure GetInfoAboutPeriodsClosing()
 		
 		If Not ValueIsFilled(ThisForm["TextErrorExchangeDifferencesCalculation" + Ct]) Then
 			If Items.Find("ExchangeDifferencesCalculationPicture" + Ct).Picture = Items.Green.Picture Then
-				ThisForm["TextErrorExchangeDifferencesCalculation" + Ct] = NStr("en='Costing completed successfully!'");
+				ThisForm["TextErrorExchangeDifferencesCalculation" + Ct] = NStr("en='Costing completed successfully!';ru='Расчет себестоимости в рознице (суммовой учет) выполнен успешно!'");
 				MonthClosed = True; // month is closed if distribution was completed successfully
 			ElsIf Items.Find("ExchangeDifferencesCalculationPicture" + Ct).Picture = Items.GreenIsNotRequired.Picture Then
-				ThisForm["TextErrorExchangeDifferencesCalculation" + Ct] = NStr("en='Costing is not required.'");
+				ThisForm["TextErrorExchangeDifferencesCalculation" + Ct] = NStr("en='Costing is not required.';ru='Расчет себестоимости в рознице (суммовой учет) не требуется.'");
 			ElsIf Items.Find("ExchangeDifferencesCalculationPicture" + Ct).Picture = Items.Gray.Picture Then
-				ThisForm["TextErrorExchangeDifferencesCalculation" + Ct] = NStr("en='Costing was not performed.'");
+				ThisForm["TextErrorExchangeDifferencesCalculation" + Ct] = NStr("en='Costing was not performed.';ru='Расчет курсовых разниц не производился.'");
 			ElsIf Items.Find("ExchangeDifferencesCalculationPicture" + Ct).Picture = Items.Red.Picture Then
-				ThisForm["TextErrorExchangeDifferencesCalculation" + Ct] = NStr("en='Costing required.'");
+				ThisForm["TextErrorExchangeDifferencesCalculation" + Ct] = NStr("en='Costing required.';ru='Требуется выполнить расчет себестоимости в рознице (суммовой учет).'");
 			EndIf;
 		Else
 			MonthClosed = True; // month is closed if there are any errors
@@ -966,14 +966,14 @@ Procedure GetInfoAboutPeriodsClosing()
 		
 		If Not ValueIsFilled(ThisForm["TextErrorCalculationPrimecostInRetail" + Ct]) Then
 			If Items.Find("RetailCostCalculationPicture" + Ct).Picture = Items.Green.Picture Then
-				ThisForm["TextErrorCalculationPrimecostInRetail" + Ct] = NStr("en='Costing completed successfully!'");
+				ThisForm["TextErrorCalculationPrimecostInRetail" + Ct] = NStr("en='Costing completed successfully!';ru='Расчет себестоимости в рознице (суммовой учет) выполнен успешно!'");
 				MonthClosed = True; // month is closed if distribution was completed successfully
 			ElsIf Items.Find("RetailCostCalculationPicture" + Ct).Picture = Items.GreenIsNotRequired.Picture Then
-				ThisForm["TextErrorCalculationPrimecostInRetail" + Ct] = NStr("en='Costing is not required.'");
+				ThisForm["TextErrorCalculationPrimecostInRetail" + Ct] = NStr("en='Costing is not required.';ru='Расчет себестоимости в рознице (суммовой учет) не требуется.'");
 			ElsIf Items.Find("RetailCostCalculationPicture" + Ct).Picture = Items.Gray.Picture Then
-				ThisForm["TextErrorCalculationPrimecostInRetail" + Ct] = NStr("en='Costing was not performed'");
+				ThisForm["TextErrorCalculationPrimecostInRetail" + Ct] = NStr("en='Costing was not performed';ru='Расчет себестоимости в рознице (суммовой учет) не производился.'");
 			ElsIf Items.Find("RetailCostCalculationPicture" + Ct).Picture = Items.Red.Picture Then
-				ThisForm["TextErrorCalculationPrimecostInRetail" + Ct] = NStr("en='Costing required.'");
+				ThisForm["TextErrorCalculationPrimecostInRetail" + Ct] = NStr("en='Costing required.';ru='Требуется выполнить расчет себестоимости в рознице (суммовой учет).'");
 			EndIf;
 		Else
 			MonthClosed = True; // month is closed if there are any errors
@@ -981,14 +981,14 @@ Procedure GetInfoAboutPeriodsClosing()
 		
 		If Not ValueIsFilled(ThisForm["TextErrorDepreciationAccrual" + Ct]) Then
 			If Items.Find("DepreciationAccrualPicture" + Ct).Picture = Items.Green.Picture Then
-				ThisForm["TextErrorDepreciationAccrual" + Ct] = NStr("en='Depreciation accrual has been successfully completed!'");
+				ThisForm["TextErrorDepreciationAccrual" + Ct] = NStr("en='Depreciation accrual has been successfully completed!';ru='Начисление амортизации выполнено успешно!'");
 				MonthClosed = True; // month is closed if distribution was completed successfully
 			ElsIf Items.Find("DepreciationAccrualPicture" + Ct).Picture = Items.GreenIsNotRequired.Picture Then
-				ThisForm["TextErrorDepreciationAccrual" + Ct] = NStr("en='Depreciation accrual is not required.'");
+				ThisForm["TextErrorDepreciationAccrual" + Ct] = NStr("en='Depreciation accrual is not required.';ru='Начисление амортизации не требуется.'");
 			ElsIf Items.Find("DepreciationAccrualPicture" + Ct).Picture = Items.Gray.Picture Then
-				ThisForm["TextErrorDepreciationAccrual" + Ct] = NStr("en='Depreciation accrual has not been performed.'");
+				ThisForm["TextErrorDepreciationAccrual" + Ct] = NStr("en='Depreciation accrual has not been performed.';ru='Начисление амортизации не производилось.'");
 			ElsIf Items.Find("DepreciationAccrualPicture" + Ct).Picture = Items.Red.Picture Then
-				ThisForm["TextErrorDepreciationAccrual" + Ct] = NStr("en='Depreciation accrual is required to be performed.'");
+				ThisForm["TextErrorDepreciationAccrual" + Ct] = NStr("en='Depreciation accrual is required to be performed.';ru='Требуется выполнить начисление амортизации.'");
 			EndIf;
 		Else
 			MonthClosed = True; // month is closed if there are any errors
@@ -1001,7 +1001,7 @@ Procedure GetInfoAboutPeriodsClosing()
 			AND Items.Find("ExchangeDifferencesCalculationPicture" + Ct).Picture = Items.GreenIsNotRequired.Picture
 			AND Items.Find("RetailCostCalculationPicture" + Ct).Picture = Items.GreenIsNotRequired.Picture
 			AND Items.Find("DepreciationAccrualPicture" + Ct).Picture = Items.GreenIsNotRequired.Picture Then
-			Items.Find("DecorationPerformClosingNotNeeded" + Ct).Title = NStr("en='Month end is not required because there is no data for calculation.'");
+			Items.Find("DecorationPerformClosingNotNeeded" + Ct).Title = NStr("en='Month end is not required because there is no data for calculation.';ru='Закрытие месяца не требуется, т.к. нет данных для расчета.'");
 		Else
 			Items.Find("DecorationPerformClosingNotNeeded" + Ct).Title = "";
 		EndIf;
@@ -1135,7 +1135,7 @@ EndProcedure
 Procedure ExecuteMonthEnd(Command)
 	
 	If EndOfMonth(Date(CurYear, CurMonth, 1)) <= EndOfDay(EditProhibitionDate) Then
-		ShowMessageBox(Undefined, NStr("en='It is impossible to close month, because it relates to the prohibited for editing period!'"));
+		ShowMessageBox(Undefined, NStr("en='It is impossible to close month, because it relates to the prohibited for editing period!';ru='Нельзя закрыть месяц, т.к. он относится к запрещенному для редактирования периоду!'"));
 		Return;
 	EndIf;
 	InitializeMonthEnd();

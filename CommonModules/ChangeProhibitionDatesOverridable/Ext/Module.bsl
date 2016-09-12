@@ -235,7 +235,7 @@ Procedure UpdateChangesProhibitionDatesSections(DataProcessorCompleted) Export
 				
 			EndIf;
 			
-			Comment = NStr("en = 'Section is added automatically when updating the SB to version 1.5.3.6'");
+			Comment = NStr("en='Section is added automatically when updating the SB to version 1.5.3.6';ru='Раздел добавлен автоматически при обновлении УНФ до версии 1.5.3.6'");
 			
 			ManagerRegister = InformationRegisters.ChangeProhibitionDates.CreateRecordManager();
 			ManagerRegister.User = Selection.User;

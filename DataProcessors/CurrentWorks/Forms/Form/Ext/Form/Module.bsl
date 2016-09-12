@@ -387,7 +387,7 @@ Procedure LaunchBackgroundJobOnServer(ExecutionBroken = False)
 		JobParameters.Add("CurrentWorksService.UserToDoList");
 		JobParameters.Add(ProcedureParameters);
 		
-		JobDescription = NStr("en = 'To-do lists list update'");
+		JobDescription = NStr("en='To-do lists list update';ru='Обновление списка текущих дел'");
 		
 		Task = BackgroundJobs.Execute("WorkInSafeMode.ExecuteConfigurationMethod", JobParameters,, JobDescription);
 		
@@ -587,7 +587,7 @@ Procedure CreateTitle(Work, Group, SectionCollapsed)
 	Item.Width      = 2;
 	Item.Height      = 1;
 	Item.SetAction("Click", "Attachable_ProcessClickOnPicture");
-	Item.ToolTip = NStr("en = 'Expand/collapse section'");
+	Item.ToolTip = NStr("en='Expand/collapse section';ru='Развернуть/свернуть раздел'");
 	
 	// Create a section title.
 	Item = Items.Add("Title" + Work.IDOwner, Type("FormDecoration"), Group);

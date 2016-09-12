@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Check that the form is opened applicationmatically.
 	If Not Parameters.Property("ExchangeMessageFileName") Then
 		
-		NString = NStr("en = 'Form can not be opened interactively.'");
+		NString = NStr("en='Form can not be opened interactively.';ru='Форма не может быть открыта интерактивно.'");
 		CommonUseClientServer.MessageToUser(NString,,,, Cancel);
 		Return;
 		
@@ -51,7 +51,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	If  Object.TableOfAutomaticallyMappedObjects.Count() > 0
 		AND WarnOnCloseForm = True Then
 			
-		ShowMessageBox(, NStr("en = 'The form contains data of the automatic mapping. Action cancelled.'"));
+		ShowMessageBox(, NStr("en='The form contains data of the automatic mapping. Action cancelled.';ru='Форма содержит данные автоматического сопоставления. Действие отменено.'"));
 		
 		Cancel = True;
 		
@@ -144,7 +144,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -165,7 +165,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -221,7 +221,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -458,7 +458,7 @@ Procedure PerformMappingOfObjects(Cancel)
 			UUID,
 			"DataProcessors.InfobaseObjectsMapping.RunAutomaticObjectMapping",
 			MethodParameters,
-			NStr("en = 'Automatic object matching'")
+			NStr("en='Automatic object matching';ru='Автоматическое сопоставление объектов'")
 		);
 		
 		If Result.JobCompleted Then
@@ -471,7 +471,7 @@ Procedure PerformMappingOfObjects(Cancel)
 		
 	Except
 		Cancel = True;
-		WriteLogEvent(NStr("en = 'Objects mapping assistant. Automatic mapping'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Objects mapping assistant. Automatic mapping';ru='Помощник сопоставления объектов.Автоматическое сопоставление'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo())
 		);
 		Return;
@@ -488,7 +488,7 @@ Procedure ExecuteMappingObjectsEnd(Cancel)
 		AfterObjectsMapping(GetFromTempStorage(TemporaryStorageAddress));
 	Except
 		Cancel = True;
-		WriteLogEvent(NStr("en = 'Objects mapping assistant. Automatic mapping'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Objects mapping assistant. Automatic mapping';ru='Помощник сопоставления объектов.Автоматическое сопоставление'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo())
 		);
 		Return;

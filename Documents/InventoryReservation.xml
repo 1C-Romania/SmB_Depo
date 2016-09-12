@@ -30,6 +30,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Inventory reservation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Резервирование запасов</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<UseStandardCommands>true</UseStandardCommands>
@@ -52,6 +56,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document posting flag</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак проведения документа</v8:content>
 						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
@@ -83,6 +91,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Ref to document</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка на документ</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -112,6 +124,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document deletion mark</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка удаления документа</v8:content>
 						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
@@ -143,6 +159,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document date</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата документа</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -172,6 +192,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document No.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер документа</v8:content>
 						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
@@ -231,12 +255,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Inventory reservations</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Резервирования запасов</v8:content>
+				</v8:item>
 			</ListPresentation>
 			<ExtendedListPresentation/>
 			<Explanation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Documents of customer order inventory or production reserve, and demands distribution by customer orders in order to vendor or production order.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документы резервирования запасов под заказ покупателя на складе или в производстве, а также размещения потребностей по заказам покупателей в заказах поставщикам или заказах на производство</v8:content>
 				</v8:item>
 			</Explanation>
 			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
@@ -262,6 +294,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Own company under the name of which the document is produced</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Собственная организация, от имени которой оформляется документ</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -293,6 +329,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Customer order</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заказ покупателя</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -305,6 +345,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Customer order according to which the inventory has been accepted to the commission</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заказ покупателя, под который резервируются (снимаются с резерва) запасы</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -336,6 +380,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -352,6 +400,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Custom comment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Произвольный комментарий</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -383,6 +435,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Author</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ведомость составил</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -395,6 +451,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>User who created the document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь, создавший документ</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -439,12 +499,20 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Inventory</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запасы</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Inventory list</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список запасов</v8:content>
 						</v8:item>
 					</ToolTip>
 					<FillChecking>DontCheck</FillChecking>
@@ -485,6 +553,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Products and services</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Продукция и услуги</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -497,6 +569,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>ProductsAndServices position</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номенклатурная позиция</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -530,6 +606,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Characteristic</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Characteristic</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -542,6 +622,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Products and services characteristic</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Характеристика номенклатуры</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -577,6 +661,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Batch</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Партия</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -589,6 +677,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Products and services batch</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Партия номенклатуры</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -624,6 +716,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>UOM</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Единицы измерения</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -637,6 +733,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Products and services unit of measurement</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Единица измерения номенклатуры</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -672,6 +772,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Quantity</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Quantity</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -689,6 +793,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Products and services quantity</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Количество номенклатуры</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -718,6 +826,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Original place</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Исходное место</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -733,6 +845,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>If marked, reserve will be checked if reserve not marked as done from balance</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Если указано - резерв будет снят, если не указано осуществлено резервирование из свободного остатка</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -769,6 +885,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>New place</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Новое место</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -784,6 +904,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>If not marked, reserve will be checked if reserve is set as "done" in specified reserve place</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Если не указано - резерв будет снят, если указано осуществлено резервирование в указанном месте резерва</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>

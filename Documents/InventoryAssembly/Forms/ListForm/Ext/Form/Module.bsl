@@ -222,7 +222,7 @@ Procedure CreateProduction(Command)
 	
 	If Items.ListProductionOrders.CurrentData = Undefined Then
 		
-		WarningText = NStr("en = 'Command can not be executed for the specified object'");
+		WarningText = NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'");
 		ShowMessageBox(Undefined,WarningText);
 		Return;
 		
@@ -238,7 +238,7 @@ Procedure CreateProduction(Command)
 	Else
 		
 		ArrayProduction = GenerateProductionDocumentsAndWrite(OrdersArray);
-		Text = NStr("en='Creating:'");
+		Text = NStr("en='Creating:';ru='Создание:'");
 		For Each RowProduction IN ArrayProduction Do
 			
 			ShowUserNotification(Text, GetURL(RowProduction), RowProduction, PictureLib.Information32);

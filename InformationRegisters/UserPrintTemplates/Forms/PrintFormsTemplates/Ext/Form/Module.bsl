@@ -167,7 +167,7 @@ Procedure FillPrintFormsTemplatesTable()
 		If TemplateType = Undefined Then
 			Continue;
 		EndIf;
-		AddDetailsTemplate("CommonTemplate." + MetadataObjectTemplate.Name, MetadataObjectTemplate.Synonym, NStr("en = 'Common template'"), TemplateType);
+		AddDetailsTemplate("CommonTemplate." + MetadataObjectTemplate.Name, MetadataObjectTemplate.Synonym, NStr("en='Common template';ru='Общий шаблон'"), TemplateType);
 	EndDo;
 	
 	PrintFormsTemplates.Sort("TemplatePresentation asc");

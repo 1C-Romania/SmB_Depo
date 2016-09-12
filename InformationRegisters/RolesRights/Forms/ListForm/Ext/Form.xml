@@ -17,6 +17,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>User settings group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пользовательских настроек</v8:content>
+				</v8:item>
 			</Title>
 			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
@@ -28,6 +32,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Command bar</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
 			<CommandSource>Form</CommandSource>
@@ -116,6 +124,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Metadata object presentation with type.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление объекта метаданных с типом.</v8:content>
+						</v8:item>
 					</ToolTip>
 					<ContextMenu name="ListMetadataObjectContextMenu" id="7"/>
 					<ExtendedTooltip name="ListMetadataObjectExtendedTooltip" id="39"/>
@@ -128,6 +140,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Role</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Роль</v8:content>
+						</v8:item>
 					</Title>
 					<Width>25</Width>
 					<ContextMenu name="RoleListContextMenu" id="5"/>
@@ -139,6 +155,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>List group right reading</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список группа право чтение</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ListGroupRightReadingExtendedTooltip" id="41"/>
 					<ChildItems>
@@ -148,6 +168,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Read right installed in the role.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Право Чтение, установленное в роли.</v8:content>
 								</v8:item>
 							</ToolTip>
 							<CheckBoxType>Auto</CheckBoxType>
@@ -162,6 +186,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Without restriction</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Без ограничения</v8:content>
+								</v8:item>
 							</Title>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="ListReadingNotLimitedContextMenu" id="15"/>
@@ -174,6 +202,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>List group right adding</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список группа право добавление</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ListGroupRightAddingExtendedTooltip" id="44"/>
@@ -193,6 +225,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Without restriction</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Без ограничения</v8:content>
+								</v8:item>
 							</Title>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="ListInsertNotLimitedContextMenu" id="17"/>
@@ -205,6 +241,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>List group right changing</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список группа право изменение</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ListGroupRightChangingExtendedTooltip" id="47"/>
@@ -223,6 +263,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Without restriction</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Без ограничения</v8:content>
 								</v8:item>
 							</Title>
 							<CheckBoxType>Auto</CheckBoxType>
@@ -323,11 +367,19 @@ WHERE
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable editing</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable editing for error search only (requires advanced knowledge of the mechanism work)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования только для целей поиска неисправности (требуется углубленное понимание работы механизма)</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnableEditingAbility</Action>
@@ -338,11 +390,19 @@ WHERE
 					<v8:lang>en</v8:lang>
 					<v8:content>Update register data</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить данные регистра</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update register data</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить данные регистра</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>RefreshDataRegister</Action>

@@ -98,6 +98,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
 					</Title>
 					<Width>25</Width>
 					<HorizontalStretch>false</HorizontalStretch>
@@ -115,6 +119,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>order.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>наряд.</v8:content>
 						</v8:item>
 					</Title>
 					<CheckBoxType>Auto</CheckBoxType>
@@ -140,6 +148,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>код</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CodeContextMenu" id="7"/>
@@ -193,6 +205,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Accounting by multiple divisions</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Учет по нескольким подразделениям</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -203,6 +219,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Accounting by multiple warehouses</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Учет по нескольким складам</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -215,6 +235,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Show warehouse</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отображать склад</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -226,6 +250,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Show division</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отображать подразделение</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -236,6 +264,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Hierarchy of types</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Иерархия типов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -250,11 +282,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Set main warehouse</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить основной склад</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Selected item will be populated to the user's documents by default</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбранный элемент будет по умолчанию подставляться в документы пользователя</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CommandSetMainWarehouse</Action>
@@ -266,11 +306,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Set main division</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить основное подразделение</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Selected item will be populated to the user's documents by default</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбранный элемент будет по умолчанию подставляться в документы пользователя</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CommandSetMainDivision</Action>

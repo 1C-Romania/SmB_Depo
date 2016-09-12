@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Clearing address classifier</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Очистка адресного классификатора</v8:content>
+		</v8:item>
 	</Title>
 	<Height>15</Height>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -27,11 +31,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Clearing steps</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаги очистки</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Clearing steps</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаги очистки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<PagesRepresentation>None</PagesRepresentation>
@@ -43,11 +55,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>States to clear selection</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбор регионов очистки</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>States to clear selection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбор регионов очистки</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="StatesToClearSelectionExtendedTooltip" id="62"/>
@@ -139,6 +159,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>RF territorial entities</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Субъекты РФ</v8:content>
+										</v8:item>
 									</Title>
 									<Group>InCell</Group>
 									<ExtendedTooltip name="RFTerritorialEntitiesGroupExtendedTooltip" id="135"/>
@@ -171,6 +195,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Importing commands group</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа команд загрузки</v8:content>
+								</v8:item>
 							</Title>
 							<HorizontalStretch>true</HorizontalStretch>
 							<Group>Horizontal</Group>
@@ -188,6 +216,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>NZ=-</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ЧН=-</v8:content>
+										</v8:item>
 									</Format>
 									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 									<ContextMenu name="SelectedStatesToClearContextMenu" id="52"/>
@@ -203,6 +235,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Importing group commands bar</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа команд загрузки панель</v8:content>
 										</v8:item>
 									</Title>
 									<HorizontalLocation>Right</HorizontalLocation>
@@ -226,11 +262,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Waiting for clearing</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ожидание очистки</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Waiting for clearing</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ожидание очистки</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="WaitingForClearingExtendedTooltip" id="64"/>
@@ -241,11 +285,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Group description</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа описание</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group description</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа описание</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -277,6 +329,11 @@
 												<v8:content>Clearing of address classifier can take
 a long time which depends on the number of selected regions of the RF.</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Очистка адресного классификатора может занять длительное время,
+которое зависит от количества выбранных регионов РФ.</v8:content>
+											</v8:item>
 										</Title>
 									</ExtendedTooltip>
 								</LabelField>
@@ -299,6 +356,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 									<v8:lang>en</v8:lang>
 									<v8:content>Cancel commands group</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа команд отмены</v8:content>
+								</v8:item>
 							</Title>
 							<HorizontalStretch>true</HorizontalStretch>
 							<VerticalStretch>true</VerticalStretch>
@@ -317,6 +378,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Cancel commands group bar</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа команд отмены панель</v8:content>
 										</v8:item>
 									</Title>
 									<HorizontalLocation>Right</HorizontalLocation>
@@ -339,11 +404,19 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 							<v8:lang>en</v8:lang>
 							<v8:content>Successful completion</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Успешное завершение</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Successful completion</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Успешное завершение</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="SuccessfulCompletionExtendedTooltip" id="92"/>
@@ -354,11 +427,19 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 									<v8:lang>en</v8:lang>
 									<v8:content>Group description</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа описание</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group description</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа описание</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -375,6 +456,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Long operation</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Длительная операция</v8:content>
 										</v8:item>
 									</Title>
 									<Picture>
@@ -405,6 +490,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 									<v8:lang>en</v8:lang>
 									<v8:content>Completion commands group</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа команд завершения</v8:content>
+								</v8:item>
 							</Title>
 							<HorizontalStretch>true</HorizontalStretch>
 							<VerticalStretch>true</VerticalStretch>
@@ -423,6 +512,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Completion commands group panel</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа команд завершения панель</v8:content>
 										</v8:item>
 									</Title>
 									<HorizontalLocation>Right</HorizontalLocation>
@@ -450,6 +543,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 					<v8:lang>en</v8:lang>
 					<v8:content>RF territorial entities</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Субъекты РФ</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -460,6 +557,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>RF territorial entity code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код субъекта РФ</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -477,6 +578,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 							<v8:lang>en</v8:lang>
 							<v8:content>RFTerritorialEntity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Субъект РФ</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -492,6 +597,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 							<v8:lang>en</v8:lang>
 							<v8:content>Exported</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>экспортируемый</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -502,6 +611,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Clear</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Очистить</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -515,6 +628,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>States</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>состояния</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -532,6 +649,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 					<v8:lang>en</v8:lang>
 					<v8:content>Clearing description text</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст описания очистки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -546,6 +667,10 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Clearing status text</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст состояния очистки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -567,11 +692,19 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear address information</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить адресные сведения</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear address information for selected states</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить адресные сведения для выбранных регионов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Clear</Action>
@@ -582,11 +715,19 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 					<v8:lang>en</v8:lang>
 					<v8:content>Check all</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить все</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Select all states for exporting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать все регионы для загрузки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -601,11 +742,19 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 					<v8:lang>en</v8:lang>
 					<v8:content>Uncheck all</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять флажки</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear mark for export from all states</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить пометку для загрузки у всех регионов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -620,11 +769,19 @@ a long time which depends on the number of selected regions of the RF.</v8:conte
 					<v8:lang>en</v8:lang>
 					<v8:content>Break</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прервать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Break cleaning</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прервать очистку</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>BreakClearing</Action>

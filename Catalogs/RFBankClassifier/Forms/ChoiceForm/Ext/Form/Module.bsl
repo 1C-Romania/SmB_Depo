@@ -105,8 +105,9 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
 	Cancel = True;
 	CommonUseClientServer.MessageToUser(
-		NStr("en = 'Interactive adding to the classifier is not supported.
-			|Use command ""Import classifier""'"));
+		NStr("en='Interactive adding to the classifier is not supported."
+"Use command ""Import classifier""';ru='Интерактивное добавление в классификатор не поддерживается."
+"Воспользуйтесь командой ""Загрузить классификатор""'"));
 	
 EndProcedure
 

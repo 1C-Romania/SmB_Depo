@@ -82,10 +82,10 @@ Procedure ImportRules(Command)
 	NameParts = CommonUseClientServer.SplitFullFileName(Record.RulesFilename);
 	
 	DialogueParameters = New Structure;
-	DialogueParameters.Insert("Title", NStr("en = 'Specify, from which file can be imported rules'"));
+	DialogueParameters.Insert("Title", NStr("en='Specify, from which file can be imported rules';ru='Укажите, из какого файла загрузить правила'"));
 	DialogueParameters.Insert("Filter",
-		  NStr("en = 'Registration rule files (*.xml)'") + "|*.xml|"
-		+ NStr("en = 'ZIP archives (*.zip)'")   + "|*.zip"
+		  NStr("en='Registration rule files (*.xml)';ru='Файлы правил регистрации (*.xml)'") + "|*.xml|"
+		+ NStr("en='ZIP archives (*.zip)';ru='Архивы ZIP (*.zip)'")   + "|*.zip"
 	);
 	
 	DialogueParameters.Insert("FullFileName", NameParts.FullName);
@@ -101,21 +101,21 @@ Procedure UnloadRules(Command)
 	NameParts = CommonUseClientServer.SplitFullFileName(Record.RulesFilename);
 	
 	StorageAddress = GetURLAtServer();
-	NameFilter = NStr("en = 'Rule files (*.xml)'") + "|*.xml";
+	NameFilter = NStr("en='Rule files (*.xml)';ru='Файлы правил (*.xml)'") + "|*.xml";
 	
 	If IsBlankString(StorageAddress) Then
 		Return;
 	EndIf;
 	
 	If IsBlankString(NameParts.BaseName) Then
-		FullFileName = NStr("en = 'Registration Rules'");
+		FullFileName = NStr("en='Registration Rules';ru='Правила регистрации'");
 	Else
 		FullFileName = NameParts.BaseName;
 	EndIf;
 	
 	DialogueParameters = New Structure;
 	DialogueParameters.Insert("Mode", FileDialogMode.Save);
-	DialogueParameters.Insert("Title", NStr("en = 'Specify the file to which the rules should be exported'") );
+	DialogueParameters.Insert("Title", NStr("en='Specify the file to which the rules should be exported';ru='Укажите в какой файл выгрузить правила'") );
 	DialogueParameters.Insert("FullFileName", FullFileName);
 	DialogueParameters.Insert("Filter", NameFilter);
 	
@@ -166,7 +166,7 @@ Procedure RefreshRulesTemplateChoiceList()
 	
 	If IsBlankString(Record.ExchangePlanName) Then
 		
-		Items.MainGroup.Title = NStr("en = 'Conversion rules'");
+		Items.MainGroup.Title = NStr("en='Conversion rules';ru='Правила конвертации'");
 		
 	Else
 		
@@ -244,10 +244,13 @@ Procedure UpdateRuleInfo()
 	
 	If Record.RulesSource = Enums.RuleSourcesForDataExchange.File Then
 		
-		RulesInformation = NStr("en = 'Use of rules imported
-									|from the file may lead to errors when updating application to a new version.
-									|
-									|[InformationAboutRules]'");
+		RulesInformation = NStr("en='Use of rules imported"
+"from the file may lead to errors when updating application to a new version."
+""
+"[InformationAboutRules]';ru='Использование"
+"правил, загруженных из файла, может привести к ошибкам при переходе на новую версию программы."
+""
+"[ИнформацияОПравилах]'");
 		
 		RulesInformation = StrReplace(RulesInformation, "[InformationAboutRules]", Record.RulesInformation);
 		
@@ -271,17 +274,18 @@ EndProcedure
 Procedure ImportRulesExecute(Val PlacedFileAddress, Val FileName, Val IsArchive)
 	Cancel = False;
 	
-	Status(NStr("en = 'Importing rules to the infobase...'"));
+	Status(NStr("en='Importing rules to the infobase...';ru='Выполняется загрузка правил в информационную базу...'"));
 	ImportRulesAtServer(Cancel, PlacedFileAddress, FileName, IsArchive);
 	Status();
 	
 	If Not Cancel Then
-		ShowUserNotification(,, NStr("en = 'Rules have been successfully loaded to the infobase.'"));
+		ShowUserNotification(,, NStr("en='Rules have been successfully loaded to the infobase.';ru='Правила успешно загружены в информационную базу.'"));
 		Return;
 	EndIf;
 	
-	ErrorText = NStr("en = 'Errors were found during the import.
-	                         |Do you want to open the event log?'");
+	ErrorText = NStr("en='Errors were found during the import."
+"Do you want to open the event log?';ru='При загрузке данных возникли ошибки."
+"Перейти в журнал регистрации?'");
 	
 	Notification = New NotifyDescription("ShowEventLogMonitorOnError", ThisObject);
 	ShowQueryBox(Notification, ErrorText, QuestionDialogMode.YesNo, ,DialogReturnCode.No);
@@ -294,7 +298,7 @@ Procedure ImportRulesEnd(Val FilesPlacingResult, Val AdditionalParameters) Expor
 	ErrorText           = FilesPlacingResult.ErrorDescription;
 	
 	If IsBlankString(ErrorText) AND IsBlankString(PlacedFileAddress) Then
-		ErrorText = NStr("en = 'Error transferring file to the server'");
+		ErrorText = NStr("en='Error transferring file to the server';ru='Ошибка передачи файла на сервер'");
 	EndIf;
 	
 	If Not IsBlankString(ErrorText) Then

@@ -88,8 +88,8 @@ Function ExternalModuleContainerDictionary() Export
 	
 	Result = New Structure();
 	
-	Result.Insert("Nominative", NStr("en = 'Additional report or data processor'"));
-	Result.Insert("Genitive", NStr("en = 'Additional report or data processor'"));
+	Result.Insert("Nominative", NStr("en='Additional report or data processor';ru='Дополнительного отчета или обработки'"));
+	Result.Insert("Genitive", NStr("en='Additional report or data processor';ru='Дополнительного отчета или обработки'"));
 	
 	Return Result;
 	
@@ -308,7 +308,7 @@ Function ExecuteScriptSafeMode(Val SessionKey, Val Script, Val ExecutableObject,
 		Else
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Unknown action type for this step of the script: %1'"),
+				NStr("en='Unknown action type for this step of the script: %1';ru='Неизвестный вид действия для этапа сценария: %1'"),
 				ScriptStep.ActionKind);
 			
 		EndIf;
@@ -353,7 +353,7 @@ Function ExecuteScriptSafeMode(Val SessionKey, Val Script, Val ExecutableObject,
 			Else
 				
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Unknown parameter for this step of the script: %1'"),
+					NStr("en='Unknown parameter for this step of the script: %1';ru='Неизвестный параметр для этапа сценария: %1'"),
 					MethodParameter.Type);
 				
 			EndIf;
@@ -488,7 +488,7 @@ Function GeneratePermissionPresentation(Val permissions) Export
 			"<LI><FONT size=2>%1 <A href=""%2"">%3</A></FONT>",
 			PresentationPermissions,
 			"internal:" + TypePermissions,
-			NStr("en = 'Details...'"));
+			NStr("en='Details...';ru='Подробнее...'"));
 		
 	EndDo;
 	
@@ -525,7 +525,7 @@ Function GenerateDetailedPermissionsDescription(Val TypePermissions, Val Permiss
 	Result = Result + StringFunctionsClientServer.PlaceParametersIntoString(
 		"<P><FONT size=2>%1%2</FONT></P>", DetailsPermissions, ?(
 			HasParameters,
-			NStr("en = ' with following restrictions:'"),
+			NStr("en=' with following restrictions:';ru=' со следующими ограничениями:'"),
 			"."));
 	
 	If HasParameters Then
@@ -583,7 +583,7 @@ EndFunction
 Function PermissionIsNotGrantedTextOfException(Val SessionKey, Val TypeRequiredPermissions)
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Aditional report or processing %1 is not granted permission (%2)%3!'"),
+			NStr("en='Aditional report or processing %1 is not granted permission (%2)%3!';ru='Дополнительному отчету или обработке %1 не предоставлено разрешение {%2}%3!'"),
 			String(SessionKey), TypeRequiredPermissions.NamespaceURI, TypeRequiredPermissions.Name);
 	
 EndFunction
@@ -592,9 +592,11 @@ EndFunction
 Function PermissionIsNotGrantedTextOfExceptionForLimiter(Val SessionKey, Val TypeRequiredPermissions, Val CheckedRestriction, Val Limiter)
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'For additional report or data
-              |processor %1 the {%2}%3 permission
-              |is not granted when delimiter %4 is %5.'"),
+		NStr("en='For additional report or data"
+"processor %1 the {%2}%3 permission"
+"is not granted when delimiter %4 is %5.';ru='Для дополнительного отчета"
+"или обработки %1 не предоставлено"
+"разрешение {%2}%3 при значении ограничителя %4 равном %5!'"),
 		String(SessionKey), TypeRequiredPermissions.NamespaceURI, TypeRequiredPermissions.Name,
 		CheckedRestriction.LocalName, Limiter);
 	
@@ -604,8 +606,9 @@ EndFunction
 Function ExceptionTextNotInstalledLimiterIsRequired(Val SessionKey, Val TypeRequiredPermissions, Val CheckedRestriction)
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'When the {%2}%3 permission was
-              |granted for additional report or data processor %1, mandatory delimiter %4 was not specified.'"),
+		NStr("en='When the {%2}%3 permission was"
+"granted for additional report or data processor %1, mandatory delimiter %4 was not specified.';ru='Для дополнительного отчета"
+"или обработки %1 при предоставлении разрешения {%2}%3 не был указан обязательный ограничитель %4!'"),
 		String(SessionKey), TypeRequiredPermissions.NamespaceURI, TypeRequiredPermissions.Name,
 		CheckedRestriction.LocalName);
 	

@@ -24,11 +24,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Command bar</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Command bar</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</ToolTip>
 			<CommandSource>Form</CommandSource>
@@ -173,6 +181,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Full infobase user name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Полное имя пользователя информационной базы</v8:content>
+						</v8:item>
 					</ToolTip>
 					<EditMode>EnterOnInput</EditMode>
 					<TextEdit>false</TextEdit>
@@ -186,6 +198,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Infobase user name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя пользователя информационной базы</v8:content>
 						</v8:item>
 					</ToolTip>
 					<EditMode>EnterOnInput</EditMode>
@@ -202,12 +218,21 @@
 							<v8:content>Authentication method based on login
 and password specified for 1C:Enterprise user.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Способ входа в программу
+с помощью имени и пароля, указанного для пользователя 1С:Предприятия.</v8:content>
+						</v8:item>
 					</ToolTip>
 					<HorizontalAlign>Center</HorizontalAlign>
 					<EditMode>EnterOnInput</EditMode>
 					<Format>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>BF=; BT=Yes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>BF=; BT=Yes</v8:content>
 						</v8:item>
 					</Format>
@@ -224,12 +249,22 @@ and password specified for 1C:Enterprise user.</v8:content>
 for 1C:Enterprise user. The login is passed to the authentication service via OpenID protocol.
 Used only to log on from a web server (the service address is to be configured).</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Способ входа в программу с помощью имени, указанного для пользователя 1С:Предприятия,
+которое передается службе аутентификации по протоколу OpenID.
+Используется только при подключении через веб-сервер (адрес службы должен быть настроен).</v8:content>
+						</v8:item>
 					</ToolTip>
 					<HorizontalAlign>Center</HorizontalAlign>
 					<EditMode>EnterOnInput</EditMode>
 					<Format>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>BF=; BT=Yes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>BF=; BT=Yes</v8:content>
 						</v8:item>
 					</Format>
@@ -241,6 +276,10 @@ Used only to log on from a web server (the service address is to be configured).
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>IB users settings OS authentication</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователи ИБ настройки аутентификация ОС</v8:content>
 						</v8:item>
 					</Title>
 					<Group>InCell</Group>
@@ -254,6 +293,10 @@ Used only to log on from a web server (the service address is to be configured).
 									<v8:lang>en</v8:lang>
 									<v8:content>User authentication method by login and password used to log on to operating system and linked with the user of 1C:Enterprise.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Способ входа в программу с помощью имени и пароля, указанного для пользователя операционной системы, связанного с пользователем 1С:Предприятия.</v8:content>
+								</v8:item>
 							</ToolTip>
 							<EditMode>EnterOnInput</EditMode>
 							<ContextMenu name="OSAuthenticationContextMenu" id="13"/>
@@ -266,6 +309,10 @@ Used only to log on from a web server (the service address is to be configured).
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Operating system user</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Пользователь операционной системы</v8:content>
 								</v8:item>
 							</ToolTip>
 							<EditMode>EnterOnInput</EditMode>
@@ -288,6 +335,10 @@ Used only to log on from a web server (the service address is to be configured).
 							<v8:lang>en</v8:lang>
 							<v8:content>BF=; BT=Yes</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>BF=; BT=Yes</v8:content>
+						</v8:item>
 					</Format>
 					<ContextMenu name="MappedWithExternalUserContextMenu" id="116"/>
 					<ExtendedTooltip name="MappedWithExternalUserExtendedTooltip" id="117"/>
@@ -303,6 +354,10 @@ Used only to log on from a web server (the service address is to be configured).
 					<Format>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>BF=; BT=Yes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>BF=; BT=Yes</v8:content>
 						</v8:item>
 					</Format>
@@ -322,6 +377,10 @@ Used only to log on from a web server (the service address is to be configured).
 							<v8:lang>en</v8:lang>
 							<v8:content>BF=; BT=Yes</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>BF=; BT=Yes</v8:content>
+						</v8:item>
 					</Format>
 					<ContextMenu name="ModifiedInDesignerContextMenu" id="110"/>
 					<ExtendedTooltip name="ModifiedInDesignerExtendedTooltip" id="111"/>
@@ -339,6 +398,10 @@ Used only to log on from a web server (the service address is to be configured).
 							<v8:lang>en</v8:lang>
 							<v8:content>BF=; BT=Yes</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>BF=; BT=Yes</v8:content>
+						</v8:item>
 					</Format>
 					<ContextMenu name="DeletedInDesignerContextMenu" id="113"/>
 					<ExtendedTooltip name="DeletedInDesignerExtendedTooltip" id="114"/>
@@ -353,6 +416,10 @@ Used only to log on from a web server (the service address is to be configured).
 					<v8:lang>en</v8:lang>
 					<v8:content>Infobase users</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователи информационной базы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -363,6 +430,10 @@ Used only to log on from a web server (the service address is to be configured).
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -380,6 +451,10 @@ Used only to log on from a web server (the service address is to be configured).
 							<v8:lang>en</v8:lang>
 							<v8:content>Full name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>фамилия, имя, отчество</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -394,6 +469,10 @@ Used only to log on from a web server (the service address is to be configured).
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Login (to enter)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя (для входа)</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -410,6 +489,10 @@ Used only to log on from a web server (the service address is to be configured).
 							<v8:lang>en</v8:lang>
 							<v8:content>Standard authentication</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аутентификация 1С</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -419,6 +502,10 @@ Used only to log on from a web server (the service address is to be configured).
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>OSAuthentication</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>OSAuthentication</v8:content>
 						</v8:item>
 					</Title>
@@ -431,6 +518,10 @@ Used only to log on from a web server (the service address is to be configured).
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>OS User</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь ОС</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -447,6 +538,10 @@ Used only to log on from a web server (the service address is to be configured).
 							<v8:lang>en</v8:lang>
 							<v8:content>IB User ID</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор пользователя ИБ</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>v8:UUID</v8:Type>
@@ -457,6 +552,10 @@ Used only to log on from a web server (the service address is to be configured).
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Ref</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -470,6 +569,10 @@ Used only to log on from a web server (the service address is to be configured).
 							<v8:lang>en</v8:lang>
 							<v8:content>Mapped with external user</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сопоставлен с внешним пользователем</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -480,6 +583,10 @@ Used only to log on from a web server (the service address is to be configured).
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>OpenID authentication</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аутентификация OpenID</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -492,6 +599,10 @@ Used only to log on from a web server (the service address is to be configured).
 							<v8:lang>en</v8:lang>
 							<v8:content>Added in Designer</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Добавлен в конфигураторе</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -503,6 +614,10 @@ Used only to log on from a web server (the service address is to be configured).
 							<v8:lang>en</v8:lang>
 							<v8:content>Modified in Designer</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изменен в конфигураторе</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -513,6 +628,10 @@ Used only to log on from a web server (the service address is to be configured).
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Deleted in Designer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Удален в конфигураторе</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -527,6 +646,10 @@ Used only to log on from a web server (the service address is to be configured).
 					<v8:lang>en</v8:lang>
 					<v8:content>User types</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Типы пользователей</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
@@ -538,6 +661,10 @@ Used only to log on from a web server (the service address is to be configured).
 					<v8:lang>en</v8:lang>
 					<v8:content>IDs of users that do not exist in the infobase</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификаторы несуществующих пользователей ИБ</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
@@ -548,6 +675,10 @@ Used only to log on from a web server (the service address is to be configured).
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show only added, modified or deleted by designer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать только добавленные, измененные или удаленные с помощью конфигуратора</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -562,11 +693,19 @@ Used only to log on from a web server (the service address is to be configured).
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F5</Shortcut>
@@ -582,11 +721,19 @@ Used only to log on from a web server (the service address is to be configured).
 					<v8:lang>en</v8:lang>
 					<v8:content>Map</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Карта</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Map with existing user in catalog</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить с существующим пользователем в справочнике</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Map</Action>
@@ -597,11 +744,19 @@ Used only to log on from a web server (the service address is to be configured).
 					<v8:lang>en</v8:lang>
 					<v8:content>Map with new item</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить с новым</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Map with new user in the catalog</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить с новым пользователем в справочнике</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>MapWithNewItem</Action>
@@ -612,11 +767,19 @@ Used only to log on from a web server (the service address is to be configured).
 					<v8:lang>en</v8:lang>
 					<v8:content>Go to user</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти к пользователю</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Go to mapped user in the catalog</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти к сопоставленному пользователю в справочнике</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -632,11 +795,19 @@ Used only to log on from a web server (the service address is to be configured).
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel mapping</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить сопоставление</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear mapping with user in catalog</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить сопоставление с пользователем в справочнике</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CancelMapping</Action>

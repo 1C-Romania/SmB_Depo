@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -172,6 +242,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Parent</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Родитель</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -183,6 +257,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Code</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>код</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -192,6 +270,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
 					</tl>
@@ -205,6 +287,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>SKU</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Артикул</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -215,6 +301,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>MeasurementUnit</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>UnitOfMeasurement</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -227,6 +317,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>EstimationMethod</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>МетодОценки</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -237,6 +331,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>BusinessActivity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>НаправлениеДеятельности</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -249,6 +347,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>ProductsAndServicesCategory</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>НоменклатурнаяГруппа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -259,6 +361,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Vendor</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поставщик</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -271,6 +377,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Warehouse</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Склад, на который приходуются запасы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -281,6 +391,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>ReplenishmentMethod</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СпособПополнения</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -293,6 +407,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>ReplenishmentDeadline</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СрокПополнения</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -303,6 +421,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>VATRate</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СтавкаНДС</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -315,6 +437,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>InventoryGLAccount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СчетУчетаЗапасов</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -325,6 +451,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>ExpensesGLAccount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СчетУчетаЗатрат</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -337,6 +467,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>ProductsAndServicesType</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ТипНоменклатуры</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -347,6 +481,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>PriceGroup</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЦеноваяГруппа</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -359,6 +497,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>UseCharacteristics</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИспользоватьХарактеристики</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -369,6 +511,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>UseBatches</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИспользоватьПартии</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -381,6 +527,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -391,6 +541,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>OrderCompletionDeadline</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СрокИсполненияЗаказа</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -403,6 +557,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>TimeNorm</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>НормаВремени</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -414,6 +572,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>FixedCost</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ФиксированнаяСтоимость</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -424,6 +586,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>CountryOfOrigin</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СтранаПроисхождения</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -441,6 +607,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Products, goods</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция, товары</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -450,6 +620,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>00000000009</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>00000000009</v8:content>
 						</v8:item>
 					</tl>
@@ -463,6 +637,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Veterok air conditioner</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кондиционер Ветерок</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -472,6 +650,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>345</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>345</v8:content>
 						</v8:item>
 					</tl>
@@ -485,6 +667,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>pcs</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>шт</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -494,6 +680,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>FIFO</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>FIFO</v8:content>
 						</v8:item>
 					</tl>
@@ -507,6 +697,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Production and sale</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Производство и продажа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -517,6 +711,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -530,6 +728,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Main warehouse</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основной склад</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -541,6 +743,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Production</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Производство</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -550,6 +756,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>1</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>1</v8:content>
 						</v8:item>
 					</tl>
@@ -563,6 +773,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>18%</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>18%</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -573,6 +787,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Goods, products</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары, продукция</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -585,6 +803,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Products, works</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция, работы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -595,6 +817,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Inventory</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запасы</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -607,6 +833,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Veterok air conditioners</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кондиционеры "Ветерок"</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -618,6 +848,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Yes</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Да</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -628,6 +862,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>No</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нет</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -641,6 +879,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>1</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>1</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -650,6 +892,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>0</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>0</v8:content>
 						</v8:item>
 					</tl>
@@ -662,6 +908,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>No</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нет</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -679,6 +929,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Products, goods</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция, товары</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -688,6 +942,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>00000000030</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>00000000030</v8:content>
 						</v8:item>
 					</tl>
@@ -701,6 +959,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Veterok main unit</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основной блок Ветерок</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -710,6 +972,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>567</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>567</v8:content>
 						</v8:item>
 					</tl>
@@ -723,6 +989,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>pcs</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>шт</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -733,6 +1003,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>By Average</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По средней</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -745,6 +1019,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Production and sale</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Производство и продажа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -755,6 +1033,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -768,6 +1050,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Main warehouse</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основной склад</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -779,6 +1065,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Production</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Производство</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -788,6 +1078,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>1</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>1</v8:content>
 						</v8:item>
 					</tl>
@@ -801,6 +1095,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>18%</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>18%</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -812,6 +1110,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Raw materials and materials</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сырье и материалы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -822,6 +1124,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products, works</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция, работы</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -845,6 +1151,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Veterok air conditioners</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кондиционеры "Ветерок"</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -856,6 +1166,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Yes</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Да</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -866,6 +1180,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>No</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нет</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -879,6 +1197,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>1</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>1</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -888,6 +1210,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>0</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>0</v8:content>
 						</v8:item>
 					</tl>
@@ -900,6 +1226,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>No</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нет</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -917,6 +1247,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Materials and components</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материалы и комплектующие</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -929,6 +1263,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Tube 06/6 (1/4"), 2 m</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Трубка 06/6 (1/4"), 2м</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -939,6 +1277,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>SKU-0001</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>АРТ-0001</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -951,6 +1293,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>M2</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>М2</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -961,6 +1307,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>By Average</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По средней</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -973,6 +1323,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Works and Services</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Работы и услуги</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -983,6 +1337,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Materials and components</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материалы и комплектующие</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -995,6 +1353,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>A.A. Alkhimov</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Алхимов А.А.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1005,6 +1367,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Main warehouse</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основной склад</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1017,6 +1383,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Purchase</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Purchase</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1026,6 +1396,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>2</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>2</v8:content>
 						</v8:item>
 					</tl>
@@ -1040,6 +1414,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>10</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>10</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1049,6 +1427,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>20.01</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>20.01</v8:content>
 						</v8:item>
 					</tl>
@@ -1062,6 +1444,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Inventory</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запасы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1073,6 +1459,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Consumable materials</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расходные материалы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1082,6 +1472,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>+</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>+</v8:content>
 						</v8:item>
 					</tl>
@@ -1095,6 +1489,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>TRUE</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИСТИНА</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1106,6 +1504,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Test products and services loaded form a template file.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тестовая номенклатура, которая загруженна из файла-образца.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1115,6 +1517,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>2</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>2</v8:content>
 						</v8:item>
 					</tl>
@@ -1128,6 +1534,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>0</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>0</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1139,6 +1549,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>no</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>нет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1149,6 +1563,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>China</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Китай</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1166,6 +1584,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Materials and components</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материалы и комплектующие</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1177,6 +1599,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Drainage tube 16 mm x 25 m</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шланг дренажный 16мм х 25м</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1190,6 +1616,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>bay</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>бухта</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1200,6 +1630,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>By Average</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По средней</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1212,6 +1646,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Works and Services</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Работы и услуги</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1223,6 +1661,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Materials and components</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материалы и комплектующие</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1232,6 +1674,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>461111101</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>461111101</v8:content>
 						</v8:item>
 					</tl>
@@ -1245,6 +1691,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Main warehouse</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основной склад</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1256,6 +1706,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Processing</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Переработка</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1265,6 +1719,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>3</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>3</v8:content>
 						</v8:item>
 					</tl>
@@ -1278,6 +1736,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>18%/118%</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>18%/118%</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1289,6 +1751,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Raw materials and materials</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сырье и материалы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1298,6 +1764,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>20.01</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>20.01</v8:content>
 						</v8:item>
 					</tl>
@@ -1311,6 +1781,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Inventory</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запасы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1322,6 +1796,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Consumable materials</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расходные материалы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1331,6 +1809,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>1</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>1</v8:content>
 						</v8:item>
 					</tl>
@@ -1344,6 +1826,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Yes</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Да</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1355,6 +1841,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Test products and services loaded form a template file.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тестовая номенклатура, которая загруженна из файла-образца.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1365,6 +1855,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>AZE</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>AZE</v8:content>
 						</v8:item>
 					</tl>
@@ -1383,6 +1877,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Works and Services</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Работы и услуги</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1394,6 +1892,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Designing of conditioning and ventilation systems</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проектирование систем кондиционирования и вентиляции</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1417,6 +1919,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>h</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ч</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1426,6 +1932,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>FIFO</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>FIFO</v8:content>
 						</v8:item>
 					</tl>
@@ -1439,6 +1949,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Works and Services</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Работы и услуги</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1449,6 +1963,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Works and Services</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Работы и услуги</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1462,6 +1980,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Products, works</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция, работы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1472,6 +1994,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Work</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Работа</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1484,6 +2010,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Works and Services</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Работы и услуги</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1495,6 +2025,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>-</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>-</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1504,6 +2038,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>-</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>-</v8:content>
 						</v8:item>
 					</tl>
@@ -1517,6 +2055,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Test products and services loaded form a template file.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тестовая номенклатура, которая загруженна из файла-образца.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1526,6 +2068,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>3</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>3</v8:content>
 						</v8:item>
 					</tl>
@@ -1539,6 +2085,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Yes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Да</v8:content>
 						</v8:item>
 					</tl>
 				</c>

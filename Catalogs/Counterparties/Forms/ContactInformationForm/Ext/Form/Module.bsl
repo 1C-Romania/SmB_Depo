@@ -962,7 +962,7 @@ Procedure SavePrintFormsToFolder(FilesListInTempStorage, Val Folder = "")
 		BinaryData.Write(UniqueFileName(Folder + FileToSave.Presentation));
 	EndDo;
 	
-	Status(NStr("en = 'Saving has been successfully completed.'"), , NStr("en = 'to folder:'") + " " + Folder);
+	Status(NStr("en='Saving has been successfully completed.';ru='Сохранение успешно завершено.'"), , NStr("en='to folder:';ru='в папку:'") + " " + Folder);
 	
 EndProcedure
 

@@ -20,13 +20,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ErrorText = Undefined;
 	
 	If Not DataExchangeSaaSReUse.DataSynchronizationSupported() Then
-		ErrorText = NStr("en='Data synchronization is not supported for configuration!'");
+		ErrorText = NStr("en='Data synchronization is not supported for configuration!';ru='Синхронизация данных для конфигурации не поддерживается!'");
 		
 	ElsIf Not Parameters.Property("InfobaseNode", Object.InfobaseNode) Then
-		ErrorText = NStr("en='Data processor is not aimed for being used directly'");
+		ErrorText = NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
 		
 	ElsIf Object.InfobaseNode.IsEmpty() Then
-		ErrorText = NStr("en='Data exchange setup is not found.'");
+		ErrorText = NStr("en='Data exchange setup is not found.';ru='Настройка обмена данными не найдена.'");
 		
 	EndIf;
 	
@@ -66,7 +66,7 @@ EndProcedure
 &AtClient
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
-	ConfirmationText = NStr("en='Do you want to terminate data synchronization?'");
+	ConfirmationText = NStr("en='Do you want to terminate data synchronization?';ru='Прервать синхронизацию данных?'");
 	CommonUseClient.ShowArbitraryFormClosingConfirmation(
 		ThisObject, Cancel, ConfirmationText, "ForceCloseForm");
 	
@@ -143,8 +143,8 @@ EndProcedure
 &AtClient
 Procedure ExportAdditionGeneralFilterClearing(Command)
 	
-	HeaderText = NStr("en='Confirmation'");
-	QuestionText   = NStr("en='Clear common filter?'");
+	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
+	QuestionText   = NStr("en='Clear common filter?';ru='Очистить общий отбор?'");
 	
 	Notification = New NotifyDescription("ExportAdditionGeneralFilterClearingEnd", ThisObject);
 	ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo, , ,HeaderText);
@@ -153,8 +153,8 @@ EndProcedure
 &AtClient
 Procedure ExportAdditionCleaningDetailedFilter(Command)
 	
-	HeaderText = NStr("en='Confirmation'");
-	QuestionText   = NStr("en='Clear detailed filter?'");
+	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
+	QuestionText   = NStr("en='Clear detailed filter?';ru='Очистить детальный отбор?'");
 	
 	Notification = New NotifyDescription("ExportAdditionDetailedFilterClearingEnd", ThisObject);
 	ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo, , ,HeaderText);
@@ -167,7 +167,7 @@ Procedure ExportAdditionFilterHistory(Command)
 	VariantList = ExportAdditionHistorySettingsServer();
 	
 	// Add saving variant of the current
-	Text = NStr("en='Save the current setting...'");
+	Text = NStr("en='Save the current setting...';ru='Сохранить текущую настройку...'");
 	VariantList.Add(1, Text, , PictureLib.SaveReportSettings);
 	
 	NotifyDescription = New NotifyDescription("ExportAdditionFilterHistorySelectionFromMenu", ThisObject);
@@ -273,9 +273,9 @@ Procedure ExportAdditionFilterHistorySelectionFromMenu(Val SelectedItem, Val Add
 	If TypeOf(SettingRepresentation)=Type("String") Then
 		// Selected a variant - name of the previously saved setting.
 		
-		HeaderText = NStr("en='Confirmation'");
+		HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Restore settings ""%1""?'"), SettingRepresentation
+			NStr("en='Restore settings ""%1""?';ru='Восстановить настройки ""%1""?'"), SettingRepresentation
 		);
 		
 		NotifyDescription = New NotifyDescription("ExportAdditionFiltersHistoryEnd", ThisObject, SettingRepresentation);
@@ -344,7 +344,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
         "GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -419,7 +419,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure(
         "GoToNumber", GoToNumber));
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -459,7 +459,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure(
         "GoToNumber", GoToNumber));
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -733,7 +733,7 @@ Procedure SetCommonFilterAdditionDescription()
 	Text = DataExchangeServer.InteractiveChangeExportingDescriptionOfAdditionsOfCommonFilter(ExportAddition);
 	FilterAbsent = IsBlankString(Text);
 	If FilterAbsent Then
-		Text = NStr("en='All documents'");
+		Text = NStr("en='All documents';ru='Все документы'");
 	EndIf;
 	
 	Items.ExportAdditionGeneralDocumentsFilter.Title = Text;
@@ -746,7 +746,7 @@ Procedure SetAdditionDescriptionInDetails()
 	Text = DataExchangeServer.InteractiveChangeExportingDetailedFilterDescription(ExportAddition);
 	FilterAbsent = IsBlankString(Text);
 	If FilterAbsent Then
-		Text = NStr("en='Additional data have not been selected'");
+		Text = NStr("en='Additional data have not been selected';ru='Дополнительные данные не выбраны'");
 	EndIf;
 	
 	Items.ExportAdditionDetailedFilter.Title = Text;
@@ -860,7 +860,7 @@ Procedure CorrespondentIdleHandler()
 		GoToNext();
 		
 	Else
-		LongOperationState.ErrorInfo = NStr("en = 'Message error to correspondent'");
+		LongOperationState.ErrorInfo = NStr("en='Message error to correspondent';ru='Ошибка сообщения корреспонденту'");
 		
 	EndIf;
 	
@@ -937,7 +937,7 @@ Function BackgroundJobDumpsAtServer()
 	BackgroundExecutionParameters.Add( Result.ResultAddress );
 	
 	Task = BackgroundJobs.Execute("DataExchangeSaaS.ExchangeOnDemand", 
-		BackgroundExecutionParameters, , NStr("en = 'Interactive exchange on demand.'"));
+		BackgroundExecutionParameters, , NStr("en='Interactive exchange on demand.';ru='Интерактивный обмен по требованию.'"));
 		
 	Result.Insert("ID", Task.UUID);
 	Return Result;
@@ -1007,8 +1007,8 @@ EndProcedure
 &AtClient
 Procedure CompanyFilterClean(Command)
 	
-	HeaderText = NStr("en='Confirmation'");
-	QuestionText   = NStr("en='Do you want to clear the filter by companies?'");
+	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
+	QuestionText   = NStr("en='Do you want to clear the filter by companies?';ru='Очистить отбор по организациям?'");
 	NotifyDescription = New NotifyDescription("ClearFilterByCompanyEnd", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo,,,HeaderText);
 	
@@ -1318,9 +1318,9 @@ Procedure UpdateFilterByCompanies(AddressOfObject="")
 	ArraySelectedCompanies = GetArraySelectedCompanies();
 	CompaniesSelected = ArraySelectedCompanies.Count() > 0;
 	If Not CompaniesSelected Then
-		Text = NStr("en = 'Select companies '");
+		Text = NStr("en='Select companies ';ru='Выбрать организации '");
 	ElsIf SelectAllCompanies() Then
-		Text = NStr("en = 'All companies '");
+		Text = NStr("en='All companies ';ru='Все организации '");
 	Else
 		Text = ExchangePlans.ExchangeSmallBusinessAccounting30.ShortPresentationOfCollectionsOfValues(ArraySelectedCompanies);
 	EndIf;
@@ -1391,7 +1391,7 @@ EndFunction
 Function FilterPresentation(Period, Filter)
 	
 	ExportAdditionObject = FormAttributeToValue("ExportAddition");
-	DetailsOfEmptySelection = NStr("en='All documents'");
+	DetailsOfEmptySelection = NStr("en='All documents';ru='Все документы'");
 	Return ExportAdditionObject.FilterPresentation(Period, Filter, DetailsOfEmptySelection);
 	
 EndFunction

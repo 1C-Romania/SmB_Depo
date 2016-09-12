@@ -38,6 +38,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Staff list</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Штатное расписание</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<UseStandardCommands>true</UseStandardCommands>
@@ -165,6 +169,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Register is used for storage of actual information on company staff listing</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регистр предназначен для хранения актуальной информации о штатном расписании организации.</v8:content>
+				</v8:item>
 			</Explanation>
 		</Properties>
 		<ChildObjects>
@@ -175,6 +183,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Number of Rates</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество ставок</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment>Number of Rates</Comment>
@@ -193,6 +205,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Planned number of employees in the selected company and division for the specified position.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество ставок, которое планируется в выбранных организации и подразделении на указанной должности.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -224,6 +240,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Minimum Tariff Rate</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Мин. тарифная ставка</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Minimum tariff rate</Comment>
 					<Type>
@@ -241,6 +261,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Minimal wage rate planned for a staff listing position</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Минимальная тарифная ставка, которая планируется для единицы штатного расписания.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -272,6 +296,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Max. Tariff rate</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Макс. тарифная ставка</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Maximum tariff rate</Comment>
 					<Type>
@@ -289,6 +317,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Maximum wage rate planned for a staff listing position.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Максимальная тарифная ставка, которая планируется для единицы штатного расписания.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -320,6 +352,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Accrual Type</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид начисления</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Accrual kind (deduction)</Comment>
 					<Type>
@@ -332,6 +368,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Kind of wage accrual (deduction) which is to be paid to employees. Is selected from the "Accrual and deduction types" document list.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид начисления (удержания), по которому планируется оплачивать работу сотрудников. Выбирается из списка документов "Виды начислений и удержаний".</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -363,6 +403,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вал.</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Tariff rate currency</Comment>
 					<Type>
@@ -375,6 +419,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Tariff rate currency. Is selected from "Currencies" catalog</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Валюта тарифной ставки. Выбирается из справочника "Валюты".</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -419,6 +467,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company, for which the staff schedule record is entered. Attribute is displayed in the form if in the accounting parameters settings the accounting by several companies is enabled.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация, для которой вводится запись штатного расписания. Реквизит отображается на форме, если в настройках параметров учета включено ведение учета по нескольким организациям.</v8:content>
+						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
 					<Mask/>
@@ -452,6 +504,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Division</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>разделение</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -464,6 +520,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Division, for which the staff schedule record is entered. Is selected from the "Structural unit" catalog.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение, для которого вводится запись штатного расписания. Выбирается из справочника "Структурные единицы".</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -502,6 +562,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Position</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Position</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -514,6 +578,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Position, for which the staff schedule record is entered. Is selected from the "Positions" catalog.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Должность, для которой вводится запись штатного расписания. Выбирается из справочника "Должности".</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>

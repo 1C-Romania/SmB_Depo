@@ -107,29 +107,39 @@ Function IsRole(Val Role, Val ObjectReference = Undefined, Val User = Undefined)
 			
 			If Upper(String.AccessKind) = Upper("EditRight") Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred in the HasRole function of the AccessManagement module.
-				           |In the access values set the EditingRight
-				           |access kind is specified of table with ID ""%1"".
-				           |In the restriction role checks (as
-				           |an additional right) can depend only on the Reading right.'"),
+				NStr("en='An error occurred in the HasRole function of the AccessManagement module."
+"In the access values set the EditingRight"
+"access kind is specified of table with ID ""%1""."
+"In the restriction role checks (as"
+"an additional right) can depend only on the Reading right.';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом."
+"В наборе значений доступа указан"
+"вид доступа ПравоИзменения таблицы с идентификтором ""%1""."
+"В ограничении проверки роли (как"
+"дополнительного права) может быть зависимость только от права Чтения.'"),
 					String.AccessValue);
 			EndIf;
 		ElsIf AccessKindNames.Get(String.AccessKind) <> Undefined
 		      OR String.AccessKind = "RightSettings" Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred in the HasRole function of the AccessManagement module.
-				           |Access values set contains known access kind
-				           |""%2"" that you should not specify.
-				           |
-				           |Specify only special access
-				           |kinds ""ReadingRight"", ""ChangingRight"" if they are used.'"),
+				NStr("en='An error occurred in the HasRole function of the AccessManagement module."
+"Access values set contains known access kind"
+"""%2"" that you should not specify."
+""
+"Specify only special access"
+"kinds ""ReadingRight"", ""ChangingRight"" if they are used.';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом."
+"Набор значений доступа содержит известный"
+"вид доступа ""%2"", который не требуется указывать."
+""
+"Указывать требуется"
+"только специальные виды доступа ""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred in the HasRole function of the AccessManagement module.
-				           |Access values set contains unknown access kind ""%2"".'"),
+				NStr("en='An error occurred in the HasRole function of the AccessManagement module."
+"Access values set contains unknown access kind ""%2"".';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом."
+"Набор значений доступа содержит неизвестный вид доступа ""%2"".'"),
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		EndIf;
@@ -374,7 +384,7 @@ Function IsRight(Right, ObjectReference, User = Undefined) Export
 	
 	If RightsDescriptionFull = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Description of possible rights for table ""%1"" is not found'"),
+			NStr("en='Description of possible rights for table ""%1"" is not found';ru='Не найдено описание возможных прав для таблицы ""%1""'"),
 			ObjectReference.Metadata().FullName());
 	EndIf;
 	
@@ -382,7 +392,7 @@ Function IsRight(Right, ObjectReference, User = Undefined) Export
 	
 	If RightDetails = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Description of right ""%1"" for table ""%2"" is not found'"),
+			NStr("en='Description of right ""%1"" for table ""%2"" is not found';ru='Не найдено описание права ""%1"" для таблицы ""%2""'"),
 			Right,
 			ObjectReference.Metadata().FullName());
 	EndIf;
@@ -517,8 +527,9 @@ Procedure OnFormCreationAccessValues(Form,
 	EndIf;
 	
 	ErrorTitle =
-		NStr("en = 'An error occurred
-		           |in the OnCreateAccessValueForm procedure of the AccessManagement general module.'");
+		NStr("en='An error occurred"
+"in the OnCreateAccessValueForm procedure of the AccessManagement general module.';ru='Ошибка"
+"в процедуре ПриСозданииФормыЗначенияДоступа общего модуля УправлениеДоступом.'");
 	
 	GroupsProperties = AccessValuesGroupsProperties(AccessValueType, ErrorTitle);
 	
@@ -531,11 +542,15 @@ Procedure OnFormCreationAccessValues(Form,
 	If TypeOf(AccessValuesGroup) <> GroupsProperties.Type Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF + Chars.LF +
-			NStr("en = 'For access values of
-					   |the ""%1"" type access kind ""%2"" is used
-					   |with the values type ""%3"" specified in the overridable module.
-					   |But this type does not match the type ""%4"" in
-					   |the access value form in the AccessGroup attribute.'"),
+			NStr("en='For access values of"
+"the ""%1"" type access kind ""%2"" is used"
+"with the values type ""%3"" specified in the overridable module."
+"But this type does not match the type ""%4"" in"
+"the access value form in the AccessGroup attribute.';ru='Для значений доступа"
+"типа ""%1"" используются вид доступа"
+"""%2"" с типом значений ""%3"", заданным в переопределяемом модуле."
+"Но этот тип не совпадает с типом ""%4"""
+"в форме значения доступа у реквизита ГруппаДоступа.'"),
 			String(AccessValueType),
 			String(GroupsProperties.AccessKind),
 			String(GroupsProperties.Type),
@@ -567,7 +582,7 @@ Procedure OnFormCreationAccessValues(Form,
 	   AND NewCreation Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Allowed ""%1"" are used while adding.'"),
+			NStr("en='Allowed ""%1"" are used while adding.';ru='Для добавления требуются разрешенные ""%1"".'"),
 			Metadata.FindByType(GroupsProperties.Type).Presentation());
 	EndIf;
 	
@@ -618,8 +633,9 @@ EndProcedure
 Function AccessValuesGroupsAllowingAccessValuesChange(AccessValuesType, ReturnAll = False) Export
 	
 	ErrorTitle =
-		NStr("en = 'An error occurred
-		           |in the AccessValueGroupsAllowingAccessValuesChange procedure of the AccessManagement general module.'");
+		NStr("en='An error occurred"
+"in the AccessValueGroupsAllowingAccessValuesChange procedure of the AccessManagement general module.';ru='Ошибка"
+"в процедуре ГруппыЗначенийДоступаРазрешающиеИзменениеЗначенийДоступа общего модуля УправлениеДоступом.'");
 	
 	GroupsProperties = AccessValuesGroupsProperties(AccessValuesType, ErrorTitle);
 	
@@ -815,11 +831,15 @@ Procedure FillAccessValueSets(Val Object, Table, Val RefOnSubordinatedObject = U
 	
 	If Not SetsAreFilling Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Wrong parameters.
-			           |Object type
-			           |""%1"" is found in no subscription
-			           |to events ""Write access
-			           |value sets"", ""Write dependent access value sets"".'"),
+			NStr("en='Wrong parameters."
+"Object type"
+"""%1"" is found in no subscription"
+"to events ""Write access"
+"value sets"", ""Write dependent access value sets"".';ru='Неверные параметры."
+"Тип"
+"объекта ""%1"" не найден ни"
+"в одной из подписок"
+"на события ""Записать наборы значений доступа"", ""Записать зависимые наборы значений доступа"".'"),
 			ValueTypeObject);
 	EndIf;
 	
@@ -830,7 +850,7 @@ Procedure FillAccessValueSets(Val Object, Table, Val RefOnSubordinatedObject = U
 		// If you disable this condition, then scheduled
 		// job of data filling for access restriction will by cycled.
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Object ""%1"" generated access values empty set.'"),
+			NStr("en='Object ""%1"" generated access values empty set.';ru='Объект ""%1"" сформировал пустой набор значений доступа.'"),
 			ValueTypeObject);
 	EndIf;
 	
@@ -1075,7 +1095,7 @@ EndProcedure
 // ProfileDescription = AccessManagement.AccessGroupsProfileNewDescription();
 // ProfileDescription.Name           = "User";
 // ProfileDescription.ID ="09e56dbf-90a0-11de-862c-001d600d9ad2";
-// ProfileDescription.Description  = NStr("en = 'User'");
+// ProfileDescription.Description  = NStr("en='User';ru='Пользователь'");
 // ProfileDescription.Definition =
 // 	NStr("en = 'General allowed actions for most of the users.
 // 	           |These are view rights of the information system data as a rule.'");
@@ -1323,11 +1343,15 @@ Procedure ReplaceRightsInObjectRightSettings(RenamingsTable) Export
 					+ String.NewName;
 			EndDo;
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred in
-				           |the RenameRightInObjectRightsSettings procedure parameters of the AccessManagement general module.
-				           |
-				           |Settings of the following rights new names will
-				           |be repeated: %1.'"),
+				NStr("en='An error occurred in"
+"the RenameRightInObjectRightsSettings procedure parameters of the AccessManagement general module."
+""
+"Settings of the following rights new names will"
+"be repeated: %1.';ru='Ошибка в"
+"параметрах процедуры ПереименоватьПравоВНастройкахПравОбъектов общего модуля УправлениеДоступом."
+""
+"После обновления будут повторяться настройки"
+"следующих новых имен прав: %1.'"),
 				RepeatedRightsNewNames);
 		EndIf;
 		
@@ -1479,17 +1503,22 @@ Procedure ClarifyAccessValueSets(ObjectReference, Table)
 		      OR String.AccessKind = "RightSettings" Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Object ""%1"" generated access
-				           |values set containing known access kind ""%2"" that should not be specified.
-				           |
-				           |Specify only special access
-				           |kinds ""ReadingRight"", ""ChangingRight"" if they are used.'"),
+				NStr("en='Object ""%1"" generated access"
+"values set containing known access kind ""%2"" that should not be specified."
+""
+"Specify only special access"
+"kinds ""ReadingRight"", ""ChangingRight"" if they are used.';ru='Объект ""%1"""
+"сформировал набор значений доступа, содержащий известный вид доступа ""%2"", который не требуется указывать."
+""
+"Указывать требуется"
+"только специальные виды доступа ""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Object ""%1"" generated access
-				           |values set containing unknown access kind ""%2"".'"),
+				NStr("en='Object ""%1"" generated access"
+"values set containing unknown access kind ""%2"".';ru='Объект ""%1"""
+"сформировал набор значений доступа, содержащий неизвестный вид доступа ""%2"".'"),
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		EndIf;
@@ -1867,8 +1896,9 @@ Function AccessValuesGroupsProperties(AccessValueType, ErrorTitle)
 	If AccessTypeProperties = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF + Chars.LF +
-			NStr("en = 'For the access values
-			           |of the ""%1"" type access value groups are not used.'"),
+			NStr("en='For the access values"
+"of the ""%1"" type access value groups are not used.';ru='Для значений"
+"доступа типа ""%1"" не используются группы значений доступа.'"),
 			String(AccessValueType));
 	EndIf;
 	

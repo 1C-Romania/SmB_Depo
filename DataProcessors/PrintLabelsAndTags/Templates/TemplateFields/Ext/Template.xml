@@ -38,6 +38,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Balance at the Warehouse</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток на складе</v8:content>
+				</v8:item>
 			</title>
 			<useRestriction>
 				<group>true</group>
@@ -51,6 +55,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Number of tags to be printed</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество ценников для печати</v8:content>
 				</v8:item>
 			</title>
 			<useRestriction>
@@ -66,6 +74,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Numer of labels to be printed</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество этикеток для печати</v8:content>
+				</v8:item>
 			</title>
 			<useRestriction>
 				<group>true</group>
@@ -80,6 +92,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Price tags template to print</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаблон ценника для печати</v8:content>
+				</v8:item>
 			</title>
 			<useRestriction>
 				<group>true</group>
@@ -93,6 +109,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Label template to print</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаблон этикетки для печати</v8:content>
 				</v8:item>
 			</title>
 			<useRestriction>
@@ -118,6 +138,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Current time</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущее время</v8:content>
+				</v8:item>
 			</title>
 			<useRestriction>
 				<group>true</group>
@@ -130,6 +154,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Current user</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий пользователь</v8:content>
 				</v8:item>
 			</title>
 			<useRestriction>
@@ -159,6 +187,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Full name of products and services</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полное наименование номенклатуры</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -319,6 +351,10 @@ ORDER BY
 				<v8:lang>en</v8:lang>
 				<v8:content>Current time</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Текущее время</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -337,6 +373,10 @@ ORDER BY
 				<v8:lang>en</v8:lang>
 				<v8:content>Current user</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Текущий пользователь</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Users</v8:Type>
@@ -352,6 +392,10 @@ ORDER BY
 				<v8:lang>en</v8:lang>
 				<v8:content>Price kind</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Вид цены</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.PriceKinds</v8:Type>
@@ -364,6 +408,10 @@ ORDER BY
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>Default</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>Default</v8:content>
 			</v8:item>
 		</dcsset:presentation>

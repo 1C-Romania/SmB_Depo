@@ -67,7 +67,7 @@ Procedure RegisteredProductsListRegNumberClick(Item)
 	AddressSupplement = String(AddressSupplement);
 	RefAddress       = AddressSupplement + RefAddress;
 	
-	PageTitle = NStr("en = 'List of registered products'");
+	PageTitle = NStr("en='List of registered products';ru='Список зарегистрированных продуктов'");
 	OnlineUserSupportClient.OpenInternetPage(
 		RefAddress,
 		PageTitle);
@@ -142,7 +142,7 @@ Procedure FillForm()
 		Items.DoNotRemindAboutAuthorizationBefore.Visible = False;
 	EndIf;
 	
-	UserTitle = NStr("en = 'Login:'") + " " + Parameters.login;
+	UserTitle = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	Items.UserLoginLabelRegNumber.Title = UserTitle;
 	RegistrationNumberRegNumber = Parameters.regNumber;
@@ -154,7 +154,7 @@ EndProcedure
 &AtServer
 Procedure ShowSettingDateDoNotRemindAboutAuthorizationBefore()
 	
-	CommonCheckBoxTitle = NStr("en = 'Do not remind of the connection for seven days'");
+	CommonCheckBoxTitle = NStr("en='Do not remind of the connection for seven days';ru='Не напоминать о подключении семь дней'");
 	
 	SettingValue = OnlineUserSupportServerCall.SettingValueDoNotRemindAboutAuthorizationBefore();
 	DoNotRemindAboutAuthorizationBefore = ?(SettingValue = '00010101', False, True);
@@ -162,7 +162,7 @@ Procedure ShowSettingDateDoNotRemindAboutAuthorizationBefore()
 	CheckBoxLine = CommonCheckBoxTitle
 		+ ?(SettingValue = '00010101',
 			"",
-			" " + NStr("en = '(to'") + " " + Format(SettingValue, "DF=dd.MM.yyyy") + ")");
+			" " + NStr("en='(to';ru='(o'") + " " + Format(SettingValue, "DF=dd.MM.yyyy") + ")");
 	
 	Items.DoNotRemindAboutAuthorizationBefore.Title = CheckBoxLine;
 	
@@ -184,7 +184,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(RegistrationNumberRegNumber) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Registration Number field is not filled'");
+		Message.Text = NStr("en='Registration Number field is not filled';ru='Не заполнено поле ""Регистрационный номер""'");
 		Message.Field  = "RegistrationNumberRegNumber";
 		Message.Message();
 		
@@ -200,18 +200,28 @@ EndFunction
 Function MessageParametersToTechicalSupport()
 	
 	Result = New Structure;
-	Result.Insert("Subject", NStr("en = 'Online support. Registration number entry.'"));
+	Result.Insert("Subject", NStr("en='Online support. Registration number entry.';ru='Интернет-поддержка. Ввод регистрационного номера.'"));
 	
-	MessageText = NStr("en = 'Hello!
-|I can not enter registration number for the software product
-|to connect to Online Support.
-|Please help me to solve this issue.
-|
-|Login: %1.
-|Registration number: %2.
-|%TechnicalParameters%
-|-----------------------------------------------
-|Kind Regards, .'");
+	MessageText = NStr("en='Hello!"
+"I can not enter registration number for the software product"
+"to connect to Online Support."
+"Please help me to solve this issue."
+""
+"Login: %1."
+"Registration number: %2."
+"%TechnicalParameters%"
+"-----------------------------------------------"
+"Kind Regards, .';ru='Здравствуйте!"
+"У меня не получается ввести регистрационный номер программного продукта"
+"для подключения Интернет-поддержки."
+"Прошу помочь разобраться с проблемой."
+""
+"Логин: %1."
+"Регистрационный номер: %2."
+""
+"%ТехническиеПараметры%"
+"-----------------------------------------------"
+"С уважением, .'");
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(
 		InteractionContext.COPContext,

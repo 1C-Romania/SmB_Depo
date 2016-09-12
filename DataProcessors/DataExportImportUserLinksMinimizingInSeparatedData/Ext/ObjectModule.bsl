@@ -44,7 +44,7 @@ Procedure BeforeObjectExport(Container, ObjectExportManager, Serializer, Object,
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Metadata object %1 can not be processed by handler ServiceUsersInBTCSaaS.BeforeObjectExport().'"),
+			NStr("en='Metadata object %1 can not be processed by handler ServiceUsersInBTCSaaS.BeforeObjectExport().';ru='Объект метаданных %1 не может быть обработан обработчиком ПользователиСлужебныйВМоделиСервисаБТС.ПередВыгрузкойОбъекта()!'"),
 			Object.Metadata().FullName());
 		
 	EndIf;
@@ -68,7 +68,7 @@ Procedure AfterObjectExport(Container, ObjectExportManager, Serializer, Object, 
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Metadata object %1 can not be processed by handler ServiceUsersInBTCSaaS.BeforeObjectExport().'"),
+			NStr("en='Metadata object %1 can not be processed by handler ServiceUsersInBTCSaaS.BeforeObjectExport().';ru='Объект метаданных %1 не может быть обработан обработчиком ПользователиСлужебныйВМоделиСервисаБТС.ПередВыгрузкойОбъекта()!'"),
 			Object.Metadata().FullName());
 		
 	EndIf;
@@ -102,7 +102,7 @@ Procedure BeforeMatchRefs(Container, MetadataObject, SourceRefsTable, StandardPr
 		
 	Else
 		
-		Raise NStr("en = 'Invalid data type'");
+		Raise NStr("en='Invalid data type';ru='Тип данных указан неверно'");
 		
 	EndIf;
 	
@@ -244,7 +244,7 @@ Procedure BeforeObjectImport(Container, Object, Artifacts, Cancel) Export
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'Metadata object% 1 can not be processed by handler ServiceUsersInBTCSaaS.BeforeObjectImport().'"),
+			NStr("en='Metadata object% 1 can not be processed by handler ServiceUsersInBTCSaaS.BeforeObjectImport().';ru='Объект метаданных %1 не может быть обработан обработчиком ПользователиСлужебныйВМоделиСервисаБТС.ПередЗагрузкойОбъекта()!'"),
 			Object.Metadata().FullName());
 		
 	EndIf;

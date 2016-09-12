@@ -8,7 +8,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
-	Raise NStr("en='Data processor is not aimed for being used directly'");
+	Raise NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
 	
 EndProcedure
 

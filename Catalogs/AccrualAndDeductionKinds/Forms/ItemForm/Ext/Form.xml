@@ -31,6 +31,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Accrual</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Начисление</v8:content>
+									</v8:item>
 								</Presentation>
 								<Value xsi:type="xr:DesignTimeRef">Enum.AccrualAndDeductionTypes.EnumValue.Accrual</Value>
 							</xr:Value>
@@ -44,6 +48,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Deduction</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Удержание</v8:content>
+									</v8:item>
 								</Presentation>
 								<Value xsi:type="xr:DesignTimeRef">Enum.AccrualAndDeductionTypes.EnumValue.Deduction</Value>
 							</xr:Value>
@@ -56,6 +64,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>    Tax    </v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>    Налог    </v8:content>
 									</v8:item>
 								</Presentation>
 								<Value xsi:type="xr:DesignTimeRef">Enum.AccrualAndDeductionTypes.EnumValue.Tax</Value>
@@ -121,11 +133,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Edit calculation formula</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Редактировать формулу расчета</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group formula</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа формула</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -133,6 +153,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Calculation formula</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Формула расчета</v8:content>
 				</v8:item>
 			</CollapsedRepresentationTitle>
 			<Representation>None</Representation>
@@ -146,6 +170,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Formula</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Формула</v8:content>
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
@@ -178,6 +206,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Tax</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Налог</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.AccrualAndDeductionTypes</v8:Type>
@@ -191,11 +223,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Edit calculation formula</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Редактировать формулу расчета</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Edit calculation formula</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Редактировать формулу расчета</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>

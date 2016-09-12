@@ -13,7 +13,7 @@
 //
 Procedure AsynchronousExportProductsInEquipmentOffline(EquipmentType, DeviceArray, MessageText = "", ShowMessageBox = True, NotificationOnImplementation, ModifiedOnly = True) Export
 	
-	Status(NStr("en = 'Products are being exported to the equipment Offline...'"));
+	Status(NStr("en='Products are being exported to the equipment Offline...';ru='Выполняется выгрузка товаров в оборудование Offline...'"));
 	
 	Completed = 0;
 	CurDevice = 0;
@@ -37,9 +37,9 @@ Procedure AsynchronousExportProductsInEquipmentOffline(EquipmentType, DeviceArra
 		If StructureData.Data.Count() = 0 Then
 			Result = False;
 			If StructureData.ExportedRowsWithErrorsCount = 0 Then
-				ErrorsDescriptionFull = GenerateErrorDescriptionForDevice(DeviceIdentifier, Undefined, ErrorsDescriptionFull, NStr("en = 'There is no data to export!'"));
+				ErrorsDescriptionFull = GenerateErrorDescriptionForDevice(DeviceIdentifier, Undefined, ErrorsDescriptionFull, NStr("en='There is no data to export!';ru='Нет данных для выгрузки!'"));
 			Else
-				ErrorsDescriptionFull = GenerateErrorDescriptionForDevice(DeviceIdentifier, Undefined, ErrorsDescriptionFull, StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Data is not exported. Errors detected: %1'"), StructureData.ExportedRowsWithErrorsCount));
+				ErrorsDescriptionFull = GenerateErrorDescriptionForDevice(DeviceIdentifier, Undefined, ErrorsDescriptionFull, StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Data is not exported. Errors detected: %1';ru='Данные не выгружены. Обнаружено ошибок: %1'"), StructureData.ExportedRowsWithErrorsCount));
 			EndIf;
 			Continue;
 		EndIf;
@@ -88,7 +88,7 @@ EndProcedure
 //
 Procedure AsynchronousClearProductsInEquipmentOffline(EquipmentType, DeviceArray, MessageText = "", ShowMessageBox = True, NotificationOnImplementation) Export
 	
-	Status(NStr("en = 'Products are being cleared in the Offline equipment...'"));
+	Status(NStr("en='Products are being cleared in the Offline equipment...';ru='Выполняется очистка товаров в оборудовании Offline...'"));
 	
 	Completed = 0;
 	CurDevice = 0;
@@ -141,7 +141,7 @@ EndProcedure
 //
 Procedure AsynchronousImportReportAboutRetailSales(DeviceArray, MessageText = "", ShowMessageBox = True, NotificationOnImplementation) Export
 	
-	Status(NStr("en = 'Retail sales reports is being imported from the CR Offline...'"));
+	Status(NStr("en='Retail sales reports is being imported from the CR Offline...';ru='Выполняется загрузка отчетов о розничных продажах из ККМ Offline...'"));
 	
 	RetailSalesReports = New Array;
 	
@@ -241,7 +241,7 @@ Function GenerateErrorDescriptionForDevice(DeviceIdentifier, Output_Parameters, 
 	
 	Return ErrorsDescriptionFull
 	      + Chars.LF
-	      + StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Description of the errors for device %1: %2'"), DeviceIdentifier, ErrorDescription)
+	      + StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Description of the errors for device %1: %2';ru='Описание ошибок для устройства %1: %2'"), DeviceIdentifier, ErrorDescription)
 	      + ?(Output_Parameters <> Undefined, Chars.LF + Output_Parameters[1], "");
 	
 EndFunction
@@ -251,11 +251,11 @@ Procedure AsynchronousExportProductsInEquipmentOfflineFragment(Parameters)
 	If Parameters.NeedToPerform > 0 Then
 		
 		If Parameters.Completed = Parameters.NeedToPerform Then
-			MessageText = NStr("en = 'The products have been sucessfully exported!'");
+			MessageText = NStr("en='The products have been sucessfully exported!';ru='Товары успешно выгружены!'");
 		ElsIf Parameters.Completed > 0 Then
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'The products have been successfully exported for the %1 devices from %2.'"), Parameters.Completed, Parameters.NeedToPerform) + Parameters.ErrorsDescriptionFull;
+			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='The products have been successfully exported for the %1 devices from %2.';ru='Товары успешно выгружены для %1 устройств из %2.'"), Parameters.Completed, Parameters.NeedToPerform) + Parameters.ErrorsDescriptionFull;
 		Else
-			MessageText = NStr("en = 'Failed to export the products:'") + Parameters.ErrorsDescriptionFull;
+			MessageText = NStr("en='Failed to export the products:';ru='Выгрузить товары не удалось:'") + Parameters.ErrorsDescriptionFull;
 		EndIf;
 		
 		If Parameters.ShowMessageBox Then
@@ -264,7 +264,7 @@ Procedure AsynchronousExportProductsInEquipmentOfflineFragment(Parameters)
 		
 	Else
 		If Parameters.ShowMessageBox Then
-			ShowMessageBox(Undefined, NStr("en = 'It is necessary to select the device for which the products should be exported.'"), 10);
+			ShowMessageBox(Undefined, NStr("en='It is necessary to select the device for which the products should be exported.';ru='Необходимо выбрать устройство, для которого требуется выгрузить товары.'"), 10);
 		EndIf;
 	EndIf;
 	
@@ -277,11 +277,11 @@ Procedure AsynchronousClearProductsInEquipmentOfflineFragment(Parameters)
 	If Parameters.NeedToPerform > 0 Then
 		
 		If Parameters.Completed = Parameters.NeedToPerform Then
-			MessageText = NStr("en = 'Products are successfully cleared!'");
+			MessageText = NStr("en='Products are successfully cleared!';ru='Товары успешно очищены!'");
 		ElsIf Parameters.Completed > 0 Then
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Products have been successfully cleared for %1 devices of %2. %3'"), Parameters.Completed, Parameters.NeedToPerform, Parameters.ErrorsDescriptionFull);
+			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Products have been successfully cleared for %1 devices of %2. %3';ru='Товары успешно очищены для %1 устройств из %2. %3'"), Parameters.Completed, Parameters.NeedToPerform, Parameters.ErrorsDescriptionFull);
 		Else
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Failed to clear the products: %1'"), Parameters.ErrorsDescriptionFull);
+			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Failed to clear the products: %1';ru='Очистить товары не удалось: %1'"), Parameters.ErrorsDescriptionFull);
 		EndIf;
 		
 		If Parameters.ShowMessageBox Then
@@ -290,7 +290,7 @@ Procedure AsynchronousClearProductsInEquipmentOfflineFragment(Parameters)
 		
 	Else
 		If Parameters.ShowMessageBox Then
-			ShowMessageBox(Undefined, NStr("en = 'It is necessary to select the device for which it is necessary to clear the products.'"), 10);
+			ShowMessageBox(Undefined, NStr("en='It is necessary to select the device for which it is necessary to clear the products.';ru='Необходимо выбрать устройство, для которого требуется очистить товары.'"), 10);
 		EndIf;
 	EndIf;
 	
@@ -303,11 +303,11 @@ Procedure AsynchronousImportReportAboutRetailSalesFragment(Parameters)
 	If Parameters.NeedToPerform > 0 Then
 		
 		If Parameters.Completed = Parameters.NeedToPerform Then
-			MessageText = NStr("en = 'The retail sales reports have been successfully imported!'");
+			MessageText = NStr("en='The retail sales reports have been successfully imported!';ru='Отчеты о розничных продажах успешно загружены!'");
 		ElsIf Parameters.Completed > 0 Then
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'The retail sales reports have been successfully imported for the %1 devices from %2.'"), Parameters.Completed, Parameters.NeedToPerform) + Parameters.ErrorsDescriptionFull;
+			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='The retail sales reports have been successfully imported for the %1 devices from %2.';ru='Успешно загружены отчеты о розничных продажах для %1 устройств из %2.'"), Parameters.Completed, Parameters.NeedToPerform) + Parameters.ErrorsDescriptionFull;
 		Else
-			MessageText = NStr("en = 'Failed to import the retail sales reports:'") + Parameters.ErrorsDescriptionFull;
+			MessageText = NStr("en='Failed to import the retail sales reports:';ru='Отчеты о розничных продажах загрузить не удалось:'") + Parameters.ErrorsDescriptionFull;
 		EndIf;
 		
 		For Each RetailReport IN Parameters.RetailSalesReports Do
@@ -320,7 +320,7 @@ Procedure AsynchronousImportReportAboutRetailSalesFragment(Parameters)
 		
 	Else
 		If Parameters.ShowMessageBox Then
-			ShowMessageBox(Undefined, NStr("en = 'It is necessary to select the device for which it is necessary to clear the products.'"), 10);
+			ShowMessageBox(Undefined, NStr("en='It is necessary to select the device for which it is necessary to clear the products.';ru='Необходимо выбрать устройство, для которого требуется очистить товары.'"), 10);
 		EndIf;
 	EndIf;
 	

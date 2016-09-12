@@ -131,9 +131,9 @@ Procedure ImportDataFromDirectory(Val ImportingDirectory, Val ExportParameters) 
 		AND CommonUseClientServer.CompareVersions(PlatformVersion, "8.3.4.0") < 0) Then
 		
 		Raise
-			NStr("en = 'For executing the data import it is required to update the technology platform ""1C:Enterprise"".
-                  |For version 8.2 you should use release 8.2.19 (or higher).
-                  |For version 8.3 you should use release 8.3.4 (or higher).'");
+			NStr("en='For executing the data import it is required to update the technology platform ""1C:Enterprise""."
+"For version 8.2 you should use release 8.2.19 (or higher)."
+"For version 8.3 you should use release 8.3.4 (or higher).';ru='Для выполнения загрузки данных требуется обновить технологическую платформу ""1С:Предприятие"". Для версии 8.2 необходимо использовать релиз 8.2.19 (или более новый). Для версии 8.3 необходимо использовать релиз 8.3.4 (или более новый).'");
 		
 	EndIf;
 	
@@ -151,7 +151,7 @@ Procedure ImportDataFromDirectory(Val ImportingDirectory, Val ExportParameters) 
 	If Not ExportArchiveIsCompatibleWithCurrentConfiguration(ExportInfo) Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'Unable to import data from the file, as the file was exported from another configuration (the file is exported from the %1 configuration and can not be imported into the %2 configuration)'"),
+			NStr("en='Unable to import data from the file, as the file was exported from another configuration (the file is exported from the %1 configuration and can not be imported into the %2 configuration)';ru='Невозможно загрузить данные из файла, т.к. файл был выгружен из другой конфигурации (файл выгружен из конфигурации %1 и не может быть загружен в конфигурацию %2)'"),
 			ExportInfo.Configuration.Name,
 			Metadata.Name
 		);
@@ -161,7 +161,7 @@ Procedure ImportDataFromDirectory(Val ImportingDirectory, Val ExportParameters) 
 	If Not ExportInArchiveIsCompatibleWithCurrentConfigurationVersion(ExportInfo) Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'Unable to import data from the file, as the file was exported from another configuration version (the file is exported from the %1 configuration version and can not be imported into the %2 configuration version)'"),
+			NStr("en='Unable to import data from the file, as the file was exported from another configuration version (the file is exported from the %1 configuration version and can not be imported into the %2 configuration version)';ru='Невозможно загрузить данные из файла, т.к. файл был выгружен из другой версии конфигурации (файл выгружен из конфигурации версии %1 и не может быть загружен в конфигурацию версии %2)'"),
 			ExportInfo.Configuration.Version,
 			Metadata.Version
 		);
@@ -363,7 +363,7 @@ Function XMLReferenceType(Val Value) Export
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'Error when defining XMLType of reference for the %1 object: object is not a reference!'"),
+			NStr("en='Error when defining XMLType of reference for the %1 object: object is not a reference!';ru='Ошибка при определении XMLТипа ссылки для объекта %1: объект не является ссылочным!'"),
 			MetadataObject.FullName());
 		
 	EndIf;
@@ -516,14 +516,14 @@ Function ReadObjectFromStream(ReadStream) Export
 			Or ReadStream.Name <> ItemNameContainingObject() Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'The XML reading error. Incorrect file format. The beginning of the item %1 is expected.'"),
+			NStr("en='The XML reading error. Incorrect file format. The beginning of the item %1 is expected.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента %1.'"),
 			ItemNameContainingObject()
 		);
 		
 	EndIf;
 	
 	If Not ReadStream.Read() Then
-		Raise NStr("en = 'The XML reading error. File completion is detected.'");
+		Raise NStr("en='The XML reading error. File completion is detected.';ru='Ошибка чтения XML. Обнаружено завершение файла.'");
 	EndIf;
 	
 	Object = XDTOSerializer.ReadXML(ReadStream);
@@ -589,14 +589,14 @@ Function ReadXDTOObjectFromFile(Val FileName, Val XDTOType) Export
 			Or ReadStream.Name <> ItemNameContainingXDTOObject() Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'The XML reading error. Incorrect file format. The beginning of the item %1 is expected.'"),
+			NStr("en='The XML reading error. Incorrect file format. The beginning of the item %1 is expected.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента %1.'"),
 			ItemNameContainingXDTOObject()
 		);
 		
 	EndIf;
 	
 	If Not ReadStream.Read() Then
-		Raise NStr("en = 'The XML reading error. File completion is detected.'");
+		Raise NStr("en='The XML reading error. File completion is detected.';ru='Ошибка чтения XML. Обнаружено завершение файла.'");
 	EndIf;
 	
 	XDTODataObject = XDTOFactory.ReadXML(ReadStream, XDTOType);

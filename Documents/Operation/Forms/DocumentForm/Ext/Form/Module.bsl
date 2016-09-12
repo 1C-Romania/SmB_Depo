@@ -167,9 +167,9 @@ Procedure AccountingRecordsCurrencyDrStartChoice(Item, ChoiceData, StandardProce
 	If Not StructureData.Currency Then
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.AccountDr) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	
@@ -188,9 +188,9 @@ Procedure AccountingRecordsCurrencyDrOnChange(Item)
 		CurrentRow.CurrencyDr = Undefined;
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.AccountDr) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	
@@ -208,9 +208,9 @@ Procedure AccountingRecordsAmountCurDrStartChoice(Item, ChoiceData, StandardProc
 	If Not StructureData.Currency Then
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.AccountDr) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	
@@ -229,9 +229,9 @@ Procedure AccountingRecordsAmountCurDrOnChange(Item)
 		CurrentRow.AmountCurDr = 0;
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.AccountDr) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	
@@ -265,9 +265,9 @@ Procedure AccountingRecordsCurrencyCrStartChoice(Item, ChoiceData, StandardProce
 	If Not StructureData.Currency Then
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.AccountCr) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	
@@ -286,9 +286,9 @@ Procedure AccountingRecordsCurrencyCrOnChange(Item)
 		CurrentRow.CurrencyCr = Undefined;
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.AccountCr) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	
@@ -306,9 +306,9 @@ Procedure AccountingRecordsAmountCurCrStartChoice(Item, ChoiceData, StandardProc
 	If Not StructureData.Currency Then
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.AccountCr) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	
@@ -327,9 +327,9 @@ Procedure AccountingRecordsAmountCurCrOnChange(Item)
 		CurrentRow.AmountCurCr = 0;
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.AccountCr) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	

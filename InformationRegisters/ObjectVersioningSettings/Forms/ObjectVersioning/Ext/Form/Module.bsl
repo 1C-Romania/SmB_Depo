@@ -74,7 +74,7 @@ EndProcedure
 Procedure SetVersioningVariantOnPosting(Command)
 	
 	If SelectNoPostingDocumentsType() Then
-		ShowMessageBox(, NStr("en = 'The versioning mode ""Versioning on record"" is enabled for the documents which can not be posted.'"));
+		ShowMessageBox(, NStr("en='The versioning mode ""Versioning on record"" is enabled for the documents which can not be posted.';ru='Документам, которые не могут быть проведены, установлен режим версионирования ""Версионировать при записи"".'"));
 	EndIf;
 	
 	SetVersioningVariantForSelectedRows(
@@ -213,7 +213,7 @@ Procedure FillObjectTypesInValueTree()
 		If AllCatalogs.ContainsType(Type) Then
 			If CatalogsNod = UNDEFINED Then
 				CatalogsNod = CMTree.Rows.Add();
-				CatalogsNod.SynonymNameObject = NStr("en = 'Catalogs'");
+				CatalogsNod.SynonymNameObject = NStr("en='Catalogs';ru='Справочники'");
 				CatalogsNod.ClassObject = "01ClassReferencesRoot";
 				CatalogsNod.PictureCode = 2;
 			EndIf;
@@ -223,7 +223,7 @@ Procedure FillObjectTypesInValueTree()
 		ElsIf AllDocuments.ContainsType(Type) Then
 			If DocumentsNode = UNDEFINED Then
 				DocumentsNode = CMTree.Rows.Add();
-				DocumentsNode.SynonymNameObject = NStr("en = 'Documents'");
+				DocumentsNode.SynonymNameObject = NStr("en='Documents';ru='Документы'");
 				DocumentsNode.ClassObject = "02ClassDocumentsRoot";
 				DocumentsNode.PictureCode = 3;
 			EndIf;
@@ -233,7 +233,7 @@ Procedure FillObjectTypesInValueTree()
 		ElsIf BusinessProcesses.AllRefsType().ContainsType(Type) Then
 			If NodeBusinessProcesses = Undefined Then
 				NodeBusinessProcesses = CMTree.Rows.Add();
-				NodeBusinessProcesses.SynonymNameObject = NStr("en = 'Business-processes'");
+				NodeBusinessProcesses.SynonymNameObject = NStr("en='Business-processes';ru='Деловые процессы'");
 				NodeBusinessProcesses.ClassObject = "03BusinessProcessesRoot";
 				NodeBusinessProcesses.ObjectType = "BusinessProcesses";
 			EndIf;
@@ -511,7 +511,7 @@ Procedure RunScheduledJob()
 	If BackgroundJobsCleanup.Count() > 0 Then
 		BackgroundJobID = BackgroundJobsCleanup[0].UUID;
 	Else
-		BackgroundJobDescription = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Launch manually: %1'"), ScheduledJobMetadata.Synonym);
+		BackgroundJobDescription = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Launch manually: %1';ru='Запуск вручную: %1'"), ScheduledJobMetadata.Synonym);
 		BackgroundJob = BackgroundJobs.Execute(ScheduledJobMetadata.MethodName, , , BackgroundJobDescription);
 		BackgroundJobID = BackgroundJob.UUID;
 	EndIf;
@@ -561,12 +561,12 @@ EndProcedure
 
 &AtClientAtServerNoContext
 Function StatusTextCalculation()
-	Return NStr("en = 'Search outdated versions...'");
+	Return NStr("en='Search outdated versions...';ru='Поиск устаревших версий...'");
 EndFunction
 
 &AtClientAtServerNoContext
 Function StatusTextClearing()
-	Return NStr("en = 'Outdated versions are being cleared...'");
+	Return NStr("en='Outdated versions are being cleared...';ru='Выполняется очистка устаревших версий...'");
 EndFunction
 
 &AtServer
@@ -592,11 +592,11 @@ Procedure DisplayInformationAboutOutdatedVersions()
 	Items.Clear.Visible = InformationAboutLegacyVersions.DataSize > 0;
 	If InformationAboutLegacyVersions.DataSize > 0 Then
 		Items.InformationAboutLegacyVersions.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Total outdated versions: %1 (%2)'"),
+			NStr("en='Total outdated versions: %1 (%2)';ru='Всего устаревших версий: %1 (%2)'"),
 			InformationAboutLegacyVersions.CountVersions,
 			InformationAboutLegacyVersions.DataSizeString);
 	Else
-		Items.InformationAboutLegacyVersions.Title = NStr("en = 'Total outdated versions: no'");
+		Items.InformationAboutLegacyVersions.Title = NStr("en='Total outdated versions: no';ru='Всего устаревших версий: нет'");
 	EndIf;
 	
 EndProcedure

@@ -329,7 +329,7 @@ Procedure InitializeDocumentData(DocumentRefJobSheet, StructureAdditionalPropert
 	Query.SetParameter("PointInTime",			New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("Company",			StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("Payroll",		NStr("en = 'Payroll'"));
-	Query.SetParameter("SalaryDistribution",		NStr("en = 'Cost application on finished goods'"));
+	Query.SetParameter("SalaryDistribution",		NStr("en='Cost application on finished goods';ru='Отнесение затрат на продукцию'"));
 	
 	// FO Use Payroll subsystem.
 	Query.SetParameter("UseSubsystemPayroll", Constants.FunctionalOptionUseSubsystemPayroll.Get());
@@ -573,7 +573,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "JobSheet";
-	PrintCommand.Presentation = NStr("en = 'Job sheet'");
+	PrintCommand.Presentation = NStr("en='Job sheet';ru='Сдельный  наряд'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

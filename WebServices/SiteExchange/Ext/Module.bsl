@@ -45,7 +45,7 @@ Function GetRefByIdentifier(ObjectManager, Val GUIDString)
 		ObjectReference = ObjectManager.GetRef(NewGUID);
 	Except
 		ErrorDescription = ErrorInfo();
-		WriteLogEvent(NSTr("en = 'GetPictureProc: failed to receive object by ID.'"), EventLogLevel.Error,,, ErrorDescription.Definition);
+		WriteLogEvent(NSTr("en='GetPictureProc: failed to receive object by ID.';ru='GetPicture: не удалось получить объект по идентификатору.'"), EventLogLevel.Error,,, ErrorDescription.Definition);
 		Raise;
 	EndTry;
 	
@@ -789,12 +789,12 @@ Function ExportOrders(OrdersDataXDTO)
 	
 	If Not ExchangeWithSite.ExportOrders(OrdersDataXDTO, StatisticsStructure, Parameters, ErrorDescription) Then 
 		
-		ExchangeWithSite.AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Failed to process documents, exported from server.'"));
+		ExchangeWithSite.AddErrorDescriptionFull(ErrorDescription, NStr("en='Failed to process documents, exported from server.';ru='Не удалось обработать документы, загруженные с сервера.'"));
 		HasErrors = True;
 		
 	EndIf;
 	
-	WriteOperationExecutionResultToEventLogMonitor(NStr("en = 'ExchangeWithSite.OrdersImport'"), ErrorDescription, HasErrors);
+	WriteOperationExecutionResultToEventLogMonitor(NStr("en='ExchangeWithSite.OrdersImport';ru='ОбменССайтом.ЗагрузкаЗаказов'"), ErrorDescription, HasErrors);
 	
 	Return Not HasErrors;
 	
@@ -820,7 +820,7 @@ Function GetFileBinaryData(FileData)
 		If FileBinaryData = Undefined Then
 			
 			ErrorDescription = ErrorInfo();
-			WriteLogEvent(StringFunctionsClientServer.PlaceParametersIntoString(NSTr("en = 'GetPictureProc: failed to get file data %1 of products and services %2.'"),
+			WriteLogEvent(StringFunctionsClientServer.PlaceParametersIntoString(NSTr("en='GetPictureProc: failed to get file data %1 of products and services %2.';ru='GetPicture: не удалось получить данные файла %1 номенклатуры %2.'"),
 				FileData.File,
 				FileData.ProductsAndServices),
 				EventLogLevel.Error,,,
@@ -840,7 +840,7 @@ Function GetFileBinaryData(FileData)
 		Except
 			
 			//AddErrorDescriptionFull(ErrorDescription, 
-			//ExceptionalErrorDescription(NStr("en = 'ProductsAndServices file export: '")
+			//ExceptionalErrorDescription(NStr("en='ProductsAndServices file export: ';ru='Выгрузка файла номенклатуры: '")
 			//+ Parameters.ProductsAndServicesSelection.ProductsAndServices));
 			//
 			//Return FileURL;

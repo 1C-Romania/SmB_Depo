@@ -31,7 +31,7 @@ Procedure BeforeWrite(Cancel)
 	Selection = Query.Execute().Select();
 	
 	If Selection.Next() Then
-		MessageText = NStr("en = 'Contracts are not accounted for the counterparty.'");
+		MessageText = NStr("en='Contracts are not accounted for the counterparty.';ru='Для контрагента не ведется учет по договорам.'");
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
 			MessageText,

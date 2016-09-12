@@ -271,7 +271,7 @@ Function PossiblePermissionQueryToUseExternalResources()
 		// of permissions requests is available only to administrators regardless of the setting of the privileged mode.
 		If Not Users.InfobaseUserWithFullAccess() Then
 			
-			Raise NStr("en = 'You have no access rights to request permissions to use external resources.'");
+			Raise NStr("en='You have no access rights to request permissions to use external resources.';ru='Недостаточно прав доступа для запроса разрешений на использование внешних ресурсов!'");
 			
 		EndIf;
 		

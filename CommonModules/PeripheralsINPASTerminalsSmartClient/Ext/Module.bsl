@@ -47,10 +47,13 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 	 Or Parameters.FooterText   = Undefined
 	 Or Parameters.SlipReceiptTemplateData = Undefined Then
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device parameters are not set.
-		|For the correct work of the device it is necessary to specify the parameters of its work.
-		|You can do it using the Parameters setting
-		|form of the peripheral model in the Connection and equipment setting form.'"));
+		Output_Parameters.Add(NStr("en='Device parameters are not set."
+"For the correct work of the device it is necessary to specify the parameters of its work."
+"You can do it using the Parameters setting"
+"form of the peripheral model in the Connection and equipment setting form.';ru='Не настроены параметры устройства."
+"Для корректной работы устройства необходимо задать параметры его работы."
+"Сделать это можно при помощи формы"
+"""Настройка параметров"" модели подключаемого оборудования в форме ""Подключение и настройка оборудования"".'"));
 		Return False;
 	EndIf;
 	
@@ -175,7 +178,7 @@ Function RunCommand(Command, InputParameters = Undefined, Output_Parameters = Un
 	// This command is not supported by the current driver.
 	Else
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.'"));
+		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.';ru='Команда ""%Команда%"" не поддерживается данным драйвером.'"));
 		Output_Parameters[1] = StrReplace(Output_Parameters[1], "%Command%", Command);
 		Result = False;
 
@@ -199,7 +202,7 @@ Function PayByPaymentCard(DriverObject, Parameters, ConnectionParameters,
 	RefNo = "";
 	AuthorizationCode = "";
 
-	ConnectionParameters.OperationKind = NStr("en='Pay'");
+	ConnectionParameters.OperationKind = NStr("en='Pay';ru='Оплатить'");
 
 	SetDriverParameters(DriverObject, Parameters);
 		
@@ -238,7 +241,7 @@ Function ReturnPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 
 	Result = True;
 
-	ConnectionParameters.OperationKind = NStr("en='Payment return'");
+	ConnectionParameters.OperationKind = NStr("en='Payment return';ru='Возврат платежа'");
 
 	SetDriverParameters(DriverObject, Parameters);
     
@@ -283,7 +286,7 @@ Function CancelPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 
 	Result = True;
 
-	ConnectionParameters.OperationKind = NStr("en='Cancel payment'");
+	ConnectionParameters.OperationKind = NStr("en='Cancel payment';ru='Отменить платеж'");
 
 	SetDriverParameters(DriverObject, Parameters);
 	
@@ -345,7 +348,7 @@ Function DayTotalsByCards(DriverObject, Parameters, ConnectionParameters, Output
 	Result = True;
 	Response     = Undefined;
 
-	ConnectionParameters.OperationKind = NStr("en='Totals revision'");
+	ConnectionParameters.OperationKind = NStr("en='Totals revision';ru='Сверка итогов'");
 
 	SetDriverParameters(DriverObject, Parameters);
 
@@ -380,7 +383,7 @@ Function PreauthorizeByPaymentCard(DriverObject, Parameters, ConnectionParameter
 	RefNo = Undefined;
 	ReceiptNumber      = Undefined;
 
-	ConnectionParameters.OperationKind = NStr("en='Pre-authorize payment'");
+	ConnectionParameters.OperationKind = NStr("en='Pre-authorize payment';ru='Преавторизовать платеж'");
 
 	SetDriverParameters(DriverObject, Parameters);
     
@@ -427,7 +430,7 @@ Function FinishPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 
 	Result = True;
 
-	ConnectionParameters.OperationKind = NStr("en='Finish preauthorization'");
+	ConnectionParameters.OperationKind = NStr("en='Finish preauthorization';ru='Завершить преавторизацию'");
 
 	SetDriverParameters(DriverObject, Parameters);
     
@@ -468,7 +471,7 @@ Function CancelPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 
 	Result = True;
 
-	ConnectionParameters.OperationKind = NStr("en='Cancel preauthorization'");
+	ConnectionParameters.OperationKind = NStr("en='Cancel preauthorization';ru='Отменить преавторизацию'");
 
 	SetDriverParameters(DriverObject, Parameters);
 
@@ -524,8 +527,8 @@ Function GetDriverVersion(DriverObject, Parameters, ConnectionParameters, Output
 
 	Result = True;
 
-	Output_Parameters.Add(NStr("en='Installed'"));
-	Output_Parameters.Add(NStr("en='Not defined'"));
+	Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
+	Output_Parameters.Add(NStr("en='Not defined';ru='Не определена'"));
 
 	Try
 		Output_Parameters[1] = DriverObject.GetVersionNumber();

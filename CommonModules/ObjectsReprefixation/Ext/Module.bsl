@@ -127,11 +127,11 @@ Procedure ServiceSetIBPrefixAndReprefixAllObjectsCreatedInThisIB(
 	
 	If TransactionActive() Then
 		
-		Raise NStr("en = 'Infobase prefix modification can not be performed in the transaction.'");
+		Raise NStr("en='Infobase prefix modification can not be performed in the transaction.';ru='Изменение префикса информационной базы не может выполняться в транзакции.'");
 		
 	ElsIf Not Users.InfobaseUserWithFullAccess() Then
 		
-		Raise NStr("en = 'Insufficient rights to change a prefix of the infobase.'");
+		Raise NStr("en='Insufficient rights to change a prefix of the infobase.';ru='Недостаточно прав для изменения префикса информационной базы.'");
 		
 	EndIf;
 	
@@ -165,11 +165,11 @@ Procedure ServiceSetIBPrefixAndReprefixAllObjects(
 	
 	If TransactionActive() Then
 		
-		Raise NStr("en = 'Infobase prefix modification can not be performed in the transaction.'");
+		Raise NStr("en='Infobase prefix modification can not be performed in the transaction.';ru='Изменение префикса информационной базы не может выполняться в транзакции.'");
 		
 	ElsIf Not Users.InfobaseUserWithFullAccess() Then
 		
-		Raise NStr("en = 'Insufficient rights to change a prefix of the infobase.'");
+		Raise NStr("en='Insufficient rights to change a prefix of the infobase.';ru='Недостаточно прав для изменения префикса информационной базы.'");
 		
 	EndIf;
 	
@@ -456,11 +456,11 @@ Procedure SetIBPrefixAndCreateChangeObjects(
 	
 	If TransactionActive() Then
 		
-		Raise NStr("en = 'Infobase prefix modification can not be performed in the transaction.'");
+		Raise NStr("en='Infobase prefix modification can not be performed in the transaction.';ru='Изменение префикса информационной базы не может выполняться в транзакции.'");
 		
 	ElsIf Not Users.InfobaseUserWithFullAccess() Then
 		
-		Raise NStr("en = 'Insufficient rights to change a prefix of the infobase.'");
+		Raise NStr("en='Insufficient rights to change a prefix of the infobase.';ru='Недостаточно прав для изменения префикса информационной базы.'");
 		
 	EndIf;
 	
@@ -1038,10 +1038,11 @@ Function ObjectNewCode(Val NewCodeFormat, Val Code, Val ThisIsDocument, Object)
 	
 	If LeadingZeroesCount < 0 Then
 		
-		MessageString = NStr("en = 'Cannot convert %1 object %2.
-							|Not long enough %1. Minimal length %1 of the object must be %3 symbols.'");
+		MessageString = NStr("en='Cannot convert %1 object %2."
+"Not long enough %1. Minimal length %1 of the object must be %3 symbols.';ru='Преобразование %1 объекта %2 не может быть выполнено."
+"Недостаточная длина %1. Минимальная длина %1 объекта должна составлять %3 символов.'");
 		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
-					?(ThisIsDocument, NStr("en = 'Numbers'"), NStr("en = 'code'")),
+					?(ThisIsDocument, NStr("en='Numbers';ru='номера'"), NStr("en='code';ru='кода'")),
 					String(Object),
 					String(StrLen(NewFullPrefix) + StrLen(CodeAsString)));
 		Raise MessageString;
@@ -1076,10 +1077,11 @@ Function NewCodeBaseObjectCodeu(Val NewCodeFormat, Val BasicCode, Val ThisIsDocu
 	
 	If LeadingZeroesCount < 0 Then
 		
-		MessageString = NStr("en = 'Cannot convert %1 object %2.
-							|Not long enough %1. Minimal length %1 of the object must be %3 symbols.'");
+		MessageString = NStr("en='Cannot convert %1 object %2."
+"Not long enough %1. Minimal length %1 of the object must be %3 symbols.';ru='Преобразование %1 объекта %2 не может быть выполнено."
+"Недостаточная длина %1. Минимальная длина %1 объекта должна составлять %3 символов.'");
 		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
-					?(ThisIsDocument, NStr("en = 'Numbers'"), NStr("en = 'code'")),
+					?(ThisIsDocument, NStr("en='Numbers';ru='номера'"), NStr("en='code';ru='кода'")),
 					String(Object),
 					String(StrLen(NewFullPrefix) + StrLen(BasicCode)));
 		Raise MessageString;
@@ -1474,7 +1476,7 @@ Procedure CheckPrefixSetPossibility()
 	OnDeterminingFunctionalBasePrefixInformationOptions(FunctionalOptionInUse);
 	If Not FunctionalOptionInUse Then
 		
-		Raise NStr("en='Objects prefixation is unavailable.'");
+		Raise NStr("en='Objects prefixation is unavailable.';ru='Перепрефиксация объектов недоступна.'");
 		
 	EndIf;
 	
@@ -1482,7 +1484,7 @@ EndProcedure
 
 Function EventLogMonitorMessageTextPereprefixionObjects()
 	
-	Return NStr("en = 'Objects prefixation. Infobase prefix modification'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Objects prefixation. Infobase prefix modification';ru='Префиксация объектов.Изменение префикса информационной базы'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

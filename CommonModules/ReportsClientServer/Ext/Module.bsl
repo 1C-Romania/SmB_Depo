@@ -1045,8 +1045,8 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 	#EndIf
 	Today = BegOfDay(Today);
 	
-	NavigationPointItemPreviouslyPresentation = NStr("en = 'Previously...'");
-	NavigationPointLaterPresentation = NStr("en = 'Later...'");
+	NavigationPointItemPreviouslyPresentation = NStr("en='Previously...';ru='Раньше ...'");
+	NavigationPointLaterPresentation = NStr("en='Later...';ru='Позже...'");
 	
 	If PeriodKind = PredefinedValue("Enum.AvailableReportPeriods.Day") Then
 		CurrentDayOfWeek   = WeekDay(Today);
@@ -1066,7 +1066,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 		
 		// Values adding.
 		For Counter = 1 To 7 Do
-			PeriodsList.Add(Period, Format(Period, "DF='dd MMMM yyyy, dddd'") + ?(Period = Today, " - " + NStr("en = 'today'"), ""));
+			PeriodsList.Add(Period, Format(Period, "DF='dd MMMM yyyy, dddd'") + ?(Period = Today, " - " + NStr("en='today';ru='сегодня'"), ""));
 			Period = Period + 86400;
 		EndDo;
 		
@@ -1090,9 +1090,9 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 		For Counter = 0 To 6 Do
 			Period = InitialWeek + Counter * 604800;
 			EndOfPeriod  = EndOfWeek(Period);
-			PeriodPresentation = Format(Period, "DF=dd.MM") + " - " + Format(EndOfPeriod, "DLF=D") + " (" + WeekOfYear(EndOfPeriod) + " " + NStr("en = 'Week Of Year'") + ")";
+			PeriodPresentation = Format(Period, "DF=dd.MM") + " - " + Format(EndOfPeriod, "DLF=D") + " (" + WeekOfYear(EndOfPeriod) + " " + NStr("en='Week Of Year';ru='неделя года'") + ")";
 			If Period = CurrentWeekBeginning Then
-				PeriodPresentation = PeriodPresentation + " - " + NStr("en = 'this week'");
+				PeriodPresentation = PeriodPresentation + " - " + NStr("en='this week';ru='эта неделя'");
 			EndIf;
 			PeriodsList.Add(Period, PeriodPresentation);
 		EndDo;
@@ -1111,7 +1111,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 		SelectedDecade = ?(SelectedDay <= 10, 1, ?(SelectedDay <= 20, 2, 3));
 		CurrentTenDaysTotally   = CurrentYear*36 + (CurrentMonth-1)*3 + (CurrentTenDays-1);
 		SelectedDecadeAbsolutely = SelectedYear*36 + (SelectedMonth-1)*3 + (SelectedDecade-1);
-		StringTenDays = NStr("en = 'decade'");
+		StringTenDays = NStr("en='decade';ru='декада'");
 		
 		// Calculation of initial and ending period according to the formula.
 		Factor = (SelectedDecadeAbsolutely - CurrentTenDaysTotally - 2)/7;
@@ -1135,7 +1135,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 			MonthInYear = Int(DecadeInYear/3) + 1;
 			DecadeInMonth = DecadeInYear - (MonthInYear-1)*3 + 1;
 			Period = Date(Year, MonthInYear, (DecadeInMonth - 1) * 10 + 1);
-			Presentation = Format(Period, "DF='MMMM yyyy'") + ", " + Left("III", DecadeInMonth) + " " + StringTenDays + ?(TenDays = CurrentTenDaysTotally, " - " + NStr("en = 'this decade'"), "");
+			Presentation = Format(Period, "DF='MMMM yyyy'") + ", " + Left("III", DecadeInMonth) + " " + StringTenDays + ?(TenDays = CurrentTenDaysTotally, " - " + NStr("en='this decade';ru='эта декада'"), "");
 			PeriodsList.Add(Period, Presentation);
 		EndDo;
 		
@@ -1172,7 +1172,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 			Year = Int((Month - 1) / 12);
 			MonthInYear = Month - Year * 12;
 			Period = Date(Year, MonthInYear, 1);
-			PeriodsList.Add(Period, Format(Period, "DF='MMMM yyyy'") + ?(Year = CurrentYear AND CurrentMonth = Month, " - " + NStr("en = 'this month'"), ""));
+			PeriodsList.Add(Period, Format(Period, "DF='MMMM yyyy'") + ?(Year = CurrentYear AND CurrentMonth = Month, " - " + NStr("en='this month';ru='этот месяц'"), ""));
 		EndDo;
 		
 		// Add the <Later> navigation point..." for transition to later periods.
@@ -1189,7 +1189,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 		SelectedQuarter = 1 + Int((Month(BeginOfPeriod)-1)/3);
 		CurrentQuarterAbsolutely   = CurrentYear*4   + CurrentQuarter   - 1;
 		SelectedQuarterAbsolutely = SelectedYear*4 + SelectedQuarter - 1;
-		RowQuarter = NStr("en = 'quarter'");
+		RowQuarter = NStr("en='quarter';ru='квартал'");
 		
 		// Calculation of initial and ending period according to the formula.
 		Factor = (SelectedQuarterAbsolutely - CurrentQuarterAbsolutely - 2)/7;
@@ -1211,7 +1211,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 			QuarterInYear = Quarter - Year*4 + 1;
 			MonthInYear = (QuarterInYear-1)*3 + 1;
 			Period = Date(Year, MonthInYear, 1);
-			Presentation = ?(QuarterInYear = 4, "IV", Left("III", QuarterInYear)) + " " + RowQuarter + " " + Format(Period, "DF='yyyy'") + ?(Quarter = CurrentQuarterAbsolutely, " - " + NStr("en = 'this quarter'"), "");
+			Presentation = ?(QuarterInYear = 4, "IV", Left("III", QuarterInYear)) + " " + RowQuarter + " " + Format(Period, "DF='yyyy'") + ?(Quarter = CurrentQuarterAbsolutely, " - " + NStr("en='this quarter';ru='этот квартал'"), "");
 			PeriodsList.Add(Period, Presentation);
 		EndDo;
 		
@@ -1230,7 +1230,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 		SelectedHalfyear = 1 + Int((Month(BeginOfPeriod)-1)/6);
 		CurrentHalfyearAbsolutely   = CurrentYear*2   + CurrentHalfYear   - 1;
 		HalfYearIsAbsolutely = SelectedYear*2 + SelectedHalfyear - 1;
-		StringHalfYear = NStr("en = 'half'");
+		StringHalfYear = NStr("en='half';ru='половина'");
 		
 		// Calculation of initial and ending period according to the formula.
 		Factor = (HalfYearIsAbsolutely - CurrentHalfyearAbsolutely - 2)/7;
@@ -1252,7 +1252,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 			HalfInYear = HalfYear - Year*2 + 1;
 			MonthInYear = (HalfInYear-1)*6 + 1;
 			Period = Date(Year, MonthInYear, 1);
-			Presentation = Left("II", HalfInYear) + " " + StringHalfYear + " " + Format(Period, "DF='yyyy'") + ?(HalfYear = CurrentHalfyearAbsolutely, " - " + NStr("en = 'this half'"), "");
+			Presentation = Left("II", HalfInYear) + " " + StringHalfYear + " " + Format(Period, "DF='yyyy'") + ?(HalfYear = CurrentHalfyearAbsolutely, " - " + NStr("en='this half';ru='это полугодие'"), "");
 			PeriodsList.Add(Period, Presentation);
 		EndDo;
 		
@@ -1279,7 +1279,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 		
 		// Values adding.
 		For Year = InitialYear To FinalYear Do
-			PeriodsList.Add(Date(Year, 1, 1), Format(Year, "NG=") + ?(Year = CurrentYear, " - " + NStr("en = 'this year'"), ""));
+			PeriodsList.Add(Date(Year, 1, 1), Format(Year, "NG=") + ?(Year = CurrentYear, " - " + NStr("en='this year';ru='этот год'"), ""));
 		EndDo;
 		
 		// Add the <Later> navigation point..." for transition to later periods.
@@ -1319,7 +1319,7 @@ Function CalculatingPeriodsList(PeriodKind) Export
 	ElsIf PeriodKind = PredefinedValue("Enum.AvailableReportPeriods.Month") Then
 		PeriodsList.Add(StandardPeriodVariant.LastMonth);
 		PeriodsList.Add(StandardPeriodVariant.LastMonthTillSameDate);
-		PeriodsList.Add(StandardPeriodVariant.Month, NStr("en = 'Since the same date of the previous month'"));
+		PeriodsList.Add(StandardPeriodVariant.Month, NStr("en='Since the same date of the previous month';ru='С такой же даты прошлого месяца'"));
 		PeriodsList.Add(StandardPeriodVariant.ThisMonth);
 		PeriodsList.Add(StandardPeriodVariant.FromBeginningOfThisMonth);
 		PeriodsList.Add(StandardPeriodVariant.TillEndOfThisMonth);
@@ -1358,7 +1358,7 @@ EndFunction
 Function PresentationStandardPeriod(StandardPeriod, PeriodKind) Export
 	
 	If StandardPeriod.Variant = StandardPeriodVariant.Month Then
-		Return NStr("en = 'Since the same date of the previous month'");
+		Return NStr("en='Since the same date of the previous month';ru='С такой же даты прошлого месяца'");
 	ElsIf StandardPeriod.Variant <> StandardPeriodVariant.Custom Then
 		Return String(StandardPeriod.Variant);
 	EndIf;
@@ -1995,7 +1995,7 @@ Function ParametersOfCopying(PointType, Collection)
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Copy %1 items is not supported'"),
+			NStr("en='Copy %1 items is not supported';ru='Копирование элементов ""%1"" не поддерживается'"),
 			PointType);
 		
 	EndIf;

@@ -3,7 +3,7 @@
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Parameters.Property("Title") Then
-		Title = NStr("en = 'ToolTip: '") + Parameters.Title;
+		Title = NStr("en='ToolTip: ';ru='Подсказка: '") + Parameters.Title;
 	EndIf;
 	
 	If Parameters.Property("ToolTipKey") Then

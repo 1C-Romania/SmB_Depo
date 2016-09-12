@@ -79,7 +79,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If PaymentWithPaymentCards.Count() > 0 AND Not ValueIsFilled(POSTerminal) Then
 		
-		MessageText = NStr("en='Field ""Terminal"" is empty'");
+		MessageText = NStr("en='Field ""Terminal"" is empty';ru='Поле ""Эквайринговый терминал"" не заполнено'");
 
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -94,7 +94,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If PaymentWithPaymentCards.Total("Amount") > DocumentAmount Then
 		
-		MessageText = NStr("en='Amount of payment by payment cards exceeds document amount'");
+		MessageText = NStr("en='Amount of payment by payment cards exceeds document amount';ru='Сумма оплаты платежными картами превышает сумму документа'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -107,7 +107,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 
 	EndIf;
 	
-	MessageText = NStr("en='Cash session is not opened'");
+	MessageText = NStr("en='Cash session is not opened';ru='Кассовая смена не открыта'");
 	
 	If Not Documents.RetailReport.SessionIsOpen(CashCRSession, Date, MessageText) Then
 		
@@ -159,7 +159,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	   AND WriteMode = DocumentWriteMode.UndoPosting
 	   AND Not CashCR.UseWithoutEquipmentConnection Then
 		
-		MessageText = NStr("en='CR receipt was issued on the fiscal registrar. Impossible to cancel the posting'");
+		MessageText = NStr("en='CR receipt was issued on the fiscal registrar. Impossible to cancel the posting';ru='Чек ККМ пробит на фискальном регистраторе. Отмена проведения невозможна'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -179,7 +179,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	   AND CashCRSession.Posted
 	   AND CashCRSession.CashCRSessionStatus = Enums.CashCRSessionStatuses.Closed Then
 		
-		MessageText = NStr("en='Cash session is closed. Impossible to cancel the posting'");
+		MessageText = NStr("en='Cash session is closed. Impossible to cancel the posting';ru='Кассовая смена закрыта. Отмена проведения невозможна'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,

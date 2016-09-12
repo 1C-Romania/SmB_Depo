@@ -110,7 +110,7 @@ Function GetMSWordTemplate(Val TemplateBinaryData, Val TempFileName = "") Export
 		DeleteFiles(TempFileName);
 		EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Error",
 			DetailErrorDescription(ErrorInfo()),,True);
-		Raise(NStr("en = 'Error on layout file opening'") + Chars.LF 
+		Raise(NStr("en='Error on layout file opening';ru='Ошибка при открытии файла шаблона.'") + Chars.LF 
 			+ BriefErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -587,18 +587,19 @@ Function PageParametersSettings()
 EndFunction
 
 Function EventLogMonitorEvent()
-	Return NStr("en = 'Print'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Print';ru='Печать'", CommonUseClientServer.MainLanguageCode());
 EndFunction
 
 Procedure FailedToGeneratePrintForm(ErrorInfo)
 #If WebClient Then
-	CorrectionText = NStr("en = 'Working in web client, it is required to install Internet Explorer run under the Windows operating system. See also chapter ""Configuring web browsers to work in web client"".'");
+	CorrectionText = NStr("en='Working in web client, it is required to install Internet Explorer run under the Windows operating system. See also chapter ""Configuring web browsers to work in web client"".';ru='При работе через веб требуется браузер Internet Explorer под управлением операционной системы Windows. См. также главу документации ""Настройка веб-браузеров для работы в веб-клиенте""'");
 #Else		
 	CorrectionText = "";	
 #EndIf
 	ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Failed to generate a print form: %1. 
-			|To display print forms in the Microsoft Word format, install Microsoft Office package on your computer. %2'"),
+		NStr("en='Failed to generate a print form: %1. "
+"To display print forms in the Microsoft Word format, install Microsoft Office package on your computer. %2';ru='Не удалось сформировать печатную форму: %1. "
+"Для вывода печатных форм в формате Microsoft Word требуется, чтобы на компьютере был установлен пакет Microsoft Office. %2'"),
 		BriefErrorDescription(ErrorInfo), CorrectionText);
 	Raise ErrorMessage;
 EndProcedure

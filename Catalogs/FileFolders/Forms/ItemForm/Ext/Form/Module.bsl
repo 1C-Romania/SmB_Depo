@@ -110,10 +110,10 @@ Procedure OwnerWorkingDirectoryStartChoice(Item, ChoiceData, StandardProcessing)
 	FileOpeningDialog = New FileDialog(Mode);
 	FileOpeningDialog.Directory = WorkingDirectory;
 	FileOpeningDialog.FullFileName = "";
-	Filter = NStr("en = 'All files(*.*)|*.*'");
+	Filter = NStr("en='All files(*.*)|*.*';ru='Все файлы(*.*)|*.*'");
 	FileOpeningDialog.Filter = Filter;
 	FileOpeningDialog.Multiselect = False;
-	FileOpeningDialog.Title = NStr("en = 'Select the folder'");
+	FileOpeningDialog.Title = NStr("en='Select the folder';ru='Выберите каталог'");
 	If FileOpeningDialog.Choose() Then
 		
 		DirectoryName = FileOpeningDialog.Directory;
@@ -129,7 +129,7 @@ Procedure OwnerWorkingDirectoryStartChoice(Item, ChoiceData, StandardProcessing)
 			// You are not authorized to create a directory or such path is absent.
 			
 			ErrorText 
-				= StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Incorrect path or no access to directory ""%1""'"),
+				= StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Incorrect path or no access to directory ""%1""';ru='Неверный путь или отсутствуют права на запись в каталог ""%1""'"),
 				DirectoryName);
 			
 			CommonUseClientServer.MessageToUser(ErrorText, , "WorkingDirectory");

@@ -10,9 +10,9 @@ Procedure CheckFillOfFormAttributes(Cancel)
 		If CurrencyTransactionsAccounting
 		AND Not ValueIsFilled(RowPrepayment.ExchangeRate) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Column ""Exchange rate"" is not filled in the row. '")
+			Message.Text = NStr("en='Column ""Exchange rate"" is not filled in the row. ';ru='Не заполнена колонка ""Курс"" в строке '")
 				+ String(LineNumber)
-				+ NStr("en = ' of ""Accounts"").'");
+				+ NStr("en=' of ""Accounts"").';ru=' списка ""Расшифровка расчетов"".'");
 			Message.Field = "Document";
 			Message.Message();
 			Cancel = True;
@@ -20,18 +20,18 @@ Procedure CheckFillOfFormAttributes(Cancel)
 		If CurrencyTransactionsAccounting
 		AND Not ValueIsFilled(RowPrepayment.Multiplicity) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Column ""Multiplicity"" is not filled in the row. '")
+			Message.Text = NStr("en='Column ""Multiplicity"" is not filled in the row. ';ru='Не заполнена колонка ""Кратность"" в строке '")
 				+ String(LineNumber)
-				+ NStr("en = ' of ""Accounts"").'");
+				+ NStr("en=' of ""Accounts"").';ru=' списка ""Расшифровка расчетов"".'");
 			Message.Field = "Document";
 			Message.Message();
 			Cancel = True;
 		EndIf;
 		If Not ValueIsFilled(RowPrepayment.SettlementsAmount) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Field ""Settlements amount"" is not filled in row '")
+			Message.Text = NStr("en='Field ""Settlements amount"" is not filled in row ';ru='Не заполнена колонка ""Сумма расчетов"" в строке '")
 				+ String(LineNumber)
-				+ NStr("en = ' of ""Accounts"").'");
+				+ NStr("en=' of ""Accounts"").';ru=' списка ""Расшифровка расчетов"".'");
 			Message.Field = "Document";
 			Message.Message();
 			Cancel = True;
@@ -39,9 +39,9 @@ Procedure CheckFillOfFormAttributes(Cancel)
 		If CurrencyTransactionsAccounting
 		AND Not ValueIsFilled(RowPrepayment.PaymentAmount) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Field ""Payment amount"" is required (row # '")
+			Message.Text = NStr("en='Field ""Payment amount"" is required (row # ';ru='Не заполнена колонка ""Сумма платежа"" в строке '")
 				+ String(LineNumber)
-				+ NStr("en = ' of ""Accounts"").'");
+				+ NStr("en=' of ""Accounts"").';ru=' списка ""Расшифровка расчетов"".'");
 			Message.Field = "Document";
 			Message.Message();
 			Cancel = True;

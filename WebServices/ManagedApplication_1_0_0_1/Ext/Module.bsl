@@ -18,14 +18,14 @@ Function ValidateDataAreasSessionMembership(DataAreaNumber, DataAreaKey, Session
 			
 			If CommonUseReUse.CanUseSeparatedData() Then
 				
-				Raise NStr("en = 'Operation can not be called in the session which started with indication of separators. Check correctness of web service publication!'");
+				Raise NStr("en='Operation can not be called in the session which started with indication of separators. Check correctness of web service publication!';ru='Операция не может быть вызвана в сеансе, который запущен с указанием разделителей. Проверьте правильность публикации веб-сервиса!'");
 				
 			Else
 				
 				CommonUse.SetSessionSeparation(True, DataAreaNumber);
 				
 				If DataAreaKey <> Constants.DataAreaKey.Get() Then
-					Raise NStr("en = 'Incorrect key of data area!'");
+					Raise NStr("en='Incorrect key of data area!';ru='Некорректный ключ области данных!'");
 				EndIf;
 				
 				SetDataSeparationSafeMode(Metadata.CommonAttributes.DataAreaBasicData.Name, True);
@@ -35,7 +35,7 @@ Function ValidateDataAreasSessionMembership(DataAreaNumber, DataAreaKey, Session
 			EndIf;
 			
 		Else
-			Raise NStr("en = 'Operation can not be executed for infobase in which separation by data areas is disabled!'");
+			Raise NStr("en='Operation can not be executed for infobase in which separation by data areas is disabled!';ru='Операция не может быть выполнена для информационной базы, в которой отключено разделение по областям данных!'");
 		EndIf;
 		
 	Except

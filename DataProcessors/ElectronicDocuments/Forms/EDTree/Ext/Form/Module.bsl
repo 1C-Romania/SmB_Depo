@@ -621,7 +621,7 @@ Function GetExpectedCounterpartyAction(String)
 			OR String.Parent.EDStatus = Enums.EDStatuses.Received
 			OR String.Parent.EDStatus = Enums.EDStatuses.Delivered) Then
 			
-			ReturnValue = NStr("en = 'EDF operator confirmations'");
+			ReturnValue = NStr("en='EDF operator confirmations';ru='Подтверждения оператора ЭДО'");
 		ElsIf (String.EDType = Enums.EDVersionElementTypes.NRNCEI
 				OR String.EDType = Enums.EDVersionElementTypes.NAREI)
 				AND String.EDDirection = Enums.EDDirections.Incoming
@@ -630,13 +630,13 @@ Function GetExpectedCounterpartyAction(String)
 					OR String.Parent.EDStatus = Enums.EDStatuses.Delivered)
 				AND Not ValueIsFilled(String.Ref) Then
 			
-			ReturnValue = NStr("en = 'Acceptance notification'");
+			ReturnValue = NStr("en='Acceptance notification';ru='Извещения о получении'");
 		EndIf;
 		
 	Else
 		If String.EDStatus = Enums.EDStatuses.TransferedToOperator Then
 			
-			ReturnValue = NStr("en = 'Sending confirmations'");
+			ReturnValue = NStr("en='Sending confirmations';ru='Подтверждения  отправки'");
 			
 			// Changing in the tree behavior for the version of rule 20.
 			If String.Ref.EDFScheduleVersion = Enums.Exchange1CRegulationsVersion.Version20
@@ -648,7 +648,7 @@ Function GetExpectedCounterpartyAction(String)
 			EndIf;
 		ElsIf String.EDStatus = Enums.EDStatuses.Sent Then
 			
-			ReturnValue = NStr("en = 'Delivery confirmation'");
+			ReturnValue = NStr("en='Delivery confirmation';ru='Подтверждения о доставке'");
 		EndIf;
 	EndIf;
 	

@@ -87,7 +87,7 @@ Procedure ContentDrag(Item, DragParameters, StandardProcessing, String, Field)
 	UserMessage = UserTransferToGroup(DragParameters.Value, Object.Ref);
 	If UserMessage <> Undefined Then
 		ShowUserNotification(
-			NStr("en = 'User''s move'"), , UserMessage, PictureLib.Information32);
+			NStr("en=""User's move"";ru='Перемещение пользователей'"), , UserMessage, PictureLib.Information32);
 	EndIf;
 		
 EndProcedure
@@ -207,7 +207,7 @@ Function AnExtendedFormOfSelectionOptions()
 		
 	EndDo;
 	
-	FormHeaderSelection = NStr("en = 'Select user group members'");
+	FormHeaderSelection = NStr("en='Select user group members';ru='Подбор участников группы пользователей'");
 	AnExtendedFormOfSelectionOptions = 
 		New Structure("FormHeaderSelection, SelectedUsers, PickupGroupsIsNotPossible",
 		                 FormHeaderSelection, SelectedUsers, True);

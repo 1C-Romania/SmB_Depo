@@ -44,7 +44,7 @@ Function InactiveCounterpartyState(ExpandStateWithError = False, ExpandWithEmpty
 EndFunction
 
 Function RefForInstruction() Export
-	Return New FormattedString(NStr("en = 'Learn more about checking'"),,,,"e1cib/app/DataProcessor.InstructionOnUsageCounterpartiesCheck");
+	Return New FormattedString(NStr("en='Learn more about checking';ru='Подробнее о проверке'"),,,,"e1cib/app/DataProcessor.InstructionOnUsageCounterpartiesCheck");
 EndFunction
 
 Procedure SetToolTipTextInDocument(RenderParameters) Export
@@ -62,18 +62,18 @@ Procedure SetToolTipTextInDocument(RenderParameters) Export
 	
 	If CheckingState = PredefinedValue("Enum.CounterpartiesCheckStates.CheckingNotUsed") Then
 		// Display offer for connection
-		Substrings.Add(New FormattedString(NStr("en = 'A possibility to use FTS web service to check counterparties registration in EGRN appeared in the application'")));
+		Substrings.Add(New FormattedString(NStr("en='A possibility to use FTS web service to check counterparties registration in EGRN appeared in the application';ru='В программе появилась возможность использовать веб-сервис ФНС для проверки регистрации контрагентов в ЕГРН'")));
 	ElsIf DocumentIsEmpty Then
 		// Report that document for checking is unavailable
-		Substrings.Add(New FormattedString(NStr("en = 'A possibility to use FTS web service to check counterparties registration in EGRN appeared in the application'")));
+		Substrings.Add(New FormattedString(NStr("en='A possibility to use FTS web service to check counterparties registration in EGRN appeared in the application';ru='В программе появилась возможность использовать веб-сервис ФНС для проверки регистрации контрагентов в ЕГРН'")));
 	ElsIf CheckingState = PredefinedValue("Enum.CounterpartiesCheckStates.CheckingInProgress") Then
 	    // Check is in progress
-		Substrings.Add(New FormattedString(NStr("en = 'Counterparties check is in progress according to FTS data'")));
+		Substrings.Add(New FormattedString(NStr("en='Counterparties check is in progress according to FTS data';ru='Выполняется проверка контрагентов согласно данным ФНС'")));
 													  
 	ElsIf CheckingState = PredefinedValue("Enum.CounterpartiesCheckStates.AccessDeniedToWebService") Then
 		// No access to web service
 		
-		Substrings.Add(New FormattedString(NStr("en = 'Unable to check counterparties: FTS service is temporarily unavailable'")));
+		Substrings.Add(New FormattedString(NStr("en='Unable to check counterparties: FTS service is temporarily unavailable';ru='Не удалось произвести проверку контрагентов: сервис ФНС временно недоступен'")));
 													  
 	ElsIf CheckingState = PredefinedValue("Enum.CounterpartiesCheckStates.CheckingExecuted") Then
 		// Unfinished counterparty check is in progress
@@ -83,24 +83,24 @@ Procedure SetToolTipTextInDocument(RenderParameters) Export
 		
 		If Not CounterpartyFilled Then
 			// Counterparty is not filled
-			Substrings.Add(NStr("en = 'Check counterparty by FTS base failed: counterparty is not filled'"));
+			Substrings.Add(NStr("en='Check counterparty by FTS base failed: counterparty is not filled';ru='Проверка контрагента по базе ФНС не выполнена: не заполнен контрагент'"));
 		ElsIf Not ValueIsFilled(CounterpartyState) Then
 			// Blank state 
 			If OutputLabelInPlural Then
 				// Show in plural
-				Substrings.Add(NStr("en = 'Counterparties check is in progress according to FTS data'"));
+				Substrings.Add(NStr("en='Counterparties check is in progress according to FTS data';ru='Выполняется проверка контрагентов согласно данным ФНС'"));
 			Else
 				// Show in singular
-				Substrings.Add(NStr("en = 'Counterparty check is in progress according to FTS data'"));
+				Substrings.Add(NStr("en='Counterparty check is in progress according to FTS data';ru='Выполняется проверка контрагента согласно данным ФНС'"));
 			EndIf;
 		ElsIf CounterpartyState = PredefinedValue("Enum.CounterpartyExistenceStates.NotBeChecked") Then
 			// Not Russian counterparty
-			Substrings.Add(NStr("en = 'Check counterparty by FTS base failed: only Russian counterparties are subjected to check'"));
+			Substrings.Add(NStr("en='Check counterparty by FTS base failed: only Russian counterparties are subjected to check';ru='Проверка контрагента по базе ФНС не выполнена: проверке подлежат только российские контрагенты'"));
 		ElsIf CounterpartiesCheckClientServer.IsInactiveCounterpartyState(CounterpartyState) Then
 			// Inactive counterparty
 			If OutputLabelInPlural Then
 				// Display generally
-				Substrings.Add(NStr("en = 'Inactive counterparties were found according to FTS data.'"));
+				Substrings.Add(NStr("en='Inactive counterparties were found according to FTS data.';ru='Обнаружены недействующие контрагенты по данным ФНС'"));
 			Else
 				// Display specific state
 				Substrings.Add(String(CounterpartyState));
@@ -108,13 +108,13 @@ Procedure SetToolTipTextInDocument(RenderParameters) Export
 			ParentGroup.BackColor = RedColor; 
 		ElsIf CounterpartyState = PredefinedValue("Enum.CounterpartyExistenceStates.ContainsErrorsInData") Then
 			// Counterparty with errors in TIN/KPP or date
-			Substrings.Add(NStr("en = 'Check counterparty by FTS base failed: errors in filling TIN/KPP/date are not found'"));
+			Substrings.Add(NStr("en='Check counterparty by FTS base failed: errors in filling TIN/KPP/date are not found';ru='Проверка контрагента по базе ФНС не выполнена: обнаружены ошибки в заполнении ИНН/КПП/даты'"));
 			ParentGroup.BackColor = RedColor;
 		ElsIf CounterpartyState = PredefinedValue("Enum.CounterpartyExistenceStates.Acts") Then
 			// Active correct counterparty
 			If OutputLabelInPlural Then
 				// Display generally 
-				Substrings.Add(NStr("en = 'Check of the counterparties according to FTS data is successful'"));
+				Substrings.Add(NStr("en='Check of the counterparties according to FTS data is successful';ru='Проверка контрагентов по данным ФНС выполнена успешно'"));
 			Else
 				// Display specific state
 				Substrings.Add(String(CounterpartyState));

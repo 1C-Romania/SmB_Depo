@@ -146,7 +146,7 @@ Function ReportByObjectVersioning(ObjectReference, Val ObjectVersioning = Undefi
 	Else
 		ObjectDescription = VersionParsing(ObjectReference, VersionNumber);
 	EndIf;
-	Definition = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'No. %1 / (%2) / %3'"), 
+	Definition = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='No. %1 / (%2) / %3';ru='№ %1 / (%2) / %3'"), 
 		VersionNumber, String(ObjectDescription.ChangeDate), TrimAll(String(ObjectDescription.AuthorOfChange)));
 	ObjectDescription.Insert("Definition", Definition);
 	ObjectDescription.Insert("VersionNumber", VersionNumber);
@@ -211,12 +211,12 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler.Version = "2.2.3.8";
 	Handler.Procedure = "ObjectVersioning.RefreshInformationAboutObjectsVersions";
 	Handler.PerformModes = "Delay";
-	Handler.Comment = NStr("en = 'Update information about the recorded versions of objects.'");
+	Handler.Comment = NStr("en='Update information about the recorded versions of objects.';ru='Обновление сведений о записанных версиях объектов.'");
 	
 	Handler = Handlers.Add();
 	Handler.Version = "2.2.4.13";
 	Handler.Procedure = "ObjectVersioning.TransferVersioningSettings";
-	Handler.Comment = NStr("en = 'Update of versioning settings.'");
+	Handler.Comment = NStr("en='Update of versioning settings.';ru='Обновление настроек версионирования.'");
 	
 EndProcedure
 
@@ -246,12 +246,13 @@ Procedure RefreshInformationAboutObjectsVersions(Parameters) Export
 			RecordsProcessed = RecordsProcessed + 1;
 		Except
 			WriteLogEvent(
-				NStr("en = 'Versioning'", CommonUseClientServer.MainLanguageCode()),
+				NStr("en='Versioning';ru='Версионирование'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error, RecordSet.Metadata(),
 				,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Failed to update information about the No.%1 version of ""%2""
-						|object by reason of: %3'", CommonUseClientServer.MainLanguageCode()),
+					NStr("en='Failed to update information about the No.%1 version of ""%2"""
+"object by reason of: %3';ru='Не удалось обновить сведения о версии №%1 объекта ""%2"" по причине:"
+"%3'", CommonUseClientServer.MainLanguageCode()),
 					Selection.VersionNumber,
 					CommonUse.SubjectString(Selection.Object),
 					DetailErrorDescription(ErrorInfo())));
@@ -261,7 +262,7 @@ Procedure RefreshInformationAboutObjectsVersions(Parameters) Export
 	If Selection.Count() > 0 Then
 		If RecordsProcessed = 0 Then
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Procedure RefreshInformationAboutObjectsVersions failed to process some records of information register ObjectVersionings (skipped): %1'"), 
+				NStr("en='Procedure RefreshInformationAboutObjectsVersions failed to process some records of information register ObjectVersionings (skipped): %1';ru='Процедуре ОбновитьСведенияОВерсияхОбъектов не удалось обработать некоторые записи регистра сведений ВерсииОбъектов (пропущены): %1'"), 
 					Selection.Count());
 			Raise MessageText;
 		EndIf;
@@ -385,7 +386,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	
 	InformationAboutLegacyVersions = InformationAboutLegacyVersions();
 	OutdatedDataSize = DataSizeString(InformationAboutLegacyVersions.DataSize);
-	ToolTip = NStr("en = 'Outdated versions:% 1 (%2)'");
+	ToolTip = NStr("en='Outdated versions:% 1 (%2)';ru='Устаревших версий: %1 (%2)'");
 	
 	For Each Section IN Sections Do
 		
@@ -395,7 +396,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work.ID = IdentifierOutdatedObjects;
 		// Display a to-do if obsolete data size is more than 1 Gb.
 		Work.ThereIsWork      = InformationAboutLegacyVersions.DataSize > (1024 * 1024 * 1024);
-		Work.Presentation = NStr("en = 'Outdated versions of objects'");
+		Work.Presentation = NStr("en='Outdated versions of objects';ru='Устаревшие версии объектов'");
 		Work.Form         = "InformationRegister.ObjectVersioningSettings.Form.ObjectVersioning";
 		Work.ToolTip     = StringFunctionsClientServer.PlaceParametersIntoString(ToolTip, InformationAboutLegacyVersions.CountVersions, OutdatedDataSize);
 		Work.Owner      = Section;
@@ -439,7 +440,7 @@ Procedure CreateObjectVersioning(Object, InfoAboutObjectVersion, WriteCommonVers
 				If ObjectIsVersioning(Object.Ref, False) Then
 					VersionParameters = New Structure;
 					VersionParameters.Insert("VersionNumber", 1);
-					VersionParameters.Insert("Comment", NStr("en = 'Version is created by already existing object'"));
+					VersionParameters.Insert("Comment", NStr("en='Version is created by already existing object';ru='Версия создана по уже имеющемуся объекту'"));
 					CreateObjectVersioning(Object.Ref.GetObject(), VersionParameters);
 					InfoAboutObjectVersion.VersionNumber = 2;
 				EndIf;
@@ -682,11 +683,11 @@ Function ObjectFromBinaryData(BinaryData)
 			Return Object;
 		Else
 			XMLReader.Close();
-			Raise NStr("en = 'An error occurred while restoring the object'");
+			Raise NStr("en='An error occurred while restoring the object';ru='Ошибка при восстановлении объекта'");
 		EndIf;
 	Else
 		XMLReader.Close();
-		Raise NStr("en = 'Data reading error'");
+		Raise NStr("en='Data reading error';ru='Ошибка чтения данных'");
 	EndIf;
 
 EndFunction
@@ -714,7 +715,7 @@ Procedure WriteOverPreviousVersion(Ref, Object, VersionNumber, InfoAboutObjectVe
 		VersionsData.Insert("Object", Ref);
 		VersionsData.Insert("VersionNumber", Number(VersionNumber) + 1);
 		VersionsData.Insert("VersionAuthor", InfoAboutObjectVersion.VersionAuthor);
-		VersionsData.Insert("Comment", NStr("en = 'Version is created at the data synchronization.'"));
+		VersionsData.Insert("Comment", NStr("en='Version is created at the data synchronization.';ru='Версия создана при синхронизации данных.'"));
 		VersionsData.Insert("ObjectVersioningType", Enums.ObjectVersionsTypes[InfoAboutObjectVersion.ObjectVersioningType]);
 		
 		CreateObjectVersioning(Object, VersionsData, False);
@@ -742,7 +743,7 @@ EndProcedure
 Procedure ValidateRightsForObjectModifying(MetadataObject)
 	
 	If Not PrivilegedMode() AND Not AccessRight("Update", MetadataObject)Then
-		MessageText = NStr("en = 'Not enough rights to change ""%1"".'");
+		MessageText = NStr("en='Not enough rights to change ""%1"".';ru='Недостаточно прав на изменение ""%1"".'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, MetadataObject.Presentation());
 		Raise MessageText;
 	EndIf;
@@ -828,7 +829,7 @@ Procedure OnTransitionToObjectVersioning(ObjectReference, Val VersionNumber) Exp
 	
 	Object.AdditionalProperties.Insert("ObjectVersioningCommentToVersion",
 		StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Proceeding to the version #%1 from %2 has been performed'"),
+		NStr("en='Proceeding to the version #%1 from %2 has been performed';ru='Выполнен переход к версии №%1 от %2'"),
 		String(VersionNumber), Format(VersionDate, "DLF=DT")));
 	Object.AdditionalProperties.Insert("SkipChangeProhibitionCheck");
 	Object.Write();
@@ -927,11 +928,13 @@ Function RestoreObjectByXML(Val AddressInTemporaryStorage = "", ErrorMessageText
 	Try
 		Object = ReadXML(FastInfosetReader);
 	Except
-		WriteLogEvent(NStr("en = 'Versioning'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Versioning';ru='Версионирование'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
-		ErrorMessageText = NStr("en = 'Failed to proceed to the selected version.
-											|Possible cause: the object version has been recorded in another application version.
-											|Technical information about error: %1'");
+		ErrorMessageText = NStr("en='Failed to proceed to the selected version."
+"Possible cause: the object version has been recorded in another application version."
+"Technical information about error: %1';ru='Не удалось перейти на выбранную версию."
+"Возможная причина: версия объекта была записана в другой версии программы."
+"Техническая информация об ошибке: %1'");
 		ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageText, BriefErrorDescription(ErrorInfo()));
 		Return Undefined;
 	EndTry;
@@ -957,7 +960,7 @@ EndFunction
 //  It is required to call the function in the privileged mode.
 //
 Function InfoAboutObjectVersion(Val Ref, Val VersionNumber) Export
-	MessageFailedToGetVersion = NStr("en = 'Failed to obtain the previous object version.'");
+	MessageFailedToGetVersion = NStr("en='Failed to obtain the previous object version.';ru='Не удалось получить предыдущую версию объекта.'");
 	If Not Users.RolesAvailable("ReadObjectsVersions") Then
 		Raise MessageFailedToGetVersion;
 	EndIf;
@@ -992,7 +995,7 @@ Function InfoAboutObjectVersion(Val Ref, Val VersionNumber) Export
 	EndIf;
 	
 	If Result.ObjectVersioning = Undefined Then
-		Raise NStr("en = 'Selected version of the object is not available in the application.'");
+		Raise NStr("en='Selected version of the object is not available in the application.';ru='Выбранная версия объекта отсутствует в программе.'");
 	EndIf;
 	
 	Return Result;
@@ -1035,7 +1038,7 @@ Procedure AddingInformationAboutVersionOfObjectInThe(Object, VersionAuthor)
 		InfoAboutObjectVersion = New Structure;
 		InfoAboutObjectVersion.Insert("VersionAuthor", VersionAuthor);
 		InfoAboutObjectVersion.Insert("ObjectVersioningType", "ChangedByUser");
-		InfoAboutObjectVersion.Insert("Comment", NStr("en = 'Version is received at the data synchronization'"));
+		InfoAboutObjectVersion.Insert("Comment", NStr("en='Version is received at the data synchronization';ru='Версия получена при синхронизации данных.'"));
 		InfoAboutObjectVersion.Insert("PostponedProcessing", False);
 		Object.AdditionalProperties.Insert("InfoAboutObjectVersion", New FixedStructure(InfoAboutObjectVersion));
 		
@@ -1355,16 +1358,16 @@ EndProcedure
 // String layout of data volumes. For example: "1.23 Gb".
 Function DataSizeString(Val DataSize) Export
 	
-	MeasurementUnit = NStr("en = 'byte'");
+	MeasurementUnit = NStr("en='byte';ru='байт'");
 	If 1024 <= DataSize AND DataSize < 1024 * 1024 Then
 		DataSize = DataSize / 1024;
-		MeasurementUnit = NStr("en = 'Kb'");
+		MeasurementUnit = NStr("en='Kb';ru='Кбайт'");
 	ElsIf 1024 * 1024 <= DataSize AND  DataSize < 1024 * 1024 * 1024 Then
 		DataSize = DataSize / 1024 / 1024;
-		MeasurementUnit = NStr("en = 'MB'");
+		MeasurementUnit = NStr("en='MB';ru='MB'");
 	ElsIf 1024 * 1024 * 1024 <= DataSize Then
 		DataSize = DataSize / 1024 / 1024 / 1024;
-		MeasurementUnit = NStr("en = 'Gb'");
+		MeasurementUnit = NStr("en='Gb';ru='Гб'");
 	EndIf;
 	
 	If DataSize < 10 Then
@@ -1376,7 +1379,7 @@ Function DataSizeString(Val DataSize) Export
 	EndIf;
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = '%1 %2'"), DataSize, MeasurementUnit);
+		NStr("en='%1 %2';ru='%1 %2'"), DataSize, MeasurementUnit);
 	
 EndFunction
 
@@ -1622,27 +1625,27 @@ EndFunction
 Function GetAttributePresentationInLanguage(Val AttributeName) Export
 	
 	If      AttributeName = "Number" Then
-		Return NStr("en = 'Number'; en='Number'");
+		Return NStr("en='Number';ru='Number'");
 	ElsIf AttributeName = "Name" Then
-		Return NStr("en = 'Description'; en='Name'");
+		Return NStr("en='Description';ru='Description'");
 	ElsIf AttributeName = "Code" Then
-		Return NStr("en = 'Code'; en='Code'");
+		Return NStr("en='Code';ru='код'");
 	ElsIf AttributeName = "IsFolder" Then
-		Return NStr("en = 'IsFolder'; en='Is folder'");
+		Return NStr("en='IsFolder';ru='IsFolder'");
 	ElsIf AttributeName = "Description" Then
-		Return NStr("en = 'Description'; en='Description'");
+		Return NStr("en='Description';ru='Description'");
 	ElsIf AttributeName = "Date" Then
-		Return NStr("en = 'Date'; en='Date'");
+		Return NStr("en='Date';ru='Дата'");
 	ElsIf AttributeName = "Posted" Then
-		Return NStr("en = 'Posted'; en='Posted'");
+		Return NStr("en='Posted';ru='Проведен'");
 	ElsIf AttributeName = "DeletionMark" Then
-		Return NStr("en = 'DeletionMark'; en='Deletion mark'");
+		Return NStr("en='DeletionMark';ru='ПометкаУдаления'");
 	ElsIf AttributeName = "Ref" Then
-		Return NStr("en = 'Ref'; en='Ref'");
+		Return NStr("en='Ref';ru='Ссылка'");
 	ElsIf AttributeName = "Parent" Then
-		Return NStr("en = 'Parent'; en='Parent'");
+		Return NStr("en='Parent';ru='Родитель'");
 	ElsIf AttributeName = "Owner" Then
-		Return NStr("en = 'Owner'; en='Owner'");
+		Return NStr("en='Owner';ru='Владелец'");
 	Else
 		Return AttributeName;
 	EndIf;

@@ -7,8 +7,8 @@ Procedure GenerateTableInventory(DocumentRefPassWA, StructureAdditionalPropertie
 	
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
-	Query.SetParameter("DepreciationAccrual", NStr("en = 'Depriciation accrual'"));
-	Query.SetParameter("OtherExpenses", NStr("en = 'Other expenses'"));
+	Query.SetParameter("DepreciationAccrual", NStr("en='Depriciation accrual';ru='Начисление амортизации'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Other expenses';ru='Прочих затраты (расходы)'"));
 	
 	Query.Text =
 	"SELECT
@@ -45,10 +45,10 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPassWA, StructureAdditionalP
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
-	Query.SetParameter("DepreciationAccrual", NStr("en = 'Depriciation accrual'"));
-	Query.SetParameter("OtherIncome", NStr("en = 'Other income'"));
-	Query.SetParameter("OtherExpenses", NStr("en = 'Other expenses'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("DepreciationAccrual", NStr("en='Depriciation accrual';ru='Начисление амортизации'"));
+	Query.SetParameter("OtherIncome", NStr("en='Other income';ru='Прочие доходы'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Other expenses';ru='Прочих затраты (расходы)'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
 		
@@ -192,9 +192,9 @@ Procedure GenerateTableFixedAssets(DocumentRefPassWA, StructureAdditionalPropert
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
-	Query.SetParameter("DepreciationAccrual", NStr("en = 'Depriciation accrual'"));
-	Query.SetParameter("DepreciationDebiting", NStr("en = 'Depreciation write-off'"));
-	Query.SetParameter("WriteOffOfFixedAssetFromAccounting", NStr("en = 'Fixed assets write off'"));
+	Query.SetParameter("DepreciationAccrual", NStr("en='Depriciation accrual';ru='Начисление амортизации'"));
+	Query.SetParameter("DepreciationDebiting", NStr("en='Depreciation write-off';ru='Списание амортизации'"));
+	Query.SetParameter("WriteOffOfFixedAssetFromAccounting", NStr("en='Fixed assets write off';ru='Списание имущества с учета'"));
 	
 	Query.Text =
 	"SELECT
@@ -305,9 +305,9 @@ Procedure GenerateTableCustomerAccounts(DocumentRefPassWA, StructureAdditionalPr
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Appearance of customer liabilities'"));
-	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Appearance of customer liabilities';ru='Возникновение обязательств покупателя'"));
+	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -704,12 +704,12 @@ Procedure GenerateTableManagerial(DocumentRefPassWA, StructureAdditionalProperti
 	
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
-	Query.SetParameter("DepreciationAccrual", NStr("en = 'Depriciation accrual'"));
-	Query.SetParameter("DepreciationDebiting", NStr("en = 'Depreciation write-off'"));
-	Query.SetParameter("OtherExpenses", NStr("en = 'Other expenses'"));
-	Query.SetParameter("OtherIncome", NStr("en = 'Other income'"));
-	Query.SetParameter("SetOffAdvancePayment", NStr("en = 'Setoff of advance payment'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("DepreciationAccrual", NStr("en='Depriciation accrual';ru='Начисление амортизации'"));
+	Query.SetParameter("DepreciationDebiting", NStr("en='Depreciation write-off';ru='Списание амортизации'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Other expenses';ru='Прочих затраты (расходы)'"));
+	Query.SetParameter("OtherIncome", NStr("en='Other income';ru='Прочие доходы'"));
+	Query.SetParameter("SetOffAdvancePayment", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
 	

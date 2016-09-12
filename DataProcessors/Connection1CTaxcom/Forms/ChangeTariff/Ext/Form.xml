@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Online user support</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Интернет-поддержка пользователей</v8:content>
+		</v8:item>
 	</Title>
 	<Width>56</Width>
 	<AutoTitle>false</AutoTitle>
@@ -22,6 +26,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>User management group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа управление пользователем</v8:content>
 				</v8:item>
 			</Title>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -49,11 +57,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Exit</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Завершить</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Authorized user logout (the user will be requested to re-enter username and password next time)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выход авторизованного пользователя (при следующем обращении потребуется вновь ввести логин и пароль)</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Hyperlink>true</Hyperlink>
@@ -73,6 +89,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Form header group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа заголовка формы</v8:content>
+				</v8:item>
 			</Title>
 			<HorizontalStretch>true</HorizontalStretch>
 			<VerticalStretch>false</VerticalStretch>
@@ -89,6 +109,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Change tariff parameters</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изменение параметров тарифа</v8:content>
+						</v8:item>
 					</Title>
 					<ContextMenu name="FormHeaderLabelContextMenu" id="10"/>
 					<ExtendedTooltip name="FormHeaderLabelExtendedTooltip" id="63"/>
@@ -100,6 +124,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Application status group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа статуса заявки</v8:content>
 				</v8:item>
 			</Title>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -116,6 +144,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Logo of the form</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Логотип формы</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>CommonPicture.OnlineUserSupport</xr:Ref>
@@ -130,6 +162,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Status panel</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Панель статуса</v8:content>
+						</v8:item>
 					</Title>
 					<PagesRepresentation>None</PagesRepresentation>
 					<ExtendedTooltip name="StatusPanelExtendedTooltip" id="66"/>
@@ -139,6 +175,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>New application page</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница новая заявка</v8:content>
 								</v8:item>
 							</Title>
 							<ExtendedTooltip name="NewApplicationPageExtendedTooltip" id="67"/>
@@ -152,6 +192,11 @@
 											<v8:content>In this period you can use not more than 1000 free of charge shipments of document packages according to the tariff terms. 
 To change this parameter of tariff, specify a new value manually, and then click Edit.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Согласно условиям тарифа, в этом периоде Вы можете использовать не более 1000 бесплатных отправок комплектов документов. 
+Для изменения этого параметра тарифа укажите новое значение вручную и нажмите кнопку "Изменить".</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="ApplicationIssueLabelContextMenu" id="13"/>
 									<ExtendedTooltip name="ApplicationIssueLabelExtendedTooltip" id="68"/>
@@ -161,6 +206,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>You can contact &lt;link TechSupport&gt;technical support&lt;/&gt; if you have problems.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>При возникновении проблем напишите в техподдержку.</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="DecorationTechnicalSupportContextMenu" id="96"/>
@@ -177,6 +226,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 									<v8:lang>en</v8:lang>
 									<v8:content>Not reviewed page</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница не рассмотрено</v8:content>
+								</v8:item>
 							</Title>
 							<ExtendedTooltip name="PageNotReviewedExtendedTooltip" id="69"/>
 							<ChildItems>
@@ -186,6 +239,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Application label</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Надпись заявка</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="LabelApplicationContextMenu" id="41"/>
@@ -197,6 +254,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 											<v8:lang>en</v8:lang>
 											<v8:content>Your tariff change application has not been reviewed by the operator yet.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ваша заявка на изменение тарифа еще не рассмотрена оператором связи.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration2ContextMenu" id="43"/>
 									<ExtendedTooltip name="Decoration2ExtendedTooltip" id="71"/>
@@ -206,6 +267,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Check application processing (60 seconds left)</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Проверить выполнение заявки (осталось 60 сек.)</v8:content>
 										</v8:item>
 									</Title>
 									<Hyperlink>true</Hyperlink>
@@ -220,6 +285,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>You can contact &lt;link TechSupport&gt;technical support&lt;/&gt; if you have problems.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>При возникновении проблем напишите в техподдержку.</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="DecorationTechnicalSupport1ContextMenu" id="99"/>
@@ -236,6 +305,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 									<v8:lang>en</v8:lang>
 									<v8:content>Page processed</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница обработано</v8:content>
+								</v8:item>
 							</Title>
 							<ExtendedTooltip name="PageProcessedExtendedTooltip" id="73"/>
 							<ChildItems>
@@ -245,6 +318,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Label application 1</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Надпись заявка1</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="LabelApplication1ContextMenu" id="47"/>
@@ -256,6 +333,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>The application is successfully processed by communication operator</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Заявка успешно обработана оператором связи</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration3ContextMenu" id="49"/>
@@ -269,6 +350,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 									<v8:lang>en</v8:lang>
 									<v8:content>Page is rejected</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница отклонена</v8:content>
+								</v8:item>
 							</Title>
 							<ExtendedTooltip name="PageRejectedExtendedTooltip" id="76"/>
 							<ChildItems>
@@ -278,6 +363,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Label application 2</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Надпись заявка2</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="LabelApplication2ContextMenu" id="51"/>
@@ -292,6 +381,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 											<v8:lang>en</v8:lang>
 											<v8:content>Tariff change application is rejected by the operator. You can submit your application again or contact &lt;link TechSupport&gt;technical support&lt;/&gt;.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Заявка на изменение тарифа отклонена оператором.  Вы можете повторно оформить заявку или обратиться в службу техподдержки.</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
 									<ContextMenu name="Decoration4ContextMenu" id="53"/>
@@ -305,6 +398,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group cause</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа причина</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Horizontal</Group>
@@ -324,11 +421,19 @@ To change this parameter of tariff, specify a new value manually, and then click
 													<v8:lang>en</v8:lang>
 													<v8:content>Cause</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Причина</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Show the cause of deviation of the tariff change application</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Показать причину отклонения заявки на изменение тарифа</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Hyperlink>true</Hyperlink>
@@ -353,6 +458,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 					<v8:lang>en</v8:lang>
 					<v8:content>Period: from 01/01/2012 till 01/31/2012</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период: с 1.1.2012 по 31.1.2012</v8:content>
+				</v8:item>
 			</Title>
 			<ContextMenu name="BillingPeriodContextMenu" id="15"/>
 			<ExtendedTooltip name="BillingPeriodExtendedTooltip" id="82"/>
@@ -370,6 +479,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 					<v8:lang>en</v8:lang>
 					<v8:content>Use, do not use group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа использовать не использовать</v8:content>
+				</v8:item>
 			</Title>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
@@ -383,6 +496,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Number of free of charge packages</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество бесплатных пакетов</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Width>11</Width>
@@ -407,6 +524,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Form command group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа команд формы</v8:content>
 				</v8:item>
 			</Title>
 			<Group>Horizontal</Group>
@@ -446,6 +567,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 					<v8:lang>en</v8:lang>
 					<v8:content>Number of free of charge imports of document packages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Число бесплатных отправок комплектов документов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -461,6 +586,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Free of charge packages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бесплатных пакетов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -479,6 +608,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 					<v8:lang>en</v8:lang>
 					<v8:content>Not allocated</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не распределено</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -496,6 +629,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 					<v8:lang>en</v8:lang>
 					<v8:content>Start date</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата начала</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
@@ -509,6 +646,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>End date</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата окончания</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -524,6 +665,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 					<v8:lang>en</v8:lang>
 					<v8:content>ED application status</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус заявки ED</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -532,6 +677,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change button is pressed</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Нажата кнопка изменить</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -543,6 +692,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Timeout in seconds</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Время ожидания сек</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -559,6 +712,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Software closing</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Программное закрытие</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -579,6 +736,10 @@ To change this parameter of tariff, specify a new value manually, and then click
 					<v8:lang>en</v8:lang>
 					<v8:content>Change command</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда изменить</v8:content>
+				</v8:item>
 			</ToolTip>
 			<Action>CommandChange</Action>
 		</Command>
@@ -588,11 +749,19 @@ To change this parameter of tariff, specify a new value manually, and then click
 					<v8:lang>en</v8:lang>
 					<v8:content>Close</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Close form</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CloseForm</Action>

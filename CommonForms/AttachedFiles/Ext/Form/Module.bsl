@@ -11,15 +11,16 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Parameters.FileOwner = Undefined Then
-		Raise NStr("en = 'Attached file list can
-		                             |be looked at only in the form of an objectowner.'");
+		Raise NStr("en='Attached file list can"
+"be looked at only in the form of an objectowner.';ru='Список присоединенных файлов можно посмотреть"
+"только в форме объекта-владельца.'");
 	EndIf;
 	
 	If Parameters.ChoiceMode Then
 		StandardSubsystemsServer.SetFormPurposeKey(ThisObject, "PickupSelection");
 		WindowOpeningMode = FormWindowOpeningMode.LockOwnerWindow;
 		
-		Title = NStr("en = 'Attached file selection'");
+		Title = NStr("en='Attached file selection';ru='Выбор присоединенного файла'");
 		
 		// Filter of items not marked for deletion.
 		CommonUseClientServer.SetFilterDynamicListItem(
@@ -375,11 +376,13 @@ Procedure SetDeletionMark(Command)
 	CurrentData = Items.List.CurrentData;
 	
 	If CurrentData.DeletionMark Then
-		QuestionText = NStr("en = 'Unmark the %1 file
-		                          |from deletion?'");
+		QuestionText = NStr("en='Unmark the %1 file"
+"from deletion?';ru='Снять пометку на удаление с файла"
+"""%1""?'");
 	Else
-		QuestionText = NStr("en = 'Mark the
-		                          |%1 file for deletion?'");
+		QuestionText = NStr("en='Mark the"
+"%1 file for deletion?';ru='Пометить"
+"на удаление файл ""%1""?'");
 	EndIf;
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, CurrentData.Ref);
@@ -711,10 +714,11 @@ Function ValidateActionAllowed(Val CurrentAction = "")
 	If CurrentAction = "DeletionMark" AND CurrentData.FileIsEditing Then
 		
 		If CurrentData.FileCurrentUserIsEditing Then
-			WarningText = NStr("en = 'Action is unavailable because the file is locked for editing.'");
+			WarningText = NStr("en='Action is unavailable because the file is locked for editing.';ru='Действие недоступно, так как файл занят для редактирования.'");
 		Else
-			WarningText = NStr("en = 'Action is unavailable because file
-			                                 |is served for editing by another user.'");
+			WarningText = NStr("en='Action is unavailable because file"
+"is served for editing by another user.';ru='Действие недоступно, так как файл занят для редактирования"
+"другим пользователем.'");
 		EndIf;
 		
 		ShowMessageBox(, WarningText);
@@ -724,7 +728,7 @@ Function ValidateActionAllowed(Val CurrentAction = "")
 	If TypeOf(Items.List.CurrentRow) = CatalogWithFilesType Then
 		Return True;
 	Else
-		ShowMessageBox(, NStr("en = 'Action is unavailable for the grouping row of the list.'"));
+		ShowMessageBox(, NStr("en='Action is unavailable for the grouping row of the list.';ru='Действие недоступно для строки группировки списка.'"));
 		Return False;
 	EndIf;
 	
@@ -896,8 +900,8 @@ Procedure ConfigureDynamicList(CatalogNameFilesStorage)
 	|WHERE
 	|	Files.FileOwner = &FilesOwner";
 	
-	ErrorTitle = NStr("en = 'Error when setting up the dynamic list of the attached files.'");
-	EndErrors = NStr("en = 'In this case the dynamic list configuration is impossible.'");
+	ErrorTitle = NStr("en='Error when setting up the dynamic list of the attached files.';ru='Ошибка при настройке динамического списка присоединенных файлов.'");
+	EndErrors = NStr("en='In this case the dynamic list configuration is impossible.';ru='В этом случае настройка динамического списка невозможна.'");
 	
 	CatalogNameFilesStorage = AttachedFilesService.CatalogNameStorageFiles(
 		Parameters.FileOwner, "", ErrorTitle, EndErrors);

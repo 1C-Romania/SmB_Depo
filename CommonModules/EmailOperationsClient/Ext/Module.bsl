@@ -64,8 +64,9 @@ Procedure VerifyAccountForEmailSending(ResultHandler) Export
 			OpenForm("Catalog.EmailAccounts.Form.AccountSetupAssistant", 
 				New Structure("ContextMode", True), , , , , ResultHandler);
 		Else	
-			MessageText = NStr("en = 'To send an email, you need to configure the email account.
-				|Contact your administrator.'");
+			MessageText = NStr("en='To send an email, you need to configure the email account."
+"Contact your administrator.';ru='Для отправки письма требуется настройка учетной записи электронной почты."
+"Обратитесь к администратору.'");
 			NotifyDescription = New NotifyDescription("VerifyAccountForEmailSendingEnd", ThisObject, ResultHandler);
 			ShowMessageBox(NOTifyDescription, MessageText);
 		EndIf;
@@ -188,7 +189,7 @@ Procedure CheckAccount(Val UserAccount) Export
 	
 	ClearMessages();
 	
-	Status(NStr("en = 'Check email account'"),,NStr("en = 'Account is being checked. Please wait...'"));
+	Status(NStr("en='Check email account';ru='Проверка учетной записи'"),,NStr("en='Account is being checked. Please wait...';ru='Выполняется проверка учетной записи. Пожалуйста, подождите..'"));
 	
 	If EmailOperationsServerCall.PasswordIsAssigned(UserAccount) Then
 		CheckPossibilityOfSendingAndReceivingOfEmails(Undefined, UserAccount, Undefined);
@@ -213,14 +214,15 @@ Procedure CheckPossibilityOfSendingAndReceivingOfEmails(ResultHandler, UserAccou
 	
 	If ValueIsFilled(ErrorInfo) Then
 		ShowMessageBox(ResultHandler, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Account parameters have been checked
-                |with errors: %1'"), ErrorInfo ),,
-			NStr("en = 'Check email account'"));
+			NStr("en='Account parameters have been checked"
+"with errors: %1';ru='Проверка параметров учетной"
+"записи завершилась с ошибками: %1'"), ErrorInfo ),,
+			NStr("en='Check email account';ru='Проверка учетной записи'"));
 	Else
 		ShowMessageBox(ResultHandler, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Account parameters have been checked successfully. %1'"),
+			NStr("en='Account parameters have been checked successfully. %1';ru='Проверка параметров учетной записи завершилась успешно. %1'"),
 			AdditionalMessage),,
-			NStr("en = 'Check email account'"));
+			NStr("en='Check email account';ru='Проверка учетной записи'"));
 	EndIf;
 	
 EndProcedure

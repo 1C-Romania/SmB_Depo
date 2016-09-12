@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Export electronic documents to send to FTS</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выгрузка электронных документов для отправки в ФНС</v8:content>
+		</v8:item>
 	</Title>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<AutoTitle>false</AutoTitle>
@@ -25,11 +29,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Available documents that are digitally signed</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступные документы, подписанные ЭП</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Available documents list</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список доступных документов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -42,11 +54,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Fast filters group</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа быстрые отборы</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Fast filters group</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа быстрые отборы</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
@@ -60,11 +80,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Filter title group</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа заголовок отбора</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Filter title group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа заголовок отбора</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -79,6 +107,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Quick filters:</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Быстрые отборы:</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="TitleFilterContextMenu" id="46"/>
 									<ExtendedTooltip name="TitleFilterExtendedTooltip" id="131"/>
@@ -89,11 +121,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Filter commands</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Команды отбора</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Filter commands</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Команды отбора</v8:content>
 										</v8:item>
 									</ToolTip>
 									<HorizontalLocation>Right</HorizontalLocation>
@@ -121,6 +161,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Quick filters</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Быстрые отборы</v8:content>
 								</v8:item>
 							</Title>
 							<CommandSet>
@@ -265,11 +309,19 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Available documents standard commands group</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Доступные документы группа стандартных команд</v8:content>
+									</v8:item>
 								</Title>
 								<ToolTip>
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Available documents standard commands group</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Доступные документы группа стандартных команд</v8:content>
 									</v8:item>
 								</ToolTip>
 								<CommandSource>Item.AvailableDocuments</CommandSource>
@@ -360,6 +412,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Counterparty</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контрагенты</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="AvailableDocumentsCounterpartyContextMenu" id="82"/>
 							<ExtendedTooltip name="AvailableDocumentsCounterpartyExtendedTooltip" id="151"/>
@@ -370,6 +426,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>EDKind</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ВидЭД</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="AvailableDocumentsEDTypeContextMenu" id="74"/>
@@ -382,11 +442,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Contract</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контакт</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Basis document</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Документ основания</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -401,11 +469,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Number</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Number</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Contracts' number</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Номер договорв</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ContextMenu name="BasisDocumentNumberContextMenu" id="103"/>
@@ -418,11 +494,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Date</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Contract date</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата заключения договора</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ContextMenu name="BasisDocumentDateContextMenu" id="105"/>
@@ -436,6 +520,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>ED direction</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Направление ЭД</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="AvailableDocumentsEDDirectionContextMenu" id="84"/>
@@ -464,11 +552,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Selected documents</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбранные документы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>List of the documents selected for export in file</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список документов, выбранных для выгрузки в файл</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -527,11 +623,19 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Selected documents table standard commands group</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Таблица выбранных документов группа стандартных команд</v8:content>
+									</v8:item>
 								</Title>
 								<ToolTip>
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Selected documents table standard commands group</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Таблица выбранных документов группа стандартных команд</v8:content>
 									</v8:item>
 								</ToolTip>
 								<CommandSource>Item.SelectedDocumentsTable</CommandSource>
@@ -638,11 +742,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Contract</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контакт</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Basis document of selected documents</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Документ основание выбранных документов</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -702,6 +814,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Quick filters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Быстрые отборы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -715,6 +831,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Parameter</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметр</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -730,6 +850,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Value</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -763,6 +887,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Parameter presentation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление параметра</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -777,6 +905,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -795,6 +927,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Table of documents</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица документов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -805,6 +941,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>документ</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -817,6 +957,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Electronic document</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Электронный документ</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.EDAttachedFiles</v8:Type>
@@ -828,6 +972,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document kind</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид документа</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:EnumRef.EDKinds</v8:Type>
@@ -838,6 +986,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document No.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер документа</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -854,6 +1006,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document date</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата документа</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:dateTime</v8:Type>
@@ -867,6 +1023,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагенты</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -890,6 +1050,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document amount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма документа</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
@@ -906,6 +1070,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>ED direction</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Направление ЭД</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:EnumRef.EDDirections</v8:Type>
@@ -915,6 +1083,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Number</v8:content>
 						</v8:item>
 					</Title>
@@ -932,6 +1104,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Date</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:dateTime</v8:Type>
@@ -946,6 +1122,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Required to fill Basis-document</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Необходимо заполнить документ основание</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -958,6 +1138,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Available documents</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступные документы</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1025,6 +1209,10 @@ WHERE
 					<v8:lang>en</v8:lang>
 					<v8:content>Number entered</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Введено число</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1035,6 +1223,10 @@ WHERE
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>There are documents that are not exported</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть невыгруженные документы</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1047,6 +1239,10 @@ WHERE
 					<v8:lang>en</v8:lang>
 					<v8:content>Multiple choice</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Множественный выбор</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1057,6 +1253,10 @@ WHERE
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Version call</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Версия вызова</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1179,11 +1379,19 @@ WHERE
 					<v8:lang>en</v8:lang>
 					<v8:content>Select</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Move to the list of selected</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенести в список выбранных</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1199,11 +1407,19 @@ WHERE
 					<v8:lang>en</v8:lang>
 					<v8:content>Remove filter</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять отбор</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Remove filters</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сбросить отборы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1218,11 +1434,19 @@ WHERE
 					<v8:lang>en</v8:lang>
 					<v8:content>Export in file</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить в файл</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Export in file to send to FTS</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить в файл для последующей отправки в ФНС</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ExportToFile</Action>
@@ -1233,11 +1457,19 @@ WHERE
 					<v8:lang>en</v8:lang>
 					<v8:content>Open document</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документ</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Open document from available list</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документ из списка доступных</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1253,11 +1485,19 @@ WHERE
 					<v8:lang>en</v8:lang>
 					<v8:content>Open document</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документ</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Open document from available list</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть документ из списка доступных</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1273,11 +1513,19 @@ WHERE
 					<v8:lang>en</v8:lang>
 					<v8:content>Export</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Экспорт</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Export in array</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить в массив</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ExportToArray</Action>

@@ -189,7 +189,7 @@ EndProcedure
 &AtClient
 Procedure UpdateTimeTableOfReminders()
 	For Each TableRow IN Reminders Do
-		TimePresentation = NStr("en = 'term is not defined'");
+		TimePresentation = NStr("en='term is not defined';ru='срок не определен'");
 		
 		If ValueIsFilled(TableRow.EventTime) Then
 			Time = CommonUseClient.SessionDate() - TableRow.EventTime;
@@ -275,17 +275,17 @@ EndProcedure
 Function TimeIntervalPresentation(Val TimeQuantity)
 	Result = "";
 	
-	WeeksRepresentation = NStr("en = 'Week'") + "," + NStr("en = 'of the week'") + "," + NStr("en = 'weeks'");
-	DaysRepresentation = NStr("en = 'day'") + "," + NStr("en = 'days'") + "," + NStr("en = 'days'");
-	HoursRepresentation = NStr("en = 'hour'") + "," + NStr("en = 'hours'") + "," + NStr("en = 'Hours'");
-	MinutesRepresentation = NStr("en = 'minute'") + "," + NStr("en = 'Minutes'") + "," + NStr("en = 'minutes'");
+	WeeksRepresentation = NStr("en='Week';ru='Неделя'") + "," + NStr("en='of the week';ru='недели'") + "," + NStr("en='weeks';ru='недель'");
+	DaysRepresentation = NStr("en='day';ru='дне'") + "," + NStr("en='days';ru='дня'") + "," + NStr("en='days';ru='дня'");
+	HoursRepresentation = NStr("en='hour';ru='час'") + "," + NStr("en='hours';ru='часа'") + "," + NStr("en='Hours';ru='часы'");
+	MinutesRepresentation = NStr("en='minute';ru='минуту'") + "," + NStr("en='Minutes';ru='минуты'") + "," + NStr("en='minutes';ru='минут'");
 	
 	TimeQuantity = Number(TimeQuantity);
 	
 	EventIsOccurred = True;
-	PresentationPattern = NStr("en = '%1 ago'");
+	PresentationPattern = NStr("en='%1 ago';ru='%1 назад'");
 	If TimeQuantity < 0 Then
-		PresentationPattern = NStr("en = 'in %1'");
+		PresentationPattern = NStr("en='in %1';ru='in %1'");
 		TimeQuantity = -TimeQuantity;
 		EventIsOccurred = False;
 	EndIf;
@@ -305,22 +305,22 @@ Function TimeIntervalPresentation(Val TimeQuantity)
 	
 	If WeeksNumber > 4 Then
 		If EventIsOccurred Then
-			Return NStr("en = 'long ago'");
+			Return NStr("en='long ago';ru='очень давно'");
 		Else
-			Return NStr("en = 'not soon'");
+			Return NStr("en='not soon';ru='еще не скоро'");
 		EndIf;
 		
 	ElsIf WeeksNumber > 1 Then
 		Result = StringFunctionsClientServer.NumberInDigitsMeasurementUnitInWords(WeeksNumber, WeeksRepresentation);
 	ElsIf WeeksNumber > 0 Then
-		Result = NStr("en = 'Week'");
+		Result = NStr("en='Week';ru='Неделя'");
 		
 	ElsIf DaysNumber > 1 Then
 		If BegOfDay(CurrentDate) - BegOfDay(CurrentDate - TimeQuantity) = 60*60*24 * 2 Then
 			If EventIsOccurred Then
-				Return NStr("en = 'day before yesterday'");
+				Return NStr("en='day before yesterday';ru='позавчера'");
 			Else
-				Return NStr("en = 'day after tomorrow'");
+				Return NStr("en='day after tomorrow';ru='послезавтра'");
 			EndIf;
 		Else
 			Result = StringFunctionsClientServer.NumberInDigitsMeasurementUnitInWords(DaysNumber, DaysRepresentation);
@@ -328,25 +328,25 @@ Function TimeIntervalPresentation(Val TimeQuantity)
 	ElsIf HoursCount + DaysNumber * 24 > 12 
 		AND BegOfDay(CurrentDate) - BegOfDay(CurrentDate - TimeQuantity) = 60*60*24 Then
 			If EventIsOccurred Then
-				Return NStr("en = 'yesterday'");
+				Return NStr("en='yesterday';ru='вчера'");
 			Else
-				Return NStr("en = 'tomorrow'");
+				Return NStr("en='tomorrow';ru='завтра'");
 			EndIf;
 	ElsIf DaysNumber > 0 Then
-		Result = NStr("en = 'day'");
+		Result = NStr("en='day';ru='дне'");
 		
 	ElsIf HoursCount > 1 Then
 		Result = StringFunctionsClientServer.NumberInDigitsMeasurementUnitInWords(HoursCount, HoursRepresentation);
 	ElsIf HoursCount > 0 Then
-		Result = NStr("en = 'hour'");
+		Result = NStr("en='hour';ru='час'");
 		
 	ElsIf MinutesCount > 1 Then
 		Result = StringFunctionsClientServer.NumberInDigitsMeasurementUnitInWords(MinutesCount, MinutesRepresentation);
 	ElsIf MinutesCount > 0 Then
-		Result = NStr("en = 'minute'");
+		Result = NStr("en='minute';ru='минуту'");
 		
 	Else
-		Return NStr("en = 'now'");
+		Return NStr("en='now';ru='сейчас'");
 	EndIf;
 	
 	Result = StringFunctionsClientServer.PlaceParametersIntoString(PresentationPattern, Result);

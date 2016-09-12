@@ -111,7 +111,7 @@ Function CurrentUserSubsystems() Export
 	
 	RootRow = Result.Rows.Add();
 	RootRow.Ref = Catalogs.MetadataObjectIDs.EmptyRef();
-	RootRow.Presentation = NStr("en = 'All sections'");
+	RootRow.Presentation = NStr("en='All sections';ru='Все разделы'");
 	
 	ReportsVariants.AddCurrentUserSubsystems(RootRow, Undefined, Undefined);
 	

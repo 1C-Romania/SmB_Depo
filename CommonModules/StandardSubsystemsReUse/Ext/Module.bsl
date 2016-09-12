@@ -29,15 +29,17 @@ Function ProgramEventsParameters() Export
 	ParameterPresentation = "";
 	
 	If Not SavedParameters.Property("EventsHandlers") Then
-		ParameterPresentation = NStr("en = 'EVENT HANDLERS'");
+		ParameterPresentation = NStr("en='EVENT HANDLERS';ru='Обработчики событий'");
 	EndIf;
 	
 	If ValueIsFilled(ParameterPresentation) Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Information base updating error.
-			           |Service events parameter is
-			           |not filled in: %1'")
+			NStr("en='Information base updating error."
+"Service events parameter is"
+"not filled in: %1';ru='Ошибка обновления информационной базы."
+"Не заполнен параметр"
+"служебных событий: ""%1"".'")
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 			ParameterPresentation);
 	EndIf;
@@ -77,9 +79,9 @@ Function SubsystemDescriptions() Export
 		
 		CommonUseClientServer.Validate(SubsystemDescriptions.ByNames.Get(Description.Name) = Undefined,
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while
-				           |preparing subsystems descriptions: in the subsystem description (see the procedure %1.OnAddSubsystem)
-				           |subsystem name %2 is specified which has already been registered.'"),
+				NStr("en='An error occurred while"
+"preparing subsystems descriptions: in the subsystem description (see the procedure %1.OnAddSubsystem)"
+"subsystem name %2 is specified which has already been registered.';ru='Ошибка при подготовке описаний подсистем: в описании подсистемы (см. процедуру %1.ПриДобавленииПодсистемы) указано имя подсистемы ""%2"", которое уже зарегистрировано ранее.'"),
 				ModuleName, Description.Name));
 		
 		If Description.Name = Metadata.Name Then
@@ -109,9 +111,9 @@ Function SubsystemDescriptions() Export
 		
 		CommonUseClientServer.Validate(Description.Version = Metadata.Version,
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while
-				           |preparing subsystems descriptions: version %2 of the configuration %1 (see the procedure %3.OnAddSubsystem)
-				           |does not match configuration version in metadata %4.'"),
+				NStr("en='An error occurred while"
+"preparing subsystems descriptions: version %2 of the configuration %1 (see the procedure %3.OnAddSubsystem)"
+"does not match configuration version in metadata %4.';ru='Ошибка при подготовке описаний подсистем: версия ""%2"" конфигурации ""%1"" (см. процедуру %3.ПриДобавленииПодсистемы) не совпадает с версией конфигурации в метаданных ""%4"".'"),
 				Description.Name,
 				Description.Version,
 				Description.MainServerModule,
@@ -133,8 +135,9 @@ Function SubsystemDescriptions() Export
 				DependentSubsystems = Chars.LF + DependentSubsystem;
 			EndDo;
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while
-				           |preparing subsystems descriptions: subsystem %1 is not found required for subsystems: %2'"),
+				NStr("en='An error occurred while"
+"preparing subsystems descriptions: subsystem %1 is not found required for subsystems: %2';ru='Ошибка при"
+"подготовке описаний подсистем: не найдена подсистема ""%1"" требуемая для подсистем: %2.'"),
 				KeyAndValue.Key,
 				DependentSubsystems);
 		EndIf;
@@ -387,27 +390,38 @@ Function MetadataObjectID(FullMetadataObjectName) Export
 		// If identifier is not found by the full name, the full name may have been specified with an error.
 		If Metadata.FindByFullName(FullMetadataObjectName) = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred during the execution of CommonUse function.MetadataObjectID().
-				           |
-				           |Metadata object is not found
-				           |by the full name: %1'"),
+				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID()."
+""
+"Metadata object is not found"
+"by the full name: %1';ru='Ошибка при выполнении функции ОбщегоНазначения.ИдентификаторОбъектаМетаданных()."
+""
+"Объект метаданных"
+"не найден по полному имени: ""%1"".'"),
 				FullMetadataObjectName);
 		EndIf;
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'An error occurred during the execution of CommonUse function.MetadataObjectID().
-			           |
-			           |For the metadata
-			           |object %1 an
-			           |identifier is not found in the Metadata objects identifiers catalog.'")
+			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID()."
+""
+"For the metadata"
+"object %1 an"
+"identifier is not found in the Metadata objects identifiers catalog.';ru='Ошибка при выполнении функции ОбщегоНазначения.ИдентификаторОбъектаМетаданных()."
+""
+"Для объекта"
+"метаданных ""%1"""
+"не найден идентификатор в справочнике ""Идентификаторы объектов метаданных"".'")
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 			FullMetadataObjectName);
 	ElsIf Exporting.Count() > 1 Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'An error occurred during the execution of CommonUse function.MetadataObjectID().
-			           |
-			           |For the metadata
-			           |object %1 several
-			           |identifiers are found in the Metadata objects identifiers catalog.'")
+			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID()."
+""
+"For the metadata"
+"object %1 several"
+"identifiers are found in the Metadata objects identifiers catalog.';ru='Ошибка при выполнении функции ОбщегоНазначения.ИдентификаторОбъектаМетаданных()."
+""
+"Для объекта"
+"метаданных ""%1"""
+"найдено несколько идентификаторов в справочнике ""Идентификаторы объектов метаданных"".'")
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 			FullMetadataObjectName);
 	EndIf;
@@ -417,20 +431,28 @@ Function MetadataObjectID(FullMetadataObjectName) Export
 	If CheckResult.NotCorresponds Then
 		If CheckResult.MetadataObject = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred during the execution of CommonUse function.MetadataObjectID().
-				           |
-				           |For the metadata
-				           |object %1 an identifier is found in
-				           |the Metadata objects identifiers catalog that corresponds to the removed metadata object.'")
+				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID()."
+""
+"For the metadata"
+"object %1 an identifier is found in"
+"the Metadata objects identifiers catalog that corresponds to the removed metadata object.';ru='Ошибка при выполнении функции ОбщегоНазначения.ИдентификаторОбъектаМетаданных()."
+""
+"Для объекта"
+"метаданных ""%1"" найден идентификатор в"
+"справочнике ""Идентификаторы объектов метаданных"", которому соответствует удаленный объект метаданных.'")
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 				FullMetadataObjectName);
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred during the execution of CommonUse function.MetadataObjectID().
-				           |
-				           |For the metadata
-				           |object %1 an identifier is found in
-				           |the Metadata objects identifiers catalog that corresponds to another metadata object %2.'")
+				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID()."
+""
+"For the metadata"
+"object %1 an identifier is found in"
+"the Metadata objects identifiers catalog that corresponds to another metadata object %2.';ru='Ошибка при выполнении функции ОбщегоНазначения.ИдентификаторОбъектаМетаданных()."
+""
+"Для объекта"
+"метаданных ""%1"" найден идентификатор в"
+"справочнике ""Идентификаторы объектов метаданных"", который соответствует другому объекту метаданных ""%2"".'")
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 				FullMetadataObjectName,
 				CheckResult.MetadataObject);
@@ -460,12 +482,17 @@ Function DisableCatalogMetadataObjectIDs() Export
 	 OR CommonUse.SubsystemExists("StandardSubsystems.AccessManagement") Then
 		
 		Raise
-			NStr("en = 'Unable to disable the Metadata
-			           |objects identifiers catalog if any of
-			           |the following
-			           |subsystems is
-			           |used: -
-			           |ReportVariants, - AdditionalReportsAndDataProcessors, - ReportsMail, - AccessManagement.'");
+			NStr("en='Unable to disable the Metadata"
+"objects identifiers catalog if any of"
+"the following"
+"subsystems is"
+"used: -"
+"ReportVariants, - AdditionalReportsAndDataProcessors, - ReportsMail, - AccessManagement.';ru='Невозможно отключить справочник Идентификаторы объектов метаданных,"
+"если используется любая из следующих подсистем:"
+"- ВариантыОтчетов,"
+"- ДополнительныеОтчетыИОбработки,"
+"- РассылкаОтчетов,"
+"- УправлениеДоступом.'");
 	EndIf;
 	
 	Return True;
@@ -608,10 +635,10 @@ Function PreparedByHandlersOfServerEvents(Event, Service = False, FirstTry = Tru
 	If Handlers = Undefined Then
 		If Service Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Server service event is not found %1.'"), Event);
+				NStr("en='Server service event is not found %1.';ru='Не найдено серверное служебное событие ""%1"".'"), Event);
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Server event is not found %1.'"), Event);
+				NStr("en='Server event is not found %1.';ru='Не найдено серверное событие ""%1"".'"), Event);
 		EndIf;
 	EndIf;
 	

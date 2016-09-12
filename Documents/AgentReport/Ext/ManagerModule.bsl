@@ -301,9 +301,9 @@ Procedure GenerateTableManagerial(DocumentRefAgentReport, StructureAdditionalPro
 	|	Order,
 	|	LineNumber";
 	
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
-	Query.SetParameter("SetOffAdvancePayment", NStr("en = 'Setoff of advance payment'"));
-	Query.SetParameter("IncomeReflection", NStr("en = 'Sales revenue'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("SetOffAdvancePayment", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Sales revenue';ru='Выручка от продажи'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
 	//( elmi #11
@@ -389,7 +389,7 @@ Procedure GenerateTableInventory(DocumentRefAgentReport, StructureAdditionalProp
 	|	TableInventory.GLAccountCost,
 	|	TableInventory.GLAccount";
 	
-	Query.SetParameter("AgentReport", NStr("en = 'Agent report'"));
+	Query.SetParameter("AgentReport", NStr("en='Agent report';ru='Отчет комиссионера'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -615,7 +615,7 @@ Procedure GenerateTableInventory(DocumentRefAgentReport, StructureAdditionalProp
 				RowIncomeAndExpenses.AmountExpense = AmountToBeWrittenOff;
 				RowIncomeAndExpenses.Amount = AmountToBeWrittenOff;
 				
-				RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection'");
+				RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
 				
 			EndIf;
 			
@@ -849,8 +849,8 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefAgentReport, StructureAdditi
 	
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("IncomeReflection", NStr("en='Income accounting'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -870,9 +870,9 @@ Procedure GenerateTableCustomerAccounts(DocumentRefAgentReport, StructureAdditio
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Appearance of customer liabilities'"));
-	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Appearance of customer liabilities';ru='Возникновение обязательств покупателя'"));
+	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT

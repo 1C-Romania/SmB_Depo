@@ -53,9 +53,10 @@ Procedure BeforeObjectExport(Container, ObjectExportManager, Serializer, Object,
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'Metadata object %1 is can not
-                  |be processed by the handler 
-                  |ExportImportExchangePlanNodes.BeforeObjectExport ()!'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='Metadata object %1 is can not"
+"be processed by the handler "
+"ExportImportExchangePlanNodes.BeforeObjectExport ()!';ru='Объект метаданных %1 не может быть обработан обработчиком"
+"ВыгрузкаЗагрузкаУзловПлановОбменов.ПередВыгрузкойОбъекта()!'", Metadata.DefaultLanguage.LanguageCode),
 			Object.Metadata().FullName()
 		);
 		
@@ -168,9 +169,10 @@ Procedure BeforeObjectImport(Container, Object, Artifacts, Cancel) Export
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'Metadata object %1 is can not
-                  |be processed by the handler 
-                  |ExportImportExchangePlanNodes.BeforeObjectImport()!'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='Metadata object %1 is can not"
+"be processed by the handler "
+"ExportImportExchangePlanNodes.BeforeObjectImport()!';ru='Объект метаданных %1 не может быть обработан обработчиком"
+"ВыгрузкаЗагрузкаУзловПлановОбменов.ПередЗагрузкойОбъекта()!'", Metadata.DefaultLanguage.LanguageCode),
 			Object.Metadata().FullName()
 		);
 		

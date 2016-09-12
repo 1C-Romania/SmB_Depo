@@ -549,7 +549,7 @@ Procedure SubordinatedInvoiceControl()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится счет фактура %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Acceptance certificate No " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -602,7 +602,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			CurAmountDiscounts = ManualDiscountCurAmount + AutomaticDiscountCurAmount;
 			If StringWorksAndServices.DiscountMarkupPercent <> 100 AND CurAmountDiscounts < CurAmount
 				AND Not ValueIsFilled(StringWorksAndServices.Amount) Then
-				MessageText = NStr("en = 'The column ""Amount"" in the %Number% string of the list ""Works and services"" is not filled.'");
+				MessageText = NStr("en='The column ""Amount"" in the %Number% string of the list ""Works and services"" is not filled.';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Работы и услуги"".'");
 				MessageText = StrReplace(MessageText, "%Number%", StringWorksAndServices.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -639,7 +639,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If FoundStringWorksAndServices = Undefined
 		   AND QuantityOfWorkAndService > 0
 		   AND Counterparty.DoOperationsByOrders Then
-			MessageText = NStr("en = 'Advance by order that is different from the one specified in tabular section ""Works and services"" can not be accepted.'");
+			MessageText = NStr("en='Advance by order that is different from the one specified in tabular section ""Works and services"" can not be accepted.';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличной части ""Работы и услуги""!'");
 			SmallBusinessServer.ShowMessageAboutError(
 				,
 				MessageText,
@@ -668,7 +668,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 	
 	If TypeOf(FillingData) = Type("DocumentRef.CustomerOrder") Then
 		If FillingData.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
-			Raise NStr("en = 'Unable to generate Acceptance certificate based on the job order.'");;
+			Raise NStr("en='Unable to generate Acceptance certificate based on the job order.';ru='Нельзя ввести Акт выполненных работ на основании заказ-наряда!'");;
 		EndIf;
 		FillByCustomerOrder(FillingData);
 	ElsIf TypeOf(FillingData) = Type("Structure") AND FillingData.Property("ArrayOfCustomerOrders") Then
@@ -677,7 +677,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		BasisOfInvoiceForPayment = FillingData.BasisDocument;
 		If TypeOf(BasisOfInvoiceForPayment) = Type("DocumentRef.CustomerOrder") Then
 			If BasisOfInvoiceForPayment.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
-				Raise NStr("en = 'Unable to generate Acceptance certificate based on the invoice for payment issued for the Job order.'");;
+				Raise NStr("en='Unable to generate Acceptance certificate based on the invoice for payment issued for the Job order.';ru='Нельзя ввести Акт выполненных работ на основании Счета на оплату, выписанного на Заказ-наряд!'");;
 			EndIf;
 		EndIf;
 		FillByInvoiceForPayment(FillingData);

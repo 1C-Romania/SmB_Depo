@@ -59,10 +59,11 @@ Procedure MoveIntoDocument(Command)
 		FoundUnregisteredGoods = ProductsAndServicesBarcodes.FindRows(New Structure("Registered, RegisteredByProcessing", False, False));
 		If FoundUnregisteredGoods.Count() > 0 Then
 			
-			QuestionText = NStr(
-				"en='The corresponding products and services are specified not for all new barcodes.
-				|These products will not be transferred in the document.
-				|Put them aside as not scanned.'"
+			QuestionText = NStr("en='The corresponding products and services are specified not for all new barcodes."
+"These products will not be transferred in the document."
+"Put them aside as not scanned.';ru='Не для всех новых штрихкодов указана соответствующая номенклатура."
+"Эти товары не будут перенесены в документ."
+"Отложите их в сторону как неотсканированные.'"
 			);
 			
 			QuestionResult = Undefined;
@@ -253,10 +254,10 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 		
 		TSRow = ProductsAndServicesBarcodes.FindRows(New Structure("Barcode", Selection.Barcode))[0];
 		
-		ErrorDescription = NStr("en='Such barcode is already specified  for products and services %ProductsAndServices%'");
+		ErrorDescription = NStr("en='Such barcode is already specified  for products and services %ProductsAndServices%';ru='Такой штрихкод уже назначен для номенклатуры %Номенклатура%'");
 		ErrorDescription = StrReplace(ErrorDescription, "%ProductsAndServices%", """" + Selection.ProductsAndServicesPresentation + """"
-						+ ?(ValueIsFilled(Selection.Characteristic), " " + NStr("en='with characteristic'") + " """ + Selection.CharacteristicPresentation + """", "")
-						+ ?(ValueIsFilled(Selection.Batch), " """ + NStr("en='in batch'") + " " + Selection.BatchPresentation + """", ""));
+						+ ?(ValueIsFilled(Selection.Characteristic), " " + NStr("en='with characteristic';ru='с характеристикой'") + " """ + Selection.CharacteristicPresentation + """", "")
+						+ ?(ValueIsFilled(Selection.Batch), " """ + NStr("en='in batch';ru='в партии'") + " " + Selection.BatchPresentation + """", ""));
 		
 		CommonUseClientServer.MessageToUser(ErrorDescription,,"ProductsAndServicesBarcodes["+ProductsAndServicesBarcodes.IndexOf(TSRow)+"].Barcode",,Cancel);
 		
@@ -271,9 +272,9 @@ Procedure Cancel(Command, Cancel = False)
 		
 		NotifyDescription = New NotifyDescription("CancelEnd", ThisObject);
 		
-		QuestionText = NStr(
-			"en='All products will not be transferred in the document.
-			|Put them aside as not scanned.'"
+		QuestionText = NStr("en='All products will not be transferred in the document."
+"Put them aside as not scanned.';ru='Все товары не будут перенесены в документ."
+"Отложите их в сторону как неотсканированные.'"
 		);
 		
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.OKCancel);

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -52,6 +122,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя документа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -62,6 +136,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип реквизита</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -74,6 +152,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of attribute / tabular section</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя реквизита / Табличной части</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -84,6 +166,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute name in tabular section</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя реквизита в табличной части</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -101,6 +187,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>SupplierInvoice</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПриходнаяНакладная</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -112,6 +202,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -121,6 +215,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>BasisDocument</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>BasisDocument</v8:content>
 						</v8:item>
 					</tl>
@@ -139,6 +237,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>SupplierInvoice</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПриходнаяНакладная</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -150,6 +252,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -160,6 +266,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -177,6 +287,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>SupplierInvoice</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПриходнаяНакладная</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -186,6 +300,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -199,6 +317,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Inventory</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запасы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -209,6 +331,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -226,6 +352,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>SupplierInvoice</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПриходнаяНакладная</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -235,6 +365,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -248,6 +382,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Prepayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предоплата</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -258,6 +396,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>документ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -275,6 +417,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>SupplierInvoice</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПриходнаяНакладная</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -284,6 +430,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -297,6 +447,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Prepayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предоплата</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -307,6 +461,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -324,6 +482,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CustomerInvoice</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>CustomerInvoice</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -335,6 +497,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -344,6 +510,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>BasisDocument</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>BasisDocument</v8:content>
 						</v8:item>
 					</tl>
@@ -362,6 +532,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CustomerInvoice</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>CustomerInvoice</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -373,6 +547,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -383,6 +561,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -400,6 +582,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CustomerInvoice</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>CustomerInvoice</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -409,6 +595,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -422,6 +612,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Inventory</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запасы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -432,6 +626,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -449,6 +647,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CustomerInvoice</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>CustomerInvoice</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -458,6 +660,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -471,6 +677,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Prepayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предоплата</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -481,6 +691,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>документ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -498,6 +712,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CustomerInvoice</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>CustomerInvoice</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -507,6 +725,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -520,6 +742,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Prepayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предоплата</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -530,6 +756,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -547,6 +777,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>InvoiceForPayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>InvoiceForPayment</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -558,6 +792,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -567,6 +805,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>BasisDocument</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>BasisDocument</v8:content>
 						</v8:item>
 					</tl>
@@ -585,6 +827,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>SupplierInvoiceForPayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>PurchaseInvoiceForPayment</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -596,6 +842,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -605,6 +855,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>BasisDocument</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>BasisDocument</v8:content>
 						</v8:item>
 					</tl>
@@ -623,6 +877,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CashReceipt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кассовый чек</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -634,6 +892,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -644,6 +906,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>документ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -661,6 +927,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CashReceipt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кассовый чек</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -672,6 +942,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -681,6 +955,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>BasisDocument</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>BasisDocument</v8:content>
 						</v8:item>
 					</tl>
@@ -699,6 +977,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CashReceipt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кассовый чек</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -708,6 +990,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -721,6 +1007,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -731,6 +1021,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>документ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -748,6 +1042,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CashReceipt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кассовый чек</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -757,6 +1055,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -770,6 +1072,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -780,6 +1086,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -797,6 +1107,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CashReceipt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кассовый чек</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -806,6 +1120,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -819,6 +1137,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -828,6 +1150,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>InvoiceForPayment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>InvoiceForPayment</v8:content>
 						</v8:item>
 					</tl>
@@ -846,6 +1172,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentReceipt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПоступлениеНаСчет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -857,6 +1187,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -866,6 +1200,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>BasisDocument</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>BasisDocument</v8:content>
 						</v8:item>
 					</tl>
@@ -884,6 +1222,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentReceipt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПоступлениеНаСчет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -895,6 +1237,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -905,6 +1251,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>документ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -922,6 +1272,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentReceipt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПоступлениеНаСчет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -931,6 +1285,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -944,6 +1302,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -954,6 +1316,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>документ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -971,6 +1337,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentReceipt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПоступлениеНаСчет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -980,6 +1350,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -993,6 +1367,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1003,6 +1381,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1020,6 +1402,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentReceipt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПоступлениеНаСчет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1029,6 +1415,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -1042,6 +1432,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1051,6 +1445,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>InvoiceForPayment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>InvoiceForPayment</v8:content>
 						</v8:item>
 					</tl>
@@ -1069,6 +1467,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CashPayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наличный расчет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1080,6 +1482,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1090,6 +1496,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>документ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1107,6 +1517,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CashPayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наличный расчет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1118,6 +1532,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1127,6 +1545,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>BasisDocument</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>BasisDocument</v8:content>
 						</v8:item>
 					</tl>
@@ -1145,6 +1567,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CashPayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наличный расчет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1156,6 +1582,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1166,6 +1596,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1183,6 +1617,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CashPayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наличный расчет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1192,6 +1630,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -1205,6 +1647,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1215,6 +1661,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>документ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1232,6 +1682,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CashPayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наличный расчет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1241,6 +1695,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -1254,6 +1712,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1264,6 +1726,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1281,6 +1747,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CashPayment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наличный расчет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1290,6 +1760,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -1303,6 +1777,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1312,6 +1790,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>InvoiceForPayment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>InvoiceForPayment</v8:content>
 						</v8:item>
 					</tl>
@@ -1330,6 +1812,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentExpense</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>PaymentExpense</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1341,6 +1827,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1350,6 +1840,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>BasisDocument</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>BasisDocument</v8:content>
 						</v8:item>
 					</tl>
@@ -1368,6 +1862,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentExpense</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>PaymentExpense</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1379,6 +1877,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1389,6 +1891,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>документ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1406,6 +1912,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentExpense</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>PaymentExpense</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1417,6 +1927,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1427,6 +1941,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1444,6 +1962,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentExpense</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>PaymentExpense</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1453,6 +1975,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -1466,6 +1992,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1476,6 +2006,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>документ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1493,6 +2027,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentExpense</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>PaymentExpense</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1502,6 +2040,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -1515,6 +2057,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1525,6 +2071,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1542,6 +2092,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentExpense</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>PaymentExpense</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1551,6 +2105,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>TabularSection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>TabularSection</v8:content>
 						</v8:item>
 					</tl>
@@ -1564,6 +2122,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>PaymentDetails</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РасшифровкаПлатежа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1573,6 +2135,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>InvoiceForPayment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>InvoiceForPayment</v8:content>
 						</v8:item>
 					</tl>

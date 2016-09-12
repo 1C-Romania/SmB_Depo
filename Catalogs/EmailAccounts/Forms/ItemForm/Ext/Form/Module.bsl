@@ -220,7 +220,7 @@ Function permissions()
 				"SMTP",
 				Object.OutgoingMailServer,
 				Object.OutgoingMailServerPort,
-				NStr("en = 'Email.'")));
+				NStr("en='Email.';ru='Эл. адрес.'")));
 	EndIf;
 	
 	If Object.UseForReceiving Then
@@ -229,7 +229,7 @@ Function permissions()
 				Object.IncomingMailProtocol,
 				Object.IncomingMailServer,
 				Object.IncomingMailServerPort,
-				NStr("en = 'Email.'")));
+				NStr("en='Email.';ru='Эл. адрес.'")));
 	EndIf;
 	
 	Return Result;

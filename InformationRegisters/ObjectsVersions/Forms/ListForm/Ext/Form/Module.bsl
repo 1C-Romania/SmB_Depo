@@ -13,10 +13,10 @@ EndProcedure
 &AtClient
 Procedure DeleteRecords(Command)
 	
-	QuestionText = NStr("en = 'Deletion of records by object versions can lead to the impossibility of performing the analysis of the whole chain of changes of these objects. Continue?'");
+	QuestionText = NStr("en='Deletion of records by object versions can lead to the impossibility of performing the analysis of the whole chain of changes of these objects. Continue?';ru='Удаление записей по версиям объектов может привести к невозможности выполнения анализа всей цепочки изменений этих объектов. Продолжить?'");
 		
 	NotifyDescription = New NotifyDescription("DeleteRecordsEnd", ThisObject, Items.List.SelectedRows);
-	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No, NStr("en = 'Warning'"));
+	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No, NStr("en='Warning';ru='Предупреждение'"));
 	
 EndProcedure
 

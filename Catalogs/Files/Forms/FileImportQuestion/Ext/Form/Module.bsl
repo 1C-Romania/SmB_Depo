@@ -14,8 +14,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Message =
 	StringFunctionsClientServer.PlaceParametersIntoString(
-	    NStr("en = 'Some of the files exceed the size limit (%1 Mb) and will not be added to storage.
-	               |Continue import?'"),
+	    NStr("en='Some of the files exceed the size limit (%1 Mb) and will not be added to storage."
+"Continue import?';ru='Некоторые файлы превышают предельный размер (%1 Мб) и не будут добавлены в хранилище."
+"Продолжить импорт?'"),
 	    String(MaximumFileSize) );
 		
 	If Parameters.Property("Title") Then

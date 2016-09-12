@@ -255,19 +255,19 @@ Function GenerateMetadataStructure(ExchangePlanName = Undefined) Export
 		Tree, CurParameters.StructureName, CurParameters.PresentationsStructure, CurParameters.StructureAutoRecord);
 	
 	CurStringNumber = 1;
-	MetadataLevelForm(CurStringNumber, CurParameters, 1,  2,  False,   "Constants",               NStr("en = 'Constants'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 3,  4,  True, "Catalogs",             NStr("en = 'Catalogs'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 5,  6,  True, "Sequences",      NStr("en = 'Sequences'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 7,  8,  True, "Documents",               NStr("en = 'Documents'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 9,  10, True, "ChartsOfCharacteristicTypes", NStr("en = 'Charts of characteristics types'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 11, 12, True, "ChartsOfAccounts",             NStr("en = 'Charts of accounts'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 13, 14, True, "ChartsOfCalculationTypes",       NStr("en = 'Charts of calculation types'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 15, 16, True, "InformationRegisters",        NStr("en = 'Information registers'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 17, 18, True, "AccumulationRegisters",      NStr("en = 'Accumulation registers'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 19, 20, True, "AccountingRegisters",     NStr("en = 'Accounting registers'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 21, 22, True, "CalculationRegisters",         NStr("en = 'Calculation registers'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 23, 24, True, "BusinessProcesses",          NStr("en = 'Business-processes'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 25, 26, True, "Tasks",                  NStr("en = 'Tasks'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 1,  2,  False,   "Constants",               NStr("en='Constants';ru='Константы'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 3,  4,  True, "Catalogs",             NStr("en='Catalogs';ru='Справочники'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 5,  6,  True, "Sequences",      NStr("en='Sequences';ru='Последовательности'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 7,  8,  True, "Documents",               NStr("en='Documents';ru='Документы'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 9,  10, True, "ChartsOfCharacteristicTypes", NStr("en='Charts of characteristics types';ru='Планы видов характеристик'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 11, 12, True, "ChartsOfAccounts",             NStr("en='Charts of accounts';ru='Планы счетов'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 13, 14, True, "ChartsOfCalculationTypes",       NStr("en='Charts of calculation types';ru='Планы видов расчета'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 15, 16, True, "InformationRegisters",        NStr("en='Information registers';ru='Регистры сведений'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 17, 18, True, "AccumulationRegisters",      NStr("en='Accumulation registers';ru='Регистры накопления'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 19, 20, True, "AccountingRegisters",     NStr("en='Accounting registers';ru='Регистры бухгалтерии'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 21, 22, True, "CalculationRegisters",         NStr("en='Calculation registers';ru='Регистры расчета'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 23, 24, True, "BusinessProcesses",          NStr("en='Business-processes';ru='Деловые процессы'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 25, 26, True, "Tasks",                  NStr("en='Tasks';ru='Задания'"));
 	
 	Return Result;
 EndFunction
@@ -943,7 +943,7 @@ Function RegisterSetDimensions(TableName, AllDimensions = False) Export
 		String = Dimensions.Add();
 		String.Name         = "Recorder";
 		String.ValueType = Documents.AllRefsType();
-		String.Title   = NStr("en = 'Recorder'");
+		String.Title   = NStr("en='Recorder';ru='Регистратор'");
 	EndIf;
 	
 	// Period
@@ -951,7 +951,7 @@ Function RegisterSetDimensions(TableName, AllDimensions = False) Export
 		String = Dimensions.Add();
 		String.Name         = "Period";
 		String.ValueType = New TypeDescription("Date");
-		String.Title   = NStr("en = 'Period'");
+		String.Title   = NStr("en='Period';ru='отчетный период'");
 	EndIf;
 	
 	// Dimensions
@@ -969,7 +969,7 @@ Function RegisterSetDimensions(TableName, AllDimensions = False) Export
 		String = Dimensions.Add();
 		String.Name         = "RecalculationObject";
 		String.ValueType = Documents.AllRefsType();
-		String.Title   = NStr("en = 'Recalculation object'");
+		String.Title   = NStr("en='Recalculation object';ru='Объект перерасчета'");
 	EndIf;
 	
 	Return Dimensions;
@@ -1096,7 +1096,7 @@ Function REFPRESENTATION(ObjectViews) Export
 	EndIf;
 	
 	If IsBlankString(Result) Then
-		Result = NStr("en = 'Not defined'");
+		Result = NStr("en='Not defined';ru='Не определена'");
 	EndIf;
 	
 	Return Result;
@@ -1246,9 +1246,9 @@ Function CheckSettingsCorrectness(SettingKey = "") Export
 				ExternalDataProcessors.Create(SettingAddressExternalDataQueryProcessors);
 			Else
 				If ThisIsFileBase() Then
-					Text = NStr("en = 'File ""%1"" is not available'");
+					Text = NStr("en='File ""%1"" is not available';ru='Файл ""%1"" не доступен'");
 				Else
-					Text = NStr("en = 'File ""%1"" is not available on server'");
+					Text = NStr("en='File ""%1"" is not available on server';ru='Файл ""%1"" не доступен на сервере'");
 				EndIf;
 				Result.SettingAddressExternalDataQueryProcessors = StrReplace(Text, "%1", SettingAddressExternalDataQueryProcessors);;
 				Result.HasErrors = True;
@@ -1264,7 +1264,7 @@ Function CheckSettingsCorrectness(SettingKey = "") Export
 	Else
 		// IN configuration content
 		If Metadata.DataProcessors.Find(SettingAddressExternalDataQueryProcessors) = Undefined Then
-			Text = NStr("en = 'Data processor ""%1"" is not found in the configuration content'");
+			Text = NStr("en='Data processor ""%1"" is not found in the configuration content';ru='Обработка ""%1"" не найдена в составе конфигурации'");
 			Result.SettingAddressExternalDataQueryProcessors = StrReplace(Text, "%1", SettingAddressExternalDataQueryProcessors);
 			
 			Result.HasErrors = True;
@@ -1286,10 +1286,10 @@ Function ExternalDataProcessorInfo() Export
 	Info.Insert("SafeMode", True);
 	Info.Insert("Purpose",      New Array);
 	
-	Info.Insert("Description", NStr("en = 'Registration of modifications for the data exchange'"));
+	Info.Insert("Description", NStr("en='Registration of modifications for the data exchange';ru='Регистрация изменений для обмена данными'"));
 	Info.Insert("Version",       "1.0");
 	Info.Insert("SSLVersion",    "1.2.1.4");
-	Info.Insert("Information",    NStr("en = 'Data processor to control objects registration on the exchange nodes before export generation. While working in the configuration content with SSL of 2 version.1.2.0 and more controls data migration limitation for the exchange nodes.'"));
+	Info.Insert("Information",    NStr("en='Data processor to control objects registration on the exchange nodes before export generation. While working in the configuration content with SSL of 2 version.1.2.0 and more controls data migration limitation for the exchange nodes.';ru='Обработка для управления регистрацией объектов на узлах обмена до формирования выгрузки. При работе в составе конфигурации с БСП версии 2.1.2.0 и старше производит контроль ограничений миграции данных для узлов обмена.'"));
 	
 	Info.Purpose.Add("ExchangePlans.*");
 	Info.Purpose.Add("Constants.*");
@@ -1316,7 +1316,7 @@ Function ExternalDataProcessorInfo() Export
 	
 	// The only command, further actions - determine by the type of the passed one.
 	Command = Info.Commands.Add();
-	Command.Presentation = NStr("en = 'Editing of the object modifications registration'");
+	Command.Presentation = NStr("en='Editing of the object modifications registration';ru='Редактирование регистрации изменений объекта'");
 	Command.ID = "OpenEditRegistrationForm";
 	Command.Use = "CallOfClientMethod";
 	

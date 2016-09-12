@@ -80,19 +80,17 @@ EndProcedure // CalculateSettlementsRateAndAmount()
 Function GetObjectPresentation(Object)
 	
 	If TypeOf(Object) = Type("DocumentObject.PaymentReceipt") Then
-		NameObject = NStr(
-			"en = 'The ""Payment receipt"" document # %Number% dated %Date%'"
+		NameObject = NStr("en='The ""Payment receipt"" document # %Number% dated %Date%';ru='документ ""Расход со счета"" № %Номер% от %Дата%'"
 		);
 		NameObject = StrReplace(NameObject, "%Number%", String(TrimAll(Object.Number)));
 		NameObject = StrReplace(NameObject, "%Date%", String(Object.Date));
 	ElsIf TypeOf(Object) = Type("DocumentObject.PaymentExpense") Then
-		NameObject = NStr(
-			"en = 'The ""Payment expense"" document # %Number% dated %Date%'"
+		NameObject = NStr("en='The ""Payment expense"" document # %Number% dated %Date%';ru='документ ""Поступление на счет"" № %Номер% от %Дата%'"
 		);
 		NameObject = StrReplace(NameObject, "%Number%", String(TrimAll(Object.Number)));
 		NameObject = StrReplace(NameObject, "%Date%", String(Object.Date));
 	Else
-		NameObject = NStr("en = 'object'");
+		NameObject = NStr("en='object';ru='объект'");
 	EndIf;
 	
 	Return NameObject;
@@ -514,17 +512,17 @@ EndProcedure // FillAttributesPaymentReceipt()
 Procedure SetMarkToDelete(ObjectForMark, Check)
 	
 	NameObject = GetObjectPresentation(ObjectForMark);
-	NameOfAction = ?(Check, NStr("en = ' Marked for deletion'"), NStr("en = ' deletion mark was cleared'"));
+	NameOfAction = ?(Check, NStr("en=' Marked for deletion';ru=' помечен на удаление'"), NStr("en=' deletion mark was cleared';ru=' отменена пометка на удаление'"));
 	Try
 		ObjectForMark.Write(DocumentWriteMode.Write);
 		ObjectForMark.SetDeletionMark(Check);
-		MessageText = NStr("en = '%ObjectNameLeft% %NameObjectMid%: %NameOfAction%.'");
+		MessageText = NStr("en='%ObjectNameLeft% %NameObjectMid%: %NameOfAction%.';ru='%НазваниеОбъектаЛев% %НазваниеОбъектаСред%: %НазваниеДействия%.'");
 		MessageText = StrReplace(MessageText, "%ObjectNameLeft%", Upper(Left(NameObject, 1)));
 		MessageText = StrReplace(MessageText, "%NameObjectMid%", Mid(NameObject, 2));
 		MessageText = StrReplace(MessageText, "%NameOfAction%", NameOfAction);		
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);		
 	Except
-		MessageText = NStr("en = '%ObjectNameLeft% %NameObjectMid%: not %NameOfAction%! Errors occurred while writing!'");
+		MessageText = NStr("en='%ObjectNameLeft% %NameObjectMid%: not %NameOfAction%! Errors occurred while writing!';ru='%НазваниеОбъектаЛев% %НазваниеОбъектаСред%: не %НазваниеДействия%! Произошли ошибки при записи!'");
 		MessageText = StrReplace(MessageText, "%ObjectNameLeft%", Upper(Left(NameObject, 1)));
 		MessageText = StrReplace(MessageText, "%NameObjectMid%", Mid(NameObject, 2));
 		MessageText = StrReplace(MessageText, "%NameOfAction%", NameOfAction);
@@ -575,20 +573,20 @@ Procedure WriteObject(ObjectToWrite, SectionRow, IsNewDocument)
 			Else
 				ObjectToWrite.Write(DocumentWriteMode.Write);
 			EndIf;
-			MessageText = NStr("en = '%Status% %ObjectName%.'");
-			MessageText = StrReplace(MessageText, "%Status%" , ?(IsNewDocument, NStr("en = 'Created '"), NStr("en = 'Overwritten '")));
+			MessageText = NStr("en='%Status% %ObjectName%.';ru='%Статус% %НазваниеОбъекта%.'");
+			MessageText = StrReplace(MessageText, "%Status%" , ?(IsNewDocument, NStr("en='Created ';ru='Создан '"), NStr("en='Overwritten ';ru='Перезаписан '")));
 			MessageText = StrReplace(MessageText, "%NameObject%", NameObject);
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 		Except
-			MessageText = NStr("en = '%ObjectNameLeft% %NameObjectMid% %Status%! Errors occurred while writing!'");
+			MessageText = NStr("en='%ObjectNameLeft% %NameObjectMid% %Status%! Errors occurred while writing!';ru='%НазваниеОбъектаЛев% %НазваниеОбъектаСред% %Статус%! Произошли ошибки при записи!'");
 			MessageText = StrReplace(MessageText, "%ObjectNameLeft%", Upper(Left(NameObject, 1)));
 			MessageText = StrReplace(MessageText, "%NameObjectMid%", Mid(NameObject, 2));
-			MessageText = StrReplace(MessageText, "%Status%", ?(ObjectToWrite.IsNew(), NStr("en = ' not created'"), NStr("en = ' not written'")));
+			MessageText = StrReplace(MessageText, "%Status%", ?(ObjectToWrite.IsNew(), NStr("en=' not created';ru=' не создан'"), NStr("en=' not written';ru=' не записан'")));
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 			Return;
 		EndTry;
 	Else
-		MessageText = NStr("en = '%NameObject% already exists. Perhaps, import has been previously performed.'");
+		MessageText = NStr("en='%NameObject% already exists. Perhaps, import has been previously performed.';ru='Уже существует %НазваниеОбъекта%. Возможно загрузка производилась ранее.'");
 		MessageText = StrReplace(MessageText, "%NameObject%", NameObject);
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 	EndIf;
@@ -596,13 +594,13 @@ Procedure WriteObject(ObjectToWrite, SectionRow, IsNewDocument)
 	If PostImported AND (ObjectModified OR Not ObjectPosted) Then
 		Try
 			ObjectToWrite.Write(DocumentWriteMode.Posting);
-			MessageText = NStr("en = '%Status% %ObjectName% %Status%'");
-			MessageText = StrReplace(MessageText, "%Status%", ?(ObjectPosted, NStr("en = 'Reposted '"), NStr("en = 'Posted '")));
+			MessageText = NStr("en='%Status% %ObjectName% %Status%';ru='%Статус% %НазваниеОбъекта% %Статус%'");
+			MessageText = StrReplace(MessageText, "%Status%", ?(ObjectPosted, NStr("en='Reposted ';ru='Перепроведен '"), NStr("en='Posted ';ru='Posted '")));
 			MessageText = StrReplace(MessageText, "%NameObject%", NameObject);
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 			SectionRow.Posted = ObjectToWrite.Posted;
 		Except
-			MessageText = NStr("en = '%ObjectNameLeft% %NameObjectMid% is failed! Errors occurred while posting!'");
+			MessageText = NStr("en='%ObjectNameLeft% %NameObjectMid% is failed! Errors occurred while posting!';ru='%НазваниеОбъектаЛев% %НазваниеОбъектаСред% не проведен! Произошли ошибки при проведении!'");
 			MessageText = StrReplace(MessageText, "%ObjectNameLeft%", Upper(Left(NameObject, 1)));
 			MessageText = StrReplace(MessageText, "%NameObjectMid%", Mid(NameObject, 2));
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
@@ -643,7 +641,7 @@ Procedure SynchronizeDocumentsByAccounts(DocumentsForImport, KindDocumentsSent, 
 			If UseDataProcessorBoundary Then
 				If ValueIsFilled(DataProcessorBoundaryDate) Then
 					If BegOfDay(DocumentObjectToDeletion.Date) <= BegOfDay(DataProcessorBoundaryDate) Then
-						MessageText = NStr("en = 'The %DocumentObjectToDeletion% payment document is not marked for deletion as its date is equal or less than processor limits!'");
+						MessageText = NStr("en='The %DocumentObjectToDeletion% payment document is not marked for deletion as its date is equal or less than processor limits!';ru='Платежный документ ""%ОбъектДокументаКУдаление%"" не помечен на удаление, так как имеет дату равной или меньшей границы обработки!'");
 						MessageText = StrReplace(MessageText, "%DocumentObjectToDeletion%", DocumentObjectToDeletion);
 						SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 						Continue;
@@ -680,7 +678,7 @@ Procedure SynchronizeDocumentsByAccounts(DocumentsForImport, KindDocumentsSent, 
 			If UseDataProcessorBoundary Then
 				If ValueIsFilled(DataProcessorBoundaryDate) Then
 					If BegOfDay(DocumentObjectToDeletion.Date) <= BegOfDay(DataProcessorBoundaryDate) Then
-						MessageText = NStr("en = 'The %DocumentObjectToDeletion% payment document is not marked for deletion as its date is equal or less than processor limits!'");
+						MessageText = NStr("en='The %DocumentObjectToDeletion% payment document is not marked for deletion as its date is equal or less than processor limits!';ru='Платежный документ ""%ОбъектДокументаКУдаление%"" не помечен на удаление, так как имеет дату равной или меньшей границы обработки!'");
 						MessageText = StrReplace(MessageText, "%DocumentObjectToDeletion%", DocumentObjectToDeletion);
 						SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 						Continue;
@@ -788,7 +786,7 @@ Function CreateCounterparty(StringCounterparty = Undefined) Export
 		
 		Message = New UserMessage;
 		
-		Message.Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Counterparty (%1) is created.'"), StringCounterparty.Presentation);
+		Message.Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Counterparty (%1) is created.';ru='Контрагент (%1) создан.'"), StringCounterparty.Presentation);
 		
 		Message.Message();
 		
@@ -902,7 +900,7 @@ Function CreateCounterparty(StringCounterparty = Undefined) Export
 				
 				Message = New UserMessage;
 				
-				Message.Text = NStr("en='Failed to create company''s banking account!'");
+				Message.Text = NStr("en=""Failed to create company's banking account!"";ru='Не удалось создать банковский счет контрагента!'");
 				
 				Message.Message();
 				
@@ -914,7 +912,7 @@ Function CreateCounterparty(StringCounterparty = Undefined) Export
 			
 			Message = New UserMessage;
 			
-			Message.Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 bank account added (%2).'"), PresentationOfCounterparty, AccountNo);
+			Message.Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 bank account added (%2).';ru='%1 добавлен банковский счет (%2).'"), PresentationOfCounterparty, AccountNo);
 			
 			Message.Message();
 			
@@ -943,13 +941,13 @@ Procedure Import(ImportTitle) Export
 		
 		Result = GetDateFromString(IntervalBeginExport, ImportTitle.StartDate);
 		If Not ValueIsFilled(Result) Then
-			MessageText  = NStr("en = 'In the import file title there is invalid date of the period beginning! File can not be imported!'");
+			MessageText  = NStr("en='In the import file title there is invalid date of the period beginning! File can not be imported!';ru='В заголовке файла загрузки неверно указана дата начала интервала! Файл не может быть загружен!'");
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 			Return;
 		EndIf;
 		Result = GetDateFromString(ExportIntervalEnd, ImportTitle.EndDate);
 		If Not ValueIsFilled(Result) Then
-			MessageText = NStr("en = 'The header of the imported file has a wrong date of the beginning of the period!'");
+			MessageText = NStr("en='The header of the imported file has a wrong date of the beginning of the period!';ru='В заголовке файла импорта неверно указана дата окончания интервала!'");
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 		EndIf;
 	
@@ -1004,9 +1002,9 @@ Procedure Import(ImportTitle) Export
 					EndIf;
 				EndIf; 
 			Else
-				MessageText = NStr(
-					"en = 'The %Operation% payment document No. %Number% from %Date%
-					|can not be imported: %CheckResult%!'"
+				MessageText = NStr("en='The %Operation% payment document No. %Number% from %Date%"
+"can not be imported: %CheckResult%!';ru='Платежный документ ""%Операция%"" №%Номер% от %Дата%"
+"не может быть загружен: %РезультатПроверки%!'"
 				);
 				MessageText = StrReplace(MessageText, "%Operation%", SectionRow.Operation);
 				MessageText = StrReplace(MessageText, "%Number%", SectionRow.Number);
@@ -1352,7 +1350,7 @@ Function RecalculateFromCurrencyToCurrency(Amount, InitRate, FinRate,	Repetition
 	 OR FinRate = 0
 	 OR RepetitionBeg = 0
 	 OR RepetitionEnd = 0 Then
-		MessageText = NStr("en = 'Null exchange rate has been found. Recalculation is not executed.'");
+		MessageText = NStr("en='Null exchange rate has been found. Recalculation is not executed.';ru='Обнаружен нулевой курс валюты. Пересчет не выполнен.'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 		Return Amount;
 	EndIf;
@@ -1489,13 +1487,13 @@ Function GetDateFromString(Receiver, Source)
 	Buffer = Source;
 	DotPosition = Find(Buffer, ".");
 	If DotPosition = 0 Then
-		Return NStr("en = 'The incorrect format of the date row'");
+		Return NStr("en='The incorrect format of the date row';ru='Неверный формат строки с датой'");
 	EndIf;
 	NumberDate = Left(Buffer, DotPosition - 1);
 	Buffer = Mid(Buffer, DotPosition + 1);
 	DotPosition = Find(Buffer, ".");
 	If DotPosition = 0 Then
-		Return NStr("en = 'The incorrect format of the date row'");
+		Return NStr("en='The incorrect format of the date row';ru='Неверный формат строки с датой'");
 	EndIf;
 	DateMonth = Left(Buffer, DotPosition - 1);
 	DateYear = Mid(Buffer, DotPosition + 1);
@@ -1509,7 +1507,7 @@ Function GetDateFromString(Receiver, Source)
 	Try
 		Receiver = Date(Number(DateYear), Number(DateMonth), Number(NumberDate));
 	Except
-		Return NStr("en = 'Failed to convert string to date'");
+		Return NStr("en='Failed to convert string to date';ru='Не удалось преобразовать строку в дату'");
 	EndTry;
 	
 	Return Receiver;

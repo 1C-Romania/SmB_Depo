@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Not DataExchangeSaaSReUse.DataSynchronizationSupported() Then
 		
-		Raise NStr("en = 'Data synchronization is not supported for configuration!'");
+		Raise NStr("en='Data synchronization is not supported for configuration!';ru='Синхронизация данных для конфигурации не поддерживается!'");
 		
 	EndIf;
 	
@@ -125,8 +125,9 @@ Procedure DisableDataSynchronization(Command)
 		
 		If CurrentData.SynchronizationSettingsInServiceManager Then
 			
-			ShowMessageBox(, NStr("en = 'To disable the data synchronization go to service manager.
-				|In the service manager use the ""Data Synchronization"" command.'"));
+			ShowMessageBox(, NStr("en='To disable the data synchronization go to service manager."
+"In the service manager use the ""Data Synchronization"" command.';ru='Для отключения синхронизации данных перейдите в менеджер сервиса."
+"В менеджере сервиса воспользуйтесь командой ""Синхронизация данных"".'"));
 		Else
 			
 			FormParameters = New Structure;
@@ -228,7 +229,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -320,7 +321,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -376,7 +377,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -516,8 +517,9 @@ Procedure PerformDataSynchronizationSetting(Val CurrentData)
 			
 		ElsIf CurrentData.SynchronizationSettingsInServiceManager Then
 			
-			ShowMessageBox(, NStr("en = 'To set the data synchronization go to service manager.
-				|In the service manager use the ""Data Synchronization"" command.'"));
+			ShowMessageBox(, NStr("en='To set the data synchronization go to service manager."
+"In the service manager use the ""Data Synchronization"" command.';ru='Для настройки синхронизации данных перейдите в менеджер сервиса."
+"В менеджере сервиса воспользуйтесь командой ""Синхронизация данных"".'"));
 		Else
 			
 			FormParameters = New Structure;
@@ -571,28 +573,28 @@ Procedure RefreshDataSynchronizationSettings()
 				
 				If SynchronizationStatus.Status = 1 Then // Service administrator intervention is required
 					
-					Setting.State = NStr("en = 'Erros when synchronizing the data'");
+					Setting.State = NStr("en='Erros when synchronizing the data';ru='Ошибки при синхронизации данных'");
 					
 				ElsIf SynchronizationStatus.Status = 2 Then // User can solve problems individually
 					
-					Setting.State = NStr("en = 'Problems when synchronizing the data'");
+					Setting.State = NStr("en='Problems when synchronizing the data';ru='Проблемы при синхронизации данных'");
 					
 					CountProblems = CountProblems + SynchronizationStatus.CountProblems;
 					
 				ElsIf SynchronizationStatus.Status = 3 Then
 					
-					Setting.State = NStr("en = 'Data synchronization is configured'");
+					Setting.State = NStr("en='Data synchronization is configured';ru='Синхронизация данных настроена'");
 					
 				EndIf;
 				
 			Else
-				Setting.State = NStr("en = 'Data synchronization is configured'");
+				Setting.State = NStr("en='Data synchronization is configured';ru='Синхронизация данных настроена'");
 				Setting.SynchronizationStatus = 3;
 			EndIf;
 			
 		Else
 			
-			Setting.Definition = NStr("en = 'Data synchronization is not configured'");
+			Setting.Definition = NStr("en='Data synchronization is not configured';ru='Синхронизация данных не настроена'");
 			Setting.SynchronizationStatus = 0;
 			
 		EndIf;
@@ -709,7 +711,7 @@ Procedure ReadDataSynchronizationSettings(Cancel)
 			
 			If Setting.CorrespondentEndPoint.IsEmpty() Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Correspondent end point with the %1 script is not found.'"),
+					NStr("en='Correspondent end point with the %1 script is not found.';ru='Не найдена конечная точка корреспондента с кодом ""%1"".'"),
 					SettingFromServiceManager.CorrespondentEndPoint);
 			EndIf;
 			

@@ -80,7 +80,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.AdministrationGroup.Visible = RequiredInfobaseAdministrationParameters;
 	Items.WarningGroupOnNeedToRestart.Visible = RequiredInfobaseAdministrationParameters;
 	
-	Items.FormAllow.Title = NStr("en = 'Next >'");
+	Items.FormAllow.Title = NStr("en='Next >';ru='Далее  >'");
 	Items.FormBack.Visible = False;
 	
 	VisibleManagement();
@@ -119,13 +119,13 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 		FieldName = "InfobaseAdministrator";
 		IBUser = GetInfobaseAdministrator();
 		If IBUser = Undefined Then
-			CommonUseClientServer.MessageToUser(NStr("en = 'Specified user does not have access to the infobase.'"),,
+			CommonUseClientServer.MessageToUser(NStr("en='Specified user does not have access to the infobase.';ru='Указанный пользователь не имеет доступа к информационной базе.'"),,
 				FieldName,,Cancel);
 			Return;
 		EndIf;
 		
 		If Not Users.InfobaseUserWithFullAccess(IBUser, True) Then
-			CommonUseClientServer.MessageToUser(NStr("en = 'User has no administrative rights.'"),,
+			CommonUseClientServer.MessageToUser(NStr("en='User has no administrative rights.';ru='У пользователя нет административных прав.'"),,
 				FieldName,,Cancel);
 			Return;
 		EndIf;
@@ -156,7 +156,7 @@ Procedure Next(Command)
 		
 		ErrorText = "";
 		Items.ErrorGroup.Visible = False;
-		Items.FormAllow.Title = NStr("en = 'Configure permissions in the server cluster'");
+		Items.FormAllow.Title = NStr("en='Configure permissions in the server cluster';ru='Настроить разрешения в кластере серверов'");
 		Items.GroupPages.CurrentPage = Items.PageConnection;
 		Items.FormBack.Visible = True;
 		
@@ -184,7 +184,7 @@ Procedure Back(Command)
 	If Items.GroupPages.CurrentPage = Items.PageConnection Then
 		Items.GroupPages.CurrentPage = Items.PermissionPage;
 		Items.FormBack.Visible = False;
-		Items.FormAllow.Title = NStr("en = 'Next >'");
+		Items.FormAllow.Title = NStr("en='Next >';ru='Далее  >'");
 	EndIf;
 	
 EndProcedure

@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Data synchronization rules</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Правила синхронизации данных</v8:content>
+		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
@@ -45,11 +49,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Synchronization variants</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Варианты синхронизации</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Synchronization variants</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Варианты синхронизации</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -63,12 +75,20 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Documents:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документы:</v8:content>
+						</v8:item>
 					</Title>
 					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Documents synchronization variants group</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Варианты синхронизации документов группа</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Width>50</Width>
@@ -87,6 +107,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Documents synchronizing variants</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Варианты синхронизации документов</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -108,6 +132,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>Send and receive automatically</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Отправлять и получать автоматически</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">SendAndReceiveAutomatically</Value>
 											</xr:Value>
@@ -123,6 +151,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>The documents will be automatically synchronized in this and another application.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Документы будут автоматически синхронизироваться в этой и во второй программе.</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
@@ -143,6 +175,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>Send automatically</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Отправлять автоматически</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">SendAutomatically</Value>
 											</xr:Value>
@@ -159,6 +195,11 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>The documents will be sent automatically to the second application.
 The documents will not be sent from the second application.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Документы будут автоматически отправляться во вторую программу.
+Из второй программы документы доставляться не будут.</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
@@ -179,6 +220,10 @@ The documents will not be sent from the second application.</v8:content>
 														<v8:lang>en</v8:lang>
 														<v8:content>Receive automatically</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Получать автоматически</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">ReceiveAutomatically</Value>
 											</xr:Value>
@@ -194,6 +239,11 @@ The documents will not be sent from the second application.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>The documents will be received automatically from the second application.
 The documents will not be sent from this application.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Документы будут автоматически доставляться из второй программы.
+Из этой программы документы отправляться не будут.</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
@@ -214,6 +264,10 @@ The documents will not be sent from this application.</v8:content>
 														<v8:lang>en</v8:lang>
 														<v8:content>Send and receive manually</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Отправлять и получать вручную</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">SendAndReceiveManually</Value>
 											</xr:Value>
@@ -230,6 +284,11 @@ The documents will not be sent from this application.</v8:content>
 											<v8:content>The documents will not be synchronized automatically.
 You need to send and receive documents manually.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Документы не будут автоматически синхронизироваться.
+Отправку и получение документов необходимо будет выполнять вручную.</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
 									<ContextMenu name="DocumentsSynchronizingVariantDescription4ContextMenu" id="216"/>
@@ -245,12 +304,20 @@ You need to send and receive documents manually.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Regulatory and reference information:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нормативно-справочная информация:</v8:content>
+						</v8:item>
 					</Title>
 					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Synchronization variants catalogs group</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Варианты синхронизации справочников группа</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Width>50</Width>
@@ -269,6 +336,10 @@ You need to send and receive documents manually.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Catalogs synchronization variants</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Варианты синхронизации справочников</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -290,6 +361,10 @@ You need to send and receive documents manually.</v8:content>
 														<v8:lang>en</v8:lang>
 														<v8:content>Send and receive automatically</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Отправлять и получать автоматически</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">SendAndReceiveAutomatically</Value>
 											</xr:Value>
@@ -305,6 +380,10 @@ You need to send and receive documents manually.</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Regulatory and reference information will be synchronized automatically in this and another application.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нормативно-справочная информация будет автоматически синхронизироваться в этой и во второй программе.</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
@@ -325,6 +404,10 @@ You need to send and receive documents manually.</v8:content>
 														<v8:lang>en</v8:lang>
 														<v8:content>Send and receive only used in the documents</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Отправлять и получать только используемую в документах</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">SendAndReceiveIfNecessary</Value>
 											</xr:Value>
@@ -340,6 +423,10 @@ You need to send and receive documents manually.</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Only the regulatory and reference information will be synchronized automatically and used in synchronized documents.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Будет автоматически синхронизироваться только нормативно-справочная информация, используемая в синхронизируемых документах.</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
@@ -360,6 +447,10 @@ You need to send and receive documents manually.</v8:content>
 														<v8:lang>en</v8:lang>
 														<v8:content>Send and receive manually</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Отправлять и получать вручную</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">SendAndReceiveManually</Value>
 											</xr:Value>
@@ -375,6 +466,11 @@ You need to send and receive documents manually.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Regulatory and reference information will not be synchronized automatically.
 You need to send and receive regulatory and reference information manually.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нормативно-справочная информация не будут автоматически синхронизироваться.
+Отправку и получение нормативно-справочной информации необходимо будет выполнять вручную.</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
@@ -393,11 +489,19 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Data sending rules</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Правила отправки данных</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Data sending rules</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Правила отправки данных</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -411,12 +515,20 @@ You need to send and receive regulatory and reference information manually.</v8:
 							<v8:lang>en</v8:lang>
 							<v8:content>Restrictions of data synchronization</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ограничения синхронизации данных:</v8:content>
+						</v8:item>
 					</Title>
 					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Restriction of sending data</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ограничения отправки данных</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
@@ -434,11 +546,19 @@ You need to send and receive regulatory and reference information manually.</v8:
 									<v8:lang>en</v8:lang>
 									<v8:content>Pages data sending restrictions</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы ограничения отправки данных</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Pages data sending restrictions</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы ограничения отправки данных</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ExtendedTooltip name="PagesDataSendingRestrictionsExtendedTooltip" id="258"/>
@@ -449,11 +569,19 @@ You need to send and receive regulatory and reference information manually.</v8:
 											<v8:lang>en</v8:lang>
 											<v8:content>Companies</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Компании</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Company page</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница организации</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ExtendedTooltip name="CompaniesPageExtendedTooltip" id="259"/>
@@ -474,6 +602,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 																<v8:lang>en</v8:lang>
 																<v8:content>By all companies</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>по всем организациям</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">SynchronizeDataByAllCompanies</Value>
 													</xr:Value>
@@ -486,6 +618,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>In selected companies:</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>По выбранным организациям:</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">SynchronizeDataBySelectedCompaniesOnly</Value>
@@ -587,6 +723,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 									<v8:lang>en</v8:lang>
 									<v8:content>Restrictions of data sending are valid for all data regardless of the selected mode of sending documents and regulatory and reference information.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ограничения отправки данных действуют на все данные вне зависимости от выбранного режима отправки документов и нормативно-справочной информации.</v8:content>
+								</v8:item>
 							</Title>
 							<VerticalAlign>Top</VerticalAlign>
 							<ContextMenu name="DataSendingRestrictionsExplanationContextMenu" id="193"/>
@@ -604,6 +744,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Transfer Data for Selected Companies Only</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Передавать данные только по выбранным организациям</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -615,6 +759,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Companies</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Компании</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -660,6 +808,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Filter Settings at Node</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка отборов на узле</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -669,6 +821,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>External connection parameters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры внешнего соединения</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -677,6 +833,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Company subsidiary attribute</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вспомогательный реквизит организации</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -720,6 +880,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 							<v8:lang>en</v8:lang>
 							<v8:content>Use</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -732,6 +896,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Support attribute company synchronization mode</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вспомогательный реквизит режим синхронизации организаций</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -748,6 +916,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Documents export mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим выгрузки документов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.ExchangeObjectsExportModes</v8:Type>
@@ -760,6 +932,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Guides export mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим выгрузки справочников</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.ExchangeObjectsExportModes</v8:Type>
@@ -771,6 +947,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent version</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Версия корреспондента</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -787,6 +967,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Synchronizing documents variant</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант синхронизации документов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -801,6 +985,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Catalogs synchronization variant</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант синхронизации справочников</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -817,6 +1005,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent documents export mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим выгрузки документов корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.ExchangeObjectsExportModes</v8:Type>
@@ -829,6 +1021,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent guides export mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим выгрузки справочников корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.ExchangeObjectsExportModes</v8:Type>
@@ -840,6 +1036,10 @@ You need to send and receive regulatory and reference information manually.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Synchronize the documents starting from the date</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизировать документы начиная с даты</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -858,11 +1058,19 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Save and close</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Save and close</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>WriteAndClose</Action>
@@ -874,11 +1082,19 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable all companies</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить все организации</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable all companies</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить все организации</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -893,11 +1109,19 @@ You need to send and receive regulatory and reference information manually.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Disconnect all companies</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить все организации</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Disconnect all companies</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отключить все организации</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>

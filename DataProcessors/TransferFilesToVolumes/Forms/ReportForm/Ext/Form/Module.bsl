@@ -14,7 +14,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	TabTemplate = DataProcessors.TransferFilesToVolumes.GetTemplate("ReportTemplate");
 	
 	HeaderArea = TabTemplate.GetArea("Title");
-	HeaderArea.Parameters.Definition = NStr("en = 'Files with errors:'");
+	HeaderArea.Parameters.Definition = NStr("en='Files with errors:';ru='Файлы с ошибками:'");
 	Spreadsheet.Put(HeaderArea);
 	
 	AreaRow = TabTemplate.GetArea("String");

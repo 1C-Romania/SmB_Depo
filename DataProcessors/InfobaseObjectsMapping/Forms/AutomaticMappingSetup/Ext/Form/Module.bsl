@@ -59,11 +59,11 @@ Procedure RefreshExplanationLabelText()
 	
 	If MarkedListItemArray.Count() = 0 Then
 		
-		ExplanatoryInscription = NStr("en = 'Matching will be performed only by the internal object IDs.'");
+		ExplanatoryInscription = NStr("en='Matching will be performed only by the internal object IDs.';ru='Сопоставление будет выполнено только по внутренним идентификаторам объектов.'");
 		
 	Else
 		
-		ExplanatoryInscription = NStr("en = 'Matching can be performed by the internal objects ID and by the selected fields.'");
+		ExplanatoryInscription = NStr("en='Matching can be performed by the internal objects ID and by the selected fields.';ru='Сопоставление будет выполнено по внутренним идентификаторам объектов и по выбранным полям.'");
 		
 	EndIf;
 	

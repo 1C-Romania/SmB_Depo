@@ -275,19 +275,21 @@ Procedure SendMailing(Command)
 			If SMSSettingsComplete Then
 				SuccessfullySent = SendSMSMailing();
 			ElsIf AvailableRightSettingsSMS Then
-				MessageText = NStr("en = 'To send SMS, it is necessary to configure sending parameters.
-					|You can adjust the settings in the Settings - Organizer - SMS sending section.'");
+				MessageText = NStr("en='To send SMS, it is necessary to configure sending parameters."
+"You can adjust the settings in the Settings - Organizer - SMS sending section.';ru='Для отправки SMS требуется настройка параметров отправки."
+"Настройка осуществляется в разделе Настройки - Органайзер - Настройка отправки SMS.'");
 				ShowMessageBox(, MessageText);
 				Return;
 			Else
-				MessageText = NStr("en = 'To send SMS, it is necessary to configure sending parameters.
-					|Address to the administrator to perform settings.'");
+				MessageText = NStr("en='To send SMS, it is necessary to configure sending parameters."
+"Address to the administrator to perform settings.';ru='Для отправки SMS требуется настройка параметров отправки."
+"Для выполнения настроек обратитесь к администратору.'");
 				ShowMessageBox(, MessageText);
 				Return;
 			EndIf;
 		EndIf;
 		
-		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'It is successfully sent: %1 messages'"), SuccessfullySent);
+		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='It is successfully sent: %1 messages';ru='Успешно отправлено: %1 сообщений'"), SuccessfullySent);
 		ShowUserNotification(NotificationText, GetURL(Object.Ref), String(Object.Ref), PictureLib.Information32);
 		If SuccessfullySent = Object.Recipients.Count() Then
 			Object.Status = PredefinedValue("Enum.SendingMailingsStages.Sent");
@@ -423,7 +425,7 @@ Procedure CheckAndConvertRecipientNumbers(CurrentObject, Cancel)
 		
 		If IsBlankString(Recipient.HowToContact) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = '""Phone number"" field is not filled.'"),
+				NStr("en='""Phone number"" field is not filled.';ru='Поле ""Номер телефона"" не заполнено.'"),
 				,
 				CommonUseClientServer.PathToTabularSection("Object.Recipients", Recipient.LineNumber, "HowToContact"),
 				,
@@ -433,7 +435,7 @@ Procedure CheckAndConvertRecipientNumbers(CurrentObject, Cancel)
 		
 		If StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Recipient.HowToContact, ";", True).Count() > 1 Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Only one phone number should be specified.'"),
+				NStr("en='Only one phone number should be specified.';ru='Должен быть указан только один номер телефона.'"),
 				,
 				CommonUseClientServer.PathToTabularSection("Object.Recipients", Recipient.LineNumber, "HowToContact"),
 				,
@@ -446,7 +448,7 @@ Procedure CheckAndConvertRecipientNumbers(CurrentObject, Cancel)
 			Recipient.NumberForSending = CheckResult.SendingNumber;
 		Else
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Incorrect format of phone number.'"),
+				NStr("en='Incorrect format of phone number.';ru='Неверный формат номера телефона.'"),
 				,
 				CommonUseClientServer.PathToTabularSection("Object.Recipients", Recipient.LineNumber, "HowToContact"),
 				,
@@ -466,7 +468,7 @@ Procedure CheckEmailAddressCorrectness(Cancel)
 		Try
 			CommonUseClientServer.ParseStringWithPostalAddresses(RecipientRow.HowToContact);
 		Except
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Recipient email is specified incorrectly: %1, because of: %2'"),
+			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Recipient email is specified incorrectly: %1, because of: %2';ru='Некорректно указан E-mail получателя: %1, по причине: %2'"),
 				RecipientRow.Contact,
 				BriefErrorDescription(ErrorInfo()),
 				);
@@ -546,7 +548,7 @@ Function SendEmailMailing()
 			Successfully = True;
 			SuccessfullySent = SuccessfullySent + 1;
 		Except
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'It was not succeeded to send Email to the recipient: %1, because of: %2'"),
+			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='It was not succeeded to send Email to the recipient: %1, because of: %2';ru='Не удалось отправить E-mail получателю: %1, по причине: %2'"),
 				RecipientRow.Contact,
 				BriefErrorDescription(ErrorInfo()),
 				);
@@ -615,7 +617,7 @@ Function SendSMSMailing()
 			Successfully = True;
 			SuccessfullySent = SuccessfullySent + 1;
 		Else
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'It was not succeeded to send SMS to the recipient: %1, because of: %2'"),
+			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='It was not succeeded to send SMS to the recipient: %1, because of: %2';ru='Не удалось отправить SMS получателю: %1, по причине: %2'"),
 				RecipientRow.Contact,
 				SendingResult.ErrorDescription,
 				);
@@ -970,7 +972,7 @@ Function GetSpreadsheetDocumentByBinaryData(Val BinaryData)
 	Try
 		DeleteFiles(FileName);
 	Except
-		WriteLogEvent(NStr("en = 'Tabular document receiving'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , 
+		WriteLogEvent(NStr("en='Tabular document receiving';ru='Получение табличного документа'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , 
 			DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -1132,7 +1134,7 @@ Procedure FillContentEvents(EventSubject)
 	If (ThisIsEmail AND Not IsBlankString(FormattedDocument.GetText())) Or (NOT ThisIsEmail AND Not IsBlankString(Object.Content)) Then
 		
 		ShowQueryBox(New NotifyDescription("FillEventContentEnd", ThisObject, New Structure("EventSubject", EventSubject)),
-			NStr("en = 'Do you want to refill the content by the selected topic?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='Do you want to refill the content by the selected topic?';ru='Перезаполнить содержание по выбранной теме?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 		
 	EndIf;

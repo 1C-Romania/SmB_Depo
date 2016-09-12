@@ -303,7 +303,7 @@ Procedure DocumentCurrencyOnChange(Item)
 			Mode = QuestionDialogMode.YesNo;
 			Response = Undefined;
 
-			ShowQueryBox(New NotifyDescription("DocumentCurrencyOnChangeEnd", ThisObject, New Structure("StructureData", StructureData)), NStr("en = 'Document currency is changed. Recalculate document amount?'"), Mode);
+			ShowQueryBox(New NotifyDescription("DocumentCurrencyOnChangeEnd", ThisObject, New Structure("StructureData", StructureData)), NStr("en='Document currency is changed. Recalculate document amount?';ru='Изменилась валюта документа. Пересчитать сумму документа?'"), Mode);
             Return;
 		EndIf;
 		DocumentCurrencyOnChangeFragment();

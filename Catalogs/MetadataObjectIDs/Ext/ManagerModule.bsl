@@ -278,12 +278,12 @@ Procedure ExecuteDataRefreshing(HasChanges, HasDeleted, CheckOnly = False,
 		
 		CriticalChangesList = "";
 		If ValueIsFilled(MetadataObjectsRenamingsList) Then
-			CriticalChangesList = NStr("en = 'Rename metadata objects IDs OldFullName -> NewFullName:'")
+			CriticalChangesList = NStr("en='Rename metadata objects IDs OldFullName -> NewFullName:';ru='Переименование идентификаторов объектов метаданных СтароеПолноеИмя -> НовоеПолноеИмя:'")
 				+ Chars.LF + MetadataObjectsRenamingsList + Chars.LF + Chars.LF;
 		EndIf;
 		If ValueIsFilled(ListOfNewMetadataObjects) Then
 			CriticalChangesList = CriticalChangesList
-				+ NStr("en = 'Add new IDs of the metadata objects:'")
+				+ NStr("en='Add new IDs of the metadata objects:';ru='Добавление новых идентификаторов объектов метаданных:'")
 				+ Chars.LF + ListOfNewMetadataObjects + Chars.LF;
 		EndIf;
 		
@@ -354,7 +354,7 @@ Procedure ExecuteDataRefreshing(HasChanges, HasDeleted, CheckOnly = False,
 		
 		If ValueIsFilled(CriticalChangesList) Then
 			WriteLogEvent(
-				NStr("en = 'Metadata objects IDs.Critical changes are executed'",
+				NStr("en='Metadata objects IDs.Critical changes are executed';ru='Идентификаторы объектов метаданных.Выполнены критичные изменения'",
 					CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Information,
 				,
@@ -459,9 +459,11 @@ Procedure ImportDataToSubordinateNode(Objects) Export
 				ImportedProperty.Ref = Object.GetNewObjectRef();
 				If Not ValueIsFilled(ImportedProperty.Ref) Then
 					Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'An error occurred while importing metadata objects IDs.
-						           |Unable to import new item in which ref of
-						           |a new one is not specified: ""%1"".'"),
+						NStr("en='An error occurred while importing metadata objects IDs."
+"Unable to import new item in which ref of"
+"a new one is not specified: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных."
+"Невозможно загрузить новый элемент у которого не указана ссылка нового:"
+"""%1"".'"),
 						Object.FullName);
 				EndIf;
 			EndIf;
@@ -547,9 +549,11 @@ Procedure ImportDataToSubordinateNode(Objects) Export
 			
 			If DescriptionFullsImported.Get(Lower(Object.FullName)) <> Undefined Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'An error occurred while importing metadata objects IDs.
-					           |Unable to import two items in which full
-					           |name matches: ""%1"".'"),
+					NStr("en='An error occurred while importing metadata objects IDs."
+"Unable to import two items in which full"
+"name matches: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных."
+"Невозможно загрузить два элемента у"
+"которых совпадает полное имя: ""%1"".'"),
 					Object.FullName);
 			EndIf;
 			DescriptionFullsImported.Insert(Lower(Object.FullName));
@@ -560,18 +564,22 @@ Procedure ImportDataToSubordinateNode(Objects) Export
 				
 				If ImportedKeys.Get(MetadataObjectKey) <> Undefined Then
 					Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'An error occurred while importing metadata objects IDs.
-						           |Unable to import two items in which metadata object
-						           |key matches: ""%1"".'"),
+						NStr("en='An error occurred while importing metadata objects IDs."
+"Unable to import two items in which metadata object"
+"key matches: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных."
+"Невозможно загрузить два элемента у которых"
+"совпадает ключ объекта метаданных: ""%1"".'"),
 						String(MetadataObjectKey));
 				EndIf;
 				ImportedKeys.Insert(MetadataObjectKey);
 				
 				If ImportedProperty.MetadataObjectByKey <> ImportedProperty.MetadataObjectByDescriptionFull Then
 					Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'An error occurred while importing metadata objects IDs.
-						           |Unable to import item metadata object of
-						           |which  ""%1"" does not correspond to the full name ""%2"".'"),
+						NStr("en='An error occurred while importing metadata objects IDs."
+"Unable to import item metadata object of"
+"which  ""%1"" does not correspond to the full name ""%2"".';ru='Ошибка загрузки идентификаторов объектов метаданных."
+"Невозможно загрузить элемент у которого ключ объекта метаданных"
+"""%1"" не соответствует полному имени ""%2"".'"),
 						String(MetadataObjectKey), Object.FullName);
 				EndIf;
 				
@@ -650,7 +658,7 @@ Procedure CheckUse() Export
 	
 	If StandardSubsystemsReUse.DisableCatalogMetadataObjectIDs() Then
 		Raise
-			NStr("en = '""Metadata objects IDs"" catalog is not used.'");
+			NStr("en='""Metadata objects IDs"" catalog is not used.';ru='Справочник ""Идентификаторы объектов метаданных"" не используется.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -659,15 +667,23 @@ Procedure CheckUse() Export
 	   AND ValueIsFilled(CommonUse.ObjectManagerByFullName("Constant.MasterNode").Get()) Then
 		
 		Raise
-			NStr("en = '""Metadata objects IDs"" catalog can not be
-			           |used in the infobase with the unconfirmed cancellation of the main node.
-			           |
-			           |To restore the connection with the main node,
-			           |run 1C:Enterprise and click the Restore button or
-			           |applicationmatically set the main node saved in the Main node constant.
-			           |
-			           |To confirm that you want to cancel connection with
-			           |the main node, run 1C:Enterprise and click the Disable button or applicationmatically clear the Main node constant.'");
+			NStr("en='""Metadata objects IDs"" catalog can not be"
+"used in the infobase with the unconfirmed cancellation of the main node."
+""
+"To restore the connection with the main node,"
+"run 1C:Enterprise and click the Restore button or"
+"applicationmatically set the main node saved in the Main node constant."
+""
+"To confirm that you want to cancel connection with"
+"the main node, run 1C:Enterprise and click the Disable button or applicationmatically clear the Main node constant.';ru='Справочник ""Идентификаторы объектов"
+"метаданных"" не может использоваться в информационной базе с неподтвержденной отменой главного узла."
+""
+"Для восстановления связи с главным узлом"
+"запустите 1C:Предприятие и нажмите кнопку Восстановить"
+"или программно установите главный узел, сохраненный в константе Главный узел."
+""
+"Для подтверждения отмены связи с"
+"главным узлом запустите 1C:Предприятие и нажмите кнопку Отключить или программно очистите константу Главный узел.'");
 	EndIf;
 	
 EndProcedure
@@ -877,17 +893,17 @@ Function MetadataObjectCollectionProperties() Export
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "627a6fb8-872a-11e3-bb87-005056c00008";
 	String.Name             = "Constants";
-	String.Synonym         = NStr("en = 'Constants'");
+	String.Synonym         = NStr("en='Constants';ru='Константы'");
 	String.SingularName     = "Constant";
-	String.SynonymInSingularNumber = NStr("en = 'Constant'");
+	String.SynonymInSingularNumber = NStr("en='Constant';ru='Константа'");
 	
 	// Subsystems
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "cdf5ac50-08e8-46af-9a80-4e63fd4a88ff";
 	String.Name             = "Subsystems";
-	String.Synonym         = NStr("en = 'Subsystems'");
+	String.Synonym         = NStr("en='Subsystems';ru='Подсистемы'");
 	String.SingularName     = "Subsystem";
-	String.SynonymInSingularNumber = NStr("en = 'Subsystem'");
+	String.SynonymInSingularNumber = NStr("en='Subsystem';ru='Подсистема'");
 	String.WithoutData       = True;
 	String.WithoutMetadataObjectKey = True;
 	
@@ -895,9 +911,9 @@ Function MetadataObjectCollectionProperties() Export
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "115c4f55-9c20-4e86-a6d0-d0167ec053a1";
 	String.Name             = "Roles";
-	String.Synonym         = NStr("en = 'Roles'");
+	String.Synonym         = NStr("en='Roles';ru='Роли'");
 	String.SingularName     = "Role";
-	String.SynonymInSingularNumber = NStr("en = 'Role'");
+	String.SynonymInSingularNumber = NStr("en='Role';ru='Роль'");
 	String.WithoutData       = True;
 	String.WithoutMetadataObjectKey = True;
 	
@@ -905,124 +921,124 @@ Function MetadataObjectCollectionProperties() Export
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "269651e0-4b06-4f9d-aaab-a8d2b6bc6077";
 	String.Name             = "ExchangePlans";
-	String.Synonym         = NStr("en = 'Exchange plans'");
+	String.Synonym         = NStr("en='Exchange plans';ru='Планы обмена'");
 	String.SingularName     = "ExchangePlan";
-	String.SynonymInSingularNumber = NStr("en = 'Exchange plan'");
+	String.SynonymInSingularNumber = NStr("en='Exchange plan';ru='План обмена'");
 	
 	// Catalogs
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "ede89702-30f5-4a2a-8e81-c3a823b7e161";
 	String.Name             = "Catalogs";
-	String.Synonym         = NStr("en = 'Catalogs'");
+	String.Synonym         = NStr("en='Catalogs';ru='Справочники'");
 	String.SingularName     = "Catalog";
-	String.SynonymInSingularNumber = NStr("en = 'Catalog'");
+	String.SynonymInSingularNumber = NStr("en='Catalog';ru='Справочник'");
 	
 	// Documents
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "96c6ab56-0375-40d5-99a2-b83efa3dac8b";
 	String.Name             = "Documents";
-	String.Synonym         = NStr("en = 'Documents'");
+	String.Synonym         = NStr("en='Documents';ru='Документы'");
 	String.SingularName     = "Document";
-	String.SynonymInSingularNumber = NStr("en = 'Document'");
+	String.SynonymInSingularNumber = NStr("en='Document';ru='документ'");
 	
 	// DocumentJournals
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "07938234-e29b-4cff-961a-9af07a4c6185";
 	String.Name             = "DocumentJournals";
-	String.Synonym         = NStr("en = 'Document journals'");
+	String.Synonym         = NStr("en='Document journals';ru='Журналы документов'");
 	String.SingularName     = "DocumentJournal";
-	String.SynonymInSingularNumber = NStr("en = 'Documents journal'");
+	String.SynonymInSingularNumber = NStr("en='Documents journal';ru='Журнал документов'");
 	String.WithoutData       = True;
 	
 	// Reports
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "706cf832-0ae5-45b5-8a4a-1f251d054f3b";
 	String.Name             = "Reports";
-	String.Synonym         = NStr("en = 'Reports'");
+	String.Synonym         = NStr("en='Reports';ru='Отчеты'");
 	String.SingularName     = "Report";
-	String.SynonymInSingularNumber = NStr("en = 'Report'");
+	String.SynonymInSingularNumber = NStr("en='Report';ru='Отчет'");
 	String.WithoutData       = True;
 	
 	// DataProcessors
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "ae480426-487e-40b2-98ba-d207777449f3";
 	String.Name             = "DataProcessors";
-	String.Synonym         = NStr("en = 'DataProcessors'");
+	String.Synonym         = NStr("en='DataProcessors';ru='Обработки'");
 	String.SingularName     = "DataProcessor";
-	String.SynonymInSingularNumber = NStr("en = 'DataProcessor'");
+	String.SynonymInSingularNumber = NStr("en='DataProcessor';ru='Обработка'");
 	String.WithoutData       = True;
 	
 	// ChartsOfCharacteristicTypes
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "8b5649b9-cdd1-4698-9aac-12ba146835c4";
 	String.Name             = "ChartsOfCharacteristicTypes";
-	String.Synonym         = NStr("en = 'Charts of characteristics types'");
+	String.Synonym         = NStr("en='Charts of characteristics types';ru='Планы видов характеристик'");
 	String.SingularName     = "ChartOfCharacteristicTypes";
-	String.SynonymInSingularNumber = NStr("en = 'Chart of characteristic types'");
+	String.SynonymInSingularNumber = NStr("en='Chart of characteristic types';ru='План видов характеристик'");
 	
 	// ChartsOfAccounts
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "4295af27-543f-4373-bcfc-c0ace9b7620c";
 	String.Name             = "ChartsOfAccounts";
-	String.Synonym         = NStr("en = 'Charts of accounts'");
+	String.Synonym         = NStr("en='Charts of accounts';ru='Планы счетов'");
 	String.SingularName     = "ChartOfAccounts";
-	String.SynonymInSingularNumber = NStr("en = 'Chart of accounts'");
+	String.SynonymInSingularNumber = NStr("en='Chart of accounts';ru='План счетов'");
 	
 	// ChartsOfCalculationTypes
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "fca3e7e1-1bf1-49c8-9921-aafb4e787c75";
 	String.Name             = "ChartsOfCalculationTypes";
-	String.Synonym         = NStr("en = 'Charts of calculation types'");
+	String.Synonym         = NStr("en='Charts of calculation types';ru='Планы видов расчета'");
 	String.SingularName     = "ChartOfCalculationTypes";
-	String.SynonymInSingularNumber = NStr("en = 'Chart of calculation types'");
+	String.SynonymInSingularNumber = NStr("en='Chart of calculation types';ru='План видов расчета'");
 	
 	// InformationRegisters
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "d7ecc1e9-c068-44dd-83c2-1323ec52dbbb";
 	String.Name             = "InformationRegisters";
-	String.Synonym         = NStr("en = 'Information registers'");
+	String.Synonym         = NStr("en='Information registers';ru='Регистры сведений'");
 	String.SingularName     = "InformationRegister";
-	String.SynonymInSingularNumber = NStr("en = 'Information register'");
+	String.SynonymInSingularNumber = NStr("en='Information register';ru='Регистр сведений'");
 	
 	// AccumulationRegisters
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "74083488-b01e-4441-84a6-c386ce88cdb5";
 	String.Name             = "AccumulationRegisters";
-	String.Synonym         = NStr("en = 'Accumulation registers'");
+	String.Synonym         = NStr("en='Accumulation registers';ru='Регистры накопления'");
 	String.SingularName     = "AccumulationRegister";
-	String.SynonymInSingularNumber = NStr("en = 'Accumulation register'");
+	String.SynonymInSingularNumber = NStr("en='Accumulation register';ru='Регистр накопления'");
 	
 	// AccountingRegisters
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "9a0d75ff-0eda-454e-b2b7-d2412ffdff18";
 	String.Name             = "AccountingRegisters";
-	String.Synonym         = NStr("en = 'Accounting registers'");
+	String.Synonym         = NStr("en='Accounting registers';ru='Регистры бухгалтерии'");
 	String.SingularName     = "AccountingRegister";
-	String.SynonymInSingularNumber = NStr("en = 'Accounting register'");
+	String.SynonymInSingularNumber = NStr("en='Accounting register';ru='Регистр бухгалтерии'");
 	
 	// CalculationRegisters
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "f330686a-0acf-4e26-9cda-108f1404687d";
 	String.Name             = "CalculationRegisters";
-	String.Synonym         = NStr("en = 'Calculation registers'");
+	String.Synonym         = NStr("en='Calculation registers';ru='Регистры расчета'");
 	String.SingularName     = "CalculationRegister";
-	String.SynonymInSingularNumber = NStr("en = 'Calculation register'");
+	String.SynonymInSingularNumber = NStr("en='Calculation register';ru='Регистр расчета'");
 	
 	// BusinessProcesses
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "a8cdd0e0-c27f-4bf0-9718-10ec054dc468";
 	String.Name             = "BusinessProcesses";
-	String.Synonym         = NStr("en = 'Business-processes'");
+	String.Synonym         = NStr("en='Business-processes';ru='Деловые процессы'");
 	String.SingularName     = "BusinessProcess";
-	String.SynonymInSingularNumber = NStr("en = 'Business-process'");
+	String.SynonymInSingularNumber = NStr("en='Business-process';ru='Бизнес-процесс'");
 	
 	// Tasks
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "8d9153ad-7cea-4e25-9542-a557ee59fd16";
 	String.Name             = "Tasks";
-	String.Synonym         = NStr("en = 'Tasks'");
+	String.Synonym         = NStr("en='Tasks';ru='Задания'");
 	String.SingularName     = "Task";
-	String.SynonymInSingularNumber = NStr("en = 'Task'");
+	String.SynonymInSingularNumber = NStr("en='Task';ru='Задача'");
 	
 	For Each String IN MetadataObjectCollectionProperties Do
 		String.CollectionOrder       = MetadataObjectCollectionProperties.IndexOf(String);
@@ -1043,24 +1059,29 @@ Procedure CheckObjectsBeforeWriting(Object, AutoUpdate = False) Export
 		If Object.IsNew() Then
 			
 			CallExceptionByError(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'It is possible to
-				           |create new metadata object ID only automatically while updating catalog data.'"),
+				NStr("en='It is possible to"
+"create new metadata object ID only automatically while updating catalog data.';ru='Создание нового"
+"идентификатора объекта метаданных возможно только автоматически при обновлении данных справочника.'"),
 				Object.FullName));
 				
 		ElsIf FullNameChangeIsProhibited(Object) Then
 			
 			CallExceptionByError(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'While changing metadata object ID
-				           |full name ""%1"" was specified that
-				           |can be set only automatically while updating catalog data.'"),
+				NStr("en='While changing metadata object ID"
+"full name ""%1"" was specified that"
+"can be set only automatically while updating catalog data.';ru='При изменении идентификатора объекта"
+"метаданных указано полное имя"
+"""%1"", которое может быть установлено только автоматически при обновлении данных справочника.'"),
 				Object.FullName));
 		
 		ElsIf FullNameIsUsed(Object.FullName, Object.Ref) Then
 			
 			CallExceptionByError(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'While changing metadada object ID
-				           |full name is
-				           |specified ""%1"" that is used in the catalog.'"),
+				NStr("en='While changing metadada object ID"
+"full name is"
+"specified ""%1"" that is used in the catalog.';ru='При изменении идентификатора объекта"
+"метаданных указано"
+"полное имя ""%1"", которое уже используется в справочнике.'"),
 				Object.FullName));
 		
 		EndIf;
@@ -1074,8 +1095,9 @@ Procedure CheckObjectsBeforeWriting(Object, AutoUpdate = False) Export
 		   AND Not IsCollection(Object.GetNewObjectRef()) Then
 			
 			CallExceptionByError(
-				NStr("en = 'You can add new items
-				           |only in the main node of the distributed infobase.'"));
+				NStr("en='You can add new items"
+"only in the main node of the distributed infobase.';ru='Добавление новых элементов"
+"может быть выполнено только в главном узле распределенной информационной базы.'"));
 		EndIf;
 		
 		If Not Object.DeletionMark
@@ -1083,8 +1105,9 @@ Procedure CheckObjectsBeforeWriting(Object, AutoUpdate = False) Export
 			
 			If Upper(Object.FullName) <> Upper(CommonUse.ObjectAttributeValue(Object.Ref, "FullName")) Then
 				CallExceptionByError(
-					NStr("en = 'It is possible to change ""Full
-					           |name"" attribute only in the main node of the distributed infobase.'"));
+					NStr("en='It is possible to change ""Full"
+"name"" attribute only in the main node of the distributed infobase.';ru='Изменение реквизита ""Полное"
+"имя"" может быть выполнено только в главном узле распределенной информационной базы.'"));
 			EndIf;
 		EndIf;
 	EndIf;
@@ -1095,7 +1118,7 @@ EndProcedure
 Procedure CallExceptionByError(ErrorText) Export
 	
 	Raise
-		NStr("en = 'An error occurred while working with ""Metadata objects IDs"" catalog.'") + "
+		NStr("en='An error occurred while working with ""Metadata objects IDs"" catalog.';ru='Ошибка при работе со справочником ""Идентификаторы объектов метаданных"".'") + "
 		           |
 		           |" + ErrorText;
 	
@@ -1494,13 +1517,14 @@ Function MetadataFindByFullName(FullName)
 				Return Undefined;
 			EndIf;
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while searching for a child subsystem by a full name (while searching ""%1"" was found ""%2"").
-				           |Do not give subsystems the same names or use the recent platform version.'"),
+				NStr("en='An error occurred while searching for a child subsystem by a full name (while searching ""%1"" was found ""%2"")."
+"Do not give subsystems the same names or use the recent platform version.';ru='Ошибка при поиске дочерней подсистемы по полному имени (при поиске ""%1"" была найдена ""%2"")."
+"Не следует называть подсистемы одинаково, либо использовать более новую версию платформы.'"),
 				FullName,
 				MetadataObject.FullName());
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while searching for metadata by a full name (while searching ""%1"" was found ""%2"").'"),
+				NStr("en='An error occurred while searching for metadata by a full name (while searching ""%1"" was found ""%2"").';ru='Ошибка при поиске объекта метаданных по полному имени (при поиске ""%1"" был найден ""%2"").'"),
 				FullName,
 				MetadataObject.FullName());
 		EndIf;
@@ -2059,7 +2083,7 @@ Function ExecuteItemReplacement(Val Replaceable, Val RefsTable, Val DisableWrite
 					ShowMessageAboutError(ErrorInfo());
 				EndTry;
 			Else
-				ShowMessageAboutError(NStr("en = 'Values are not replaced in the type data'") + ": " + TableRow.Metadata);
+				ShowMessageAboutError(NStr("en='Values are not replaced in the type data';ru='Значения не заменяются в данных типа'") + ": " + TableRow.Metadata);
 			EndIf;
 		EndDo;
 	
@@ -2104,7 +2128,7 @@ Procedure ShowMessageAboutError(Val Definition)
 	EndIf;
 	
 	WriteLogEvent(
-		NStr("en = 'Metadata objects IDs. Identifier replacement'",
+		NStr("en='Metadata objects IDs. Identifier replacement';ru='Идентификаторы объектов метаданных. Замена идентификатора'",
 		     CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Error,
 		,

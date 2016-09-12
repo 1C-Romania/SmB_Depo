@@ -201,14 +201,14 @@ Function CheckRecordsByPayrollSubsystemRegisters()
 	// 1. Register Accruals and deductions.
 	If Not ResultsArray[0].IsEmpty() Then
 		
-		ErrorText = NStr("en = 'There are transactions in infobase by the register ""Accruals And Deductions""! It is prohibited to clear the ""Payroll"" check box!'");
+		ErrorText = NStr("en='There are transactions in infobase by the register ""Accruals And Deductions""! It is prohibited to clear the ""Payroll"" check box!';ru='В информационной базе присутствуют движения по регистру ""Начисления и удержания""! Снятие флага ""Зарплата"" запрещено!'");
 		
 	EndIf;
 	
 	// 2. Register Payroll payments.
 	If Not ResultsArray[1].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'Infobase contains transactions by register ""Payroll payments""! It is prohibited to clear the ""Payroll"" check box!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='Infobase contains transactions by register ""Payroll payments""! It is prohibited to clear the ""Payroll"" check box!';ru='В информационной базе присутствуют движения по регистру ""Расчеты с персоналом""! Снятие флага ""Зарплата"" запрещено!'");
 		
 	EndIf;
 	
@@ -300,56 +300,56 @@ Function CancellationUncheckFunctionalOptionUsePayrollSubsystem()
 	// 1. Document Payroll.
 	If Not ResultsArray[0].IsEmpty() Then
 		
-		ErrorText = NStr("en = 'Infobase contains documents ""Payroll""! It is prohibited to clear the ""Payroll"" check box!'");
+		ErrorText = NStr("en='Infobase contains documents ""Payroll""! It is prohibited to clear the ""Payroll"" check box!';ru='В информационной базе присутствуют документы ""Начисление зарплаты""! Снятие флага ""Зарплата"" запрещено!'");
 		
 	EndIf;
 	
 	// 2. The Job sheet document
 	If Not ResultsArray[1].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'Infobase contains documents ""Job sheet"" which are used to accrue salary to employees! It is prohibited to clear the ""Payroll"" check box!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='Infobase contains documents ""Job sheet"" which are used to accrue salary to employees! It is prohibited to clear the ""Payroll"" check box!';ru='В информационной базе присутствуют документы ""Сдельный наряд"", которые начисляют зарплату сотрудникам! Снятие флага ""Зарплата"" запрещено!'");
 		
 	EndIf;
 	
 	// 3. Document Order - order.
 	If Not ResultsArray[2].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'Infobase contains documents ""Purchase order"" which are payroll to employees! It is prohibited to clear the ""Payroll"" check box!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='Infobase contains documents ""Purchase order"" which are payroll to employees! It is prohibited to clear the ""Payroll"" check box!';ru='В информационной базе присутствуют документы ""Заказ - наряд"", которые начисляют зарплату сотрудникам! Снятие флага ""Зарплата"" запрещено!'");
 		
 	EndIf;
 	
 	// 4. Document Enter opening balance.
 	If Not ResultsArray[3].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) +  NStr("en = 'Infobase contains documents ""Entry initial balance"" by accounting section ""Payroll payments""! It is prohibited to clear the ""Payroll"" check box!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) +  NStr("en='Infobase contains documents ""Entry initial balance"" by accounting section ""Payroll payments""! It is prohibited to clear the ""Payroll"" check box!';ru='В информационной базе присутствуют документы ""Ввод начальных остатвков"", по разделу учета ""Расчеты с персоналом""! Снятие флага ""Зарплата"" запрещено!'");
 		
 	EndIf;
 	
 	// 5. Document Cash payment.
 	If Not ResultsArray[4].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'Infobase contains documents ""Cash payment"" with operation kind ""Salary by statements"" and/or ""Employee salary""! It is prohibited to clear the ""Payroll"" check box!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='Infobase contains documents ""Cash payment"" with operation kind ""Salary by statements"" and/or ""Employee salary""! It is prohibited to clear the ""Payroll"" check box!';ru='В информационной базе присутствуют документы ""Расход из кассы"", с видом операции ""Зарплата по ведомости"" и/или ""Зарплата сотруднику""! Снятие флага ""Зарплата"" запрещено!'");
 		
 	EndIf;
 	
 	// 6. Document Payment expense.
 	If Not ResultsArray[5].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are documents ""Payment expense"" with operation kind ""Salary"" in infobase! It is prohibited to clear the ""Payroll"" check box!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are documents ""Payment expense"" with operation kind ""Salary"" in infobase! It is prohibited to clear the ""Payroll"" check box!';ru='В информационной базе присутствуют документы ""Расод со счета"", с видом операции ""Зарплата""! Снятие флага ""Зарплата"" запрещено!'");
 		
 	EndIf;
 	
 	// 7. Catalog Employees.
 	If Not ResultsArray[6].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are users with employment type ""Jobsharing"" in the infobase! It is prohibited to clear the ""Payroll"" check box!'");	
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are users with employment type ""Jobsharing"" in the infobase! It is prohibited to clear the ""Payroll"" check box!';ru='В информационной базе есть сотрудники с типом занятости ""Совместительство""! Снятие флага ""Зарплата"" запрещено!'");	
 		
 	EndIf;
 	
 	// 8. Catalog Accrual and deduction kinds.
 	If Not ResultsArray[7].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are catalog items ""Accrual and deduction kinds"" with type ""Tax"" in infobase! It is prohibited to clear the ""Payroll"" check box!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are catalog items ""Accrual and deduction kinds"" with type ""Tax"" in infobase! It is prohibited to clear the ""Payroll"" check box!';ru='В информационной базе присутствуют элементы справочника ""Виды начислений и удержаний"" с типом ""Налог""! Снятие флага ""Зарплата"" запрещено!'");
 		
 	EndIf;
 	
@@ -383,7 +383,7 @@ Function CancellationUncheckFunctionalOptionUseJobsharing()
 	
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'There are employees with occupation type ""Jobsharing"" in base! The flag removal is prohibited!'");
+		ErrorText = NStr("en='There are employees with occupation type ""Jobsharing"" in base! The flag removal is prohibited!';ru='В базе есть сотрудники с типом занятости ""Совместительство""! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -410,7 +410,7 @@ Function CancellationUncheckFunctionalOptionAccountingDoIncomeTax()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'There are catalog items ""Accrual and deduction kinds"" with type ""Tax"" in base! The flag removal is prohibited!'");	
+		ErrorText = NStr("en='There are catalog items ""Accrual and deduction kinds"" with type ""Tax"" in base! The flag removal is prohibited!';ru='В базе присутствуют элементы справочника ""Виды начислений и удержаний"" с типом ""Налог""! Снятие флага запрещено!'");	
 		
 	EndIf;
 	

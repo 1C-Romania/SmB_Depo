@@ -320,7 +320,7 @@ Procedure DocumentCurrencyOnChange(Item)
 			Mode = QuestionDialogMode.YesNo;
 			Response = Undefined;
 
-			ShowQueryBox(New NotifyDescription("DocumentCurrencyOnChangeEnd", ThisObject, New Structure("StructureData", StructureData)), NStr("en = 'Document currency is changed. Recalculate document amount?'"), Mode);
+			ShowQueryBox(New NotifyDescription("DocumentCurrencyOnChangeEnd", ThisObject, New Structure("StructureData", StructureData)), NStr("en='Document currency is changed. Recalculate document amount?';ru='Изменилась валюта документа. Пересчитать сумму документа?'"), Mode);
             Return;
 		EndIf;
 		DocumentCurrencyOnChangeFragment();
@@ -433,14 +433,14 @@ EndProcedure // FillByDocument()
 Procedure FillByBasis(Command)
 	
 	If Not ValueIsFilled(Object.BasisDocument) Then
-		ShowMessageBox(Undefined, NStr("en='Basis document is not selected!'"));
+		ShowMessageBox(Undefined, NStr("en='Basis document is not selected!';ru='Не выбран документ основание!'"));
 		Return;
 	EndIf;
 	
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en = 'Document will be completely refilled by ""Basis""! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 
 EndProcedure
 

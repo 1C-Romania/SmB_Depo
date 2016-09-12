@@ -18,16 +18,18 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If CertificateAddress = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Unable to open the
-				           |%1 certificate as it is not found in the catalog.'"), Parameters.Ref);
+				NStr("en='Unable to open the"
+"%1 certificate as it is not found in the catalog.';ru='Не удалось открыть сертификат ""%1"","
+"т.к. он не найден в справочнике.'"), Parameters.Ref);
 		EndIf;
 	Else // Imprint
 		CertificateAddress = CertificateAddress(Parameters.Imprint, UUID);
 		
 		If CertificateAddress = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Unable to open certificate as it was
-				           |not found using the %1 thumbprint.'"), Parameters.Imprint);
+				NStr("en='Unable to open certificate as it was"
+"not found using the %1 thumbprint.';ru='Не удалось открыть сертификат, т.к. он не найден"
+"по отпечатку ""%1"".'"), Parameters.Imprint);
 		EndIf;
 	EndIf;
 	
@@ -95,10 +97,10 @@ EndProcedure
 Procedure CheckEnd(Result, NotSpecified) Export
 	
 	If Result = True Then
-		ShowMessageBox(, NStr("en = 'The certificate is valid.'"));
+		ShowMessageBox(, NStr("en='The certificate is valid.';ru='Сертификат действителен.'"));
 		
 	ElsIf Result <> Undefined Then
-		ShowMessageBox(, NStr("en = 'Certificate is invalid due to:'")
+		ShowMessageBox(, NStr("en='Certificate is invalid due to:';ru='Сертификат недействителен по причине:'")
 			+ Chars.LF + Result);
 	EndIf;
 	
@@ -110,22 +112,22 @@ Procedure FillSubjectProperties(Certificate)
 	Collection = DigitalSignatureClientServer.CertificateSubjectProperties(Certificate);
 	
 	PropertiesPresentation = New ValueList;
-	PropertiesPresentation.Add("CommonName",         NStr("en = 'Common name'"));
-	PropertiesPresentation.Add("Country",           NStr("en = 'Country'"));
-	PropertiesPresentation.Add("Region",           NStr("en = 'Region'"));
-	PropertiesPresentation.Add("Settlement",  NStr("en = 'Settlement'"));
-	PropertiesPresentation.Add("Street",            NStr("en = 'Street'"));
+	PropertiesPresentation.Add("CommonName",         NStr("en='Common name';ru='Общее имя'"));
+	PropertiesPresentation.Add("Country",           NStr("en='Country';ru='Страна'"));
+	PropertiesPresentation.Add("Region",           NStr("en='Region';ru='Регион'"));
+	PropertiesPresentation.Add("Settlement",  NStr("en='Settlement';ru='НаселПункт'"));
+	PropertiesPresentation.Add("Street",            NStr("en='Street';ru='Улица'"));
 	PropertiesPresentation.Add("Company",      NStr("en = 'Company'"));
-	PropertiesPresentation.Add("Division",    NStr("en = 'Division'"));
-	PropertiesPresentation.Add("Position",        NStr("en = 'Position'"));
-	PropertiesPresentation.Add("Email", NStr("en = 'Email'"));
-	PropertiesPresentation.Add("OGRN",             NStr("en = 'OGRN'"));
-	PropertiesPresentation.Add("OGRNIP",           NStr("en = 'OGRNIP'"));
-	PropertiesPresentation.Add("INILA",            NStr("en = 'INILA'"));
-	PropertiesPresentation.Add("TIN",              NStr("en = 'TIN'"));
-	PropertiesPresentation.Add("Surname",          NStr("en = 'Surname'"));
-	PropertiesPresentation.Add("Name",              NStr("en = 'Name'"));
-	PropertiesPresentation.Add("Patronymic",         NStr("en = 'Patronymic'"));
+	PropertiesPresentation.Add("Division",    NStr("en='Division';ru='разделение'"));
+	PropertiesPresentation.Add("Position",        NStr("en='Position';ru='Position'"));
+	PropertiesPresentation.Add("Email", NStr("en='Email';ru='Электронное письмо'"));
+	PropertiesPresentation.Add("OGRN",             NStr("en='OGRN';ru='ОГРН'"));
+	PropertiesPresentation.Add("OGRNIP",           NStr("en='OGRNIP';ru='ОГРНИП'"));
+	PropertiesPresentation.Add("INILA",            NStr("en='INILA';ru='СНИЛС'"));
+	PropertiesPresentation.Add("TIN",              NStr("en='TIN';ru='ИНН'"));
+	PropertiesPresentation.Add("Surname",          NStr("en='Surname';ru='Фамилия'"));
+	PropertiesPresentation.Add("Name",              NStr("en='Name';ru='Имя'"));
+	PropertiesPresentation.Add("Patronymic",         NStr("en='Patronymic';ru='Отчество'"));
 	
 	For Each ItemOfList IN PropertiesPresentation Do
 		If Not ValueIsFilled(Collection[ItemOfList.Value]) Then
@@ -144,16 +146,16 @@ Procedure FillIssuerProperties(Certificate)
 	Collection = DigitalSignatureClientServer.CertificateIssuerProperties(Certificate);
 	
 	PropertiesPresentation = New ValueList;
-	PropertiesPresentation.Add("CommonName",         NStr("en = 'Common name'"));
-	PropertiesPresentation.Add("Country",           NStr("en = 'Country'"));
-	PropertiesPresentation.Add("Region",           NStr("en = 'Region'"));
-	PropertiesPresentation.Add("Settlement",  NStr("en = 'Settlement'"));
-	PropertiesPresentation.Add("Street",            NStr("en = 'Street'"));
+	PropertiesPresentation.Add("CommonName",         NStr("en='Common name';ru='Общее имя'"));
+	PropertiesPresentation.Add("Country",           NStr("en='Country';ru='Страна'"));
+	PropertiesPresentation.Add("Region",           NStr("en='Region';ru='Регион'"));
+	PropertiesPresentation.Add("Settlement",  NStr("en='Settlement';ru='НаселПункт'"));
+	PropertiesPresentation.Add("Street",            NStr("en='Street';ru='Улица'"));
 	PropertiesPresentation.Add("Company",      NStr("en = 'Company'"));
-	PropertiesPresentation.Add("Division",    NStr("en = 'Division'"));
-	PropertiesPresentation.Add("Email", NStr("en = 'Email'"));
-	PropertiesPresentation.Add("OGRN",             NStr("en = 'OGRN'"));
-	PropertiesPresentation.Add("TIN",              NStr("en = 'TIN'"));
+	PropertiesPresentation.Add("Division",    NStr("en='Division';ru='разделение'"));
+	PropertiesPresentation.Add("Email", NStr("en='Email';ru='Электронное письмо'"));
+	PropertiesPresentation.Add("OGRN",             NStr("en='OGRN';ru='ОГРН'"));
+	PropertiesPresentation.Add("TIN",              NStr("en='TIN';ru='ИНН'"));
 	
 	For Each ItemOfList IN PropertiesPresentation Do
 		If Not ValueIsFilled(Collection[ItemOfList.Value]) Then
@@ -174,14 +176,14 @@ Procedure FillCertificateInternalFields()
 	Certificate = New CryptoCertificate(CertificateBinaryData);
 	
 	If InternalFieldsGroup = "Common" Then
-		AddProperty(Certificate, "Version",                    NStr("en = 'Version'"));
-		AddProperty(Certificate, "StartDate",                NStr("en = 'Start date'"));
-		AddProperty(Certificate, "EndDate",             NStr("en = 'End date'"));
-		AddProperty(Certificate, "UseToSign",    NStr("en = 'Use to sign'"));
-		AddProperty(Certificate, "UseForEncryption", NStr("en = 'Use for encryption'"));
-		AddProperty(Certificate, "OpenKey",              NStr("en = 'Open key'"), True);
-		AddProperty(Certificate, "Imprint",                 NStr("en = 'Imprint'"), True);
-		AddProperty(Certificate, "SerialNumber",             NStr("en = 'Serial number'"), True);
+		AddProperty(Certificate, "Version",                    NStr("en='Version';ru='Версия'"));
+		AddProperty(Certificate, "StartDate",                NStr("en='Start date';ru='Дата начала'"));
+		AddProperty(Certificate, "EndDate",             NStr("en='End date';ru='Дата окончания'"));
+		AddProperty(Certificate, "UseToSign",    NStr("en='Use to sign';ru='Использовать для подписи'"));
+		AddProperty(Certificate, "UseForEncryption", NStr("en='Use for encryption';ru='Использовать для шифрования'"));
+		AddProperty(Certificate, "OpenKey",              NStr("en='Open key';ru='Открытый ключ'"), True);
+		AddProperty(Certificate, "Imprint",                 NStr("en='Imprint';ru='Отпечаток'"), True);
+		AddProperty(Certificate, "SerialNumber",             NStr("en='Serial number';ru='Серийный номер'"), True);
 	Else
 		Collection = Certificate[InternalFieldsGroup];
 		For Each KeyAndValue IN Collection Do

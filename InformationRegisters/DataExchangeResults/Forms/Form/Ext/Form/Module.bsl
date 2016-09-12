@@ -44,7 +44,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If CommonUseReUse.DataSeparationEnabled() AND UseVersioning Then
 		
-		Items.CollisionsOtherVersionAuthor.Title = NStr("en = 'Version is obtained from application'");
+		Items.CollisionsOtherVersionAuthor.Title = NStr("en='Version is obtained from application';ru='Версия получена из приложения'");
 		
 	EndIf;
 	
@@ -205,14 +205,16 @@ Procedure ColissionsOnActivateRow(Item)
 		
 		If Item.CurrentData.OtherVersionAccepted Then
 			
-			ConflictReason = NStr("en = 'Conflict was allowed automatically in favour of the application ""%1"".
-				|Version in this application was changed to version from another application.'");
+			ConflictReason = NStr("en='Conflict was allowed automatically in favour of the application ""%1""."
+"Version in this application was changed to version from another application.';ru='Конфликт был разрешен автоматически в пользу программы ""%1""."
+"Версия в этой программе была замененена на версию из другой программы.'");
 			ConflictReason = StringFunctionsClientServer.PlaceParametersIntoString(ConflictReason, Item.CurrentData.OtherVersionAuthor);
 			
 		Else
 			
-			ConflictReason =NStr("en = 'Conflict was allowed automatically in favour of this application.
-				|Version in this application was saved, version from another application was rejected.'");
+			ConflictReason =NStr("en='Conflict was allowed automatically in favour of this application."
+"Version in this application was saved, version from another application was rejected.';ru='Конфликт был разрешен автоматически в пользу этой программы."
+"Версия в этой программе была сохранена, версия из другой программы была отклонена.'");
 			
 		EndIf;
 		
@@ -388,7 +390,7 @@ EndProcedure
 Procedure AcceptVersionUnaccepted(Command)
 	
 	NotifyDescription = New NotifyDescription("AcceptVersionUnacceptedEnd", ThisObject);
-	ShowQueryBox(NOTifyDescription, NStr("en = 'Do you want to accept version despite the import prohibition?'"), QuestionDialogMode.YesNo, , DialogReturnCode.No);
+	ShowQueryBox(NOTifyDescription, NStr("en='Do you want to accept version despite the import prohibition?';ru='Принять версию, несмотря на запрет загрузки?'"), QuestionDialogMode.YesNo, , DialogReturnCode.No);
 	
 EndProcedure
 
@@ -456,11 +458,11 @@ Procedure ConflictResultChange(Command)
 		
 		If Items.Collisions.CurrentData.OtherVersionAccepted Then
 			
-			QuestionText = NStr("en = 'Do you want to replace the version obtained out of another application to the version out of this application?'");
+			QuestionText = NStr("en='Do you want to replace the version obtained out of another application to the version out of this application?';ru='Заменить версию, полученную из другой программы, на версию из этой программы?'");
 			
 		Else
 			
-			QuestionText = NStr("en = 'Do you want to replace the current version of the application by the version received out of another application?'");
+			QuestionText = NStr("en='Do you want to replace the current version of the application by the version received out of another application?';ru='Заменить версию этой программы на версию, полученную из другой программы?'");
 			
 		EndIf;
 		
@@ -636,7 +638,7 @@ Procedure FillNodeList()
 	EndIf;
 	
 	If ContextOpen AND ExchangeByRulesAbsent Then
-		Title = NStr("en = 'Conflicts when synchronizing the data'");
+		Title = NStr("en='Conflicts when synchronizing the data';ru='Конфликты при синхронизации данных'");
 		Items.SearchString.Visible = False;
 		Items.DataExchangeResults.CurrentPage = Items.DataExchangeResults.ChildItems.CollisionsPage;
 		Items.DataExchangeResults.PagesRepresentation = FormPagesRepresentation.None;
@@ -801,7 +803,7 @@ EndProcedure
 Procedure OpenObject(Item)
 	
 	If Item.CurrentRow = Undefined Or TypeOf(Item.CurrentRow) = Type("DynamicalListGroupRow") Then
-		ShowMessageBox(, NStr("en = 'The command can not be run for the specified object.'"));
+		ShowMessageBox(, NStr("en='The command can not be run for the specified object.';ru='Команда не может быть выполнена для указанного объекта.'"));
 		Return;
 	Else
 		ShowValue(, Item.CurrentData.Ref);
@@ -853,7 +855,7 @@ Procedure ShowDifference(Item)
 	
 	If ComparedVersions.Count() <> 2 Then
 		
-		CommonUseClientServer.MessageToUser(NStr("en = 'There is no version for comparison.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='There is no version for comparison.';ru='Нет версии для сравнения.'"));
 		Return;
 		
 	EndIf;
@@ -996,12 +998,12 @@ EndProcedure
 &AtServer
 Procedure PageHeaderRefresh()
 	
-	SetPageHeader(Items.UnpostedDocumentsPage, NStr("en= 'Unposted documents'"), UnpostedDocumentsCount());
-	SetPageHeader(Items.BlankAttributesPage, NStr("en= 'Blank attributes'"), CountBlankAttributes());
+	SetPageHeader(Items.UnpostedDocumentsPage, NStr("en='Unposted documents';ru='Непроведенные документы'"), UnpostedDocumentsCount());
+	SetPageHeader(Items.BlankAttributesPage, NStr("en='Blank attributes';ru='Незаполненные реквизиты'"), CountBlankAttributes());
 	
 	If UseVersioning Then
-		SetPageHeader(Items.CollisionsPage, NStr("en= 'Conflicts'"), NumberOfColission());
-		SetPageHeader(Items.PageUnacceptedByProhibitionDate, NStr("en= 'Unaccepted by prohibition date'"), NumberOfUnaccepted());
+		SetPageHeader(Items.CollisionsPage, NStr("en='Conflicts';ru='Конфликты'"), NumberOfColission());
+		SetPageHeader(Items.PageUnacceptedByProhibitionDate, NStr("en='Unaccepted by prohibition date';ru='Непринятые по дате запрета'"), NumberOfUnaccepted());
 	EndIf;
 	
 EndProcedure

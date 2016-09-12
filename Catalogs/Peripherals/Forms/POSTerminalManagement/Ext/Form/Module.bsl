@@ -36,7 +36,7 @@ Procedure ExecuteOperationByPaymentCardEnd(Result, Parameters) Export
 	If TypeOf(Result) = Type("Structure") Then
 		
 		If Not Parameters.Property("OperationKind") Then
-			MessageText = NStr("en = 'Transaction type is not specified.'");
+			MessageText = NStr("en='Transaction type is not specified.';ru='Не указан тип транзакции.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		EndIf;
@@ -64,9 +64,11 @@ Procedure ExecuteOperationByPaymentCardEnd(Result, Parameters) Export
 		ResultET = EquipmentManagerClient.RunCommand(Parameters.EnabledDeviceIdentifierET, Parameters.OperationKind, InputParameters, Output_Parameters);
 		
 		If Not ResultET Then
-			MessageText = NStr("en = 'When operation execution there
-					|was error: ""%ErrorDescription%"".
-					|Operation by card was not made.'");
+			MessageText = NStr("en='When operation execution there"
+"was error: ""%ErrorDescription%""."
+"Operation by card was not made.';ru='При выполнении операции возникла ошибка:"
+"""%ОписаниеОшибки%""."
+"Отмена по карте не была произведена'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
@@ -109,13 +111,15 @@ Procedure ExecuteOperationByPaymentCardEnd(Result, Parameters) Export
 				// Executing the operation on POS terminal
 				EquipmentManagerClient.RunCommand(Parameters.EnabledDeviceIdentifierET, "EmergencyVoid", InputParameters, Output_Parameters);
 				
-				MessageText = NStr("en = 'An error occurred while printing
-							|a slip receipt: ""%ErrorDetails%"".
-							|Operation by card has been cancelled.'");
+				MessageText = NStr("en='An error occurred while printing"
+"a slip receipt: ""%ErrorDetails%""."
+"Operation by card has been cancelled.';ru='При печати слип чека"
+"возникла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте была отменена.'");
 				MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescriptionFR);
 				CommonUseClientServer.MessageToUser(MessageText);
 			Else
-				MessageText = NStr("en = 'Operation has been successfully installed.'");
+				MessageText = NStr("en='Operation has been successfully installed.';ru='Операция выполнена успешно.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 			
@@ -241,21 +245,22 @@ Procedure PrintLastSlipReceiptEnd(DeviceIdentifier, Parameters) Export
 			
 			ResultFR = EquipmentManagerClient.RunCommand(DeviceIdentifier, "PrintText", InputParameters, Output_Parameters);
 			If Not ResultFR Then
-				MessageText = NStr("en = 'When document printing there
-						|is error: ""%ErrorDescription%"".'");
+				MessageText = NStr("en='When document printing there"
+"is error: ""%ErrorDescription%"".';ru='При печати документа произошла ошибка:"
+"""%ОписаниеОшибки%"".'");
 				MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 		Else
-			MessageText = NStr("en = 'There is no last slip receipt.'");
+			MessageText = NStr("en='There is no last slip receipt.';ru='Отсутствует последний слип чек.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
 		// FR device disconnect
 		EquipmentManagerClient.DisableEquipmentById(UUID, DeviceIdentifier);
 		
 	Else
-		MessageText = NStr("en = 'An error occurred while connecting
-			|the fiscal register: ""%ErrorDescription%"".'");
+		MessageText = NStr("en='An error occurred while connecting"
+"the fiscal register: ""%ErrorDescription%"".';ru='При подключении фискального регистратора произошла ошибка: ""%ОписаниеОшибки%"".'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -269,8 +274,8 @@ Procedure PrintLastSlipReceipt(Command)
 	
 	NotifyDescription = New NotifyDescription("PrintLastSlipReceiptEnd", ThisObject, Parameters);
 	EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "FiscalRegister",
-			NStr("en='Select a fiscal register to print POS receipts.'"), 
-			NStr("en='Fiscal register for printing acquiring receipts is not enabled.'"));
+			NStr("en='Select a fiscal register to print POS receipts.';ru='Выберите фискальный регистратор для печати эквайринговых чеков'"), 
+			NStr("en='Fiscal register for printing acquiring receipts is not enabled.';ru='Фискальный регистратор для печати эквайринговых чеков не подключен.'"));
 			
 EndProcedure
 

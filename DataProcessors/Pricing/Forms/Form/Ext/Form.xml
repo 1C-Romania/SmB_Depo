@@ -25,12 +25,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Step 1: Select a price kind</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаг 1: Выбрать вид цен</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Step1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаг1</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -58,6 +66,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Specify a price type for the products and services to set prices</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Укажите вид цен номенклатуры, для которого будут установлены цены</v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 					<Events>
@@ -72,12 +84,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Step 2: Select products and services</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаг 2: Выбрать номенклатуру</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Step2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаг2</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -154,6 +174,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Result price record.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Результат записи цены.</v8:content>
 								</v8:item>
 							</ToolTip>
 							<EditMode>EnterOnInput</EditMode>
@@ -246,12 +270,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Step 3: Change prices</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаг 3: Изменить цены</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Step3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаг3</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>150</Width>
@@ -272,6 +304,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Choose action...</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Выберите действие...</v8:content>
+									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:string">Choose action...</Value>
 							</xr:Value>
@@ -284,6 +320,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>By prices</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>По ценам</v8:content>
 									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:string">FillPricesByPriceKind</Value>
@@ -298,6 +338,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>By counterparty price</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>По ценам контрагента</v8:content>
+									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:string">FillPricesByCounterpartyPriceKind</Value>
 							</xr:Value>
@@ -310,6 +354,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Add by supplier invoice</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>По приходной накладной</v8:content>
 									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:string">FillPricesByReceiptInvoice</Value>
@@ -324,6 +372,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Calculate...</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Подсчитайте ...</v8:content>
+									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:string">CalculateByBasicPriceKind</Value>
 							</xr:Value>
@@ -336,6 +388,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Remove actuality</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Снять актуальность</v8:content>
 									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:string">RemoveActuality</Value>
@@ -350,6 +406,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Delete</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Удалить</v8:content>
+									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:string">DeletePriceListRecords</Value>
 							</xr:Value>
@@ -362,6 +422,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Rounding</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Округление</v8:content>
 									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:string">Rounding</Value>
@@ -376,6 +440,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Change amount</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Изменить на сумму</v8:content>
+									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:string">ChangeForAmount</Value>
 							</xr:Value>
@@ -388,6 +456,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Change on %</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Изменить на %</v8:content>
 									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:string">ChangeForPercent</Value>
@@ -406,11 +478,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Page setup</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметры страницы</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page setup</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметры страницы</v8:content>
 						</v8:item>
 					</ToolTip>
 					<PagesRepresentation>None</PagesRepresentation>
@@ -422,11 +502,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Page0</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница0</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Page0</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница0</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ExtendedTooltip name="Page0ExtendedTooltip" id="278"/>
@@ -443,11 +531,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -457,6 +553,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Current prices will be taken from the selected price type for specified date</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Будет выполнено заполнение актуальными ценами по выбранному виду цен на указанную дату</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -501,11 +601,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -515,6 +623,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Current prices of the counterparty will be filled in for the selected price type and date</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Будет выполнено заполнение актуальными ценами контрагента по выбранному виду цен на указанную дату</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -563,11 +675,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -577,6 +697,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Current prices will be filled in with the standard price types for the specified date, and they will be increased by a percent</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Будет выполнено заполнение цен по базовому виду цен, на указанный период и увеличение их на процент</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -589,6 +713,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Base</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>База</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="BasePriceKind3ContextMenu" id="189"/>
 									<ExtendedTooltip name="BasePriceKind3ExtendedTooltip" id="292"/>
@@ -599,6 +727,10 @@
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
+											<v8:content>%</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
 											<v8:content>%</v8:content>
 										</v8:item>
 									</Title>
@@ -628,11 +760,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -642,6 +782,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Prices will be increased or decreased by the selected percent</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Цены будут увеличены или уменьшены на указанный процент</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -662,6 +806,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>+</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>+</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">+</Value>
 											</xr:Value>
@@ -673,6 +821,10 @@
 												<Presentation>
 													<v8:item>
 														<v8:lang>en</v8:lang>
+														<v8:content>-</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
 														<v8:content>-</v8:content>
 													</v8:item>
 												</Presentation>
@@ -688,6 +840,10 @@
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
+											<v8:content>%</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
 											<v8:content>%</v8:content>
 										</v8:item>
 									</Title>
@@ -714,11 +870,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -728,6 +892,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Prices will be increased or decreased by the selected amount in currency in the tabular section</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Цены будут увеличены или уменьшены на указанную сумму в валюте цен табличной части</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -748,6 +916,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>+</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>+</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">+</Value>
 											</xr:Value>
@@ -759,6 +931,10 @@
 												<Presentation>
 													<v8:item>
 														<v8:lang>en</v8:lang>
+														<v8:content>-</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
 														<v8:content>-</v8:content>
 													</v8:item>
 												</Presentation>
@@ -792,11 +968,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -806,6 +990,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Selected prices will be rounded off according to the indicated rules</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Отмеченные цены в таблице будут округлены по указанным правилам</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -840,11 +1028,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -854,6 +1050,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>If the selected supplier invoice note contains the products and services, a price will be set as specified in the document</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Если номенклатура присутствует в выбранной приходной накладной, то будет установлена цена, указанная в документе</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -881,11 +1081,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -895,6 +1103,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>From the specified period, no prices according to the selected price type will be shown in the price list for the selected products and services</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>С указанного периода для отмеченной номенклатуры в прайс-листе будут отсутствовать цены по выбранному виду цен</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -920,11 +1132,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Page1</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница1</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -934,6 +1154,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>For marked products and services last will be removed price on a specified date for the selected price kind.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Для помеченной номенклатуры будет удалена посл. цена на указанную дату по выбранному виду цен.</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -963,12 +1187,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Step 4: Write prices</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаг 4: Записать цены</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Step4</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаг4</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>150</Width>
@@ -999,6 +1231,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>The selected products and services prices will be set according to the selected price type and date</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Будут установлены отмеченные цены номенклатуры по выбранному виду цен на указанную дату</v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 				</Button>
@@ -1018,6 +1254,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Inventory prices</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цены номенлатуры</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1028,6 +1268,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Check</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1040,6 +1284,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Products and services</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция и услуги</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
@@ -1049,6 +1297,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Characteristic</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Characteristic</v8:content>
 						</v8:item>
 					</Title>
@@ -1065,6 +1317,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Price</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
@@ -1080,6 +1336,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>UOM</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Единицы измерения</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1101,6 +1361,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
@@ -1116,6 +1380,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Initial price</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исходная цена</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1135,6 +1403,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Price kind</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид цены</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.PriceKinds</v8:Type>
@@ -1144,6 +1416,10 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>As of</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>As of</v8:content>
 				</v8:item>
 			</Title>
@@ -1159,6 +1435,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Percent</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Процент</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1176,6 +1456,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Description</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Description</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1189,6 +1473,10 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>Amount</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>Amount</v8:content>
 				</v8:item>
 			</Title>
@@ -1207,6 +1495,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Price kind</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид цены</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.PriceKinds</v8:Type>
@@ -1218,6 +1510,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Price kind</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид цены</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.CounterpartyPriceKind</v8:Type>
@@ -1227,6 +1523,10 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>As of</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>As of</v8:content>
 				</v8:item>
 			</Title>
@@ -1243,6 +1543,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Round precision</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок округления</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.RoundingMethods</v8:Type>
@@ -1253,6 +1557,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Round up</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Округлять в большую сторону</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1265,6 +1573,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Supplier invoice</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приходная накладная</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:DocumentRef.SupplierInvoice</v8:Type>
@@ -1275,6 +1587,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Title</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>НАЗВАНИЕ</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1291,6 +1607,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Counterparty</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагенты</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
@@ -1301,6 +1621,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Plus minus</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Плюс минус</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1317,6 +1641,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Current action</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущее действие</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1331,6 +1659,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill current action</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущее действие заполнения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1347,6 +1679,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Round precision0 01</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок округления0 01</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.RoundingMethods</v8:Type>
@@ -1357,6 +1693,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Author</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ведомость составил</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1369,6 +1709,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Round precision</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок округления</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.RoundingMethods</v8:Type>
@@ -1379,6 +1723,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Round up</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Округлять в большую сторону</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1391,6 +1739,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Prices base type</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Базовый вид цен</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.PriceKinds</v8:Type>
@@ -1401,6 +1753,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Markup</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наценка</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1418,6 +1774,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>National currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Национальная валюта</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
@@ -1428,6 +1788,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Filling prices</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнение цены</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1446,11 +1810,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>By prices</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По ценам</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill by selected price kind on date</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по выбранному виду цен на дату</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1466,11 +1838,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Calculate</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Calculate by basic price kind</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать по базовому виду цен</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CalculateByBasicPriceKind</Action>
@@ -1481,11 +1861,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Set</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Set</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1501,11 +1889,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Uncheck marks</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять пометки</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Uncheck marks</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять пометки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1520,10 +1916,18 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Mark all</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Mark all</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>Mark all</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>Mark all</v8:content>
 				</v8:item>
 			</ToolTip>
@@ -1539,11 +1943,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Remove actuality</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять актуальность</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Remove actuality</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять актуальность</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>RemoveActuality</Action>
@@ -1554,11 +1966,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Delete</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Delete price list records</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить записи прайс листа</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>DeletePriceListRecords</Action>
@@ -1569,11 +1989,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Change on %</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить на %</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change on percent</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить на процент</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ChangeForPercent</Action>
@@ -1584,11 +2012,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>By document</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По документу</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill out the prices with the supplier invoice note</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить цены по приходной накладной</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1604,11 +2040,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Rounding</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Округление</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Rounding</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Округление</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Rounding</Action>
@@ -1619,11 +2063,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>By counterparty price</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По ценам контрагента</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill prices by counterparty price type</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить цены по виду цен контрагента</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1639,11 +2091,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Change amount</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить на сумму</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change amount</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить на сумму</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ChangeForAmount</Action>
@@ -1654,11 +2114,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Execute</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Execute actions</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить действия</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1674,11 +2142,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Close</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Close</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1694,11 +2170,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear price tabular section</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить табличную часть цен</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ClearPriceTabularSection</Action>
@@ -1709,11 +2193,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill price tabular section</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить табличную часть цен</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>FillPriceTabularSection</Action>

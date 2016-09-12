@@ -328,7 +328,7 @@ Function ReadJournal()
 			UUID, 
 			"EventLogMonitor.ReadEventLogMonitorEvents", 
 			ReportParameters, 
-			NStr("en = 'Event log updating'"));
+			NStr("en='Event log updating';ru='Обновление журнала регистрации'"));
 						
 		StorageAddress       = ExecutionResult.StorageAddress;
 		JobID = ExecutionResult.JobID;		

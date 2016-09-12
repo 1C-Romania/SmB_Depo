@@ -25,11 +25,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	RulesFromFile = InformationRegisters.DataExchangeRules.RulesFromFileUsed(ExchangePlanName, True);
 	
 	If RulesFromFile.ConversionRules AND RulesFromFile.RegistrationRules Then
-		RulesType = NStr("en = 'conversion and registration'");
+		RulesType = NStr("en='conversion and registration';ru='конвертации и регистрации'");
 	ElsIf RulesFromFile.ConversionRules Then
-		RulesType = NStr("en = 'conversion'");
+		RulesType = NStr("en='conversion';ru='преобразование'");
 	ElsIf RulesFromFile.RegistrationRules Then
-		RulesType = NStr("en = 'registration'");
+		RulesType = NStr("en='registration';ru='регистрационный'");
 	EndIf;
 	
 	Items.TextRulesFromFile.Title = StringFunctionsClientServer.PlaceParametersIntoString(

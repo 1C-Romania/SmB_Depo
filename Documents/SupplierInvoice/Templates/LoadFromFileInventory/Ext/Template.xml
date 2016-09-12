@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -82,6 +152,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Barcode</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Штрихкод</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>ProductsAndServices</detailParameter>
 					<note>
@@ -92,6 +166,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Products and services barcode</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Штрихкод номенклатуры</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -116,6 +194,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>SKU</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Артикул</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>ProductsAndServices</detailParameter>
 					<note>
@@ -126,6 +208,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Products and services SKU, receipt of which is displayed by the current document</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Артикул номенклатуры, поступление которой отражается данным документом</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -150,6 +236,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Products and services</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция и услуги</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>ProductsAndServices</detailParameter>
 					<note>
@@ -160,6 +250,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Products and services item the receipt of which is shown in the current document</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Позиция номенклатуры, поступление которой отражается данным документом</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -184,6 +278,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Quantity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>Quantity</detailParameter>
 					<note>
@@ -194,6 +292,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Quantity of the received products and services item</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество поступившей номенклатурной позиции</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -218,6 +320,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Price</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>Price</detailParameter>
 					<note>
@@ -228,6 +334,11 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Price of the received products and services item
+</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Цена поступившей номенклатурной позиции
 </v8:content>
 							</v8:item>
 						</text>
@@ -253,6 +364,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Unit of measure</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Единица измерения</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>MeasurementUnit</detailParameter>
 					<note>
@@ -263,6 +378,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Unit of measurement of the products and services item</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Единица измерения номенклатурной позиции.</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -287,6 +406,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>НДС</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>VATRate</detailParameter>
 					<note>
@@ -297,6 +420,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>VAT rate</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Указывается ставка НДС</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -321,6 +448,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Batch</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Партия</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -330,6 +461,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>This field displays item batch</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>В данном поле указывается партия номенклатуры.</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -354,6 +489,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Characteristic</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Characteristic</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>Characteristic</detailParameter>
 					<note>
@@ -364,6 +503,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>If necessary, the characteristic of products and services is specified in this field</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>При необходимости в данном поле указывается характеристика номенклатуры</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>

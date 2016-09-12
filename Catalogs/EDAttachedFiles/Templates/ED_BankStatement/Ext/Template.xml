@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -246,6 +316,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>(time and date of the statement matching)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(дата и время составления выписки)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -262,6 +336,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Statement of account</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выписка по счету</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -319,6 +397,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>For the period since [StartDate] till [EndDate]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>за период с [ДатаНачала] по [ДатаОкончания]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -369,6 +451,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Invoice No.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет-фактура №</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -405,6 +491,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Incoming balance: [InBalance]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Входящий остаток: [ВхОстаток]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -429,6 +519,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Data of oper.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата опер.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -439,6 +533,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>FB</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КО</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -451,6 +549,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>number of doc.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер докум.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -461,6 +563,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Debit</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дебет</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -473,6 +579,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Credit</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кредит</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -483,6 +593,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Correspondent attributes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизиты корреспондента</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -495,6 +609,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Operation basis</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основание операции</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -515,6 +633,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>BIN</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БИК</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -524,6 +646,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
 					</tl>
@@ -636,6 +762,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Incoming balance</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Входящий остаток</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -648,6 +778,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Turnovers for the period since [StartDate] till [EndDate]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обороты за период с [ДатаНачала] по [ДатаОкончания]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -659,6 +793,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Outgoing balance</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исходящий остаток</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -679,6 +817,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Debit</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дебет</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -690,6 +832,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Credit</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кредит</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -849,6 +995,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>BIN</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БИК</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1307,6 +1457,10 @@
 		<format>
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>DLF=D</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>DLF=D</v8:content>
 			</v8:item>
 		</format>

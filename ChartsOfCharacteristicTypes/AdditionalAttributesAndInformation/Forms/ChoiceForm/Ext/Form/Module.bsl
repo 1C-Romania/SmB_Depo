@@ -29,10 +29,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If ThisIsAdditionalInformation = True Then
 			AutoTitle = False;
-			Title = NStr("en = 'Common additional information selection'");
+			Title = NStr("en='Common additional information selection';ru='Выбор общего дополнительного сведения'");
 		ElsIf ThisIsAdditionalInformation = False Then
 			AutoTitle = False;
-			Title = NStr("en = 'Common additional attribute selection'");
+			Title = NStr("en='Common additional attribute selection';ru='Выбор общего дополнительного реквизита'");
 		EndIf;
 		
 	ElsIf Parameters.OwnersSelectionOfAdditionalValues Then
@@ -50,7 +50,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			DataCompositionComparisonType.NotFilled, , True);
 		
 		AutoTitle = False;
-		Title = NStr("en = 'Example choice'");
+		Title = NStr("en='Example choice';ru='Выбор образца'");
 		
 		Items.FormCreate.Visible = False;
 		Items.FormCopy.Visible = False;
@@ -67,7 +67,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	CommonUseClientServer.SetDynamicListParameter(
 		List,
 		"PresentationGroupingOfCommonProperties",
-		NStr("en = 'Common (for several sets)'"),
+		NStr("en='Common (for several sets)';ru='Общие (для нескольких наборов)'"),
 		True);
 	
 	// Properties grouping by sets.

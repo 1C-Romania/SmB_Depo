@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SetPrivilegedMode(True);
 	
 	If Not OfflineWorkService.ThisIsOfflineWorkplace() Then
-		Raise NStr("en = 'This infobase is not an offline workplace.'");
+		Raise NStr("en='This infobase is not an offline workplace.';ru='Эта информационная база не является автономным рабочим местом.'");
 	EndIf;
 	
 	ApplicationInService = OfflineWorkService.ApplicationInService();
@@ -235,11 +235,13 @@ Procedure RefreshVisibleAtServer()
 	Items.InstallUpdate.Visible = IsInRoleSynchronizationSettingData;
 	
 	If IsInRoleSynchronizationSettingData Then
-		Items.InformationLabelReceivedRefreshEnabled.Title = NStr("en = 'Software update has been exported from the Internet.
-			|It is necessary to install the received update after which the synchronization will be continued.'");
+		Items.InformationLabelReceivedRefreshEnabled.Title = NStr("en='Software update has been exported from the Internet."
+"It is necessary to install the received update after which the synchronization will be continued.';ru='Получено обновление программы из Интернета."
+"Необходимо установить полученное обновление, после чего синхронизация будет продолжена.'");
 	Else
-		Items.InformationLabelReceivedRefreshEnabled.Title = NStr("en = 'Software update has been exported from the Internet.
-			|Contact the infobase administrator to install the received update.'");
+		Items.InformationLabelReceivedRefreshEnabled.Title = NStr("en='Software update has been exported from the Internet."
+"Contact the infobase administrator to install the received update.';ru='Получено обновление программы из Интернета."
+"Обратитесь к администратору информационной базы для установки полученного обновления.'");
 	EndIf;
 	
 	ShowSynchronizationLongTimeWarning = OfflineWorkService.QuestionAboutLongSynchronizationSettingCheckBox();
@@ -310,9 +312,9 @@ EndProcedure
 Procedure OnChangeScheduleDataSynchronization()
 	
 	Items.DataSynchronizationScheduleVariant.ChoiceList.Clear();
-	Items.DataSynchronizationScheduleVariant.ChoiceList.Add(1, NStr("en = 'Every 15 minutes'"));
-	Items.DataSynchronizationScheduleVariant.ChoiceList.Add(2, NStr("en = 'Every hour'"));
-	Items.DataSynchronizationScheduleVariant.ChoiceList.Add(3, NStr("en = 'Each day at 10:00, except Sa and Su'"));
+	Items.DataSynchronizationScheduleVariant.ChoiceList.Add(1, NStr("en='Every 15 minutes';ru='Каждые 15 минут'"));
+	Items.DataSynchronizationScheduleVariant.ChoiceList.Add(2, NStr("en='Every hour';ru='Каждый час'"));
+	Items.DataSynchronizationScheduleVariant.ChoiceList.Add(3, NStr("en='Each day at 10:00, except Sa and Su';ru='Каждый день в 10:00, кроме сб. и вс.'"));
 	
 	// Define the current schedule variant of the data synchronization execution
 	TypesOfSchedulingDataSynchronization = New Map;

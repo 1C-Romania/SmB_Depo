@@ -14,14 +14,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			   AND Parameters.GLExpenseAccount.TypeOfAccount <> Enums.GLAccountsTypes.CostOfGoodsSold
 			   AND Parameters.GLExpenseAccount.TypeOfAccount <> Enums.GLAccountsTypes.Incomings Then
 				
-				MessageText = NStr("en = 'Business Activity should not be filled for this type of account!'");
+				MessageText = NStr("en='Business Activity should not be filled for this type of account!';ru='Для данного типа счета направление деятельности не указывается!'");
 				SmallBusinessServer.ShowMessageAboutError(, MessageText, , , , Cancel);
 				
 			EndIf;
 			
 		Else
 			
-			MessageText = NStr("en = 'Account is not selected!'");
+			MessageText = NStr("en='Account is not selected!';ru='Не выбран счет!'");
 			SmallBusinessServer.ShowMessageAboutError(, MessageText, , , , Cancel);
 			
 		EndIf;

@@ -53,6 +53,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Enable and disable full-text search, update full-text search index and extraction of texts from files setup for searching.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Включение и отключение полнотекстового поиска, обновление индекса полнотекстового поиска, а также настройка извлечения текстов из файлов для использования при поиске.</v8:content>
+						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
 					<ContextMenu name="SectionDescriptionContextMenu" id="137"/>
@@ -66,12 +70,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Full-text search</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полнотекстовый поиск</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group use full text search</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа использовать полнотекстовый поиск</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -84,6 +96,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Full-text data search</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Полнотекстовый поиск данных</v8:content>
 						</v8:item>
 					</Title>
 					<TitleLocation>Right</TitleLocation>
@@ -108,12 +124,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Management</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>управление</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group automatic text extraction management</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа управление автоматическим извлечением текстов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -173,6 +197,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Extraction of texts</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Извлечение текстов</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
@@ -194,6 +222,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Text extraction out of the files is necessary for the full-text search in the application.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Извлечение текстов из файлов необходимо для полнотекстового поиска в программе.</v8:content>
 						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
@@ -236,6 +268,10 @@
 												<v8:lang>en</v8:lang>
 												<v8:content>All the servers in the 1C:Enterprise cluster work under Windows OS</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Все сервера в кластере 1С:Предприятие работают под управлением ОС Windows</v8:content>
+											</v8:item>
 										</Presentation>
 										<Value xsi:type="xs:decimal">1</Value>
 									</xr:Value>
@@ -248,6 +284,10 @@
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>One or several servers work under Linux OS</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Один или несколько серверов работают под управлением ОС Linux</v8:content>
 											</v8:item>
 										</Presentation>
 										<Value xsi:type="xs:decimal">0</Value>
@@ -286,6 +326,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Configure the scheduled job</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настроить регламентное задание</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 									<ExtendedTooltip name="EditScheduledTaskExtendedTooltip" id="129">
@@ -294,6 +338,10 @@
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>Automatic text extraction on the server on schedule.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Автоматическое извлечения текстов на сервере по расписанию.</v8:content>
 											</v8:item>
 										</Title>
 									</ExtendedTooltip>
@@ -308,6 +356,10 @@
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>Text extraction in the thin client in the workstation under OS Windows.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Извлечение текстов в тонком клиенте на рабочей станции под управлением ОС Windows.</v8:content>
 											</v8:item>
 										</Title>
 									</ExtendedTooltip>
@@ -326,6 +378,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Index status</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус индекса</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -341,6 +397,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Index actuality date</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата актуальности индекса</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
@@ -354,6 +414,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Extract file texts</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Извлекать тексты файлов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -370,6 +434,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Constants set</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Набор констант</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -400,6 +468,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Index true</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Индекс актуален</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -411,6 +483,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Work mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим работы</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -419,6 +495,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Use full-text search</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать полнотекстовый поиск</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -438,11 +518,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Update index</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить индекс</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update index</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить индекс</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>UpdateIndex</Action>
@@ -453,11 +541,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear index</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить индекс</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear index</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить индекс</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ClearIndex</Action>
@@ -468,11 +564,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Launch text extraction</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запустить извлечение текстов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Processing for the automatic text extraction out of the files on the work station under Windows OS.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обработка для автоматического извлечения текстов из файлов на рабочей станции под управлением ОС Windows.</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>RunExtractionTexts</Action>
@@ -483,11 +587,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Schedule</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расписание</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Schedule and other scheduled job parameters on the text extraction out of the files.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расписание и другие параметры регламентного задания по извлечению текстов из файлов.</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EditScheduledJob</Action>

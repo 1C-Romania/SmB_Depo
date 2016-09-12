@@ -17,8 +17,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not CommonSettings.UseEncryption
 	   AND Not CommonSettings.CertificateIssueApplicationAvailable Then
 		
-		Items.FormCreate.Title = NStr("en = 'Add'");
-		Items.ListContextMenuCreate.Title = NStr("en = 'Add'");
+		Items.FormCreate.Title = NStr("en='Add';ru='Добавить'");
+		Items.ListContextMenuCreate.Title = NStr("en='Add';ru='Добавить'");
 	EndIf;
 	
 EndProcedure
@@ -77,11 +77,11 @@ Procedure OnChangeSigningOrEncryptionUsage()
 	If CommonSettings.UseEncryption
 	 Or CommonSettings.CertificateIssueApplicationAvailable Then
 		
-		Items.FormCreate.Title = NStr("en = 'Add...'");
-		Items.ListContextMenuCreate.Title = NStr("en = 'Add...'");
+		Items.FormCreate.Title = NStr("en='Add...';ru='Добавить...'");
+		Items.ListContextMenuCreate.Title = NStr("en='Add...';ru='Добавить...'");
 	Else
-		Items.FormCreate.Title = NStr("en = 'Add'");
-		Items.ListContextMenuCreate.Title = NStr("en = 'Add'");
+		Items.FormCreate.Title = NStr("en='Add';ru='Добавить'");
+		Items.ListContextMenuCreate.Title = NStr("en='Add';ru='Добавить'");
 	EndIf;
 	
 EndProcedure

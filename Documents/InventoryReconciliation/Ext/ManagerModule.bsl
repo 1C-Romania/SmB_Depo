@@ -645,7 +645,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			
 			// Displaying invoice header
 			TemplateArea = Template.GetArea("Title");
-			TemplateArea.Parameters.HeaderText = NStr("en ='Inventory survey No '") + DocumentNumber + NStr("en = ' from '") + Format(Header.DocumentDate, "DLF=DD");
+			TemplateArea.Parameters.HeaderText = NStr("en='Inventory survey No ';ru='Инвентаризация запасов № '") + DocumentNumber + NStr("en=' from ';ru=' от '") + Format(Header.DocumentDate, "DLF=DD");
 			SpreadsheetDocument.Put(TemplateArea);
 			
 			// Output company and warehouse data
@@ -751,42 +751,42 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InventoryReconciliation,INV3,INV3WithoutFactData,INV19";
-	PrintCommand.Presentation = NStr("en = 'Custom kit of documents'");
+	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InventoryReconciliation";
-	PrintCommand.Presentation = NStr("en = 'Inventory reconciliation'");
+	PrintCommand.Presentation = NStr("en='Inventory reconciliation';ru='Инвентаризации запасов'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "INV3";
-	PrintCommand.Presentation = NStr("en = 'INV-3 (Inventory List)'");
+	PrintCommand.Presentation = NStr("en='INV-3 (Inventory List)';ru='ИНВ-3 (Инвентаризационная опись товаров)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "INV3WithoutFactData";
-	PrintCommand.Presentation = NStr("en = 'INV-Inventory List with Empty Actual Data'");
+	PrintCommand.Presentation = NStr("en='INV-Inventory List with Empty Actual Data';ru='ИНВ-3 (Инвентаризационная опись с пустыми фактическими данными)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 10;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "INV19";
-	PrintCommand.Presentation = NStr("en = 'INV-19 (Collation Statement)'");
+	PrintCommand.Presentation = NStr("en='INV-19 (Collation Statement)';ru='ИНВ-19 (Сличительная ведомость)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 14;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MerchandiseFillingForm";
-	PrintCommand.Presentation = NStr("en = 'Merchandise filling form'");
+	PrintCommand.Presentation = NStr("en='Merchandise filling form';ru='Бланк товарного наполнения'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 17;

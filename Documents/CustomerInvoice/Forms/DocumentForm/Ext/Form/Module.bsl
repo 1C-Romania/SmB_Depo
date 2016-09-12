@@ -514,7 +514,7 @@ Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Expo
 				Object.DiscountPercentByDiscountCard = ClosingResult.DiscountPercentByDiscountCard;
 			Else // We will show the message and we will not change discount card data.
 				CommonUseClientServer.MessageToUser(
-				NStr("en = 'Discount card is not read. Discount card owner does not match with a counterparty in the document.'"),
+				NStr("en='Discount card is not read. Discount card owner does not match with a counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
 				,
 				"Counterparty",
 				"Object");
@@ -597,7 +597,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en = '%Currency%'");
+			LabelText = NStr("en='%Currency%';ru='%Вал%'");
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
@@ -605,9 +605,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Price kind
 	If ValueIsFilled(LabelStructure.PriceKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%PriceKind%'");
+			LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
 		Else	
-			LabelText = LabelText + NStr("en = ' • %PriceKind%'");
+			LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
@@ -615,9 +615,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Discount type, markup
 	If ValueIsFilled(LabelStructure.DiscountKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%DiscountMarkupKind%'");
+			LabelText = LabelText + NStr("en='%DiscountMarkupKind%';ru='%ВидСкидкиНаценки%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %MarkupDiscountKind%'");
+			LabelText = LabelText + NStr("en=' • %MarkupDiscountKind%';ru=' • %ВидСкидкиНаценки%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
 	EndIf;
@@ -625,9 +625,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Discount card.
 	If ValueIsFilled(LabelStructure.DiscountCard) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%DiscountCard%'");
+			LabelText = LabelText + NStr("en='%DiscountCard%';ru='%ДисконтнаяКарта%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %DiscountCard%'");
+			LabelText = LabelText + NStr("en=' • %DiscountCard%';ru=' • %ДисконтнаяКарта%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%DiscountCard%", String(LabelStructure.DiscountPercentByDiscountCard)+"% by map"); //ShortLP(String(LabelStructure.DiscountCard)));
 	EndIf;	
@@ -635,9 +635,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%VATTaxation%'");
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %VATTaxation%'");
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
@@ -645,9 +645,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then	
 		If LabelStructure.AmountIncludesVAT Then
-			LabelText = NStr("en = 'Amount includes VAT'");
+			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
 		Else
-			LabelText = NStr("en = 'Amount does not include VAT'");
+			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
 		EndIf;
 	EndIf;
 	
@@ -838,7 +838,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en = 'Data by barcode is not found: %1%; quantity: %2%'");
+		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -960,7 +960,7 @@ Procedure ProcessContractChange()
 			DocumentParameters.Insert("ContractData", ContractData);
 			
 			NotifyDescription = New NotifyDescription("PrepaymentClearingQuestionEnd", ThisObject, DocumentParameters);
-			QuestionText = NStr("en = 'Prepayment set-off will be cleared, do you want to continue?'");
+			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
 			
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 			Return;
@@ -1009,7 +1009,7 @@ EndProcedure
 &AtClient
 Procedure HandleContractConditionsChange(ContractData, ContractBeforeChange)
 	
-	Object.StampBase = NStr("en = 'Contract: '") + String(Object.Contract);
+	Object.StampBase = NStr("en='Contract: ';ru='Договор: '") + String(Object.Contract);
 	
 	SettlementsCurrencyBeforeChange = SettlementsCurrency;
 	SettlementsCurrency = ContractData.SettlementsCurrency;
@@ -1067,12 +1067,14 @@ Procedure HandleContractConditionsChange(ContractData, ContractBeforeChange)
 		
 		WarningText = "";
 		If QueryPriceKind Then
-			WarningText = NStr("en = 'The price and discount conditions in the contract with counterparty differ from price and discount in the document! 
-				|Perhaps you have to refill prices.'") + Chars.LF + Chars.LF;
+			WarningText = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! "
+"Perhaps you have to refill prices.';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! "
+"Возможно, необходимо перезаполнить цены.'") + Chars.LF + Chars.LF;
 		EndIf;
 		
-		WarningText = WarningText + NStr("en = 'Settlement currency of the contract with counterparty changed! 
-										|It is necessary to check the document currency!'");
+		WarningText = WarningText + NStr("en='Settlement currency of the contract with counterparty changed! "
+"It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! "
+"Необходимо проверить валюту документа!'");
 		
 		ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, PriceKindChanged, True, WarningText);
 		
@@ -1098,8 +1100,9 @@ Procedure HandleContractConditionsChange(ContractData, ContractBeforeChange)
 		
 		If RecalculationRequired Then
 			
-			QuestionText = NStr("en = 'The price and discount conditions in the contract with counterparty differ from price and discount in the document! 
-				|Recalculate the document according to the contract?'");
+			QuestionText = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! "
+"Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! "
+"Пересчитать документ в соответствии с договором?'");
 			
 			NotifyDescription = New NotifyDescription("RecalculationQuestionByPriceKindEnd", ThisObject, DocumentParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -1727,7 +1730,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Object.Contract = ContractParametersByDefault;
 		EndIf;
 		If ValueIsFilled(Object.Contract) Then
-			Object.StampBase = NStr("en = 'Contract: '") + String(Object.Contract);
+			Object.StampBase = NStr("en='Contract: ';ru='Договор: '") + String(Object.Contract);
 			CounterpartyContractParameters = CommonUse.ObjectAttributesValues(Object.Contract, "SettlementsCurrency, DiscountMarkupKind, PriceKind");
 			If Object.DocumentCurrency <> CounterpartyContractParameters.SettlementsCurrency Then
 				Object.DocumentCurrency = CounterpartyContractParameters.SettlementsCurrency;
@@ -1950,7 +1953,7 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 		If MessageText <> "" Then
 			
 			Message = New UserMessage;
-			Message.Text = ?(Cancel, NStr("en = 'Document is not posted! '") + MessageText, MessageText);
+			Message.Text = ?(Cancel, NStr("en='Document is not posted! ';ru='Документ не проведен! '") + MessageText, MessageText);
 			
 			If Cancel Then
 				Message.DataPath = "Object";
@@ -2019,7 +2022,7 @@ Procedure AfterWrite(WriteParameters)
 		AND ?(NOT UpdateSubordinatedInvoice = Undefined, UpdateSubordinatedInvoice, False) Then
 		
 		NotifyDescription = New NotifyDescription("QuestionAboutChangingSubordinateInvoiceEnd", ThisObject);
-		QuestionText = NStr("en = 'Changes were made in the document. Is it required to fill in the subordinate invoice once again?'");
+		QuestionText = NStr("en='Changes were made in the document. Is it required to fill in the subordinate invoice once again?';ru='В документе были произведены изменения. Требуется ли повторно заполнить подчиненный Счет-фактуру?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 		
 	EndIf;
@@ -2207,7 +2210,7 @@ Procedure FillByBasis(Command)
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en = 'Document will be completely refilled by ""Basis""! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -2231,7 +2234,7 @@ Procedure FillByOrder(Command)
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillEndByOrder", ThisObject), NStr("en = 'The document will be completely refilled by ""Order""! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillEndByOrder", ThisObject), NStr("en='The document will be completely refilled by ""Order""! Continue?';ru='Документ будет полностью перезаполнен по ""Заказу""! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -2252,12 +2255,12 @@ EndProcedure // FillByOrder()
 Procedure EditPrepaymentOffset(Command)
 	
 	If Not ValueIsFilled(Object.Counterparty) Then
-		ShowMessageBox(, NStr("en = 'Specify the counterparty first.'"));
+		ShowMessageBox(, NStr("en='Specify the counterparty first.';ru='Укажите вначале контрагента!'"));
 		Return;
 	EndIf;
 	
 	If Not ValueIsFilled(Object.Contract) Then
-		ShowMessageBox(, NStr("en = 'Specify the counterparty contract first.'"));
+		ShowMessageBox(, NStr("en='Specify the counterparty contract first.';ru='Укажите вначале договор контрагента!'"));
 		Return;
 	EndIf;
 	
@@ -2364,7 +2367,7 @@ EndProcedure // EditPrepaymentOffset()
 Procedure SearchByBarcode(Command)
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en = 'Enter barcode'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
 
 EndProcedure
 
@@ -2389,7 +2392,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.'"));
+		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -2407,7 +2410,7 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	
 	If Not Weight = Undefined Then
 		If Weight = 0 Then
-			MessageText = NStr("en = 'Electronic scales returned zero weight.'");
+			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			// Weight is received.
@@ -2490,7 +2493,7 @@ Procedure ChangeReserveFillByReserves(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Tabular section ""Inventory and services"" is not filled!'");
+		Message.Text = NStr("en='Tabular section ""Inventory and services"" is not filled!';ru='Табличная часть ""Запасы и услуги"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -2506,7 +2509,7 @@ Procedure ChangeReserveClearReserve(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Tabular section ""Inventory and services"" is not filled!'");
+		Message.Text = NStr("en='Tabular section ""Inventory and services"" is not filled!';ru='Табличная часть ""Запасы и услуги"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -2738,7 +2741,7 @@ Procedure CounterpartyOnChange(Item)
 			DocumentParameters.Insert("ContractBeforeChange", ContractBeforeChange);
 			
 			NotifyDescription = New NotifyDescription("PrepaymentClearingQuestionEnd", ThisObject, DocumentParameters);
-			QuestionText = NStr("en = 'Prepayment set-off will be cleared, do you want to continue?'");
+			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
 			
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 			Return;
@@ -2800,7 +2803,7 @@ Procedure OrderOnChange(Item)
 		Mode = QuestionDialogMode.YesNo;
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("OrderOnChangeEnd", ThisObject), NStr("en = 'Prepayment set-off will be cleared, do you want to continue?'"), Mode, 0);
+		ShowQueryBox(New NotifyDescription("OrderOnChangeEnd", ThisObject), NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
         Return;
 	EndIf;
 	
@@ -3153,7 +3156,7 @@ Procedure DataLoadFromFile(Command)
 	ExportParameters = DataLoadFromFileClient.DataImportingParameters();
 	ExportParameters.TabularSectionFullName = "CustomerInvoice.Inventory";
 	ExportParameters.TemplateNameWithTemplate = "LoadFromFileInventory";
-	ExportParameters.Title = NStr("en = 'Import inventory from file'");
+	ExportParameters.Title = NStr("en='Import inventory from file';ru='Загрузка запасов из файла'");
 	
 	Notification = New NotifyDescription("LoadFromFileEnd", ThisObject);
 	DataLoadFromFileClient.ShowImportForm(ExportParameters, Notification);
@@ -3214,14 +3217,14 @@ Procedure DiscountCardIsSelected(DiscountCard)
 		CounterpartyOnChange(Items.Counterparty);
 		
 		ShowUserNotification(
-			NStr("en = 'Counterparty is filled and discount card is read'"),
+			NStr("en='Counterparty is filled and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
 			GetURL(DiscountCard),
-			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'The counterparty is filled out in the document and discount card %1 is read'"), DiscountCard),
+			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='The counterparty is filled out in the document and discount card %1 is read';ru='В документе заполнен контрагент и считана дисконтная карта %1'"), DiscountCard),
 			PictureLib.Information32);
 	ElsIf Object.Counterparty <> DiscountCardOwner AND Not DiscountCardOwner.IsEmpty() Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Discount card is not read. Discount card owner does not match with a counterparty in the document.'"),
+			NStr("en='Discount card is not read. Discount card owner does not match with a counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
 			,
 			"Counterparty",
 			"Object");
@@ -3229,9 +3232,9 @@ Procedure DiscountCardIsSelected(DiscountCard)
 		Return;
 	Else
 		ShowUserNotification(
-			NStr("en = 'Discount card read'"),
+			NStr("en='Discount card read';ru='Считана дисконтная карта'"),
 			GetURL(DiscountCard),
-			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Discount card %1 is read'"), DiscountCard),
+			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Discount card %1 is read';ru='Считана дисконтная карта %1'"), DiscountCard),
 			PictureLib.Information32);
 	EndIf;
 	
@@ -3267,7 +3270,7 @@ Procedure DiscountCardIsSelectedAdditionally(DiscountCard)
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 		
 	If Object.Inventory.Count() > 0 Then
-		Text = NStr("en = 'Refill discounts in all rows?'");
+		Text = NStr("en='Refill discounts in all rows?';ru='Перезаполнить скидки во всех строках?'");
 		Notification = New NotifyDescription("DiscountCardIsSelectedAdditionallyEnd", ThisObject);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	EndIf;
@@ -3727,7 +3730,7 @@ Procedure OpenInformationAboutDiscountsClient()
 	ParameterStructure.Insert("Workplace", Workplace);
 	
 	If Not Object.DiscountsAreCalculated Then
-		QuestionText = NStr("en='Discounts (markups) are not calculated, calculate?'");
+		QuestionText = NStr("en='Discounts (markups) are not calculated, calculate?';ru='Скидки (наценки) не рассчитаны, рассчитать?'");
 		
 		AdditionalParameters = New Structure; 
 		AdditionalParameters.Insert("ParameterStructure", ParameterStructure);

@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Info base backup</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Резервное копирование информационной базы</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
@@ -36,6 +40,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>OK</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Ок</v8:content>
+					</v8:item>
 				</Title>
 				<ExtendedTooltip name="ButtonOKExtendedTooltip" id="39"/>
 			</Button>
@@ -48,6 +56,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Cancel</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отменить</v8:content>
 					</v8:item>
 				</Title>
 				<ExtendedTooltip name="CloseButtonExtendedTooltip" id="40"/>
@@ -78,6 +90,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Do not create the backup copy</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Не создавать резервную копию ИБ</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:decimal">0</Value>
 					</xr:Value>
@@ -91,6 +107,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Create temporary backup copy</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Создать временную резервную копию</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:decimal">1</Value>
 					</xr:Value>
@@ -103,6 +123,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Create a backup copy and save in the specified directory</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Создать резервную копию и сохранить в указанном каталоге</v8:content>
 							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:decimal">2</Value>
@@ -121,11 +145,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Indent</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отступ</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Indent</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отступ</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -139,6 +171,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Folder</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это группа</v8:content>
 						</v8:item>
 					</Title>
 					<ChoiceButton>true</ChoiceButton>
@@ -156,6 +192,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Panel information</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель информация</v8:content>
+				</v8:item>
 			</Title>
 			<PagesRepresentation>None</PagesRepresentation>
 			<ExtendedTooltip name="PanelInformationExtendedTooltip" id="45"/>
@@ -166,11 +206,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Automatic rollback</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автоматический откат</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Automatic rollback</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автоматический откат</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
@@ -184,6 +232,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Rollback to the backup copy will be executed automatically in case of emergency situation during application update.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Автоматически будет выполнен откат к резервной копии при возникновении нештатной ситуации в процессе обновления программы.</v8:content>
+								</v8:item>
 							</Title>
 							<VerticalAlign>Center</VerticalAlign>
 							<ContextMenu name="LabelRestore1ContextMenu" id="37"/>
@@ -196,6 +248,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Manual rollback</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ручной откат</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ManualRollbackExtendedTooltip" id="48"/>
@@ -223,6 +279,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Label pages of manual rollback</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страницы надписи ручного отката</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalStretch>true</VerticalStretch>
 									<PagesRepresentation>None</PagesRepresentation>
@@ -233,6 +293,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Restore</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Восстановить</v8:content>
 												</v8:item>
 											</Title>
 											<Group>Horizontal</Group>
@@ -245,6 +309,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>The system will roll back automatically in case of emergency situation during application update.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Система автоматически выполнит откат при возникновении нештатной ситуации в процессе обновления программы.</v8:content>
 														</v8:item>
 													</Title>
 													<VerticalAlign>Center</VerticalAlign>
@@ -259,6 +327,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Dont restore</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Не восстанавливать</v8:content>
+												</v8:item>
 											</Title>
 											<Group>Horizontal</Group>
 											<ExtendedTooltip name="DontRestoreExtendedTooltip" id="54"/>
@@ -271,6 +343,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>The backup copy will be created in the directory specified, but there will be no rollback in case of emergency situation.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>В указанном каталоге будет создана резервная копия, но при возникновении нештатной ситуации откат из нее производиться не будет.</v8:content>
 														</v8:item>
 													</Title>
 													<VerticalAlign>Center</VerticalAlign>
@@ -291,11 +367,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>No roll back</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без отката</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>No roll back</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без отката</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="WithoutRollbackExtendedTooltip" id="56"/>
@@ -307,6 +391,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Backup rollback will NOT be executed in case of emergency situation during the application update. It is recommended to select this option, only if the IB is being backed up already with the help of other tools.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Откат к резервной копии НЕ будет выполняться при возникновении нештатной ситуации в процессе обновления программы. Рекомендуется выбирать этот вариант, только если резервное копирование ИБ уже выполняется другими средствами.</v8:content>
 								</v8:item>
 							</Title>
 							<VerticalAlign>Center</VerticalAlign>
@@ -333,11 +421,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Command OK</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда ОК</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Command OK</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда ОК</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CommandOK</Action>

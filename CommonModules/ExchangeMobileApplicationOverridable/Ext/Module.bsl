@@ -476,7 +476,7 @@ Procedure AddMessageInQueueMessagesExchange(ExchangeNode, QueueMessageNumber, Ex
 	If RecordSet.Count() > 0 Then
 		
 		WriteLogEvent(
-			NStr("en = 'Exchange with the mobile client. Adding of a message to the exchange plan queue'", CommonUseClientServer.MainLanguageCode()),
+			NStr("en='Exchange with the mobile client. Adding of a message to the exchange plan queue';ru='Обмен с мобильным клиентом.Добавление сообщения в очередь сообщений обмена'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
 			ExchangeNode,
@@ -485,7 +485,7 @@ Procedure AddMessageInQueueMessagesExchange(ExchangeNode, QueueMessageNumber, Ex
 		// We set to zero the counters of received and sent messages for reregistration and sending all data at the next exchange.
 		ReinitializeMessagesOnSiteCountersPlanExchange(ExchangeNode);
 		
-		Raise(NStr("en='Failed to send the data. See details in the infobase Event Log.'"));
+		Raise(NStr("en='Failed to send the data. See details in the infobase Event Log.';ru='Не удалось выполнить отправку данных. Подробности см. в Журнале регистрации информационной базы.'"));
 		
 	EndIf;
 	
@@ -692,16 +692,16 @@ Procedure ValidateQueueMessagesExchange(ExchangeNode, Val ReceivedNo) Export
 		ElsIf SelectionMessagesExchange.MessageNo > QueueMessageNumber Then
 			
 			WriteLogEvent(
-				NStr("en = 'Exchange with the mobile client. Exchange messages queue verification'", CommonUseClientServer.MainLanguageCode()),
+				NStr("en='Exchange with the mobile client. Exchange messages queue verification';ru='Обмен с мобильным клиентом.Проверка очереди сообщений обмена'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
 				SelectionMessagesExchange.MobileClient,
-				NStr("en = 'Exchange message sequence has been disordered.'"));
+				NStr("en='Exchange message sequence has been disordered.';ru='Нарушен порядок следования сообщений обмена.'"));
 				
 			// We set to zero the counters of received and sent messages for reregistration and sending all data at the next exchange.
 			ReinitializeMessagesOnSiteCountersPlanExchange(ExchangeNode);
 			
-			Raise(NStr("en='Failed to send the data. See details in the infobase Event Log.'"));
+			Raise(NStr("en='Failed to send the data. See details in the infobase Event Log.';ru='Не удалось выполнить отправку данных. Подробности см. в Журнале регистрации информационной базы.'"));
 			
 		EndIf;
 		

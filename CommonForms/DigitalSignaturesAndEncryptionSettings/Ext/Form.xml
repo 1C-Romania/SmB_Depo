@@ -32,11 +32,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<VerticalStretch>true</VerticalStretch>
@@ -51,6 +59,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Certificates</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сертификаты</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="PageCertificatesExtendedTooltip" id="43"/>
 					<ChildItems>
@@ -59,6 +71,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Certificates group filter</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа сертификаты отбор</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -81,6 +97,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>All certificates</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Все сертификаты</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">AllCertificates</Value>
 											</xr:Value>
@@ -93,6 +113,10 @@
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>My certificates</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Мои сертификаты</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">MyCertificates</Value>
@@ -119,6 +143,10 @@
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Any</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Любые</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.CertificateIssueRequestState.EmptyRef</Value>
@@ -187,6 +215,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>User settings group</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа пользовательских настроек</v8:content>
+								</v8:item>
 							</Title>
 							<VerticalStretch>false</VerticalStretch>
 							<Group>Vertical</Group>
@@ -198,6 +230,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Certificates list command bar</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сертификаты командная панель списка</v8:content>
 								</v8:item>
 							</Title>
 							<ExtendedTooltip name="CertificatesCommandBarListExtendedTooltip" id="267"/>
@@ -211,6 +247,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Add...</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Добавить...</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="CertificatesCreateExtendedTooltip" id="136"/>
 								</Button>
@@ -219,6 +259,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Add</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Добавить</v8:content>
 										</v8:item>
 									</Title>
 									<ExtendedTooltip name="CertificatesAddExtendedTooltip" id="345"/>
@@ -240,6 +284,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Certificates standard commands</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сертификаты стандартные команды</v8:content>
 										</v8:item>
 									</Title>
 									<CommandSource>Item.Certificates</CommandSource>
@@ -286,6 +334,10 @@
 												<v8:lang>en</v8:lang>
 												<v8:content>Add...</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Добавить...</v8:content>
+											</v8:item>
 										</Title>
 										<ExtendedTooltip name="CertificatesCreateContextMenuExtendedTooltip" id="341"/>
 									</Button>
@@ -294,6 +346,10 @@
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>Certificates context menu standard commands</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Сертификаты контекстное меню стандартные команды</v8:content>
 											</v8:item>
 										</Title>
 										<CommandSource>Item.Certificates</CommandSource>
@@ -364,6 +420,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Request status</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Состояние заявления</v8:content>
+										</v8:item>
 									</Title>
 									<Width>16</Width>
 									<HorizontalStretch>false</HorizontalStretch>
@@ -389,6 +449,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Applications</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Приложения</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ApplicationPagesExtendedTooltip" id="104"/>
 					<ChildItems>
@@ -397,6 +461,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group web client extension not set</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа веб клиент расширение не установлено</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -411,6 +479,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>The extension for digital signature and encryption is not installed into Internet Explorer. You can not check which applications are installed on the computer.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>В обозреватель интернет не установлено расширение для работы с электронной подписью и шифрованием. Невозможно проверить какие из программ установлены на компьютере.</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="ExplanationWebClientExtensionNotSetContextMenu" id="166"/>
@@ -429,11 +501,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Applications command bar separately</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Программы командная панель отдельно</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Applications command bar separately</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Программы командная панель отдельно</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ExtendedTooltip name="ApplicationsCommandBarSeparatelyExtendedTooltip" id="182"/>
@@ -472,11 +552,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Application pages and update</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы программы и обновление</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Application pages and update</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы программы и обновление</v8:content>
 								</v8:item>
 							</ToolTip>
 							<PagesRepresentation>None</PagesRepresentation>
@@ -488,11 +576,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Application page list</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница программы список</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Application page list</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница программы список</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ExtendedTooltip name="ApplicationPageListExtendedTooltip" id="323"/>
@@ -502,6 +598,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Settings of digital signatures and encryption apps that users can use on their computers:</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Настройки программ электронной подписи и шифрования, которые пользователи могут применять на своих компьютерах:</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="ApplicationsExplanationContextMenu" id="258"/>
@@ -604,6 +704,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>Application</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Приложение</v8:content>
+														</v8:item>
 													</Title>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>15</Width>
@@ -616,6 +720,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Checking result</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Результат проверки</v8:content>
 														</v8:item>
 													</Title>
 													<EditMode>EnterOnInput</EditMode>
@@ -633,6 +741,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Path to the application</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Путь к программе</v8:content>
+												</v8:item>
 											</Title>
 											<Group>Vertical</Group>
 											<Representation>None</Representation>
@@ -646,6 +758,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>Path to the application on the computer OC Linux</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Путь к программе на компьютере ОС Linux</v8:content>
+														</v8:item>
 													</Title>
 													<TitleFont ref="style:TextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
 													<TitleLocation>None</TitleLocation>
@@ -653,6 +769,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Path to the application which is required on computers running the Linux operating system</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Путь к программе, который требуется на компьютерах с операционной системой Linux</v8:content>
 														</v8:item>
 													</ToolTip>
 													<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -676,11 +796,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Application page update</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница программы обновление</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Application page update</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница программы обновление</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ExtendedTooltip name="PageApplicationsUpdateExtendedTooltip" id="325"/>
@@ -690,6 +818,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Checking of applications installed on the computer. Please wait ...</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Проверка программ, установленных на компьютере. Пожалуйста подождите ...</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="ApplicationsUpdateContextMenu" id="327"/>
@@ -702,6 +834,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Applications update decoration</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Программы декорация обновления</v8:content>
 												</v8:item>
 											</Title>
 											<PictureSize>AutoSize</PictureSize>
@@ -722,6 +858,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Group check signatures on server</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа проверять подписи на сервере</v8:content>
+								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
 							<Representation>NormalSeparation</Representation>
@@ -734,6 +874,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Check signatures and certificates on server</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Проверять подписи и сертификаты на сервере</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
@@ -751,6 +895,15 @@ Important: at least one of
 the applications from the list must
 be installed on each computer with working 1C:Enterprise server or Web server which uses a file infobase.</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Позволяет не устанавливать
+программу на компьютер пользователя для проверки электронных подписей и сертификатов.
+
+Важно: на каждый
+компьютер, где работает сервер 1С:Предприятия
+или веб-сервер, использующий файловую информационную базу, должна быть установлена хотя бы одна из программ в списке.</v8:content>
+											</v8:item>
 										</Title>
 									</ExtendedTooltip>
 									<Events>
@@ -763,6 +916,10 @@ be installed on each computer with working 1C:Enterprise server or Web server wh
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Sign and encrypt on server</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Подписывать и шифровать на сервере</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
@@ -780,6 +937,15 @@ Important: the application and the
 private key certificate must be installed
 on each computer with working 1C:Enterprise server or Web server which uses a file infobase.</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Позволяет не устанавливать
+программу и сертификат на компьютер пользователя для подписания, шифрования и расшифровки.
+
+Важно: на каждый
+компьютер, где работает сервер 1С:Предприятия или
+веб-сервер, использующий файловую информационную базу, должна быть установлена программа и сертификат с закрытым ключом.</v8:content>
+											</v8:item>
 										</Title>
 									</ExtendedTooltip>
 									<Events>
@@ -793,6 +959,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Instructions on how to work with electronic signature and encryption applications</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Инструкции по работе с программами электронной подписи и шифрования</v8:content>
 								</v8:item>
 							</Title>
 							<Hyperlink>true</Hyperlink>
@@ -809,6 +979,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Additionally</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительно</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="PageSettingsExtendedTooltip" id="45"/>
@@ -840,6 +1014,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 									<v8:lang>en</v8:lang>
 									<v8:content>On saving data in the file together with digital signature</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>При сохранении данных в файл вместе с электронной подписью</v8:content>
+								</v8:item>
 							</Title>
 							<TitleLocation>Top</TitleLocation>
 							<RadioButtonType>Auto</RadioButtonType>
@@ -854,6 +1032,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 												<v8:lang>en</v8:lang>
 												<v8:content>Save All Signatures</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Сохранять все подписи</v8:content>
+											</v8:item>
 										</Presentation>
 										<Value xsi:type="xs:string">SaveAllSignatures</Value>
 									</xr:Value>
@@ -866,6 +1048,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>Ask</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Спрашивать</v8:content>
 											</v8:item>
 										</Presentation>
 										<Value xsi:type="xs:string">Ask</Value>
@@ -890,6 +1076,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>Actions when saving with ED</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Действия при сохранении с ЭП</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -905,6 +1095,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Extension for encrypted files</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расширение для зашифрованных файлов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -922,6 +1116,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>Extension for signature files</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расширение для файлов подписи</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -938,6 +1136,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>Error text</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст ошибки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -952,6 +1154,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификаты</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1006,6 +1212,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>Applications</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приложения</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1017,6 +1227,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 							<v8:lang>en</v8:lang>
 							<v8:content>Ref</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.DigitalSignatureAndEncryptionApplications</v8:Type>
@@ -1027,6 +1241,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Linux path to application</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Linux путь к программе</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1043,6 +1261,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 							<v8:lang>en</v8:lang>
 							<v8:content>Checking result</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат проверки</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1058,6 +1280,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 							<v8:lang>en</v8:lang>
 							<v8:content>Application name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя приложения</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1072,6 +1298,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Application type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип программы</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1089,6 +1319,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 							<v8:lang>en</v8:lang>
 							<v8:content>Signing Algorithm</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Алгоритм подписи</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1103,6 +1337,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Hashing Algorithm</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Алгоритм хеширования</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1119,6 +1357,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 							<v8:lang>en</v8:lang>
 							<v8:content>Encryption algorithm</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Алгоритм шифрования</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1132,6 +1374,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
 					</Title>
@@ -1149,6 +1395,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 							<v8:lang>en</v8:lang>
 							<v8:content>Use</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1164,6 +1414,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture no</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер картинки</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1181,6 +1435,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 							<v8:lang>en</v8:lang>
 							<v8:content>Deletion mark</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПометкаУдаления</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1194,6 +1452,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>Check signatures on server</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверять подписи на сервере</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1204,6 +1466,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1220,6 +1486,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>Sign on server</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подписывать на сервере</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1231,6 +1501,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>This is a user with full access</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это полноправный пользователь</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1241,6 +1515,10 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Request status</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние заявления</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1255,11 +1533,19 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh settings and applications list with checking results</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить настройки и список программ с результами их проверки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1275,11 +1561,19 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>Mark for deletion / Clear mark</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометить на удаление / Снять пометку</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Mark the current item for deletion / Uncheck the mark</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометить текущий элемент на удаление / Снять пометку</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1295,11 +1589,19 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>Set the extension</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить расширение</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Set the extension</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить расширение</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>SetExtension</Action>
@@ -1310,11 +1612,19 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>Request for certificate issue</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заявление на выпуск сертификата</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Request for certificate issue</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заявление на выпуск сертификата</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>AddApplicationForCertificateIssue</Action>
@@ -1325,11 +1635,19 @@ on each computer with working 1C:Enterprise server or Web server which uses a fi
 					<v8:lang>en</v8:lang>
 					<v8:content>From installed on computer...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Из установленных на компьютере...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>From installed on computer...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Из установленных на компьютере...</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>AddFromInstalledOnComputer</Action>

@@ -39,7 +39,7 @@ Procedure ChooseAndClose(Command)
 		Close(ReturnStructure);
 	Else
 		
-		CommonUseClientServer.MessageToUser(NStr("en='Select work place'"), Workplace, "Workplace");
+		CommonUseClientServer.MessageToUser(NStr("en='Select work place';ru='Выберите рабочее место'"), Workplace, "Workplace");
 		
 	EndIf;
 	

@@ -92,7 +92,7 @@ EndFunction
 
 // Command print unavailability message for the selected object.
 Function MessageAboutPrintingCommandPurpose(PrintingObjectsTypes) Export
-	MessageText = NStr("en = 'selected printing command is intended for documents'") 
+	MessageText = NStr("en='selected printing command is intended for documents';ru='Выбранная команда печати предназначена для документов'") 
 		+ ?(PrintingObjectsTypes.Count() = 1, " ", ": " + Chars.LF);
 	For Each Type IN PrintingObjectsTypes Do
 		MessageText = MessageText + Metadata.FindByType(Type).ListPresentation + Chars.LF;

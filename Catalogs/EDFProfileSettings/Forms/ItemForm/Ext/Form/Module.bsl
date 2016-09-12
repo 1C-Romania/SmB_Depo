@@ -59,7 +59,7 @@ EndProcedure
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	If EDExchangeInitialSetup Then
-		QuestionText = NStr("en = 'Do you want to enable the counterparty to exchange electronic documents?'");
+		QuestionText = NStr("en='Do you want to enable the counterparty to exchange electronic documents?';ru='Подключить контрагента к обмену электронными документами?'");
 		NotifyDescription = New NotifyDescription("ContinueBeforeClosing", ThisObject);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 		Cancel = True;
@@ -85,7 +85,7 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 			// First you need to check if the selected certificate is already in the list
 			RowArray = Object.CompanySignatureCertificates.FindRows(New Structure("Certificate", Certificate));
 			If RowArray.Count() > 0 Then
-				WarningText = NStr("en = 'Selected certificate is already registered in the agreement'");
+				WarningText = NStr("en='Selected certificate is already registered in the agreement';ru='Выбранный сертификат уже зарегистрирован в соглашении'");
 				ShowMessageBox(, WarningText, 30);
 				Return;
 			EndIf;
@@ -178,15 +178,16 @@ Procedure InscriptionPrivateOfficeExchangeEDMemberPress(Item)
 	// registered with the EDF operator You can access your personal area by the current or the first certificate
 	
 	If Object.CompanySignatureCertificates.Count() = 0 Then
-		WarningText = NStr("en = 'To enter the private office at least one certificate must be registered'");
+		WarningText = NStr("en='To enter the private office at least one certificate must be registered';ru='Для входа в личный кабинет должен быть зарегистрирован хотя бы один сертификат'");
 		ShowMessageBox(, WarningText, 30);
 		Return;
 	EndIf;
 	
 	NotifyDescription = New NotifyDescription("GotoInPersonalArea", ThisObject);
 	If Modified Then
-		QuestionText = NStr("en = 'You can perform this action only in a recorded EDF settings profile.
-			|Record?'");
+		QuestionText = NStr("en='You can perform this action only in a recorded EDF settings profile."
+"Record?';ru='Выполнить действие можно только в записанном профиле настроек ЭДО."
+"Записать?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else
 		ExecuteNotifyProcessing(NOTifyDescription, DialogReturnCode.Yes);
@@ -200,7 +201,7 @@ Procedure InvitationsTextStartChoice(Item, ChoiceData, StandardProcessing)
 	StandardProcessing = False;
 	
 	Notification = New NotifyDescription("EndInvitationTextEditing", ThisObject);
-	FormTitle = NStr("en = 'Text pattern for counterparty invitations'");
+	FormTitle = NStr("en='Text pattern for counterparty invitations';ru='Шаблон текста для приглашений контрагентов'");
 	CommonUseClient.ShowMultilineTextEditingForm(
 		Notification, Items.InvitationsText.EditText, FormTitle);
 	
@@ -210,8 +211,9 @@ EndProcedure
 Procedure CompanyIDTextEnterEnd(Item, Text, ChoiceData, Parameters, StandardProcessing)
 	
 	If Not MonitorEDSettingsContent Then
-		QuestionText = NStr("en = 'Changes of ""EDF settings profile"" will be applied to all related ""EDF settings"".
-			|Continue?'");
+		QuestionText = NStr("en='Changes of ""EDF settings profile"" will be applied to all related ""EDF settings""."
+"Continue?';ru='Изменения ""Профиля настроек ЭДО"" будут применены для всех связанных с ним ""Настроек ЭДО""."
+"Продолжить?'");
 		NotificationParameters = New Structure;
 		NotificationParameters.Insert("OldCompanyID", Object.CompanyID);
 		NotifyDescription = New NotifyDescription("AllowEditingCompanyIDComplete", ThisObject, NotificationParameters);
@@ -294,8 +296,9 @@ EndProcedure
 Procedure OutgoingDocumentsBeforeStartChanging(Item, Cancel)
 	
 	If Not MonitorEDSettingsContent Then
-		QuestionText = NStr("en = 'Changes of ""EDF settings profile"" will be applied to all related ""EDF settings"".
-			|Continue?'");
+		QuestionText = NStr("en='Changes of ""EDF settings profile"" will be applied to all related ""EDF settings""."
+"Continue?';ru='Изменения ""Профиля настроек ЭДО"" будут применены для всех связанных с ним ""Настроек ЭДО""."
+"Продолжить?'");
 		NotificationParameters = New Structure;
 		NotificationParameters.Insert("RowID", Item.CurrentData.GetID());
 		NotificationParameters.Insert("FormatVersion",       Item.CurrentData.FormatVersion);
@@ -342,7 +345,7 @@ Procedure OutgoingDocumentsOnChange(Item)
 		Item.CurrentData.ToForm = False;
 		Item.CurrentData.UseDS = False;
 		
-		MessagePattern = NStr("en='You can send the %1 document through the EDF operator only.'");
+		MessagePattern = NStr("en='You can send the %1 document through the EDF operator only.';ru='Отправка документа %1 возможна только через оператора ЭДО.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 			Item.CurrentData.OutgoingDocument);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -497,7 +500,7 @@ Procedure ExchangeDirectory(PathToDirectory)
 	
 #If Not WebClient Then
 	FolderDialog = New FileDialog(FileDialogMode.ChooseDirectory);
-	FolderDialog.Title = NStr("en = 'Select network directory for exchange'");
+	FolderDialog.Title = NStr("en='Select network directory for exchange';ru='Выберите сетевой каталог для обмена'");
 	FolderDialog.Folder   = PathToDirectory;
 	If FolderDialog.Choose() Then
 		PathToDirectory = FolderDialog.Folder;
@@ -511,7 +514,7 @@ EndProcedure
 Procedure OpenChoiceFormDSCertificate()
 	
 	If Object.DeletionMark Then
-		MessageText = NStr("en='To perform an action it is required to uncheck the deletion mark.'");
+		MessageText = NStr("en='To perform an action it is required to uncheck the deletion mark.';ru='Для выполнения действия необходимо снять пометку удаления.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;
@@ -523,8 +526,9 @@ Procedure OpenChoiceFormDSCertificate()
 			AND Object.CompanySignatureCertificates.Count() > 0 Then
 			// This operation is prohibited. Since the agreement already has at least
 			// one certificate, but the identifier is not received yet
-			WarningText = NStr("en = 'Before adding new certificates to
-				|the agreement, you need to get an EDF exchange participant ID'");
+			WarningText = NStr("en='Before adding new certificates to"
+"the agreement, you need to get an EDF exchange participant ID';ru='Перед добавлением новых"
+"сертификатов в соглашение необходимо получить идентификатор участника обмена ЭДО'");
 			ShowMessageBox(, WarningText, 30);
 			Return;
 			
@@ -559,9 +563,9 @@ Procedure CompleteSettingsProfileTest(Val Result, Val AdditionalParameters) Expo
 	EndIf;
 	
 	If Object.EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEMail") Then
-		Status(NStr("en = 'Settings test.'"),
+		Status(NStr("en='Settings test.';ru='Тест настроек.'"),
 			,
-			NStr("en = 'Testing ED exchange through electronic mail. Please wait...'"));
+			NStr("en='Testing ED exchange through electronic mail. Please wait...';ru='Выполняется тестирование обмена ЭД через электронную почту. Пожалуйста, подождите..'"));
 			
 		UserAccount = Object.IncomingDocumentsResource;
 		
@@ -577,25 +581,26 @@ Procedure CompleteSettingsProfileTest(Val Result, Val AdditionalParameters) Expo
 	EndIf;
 	
 	If Object.EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughDirectory") Then
-		Status(NStr("en = 'Settings test.'"),
+		Status(NStr("en='Settings test.';ru='Тест настроек.'"),
 			,
-			NStr("en = 'Testing ED exchange through directory. Please wait...'"));
+			NStr("en='Testing ED exchange through directory. Please wait...';ru='Выполняется тестирование обмена ЭД через каталог. Пожалуйста, подождите..'"));
 		
 		PathToParentDirectoryEDFProfileSettings = Object.IncomingDocumentsResource;
 		
 		// Block of checking the access to directories.
-		MessagePattern = NStr("en = 'Test. Check of access to the shared directory for ED exchange.
-		|%1'");
+		MessagePattern = NStr("en='Test. Check of access to the shared directory for ED exchange."
+"%1';ru='Тест. Проверка доступа к общему каталогу для обмена ЭД."
+"%1'");
 		Try
 			If ElectronicDocumentsServiceCallServer.ValidateCatalogAvailabilityForDirectExchange(
 				PathToParentDirectoryEDFProfileSettings) Then
 				
-				TestResult = NStr("en = 'Passed successfully.'");
+				TestResult = NStr("en='Passed successfully.';ru='Пройден успешно.'");
 			Else
 				TestResult = ElectronicDocumentsServiceCallServer.GetMessageAboutError("107");
 			EndIf;
 		Except
-			ResultTemplate = NStr("en = '%1 %2'");
+			ResultTemplate = NStr("en='%1 %2';ru='%1 %2'");
 			ErrorText = ElectronicDocumentsServiceCallServer.GetMessageAboutError("107");
 			TestResult = StringFunctionsClientServer.PlaceParametersIntoString(ResultTemplate, ErrorText,
 			BriefErrorDescription(ErrorInfo()));
@@ -605,25 +610,26 @@ Procedure CompleteSettingsProfileTest(Val Result, Val AdditionalParameters) Expo
 	EndIf;
 	
 	If Object.EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughFTP") Then
-		Status(NStr("en = 'Settings test.'"),
+		Status(NStr("en='Settings test.';ru='Тест настроек.'"),
 			,
-			NStr("en = 'Testing ED exchange through FTP. Please wait...'"));
+			NStr("en='Testing ED exchange through FTP. Please wait...';ru='Выполняется тестирование обмена ЭД через FTP. Пожалуйста, подождите..'"));
 		
 		PathToParentDirectoryEDFProfileSettings = Object.IncomingDocumentsResource;
 		
 		// Block of checking the access to directories.
-		MessagePattern = NStr("en = 'Test. Check of access to the shared directory for ED exchange.
-		|%1'");
+		MessagePattern = NStr("en='Test. Check of access to the shared directory for ED exchange."
+"%1';ru='Тест. Проверка доступа к общему каталогу для обмена ЭД."
+"%1'");
 		Try
 			If ElectronicDocumentsServiceCallServer.ValidateCatalogAvailabilityForDirectExchange(
 				PathToParentDirectoryEDFProfileSettings) Then
 				
-				TestResult = NStr("en = 'Passed successfully.'");
+				TestResult = NStr("en='Passed successfully.';ru='Пройден успешно.'");
 			Else
 				TestResult = ElectronicDocumentsServiceCallServer.GetMessageAboutError("107");
 			EndIf;
 		Except
-			ResultTemplate = NStr("en = '%1 %2'");
+			ResultTemplate = NStr("en='%1 %2';ru='%1 %2'");
 			ErrorText = ElectronicDocumentsServiceCallServer.GetMessageAboutError("107");
 			TestResult = StringFunctionsClientServer.PlaceParametersIntoString(ResultTemplate, ErrorText,
 			BriefErrorDescription(ErrorInfo()));
@@ -666,7 +672,7 @@ Procedure AfterGettingYourPrintsValidateCertificates(Prints, Parameters = Undefi
 	If ValueIsFilled(Certificate) Then
 		ElectronicDocumentsServiceClient.CertificateValidationSettingsTest(Certificate, , ForAuthorization, ThisForm);
 	ElsIf ForAuthorization Then
-		MessageText = NStr("en = 'There are no available certificates. Test not executed.'");
+		MessageText = NStr("en='There are no available certificates. Test not executed.';ru='Нет доступных сертификатов. Тест не выполнен.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -738,7 +744,7 @@ Procedure GoToPersonalAreaAlert(Result, AdditionalParameters) Export
 	If Result.Property("ProfilesAndCertificatesParametersMatch", ProfilesAndCertificatesParametersMatch)
 		AND Not ValueIsFilled(ProfilesAndCertificatesParametersMatch) Then
 		
-		MessageText = NStr("en='No available certificates among the registered in this EDF settings profile.'");
+		MessageText = NStr("en='No available certificates among the registered in this EDF settings profile.';ru='Нет доступных сертификатов, среди зарегистрированных по данному профилю настроек ЭДО.'");
 		CommonUseClientServer.MessageToUser(MessageText,
 			,
 			"CompanySignatureCertificates",

@@ -17,7 +17,7 @@ EndProcedure
 Procedure SetConditionReportNotGenerated()
 	
 	Items.Result.StatePresentation.AdditionalShowMode = AdditionalShowMode.Irrelevance;
-	Items.Result.StatePresentation.Text = NStr("en = 'Report is not generated. Click Create to generate the report.'");
+	Items.Result.StatePresentation.Text = NStr("en='Report is not generated. Click Create to generate the report.';ru='Отчет не сформирован. Нажмите ""Сформировать"" для получения отчета.'");
 	Items.Result.StatePresentation.Visible = True;
 	
 EndProcedure

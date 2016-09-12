@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("ID", ID);
 	Parameters.Property("HardwareDriver", HardwareDriver);
 	
-	Title = NStr("en='Equipment:'") + Chars.NBSp  + String(ID);
+	Title = NStr("en='Equipment:';ru='Оборудование:'") + Chars.NBSp  + String(ID);
 
 	TextColor = StyleColors.FormTextColor;
 	ErrorColor = StyleColors.NegativeTextColor;
@@ -32,11 +32,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SpeedList.Add(115200, "115200");
 	
 	ParityList = Items.Parity.ChoiceList;
-	ParityList.Add(0, NStr("en='No'"));
-	ParityList.Add(1, NStr("en='Oddness'"));
-	ParityList.Add(2, NStr("en='Parity'"));
-	ParityList.Add(3, NStr("en='Installed'"));
-	ParityList.Add(4, NStr("en='Reset'"));
+	ParityList.Add(0, NStr("en='No';ru='Нет'"));
+	ParityList.Add(1, NStr("en='Oddness';ru='Нечетность'"));
+	ParityList.Add(2, NStr("en='Parity';ru='Четность'"));
+	ParityList.Add(3, NStr("en='Installed';ru='Установлен'"));
+	ParityList.Add(4, NStr("en='Reset';ru='Сброшен'"));
 
 	DataBitsList = Items.DataBits.ChoiceList;
 	DataBitsList.Add(7, "7 bits");
@@ -106,7 +106,7 @@ EndProcedure
 &AtClient
 Procedure SetDriverFromArchiveOnEnd(Result) Export 
 	
-	CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.'")); 
+	CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.';ru='Установка драйвера завершена.'")); 
 	UpdateInformationAboutDriver();
 	
 EndProcedure 
@@ -115,10 +115,10 @@ EndProcedure
 Procedure SettingDriverFromDistributionOnEnd(Result, Parameters) Export 
 	
 	If Result Then
-		CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.';ru='Установка драйвера завершена.'")); 
 		UpdateInformationAboutDriver();
 	Else
-		CommonUseClientServer.MessageToUser(NStr("en='An error occurred when installing the driver from distribution.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='An error occurred when installing the driver from distribution.';ru='При установке драйвера из дистрибутива произошла ошибка.'")); 
 	EndIf;
 
 EndProcedure 
@@ -157,11 +157,11 @@ Procedure DeviceTest(Command)
 	                                                                      tempDeviceParameters);
 	AdditionalDetails = ?(TypeOf(Output_Parameters) = Type("Array")
 	                           AND Output_Parameters.Count() >= 2,
-	                           NStr("en = 'Additional description:'") + " " + Output_Parameters[1],
+	                           NStr("en='Additional description:';ru='Дополнительное описание:'") + " " + Output_Parameters[1],
 	                           "");
 	
-	MessageText = ?(Result,  NStr("en = 'Test has been successfully performed.%AdditionalDetails%'"),
-	                               NStr("en = 'Test has been failed. %AdditionalDetails%'"));
+	MessageText = ?(Result,  NStr("en='Test has been successfully performed.%AdditionalDetails%';ru='Тест успешно выполнен.%ДополнительноеОписание%'"),
+	                               NStr("en='Test has been failed. %AdditionalDetails%';ru='Тест не пройден.%ДополнительноеОписание%'"));
 	MessageText = StrReplace(MessageText, "%AdditionalDetails%", ?(IsBlankString(AdditionalDetails),
 	                             "", Chars.LF + AdditionalDetails));
 	CommonUseClientServer.MessageToUser(MessageText);
@@ -193,13 +193,13 @@ Procedure UpdateInformationAboutDriver()
 		Version  = Output_Parameters[1];
 	Else
 		Driver = Output_Parameters[2];
-		Version  = NStr("en='Not defined'");
+		Version  = NStr("en='Not defined';ru='Не определена'");
 	EndIf;
 
-	Items.Driver.TextColor = ?(Driver = NStr("en='Not set'"), ErrorColor, TextColor);
-	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined'"), ErrorColor, TextColor);
+	Items.Driver.TextColor = ?(Driver = NStr("en='Not set';ru='Не установлен'"), ErrorColor, TextColor);
+	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined';ru='Не определена'"), ErrorColor, TextColor);
 
-	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed'"));
+	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed';ru='Установлен'"));
 
 EndProcedure
 

@@ -46,7 +46,7 @@ Procedure CheckPettyCash(Cancel)
 		   AND ValueIsFilled(Attributes.Company)
 		   AND Company <> Attributes.Company Then
 		
-			Text = NStr("en = 'The company of the petty cash does not correspond to the company of the acquiring service agreement.'");
+			Text = NStr("en='The company of the petty cash does not correspond to the company of the acquiring service agreement.';ru='Организация кассы не соответствует организации договора эквайринга'");
 			CommonUseClientServer.MessageToUser(
 				Text,
 				ThisObject,

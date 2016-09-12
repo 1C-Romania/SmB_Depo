@@ -34,7 +34,7 @@ Procedure Send(Command)
 	// Check field filling
 	If IsBlankString(Email) Then
 		UserMessage = New UserMessage;
-		UserMessage.Text = NStr("en = '""Email for feedback"" field is not filled.'");
+		UserMessage.Text = NStr("en='""Email for feedback"" field is not filled.';ru='Поле ""E-mail для обратной связи"" не заполнено.'");
 		UserMessage.Field  = "Email";
 		UserMessage.Message();
 		Return;
@@ -42,7 +42,7 @@ Procedure Send(Command)
 	
 	If IsBlankString(Subject) Then
 		UserMessage = New UserMessage;
-		UserMessage.Text = NStr("en = '""Email Subject"" field is not filled.'");
+		UserMessage.Text = NStr("en='""Email Subject"" field is not filled.';ru='Поле ""Тема сообщения"" не заполнено.'");
 		UserMessage.Field  = "Subject";
 		UserMessage.Message();
 		Return;
@@ -50,7 +50,7 @@ Procedure Send(Command)
 	
 	If IsBlankString(Message) Then
 		UserMessage = New UserMessage;
-		UserMessage.Text = NStr("en = 'Letter text is not entered.'");
+		UserMessage.Text = NStr("en='Letter text is not entered.';ru='Не заполнен тест письма.'");
 		UserMessage.Field  = "Message";
 		UserMessage.Message();
 		Return;
@@ -61,10 +61,10 @@ Procedure Send(Command)
 		EmailParameters.Insert("ConditionalRecipientName", ConditionalRecipientName);
 	EndIf;
 	
-	Status(NStr("en = 'sending'")
+	Status(NStr("en='sending';ru='Отправка'")
 		,
 		,
-		NStr("en = 'Email sending to technical support.'"),
+		NStr("en='Email sending to technical support.';ru='Выполняется отправка электронного письма в службу тех. поддержки.'"),
 		PictureLib.OnlineUserSupportSendingLetter);
 	
 	SendingResult = OnlineUserSupportClient.SendEmailToSupportService(
@@ -75,11 +75,12 @@ Procedure Send(Command)
 	
 	If Not SendingResult Then
 		ShowMessageBox(,
-			NStr("en = 'An error occurred while sending email.
-			|For more details see the event log.'"));
+			NStr("en='An error occurred while sending email."
+"For more details see the event log.';ru='При отправке письма произошла ошибка."
+"Подробнее см. в журнале регистрации.'"));
 	Else
 		Close();
-		ShowMessageBox(, NStr("en = 'Message is sent successfully.'"));
+		ShowMessageBox(, NStr("en='Message is sent successfully.';ru='Сообщение успешно отправлено.'"));
 	EndIf;
 	
 EndProcedure
@@ -110,7 +111,7 @@ Procedure WriteEmail(Parameters)
 	EndIf;
 	
 	Items.TitleExplanation.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Email will be send to user technical support to the address %1'"),
+		NStr("en='Email will be send to user technical support to the address %1';ru='Письмо будет отправлено в техподдержку пользователей на адрес %1'"),
 		EMailForSending);
 	
 	If Not IsBlankString(Parameters.FromWhom) Then
@@ -120,15 +121,18 @@ Procedure WriteEmail(Parameters)
 	ConditionalRecipientName = Parameters.ConditionalRecipientName;
 	
 	If IsBlankString(Subject) Then
-		Subject = NStr("en = '<Enter email subject>'");
+		Subject = NStr("en='<Enter email subject>';ru='<Укажите тему сообщения>'");
 	EndIf;
 	
 	If IsBlankString(Message) Then
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '<Enter email content>,
-				|
-				|Login: %1
-				|Kind Regards, .'"),
+			NStr("en='<Enter email content>,"
+""
+"Login: %1"
+"Kind Regards, .';ru='<Заполните"
+""
+"содержимое письма>,"
+"Логин: %1 С уважением, .'"),
 			Parameters.Login);
 	EndIf;
 	
@@ -144,21 +148,30 @@ Function TechnicalParametersText(OnStart)
 	SysInfo = New SystemInfo;
 	
 	If OnStart Then
-		CallServicePosition = NStr("en = 'automatic'");
+		CallServicePosition = NStr("en='automatic';ru='автоматический'");
 	Else
-		CallServicePosition = NStr("en = 'manual'");
+		CallServicePosition = NStr("en='manual';ru='руководство'");
 	EndIf;
 	
-	TechnicalParameters = NStr("en = 'Technical parameters of connection:
-		|(needed to simulate the described issue) 
-		|
-		|- configuration name: %1,
-		|- configuration version: %2,
-		|- platform version: %3,
-		|- online support library version: %4,
-		|- user language: %5,
-		|- application kind: managed,
-		|- service call: %6.'")
+	TechnicalParameters = NStr("en='Technical parameters of connection:"
+"(needed to simulate the described issue) "
+""
+"- configuration name: %1,"
+"- configuration version: %2,"
+"- platform version: %3,"
+"- online support library version: %4,"
+"- user language: %5,"
+"- application kind: managed,"
+"- service call: %6.';ru='Технические параметры подключения:"
+"(нужны для воспроизведения описанной проблемы)"
+""
+"- имя конфигурации: %1,"
+"- номер версии конфигурации: %2,"
+"- номер версии платформы: %3,"
+"- версия библиотеки Интернет-поддержки: %4,"
+"- язык пользователя: %5,"
+"- вид приложения: управляемый,"
+"- вызов сервиса: %6.'")
 		+ Chars.LF;
 	
 	TechnicalParameters = StringFunctionsClientServer.PlaceParametersIntoString(

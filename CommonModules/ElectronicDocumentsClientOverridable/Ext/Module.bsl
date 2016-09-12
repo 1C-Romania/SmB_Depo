@@ -134,9 +134,9 @@ Procedure CheckDocumentsPosted(DocumentsArray, DocumentsPosted, FormSource = Und
 	If UnpostedDocumentsCount > 0 Then
 		
 		If UnpostedDocumentsCount = 1 Then
-			QuestionText = NStr("en = 'To generate an e-document version, post it. Do you want to post the document and continue?'");
+			QuestionText = NStr("en='To generate an e-document version, post it. Do you want to post the document and continue?';ru='Для того чтобы сформировать электронную версию документа, его необходимо предварительно провести. Выполнить проведение документа и продолжить?'");
 		Else
-			QuestionText = NStr("en = 'To generate e-document versions, post them. Do you want to post the documents and continue?'");
+			QuestionText = NStr("en='To generate e-document versions, post them. Do you want to post the documents and continue?';ru='Для того чтобы сформировать электронные версии документов, их необходимо предварительно провести. Выполнить проведение документов и продолжить?'");
 		EndIf;
 		
 		ResponseCode = DoQueryBox(QuestionText, QuestionDialogMode.YesNo);
@@ -148,7 +148,7 @@ Procedure CheckDocumentsPosted(DocumentsArray, DocumentsPosted, FormSource = Und
 		DataAboutUnpostedDocuments = CommonUseServerCall.PostDocuments(DocumentsRequiredPosting);
 		
 		// inform about the documents that were not processed
-		MessagePattern = NStr("en = 'Document %1 is not posted: %2 Cannot generate ED.'");
+		MessagePattern = NStr("en='Document %1 is not posted: %2 Cannot generate ED.';ru='Документ %1 не проведен: %2 Формирование ЭД невозможно.'");
 		UnpostedDocuments = New Array;
 		For Each InformationAboutDocument IN DataAboutUnpostedDocuments Do
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
@@ -193,12 +193,12 @@ Procedure CheckDocumentsPosted(DocumentsArray, DocumentsPosted, FormSource = Und
 		
 		// Prompt a user whether it is required to continue printing if there are unposted documents
 		
-		DialogText = NStr("en = 'Failed to post one or several documents.'");
+		DialogText = NStr("en='Failed to post one or several documents.';ru='Не удалось провести один или несколько документов.'");
 		DialogButtons = New ValueList;
 		
 		If IsDocumentsReadyForEDFormation Then
-			DialogText = DialogText + " " + NStr("en = 'Continue?'");
-			DialogButtons.Add(DialogReturnCode.Ignore, NStr("en = 'Continue'"));
+			DialogText = DialogText + " " + NStr("en='Continue?';ru='Продолжить?'");
+			DialogButtons.Add(DialogReturnCode.Ignore, NStr("en='Continue';ru='Продолжить'"));
 			DialogButtons.Add(DialogReturnCode.Cancel);
 		Else
 			DialogButtons.Add(DialogReturnCode.OK);
@@ -235,9 +235,9 @@ Procedure RunDocumentsPostingCheck(DocumentsArray, ContinuationProcessor, FormSo
 	If UnpostedDocumentsCount > 0 Then
 		
 		If UnpostedDocumentsCount = 1 Then
-			QuestionText = NStr("en = 'To generate an e-document version, post it. Do you want to post the document and continue?'");
+			QuestionText = NStr("en='To generate an e-document version, post it. Do you want to post the document and continue?';ru='Для того чтобы сформировать электронную версию документа, его необходимо предварительно провести. Выполнить проведение документа и продолжить?'");
 		Else
-			QuestionText = NStr("en = 'To generate e-document versions, post them. Do you want to post the documents and continue?'");
+			QuestionText = NStr("en='To generate e-document versions, post them. Do you want to post the documents and continue?';ru='Для того чтобы сформировать электронные версии документов, их необходимо предварительно провести. Выполнить проведение документов и продолжить?'");
 		EndIf;
 		AdditParameters = New Structure("ContinuationProcessor, DocumentsRequiredPosting, FormSource, DocumentsArray",
 										ContinuationProcessor, DocumentsRequiredPosting, FormSource, DocumentsArray);
@@ -357,7 +357,7 @@ Procedure DocumentsCheckPostingRunContinue(Val Result, Val AdditionalParameters)
 		DataAboutUnpostedDocuments = CommonUseServerCall.PostDocuments(DocumentsRequiredPosting);
 		
 		// inform about the documents that were not processed
-		MessagePattern = NStr("en = 'Document %1 is not posted: %2 Cannot generate ED.'");
+		MessagePattern = NStr("en='Document %1 is not posted: %2 Cannot generate ED.';ru='Документ %1 не проведен: %2 Формирование ЭД невозможно.'");
 		UnpostedDocuments = New Array;
 		For Each InformationAboutDocument IN DataAboutUnpostedDocuments Do
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
@@ -395,12 +395,12 @@ Procedure DocumentsCheckPostingRunContinue(Val Result, Val AdditionalParameters)
 		IsDocumentsReadyForEDFormation = DocumentsArray.Count() > 0;
 		If UnpostedDocumentsCount > 0 Then
 			// Prompt a user whether it is required to continue printing if there are unposted documents
-			QuestionText = NStr("en = 'Failed to post one or several documents.'");
+			QuestionText = NStr("en='Failed to post one or several documents.';ru='Не удалось провести один или несколько документов.'");
 			DialogButtons = New ValueList;
 			
 			If IsDocumentsReadyForEDFormation Then
-				QuestionText = QuestionText + " " + NStr("en = 'Continue?'");
-				DialogButtons.Add(DialogReturnCode.Ignore, NStr("en = 'Continue'"));
+				QuestionText = QuestionText + " " + NStr("en='Continue?';ru='Продолжить?'");
+				DialogButtons.Add(DialogReturnCode.Ignore, NStr("en='Continue';ru='Продолжить'"));
 				DialogButtons.Add(DialogReturnCode.Cancel);
 			Else
 				DialogButtons.Add(DialogReturnCode.OK);

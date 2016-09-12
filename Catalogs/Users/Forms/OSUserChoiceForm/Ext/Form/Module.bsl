@@ -66,13 +66,13 @@ EndProcedure
 Procedure Select(Command)
 	
 	If Items.DomainTable.CurrentData = Undefined Then
-		ShowMessageBox(, NStr("en = 'Select the domain.'"));
+		ShowMessageBox(, NStr("en='Select the domain.';ru='Выберите домен.'"));
 		Return;
 	EndIf;
 	DomainName = Items.DomainTable.CurrentData.DomainName;
 	
 	If Items.DomainUserTable.CurrentData = Undefined Then
-		ShowMessageBox(, NStr("en = 'Select the domain user.'"));
+		ShowMessageBox(, NStr("en='Select the domain user.';ru='Выберите пользователя домена.'"));
 		Return;
 	EndIf;
 	UserName = Items.DomainUserTable.CurrentData.UserName;

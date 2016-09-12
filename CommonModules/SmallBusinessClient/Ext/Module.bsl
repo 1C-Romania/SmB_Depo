@@ -115,31 +115,31 @@ Function GetPresentationOfWeekDay(CalendarWeekDay) Export
 	WeekDayNumber = WeekDay(CalendarWeekDay);
 	If WeekDayNumber = 1 Then
 		
-		Return NStr("en = 'Mo'");
+		Return NStr("en='Mo';ru='Пн'");
 		
 	ElsIf WeekDayNumber = 2 Then
 		
-		Return NStr("en = 'Tu'");
+		Return NStr("en='Tu';ru='Вт'");
 		
 	ElsIf WeekDayNumber = 3 Then
 		
-		Return NStr("en = 'We'");
+		Return NStr("en='We';ru='Ср'");
 		
 	ElsIf WeekDayNumber = 4 Then
 		
-		Return NStr("en = 'Th'");
+		Return NStr("en='Th';ru='Чт'");
 		
 	ElsIf WeekDayNumber = 5 Then
 		
-		Return NStr("en = 'Fr'");
+		Return NStr("en='Fr';ru='Пт'");
 		
 	ElsIf WeekDayNumber = 6 Then
 		
-		Return NStr("en = 'Sa'");
+		Return NStr("en='Sa';ru='Sa'");
 		
 	Else
 		
-		Return NStr("en = 'Su'");
+		Return NStr("en='Su';ru='Вс'");
 		
 	EndIf;
 	
@@ -259,7 +259,7 @@ Function BeforeAddToSubordinateTabularSection(DocumentForm, SubordinateTabularSe
 
 	If DocumentForm.Items[DocumentForm.TabularSectionName].CurrentData = Undefined Then
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Main tabular section row is not selected.'");
+		Message.Text = NStr("en='Main tabular section row is not selected.';ru='Не выбрана строка основной табличной части!'");
 		Message.Message();
 		Return True;
 	Else
@@ -949,7 +949,7 @@ EndProcedure // FillInCustomerInvoiceNoteText()
 //
 Function InvoicePresentation(Date, Number) Export
 
-	InvoiceText = NStr("en = 'No. %Number% from %Date% y.'");
+	InvoiceText = NStr("en='No. %Number% from %Date% y.';ru='№ %Номер% от %Дата% г.'");
 	InvoiceText = StrReplace(InvoiceText, "%Number%", Number);
 	InvoiceText = StrReplace(InvoiceText, "%Date%", Format(Date, "DF=dd.MM.yyyy"));	
 	Return InvoiceText;
@@ -965,21 +965,21 @@ Procedure OpenInvoice(DocumentForm, Received = False) Export
 	If DocumentForm.Object.DeletionMark 
 		AND Not ValueIsFilled(InvoiceFound) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'The invoice can not be entered on the base of the document marked for deletion!'");	
+		Message.Text = NStr("en='The invoice can not be entered on the base of the document marked for deletion!';ru='Счет-фактуру нельзя вводить на основании документа, помеченного на удаление!'");	
 		Message.Message();
 		Return;	
 	EndIf;
 	
 	If DocumentForm.Modified Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Document was changed. First, you should write document.'");	
+		Message.Text = NStr("en='Document was changed. First, you should write document.';ru='Документ был изменен. Сначала следует записать документ!'");	
 		Message.Message();
 		Return;	
 	EndIf;
 	
 	If Not ValueIsFilled(DocumentForm.Object.Ref) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Document is not written. First, you should write document.'");	
+		Message.Text = NStr("en='Document is not written. First, you should write document.';ru='Документ не записан. Сначала следует записать документ!'");	
 		Message.Message();
 		Return;	
 	EndIf;
@@ -1338,7 +1338,7 @@ Function PrintCounterpartyContract(CommandParameter) Export
 		If Not AllEditedParametersFilled Then
 			ShowQueryBox(New NotifyDescription("PrintCounterpartyContractQuestion", ThisObject,
 			               New Structure("PrintingSource", PrintingSource)),
-			               NStr("en='Not all manually edited fields are filled in, continue printing?'"), QuestionDialogMode.YesNo);
+			               NStr("en='Not all manually edited fields are filled in, continue printing?';ru='Не все редактируемые вручную поля заполнены, продолжить печать?'"), QuestionDialogMode.YesNo);
 		Else
 			PrintCounterpartyContractEnd(PrintingSource);
 		EndIf;
@@ -1405,14 +1405,14 @@ Procedure CreateEmail(Val FieldsValues, Val Presentation = "", ExpectedKind = Un
 		
 	InformationType = ContactInformation.ContactInformationType;
 	If InformationType <> PredefinedValue("Enum.ContactInformationTypes.EmailAddress") Then
-		Raise StrReplace(NStr("en = 'You can not create email by contact information with the type ""%1""'"),
+		Raise StrReplace(NStr("en='You can not create email by contact information with the type ""%1""';ru='Нельзя создать письмо по контактной информацию с типом ""%1""'"),
 			"%1", InformationType);
 	EndIf;
 	
 	XMLData = ContactInformation.DataXML;
 	MailAddress = ContactInformationManagementServiceServerCall.RowCompositionContactInformation(XMLData);
 	If TypeOf(MailAddress) <> Type("String") Then
-		Raise NStr("en = 'Error of the email address obtaining, incorrect type of the contact details'");
+		Raise NStr("en='Error of the email address obtaining, incorrect type of the contact details';ru='Ошибка получения адреса электронной почты, неверный тип контактной информации'");
 	EndIf;
 	
 	If CommonUseClient.SubsystemExists("StandardSubsystems.EmailOperations") Then
@@ -1432,7 +1432,7 @@ Procedure CreateEmail(Val FieldsValues, Val Presentation = "", ExpectedKind = Un
 	
 	// No mail subsystem, start the system one
 	Notification = New NotifyDescription("CreateEmailByContactInformationEnd", ThisObject, MailAddress);
-	SuggestionText = NStr("en = 'To send email, you should install extension for work with files.'");
+	SuggestionText = NStr("en='To send email, you should install extension for work with files.';ru='Для отправки письма необходимо установить расширение для работы с файлами.'");
 	CommonUseClient.CheckFileOperationsExtensionConnected(Notification, SuggestionText);
 	
 EndProcedure
@@ -1579,8 +1579,8 @@ Procedure EnableFileOperationsExtensionEnd(Attached, AdditionalParameters) Expor
 			ReadTextDocument(AdditionalParameters);
 		Else // If there are no settings, then file opening dialog.
 			Dialog = New FileDialog(FileDialogMode.Open);
-			Dialog.Title = NStr("en='Select file for import...'");
-			Dialog.Filter = NStr("en='Files of exchange with 1C (*.txt)|*.txt|All files (*.*)|*.*'");
+			Dialog.Title = NStr("en='Select file for import...';ru='Выберите файл для загрузки...'");
+			Dialog.Filter = NStr("en='Files of exchange with 1C (*.txt)|*.txt|All files (*.*)|*.*';ru='Файлы обмена с 1С (*.txt)|*.txt|Все файлы (*.*)|*.*'");
 			Dialog.FullFileName = AdditionalParameters.PathToFile1;
 			Notification = New NotifyDescription("FileOpeningDialogEnd", ThisObject, AdditionalParameters);
 			Dialog.Show(Notification);
@@ -1625,7 +1625,7 @@ Procedure ReadTextDocument(AdditionalParameters)
 	Try
 		File.Read(AdditionalParameters.PathToFile1, Codin);
 	Except
-		MessageText = NStr("en = 'An error occurred while reading file %File%.'");
+		MessageText = NStr("en='An error occurred while reading file %File%.';ru='Ошибка чтения файла %Файл%.'");
 		MessageText = StrReplace(MessageText, "%File%", AdditionalParameters.PathToFile1);
 		ShowMessageBox(, MessageText);
 		Return;
@@ -1658,9 +1658,9 @@ EndProcedure
 Procedure ImportDataFromFileStatementsFragment(AdditionalParameters)
 	
 	Status(
-		NStr("en='The statement file is being loaded'"),
+		NStr("en='The statement file is being loaded';ru='Загружается файл выписки'"),
 		,
-		NStr("en='Statement file is being imported'"),
+		NStr("en='Statement file is being imported';ru='Производится загрузка файла выписки'"),
 		PictureLib.DataImport32
 	);
 	

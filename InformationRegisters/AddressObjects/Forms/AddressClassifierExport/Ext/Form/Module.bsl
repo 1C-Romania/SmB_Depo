@@ -57,13 +57,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		NumberOfUpdates = UpdatedData.Count();
 		
 		If NumberOfUpdates > 0 Then
-			Title = NStr("en = 'Address classifier update is available.'");
+			Title = NStr("en='Address classifier update is available.';ru='Доступно обновление адресного классификатора.'");
 			ImportingSourceCode = "Site";
 			// Import only the updated and perhaps added RF constituent entities!
 			IdsForUpdates = UpdatedData.UnloadColumn("ID");
 		Else
-			WarningOnOpening = NStr("en = 'Address classifier update is not required.
-				                                   |Actual address information is already imported to the application.'");
+			WarningOnOpening = NStr("en='Address classifier update is not required."
+"Actual address information is already imported to the application.';ru='Обновление адресного классификатора не требуется."
+"В программу уже загружены актуальные адресные сведения.'");
 			Return;
 			
 		EndIf;
@@ -182,7 +183,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	Notification = New NotifyDescription("CloseFormEnd", ThisObject);
 	Cancel = True;
 	
-	Text = NStr("en = 'Interrupt the address classifier loading?'");
+	Text = NStr("en='Interrupt the address classifier loading?';ru='Прервать загрузку адресного классификатора?'");
 	ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo);
 	
 EndProcedure
@@ -218,7 +219,7 @@ EndProcedure
 Procedure ImportingAddressStartChoice(Item, ChoiceData, StandardProcessing)
 	
 	AddressClassifierClient.ChooseDirectory(ThisObject, "ImportAddress", 
-		NStr("en = 'Directory with the address classifier files'"),
+		NStr("en='Directory with the address classifier files';ru='Каталог с файлами адресного классификатора'"),
 		StandardProcessing,
 		New NotifyDescription("EndImportingAddressDirectorySelection", ThisObject)
 	);
@@ -268,15 +269,16 @@ EndProcedure
 Procedure Import(Command)
 	
 	If ImportingSourceCode = "DIRECTORY" Then
-		Text = NStr("en = 'To import address classifier from
-		                   |the folder it is neseccary to set the extension for work with files.'");
+		Text = NStr("en='To import address classifier from"
+"the folder it is neseccary to set the extension for work with files.';ru='Для загрузки адресного классификатора"
+"из папки необходимо установить расширение для работы с файлами.'");
 		ExtensionControlWorksWithFile(Text, ImportingSourceCode, ImportAddress);
 		
 	ElsIf ImportingSourceCode = "Site" Then
 		ImportClassifierFromSite();
 		
 	Else
-		CommonUseClientServer.MessageToUser( NStr("en = 'Classifier import variant is not specified.'") );
+		CommonUseClientServer.MessageToUser( NStr("en='Classifier import variant is not specified.';ru='Не указан вариант загрузки классификатора.'") );
 	EndIf;
 		
 EndProcedure
@@ -395,7 +397,7 @@ Procedure RefreshInterfaceByCountImported()
 	
 	// Import page
 	ImportingDescriptionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Data of the selected states (%1) is loaded.'"), ChosenStatesForExport 
+		NStr("en='Data of the selected states (%1) is loaded.';ru='Загружаются данные по выбранным регионам (%1)'"), ChosenStatesForExport 
 	);
 	
 	SetImportingPermission(ChosenStatesForExport);
@@ -478,7 +480,7 @@ Procedure ImportClassifierFromAuthenticationSite(Val Authentication, Val CodesOf
 	
 	// Switch mode - page.
 	Items.ImportSteps.CurrentPage = Items.ImportingWait;
-	ImportingStatusText = NStr("en = 'File loading from the user support site...'");
+	ImportingStatusText = NStr("en='File loading from the user support site...';ru='Загрузка файлов с сайта поддержки пользователей...'");
 	
 	Items.BreakImport.Enabled = False;
 	
@@ -518,24 +520,24 @@ Procedure RunBackgroundImportingFromServerSite(CodesOfStates, Authentication)
 			UUID,
 			"AddressClassifierService.BackgroundTaskAddressesClassifierImportingFromSite",
 			MethodParameters,
-			NStr("en = 'Address classifier importing from the website'")
+			NStr("en='Address classifier importing from the website';ru='Загрузка адресного классификатора с сайта'")
 		);
 	Except
 		Information = ErrorInfo();
 		BriefErrorDescription = BriefErrorDescription(Information);
 		If Find(BriefErrorDescription , "404 Not Found") > 0 OR Find(BriefErrorDescription , "401 Unauthorized") > 0 Then
-			ErrorText = NStr("en = 'Failed to import the address data.'");
-			ErrorText = ErrorText + NStr("en = 'Possible errors:'") + Chars.LF;
-			ErrorText = ErrorText + NStr("en = '• Login and password are not entered correctly or not entered;'") + Chars.LF;
-			ErrorText = ErrorText + NStr("en = '• No connection to the Internet;'") + Chars.LF;
-			ErrorText = ErrorText + NStr("en = '• The website is under maintenance. Try to repeat the import later.'") + Chars.LF;
-			ErrorText = ErrorText + NStr("en = '• Firewall or other middleware (antivirused, etc.) blocks the application attempts to connect to the Internet;'") + Chars.LF;
-			ErrorText = ErrorText + NStr("en = '• Connection to the Internet is performed through the proxy server but its parameters are nor specified in the application.'") + Chars.LF;
-			ErrorText = ErrorText + NStr("en = 'Technical information:'") + " " + Chars.LF;
+			ErrorText = NStr("en='Failed to import the address data.';ru='Не удается загрузить адресные сведения.'");
+			ErrorText = ErrorText + NStr("en='Possible errors:';ru='Возможные причины:'") + Chars.LF;
+			ErrorText = ErrorText + NStr("en='• Login and password are not entered correctly or not entered;';ru='• Некорректно введен или не введен логин и пароль;'") + Chars.LF;
+			ErrorText = ErrorText + NStr("en='• No connection to the Internet;';ru='• Нет подключения к Интернету;'") + Chars.LF;
+			ErrorText = ErrorText + NStr("en='• The website is under maintenance. Try to repeat the import later.';ru='• На сайте ведутся технические работы. Попробуйте повторить загрузку позднее.'") + Chars.LF;
+			ErrorText = ErrorText + NStr("en='• Firewall or other middleware (antivirused, etc.) blocks the application attempts to connect to the Internet;';ru='• Брандмауэр или другое промежуточное ПО (антивирусы и т.п.) блокируют попытки программы подключиться к Интернету;'") + Chars.LF;
+			ErrorText = ErrorText + NStr("en='• Connection to the Internet is performed through the proxy server but its parameters are nor specified in the application.';ru='• Подключение к Интернету выполняется через прокси-сервер, но его параметры не заданы в программе.'") + Chars.LF;
+			ErrorText = ErrorText + NStr("en='Technical information:';ru='Техническая информация:'") + " " + Chars.LF;
 			ErrorText = ErrorText + StrGetLine(BriefErrorDescription(Information), 1);
 		Else
-			ErrorText = NStr("en = 'Probably the site in under maintenance at this moment. Try to repeat the import later.'") + Chars.LF;
-			ErrorText = ErrorText + NStr("en = 'Technical information:'") + " " + Chars.LF;
+			ErrorText = NStr("en='Probably the site in under maintenance at this moment. Try to repeat the import later.';ru='Вероятно в данный момент на сайте ведутся технические работы. Попробуйте повторить загрузку позднее.'") + Chars.LF;
+			ErrorText = ErrorText + NStr("en='Technical information:';ru='Техническая информация:'") + " " + Chars.LF;
 			ErrorText = ErrorText + BriefErrorDescription(Information);
 		EndIf;
 		ParametersOfLongOperation.Error = ErrorText;
@@ -557,7 +559,7 @@ EndProcedure
 Procedure RunBackgroundImportingFromClientDirectory(Val ImportParameters)
 	// Switch mode - page.
 	Items.ImportSteps.CurrentPage = Items.ImportingWait;
-	ImportingStatusText = NStr("en = 'File transfer to the application server...'");
+	ImportingStatusText = NStr("en='File transfer to the application server...';ru='Передача файлов на сервер приложения...'");
 	
 	Items.BreakImport.Enabled = False;
 	ClassifierBackgroundImportParameters = ImportParameters;
@@ -681,12 +683,12 @@ Procedure RunBackgroundImportingAtServer(Val CodesOfStates, Val ImportingFilesDe
 			UUID,
 			"AddressClassifierService.AddressesClassifierImportBackgroundJob",
 			MethodParameters,
-			NStr("en = 'Importing address classifier'")
+			NStr("en='Importing address classifier';ru='Загрузка адресного классификатора'")
 		);
 	Except
-		ErrorText = NStr("en = 'Failed to import the address data from the files.'");
-		ErrorText = ErrorText + NStr("en = 'It is necessary to save files from the 1C site http://its.1c.en/export/fias to the disk and then export to the application.'") + Chars.LF;
-		ErrorText = ErrorText + NStr("en = 'Technical information:'") + Chars.LF + BriefErrorDescription(ErrorInfo());
+		ErrorText = NStr("en='Failed to import the address data from the files.';ru='Не удается загрузить адресные сведения из файлов.'");
+		ErrorText = ErrorText + NStr("en='It is necessary to save files from the 1C site http://its.1c.en/export/fias to the disk and then export to the application.';ru='Необходимо сохранить файлы с сайта «1С» http://its.1c.ru/download/fias на диск, а затем загрузить в программу.'") + Chars.LF;
+		ErrorText = ErrorText + NStr("en='Technical information:';ru='Техническая информация:'") + Chars.LF + BriefErrorDescription(ErrorInfo());
 		ParametersOfLongOperation.Error = ErrorText;
 		Return;
 	EndTry;
@@ -750,7 +752,7 @@ Procedure Attachable_WaitingLongOperation()
 		
 	ElsIf State.Completed Then
 		Items.ImportSteps.CurrentPage = Items.SuccessfulCompletion;
-		ImportingDescriptionText = NStr("en = 'Address classifier is successfully imported.'");
+		ImportingDescriptionText = NStr("en='Address classifier is successfully imported.';ru='Адресный классификатор успешно загружен.'");
 		
 		Notify("AddressClassifierIsImported", , ThisObject);
 		

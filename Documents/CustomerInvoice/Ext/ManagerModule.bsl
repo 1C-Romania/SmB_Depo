@@ -253,8 +253,8 @@ Procedure GenerateTableInventory(DocumentRefSalesInvoice, StructureAdditionalPro
 	|		ELSE CAST(&InventoryWriteOff AS String(100))
 	|	END";
 	
-	Query.SetParameter("InventoryReceipt", NStr("en = 'Inventory receiving'"));
-	Query.SetParameter("InventoryWriteOff", NStr("en = 'Inventory write off'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("InventoryWriteOff", NStr("en='Inventory write off';ru='Списание запасов'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -578,7 +578,7 @@ Procedure GenerateTableInventorySale(DocumentRefSalesInvoice, StructureAdditiona
 				TableRowReceipt.Amount = AmountToBeWrittenOff;
 				TableRowReceipt.Quantity = QuantityRequiredReserve;
 				
-				TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer'"); 
+				TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'"); 
 				
 				TableRowReceipt.GLAccount = RowTableInventory.CorrGLAccount;
 				
@@ -598,7 +598,7 @@ Procedure GenerateTableInventorySale(DocumentRefSalesInvoice, StructureAdditiona
 					RowIncomeAndExpenses.AmountExpense = AmountToBeWrittenOff;
 					RowIncomeAndExpenses.Amount = AmountToBeWrittenOff;
 					
-					RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection'");
+					RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
 					
 				EndIf;
 				
@@ -694,7 +694,7 @@ Procedure GenerateTableInventorySale(DocumentRefSalesInvoice, StructureAdditiona
 				TableRowReceipt.Amount = AmountToBeWrittenOff;
 				TableRowReceipt.Quantity = QuantityRequiredAvailableBalance;
 				
-				TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer'");
+				TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 				
 				TableRowReceipt.GLAccount = RowTableInventory.CorrGLAccount;
 				
@@ -714,7 +714,7 @@ Procedure GenerateTableInventorySale(DocumentRefSalesInvoice, StructureAdditiona
 					RowIncomeAndExpenses.AmountExpense = AmountToBeWrittenOff;
 					RowIncomeAndExpenses.Amount = AmountToBeWrittenOff;
 					
-					RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection'");
+					RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
 					
 				EndIf;
 				
@@ -983,7 +983,7 @@ Procedure GenerateTableInventoryReturn(DocumentRefSalesInvoice, StructureAdditio
 					RowIncomeAndExpenses.AmountIncome = TableRowExpense.Amount;
 				EndIf;
 				
-				RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection'");
+				RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
 				
 				// Management.
 				RowTableManagerial = StructureAdditionalProperties.TableForRegisterRecords.TableManagerial.Add();
@@ -1351,7 +1351,7 @@ Procedure GenerateTableInventoryReceived(DocumentRefSalesInvoice, StructureAddit
 	|	TableInventoryReceived.GLAccount";
 	
 	Query.SetParameter("InventoryReception", "");
-	Query.SetParameter("InventoryReceiptProductsOnCommission", NStr("en = 'Inventory receiving'"));
+	Query.SetParameter("InventoryReceiptProductsOnCommission", NStr("en='Inventory receiving';ru='Прием запасов'"));
 	Query.SetParameter("AdmAccountingCurrency", Constants.AccountingCurrency.Get());
 	
 	QueryResult = Query.Execute();
@@ -1645,8 +1645,8 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefSalesInvoice, StructureAddit
 	
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("Income", NStr("en='Sales revenue'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("Income", NStr("en='Sales revenue';ru='Выручка от продажи'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -1714,9 +1714,9 @@ Procedure GenerateTableCustomerAccounts(DocumentRefSalesInvoice, StructureAdditi
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Appearance of customer liabilities'"));
-	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Appearance of customer liabilities';ru='Возникновение обязательств покупателя'"));
+	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	// Generate temporary table by accounts payable.
 	Query.Text =
@@ -1937,9 +1937,9 @@ Procedure GenerateTableAccountsPayable(DocumentRefSalesInvoice, StructureAdditio
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("DebtCancelling", NStr("en='Debt cancelling'"));
-	Query.SetParameter("PrepaymentRecovery", NStr("en='Prepayment recovery'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("DebtCancelling", NStr("en='Debt cancelling';ru='Сторнирование долга'"));
+	Query.SetParameter("PrepaymentRecovery", NStr("en='Prepayment recovery';ru='Восстановление предоплаты'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -2809,14 +2809,14 @@ Procedure GenerateTableManagerial(DocumentRefSalesInvoice, StructureAdditionalPr
 	|	Ordering,
 	|	LineNumber";
 	
-	Query.SetParameter("SetOffAdvancePayment", NStr("en = 'Setoff of advance payment'"));
-	Query.SetParameter("PrepaymentReversal", NStr("en = 'Prepayment reversing'"));
-	Query.SetParameter("ReversingSupplies", NStr("en = 'Delivery reversing'"));
-	Query.SetParameter("IncomeReflection", NStr("en = 'Sales revenue'"));
+	Query.SetParameter("SetOffAdvancePayment", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("PrepaymentReversal", NStr("en='Prepayment reversing';ru='Сторнирование предоплаты'"));
+	Query.SetParameter("ReversingSupplies", NStr("en='Delivery reversing';ru='Сторнирование поставки'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Sales revenue';ru='Выручка от продажи'"));
 	Query.SetParameter("AccountingCurrency", Constants.AccountingCurrency.Get());
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	Query.SetParameter("OperationKind", DocumentRefSalesInvoice.OperationKind);
 	//( elmi #11
 	Query.SetParameter("VAT", NStr("en=' VAT '"));
@@ -4224,7 +4224,7 @@ Function GenerateUniversalTransferDocument(SpreadsheetDocument, CurrentDocument)
 			
 		EndIf;
 		FillStructureSection.Insert("MeasurementUnit", MeasurementUnit);
-		FillStructureSection.Insert("Excise", ?(Header.DocumentDate < CustomerInvoiceNote1137UsageBegin, "", NStr("en = 'no excise'")));
+		FillStructureSection.Insert("Excise", ?(Header.DocumentDate < CustomerInvoiceNote1137UsageBegin, "", NStr("en='no excise';ru='без акциза'")));
 		FillStructureSection.Insert("Quantity", Row.Quantity);
 		
 		If Row.Price = 0 OR Row.Quantity = 0 Then
@@ -4242,8 +4242,8 @@ Function GenerateUniversalTransferDocument(SpreadsheetDocument, CurrentDocument)
 		
 		If Upper(Row.VATRate) = "WITHOUT VAT" Then
 			
-			FillStructureSection.Insert("VATRate", NStr("en ='Without VAT'"));
-			FillStructureSection.Insert("VATAmount", NStr("en ='Without VAT'"));
+			FillStructureSection.Insert("VATRate", NStr("en='Without VAT';ru='без НДС'"));
+			FillStructureSection.Insert("VATAmount", NStr("en='Without VAT';ru='без НДС'"));
 			
 		Else
 			
@@ -4303,8 +4303,8 @@ Function GenerateUniversalTransferDocument(SpreadsheetDocument, CurrentDocument)
 	
 	CompanyResponsiblePersons.Insert("PagesNumber", 
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Document is drawn up for%1%2 %3'"), Chars.LF, PageCount,
-			SmallBusinessServer.FormOfMultipleNumbers(NStr("en = 'list'"), NStr("en = 'Worksheets'"), NStr("en = 'Worksheets'"), PageCount))
+			NStr("en='Document is drawn up for%1%2 %3';ru='Документ составлен на%1%2 %3'"), Chars.LF, PageCount,
+			SmallBusinessServer.FormOfMultipleNumbers(NStr("en='list';ru='список'"), NStr("en='Worksheets';ru='листах'"), NStr("en='Worksheets';ru='листах'"), PageCount))
 		);
 	
 	CompanyResponsiblePersons.Insert("Certificate", SmallBusinessServer.CompaniesDescriptionFull(InfoAboutVendor, "Certificate,"));
@@ -4329,9 +4329,9 @@ Function GenerateUniversalTransferDocument(SpreadsheetDocument, CurrentDocument)
 		OR ValueIsFilled(Header.PowerAttorneyPerson)
 		OR ValueIsFilled(Header.PowerOfAttorneyNumber) Then
 		
-		BaseText = Header.Basis + NStr("en ='; by power of attorney No'") + Header.PowerOfAttorneyNumber 
-			+ NStr("en =' from '") + Format(Header.PowerOfAttorneyDate, "DLF=DD") 
-			+ NStr("en =' Paid '") + Header.PowerOfAttorneyIssued + " " 
+		BaseText = Header.Basis + NStr("en='; by power of attorney No';ru='; по доверенности №'") + Header.PowerOfAttorneyNumber 
+			+ NStr("en=' from ';ru=' от '") + Format(Header.PowerOfAttorneyDate, "DLF=DD") 
+			+ NStr("en=' Paid ';ru=' Paid '") + Header.PowerOfAttorneyIssued + " " 
 			+ Header.PowerAttorneyPerson;
 			
 		FillStructureSection.Insert("Basis", BaseText);
@@ -4348,12 +4348,12 @@ Function GenerateUniversalTransferDocument(SpreadsheetDocument, CurrentDocument)
 	If Not IsBlankString(InfoAboutVendor.TIN) 
 		AND Not IsBlankString(InfoAboutVendor.KPP) Then
 		
-		CompanyPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1, TIN/KPP %2/%3'"),
+		CompanyPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN/KPP %2/%3';ru='%1, TIN/KPP %2/%3'"),
 			CompanyPresentation, InfoAboutVendor.TIN, InfoAboutVendor.KPP);
 		
 	ElsIf Not IsBlankString(InfoAboutVendor.TIN) Then
 		
-		CompanyPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1, TIN %2'"),
+		CompanyPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN %2';ru='%1, ИНН %2'"),
 			CompanyPresentation, InfoAboutVendor.TIN);
 		
 	EndIf;
@@ -4363,12 +4363,12 @@ Function GenerateUniversalTransferDocument(SpreadsheetDocument, CurrentDocument)
 	If Not IsBlankString(InfoAboutCustomer.TIN)
 		AND Not IsBlankString(InfoAboutCustomer.KPP) Then
 		
-		PresentationOfCounterparty = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1, TIN/KPP %2/%3'"),
+		PresentationOfCounterparty = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN/KPP %2/%3';ru='%1, TIN/KPP %2/%3'"),
 			PresentationOfCounterparty, InfoAboutCustomer.TIN, InfoAboutCustomer.KPP);
 			
 	ElsIf Not IsBlankString(InfoAboutCustomer.TIN) Then
 		
-		PresentationOfCounterparty = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1, TIN %2'"),
+		PresentationOfCounterparty = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN %2';ru='%1, ИНН %2'"),
 			PresentationOfCounterparty, InfoAboutCustomer.TIN);
 		
 	EndIf;
@@ -4556,12 +4556,12 @@ Function GenerateServicesAcceptanceCertificate(SpreadsheetDocument, CurrentDocum
 	TemplateArea = Template.GetArea("TotalVAT");
 	If VATAmount = 0 Then
 		
-		FillStructureSection.Insert("VAT",		NStr("en='Without tax (VAT)'"));
-		FillStructureSection.Insert("TotalVAT",	NStr("en='-'"));
+		FillStructureSection.Insert("VAT",		NStr("en='Without tax (VAT)';ru='Без налога (НДС)'"));
+		FillStructureSection.Insert("TotalVAT",	NStr("en='-';ru='-'"));
 		
 	Else
 		
-		FillStructureSection.Insert("VAT",		?(Header.AmountIncludesVAT, NStr("en ='Including VAT:'"), NStr("en ='VAT Amount:'")));
+		FillStructureSection.Insert("VAT",		?(Header.AmountIncludesVAT, NStr("en='Including VAT:';ru='Inclusive TVA:'"), NStr("en='VAT Amount:';ru='Сумма НДС:'")));
 		FillStructureSection.Insert("TotalVAT",	SmallBusinessServer.AmountsFormat(VATAmount));
 		
 	EndIf; 
@@ -4575,8 +4575,9 @@ Function GenerateServicesAcceptanceCertificate(SpreadsheetDocument, CurrentDocum
 		
 	Else
 		
-		MessageText = NStr("en ='ATTENTION! User template may be used for generating the ""Certificate of services provided"" document. 
-			|Standard printing mechanism may work incorrecty.'");
+		MessageText = NStr("en='ATTENTION! User template may be used for generating the ""Certificate of services provided"" document. "
+"Standard printing mechanism may work incorrecty.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет для формирования документа ""Акт об оказании услуг"". "
+"Штатный механизм печати может работать некоректно.'");
 		CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 		
 	EndIf;
@@ -4584,7 +4585,7 @@ Function GenerateServicesAcceptanceCertificate(SpreadsheetDocument, CurrentDocum
 	FillStructureSection.Clear();
 	TemplateArea = Template.GetArea("AmountInWords");
 	AmountToBeWrittenInWords = Total;
-	FillStructureSection.Insert("TotalRow",  NStr("en ='Total titles '") + String(Quantity) + NStr("en =', in the amount of '") + SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.DocumentCurrency));
+	FillStructureSection.Insert("TotalRow",  NStr("en='Total titles ';ru='Всего наименований '") + String(Quantity) + NStr("en=', in the amount of ';ru=', на сумму '") + SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.DocumentCurrency));
 	FillStructureSection.Insert("AmountInWords", WorkWithCurrencyRates.GenerateAmountInWords(AmountToBeWrittenInWords, Header.DocumentCurrency));
 	TemplateArea.Parameters.Fill(FillStructureSection);
 	SpreadsheetDocument.Put(TemplateArea);
@@ -5051,7 +5052,7 @@ Procedure GenerateSalesReceipt(SpreadsheetDocument, CurrentDocument)
 	
 	AmountToBeWrittenInWords = Total;
 	FillStructureSection.Insert("TotalRow", 
-		NStr("en ='Total titles '") + String(Quantity) + NStr("en =', in the amount of '") + SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.DocumentCurrency));
+		NStr("en='Total titles ';ru='Всего наименований '") + String(Quantity) + NStr("en=', in the amount of ';ru=', на сумму '") + SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.DocumentCurrency));
 	FillStructureSection.Insert("AmountInWords", WorkWithCurrencyRates.GenerateAmountInWords(AmountToBeWrittenInWords, Header.DocumentCurrency));
 	
 	TemplateArea.Parameters.Fill(FillStructureSection);
@@ -5946,22 +5947,22 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 		If IsInvoiceForPayment Then
 			
 			TemplateName = "InvoiceForPayment";
-			PFPresentation = NStr("en = 'Invoice for payment'");
+			PFPresentation = NStr("en='Invoice for payment';ru='Счет на оплату'");
 			
 		ElsIf IsInvoiceForPartialPayment Then
 			
 			TemplateName = "InvoiceForPartialPayment";
-			PFPresentation = NStr("en = 'Invoice for partial payment'");
+			PFPresentation = NStr("en='Invoice for partial payment';ru='Счет на частичную оплату'");
 			
 		ElsIf IsInvoiceForPaymentWithFacsimileSignature Then
 			
 			TemplateName = "InvoiceForPaymentWithFacsimileSignature";
-			PFPresentation = NStr("en = 'Invoice for payment (with facsimile)'");
+			PFPresentation = NStr("en='Invoice for payment (with facsimile)';ru='Счет на оплату (с факсимиле)'");
 			
 		ElsIf IsInvoiceForPartialPaymentWithFacsimileSignature Then
 			
 			TemplateName = "InvoiceForPartialPaymentWithFacsimileSignature";
-			PFPresentation = NStr("en = 'Invoice for partial payment (with facsimile)'")
+			PFPresentation = NStr("en='Invoice for partial payment (with facsimile)';ru='Счет на частичную оплату (с факсимиле)'")
 			
 		EndIf;
 		
@@ -5980,9 +5981,11 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 				
 				PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, TemplateName, PFPresentation, New SpreadsheetDocument);
 				
-				MessageText = NStr("en = '__________________
-											|%1 document.
-											|To generate printing form, it is required to select invoice for payment with document-base or specify customer order in the tabular section.'");
+				MessageText = NStr("en='__________________"
+"%1 document."
+"To generate printing form, it is required to select invoice for payment with document-base or specify customer order in the tabular section.';ru='__________________"
+"Документ %1."
+"Для формирования печатной формы необходимо либо выбрать документом-основанием счет на оплату, либо указать в табличной части заказ покупателя.'");
 				
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, PrintObject);
 				CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
@@ -6052,9 +6055,11 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 				
 				PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CustomerInvoiceNote", "Account-texture", New SpreadsheetDocument);
 				
-				MessageText = NStr("en = '__________________
-											|%1 document.
-											|Customer invoice note is not generated.'");
+				MessageText = NStr("en='__________________"
+"%1 document."
+"Customer invoice note is not generated.';ru='__________________"
+"Документ %1."
+"Счет-фактура не сформирована.'");
 				
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, PrintObject);
 				CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
@@ -6099,107 +6104,107 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = IdentifierValue;
-	PrintCommand.Presentation = NStr("en = 'Custom kit of documents'");
+	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "ServicesAcceptanceCertificate";
-	PrintCommand.Presentation = NStr("en = 'Services acceptance certificate'");
+	PrintCommand.Presentation = NStr("en='Services acceptance certificate';ru='Акт выполненных работ'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "TORG12";
-	PrintCommand.Presentation = NStr("en = 'TORG12 (Consignment note)'");
+	PrintCommand.Presentation = NStr("en='TORG12 (Consignment note)';ru='ТОРГ12 (Товарная накладная)'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "TRAD12WithServices";
-	PrintCommand.Presentation = NStr("en = 'TORG12 (Consignment note with services)'");
+	PrintCommand.Presentation = NStr("en='TORG12 (Consignment note with services)';ru='ТОРГ12 (Товарная накладная с услугами)'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 10;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "M15";
-	PrintCommand.Presentation = NStr("en = 'M15 (Invoice on materials issue)'");
+	PrintCommand.Presentation = NStr("en='M15 (Invoice on materials issue)';ru='М15 (Накладная на отпуск материалов)'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 14;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "BoL";
-	PrintCommand.Presentation = NStr("en = '1-T (Shipping document)'");
+	PrintCommand.Presentation = NStr("en='1-T (Shipping document)';ru='1-Т (Товарно-транспортная накладная)'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 17;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.Handler = "SmallBusinessClient.PrintWayBill";
 	PrintCommand.ID = "CN";
-	PrintCommand.Presentation = NStr("en = 'Application #4 (consignment note)'");
+	PrintCommand.Presentation = NStr("en='Application #4 (consignment note)';ru='Приложение №4 (Транспортная накладная)'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 20;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.Handler = "SmallBusinessClient.PrintUTD";
 	PrintCommand.ID = "UniversalTransferDocument";
-	PrintCommand.Presentation = NStr("en = 'Universal transfer document'");
+	PrintCommand.Presentation = NStr("en='Universal transfer document';ru='Универсальный передаточный документ'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 23;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CustomerInvoiceNote";
-	PrintCommand.Presentation = NStr("en = 'Account-texture'");
+	PrintCommand.Presentation = NStr("en='Account-texture';ru='Счет-фактура'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 26;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "Consignment";
-	PrintCommand.Presentation = NStr("en = 'Customer invoice'");
+	PrintCommand.Presentation = NStr("en='Customer invoice';ru='Расходная накладная'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 29;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "SaleInvoiceWithServices";
-	PrintCommand.Presentation = NStr("en = 'Customer invoice (Services)'");
+	PrintCommand.Presentation = NStr("en='Customer invoice (Services)';ru='Расходная накладная (с услугами)'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 32;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InvoiceForPayment";
-	PrintCommand.Presentation = NStr("en = 'Invoice for payment'");
+	PrintCommand.Presentation = NStr("en='Invoice for payment';ru='Счет на оплату'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 35;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InvoiceForPartialPayment";
-	PrintCommand.Presentation = NStr("en = 'Invoice for partial payment'");
+	PrintCommand.Presentation = NStr("en='Invoice for partial payment';ru='Счет на частичную оплату'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.FunctionalOptions = "PaymentCalendar";
 	PrintCommand.Order = 38;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InvoiceForPaymentWithFacsimileSignature";
-	PrintCommand.Presentation = NStr("en = 'Invoice for payment (with facsimile)'");
+	PrintCommand.Presentation = NStr("en='Invoice for payment (with facsimile)';ru='Счет на оплату (с факсимиле)'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 41;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InvoiceForPartialPaymentWithFacsimileSignature";
-	PrintCommand.Presentation = NStr("en = 'Invoice for partial payment (with facsimile)'");
+	PrintCommand.Presentation = NStr("en='Invoice for partial payment (with facsimile)';ru='Счет на частичную оплату (с факсимиле)'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.FunctionalOptions = "PaymentCalendar";
 	PrintCommand.Order = 44;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "SalesReceipt";
-	PrintCommand.Presentation = NStr("en = 'Sales receipt'");
+	PrintCommand.Presentation = NStr("en='Sales receipt';ru='Товарный чек'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 47;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MerchandiseFillingForm";
-	PrintCommand.Presentation = NStr("en = 'Merchandise filling form'");
+	PrintCommand.Presentation = NStr("en='Merchandise filling form';ru='Бланк товарного наполнения'");
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 50;
 	

@@ -244,7 +244,7 @@ EndProcedure
 Procedure ExecuteSearch()
 	
 	If IsBlankString(SearchText) Then 
-		NStr("en = 'Text search query should not be empty.'");
+		NStr("en='Text search query should not be empty.';ru='Текстовый запрос поиска не должен быть пустым'");
 	EndIf;
 	
 	CurrentIdeasFilter = "search";

@@ -41,11 +41,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Petty cash</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Касса</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа касса</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -73,6 +81,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash register</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Касса ККМ</v8:content>
+						</v8:item>
 					</InputHint>
 					<ContextMenu name="CashCRFilterContextMenu" id="11"/>
 					<ExtendedTooltip name="CashCRFilterExtendedTooltip" id="76"/>
@@ -94,6 +106,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash session open</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Открыть смену</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="OpenCashShiftExtendedTooltip" id="77"/>
@@ -117,11 +133,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Peripherals management</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Управление оборудованием</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Equipment management panel</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Панель управление оборудованием</v8:content>
 						</v8:item>
 					</ToolTip>
 					<HorizontalLocation>Right</HorizontalLocation>
@@ -133,11 +157,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Peripherals management</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Управление оборудованием</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Peripherals management</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Управление оборудованием</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ExtendedTooltip name="EquipmentManagementExtendedTooltip" id="132"/>
@@ -209,11 +241,19 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Commands of form</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Команды формы</v8:content>
+							</v8:item>
 						</Title>
 						<ToolTip>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Context menu list command group</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа команды формы</v8:content>
 							</v8:item>
 						</ToolTip>
 						<ExtendedTooltip name="FolderContextMenuFormCommandsExtendedTooltip" id="83"/>
@@ -236,11 +276,19 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Commands of form</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Команды формы</v8:content>
+									</v8:item>
 								</Title>
 								<ToolTip>
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Context menu list command group</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Группа команды формы</v8:content>
 									</v8:item>
 								</ToolTip>
 								<CommandSource>Item.ReceiptsCR</CommandSource>
@@ -255,6 +303,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>ContextMenu ReceiptsCR document ReceiptCR return create based on</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Создать чек на возврат</v8:content>
 									</v8:item>
 								</Title>
 								<ExtendedTooltip name="ContextMenuReceiptsCRDocumentReceiptsCRReturnCreateBasedOnExtendedTooltip" id="87"/>
@@ -280,6 +332,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Return</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Возврат</v8:content>
 							</v8:item>
 						</Title>
 						<ExtendedTooltip name="ReceiptsCRDocumentReceiptCRReturnCreateBasedOnExtendedTooltip" id="90"/>
@@ -337,6 +393,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>DLF=D</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
 					</Format>
 					<ContextMenu name="DateContextMenu" id="5"/>
 					<ExtendedTooltip name="DateExtendedTooltip" id="97"/>
@@ -354,11 +414,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount currency</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма, валюта</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount currency</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма, валюта</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>InCell</Group>
@@ -386,6 +454,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Return</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Возврат</v8:content>
+						</v8:item>
 					</Title>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="IsCheckForReturnContextMenu" id="35"/>
@@ -400,6 +472,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="TypeContextMenu" id="63"/>
@@ -485,11 +561,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash session state</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние кассовой смены</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash session state group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа состояние кассовой смены</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -533,6 +617,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash register receipts</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Чеки ККМ</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -628,6 +716,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash register</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Касса ККМ</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.CashRegisters</v8:Type>
@@ -641,6 +733,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash session state</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние кассовой смены</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -657,6 +753,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Current session only</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только текущая смена</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -671,6 +771,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Current cash session</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая кассовая смена</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:DocumentRef.RetailReport</v8:Type>
@@ -681,6 +785,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Session is open</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Смена открыта</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -693,6 +801,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Structure state cash session</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Структура состояние кассовой смены</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -704,11 +816,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash session open</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть смену</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash session open</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть смену</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CashCRSessionOpen</Action>
@@ -719,11 +839,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash session closure</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть кассовую смену</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash session closure</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть кассовую смену</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CloseCashCRSession</Action>
@@ -734,11 +862,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash session state refresh</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить состояние кассовой смены</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash session state refresh</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить состояние кассовой смены</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -753,10 +889,18 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>CashDeposition</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>CashDeposition</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>CashDeposition</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>CashDeposition</v8:content>
 				</v8:item>
 			</ToolTip>
@@ -771,11 +915,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Withdrawal</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выемка денег</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Withdrawal</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выемка денег</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Withdrawal</Action>
@@ -789,11 +941,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Fiscal register</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Фискальный регистратор</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Open fiscal register management</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть управление фискальным регистратором</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>OpenFiscalRegisterManagement</Action>
@@ -804,11 +964,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>POS terminal</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Эквайринговый терминал</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Open POS terminal management</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть управление эквайринговым терминалом</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>OpenPOSTerminalManagement</Action>
@@ -819,11 +987,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Create</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать отчет</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash register receipt</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Чек ККМ</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>

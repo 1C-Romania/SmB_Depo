@@ -315,7 +315,7 @@ Procedure RefreshSchedulePresentation()
 		SchedulePresentation = String(Object.JobSchedule);
 		
 		If SchedulePresentation = EmptySchedulePresentation Then
-			SchedulePresentation = NStr("en = 'Schedule not specified'");
+			SchedulePresentation = NStr("en='Schedule not specified';ru='Расписание не задано'");
 		EndIf;
 		
 		Items.ConfigureScheduleJobSchedule.Title = SchedulePresentation;
@@ -394,13 +394,13 @@ EndProcedure
 Procedure ChooseDirectoryEnd1(Attached, AdditionalParameters) Export
     
     If Not Attached Then
-        ShowMessageBox(Undefined,NStr("en = 'The extension to work with files is required for this operation.'"));
+        ShowMessageBox(Undefined,NStr("en='The extension to work with files is required for this operation.';ru='Для данной операции необходимо установить расширение работы с файлами!'"));
         Return;
     EndIf;
     
     Dialog = New FileDialog(FileDialogMode.ChooseDirectory);
     
-    Dialog.Title = NStr("en = 'Specify exchange directory'");
+    Dialog.Title = NStr("en='Specify exchange directory';ru='Укажите каталог обмена'");
     Dialog.Directory   = ?(AdditionalParameters.ExportDirectory, Object.ExportDirectory, Object.ImportingDirectory);
 	
 	NotificationParameters = New Structure;
@@ -438,7 +438,7 @@ Procedure ExecuteChecksOnClickDone(Cancel)
 		If Object.JobSchedule = Undefined
 			OR String(Object.JobSchedule) = EmptySchedulePresentation Then
 			
-			Message = NStr("en = 'Schedule need to be set when using automatic update!'");
+			Message = NStr("en='Schedule need to be set when using automatic update!';ru='При использовании автоматического обмена расписание должно быть установлено!'");
 			CommonUseClientServer.MessageToUser(Message,,,,Cancel);
 			
 		EndIf;
@@ -450,20 +450,20 @@ EndProcedure
 &AtClient
 Procedure CreateNewDataExchangeAtClient(Cancel)
 	
-	Status(NStr("en = 'Settings of data exchange with website are being created'"));
+	Status(NStr("en='Settings of data exchange with website are being created';ru='Выполняется создание настройки обмена данными с web-сайтом'"));
 	
 	CreateNewDataExchangeAtServer(SettingsComposerInitialized, Cancel);
 	
 	If Cancel Then
 		
-		ShowMessageBox(Undefined,NStr("en = 'Errors occurred during creation of data exchange settings!'"));
+		ShowMessageBox(Undefined,NStr("en='Errors occurred during creation of data exchange settings!';ru='При создании настройки обмена данными возникли ошибки!'"));
 		
 	Else
 		
 		ShowUserNotification(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '""%1""'"), Object.ExchangeNodeRef),,
-			NStr("en = 'New exchange node with WEB - site created successfully!'"),
+				NStr("en='""%1""';ru='""%1""'"), Object.ExchangeNodeRef),,
+			NStr("en='New exchange node with WEB - site created successfully!';ru='Новый узел обмена с WEB - сайтом создан успешно!'"),
 			PictureLib.Information32);
 		
 		NotifyWritingNew(Object.ExchangeNodeRef);
@@ -517,7 +517,7 @@ Procedure CreateNewDataExchangeAtServer(SettingsComposerInitialized, Cancel)
 	ProcessSelectedGroupsAtServerNoContext(ListProductsAndServicesGroups);
 	
 	NewRow = DirectoriesTable.Add();
-	NewRow.Directory = NStr("en = 'Main products directory'");
+	NewRow.Directory = NStr("en='Main products directory';ru='Основной каталог товаров'");
 	NewRow.Groups = ListProductsAndServicesGroups;
 	NewRow.DirectoryId = String(New UUID);
 	NewRow.CompositionSettingsStorage = New ValueStorage(Object.DataCompositionSettingsComposer.GetSettings());
@@ -589,22 +589,22 @@ Procedure InitializationOfDataExchangeAtClient()
 	
 	Status(
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 started data exchange with site'"),
+			NStr("en='%1 started data exchange with site';ru='%1 начат обмен данными с сайтом'"),
 			Format(CurrentDate(), "DLF=DT"))
 		,,
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'by exchange node ""%1""...'"),
+			NStr("en='by exchange node ""%1""...';ru='по узлу обмена ""%1""...'"),
 			ExchangeNode));
 	
-	ExchangeWithSite.RunExchange(ExchangeNode, NStr("en = 'Interactive exchange'"));
+	ExchangeWithSite.RunExchange(ExchangeNode, NStr("en='Interactive exchange';ru='Интерактивный обмен'"));
 	
 	ShowUserNotification(
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 ""%2""'"),
+			NStr("en='%1 ""%2""';ru='%1 ""%2""'"),
 			Format(CurrentDate(), "DLF=DT"),
 			ExchangeNode) 
 		,,
-		NStr("en = 'Exchange with site completed'"),
+		NStr("en='Exchange with site completed';ru='Обмен с сайтом завершен'"),
 		PictureLib.Information32);
 		
 	Notify("ExchangeWithSiteSessionFinished");
@@ -645,7 +645,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 		If Not Object.ProductsExchange
 			AND Not Object.OrdersExchange Then 
 			
-			Message = NStr("en = 'To continue configuration, at least one of data exchange modes should be selected!'");
+			Message = NStr("en='To continue configuration, at least one of data exchange modes should be selected!';ru='Для продолжения настроек должен быть выбран хотя бы один из режимов обмена данными!'");
 			CommonUseClientServer.MessageToUser(Message,,,, Cancel);
 			
 		EndIf;
@@ -662,14 +662,14 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 			
 			If IsBlankString(Object.SiteAddress) Then 
 				
-				Message = NStr("en = 'Specify site address'");
+				Message = NStr("en='Specify site address';ru='Укажите адрес сайта'");
 				CommonUseClientServer.MessageToUser(Message,, "Object.SiteAddress",, Cancel);
 				
 			EndIf;
 			
 			If IsBlankString(Object.UserName) Then 
 				
-				Message = NStr("en = 'Specify user name'");
+				Message = NStr("en='Specify user name';ru='Укажите имя пользователя'");
 				CommonUseClientServer.MessageToUser(Message,, "Object.UserName",, Cancel);
 				
 			EndIf;
@@ -678,14 +678,14 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 			
 			If IsBlankString(Object.ExportDirectory) Then 
 				
-				Message = NStr("en = 'Specify import directory'");
+				Message = NStr("en='Specify import directory';ru='Укажите каталог выгрузки'");
 				CommonUseClientServer.MessageToUser(Message,, "Object.ExportDirectory",, Cancel);
 				
 			EndIf;
 			
 			If Object.OrdersExchange AND IsBlankString(Object.ImportingDirectory) Then 
 				
-				Message = NStr("en = 'Specify directory for loading'");
+				Message = NStr("en='Specify directory for loading';ru='Укажите каталог загрузки'");
 				CommonUseClientServer.MessageToUser(Message,, "Object.ImportingDirectory",, Cancel);
 				
 			EndIf;
@@ -704,13 +704,13 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 			
 			If Not ValueIsFilled(Object.CounterpartiesIdentificationMethod) Then
 				
-				Message = NStr("en = 'Specify counterparty identification method'");
+				Message = NStr("en='Specify counterparty identification method';ru='Укажите способ идентификации контрагентов'");
 				CommonUseClientServer.MessageToUser(Message,, "Object.CounterpartiesIdentificationMethod",, Cancel);
 				
 			ElsIf DoNotCreateCounterpartiesOnOrderImporting 
 				AND Not ValueIsFilled(Object.CounterpartyToSubstituteIntoOrders) Then
 				
-				Message = NStr("en = 'Choose counterparty for placing it into orders'");
+				Message = NStr("en='Choose counterparty for placing it into orders';ru='Выберите контрагента для подстановки в заказы'");
 				CommonUseClientServer.MessageToUser(Message,, "Object.CounterpartyToSubstituteIntoOrders",, Cancel);
 				
 			EndIf;
@@ -740,14 +740,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Not IsInRoleAddChangeOfDataExchanges Then
 		
-		DataExchangeServer.ShowMessageAboutError(NStr("en = 'You have no enough access rights!'"), Cancel);
+		DataExchangeServer.ShowMessageAboutError(NStr("en='You have no enough access rights!';ru='Недостаточно прав доступа!'"), Cancel);
 		Return;
 		
 	EndIf;
 	
 	If Not Parameters.Property("CallPlanOfExchange") Then
 		
-		Message = NStr("en = 'You can open the wizard only from the command interface. Assistant work is completed.'");
+		Message = NStr("en='You can open the wizard only from the command interface. Assistant work is completed.';ru='Работа помощника поддерживается только при вызове из командного интерфейса! Работа помощника завершена.'");
 		DataExchangeServer.ShowMessageAboutError(Message, Cancel);
 		
 	EndIf;
@@ -770,7 +770,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not CommonUseReUse.DataSeparationEnabled() Then
 		Items.SettingsGroupAutoExchangePages.CurrentPage = Items.SettingsGroupAutoExchangePage1;
 		Items.ConfigureScheduleJobSchedule.Enabled = False;
-		Items.ConfigureScheduleJobSchedule.Title = NStr("en = 'Schedule not specified'");
+		Items.ConfigureScheduleJobSchedule.Title = NStr("en='Schedule not specified';ru='Расписание не задано'");
 	Else
 		Items.SettingsGroupAutoExchangePages.CurrentPage = Items.SettingsGroupAutoExchangePage2;
 		Items.SiteEchangeInterval.Enabled = False;
@@ -809,7 +809,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	Cancel = True;
 	NotifyDescription = New NotifyDescription("BeforeCloseEnd", ThisObject);
-	ShowQueryBox(NOTifyDescription, NStr("en = 'Do you want to cancel the setting of data exchange with website and close the assistant?'"), QuestionDialogMode.YesNo);
+	ShowQueryBox(NOTifyDescription, NStr("en='Do you want to cancel the setting of data exchange with website and close the assistant?';ru='Отменить настройку обмена данными с web-сайтом и выйти из помощника?'"), QuestionDialogMode.YesNo);
 	
 EndProcedure
 

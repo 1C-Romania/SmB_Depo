@@ -120,7 +120,7 @@ Procedure OnFillAccessKinds(AccessKinds) Export
 	
 	AccessKind = AccessKinds.Add();
 	AccessKind.Name = "Companies";
-	AccessKind.Presentation = NStr("en = 'Companies'");
+	AccessKind.Presentation = NStr("en='Companies';ru='Компании'");
 	AccessKind.ValuesType   = Type("CatalogRef.Companies");
 	
 EndProcedure

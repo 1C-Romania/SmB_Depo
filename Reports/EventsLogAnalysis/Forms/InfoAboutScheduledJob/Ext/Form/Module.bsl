@@ -53,7 +53,7 @@ Procedure ConfigureScheduleJobSchedule(Command)
 		Dialog.Show(NOTifyDescription);
 		
 	Else
-		ShowMessageBox(,NStr("en = 'It is impossible to get the scheduled job schedule: scheduled job was deleted or its description was not specified.'"));
+		ShowMessageBox(,NStr("en='It is impossible to get the scheduled job schedule: scheduled job was deleted or its description was not specified.';ru='Невозможно получить расписание регламентного задания: регламентное задание было удалено или не указано его наименование.'"));
 	EndIf;
 	
 EndProcedure
@@ -65,7 +65,7 @@ Procedure GoToEventLogMonitor(Command)
 		Details = Area.Details;
 		If Details = Undefined
 			OR Area.Top <> Area.Bottom Then
-			ShowMessageBox(,NStr("en = 'Select row or cell of the job session you need'"));
+			ShowMessageBox(,NStr("en='Select row or cell of the job session you need';ru='Выберите строку или ячейку нужного сеанса задания'"));
 			Return;
 		EndIf;
 		StartDate = Details.Get(0);

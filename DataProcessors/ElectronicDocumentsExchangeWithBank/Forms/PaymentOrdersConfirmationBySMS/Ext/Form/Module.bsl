@@ -18,7 +18,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	FileName = GetTempFileName("xml");
 			
 	If FileName = Undefined Then
-		ErrorText = NStr("en = 'Failed to read electronic document. Verify the work directory setting'");
+		ErrorText = NStr("en='Failed to read electronic document. Verify the work directory setting';ru='Не удалось прочитать электронный документ. Проверьте настройку рабочего каталога'");
 		CommonUseClientServer.MessageToUser(ErrorText);
 		Cancel = True;
 		Return;
@@ -67,9 +67,11 @@ Procedure OnOpen(Cancel)
 		EndIf;
 	Except
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
-		ErrorTemplate = NStr("en = 'Error when sending confirmation code of payment order.
-									|Error code:
-									|%1 %2'");
+		ErrorTemplate = NStr("en='Error when sending confirmation code of payment order."
+"Error code:"
+"%1 %2';ru='Ошибка отправки кода подтверждения платежного поручения."
+"Код"
+"ошибки: %1 %2'");
 		If Parameters.BankApplication = PredefinedValue("Enum.BankApplications.ExchangeThroughTheAdditionalInformationProcessor") Then
 			ErrorDetails = AttachableModule.ErrorDetails();
 		Else
@@ -77,7 +79,7 @@ Procedure OnOpen(Cancel)
 		EndIf;
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
-		Operation = NStr("en = 'Sending confirmation code of payment order'");
+		Operation = NStr("en='Sending confirmation code of payment order';ru='Отправка кода подтверждения платежного поручения'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 							Operation, DetailErrorDescription, MessageText, 1);
 		Cancel = True;
@@ -107,7 +109,7 @@ EndProcedure
 Procedure CommandConfirm(Command)
 
 	If IsBlankString(Password) Then
-		MessageText = NStr("en = 'Enter confirmation code to continue.'");
+		MessageText = NStr("en='Enter confirmation code to continue.';ru='Для продолжения необходимо указать код подтверждения.'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Password");
 		Return;
 	EndIf;

@@ -54,27 +54,34 @@ Procedure BeforeWrite(Cancel)
 		If Not PrivilegedMode()
 		   AND Not AccessManagement.IsRole("FullRights") Then
 			
-			Raise NStr("en = 'Predefined Administrators
-			                             |access group can be changed
-			                             |either in privilege mode, either with ""Full rights"" role.'");
+			Raise NStr("en='Predefined Administrators"
+"access group can be changed"
+"either in privilege mode, either with ""Full rights"" role.';ru='Предопределенную"
+"группу доступа Администраторы"
+"можно изменять, либо в привилегированном режиме, либо при наличии роли ""Полные права"".'");
 		EndIf;
 		
 		// Check whether there are only users.
 		For Each CurrentRow IN ThisObject.Users Do
 			If TypeOf(CurrentRow.User) <> Type("CatalogRef.Users") Then
 				
-				Raise NStr("en = 'Predefined the
-				                             |Administrators access group can contain only users.
-				                             |
-				                             |User groups, external users
-				                             |and external user groups are invalid.'");
+				Raise NStr("en='Predefined the"
+"Administrators access group can contain only users."
+""
+"User groups, external users"
+"and external user groups are invalid.';ru='Предопределенная группа доступа Администраторы"
+"может содержать только пользователей."
+""
+"Группы пользователей, внешние пользователи и"
+"группы внешних пользователей недопустимы.'");
 			EndIf;
 		EndDo;
 		
 	// Not set the predefined Administrator profile to the arbitrary access group.
 	ElsIf Profile = Catalogs.AccessGroupsProfiles.Administrator Then
-		Raise NStr("en = 'Only the predefined Administrators
-		                             |access group can have the predefined Administrator profile.'");
+		Raise NStr("en='Only the predefined Administrators"
+"access group can have the predefined Administrator profile.';ru='Предопределенный профиль"
+"Администратор может быть только у предопределенной группы доступа Администраторы.'");
 	EndIf;
 	
 	If Not IsFolder Then

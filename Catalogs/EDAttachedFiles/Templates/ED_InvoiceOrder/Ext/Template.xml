@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -3353,6 +3423,12 @@
 Payment notification is mandatory, otherwise the availability of the goods on stock is not guaranteed. 
 The goods are shipped only upon the receipt of payment on the current account of the Supplier, under ex-works terms upon presentation of the letter of attorney or passport</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Внимание! [СрокДействия] Оплата данного счета означает согласие с условиями поставки товара. 
+Уведомление об оплате обязательно, в противном случае не гарантируется наличие товара на складе. 
+Товар отпускается по факту прихода денег на р/с Поставщика, самовывозом, при наличии доверенности и паспорта</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3624,6 +3700,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payment order filling sample</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Образец заполнения платежного поручения</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3990,6 +4070,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 							<v8:lang>en</v8:lang>
 							<v8:content>BIN</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БИК</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4139,6 +4223,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 							<v8:lang>en</v8:lang>
 							<v8:content>Acc. </v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сч. </v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4173,6 +4261,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Recipient bank</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банк получателя</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4317,6 +4409,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -4368,6 +4464,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>KPP</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КПП</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4445,6 +4545,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Acc. </v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сч. </v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -5067,6 +5171,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 							<v8:lang>en</v8:lang>
 							<v8:content>Recipient</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Получатель:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5589,6 +5697,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 							<v8:lang>en</v8:lang>
 							<v8:content>Purpose:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Назначение:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5855,6 +5967,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 							<v8:lang>en</v8:lang>
 							<v8:content>Payment stages</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Этапы оплаты</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5867,6 +5983,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 							<v8:lang>en</v8:lang>
 							<v8:content>Pay Date</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата оплаты</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5877,6 +5997,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>%</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>%</v8:content>
 						</v8:item>
 					</tl>
@@ -5910,6 +6034,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -5921,6 +6049,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>НДС</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -6437,6 +6569,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 							<v8:lang>en</v8:lang>
 							<v8:content>Quantity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -6468,6 +6604,10 @@ The goods are shipped only upon the receipt of payment on the current account of
 							<v8:lang>en</v8:lang>
 							<v8:content>Price</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -6495,6 +6635,11 @@ The goods are shipped only upon the receipt of payment on the current account of
 							<v8:content>Amount
 without discount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма
+без скидки</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -6520,6 +6665,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Discount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Скидка</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -6547,6 +6696,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT rate</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается ставка НДС</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -6572,6 +6725,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается сумма НДС</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -6599,6 +6756,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -6624,6 +6785,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Information field of the row (signed)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Информационное поле строки (подписанное)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -7577,6 +7742,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Total:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итого:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -7985,6 +8154,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Quantity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -8016,6 +8189,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Price</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -8041,6 +8218,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT rate</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается ставка НДС</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -8068,6 +8249,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT amount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается сумма НДС</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -8092,6 +8277,10 @@ without discount</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Amount</v8:content>
 						</v8:item>
 					</tl>
@@ -8119,6 +8308,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Information field of the row (signed)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Информационное поле строки (подписанное)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -8853,6 +9046,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Total:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итого:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -9067,6 +9264,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Quantity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -9098,6 +9299,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Price</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -9125,6 +9330,11 @@ without discount</v8:content>
 							<v8:content>Amount
 without discount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма
+без скидки</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -9150,6 +9360,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Discount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Скидка</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -9177,6 +9391,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -9202,6 +9420,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Information field of the row (signed)	</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Информационное поле строки (подписанное)	</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -10035,6 +10257,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Total:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итого:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -10331,6 +10557,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Quantity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -10362,6 +10592,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Price</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -10386,6 +10620,10 @@ without discount</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Amount</v8:content>
 						</v8:item>
 					</tl>
@@ -10413,6 +10651,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Information field of the row (signed)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Информационное поле строки (подписанное)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -11219,6 +11461,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Total:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итого:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -11307,6 +11553,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Goods (works, services)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары (работы, услуги)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -11328,6 +11578,10 @@ without discount</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Amount</v8:content>
 						</v8:item>
 					</tl>
@@ -11398,6 +11652,10 @@ without discount</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>1</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>1</v8:content>
 						</v8:item>
 					</tl>
@@ -11923,6 +12181,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Total:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итого:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -12479,6 +12741,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Total (with VAT)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итого (с НДС):</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -13697,6 +13963,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Manager</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Менеджер</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -13972,6 +14242,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>signature</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>личная подпись</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -14057,6 +14331,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>print full name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>расшифровка подписи</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -14313,6 +14591,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Accountant</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Бухгалтер</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -14585,6 +14867,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>signature</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>личная подпись</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -14670,6 +14956,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>print full name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>расшифровка подписи</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -14880,6 +15170,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Manager</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Менеджер</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -15156,6 +15450,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>signature</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>личная подпись</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -15241,6 +15539,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>print full name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>расшифровка подписи</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -15663,6 +15965,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Manager</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Менеджер</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -15722,6 +16028,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Shipping address:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адрес доставки:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -15800,6 +16110,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document information field:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Информационное поле документа:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -15834,6 +16148,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя реквизита</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -15854,6 +16172,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute value</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение реквизита</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -15890,6 +16212,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>DigitallySigned</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПодписанЭЦП</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -15972,6 +16298,10 @@ without discount</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Yes</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Да</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -16052,6 +16382,10 @@ without discount</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>No</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нет</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -17806,6 +18140,10 @@ without discount</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>DF=MM/dd/yyyy</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>DF=MM/dd/yyyy</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -17817,6 +18155,10 @@ without discount</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>ND=5; NFD=2</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ЧЦ=5; ЧДЦ=2</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -17826,6 +18168,10 @@ without discount</v8:content>
 		<format>
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
 		</format>
@@ -17839,6 +18185,10 @@ without discount</v8:content>
 		<format>
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
 		</format>
@@ -17970,6 +18320,10 @@ without discount</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -17983,6 +18337,10 @@ without discount</v8:content>
 		<format>
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
 		</format>
@@ -18024,6 +18382,10 @@ without discount</v8:content>
 		<format>
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
 		</format>
@@ -18105,6 +18467,10 @@ without discount</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -18143,6 +18509,10 @@ without discount</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -18160,6 +18530,10 @@ without discount</v8:content>
 		<format>
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
 		</format>

@@ -11,12 +11,12 @@
 Function ListOfControlledEvents152FL() Export
 	
 	EventsList = New ValueList;
-	EventsList.Add("_$Access$_.Access",					NStr("en = 'Access. Access'"));
-	EventsList.Add("_$Access$_.AccessDenied",			NStr("en = 'Access. Access denied'"));
-	EventsList.Add("_$Session$_.Authentication",		NStr("en = 'Session. Authentication'"));
-	EventsList.Add("_$Session$_.AuthenticationError",	NStr("en = 'Session. Authentication error'"));
-	EventsList.Add("_$Session$_.Start",					NStr("en = 'Session. Start'"));
-	EventsList.Add("_$Session$_.Finish",				NStr("en = 'Session. Finish'"));
+	EventsList.Add("_$Access$_.Access",					NStr("en='Access. Access';ru='Доступ. Доступ'"));
+	EventsList.Add("_$Access$_.AccessDenied",			NStr("en='Access. Access denied';ru='Доступ. Отказ в доступе'"));
+	EventsList.Add("_$Session$_.Authentication",		NStr("en='Session. Authentication';ru='Сеанс. Аутентификация'"));
+	EventsList.Add("_$Session$_.AuthenticationError",	NStr("en='Session. Authentication error';ru='Сеанс. Ошибка аутентификации'"));
+	EventsList.Add("_$Session$_.Start",					NStr("en='Session. Start';ru='Сеанс. Начало'"));
+	EventsList.Add("_$Session$_.Finish",				NStr("en='Session. Finish';ru='Сеанс. Завершение'"));
 	
 	Return EventsList;
 	

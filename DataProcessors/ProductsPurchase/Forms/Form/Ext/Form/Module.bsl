@@ -160,7 +160,7 @@ EndProcedure
 Procedure ShowZeroSales(Command)
 	
 	If Demand.GetItems().Count() > 0 Then
-		QuestionText = NStr("en = 'Tabular section will be refilled. Continue?'");
+		QuestionText = NStr("en='Tabular section will be refilled. Continue?';ru='Табличная часть будет перезаполнена. Продолжить?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("ShowZeroSalesEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);
@@ -196,7 +196,7 @@ EndProcedure
 Procedure FillAndCalculate(Command)
 	
 	If Demand.GetItems().Count() > 0 Then
-		QuestionText = NStr("en = 'Tabular section will be refilled. Continue?'");
+		QuestionText = NStr("en='Tabular section will be refilled. Continue?';ru='Табличная часть будет перезаполнена. Продолжить?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("FillAndCalculateEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);
@@ -242,7 +242,7 @@ Procedure GenerateOrders(Command)
 		
 		ShowUserNotification(
 			,,
-			NStr("en = 'Purchase orders have been successfully created.'"),
+			NStr("en='Purchase orders have been successfully created.';ru='Заказы поставщикам успешно созданы.'"),
 			PictureLib.Information32
 		);
 		
@@ -251,7 +251,7 @@ Procedure GenerateOrders(Command)
 	Else
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'No data to generate the orders.'");
+		Message.Text = NStr("en='No data to generate the orders.';ru='Нет данных для формирования заказов.'");
 		Message.Message();
 		
 	EndIf;
@@ -279,11 +279,11 @@ Procedure DeleteOrder(Command)
 		
 	ElsIf OrdersForDeleting.Count() = 1 Then
 		
-		QuestionText = NStr("en = 'Selected document will be deleted. Continue?'");
+		QuestionText = NStr("en='Selected document will be deleted. Continue?';ru='Выбранный документ будет удален. Продолжить?'");
 		
 	Else
 		
-		QuestionText = NStr("en = 'Selected documents will be deleted. Continue?'");
+		QuestionText = NStr("en='Selected documents will be deleted. Continue?';ru='Выбранные документы будут удалены. Продолжить?'");
 		
 	EndIf;
 	
@@ -794,7 +794,7 @@ Function OrderSetServer()
 			EndIf;
 			
 			DocumentObject.DocumentAmount = DocumentObject.Inventory.Total("Total");
-			DocumentObject.Comment = NStr("en = 'It is automatically created by the ""Product need calculation"" data processor'");
+			DocumentObject.Comment = NStr("en='It is automatically created by the ""Product need calculation"" data processor';ru='Создан автоматически обработкой ""Расчет потребности товаров""'");
 			
 			DocumentObject.Write(DocumentWriteMode.Write);
 			
@@ -813,11 +813,13 @@ Function OrderSetServer()
 		
 		RollbackTransaction();
 		
-		ErrorDescription = NStr(
-			"en = 'While generating an order, an error occurred.
-			|Order generation is canceled.
-			|Additional
-			|description: %AdditionalDetails%'"
+		ErrorDescription = NStr("en='While generating an order, an error occurred."
+"Order generation is canceled."
+"Additional"
+"description: %AdditionalDetails%';ru='При формировании заказов произошла ошибка."
+"Формирование заказов отменено."
+"Дополнительное"
+"описание: %ДополнительноеОписание%'"
 		);
 		
 		ErrorDescription = StrReplace(ErrorDescription, "%AdditionalDetails%", ErrorInfo().Definition);
@@ -923,7 +925,7 @@ Procedure PostOrdersServer()
 		Else
 			
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Cannot post the %1 document.'"), String(DocumentObject));
+				NStr("en='Cannot post the %1 document.';ru='Не удалось провести документ: %1.'"), String(DocumentObject));
 			
 			Message = New UserMessage;
 			Message.Text = MessageText;
@@ -982,7 +984,7 @@ Procedure OrdersDeleteServer()
 		Except
 			
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Cannot mark the %1 document for deletion.'"), String(DocumentObject));
+				NStr("en='Cannot mark the %1 document for deletion.';ru='Не удалось пометить на удаление документ: %1.'"), String(DocumentObject));
 			
 			Message = New UserMessage;
 			Message.Text = MessageText;

@@ -14,7 +14,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	ThisIsCertificateAddition = (Parameters.ToAddCert = "YES");
 	
-	Items.LoginLabel.Title = NStr("en = 'Login:'") + " " + Parameters.login;
+	Items.LoginLabel.Title = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	RequestStatus           = Parameters.requestStatusED;
 	RequestNumber            = Parameters.numberRequestED;
@@ -250,7 +250,7 @@ Procedure SetFormStatus()
 		Items.PageDenied.Visible           = False;
 		
 		Items.RegistrationInformationPanel.CurrentPage = Items.PageNotRegistered;
-		Items.ExecuteAction.Title = NStr("en = 'Create application'");
+		Items.ExecuteAction.Title = NStr("en='Create application';ru='Создать заявку'");
 		Items.ExecuteAction.Visible  = True;
 		
 	ElsIf RequestStatus = "notconsidered" Then
@@ -265,11 +265,11 @@ Procedure SetFormStatus()
 		
 		Items.ExecuteAction.Visible = False;
 		Items.Close.DefaultButton   = True;
-		Items.LabelApplication.Title = NStr("en = 'Application No'")
+		Items.LabelApplication.Title = NStr("en='Application No';ru='Заявка №'")
 			+ " " + ?(ValueIsFilled(RequestNumber), RequestNumber, "");
 		If RequestDate <> Date(1,1,1) Then
 			Items.LabelApplication.Title = Items.LabelApplication.Title
-				+ " " + NStr("en = 'from'") + " "
+				+ " " + NStr("en='from';ru='from'") + " "
 				+ Format(RequestDate, "DF = MMMM dd yyyy y. HH:mm:ss");
 		EndIf;
 		
@@ -285,13 +285,13 @@ Procedure SetFormStatus()
 		Items.PageDenied.Visible           = True;
 		
 		Items.RegistrationInformationPanel.CurrentPage = Items.PageDenied;
-		Items.ExecuteAction.Title = NStr("en = 'Create application'");
+		Items.ExecuteAction.Title = NStr("en='Create application';ru='Создать заявку'");
 		Items.ExecuteAction.Visible = True;
-		Items.LabelApplication1.Title = NStr("en = 'Application No'")
+		Items.LabelApplication1.Title = NStr("en='Application No';ru='Заявка №'")
 			+ " " + ?(ValueIsFilled(RequestNumber), RequestNumber, "");
 		If RequestDate <> Date(1,1,1) Then
 			Items.LabelApplication1.Title = Items.LabelApplication1.Title
-				+ " " + NStr("en = 'from'") + " "
+				+ " " + NStr("en='from';ru='from'") + " "
 				+ Format(RequestDate, "DF = MMMM dd yyyy y. HH:mm:ss");
 		EndIf;
 		
@@ -326,7 +326,7 @@ EndProcedure
 &AtClient
 Procedure SetLabelOnStatusUpdateHyperlink()
 	
-	HeaderText = NStr("en = 'Check execution of an application (%1 sec. left)'");
+	HeaderText = NStr("en='Check execution of an application (%1 sec. left)';ru='Проверить выполнение заявки (осталось %1 сек.)'");
 	HeaderText = StrReplace(HeaderText, "%1", String(TimeoutSeconds));
 	Items.LabelRefresh.Title = HeaderText;
 	
@@ -358,10 +358,11 @@ EndProcedure
 Function MessageParametersToTechicalSupport()
 	
 	Result = New Structure;
-	Result.Insert("Subject", NStr("en = '1C-Taxcom. ED exchange participant application for registration'"));
+	Result.Insert("Subject", NStr("en='1C-Taxcom. ED exchange participant application for registration';ru='1С-Такском. Заявка на регистрацию участника обмена ЭД'"));
 	Result.Insert("Whom", "1c-taxcom@1c.ru");
 	
-	MessageText = NStr("en = 'Hello! I can not send an application to register ED exchange participant. Would you help me to solve the problem? Login: %1. %2 %TechnicalParameters% ----------------------------------------------- Sincerely, .'");
+	MessageText = NStr("en='Hello! I can not send an application to register ED exchange participant. Would you help me to solve the problem? Login: %1. %2 %TechnicalParameters% ----------------------------------------------- Sincerely, .';ru='Здравствуйте! У меня не получается отправить заявку на регистрацию участника обмена ЭД. Прошу помочь разобраться с проблемой. Логин: %1. %2 %ТехническиеПараметры% "
+"----------------------------------------------- С уважением, .'");
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(
 		InteractionContext.COPContext,

@@ -10,19 +10,19 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Parameters.Property("SettingsComposer", SettingsComposer) Then
-		Raise NStr("en = 'The SettingsLinker service parameter has not been passed.'");
+		Raise NStr("en='The SettingsLinker service parameter has not been passed.';ru='Не передан служебный параметр ""КомпоновщикНастроек"".'");
 	EndIf;
 	If Not Parameters.Property("Mode", Mode) Then
-		Raise NStr("en = 'Service parameter ""Mode"" is not sent.'");
+		Raise NStr("en='Service parameter ""Mode"" is not sent.';ru='Не передан служебный параметр ""Режим"".'");
 	EndIf;
 	If Mode = "GroupingContent" Or Mode = "VariantStructure" Then
 		Mode = "GroupFields";
 	EndIf;
 	If Mode <> "Filters" AND Mode <> "SelectedFields" AND Mode <> "Sort" AND Mode <> "GroupFields" Then
-		Raise StrReplace(NStr("en = 'Incorrect parameter value ""Mode"": ""%1"".'"), "%1", String(Mode));
+		Raise StrReplace(NStr("en='Incorrect parameter value ""Mode"": ""%1"".';ru='Некорретное значение параметра ""Режим"": ""%1"".'"), "%1", String(Mode));
 	EndIf;
 	If Not Parameters.Property("ReportSettings", ReportSettings) Then
-		Raise NStr("en = 'The ReportSettings service parameter has not been passed.'");
+		Raise NStr("en='The ReportSettings service parameter has not been passed.';ru='Не передан служебный параметр ""НастройкиОтчета"".'");
 	EndIf;
 	If Parameters.Property("CurrentCDHostIdentifier", CurrentCDHostIdentifier)
 		AND CurrentCDHostIdentifier <> Undefined Then
@@ -39,7 +39,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		TreeItems = GroupFields.GetItems();
 		GroupFieldsExpandString(KDTable(ThisObject), TreeItems);
 		StringDetails = TreeItems.Add();
-		StringDetails.Presentation = NStr("en = '<Detailed records>'");
+		StringDetails.Presentation = NStr("en='<Detailed records>';ru='<Детальные записи>'");
 		StringDetails.Picture      = PictureLib.PredefinedItem;
 	EndIf;
 	

@@ -88,15 +88,20 @@ Procedure ExportSettingsStandardStorages()
 			Except
 				
 				WriteLogEvent(
-					NStr("en = 'DataExportImport.SettingExportSkipped'", Metadata.DefaultLanguage.LanguageCode),
+					NStr("en='DataExportImport.SettingExportSkipped';ru='ВыгрузкаЗагрузкаДанных.ВыгрузкаНастройкиПропущена'", Metadata.DefaultLanguage.LanguageCode),
 					EventLogLevel.Warning,,,
 					StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'The setting export is skipped as the setting can not
-							|be
-							|read:
-							|SettingsKey=%1
-							|ObjectKey=%2 User=%3 Presentation=%4
-							|'", Metadata.DefaultLanguage.LanguageCode),
+						NStr("en='The setting export is skipped as the setting can not"
+"be"
+"read:"
+"SettingsKey=%1"
+"ObjectKey=%2 User=%3 Presentation=%4"
+"';ru='Выгрузка настройки пропущена, т.к. настройка не может быть прочитана:"
+"КлючНастроек=%1"
+"КлючОбъекта=%2"
+"Пользователь=%3"
+"Представление=%4"
+"'", Metadata.DefaultLanguage.LanguageCode),
 						Selection.SettingsKey,
 						Selection.ObjectKey,
 						Selection.User,
@@ -142,9 +147,9 @@ Procedure ExportSettingsItem(WriteStream, Val SettingsKey, Val ObjectKey, Val Us
 		OR FindDisallowedXMLCharacters(Presentation) > 0 Then
 		
 		WriteLogEvent(
-			NStr("en = 'DataExportImport.SettingExportSkipped'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='DataExportImport.SettingExportSkipped';ru='ВыгрузкаЗагрузкаДанных.ВыгрузкаНастройкиПропущена'", Metadata.DefaultLanguage.LanguageCode),
 			EventLogLevel.Warning,,,
-			NStr("en = 'The setting export is skipped as invalid characters in the key parameters'", Metadata.DefaultLanguage.LanguageCode));
+			NStr("en='The setting export is skipped as invalid characters in the key parameters';ru='Выгрузка настройки пропущена, т.к. в ключевых параметрах содержатся недопустимые символы.'", Metadata.DefaultLanguage.LanguageCode));
 		
 		Cancel = True;
 		

@@ -40,11 +40,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Error group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа ошибка</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Error group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа ошибка</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -77,6 +85,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Error text</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текст ошибки</v8:content>
+								</v8:item>
 							</Title>
 							<VerticalAlign>Top</VerticalAlign>
 							<ContextMenu name="ErrorTextContextMenu" id="72"/>
@@ -92,11 +104,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Mode group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа режим</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Mode group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа режим</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -108,6 +128,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Settings page</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница настройки</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="SettingsPageExtendedTooltip" id="95"/>
@@ -127,6 +151,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>BF='users can work'; BT='user work prohibited'</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>БЛ='работа пользователей разрешена'; БИ='работа пользователей временно запрещена'</v8:content>
 										</v8:item>
 									</Format>
 									<ContextMenu name="InitialUserWorkProhibitionStateContextMenu" id="65"/>
@@ -158,6 +186,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>From</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Списать из</v8:content>
+										</v8:item>
 									</Title>
 									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 									<Wrap>false</Wrap>
@@ -172,12 +204,20 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>to</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>до</v8:content>
+										</v8:item>
 									</Title>
 									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 									<Wrap>false</Wrap>
 									<EditFormat>
 										<v8:item>
 											<v8:lang>en</v8:lang>
+											<v8:content>DP=indefinitely</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
 											<v8:content>DP=indefinitely</v8:content>
 										</v8:item>
 									</EditFormat>
@@ -225,6 +265,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Also to prohibit the scheduled jobs work</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Также запретить работу регламентных заданий</v8:content>
+												</v8:item>
 											</Title>
 											<TitleLocation>Right</TitleLocation>
 											<CheckBoxType>Auto</CheckBoxType>
@@ -242,6 +286,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Locking status page</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница состояния блокировки</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="LockStatePageExtendedTooltip" id="105"/>
@@ -277,6 +325,11 @@
 													<v8:content>Please wait...
 User operation is terminated. Active sessions left: %1</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Пожалуйста, подождите..
+Работа пользователей завершается. Осталось активных сеансов: %1</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
 											<ContextMenu name="StateContextMenu" id="50"/>
@@ -289,6 +342,10 @@ User operation is terminated. Active sessions left: %1</v8:content>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Locking is installed due to</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Блокировка установлена по причине</v8:content>
 												</v8:item>
 											</Title>
 											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
@@ -314,6 +371,10 @@ User operation is terminated. Active sessions left: %1</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>From</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Списать из</v8:content>
+														</v8:item>
 													</Title>
 													<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 													<ContextMenu name="LockPeriodStart1ContextMenu" id="57"/>
@@ -326,11 +387,19 @@ User operation is terminated. Active sessions left: %1</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>to</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>до</v8:content>
+														</v8:item>
 													</Title>
 													<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 													<Format>
 														<v8:item>
 															<v8:lang>en</v8:lang>
+															<v8:content>DP=indefinitely</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
 															<v8:content>DP=indefinitely</v8:content>
 														</v8:item>
 													</Format>
@@ -394,6 +463,10 @@ User operation is terminated. Active sessions left: %1</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Sessions count</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество сеансов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -410,6 +483,10 @@ User operation is terminated. Active sessions left: %1</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Status</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -425,6 +502,10 @@ User operation is terminated. Active sessions left: %1</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Client connected via web server</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Клиент подключен через веб сервер</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -436,6 +517,10 @@ User operation is terminated. Active sessions left: %1</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Initial status of the user work prohibition value</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начальный статус запрета работы пользователей значение</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -446,6 +531,10 @@ User operation is terminated. Active sessions left: %1</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prohibition status of the user work</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус запрета работы пользователей</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -462,6 +551,10 @@ User operation is terminated. Active sessions left: %1</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>The file base</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это файловая база</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -472,6 +565,10 @@ User operation is terminated. Active sessions left: %1</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>This is system administrator</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это администратор системы</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -484,6 +581,10 @@ User operation is terminated. Active sessions left: %1</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Correct administration parameters are entered</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Введены корректные параметры администрирования</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -494,6 +595,10 @@ User operation is terminated. Active sessions left: %1</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Session is started without separators</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сеанс запущен без разделителей</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -508,11 +613,19 @@ User operation is terminated. Active sessions left: %1</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Apply</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Apply changes</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить изменения</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Apply</Action>
@@ -523,11 +636,19 @@ User operation is terminated. Active sessions left: %1</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Active users</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Активные пользователи</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Active users</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Активные пользователи</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -543,11 +664,19 @@ User operation is terminated. Active sessions left: %1</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Stop</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стоп</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel session termination</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остановить завершение работы пользователей</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -563,11 +692,19 @@ User operation is terminated. Active sessions left: %1</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable locking of scheduled jobs</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность управления блокировкой регламентных заданий</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Administration parameters</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры администрирования</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>AdministrationParameters</Action>

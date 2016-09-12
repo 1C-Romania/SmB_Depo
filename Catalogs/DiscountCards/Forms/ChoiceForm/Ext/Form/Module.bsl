@@ -319,7 +319,7 @@ Procedure HandleReceivedCodeOnClient(Data, ReceivedCodeType, Preprocessing)
 				SmallBusinessClient.ShowMessageAboutError(ThisObject, "Card code does not correspond to any template of magnetic cards.");
 			Else
 				Notification = New NotifyDescription("HandleReceivedCodeOnClientEnd", ThisForm);
-				Result.ShowChooseItem(Notification, NStr("en = 'Choice of magnetic card code'"));
+				Result.ShowChooseItem(Notification, NStr("en='Choice of magnetic card code';ru='Выбор кода магнитной карты'"));
 			EndIf;
 		EndIf;
 	Else

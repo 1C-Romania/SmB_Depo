@@ -33,7 +33,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Counterparty, DataCompositionComparisonType.Equal);
 			
 		ThisForm.AutoTitle = False;
-		ThisForm.Title = NStr("en = 'EDF with counterparties settings'");
+		ThisForm.Title = NStr("en='EDF with counterparties settings';ru='Настройки ЭДО с контрагентами'");
 		Items.AgreementsGroup.PagesRepresentation = FormPagesRepresentation.None;
 		Items.AgreementsGroup.CurrentPage = Items.SettingsGroup;
 	EndIf;
@@ -43,7 +43,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			EDFProfileSettings, DataCompositionComparisonType.Equal);
 			
 		ThisForm.AutoTitle = False;
-		ThisForm.Title = NStr("en = 'EDF with counterparties settings'");
+		ThisForm.Title = NStr("en='EDF with counterparties settings';ru='Настройки ЭДО с контрагентами'");
 		Items.AgreementsGroup.PagesRepresentation = FormPagesRepresentation.None;
 		Items.AgreementsGroup.CurrentPage = Items.SettingsGroup;
 	EndIf;
@@ -57,7 +57,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				Parameters.Partner, DataCompositionComparisonType.InHierarchy);
 				
 			ThisForm.AutoTitle = False;
-			ThisForm.Title = NStr("en = 'Settings EDF with counterparties'");
+			ThisForm.Title = NStr("en='Settings EDF with counterparties';ru='Настройки ЭДО с контрагентами'");
 			Items.AgreementsGroup.PagesRepresentation = FormPagesRepresentation.None;
 			Items.AgreementsGroup.CurrentPage = Items.SettingsGroup;
 		EndIf;
@@ -72,7 +72,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		OR Parameters.SettingsEDFWithCounterparties Then
 		
 		ThisForm.AutoTitle = False;
-		ThisForm.Title = NStr("en = 'EDF with counterparties settings'");
+		ThisForm.Title = NStr("en='EDF with counterparties settings';ru='Настройки ЭДО с контрагентами'");
 		Items.AgreementsGroup.PagesRepresentation = FormPagesRepresentation.None;
 		Items.AgreementsGroup.CurrentPage    = Items.SettingsGroup;
 	EndIf;
@@ -82,7 +82,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Parameters.Bank, DataCompositionComparisonType.Equal);
 			
 		ThisForm.AutoTitle = False;
-		ThisForm.Title = NStr("en = 'EDF settings with banks'");
+		ThisForm.Title = NStr("en='EDF settings with banks';ru='Настройки ЭДО с банками'");
 		Items.AgreementsGroup.PagesRepresentation = FormPagesRepresentation.None;
 		Items.AgreementsGroup.CurrentPage = Items.GroupAgreementsWithBanksList;
 	EndIf;

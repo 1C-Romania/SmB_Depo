@@ -11,11 +11,19 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Important commands</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды важные</v8:content>
+					</v8:item>
 				</Title>
 				<ToolTip>
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Important commands</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды важные</v8:content>
 					</v8:item>
 				</ToolTip>
 				<ExtendedTooltip name="ImportantCommandsGroupExtendedTooltip" id="403"/>
@@ -34,11 +42,19 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
 				</Title>
 				<ToolTip>
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
 					</v8:item>
 				</ToolTip>
 				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
@@ -106,6 +122,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Header</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
 			</Title>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
@@ -117,6 +137,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Left column</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Левая колонка</v8:content>
 						</v8:item>
 					</Title>
 					<Group>Vertical</Group>
@@ -130,11 +154,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Statuses</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Статусы</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Statuses</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Статусы</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -174,6 +206,10 @@ Quick filter and color assignment for document view by status are available for 
 
 Color purpose for order status to a vendor is determined by the section &lt;link SettingsAccountingProduction&gt;Settings - Accounting settings -Produc&lt;/&gt;&lt;link SettingsAccountingProduction&gt;tion&lt;/&gt;.</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>«Состояние заказа» - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием.    Состояние, которое было установлено для заказа, определяет поведение документа.  Определены следующие состояния:  • В работе – данные заказа будут отражаться в учете.  • Выполнен – устанавливается пользователем при выполнении заказа.  • Отменен - заказ не отражается в учете.  Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям.  Назначение цвета для состояния заказа поставщику определяется в разделе Настройки - Настройки учета - Производство.</v8:content>
+											</v8:item>
 										</Title>
 										<Events>
 											<Event name="URLProcessing">StatusExtendedTooltipNavigationLinkProcessing</Event>
@@ -191,11 +227,19 @@ Color purpose for order status to a vendor is determined by the section &lt;link
 									<v8:lang>en</v8:lang>
 									<v8:content>Order state</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояние заказа:</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group state</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа состояние</v8:content>
 								</v8:item>
 							</ToolTip>
 							<HorizontalStretch>true</HorizontalStretch>
@@ -234,6 +278,10 @@ Status by default for a new order for production is determined in the user setti
 
 </v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>«Состояние заказа» - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием. Пользователь может создать любые удобные для работы значения состояний.  Каждому состоянию присваивается статус:  • Открыт – заказ будет играть роль предварительной заявки.  • В работе – данные заказа будут отражаться в учете.  • Выполнен – устанавливается пользователем при выполнении заказа. Для закрытия заказа, имеющего состояние «Выполнен», следует установить флажок «Закрыт».  Для отмены заказа, имеющего состояние «Открыт» или «В работе», следует установить флажок «Закрыт».  Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям. Состав списка состояний определяется содержимым справочника «Состояния заказов на производство».  Справочник доступен по одноименной гиперссылке в разделе Настройки - Настройки учета - Производство.  Состояние по умолчанию для нового заказа на производство определяется в настройках пользователя.</v8:content>
+											</v8:item>
 										</Title>
 										<Events>
 											<Event name="URLProcessing">StatusExtendedTooltipNavigationLinkProcessing</Event>
@@ -255,11 +303,19 @@ Status by default for a new order for production is determined in the user setti
 									<v8:lang>en</v8:lang>
 									<v8:content>Group start finish</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа старт финиш</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group start finish</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа старт финиш</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -273,6 +329,10 @@ Status by default for a new order for production is determined in the user setti
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Start</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Старт</v8:content>
 										</v8:item>
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
@@ -316,11 +376,19 @@ Status by default for a new order for production is determined in the user setti
 									<v8:lang>en</v8:lang>
 									<v8:content>Basis</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Основание</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Basis</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Основание</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -355,6 +423,10 @@ Status by default for a new order for production is determined in the user setti
 							<v8:lang>en</v8:lang>
 							<v8:content>Right column</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правая колонка</v8:content>
+						</v8:item>
 					</Title>
 					<Group>Vertical</Group>
 					<Representation>NormalSeparation</Representation>
@@ -367,11 +439,19 @@ Status by default for a new order for production is determined in the user setti
 									<v8:lang>en</v8:lang>
 									<v8:content>Number, Date</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер, дата документа</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Number, Date</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер, дата документа</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -390,6 +470,10 @@ Status by default for a new order for production is determined in the user setti
 											<v8:lang>en</v8:lang>
 											<v8:content>&lt;Auto&gt;</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>&lt;Auto&gt;</v8:content>
+										</v8:item>
 									</InputHint>
 									<ContextMenu name="NumberContextMenu" id="95"/>
 									<ExtendedTooltip name="NumberExtendedTooltip" id="293"/>
@@ -401,6 +485,10 @@ Status by default for a new order for production is determined in the user setti
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>dated</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>от</v8:content>
 										</v8:item>
 									</Title>
 									<Width>15</Width>
@@ -429,6 +517,10 @@ Status by default for a new order for production is determined in the user setti
 												<v8:lang>en</v8:lang>
 												<v8:content>Assembly</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Сборка</v8:content>
+											</v8:item>
 										</Presentation>
 										<Value xsi:type="xr:DesignTimeRef">Enum.OperationKindsProductionOrder.EnumValue.Assembly</Value>
 									</xr:Value>
@@ -441,6 +533,10 @@ Status by default for a new order for production is determined in the user setti
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>Disassembly</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Разборка</v8:content>
 											</v8:item>
 										</Presentation>
 										<Value xsi:type="xr:DesignTimeRef">Enum.OperationKindsProductionOrder.EnumValue.Disassembly</Value>
@@ -478,6 +574,10 @@ Status by default for a new order for production is determined in the user setti
 									<v8:lang>en</v8:lang>
 									<v8:content>Group customer order</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа заказ покупателя</v8:content>
+								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
@@ -513,11 +613,19 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<ExtendedTooltip name="PagesExtendedTooltip" id="312"/>
@@ -528,11 +636,19 @@ Status by default for a new order for production is determined in the user setti
 							<v8:lang>en</v8:lang>
 							<v8:content>Products</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Товары</v8:content>
 						</v8:item>
 					</ToolTip>
 					<TitleDataPath>Object.Products.RowsCount</TitleDataPath>
@@ -668,11 +784,19 @@ Status by default for a new order for production is determined in the user setti
 							<v8:lang>en</v8:lang>
 							<v8:content>Materials</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материалы</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Inventory</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запасы</v8:content>
 						</v8:item>
 					</ToolTip>
 					<TitleDataPath>Object.Inventory.RowsCount</TitleDataPath>
@@ -725,11 +849,19 @@ Status by default for a new order for production is determined in the user setti
 												<v8:lang>en</v8:lang>
 												<v8:content>Change reserve</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Изменить резерв</v8:content>
+											</v8:item>
 										</Title>
 										<ToolTip>
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>Inventory change reserve</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Изменить колонку резерв</v8:content>
 											</v8:item>
 										</ToolTip>
 										<ExtendedTooltip name="InventoryChangeInventoryExtendedTooltip" id="331"/>
@@ -868,11 +1000,19 @@ Status by default for a new order for production is determined in the user setti
 							<v8:lang>en</v8:lang>
 							<v8:content>Resources in use</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Задействованные ресурсы</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Enterprise resources</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ресурсы предприятия</v8:content>
 						</v8:item>
 					</ToolTip>
 					<TitleDataPath>Object.EnterpriseResources.RowsCount</TitleDataPath>
@@ -969,6 +1109,10 @@ Status by default for a new order for production is determined in the user setti
 											<v8:lang>en</v8:lang>
 											<v8:content>Day</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>день</v8:content>
+										</v8:item>
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
@@ -978,10 +1122,18 @@ Status by default for a new order for production is determined in the user setti
 											<v8:lang>en</v8:lang>
 											<v8:content>DF=dd.MM.yyyy</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>DF=dd.MM.yyyy</v8:content>
+										</v8:item>
 									</Format>
 									<EditFormat>
 										<v8:item>
 											<v8:lang>en</v8:lang>
+											<v8:content>DF=dd.MM.yyyy</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
 											<v8:content>DF=dd.MM.yyyy</v8:content>
 										</v8:item>
 									</EditFormat>
@@ -1005,11 +1157,19 @@ Status by default for a new order for production is determined in the user setti
 											<v8:lang>en</v8:lang>
 											<v8:content>DF='H:mm'</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ='H:mm'</v8:content>
+										</v8:item>
 									</Format>
 									<EditFormat>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>DF='H:mm'</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ='H:mm'</v8:content>
 										</v8:item>
 									</EditFormat>
 									<ChoiceListButton>false</ChoiceListButton>
@@ -1033,11 +1193,19 @@ Status by default for a new order for production is determined in the user setti
 											<v8:lang>en</v8:lang>
 											<v8:content>DF='H:mm'</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ='H:mm'</v8:content>
+										</v8:item>
 									</Format>
 									<EditFormat>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>DF='H:mm'</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ='H:mm'</v8:content>
 										</v8:item>
 									</EditFormat>
 									<ChoiceListButton>false</ChoiceListButton>
@@ -1057,11 +1225,19 @@ Status by default for a new order for production is determined in the user setti
 							<v8:lang>en</v8:lang>
 							<v8:content>Additionally</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительно</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Advanced page</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница дополнительно</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AdvancedPageExtendedTooltip" id="387"/>
@@ -1076,6 +1252,10 @@ Status by default for a new order for production is determined in the user setti
 									<v8:lang>en</v8:lang>
 									<v8:content>Comment</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Примечание</v8:content>
+								</v8:item>
 							</InputHint>
 							<ContextMenu name="CommentContextMenu" id="27"/>
 							<ExtendedTooltip name="CommentExtendedTooltip" id="353"/>
@@ -1089,11 +1269,19 @@ Status by default for a new order for production is determined in the user setti
 									<v8:lang>en</v8:lang>
 									<v8:content>Additionally</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дополнительно</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Additionally</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дополнительно</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -1106,6 +1294,10 @@ Status by default for a new order for production is determined in the user setti
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Left column</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Левая колонка</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Vertical</Group>
@@ -1126,6 +1318,10 @@ Status by default for a new order for production is determined in the user setti
 											<v8:lang>en</v8:lang>
 											<v8:content>Right column</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Правая колонка</v8:content>
+										</v8:item>
 									</Title>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
@@ -1139,11 +1335,19 @@ Status by default for a new order for production is determined in the user setti
 													<v8:lang>en</v8:lang>
 													<v8:content>Author</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Ведомость составил</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Author of document</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Автор документа</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Border width="1">
@@ -1163,11 +1367,19 @@ Status by default for a new order for production is determined in the user setti
 									<v8:lang>en</v8:lang>
 									<v8:content>Additional attributes</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дополнительные реквизиты объекта</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Additional attribute group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа дополнительные реквизиты</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -1196,6 +1408,10 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Counterparty</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагенты</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
@@ -1206,6 +1422,10 @@ Status by default for a new order for production is determined in the user setti
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Document date</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата документа</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1221,6 +1441,10 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Posting is allowed</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Разрешено проведение</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1231,6 +1455,10 @@ Status by default for a new order for production is determined in the user setti
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Document is modified</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ модифицирован</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1243,6 +1471,10 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Notify work calendar</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оповестить рабочий календарь</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1253,6 +1485,10 @@ Status by default for a new order for production is determined in the user setti
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Use peripherals</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использование подключаемого оборудования</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1265,6 +1501,10 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>In process status</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние в работе</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.ProductionOrderStates</v8:Type>
@@ -1276,6 +1516,10 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Completed state</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние выполнен</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.ProductionOrderStates</v8:Type>
@@ -1286,6 +1530,10 @@ Status by default for a new order for production is determined in the user setti
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>State</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1301,6 +1549,10 @@ Status by default for a new order for production is determined in the user setti
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Supported peripherals types</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поддерживаемые типы подключаемого оборудования</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1337,6 +1589,10 @@ Status by default for a new order for production is determined in the user setti
 								<v8:lang>en</v8:lang>
 								<v8:content>&lt;specifications are not used&gt;</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>&lt;спецификации не используются&gt;</v8:content>
+							</v8:item>
 						</dcscor:value>
 					</dcscor:item>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -1349,6 +1605,10 @@ Status by default for a new order for production is determined in the user setti
 						<v8:lang>en</v8:lang>
 						<v8:content>Availability of the Specification column</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Доступность колонки Спецификация</v8:content>
+					</v8:item>
 				</dcsset:presentation>
 			</dcsset:item>
 		</ConditionalAppearance>
@@ -1360,11 +1620,19 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F8</Shortcut>
@@ -1377,11 +1645,19 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill by basis</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по основанию</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill by basis</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по основанию</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1398,11 +1674,19 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill by specification</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по спецификации</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill by specification</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по спецификации</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CommandFillBySpecification</Action>
@@ -1415,11 +1699,19 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill by Customer Order</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по заказу покупателя</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill by Customer Order</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по заказу покупателя</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1439,11 +1731,19 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Search by barcode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Search by barcode</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по штрихкоду</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F7</Shortcut>
@@ -1460,11 +1760,19 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Weight</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Масса груза</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Get weight</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получить вес</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1482,11 +1790,19 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Import data from DTC</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить данные из ТСД</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Import data from DTC</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить данные из ТСД</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1503,11 +1819,19 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>fill by balance</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>заполнить по остаткам</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change reserve fill by balances</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить резерв по свободным остаткам на складе</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ChangeReserveFillByBalances</Action>
@@ -1522,11 +1846,19 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>clear column</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>очистить колонку</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change reserve clear reserve</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить колонку Резерв</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ChangeReserveClearReserve</Action>
@@ -1541,11 +1873,19 @@ Status by default for a new order for production is determined in the user setti
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F8</Shortcut>

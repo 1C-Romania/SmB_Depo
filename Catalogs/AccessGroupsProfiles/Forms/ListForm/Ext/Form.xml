@@ -15,6 +15,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Show</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTipRepresentation>Button</ToolTipRepresentation>
 			<HorizontalStretch>false</HorizontalStretch>
@@ -29,6 +33,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>All profiles</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Все профили</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:string">AllProfiles</Value>
 					</xr:Value>
@@ -41,6 +49,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Supplied</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Поставляемый</v8:content>
 							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:string">Supplied</Value>
@@ -55,6 +67,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Not supplied</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Непоставляемые</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:string">NotSupplied</Value>
 					</xr:Value>
@@ -67,6 +83,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Outdated</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>устаревший</v8:content>
 							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:string">Outdated</Value>
@@ -82,6 +102,12 @@
 Not supplied profiles are all the rest (updated manually).
 Outdated profiles contain deleted roles (not updated manually).</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Поставляемые профили входят в состав конфигурации (обновляются автоматически).
+Непоставляемые профили - все остальные (обновляются вручную).
+Устаревшие профили содержат удаленные роли (не обновлены вручную).</v8:content>
+					</v8:item>
 				</Title>
 			</ExtendedTooltip>
 			<Events>
@@ -94,6 +120,10 @@ Outdated profiles contain deleted roles (not updated manually).</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>User settings group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пользовательских настроек</v8:content>
+				</v8:item>
 			</Title>
 			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
@@ -105,6 +135,10 @@ Outdated profiles contain deleted roles (not updated manually).</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Command bar</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
 			<CommandSource>Form</CommandSource>
@@ -175,6 +209,10 @@ Outdated profiles contain deleted roles (not updated manually).</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
 					</Title>
 					<Wrap>false</Wrap>
 					<ContextMenu name="DescriptionContextMenu" id="5"/>
@@ -239,6 +277,10 @@ FROM
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show profiles</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать профили</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Application update results</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Результаты обновления программы</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -36,6 +40,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Close</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Закрыть</v8:content>
+					</v8:item>
 				</Title>
 				<ExtendedTooltip name="FormCloseExtendedTooltip" id="127"/>
 			</Button>
@@ -53,11 +61,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Group update completed</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа обновление завершено</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group update completed</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа обновление завершено</v8:content>
 				</v8:item>
 			</ToolTip>
 			<VerticalStretch>false</VerticalStretch>
@@ -74,6 +90,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture information</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка информация</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>CommonPicture.Successfully32</xr:Ref>
@@ -88,11 +108,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Group information on update</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа информация об обновлении</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Group information on update</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа информация об обновлении</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
@@ -108,6 +136,11 @@
 									<v8:content>The application version is successfully updated
 to version %1 %2 at %3 in %4.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Версия программы успешно обновлена
+на версию %1 %2 в %3 за %4.</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="InformationUpdateCompletedContextMenu" id="87"/>
 							<ExtendedTooltip name="InformationRefreshEnabledCompletedExtendedTooltip" id="131"/>
@@ -121,6 +154,10 @@ to version %1 %2 at %3 in %4.</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update status</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус обновления</v8:content>
 				</v8:item>
 			</Title>
 			<PagesRepresentation>None</PagesRepresentation>
@@ -143,6 +180,10 @@ to version %1 %2 at %3 in %4.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Picture action is performed</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка действие выполняется</v8:content>
+										</v8:item>
 									</Title>
 									<Picture>
 										<xr:Ref>CommonPicture.Warning32</xr:Ref>
@@ -157,11 +198,19 @@ to version %1 %2 at %3 in %4.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group information on progress</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа информация о прогрессе</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group information file base</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа информация файловая база</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -175,11 +224,19 @@ to version %1 %2 at %3 in %4.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Execute delayed update group</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа запустить отложенное обновление</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Execute delayed update group</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа запустить отложенное обновление</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
@@ -194,6 +251,11 @@ to version %1 %2 at %3 in %4.</v8:content>
 															<v8:content>It is necessary to execute data processor additional procedures.
 Work with these files in the application is temporarily restricted.</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Необходимо выполнить дополнительные процедуры обработки данных.
+Работа с этими данными в программе временно ограничена.</v8:content>
+														</v8:item>
 													</Title>
 													<VerticalAlign>Center</VerticalAlign>
 													<ContextMenu name="TitleInformationFileBaseContextMenu" id="36"/>
@@ -206,6 +268,10 @@ Work with these files in the application is temporarily restricted.</v8:content>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>List of the data processing procedures</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Список процедур обработки данных</v8:content>
 														</v8:item>
 													</Title>
 													<ExtendedTooltip name="OpenListOfPendingHandlers1ExtendedTooltip" id="140"/>
@@ -223,6 +289,13 @@ Work with these files in the application is temporarily restricted.</v8:content>
 															<v8:content>Data processing can take (from several minutes till some hours depending on the entered data volume).
 A significant slowdown in the user activity can be observed during processing.
 It is recommended to perform processing in the period of the least users activity.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Обработка данных может занять длительное время
+(от нескольких минут до нескольких часов в зависимости от объема введенных данных).
+Во время обработки может наблюдаться существенное замедление работы пользователей.
+Рекомендуется выполнять обработку в период наименьшей активности пользователей.</v8:content>
 														</v8:item>
 													</Title>
 													<TitleHeight>3</TitleHeight>
@@ -243,6 +316,10 @@ It is recommended to perform processing in the period of the least users activit
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>You can open the results of the application version update from the Administration - Support and service section.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сведения о результатах обновления версии программы можно также открыть из раздела "Администрирование" - "Поддержка и обслуживание".</v8:content>
 														</v8:item>
 													</Title>
 													<TitleHeight>2</TitleHeight>
@@ -270,6 +347,10 @@ It is recommended to perform processing in the period of the least users activit
 									<v8:lang>en</v8:lang>
 									<v8:content>Picture action is performed</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Картинка действие выполняется</v8:content>
+								</v8:item>
 							</Title>
 							<Picture>
 								<xr:Ref>CommonPicture.Warning32</xr:Ref>
@@ -292,6 +373,12 @@ It is recommended to perform processing in the period of the least users activit
 Work with this data in application is temporarily
 limited, it is necessary to wait this data processor end.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Не выполнены дополнительные процедуры обработки данных.
+Работа с этими данными в программе временно ограничена, необходимо дождаться
+окончания их обработки.</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Center</VerticalAlign>
 									<ContextMenu name="TitleInformationForUserContextMenu" id="125"/>
@@ -304,6 +391,10 @@ limited, it is necessary to wait this data processor end.</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>List of the data processing procedures</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Список процедур обработки данных</v8:content>
 										</v8:item>
 									</Title>
 									<ExtendedTooltip name="OpenListOfPendingHandlers2ExtendedTooltip" id="149"/>
@@ -318,6 +409,10 @@ limited, it is necessary to wait this data processor end.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Update is in progress</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обновление выполняется</v8:content>
+						</v8:item>
 					</Title>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="UpdateInProgressExtendedTooltip" id="150"/>
@@ -327,6 +422,10 @@ limited, it is necessary to wait this data processor end.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Update status group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа ход обновления</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -343,6 +442,10 @@ limited, it is necessary to wait this data processor end.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Picture action is performed</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка действие выполняется</v8:content>
+										</v8:item>
 									</Title>
 									<Picture>
 										<xr:Ref>CommonPicture.LongOperation48</xr:Ref>
@@ -357,6 +460,10 @@ limited, it is necessary to wait this data processor end.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group information on progress</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа информация о прогрессе</v8:content>
+										</v8:item>
 									</Title>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
@@ -370,6 +477,10 @@ limited, it is necessary to wait this data processor end.</v8:content>
 													<v8:content>Data processor additional procedures are running for version xx.yy.zz
 Work with these data is temporarily limited.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняются дополнительные процедуры обработки данных на версию xx.yy.zz Работа с этими данными временно ограничена.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="TitleInformationContextMenu" id="8"/>
 											<ExtendedTooltip name="InformationTitleExtendedTooltip" id="154"/>
@@ -379,6 +490,10 @@ Work with these data is temporarily limited.</v8:content>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Completed: %1 of %2</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполнено: %1 из %2</v8:content>
 												</v8:item>
 											</Title>
 											<Hyperlink>true</Hyperlink>
@@ -394,6 +509,12 @@ Work with these data is temporarily limited.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Data processing can take (from several minutes till some hours depending on the entered data volume).
 A significant slowdown in the user activity can be observed during processing.</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Обработка данных может занять длительное время
+(от нескольких минут до нескольких часов в зависимости от объема введенных данных).
+Во время обработки может наблюдаться существенное замедление работы пользователей.</v8:content>
 												</v8:item>
 											</Title>
 											<TitleHeight>3</TitleHeight>
@@ -413,6 +534,10 @@ A significant slowdown in the user activity can be observed during processing.</
 															<v8:lang>en</v8:lang>
 															<v8:content>That is why it is recommended to perform processing at the time of the least users activeness.</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Поэтому рекомендуется выполнять обработку в период наименьшей активности пользователей.</v8:content>
+														</v8:item>
 													</Title>
 													<ContextMenu name="ToolTipAboutPeriodOfLowestActivityUsersContextMenu" id="101"/>
 													<ExtendedTooltip name="ToolTipAboutPeriodOfLowestActivityUsersExtendedTooltip" id="158"/>
@@ -423,11 +548,19 @@ A significant slowdown in the user activity can be observed during processing.</
 															<v8:lang>en</v8:lang>
 															<v8:content>Schedule setting group</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа настройка расписания</v8:content>
+														</v8:item>
 													</Title>
 													<ToolTip>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Schedule setting group</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа настройка расписания</v8:content>
 														</v8:item>
 													</ToolTip>
 													<Group>Horizontal</Group>
@@ -442,6 +575,10 @@ A significant slowdown in the user activity can be observed during processing.</
 																<v8:item>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Setup schedule</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Настроить расписание</v8:content>
 																</v8:item>
 															</Title>
 															<ExtendedTooltip name="ChangeScheduleExtendedTooltip" id="159"/>
@@ -461,11 +598,19 @@ A significant slowdown in the user activity can be observed during processing.</
 													<v8:lang>en</v8:lang>
 													<v8:content>ToolTip group form location when updating</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа подсказка расположение формы при обновлении</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>ToolTip group form location when updating</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа подсказка расположение формы при обновлении</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
@@ -484,6 +629,10 @@ A significant slowdown in the user activity can be observed during processing.</
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>You can open the results of the application version update from the Administration - Support and service section.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Сведения о результатах обновления версии программы можно также открыть из раздела "Администрирование" - "Поддержка и обслуживание".</v8:content>
 														</v8:item>
 													</Title>
 													<TitleHeight>2</TitleHeight>
@@ -504,6 +653,10 @@ A significant slowdown in the user activity can be observed during processing.</
 							<v8:lang>en</v8:lang>
 							<v8:content>Update completed</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обновление завершено</v8:content>
+						</v8:item>
 					</Title>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="RefreshEnabledCompletedExtendedTooltip" id="163"/>
@@ -522,6 +675,10 @@ A significant slowdown in the user activity can be observed during processing.</
 											<v8:lang>en</v8:lang>
 											<v8:content>Picture information</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка информация</v8:content>
+										</v8:item>
 									</Title>
 									<Picture>
 										<xr:Ref>CommonPicture.Error32</xr:Ref>
@@ -536,6 +693,10 @@ A significant slowdown in the user activity can be observed during processing.</
 											<v8:lang>en</v8:lang>
 											<v8:content>Group information on update</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа информация об обновлении</v8:content>
+										</v8:item>
 									</Title>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
@@ -549,6 +710,10 @@ A significant slowdown in the user activity can be observed during processing.</
 													<v8:lang>en</v8:lang>
 													<v8:content>Additional data processing procedured are not provided.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дополнительные процедуры обработки данных не предусмотрены.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="InformationNoPostponedHandlersContextMenuHandlers" id="119"/>
 											<ExtendedTooltip name="InformationPendingNoExtendedTooltipHandlers" id="167"/>
@@ -558,6 +723,10 @@ A significant slowdown in the user activity can be observed during processing.</
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group proceed to the list of the delayed handlers</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа переход к списку отложенных обработчиков</v8:content>
 												</v8:item>
 											</Title>
 											<Height>3</Height>
@@ -572,6 +741,10 @@ A significant slowdown in the user activity can be observed during processing.</
 															<v8:lang>en</v8:lang>
 															<v8:content>Additional data processing procedures have not been performed</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Дополнительные процедуры обработки данных не выполнялись</v8:content>
+														</v8:item>
 													</Title>
 													<ContextMenu name="InformationPostponedUpdateCompleted1ContextMenu" id="51"/>
 													<ExtendedTooltip name="InformationPostponedUpdateCompleted1ExtendedTooltip" id="169"/>
@@ -584,6 +757,10 @@ A significant slowdown in the user activity can be observed during processing.</
 															<v8:lang>en</v8:lang>
 															<v8:content>It is necessary to perform the data processing procedures</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Необходимо выполнить процедуры обработки данных</v8:content>
+														</v8:item>
 													</Title>
 													<ExtendedTooltip name="OpenListOfPendingHandlersExtendedTooltip" id="170"/>
 												</Button>
@@ -595,6 +772,10 @@ A significant slowdown in the user activity can be observed during processing.</
 													<v8:lang>en</v8:lang>
 													<v8:content>Technical information about the update results</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Техническая информация о результатах обновления</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTipRepresentation>Button</ToolTipRepresentation>
 											<Hyperlink>true</Hyperlink>
@@ -604,6 +785,10 @@ A significant slowdown in the user activity can be observed during processing.</
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Technical information from the log to contact the technical support.</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Техническая информация из журнала регистрации для обращения в службу технической поддержки.</v8:content>
 													</v8:item>
 												</Title>
 											</ExtendedTooltip>
@@ -622,6 +807,10 @@ A significant slowdown in the user activity can be observed during processing.</
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>You can open the results of the application version update from the Administration - Support and service section.</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сведения о результатах обновления версии программы можно также открыть из раздела "Администрирование" - "Поддержка и обслуживание".</v8:content>
 												</v8:item>
 											</Title>
 											<TitleHeight>2</TitleHeight>
@@ -650,6 +839,10 @@ A significant slowdown in the user activity can be observed during processing.</
 					<v8:lang>en</v8:lang>
 					<v8:content>FileInfobase</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>FileInfobase</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -660,6 +853,10 @@ A significant slowdown in the user activity can be observed during processing.</
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Start time of the delayed update</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Время начала отложенного обновления</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -675,6 +872,10 @@ A significant slowdown in the user activity can be observed during processing.</
 					<v8:lang>en</v8:lang>
 					<v8:content>Delayed update end time</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Время окончание отложенного обновления</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
@@ -689,6 +890,10 @@ A significant slowdown in the user activity can be observed during processing.</
 					<v8:lang>en</v8:lang>
 					<v8:content>Schedule</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расписание</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -697,6 +902,10 @@ A significant slowdown in the user activity can be observed during processing.</
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Tool tip text</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст подсказки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -715,6 +924,10 @@ A significant slowdown in the user activity can be observed during processing.</
 					<v8:lang>en</v8:lang>
 					<v8:content>Close</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть</v8:content>
+				</v8:item>
 			</Title>
 			<Action>CloseForm</Action>
 		</Command>
@@ -724,11 +937,19 @@ A significant slowdown in the user activity can be observed during processing.</
 					<v8:lang>en</v8:lang>
 					<v8:content>Execute</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Perform additional update procedures</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить дополнительные процеудры обновления</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -743,11 +964,19 @@ A significant slowdown in the user activity can be observed during processing.</
 					<v8:lang>en</v8:lang>
 					<v8:content>Open the delayed handlers list</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть список отложенных обработчиков</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Open the delayed handlers list</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть список отложенных обработчиков</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>OpenListOfPendingHandlers</Action>
@@ -757,6 +986,10 @@ A significant slowdown in the user activity can be observed during processing.</
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change schedule</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить расписание</v8:content>
 				</v8:item>
 			</Title>
 			<Picture>
@@ -770,6 +1003,10 @@ A significant slowdown in the user activity can be observed during processing.</
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Check locking of scheduled jobs</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить блокировку регламентных заданий</v8:content>
 				</v8:item>
 			</Title>
 			<Action>UnlockScheduledJobs</Action>

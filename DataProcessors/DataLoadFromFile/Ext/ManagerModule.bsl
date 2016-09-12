@@ -235,7 +235,7 @@ Procedure InitializeSearchRefsMode(TemplateWithData, InformationByColumns, TypeD
 			ColumnsTitle = ColumnsTitle + Delimiter + "Presentation";
 		EndIf;
 		
-		ColumnsTitle = NStr("en = 'Entered data'");
+		ColumnsTitle = NStr("en='Entered data';ru='Введенные данные'");
 		
 	EndDo;
 	
@@ -576,24 +576,24 @@ Procedure InformationOnColumnsFromCatalogAttributes(ImportParameters, Informatio
 		ColumnTypeDescription = "";
 		
 		If Attribute.Type.ContainsType(Type("Boolean")) Then 
-			ColumnTypeDescription = NStr("en = 'Check box, Yes or 1 / No or 0'");
+			ColumnTypeDescription = NStr("en='Check box, Yes or 1 / No or 0';ru='Флаг, Да или 1 / Нет или 0'");
 		ElsIf Attribute.Type.ContainsType(Type("Number")) Then 
 			ColumnTypeDescription =  StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Number, Length: %1, Accuracy: %2'"),
+				NStr("en='Number, Length: %1, Accuracy: %2';ru='Число, Длина: %1, Точность: %2'"),
 			String(Attribute.Type.NumberQualifiers.Digits),
 			String(Attribute.Type.NumberQualifiers.FractionDigits));
 		ElsIf Attribute.Type.ContainsType(Type("String")) Then
 			If Attribute.Type.StringQualifiers.Length > 0 Then
 				StringLength = String(Attribute.Type.StringQualifiers.Length);
-				ColumnTypeDescription =  StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'String, max. quantity of symbols: %1'"), StringLength);
+				ColumnTypeDescription =  StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='String, max. quantity of symbols: %1';ru='Строка, макс. количество символов: %1'"), StringLength);
 			Else
-				ColumnTypeDescription = NStr("en = 'Row of an unlimited length'");
+				ColumnTypeDescription = NStr("en='Row of an unlimited length';ru='Строка неограниченной длины'");
 			EndIf;
 		ElsIf Attribute.Type.ContainsType(Type("Date")) Then
 			ColumnTypeDescription =  StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '%1'"),String(Attribute.Type.DateQualifiers.DateFractions));
+				NStr("en='%1';ru='%1'"),String(Attribute.Type.DateQualifiers.DateFractions));
 		ElsIf Attribute.Type.ContainsType(Type("UUID")) Then 
-			ColumnTypeDescription = NStr("en = 'UUID'");
+			ColumnTypeDescription = NStr("en='UUID';ru='UUID'");
 		EndIf;
 		
 		ColumnWidth = ColumnWidthByType(Attribute.Type);
@@ -631,7 +631,7 @@ Procedure CreateColumnStandardAttributes(InformationByColumns, CatalogMetadata, 
 		TypePresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("ru =  Row (no more than %1 characters)"), DescriptionOfType.StringQualifiers.Length);
 		ColumnWidth = ?(DescriptionOfType.StringQualifiers.Length < 30, DescriptionOfType.StringQualifiers.Length + 1, 30);
 	ElsIf DataType = Type("Number") Then	
-		TypePresentation = NStr("en = 'Number'");
+		TypePresentation = NStr("en='Number';ru='Number'");
 	Else
 		If CatalogMetadata.StandardAttributes[ColumnName].Type.Types().Count() = 1 Then 
 			TypePresentation = String(DataType); 
@@ -877,7 +877,7 @@ Procedure InitializeImportToTabularSection(TabularSectionFullName, TemplateNameW
 		If TemplateMetadata <> Undefined Then
 			Template = ObjectManager.GetTemplate(TemplateMetadata.Name);
 		Else
-			Raise NStr("en = 'Template for data import from a file is not found.'");
+			Raise NStr("en='Template for data import from a file is not found.';ru='Не найден макет для загрузки данных из файла'");
 			Cancel = True;
 			Return;
 		EndIf;
@@ -1199,7 +1199,7 @@ Function ObjectManager(CorrelationObjectName)
 		ElsIf ObjectArray.ObjectType = "Catalog" Then
 			ObjectManager = Catalogs[ObjectArray.NameObject];
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1 object is not found'"), CorrelationObjectName);
+			Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 object is not found';ru='Объект ""%1"" не найден'"), CorrelationObjectName);
 		EndIf;
 		
 		Return ObjectManager;
@@ -1581,7 +1581,7 @@ Procedure ImportCSVFileToTable(FileName, TemplateWithData, InformationByColumns)
 	TextReader = New TextReader(FileName);
 	String = TextReader.ReadLine();
 	If String = Undefined Then 
-		MessageText = NStr("en = 'Unable to import data from this file. Make sure that the data in the file is correct.'");
+		MessageText = NStr("en='Unable to import data from this file. Make sure that the data in the file is correct.';ru='Не получилось загрузить данные из этого файла. Убедитесь в корректности данных в файле.'");
 		Return;
 	EndIf;
 	
@@ -1705,7 +1705,7 @@ Procedure WriteMatchedData(ExportParameters, StorageAddress) Export
 				TableRow.RowMatchResult = "Updated";
 				If CatalogItem = Undefined Then
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Products and services with %1 SKU do not exist.'"), TableRow.SKU);
+					NStr("en='Products and services with %1 SKU do not exist.';ru='Номенклатура с артикулом %1 не существует.'"), TableRow.SKU);
 					Raise MessageText;
 				EndIf;
 			EndIf;
@@ -1739,7 +1739,7 @@ Procedure WriteMatchedData(ExportParameters, StorageAddress) Export
 		Except
 			RollbackTransaction();
 			TableRow.RowMatchResult = "Skipped";
-			TableRow.ErrorDescription = NStr("en = 'Unable to write as the data is incorrect.'");
+			TableRow.ErrorDescription = NStr("en='Unable to write as the data is incorrect.';ru='Невозможна запись из-за некорректности данных'");
 		EndTry;
 	
 	EndDo;
@@ -1851,7 +1851,7 @@ Procedure GenerateReportTemplate(TableReport, TemplateWithData)
 	Cell = TemplateWithData.GetArea(1, 1, 1, 1);
 	
 	TableHeader = TemplateWithData.GetArea("R1");
-	FillCellTemplateTitle(Cell, NStr("en ='Result'"), 12, NStr("en ='Data load result'"), True);
+	FillCellTemplateTitle(Cell, NStr("en='Result';ru='Результат'"), 12, NStr("en='Data load result';ru='Результат загрузки данных'"), True);
 	TableReport.Join(TableHeader); 
 	TableReport.InsertArea(Cell.CurrentArea, TableReport.Area("C1"), SpreadsheetDocumentShiftType.Horizontal);
 	

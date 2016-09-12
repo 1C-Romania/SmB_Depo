@@ -42,6 +42,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Order amount</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма заказа</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -52,6 +56,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Order</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -61,6 +69,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Left to pay / overpaid</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Осталось оплатить / переплачено</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -75,6 +87,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Order currency</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта заказа</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -166,6 +182,10 @@ ORDER BY
 				<v8:lang>en</v8:lang>
 				<v8:content>Empty Date</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Пустая дата</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -183,6 +203,10 @@ ORDER BY
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>End Date</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Кон дата</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -203,6 +227,10 @@ ORDER BY
 				<v8:lang>en</v8:lang>
 				<v8:content>Beg Date</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Нач дата</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -221,6 +249,10 @@ ORDER BY
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Payment state</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Состояние оплаты</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -255,6 +287,10 @@ ORDER BY
 				<v8:lang>en</v8:lang>
 				<v8:content>Output title</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:boolean</v8:Type>
@@ -270,6 +306,10 @@ ORDER BY
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Period</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>отчетный период</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -289,6 +329,10 @@ ORDER BY
 				<v8:lang>en</v8:lang>
 				<v8:content>Payment of orders</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Оплата заказов</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
@@ -300,6 +344,10 @@ ORDER BY
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Paid</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>paid</v8:content>
 						</v8:item>
 					</dcsset:lwsTitle>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -407,6 +455,10 @@ ORDER BY
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Analysis of the supplier invoices for payment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Анализ счетов на оплату поставщиков</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>

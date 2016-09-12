@@ -185,37 +185,37 @@ EndProcedure
 
 Function RepresentationSynchronizationSettingStep1()
 	
-	Return NStr("en = 'Synchronization setup, step 1.'");
+	Return NStr("en='Synchronization setup, step 1.';ru='Настройка синхронизации, шаг 1.'");
 	
 EndFunction
 
 Function RepresentationSynchronizationSettingStep2()
 	
-	Return NStr("en = 'Synchronization setup, step 2.'");
+	Return NStr("en='Synchronization setup, step 2.';ru='Настройка синхронизации, шаг 2.'");
 	
 EndFunction
 
 Function RepresentationExchangeMessageImporting()
 	
-	Return NStr("en = 'Import the exchange messages.'");
+	Return NStr("en='Import the exchange messages.';ru='Загрузка сообщения обмена.'");
 	
 EndFunction
 
 Function RepresentationCorrespondentDataGetting()
 	
-	Return NStr("en = 'Receiving the correspondent data.'");
+	Return NStr("en='Receiving the correspondent data.';ru='Получение данных корреспондента.'");
 	
 EndFunction
 
 Function RepresentationCorrespondentNodesCommonDataGetting()
 	
-	Return NStr("en = 'Receiving the correspondent nodes common date.'");
+	Return NStr("en='Receiving the correspondent nodes common date.';ru='Получение общих данных узлов корреспондента.'");
 	
 EndFunction
 
 Function RepresentationCorrespondentAccountingParametersGetting()
 	
-	Return NStr("en = 'Receiving the correspondent accounting parameters.'");
+	Return NStr("en='Receiving the correspondent accounting parameters.';ru='Получение параметров учета корреспондента.'");
 	
 EndFunction
 

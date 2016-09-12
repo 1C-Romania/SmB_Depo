@@ -21,9 +21,11 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group, Parameter)
 		
 		Cancel = True;
 			                  
-		Text = NStr("en='It is not required to create new work place. 
-					|It is already created for this client identifier.
-					|Open an existing work place?'");
+		Text = NStr("en='It is not required to create new work place. "
+"It is already created for this client identifier."
+"Open an existing work place?';ru='Создание нового рабочего места не требуется. "
+"Для данного идентификатора клиента оно уже создано."
+"Открыть существующее рабочее место?'");
 		Notification = New NotifyDescription("ListBeforeAddingRowEnd", ThisObject, Workplace);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo);
 		

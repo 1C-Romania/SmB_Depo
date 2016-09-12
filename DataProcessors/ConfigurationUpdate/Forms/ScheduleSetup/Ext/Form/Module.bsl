@@ -54,7 +54,7 @@ Procedure CommandOK(Command)
 	If SettingsChanged Then
 		RepeatPeriodInDay = Object.ScheduleOfUpdateExistsCheck.RepeatPeriodInDay;
 		If RepeatPeriodInDay > 0 AND RepeatPeriodInDay < 60 * 5 Then
-			CommonUseClientServer.MessageToUser(NStr("en = 'Checking interval can not be less then 5 minutes.'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Checking interval can not be less then 5 minutes.';ru='Интервал проверки не может быть задан чаще, чем один раз 5 минут.'"));
 			Return;
 		EndIf;
 		
@@ -106,7 +106,7 @@ Function LabelTextOpenSchedule(Form)
 	
 	StringPresentationSchedule = String(Form.Object.ScheduleOfUpdateExistsCheck);
 	Return ?(NOT IsBlankString(StringPresentationSchedule),
-		StringPresentationSchedule, NStr("en = 'Not defined'"));
+		StringPresentationSchedule, NStr("en='Not defined';ru='Не определена'"));
 		
 EndFunction
 

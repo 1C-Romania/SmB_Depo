@@ -17,14 +17,15 @@ Procedure BeforeWrite(Cancel)
 	If Not ValueIsFilled(FileOwner) Then
 		
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Owner in file is
-			           |not filled in ""%1"".'"),
+			NStr("en='Owner in file is"
+"not filled in ""%1"".';ru='Не заполнен"
+"владелец в файле ""%1"".'"),
 			Description);
 		
 		If InfobaseUpdate.InfobaseUpdateInProgress() Then
 			
 			WriteLogEvent(
-				NStr("en = 'Files. File record error at IB update'",
+				NStr("en='Files. File record error at IB update';ru='Файлы.Ошибка записи файла при обновлении ИБ'",
 				     CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -40,7 +41,7 @@ Procedure BeforeWrite(Cancel)
 		// Check right "Adding".
 		If Not FileOperationsService.IsRight("FilesAdd", FileOwner) Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The rights are not sufficient to add the file into folder ""%1"".'"),
+				NStr("en='The rights are not sufficient to add the file into folder ""%1"".';ru='Недостаточно прав для добавления файлов в папку ""%1"".'"),
 				String(FileOwner));
 		EndIf;
 	Else
@@ -64,11 +65,11 @@ Procedure BeforeWrite(Cancel)
 				RefEncrypted = AttributesStructure.Encrypted;
 				
 				If DigitallySigned AND RefDigitallySigned Then
-					Raise NStr("en = 'DigitallySigned file can not be edited.'");
+					Raise NStr("en='DigitallySigned file can not be edited.';ru='Подписанный файл нельзя редактировать.'");
 				EndIf;	
 				
 				If Encrypted AND RefEncrypted AND DigitallySigned AND Not RefDigitallySigned Then
-					Raise NStr("en = 'Encrypted file can not be signed.'");
+					Raise NStr("en='Encrypted file can not be signed.';ru='Зашифрованный файл нельзя подписывать.'");
 				EndIf;	
 				
 			EndIf;	
@@ -102,15 +103,16 @@ Procedure BeforeWrite(Cancel)
 			// Check right "Deletion mark".
 			If Not FileOperationsService.IsRight("FileDeletionMark", FileOwner) Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'The rights are not sufficient to mark the file for deletion in folder ""%1"".'"),
+					NStr("en='The rights are not sufficient to mark the file for deletion in folder ""%1"".';ru='Недостаточно прав для пометки файлов на удаление в папке ""%1"".'"),
 					String(FileOwner));
 			EndIf;
 			
 			// Try set deletion mark.
 			If DeletionMarkIsMarked AND Not IsEditing.IsEmpty() Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Cannot delete
-					           |file ""%1"", so. it is locked for editing by user ""%2"".'"),
+					NStr("en='Cannot delete"
+"file ""%1"", so. it is locked for editing by user ""%2"".';ru='Нельзя удалить файл ""%1"","
+"т.к. он занят для редактирования пользователем ""%2""'"),
 					FullDescr,
 					String(IsEditing) );
 			EndIf;
@@ -121,8 +123,9 @@ Procedure BeforeWrite(Cancel)
 		If FullDescr <> VIBDescription Then 
 			If Not IsEditing.IsEmpty() Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'File can not be
-					           |renamed ""%1"", so. it is locked for editing by user ""%2"".'"),
+					NStr("en='File can not be"
+"renamed ""%1"", so. it is locked for editing by user ""%2"".';ru='Нельзя переименовать файл ""%1"","
+"т.к. он занят для редактирования пользователем ""%2"".'"),
 					VIBDescription,
 					String(IsEditing));
 			EndIf;

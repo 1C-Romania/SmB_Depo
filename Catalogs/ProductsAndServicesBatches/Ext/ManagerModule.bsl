@@ -11,7 +11,7 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 		AND Not Parameters.Filter.Owner.UseBatches Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Products and services are not accounted by batches!'");
+		Message.Text = NStr("en='Products and services are not accounted by batches!';ru='Для номенклатуры не ведется учет по партиям!'");
 		Message.Message();
 		StandardProcessing = False;
 		

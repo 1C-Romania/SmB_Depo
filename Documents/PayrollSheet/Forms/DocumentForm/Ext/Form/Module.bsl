@@ -178,7 +178,7 @@ Procedure ProcessChangesOnButtonPricesAndCurrenciesEnd(Result, AdditionalParamet
 	EndIf;
 	
 	// Fill in form data.
-	PricesAndCurrency = NStr("en = 'Doc %1 • Beg. %2'");
+	PricesAndCurrency = NStr("en='Doc %1 • Beg. %2';ru='Док %1 • Нач. %2'");
 	PricesAndCurrency = StringFunctionsClientServer.PlaceParametersIntoString(PricesAndCurrency, TrimAll(String(Object.DocumentCurrency)), TrimAll(String(Object.SettlementsCurrency)));
 	
 EndProcedure // ProcessChangesByButtonPricesAndCurrencies()
@@ -232,7 +232,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	// Fill in form data.
-	PricesAndCurrency = NStr("en = 'Doc. %1 • Beg. %2'");
+	PricesAndCurrency = NStr("en='Doc. %1 • Beg. %2';ru='Док. %1 • Нач. %2'");
 	PricesAndCurrency = StringFunctionsClientServer.PlaceParametersIntoString(PricesAndCurrency, TrimAll(String(Object.DocumentCurrency)), TrimAll(String(Object.SettlementsCurrency)));
 	
 	SetVisibleFromCurrency();
@@ -291,7 +291,7 @@ Procedure FillByBalance(Command)
 	If Not ValueIsFilled(Object.StructuralUnit) Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'The division is not filled!'");
+		Message.Text = NStr("en='The division is not filled!';ru='Не заполнено подразделение!'");
 		Message.Field = "Object.StructuralUnit";
  		Message.Message();
 		
@@ -309,7 +309,7 @@ Procedure FillByDivision(Command)
 	If Not ValueIsFilled(Object.StructuralUnit) Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'The division is not filled!'");
+		Message.Text = NStr("en='The division is not filled!';ru='Не заполнено подразделение!'");
 		Message.Field = "Object.StructuralUnit";
  		Message.Message();
 		

@@ -149,8 +149,9 @@ Function GetScheduledJob(Val ID) Export
 	EndIf;
 	
 	If ScheduledJob = Undefined Then
-		Raise( NStr("en = 'Scheduled job is not found.
-		                              |Perhaps, it has been deleted by another user.'") );
+		Raise( NStr("en='Scheduled job is not found."
+"Perhaps, it has been deleted by another user.';ru='Регламентное задание не найдено."
+"Возможно, оно удалено другим пользователем.'") );
 	EndIf;
 	
 	Return ScheduledJob;

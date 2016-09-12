@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Settlement</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>НаселПункт</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -42,11 +46,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Address parts group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа частей адреса</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Address parts group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа частей адреса</v8:content>
 				</v8:item>
 			</ToolTip>
 			<VerticalStretch>true</VerticalStretch>
@@ -69,6 +81,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Address parts</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Части адреса</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -77,6 +93,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prefix of the address part name</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Префикс имени части адреса</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -93,6 +113,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Hide obsolete addresses</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скрывать неактуальные адреса</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -104,6 +128,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Classifier can be imported</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Можно загружать классификатор</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -114,6 +142,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Address format</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Формат адреса</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -130,6 +162,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Service of classifier is not available</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сервис классификатора недоступен</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -141,6 +177,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Form items by level</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Элементы формы по уровням</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
@@ -151,6 +191,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Address is changed</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес изменен</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -165,11 +209,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Select entered address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать введеный адрес</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CommandOK</Action>

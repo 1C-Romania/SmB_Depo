@@ -65,7 +65,7 @@ EndProcedure
 &AtClient
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
-	WarningText = NStr("en = 'Close assistant?'");
+	WarningText = NStr("en='Close assistant?';ru='Закрыть помощник?'");
 	CommonUseClient.ShowArbitraryFormClosingConfirmation(
 		ThisObject, Cancel, WarningText, "ForceCloseForm");
 	
@@ -209,7 +209,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -323,7 +323,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -379,7 +379,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -502,7 +502,7 @@ Function Attachable_PageEmployee1_OnGoingNext(Cancel)
 	
 	If IsBlankString(Object.Description) Then
 		
-		MessageText = NStr("en ='Fill in employee''s full name.'");
+		MessageText = NStr("en=""Fill in employee's full name."";ru='Необходимо заполнить ФИО сотрудника.'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Object.Description", , Cancel);
 		
 	EndIf;
@@ -525,14 +525,14 @@ Function Attachable_PageEmploymentContract1_OnGoingNext(Cancel)
 	
 	If Not ValueIsFilled(EmploymentContractEmploymentContractDate) Then
 		
-		MessageText = NStr("en ='Fill in employment date.'");
+		MessageText = NStr("en='Fill in employment date.';ru='Необходимо заполнить дату приема на работу.'");
 		CommonUseClientServer.AddUserError(Errors, "EmploymentContractEmploymentContractDate", MessageText, Undefined);
 		
 	EndIf;
 	
 	If Not ValueIsFilled(EmploymentContractCompany) Then
 		
-		MessageText = NStr("en ='Fill in company.'");
+		MessageText = NStr("en='Fill in company.';ru='Необходимо заполнить организацию.'");
 		CommonUseClientServer.AddUserError(Errors, "EmploymentContractCompany", MessageText, Undefined);
 		
 	EndIf;
@@ -540,14 +540,14 @@ Function Attachable_PageEmploymentContract1_OnGoingNext(Cancel)
 	If DivisionsAreUsed
 		AND Not ValueIsFilled(EmploymentContractStructuralUnit) Then
 		
-		MessageText = NStr("en ='Fill in division.'");
+		MessageText = NStr("en='Fill in division.';ru='Необходимо заполнить подразделение.'");
 		CommonUseClientServer.AddUserError(Errors, "EmploymentContractStructuralUnit", MessageText, Undefined);
 		
 	EndIf;
 	
 	If Not ValueIsFilled(EmploymentContractPosition) Then
 		
-		MessageText = NStr("en ='Fill in employee''s position.'");
+		MessageText = NStr("en=""Fill in employee's position."";ru='Необходимо заполнить должность сотрудника.'");
 		CommonUseClientServer.AddUserError(Errors, "EmploymentContractPosition", MessageText, Undefined);
 		
 	EndIf;
@@ -556,7 +556,7 @@ Function Attachable_PageEmploymentContract1_OnGoingNext(Cancel)
 		
 		If Not ValueIsFilled(EmploymentContractOccupiedRates) Then
 			
-			MessageText = NStr("en ='Fill in quantity of held positions.'");
+			MessageText = NStr("en='Fill in quantity of held positions.';ru='Необходимо заполнить количество занимаемых ставок.'");
 			CommonUseClientServer.AddUserError(Errors, "EmploymentContractOccupiedRates", MessageText, Undefined);
 			
 		Else
@@ -585,7 +585,7 @@ Function Attachable_PageEmploymentContract2_OnGoingNext(Cancel)
 	
 	If AccrualsAndDeductions.Count() < 1 Then
 		
-		MessageText = NStr("en ='Fill in accruals and deductions table.'");
+		MessageText = NStr("en='Fill in accruals and deductions table.';ru='Необходимо заполнить таблицу начислений и удержаний.'");
 		CommonUseClientServer.AddUserError(Errors, "AccrualsAndDeductions", MessageText, Undefined);
 		
 	EndIf;
@@ -644,7 +644,7 @@ Procedure ExecuteLongOperationAtServer()
 		Block.Lock();
 		
 		//::: Individual record
-		EventLogMonitorEvent = NStr("en ='Record ind. new employee ind'");
+		EventLogMonitorEvent = NStr("en='Record ind. new employee ind';ru='Запись физ. лица нового сотрудника'");
 		If AssociateWithIndividual AND FillVariant = 1 Then
 			
 			NewInd = Catalogs.Individuals.CreateItem();
@@ -658,7 +658,7 @@ Procedure ExecuteLongOperationAtServer()
 		EndIf;
 	
 		//::: Employee record
-		EventLogMonitorEvent = NStr("en ='New employee record'");
+		EventLogMonitorEvent = NStr("en='New employee record';ru='Запись нового сотрудника'");
 		NewEmployee = Catalogs.Employees.CreateItem();
 		FillPropertyValues(NewEmployee, Object);
 		NewEmployee.Parent = Parent;
@@ -667,7 +667,7 @@ Procedure ExecuteLongOperationAtServer()
 		//::: EmploymentContract
 		If AcceptForEmploymentContract Then
 			
-			EventLogMonitorEvent = NStr("en ='Add rates to staff list'");
+			EventLogMonitorEvent = NStr("en='Add rates to staff list';ru='Добавление ставок в штатное расписание'");
 			If UsedStaffSchedule
 				AND RatesFree < EmploymentContractOccupiedRates 
 				AND EmploymentContractAddRates Then
@@ -699,7 +699,7 @@ Procedure ExecuteLongOperationAtServer()
 				
 			EndIf;
 			
-			EventLogMonitorEvent = NStr("en ='EmploymentContract of the new employee record'");
+			EventLogMonitorEvent = NStr("en='EmploymentContract of the new employee record';ru='Запись приема на работу нового сотрудника'");
 			EmploymentContractObject					= Documents.EmploymentContract.CreateDocument();
 			EmploymentContractObject.Date			= CurrentDate();
 			SmallBusinessServer.FillDocumentHeader(EmploymentContractObject,,,,True, );
@@ -803,7 +803,7 @@ Procedure RunControlStaffSchedule(DataStructure, Errors, Cancel)
 		
 	ElsIf Not SelectionNumberOfRates.Next() Then
 		
-		MessageText = NStr("en = 'Positions for job %3 according to structural unit %2 are not expected in the company staff list!'");
+		MessageText = NStr("en='Positions for job %3 according to structural unit %2 are not expected in the company staff list!';ru='В штатном расписании организации %1 по структурной единице %2 не предусмотрены ставки для должности %3!'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, DataStructure.Company, DataStructure.StructuralUnit, DataStructure.Position);
 		
 	Else
@@ -813,8 +813,9 @@ Procedure RunControlStaffSchedule(DataStructure, Errors, Cancel)
 		
 		If RatesFree < DataStructure.PlannedTakeRates Then
 			
-			MessageText = NStr("en = 'There''s not enough vacant positions for job %3 according to structural unit %2 in the company %1 staff list!
-				|Vacant positions %4, required positions %5.'");
+			MessageText = NStr("en=""There's not enough vacant positions for job %3 according to structural unit %2 in the company %1 staff list!"
+"Vacant positions %4, required positions %5."";ru='В штатном расписании организации %1 по структурной единице %2 нет достаточного количества свободных ставок для должности %3!"
+"Свободно ставок %4, а требуется ставок %5.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, DataStructure.Company, DataStructure.StructuralUnit, DataStructure.Position, RatesFree, DataStructure.PlannedTakeRates);
 			
 		EndIf;
@@ -857,7 +858,7 @@ Procedure CheckInd(Errors)
 		Selection = Query.Execute().Select();
 		If Selection.Next() Then
 			
-			MessageText = NStr("en ='Individual, to which a current employee was referred, already has an employee with primary employment.'");
+			MessageText = NStr("en='Individual, to which a current employee was referred, already has an employee with primary employment.';ru='Физическое лицо, к которому отнесли текущего сотрудника, уже имеет сотрудника с основным местом работы.'");
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 			
 		EndIf;

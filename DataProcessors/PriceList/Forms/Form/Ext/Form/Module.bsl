@@ -55,8 +55,8 @@ EndFunction // GetSelectionStructure()
 //
 Procedure UpdateFormTitleAtServer()
 	
-	ThisForm.Title	= NStr("en = 'Counterparty''s price list'") + 
-		?(ValueIsFilled(ToDate), NStr("en = ' on '") + Format(ToDate, "DLF=DD"), NStr("en = '.'"));
+	ThisForm.Title	= NStr("en=""Counterparty's price list"";ru='Прайс-лист компании'") + 
+		?(ValueIsFilled(ToDate), NStr("en=' on ';ru=' на '") + Format(ToDate, "DLF=DD"), NStr("en='.';ru='.'"));
 	
 EndProcedure // UpdateFormTitleAtServer()
 
@@ -420,7 +420,7 @@ Procedure OnOpen(Cancel)
 	StatePresentation = Items.SpreadsheetDocument.StatePresentation;
 	StatePresentation.Visible = True;
 	StatePresentation.AdditionalShowMode = AdditionalShowMode.DontUse;
-	StatePresentation.Text = NStr("en = 'Click the Update command for creating price list.'");
+	StatePresentation.Text = NStr("en='Click the Update command for creating price list.';ru='Нажмите команду Обновить для формирования прайс-листа.'");
 	
 EndProcedure // OnOpen()
 
@@ -626,8 +626,9 @@ Procedure Add(Command)
 		AND DetailFromArea.Dynamic Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Impossible to add the price.
-					|Perhaps, dynamic price type is selected.'")
+			NStr("en='Impossible to add the price."
+"Perhaps, dynamic price type is selected.';ru='Невозможно добавить цену."
+"Возможно выбран динамический тип цен .'")
 					);
 		Return;
 		
@@ -734,8 +735,9 @@ Procedure Copy(Command)
 		AND DetailFromArea.Dynamic) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Impossible to copy the price.
-					|Perhaps, dynamic price type or the blank cell has been selected.'")
+			NStr("en='Impossible to copy the price."
+"Perhaps, dynamic price type or the blank cell has been selected.';ru='Невозможно скопировать цену."
+"Возможно выбран динамический тип цен или пустая ячейка.'")
 					);
 		Return;
 		
@@ -745,7 +747,7 @@ Procedure Copy(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'No prices available for copying exist for the current products and services in the current price list.'")
+				NStr("en='No prices available for copying exist for the current products and services in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для копирования.'")
 						);
 						
 			Return;
@@ -770,8 +772,9 @@ Procedure Copy(Command)
 		Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Dynamic price or empty cell is specified.
-				|Copying is not possible.'")
+			NStr("en='Dynamic price or empty cell is specified."
+"Copying is not possible.';ru='Указана динамическая цена либо пустая ячейка."
+"Копирование не возможно.'")
 				);
 				
 		Return;
@@ -804,8 +807,9 @@ Procedure Change(Command)
 		AND DetailFromArea.Dynamic) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Impossible to change the price.
-					|Perhaps, dynamic price type or the blank cell has been selected.'")
+			NStr("en='Impossible to change the price."
+"Perhaps, dynamic price type or the blank cell has been selected.';ru='Невозможно изменить цену."
+"Возможно выбран динамический тип цен или пустая ячейка.'")
 					);
 		Return;
 		
@@ -815,7 +819,7 @@ Procedure Change(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'No prices available for editing exist for the current products and services in current price list.'")
+				NStr("en='No prices available for editing exist for the current products and services in current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для изменения.'")
 						);
 						
 			Return;
@@ -851,7 +855,7 @@ Procedure History(Command)
 		AND DetailFromArea.Dynamic) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Can not open history of the prices generation.'")
+			NStr("en='Can not open history of the prices generation.';ru='Невозможно открыть историю формирования цен.'")
 					);
 		Return;
 		
@@ -861,7 +865,7 @@ Procedure History(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Can not show price history for the current inventory item.'")
+				NStr("en='Can not show price history for the current inventory item.';ru='Для текущего запаса невозможно отобразить историю цены.'")
 						);
 						
 			Return;
@@ -1226,7 +1230,7 @@ Procedure PrepareSpreadsheetDocumentInLongActions()
 		UUID,
 		"DataProcessors.PriceList.Generate",
 		BackgroundJobLaunchParameters,
-		NStr("en = 'Price list data preparation'")
+		NStr("en='Price list data preparation';ru='Подготовка данных прайс-листа'")
 	);
 	
 	Completed = AssignmentResult.JobCompleted;
@@ -1250,7 +1254,7 @@ Procedure PrepareSpreadsheetDocumentInLongActions()
 		
 		SmallBusinessServer.StateDocumentsTableLongOperation(
 			Items.SpreadsheetDocument,
-			NStr("en = 'Generating the report...'")
+			NStr("en='Generating the report...';ru='Отчет формируется...'")
 			);
 		
 	EndIf;
@@ -1285,7 +1289,7 @@ Procedure CheckExecution()
 		StatePresentation.Visible = True;
 		StatePresentation.AdditionalShowMode = AdditionalShowMode.DontUse;
 		StatePresentation.Picture = New Picture;
-		StatePresentation.Text = NStr("en = 'Data are not actual'");
+		StatePresentation.Text = NStr("en='Data are not actual';ru='Данные не актуалны'");
 		
 		Items.AbortPriceListBackGroundFormation.Enabled = False;
 		
@@ -1362,7 +1366,7 @@ Procedure ImportDataFromExternalSourceResultDataProcessor(ImportResult, Addition
 		ElsIf ImportResult.ActionsDetails = "ProcessPreparedData" Then
 			
 			ProcessPreparedData(ImportResult);
-			ShowMessageBox(,NStr("en ='The data import is completed.'"));
+			ShowMessageBox(,NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
 			
 		EndIf;
 		
@@ -1418,7 +1422,7 @@ Procedure ProcessPreparedData(ImportResult)
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Data Import'"), EventLogLevel.Error, Metadata.InformationRegisters.ProductsAndServicesPrices, , ErrorDescription());
+		WriteLogEvent(NStr("en='Data Import';ru='Загрузка данных'"), EventLogLevel.Error, Metadata.InformationRegisters.ProductsAndServicesPrices, , ErrorDescription());
 		RollbackTransaction();
 		
 	EndTry;

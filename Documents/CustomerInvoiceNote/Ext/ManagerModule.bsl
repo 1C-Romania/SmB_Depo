@@ -133,9 +133,9 @@ Procedure RunControl(DocumentRefInvoice, AdditionalProperties, Cancel, PostingDe
 				PresentationProductsAndServicesText = PresentationProductsAndServicesText + " | """ + TrimAll(QueryResultSelection.CountryOfOrigin) + """";
 			EndIf;
 
-			MessageText = NStr(
-					"en = '%ProductsAndServicesPresentationText% - negative balance of inventories in CCD accounting.
-					|Inventory balance by CCD accounting (number): %BalanceQuantity%.'");
+			MessageText = NStr("en='%ProductsAndServicesPresentationText% - negative balance of inventories in CCD accounting."
+"Inventory balance by CCD accounting (number): %BalanceQuantity%.';ru='%ПредставлениеНоменклатурыТекст% - отрицательный остаток запасов в разрезе ГТД."
+"Остаток запасов в разрезе ГТД (количество): %КоличествоОстаток%.'");
 			MessageText = StrReplace(MessageText, "%%ProductsAndServicesPresentationText%", PresentationProductsAndServicesText);
 			MessageText = StrReplace(MessageText, "%BalanceQuantity%", QueryResultSelection.QuantityBalanceInventoryByCCD);
 								
@@ -248,9 +248,11 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		If ItIsUniversalTransferDocument 
 			AND Header.DocumentDate < Date('20130101') Then 
 			
-			MessageText = NStr("en = '__________________
-										|Printing of the universal transmission document is available from January 1, 2013. 
-										|For the %1 document the print form is not generated.'");
+			MessageText = NStr("en='__________________"
+"Printing of the universal transmission document is available from January 1, 2013. "
+"For the %1 document the print form is not generated.';ru='__________________"
+"Печать универсального передаточного документа доступна c 1 января 2013. "
+"Для документа %1 печатная форма не сформирована.'");
 			
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Header.Ref);
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
@@ -475,7 +477,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			TitleFields = ?(ItIsUniversalTransferDocument, "", "Consignor and its address: ");
 			If Header.Same Then
 				
-				TemplateArea.Parameters.PresentationOfShipper = TitleFields + NStr("en = 'the same'");
+				TemplateArea.Parameters.PresentationOfShipper = TitleFields + NStr("en='the same';ru='Он же'");
 				
 			ElsIf Not ValueIsFilled(Header.Consignor) Then
 				
@@ -1003,8 +1005,8 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		If ItIsUniversalTransferDocument Then
 			
 			TemplateArea.Parameters.PagesNumber = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Document is drawn up for%1%2 %3'"), Chars.LF, PageCount,
-				SmallBusinessServer.FormOfMultipleNumbers(NStr("en = 'list'"), NStr("en = 'Worksheets'"), NStr("en = 'Worksheets'"), PageCount)
+				NStr("en='Document is drawn up for%1%2 %3';ru='Документ составлен на%1%2 %3'"), Chars.LF, PageCount,
+				SmallBusinessServer.FormOfMultipleNumbers(NStr("en='list';ru='список'"), NStr("en='Worksheets';ru='листах'"), NStr("en='Worksheets';ru='листах'"), PageCount)
 				);
 			
 		EndIf;
@@ -1032,9 +1034,9 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 					Then
 					
 					TemplateArea.Parameters.Basis = 
-						Header.Basis + NStr("en ='; by power of attorney No'") + Header.BasisDocument.PowerOfAttorneyNumber 
-						+ NStr("en =' from '") + Format(Header.BasisDocument.PowerOfAttorneyDate, "DLF=DD") 
-						+ NStr("en =' Paid '") + Header.BasisDocument.PowerOfAttorneyIssued + " " 
+						Header.Basis + NStr("en='; by power of attorney No';ru='; по доверенности №'") + Header.BasisDocument.PowerOfAttorneyNumber 
+						+ NStr("en=' from ';ru=' от '") + Format(Header.BasisDocument.PowerOfAttorneyDate, "DLF=DD") 
+						+ NStr("en=' Paid ';ru=' Paid '") + Header.BasisDocument.PowerOfAttorneyIssued + " " 
 						+ Header.BasisDocument.PowerAttorneyPerson;
 					
 				EndIf;
@@ -1047,12 +1049,12 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			If Not IsBlankString(InfoAboutVendor.TIN) 
 				AND Not IsBlankString(InfoAboutVendor.KPP) Then
 				
-				CompanyPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1, TIN/KPP %2/%3'"),
+				CompanyPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN/KPP %2/%3';ru='%1, TIN/KPP %2/%3'"),
 					CompanyPresentation, InfoAboutVendor.TIN, InfoAboutVendor.KPP);
 				
 			ElsIf Not IsBlankString(InfoAboutVendor.TIN) Then
 				
-				CompanyPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1, TIN %2'"),
+				CompanyPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN %2';ru='%1, ИНН %2'"),
 					CompanyPresentation, InfoAboutVendor.TIN);
 				
 			EndIf;
@@ -1063,12 +1065,12 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			If Not IsBlankString(InfoAboutCustomer.TIN)
 				AND Not IsBlankString(InfoAboutCustomer.KPP) Then
 				
-				PresentationOfCounterparty = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1, TIN/KPP %2/%3'"),
+				PresentationOfCounterparty = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN/KPP %2/%3';ru='%1, TIN/KPP %2/%3'"),
 					PresentationOfCounterparty, InfoAboutCustomer.TIN, InfoAboutCustomer.KPP);
 					
 			ElsIf Not IsBlankString(InfoAboutCustomer.TIN) Then
 				
-				PresentationOfCounterparty = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1, TIN %2'"),
+				PresentationOfCounterparty = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN %2';ru='%1, ИНН %2'"),
 					PresentationOfCounterparty, InfoAboutCustomer.TIN);
 				
 			EndIf;
@@ -1195,14 +1197,14 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CustomerInvoiceNote";
-	PrintCommand.Presentation = NStr("en = 'Account-texture'");
+	PrintCommand.Presentation = NStr("en='Account-texture';ru='Счет-фактура'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "UniversalTransferDocument";
-	PrintCommand.Presentation = NStr("en = 'Universal transfer document'");
+	PrintCommand.Presentation = NStr("en='Universal transfer document';ru='Универсальный передаточный документ'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;

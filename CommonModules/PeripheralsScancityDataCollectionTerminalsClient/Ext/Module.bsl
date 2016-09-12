@@ -48,10 +48,13 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 	 Or DocumentFormat          = Undefined
 	 Or Model                   = Undefined Then
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device parameters are not set.
-		|For the correct work of the device it is necessary to specify the parameters of its work.
-		|You can do it using the Parameters setting
-		|form of the peripheral model in the Connection and equipment setting form.'"));
+		Output_Parameters.Add(NStr("en='Device parameters are not set."
+"For the correct work of the device it is necessary to specify the parameters of its work."
+"You can do it using the Parameters setting"
+"form of the peripheral model in the Connection and equipment setting form.';ru='Не настроены параметры устройства."
+"Для корректной работы устройства необходимо задать параметры его работы."
+"Сделать это можно при помощи формы"
+"""Настройка параметров"" модели подключаемого оборудования в форме ""Подключение и настройка оборудования"".'"));
 
 		Result = False;
 	EndIf;
@@ -139,7 +142,7 @@ Function RunCommand(Command, InputParameters = Undefined, Output_Parameters = Un
 	// This command is not supported by the current driver.
 	Else
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.'"));
+		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.';ru='Команда ""%Команда%"" не поддерживается данным драйвером.'"));
 		Output_Parameters[1] = StrReplace(Output_Parameters[1], "%Command%", Command);
 		Result = False;
 
@@ -297,7 +300,7 @@ Function StartImport(DriverObject, Parameters, ConnectionParameters, Quantity, O
 	ElsIf Quantity = 0 Then
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='No data to export from the data collection terminal.'"));
+		Output_Parameters.Add(NStr("en='No data to export from the data collection terminal.';ru='Отсутствуют данные для загрузки из терминала сбора данных.'"));
 		Result = False;
 	ElsIf Quantity < 0 Then
 		Output_Parameters.Clear();
@@ -405,7 +408,7 @@ Function ExportTable(DriverObject, Parameters, ConnectionParameters, ExportingTa
 	If ExportingTable.Count() = 0 Then
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='There is no data to export.'"));
+		Output_Parameters.Add(NStr("en='There is no data to export.';ru='Нет данных для выгрузки.'"));
 		Return False;
 	EndIf;
 	
@@ -431,7 +434,7 @@ Function ExportTable(DriverObject, Parameters, ConnectionParameters, ExportingTa
 			EndIf;
 			
 			CurrentPercent = CurrentPercent + PercentIncrement;
-			Status(NStr("en='Exporting data ...'"), Round(CurrentPercent));
+			Status(NStr("en='Exporting data ...';ru='Выгрузка данных...'"), Round(CurrentPercent));
 		EndDo;
 		
 		If Result Then
@@ -477,7 +480,7 @@ Function Import_Table(DriverObject, Parameters, ConnectionParameters, Output_Par
 			EndIf;
 			
 			CurrentPercent = CurrentPercent + PercentIncrement;
-			Status(NStr("en='Importing data...'"), Round(CurrentPercent));
+			Status(NStr("en='Importing data...';ru='Выполняется загрузка данных...'"), Round(CurrentPercent));
 
 		EndDo;
 	EndIf;
@@ -503,8 +506,8 @@ Function GetDriverVersion(DriverObject, Parameters, ConnectionParameters, Output
 
 	Result = True;
 
-	Output_Parameters.Add(NStr("en='Installed'"));
-	Output_Parameters.Add(NStr("en='Not defined'"));
+	Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
+	Output_Parameters.Add(NStr("en='Not defined';ru='Не определена'"));
 
 	Try
 		Output_Parameters[1] = DriverObject.GetVersionNumber();

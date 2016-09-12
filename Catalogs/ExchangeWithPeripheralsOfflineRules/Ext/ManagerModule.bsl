@@ -45,7 +45,7 @@ Function GeneratePrintFormProductsCodes(ObjectsArray, PrintObjects, PrintParamet
 		FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
 		
 		TemplateArea = Template.GetArea("Title");
-		TemplateArea.Parameters.HeaderText = NStr("en = 'Product codes'");
+		TemplateArea.Parameters.HeaderText = NStr("en='Product codes';ru='Коды товаров'");
 		TemplateArea.Parameters.ExchangeRule  = Object;
 		SpreadsheetDocument.Put(TemplateArea);
 		
@@ -110,7 +110,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// Product codes
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "ProductCodes";
-	PrintCommand.Presentation = NStr("en = 'Product codes'");
+	PrintCommand.Presentation = NStr("en='Product codes';ru='Коды товаров'");
 	PrintCommand.FormsList = "ItemForm,ListForm,ChoiceForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

@@ -25,27 +25,27 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.ObjectFilling Then
 		ThisIsAppointedDataProcessors = True;
-		Title = NStr("en = 'Filling objects commands'");
+		Title = NStr("en='Filling objects commands';ru='Команды заполнения объектов'");
 	ElsIf KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.Report Then
 		ThisIsAppointedDataProcessors = True;
 		AreReports = True;
-		Title = NStr("en = 'Reports'");
+		Title = NStr("en='Reports';ru='Отчеты'");
 	ElsIf KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.PrintForm Then
 		ThisIsAppointedDataProcessors = True;
-		Title = NStr("en = 'Additional print forms'");
+		Title = NStr("en='Additional print forms';ru='Дополнительные печатные формы'");
 	ElsIf KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.CreatingLinkedObjects Then
 		ThisIsAppointedDataProcessors = True;
-		Title = NStr("en = 'Commands of creating the linked objects'");
+		Title = NStr("en='Commands of creating the linked objects';ru='Команды создания связанных объектов'");
 	ElsIf KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.AdditionalInformationProcessor Then
 		ThisIsGlobalDataProcessors = True;
 		Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Additional data processors (%1)'"), 
+			NStr("en='Additional data processors (%1)';ru='Дополнительные обработки (%1)'"), 
 			AdditionalReportsAndDataProcessors.PresentationOfSection(SectionReference));
 	ElsIf KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.AdditionalReport Then
 		ThisIsGlobalDataProcessors = True;
 		AreReports = True;
 		Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Additional reports (%1)'"), 
+			NStr("en='Additional reports (%1)';ru='Дополнительные отчеты (%1)'"), 
 			AdditionalReportsAndDataProcessors.PresentationOfSection(SectionReference));
 	EndIf;
 	
@@ -194,7 +194,7 @@ Procedure RunDataProcessorByParameters()
 		
 		// Change of the form items
 		Items.ExplanatoryDecoration.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Command ""%1"" is being executed...'"),
+			NStr("en='Command ""%1"" is being executed...';ru='Выполняется команда ""%1""...'"),
 			DataProcessorData.Presentation);
 		Items.Pages.CurrentPage = Items.DataProcessorExecutionPage;
 		Items.PagesCommandBars.CurrentPage = Items.DataProcessorExecutionPageCommandBarPage;
@@ -234,7 +234,7 @@ Function ExecuteProcessingServerMethodAtServer(ServerCallParameters)
 			UUID,
 			"AdditionalReportsAndDataProcessors.RunCommand", 
 			ServerCallParameters, 
-			NStr("en = 'Additional reports and data processors: The execution of the server processing method'"));
+			NStr("en='Additional reports and data processors: The execution of the server processing method';ru='Дополнительные отчеты и обработки: Выполнение серверного метода обработки'"));
 		
 		If BackgroundJobResult.JobCompleted Then
 			Result.Completed = True;
@@ -247,7 +247,7 @@ Function ExecuteProcessingServerMethodAtServer(ServerCallParameters)
 		Result.ExceptionCalled = True;
 		AdditionalReportsAndDataProcessors.WriteError(
 			ServerCallParameters.AdditionalInformationProcessorRef,
-			NStr("en = 'Command %1: Execution error:%2'"),
+			NStr("en='Command %1: Execution error:%2';ru='Команда %1: Ошибка выполнения:%2'"),
 			ServerCallParameters.CommandID,
 			Chars.LF + DetailErrorDescription(ErrorInfo()));
 	EndTry;
@@ -268,7 +268,7 @@ Procedure ShowProcessingExecutionResult(Result, CloseThisForm)
 		EndIf;
 		If ExecutionResult.OutputNotification.Use <> True Then
 			ExecutionResult.OutputNotification.Use = True;
-			ExecutionResult.OutputNotification.Title = NStr("en = 'Command executed'");
+			ExecutionResult.OutputNotification.Title = NStr("en='Command executed';ru='Команда выполнена'");
 			ExecutionResult.OutputNotification.Text = ExecuteCommand.Presentation;
 		EndIf;
 	EndIf;
@@ -278,8 +278,9 @@ Procedure ShowProcessingExecutionResult(Result, CloseThisForm)
 		Items.Pages.CurrentPage = Items.PageOpenProcessing;
 		Items.PagesCommandBars.CurrentPage = Items.PageOpenDataProcessorPageCommandBar;
 		// Output of the error message.
-		WarningText = NStr("en = 'Failed to execute the ""%1"" command.
-		|Look for details in event log.'");
+		WarningText = NStr("en='Failed to execute the ""%1"" command."
+"Look for details in event log.';ru='Не удалось выполнить команду ""%1""."
+"Подробности см. в журнале регистрации.'");
 		WarningText = StrReplace(WarningText, "%1", ExecuteCommand.Presentation);
 		ShowMessageBox(, WarningText);
 		// Cancel closing.

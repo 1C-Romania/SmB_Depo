@@ -62,7 +62,7 @@ EndProcedure
 Procedure Done(Command)
 	
 	If Not ValueIsFilled(StorageIdentifier) Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Storage is not selected'"), , "StorageIdentifier");
+		CommonUseClientServer.MessageToUser(NStr("en='Storage is not selected';ru='Не выбрано хранилище'"), , "StorageIdentifier");
 		Return;
 	EndIf;
 	

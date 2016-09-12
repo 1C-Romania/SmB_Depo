@@ -19,13 +19,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ContextMode = Parameters.ContextMode;
 	Items.UseAccount.Visible = Not ContextMode;
 	Items.AccountSetupTitle.Title = ?(ContextMode,
-		NStr("en = 'To send messages, set email account.'"),
-		NStr("en = 'Enter account parameters'"));
+		NStr("en='To send messages, set email account.';ru='Для отправки писем необходимо настроить учетную запись электронной почты'"),
+		NStr("en='Enter account parameters';ru='Введите параметры учетной записи'"));
 		
 	If Not ContextMode Then
-		Title = NStr("en = 'Create email account'");
+		Title = NStr("en='Create email account';ru='Создание учетной записи электронной почты'");
 	Else
-		Title = NStr("en = 'Email account setting'");
+		Title = NStr("en='Email account setting';ru='Настройка учетной записи электронной почты'");
 	EndIf;
 	
 	UseForReceiving = Not ContextMode;
@@ -153,13 +153,13 @@ EndProcedure
 
 &AtClient
 Procedure ShowQuestionBoxBeforeClosingForm()
-	QuestionText = NStr("en = 'Entered data has not been written. Close the form?'");
+	QuestionText = NStr("en='Entered data has not been written. Close the form?';ru='Введенные данные не записаны. Закрыть форму?'");
 	NotifyDescription = New NotifyDescription("FormClosingConfirmed", ThisObject);
 	Buttons = New ValueList;
-	Buttons.Add("Close", NStr("en = 'Close'"));
-	Buttons.Add(DialogReturnCode.Cancel, NStr("en = 'Do not close'"));
-	ShowQueryBox(NOTifyDescription, NStr("en = 'Entered data has not been written. Close the form?'"), Buttons,,
-		DialogReturnCode.Cancel, NStr("en = 'Account setup'"));
+	Buttons.Add("Close", NStr("en='Close';ru='Закрыть'"));
+	Buttons.Add(DialogReturnCode.Cancel, NStr("en='Do not close';ru='Не закрывать'"));
+	ShowQueryBox(NOTifyDescription, NStr("en='Entered data has not been written. Close the form?';ru='Введенные данные не записаны. Закрыть форму?'"), Buttons,,
+		DialogReturnCode.Cancel, NStr("en='Account setup';ru='Настройка учетной записи'"));
 EndProcedure
 
 &AtClient
@@ -277,7 +277,7 @@ Function permissions()
 				"SMTP",
 				OutgoingMailServer,
 				OutgoingMailServerPort,
-				NStr("en = 'Email.'")));
+				NStr("en='Email.';ru='Эл. адрес.'")));
 	EndIf;
 	
 	If UseForReceiving Then
@@ -286,7 +286,7 @@ Function permissions()
 				Protocol,
 				IncomingMailServer,
 				IncomingMailServerPort,
-				NStr("en = 'Email.'")));
+				NStr("en='Email.';ru='Эл. адрес.'")));
 	EndIf;
 	
 	Return Result;
@@ -298,13 +298,13 @@ EndFunction
 Procedure CheckFillingOnPageAccountSetting(Cancel)
 	
 	If IsBlankString(EmailAddress) Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Enter email address'"), , "EmailAddress", , Cancel);
+		CommonUseClientServer.MessageToUser(NStr("en='Enter email address';ru='Введите адрес электронной почты'"), , "EmailAddress", , Cancel);
 	ElsIf Not CommonUseClientServer.EmailAddressMeetsRequirements(EmailAddress, True) Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Email address you have typed is incorrect.'"), , "EmailAddress", , Cancel);
+		CommonUseClientServer.MessageToUser(NStr("en='Email address you have typed is incorrect.';ru='Адрес электронной почты введен неверно'"), , "EmailAddress", , Cancel);
 	EndIf;
 	
 	If IsBlankString(PasswordForReceivingEmails) Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Enter password'"), , "PasswordForReceivingEmails", , Cancel);
+		CommonUseClientServer.MessageToUser(NStr("en='Enter password';ru='Введите пароль'"), , "PasswordForReceivingEmails", , Cancel);
 	EndIf;
 	
 EndProcedure
@@ -317,23 +317,23 @@ Procedure SetCurrentPageItems()
 	// ButtonNext
 	If CurrentPage = Items.AccountConfiguredSuccessfully Then
 		If ContextMode Then
-			NextButtonTitle = NStr("en = 'Continue'");
+			NextButtonTitle = NStr("en='Continue';ru='Продолжить'");
 		Else
-			NextButtonTitle = NStr("en = 'Close'");
+			NextButtonTitle = NStr("en='Close';ru='Закрыть'");
 		EndIf;
 	Else
 		If CurrentPage = Items.AccountSetup
 			AND CheckingCompletedWithErrors Then
-				NextButtonTitle = NStr("en = 'Retry'");
+				NextButtonTitle = NStr("en='Retry';ru='Повторить'");
 		ElsIf CurrentPage = Items.AccountSetup
 			AND SettingsMethod = "automatically" Then
 			If ContextMode Then
-				NextButtonTitle = NStr("en = 'Configure'");
+				NextButtonTitle = NStr("en='Configure';ru='Настроить'");
 			Else
-				NextButtonTitle = NStr("en = 'Create'");
+				NextButtonTitle = NStr("en='Create';ru='Сформировать отчет'");
 			EndIf;
 		Else
-			NextButtonTitle = NStr("en = 'Next >'");
+			NextButtonTitle = NStr("en='Next >';ru='Далее  >'");
 		EndIf;
 	EndIf;
 	Items.ButtonNext.Title = NextButtonTitle;
@@ -353,9 +353,9 @@ Procedure SetCurrentPageItems()
 		AND CheckingCompletedWithErrors Or Not ContextMode AND CurrentPage = Items.AccountConfiguredSuccessfully);
 		
 	If Not ContextMode AND CurrentPage = Items.AccountConfiguredSuccessfully Then
-		Items.GoToSettingsButton.Title = NStr("en = 'Go to account'");
+		Items.GoToSettingsButton.Title = NStr("en='Go to account';ru='Перейти к учетной записи'");
 	Else
-		Items.GoToSettingsButton.Title = NStr("en = 'Configure connection parameters manually'");
+		Items.GoToSettingsButton.Title = NStr("en='Configure connection parameters manually';ru='Настроить параметры подключения вручную'");
 	EndIf;
 	
 	If CurrentPage = Items.AccountSetup Then
@@ -369,8 +369,9 @@ Procedure SetCurrentPageItems()
 	
 	If CurrentPage = Items.AccountConfiguredSuccessfully Then
 		Items.LabelAccountConfiguredSuccessfully.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Account parameters
-					|setting is complete.'"), EmailAddress);
+			NStr("en='Account parameters"
+"setting is complete.';ru='Настройка"
+"параметров учетной записи %1 завершена.'"), EmailAddress);
 	EndIf;
 	
 EndProcedure
@@ -468,8 +469,8 @@ Function CheckConnectionToOutgoingMailServer()
 	
 	EmailParameters = New Structure;
 	
-	Subject = NStr("en = '""1C:Enterprise"" test message'");
-	Body = NStr("en = 'The email is sent using ""1C:Enterprise"" service'");
+	Subject = NStr("en='""1C:Enterprise"" test message';ru='Тестовое сообщение 1С:Предприятие'");
+	Body = NStr("en='The email is sent using ""1C:Enterprise"" service';ru='Это сообщение отправлено подсистемой электронной почты 1С:Предприятие'");
 	
 	CurEmail = New InternetMailMessage;
 	CurEmail.Subject = Subject;
@@ -518,13 +519,13 @@ Procedure CheckAccountSettings()
 	
 	ErrorText = "";
 	If Not IsBlankString(OutgoingMailServerMessage) Then
-		ErrorText = NStr("en = 'Unable to connect to the outgoing mail server:'" + Chars.LF)
+		ErrorText = NStr("en='Unable to connect to the outgoing mail server:';ru='Не удалось подключиться к серверу исходящей почты:'" + Chars.LF)
 			+ OutgoingMailServerMessage + Chars.LF;
 	EndIf;
 	
 	If Not IsBlankString(IncomingMailServerMessage) Then
 		ErrorText = ErrorText
-			+ NStr("en = 'Unable to connect to the incoming mail server:'" + Chars.LF)
+			+ NStr("en='Unable to connect to the incoming mail server:';ru='Не удалось подключиться к серверу входящей почты:'" + Chars.LF)
 			+ IncomingMailServerMessage;
 	EndIf;
 	
@@ -925,8 +926,9 @@ Procedure PickSettingsAndCreateAccount()
 	If Not CheckingCompletedWithErrors Then
 		CreateAccount();
 	Else
-		ErrorMessages = NStr("en = 'Unable to determine connection settings. 
-			|Set connection parameters manually.'");
+		ErrorMessages = NStr("en='Unable to determine connection settings. "
+"Set connection parameters manually.';ru='Не удалось определить настройки подключения. "
+"Настройте параметры подключения вручную.'");
 			
 		// Settings by default.
 		FillPropertyValues(ThisObject, DefaultSettings(EmailAddress, PasswordForReceivingEmails));

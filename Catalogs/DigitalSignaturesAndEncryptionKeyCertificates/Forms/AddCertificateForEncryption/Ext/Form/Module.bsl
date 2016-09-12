@@ -22,7 +22,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Else
 		If DigitalSignatureClientServer.CommonSettings().CreateDigitalSignaturesAtServer Then
 			Items.GroupCertificates.Title =
-				NStr("en = 'Personal certificates on computer and server'");
+				NStr("en='Personal certificates on computer and server';ru='Личные сертификаты на компьютере и сервере'");
 		EndIf;
 		
 		ErrorReceivingCertificatesOnClient = Parameters.ErrorReceivingCertificatesOnClient;
@@ -93,7 +93,7 @@ EndProcedure
 Procedure CertificatesNotAvailableOnClientLabelClick(Item)
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en = 'Certificates on computer'"), "", ErrorReceivingCertificatesOnClient, New Structure);
+		NStr("en='Certificates on computer';ru='Сертификаты на компьютере'"), "", ErrorReceivingCertificatesOnClient, New Structure);
 	
 EndProcedure
 
@@ -101,7 +101,7 @@ EndProcedure
 Procedure CertificatesNotAvailableAtServerLabelClick(Item)
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en = 'Certificates on server'"), "", ErrorReceivingCertificatesAtServer, New Structure);
+		NStr("en='Certificates on server';ru='Сертификаты на сервере'"), "", ErrorReceivingCertificatesAtServer, New Structure);
 	
 EndProcedure
 
@@ -168,7 +168,7 @@ EndProcedure
 Procedure Next(Command)
 	
 	If Items.Certificates.CurrentData = Undefined Then
-		ShowMessageBox(, NStr("en = 'Select the certificates to be added.'"));
+		ShowMessageBox(, NStr("en='Select the certificates to be added.';ru='Выделите сертификаты, которые требуется добавить.'"));
 		Return;
 	EndIf;
 	
@@ -176,8 +176,9 @@ Procedure Next(Command)
 	
 	If CurrentData.ThisRequest Then
 		ShowMessageBox(,
-			NStr("en = 'For this certificate a statement for issue is not yet executed.
-			           |Open the statement for the certificate issue and perform the required steps.'"));
+			NStr("en='For this certificate a statement for issue is not yet executed."
+"Open the statement for the certificate issue and perform the required steps.';ru='Для этого сертификата заявление на выпуск еще не исполнено."
+"Откройте заявление на выпуск сертификата и выполните требуемые шаги.'"));
 		UpdateCertificatesList();
 		Return;
 	EndIf;
@@ -200,7 +201,7 @@ Procedure NextAfterCertificateSearch(Result, NotSpecified) Export
 	Context = New Structure;
 	
 	If Result.Property("CertificateNotFound") Then
-		Context.Insert("ErrorDescription", NStr("en = 'Certificate is not found on the computer (may be deleted).'"));
+		Context.Insert("ErrorDescription", NStr("en='Certificate is not found on the computer (may be deleted).';ru='Сертификат не найден на компьютере (возможно удален).'"));
 	Else
 		Context.Insert("ErrorDescription", Result.ErrorDescription);
 	EndIf;
@@ -305,7 +306,7 @@ Procedure ShowPageCertificatePropertiesAdjustment(Form, CryptoCertificate, Certi
 	Items.Pages.CurrentPage  = Items.PageRefinementCertificateProperties;
 	Items.Add.DefaultButton = True;
 	
-	String = ?(ValueIsFilled(Form.Certificate), NStr("en = 'Refresh'"), NStr("en = 'Add'"));
+	String = ?(ValueIsFilled(Form.Certificate), NStr("en='Refresh';ru='Обновить календарь'"), NStr("en='Add';ru='Добавить'"));
 	If Items.Add.Title <> String Then
 		Items.Add.Title = String;
 	EndIf;

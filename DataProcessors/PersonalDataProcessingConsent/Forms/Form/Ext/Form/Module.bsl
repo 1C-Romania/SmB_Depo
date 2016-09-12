@@ -133,14 +133,14 @@ EndProcedure
 Function AgreementPrintData()
 	
 	SharedData = New Structure;
-	SharedData.Insert("ConformityDate", 		?(ValueIsFilled(ConformityDate), Format(ConformityDate, "DLF=DD"), NStr("en = '«____»__________________.'")));
-	SharedData.Insert("Company", 		?(ValueIsFilled(Company), Company, NStr("en = '<Company>'")));
-	SharedData.Insert("CompanyAddress", 	?(ValueIsFilled(CompanyAddress), CompanyAddress, NStr("en = '<Company''s address>'")));
-	SharedData.Insert("ResponsibleForPersonalDataProcessing", ?(ValueIsFilled(ResponsibleForPersonalDataProcessing), ResponsibleForPersonalDataProcessing, NStr("en = '<Responsible person full name>'")));
+	SharedData.Insert("ConformityDate", 		?(ValueIsFilled(ConformityDate), Format(ConformityDate, "DLF=DD"), NStr("en='«____»__________________.';ru='«____»__________________.'")));
+	SharedData.Insert("Company", 		?(ValueIsFilled(Company), Company, NStr("en='<Company>';ru='<Организация>'")));
+	SharedData.Insert("CompanyAddress", 	?(ValueIsFilled(CompanyAddress), CompanyAddress, NStr("en=""<Company's address>"";ru='<Адрес организации>'")));
+	SharedData.Insert("ResponsibleForPersonalDataProcessing", ?(ValueIsFilled(ResponsibleForPersonalDataProcessing), ResponsibleForPersonalDataProcessing, NStr("en='<Responsible person full name>';ru='<ФИО ответственного лица>'")));
 	
 	Subjects = New Array;
 	If AgreementPrintVariant = "DisplayForm" Then
-		Subjects.Add(New Structure("Initials, Address, PassportData", NStr("en = '<Subject full name>'"), NStr("en = '<Subject address>'"), NStr("en = '<Subject passport data>'")));
+		Subjects.Add(New Structure("Initials, Address, PassportData", NStr("en='<Subject full name>';ru='<ФИО субъекта>'"), NStr("en='<Subject address>';ru='<Адрес субъекта>'"), NStr("en='<Subject passport data>';ru='<Паспортные данные субъекта>'")));
 	Else
 		For Each Subject IN PersonalDataSubjects Do
 			SubjectData = New Structure("Initials, Address, PassportData");
@@ -188,8 +188,8 @@ Procedure PrintOfPersonalDataProcessingConsent(PrintManagerName, TemplateName, S
 	EndIf;
 	
 	MessageText = ?(Subjects.Count() > 1, 
-		NStr("en = 'Print forms are being generated...'"),
-		NStr("en = 'Print form is being generated...'"));
+		NStr("en='Print forms are being generated...';ru='Выполняется формирование печатных форм...'"),
+		NStr("en='Print form is being generated...';ru='Выполняется формирование печатной формы...'"));
 	Status(MessageText);
 	
 	TemplateAndObjectData = PrintManagementServerCall.TemplatesAndDataObjectsForPrinting(PrintManagerName, TemplateName, Subjects);
@@ -258,7 +258,7 @@ EndProcedure
 Procedure CheckFormFilling(Cancel)
 	
 	If AgreementPrintVariant = "OutputBySubjects" AND PersonalDataSubjects.Count() = 0 Then
-		MessageText = NStr("en = 'Subjects of personal data are not selected.'");
+		MessageText = NStr("en='Subjects of personal data are not selected.';ru='Субъекты персональных данных не выбраны.'");
 		CommonUseClientServer.MessageToUser(MessageText, , "PersonalDataSubjects", , Cancel);
 	EndIf;
 	

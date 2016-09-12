@@ -7,7 +7,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Not AdditionalProperties.Property("SkipMainFillingCheck") Then
 	
 		If Not OrderNumberIsUnique(FillOrder, Ref) Then
-			ErrorText = NStr("en = 'The filling sequence is not unique - there is already a volume with the same sequence'");
+			ErrorText = NStr("en='The filling sequence is not unique - there is already a volume with the same sequence';ru='Порядок заполнения не уникален - в системе уже есть том с таким порядком'");
 			CommonUseClientServer.MessageToUser(ErrorText, , "FillOrder", "Object", Cancel);
 		EndIf;
 		
@@ -21,13 +21,13 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			CurrentSize = CurrentSizeInBytes / (1024 * 1024);
 			
 			If MaximumSize < CurrentSize Then
-				ErrorText = NStr("en = 'The maximum size of the volume is less than the current size'");
+				ErrorText = NStr("en='The maximum size of the volume is less than the current size';ru='Максимальный размер тома меньше, чем текущий размер'");
 				CommonUseClientServer.MessageToUser(ErrorText, , "MaximumSize", "Object", Cancel);
 			EndIf;
 		EndIf;
 		
 		If IsBlankString(FullPathWindows) AND IsBlankString(FullPathLinux) Then
-			ErrorText = NStr("en = 'The full path is not filled'");
+			ErrorText = NStr("en='The full path is not filled';ru='Не заполнен полный путь'");
 			CommonUseClientServer.MessageToUser(ErrorText, , "FullPathWindows", "Object", Cancel);
 			CommonUseClientServer.MessageToUser(ErrorText, , "FullPathLinux",   "Object", Cancel);
 			Return;
@@ -38,7 +38,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		   AND (    Left(FullPathWindows, 2) <> "\\"
 		      OR Find(FullPathWindows, ":") <> 0 ) Then
 			
-			ErrorText = NStr("en = 'Path to the volume must be in the UNC format (\\servername\resource).'");
+			ErrorText = NStr("en='Path to the volume must be in the UNC format (\\servername\resource).';ru='Путь к тому должен быть в формате UNC (\\servername\resource).'");
 			CommonUseClientServer.MessageToUser(ErrorText, , "FullPathWindows", "Object", Cancel);
 			Return;
 		EndIf;

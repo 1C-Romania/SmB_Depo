@@ -7,8 +7,8 @@ Procedure GenerateTableInventory(DocumentRefExpenseReport, StructureAdditionalPr
 	
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
-	Query.SetParameter("InventoryReceipt", NStr("en = 'Inventory receiving'"));
-	Query.SetParameter("OtherExpenses", NStr("en = 'Other expenses'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Other expenses';ru='Прочих затраты (расходы)'"));
 	
 	Query.Text =
 	"SELECT
@@ -153,8 +153,8 @@ Procedure GenerateAdvanceHolderPaymentsTable(DocumentRefExpenseReport, Structure
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("RepaymentOfAdvanceHolderDebt", NStr("en = 'Repayment of advance holder debt'"));
-	Query.SetParameter("ExchangeDifference", NStr("en = 'Exchange rate difference'"));
+	Query.SetParameter("RepaymentOfAdvanceHolderDebt", NStr("en='Repayment of advance holder debt';ru='Погашение долга подотчетника'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -564,7 +564,7 @@ Procedure GenerateTableAccountsPayable(DocumentRefExpenseReport, StructureAdditi
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("VendorObligationsRepayment", "Repayment of obligations to vendor");
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -688,8 +688,8 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefExpenseReport, StructureAddi
 	Query.SetParameter("Ref", DocumentRefExpenseReport);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("ExchangeDifference", NStr("en = 'Exchange rate difference'"));
-	Query.SetParameter("OtherExpenses", NStr("en = 'Expenses reflection'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Expenses reflection';ru='Отражение затрат'"));
 	
 	Query.Text =
 	"SELECT
@@ -1245,10 +1245,10 @@ Procedure GenerateTableManagerial(DocumentRefExpenseReport, StructureAdditionalP
 
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
-	Query.SetParameter("ExchangeDifference", NStr("en = 'Exchange rate difference'"));
-	Query.SetParameter("InventoryReceipt", NStr("en = 'Inventory receiving'"));
-	Query.SetParameter("VendorsPayment", NStr("en = 'Payment to vendor'"));
-	Query.SetParameter("OtherExpenses", NStr("en = 'Other expenses'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("VendorsPayment", NStr("en='Payment to vendor';ru='Оплата поставщику'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Other expenses';ru='Прочих затраты (расходы)'"));
 	
 	Query.Text =
 	"SELECT
@@ -1747,8 +1747,8 @@ Procedure InitializeDocumentData(DocumentRefExpenseReport, StructureAdditionalPr
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
-	Query.SetParameter("InventoryReceipt", NStr("en = 'Inventory receiving'"));
-	Query.SetParameter("OtherExpenses", NStr("en = 'Expenses reflection'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Expenses reflection';ru='Отражение затрат'"));
 	Query.SetParameter("IncomeAndExpensesAccountingCashMethod", StructureAdditionalProperties.AccountingPolicy.IncomeAndExpensesAccountingCashMethod);
 	
 	Query.Text =
@@ -2836,7 +2836,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			Amount = ?(InForeignCurrency, 
 						Round(Payments.PaymentAmount * Header.ExchangeRate / Header.Multiplicity, 2), 
 							Payments.PaymentAmount);
-			TemplateArea.Parameters.ExpeditureName = NStr("en = 'Payment to counterparty '") + Payments.Counterparty;
+			TemplateArea.Parameters.ExpeditureName = NStr("en='Payment to counterparty ';ru='Оплата контрагенту '") + Payments.Counterparty;
 			
 			TemplateArea.Parameters.ByReport = Amount;
 			TemplateArea.Parameters.ByAccounting  = Amount;
@@ -2916,7 +2916,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// ExpenseReport
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "ExpenseReport";
-	PrintCommand.Presentation = NStr("en = 'Expense report'");
+	PrintCommand.Presentation = NStr("en='Expense report';ru='Авансовый отчет'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
@@ -2924,7 +2924,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// ExpenseReport (in currency)
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "ExpenseReportInCurrency";
-	PrintCommand.Presentation = NStr("en = 'Expense report (cur.)'");
+	PrintCommand.Presentation = NStr("en='Expense report (cur.)';ru='Авансовый отчет (упр.)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;

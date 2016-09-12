@@ -34,7 +34,7 @@ Procedure ExecuteConnectedPrintCommandPrintingObjectsPreparation(AdditionalParam
 	EndIf;
 	
 	If PrintObjects.Count() = 0 Then
-		Raise NStr("en = 'Command can not be executed for the specified object'")
+		Raise NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'")
 	EndIf;
 	
 	If AdditionalParameters.CommandDetails.PrintingObjectsTypes.Count() <> 0 Then // type check is required
@@ -126,15 +126,15 @@ Procedure CheckDocumentsPostingPostingDialog(Parameters) Export
 	
 	If PrintManagementServerCall.PostingRightAvailable(Parameters.UnpostedDocuments) Then
 		If Parameters.UnpostedDocuments.Count() = 1 Then
-			QuestionText = NStr("en = 'To print a document, you need to post it first. Do you want to post the document and continue?'");
+			QuestionText = NStr("en='To print a document, you need to post it first. Do you want to post the document and continue?';ru='Для того чтобы распечатать документ, его необходимо предварительно провести. Выполнить проведение документа и продолжить?'");
 		Else
-			QuestionText = NStr("en = 'To print documents, you need to post them first. Do you want to post the documents and continue?'");
+			QuestionText = NStr("en='To print documents, you need to post them first. Do you want to post the documents and continue?';ru='Для того чтобы распечатать документы, их необходимо предварительно провести. Выполнить проведение документов и продолжить?'");
 		EndIf;
 	Else
 		If Parameters.UnpostedDocuments.Count() = 1 Then
-			WarningText = NStr("en = 'To print a document, you need to post it first. You have no right to post document, printing is unavailable.'");
+			WarningText = NStr("en='To print a document, you need to post it first. You have no right to post document, printing is unavailable.';ru='Для того чтобы распечатать документ, его необходимо предварительно провести. Недостаточно прав для проведения документа, печать невозможна.'");
 		Else
-			WarningText = NStr("en = 'To print documents, you need to post them first. You have no right to post documents, printing is unavailable.'");
+			WarningText = NStr("en='To print documents, you need to post them first. You have no right to post documents, printing is unavailable.';ru='Для того чтобы распечатать документы, их необходимо предварительно провести. Недостаточно прав для проведения документов, печать невозможна.'");
 		EndIf;
 		ShowMessageBox(, WarningText);
 		Return;
@@ -153,7 +153,7 @@ Procedure CheckDocumentsPostingDocumentsPosting(QuestionResult, AdditionalParame
 	
 	ClearMessages();
 	DataAboutUnpostedDocuments = CommonUseServerCall.PostDocuments(AdditionalParameters.UnpostedDocuments);
-	MessagePattern = NStr("en = '%1 document is not posted: %2'");
+	MessagePattern = NStr("en='%1 document is not posted: %2';ru='Документ %1 не проведен: %2'");
 	UnpostedDocuments = New Array;
 	For Each InformationAboutDocument IN DataAboutUnpostedDocuments Do
 		CommonUseClientServer.MessageToUser(
@@ -186,12 +186,12 @@ Procedure CheckDocumentsPostingDocumentsPosting(QuestionResult, AdditionalParame
 		
 	If UnpostedDocuments.Count() > 0 Then
 		// Ask a user if they need to continue printing when there are unposted documents.
-		DialogText = NStr("en = 'Failed to post one or several documents.'");
+		DialogText = NStr("en='Failed to post one or several documents.';ru='Не удалось провести один или несколько документов.'");
 		
 		DialogButtons = New ValueList;
 		If PostedDocuments.Count() > 0 Then
-			DialogText = DialogText + " " + NStr("en = 'Continue?'");
-			DialogButtons.Add(DialogReturnCode.Ignore, NStr("en = 'Continue'"));
+			DialogText = DialogText + " " + NStr("en='Continue?';ru='Продолжить?'");
+			DialogButtons.Add(DialogReturnCode.Ignore, NStr("en='Continue';ru='Продолжить'"));
 			DialogButtons.Add(DialogReturnCode.Cancel);
 		Else
 			DialogButtons.Add(DialogReturnCode.OK);
@@ -252,7 +252,7 @@ EndFunction
 //
 Procedure ShowQuestionAboutFileOperationsExtensionSetting(NOTifyDescription) Export
 	#If WebClient Then
-		MessageText = NStr("en = 'To continue printing, you need to set an extension for 1C:Enterprise web client.'");
+		MessageText = NStr("en='To continue printing, you need to set an extension for 1C:Enterprise web client.';ru='Для продолжения печати необходимо установить расширение для веб-клиента 1С:Предприятие.'");
 		CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(NOTifyDescription, MessageText, False);
 		Return;
 	#EndIf

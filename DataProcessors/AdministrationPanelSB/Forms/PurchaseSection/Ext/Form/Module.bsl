@@ -247,14 +247,19 @@ Function CancellationUncheckUsePurchaseOrderStates()
 	Result = Query.Execute();
 	If Not Result.IsEmpty() Then
 		
-		ErrorText = NStr(
-			"en = 'There are Purchase order documents with the Open and/or Executed (not closed) status in the base!
-			|Disabling the option is prohibited!
-			|Note:
-			|If there are documents in the state with
-			|the status ""Open"", set them to state with the status ""In progress""
-			|or ""Executed (closed)"" If there are documents in the state
-			|with the status ""Executed (not closed)"", then set them to state with the status ""Executed (closed)"".'"
+		ErrorText = NStr("en='There are Purchase order documents with the Open and/or Executed (not closed) status in the base!"
+"Disabling the option is prohibited!"
+"Note:"
+"If there are documents in the state with"
+"the status ""Open"", set them to state with the status ""In progress"""
+"or ""Executed (closed)"" If there are documents in the state"
+"with the status ""Executed (not closed)"", then set them to state with the status ""Executed (closed)"".';ru='В базе есть документы ""Заказ поставщику"" в состоянии со статусом ""Открыт"" и/или ""Выполнен (не закрыт)""!"
+"Снятие опции запрещено!"
+"Примечание:"
+"Если есть документы в"
+"состоянии со статусом ""Открыт"", то установите для них состояние со"
+"статусом ""В работе"" или ""Выполнен (закрыт)"" Если есть документы"
+"в состоянии со статусом ""Выполнен (не закрыт)"", то установите для них состояние со статусом ""Выполнен (закрыт)"".'"
 		);
 		
 	EndIf;
@@ -286,7 +291,7 @@ Function CancellationUncheckAccountingBySeveralWarehouses()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'Wharehouses different from the main warehouse are used in data base! Disabling the option is prohibited!'");
+		ErrorText = NStr("en='Wharehouses different from the main warehouse are used in data base! Disabling the option is prohibited!';ru='В базе используются склады, отличные от основного! Снятие опции запрещено!'");
 		
 	EndIf;
 	
@@ -314,7 +319,7 @@ Function CancellationUncheckFunctionalOptionAccountingInVariousUOM()
 		
 		If RefsTable.Count() > 0 Then
 			
-			ErrorText = NStr("en = 'Documents with users MOUs are entered in the application! Disabling the option is prohibited!'");
+			ErrorText = NStr("en='Documents with users MOUs are entered in the application! Disabling the option is prohibited!';ru='В приложении введены документы в пользовательских единицах измерения! Снятие опции запрещено!'");
 			Break;
 			
 		EndIf;
@@ -346,7 +351,7 @@ Function CancellationUncheckFunctionalOptionTransferInventoryOnSafeCustody()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'Accumulation register ""Inventory transferred"" contains information about the transfer to safe custody. The flag removal is prohibited!'");
+		ErrorText = NStr("en='Accumulation register ""Inventory transferred"" contains information about the transfer to safe custody. The flag removal is prohibited!';ru='Регистр накопления ""Запасы переданные"" содержит информацию о передаче на ответхранение! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -373,7 +378,7 @@ Function CancellationUncheckFunctionalOptionTakingInventoryOnResponsibleStorage(
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'The Inventory received accumulation register contains information on the safe custody acceptance. The flag removal is prohibited!'");
+		ErrorText = NStr("en='The Inventory received accumulation register contains information on the safe custody acceptance. The flag removal is prohibited!';ru='Регистр накопления ""Запасы принятые"" содержит информацию о приеме на ответхранение! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -400,7 +405,7 @@ Function CancellationUncheckFunctionalOptionUseOrderWarehouse()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'There are order warehouses in the base! The flag removal is prohibited!'");
+		ErrorText = NStr("en='There are order warehouses in the base! The flag removal is prohibited!';ru='В базе присутствуют ордерные склады! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -425,7 +430,7 @@ Function CancellationUncheckFunctionalOptionUseOrderWarehouse()
 	If Not QueryResultInventoryForWarehouses.IsEmpty()
 		OR Not QueryResultInventoryFromWarehouses.IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are order warehouse movements in the base. The flag removal is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are order warehouse movements in the base. The flag removal is prohibited!';ru='В базе присутствуют движения по ордерному складу! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -452,7 +457,7 @@ Function CancellationUncheckFunctionalOptionInventoryReservation()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'There is an information about reserves in the base! The flag removal is prohibited!'");
+		ErrorText = NStr("en='There is an information about reserves in the base! The flag removal is prohibited!';ru='В базе содержится информация о резервах! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -479,7 +484,7 @@ Function CancellationUncheckFunctionalOptionAccountingByCells()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'There are cell movements in the base. The flag removal is prohibited!'");
+		ErrorText = NStr("en='There are cell movements in the base. The flag removal is prohibited!';ru='В базе содержатся движения по ячейкам! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -576,7 +581,7 @@ Function CancellationUncheckFunctionalOptionUseCharacteristics()
 	
 	If AreRecords Then
 		
-		ErrorText = NStr("en = 'There are charachteristic movements in the base. The flag removal is prohibited!'");
+		ErrorText = NStr("en='There are charachteristic movements in the base. The flag removal is prohibited!';ru='В базе есть движения по характеристикам! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -664,21 +669,21 @@ Function CancellationUncheckFunctionalOptionUseBatches()
 	
 	If AreRecords Then
 		
-		ErrorText = NStr("en = 'There are batch movements in the base. The flag removal is prohibited!'");
+		ErrorText = NStr("en='There are batch movements in the base. The flag removal is prohibited!';ru='В базе есть движения по партиям! Снятие флага запрещено!'");
 		
 	EndIf;
 	
 	If GetFunctionalOption("ReceiveProductsOnCommission") Then
 		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + 
-			NStr("en = 'Option ""Goods accepted on commission"" is enabled (Sales section)! The flag removal is prohibited!'");
+			NStr("en='Option ""Goods accepted on commission"" is enabled (Sales section)! The flag removal is prohibited!';ru='Включена опция ""Прием товаров на комиссию"" (раздел Продажи)! Снятие флага запрещено!'");
 		
 	EndIf;
 	
 	If GetFunctionalOption("Tolling") Then
 		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + 
-			NStr("en = 'Option ""Tolling"" is enabled (Production section)! The flag removal is prohibited!'");
+			NStr("en='Option ""Tolling"" is enabled (Production section)! The flag removal is prohibited!';ru='Включена опция ""Переработка давальческого сырья"" (раздел Производство)! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -705,7 +710,7 @@ Function CancellationUncheckFunctionalOptionTransferRawMaterialsForProcessing()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'Accumulation register ""Inventory transferred"" contains information about the transfer to processing. The flag removal is prohibited!'");	
+		ErrorText = NStr("en='Accumulation register ""Inventory transferred"" contains information about the transfer to processing. The flag removal is prohibited!';ru='Регистр накопления ""Запасы переданные"" содержит информацию о передаче в переработку! Снятие флага запрещено!'");	
 		
 	EndIf;
 	
@@ -743,7 +748,7 @@ Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 		If Not ConstantsSet.UsePurchaseOrderStates
 			AND Not ValueIsFilled(ConstantsSet.PurchaseOrdersInProgressStatus) Then
 			
-			ErrorText = NStr("en = '""Use several purchase order statuses"" flag is removed, but the purchase order status ""In process"" parameter is not filled!'");
+			ErrorText = NStr("en='""Use several purchase order statuses"" flag is removed, but the purchase order status ""In process"" parameter is not filled!';ru='Снят флаг ""Использовать несколько состояний заказов поставщикам"", но не заполнен параматр состояния заказа поставщику ""В работе""!'");
 			
 			Result.Insert("Field", 				AttributePathToData);
 			Result.Insert("ErrorText", 		ErrorText);
@@ -759,7 +764,7 @@ Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 		If Not ConstantsSet.UsePurchaseOrderStates
 			AND Not ValueIsFilled(ConstantsSet.PurchaseOrdersCompletedStatus) Then
 			
-			ErrorText = NStr("en = '""Use several purchase order statuses"" flag is removed, but the purchase order status ""Executed"" parameter is not filled!'");
+			ErrorText = NStr("en='""Use several purchase order statuses"" flag is removed, but the purchase order status ""Executed"" parameter is not filled!';ru='Снят флаг ""Использовать несколько состояний заказов поставщикам"", но не заполнен параматр состояния заказа поставщику ""Выполнен""!'");
 			
 			Result.Insert("Field", 				AttributePathToData);
 			Result.Insert("ErrorText", 		ErrorText);

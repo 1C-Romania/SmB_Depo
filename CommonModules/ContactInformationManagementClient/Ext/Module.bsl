@@ -355,19 +355,19 @@ Procedure CreateEmail(Val FieldsValues, Val Presentation = "", ExpectedKind = Un
 		
 	InformationType = ContactInformation.ContactInformationType;
 	If InformationType <> PredefinedValue("Enum.ContactInformationTypes.EmailAddress") Then
-		Raise StrReplace(NStr("en = 'You can not create email by contact information with the type ""%1""'"),
+		Raise StrReplace(NStr("en='You can not create email by contact information with the type ""%1""';ru='Нельзя создать письмо по контактной информацию с типом ""%1""'"),
 			"%1", InformationType);
 	EndIf;
 	
 	If FieldsValues = "" AND IsBlankString(Presentation) Then
-		ShowMessageBox(,NStr("en = 'Enter an email address to send the email.'"));
+		ShowMessageBox(,NStr("en='Enter an email address to send the email.';ru='Для отправки письма необходимо ввести адрес электронной почты.'"));
 		Return;
 	EndIf;
 	
 	XMLData = ContactInformation.DataXML;
 	MailAddress = ContactInformationManagementServiceServerCall.RowCompositionContactInformation(XMLData);
 	If TypeOf(MailAddress) <> Type("String") Then
-		Raise NStr("en = 'Error of the email address obtaining, incorrect type of the contact details'");
+		Raise NStr("en='Error of the email address obtaining, incorrect type of the contact details';ru='Ошибка получения адреса электронной почты, неверный тип контактной информации'");
 	EndIf;
 	
 	If CommonUseClient.SubsystemExists("StandardSubsystems.EmailOperations") Then
@@ -380,7 +380,7 @@ Procedure CreateEmail(Val FieldsValues, Val Presentation = "", ExpectedKind = Un
 	
 	// No email subsystem, run the system one.
 	Notification = New NotifyDescription("CreateEmailByContactInformationEnd", ThisObject, MailAddress);
-	SuggestionText = NStr("en = 'To send email, you should install extension for work with files.'");
+	SuggestionText = NStr("en='To send email, you should install extension for work with files.';ru='Для отправки письма необходимо установить расширение для работы с файлами.'");
 	CommonUseClient.CheckFileOperationsExtensionConnected(Notification, SuggestionText);
 	
 EndProcedure
@@ -401,7 +401,7 @@ Procedure GotoWebLink(Val FieldsValues, Val Presentation = "", ExpectedKind = Un
 	InformationType = ContactInformation.ContactInformationType;
 	
 	If InformationType <> PredefinedValue("Enum.ContactInformationTypes.WebPage") Then
-		Raise StrReplace(NStr("en = 'Cannot open a reference by contact information of type ""%1""'"),
+		Raise StrReplace(NStr("en='Cannot open a reference by contact information of type ""%1""';ru='Нельзя открыть ссылку по контактной информации с типом ""%1""'"),
 			"%1", InformationType);
 	EndIf;
 		
@@ -409,7 +409,7 @@ Procedure GotoWebLink(Val FieldsValues, Val Presentation = "", ExpectedKind = Un
 
 	RefAddress = ContactInformationManagementServiceServerCall.RowCompositionContactInformation(XMLData);
 	If TypeOf(RefAddress) <> Type("String") Then
-		Raise NStr("en = 'Error of the link receiving, invalid type of contact information'");
+		Raise NStr("en='Error of the link receiving, invalid type of contact information';ru='Ошибка получения ссылки, неверный тип контактной информации'");
 	EndIf;
 	
 	If Find(RefAddress, "://") > 0 Then
@@ -713,8 +713,8 @@ Procedure FillAddress(Val Form, Val AttributeName, Val FoundString, Val Result)
 	AddressesForFilling = ContactInformationManagementServiceServerCall.AddressesAvailableForCopying(FieldsForAnalysisValues, FoundString.Kind);
 		
 	If AddressesForFilling.Count() = 0 Then
-		ShowMessageBox(, NStr("en = 'Not to type an address several times, you can copy and paste the typed value into the field.'")
-			,, NStr("en = 'Copying an address'"));
+		ShowMessageBox(, NStr("en='Not to type an address several times, you can copy and paste the typed value into the field.';ru='Для того чтобы не вводить один и тот же адрес несколько раз, можно скопировать в это поле значение, ранее введенное в соседнем поле.'")
+			,, NStr("en='Copying an address';ru='Копирование адреса'"));
 		Return;
 	EndIf;
 	
@@ -762,7 +762,7 @@ Procedure EnterComment(Val Form, Val AttributeName, Val FoundString, Val Result)
 	Notification.AdditionalParameters.Insert("Result", Result);
 	
 	CommonUseClient.ShowMultilineTextEditingForm(Notification, Comment, 
-		NStr("en = 'Comment'"));
+		NStr("en='Comment';ru='Примечание'"));
 EndProcedure
 
 // End a modeless dialog.

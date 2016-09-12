@@ -337,7 +337,7 @@ Procedure SubordinatedInvoiceControl()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Order vendor # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -528,7 +528,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 	If TypeOf(FillingData) = Type("CatalogRef.Counterparties") Then
 		
 		If FillingData.IsFolder Then
-			Raise NStr("en = 'Unable to select counterparty group.'");
+			Raise NStr("en='Unable to select counterparty group.';ru='Нельзя выбирать группу контрагентов.'");
 		EndIf;
 		
 		Counterparty = FillingData;
@@ -708,7 +708,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 			If StringMaterials.Reserve > 0 AND Not ValueIsFilled(StructuralUnitReserve) Then
 				
-				MessageText = NStr("en = 'The reserve warehouse is not filled.'");
+				MessageText = NStr("en='The reserve warehouse is not filled.';ru='Не заполнен склад резерва.'");
 				SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "StructuralUnitReserve", Cancel);
 				
 			EndIf;
@@ -738,7 +738,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	   AND PaymentCalendar.Count() = 1
 	   AND Not ValueIsFilled(PaymentCalendar[0].PayDate) Then
 		
-		MessageText = NStr("en = 'Field ""Payment date"" is required.'");
+		MessageText = NStr("en='Field ""Payment date"" is required.';ru='Поле ""Дата оплаты"" не заполнено.'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "PayDate", Cancel);
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentCalendar.PaymentDate");
 		
@@ -751,7 +751,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 			If StringMaterials.Reserve > StringMaterials.Quantity Then
 				
-				MessageText = NStr("en = 'In string No.%Number% of tabular section ""Recycling materials"" quantity of the write-off positions from reserve exceeds the total materials.'");
+				MessageText = NStr("en='In string No.%Number% of tabular section ""Recycling materials"" quantity of the write-off positions from reserve exceeds the total materials.';ru='В строке №%Номер% табл. части ""Материалы в переработку"" количество позиций к списанию из резерва превышает общее количество материалов.'");
 				MessageText = StrReplace(MessageText, "%Number%", StringMaterials.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -771,7 +771,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Not Constants.UsePurchaseOrderStates.Get() Then
 		
 		If Not ValueIsFilled(OrderState) Then
-			MessageText = NStr("en = 'Field ""Order state"" is not filled. IN the accounting parameters settings it is necessary to install the statuses values.'");
+			MessageText = NStr("en='Field ""Order state"" is not filled. IN the accounting parameters settings it is necessary to install the statuses values.';ru='Поле ""Состояние заказа"" не заполнено. В настройках параметров учета необходимо установить значения состояний.'");
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "OrderState", Cancel);
 		EndIf;
 		

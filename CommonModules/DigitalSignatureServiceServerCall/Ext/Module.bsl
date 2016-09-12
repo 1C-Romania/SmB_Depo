@@ -143,7 +143,7 @@ Function ExecuteOnServerSide(Val Parameters, ResultAddress, OperationBegan, Erro
 					Parameters.FormID, ObjectVersioning);
 			Except
 				ErrorInfo = ErrorInfo();
-				ErrorOnServer.Insert("ErrorDescription", NStr("en = 'An error occurred writing a signature:'")
+				ErrorOnServer.Insert("ErrorDescription", NStr("en='An error occurred writing a signature:';ru='При записи подписи возникла ошибка:'")
 					+ Chars.LF + BriefErrorDescription(ErrorInfo));
 				Return False;
 			EndTry;

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -106,6 +176,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>STATEMENT</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Квитанция</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -122,6 +196,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Ticket SBBOL:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тикет СББОЛ:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -151,6 +229,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Ticket creation date:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата создания квитка:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -173,6 +255,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document state code:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код состояния документа:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -197,6 +283,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company identifier</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор организации:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -219,6 +309,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document ID:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор документа:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -243,6 +337,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank dates:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банковские даты:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -259,6 +357,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Debiting from the payer account date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата списания со счета плательщика:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -283,6 +385,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Data of placement to the card file:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата постановки в картотеку:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -305,6 +411,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of the payer bank check</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата отметки банком плательщика:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -329,6 +439,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of receipt to the payer's bank:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата поступления в банк плательщика:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -351,6 +465,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payment transfer date:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата перечисления платежа:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -375,6 +493,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of the recipient bank check:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата отметки банка получателя:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -397,6 +519,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Message from bank:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сообщение из банка:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -413,6 +539,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Author of message</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автор сообщения:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -436,6 +566,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Message text:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текст сообщения:</v8:content>
 						</v8:item>
 					</tl>
 				</c>

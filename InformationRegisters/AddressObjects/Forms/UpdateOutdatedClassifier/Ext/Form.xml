@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Update outdated address classifier</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Актуализация адресного классификатора</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -22,11 +26,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<PagesRepresentation>None</PagesRepresentation>
@@ -38,11 +50,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Choice page</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница выбора</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Choice page</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница выбора</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="ChoicePageExtendedTooltip" id="19"/>
@@ -58,6 +78,10 @@
 									<v8:content>Changes were made to address classifier according to Federal law from 28.12.2013 No 443-FL &lt;link http://fias.nalog.ru/&gt; "On federal information address system and on making changes in the Federal Law "On common principles of organization of local selfgovernment in the Russian Federation"&lt;/&gt;. 
 
 For changes to take effect choose one of the variants:</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>В адресный классификатор были внесены изменения согласно Федеральному закону от 28.12.2013 № 443-ФЗ «О федеральной информационной адресной системе и о внесении изменений в Федеральный закон «Об общих принципах организации местного самоуправления в Российской Федерации».   Для того чтобы эти изменения вступили в силу, выберите один из вариантов:</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="LabelHeaderContextMenu" id="31"/>
@@ -78,6 +102,10 @@ For changes to take effect choose one of the variants:</v8:content>
 												<v8:lang>en</v8:lang>
 												<v8:content>Refresh address information through the Internet (recommended)</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Обновить адресные сведения через Интернет (рекомендуется)</v8:content>
+											</v8:item>
 										</Presentation>
 										<Value xsi:type="xs:decimal">0</Value>
 									</xr:Value>
@@ -90,6 +118,10 @@ For changes to take effect choose one of the variants:</v8:content>
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>Convert previously imported data without connecting to the Internet</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Преобразовать ранее загруженные данные без подключения к Интернету</v8:content>
 											</v8:item>
 										</Presentation>
 										<Value xsi:type="xs:decimal">1</Value>
@@ -109,6 +141,11 @@ For changes to take effect choose one of the variants:</v8:content>
 									<v8:content>You need to update the address information only once while upgrading the application version.
 After completing updates autofit and correctness checking of addresses will be available again.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Обновление адресных сведений необходимо произвести только один раз, при переходе с предыдущей версии программы.
+После завершения обновления автоподбор и проверка корректности адресов будут снова доступны.</v8:content>
+								</v8:item>
 							</Title>
 							<VerticalAlign>Bottom</VerticalAlign>
 							<ContextMenu name="ExplanationContextMenu" id="14"/>
@@ -122,11 +159,19 @@ After completing updates autofit and correctness checking of addresses will be a
 							<v8:lang>en</v8:lang>
 							<v8:content>Long operation page</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница длительной операции</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Long operation page</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница длительной операции</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="LongOperationPageExtendedTooltip" id="21"/>
@@ -136,6 +181,10 @@ After completing updates autofit and correctness checking of addresses will be a
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group long operation output</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа вывод длительной операции</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -151,6 +200,10 @@ After completing updates autofit and correctness checking of addresses will be a
 											<v8:lang>en</v8:lang>
 											<v8:content>Durable operation picture</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка длительной операции</v8:content>
+										</v8:item>
 									</Title>
 									<Picture>
 										<xr:Ref>CommonPicture.LongOperation48</xr:Ref>
@@ -165,6 +218,10 @@ After completing updates autofit and correctness checking of addresses will be a
 											<v8:lang>en</v8:lang>
 											<v8:content>Running data update of address classifier...
 Update can take a long time which depends on the number of imported subjects of Russian Federation.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Выполняется обновление данных адресного классификатора... Обновление может занять длительное время, которое зависит от количества загруженных регионов Российской Федерации.</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -203,6 +260,10 @@ Update can take a long time which depends on the number of imported subjects of 
 					<v8:lang>en</v8:lang>
 					<v8:content>Required to update the address classifier</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Необходимо актуализировать адресный классификатор</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -219,6 +280,10 @@ Update can take a long time which depends on the number of imported subjects of 
 					<v8:lang>en</v8:lang>
 					<v8:content>Background job ID</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор фонового задания</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:UUID</v8:Type>
@@ -232,11 +297,19 @@ Update can take a long time which depends on the number of imported subjects of 
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>OK</Action>
@@ -247,11 +320,19 @@ Update can take a long time which depends on the number of imported subjects of 
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Cancel</Action>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -133,6 +203,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>CONTROL THE CORRECTRESS OF ACCOUNTING</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КОНТРОЛЬ ПРАВИЛЬНОСТИ УЧЕТА</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -157,6 +231,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>This service data processor allows you to detect and correct accounting errors and inaccuracies in automatic mode.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данная сервисная обработка позволяет выявлять и исправлять в автоматическом режиме ошибки и неточности, допущенные в ходе ведения учета.</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -288,6 +366,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Final report</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Финальный отчет</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -486,6 +568,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Found not credited advances in previous periods. Automatic correction is not available.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обнаружены незачтенные авансы в прошлых периодах. Автоматическое исправление невозможно.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -534,6 +620,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Failed to offset the advances completely, it is requied to analyze the state of calculations and correct them in manual mode.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Не удалось полностью зачесть авансы, необходимо проанализировать состояние расчетов и исправить в ручном режиме.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -562,6 +652,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Go to section: [Section]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Перейти к разделу: [Раздел]</v8:content>
 						</v8:item>
 					</tl>
 					<detailParameter>GoToNextSection</detailParameter>
@@ -628,6 +722,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Execution error</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибка выполнения</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -680,6 +778,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Incorrect data not found in the given section .</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По данному разделу некорректных данных не обнаружено.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -702,6 +804,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>There were detected the incorrect exchange rates on petty cashes / accounts as follows:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Были обнаружены некорректные курсовые разницы по следующим кассам / счетам:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -768,6 +874,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Incorrect exchange rate difference in calculations with the following buyers were detected:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Были обнаружены некорректные курсовые разницы по расчетам со следующими поставщиками:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -832,6 +942,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Incorrect exchange rate difference in calculations with the following buyers were detected:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Были обнаружены некорректные курсовые разницы по расчетам со следующими поставщиками:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -898,6 +1012,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>To make correction, it is necessary to repost the documents consistently.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для исправления необходимо последовательно перепровести документы.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -949,6 +1067,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>To correct the exchange rate differencies, the documents were reposted.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Было выполнено перепроведение документов для корректировки курсовых разниц.</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>Counterparty</detailParameter>
 				</c>
@@ -989,6 +1111,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>To correct the differencies of exchange rates, the documents were reposted, but errors were not corrected completely.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Было выполнено перепроведение документов для корректировки курсовых разниц, однако ошибки полностью не исправлены.</v8:content>
 						</v8:item>
 					</tl>
 					<detailParameter>Counterparty</detailParameter>
@@ -1224,6 +1350,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Incorrect data not found in the given section .</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По данному разделу некорректных данных не обнаружено.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1275,6 +1405,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Errors on the accounting section were not corrected.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибки по данному разделу учета не исправлялись.</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1328,6 +1462,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Correcting errors is complete.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выполнено исправление ошибок.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1380,6 +1518,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Errors in the accounting section is not fixed completely.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибки по данному разделу учета исправлены не полностью.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1431,6 +1573,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Analysis was not performed.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Анализ не выполнялся.</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1637,6 +1783,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Balances of uncharged advances in terms of settlements with suppliers will be checked.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Будет выполнена проверка остатков незачтенных авансов в части расчетов с поставщиками.			</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1653,6 +1803,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Balances of uncharged advances in terms of settlements with buyers will be checked.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Будет выполнена проверка остатков незачтенных авансов в части расчетов с покупателями.			</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1671,6 +1825,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Flows related to rate difference accruals for the reported period will be done.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Будет выполнена проверка движений по начислению курсовых разниц.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1688,6 +1846,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Checking data will be done regarding the section "Production". First, it will be checked if the accounting system contains any products, for which the default specification is not defined. After analysis of the first subsection subordinate topics will become available.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Будет выполнена проверка данных касательно раздела "Производство". Первым будет проверено, нет ли в учетной системе продукции, для которой не указана спецификация по умолчанию. После анализа первого подраздела станут доступны подчиненные ему подразделы.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1704,6 +1866,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The procurement prices in the supplier invoices for the current month will be compared to the previous receipts. Only receipts of "InventoryItem" type stock-items will be minitored.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Будет выполнено сравнение закупочных цен в приходных накладных за текущий месяц с предыдущими поступлениями. Проконтролированы будут только поступления номенклатуры с типом "Запас".</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1737,6 +1903,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Check of the mismatch between counterparties and companies contracts in documents posted in the current period and contracts and companies in subordinate documents will be done. IN addition if the data exchange with accounting is enabled, the companies in the document and in the contract will be matched and monitored.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Будет выполнена проверка на несовпадение договоров контрагентов и организаций в документах, проведенных в текущем периоде, с договорами и организациями в подчиненных документах. Кроме того, если настроен обмен с бухгалтерией, будет выполняться контроль совпадения организаций в документе и в договоре.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1769,6 +1939,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>The cash assets transfers (payments and receipts) will be matched with the cashflow items groups.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Будет выполнена проверка соответствия движений ДС (платежей и поступлений) группам статей движения денежных средств.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1800,6 +1974,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Detailed description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подробное описание</v8:content>
 						</v8:item>
 					</tl>
 					<detailParameter>OpenDescriptionDetailsParameter</detailParameter>
@@ -1839,6 +2017,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Analyze data in current accounting section</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выполнить анализ данных по текущему разделу учета</v8:content>
 						</v8:item>
 					</tl>
 					<detailParameter>DetailRunDataAnalysis</detailParameter>
@@ -1883,6 +2065,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>COMPLETION...</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЗАВЕРШЕНИЕ ...</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1987,6 +2173,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Corrections in the given section last time were made on [ExecutionDate]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исправлевния по данному разделу последний раз выполнялись [ДатаВыполнения]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2064,6 +2254,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Companies in the document and the contract are different</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Различаются орагнизации в документе и договоре</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>CompaniesInHeaderAndContractDifferences</detailParameter>
 				</c>
@@ -2105,6 +2299,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Contract:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Договор:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2129,6 +2327,12 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Companies in the header and contract are different</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Различаются органиации в шапке и договоре				
+				
+				</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2151,6 +2355,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company in the contract:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация в договоре:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2187,6 +2395,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company in the document:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Орагнизация в документе:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2226,6 +2438,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Companies or contracts in subordinate documents are different</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Различаются орагнизации или договора в подчиненных документах</v8:content>
 						</v8:item>
 					</tl>
 					<detailParameter>DifferencesSubordinateDocument</detailParameter>
@@ -2308,6 +2524,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Refresh data in the current section</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обновить данные по текущему разделу</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>DetailRefreshDataOnSection</detailParameter>
 				</c>
@@ -2336,6 +2556,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Receipt amount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма поступлений</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2347,6 +2571,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payments amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма платежей</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2391,6 +2619,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Predefined group "Payments" contains no descendant elements monitoring results are not correct.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предопределенная группа "Платежи" не содержит подчиненных элементов, результаты контроля не корректны.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2402,6 +2634,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Open the "CF items" catalog</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Открыть справочник "Статьи ДДС"</v8:content>
 						</v8:item>
 					</tl>
 					<detailParameter>ExecuteActionDecrypt</detailParameter>
@@ -2443,6 +2679,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Predefined group "Receipt" contains no descendant elements monitoring results are not correct.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предопределенная группа "Поступления" не содержит подчиненных элементов, результаты контроля не корректны.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2454,6 +2694,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Open the "CF items" catalog</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Открыть справочник "Статьи ДДС"</v8:content>
 						</v8:item>
 					</tl>
 					<detailParameter>ExecuteActionDecrypt</detailParameter>
@@ -2494,6 +2738,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payments on cash flow itemswere detected in the group "Receipt":</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Были обнаружены платежи по статьям денежных средств, входящим в группу "Поступления":</v8:content>
 						</v8:item>
 					</tl>
 					<detailParameter>DefaultDocumentDecrypt</detailParameter>
@@ -2555,6 +2803,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Payments on cash flow items were detected in the group "Payments":</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Были обнаружены поступления денежных средств по статьям, входящим в группу "Платежи":</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>DefaultDocumentDecrypt</detailParameter>
 				</c>
@@ -2614,6 +2866,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Non accordance of payments on cash flow items were detected in the group "Receipt" and "Payments":</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Были обнаружены несовпадения платежей и поступлений ДС по статьям, не входящим в предопределенные группы "Поступления" и "Платежи":</v8:content>
 						</v8:item>
 					</tl>
 					<detailParameter>DefaultDocumentDecrypt</detailParameter>

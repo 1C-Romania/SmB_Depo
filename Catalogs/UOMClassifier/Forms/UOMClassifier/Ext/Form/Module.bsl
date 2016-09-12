@@ -6,7 +6,7 @@ Procedure SearchStringInTable(SearchForward)
 	
 	If IsBlankString(SearchString) Then
 		
-		ShowMessageBox( , NStr("en = 'Search string is not set'"), CommonUseClientServer.MainLanguageCode());
+		ShowMessageBox( , NStr("en='Search string is not set';ru='Не задана строка поиска'"), CommonUseClientServer.MainLanguageCode());
 		CurrentItem = Items.SearchString;
 		Return;
 		
@@ -18,7 +18,7 @@ Procedure SearchStringInTable(SearchForward)
 		FoundArea = Classifier.FindText(TrimAll(SearchString), , , , , , True);
 		If FoundArea = Undefined Then
 			
-			MessageText = NStr("en = 'Measurement unit is not found'", CommonUseClientServer.MainLanguageCode());
+			MessageText = NStr("en='Measurement unit is not found';ru='Единица измерения не найдена'", CommonUseClientServer.MainLanguageCode());
 			CommonUseClientServer.MessageToUser(MessageText, , "SearchString");
 			CurrentItem = Items.SearchString;
 			Return;
@@ -46,25 +46,25 @@ Procedure ExecuteCase(CurrentArea, CloseForm = True)
 	MessageText = "";
 	If IsBlankString(NumericalCode) Then
 		
-		MessageText = NStr("en = 'numeric code'");
+		MessageText = NStr("en='numeric code';ru='числовой код'");
 		
 	EndIf;
 	
 	If IsBlankString(ShortDescription) Then
 		
-		MessageText = MessageText + ?(IsBlankString(MessageText), "", ", ") + NStr("en = 'Abbreviation'");
+		MessageText = MessageText + ?(IsBlankString(MessageText), "", ", ") + NStr("en='Abbreviation';ru='краткое наименование'");
 		
 	EndIf;
 	
 	If IsBlankString(DescriptionFull) Then
 		
-		MessageText = MessageText + ?(IsBlankString(MessageText), "", ", ") + NStr("en = 'full description'");
+		MessageText = MessageText + ?(IsBlankString(MessageText), "", ", ") + NStr("en='full description';ru='полное наименование'");
 		
 	EndIf;
 	
 	If Not IsBlankString(MessageText) Then
 		
-		MessageText = NStr("en = 'Resulting cell is not specified (indicators are not filled: '") + MessageText + NStr("en = ')'");
+		MessageText = NStr("en='Resulting cell is not specified (indicators are not filled: ';ru='Указана не результирующая ячейка (не заполнены показатели: '") + MessageText + NStr("en=')';ru=')'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Classifier");
 		CloseForm = False;
 		Return;
@@ -84,7 +84,7 @@ Procedure ExecuteCase(CurrentArea, CloseForm = True)
 		
 		FormParameters.Insert("Key", UnOfMeas);
 		OpenForm("Catalog.UOMClassifier.Form.ItemForm", FormParameters, ThisForm);
-		WarningText = NStr("en = 'Measurement unit was added earlier.'", CommonUseClientServer.MainLanguageCode());
+		WarningText = NStr("en='Measurement unit was added earlier.';ru='Единица измерения была добавлена раннее.'", CommonUseClientServer.MainLanguageCode());
 		ShowMessageBox(, WarningText, , );
 		CloseForm = False;
 		
@@ -132,7 +132,7 @@ Procedure CreateMeasurementUnitByClassifier(FillingValues)
 		
 	Except
 		
-		WriteLogEvent(NStr("en = 'Measurement unit adding from OKEI'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , ErrorDescription());
+		WriteLogEvent(NStr("en='Measurement unit adding from OKEI';ru='Добавление единиц измерения из ОКЕИ'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , ErrorDescription());
 		
 	EndTry;
 	

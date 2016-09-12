@@ -138,12 +138,12 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 			CommonUseClientServer.AddUserError(Errors,
 				"Roles[%1].RolesSynonym",
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Role ""%1"" is not found in the metadata.'"),
+					NStr("en='Role ""%1"" is not found in the metadata.';ru='Роль ""%1"" не найдена в метаданных.'"),
 					String.Synonym),
 				"Roles",
 				TreeItems.IndexOf(String),
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Role ""%2"" in row %1 is not found in the metadata.'"),
+					NStr("en='Role ""%2"" in row %1 is not found in the metadata.';ru='Роль ""%2"" в строке %1 не найдена в метаданных.'"),
 					"%1", String.Synonym));
 		EndIf;
 	EndDo;
@@ -307,7 +307,7 @@ Procedure ContentDrag(Item, DragParameters, StandardProcessing, String, Field)
 	UserMessage = UserTransferToGroup(DragParameters.Value, Object.Ref);
 	If UserMessage <> Undefined Then
 		ShowUserNotification(
-			NStr("en = 'User''s move'"), , UserMessage, PictureLib.Information32);
+			NStr("en=""User's move"";ru='Перемещение пользователей'"), , UserMessage, PictureLib.Information32);
 	EndIf;
 	
 EndProcedure
@@ -469,7 +469,7 @@ Procedure FilterAvailableForSelectTypesOfGroups()
 		
 		FoundValue = Items.UsersGroupsMembers.ChoiceList.FindByValue("AllOneType");
 		If FoundValue = Undefined Then
-			Items.UsersGroupsMembers.ChoiceList.Insert(0, "AllOneType", NStr("en = 'All the users of the specifed type'"));
+			Items.UsersGroupsMembers.ChoiceList.Insert(0, "AllOneType", NStr("en='All the users of the specifed type';ru='Все пользователи заданного вида'"));
 		EndIf;
 		Items.UsersType.Enabled = True;
 		
@@ -685,7 +685,7 @@ Function AnExtendedFormOfSelectionOptions()
 		
 	EndDo;
 	
-	FormHeaderSelection = NStr("en = 'Select external user group participants'");
+	FormHeaderSelection = NStr("en='Select external user group participants';ru='Подбор участников группы внешних пользователей'");
 	AnExtendedFormOfSelectionOptions = 
 		New Structure("FormHeaderSelection, SelectedUsers, PickupGroupsIsNotPossible",
 		                 FormHeaderSelection, SelectedUsers, True);

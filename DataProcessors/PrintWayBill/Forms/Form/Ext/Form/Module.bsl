@@ -286,13 +286,13 @@ Procedure UpdateInformationAboutOrderAcceptance()
 	
 	If ValueIsFilled(OrderAcceptanceDate) Then
 		
-		InformationAboutOrderAcceptance = NStr("en = 'Order by '") + Format(OrderAcceptanceDate, "DLF=DD");
+		InformationAboutOrderAcceptance = NStr("en='Order by ';ru='Заказ от '") + Format(OrderAcceptanceDate, "DLF=DD");
 		
 	EndIf;
 	
 	If ValueIsFilled(OrderAccepted) Then
 		
-		InformationAboutOrderAcceptance = InformationAboutOrderAcceptance + NStr("en = '; order accepted by '") + OrderAccepted;
+		InformationAboutOrderAcceptance = InformationAboutOrderAcceptance + NStr("en='; order accepted by ';ru='; заказ принял(а) '") + OrderAccepted;
 		
 	EndIf;
 	

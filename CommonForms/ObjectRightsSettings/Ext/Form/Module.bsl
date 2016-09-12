@@ -16,8 +16,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If PossibleRights.ByRefsTypes[TypeOf(ObjectReference)] = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Access rights
-			           |are not set for the %1 type objects.'"),
+			NStr("en='Access rights"
+"are not set for the %1 type objects.';ru='Права"
+"доступа не настраиваются для объектов типа ""%1"".'"),
 			String(TypeOf(ObjectReference)));
 	EndIf;
 	
@@ -269,7 +270,7 @@ Procedure Reread(Command)
 	Else
 		ShowQueryBox(
 			New NotifyDescription("RereadCompletion", ThisObject),
-			NStr("en = 'Data was changed. Read without saving?'"),
+			NStr("en='Data was changed. Read without saving?';ru='Данные изменены. Прочитать без сохранения?'"),
 			QuestionDialogMode.YesNo,
 			5,
 			DialogReturnCode.No);
@@ -369,11 +370,11 @@ Procedure WriteBegin(Close = False)
 	
 	If ConfirmCancelRightsManagement = True Then
 		Buttons = New ValueList;
-		Buttons.Add("WriteAndClose", NStr("en = 'Save and close'"));
-		Buttons.Add("Cancel", NStr("en = 'Cancel'"));
+		Buttons.Add("WriteAndClose", NStr("en='Save and close';ru='Сохранить и закрыть'"));
+		Buttons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
 		ShowQueryBox(
 			New NotifyDescription("WriteAfterConfirmation", ThisObject),
-			NStr("en = 'After writing, rights settings will be unavailable.'"),
+			NStr("en='After writing, rights settings will be unavailable.';ru='После записи настройка прав станет недоступной.'"),
 			Buttons,, "Cancel");
 	Else
 		If Close Then
@@ -581,14 +582,14 @@ Procedure AddAttributesOrFormItems(NewAttributes = Undefined)
 		Item.HorizontalAlign       = ItemHorizontalLocation.Center;
 		Item.DataPath                   = "RightGroups.InheritanceAllowed";
 		
-		Item.Title = NStr("en = 'For subfolders'");
-		Item.ToolTip = NStr("en = 'Rights not only to the current folder, but also to its subfolders'");
+		Item.Title = NStr("en='For subfolders';ru='Для подпапок'");
+		Item.ToolTip = NStr("en='Rights not only to the current folder, but also to its subfolders';ru='Права не только для текущей папки, но и для ее нижестоящих папок'");
 		
 		Item = AddItem("RightGroupsSettingOwner", Type("FormField"), Items.RightGroups);
 		Item.ReadOnly = True;
 		Item.DataPath    = "RulesGroups.SettingOwner";
-		Item.Title = NStr("en = 'Inherited from'");
-		Item.ToolTip = NStr("en = 'The folder, from which the rights settings are inherited'");
+		Item.Title = NStr("en='Inherited from';ru='Наследуется от'");
+		Item.ToolTip = NStr("en='The folder, from which the rights settings are inherited';ru='Папка, от которой наследуются настройка прав'");
 		Item.Visible = ParentFilled;
 		
 		ConditionalAppearanceItem = ConditionalAppearance.Items.Add();
@@ -697,7 +698,7 @@ Procedure FillCheckProcessing(Cancel)
 		EndDo;
 		If NoFilledRight Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'No access right is filled.'"),
+				NStr("en='No access right is filled.';ru='Не заполнено ни одно право доступа.'"),
 				,
 				"RightGroups[" + Format(LineNumber, "NG=0") + "]." + NameOfFirstRight,
 				,
@@ -711,7 +712,7 @@ Procedure FillCheckProcessing(Cancel)
 		// Check filling
 		If Not ValueIsFilled(CurrentRow["User"]) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'User or group is not filled.'"),
+				NStr("en='User or group is not filled.';ru='Не заполнен пользователь или группа.'"),
 				,
 				"RightGroups[" + Format(LineNumber, "NG=0") + "].User",
 				,
@@ -725,9 +726,9 @@ Procedure FillCheckProcessing(Cancel)
 		                        CurrentRow["User"]);
 		If RightGroups.FindRows(Filter).Count() > 1 Then
 			If TypeOf(Filter.User) = Type("CatalogRef.Users") Then
-				MessageText = NStr("en = 'Setting for the %1 user already exists.'");
+				MessageText = NStr("en='Setting for the %1 user already exists.';ru='Настройка для пользователя ""%1"" уже есть.'");
 			Else
-				MessageText = NStr("en = 'Setting for the %1 users group already exists.'");
+				MessageText = NStr("en='Setting for the %1 users group already exists.';ru='Настройка для группы пользователей ""%1"" уже есть.'");
 			EndIf;
 			CommonUseClientServer.MessageToUser(
 				StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Filter.User),
@@ -781,15 +782,17 @@ Procedure CheckOnPosibilityOfRightsChanging(Cancel, CheckOfDeletion = False)
 		Cancel = True;
 		
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'These rights are inherited, they can be changed in
-			           |the form of rights setting of the higher %1 folder.'"),
+			NStr("en='These rights are inherited, they can be changed in"
+"the form of rights setting of the higher %1 folder.';ru='Эти права унаследованы, их можно изменить"
+"в форме настройки прав вышестоящей папки ""%1"".'"),
 			CurrentSettingOwner);
 		
 		If CheckOfDeletion Then
 			MessageText = MessageText + Chars.LF + Chars.LF
 				+ StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'To delete all inherited rights,
-					           |clear the %1 check box.'"),
+					NStr("en='To delete all inherited rights,"
+"clear the %1 check box.';ru='Для удаления всех унаследованных"
+"прав следует снять флажок ""%1"".'"),
 					Items.InheritParentsRights.Title);
 		EndIf;
 	EndIf;
@@ -819,7 +822,7 @@ Procedure ShowUsersTypeSelectionOrExternalUsers(ContinuationProcessor)
 				"ShowTypeSelectionUsersOrExternalUsersEnd",
 				ThisObject,
 				ContinuationProcessor),
-			NStr("en = 'Data type choice'"),
+			NStr("en='Data type choice';ru='Выбор типа данных'"),
 			ListOfUserTypes[0]);
 	Else
 		ExecuteNotifyProcessing(ContinuationProcessor, SelectionAndPickOutOfExternalUsers);
@@ -918,7 +921,7 @@ Procedure CheckPermissionToManageRights()
 		Return;
 	EndIf;
 	
-	Raise NStr("en = 'Rights setting is unavailable.'");
+	Raise NStr("en='Rights setting is unavailable.';ru='Настройка прав недоступна.'");
 	
 EndProcedure
 

@@ -571,7 +571,7 @@ Function SecurityProfile(Val ClusterAdministrationParameters, Val ProfileName) E
 	SecurityProfiles = GetSecurityProfiles(ClusterIdentifier, ClusterAdministrationParameters, Filter);
 	
 	If SecurityProfiles.Count() <> 1 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Security profile %2 is not registered in server cluster %1 .'"), ClusterIdentifier, ProfileName);
+		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Security profile %2 is not registered in server cluster %1 .';ru='В кластере серверов %1 не зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
 	EndIf;
 	
 	Result = SecurityProfiles[0];
@@ -624,7 +624,7 @@ Procedure CreateSecurityProfile(Val ClusterAdministrationParameters, Val Securit
 	SecurityProfiles = GetSecurityProfiles(ClusterIdentifier, ClusterAdministrationParameters, Filter);
 	
 	If SecurityProfiles.Count() = 1 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Security profile %2 is already registered in server cluster %1.'"), ClusterIdentifier, ProfileName);
+		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Security profile %2 is already registered in server cluster %1.';ru='В кластере серверов %1 уже зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
 	EndIf;
 	
 	UpdateSecurityProfilesProperties(ClusterAdministrationParameters, SecurityProfileProperties, False);
@@ -650,7 +650,7 @@ Procedure SetSecurityProfileProperties(Val ClusterAdministrationParameters, Val 
 	SecurityProfiles = GetSecurityProfiles(ClusterIdentifier, ClusterAdministrationParameters, Filter);
 	
 	If SecurityProfiles.Count() <> 1 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Security profile %2 is not registered in server cluster %1 .'"), ClusterIdentifier, ProfileName);
+		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Security profile %2 is not registered in server cluster %1 .';ru='В кластере серверов %1 не зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
 	EndIf;
 	
 	UpdateSecurityProfilesProperties(ClusterAdministrationParameters, SecurityProfileProperties, True);
@@ -720,7 +720,7 @@ Function GetCluster(Val ClusterAdministrationParameters)
 	If Clusters.Count() = 1 Then
 		Return Clusters[0].Get("cluster");
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Servers cluster with %1 port is not found'"), ClusterAdministrationParameters.ClusterPort);
+		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Servers cluster with %1 port is not found';ru='Не обнаружен кластер серверов с портом %1'"), ClusterAdministrationParameters.ClusterPort);
 	EndIf;
 	
 EndFunction
@@ -795,7 +795,7 @@ Function GetInfobase(Val ClusterIdentifier, Val ClusterAdministrationParameters,
 	If Infobases.Count() = 1 Then
 		Return Infobases[0].Get("infobase");
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Infobase %2 is not registered in server cluster %1.'"), ClusterIdentifier, InformationBaseAdministrationParameters.NameInCluster);
+		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Infobase %2 is not registered in server cluster %1.';ru='В кластере серверов %1 не зарегистрирована информационная база %2!'"), ClusterIdentifier, InformationBaseAdministrationParameters.NameInCluster);
 	EndIf;
 	
 EndFunction
@@ -1588,11 +1588,11 @@ Function RunCommand(Val Pattern, Val ClusterAdministrationParameters, Val Parame
 	#If Server Then
 		
 		If SafeMode() Then
-			Raise NStr("en = 'Cluster administration is not available in safe mode!'");
+			Raise NStr("en='Cluster administration is not available in safe mode!';ru='Администрирование кластера невозможно в безопасном режиме!'");
 		EndIf;
 		
 		If CommonUseReUse.DataSeparationEnabled() Then
-			Raise NStr("en = 'In the model of service, the execution of the cluster administration functions by the applied infobase is not allowed!'");
+			Raise NStr("en='In the model of service, the execution of the cluster administration functions by the applied infobase is not allowed!';ru='В модели сервиса недопустимо выполнение прикладной информационной базой функций администрирования кластера!'");
 		EndIf;
 		
 	#EndIf
@@ -1605,13 +1605,19 @@ Function RunCommand(Val Pattern, Val ClusterAdministrationParameters, Val Parame
 	If Not ClientFile.Exist() Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unable to run operation of the servers cluster administration as: file %1 is not found.
-                  |
-                  |To administer cluster via administer server (ras), you need to
-                  |install a client of administer server (ras) on this computer.
-                  |To install
-                  |it: - For computers with Windows OS you need to reinstall the platform by installing the component 1C:Enterprise server administer"";
-                  |- For computers with Linux OS you need to install the 1c-enterprise83-server* pack.'"),
+			NStr("en='Unable to run operation of the servers cluster administration as: file %1 is not found."
+""
+"To administer cluster via administer server (ras), you need to"
+"install a client of administer server (ras) on this computer."
+"To install"
+"it: - For computers with Windows OS you need to reinstall the platform by installing the component 1C:Enterprise server administer"";"
+"- For computers with Linux OS you need to install the 1c-enterprise83-server* pack.';ru='Невозможно выполнить операцию администрирования кластера серверов по причине: файл %1 не найден!"
+"                  |"
+"                  |Для администрирования кластера через сервер администрирования (ras) требуется установить на данном"
+"                  |компьютере клиент сервера администрирования (rac)."
+"                  |Для его установки:"
+"                  |- Для компьютеров с ОС Windows требуется перестановить платформу, установив компонент ""Администрирование сервера 1С:Предприятия"";"
+"                  |- Для компьютеров с ОС Linux требуется установить пакет 1c-enterprise83-server*.'"),
 			ClientFile.DescriptionFull);
 		
 	EndIf;

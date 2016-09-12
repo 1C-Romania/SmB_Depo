@@ -34,7 +34,7 @@ EndProcedure
 Procedure DeletionMarkedObjects(ExecuteParameters)
 	
 	If Not Users.InfobaseUserWithFullAccess() Then
-		Raise NStr("en = 'Insufficient rights to perform the operation.'");
+		Raise NStr("en='Insufficient rights to perform the operation.';ru='Недостаточно прав для выполнения операции.'");
 	EndIf;
 	
 	InitializeParameters(ExecuteParameters);
@@ -159,7 +159,7 @@ Procedure TryToDeleteReference(ExecuteParameters, Ref, Information, Result)
 	EndIf;
 	If Object.DeletionMark <> True Then
 		Result.Success = False;
-		Result.ErrorInfo = NStr("en = 'The object is not marked for deletion.'");
+		Result.ErrorInfo = NStr("en='The object is not marked for deletion.';ru='Объект не помечен на удаление.'");
 		Return;
 	EndIf;
 	
@@ -173,7 +173,7 @@ Procedure TryToDeleteReference(ExecuteParameters, Ref, Information, Result)
 		Result.Success = True;
 	Else
 		Result.Success = False;
-		Result.ErrorInfo = NStr("en = 'The object is used in other application objects.'");
+		Result.ErrorInfo = NStr("en='The object is used in other application objects.';ru='Объект используется в других объектах программы.'");
 	EndIf;
 EndProcedure
 
@@ -849,7 +849,7 @@ Procedure WriteWarning(Ref, ErrorInfo)
 	EndIf;
 	
 	WriteLogEvent(
-		NStr("en = 'Delete marked'", CommonUseClientServer.MainLanguageCode()),
+		NStr("en='Delete marked';ru='Удаление помеченных'", CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Warning,
 		,
 		Ref,
@@ -879,7 +879,7 @@ Procedure WriteReasonIntoResult(ExecuteParameters, TableRow)
 			Cause.DetectedType = Type("ConstantValueManager." + TableRow.FindMetadata.Name);
 		Else
 			Cause.FoundReference = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Unresolved references are found (%1)'"),
+				NStr("en='Unresolved references are found (%1)';ru='Обнаружены неразрешимые ссылки (%1)'"),
 				TableRow.FindMetadata.Presentation());
 			Cause.DetectedType = Type("String");
 			Return;
@@ -991,31 +991,31 @@ Procedure ClientMarkCollectionBypassProgress(ExecuteParameters, CollectionName)
 	// Preparing the parameters to be passed.
 	If CollectionName = "BeforeSearchingMarkedToDelete" Then
 		
-		Text = NStr("en = 'Preparation to search for the objects marked for deletion.'");
+		Text = NStr("en='Preparation to search for the objects marked for deletion.';ru='Подготовка к поиску объектов, помеченных на удаление.'");
 		
 	ElsIf CollectionName = "FindMarkedForDeletion" Then
 		
-		Text = NStr("en = 'Search for the objects marked for deletion.'");
+		Text = NStr("en='Search for the objects marked for deletion.';ru='Поиск объектов, помеченных на удаление.'");
 		
 	ElsIf CollectionName = "AllMarkedForDeletion" Then
 		
-		Text = NStr("en = 'Analyzing the objects marked for deletion.'");
+		Text = NStr("en='Analyzing the objects marked for deletion.';ru='Анализ помеченных на удаление.'");
 		
 	ElsIf CollectionName = "TechnologicalObjects" Then
 		
-		Text = NStr("en = 'Preparation for removal.'");
+		Text = NStr("en='Preparation for removal.';ru='Подготовка к удалению.'");
 		
 	ElsIf CollectionName = "ExclusiveDeletion" Then
 		
-		Text = NStr("en = 'Objects deletion in progress.'");
+		Text = NStr("en='Objects deletion in progress.';ru='Выполняется удаление объектов.'");
 		
 	ElsIf CollectionName = "CustomObjects" Then
 		
 		NotRemoved = ExecuteParameters.NotRemoved.Count();
 		If NotRemoved = 0 Then
-			Pattern = NStr("en = 'Deleted: %1 out of %2 objects.'");
+			Pattern = NStr("en='Deleted: %1 out of %2 objects.';ru='Удалено: %1 из %2 объектов.'");
 		Else
-			Pattern = NStr("en = 'Processed: %1 out of %2 objects, out of this quantity not removed: %3.'");
+			Pattern = NStr("en='Processed: %1 out of %2 objects, out of this quantity not removed: %3.';ru='Обработано: %1 из %2 объектов, из них не удалено: %3.'");
 		EndIf;
 		Text = StringFunctionsClientServer.PlaceParametersIntoString(
 			Pattern,
@@ -1026,14 +1026,14 @@ Procedure ClientMarkCollectionBypassProgress(ExecuteParameters, CollectionName)
 	ElsIf CollectionName = "RepeatedlyDeleted" Then
 		
 		Text = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Follow-up check of not deleted objects: %1 out of %2.'"),
+			NStr("en='Follow-up check of not deleted objects: %1 out of %2.';ru='Повторная проверка не удаленных объектов: %1 из %2.'"),
 			Format(ExecuteParameters.Number, "NZ=0; NG="),
 			Format(ExecuteParameters.Total, "NZ=0; NG="));
 		
 	ElsIf CollectionName = "ImpedingRemoval" Then
 		
 		Text = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Analysis of the objects preventing deletion: %1 out of %2.'"),
+			NStr("en='Analysis of the objects preventing deletion: %1 out of %2.';ru='Анализ объектов, препятствующих удалению: %1 из %2.'"),
 			Format(ExecuteParameters.Number, "NZ=0; NG="),
 			Format(ExecuteParameters.Total, "NZ=0; NG="));
 		

@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Parameters.Node = Manager.ThisNode() Then
 		Raise
-			NStr("en = 'You can not create the initial image for the node.'");
+			NStr("en='You can not create the initial image for the node.';ru='Создание начального образа для данного узла невозможно.'");
 	Else
 		BaseKind = 0; // File info base
 		TypeDBMS = "";
@@ -60,7 +60,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not StandardSubsystemsServerCall.ClientWorkParameters().FileInfobase Then
-		Items.PathToArchiveWithVolumeFiles.InputHint = NStr("en = '\\name server\resource\files.zip'");
+		Items.PathToArchiveWithVolumeFiles.InputHint = NStr("en='\\name server\resource\files.zip';ru='\\имя сервера\resource\files.zip'");
 		Items.PathToArchiveWithVolumeFiles.ChoiceButton = False;
 	EndIf;
 	
@@ -81,7 +81,7 @@ Procedure BaseKindOnChange(Item)
 		Items.PathToArchiveWithVolumeFiles.InputHint = "";
 		Items.PathToArchiveWithVolumeFiles.ChoiceButton = True;
 	Else
-		Items.PathToArchiveWithVolumeFiles.InputHint = NStr("en = '\\name server\resource\files.zip'");
+		Items.PathToArchiveWithVolumeFiles.InputHint = NStr("en='\\name server\resource\files.zip';ru='\\имя сервера\resource\files.zip'");
 		Items.PathToArchiveWithVolumeFiles.ChoiceButton = False;
 	EndIf;
 	
@@ -119,17 +119,18 @@ Procedure CreateInitialImage(Command)
 	ClearMessages();
 	
 	Status(
-		NStr("en = 'Data synchronization'"),
+		NStr("en='Data synchronization';ru='Синхронизация данных'"),
 		,
-		NStr("en = 'Initial image is being created...'"),
+		NStr("en='Initial image is being created...';ru='Осуществляется создание начального образа...'"),
 		PictureLib.CreateInitialImage);
 	
 	If BaseKind = 0 Then
 		
 		If Not CanCreateFilebase Then
 			Raise
-				NStr("en = 'Creation of initial image of
-				           |file infobase is not supported at this platform.'");
+				NStr("en='Creation of initial image of"
+"file infobase is not supported at this platform.';ru='Создание начального образа файловой информационной базы"
+"на данной платформе не поддерживается.'");
 		EndIf;
 		
 		If Not CreateFileInitialImageAtServer() Then
@@ -146,7 +147,7 @@ Procedure CreateInitialImage(Command)
 	EndIf;
 	
 	Handler = New NotifyDescription("CreateInitialImageEnd", ThisObject);
-	ShowMessageBox(Handler, NStr("en = 'Initial image has beed created successfully.'"));
+	ShowMessageBox(Handler, NStr("en='Initial image has beed created successfully.';ru='Создание начального образа успешно завершено.'"));
 EndProcedure
 
 #EndRegion
@@ -189,7 +190,7 @@ Procedure FileSavingHandlerAfterConnectionExpansionFileOperations(Attached, Addi
 	
 	Dialog = New FileDialog(FileDialogMode.Save);
 	
-	Dialog.Title                = NStr("en = 'Choose file for saving'");
+	Dialog.Title                = NStr("en='Choose file for saving';ru='Выберите файл для сохранения'");
 	Dialog.Multiselect       = False;
 	Dialog.Preview  = False;
 	Dialog.Filter                   = AdditionalParameters.Filter;

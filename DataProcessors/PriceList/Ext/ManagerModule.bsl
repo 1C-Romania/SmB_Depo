@@ -860,7 +860,7 @@ Procedure OutputDataOnProductAndServicesParent(ProductsAndServicesParentSelectio
 	
 	If Not ValueIsFilled(ProductsAndServicesParentSelection) Then
 		
-		AreaPriceGroup.Parameters.PriceGroup = NStr("en = '<...>'");
+		AreaPriceGroup.Parameters.PriceGroup = NStr("en='<...>';ru='<...>'");
 		SpreadsheetDocument.Put(AreaPriceGroup);
 		
 		CurrentAreaPriceGroup = SpreadsheetDocument.Area(SpreadsheetDocument.TableHeight, 2, SpreadsheetDocument.TableHeight, SpreadsheetDocument.TableWidth);

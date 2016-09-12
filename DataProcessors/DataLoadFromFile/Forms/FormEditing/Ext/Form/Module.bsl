@@ -36,7 +36,7 @@ EndProcedure
 &AtClient
 Procedure ResetSettings(Command)
 	Notification = New NotifyDescription("ResetSettingsEnd", ThisObject, CorrelationObjectName);
-	ShowQueryBox(Notification, NStr("en = 'Set columns settings to their original state?'"), QuestionDialogMode.YesNo);
+	ShowQueryBox(Notification, NStr("en='Set columns settings to their original state?';ru='Установить настройки колонок в первоначальное состояние?'"), QuestionDialogMode.YesNo);
 EndProcedure
 
 &AtClient
@@ -104,7 +104,7 @@ Procedure SetDataDesign()
 	FilterItem.LeftValue = New DataCompositionField("ListColumns.Synonym");
 	FilterItem.ComparisonType = DataCompositionComparisonType.NotFilled;
 	FilterItem.Use = True;
-	ConditionalAppearanceItem.Appearance.SetParameterValue("Text", NStr("en = 'Standard name'"));
+	ConditionalAppearanceItem.Appearance.SetParameterValue("Text", NStr("en='Standard name';ru='Стандартное наименование'"));
 	ConditionalAppearanceItem.Appearance.SetParameterValue("TextColor", StyleColors.UnavailableCellTextColor);
 	
 EndProcedure

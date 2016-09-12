@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Totals management</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Управление итогами</v8:content>
+		</v8:item>
 	</Title>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<AutoTitle>false</AutoTitle>
@@ -26,11 +30,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Operations</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Операции</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Operations</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Операции</v8:content>
 				</v8:item>
 			</ToolTip>
 			<ExtendedTooltip name="OperationsExtendedTooltip" id="330"/>
@@ -41,11 +53,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Typical operations</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Типовые операции</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Typical operations</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Типовые операции</v8:content>
 						</v8:item>
 					</ToolTip>
 					<VerticalStretch>true</VerticalStretch>
@@ -57,11 +77,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Totals</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Итоги</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Quick access totals</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Быстрый доступ итоги</v8:content>
 								</v8:item>
 							</ToolTip>
 							<HorizontalStretch>true</HorizontalStretch>
@@ -75,11 +103,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Set calculated totals period group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа установить период рассчитанных итогов</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Set calculated totals period group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа установить период рассчитанных итогов</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -109,6 +145,12 @@
 For accumulation registers - by %1.
 For accounting registers - by %2.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Установить период рассчитанных итогов для всех регистров накопления и бухгалтерии, у которых включены итоги. 
+Для регистров накопления - на %1.
+Для регистров бухгалтерии - на %2.</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Top</VerticalAlign>
 											<ContextMenu name="DescriptionOfPeriodSettingContextMenu" id="329"/>
@@ -122,11 +164,19 @@ For accounting registers - by %2.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Enable totals group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа включение итогов</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Enable totals group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа включение итогов</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -154,6 +204,10 @@ For accounting registers - by %2.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Enable totals usage mode for all the registers for which the totals usage is enabled at the moment.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Включить режим использования итогов для всех регистров, у которых в данный момент выключено использование итогов.</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Top</VerticalAlign>
 											<ContextMenu name="SimpleTotalsDescriptionContextMenu" id="283"/>
@@ -169,11 +223,19 @@ For accounting registers - by %2.</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Aggregates</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Агрегаты</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Quick access aggregates group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа быстрый доступ агрегаты</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -186,11 +248,19 @@ For accounting registers - by %2.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Rebuild and populate aggregates group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа перестроение и заполнение агрегатов</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Rebuild and populate aggregates group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа перестроение и заполнение агрегатов</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -218,6 +288,10 @@ For accounting registers - by %2.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Run rebuilding and populating of aggregates for all registers for which the aggregates mode and aggregates usage are enabled.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполнить перестроение и заполнение агрегатов для всех регистров, у которых включен режим агрегатов и установлено их использование.</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Top</VerticalAlign>
 											<ContextMenu name="SimpleBuildingAndPopulatingDescriptionContextMenu" id="293"/>
@@ -231,11 +305,19 @@ For accounting registers - by %2.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Getting optimal aggregates group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа получение оптимальных агрегатов</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Getting optimal aggregates group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа получение оптимальных агрегатов</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -263,6 +345,10 @@ For accounting registers - by %2.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Calculate optimal aggregate list for all registers for which aggregates are specified in the Designer.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполнить расчет списка оптимальных агрегатов для всех регистров, для которых в Конфигураторе заданы агрегаты.</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Top</VerticalAlign>
 											<ContextMenu name="SimpleGettingOptimalAggregatesContextMenu" id="291"/>
@@ -280,11 +366,19 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Extended</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расширенный</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Advanced abilities</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расширенные возможности</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AdvancedAbilitiesExtendedTooltip" id="346"/>
@@ -295,11 +389,19 @@ For accounting registers - by %2.</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Advanced tools</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расширенные инструменты</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Advanced tools</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расширенные инструменты</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ExtendedTooltip name="ExtendedToolsExtendedTooltip" id="347"/>
@@ -310,11 +412,19 @@ For accounting registers - by %2.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Totals</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Итоги</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Totals control</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Управление итогами</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ExtendedTooltip name="TotalsGroupExtendedTooltip" id="348"/>
@@ -389,11 +499,19 @@ For accounting registers - by %2.</v8:content>
 																<v8:lang>en</v8:lang>
 																<v8:content>Totals</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Итоги</v8:content>
+															</v8:item>
 														</Title>
 														<ToolTip>
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>Enabling/disabling totals usage</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Включение/выключение использования итогов</v8:content>
 															</v8:item>
 														</ToolTip>
 														<ExtendedTooltip name="TotalsGroupExtendedTooltip" id="354"/>
@@ -418,11 +536,19 @@ For accounting registers - by %2.</v8:content>
 																<v8:lang>en</v8:lang>
 																<v8:content>Current totals</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Текущие итоги</v8:content>
+															</v8:item>
 														</Title>
 														<ToolTip>
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>Enabling/disabling usage of current totals</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Включение/выключение использования текущих итогов</v8:content>
 															</v8:item>
 														</ToolTip>
 														<ExtendedTooltip name="GroupCurrentTotalsExtendedTooltip" id="357"/>
@@ -447,11 +573,19 @@ For accounting registers - by %2.</v8:content>
 																<v8:lang>en</v8:lang>
 																<v8:content>Totals division</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Разделение итогов</v8:content>
+															</v8:item>
 														</Title>
 														<ToolTip>
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>Enabling/disabling split of totals</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Включение/выключение разделения итогов</v8:content>
 															</v8:item>
 														</ToolTip>
 														<ExtendedTooltip name="GroupSplitTotalsExtendedTooltip" id="360"/>
@@ -482,11 +616,19 @@ For accounting registers - by %2.</v8:content>
 																<v8:lang>en</v8:lang>
 																<v8:content>Recalculation</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Пересчет</v8:content>
+															</v8:item>
 														</Title>
 														<ToolTip>
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>Recalculation of totals</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Пересчет итогов</v8:content>
 															</v8:item>
 														</ToolTip>
 														<ExtendedTooltip name="GroupRecalculationExtendedTooltip" id="364"/>
@@ -569,6 +711,10 @@ For accounting registers - by %2.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Shows that the totals are used by this register.</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Признак использования итогов данным регистром.</v8:content>
+														</v8:item>
 													</ToolTip>
 													<EditMode>EnterOnInput</EditMode>
 													<CheckBoxType>Auto</CheckBoxType>
@@ -581,11 +727,19 @@ For accounting registers - by %2.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Totals list description and mode</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Список итогов наименование и режим</v8:content>
+														</v8:item>
 													</Title>
 													<ToolTip>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Totals list description and mode</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Список итогов наименование и режим</v8:content>
 														</v8:item>
 													</ToolTip>
 													<ExtendedTooltip name="TotalsListDescriptionAndModeExtendedTooltip" id="415"/>
@@ -606,6 +760,10 @@ For accounting registers - by %2.</v8:content>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>The mode used by the register: totals or aggregates</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Какой режим использует регистр: итогов или агрегатов</v8:content>
+																</v8:item>
 															</ToolTip>
 															<HorizontalAlign>Left</HorizontalAlign>
 															<EditMode>EnterOnInput</EditMode>
@@ -624,6 +782,10 @@ For accounting registers - by %2.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Current date of totals actuality</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Текущая дата актуальности итогов</v8:content>
+														</v8:item>
 													</ToolTip>
 													<EditMode>EnterOnInput</EditMode>
 													<Wrap>false</Wrap>
@@ -632,10 +794,18 @@ For accounting registers - by %2.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>DLF=DD</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>ДЛФ=DD</v8:content>
+														</v8:item>
 													</Format>
 													<EditFormat>
 														<v8:item>
 															<v8:lang>en</v8:lang>
+															<v8:content>DLF=D</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
 															<v8:content>DLF=D</v8:content>
 														</v8:item>
 													</EditFormat>
@@ -648,6 +818,10 @@ For accounting registers - by %2.</v8:content>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Shows that the current totals are used by this register.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Признак использования текущих итогов данным регистром.</v8:content>
 														</v8:item>
 													</ToolTip>
 													<EditMode>EnterOnInput</EditMode>
@@ -662,6 +836,10 @@ For accounting registers - by %2.</v8:content>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Option to split the totals</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Возможность разделения итогов</v8:content>
 														</v8:item>
 													</ToolTip>
 													<EditMode>EnterOnInput</EditMode>
@@ -690,11 +868,19 @@ For accounting registers - by %2.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Aggregates</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Агрегаты</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Aggregates management</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Управление агрегатами</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ExtendedTooltip name="GroupAggregatesExtendedTooltip" id="379"/>
@@ -755,11 +941,19 @@ For accounting registers - by %2.</v8:content>
 																<v8:lang>en</v8:lang>
 																<v8:content>Mode</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Режим</v8:content>
+															</v8:item>
 														</Title>
 														<ToolTip>
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>Changing register usage mode</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Изменение режима использования регистра</v8:content>
 															</v8:item>
 														</ToolTip>
 														<ExtendedTooltip name="ModeGroupExtendedTooltip" id="385"/>
@@ -784,11 +978,19 @@ For accounting registers - by %2.</v8:content>
 																<v8:lang>en</v8:lang>
 																<v8:content>Use</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Использовать</v8:content>
+															</v8:item>
 														</Title>
 														<ToolTip>
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>Changing aggregates usage mode</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Изменение режима использования агрегатов</v8:content>
 															</v8:item>
 														</ToolTip>
 														<ExtendedTooltip name="GroupUsageExtendedTooltip" id="388"/>
@@ -878,6 +1080,10 @@ For accounting registers - by %2.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Shows that the aggregates are used for the register.</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Признак использования агрегатов для регистра.</v8:content>
+														</v8:item>
 													</ToolTip>
 													<EditMode>EnterOnInput</EditMode>
 													<HeaderPicture>
@@ -910,11 +1116,19 @@ For accounting registers - by %2.</v8:content>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>BF='Totals data is used'; BT='Aggregates data is used'</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>БЛ='Используются данные итогов'; БИ='Используются данные агрегатов'</v8:content>
+																</v8:item>
 															</Format>
 															<EditFormat>
 																<v8:item>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>BF='Totals data is used'; BT='Aggregates data is used'</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>БЛ='Используются данные итогов'; БИ='Используются данные агрегатов'</v8:content>
 																</v8:item>
 															</EditFormat>
 															<Font ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -929,11 +1143,19 @@ For accounting registers - by %2.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Aggregates by registers date and effect group</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Агрегаты по регистрам группа дата и эффект</v8:content>
+														</v8:item>
 													</Title>
 													<ToolTip>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Aggregates by registers date and effect group</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Агрегаты по регистрам группа дата и эффект</v8:content>
 														</v8:item>
 													</ToolTip>
 													<ExtendedTooltip name="AggregatesByRegistersGroupDateAndEffectExtendedTooltip" id="423"/>
@@ -955,6 +1177,10 @@ For accounting registers - by %2.</v8:content>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Expected mean time reduction for query execution when using the aggregates</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Ожидаемое уменьшение среднего времени выполнения запроса с использованием агрегатов</v8:content>
+																</v8:item>
 															</ToolTip>
 															<EditMode>EnterOnInput</EditMode>
 															<Wrap>false</Wrap>
@@ -969,6 +1195,10 @@ For accounting registers - by %2.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Aggregates by registers size group</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Агрегаты по регистрам группа размеры</v8:content>
+														</v8:item>
 													</Title>
 													<ExtendedTooltip name="AggregatesByRegistersGroupSizeExtendedTooltip" id="419"/>
 													<ChildItems>
@@ -979,6 +1209,10 @@ For accounting registers - by %2.</v8:content>
 																<v8:item>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Aggregate table size (estimated value)</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Размер таблицы агрегата (оценочный показатель)</v8:content>
 																</v8:item>
 															</ToolTip>
 															<EditMode>EnterOnInput</EditMode>
@@ -1130,11 +1364,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Footer</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Footer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -1173,6 +1415,10 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Object</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>объект</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:DataProcessorObject.TotalAndAggregateManagement</v8:Type>
@@ -1185,6 +1431,10 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Totals list</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список итогов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1195,6 +1445,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Register and usage mode</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регистр и режим использования</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1211,6 +1465,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Totals</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итоги</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1222,6 +1480,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Current</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>текущее</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1232,6 +1494,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Totals period</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период итогов</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1247,6 +1513,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>v8ui:Picture</v8:Type>
@@ -1257,6 +1527,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1274,6 +1548,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Metadata name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя метаданного</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1289,6 +1567,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Balance and turnovers</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остатки и обороты</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1299,6 +1581,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Aggregates/Totals</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Агрегаты/Итоги</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1316,6 +1602,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Split</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Трещина</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1326,6 +1616,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Allow totals splitting</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Разрешить разделение итогов</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1340,6 +1634,10 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Aggregates by registers</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Агрегаты по регистрам</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1350,6 +1648,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Register</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регистр</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1366,6 +1668,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Metadata name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя метаданного</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1381,6 +1687,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Aggregates/Totals</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Агрегаты/Итоги</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1392,6 +1702,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Use</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1402,6 +1716,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Building date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата построения</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1417,6 +1735,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>v8ui:Picture</v8:Type>
@@ -1427,6 +1749,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Size</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Размер</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1444,6 +1770,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Effect</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Эффект</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
@@ -1459,6 +1789,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Size limit</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ограничение размера</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1476,6 +1810,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Optimal building</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Построение оптимально</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1488,6 +1826,10 @@ For accounting registers - by %2.</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Terminate the processing when there is an error with one register</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прерывать обработку после ошибки с одним регистром</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1503,6 +1845,10 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Register aggregates</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Агрегаты регистра</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1513,6 +1859,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Metadata name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя метаданного</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1529,6 +1879,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Dimensions</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Измерения</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1544,6 +1898,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Use</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1554,6 +1912,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>End of period</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Окончание периода</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1569,6 +1931,10 @@ For accounting registers - by %2.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Period start</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Начало периода</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:dateTime</v8:Type>
@@ -1582,6 +1948,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Periodicity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Периодичность</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1597,6 +1967,10 @@ For accounting registers - by %2.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Size</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Размер</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1616,6 +1990,10 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Full abilities</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полные возможности</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1629,6 +2007,10 @@ For accounting registers - by %2.</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Calculate totals on</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать итоги на</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1644,6 +2026,10 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Path to metadata object</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Путь к объекту метаданных</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1658,6 +2044,10 @@ For accounting registers - by %2.</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Path to the optimal aggregates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Путь к оптимальным агрегатам</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1676,6 +2066,10 @@ For accounting registers - by %2.</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Relative size</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Относительный размер</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1696,6 +2090,10 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Minimal effect</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Минимальный эффект</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -1714,6 +2112,10 @@ For accounting registers - by %2.</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Optimal relative size</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оптимальный относительный размер</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1734,6 +2136,10 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Registers recalculation period</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период пересчета регистров</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:StandardPeriod</v8:Type>
@@ -1747,6 +2153,10 @@ For accounting registers - by %2.</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Hyperlink text</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст гипер ссылки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1765,11 +2175,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable totals usage</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить использование итогов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable totals usage</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить использование итогов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnableTotalsUsage</Action>
@@ -1780,11 +2198,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable current totals usage</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить использование текущих итогов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable current totals usage</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить использование текущих итогов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnableUsingCurrentTotals</Action>
@@ -1795,11 +2221,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Disable totals usage</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выключить использование итогов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Disable totals usage</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выключить использование итогов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>DisableTotalsUsage</Action>
@@ -1810,11 +2244,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Disable current totals usage</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выключить использование текущих итогов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Disable current totals usage</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выключить использование текущих итогов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>DisableCurrentTotalsUsage</Action>
@@ -1825,11 +2267,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update information on the totals state</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить информацию о состоянии итогов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F5</Shortcut>
@@ -1846,11 +2296,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Set totals period...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить период итогов...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Set calculated totals period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить период рассчитанных итогов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>SetTotalPeriod</Action>
@@ -1861,11 +2319,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable totals splitting</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить разделение итогов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable totals splitting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить разделение итогов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>TurnOnDataSeparationTotals</Action>
@@ -1876,11 +2342,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Disable totals division</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выключить разделение итогов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Disable totals division</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выключить разделение итогов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>DisableTotalsDivision</Action>
@@ -1891,11 +2365,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update aggregates data</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить информацию об агрегатах</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F5</Shortcut>
@@ -1912,11 +2394,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable aggregates mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить режим агрегатов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable aggregates mode</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить режим агрегатов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnableAggregateMode</Action>
@@ -1927,11 +2417,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable aggregates usage</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить использование агрегатов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable aggregates usage</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить использование агрегатов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnableAggregatesUsage</Action>
@@ -1942,11 +2440,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable totals mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить режим итогов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable totals mode</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить режим итогов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnableTotalsMode</Action>
@@ -1957,11 +2463,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Disable aggregates usage</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выключить использование агрегатов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Disable aggregates usage</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выключить использование агрегатов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>DisableAggregatesUsage</Action>
@@ -1972,11 +2486,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Rebuild ...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перестроить ...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Rebuild aggregates usage</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перестроить использование агрегатов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>RebuildAggregates</Action>
@@ -1987,11 +2509,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear aggregates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить агрегаты</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ClearAggregatesByRegisters</Action>
@@ -2003,11 +2533,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update aggregates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить агрегаты</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>FillAggregatesOnRegisters</Action>
@@ -2018,11 +2556,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Optimal ...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оптимальные ...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Calculate the optimal aggregates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать оптимальные агрегаты</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>OptimalAggregates</Action>
@@ -2033,11 +2579,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Set calculated totals period</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить период рассчитанных итогов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Set the period of the calculated totals by all registers</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить период рассчитанных итогов по всем регистрам</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>SetTotalsPeriod</Action>
@@ -2048,11 +2602,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable totals usage</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить использование итогов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable usage of totals for all registers for which totals usage is disabled</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить использование итогов для всех регистров, у которых это использование отключено</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnableTotalsUsageQuickAccess</Action>
@@ -2063,11 +2625,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Rebuild and populate</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перестроить и заполнить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Populate aggregates and rebuild</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить агрегаты и выполнить перестроение</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>FillAggregatesAndExecuteRebuild</Action>
@@ -2078,11 +2648,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Get optimal aggregates</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получить оптимальные агрегаты</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Calculate the optimal aggregates for all the registers</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рассчитать оптимальные агрегаты для всех регистров</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ReceiveOptimalAggregates</Action>
@@ -2093,11 +2671,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Recalculate totals</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать итоги</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Run totals recalculation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить пересчет итогов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>RecalcTotals</Action>
@@ -2108,11 +2694,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Recalculate totals for the period...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать итоги за период...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Recalculate totals for the period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить пересчет итогов за период</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>RecalcTotalsForPeriod</Action>
@@ -2123,11 +2717,19 @@ For accounting registers - by %2.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Recalculate current totals</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать текущие итоги</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Run current totals recalculation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить пересчет текущих итогов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>RecalcPresentTotals</Action>

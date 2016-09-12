@@ -56,8 +56,8 @@ Procedure OpenCertificateContinuation(Context)
 		
 	ElsIf TypeOf(Context.CertificateData) <> Type("String") Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'An error occurred calling the OpenCertificate procedure
-			           |of the DigitalSignatureClient general module: Incorrect value of the  %1 CertificateData parameter.'"), String(Context.CertificateData));
+			NStr("en='An error occurred calling the OpenCertificate procedure"
+"of the DigitalSignatureClient general module: Incorrect value of the  %1 CertificateData parameter.';ru='Ошибка при вызове процедуры ОткрытьСертификат общего модуля ЭлектроннаяПодписьКлиент: Некорректное значение параметра ДанныеСертификата ""%1"".'"), String(Context.CertificateData));
 	
 	ElsIf IsTempStorageURL(Context.CertificateData) Then
 		Context.CertificateAddress = Context.CertificateData;
@@ -205,8 +205,8 @@ Procedure SaveCertificateContinuation(Context)
 	EndIf;
 	
 	Dialog = New FileDialog(FileDialogMode.Save);
-	Dialog.Title = NStr("en = 'Select the file to save the certificate'");
-	Dialog.Filter    = NStr("en = 'Certificate files (*.cer)|*.cer|All files (*.*)|*.*'");
+	Dialog.Title = NStr("en='Select the file to save the certificate';ru='Выберите файл для сохранения сертификата'");
+	Dialog.Filter    = NStr("en='Certificate files (*.cer)|*.cer|All files (*.*)|*.*';ru='Файлы сертификатов (*.cer)|*.cer|Все файлы (*.*)|*.*'");
 	Dialog.Multiselect = False;
 	
 	FilesToReceive = New Array;
@@ -226,7 +226,7 @@ Procedure SaveCertificateAfterReceivingFiles(ReceivedFiles, Context) Export
 		HasReceivedFiles = False;
 	Else
 		HasReceivedFiles = True;
-		ShowUserNotification(NStr("en = 'Certificate saved to file:'"),,
+		ShowUserNotification(NStr("en='Certificate saved to file:';ru='Сертификат сохранен в файл:'"),,
 			ReceivedFiles[0].Name);
 	EndIf;
 	
@@ -290,8 +290,8 @@ Procedure SaveCertificateQueryAfterSettingExpansion(ExtensionAttached, Context) 
 	EndIf;
 	
 	Dialog = New FileDialog(FileDialogMode.Save);
-	Dialog.Title = NStr("en = 'Select file to save query to certificate'");
-	Dialog.Filter    = NStr("en = 'Certificate files (*.p10)|*.p10|All files (*.*)|*.*'");
+	Dialog.Title = NStr("en='Select file to save query to certificate';ru='Выберите файл для сохранения запроса на сертификат'");
+	Dialog.Filter    = NStr("en='Certificate files (*.p10)|*.p10|All files (*.*)|*.*';ru='Файлы сертификатов (*.p10)|*.p10|Все файлы (*.*)|*.*'");
 	Dialog.Multiselect = False;
 	
 	FilesToReceive = New Array;
@@ -311,7 +311,7 @@ Procedure SaveCertificateQueryAfterReceivingFiles(ReceivedFiles, Context) Export
 		HasReceivedFiles = False;
 	Else
 		HasReceivedFiles = True;
-		ShowUserNotification(NStr("en = 'Query to certificate is saved to file:'"),,
+		ShowUserNotification(NStr("en='Query to certificate is saved to file:';ru='Запрос на сертификат сохранен в файл:'"),,
 			ReceivedFiles[0].Name);
 	EndIf;
 	
@@ -346,12 +346,12 @@ Procedure SaveSignatureAfterConnectingFileOperationsExtension(Attached, Context)
 	FileOpeningDialog = New FileDialog(FileDialogMode.Save);
 	
 	Filter = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Digital signature files (*.%1)|*.%1|All files (*.*)|*.*'"),
+		NStr("en='Digital signature files (*.%1)|*.%1|All files (*.*)|*.*';ru='Файлы электронных подписей (*.%1)|*.%1|Все файлы (*.*)|*.*'"),
 		ExtensionForSignatureFiles);
 	
 	FileOpeningDialog.Filter = Filter;
 	FileOpeningDialog.Multiselect = False;
-	FileOpeningDialog.Title = NStr("en = 'Choose file for signature saving'");
+	FileOpeningDialog.Title = NStr("en='Choose file for signature saving';ru='Выберите файл для сохранения подписи'");
 	
 	FilesToTransfer = New Array;
 	FilesToTransfer.Add(New TransferableFileDescription("", Context.SignatureAddress));
@@ -371,7 +371,7 @@ Procedure SaveSignatureAfterGettingFile(ReceivedFiles, Context) Export
 		Return;
 	EndIf;
 	
-	ShowUserNotification(NStr("en = 'Digital signature is saved to file:'"),,
+	ShowUserNotification(NStr("en='Digital signature is saved to file:';ru='Электронная подпись сохранена в файл:'"),,
 		ReceivedFiles[0].Name);
 	
 EndProcedure
@@ -506,11 +506,12 @@ Procedure GetCertificateByThumbprintEnd(Certificate, ErrorPresentation, Context)
 	
 	If ValueIsFilled(ErrorPresentation) Then
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Certificate is not found
-			           |on the computer as: %1'"),
+			NStr("en='Certificate is not found"
+"on the computer as: %1';ru='Сертификат"
+"не найден на компьютере по причине: %1'"),
 			ErrorPresentation);
 	Else
-		ErrorText = NStr("en = 'Certificate is not found on the computer.'");
+		ErrorText = NStr("en='Certificate is not found on the computer.';ru='Сертификат не найден на компьютере.'");
 	EndIf;
 	
 	If Context.ShowError = Undefined Then
@@ -712,7 +713,7 @@ Procedure CheckSignatureOnClientAfterSignatureCheck(Certificate, Context) Export
 	
 	If Certificate = Undefined Then
 		ExecuteNotifyProcessing(Context.Notification,
-			NStr("en = 'Certificate is not found in the signature data.'"));
+			NStr("en='Certificate is not found in the signature data.';ru='Сертификат не найден в данных подписи.'"));
 		Return;
 	EndIf;
 	
@@ -849,8 +850,8 @@ Procedure CheckCertificateOnClientAfterErrorChecks(ErrorInfo, StandardProcessing
 	ErrorDescription = BriefErrorDescription(ErrorInfo);
 	
 	If Context.ErrorDescriptionOnServer <> Undefined Then
-		ErrorDescription = Context.ErrorDescriptionOnServer + " " + NStr("en = '(on server)'") + Chars.LF
-			+ ErrorDescription + " " + NStr("en = '(on client)'");
+		ErrorDescription = Context.ErrorDescriptionOnServer + " " + NStr("en='(on server)';ru='(на сервере)'") + Chars.LF
+			+ ErrorDescription + " " + NStr("en='(on client)';ru='(на клиенте)'");
 	EndIf;
 	
 	ExecuteNotifyProcessing(Context.Notification, ErrorDescription);
@@ -914,36 +915,37 @@ EndProcedure
 // Continue the CreateCryptographyManager procedure.
 Procedure CreateCryptographyManagerAfterWorkWithCryptographyExpansionConnection(Attached, Context) Export
 	
-	FormTitle = NStr("en = 'Application of digital signature and encryption is required'");
+	FormTitle = NStr("en='Application of digital signature and encryption is required';ru='Требуется программа электронной подписи и шифрования'");
 	Operation       = Context.Operation;
 	
 	If Operation = "Signing" Then
-		ErrorTitle = NStr("en = 'Unable to write data as:'");
+		ErrorTitle = NStr("en='Unable to write data as:';ru='Не удалось подписать данные по причине:'");
 		
 	ElsIf Operation = "SignatureCheck" Then
-		ErrorTitle = NStr("en = 'Unable to check signature as:'");
+		ErrorTitle = NStr("en='Unable to check signature as:';ru='Не удалось проверить подпись по причине:'");
 		
 	ElsIf Operation = "Encryption" Then
-		ErrorTitle = NStr("en = 'Unable to encrypt the data as:'");
+		ErrorTitle = NStr("en='Unable to encrypt the data as:';ru='Не удалось зашифровать данные по причине:'");
 		
 	ElsIf Operation = "Details" Then
-		ErrorTitle = NStr("en = 'Unable to decrypt as:'");
+		ErrorTitle = NStr("en='Unable to decrypt as:';ru='Не удалось расшифровать данные по причине:'");
 		
 	ElsIf Operation = "CertificateCheck" Then
-		ErrorTitle = NStr("en = 'Unable to check certificate as:'");
+		ErrorTitle = NStr("en='Unable to check certificate as:';ru='Не удалось проверить сертификат по причине:'");
 		
 	ElsIf Operation = "GetCertificates" Then
-		ErrorTitle = NStr("en = 'Unable to get certificates as:'");
+		ErrorTitle = NStr("en='Unable to get certificates as:';ru='Не удалось получить сертификаты по причине:'");
 		
 	ElsIf Operation = Null AND Context.ShowError <> True Then
 		ErrorTitle = "";
 		
 	ElsIf Operation <> "" Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Error in the CryptographyManager function.
-			           |Wrong of the %1 Operation parameter value.'"), Operation);
+			NStr("en='Error in the CryptographyManager function."
+"Wrong of the %1 Operation parameter value.';ru='Ошибка в функции МенеджерКриптографии."
+"Неверное значение параметра Операция ""%1"".'"), Operation);
 	Else
-		ErrorTitle = NStr("en = 'Unable to execute operation as:'");
+		ErrorTitle = NStr("en='Unable to execute operation as:';ru='Не удалось выполнить операцию по причине:'");
 	EndIf;
 	
 	ErrorProperties = New Structure;
@@ -953,8 +955,8 @@ Procedure CreateCryptographyManagerAfterWorkWithCryptographyExpansionConnection(
 	
 	If Not Attached Then
 		ErrorText =
-			NStr("en = 'You should set an extension
-			           |to work with digital signature and encryption to the Internet Browser.'");
+			NStr("en='You should set an extension"
+"to work with digital signature and encryption to the Internet Browser.';ru='В обозреватель интернет требуется установить расширение для работы с электронной подписью и шифрованием.'");
 		
 		ErrorProperties.Insert("Description", ErrorText);
 		ErrorProperties.Insert("Common",  True);
@@ -1119,21 +1121,21 @@ Procedure CreateCryptographyManagerAfterCycle(Context) Export
 	ErrorProperties = Context.ErrorProperties;
 	
 	If ErrorProperties.Errors.Count() = 0 Then
-		ErrorText = NStr("en = 'Use of no application is expected.'");
+		ErrorText = NStr("en='Use of no application is expected.';ru='Не предусмотрено использование ни одной программы.'");
 		ErrorProperties.Insert("Description", ErrorText);
 		ErrorProperties.Common = True;
 		ErrorProperties.ToAdmin = True;
 		If Not StandardSubsystemsClientReUse.ClientWorkParameters().InfobaseUserWithFullAccess Then
-			ErrorText = ErrorText + Chars.LF + Chars.LF + NStr("en = 'Contact your administrator.'");
+			ErrorText = ErrorText + Chars.LF + Chars.LF + NStr("en='Contact your administrator.';ru='Обратитесь к администратору.'");
 		EndIf;
 		ErrorProperties.Insert("Instruction", True);
 		ErrorProperties.Insert("ApplicationsSetting", True);
 	Else
 		If ValueIsFilled(Context.Application) Then
 			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '%1 application is not available and not installed on the computer.'"), Context.Application);
+				NStr("en='%1 application is not available and not installed on the computer.';ru='Программа %1 не доступна или не установлена на компьютере.'"), Context.Application);
 		Else
-			ErrorText = NStr("en = 'None of the applications is available or installed on the computer.'");
+			ErrorText = NStr("en='None of the applications is available or installed on the computer.';ru='Ни одна из программ не доступна или не установлена на компьютере.'");
 		EndIf;
 		ErrorProperties.Insert("Description", ErrorText);
 	EndIf;
@@ -1421,8 +1423,8 @@ Procedure AddCertificateForEncryptionOnlyFromFileAfterConnectingExtension(Attach
 	EndIf;
 	
 	Dialog = New FileDialog(FileDialogMode.Open);
-	Dialog.Title = NStr("en = 'Select certificate file (only for encryption)'");
-	Dialog.Filter = NStr("en = 'Certificate X.509 (*.cer;*.crt)|*.cer;*.crt|All files(*.*)|*.*'");
+	Dialog.Title = NStr("en='Select certificate file (only for encryption)';ru='Выберите файл сертификата (только для шифрования)'");
+	Dialog.Filter = NStr("en='Certificate X.509 (*.cer;*.crt)|*.cer;*.crt|All files(*.*)|*.*';ru='Сертификат X.509 (*.cer;*.crt)|*.cer;*.crt|Все файлы(*.*)|*.*'");
 	
 	BeginPuttingFiles(New NotifyDescription(
 			"AddCertificateForEncryptionOnlyFromFileAfterPostingFiles", ThisObject, Context),
@@ -1463,18 +1465,18 @@ Procedure AddCertificateForEncryptionOnlyFromFileAfterPostingFile(Address, Conte
 	
 	If Form = Undefined Then
 		ShowMessageBox(,
-			NStr("en = 'File certificate should be in the DER X format.509, operation aborted.'"));
+			NStr("en='File certificate should be in the DER X format.509, operation aborted.';ru='Файл сертификата должен быть в формате DER X.509, операция прервана.'"));
 		Return;
 	EndIf;
 	
 	If Not Form.IsOpen() Then
 		Buttons = New ValueList;
 		Buttons.Add("Open", NStr("en = 'Open'"));
-		Buttons.Add("Cancel",  NStr("en = 'Cancel'"));
+		Buttons.Add("Cancel",  NStr("en='Cancel';ru='Отменить'"));
 		ShowQueryBox(
 			New NotifyDescription("AddCertificateForEncryptionOnlyFromFileAfterWarningAboutExisting",
 				ThisObject, Form.Certificate),
-			NStr("en = 'Certificate is already added.'"), Buttons);
+			NStr("en='Certificate is already added.';ru='Сертификат уже добавлен.'"), Buttons);
 	EndIf;
 	
 EndProcedure
@@ -1497,14 +1499,16 @@ Procedure ShowRequestToApplicationError(FormTitle, ErrorTitle, ErrorOnClient, Er
 	
 	If TypeOf(ErrorOnClient) <> Type("Structure") Then
 		Raise
-			NStr("en = 'For the
-			           |ShowRequestToApplicationError procedure an incorrect ErrorOnClient parameter type is specified.'");
+			NStr("en='For the"
+"ShowRequestToApplicationError procedure an incorrect ErrorOnClient parameter type is specified.';ru='Для"
+"процедуры ПоказатьОшибкуОбращенияКПрограмме указан некорректный тип параметра ОшибкаНаКлиенте.'");
 	EndIf;
 	
 	If TypeOf(ErrorOnServer) <> Type("Structure") Then
 		Raise
-			NStr("en = 'For the
-			           |ShowRequestToApplicationError procedure an incorrect ErrorOnServer parameter type is specified.'");
+			NStr("en='For the"
+"ShowRequestToApplicationError procedure an incorrect ErrorOnServer parameter type is specified.';ru='Для"
+"процедуры ПоказатьОшибкуОбращенияКПрограмме указан некорректный тип параметра ОшибкаНаСервере.'");
 	EndIf;
 	
 	FormParameters = New Structure;
@@ -1673,7 +1677,7 @@ Procedure StartSelectingCertificateWhenFilterIsSet(Form) Export
 	AvailableCertificates = "";
 	UnavailableCertificates = "";
 	
-	Text = NStr("en = 'Certificates that can be used for this operation are limited.'");
+	Text = NStr("en='Certificates that can be used for this operation are limited.';ru='Сертификаты, которые могут быть использованы для этой операции ограничены.'");
 	
 	For Each ItemOfList IN Form.FilterCertificates Do
 		If Form.CertificateChoiceList.FindByValue(ItemOfList.Value) = Undefined Then
@@ -1684,22 +1688,22 @@ Procedure StartSelectingCertificateWhenFilterIsSet(Form) Export
 	EndDo;
 	
 	If ValueIsFilled(AvailableCertificates) Then
-		Title = NStr("en = 'The following certificates are available for selection:'");
+		Title = NStr("en='The following certificates are available for selection:';ru='Следующие разрешенные сертификаты доступны для выбора:'");
 		Text = Text + Chars.LF + Chars.LF + Title + Chars.LF + TrimAll(AvailableCertificates);
 	EndIf;
 	
 	If ValueIsFilled(UnavailableCertificates) Then
 		If DigitalSignatureClientServer.CommonSettings().CreateDigitalSignaturesAtServer Then
 			If ValueIsFilled(AvailableCertificates) Then
-				Title = NStr("en = 'The following allowed certificates are not found either on the computer or on the server:'");
+				Title = NStr("en='The following allowed certificates are not found either on the computer or on the server:';ru='Следующие разрешенные сертификаты не найдены ни на компьютере, ни на сервере:'");
 			Else
-				Title = NStr("en = 'None of the following authorized certificates was found neither on your computer, nor on server:'");
+				Title = NStr("en='None of the following authorized certificates was found neither on your computer, nor on server:';ru='Ни один из следующих разрешенных сертификатов не найден ни на компьютере, ни на сервере:'");
 			EndIf;
 		Else
 			If ValueIsFilled(AvailableCertificates) Then
-				Title = NStr("en = 'The following allowed certificates are not found on the computer:'");
+				Title = NStr("en='The following allowed certificates are not found on the computer:';ru='Следующие разрешенные сертификаты не найдены на компьютере:'");
 			Else
-				Title = NStr("en = 'None of the following allowed certificates is found on the computer:'");
+				Title = NStr("en='None of the following allowed certificates is found on the computer:';ru='Ни один из следующих разрешенных сертификатов не найден на компьютере:'");
 			EndIf;
 		EndIf;
 		Text = Text + Chars.LF + Chars.LF + Title + Chars.LF + TrimAll(UnavailableCertificates);
@@ -1791,7 +1795,7 @@ Procedure AddSignatureFromFileAfterCreatingCryptographyManager(Result, Context) 
 	   AND TypeOf(Result) <> Type("CryptoManager") Then
 		
 		ShowRequestToApplicationError(
-			NStr("en = 'Application of digital signature and encryption is required'"),
+			NStr("en='Application of digital signature and encryption is required';ru='Требуется программа электронной подписи и шифрования'"),
 			"", Result, Context.AddingForm.CryptoManagerAtServerErrorDescription);
 	Else
 		Context.AddingForm.Open();
@@ -1850,7 +1854,7 @@ Procedure SaveDataWithSignature(DataDescription, ResultProcessing = Undefined) E
 		).ActionsOnSavingDS = "SaveAllSignatures";
 	
 	ServerParameters = New Structure;
-	ServerParameters.Insert("DataTitle",     NStr("en = 'Data'"));
+	ServerParameters.Insert("DataTitle",     NStr("en='Data';ru='Данные'"));
 	ServerParameters.Insert("ShowComment", False);
 	FillPropertyValues(ServerParameters, DataDescription);
 	
@@ -1919,10 +1923,10 @@ Procedure SaveDataWithSignatureAfterSavingDataFile(Result, Context) Export
 	
 	If Result.Property("ErrorDescription") Then
 		Error = New Structure("ErrorDescription",
-			NStr("en = 'An error occurred while recording the file:'") + Chars.LF + Result.ErrorDescription);
+			NStr("en='An error occurred while recording the file:';ru='При записи файла возникла ошибка:'") + Chars.LF + Result.ErrorDescription);
 		
 		ShowRequestToApplicationError(
-			NStr("en = 'Unable to save signatures with file'"), "", Error, New Structure);
+			NStr("en='Unable to save signatures with file';ru='Не удалось сохранить подписи вместе с файлом'"), "", Error, New Structure);
 		Return;
 		
 	ElsIf Not Result.Property("FullFileName")
@@ -2123,11 +2127,11 @@ Procedure SaveDataWithSignatureAfterGettingFiles(ReceivedFiles, Context) Export
 		EndDo;
 	EndIf;
 	
-	Text = NStr("en = 'Folder with files:'") + Chars.LF;
+	Text = NStr("en='Folder with files:';ru='Папка с файлами:'") + Chars.LF;
 	Text = Text + Context.PathToFiles;
 	Text = Text + Chars.LF + Chars.LF;
 	
-	Text = Text + NStr("en = 'Files:'") + Chars.LF;
+	Text = Text + NStr("en='Files:';ru='Файлы:'") + Chars.LF;
 	
 	For Each KeyAndValue IN ReceivedFilesNames Do
 		Text = Text + KeyAndValue.Key + Chars.LF;
@@ -2196,8 +2200,9 @@ Procedure SetExtensionAfterWorkWithCryptographyExtansionConnectionCheck(Attached
 	
 	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(
 		New NotifyDescription("SetExtensionAfterFileOperationsExtensionConnection", ThisObject, Context),
-		NStr("en = 'Before you set decryption to work with a digital
-		           |signature and encrytion you should set an extension to work with files.'"),
+		NStr("en='Before you set decryption to work with a digital"
+"signature and encrytion you should set an extension to work with files.';ru='Перед установкой расширения для работы"
+"с электронной подписью и шифрованием необходимо установить расширение для работы с файлами.'"),
 		False);
 	
 EndProcedure
@@ -2317,7 +2322,7 @@ Procedure ContinueOpenBeginningAfterCreatingCryptographyManager(Result, Context)
 	If TypeOf(Result) <> Type("CryptoManager") Then
 		
 		ShowRequestToApplicationError(
-			NStr("en = 'Application of digital signature and encryption is required'"),
+			NStr("en='Application of digital signature and encryption is required';ru='Требуется программа электронной подписи и шифрования'"),
 			"", Result, Context.ErrorOnServer);
 		
 		ExecuteNotifyProcessing(Context.Notification, False);
@@ -2836,7 +2841,7 @@ Procedure ExecuteOnSideCycleAfterSigning(SignatureProperties, Context)
 				ErrorInfo = ErrorInfo();
 				DataItem.Delete("SignatureProperties");
 				ErrorOnClient = New Structure("ErrorDescription",
-					NStr("en = 'An error occurred writing a signature:'")
+					NStr("en='An error occurred writing a signature:';ru='При записи подписи возникла ошибка:'")
 					+ Chars.LF + BriefErrorDescription(ErrorInfo));
 				ExecuteOnSideAfterCycle(ErrorOnClient, Context);
 				Return;
@@ -2868,7 +2873,7 @@ Procedure ExecuteOnSideCycleAfterWriteSignature(Result, Context) Export
 	If Result.Property("ErrorDescription") Then
 		Context.DataItem.Delete("SignatureProperties");
 		Error = New Structure("ErrorDescription",
-			NStr("en = 'An error occurred writing a signature:'") + Chars.LF + Result.ErrorDescription);
+			NStr("en='An error occurred writing a signature:';ru='При записи подписи возникла ошибка:'") + Chars.LF + Result.ErrorDescription);
 		ExecuteOnSideAfterCycle(Error, Context);
 		Return;
 	EndIf;
@@ -2911,7 +2916,7 @@ Procedure ExecuteOnSideCycleAfterWriteEncryptedData(Result, Context) Export
 	If Result.Property("ErrorDescription") Then
 		Context.DataItem.Delete("EncryptedData");
 		Error = New Structure("ErrorDescription",
-			NStr("en = 'An error occurred while writing the encrypted data:'")
+			NStr("en='An error occurred while writing the encrypted data:';ru='При записи зашифрованных данных возникла ошибка:'")
 			+ Chars.LF + Result.ErrorDescription);
 		ExecuteOnSideAfterCycle(Error, Context);
 		Return;
@@ -2955,7 +2960,7 @@ Procedure ExecuteOnSideCycleAfterWriteDecryptedData(Result, Context) Export
 	If Result.Property("ErrorDescription") Then
 		Context.DataItem.Delete("DecryptedData");
 		Error = New Structure("ErrorDescription",
-			NStr("en = 'An error occurred while writing the decrypted data:'")
+			NStr("en='An error occurred while writing the decrypted data:';ru='При записи расшифрованных данных возникла ошибка:'")
 			+ Chars.LF + Result.ErrorDescription);
 		ExecuteOnSideAfterCycle(Error, Context);
 		Return;
@@ -3021,7 +3026,7 @@ Procedure GetDataFromDataFromDescriptionContinue(Result, Context) Export
 	   AND TypeOf(Result.Data) <> Type("String") Then
 		
 		If TypeOf(Result) <> Type("Structure") Or Not Result.Property("ErrorDescription") Then
-			Error = New Structure("ErrorDescription", NStr("en = 'Incorrect data type.'"));
+			Error = New Structure("ErrorDescription", NStr("en='Incorrect data type.';ru='Некорректный тип данных.'"));
 		Else
 			Error = New Structure("ErrorDescription", Result.ErrorDescription);
 		EndIf;
@@ -3094,7 +3099,7 @@ Procedure GetDataFromDataDescriptionEnd(PlacedFiles, Context) Export
 	
 	If PlacedFiles = Undefined Or PlacedFiles.Count() = 0 Then
 		Result = New Structure("ErrorDescription",
-			NStr("en = 'Data transfer is canceled by a user.'"));
+			NStr("en='Data transfer is canceled by a user.';ru='Передача данных отменена пользователем.'"));
 	Else
 		Result = PlacedFiles[0].Location;
 	EndIf;

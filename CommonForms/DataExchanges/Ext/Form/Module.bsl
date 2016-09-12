@@ -26,7 +26,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	ExchangePlanList = DataExchangeReUse.SLExchangePlanList();
 	If ExchangePlanList.Count() = 0 Then
-		MessageText = NStr("en = 'Possibility to configure the data synchronization is not provided.'");
+		MessageText = NStr("en='Possibility to configure the data synchronization is not provided.';ru='Возможность настройки синхронизации данных не предусмотрена.'");
 		CommonUseClientServer.MessageToUser(MessageText,,,, Cancel);
 		Return;
 	EndIf;
@@ -117,7 +117,7 @@ EndProcedure
 Procedure ListOfNodesStatusSelection(Item, SelectedRow, Field, StandardProcessing)
 	
 	NotifyDescription = New NotifyDescription("NodesStatusListSelectionEnd", ThisObject);
-	ShowQueryBox(NOTifyDescription, NStr("en = 'Do you want to perform data synchronization?'"), QuestionDialogMode.YesNo,, DialogReturnCode.Yes);
+	ShowQueryBox(NOTifyDescription, NStr("en='Do you want to perform data synchronization?';ru='Выполнить синхронизацию данных?'"), QuestionDialogMode.YesNo,, DialogReturnCode.Yes);
 	
 EndProcedure
 
@@ -498,7 +498,7 @@ Procedure UpdateSynchronizationsCount(SetExchangesQuantity)
 	If SynchronizationsAmount = 0 Then
 		
 		SynchronizationPanel.CurrentPage = SynchronizationPanel.ChildItems.SynchronizationIsNotCustomized;
-		Title = NStr("en = 'Data synchronization'");
+		Title = NStr("en='Data synchronization';ru='Синхронизация данных'");
 		
 		If IsInRoleAddChangeOfDataExchanges Then
 			Items.Move(Items.PopupCreate, Items.PanelCreateSynchronizationIsNotCustomized);
@@ -521,7 +521,7 @@ Procedure UpdateSynchronizationsCount(SetExchangesQuantity)
 	Else
 		
 		SynchronizationPanel.CurrentPage = SynchronizationPanel.ChildItems.FewSynchronizations;
-		Title = NStr("en = 'List of configured data synchronizations'");
+		Title = NStr("en='List of configured data synchronizations';ru='Список настроенных синхронизаций данных'");
 		
 		Items.NodeStateListChangeInfobaseNode.Visible = IsInRoleAddChangeOfDataExchanges;
 		Items.ConfigureExchangeProcessingSchedule.Visible = IsInRoleAddChangeOfDataExchanges;
@@ -585,7 +585,7 @@ Procedure SetOneSynchronizationItems()
 	
 	If ConfiguredSynchronization.InfobaseNode = Undefined Then
 		
-		Raise NStr("en = 'Work of the data synchronization monitor in the undivided session is not supported'");
+		Raise NStr("en='Work of the data synchronization monitor in the undivided session is not supported';ru='Работа монитора синхронизации данных в неразделенном сеансе не поддерживается'");
 		
 	EndIf;
 	
@@ -624,8 +624,9 @@ Procedure SetOneSynchronizationItems()
 		Or ConfiguredSynchronization.LastExportDate <> BlankDate
 		Or ConfiguredSynchronization.LastDataExportResult <> 0 Then
 		
-		HintOfExport = NStr("en = 'Data is
-										|sent: %SendingDate% The last attempt: %AttemptData%'");
+		HintOfExport = NStr("en='Data is"
+"sent: %SendingDate% The last attempt: %AttemptData%';ru='Данные отправлены: %ДатаОтправки%"
+"Последняя попытка: %ДатаПопытки%'");
 		HintOfExport = StrReplace(HintOfExport, "%SendingDate%", ConfiguredSynchronization.LastSuccessfulExportDatePresentation);
 		HintOfExport = StrReplace(HintOfExport, "%TryDate%", ConfiguredSynchronization.LastImportDatePresentation);
 		
@@ -639,8 +640,9 @@ Procedure SetOneSynchronizationItems()
 		Or ConfiguredSynchronization.LastImportDate <> BlankDate
 		Or ConfiguredSynchronization.LastDataImportResult <> 0 Then
 		
-		HintOfImport = NStr("en = 'Data is
-										|received: %DateReveiced% The last attempt: %AttemptDate%'");
+		HintOfImport = NStr("en='Data is"
+"received: %DateReveiced% The last attempt: %AttemptDate%';ru='Данные"
+"получены: %ДатаПолучения% Последняя попытка: %ДатаПопытки%'");
 		HintOfImport = StrReplace(HintOfImport, "%DateReceived%", ConfiguredSynchronization.LastSuccessfulImportDatePresentation);
 		HintOfImport = StrReplace(HintOfImport, "%TryDate%", ConfiguredSynchronization.LastExportDatePresentation);
 		
@@ -688,7 +690,7 @@ Procedure SetOneSynchronizationItems()
 		
 	Else
 		
-		DataSynchronizationSchedule = NStr("en = 'Synchronization schedule is not configured'");;
+		DataSynchronizationSchedule = NStr("en='Synchronization schedule is not configured';ru='Расписание синхронизации не настроено'");;
 		
 	EndIf;
 	
@@ -758,7 +760,7 @@ Procedure AddCreateNewExchangeCommands()
 						                                                                      "CommandTitleForCreationOfNewDataExchange",
 						                                                                      PredefinedSetting);
 						
-						CreateCommandAndFormItem(CommandName, CommandTitle + NStr("en = ' (in service)'"), SummingGroup);
+						CreateCommandAndFormItem(CommandName, CommandTitle + NStr("en=' (in service)';ru=' (в сервисе)'"), SummingGroup);
 						
 					EndDo;
 					
@@ -773,7 +775,7 @@ Procedure AddCreateNewExchangeCommands()
 				
 				If ExchangePlanManager.CorrespondentSaaS() Then
 					CreateCommandAndFormItem(CommandName + "CorrespondentSaaS", 
-					                            CommandTitle + NStr("en = ' (in service)'"),
+					                            CommandTitle + NStr("en=' (in service)';ru=' (в сервисе)'"),
 					                            ParentGroup);
 				EndIf;
 				
@@ -969,11 +971,11 @@ Procedure CheckConversionRulesCompatibility(Val ExchangePlanName, ContinuationPr
 	Else
 		
 		Buttons = New ValueList;
-		Buttons.Add("GoToRulesImport", NStr("en = 'Import rules'"));
+		Buttons.Add("GoToRulesImport", NStr("en='Import rules';ru='Загрузить правила'"));
 		If ErrorDescription.ErrorKind <> "IncorrectConfiguration" Then
-			Buttons.Add("Continue", NStr("en = 'Continue'"));
+			Buttons.Add("Continue", NStr("en='Continue';ru='Продолжить'"));
 		EndIf;
-		Buttons.Add("Cancel", NStr("en = 'Cancel'"));
+		Buttons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
 		
 		AdditionalParameters = New Structure;
 		AdditionalParameters.Insert("ContinuationProcessor", ContinuationProcessor);
@@ -984,9 +986,9 @@ Procedure CheckConversionRulesCompatibility(Val ExchangePlanName, ContinuationPr
 		FormParameters.Picture = ErrorDescription.Picture;
 		FormParameters.OfferDontAskAgain = False;
 		If ErrorDescription.ErrorKind = "IncorrectConfiguration" Then
-			FormParameters.Title = NStr("en = 'Data can not be synchronized'");
+			FormParameters.Title = NStr("en='Data can not be synchronized';ru='Синхронизация данных не может быть выполнена'");
 		Else
-			FormParameters.Title = NStr("en = 'Data can be synchronized incorrectly'");
+			FormParameters.Title = NStr("en='Data can be synchronized incorrectly';ru='Синхронизация данных может быть выполнена некорректно'");
 		EndIf;
 		
 		StandardSubsystemsClient.ShowQuestionToUser(Notification, ErrorDescription.ErrorText, Buttons, FormParameters);
@@ -1028,7 +1030,7 @@ Function ConversionRulesAreCompatibleWithCurrentVersion(ExchangePlanName, ErrorD
 	If ConfigurationNameFromRules <> InfobaseConfigurationName Then
 			
 			ErrorDescription = New Structure;
-			ErrorDescription.Insert("ErrorText", NStr("en = 'Data can not be synchronized because of using rules for the %1 applicatione. You should use rules from configuration or import correct rules set from file.'"));
+			ErrorDescription.Insert("ErrorText", NStr("en='Data can not be synchronized because of using rules for the %1 applicatione. You should use rules from configuration or import correct rules set from file.';ru='Синхронизация данных не может быть выполнена, так как используются правила, предназначенные для программы ""%1"". Следует использовать правила из конфигурации или загрузить корректный комплект правил из файла.'"));
 			ErrorDescription.ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescription.ErrorText,
 				RulesInformation.ConfigurationSynonymInRules);
 			ErrorDescription.Insert("ErrorKind", "IncorrectConfiguration");
@@ -1045,12 +1047,12 @@ Function ConversionRulesAreCompatibleWithCurrentVersion(ExchangePlanName, ErrorD
 			
 			If ComparisonResult < 0 Then
 				
-				ErrorText = NStr("en = 'Data can be synchronized incorrectly because of using rules for the previous version of %1 applicatione (%2). It is recommended to use rules from configuration or import rules set designed for the current application version (%3).'");
+				ErrorText = NStr("en='Data can be synchronized incorrectly because of using rules for the previous version of %1 applicatione (%2). It is recommended to use rules from configuration or import rules set designed for the current application version (%3).';ru='Синхронизация данных может быть выполнена некорректно, так как используются правила, предназначенные для предыдущей версии программы ""%1"" (%2). Рекомендуется использовать правила из конфигурации или загрузить комплект правил, предназначенный для текущей версии программы (%3).'");
 				ErrorKind = "OutdatedConfigurationVersion";
 				
 			Else
 				
-				ErrorText = NStr("en = 'Data can be synchronized incorrectly because of using rules for newer version of the %1 applicatione (%2). It is recommended to update application version or use rules set designed for the current application version (%3).'");
+				ErrorText = NStr("en='Data can be synchronized incorrectly because of using rules for newer version of the %1 applicatione (%2). It is recommended to update application version or use rules set designed for the current application version (%3).';ru='Синхронизация данных может быть выполнена некорректно, так как используются правила, предназначенные для более новой версии программы """"%1"""" (%2). Рекомендуется обновить версию программы или использовать комплект правил, предназначенный для текущей версии программы (%3).'");
 				ErrorKind = "OutdatedRules";
 				
 			EndIf;

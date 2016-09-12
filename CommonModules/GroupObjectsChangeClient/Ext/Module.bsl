@@ -32,7 +32,7 @@ Procedure ChangeSelected(List) Export
 	EndDo;
 	
 	If FormParameters.ObjectsArray.Count() = 0 Then
-		ShowMessageBox(, NStr("en = 'The command can not be run for the specified object.'"));
+		ShowMessageBox(, NStr("en='The command can not be run for the specified object.';ru='Команда не может быть выполнена для указанного объекта.'"));
 		Return;
 	EndIf;
 		

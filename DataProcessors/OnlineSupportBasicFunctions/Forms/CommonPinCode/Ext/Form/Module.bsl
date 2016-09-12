@@ -99,7 +99,7 @@ EndProcedure
 &AtServer
 Procedure FillForm()
 	
-	UserTitle = NStr("en = 'Login:'") + " " + Parameters.login;
+	UserTitle = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	Items.UserLoginLabelPinCode.Title = UserTitle;
 	RegistrationNumberPinCode = Parameters.regNumber;
@@ -120,7 +120,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(RegistrationNumberPinCode) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Registration Number field is not filled'");
+		Message.Text = NStr("en='Registration Number field is not filled';ru='Не заполнено поле ""Регистрационный номер""'");
 		Message.Field  = "RegistrationNumberPinCode";
 		Message.Message();
 		
@@ -131,7 +131,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(PinCode) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Pin-code field is not filled.'");
+		Message.Text = NStr("en='Pin-code field is not filled.';ru='Не заполнено поле ""Пинкод""'");
 		Message.Field  = "PinCode";
 		Message.Message();
 		
@@ -143,7 +143,7 @@ Function FieldsAreFilledCorrectly()
 	If StrLen(PinCodePage) <> 16 Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'PIN shall consist of 16 digits.'");
+		Message.Text = NStr("en='PIN shall consist of 16 digits.';ru='Пин-код должен состоять из 16 цифр.'");
 		Message.Field  = "PinCode";
 		Message.Message();
 		
@@ -159,23 +159,33 @@ EndFunction
 Function MessageParametersToTechicalSupport()
 	
 	Result = New Structure;
-	Result.Insert("Subject", NStr("en = 'Online support. Product registration.'"));
+	Result.Insert("Subject", NStr("en='Online support. Product registration.';ru='Интернет-поддержка. Регистрация продукта.'"));
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(
 		InteractionContext.COPContext,
 		"login");
 	
-	MessageText = NStr("en = 'Hello!
-  |I can not register the software product
-  |to connect to the online support. Please help to solve this issue.
-  |
-  |Login: %1.
-  |Registration number: %2.
-  |PIN: %3.
-  |
-  |%TechnicalParameters%
-  |-----------------------------------------------
-  |Best regards, .'");
+	MessageText = NStr("en='Hello!"
+"I can not register the software product"
+"to connect to the online support. Please help to solve this issue."
+""
+"Login: %1."
+"Registration number: %2."
+"PIN: %3."
+""
+"%TechnicalParameters%"
+"-----------------------------------------------"
+"Best regards, .';ru='Здравствуйте!"
+"У меня не получается зарегистрировать программный продукт"
+"для подключения Интернет-поддержки. Прошу помочь разобраться с проблемой."
+""
+"Логин: %1."
+"Регистрационный номер: %2."
+"Пинкод: %3."
+""
+"%ТехническиеПараметры%"
+"-----------------------------------------------"
+"С уважением, .'");
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 		MessageText,

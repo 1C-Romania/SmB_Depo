@@ -227,7 +227,7 @@ Procedure SendEmailToContactPerson(Command)
 	If ListOfEmailAddresses = Undefined Then
 		
 		ListOfEmailAddresses = New ValueList;
-		MessageText = NStr("en = 'Counterparty is not written. The list of emails will be empty.'");
+		MessageText = NStr("en='Counterparty is not written. The list of emails will be empty.';ru='Контрагент не записан. Список электронных адресов будет пуст.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;

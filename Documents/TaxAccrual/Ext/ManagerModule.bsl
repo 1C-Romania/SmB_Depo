@@ -136,10 +136,10 @@ Procedure InitializeDocumentData(DocumentRefTaxAccrual, StructureAdditionalPrope
 	Query.SetParameter("Ref", DocumentRefTaxAccrual);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AddedTax", NStr("en = 'Tax accrued'"));
-	Query.SetParameter("RecoveredTax", NStr("en = 'Tax reimbursed'"));
-	Query.SetParameter("Incomings", NStr("en = 'Incomings'")); 
-	Query.SetParameter("Expenses", NStr("en = 'Expenses'")); 
+	Query.SetParameter("AddedTax", NStr("en='Tax accrued';ru='Начисленные налоги'"));
+	Query.SetParameter("RecoveredTax", NStr("en='Tax reimbursed';ru='Возмещен налог'"));
+	Query.SetParameter("Incomings", NStr("en='Incomings';ru='Доходы'")); 
+	Query.SetParameter("Expenses", NStr("en='Expenses';ru='Расходы'")); 
 	
 	ResultsArray = Query.ExecuteBatch();
 	

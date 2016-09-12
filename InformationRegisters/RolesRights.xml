@@ -38,6 +38,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Roles rights</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Права ролей</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<UseStandardCommands>false</UseStandardCommands>
@@ -166,6 +170,14 @@
 					<v8:content>Register contains rights for the metadata objects tables by roles.
 The register is used: - to quickly get limited rights to tables for the current user; - to quickly update access group rights; - in the Access rights report.</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регистр содержит права на таблицы объектов метаданных по ролям.
+Регистр используется:
+- для быстрого получения ограничиваемых прав на таблицы для текущего пользователя;
+- для бытрого обновления прав групп доступа;
+- в отчете "Права доступа".</v8:content>
+				</v8:item>
 			</Explanation>
 		</Properties>
 		<ChildObjects>
@@ -176,6 +188,10 @@ The register is used: - to quickly get limited rights to tables for the current 
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Insert</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вставить</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -189,6 +205,10 @@ The register is used: - to quickly get limited rights to tables for the current 
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Adding Right set for the role.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право Добавление, установленное в роли.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -220,6 +240,10 @@ The register is used: - to quickly get limited rights to tables for the current 
 							<v8:lang>en</v8:lang>
 							<v8:content>Update</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Update</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -232,6 +256,10 @@ The register is used: - to quickly get limited rights to tables for the current 
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Change right set for the role.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право Изменение, установленное в роли.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -263,6 +291,10 @@ The register is used: - to quickly get limited rights to tables for the current 
 							<v8:lang>en</v8:lang>
 							<v8:content>Reading is not limited</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Чтение без ограничения</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -276,6 +308,11 @@ The register is used: - to quickly get limited rights to tables for the current 
 							<v8:lang>en</v8:lang>
 							<v8:content>Right Reading set in
 the role contains no restriction of access.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право Чтение, установленное
+в роли, не содержит ограничения доступа ни по одному полю.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -307,6 +344,10 @@ the role contains no restriction of access.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Adding is not limited</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Добавление без ограничения</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -320,6 +361,11 @@ the role contains no restriction of access.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Right Add set in
 the role contains no restriction of access.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право Добавление,
+установленное в роли, не содержит ограничения доступа.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -351,6 +397,10 @@ the role contains no restriction of access.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Changing is not limited</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изменение без ограничения</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -364,6 +414,11 @@ the role contains no restriction of access.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Right Change set in
 the role contains no restriction of access.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право Изменение,
+установленное в роли, не содержит ограничения доступа.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -395,6 +450,10 @@ the role contains no restriction of access.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>view</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Просмотр</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -407,6 +466,10 @@ the role contains no restriction of access.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>View right set for the role.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право Просмотр, установленное в роли.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -438,6 +501,10 @@ the role contains no restriction of access.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Interactive adding</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Интерактивное добавление</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -450,6 +517,10 @@ the role contains no restriction of access.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Interactive adding right set for the role.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право Интерактивное добавление, установленное в роли.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -481,6 +552,10 @@ the role contains no restriction of access.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Edit</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Редактировать</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -493,6 +568,10 @@ the role contains no restriction of access.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Edit right set for the role.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право Изменение, установленное в роли.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -524,6 +603,10 @@ the role contains no restriction of access.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Metadata object</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект метаданных</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -536,6 +619,10 @@ the role contains no restriction of access.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Metadata object for which the user is allowed to perform the application and interactive actions.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект метаданных, для которого пользователю разрешены программные и интерактивные действия.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -570,6 +657,10 @@ the role contains no restriction of access.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Role</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Роль</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -582,6 +673,10 @@ the role contains no restriction of access.</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The Role metadata object allowing some actions for the user with the other metadata objects.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект метаданных Роль, разрешающий некоторые действия пользователю с другими объектами метаданных.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>

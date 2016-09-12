@@ -14,6 +14,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Period</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>отчетный период</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:periodNumber>1</dcscom:periodNumber>
@@ -67,6 +71,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Vendor</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поставщик</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
@@ -83,6 +91,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Contract</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контакт</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
@@ -95,6 +107,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Debt</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наш долг</v8:content>
 				</v8:item>
 			</title>
 			<valueType>
@@ -113,6 +129,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Debts overdue</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просроченная задолженность</v8:content>
 				</v8:item>
 			</title>
 			<valueType>
@@ -134,6 +154,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Dynamic period</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Динамический период</v8:content>
 			</v8:item>
 		</title>
 		<useRestriction>
@@ -164,6 +188,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>отчетный период</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>v8:StandardPeriod</v8:Type>
@@ -182,6 +210,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Periodicity</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Периодичность</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.Periodicity</v8:Type>
@@ -196,6 +228,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Output title</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -213,6 +249,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Dynamics of debt to suppliers</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Динамика задолженности поставщикам</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
@@ -229,6 +269,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Table fields</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Поля таблицы</v8:content>
 					</v8:item>
 				</dcsset:userSettingPresentation>
 			</dcsset:selection>
@@ -294,6 +338,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Accounts receivable dynamics</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Динамика задолженности покупателей</v8:content>
+						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
 			</dcsset:outputParameters>
@@ -339,6 +387,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Chart by periods</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Диаграмма по периодам</v8:content>
 					</v8:item>
 				</dcsset:userSettingPresentation>
 			</dcsset:item>

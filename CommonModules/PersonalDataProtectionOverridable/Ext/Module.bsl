@@ -50,11 +50,11 @@ Procedure FillPersonalDataAreas(PersonalDataAreas) Export
 	// used areas StandardSubsystems.Individuals
 	NewArea = PersonalDataAreas.Add();
 	NewArea.Name = "PersonalData";
-	NewArea.Presentation = NStr("en = 'Personal data'");
+	NewArea.Presentation = NStr("en='Personal data';ru='Персональные данные субъекта'");
 	
 	NewArea = PersonalDataAreas.Add();
 	NewArea.Name = "PassportData";
-	NewArea.Presentation = NStr("en = 'Passport data'");
+	NewArea.Presentation = NStr("en='Passport data';ru='Паспортные данные'");
 	NewArea.Parent = "PersonalData";
 	// End StandardSubsystems.Individuals
 	

@@ -42,9 +42,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			EndIf;
 		Except
 			MessageText = BriefErrorDescription(ErrorInfo())
-							+ NStr("en = ' (see details in Event log monitor).'");
+							+ NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 			ErrorText = DetailErrorDescription(ErrorInfo());
-			Operation = NStr("en = 'the agreement form opening'");
+			Operation = NStr("en='the agreement form opening';ru='открытие формы соглашения'");
 			ElectronicDocuments.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
 		EndTry;
 		Items.TypeOfBankingSystem.Visible = False;
@@ -112,7 +112,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	If ValueIsFilled(Object.ServerAddress) AND Not CorrectAddressFormat()
 		AND Object.AgreementStatus = PredefinedValue("Enum.EDAgreementsStatuses.Acts") Then
 		
-		MessageText = NStr("en = 'Bank server address must start with """"https://"""" or """"http://""""'");
+		MessageText = NStr("en='Bank server address must start with """"https://"""" or """"http://""""';ru='Адрес сервера банка должен начинаться с """"https://"""" или """"http://""""'");
 		CommonUseClientServer.MessageToUser(MessageText, , "ServerAddress", "Object", Cancel);
 		
 	EndIf;
@@ -281,13 +281,13 @@ Procedure ImportCertificate(Command)
 	Cancel = False;
 	
 	If Not ValueIsFilled(Object.Company) Then
-		MessageText = NStr("en = 'Select a company'");
+		MessageText = NStr("en='Select a company';ru='Необходимо выбрать организацию'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Object.Company", , Cancel);
 	EndIf;
 	
 	If Object.BankApplication = PredefinedValue("Enum.BankApplications.ExchangeThroughTheAdditionalInformationProcessor")
 			AND Not ValueIsFilled(Object.AdditionalInformationProcessor) Then
-		MessageText = NStr("en = 'Select an additional data processor'");
+		MessageText = NStr("en='Select an additional data processor';ru='Необходимо выбрать дополнительную обработку'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Object.AdditionalInformationProcessor", , Cancel);
 	EndIf;
 
@@ -306,7 +306,7 @@ Procedure SettingsTest(Command)
 	
 	If Object.BankApplication = PredefinedValue("Enum.BankApplications.SberbankOnline") Then
 		#If WebClient Then
-			MessageText = NStr("en = 'Test is not possible in Web client'");
+			MessageText = NStr("en='Test is not possible in Web client';ru='Тест не возможен в веб-клиенте'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		#EndIf
@@ -314,11 +314,11 @@ Procedure SettingsTest(Command)
 	
 	NotifyDescription = New NotifyDescription("TestEDFSettings", ThisObject);
 	If Modified OR Not ValueIsFilled(Object.Ref) Then
-		QuestionText = NStr("en = 'Save the current EDF setting. Do you want to continue the test?'");
+		QuestionText = NStr("en='Save the current EDF setting. Do you want to continue the test?';ru='Необходимо сохранить текущую настройку ЭДО. Продолжить выполнение теста?'");
 		ButtonList = New ValueList();
-		ButtonList.Add(True, NStr("en = 'Save and perform the test'"));
-		ButtonList.Add(False, NStr("en = 'Cancel the test'"));
-		ShowQueryBox(NOTifyDescription, QuestionText, ButtonList, , True, NStr("en = 'Test settings'"));
+		ButtonList.Add(True, NStr("en='Save and perform the test';ru='Сохранить и выполнить тест'"));
+		ButtonList.Add(False, NStr("en='Cancel the test';ru='Отменить тест'"));
+		ShowQueryBox(NOTifyDescription, QuestionText, ButtonList, , True, NStr("en='Test settings';ru='Тест настроек'"));
 	Else
 		TestEDFSettings();
 	EndIf;
@@ -354,7 +354,7 @@ Procedure TestEDFSettings(Result = Undefined, AdditionalParameters = Undefined) 
 		
 	If Object.BankApplication = PredefinedValue("Enum.BankApplications.SberbankOnline") Then
 		#If WebClient Then
-			MessageText = NStr("en = 'Test is not possible in WEB client'");
+			MessageText = NStr("en='Test is not possible in WEB client';ru='Тест не возможен в WEB-клиенте'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		#EndIf
@@ -571,10 +571,13 @@ Procedure CheckDocumentsUniqueness(TabularSectionDocuments, CheckResult, ErrorTe
 		If CurrentDocumentOfAgreement.ToForm Then
 			For Each DocumentInOtherAgreements IN CheckResult Do
 				If CurrentDocumentOfAgreement.OutgoingDocument = DocumentInOtherAgreements.DocumentType Then
-					ErrorText = NStr("en = 'For a kind of documents %1
-					|%2 a valid agreement already exists between parties %3
-					|- %4: %5.
-					|'");
+					ErrorText = NStr("en='For a kind of documents %1"
+"%2 a valid agreement already exists between parties %3"
+"- %4: %5."
+"';ru='По виду электронных документов"
+"%1 %2 уже существует действующее соглашение между"
+"участниками %3 - %4: %5."
+"'");
 					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
 						ErrorText, 
 						DocumentInOtherAgreements.DocumentType, 
@@ -739,7 +742,7 @@ Procedure PutInCertificateRepositoryConfiguration(BinaryData = Undefined, Certif
 				ValueToFormAttribute(CatalogObject, "Object");
 				Read();
 				DeleteFiles(TempFile);
-				MessageText = NStr("en = 'Failed to read the certificate file, operation is terminated.'");
+				MessageText = NStr("en='Failed to read the certificate file, operation is terminated.';ru='Не удалось прочитать файл сертификата, операция прервана.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				CertificatePresentation = "";
 				Return;
@@ -768,8 +771,9 @@ Function RecordedAgreement(Handler)
 		Return True;
 	EndIf;
 	
-	QuestionText = NStr("en = 'You can export certificates using only the written EDF settings.
-								|Record?'");
+	QuestionText = NStr("en='You can export certificates using only the written EDF settings."
+"Record?';ru='Загружать сертификаты можно только в записанных настройках ЭДО."
+"Записать?'");
 	
 	op = New NotifyDescription(Handler, ThisObject);
 	ShowQueryBox(op, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
@@ -919,7 +923,7 @@ Procedure ProcessingSberbankCertificateSelection(IDCertificate, Parameters = Und
 	Try
 		NewCertificate = New CryptoCertificate(CertificateBinaryData);
 	Except
-		ShowMessageBox( , NStr("en = 'Failed to read the certificate file, operation is terminated.'"));
+		ShowMessageBox( , NStr("en='Failed to read the certificate file, operation is terminated.';ru='Не удалось прочитать файл сертификата, операция прервана.'"));
 		Return;
 	EndTry;
 	
@@ -991,7 +995,7 @@ Function ImportCertificateOnServer(CertificateStructure, ErrorDescription)
 			
 			If NewCertificate.Subject.Property("SN") Then
 				
-				TemplateOwnerNameAndSurname = NStr("en = '%1 %2'");
+				TemplateOwnerNameAndSurname = NStr("en='%1 %2';ru='%1 %2'");
 				NameAndSurnameOfOwner = StringFunctionsClientServer.PlaceParametersIntoString(TemplateOwnerNameAndSurname,
 					NewCertificate.Subject.SN, NewCertificate.Subject.GN);
 			ElsIf NewCertificate.Subject.Property("CN") Then
@@ -1015,7 +1019,7 @@ Function ImportCertificateOnServer(CertificateStructure, ErrorDescription)
 		
 		Return NewItem.Ref;
 	Else
-		ErrorDescription = NStr("en = 'Error of the signature certificate data receiving!'");
+		ErrorDescription = NStr("en='Error of the signature certificate data receiving!';ru='Ошибка получения данных сертификата подписи!'");
 		
 		Return Undefined;
 	EndIf;
@@ -1030,10 +1034,11 @@ Function SberbankCertificateBinaryData(IDCertificate)
 	Res = AttachableModule.GetCertificateVPNKeyTLS(IDCertificate, CertificateBase64);
 	If Res <> 0 Then
 		ClearMessages();
-		MessageText = NStr("en = 'An error occurred while getting a certificate data.
-									|details in the event log'");
-		ErrorText = NStr("en = 'AddIn.Bicrypt component has returned an error code at the certificate receiving'") + Res;
-		Operation = NStr("en = 'Cryptography certificate receiving.'");
+		MessageText = NStr("en='An error occurred while getting a certificate data."
+"details in the event log';ru='При получении данных сертификата произошла ошибка."
+"подробности в журнале регистрации'");
+		ErrorText = NStr("en='AddIn.Bicrypt component has returned an error code at the certificate receiving';ru='Компонента AddIn.Bicrypt при получении сертификата вернула код ошибки'") + Res;
+		Operation = NStr("en='Cryptography certificate receiving.';ru='Получение сертификата криптографии.'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
 		Return Undefined;
 	EndIf;
@@ -1057,11 +1062,12 @@ Procedure GetSberbankCertificateIdentifier(EDAgreement, Parameters = Undefined) 
 	Res = AttachableModule.GetListIdentCertificatesVPNKeyTLS(0, IdentifiersCertificates);
 	If Res <> 0 Then
 		ClearMessages();
-		MessageText = NStr("en = 'An error occurred while getting a list of available certificates.
-									|details in the event log'");
-		ErrorText = NStr("en = 'The AddIn.Bicrypt component has returned an error code when receiving the list of the certificates'")
+		MessageText = NStr("en='An error occurred while getting a list of available certificates."
+"details in the event log';ru='Ошибка получения списка доступных сертификатов."
+"подробности в журнале регистрации'");
+		ErrorText = NStr("en='The AddIn.Bicrypt component has returned an error code when receiving the list of the certificates';ru='Компонента AddIn.Bicrypt при получении списка доступных сертификатов вернула код ошибки'")
 						+ Res;
-		Operation = NStr("en = 'Electronic document signing.'");
+		Operation = NStr("en='Electronic document signing.';ru='Подписание электронного документа.'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
 		ElectronicDocumentsServiceClient.ClearAuthorizationDataSberbank();
 		Return;
@@ -1100,10 +1106,11 @@ Procedure GetSberbankCertificateIdentifier(EDAgreement, Parameters = Undefined) 
 										DigitalSignatureClientServer.SubjectPresentation(Certificate));
 		Except
 			ClearMessages();
-			MessageText = NStr("en = 'An error occurred when reading a certificate.
-										|Look for details in event log.'");
+			MessageText = NStr("en='An error occurred when reading a certificate."
+"Look for details in event log.';ru='Ошибка чтения сертификата."
+"Подробности см. в журнале регистрации.'");
 			ErrorText = ErrorDescription();
-			Operation = NStr("en = 'Certificate data reading.'");
+			Operation = NStr("en='Certificate data reading.';ru='Чтение данных сертификата.'");
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
 			Return;
 		EndTry;
@@ -1182,9 +1189,9 @@ Procedure FillAgreementSettings(CompletingSettings)
 		Object.User = ED.Data.Logon.Login.User;
 
 	Except
-		MessageText = NStr("en = 'An error occurred when reading the file data.'");
+		MessageText = NStr("en='An error occurred when reading the file data.';ru='Возникла ошибка при чтении данных из файла.'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
-		OperationKind = NStr("en = 'Reading EDF settings from the file.'");
+		OperationKind = NStr("en='Reading EDF settings from the file.';ru='Чтение настроек ЭДО из файла.'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 							OperationKind, DetailErrorDescription, MessageText, 1);
 	EndTry;

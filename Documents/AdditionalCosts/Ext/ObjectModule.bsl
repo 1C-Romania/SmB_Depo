@@ -342,7 +342,7 @@ Procedure SubordinatedInvoiceControl()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Acceptance of additional costs # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -387,7 +387,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Inventory.Total("AmountExpense") <> Expenses.Total("Total") - VATExpenses Then  
 	//) elmi	
 		
-		MessageText = NStr("en = 'Amount of services is not equal to the distributed amount by inventories!'");
+		MessageText = NStr("en='Amount of services is not equal to the distributed amount by inventories!';ru='Сумма услуг не равна распределенной сумме по запасам!'");
 		SmallBusinessServer.ShowMessageAboutError(
 			,
 			MessageText,

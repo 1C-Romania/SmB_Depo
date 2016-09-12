@@ -12,8 +12,8 @@ Procedure GenerateTableCashAssets(DocumentRefCashPayment, StructureAdditionalPro
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("CashExpense", NStr("en='Cash expense'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("CashExpense", NStr("en='Cash expense';ru='Расход денежных средств:'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -210,8 +210,8 @@ Procedure GenerateTableCashAssetsInCashRegisters(DocumentRefCashReceipt, Structu
 	Query.SetParameter("Ref", DocumentRefCashReceipt);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
-	Query.SetParameter("CashFundsReceipt", NStr("en = 'Cash receipt to the cash registers'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("CashFundsReceipt", NStr("en='Cash receipt to the cash registers';ru='Поступление денежных средств в кассу ККМ'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Execute();
 	
@@ -255,8 +255,8 @@ Procedure GenerateAdvanceHolderPaymentsTable(DocumentRefCashPayment, StructureAd
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AdvanceHolderDebtEmergence", NStr("en='The emergence of the advance holder''s debt'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("AdvanceHolderDebtEmergence", NStr("en=""The emergence of the advance holder's debt"";ru='Возникновение долга подотчетника'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -357,7 +357,7 @@ Procedure GenerateTableAccountsPayable(DocumentRefCashPayment, StructureAddition
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("AppearenceOfVendorAdvance", "Appearence of vendor advance");
 	Query.SetParameter("VendorObligationsRepayment", "Repayment of obligations to vendor");
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -504,9 +504,9 @@ Procedure GenerateTableCustomerAccounts(DocumentRefCashPayment, StructureAdditio
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("CustomerAdvanceRepayment", NStr("en='Discharge of the customer advance'"));
-	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Appearance of customer liabilities'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("CustomerAdvanceRepayment", NStr("en='Discharge of the customer advance';ru='Погашение аванса покупателя'"));
+	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Appearance of customer liabilities';ru='Возникновение обязательств покупателя'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -645,8 +645,8 @@ Procedure GenerateTablePayrollPayments(DocumentRefCashPayment, StructureAddition
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("RepaymentLiabilitiesToEmployees", NStr("en='Employees obligations repayment'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("RepaymentLiabilitiesToEmployees", NStr("en='Employees obligations repayment';ru='Погашение обязательств перед персоналом'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -805,8 +805,8 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCashPayment, StructureAdditi
 	Query.SetParameter("Ref", DocumentRefCashPayment);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("CostsReflection", NStr("en='Costs reflection'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("CostsReflection", NStr("en='Costs reflection';ru='Отражение расходов'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -1066,10 +1066,10 @@ Procedure GenerateTableManagerial(DocumentRefCashPayment, StructureAdditionalPro
 	Query.SetParameter("Ref", DocumentRefCashPayment);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
-	Query.SetParameter("Content", NStr("en = 'Write-off of the cash to any account'"));
-	Query.SetParameter("ContentTransferToCashCR", NStr("en = 'Cash transfer to cash register'"));
-	Query.SetParameter("TaxPay", NStr("en='Tax payment'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("Content", NStr("en='Write-off of the cash to any account';ru='Списание денежных средств на произвольный счет'"));
+	Query.SetParameter("ContentTransferToCashCR", NStr("en='Cash transfer to cash register';ru='Перемещение денежных средств в кассу ККМ'"));
+	Query.SetParameter("TaxPay", NStr("en='Tax payment';ru='Оплата налога'"));
 	
 	Query.Text =
 	"SELECT
@@ -1982,7 +1982,7 @@ Procedure GenerateTableTaxesSettlements(DocumentRefCashPayment, StructureAdditio
 	Query.SetParameter("Ref", DocumentRefCashPayment);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("TaxPay", NStr("en='Tax payment'"));
+	Query.SetParameter("TaxPay", NStr("en='Tax payment';ru='Оплата налога'"));
 	
 	Query.Text =
 	"SELECT
@@ -2847,7 +2847,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CPV";
-	PrintCommand.Presentation = NStr("en = 'KO-2 (Cash voucher)'");
+	PrintCommand.Presentation = NStr("en='KO-2 (Cash voucher)';ru='КО-2 (Расходный кассовый ордер)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

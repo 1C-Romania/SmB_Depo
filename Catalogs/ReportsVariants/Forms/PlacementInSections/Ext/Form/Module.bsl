@@ -7,7 +7,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
-	MixedImportance = NStr("en = 'Various'");
+	MixedImportance = NStr("en='Various';ru='Различная'");
 	
 	// The number of variants is controlled before opening the form.
 	CustomizableOptions.LoadValues(Parameters.OptionsArray);
@@ -63,7 +63,7 @@ EndProcedure
 Procedure Place(Command)
 	If CheckCountOfVariants() Then
 		WriteAtServer();
-		NotificationText = NStr("en = 'Settings of the reports variants have been changed (%1 pcs.).'");
+		NotificationText = NStr("en='Settings of the reports variants have been changed (%1 pcs.).';ru='Изменены настройки вариантов отчетов (%1 шт.).'");
 		NotificationText = StrReplace(NotificationText, "%1", Format(CustomizableOptions.Count(), "NZ=0; NG=0"));
 		ShowUserNotification(, , NotificationText);
 		ReportsVariantsClient.OpenFormsRefresh();
@@ -110,7 +110,7 @@ Function CheckCountOfVariants()
 	ClearMessages();
 	If VariantCount = 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'It is necessary to fill the list ""Reports variants""'"),
+			NStr("en='It is necessary to fill the list ""Reports variants""';ru='Необходимо заполнить список ""Варианты отчетов""'"),
 			,
 			"CustomizableOptions");
 		Return False;
@@ -158,7 +158,7 @@ Procedure RefillTree(JustUncheckCheckBoxes)
 	VariantCount = CustomizableOptions.Count();
 	If VariantCount = 0 Then
 		ExecutionResult = New Structure;
-		MessageText = NStr("en = 'It is necessary to select the report variants'");
+		MessageText = NStr("en='It is necessary to select the report variants';ru='Необходимо выбрать варианты отчетов'");
 		StandardSubsystemsClientServer.ShowMessage(ExecutionResult, MessageText);
 		ExecutionResult = New FixedStructure(ExecutionResult);
 		Items.SubsystemsTree.Enabled = False;
@@ -285,13 +285,13 @@ Procedure RefillTree(JustUncheckCheckBoxes)
 				CurrentCause = TableRow.Cause;
 				ErrorsText = ?(ErrorsText = "", "", ErrorsText + Chars.LF + Chars.LF);
 				If CurrentCause = 1 Then
-					ErrorsText = ErrorsText + NStr("en = 'Marked for deletion:'");
+					ErrorsText = ErrorsText + NStr("en='Marked for deletion:';ru='Помеченные на удаление:'");
 				ElsIf CurrentCause = 2 Then
-					ErrorsText = ErrorsText + NStr("en = 'Insufficient rights to change:'");
+					ErrorsText = ErrorsText + NStr("en='Insufficient rights to change:';ru='Недостаточно прав для изменения:'");
 				ElsIf CurrentCause = 3 Then
-					ErrorsText = ErrorsText + NStr("en = 'Report is disabled or unavailable by rights:'");
+					ErrorsText = ErrorsText + NStr("en='Report is disabled or unavailable by rights:';ru='Отчет отключен или недоступен по правам:'");
 				ElsIf CurrentCause = 4 Then
-					ErrorsText = ErrorsText + NStr("en = 'Report variant is disabled by the functional option:'");
+					ErrorsText = ErrorsText + NStr("en='Report variant is disabled by the functional option:';ru='Вариант отчета отключен по функциональной опции:'");
 				EndIf;
 			EndIf;
 			
@@ -302,11 +302,11 @@ Procedure RefillTree(JustUncheckCheckBoxes)
 		VariantCount = CustomizableOptions.Count();
 		
 		If VariantCount = 0 Then
-			MessageText = NStr("en = 'Insufficient rights for placement in the selected report variants sections.'");
+			MessageText = NStr("en='Insufficient rights for placement in the selected report variants sections.';ru='Недостаточно прав для размещения в разделах выбранных вариантов отчетов.'");
 			Items.SubsystemsTree.Enabled = False;
 			ExecutionResult.Insert("Cancel", True);
 		Else
-			MessageText = NStr("en = 'Insufficient rights for placement in the several report variants sections (%1).'");
+			MessageText = NStr("en='Insufficient rights for placement in the several report variants sections (%1).';ru='Недостаточно прав для размещения в разделах некоторых вариантов отчетов (%1).'");
 			MessageText = StrReplace(MessageText, "%1", Format(ErrorsCount, "NG="));
 			Items.SubsystemsTree.Enabled = True;
 		EndIf;

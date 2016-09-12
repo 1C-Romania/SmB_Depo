@@ -15,7 +15,7 @@ Function GetExchangePackage(CodeMobileComputer, MessageNumberExchange, JobID)
 	ExchangeNode = ExchangePlans.MobileApplication.FindByCode(CodeMobileComputer); 
 	
 	If ExchangeNode.IsEmpty() Then
-		Raise(NStr("en='The unknown device - '") + CodeMobileComputer);
+		Raise(NStr("en='The unknown device - ';ru='Неизвестное устройство - '") + CodeMobileComputer);
 	EndIf;
 	
 	Return MobileApplicationExchangeGeneral.GetExchangeMessage(ExchangeNode, MessageNumberExchange, JobID);
@@ -144,9 +144,9 @@ Procedure CheckUserRights(User = Undefined)
 		  AND IsInRole(Metadata.Roles.AddChangeBankSubsystem)) Then // Profile Funds.
 		
 		Raise(
-			NStr("en='User ""'")
+			NStr("en='User ""';ru='Пользователь ""'")
 		  + User
-		  + NStr("en='"" there aren not rights on data synchronization with mobile application 1C:Small Business. It is required to add the Basic rights and Funds access rights profiles.'")
+		  + NStr("en='"" there aren not rights on data synchronization with mobile application 1C:Small Business. It is required to add the Basic rights and Funds access rights profiles.';ru='"" нет прав на синхронизацию данных с мобильным приложением 1С:Управление небольшой фирмой. Необходимо включить профили прав доступа Базовые права и Деньги.'")
 		);
 		
 	EndIf;
@@ -257,7 +257,7 @@ Function GetData(CodeMobileComputer)
 	ExchangeNode = ExchangePlans.MobileApplication.FindByCode(CodeMobileComputer); 
 	
 	If ExchangeNode.IsEmpty() Then
-		Raise(NStr("en='The unknown device - '") + CodeMobileComputer);
+		Raise(NStr("en='The unknown device - ';ru='Неизвестное устройство - '") + CodeMobileComputer);
 	EndIf;
 	
 	Return MobileApplicationExchangeGeneral.GeneratePackageExchange(ExchangeNode);
@@ -281,7 +281,7 @@ Function WriteData(CodeMobileComputer, DataMobileApplications)
 	ExchangeNode = ExchangePlans.MobileApplication.FindByCode(CodeMobileComputer); 
 	
 	If ExchangeNode.IsEmpty() Then
-		Raise(NStr("en='The unknown device - '") + CodeMobileComputer);
+		Raise(NStr("en='The unknown device - ';ru='Неизвестное устройство - '") + CodeMobileComputer);
 	EndIf;
 	
 	MobileApplicationExchangeGeneral.AcceptExchangePackage(ExchangeNode, DataMobileApplications, True);

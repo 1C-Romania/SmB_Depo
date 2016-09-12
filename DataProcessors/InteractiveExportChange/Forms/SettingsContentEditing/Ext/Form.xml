@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Saving of the export setting</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Сохранение настройки выгрузки</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -27,6 +31,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Cancel</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отменить</v8:content>
 					</v8:item>
 				</Title>
 				<ExtendedTooltip name="FormCancelExtendedTooltip" id="15"/>
@@ -57,6 +65,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Previously saved settings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ранее сохраненные настройки</v8:content>
 				</v8:item>
 			</Title>
 			<CommandSet>
@@ -126,12 +138,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Saved setting name</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя сохраняемой настройки</v8:content>
+				</v8:item>
 			</Title>
 			<TitleLocation>Top</TitleLocation>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Name under which the current settings will be saved</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя, под которым будут сохранены текущие настройки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -153,6 +173,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Metadata full name</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Полное имя метаданных</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>xs:string</v8:Type>
@@ -168,6 +192,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Filter</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Фильтр</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>dcsset:Filter</v8:Type>
@@ -178,6 +206,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Period</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>отчетный период</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
@@ -190,6 +222,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Choice of the period</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Выбор периода</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>xs:boolean</v8:Type>
@@ -200,6 +236,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Presentation</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Представление</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
@@ -216,6 +256,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Selection string</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Отбор строкой</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>xs:string</v8:Type>
@@ -229,6 +273,10 @@
 						<Title>
 							<v8:item>
 								<v8:lang>en</v8:lang>
+								<v8:content>Quantity</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
 								<v8:content>Quantity</v8:content>
 							</v8:item>
 						</Title>
@@ -249,6 +297,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Setting variants</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Варианты настроек</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
@@ -259,6 +311,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Current setting presentation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление текущей настройки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -277,11 +333,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Save</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Save</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Save setting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить настройку</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>SaveSetting</Action>
@@ -292,11 +356,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Make selection</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Произвести выбор</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Make selection</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Произвести выбор</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>MakeSelection</Action>

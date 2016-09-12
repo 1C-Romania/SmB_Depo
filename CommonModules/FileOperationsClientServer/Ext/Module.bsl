@@ -20,8 +20,9 @@ Function IfYouCanLockFile(FileData, ErrorString = "") Export
 	
 	If FileData.DeletionMark = True Then
 		ErrorString = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Impossible to
-			           |occupy file ""%1"", so. it is marked for deleting.'"),
+			NStr("en='Impossible to"
+"occupy file ""%1"", so. it is marked for deleting.';ru='Нельзя занять файл ""%1"","
+"т.к. он помечен на удаление.'"),
 			String(FileData.Ref));
 		Return False;
 	EndIf;
@@ -29,9 +30,11 @@ Function IfYouCanLockFile(FileData, ErrorString = "") Export
 	Result = FileData.IsEditing.IsEmpty() Or FileData.CurrentUserIsEditing;  
 	If Not Result Then
 		ErrorString = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File
-			           |""%1"" is already locked
-			           |for editing by the user ""%2"" with %3.'"),
+			NStr("en='File"
+"""%1"" is already locked"
+"for editing by the user ""%2"" with %3.';ru='Файл ""%1"""
+"уже занят для редактирования пользователем"
+"""%2"" с %3.'"),
 			String(FileData.Ref),
 			String(FileData.IsEditing),
 			Format(FileData.LoanDate, "DLF=DV"));
@@ -69,7 +72,7 @@ EndFunction
 //
 Function EventLogMonitorEvent() Export
 	
-	Return NStr("en = 'Files'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Files';ru='Файлы'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

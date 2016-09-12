@@ -10,8 +10,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Not Parameters.Property("DirectoryOnHardDisk") Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'This data processor is called from the other configuration procedures.
-			           |Prohibited to call it manually.'")); 
+			NStr("en='This data processor is called from the other configuration procedures."
+"Prohibited to call it manually.';ru='Данная обработка вызывается из других процедур конфигурации."
+"Вручную ее вызывать запрещено.'")); 
 		Cancel = True;
 		Return;
 	EndIf;
@@ -58,10 +59,10 @@ Procedure SelectedFolderStartChoice(Item, ChoiceData, StandardProcessing)
 		
 		FileOpeningDialog.Directory = Directory;
 		FileOpeningDialog.FullFileName = "";
-		Filter = NStr("en = 'All files(*.*)|*.*'");
+		Filter = NStr("en='All files(*.*)|*.*';ru='Все файлы(*.*)|*.*'");
 		FileOpeningDialog.Filter = Filter;
 		FileOpeningDialog.Multiselect = False;
-		FileOpeningDialog.Title = NStr("en = 'Select the folder'");
+		FileOpeningDialog.Title = NStr("en='Select the folder';ru='Выберите каталог'");
 		If FileOpeningDialog.Choose() Then
 			
 			If DirectoryChoice = True Then 
@@ -86,14 +87,14 @@ Procedure ImportExecute()
 	If IsBlankString(Directory) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Directory for the import is not selected.'"), , "Directory");
+			NStr("en='Directory for the import is not selected.';ru='Не выбран каталог для импорта.'"), , "Directory");
 		Return;
 		
 	EndIf;
 	
 	If FolderForAdding.IsEmpty() Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Specify the folder.'"), , "FolderForAdding");
+			NStr("en='Specify the folder.';ru='Укажите папку.'"), , "FolderForAdding");
 		Return;
 	EndIf;
 	

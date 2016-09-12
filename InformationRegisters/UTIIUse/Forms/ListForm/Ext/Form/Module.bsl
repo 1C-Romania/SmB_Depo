@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Query.Execute().IsEmpty() Then
 		Items.List.ReadOnly = True;
 		AutoTitle = False;
-		Title = NStr("en = 'UTII application is provided if the retail warehouses are entered'");
+		Title = NStr("en='UTII application is provided if the retail warehouses are entered';ru='Применение ЕНВД предусмотрено, если заведены розничные склады'");
 	EndIf;
 	
 EndProcedure

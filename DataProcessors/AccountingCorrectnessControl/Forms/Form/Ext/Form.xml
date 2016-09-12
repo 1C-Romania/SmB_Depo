@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Accounting analysis wizard</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Помощник анализа ведения учета</v8:content>
+		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>None</CommandBarLocation>
@@ -26,6 +30,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Out of context</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без контекста</v8:content>
 						</v8:item>
 					</Title>
 					<Group>Horizontal</Group>
@@ -68,6 +76,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>In context of</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>С контекстом</v8:content>
+						</v8:item>
 					</Title>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
@@ -80,6 +92,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Period company label</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Надпись период организация</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="PeriodCompanyLabelContextMenu" id="132"/>
@@ -95,6 +111,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Tables</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблицы</v8:content>
+				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
@@ -107,11 +127,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Sections</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>секции</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Sections</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>секции</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
@@ -202,6 +230,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Accounting section</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Раздел учета</v8:content>
+										</v8:item>
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
 									<AutoCellHeight>true</AutoCellHeight>
@@ -234,6 +266,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>States of sections after executing the analysis:</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояния разделов после выполнения анализа:</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="LegendContextMenu" id="80"/>
 							<ExtendedTooltip name="LegendExtendedTooltip" id="113"/>
@@ -243,6 +279,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>No errors group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа ошибок нет</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -257,6 +297,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>No errors picture</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка ошибок нет</v8:content>
 										</v8:item>
 									</Title>
 									<Picture>
@@ -273,6 +317,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content> - errors are not detected</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content> - ошибок не обнаружено</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="NoErrorLabelContextMenu" id="85"/>
 									<ExtendedTooltip name="NoErrorLabelExtendedTooltip" id="116"/>
@@ -285,11 +333,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Detected errors group</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа обнаружены ошибки</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Detected errors group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа обнаружены ошибки</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -305,6 +361,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Detected errors picture</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картика обнаружены ошибки</v8:content>
+										</v8:item>
 									</Title>
 									<Picture>
 										<xr:Ref>CommonPicture.Errors16AreNoticed</xr:Ref>
@@ -319,6 +379,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content> - errors are detected</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>- обнаружены ошибки</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="DetectedErrorsLabelContextMenu" id="90"/>
@@ -340,6 +404,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Partially corrected picture</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка частично исправлены</v8:content>
+										</v8:item>
 									</Title>
 									<Picture>
 										<xr:Ref>CommonPicture.PartiallyCorrected16</xr:Ref>
@@ -355,6 +423,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content> - detected errors are partially fixed</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content> - обнаруженные ошибки частично исправлены</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="PartiallyCorrectedLabelContextMenu" id="95"/>
 									<ExtendedTooltip name="PartiallyCorrectedLabelExtendedTooltip" id="122"/>
@@ -366,6 +438,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Fully corrected group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа полностью исправлены</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -381,6 +457,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Fully corrected picture</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка полностью исправлены</v8:content>
+										</v8:item>
 									</Title>
 									<Picture>
 										<xr:Ref>CommonPicture.CompletelyCorrected16</xr:Ref>
@@ -395,6 +475,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content> - errors are completely corrected</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content> - ошибки полностью исправлены</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="FullyCorrectedLabelContextMenu" id="100"/>
@@ -432,6 +516,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>The array of payment document types</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Массив типов документы оплаты</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
@@ -443,6 +531,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Sections tree</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево разделов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTree</v8:Type>
@@ -453,6 +545,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Level</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -470,6 +566,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Accounting section</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Раздел учета</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -485,6 +585,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Analysis executed</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Анализ выполнен</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -495,6 +599,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Accounting section presentation</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Раздел учета предствление</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -511,6 +619,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Parent output section</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Раздел родитель выведен</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -521,6 +633,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Section number</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер секции</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -538,6 +654,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of correction</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата исправления</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:dateTime</v8:Type>
@@ -551,6 +671,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture index</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс картинки</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -568,6 +692,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Tree rows number</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер строки дерева</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
@@ -583,6 +711,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Link to help</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка на справку</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -601,6 +733,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Result document</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ результат</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
@@ -611,6 +747,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Current section number</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер текущего раздела</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -628,6 +768,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>All sections available</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Всего разделов доступно</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -644,6 +788,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Current accounting section</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий раздел учета</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -658,6 +806,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Presentation of the current accounting section</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий раздел учета предствление</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -674,6 +826,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Accounts payable filled with</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расчеты с поставщиками заполнялось</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -684,6 +840,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange rate differences documents reposted</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Курсовые разницы документы перепроведены</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -696,6 +856,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange differences filled</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Курсовые разницы заполнялось</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -706,6 +870,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Inventory-list without specifications</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура без спецификаций</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -718,6 +886,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Products and services</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция и услуги</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
@@ -728,6 +900,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Specification</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Спецификация</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -740,6 +916,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Data processor executed</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обработка выполнена</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -750,6 +930,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Specifications amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество спецификаций</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -769,6 +953,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Products and services filled without specifications</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура без спецификаций заполнялось</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -779,6 +967,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Subcontractor of specification reports</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчеты переработчиков спецификации</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -791,6 +983,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document ref</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ ссылка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:DocumentRef.SubcontractorReport</v8:Type>
@@ -802,6 +998,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Specification</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Спецификация</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.Specifications</v8:Type>
@@ -812,6 +1012,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data processor executed</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обработка выполнена</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -826,6 +1030,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Reports pereire without filled specifications</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчеты перер без спецификаций заполнялось</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -836,6 +1044,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash flow incorrect exchange rate differences</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ДС некорректные курсовые разницы</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -848,6 +1060,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank account, Petty cash</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банковский счет, касса</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.BankAccounts</v8:Type>
@@ -859,6 +1075,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Recorder</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регистратор</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -873,6 +1093,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Incorrect exchange differences of customers</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Некорректные курсовые разницы покупатели</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTree</v8:Type>
@@ -884,6 +1108,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагенты</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
@@ -894,6 +1122,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Recorder</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регистратор</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -908,6 +1140,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Incorrect exchange differences of suppliers</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Некорректные курсовые разницы поставщики</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTree</v8:Type>
@@ -919,6 +1155,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагенты</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
@@ -929,6 +1169,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Recorder</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регистратор</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -942,6 +1186,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>End of period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Окончание периода</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -959,6 +1207,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Begin of period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начало периода</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -988,6 +1240,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Period presentation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление периода</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1003,6 +1259,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Inconsistencies reports of processing companies</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчеты переработчиков несоответствия</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1013,6 +1273,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document ref</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ ссылка</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1025,6 +1289,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Data processor executed</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обработка выполнена</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1035,6 +1303,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Differences table</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица расхождений</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1048,6 +1320,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Products and services</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Продукция и услуги</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
@@ -1057,6 +1333,10 @@
 						<Title>
 							<v8:item>
 								<v8:lang>en</v8:lang>
+								<v8:content>Characteristic</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
 								<v8:content>Characteristic</v8:content>
 							</v8:item>
 						</Title>
@@ -1069,6 +1349,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Quantity in fact</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество по факту</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
@@ -1085,6 +1369,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Quantity on specification</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество по спецификации</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
@@ -1105,6 +1393,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Inconsistencies reports of processing companies filled out</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчеты переработчиков несоответствия заполнялось</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1115,6 +1407,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Do enterprise accounting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вести учет по компании</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1127,6 +1423,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Doc specifications production</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Док производство спецификации</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1138,6 +1438,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document ref</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ ссылка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:DocumentRef.InventoryAssembly</v8:Type>
@@ -1148,6 +1452,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data processor executed</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обработка выполнена</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1162,6 +1470,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Doc filled with production of specifications</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Док производство спецификации заполнялось</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1172,6 +1484,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Doc production inconsistencies</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Док производство несоответствия</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1184,6 +1500,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document ref</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ ссылка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:DocumentRef.InventoryAssembly</v8:Type>
@@ -1195,6 +1515,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Data processor executed</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обработка выполнена</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1205,6 +1529,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Differences table</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица расхождений</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1218,6 +1546,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Products and services</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Продукция и услуги</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
@@ -1227,6 +1559,10 @@
 						<Title>
 							<v8:item>
 								<v8:lang>en</v8:lang>
+								<v8:content>Characteristic</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
 								<v8:content>Characteristic</v8:content>
 							</v8:item>
 						</Title>
@@ -1239,6 +1575,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Quantity in fact</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество по факту</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
@@ -1255,6 +1595,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Quantity on specification</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество по спецификации</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
@@ -1275,6 +1619,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Doc filled with inconsistencies of production</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Док производство несоответствия заполнялось</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1285,6 +1633,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Current tree row number</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер текущей строки дерева</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1302,6 +1654,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Analysis of purchase prices</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Анализ закупочных цен</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTree</v8:Type>
@@ -1312,6 +1668,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products and services</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция и услуги</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1324,6 +1684,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Characteristic</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Characteristic</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ProductsAndServicesCharacteristics</v8:Type>
@@ -1334,6 +1698,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Purchase date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата закупки</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1349,6 +1717,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>There is a deviation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть отклонение</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1359,6 +1731,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Purchase price</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена закупки</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1376,6 +1752,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Purchase document</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ закупки</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:DocumentRef.SupplierInvoice</v8:Type>
@@ -1389,6 +1769,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Analysis of the purchase prices filled with</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Анализ закупочных цен заполнялось</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1399,6 +1783,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Current link to help</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая ссылка на справку</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1415,6 +1803,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>The current date of the latest correction</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая дата последного исправления</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
@@ -1429,6 +1821,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Accounts payable</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Долг организации</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1439,6 +1835,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагенты</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1451,6 +1851,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Data processor executed</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обработка выполнена</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1462,6 +1866,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>There are turnovers for the period</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть обороты за период</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1472,6 +1880,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>There were corrections</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Были исправления</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1486,6 +1898,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Accounts receivable</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дебиторская задолженность</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1496,6 +1912,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагенты</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1508,6 +1928,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Data processor executed</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обработка выполнена</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1519,6 +1943,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>There are turnovers for the period</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть обороты за период</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1529,6 +1957,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>There were corrections</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Были исправления</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1543,6 +1975,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Accounts receivable filled with</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расчеты с покупателями заполнялось</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1553,6 +1989,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Documents tree of company's contract</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево документов договора организации</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1565,6 +2005,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Main document</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основной документ</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
@@ -1576,6 +2020,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Subordinate document</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подчиненный документ</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
@@ -1586,6 +2034,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Text of message</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текст сообщения</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1602,6 +2054,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company in header</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация в шапке</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.Companies</v8:Type>
@@ -1613,6 +2069,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Contract</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контакт</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.CounterpartyContracts</v8:Type>
@@ -1623,6 +2083,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company in contract</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация в договоре</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1637,6 +2101,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Document tree of company's contract filled out</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево документов договора организации заполнялось</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1647,6 +2115,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash flow items</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статьи движения денежных средств</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1659,6 +2131,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Item</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Элемент</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.CashFlowItems</v8:Type>
@@ -1670,6 +2146,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Recorder</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регистратор</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
@@ -1680,6 +2160,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount receipt</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма приход</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1697,6 +2181,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount expense</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма расход</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
@@ -1713,6 +2201,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вал.</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
@@ -1723,6 +2215,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Items group</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа статьи</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1740,6 +2236,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash flow items are filled with</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статьи ДДСЗаполнялось</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1826,11 +2326,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Period minus</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период минус</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Previous month</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предыдущий месяц</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1845,11 +2353,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Period Plus</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период плюс</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Next month</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Следующий месяц</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>

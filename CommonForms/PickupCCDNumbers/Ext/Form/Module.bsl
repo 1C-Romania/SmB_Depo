@@ -144,7 +144,7 @@ Procedure InventoryTableCCDNumberStartChoice(Item, ChoiceData, StandardProcessin
 		
 		StandardProcessing = False;
 		
-		MessageText = NStr("en = 'Specify the CCD number is possible only for the products and services with the <Inventory> type.'");
+		MessageText = NStr("en='Specify the CCD number is possible only for the products and services with the <Inventory> type.';ru='Указать номер ГТД возможно только для номенклатуры с типом <Запас>.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;
@@ -159,7 +159,7 @@ Procedure InventoryTableNumberCCDOnChange(Item)
 		
 		StandardProcessing = False;
 		
-		MessageText = NStr("en = 'Specify the CCD number is possible only for the products and services with the <Inventory> type.'");
+		MessageText = NStr("en='Specify the CCD number is possible only for the products and services with the <Inventory> type.';ru='Указать номер ГТД возможно только для номенклатуры с типом <Запас>.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		RowData.CCDNo = Undefined;
@@ -171,8 +171,9 @@ Procedure InventoryTableNumberCCDOnChange(Item)
 	
 	If CCDRegistrationDate > DocumentDate Then
 		
-		QuestionText = NStr("en = 'You selected the CCD which registration date is older than the date of the document. 
-			|Continue?'");
+		QuestionText = NStr("en='You selected the CCD which registration date is older than the date of the document. "
+"Continue?';ru='Выбрана ГТД, у которой дата регистрации старше даты документа. "
+"Продолжить?'");
 		
 		Notification = New NotifyDescription("NoCCDWhenCheckDateEnd", ThisObject, "RowData.CCDNo");
 		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No);
@@ -188,7 +189,7 @@ Procedure InventoryTableCountryOfOriginStartChoice(Item, ChoiceData, StandardPro
 		
 		StandardProcessing = False;
 		
-		MessageText = NStr("en = 'You can specify the country of origin only for the products and services with the <Inventory> type.'");
+		MessageText = NStr("en='You can specify the country of origin only for the products and services with the <Inventory> type.';ru='Указать страну происхождения возможно только для номенклатуры с типом <Запас>.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;
@@ -203,7 +204,7 @@ Procedure InventoryTableCountryOfOriginOnChange(Item)
 		
 		StandardProcessing = False;
 		
-		MessageText = NStr("en = 'You can specify the country of origin only for the products and services with the <Inventory> type.'");
+		MessageText = NStr("en='You can specify the country of origin only for the products and services with the <Inventory> type.';ru='Указать страну происхождения возможно только для номенклатуры с типом <Запас>.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		RowData.CountryOfOrigin = Undefined;
@@ -226,8 +227,9 @@ Procedure NumberCCDOnChange(Item)
 	
 	If CCDRegistrationDate > DocumentDate Then
 		
-		QuestionText = NStr("en = 'You selected the CCD which registration date is older than the date of the document. 
-			|Continue?'");
+		QuestionText = NStr("en='You selected the CCD which registration date is older than the date of the document. "
+"Continue?';ru='Выбрана ГТД, у которой дата регистрации старше даты документа. "
+"Продолжить?'");
 		
 		Notification = New NotifyDescription("NoCCDWhenCheckDateEnd", ThisObject, "CCDNo");
 		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No);
@@ -297,7 +299,7 @@ Procedure SetMarkForRowsWithSameCountry(Command)
 	
 	If CurrentStringData = Undefined Then
 		
-		MessageText = NStr("en = 'Highlight a row of the tabular section and repeat click...'");
+		MessageText = NStr("en='Highlight a row of the tabular section and repeat click...';ru='Выделите строку табличной части и повторите нажатие...'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -318,7 +320,7 @@ Procedure ClearMarkForRowsWithSameCountry(Command)
 	
 	If CurrentStringData = Undefined Then
 		
-		MessageText = NStr("en = 'Highlight a row of the tabular section and repeat click...'");
+		MessageText = NStr("en='Highlight a row of the tabular section and repeat click...';ru='Выделите строку табличной части и повторите нажатие...'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		

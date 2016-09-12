@@ -10,7 +10,7 @@ Procedure OnWrite(Cancel, Replacing)
 	
 	If Not CommonUseReUse.SessionWithoutSeparator() Then
 		
-		Raise NStr("en = 'Access violation!'");
+		Raise NStr("en='Access violation!';ru='Нарушение прав доступа!'");
 		
 	EndIf;
 	

@@ -200,11 +200,11 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 			Cancel = True;
 			ShowQueryBox(
 				New NotifyDescription("AfterAnswerToQuestionAboutRecordWithEmptyRoleList", ThisObject, WriteParameters),
-				NStr("en = 'A role was not assigned to the Infobase user. Continue?'"),
+				NStr("en='A role was not assigned to the Infobase user. Continue?';ru='Пользователю информационной базы не установлено ни одной роли. Продолжить?'"),
 				QuestionDialogMode.YesNo,
 				,
 				,
-				NStr("en = 'Record of the infobase user'"));
+				NStr("en='Record of the infobase user';ru='Запись пользователя информационной базы'"));
 			Return;
 		EndIf;
 	EndIf;
@@ -370,8 +370,9 @@ Procedure CanLogOnToApplicationOnChange(Item)
 	If Object.DeletionMark AND CanLogOnToApplication Then
 		CanLogOnToApplication = False;
 		ShowMessageBox(,
-			NStr("en = 'To allow logging on, clear
-			           |the deletion mark for the external user.'"));
+			NStr("en='To allow logging on, clear"
+"the deletion mark for the external user.';ru='Чтобы разрешить вход в"
+"программу, требуется снять пометку на удаление с этого внешнего пользователя.'"));
 		Return;
 	EndIf;
 	
@@ -391,7 +392,7 @@ Procedure CanLogOnToApplicationOnChange(Item)
 	   AND Not CanLogOnToApplication Then
 		
 		ShowMessageBox(,
-			NStr("en = 'After saving, only administrator can allow to log on.'"));
+			NStr("en='After saving, only administrator can allow to log on.';ru='После записи вход в программу сможет разрешить только администратор.'"));
 	EndIf;
 	
 	CanLogOnToApplicationDirectChangeValue = CanLogOnToApplication;
@@ -926,7 +927,7 @@ Procedure DefineUserInconsistenciesWithUserIB(WriteParameters = Undefined)
 		FoundDifferencesCanBeResolvedWithoutAdministrator = False;
 		
 		If IBUserOSAuthentication <> False Then
-			PropertiesAdjustment.Add(NStr("en = 'OS authentication (enabled)'"));
+			PropertiesAdjustment.Add(NStr("en='OS authentication (enabled)';ru='Аутентификация ОС (включена)'"));
 		EndIf;
 		
 		If ValueIsFilled(PropertiesAdjustment) Then
@@ -939,24 +940,24 @@ Procedure DefineUserInconsistenciesWithUserIB(WriteParameters = Undefined)
 			FoundDifferencesCanBeResolvedWithoutAdministrator = True;
 			
 			RefineFullName = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Full name ""%1""'"), IBUserFullName);
+				NStr("en='Full name ""%1""';ru='Полное имя ""%1""'"), IBUserFullName);
 			
 			PropertiesAdjustment.Insert(0, StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Full name ""%1""'"), IBUserFullName));
+				NStr("en='Full name ""%1""';ru='Полное имя ""%1""'"), IBUserFullName));
 		EndIf;
 		
 		If IBUserOSUser <> "" Then
-			PropertiesAdjustment.Add(NStr("en = 'OS user (specified)'"));
+			PropertiesAdjustment.Add(NStr("en='OS user (specified)';ru='Пользователь ОС (указан)'"));
 		EndIf;
 		
 		If IBUserShowInList Then
 			FoundDifferencesCanBeResolvedWithoutAdministrator = True;
-			PropertiesAdjustment.Add(NStr("en = 'Show in choice list (enabled)'"));
+			PropertiesAdjustment.Add(NStr("en='Show in choice list (enabled)';ru='Показывать в списке выбора (включено)'"));
 		EndIf;
 		
 		If IBUserRunMode <> "Auto" Then
 			FoundDifferencesCanBeResolvedWithoutAdministrator = True;
-			PropertiesAdjustment.Add(NStr("en = 'Launch mode (not Auto)'"));
+			PropertiesAdjustment.Add(NStr("en='Launch mode (not Auto)';ru='Режим запуска (не Авто)'"));
 		EndIf;
 		
 		If PropertiesAdjustment.Count() > 0 Then
@@ -974,12 +975,13 @@ Procedure DefineUserInconsistenciesWithUserIB(WriteParameters = Undefined)
 			EndIf;
 			Items.PropertiesMismatchNote.Title =
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'The following infobase user properties differ from those specified
-					           |in this form: %1.'"), StringPropertyClarification)
+					NStr("en='The following infobase user properties differ from those specified"
+"in this form: %1.';ru='Следующие свойства пользователя информационной базы отличаются"
+"от указанных в этой форме: %1.'"), StringPropertyClarification)
 				+ Chars.LF
 				+ ?(ShowCommandsDifferences Or FoundDifferencesCanBeResolvedWithoutAdministrator,
-					NStr("en = 'Click ""Write"" to resolve the differences and not to show this warning message.'"),
-					NStr("en = 'To resolve the differences, contact your administrator.'"));
+					NStr("en='Click ""Write"" to resolve the differences and not to show this warning message.';ru='Нажмите ""Записать"", чтобы устранить различия и не выводить это предупреждение.'"),
+					NStr("en='To resolve the differences, contact your administrator.';ru='Обратитесь к администратору, чтобы устранить различия.'"));
 		Else
 			ShowMismatch = False;
 		EndIf;

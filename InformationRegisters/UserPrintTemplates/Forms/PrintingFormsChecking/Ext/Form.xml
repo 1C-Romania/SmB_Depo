@@ -40,6 +40,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Message picture</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка сообщения</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>CommonPicture.Information32</xr:Ref>
@@ -56,6 +60,12 @@
 check compatibility of edited templates of printed forms with the current version of application.
 If the printed forms are opened incorrectly it is recommended to use the Standard Template.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Рекомендуется проверить
+совместимость отредактированных макетов печатных форм с текущей версией программы.
+Если печатные формы открываются некорректно, то рекомендуется использовать стандартный макет.</v8:content>
+						</v8:item>
 					</Title>
 					<ContextMenu name="MessageTextContextMenu" id="13"/>
 					<ExtendedTooltip name="MessageTextExtendedTooltip" id="14"/>
@@ -71,11 +81,19 @@ If the printed forms are opened incorrectly it is recommended to use the Standar
 					<v8:lang>en</v8:lang>
 					<v8:content>Checked</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверено</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Do not show this message until next application update.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не выводить больше это сообщение до следующего обновления программы.</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Checked</Action>
@@ -86,6 +104,10 @@ If the printed forms are opened incorrectly it is recommended to use the Standar
 					<v8:lang>en</v8:lang>
 					<v8:content>Go to list</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перейти к списку</v8:content>
+				</v8:item>
 			</Title>
 			<Action>GoToList</Action>
 		</Command>
@@ -94,6 +116,10 @@ If the printed forms are opened incorrectly it is recommended to use the Standar
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить</v8:content>
 				</v8:item>
 			</Title>
 			<Action>CloseForm</Action>

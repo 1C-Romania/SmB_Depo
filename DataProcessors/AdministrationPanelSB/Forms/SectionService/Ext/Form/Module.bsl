@@ -206,7 +206,7 @@ Function CancellationUncheckFunctionalOptionUseWorkSubsystem()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'There are ""Work order"" documents in the infobase! You can not clear the ""Work"" check box!'");
+		ErrorText = NStr("en='There are ""Work order"" documents in the infobase! You can not clear the ""Work"" check box!';ru='В информационной базе присутствуют документы ""Заказ - наряд""! Снятие флага ""Работы"" запрещено!'");
 		
 	EndIf;
 	
@@ -251,14 +251,19 @@ Function CancellationUncheckUseCustomerOrderStates()
 	Result = Query.Execute();
 	If Not Result.IsEmpty() Then
 		
-		ErrorText = NStr(
-			"en = 'There are documents ""Customer order"" and/or ""Work order"" in the base in the state with the ""Open"" and/or ""Executed (not closed)"" status!
-			|Disabling the option is prohibited!
-			|Note:
-			|If there are documents in the state with
-			|the status ""Open"", set them to state with the status ""In progress""
-			|or ""Executed (closed)"" If there are documents in the state
-			|with the status ""Executed (not closed)"", then set them to state with the status ""Executed (closed)"".'"
+		ErrorText = NStr("en='There are documents ""Customer order"" and/or ""Work order"" in the base in the state with the ""Open"" and/or ""Executed (not closed)"" status!"
+"Disabling the option is prohibited!"
+"Note:"
+"If there are documents in the state with"
+"the status ""Open"", set them to state with the status ""In progress"""
+"or ""Executed (closed)"" If there are documents in the state"
+"with the status ""Executed (not closed)"", then set them to state with the status ""Executed (closed)"".';ru='В базе есть документы ""Заказ покупателя"" и/или ""Заказ-наряд"" в состоянии со статусом ""Открыт"" и/или ""Выполнен (не закрыт)""!"
+"Снятие опции запрещено!"
+"Примечание:"
+"Если есть документы в состоянии со статусом ""Открыт"", "
+"то установите для них состояние со статусом ""В работе"" или ""Выполнен (закрыт)"""
+"Если есть документы в состоянии со статусом ""Выполнен (не закрыт)"","
+"то установите для них состояние со статусом ""Выполнен (закрыт)"".'"
 		);
 		
 	EndIf;
@@ -315,7 +320,7 @@ Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 		If Not ConstantsSet.UseCustomerOrderStates
 			AND Not ValueIsFilled(ConstantsSet.CustomerOrdersInProgressStatus) Then
 			
-			ErrorText = NStr("en = 'The ""Use several customer orders states"" flag is cleared, but the ""In work"" customer order state parameter is not filled!'");
+			ErrorText = NStr("en='The ""Use several customer orders states"" flag is cleared, but the ""In work"" customer order state parameter is not filled!';ru='Снят флаг ""Использовать несколько состояний заказов покупателей"", но не заполнен параматр состояния заказа покупателя ""В работе""!'");
 			Result.Insert("Field", 				AttributePathToData);
 			Result.Insert("ErrorText", 		ErrorText);
 			Result.Insert("CurrentValue",	Constants.CustomerOrdersInProgressStatus.Get());
@@ -329,7 +334,7 @@ Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 		If Not ConstantsSet.UseCustomerOrderStates
 			AND Not ValueIsFilled(ConstantsSet.CustomerOrdersCompletedStatus) Then
 			
-			ErrorText = NStr("en = 'The ""Use several customer orders states"" check box is cleared, but the ""Executed"" state of the customer order is not filled out!'");
+			ErrorText = NStr("en='The ""Use several customer orders states"" check box is cleared, but the ""Executed"" state of the customer order is not filled out!';ru='Снят флаг ""Использовать несколько состояний заказов покупателей"", но не заполнен параматр состояния заказа покупателя ""Выполнен""!'");
 			Result.Insert("Field", 				AttributePathToData);
 			Result.Insert("ErrorText", 		ErrorText);
 			Result.Insert("CurrentValue",	Constants.CustomerOrdersCompletedStatus.Get());

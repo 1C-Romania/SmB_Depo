@@ -66,7 +66,7 @@ Procedure FillTitleBySelectedCatalogs()
 	ArrayMarked = Object.CounterpartyContracts.FindRows(New Structure("Select", True));
 	If Object.CounterpartyContracts.Count() = 0 Then
 		
-		LabelText = NStr("en = 'The contracts list is empty'");
+		LabelText = NStr("en='The contracts list is empty';ru='Список договоров пуст'");
 		
 	ElsIf ArrayMarked.Count() = 1 Then
 		
@@ -74,7 +74,7 @@ Procedure FillTitleBySelectedCatalogs()
 		
 	ElsIf ArrayMarked.Count() = 0 Then
 		
-		LabelText = NStr("en = 'Contracts are not selected'");
+		LabelText = NStr("en='Contracts are not selected';ru='Договоры не выбраны'");
 		
 	Else
 		
@@ -410,7 +410,7 @@ Procedure GetCounterpartyData(CounterpartyData)
 		|	CatalogCounterpartyContracts.Owner = &Counterparty";
 		
 		Object.CounterpartyContracts.Load(Query.Execute().Unload());
-		Object.DescriptionContractsSelection = NStr("en = 'All counterparty contracts are selected'");
+		Object.DescriptionContractsSelection = NStr("en='All counterparty contracts are selected';ru='Выбраны все договоры контрагента'");
 		
 		ContactPersonsList = SmallBusinessServer.GetCounterpartyContactPersons(Object.Counterparty);
 		If ContactPersonsList.Count() > 0 Then
@@ -559,8 +559,9 @@ Procedure CompanyDataDetailsDocumentOpen(Item, StandardProcessing)
 			
 		Else
 			
-			MessageText = NStr("en = 'The string is not bound to the payment document. 
-				|To bind it, it is required to enable the visible of the corresponding column and specify a document.'");
+			MessageText = NStr("en='The string is not bound to the payment document. "
+"To bind it, it is required to enable the visible of the corresponding column and specify a document.';ru='Строка не привязана к расчетному документу. "
+"Для привязки необходимо включить видимость соответствующей колонки и указать документ самостоятельно.'");
 				
 			CommonUseClientServer.MessageToUser(MessageText);
 			
@@ -586,8 +587,9 @@ Procedure CounterpartyDataDetailsDocumentOpen(Item, StandardProcessing)
 			
 		Else
 			
-			MessageText = NStr("en = 'The string is not bound to the payment document. 
-				|To bind it, it is required to enable the visible of the corresponding column and specify a document.'");
+			MessageText = NStr("en='The string is not bound to the payment document. "
+"To bind it, it is required to enable the visible of the corresponding column and specify a document.';ru='Строка не привязана к расчетному документу. "
+"Для привязки необходимо включить видимость соответствующей колонки и указать документ самостоятельно.'");
 				
 			CommonUseClientServer.MessageToUser(MessageText);
 			
@@ -687,14 +689,14 @@ Procedure StatusChoiceProcessing(Item, ValueSelected, StandardProcessing)
 		
 		If Not ValueIsFilled(Object.Responsible) Then
 			
-			MessageText = NStr("en = 'Company responsible person is filled in incorrectly.'");
+			MessageText = NStr("en='Company responsible person is filled in incorrectly.';ru='Неверно заполнено ответственное лицо организации.'");
 			CommonUseClientServer.AddUserError(Errors, "Object.Responsible", MessageText, Undefined);
 			
 		EndIf;
 		
 		If Not ValueIsFilled(Object.CounterpartyRepresentative) Then
 			
-			MessageText = NStr("en = 'Counterparty representative is filled in incorrectly.'");
+			MessageText = NStr("en='Counterparty representative is filled in incorrectly.';ru='Неверно заполнен представитель контрагента.'");
 			CommonUseClientServer.AddUserError(Errors, "Object.CounterpartyRepresentative", MessageText, Undefined);
 			
 		EndIf;
@@ -722,7 +724,7 @@ Procedure CounterpartyOnChange(Item)
 	Else
 		
 		Object.CounterpartyContracts.Clear();
-		Object.DescriptionContractsSelection = NStr("en = 'The contracts list is empty'");
+		Object.DescriptionContractsSelection = NStr("en='The contracts list is empty';ru='Список договоров пуст'");
 		
 	EndIf;
 	
@@ -842,7 +844,7 @@ Procedure FillByAccountingDocumentsDates(Command)
 	
 	If Object.CounterpartyData.Count() < 1 Then
 		
-		MessageText = NStr("en = 'Tabular section of mutual settlements by counterparty data is empty.'");
+		MessageText = NStr("en='Tabular section of mutual settlements by counterparty data is empty.';ru='Табличная часть взаиморасчетов по данным контрагента пуста.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -861,7 +863,7 @@ Procedure FillAccordingToAccounting(Command)
 	
 	If Not ValueIsFilled(Object.EndOfPeriod) Then
 		
-		MessageText	= NStr("en = 'The period end date is filled in incorrectly.'");
+		MessageText	= NStr("en='The period end date is filled in incorrectly.';ru='Неверно заполнена дата окончания периода.'");
 		MessageField	= "Object.EndOfPeriod";
 		
 		CommonUseClientServer.MessageToUser(MessageText, , MessageField);
@@ -875,7 +877,7 @@ Procedure FillAccordingToAccounting(Command)
 		
 		If Object.CompanyData.Count() > 0 Then
 			
-			QuestionText	= NStr("en = 'The tabular section will be cleared and filled in again. Continue?'");
+			QuestionText	= NStr("en='The tabular section will be cleared and filled in again. Continue?';ru='Табличная часть будит очищена и заполнена повторно. Продолжить?'");
 			NotifyDescription = New NotifyDescription("HandlerAfterQuestionAboutCleaning", ThisObject, "CompanyData");
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 0);
 			
@@ -897,7 +899,7 @@ Procedure TransferFromCompanyData(Command)
 	
 	If Object.CompanyData.Count() < 1 Then
 		
-		MessageText = NStr("en = 'Company data tabular section is not filled.'");
+		MessageText = NStr("en='Company data tabular section is not filled.';ru='Не заполнена табличная часть с данными организации.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -905,7 +907,7 @@ Procedure TransferFromCompanyData(Command)
 	
 	If Object.CounterpartyData.Count() > 0 Then
 		
-		QuestionText	= NStr("en = 'The tabular section will be cleared and filled in again. Continue?'");
+		QuestionText	= NStr("en='The tabular section will be cleared and filled in again. Continue?';ru='Табличная часть будит очищена и заполнена повторно. Продолжить?'");
 		NotifyDescription = New NotifyDescription("HandlerAfterQuestionAboutCleaning", ThisObject, "CounterpartyData");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 0);
 		

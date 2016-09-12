@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("ID", ID);
 	Parameters.Property("HardwareDriver", HardwareDriver);
 	
-	Title = NStr("en='Equipment:'") + Chars.NBSp  + String(ID);
+	Title = NStr("en='Equipment:';ru='Оборудование:'") + Chars.NBSp  + String(ID);
 	              
 	TextColor = StyleColors.FormTextColor;
 	ErrorColor = StyleColors.NegativeTextColor;
@@ -71,9 +71,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SpeedList.Add(10, "19200");
 	
 	ParityList = Items.Parity.ChoiceList;
-	ParityList.Add(0, NStr("en='No'"));
-	ParityList.Add(1, NStr("en='Oddness'"));
-	ParityList.Add(2, NStr("en='Parity'"));
+	ParityList.Add(0, NStr("en='No';ru='Нет'"));
+	ParityList.Add(1, NStr("en='Oddness';ru='Нечетность'"));
+	ParityList.Add(2, NStr("en='Parity';ru='Четность'"));
 	
 	tempPort            = Undefined;
 	tempSpeed        = Undefined;
@@ -188,14 +188,14 @@ Procedure DeviceTest(Command)
 	                                                                      tempDeviceParameters);
 	  
 	AdditionalDetails = ?(TypeOf(Output_Parameters) = Type("Array") AND Output_Parameters.Count(),
-	                           NStr("en = 'Additional description:'") + " " + Output_Parameters[1], "");
+	                           NStr("en='Additional description:';ru='Дополнительное описание:'") + " " + Output_Parameters[1], "");
 	If Result Then
-		MessageText = NStr("en = 'Test completed successfully. %AdditionalDetails%%Linefeed%'");
+		MessageText = NStr("en='Test completed successfully. %AdditionalDetails%%Linefeed%';ru='Тест успешно выполнен.%ПереводСтроки%%ДополнительноеОписание%'");
 		MessageText = StrReplace(MessageText, "%Linefeed%", ?(IsBlankString(AdditionalDetails), "", Chars.LF));
 		MessageText = StrReplace(MessageText, "%AdditionalDetails%", ?(IsBlankString(AdditionalDetails), "", AdditionalDetails));
 		CommonUseClientServer.MessageToUser(MessageText);
 	Else
-		MessageText = NStr("en = 'Test failed.%Linefeed% %AdditionalDetails%'");
+		MessageText = NStr("en='Test failed.%Linefeed% %AdditionalDetails%';ru='Тест не пройден.%ПереводСтроки%%ДополнительноеОписание%'");
 		MessageText = StrReplace(MessageText, "%Linefeed%", ?(IsBlankString(AdditionalDetails), "", Chars.LF));
 		MessageText = StrReplace(MessageText, "%AdditionalDetails%", ?(IsBlankString(AdditionalDetails), "", AdditionalDetails));
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -230,12 +230,12 @@ Procedure UpdateInformationAboutDriver()
 		Version  = Output_Parameters[1];
 	Else
 		Driver = Output_Parameters[2];
-		Version  = NStr("en='Not defined'");
+		Version  = NStr("en='Not defined';ru='Не определена'");
 	EndIf;
 	
-	Items.Driver.TextColor = ?(Driver = NStr("en='Not set'"), ErrorColor, TextColor);
-	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined'"), ErrorColor, TextColor);
-	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed'"));
+	Items.Driver.TextColor = ?(Driver = NStr("en='Not set';ru='Не установлен'"), ErrorColor, TextColor);
+	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined';ru='Не определена'"), ErrorColor, TextColor);
+	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed';ru='Установлен'"));
 
 EndProcedure
 

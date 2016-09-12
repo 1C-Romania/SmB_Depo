@@ -30,6 +30,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Supplier invoice for payment</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет на оплату, полученный от поставщика</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<UseStandardCommands>true</UseStandardCommands>
@@ -53,6 +57,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document posting flag</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак проведения документа</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -67,6 +75,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Posted</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проведен</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -88,6 +100,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Ref to document</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка на документ</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -102,6 +118,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Ref</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -123,6 +143,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document deletion mark</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка удаления документа</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -137,6 +161,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Deletion mark</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПометкаУдаления</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -158,6 +186,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document date</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата документа</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -172,6 +204,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -193,6 +229,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document No.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер документа</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -206,6 +246,10 @@
 					<xr:Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Number</v8:content>
 						</v8:item>
 					</xr:Synonym>
@@ -282,12 +326,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Supplier invoices for payment</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счета на оплату (полученные)</v8:content>
+				</v8:item>
 			</ListPresentation>
 			<ExtendedListPresentation/>
 			<Explanation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Supplier invoice for payment</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет на оплату, полученный от поставщика</v8:content>
 				</v8:item>
 			</Explanation>
 			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
@@ -313,6 +365,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company that issues the invoice for payment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация, от которой выписывается счет на оплату</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -344,6 +400,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -360,6 +420,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment to the document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается комментарий к документу</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -391,6 +455,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Basis</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основание</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -403,6 +471,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document based on which the invoice for payment is issued</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ, на основании которого выписывается счет на оплату</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -434,6 +506,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагенты</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -446,6 +522,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Information about the customer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается информация о покупателе</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -477,6 +557,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Contract</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контакт</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -489,6 +573,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty contract under which the document is issued</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Договор контрагента, в рамках которого оформляется документ</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -526,6 +614,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash assets type</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип денежных средств</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -538,6 +630,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payment method: invoice, cash or not defined</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Способ оплаты: безналичные, наличные или не определен</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -569,6 +665,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank account</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банковский счет</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -581,6 +681,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company bank account, for payment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банковский счет организации для оплаты</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -623,6 +727,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вал.</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -635,6 +743,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вал.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -666,6 +778,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Multiplicity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Multiplicity</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -678,6 +794,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Settlements currency multiplicity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кратность валюты расчетов</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -709,6 +829,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Exchange rate</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Курс валюты</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -721,6 +845,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency exchange rate</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Курс валюты расчетов</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -752,6 +880,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Taxation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Налогообложение</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -764,6 +896,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Type of VAT taxation for the sale of goods and services</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип налогообложения продажи товаров и услуг налогом на добавленную стоимость</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -795,6 +931,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount includes VAT</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма включает НДС</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -807,6 +947,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Flag of VAT inclusion</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается признак включения НДС в сумму</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -838,6 +982,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty price kind</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид цен контрагента</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -850,6 +998,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products and services item costs added to the document table will be of the selected type</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цены позиции номенклатуры, добавляемых в табличную часть документа, будут выбранного вида</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -887,6 +1039,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Petty cash</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Касса</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -899,6 +1055,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Petty cash to pay in check</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Касса организации для оплаты наличными</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -930,6 +1090,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -947,6 +1111,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Fill document amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заполняется сумма документа</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -978,6 +1146,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Event</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Событие</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -990,6 +1162,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Service attribute to register for event</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Служебный реквизит для регистрации связи с событием</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -1021,6 +1197,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Schedule payment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запланировать оплату</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -1033,6 +1213,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The invoice flag for planning the partial payment to be paid not later the date specified. Select the check box if you want to monitor payments under the invoice. To control the payments feasibility the Payment calendar service is used.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак планирования в счете процента оплаты, который должен быть выплачен не позднее указанной даты. Флаг устанавливается, если необходимо контролировать платежи по счету. Для контроля выполнимости платежей используется сервис Платежный календарь.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -1064,6 +1248,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Responsible</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ответственный менеджер</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -1076,6 +1264,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Responsible employee</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ответственный сотрудник</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -1107,6 +1299,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Division</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>разделение</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -1119,6 +1315,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Information about division responsible for the action</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Информация о подразделении, ответственном за операцию</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -1154,6 +1354,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>In. Doc. No</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>In. Doc. No</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -1170,6 +1374,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Incoming document No.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер входящего документа</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -1201,6 +1409,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of incoming document</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата входящего документа</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -1216,6 +1428,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of incoming document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата входящего документа</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -1247,6 +1463,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Author</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ведомость составил</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -1259,6 +1479,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>User who created the document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь, создавший документ</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -1303,12 +1527,20 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Inventory</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запасы</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products and services list</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список товаров и услуг</v8:content>
 						</v8:item>
 					</ToolTip>
 					<FillChecking>DontCheck</FillChecking>
@@ -1349,6 +1581,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Products and services</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Продукция и услуги</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1361,6 +1597,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Product, service payable</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Товар, услуга к оплате</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1403,6 +1643,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Characteristic</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Characteristic</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1415,6 +1659,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Products and services characteristic</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Характеристика номенклатуры</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1455,6 +1703,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Batch</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Партия</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1467,6 +1719,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Products and services batch</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Партия номенклатуры</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1515,6 +1771,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Quantity</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Quantity</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1532,6 +1792,11 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Quantity of the inventory position
+</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Количество номенклатурной позиции
 </v8:content>
 								</v8:item>
 							</ToolTip>
@@ -1562,6 +1827,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>UOM</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Единицы измерения</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1575,6 +1844,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Unit of measurement of the products and services item</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Единица измерения номенклатурной позиции.</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1610,6 +1883,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Price</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Цена</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1627,6 +1904,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Selling price of ProductsAndServices position</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Цена реализации номенклатурной позиции</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1656,6 +1937,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Amount</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1673,6 +1958,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>The cost of products and services for sale in the specified string, including taxes according to selected check boxes</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Стоимость реализуемой номенклатуры по данной строке, с налогами согласно флагам</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1702,6 +1991,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>VAT rate</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Указывается ставка НДС</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1714,6 +2007,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>VAT rate</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Указывается ставка НДС</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1743,6 +2040,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>VAT amount</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Указывается сумма НДС</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1760,6 +2061,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>VAT amount by row</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма НДС по строке</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1789,6 +2094,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Total</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Итого</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1806,6 +2115,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Field populated automatically with total amount of goods and services costs</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Поле, автоматически заполняемое суммарной стоимостью товаров и услуг</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1835,6 +2148,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Content</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состав</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1851,6 +2168,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Content, add. information</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Содержание, доп. сведения</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1891,6 +2212,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payment calendar</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Платежный календарь</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1933,6 +2258,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Pay Date</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата оплаты</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1948,6 +2277,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Partial payment due date according to the invoice for payment</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата, не позднее которой должен быть выплачен процент оплаты по счету.</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1977,6 +2310,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Payment Percentage</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Процент оплаты</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1994,6 +2331,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Payment percentage to be paid off</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Процент оплаты, который должен быть выплачен.</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -2023,6 +2364,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Amount of payment</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма оплаты</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -2040,6 +2385,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Amount of payment</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма оплаты</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -2069,6 +2418,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Payment VAT</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>НДС оплаты</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -2086,6 +2439,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Amount of VAT payment</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма оплаты НДС</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -2127,12 +2484,20 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional attributes</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительные реквизиты объекта</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional attributes inventory batch</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительные реквизиты партии запасов</v8:content>
 						</v8:item>
 					</ToolTip>
 					<FillChecking>DontCheck</FillChecking>
@@ -2173,6 +2538,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Property</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Свойство</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -2185,6 +2554,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Additional attribute</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>(Дополнительный реквизит)</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -2214,6 +2587,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Value</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Значение</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -2226,6 +2603,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Additional attributes value</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Значение дополнительного реквизита</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -2261,6 +2642,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Text string</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текстовая строка</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -2277,6 +2662,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Additional attribute string full text</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Полный текст строкового дополнительного реквизита</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -2307,6 +2696,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Enter actual payment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ввести фактический платеж</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>

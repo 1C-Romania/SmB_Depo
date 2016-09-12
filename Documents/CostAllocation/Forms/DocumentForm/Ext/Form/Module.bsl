@@ -241,7 +241,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en = 'Data by barcode is not found: %1%; quantity: %2%'");
+		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -378,7 +378,7 @@ EndProcedure // ExecutePick()
 Procedure SearchByBarcode(Command)
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en = 'Enter barcode'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
 
 EndProcedure
 
@@ -403,7 +403,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.'"));
+		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -421,7 +421,7 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	
 	If Not Weight = Undefined Then
 		If Weight = 0 Then
-			MessageText = NStr("en = 'Electronic scales returned zero weight.'");
+			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			// Weight is received.
@@ -676,11 +676,11 @@ Procedure InventoryFillByStandards(Command)
 	
 	If Object.Inventory.Count() <> 0 Then
 
-		QuestionText = NStr("en = 'The ""Inventory"" tabular section will be refilled.'") + Chars.LF;
+		QuestionText = NStr("en='The ""Inventory"" tabular section will be refilled.';ru='Табличная часть ""Запасы"" будет перезаполнена!'") + Chars.LF;
 		If Object.InventoryDistribution.Count() <> 0 Then
-			QuestionText = QuestionText + NStr("en = 'Tabular section ""inventory distribution""  will be cleared!'") + Chars.LF;
+			QuestionText = QuestionText + NStr("en='Tabular section ""inventory distribution""  will be cleared!';ru='Табличная часть ""Распределение запасов"" будет очищена!'") + Chars.LF;
 		EndIf;	
-		QuestionText = QuestionText + NStr("en = 'Continue?'");
+		QuestionText = QuestionText + NStr("en='Continue?';ru='Продолжить?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("InventoryFillByStandardsEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo, 0);
@@ -719,11 +719,11 @@ Procedure InventoryFillByBalances(Command)
 	
 	If Object.Inventory.Count() <> 0 Then
 
-		QuestionText = NStr("en = 'The ""Inventory"" tabular section will be refilled.'") + Chars.LF;
+		QuestionText = NStr("en='The ""Inventory"" tabular section will be refilled.';ru='Табличная часть ""Запасы"" будет перезаполнена!'") + Chars.LF;
 		If Object.InventoryDistribution.Count() <> 0 Then
-			QuestionText = QuestionText + NStr("en = 'Tabular section ""inventory distribution""  will be cleared!'") + Chars.LF;
+			QuestionText = QuestionText + NStr("en='Tabular section ""inventory distribution""  will be cleared!';ru='Табличная часть ""Распределение запасов"" будет очищена!'") + Chars.LF;
 		EndIf;	
-		QuestionText = QuestionText + NStr("en = 'Continue?'");
+		QuestionText = QuestionText + NStr("en='Continue?';ru='Продолжить?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("InventoryFillByBalancesEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo, 0);
@@ -765,7 +765,7 @@ Procedure InventoryDistributeByStandards(Command)
 		Response = Undefined;
 
 
-		ShowQueryBox(New NotifyDescription("InventoryDistributeByStandardsEnd", ThisObject), NStr("en = 'The ""Inventory allocation"" tabular section will be refilled. Continue?'"), 
+		ShowQueryBox(New NotifyDescription("InventoryDistributeByStandardsEnd", ThisObject), NStr("en='The ""Inventory allocation"" tabular section will be refilled. Continue?';ru='Табличная часть ""Распределение запасов"" будет перезаполнена! Продолжить?'"), 
 							QuestionDialogMode.YesNo, 0);
         Return;
  
@@ -816,7 +816,7 @@ Procedure InventoryDistributeByQuantity(Command)
 		Response = Undefined;
 
 
-		ShowQueryBox(New NotifyDescription("InventoryDistributeByQuantityEnd", ThisObject), NStr("en = 'The ""Inventory allocation"" tabular section will be refilled. Continue?'"), 
+		ShowQueryBox(New NotifyDescription("InventoryDistributeByQuantityEnd", ThisObject), NStr("en='The ""Inventory allocation"" tabular section will be refilled. Continue?';ru='Табличная часть ""Распределение запасов"" будет перезаполнена! Продолжить?'"), 
 							QuestionDialogMode.YesNo, 0);
         Return;
  
@@ -864,9 +864,9 @@ Procedure CostsFillByBalance(Command)
 	
 	If Object.Costs.Count() <> 0 Then
 
-		QuestionText = NStr("en = 'Tabular section ""Costs"" will be refilled!'") + Chars.LF;
-		QuestionText = QuestionText + NStr("en = 'Tabular section ""Expenses distribution"" will be refilled! Do you want to continue operation?'") + Chars.LF;
-		QuestionText = QuestionText + NStr("en = 'Continue?'");
+		QuestionText = NStr("en='Tabular section ""Costs"" will be refilled!';ru='Табличная часть ""Затраты"" будет перезаполнена!'") + Chars.LF;
+		QuestionText = QuestionText + NStr("en='Tabular section ""Expenses distribution"" will be refilled! Do you want to continue operation?';ru='Табличная часть ""Распределение расходов"" будет очищена!'") + Chars.LF;
+		QuestionText = QuestionText + NStr("en='Continue?';ru='Продолжить?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("CostsFillByBalanceEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo, 0);
@@ -908,7 +908,7 @@ Procedure CostsDistributeByQuantity(Command)
 		Response = Undefined;
 
 
-		ShowQueryBox(New NotifyDescription("AllocateCostsByQuantityEnd", ThisObject), NStr("en = 'The ""Expenses allocation"" tabular section will be refilled. Continue?'"), 
+		ShowQueryBox(New NotifyDescription("AllocateCostsByQuantityEnd", ThisObject), NStr("en='The ""Expenses allocation"" tabular section will be refilled. Continue?';ru='Табличная часть ""Распределение расходов"" будет перезаполнена! Продолжить?'"), 
 							QuestionDialogMode.YesNo, 0);
         Return;
  
@@ -959,7 +959,7 @@ Procedure ProductsFillByOutput(Command)
 		Response = Undefined;
 
 
-		ShowQueryBox(New NotifyDescription("ProductsFillByOutputEnd", ThisObject), NStr("en = 'The ""Production"" tabular section will be refilled. Continue?'"), 
+		ShowQueryBox(New NotifyDescription("ProductsFillByOutputEnd", ThisObject), NStr("en='The ""Production"" tabular section will be refilled. Continue?';ru='Табличная часть ""Продукция"" будет перезаполнена! Продолжить?'"), 
 							QuestionDialogMode.YesNo, 0);
         Return;
  

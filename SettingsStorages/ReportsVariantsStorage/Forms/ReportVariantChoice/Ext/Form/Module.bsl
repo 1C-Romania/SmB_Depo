@@ -105,9 +105,9 @@ Procedure ReportVariantsTreeBeforeDeletion(Item, Cancel)
 	EndIf;
 	
 	If Variant.PictureIndex = 4 Then
-		QuestionText = NStr("en = 'Unmark ""%1"" for deletion?'");
+		QuestionText = NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'");
 	Else
-		QuestionText = NStr("en = 'Mark ""%1"" for deletion?'");
+		QuestionText = NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'");
 	EndIf;
 	QuestionText = StrReplace(QuestionText, "%1", Variant.Description);
 	
@@ -187,8 +187,9 @@ Procedure ChooseAndClose()
 	AdditionalParameters = New Structure;
 	AdditionalParameters.Insert("VariantKey", Variant.VariantKey);
 	If Variant.PictureIndex = 4 Then
-		QuestionText = NStr("en = 'Selected report variant is marked for deletion.
-		|Select this report variant?'");
+		QuestionText = NStr("en='Selected report variant is marked for deletion."
+"Select this report variant?';ru='Выбранный вариант отчета помечен на удаление."
+"Выбрать этот варианта отчета?'");
 		Handler = New NotifyDescription("SelectAndCloseEnd", ThisObject, AdditionalParameters);
 		ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo, 60);
 	Else
@@ -211,7 +212,7 @@ Procedure OpenVariantForModification()
 		Return;
 	EndIf;
 	If Not VariantModificationRight(Variant, FullRightsForVariants) Then
-		WarningText = NStr("en = 'The access rights are not sufficient to change the variant ""%1"".'");
+		WarningText = NStr("en='The access rights are not sufficient to change the variant ""%1"".';ru='Недостаточно прав доступа для изменения варианта ""%1"".'");
 		WarningText = StrReplace(WarningText, "%1", Variant.Description);
 		ShowMessageBox(, WarningText);
 		Return;
@@ -386,8 +387,9 @@ Procedure FillVariantsList()
 		Except
 			ReportsVariants.ErrorByVariant(Undefined,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Failed to receive a predefined
-					|variants list of the external report ""%1"":'"),
+					NStr("en='Failed to receive a predefined"
+"variants list of the external report ""%1"":';ru='Не удалось получить"
+"список предопределенных вариантов внешнего отчета ""%1"":'"),
 					ReportInformation.ReportName
 				) + Chars.LF + DetailErrorDescription(ErrorInfo()));
 			Return;
@@ -420,11 +422,11 @@ Procedure FillVariantsList()
 			TreeGroup = ReportVariantsTree.GetItems().Add();
 			TreeGroup.GroupNumber = TableRow.GroupNumber;
 			If TableRow.GroupNumber = 2 Then
-				TreeGroup.Description = NStr("en = 'Hidden in the report panels'");
+				TreeGroup.Description = NStr("en='Hidden in the report panels';ru='Скрытые в панелях отчетов'");
 				TreeGroup.PictureIndex = 0;
 				TreeGroup.AuthorPicture = -1;
 			ElsIf TableRow.GroupNumber = 3 Then
-				TreeGroup.Description = NStr("en = 'Marked for deletion'");
+				TreeGroup.Description = NStr("en='Marked for deletion';ru='Помеченные на удаление'");
 				TreeGroup.PictureIndex = 1;
 				TreeGroup.AuthorPicture = -1;
 			EndIf;

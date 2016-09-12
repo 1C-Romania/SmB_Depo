@@ -20,7 +20,7 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	EndIf;
 	
 	PrintParameters.Insert("FormTitle", "Printing electronic document");
-	PrintParameters.Insert("Presentation", NStr("en = 'Printing electronic document'"));
+	PrintParameters.Insert("Presentation", NStr("en='Printing electronic document';ru='Печать электронного документа'"));
 	
 	PrintManagementClient.ExecutePrintCommand(PrintManagerName, TemplateName, CommandParameter, ,PrintParameters);
 	

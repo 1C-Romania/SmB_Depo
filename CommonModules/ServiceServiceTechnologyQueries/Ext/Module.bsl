@@ -320,7 +320,7 @@ Function GenerateSelectionCondition(Val TableAlias, Val Filter)
 			ElsIf FilterDescription.ComparisonType = ComparisonType.LessOrEqual Then
 				LogicalOperator = "<=";
 			Else
-				MessagePattern = NStr("en = '%1 comparison kind is not supported.'");
+				MessagePattern = NStr("en='%1 comparison kind is not supported.';ru='Вид сравнения %1 не поддерживается.'");
 				MessageText = ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(MessagePattern, FilterDescription.ComparisonType);
 			EndIf;
 			

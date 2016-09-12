@@ -34,10 +34,10 @@ Procedure CheckSignatures(SourceData, RowsData) Export
 			SourceData, SignatureRow.SignatureAddress, ErrorDescription);
 		
 		If SignatureVerified Then
-			SignatureRow.Status  = NStr("en = 'Correct'");
+			SignatureRow.Status  = NStr("en='Correct';ru='Исправить'");
 			SignatureRow.Wrong = False;
 		Else
-			SignatureRow.Status  = NStr("en = 'Wrong'") + ". " + ErrorDescription;
+			SignatureRow.Status  = NStr("en='Wrong';ru='Неверна'") + ". " + ErrorDescription;
 			SignatureRow.Wrong = True;
 		EndIf;
 	EndDo;

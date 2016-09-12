@@ -283,9 +283,9 @@ Procedure ImportFilesAfterExpansionSetting(Result, ExecuteParameters) Export
 	
 	FileOpeningDialog = New FileDialog(FileDialogMode.Open);
 	FileOpeningDialog.FullFileName = "";
-	FileOpeningDialog.Filter = NStr("en = 'All files(*.*)|*.*'");
+	FileOpeningDialog.Filter = NStr("en='All files(*.*)|*.*';ru='Все файлы(*.*)|*.*'");
 	FileOpeningDialog.Multiselect = True;
-	FileOpeningDialog.Title = NStr("en = 'Select files'");
+	FileOpeningDialog.Title = NStr("en='Select files';ru='Выбрать файлы'");
 	If Not FileOpeningDialog.Choose() Then
 		Return;
 	EndIf;
@@ -305,17 +305,18 @@ EndProcedure
 &AtClient
 Procedure FolderImport(Command)
 	#If WebClient Then
-		WarningText = NStr("en = 'Import of folders is unavailable in the web client.
-			                             |Use the Create command in files list.'");
+		WarningText = NStr("en='Import of folders is unavailable in the web client."
+"Use the Create command in files list.';ru='В веб-клиенте импорт папок недоступен."
+"Используйте команду ""Создать"" в списке файлов.'");
 		ShowMessageBox(, WarningText);
 		Return;
 	#EndIf
 	
 	FileOpeningDialog = New FileDialog(FileDialogMode.ChooseDirectory);
 	FileOpeningDialog.FullFileName = "";
-	FileOpeningDialog.Filter = NStr("en = 'All files(*.*)|*.*'");
+	FileOpeningDialog.Filter = NStr("en='All files(*.*)|*.*';ru='Все файлы(*.*)|*.*'");
 	FileOpeningDialog.Multiselect = False;
-	FileOpeningDialog.Title = NStr("en = 'Select the folder'");
+	FileOpeningDialog.Title = NStr("en='Select the folder';ru='Выберите каталог'");
 	If Not FileOpeningDialog.Choose() Then
 		Return;
 	EndIf;
@@ -341,7 +342,7 @@ Procedure FindExecute()
 	
 	If SearchString = "" Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Search text not specified.'"), , "SearchString");
+			NStr("en='Search text not specified.';ru='Не указан текст для поиска.'"), , "SearchString");
 		Return;
 	EndIf;
 	
@@ -360,8 +361,9 @@ Procedure FindFilesOrFolders()
 	
 	If Result = "FoundNothing" Then
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File or folder with
-			           |%1 in the name or code is not found'"),
+			NStr("en='File or folder with"
+"%1 in the name or code is not found';ru='Не удалось найти"
+"файл или папку, наименование или код которых содержит ""%1"".'"),
 			SearchString);
 		ShowMessageBox(, WarningText);
 	Else
@@ -707,7 +709,7 @@ Procedure MoveToFolder(Command)
 	EndIf;
 	
 	FormParameters = New Structure;
-	FormParameters.Insert("Title",    NStr("en = 'Select folder'"));
+	FormParameters.Insert("Title",    NStr("en='Select folder';ru='Установить каталог'"));
 	FormParameters.Insert("CurrentFolder", Items.Folders.CurrentRow);
 	FormParameters.Insert("ChoiceMode",  True);
 	
@@ -868,16 +870,17 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 				Items.List.Refresh();
 				
 				If DraggingValue.Count() = 1 Then
-					NotificationTitle = NStr("en = 'File copied.'");
+					NotificationTitle = NStr("en='File copied.';ru='Файл скопирован.'");
 					NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = '%1
-						           |file has been copied to the %2 folder'"),
+						NStr("en='%1"
+"file has been copied to the %2 folder';ru='Файл"
+"""%1"" скопирован в папку ""%2""'"),
 						DraggingValue[0],
 						String(FolderForAdding));
 				Else
-					NotificationTitle = NStr("en = 'Files are copied.'");
+					NotificationTitle = NStr("en='Files are copied.';ru='Файлы скопированы.'");
 					NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'Files (%1 units) have been copied to the %2 folder'"),
+						NStr("en='Files (%1 units) have been copied to the %2 folder';ru='Файлы (%1 шт.) скопированы в папку ""%2""'"),
 						DraggingValue.Count(),
 						String(FolderForAdding));
 				EndIf;
@@ -893,16 +896,17 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 				Items.List.Refresh();
 				
 				If DraggingValue.Count() = 1 Then
-					NotificationTitle = NStr("en = 'File has been moved'");
+					NotificationTitle = NStr("en='File has been moved';ru='Файл перенесен.'");
 					NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'The
-						           |file ""%1"" was moved to the folder ""%2""'"),
+						NStr("en='The"
+"file ""%1"" was moved to the folder ""%2""';ru='Файл"
+"""%1"" перенесен в папку ""%2""'"),
 						String(DraggingValue[0]),
 						String(FolderForAdding));
 				Else
-					NotificationTitle = NStr("en = 'Files have been moved.'");
+					NotificationTitle = NStr("en='Files have been moved.';ru='Файлы перенесены.'");
 					NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'Files (%1) moved to folder %2'"),
+						NStr("en='Files (%1) moved to folder %2';ru='Файлы (%1 шт.) перенесены в папку ""%2""'"),
 						String(DraggingValue.Count()),
 						String(FolderForAdding));
 				EndIf;
@@ -914,7 +918,7 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 			ParentChanged = FileOperationsServiceServerCall.ChangeParentOfFolders(DraggingValue, FolderForAdding, InfiniteLoopFound);
 			If ParentChanged <> True Then
 				If InfiniteLoopFound = True Then
-					ShowMessageBox(, NStr("en = 'Levels looping.'"));
+					ShowMessageBox(, NStr("en='Levels looping.';ru='Зацикливание уровней.'"));
 				EndIf;
 				Return;
 			EndIf;
@@ -924,16 +928,17 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 			
 			If DraggingValue.Count() = 1 Then
 				Items.Folders.CurrentRow = DraggingValue[0];
-				NotificationTitle = NStr("en = 'Folder has been moved.'");
+				NotificationTitle = NStr("en='Folder has been moved.';ru='Папка перенесена.'");
 				NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Folder
-					           |""%1"" moved to ""%2""'"),
+					NStr("en='Folder"
+"""%1"" moved to ""%2""';ru='Папка"
+"""%1"" перенесена в папку ""%2""'"),
 					String(DraggingValue[0]),
 					String(FolderForAdding));
 			Else
-				NotificationTitle = NStr("en = 'Folders have been moved.'");
+				NotificationTitle = NStr("en='Folders have been moved.';ru='Папки перенесены.'");
 				NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Folders (%1 pcs.)  moved to folder ""%2""'"),
+					NStr("en='Folders (%1 pcs.)  moved to folder ""%2""';ru='Папки (%1 шт.) перенесены в папку ""%2""'"),
 					String(DraggingValue.Count()),
 					String(FolderForAdding));
 			EndIf;

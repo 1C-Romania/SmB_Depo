@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
-	Items.LoginLabel.Title = NStr("en = 'Login:'") + " " + Parameters.login;
+	Items.LoginLabel.Title = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	If ClientApplicationInterfaceCurrentVariant() = ClientApplicationInterfaceVariant.Taxi Then
 		Items.GroupHeader.Representation = UsualGroupRepresentation.None;
@@ -108,7 +108,7 @@ Procedure AddressClick(Item, StandardProcessing)
 	CountryStates = RegistrationContext.CountryStates[MailAddressInformation.Country];
 	If CountryStates = Undefined Then
 		CountryStates = New ValueList;
-		CountryStates.Add("-1", NStr("en = '<Not selected>'"));
+		CountryStates.Add("-1", NStr("en='<Not selected>';ru='<не выбран>'"));
 	EndIf;
 	
 	OnlineUserSupportClient.CopyValueListIteratively(
@@ -224,11 +224,11 @@ Procedure CommandCancel(Command)
 	NotifyDescription = New NotifyDescription("WhenReplyingToRegistrationRejectIssue", ThisObject);
 	
 	ShowQueryBox(NOTifyDescription,
-		NStr("en = 'Are you sure you want to cancel the registration of the software product?'"),
+		NStr("en='Are you sure you want to cancel the registration of the software product?';ru='Вы уверены, что хотите отказаться от регистрации программного продукта?'"),
 		QuestionDialogMode.YesNo,
 		,
 		,
-		NStr("en = 'Software product registration'"));
+		NStr("en='Software product registration';ru='Регистрация программного продукта'"));
 	
 EndProcedure
 
@@ -248,7 +248,7 @@ Procedure ConfigureFormPresentation()
 	Company = "-1";
 	
 	MailAddressInformation = NewMailAddressData();
-	AddressPresentation   = NStr("en = '<enter address>'");
+	AddressPresentation   = NStr("en='<enter address>';ru='<введите адрес>'");
 	
 EndProcedure
 
@@ -274,37 +274,37 @@ Function FieldsAreFilledCorrectly()
 	If Company = "-1" Then
 		
 		If IsBlankString(CounterpartyName) Then
-			ShowFieldFillingErrorMessage(NStr("en = '""Company name"" field is not filled.'"),
+			ShowFieldFillingErrorMessage(NStr("en='""Company name"" field is not filled.';ru='Поле ""Название организации"" не заполнено.'"),
 				"CounterpartyName",
 				Cancel);
 		EndIf;
 		
 		If IsBlankString(BusinessType) Then
-			ShowFieldFillingErrorMessage(NStr("en = '""Business type"" field is not filled.'"),
+			ShowFieldFillingErrorMessage(NStr("en='""Business type"" field is not filled.';ru='Поле ""Тип деятельности"" не заполнено.'"),
 				"BusinessType",
 				Cancel);
 		EndIf;
 		
 		If IsBlankString(TIN) Then
-			ShowFieldFillingErrorMessage(NStr("en = '""TIN"" field is not filled.'"),
+			ShowFieldFillingErrorMessage(NStr("en='""TIN"" field is not filled.';ru='Поле ""ИНН"" не заполнено.'"),
 				"TIN",
 				Cancel);
 		EndIf;
 		
 		If IsBlankString(Head) Then
-			ShowFieldFillingErrorMessage(NStr("en = '""Manager"" field is not filled.'"),
+			ShowFieldFillingErrorMessage(NStr("en='""Manager"" field is not filled.';ru='Поле ""Руководитель"" не заполнено.'"),
 				"Head",
 				Cancel);
 		EndIf;
 		
 		If IsBlankString(Phone) Then
-			ShowFieldFillingErrorMessage(NStr("en = '""Phone"" field is not filled.'"),
+			ShowFieldFillingErrorMessage(NStr("en='""Phone"" field is not filled.';ru='Поле ""Телефон"" не заполнено.'"),
 				"Phone",
 				Cancel);
 		EndIf;
 		
 		If IsBlankString(EmailAddress) Then
-			ShowFieldFillingErrorMessage(NStr("en = '""Email"" field is not filled.'"),
+			ShowFieldFillingErrorMessage(NStr("en='""Email"" field is not filled.';ru='Поле ""Адрес электронной почты"" не заполнено.'"),
 				"EmailAddress",
 				Cancel);
 		EndIf;
@@ -312,25 +312,25 @@ Function FieldsAreFilledCorrectly()
 	EndIf;
 	
 	If IsBlankString(WhereApplicationWasPurchased) Then
-		ShowFieldFillingErrorMessage(NStr("en = '""Purchase place"" field is not filled.'"),
+		ShowFieldFillingErrorMessage(NStr("en='""Purchase place"" field is not filled.';ru='Поле ""Место покупки"" не заполнено.'"),
 			"WhereApplicationWasPurchased",
 			Cancel);
 	EndIf;
 	
 	If ApplicationPurchaseDate = '00010101' Then
-		ShowFieldFillingErrorMessage(NStr("en = '""Purchase date"" field is not filled.'"),
+		ShowFieldFillingErrorMessage(NStr("en='""Purchase date"" field is not filled.';ru='Поле ""Дата покупки"" не заполнено.'"),
 			"ApplicationPurchaseDate",
 			Cancel);
 	EndIf;
 	
 	If WorkplaceNumber = 0 Then
-		ShowFieldFillingErrorMessage(NStr("en = '""Number of Workplaces"" field is not filled.'"),
+		ShowFieldFillingErrorMessage(NStr("en='""Number of Workplaces"" field is not filled.';ru='Поле ""Число рабочих мест"" не заполнено.'"),
 			"WorkplaceNumber",
 			Cancel);
 	EndIf;
 	
 	If IsBlankString(Responsible) Then
-		ShowFieldFillingErrorMessage(NStr("en = '""Responsible employee"" field is not filled.'"),
+		ShowFieldFillingErrorMessage(NStr("en='""Responsible employee"" field is not filled.';ru='Поле ""Ответственный сотрудник"" не заполнено.'"),
 			"Responsible",
 			Cancel);
 	EndIf;
@@ -523,18 +523,18 @@ Procedure GenerateAddressPresentation()
 	
 	AddSubstring(AddressPresentation, StatePresentation);
 	
-	AddSubstring(AddressPresentation, MailAddressInformation.District, NStr("en = 'district'") + " ");
-	AddSubstring(AddressPresentation, MailAddressInformation.City, NStr("en = 'g.'") + " ");
-	AddSubstring(AddressPresentation, MailAddressInformation.Street, NStr("en = 'st.'") + " ");
-	AddSubstring(AddressPresentation, MailAddressInformation.Building, NStr("en = 'd.'") + " ");
-	AddSubstring(AddressPresentation, MailAddressInformation.Construction, NStr("en = 'str.'") + " ");
-	AddSubstring(AddressPresentation, MailAddressInformation.Apartment, NStr("en = 'app.'") + " ");
+	AddSubstring(AddressPresentation, MailAddressInformation.District, NStr("en='district';ru='район'") + " ");
+	AddSubstring(AddressPresentation, MailAddressInformation.City, NStr("en='g.';ru='g.'") + " ");
+	AddSubstring(AddressPresentation, MailAddressInformation.Street, NStr("en='st.';ru='st.'") + " ");
+	AddSubstring(AddressPresentation, MailAddressInformation.Building, NStr("en='d.';ru='дн.'") + " ");
+	AddSubstring(AddressPresentation, MailAddressInformation.Construction, NStr("en='str.';ru='ул.'") + " ");
+	AddSubstring(AddressPresentation, MailAddressInformation.Apartment, NStr("en='app.';ru='приложение.'") + " ");
 	
 	If IsBlankString(AddressPresentation) Then
 		If Company = "-1" Then
-			AddressPresentation = NStr("en = '<enter address>'");
+			AddressPresentation = NStr("en='<enter address>';ru='<введите адрес>'");
 		Else
-			AddressPresentation = NStr("en = '<Not filled>'");
+			AddressPresentation = NStr("en='<Not filled>';ru='<Не заполняется>'");
 		EndIf;
 	EndIf;
 	
@@ -567,19 +567,31 @@ EndProcedure
 &AtClient
 Function MessageParametersToTechicalSupport()
 	
-	MessageText = NStr("en = 'Hello!
-		|I can not enter additional information of my company
-		|when connecting to online support. Please help to solve the issue.
-		|
-		|Login: %1
-   |Company name: %2
-   |Business type: %3
-   |TIN: %4
-		|KPP: %5
-		|Director: %6
-		|Phone: %7
-   |Email: %8
-		|Fax: %9'");
+	MessageText = NStr("en='Hello!"
+"I can not enter additional information of my company"
+"when connecting to online support. Please help to solve the issue."
+""
+"Login: %1"
+"Company name: %2"
+"Business type: %3"
+"TIN: %4"
+"KPP: %5"
+"Director: %6"
+"Phone: %7"
+"Email: %8"
+"Fax: %9';ru='Здравствуйте!"
+"У меня не получается ввести дополнительную информацию о моей организации"
+"при подключении Интернет-поддержки. Прошу помочь разобраться с проблемой."
+""
+"Логин: %1"
+"Название организации: %2"
+"Тип деятельности: %3"
+"ИНН: %4"
+"КПП: %5"
+"Руководитель: %6"
+"Телефон: %7"
+"Адрес электронной почты: %8"
+"Факс: %9'");
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(
 		InteractionContext.COPContext,
@@ -597,14 +609,21 @@ Function MessageParametersToTechicalSupport()
 		EmailAddress,
 		Fax);
 	
-	MessageTextContinued = NStr("en = 'Address: %1
-    |Place of purchase: %2
-    |Date of purchase: %3
-    |Number of workplaces: %4
-    |Responsible employee: %5
-    |%TechnicalParameters%
-    |-----------------------------------------------
-    |Yours sincerely, .'");
+	MessageTextContinued = NStr("en='Address: %1"
+"Place of purchase: %2"
+"Date of purchase: %3"
+"Number of workplaces: %4"
+"Responsible employee: %5"
+"%TechnicalParameters%"
+"-----------------------------------------------"
+"Yours sincerely, .';ru='Адрес: %1 "
+"Место покупки: %2 "
+"Дата покупки: %3 "
+"Число рабочих мест: %4 "
+"Ответственный сотрудник: %5 "
+"%ТехническиеПараметры% "
+"----------------------------------------------- "
+"С уважением, .'");
 	
 	MessageTextContinued = StringFunctionsClientServer.PlaceParametersIntoString(
 		MessageTextContinued,
@@ -616,7 +635,7 @@ Function MessageParametersToTechicalSupport()
 	
 	Result = New Structure;
 	Result.Insert("Subject",
-		NStr("en = 'Online support. Entry of user additional information.'"));
+		NStr("en='Online support. Entry of user additional information.';ru='Интернет-поддержка. Ввод дополнительной информации о пользователе.'"));
 	Result.Insert("MessageText",
 		MessageText + Chars.LF + MessageTextContinued);
 	

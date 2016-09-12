@@ -12,11 +12,11 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en = 'Errors have occurred when receiving the data exchange settings.'"));
+		ShowMessageBox(, NStr("en='Errors have occurred when receiving the data exchange settings.';ru='Возникли ошибки при получении настроек обмена данными.'"));
 		
 	Else
 		
-		GetFile(TemporaryStorageAddress, NStr("en = 'Data synchronization settings.xml'"), True);
+		GetFile(TemporaryStorageAddress, NStr("en='Data synchronization settings.xml';ru='Настройки синхронизации данных.xml'"), True);
 		
 	EndIf;
 	

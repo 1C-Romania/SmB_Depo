@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Select street, settlement</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выберите улицу, населенный пункт</v8:content>
+		</v8:item>
 	</Title>
 	<Width>50</Width>
 	<Height>10</Height>
@@ -156,11 +160,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Address variants group</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Варианты адреса группа</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Address variants group</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Варианты адреса группа</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>InCell</Group>
@@ -173,6 +185,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Actuality</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Актуальность</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>None</TitleLocation>
@@ -213,6 +229,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Address variants</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Варианты адреса</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -224,6 +244,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>ID</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>v8:UUID</v8:Type>
@@ -234,6 +258,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Presentation</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -250,6 +278,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>NotActual</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Неактуален</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -260,6 +292,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>State is imported</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регион загружен</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -273,6 +309,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Address format</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Формат адреса</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -288,6 +328,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Level</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Уровень</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -305,6 +349,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Brief error description</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Краткое представление ошибки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -320,6 +368,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Parent</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Родитель</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:UUID</v8:Type>
@@ -330,6 +382,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Hide irrelevant</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скрывать неактуальные</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -344,11 +400,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F5</Shortcut>

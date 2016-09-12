@@ -13,7 +13,7 @@ Procedure OnOpen(Cancel)
 	If InteractionContext.Property("MessageActionsUnavailable") Then
 		Items.Decoration1.Title = InteractionContext.MessageActionsUnavailable;
 	Else
-		Items.Decoration1.Title = NStr("en = 'Selected action is not available for this configuration.'");
+		Items.Decoration1.Title = NStr("en='Selected action is not available for this configuration.';ru='Выбранное действие недоступно для этой конфигурации.'");
 	EndIf;
 	
 EndProcedure

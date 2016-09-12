@@ -109,7 +109,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		CreateFormTable("InfobaseUserPropertyTable", "DataTable", InfobaseUserProperties);
 		If RoleArray <> Undefined Then
 			IBUserRoles = New ValueTable;
-			IBUserRoles.Columns.Add("Role",, NStr("en = 'Role'"));
+			IBUserRoles.Columns.Add("Role",, NStr("en='Role';ru='Роль'"));
 			For Each CurrentRole IN RoleArray Do
 				IBUserRoles.Add().Role = CurrentRole;
 			EndDo;

@@ -70,22 +70,22 @@ Procedure CheckDiscountCardsDuplicates(Form)
 		
 		If DuplicateItemsNumber = 1 Then
 			
-			DuplicatesMessageParametersStructure.Insert("DuplicateItemsNumber", NStr("en = 'One'"));
-			DuplicatesMessageParametersStructure.Insert("Declension", NStr("en = 'card'"));
+			DuplicatesMessageParametersStructure.Insert("DuplicateItemsNumber", NStr("en='One';ru='Одно'"));
+			DuplicatesMessageParametersStructure.Insert("Declension", NStr("en='card';ru='карта'"));
 			
 		ElsIf DuplicateItemsNumber < 5 Then
 			
 			DuplicatesMessageParametersStructure.Insert("DuplicateItemsNumber", DuplicateItemsNumber);
-			DuplicatesMessageParametersStructure.Insert("Declension", NStr("en = 'maps'"));
+			DuplicatesMessageParametersStructure.Insert("Declension", NStr("en='maps';ru='карты'"));
 			
 		Else
 			
 			DuplicatesMessageParametersStructure.Insert("DuplicateItemsNumber", DuplicateItemsNumber);
-			DuplicatesMessageParametersStructure.Insert("Declension", NStr("en = 'cards'"));
+			DuplicatesMessageParametersStructure.Insert("Declension", NStr("en='cards';ru='карты'"));
 			
 		EndIf;	
 		
-		LabelTextOnDuplicates = NStr("en = 'With such code there are [DuplicateItemsNumber] [Declension]'");
+		LabelTextOnDuplicates = NStr("en='With such code there are [DuplicateItemsNumber] [Declension]';ru='С таким кодом есть [КоличествоЭлементовДублей] [Склонение]'");
 		
 		Items.ShowDoubles.Title = StringFunctionsClientServer.SubstituteParametersInStringByName(LabelTextOnDuplicates, 
 																										   DuplicatesMessageParametersStructure);
@@ -459,7 +459,7 @@ Procedure HandleReceivedCodeOnClient(Data, ReceivedCodeType, Preprocessing)
 					SmallBusinessClient.ShowMessageAboutError(Object, "Card code does not correspond to any template of magnetic cards.");
 				EndIf;
 			Else
-				ValueSelected = Result.ChooseItem(NStr("en = 'Choice of magnetic card code'"));
+				ValueSelected = Result.ChooseItem(NStr("en='Choice of magnetic card code';ru='Выбор кода магнитной карты'"));
 				If ValueSelected <> Undefined Then
 					Object.MagneticCode = ValueSelected.Value;
 				EndIf;

@@ -457,7 +457,7 @@ Procedure Send(Command)
 	
 	If Not ValueIsFilled(Object.UserAccount) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Select the account for sending an email.'"), ,
+			NStr("en='Select the account for sending an email.';ru='Выберите учетную запись для отправки почты.'"), ,
 			"Object.UserAccount");
 		Return;
 	EndIf;
@@ -701,7 +701,7 @@ Procedure ContinueSendingEmailsWithPassword(Password = Undefined)
 	EmailParameters = GenerateLetterParameters(Password);
 	
 	If EmailParameters = Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Error of generating parameters of the mail message'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Error of generating parameters of the mail message';ru='Ошибка формирования параметров почтового сообщения'"));
 		Return;
 	EndIf;
 	
@@ -719,7 +719,7 @@ Procedure ContinueSendingEmailsWithPassword(Password = Undefined)
 		Object.EventBegin = Object.Date;
 		Object.EventEnding = Object.Date;
 		Write();
-		ShowUserNotification(NStr("en = 'Message is sent successfully'"), GetURL(Object.Ref), String(Object.Ref), PictureLib.Information32);
+		ShowUserNotification(NStr("en='Message is sent successfully';ru='Сообщение успешно отправлено'"), GetURL(Object.Ref), String(Object.Ref), PictureLib.Information32);
 		Close(Successfully);
 	EndIf;
 	
@@ -928,7 +928,7 @@ Function GetSpreadsheetDocumentByBinaryData(Val BinaryData)
 	Try
 		DeleteFiles(FileName);
 	Except
-		WriteLogEvent(NStr("en = 'Tabular document receiving'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , 
+		WriteLogEvent(NStr("en='Tabular document receiving';ru='Получение табличного документа'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , 
 			DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -1085,7 +1085,7 @@ Procedure FillContentEvents(EventSubject)
 	If Not IsBlankString(FormattedDocument.GetText()) Then
 		
 		ShowQueryBox(New NotifyDescription("FillEventContentEnd", ThisObject, New Structure("EventSubject", EventSubject)),
-			NStr("en = 'Do you want to refill the content by the selected topic?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='Do you want to refill the content by the selected topic?';ru='Перезаполнить содержание по выбранной теме?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 		
 	EndIf;

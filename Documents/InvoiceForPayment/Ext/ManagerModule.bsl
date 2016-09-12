@@ -224,7 +224,7 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 			
 		Else
 			
-			MessageText = NStr("en ='ATTENTION! Perhaps, user template is used Staff mechanism for the accounts printing may work incorrectly.'");
+			MessageText = NStr("en='ATTENTION! Perhaps, user template is used Staff mechanism for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 			
 		EndIf;
@@ -366,7 +366,7 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 		
 		If Template.Areas.Find("TotalToPay") = Undefined Then
 			
-			MessageText = NStr("en ='ATTENTION! Template area ""Total for payment"" is not found. Perhaps, user template is used'");
+			MessageText = NStr("en='ATTENTION! Template area ""Total for payment"" is not found. Perhaps, user template is used';ru='ВНИМАНИЕ! Не обнаружена область макета ""Итог к оплате"". Возможно используется пользовательский макет.'");
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 			
 		Else
@@ -518,7 +518,7 @@ Function PrintInvoiceWithFacsimileSignature(ObjectsArray, PrintObjects, Template
 			
 		Else
 			
-			MessageText = NStr("en ='ATTENTION! Perhaps, user template is used Staff mechanism for the accounts printing may work incorrectly.'");
+			MessageText = NStr("en='ATTENTION! Perhaps, user template is used Staff mechanism for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 			
 		EndIf;
@@ -660,7 +660,7 @@ Function PrintInvoiceWithFacsimileSignature(ObjectsArray, PrintObjects, Template
 		
 		If Template.Areas.Find("TotalToPay") = Undefined Then
 			
-			MessageText = NStr("en ='ATTENTION! Template area ""Total for payment"" is not found. Perhaps, user template is used'");
+			MessageText = NStr("en='ATTENTION! Template area ""Total for payment"" is not found. Perhaps, user template is used';ru='ВНИМАНИЕ! Не обнаружена область макета ""Итог к оплате"". Возможно используется пользовательский макет.'");
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 			
 		Else
@@ -697,7 +697,7 @@ Function PrintInvoiceWithFacsimileSignature(ObjectsArray, PrintObjects, Template
 				
 			Else
 				
-				MessageText = NStr("en ='Facsimile for company is not set. Facsimile is set in the company card, ""Printing setting"" section.'");
+				MessageText = NStr("en='Facsimile for company is not set. Facsimile is set in the company card, ""Printing setting"" section.';ru='Факсимиле для организации не установлена. Установка факсимиле выполняется в карточке организации, раздел ""Настройка печати"".'");
 				CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 				
 				TemplateArea = Template.GetArea("AccountFooter");
@@ -936,7 +936,7 @@ Function PrintAppendixToContract(ObjectsArray, PrintObjects, TemplateName)
 		
 		If Template.Areas.Find("TotalToPay") = Undefined Then
 			
-			MessageText = NStr("en ='ATTENTION! Template area ""Total for payment"" is not found. Perhaps, user template is used'");
+			MessageText = NStr("en='ATTENTION! Template area ""Total for payment"" is not found. Perhaps, user template is used';ru='ВНИМАНИЕ! Не обнаружена область макета ""Итог к оплате"". Возможно используется пользовательский макет.'");
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 			
 		Else
@@ -1037,7 +1037,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// Invoice for payment
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InvoiceForPayment";
-	PrintCommand.Presentation = NStr("en = 'Invoice for payment'");
+	PrintCommand.Presentation = NStr("en='Invoice for payment';ru='Счет на оплату'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
@@ -1045,7 +1045,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// Invoice for Payment (Partial Payment)
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InvoiceForPartialPayment";
-	PrintCommand.Presentation = NStr("en = 'Invoice for partial payment'");
+	PrintCommand.Presentation = NStr("en='Invoice for partial payment';ru='Счет на частичную оплату'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.FunctionalOptions = "PaymentCalendar";
@@ -1057,7 +1057,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// The invoice for payment with facsimile
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InvoiceForPaymentWithFacsimileSignature";
-	PrintCommand.Presentation = NStr("en = 'Invoice for payment (with facsimile)'");
+	PrintCommand.Presentation = NStr("en='Invoice for payment (with facsimile)';ru='Счет на оплату (с факсимиле)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;
@@ -1065,7 +1065,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// Invoice for payment with facsimile (partial payment)
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InvoiceForPartialPaymentWithFacsimileSignature";
-	PrintCommand.Presentation = NStr("en = 'Invoice for partial payment (with facsimile)'");
+	PrintCommand.Presentation = NStr("en='Invoice for partial payment (with facsimile)';ru='Счет на частичную оплату (с факсимиле)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.FunctionalOptions = "PaymentCalendar";
@@ -1075,7 +1075,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.Handler = "SmallBusinessClient.GenerateContractForms";
 	PrintCommand.ID = "ContractForm";
-	PrintCommand.Presentation = NStr("en = 'Contract form'");
+	PrintCommand.Presentation = NStr("en='Contract form';ru='Бланк договора'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 14;
@@ -1083,7 +1083,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// Appendix to contract
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "AppendixToContract";
-	PrintCommand.Presentation = NStr("en = 'Appendix to contract'");
+	PrintCommand.Presentation = NStr("en='Appendix to contract';ru='Приложение к договору'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 17;

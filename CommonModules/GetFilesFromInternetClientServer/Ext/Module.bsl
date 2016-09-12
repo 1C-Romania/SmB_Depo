@@ -238,7 +238,7 @@ Function GetFileFromInternet(Val URL, Val SaveSetting, Val ConnectionOptions = U
 				Proxy, PassiveConnection, Timeout, SecureConnection);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorInfo = NStr("en = 'Failed to set FTP connection with the server %1:'") + Chars.LF + "%2";
+			ErrorInfo = NStr("en='Failed to set FTP connection with the server %1:';ru='Не удалось установить FTP-соединение с сервером %1:'") + Chars.LF + "%2";
 			
 			WriteErrorInEventLogMonitor(StringFunctionsClientServer.PlaceParametersIntoString(
 				ErrorInfo, ServerName, DetailErrorDescription(ErrorInfo)));
@@ -253,7 +253,7 @@ Function GetFileFromInternet(Val URL, Val SaveSetting, Val ConnectionOptions = U
 			Join = New HTTPConnection(ServerName, Port, UserName, UserPassword, Proxy, Timeout, SecureConnection);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorInfo = NStr("en = 'Failed to set HTTP connection with the server %1:'") + Chars.LF + "%2";
+			ErrorInfo = NStr("en='Failed to set HTTP connection with the server %1:';ru='Не удалось установить HTTP-соединение с сервером %1:'") + Chars.LF + "%2";
 			WriteErrorInEventLogMonitor(
 				StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
 					DetailErrorDescription(ErrorInfo)));
@@ -291,7 +291,7 @@ Function GetFileFromInternet(Val URL, Val SaveSetting, Val ConnectionOptions = U
 		
 	Except
 		ErrorInfo = ErrorInfo();
-		ErrorInfo = NStr("en = 'Failed to receive the file from the server %1:'") + Chars.LF + "%2";
+		ErrorInfo = NStr("en='Failed to receive the file from the server %1:';ru='Не удалось получить файл с сервера %1:'") + Chars.LF + "%2";
 		If RecordError Then
 			WriteErrorInEventLogMonitor(
 				StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
@@ -448,7 +448,7 @@ EndProcedure
 
 Function EventLogMonitorEvent() Export
 	
-	Return NStr("en = 'Get files from the Internet'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Get files from the Internet';ru='Получение файлов из Интернет'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

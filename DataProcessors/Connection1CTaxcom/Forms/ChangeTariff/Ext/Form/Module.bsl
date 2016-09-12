@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	// Fill in form fields
-	Items.LoginLabel.Title = NStr("en = 'Login:'") + " " + Parameters.login;
+	Items.LoginLabel.Title = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	FreePackagesRow = StrReplace(
 		TrimAll(Parameters.freePackagesED),
@@ -56,13 +56,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Items.FreePackages.MaxValue = MaximumTariff;
 	
-	HeaderText = NStr("en = 'Period: from %1 to %2'");
+	HeaderText = NStr("en='Period: from %1 to %2';ru='Период: с %1 по %2'");
 	HeaderText = StrReplace(HeaderText, "%1", Format(StartDate, "DLF=D"));
 	HeaderText = StrReplace(HeaderText, "%2", Format(EndDate, "DLF=D"));
 	
 	Items.BillingPeriod.Title = HeaderText;
 	
-	ApplicationTitle = NStr("en = 'Application No%1 from %2'");
+	ApplicationTitle = NStr("en='Application No%1 from %2';ru='Заявка №%1 от %2'");
 	ApplicationTitle = StrReplace(ApplicationTitle, "%1", RequestNumber);
 	ApplicationTitle = StrReplace(ApplicationTitle, "%2", Format(RequestDate, "DF = MMMM dd yyyy y. HH:mm:ss"));
 	
@@ -104,7 +104,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 			NotifyDescription = New NotifyDescription("OnAnswerQuestionAboutClosingModifiedForm",
 				ThisObject);
 			
-			QuestionText = NStr("en = 'Data was changed. Close form without saving data?'");
+			QuestionText = NStr("en='Data was changed. Close form without saving data?';ru='Данные изменены. Закрыть форму без сохранени данных?'");
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 			Return;
 			
@@ -307,7 +307,7 @@ EndProcedure
 &AtClient
 Procedure SetLabelOnStatusUpdateHyperlink()
 	
-	HeaderText = NStr("en = 'Check execution of an application (%1 sec. left)'");
+	HeaderText = NStr("en='Check execution of an application (%1 sec. left)';ru='Проверить выполнение заявки (осталось %1 сек.)'");
 	HeaderText = StrReplace(HeaderText, "%1", String(TimeoutSeconds));
 	Items.LabelRefresh.Title = HeaderText;
 	
@@ -350,21 +350,32 @@ EndProcedure
 Function MessageParametersToTechicalSupport()
 	
 	Result = New Structure;
-	Result.Insert("Subject", NStr("en = '1C-Taxcom. Change tariff.'"));
+	Result.Insert("Subject", NStr("en='1C-Taxcom. Change tariff.';ru='1C-Taxcom. Change tariff.'"));
 	Result.Insert("Whom", "1c-taxcom@1c.ru");
 	
-	MessageText = NStr("en = 'Dear sir or madam,
-		|I can not change tariff of work 
-   |with ED exchange operator. 
-   |Would you help me to solve the problem. 
-   |
-   |Login: %1. 
-   |
-   |%2 
-   |
-   |TechnicalParameters% 
-   |----------------------------------------------- 
-   |Sincerely, .'");
+	MessageText = NStr("en='Dear sir or madam,"
+"I can not change tariff of work "
+"with ED exchange operator. "
+"Would you help me to solve the problem. "
+""
+"Login: %1. "
+""
+"%2 "
+""
+"TechnicalParameters% "
+"----------------------------------------------- "
+"Sincerely, .';ru='Здравствуйте!"
+"У меня не получается изменить тариф"
+"работы с оператором обмена ЭД."
+"Прошу помочь разобраться с проблемой."
+""
+"Логин: %1."
+""
+"%2"
+""
+"%ТехническиеПараметры%"
+"-----------------------------------------------"
+"С уважением, .'");
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(
 		InteractionContext.COPContext,

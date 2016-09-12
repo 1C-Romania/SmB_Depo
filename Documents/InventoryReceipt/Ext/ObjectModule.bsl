@@ -49,7 +49,7 @@ Procedure CheckExistenceOfRetailPrice(Cancel)
 		
 		While SelectionOfQueryResult.Next() Do
 			
-			MessageText = NStr("en = 'For products and services %ProductsAndServicesPresentation% in string %LineNumber% of the ""Inventory"" list the retail price is not set!'");
+			MessageText = NStr("en='For products and services %ProductsAndServicesPresentation% in string %LineNumber% of the ""Inventory"" list the retail price is not set!';ru='Для номенклатуры %ПредставлениеНоменклатуры% в строке %НомерСтроки% списка ""Запасы"" не установлена розничная цена!'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(SelectionOfQueryResult.LineNumber));
 			MessageText = StrReplace(MessageText, "%ProductsAndServicesPresentation%",  SmallBusinessServer.PresentationOfProductsAndServices(SelectionOfQueryResult.ProductsAndServicesPresentation, SelectionOfQueryResult.CharacteristicPresentation, SelectionOfQueryResult.BatchPresentation));
 			SmallBusinessServer.ShowMessageAboutError(
@@ -87,7 +87,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		// FO Use Production subsystem.
 		If Not Constants.FunctionalOptionUseSubsystemProduction.Get()
 			AND StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
-			Raise NStr("en = 'You can not enter Inventory receipt basing on the inventory reconciliation, as the Production activity kind is not available!'");
+			Raise NStr("en='You can not enter Inventory receipt basing on the inventory reconciliation, as the Production activity kind is not available!';ru='Нельзя ввести Оприходование запасов на основании инвентеризации запасов, т.к. недоступен вид деятельности Производство!'");
 		EndIf;
 		
 		Query = New Query(
@@ -166,7 +166,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		
 		If Inventory.Count() = 0 Then
 			
-			Raise NStr("en = 'No data for posting registration!'");
+			Raise NStr("en='No data for posting registration!';ru='Нет данных для оформления оприходования!'");
 			
 		EndIf;
 		

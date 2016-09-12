@@ -67,8 +67,9 @@ EndProcedure
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	If NotExportedDocumentsExist AND SelectedDocumentsTable.Count() > 0 Then
-		QuestionText = NStr("en = 'There are non-loaded documents in the choice list!
-			|Do you really want to close the form?'");
+		QuestionText = NStr("en='There are non-loaded documents in the choice list!"
+"Do you really want to close the form?';ru='В списке выбора есть невыгруженные документы!"
+"Выдействительно хотите закрыть форму?'");
 		Cancel = True;
 		NotifyDescription = New NotifyDescription("BeforeCloseEnd", ThisObject);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
@@ -367,61 +368,61 @@ Procedure GenerateTableRapidFilter()
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Company";
-	NewRow.ParameterPresentation = NStr("en = 'Company:'");
+	NewRow.ParameterPresentation = NStr("en='Company:';ru='Организация:'");
 	NewRow.Type = "CatalogRef."+ DescriptionCompanyCatalog;
 	NewRow.Value = ElectronicDocumentsReUse.GetEmptyRef("Companies");
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Counterparty";
-	NewRow.ParameterPresentation = NStr("en = 'Counterparty:'");
+	NewRow.ParameterPresentation = NStr("en='Counterparty:';ru='Контрагент:'");
 	NewRow.Type = "CatalogRef."+ DescriptionCounterpartiesCatalog;
 	NewRow.Value = ElectronicDocumentsReUse.GetEmptyRef("Counterparties");
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Date_From";
-	NewRow.ParameterPresentation = NStr("en = 'Date from:'");
+	NewRow.ParameterPresentation = NStr("en='Date from:';ru='Дата с:'");
 	NewRow.Type = "Date";
 	NewRow.Value = Date(1,1,1);
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Date_To";
-	NewRow.ParameterPresentation = NStr("en = 'Date to:'");
+	NewRow.ParameterPresentation = NStr("en='Date to:';ru='Дата по:'");
 	NewRow.Type = "Date";
 	NewRow.Value = Date(1,1,1);
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Amount_From";
-	NewRow.ParameterPresentation = NStr("en = 'Amount From:'");
+	NewRow.ParameterPresentation = NStr("en='Amount From:';ru='Сумма с:'");
 	NewRow.Type = "Number";
 	NewRow.Value = Undefined;
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Amount_To";
-	NewRow.ParameterPresentation = NStr("en = 'Amount to:'");
+	NewRow.ParameterPresentation = NStr("en='Amount to:';ru='Сумма по:'");
 	NewRow.Type = "Number";
 	NewRow.Value = Undefined;
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "EDKind";
-	NewRow.ParameterPresentation = NStr("en = 'Document kind:'");
+	NewRow.ParameterPresentation = NStr("en='Document kind:';ru='Вид документа:'");
 	NewRow.Type = "EnumRef.EDKinds";
 	NewRow.Value = Enums.EDKinds.EmptyRef();
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "EDDirection";
-	NewRow.ParameterPresentation = NStr("en = 'Direction:'");
+	NewRow.ParameterPresentation = NStr("en='Direction:';ru='Направление:'");
 	NewRow.Type = "EnumRef.EDDirections";
 	NewRow.Value = Enums.EDDirections.EmptyRef();
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Responsible";
-	NewRow.ParameterPresentation = NStr("en = 'Responsible:'");
+	NewRow.ParameterPresentation = NStr("en='Responsible:';ru='Ответственный:'");
 	NewRow.Type = "CatalogRef.Users";
 	NewRow.Value = Users.AuthorizedUser();
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "EDVersionState";
-	NewRow.ParameterPresentation = NStr("en = 'ED status:'");
+	NewRow.ParameterPresentation = NStr("en='ED status:';ru='Состояние ЭД:'");
 	NewRow.Type = "EnumRef.EDVersionsStatuses";
 	NewRow.Value = Enums.EDVersionsStates.ExchangeCompleted;
 	
@@ -563,7 +564,7 @@ Procedure AddToSelectedDocuments(RowArray)
 	EDKindAct = PredefinedValue("Enum.EDKinds.ActPerformer");
 	EDStatusExchangeCompleted = PredefinedValue("Enum.EDVersionsStates.ExchangeCompleted");
 	RefArray = New Array;
-	MessagePattern = NStr("en = 'Electronic document flow for the document ""%1"" is not completed!'");
+	MessagePattern = NStr("en='Electronic document flow for the document ""%1"" is not completed!';ru='Для документа ""%1"" не завершён электронный документооборот!'");
 	MessageText = "";
 	For Each String IN RowArray Do
 		RowData = Items.AvailableDocuments.RowData(String);
@@ -609,7 +610,7 @@ Procedure AddToSelectedDocuments(RowArray)
 	EndIf;
 	If VersionCall <> 1 AND Multiselect = False AND SelectedDocumentsTable.Count() > 0 Then
 		If ValueIsFilled(MessageText) Then
-			QuestionText = MessageText + Chars.LF + NStr("en = 'Continue importing?'");
+			QuestionText = MessageText + Chars.LF + NStr("en='Continue importing?';ru='Продолжить выгрузку?'");
 			AdditParameters = New Structure("MessageText", MessageText);
 			NotifyDescription = New NotifyDescription("CompleteAdditionToSelectedDocuments", ThisObject, AdditParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 30, DialogReturnCode.No);
@@ -677,8 +678,9 @@ Function CreateImportFile(Val DocumentsTable)
 			If DataFileFound Then
 				Files = FindFiles(DirectoryAddress, ED.Description + "*.p7s");
 				If Files.Count() = 0 Then
-					MessageText = NStr("en = 'Not managed to import the signature for
-						|the electronic document ""%1"", created on the basis of the document ""%2""!'");
+					MessageText = NStr("en='Not managed to import the signature for"
+"the electronic document ""%1"", created on the basis of the document ""%2""!';ru='Не удалось выгрузить подпись для электронного документа ""%1"","
+"сформированного на основании документа ""%2""!'");
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, ED, VTRow.Document);
 					CommonUseClientServer.MessageToUser(MessageText);
 				Else
@@ -690,8 +692,9 @@ Function CreateImportFile(Val DocumentsTable)
 					VTInventoryString.SignatureFileSize = File.Size();
 				EndIf;
 			Else
-				MessageText = NStr("en = 'Not managed to import the
-					|electronic document ""%1"",created on the basis of the document ""%2""!'");
+				MessageText = NStr("en='Not managed to import the"
+"electronic document ""%1"",created on the basis of the document ""%2""!';ru='Не удалось выгрузить подпись для электронного документа ""%1"","
+"сформированного на основании документа ""%2""!'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, ED, VTRow.IBDocument);
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
@@ -702,7 +705,7 @@ Function CreateImportFile(Val DocumentsTable)
 		
 		Files = FindFiles(DirectoryAddress, "*");
 		If Files.Count() = 0 Then
-			MessageText = NStr("en = 'Cannot import documents for Company ""%1"".'");
+			MessageText = NStr("en='Cannot import documents for Company ""%1"".';ru='Не удалось выгрузить документы по Организации ""%1""!'");
 			MessageText = StrReplace(MessageText, "%1", Company);
 			CommonUseClientServer.MessageToUser(MessageText);
 			DeleteFiles(DirectoryAddress);
@@ -833,10 +836,10 @@ Function ImportDescriptionFile(Company, VTInventory, DirectoryAddress)
 		ElectronicDocumentsInternal.ExportEDtoFile(File, DirectoryAddress + "definition.xml", False, "windows-1251");
 		Return True;
 	Except
-		MessagePattern = NStr("en = '%1 (see details in event log monitor).'");
+		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 			?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'Creating ED import into 1C Accounting'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Creating ED import into 1C Accounting';ru='Формирование выгрузки ЭД в 1с-Отчетность'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -1019,7 +1022,7 @@ Procedure HandleAnswerToTheQuestionOnGroundsOf(Result, AdditionalParameters) Exp
 				FullFileName = "";
 #If Not WebClient Then
 				ChoiceDialog = New FileDialog(FileDialogMode.ChooseDirectory);
-				ChoiceDialog.Title = NStr("en = 'Select a directory to save the export file (files)'");
+				ChoiceDialog.Title = NStr("en='Select a directory to save the export file (files)';ru='Выберите каталог для сохранения файла (файлов) выгрузки'");
 				ChoiceDialog.FullFileName = "";
 				If Not ChoiceDialog.Choose() Then
 					Return;
@@ -1072,16 +1075,18 @@ EndProcedure
 Procedure Exporting()
 	
 	If SelectedDocumentsTable.Count() = 0 Then
-		MessageText = NStr("en = 'At least one document is required to import creation.'");
+		MessageText = NStr("en='At least one document is required to import creation.';ru='Для формирования выгрузки необходимо выбрать хотя бы один документ.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	Else
 		Filter = New Structure("RequiredFillSourceDocument", True);
 		FoundStrings = SelectedDocumentsTable.FindRows(Filter);
 		NotifyDescription = New NotifyDescription("HandleAnswerToTheQuestionOnGroundsOf", ThisObject);
 		If FoundStrings.Count() > 0 Then
-			QuestionText = NStr("en = 'The list of selected documents has the
-				|documents of the type ""%1"" with the blank basis documents attributes (number, date)!
-				|Continue importing?'");
+			QuestionText = NStr("en='The list of selected documents has the"
+"documents of the type ""%1"" with the blank basis documents attributes (number, date)!"
+"Continue importing?';ru='В списке выбранных документов, присутствуют"
+"документы вида ""%1"", с незаполненными реквизитами документов-оснований (номер, дата)!"
+"Продолжить выгрузку?'");
 			QuestionText = StrReplace(QuestionText, "%1", FoundStrings[0].EDKind);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 30, DialogReturnCode.No);
 		Else

@@ -118,9 +118,9 @@ EndProcedure
 Procedure NotifyPendingHandlersNotImplemented() Export
 	
 	ShowUserNotification(
-		NStr("en = 'Work in the application is temporarily limited'"),
+		NStr("en='Work in the application is temporarily limited';ru='Работа в программе временно ограничена'"),
 		ProcessorsURL(),
-		NStr("en = 'Proceeding to the new version is not completed'"),
+		NStr("en='Proceeding to the new version is not completed';ru='Не завершен переход на новую версию'"),
 		PictureLib.Warning32);
 	
 EndProcedure
@@ -172,8 +172,9 @@ Procedure BeforeStart(Parameters) Export
 		Parameters.InteractiveDataProcessor = New NotifyDescription(
 			"ShowWarningAndContinue",
 			StandardSubsystemsClient.ThisObject,
-			NStr("en = 'Launch
-			           |parameter RegisterFullIOMChangeForDIBSubordinateNodes can be used only with parameter StartInformationBaseUpdate.'"));
+			NStr("en='Launch"
+"parameter RegisterFullIOMChangeForDIBSubordinateNodes can be used only with parameter StartInformationBaseUpdate.';ru='Параметр"
+"запуска ЗарегистрироватьПолноеИзменениеИОМДляПодчиненныхУзловРИБ можно использовать только совместно с параметром ЗапуститьОбновлениеИнформационнойБазы.'"));
 	EndIf;
 	
 EndProcedure

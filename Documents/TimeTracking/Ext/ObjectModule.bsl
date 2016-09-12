@@ -189,13 +189,13 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	WeekDays.Insert(7, "Su");
 	
 	WeekDaysPres = New Map;
-	WeekDaysPres.Insert(1, NStr("en = 'Monday'"));
-	WeekDaysPres.Insert(2, NStr("en = 'Tuesday'"));
-	WeekDaysPres.Insert(3, NStr("en = 'Wednesday'"));
-	WeekDaysPres.Insert(4, NStr("en = 'Thursday'"));
-	WeekDaysPres.Insert(5, NStr("en = 'Friday'"));
-	WeekDaysPres.Insert(6, NStr("en = 'Saturday'"));
-	WeekDaysPres.Insert(7, NStr("en = 'Sunday'"));
+	WeekDaysPres.Insert(1, NStr("en='Monday';ru='Понедельник'"));
+	WeekDaysPres.Insert(2, NStr("en='Tuesday';ru='Вторник'"));
+	WeekDaysPres.Insert(3, NStr("en='Wednesday';ru='Среда'"));
+	WeekDaysPres.Insert(4, NStr("en='Thursday';ru='Четверг'"));
+	WeekDaysPres.Insert(5, NStr("en='Friday';ru='Пятница'"));
+	WeekDaysPres.Insert(6, NStr("en='Saturday';ru='Суббота'"));
+	WeekDaysPres.Insert(7, NStr("en='Sunday';ru='Воскресенье'"));
 	
 	For Each TSRow IN Operations Do
 		
@@ -206,7 +206,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				OR ValueIsFilled(TSRow[WeekDays.Get(Counter) + "EndTime"])) 
 				AND Not ValueIsFilled(TSRow[WeekDays.Get(Counter) + "Duration"])  Then
 				
-				MessageText = NStr("en = 'The ""%WeekDay%"" column in row No.%LineNumber% is not correctly filled!'");
+				MessageText = NStr("en='The ""%WeekDay%"" column in row No.%LineNumber% is not correctly filled!';ru='Не корректно заполнена колонка ""%ДеньНедели%"" в строке %НомерСтроки%!'");
 				MessageText = StrReplace(MessageText, "%WeekDay%", WeekDaysPres.Get(Counter));
 				MessageText = StrReplace(MessageText, "%LineNumber%", TSRow.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
@@ -224,7 +224,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			If ValueIsFilled(TSRow[WeekDays.Get(Counter) + "Duration"]) 
 				AND Not ValueIsFilled(TSRow[WeekDays.Get(Counter) + "EndTime"])  Then
 				
-				MessageText = NStr("en = 'The ""%WeekDay%"" column in row No.%LineNumber% is not correctly filled!'");
+				MessageText = NStr("en='The ""%WeekDay%"" column in row No.%LineNumber% is not correctly filled!';ru='Не корректно заполнена колонка ""%ДеньНедели%"" в строке %НомерСтроки%!'");
 				MessageText = StrReplace(MessageText, "%WeekDay%", WeekDaysPres.Get(Counter));
 				MessageText = StrReplace(MessageText, "%LineNumber%", TSRow.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(

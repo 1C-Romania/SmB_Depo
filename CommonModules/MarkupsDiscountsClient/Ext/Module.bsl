@@ -21,7 +21,7 @@ Procedure OpenFormAppliedDiscounts(CurrentData, Object, Form) Export
 		
 		ParametersStructure = New Structure();
 		ParametersStructure.Insert("Object", Object);
-		ParametersStructure.Insert("Title", NStr("en = 'Applied discounts (markups) for row'"));
+		ParametersStructure.Insert("Title", NStr("en='Applied discounts (markups) for row';ru='Примененные скидки (наценки) для строки'"));
 		ParametersStructure.Insert("CurrentData", StructureCurrentData);
 		ParametersStructure.Insert("AddressDiscountsAppliedInTemporaryStorage",          Form.AddressDiscountsAppliedInTemporaryStorage);
 		ParametersStructure.Insert("ShowInformationAboutDiscountsOnRow",                True);

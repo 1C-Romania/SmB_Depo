@@ -89,7 +89,7 @@ Procedure CreateUndividedPredefinedItems() Export
 	
 	If CommonUseReUse.DataSeparationEnabled() AND CommonUseReUse.CanUseSeparatedData() Then
 		
-		Raise NStr("en = 'Operation can not be executed only in the session in which values of the separators are set'");
+		Raise NStr("en='Operation can not be executed only in the session in which values of the separators are set';ru='Операция не может быть выполнена только в сеансе, в котором установлены значения разделителей'");
 		
 	EndIf;
 	
@@ -134,7 +134,7 @@ EndProcedure
 Procedure WhenGeneratingConfigurationManifest(AdvancedInformation) Export
 	
 	If TransactionActive() Then
-		Raise NStr("en = 'Operation can not be executed when an external transaction is active!'");
+		Raise NStr("en='Operation can not be executed when an external transaction is active!';ru='Операция не может быть выполнена при активной внешней транзакции!'");
 	EndIf;
 	
 	CallInUndividedIB = Not CommonUseReUse.DataSeparationEnabled();

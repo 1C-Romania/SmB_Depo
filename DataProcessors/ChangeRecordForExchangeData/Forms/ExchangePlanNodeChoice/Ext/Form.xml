@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Choose exchange plan node</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выбор узла плана обмена</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -20,6 +24,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Select</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Выбрать</v8:content>
 					</v8:item>
 				</Title>
 				<ExtendedTooltip name="FormChooseNodeExtendedTooltip" id="36"/>
@@ -65,6 +73,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange nods</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Узлы обмена</v8:content>
+				</v8:item>
 			</Title>
 			<CommandSet>
 				<ExcludedCommand>HierarchicalList</ExcludedCommand>
@@ -98,6 +110,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Select node</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Выбрать узел</v8:content>
+							</v8:item>
 						</Title>
 						<ExtendedTooltip name="TreeNodesExchangeContextMenuSelectNodeExtendedTooltip" id="38"/>
 					</Button>
@@ -112,6 +128,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Change node</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Изменить узел</v8:content>
 							</v8:item>
 						</Title>
 						<ExtendedTooltip name="ExchangeNodeTreeContextMenuChangeNodeExtendedTooltip" id="39"/>
@@ -171,11 +191,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Node description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание узла</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Node description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание узла</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>InCell</Group>
@@ -200,6 +228,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Node</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Узел</v8:content>
+								</v8:item>
 							</Title>
 							<EditMode>EnterOnInput</EditMode>
 							<ContextMenu name="TreeNodesExchangeNameContextMenu" id="5"/>
@@ -213,6 +245,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>код</v8:content>
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
@@ -235,6 +271,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange nodes tree</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево узлов обмена</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTree</v8:Type>
@@ -245,6 +285,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Exchange node</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Узел обмена</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -260,6 +304,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture index</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс картинки</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -287,6 +335,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Ref</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:TypeSet>cfg:ExchangePlanRef</v8:TypeSet>
@@ -297,6 +349,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>код</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -315,6 +371,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Multiple choice</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Множественный выбор</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -328,11 +388,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Select</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Select node</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать узел</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -352,6 +420,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change node</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить узел</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F2</Shortcut>

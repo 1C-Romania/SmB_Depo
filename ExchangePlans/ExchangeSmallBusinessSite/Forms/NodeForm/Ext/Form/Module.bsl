@@ -82,8 +82,8 @@ EndProcedure
 &AtServer
 Procedure SetParametersDirectoriesTableServer()
 	
-	TableTitle = NStr("en = 'Folders table (correspondence of items groups and folders on site)'");
-	ColumnsTitle = NStr("en = 'Products and services groups'");
+	TableTitle = NStr("en='Folders table (correspondence of items groups and folders on site)';ru='Таблица каталогов (соответствие групп номенклатуры каталогам на сайте)'");
+	ColumnsTitle = NStr("en='Products and services groups';ru='Группы номенклатуры'");
 	ChoiceFoldersAndItems = FoldersAndItems.Folders;
 	
 	Items.DirectoriesTableGroup.Title = TableTitle;
@@ -112,7 +112,7 @@ EndProcedure
 &AtServer
 Procedure FillDirectoriesTableServer()
 	
-	AllListElementsLabel = "(" + NStr("en = 'All'") + ")";
+	AllListElementsLabel = "(" + NStr("en='All';ru='Все'") + ")";
 	
 	SavedDirectoriesTable = FormAttributeToValue("Object").SavedDirectoriesTable.Get();
 	
@@ -147,7 +147,7 @@ EndProcedure
 Procedure CreateFolderByDefaultServer()
 	
 	NewRow = DirectoriesTable.Add();
-	NewRow.Directory = NStr("en = 'Main products directory'");
+	NewRow.Directory = NStr("en='Main products directory';ru='Основной каталог товаров'");
 	NewRow.Groups.Add(UNDEFINED, AllListElementsLabel);
 	NewRow.DirectoryId = String(New UUID);
 	
@@ -389,7 +389,7 @@ Procedure SetLabelExchangeSchedule()
 	If Not DataSeparationEnabled Then
 		
 		If JobSchedule = Undefined Then
-			HeaderText = NStr("en='Set the schedule of exchange'");
+			HeaderText = NStr("en='Set the schedule of exchange';ru='Настроить расписание обмена'");
 		Else
 			HeaderText = JobSchedule;
 		EndIf;
@@ -639,7 +639,7 @@ Function CheckIDuniqueness()
 		ClearMessages();
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Directory ID should be unique!'"),
+			NStr("en='Directory ID should be unique!';ru='Идентификатор каталога должен быть уникальным!'"),
 			Object.Ref,
 			CommonUseClientServer.PathToTabularSection(
 				"DirectoriesTable", DirectoriesTable.IndexOf(Items.DirectoriesTable.CurrentData) + 1, "DirectoryId"));
@@ -659,7 +659,7 @@ Procedure SetLabelExchangeScheduleServer()
 	If Not DataSeparationEnabled Then
 		
 		If JobSchedule = Undefined Then
-			HeaderText = NStr("en='Set the schedule of exchange'");
+			HeaderText = NStr("en='Set the schedule of exchange';ru='Настроить расписание обмена'");
 		Else
 			HeaderText = JobSchedule;
 		EndIf;
@@ -862,7 +862,7 @@ Procedure OnOpen(Cancel)
 		ClearMessages();
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'The node corresponds to this infobase and can not be used in exchange with website. Use another exchange node or create the new one.'"));
+			NStr("en='The node corresponds to this infobase and can not be used in exchange with website. Use another exchange node or create the new one.';ru='Узел соответствует этой информационной базе и не может использоваться в обмене с сайтом. Используйте другой узел обмена или создайте новый.'"));
 			
 		Cancel = True;
 		Return;
@@ -880,7 +880,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 		
 		Cancel = True;
 		
-		Message = NStr("en = 'The directories table is not filled!'");
+		Message = NStr("en='The directories table is not filled!';ru='Таблица каталогов не заполнена!'");
 		Field = "DirectoriesTable";
 		
 		CommonUseClientServer.MessageToUser(Message, Object.Ref, Field);
@@ -903,7 +903,7 @@ Procedure CommandCheckConnection(Command)
 
 		
 		ShowQueryBox(New NotifyDescription("CommandCheckConnectionEnd", ThisObject), 
-			NStr("en = 'Exchange setting is changed and not written. Record?'"),
+			NStr("en='Exchange setting is changed and not written. Record?';ru='Настройка обмена изменена и не записана. Записать?'"),
 			QuestionDialogMode.YesNo);
         Return;
 		
@@ -982,7 +982,7 @@ Procedure OrdersStatesCorrespondenceBeforeEditEnd(Item, NewRow, CancelEdit, Canc
 	If Not CheckStatusDoubling(ColumnName) Then
 		Cancel = True;
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'The same status is specified in another table row!'"),
+			NStr("en='The same status is specified in another table row!';ru='Такой статус уже указан в другой строке таблицы!'"),
 			Object.Ref,
 			CommonUseClientServer.PathToTabularSection(
 				"Object.OrdersStatesCorrespondence", Object.OrdersStatesCorrespondence.IndexOf(Items.OrdersStatesCorrespondence.CurrentData) + 1, ColumnName));
@@ -1005,13 +1005,13 @@ EndProcedure
 Procedure ExportDirectoryStartChoiceEnd1(Attached, AdditionalParameters) Export
     
     If Not Attached Then
-        ShowMessageBox(Undefined,NStr("en = 'The extension to work with files is required for this operation.'"));
+        ShowMessageBox(Undefined,NStr("en='The extension to work with files is required for this operation.';ru='Для данной операции необходимо установить расширение работы с файлами!'"));
         Return;
     EndIf;
     
     Dialog = New FileDialog(FileDialogMode.ChooseDirectory);
     
-    Dialog.Title = NStr("en = 'Specify exchange directory'");
+    Dialog.Title = NStr("en='Specify exchange directory';ru='Укажите каталог обмена'");
     Dialog.Directory = Object.ExportDirectory;
     
     Dialog.Show(New NotifyDescription("ExportDirectoryStartChoiceEnd", ThisObject, New Structure("Dialog", Dialog)));
@@ -1062,16 +1062,16 @@ Procedure ImportFileStartChoiceEnd1(Attached, AdditionalParameters) Export
     
     If Not Attached Then
         
-        ShowMessageBox(Undefined,NStr("en = 'The extension to work with files is required for this operation.'"));
+        ShowMessageBox(Undefined,NStr("en='The extension to work with files is required for this operation.';ru='Для данной операции необходимо установить расширение работы с файлами!'"));
         Return;
         
     EndIf;
     
     Dialog = New FileDialog(FileDialogMode.Open);
     
-    Dialog.Title = NStr("en = 'Choose xml-file with orders'");
+    Dialog.Title = NStr("en='Choose xml-file with orders';ru='Выберите xml-файл с заказами'");
     Dialog.FullFileName = Object.ImportFile;
-    Dialog.Filter = NStr("en = 'XML Document'") + " (*.xml)|*.xml";
+    Dialog.Filter = NStr("en='XML Document';ru='Документ XML'") + " (*.xml)|*.xml";
     
     Dialog.Show(New NotifyDescription("ImportFileStartChoiceEnd", ThisObject, New Structure("Dialog", Dialog)));
 
@@ -1144,7 +1144,7 @@ Procedure DirectoriesTableOnEditEnd(Item, NewRow, CancelEdit)
 	EndIf;
 	
 	If IsBlankString(Item.CurrentData.Directory) Then
-		Item.CurrentData.Directory = NStr("en = 'Products directory'") + " " + Upper(TrimAll(Left(Item.CurrentData.DirectoryId, 8)));
+		Item.CurrentData.Directory = NStr("en='Products directory';ru='Каталог товаров'") + " " + Upper(TrimAll(Left(Item.CurrentData.DirectoryId, 8)));
 	EndIf;
 	
 	Modified = True;

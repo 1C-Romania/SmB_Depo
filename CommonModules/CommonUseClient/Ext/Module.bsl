@@ -50,7 +50,7 @@ Function CheckCommandParameterType(Val Parameter, Val ExpectedType) Export
 	EndIf;
 	
 	If Not Result Then
-		ShowMessageBox(,NStr("en = 'Action can not be executed for the selected item.'"));
+		ShowMessageBox(,NStr("en='Action can not be executed for the selected item.';ru='Действие не может быть выполнено для выбранного элемента.'"));
 	EndIf;
 	
 	Return Result;
@@ -88,7 +88,7 @@ EndFunction
 // ForExample:
 //
 //    Notification = New NotifyDescription("PrintDocumentEnd", ThisObject);
-//    MessageText = NStr("en = 'To print document, it is required to set work with files extension.'");
+//    MessageText = NStr("en='To print document, it is required to set work with files extension.';ru='Для печати документа необходимо установить расширение работы с файлами.'");
 //    CommonUseClient.ShowQuestionOnFileOperationsExtensionSetting(Alert, MessageText);
 //
 //    Procedure DocumentPrintingEnd(ExtensionEnabled, AdditionalParameters)
@@ -141,7 +141,7 @@ EndProcedure
 // ForExample:
 //
 //    Notification = New NotifyDescription("PrintDocumentEnd", ThisObject);
-//    MessageText = NStr("en = 'To print document, it is required to set work with files extension.'");
+//    MessageText = NStr("en='To print document, it is required to set work with files extension.';ru='Для печати документа необходимо установить расширение работы с файлами.'");
 //    CommonUseClient.CheckFileOperationsExtensionEnabled(Alert, MessageText);
 //
 //    Procedure DocumentPrintEnd (Result,
@@ -217,21 +217,22 @@ Procedure RegisterCOMConnector(Val ExecuteSessionReboot = True) Export
 	
 	If ReturnCode = Undefined Or ReturnCode > 0 Then
 		
-		MessageText = NStr("en = 'Component registration failed comcntr.'") + Chars.LF
-			+ NStr("en = 'Code of error regsvr32:'") + " " + ReturnCode;
+		MessageText = NStr("en='Component registration failed comcntr.';ru='Ошибка при регистрации компоненты comcntr.'") + Chars.LF
+			+ NStr("en='Code of error regsvr32:';ru='Код ошибки regsvr32:'") + " " + ReturnCode;
 			
 		If ReturnCode = 5 Then
-			MessageText = MessageText + " " + NStr("en = 'Insufficient access rights.'");
+			MessageText = MessageText + " " + NStr("en='Insufficient access rights.';ru='Недостаточно прав доступа.'");
 		EndIf;
 		
 		EventLogMonitorClient.AddMessageForEventLogMonitor(
-			NStr("en = 'Comcntr component registration'", CommonUseClientServer.MainLanguageCode()), "Error", MessageText);
+			NStr("en='Comcntr component registration';ru='Регистрация компоненты comcntr'", CommonUseClientServer.MainLanguageCode()), "Error", MessageText);
 		EventLogMonitorServerCall.WriteEventsToEventLogMonitor(ApplicationParameters["StandardSubsystems.MessagesForEventLogMonitor"]);
-		ShowMessageBox(,MessageText + Chars.LF + NStr("en = 'Look for details in event log.'"));
+		ShowMessageBox(,MessageText + Chars.LF + NStr("en='Look for details in event log.';ru='Подробности см. в Журнале регистрации.'"));
 	ElsIf ExecuteSessionReboot Then
 		Notification = New NotifyDescription("RegisterCOMConnectorEnd", ThisObject);
-		QuestionText = NStr("en = 'To finish registration of comcntr component, you should restart application.
-			|Restart now?'");
+		QuestionText = NStr("en='To finish registration of comcntr component, you should restart application."
+"Restart now?';ru='Для завершения перерегистрации компоненты comcntr необходимо перезапустить программу."
+"Перезапустить?'");
 		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo);
 	EndIf;
 	
@@ -302,7 +303,7 @@ EndProcedure
 //  AlertDescriptionClose    - NotifyDescription - contains the name of the procedure that is called when you click the yes button.
 //
 // Example: 
-//  WarningText = NStr("en = 'Close assistant?'");
+//  WarningText = NStr("en='Close assistant?';ru='Закрыть помощник?'");
 //  CommonUseClient.ShowCustomFormClosingConfirmation(
 //      ThisObject, Denial, AlertText, CloseFormWithoutConfirmation);
 //
@@ -419,7 +420,7 @@ Function CommonModule(Name) Export
 	
 #If Not WebClient Then
 	If TypeOf(Module) <> Type("CommonModule") Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Common module ""%1"" is not found.'"), Name);
+		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Common module ""%1"" is not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
 	EndIf;
 #EndIf
 	
@@ -485,7 +486,7 @@ Procedure ShowCommentEditingForm(Val MultilineText, Val OwnerForm, Val Attribute
 	
 	AdditionalParameters = New Structure("OwnerForm,AttributeName", OwnerForm, AttributeName);
 	Notification = New NotifyDescription("CommentEndInput", ThisObject, AdditionalParameters);
-	FormTitle = ?(Title <> Undefined, Title, NStr("en='Comment'"));
+	FormTitle = ?(Title <> Undefined, Title, NStr("en='Comment';ru='Примечание'"));
 	ShowMultilineTextEditingForm(Notification, MultilineText, FormTitle);
 	
 EndProcedure
@@ -626,7 +627,7 @@ Function FileOperationsExtensionConnected(SuggestionText = Undefined, WarningTex
 		If WarningText <> Undefined Then
 			MessageText = WarningText;
 		Else
-			MessageText = NStr("en = 'Action is not available, because extension for work with files in Web-client is not connected.'")
+			MessageText = NStr("en='Action is not available, because extension for work with files in Web-client is not connected.';ru='Действие недоступно, так как не подключено расширение работы с файлами в Веб-клиенте.'")
 		EndIf;
 	EndIf;
 	If Not IsBlankString(MessageText) Then
@@ -652,11 +653,12 @@ Procedure RequestCloseFormConfirmation(Cancel, Modified = True, ActionSelected =
 	EndIf;
 	
 	QuestionText = ?(IsBlankString(WarningText), 
-		NStr("en = 'Data is changed, changes will be canceled.
-				   |Cancel and close?'"),
+		NStr("en='Data is changed, changes will be canceled."
+"Cancel and close?';ru='Данные были изменены, внесенные изменения будут отменены."
+"Отменить и закрыть?'"),
 		WarningText);
 	Result = DoQueryBox(QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No, 
-		NStr("en = 'Cancel changes'"));
+		NStr("en='Cancel changes';ru='Отменить изменения'"));
 		
 	If Result = DialogReturnCode.No Then
 		Cancel = True;
@@ -767,7 +769,7 @@ Procedure OpenCommentEditForm(Val MultilineText, EditResult,
 	Modified = False) Export
 	
 	OpenMultilineTextEditForm(MultilineText, EditResult, Modified, 
-		NStr("en='Comment'"));
+		NStr("en='Comment';ru='Примечание'"));
 	
 EndProcedure
 
@@ -894,7 +896,7 @@ Procedure CheckFileOperationsExtensionConnectedEnd(ExtensionAttached, Additional
 	
 	MessageText = AdditionalParameters.WarningText;
 	If IsBlankString(MessageText) Then
-		MessageText = NStr("en = 'Action is unavailable as the extension for 1C:Enterprise web client is not set.'")
+		MessageText = NStr("en='Action is unavailable as the extension for 1C:Enterprise web client is not set.';ru='Действие недоступно, так как не установлено расширение для веб-клиента 1С:Предприятие.'")
 	EndIf;
 	ShowMessageBox(, MessageText);
 	
@@ -945,7 +947,7 @@ Procedure ConfirmFormClosing() Export
 	
 	Notification = New NotifyDescription("ConfirmFormClosingEnd", ThisObject, Parameters);
 	If IsBlankString(Parameters.WarningText) Then
-		QuestionText = NStr("en = 'Data was changed. Save changes?'");
+		QuestionText = NStr("en='Data was changed. Save changes?';ru='Данные были изменены. Сохранить изменения?'");
 	Else
 		QuestionText = Parameters.WarningText;
 	EndIf;

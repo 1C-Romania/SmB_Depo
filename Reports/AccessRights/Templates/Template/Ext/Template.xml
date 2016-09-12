@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -266,6 +336,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>IBUser properties</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Свойства пользователя информационной базы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -283,6 +357,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Can log on to application</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>При чтении вход в программу разрешен</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -306,6 +384,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Login (to enter)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя (для входа)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -337,6 +419,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Authentication 1C:Enterprise</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аутентификация 1С:Предприятия</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -360,6 +446,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>The user is prohibited from changing the password</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователю запрещено изменять пароль</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -382,6 +472,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Show in the choice list</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Показывать в списке выбора</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -413,6 +507,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Operating system authentication</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Аутентификация операционной системы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -435,6 +533,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Operating system user</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь операционной системы</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -466,6 +568,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Language</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Язык</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -488,6 +594,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Start mode</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Режима запуска</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -558,6 +668,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Legend:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Легенда:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -581,6 +695,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>View*</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Просмотр*</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -591,6 +709,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>- view is not supported by standard forms</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>- просмотр не поддерживается стандартными формами</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -610,6 +732,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Not limited</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Не ограничен</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -620,6 +746,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>- there are no restrictions on the records level</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>- нет ограничений на уровне записей</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -658,6 +788,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Legend:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Легенда:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -681,6 +815,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Insert*</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Добавление*</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -691,6 +829,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>- adding is not supported by standard forms</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>- добавление не поддерживается стандартными формами</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -710,6 +852,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Change*</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изменение*</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -720,6 +866,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>- changing is not supported by standard forms</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>- изменение не поддерживается стандартными формами</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -739,6 +889,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Not limited</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Не ограничен</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -749,6 +903,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>- there are no restrictions on the records level</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>- нет ограничений на уровне записей</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -804,6 +962,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>User belongs to the group</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь входит в группу</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -822,6 +984,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>* directly</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>* непосредственно</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -839,6 +1005,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>* as a member of user groups:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>* как участник групп пользователей:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -871,6 +1041,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Profile: [ProfilePresentation]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Профиль: [ПредставлениеПрофиля]</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>Profile</detailParameter>
 				</c>
@@ -889,6 +1063,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Responsible for access group members: [ResponsiblePresentation]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ответственный за участинков группы доступа: [ПредставлениеОтветственного]</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>Administrator</detailParameter>
 				</c>
@@ -906,6 +1084,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Description: [Description]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание: [Описание]</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -961,6 +1143,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Set rights to [ObjectsKindPresentation]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки прав на [ПредставлениеВидаОбъектов]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -988,6 +1174,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Legend:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Легенда:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1018,6 +1208,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>- [ToolTip]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>- [Подсказка]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1040,6 +1234,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>- [ToolTip]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>- [Подсказка]</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1160,6 +1358,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Prohibitions on the records level:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ограничения на уровне записей:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1178,6 +1380,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>(rights, prohibitions)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(права, ограничения)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1194,6 +1400,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>kinds and access values</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>виды и значения доступа</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1267,6 +1477,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Full access without restrictions</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Полный доступ без ограничений</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1949,6 +2163,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>BF=No; BT=Yes</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>БЛ=Нет; БИ=Да</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -1978,6 +2196,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>BF=No; BT=Yes</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>БЛ=Нет; БИ=Да</v8:content>
 			</v8:item>
 		</format>
 		<controlType>381ed624-9217-4e63-85db-c4c3cb87daae</controlType>

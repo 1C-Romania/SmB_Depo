@@ -12,9 +12,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		, , Parameters.DetailedErrorMessage);
 	
 	ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'An error occurred while updating
-		           |
-		           |application version: %1'"),
+		NStr("en='An error occurred while updating"
+""
+"application version: %1';ru='При обновлении версии"
+""
+"программы возникла ошибка: %1'"),
 		Parameters.AShortErrorMessage);
 	
 	Items.ErrorMessageText.Title = ErrorMessageText;
@@ -88,9 +90,9 @@ Procedure OpenExternalDataProcessor(Command)
 #EndIf
 	
 	FileOpeningDialog = New FileDialog(FileDialogMode.Open);
-	FileOpeningDialog.Filter = NStr("en = 'External data processor'") + "(*.epf)|*.epf";
+	FileOpeningDialog.Filter = NStr("en='External data processor';ru='Внешняя обработка'") + "(*.epf)|*.epf";
 	FileOpeningDialog.Multiselect = False;
-	FileOpeningDialog.Title = NStr("en = 'Choose external data processor'");
+	FileOpeningDialog.Title = NStr("en='Choose external data processor';ru='Выберите внешнюю обработку'");
 	
 	NotifyDescription = New NotifyDescription("OpenExternalDataProcessorEnding", ThisObject);
 	FileOpeningDialog.Show(NOTifyDescription);
@@ -123,7 +125,7 @@ EndProcedure
 &AtServer
 Function ConnectExternalDataProcessor(AddressInTemporaryStorage)
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise NStr("en = 'Insufficient access rights.'");
+		Raise NStr("en='Insufficient access rights.';ru='Недостаточно прав доступа.'");
 	EndIf;
 	SelectedDataProcessor = GetFromTempStorage(AddressInTemporaryStorage);
 	TempFileName = GetTempFileName("epf");

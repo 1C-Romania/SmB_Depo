@@ -97,7 +97,7 @@ Procedure ShowMessageAboutError(Val Description)
 	EndIf;
 	
 	WriteLogEvent(
-		NStr("en = 'Digital signature certificates. Transfer settings to new metadata object'",
+		NStr("en='Digital signature certificates. Transfer settings to new metadata object';ru='Сертификаты электронной подписи. Перенос настроек в новый объект метаданных'",
 		     CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Error,
 		,
@@ -125,7 +125,7 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 		PrintManagement.OutputSpreadsheetDocumentToCollection(
 			PrintFormsCollection,
 			"EDCard",
-			NStr("en = 'Electronic document card'"),
+			NStr("en='Electronic document card';ru='Карточка электронного документа'"),
 			PrintEDCard(ObjectsArray, PrintObjects, "EDCard"),
 			,
 			"Catalog.EDAttachedFiles.PF_MXL_EDCard");
@@ -134,7 +134,7 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 	PrintED = PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "ED");
 	If PrintED Then
 		Spreadsheet = EDPrint(ObjectsArray, PrintObjects);
-		TemplateSynonym = NStr("en = 'Electronic document'");
+		TemplateSynonym = NStr("en='Electronic document';ru='Электронный документ'");
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "ED", TemplateSynonym, Spreadsheet);
 		If TypeOf(Spreadsheet) = Type("String") Then
 			DeleteFiles(Spreadsheet);
@@ -524,11 +524,11 @@ Procedure FillSubscribersPresentation(ArrayRow, RequiredSignatures)
 			If ArrayRow.EDDirection = Enums.EDDirections.Outgoing Then
 				
 				RequiredSignatures.SenderPresentation = LegalEntityIndividualPresentation(ArrayRow.CompanySignature);
-				RequiredSignatures.RecipientPresentation = NStr("en = 'Not necessary'");
+				RequiredSignatures.RecipientPresentation = NStr("en='Not necessary';ru='Не требуется'");
 				
 			Else
 				RequiredSignatures.SenderPresentation = LegalEntityIndividualPresentation(ArrayRow.CounterpartySignature);
-				RequiredSignatures.RecipientPresentation = NStr("en = 'Not necessary'");
+				RequiredSignatures.RecipientPresentation = NStr("en='Not necessary';ru='Не требуется'");
 				
 			EndIf;
 			
@@ -542,11 +542,11 @@ Procedure FillSubscribersPresentation(ArrayRow, RequiredSignatures)
 						
 				If ArrayRow.EDDirection = Enums.EDDirections.Outgoing Then
 					RequiredSignatures.SenderPresentation = LegalEntityIndividualPresentation(ArrayRow.CompanySignature);
-					RequiredSignatures.RecipientPresentation = NStr("en = 'Not necessary'");
+					RequiredSignatures.RecipientPresentation = NStr("en='Not necessary';ru='Не требуется'");
 					
 				Else
 					RequiredSignatures.SenderPresentation = LegalEntityIndividualPresentation(ArrayRow.CounterpartySignature);
-					RequiredSignatures.RecipientPresentation = NStr("en = 'Not necessary'");
+					RequiredSignatures.RecipientPresentation = NStr("en='Not necessary';ru='Не требуется'");
 				
 				EndIf;
 			
@@ -565,8 +565,8 @@ Procedure FillSubscribersPresentation(ArrayRow, RequiredSignatures)
 			EndIf;
 			
 		Else
-			RequiredSignatures.SenderPresentation = NStr("en = 'Not necessary'");
-			RequiredSignatures.RecipientPresentation = NStr("en = 'Not necessary'");
+			RequiredSignatures.SenderPresentation = NStr("en='Not necessary';ru='Не требуется'");
+			RequiredSignatures.RecipientPresentation = NStr("en='Not necessary';ru='Не требуется'");
 
 		EndIf;
 
@@ -627,7 +627,7 @@ Function EDDataFile(LinkToED)
 		EndIf;
 		
 		If FileName = Undefined Then
-			ErrorText = NStr("en = 'Unable to view electronic document. Verify the work directory setting'");
+			ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 			CommonUseClientServer.MessageToUser(ErrorText);
 			Return Undefined;
 		EndIf;
@@ -639,7 +639,7 @@ Function EDDataFile(LinkToED)
 			FolderForUnpacking = ElectronicDocumentsService.WorkingDirectory(,LinkToED.UUID());
 			
 			If FolderForUnpacking = Undefined Then
-				ErrorText = NStr("en = 'Unable to view electronic document. Verify the work directory setting'");
+				ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 				CommonUseClientServer.MessageToUser(ErrorText);
 				DeleteFiles(FileName);
 				Return Undefined;
@@ -653,7 +653,7 @@ Function EDDataFile(LinkToED)
 				If Not ElectronicDocumentsService.PossibleToExtractFiles(ZipReading, FolderForUnpacking) Then
 					MessageText = ElectronicDocumentsReUse.GetMessageAboutError("006");
 				EndIf;
-				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED package Unpacking'"),
+				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED package Unpacking';ru='распаковка пакета ЭД'"),
 					ErrorText, MessageText);
 				ZipReading.Close();
 				DeleteFiles(FileName);
@@ -710,8 +710,9 @@ Function EDDataFile(LinkToED)
 						EndIf;
 					
 						If AdditDataFileName = Undefined Then
-							ErrorText = NStr("en = 'Unable to get additional data of the electronic document.
-													|Verify the work directory setting'");
+							ErrorText = NStr("en='Unable to get additional data of the electronic document."
+"Verify the work directory setting';ru='Не удалось получить доп. данные электронного документа."
+"Проверьте настройку рабочего каталога'");
 							CommonUseClientServer.MessageToUser(ErrorText);
 							DeleteFiles(DataFileName);
 							Return Undefined;

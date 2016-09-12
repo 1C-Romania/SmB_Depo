@@ -34,9 +34,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Items.List.Multiselect = True;
 			Items.List.SelectionMode = TableSelectionMode.MultiRow;
 			
-			Title = NStr("en = 'Pick up of access groups profiles'");
+			Title = NStr("en='Pick up of access groups profiles';ru='Подбор профилей групп доступа'");
 		Else
-			Title = NStr("en = 'Selection of access groups profile'");
+			Title = NStr("en='Selection of access groups profile';ru='Выбор профиля групп доступа'");
 		EndIf;
 	EndIf;
 	

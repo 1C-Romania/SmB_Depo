@@ -51,9 +51,9 @@ Procedure CheckSpecificationFieldGroupsMandatoryForFilling(GroupsAndFields, Erro
 					If FieldsGroupField.RequiredFilling Then
 						
 						// IN group mandatory field
-						ErrorText = NStr("en = '{%1} mandatory column is not selected'");
+						ErrorText = NStr("en='{%1} mandatory column is not selected';ru='Не выбрана обязательная колонка {%1}'");
 						ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, FieldsGroupField.FieldPresentation);
-						OccurrencePlace = NStr("en = 'Titles setting.'");
+						OccurrencePlace = NStr("en='Titles setting.';ru='Настройка заголовков.'");
 						
 						DataImportFromExternalSources.AddError(Errors, ErrorText, True, OccurrencePlace);
 						
@@ -66,9 +66,9 @@ Procedure CheckSpecificationFieldGroupsMandatoryForFilling(GroupsAndFields, Erro
 					
 				Else
 					
-					ErrorText = NStr("en = '{%1} mandatory column is not selected'");
+					ErrorText = NStr("en='{%1} mandatory column is not selected';ru='Не выбрана обязательная колонка {%1}'");
 					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, FieldsGroupField.FieldPresentation);
-					OccurrencePlace = NStr("en = 'Titles setting.'");
+					OccurrencePlace = NStr("en='Titles setting.';ru='Настройка заголовков.'");
 					
 					DataImportFromExternalSources.AddError(Errors, ErrorText, True, OccurrencePlace);
 					
@@ -81,9 +81,9 @@ Procedure CheckSpecificationFieldGroupsMandatoryForFilling(GroupsAndFields, Erro
 		If IsCustomFieldsGroup 
 			AND FieldsGroup.Rows.Count() = UnselectedColumnsInGroup Then
 			
-			ErrorText = NStr("en = 'For the {%1} fields group consisting of the set of {%2} columns you need to select at least one column in the imported data.'");
+			ErrorText = NStr("en='For the {%1} fields group consisting of the set of {%2} columns you need to select at least one column in the imported data.';ru='Для группы полей {%1}, состоящей из набора колонок {%2}, в загружаемых данных необходимо выбрать минимум одну колонку.'");
 			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, FieldsGroup.FieldsGroupName, UnselectedColumnNames);
-			OccurrencePlace = NStr("en = 'Titles setting.'");
+			OccurrencePlace = NStr("en='Titles setting.';ru='Настройка заголовков.'");
 			
 			DataImportFromExternalSources.AddError(Errors, ErrorText, True, OccurrencePlace);
 			
@@ -119,9 +119,9 @@ Procedure CheckFillingTabularDocumentAndFillFormTable(SpreadsheetDocument, DataM
 						
 						If FieldsGroupField.RequiredFilling Then
 							
-							ErrorText = NStr("en = 'There are unfilled cells in the {%1} column. During processing these rows will be skipped.'");
+							ErrorText = NStr("en='There are unfilled cells in the {%1} column. During processing these rows will be skipped.';ru='В колонке {%1} присутствуют незаполенные ячейки. При обработке данные строки будут пропущены.'");
 							ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, FieldsGroupField.FieldPresentation);
-							OccurrencePlace = NStr("en = 'Row No %1'");
+							OccurrencePlace = NStr("en='Row No %1';ru='Строка № %1.'");
 							OccurrencePlace = StringFunctionsClientServer.PlaceParametersIntoString(OccurrencePlace, LineNumber);
 							
 							DataImportFromExternalSources.AddError(Errors, ErrorText, False, OccurrencePlace);
@@ -139,9 +139,9 @@ Procedure CheckFillingTabularDocumentAndFillFormTable(SpreadsheetDocument, DataM
 					If Not ValueIsFilled(CellValue) 
 						AND FieldsGroup.FieldsGroupName = DataImportFromExternalSources.FieldsMandatoryForFillingGroupName() Then
 						
-						ErrorText = NStr("en = 'There are unfilled cells in the {%1} column. During processing these rows will be skipped.'");
+						ErrorText = NStr("en='There are unfilled cells in the {%1} column. During processing these rows will be skipped.';ru='В колонке {%1} присутствуют незаполенные ячейки. При обработке данные строки будут пропущены.'");
 						ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, FieldsGroupField.FieldPresentation);
-						OccurrencePlace = NStr("en = 'Row No %1'");
+						OccurrencePlace = NStr("en='Row No %1';ru='Строка № %1.'");
 						OccurrencePlace = StringFunctionsClientServer.PlaceParametersIntoString(OccurrencePlace, LineNumber);
 						
 						DataImportFromExternalSources.AddError(Errors, ErrorText, False, OccurrencePlace);
@@ -156,9 +156,9 @@ Procedure CheckFillingTabularDocumentAndFillFormTable(SpreadsheetDocument, DataM
 				AND FieldsGroup.Rows.Count() <> 0 // for groups optional for filling in
 				AND FieldsGroup.Rows.Count() = UnfilledFieldsInGroup Then
 				
-				ErrorText = NStr("en = '{%1} fields group consisting of the set of {%2} selected columns has rows with unfilled mandatory attributes. During data processing such rows will be skipped.'");
+				ErrorText = NStr("en='{%1} fields group consisting of the set of {%2} selected columns has rows with unfilled mandatory attributes. During data processing such rows will be skipped.';ru='В группе полей {%1}, состоящей из набора выбранных колонок {%2}, присутствуют строки c незаполенными обязательными реквизитами. При обработке данных такие строки будут пропущены.'");
 				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, FieldsGroup.FieldsGroupName, UnfilledColumnsNames);
-				OccurrencePlace = NStr("en = 'Row No %1'");
+				OccurrencePlace = NStr("en='Row No %1';ru='Строка № %1.'");
 				OccurrencePlace = StringFunctionsClientServer.PlaceParametersIntoString(OccurrencePlace, LineNumber);
 				
 				DataImportFromExternalSources.AddError(Errors, ErrorText, False, OccurrencePlace);
@@ -195,7 +195,7 @@ Procedure PreliminarilyDataProcessor(SpreadsheetDocument, DataMatchingTable, Dat
 	IsEmptyTabularDocument(SpreadsheetDocument, DenyTransitionNext);
 	If DenyTransitionNext Then
 		
-		ErrorText = NStr("en = 'Imported data is not filled in...'");
+		ErrorText = NStr("en='Imported data is not filled in...';ru='Незаполнены импортируемые данные...'");
 		DataImportFromExternalSources.AddError(Errors, ErrorText);
 		
 	Else

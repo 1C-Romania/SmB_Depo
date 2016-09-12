@@ -47,7 +47,7 @@ Procedure CheckExistenceOfRetailPrice(Cancel)
 		
 		While SelectionOfQueryResult.Next() Do
 			
-			MessageText = NStr("en = 'For products and services %ProductsAndServicesPresentation% in string %LineNumber% of the ""Inventory"" list the retail price is not set!'");
+			MessageText = NStr("en='For products and services %ProductsAndServicesPresentation% in string %LineNumber% of the ""Inventory"" list the retail price is not set!';ru='Для номенклатуры %ПредставлениеНоменклатуры% в строке %НомерСтроки% списка ""Запасы"" не установлена розничная цена!'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(SelectionOfQueryResult.LineNumber));
 			MessageText = StrReplace(MessageText, "%ProductsAndServicesPresentation%",  SmallBusinessServer.PresentationOfProductsAndServices(SelectionOfQueryResult.ProductsAndServicesPresentation, SelectionOfQueryResult.CharacteristicPresentation, SelectionOfQueryResult.BatchPresentation));
 			SmallBusinessServer.ShowMessageAboutError(
@@ -749,7 +749,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 			If StringInventory.Reserve > StringInventory.Quantity Then
 				
-				MessageText = NStr("en = 'In row No.%Number% of the ""Inventory"" tabular section the quantity of items transferred to reserve exceeds the total inventory quantity.'");
+				MessageText = NStr("en='In row No.%Number% of the ""Inventory"" tabular section the quantity of items transferred to reserve exceeds the total inventory quantity.';ru='В строке №%Номер% табл. части ""Запасы"" количество передаваемых в резерв позиций превышает общее количество запасов.'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,

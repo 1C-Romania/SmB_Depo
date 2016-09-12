@@ -133,14 +133,15 @@ Function CheckCorrectnessOfAccountNumbers(Number, ForeignCurrencyAccount = False
 	ErrorText = "";
 	If Not ForeignCurrencyAccount AND StrLen(Number) <> 20 Then
 		
-		ErrorText = NStr("en = 'Perhaps, account number is specified incompletely'");
+		ErrorText = NStr("en='Perhaps, account number is specified incompletely';ru='Возможно номер счета указан не полностью'");
 		Result = False;
 		
 	ElsIf Not StringFunctionsClientServer.OnlyNumbersInString(Number) Then
 		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", " ") +
-			NStr("en = 'The bank account number must contain only digits.
-				|Perhaps, numer is specified incorrectly'");
+			NStr("en='The bank account number must contain only digits."
+"Perhaps, numer is specified incorrectly';ru='В номере банковского счета присутствуют не только цифры."
+"Возможно, номер указан неверно'");
 		Result = False;
 		
 	EndIf;
@@ -161,17 +162,17 @@ Function ValidateCorrectnessOfBIN(BIN, ErrorText = "")
 	ErrorText = "";
 	If StrLen(BIN) <> 9 Then
 		
-		ErrorText = NStr("en = 'No bank found for the specified BIC. Perhaps, BIN is specified incompletely.'");
+		ErrorText = NStr("en='No bank found for the specified BIC. Perhaps, BIN is specified incompletely.';ru='По указанному БИК банк не найден. Возможно БИК указан не полностью.'");
 		
 	ElsIf Not StringFunctionsClientServer.OnlyNumbersInString(BIN) Then
 		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", " ") +
-			NStr("en = 'Bank BIN must inlude digits only'");
+			NStr("en='Bank BIN must inlude digits only';ru='В составе БИК банка должны быть только цифры'");
 		
 	ElsIf Not Left(BIN, 2) = "04" Then
 		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", " ") +
-			NStr("en = 'Bank BIC must begin with ""04"".'");
+			NStr("en='Bank BIC must begin with ""04"".';ru='Первые 2 цифры БИК банка должны быть ""04""'");
 		
 	EndIf;
 	
@@ -196,7 +197,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 		ClearMessages();
 		
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'The ""%1"" field value is invalid.'"), 
+			NStr("en='The ""%1"" field value is invalid.';ru='Поле ""%1"" заполнено не корректно.'"), 
 			?(Find(Field, "BIN") > 0, "BIN", "Corr. account")
 			);
 		
@@ -234,7 +235,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 			EndIf;
 			
 			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The bank with BIC ""%1"" was not found in the Banks catalog'"), TextForSearch);
+				NStr("en='The bank with BIC ""%1"" was not found in the Banks catalog';ru='Банк с БИК ""%1"" не найден в справочнике банков'"), TextForSearch);
 			
 		ElsIf SearchArea = "CorrAccount" Then
 			
@@ -245,18 +246,18 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 			EndIf;
 			
 			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Bank with corr. account ""%1"" was not found in the Banks catalog'"), TextForSearch);
+				NStr("en='Bank with corr. account ""%1"" was not found in the Banks catalog';ru='Банк с корр. счетом ""%1"" не найден в справочнике банков'"), TextForSearch);
 			
 		EndIf;
 		
 		// Generate variants
 		Buttons	= New ValueList;
-		Buttons.Add("Select",     NStr("en = 'Select from the catalog'"));
-		Buttons.Add("Cancel",   NStr("en = 'Cancel entering'"));
+		Buttons.Add("Select",     NStr("en='Select from the catalog';ru='Выбрать из справочника'"));
+		Buttons.Add("Cancel",   NStr("en='Cancel entering';ru='Отменить ввод'"));
 		
 		// Choice processor
 		NotifyDescription = New NotifyDescription("DetermineIfBankIsToBeSelectedFromCatalog", ThisObject, New Structure("IsBank", IsBank));
-		ShowQueryBox(NOTifyDescription, QuestionText, Buttons,, "Select", NStr("en = 'Bank not found'"));
+		ShowQueryBox(NOTifyDescription, QuestionText, Buttons,, "Select", NStr("en='Bank not found';ru='Банк не найден'"));
 		Return Undefined;
 		
 	ElsIf SearchArea = "Code" AND ListOfFoundBanks.Count() = 1 Then
@@ -399,7 +400,7 @@ Procedure FillInDirectExchangeSettings(DirectExchangeWithBanksAgreement, DirectM
 		If Selection.Next() Then
 			DirectExchangeWithBanksAgreement = Selection.DirectExchangeWithBanksAgreement;
 			DirectMessageExchange = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Direct exchange agreement %1'"), Lower(Selection.AgreementStatus));
+				NStr("en='Direct exchange agreement %1';ru='Соглашение о прямом обмене %1'"), Lower(Selection.AgreementStatus));
 		EndIf;
 	EndIf;
 	
@@ -539,7 +540,7 @@ Procedure BIKBankTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
 		
 		If StrLen(Text) > 9 Then
 			Message = New UserMessage;
-			Message.Text = NStr("en = 'Entered value exceeds the admissible length BIN 9 symbols!'");
+			Message.Text = NStr("en='Entered value exceeds the admissible length BIN 9 symbols!';ru='Введенное значение превышает допустимую длину БИК 9 символов!'");
 			Message.Message();
 			
 			StandardProcessing = False;
@@ -646,7 +647,7 @@ Procedure SettlementBankBICTextEditEnd(Item, Text, ChoiceData, StandardProcessin
 		
 		If StrLen(Text) > 9 Then
 			Message = New UserMessage;
-			Message.Text = NStr("en = 'Entered value exceeds the admissible length BIN 9 symbols!'");
+			Message.Text = NStr("en='Entered value exceeds the admissible length BIN 9 symbols!';ru='Введенное значение превышает допустимую длину БИК 9 символов!'");
 			Message.Message();
 			
 			StandardProcessing = False;
@@ -820,7 +821,7 @@ Procedure AccountNoTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
 		
 		If StrLen(Text) > 20 Then
 			Message = New UserMessage;
-			Message.Text = NStr("en = 'The entered value exceeds the permitted account number length of the 20 digits!'");
+			Message.Text = NStr("en='The entered value exceeds the permitted account number length of the 20 digits!';ru='Введенное значение превышает допустимую длину номера счета 20 символов!'");
 			Message.Message();
 			
 			StandardProcessing = False;

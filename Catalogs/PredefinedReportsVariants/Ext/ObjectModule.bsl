@@ -10,7 +10,7 @@ Procedure BeforeWrite(Cancel)
 		Return;
 	EndIf;
 	If Not AdditionalProperties.Property("PredefinedOnesFilling") Then
-		Raise NStr("en = 'The catalog ""Predefined variant reports"" changes only in case of automatic data filling.'");
+		Raise NStr("en='The catalog ""Predefined variant reports"" changes only in case of automatic data filling.';ru='Справочник ""Предопределенные варианты отчетов"" изменяется только при автоматическом заполнении его данных.'");
 	EndIf;
 EndProcedure
 
@@ -28,7 +28,7 @@ Procedure CheckFillingPredefined(Cancel)
 EndProcedure
 
 Function NotFilledField(FieldName)
-	Return StrReplace(NStr("en = 'The field ""%1"" is not filled.'"), "%1", FieldName);
+	Return StrReplace(NStr("en='The field ""%1"" is not filled.';ru='Не заполнено поле ""%1""'"), "%1", FieldName);
 EndFunction
 
 #EndRegion

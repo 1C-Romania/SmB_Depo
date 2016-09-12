@@ -68,7 +68,7 @@ Procedure CurrentYearNumberOnChange(Item)
 	WriteScheduleData = False;
 	If Modified Then
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-							NStr("en = 'Write modified data for %1 year?'"), 
+							NStr("en='Write modified data for %1 year?';ru='Записать измененные данные за %1 год?'"), 
 							Format(PreviousYearNumber, "NG=0"));
 		
 		Notification = New NotifyDescription("CurrentYearNumberOnChangeEnd", ThisObject);
@@ -130,9 +130,9 @@ Procedure MoveDay(Command)
 	DateChoiceParameters.Insert("InitialValue",			DestinationDate);
 	DateChoiceParameters.Insert("BeginOfRepresentationPeriod",	BegOfYear(Calendar));
 	DateChoiceParameters.Insert("EndOfRepresentationPeriod",		EndOfYear(Calendar));
-	DateChoiceParameters.Insert("Title",					NStr("en = 'Transfer date selection'"));
+	DateChoiceParameters.Insert("Title",					NStr("en='Transfer date selection';ru='Выбор даты переноса'"));
 	DateChoiceParameters.Insert("ExplanationText",				StringFunctionsClientServer.PlaceParametersIntoString(
-																NStr("en = 'Select the date on which the day will be transferred %1 (%2)'"), 
+																NStr("en='Select the date on which the day will be transferred %1 (%2)';ru='Выберите дату, на которую будет осуществлен перенос дня %1 (%2)'"), 
 																Format(DestinationDate, "DF=d MMMM'"), 
 																DayKind));
 	
@@ -156,10 +156,13 @@ Procedure Print(Command)
 		Handler = New NotifyDescription("PrintEnd", ThisObject);
 		ShowQueryBox(
 			Handler,
-			NStr("en = 'Business calendar data is not written yet.
-                  |You can print it only after data recording.
-                  |
-                  |Record?'"),
+			NStr("en='Business calendar data is not written yet."
+"You can print it only after data recording."
+""
+"Record?';ru='Данные производственного календаря еще не записаны."
+"Печать возможна только после записи данных."
+""
+"Записать?'"),
 			QuestionDialogMode.YesNo,
 			,
 			DialogReturnCode.Yes);
@@ -375,7 +378,7 @@ Procedure FillPresentationTransfers(Form)
 		TypeOfDaySource = KindTransferDayPresentation(Form.DayKinds.Get(DateTransmitters), DateSource);
 		TypeOfDayReceiver = KindTransferDayPresentation(Form.DayKinds.Get(DateSource), DateTransmitters);
 		Form.ListTransfers.Add(DateSource, StringFunctionsClientServer.PlaceParametersIntoString(
-															NStr("en = '%1 (%3) transferred to %2 (%4)'"),
+															NStr("en='%1 (%3) transferred to %2 (%4)';ru='%1 (%3) перенесен на %2 (%4)'"),
 															Format(DateSource, "DF=d MMMM'"),
 															Format(DateTransmitters, "DF=d MMMM'"),
 															TypeOfDaySource,

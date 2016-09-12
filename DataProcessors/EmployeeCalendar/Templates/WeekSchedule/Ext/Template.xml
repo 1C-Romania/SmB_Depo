@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -82,6 +152,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Mo</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пн</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -99,6 +173,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Tu</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вт</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -115,6 +193,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>We</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ср</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -172,6 +254,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Th</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Чт</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -189,6 +275,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Fr</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пт</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -204,6 +294,10 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Sa</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Sa</v8:content>
 						</v8:item>
 					</tl>
@@ -261,6 +355,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Su</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вс</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -399,6 +497,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Events: [EventsQuantity]: Tasks [TasksQuantity] (closed: [ClosedQuantity]; in progress: [InWorkQuantity]; overdue: [OverdueQuantity])</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Мероприятий: [КоличествоМероприятий]     Заданий: [КоличествоЗадач] (закрыто: [КоличествоЗакрыто]; в работе: [КоличествоВРаботе]; просрочено: [КоличествоПросрочено])</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -480,6 +582,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Filter by employees is not specified.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Не задан отбор по сотрудникам.</v8:content>
 						</v8:item>
 					</tl>
 				</c>

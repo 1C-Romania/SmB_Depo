@@ -21,7 +21,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		// Subsystem handler of the objects attributes editing prohibition.
 		If CommonUse.SubsystemExists("StandardSubsystems.ObjectsAttributesEditProhibition") Then
 			ModuleObjectAttributeEditProhibition = CommonUse.CommonModule("ObjectsAttributesEditProhibition");
-			ModuleObjectAttributeEditProhibition.LockAttributes(ThisObject,, NStr("en = 'Allow editing of type and groups'"));
+			ModuleObjectAttributeEditProhibition.LockAttributes(ThisObject,, NStr("en='Allow editing of type and groups';ru='Разрешить редактирование типа и группы'"));
 			
 		Else
 			Items.Parent.ReadOnly = True;

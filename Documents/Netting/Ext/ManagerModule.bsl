@@ -12,7 +12,7 @@ Procedure GenerateTableCustomerAccounts(DocumentRefNetting, StructureAdditionalP
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("ExchangeDifference", NStr("en = 'Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -121,7 +121,7 @@ Procedure GenerateTableAccountsPayable(DocumentRefNetting, StructureAdditionalPr
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("ExchangeDifference", NStr("en = 'Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -1083,8 +1083,8 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefNetting, StructureAdditional
 	Query.SetParameter("Ref", DocumentRefNetting);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("ExchangeDifference", NStr("en = 'Exchange rate difference'"));
-	Query.SetParameter("DebtAdjustment", NStr("en = 'Debt adjustment'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("DebtAdjustment", NStr("en='Debt adjustment';ru='Корректировка долга'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
 	
@@ -1233,7 +1233,7 @@ Procedure GenerateTableManagerial(DocumentRefNetting, StructureAdditionalPropert
 	Query.SetParameter("Netting", "Netting");
 	Query.SetParameter("Novation", "Novation ");
 	Query.SetParameter("DebtAdjustment", "Debt adjustment ");
-	Query.SetParameter("ExchangeDifference", NStr("en = 'Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -1853,9 +1853,9 @@ Procedure InitializeDocumentData(DocumentRefNetting, StructureAdditionalProperti
 	
 	Query.SetParameter("Ref", DocumentRefNetting);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("Netting", NStr("en = 'Netting'"));
-	Query.SetParameter("Novation", NStr("en = 'Novation'"));
-	Query.SetParameter("DebtAdjustment", NStr("en = 'Debt adjustment'"));
+	Query.SetParameter("Netting", NStr("en='Netting';ru='Взаимозачет'"));
+	Query.SetParameter("Novation", NStr("en='Novation';ru='Переуступка долга'"));
+	Query.SetParameter("DebtAdjustment", NStr("en='Debt adjustment';ru='Корректировка долга'"));
 	
 	Query.Text =
 	"SELECT
@@ -2715,8 +2715,8 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 		// Negative balance on accounts receivable.
 		If Not ResultsArray[0].IsEmpty() Then
 			
-			ErrorTitle = NStr("en = 'Error:'");
-			MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'No possiblity to fix the settlements with customers'");
+			ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+			MessageTitleText = ErrorTitle + Chars.LF + NStr("en='No possiblity to fix the settlements with customers';ru='Нет возможности зафиксировать расчеты с покупателями'");
 			SmallBusinessServer.ShowMessageAboutError(
 				DocumentObjectNetting,
 				MessageTitleText,
@@ -2729,21 +2729,21 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 			QueryResultSelection = ResultsArray[0].Select();
 			While QueryResultSelection.Next() Do
 				If QueryResultSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
-					MessageText = NStr(
-						"en = '%CounterpartyPresentation% - customer debt balance by settlements document is less than written amount.
-						|Written-off amount: %SumCurOnWrite% %CurrencyPresentation%.
-						|Remaining customer debt: %RemainingDebtAmount% %CurrencyPresentation%.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - customer debt balance by settlements document is less than written amount."
+"Written-off amount: %SumCurOnWrite% %CurrencyPresentation%."
+"Remaining customer debt: %RemainingDebtAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - остаток задолженности покупателя по документу расчетов меньше списываемой суммы."
+"Списываемая сумма: %СуммаВалПриЗаписи% %ВалютаПредставление%."
+"Остаток задолженности покупателя: %СуммаОстаткаЗадолженности% %ВалютаПредставление%.'"
 					);
 				EndIf;
 				If QueryResultSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
 					If QueryResultSelection.AmountOfOutstandingAdvances = 0 Then
-						MessageText = NStr(
-							"en = '%PresentationOfCounterparty% - perhaps the advances of the customer have not been received or they have been completely set off in the trade documents.'"
+						MessageText = NStr("en='%PresentationOfCounterparty% - perhaps the advances of the customer have not been received or they have been completely set off in the trade documents.';ru='%ПредставлениеКонтрагента% - возможно, авансов от покупателя не было или они уже полностью зачтены в товарных документах.'"
 						);
 					Else
-						MessageText = NStr(
-							"en = '%CounterpartyPresentation% - advances received from customer are already partially set off in commercial documents.
-							|Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.'"
+						MessageText = NStr("en='%CounterpartyPresentation% - advances received from customer are already partially set off in commercial documents."
+"Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - полученные авансы от покупателя уже частично зачтены в товарных документах."
+"Остаток незачтенных авансов: %СуммаНепогашенныхАвансов% %ВалютаПредставление%.'"
 						);
 						MessageText = StrReplace(MessageText, "%UnpaidAdvancesAmount%", String(QueryResultSelection.AmountOfOutstandingAdvances));
 					EndIf;
@@ -2766,8 +2766,8 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 		// Negative balance on accounts payable.
 		If Not ResultsArray[1].IsEmpty() Then
 			
-			ErrorTitle = NStr("en = 'Error:'");
-			MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Cannot record the accounts payables.'");
+			ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+			MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Cannot record the accounts payables.';ru='Нет возможности зафиксировать расчеты с поставщиками'");
 			SmallBusinessServer.ShowMessageAboutError(
 				DocumentObjectNetting,
 				MessageTitleText,
@@ -2780,21 +2780,21 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 			QueryResultSelection = ResultsArray[1].Select();
 			While QueryResultSelection.Next() Do
 				If QueryResultSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
-					MessageText = NStr(
-						"en = '%CounterpartyPresentation% - debt to vendor balance by settlements document is less than written amount.
-						|Written-off amount: %SumCurOnWrite% %CurrencyPresentation%.
-						|Debt before the balance provider:% SummaOstatkaDebt% ValûtaPredstavlenie%.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - debt to vendor balance by settlements document is less than written amount."
+"Written-off amount: %SumCurOnWrite% %CurrencyPresentation%."
+"Debt before the balance provider:% SummaOstatkaDebt% ValûtaPredstavlenie%.';ru='%ПредставлениеКонтрагента% - остаток задолженности перед поставщиком по документу расчетов меньше списываемой суммы."
+"Списываемая сумма: %СуммаВалПриЗаписи% %ВалютаПредставление%."
+"Остаток задолженности перед поставщиком: %СуммаОстаткаЗадолженности% %ВалютаПредставление%.'"
 					);
 				EndIf;
 				If QueryResultSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
 					If QueryResultSelection.AmountOfOutstandingAdvances = 0 Then
-						MessageText = NStr(
-							"en = '%PresentationOfCounterparty% - perhaps the vendor didn''t get the advances or they have been completely set off in the trade documents .'"
+						MessageText = NStr("en=""%PresentationOfCounterparty% - perhaps the vendor didn't get the advances or they have been completely set off in the trade documents ."";ru='%ПредставлениеКонтрагента% - возможно, авансов поставщику не было или они уже полностью зачтены в товарных документах.'"
 						);
 					Else
-						MessageText = NStr(
-							"en = '%CounterpartyPresentation% - advances issued to vendors are already partially set off in commercial documents.
-							|Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.'"
+						MessageText = NStr("en='%CounterpartyPresentation% - advances issued to vendors are already partially set off in commercial documents."
+"Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - выданные авансы поставщику уже частично зачтены в товарных документах."
+"Остаток незачтенных авансов: %СуммаНепогашенныхАвансов% %ВалютаПредставление%.'"
 						);
 						MessageText = StrReplace(MessageText, "%UnpaidAdvancesAmount%", String(QueryResultSelection.AmountOfOutstandingAdvances));
 					EndIf;

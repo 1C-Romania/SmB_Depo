@@ -9,7 +9,7 @@ Function MakeAutoDescription()
 	
 	Items.Description.ChoiceList.Clear();
 	
-	DescriptionString = NStr("en='POS terminal '") + " (" + String(Object.PettyCash) + ")";
+	DescriptionString = NStr("en='POS terminal ';ru='Эквайринговый терминал '") + " (" + String(Object.PettyCash) + ")";
 	DescriptionString = Left(DescriptionString, 100);
 	
 	Items.Description.ChoiceList.Add(DescriptionString);

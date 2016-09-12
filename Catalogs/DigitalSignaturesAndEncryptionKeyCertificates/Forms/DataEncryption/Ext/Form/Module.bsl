@@ -287,15 +287,16 @@ Procedure FillEncryptionCertificatesFromSet(CertificatesSetDescription)
 			CertificateData = Selection.CertificateData.Get();
 			If TypeOf(CertificateData) <> Type("BinaryData") Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = '""%1"" certificate data was not found in the catalog'"), Selection.Presentation);
+					NStr("en='""%1"" certificate data was not found in the catalog';ru='Данные сертификата ""%1"" не найдены в справочнике'"), Selection.Presentation);
 			EndIf;
 			Try
 				CryptoCertificate = New CryptoCertificate(CertificateData);
 			Except
 				ErrorInfo = ErrorInfo();
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = '""% 1"" certificate data in the catalog is
-					           |not correct by reason of: %2'"),
+					NStr("en='""% 1"" certificate data in the catalog is"
+"not correct by reason of: %2';ru='Данные сертификата ""%1"" в справочнике"
+"не корректны по причине: %2'"),
 					Selection.Presentation,
 					BriefErrorDescription(ErrorInfo));
 			EndTry;
@@ -468,8 +469,9 @@ Procedure EncryptData(Notification)
 	If ValueIsFilled(Certificate) Then
 		If CertificateValidUntil < CommonUseClient.SessionDate() Then
 			Context.ErrorOnClient.Insert("ErrorDescription",
-				NStr("en = 'Selected personal certificate has expired.
-				           |Select another certificate.'"));
+				NStr("en='Selected personal certificate has expired."
+"Select another certificate.';ru='У выбранного личного сертификата истек срок действия."
+"Выберите другой сертификат.'"));
 			ShowError(Context.ErrorOnClient, Context.ErrorOnServer);
 			ExecuteNotifyProcessing(Context.Notification, False);
 			Return;
@@ -477,8 +479,9 @@ Procedure EncryptData(Notification)
 		
 		If Not ValueIsFilled(CertificateApplication) Then
 			Context.ErrorOnClient.Insert("ErrorDescription",
-				NStr("en = 'Selected personal certificate has no indication of the application for closed key.
-				           |Select another certificate.'"));
+				NStr("en='Selected personal certificate has no indication of the application for closed key."
+"Select another certificate.';ru='У выбранного личного сертификата не указана программа для закрытого ключа."
+"Выберите другой сертификат.'"));
 			ShowError(Context.ErrorOnClient, Context.ErrorOnServer);
 			ExecuteNotifyProcessing(Context.Notification, False);
 			Return;
@@ -635,7 +638,7 @@ Function CertificatesProperties(Val Refs, Val FormID)
 		CertificateData = Selection.CertificateData.Get();
 		If TypeOf(CertificateData) <> Type("BinaryData") Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '""%1"" certificate data was not found in the catalog'"), Selection.Description);
+				NStr("en='""%1"" certificate data was not found in the catalog';ru='Данные сертификата ""%1"" не найдены в справочнике'"), Selection.Description);
 		EndIf;
 		
 		Try
@@ -643,8 +646,9 @@ Function CertificatesProperties(Val Refs, Val FormID)
 		Except
 			ErrorInfo = ErrorInfo();
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '""% 1"" certificate data in the catalog is
-				           |not correct by reason of: %2'"),
+				NStr("en='""% 1"" certificate data in the catalog is"
+"not correct by reason of: %2';ru='Данные сертификата ""%1"" в справочнике"
+"не корректны по причине: %2'"),
 				Selection.Description,
 				BriefErrorDescription(ErrorInfo));
 		EndTry;
@@ -717,7 +721,7 @@ Procedure WriteEncryptionCertificatesAtServer(ObjectsDescription, CertificatesAd
 	Except
 		ErrorInfo = ErrorInfo();
 		RollbackTransaction();
-		Error.Insert("ErrorDescription", NStr("en = 'An error occurred when writing the encryption certificates:'")
+		Error.Insert("ErrorDescription", NStr("en='An error occurred when writing the encryption certificates:';ru='При записи сертификатов шифрования возникла ошибка:'")
 			+ Chars.LF + BriefErrorDescription(ErrorInfo));
 	EndTry;
 	
@@ -732,7 +736,7 @@ Procedure ShowError(ErrorOnClient, ErrorOnServer)
 	EndIf;
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en = 'Failed to encrypt data'"), "",
+		NStr("en='Failed to encrypt data';ru='Не удалось зашифровать данные'"), "",
 		ErrorOnClient, ErrorOnServer, , ProcessingAfterWarning);
 	
 EndProcedure

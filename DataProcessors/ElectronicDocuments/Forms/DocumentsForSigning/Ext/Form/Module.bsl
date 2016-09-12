@@ -99,7 +99,7 @@ Function IsDocumentsForSigning()
 		CertificatesTable[0], Items.CertificatesTable.CurrentData);
 	
 	If CheckData.DocumentsCount = 0 Then
-		WarningText = NStr("en = 'No documents to be signed up by this certificate'");
+		WarningText = NStr("en='No documents to be signed up by this certificate';ru='По данному сертификату нет документов на подпись'");
 		ShowMessageBox(, WarningText);
 		Return False;
 	EndIf;
@@ -113,16 +113,16 @@ Procedure GoToPage(ToDrillDown)
 	
 	If ToDrillDown Then
 		Items.APMPages.CurrentPage = Items.APMPages.ChildItems.DetalizationPage;
-		Title = NStr("en = 'Documents for signature by certificate'")+ ": " + SignatureCertificate;
+		Title = NStr("en='Documents for signature by certificate';ru='Документы на подпись по сертификату'")+ ": " + SignatureCertificate;
 	Else
 		Items.APMPages.CurrentPage = Items.APMPages.ChildItems.PageSummary;
-		Title = NStr("en = 'Documents for signature'");
+		Title = NStr("en='Documents for signature';ru='Документы на подпись'");
 	EndIf;
 	
 	If ThisCertificateOfSberbank(SignatureCertificate) Then
-		Items.Sign.Title = NStr("en = 'Sign marked'");
+		Items.Sign.Title = NStr("en='Sign marked';ru='Подписать отмеченные'");
 	Else
-		Items.Sign.Title = NStr("en = 'Sign up and send the selected'");
+		Items.Sign.Title = NStr("en='Sign up and send the selected';ru='Подписать и отправить отмеченные'");
 	EndIf;
 	
 EndProcedure
@@ -166,16 +166,16 @@ EndFunction
 &AtClient
 Procedure NotifyUser(DigitallySignedCnt, PreparedCnt, SentCnt)
 	
-	StatusText = NStr("en = 'Arbitrary EDs digitally signed: (%1)'");
+	StatusText = NStr("en='Arbitrary EDs digitally signed: (%1)';ru='Подписано произвольных ЭД: (%1)'");
 	Quantity = 0;
 	If SentCnt > 0 Then
-		StatusText = StatusText + Chars.LF + NStr("en = 'Sent: (%2)'");
+		StatusText = StatusText + Chars.LF + NStr("en='Sent: (%2)';ru='Отправлено: (%2)'");
 		Quantity = SentCnt;
 	ElsIf PreparedCnt > 0 Then
-		StatusText = NStr("en = 'Prepared for sending: (%2)'");
+		StatusText = NStr("en='Prepared for sending: (%2)';ru='Подготовлено к отправке: (%2)'");
 		Quantity = PreparedCnt;
 	EndIf;
-	HeaderText = NStr("en = 'Electronic document exchange'");
+	HeaderText = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 	StatusText = StringFunctionsClientServer.PlaceParametersIntoString(StatusText, DigitallySignedCnt, Quantity);
 	ShowUserNotification(HeaderText, , StatusText);
 	
@@ -227,8 +227,9 @@ Procedure AfterGettingThumbprintsExecuteActions(Prints, AdditionalParameters = U
 	CompleteListOfCertificatesAndDocuments(CertificateTumbprintsArray);
 	
 	If CertificatesTable.Count() = 0 Then
-		WarningText = NStr("en = 'No signature certificates for
-										|the user or the documents signing rules are not configured!'"); 
+		WarningText = NStr("en='No signature certificates for"
+"the user or the documents signing rules are not configured!';ru='Нет сертификатов подписи"
+"для пользователя или не настроены правила подписи документов!'"); 
 		ShowMessageBox(, WarningText);
 		Close();
 		Return;
@@ -410,8 +411,9 @@ Procedure OnOpen(Cancel)
 	Else
 		Enabled = False;
 		Handler = New NotifyDescription("AfterInstallExpansionForCryptographyWork", ThisObject);
-		QuestionText = NStr("en = 'For working with EP
-								|it is required to install the work extension with cryptography.'");
+		QuestionText = NStr("en='For working with EP"
+"it is required to install the work extension with cryptography.';ru='Для работы с ЭП необходимо установить"
+"расширение работы с криптографией.'");
 		DigitalSignatureClient.SetExtension(False, Handler, QuestionText);
 	EndIf;
 	

@@ -50,7 +50,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	Notification = New NotifyDescription("CloseFormEnd", ThisObject);
 	Cancel = True;
 	
-	Text = NStr("en = 'Break the address classifier clearing?'");
+	Text = NStr("en='Break the address classifier clearing?';ru='Прервать очистку адресного классификатора?'");
 	ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo);
 	
 EndProcedure
@@ -188,7 +188,7 @@ Procedure RefreshInterfaceByCountCleaned()
 	
 	// Import page
 	ClearingDescriptionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Data of the selected states are cleared (%1)'"), SelectedStatesToClear
+		NStr("en='Data of the selected states are cleared (%1)';ru='Очищаются данные выбранных регионов (%1)'"), SelectedStatesToClear
 	);
 	
 	PermissionSetCleaning(SelectedStatesToClear);
@@ -201,7 +201,7 @@ Procedure ClearClassifier()
 	
 	// Switch mode - page.
 	Items.ClearingSteps.CurrentPage = Items.WaitingForClearing;
-	ClearingStatusText = NStr("en = 'Clearing the address classifier...'");
+	ClearingStatusText = NStr("en='Clearing the address classifier...';ru='Очистка адресного классификатора ...'");
 	
 	Items.BreakClearing.Enabled = False;
 	
@@ -237,7 +237,7 @@ Procedure RunBackgroundClearingAtServer(Val CodesOfStates)
 			UUID,
 			"AddressClassifierService.BackgroundJobAddressesClassifierClear",
 			MethodParameters,
-			NStr("en = 'Clearing address classifier'"));
+			NStr("en='Clearing address classifier';ru='Очистка адресного классификатора'"));
 	Except
 		ParametersOfLongOperation.Error = DetailErrorDescription( ErrorInfo() );
 		Return;
@@ -299,7 +299,7 @@ Procedure Attachable_WaitingLongOperation()
 		
 	ElsIf Status.Completed Then
 		Items.ClearingSteps.CurrentPage = Items.SuccessfulCompletion;
-		ClearingDescriptionText = NStr("en = 'Address classifier is successfully cleared.'");
+		ClearingDescriptionText = NStr("en='Address classifier is successfully cleared.';ru='Адресный классификатор успешно очищен.'");
 		
 		Notify("ClearedAddressClassifier", , ThisObject);
 		

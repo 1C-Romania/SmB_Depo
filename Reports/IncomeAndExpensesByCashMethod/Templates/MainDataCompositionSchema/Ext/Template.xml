@@ -39,6 +39,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Income</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доход</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -63,6 +67,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Expense</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -72,6 +80,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Item</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Элемент</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -150,6 +162,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Profit (Loss)</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прибыль (убыток)</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<dataSource>DataSource1</dataSource>
@@ -186,6 +202,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Dynamic period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Динамический период</v8:content>
+			</v8:item>
 		</title>
 		<useRestriction>
 			<condition>true</condition>
@@ -221,6 +241,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Begin of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -239,6 +263,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>End of period</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Окончание периода</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -259,6 +287,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>отчетный период</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>v8:StandardPeriod</v8:Type>
@@ -276,6 +308,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Periodicity</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Периодичность</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -297,6 +333,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Output title</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -334,6 +374,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Total</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Итого</v8:content>
+							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
 				</dcsat:tableCell>
@@ -356,6 +400,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Income and expenses (by payment)</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Доходы и расходы (по оплате)</v8:content>
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
@@ -451,6 +499,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Income and expenses (cash method)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доходы и расходы (кассовый метод)</v8:content>
+						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -508,6 +560,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Dynamics of income and expenses (on payment)</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Динамика доходов и расходов (по оплате)</v8:content>
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
@@ -602,6 +658,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Dynamics of income and expenses using cash basis</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Динамика доходов и расходов кассовым методом</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
@@ -704,6 +764,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Business area - specification by items</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Направление деятельности - детализация по статьям</v8:content>
 							</v8:item>
 						</dcsset:userSettingPresentation>
 					</dcsset:item>

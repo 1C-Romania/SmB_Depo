@@ -121,7 +121,7 @@ EndFunction
 Function SelectedAttributesPresentation()
 	Result = StringFunctionsClientServer.RowFromArraySubrows(SelectedAttributesSynonyms(), ", ");
 	If Result = "*" Then
-		Result = NStr("en = 'All attributes'");
+		Result = NStr("en='All attributes';ru='Все реквизиты'");
 	EndIf;
 	
 	Return Result;
@@ -135,7 +135,7 @@ Function SelectedAttributesSynonyms()
 	
 	SelectedAttributes = CollectionDetails.Rows.FindRows(New Structure("Mark", 1));
 	If SelectedAttributes.Count() = CollectionDetails.Rows.Count() Then
-		Result.Add(NStr("en = 'All'"));
+		Result.Add(NStr("en='All';ru='Все'"));
 		Return Result;
 	EndIf;
 	

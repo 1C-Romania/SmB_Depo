@@ -56,8 +56,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		 OR RowTaxes.Correspondence.TypeOfAccount = Enums.GLAccountsTypes.Incomings
 		 OR RowTaxes.Correspondence.TypeOfAccount = Enums.GLAccountsTypes.Expenses)
 		 AND Not ValueIsFilled(RowTaxes.Division) Then
-			MessageText = NStr(
-				"en = 'For cost account ""%Mail%"" specified in string %LineNumber% of list ""Taxes"", attribute ""Division"" must be filled.'"
+			MessageText = NStr("en='For cost account ""%Mail%"" specified in string %LineNumber% of list ""Taxes"", attribute ""Division"" must be filled.';ru='Для счета затрат ""%Корреспонденция%"" указанного в строке %НомерСтроки% списка ""Налоги"", должен быть заполнен реквизит ""Подразделение"".'"
 			);
 			MessageText = StrReplace(MessageText, "%Correspondence%", TrimAll(String(RowTaxes.Correspondence))); 
 			MessageText = StrReplace(MessageText, "%LineNumber%",String(RowTaxes.LineNumber));

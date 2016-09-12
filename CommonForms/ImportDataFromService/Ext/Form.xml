@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Import data from service</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Загрузить данные из сервиса</v8:content>
+		</v8:item>
 	</Title>
 	<Width>55</Width>
 	<WindowOpeningMode>LockWholeInterface</WindowOpeningMode>
@@ -33,11 +37,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Group main before import</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа основная перед загрузкой</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group main before import</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа основная перед загрузкой</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -53,6 +65,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Decoration question before the import</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Декорация вопрос перед загрузкой</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>CommonPicture.Question32</xr:Ref>
@@ -67,11 +83,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Group information before import</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа информация перед загрузкой</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Group information before import</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа информация перед загрузкой</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
@@ -86,6 +110,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Warning!</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Внимание!</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="AttentionDecorationContextMenu" id="34"/>
 							<ExtendedTooltip name="AttentionDecorationExtendedTooltip" id="75"/>
@@ -97,6 +125,12 @@
 									<v8:content>Data import may take a long time.
 All current data in the infobase will be deleted.
 After the import is completed the application is restarted automatically.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Процесс загрузки данных может занять продолжительное время.
+Все текущие данные в информационной базе будут удалены.
+После окончания загрузки программа будет автоматически перезапущена.</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="DecorationWarningsContextMenu" id="38"/>
@@ -116,6 +150,11 @@ After the import is completed the application is restarted automatically.</v8:co
 									<v8:content>Import can not start while other users work with the infobase.
 You can view a full list of users currently working in the info base here:</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Загрузка не сможет начаться, пока другие пользователи работают с информационной базой.
+Полный список пользователей, работающих сейчас с информационной базой, можно увидеть здесь:</v8:content>
+								</v8:item>
 							</Title>
 							<VerticalAlign>Bottom</VerticalAlign>
 							<ContextMenu name="DecorationActiveUsersContextMenu" id="40"/>
@@ -127,6 +166,10 @@ You can view a full list of users currently working in the info base here:</v8:c
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Active user list</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Список активных пользователей</v8:content>
 								</v8:item>
 							</Title>
 							<Hyperlink>true</Hyperlink>
@@ -146,11 +189,19 @@ You can view a full list of users currently working in the info base here:</v8:c
 					<v8:lang>en</v8:lang>
 					<v8:content>Group of command before import</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа команды перед загрузкой</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group of command before import</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа команды перед загрузкой</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalLocation>Right</HorizontalLocation>
@@ -171,6 +222,10 @@ You can view a full list of users currently working in the info base here:</v8:c
 							<v8:lang>en</v8:lang>
 							<v8:content>Cancel</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отменить</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="NoExtendedTooltip" id="83"/>
 				</Button>
@@ -184,6 +239,10 @@ You can view a full list of users currently working in the info base here:</v8:c
 					<v8:lang>en</v8:lang>
 					<v8:content>Import information about the users</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загружать информацию о пользователях</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -194,6 +253,10 @@ You can view a full list of users currently working in the info base here:</v8:c
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Storage address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес хранилища</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -212,11 +275,19 @@ You can view a full list of users currently working in the info base here:</v8:c
 					<v8:lang>en</v8:lang>
 					<v8:content>Continue</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продолжить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Continue</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продолжить</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Import</Action>

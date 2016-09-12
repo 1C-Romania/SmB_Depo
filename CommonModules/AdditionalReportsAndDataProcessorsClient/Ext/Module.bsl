@@ -94,7 +94,7 @@ EndProcedure
 // CommandDataProcessor(command) CommandID = Command.Name;
 // 	CommandParameters = New Structure("AdditionalDataProcessorRef, SupportText");
 // 	CommandParameters.AdditionalDataProcessorRef = ObjectRef;
-// 	CommandParameters.SupportText = NStr("en = 'Command is running...'");
+// 	CommandParameters.SupportText = NStr("en='Command is running...';ru='Выполняется команда...'");
 // 	State(CommandParameters.SupportText);
 // 	If StandardServerCallSubsystem.ClientWorkParameters().InformationFileBase
 // 		Then RunResult = RunCommandDirectly (CommandID, CommandParameters);
@@ -131,14 +131,14 @@ Procedure RunCommandInBackground(CommandID, CommandParameters, Form) Export
 	WrongType = TypeOf(AdditionalInformationProcessorRef) <> Type("CatalogRef.AdditionalReportsAndDataProcessors");
 	If WrongType OR AdditionalInformationProcessorRef = PredefinedValue("Catalog.AdditionalReportsAndDataProcessors.EmptyRef") Then
 		
-		ErrorText = NStr("en = 'Incorrect parameter value ""AdditionalDataProcessorRef"":'") + Chars.LF;
+		ErrorText = NStr("en='Incorrect parameter value ""AdditionalDataProcessorRef"":';ru='Некорректное значение параметра ""ДополнительнаяОбработкаСсылка"":'") + Chars.LF;
 		If WrongType Then
 			ErrorText = ErrorText + StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Type transferred ""%1"", expected ""%2"".'"),
+				NStr("en='Type transferred ""%1"", expected ""%2"".';ru='Передан тип ""%1"", ожидался ""%2"".'"),
 				String(TypeOf(AdditionalInformationProcessorRef)),
 				String(Type("CatalogRef.AdditionalReportsAndDataProcessors")));
 		Else
-			ErrorText = ErrorText + NStr("en = 'Empty reference is transferred. Perhaps, processing was opened directly.'");
+			ErrorText = ErrorText + NStr("en='Empty reference is transferred. Perhaps, processing was opened directly.';ru='Передана пустая ссылка. Вероятно, обработка была открыта напрямую.'");
 		EndIf;
 		
 		Raise ErrorText;
@@ -195,12 +195,12 @@ Function ExecuteAllocatedCommandAtClient(Form, ItemName) Export
 	
 	If Object.Ref.IsEmpty() OR Form.Modified Then
 		QuestionText = StrReplace(
-			NStr("en = 'To run the command ""%1"", it is required to write data.'"),
+			NStr("en='To run the command ""%1"", it is required to write data.';ru='Для выполнения команды ""%1"" необходимо записать данные.'"),
 			"%1",
 			ExecuteCommand.Presentation);
 		
 		Buttons = New ValueList;
-		Buttons.Add(DialogReturnCode.Yes, NStr("en = 'Write and continue'"));
+		Buttons.Add(DialogReturnCode.Yes, NStr("en='Write and continue';ru='Записать и продолжить'"));
 		Buttons.Add(DialogReturnCode.Cancel);
 		
 		Handler = New NotifyDescription("RunAssignedCommandOnClientEnd", ThisObject, AdditionalParameters);
@@ -296,7 +296,7 @@ EndFunction
 // Shows notification before running a command.
 Procedure ShowNotificationOnCommandExecution(ExecuteCommand) Export
 	If ExecuteCommand.ShowAlert Then
-		ShowUserNotification(NStr("en = 'Command is executed...'"), , ExecuteCommand.Presentation);
+		ShowUserNotification(NStr("en='Command is executed...';ru='Команда выполняется...'"), , ExecuteCommand.Presentation);
 	EndIf;
 EndProcedure
 
@@ -321,9 +321,11 @@ Procedure RunOpenOfProcessingForm(ExecuteCommand, Form, DestinationObjects) Expo
 		ProcessingForm = ExternalDataProcessor.GetForm(, Form);
 		If ProcessingForm = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'For the report or data processor ""%1"" the
-				|main form is not assigned or the main form is not intended to be launched in the usual application.
-				|Command ""%2"" can not be run.'"),
+				NStr("en='For the report or data processor ""%1"" the"
+"main form is not assigned or the main form is not intended to be launched in the usual application."
+"Command ""%2"" can not be run.';ru='Для отчета или обработки ""%1"" не"
+"назначена основная форма, или основная форма не предназначена для запуска в обычном приложении."
+"Команда ""%2"" не может быть выполнена.'"),
 				String(ExecuteCommand.Ref),
 				ExecuteCommand.Presentation);
 		EndIf;
@@ -358,9 +360,11 @@ Procedure RunClientMethodOfDataProcessor(ExecuteCommand, Form, DestinationObject
 		ProcessingForm = ExternalDataProcessor.GetForm(, Form);
 		If ProcessingForm = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'For the report or data processor ""%1"" the
-				|main form is not assigned or the main form is not intended to be launched in the usual application.
-				|Command ""%2"" can not be run.'"),
+				NStr("en='For the report or data processor ""%1"" the"
+"main form is not assigned or the main form is not intended to be launched in the usual application."
+"Command ""%2"" can not be run.';ru='Для отчета или обработки ""%1"" не"
+"назначена основная форма, или основная форма не предназначена для запуска в обычном приложении."
+"Команда ""%2"" не может быть выполнена.'"),
 				String(ExecuteCommand.Ref),
 				ExecuteCommand.Presentation);
 		EndIf;
@@ -523,7 +527,7 @@ EndProcedure
 Procedure EditMultilineText(FormOrHandler, EditText, PropsOwner, AttributeName, Val Title = "") Export
 	
 	If IsBlankString(Title) Then
-		Title = NStr("en = 'Comment'");
+		Title = NStr("en='Comment';ru='Примечание'");
 	EndIf;
 	
 	SourceParameters = New Structure;
@@ -538,7 +542,7 @@ EndProcedure
 
 // Shows the dialog of extension installation, then imports additional report or data processor data.
 Procedure ExportToFile(ExportParameters) Export
-	MessageText = NStr("en = 'For external data processors (report) export to file, it is recommended to install extension for 1C:Enterprise web client.'");
+	MessageText = NStr("en='For external data processors (report) export to file, it is recommended to install extension for 1C:Enterprise web client.';ru='Для выгрузки внешней обработки (отчета) в файл рекомендуется установить расширение для веб-клиента 1С:Предприятие.'");
 	Handler = New NotifyDescription("ExportToFileEnd", ThisObject, ExportParameters);
 	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Handler, MessageText);
 EndProcedure
@@ -637,7 +641,7 @@ Procedure ExportToFileEnd(Attached, ExportParameters) Export
 	SaveFileDialog.Filter = AdditionalReportsAndDataProcessorsClientServer.ChooserAndSaveDialog();
 	SaveFileDialog.FilterIndex = ?(ExportParameters.IsReport, 1, 2);
 	SaveFileDialog.Multiselect = False;
-	SaveFileDialog.Title = NStr("en = 'Specify file'");
+	SaveFileDialog.Title = NStr("en='Specify file';ru='Укажите файл'");
 	
 	Handler = New NotifyDescription("ExportFileFileChoice", ThisObject, AdditionalParameters);
 	SaveFileDialog.Show(Handler);

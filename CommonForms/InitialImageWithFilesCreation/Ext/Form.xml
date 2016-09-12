@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Initial infobase image creation</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Создание начального образа информационной базы</v8:content>
+		</v8:item>
 	</Title>
 	<Width>80</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -31,6 +35,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Cancel</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отменить</v8:content>
 					</v8:item>
 				</Title>
 				<ExtendedTooltip name="CloseExtendedTooltip" id="49"/>
@@ -61,6 +69,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>On this computer or on the computer in local network</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>На данном компьютере или на компьютере в локальной сети</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:decimal">0</Value>
 					</xr:Value>
@@ -73,6 +85,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>At "1C:Enterprise" server</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>На сервере 1С:Предприятия</v8:content>
 							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:decimal">1</Value>
@@ -91,11 +107,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Inforbase parameters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры информационной базы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Parameters</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -107,11 +131,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Pages</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Странницы</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Pages</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Странницы</v8:content>
 						</v8:item>
 					</ToolTip>
 					<PagesRepresentation>None</PagesRepresentation>
@@ -123,11 +155,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Fill file base parameters</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Заполнить параметры файловой базы</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Fill file base parameters</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Заполнить параметры файловой базы</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ExtendedTooltip name="FillParametersFileBaseExtendedTooltip" id="54"/>
@@ -146,11 +186,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>The full name of the file base</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Полное имя файловой базы</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>File base path group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа путь файловой базы</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -162,6 +210,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>For the 1C:Entreprise server under Microsoft Windows</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Для сервера 1С:Предприятия под управлением Microsoft Windows</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
@@ -180,6 +232,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>For the 1C:Enterprise server running under Linux</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Для сервера 1С:Предприятия под управлением Linux</v8:content>
+												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
 											<ContextMenu name="LinuxFileBaseFullNameContextMenu" id="39"/>
@@ -195,11 +251,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Fill server base parameters</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Заполнить параметры серверной базы</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Fill server base parameters</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Заполнить параметры серверной базы</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -210,6 +274,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Vertical group 1</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вертикальная группа 1</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Vertical</Group>
@@ -243,6 +311,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>Off</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Выключено</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:decimal">0</Value>
 													</xr:Value>
@@ -256,6 +328,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>Making a connection</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Установка соединения</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:decimal">1</Value>
 													</xr:Value>
@@ -268,6 +344,10 @@
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>Steadily</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Постоянно</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:decimal">2</Value>
@@ -300,6 +380,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Vertical group 2</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вертикальная группа 2</v8:content>
+										</v8:item>
 									</Title>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
@@ -322,6 +406,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>Microsoft SQL Server</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Microsoft SQL Server</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">MSSQLServer</Value>
 													</xr:Value>
@@ -333,6 +421,10 @@
 														<Presentation>
 															<v8:item>
 																<v8:lang>en</v8:lang>
+																<v8:content>PostgreSQL</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
 																<v8:content>PostgreSQL</v8:content>
 															</v8:item>
 														</Presentation>
@@ -348,6 +440,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>IBM DB2</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>IBM DB2</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">IBMDB2</Value>
 													</xr:Value>
@@ -359,6 +455,10 @@
 														<Presentation>
 															<v8:item>
 																<v8:lang>en</v8:lang>
+																<v8:content>Oracle Database</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
 																<v8:content>Oracle Database</v8:content>
 															</v8:item>
 														</Presentation>
@@ -409,6 +509,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>0</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>0</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:decimal">0</Value>
 													</xr:Value>
@@ -420,6 +524,10 @@
 														<Presentation>
 															<v8:item>
 																<v8:lang>en</v8:lang>
+																<v8:content>2000</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
 																<v8:content>2000</v8:content>
 															</v8:item>
 														</Presentation>
@@ -444,11 +552,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Full name of archive with file volumes</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полное имя архива с файлами томов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group path to archive with volume files</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа путь к архиву с файлами томов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -460,6 +576,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>For the 1C:Entreprise server under Microsoft Windows</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для сервера 1С:Предприятия под управлением Microsoft Windows</v8:content>
 						</v8:item>
 					</Title>
 					<TitleLocation>Top</TitleLocation>
@@ -477,6 +597,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>For the 1C:Enterprise server running under Linux</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для сервера 1С:Предприятия под управлением Linux</v8:content>
+						</v8:item>
 					</Title>
 					<TitleLocation>Top</TitleLocation>
 					<ContextMenu name="PathToArchiveWithLinuxVolumeFilesContextMenu" id="42"/>
@@ -490,11 +614,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Actions panel</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель действий</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Actions panel</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель действий</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalLocation>Right</HorizontalLocation>
@@ -507,6 +639,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Infobase variant</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант информационной базы</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -524,6 +660,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Language (Country)</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Язык (Страна)</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -538,6 +678,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cluster of the 1C:Enterprise Servers</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кластер серверов 1С:Предприятия</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -554,6 +698,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Name of the infobase in the cluster</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя информационной базы в кластере</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -568,6 +716,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Secure Connection</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Защищенное соединение</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -585,6 +737,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>DBMS Type</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип СУБД</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -599,6 +755,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Database Server</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сервер базы данных</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -615,6 +775,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>IB Name</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя базы данных</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -629,6 +793,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Database User</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь базы данных</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -645,6 +813,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Password of user</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль пользователя</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -659,6 +831,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Shift of Dates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Смещение дат</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -676,6 +852,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Node</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Узел</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:TypeSet>cfg:ExchangePlanRef</v8:TypeSet>
@@ -687,6 +867,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Can create filebase</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Можно создать файловую базу</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -697,6 +881,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Full name of archive with file volumes</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полное имя архива с файлами томов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -713,6 +901,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Windows File Base Full Name</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полное имя файловой базы windows</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -727,6 +919,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Linux File Base Full Name</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полное имя файловой базы linux</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -743,6 +939,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Full name of archive with file volumes</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полное имя архива с файлами томов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -758,6 +958,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Set scheduled jobs lock</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить блокировку регламентных заданий</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -771,11 +975,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Create initial image</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать начальный образ</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Performs the initial IB image creation with requested parameters</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполняет создание начального образа ИБ с указанными параметрами</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CreateInitialImage</Action>

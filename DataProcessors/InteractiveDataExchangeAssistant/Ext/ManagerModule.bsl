@@ -39,7 +39,7 @@ Function ResultOfAutomaticMappingData(Val Correspondent, Val ExchangeMessageFile
 			Return SessionParameters.VersionsDifferenceErrorOnReceivingData;
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Failed to load data from ""%1"" (data analysis stage).'"),
+				NStr("en='Failed to load data from ""%1"" (data analysis stage).';ru='Не удалось загрузить данные из ""%1"" (этап анализа данных).'"),
 				String(Correspondent));
 		EndIf;
 	EndIf;
@@ -49,7 +49,7 @@ Function ResultOfAutomaticMappingData(Val Correspondent, Val ExchangeMessageFile
 	InteractiveDataExchangeAssistant.RunAutomaticMappingByDefaultAndGetMappingStats(Cancel);
 	If Cancel Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Failed to load data from ""%1"" (data automatic mapping stage).'"),
+			NStr("en='Failed to load data from ""%1"" (data automatic mapping stage).';ru='Не удалось загрузить данные из ""%1"" (этап автоматического сопоставления данных).'"),
 			String(Correspondent));
 	EndIf;
 	

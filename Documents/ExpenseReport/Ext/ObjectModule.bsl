@@ -39,7 +39,7 @@ EndProcedure // FillByCashTransferPlan()
 Procedure FillByCashPayment(FillingData)
 	
 	If FillingData.OperationKind <> Enums.OperationKindsCashPayment.ToAdvanceHolder Then
-		Raise NStr("en = 'Expense report can not be created on the basis of cash payment with this type of operation!'");
+		Raise NStr("en='Expense report can not be created on the basis of cash payment with this type of operation!';ru='Нельзя ввести Авансовый отчет на основании расхода из кассы с этим видом операции!'");
 	EndIf;
 	
 	Company = FillingData.Company;
@@ -78,7 +78,7 @@ EndProcedure // FillByCashPayment()
 Procedure FillByPaymentExpense(FillingData)
 	
 	If FillingData.OperationKind <> Enums.OperationKindsPaymentExpense.ToAdvanceHolder Then
-		Raise NStr("en = 'Expense report can not be created on the basis of payment expense with this type of operation!'");
+		Raise NStr("en='Expense report can not be created on the basis of payment expense with this type of operation!';ru='Нельзя ввести Авансовый отчет на основании расхода со счета с этим видом операции!'");
 	EndIf;
 	
 	Company = FillingData.Company;
@@ -118,7 +118,7 @@ Procedure SubordinatedInvoiceControl()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Expense report # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -160,7 +160,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	PaymentsTotals = Payments.Total("PaymentAmount");
 	
 	If TotalExpences > InventoryTotal + ExpencesTotal + PaymentsTotals Then
-		MessageText = NStr("en = 'Expended advances exceed the amount set in the document!'");
+		MessageText = NStr("en='Expended advances exceed the amount set in the document!';ru='Израсходованная сумма авансов превышает сумму по документу!'");
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
 			MessageText,
@@ -175,7 +175,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If PaymentRow.Counterparty.DoOperationsByDocuments
 		   AND Not PaymentRow.AdvanceFlag
 		   AND Not ValueIsFilled(PaymentRow.Document) Then
-			MessageText = NStr("en = 'Column ""Calculation document"" is not filled in string %LineNumber% of list ""Payment"".'");
+			MessageText = NStr("en='Column ""Calculation document"" is not filled in string %LineNumber% of list ""Payment"".';ru='Не заполнена колонка ""Документ расчетов"" в строке %НомерСтроки% списка ""Оплаты"".'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(PaymentRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -196,8 +196,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Incomings
 		 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Expenses)
 		 AND Not ValueIsFilled(RowsExpenses.StructuralUnit) Then
-			MessageText = NStr(
-				"en = 'For products and services ""%ProductsAndServices%"" in the %LineNumber% line of list ""Expenses"" the attribute ""Division"" must be filled.'"
+			MessageText = NStr("en='For products and services ""%ProductsAndServices%"" in the %LineNumber% line of list ""Expenses"" the attribute ""Division"" must be filled.';ru='Для номенклатуры ""%Номенклатура%"" указанной в строке %НомерСтроки% списка ""Расходы"", должен быть заполнен реквизит ""Подразделение"".'"
 			);
 			MessageText = StrReplace(MessageText, "%ProductsAndServices%", TrimAll(String(RowsExpenses.ProductsAndServices))); 
 			MessageText = StrReplace(MessageText, "%LineNumber%",String(RowsExpenses.LineNumber));

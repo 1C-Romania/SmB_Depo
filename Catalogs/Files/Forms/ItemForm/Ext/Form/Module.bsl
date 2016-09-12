@@ -107,7 +107,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EndIf;
 		
 		If Not ValueIsFilled(Encoding) Then
-			Encoding = NStr("en = 'By default'");
+			Encoding = NStr("en='By default';ru='По умолчанию'");
 		EndIf;
 		
 	Else
@@ -138,10 +138,13 @@ Procedure OnOpen(Cancel)
 	
 	If Not Parameters.BasisFile.IsEmpty() AND BasisFileDigitallySigned Then
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File ""%1"" is signed.
-			           |Once the DS data is copied into a new file, it will be unavailable for editing.
-			           |
-			           |Copy DS information into a new file?'"),
+			NStr("en='File ""%1"" is signed."
+"Once the DS data is copied into a new file, it will be unavailable for editing."
+""
+"Copy DS information into a new file?';ru='Файл ""%1"" подписан."
+"Копирование сведений об ЭП в новый файл сделает его недоступным для изменения."
+""
+"Скопировать сведения об ЭП в новый файл?'"),
 			String(Parameters.BasisFile));
 		Handler = New NotifyDescription("OnOpenAfterAnswerToQuestionCopyInformation", ThisObject);
 		ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo);
@@ -158,9 +161,11 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	If FileEdited AND Not AnswerQuestionOnReceivedFileIsBusy Then
 		ClientWorkParameters = StandardSubsystemsClientReUse.ClientWorkParameters();
 		If ClientWorkParameters.AuthorizedUser = Object.IsEditing Then
-			QuestionText = NStr("en = 'File is not available for editing.
-			|
-			|Close the card?'");
+			QuestionText = NStr("en='File is not available for editing."
+""
+"Close the card?';ru='Файл занят для редактирования."
+""
+"Закрыть карточку?'");
 			CommonUseClient.ShowArbitraryFormClosingConfirmation(ThisObject, Cancel, QuestionText, "AnswerQuestionOnReceivedFileIsBusy");
 			Return;
 		EndIf;
@@ -171,7 +176,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 			If Not AnswerToQuestionReceivedOpenForEditing Then
 				Cancel = True;
 				QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Open file ""%1"" for editing?'"),
+					NStr("en='Open file ""%1"" for editing?';ru='Открыть файл ""%1"" для редактирования?'"),
 					TrimAll(Object.FullDescr));
 				Handler = New NotifyDescription("BeforeCloseAfterAnswerToQuestionOpenForEditing", ThisObject);
 				ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo, ,DialogReturnCode.Yes);
@@ -495,10 +500,13 @@ Procedure Encrypt(Command)
 	
 	If Object.Ref.IsEmpty() Then 
 		QuestionText =
-			NStr("en = 'Data is still not recorded. You
-			           |can run command ""Encrypt"" only once the data is written.
-			           |
-			           |Data will be written.'");
+			NStr("en='Data is still not recorded. You"
+"can run command ""Encrypt"" only once the data is written."
+""
+"Data will be written.';ru='Данные еще не записаны. Выполнение"
+"команды ""Зашифровать"" возможно только после записи данных."
+""
+"Данные будут записаны.'");
 		Handler = New NotifyDescription("EncryptAfterAnswerToWriteQuestion", ThisObject);
 		ShowQueryBox(Handler, QuestionText, QuestionDialogMode.OKCancel);
 		Return;
@@ -602,7 +610,7 @@ Procedure Delete(Command)
 	
 	Handler = New NotifyDescription("DeleteEnd", ThisObject);
 	
-	ShowQueryBox(Handler, NStr("en = 'Delete selected signature?'"), QuestionDialogMode.YesNo);
+	ShowQueryBox(Handler, NStr("en='Delete selected signature?';ru='Удалить выделенные подписи?'"), QuestionDialogMode.YesNo);
 	
 EndProcedure
 
@@ -734,7 +742,7 @@ Procedure EncryptAfterAnswerToWriteQuestion(Response, ExecuteParameters) Export
 	EndIf;
 	
 	ShowUserNotification(
-		NStr("en = 'Creating:'"),
+		NStr("en='Creating:';ru='Создание:'"),
 		GetURL(Object.Ref),
 		String(Object.Ref),
 		PictureLib.Information32);
@@ -963,7 +971,7 @@ Procedure FillEncryptionList()
 		EndDo;
 	EndIf;
 	
-	HeaderText = NStr("en = 'Allowed to decrypt'");
+	HeaderText = NStr("en='Allowed to decrypt';ru='Разрешено расшифровывать'");
 	
 	If EncryptionCertificates.Count() <> 0 Then
 		HeaderText =HeaderText + " (" + Format(EncryptionCertificates.Count(), "NG=") + ")";
@@ -1023,10 +1031,10 @@ Procedure FillListOfSignatures()
 	EndIf;
 	
 	If DigitalSignatures.Count() = 0 Then
-		HeaderText = NStr("en = 'Digital signatures'");
+		HeaderText = NStr("en='Digital signatures';ru='Электронные подписи'");
 	Else
 		HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'DigitalSignatures (%1)'"),
+			NStr("en='DigitalSignatures (%1)';ru='Электронные подписи (%1)'"),
 			Format(DigitalSignatures.Count(), "NG="));
 	EndIf;
 	Items.DigitalSignaturesGroup.Title = HeaderText;

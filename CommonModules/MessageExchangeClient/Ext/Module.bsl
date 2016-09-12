@@ -9,8 +9,8 @@
 // 
 Procedure SendAndReceiveMessages() Export
 	
-	Status(NStr("en = 'Messages are being sent and received.'"),,
-			NStr("en = 'Please wait...'"), PictureLib.Information32);
+	Status(NStr("en='Messages are being sent and received.';ru='Выполняется отправка и получение сообщений.'"),,
+			NStr("en='Please wait...';ru='Пожалуйста, подождите...'"), PictureLib.Information32);
 	
 	Cancel = False;
 	
@@ -18,12 +18,12 @@ Procedure SendAndReceiveMessages() Export
 	
 	If Cancel Then
 		
-		Status(NStr("en = 'Errors occurred when sending and receiving the messages!'"),,
-				NStr("en = 'Use the event log to diagnose the errors.'"), PictureLib.Error32);
+		Status(NStr("en='Errors occurred when sending and receiving the messages!';ru='Возникли ошибки при отправке и получении сообщений!'"),,
+				NStr("en='Use the event log to diagnose the errors.';ru='Используйте журнал регистрации для диагностики ошибок.'"), PictureLib.Error32);
 		
 	Else
 		
-		Status(NStr("en = 'Sending and receiving of messages has been successfully completed.'"),,, PictureLib.Information32);
+		Status(NStr("en='Sending and receiving of messages has been successfully completed.';ru='Отправка и получение сообщений успешно завершены.'"),,, PictureLib.Information32);
 		
 	EndIf;
 	

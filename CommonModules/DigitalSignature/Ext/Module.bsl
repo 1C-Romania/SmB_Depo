@@ -624,14 +624,14 @@ EndProcedure
 Procedure DeleteSignatureRow(DigitallySignedObject, RowIndex)
 	
 	If DigitallySignedObject.DigitalSignatures.Count() < RowIndex + 1 Then
-		Raise NStr("en = 'A row with the signature is not found.'");
+		Raise NStr("en='A row with the signature is not found.';ru='Строка с подписью не найдена.'");
 	EndIf;
 	
 	TabularSectionRow = DigitallySignedObject.DigitalSignatures.Get(RowIndex);
 		
 	If Not Users.InfobaseUserWithFullAccess() Then 
 		If TabularSectionRow.Signer <> Users.CurrentUser() Then
-			Raise NStr("en = 'Insufficient rights to delete the signature.'");
+			Raise NStr("en='Insufficient rights to delete the signature.';ru='Недостаточно прав на удаление подписи.'");
 		EndIf;
 	EndIf;
 	
@@ -649,13 +649,13 @@ Procedure DeleteSignature2(DigitallySignedObject, SignatureData)
 		
 		If Not Users.InfobaseUserWithFullAccess() Then 
 			If TabularSectionRow.Signer <> Users.CurrentUser() Then
-				Raise NStr("en = 'Insufficient rights to delete the signature.'");
+				Raise NStr("en='Insufficient rights to delete the signature.';ru='Недостаточно прав на удаление подписи.'");
 			EndIf;
 		EndIf;
 		
 		DigitallySignedObject.DigitalSignatures.Delete(TabularSectionRow);
 	Else	
-		Raise NStr("en = 'A row with the signature is not found.'");
+		Raise NStr("en='A row with the signature is not found.';ru='Строка с подписью не найдена.'");
 	EndIf;
 		
 EndProcedure

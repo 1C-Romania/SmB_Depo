@@ -21,7 +21,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				OR (NOT Constants.FunctionalOptionUseWorkSubsystem.Get() AND OwnerType = Enums.ProductsAndServicesTypes.Work)) Then
 			
 				Message = New UserMessage();
-				LabelText = NStr("en = 'For the items of the %EtcProductsAndServices% type the specification is not specified!'");
+				LabelText = NStr("en='For the items of the %EtcProductsAndServices% type the specification is not specified!';ru='Для номенклатуры типа %ТПНоменклатура% спецификация не указывается!'");
 				LabelText = StrReplace(LabelText, "%EtcProductsAndServices%", OwnerType);
 				Message.Text = LabelText;
 				Message.Message();

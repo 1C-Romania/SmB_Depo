@@ -31,7 +31,7 @@ Procedure BeforeWrite(Cancel)
 	IsNew = IsNew();
 	
 	If Not ValueIsFilled(AuthorizationObject) Then
-		Raise NStr("en = 'At external user authorization object is not specified.'");
+		Raise NStr("en='At external user authorization object is not specified.';ru='У внешнего пользователя не задан объект авторизации.'");
 	Else
 		ErrorText = "";
 		If UsersService.AuthorizationObjectInUse(
@@ -51,7 +51,7 @@ Procedure BeforeWrite(Cancel)
 		If ValueIsFilled(OldAuthorizationObject)
 		   AND OldAuthorizationObject <> AuthorizationObject Then
 			
-			Raise NStr("en = 'It is impossible to change the previously specified authorization object.'");
+			Raise NStr("en='It is impossible to change the previously specified authorization object.';ru='Невозможно изменить ранее указанный объект авторизации.'");
 		EndIf;
 	EndIf;
 	

@@ -5,7 +5,7 @@
 Function SelectChanges(Val Node, Val MessageNo) Export
 	
 	If TransactionActive() Then
-		Raise NStr("en = 'Selection of the data modifications is prohibited in the active transaction.'");
+		Raise NStr("en='Selection of the data modifications is prohibited in the active transaction.';ru='Выборка изменений данных запрещена в активной транзакции.'");
 	EndIf;
 	
 	Result = New Array;

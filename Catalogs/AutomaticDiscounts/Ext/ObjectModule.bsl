@@ -229,7 +229,7 @@ Procedure UpdateInformationInServiceInformationRegister(Cancel)
 	SetPrivilegedMode(False);
 	
 	WriteLogEvent(
-			NStr("en = 'Automatic discounts. Service information on automatic discounts'",
+			NStr("en='Automatic discounts. Service information on automatic discounts';ru='Автоматические скидки. Служебная информация по автоматическим скидкам'",
 			     CommonUseClientServer.MainLanguageCode()),
 			?(Cancel, EventLogLevel.Error, EventLogLevel.Information),
 			,
@@ -239,8 +239,9 @@ Procedure UpdateInformationInServiceInformationRegister(Cancel)
 	
 	If Cancel Then
 		Raise
-			NStr("en = 'Failed to record service information on automatic discounts and extra charges.
-			           |Details in the event log.'");
+			NStr("en='Failed to record service information on automatic discounts and extra charges."
+"Details in the event log.';ru='Не удалось записать служебную информацию по автоматическим скидкам, наценкам."
+"Подробности в журнале регистрации.'");
 	EndIf;
 	
 EndProcedure

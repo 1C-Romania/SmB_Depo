@@ -10,11 +10,19 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
 				</Title>
 				<ToolTip>
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
 					</v8:item>
 				</ToolTip>
 				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
@@ -45,6 +53,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Owner is not specified (company, counterparty)...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Владелец не указан (организация, контрагент)...</v8:content>
+				</v8:item>
 			</InputHint>
 			<ContextMenu name="OwnerContextMenu" id="6"/>
 			<ExtendedTooltip name="OwnerExtendedTooltip" id="101"/>
@@ -65,6 +77,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Transactional</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Расчетный</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:string">Transactional</Value>
 					</xr:Value>
@@ -77,6 +93,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Deposit</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Депозитный</v8:content>
 							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:string">Deposit</Value>
@@ -91,6 +111,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Loan</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Ссудный</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:string">Loan</Value>
 					</xr:Value>
@@ -103,6 +127,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Other</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Прочие</v8:content>
 							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:string">Other</Value>
@@ -119,11 +147,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Number, account kind, currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер, вид счета, валюта</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Number, account kind, currency</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер, вид счета, валюта</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -163,11 +199,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<ExtendedTooltip name="PagesExtendedTooltip" id="147"/>
@@ -178,11 +222,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банк</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank page</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница банк</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="BankPageExtendedTooltip" id="149"/>
@@ -193,11 +245,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Bank where account is opened</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Банк, в котором открыт счет.</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Bank where account is opened</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Банк, в котором открыт счет.</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -210,11 +270,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>BIC, corr. bank account</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>БИК, корр. счет банка</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>BIC, corr. bank account</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>БИК, корр. счет банка</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -253,11 +321,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Bank group direct exchange message</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа банк сообщение прямого обмена</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Bank group direct exchange message</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа банк сообщение прямого обмена</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -297,6 +373,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Bank account representation in accounts list, for example, in the selection list.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отображение банковского счета в списках счетов, например, при выборе.</v8:content>
+										</v8:item>
 									</ToolTip>
 									<ToolTipRepresentation>Button</ToolTipRepresentation>
 									<EditMode>EnterOnInput</EditMode>
@@ -327,6 +407,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>In payment orders, a settlement bank is specified in the "Beneficiary bank" field and the bank account number and bank name with which the account is opened will be displayed in the "Recipient" field.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>В платежных поручениях "Банк получателя" будет указываться банк для расчетов, а номер счета и наименование банка, в котором открыт счет, будут выводиться в поле "Получатель".</v8:content>
+								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 							<CheckBoxType>Auto</CheckBoxType>
@@ -352,11 +436,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Group label indirect accounts</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа надпись непрямые расчеты</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group label indirect accounts</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа надпись непрямые расчеты</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ExtendedTooltip name="GroupLabelIndirectSettlementsExtendedTooltip" id="114"/>
@@ -376,11 +468,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Group settlements bank</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа банк расчетов</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group settlements bank</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа банк расчетов</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ShowTitle>false</ShowTitle>
@@ -392,11 +492,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>BIC, corr. settlements bank account</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>БИК, корр. счет банка расчетов</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>BIC, corr. settlements bank account</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>БИК, корр. счет банка расчетов</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -435,6 +543,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Bank</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Банк</v8:content>
+												</v8:item>
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
 											<Hiperlink>true</Hiperlink>
@@ -458,11 +570,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Print settings</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки печати</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Print settings page</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница настройка печати</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="PrintSettingsPageExtendedTooltip" id="151"/>
@@ -473,11 +593,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Payment documents print settings</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки печати платежных поручений.</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Payment documents print settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки печати платежных поручений.</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -491,11 +619,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Group pages</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа страницы</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group pages</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа страницы</v8:content>
 										</v8:item>
 									</ToolTip>
 									<PagesRepresentation>None</PagesRepresentation>
@@ -507,11 +643,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Group company account attribures</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа реквизиты счета организации</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group company account attribures</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа реквизиты счета организации</v8:content>
 												</v8:item>
 											</ToolTip>
 											<ExtendedTooltip name="GroupAccountAttributesOfCompanyExtendedTooltip" id="125"/>
@@ -522,6 +666,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Edit company name</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Редактировать текст наименования организации</v8:content>
 														</v8:item>
 													</Title>
 													<TitleLocation>Right</TitleLocation>
@@ -538,6 +686,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Company Name in "Payer" Field</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Текст наименования организации в поле "Плательщик"</v8:content>
 														</v8:item>
 													</Title>
 													<TitleLocation>Top</TitleLocation>
@@ -625,11 +777,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Group counterparty account details</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа реквизиты счета контрагента</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group counterparty account details</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа реквизиты счета контрагента</v8:content>
 												</v8:item>
 											</ToolTip>
 											<ExtendedTooltip name="GroupCompanyAccountAttributesExtendedTooltip" id="132"/>
@@ -640,6 +800,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Edit counterparty (individual) description</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Редактировать текст наименования контрагента (физлица)</v8:content>
 														</v8:item>
 													</Title>
 													<TitleLocation>Right</TitleLocation>
@@ -656,6 +820,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Company (individual) name in "Payee" field</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Текст наименования контрагента (физлица) в поле "Получатель"</v8:content>
 														</v8:item>
 													</Title>
 													<TitleLocation>Top</TitleLocation>
@@ -709,11 +877,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Additionally</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительно</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Advanced page</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница дополнительно</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AdvancedPageExtendedTooltip" id="156"/>
@@ -739,6 +915,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Number and date of Central Bank permission to open the currency account</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер и дата разрешения ЦБ на открытие валютного счета</v8:content>
+								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>Button</ToolTipRepresentation>
 							<EditMode>EnterOnInput</EditMode>
@@ -749,6 +929,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>to open a currency account</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>на открытие валютного счета</v8:content>
 								</v8:item>
 							</InputHint>
 							<ContextMenu name="PermissionNumberAndDateContextMenu" id="28"/>
@@ -778,6 +962,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>BIN</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>БИК</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -794,6 +982,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Payments are processed through the correspondent account that is opened with another bank (settlement bank)</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Платежи проводятся через корреспондентский счет, открытый в другом банке (банке для расчетов)</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -804,6 +996,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Indirect settlements label</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Непрямые расчеты надпись</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -820,6 +1016,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>BIN</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>БИК</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -834,6 +1034,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Corr. account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Корр. счет</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -850,6 +1054,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Corr. account</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Корр. счет</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -865,6 +1073,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Edit correspondent text</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Редактировать текст корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -875,6 +1087,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent text</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст корреспондента</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -891,6 +1107,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Banking details</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реквизиты банка</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -900,6 +1120,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Bank attributes for settlements</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реквизиты банка для расчетов</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -908,6 +1132,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Separation enabled</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Разделение включено</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -920,6 +1148,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>National currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Национальная валюта</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
@@ -931,6 +1163,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Direct exchange with banks agreement</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Соглашение прямого обмена с банками</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.EDUsageAgreements</v8:Type>
@@ -941,6 +1177,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Direct exchange message</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщение прямого обмена</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

@@ -285,7 +285,7 @@ Procedure FillBySalesInvoice(FillingData)
 	ElsIf FillingData.OperationKind = Enums.OperationKindsCustomerInvoice.TransferForSafeCustody Then
 		OperationKind = Enums.OperationKindsSupplierInvoice.ReturnFromSafeCustody;
 	Else
-		ErrorMessage = NStr("en = 'Cannot input operation ""Receipt"" on the basis of the operation - ""%OperationKind"".'");
+		ErrorMessage = NStr("en='Cannot input operation ""Receipt"" on the basis of the operation - ""%OperationKind"".';ru='Невозможен ввод операции ""Поступления"" на основании операции - ""%ВидОперации""!'");
 		ErrorMessage = StrReplace(ErrorMessage, "%OperationKind", FillingData.OperationKind);
 		Raise ErrorMessage;
 	EndIf;
@@ -1062,7 +1062,7 @@ Procedure SubordinatedInvoiceControl()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Supplier invoice No " + Number + " from " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) No. " + InvoiceStructure.Number + " from " + InvoiceStructure.Date + """");
 			
@@ -1213,8 +1213,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Incomings
 			 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Expenses)
 			 AND Not ValueIsFilled(RowsExpenses.StructuralUnit) Then
-				MessageText = NStr(
-					"en = 'For products and services ""%ProductsAndServices%"" specified in row %RowNumber% of list ""Services"" attribute ""Division"" must be filled in.'"
+				MessageText = NStr("en='For products and services ""%ProductsAndServices%"" specified in row %RowNumber% of list ""Services"" attribute ""Division"" must be filled in.';ru='Для номенклатуры ""%Номенклатура%"" указанной в строке %НомерСтроки% списка ""Услуги"", должен быть заполнен реквизит ""Подразделение"".'"
 				);
 				MessageText = StrReplace(MessageText, "%ProductsAndServices%", TrimAll(String(RowsExpenses.ProductsAndServices))); 
 				MessageText = StrReplace(MessageText, "%LineNumber%",String(RowsExpenses.LineNumber));
@@ -1240,7 +1239,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If  (ThisObject.IncludeVATInPrice And Inventory.Total("AmountExpenses") <> Expenses.Total("Total"))
 			OR  ( NOT ThisObject.IncludeVATInPrice And Inventory.Total("AmountExpenses") <> Expenses.Total("Total")- Expenses.Total("VATAmount")) Then
 	
-		MessageText = NStr("en = 'Amount of services is not equal to the distributed amount by inventories!'");
+		MessageText = NStr("en='Amount of services is not equal to the distributed amount by inventories!';ru='Сумма услуг не равна распределенной сумме по запасам!'");
 		SmallBusinessServer.ShowMessageAboutError(
 			,
 			MessageText,
@@ -1305,7 +1304,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		   AND FoundStringExpenses = Undefined
 		   AND QuantityCustomerInvoices > 0
 		   AND Counterparty.DoOperationsByOrders Then
-			MessageText = NStr("en = 'Unable to offset the advance for the order different from the specified amount in tabular sections ""Inventory"" or ""Services"".'");
+			MessageText = NStr("en='Unable to offset the advance for the order different from the specified amount in tabular sections ""Inventory"" or ""Services"".';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличных частях ""Запасы"" или ""Услуги""!'");
 			SmallBusinessServer.ShowMessageAboutError(
 				,
 				MessageText,
@@ -1450,7 +1449,7 @@ Procedure CheckExistenceOfRetailPrice(Cancel)
 		
 		While SelectionOfQueryResult.Next() Do
 			
-			MessageText = NStr("en = 'For products and services %ProductsAndServicesPresentation% in string %LineNumber% of list ""Inventory"" retail price is not set!'");
+			MessageText = NStr("en='For products and services %ProductsAndServicesPresentation% in string %LineNumber% of list ""Inventory"" retail price is not set!';ru='Для номенклатуры %ПредставлениеНоменклатуры% в строке %НомерСтроки% списка ""Запасы"" не установлена розничная цена!'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(SelectionOfQueryResult.LineNumber));
 			MessageText = StrReplace(MessageText, "%ProductsAndServicesPresentation%",  SmallBusinessServer.PresentationOfProductsAndServices(SelectionOfQueryResult.ProductsAndServicesPresentation, SelectionOfQueryResult.CharacteristicPresentation, SelectionOfQueryResult.BatchPresentation));
 			SmallBusinessServer.ShowMessageAboutError(

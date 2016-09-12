@@ -16,7 +16,7 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 		AND ParameterBeginOfPeriod.Value.Date > ParameterEndOfPeriod.Value.Date Then
 		
 		Message = New UserMessage;
-		Message.Text	 = NStr("en = 'Start period date must not exceed the end date!'");
+		Message.Text	 = NStr("en='Start period date must not exceed the end date!';ru='Дата начала периода не должна превышать дату окончания!'");
 		Message.Message();
 		
 		StandardProcessing = False;

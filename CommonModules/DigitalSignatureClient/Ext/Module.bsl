@@ -211,8 +211,8 @@ Procedure Sign(DataDescription, Form = Undefined, ResultProcessing = Undefined) 
 	EndIf;
 	
 	ServerParameters = New Structure;
-	ServerParameters.Insert("Operation",            NStr("en = 'Data signing'"));
-	ServerParameters.Insert("DataTitle",     NStr("en = 'Data'"));
+	ServerParameters.Insert("Operation",            NStr("en='Data signing';ru='Подписание данных'"));
+	ServerParameters.Insert("DataTitle",     NStr("en='Data';ru='Данные'"));
 	ServerParameters.Insert("ShowComment", False);
 	ServerParameters.Insert("FilterCertificates");
 	ServerParameters.Insert("PerformAtServer");
@@ -278,7 +278,7 @@ Procedure AddSignatureFromFile(DataDescription, Form = Undefined, ResultProcessi
 	DataDescription.Insert("Success", False);
 	
 	ServerParameters = New Structure;
-	ServerParameters.Insert("DataTitle", NStr("en = 'Data'"));
+	ServerParameters.Insert("DataTitle", NStr("en='Data';ru='Данные'"));
 	ServerParameters.Insert("ShowComment", False);
 	FillPropertyValues(ServerParameters, DataDescription);
 	
@@ -513,8 +513,8 @@ Procedure Encrypt(DataDescription, Form = Undefined, ResultProcessing = Undefine
 	EndIf;
 	
 	ServerParameters = New Structure;
-	ServerParameters.Insert("Operation",            NStr("en = 'Data encryption'"));
-	ServerParameters.Insert("DataTitle",     NStr("en = 'Data'"));
+	ServerParameters.Insert("Operation",            NStr("en='Data encryption';ru='Шифрование данных'"));
+	ServerParameters.Insert("DataTitle",     NStr("en='Data';ru='Данные'"));
 	ServerParameters.Insert("CertificatesSet");
 	ServerParameters.Insert("ChangeSet");
 	ServerParameters.Insert("PerformAtServer");
@@ -670,8 +670,8 @@ Procedure Decrypt(DataDescription, Form = Undefined, ResultProcessing = Undefine
 	EndIf;
 	
 	ServerParameters = New Structure;
-	ServerParameters.Insert("Operation",            NStr("en = 'Decrypting data'"));
-	ServerParameters.Insert("DataTitle",     NStr("en = 'Data'"));
+	ServerParameters.Insert("Operation",            NStr("en='Decrypting data';ru='Расшифровка данных'"));
+	ServerParameters.Insert("DataTitle",     NStr("en='Data';ru='Данные'"));
 	ServerParameters.Insert("FilterCertificates");
 	ServerParameters.Insert("EncryptionCertificates");
 	ServerParameters.Insert("ItIsAuthentication");
@@ -1039,15 +1039,15 @@ Procedure InformAboutSigningAnObject(DataPresentation, DataSet = False, FromFile
 	
 	If FromFile Then
 		If DataSet Then
-			MessageText = NStr("en = 'Signatures from files are added:'");
+			MessageText = NStr("en='Signatures from files are added:';ru='Добавлены подписи из файлов:'");
 		Else
-			MessageText = NStr("en = 'Signature from file is added:'");
+			MessageText = NStr("en='Signature from file is added:';ru='Добавлена подпись из файла:'");
 		EndIf;
 	Else
 		If DataSet Then
-			MessageText = NStr("en = 'Signatures are set:'");
+			MessageText = NStr("en='Signatures are set:';ru='Установлены подписи:'");
 		Else
-			MessageText = NStr("en = 'Signature is set:'");
+			MessageText = NStr("en='Signature is set:';ru='Установлена подпись:'");
 		EndIf;
 	EndIf;
 	
@@ -1065,7 +1065,7 @@ EndProcedure
 //
 Procedure InformAboutObjectEncryption(DataPresentation, DataSet = False) Export
 	
-	MessageText = NStr("en = 'Encryption is complete:'");
+	MessageText = NStr("en='Encryption is complete:';ru='Выполнено шифрование:'");
 	
 	ShowUserNotification(MessageText, , DataPresentation);
 	
@@ -1081,7 +1081,7 @@ EndProcedure
 //
 Procedure InformAboutObjectDecryption(DataPresentation, DataSet = False) Export
 	
-	MessageText = NStr("en = 'Decryption is executed:'");
+	MessageText = NStr("en='Decryption is executed:';ru='Выполнена расшифровка:'");
 	
 	ShowUserNotification(MessageText, , DataPresentation);
 	

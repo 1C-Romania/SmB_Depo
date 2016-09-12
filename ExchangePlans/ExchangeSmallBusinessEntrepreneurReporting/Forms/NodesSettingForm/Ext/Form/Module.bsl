@@ -93,18 +93,18 @@ Procedure GetContextDetails()
 	// Document export start date
 	If ValueIsFilled(DocumentsDumpStartDate) Then
 		DocumentsDumpStartDateDetails = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Data will be synchronized, starting from %1'"),
+			NStr("en='Data will be synchronized, starting from %1';ru='Данные будут синхронизироваться, начиная с %1'"),
 			Format(DocumentsDumpStartDate, "DLF=DD")
 		);
 	Else
-		DocumentsDumpStartDateDetails = NStr("en = 'Data will be synchronizing for all the period of the accounting in the applications'");
+		DocumentsDumpStartDateDetails = NStr("en='Data will be synchronizing for all the period of the accounting in the applications';ru='Данные будут синхронизироваться за весь период ведения учета в программах'");
 	EndIf;
 	
 	// filter by Companies
 	If UseCompaniesFilter Then
-		CompanyDescription = NStr("en = 'Only on the companies:'") + Chars.LF + UsedItems("Companies");
+		CompanyDescription = NStr("en='Only on the companies:';ru='Только по организациям:'") + Chars.LF + UsedItems("Companies");
 	Else
-		CompanyDescription = NStr("en = 'By all companies.'");
+		CompanyDescription = NStr("en='By all companies.';ru='По всем организациям.'");
 	EndIf;
 	
 	ContextDetails = (""

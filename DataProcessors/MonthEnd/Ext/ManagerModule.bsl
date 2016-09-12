@@ -25,7 +25,7 @@ Procedure ExecuteMonthEnd(ParametersStructure, BackgroundJobStorageAddress = "")
 			DocObject = Documents.FixedAssetsDepreciation.CreateDocument();
 			DocObject.Company = Company;
 			DocObject.Date = EndOfMonth(Date(CurYear, CurMonth, 1));
-			DocObject.Comment = NStr("en='#Created automatically, with month end assistant.'");
+			DocObject.Comment = NStr("en='#Created automatically, with month end assistant.';ru='#Создан автоматически, помощником закрытия месяца.'");
 			
 		EndIf;
 		
@@ -141,7 +141,7 @@ Procedure RunOperationClosingMonth(ParametersStructure, Operation, DocumentClosi
 		DocObject = Documents.MonthEnd.CreateDocument();
 		DocObject.Company = Company;
 		DocObject.Date = EndOfMonth(Date(CurYear, CurMonth, 1));
-		DocObject.Comment = NStr("en='#Created automatically, with month end assistant.'");
+		DocObject.Comment = NStr("en='#Created automatically, with month end assistant.';ru='#Создан автоматически, помощником закрытия месяца.'");
 		
 	Else
 		

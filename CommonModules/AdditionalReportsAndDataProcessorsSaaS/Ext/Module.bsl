@@ -33,8 +33,9 @@ Function SuppliedDataProcessor(UsingDataProcessor) Export
 	
 	If Not CommonUseReUse.CanUseSeparatedData() Then
 		
-		Raise NStr("en = 'AdditionalReportsAndDataProcessorsSaaS.SuppliedDataProcessor()
-                                |function usage is only available in sessions with the specified data separation.'");
+		Raise NStr("en='AdditionalReportsAndDataProcessorsSaaS.SuppliedDataProcessor()"
+"function usage is only available in sessions with the specified data separation.';ru='Использование"
+"функции ДополнительныеОтчетыИОбработкиВМоделиСервиса.ПоставляемаяОбработка() доступно только сеансов с установленным разделением данных!'");
 		
 	EndIf;
 	
@@ -70,8 +71,9 @@ Function UsingDataProcessor(SuppliedDataProcessor) Export
 	
 	If Not CommonUseReUse.CanUseSeparatedData() Then
 		
-		Raise NStr("en = 'AdditionalReportsAndDataProcessorsSaaS.UsedDataProcessor()
-                                |function usage is only available in sessions with the specified data separation.'");
+		Raise NStr("en='AdditionalReportsAndDataProcessorsSaaS.UsedDataProcessor()"
+"function usage is only available in sessions with the specified data separation.';ru='Использование"
+"функции ДополнительныеОтчетыИОбработкиВМоделиСервиса.ИспользуемаяОбработка() доступно только сеансов с установленным разделением данных!'");
 		
 	EndIf;
 	
@@ -210,7 +212,7 @@ Procedure SetIncludedProcessingInDataArea(Val InstallationDetails, Val QuickAcce
 	BeginTransaction();
 	
 	WriteLogEvent(
-		NStr("en = 'Supplied additional reports and processings.Installation of the supplied processing to the data area is initiated'",
+		NStr("en='Supplied additional reports and processings.Installation of the supplied processing to the data area is initiated';ru='Поставляемые дополнительные отчеты и обработки.Инициирована установка поставляемой обработки в область данных'",
 		CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,
 		,
@@ -342,7 +344,7 @@ Procedure SetIncludedProcessingInDataArea(Val InstallationDetails, Val QuickAcce
 				SaaSReUse.ServiceManagerEndPoint(),
 				True);
 			
-			WriteLogEvent(NStr("en = 'Supplied additional reports and processings. Setup to the data area'",
+			WriteLogEvent(NStr("en='Supplied additional reports and processings. Setup to the data area';ru='Поставляемые дополнительные отчеты и обработки.Установка в область данных'",
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Information,
 				,
@@ -372,7 +374,7 @@ Procedure SetIncludedProcessingInDataArea(Val InstallationDetails, Val QuickAcce
 			Manager.InstallationParameters = New ValueStorage(Context);
 			Manager.Write();
 			
-			WriteLogEvent(NStr("en = 'Supplied addittional reports and processings. Installation to the data area is delayed'",
+			WriteLogEvent(NStr("en='Supplied addittional reports and processings. Installation to the data area is delayed';ru='Поставляемые дополнительные отчеты и обработки.Установка в область данных отложена'",
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Information,
 				,
@@ -427,7 +429,7 @@ Procedure DeleteComesFromDataProcessingAreas(Val SuppliedDataProcessor, Val IDOf
 			
 			RecordSet.Write();
 			
-			WriteLogEvent(NStr("en = 'Supplied additional reports and processings. Deletion out of the data area'",
+			WriteLogEvent(NStr("en='Supplied additional reports and processings. Deletion out of the data area';ru='Поставляемые дополнительные отчеты и обработки.Удаление из области данных'",
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Information,
 				,
@@ -438,7 +440,7 @@ Procedure DeleteComesFromDataProcessingAreas(Val SuppliedDataProcessor, Val IDOf
 			
 			ErrorMessage = DetailErrorDescription(ErrorInfo());
 			
-			WriteLogEvent(NStr("en = 'Supplied additional reports and processings. Error of deletion out of the data area'",
+			WriteLogEvent(NStr("en='Supplied additional reports and processings. Error of deletion out of the data area';ru='Поставляемые дополнительные отчеты и обработки.Ошибка удаления из область данных'",
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -524,7 +526,7 @@ EndProcedure
 //
 Procedure ProcessAdditionalInformationProcessorSettingToDataAreaError(Val SuppliedDataProcessor, Val InstallationID, Val ErrorMessage) Export
 	
-	WriteLogEvent(NStr("en = 'Supplied additional reports and processings. Error of installation to the data area'",
+	WriteLogEvent(NStr("en='Supplied additional reports and processings. Error of installation to the data area';ru='Поставляемые дополнительные отчеты и обработки.Ошибка установки в область данных'",
 		CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Error,
 		,
@@ -850,7 +852,7 @@ Procedure AdditionalProcessingBeforeWrite(Source, Cancel) Export
 			If SourceProp <> ResultAttribute Then
 				
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Invalid attempt of the %1 attribute value modification for the %2 additional processing received from the directory of the service manager additional processings!'"), 
+					NStr("en='Invalid attempt of the %1 attribute value modification for the %2 additional processing received from the directory of the service manager additional processings!';ru='Недопустимая попытка изменения значения реквизита %1 для дополнительной обработки %2, полученной из каталога дополнительных обработок менеджера сервиса!'"), 
 					ControlledAttribute, Source.Description);
 				
 			EndIf;
@@ -950,7 +952,7 @@ Procedure OnEnableExternalProcessor(Val Ref, StandardProcessing, Result) Export
 		
 		// Check whether passed parameters are correct
 		If TypeOf(Ref) <> Type("CatalogRef.AdditionalReportsAndDataProcessors") Or Ref = Catalogs.AdditionalReportsAndDataProcessors.EmptyRef() Then
-			Raise NStr("en = 'You have requested to connect additional data processor that does not exist.'");
+			Raise NStr("en='You have requested to connect additional data processor that does not exist.';ru='Запрошено подключение несуществующей дополнительной обработки!'");
 		EndIf;
 		
 		CheckOptionExecution(Ref);
@@ -995,7 +997,7 @@ Procedure OnCreateExternalDataProcessor(Val Ref, StandardProcessing, Result) Exp
 	If Not StandardProcessing Then
 		
 		If DataProcessorName = Undefined Then
-			Raise NStr("en = 'You have requested to create additional data processor that does not exist.'");
+			Raise NStr("en='You have requested to create additional data processor that does not exist.';ru='Запрошено создание объекта несуществующей дополнительной обработки!'");
 		EndIf;
 		
 		CheckOptionExecution(Ref);
@@ -1046,7 +1048,7 @@ Procedure OnGetSafeModeSessionsPermissions(Val SessionKey, PermissionDescription
 		Else
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Supplied processing for the launch key %1 has not been found!'"),
+				NStr("en='Supplied processing for the launch key %1 has not been found!';ru='Не обнаружена поставляемая обработка для ключа запуска %1!'"),
 				String(SessionKey));
 			
 		EndIf;
@@ -1251,7 +1253,7 @@ Procedure UpdateSettingsUsedByDataProcessors(Val Ref) Export
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Additional processing with the %1 ID is not supplied.'"),
+			NStr("en='Additional processing with the %1 ID is not supplied.';ru='Дополнительная обработка с идентификатором %1 не является поставляемой!'"),
 			String(Ref.UUID()));
 		
 	EndIf;
@@ -1301,12 +1303,12 @@ Procedure AvailableNewData(Val Handle, Import) Export
 			Import = False;
 			
 			WriteLogEvent(
-				NStr("en = 'The supplied additional reports and processings. Import of the supplied processing is cancelled'", 
+				NStr("en='The supplied additional reports and processings. Import of the supplied processing is cancelled';ru='Поставляемые дополнительные отчеты и обработки.Загрузка поставляемой обработки отменена'", 
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Information,
 				,
 				,
-				NStr("en = 'Supplied processing is not compatible with this configuration'") + Chars.LF + Chars.CR + ProvidedDataProcessorDescription.Compatibility);
+				NStr("en='Supplied processing is not compatible with this configuration';ru='Поставляемая обработка несовместима с данной конфигурацией'") + Chars.LF + Chars.CR + ProvidedDataProcessorDescription.Compatibility);
 			
 		EndIf;
 		
@@ -1476,12 +1478,12 @@ Procedure ProcessSuppliedAdditionalReportsAndDataProcessors(Handle, PathToFile)
 	TableOfCompatibilityXDTO = XDTOFactory.ReadXML(Read, XDTOFactory.Type(Read.NamespaceURI, Read.Name));
 	TableOfCompatibility = AdditionalReportsAndDataProcessorsSaaSCompatibility.ReadCompatibilityTable(TableOfCompatibilityXDTO);
 	
-	WriteLogEvent(NStr("en = 'Supplied additional reports and processings. Supplied processing import'", 
+	WriteLogEvent(NStr("en='Supplied additional reports and processings. Supplied processing import';ru='Поставляемые дополнительные отчеты и обработки.Загрузка поставляемой обработки'", 
 		CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,
 		,
 		,
-		NStr("en = 'Supplied processing import is initiated'") + Chars.LF + Chars.CR + ProvidedDataProcessorDescription.Manifest);
+		NStr("en='Supplied processing import is initiated';ru='Инициирована загрузка поставляемой обработки'") + Chars.LF + Chars.CR + ProvidedDataProcessorDescription.Manifest);
 	
 	// Receive CatalogObject.SuppliedAdditionalReportsAndDataProcessors
 	RefsSuppliedDataProcessors = Catalogs.SuppliedAdditionalReportsAndDataProcessors.GetRef(
@@ -1542,12 +1544,12 @@ Procedure ProcessSuppliedAdditionalReportsAndDataProcessors(Handle, PathToFile)
 		SuppliedDataProcessor.GUIDVersion = ProvidedDataProcessorDescription.Version;
 		SuppliedDataProcessor.Write();
 		
-		WriteLogEvent(NStr("en = 'Supplied additional reports and processings. Import of the supplied processing is completed'",
+		WriteLogEvent(NStr("en='Supplied additional reports and processings. Import of the supplied processing is completed';ru='Поставляемые дополнительные отчеты и обработки.Загрузка поставляемой обработки завершена'",
 			CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,
 			,
 			SuppliedDataProcessor.Ref,
-			NStr("en = 'Supplied processing import is completed'") + Chars.LF + Chars.CR + ProvidedDataProcessorDescription.Manifest);
+			NStr("en='Supplied processing import is completed';ru='Завершена загрузка поставляемой обработки'") + Chars.LF + Chars.CR + ProvidedDataProcessorDescription.Manifest);
 		
 		// Plan actualization of the used data processor settings
 		UsedDataProcessors = ListOfInstallations(SuppliedDataProcessor.Ref);
@@ -1564,12 +1566,12 @@ Procedure ProcessSuppliedAdditionalReportsAndDataProcessors(Handle, PathToFile)
 			
 			JobQueue.AddJob(JobParameters);
 			
-			WriteLogEvent(NStr("en = 'Supplied additional reports and processings. There is scheduled an actualization of the supplied processing settings'",
+			WriteLogEvent(NStr("en='Supplied additional reports and processings. There is scheduled an actualization of the supplied processing settings';ru='Поставляемые дополнительные отчеты и обработки.Запланирована актуализация настроек поставляемой обработки'",
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Information,
 				,
 				SuppliedDataProcessor.Ref,
-				NStr("en = 'Data area'") + InstallationOfDataProcessors.DataArea);
+				NStr("en='Data area';ru='Область данных:'") + InstallationOfDataProcessors.DataArea);
 			
 		EndDo;
 		
@@ -1604,12 +1606,12 @@ Procedure ProcessSuppliedAdditionalReportsAndDataProcessors(Handle, PathToFile)
 			JobQueue.AddJob(JobParameters);
 			
 			WriteLogEvent(
-				NStr("en = 'Supplied additional reports and processings. A delayed installation of the supplied processing to the data area is scheduled'",
+				NStr("en='Supplied additional reports and processings. A delayed installation of the supplied processing to the data area is scheduled';ru='Поставляемые дополнительные отчеты и обработки.Запланирована отложенная установка поставляемой обработки в область данных'",
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Information,
 				,
 				SuppliedDataProcessor.Ref,
-				NStr("en = 'Data area'") + ItemInQueue.DataArea);
+				NStr("en='Data area';ru='Область данных:'") + ItemInQueue.DataArea);
 			
 		EndDo;
 		
@@ -1764,7 +1766,7 @@ Procedure CheckOptionExecution(Ref)
 			
 			If Not Constants.AdditionalReportsAndDataProcessorsIndependentUseSaaS.Get() Then
 				
-				Raise NStr("en = 'This additional report or processing can not be used in the service!'");
+				Raise NStr("en='This additional report or processing can not be used in the service!';ru='Этот дополнительный отчет или обработка не может быть использован в сервисе!'");
 				
 			EndIf;
 			
@@ -1781,8 +1783,7 @@ Procedure CheckSuppliedDataProcessorExecutionPossibility(Val UsingDataProcessor)
 	
 	UsedDataProcessorPublicationParameters = CommonUse.ObjectAttributesValues(UsingDataProcessor, "Publication, Version");
 	If UsedDataProcessorPublicationParameters.Publication = Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Disabled Then
-		Raise NStr(
-			"en = 'It is prohibited to use additional data processor in your application. Contact user with administrative privileges in this application.'");
+		Raise NStr("en='It is prohibited to use additional data processor in your application. Contact user with administrative privileges in this application.';ru='Использование дополнительной обработки в вашем приложении запрещено! Обратитесь за помощью к пользователю, обладающего правами администратора в данном приложении.'");
 	EndIf;
 	
 	BlockingReasonsDescription = AdditionalReportsAndDataProcessorsSaaSReUse.ExtendedDescriptionsReasonsLock();
@@ -1802,8 +1803,7 @@ Procedure CheckSuppliedDataProcessorExecutionPossibility(Val UsingDataProcessor)
 		
 		// Check whether data processor version is updated
 		If UsedDataProcessorPublicationParameters.Version <> ProvidedDataProcessorPublicationParameters.Version Then
-			Raise NStr(
-				"en = 'Additional data processor use is temporarily unavailable as it is updated. This may take several minutes. We apologize for the inconvenience.'");
+			Raise NStr("en='Additional data processor use is temporarily unavailable as it is updated. This may take several minutes. We apologize for the inconvenience.';ru='Использование дополнительной обработки временно недоступно по причине выполнения ее обновления. Данный процесс может занять несколько минут. Приносим извинения на доставленные неудобства.'");
 		EndIf;
 		
 	EndIf;

@@ -296,7 +296,7 @@ Procedure Fill(Command)
 	
 	If Object.LowerBarButtons.Count()>0 Then
 		
-		QuestionText = NStr("en='Button table is filled in. Clear?'");
+		QuestionText = NStr("en='Button table is filled in. Clear?';ru='Таблица кнопок заполнена. Очистить?'");
 		
 		NotificationHandler = New NotifyDescription("NotificationQueryClearButtonTable", ThisObject);
 		ShowQueryBox(NotificationHandler, QuestionText, QuestionDialogMode.YesNo);

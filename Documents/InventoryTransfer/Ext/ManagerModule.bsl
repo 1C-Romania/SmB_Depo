@@ -778,7 +778,7 @@ Procedure GenerateTableInventory(DocumentRefInventoryTransfer, StructureAddition
 				RowTableManagerial.AccountDr = ?(RetailTransferAccrualAccounting, TableRow.FinancialAccountInRetailRecipient, TableRow.GLAccountInRetail);
 				RowTableManagerial.AccountCr = ?(RetailTransferAccrualAccounting, TableRow.MarkupGLAccountRecipient, TableRow.MarkupGLAccount);
 				RowTableManagerial.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
-				RowTableManagerial.Content = NStr("en='Trade markup'");
+				RowTableManagerial.Content = NStr("en='Trade markup';ru='Торговая наценка'");
 				RowTableManagerial.Amount = AmountMarkup;
 			EndIf;
 			
@@ -951,7 +951,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefInventoryTransfer, Structure
 	
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -1002,10 +1002,10 @@ Procedure GenerateTableRetailAmountAccounting(DocumentRefInventoryTransfer, Stru
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("RetailTransfer", NStr("en = 'Transfer to retail'"));
-	Query.SetParameter("RetailTransfer", NStr("en = 'Transfer in retail'"));
-	Query.SetParameter("ReturnAndRetail", NStr("en = 'Return from retail'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("RetailTransfer", NStr("en='Transfer to retail';ru='Перемещение в розницу'"));
+	Query.SetParameter("RetailTransfer", NStr("en='Transfer in retail';ru='Перемещение в рознице'"));
+	Query.SetParameter("ReturnAndRetail", NStr("en='Return from retail';ru='Возврат из розницы'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -1294,7 +1294,7 @@ Procedure GenerateTableManagerial(DocumentRefInventoryTransfer, StructureAdditio
 	
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -1554,7 +1554,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryTransfer, StructureAddition
 	// Temporarily: change motions by the order warehouse.
 	Query.SetParameter("UpdateDateToRelease_1_2_1", Constants.UpdateDateToRelease_1_2_1.Get());
 		
-	Query.SetParameter("InventoryTransfer", NStr("en = 'Inventory transfer'"));
+	Query.SetParameter("InventoryTransfer", NStr("en='Inventory transfer';ru='Перемещение запасов'"));
 	
 	ResultsArray = Query.Execute();
 		
@@ -2729,35 +2729,35 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "M11,TORG13,MX18,BoL,InventoryTransfer";
-	PrintCommand.Presentation = NStr("en = 'Custom kit of documents'");
+	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "M11";
-	PrintCommand.Presentation = NStr("en = 'M11 (Shipment request)'");
+	PrintCommand.Presentation = NStr("en='M11 (Shipment request)';ru='М11 (Требование-накладная)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "TORG13";
-	PrintCommand.Presentation = NStr("en = 'TORG13 (Invoice for internal movement)'");
+	PrintCommand.Presentation = NStr("en='TORG13 (Invoice for internal movement)';ru='ТОРГ13 (Накладная на внутреннее перемещение)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MX18";
-	PrintCommand.Presentation = NStr("en = 'MH18 (Finished products customer invoice)'");
+	PrintCommand.Presentation = NStr("en='MH18 (Finished products customer invoice)';ru='МХ18 (Накладная на передачу готовой продукции)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 10;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "BoL";
-	PrintCommand.Presentation = NStr("en = '1-T (Shipping document)'");
+	PrintCommand.Presentation = NStr("en='1-T (Shipping document)';ru='1-Т (Товарно-транспортная накладная)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 14;
@@ -2765,28 +2765,28 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.Handler = "SmallBusinessClient.PrintWayBill";
 	PrintCommand.ID = "CN";
-	PrintCommand.Presentation = NStr("en = 'Application #4 (consignment note)'");
+	PrintCommand.Presentation = NStr("en='Application #4 (consignment note)';ru='Приложение №4 (Транспортная накладная)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 17;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InventoryTransfer";
-	PrintCommand.Presentation = NStr("en = 'Inventory transfer'");
+	PrintCommand.Presentation = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 20;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MerchandiseFillingFormSender";
-	PrintCommand.Presentation = NStr("en = 'Goods content form (Sender)'");
+	PrintCommand.Presentation = NStr("en='Goods content form (Sender)';ru='Бланк товарного наполнения (Отправитель)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 23;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MerchandiseFillingFormRecipient";
-	PrintCommand.Presentation = NStr("en = 'Goods content form (Receiver)'");
+	PrintCommand.Presentation = NStr("en='Goods content form (Receiver)';ru='Бланк товарного наполнения (Получатель)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 26;
@@ -2796,7 +2796,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 		PrintCommand = PrintCommands.Add();
 		PrintCommand.Handler = "SmallBusinessClient.PrintLabelsAndPriceTagsFromDocuments";
 		PrintCommand.ID = "LabelsPrintingFromGoodsMovement";
-		PrintCommand.Presentation = NStr("en = 'Labels printing'");
+		PrintCommand.Presentation = NStr("en='Labels printing';ru='Печать этикеток'");
 		PrintCommand.FormsList = "DocumentForm,ListForm";
 		PrintCommand.CheckPostingBeforePrint = False;
 		PrintCommand.Order = 29;
@@ -2804,7 +2804,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 		PrintCommand = PrintCommands.Add();
 		PrintCommand.Handler = "SmallBusinessClient.PrintLabelsAndPriceTagsFromDocuments";
 		PrintCommand.ID = "PriceTagsPrintingFromGoodsMovement";
-		PrintCommand.Presentation = NStr("en = 'Tags printing'");
+		PrintCommand.Presentation = NStr("en='Tags printing';ru='Печать ценников'");
 		PrintCommand.FormsList = "DocumentForm,ListForm";
 		PrintCommand.CheckPostingBeforePrint = False;
 		PrintCommand.Order = 32;

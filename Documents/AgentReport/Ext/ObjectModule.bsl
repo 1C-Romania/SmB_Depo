@@ -354,7 +354,7 @@ Procedure GenerateInvoicesCustomers(RefNew)
 		TabularSectionRow.CustomerInvoiceNote = DocInvoice.Ref;
 		
 		If GeneratedNewInvoice Then
-			MessageText = NStr("en = 'Document %InvoicePresentation% is generated.'");
+			MessageText = NStr("en='Document %InvoicePresentation% is generated.';ru='Сформирован документ %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + DocInvoice.Number + " dated " + DocInvoice.Date + """");
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -481,7 +481,7 @@ Procedure GenerateInvoicesConsolidated(RefNew)
 		EndDo;
 		
 		If GeneratedNewInvoice Then
-			MessageText = NStr("en = 'Document %InvoicePresentation% is generated.'");
+			MessageText = NStr("en='Document %InvoicePresentation% is generated.';ru='Сформирован документ %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + DocInvoice.Number + " dated " + DocInvoice.Date + """");
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -512,7 +512,7 @@ Procedure ControlOfSubordinatedInvoiceReceived()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Agent report # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -531,7 +531,7 @@ Procedure ControlOfSubordinatedInvoiceReceived()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится счет фактура %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Agent report # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -642,7 +642,7 @@ Procedure UpdateRefsOfInvoices() Export
 					CurrentInvoice.BasisDocuments.Delete(RowBasis);
 					CurrentInvoice.Write();
 					
-					MessageText = NStr("en = 'From the document %InvoicePresentation% the reference to the current document is deleted.'");
+					MessageText = NStr("en='From the document %InvoicePresentation% the reference to the current document is deleted.';ru='Из документа %ПредставлениеСчетФактуры% удалена ссылка на текщий документ.'");
 					MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentInvoice.Number + " dated " + CurrentInvoice.Date + """");
 					
 					CommonUseClientServer.MessageToUser(MessageText);
@@ -654,7 +654,7 @@ Procedure UpdateRefsOfInvoices() Export
 				CurrentInvoice.SetDeletionMark(True);
 				CurrentInvoice.Write();
 				
-				MessageText = NStr("en = 'Document %InvoicePresentation% is marked for deletion.'");
+				MessageText = NStr("en='Document %InvoicePresentation% is marked for deletion.';ru='Документа %ПредставлениеСчетФактуры% помечен на удаление.'");
 				MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentInvoice.Number + " dated " + CurrentInvoice.Date + """");
 				
 				CommonUseClientServer.MessageToUser(MessageText);
@@ -728,14 +728,14 @@ Procedure SubordinatedInvoicesProcessing(Post = True)
 		
 		If StatePosted AND Not Post Then
 			
-			MessageText = NStr("en = 'The invoice note %InvoicePresentation% is unposted.'");
+			MessageText = NStr("en='The invoice note %InvoicePresentation% is unposted.';ru='Распроведена счет-фактура %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentDocument.Number + " dated " + CurrentDocument.Date + """");
 			
 			CommonUseClientServer.MessageToUser(MessageText);
 			
 		ElsIf Not StatePosted AND Post Then
 			
-			MessageText = NStr("en = 'The invoice %InvoicePresentation% is posted.'");
+			MessageText = NStr("en='The invoice %InvoicePresentation% is posted.';ru='Проведена счет-фактура %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + CurrentDocument.Number + " dated " + CurrentDocument.Date + """");
 			
 			CommonUseClientServer.MessageToUser(MessageText);
@@ -827,7 +827,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If FoundStringInventory = Undefined
 		   AND QuantityInventory > 0
 		   AND Counterparty.DoOperationsByOrders Then
-			MessageText = NStr("en = 'Advance by order that is different form specified in the tabular section ""Inventory"" can not be accepted!'");
+			MessageText = NStr("en='Advance by order that is different form specified in the tabular section ""Inventory"" can not be accepted!';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличной части ""Запасы""!'");
 			SmallBusinessServer.ShowMessageAboutError(
 				,
 				MessageText,

@@ -59,7 +59,7 @@ Procedure TreeNodesExchangeCase(Item, SelectedRow, Field, StandardProcessing)
 	Notification = New NotifyDescription("TreeNodesExchangeSelectionEnd", ThisObject, New Structure);
 	Notification.AdditionalParameters.Insert("Node", CurrentData.Ref);
 	
-	ToolTip = NStr("en = 'Sent Number'"); 
+	ToolTip = NStr("en='Sent Number';ru='Номер отправленного'"); 
 	ShowInputNumber(Notification, CurrentData.MessageNo, ToolTip);
 EndProcedure
 
@@ -114,9 +114,10 @@ EndProcedure
 &AtClient
 Procedure ChangeRegistration(Command)
 	
-	QuestionTitle = NStr("en = 'Confirmation'");
-	Text = NStr("en = 'Do you
-	             |want to change registration ""%1"" on nodes?'");
+	QuestionTitle = NStr("en='Confirmation';ru='Подтверждение'");
+	Text = NStr("en='Do you"
+"want to change registration ""%1"" on nodes?';ru='Изменить"
+"регистрацию ""%1"" на узлах?'");
 	
 	Text = StrReplace(Text, "%1", RegistrationObject);
 	
@@ -133,8 +134,8 @@ Procedure ChangeRegistrationEnd(Val QuestionResult, Val AdditionalParameters) Ex
 	
 	Quantity = UpdateRegistrationSites(TreeNodesExchange);
 	If Quantity > 0 Then
-		Text = NStr("en = 'Registration %1 has been changed on %2 nodes'");
-		NotificationTitle = NStr("en = 'Update registration:'");
+		Text = NStr("en='Registration %1 has been changed on %2 nodes';ru='Регистрация %1 была изменена на %2 узлах'");
+		NotificationTitle = NStr("en='Update registration:';ru='Изменение регистрации:'");
 		
 		Text = StrReplace(Text, "%1", RegistrationObject);
 		Text = StrReplace(Text, "%2", Quantity);
@@ -189,8 +190,8 @@ Procedure SetConditionalAppearance()
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
 	FilterElement.RightValue = 0;
 
-	Item.Appearance.SetParameterValue("Text", NStr("en = 'TreeNodesExchangeMessageNo'"));
-	Item.Appearance.SetParameterValue("Text", NStr("en = 'Not exported'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='TreeNodesExchangeMessageNo';ru='ДеревоУзловОбменаНомерСообщения'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='Not exported';ru='Не выгружалось'"));
 
 	//
 

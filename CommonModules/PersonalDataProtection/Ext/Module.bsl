@@ -201,7 +201,7 @@ Procedure AddConsentToPersonalDataProcessingPrintCommand(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "PersonalDataProcessingConsent";
-	PrintCommand.Presentation = NStr("en = 'Personal data processing consent...'");
+	PrintCommand.Presentation = NStr("en='Personal data processing consent...';ru='Согласие на обработку персональных данных...'");
 	PrintCommand.Handler = "PersonalDataProtectionClient.OpenPersonalDataProcessingConsentForm";
 	
 EndProcedure
@@ -291,7 +291,7 @@ Function PersonalDataAreasTree()
 	InfoTable = InfoAboutPersonalData();
 	If DataAreas.Count() = 0 
 		Or InfoTable.FindRows(New Structure("DataArea", "")).Count() > 0 Then
-		AddDataAreaIntoTree(DataAreasTree, DataAreas, New Structure("Name, Presentation, Parent", "", NStr("en = 'Personal data'")));
+		AddDataAreaIntoTree(DataAreasTree, DataAreas, New Structure("Name, Presentation, Parent", "", NStr("en='Personal data';ru='Персональные данные субъекта'")));
 	EndIf;
 	
 	Return DataAreasTree;

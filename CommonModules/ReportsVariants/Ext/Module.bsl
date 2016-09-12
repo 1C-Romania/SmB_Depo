@@ -36,7 +36,7 @@ Function UsedSections() Export
 		If ValueIsFilled(ItemOfList.Presentation) Then
 			CaptionPattern = ItemOfList.Presentation;
 		Else
-			CaptionPattern = NStr("en = 'Reports section ""%1""'");
+			CaptionPattern = NStr("en='Reports section ""%1""';ru='Отчеты раздела ""%1""'");
 		EndIf;
 		
 		String = Result.Add();
@@ -139,7 +139,7 @@ EndFunction
 //	//
 // Procedure SetReportVariants(Settings, ReportSettings)
 // 	Export VariantSettings = ModuleReportsVariants.VariantDescription(Settings, ReportSettings, "<VariantName>");
-// 	VariantSettings.Definition = NStr("en = '<Definition>'");
+// 	VariantSettings.Definition = NStr("en='<Definition>';ru='<Описание>'");
 // EndProcedure
 //
 Procedure SetReportInManagerModule(Settings, ReportMetadata) Export
@@ -171,8 +171,9 @@ Function ReportDescription(OptionsTree, ReportValueOrMetadata) Export
 	
 	If RowReport = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'An error occurred while
-			|receiving report description ""%1"", it is not connected to subsystem ""%2""'"),
+			NStr("en='An error occurred while"
+"receiving report description ""%1"", it is not connected to subsystem ""%2""';ru='Ошибка получения"
+"описания отчета ""%1"", он не подключен к подсистеме ""%2""'"),
 			String(ReportValueOrMetadata),
 			ReportsVariantsClientServer.SubsystemDescription(""));
 	EndIf;
@@ -209,7 +210,7 @@ Function VariantDesc(OptionsTree, ReportTreeRowOrValueOrMetadata, VariantKey) Ex
 	
 	If RowOption = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Variant ""%1"" is not found for report ""%2"".'"),
+			NStr("en='Variant ""%1"" is not found for report ""%2"".';ru='Вариант ""%1"" не найден для отчета ""%2"".'"),
 			VariantKey,
 			RowReport.Metadata.Name);
 	EndIf;
@@ -390,8 +391,9 @@ Procedure AddFullUpdateHandlers(Handlers, Version) Export
 		Handler.SharedData     = True;
 		Handler.Version    = Version;
 		Handler.Procedure = "ReportsVariants.DeferredGeneralDataFullUpdate";
-		Handler.Comment = NStr("en = 'Full update of an reports search index that are provided in the application.
-			|Reports search is temporary unavailable.'");
+		Handler.Comment = NStr("en='Full update of an reports search index that are provided in the application."
+"Reports search is temporary unavailable.';ru='Полное обновление индекса поиска отчетов, предусмотренных в программе."
+"Поиск отчетов временно недоступен.'");
 	EndIf;
 	
 	Handler = Handlers.Add();
@@ -399,8 +401,9 @@ Procedure AddFullUpdateHandlers(Handlers, Version) Export
 	Handler.SharedData     = False;
 	Handler.Version    = Version;
 	Handler.Procedure = "ReportsVariants.DeferredSeparatedDataFullUpdate";
-	Handler.Comment = NStr("en = 'Full update of reports search index saved by users.
-		|Reports search is temporary unavailable.'");
+	Handler.Comment = NStr("en='Full update of reports search index saved by users."
+"Reports search is temporary unavailable.';ru='Полное обновление индекса поиска отчетов, сохраненных пользователями."
+"Поиск отчетов временно недоступен.'");
 	
 EndProcedure
 
@@ -422,7 +425,7 @@ EndProcedure
 // ReportsVariants.TransferReportsVariantsFromStandardStorage("EventLogMonitorAnalysis, JobsExpiredByDate");
 //
 Procedure TransferUserOnesFromStandardStorage(NamesReports = "") Export
-	ProcedureRepresentation = NStr("en = 'Direct report variant conversion'");
+	ProcedureRepresentation = NStr("en='Direct report variant conversion';ru='Прямая конвертация вариантов отчетов'");
 	ProcedureLaunch(ProcedureRepresentation);
 	
 	// Result that will be saved in the storage.
@@ -452,7 +455,7 @@ Procedure TransferUserOnesFromStandardStorage(NamesReports = "") Export
 			ReadErrorsInRow = ReadErrorsInRow + 1;
 			ErrorByVariant(
 				Undefined,
-				NStr("en = 'An error occurred while selecting reports variants from the standard storage'")
+				NStr("en='An error occurred while selecting reports variants from the standard storage';ru='В процессе выборки вариантов отчетов из стандартного хранилища возникла ошибка:'")
 				+ Chars.LF
 				+ DetailErrorDescription(ErrorInfo()));
 		EndTry;
@@ -553,7 +556,7 @@ Procedure ImportCustom(VariantTable = Undefined) Export
 		Return;
 	EndIf;
 	
-	ProcedureRepresentation = NStr("en = 'Complete the report variants conversion'");
+	ProcedureRepresentation = NStr("en='Complete the report variants conversion';ru='Завершить конвертацию вариантов отчетов'");
 	ProcedureLaunch(ProcedureRepresentation);
 	
 	// Columns names replacement under the catalog structure.
@@ -675,7 +678,7 @@ Procedure ImportCustom(VariantTable = Undefined) Export
 		Else
 			ErrorByVariant(
 				VariantObject.Ref,
-				NStr("en = 'Variant ""%1"" of report ""%2"": author is not found ""%3""'"),
+				NStr("en='Variant ""%1"" of report ""%2"": author is not found ""%3""';ru='Вариант ""%1"" отчета ""%2"": не найден автор ""%3""'"),
 				VariantObject.Description,
 				TableRow.ReportPresentation,
 				TableRow.Author);
@@ -828,8 +831,9 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 		Handler.SharedData     = True;
 		Handler.Version      = "*";
 		Handler.Procedure   = "ReportsVariants.DeferredGeneralDataIncrementalUpdate";
-		Handler.Comment = NStr("en = 'Incremental update of reports search update present in the application.
-			|Reports search is temporary unavailable.'");
+		Handler.Comment = NStr("en='Incremental update of reports search update present in the application."
+"Reports search is temporary unavailable.';ru='Инкрементальное обновление индекса поиска отчетов, предусмотренных в программе."
+"Поиск отчетов временно недоступен.'");
 	EndIf;
 	
 	// 3.2. Fill in information to search for reports variants.
@@ -838,8 +842,9 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler.SharedData     = False;
 	Handler.Version    = "2.2.3.31";
 	Handler.Procedure = "ReportsVariants.ReduceQuickSettingsQuantity";
-	Handler.Comment = NStr("en = 'Decreases the quick
-	|settings quantity in the user reports down to 2.'");
+	Handler.Comment = NStr("en='Decreases the quick"
+"settings quantity in the user reports down to 2.';ru='Уменьшает"
+"количество быстрых настроек в пользовательских отчетах до 2 шт.'");
 	
 EndProcedure
 
@@ -937,12 +942,12 @@ Function ConnectReportObject(ReferenceOfVariantOrReport) Export
 	
 	If Result.Ref = Undefined Then
 		Result.Errors = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Report variant ""%1"" is not found in the application'"),
+			NStr("en='Report variant ""%1"" is not found in the application';ru='Вариант отчета ""%1"" не найден в программе'"),
 			String(ReferenceOfVariantOrReport));
 		Return Result;
 	ElsIf TypeOf(Result.Ref) = Type("String") Then
 		Result.Errors = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'For the variant ""%1"" report ""%2"" is written as external and can not be connected from the application'"),
+			NStr("en='For the variant ""%1"" report ""%2"" is written as external and can not be connected from the application';ru='Для варианта ""%1"" отчет ""%2"" записан как внешний и не может быть подключен из программы'"),
 			String(ReferenceOfVariantOrReport),
 			Result.Ref);
 		Return Result;
@@ -953,7 +958,7 @@ Function ConnectReportObject(ReferenceOfVariantOrReport) Export
 		Result.Metadata = Metadata.Reports.Find(Result.Name);
 		If Result.Metadata = Undefined Then
 			Result.Errors = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'For variant ""%1"" report ""%2"" is not found in the application'"),
+				NStr("en='For variant ""%1"" report ""%2"" is not found in the application';ru='Для варианта ""%1"" отчет ""%2"" не найден в программе'"),
 				String(ReferenceOfVariantOrReport),
 				Result.Name);
 			Return Result;
@@ -984,7 +989,7 @@ Procedure OnWriteAdditionalReport(CurrentObject, Cancel, ExternalObject) Export
 	
 	If Not ReportsVariantsReUse.AddRight() Then
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'You are not authorized to write variants of additional report ""%1"".'"),
+			NStr("en='You are not authorized to write variants of additional report ""%1"".';ru='Недостаточно прав доступа для записи вариантов дополнительного отчета ""%1"".'"),
 			CurrentObject.Description);
 		ErrorByVariant(CurrentObject.Ref, ErrorText);
 		CommonUseClientServer.MessageToUser(ErrorText);
@@ -1285,7 +1290,7 @@ Procedure GenerateReport(ReportGenerationParameters, StorageAddress) Export
 	EndIf;
 	
 	If ReportObject = Undefined Then
-		ErrorByVariant(Undefined, NStr("en = 'Unable to receive report object ""%1""'"), ReportRef);
+		ErrorByVariant(Undefined, NStr("en='Unable to receive report object ""%1""';ru='Не удалось получить объект отчета ""%1""'"), ReportRef);
 		Return;
 	EndIf;
 	
@@ -1447,7 +1452,7 @@ Function ReportVariantsTreesSettingsConfigurations() Export
 				RowReport.SystemInfo.Insert("ReportObject", ReportObject);
 				DCSchema = ReportObject.DataCompositionSchema;
 			Except
-				ErrorText = NStr("en = 'Unable to read report schema ""%1"":'");
+				ErrorText = NStr("en='Unable to read report schema ""%1"":';ru='Не удалось прочитать схему отчета ""%1"":'");
 				ErrorText = StrReplace(ErrorText, "%1", ReportMetadata.Name);
 				ErrorText = ErrorText + Chars.LF + DetailErrorDescription(ErrorInfo());
 				WarningByOption(Undefined, ErrorText);
@@ -1457,7 +1462,7 @@ Function ReportVariantsTreesSettingsConfigurations() Export
 				Try
 					SettingVariants = DCSchema.SettingVariants;
 				Except
-					ErrorText = NStr("en = 'Unable to read report variants list ""%1"" from schema:'");
+					ErrorText = NStr("en='Unable to read report variants list ""%1"" from schema:';ru='Не удалось прочитать список вариантов отчета ""%1"" из схемы:'");
 					ErrorText = StrReplace(ErrorText, "%1", ReportMetadata.Name);
 					ErrorText = ErrorText + Chars.LF + DetailErrorDescription(ErrorInfo());
 					WarningByOption(Undefined, ErrorText);
@@ -1468,7 +1473,7 @@ Function ReportVariantsTreesSettingsConfigurations() Export
 				Try
 					SettingVariants = ReportManager.SettingVariants();
 				Except
-					ErrorText = NStr("en = 'Unable to read report variants list ""%1"" from manager module:'");
+					ErrorText = NStr("en='Unable to read report variants list ""%1"" from manager module:';ru='Не удалось прочитать список вариантов отчета ""%1"" из модуля менеджера:'");
 					ErrorText = StrReplace(ErrorText, "%1", ReportMetadata.Name);
 					ErrorText = ErrorText + Chars.LF + DetailErrorDescription(ErrorInfo());
 					ErrorByVariant(Undefined, ErrorText);
@@ -1490,7 +1495,7 @@ Function ReportVariantsTreesSettingsConfigurations() Export
 							Variant.SystemInfo.Insert("DCSettings", DCSettingsVariant.Settings);
 						Except
 							ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-								NStr("en = 'Unable to read variant settings ""%1"" of report ""%2"":'"),
+								NStr("en='Unable to read variant settings ""%1"" of report ""%2"":';ru='Не удалось прочитать настройки варианта ""%1"" отчета ""%2"":'"),
 								Variant.VariantKey,
 								ReportMetadata.Name)
 								+ Chars.LF
@@ -1598,7 +1603,7 @@ Procedure SetReportOutputModeInReportsPanels(OptionsTree, Report, OutputReportsI
 	Else
 		RowReport = OptionsTree.Rows.Find(Report, "Metadata", False);
 		If RowReport = Undefined Then
-			WarningByOption(Undefined, NStr("en = 'Report ""%1"" is not connected to subsystem.'"), Report.Name);
+			WarningByOption(Undefined, NStr("en='Report ""%1"" is not connected to subsystem.';ru='Отчет ""%1"" не подключен к подсистеме.'"), Report.Name);
 			Return;
 		EndIf;
 	EndIf;
@@ -1647,9 +1652,11 @@ Function KeysChanges()
 		If Found.Count() > 0 Then
 			Conflict = Found[0];
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while registering changes
-				|of report variant name ""%1"": Relevant variant
-				|name ""%2"" (old name ""%3"") is also an old name ""%4"" (relevant name ""%5"").'"),
+				NStr("en='An error occurred while registering changes"
+"of report variant name ""%1"": Relevant variant"
+"name ""%2"" (old name ""%3"") is also an old name ""%4"" (relevant name ""%5"").';ru='Ошибка регистрации изменений имени"
+"варианта отчета ""%1"": Актуальное имя варианта"
+"""%2"" (старое имя ""%3"") так же числится как старое имя ""%4"" (актуальное имя ""%5"").'"),
 				String(Update.Report),
 				Update.ActualOptionName,
 				Update.OldOptionName,
@@ -1660,10 +1667,13 @@ Function KeysChanges()
 		If Found.Count() > 2 Then
 			Conflict = Found[1];
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while registring report
-				|variant name ""%1"": Old variant name ""%2""
-				|(relevant name ""%3"") is listed as an
-				|old report variant name ""%4"" (relevant name ""%5"").'"),
+				NStr("en='An error occurred while registring report"
+"variant name ""%1"": Old variant name ""%2"""
+"(relevant name ""%3"") is listed as an"
+"old report variant name ""%4"" (relevant name ""%5"").';ru='Ошибка регистрации изменений имени варианта отчета ""%1"":"
+"Старое имя варианта ""%2"" (актуальное имя ""%3"")"
+"так же числится как старое имя "
+"варианта отчета ""%4"" (актуальное имя ""%5"").'"),
 				String(Update.Report),
 				Update.OldOptionName,
 				Update.ActualOptionName,
@@ -1709,18 +1719,18 @@ Function GenerateInformationAboutReportByDescriptionFull(ReportFullName) Export
 			Result.ReportFullName = "ExternalReport." + Result.ReportName;
 			WarningByOption(
 				Undefined,
-				NStr("en = 'Report ""%1"" is not found in application, it will be covered as external one.'"),
+				NStr("en='Report ""%1"" is not found in application, it will be covered as external one.';ru='Отчет ""%1"" не найден в программе, он будет значиться как внешний.'"),
 				ReportFullName);
 		ElsIf Not AccessRight("view", Result.ReportMetadata) Then
 			Result.ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'You have no rights to access report ""%1"".'"),
+				NStr("en='You have no rights to access report ""%1"".';ru='Недостаточно прав доступа к отчету ""%1"".'"),
 				ReportFullName);
 		EndIf;
 	ElsIf Upper(Prefix) = "ExternalReport" Then
 		// You do not need to receive metadata and checks.
 	Else
 		Result.ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'For report “%1” it is impossible to define type (prefix is not set).'"),
+			NStr("en='For report “%1” it is impossible to define type (prefix is not set).';ru='Для отчета ""%1"" невозможно определить тип (не установлен префикс).'"),
 			ReportFullName);
 		Return Result;
 	EndIf;
@@ -2002,7 +2012,7 @@ Function GlobalSettings() Export
 	Result.Insert("OutputDescription", True);
 	
 	Result.Insert("Search", New Structure);
-	Result.Search.Insert("InputHint", NStr("en = 'Description, field or report author'"));
+	Result.Search.Insert("InputHint", NStr("en='Description, field or report author';ru='Наименование, поле или автор отчета'"));
 	
 	Result.Insert("OtherReports", New Structure);
 	Result.OtherReports.Insert("CloseAfterSelection", True);
@@ -2076,16 +2086,16 @@ EndProcedure
 
 // Writes a procedure start event to the events log monitor and opens transaction.
 Procedure ProcedureLaunch(ProcedureRepresentation)
-	InformationByOption(Undefined, NStr("en = 'Launching procedure ""%1"".'"), ProcedureRepresentation);
+	InformationByOption(Undefined, NStr("en='Launching procedure ""%1"".';ru='Запуск процедуры ""%1"".'"), ProcedureRepresentation);
 	BeginTransaction();
 EndProcedure
 
 // Writes procedure end event to the events log monitor and writes the transaction.
 Procedure ProcedureCompletion(ProcedureRepresentation, Changed = Undefined)
 	CommitTransaction();
-	Text = NStr("en = 'End the procedure ""%1"".'");
+	Text = NStr("en='End the procedure ""%1"".';ru='Завершение процедуры ""%1"".'");
 	If Changed <> Undefined Then
-		Text = Text + " " + NStr("en = '%2 objects are changed.'");
+		Text = Text + " " + NStr("en='%2 objects are changed.';ru='Изменено %2 объектов.'");
 	EndIf;
 	InformationByOption(Undefined, Text, ProcedureRepresentation, Changed);
 EndProcedure
@@ -2218,7 +2228,7 @@ EndProcedure
 
 // [2.1.1.1] Transfers "Reports variants" catalog data for edition 2.1.
 Procedure NavigateToVersion21() Export
-	ProcedureRepresentation = NStr("en = 'Navigate to version 2.1'");
+	ProcedureRepresentation = NStr("en='Navigate to version 2.1';ru='Перейти к редакции 2.1'");
 	ProcedureLaunch(ProcedureRepresentation);
 	
 	QueryText =
@@ -2293,7 +2303,7 @@ EndProcedure
 
 // [2.1.3.6] Fills out references of predetermined items of catalog "Reports variants".
 Procedure FillRefsOfPredefined() Export
-	ProcedureRepresentation = NStr("en = 'Fill in the links of the predefined report variants'");
+	ProcedureRepresentation = NStr("en='Fill in the links of the predefined report variants';ru='Заполнить ссылки предопределенных вариантов отчетов'");
 	ProcedureLaunch(ProcedureRepresentation);
 	
 	// Generate table of the variants keys to relevant ones replacements.
@@ -2398,9 +2408,9 @@ Procedure DeferredGeneralDataUpdate(Full)
 		Return;
 	EndIf;
 	If Full Then
-		ProcedureRepresentation = NStr("en = 'Postponed general data update (full)'");
+		ProcedureRepresentation = NStr("en='Postponed general data update (full)';ru='Отложенное обновление общих данных (полное)'");
 	Else
-		ProcedureRepresentation = NStr("en = 'Postponed update of the general data (by changes)'");
+		ProcedureRepresentation = NStr("en='Postponed update of the general data (by changes)';ru='Отложенное обновление общих данных (по изменениям)'");
 	EndIf;
 	ProcedureLaunch(ProcedureRepresentation);
 	
@@ -2430,7 +2440,7 @@ EndProcedure
 
 // Full update of reports variants search index.
 Procedure DeferredSeparatedDataFullUpdate(Parameters = Undefined) Export
-	ProcedureRepresentation = NStr("en = 'Deferred separated data update (full)'");
+	ProcedureRepresentation = NStr("en='Deferred separated data update (full)';ru='Отложенное обновление разделенных данных (полное)'");
 	ProcedureLaunch(ProcedureRepresentation);
 	
 	CacheReports = New Map;
@@ -2476,7 +2486,7 @@ EndProcedure
 
 // [2.2.3.30] Decreases quick settings quantity in the report user variants down to 2.
 Procedure ReduceQuickSettingsQuantity(IncomingParameters = Undefined) Export
-	ProcedureRepresentation = NStr("en = 'Decrease the quantity of quick settings in reports'");
+	ProcedureRepresentation = NStr("en='Decrease the quantity of quick settings in reports';ru='Сокращение количества быстрых настроек в отчетах'");
 	ProcedureLaunch(ProcedureRepresentation);
 	
 	// Read information from the previous start with errors.
@@ -2534,8 +2544,8 @@ Procedure ReduceQuickSettingsQuantity(IncomingParameters = Undefined) Export
 			RequiredRecord = False;
 		EndTry;
 		If ErrorInfo <> Undefined Then // Problem detected.
-			ErrorText = NStr("en = 'Variant ""%1"" of report ""%2"":'")
-			+ Chars.LF + NStr("en = 'An error occurred while reducing a number of quick custom settings:'")
+			ErrorText = NStr("en='Variant ""%1"" of report ""%2"":';ru='Вариант ""%1"" отчета ""%2"":'")
+			+ Chars.LF + NStr("en='An error occurred while reducing a number of quick custom settings:';ru='При уменьшении количества быстрых настроек пользовательского возникла ошибка:'")
 			+ Chars.LF + DetailErrorDescription(ErrorInfo);
 			ErrorByVariant(VariantObject.Ref, ErrorText, VariantObject.VariantKey, VariantObject.Report);
 			VariantsWithErrors.Add(VariantObject.Ref);
@@ -2575,7 +2585,7 @@ Procedure ReduceQuickSettingsQuantity(IncomingParameters = Undefined) Export
 	If errors > 0 AND TryNumber <= 30 Then
 		// Next start should take place.
 		ErrorText = ProcedureRepresentation + ":"
-			+ Chars.LF + NStr("en = 'Unable to decrease the quantity of quick settings %1 of reports.'");
+			+ Chars.LF + NStr("en='Unable to decrease the quantity of quick settings %1 of reports.';ru='Не удалось уменьшить количество быстрых настроек %1 отчетов.'");
 		ErrorText = StrReplace(ErrorText, "%1", errors);
 		Raise ErrorText;
 	EndIf;
@@ -2586,7 +2596,7 @@ EndProcedure
 
 // Replace old reports variants key to the relevant ones.
 Procedure UpdateKeysFixed(Cache)
-	ProcedureRepresentation = NStr("en = 'Update the report variant keys'");
+	ProcedureRepresentation = NStr("en='Update the report variant keys';ru='Обновить ключи вариантов отчетов'");
 	ProcedureLaunch(ProcedureRepresentation);
 	
 	// Generate table of the variants keys to relevant ones replacements.
@@ -2641,7 +2651,7 @@ EndProcedure
 
 // Actualize predefined reports variants.
 Procedure UpdateSettingsOfPredefined(Cache)
-	ProcedureRepresentation = NStr("en = 'Refresh predefined'");
+	ProcedureRepresentation = NStr("en='Refresh predefined';ru='Обновить предопределенные'");
 	ProcedureLaunch(ProcedureRepresentation);
 	
 	TableFunctionalOptions = New ValueTable;
@@ -2821,7 +2831,7 @@ EndFunction
 // Makes the divided data compliant to the undivided data.
 Procedure UpdateContentAreas()
 	
-	ProcedureRepresentation = NStr("en = 'Update the separated report variants'");
+	ProcedureRepresentation = NStr("en='Update the separated report variants';ru='Обновить разделенные вариантов отчетов'");
 	ProcedureLaunch(ProcedureRepresentation);
 	
 	// Update predefined variants information.
@@ -3088,12 +3098,12 @@ Procedure MarkOnDeletionDeletedReportVariants(Cache, SharedData)
 	
 	If SharedData Then
 		Cache.RefreshAreas = True;
-		Suffix = NStr("en = 'common data'");
+		Suffix = NStr("en='common data';ru='общие данные'");
 	Else
-		Suffix = NStr("en = 'data area'");
+		Suffix = NStr("en='data area';ru='область данных'");
 	EndIf;
 	
-	ProcedureRepresentation = NStr("en = 'Deletion of the deleted report variants'") + " (" + Suffix + ")";
+	ProcedureRepresentation = NStr("en='Deletion of the deleted report variants';ru='Удаление вариантов удаленных отчетов'") + " (" + Suffix + ")";
 	ProcedureLaunch(ProcedureRepresentation);
 	
 	OptionsRefsArray = Result.Unload().UnloadColumn("Ref");
@@ -3133,7 +3143,7 @@ Procedure ReplaceKeysCustomizations(OldVariant, ActualVariant)
 			ReadErrorsInRow = ReadErrorsInRow + 1;
 			ErrorByVariant(
 				OldVariant.Ref,
-				NStr("en = 'An error occurred while selecting reports variants from the standard storage'")
+				NStr("en='An error occurred while selecting reports variants from the standard storage';ru='В процессе выборки вариантов отчетов из стандартного хранилища возникла ошибка:'")
 				+ Chars.LF
 				+ DetailErrorDescription(ErrorInfo()));
 		EndTry;
@@ -3454,7 +3464,7 @@ Function IndexSchemaContent(VariantObject) Export
 		Search = New Structure("Report, VariantKey, IsOption", VariantObject.Report, VariantObject.VariantKey, True);
 		Found = AdditionalProperties.OptionsTree.Rows.FindRows(Search, True);
 		If Found.Count() = 0 Then
-			ErrorText = NStr("en = 'Variant ""%1"" is not found for report ""%2""'");
+			ErrorText = NStr("en='Variant ""%1"" is not found for report ""%2""';ru='Вариант ""%1"" не найден для отчета ""%2""'");
 			ErrorByVariant(VariantObject.Ref, ErrorText, VariantObject.VariantKey, VariantObject.Report);
 			Return False; // Problem detected.
 		EndIf;
@@ -3484,8 +3494,9 @@ Function IndexSchemaContent(VariantObject) Export
 		// Report object.
 		If Not RowReport.SystemInfo.BuiltOnDCS Then
 			If RowReport.Placement.Count() > 0 Then
-				ErrorText = NStr("en = 'For report ""%2"" search settings are not filled in: names of fields or parameters and filters.
-				|For more information - see the ""SetReportVariants"" procedure of the ""ReportVariantsPredefined"" module.'");
+				ErrorText = NStr("en='For report ""%2"" search settings are not filled in: names of fields or parameters and filters."
+"For more information - see the ""SetReportVariants"" procedure of the ""ReportVariantsPredefined"" module.';ru='Для отчета ""%2"" не заполнены настройки поиска: наименования полей или параметров и отборов."
+"Подробнее - см. процедуру ""НастроитьВариантыОтчетов"" модуля ""ВариантыОтчетовПереопределяемый"".'");
 				ErrorByVariant(VariantObject.Ref, ErrorText, "", VariantObject.Report);
 			EndIf;
 			Return False; // Problem detected.
@@ -3537,7 +3548,7 @@ Function IndexSchemaContent(VariantObject) Export
 	If DCSchema = Undefined Then
 		If Not ValueIsFilled(VariantObject.FieldNames)
 			Or Not ValueIsFilled(VariantObject.ParametersAndFiltersNames) Then
-			ErrorText = NStr("en = 'For variant ""%1"" of report ""%2"" the search settings are not specified: field names or parameters and filters.'");
+			ErrorText = NStr("en='For variant ""%1"" of report ""%2"" the search settings are not specified: field names or parameters and filters.';ru='Для варианта ""%1"" отчета ""%2"" не заполнены настройки поиска: наименования полей или параметров и отборов.'");
 			InformationByOption(VariantObject.Ref, ErrorText, VariantObject.VariantKey, VariantObject.Report);
 		EndIf;
 		Return False; // Problem detected.
@@ -3796,7 +3807,7 @@ Function DecreaseQuickSettingsQuantity(VariantObject, ReportObject) Export
 	// Read settings from variant data.
 	DCSettings = VariantObject.Settings.Get();
 	If TypeOf(DCSettings) <> Type("DataCompositionSettings") Then
-		ErrorText = NStr("en = 'Empty settings of the user variant ""%1"" of the report are found ""%2"".'");
+		ErrorText = NStr("en='Empty settings of the user variant ""%1"" of the report are found ""%2"".';ru='Обнаружены пустые настройки пользовательского варианта ""%1"" отчета ""%2"".'");
 		ErrorByVariant(VariantObject.Ref, ErrorText, VariantObject.VariantKey, VariantObject.Report);
 		Return False; // Problem detected.
 	EndIf;

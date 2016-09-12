@@ -80,7 +80,7 @@ Procedure FillByReceiptCR(Val BasisDocument, FillingData)
 	
 	If Not Documents.RetailReport.SessionIsOpen(Selection.CashCRSession, CurrentDate(), ErrorText) Then
 		
-		ErrorText = ErrorText + NStr("en='. Input on the basis is not possible'");
+		ErrorText = ErrorText + NStr("en='. Input on the basis is not possible';ru='. Ввод на основании невозможен'");
 		
 		Raise ErrorText;
 		
@@ -88,7 +88,7 @@ Procedure FillByReceiptCR(Val BasisDocument, FillingData)
 	
 	If Not Selection.Posted Then
 		
-		ErrorText = NStr("en='Cash register receipt is not posted. Input on the basis is not possible'");
+		ErrorText = NStr("en='Cash register receipt is not posted. Input on the basis is not possible';ru='Чек ККМ не проведен. Ввод на основании невозможен'");
 		
 		Raise ErrorText;
 		
@@ -96,7 +96,7 @@ Procedure FillByReceiptCR(Val BasisDocument, FillingData)
 	
 	If Not ValueIsFilled(Selection.ReceiptCRNumber) Then
 		
-		ErrorText = NStr("en='Cash register receipt is not issued. Input on the basis is not possible'");
+		ErrorText = NStr("en='Cash register receipt is not issued. Input on the basis is not possible';ru='Чек ККМ не пробит. Ввод на основании невозможен'");
 	
 		Raise ErrorText;
 		
@@ -134,7 +134,7 @@ EndProcedure // AddAttributesToAdditionalPropertiesForPosting()
 //
 Procedure OnCopy(CopiedObject)
 	
-	Raise NStr("en = 'Return receipt can be entered only on base'");
+	Raise NStr("en='Return receipt can be entered only on base';ru='Чек на возврат вводится только на основании'");
 	
 EndProcedure // OnCopy()
 
@@ -150,7 +150,7 @@ Procedure Filling(FillingData, StandardProcessing)
 		
 	Else
 		
-		Raise NStr("en = 'Return receipts must be entered only on base of cash receipts'");
+		Raise NStr("en='Return receipts must be entered only on base of cash receipts';ru='Чеки ККМ на возврат должны вводится на основании чеков ККМ'");
 		
 	EndIf;
 	
@@ -191,7 +191,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	While Selection.Next() Do
 		
-		ErrorText = NStr("en='For this receipt the return has already been entered'");
+		ErrorText = NStr("en='For this receipt the return has already been entered';ru='Для данного чека уже введен чек на возврат'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -210,7 +210,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If BegOfDay(Selection.Date) <> BegOfDay(Date) Then
 			
-			ErrorText = NStr("en='Return date should correspond to the date of cash register receipt'");
+			ErrorText = NStr("en='Return date should correspond to the date of cash register receipt';ru='Дата чека на возврат должна соответствовать дате чека продажи'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -225,7 +225,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If CashCRSession <> Selection.CashCRSession Then
 			
-			ErrorText = NStr("en='Return receipt''s cash session should correspond to original receipt''s cash session'");
+			ErrorText = NStr("en=""Return receipt's cash session should correspond to original receipt's cash session"";ru='Кассовая смена Чека на возврат должна соответствовать кассовой смене чека продажи'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -240,7 +240,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If Not Selection.Posted Then
 			
-			ErrorText = NStr("en='Cash receipt was not posted.'");
+			ErrorText = NStr("en='Cash receipt was not posted.';ru='Чек ККМ не проведен'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -255,7 +255,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If Not ValueIsFilled(Selection.ReceiptCRNumber) Then
 			
-			ErrorText = NStr("en='Cash receipt was not issued.'");
+			ErrorText = NStr("en='Cash receipt was not issued.';ru='Чек ККМ продажи не пробит'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -268,7 +268,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 		EndIf;
 		
-		ErrorText = NStr("en='Cash session is not opened'");
+		ErrorText = NStr("en='Cash session is not opened';ru='Кассовая смена не открыта'");
 		If Not Documents.RetailReport.SessionIsOpen(CashCRSession, Date, ErrorText) Then
 			
 			
@@ -287,7 +287,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If PaymentWithPaymentCards.Count() > 0 AND Not ValueIsFilled(POSTerminal) Then
 		
-		ErrorText = NStr("en='Field ""Terminal"" is empty'");
+		ErrorText = NStr("en='Field ""Terminal"" is empty';ru='Поле ""Эквайринговый терминал"" не заполнено'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -316,7 +316,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		
 		Cancel = True;
 		
-		ErrorText = NStr("en='CR receipt to return is issued on the fiscal register. Impossible to cancel the posting'");
+		ErrorText = NStr("en='CR receipt to return is issued on the fiscal register. Impossible to cancel the posting';ru='Чек ККМ на возврат пробит на фискальном регистраторе. Отмена проведения невозможна'");
 		
 		CommonUseClientServer.MessageToUser(
 			ErrorText,
@@ -331,7 +331,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	   AND CashCRSession.Posted
 	   AND CashCRSession.CashCRSessionStatus = Enums.CashCRSessionStatuses.Closed Then
 		
-		MessageText = NStr("en='Cash session is closed. Impossible to cancel the posting'");
+		MessageText = NStr("en='Cash session is closed. Impossible to cancel the posting';ru='Кассовая смена закрыта. Отмена проведения невозможна'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,

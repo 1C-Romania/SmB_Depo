@@ -821,11 +821,11 @@ Procedure CheckPossibilityOfSendingAndReceivingOfEmails(UserAccount, PasswordPar
 			CheckPossibilityOfSendingTestMessages(UserAccount, PasswordParameter);
 		Except
 			ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
-									NStr("en = 'Error when sending a message: %1'"),
+									NStr("en='Error when sending a message: %1';ru='Ошибка при отправке сообщения: %1'"),
 									BriefErrorDescription(ErrorInfo()) );
 		EndTry;
 		If Not AccountSettings.UseForReceiving Then
-			AdditionalMessage = Chars.LF + NStr("en = '(Verification of the email sending is completed.)'");
+			AdditionalMessage = Chars.LF + NStr("en='(Verification of the email sending is completed.)';ru='(Выполнена проверка отправки электронных сообщений.)'");
 		EndIf;
 	EndIf;
 	
@@ -839,11 +839,11 @@ Procedure CheckPossibilityOfSendingAndReceivingOfEmails(UserAccount, PasswordPar
 			
 			ErrorInfo = ErrorInfo
 								+ StringFunctionsClientServer.PlaceParametersIntoString(
-										NStr("en = 'Access error to the incoming message server: %1'"),
+										NStr("en='Access error to the incoming message server: %1';ru='Ошибка доступа к серверу входящих сообщений: %1'"),
 										BriefErrorDescription(ErrorInfo()) );
 		EndTry;
 		If Not AccountSettings.UseForSending Then
-			AdditionalMessage = Chars.LF + NStr("en = '(Verification of the email receiving is completed.)'");
+			AdditionalMessage = Chars.LF + NStr("en='(Verification of the email receiving is completed.)';ru='(Выполнена проверка получения электронных сообщений.)'");
 		EndIf;
 	EndIf;
 	
@@ -864,8 +864,8 @@ Procedure CheckPossibilityOfSendingTestMessages(Val UserAccount, Val Password = 
 	
 	EmailParameters = New Structure;
 	
-	EmailParameters.Insert("Subject", NStr("en = '""1C:Enterprise"" test message'"));
-	EmailParameters.Insert("Body", NStr("en = 'The email is sent using ""1C:Enterprise"" service'"));
+	EmailParameters.Insert("Subject", NStr("en='""1C:Enterprise"" test message';ru='Тестовое сообщение 1С:Предприятие'"));
+	EmailParameters.Insert("Body", NStr("en='The email is sent using ""1C:Enterprise"" service';ru='Это сообщение отправлено подсистемой электронной почты 1С:Предприятие'"));
 	EmailParameters.Insert("Whom", CommonUse.ObjectAttributeValue(UserAccount, "EmailAddress"));
 	If Password <> Undefined Then
 		EmailParameters.Insert("Password", Password);
@@ -905,7 +905,7 @@ Procedure CheckLoginToIncomingMailServer(Val UserAccount, Val Password = Undefin
 EndProcedure
 
 Function EventLogMonitorEvent()
-	Return NStr("en = 'Email account check'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Email account check';ru='Проверка учетной записи электронной почты'", CommonUseClientServer.MainLanguageCode());
 EndFunction
 
 // DIB 
@@ -1048,7 +1048,7 @@ Procedure OnFillAccessKinds(AccessKinds) Export
 	
 	AccessKind = AccessKinds.Add();
 	AccessKind.Name = "EmailAccounts";
-	AccessKind.Presentation = NStr("en = 'Email accounts'");
+	AccessKind.Presentation = NStr("en='Email accounts';ru='Учетные записи электронной почты'");
 	AccessKind.ValuesType   = Type("CatalogRef.EmailAccounts");
 	
 EndProcedure

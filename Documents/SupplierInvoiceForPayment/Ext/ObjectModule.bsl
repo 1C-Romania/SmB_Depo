@@ -127,7 +127,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	   AND PaymentCalendar.Count() = 1
 	   AND Not ValueIsFilled(PaymentCalendar[0].PayDate) Then
 		
-		MessageText = NStr("en = 'Field ""Payment date"" is required.'");
+		MessageText = NStr("en='Field ""Payment date"" is required.';ru='Поле ""Дата оплаты"" не заполнено.'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "PayDate", Cancel);
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentCalendar.PaymentDate");
 		

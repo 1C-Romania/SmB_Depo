@@ -25,7 +25,7 @@ Procedure ImportRFBanksClassifier() Export
 	Descriptors = SuppliedData.ProvidedDataFromManagerDescriptors("RFBanks");
 	
 	If Descriptors.Descriptor.Count() < 1 Then
-		Raise(NStr("en = 'There is no ""RFBanks"" data kind in the service manager.'"));
+		Raise(NStr("en='There is no ""RFBanks"" data kind in the service manager.';ru='В менеджере сервиса отсутствуют данные вида ""БанкиРФ""'"));
 	EndIf;
 	
 	SuppliedData.ImportAndProcessData(Descriptors.Descriptor[0]);

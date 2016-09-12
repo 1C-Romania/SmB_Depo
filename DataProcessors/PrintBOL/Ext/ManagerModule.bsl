@@ -832,7 +832,7 @@ Function PrintForm(ObjectsArray, PrintObjects, PrintParameters) Export
 			IndividualsDocuments = Catalogs.Individuals.IndividualDocumentByType(Header.DocumentDate, Header.Driver, Catalogs.IndividualsDocumentsKinds.DriversLicense);
 			If IndividualsDocuments.Count() > 0 Then
 				
-				DriversLicense = NStr("en = 'Series '") + String(IndividualsDocuments[0].Series) + NStr("en = ' No. '") + String(IndividualsDocuments[0].Number);
+				DriversLicense = NStr("en='Series ';ru='серия '") + String(IndividualsDocuments[0].Series) + NStr("en=' No. ';ru=' № '") + String(IndividualsDocuments[0].Number);
 				ParameterValues.Insert("DriversLicense", DriversLicense);
 				
 			EndIf;

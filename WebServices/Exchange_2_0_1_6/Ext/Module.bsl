@@ -128,7 +128,7 @@ Function CreateDataExchange(ExchangePlanName, ParameterString, SetupXDTOFilter, 
 	DataExchangeCreationAssistant.RunAssistantParametersImport(Cancel, ParameterString);
 	
 	If Cancel Then
-		Message = NStr("en = 'An error occurred when creating an exchange setting in the second infobase: %1'");
+		Message = NStr("en='An error occurred when creating an exchange setting in the second infobase: %1';ru='При создании настройки обмена во второй информационной базе возникли ошибки: %1'");
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, DataExchangeCreationAssistant.ErrorMessageString());
 		Raise Message;
 	EndIf;
@@ -145,7 +145,7 @@ Function CreateDataExchange(ExchangePlanName, ParameterString, SetupXDTOFilter, 
 											XDTOSerializer.ReadXDTO(ValuesByDefaultXDTO));
 	
 	If Cancel Then
-		Message = NStr("en = 'An error occurred when creating an exchange setting in the second infobase: %1'");
+		Message = NStr("en='An error occurred when creating an exchange setting in the second infobase: %1';ru='При создании настройки обмена во второй информационной базе возникли ошибки: %1'");
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, DataExchangeCreationAssistant.ErrorMessageString());
 		Raise Message;
 	EndIf;
@@ -244,13 +244,13 @@ Function GetFilePart(TransferId, PartNumber, PartData)
 	
 	If FileNames.Count() = 0 Then
 		
-		MessagePattern = NStr("en = 'Fragment %1 of transfer session with the %2 ID is not found'");
+		MessagePattern = NStr("en='Fragment %1 of transfer session with the %2 ID is not found';ru='Не найден фрагмент %1 сессии передачи с идентификатором %2'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, String(PartNumber), String(TransferId));
 		Raise(MessageText);
 		
 	ElsIf FileNames.Count() > 1 Then
 		
-		MessagePattern = NStr("en = 'Several fragments %1 of the transfer session with the %2 ID have been found'");
+		MessagePattern = NStr("en='Several fragments %1 of the transfer session with the %2 ID have been found';ru='Найдено несколько фрагментов %1 сессии передачи с идентификатором %2'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, String(PartNumber), String(TransferId));
 		Raise(MessageText);
 		
@@ -304,9 +304,11 @@ Function SaveFileFromParts(TransferId, PartQuantity, FileId)
 		FileName = CommonUseClientServer.GetFullFileName(TemporaryDirectory, GetPartFileName(PartNumber));
 		
 		If FindFiles(FileName).Count() = 0 Then
-			MessagePattern = NStr("en = 'Fragment of transfer session %1 with ID %2 is not found.
-					|It is necessary to make sure that
-					|in application settings parameters ""Directory of temporary files for Linux"" and ""Directory of temporary files for Windows"" are specified.'");
+			MessagePattern = NStr("en='Fragment of transfer session %1 with ID %2 is not found."
+"It is necessary to make sure that"
+"in application settings parameters ""Directory of temporary files for Linux"" and ""Directory of temporary files for Windows"" are specified.';ru='Не найден фрагмент %1 сессии передачи с идентификатором %2."
+"Необходимо убедиться, что в настройках программы заданы параметры"
+"""Каталог временных файлов для Linux"" и ""Каталог временных файлов для Windows"".'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, String(PartNumber), String(TransferId));
 			Raise(MessageText);
 		EndIf;
@@ -328,7 +330,7 @@ Function SaveFileFromParts(TransferId, PartQuantity, FileId)
 			WriteLogEvent(DataExchangeServer.EventLogMonitorMessageTextRemovingTemporaryFile(),
 				EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 		EndTry;
-		Raise(NStr("en = 'Archive file does not contain the data.'"));
+		Raise(NStr("en='Archive file does not contain the data.';ru='Файл архива не содержит данных.'"));
 	EndIf;
 	
 	ExportDirectory = DataExchangeReUse.TempFileStorageDirectory();
@@ -411,7 +413,7 @@ Function CheckConnection(ExchangePlanName, NodeCode, Result)
 	
 	// Check if there is the exchange plan node (probably the node is already deleted).
 	If ExchangePlans[ExchangePlanName].FindByCode(NodeCode).IsEmpty() Then
-		Result = NStr("en = 'Possibility of the data synchronization is disabled by the application administrator in the Internet.'");
+		Result = NStr("en='Possibility of the data synchronization is disabled by the application administrator in the Internet.';ru='Возможность синхронизации данных отключена администратором приложения в Интернете.'");
 		Return False;
 	EndIf;
 	
@@ -425,7 +427,7 @@ Procedure ValidateLockInformationBaseForUpdate()
 	
 	If ValueIsFilled(InfobaseUpdateService.InfobaseLockedForUpdate()) Then
 		
-		Raise NStr("en = 'Data synchronization is temporarily unavailable due to the application updating in the Internet.'");
+		Raise NStr("en='Data synchronization is temporarily unavailable due to the application updating in the Internet.';ru='Синхронизация данных временно недоступна в связи с обновлением приложения в Интернете.'");
 		
 	EndIf;
 	
@@ -448,13 +450,13 @@ Procedure ExecuteDataExportInClientServerMode(ExchangePlanName,
 	Filter.Insert("Key", BackgroundJobKey);
 	Filter.Insert("State", BackgroundJobState.Active);
 	If BackgroundJobs.GetBackgroundJobs (Filter).Count() = 1 Then
-		Raise NStr("en = 'Data synchronization is already executing.'");
+		Raise NStr("en='Data synchronization is already executing.';ru='Синхронизация данных уже выполняется.'");
 	EndIf;
 	
 	BackgroundJob = BackgroundJobs.Execute("DataExchangeServer.ExportToFileTransferServiceForInfobaseNode",
 										Parameters,
 										BackgroundJobKey,
-										NStr("en = 'Data exchange through the web service is being performed.'"));
+										NStr("en='Data exchange through the web service is being performed.';ru='Выполнение обмена данными через веб-сервис.'"));
 	
 	Try
 		Timeout = ?(LongOperationAllowed, 5, Undefined);
@@ -489,7 +491,7 @@ Procedure ExecuteDataExportInClientServerMode(ExchangePlanName,
 			Raise DetailErrorDescription(BackgroundJob.ErrorInfo);
 		EndIf;
 		
-		Raise NStr("en = 'Error when exporting the data through the web service.'");
+		Raise NStr("en='Error when exporting the data through the web service.';ru='Ошибка при выгрузке данных через веб-сервис.'");
 	EndIf;
 	
 EndProcedure
@@ -511,13 +513,13 @@ Procedure ImportDataInClientServerMode(ExchangePlanName,
 	Filter.Insert("Key", BackgroundJobKey);
 	Filter.Insert("State", BackgroundJobState.Active);
 	If BackgroundJobs.GetBackgroundJobs (Filter).Count() = 1 Then
-		Raise NStr("en = 'Data synchronization is already executing.'");
+		Raise NStr("en='Data synchronization is already executing.';ru='Синхронизация данных уже выполняется.'");
 	EndIf;
 	
 	BackgroundJob = BackgroundJobs.Execute("DataExchangeServer.ImportForInfobaseNodeFromFileTransferService",
 										Parameters,
 										BackgroundJobKey,
-										NStr("en = 'Data exchange through the web service is being performed.'"));
+										NStr("en='Data exchange through the web service is being performed.';ru='Выполнение обмена данными через веб-сервис.'"));
 	
 	Try
 		Timeout = ?(LongOperationAllowed, 5, Undefined);
@@ -551,7 +553,7 @@ Procedure ImportDataInClientServerMode(ExchangePlanName,
 			Raise DetailErrorDescription(BackgroundJob.ErrorInfo);
 		EndIf;
 		
-		Raise NStr("en = 'Error when importing the data through the web service.'");
+		Raise NStr("en='Error when importing the data through the web service.';ru='Ошибка при загрузке данных через веб-сервис.'");
 	EndIf;
 	
 EndProcedure
@@ -572,7 +574,7 @@ Function RegisterDataForInitialExport(Val ExchangePlanName, Val NodeCode, LongOp
 	InfobaseNode = ExchangePlans[ExchangePlanName].FindByCode(NodeCode);
 	
 	If Not ValueIsFilled(InfobaseNode) Then
-		Message = NStr("en = 'Exchange plan node is not found; %1 exchange plan name; %2 node code'");
+		Message = NStr("en='Exchange plan node is not found; %1 exchange plan name; %2 node code';ru='Не найден узел плана обмена; имя плана обмена %1; код узла %2'");
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, ExchangePlanName, NodeCode);
 		Raise Message;
 	EndIf;
@@ -600,7 +602,7 @@ Function RegisterDataForInitialExport(Val ExchangePlanName, Val NodeCode, LongOp
 		Parameters = New Array;
 		Parameters.Add(InfobaseNode);
 		
-		BackgroundJob = BackgroundJobs.Execute(MethodName, Parameters,, NStr("en = 'Data exchange creation.'"));
+		BackgroundJob = BackgroundJobs.Execute(MethodName, Parameters,, NStr("en='Data exchange creation.';ru='Создание обмена данными.'"));
 		
 		Try
 			BackgroundJob.WaitForCompletion(5);

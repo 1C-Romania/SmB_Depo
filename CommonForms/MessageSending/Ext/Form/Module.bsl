@@ -61,7 +61,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		// User account is not passed - select the first available.
 		AvailableAccounts = EmailOperations.AvailableAccounts(True);
 		If AvailableAccounts.Count() = 0 Then
-			MessageText = NStr("en = 'Available email accounts are not found, contact your system administrator.'");
+			MessageText = NStr("en='Available email accounts are not found, contact your system administrator.';ru='Не обнаружены доступные учетные записи электронной почты, обратитесь к администратору системы.'");
 			CommonUseClientServer.MessageToUser(MessageText,,,,Cancel);
 			Return;
 		EndIf;
@@ -75,7 +75,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		AccountsSet = Parameters.UserAccount;
 		
 		If AccountsSet.Count() = 0 Then
-			MessageText = NStr("en = 'Email accounts for sending the message are not specified, contact your system administrator.'");
+			MessageText = NStr("en='Email accounts for sending the message are not specified, contact your system administrator.';ru='Не указаны учетные записи для отправки сообщения, обратитесь к администратору системы.'");
 			CommonUseClientServer.MessageToUser(MessageText,,,, Cancel);
 			Return;
 		EndIf;
@@ -448,7 +448,7 @@ Function GetSpreadsheetDocumentByBinaryData(Val BinaryData)
 	Try
 		DeleteFiles(FileName);
 	Except
-		WriteLogEvent(NStr("en = 'Tabular document receiving'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , 
+		WriteLogEvent(NStr("en='Tabular document receiving';ru='Получение табличного документа'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , 
 			DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -647,13 +647,13 @@ Procedure ContinueSendingEmailsWithPassword()
 	EmailParameters = GenerateLetterParameters();
 	
 	If EmailParameters = Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Error of generating parameters of the mail message'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Error of generating parameters of the mail message';ru='Ошибка формирования параметров почтового сообщения'"));
 		Return;
 	EndIf;
 	
 	SendE_Mail(UserAccount, EmailParameters);
 	SaveReplyTo(ReplyTo);
-	Status(NStr("en = 'Message is sent successfully'"));
+	Status(NStr("en='Message is sent successfully';ru='Сообщение успешно отправлено'"));
 	
 	Close();
 	

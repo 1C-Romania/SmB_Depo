@@ -114,12 +114,12 @@ Procedure ShowCurrentSessionTime(Command)
 	
 	ShowMessageBox(,
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Session time: %1
-				|On server: %2
-				|On client: %3 
-       |
-      |Session time is
-				|server time converted to the client timezone.'"),
+			NStr("en='Session time: %1"
+"On server: %2"
+"On client: %3 "
+""
+"Session time is"
+"server time converted to the client timezone.';ru='Время сеанса: %1 На сервере: %2 На клиенте: %3 Время сеанса - это время сервера, приведенное к часовому поясу клиента.'"),
 			Format(CommonUseClient.SessionDate(), "DLF=T"),
 			Format(ServerDate(), "DLF=T"),
 			Format(CurrentDate(), "DLF=T")));

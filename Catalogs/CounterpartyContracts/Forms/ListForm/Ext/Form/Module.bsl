@@ -110,7 +110,7 @@ Procedure SetAsContractByDefault(Command)
 	
 	If CurrentListRow = Undefined Then
 		
-		MessageText = NStr("en = 'Contract that is to be set as a default contract is not selected'");
+		MessageText = NStr("en='Contract that is to be set as a default contract is not selected';ru='Не выбран договор, который необходимо установить как Договор по умолчанию'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		Return;
@@ -158,7 +158,7 @@ Procedure ChangeCardOfCounterpartyAndChangeListAppearance(Counterparty, NewContr
 		
 	Except
 		
-		MessageText = NStr("en = 'Failed to change the contract by default in the card of the counterparty.'");
+		MessageText = NStr("en='Failed to change the contract by default in the card of the counterparty.';ru='Не удалось поменять договор по умолчанию в карточке контрагента.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndTry;

@@ -89,7 +89,7 @@ Procedure ElectronicDocumentsOwnerOnWrite(Source, Cancel) Export
 		EditAllowed = True;
 		ElectronicDocumentsOverridable.CheckObjectEditingPossibility(Source.Ref, EditAllowed);
 		If Not EditAllowed Then
-			MessageText = NStr("en='Relevant electronic document exists. Prohibited to edit the key attributes of the document.'");
+			MessageText = NStr("en='Relevant electronic document exists. Prohibited to edit the key attributes of the document.';ru='Существует актуальный электронный документ. Запрещено редактирование ключевых реквизитов документа.'");
 			CommonUseClientServer.MessageToUser(MessageText, , , , Cancel);
 			Return;
 		EndIf;
@@ -247,7 +247,7 @@ Procedure NewEDScheduledReceiving() Export
 		SetPrivilegedMode(True);
 	EndIf;
 	
-	Text = NStr("en = 'Scheduled job on receiving new electronicdocuments is started.'");
+	Text = NStr("en='Scheduled job on receiving new electronicdocuments is started.';ru='Начато регламентное задание по получению новых эл.документов.'");
 	WriteEventOnEDToEventLogMonitor(Text, 4, EventLogLevel.Information);
 	
 	BeginTransaction();
@@ -274,16 +274,18 @@ Procedure NewEDScheduledReceiving() Export
 			EndDo;
 			
 			CommitTransaction();
-			MessagePattern = NStr("en = 'Scheduled job is complete. Packs received: %1.'");
+			MessagePattern = NStr("en='Scheduled job is complete. Packs received: %1.';ru='Закончено регламентное задание. Получено пакетов: %1.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, PackagesCount);
 			WriteEventOnEDToEventLogMonitor(MessageText, 4, EventLogLevel.Information);
 		EndIf;
 	Except
 		RollbackTransaction();
 		
-		MessagePattern = NStr("en = 'An error occurred while scheduled receiving new electronic documents.
-									|Additional
-									|description: %1'");
+		MessagePattern = NStr("en='An error occurred while scheduled receiving new electronic documents."
+"Additional"
+"description: %1';ru='Во время регламентного получения новых эл.документов произошла ошибка."
+"Дополнительное"
+"описание: %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ErrorInfo().Definition);
 		WriteEventOnEDToEventLogMonitor(MessageText, 4, EventLogLevel.Error);
 	EndTry;
@@ -299,18 +301,20 @@ Procedure CompletedEDScheduledSending() Export
 		SetPrivilegedMode(True);
 	EndIf;
 	
-	Text = NStr("en = 'Scheduled job is started on sending formed electronicdocuments is started.'");
+	Text = NStr("en='Scheduled job is started on sending formed electronicdocuments is started.';ru='Начато регламентное задание по отправке оформленных эл.документов.'");
 	WriteEventOnEDToEventLogMonitor(Text, 4, EventLogLevel.Information);
 	
 	Try
 		PackagesCount = SendingCompletedED();
-		Text = NStr("en = 'Scheduled job is complete. Packs sent: %PacksQuantity%.'");
+		Text = NStr("en='Scheduled job is complete. Packs sent: %PacksQuantity%.';ru='Закончено регламентное задание. Отправлено пакетов: %КоличествоПакетов%.'");
 		Text = StrReplace(Text, "%PackagesCount%", PackagesCount);
 		WriteEventOnEDToEventLogMonitor(Text, 4, EventLogLevel.Information);
 	Except
-		ErrorDescription = NStr("en = 'An error occurred while scheduled sending of formed electronic documents.
-		|Additional
-		|description: %AdditionalDetails%'");
+		ErrorDescription = NStr("en='An error occurred while scheduled sending of formed electronic documents."
+"Additional"
+"description: %AdditionalDetails%';ru='Во время регламентной отправки оформленных эл.документов произошла ошибка."
+"Дополнительное"
+"описание: %ДополнительноеОписание%'");
 		ErrorDescription = StrReplace(ErrorDescription, "%AdditionalDetails%", ErrorInfo().Definition);
 		
 		WriteEventOnEDToEventLogMonitor(ErrorDescription, 4, EventLogLevel.Error);
@@ -783,8 +787,9 @@ EndFunction
 Function GetFTPConnection(EDFProfileSettings, IsTest = False) Export
 	
 	If IsTest Then
-		MessagePattern = NStr("en = 'Test. Check whether FTP connection is set.
-			|%1'");
+		MessagePattern = NStr("en='Test. Check whether FTP connection is set."
+"%1';ru='Тест. Проверка установки FTP соединения."
+"%1'");
 	Else
 		MessagePattern = "%1";
 	EndIf;
@@ -826,7 +831,7 @@ Function GetFTPConnection(EDFProfileSettings, IsTest = False) Export
 											Proxy,
 											EDFProfileSettingsParameters.PassiveConnection);
 	Except
-		ResultTemplate = NStr("en = '%1 %2'");
+		ResultTemplate = NStr("en='%1 %2';ru='%1 %2'");
 		ErrorText = ElectronicDocumentsServiceCallServer.GetMessageAboutError("121");
 		TestResult = StringFunctionsClientServer.PlaceParametersIntoString(ResultTemplate, ErrorText,
 			BriefErrorDescription(ErrorInfo()));
@@ -836,7 +841,7 @@ Function GetFTPConnection(EDFProfileSettings, IsTest = False) Export
 	EndTry;
 	
 	If IsTest Then
-		TestResult = NStr("en = 'Passed successfully.'");
+		TestResult = NStr("en='Passed successfully.';ru='Пройден успешно.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, TestResult);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -873,8 +878,9 @@ Procedure TestLinksExchangeThroughFTP(EDFProfileSettings, IncomingDocumentsDir, 
 		Return;
 	EndIf;
 	
-	MessagePattern = NStr("en = 'Check the outgoing documents directory.
-							|%1'");
+	MessagePattern = NStr("en='Check the outgoing documents directory."
+"%1';ru='Проверка каталога исходящих документов."
+"%1'");
 	
 	ErrorText = "";
 	Try
@@ -887,33 +893,35 @@ Procedure TestLinksExchangeThroughFTP(EDFProfileSettings, IncomingDocumentsDir, 
 	If ValueIsFilled(ErrorText) Then
 		TestResult = ErrorText;
 	Else
-		TestResult = NStr("en = 'Passed successfully.'");
+		TestResult = NStr("en='Passed successfully.';ru='Пройден успешно.'");
 	EndIf;
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, TestResult);
-	MessageText = NStr("en = 'Exchange text by %1 profile.'") + " " + MessageText;
+	MessageText = NStr("en='Exchange text by %1 profile.';ru='Тест обмена по профилю %1.'") + " " + MessageText;
 	MessageText = StrReplace(MessageText, "%1", EDFProfileSettings);
 	CommonUseClientServer.MessageToUser(MessageText);
 	
 	If Not ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en = 'Check files writing and reading in the outgoing documents directory.
-									|%1'");
+		MessagePattern = NStr("en='Check files writing and reading in the outgoing documents directory."
+"%1';ru='Проверка записи и чтения файлов в каталоге исходящих документов."
+"%1'");
 		CheckFile(MessagePattern, FTPConnection, ErrorText);
 		If ValueIsFilled(ErrorText) Then
 			TestResult = ErrorText;
 		Else
-			TestResult = NStr("en = 'Passed successfully.'");
+			TestResult = NStr("en='Passed successfully.';ru='Пройден успешно.'");
 		EndIf;
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, TestResult);
-		MessageText = NStr("en = 'Exchange text by %1 profile.'") + " " + MessageText;
+		MessageText = NStr("en='Exchange text by %1 profile.';ru='Тест обмена по профилю %1.'") + " " + MessageText;
 		MessageText = StrReplace(MessageText, "%1", EDFProfileSettings);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
 	ErrorText = "";
 	
-	MessagePattern = NStr("en = 'Check the incoming documents directory.
-		|%1'");
+	MessagePattern = NStr("en='Check the incoming documents directory."
+"%1';ru='Проверка каталога входящих документов."
+"%1'");
 	Try
 		PrepareFTPPath(IncomingDocumentsDir);
 		FTPConnection.SetCurrentDirectory(IncomingDocumentsDir);
@@ -924,25 +932,26 @@ Procedure TestLinksExchangeThroughFTP(EDFProfileSettings, IncomingDocumentsDir, 
 	If ValueIsFilled(ErrorText) Then
 		TestResult = ErrorText;
 	Else
-		TestResult = NStr("en = 'Passed successfully.'");
+		TestResult = NStr("en='Passed successfully.';ru='Пройден успешно.'");
 	EndIf;
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, TestResult);
-	MessageText = NStr("en = 'Exchange text by %1 profile.'") + " " + MessageText;
+	MessageText = NStr("en='Exchange text by %1 profile.';ru='Тест обмена по профилю %1.'") + " " + MessageText;
 	MessageText = StrReplace(MessageText, "%1", EDFProfileSettings);
 	CommonUseClientServer.MessageToUser(MessageText);
 	
 	If Not ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en = 'Check files writing and reading in the incoming documents directory.
-									|%1'");
+		MessagePattern = NStr("en='Check files writing and reading in the incoming documents directory."
+"%1';ru='Проверка записи и чтения файлов в каталоге входящих документов."
+"%1'");
 		CheckFile(MessagePattern, FTPConnection, ErrorText);
 		If ValueIsFilled(ErrorText) Then
 			TestResult = ErrorText;
 		Else
-			TestResult = NStr("en = 'Passed successfully.'");
+			TestResult = NStr("en='Passed successfully.';ru='Пройден успешно.'");
 		EndIf;
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, TestResult);
-		MessageText = NStr("en = 'Exchange text by %1 profile.'") + " " + MessageText;
+		MessageText = NStr("en='Exchange text by %1 profile.';ru='Тест обмена по профилю %1.'") + " " + MessageText;
 		MessageText = StrReplace(MessageText, "%1", EDFProfileSettings);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -1067,11 +1076,11 @@ Function CreateEDPackageDocuments(EDKindsArray, SignatureSign) Export
 				OR EDFSettingAttributes.BankApplication = Enums.BankApplications.iBank2) Then
 			ServiceBankED = ServiceBankED(ED);
 			If Not ValueIsFilled(ServiceBankED) Then
-				MessagePattern = NStr("en = '%1 (for more information, see Events log monitor)'");
-				MessageText = NStr("en = 'Unable to generate bank pack'");
+				MessagePattern = NStr("en='%1 (for more information, see Events log monitor)';ru='%1 (подробности см. в Журнале регистрации)'");
+				MessageText = NStr("en='Unable to generate bank pack';ru='Невозможно сформировать пакет банка'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, MessageText);
-				OperationKind = NStr("en = 'generate ED pack'");
-				ErrorText = NStr("en = 'Additional data for electronic document is not found'");
+				OperationKind = NStr("en='generate ED pack';ru='формирование пакета ЭД'");
+				ErrorText = NStr("en='Additional data for electronic document is not found';ru='Не найдены дополнительные данные для электронного документа'");
 				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(OperationKind,
 					ErrorText, MessageText, 1);
 				Continue;
@@ -1218,10 +1227,10 @@ Function GenerateNewEDPackage(ParametersStructure) Export
 		EndIf;
 		EDPackage.Write();
 	Except
-		MessagePattern = NStr("en = '%1 (see details in event log monitor).'");
+		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'New EDPackage creation'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='New EDPackage creation';ru='создание нового ПакетаЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 	EndTry;
@@ -1271,15 +1280,16 @@ Procedure UpdateEDPackageDocumentsStatuses(EDPackage, EDPackageNewStatus, Change
 	
 	If EDPackage.ElectronicDocuments.Count() = 0 Then
 		
-		ErrorTemplate = NStr("en = '%1 document can not be sent. For more information, see Events log monitor'");
+		ErrorTemplate = NStr("en='%1 document can not be sent. For more information, see Events log monitor';ru='Документ %1 не был отправлен. Подробнее см. Журнал регистрации'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate,
 					EDPackage );
-		ErrorTemplate = NStr("en = '%1 document is filled in incorrectly.
-			|""ElectronicDocuments"" tabular section is not filled in'");
+		ErrorTemplate = NStr("en='%1 document is filled in incorrectly."
+"""ElectronicDocuments"" tabular section is not filled in';ru='Не корректно заполнен документ %1."
+"Не заполнена табличная часть ""ЭлектронныеДокументы""'");
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate,
 					EDPackage );
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-			NStr("en = 'Send ED pack and update ED statuses'"),
+			NStr("en='Send ED pack and update ED statuses';ru='Отправка пакета ЭД и обновление статусов ЭД'"),
 			ErrorText,
 			MessageText);
 		
@@ -1330,10 +1340,10 @@ Procedure UpdateEDPackageDocumentsStatuses(EDPackage, EDPackageNewStatus, Change
 		RollbackTransaction();
 		
 		MessageText = BriefErrorDescription(ErrorInfo())
-			+ NStr("en = ' (see details in Event log monitor).'");
+			+ NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 		ErrorText = DetailErrorDescription(ErrorInfo());
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-			NStr("en = 'ED package status modification and ED statuses update'"), ErrorText, MessageText);
+			NStr("en='ED package status modification and ED statuses update';ru='смена статуса пакета ЭД и обновление статусов ЭД'"), ErrorText, MessageText);
 	EndTry;
 	
 EndProcedure
@@ -1565,10 +1575,10 @@ Function ProcessDocumentConfirmations(PackageFiles, MapFileParameters, PackageED
 			Except
 				RollbackTransaction();
 				MessageText = BriefErrorDescription(ErrorInfo())
-					+ NStr("en = ' (see details in Event log monitor).'");
+					+ NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 				ErrorText = DetailErrorDescription(ErrorInfo());
 				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-					NStr("en = 'receiving ED confirmation'"), ErrorText, MessageText);
+					NStr("en='receiving ED confirmation';ru='получение подтверждения ЭД'"), ErrorText, MessageText);
 			EndTry;
 			
 			EDPackageRow = PackageEDObject.ElectronicDocuments.Add();
@@ -1658,47 +1668,47 @@ Function DetermineEDPresentation(EDKind, ParametersStructure) Export
 		AND EDKind <> Enums.EDKinds.QueryStatement AND ParametersStructure.Property("EDVersion", PropertyValue)
 		AND ValueIsFilled(PropertyValue) Then
 		
-		VersionTextTemplate = NStr("en = ' (version %1)'");
+		VersionTextTemplate = NStr("en=' (version %1)';ru=' (версия %1)'");
 		VersionText = StringFunctionsClientServer.PlaceParametersIntoString(VersionTextTemplate, PropertyValue);
 		
 	EndIf;
 	
 	If EDKind = Enums.EDKinds.CustomerInvoiceNote OR  EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-		TextEDKind = NStr("en = 'IR'");
+		TextEDKind = NStr("en='IR';ru='IR'");
 	ElsIf EDKind = Enums.EDKinds.TORG12 Then
-		TextEDKind = NStr("en = 'TORG-12'");
+		TextEDKind = NStr("en='TORG-12';ru='ТОРГ-12'");
 	ElsIf EDKind = Enums.EDKinds.TORG12Seller OR EDKind = Enums.EDKinds.TORG12Customer Then
 		TextEDKind = String(EDKind);
 	ElsIf EDKind = Enums.EDKinds.AgreementAboutCostChangeSender OR EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient Then
 		TextEDKind = String(EDKind);
 	ElsIf EDKind = Enums.EDKinds.AcceptanceCertificate Then
-		TextEDKind = NStr("en = 'Act'");
+		TextEDKind = NStr("en='Act';ru='Акт'");
 	ElsIf EDKind = Enums.EDKinds.RightsDelegationAct Then
-		TextEDKind = NStr("en = 'Act on transfer of rights'");
+		TextEDKind = NStr("en='Act on transfer of rights';ru='Акт на передачу прав'");
 	ElsIf EDKind = Enums.EDKinds.ActPerformer OR EDKind = Enums.EDKinds.ActCustomer Then
 		TextEDKind = String(EDKind);
 	ElsIf EDKind = Enums.EDKinds.InvoiceForPayment Then
-		TextEDKind = NStr("en = 'Account'");
+		TextEDKind = NStr("en='Account';ru='Счет'");
 	ElsIf EDKind = Enums.EDKinds.ProductOrder Then
-		TextEDKind = NStr("en = 'ProductOrder'");
+		TextEDKind = NStr("en='ProductOrder';ru='ЗаказТовара'");
 	ElsIf EDKind = Enums.EDKinds.ResponseToOrder Then
-		TextEDKind = NStr("en = 'ResponseToOrder'");
+		TextEDKind = NStr("en='ResponseToOrder';ru='ОтветНаЗаказ'");
 	ElsIf EDKind = Enums.EDKinds.PriceList Then
-		TextEDKind = NStr("en = 'PriceList'");
+		TextEDKind = NStr("en='PriceList';ru='PriceList'");
 	ElsIf EDKind = Enums.EDKinds.ProductsDirectory Then
-		TextEDKind = NStr("en = 'ProductsDirectory'");
+		TextEDKind = NStr("en='ProductsDirectory';ru='КаталогТоваров'");
 	ElsIf EDKind = Enums.EDKinds.ComissionGoodsSalesReport Then
-		TextEDKind = NStr("en = 'ComissionGoodsSalesReport'");
+		TextEDKind = NStr("en='ComissionGoodsSalesReport';ru='ОтчетОПродажахКомиссионногоТовара'");
 	ElsIf EDKind = Enums.EDKinds.ComissionGoodsWriteOffReport Then
-		TextEDKind = NStr("en = 'ComissionGoodsWriteOffReport'");
+		TextEDKind = NStr("en='ComissionGoodsWriteOffReport';ru='ОтчетОСписанииКомиссионногоТовара'");
 	ElsIf EDKind = Enums.EDKinds.GoodsTransferBetweenCompanies Then
-		TextEDKind = NStr("en = 'TransferringInt'");
+		TextEDKind = NStr("en='TransferringInt';ru='ПередачаИнт'");
 	ElsIf EDKind = Enums.EDKinds.ProductsReturnBetweenCompanies Then
-		TextEDKind = NStr("en = 'ReturnInt'");
+		TextEDKind = NStr("en='ReturnInt';ru='ВозвратИнт'");
 	ElsIf EDKind = Enums.EDKinds.NotificationAboutReception Then
-		TextEDKind = NStr("en = 'Notification about receiving'");
+		TextEDKind = NStr("en='Notification about receiving';ru='Извещение о получении'");
 	ElsIf EDKind = Enums.EDKinds.Confirmation Then
-		TextEDKind = NStr("en = 'Confirmation'");
+		TextEDKind = NStr("en='Confirmation';ru='Подтверждение'");
 		EDType = "";
 		If ParametersStructure.Property("EDType", EDType) Then
 			If EDType = Enums.EDVersionElementTypes.EIRDC
@@ -1709,23 +1719,23 @@ Function DetermineEDPresentation(EDKind, ParametersStructure) Export
 			EndIf;
 		EndIf;
 	ElsIf EDKind = Enums.EDKinds.NotificationAboutClarification Then
-		TextEDKind = NStr("en = 'Notification about clarification'");
+		TextEDKind = NStr("en='Notification about clarification';ru='Уведомление об уточнении'");
 	ElsIf EDKind = Enums.EDKinds.CancellationOffer Then
-		TextEDKind = NStr("en = 'Cancellation offer'");
+		TextEDKind = NStr("en='Cancellation offer';ru='Предложение об аннулировании'");
 	ElsIf EDKind = Enums.EDKinds.PaymentOrder Then
-		TextEDKind = NStr("en = 'Payment order'");
+		TextEDKind = NStr("en='Payment order';ru='Порядок платежа'");
 	ElsIf EDKind = Enums.EDKinds.STATEMENT Then
-		TextEDKind = NStr("en = 'STATEMENT'");
+		TextEDKind = NStr("en='STATEMENT';ru='Квитанция'");
 	ElsIf EDKind = Enums.EDKinds.AddData Then
-		TextEDKind = NStr("en = 'Data schema'");;
+		TextEDKind = NStr("en='Data schema';ru='Схема данных'");;
 	ElsIf EDKind = Enums.EDKinds.NotificationOnStatusOfED Then
-		TextEDKind = NStr("en = 'Notification of the electronic document state'");
+		TextEDKind = NStr("en='Notification of the electronic document state';ru='Извещение о состоянии электронного документа'");
 	ElsIf EDKind = Enums.EDKinds.EDStateQuery Then
-		TextEDKind = NStr("en = 'Query on electronic document state'");
+		TextEDKind = NStr("en='Query on electronic document state';ru='Запрос о состоянии электронного документа'");
 	ElsIf EDKind = Enums.EDKinds.QueryProbe Then
-		TextEDKind = NStr("en = 'Text query'");
+		TextEDKind = NStr("en='Text query';ru='Тестовый запрос'");
 	ElsIf EDKind = Enums.EDKinds.EDReturnQuery Then
-		TextEDKind = NStr("en = 'Query for electronic document revocation'");
+		TextEDKind = NStr("en='Query for electronic document revocation';ru='Запрос на отзыв электронного документа'");
 	EndIf;
 	EDPresentation = TextEDKind + NumberText + DateText + VersionText;
 	
@@ -1909,8 +1919,9 @@ Function SetSignaturesValid(ED) Export
 	
 	Result = Query.Execute().Select();
 	If Result.Count() > 0 Then
-		TextPattern = NStr("en = '%1 electronic document processing.
-		|Document has not been processed because it contains invalid signatures.'");
+		TextPattern = NStr("en='%1 electronic document processing."
+"Document has not been processed because it contains invalid signatures.';ru='Обработка электронного документа %1."
+"Документ не обработан, так как содержит невалидные подписи.'");
 		Text = StringFunctionsClientServer.PlaceParametersIntoString(TextPattern, ED);
 		CommonUseClientServer.MessageToUser(Text);
 		
@@ -2009,14 +2020,16 @@ Function GetNewED(AccAgreementsAndStructuresOfCertificates = Undefined, Readmiss
 			MessageSet = EmailOperations.ImportEMails(EPAccount);
 		Except
 			ErrorText = DetailErrorDescription(ErrorInfo());
-			Text = NStr("en = 'Error while receiving messages from the email server
-			|%1'");
+			Text = NStr("en='Error while receiving messages from the email server"
+"%1';ru='Ошибка при получении сообщения с сервера электронной почты."
+"%1'");
 			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(Text, ErrorText);
 			
-			MessageText = NStr("en = 'An error occurred while receiving new electronicdocuments is started.
-			|(see details in Event log monitor).'");
+			MessageText = NStr("en='An error occurred while receiving new electronicdocuments is started."
+"(see details in Event log monitor).';ru='Ошибка при получении новых эл.документов."
+"(подробности см. в Журнале регистрации).'");
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-				NStr("en = 'New electronic documents receiving'"), ErrorText, MessageText);
+				NStr("en='New electronic documents receiving';ru='Получение новых электронных документов'"), ErrorText, MessageText);
 			Continue;
 		EndTry;
 		
@@ -2062,7 +2075,7 @@ Function GetNewED(AccAgreementsAndStructuresOfCertificates = Undefined, Readmiss
 					EncryptionStructure.Insert("CertificateParameters", ElectronicDocumentsServiceCallServer.CertificateAttributes(
 						ParametersStructure.CompanyCertificateForDetails));
 				Else
-					MessagePattern = NStr("en = 'Decryption certificate is not specified for: %1.'");
+					MessagePattern = NStr("en='Decryption certificate is not specified for: %1.';ru='Не указан сертификат расшифровки для: %1.'");
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, EDPackage);
 					Continue;
 				EndIf;
@@ -2135,7 +2148,7 @@ Function GetNewED(AccAgreementsAndStructuresOfCertificates = Undefined, Readmiss
 					EncryptionStructure.Insert("CertificateParameters", ElectronicDocumentsServiceCallServer.CertificateAttributes(
 						ParametersStructure.CompanyCertificateForDetails));
 				Else
-					MessagePattern = NStr("en = 'Decryption certificate is not specified for: %1.'");
+					MessagePattern = NStr("en='Decryption certificate is not specified for: %1.';ru='Не указан сертификат расшифровки для: %1.'");
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, EDPackage);
 					Continue;
 				EndIf;
@@ -2243,7 +2256,7 @@ Function GetNewED(AccAgreementsAndStructuresOfCertificates = Undefined, Readmiss
 					EncryptionStructure.Insert("CertificateParameters", ElectronicDocumentsServiceCallServer.CertificateAttributes(
 						ParametersStructure.CompanyCertificateForDetails));
 				Else
-					MessagePattern = NStr("en = 'Decryption certificate is not specified for: %1.'");
+					MessagePattern = NStr("en='Decryption certificate is not specified for: %1.';ru='Не указан сертификат расшифровки для: %1.'");
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, EDPackage);
 					Continue;
 				EndIf;
@@ -2355,19 +2368,20 @@ Procedure ChangeByRefAttachedFile(
 			Value = Undefined;
 			If EDStructure.Property(KeyValue.Key, Value) Then
 				If Not ValueIsFilled(Value) Then
-					Text = NStr("en = 'Parameter value <%1> is not filled in.'");
+					Text = NStr("en='Parameter value <%1> is not filled in.';ru='Значение параметра <%1> не заполнено!'");
 					Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, KeyValue.Key);
 					ErrorText = ?(ValueIsFilled(ErrorText), ErrorText + Chars.LF + Text, Text);
 				EndIf;
 			Else
-				Text = NStr("en = 'Required parameter <%1> has not been passed.'");
+				Text = NStr("en='Required parameter <%1> has not been passed.';ru='Не передан обязательный параметр <%1>!'");
 				Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, KeyValue.Key);
 				ErrorText = ?(ValueIsFilled(ErrorText), ErrorText + Chars.LF + Text, Text);
 			EndIf;
 		EndDo;
 		If ValueIsFilled(ErrorText) Then
-			MessageText = NStr("en = 'An error occurred while filling electronic documents additional properties.
-			|%1'");
+			MessageText = NStr("en='An error occurred while filling electronic documents additional properties."
+"%1';ru='Ошибка заполнения доп.свойств электронного документа!"
+"%1'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, ErrorText);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -2771,25 +2785,36 @@ Procedure SaveInvitation(InvitationsTable) Export
 			If Counterparty = Undefined Then
 				MoveDate = False;
 				If Not Error Then
-					Text = NStr("en = 'Exchange by %1 EDF settings profile.
-					|Counterparty is
-					|not found
-					|in base:
-					|Name: %2
-					|TIN: %3 KPP: %4 Status: %5.'");
+					Text = NStr("en='Exchange by %1 EDF settings profile."
+"Counterparty is"
+"not found"
+"in base:"
+"Name: %2"
+"TIN: %3 KPP: %4 Status: %5.';ru='Обмен по профилю настроек ЭДО %1."
+"В"
+"базе не"
+"найден контрагент:"
+"Наименование:"
+"%2 ИНН: %3 КПП: %4 Статус: %5.'");
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(Text, NewInvitations.EDFProfileSettings,
 						NewInvitations.Description, NewInvitations.TIN, NewInvitations.KPP, NewInvitations.MemberStatus);
 				Else
 					ErrorDescription = ?(ValueIsFilled(NewInvitations.ErrorDescription),
-						NewInvitations.ErrorDescription, NStr("en = 'Error'"));
+						NewInvitations.ErrorDescription, NStr("en='Error';ru='Ошибка'"));
 					Description = ?(ValueIsFilled(Counterparty), Counterparty.Description, "");
-					Text = NStr("en = 'Exchange by %1 EDF settings profile.
-					|%2 in the
-					|invitation for
-					|counterparty: Name: %3
-					|DS Address:
-					|%4 TIN:
-					|%5 KPP: %6 Status: %7.'");
+					Text = NStr("en='Exchange by %1 EDF settings profile."
+"%2 in the"
+"invitation for"
+"counterparty: Name: %3"
+"DS Address:"
+"%4 TIN:"
+"%5 KPP: %6 Status: %7.';ru='Обмен по профилю настроек ЭДО %1."
+"%2 в"
+"приглашении для"
+"контрагента: Наименование:"
+"%3"
+"Адрес ЭП:"
+"%4 ИНН: %5 КПП: %6 Статус: %7.'");
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(Text, NewInvitations.EDFProfileSettings,
 						ErrorDescription, Description, NewInvitations.Description, NewInvitations.TIN, NewInvitations.KPP,
 						NewInvitations.MemberStatus);
@@ -2983,7 +3008,7 @@ Procedure SaveInvitation(InvitationsTable) Export
 				If Selection.Next() Then
 					EDFSetup.DataExchange.Load = True;
 					EDFSetup.ConnectionStatus     = Enums.EDExchangeMemberStatuses.ApprovalRequired;
-					EDFSetup.Comment           = NStr("en = '##Status ""attached"" is automatically cleared. EDF setting by the selected counterparty already exists.'");
+					EDFSetup.Comment           = NStr("en='##Status ""attached"" is automatically cleared. EDF setting by the selected counterparty already exists.';ru='##Автоматически снят статус ""присоединен"". Уже существует настройка ЭДО по выбранному контрагенту.'");
 				EndIf;
 				
 			ElsIf NewInvitations.MemberStatus = Enums.EDExchangeMemberStatuses.Disconnected Then
@@ -2993,7 +3018,7 @@ Procedure SaveInvitation(InvitationsTable) Export
 			
 			ErrorDescriptionText = "";
 			If Error Then
-				ErrorDescriptionTemplate = NStr("en = '%1. Send again.'");
+				ErrorDescriptionTemplate = NStr("en='%1. Send again.';ru='%1. Повторите отправку.'");
 				ErrorDescriptionText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescriptionTemplate,
 					NewInvitations.ErrorDescription);
 			EndIf;
@@ -3063,7 +3088,7 @@ Procedure WriteEventOnEDToEventLogMonitor(DetailsEvents,
 	EndIf;
 	EventImportanceLevel = ?(TypeOf(ImportanceLevel) = Type("EventLogLevel"),
 		ImportanceLevel, EventLogLevel.Error);
-	Pattern = NStr("en = 'Electronic interaction.%1'");
+	Pattern = NStr("en='Electronic interaction.%1';ru='Электронное взаимодействие.%1'");
 	EventName = StrReplace(Pattern, "%1", Level);
 	WriteLogEvent(EventName,
 		EventImportanceLevel, MetadataObject, DataRef, DetailsEvents, TransactionMode);
@@ -3112,7 +3137,7 @@ EndFunction
 // Outputs user message on access rights shortage.
 Procedure MessageToUserAboutViolationOfRightOfAccess() Export
 	
-	MessageText = NStr("en = 'Access violation'");
+	MessageText = NStr("en='Access violation';ru='Нарушение прав доступа'");
 	ElectronicDocumentsOverridable.PrepareMessageTextAboutAccessRightsViolation(MessageText);
 	CommonUseClientServer.MessageToUser(MessageText);
 	
@@ -3125,9 +3150,11 @@ Procedure InformAboutEDAgreementMissing(EDParameters, Source) Export
 		Return;
 	EndIf;
 	
-	MessagePattern = NStr("en = 'Processor %1.
-								 |The operation failed.
-								 |You should create ""EDF setting"" with attributes:'");
+	MessagePattern = NStr("en='Processor %1."
+"The operation failed."
+"You should create ""EDF setting"" with attributes:';ru='Обработка %1."
+"Операция не выполнена!"
+"Необходимо создать ""Настройку ЭДО"" с реквизитами:'");
 	
 	Text = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Source);
 	
@@ -3200,7 +3227,7 @@ Procedure InformAboutEDAgreementMissing(EDParameters, Source) Export
 	ParameterTable.Sort("Order");
 	For Each ParameterString IN ParameterTable Do
 		If ValueIsFilled(ParameterString.Value) Then
-			Text = Text + Chars.LF + NStr("en = '<%1>: %2'");
+			Text = Text + Chars.LF + NStr("en='<%1>: %2';ru='<%1>: %2'");
 			Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, ParameterString.Key, ParameterString.Value);
 		EndIf;
 	EndDo;
@@ -3243,12 +3270,13 @@ Procedure SendPackageThroughBankResource(Settings, Data, Result, ErrorText) Expo
 	Result = ResultFile.GetText();
 	
 	If Response.StateCode <> 200 Then
-		Pattern = NStr("en = 'An error occurred while working with the Internet (%1)%2'");
+		Pattern = NStr("en='An error occurred while working with the Internet (%1)%2';ru='Ошибка работы с Интернет (%1)%2'");
 		If Response.StateCode = 401 Then
-			Details = NStr("en = ': Access is allowed only for the authenticated users.
-				|Check whether login and password are specified correctly.'");
+			Details = NStr("en=': Access is allowed only for the authenticated users."
+"Check whether login and password are specified correctly.';ru=': Доступ разрешен только для пользователей, прошедших аутентификацию."
+"Проверьте правильность указания логина и пароля.'");
 		ElsIf Response.StateCode = 500 Then
-			Details = NStr("en = ': Internal server error'");
+			Details = NStr("en=': Internal server error';ru=': Внутренняя ошибка сервера'");
 		Else
 			Details = "";
 		EndIf;
@@ -3357,7 +3385,7 @@ Procedure ProcessBankResponse(BankResponse, ED, NewED = Undefined, IsError = Und
 	Else
 		FileURL = PutToTempStorage(Message);
 		QueryDescription = ED.Description;
-		StatementName = StrReplace(QueryDescription, NStr("en = 'Query statement'"), NStr("en = 'Bank statement for period'"));
+		StatementName = StrReplace(QueryDescription, NStr("en='Query statement';ru='Запрос выписки'"), NStr("en='Bank statement for period';ru='Выписка банка за период'"));
 		AddedFile = AttachedFiles.AddFile(EDAttributes.EDAgreement, StatementName, "xml", CurrentSessionDate(),
 			CurrentSessionDate(), FileURL, , , Catalogs.EDAttachedFiles.GetRef());
 		If ElectronicDocumentsServiceCallServer.PerformCryptoOperationsAtServer() Then
@@ -3366,7 +3394,7 @@ Procedure ProcessBankResponse(BankResponse, ED, NewED = Undefined, IsError = Und
 			If IsError Then
 				MessageText = ElectronicDocumentsServiceCallServer.GetMessageAboutError("110");
 				ErrorText = DetailErrorDescription(ErrorInfo());
-				Operation = NStr("en = 'Cryptofacility initializing on the server'");
+				Operation = NStr("en='Cryptofacility initializing on the server';ru='Инициализация криптосредства на сервере'");
 				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation,
 																							ErrorText,
 																							MessageText,
@@ -3418,7 +3446,7 @@ Procedure ProcessBankResponse(BankResponse, ED, NewED = Undefined, IsError = Und
 		ParametersStructure.Insert("SenderDocumentDate",    CurrentSessionDate());
 		ParametersStructure.Insert("ElectronicDocumentOwner", ED);
 		ParametersStructure.Insert("EDOwner",                  EDAttributes.EDAgreement);
-		FileDescription = StrReplace(QueryDescription, NStr("en = 'Query statement'"), NStr("en = 'Bank statement for period'"));
+		FileDescription = StrReplace(QueryDescription, NStr("en='Query statement';ru='Запрос выписки'"), NStr("en='Bank statement for period';ru='Выписка банка за период'"));
 		FileDescriptionInLatin = StringFunctionsClientServer.StringInLatin(FileDescription);
 		ParametersStructure.Insert("FileDescription",           FileDescriptionInLatin);
 		
@@ -3499,7 +3527,7 @@ Procedure SendStatementRequestToBank(ParametersStructure, StorageAddress) Export
 		Settings.Insert("HASH", HASH);
 	EndIf;
 	
-	OperationKind = NStr("en = 'Sending statement query to the bank'");
+	OperationKind = NStr("en='Sending statement query to the bank';ru='Отправка запроса выписки в банк'");
 	
 	Try
 		BankResponse = "";
@@ -3521,7 +3549,7 @@ Procedure SendStatementRequestToBank(ParametersStructure, StorageAddress) Export
 		EndIf;
 	Except
 		ErrorText = DetailErrorDescription(ErrorInfo());
-		MessageText = NStr("en = 'An error occurred while sending statement, for more information, see Events log monitor.'");
+		MessageText = NStr("en='An error occurred while sending statement, for more information, see Events log monitor.';ru='При отправке запроса выписки произошла ошибка, подробности см. в Журнале регистрации.'");
 		ProcessBankPackSendingError(ED, OperationKind, ErrorText, MessageText);
 		IsError = True;
 	EndTry;
@@ -3600,7 +3628,7 @@ Function PrepareEDViewTemporaryFiles(EDKindsArray) Export
 					If Not PossibleToExtractFiles(ZipReading, FolderForUnpacking) Then
 						MessageText = ElectronicDocumentsReUse.GetMessageAboutError("006");
 					EndIf;
-					ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED package Unpacking'"),
+					ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED package Unpacking';ru='распаковка пакета ЭД'"),
 						ErrorText, MessageText);
 					ZIPReading.Close();
 					DeleteFiles(FileName);
@@ -3837,8 +3865,9 @@ Function CorrectFileName(Val StrFileName, FlDeleteIncorrect = False) Export
 	EndDo;
 	
 	If Not Result Then
-		Text = NStr("en = 'The following characters should not be present
-		|in the attachment file name: %1 File name: %2'");
+		Text = NStr("en='The following characters should not be present"
+"in the attachment file name: %1 File name: %2';ru='В имени файла не должно быть"
+"следующих символов: %1 Имя файла: %2'");
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(Text, StrException, StrFileName);
 		Raise ErrorText;
 	Else
@@ -4871,7 +4900,7 @@ Function GenerateAttachedFiles(ObjectsArray, ExchangeParameters, AdditParameters
 			If Not ArchiveAddress = Undefined Then
 				AdditFile = AttachedFiles.AddFile(
 								EDOwner,
-								NStr("en = 'Additional files'"),
+								NStr("en='Additional files';ru='Дополнительные файлы'"),
 								"zip",
 								CreationTimeED,
 								CreationTimeED,
@@ -4981,9 +5010,9 @@ Function GetEDFileFullName(ExchangeStructure) Export
 			Else
 				FileName = GenerateAdditDocument(ExchangeStructure, UsedRow.FileFormat);
 				If FileName = Undefined Then
-					MessageText = NStr("en = 'An error occurred while generating tabular document as %1.'");
+					MessageText = NStr("en='An error occurred while generating tabular document as %1.';ru='Ошибка формирования табличного документа в формате %1.'");
 					MessageText = StrReplace(MessageText, "%1", UsedRow.FileFormat);
-					OperationKind = NStr("en = 'tabular document generation'");
+					OperationKind = NStr("en='tabular document generation';ru='формирования табличного документа'");
 					ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(OperationKind, MessageText);
 					Continue;
 				EndIf;
@@ -5344,7 +5373,7 @@ Function UnpackEDPackageOnServer(EDPackage, EncryptionStructure, UnpackingData =
 							Except
 								MessageText = ElectronicDocumentsServiceCallServer.GetMessageAboutError("114");
 								ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-									NStr("en = 'Signature checkup'"), DetailErrorDescription(ErrorInfo()), MessageText);
+									NStr("en='Signature checkup';ru='проверка подписи'"), DetailErrorDescription(ErrorInfo()), MessageText);
 								ErrorFlag = True;
 								Break;
 							EndTry;
@@ -5379,11 +5408,11 @@ Function UnpackEDPackageOnServer(EDPackage, EncryptionStructure, UnpackingData =
 					EndIf;
 					DataStructure.BinaryData = DecryptedBinaryData;
 				Else
-					MessagePattern = NStr("en = '%1. Password to decryption certificate is not specified: %2.'");
+					MessagePattern = NStr("en='%1. Password to decryption certificate is not specified: %2.';ru='%1. Не указан пароль к сертификату расшифровки: %2.'");
 					DetailedMessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 						ElectronicDocumentsServiceCallServer.GetMessageAboutError("113"), EncryptionStructure.Certificate);
 					ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-						NStr("en = 'ED package details'"), DetailedMessageText);
+						NStr("en='ED package details';ru='расшифровка пакета ЭД'"), DetailedMessageText);
 					Return Undefined;
 				EndIf;
 			EndIf;
@@ -5455,12 +5484,13 @@ Function UnpackEDPackageOnServer(EDPackage, EncryptionStructure, UnpackingData =
 			PredefinedValue("Enum.EDPackagesStatuses.Unpacked"));
 		
 	Except
-		MessagePattern = NStr("en = 'An error occurred while unpacking incoming ED pack.
-		|%1.'");
+		MessagePattern = NStr("en='An error occurred while unpacking incoming ED pack."
+"%1.';ru='Ошибка распаковки входящего пакета ЭД."
+"%1.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-			NStr("en = 'incoming ED package unpacking'"), DetailErrorDescription(ErrorInfo()), MessageText);
+			NStr("en='incoming ED package unpacking';ru='распаковка входящего пакета ЭД'"), DetailErrorDescription(ErrorInfo()), MessageText);
 	EndTry;
 	
 	Return ReturnArray.Count();
@@ -5925,7 +5955,7 @@ Function GenerateAdditDocument(ExchangeStructure, FormatDescription)  Export
 		
 		SpreadsheetDocument.Write(FileOfSaving,AdditFileProcessingStructure.SavingTypePresentation);
 	Else
-		MessageText = NStr("en = 'Unable to generate tabular document (for more information, see Events log monitor).'");
+		MessageText = NStr("en='Unable to generate tabular document (for more information, see Events log monitor).';ru='Не удалось сформировать табличный документ (подробности см. в Журнале регистрации).'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		FileOfSaving = Undefined;
 	EndIf;
@@ -5974,11 +6004,12 @@ Function GenerateFilesZipArchive(MainFileName, FilesArray)
 		Return ZipArchiveFile;
 	Except
 		MessageText = BriefErrorDescription(ErrorInfo())
-			+ NStr("en = ' (see details in Event log monitor).'");
+			+ NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 		ErrorText = DetailErrorDescription(ErrorInfo()) + Chars.LF
-			+ NStr("en = 'Check whether the English language is present in OS regional
-			|settings for non-Unicode applications and there is access to the temporary files directory.'");
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'the archive file record on a disk'"),
+			+ NStr("en='Check whether the English language is present in OS regional"
+"settings for non-Unicode applications and there is access to the temporary files directory.';ru='Проверьте поддержку русского языка в региональных настройках ОС для non-Unicode programs"
+"и наличие доступа к каталогу временных файлов.'");
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='the archive file record on a disk';ru='запись файла архива на диск'"),
 																					ErrorText,
 																					MessageText);
 		
@@ -6155,13 +6186,15 @@ Procedure SendConfirmationByPackage(EDPackage, SenderResource, SenderAddress, Se
 				EmailOperations.SendMessage(SenderResource, SendingParameters);
 			Except
 				ErrorText = DetailErrorDescription(ErrorInfo());
-				Text = NStr("en = 'An error occurred while sending message to email server.
-				|%1'");
+				Text = NStr("en='An error occurred while sending message to email server."
+"%1';ru='Ошибка при отправке сообщения на сервер электронной почты."
+"%1'");
 				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(Text, ErrorText);
 				
-				MessageText = NStr("en = 'An error occurred while sending e-documents is started.
-				|(see details in Event log monitor).'");
-				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'Sending e-documents'"),
+				MessageText = NStr("en='An error occurred while sending e-documents is started."
+"(see details in Event log monitor).';ru='Ошибка при получении новых эл.документов."
+"(подробности см. в Журнале регистрации)'");
+				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Sending e-documents';ru='Отправка эл.документов'"),
 				ErrorText,
 				MessageText);
 			EndTry;
@@ -6271,7 +6304,7 @@ Function NeedToGetBinaryData(BinaryData, FileName, ParametersStructure)
 		If Not PossibleToExtractFiles(ZipReading, FolderForUnpacking) Then
 			MessageText = ElectronicDocumentsReUse.GetMessageAboutError("006");
 		EndIf;
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED package Unpacking'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED package Unpacking';ru='распаковка пакета ЭД'"),
 			ErrorText, MessageText);
 		ZipReading.Close();
 		DeleteFiles(TemporaryZIPFileName);
@@ -6368,10 +6401,10 @@ Function NeedToGetBinaryData(BinaryData, FileName, ParametersStructure)
 			
 			XMLObject.Close();
 			
-			MessagePattern = NStr("en = 'Data reading from the file %1 failed: %2 (see details in Events log monitor).'");
+			MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				CardFile.FullName, BriefErrorDescription(ErrorInfo()));
-			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED reading'"),
+			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
 				DetailErrorDescription(ErrorInfo()),
 				MessageText);
 		EndTry;
@@ -6498,11 +6531,11 @@ Procedure UpdateEDStatuses(DocumentArray, SignatureSign)
 			CommitTransaction();
 		Except
 			RollbackTransaction();
-			MessagePattern = NStr("en = '%1 (see details in event log monitor).'");
+			MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				BriefErrorDescription(ErrorInfo()));
 			ErrorText = DetailErrorDescription(ErrorInfo());
-			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'preparation for ED sending'"),
+			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='preparation for ED sending';ru='подготовка к отправке ЭД'"),
 																						ErrorText,
 																						MessageText);
 		EndTry;
@@ -6596,9 +6629,9 @@ Procedure WriteDateReceived(ED, ChangeDate)
 		EndIf;
 	Except
 		MessageText = BriefErrorDescription(ErrorInfo())
-			+ NStr("en = ' (see details in Event log monitor).'");
+			+ NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 		ErrorText = DetailErrorDescription(ErrorInfo());
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'the ED receiving date record'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='the ED receiving date record';ru='запись даты получения ЭД'"),
 																					ErrorText,
 																					MessageText);
 	EndTry;
@@ -6640,11 +6673,11 @@ Procedure WriteSendingDate(ED, ChangeDate)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en = '%1 (see details in event log monitor).'");
+		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
 		ErrorText = DetailErrorDescription(ErrorInfo());
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED sending date record'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED sending date record';ru='запись даты отправки ЭД'"),
 																					ErrorText,
 																					MessageText);
 	EndTry;
@@ -6831,7 +6864,7 @@ Procedure CheckFile(MessagePattern, FTPConnection, ErrorText)
 	ResultRow = TextDocument.GetText();
 	DeleteFiles(FileRecipient);
 	If Not ResultRow = TestString Then
-		MessagePattern = NStr("en = '%1 %2.'");
+		MessagePattern = NStr("en='%1 %2.';ru='%1 %2.'");
 		MessageText = ElectronicDocumentsServiceCallServer.GetMessageAboutError("126");
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, MessageText,
 			FTPConnection.GetCurrentDirectory());
@@ -7276,11 +7309,12 @@ Function AdditionalFilesArchive(FilesArray) Export
 		Zip.Write();
 	Except
 		MessageText = BriefErrorDescription(ErrorInfo())
-			+ NStr("en = ' (see details in Event log monitor).'");
+			+ NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 		ErrorText = DetailErrorDescription(ErrorInfo()) + Chars.LF
-			+ NStr("en = 'Check whether the English language is present in OS regional
-			|settings for non-Unicode applications and there is access to the temporary files directory.'");
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'the archive file record on a disk'"),
+			+ NStr("en='Check whether the English language is present in OS regional"
+"settings for non-Unicode applications and there is access to the temporary files directory.';ru='Проверьте поддержку русского языка в региональных настройках ОС для non-Unicode programs"
+"и наличие доступа к каталогу временных файлов.'");
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='the archive file record on a disk';ru='запись файла архива на диск'"),
 																					ErrorText,
 																					MessageText);
 		DeleteFiles(archive);
@@ -7545,7 +7579,7 @@ Procedure SendEDStateRequestToBank(ParametersStructure, StorageAddress) Export
 		
 		If ValueIsFilled(ErrorText) Then
 			MessageText = ErrorText;
-			Operation = NStr("en = 'ED formation'");
+			Operation = NStr("en='ED formation';ru='Формирование ЭД'");
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
 			FileIsFormed = False;
 		Else
@@ -7556,10 +7590,10 @@ Procedure SendEDStateRequestToBank(ParametersStructure, StorageAddress) Export
 
 	Except
 		BriefErrorDescription = BriefErrorDescription(ErrorInfo());
-		MessagePattern = NStr("en = '%1 (see details in event log monitor).'");
+		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 										MessagePattern, BriefErrorDescription);
-		Operation = NStr("en = 'ED formation'");
+		Operation = NStr("en='ED formation';ru='Формирование ЭД'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 							Operation, DetailErrorDescription, MessageText, 1);
@@ -7579,7 +7613,7 @@ Procedure SendEDStateRequestToBank(ParametersStructure, StorageAddress) Export
 
 	DeleteFiles(TempFile);
 	
-	EDName = NStr("en = 'ED query status'");
+	EDName = NStr("en='ED query status';ru='Запрос состояния ЭД'");
 
 	CurrentSessionDate = CurrentSessionDate();
 	EDQuery = AttachedFiles.AddFile(EDAttributes.FileOwner, EDName, "xml", CurrentSessionDate,
@@ -7816,11 +7850,11 @@ Function CreateEDPack(DocumentAttributes, EDKindsArray, MessageText = "") Export
 	Try
 		EDP.Write();
 	Except
-		MessagePattern = NStr("en = '%1 (for more information, see Events log monitor)'");
+		MessagePattern = NStr("en='%1 (for more information, see Events log monitor)';ru='%1 (подробности см. в Журнале регистрации)'");
 		BriefErrorDescription = BriefErrorDescription(ErrorInfo());
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 									MessagePattern, BriefErrorDescription);
-		Operation = NStr("en = 'generate ED pack'");
+		Operation = NStr("en='generate ED pack';ru='формирование пакета ЭД'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 								Operation, DetailErrorDescription, MessageText);
@@ -7978,11 +8012,11 @@ Procedure CreateEDPackAsync(Envelop) Export
 		
 	Except
 		XMLObject.Close();
-		MessagePattern = NStr("en = '%1 (see details in event log monitor).'");
+		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
 		BriefErrorDescription = BriefErrorDescription(ErrorInfo());
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 										MessagePattern, BriefErrorDescription);
-		OperationKind = NStr("en = 'ED formation'");
+		OperationKind = NStr("en='ED formation';ru='Формирование ЭД'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 			OperationKind, DetailErrorDescription, MessageText, 1);

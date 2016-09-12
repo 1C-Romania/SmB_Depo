@@ -14,10 +14,10 @@ Procedure ParseFileOnServer();
 		ED = XDTOFactory.ReadXML(XMLObject);
 	Except
 		XMLObject.Close();
-		MessagePattern = NStr("en = 'Data reading from the file %1 failed: %2 (see details in Events log monitor).'");
+		MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 			TempFile, BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED reading'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		Return;
@@ -152,9 +152,9 @@ Function MandatoryAttributesFilled()
 	AttributesFilled = True;
 	If Not ValueIsFilled(Description) Then
 		AttributesFilled = False;
-		MessageText = NStr("en = '<Name> is not filled, import is impossible.'");
+		MessageText = NStr("en='<Name> is not filled, import is impossible.';ru='Не заполнено <Наименование>, загрузка не возможна.'");
 		CommonUseClientServer.MessageToUser(MessageText);
-		MessageText = NStr("en = 'Verify for the correctness of the <File> specification with the counterparty attribute.'");
+		MessageText = NStr("en='Verify for the correctness of the <File> specification with the counterparty attribute.';ru='Проверьте правильность указания <Файла> с реквизитами контрагента.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -268,7 +268,7 @@ Procedure Import(Command)
 	
 	If MandatoryAttributesFilled() Then
 		If ValueIsFilled(Counterparty) Then
-			QuestionText = NStr("en = 'Counterparty exists. Refill attributes?'");
+			QuestionText = NStr("en='Counterparty exists. Refill attributes?';ru='Контрагент существует. Перезаполнить реквизиты?'");
 			NotifyDescription = New NotifyDescription("FinishImport", ThisObject);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 		EndIf;

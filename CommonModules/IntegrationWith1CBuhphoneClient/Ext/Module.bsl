@@ -81,7 +81,7 @@ Procedure Select1CBuhphoneFile(ClosingAlert, PathToFile = "") Export
 	AdditionalParameters.Insert("ClosingAlert", ClosingAlert);
 	AdditionalParameters.Insert("PathToFile", PathToFile);
 	
-	SuggestionText = NStr("en = 'To select 1C-Buhphone application you shall install the file work extension.'");
+	SuggestionText = NStr("en='To select 1C-Buhphone application you shall install the file work extension.';ru='Для выбора приложения 1С-Бухфон необходимо установить расширение работы с файлами.'");
 	Notification = New NotifyDescription("Select1CBuhphoneFileAfterExtensionInstallation", ThisObject, AdditionalParameters);
 	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Notification, SuggestionText, False);
 EndProcedure
@@ -95,11 +95,11 @@ Procedure Select1CBuhphoneFileAfterExtensionInstallation(Attached, AdditionalPar
 	EndIf;
 	
 	Dialog = New FileDialog(FileDialogMode.Open);
-	Dialog.Title = NStr("en = 'Select the executable 1C-Buhphone file'");
+	Dialog.Title = NStr("en='Select the executable 1C-Buhphone file';ru='Выберите исполняемый файл 1С-Бухфон'");
 	Dialog.FullFileName = AdditionalParameters.PathToFile;
 	Folder = CommonUseClientServer.SplitFullFileName(AdditionalParameters.PathToFile);
 	Dialog.Directory = Folder.Path;
-	Filter = NStr("en = 'buhphone.exe (*.exe)|*.exe'");
+	Filter = NStr("en='buhphone.exe (*.exe)|*.exe';ru='buhphone.exe (*.exe)|*.exe'");
 	Dialog.Filter = Filter;
 	Dialog.Multiselect = False;
 	
@@ -145,12 +145,12 @@ EndProcedure
 Procedure Run1CBuhphone() Export
 	
 	If Not IsWindowsClient() Then
-		ShowMessageBox(,NStr("en = 'To work with the 1C-Buhphon application, you need to have Microsoft Windows operating system.'"));
+		ShowMessageBox(,NStr("en='To work with the 1C-Buhphon application, you need to have Microsoft Windows operating system.';ru='Для работы с приложением 1С-Бухфон необходима операционная система Microsoft Windows.'"));
 		Return
 	EndIf;
 	
 	Notification = New NotifyDescription("Run1CBuhphoneAfterExtensionInstallation", ThisObject);
-	MessageText = NStr("en = 'To start 1C-Buhphone, you shall install the file work extension.'");
+	MessageText = NStr("en='To start 1C-Buhphone, you shall install the file work extension.';ru='Для запуска 1С-Бухфон необходимо установить расширение работы с файлами.'");
 	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Notification, MessageText, False);
 	
 EndProcedure

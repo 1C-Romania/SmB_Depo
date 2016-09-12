@@ -44,7 +44,7 @@ EndProcedure
 Procedure Done(Command)
 	
 	If IsBlankString(Password) Then
-		MessageText = NStr("en = 'Enter one-time password to continue.'");
+		MessageText = NStr("en='Enter one-time password to continue.';ru='Для продолжения укажите одноразовый пароль.'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Password");
 		Return;
 	EndIf;
@@ -66,9 +66,11 @@ Procedure Done(Command)
 			EndIf;
 			Close(True);
 		Except
-			ErrorTemplate = NStr("en = 'SMS authentication error.
-										|Error code:
-										|%1 %2'");
+			ErrorTemplate = NStr("en='SMS authentication error."
+"Error code:"
+"%1 %2';ru='Ошибка SMS аутентификации."
+"Код"
+"ошибки: %1 %2'");
 			If BankApplication = PredefinedValue("Enum.BankApplications.ExchangeThroughTheAdditionalInformationProcessor") Then
 				ErrorDetails = ExternalAttachableModule.ErrorDetails();
 			Else
@@ -76,7 +78,7 @@ Procedure Done(Command)
 			EndIf;
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 								ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
-			Operation = NStr("en = 'SMS authentication'");
+			Operation = NStr("en='SMS authentication';ru='SMS аутентификация'");
 			DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 								Operation, DetailErrorDescription, MessageText, 1);
@@ -118,9 +120,11 @@ Procedure SendSMS()
 		EndIf;
 	Except
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
-		ErrorTemplate = NStr("en = 'SMS authentication launch error.
-									|Error code:
-									|%1 %2'");
+		ErrorTemplate = NStr("en='SMS authentication launch error."
+"Error code:"
+"%1 %2';ru='Ошибка запуска аутентификации по SMS."
+"Код"
+"ошибки: %1 %2'");
 		If BankApplication = PredefinedValue("Enum.BankApplications.ExchangeThroughTheAdditionalInformationProcessor") Then
 			ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		Else
@@ -128,7 +132,7 @@ Procedure SendSMS()
 		EndIf;
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
-		Operation = NStr("en = 'Making a connection'");
+		Operation = NStr("en='Making a connection';ru='Установка соединения'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 			Operation, DetailErrorDescription, MessageText, 1);
 		Items.FormButtonDone.Visible = False;

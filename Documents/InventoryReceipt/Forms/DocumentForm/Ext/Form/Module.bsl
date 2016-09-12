@@ -151,10 +151,10 @@ Function GeneratePriceLabel(LabelStructure)
 	
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
-		LabelText = LabelText + NStr("en = '%PriceKind%'");
+		LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
 		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	Else
-		LabelText = LabelText + NStr("en = 'specify kind of prices'");
+		LabelText = LabelText + NStr("en='specify kind of prices';ru='указать вид цен'");
 	EndIf;
 	
 	Return LabelText;
@@ -382,7 +382,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en = 'Data by barcode is not found: %1%; quantity: %2%'");
+		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -522,7 +522,7 @@ EndProcedure // GetInventoryFromStorage()
 Procedure SearchByBarcode(Command)
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en = 'Enter barcode'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
 
 EndProcedure
 
@@ -547,7 +547,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.'"));
+		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -565,7 +565,7 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	
 	If Not Weight = Undefined Then
 		If Weight = 0 Then
-			MessageText = NStr("en = 'Electronic scales returned zero weight.'");
+			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			// Weight is received.
@@ -759,7 +759,7 @@ Procedure FillByBasis(Command)
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en = 'Document will be completely refilled by ""Basis""! Continue?'"), QuestionDialogMode.YesNo, 0);	
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);	
 
 EndProcedure
 

@@ -17,7 +17,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SuppliedAsDistribution = HardwareDriver.SuppliedAsDistribution;
 	DriverVersionInLayout     = HardwareDriver.DriverVersion;
 	
-	Title = NStr("en='Equipment:'") + Chars.NBSp  + String(ID);
+	Title = NStr("en='Equipment:';ru='Оборудование:'") + Chars.NBSp  + String(ID);
 
 	TextColor = StyleColors.FormTextColor;
 	ErrorColor = StyleColors.NegativeTextColor;
@@ -60,8 +60,9 @@ EndProcedure
 Procedure SetupDriver(Command)
 	
 	If IntegrationLibrary Then
-		Text = NStr("en = 'Driver installation requires connection to the Internet.
-			|Continue?'");
+		Text = NStr("en='Driver installation requires connection to the Internet."
+"Continue?';ru='Driver installation requires connection to the Internet."
+"Continue?'");
 		Notification = New NotifyDescription("DriverSettingEnd",  ThisObject);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo);
 	Else
@@ -78,7 +79,7 @@ EndProcedure
 &AtClient
 Procedure SetDriverFromArchiveOnEnd(Result) Export 
 	
-	CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.'")); 
+	CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.';ru='Установка драйвера завершена.'")); 
 	UpdateInformationAboutDriver(True);
 	
 EndProcedure 
@@ -87,10 +88,10 @@ EndProcedure
 Procedure SettingDriverFromDistributionOnEnd(Result, Parameters) Export 
 	
 	If Result Then
-		CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.';ru='Установка драйвера завершена.'")); 
 		UpdateInformationAboutDriver(True);
 	Else
-		CommonUseClientServer.MessageToUser(NStr("en='An error occurred when installing the driver from distribution.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='An error occurred when installing the driver from distribution.';ru='При установке драйвера из дистрибутива произошла ошибка.'")); 
 	EndIf;
 
 EndProcedure 
@@ -118,8 +119,8 @@ Procedure DeviceTestEnd(ExecutionResult, Parameters) Export
 		
 	EndIf;
 		
-	MessageText = ?(ExecutionResult.Result,  NStr("en = 'Test successfully performed. %AdditionalDetails%'"),
-	                               NStr("en = 'Test is not passed. %AdditionalDetails%'"));
+	MessageText = ?(ExecutionResult.Result,  NStr("en='Test successfully performed. %AdditionalDetails%';ru='Тест успешно выполнен. %ДополнительноеОписание%'"),
+	                               NStr("en='Test is not passed. %AdditionalDetails%';ru='Тест не пройден. %ДополнительноеОписание%'"));
 	MessageText = StrReplace(MessageText, "%AdditionalDetails%", ?(IsBlankString(AdditionalDetails), "", AdditionalDetails));
 	CommonUseClientServer.MessageToUser(MessageText);
 	
@@ -162,8 +163,8 @@ Procedure AdditionalAction(Command)
 																			ID, 
 																			GetSettings());
 		
-	MessageText = ?(Result,  NStr("en = 'Operation has been successfully installed.'"),
-	                               NStr("en = 'Operation execution error.'") + Chars.NBSp + Output_Parameters[1]);
+	MessageText = ?(Result,  NStr("en='Operation has been successfully installed.';ru='Операция выполнена успешно.'"),
+	                               NStr("en='Operation execution error.';ru='Ошибка выполнения операции.'") + Chars.NBSp + Output_Parameters[1]);
 	CommonUseClientServer.MessageToUser(MessageText);
 	
 	ClearCustomInterface();
@@ -268,7 +269,7 @@ Procedure RefreshCustomInterface(DetailsInterface, AdditionalActions, FirstLaunc
 						BaseGroup.Type = FormGroupType.UsualGroup;
 						BaseGroup.Representation = Items.DriverAndVersion.Representation;
 						BaseGroup.HorizontalStretch = True;
-						BaseGroup.Title = NStr("en = 'Parameters'");
+						BaseGroup.Title = NStr("en='Parameters';ru='Параметры'");
 					EndIf;
 					// Add new input filed on a form.
 					Item = Items.Add(Parameter_Name, Type("FormField"), BaseGroup);
@@ -336,7 +337,7 @@ Procedure RefreshCustomInterface(DetailsInterface, AdditionalActions, FirstLaunc
 			If XMLReader.Name = "Page" AND XMLReader.NodeType = XMLNodeType.StartElement Then
 				
 				PageTitle = XMLReader.AttributeValue("Caption");
-				PageTitle = ?(IsBlankString(PageTitle), NStr("en = 'Parameters'"), PageTitle);
+				PageTitle = ?(IsBlankString(PageTitle), NStr("en='Parameters';ru='Параметры'"), PageTitle);
 				
 				PageCount = PageCount + 1;
 				If PageCount > 1 Then
@@ -351,7 +352,7 @@ Procedure RefreshCustomInterface(DetailsInterface, AdditionalActions, FirstLaunc
 			If XMLReader.Name = "Group" AND XMLReader.NodeType = XMLNodeType.StartElement Then  
 				
 				TitleGroups = XMLReader.AttributeValue("Caption");
-				TitleGroups = ?(IsBlankString(TitleGroups), NStr("en = 'Parameters'"), TitleGroups);
+				TitleGroups = ?(IsBlankString(TitleGroups), NStr("en='Parameters';ru='Параметры'"), TitleGroups);
 				
 				BaseGroup = Items.Add("Group" + GroupIndex, Type("FormGroup"), CurrentPage);
 				BaseGroup.Type = FormGroupType.UsualGroup;
@@ -432,16 +433,16 @@ Procedure StartAdditionalCommandExecutionEnd(ExecutionResult, Parameters) Export
 		EndIf;
 		
 		If IntegrationLibrary AND Not MainDriverIsSet Then
-			DriverIsSet = NStr("en='Integration library is installed'");
-			DriverVersion = NStr("en='Not defined'");
-			Items.SetupDriver.Title = NStr("en='Install the main driver supply'");
+			DriverIsSet = NStr("en='Integration library is installed';ru='Установлена интеграционная библиотека'");
+			DriverVersion = NStr("en='Not defined';ru='Не определена'");
+			Items.SetupDriver.Title = NStr("en='Install the main driver supply';ru='Установить основную поставку драйвера'");
 		EndIf;
 		Items.DriverAndVersion.Enabled = True;
 	Else
 		DriverMessage  = Output_Parameters[1];
 		DriverIsSet = Output_Parameters[2];
-		DriverVersion  = NStr("en='Not defined'");
-		If Not IsBlankString(DriverMessage) AND DriverIsSet = NStr("en='Installed'") Then
+		DriverVersion  = NStr("en='Not defined';ru='Не определена'");
+		If Not IsBlankString(DriverMessage) AND DriverIsSet = NStr("en='Installed';ru='Установлен'") Then
 			Items.DevicePlugged.Visible = True;
 			Items.DevicePlugged.Title = DriverMessage;
 			Items.WriteAndClose.Visible = False;
@@ -451,14 +452,14 @@ Procedure StartAdditionalCommandExecutionEnd(ExecutionResult, Parameters) Export
 		EndIf
 	EndIf;
 	
-	Items.Driver.TextColor = ?(DriverVersion = NStr("en='Not defined'"), ErrorColor, TextColor);
+	Items.Driver.TextColor = ?(DriverVersion = NStr("en='Not defined';ru='Не определена'"), ErrorColor, TextColor);
 	Items.Version.TextColor  = Items.Driver.TextColor ;
-	Items.DriverDescription.TextColor = ?(DriverDescription = NStr("en='Undefined'"), ErrorColor, TextColor);
-	Items.DetailsDriver.TextColor     = ?(DetailsDriver     = NStr("en='Undefined'"), ErrorColor, TextColor);
+	Items.DriverDescription.TextColor = ?(DriverDescription = NStr("en='Undefined';ru='Неопределено'"), ErrorColor, TextColor);
+	Items.DetailsDriver.TextColor     = ?(DetailsDriver     = NStr("en='Undefined';ru='Неопределено'"), ErrorColor, TextColor);
 	Items.DetailsDriver.Visible = Not IsBlankString(DetailsDriver);
 	
-	Items.SetupDriver.Enabled = Not (DriverIsSet = NStr("en='Installed'"));
-	Items.DeviceTest.Enabled = (NOT DriverIsSet = NStr("en='Not set'")) 
+	Items.SetupDriver.Enabled = Not (DriverIsSet = NStr("en='Installed';ru='Установлен'"));
+	Items.DeviceTest.Enabled = (NOT DriverIsSet = NStr("en='Not set';ru='Не установлен'")) 
 	                                      AND (NOT IntegrationLibrary Or (IntegrationLibrary AND MainDriverIsSet));
 	
 EndProcedure

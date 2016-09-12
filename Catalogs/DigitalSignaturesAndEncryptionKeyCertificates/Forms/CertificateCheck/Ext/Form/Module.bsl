@@ -19,8 +19,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If CheckOnSelection Then
-		Items.FormCheck.Title = NStr("en = 'Check and continue'");
-		Items.FormClose.Title   = NStr("en = 'Cancel'");
+		Items.FormCheck.Title = NStr("en='Check and continue';ru='Проверить и продолжить'");
+		Items.FormClose.Title   = NStr("en='Cancel';ru='Отменить'");
 	EndIf;
 	
 	Checks = New ValueTable;
@@ -277,7 +277,7 @@ EndProcedure
 Procedure ShowAlertOnFailureToContinue()
 	
 	ShowMessageBox(,
-		NStr("en = 'Failed to continue as not all required checks are completed.'"));
+		NStr("en='Failed to continue as not all required checks are completed.';ru='Не удалось продолжить, т.к. пройдены не все требуемые проверки.'"));
 	
 EndProcedure
 
@@ -407,7 +407,7 @@ Procedure CheckOnClientSideAfterCertificateInitialization(CryptoCertificate, Con
 	If Context.CryptoCertificate.Subject.Property("SN") Then
 		ErrorDescription = "";
 	Else
-		ErrorDescription = NStr("en = 'In the description of the subject of the certificate field ""SN"" is not found.'");
+		ErrorDescription = NStr("en='In the description of the subject of the certificate field ""SN"" is not found.';ru='В описании субъекта сертификата не найдено поле ""SN"".'");
 	EndIf;
 	SetItem(ThisObject, "LegitimateCertificate", False, ErrorDescription);
 	
@@ -424,7 +424,7 @@ Procedure CheckOnClientSideAfterCertificateSearch(Result, Context) Export
 	
 	If TypeOf(Result) <> Type("CryptoCertificate") Then
 		ErrorDescription = Result.ErrorDescription + Chars.LF + Chars.LF
-			+ NStr("en = 'Signing, the created signature and decryption can not be checked.'");
+			+ NStr("en='Signing, the created signature and decryption can not be checked.';ru='Проверка подписания, созданной подписи и расшифровки не могут быть выполнены.'");
 	Else
 		ErrorDescription = "";
 	EndIf;
@@ -468,7 +468,7 @@ Procedure CheckOnClientSideAfterCertificateCheck(Result, Context) Export
 				"CheckOnClientSideAfterCreatingCryptographyManager", ThisObject, Context),
 			"CertificateCheck", False, Application);
 	Else
-		ErrorDescription = NStr("en = 'Application for private key use is not indicated in a certificate.'");
+		ErrorDescription = NStr("en='Application for private key use is not indicated in a certificate.';ru='Программа для использования закрытого ключа не указана в сертификате.'");
 		CheckOnClientSideAfterCreatingCryptographyManager(ErrorDescription, Context);
 	EndIf;
 	
@@ -485,8 +485,9 @@ Procedure CheckOnClientSideAfterCreatingCryptographyManager(Result, Context) Exp
 		ErrorDescription = "";
 	Else
 		ErrorDescription = Result + Chars.LF + Chars.LF
-			+ NStr("en = 'Signing, the created signature, encryption
-			             |and decryption can not be checked.'");
+			+ NStr("en='Signing, the created signature, encryption"
+"and decryption can not be checked.';ru='Проверка подписания, созданной"
+"подписи, шифрования и расшифровки не могут быть выполнены.'");
 	EndIf;
 	SetItem(ThisObject, "ApplicationAvailability", False, ErrorDescription, True);
 	
@@ -711,7 +712,7 @@ Procedure CheckOnServerSide(Val PasswordValue)
 	If CryptoCertificate.Subject.Property("SN") Then
 		ErrorDescription = "";
 	Else
-		ErrorDescription = NStr("en = 'In the description of the subject of the certificate field ""SN"" is not found.'");
+		ErrorDescription = NStr("en='In the description of the subject of the certificate field ""SN"" is not found.';ru='В описании субъекта сертификата не найдено поле ""SN"".'");
 	EndIf;
 	SetItem(ThisObject, "LegitimateCertificate", True, ErrorDescription);
 	
@@ -721,7 +722,7 @@ Procedure CheckOnServerSide(Val PasswordValue)
 		True, False, , Result);
 	If ValueIsFilled(Result) Then
 		ErrorDescription = Result.ErrorDescription + Chars.LF + Chars.LF
-			+ NStr("en = 'Signing, the created signature and decryption can not be checked.'");
+			+ NStr("en='Signing, the created signature and decryption can not be checked.';ru='Проверка подписания, созданной подписи и расшифровки не могут быть выполнены.'");
 	Else
 		ErrorDescription = "";
 	EndIf;
@@ -744,12 +745,13 @@ Procedure CheckOnServerSide(Val PasswordValue)
 			False, ErrorDescription, Application);
 	Else
 		CryptoManager = Undefined;
-		ErrorDescription = NStr("en = 'Application for private key use is not indicated in a certificate.'");
+		ErrorDescription = NStr("en='Application for private key use is not indicated in a certificate.';ru='Программа для использования закрытого ключа не указана в сертификате.'");
 	EndIf;
 	If ValueIsFilled(ErrorDescription) Then
 		ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
-			+ NStr("en = 'Signing, the created signature, encryption
-			             |and decryption can not be checked.'");
+			+ NStr("en='Signing, the created signature, encryption"
+"and decryption can not be checked.';ru='Проверка подписания, созданной"
+"подписи, шифрования и расшифровки не могут быть выполнены.'");
 	EndIf;
 	SetItem(ThisObject, "ApplicationAvailability", True, ErrorDescription, True);
 	
@@ -841,7 +843,7 @@ Procedure SetItem(Form, StartElement, AtServer, ErrorDescription = Undefined, Is
 	
 	If ErrorDescription = Undefined Then
 		ItemPicture.Picture    = New Picture;
-		ItemPicture.ToolTip   = NStr("en = 'Check was not performed.'");
+		ItemPicture.ToolTip   = NStr("en='Check was not performed.';ru='Проверка не выполнялась.'");
 		Checks.Insert(StartElement, Undefined);
 		
 	ElsIf ValueIsFilled(ErrorDescription) Then
@@ -850,7 +852,7 @@ Procedure SetItem(Form, StartElement, AtServer, ErrorDescription = Undefined, Is
 		Checks.Insert(StartElement, False);
 	Else
 		ItemPicture.Picture    = PictureLib.Successfully32;
-		ItemPicture.ToolTip   = NStr("en = 'The validation is completed successfully.'");;
+		ItemPicture.ToolTip   = NStr("en='The validation is completed successfully.';ru='Проверка выполнена успешно.'");;
 		Checks.Insert(StartElement, True);
 	EndIf;
 	

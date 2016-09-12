@@ -150,7 +150,7 @@ EndProcedure
 Procedure BeforeExportType(Container, Serializer, MetadataObject, Cancel) Export
 	
 	If Not CommonUseSTL.ThisIsReferenceData(MetadataObject) Then 
-		Raise NStr("en = 'Replacement of references is available only in reference data'");
+		Raise NStr("en='Replacement of references is available only in reference data';ru='Замена ссылок доступна только в ссылочных данных'");
 	EndIf;
 	
 	ObjectManager = ServiceTechnologyIntegrationWithSSL.ObjectManagerByFullName(MetadataObject.FullName());
@@ -180,7 +180,7 @@ Procedure AfterObjectExport(Container, ObjectExportManager, Serializer, Object, 
 	If Container.AdditionalProperties.CommonDataRequireMatchingRefs.Find(MetadataObject) <> Undefined Then
 		
 		If Not CommonUseSTL.ThisIsReferenceData(MetadataObject) Then 
-			Raise NStr("en = 'Substitution of references is available only in reference data'");
+			Raise NStr("en='Substitution of references is available only in reference data';ru='Подмена ссылок доступна только в ссылочных данных'");
 		EndIf;
 		
 		ObjectManager = ServiceTechnologyIntegrationWithSSL.ObjectManagerByFullName(FullMetadataObjectName);
@@ -230,7 +230,7 @@ Procedure ReferencesUseControlUndividedDataInSeparated() Export
 		
 		ErrorText = BriefErrorDescription(ErrorInfo());
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'There are errors in the structure of configuration metadata: %1'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='There are errors in the structure of configuration metadata: %1';ru='Обнаружены ошибки в структуре метаданных конфигурации: %1'", Metadata.DefaultLanguage.LanguageCode),
 			ErrorText
 		);
 		
@@ -248,7 +248,7 @@ Procedure FillingControlNaturalKeyFieldsForUndividedObjects() Export
 		
 		ErrorText = BriefErrorDescription(ErrorInfo());
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'There are errors in the structure of configuration metadata: %1'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='There are errors in the structure of configuration metadata: %1';ru='Обнаружены ошибки в структуре метаданных конфигурации: %1'", Metadata.DefaultLanguage.LanguageCode),
 			ErrorText
 		);
 		
@@ -354,11 +354,15 @@ Procedure CheckNaturalKeysTakesPresence(Val MetadataObject, Val NaturalKeyFields
 	
 	// Filling the warning text
 	MessageText = ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-		NStr("en = 'Some %1 objects: %2
-		|fields
-		|
-		|are duplicated
-		|: %3.'"),
+		NStr("en='Some %1 objects: %2"
+"fields"
+""
+"are duplicated"
+": %3.';ru='У некоторых объектов"
+"%1:"
+"%2"
+"дублируются"
+"поля: %3.'"),
 		TableName, ItemList, KeyNames);
 	
 	Raise MessageText;
@@ -376,8 +380,9 @@ Procedure CheckNaturalKeyFields(Val MetadataObject, Val NaturalKeyFields)
 	If NaturalKeyFields = Undefined Or NaturalKeyFields.Count() = 0 Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'For %1 data type natural keys for references replacement are not specified.
-                  |Check handler WhenDetermineTypesRequireImportInLocalVersion.'"),
+			NStr("en='For %1 data type natural keys for references replacement are not specified."
+"Check handler WhenDetermineTypesRequireImportInLocalVersion.';ru='Для типа данных %1 не указаны естественные ключи для замены ссылок."
+"Проверьте обработчик ПриОпределенииТиповТребующихЗагрузкиВЛокальнуюВерсию.'"),
 			MetadataObject.FullName());
 		
 	EndIf;
@@ -396,7 +401,7 @@ Procedure UndividedDataReferencesControlOnExport(Container, Object, FieldsForUnd
 		
 		If ObjectNameStructure[0] <> FieldNameStructure[0] Or ObjectNameStructure[1] <> FieldNameStructure[1] Then
 			
-			Raise NStr("en = 'Invalid control cache of undivided data on exporting!'");
+			Raise NStr("en='Invalid control cache of undivided data on exporting!';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
 			
 		EndIf;
 		
@@ -443,13 +448,13 @@ Procedure UndividedDataReferencesControlOnExport(Container, Object, FieldsForUnd
 					
 				Else
 					
-					Raise NStr("en = 'Invalid control cache of undivided data on exporting!'");
+					Raise NStr("en='Invalid control cache of undivided data on exporting!';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
 					
 				EndIf;
 				
 			Else
 				
-				Raise NStr("en = 'Invalid control cache of undivided data on exporting!'");
+				Raise NStr("en='Invalid control cache of undivided data on exporting!';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
 				
 			EndIf;
 			
@@ -473,13 +478,13 @@ Procedure UndividedDataReferencesControlOnExport(Container, Object, FieldsForUnd
 				
 			Else
 				
-				Raise NStr("en = 'Invalid control cache of undivided data on exporting!'");
+				Raise NStr("en='Invalid control cache of undivided data on exporting!';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
 				
 			EndIf;
 			
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The %1 metadata object is not supported!'", Metadata.DefaultLanguage.LanguageCode),
+				NStr("en='The %1 metadata object is not supported!';ru='Объект метаданных %1 не поддерживается!'", Metadata.DefaultLanguage.LanguageCode),
 				FullMetadataObjectName
 			);
 		EndIf;
@@ -538,25 +543,43 @@ Procedure UndividedDataReferenceControlOnExport(Container, Val CheckedRefs, Val 
 	EndIf;
 	
 	ErrorTemplate =
-		NStr("en = 'Object metadata %1 is included in the list of objects, for which the refs mapping is not required when exporting/importing
-              |data (in overridable procedure 
-              |DataExportImportOverridable.WhenFillingCommonDataTypesDoNotRequireMatchingRefsOnImport()),
-              |at that, it is not required for the object that there should be no unmapped refs when exporting.
-              |
-              |Unmapped ref is detected when exporting the object %2, which has the %3 attribute value equal to
-              |a ref to the object %1, and this ref can not be mapped correctly when importing data.
-              |It is required to reconsider the logic of using the object %1 and ensure the absence of unmapped refs for this object 
-              |in exported data.
-              |
-              |Diagnostic info:
-              |1. Serialization of exported object:
-              |---------------------------------------------------------------------------------------------------------------------------
-              |%4
-              |---------------------------------------------------------------------------------------------------------------------------
-              |2. Serialization object of unmapped reference
-              |---------------------------------------------------------------------------------------------------------------------------
-              |%5
-              |---------------------------------------------------------------------------------------------------------------------------'");
+		NStr("en='Object metadata %1 is included in the list of objects, for which the refs mapping is not required when exporting/importing"
+"data (in overridable procedure "
+"DataExportImportOverridable.WhenFillingCommonDataTypesDoNotRequireMatchingRefsOnImport()),"
+"at that, it is not required for the object that there should be no unmapped refs when exporting."
+""
+"Unmapped ref is detected when exporting the object %2, which has the %3 attribute value equal to"
+"a ref to the object %1, and this ref can not be mapped correctly when importing data."
+"It is required to reconsider the logic of using the object %1 and ensure the absence of unmapped refs for this object "
+"in exported data."
+""
+"Diagnostic info:"
+"1. Serialization of exported object:"
+"---------------------------------------------------------------------------------------------------------------------------"
+"%4"
+"---------------------------------------------------------------------------------------------------------------------------"
+"2. Serialization object of unmapped reference"
+"---------------------------------------------------------------------------------------------------------------------------"
+"%5"
+"---------------------------------------------------------------------------------------------------------------------------';ru='Объект метаданных %1 включен в перечень объектов, для которых не требуется сопоставление ссылок при выгрузке / загрузке"
+"данных (в переопределяемой процедуре "
+"ВыгрузкаЗагрузкаДанныхПереопределяемый.ПриЗаполненииТиповОбщихДанныхНеТребующихСопоставлениеСсылокПриЗагрузке(),"
+"но при этом для него не обеспечивается требования отсутствия несопоставляемых ссылок при выгрузке."
+""
+"Несопоставляемая ссылка обнаружена при выгрузке объекта %2, у которого в качестве значения реквизита %3"
+"установлена ссылка на объект %1, которая не сможет быть корректно сопоставлена при загрузке данных."
+"Требуется пересмотреть логику использования объекта %1 и обеспечить для него отсутствие несопоставляемых ссылок"
+"в выгружаемых данных."
+""
+"Диагностическая информация:"
+"1. Сериализация выгружаемого объекта:"
+"---------------------------------------------------------------------------------------------------------------------------"
+"%4"
+"---------------------------------------------------------------------------------------------------------------------------"
+"2. Сериализация объекта несопоставляемой ссылки"
+"---------------------------------------------------------------------------------------------------------------------------"
+"%5"
+"---------------------------------------------------------------------------------------------------------------------------'");
 	
 	ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
 		ErrorTemplate,

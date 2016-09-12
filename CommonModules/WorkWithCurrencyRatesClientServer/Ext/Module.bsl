@@ -41,7 +41,7 @@ Function RecalculateByRate(Amount, CurrentRateParameters, NewRateParameters) Exp
 		
 		CommonUseClientServer.MessageToUser(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'When converting to the %1 currency, the %2 amount is set to zero, as the currencies exchange rate is not set.'"), 
+				NStr("en='When converting to the %1 currency, the %2 amount is set to zero, as the currencies exchange rate is not set.';ru='При пересчете в валюту %1 сумма %2 установлена в нулевое значение, т.к. курс валюты не задан.'"), 
 				NewRateParameters.Currency, 
 				Format(Amount, "NFD=2; NZ=0")));
 		

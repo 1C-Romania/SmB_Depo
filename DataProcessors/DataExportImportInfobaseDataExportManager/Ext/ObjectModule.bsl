@@ -105,7 +105,7 @@ Procedure ExportMetadataObjectData()
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'Unexpected metadata object %1'"),
+			NStr("en='Unexpected metadata object %1';ru='Неожиданный объект метаданных: %1'"),
 			CurrentMetadataObject.FullName()
 		);
 		

@@ -15,7 +15,7 @@ Procedure FillByDocumentBase()
 	
 	Response = Undefined;
 	
-	ShowQueryBox(New NotifyDescription("FillAccordingToBasisDocumentEnd", ThisObject), NStr("en = 'Document will be completely refilled by ""Basis""! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillAccordingToBasisDocumentEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -631,8 +631,9 @@ Procedure ProcessContractChange()
 			AND Object.DocumentCurrency <> StructureData.SettlementsCurrency
 			AND Object.Inventory.Count() > 0 Then
 			
-			WarningText = NStr("en = 'Settlement currency of the contract with counterparty changed! 
-				|It is necessary to check the document currency!'");
+			WarningText = NStr("en='Settlement currency of the contract with counterparty changed! "
+"It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! "
+"Необходимо проверить валюту документа!'");
 			
 			ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, True, WarningText);
 			
@@ -907,7 +908,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en = 'Data by barcode is not found: %1%; quantity: %2%'");
+		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -957,12 +958,12 @@ Procedure SetLabelPricesAndCurrency()
 	
 	If ValueIsFilled(Object.DocumentCurrency) Then
 		
-		PricesAndCurrency = NStr("en = '%Currency%'");
+		PricesAndCurrency = NStr("en='%Currency%';ru='%Вал%'");
 		PricesAndCurrency = StrReplace(PricesAndCurrency, "%Currency%", TrimAll(String(Object.DocumentCurrency)));
 		
 	Else
 		
-		PricesAndCurrency = NStr("en = 'The currency is not specified'");
+		PricesAndCurrency = NStr("en='The currency is not specified';ru='Валюта не указана'");
 		
 	EndIf;
 	
@@ -1198,7 +1199,7 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 		If MessageText <> "" Then
 			
 			Message = New UserMessage;
-			Message.Text = ?(Cancel, NStr("en = 'Document is not posted! '") + MessageText, MessageText);
+			Message.Text = ?(Cancel, NStr("en='Document is not posted! ';ru='Документ не проведен! '") + MessageText, MessageText);
 			
 			If Cancel Then
 				Message.DataPath = "Object";
@@ -1705,7 +1706,7 @@ Procedure InventoryCountryOfOriginChoiceProcessing(Item, ValueSelected, Standard
 			
 			ValueSelected = Undefined;
 			
-			MessageText = NStr("en = 'CCD account is kept only for products and services with the ""Inventory"" type.'");
+			MessageText = NStr("en='CCD account is kept only for products and services with the ""Inventory"" type.';ru='Учет ГТД в программе ведеться только для номенклатуры с типом ""Запас"".'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			
 		EndIf;
@@ -1731,7 +1732,7 @@ Procedure InventoryCCDNumberChoiceProcessing(Item, ValueSelected, StandardProces
 			
 			ValueSelected = Undefined;
 			
-			MessageText = NStr("en = 'CCD account is kept only for products and services with the ""Inventory"" type.'");
+			MessageText = NStr("en='CCD account is kept only for products and services with the ""Inventory"" type.';ru='Учет ГТД в программе ведеться только для номенклатуры с типом ""Запас"".'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			
 		EndIf;
@@ -1742,7 +1743,7 @@ Procedure InventoryCCDNumberChoiceProcessing(Item, ValueSelected, StandardProces
 			
 			ValueSelected = Undefined;
 			
-			MessageText = NStr("en = 'CCD accounting for the native products is not kept!'");
+			MessageText = NStr("en='CCD accounting for the native products is not kept!';ru='Учет ГТД для отечественных товаров не ведется!'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			
 		EndIf;
@@ -1777,14 +1778,14 @@ Procedure FillCCDNumbers(Command)
 	
 	If Object.Inventory.Count() < 1 Then
 		
-		MessageText = NStr("en = 'Unfilled tabular section with inventory. An execution is impossible.'");
+		MessageText = NStr("en='Unfilled tabular section with inventory. An execution is impossible.';ru='Незаполнена табличная часть с запасами. Выполнение не возможно.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		Return;
 		
 	EndIf;
 		
-	QuestionText = NStr("en = 'The column ""Origin country"" and ""CCD number"" columns will be refilled in the tabular section. Continue?'");
+	QuestionText = NStr("en='The column ""Origin country"" and ""CCD number"" columns will be refilled in the tabular section. Continue?';ru='В табличной части будет перезаполнена колонка ""Страна происхождения"" и ""Номер ГТД"". Продолжить?'");
 	
 	Response = Undefined;
 
@@ -1876,7 +1877,7 @@ Procedure PickupCCDNumbers(Command)
 	
 	If Object.Inventory.Count() < 1 Then
 		
-		MessageText = NStr("en = 'Unfilled tabular section with inventory. An execution is impossible.'");
+		MessageText = NStr("en='Unfilled tabular section with inventory. An execution is impossible.';ru='Незаполнена табличная часть с запасами. Выполнение не возможно.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		Return;
@@ -1899,7 +1900,7 @@ Procedure SetCCDNumber(Command)
 	
 	TabularSectionRow = Items.Inventory.CurrentData;
 	If TabularSectionRow = Undefined Then
-		MessageText = NStr("en = 'The tabular section row is not selected. An execution is impossible.'");
+		MessageText = NStr("en='The tabular section row is not selected. An execution is impossible.';ru='Не выбрана строка табличной части. Выполнение не возможно.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;
@@ -1943,7 +1944,7 @@ EndProcedure
 Procedure SearchByBarcode(Command)
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en = 'Enter barcode'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
 
 EndProcedure
 
@@ -1968,7 +1969,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.'"));
+		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -1986,7 +1987,7 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	
 	If Not Weight = Undefined Then
 		If Weight = 0 Then
-			MessageText = NStr("en = 'Electronic scales returned zero weight.'");
+			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			// Weight is received.

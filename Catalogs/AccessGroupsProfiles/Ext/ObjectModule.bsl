@@ -275,13 +275,15 @@ Procedure CheckSuppliedDataUniqueness(FillChecking = False, Cancel = False)
 		If Selection.Count() > 1 Then
 			
 			BriefErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while writing profile ""%1"".
-				           |Supplied profile already exists:'"),
+				NStr("en='An error occurred while writing profile ""%1""."
+"Supplied profile already exists:';ru='Ошибка при записи профиля ""%1""."
+"Поставляемый профиль уже существует:'"),
 				Description);
 			
 			DetailErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while writing profile ""%1"".
-				           |Supplied data ID ""%2"" is already used in profile:'"),
+				NStr("en='An error occurred while writing profile ""%1""."
+"Supplied data ID ""%2"" is already used in profile:';ru='Ошибка при записи профиля ""%1""."
+"Идентификатор поставляемых данных ""%2"" уже используется в профиле:'"),
 				Description,
 				String(IDSuppliedData));
 			
@@ -301,7 +303,7 @@ Procedure CheckSuppliedDataUniqueness(FillChecking = False, Cancel = False)
 				CommonUseClientServer.MessageToUser(BriefErrorDescription,,,, Cancel);
 			Else
 				WriteLogEvent(
-					NStr("en = 'Acces management. Violation of the supplied profile uniqueness'",
+					NStr("en='Acces management. Violation of the supplied profile uniqueness';ru='Управление доступом.Нарушение однозначности поставляемого профиля'",
 					     CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error, , , DetailErrorDescription);
 			EndIf;

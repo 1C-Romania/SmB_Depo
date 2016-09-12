@@ -117,7 +117,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If CancelGLExpenseAccountChange(AccrualDeductionKind) Then
 		
-		Items.GLAccountsGroup.ToolTip	= NStr("en = 'There are records of this kind of accrual (deduction) in the base! You can not change the GL account!'");
+		Items.GLAccountsGroup.ToolTip	= NStr("en='There are records of this kind of accrual (deduction) in the base! You can not change the GL account!';ru='В базе есть движения по этому виду начисления (удержания)! Изменение счета учета запрещено!'");
 		Items.GLAccountsGroup.Enabled	= False;
 		Items.Default.Visible			= False;
 		
@@ -132,7 +132,7 @@ Procedure OnOpen(Cancel)
 	
 	If IsTax Then
 		
-		ShowMessageBox(, NStr("en='You can not edit the GL accounts for the Tax accrual kind!'"));
+		ShowMessageBox(, NStr("en='You can not edit the GL accounts for the Tax accrual kind!';ru='Для типа вида начисления Налог счета учета не редактируются!'"));
 		Cancel = True;
 		
 	EndIf;

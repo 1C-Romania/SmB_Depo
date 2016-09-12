@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -495,6 +565,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>(name of Company)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(наименование организации)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -554,6 +628,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>(name of unit)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(наименование структурного подразделения)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -591,6 +669,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document No.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер документа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -601,6 +683,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Compiling date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата составления</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -617,6 +703,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Accounting period</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отчетный период</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -635,6 +725,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>PAY SHEET</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>РАСЧЕТНАЯ ВЕДОМОСТЬ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -663,6 +757,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>From</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Списать из</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -673,6 +771,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>to</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>до</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -781,6 +883,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount, [Currency]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма, [Валюта]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -799,6 +905,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Sequence number</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядковый номер</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -809,6 +919,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Employee code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Табельный номер</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -821,6 +935,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Last name, initials</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>фамилия, инициалы</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -831,6 +949,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Position (Speciality, Occupation)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Должность (специаль- ность, профессия)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -843,6 +965,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Tariff Rate (Hourly, Daily) (Salary), USD</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тарифная ставка (часовая, дневная) (оклад), руб.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -853,6 +979,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Worked </v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отработано </v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -866,6 +996,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Accrued,</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Начислено,</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -876,6 +1010,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Deducted,</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Удержано,</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -907,6 +1045,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>days</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>дня</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -917,6 +1059,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Hours</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>часы</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -941,6 +1087,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Debt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наш долг</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -954,6 +1104,10 @@
 							<v8:content>
 to
 be paid</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content> к выплате</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -996,6 +1150,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company's</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>за организацией</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1006,6 +1164,11 @@ be paid</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Employee's</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>за 
+работником</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1025,6 +1188,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>1</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>1</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1034,6 +1201,10 @@ be paid</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>2</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>2</v8:content>
 						</v8:item>
 					</tl>
@@ -1047,6 +1218,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>3</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>3</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1056,6 +1231,10 @@ be paid</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>4</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>4</v8:content>
 						</v8:item>
 					</tl>
@@ -1069,6 +1248,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>5</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>5</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1078,6 +1261,10 @@ be paid</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>6</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>6</v8:content>
 						</v8:item>
 					</tl>
@@ -1091,6 +1278,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>7</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>7</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1100,6 +1291,10 @@ be paid</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>8</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>8</v8:content>
 						</v8:item>
 					</tl>
@@ -1113,6 +1308,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>9</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>9</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1122,6 +1321,10 @@ be paid</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>10</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>10</v8:content>
 						</v8:item>
 					</tl>
@@ -1135,6 +1338,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>11</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>11</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1144,6 +1351,10 @@ be paid</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>12</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>12</v8:content>
 						</v8:item>
 					</tl>
@@ -1291,6 +1502,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page Totals:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итого по странице:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1379,6 +1594,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Sheet Totals:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итого по ведомости:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1462,6 +1681,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Author</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ведомость составил</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1503,6 +1726,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>(position)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(должность)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1515,6 +1742,10 @@ be paid</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>(personal signature)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(личная подпись)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1526,6 +1757,10 @@ be paid</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>(details of the signature)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(расшифровка подписи)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1976,6 +2211,10 @@ be paid</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>DF=MM/dd/yyyy</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>DF=MM/dd/yyyy</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -1986,6 +2225,10 @@ be paid</v8:content>
 		<format>
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>DF=MM/dd/yyyy</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>DF=MM/dd/yyyy</v8:content>
 			</v8:item>
 		</format>
@@ -2321,6 +2564,10 @@ be paid</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>NFD=2</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>NFD=2</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -2335,12 +2582,20 @@ be paid</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>NFD=2</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>NFD=2</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
 		<format>
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>NFD=2</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>NFD=2</v8:content>
 			</v8:item>
 		</format>

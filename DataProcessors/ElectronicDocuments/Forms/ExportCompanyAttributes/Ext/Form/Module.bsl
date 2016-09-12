@@ -144,19 +144,19 @@ Procedure ExportCompanyAttributes(StorageAddress, UUID)
 			
 			StorageAddress = PutToTempStorage(BinaryData, UUID);
 		Else
-			MessagePattern = NStr("en = '%1 (see details in event log monitor).'");
+			MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ErrorText);
-			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED formation'"),
+			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
 																						ErrorText,
 																						ErrorText);
 		EndIf;
 		
 	Except
 		
-		MessagePattern = NStr("en = '%1 (see details in event log monitor).'");
+		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED formation'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 	EndTry;
@@ -242,7 +242,7 @@ Procedure RefreshForm()
 		Items.GroupHead.Visible = False;
 		Items.KPP.Visible                = False;
 		
-		LabelCertificate = NStr("en ='Certificate No'") + CertificateNumber + NStr("en =' from '") + Format(CertificateDate, "DLF=D");
+		LabelCertificate = NStr("en='Certificate No';ru='Свидетельство №'") + CertificateNumber + NStr("en=' from ';ru=' от '") + Format(CertificateDate, "DLF=D");
 	Else
 		Items.Certificate.Visible = False;
 	EndIf;
@@ -263,7 +263,7 @@ Procedure ExportAttributes(Command)
 	
 	If ExportMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEMail") Then
 		If Not ValueIsFilled(ExportingAddress) Then
-			MessageText = NStr("en = 'Email account is not specified.'");
+			MessageText = NStr("en='Email account is not specified.';ru='Не выбрана учетная запись электронной почты.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		EndIf;

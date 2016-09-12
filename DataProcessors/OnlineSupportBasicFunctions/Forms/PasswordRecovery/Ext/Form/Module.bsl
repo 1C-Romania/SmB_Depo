@@ -97,14 +97,14 @@ Function FieldsAreFilledCorrectly()
 	
 	If IsBlankString(Login) Then
 		
-		ShowMessageBox(, NStr("en = 'Please enter login.'"), , NStr("en = 'Filling error'"));
+		ShowMessageBox(, NStr("en='Please enter login.';ru='Пожалуйста, введите логин.'"), , NStr("en='Filling error';ru='Ошибка заполнения'"));
 		Return False;
 		
 	EndIf;
 	
 	If IsBlankString(Email) Then
 		
-		ShowMessageBox(, NStr("en = 'Please enter email.'"), , NStr("en = 'Filling error'"));
+		ShowMessageBox(, NStr("en='Please enter email.';ru='Пожалуйста, введите e-mail.'"), , NStr("en='Filling error';ru='Ошибка заполнения'"));
 		Return False;
 		
 	EndIf;
@@ -117,11 +117,21 @@ EndFunction
 Function MessageParametersToTechicalSupport()
 	
 	Result = New Structure;
-	Result.Insert("Subject"       , NStr("en = 'Online support. Password recovery.'"));
+	Result.Insert("Subject"       , NStr("en='Online support. Password recovery.';ru='Интернет-поддержка. Восстановление пароля.'"));
 	Result.Insert("FromWhom"     , Email);
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Dear Sir! I can''t recover my password to connect InternetSupport. Please help me to solve the problem. Login: %1. Email: %2. %TechnicalParameters% ----------------------------------------------- Yours sincerely, .'"),
+		NStr("en=""Dear Sir! I can't recover my password to connect InternetSupport. Please help me to solve the problem. Login: %1. Email: %2. %TechnicalParameters% ----------------------------------------------- Yours sincerely, ."";ru='Здравствуйте!"
+"У меня не получается восстановить свой пароль для подключения"
+"Интернет-поддержки."
+"Прошу помочь разобраться с проблемой."
+""
+"Логин: %1."
+"E-mail: %2."
+""
+"%ТехническиеПараметры%"
+"-----------------------------------------------"
+"С уважением, .'"),
 		Login,
 		Email);
 	

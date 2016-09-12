@@ -257,24 +257,24 @@ Function InaccessibleRightsByTypesUsers()
 	
 	Rights = New Map;
 	InaccessibleRights.Insert(Enums.UserTypes.ExternalUser, Rights);
-	Rights.Insert("Administration",       NStr("en = 'Administration'"));
-	Rights.Insert("DataAdministration", NStr("en = 'Data administration'"));
+	Rights.Insert("Administration",       NStr("en='Administration';ru='Администрирование'"));
+	Rights.Insert("DataAdministration", NStr("en='Data administration';ru='Администрирование данных'"));
 	
 	Rights = New Map;
 	InaccessibleRights.Insert(Enums.UserTypes.LocalApplicationUser, Rights);
-	Rights.Insert("Administration",                     NStr("en = 'Administration'"));
-	Rights.Insert("UpdateDataBaseConfiguration",      NStr("en = 'Update Database Configuration'"));
+	Rights.Insert("Administration",                     NStr("en='Administration';ru='Администрирование'"));
+	Rights.Insert("UpdateDataBaseConfiguration",      NStr("en='Update Database Configuration';ru='Обновление конфигурации базы данных'"));
 	
 	Rights = New Map;
 	InaccessibleRights.Insert(Enums.UserTypes.DataAreaUser, Rights);
-	Rights.Insert("Administration",                     NStr("en = 'Administration'"));
-	Rights.Insert("UpdateDataBaseConfiguration",      NStr("en = 'Update Database Configuration'"));
-	Rights.Insert("ThickClient",                         NStr("en = 'Thick client'"));
-	Rights.Insert("ExternalConnection",                     NStr("en = 'OUTER JOIN'"));
-	Rights.Insert("Automation",                            NStr("en = 'Automation'"));
-	Rights.Insert("InteractiveOpenExtDataProcessors", NStr("en = 'Interactive opening of external processings'"));
-	Rights.Insert("InteractiveOpenExtReports",   NStr("en = 'Interactive external reports opening'"));
-	Rights.Insert("AllFunctionsMode",                       NStr("en = 'All functions mode'"));
+	Rights.Insert("Administration",                     NStr("en='Administration';ru='Администрирование'"));
+	Rights.Insert("UpdateDataBaseConfiguration",      NStr("en='Update Database Configuration';ru='Обновление конфигурации базы данных'"));
+	Rights.Insert("ThickClient",                         NStr("en='Thick client';ru='Толстый клиент'"));
+	Rights.Insert("ExternalConnection",                     NStr("en='OUTER JOIN';ru='Внешнее соединение'"));
+	Rights.Insert("Automation",                            NStr("en='Automation';ru='Automation'"));
+	Rights.Insert("InteractiveOpenExtDataProcessors", NStr("en='Interactive opening of external processings';ru='Интерактивное открытие внешних обработок'"));
+	Rights.Insert("InteractiveOpenExtReports",   NStr("en='Interactive external reports opening';ru='Интерактивное открытие внешних отчетов'"));
+	Rights.Insert("AllFunctionsMode",                       NStr("en='All functions mode';ru='Режим все функции'"));
 	
 	Return InaccessibleRights;
 	

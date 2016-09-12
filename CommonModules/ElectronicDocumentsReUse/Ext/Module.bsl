@@ -75,7 +75,7 @@ Function GetAppliedCatalogName(CatalogName) Export
 	
 	AppliedCatalogName = AccordanceCatalogs.Get(CatalogName);
 	If AppliedCatalogName = Undefined Then // match is not specified
-		MessagePattern = NStr("en = 'In the applied solution code it is necessary to specify the correspondence for the %1 catalog.'");
+		MessagePattern = NStr("en='In the applied solution code it is necessary to specify the correspondence for the %1 catalog.';ru='В коде прикладного решения необходимо указать соответствие для справочника %1.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, CatalogName);
 		ElectronicDocumentsService.WriteEventOnEDToEventLogMonitor(MessageText,
 			2, EventLogLevel.Warning);
@@ -112,7 +112,7 @@ Function FindEnumeration(Val EnumerationName, EnumerationPresentation) Export
 	
 	AppliedEnumerationName = AccordanceEnum.Get(EnumerationName);
 	If AppliedEnumerationName = Undefined Then // match is not specified
-		MessagePattern = NStr("en = 'In the applied solution code it is necessary to specify the matching for enumeration %1.'");
+		MessagePattern = NStr("en='In the applied solution code it is necessary to specify the matching for enumeration %1.';ru='В коде прикладного решения необходимо указать соответствие для перечисления %1.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, EnumerationName);
 		ElectronicDocumentsService.WriteEventOnEDToEventLogMonitor(MessageText,
 			2, EventLogLevel.Warning);
@@ -188,7 +188,7 @@ Function GetObjectKeyAttributesTable(ObjectName) Export
 	EndIf;
 
 	If Not ValueIsFilled(KeyAttributesStructure) Then
-		MessagePattern = NStr("en = 'Key attributes structure is not defined for the %1 object.'");
+		MessagePattern = NStr("en='Key attributes structure is not defined for the %1 object.';ru='Не определена структура ключевых реквизитов для объекта %1.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ObjectName);
 		Raise(MessageText);
 	EndIf;
@@ -392,7 +392,7 @@ Function GetMessageAboutError(ErrorCode, ThirdPartyErrorDescription = "") Export
 	
 	SetPrivilegedMode(True);
 	
-	MessagePattern = NStr("en = 'Code of error %1. %2'");
+	MessagePattern = NStr("en='Code of error %1. %2';ru='Код ошибки %1. %2'");
 	
 	ErrorMessages = New Map;
 	ErrorMessagesInitialization(ErrorMessages);
@@ -457,59 +457,60 @@ Procedure ErrorMessagesInitialization(ErrorMessages)
 	ErrorMessages.Insert("003", );
 	ErrorMessages.Insert("004", );
 	ErrorMessages.Insert("005", );
-	ErrorMessages.Insert("006", NStr("en = 'Cannot extract files from the archive. Path to the archive files must be up to 256 characters.
-										|Possible methods
-										| to fix the error: - in the operating system settings, in the environment
-										| variables, change a path to temporary files; - change a place of temporary file directory in procedure ""ElectronicDocumentsOverridable.TemporaryFilesCurrentDirectory"".'"));
+	ErrorMessages.Insert("006", NStr("en='Cannot extract files from the archive. Path to the archive files must be up to 256 characters."
+"Possible methods"
+" to fix the error: - in the operating system settings, in the environment"
+" variables, change a path to temporary files; - change a place of temporary file directory in procedure ""ElectronicDocumentsOverridable.TemporaryFilesCurrentDirectory"".';ru='Невозможно извлечь файлы из архива. Путь к файлам архива должен быть короче 256 символов. Возможные способы устранения ошибки: - в настройках операционнной системы, в переменных среды, изменить путь к временным файлам; - изменить размещение каталога временных файлов в процедуре ""ЭлектронныеДокументыПереопределяемый.ТекущийКаталогВременныхФайлов"".'"));
 	// 1C code errors
-	ErrorMessages.Insert("0", NStr("en = 'One of the available in the request signatures belongs to the unknown person.'"));
-	ErrorMessages.Insert("2", NStr("en = 'One of signatures is incorrect'"));
-	ErrorMessages.Insert("3", NStr("en = 'Two different signatures must be presented.'"));
-	ErrorMessages.Insert("4", NStr("en = 'Invalid content type: binary.'"));
-	ErrorMessages.Insert("5", NStr("en = 'At least one signature must be presented.'"));
-	ErrorMessages.Insert("6", NStr("en = 'Not all signatures differ.'"));
-	ErrorMessages.Insert("7", NStr("en = 'All the signatures do not provide the level of permissions required for the operations.'"));
-	ErrorMessages.Insert("8", NStr("en = 'One of the signatories is unknown.'"));
-	ErrorMessages.Insert("9", NStr("en = 'Content of transport message type is incorrect, expected: application/xml.'"));
-	ErrorMessages.Insert("10", NStr("en = 'Content of business message type is incorrect, expected: application/xml.'"));
-	ErrorMessages.Insert("11", NStr("en = 'Not all the signatures correspond to the same client.'"));
-	ErrorMessages.Insert("12", NStr("en = 'All the available signatures in the request are not enough to get a right of access to the requested account.'"));
-	ErrorMessages.Insert("13", NStr("en = 'HTTP query URL is incorrect. Only the resources requests and statuses are supported.'"));
-	ErrorMessages.Insert("14", NStr("en = 'Error of transport container verification.'"));
-	ErrorMessages.Insert("15", NStr("en = 'Error of the business data container verification.
-	                                          |Contact bank support'"));
-	ErrorMessages.Insert("16", NStr("en = 'Statement of account has too small initial date.'"));
-	ErrorMessages.Insert("17", NStr("en = 'The statement has too big end date.'"));
-	ErrorMessages.Insert("18", NStr("en = 'The document date is incorrect.'"));
-	ErrorMessages.Insert("19", NStr("en = 'Bank account does not correspond to the BIN.'"));
-	ErrorMessages.Insert("21", NStr("en = 'Not allowed instruction.'"));
+	ErrorMessages.Insert("0", NStr("en='One of the available in the request signatures belongs to the unknown person.';ru='Одна из имеющихся в запросе подписей принадлежит неизвестному лицу.'"));
+	ErrorMessages.Insert("2", NStr("en='One of signatures is incorrect';ru='Одна из подписей неверна'"));
+	ErrorMessages.Insert("3", NStr("en='Two different signatures must be presented.';ru='Должны быть представлены две разные подписи.'"));
+	ErrorMessages.Insert("4", NStr("en='Invalid content type: binary.';ru='Неверный тип содержимого: двоичный.'"));
+	ErrorMessages.Insert("5", NStr("en='At least one signature must be presented.';ru='Должна быть предоставлена хотя бы одна подпись.'"));
+	ErrorMessages.Insert("6", NStr("en='Not all signatures differ.';ru='Не все подписи отличаются.'"));
+	ErrorMessages.Insert("7", NStr("en='All the signatures do not provide the level of permissions required for the operations.';ru='Все подписи не обеспечивают уровень полномочий, необходимых для операции.'"));
+	ErrorMessages.Insert("8", NStr("en='One of the signatories is unknown.';ru='Один из подписантов неизвестен.'"));
+	ErrorMessages.Insert("9", NStr("en='Content of transport message type is incorrect, expected: application/xml.';ru='Содержимое типа транспортного сообщения является неправильным, ожидается: application/xml.'"));
+	ErrorMessages.Insert("10", NStr("en='Content of business message type is incorrect, expected: application/xml.';ru='Содержимое типа делового сообщения неверно, ожидается: application/xml.'"));
+	ErrorMessages.Insert("11", NStr("en='Not all the signatures correspond to the same client.';ru='Не все подписи соответствуют одному и тому же клиенту.'"));
+	ErrorMessages.Insert("12", NStr("en='All the available signatures in the request are not enough to get a right of access to the requested account.';ru='Всех имеющихся в запросе подписей недостаточно для того, чтобы получить право на доступ к запрашиваемому счету.'"));
+	ErrorMessages.Insert("13", NStr("en='HTTP query URL is incorrect. Only the resources requests and statuses are supported.';ru='HTTP запрос URL неверный. Поддерживаются только запросы ресурсов и состояния.'"));
+	ErrorMessages.Insert("14", NStr("en='Error of transport container verification.';ru='Ошибка проверки транспортного контейнера.'"));
+	ErrorMessages.Insert("15", NStr("en='Error of the business data container verification."
+"Contact bank support';ru='Ошибка проверки контейнера бизнес данных."
+"Необходимо обратиться в тех.поддержку банка'"));
+	ErrorMessages.Insert("16", NStr("en='Statement of account has too small initial date.';ru='В выписке счета слишком малая начальная дата.'"));
+	ErrorMessages.Insert("17", NStr("en='The statement has too big end date.';ru='В выписке счета слишком большая конечная дата.'"));
+	ErrorMessages.Insert("18", NStr("en='The document date is incorrect.';ru='Неверная дата документа.'"));
+	ErrorMessages.Insert("19", NStr("en='Bank account does not correspond to the BIN.';ru='Счет банка не соответствует БИК.'"));
+	ErrorMessages.Insert("21", NStr("en='Not allowed instruction.';ru='Неразрешенная инструкция.'"));
 	
-	ErrorMessages.Insert("100", NStr("en = 'Failed to create cryptography manager on the computer.'"));
-	ErrorMessages.Insert("101", NStr("en = 'Certificate is not found in the certificates storage on the computer.'"));
-	ErrorMessages.Insert("102", NStr("en = 'The certificate is not valid'"));
-	ErrorMessages.Insert("103", NStr("en = 'Failed to perform the encryption/decryption operations on the computer.'"));
-	ErrorMessages.Insert("104", NStr("en = 'Cannot generate/verify DS on the computer.'"));
-	ErrorMessages.Insert("105", NStr("en = 'No certificates available in the certificates storage on the computer.'"));
+	ErrorMessages.Insert("100", NStr("en='Failed to create cryptography manager on the computer.';ru='Не удалось создать менеджер криптографии на компьютере.'"));
+	ErrorMessages.Insert("101", NStr("en='Certificate is not found in the certificates storage on the computer.';ru='Сертификат не найден в хранилище сертификатов на компьютере.'"));
+	ErrorMessages.Insert("102", NStr("en='The certificate is not valid';ru='Сертификат не действителен.'"));
+	ErrorMessages.Insert("103", NStr("en='Failed to perform the encryption/decryption operations on the computer.';ru='Не удалось выполнить операции шифрования/расшифровки на компьютере.'"));
+	ErrorMessages.Insert("104", NStr("en='Cannot generate/verify DS on the computer.';ru='Не удалось выполнить операции формирования/проверки ЭП на компьютере.'"));
+	ErrorMessages.Insert("105", NStr("en='No certificates available in the certificates storage on the computer.';ru='Нет доступных сертификатов в хранилище сертификатов на компьютере.'"));
 	
-	ErrorMessages.Insert("110", NStr("en = 'Failed to create cryptography manager on the server.'"));
-	ErrorMessages.Insert("111", NStr("en = 'Certificate has not been found in the certificate storage on the server.'"));
-	ErrorMessages.Insert("112", NStr("en = 'The certificate is not valid'"));
-	ErrorMessages.Insert("113", NStr("en = 'Failed to execute the encryption/decryption operations on the server.'"));
-	ErrorMessages.Insert("114", NStr("en = 'Cannot generate/verify DS on the server.'"));
-	ErrorMessages.Insert("115", NStr("en = 'No certificates available in the certificates storage on the server.'"));
+	ErrorMessages.Insert("110", NStr("en='Failed to create cryptography manager on the server.';ru='Не удалось создать менеджер криптографии на сервере.'"));
+	ErrorMessages.Insert("111", NStr("en='Certificate has not been found in the certificate storage on the server.';ru='Сертификат не найден в хранилище сертификатов на сервере.'"));
+	ErrorMessages.Insert("112", NStr("en='The certificate is not valid';ru='Сертификат не действителен.'"));
+	ErrorMessages.Insert("113", NStr("en='Failed to execute the encryption/decryption operations on the server.';ru='Не удалось выполнить операции шифрования/расшифровки на сервере.'"));
+	ErrorMessages.Insert("114", NStr("en='Cannot generate/verify DS on the server.';ru='Не удалось выполнить операции формирования/проверки ЭП на сервере.'"));
+	ErrorMessages.Insert("115", NStr("en='No certificates available in the certificates storage on the server.';ru='Нет доступных сертификатов в хранилище сертификатов на сервере.'"));
 	
-	ErrorMessages.Insert("106", NStr("en = '1C platform version is lower than ''8.2.17"".'"));
-	ErrorMessages.Insert("107", NStr("en = 'Failed to create the exchange directories.'"));
+	ErrorMessages.Insert("106", NStr("en='1C platform version is lower than ''8.2.17"".';ru='Версия платформы 1С ниже ""8.2.17"".'"));
+	ErrorMessages.Insert("107", NStr("en='Failed to create the exchange directories.';ru='Не удалось создать каталоги обмена.'"));
 	
-	ErrorMessages.Insert("121", NStr("en = 'Failed to connect to the FTP server.'"));
-	ErrorMessages.Insert("122", NStr("en = 'Cannot create a directory as a file with the same name already exists in the FTP resource.'"));
-	ErrorMessages.Insert("123", NStr("en = 'Cannot create the directory.'"));
-	ErrorMessages.Insert("124", NStr("en = 'Cannot open the directory.'"));
-	ErrorMessages.Insert("125", NStr("en = 'An error occurred when searching for files in the FTP resource.'"));
-	ErrorMessages.Insert("126", NStr("en = 'There are differentiated the data of the recorded test file and then of the read test file in the directory.'"));
-	ErrorMessages.Insert("127", NStr("en = 'Failed to record file to directory.'"));
+	ErrorMessages.Insert("121", NStr("en='Failed to connect to the FTP server.';ru='Не удалось соединиться с FTP сервером.'"));
+	ErrorMessages.Insert("122", NStr("en='Cannot create a directory as a file with the same name already exists in the FTP resource.';ru='Невозможно создать каталог, так как на FTP ресурсе существует файл с таким именем.'"));
+	ErrorMessages.Insert("123", NStr("en='Cannot create the directory.';ru='Невозможно создать каталог.'"));
+	ErrorMessages.Insert("124", NStr("en='Cannot open the directory.';ru='Невозможно открыть каталог.'"));
+	ErrorMessages.Insert("125", NStr("en='An error occurred when searching for files in the FTP resource.';ru='Произошла ошибка при поиске файлов на FTP ресурсе.'"));
+	ErrorMessages.Insert("126", NStr("en='There are differentiated the data of the recorded test file and then of the read test file in the directory.';ru='Различаются данные записанного, а затем прочитанного тестового файла в каталоге.'"));
+	ErrorMessages.Insert("127", NStr("en='Failed to record file to directory.';ru='Не удалось записать файл в каталог.'"));
 	ErrorMessages.Insert("128", NStr("ru = ""Cannot read a file in the directory."));
-	ErrorMessages.Insert("129", NStr("en = 'Failed to delete the file.'"));
+	ErrorMessages.Insert("129", NStr("en='Failed to delete the file.';ru='Не удалось удалить файл.'"));
 	
 	// Error codes of operator Taxcom
 	// Method CertificateLogin: identification
@@ -548,7 +549,7 @@ Procedure ErrorMessagesInitialization(ErrorMessages)
 	ErrorMessages.Insert("3108", ); // File <attachment file name> specified in meta.xml is not found in the container being sent 400 0105
 	ErrorMessages.Insert("0110", ); // File card.xml is not an XML file 400 0110
 	ErrorMessages.Insert("0112", ); // Structure of file card.xml does not correspond to the approved scheme 400 0112
-	ErrorMessages.Insert("0106", NStr("en = 'An incorrect format company ID is specified in the contract.'")); // Incorrect format of sender identifier (parameter name?) in file card.xml 400 0106
+	ErrorMessages.Insert("0106", NStr("en='An incorrect format company ID is specified in the contract.';ru='В соглашении указан идентификатор организации некорректного формата.'")); // Incorrect format of sender identifier (parameter name?) in file card.xml 400 0106
 	ErrorMessages.Insert("0115", ); // Incorrect format of recipient ID (parameter name?) in file card.xml 400 0115
 	
 	// Synchronous mode with DB query
@@ -558,7 +559,7 @@ Procedure ErrorMessagesInitialization(ErrorMessages)
 	ErrorMessages.Insert("0301", ); // This transaction <transaction code> is already performed for the document flow < DocFlowID > 400 0301
 	
 	// Asynchronous mode
-	ErrorMessages.Insert("0202", NStr("en = 'A counterparty ID which is not registered in Takskom is not specified in the agreement.'")); // Recipient with the specified ID is not registered 0202
+	ErrorMessages.Insert("0202", NStr("en='A counterparty ID which is not registered in Takskom is not specified in the agreement.';ru='В соглашении указан идентификатор контрагента не зарегистрированный в Такском.'")); // Recipient with the specified ID is not registered 0202
 	ErrorMessages.Insert("0203", ); // Recipient with the specified ID is not a sender counterparty 0203
 	ErrorMessages.Insert("3200", ); // The document can not be sent due to the billing limitation 3200
 	

@@ -66,7 +66,7 @@ EndProcedure
 Procedure SiteUsersConnectionAuthorizationClick(Item)
 	
 	PageAddress = "https://1c-dn.com/user/profile/";
-	PageTitle = NStr("en = 'Support of 1C:Enterprise 8 system users'");
+	PageTitle = NStr("en='Support of 1C:Enterprise 8 system users';ru='Поддержка пользователей системы 1С:Предприятие 8'");
 	OnlineUserSupportClient.OpenInternetPage(
 		PageAddress,
 		PageTitle);
@@ -155,7 +155,7 @@ EndFunction
 &AtServer
 Procedure FillForm()
 	
-	UserTitle = NStr("en = 'Login:'") + " " + Parameters.login;
+	UserTitle = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	Login  = Parameters.login;
 	Password = Parameters.password;
@@ -178,7 +178,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(Login) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Login field is not filled'");
+		Message.Text = NStr("en='Login field is not filled';ru='Не заполнено поле ""Логин""'");
 		Message.Field  = "Login";
 		Message.Message();
 		Return False;
@@ -188,7 +188,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(Password) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Password field is not filled'");
+		Message.Text = NStr("en='Password field is not filled';ru='Не заполнено поле ""Пароль""'");
 		Message.Field  = "Password";
 		Message.Message();
 		
@@ -204,10 +204,10 @@ EndFunction
 Function MessageParametersToTechicalSupport()
 	
 	Result = New Structure;
-	Result.Insert("Subject", NStr("en = 'Online support. Authorization.'"));
+	Result.Insert("Subject", NStr("en='Online support. Authorization.';ru='Интернет-поддержка. Авторизация.'"));
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Dear Sir! I can''t authorize and connect Online support. My login and password are entered correctly. Please, help me to solve the problem. Login: %1. %TechnicalParameters% ----------------------------------------------- Yours sincerely, .'"),
+		NStr("en=""Dear Sir! I can't authorize and connect Online support. My login and password are entered correctly. Please, help me to solve the problem. Login: %1. %TechnicalParameters% ----------------------------------------------- Yours sincerely, ."";ru='Здравствуйте! У меня не получается пройти авторизацию и подключить Интернет-поддержку. Логин и пароль мной введены правильно. Прошу помочь разобраться с проблемой. Логин: %1. %ТехническиеПараметры% ----------------------------------------------- С уважени'"),
 		Login);
 	
 	Result.Insert("MessageText", MessageText);

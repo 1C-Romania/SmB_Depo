@@ -728,7 +728,7 @@ Procedure DataInitializationByInventory(DocumentRefCosting, StructureAdditionalP
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
-	Query.SetParameter("InventoryDistribution", NStr("en = 'Inventory distribution'"));
+	Query.SetParameter("InventoryDistribution", NStr("en='Inventory distribution';ru='Распределение запасов'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -807,7 +807,7 @@ Procedure InitializeDocumentData(DocumentRefCosting, StructureAdditionalProperti
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
-	Query.SetParameter("DistributionExpenses", NStr("en = 'Cost allocation'"));
+	Query.SetParameter("DistributionExpenses", NStr("en='Cost allocation';ru='Распределение затрат'"));
 	
 	// Generate transactions table structure.
 	SmallBusinessServer.GenerateTransactionsTable(DocumentRefCosting, StructureAdditionalProperties);

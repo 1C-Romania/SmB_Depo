@@ -319,8 +319,9 @@ Procedure TransferFileToExternalObject(Val SessionKey, ExternalObject, Val Binar
 	Except
 		AdditionalReportsAndDataProcessors.WriteWarning(
 			Undefined,
-			NStr("en = 'Cannot delete temporary file
-			|""%1"": %2'"),
+			NStr("en='Cannot delete temporary file"
+"""%1"": %2';ru='Не удалось удалить"
+"временный файл ""%1"": %2'"),
 			TempFile,
 			DetailErrorDescription(ErrorInfo()));
 	EndTry;
@@ -353,7 +354,7 @@ Function GetFileFromInternet(Val SessionKey, Val URL, Val Port = 0, Val UserName
 	CheckCorrectnessOfCallOnEnvironment();
 	
 	If Not CommonUse.SubsystemExists("StandardSubsystems.GetFilesFromInternet") Then
-		Raise NStr("en = 'This configuration does not support the funcrion AdditionalReportsAndDataProcessorsInSafeMode.GetFileFromInternet!'");
+		Raise NStr("en='This configuration does not support the funcrion AdditionalReportsAndDataProcessorsInSafeMode.GetFileFromInternet!';ru='В данной конфигурации не поддерживается вызов функции ДополнительныеОтчетыИОбработкиВБезопасномРежиме.ПолучитьФайлИзИнтернета!'");
 	EndIf;
 	
 	ModuleGetFilesFromInternetClientServer = CommonUse.CommonModule("GetFilesFromInternetClientServer");
@@ -405,7 +406,7 @@ Function GetFileFromInternet(Val SessionKey, Val URL, Val Port = 0, Val UserName
 			Join = New FTPConnection(ServerName, Port, UserName, Password, Proxy, PassiveConnection, Timeout);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorInfo = NStr("en = 'Error while creating FTP-connection with server %1'") + Chars.LF + "%2";
+			ErrorInfo = NStr("en='Error while creating FTP-connection with server %1';ru='Ошибка при создании FTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
 				ErrorInfo, ServerName, DetailErrorDescription(ErrorInfo));
@@ -422,7 +423,7 @@ Function GetFileFromInternet(Val SessionKey, Val URL, Val Port = 0, Val UserName
 			Join = New HTTPConnection(ServerName, Port, UserName, Password, Proxy, Timeout, SecureConnection);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorInfo = NStr("en = 'Error when creating the HTTP-conection with the server %1:'") + Chars.LF + "%2";
+			ErrorInfo = NStr("en='Error when creating the HTTP-conection with the server %1:';ru='Ошибка при создании HTTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
 				DetailErrorDescription(ErrorInfo));
@@ -435,7 +436,7 @@ Function GetFileFromInternet(Val SessionKey, Val URL, Val Port = 0, Val UserName
 		Join.Get(PathToFileAtServer, TempFile);
 	Except
 		ErrorInfo = ErrorInfo();
-		ErrorInfo = NStr("en = 'Error while receiving file form server %1:'") + Chars.LF + "%2";
+		ErrorInfo = NStr("en='Error while receiving file form server %1:';ru='Ошибка при получении файла с сервера %1:'") + Chars.LF + "%2";
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
 			DetailErrorDescription(ErrorInfo));
@@ -470,7 +471,7 @@ Function ImportFileInInternet(Val SessionKey, Val BinaryDataAddress, Val URL, Va
 	CheckCorrectnessOfCallOnEnvironment();
 	
 	If Not CommonUse.SubsystemExists("StandardSubsystems.GetFilesFromInternet") Then
-		Raise NStr("en = 'This configuration does not support the AdditionalReportsAndDataProcessorsInSafeMode.ImportFileInInternet function call!'");
+		Raise NStr("en='This configuration does not support the AdditionalReportsAndDataProcessorsInSafeMode.ImportFileInInternet function call!';ru='В данной конфигурации не поддерживается вызов функции ДополнительныеОтчетыИОбработкиВБезопасномРежиме.ПередатьФайлВИнтернет!'");
 	EndIf;
 	
 	ModuleGetFilesFromInternetClientServer = CommonUse.CommonModule("GetFilesFromInternetClientServer");
@@ -512,7 +513,7 @@ Function ImportFileInInternet(Val SessionKey, Val BinaryDataAddress, Val URL, Va
 			Join = New FTPConnection(ServerName, Port, UserName, Password, Proxy, PassiveConnection, Timeout);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorInfo = NStr("en = 'Error while creating FTP-connection with server %1'") + Chars.LF + "%2";
+			ErrorInfo = NStr("en='Error while creating FTP-connection with server %1';ru='Ошибка при создании FTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
 				ErrorInfo, ServerName, DetailErrorDescription(ErrorInfo));
@@ -529,7 +530,7 @@ Function ImportFileInInternet(Val SessionKey, Val BinaryDataAddress, Val URL, Va
 			Join = New HTTPConnection(ServerName, Port, UserName, Password, Proxy, Timeout, SecureConnection);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorInfo = NStr("en = 'Error when creating the HTTP-conection with the server %1:'") + Chars.LF + "%2";
+			ErrorInfo = NStr("en='Error when creating the HTTP-conection with the server %1:';ru='Ошибка при создании HTTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
 				DetailErrorDescription(ErrorInfo));
@@ -540,7 +541,7 @@ Function ImportFileInInternet(Val SessionKey, Val BinaryDataAddress, Val URL, Va
 		Join.Write(TempFile, PathToFileAtServer);
 	Except
 		ErrorInfo = ErrorInfo();
-		ErrorInfo = NStr("en = 'An error occurred when transferring the file to server %1:'") + Chars.LF + "%2";
+		ErrorInfo = NStr("en='An error occurred when transferring the file to server %1:';ru='Ошибка при передаче файла на сервер %1:'") + Chars.LF + "%2";
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
 			DetailErrorDescription(ErrorInfo));
@@ -775,7 +776,7 @@ Procedure CheckCorrectnessOfMethodNameOfExternalObject(Val MethodName)
 		If Find(MethodName, ForbiddenSymbol) > 0 Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '%1 is not a correct method name for the COM-object or the external component object!'"),
+				NStr("en='%1 is not a correct method name for the COM-object or the external component object!';ru='%1 не является корректным именем метода для COM-объекта или объекта внешней компоненты!'"),
 				MethodName);
 			
 		EndIf;
@@ -819,9 +820,11 @@ Procedure CheckCorrectnessOfCallOnEnvironment()
 	
 	If Not AdditionalReportsAndDataProcessorsInSafeModeService.CheckCorrectnessOfCallOnEnvironment() Then
 		
-		Raise NStr("en = 'Incorrect function call of common module AdditionalReportsAndDataProcessorsInSafeMode.
-                                |Exported functions of the module to be used in the
-                                |safe mode must be called only from the script.'");
+		Raise NStr("en='Incorrect function call of common module AdditionalReportsAndDataProcessorsInSafeMode."
+"Exported functions of the module to be used in the"
+"safe mode must be called only from the script.';ru='Некорректный вызов функции общего модуля ДополнительныеОтчетыИОбработкиВБезопасномРежиме!"
+"Экспортируемые функции данного модуля для использования"
+"в безопасном режиме должны вызываться только из сценария!'");
 		
 	EndIf;
 	

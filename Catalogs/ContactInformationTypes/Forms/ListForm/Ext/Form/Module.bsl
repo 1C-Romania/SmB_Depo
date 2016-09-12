@@ -7,7 +7,7 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	If Copy AND Group Then
 		Cancel = True;
 		
-		ShowMessageBox(, NStr("en='Adding of the new groups in the catalog has been completed.'"));
+		ShowMessageBox(, NStr("en='Adding of the new groups in the catalog has been completed.';ru='Добавление новых групп в справочнике запрещено.'"));
 	EndIf;
 	
 EndProcedure
@@ -20,7 +20,7 @@ EndProcedure
 Procedure MoveItemUp()
 	
 	If Not ThereIsOptionItemMove(Items.List.CurrentData.Ref, "Up") Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Move this contact information type is n''t provided'"));
+		CommonUseClientServer.MessageToUser(NStr("en=""Move this contact information type is n't provided"";ru='Перемещение данного вида контактной информации не предусмотрено'"));
 		Return;
 	EndIf;
 	
@@ -32,7 +32,7 @@ EndProcedure
 Procedure MoveItemDown()
 	
 	If Not ThereIsOptionItemMove(Items.List.CurrentData.Ref, "Down") Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Move this contact information type is not provided'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Move this contact information type is not provided';ru='Перемещение данного вида контактной информации не предусмотрено'"));
 		Return;
 	EndIf;
 	

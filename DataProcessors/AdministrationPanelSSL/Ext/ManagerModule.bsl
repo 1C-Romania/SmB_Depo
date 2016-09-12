@@ -36,7 +36,7 @@ EndProcedure
 //
 Procedure OnDefiningSectionsWithSectionOptions(Sections) Export
 	
-	Sections.Add(Metadata.Subsystems.SetupAndAdministration, NStr("en = 'Administrator reports'"));
+	Sections.Add(Metadata.Subsystems.SetupAndAdministration, NStr("en='Administrator reports';ru='Отчеты администратора'"));
 	
 EndProcedure
 

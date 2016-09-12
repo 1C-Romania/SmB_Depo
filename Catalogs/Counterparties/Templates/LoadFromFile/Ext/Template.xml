@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -82,6 +152,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН</v8:content>
+						</v8:item>
 					</tl>
 					<d xsi:type="xs:string"/>
 					<note>
@@ -93,6 +167,11 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Identification number of counterparty. Used to display in documents print forms
 String, 10 or 12 digits</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Идентификационный номер контрагента, для отражения в печатных формах документов.
+Строка, 10 или 12 цифр</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -117,6 +196,10 @@ String, 10 or 12 digits</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
 					</tl>
 					<d xsi:type="xs:string"/>
 					<note>
@@ -127,6 +210,11 @@ String, 10 or 12 digits</v8:content>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Helps user to identify a counterparty visually in application.
+</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Используется для быстрой визуальной идентификации контрагента в процессе работы с программой.
 </v8:content>
 							</v8:item>
 						</text>
@@ -152,6 +240,10 @@ String, 10 or 12 digits</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Belongs to group</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Входит в группу</v8:content>
+						</v8:item>
 					</tl>
 					<d xsi:type="xs:string"/>
 					<note>
@@ -162,6 +254,10 @@ String, 10 or 12 digits</v8:content>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>The group which includes this counterparty</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа, в которую входит данный контрагент.</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -186,6 +282,10 @@ String, 10 or 12 digits</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Legal entity / Individual</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Юр. / физ. лицо</v8:content>
+						</v8:item>
 					</tl>
 					<d xsi:type="xs:string"/>
 					<note>
@@ -200,6 +300,14 @@ Allowed column value options:
 Legal entity
 Individual
 Default value: Legal entity</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Контрагент может быть юридическим или физическим лицом.
+Допустимые варианты значения колонки:
+ Юр. лицо
+ Физ. лицо
+Значение по умолчанию:  Юр. лицо</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -224,6 +332,10 @@ Default value: Legal entity</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>OKPO</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ОКПО</v8:content>
+						</v8:item>
 					</tl>
 					<d xsi:type="xs:string"/>
 					<note>
@@ -235,6 +347,11 @@ Default value: Legal entity</v8:content>
 								<v8:lang>en</v8:lang>
 								<v8:content>Code by All-Russian Classifier of Enterprises and Organizations to display in document print forms.
 String, 10 digits</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Код по Общероссийскому классификатору предприятий и организаций, для отражения в печатных формах документов.
+Строка, 10 цифр</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -259,6 +376,10 @@ String, 10 digits</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>KPP</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КПП</v8:content>
+						</v8:item>
 					</tl>
 					<d xsi:type="xs:string"/>
 					<note>
@@ -270,6 +391,11 @@ String, 10 digits</v8:content>
 								<v8:lang>en</v8:lang>
 								<v8:content>Code of registration to show in print forms of documents. Specified only for the legal entity.
 String, 9 digits</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Код постановки на учет, для отражения в печатных формах документов. Указывается только для юридического лица.
+Строка, 9 цифр</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -294,6 +420,10 @@ String, 9 digits</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Full description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Полное наименование</v8:content>
+						</v8:item>
 					</tl>
 					<d xsi:type="xs:string"/>
 					<note>
@@ -305,6 +435,11 @@ String, 9 digits</v8:content>
 								<v8:lang>en</v8:lang>
 								<v8:content>Full name of the counterparty It is used to display in print forms of documents.
 String of unlimited length</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Полное наименование контрагента. Используется для отражения в печатных формах документов.
+Строка неограниченной длинны</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -329,6 +464,10 @@ String of unlimited length</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional information</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительная информация</v8:content>
+						</v8:item>
 					</tl>
 					<d xsi:type="xs:string"/>
 					<note>
@@ -340,6 +479,11 @@ String of unlimited length</v8:content>
 								<v8:lang>en</v8:lang>
 								<v8:content>Any additional
 information String of unlimited length</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Любая
+дополнительная информация Строка неограниченной длинны</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -364,6 +508,10 @@ information String of unlimited length</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Access group</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа доступа</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>AccessGroup</detailParameter>
 					<note>
@@ -374,6 +522,10 @@ information String of unlimited length</v8:content>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Access group the counterparty is related to</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа доступа, к которой отнесен контрагент</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>

@@ -119,7 +119,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			If ValueIsFilled(PredefinedVariant) Then
 				Disabled = ReportsVariantsReUse.DisabledApplicationOptions();
 				If Disabled.Find(PredefinedVariant) <> Undefined Then // Option is disabled.
-					Text = NStr("en = 'Context option ""%1"" of report ""%2"" is opened without context.'");
+					Text = NStr("en='Context option ""%1"" of report ""%2"" is opened without context.';ru='Контекстный вариант ""%1"" отчета ""%2"" открыт без контекста.'");
 					ReportsVariants.WarningByOption(ReportSettings.VariantRef, Text, ReportSettings.VariantRef, ReportSettings.ReportRef);
 					ReportVariantsCommandsVisible = False;
 				EndIf;
@@ -299,7 +299,7 @@ Procedure OnLoadVariantAtServer(NewSettingsDC)
 				CommonUseClientServer.SetFilterItem(DCFilters, Name, Value, ComparisonTypeCD, , True, Inaccessible, "");
 				Continue;
 			EndIf;
-			ErrorText = NStr("en = 'Unable to set fixed filter ""%1"".'");
+			ErrorText = NStr("en='Unable to set fixed filter ""%1"".';ru='Не удалось установить фиксированный отбор ""%1"".'");
 			ReportsVariants.ErrorByVariant(ReportSettings.VariantRef, ErrorText, Name);
 		EndDo;
 	EndIf;
@@ -381,10 +381,10 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 			If BeginOfPeriod.AutoMarkIncomplete
 				AND Not ValueIsFilled(Value.StartDate)
 				AND Not ValueIsFilled(Value.EndDate) Then
-				ErrorText = NStr("en = 'Period is not specified.'");
+				ErrorText = NStr("en='Period is not specified.';ru='Не указан период'");
 				DataPath = BeginOfPeriod.DataPath;
 			ElsIf Value.StartDate > Value.EndDate Then
-				ErrorText = NStr("en = 'Period end should be more than start'");
+				ErrorText = NStr("en='Period end should be more than start';ru='Конец периода должен быть больше начала'");
 				DataPath = EndOfPerioding.DataPath;
 			Else
 				Continue;
@@ -760,7 +760,7 @@ Procedure SendByEMail(Command)
 	StatePresentation = Items.ReportSpreadsheetDocument.StatePresentation;
 	If StatePresentation.Visible = True
 		AND StatePresentation.AdditionalShowMode = AdditionalShowMode.Irrelevance Then
-		QuestionText = NStr("en = 'Report is not generated. Generate?'");
+		QuestionText = NStr("en='Report is not generated. Generate?';ru='Отчет не сформирован. Сформировать?'");
 		Handler = New NotifyDescription("SendByEMailEnd", ThisObject);
 		ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo, 60, DialogReturnCode.Yes);
 	Else
@@ -829,7 +829,7 @@ EndProcedure
 Procedure Attachable_LoadReportVariant(Command)
 	Found = AddedVariants.FindRows(New Structure("CommandName", Command.Name));
 	If Found.Count() = 0 Then
-		ShowMessageBox(, NStr("en = 'Report variant is not found.'"));
+		ShowMessageBox(, NStr("en='Report variant is not found.';ru='Вариант отчета не найден.'"));
 		Return;
 	EndIf;
 	FormVariant = Found[0];
@@ -901,7 +901,7 @@ Procedure SelectPeriodFromDropdownList(Result, ChoiceParameters) Export
 		NavigationItemDescription.Insert("BeginOfPeriod",            ChoiceParameters.BeginOfPeriod);
 		NavigationItemDescription.Insert("Variant",                  ChoiceParameters.StandardPeriodVariantType);
 		NavigationItemDescription.Insert("InitialValueIndex", Undefined);
-		PeriodsList.Add(NavigationItemDescription, NStr("en = 'Relative...'"));
+		PeriodsList.Add(NavigationItemDescription, NStr("en='Relative...';ru='Относительный...'"));
 		
 	Else
 		
@@ -915,7 +915,7 @@ Procedure SelectPeriodFromDropdownList(Result, ChoiceParameters) Export
 		NavigationItemDescription.Insert("BeginOfPeriod",            ChoiceParameters.BeginOfPeriod);
 		NavigationItemDescription.Insert("Variant",                  Undefined);
 		NavigationItemDescription.Insert("InitialValueIndex", Undefined);
-		PeriodsList.Add(NavigationItemDescription, NStr("en = 'Fixed...'"));
+		PeriodsList.Add(NavigationItemDescription, NStr("en='Fixed...';ru='Фиксированный...'"));
 		
 	EndIf;
 	
@@ -1001,7 +1001,7 @@ EndFunction
 &AtClient
 Procedure BackgroundJobCheckAtClient()
 	If BackGroundJobFinished() Then
-		ShowUserNotification(NStr("en = 'Report created'"), , Title);
+		ShowUserNotification(NStr("en='Report created';ru='Отчет сформирован'"), , Title);
 		
 		// StandardSubsystems.PerformanceEstimation
 		If PerformMeteringPerformance Then
@@ -1037,7 +1037,7 @@ Procedure ShowSendingByEMailDialog()
 	DocumentsTable = New ValueList;
 	DocumentsTable.Add(ThisObject.ReportSpreadsheetDocument, ThisObject.ReportCurrentVariantName);
 	
-	FormTitle = StrReplace(NStr("en = 'Send report ""%1"" by email.'"), "%1", ThisObject.ReportCurrentVariantName);
+	FormTitle = StrReplace(NStr("en='Send report ""%1"" by email.';ru='Отправка отчета ""%1"" по почте'"), "%1", ThisObject.ReportCurrentVariantName);
 	
 	FormParameters = New Structure;
 	FormParameters.Insert("DocumentsTable", DocumentsTable);
@@ -1156,7 +1156,7 @@ Procedure VisibleEnabledCorrectness(Changes = "")
 		Title = ReportSettings.Description;
 	EndIf;
 	If EncryptingMode Then
-		Title = Title + " (" + NStr("en = 'Details'") + ")";
+		Title = Title + " (" + NStr("en='Details';ru='Расшифровка'") + ")";
 	EndIf;
 	
 EndProcedure
@@ -1308,7 +1308,7 @@ Function BackGroundJobStart()
 			UUID,
 			"ReportsVariants.GenerateReport",
 			ReportGenerationParameters,
-			NStr("en = 'Reports variants: Generate report'"));
+			NStr("en='Reports variants: Generate report';ru='Варианты отчетов: Формирование отчета'"));
 	Except
 		ErrorInfo = ErrorInfo();
 	EndTry;
@@ -1329,7 +1329,7 @@ Function BackGroundJobStart()
 		StatePresentation.Visible                      = True;
 		StatePresentation.AdditionalShowMode = AdditionalShowMode.Irrelevance;
 		StatePresentation.Picture                       = PictureLib.LongOperation48;
-		StatePresentation.Text                          = NStr("en = 'Generating the report...'");
+		StatePresentation.Text                          = NStr("en='Generating the report...';ru='Отчет формируется...'");
 		
 		JobStarted = True;
 	EndIf;
@@ -1371,7 +1371,7 @@ Procedure LoadVariant(VariantKey)
 	StatePresentation.Visible = True;
 	StatePresentation.AdditionalShowMode = AdditionalShowMode.Irrelevance;
 	StatePresentation.Picture  = PictureLib.Information32;
-	StatePresentation.Text     = NStr("en = 'Another report option is selected. Click Create to generate the report.'");
+	StatePresentation.Text     = NStr("en='Another report option is selected. Click Create to generate the report.';ru='Выбран другой вариант отчета. Нажмите ""Сформировать"" для получения отчета.'");
 EndProcedure
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1639,7 +1639,7 @@ EndProcedure
 Procedure FormationErrorsShow(ErrorInfo)
 	If TypeOf(ErrorInfo) = Type("ErrorInfo") Then
 		ErrorDescription = ReportsClientServer.BriefErrorDescriptionOfReportFormation(ErrorInfo);
-		DetailErrorDescription = NStr("en = 'An error occurred while generating:'") + Chars.LF + DetailErrorDescription(ErrorInfo);
+		DetailErrorDescription = NStr("en='An error occurred while generating:';ru='Ошибка при формировании:'") + Chars.LF + DetailErrorDescription(ErrorInfo);
 		If IsBlankString(ErrorDescription) Then
 			ErrorDescription = DetailErrorDescription;
 		EndIf;
@@ -1795,13 +1795,13 @@ Procedure AfterChangingKeyStates(FillingParameters)
 			StatePresentation.Visible                      = True;
 			StatePresentation.AdditionalShowMode = AdditionalShowMode.DontUse;
 			StatePresentation.Picture                       = PictureLib.LongOperation48;
-			StatePresentation.Text                          = NStr("en = 'Generating the report...'");
+			StatePresentation.Text                          = NStr("en='Generating the report...';ru='Отчет формируется...'");
 		ElsIf FillingParameters.VariantModified
 			Or FillingParameters.UserSettingsModified
 			Or FillingParameters.ResetUserSettings Then
 			StatePresentation = Items.ReportSpreadsheetDocument.StatePresentation;
 			StatePresentation.Visible = True;
-			StatePresentation.Text     = NStr("en = 'Settings have been changed. Click Create to generate the report.'");
+			StatePresentation.Text     = NStr("en='Settings have been changed. Click Create to generate the report.';ru='Изменились настройки. Нажмите ""Сформировать"" для получения отчета.'");
 			If Regenerate = Undefined Then
 				StatePresentation.AdditionalShowMode = AdditionalShowMode.Irrelevance;
 			Else

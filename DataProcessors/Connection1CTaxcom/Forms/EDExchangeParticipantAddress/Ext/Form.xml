@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>ED exchange participant address</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Адрес участника обмена ЭД</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockWholeInterface</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -38,6 +42,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Form header group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа заголовка формы</v8:content>
+				</v8:item>
 			</Title>
 			<HorizontalStretch>true</HorizontalStretch>
 			<VerticalStretch>false</VerticalStretch>
@@ -54,6 +62,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>ED exchange participant address</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адрес участника обмена ЭД</v8:content>
+						</v8:item>
 					</Title>
 					<ContextMenu name="FormHeaderLabelContextMenu" id="5"/>
 					<ExtendedTooltip name="FormHeaderLabelExtendedTooltip" id="42"/>
@@ -67,6 +79,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Company's postal code</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Почтовый индекс организации</v8:content>
+				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="PostalCodeContextMenu" id="7"/>
@@ -77,6 +93,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>State group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа регион</v8:content>
 				</v8:item>
 			</Title>
 			<Group>Horizontal</Group>
@@ -91,6 +111,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the state in which the company is registered</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Название региона, в котором зарегистрирована организация</v8:content>
+						</v8:item>
 					</ToolTip>
 					<ContextMenu name="StateContextMenu" id="10"/>
 					<ExtendedTooltip name="StateExtendedTooltip" id="46"/>
@@ -101,6 +125,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the state in which the company is registered</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Название региона, в котором зарегистрирована организация</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Width>7</Width>
@@ -118,11 +146,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Import</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Загрузить</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Import the list of state codes in case you can not define a state code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Загрузить список кодов регионов, если возникли трудности с определением кода региона</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Hyperlink>true</Hyperlink>
@@ -141,6 +177,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Region name</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Название района</v8:content>
+				</v8:item>
 			</ToolTip>
 			<ContextMenu name="RegionContextMenu" id="16"/>
 			<ExtendedTooltip name="RegionExtendedTooltip" id="49"/>
@@ -157,6 +197,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>City in which the company is registered</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Город, в котором зарегистрирована организация</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ContextMenu name="CityContextMenu" id="19"/>
@@ -226,6 +270,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>ZIP code</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ZIP code</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -241,6 +289,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Region</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регион</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -258,6 +310,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>State code</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код региона</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -273,6 +329,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>District</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Район</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -290,6 +350,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>City</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Город</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -305,6 +369,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Settlement</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>НаселПункт</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -322,6 +390,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Street</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Улица</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -337,6 +409,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Building</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Строение</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -354,6 +430,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Section</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Раздел</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -369,6 +449,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Apartment</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Квартира</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -386,6 +470,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Software closing</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Программное закрытие</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -399,11 +487,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content> OK </v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content> ОК </v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Command OK</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда ОК</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CommandOK</Action>

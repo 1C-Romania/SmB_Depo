@@ -209,7 +209,7 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 		
 	EndIf;
 	
-	HeaderText = NStr("en = 'Inventory transfer between cells No '") + DocumentHeader.DocumentNumber + NStr("en = ' from '") + Format(DocumentHeader.DocumentDate, "DLF=DD");
+	HeaderText = NStr("en='Inventory transfer between cells No ';ru='Перемещение запасов по ячейкам № '") + DocumentHeader.DocumentNumber + NStr("en=' from ';ru=' от '") + Format(DocumentHeader.DocumentDate, "DLF=DD");
 	FillStructureSection.Insert("HeaderText", HeaderText);
 	FillStructureSection.Insert("StructuralUnit", DocumentHeader.StructuralUnit);
 	
@@ -220,7 +220,7 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 	TemplateArea = Template.GetArea("TableHeader");
 	FillStructureSection.Clear();
 	
-	FillStructureSection.Insert("TransferKind", NStr("en = 'Transfer kind: '") + String(DocumentHeader.OperationKind));
+	FillStructureSection.Insert("TransferKind", NStr("en='Transfer kind: ';ru='Вид перемещения: '") + String(DocumentHeader.OperationKind));
 	
 	TemplateArea.Parameters.Fill(FillStructureSection);
 	SpreadsheetDocument.Put(TemplateArea);
@@ -259,17 +259,19 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 	
 	If TotalsSelection.TotalQuantity = 0 Then
 		
-		InventoryTransferredCountInWords = NStr("en = 'Transferred inventories are not specified in the document.'");
+		InventoryTransferredCountInWords = NStr("en='Transferred inventories are not specified in the document.';ru='В документе не указаны перемещаемые запасы.'");
 		
 	ElsIf IsMoveFromOneToSeveral Then
 		
-		InventoryTransferredCountInWords = NStr("en = 'Positions withdrawn from cell ""%1"": %2.
-			|General quantity: %3.'");
+		InventoryTransferredCountInWords = NStr("en='Positions withdrawn from cell ""%1"": %2."
+"General quantity: %3.';ru='Из ячейки ""%1"" изъято позиций: %2."
+"Общим количеством: %3.'");
 		
 	Else
 		
-		InventoryTransferredCountInWords = NStr("en = 'Positions delivered to cell ""%1"": %2.
-			|General quantity: %3.'");
+		InventoryTransferredCountInWords = NStr("en='Positions delivered to cell ""%1"": %2."
+"General quantity: %3.';ru='В ячейку ""%1"" поступило позиций: %2."
+"Общим количеством: %3.'");
 		
 	EndIf;
 	
@@ -370,7 +372,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "TransferBetweenCells";
-	PrintCommand.Presentation = NStr("en = 'Inventory transfer between locations'");
+	PrintCommand.Presentation = NStr("en='Inventory transfer between locations';ru='Перемещение запасов по ячейкам'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

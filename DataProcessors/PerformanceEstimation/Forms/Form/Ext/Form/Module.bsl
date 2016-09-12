@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	OverallSystemPerformance = PerformanceEstimationService.GetItemGeneralSystemPerformance();
 	If OverallSystemPerformance.IsEmpty() Then
-		Object.OverallSystemPerformance = NStr("en = 'Overall system performance'");
+		Object.OverallSystemPerformance = NStr("en='Overall system performance';ru='Общая производительность системы'");
 	Else
 		Object.OverallSystemPerformance = OverallSystemPerformance;
 	EndIf;
@@ -22,7 +22,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		ExportableSetup = ExportKeyOperations(Object.OverallSystemPerformance);
 		Object.Performance.Load(ExportableSetup);
 	Except
-		MessageText = NStr("en = 'Failed to import the settings.'");
+		MessageText = NStr("en='Failed to import the settings.';ru='Не удалось загрузить настройки.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndTry;
 	
@@ -206,13 +206,14 @@ Procedure SpecifyAPDEX(Command)
 	EndIf;
 	
 	If TSRow[Item.Name] = 0 Then
-		ShowMessageBox(,NStr("en = 'There are no performance measurements.
-			|Unable to calculate target time.'"));
+		ShowMessageBox(,NStr("en='There are no performance measurements."
+"Unable to calculate target time.';ru='Отсутствуют замеры производительности."
+"Рассчитать целевое время невозможно.'"));
 		Return;
 	EndIf;
 	
 	Notification = New NotifyDescription("SpecifyEndAPDEX", ThisObject);
-	ToolTip = NStr("en = 'Enter the desired APDEX value'"); 
+	ToolTip = NStr("en='Enter the desired APDEX value';ru='Введите желаемое значение APDEX'"); 
 	APDEX = 0;
 	ShowInputNumber(Notification, APDEX, ToolTip, 3, 2);
 	
@@ -282,8 +283,9 @@ Procedure SpecifyEndAPDEX(Val APDEX, Val AdditionalParameters) Export
 	EndIf;
 	
 	If 0 > APDEX Or APDEX > 1 Then
-		ShowMessageBox(,NStr("en = 'You entered an incorrect APDEX measure.
-			|Permitted values from 0 to 1.'"));
+		ShowMessageBox(,NStr("en='You entered an incorrect APDEX measure."
+"Permitted values from 0 to 1.';ru='Введен неправильный показатель APDEX."
+"Допустимые значения от 0 до 1.'"));
 		Return;
 	EndIf;
 	
@@ -322,7 +324,7 @@ Procedure RefreshIndicators(FilterValues = Undefined)
 	// Receive the total KeyOperationTable that will be output to a user.
 	TableOfKeyOperations = DataProcessorObject.PerformanceIndicators();
 	If TableOfKeyOperations = Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Period is installed incorrectly.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Period is installed incorrectly.';ru='Период установлен не верно.'"));
 		Return;
 	EndIf;
 	
@@ -710,7 +712,7 @@ Procedure RefreshChart(TableOfKeyOperations)
 	
 	Chart.Clear();
 	
-	HeaderText = NStr("en = 'Performance chart from %1 to %2 - step: %3'");
+	HeaderText = NStr("en='Performance chart from %1 to %2 - step: %3';ru='Диаграмма производительности с %1 по %2 - шаг: %3'");
 	HeaderText = StrReplace(HeaderText, "%1", Format(Object.StartDate, "DF=dd.MM.yyyy"));
 	HeaderText = StrReplace(HeaderText, "%2", Format(Object.EndDate, "DF=dd.MM.yyyy"));
 	HeaderText = StrReplace(HeaderText, "%3", String(Object.Step));
@@ -1199,7 +1201,7 @@ Function CalculateDateTimeSegment(StartDate, EndDate, IndexPeriod)
 	EndIf;
 	
 	If NumberOfSteps <= IndexPeriod Then
-		Raise NStr("en = 'Number of steps can not be less than index.'");
+		Raise NStr("en='Number of steps can not be less than index.';ru='Количество шагов не может быть меньше индекса.'");
 	EndIf;
 	
 	StartDate = Object.StartDate + (StepNumber * IndexPeriod);
@@ -1363,7 +1365,7 @@ Function SetupExecuted()
 		Then
 		
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Target time must be obligatory filled in.'"),
+				NStr("en='Target time must be obligatory filled in.';ru='Целевое время обязательно должно быть заполнено.'"),
 				,
 				"Performance[" + Object.Performance.IndexOf(TSRow) + "].TargetTime",
 				"Object");
@@ -1501,7 +1503,7 @@ Procedure SelectFileAskedExport(FileOperationsExtensionConnected, AdditionalPara
 	
 	ExportOptions = ToPrepareExportOptions();
 	AddressInStorage = PutToTempStorage("", ThisObject.UUID);
-	Status(NStr("en = 'Data export...'"));
+	Status(NStr("en='Data export...';ru='Экспорт данных...'"));
 	ToExport(AddressInStorage, ExportOptions);
 	
 	GetFile(AddressInStorage, "perf.zip");

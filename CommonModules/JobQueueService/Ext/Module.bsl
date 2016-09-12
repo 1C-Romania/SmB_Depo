@@ -514,9 +514,9 @@ Procedure ProcessJobQueue(BackgroundJobKey) Export
 				If ValueIsFilled(Selection.Pattern)
 						AND Selection.RefsTemplate = Undefined Then
 					
-					MessagePattern = NStr("en = 'Template of the queue job with %1 ID has not been found'");
+					MessagePattern = NStr("en='Template of the queue job with %1 ID has not been found';ru='На найден шаблон задания очереди с идентификатором %1'");
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Selection.Pattern);
-					WriteLogEvent(NStr("en = 'Jobs queue.Execution'", 
+					WriteLogEvent(NStr("en='Jobs queue.Execution';ru='Очередь заданий.Выполнение'", 
 						CommonUseClientServer.MainLanguageCode()), 
 						EventLogLevel.Error,
 						,
@@ -611,11 +611,15 @@ Procedure HandleError(Val Task, Val ErrorInfoExecutionJobs = Undefined) Export
 		
 	Except
 		
-		CommentTemplate = NStr("en = 'An error occurred while
-			|executing errors handler
-			|Method alias: %1 Errors
-			|processor method:
-			|%2 As: %3'");
+		CommentTemplate = NStr("en='An error occurred while"
+"executing errors handler"
+"Method alias: %1 Errors"
+"processor method:"
+"%2 As: %3';ru='Ошибка при выполнении"
+"обработчика ошибок"
+"Псевдоним метода: %1 Метод"
+"обработчика ошибок:"
+"%2 По причине: %3'");
 		TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
 			CommentTemplate,
 			HandlerErrorsParameters.JobMethodName,
@@ -623,7 +627,7 @@ Procedure HandleError(Val Task, Val ErrorInfoExecutionJobs = Undefined) Export
 			DetailErrorDescription(ErrorInfo()));
 			
 		WriteLogEvent(
-			NStr("en = 'Scheduled jobs queue.Error handler error'", 
+			NStr("en='Scheduled jobs queue.Error handler error';ru='Очередь регламентных заданий.Ошибка обработчика ошибок'", 
 				CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
@@ -683,16 +687,18 @@ Procedure RemoveErrorDataProcessorsJobs(Val CallParameters, Val ErrorInfo = Unde
 			
 		Else
 			
-			CommentTemplate = NStr("en = 'Jobs removal handler was executed.
-			|Method alias:
-			|%1 Level of recursion: %2'");
+			CommentTemplate = NStr("en='Jobs removal handler was executed."
+"Method alias:"
+"%1 Level of recursion: %2';ru='Был выполнен обработчик снятие заданий."
+"Псевдоним"
+"метода: %1 Уровень рекурсии: %2'");
 			TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
 				CommentTemplate,
 				HandlerErrorsParameters.JobMethodName,
 				RecursionCounter);
 				
 			WriteLogEvent(
-				NStr("en = 'Scheduled jobs queue.Clear errors processor specifications'",
+				NStr("en='Scheduled jobs queue.Clear errors processor specifications';ru='Очередь регламентных заданий.Снятие заданий обработки ошибок'",
 					CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Information,
 				,
@@ -735,10 +741,10 @@ Procedure ExecuteConfigurationMethod(MethodName, Parameters = Undefined)
 	If TransactionActive() Then
 		
 		ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Before you start executing %1 handler, there are active transactions.'"),
+				NStr("en='Before you start executing %1 handler, there are active transactions.';ru='Перед стартом выполнения обработчика %1 есть активные транзакции!'"),
 				MethodName);
 			
-		WriteLogEvent(NStr("en = 'Queue of scheduled jobs.Execution'", 
+		WriteLogEvent(NStr("en='Queue of scheduled jobs.Execution';ru='Очередь регламентных заданий.Выполнение'", 
 			CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
@@ -759,9 +765,9 @@ Procedure ExecuteConfigurationMethod(MethodName, Parameters = Undefined)
 				RollbackTransaction();
 			EndDo;
 			
-			MessagePattern = NStr("en = 'After the %1 handler was completed the transaction has not been closed'");
+			MessagePattern = NStr("en='After the %1 handler was completed the transaction has not been closed';ru='По завершении выполнения обработчика %1 не была закрыта транзакция'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, MethodName);
-			WriteLogEvent(NStr("en = 'Queue of scheduled jobs.Execution'", 
+			WriteLogEvent(NStr("en='Queue of scheduled jobs.Execution';ru='Очередь регламентных заданий.Выполнение'", 
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error, 
 				,
@@ -773,10 +779,10 @@ Procedure ExecuteConfigurationMethod(MethodName, Parameters = Undefined)
 		If Not(DelimiterSet) AND CommonUse.UseSessionSeparator() Then
 			
 			ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'While completing %1 handler session separation was not disabled.'"),
+				NStr("en='While completing %1 handler session separation was not disabled.';ru='По завершении выполнения обработчика %1 не было выключено разделение сеанса!'"),
 				MethodName);
 			
-			WriteLogEvent(NStr("en = 'Queue of scheduled jobs.Execution'", 
+			WriteLogEvent(NStr("en='Queue of scheduled jobs.Execution';ru='Очередь регламентных заданий.Выполнение'", 
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -788,10 +794,10 @@ Procedure ExecuteConfigurationMethod(MethodName, Parameters = Undefined)
 		ElsIf DelimiterSet AND SeparatorValue <> SaaSOperations.SessionSeparatorValue() Then
 			
 			ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'While completing %1 handler execution session separator value was changed.'"),
+				NStr("en='While completing %1 handler execution session separator value was changed.';ru='По завершении выполнения обработчика %1 было изменено значение разделителя сеанса!'"),
 				MethodName);
 			
-			WriteLogEvent(NStr("en = 'Queue of scheduled jobs.Execution'", 
+			WriteLogEvent(NStr("en='Queue of scheduled jobs.Execution';ru='Очередь регламентных заданий.Выполнение'", 
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -893,7 +899,7 @@ Function GetErrorHandlerParameters(Val Task,Val ErrorInfoExecutionJobs = Undefin
 		
 		If ErrorInfoExecutionJobs = Undefined Then
 			
-			ErrorInfoExecutionJobs = ErrorInformationAssistant(NStr("en = 'Job failed with an unknown error which may have been caused by working process failure.'"));
+			ErrorInfoExecutionJobs = ErrorInformationAssistant(NStr("en='Job failed with an unknown error which may have been caused by working process failure.';ru='Задание завершилось с неизвестной ошибкой, возможно вызванной падением рабочего процесса.'"));
 			
 		EndIf;
 		
@@ -1015,7 +1021,7 @@ Procedure ExecuteHandlerTasks(Pattern, Alias, Parameters)
 	
 	MethodName = JobQueueServiceReUse.AccordanceMethodNamesToAliases().Get(Upper(Alias));
 	If MethodName = Undefined Then
-		MessagePattern = NStr("en = 'The %1 method is not allowed for calling through jobs queue.'");
+		MessagePattern = NStr("en='The %1 method is not allowed for calling through jobs queue.';ru='Метод %1 не разрешен к вызову через очередь заданий.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Alias);
 		Raise(MessageText);
 	EndIf;
@@ -1413,10 +1419,10 @@ Procedure ScheduleSchTask(Val Selection)
 			If ValueIsFilled(Task.Pattern)
 				AND Selection.Pattern = Undefined Then
 				
-				MessagePattern = NStr("en = 'The %1 template of queued job is not found'");
+				MessagePattern = NStr("en='The %1 template of queued job is not found';ru='На найден шаблон задания очереди %1'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Task.Pattern);
 				
-				WriteLogEvent(NStr("en = 'Jobs queue.Planning'", 
+				WriteLogEvent(NStr("en='Jobs queue.Planning';ru='Очередь заданий.Планирование'", 
 					CommonUseClientServer.MainLanguageCode()), 
 					EventLogLevel.Error,
 					,
@@ -1450,9 +1456,9 @@ Procedure ScheduleSchTask(Val Selection)
 		// Job was not executed, plan error handler.
 		ElsIf Task.JobState = Enums.JobStates.Running Then
 			
-			WriteExecutionControlEventLogMonitor(NStr("en = 'Scheduled jobs queue. Completed with errors'", 
+			WriteExecutionControlEventLogMonitor(NStr("en='Scheduled jobs queue. Completed with errors';ru='Очередь регламентных заданий.Завершено с ошибками'", 
 				CommonUseClientServer.MainLanguageCode()), Selection.ID, 
-				NStr("en = 'Executing job has been forcibly terminated'"));
+				NStr("en='Executing job has been forcibly terminated';ru='Исполняющее задание было принудительно завершено'"));
 				
 			// Plan a one-time job to execute error handler.
 			HandlerParameters = GetErrorHandlerParameters(Task);
@@ -1505,9 +1511,9 @@ Procedure ScheduleSchTask(Val Selection)
 						) Then
 					If ValueIsFilled(Task.Pattern) Then // Job by template without schedule.
 						
-						MessagePattern = NStr("en = 'The schedule was not found for the %1 queue jobs template'");
+						MessagePattern = NStr("en='The schedule was not found for the %1 queue jobs template';ru='Для шаблон заданий очереди %1 не найдено расписание'");
 						MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Task.Pattern);
-						WriteLogEvent(NStr("en = 'Jobs queue.Planning'", 
+						WriteLogEvent(NStr("en='Jobs queue.Planning';ru='Очередь заданий.Планирование'", 
 							CommonUseClientServer.MainLanguageCode()), 
 							EventLogLevel.Error,
 							,
@@ -1606,7 +1612,7 @@ Procedure ExecuteJobQueue(Val Ref, Val ActiveBackgroundJob,
 	CompletedSuccessfully = False;
 	ErrorInfoExecutionJobs = Undefined;
 	Try
-		WriteExecutionControlEventLogMonitor(NStr("en = 'Scheduled jobs queue.Start'", 
+		WriteExecutionControlEventLogMonitor(NStr("en='Scheduled jobs queue.Start';ru='Очередь регламентных заданий.Старт'", 
 			CommonUseClientServer.MainLanguageCode()), Ref);
 		
 		If ValueIsFilled(Pattern) Then
@@ -1617,18 +1623,18 @@ Procedure ExecuteJobQueue(Val Ref, Val ActiveBackgroundJob,
 		
 		CompletedSuccessfully = True;
 		
-		WriteExecutionControlEventLogMonitor(NStr("en = 'Scheduled jobs queue. Successfully completed'", 
+		WriteExecutionControlEventLogMonitor(NStr("en='Scheduled jobs queue. Successfully completed';ru='Очередь регламентных заданий.Завершено успешно'", 
 			CommonUseClientServer.MainLanguageCode()), Ref);
 		
 	Except
 		
 		ErrorInfoExecutionJobs = ErrorInfo();
 		
-		WriteExecutionControlEventLogMonitor(NStr("en = 'Scheduled jobs queue. Completed with errors'", 
+		WriteExecutionControlEventLogMonitor(NStr("en='Scheduled jobs queue. Completed with errors';ru='Очередь регламентных заданий.Завершено с ошибками'", 
 			CommonUseClientServer.MainLanguageCode()), Ref, 
 			DetailErrorDescription(ErrorInfoExecutionJobs));
 		
-		WriteLogEvent(NStr("en = 'Queue of scheduled jobs.Execution'", 
+		WriteLogEvent(NStr("en='Queue of scheduled jobs.Execution';ru='Очередь регламентных заданий.Выполнение'", 
 			CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, 
 			,

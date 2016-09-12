@@ -38,7 +38,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		If SearchResults.Count() <> 0 Then
 			
 			ShowedResultsFromTo = StringFunctionsClientServer.PlaceParametersIntoString(
-			                            NStr("en = 'Shown %1 - %2 from %3'"),
+			                            NStr("en='Shown %1 - %2 from %3';ru='Показаны %1 - %2 из %3'"),
 			                            String(CurrentPosition + 1),
 			                            String(CurrentPosition + SearchResults.Count()),
 			                            String(TotalQuantity) );
@@ -46,7 +46,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Items.GoToNext.Enabled = (TotalQuantity - CurrentPosition) > SearchResults.Count();
 			Items.Back.Enabled = (CurrentPosition > 0);
 		Else
-			ShowedResultsFromTo = NStr("en = 'Not found'");
+			ShowedResultsFromTo = NStr("en='Not found';ru='Не найден'");
 			Items.GoToNext.Enabled = False;
 			Items.Back.Enabled = False;
 		EndIf;
@@ -175,7 +175,7 @@ Procedure Search(Direction, Cancel = Undefined)
 	// Search procedure, getting and displaying the result.
 	
 	If IsBlankString(SearchString) Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Enter search string.'"), , "SearchString");
+		CommonUseClientServer.MessageToUser(NStr("en='Enter search string.';ru='Введите, что нужно найти.'"), , "SearchString");
 		Cancel = True;
 		Return;
 	EndIf;
@@ -187,7 +187,7 @@ Procedure Search(Direction, Cancel = Undefined)
 		Return;
 	EndIf;
 	
-	Status(StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Searching ""%1""...'"), SearchString));
+	Status(StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Searching ""%1""...';ru='Выполняется поиск ""%1""...'"), SearchString));
 	
 	ChoiceList = Items.SearchString.ChoiceList.Copy();
 	Result = SaveStringAndPerformSearchServer(Direction, CurrentPosition, SearchString, ChoiceList);
@@ -204,7 +204,7 @@ Procedure Search(Direction, Cancel = Undefined)
 	If SearchResults.Count() > 0 Then
 		
 		ShowedResultsFromTo = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Shown %1 - %2 from %3'"),
+			NStr("en='Shown %1 - %2 from %3';ru='Показаны %1 - %2 из %3'"),
 			Format(CurrentPosition + 1, "NZ=0; NG="),
 			Format(CurrentPosition + SearchResults.Count(), "NZ=0; NG="),
 			Format(TotalQuantity, "NZ=0; NG="));
@@ -213,22 +213,22 @@ Procedure Search(Direction, Cancel = Undefined)
 		Items.Back.Enabled = (CurrentPosition > 0);
 		
 		If Direction = 0 AND Result.CurrentPosition = 0 AND Result.TooManyResults Then
-			ShowMessageBox(, NStr("en = 'Too many results, refine query.'"));
+			ShowMessageBox(, NStr("en='Too many results, refine query.';ru='Слишком много результатов, уточните запрос.'"));
 		EndIf;
 	
 	Else
 		
-		ShowedResultsFromTo = NStr("en = 'Not found'");
+		ShowedResultsFromTo = NStr("en='Not found';ru='Не найден'");
 		
 		Items.GoToNext.Enabled = False;
 		Items.Back.Enabled = False;
 		
 		SearchText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Words combination ""%1"" can not be found anywhere.<br><br>
-			|<b>Recommendations:</b>
-			|<li>Make sure all words are written correctly.
-			|<> Try to use other key words.
-			|<li>Try to reduce the number of the searched words.'"),
+			NStr("en='Words combination ""%1"" can not be found anywhere.<br><br>"
+"<b>Recommendations:</b>"
+"<li>Make sure all words are written correctly."
+"<> Try to use other key words."
+"<li>Try to reduce the number of the searched words.';ru='Комбинация слов ""%1"" нигде не встречается.<br><br> <b>Рекомендации:</b> <li>Убедитесь, что все слова написаны без ошибок. <li>Попробуйте использовать другие ключевые слова. <li>Попробуйте уменьшить количество искомых слов.'"),
 			TrimAll(SearchString));
 		
 		HTMLText = 

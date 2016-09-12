@@ -43,7 +43,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If CurrentObject.ThisIsFileBase() Then
 		CurItem = ChoiceList.FindByValue(2);
 		If CurItem <> Undefined Then
-			CurItem.Presentation = NStr("en = 'In directory:'");
+			CurItem.Presentation = NStr("en='In directory:';ru='В каталоге:'");
 		EndIf;
 	EndIf;
 
@@ -68,7 +68,7 @@ Procedure QueryDataProcessorPathStartChoice(Item, ChoiceData, StandardProcessing
 	
 	AdditionalParameters = New Structure();
 	
-	SuggestionText = NStr("en = 'To open a directory, you need to set an extension of working with files.'");
+	SuggestionText = NStr("en='To open a directory, you need to set an extension of working with files.';ru='Для открытия каталога необходимо необходимо установить расширение работы с файлами.'");
 	OnCloseNotifyDescription = New NotifyDescription("AfterWorksWithFilesExpansionCheck", ThisForm, AdditionalParameters);
 	
 	AlertDescriptionEnd = New NotifyDescription("ShowQuestionOnFileOperationsExtensionSettingEnd",
@@ -100,7 +100,7 @@ Procedure AfterWorksWithFilesExpansionCheck(Result, AdditionalParameters) Export
 		Dialog = New FileDialog(FileDialogMode.Open);
 		
 		Dialog.CheckFileExist = True;
-		Dialog.Filter = NStr("en = 'External processings (*.epf)|*.epf'");
+		Dialog.Filter = NStr("en='External processings (*.epf)|*.epf';ru='Внешние обработки (*.epf)|*.epf'");
 		
 		Notification = New NotifyDescription("AfterFileSelection", ThisForm, AdditionalParameters);
 		Dialog.Show(Notification);
@@ -151,7 +151,7 @@ EndProcedure
 Procedure ShowMessageAboutError(Text, AttributeName = Undefined)
 	
 	If AttributeName = Undefined Then
-		ErrorTitle = NStr("en = 'Error'");
+		ErrorTitle = NStr("en='Error';ru='Ошибка'");
 		ShowMessageBox(, Text, , ErrorTitle);
 		Return;
 	EndIf;

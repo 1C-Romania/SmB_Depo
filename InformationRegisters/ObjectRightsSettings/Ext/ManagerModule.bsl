@@ -156,10 +156,10 @@ Function Read(Val ObjectReference) Export
 	
 	If RightsDescriptionFull = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Error in the InformationRegisters procedure.ObjectRightsSettings.Read()
-			           |
-			           |Wrong value of the RefToObject %1 parameter.
-			           |Rights are not set for the %2 table objects.'"),
+			NStr("en='Error in the InformationRegisters procedure.ObjectRightsSettings.Read()"
+""
+"Wrong value of the RefToObject %1 parameter."
+"Rights are not set for the %2 table objects.';ru='Ошибка в процедуре РегистрыСведений.НастройкиПравОбъектов.Прочитать() Неверное значение параметра СсылкаНаОбъект ""%1"". Для объектов таблицы ""%2"" права не настраиваются.'"),
 			String(ObjectReference),
 			ObjectReference.Metadata().FullName());
 	EndIf;
@@ -250,16 +250,25 @@ Function Read(Val ObjectReference) Export
 		EndIf;
 		If Settings.Columns.Find(String.Right) = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Error in the InformationRegisters procedure.ObjectRightsSettings.Read()
-				           |
-				           |the %2 right
-				           |is not set for objects of the
-				           |%1 table, however, it is
-				           |written to the ObjectsRightsSettings information register for the %3 object.
-				           |
-				           |The infobase update
-				           |may not have been executed or executed with an error.
-				           |Register data is required to be corrected.'"),
+				NStr("en='Error in the InformationRegisters procedure.ObjectRightsSettings.Read()"
+""
+"the %2 right"
+"is not set for objects of the"
+"%1 table, however, it is"
+"written to the ObjectsRightsSettings information register for the %3 object."
+""
+"The infobase update"
+"may not have been executed or executed with an error."
+"Register data is required to be corrected.';ru='Ошибка в процедуре РегистрыСведений.НастройкиПравОбъектов.Прочитать()"
+""
+"Для объектов таблицы ""%1"""
+"право ""%2"" не настраивается, однако оно записано"
+"в регистре сведений НастройкиПравОбъектов для"
+"объекта ""%3""."
+""
+"Возможно, обновление информационной базы"
+"не выполнено или выполнено с ошибкой."
+"Требуется исправить данные регистра.'"),
 				ObjectReference.Metadata().FullName(),
 				String.Right,
 				String(ObjectReference));
@@ -290,10 +299,10 @@ Procedure Write(Val ObjectReference, Val Settings, Val Inherit) Export
 	
 	If RightsDescriptionFull = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Error in the InformationRegisters procedure.ObjectRightsSettings.Read()
-			           |
-			           |Wrong value of the RefToObject %1 parameter.
-			           |Rights are not set for the %2 table objects.'"),
+			NStr("en='Error in the InformationRegisters procedure.ObjectRightsSettings.Read()"
+""
+"Wrong value of the RefToObject %1 parameter."
+"Rights are not set for the %2 table objects.';ru='Ошибка в процедуре РегистрыСведений.НастройкиПравОбъектов.Прочитать() Неверное значение параметра СсылкаНаОбъект ""%1"". Для объектов таблицы ""%2"" права не настраиваются.'"),
 			String(ObjectReference),
 			ObjectReference.Metadata().FullName());
 	EndIf;
@@ -448,10 +457,13 @@ Procedure UpdateAuxiliaryRegisterData(HasChanges = Undefined) Export
 		
 		If EmptyRefsRightsOwner.Get(TypeOwnerRight) = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Error in
-				           |the UpdateSubordinateRegisterData procedure of the manager module of the ObjectsRightsSettings information register.
-				           |
-				           |Type of the %1 rights owner is not specified in the Object dimension.'"),
+				NStr("en='Error in"
+"the UpdateSubordinateRegisterData procedure of the manager module of the ObjectsRightsSettings information register."
+""
+"Type of the %1 rights owner is not specified in the Object dimension.';ru='Ошибка в процедуре ОбновитьВспомогательныеДанныеРегистра"
+"модуля менеджера регистра сведений НастройкиПравОбъектов."
+""
+"Тип владельцев прав ""%1"" не указан в измерении Объект.'"),
 				TypeOwnerRight);
 		EndIf;
 		
@@ -726,8 +738,9 @@ Function PossibleRights()
 	AccessManagementOverridable.OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights);
 	
 	ErrorTitle =
-		NStr("en = 'Error in
-		           |the OnFillingPossibleRightsForSettingObjectRights procedure of the AccessManagementPredefined common module.'")
+		NStr("en='Error in"
+"the OnFillingPossibleRightsForSettingObjectRights procedure of the AccessManagementPredefined common module.';ru='Ошибка"
+"в процедуре ПриЗаполненииВозможныхПравДляНастройкиПравОбъектов общего модуля УправлениеДоступомПереопределяемый.'")
 		+ Chars.LF
 		+ Chars.LF;
 	
@@ -765,7 +778,7 @@ Function PossibleRights()
 		
 		If MetadataObjectOwner = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				ErrorTitle + NStr("en = 'Owner of %1 rights is not found.'"),
+				ErrorTitle + NStr("en='Owner of %1 rights is not found.';ru='Не найден владелец прав ""%1"".'"),
 				PossibleRight.RightsOwner);
 		EndIf;
 		
@@ -788,8 +801,9 @@ Function PossibleRights()
 			If RightsOwnersDefinedType.Get(ReferenceType) = Undefined Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					ErrorTitle +
-					NStr("en = 'Type of the
-					           |%1 rights owner is not specified in the Owner of rights settings defined type.'"),
+					NStr("en='Type of the"
+"%1 rights owner is not specified in the Owner of rights settings defined type.';ru='Тип"
+"владельца прав ""%1"" не указан в определяемом типе ""Владелец настроек прав"".'"),
 					String(ReferenceType));
 			EndIf;
 			
@@ -799,23 +813,32 @@ Function PossibleRights()
 				
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					ErrorTitle +
-					NStr("en = 'Type of the
-					           |%1 rights owner is not specified in
-					           |the Access value defined type but used
-					           |for filling the sets of access values as specified in one of
-					           |the subscriptions
-					           |to the event: - WriteDependentAccessValuesSet*, - WriteAccessValuesSets*.
-					           |You need to specify the type in
-					           |the Access value specified type for the correct filling of the AccessValuesSets register.'"),
+					NStr("en='Type of the"
+"%1 rights owner is not specified in"
+"the Access value defined type but used"
+"for filling the sets of access values as specified in one of"
+"the subscriptions"
+"to the event: - WriteDependentAccessValuesSet*, - WriteAccessValuesSets*."
+"You need to specify the type in"
+"the Access value specified type for the correct filling of the AccessValuesSets register.';ru='Тип владельца прав ""%1"""
+"не указан в определяемом типе ""Значение доступа"","
+"но используется для заполнения наборов значений доступа,"
+"т.к. указан в одной из подписок на событие:"
+"- ЗаписатьЗависимыеНаборыЗначенийДоступа*,"
+"- ЗаписатьНаборыЗначенийДоступа*."
+"Требуется указать тип в определяемом типе ""Значение доступа"""
+"для корректного заполнения регистра НаборыЗначенийДоступа.'"),
 					String(ReferenceType));
 			EndIf;
 			
 			If AccessKindsProperties.ByValuesTypes.Get(ReferenceType) <> Undefined Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					ErrorTitle +
-					NStr("en = 'Type of the
-					           |%1 rights owner can not be used
-					           |as the type of access values but can be found in the description of %2 access kind.'"),
+					NStr("en='Type of the"
+"%1 rights owner can not be used"
+"as the type of access values but can be found in the description of %2 access kind.';ru='Тип"
+"владельца прав ""%1"" не может"
+"использоваться, как тип значений доступа, но обнаружен в описании вида доступа ""%2"".'"),
 					String(ReferenceType),
 					AccessKindsProperties.ByValuesTypes.Get(ReferenceType).Name);
 			EndIf;
@@ -823,9 +846,11 @@ Function PossibleRights()
 			If AccessKindsProperties.ByGroupsAndValuesTypes.Get(ReferenceType) <> Undefined Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					ErrorTitle +
-					NStr("en = 'Type of the
-					           |%1 rights owner can not be used as
-					           |the type of access values group but can be found in the description of the %2 access kind.'"),
+					NStr("en='Type of the"
+"%1 rights owner can not be used as"
+"the type of access values group but can be found in the description of the %2 access kind.';ru='Тип"
+"владельца прав ""%1"" не может использоваться,"
+"как тип групп значений доступа, но обнаружен в описании вида доступа ""%2"".'"),
 					String(ReferenceType),
 					AccessKindsProperties.ByValuesTypes.Get(ReferenceType).Name);
 			EndIf;
@@ -833,8 +858,9 @@ Function PossibleRights()
 			If SubscriptionTypesUpdateAccessValuesGroups.Get(ObjectType) = Undefined Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					ErrorTitle +
-					NStr("en = 'Type of the
-					           |%1 rights owner is not specified in the subscription to the Update groups of access values event.'"),
+					NStr("en='Type of the"
+"%1 rights owner is not specified in the subscription to the Update groups of access values event.';ru='Тип"
+"владельца прав ""%1"" не указан в подписке на событие ""Обновить группы значений доступа"".'"),
 					String(ObjectType));
 			EndIf;
 			
@@ -856,8 +882,9 @@ Function PossibleRights()
 		If OwnerRights.Get(PossibleRight.Name) <> Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
 				ErrorTitle +
-				NStr("en = 'For the %1
-				           |rights owner the %2 right is defined again.'"),
+				NStr("en='For the %1"
+"rights owner the %2 right is defined again.';ru='Для владельца"
+"прав ""%1"" повторно определено право ""%2"".'"),
 				PossibleRight.RightsOwner,
 				PossibleRight.Name);
 		EndIf;
@@ -944,13 +971,17 @@ Procedure FillIDs(Property, PossibleRight, ErrorTitle, SeparateTables, Additiona
 			If PossibleRight[Property].Count() <> 1 Then
 				
 				If Property = "ReadingInTables" Then
-					ErrorDescription = NStr("en = 'Character ""*"" is
-					                            |specified for the %1 rights owner for %2 right in tables for reading.
-					                            |In this case separate tables should not be specified.'")
+					ErrorDescription = NStr("en='Character ""*"" is"
+"specified for the %1 rights owner for %2 right in tables for reading."
+"In this case separate tables should not be specified.';ru='Для владельца"
+"прав ""%1"" для права ""%2"" в таблицах для чтения указан символ ""*""."
+"В этом случае отдельных таблиц указывать не нужно.'")
 				Else
-					ErrorDescription = NStr("en = 'Character ""*"" is
-					                            |specified for the %1 rights owner for %2 right in tables for changing.
-					                            |In this case separate tables should not be specified.'")
+					ErrorDescription = NStr("en='Character ""*"" is"
+"specified for the %1 rights owner for %2 right in tables for changing."
+"In this case separate tables should not be specified.';ru='Для владельца"
+"прав ""%1"" для права ""%2"" в таблицах для изменения указан символ ""*""."
+"В этом случае отдельных таблиц указывать не нужно.'")
 				EndIf;
 				
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
@@ -962,13 +993,17 @@ Procedure FillIDs(Property, PossibleRight, ErrorTitle, SeparateTables, Additiona
 			If ValueIsFilled(CommonRights[Property]) Then
 				
 				If Property = "ReadingInTables" Then
-					ErrorDescription = NStr("en = 'Character ""*"" is
-					                            |specified for the %1 rights owner for %2 right in tables for reading.
-					                            |However, the * character is already specified in the tables for reading for %3 right.'")
+					ErrorDescription = NStr("en='Character ""*"" is"
+"specified for the %1 rights owner for %2 right in tables for reading."
+"However, the * character is already specified in the tables for reading for %3 right.';ru='Для владельца"
+"прав ""%1"" для права ""%2"" в таблицах для чтения указан символ ""*""."
+"Однако символ ""*"" уже указан в таблицах для чтения для права ""%3"".'")
 				Else
-					ErrorDescription = NStr("en = 'Character ""*"" is
-					                            |specified for the %1 rights owner for %2 right in tables for changing.
-					                            |However, the * character is already specified in the tables for changing for %3 right.'")
+					ErrorDescription = NStr("en='Character ""*"" is"
+"specified for the %1 rights owner for %2 right in tables for changing."
+"However, the * character is already specified in the tables for changing for %3 right.';ru='Для владельца"
+"прав ""%1"" для права ""%2"" в таблицах для изменения указан символ ""*""."
+"Однако символ ""*"" уже указан в таблицах для изменения для права ""%3"".'")
 				EndIf;
 				
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
@@ -984,10 +1019,13 @@ Procedure FillIDs(Property, PossibleRight, ErrorTitle, SeparateTables, Additiona
 			
 		ElsIf Property = "ReadingInTables" Then
 			ErrorDescription =
-				NStr("en = 'For the %1
-				           |rights owner for %2 right the specified table for reading %3 is specified.
-				           |However, it makes no sense as the Reading right can only depend on the Reading right
-				           |It makes sense to use only the * character.'");
+				NStr("en='For the %1"
+"rights owner for %2 right the specified table for reading %3 is specified."
+"However, it makes no sense as the Reading right can only depend on the Reading right"
+"It makes sense to use only the * character.';ru='Для владельца прав ""%1"""
+"для права ""%2"" указана конкретная таблица для чтения ""%3""."
+"Однако это не имеет смысла, т.к. право Чтение может зависеть только от права Чтение."
+"Имеет смысл использовать только символ ""*"".'");
 				
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
 				ErrorTitle + ErrorDescription,
@@ -998,11 +1036,13 @@ Procedure FillIDs(Property, PossibleRight, ErrorTitle, SeparateTables, Additiona
 		ElsIf Metadata.FindByFullName(Value) = Undefined Then
 			
 			If Property = "ReadingInTables" Then
-				ErrorDescription = NStr("en = 'For the %1
-				                            |rights owner for %2 right the table for reading %3 is not found.'")
+				ErrorDescription = NStr("en='For the %1"
+"rights owner for %2 right the table for reading %3 is not found.';ru='Для владельца"
+"прав ""%1"" для права ""%2"" не найдена таблица для чтения ""%3"".'")
 			Else
-				ErrorDescription = NStr("en = 'For the %1
-				                            |rights owner for %2 right the table for changing %3 is not found.'")
+				ErrorDescription = NStr("en='For the %1"
+"rights owner for %2 right the table for changing %3 is not found.';ru='Для владельца"
+"прав ""%1"" для права ""%2"" не найдена таблица для изменения ""%3"".'")
 			EndIf;
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(

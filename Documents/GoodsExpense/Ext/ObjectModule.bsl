@@ -10,7 +10,7 @@ Procedure CheckInputBasedOnPossibility(FillingData, AttributeValues)
 	If AttributeValues.Property("OperationKind") Then
 		If ValueIsFilled(AttributeValues.OperationKind)
 			AND Not FillingData.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
-				ErrorMessage = NStr("en = 'Sales invoice receipt can be entered only on the basis of the job order!'");
+				ErrorMessage = NStr("en='Sales invoice receipt can be entered only on the basis of the job order!';ru='Расходный ордер можно ввести только на основании заказ-наряда!'");
 				Raise ErrorMessage;
 		EndIf;
 	EndIf;
@@ -29,8 +29,9 @@ Procedure CheckInputBasedOnPossibility(FillingData, AttributeValues)
 	EndIf;
 	
 	If Cancel Then
-		ErrorMessage = NStr("en = 'The ""Expense from order warehouse"" operation can not be entered.
-								|Document ""%DocumentRef"" has no order warehouse!'");
+		ErrorMessage = NStr("en='The ""Expense from order warehouse"" operation can not be entered."
+"Document ""%DocumentRef"" has no order warehouse!';ru='Невозможен ввод операции ""Поступления на ордерный склад""."
+"Документ ""%ДокументСсылка"" не имеет ордерного склада!'");
 		ErrorMessage = StrReplace(ErrorMessage, "%DocumentRef", FillingData.Ref);
 		Raise ErrorMessage;
 	EndIf;

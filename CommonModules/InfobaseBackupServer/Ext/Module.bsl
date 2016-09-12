@@ -498,21 +498,21 @@ Function CurrentBackupSetting() Export
 	
 	BackupSettings = BackupSettings();
 	If BackupSettings = Undefined Then
-		Return NStr("en = 'Contact administrator to configure backup.'");
+		Return NStr("en='Contact administrator to configure backup.';ru='Для настройки резервного копирования необходимо обратиться к администратору.'");
 	EndIf;
 	
-	CurrentSetting = NStr("en = 'The backup is not configured, infobase is under the data loss risk.'");
+	CurrentSetting = NStr("en='The backup is not configured, infobase is under the data loss risk.';ru='Резервное копирование не настроено, информационная база подвергается риску потери данных.'");
 	
 	If CommonUse.FileInfobase() Then
 		
 		If BackupSettings.ExecuteAutomaticBackup Then
 			
 			If BackupSettings.ExecutionVariant = "OnWorkCompletion" Then
-				CurrentSetting = NStr("en = 'Backups are performed regularly at exit.'");
+				CurrentSetting = NStr("en='Backups are performed regularly at exit.';ru='Резервное копирование выполняется регулярно при завершении работы.'");
 			ElsIf BackupSettings.ExecutionVariant = "OnSchedule" Then // On schedule
 				Schedule = CommonUseClientServer.StructureIntoSchedule(BackupSettings.CopyingSchedule);
 				If Not IsBlankString(Schedule) Then
-					CurrentSetting = NStr("en = 'Backup is executed on a regular basis according to the schedule: %1'");
+					CurrentSetting = NStr("en='Backup is executed on a regular basis according to the schedule: %1';ru='Резервное копирование выполняется регулярно по расписанию: %1'");
 					CurrentSetting = StringFunctionsClientServer.PlaceParametersIntoString(CurrentSetting, Schedule);
 				EndIf;
 			EndIf;
@@ -520,14 +520,14 @@ Function CurrentBackupSetting() Export
 		Else
 			
 			If BackupSettings.BackupIsConfigured Then
-				CurrentSetting = NStr("en = 'No backup in progress (organized by third-party applications).'");
+				CurrentSetting = NStr("en='No backup in progress (organized by third-party applications).';ru='Резервное копирование не выполняется (организовано сторонними программами).'");
 			EndIf;
 			
 		EndIf;
 		
 	Else
 		
-		CurrentSetting = NStr("en = 'No backup in progress (organized with DBMS tools).'");
+		CurrentSetting = NStr("en='No backup in progress (organized with DBMS tools).';ru='Резервное копирование не выполняется (организовано средствами СУБД).'");
 		
 	EndIf;
 	
@@ -904,7 +904,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 			Work = CurrentWorks.Add();
 			Work.ID  = "SetupBackup" + StrReplace(Section.FullName(), ".", "");
 			Work.ThereIsWork       = VariantNotifications = "YetNotConfigured";
-			Work.Presentation  = NStr("en = 'Setup backup'");
+			Work.Presentation  = NStr("en='Setup backup';ru='Настроить резервное копирование'");
 			Work.Important         = True;
 			Work.Form          = "DataProcessor.InfobaseBackupSetup.Form.Form";
 			Work.Owner       = Section;
@@ -914,7 +914,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 			Work = CurrentWorks.Add();
 			Work.ID  = "ExecuteBackingUpNow" + StrReplace(Section.FullName(), ".", "");
 			Work.ThereIsWork       = VariantNotifications = "Overdue";
-			Work.Presentation  = NStr("en = 'Backup is not completed'");
+			Work.Presentation  = NStr("en='Backup is not completed';ru='Резервное копирование не выполнено'");
 			Work.Important         = True;
 			Work.Form          = "DataProcessor.InfobaseBackup.Form.DataBackup";
 			Work.Owner       = Section;

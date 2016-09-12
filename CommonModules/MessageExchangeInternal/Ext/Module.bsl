@@ -290,7 +290,7 @@ Procedure OnDataImport(StandardProcessing,
 						Continue;
 					Else
 						Raise StringFunctionsClientServer.PlaceParametersIntoString(
-							NStr("en = 'The application failed to exchange the messages due to the following reason: the %1 data field is blocked!'"),
+							NStr("en='The application failed to exchange the messages due to the following reason: the %1 data field is blocked!';ru='Не удалось выполнить обмен сообщениями по причине: область данных %1 заблокирована!'"),
 							DataArea);
 					EndIf;
 				EndIf;
@@ -416,10 +416,13 @@ Procedure ProcessSystemMessageQueue(Filter = Undefined) Export
 		
 		WriteLogEvent(ThisSubsystemEventLogMonitorMessageText(),
 				EventLogLevel.Information,,,
-				NStr("en = 'System messages queue data processor was started from
-                      |the session with established values of separators. Data processing will be made
-                      |only for messages saved in a divided directory, in
-                      |items which separator values match separator values of the session.'")
+				NStr("en='System messages queue data processor was started from"
+"the session with established values of separators. Data processing will be made"
+"only for messages saved in a divided directory, in"
+"items which separator values match separator values of the session.';ru='Обработка очереди сообщений системы запущена"
+"из сеанса с установленными значениями разделителей. Обработка будет производиться"
+"только для сообщений, сохраненных в разделенном справочнике,"
+"в элементах со значениями разделителей, совпадающих со значениями разделителей сеанса.'")
 		);
 		
 		ProcessMessageInUndividedData = False;
@@ -543,12 +546,12 @@ Procedure ProcessSystemMessageQueue(Filter = Undefined) Export
 				
 				If Selection.EndPointLocked Then
 					MessageObject.Locked = True;
-					Raise NStr("en = 'Attempt to process the messages received from the locked end point.'");
+					Raise NStr("en='Attempt to process the messages received from the locked end point.';ru='Попытка обработки сообщения, полученного от заблокированной конечной точки.'");
 				EndIf;
 				
 				If FoundStrings.Count() = 0 Then
 					MessageObject.Locked = True;
-					Raise NStr("en = 'Handler is not assigned for the message.'");
+					Raise NStr("en='Handler is not assigned for the message.';ru='Не назначен обработчик для сообщения.'");
 				EndIf;
 				
 				For Each TableRow IN FoundStrings Do
@@ -560,7 +563,7 @@ Procedure ProcessSystemMessageQueue(Filter = Undefined) Export
 							RollbackTransaction();
 						EndDo;
 						MessageObject.Locked = True;
-						Raise NStr("en = 'Transaction has not been fixed in the message handler.'");
+						Raise NStr("en='Transaction has not been fixed in the message handler.';ru='В обработчике сообщения не была зафиксирована транзакция.'");
 					EndIf;
 					
 				EndDo;
@@ -576,7 +579,7 @@ Procedure ProcessSystemMessageQueue(Filter = Undefined) Export
 				WriteLogEvent(ThisSubsystemEventLogMonitorMessageText(),
 						EventLogLevel.Error,,,
 						StringFunctionsClientServer.PlaceParametersIntoString(
-							NStr("en = 'Error of processing of message %1: %2'"),
+							NStr("en='Error of processing of message %1: %2';ru='Ошибка обработки сообщения %1: %2'"),
 							MessageTitle.MessageChannel, DetailErrorDescription));
 			EndTry;
 			
@@ -611,7 +614,7 @@ Procedure ProcessSystemMessageQueue(Filter = Undefined) Export
 			If ProcessMessageInUndividedData AND CommonUseReUse.DataSeparationEnabled() AND CommonUseReUse.CanUseSeparatedData() Then
 				
 				ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'For processing of the %1 message channel the session separation was not disabled!'"),
+					NStr("en='For processing of the %1 message channel the session separation was not disabled!';ru='После обработки сообщения канала %1 не было выключено разделение сеанса!'"),
 					MessageTitle.MessageChannel);
 				
 				WriteLogEvent(
@@ -692,9 +695,10 @@ Procedure SetLeadingEndPointAtRecipient(ThisEndPointCode, LeadingEndPointCode) E
 	SetPrivilegedMode(True);
 	
 	If ExchangePlans.MessageExchange.FindByCode(ThisEndPointCode) <> ThisNode() Then
-		ErrorMessageString = NStr("en = 'Incorrect parameters of connection to the end point were set. Connection parameters indicate another end point.'");
-		MessageStringForErrorLogRegistration = NStr("en = 'Incorrect parameters of connection to the end point were set.
-			|Connection parameters indicate another end point.'", CommonUseClientServer.MainLanguageCode());
+		ErrorMessageString = NStr("en='Incorrect parameters of connection to the end point were set. Connection parameters indicate another end point.';ru='Заданы неверные параметры подключения к конечной точке. Параметры подключения указывают на другую конечную точку.'");
+		MessageStringForErrorLogRegistration = NStr("en='Incorrect parameters of connection to the end point were set."
+"Connection parameters indicate another end point.';ru='Заданы неверные параметры подключения к конечной точке."
+"Параметры подключения указывают на другую конечную точку.'", CommonUseClientServer.MainLanguageCode());
 		WriteLogEvent(LeadingEndPointSettingEventLogMonitorMessageText(),
 				EventLogLevel.Error,,, MessageStringForErrorLogRegistration);
 		Raise ErrorMessageString;
@@ -707,7 +711,7 @@ Procedure SetLeadingEndPointAtRecipient(ThisEndPointCode, LeadingEndPointCode) E
 		
 		If EndPointNode.IsEmpty() Then
 			
-			Raise NStr("en = 'End point in the correspondent base is not found.'");
+			Raise NStr("en='End point in the correspondent base is not found.';ru='Конечная точка в базе-корреспонденте не обнаружена.'");
 			
 		EndIf;
 		EndPointNodeObject = EndPointNode.GetObject();
@@ -948,7 +952,7 @@ Procedure SerializeDataFromStream(Sender, Stream, ImportedObjects, DataReadInPar
 			
 			If TypeOf(Data) = Type("ObjectDeletion") Then
 				
-				Raise NStr("en = 'Transfer of the ObjectDeletion object through the quick messages mechanism is not supported!'");
+				Raise NStr("en='Transfer of the ObjectDeletion object through the quick messages mechanism is not supported!';ru='Передача объекта УдалениеОбъекта через механизм быстрых сообщений не поддерживается!'");
 				
 			Else
 				
@@ -989,7 +993,7 @@ Procedure SerializeDataFromStream(Sender, Stream, ImportedObjects, DataReadInPar
 						Continue;
 					Else
 						Raise StringFunctionsClientServer.PlaceParametersIntoString(
-							NStr("en = 'The application failed to exchange the messages due to the following reason: the %1 data field is blocked!'"),
+							NStr("en='The application failed to exchange the messages due to the following reason: the %1 data field is blocked!';ru='Не удалось выполнить обмен сообщениями по причине: область данных %1 заблокирована!'"),
 							DataArea);
 					EndIf;
 				EndIf;
@@ -1093,21 +1097,21 @@ EndFunction
 // Only for internal use.
 Function EndPointConnectionEventLogMonitorMessageText() Export
 	
-	Return NStr("en = 'Messages exchange. End point connection'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Messages exchange. End point connection';ru='Обмен сообщениями.Подключение конечной точки'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
 // Only for internal use.
 Function LeadingEndPointSettingEventLogMonitorMessageText() Export
 	
-	Return NStr("en = 'Messages exchange. Leading end point installation'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Messages exchange. Leading end point installation';ru='Обмен сообщениями.Установка ведущей конечной точки'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
 // Only for internal use.
 Function ThisSubsystemEventLogMonitorMessageText() Export
 	
-	Return NStr("en = 'Message exchange'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Message exchange';ru='Обмен сообщениями'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -1280,7 +1284,7 @@ Procedure ConnectEndPointAtSender(Cancel,
 	
 	If Not EndPointNode.IsEmpty() Then
 		Cancel = True;
-		ErrorMessageString = NStr("en = 'The endpoint is already connected to the infobase; point description: %1'", CommonUseClientServer.MainLanguageCode());
+		ErrorMessageString = NStr("en='The endpoint is already connected to the infobase; point description: %1';ru='Конечная точка уже подключена к информационной базе; наименование точки: %1'", CommonUseClientServer.MainLanguageCode());
 		ErrorMessageString = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageString, CommonUse.ObjectAttributeValue(EndPointNode, "Description"));
 		WriteLogEvent(EndPointConnectionEventLogMonitorMessageText(), EventLogLevel.Error,,, ErrorMessageString);
 		Return;

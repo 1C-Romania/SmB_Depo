@@ -14,7 +14,7 @@ Procedure CheckCounterpartyOnChange(LaunchParameters) Export
 		Parameters.Add(LaunchParameters);
 		
 		BackgroundJobs.Execute("CounterpartiesCheck.CheckCounterpartyBackgroundJob", 
-			Parameters, LaunchParameters.TIN + " " + LaunchParameters.KPP, NStr("en = 'Check counterparty '"));
+			Parameters, LaunchParameters.TIN + " " + LaunchParameters.KPP, NStr("en='Check counterparty ';ru='Проверка контрагента '"));
 	
 	Except
 		
@@ -22,7 +22,7 @@ Procedure CheckCounterpartyOnChange(LaunchParameters) Export
 		// same key Special processing is not required
 			
 		ErrorInfo = ErrorInfo();
-		WriteLogEvent(NStr("en = 'Check counterparties.Check counterparty in the background job'"),
+		WriteLogEvent(NStr("en='Check counterparties.Check counterparty in the background job';ru='Проверка контрагентов.Проверка контрагента в фоновом задании'"),
 			EventLogLevel.Error,,,DetailErrorDescription(ErrorInfo));
 			
 	EndTry;
@@ -60,7 +60,7 @@ Function ClearSavedCounterpartiesCheckResults() Export
 		RollbackTransaction();
 		
 		WriteLogEvent(
-		NStr("en = 'Check counterparties.Clear previous check results'"), 
+		NStr("en='Check counterparties.Clear previous check results';ru='Проверка контрагентов.Очистка предыдущих результатов проверок'"), 
 		EventLogLevel.Error,,,
 			DetailErrorDescription(ErrorInfo()));
 		

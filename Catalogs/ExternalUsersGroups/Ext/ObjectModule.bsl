@@ -37,7 +37,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Parent = Catalogs.ExternalUsersGroups.AllExternalUsers Then
 		CommonUseClientServer.AddUserError(Errors,
 			"Object.Parent",
-			NStr("en = 'Predefined group ""All external users"" can not be a parent.'"),
+			NStr("en='Predefined group ""All external users"" can not be a parent.';ru='Предопределенная группа ""Все внешние пользователи"" не может быть родителем.'"),
 			"");
 	EndIf;
 	
@@ -51,10 +51,10 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If Not ValueIsFilled(CurrentRow.ExternalUser) Then
 			CommonUseClientServer.AddUserError(Errors,
 				"Object.Content[%1].ExternalUser",
-				NStr("en = 'External user is not selected.'"),
+				NStr("en='External user is not selected.';ru='Внешний пользователь не выбран.'"),
 				"Object.Content",
 				LineNumber,
-				NStr("en = 'External user in the row %1 is not selected.'"));
+				NStr("en='External user in the row %1 is not selected.';ru='Внешний пользователь в строке %1 не выбран.'"));
 			Continue;
 		EndIf;
 		
@@ -63,10 +63,10 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If FoundValues.Count() > 1 Then
 			CommonUseClientServer.AddUserError(Errors,
 				"Object.Content[%1].ExternalUser",
-				NStr("en = 'External user is repeated.'"),
+				NStr("en='External user is repeated.';ru='Внешний пользователь повторяется.'"),
 				"Object.Content",
 				LineNumber,
-				NStr("en = 'External user in the %1 row is repeated.'"));
+				NStr("en='External user in the %1 row is repeated.';ru='Внешний пользователь в строке %1 повторяется.'"));
 		EndIf;
 	EndDo;
 	
@@ -100,19 +100,19 @@ Procedure BeforeWrite(Cancel)
 		
 		If Not Parent.IsEmpty() Then
 			Raise
-				NStr("en = 'Predefined group ""All external users"" can not be moved.'");
+				NStr("en='Predefined group ""All external users"" can not be moved.';ru='Предопределенная группа ""Все внешние пользователи"" не может быть перемещена.'");
 		EndIf;
 		If Content.Count() > 0 Then
 			Raise
-				NStr("en = 'Adding participants to predetermined group ""All external users"" is banned.'");
+				NStr("en='Adding participants to predetermined group ""All external users"" is banned.';ru='Добавление участников в предопределенную группу ""Все внешние пользователи"" запрещено.'");
 		EndIf;
 	Else
 		If Parent = Catalogs.ExternalUsersGroups.AllExternalUsers Then
 			Raise
-				NStr("en = 'Cannot add a subgroup to predetermined group ""All external users"".'");
+				NStr("en='Cannot add a subgroup to predetermined group ""All external users"".';ru='Невозможно добавить подгруппу к предопределенной группе ""Все внешние пользователи"".'");
 		ElsIf Parent.AllAuthorizationObjects Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Cannot add a subgroup to group %1 because it includes all users.'"), Parent);
+				NStr("en='Cannot add a subgroup to group %1 because it includes all users.';ru='Невозможно добавить подгруппу к группе ""%1"", так как в число ее участников входят все пользователи.'"), Parent);
 		EndIf;
 		
 		If TypeOfAuthorizationObjects = Undefined Then
@@ -122,7 +122,7 @@ Procedure BeforeWrite(Cancel)
 		        AND ValueIsFilled(Parent) Then
 			
 			Raise
-				NStr("en = 'Cannot move a group to a number of participants that includes all users.'");
+				NStr("en='Cannot move a group to a number of participants that includes all users.';ru='Невозможно переместить группу, в число участников которой входят все пользователи.'");
 		EndIf;
 		
 		// Check for uniqueness of a group of all authorization objects of the specified type.
@@ -147,7 +147,7 @@ Procedure BeforeWrite(Cancel)
 				Selection = QueryResult.Select();
 				Selection.Next();
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Group ""%1"" already exists and includes all users of the ""%2"" kind.'"),
+					NStr("en='Group ""%1"" already exists and includes all users of the ""%2"" kind.';ru='Уже существует группа ""%1"", в число участников которой входят все пользователи вида ""%2"".'"),
 					Selection.RefPresentation,
 					TypeOfAuthorizationObjects.Metadata().Synonym);
 			EndIf;
@@ -164,8 +164,9 @@ Procedure BeforeWrite(Cancel)
 			   AND ParentAuthorizationObjectType <> TypeOfAuthorizationObjects Then
 				
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Kind of participants shall be
-					           |""%1"" as in the upstream group of external users ""%2"".'"),
+					NStr("en='Kind of participants shall be"
+"""%1"" as in the upstream group of external users ""%2"".';ru='Вид участников группы должен"
+"быть ""%1"", как у вышестоящей группы внешних пользователей ""%2"".'"),
 					ParentAuthorizationObjectType.Metadata().Synonym,
 					Parent);
 			EndIf;
@@ -188,8 +189,9 @@ Procedure BeforeWrite(Cancel)
 			QueryResult = Query.Execute();
 			If Not QueryResult.IsEmpty() Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Cannot change a kind
-							   |of participants of group ""%1"" as it has subgroups.'"),
+					NStr("en='Cannot change a kind"
+"of participants of group ""%1"" as it has subgroups.';ru='Невозможно изменить"
+"вид участников группы ""%1"", так как у нее имеются подгруппы.'"),
 					Description);
 			EndIf;
 			
@@ -220,14 +222,15 @@ Procedure BeforeWrite(Cancel)
 				Selection.Next();
 				
 				If Selection.TypeOfAuthorizationObjects = Undefined Then
-					OtherAuthorizationObjectTypePresentation = NStr("en = 'Any user'");
+					OtherAuthorizationObjectTypePresentation = NStr("en='Any user';ru='Любой пользователь'");
 				Else
 					OtherAuthorizationObjectTypePresentation =
 						Selection.TypeOfAuthorizationObjects.Metadata().Synonym;
 				EndIf;
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Cannot change a kind
-					           |of participants of group ""%1"" as it has subgroup ""%2"" with another kind of participants ""%3"".'"),
+					NStr("en='Cannot change a kind"
+"of participants of group ""%1"" as it has subgroup ""%2"" with another kind of participants ""%3"".';ru='Невозможно"
+"изменить вид участников группы ""%1"", так как у нее имеется подгруппа ""%2"" с другим видом участников ""%3"".'"),
 					Description,
 					Selection.RefPresentation,
 					OtherAuthorizationObjectTypePresentation);

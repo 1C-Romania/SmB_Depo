@@ -41,7 +41,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	ElsIf ClassifierData.Data.Count() = 0 Then
 		// No data, selection functions are not applicable.
-		BriefErrorDescription = NStr("en = 'Code is not found in the address classifier.'");
+		BriefErrorDescription = NStr("en='Code is not found in the address classifier.';ru='Индекс не найден в адресном классификаторе.'");
 		Return;
 	EndIf;
 	
@@ -90,12 +90,13 @@ Procedure MakeSelection(Val LineNumber)
 	Notification = New NotifyDescription("MakeSelectionEndQuestion", ThisObject, Data);
 	
 	WarningIrrelevant = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Address ""%2, %1"" is not applicable.
-		           |Continue?'"),
+		NStr("en='Address ""%2, %1"" is not applicable."
+"Continue?';ru='Адрес ""%2, %1"" неактуален."
+"Продолжить?'"),
 		TrimAll(CommonPartPresentation), Data.Presentation
 	);
 		
-	TitleWarnings = NStr("en = 'Confirmation'");
+	TitleWarnings = NStr("en='Confirmation';ru='Подтверждение'");
 	
 	ShowQueryBox(Notification, WarningIrrelevant, QuestionDialogMode.YesNo, , ,TitleWarnings);
 		

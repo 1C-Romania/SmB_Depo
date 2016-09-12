@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Administration parameters</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Параметры администрирования</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -46,6 +50,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Explanatory inscription</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поясняющая надпись</v8:content>
+				</v8:item>
 			</Title>
 			<VerticalAlign>Top</VerticalAlign>
 			<ContextMenu name="ExplanatoryInscriptionContextMenu" id="110"/>
@@ -56,6 +64,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Infobase administrator</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Администратор информационной базы</v8:content>
 				</v8:item>
 			</Title>
 			<Group>Horizontal</Group>
@@ -74,6 +86,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>User name:</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Имя пользователя:</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="DecorationUserNameContextMenu" id="94"/>
 							<ExtendedTooltip name="DecorationUserNameExtendedTooltip" id="95"/>
@@ -83,6 +99,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Password:</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Пароль:</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="DecorationPasswordContextMenu" id="97"/>
@@ -100,11 +120,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Undivided mode</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Неразделенный режим</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Undivided mode</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Неразделенный режим</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ShowTitle>false</ShowTitle>
@@ -117,6 +145,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>User name</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Имя пользователя</v8:content>
+										</v8:item>
 									</Title>
 									<TitleLocation>None</TitleLocation>
 									<ContextMenu name="NameAdministratorInfobaseContextMenu" id="100"/>
@@ -128,6 +160,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Password</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пароль</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>None</TitleLocation>
@@ -142,11 +178,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Split mode</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Разделенный режим</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Split mode</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Разделенный режим</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ExtendedTooltip name="SplitModeExtendedTooltip" id="48"/>
@@ -158,12 +202,20 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>User name</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Имя пользователя</v8:content>
+										</v8:item>
 									</Title>
 									<TitleLocation>None</TitleLocation>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Infobase administrator on behalf of whom the sessions are terminated forcibly</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Администратор информационной базы, от имени которого выполняется принудительное отключение сеансов</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Wrap>false</Wrap>
@@ -179,12 +231,20 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Password</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пароль</v8:content>
+										</v8:item>
 									</Title>
 									<TitleLocation>None</TitleLocation>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>The password of the infobase administrator on behalf of whom the sessions are terminated forcibly</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пароль администратора информационной базы, от имени которого выполняется принудительное отключение сеансов</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Wrap>false</Wrap>
@@ -204,6 +264,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cluster administration parameters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры администрирования кластера</v8:content>
+				</v8:item>
 			</Title>
 			<Group>Vertical</Group>
 			<ExtendedTooltip name="GroupClusterAdministrationExtendedTooltip" id="77"/>
@@ -213,6 +277,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Server cluster authorization parameters</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметры авторизации кластера серверов</v8:content>
 						</v8:item>
 					</Title>
 					<Group>Vertical</Group>
@@ -248,6 +316,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>NG=0</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>NG=0</v8:content>
+								</v8:item>
 							</EditFormat>
 							<ContextMenu name="ServerClusterPortContextMenu" id="18"/>
 							<ExtendedTooltip name="ServerClusterPortExtendedTooltip" id="59"/>
@@ -259,6 +331,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Connection to servers cluster through administration server (ras)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подключение к кластеру серверов через сервер администрирования (ras)</v8:content>
 						</v8:item>
 					</Title>
 					<Group>Vertical</Group>
@@ -273,6 +349,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Connection to servers cluster</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подключение к кластеру серверов</v8:content>
+								</v8:item>
 							</Title>
 							<Width>28</Width>
 							<ListChoiceMode>true</ListChoiceMode>
@@ -286,6 +366,10 @@
 												<v8:lang>en</v8:lang>
 												<v8:content>COM-connection with server agent</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>COM-соединение с агентом сервера;</v8:content>
+											</v8:item>
 										</Presentation>
 										<Value xsi:type="xs:string">COM</Value>
 									</xr:Value>
@@ -298,6 +382,10 @@
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>Through administration server (ras)</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Через сервер администрирования (ras)</v8:content>
 											</v8:item>
 										</Presentation>
 										<Value xsi:type="xs:string">RAS</Value>
@@ -325,6 +413,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Address</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Регион</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="ServerAgentAddressContextMenu" id="83"/>
 											<ExtendedTooltip name="ServerAgentAddressExtendedTooltip" id="84"/>
@@ -336,11 +428,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Port</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Порт</v8:content>
+												</v8:item>
 											</Title>
 											<Wrap>false</Wrap>
 											<EditFormat>
 												<v8:item>
 													<v8:lang>en</v8:lang>
+													<v8:content>NG=0</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
 													<v8:content>NG=0</v8:content>
 												</v8:item>
 											</EditFormat>
@@ -360,6 +460,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Address</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Регион</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="AdministrationServerAddressContextMenu" id="69"/>
 											<ExtendedTooltip name="AdministrationServerAddressExtendedTooltip" id="70"/>
@@ -371,10 +475,18 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Port</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Порт</v8:content>
+												</v8:item>
 											</Title>
 											<EditFormat>
 												<v8:item>
 													<v8:lang>en</v8:lang>
+													<v8:content>NG=0</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
 													<v8:content>NG=0</v8:content>
 												</v8:item>
 											</EditFormat>
@@ -397,6 +509,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cluster administrator name</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя администратора кластера</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -412,6 +528,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cluster administrator password</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль администратора кластера</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -426,6 +546,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Server agent port</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порт агента сервера</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -443,6 +567,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Servers cluster port</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порт кластера серверов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -459,6 +587,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>IB administrator</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Администратор ИБ</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Users</v8:Type>
@@ -469,6 +601,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Infobase administrator password</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль администратора информационной базы</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -485,6 +621,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Administration server address</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес сервера администрирования</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -499,6 +639,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Administration server port</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порт сервера администрирования</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -516,6 +660,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Server agent address</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес агента сервера</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -530,6 +678,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Name in cluster</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя в кластере</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -546,6 +698,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Infobase administrator name</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя администратора информационной базы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -561,6 +717,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Administration parameters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры администрирования</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -569,6 +729,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Type of connection</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип подключения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -592,11 +756,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Write</Action>
@@ -607,11 +779,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Cancel</Action>

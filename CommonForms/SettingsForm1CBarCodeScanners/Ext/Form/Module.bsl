@@ -12,13 +12,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("ID", ID);
 	Parameters.Property("HardwareDriver", HardwareDriver);
 	
-	Title = NStr("en='Equipment:'") + Chars.NBSp  + String(ID);
+	Title = NStr("en='Equipment:';ru='Оборудование:'") + Chars.NBSp  + String(ID);
 	
 	TextColor = StyleColors.FormTextColor;
 	ErrorColor = StyleColors.NegativeTextColor;
 
 	ListPort = Items.Port.ChoiceList;
-	ListPort.Add(0, NStr("en='<Keyboard>'"));
+	ListPort.Add(0, NStr("en='<Keyboard>';ru='<Keyboard>'"));
 	For Number = 1 To 64 Do
 		ListPort.Add(Number, "COM" + Format(Number, "ND=2; NFD=0; NZ=0; NG=0"));
 	EndDo;
@@ -46,9 +46,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndDo;
 
 	StopBitList = Items.StopBit.ChoiceList;
-	StopBitList.Add(0, NStr("en='1 stop-bit'"));
-	StopBitList.Add(1, NStr("en='1.5 of the stop-bit'"));
-	StopBitList.Add(2, NStr("en='2 stop-bits'"));
+	StopBitList.Add(0, NStr("en='1 stop-bit';ru='1 стоп-бит'"));
+	StopBitList.Add(1, NStr("en='1.5 of the stop-bit';ru='1.5 стоп-бита'"));
+	StopBitList.Add(2, NStr("en='2 stop-bits';ru='2 стоп-бита'"));
 
 	tempPort      = Undefined;
 	tempSpeed  = Undefined;
@@ -225,7 +225,7 @@ Procedure DeviceTest(Command)
 	tempDeviceParameters.Property("Timeout", Timeout);
 	 
 	If Not Result Then
-		CommonUseClientServer.MessageToUser(Output_Parameters[1] + "(" + NStr("en='Error code:'") + Output_Parameters[0] + ")");
+		CommonUseClientServer.MessageToUser(Output_Parameters[1] + "(" + NStr("en='Error code:';ru='Код ошибки:'") + Output_Parameters[0] + ")");
 	EndIf;
 
 EndProcedure
@@ -233,7 +233,7 @@ EndProcedure
 &AtClient
 Procedure SetDriverFromArchiveOnEnd(Result) Export 
 	
-	CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.'")); 
+	CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.';ru='Установка драйвера завершена.'")); 
 	UpdateInformationAboutDriver();
 	
 EndProcedure 
@@ -242,10 +242,10 @@ EndProcedure
 Procedure SettingDriverFromDistributionOnEnd(Result, Parameters) Export 
 	
 	If Result Then
-		CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.';ru='Установка драйвера завершена.'")); 
 		UpdateInformationAboutDriver();
 	Else
-		CommonUseClientServer.MessageToUser(NStr("en='An error occurred when installing the driver from distribution.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='An error occurred when installing the driver from distribution.';ru='При установке драйвера из дистрибутива произошла ошибка.'")); 
 	EndIf;
 
 EndProcedure 
@@ -332,20 +332,20 @@ Procedure UpdateInformationAboutDriver()
 		
 		// Check the matching of the driver version number in the BPO and number reported by the driver itself.
 		If VersionFromBPOStr > VersionStr Then
-			CommonUseClientServer.MessageToUser(NStr("en='The driver version installed on the computer is outdated! It is required to update to version:'") + Chars.NBSp + VersionFromBPO);
+			CommonUseClientServer.MessageToUser(NStr("en='The driver version installed on the computer is outdated! It is required to update to version:';ru='Установленная на компьютере версия драйвера устарела! Необходимо обновление до версии:'") + Chars.NBSp + VersionFromBPO);
 		EndIf;
 		
 	Else
 		Driver        = Output_Parameters[2];
-		Version         = NStr("en='Not defined'");
+		Version         = NStr("en='Not defined';ru='Не определена'");
 		VersionStr      = 8000000;
 		VersionFromBPOStr = 8000000;
 	EndIf;
 
-	Items.Driver.TextColor = ?(Driver = NStr("en='Not set'"), ErrorColor, TextColor);
-	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined'"), ErrorColor, TextColor);
+	Items.Driver.TextColor = ?(Driver = NStr("en='Not set';ru='Не установлен'"), ErrorColor, TextColor);
+	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined';ru='Не определена'"), ErrorColor, TextColor);
 	
-	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed'"));
+	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed';ru='Установлен'"));
 	
 EndProcedure
 

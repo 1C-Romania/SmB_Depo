@@ -18,6 +18,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>User settings group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пользовательских настроек</v8:content>
+				</v8:item>
 			</Title>
 			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
@@ -29,6 +33,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Command bar</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
 			<CommandSource>Form</CommandSource>
@@ -128,6 +136,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Right</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право</v8:content>
+						</v8:item>
 					</Title>
 					<Width>20</Width>
 					<ContextMenu name="ListRightContextMenu" id="9"/>
@@ -138,6 +150,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>List group right value</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список группа значение права</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ListGroupRightValueExtendedTooltip" id="45"/>
@@ -169,6 +185,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>List group right level</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список группа уровень права</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ListGroupRightLevelExtendedTooltip" id="59"/>
 					<ChildItems>
@@ -196,6 +216,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>List group read level</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список группа уровень чтения</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ListGroupReadingLevelExtendedTooltip" id="49"/>
 					<ChildItems>
@@ -218,6 +242,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>List group change level</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список группа уровень изменения</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ListGroupChangeLevelExtendedTooltip" id="55"/>
@@ -291,11 +319,19 @@ FROM
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable editing</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable editing for error search only (requires advanced knowledge of the mechanism work)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования только для целей поиска неисправности (требуется углубленное понимание работы механизма)</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnableEditingAbility</Action>
@@ -306,11 +342,19 @@ FROM
 					<v8:lang>en</v8:lang>
 					<v8:content>Update auxiliary register data</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить вспомогательные данные регистра</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update auxiliary register data</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить вспомогательные данные регистра</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>UpdateAuxiliaryRegisterData</Action>

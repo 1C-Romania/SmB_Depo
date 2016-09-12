@@ -56,7 +56,7 @@ Procedure SettingFormBeforeClose(Cancel, Form) Export
 		
 		Cancel = True;
 		
-		QuestionText = NStr("en = 'Data was changed. Do you want to close the form without saving the changes?'");
+		QuestionText = NStr("en='Data was changed. Do you want to close the form without saving the changes?';ru='Данные изменены. Закрыть форму без сохранения изменений?'");
 		NotifyDescription = New NotifyDescription("SettingFormBeforeCloseEnd", ThisObject, Form);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo,, DialogReturnCode.No);
 		
@@ -317,14 +317,14 @@ EndFunction
 Function HyperlinkHeadersOfDataImport() Export
 	
 	Structure = New Structure;
-	Structure.Insert("Undefined",               NStr("en = 'Data receiving has not been performed'"));
-	Structure.Insert("Error",                     NStr("en = 'Failed to receive the data'"));
-	Structure.Insert("CompletedWithWarnings", NStr("en = 'Data is received with notifications'"));
-	Structure.Insert("Success",                      NStr("en = 'Data are successfully received'"));
-	Structure.Insert("Execution",                 NStr("en = 'Receiving data...'"));
+	Structure.Insert("Undefined",               NStr("en='Data receiving has not been performed';ru='Получение данных не выполнялось'"));
+	Structure.Insert("Error",                     NStr("en='Failed to receive the data';ru='Не удалось получить данные'"));
+	Structure.Insert("CompletedWithWarnings", NStr("en='Data is received with notifications';ru='Данные получены с предупреждениями'"));
+	Structure.Insert("Success",                      NStr("en='Data are successfully received';ru='Данные успешно получены'"));
+	Structure.Insert("Execution",                 NStr("en='Receiving data...';ru='Выполняется получение данных...'"));
 	
-	Structure.Insert("Warning_ExchangeMessageHasBeenPreviouslyReceived", NStr("en = 'No new data to be received'"));
-	Structure.Insert("Error_MessageTransport",                      NStr("en = 'Failed to receive the data'"));
+	Structure.Insert("Warning_ExchangeMessageHasBeenPreviouslyReceived", NStr("en='No new data to be received';ru='Нет новых данных для получения'"));
+	Structure.Insert("Error_MessageTransport",                      NStr("en='Failed to receive the data';ru='Не удалось получить данные'"));
 	
 	Return Structure;
 EndFunction
@@ -334,14 +334,14 @@ EndFunction
 Function HyperlinkHeadersOfDataDump() Export
 	
 	Structure = New Structure;
-	Structure.Insert("Undefined", NStr("en = 'Data sending has not been performed'"));
-	Structure.Insert("Error",       NStr("en = 'Failed to send data'"));
-	Structure.Insert("Success",        NStr("en = 'Data are successfully sent'"));
-	Structure.Insert("Execution",   NStr("en = 'Data sending is in progress...'"));
+	Structure.Insert("Undefined", NStr("en='Data sending has not been performed';ru='Отправка данных не выполнялась'"));
+	Structure.Insert("Error",       NStr("en='Failed to send data';ru='Не удалось отправить данные'"));
+	Structure.Insert("Success",        NStr("en='Data are successfully sent';ru='Данные успешно отправлены'"));
+	Structure.Insert("Execution",   NStr("en='Data sending is in progress...';ru='Выполняется отправка данных...'"));
 	
-	Structure.Insert("Warning_ExchangeMessageHasBeenPreviouslyReceived", NStr("en = 'Data sent with notifications'"));
-	Structure.Insert("CompletedWithWarnings",                     NStr("en = 'Data sent with notifications'"));
-	Structure.Insert("Error_MessageTransport",                      NStr("en = 'Failed to send data'"));
+	Structure.Insert("Warning_ExchangeMessageHasBeenPreviouslyReceived", NStr("en='Data sent with notifications';ru='Данные отправлены с предупреждениями'"));
+	Structure.Insert("CompletedWithWarnings",                     NStr("en='Data sent with notifications';ru='Данные отправлены с предупреждениями'"));
+	Structure.Insert("Error_MessageTransport",                      NStr("en='Failed to send data';ru='Не удалось отправить данные'"));
 	
 	Return Structure;
 EndFunction
@@ -526,11 +526,11 @@ Procedure FileDirectoryChoiceHandler(Object, Val PropertyName, StandardProcessin
 	StandardProcessing = False;
 	
 	DialogDefaults = New Structure;
-	DialogDefaults.Insert("Title", NStr("en = 'Specify the folder!'") );
+	DialogDefaults.Insert("Title", NStr("en='Specify the folder!';ru='Укажите каталог'") );
 	
 	SetStructureDefaultValues(DialogueParameters, DialogDefaults);
 	
-	WarningText = NStr("en = 'For this operation you need to install extension for 1C:Enterprise web client.'");
+	WarningText = NStr("en='For this operation you need to install extension for 1C:Enterprise web client.';ru='Для данной операции необходимо установить расширение для веб-клиента 1С:Предприятие.'");
 	
 	AdditionalParameters = New Structure;
 	AdditionalParameters.Insert("Object",               Object);
@@ -588,13 +588,13 @@ Procedure FileChoiceHandler(Object, Val PropertyName, StandardProcessing = False
 	DialogDefaults = New Structure;
 	DialogDefaults.Insert("Mode",                       FileDialogMode.Open);
 	DialogDefaults.Insert("CheckFileExist", True);
-	DialogDefaults.Insert("Title",                   NStr("en = 'Select the file'"));
+	DialogDefaults.Insert("Title",                   NStr("en='Select the file';ru='Выберите файл'"));
 	DialogDefaults.Insert("Multiselect",          False);
 	DialogDefaults.Insert("Preview",     False);
 	
 	SetStructureDefaultValues(DialogueParameters, DialogDefaults);
 	
-	WarningText = NStr("en = 'For this operation you need to install extension for 1C:Enterprise web client.'");
+	WarningText = NStr("en='For this operation you need to install extension for 1C:Enterprise web client.';ru='Для данной операции необходимо установить расширение для веб-клиента 1С:Предприятие.'");
 	
 	Notification = New NotifyDescription("FileChoiceHandlerEnd", ThisObject, New Structure);
 	Notification.AdditionalParameters.Insert("Object",               Object);
@@ -653,7 +653,7 @@ Procedure PassFilesToServer(CompletionAlert, Val FileNames, Val FormID = Undefin
 		FileDescription = New Structure("Name, Storing, ErrorDescription", FileName);
 		If IsBlankString(FileName) Then
 			HasEmpty = True;
-			FileDescription.ErrorDescription = NStr("en = 'File not selected.'");
+			FileDescription.ErrorDescription = NStr("en='File not selected.';ru='Файл не выбран.'");
 		EndIf;
 		DataFiles.Add(FileDescription);
 	EndDo;
@@ -670,9 +670,9 @@ Procedure PassFilesToServer(CompletionAlert, Val FileNames, Val FormID = Undefin
 	
 	If WarningText = Undefined Then
 		If FileNames.Count() = 1 Then
-			WarningText = NStr("en = 'To send file to server, you need to install extension for 1C:Enterprise web client.'");
+			WarningText = NStr("en='To send file to server, you need to install extension for 1C:Enterprise web client.';ru='Для передачи файла на сервер необходимо установить расширение для веб-клиента 1С:Предприятие.'");
 		Else
-			WarningText = NStr("en = 'To send files to server, you need to install extension for 1C:Enterprise web client.'");
+			WarningText = NStr("en='To send files to server, you need to install extension for 1C:Enterprise web client.';ru='Для передачи файлов на сервер необходимо установить расширение для веб-клиента 1С:Предприятие.'");
 		EndIf;
 	EndIf;
 	
@@ -737,7 +737,7 @@ Procedure PassFileToServerEndExtensionConnectionAfterFileExistenceCheck(Exists, 
 		ListForPassParametersFilling.HasErrors = True;
 		Item = ListForPassParametersFilling.DataFiles[ListForPassParametersFilling.PositionNumber];
 		Item.ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File %1 does not exist or there is no access to it.'"), Item.Name);
+			NStr("en='File %1 does not exist or there is no access to it.';ru='Файл ""%1"" не существует или к нему нет доступа'"), Item.Name);
 			
 		// Go to the next file or complete list filling for passing.
 		If ListForPassParametersFilling.PositionNumber = ListForPassParametersFilling.DataFiles.UBound() Then
@@ -769,7 +769,7 @@ Procedure PassFileToServerEndExtensionConnectionAfterCheckOnDirectory(IsDirector
 	If IsDirectory Then
 		ListForPassParametersFilling.HasErrors = True;
 		Item.ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File %1 does not exist or there is no access to it.'"), Item.Name);
+			NStr("en='File %1 does not exist or there is no access to it.';ru='Файл ""%1"" не существует или к нему нет доступа'"), Item.Name);
 	Else
 		ListForPassParametersFilling.ListForPass.Add(New TransferableFileDescription(Item.Name));
 	EndIf;
@@ -868,7 +868,7 @@ Procedure SelectAndPassFileToServerAfterWorksWithFilesExtensionConnection(Attach
 	// You have extension, use dialog.
 	DialogDefaults = New Structure;
 	DialogDefaults.Insert("CheckFileExist", True);
-	DialogDefaults.Insert("Title",                   NStr("en = 'Select the file'"));
+	DialogDefaults.Insert("Title",                   NStr("en='Select the file';ru='Выберите файл'"));
 	DialogDefaults.Insert("Multiselect",          False);
 	DialogDefaults.Insert("Preview",     False);
 	
@@ -942,7 +942,7 @@ Procedure SelectAndSaveFileOnClientAfterWorksWithFilesExtensionConnection(Attach
 	
 	// Extension is available, use dialog.
 	DialogDefaults = New Structure;
-	DialogDefaults.Insert("Title",               NStr("en = 'Choose file for saving'"));
+	DialogDefaults.Insert("Title",               NStr("en='Choose file for saving';ru='Выберите файл для сохранения'"));
 	DialogDefaults.Insert("Multiselect",      False);
 	DialogDefaults.Insert("Preview", False);
 	
@@ -1189,7 +1189,7 @@ EndProcedure
 //
 Procedure DeleteSynchronizationSetting(Val InfobaseNode) Export
 	
-	QuestionText = NStr("en = 'Do you want to delete the data synchronization setting?'");
+	QuestionText = NStr("en='Do you want to delete the data synchronization setting?';ru='Удалить настройку синхронизации данных?'");
 	NotifyDescription = New NotifyDescription("DeleteSynchronizationSettingEnd", ThisObject, InfobaseNode);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo,, DialogReturnCode.Yes);
 	
@@ -1304,7 +1304,7 @@ Procedure SetConfigurationUpdate(CompletingOfWorkSystem = False) Export
 		ModuleConfigurationUpdateClient.SetConfigurationUpdate(CompletingOfWorkSystem);
 	Else
 		OpenForm("CommonForm.AdditionalDetails", New Structure("Title,TemplateName",
-		NStr("en = 'Setting update'"), "InstructionHowToInstallUpdateManually"));
+		NStr("en='Setting update';ru='Установка обновления'"), "InstructionHowToInstallUpdateManually"));
 	EndIf;
 	
 EndProcedure
@@ -1330,7 +1330,7 @@ Procedure OnInstructionOpenHowToChangeDataSynchronizationPassword(Val AddressFor
 	
 	If IsBlankString(AddressForAccountPasswordRecovery) Then
 		
-		ShowMessageBox(, NStr("en = 'Address for the account password recovery is not specified.'"));
+		ShowMessageBox(, NStr("en='Address for the account password recovery is not specified.';ru='Адрес для восстановления пароля учетной записи не задан.'"));
 		
 	Else
 		
@@ -1432,7 +1432,7 @@ EndFunction
 Function OpenFormAdditionsExportingsAllDocuments(Val ExportAddition, Val Owner=Undefined, Val Uniqueness=Undefined, Val Window=Undefined) Export
 	FormParameters = New Structure;
 	
-	FormParameters.Insert("Title", NStr("en='Adding of the documents for sending'") );
+	FormParameters.Insert("Title", NStr("en='Adding of the documents for sending';ru='Добавление документов для отправки'") );
 	FormParameters.Insert("ActionSelect", 1);
 	
 	FormParameters.Insert("PeriodSelection", True);

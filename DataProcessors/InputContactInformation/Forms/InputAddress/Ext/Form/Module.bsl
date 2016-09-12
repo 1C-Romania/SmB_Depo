@@ -29,7 +29,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Parameters.Property("OpenByScenario") Then
-		Raise NStr("en = 'Data processor is not aimed for being used directly'");
+		Raise NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
 	EndIf;
 	
 	// Form settings
@@ -50,9 +50,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	ContactInformationKind = ContactInformationManagementService.StructureTypeContactInformation(Parameters.ContactInformationKind);
 	If ContactInformationKind.CheckByFIAS Then
-		Commands.CheckAddressFilling.ToolTip = NStr("en = 'Check the address filling in FIAS format'");
+		Commands.CheckAddressFilling.ToolTip = NStr("en='Check the address filling in FIAS format';ru='Проверить заполнение адреса в формате ФИАС'");
 	Else
-		Commands.CheckAddressFilling.ToolTip  = NStr("en = 'Check the address filling in CLADR format'");
+		Commands.CheckAddressFilling.ToolTip  = NStr("en='Check the address filling in CLADR format';ru='Проверить заполнение адреса в формате КЛАДР'");
 	EndIf;
 	ContactInformationKind.Insert("Ref", Parameters.ContactInformationKind);
 	
@@ -142,7 +142,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				AllowInputAddressInFreeForm = True;
 				AddressPresentationChanged = True;
 			EndIf;
-			WarningTextOnOpen = NStr("en = 'Address is entered incorrectly: you can enter only Russian addresses. Country field value was changed to Russia, it is necessary to check other fields.'"); 
+			WarningTextOnOpen = NStr("en='Address is entered incorrectly: you can enter only Russian addresses. Country field value was changed to Russia, it is necessary to check other fields.';ru='Адрес введен некорректно: допускается ввод только российских адресов. Значение поля ""Страна"" было изменено на ""Россия"", необходимо проверить остальные поля.'"); 
 			Country = RussiaCountry;
 			Modified = True;
 		EndIf;
@@ -160,7 +160,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EndIf;
 		WarningTextOnOpen = WarningTextOnOpen
 			+ StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='%1 country is not in the catalog of the world countries.'"), OriginalCountryPresentation);
+				NStr("en='%1 country is not in the catalog of the world countries.';ru='Страна ""%1"" отсутствует в справочнике стран мира.'"), OriginalCountryPresentation);
 	EndIf;
 			
 	// Initialize all items
@@ -208,9 +208,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 					ClassifierAvailability = New Structure("Cancel, BriefErrorDescription");
 					ClassifierAvailability.Cancel = True;
 					ClassifierAvailability.BriefErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'You should export the address information for the %1 state (in the %2 menu).'"), 
+						NStr("en='You should export the address information for the %1 state (in the %2 menu).';ru='Необходимо загрузить адресные сведения по региону ""%1"" (в меню ""%2"").'"), 
 						XDTOContact.Content.Content.RFTerritorialEntity,
-						?(ThisTaxi, NStr("en = 'More'"), NStr("en = 'All actions'")));
+						?(ThisTaxi, NStr("en='More';ru='Еще'"), NStr("en='All actions';ru='Все действия'")));
 					Items.AuthorizationOnUsersSupportSite.Visible = False;
 				EndIf;
 			EndIf;
@@ -345,18 +345,18 @@ Procedure IndexChoiceProcessing(Item, ValueSelected, StandardProcessing)
 		If ValueSelected.Property("IndexOf") AND Not IsBlankString(ValueSelected.IndexOf) 
 				AND PickByIndexAvailable Then
 			Notification = New NotifyDescription("AfterQueryClassifierUpdate", ThisObject);
-			QuestionText = NStr("en = 'The %1 code is not found in the address classifier. Possible errors:'") + Chars.LF;
-			QuestionText = QuestionText + NStr("en = '  - the code is applied to the state where the address information is absent in the application;'") + Chars.LF;
-			QuestionText = QuestionText + NStr("en = '  - address information loaded into the application are obsolete;'") + Chars.LF;
-			QuestionText = QuestionText + NStr("en = '  - the code is entered incorrectly.'");
+			QuestionText = NStr("en='The %1 code is not found in the address classifier. Possible errors:';ru='Индекс %1 не найден в адресном классификаторе. Возможные причины:'") + Chars.LF;
+			QuestionText = QuestionText + NStr("en='  - the code is applied to the state where the address information is absent in the application;';ru='  - индекс относится к региону, по которому в программе отсутствуют адресные сведения;'") + Chars.LF;
+			QuestionText = QuestionText + NStr("en='  - address information loaded into the application are obsolete;';ru='  - адресные сведения, загруженные в программу, устарели;'") + Chars.LF;
+			QuestionText = QuestionText + NStr("en='  - the code is entered incorrectly.';ru='  - индекс введен некорректно.'");
 			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, Format(ValueSelected.IndexOf, "NGS=' '; NG=0"));
 			Buttons = New ValueList;
-			Buttons.Add(DialogReturnCode.Yes, NStr("en = 'Update the classifier'"));
-			Buttons.Add(DialogReturnCode.Cancel, NStr("en = 'Cancel'"));
+			Buttons.Add(DialogReturnCode.Yes, NStr("en='Update the classifier';ru='Обновить классификатор'"));
+			Buttons.Add(DialogReturnCode.Cancel, NStr("en='Cancel';ru='Отменить'"));
 			ShowQueryBox(Notification, QuestionText, Buttons);
 		Else
 			If Not PickByIndexAvailable Then
-				MessageText = NStr("en = 'The code %1 is not found in the address classifier'");
+				MessageText = NStr("en='The code %1 is not found in the address classifier';ru='Индекс %1 не найден в адресном классификаторе'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Format(ValueSelected.IndexOf, "NGS=' '; NG=0"));
 				CommonUseClientServer.MessageToUser(MessageText,,, "Object.IndexOf");
 			Else
@@ -538,7 +538,7 @@ Procedure SettlementChoiceProcessing(Item, ValueSelected, StandardProcessing)
 		If CanImportClassifier AND StateNotImported Then
 			// Offer to import a classifier.
 			ContactInformationManagementClient.OfferExportClassifier(
-				StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Data for ""%1"" is not imported.'"), ValueSelected.Presentation), 
+				StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Data for ""%1"" is not imported.';ru='Данные для ""%1"" не загружены.'"), ValueSelected.Presentation), 
 				ValueSelected.Presentation);
 		EndIf;
 		
@@ -631,7 +631,7 @@ Procedure StreetStartChoice(Item, ChoiceData, StandardProcessing)
 	Else
 		// Street parent is not defined, open the form that is empty.
 		FormParameters = New Structure("HideObsoleteAddresses, SettlementIdentifier, Street, Title", 
-			HideObsoleteAddresses, -1, Street, Settlement + " " + NStr("en = '(not found)'"));
+			HideObsoleteAddresses, -1, Street, Settlement + " " + NStr("en='(not found)';ru='(не найден)'"));
 	EndIf;
 	
 	FormParameters.Insert("AddressFormat", ContactInformationKind.AddressFormat);
@@ -772,7 +772,7 @@ EndProcedure
 Procedure CheckAddressFilling(Command)
 	
 	If AllowInputAddressInFreeForm Then
-		ShowMessageBox(, NStr("en='Address can not be verified because it is entered in the free form.'"));
+		ShowMessageBox(, NStr("en='Address can not be verified because it is entered in the free form.';ru='Адрес не может быть проверен, так как он введен в свободной форме.'"));
 		Return;
 	EndIf;
 
@@ -829,15 +829,17 @@ EndProcedure
 Procedure EnterAddressInFreeForm(Command)
 	
 	If AllowInputAddressInFreeForm Then
-		QuestionText = NStr("en='Changes entered manually will be lost.
-		                        |Continue?'");
+		QuestionText = NStr("en='Changes entered manually will be lost."
+"Continue?';ru='Изменения, введенные вручную, будут потеряны."
+"Продолжить?'");
 	Else
-		QuestionText = NStr("en='Enter the address in
-		                        |a free form? Addresses entered in the free form may fail to pass the verification according to the address classifier.'");
+		QuestionText = NStr("en='Enter the address in"
+"a free form? Addresses entered in the free form may fail to pass the verification according to the address classifier.';ru='Ввести адрес в свободной форме? "
+"Адреса, введенные в свободной форме, могут не пройти проверку по адресному классификатору.'");
 	EndIf;
 	
 	Notification = New NotifyDescription("EnterAddressInFreeFormEnd", ThisObject);
-	ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo, , , NStr("en='Confirmation'"));
+	ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo, , , NStr("en='Confirmation';ru='Подтверждение'"));
 EndProcedure
 
 &AtClient
@@ -1068,7 +1070,7 @@ Function ErrorListFill(Context, WarnAboutMissing)
 		// We additionally check the blank.
 		AND (Not ContactInformationManagementService.XDTOContactInformationFilled(XDTOInformation))
 	Then
-		Result.Add("/", NStr("en = 'Address is empty.'"));
+		Result.Add("/", NStr("en='Address is empty.';ru='Адрес пуст.'"));
 	EndIf;
 	
 	Return Result;
@@ -1747,7 +1749,7 @@ Procedure FillErrorMessage(ErrorList, WarnAboutMissing)
 	ErrorsCount = ErrorList.Count();
 	If ErrorsCount = 0 AND WarnAboutMissing Then
 		// No errors
-		ShowMessageBox(, NStr("en='The address is entered correctly.'"));
+		ShowMessageBox(, NStr("en='The address is entered correctly.';ru='Адрес введен корректно.'"));
 		Return;
 	EndIf;	
 	
@@ -2065,7 +2067,7 @@ Procedure StateInputPresentationAddresses(Mode, ToFormPresentation=True)
 	// Switch the title presentation and the current entry item to display the mode.
 	If Mode Then
 		Items.AddressPresentation.TitleLocation = FormItemTitleLocation.Top;
-		Items.AddressPresentation.Title          = NStr("en='Address in free form'");
+		Items.AddressPresentation.Title          = NStr("en='Address in free form';ru='Адрес в свободной форме'");
 		
 		Items.CountryOfAddress.Representation        = UsualGroupRepresentation.None;
 		
@@ -2191,7 +2193,7 @@ Procedure CheckClassifierAvailability(Val CheckResult = Undefined)
 			JobParameters.Add("ContactInformationManagementService.CheckClassifierAvailability");
 			JobParameters.Add(ProcedureParameters);
 			
-			JobDescription = NStr("en = 'Check the address classifier service availability'");
+			JobDescription = NStr("en='Check the address classifier service availability';ru='Проверка доступности сервиса адресного классификатора'");
 			Task = BackgroundJobs.Execute("WorkInSafeMode.ExecuteConfigurationMethod", JobParameters,, JobDescription);
 			JobID = Task.UUID;
 			Return;
@@ -2212,7 +2214,7 @@ Procedure UpdateClassifierAvailability(Context)
 	Context.Items.GroupServerIsUnavailableDetails.CurrentPage = ?(ClassifierAvailability.Cancel,
 		Context.Items.ServiceUnavailable, Context.Items.ServiceAvailable);
 	If ClassifierAvailability.Cancel Then
-		Context.ServiceMessageText = NStr("en = 'AutoComplete and Address Checking are not available:'") + Chars.LF 
+		Context.ServiceMessageText = NStr("en='AutoComplete and Address Checking are not available:';ru='Автоподбор и проверка адреса недоступны:'") + Chars.LF 
 			+ ClassifierAvailability.BriefErrorDescription;
 	EndIf;
 

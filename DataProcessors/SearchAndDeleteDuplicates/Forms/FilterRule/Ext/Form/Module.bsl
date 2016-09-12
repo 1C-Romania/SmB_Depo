@@ -32,7 +32,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ComposerPreFilter.LoadSettings(GetFromTempStorage(SelectionLinkerSettingsAddress));
 	DeleteFromTempStorage(SelectionLinkerSettingsAddress);
 	
-	Title = StrReplace( NStr("en = 'Rules filter ""%1""'"), "%1", Parameters.SelectionAreaPresentation) 
+	Title = StrReplace( NStr("en='Rules filter ""%1""';ru='Правила отбора ""%1""'"), "%1", Parameters.SelectionAreaPresentation) 
 EndProcedure
 
 #EndRegion

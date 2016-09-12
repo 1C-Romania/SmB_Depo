@@ -61,7 +61,7 @@ Procedure FillByBalanceAtServer() Export
 	ElsIf OperationKind = Enums.OperationKindsPayrollSheet.Advance Then	
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'In case of advance payment filling in by balances is not provided!'");
+		Message.Text = NStr("en='In case of advance payment filling in by balances is not provided!';ru='При выплате аванса заполнение по остаткам не предусмотрено!'");
  		Message.Message();
 		
 	EndIf;

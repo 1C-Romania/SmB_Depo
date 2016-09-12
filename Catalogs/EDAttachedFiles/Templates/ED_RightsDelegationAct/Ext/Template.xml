@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -813,6 +883,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Warning! When shipped on payment delay terms, the payment delay period is [PaymentDelayDays] calendar days from the date of waybill. IN case of untimely payment the fine can be charged in amount of [PercentFineForDayOfDelay]% for every calendar day of delay.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Внимание! При отгрузке на условиях отсрочки платежа, срок отсрочки составляет [ОтсрочкаПлатежаДней] календарных дней от даты накладной. В случае несвоевременной оплаты может начисляться штраф в размере [ПроцентШтрафаЗаДеньПросрочки]% за каждый календарный день просрочки.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -856,6 +930,12 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>
 Licensor
+</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>
+Лицензиар
 </v8:content>
 						</v8:item>
 					</tl>
@@ -913,6 +993,10 @@ Licensor
 							<v8:lang>en</v8:lang>
 							<v8:content>company, address, phone, fax, banking details</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>организация, адрес, телефон, факс, банковские реквизиты</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -956,6 +1040,11 @@ Licensor
 							<v8:lang>en</v8:lang>
 							<v8:content>
 Licensee</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>
+Лицензиат</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1012,6 +1101,10 @@ Licensee</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>company, address, phone, fax, banking details</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>организация, адрес, телефон, факс, банковские реквизиты</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1056,6 +1149,11 @@ Licensee</v8:content>
 							<v8:content>
 Payer</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>
+Payer</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1096,6 +1194,10 @@ Payer</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>company, address, phone, fax, banking details</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>организация, адрес, телефон, факс, банковские реквизиты</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1140,6 +1242,10 @@ Payer</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Basis</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основание</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1158,6 +1264,10 @@ Payer</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Partner code: [PartnerCode]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код партнера: [КодПартнера]</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1187,6 +1297,10 @@ Payer</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>contract, job-order</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>договор, заказ-наряд</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1227,6 +1341,10 @@ Payer</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document No.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер документа</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1237,6 +1355,10 @@ Payer</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Compiling date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата составления</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1267,6 +1389,10 @@ Payer</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Act on transfer of rights</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Акт на передачу прав</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1348,6 +1474,10 @@ Payer</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>[LisensorName] and [LicenseeName] executed and signed this Delegation Act stating that [LisensorName] transferred and [LicenseeName] accepted non-exclusive (limited) rights as they are described in the License Agreement between the parties for the software and databases as follows:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>[ЛицензиарНаименование] и [ЛицензиатНаименование] составили и подписали настоящий Акт приема-передачи о том, что [ЛицензиарНаименование] передало, а [ЛицензиатНаименование] приняло неисключительные (ограниченные) права, как они описаны в Лицензионном договоре между сторонами, на указанные ниже, программы для ЭВМ и базы данных в составе:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1593,6 +1723,10 @@ Payer</v8:content>
 number 
 </v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядковый номер </v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1603,6 +1737,10 @@ number
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Software product</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Программный продукт</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1620,6 +1758,10 @@ number
 							<v8:lang>en</v8:lang>
 							<v8:content>Unit of measure</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Единица измерения</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1636,6 +1778,10 @@ number
 							<v8:lang>en</v8:lang>
 							<v8:content>Packaging type</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид упаковки</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1647,6 +1793,10 @@ number
 							<v8:lang>en</v8:lang>
 							<v8:content>Quan-
 tity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количе- ство</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1660,6 +1810,10 @@ tity</v8:content>
 							<v8:content>Price,
 USD</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>цена, руб.коп.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1671,6 +1825,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount USD, excluding VAT</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма без учета НДС, руб. коп.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1681,6 +1839,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>НДС</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1698,6 +1860,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount USD, including VAT</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма с учетом НДС, руб. коп.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1708,6 +1874,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Information field of the row (signed)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Информационное поле строки (подписанное)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1720,6 +1890,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Information field of the row (unsigned)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Информационное поле строки (неподписанное)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1730,6 +1904,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Row information field</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Информационное поле строки</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1759,6 +1937,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name, Characteristic</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>наименование, характеристика</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1769,6 +1951,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>кода</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1781,6 +1967,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Descrip- tion</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>наиме- нование</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1791,6 +1981,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Code by OKEI</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>код по ОКЕИ</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1823,6 +2017,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Rate, %</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ставка, %</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1834,6 +2032,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount, 
 USD</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>сумма, руб.коп.</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1864,6 +2066,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>1</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>1</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1873,6 +2079,10 @@ USD</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>2</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>2</v8:content>
 						</v8:item>
 					</tl>
@@ -1886,6 +2096,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>3</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>3</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1895,6 +2109,10 @@ USD</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>4</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>4</v8:content>
 						</v8:item>
 					</tl>
@@ -1908,6 +2126,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>5</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>5</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1917,6 +2139,10 @@ USD</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>6</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>6</v8:content>
 						</v8:item>
 					</tl>
@@ -1930,6 +2156,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>7</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>7</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1939,6 +2169,10 @@ USD</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>8</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>8</v8:content>
 						</v8:item>
 					</tl>
@@ -1952,6 +2186,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>9</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>9</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1961,6 +2199,10 @@ USD</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>10</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>10</v8:content>
 						</v8:item>
 					</tl>
@@ -1974,6 +2216,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>11</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>11</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1983,6 +2229,10 @@ USD</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>12</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>12</v8:content>
 						</v8:item>
 					</tl>
@@ -2002,6 +2252,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>signed</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>подписанное</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2012,6 +2266,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>unsigned</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>неподписанное</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2223,6 +2481,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Total </v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итог </v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2240,6 +2502,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>X</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>X</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2255,6 +2521,10 @@ USD</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>X</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>X</v8:content>
 						</v8:item>
 					</tl>
@@ -2319,6 +2589,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Act total </v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Всего по акту </v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2336,6 +2610,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>X</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>X</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2351,6 +2629,10 @@ USD</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>X</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>X</v8:content>
 						</v8:item>
 					</tl>
@@ -2427,6 +2709,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Act is drawn up to</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Акт составлен на</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2476,6 +2762,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>and contains</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>и содержит</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2528,6 +2818,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>record ordinal numbers</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>порядковых номеров записей</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2582,6 +2876,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>in words</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>прописью</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2664,6 +2962,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Attachments (passports, certificates, etc. ) on </v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Приложение (паспорта, сертификаты и т.п.) на </v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2681,6 +2983,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Worksheets</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>листах</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2703,6 +3009,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>By power of attorney</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По доверенности №</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2729,6 +3039,10 @@ USD</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>from</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>from</v8:content>
 						</v8:item>
 					</tl>
@@ -2765,6 +3079,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>in words</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>прописью</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2829,6 +3147,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Total sold amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Всего отпущено на сумму</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2932,6 +3254,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Paid</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>paid</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2954,6 +3280,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>in words</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>прописью</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3008,6 +3338,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>by whom, to whom (organization, position, full name)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>кем, кому (организация, должность, фамилия, и. о.)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3174,6 +3508,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>From Licensor</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>От Лицензиара</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3217,6 +3555,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>From Licensee</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>От Лицензиата</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3268,6 +3610,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>position</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>должность</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3284,6 +3630,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>signature</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>личная подпись</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3299,6 +3649,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>print full name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>расшифровка подписи</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3317,6 +3671,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>position</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>должность</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3332,6 +3690,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>signature</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>личная подпись</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3349,6 +3711,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>print full name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>расшифровка подписи</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3402,6 +3768,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>M.P.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>M.P.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3439,6 +3809,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>M.P.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>M.P.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3449,6 +3823,10 @@ USD</v8:content>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>" " _____________ 20</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>" " _____________ 20</v8:content>
 						</v8:item>
 					</tl>
@@ -3524,6 +3902,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document information field:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Информационное поле документа:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3558,6 +3940,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя реквизита</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3578,6 +3964,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute value</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение реквизита</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3614,6 +4004,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>DigitallySigned</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПодписанЭЦП</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -3702,6 +4096,10 @@ USD</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Yes</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Да</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3782,6 +4180,10 @@ USD</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>No</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нет</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -4762,6 +5164,10 @@ USD</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>DF=MM/dd/yyyy</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>DF=MM/dd/yyyy</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -5196,6 +5602,10 @@ USD</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -5210,6 +5620,10 @@ USD</v8:content>
 		<format>
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
 		</format>
@@ -5313,6 +5727,10 @@ USD</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -5339,6 +5757,10 @@ USD</v8:content>
 				<v8:lang>en</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -5351,6 +5773,10 @@ USD</v8:content>
 		<format>
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>ND=15; NFD=2</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>ND=15; NFD=2</v8:content>
 			</v8:item>
 		</format>

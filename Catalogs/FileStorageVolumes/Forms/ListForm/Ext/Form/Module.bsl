@@ -44,9 +44,9 @@ EndProcedure
 Procedure StartMarkDeletionChange(CurrentData)
 	
 	If CurrentData.DeletionMark Then
-		QuestionText = NStr("en = 'Unmark ""%1"" for deletion?'");
+		QuestionText = NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'");
 	Else
-		QuestionText = NStr("en = 'Mark ""%1"" for deletion?'");
+		QuestionText = NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'");
 	EndIf;
 	
 	QuestionContent = New Array;

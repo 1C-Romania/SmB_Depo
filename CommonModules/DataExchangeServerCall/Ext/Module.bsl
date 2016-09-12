@@ -545,7 +545,7 @@ EndProcedure
 Procedure ExecuteHandlerInPrivilegedMode(Value, Val HandlerLine) Export
 	
 	If CurrentRunMode() = ClientRunMode.ManagedApplication Then
-		Raise NStr("en = 'Method is not supported in the managed application mode.'");
+		Raise NStr("en='Method is not supported in the managed application mode.';ru='Метод не поддерживается в режиме управляемого приложения.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -586,7 +586,7 @@ EndFunction
 Function GetPropertiesValuesForRef(Ref, PropertiesOfObject, Val ObjectPropertiesString, Val MetadataObjectName) Export
 	
 	If CurrentRunMode() = ClientRunMode.ManagedApplication Then
-		Raise NStr("en = 'Method is not supported in the managed application mode.'");
+		Raise NStr("en='Method is not supported in the managed application mode.';ru='Метод не поддерживается в режиме управляемого приложения.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -600,7 +600,7 @@ EndFunction
 Function NodesArrayByPropertiesValues(PropertyValues, Val QueryText, Val ExchangePlanName, Val FlagAttributeName, Val Exporting = False) Export
 	
 	If CurrentRunMode() = ClientRunMode.ManagedApplication Then
-		Raise NStr("en = 'Method is not supported in the managed application mode.'");
+		Raise NStr("en='Method is not supported in the managed application mode.';ru='Метод не поддерживается в режиме управляемого приложения.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -633,7 +633,7 @@ EndFunction
 Function AllExchangePlanNodes(Val ExchangePlanName) Export
 	
 	If CurrentRunMode() = ClientRunMode.ManagedApplication Then
-		Raise NStr("en = 'Method is not supported in the managed application mode.'");
+		Raise NStr("en='Method is not supported in the managed application mode.';ru='Метод не поддерживается в режиме управляемого приложения.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -704,7 +704,7 @@ EndFunction
 Function GetNodesArrayForRegistrationAlwaysExport(Val ExchangePlanName, Val FlagAttributeName) Export
 	
 	If CurrentRunMode() = ClientRunMode.ManagedApplication Then
-		Raise NStr("en = 'Method is not supported in the managed application mode.'");
+		Raise NStr("en='Method is not supported in the managed application mode.';ru='Метод не поддерживается в режиме управляемого приложения.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -725,7 +725,7 @@ EndFunction
 Function GetArrayOfNodesForRegistrationExportIfNeeded(Ref, Val ExchangePlanName, Val FlagAttributeName) Export
 	
 	If CurrentRunMode() = ClientRunMode.ManagedApplication Then
-		Raise NStr("en = 'Method is not supported in the managed application mode.'");
+		Raise NStr("en='Method is not supported in the managed application mode.';ru='Метод не поддерживается в режиме управляемого приложения.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);

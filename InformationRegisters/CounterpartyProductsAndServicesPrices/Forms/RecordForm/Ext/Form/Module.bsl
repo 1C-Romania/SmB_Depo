@@ -86,7 +86,7 @@ Procedure PriceKindStartChoice(Item, ChoiceData, StandardProcessing)
 	If Not ValueIsFilled(Counterparty) Then
 		
 		StandardProcessing = False;
-		MessageText = NStr("en = 'Specify the counterparty to select the prices type.'");
+		MessageText = NStr("en='Specify the counterparty to select the prices type.';ru='Укажите контрагента для выбора видов цен.'");
 		CommonUseClientServer.MessageToUser(MessageText, , , "Counterparty");
 		
 	EndIf;

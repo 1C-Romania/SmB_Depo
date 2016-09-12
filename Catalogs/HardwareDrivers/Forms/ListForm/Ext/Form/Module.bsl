@@ -8,8 +8,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
-	List.QueryText = StrReplace(List.QueryText, "%Predefined%", NStr("en = 'It is provided with the configuration'"));
-	List.QueryText = StrReplace(List.QueryText, "%Attachable%", NStr("en = 'Connected according to the standard """"1C:Compatible""""'"));
+	List.QueryText = StrReplace(List.QueryText, "%Predefined%", NStr("en='It is provided with the configuration';ru='Поставляемый в составе конфигурации'"));
+	List.QueryText = StrReplace(List.QueryText, "%Attachable%", NStr("en='Connected according to the standard """"1C:Compatible""""';ru='Подключаемый по стандарту """"1С:Совместимо""""'"));
 	
 	PossibilityToAddNewDrivers = EquipmentManagerServerCallOverridable.PossibilityToAddNewDrivers(); 
 	Items.ListCreate.Visible = PossibilityToAddNewDrivers;
@@ -46,7 +46,7 @@ EndProcedure
 Procedure AddNewDriverFromFile(Command)
 	
 	#If WebClient Then
-		ShowMessageBox(, NStr("en='This functionality is available only in thin and thick client mode.'"));
+		ShowMessageBox(, NStr("en='This functionality is available only in thin and thick client mode.';ru='Данный функционал доступен только в режиме тонкого и толстого клиента.'"));
 		Return;
 	#EndIf
 	

@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("ID", ID);
 	Parameters.Property("HardwareDriver", HardwareDriver);
 	
-	Title = NStr("en='Equipment:'") + Chars.NBSp  + String(ID);
+	Title = NStr("en='Equipment:';ru='Оборудование:'") + Chars.NBSp  + String(ID);
 
 	TextColor = StyleColors.FormTextColor;
 	ErrorColor = StyleColors.NegativeTextColor;
@@ -50,11 +50,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SpeedList.Add(10, "19200");
 
 	ParityList = Items.Parity.ChoiceList;
-	ParityList.Add(0, NStr("en='No'"));
-	ParityList.Add(1, NStr("en='Oddness'"));
-	ParityList.Add(2, NStr("en='Parity'"));
-	ParityList.Add(3, NStr("en='Installed'"));
-	ParityList.Add(4, NStr("en='Reset'"));
+	ParityList.Add(0, NStr("en='No';ru='Нет'"));
+	ParityList.Add(1, NStr("en='Oddness';ru='Нечетность'"));
+	ParityList.Add(2, NStr("en='Parity';ru='Четность'"));
+	ParityList.Add(3, NStr("en='Installed';ru='Установлен'"));
+	ParityList.Add(4, NStr("en='Reset';ru='Сброшен'"));
 
 	DataBitsList = Items.DataBits.ChoiceList;
 	DataBitsList.Add(3, "7 bits");
@@ -65,14 +65,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	BitStopList.Add(2, "2 bits");
 
 	ListScript = Items.Encoding.ChoiceList;
-	ListScript.Add(437, NStr("en='437 (OEM - USA)'"));
-	ListScript.Add(850, NStr("en='850 (OEM - multilingual Latin 1)'"));
-	ListScript.Add(852, NStr("en='852 (OEM - traditional Cyrillic)'"));
-	ListScript.Add(860, NStr("en='860 (OEM - Portuguese)'"));
-	ListScript.Add(863, NStr("en='863 (OEM - French-Canadian)'"));
-	ListScript.Add(865, NStr("en='865 (OEM - Scandinavian)'"));
-	ListScript.Add(866, NStr("en='866 (OEM - Russian)'"));
-	ListScript.Add(932, NStr("en='932 (ANSI/OEM - Japanese Shift-JIS)'"));
+	ListScript.Add(437, NStr("en='437 (OEM - USA)';ru='437 (OEM - США)'"));
+	ListScript.Add(850, NStr("en='850 (OEM - multilingual Latin 1)';ru='850 (OEM - многоязычная латиница 1)'"));
+	ListScript.Add(852, NStr("en='852 (OEM - traditional Cyrillic)';ru='852 (OEM - кириллица традиционная)'"));
+	ListScript.Add(860, NStr("en='860 (OEM - Portuguese)';ru='860 (OEM - португальский)'"));
+	ListScript.Add(863, NStr("en='863 (OEM - French-Canadian)';ru='863 (OEM - франко-канадский)'"));
+	ListScript.Add(865, NStr("en='865 (OEM - Scandinavian)';ru='865 (OEM - скандинавский)'"));
+	ListScript.Add(866, NStr("en='866 (OEM - Russian)';ru='866 (OEM - русский)'"));
+	ListScript.Add(932, NStr("en='932 (ANSI/OEM - Japanese Shift-JIS)';ru='932 (ANSI/OEM - японский Shift-JIS)'"));
 	ListScript.Add(988, "988 (ASCII)");
 
 	ListDisplaySize = Items.DisplaySize.ChoiceList;
@@ -211,16 +211,16 @@ Procedure DeviceTest(Command)
 	                                                                      tempDeviceParameters);
 
 	If Result Then
-		MessageText = NStr("en = 'Test successfully performed.'");
+		MessageText = NStr("en='Test successfully performed.';ru='Тест успешно выполнен.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	Else
 		AdditionalDetails = ?(TypeOf(Output_Parameters) = Type("Array")
 		                           AND Output_Parameters.Count() >= 2,
-		                           NStr("en = 'Additional description:'") + " " + Output_Parameters[1],
+		                           NStr("en='Additional description:';ru='Дополнительное описание:'") + " " + Output_Parameters[1],
 		                           "");
 
 
-		MessageText = NStr("en = 'Test failed.%Linefeed% %AdditionalDetails%'");
+		MessageText = NStr("en='Test failed.%Linefeed% %AdditionalDetails%';ru='Тест не пройден.%ПереводСтроки%%ДополнительноеОписание%'");
 		MessageText = StrReplace(MessageText, "%Linefeed%", ?(IsBlankString(AdditionalDetails),
 		                                                                  "",
 		                                                                  Chars.LF));
@@ -277,13 +277,13 @@ Procedure UpdateInformationAboutDriver()
 		Version  = Output_Parameters[1];
 	Else
 		Driver = Output_Parameters[2];
-		Version  = NStr("en='Not defined'");
+		Version  = NStr("en='Not defined';ru='Не определена'");
 	EndIf;
 
-	Items.Driver.TextColor = ?(Driver = NStr("en='Not set'"), ErrorColor, TextColor);
-	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined'"), ErrorColor, TextColor);
+	Items.Driver.TextColor = ?(Driver = NStr("en='Not set';ru='Не установлен'"), ErrorColor, TextColor);
+	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined';ru='Не определена'"), ErrorColor, TextColor);
 
-	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed'"));
+	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed';ru='Установлен'"));
 
 EndProcedure
 

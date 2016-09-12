@@ -29,8 +29,8 @@ Procedure OnStart(Parameters) Export
 		
 		If ClientWorkParameters.SynchronizeDataWithApplicationInInternetOnWorkStart Then
 			
-			ShowUserNotification(NStr("en = 'OffLine work'"), "e1cib/app/DataProcessor.DataExchangeExecution",
-				NStr("en = 'Recommended to synchronize the data with the application in the Internet.'"), PictureLib.Information32);
+			ShowUserNotification(NStr("en='OffLine work';ru='Автономная работа'"), "e1cib/app/DataProcessor.DataExchangeExecution",
+				NStr("en='Recommended to synchronize the data with the application in the Internet.';ru='Рекомендуется синхронизировать данные с приложением в Интернете.'"), PictureLib.Information32);
 			
 		EndIf;
 		
@@ -51,12 +51,15 @@ Procedure OnExit(Warnings) Export
 		AND OfflineWorkParameters.SynchronizationWithServiceHasNotBeenExecutedLongAgo Then
 		
 		WarningParameters = StandardSubsystemsClient.AlertOnEndWork();
-		WarningParameters.ExtendedTooltip = NStr("en = 'In some cases data synchronization can take a long time:
-	        | - slow communication channel;
-	        | - large data volume;
-	        | - application update is avaliable in the Internet.'");
+		WarningParameters.ExtendedTooltip = NStr("en='In some cases data synchronization can take a long time:"
+" - slow communication channel;"
+" - large data volume;"
+" - application update is avaliable in the Internet.';ru='В некоторых случаях синхронизация данных может занять длительное время:"
+" - медленный канал связи;"
+" - большой объем данных;"
+" - доступно обновление приложения в Интернете.'");
 
-		WarningParameters.FlagText = NStr("en = 'Data synchronization with the application in the Internet'");
+		WarningParameters.FlagText = NStr("en='Data synchronization with the application in the Internet';ru='Синхронизировать данные с приложением в Интернете'");
 		WarningParameters.Priority = 80;
 		
 		ActionIfMarked = WarningParameters.ActionIfMarked;

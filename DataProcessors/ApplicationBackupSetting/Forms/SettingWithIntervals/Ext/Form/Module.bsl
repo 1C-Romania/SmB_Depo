@@ -55,7 +55,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	If ResponseBeforeClose <> True Then
 		Cancel = True;
 		NotifyDescription = New NotifyDescription("BeforeCloseEnd", ThisObject);
-		ShowQueryBox(NOTifyDescription, NStr("en = 'Data was changed. Save changes?'"), 
+		ShowQueryBox(NOTifyDescription, NStr("en='Data was changed. Save changes?';ru='Данные были изменены. Сохранить изменения?'"), 
 			QuestionDialogMode.YesNoCancel, , DialogReturnCode.Yes);
 	EndIf;
 		
@@ -169,7 +169,7 @@ Procedure ApplyRestrictionsSettings()
 	
 	RestrictionsSettings = Parameters.RestrictionsSettings;
 	
-	ToolTipTemplate = NStr("en = 'Maximum %1'");
+	ToolTipTemplate = NStr("en='Maximum %1';ru='Максимум %1'");
 	
 	ItemsRestrictions = New Structure;
 	ItemsRestrictions.Insert("DailyCopiesAmount", "MaxDailyCopies");
@@ -200,9 +200,9 @@ EndProcedure
 Function SignatureNumberOfCopies(Val Quantity)
 
 	PresentationArray = New Array;
-	PresentationArray.Add(NStr("en = 'last copy'"));
-	PresentationArray.Add(NStr("en = 'Last copies'"));
-	PresentationArray.Add(NStr("en = 'of last copies'"));
+	PresentationArray.Add(NStr("en='last copy';ru='последнюю копию'"));
+	PresentationArray.Add(NStr("en='Last copies';ru='последние копии'"));
+	PresentationArray.Add(NStr("en='of last copies';ru='последних копий'"));
 	
 	If Quantity >= 100 Then
 		Quantity = Quantity - Int(Quantity / 100)*100;

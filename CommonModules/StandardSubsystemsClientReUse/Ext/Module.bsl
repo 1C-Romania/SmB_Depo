@@ -156,10 +156,10 @@ Function PreparedHandlersForClientEvents(Event, Service = False, FirstTry = True
 	If Handlers = Undefined Then
 		If Service Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Client service event ""%1"" is not found.'"), Event);
+				NStr("en='Client service event ""%1"" is not found.';ru='Не найдено клиентское служебное событие ""%1"".'"), Event);
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Client event ""%1"" is not found.'"), Event);
+				NStr("en='Client event ""%1"" is not found.';ru='Не найдено клиентское событие ""%1"".'"), Event);
 		EndIf;
 	EndIf;
 	

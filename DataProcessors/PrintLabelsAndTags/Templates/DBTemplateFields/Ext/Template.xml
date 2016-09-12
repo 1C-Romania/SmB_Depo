@@ -14,6 +14,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Products and services</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продукция и услуги</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -22,6 +26,10 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>Characteristic</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>Characteristic</v8:content>
 				</v8:item>
 			</title>
@@ -42,6 +50,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Balance at the Warehouse</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток на складе</v8:content>
+				</v8:item>
 			</title>
 			<useRestriction>
 				<group>true</group>
@@ -54,6 +66,10 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>Quantity</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>Quantity</v8:content>
 				</v8:item>
 			</title>
@@ -80,6 +96,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Current time</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущее время</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -89,6 +109,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Current user</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий пользователь</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -327,6 +351,10 @@ ORDER BY
 				<v8:lang>en</v8:lang>
 				<v8:content>Current time</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Текущее время</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -345,6 +373,10 @@ ORDER BY
 				<v8:lang>en</v8:lang>
 				<v8:content>Current user</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Текущий пользователь</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Users</v8:Type>
@@ -360,6 +392,10 @@ ORDER BY
 				<v8:lang>en</v8:lang>
 				<v8:content>Price kind</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Вид цены</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.PriceKinds</v8:Type>
@@ -372,6 +408,10 @@ ORDER BY
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>Default</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>Default</v8:content>
 			</v8:item>
 		</dcsset:presentation>

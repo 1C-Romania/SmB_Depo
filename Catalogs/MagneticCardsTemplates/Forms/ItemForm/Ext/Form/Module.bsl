@@ -43,8 +43,9 @@ Procedure OnOpen(Cancel)
 		SupporTypesVO.Add("MagneticCardReader");
 
 		If Not EquipmentManagerClient.ConnectEquipmentByType(UUID, SupporTypesVO, ErrorDescription) Then
-			MessageText = NStr("en = 'An error occurred while
-			                      |connecting peripherals: ""%ErrorDetails%"".'");
+			MessageText = NStr("en='An error occurred while"
+"connecting peripherals: ""%ErrorDetails%"".';ru='При подключении оборудования"
+"произошла ошибка: ""%ОписаниеОшибки%"".'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -111,7 +112,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 		FieldCounter = FieldCounter + Object.TrackFields3.Count();
 	EndIf;
 	If FieldCounter = 0 Then
-		CommonUseClientServer.MessageToUser(NStr("en='Not a single field was added to any of available tracks.'"), , , , Cancel);
+		CommonUseClientServer.MessageToUser(NStr("en='Not a single field was added to any of available tracks.';ru='Не добавлено ни одного поля ни в одной из доступных дорожек.'"), , , , Cancel);
 	EndIf;
 	
 	ControlOfFieldsUniqueness(Cancel);
@@ -131,7 +132,7 @@ Procedure ExternalEvent(Source, Event, Data)
 		
 		Result = EquipmentManagerClient.GetEventFromDevice(DetailsEvents, ErrorDescription);
 		If Result = Undefined Then 
-			MessageText = NStr("en = 'An error occurred during the processing of external event from the device:'")
+			MessageText = NStr("en='An error occurred during the processing of external event from the device:';ru='При обработке внешнего события от устройства произошла ошибка:'")
 								+ Chars.LF + ErrorDescription;
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
@@ -152,7 +153,7 @@ Procedure GetPrefix1(Command)
 		Object.Prefix1 = Items.Track1.SelectedText;
 	Else
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 	EndIf;
 EndProcedure
 
@@ -162,7 +163,7 @@ Procedure GetPrefix2(Command)
 		Object.Prefix2 = Items.Track2.SelectedText;
 	Else
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 	EndIf;
 EndProcedure
 
@@ -172,7 +173,7 @@ Procedure GetPrefix3(Command)
 		Object.Prefix3 = Items.Track3.SelectedText;
 	Else
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 	EndIf;
 EndProcedure
 
@@ -182,7 +183,7 @@ Procedure GetSuffix1(Command)
 		Object.Suffix1 = Items.Track1.SelectedText;
 	Else
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 	EndIf;
 EndProcedure
 
@@ -192,7 +193,7 @@ Procedure GetSuffix2(Command)
 		Object.Suffix2 = Items.Track2.SelectedText;
 	Else
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 	EndIf;
 EndProcedure
 
@@ -202,7 +203,7 @@ Procedure GetSuffix3(Command)
 		Object.Suffix3 = Items.Track3.SelectedText;
 	Else
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 	EndIf;
 EndProcedure
 
@@ -212,7 +213,7 @@ Procedure GetDelimiter1(Command)
 		Object.BlocksDelimiter1 = Items.Track1.SelectedText;
 	Else
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 	EndIf;
 EndProcedure
 
@@ -222,7 +223,7 @@ Procedure GetDelimiter2(Command)
 		Object.BlocksDelimiter2 = Items.Track2.SelectedText;
 	Else
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 	EndIf;
 EndProcedure
 
@@ -232,7 +233,7 @@ Procedure GetDelimiter3(Command)
 		Object.BlocksDelimiter3 = Items.Track3.SelectedText;
 	Else
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 	EndIf;
 EndProcedure
 
@@ -258,7 +259,7 @@ Procedure GetField1(Command)
 		
 	If StrLen(Items.Track1.SelectedText) = 0 Then
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 		Return;
 	EndIf;
 	
@@ -292,7 +293,7 @@ Procedure GetField2(Command)
 	
 	If StrLen(Items.Track2.SelectedText) = 0 Then
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 		Return;
 	EndIf;
 	
@@ -326,7 +327,7 @@ Procedure GetField3(Command)
 	
 	If StrLen(Items.Track3.SelectedText) = 0 Then
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Use mouse to select the part of the code.';ru='Выделите мышкой участок кода.'"));
 		Return;
 	EndIf;
 	
@@ -364,7 +365,7 @@ Procedure DetermineFieldCoordinates(Notification, TrackData, Prefix, Suffix, Del
 		CCol = CCol - StrLen(Prefix);
 		If NCol < 1 Then
 			// Selected text overlaps the prefix.
-			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
 			Return;
 		EndIf;
 	EndIf;
@@ -374,7 +375,7 @@ Procedure DetermineFieldCoordinates(Notification, TrackData, Prefix, Suffix, Del
 		DataRow = Left(DataRow, StrLen(DataRow)-StrLen(Suffix)); // cut suffix if any
 		If CCol-1 > StrLen(DataRow) Then
 			// Selected text overlaps the suffix.
-			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
 			Return;
 		EndIf;
 	EndIf;
@@ -382,7 +383,7 @@ Procedure DetermineFieldCoordinates(Notification, TrackData, Prefix, Suffix, Del
 	SeparatorIsFound = Find(Mid(DataRow, NCol, CCol-NCol), Delimiter);
 	If Not IsBlankString(Delimiter) AND SeparatorIsFound > 0 Then
 		// Selected text crosses the delimiter.
-		CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
 		Return;
 	EndIf;
 	
@@ -404,7 +405,7 @@ Procedure DetermineFieldCoordinates(Notification, TrackData, Prefix, Suffix, Del
 			Break;
 		ElsIf SeparatorPosition = 1 Then
 			// Selected text crosses the delimiter.
-			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
 			Return;
 		Else
 			DataRow = Right(DataRow, StrLen(DataRow)-SeparatorPosition);
@@ -425,14 +426,14 @@ Procedure DetermineFieldCoordinates(Notification, TrackData, Prefix, Suffix, Del
 		NextAlert = New NotifyDescription("DetermineFieldCoordinatesEnd", ThisObject, Context);
 		
 		ButtonList = New ValueList;
-		ButtonList.Add(DialogReturnCode.Yes, NStr("en='Field length is fixed'"));
-		ButtonList.Add(DialogReturnCode.No, NStr("en='Field length is limited by the delimiter or by the string end'"));
+		ButtonList.Add(DialogReturnCode.Yes, NStr("en='Field length is fixed';ru='Длина поля фиксированная'"));
+		ButtonList.Add(DialogReturnCode.No, NStr("en='Field length is limited by the delimiter or by the string end';ru='Длина поля ограничивается разделителем или концом строки'"));
 		ShowChooseFromMenu(NextAlert, ButtonList, );
 		Return;
 		//	
 		//Response = DoQueryBox(NStr("en='Length of selected field is fixed or limited by delimiter/string end?
 		// |""Yes"" - field length fixed
-		// |""No""  - length fields limited by delimiter or string end'"), QuestionDialogMode.YesNo, , DialogReturnCode.No, NStr("en='Length fields in characters'"));
+		// |""No""  - length fields limited by delimiter or string end'"), QuestionDialogMode.YesNo, , DialogReturnCode.No, NStr("en='Length fields in characters';ru='Длина поля в символах'"));
 		//	
 		//If Response = DialogReturnCode.Not Then
 		//	
@@ -475,7 +476,7 @@ Procedure ControlOfFieldUniqueness(DoublesList, Field, CurrentLineNumber, TableN
 					If curField.Field = Field Then
 						TwinCounter = TwinCounter + 1;
 						If TwinCounter > 1 Then
-							StrMessage = NStr("en='Track %1, string %2: Field should be unique!'");
+							StrMessage = NStr("en='Track %1, string %2: Field should be unique!';ru='Дорожка %1, строка %2: Поле должно быть уникальным!'");
 							StrMessage = StrReplace(StrMessage, "%1", Right("TrackFields"+String(G),1));
 							StrMessage = StrReplace(StrMessage, "%2", String(curField.LineNumber));
 							CommonUseClientServer.MessageToUser(StrMessage
@@ -490,7 +491,7 @@ Procedure ControlOfFieldUniqueness(DoublesList, Field, CurrentLineNumber, TableN
 		EndIf;
 		
 	Else
-		StrMessage = NStr("en='Field can not be empty!'");
+		StrMessage = NStr("en='Field can not be empty!';ru='Дорожка %1, строка %2: Поле не может быть пустым!'");
 		StrMessage = StrReplace(StrMessage, "%1", Right(TableName,1));
 		StrMessage = StrReplace(StrMessage, "%2", String(CurrentLineNumber));
 		CommonUseClientServer.MessageToUser(StrMessage
@@ -527,7 +528,7 @@ Procedure CheckTemplateEnd(Result, Parameters) Export
 	If Result = DialogReturnCode.Yes Then
 		
 		If Not ThisForm.Write() Then
-			CommonUseClientServer.MessageToUser(NStr("en = 'Failed to record template'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Failed to record template';ru='Не удалось записать шаблон'"));
 			Return;
 		EndIf;
 		
@@ -543,7 +544,7 @@ Procedure CheckTemplateCommand(Command)
 	// Check form on modification.
 	// IN order the changes in template come into effect, you must save them.
 	If ThisForm.Modified Then
-		QuestionText = NStr("en = 'Template was changed, record changes?'");
+		QuestionText = NStr("en='Template was changed, record changes?';ru='Шаблон был изменен, записать изменения?'");
 		Notification = New NotifyDescription("CheckTemplateEnd", ThisObject);
 		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo);
 	Else

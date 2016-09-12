@@ -113,7 +113,7 @@ Procedure ImportFiledsTableChoice(Item, SelectedRow, Field, StandardProcessing)
 	Field = ImportFieldsTree.FindByID(SelectedRow);
 	If Not IsBlankString(Field.FieldsGroupName) Then
 		
-		ShowMessageBox(, NStr("en='Specify the group field...'"));
+		ShowMessageBox(, NStr("en='Specify the group field...';ru='Необходимо указать поле группы...'"));
 		Return;
 		
 	EndIf;

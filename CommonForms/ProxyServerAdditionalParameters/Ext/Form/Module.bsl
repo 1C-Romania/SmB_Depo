@@ -142,7 +142,7 @@ Function CheckExceptionsServersAddresses()
 			
 			If Not IsBlankString(ProhibitedChars) Then
 				
-				MessageText = StrReplace(NStr("en = 'Invalid characters have been found in the address: %1'"),
+				MessageText = StrReplace(NStr("en='Invalid characters have been found in the address: %1';ru='В адресе найдены недопустимые символы: %1'"),
 					"%1",
 					ProhibitedChars);
 				

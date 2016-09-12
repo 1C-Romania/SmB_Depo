@@ -137,8 +137,8 @@ EndProcedure
 &AtClient
 Procedure CompanyFilterClean(Command)
 	
-	HeaderText = NStr("en='Confirmation'");
-	QuestionText   = NStr("en='Do you want to clear the filter by companies?'");
+	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
+	QuestionText   = NStr("en='Do you want to clear the filter by companies?';ru='Очистить отбор по организациям?'");
 	Response = Undefined;
 
 	ShowQueryBox(New NotifyDescription("ClearFilterByCompanyEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo,,,HeaderText);
@@ -160,8 +160,8 @@ EndProcedure
 &AtClient
 Procedure ClearDocumentTypesFilter(Command)
 	
-	HeaderText = NStr("en='Confirmation'");
-	QuestionText   = NStr("en='Do you want to clear the filter by document types?'");
+	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
+	QuestionText   = NStr("en='Do you want to clear the filter by document types?';ru='Очистить отбор по видам документов?'");
 	Response = Undefined;
 
 	ShowQueryBox(New NotifyDescription("ClearFilterByDocumentKindEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo,,,HeaderText);
@@ -253,7 +253,7 @@ Procedure RefreshDescriptionCommandsForms()
 		
 	Else
 		
-		NewTitleCompanies = NStr("en = 'Select companies '");
+		NewTitleCompanies = NStr("en='Select companies ';ru='Выбрать организации '");
 		
 	EndIf;
 	
@@ -267,7 +267,7 @@ Procedure RefreshDescriptionCommandsForms()
 		
 	Else
 		
-		NewTitleOfDocuments = NStr("en = 'Select documents types '");
+		NewTitleOfDocuments = NStr("en='Select documents types ';ru='Выбрать виды документов '");
 		
 	EndIf;
 	

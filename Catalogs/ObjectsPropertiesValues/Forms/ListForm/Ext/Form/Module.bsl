@@ -163,11 +163,11 @@ Procedure SetTitle()
 		
 		If ValueIsFilled(Property) Then
 			If Not Parameters.ChoiceMode Then
-				TitleString = NStr("en = 'Property value %1'");
+				TitleString = NStr("en='Property value %1';ru='Значения свойства %1'");
 			ElsIf GroupChoice Then
-				TitleString = NStr("en = 'Select the %1 property value group'");
+				TitleString = NStr("en='Select the %1 property value group';ru='Выберите группу значений свойства %1'");
 			Else
-				TitleString = NStr("en = 'Select the %1 property value'");
+				TitleString = NStr("en='Select the %1 property value';ru='Выберите значение свойства %1'");
 			EndIf;
 			
 			TitleString = StringFunctionsClientServer.PlaceParametersIntoString(
@@ -177,9 +177,9 @@ Procedure SetTitle()
 		ElsIf Parameters.ChoiceMode Then
 			
 			If GroupChoice Then
-				TitleString = NStr("en = 'Select the property value group.'");
+				TitleString = NStr("en='Select the property value group.';ru='Выберите группу значений свойства'");
 			Else
-				TitleString = NStr("en = 'Choose property value'");
+				TitleString = NStr("en='Choose property value';ru='Выберите значение свойства'");
 			EndIf;
 		EndIf;
 	EndIf;

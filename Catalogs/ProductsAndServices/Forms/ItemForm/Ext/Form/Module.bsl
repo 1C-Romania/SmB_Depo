@@ -94,7 +94,7 @@ Procedure SeeAttachedFile()
 		
 	Else
 		
-		MessageText = NStr("en='Picture for viewing is absent'");
+		MessageText = NStr("en='Picture for viewing is absent';ru='Отсутстует изображение для просмотра'");
 		CommonUseClientServer.MessageToUser(MessageText,, "PictureURL");
 		
 	EndIf;
@@ -108,7 +108,7 @@ Procedure AddImageAtClient()
 	
 	If Not ValueIsFilled(Object.Ref) Then
 		
-		QuestionText = NStr("en='To select the image it is necessary to record the object. Record?'");
+		QuestionText = NStr("en='To select the image it is necessary to record the object. Record?';ru='Для выбора изображения необходимо записать объект. Записать?'");
 		Response = Undefined;
 		
 		ShowQueryBox(New NotifyDescription("AddImageAtClientEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);
@@ -743,7 +743,7 @@ Procedure SpecificationStartChoice(Item,  ChoiceData, StandardProcessing)
 		
 		StandardProcessing = False;
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Catalog item is not recorded yet'");
+		Message.Text = NStr("en='Catalog item is not recorded yet';ru='Элемент справочника еще не записан.'");
 		Message.Message();
 		
 	EndIf;
@@ -832,8 +832,8 @@ Procedure PriceChangeHistoryClick(Item)
 	
 	If Not ValueIsFilled(Object.Ref) Then
 		
-		WarningText = NStr("en = 'Item is not recorded. You can not open the price history of the item that is not recorded.'");
-		HeaderText 		= NStr("en = 'You can not open the price history'");
+		WarningText = NStr("en='Item is not recorded. You can not open the price history of the item that is not recorded.';ru='Элемент не записан. Открыть историю цен незаписанного элемента не возможно.'");
+		HeaderText 		= NStr("en='You can not open the price history';ru='Невозможно открыть историю цен'");
 		
 		ShowMessageBox(Undefined,WarningText, 20, HeaderText);
 		Return;
@@ -872,7 +872,7 @@ Procedure AddImage(Command)
 	
 	If Not ValueIsFilled(Object.Ref) Then
 		
-		QuestionText = NStr("en='To select the image it is necessary to record the object. Record?'");
+		QuestionText = NStr("en='To select the image it is necessary to record the object. Record?';ru='Для выбора изображения необходимо записать объект. Записать?'");
 		Response = Undefined;
 		
 		ShowQueryBox(New NotifyDescription("AddImageEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);
@@ -924,7 +924,7 @@ Procedure ChangeImage(Command)
 		
 	Else
 		
-		MessageText = NStr("en='Picture for editing is absent'");
+		MessageText = NStr("en='Picture for editing is absent';ru='Отсутстует изображение для редактирования'");
 		CommonUseClientServer.MessageToUser(MessageText,, "PictureURL");
 		
 	EndIf;

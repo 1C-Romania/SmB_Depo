@@ -7,7 +7,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Quick access to command ""%1""'"),
+		NStr("en='Quick access to command ""%1""';ru='Быстрый доступ к команде ""%1""'"),
 		Parameters.CommandPresentation);
 	
 	FillTables();

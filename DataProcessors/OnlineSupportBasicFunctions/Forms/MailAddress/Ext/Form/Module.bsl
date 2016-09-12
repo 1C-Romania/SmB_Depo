@@ -37,7 +37,7 @@ Procedure CountryOnChange(Item)
 	CountryStates = RegistrationContext.CountryStates[Country];
 	If CountryStates = Undefined Then
 		CountryStates = New ValueList;
-		CountryStates.Add("-1", NStr("en = '<Not selected>'"));
+		CountryStates.Add("-1", NStr("en='<Not selected>';ru='<не выбран>'"));
 	EndIf;
 	
 	OnlineUserSupportClient.CopyValueListIteratively(

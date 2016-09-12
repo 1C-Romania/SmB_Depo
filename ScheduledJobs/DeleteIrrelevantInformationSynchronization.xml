@@ -8,6 +8,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Irrelevant synchronization information deletion</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удаление неактуальной информации синхронизации</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment>Performs deletion of synchroniztion information, which was not deleted because of application failures. Files with posting date over 24 hours are subject for deletion.</Comment>
 			<MethodName>CommonModule.DataExchangeServer.DeleteInvalidMessagesFromDataExchange</MethodName>

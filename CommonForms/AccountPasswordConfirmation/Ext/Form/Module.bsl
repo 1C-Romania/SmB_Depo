@@ -64,7 +64,7 @@ Procedure SavePasswordAndContinueExecute()
 	
 	If Password <> PasswordConfirmation Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Password and password confirmation are different'"), , "Password");
+			NStr("en='Password and password confirmation are different';ru='Пароль и подтверждение пароля не совпадают'"), , "Password");
 		Return;
 	EndIf;
 	

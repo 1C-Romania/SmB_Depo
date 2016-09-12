@@ -106,7 +106,7 @@ Procedure ContinueCountdown()
 				IdleButtonTitle
 				+ " ("
 				+ StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'left %1 sec.'"),
+				NStr("en='left %1 sec.';ru='осталось %1 сек.'"),
 				String(ExpectationCounter))
 				+ ")");
 				
@@ -235,24 +235,24 @@ Function StandardSet(Buttons)
 	Result = New ValueList;
 	
 	If Buttons = "DialogModeQuestion.YesNo" Then
-		Result.Add("DialogReturnCode.Yes",  NStr("en = 'Yes'"));
-		Result.Add("DialogReturnCode.No", NStr("en = 'No'"));
+		Result.Add("DialogReturnCode.Yes",  NStr("en='Yes';ru='Да'"));
+		Result.Add("DialogReturnCode.No", NStr("en='No';ru='Нет'"));
 	ElsIf Buttons = "QuestionDialogMode.YesNoCancel" Then
-		Result.Add("DialogReturnCode.Yes",     NStr("en = 'Yes'"));
-		Result.Add("DialogReturnCode.No",    NStr("en = 'No'"));
-		Result.Add("DialogReturnCode.Cancel", NStr("en = 'Cancel'"));
+		Result.Add("DialogReturnCode.Yes",     NStr("en='Yes';ru='Да'"));
+		Result.Add("DialogReturnCode.No",    NStr("en='No';ru='Нет'"));
+		Result.Add("DialogReturnCode.Cancel", NStr("en='Cancel';ru='Отменить'"));
 	ElsIf Buttons = "DialogModeQuestion.OK" Then
-		Result.Add("DialogReturnCode.OK", NStr("en = 'OK'"));
+		Result.Add("DialogReturnCode.OK", NStr("en='OK';ru='Ок'"));
 	ElsIf Buttons = "QuestionDialogMode.OKCancel" Then
-		Result.Add("DialogReturnCode.OK",     NStr("en = 'OK'"));
-		Result.Add("DialogReturnCode.Cancel", NStr("en = 'Cancel'"));
+		Result.Add("DialogReturnCode.OK",     NStr("en='OK';ru='Ок'"));
+		Result.Add("DialogReturnCode.Cancel", NStr("en='Cancel';ru='Отменить'"));
 	ElsIf Buttons = "QuestionDialogMode.RetryCancel" Then
-		Result.Add("ReturnDialogCode.Retry", NStr("en = 'Retry'"));
-		Result.Add("DialogReturnCode.Cancel",    NStr("en = 'Cancel'"));
+		Result.Add("ReturnDialogCode.Retry", NStr("en='Retry';ru='Повторить'"));
+		Result.Add("DialogReturnCode.Cancel",    NStr("en='Cancel';ru='Отменить'"));
 	ElsIf Buttons = "QuestionDialogMode.AbortRetryIgnore" Then
-		Result.Add("DialogReturnCode.Abort",   NStr("en = 'Break'"));
-		Result.Add("ReturnDialogCode.Retry",  NStr("en = 'Retry'"));
-		Result.Add("DialogReturnCode.Ignore", NStr("en = 'Skip'"));
+		Result.Add("DialogReturnCode.Abort",   NStr("en='Break';ru='Прервать'"));
+		Result.Add("ReturnDialogCode.Retry",  NStr("en='Retry';ru='Повторить'"));
+		Result.Add("DialogReturnCode.Ignore", NStr("en='Skip';ru='Пропустить'"));
 	EndIf;
 	
 	Return Result;

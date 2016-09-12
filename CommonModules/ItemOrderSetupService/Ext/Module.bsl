@@ -207,12 +207,12 @@ Function ValidateAbilityToMove(Refs, List, RepresentedAsList)
 	
 	AccessParameters = AccessParameters("Update", Refs.Metadata(), "Ref");
 	If Not AccessParameters.Accessibility Then
-		Return NStr("en = 'Insufficient rights to modify the items order.'");
+		Return NStr("en='Insufficient rights to modify the items order.';ru='Недостаточно прав для изменения порядка элементов.'");
 	EndIf;
 	
 	For Each GroupItem IN List.SettingsComposer.GetSettings().Structure Do
 		If GroupItem.Use Then
-			Return NStr("en = 'For the items order modification it is necessary to disable all the groupings.'");
+			Return NStr("en='For the items order modification it is necessary to disable all the groupings.';ru='Для изменения порядка элементов необходимо отключить все группировки.'");
 		EndIf;
 	EndDo;
 	
@@ -221,19 +221,19 @@ Function ValidateAbilityToMove(Refs, List, RepresentedAsList)
 	// For hierarchical catalogs you can set filter by the parent,
 	// if not, then the display method must be hierarchical one or in the tree form.
 	If Information.HasParent AND RepresentedAsList AND Not ListContainsFilterOnParent(List) Then
-		Return NStr("en = 'To change the item order it is necessary to set the Tree or Hierarchical List viewing mode.'");
+		Return NStr("en='To change the item order it is necessary to set the Tree or Hierarchical List viewing mode.';ru='Для изменения порядка элементов необходимо установить режим просмотра ""Дерево"" или ""Иерархический список"".'");
 	EndIf;
 	
 	// For subordinated catalogs owner filter shall be set.
 	If Information.HasOwner AND Not ListContainsFilterByOwner(List) Then
-		Return NStr("en = 'To change the item order it is necessary to set the filter by the Owner field.'");
+		Return NStr("en='To change the item order it is necessary to set the filter by the Owner field.';ru='Для изменения порядка элементов необходимо установить отбор по полю ""Владелец"".'");
 	EndIf;
 	
 	// Check of the "Usage" flag for the AdditionalOrderingAttribute attribute related to the moved item.
 	If Information.HasFolders Then
 		IsFolder = CommonUse.ObjectAttributeValue(Refs, "IsFolder");
 		If IsFolder AND Not Information.ForFolders Or Not IsFolder AND Not Information.ForItems Then
-			Return NStr("en = 'Selected items are impossible to transfer.'");
+			Return NStr("en='Selected items are impossible to transfer.';ru='Выбранный элемент нельзя перемещать.'");
 		EndIf;
 	EndIf;
 	

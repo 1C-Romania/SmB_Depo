@@ -132,16 +132,16 @@ EndFunction
 Procedure ImportActualRate(ExportParameters = Undefined, ResultAddress = Undefined) Export
 	
 	If CommonUseReUse.DataSeparationEnabled() Then
-		Raise NStr("en = 'Invalid procedure call ""ImportRelevantCurrencyRate"".'");
+		Raise NStr("en='Invalid procedure call ""ImportRelevantCurrencyRate"".';ru='Недопустимый вызов процедуры ""ЗагрузитьАктуальныйКурс"".'");
 	EndIf;
 	
 	CommonUse.OnStartExecutingScheduledJob();
 	
-	EventName = NStr("en = 'Currencies. Import exchange rates '",
+	EventName = NStr("en='Currencies. Import exchange rates ';ru='Валюты.Загрузка курсов валют'",
 		CommonUseClientServer.MainLanguageCode());
 	
 	WriteLogEvent(EventName, EventLogLevel.Information, , ,
-		NStr("en = 'Scheduled dump of currency rates has started'"));
+		NStr("en='Scheduled dump of currency rates has started';ru='Начата регламентная загрузка курсов валют'"));
 	
 	CurrentDate = CurrentSessionDate();
 	
@@ -189,14 +189,14 @@ Procedure ImportActualRate(ExportParameters = Undefined, ResultAddress = Undefin
 			EventLogLevel.Error,
 			, 
 			,
-			NStr("en = 'Errors occurred during scheduled job of exporting the exchange rates'"));
+			NStr("en='Errors occurred during scheduled job of exporting the exchange rates';ru='Во время регламентного задания загрузки курсов валют возникли ошибки'"));
 	Else
 		WriteLogEvent(
 			EventName,
 			EventLogLevel.Information,
 			,
 			,
-			NStr("en = 'Scheduled loading of the currency exchange rate has been completed'"));
+			NStr("en='Scheduled loading of the currency exchange rate has been completed';ru='Завершена регламентная загрузка курсов валют.'"));
 	EndIf;
 	
 EndProcedure
@@ -281,7 +281,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work = CurrentWorks.Add();
 		Work.ID  = CurrencyID;
 		Work.ThereIsWork       = Not ExchangeRatesAreRelevant;
-		Work.Presentation  = NStr("en = 'Currency rates are outdated'");
+		Work.Presentation  = NStr("en='Currency rates are outdated';ru='Курсы валют устарели'");
 		Work.Important         = True;
 		Work.Form          = "DataProcessor.CurrencyRatesImportProcess.Form";
 		Work.FormParameters = New Structure("OpenFromList", True);
@@ -410,7 +410,7 @@ Function permissions()
 	Protocol = "HTTP";
 	Address = "cbrates.rbc.ru";
 	Port = Undefined;
-	Definition = NStr("en = 'Import exchange rates from the Internet.'");
+	Definition = NStr("en='Import exchange rates from the Internet.';ru='Загрузка курсов валют из Интернета.'");
 	
 	permissions = New Array;
 	permissions.Add( 
@@ -532,9 +532,9 @@ Function ImportCurrencyRateFromFile(Val Currency, Val PathToFile, Val ImportBegi
 	If NumberOfDaysExportTotal = NumberOfImportedDays Then
 		ExplanationAboutExporting = "";
 	ElsIf NumberOfImportedDays = 0 Then
-		ExplanationAboutExporting = NStr("en = '%1 - %2 exchange rates are not imported. No data.'");
+		ExplanationAboutExporting = NStr("en='%1 - %2 exchange rates are not imported. No data.';ru='Курсы валюты %1 - %2 не загружены. Нет данных.'");
 	Else
-		ExplanationAboutExporting = NStr("en = 'Not all currency exchange rates have been exported for %1 - %2.'");
+		ExplanationAboutExporting = NStr("en='Not all currency exchange rates have been exported for %1 - %2.';ru='Загружены не все курсы по валюте %1 - %2.'");
 	EndIf;
 	
 	ExplanationAboutExporting = StringFunctionsClientServer.PlaceParametersIntoString(
@@ -710,9 +710,11 @@ Function CurrencyRatesImportByParameters(Val Currencies, Val ImportBeginOfPeriod
 			OperationStatus = IsBlankString(ExplainingMessage);
 		Else
 			ExplainingMessage = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Unable to receive data file with exchange rates
-				|%1
-				|- %2): %3 There may not be an access to website with exchange rates or non-existent currency is specified.'"),
+				NStr("en='Unable to receive data file with exchange rates"
+"%1"
+"- %2): %3 There may not be an access to website with exchange rates or non-existent currency is specified.';ru='Невозможно получить файл данных с"
+"курсами"
+"валюты (%1 - %2): %3 Возможно, нет доступа к веб сайту с курсами валют, либо указана несуществующая валюта.'"),
 				Currency.CurrencyCode,
 				Currency.Currency,
 				Result.ErrorInfo);
@@ -788,7 +790,7 @@ Procedure RefreshDataOnAdditionalCurrency937() Export
 	If Not Currency.IsEmpty() Then
 		Currency = Currency.GetObject();
 		Currency.Description = "VEF";
-		Currency.DescriptionFull = NStr("en = 'Bolivar'");
+		Currency.DescriptionFull = NStr("en='Bolivar';ru='Боливар'");
 		InfobaseUpdate.WriteData(Currency);
 	EndIf;
 EndProcedure

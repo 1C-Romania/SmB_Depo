@@ -23,21 +23,21 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Not InfobaseUpdate.InfobaseUpdateRequired();
 	
 	If OnlyApplicationWorkParametersUpdate Then
-		Title = NStr("en = 'Update application parameters'");
+		Title = NStr("en='Update application parameters';ru='Обновление параметров работы программы'");
 		Items.RunMode.CurrentPage = Items.ApplicationWorkParametersUpdate;
 		ProgressStepLength = 95;
 		
 	ElsIf DataUpdateMode = "InitialFilling" Then
-		Title = NStr("en = 'Initial data filling'");
+		Title = NStr("en='Initial data filling';ru='Начальное заполнение данных'");
 		Items.RunMode.CurrentPage = Items.InitialFilling;
 		
 	ElsIf DataUpdateMode = "TransitionFromAnotherApplication" Then
-		Title = NStr("en = 'Transition from another application'");
+		Title = NStr("en='Transition from another application';ru='Переход с другой программы'");
 		Items.RunMode.CurrentPage = Items.TransitionFromAnotherApplication;
 		Items.MessageTextTransitionFromAnotherApplication.Title = StringFunctionsClientServer.PlaceParametersIntoString(
 			Items.MessageTextTransitionFromAnotherApplication.Title, Metadata.Synonym);
 	Else
-		Title = NStr("en = 'Application version update'");
+		Title = NStr("en='Application version update';ru='Обновление версии программы'");
 		Items.RunMode.CurrentPage = Items.ApplicationVersionUpdate;
 		Items.MessageTextUpdatedConfiguration.Title = StringFunctionsClientServer.PlaceParametersIntoString(
 			Items.MessageTextUpdatedConfiguration.Title, Metadata.Synonym, Metadata.Version);
@@ -166,7 +166,7 @@ Function ImportUpdateApplicationWorkInBackgroundParameters()
 			UUID,
 			"StandardSubsystemsServer.ImportUpdateApplicationWorkInBackgroundParameters",
 			ExecuteParameters,
-			NStr("en = 'Background update of the application work parameters.'"));
+			NStr("en='Background update of the application work parameters.';ru='Фоновое обновление параметров работы программы'"));
 		
 		Result.Insert("AShortErrorMessage",   Undefined);
 		Result.Insert("DetailedErrorMessage", Undefined);
@@ -203,8 +203,9 @@ Procedure ImportUpdateApplicationWorkParametersProcessResult(Val AShortErrorMess
 			EndIf;
 		Else
 			AShortErrorMessage =
-				NStr("en = 'An error occurred while receiving
-				           |result from the background job during the application work parameters.'");
+				NStr("en='An error occurred while receiving"
+"result from the background job during the application work parameters.';ru='Ошибка получения результата"
+"от фонового задания при обновлении параметров работы программы.'");
 			
 			DetailedErrorMessage = AShortErrorMessage;
 		EndIf;

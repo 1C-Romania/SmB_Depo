@@ -27,7 +27,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	UserTitle = String(Parameters.login);
 	
 	Items.LoginLabel.Title = UserTitle;
-	Items.LoginLabel.ToolTip = NStr("en = 'Login of the current online support user:'")
+	Items.LoginLabel.ToolTip = NStr("en='Login of the current online support user:';ru='Логин текущего пользователя Интернет-поддержки:'")
 		+ " " + UserTitle;
 	
 	GenerateForm(Parameters);
@@ -60,10 +60,11 @@ Procedure OnOpen(Cancel)
 	
 #If WebClient Then
 	ShowMessageBox(,
-		NStr("en = 'Some references may work incorrectly in the web client.
-			|Sorry for the inconvenience.'"),
+		NStr("en='Some references may work incorrectly in the web client."
+"Sorry for the inconvenience.';ru='В веб-клиенте некоторые ссылки могут работать неправильно."
+"Приносим извинения за неудобства.'"),
 		,
-		NStr("en = 'Online user support'"));
+		NStr("en='Online user support';ru='Интернет-поддержка пользователей'"));
 #EndIf
 	
 EndProcedure
@@ -134,7 +135,7 @@ Procedure HTMLDocumentOnClick(Item, EventData, StandardProcessing)
 		If IsBlankString(UpdateProcessorVersion) Then
 			ShowMessageBox(
 				,
-				NStr("en = 'Mechanism of the automatic update is unavailable.'"));
+				NStr("en='Mechanism of the automatic update is unavailable.';ru='Отсутствует механизм автоматического обновления.'"));
 			Return;
 		EndIf;
 		
@@ -228,19 +229,19 @@ EndProcedure
 Function ConfigurationUpdateMainProcessorFormName(ErrorInfo)
 	
 	If Not CommonUse.SubsystemExists("StandardSubsystems.ConfigurationUpdate") Then
-		ErrorInfo = NStr("en = 'Mechanism of the automatic update is unavailable.'");
+		ErrorInfo = NStr("en='Mechanism of the automatic update is unavailable.';ru='Отсутствует механизм автоматического обновления.'");
 		OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-			NStr("en = 'An error occurred while calling an automatic update. Mechanism of the automatic update is unavailable.'"));
+			NStr("en='An error occurred while calling an automatic update. Mechanism of the automatic update is unavailable.';ru='Ошибка при вызове автоматического обновления. Отсутствует механизм автоматического обновления.'"));
 		Return Undefined;
 	EndIf;
 	
 	MetadataDataProcessor = Metadata.DataProcessors.Find("ConfigurationUpdate");
 	If MetadataDataProcessor = Undefined Then
 		
-		ErrorInfo = NStr("en = 'Mechanism of the automatic update is unavailable.'");
+		ErrorInfo = NStr("en='Mechanism of the automatic update is unavailable.';ru='Отсутствует механизм автоматического обновления.'");
 		
 		OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-			NStr("en = 'An error occurred while calling an automatic update. The ConfigurationUpdate processor is unavailable in the metadata.'"));
+			NStr("en='An error occurred while calling an automatic update. The ConfigurationUpdate processor is unavailable in the metadata.';ru='Ошибка при вызове автоматического обновления. В метаданных отсутствует обработка ОбновлениеКонфигурации.'"));
 		
 		Return Undefined;
 		
@@ -250,10 +251,11 @@ Function ConfigurationUpdateMainProcessorFormName(ErrorInfo)
 		If MetadataMainForm <> Undefined Then
 			Return MetadataMainForm.FullName();
 		Else
-			ErrorInfo = NStr("en = 'An error occurred while calling an automatic update.
-				|For more details see the event log.'");
+			ErrorInfo = NStr("en='An error occurred while calling an automatic update."
+"For more details see the event log.';ru='Ошибка при вызове автоматического обновления."
+"Подробнее см. в журнале регистрации.'");
 			OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-				NStr("en = 'An error occurred while calling an automatic update. The main form of the ConfigurationUpdate processor is unavailable.'"));
+				NStr("en='An error occurred while calling an automatic update. The main form of the ConfigurationUpdate processor is unavailable.';ru='Ошибка при вызове автоматического обновления. Отсутствует основная форма обработки ОбновлениеКонфигурации.'"));
 			Return Undefined;
 		EndIf;
 		
@@ -265,9 +267,9 @@ EndFunction
 Function MessageParametersToTechicalSupportUpdate()
 	
 	Result = New Structure;
-	Result.Insert("Subject", NStr("en = 'Online support. Problems with the configuration update.'"));
+	Result.Insert("Subject", NStr("en='Online support. Problems with the configuration update.';ru='Интернет-поддержка. Проблемы с обновлением конфигурации.'"));
 	
-	MessageText = NStr("en = 'Hello, the following problems occurred while updating the configuration to a new release: Login %1 Registration number: %2 %TechnicalParameters% ----------------------------------------------- Sincerely, .'");
+	MessageText = NStr("en='Hello, the following problems occurred while updating the configuration to a new release: Login %1 Registration number: %2 %TechnicalParameters% ----------------------------------------------- Sincerely, .';ru='Здравствуйте. При обновлении конфигурации на новый релиз возникли следующие проблемы: Логин: %1 Регистрационный номер: %2 %ТехническиеПараметры% ----------------------------------------------- С уважением, .'");
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(
 		InteractionContext.COPContext,

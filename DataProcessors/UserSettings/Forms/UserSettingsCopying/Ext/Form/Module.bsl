@@ -48,11 +48,11 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 			NumberInWords = NumberInWords(
 				UserCount,
 				"L=en_US",
-				NStr("en = ',,,,,,,,0'"));
+				NStr("en=',,,,,,,,0';ru=',,,,,,,,0'"));
 			SubjectAndNumberInWords = NumberInWords(
 				UserCount,
 				"L=en_US",
-				NStr("en = 'user,of user,users,,,,,,0'"));
+				NStr("en='user,of user,users,,,,,,0';ru='user,of user,users,,,,,,0'"));
 			NumberAndSubject = StrReplace(
 				SubjectAndNumberInWords,
 				NumberInWords,
@@ -77,7 +77,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		SettingsCount = Parameter.SettingsCount;
 		
 		If SettingsCount = 0 Then
-			HeaderText = NStr("en='Select'");
+			HeaderText = NStr("en='Select';ru='Выбрать'");
 		ElsIf SettingsCount = 1 Then
 			SettingRepresentation = Parameter.SettingsPresentation[0];
 			HeaderText = SettingRepresentation;
@@ -85,11 +85,11 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 			NumberInWords = NumberInWords(
 				SettingsCount,
 				"L=en_US",
-				NStr("en = ',,,,,,,,0'"));
+				NStr("en=',,,,,,,,0';ru=',,,,,,,,0'"));
 			SubjectAndNumberInWords = NumberInWords(
 				SettingsCount,
 				"L=en_US",
-				NStr("en = 'setting,settings,settings,,,,,,0'"));
+				NStr("en='setting,settings,settings,,,,,,0';ru='setting,settings,settings,,,,,,0'"));
 			HeaderText = StrReplace(
 				SubjectAndNumberInWords,
 				NumberInWords,
@@ -132,8 +132,8 @@ Procedure UserStartChoice(Item, ChoiceData, StandardProcessing)
 		
 		If UseExternalUsers Then
 			TypeChoiceUsers = New ValueList;
-			TypeChoiceUsers.Add("ExternalUsers", NStr("en = 'External users'"));
-			TypeChoiceUsers.Add("Users", NStr("en = 'Users'"));
+			TypeChoiceUsers.Add("ExternalUsers", NStr("en='External users';ru='Внешние пользователи'"));
+			TypeChoiceUsers.Add("Users", NStr("en='Users';ru='Пользователи'"));
 			
 			Notification = New NotifyDescription("UserStartChoiceEnd", ThisObject, FilterParameters);
 			TypeChoiceUsers.ShowChooseItem(Notification);
@@ -183,8 +183,9 @@ Procedure UserRefOnChange(Item)
 		For Each UserTarget IN UsersReceiversSettings.UserArray Do
 		
 			If UserRef = UserTarget Then
-				ShowMessageBox(,NStr("en = 'You can not copy the user
-					|settings to yourself, select another user.'"));
+				ShowMessageBox(,NStr("en='You can not copy the user"
+"settings to yourself, select another user.';ru='Нельзя копировать настройки"
+"пользователя самому себе, выберите другого пользователя.'"));
 				UserRef = UserRefOld;
 				Return;
 			EndIf;
@@ -197,7 +198,7 @@ Procedure UserRefOnChange(Item)
 	
 	SelectedSettings = Undefined;
 	SettingsCount = 0;
-	Items.ChooseSettings.Title = NStr("en='Select'");
+	Items.ChooseSettings.Title = NStr("en='Select';ru='Выбрать'");
 	
 EndProcedure
 
@@ -257,19 +258,19 @@ Procedure Copy(Command)
 	
 	If UserRef = Undefined Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Select the user whose settings it is necessary to copy.'"), , "UserRef");
+			NStr("en='Select the user whose settings it is necessary to copy.';ru='Выберите пользователя, чьи настройки необходимо скопировать.'"), , "UserRef");
 		Return;
 	EndIf;
 	
 	If UserCount = 0 AND SwitchToWhomCopySettings <> "AllUsers" Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Select one or several users who need to copy the settings.'"), , "Receiver");
+			NStr("en='Select one or several users who need to copy the settings.';ru='Выберите одного или несколько пользователей, которым необходимо скопировать настройки.'"), , "Receiver");
 		Return;
 	EndIf;
 	
 	If SwitchCopiedSettings = "CopySelected" AND SettingsCount = 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Select the settings which are required to be copied.'"), , "SwitchCopiedSettings");
+			NStr("en='Select the settings which are required to be copied.';ru='Выберите настройки, которые необходимо скопировать.'"), , "SwitchCopiedSettings");
 		Return;
 	EndIf;
 	
@@ -301,7 +302,7 @@ EndProcedure
 &AtClient
 Procedure CopySettings(CommandName)
 	
-	Status(NStr("en = 'Settings are being copied'"));
+	Status(NStr("en='Settings are being copied';ru='Выполняется копирование настроек'"));
 	
 	If SwitchToWhomCopySettings = "SelectedUsers" Then
 		
@@ -309,7 +310,7 @@ Procedure CopySettings(CommandName)
 			UserCount, UsersReceiversSettings.UserArray[0]);
 		
 	Else
-		ExplanationToWhomSettingsAreCopied = NStr("en = 'All users'");
+		ExplanationToWhomSettingsAreCopied = NStr("en='All users';ru='Все пользователи'");
 	EndIf;
 	
 	If SwitchCopiedSettings = "CopySelected" Then
@@ -318,10 +319,10 @@ Procedure CopySettings(CommandName)
 		CopySelectedSettings(Report);
 		
 		If Report <> Undefined Then
-			QuestionText = NStr("en = 'Not all the report variants and settings have been copied.'");
+			QuestionText = NStr("en='Not all the report variants and settings have been copied.';ru='Не все варианты отчетов и настройки были скопированы.'");
 			QuestionButtons = New ValueList;
-			QuestionButtons.Add("Ok", NStr("en='OK'"));
-			QuestionButtons.Add("ShowReport", NStr("en='Show report'"));
+			QuestionButtons.Add("Ok", NStr("en='OK';ru='Ок'"));
+			QuestionButtons.Add("ShowReport", NStr("en='Show report';ru='Показать отчет'"));
 			
 			Notification = New NotifyDescription("CopySettingsShowQuery", ThisObject, Report);
 			ShowQueryBox(Notification, QuestionText, QuestionButtons,, QuestionButtons[0].Value);
@@ -332,7 +333,7 @@ Procedure CopySettings(CommandName)
 			
 			ExplanationText = UsersServiceClient.GeneratingExplanationOnCopying(
 				SettingRepresentation, SettingsCount, ExplanationToWhomSettingsAreCopied);
-			ShowUserNotification(NStr("en = 'Copying of settings'"), , ExplanationText, PictureLib.Information32);
+			ShowUserNotification(NStr("en='Copying of settings';ru='Копирование настроек'"), , ExplanationText, PictureLib.Information32);
 			
 		EndIf;
 		
@@ -341,7 +342,7 @@ Procedure CopySettings(CommandName)
 		SettingsCopied = CopyingAllSettings();
 		If Not SettingsCopied Then
 			
-			WarningText = NStr("en = 'Settings weren''t copied as at the user ""%1"" any setting was not saved.'");
+			WarningText = NStr("en='Settings weren''t copied as at the user ""%1"" any setting was not saved.';ru='Настройки не были скопированы, так как у пользователя ""%1"" не было сохранено ни одной настройки.'");
 			WarningText = StringFunctionsClientServer.
 				PlaceParametersIntoString(WarningText, String(UserRef));
 			ShowMessageBox(,WarningText);
@@ -349,11 +350,11 @@ Procedure CopySettings(CommandName)
 			Return;
 		EndIf;
 			
-		ExplanationText = NStr("en = 'All the settings are copied %1'");
+		ExplanationText = NStr("en='All the settings are copied %1';ru='Скопированы все настройки %1'");
 		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
 			ExplanationText, ExplanationToWhomSettingsAreCopied);
 		ShowUserNotification(
-			NStr("en = 'Copying of settings'"), , ExplanationText, PictureLib.Information32);
+			NStr("en='Copying of settings';ru='Копирование настроек'"), , ExplanationText, PictureLib.Information32);
 	EndIf;
 	
 	// If setting copy from another user, inform about it form UserSettings.

@@ -28,8 +28,9 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 	 Or ReportFile   = Undefined
 	 Or ExportFlag = Undefined  Then
 	 	Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device parameters are not set.
-		|For the correct work of the device it is necessary to specify the parameters of its work.'"));
+		Output_Parameters.Add(NStr("en='Device parameters are not set."
+"For the correct work of the device it is necessary to specify the parameters of its work.';ru='Не настроены параметры устройства."
+"Для корректной работы устройства необходимо задать параметры его работы.'"));
 		Result = False;
 	Else
 		DriverObject = New Structure("Parameters", Parameters);
@@ -91,7 +92,7 @@ Function RunCommand(Command, InputParameters = Undefined, Output_Parameters = Un
 	// This command is not supported by the current driver.
 	Else
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.'"));
+		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.';ru='Команда ""%Команда%"" не поддерживается данным драйвером.'"));
 		Output_Parameters[1] = StrReplace(Output_Parameters[1], "%Command%", Command);
 
 		Result = False;
@@ -142,7 +143,7 @@ Function ExportProducts(DriverObject, Parameters, ConnectionParameters, Products
 	If PartialExport AND
 		Not ProductsExportingAllowed(Parameters) Then
 		Output_Parameters.Add(999);
-		ErrorDescription = NStr("en='Cannot export. Products of the previous export have not been received by CR-offline yet'");
+		ErrorDescription = NStr("en='Cannot export. Products of the previous export have not been received by CR-offline yet';ru='Нельзя сделать выгрузку. Товары предыдущей выгрузки еще не были получены ККМ-offline'");
 		Output_Parameters.Add(ErrorDescription);
 		Return False;
 	EndIf;
@@ -301,7 +302,7 @@ Function ExportProducts(DriverObject, Parameters, ConnectionParameters, Products
 		EndIf;
 	Except
 		Output_Parameters.Add(999);
-		ErrorDescription = NStr("en='Failed to record products file at address: %Address%'");
+		ErrorDescription = NStr("en='Failed to record products file at address: %Address%';ru='Не удалось записать файл товаров по адресу: %Адрес%'");
 		Output_Parameters.Add(StrReplace(ErrorDescription, "%Address%", Parameters.ProductsBase));
 		Result = False;
 	EndTry;
@@ -351,7 +352,7 @@ Function ImportReport(DriverObject, Parameters, ConnectionParameters, Output_Par
 		File.Read(Parameters.ReportFile);
 	Except
 		Output_Parameters.Add(999);
-		ErrorDescription = NStr("en='Cannot receive a report file by address: %Address%'");
+		ErrorDescription = NStr("en='Cannot receive a report file by address: %Address%';ru='Не удалось прочитать файл отчета по адресу: %Адрес%'");
 		Output_Parameters.Add(StrReplace(ErrorDescription, "%Address%", Parameters.ReportFile));
 		Result = False;
 	EndTry;
@@ -370,17 +371,17 @@ Function ImportReport(DriverObject, Parameters, ConnectionParameters, Output_Par
 				ShiftNumberStr     = StrGetLine(CurrentRow, 14);
 
 				Try
-					ErrorField = NStr("en='Transaction number (1)'");
+					ErrorField = NStr("en='Transaction number (1)';ru='Номер транзакции (1)'");
 					TransactionNo    = Number(TransactionNoStr);
-					ErrorField = NStr("en='Transaction type (4)'");
+					ErrorField = NStr("en='Transaction type (4)';ru='Тип транзакции (4)'");
 					OperationKind      = Number(OperationKindStr);
-					ErrorField = NStr("en='Document number (6)'");
+					ErrorField = NStr("en='Document number (6)';ru='Номер документа (6)'");
 					DocumentNumber     = Number(DocumentNumberStr);
-					ErrorField = NStr("en='Number of session (14)'");
+					ErrorField = NStr("en='Number of session (14)';ru='Номер смены (14)'");
 					NumberOfSession         = Number(ShiftNumberStr);
 				Except
 					Output_Parameters.Add(999);
-					Output_Parameters.Add(NStr("en='Incorrect file format. Impossible to convert field to the number:'") + Chars.NBSp + ErrorField);
+					Output_Parameters.Add(NStr("en='Incorrect file format. Impossible to convert field to the number:';ru='Неверный формат файла. Невозможно преобразовать к числу поле:'") + Chars.NBSp + ErrorField);
 					Result = False;
 					Break;
 				EndTry;
@@ -392,7 +393,7 @@ Function ImportReport(DriverObject, Parameters, ConnectionParameters, Output_Par
 				If OperationKind =  1 Then
 					// Registration without a product code.
 					Output_Parameters.Add(999);
-					Output_Parameters.Add(NStr("en='Sales registration ignoring the item codes is not available'"));
+					Output_Parameters.Add(NStr("en='Sales registration ignoring the item codes is not available';ru='Регистрация продаж без учета кода товара не допускается'"));
 					Result = False;
 					Break;
 				ElsIf OperationKind = 11 Then
@@ -403,17 +404,17 @@ Function ImportReport(DriverObject, Parameters, ConnectionParameters, Output_Par
 					AmountStr      = StrGetLine(CurrentRow, 16);
 					SKU            = StrGetLine(CurrentRow, 18);
 					Try
-						ErrorField  = NStr("en='Product code (8)'");
+						ErrorField  = NStr("en='Product code (8)';ru='Код товара (8)'");
 						Code        = Number(StrCode);
-						ErrorField  = NStr("en='Product price (10)'");
+						ErrorField  = NStr("en='Product price (10)';ru='Цена товара (10)'");
 						Price       = Number(PriceStr);
-						ErrorField  = NStr("en='Products quantity (11)'");
+						ErrorField  = NStr("en='Products quantity (11)';ru='Количество товара (11)'");
 						Quantity    = Number(QuantityStr);
-						ErrorField  = NStr("en='Sales amount (16)'");
+						ErrorField  = NStr("en='Sales amount (16)';ru='Сумма продажи (16)'");
 						Amount      = Number(AmountStr);
 					Except
 						Output_Parameters.Add(999);
-						Output_Parameters.Add(NStr("en='Incorrect file format. Impossible to convert field to the number:'") + Chars.NBSp + ErrorField);
+						Output_Parameters.Add(NStr("en='Incorrect file format. Impossible to convert field to the number:';ru='Неверный формат файла. Невозможно преобразовать к числу поле:'") + Chars.NBSp + ErrorField);
 						Result = False;
 						Break;
 					EndTry;
@@ -513,7 +514,7 @@ Function ImportReport(DriverObject, Parameters, ConnectionParameters, Output_Par
 				ElsIf OperationKind = 22 Or OperationKind = 24 Then
 					// Reversing entry of the banknotes by a free price / from catalog.
 				Else
-					ErrorDescription = NStr("en='Unknown transaction has been detected: %OperationKind%. Data by transaction has not been imported!'");
+					ErrorDescription = NStr("en='Unknown transaction has been detected: %OperationKind%. Data by transaction has not been imported!';ru='Обнаружена неизвестная транзакция: %ТипТранзакции%. Данные по транзакции не были загружены!'");
 					CommonUseClientServer.MessageToUser(StrReplace(ErrorDescription, "%OperationKind%", String(OperationKind)));
 					UnknownTransaction = True;
 				EndIf;
@@ -523,15 +524,15 @@ Function ImportReport(DriverObject, Parameters, ConnectionParameters, Output_Par
 			EndDo;
 
 			If UnknownTransaction Then
-				CommonUseClientServer.MessageToUser(NStr("en='Not all data has been exported from the report. Contact the system administrator!'"));
+				CommonUseClientServer.MessageToUser(NStr("en='Not all data has been exported from the report. Contact the system administrator!';ru='Не все данные были загружены из отчета. Обратитесь к администратору системы!'"));
 			EndIf;
 		ElsIf CurrentRow = "@" Then
 			Output_Parameters.Add(999);
-			Output_Parameters.Add(NStr("en='Operation is aborted. The report was already loaded!'"));
+			Output_Parameters.Add(NStr("en='Operation is aborted. The report was already loaded!';ru='Операция прервана. Отчет уже был загружен!'"));
 			Result = False;
 		Else
 			Output_Parameters.Add(999);
-			Output_Parameters.Add(NStr("en='Incorrect data format or data is absent.'"));
+			Output_Parameters.Add(NStr("en='Incorrect data format or data is absent.';ru='Неверный формат данных или данные отсутствуют.'"));
 			Result = False;
 		EndIf;
 	EndIf;
@@ -663,14 +664,14 @@ Function DeviceTest(DriverObject, Parameters, ConnectionParameters, Output_Param
 	
 	If IsBlankString(TempParameter) Then
 		Result = False;
-		CommonErrorText = NStr("en='Products base file is not specified.'");
+		CommonErrorText = NStr("en='Products base file is not specified.';ru='Файл базы товаров не указан.'");
 	EndIf;
 	
 	Parameters.Property("ReportFile", TempParameter);
 	If IsBlankString(TempParameter) Then
 		Result = False;
 		CommonErrorText = CommonErrorText + ?(IsBlankString(CommonErrorText), "", Chars.LF); 
-		CommonErrorText = CommonErrorText + NStr("en='Report file is not specified.'") 
+		CommonErrorText = CommonErrorText + NStr("en='Report file is not specified.';ru='Файл отчета не указан.'") 
 	EndIf;
 	
 	Output_Parameters.Add(?(Result, 0, 999));

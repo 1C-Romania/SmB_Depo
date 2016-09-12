@@ -107,11 +107,15 @@ Procedure CheckPossibilityToUseConfigurationSaaS() Export
 	If SSLDescription = Undefined Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'The configuration does not include embedded 1C:Standard Subsystems Library.
-                  |The configuration can not be used in the service model if this library is not embedded.
-                  |
-                  |To use this configuration in the service model, it
-                  |is required to embed the library 1C:Standard Subsystems Library of version %1 or older version!'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='The configuration does not include embedded 1C:Standard Subsystems Library."
+"The configuration can not be used in the service model if this library is not embedded."
+""
+"To use this configuration in the service model, it"
+"is required to embed the library 1C:Standard Subsystems Library of version %1 or older version!';ru='В конфигурацию не внедрена библиотека ""1С:Библиотека стандартных подсистем""."
+"Без внедрения этой библиотеки конфигурация не может испольоваться в модели сервиса."
+""
+"Для использования этой конфигурации в модели"
+"сервиса требуется внедрить библиотеку ""1С:Библиотека стандартных подсистем"" версии не младше %1!'", Metadata.DefaultLanguage.LanguageCode),
 			RequiredSSLVersion());
 		
 	Else
@@ -121,11 +125,15 @@ Procedure CheckPossibilityToUseConfigurationSaaS() Export
 		If CommonUseClientServer.CompareVersions(SSLVersion, RequiredSSLVersion()) < 0 Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'To use the configuration in the service model with
-                      |the current version of 1C:Service Technology Library,
-                      |update the used version of 1C:Standard Subsystem Library!
-                      |
-                      |Version in use: %1, a version not older than %2 is required!'", Metadata.DefaultLanguage.LanguageCode),
+				NStr("en='To use the configuration in the service model with"
+"the current version of 1C:Service Technology Library,"
+"update the used version of 1C:Standard Subsystem Library!"
+""
+"Version in use: %1, a version not older than %2 is required!';ru='Для использования конфигурации в модели сервиса с"
+"текущей версией библиотеки ""1С:Библиотека технологии сервиса"""
+"требуется обновить используемую версию библиотеки ""1С:Библиотека стандартных подсистем""!"
+""
+"Используемая версия: %1, требуется версия не младше %2!'", Metadata.DefaultLanguage.LanguageCode),
 				SSLVersion, RequiredSSLVersion());
 			
 		EndIf;
@@ -146,7 +154,7 @@ EndProcedure
 //
 Function GetWebServiceErrorDescription(ErrorInfo) Export
 	
-	WriteLogEvent(NStr("en = 'Performing a web service operation'"), EventLogLevel.Error, , ,
+	WriteLogEvent(NStr("en='Performing a web service operation';ru='Выполнение операции web-сервиса'"), EventLogLevel.Error, , ,
 		DetailErrorDescription(ErrorInfo));
 	
 	ErrorDescription = XDTOFactory.Create(

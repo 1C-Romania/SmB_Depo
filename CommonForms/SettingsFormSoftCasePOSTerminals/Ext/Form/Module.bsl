@@ -12,17 +12,17 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("ID", ID);
 	Parameters.Property("HardwareDriver", HardwareDriver);
 	
-	Title = NStr("en='Equipment:'") + Chars.NBSp + String(ID);
+	Title = NStr("en='Equipment:';ru='Оборудование:'") + Chars.NBSp + String(ID);
 
 	TextColor = StyleColors.FormTextColor;
 	ErrorColor = StyleColors.NegativeTextColor;
 
 	ListSlipReceiptWidth = Items.SlipReceiptWidth.ChoiceList;
-	ListSlipReceiptWidth.Add(24,  NStr("en='24 ch.'"));
-	ListSlipReceiptWidth.Add(32,  NStr("en='32 ch.'"));
-	ListSlipReceiptWidth.Add(36,  NStr("en='36 ch.'"));
-	ListSlipReceiptWidth.Add(40,  NStr("en='40 ch.'")); 
-	ListSlipReceiptWidth.Add(48,  NStr("en='48 ch.'"));
+	ListSlipReceiptWidth.Add(24,  NStr("en='24 ch.';ru='24 сим.'"));
+	ListSlipReceiptWidth.Add(32,  NStr("en='32 ch.';ru='32 сим.'"));
+	ListSlipReceiptWidth.Add(36,  NStr("en='36 ch.';ru='36 сим.'"));
+	ListSlipReceiptWidth.Add(40,  NStr("en='40 ch.';ru='40 сим.'")); 
+	ListSlipReceiptWidth.Add(48,  NStr("en='48 ch.';ru='48 сим.'"));
 
 	tempCurrencyCode                  = Undefined;
 	tempSlipReceiptWidth             = Undefined;
@@ -123,16 +123,16 @@ Procedure DeviceTest(Command)
 	                                                                      tempDeviceParameters);
 
 	If Result Then
-		MessageText = NStr("en = 'Test successfully performed.'");
+		MessageText = NStr("en='Test successfully performed.';ru='Тест успешно выполнен.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	Else
 		AdditionalDetails = ?(TypeOf(Output_Parameters) = Type("Array")
 		                           AND Output_Parameters.Count() >= 2,
-		                           NStr("en = 'Additional description:'") + " " + Output_Parameters[1],
+		                           NStr("en='Additional description:';ru='Дополнительное описание:'") + " " + Output_Parameters[1],
 		                           "");
 
 
-		MessageText = NStr("en = 'Test failed.%Linefeed% %AdditionalDetails%'");
+		MessageText = NStr("en='Test failed.%Linefeed% %AdditionalDetails%';ru='Тест не пройден.%ПереводСтроки%%ДополнительноеОписание%'");
 		MessageText = StrReplace(MessageText, "%Linefeed%", ?(IsBlankString(AdditionalDetails),
 		                                                                  "",
 		                                                                  Chars.LF));
@@ -148,7 +148,7 @@ EndProcedure
 Procedure SetupDriver(Command)
 	
 	ClearMessages();
-	Text = NStr("en = 'Driver is set using vendor''s distribution.'");
+	Text = NStr("en=""Driver is set using vendor's distribution."";ru=""Driver is set using vendor's distribution.""");
 	ShowMessageBox(, Text);
 	
 EndProcedure
@@ -178,11 +178,11 @@ Procedure UpdateInformationAboutDriver()
 		Version  = Output_Parameters[1];
 	Else
 		Driver = Output_Parameters[2];
-		Version  = NStr("en='Not defined'");
+		Version  = NStr("en='Not defined';ru='Не определена'");
 	EndIf;
 
-	Items.Driver.TextColor = ?(Driver = NStr("en='Not set'"), ErrorColor, TextColor);
-	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined'"), ErrorColor, TextColor);
+	Items.Driver.TextColor = ?(Driver = NStr("en='Not set';ru='Не установлен'"), ErrorColor, TextColor);
+	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined';ru='Не определена'"), ErrorColor, TextColor);
 
 EndProcedure
 

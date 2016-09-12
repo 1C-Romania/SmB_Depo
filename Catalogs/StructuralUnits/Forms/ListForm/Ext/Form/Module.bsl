@@ -9,14 +9,14 @@ Procedure SetMainItem(SelectedItem, SettingName)
 	If SettingName = "MainWarehouse" 
 	   AND SelectedItem.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'You can not choose division as the main warehouse!'");
+		Message.Text = NStr("en='You can not choose division as the main warehouse!';ru='В качестве основного склада нельзя выбирать Подразделение!'");
 		Message.Message();
 		Return;
 	EndIf;
 	If SettingName = "MainDivision"
 	   AND SelectedItem.StructuralUnitType <> Enums.StructuralUnitsTypes.Division Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'You must choose division as main division!'");
+		Message.Text = NStr("en='You must choose division as main division!';ru='В качестве основного подразделения необходимо выбрать Подразделение!'");
 		Message.Message();
 		Return;
 	EndIf; 

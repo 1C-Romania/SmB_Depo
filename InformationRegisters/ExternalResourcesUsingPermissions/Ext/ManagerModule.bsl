@@ -23,7 +23,7 @@ Function AuthorizationKey(Val Resolution) Export
 	Key = XDTOFactory.Create(XDTOFactory.Type("http://www.w3.org/2001/XMLSchema", "hexBinary"), Hashing.HashSum).LexicalMeaning;
 	
 	If StrLen(Key) > 32 Then
-		Raise NStr("en = 'Exceed the key length'");
+		Raise NStr("en='Exceed the key length';ru='Превышение длины ключа'");
 	EndIf;
 	
 	Return Key;
@@ -155,12 +155,17 @@ Procedure AddPermission(Val SoftwareModuleType, Val SoftwareModuleID, Val OwnerT
 	If Manager.Selected() Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Duplication of permissions
-                  |by key
-                  |fields: -SowtwareModuleType: %1
-                  |-SowtwareModuleIdentifier: 2%
-                  |- OwnerType: %3
-                  |-OwnerIdentifier: %4 - PermissionKey: %5.'"),
+			NStr("en='Duplication of permissions"
+"by key"
+"fields: -SowtwareModuleType: %1"
+"-SowtwareModuleIdentifier: 2%"
+"- OwnerType: %3"
+"-OwnerIdentifier: %4 - PermissionKey: %5.';ru='Дублирование"
+"разрешений"
+"по ключевым полям:"
+"- ТипПрограммногоМодуля:"
+"%1 - ИдентификаторПрограммногоМодуля:"
+"%2 - ТипВладельца: %3 - ИдентификаторВладельца: %4 - КлючРазрешения: %5.'"),
 			String(SoftwareModuleType),
 			String(SoftwareModuleID),
 			String(OwnerType),
@@ -212,12 +217,17 @@ Procedure DeletePermission(Val SoftwareModuleType, Val SoftwareModuleID, Val Own
 		If Manager.AuthorizationBody <> CommonUse.ObjectXDTOInXMLString(Resolution) Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Permissions
-	                  |position by
-	                  |keys: - ProgramModuleType:
-	                  |%1 - ProgramModuleID:
-	                  |%2 - OwnerType:
-	                  |%3 - OwnerID: %4 - PermissionKey: %5.'"),
+				NStr("en='Permissions"
+"position by"
+"keys: - ProgramModuleType:"
+"%1 - ProgramModuleID:"
+"%2 - OwnerType:"
+"%3 - OwnerID: %4 - PermissionKey: %5.';ru='Позиция"
+"разрешений"
+"по ключам:"
+"- ТипПрограммногоМодуля: %1"
+"- ИдентификаторПрограммногоМодуля:"
+"%2 - ТипВладельца: %3 - ИдентификаторВладельца: %4 - КлючРазрешения: %5.'"),
 				String(SoftwareModuleType),
 				String(SoftwareModuleID),
 				String(OwnerType),
@@ -231,12 +241,17 @@ Procedure DeletePermission(Val SoftwareModuleType, Val SoftwareModuleID, Val Own
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Attempt to delete
-                  |a nonexistent permission:
-                  |-SowtwareModuleType: %1
-                  |-SowtwareModuleIdentifier: 2%
-                  |- OwnerType: %3
-                  |-OwnerIdentifier: %4 - PermissionKey: %5.'"),
+			NStr("en='Attempt to delete"
+"a nonexistent permission:"
+"-SowtwareModuleType: %1"
+"-SowtwareModuleIdentifier: 2%"
+"- OwnerType: %3"
+"-OwnerIdentifier: %4 - PermissionKey: %5.';ru='Попытка"
+"удаления несуществующего"
+"разрешения: -"
+"ТипПрограммногоМодуля: %1"
+"- ИдентификаторПрограммногоМодуля: %2"
+"- ТипВладельца: %3 - ИдентификаторВладельца: %4 - КлючРазрешения: %5.'"),
 			String(SoftwareModuleType),
 			String(SoftwareModuleID),
 			String(OwnerType),

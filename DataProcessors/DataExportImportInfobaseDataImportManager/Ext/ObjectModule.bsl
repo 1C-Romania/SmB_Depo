@@ -62,7 +62,7 @@ Function SortImportedTypes(Val ImportedTypes)
 		ElsIf Metadata.Sequences.Contains(MetadataObject) Then
 			String.Priority = 4;
 		Else
-			TextPattern = NStr("en = 'Metadata object export is not supported %1'");
+			TextPattern = NStr("en='Metadata object export is not supported %1';ru='Выгрузка объекта метаданных не поддерживается %1'");
 			MessageText = ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(TextPattern, MetadataObject.FullName());
 			Raise(MessageText);
 		EndIf;
@@ -110,13 +110,14 @@ Procedure ExecuteDataImport()
 		Else
 			
 			WriteLogEvent(
-				NStr("en = 'DataExportImport.ObjectExportSkipped'", Metadata.DefaultLanguage.LanguageCode),
+				NStr("en='DataExportImport.ObjectExportSkipped';ru='ВыгрузкаЗагрузкаДанных.ЗагрузкаОбъектаПропущена'", Metadata.DefaultLanguage.LanguageCode),
 				EventLogLevel.Information,
 				MetadataObject,
 				,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Import of metadata object %1 data is skipped as it is
-                          |included in the metadata object list excluded from data export and import'", Metadata.DefaultLanguage.LanguageCode),
+					NStr("en='Import of metadata object %1 data is skipped as it is"
+"included in the metadata object list excluded from data export and import';ru='Выгрузка данных объекта метаданных %1 пропущена, т.к. он включен в"
+"список объектов метаданных, исключаемых из выгрузки и загрузки данных'", Metadata.DefaultLanguage.LanguageCode),
 					MetadataObject.FullName()
 				)
 			);

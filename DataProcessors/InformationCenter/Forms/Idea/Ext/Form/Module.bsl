@@ -50,7 +50,7 @@ Procedure DeleteClick(Item)
 	
 	NotifyDescription = New NotifyDescription("DeleteCommentAlert", ThisObject, Item.Name);
 	
-	ShowQueryBox(NOTifyDescription, NStr("en = 'Delete the comment?'"), QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
+	ShowQueryBox(NOTifyDescription, NStr("en='Delete the comment?';ru='Удалить Ваш комментарий?'"), QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	
 EndProcedure
 
@@ -96,7 +96,7 @@ EndProcedure
 Procedure AddComment(Command)
 	
 	If IsBlankString(TextOfComment) Then 
-		Raise NStr("en = 'The comment field should be filled in'");
+		Raise NStr("en='The comment field should be filled in';ru='Поле комментарий должно быть заполнено'");
 	EndIf;
 	AddServerComment();
 	Notify("CommentToIdeaAdded");

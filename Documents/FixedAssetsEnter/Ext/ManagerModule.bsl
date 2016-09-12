@@ -7,7 +7,7 @@ Procedure GenerateTableInventory(DocumentRefFixedAssetsEnter, StructureAdditiona
 	
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
-	Query.SetParameter("InventoryWriteOff", NStr("en = 'Inventory write off'"));
+	Query.SetParameter("InventoryWriteOff", NStr("en='Inventory write off';ru='Списание запасов'"));
 	
 	Query.Text =
 	"SELECT

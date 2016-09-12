@@ -371,9 +371,11 @@ Procedure CheckCorrectnessOfCallOnEnvironment()
 	
 	If Not AdditionalReportsAndDataProcessorsInSafeModeService.CheckCorrectnessOfCallOnEnvironment() Then
 		
-		Raise NStr("en = 'Incorrect call for common AdditionalReportsAndDataProcessorsInSafeModeServerCall module function!
-                                |This function module to be exported for use in safe
-                                |mode should be called only from the script or context of client application!'");
+		Raise NStr("en='Incorrect call for common AdditionalReportsAndDataProcessorsInSafeModeServerCall module function!"
+"This function module to be exported for use in safe"
+"mode should be called only from the script or context of client application!';ru='Некорректный вызов функции общего модуля ДополнительныеОтчетыИОбработкиВБезопасномРежимеВызовСервера!"
+"Экспортируемые функции данного модуля для использования"
+"в безопасном режиме должны вызываться только из сценария или из контекста клиентского приложения!'");
 		
 	EndIf;
 	

@@ -24,7 +24,7 @@ Procedure ConfigureReportsVariants(Settings, ReportSettings) Export
 	
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, "Default");
 	VariantSettings.Enabled = False;
-	VariantSettings.Description = NStr("en = 'Search usage places of application objects.'");
+	VariantSettings.Description = NStr("en='Search usage places of application objects.';ru='Поиск мест использования объектов приложения.'");
 EndProcedure
 
 #EndRegion

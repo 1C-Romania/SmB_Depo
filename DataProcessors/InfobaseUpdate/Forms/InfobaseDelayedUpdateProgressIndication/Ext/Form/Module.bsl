@@ -22,8 +22,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		Items.GroupToolTipAboutPeriodOfLowestActivityUsers.Visible = False;
 		Items.WhereToFindThisFormToolTip.Title = 
-			NStr("en = 'Progress of the application versions data processing can be
-|also controlled from the section ""Information"" on the desktop, command ""Description of application changes"".'");
+			NStr("en='Progress of the application versions data processing can be"
+"also controlled from the section ""Information"" on the desktop, command ""Description of application changes"".';ru='Ход обработки данных версии программы можно"
+"также проконтролировать из раздела ""Информация"" на рабочем столе, команда ""Описание изменений программы"".'");
 		
 	EndIf;
 	
@@ -44,7 +45,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Format(UpdateEndTime, "DLF=T"),
 			DataAboutUpdate.DurationOfUpdate);
 	Else
-		TitleRefreshCompleted = NStr("en = 'Application version has been successfully updated to the %1 version'");
+		TitleRefreshCompleted = NStr("en='Application version has been successfully updated to the %1 version';ru='Версия программы успешно обновлена на версию %1'");
 		Items.InformationRefreshEnabledCompleted.Title = StringFunctionsClientServer.PlaceParametersIntoString(
 			TitleRefreshCompleted,
 			Metadata.Version);
@@ -69,7 +70,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.StatusUpdate.CurrentPage = Items.RefreshEnabledCompleted;
 		
 		DataAboutUpdate = InfobaseUpdateService.DataOnUpdatingInformationBase();
-		CaptionPattern = NStr("en = 'Additional data processing procedures have been completed %1 in %2'");
+		CaptionPattern = NStr("en='Additional data processing procedures have been completed %1 in %2';ru='Дополнительные процедуры обработки данных завершены %1 в %2'");
 		Items.InformationPostponedUpdateCompleted1.Title = 
 		StringFunctionsClientServer.PlaceParametersIntoString(CaptionPattern, 
 			Format(DataAboutUpdate.EndTimeDeferredUpdate, "DLF=D"),
@@ -111,8 +112,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Items.OpenListOfPendingHandlers.Title = MessageText;
 	Items.InformationTitle.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Additional data processing procedures to the %1 version are being executed
-			|The work with these files is temporarily limited'"), Metadata.Version);
+		NStr("en='Additional data processing procedures to the %1 version are being executed"
+"The work with these files is temporarily limited';ru='Выполняются дополнительные процедуры обработки данных"
+"на версию %1 Работа с этими данными временно ограничена'"), Metadata.Version);
 	
 EndProcedure
 
@@ -320,7 +322,7 @@ EndProcedure
 &AtServer
 Procedure RefreshPageRefreshCompleted(DataAboutUpdate)
 	
-	CaptionPattern = NStr("en = 'Additional data processing procedures have been completed %1 in %2'");
+	CaptionPattern = NStr("en='Additional data processing procedures have been completed %1 in %2';ru='Дополнительные процедуры обработки данных завершены %1 в %2'");
 	MessageText = MessageAboutUpdateResult(DataAboutUpdate);
 	
 	Items.InformationPostponedUpdateCompleted1.Title = 
@@ -359,11 +361,11 @@ Function MessageAboutUpdateResult(DataAboutUpdate)
 			Items.InformationPendingHandlersAbsent.Visible = True;
 			Items.GroupTransitionToListOfPendingHandlers.Visible = False;
 		Else
-			MessageText = NStr("en = 'All update procedures have been successfully completed (%1)'");
+			MessageText = NStr("en='All update procedures have been successfully completed (%1)';ru='Все процедуры обновления выполнены успешно (%1)'");
 		EndIf;
 		Items.PictureInformation1.Picture = PictureLib.Successfully32;
 	Else
-		MessageText = NStr("en = 'Not all the procedures were completed (completed %1 of %2)'");
+		MessageText = NStr("en='Not all the procedures were completed (completed %1 of %2)';ru='Не все процедуры удалось выполнить (выполнено %1 из %2)'");
 		Items.PictureInformation1.Picture = PictureLib.Error32;
 	EndIf;
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
@@ -394,7 +396,7 @@ Procedure RefreshInformationAboutUpdate(DataAboutUpdate, RefreshEnabledCompleted
 	EndIf;
 	
 	Items.InformationStateUpdate.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Completed: %1 of %2'"),
+		NStr("en='Completed: %1 of %2';ru='Выполнено: %1 из %2'"),
 		CompletedHandlers,
 		TotalHandlers);
 	
@@ -417,14 +419,18 @@ Procedure ChangeScheduleAfterScheduleSetup(Schedule, AdditionalParameters) Expor
 			Notification = New NotifyDescription("ChangeScheduleAfterQuestion", ThisObject, Schedule);
 			
 			QuestionButtons = New ValueList;
-			QuestionButtons.Add("ConfigureSchedule", NStr("en = 'Setup schedule'"));
-			QuestionButtons.Add("RecommendedSettings", NStr("en = 'Set recommended settings'"));
+			QuestionButtons.Add("ConfigureSchedule", NStr("en='Setup schedule';ru='Настроить расписание'"));
+			QuestionButtons.Add("RecommendedSettings", NStr("en='Set recommended settings';ru='Установить рекомендуемые настройки'"));
 			
-			MessageText = NStr("en = 'Data processing additional procedures are executed
-				|in the small portions, therefore for their correct work it is required to specify the retry interval after completion.
-				|
-				|For this in the schedule setting window it is required
-				|to go to the tab ""Daytime"" and fill in the ""Repeating through"" filed.'");
+			MessageText = NStr("en='Data processing additional procedures are executed"
+"in the small portions, therefore for their correct work it is required to specify the retry interval after completion."
+""
+"For this in the schedule setting window it is required"
+"to go to the tab ""Daytime"" and fill in the ""Repeating through"" filed.';ru='Дополнительные процедуры обработки данных выполняются небольшими порциями,"
+"поэтому для их корректной работы необходимо обязательно задать интервал повтора после завершения."
+""
+"Для этого в окне настройки расписания необходимо перейти на вкладку """"Дневное"""""
+"и заполнить поле """"Повторять через"""".'");
 			ShowQueryBox(Notification, MessageText, QuestionButtons,, "ConfigureSchedule");
 		Else
 			SetScheduleOfPostponedUpdate(Schedule);

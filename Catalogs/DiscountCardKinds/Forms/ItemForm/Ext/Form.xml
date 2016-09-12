@@ -31,11 +31,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Group pages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа страницы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group pages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа страницы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<ExtendedTooltip name="GroupPagesExtendedTooltip" id="59"/>
@@ -46,11 +54,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Main parameters</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основные параметры</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Main parameters group</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа основные параметры</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="MainParametersGroupExtendedTooltip" id="61"/>
@@ -61,6 +77,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Discount card owner from the Counterparties catalog shall be specified in a discount card. Owner information is displayed in discount cards report.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>В дисконтной карте потребуется указывать владельца дисконтной карты из справочника "Контрагенты". Информация о владельце выводится в отчёте по дисконтным картам.</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -74,11 +94,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Kind of payment card and kind of discount group</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа тип карты и вид скидки</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Kind of payment card and kind of discount group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа тип карты и вид скидки</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -141,6 +169,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>Fixed discount</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Фиксированная скидка</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.DiscountKindsForDiscountCards.EnumValue.FixedDiscount</Value>
 											</xr:Value>
@@ -153,6 +185,10 @@
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Progressive discount</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Накопительная скидка</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.DiscountKindsForDiscountCards.EnumValue.ProgressiveDiscount</Value>
@@ -179,11 +215,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Accumulation times group</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа периодичность накопления</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Accumulation times group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа периодичность накопления</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -197,6 +241,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Accumulate for</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Накапливать за</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="PeriodTypeContextMenu" id="48"/>
@@ -293,6 +341,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Lower threshold</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нижний порог</v8:content>
+										</v8:item>
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ProgressiveDiscountLimitsLowerBoundContextMenu" id="36"/>
@@ -325,11 +377,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Additionally</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительно</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Group additional</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа дополнительно</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="GroupAdditionalExtendedTooltip" id="63"/>
@@ -341,11 +401,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Magnetic card template</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Шаблон магнитной карты</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>By default, the codes are processed according to templates ";AnyCombinationOfCharacters?" (for example, ";000123548?") or ";AnyCombinationOfCharacters=AnyCombination?" (for example, ";01123=12343200?" - in this case the code between  ";" and "=" symbols is picked).</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>По умолчанию обрабатываются коды по шаблонам";ЛюбаяКомбинацияСимволов?", например ";000123548?" или ";ЛюбаяКомбинацияСимволов=ЛюбаяКобинация?", например ";01123=12343200?" (в этом случае берётся код между символами ";" и "=").</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -353,6 +421,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>It is filled in if it differs from the default template</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Заполняется, если отличен от шаблона по умолчанию</v8:content>
 								</v8:item>
 							</InputHint>
 							<ContextMenu name="DiscountCardTemplateContextMenu" id="95"/>
@@ -366,6 +438,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Comment</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Примечание</v8:content>
 								</v8:item>
 							</InputHint>
 							<ContextMenu name="CommentContextMenu" id="65"/>
@@ -394,6 +470,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Interval view</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Представление интервала</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>xs:string</v8:Type>
@@ -411,6 +491,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Accounting currency</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта ведения учета</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

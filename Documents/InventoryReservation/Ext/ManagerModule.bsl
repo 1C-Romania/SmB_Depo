@@ -837,7 +837,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryReservation, StructureAddit
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches",  StructureAdditionalProperties.AccountingPolicy.UseBatches);
-	Query.SetParameter("InventoryReservation", NStr("en = 'Inventory reservation'"));
+	Query.SetParameter("InventoryReservation", NStr("en='Inventory reservation';ru='Резервирование запасов'"));
 
 	ResultsArray = Query.ExecuteBatch();
 

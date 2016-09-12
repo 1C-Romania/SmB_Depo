@@ -185,7 +185,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 	If mCurrentPageNumber = 2 Then
 		
 		If Not ValueIsFilled(Company.Description) Then
-			MessageText = NStr("en = 'Specify short description'");
+			MessageText = NStr("en='Specify short description';ru='Укажите краткое наименование.'");
 			CommonUseClientServer.MessageToUser(
 				MessageText,
 				,
@@ -196,7 +196,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 		EndIf;
 		If Company.LegalEntityIndividual = PredefinedValue("Enum.LegalEntityIndividual.Ind")
 		AND Not ValueIsFilled(Individual.Description) Then
-			MessageText = NStr("en = 'Specify the full name.'");
+			MessageText = NStr("en='Specify the full name.';ru='Укажите ФИО.'");
 			CommonUseClientServer.MessageToUser(
 				MessageText,
 				,
@@ -326,7 +326,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		
 		Cancel = True;
 		NotifyDescription = New NotifyDescription("BeforeCloseEnd", ThisObject);
-		ShowQueryBox(NOTifyDescription, NStr("en = 'Save changes?'"), QuestionDialogMode.YesNoCancel);
+		ShowQueryBox(NOTifyDescription, NStr("en='Save changes?';ru='Сохранить изменения?'"), QuestionDialogMode.YesNoCancel);
 		
 	EndIf;
 	

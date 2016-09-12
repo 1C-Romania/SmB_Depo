@@ -41,11 +41,11 @@ Function EDFSettingUnique() Export
 		
 		Selection = Result.Select();
 		While Selection.Next() Do
-			MessagePattern = NStr("en = 'In infobase EDF setting between counterparty %1 and company %2 has already existed'");
+			MessagePattern = NStr("en='In infobase EDF setting between counterparty %1 and company %2 has already existed';ru='В информационной базе уже существует настройка ЭДО между контрагентом %1 и организацией %2'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Selection.Counterparty,
 				Selection.Company);
 			If ValueIsFilled(Selection.CounterpartyContract) Then
-				Pattern = NStr("en = '%1 according to contract %2'");
+				Pattern = NStr("en='%1 according to contract %2';ru='%1 по договору %2'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 										Pattern, MessageText, Selection.CounterpartyContract);
 			EndIf;
@@ -162,7 +162,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				True, PredefinedValue("Enum.EDExchangeFileFormats.XML")));
 			
 			If ExchangeFileStringArray.Count() = 0 Then
-				MessageText = NStr("en='Outgoing document format ""DocumentXML(*.xml)"" is mandatory for use.'");
+				MessageText = NStr("en='Outgoing document format ""DocumentXML(*.xml)"" is mandatory for use.';ru='Формат исходящего документа ""ДокументХML(*.xml)"" обязателен к использованию.'");
 				CommonUseClientServer.MessageToUser(MessageText, ,
 					"ExchangeFilesFormats", "Object", Cancel);
 			EndIf;
@@ -170,8 +170,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			If (ValueIsFilled(CompanyCertificateForDetails) AND Not ValueIsFilled(CounterpartyCertificateForEncryption.Get()))
 				OR (NOT ValueIsFilled(CompanyCertificateForDetails) AND ValueIsFilled(CounterpartyCertificateForEncryption.Get())) Then
 				
-				MessageText = NStr("en='For correct encryption work
-										|it is required to specify simultaneously encryption certificates for company and counterparty.'");
+				MessageText = NStr("en='For correct encryption work"
+"it is required to specify simultaneously encryption certificates for company and counterparty.';ru='Для корректной работы шифрования необходимо"
+"одновременно указывать сертификаты шифрования для организации и контрагента.'");
 				CommonUseClientServer.MessageToUser(MessageText, , , , Cancel);
 			EndIf;
 		EndIf;

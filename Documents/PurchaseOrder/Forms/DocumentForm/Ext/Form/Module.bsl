@@ -47,14 +47,17 @@ Procedure ProcessPricesKindAndSettlementsCurrencyChange(DocumentParameters)
 		WarningText = "";
 		If PriceKindChanged Then
 			
-			WarningText = NStr("en = 'Counterparty contract specifies the counterparty
-									|price kind that differs from the kind specified for the document! 
-									|Perhaps you have to refill prices.'") + Chars.LF + Chars.LF;
+			WarningText = NStr("en='Counterparty contract specifies the counterparty"
+"price kind that differs from the kind specified for the document! "
+"Perhaps you have to refill prices.';ru='Договор с контрагентом"
+"предусматривает вид цен контрагента, отличный от установленного в документе! "
+"Возможно, необходимо перезаполнить цены.'") + Chars.LF + Chars.LF;
 			
 		EndIf;
 		
-		WarningText = WarningText + NStr("en = 'Settlement currency of the contract with counterparty changed!
-									|It is necessary to check the document currency!'");
+		WarningText = WarningText + NStr("en='Settlement currency of the contract with counterparty changed!"
+"It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом!"
+"Необходимо проверить валюту документа!'");
 		
 		ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, True, PriceKindChanged, WarningText);
 		
@@ -74,8 +77,9 @@ Procedure ProcessPricesKindAndSettlementsCurrencyChange(DocumentParameters)
 		
 		If RecalculationRequired Then
 			
-			QuestionText = NStr("en = 'The counterparty contract allows for the kind of prices other than prescribed in the document! 
-				|Recalculate the document according to the contract?'");
+			QuestionText = NStr("en='The counterparty contract allows for the kind of prices other than prescribed in the document! "
+"Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает вид цен, отличный от установленного в документе! "
+"Пересчитать документ в соответствии с договором?'");
 			
 			NotifyDescription = New NotifyDescription("DefineDocumentRecalculateNeedByContractTerms", ThisObject, DocumentParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -509,7 +513,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en = '%Currency%'");
+			LabelText = NStr("en='%Currency%';ru='%Вал%'");
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
@@ -517,9 +521,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Kind of counterparty prices.
 	If ValueIsFilled(LabelStructure.CounterpartyPriceKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%CounterpartyPriceKind%'");
+			LabelText = LabelText + NStr("en='%CounterpartyPriceKind%';ru='%ВидЦенКонтрагента%'");
 		Else	
-			LabelText = LabelText + NStr("en = ' • %CounterpartyPriceKind%'");
+			LabelText = LabelText + NStr("en=' • %CounterpartyPriceKind%';ru=' • %ВидЦенКонтрагента%'");
 		EndIf;	
 		LabelText = StrReplace(LabelText, "%CounterpartyPriceKind%", TrimAll(String(LabelStructure.CounterpartyPriceKind)));
 	EndIf;
@@ -527,9 +531,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%VATTaxation%'");
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %VATTaxation%'");
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
 		EndIf;	
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
@@ -537,9 +541,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then	
 		If LabelStructure.AmountIncludesVAT Then	
-			LabelText = NStr("en = 'Amount includes VAT'");
+			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
 		Else		
-			LabelText = NStr("en = 'Amount does not include VAT'");
+			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
 		EndIf;	
 	EndIf;	
  
@@ -741,7 +745,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en = 'Data by barcode is not found: %1%; quantity: %2%'");
+		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -1161,7 +1165,7 @@ Procedure SetEditInListOption()
 		
 		Response = Undefined;
 		ShowQueryBox(New NotifyDescription("SetEditInListEndOption", ThisObject, New Structure("LineCount", LineCount)), 
-			NStr("en='All rows except the first will be deleted. Continue?'"),
+			NStr("en='All rows except the first will be deleted. Continue?';ru='Все строки кроме первой будут удалены. Продолжить?'"),
 			QuestionDialogMode.YesNo
 		);
 		Return;
@@ -1473,7 +1477,7 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 		If MessageText <> "" Then
 			
 			Message = New UserMessage;
-			Message.Text = ?(Cancel, NStr("en = 'Document is not posted! '") + MessageText, MessageText);
+			Message.Text = ?(Cancel, NStr("en='Document is not posted! ';ru='Документ не проведен! '") + MessageText, MessageText);
 			
 			If Cancel Then
 				Message.DataPath = "Object";
@@ -1653,7 +1657,7 @@ Procedure FillByBasis(Command)
 	
 	Response = Undefined;
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en = 'The  document will be completely refilled on the ""Customer''s order""! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='The  document will be completely refilled on the ""Customer''s order""! Continue?';ru='Документ будет полностью перезаполнен по ""Заказу покупателя""! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -1678,7 +1682,7 @@ EndProcedure  // FillExecute()
 Procedure SearchByBarcode(Command)
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en = 'Enter barcode'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
 	
 EndProcedure
 
@@ -1706,7 +1710,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.'"));
+		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -1724,7 +1728,7 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	
 	If Not Weight = Undefined Then
 		If Weight = 0 Then
-			MessageText = NStr("en = 'Electronic scales returned zero weight.'");
+			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			// Weight is received.
@@ -1819,7 +1823,7 @@ Procedure ChangeReserveFillByBalances(Command)
 	
 	If Object.Materials.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Tabular section ""Materials"" is not filled!'");
+		Message.Text = NStr("en='Tabular section ""Materials"" is not filled!';ru='Табличная часть ""Материалы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -1835,7 +1839,7 @@ Procedure ChangeReserveClearReserve(Command)
 	
 	If Object.Materials.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Tabular section ""Materials"" is not filled!'");
+		Message.Text = NStr("en='Tabular section ""Materials"" is not filled!';ru='Табличная часть ""Материалы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -2646,7 +2650,7 @@ Procedure LoadFromFileInventory(Command)
 	
 	DataLoadSettings.Insert("TabularSectionFullName", "PurchaseOrder.Inventory");
 	DataLoadSettings.Insert("TemplateNameWithTemplate","LoadFromFileInventory");
-	DataLoadSettings.Insert("Title", NStr("en = 'Import inventory from file'"));
+	DataLoadSettings.Insert("Title", NStr("en='Import inventory from file';ru='Загрузка запасов из файла'"));
 	
 	DataImportFromExternalSourcesClient.ShowDataImportFormFromExternalSource(DataLoadSettings, NotifyDescription, ThisObject);
 	
@@ -2747,7 +2751,7 @@ Procedure ProcessPreparedData(ImportResult)
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Data Import'"), EventLogLevel.Error, Metadata.Catalogs.ProductsAndServices, , ErrorDescription());
+		WriteLogEvent(NStr("en='Data Import';ru='Загрузка данных'"), EventLogLevel.Error, Metadata.Catalogs.ProductsAndServices, , ErrorDescription());
 		RollbackTransaction();
 		
 	EndTry;

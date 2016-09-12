@@ -167,7 +167,7 @@ Procedure RefreshWorldCountriesByClassifier(Val Add = False) Export
 		Except
 			Info = ErrorInfo();
 			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Error of recording of the country of the world %1 (code% 2) when updating the classifier, 3%'"),
+				NStr("en='Error of recording of the country of the world %1 (code% 2) when updating the classifier, 3%';ru='Ошибка записи страны мира %1 (код %2) при обновлении классификатора, %3'"),
 				Selection.Code, Selection.Description, BriefErrorDescription(Info));
 			WriteLogEvent(InfobaseUpdate.EventLogMonitorEvent(), 
 				EventLogLevel.Error,,,
@@ -198,7 +198,7 @@ Function ReferenceAccordingToClassifier(Val Filter, Val AdditionalInformation = 
 	// Make sure that country is present in the classifier.
 	DataSearch = ClassifierDataOfWorldCountriesByCode(Filter.Code);
 	If DataSearch=Undefined Then
-		Raise NStr("en='Invalid code of the country of the world for the search in the classifier'");
+		Raise NStr("en='Invalid code of the country of the world for the search in the classifier';ru='Некорректный код страны мира для поиска в классификаторе'");
 	EndIf;
 	
 	// Check whether it exists in catalog by the classifier data.

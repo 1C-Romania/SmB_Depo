@@ -217,10 +217,10 @@ Procedure RefreshFilterBankAccounts()
 		
 		Items.FilterByAccount.Title = 
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Bank account: %1'"),
+				NStr("en='Bank account: %1';ru='Банковский счет: %1'"),
 				Object.BankAccount);
 	Else
-		Items.FilterByAccount.Title = NStr("en='Bank account: <All>'")
+		Items.FilterByAccount.Title = NStr("en='Bank account: <All>';ru='Банковский счет: <По всем>'")
 	EndIf;
 	
 EndProcedure // RefreshFilterBankAccounts()

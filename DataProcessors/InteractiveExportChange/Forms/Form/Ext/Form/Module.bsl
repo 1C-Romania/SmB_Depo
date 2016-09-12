@@ -9,7 +9,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Parameters.Property("OpenByScenario") Then
-		Raise NStr("en='Data processor is not aimed for being used directly'");
+		Raise NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
 	EndIf;
 	
 	ThisDataProcessor = ThisObject();
@@ -20,7 +20,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not ValueIsFilled(Object.InfobaseNode) Then
-		Text = NStr("en='Data exchange setup is not found.'");
+		Text = NStr("en='Data exchange setup is not found.';ru='Настройка обмена данными не найдена.'");
 		DataExchangeServer.ShowMessageAboutError(Text, Cancel);
 		Return;
 	EndIf;
@@ -84,7 +84,7 @@ Procedure AdditionalRegistrationBeforeDeleting(Item, Cancel)
 	Selected = Items.AdditionalRegistration.SelectedRows;
 	Quantity = Selected.Count();
 	If Quantity>1 Then
-		PresentationText = NStr("en='Selected rows'");
+		PresentationText = NStr("en='Selected rows';ru='выбранные строки'");
 	ElsIf Quantity=1 Then
 		PresentationText = Items.AdditionalRegistration.CurrentData.Presentation;
 	Else
@@ -94,10 +94,10 @@ Procedure AdditionalRegistrationBeforeDeleting(Item, Cancel)
 	// Action will be executed from the confirmation.
 	Cancel = True;
 	
-	QuestionText = NStr("en='Delete from additional data %1?'");    
+	QuestionText = NStr("en='Delete from additional data %1?';ru='Удалить из дополнительных данных %1 ?'");    
 	QuestionText = StrReplace(QuestionText, "%1", PresentationText);
 	
-	QuestionTitle = NStr("en='Confirmation'");
+	QuestionTitle = NStr("en='Confirmation';ru='Подтверждение'");
 	
 	Notification = New NotifyDescription("AdditionalRegistrationBeforeDeletingEnd", ThisObject, New Structure);
 	Notification.AdditionalParameters.Insert("SelectedRows", Selected);
@@ -119,9 +119,9 @@ Procedure AdditionalRegistrationSelectionProcessing(Item, ValueSelected, Standar
 			// Restoration settings
 			SettingRepresentation = ValueSelected.SettingRepresentation;
 			If Not IsBlankString(ViewCurrentSettings) AND SettingRepresentation<>ViewCurrentSettings Then
-				QuestionText  = NStr("en='Restore settings ""%1""?'");
+				QuestionText  = NStr("en='Restore settings ""%1""?';ru='Восстановить настройки ""%1""?'");
 				QuestionText  = StrReplace(QuestionText, "%1", SettingRepresentation);
-				HeaderText = NStr("en='Confirmation'");
+				HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
 				
 				Notification = New NotifyDescription("AdditionalRegistrationSelectionProcessingEnd", ThisObject, New Structure);
 				Notification.AdditionalParameters.Insert("SettingRepresentation", SettingRepresentation);
@@ -179,7 +179,7 @@ Procedure SettingsOfFilters(Command)
 	// Choice from the menu - list
 	VariantList = ReadListOfSettingsOptionsServer();
 	
-	Text = NStr("en='Save the current setting...'");
+	Text = NStr("en='Save the current setting...';ru='Сохранить текущую настройку...'");
 	VariantList.Add(1, Text, , PictureLib.SaveReportSettings);
 	
 	Notification = New NotifyDescription("SelectionsSettingsVariantChoiceEnd", ThisObject);
@@ -199,8 +199,8 @@ Procedure SelectionsSettingsVariantChoiceEnd(Val SelectedItem, Val AdditionalPar
 		
 	SettingRepresentation = SelectedItem.Value;
 	If TypeOf(SettingRepresentation)=Type("String") Then
-		HeaderText = NStr("en='Confirmation'");
-		QuestionText   = NStr("en='Restore settings ""%1""?'");
+		HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
+		QuestionText   = NStr("en='Restore settings ""%1""?';ru='Восстановить настройки ""%1""?'");
 		QuestionText   = StrReplace(QuestionText, "%1", SettingRepresentation);
 		
 		Notification = New NotifyDescription("FiltersSettingsEnd", ThisObject, New Structure);
@@ -343,7 +343,7 @@ Function EditingRowFilterAdditionalListServer(ChoiceStructure)
 	CurrentData.Period       = ChoiceStructure.PeriodOfData;
 	CurrentData.Filter        = ChoiceStructure.SettingsComposer.Settings.Filter;
 	CurrentData.SelectionString = FilterPresentation(CurrentData.Period, CurrentData.Filter);
-	CurrentData.Quantity   = NStr("en='Not calculated'");
+	CurrentData.Quantity   = NStr("en='Not calculated';ru='Не рассчитано'");
 	
 	RefreshTotalQuantityLabel();
 	
@@ -365,7 +365,7 @@ Function AddInExportAdditionalContent(Item)
 		String.SelectionString  = FilterPresentation(String.Period, String.Filter);
 		Object.AdditionalRegistration.Sort("Presentation");
 		
-		String.Quantity = NStr("en='Not calculated'");
+		String.Quantity = NStr("en='Not calculated';ru='Не рассчитано'");
 		RefreshTotalQuantityLabel();
 	EndIf;
 	
@@ -405,7 +405,7 @@ Function QuantityUpdated()
 	
 	BackgroundJobResult = LongActions.ExecuteInBackground(UUID,
 		"DataExchangeServer.InteractiveExportChange_GenerateValueTree",
-		JobParameters, NStr("en='Objects quantity calculation for sending at synchronization'"));
+		JobParameters, NStr("en='Objects quantity calculation for sending at synchronization';ru='Расчет количества объектов для отправки при синхронизации'"));
 		
 	BackgroundJobID = BackgroundJobResult.JobID;
 	BackgroundJobResultAddress = BackgroundJobResult.StorageAddress;
@@ -468,9 +468,9 @@ Procedure RefreshTotalQuantityLabel(Quantity = Undefined)
 	StopCalculationAmount();
 	
 	If Quantity = Undefined Then
-		CountText = NStr("en='<not calculated>'");
+		CountText = NStr("en='<not calculated>';ru='<не рассчитано>'");
 	Else
-		CountText = NStr("en = 'Objects: %1'");
+		CountText = NStr("en='Objects: %1';ru='Объектов: %1'");
 		CountText = StrReplace(CountText, "%1", Format(Quantity, "NZ="));
 	EndIf;
 	
@@ -479,7 +479,7 @@ EndProcedure
 
 &AtServer
 Procedure ResetTableCountsLabel()
-	CountsText = NStr("en='Not calculated'");
+	CountsText = NStr("en='Not calculated';ru='Не рассчитано'");
 	For Each String IN Object.AdditionalRegistration Do
 		String.Quantity = CountsText;
 	EndDo;

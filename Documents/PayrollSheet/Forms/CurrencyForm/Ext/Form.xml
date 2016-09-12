@@ -41,11 +41,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вал.</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Currency</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вал.</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -58,11 +66,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вал.</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency exchange rate multiplicity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Валюта курс кратность</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
@@ -76,6 +92,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Accrual</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Начисление</v8:content>
 								</v8:item>
 							</Title>
 							<Width>10</Width>
@@ -109,6 +129,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Multiplicity</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Multiplicity</v8:content>
+								</v8:item>
 							</ToolTip>
 							<Width>4</Width>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -129,11 +153,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Payment currency</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Валюта платежа</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Group document currency</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа валюта документа</v8:content>
 						</v8:item>
 					</ToolTip>
 					<HorizontalStretch>true</HorizontalStretch>
@@ -148,6 +180,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>payments</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>платежи</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Left</TitleLocation>
@@ -187,11 +223,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Recalculate</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пересчитать</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Recalculate</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пересчитать</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
@@ -224,6 +268,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вал.</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
@@ -236,6 +284,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Recalculate amounts by currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать суммы по валюте</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -246,6 +298,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Document Currency Before Changing</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта документа перед изменением</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -258,6 +314,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange rate</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Курс валюты</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
@@ -267,6 +327,10 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>Multiplicity</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>Multiplicity</v8:content>
 				</v8:item>
 			</Title>
@@ -280,6 +344,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Currency rates</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Курсы валют</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -290,6 +358,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вал.</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -302,6 +374,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Exchange rate</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Курс валюты</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
@@ -311,6 +387,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Multiplicity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Multiplicity</v8:content>
 						</v8:item>
 					</Title>
@@ -326,6 +406,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Rate Before Change</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Курс перед изменением</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
@@ -337,6 +421,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Multiplicity before change</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кратность перед изменением</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
@@ -347,6 +435,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Document date</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата документа</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -362,6 +454,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вал.</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
@@ -372,6 +468,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Settlements currency before change</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта расчетов перед изменением</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -384,6 +484,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange rate</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Курс валюты</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
@@ -394,6 +498,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Rate document currency</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Курс валюта документа</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -406,6 +514,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Multiplicity</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Multiplicity</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
@@ -416,6 +528,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Ratio document currency before change</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кратность валюта документа перед изменением</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -430,11 +546,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Bt cancel</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кн отмена</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CancelExecute</Action>
@@ -445,11 +569,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Bt OK</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кн ОК</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ButtOKExecute</Action>

@@ -45,7 +45,7 @@ Function ExportParameters() Export
 	If ForExport Then
 		Return New FixedStructure(Parameters);
 	Else
-		Raise NStr("en = 'The container has not been initialized for exporting data.'");
+		Raise NStr("en='The container has not been initialized for exporting data.';ru='Контейнер не инициализирован для выгрузки данных!'");
 	EndIf;
 	
 EndFunction
@@ -98,7 +98,7 @@ Procedure SetObjectsQuantity(Val FullPathToFile, Val ObjectsCount = Undefined) E
 	Filter.Insert("DescriptionFull", FullPathToFile);
 	FilesInSet = Content.FindRows(Filter);
 	If FilesInSet.Count() = 0 Or FilesInSet.Count() > 1 Then 
-		Raise NStr("en = 'File is not found'");
+		Raise NStr("en='File is not found';ru='Файл не найден'");
 	EndIf;
 	
 	FilesInSet[0].ObjectsCount = ObjectsCount;
@@ -112,7 +112,7 @@ Procedure DeleteFile(Val FullPathToFile) Export
 	ContentRow = Content.Find(FullPathToFile, "DescriptionFull");
 	If ContentRow = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File %1 is not found in the container content.'"), FullPathToFile);
+			NStr("en='File %1 is not found in the container content.';ru='Файл %1 не найден в составе контейнера!'"), FullPathToFile);
 	Else
 		
 		Content.Delete(ContentRow);
@@ -129,7 +129,7 @@ Procedure ReplaceFile(Val NameInContainer, Val FullPathToFile, Val DeleteReplace
 	SourceFileRow = Content.Find(NameInContainer, "Name");
 	If SourceFileRow = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File with identifier %1 is not found in the container.'"), NameInContainer);
+			NStr("en='File with identifier %1 is not found in the container.';ru='Файл с идентификатором %1 не найден в составе контейнера!'"), NameInContainer);
 	Else
 		
 		SourceFileName = SourceFileRow.DescriptionFull;
@@ -161,7 +161,7 @@ Procedure UpdateImportedFilesContent()
 		
 		File = New File(CurrentFile.DescriptionFull);
 		If Not File.Exist() Then 
-			Raise NStr("en = 'The file was deleted'");
+			Raise NStr("en='The file was deleted';ru='Файл был удален'");
 		EndIf;
 		
 		CurrentFile.Size = File.Size();
@@ -195,8 +195,9 @@ Procedure InitializeImport(Val ImportingDirectory, Val ImportParameters) Export
 	ContentFile = New File(ContentFileName);
 	If Not ContentFile.Exist() Then
 		
-		Raise NStr("en = 'An error occurred while importing the data. Incorrect file format. File PackageContents.xml is not found in the archive.
-                                |The file might have been received from previous versions or corrupted.'");
+		Raise NStr("en='An error occurred while importing the data. Incorrect file format. File PackageContents.xml is not found in the archive."
+"The file might have been received from previous versions or corrupted.';ru='Ошибка загрузки данных. Неверный формат файла. В архиве не обнаржен файл PackageContents.xml."
+"Возможно, файл был получен из предыдущих версий программы или поврежден!'");
 		
 	EndIf;
 	
@@ -208,14 +209,14 @@ Procedure InitializeImport(Val ImportingDirectory, Val ImportParameters) Export
 			Or ReadStream.Name <> "Data" Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'The XML reading error. Incorrect file format. The beginning of the item %1 is expected.'"),
+			NStr("en='The XML reading error. Incorrect file format. The beginning of the item %1 is expected.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента %1.'"),
 			"Data"
 		);
 		
 	EndIf;
 	
 	If Not ReadStream.Read() Then
-		Raise NStr("en = 'The XML reading error. File completion is detected.'");
+		Raise NStr("en='The XML reading error. File completion is detected.';ru='Ошибка чтения XML. Обнаружено завершение файла.'");
 	EndIf;
 	
 	While ReadStream.NodeType = XMLNodeType.StartElement Do
@@ -245,7 +246,7 @@ Function ImportParameters() Export
 	If ForImport Then
 		Return New FixedStructure(Parameters);
 	Else
-		Raise NStr("en = 'The container has not been initialized for importing data.'");
+		Raise NStr("en='The container has not been initialized for importing data.';ru='Контейнер не инициализирован для загрузки данных!'");
 	EndIf;
 	
 EndFunction
@@ -273,7 +274,7 @@ Function GetFileFromDirectory(Val FileKind, Val DataType = Undefined) Export
 	If Files.Count() = 0 Then
 		Return Undefined;
 	ElsIf Files.Count() > 1 Then
-		Raise NStr("en = 'Duplicate data exists in the export'");
+		Raise NStr("en='Duplicate data exists in the export';ru='В выгрузке содержится дублирующаяся информация'");
 	EndIf;
 	
 	Return Files[0].DescriptionFull;
@@ -295,11 +296,11 @@ Function GetRandomFile(Val DataType = Undefined) Export
 	Files = GetFilesFromSet(DataExportImportService.CustomData() , DataType);
 	If Files.Count() = 0 Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Arbitrary file with data type %1 does not exist in the export.'"),
+			NStr("en='Arbitrary file with data type %1 does not exist in the export.';ru='В выгрузке отсутствует произвольный файл с типом данным %1!'"),
 			DataType
 		);
 	ElsIf Files.Count() > 1 Then
-		Raise NStr("en = 'Duplicate data exists in the export'");
+		Raise NStr("en='Duplicate data exists in the export';ru='В выгрузке содержится дублирующаяся информация'");
 	EndIf;
 	
 	Return Files[0].DescriptionFull;
@@ -333,7 +334,7 @@ Function GetFileDescriptionsFromDirectory(Val FileKind, Val DataType = Undefined
 		
 	Else
 		
-		Raise NStr("en = 'Unknown file kind'");
+		Raise NStr("en='Unknown file kind';ru='Неизвестный вид файла'");
 		
 	EndIf;
 	
@@ -374,7 +375,7 @@ Function GetFullFileName(Val RelativeFileName) Export
 	
 	If ContentRow = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File with relative name %1 is not found in the container.'"),
+			NStr("en='File with relative name %1 is not found in the container.';ru='В контейнере не обнаружен файл с относительным именем %1!'"),
 			RelativeFileName
 		);
 	Else
@@ -391,7 +392,7 @@ Function GetRelativeFileName(Val FullFileName) Export
 	
 	If ContentRow = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File %1 is not found in the container.'"),
+			NStr("en='File %1 is not found in the container.';ru='В контейнере не обнаружен файл %1!'"),
 			FullFileName
 		);
 	Else
@@ -425,19 +426,19 @@ EndFunction
 Procedure CheckContainerInitialization(Val WhenInitializing = False)
 	
 	If ForExport AND ForImport Then
-		Raise NStr("en = 'Invalid container initialization.'");
+		Raise NStr("en='Invalid container initialization.';ru='Некорректная инициализация контейнера!'");
 	EndIf;
 	
 	If WhenInitializing Then
 		
 		If ContainerInitialized <> Undefined AND ContainerInitialized Then
-			Raise NStr("en = 'The export container has already been initialized.'");
+			Raise NStr("en='The export container has already been initialized.';ru='Контейнер выгрузки уже был инициализирован ранее!'");
 		EndIf;
 		
 	Else
 		
 		If Not ContainerInitialized Then
-			Raise NStr("en = 'Export container is not initialized.'");
+			Raise NStr("en='Export container is not initialized.';ru='Контейнер выгрузки не инициализирован!'");
 		EndIf;
 		
 	EndIf;
@@ -517,7 +518,7 @@ Function GetDirectoryToLocateFile(Val FileKind)
 		
 	Else
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'File kind %1 is not supported.'"), FileKind);
+			NStr("en='File kind %1 is not supported.';ru='Вид файла %1 не поддерживается!'"), FileKind);
 	EndIf;
 		
 EndFunction

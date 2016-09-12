@@ -97,7 +97,7 @@ Function StartRequestsProcessing(Val Queries, Val ConnectMode, DisconnectMode, V
 	Task = BackgroundJobs.Execute("WorkInSafeMode.ExecuteConfigurationMethod",
 			MethodCallParameters,
 			,
-			NStr("en = 'Processing requests to use external resources...'"));
+			NStr("en='Processing requests to use external resources...';ru='Обработка запросов на использование внешних ресурсов...'"));
 	
 	JobID = Task.UUID;
 	
@@ -149,7 +149,7 @@ Function RequestsProcessed(Val JobID)
 	EndIf;
 	
 	If Task = Undefined Then
-		Raise(NStr("en = 'An error occurred while processing requests. A job to process the requests is not found.'"));
+		Raise(NStr("en='An error occurred while processing requests. A job to process the requests is not found.';ru='При обработке запросов произошла ошибка - не найдено задание обработки запросов.'"));
 	EndIf;
 	
 	If Task.State = BackgroundJobState.Failed Then
@@ -157,10 +157,10 @@ Function RequestsProcessed(Val JobID)
 		If JobError <> Undefined Then
 			Raise(DetailErrorDescription(JobError));
 		Else
-			Raise(NStr("en = 'An error occurred while processing requests. A job to process the requests is terminated with an unknown error.'"));
+			Raise(NStr("en='An error occurred while processing requests. A job to process the requests is terminated with an unknown error.';ru='При обработке запросов произошла ошибка - задание обработки запросов завершилось с неизвестной ошибкой.'"));
 		EndIf;
 	ElsIf Task.State = BackgroundJobState.Canceled Then
-		Raise(NStr("en = 'An error occurred while processing requests. A job to process the requests is terminated by administrator.'"));
+		Raise(NStr("en='An error occurred while processing requests. A job to process the requests is terminated by administrator.';ru='При обработке запросов произошла ошибка - задание обработки запросов было отменено администратором.'"));
 	Else
 		JobID = Undefined;
 		Return True;
@@ -205,7 +205,7 @@ Procedure CancelRequestsProcessing(Val JobID)
 		Task.Cancel();
 	Except
 		// The job might end at the moment and there is no error.
-		WriteLogEvent(NStr("en = 'Configure permissions to use external resources. Cancel background job'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Configure permissions to use external resources. Cancel background job';ru='Настройка разрешений на использование внешних ресурсов.Отмена выполнения фонового задания'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	

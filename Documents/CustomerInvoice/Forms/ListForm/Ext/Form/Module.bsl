@@ -395,7 +395,7 @@ Procedure CreateCustomerInvoice(Command)
 	
 	If Items.ListCustomerOrders.CurrentData = Undefined Then
 		
-		WarningText = NStr("en = 'Command can not be executed for the specified object'");
+		WarningText = NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'");
 		ShowMessageBox(Undefined,WarningText);
 		Return;
 		
@@ -413,7 +413,7 @@ Procedure CreateCustomerInvoice(Command)
 		DataStructure = CheckKeyAttributesOfOrders(OrdersArray);
 		If DataStructure.GenerateFewOrders Then
 			
-			MessageText = NStr("en = 'The orders differ by data (%DataPresentation%) of the documents header! Generate several customer invoices?'");
+			MessageText = NStr("en='The orders differ by data (%DataPresentation%) of the documents header! Generate several customer invoices?';ru='Заказы отличаются данными (%ПредставлениеДанных%) шапки документов! Сформировать несколько расходных накладных?'");
 			MessageText = StrReplace(MessageText, "%DataPresentation%", DataStructure.DataPresentation);
 			Response = Undefined;
 
@@ -441,7 +441,7 @@ Procedure CreateCustomerInvoiceEnd(Result, AdditionalParameters) Export
     If Response = DialogReturnCode.Yes Then
         
         SalesDodumentsArray = GenerateSalesDocumentsAndWrite(OrdersArray);
-        Text = NStr("en='Creating:'");
+        Text = NStr("en='Creating:';ru='Создание:'");
         For Each RowDocumentSales IN SalesDodumentsArray Do
             
             ShowUserNotification(Text, GetURL(RowDocumentSales), RowDocumentSales, PictureLib.Information32);

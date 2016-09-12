@@ -239,7 +239,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "PaymentOrder";
-	PrintCommand.Presentation = NStr("en = 'Payment order'");
+	PrintCommand.Presentation = NStr("en='Payment order';ru='Порядок платежа'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

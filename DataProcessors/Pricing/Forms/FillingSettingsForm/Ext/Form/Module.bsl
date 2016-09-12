@@ -130,7 +130,7 @@ Procedure AddProductsAndServices(Command)
 	
 	If Not ValueIsFilled(ParametersStructure.ValueSelected) Then
 		
-		MessageText = NStr("en = 'Filter value for filling has not been selected'");
+		MessageText = NStr("en='Filter value for filling has not been selected';ru='Не выбрано значения отбора для заполнения'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		

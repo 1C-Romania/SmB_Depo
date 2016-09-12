@@ -21,6 +21,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Amount</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Amount</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -30,6 +34,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Item (income)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статья (приход)</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -138,6 +146,10 @@ FROM
 					<v8:lang>en</v8:lang>
 					<v8:content>Item (expense)</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статья (расход)</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<dataSource>DataSource1</dataSource>
@@ -205,6 +217,10 @@ GROUP BY
 				<v8:lang>en</v8:lang>
 				<v8:content>Begin of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -224,6 +240,10 @@ GROUP BY
 				<v8:lang>en</v8:lang>
 				<v8:content>End of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Окончание периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -242,6 +262,10 @@ GROUP BY
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Period</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>отчетный период</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -355,6 +379,10 @@ GROUP BY
 								<v8:lang>en</v8:lang>
 								<v8:content>Cash flow</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Cash flow</v8:content>
+							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
@@ -427,6 +455,10 @@ GROUP BY
 								<v8:lang>en</v8:lang>
 								<v8:content>Company: </v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Организация: </v8:content>
+							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
 					<dcsat:item xsi:type="dcsat:Field">
@@ -480,6 +512,10 @@ GROUP BY
 								<v8:lang>en</v8:lang>
 								<v8:content>Period: </v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Период: </v8:content>
+							</v8:item>
 						</dcsat:value>
 						<dcsat:appearance>
 							<dcscor:item>
@@ -501,6 +537,10 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
+								<v8:content> - </v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
 								<v8:content> - </v8:content>
 							</v8:item>
 						</dcsat:value>
@@ -663,6 +703,10 @@ GROUP BY
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Cash assets, Opening balance</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Денежные средства на начало периода</v8:content>
 							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
@@ -858,6 +902,10 @@ GROUP BY
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Cash assets Receipt</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Поступления денежных средств:</v8:content>
 							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
@@ -1091,6 +1139,10 @@ GROUP BY
 								<v8:lang>en</v8:lang>
 								<v8:content>Total Income</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Итого поступлений</v8:content>
+							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
@@ -1285,6 +1337,10 @@ GROUP BY
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Cash assets Outcome:</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Выбытия денежных средств:</v8:content>
 							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
@@ -1506,6 +1562,10 @@ GROUP BY
 								<v8:lang>en</v8:lang>
 								<v8:content>Total Outcome</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Итого выбытия</v8:content>
+							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
@@ -1696,6 +1756,10 @@ GROUP BY
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Net Income / Outcome</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Чистый приток / отток</v8:content>
 							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
@@ -1888,6 +1952,10 @@ GROUP BY
 								<v8:lang>en</v8:lang>
 								<v8:content>Cash assets, closing balance</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Денежные средства на конец периода</v8:content>
+							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
@@ -2029,6 +2097,10 @@ GROUP BY
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
+				<v8:content>Cash flow</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
 				<v8:content>Cash flow</v8:content>
 			</v8:item>
 		</dcsset:presentation>

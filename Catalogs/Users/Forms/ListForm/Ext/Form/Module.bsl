@@ -252,8 +252,9 @@ Procedure UsersGroupsDrag(Item, DragParameters, StandardProcessing, String, Fiel
 	
 	If SelectHierarchy Then
 		ShowMessageBox(,
-			NStr("en = 'To drag user names to groups,
-			           |clear the ""Show child group users"" check box.'"));
+			NStr("en='To drag user names to groups,"
+"clear the ""Show child group users"" check box.';ru='Для перетаскивания пользователя"
+"в группы необходимо отключить флажок ""Показывать пользователей дочерних групп"".'"));
 		Return;
 	EndIf;
 	
@@ -274,12 +275,12 @@ Procedure UsersGroupsDrag(Item, DragParameters, StandardProcessing, String, Fiel
 	ActionToDeleteUser = (SettingsStored.GroupAllUsers = String);
 	
 	ActionWithUser = ?((SettingsStored.GroupAllUsers = Items.UsersGroups.CurrentRow),
-		NStr("en = 'Enable'"),
-		?(Move, NStr("en = 'Move'"), NStr("en = 'Copy'")));
+		NStr("en='Enable';ru='Включить'"),
+		?(Move, NStr("en='Move';ru='Перемещение'"), NStr("en='Copy';ru='Скопировать'")));
 	
 	If FolderIsMarkedForDelete Then
-		ActionsTemplate = ?(Move, NStr("en = 'Group ""%1"" is marked for deletion. %2'"), 
-			NStr("en = 'Group ""%1"" is marked for deletion. %2'"));
+		ActionsTemplate = ?(Move, NStr("en='Group ""%1"" is marked for deletion. %2';ru='Группа ""%1"" помечена на удаление. %2'"), 
+			NStr("en='Group ""%1"" is marked for deletion. %2';ru='Группа ""%1"" помечена на удаление. %2'"));
 		ActionWithUser = StringFunctionsClientServer.PlaceParametersIntoString(
 			ActionsTemplate, String(String), ActionWithUser);
 	EndIf;
@@ -287,11 +288,11 @@ Procedure UsersGroupsDrag(Item, DragParameters, StandardProcessing, String, Fiel
 	If UserCount = 1 Then
 		
 		If ActionToDeleteUser Then
-			QuestionTemplate = NStr("en = 'Are you sure you want to exclude user %2 from group %4?'");
+			QuestionTemplate = NStr("en='Are you sure you want to exclude user %2 from group %4?';ru='Исключить пользователя ""%2"" из группы ""%4""?'");
 		ElsIf Not FolderIsMarkedForDelete Then
-			QuestionTemplate = NStr("en = '%1 users ""%2"" into group ""%3""?'");
+			QuestionTemplate = NStr("en='%1 users ""%2"" into group ""%3""?';ru='%1 пользователя ""%2"" в группу ""%3""?'");
 		Else
-			QuestionTemplate = NStr("en = '%1 user %2 to this group?'");
+			QuestionTemplate = NStr("en='%1 user %2 to this group?';ru='%1 пользователя ""%2"" в эту группу?'");
 		EndIf;
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
 			QuestionTemplate, ActionWithUser, String(DragParameters.Value[0]),
@@ -300,11 +301,11 @@ Procedure UsersGroupsDrag(Item, DragParameters, StandardProcessing, String, Fiel
 	Else
 		
 		If ActionToDeleteUser Then
-			QuestionTemplate = NStr("en = 'Are you sure you want to exclude users (%2) from group %4?'");
+			QuestionTemplate = NStr("en='Are you sure you want to exclude users (%2) from group %4?';ru='Исключить пользователей (%2) из группы ""%4""?'");
 		ElsIf Not FolderIsMarkedForDelete Then
-			QuestionTemplate = NStr("en = '%1 users (%2) into group ""%3""?'");
+			QuestionTemplate = NStr("en='%1 users (%2) into group ""%3""?';ru='%1 пользователей (%2) в группу ""%3""?'");
 		Else
-			QuestionTemplate = NStr("en = '%1 users (%2) to this group?'");
+			QuestionTemplate = NStr("en='%1 users (%2) to this group?';ru='%1 пользователей (%2) в эту группу?'");
 		EndIf;
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
 			QuestionTemplate, ActionWithUser, UserCount,
@@ -648,7 +649,7 @@ Procedure ChangeParametersExtensionPickForm()
 		// Show headers of the UsersList and UsersGroups lists.
 		Items.UsersGroups.TitleLocation          = FormItemTitleLocation.Top;
 		Items.UsersList.TitleLocation           = FormItemTitleLocation.Top;
-		Items.UsersList.Title                    = NStr("en = 'Users in group'");
+		Items.UsersList.Title                    = NStr("en='Users in group';ru='Пользователи в группе'");
 		If AnExtendedFormOfSelectionOptions.Property("PickupGroupsIsNotPossible") Then
 			Items.ChooseGroup.Visible                     = False;
 		EndIf;
@@ -666,9 +667,9 @@ EndProcedure
 Procedure UpdateTitleFromListUsersAndGroupSelected()
 	
 	If SettingsStored.UseGroups Then
-		TitleSelectedUsersAndGroups = NStr("en = 'Selected users and groups (%1)'");
+		TitleSelectedUsersAndGroups = NStr("en='Selected users and groups (%1)';ru='Выбранные пользователи и группы (%1)'");
 	Else
-		TitleSelectedUsersAndGroups = NStr("en = 'Selected users (%1)'");
+		TitleSelectedUsersAndGroups = NStr("en='Selected users (%1)';ru='Выбранные пользователи (%1)'");
 	EndIf;
 	
 	UserCount = SelectedUsersAndGroups.Count();
@@ -678,9 +679,9 @@ Procedure UpdateTitleFromListUsersAndGroupSelected()
 	Else
 		
 		If SettingsStored.UseGroups Then
-			Items.ListOfSelectedUsersAndGroups.Title = NStr("en = 'Selected users and groups'");
+			Items.ListOfSelectedUsersAndGroups.Title = NStr("en='Selected users and groups';ru='Выбранные пользователи и группы'");
 		Else
-			Items.ListOfSelectedUsersAndGroups.Title = NStr("en = 'Selected users'");
+			Items.ListOfSelectedUsersAndGroups.Title = NStr("en='Selected users';ru='Выбранные пользователи'");
 		EndIf;
 		
 	EndIf;
@@ -778,20 +779,20 @@ Procedure SetupFormByUsingUsersGroups()
 				If SettingsStored.AdvancedSelection Then
 					Title = SettingsStored.FormHeaderSelection;
 				Else
-					Title = NStr("en = 'User and group selection'");
+					Title = NStr("en='User and group selection';ru='Подбор пользователей и групп'");
 				EndIf;
 				
 				Items.ChooseUser.Title =
-					NStr("en = 'Select users'");
+					NStr("en='Select users';ru='Выбор пользователей'");
 				
 				Items.ChooseGroupUsers.Title =
-					NStr("en = 'Select groups'");
+					NStr("en='Select groups';ru='Выбрать группы'");
 			Else
 				
 				If SettingsStored.AdvancedSelection Then
 					Title = SettingsStored.FormHeaderSelection;
 				Else
-					Title = NStr("en = 'User selection'");
+					Title = NStr("en='User selection';ru='Подбор пользователей'");
 				EndIf;
 				
 			EndIf;
@@ -799,11 +800,11 @@ Procedure SetupFormByUsingUsersGroups()
 			// Selection mode.
 			If UserGroupChoice Then
 				
-				Title = NStr("en = 'Select user and group'");
+				Title = NStr("en='Select user and group';ru='Выбор пользователя или группы'");
 				
-				Items.ChooseUser.Title = NStr("en = 'Select user'");
+				Items.ChooseUser.Title = NStr("en='Select user';ru='Выбрать пользователя'");
 			Else
-				Title = NStr("en = 'Select user'");
+				Title = NStr("en='Select user';ru='Выбрать пользователя'");
 			EndIf;
 		EndIf;
 	EndIf;
@@ -856,7 +857,7 @@ Procedure UsersGroupsDragEnd(Response, AdditionalParameters) Export
 	
 	If UserMessage.HasErrors = False Then
 		ShowUserNotification(
-			NStr("en = 'User''s move'"), , UserMessage.Message, PictureLib.Information32);
+			NStr("en=""User's move"";ru='Перемещение пользователей'"), , UserMessage.Message, PictureLib.Information32);
 	Else
 		ShowMessageBox(,UserMessage.Message);
 	EndIf;

@@ -150,9 +150,9 @@ Procedure Initialization() Export
 	MessageSubject = "Exchange message (%1)"; // String can not be localized.
 	MessageSubject = StringFunctionsClientServer.PlaceParametersIntoString(MessageSubject, MessageFileTemplateName);
 	
-	mBodyMessageIsSimple	= NStr("en = 'Data exchange message'");
-	mBodyMessageIsCompressed	= NStr("en = 'Data exchange compressed message'");
-	mBodyMessageIsBatched	= NStr("en = 'Burst data exchange message'");
+	mBodyMessageIsSimple	= NStr("en='Data exchange message';ru='Сообщение обмена данными'");
+	mBodyMessageIsCompressed	= NStr("en='Data exchange compressed message';ru='Сжатое сообщение обмена данными'");
+	mBodyMessageIsBatched	= NStr("en='Burst data exchange message';ru='Пакетное сообщение обмена данными'");
 	
 EndProcedure
 
@@ -304,7 +304,7 @@ Function SendExchangeMessage()
 		
 		Try
 			
-			Archiver = New ZipFileWriter(ArchiveTempFileName, ExchangeMessageArchivePassword, NStr("en = 'Exchange message file'"));
+			Archiver = New ZipFileWriter(ArchiveTempFileName, ExchangeMessageArchivePassword, NStr("en='Exchange message file';ru='Файл сообщения обмена'"));
 			Archiver.Add(ExchangeMessageFileName());
 			Archiver.Write();
 			
@@ -404,7 +404,7 @@ Function GetExchangeMessage()
 		
 		GetMessageAboutError(104);
 		
-		MessageString = NStr("en = 'No message with header ""%1"" has been found'");
+		MessageString = NStr("en='No message with header ""%1"" has been found';ru='Не обнаружены письма с заголовком: ""%1""'");
 		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, MessageSubject);
 		SupplementErrorMessage(MessageString);
 		
@@ -504,7 +504,7 @@ EndProcedure
 Procedure SetStatusBarMessageAboutError(Val Message)
 	
 	If Message = Undefined Then
-		Message = NStr("en = 'Internal error'");
+		Message = NStr("en='Internal error';ru='Внутренняя ошибка'");
 	EndIf;
 	
 	ErrorMessageString   = Message;
@@ -553,23 +553,23 @@ Procedure ErrorMessagesInitialization()
 	ErrorMessages = New Map;
 	
 	// Common error codes
-	ErrorMessages.Insert(001, NStr("en = 'Exchange messages have not been found'"));
-	ErrorMessages.Insert(002, NStr("en = 'Error while unzipping message''s zipped file'"));
-	ErrorMessages.Insert(003, NStr("en = 'Error while zipping the file of message exchange'"));
+	ErrorMessages.Insert(001, NStr("en='Exchange messages have not been found';ru='Не обнаружены сообщения обмена.'"));
+	ErrorMessages.Insert(002, NStr("en=""Error while unzipping message's zipped file"";ru='Ошибка при распаковке сжатого файла сообщения.'"));
+	ErrorMessages.Insert(003, NStr("en='Error while zipping the file of message exchange';ru='Ошибка при сжатии файла сообщения обмена.'"));
 	ErrorMessages.Insert(004, NStr("ru = ""Error when creating temporary directory'."));
-	ErrorMessages.Insert(005, NStr("en = 'The archive does not contain the exchange file.'"));
-	ErrorMessages.Insert(006, NStr("en = 'Exchange message is not sent: size limit has been exceeded.'"));
+	ErrorMessages.Insert(005, NStr("en='The archive does not contain the exchange file.';ru='Архив не содержит файл сообщения обмена.'"));
+	ErrorMessages.Insert(006, NStr("en='Exchange message is not sent: size limit has been exceeded.';ru='Сообщение обмена не отправлено: превышен допустимый размер сообщения.'"));
 	
 	// Errors codes, that are dependent on the transport kind.
-	ErrorMessages.Insert(101, NStr("en = 'Error of initialization: no email record of exchange message transporting'"));
-	ErrorMessages.Insert(102, NStr("en = 'Error while sending email message'"));
-	ErrorMessages.Insert(103, NStr("en = 'Error while receiving the headings from the email server'"));
-	ErrorMessages.Insert(104, NStr("en = 'Exchange messages have not been found at the mail server'"));
-	ErrorMessages.Insert(105, NStr("en = 'Error while receiving messages from the email server'"));
-	ErrorMessages.Insert(106, NStr("en = 'Error while recording file of the message exchange to disk'"));
-	ErrorMessages.Insert(107, NStr("en = 'Verification parameters of the account record has  completed with errors'"));
-	ErrorMessages.Insert(108, NStr("en = 'Maximum size of the exchange message has been exceeded'"));
-	ErrorMessages.Insert(109, NStr("en = 'Error: file with message has not been found in the mail message'"));
+	ErrorMessages.Insert(101, NStr("en='Error of initialization: no email record of exchange message transporting';ru='Ошибка инициализации: не указана учетная запись электронной почты транспорта сообщений обмена.'"));
+	ErrorMessages.Insert(102, NStr("en='Error while sending email message';ru='Ошибка при отправке сообщения электронной почты.'"));
+	ErrorMessages.Insert(103, NStr("en='Error while receiving the headings from the email server';ru='Ошибка при получении заголовков сообщений с сервера электронной почты.'"));
+	ErrorMessages.Insert(104, NStr("en='Exchange messages have not been found at the mail server';ru='Не обнаружены сообщения обмена на почтовом сервере.'"));
+	ErrorMessages.Insert(105, NStr("en='Error while receiving messages from the email server';ru='Ошибка при получении сообщения с сервера электронной почты.'"));
+	ErrorMessages.Insert(106, NStr("en='Error while recording file of the message exchange to disk';ru='Ошибка при записи файла сообщения обмена на диск.'"));
+	ErrorMessages.Insert(107, NStr("en='Verification parameters of the account record has  completed with errors';ru='Проверка параметров учетной записи завершилась с ошибками.'"));
+	ErrorMessages.Insert(108, NStr("en='Maximum size of the exchange message has been exceeded';ru='Превышен допустимый размер сообщения обмена.'"));
+	ErrorMessages.Insert(109, NStr("en='Error: file with message has not been found in the mail message';ru='Ошибка: в почтовом сообщении не найден файл с сообщением.'"));
 	
 EndProcedure
 
@@ -610,7 +610,7 @@ ErrorMessagesInitialization();
 TemporaryDirectoryOfExchangeMessages = Undefined;
 ExchangeMessageTemporaryFile    = Undefined;
 
-ObjectName = NStr("en = 'Data processor: %1'");
+ObjectName = NStr("en='Data processor: %1';ru='Обработка: %1'");
 ObjectName = StringFunctionsClientServer.PlaceParametersIntoString(ObjectName, Metadata().Name);
 
 #EndRegion

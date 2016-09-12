@@ -99,13 +99,13 @@ Function ProcessStartParameters(Val LaunchParameterValue, Val LaunchParameters) 
 	If LaunchParameterValue = Upper("AllowUsersWork") Then
 		
 		If Not InfobaseConnectionsServerCall.AllowUsersWork() Then
-			MessageText = NStr("en = 'AllowUsersWork start parameter is not processed. You have no rights for infobase administration.'");
+			MessageText = NStr("en='AllowUsersWork start parameter is not processed. You have no rights for infobase administration.';ru='Параметр запуска РазрешитьРаботуПользователей не отработан. Нет прав на администрирование информационной базы.'");
 			ShowMessageBox(,MessageText);
 			Return False;
 		EndIf;
 		
 		EventLogMonitorClient.AddMessageForEventLogMonitor(InfobaseConnectionsClientServer.EventLogMonitorEvent(),,
-			NStr("en = 'Started with the ""AllowUsersWork"" parameter. The application will be closed.'"), ,True);
+			NStr("en='Started with the ""AllowUsersWork"" parameter. The application will be closed.';ru='Выполнен запуск с параметром ""РазрешитьРаботуПользователей"". Работа программы будет завершена.'"), ,True);
 		Exit(False);
 		Return True;
 		
@@ -123,7 +123,7 @@ Function ProcessStartParameters(Val LaunchParameterValue, Val LaunchParameters) 
 		DetachIdleHandler("ControlOfUserSessionTerminationMode");
 		
 		If Not InfobaseConnectionsServerCall.SetConnectionLock() Then
-			MessageText = NStr("en = 'EndUsersWork start parameter is not processed. You have no rights for infobase administration.'");
+			MessageText = NStr("en='EndUsersWork start parameter is not processed. You have no rights for infobase administration.';ru='Параметр запуска ЗавершитьРаботуПользователей не отработан. Нет прав на администрирование информационной базы.'");
 			ShowMessageBox(,MessageText);
 			Return False;
 		EndIf;
@@ -177,8 +177,8 @@ Procedure TerminateThisSession(ShowQuestion = True) Export
 	EndIf;
 	
 	Notification = New NotifyDescription("EndThisSessionWorkEnd", ThisObject);
-	MessageText = NStr("en = 'Users work with application is prohibited. Do you want to exit the current session?'");
-	Title = NStr("en = 'Current session exit'");
+	MessageText = NStr("en='Users work with application is prohibited. Do you want to exit the current session?';ru='Работа пользователей с программой запрещена. Завершить работу этого сеанса?'");
+	Title = NStr("en='Current session exit';ru='Завершение работы текущего сеанса'");
 	ShowQueryBox(Notification, MessageText, QuestionDialogMode.YesNo, 60, DialogReturnCode.Yes, Title, DialogReturnCode.Yes);
 	
 EndProcedure
@@ -331,11 +331,11 @@ Procedure OnlineDataProcessorBeforeStart(Parameters, NotSpecified) Export
 	
 	If Not IsBlankString(QuestionText) Then
 		Buttons = New ValueList();
-		Buttons.Add(DialogReturnCode.Yes, NStr("en = 'Login'"));
+		Buttons.Add(DialogReturnCode.Yes, NStr("en='Login';ru='Логин'"));
 		If ClientParameters.CanRemoveLock Then
-			Buttons.Add(DialogReturnCode.No, NStr("en = 'Unlock and log on'"));
+			Buttons.Add(DialogReturnCode.No, NStr("en='Unlock and log on';ru='Снять блокировку и войти'"));
 		EndIf;
-		Buttons.Add(DialogReturnCode.Cancel, NStr("en = 'Cancel'"));
+		Buttons.Add(DialogReturnCode.Cancel, NStr("en='Cancel';ru='Отменить'"));
 		
 		ResponseProcessor = New NotifyDescription(
 			"AfterQuestionResponseLogInOrUnlock", ThisObject, Parameters);
@@ -370,7 +370,7 @@ EndProcedure
 
 Procedure AskQuestionOnWorkEnd(MessageText) Export
 	
-	QuestionText = NStr("en = '%1 End work?'");
+	QuestionText = NStr("en='%1 End work?';ru='%1 Завершить работу?'");
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, MessageText);
 	NotifyDescription = New NotifyDescription("AskQuestionOnWorkEndEnd", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 30, DialogReturnCode.Yes);

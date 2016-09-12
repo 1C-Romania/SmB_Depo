@@ -24,20 +24,22 @@ Procedure ConfigureReportsVariants(Settings, ReportSettings) Export
 	
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, "UsersActivityAnalysis");
 	VariantSettings.Definition = 
-		NStr("en = 'It allows to monitor
-		|users activity in the application (how intense and with which objects users work).'");
+		NStr("en='It allows to monitor"
+"users activity in the application (how intense and with which objects users work).';ru='Позволяет выполнять"
+"мониторинг активности пользователей в программе (насколько интенсивно и с какими объектами работают пользователи).'");
 	
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, "ActiveUser");
 	VariantSettings.Definition = 
-		NStr("en = 'Detailed information
-		|about the objects with which the user worked in the application.'");
+		NStr("en='Detailed information"
+"about the objects with which the user worked in the application.';ru='Подробная"
+"информация о том, с какими объектами работал пользователь в программе.'");
 	
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, "EventLogMonitorControl");
-	VariantSettings.Definition = NStr("en = 'List of critical records in the events log monitor.'");
+	VariantSettings.Definition = NStr("en='List of critical records in the events log monitor.';ru='Список критичных записей журнала регистрации.'");
 	VariantSettings.SearchSettings.TemplateNames = "ErrorsReportTemplateInEventLogMonitor";
 	
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, "ScheduledJobsWorkDuration");
-	VariantSettings.Definition = NStr("en = 'Outputs schedule of scheduled jobs execution in the application.'");
+	VariantSettings.Definition = NStr("en='Outputs schedule of scheduled jobs execution in the application.';ru='Выводит график выполнения регламентных заданий в программе.'");
 	VariantSettings.SearchSettings.TemplateNames = "ScheduledJobsWorkDuration, ScheduledJobDetails";
 EndProcedure
 
@@ -613,7 +615,7 @@ EndFunction
 
 Function RowWeekOfYear(DateOfYear)
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Week %1'"), WeekOfYear(DateOfYear));
+				NStr("en='Week %1';ru='Неделя %1'"), WeekOfYear(DateOfYear));
 EndFunction
 
 Procedure GenerateStringConcurrentSessions(ConcurrentSessions, MaxUserArray,
@@ -629,7 +631,7 @@ Procedure GenerateStringConcurrentSessions(ConcurrentSessions, MaxUserArray,
 			If UserName = Item Then
 				CounterNumberOfSessionsUser = CounterNumberOfSessionsUser + 1;
 				UserAndNumber = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = '%1 (%2)'"), Item, CounterNumberOfSessionsUser);
+					NStr("en='%1 (%2)';ru='%1 (%2)'"), Item, CounterNumberOfSessionsUser);
 			EndIf;
 		EndDo;
 		
@@ -703,9 +705,9 @@ Function GenerateReportForDurationJobsOfScheduledJobs(FillingParameters) Export
 		Or Not FilterOutput.Use Then
 		Area = Template.GetArea("Filter");
 		If ScheduledJobsSessionsMinimumLength > 0 Then
-			DisplayModeIntervals = NStr("en = 'Disabled'");
+			DisplayModeIntervals = NStr("en='Disabled';ru='Отключено'");
 		Else
-			DisplayModeIntervals = NStr("en = 'Enabled'");
+			DisplayModeIntervals = NStr("en='Enabled';ru='Включено'");
 		EndIf;
 		Area.Parameters.StartDate = StartDate;
 		Area.Parameters.EndDate = EndDate;
@@ -743,7 +745,7 @@ Function GenerateReportForDurationJobsOfScheduledJobs(FillingParameters) Export
 					AND Not TypeOf(Item) = Type("Date") Then
 					Area = Template.GetArea("ScheduledJobList");
 					Area.Parameters.ScheduledJobList = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = '%1 (session %2)'"), Item, ArrayRoutineMaintenanceJobs.Get(IndexOfScheduledJobs+1));
+						NStr("en='%1 (session %2)';ru='%1 (сеанс %2)'"), Item, ArrayRoutineMaintenanceJobs.Get(IndexOfScheduledJobs+1));
 				ElsIf Not TypeOf(Item) = Type("Date")
 					AND Not TypeOf(Item) = Type("String") Then	
 					Area.Parameters.DetailsJobs = New Array;
@@ -791,7 +793,7 @@ Function GenerateReportForDurationJobsOfScheduledJobs(FillingParameters) Export
 					Point.Details.Add(StartDate);
 					Point.Details.Add(EndDate);
 					PointName = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = '%1 (%2 from %3)'"), Point.Value, 
+						NStr("en='%1 (%2 from %3)';ru='%1 (%2 из %3)'"), Point.Value, 
 						StartingScheduledJobs, String(StringStartsCount.OfLaunches));
 					Point.Value = PointName;
 				EndIf;
@@ -819,7 +821,7 @@ Function GenerateReportForDurationJobsOfScheduledJobs(FillingParameters) Export
 					StartingScheduledJobs = 0;
 					Point.Picture = PictureLib.ScheduledJob;
 				ElsIf Not ValueIsFilled(RowScheduledJobs.EventMetadata) Then
-					PointName = NStr("en = 'Background jobs'");
+					PointName = NStr("en='Background jobs';ru='Фоновые задания'");
 					Point = GanttChart.SetPoint(PointName);
 					CommonDurationOfST = 0;
 				EndIf;
@@ -829,7 +831,7 @@ Function GenerateReportForDurationJobsOfScheduledJobs(FillingParameters) Export
 			Interval.Begin = RowScheduledJobs.DateLaunchJobs;
 			Interval.End	= RowScheduledJobs.EndDateJobs;
 			Interval.Text	= StringFunctionsClientServer.PlaceParametersIntoString(
-								NStr("en = '%1 - %2'"), Format(Interval.Begin, "DLF=T"), Format(Interval.End, "DLF=T"));
+								NStr("en='%1 - %2';ru='%1 - %2'"), Format(Interval.Begin, "DLF=T"), Format(Interval.End, "DLF=T"));
 			SignChangeDots = False;
 			// Do not fill in decryption for background jobs.
 			If RowScheduledJobs.EventMetadata <> "" Then
@@ -851,7 +853,7 @@ Function GenerateReportForDurationJobsOfScheduledJobs(FillingParameters) Export
 		Point.Details.Add(StartDate);
 		Point.Details.Add(EndDate);	
 		PointName = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '%1 (%2 from %3)'"), Point.Value, 
+				NStr("en='%1 (%2 from %3)';ru='%1 (%2 из %3)'"), Point.Value, 
 				StartingScheduledJobs, String(StringStartsCount.OfLaunches));
 		Point.Value = PointName;
 	EndIf;
@@ -1058,7 +1060,7 @@ Function AmountAtSameTimeRoutineMaintenanceJobs(ParametersConcurrentSessions)
 			If TableRow <> Undefined Then
 			   	TableRow.AmountAtSameTimeRoutineMaintenanceJobs = AmountAtSameTimeRoutineMaintenanceJobs;
 				TableRow.DateAmountAtSameTimeScheduledJobs = StringFunctionsClientServer.PlaceParametersIntoString(
-										NStr("en = '%1 - %2'"), Format(CurrentDate, "DLF=T"), 
+										NStr("en='%1 - %2';ru='%1 - %2'"), Format(CurrentDate, "DLF=T"), 
 										Format(EndOfHour(CurrentDate), "DLF=T"));
 				TableRow.ScheduledJobList = MaxArrayScheduledJobs;
 			EndIf;
@@ -1111,7 +1113,7 @@ Function AmountAtSameTimeRoutineMaintenanceJobs(ParametersConcurrentSessions)
 	If AmountAtSameTimeRoutineMaintenanceJobs <> 0 Then
 		TableRow.AmountAtSameTimeRoutineMaintenanceJobs  = AmountAtSameTimeRoutineMaintenanceJobs;
 		TableRow.DateAmountAtSameTimeScheduledJobs = StringFunctionsClientServer.PlaceParametersIntoString(
-								NStr("en = '%1 - %2'"), Format(CurrentDate, "DLF=T"), 
+								NStr("en='%1 - %2';ru='%1 - %2'"), Format(CurrentDate, "DLF=T"), 
 								Format(EndOfHour(CurrentDate), "DLF=T"));
 		TableRow.ScheduledJobList = MaxArrayScheduledJobs;
 	EndIf;
@@ -1256,9 +1258,9 @@ Function DecryptionScheduledJobs(Details) Export
 	Area.Parameters.StartDate = StartDate;
 	Area.Parameters.EndDate = EndDate;
 	If Details.Get(8) = 0 Then
-		DisplayModeIntervals = NStr("en = 'Enabled'");
+		DisplayModeIntervals = NStr("en='Enabled';ru='Включено'");
 	Else
-		DisplayModeIntervals = NStr("en = 'Disabled'");
+		DisplayModeIntervals = NStr("en='Disabled';ru='Отключено'");
 	EndIf;
 	Area.Parameters.DisplayModeSessions = DisplayModeIntervals;
 	Report.Put(Area);
@@ -1266,7 +1268,7 @@ Function DecryptionScheduledJobs(Details) Export
 	Report.Put(Template.GetArea("IsBlankString"));
 	
 	Area = Template.GetArea("Table");
-	Area.Parameters.TypeJobs = NStr("en = 'Scheduled'");
+	Area.Parameters.TypeJobs = NStr("en='Scheduled';ru='Регламентное'");
 	Area.Parameters.NameEvents = Details.Get(2);
 	Area.Parameters.OfLaunches = Details.Get(9);
 	CanceledJobs = Details.Get(3);
@@ -1409,19 +1411,19 @@ Function DurationOfScheduledJobs(DurationOfST)
 		 CommonDurationOfST = "0";
 	ElsIf DurationOfST <= 60 Then
 		CommonDurationOfST = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 sec'"), DurationOfST);
+			NStr("en='%1 sec';ru='%1 сек'"), DurationOfST);
 	ElsIf 60 < DurationOfST <= 3600 Then
 		DurationMinutes  = Format(DurationOfST/60, "NFD=0");
 		DurationSeconds = Format((Format(DurationOfST/60, "NFD=2") - 
 											Int(DurationOfST/60)) * 60, "NFD=0");
 		CommonDurationOfST = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 min %2 sec'"), DurationMinutes, DurationSeconds);
+			NStr("en='%1 min %2 sec';ru='%1 мин %2 сек'"), DurationMinutes, DurationSeconds);
 	ElsIf DurationOfST > 3600 Then
 		DurationHours	 = Format(DurationOfST/60/60, "NFD=0");
 		DurationMinutes  = (Format(DurationOfST/60/60, "NFD=2") - Int(DurationOfST/60/60))*60;
 		DurationMinutes	 = Format(DurationMinutes, "NFD=0");
 		CommonDurationOfST = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 h %2 min'"), DurationHours, DurationMinutes);
+			NStr("en='%1 h %2 min';ru='%1 ч %2 мин'"), DurationHours, DurationMinutes);
 	EndIf;
 	
 	Return CommonDurationOfST;

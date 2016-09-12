@@ -89,7 +89,7 @@ Procedure EndSession(Command)
 	
 	If SelectedRowsQuantity = 0 Then
 		
-		ShowMessageBox(,NStr("en = 'Users for session end is not selected.'"));
+		ShowMessageBox(,NStr("en='Users for session end is not selected.';ru='Не выбраны пользователи для завершения сеансов.'"));
 		Return;
 		
 	EndIf;
@@ -100,7 +100,7 @@ Procedure EndSession(Command)
 		EndingSession = Items.UsersList.CurrentData.Session;
 		
 		If EndingSession = InfobaseSessionNumber Then
-			ShowMessageBox(,NStr("en = 'It is impossible to end the current session. To exit the application, close the main application window.'"));
+			ShowMessageBox(,NStr("en='It is impossible to end the current session. To exit the application, close the main application window.';ru='Невозможно завершить текущий сеанс. Для выхода из программы можно закрыть главное окно программы.'"));
 			Return;
 		EndIf;
 		
@@ -122,7 +122,7 @@ Procedure EndSession(Command)
 		If SelectedRowsQuantity = 1 Then
 			
 			If Items.UsersList.CurrentData.Session = InfobaseSessionNumber Then
-				ShowMessageBox(,NStr("en = 'It is impossible to end the current session. To exit the application, close the main application window.'"));
+				ShowMessageBox(,NStr("en='It is impossible to end the current session. To exit the application, close the main application window.';ru='Невозможно завершить текущий сеанс. Для выхода из программы можно закрыть главное окно программы.'"));
 				Return;
 			EndIf;
 			
@@ -131,9 +131,10 @@ Procedure EndSession(Command)
 		If RequestInfobaseAdministrationParameters Then
 			
 			NotifyDescription = New NotifyDescription("EndSessionContinuation", ThisObject);
-			FormTitle = NStr("en = 'Terminate session'");
-			ExplanatoryInscription = NStr("en = 'To end the session it
-				|is necessary to enter administration parameters of server cluster'");
+			FormTitle = NStr("en='Terminate session';ru='Завершить сеанс'");
+			ExplanatoryInscription = NStr("en='To end the session it"
+"is necessary to enter administration parameters of server cluster';ru='Для завершения сеанса"
+"необходимо ввести параметры администрирования кластера серверов'");
 			InfobaseConnectionsClient.ShowAdministrationParameters(NOTifyDescription, False, True, AdministrationParameters, FormTitle, ExplanatoryInscription);
 			
 		Else
@@ -158,7 +159,7 @@ Procedure OpenEventLogMonitor()
 	
 	SelectedRows = Items.UsersList.SelectedRows;
 	If SelectedRows.Count() = 0 Then
-		ShowMessageBox(,NStr("en = 'Select users to view the event log.'"));
+		ShowMessageBox(,NStr("en='Select users to view the event log.';ru='Выберите пользователей для просмотра журнала регистрации.'"));
 		Return;
 	EndIf;
 	
@@ -511,18 +512,18 @@ Procedure AfterSessionEnd(Result, AdditionalParameters) Export
 		If AdditionalParameters.Property("SessionNumbers")
 			AND AdditionalParameters.SessionNumbers.Count() > 1 Then
 			
-			NotificationText = NStr("en = 'The %1 sessions is completed.'");
+			NotificationText = NStr("en='The %1 sessions is completed.';ru='Сеансы %1 завершены.'");
 			SessionNumbers = StringFunctionsClientServer.RowFromArraySubrows(AdditionalParameters.SessionNumbers);
 			NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText,
 				SessionNumbers);
-			ShowUserNotification(NStr("en = 'Sessions end'"),, NotificationText);
+			ShowUserNotification(NStr("en='Sessions end';ru='Завершение сеансов'"),, NotificationText);
 			
 		Else
 			
-			NotificationText = NStr("en = 'The %1 session is completed.'");
+			NotificationText = NStr("en='The %1 session is completed.';ru='Сеанс %1 завершен.'");
 			NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText,
 			AdditionalParameters.SessionNumbers);
-			ShowUserNotification(NStr("en = 'Terminate session'"),, NotificationText);
+			ShowUserNotification(NStr("en='Terminate session';ru='Завершить сеанс'"),, NotificationText);
 			
 		EndIf;
 		

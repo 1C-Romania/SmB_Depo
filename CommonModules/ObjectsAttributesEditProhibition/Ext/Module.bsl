@@ -155,7 +155,7 @@ Procedure PrepareForm(Form, Refs, GroupForProhibitionButton, ProhibitionButtonTi
 		
 		// Addition of a command
 		Command = Form.Commands.Add("AuthorizeObjectDetailsEditing");
-		Command.Title = ?(IsBlankString(ProhibitionButtonTitle), NStr("en = 'Allow Attributes Editing'"), ProhibitionButtonTitle);
+		Command.Title = ?(IsBlankString(ProhibitionButtonTitle), NStr("en='Allow Attributes Editing';ru='Разрешить редактирование реквизитов'"), ProhibitionButtonTitle);
 		Command.Action = "Attachable_AuthorizeObjectAttributesEditing";
 		Command.Picture = PictureLib.AuthorizeObjectDetailsEditing;
 		Command.ModifiesStoredData = True;

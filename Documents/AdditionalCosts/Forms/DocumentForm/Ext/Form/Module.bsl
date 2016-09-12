@@ -30,8 +30,9 @@ Procedure HandleContractChangeProcessAndCurrenciesSettlements(DocumentParameters
 	
 	If OpenFormPricesAndCurrencies Then
 		
-		WarningText = NStr("en = 'Settlement currency of the contract with counterparty changed!
-										|It is necessary to check the document currency!'");
+		WarningText = NStr("en='Settlement currency of the contract with counterparty changed!"
+"It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом!"
+"Необходимо проверить валюту документа!'");
 										
 		ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, True, WarningText);
 		
@@ -546,7 +547,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en = '%Currency%'");
+			LabelText = NStr("en='%Currency%';ru='%Вал%'");
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
@@ -554,9 +555,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%VATTaxation%'");
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %VATTaxation%'");
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
@@ -564,9 +565,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then
 		If LabelStructure.AmountIncludesVAT Then
-			LabelText = NStr("en = 'Amount includes VAT'");
+			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
 		Else
-			LabelText = NStr("en = 'Amount does not include VAT'");
+			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
 		EndIf;
 	EndIf;
 	
@@ -683,7 +684,7 @@ Procedure ProcessContractChange(ContractData = Undefined)
 		
 		If QueryBoxPrepayment = True Then
 			
-			QuestionText = NStr("en = 'Prepayment set-off will be cleared, do you want to continue?'");
+			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
 			
 			NotifyDescription = New NotifyDescription("DefineAdvancePaymentOffsetsRefreshNeed", ThisObject, DocumentParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -953,7 +954,7 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 		If MessageText <> "" Then
 			
 			Message = New UserMessage;
-			Message.Text = ?(Cancel, NStr("en = 'Document is not posted! '") + MessageText, MessageText);
+			Message.Text = ?(Cancel, NStr("en='Document is not posted! ';ru='Документ не проведен! '") + MessageText, MessageText);
 			
 			If Cancel Then
 				Message.DataPath = "Object";
@@ -1090,12 +1091,12 @@ EndProcedure // EditPricesAndCurrency()
 Procedure DistributeExpensesByQuantity(Command)
 	
 	If Object.Inventory.Count() = 0 Then
-		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en = 'Tabular section ""Inventory"" has no records!'"));
+		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='Tabular section ""Inventory"" has no records!';ru='В табличной части ""Запасы"" нет записей!'"));
 		Return;
 	EndIf;
 	
 	If Object.Expenses.Count() = 0 Then
-		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en = 'There are no records in the tabular section ""Expenses""!'"));
+		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='There are no records in the tabular section ""Expenses""!';ru='В табличной части ""Расходы"" нет записей!'"));
 		Return;
 	EndIf;
 	
@@ -1109,12 +1110,12 @@ EndProcedure // DistributeExpensesByCount()
 Procedure DistributeExpensesByAmount(Command)
 	
 	If Object.Inventory.Count() = 0 Then
-		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en = 'Tabular section ""Inventory"" has no records!'"));
+		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='Tabular section ""Inventory"" has no records!';ru='В табличной части ""Запасы"" нет записей!'"));
 		Return;
 	EndIf;
 	
 	If Object.Expenses.Count() = 0 Then
-		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en = 'There are no records in the tabular section ""Expenses""!'"));
+		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='There are no records in the tabular section ""Expenses""!';ru='В табличной части ""Расходы"" нет записей!'"));
 		Return;
 	EndIf;
 	
@@ -1128,12 +1129,12 @@ EndProcedure // DistributeExpensesByAmount()
 Procedure EditPrepaymentOffset(Command)
 	
 	If Not ValueIsFilled(Object.Counterparty) Then
-		ShowMessageBox(, NStr("en = 'Specify the counterparty first.'"));
+		ShowMessageBox(, NStr("en='Specify the counterparty first.';ru='Укажите вначале контрагента!'"));
 		Return;
 	EndIf;
 	
 	If Not ValueIsFilled(Object.Contract) Then
-		ShowMessageBox(, NStr("en = 'Specify the counterparty contract first.'"));
+		ShowMessageBox(, NStr("en='Specify the counterparty contract first.';ru='Укажите вначале договор контрагента!'"));
 		Return;
 	EndIf;
 	
@@ -1322,7 +1323,7 @@ Procedure PurchaseOrderOnChange(Item)
 		Mode = QuestionDialogMode.YesNo;
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("PurchaseOrderOnChangeEnd", ThisObject), NStr("en = 'Prepayment set-off will be cleared, do you want to continue?'"), Mode, 0);
+		ShowQueryBox(New NotifyDescription("PurchaseOrderOnChangeEnd", ThisObject), NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
 		Return;
 	EndIf;
 	

@@ -105,7 +105,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "PrintFaxPrintWorkAssistant";
-	PrintCommand.Presentation = NStr("en = 'How to create facsimile fast and easy?'");
+	PrintCommand.Presentation = NStr("en='How to create facsimile fast and easy?';ru='Как быстро и просто создать факсимиле?'");
 	PrintCommand.FormsList = "ItemForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.OverrideUserCountSettings = False;
@@ -113,7 +113,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "PreviewPrintedFormsInvoiceForPayment";
-	PrintCommand.Presentation = NStr("en = 'Preview of the ""Invoice for payment"" print form'");
+	PrintCommand.Presentation = NStr("en='Preview of the ""Invoice for payment"" print form';ru='Предварительный просмотр печатной формы ""Счет на оплату""'");
 	PrintCommand.FormsList = "ItemForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.OverrideUserCountSettings = False;
@@ -137,7 +137,7 @@ Procedure RefreshPredefinedContactInformationTypesCompanies() Export
 	
 	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Address");
 	ParametersKind.Kind= "CompanyLegalAddress";
-	ParametersKind.ToolTip = NStr("en='Company legal address'");
+	ParametersKind.ToolTip = NStr("en='Company legal address';ru='Юридический адрес организации'");
 	ParametersKind.EditMethodEditable = True;
 	ParametersKind.Order = 1;
 	ParametersKind.VerificationSettings.AddressRussianOnly = True;
@@ -145,14 +145,14 @@ Procedure RefreshPredefinedContactInformationTypesCompanies() Export
 	
 	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Address");
 	ParametersKind.Kind = "CompanyFactAddress";
-	ParametersKind.ToolTip = NStr("en='Company physical address'");
+	ParametersKind.ToolTip = NStr("en='Company physical address';ru='Фактический адрес организации'");
 	ParametersKind.EditMethodEditable = True;
 	ParametersKind.Order = 1;
 	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
 	
 	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Phone");
 	ParametersKind.Kind = "CompanyPhone";
-	ParametersKind.ToolTip = NStr("en='Company''s phone'");
+	ParametersKind.ToolTip = NStr("en=""Company's phone"";ru='Телефон организации'");
 	ParametersKind.EditMethodEditable = True;
 	ParametersKind.AllowInputOfMultipleValues = True;
 	ParametersKind.Order = 3;
@@ -160,7 +160,7 @@ Procedure RefreshPredefinedContactInformationTypesCompanies() Export
 	
 	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Fax");
 	ParametersKind.Kind = "CompanyFax";
-	ParametersKind.ToolTip = NStr("en='Company''s fax'");
+	ParametersKind.ToolTip = NStr("en=""Company's fax"";ru='Факс организации'");
 	ParametersKind.EditMethodEditable = True;
 	ParametersKind.AllowInputOfMultipleValues = True;
 	ParametersKind.Order = 4;
@@ -168,7 +168,7 @@ Procedure RefreshPredefinedContactInformationTypesCompanies() Export
 	
 	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("EmailAddress");
 	ParametersKind.Kind = "CompanyEmail";
-	ParametersKind.ToolTip = NStr("en='Company email address'");
+	ParametersKind.ToolTip = NStr("en='Company email address';ru='Адрес электронной почты организации'");
 	ParametersKind.EditMethodEditable = True;
 	ParametersKind.AllowInputOfMultipleValues = True;
 	ParametersKind.Order = 5;
@@ -176,14 +176,14 @@ Procedure RefreshPredefinedContactInformationTypesCompanies() Export
 	
 	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Address");
 	ParametersKind.Kind = "CompanyPostalAddress";
-	ParametersKind.ToolTip = NStr("en='Company postal address'");
+	ParametersKind.ToolTip = NStr("en='Company postal address';ru='Почтовый адрес организации'");
 	ParametersKind.EditMethodEditable = True;
 	ParametersKind.Order = 6;
 	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
 	
 	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Another");
 	ParametersKind.Kind = "CompanyOtherInformation";
-	ParametersKind.ToolTip = NStr("en='Any other contact information'");
+	ParametersKind.ToolTip = NStr("en='Any other contact information';ru='Любая другая контактная информация'");
 	ParametersKind.EditMethodEditable = True;
 	ParametersKind.Order = 7;
 	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
@@ -301,7 +301,7 @@ Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName
 		
 	Else
 		
-		MessageText = NStr("en ='ATTENTION! Perhaps, user template is used Staff mechanism for the accounts printing may work incorrectly.'");
+		MessageText = NStr("en='ATTENTION! Perhaps, user template is used Staff mechanism for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
 		CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 		
 	EndIf;

@@ -595,7 +595,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "Timesheet";
-	PrintCommand.Presentation = NStr("en = 'Working hours accounting timesheet'");
+	PrintCommand.Presentation = NStr("en='Working hours accounting timesheet';ru='Табель учета рабочего времени'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

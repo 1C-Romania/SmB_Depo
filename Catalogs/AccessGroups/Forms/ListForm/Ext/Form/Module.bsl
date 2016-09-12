@@ -31,7 +31,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.List.Representation = TableRepresentation.List;
 		AutoTitle = False;
 		
-		Title = NStr("en = 'Access groups'");
+		Title = NStr("en='Access groups';ru='Группы доступа'");
 		
 		Items.FormCreateFolder.Visible = False;
 		Items.ListContextMenuCreateGroup.Visible = False;
@@ -61,7 +61,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	List.Parameters.SetParameterValue(
 		"ErrorObjectNotFound",
-		NStr("en = '<Object not found>'"));
+		NStr("en='<Object not found>';ru='<Объект не найден>'"));
 	
 	If Parameters.ChoiceMode Then
 		
@@ -81,9 +81,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Items.List.Multiselect = True;
 			Items.List.SelectionMode = TableSelectionMode.MultiRow;
 			
-			Title = NStr("en = 'Picking up access group'");
+			Title = NStr("en='Picking up access group';ru='Подбор групп доступа'");
 		Else
-			Title = NStr("en = 'Access group selection'");
+			Title = NStr("en='Access group selection';ru='Выбор группы доступа'");
 			Items.FormChoose.DefaultButton = False;
 		EndIf;
 	EndIf;
@@ -123,7 +123,7 @@ Procedure ValueChoiceList(Item, Value, StandardProcessing)
 	
 	If Value = ParentOfPersonalAccessGroups Then
 		StandardProcessing = False;
-		ShowMessageBox(, NStr("en = 'This group is only for personal groups of access.'"));
+		ShowMessageBox(, NStr("en='This group is only for personal groups of access.';ru='Эта группа только для персональных групп доступа.'"));
 	EndIf;
 	
 EndProcedure
@@ -136,14 +136,15 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 		Cancel = True;
 		
 		If Group Then
-			ShowMessageBox(, NStr("en = 'In this groups subgroups are used.'"));
+			ShowMessageBox(, NStr("en='In this groups subgroups are used.';ru='В этой группе не используются подгруппы.'"));
 			
 		ElsIf SimplifiedInterfaceOfAccessRightsSettings Then
 			ShowMessageBox(,
-				NStr("en = 'Personal
-				           |access groups are created only in the ""Access rights"" form.'"));
+				NStr("en='Personal"
+"access groups are created only in the ""Access rights"" form.';ru='Персональные"
+"группы доступа создаются только в форме ""Права доступа"".'"));
 		Else
-			ShowMessageBox(, NStr("en = 'Personal access groups are not used.'"));
+			ShowMessageBox(, NStr("en='Personal access groups are not used.';ru='Персональные группы доступа не используются.'"));
 		EndIf;
 		
 	ElsIf Not Group
@@ -152,8 +153,9 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 		Cancel = True;
 		
 		ShowMessageBox(,
-			NStr("en = 'Are used only personal
-			           |access groups which are created only in the ""Access rights"" form.'"));
+			NStr("en='Are used only personal"
+"access groups which are created only in the ""Access rights"" form.';ru='Используются только персональные группы доступа,"
+"которые создаются только в форме """"Права доступа"""".'"));
 	EndIf;
 	
 EndProcedure
@@ -163,11 +165,11 @@ Procedure ListDrag(Item, DragParameters, StandardProcessing, String, Field)
 	
 	If String = ParentOfPersonalAccessGroups Then
 		StandardProcessing = False;
-		ShowMessageBox(, NStr("en = 'This folder is for personal access groups only.'"));
+		ShowMessageBox(, NStr("en='This folder is for personal access groups only.';ru='Эта папка только для персональных групп доступа.'"));
 		
 	ElsIf DragParameters.Value = ParentOfPersonalAccessGroups Then
 		StandardProcessing = False;
-		ShowMessageBox(, NStr("en = 'Personal access groups folder is not transferred.'"));
+		ShowMessageBox(, NStr("en='Personal access groups folder is not transferred.';ru='Папка персональных групп доступа не переносится.'"));
 	EndIf;
 	
 EndProcedure

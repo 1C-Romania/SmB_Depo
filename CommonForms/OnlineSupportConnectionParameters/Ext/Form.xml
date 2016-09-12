@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>User Online support connection parameters</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Параметры подключения к Интернет-поддержке пользователей</v8:content>
+		</v8:item>
 	</Title>
 	<Width>96</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -37,6 +41,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Online support service authorization parameters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры авторизации в сервисе Интернет-поддержки</v8:content>
+				</v8:item>
 			</Title>
 			<HorizontalStretch>true</HorizontalStretch>
 			<Group>Horizontal</Group>
@@ -62,11 +70,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Group of username and password fields</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа полей логина и пароля</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group of username and password fields</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа полей логина и пароля</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -79,6 +95,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>When Online support is connected, the following is used:</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>При подключении Интернет-поддержки используется:</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="DecorationExplanationLoginPasswordContextMenu" id="55"/>
@@ -101,6 +121,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Users can use the same username and password as for the &lt;link open:UsersSite&gt;users.v8.1c.ru&lt;/&gt; site to log on user Online support system. If you do not have username and password, you should register yourself or request the support from the partner of 1C company with whom you have the ITS agreement.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для авторизации в системе Интернет-поддержки пользователей используется тот же логин и пароль, что и на сайте users.v8.1c.ru. Если у Вас еще нет логина и пароля, то выполните регистрацию самостоятельно или обратитесь за помощью к партнеру фирмы «1С», с которым у Вас заключен договор ИТС.</v8:content>
+						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
 					<TitleHeight>4</TitleHeight>
@@ -118,6 +142,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Indent and connection parameters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отступ и параметры соединения</v8:content>
+				</v8:item>
 			</Title>
 			<HorizontalStretch>true</HorizontalStretch>
 			<Group>Vertical</Group>
@@ -130,6 +158,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Connection parameters</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметры соединения</v8:content>
 						</v8:item>
 					</Title>
 					<HorizontalStretch>true</HorizontalStretch>
@@ -166,6 +198,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>On local computer</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>На локальном компьютере</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:decimal">0</Value>
 													</xr:Value>
@@ -178,6 +214,10 @@
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>At 1C:Enterprise server</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>На сервере 1С:Предприятие</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:decimal">1</Value>
@@ -199,6 +239,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Selection of computer with configured access to Internet. If local computers have access to Internet, it is recommended to select "On local computer". If Internet access is organized through 1C:Enterprise server, you should select "At 1C:Enterprise server".</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Выбор компьютера, на котором организован доступ к сети Интернет. Если локальные компьютеры имеют доступ к Интернет, рекомендуется выбрать "На локальном компьютере". Если доступ к Интернет организован на сервере 1С:Предприятия, необходимо выбрать "На сервере 1С:Предприятия".</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
@@ -236,6 +280,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>sec.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>сек.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="DecorationTimeoutContextMenu" id="7"/>
 											<ExtendedTooltip name="DecorationTimeoutExtendedTooltip" id="82"/>
@@ -249,6 +297,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Maximum timeout in seconds to establish connection with the online user support server.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Максимальное время в секундах, в течение которого необходимо ожидать соединение с сервером Интернет-поддержки пользователей.</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
@@ -268,6 +320,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Recommendations on the settings of connection with Online support server</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рекомендации по настройке соединения с сервером Интернет-поддержки</v8:content>
+				</v8:item>
 			</Title>
 			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
@@ -285,6 +341,11 @@
 							<v8:content>If you are using a firewall on the computer, it is recommended to add the address of user Online support server -webits.1c.ru, ports 80 (HTTP) and 443 (HTTPS), to the list of allowed addresses. The settings of exceptions for each particular firewall or antivirus are configured according to the user's manual provided with the corresponding firewall or antivirus.
 If necessary, you should allow access to the specified address and network ports at Internet gateway.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Если на компьютере используется межсетевой экран (фаервол), рекомендуется добавить в список разрешенных адресов адрес сервера Интернет-поддержки пользователей: webits.1c.ru, порты 80 (HTTP) и 443 (HTTPS). Настройка исключений в каждом конкретном межсетевом экране или антивирусе выполняется согласно инструкции пользователя, поставляемой вместе с межсетевым экраном или антивирусом.
+При необходимости следует разрешить доступ к указанным адресу и сетевым портам на Интернет-шлюзе.</v8:content>
+						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
 					<ContextMenu name="DecorationRecomendationsContextMenu" id="23"/>
@@ -301,6 +362,10 @@ If necessary, you should allow access to the specified address and network ports
 							<v8:lang>en</v8:lang>
 							<v8:content>If the connection with the user Online support server is established through 1C:Enterprise server, it is necessary to allow the request to the webits.1c.ru Internet resource in the security profile of 1C:Enterprise through safe connection protocol (HTTPS, port 443).</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Если соединение с сервером Интернет-поддержки устанавливается на сервере 1С:Предприятия, тогда необходимо разрешить в профиле безопасности сервера 1С:Предприятия обращение к Интернет-ресурсу webits.1c.ru по протоколу безопасного соединения (HTTPS, порт 443).</v8:content>
+						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
 					<ContextMenu name="DecorationRecommendationsKS83ContextMenu" id="65"/>
@@ -315,6 +380,10 @@ If necessary, you should allow access to the specified address and network ports
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Establish connection with the Internet server support</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Устанавливать соединение с сервером Интернет-поддержки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -332,6 +401,10 @@ If necessary, you should allow access to the specified address and network ports
 					<v8:lang>en</v8:lang>
 					<v8:content>Connection timeout</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таймаут соединения</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -348,6 +421,10 @@ If necessary, you should allow access to the specified address and network ports
 					<v8:lang>en</v8:lang>
 					<v8:content>Login</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Логин</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -363,6 +440,10 @@ If necessary, you should allow access to the specified address and network ports
 					<v8:lang>en</v8:lang>
 					<v8:content>Empty login</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Логин пустой</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -376,11 +457,19 @@ If necessary, you should allow access to the specified address and network ports
 					<v8:lang>en</v8:lang>
 					<v8:content>Connect Online support</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключить Интернет-поддержку</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enter username and password or register</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ввести логин и пароль или зарегистрироваться</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnterLoginPasswordOrRegister</Action>

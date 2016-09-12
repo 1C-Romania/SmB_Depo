@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Create offline workplace</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Создание автономного рабочего места</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -24,11 +28,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Main panel</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель основная</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Navigation panel</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель навигации</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -42,6 +54,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Begin</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Начало</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="StartExtendedTooltip" id="227"/>
 					<ChildItems>
@@ -50,6 +66,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Create offline workplace</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Создание автономного рабочего места</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -91,6 +111,11 @@
 													<v8:content>For offline work you should have 1C:Enterprise
 installed on your computer of the version &lt;ApplicationVersion&gt;</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Для автономной работы на Вашем
+компьютере должна быть установлена платформа "1С:Предприятие" версии &lt;ВерсияПриложения&gt;</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
 											<ContextMenu name="InformationLabelOnVersionsOfContextMenu" id="152"/>
@@ -124,6 +149,10 @@ installed on your computer of the version &lt;ApplicationVersion&gt;</v8:content
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to set up the offline work parameters.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для настройки параметров автономной работы.</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Bottom</VerticalAlign>
 									<ContextMenu name="NextLabel1ContextMenu" id="94"/>
@@ -139,6 +168,10 @@ installed on your computer of the version &lt;ApplicationVersion&gt;</v8:content
 							<v8:lang>en</v8:lang>
 							<v8:content>Exporting setting</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка выгрузки</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="SettingExportsExtendedTooltip" id="237"/>
 					<ChildItems>
@@ -147,6 +180,10 @@ installed on your computer of the version &lt;ApplicationVersion&gt;</v8:content
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Parameters Setting</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка параметров</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -160,6 +197,10 @@ installed on your computer of the version &lt;ApplicationVersion&gt;</v8:content
 											<v8:lang>en</v8:lang>
 											<v8:content>Offline workplace name</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Наименование автономного рабочего места</v8:content>
+										</v8:item>
 									</Title>
 									<TitleLocation>Top</TitleLocation>
 									<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -170,6 +211,10 @@ installed on your computer of the version &lt;ApplicationVersion&gt;</v8:content
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>For example, "For work at home" or "Business trip to partner".</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Например, "Для работы дома" или "Командировка к партнеру".</v8:content>
 											</v8:item>
 										</Title>
 									</ExtendedTooltip>
@@ -191,6 +236,10 @@ installed on your computer of the version &lt;ApplicationVersion&gt;</v8:content
 													<v8:lang>en</v8:lang>
 													<v8:content>&lt;all data is available in the offline workplace.&gt;</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>&lt;В автономном рабочем месте доступны все данные.&gt;</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="DataTransferRestrictionDescriptionContextMenu" id="207"/>
 											<ExtendedTooltip name="DataTransferRestrictionDescriptionExtendedTooltip" id="243"/>
@@ -203,11 +252,19 @@ installed on your computer of the version &lt;ApplicationVersion&gt;</v8:content
 											<v8:lang>en</v8:lang>
 											<v8:content>User right settings</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройка прав пользователей</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>User right settings</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройка прав пользователей</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -233,6 +290,10 @@ installed on your computer of the version &lt;ApplicationVersion&gt;</v8:content
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Allow users to sync data</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Разрешить выполнять синхронизацию данных пользователям</v8:content>
 												</v8:item>
 											</Title>
 											<SearchStringLocation>None</SearchStringLocation>
@@ -291,6 +352,11 @@ installed on your computer of the version &lt;ApplicationVersion&gt;</v8:content
 													<v8:content>These users can perform data
 synchronization with any offline workstations and other applications.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Указанные пользователи могут
+выполнять синхронизацию данных с любыми автономными рабочими местами и другими программами.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="Decoration6ContextMenu" id="223"/>
 											<ExtendedTooltip name="Decoration6ExtendedTooltip" id="248"/>
@@ -304,6 +370,10 @@ synchronization with any offline workstations and other applications.</v8:conten
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to get the data prepared for the import.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для подготовки данных для загрузки.</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Bottom</VerticalAlign>
@@ -320,11 +390,19 @@ synchronization with any offline workstations and other applications.</v8:conten
 							<v8:lang>en</v8:lang>
 							<v8:content>Waiting for initial image creation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ожидание создания начального образа</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page 14</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница 14</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="WaitInitialImageExtendedTooltip" id="250"/>
@@ -334,6 +412,10 @@ synchronization with any offline workstations and other applications.</v8:conten
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Getting the data prepared for the import</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подготовка данных для загрузки</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -346,11 +428,19 @@ synchronization with any offline workstations and other applications.</v8:conten
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -377,11 +467,19 @@ synchronization with any offline workstations and other applications.</v8:conten
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -401,6 +499,12 @@ synchronization with any offline workstations and other applications.</v8:conten
 It may take several minutes.
 Please wait...</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняется подготовка данных для загрузки на Ваш компьютер.
+Это может занять несколько минут.
+Пожалуйста, подождите..</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
 											<ContextMenu name="Decoration15ContextMenu" id="54"/>
@@ -418,6 +522,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>End</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Окончание</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="EndExtendedTooltip" id="257"/>
 					<ChildItems>
@@ -426,6 +534,10 @@ Please wait...</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Creation of the offline workplace has been successfully completed</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Создание автономного рабочего места успешно завершено</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -437,6 +549,10 @@ Please wait...</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>1. Import the data to your computer:</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>1. Загрузите данные к себе на компьютер:</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration3ContextMenu" id="169"/>
@@ -450,6 +566,10 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Offline work.zip</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Автономная работа.zip</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTipRepresentation>Button</ToolTipRepresentation>
 									<ExtendedTooltip name="ImportInitialImageToComputerUserExtendedTooltip" id="261">
@@ -458,6 +578,10 @@ Please wait...</v8:content>
 												<v8:lang>en</v8:lang>
 												<v8:content>If you have problems importing the file using web client you can try using 1C Enterprise Thin Client for work.
 To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; instruction &lt;/&gt; or contact your administrator.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>При возникновении проблем скачивания файла с использованием веб-клиента можно попробовать использовать для работы тонкий клиент 1С:Предприятия. Для использования тонкого клиента ознакомьтесь с инструкцией или обратитесь за помощью у администратору.</v8:content>
 											</v8:item>
 										</Title>
 										<Events>
@@ -472,6 +596,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>2. Follow instruction:</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>2. Следуйте инструкции:</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="Decoration1ContextMenu" id="211"/>
@@ -519,11 +647,19 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Navigation panel border</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рамка панели навигации</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Navigation panel border</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рамка панели навигации</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -537,6 +673,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 							<v8:lang>en</v8:lang>
 							<v8:content>Navigation panel</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Панель навигации</v8:content>
+						</v8:item>
 					</Title>
 					<PagesRepresentation>None</PagesRepresentation>
 					<ExtendedTooltip name="NavigationPanelExtendedTooltip" id="269"/>
@@ -547,11 +687,19 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page start</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации начало</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page start</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации начало</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -607,6 +755,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page continuation</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации продолжение</v8:content>
+								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
 							<ExtendedTooltip name="NavigationPageContinuationExtendedTooltip" id="276"/>
@@ -657,6 +809,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page end</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации окончание</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -713,6 +869,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page wait</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации ожидание</v8:content>
+								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
 							<ExtendedTooltip name="NavigationPageWaitExtendedTooltip" id="288"/>
@@ -748,6 +908,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Next &gt;</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Далее  &gt;</v8:content>
 												</v8:item>
 											</Title>
 											<ExtendedTooltip name="CommandNext3ExtendedTooltip" id="291"/>
@@ -787,6 +951,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Sequence number of jump</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядковый номер перехода</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -803,6 +971,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Jump table</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица переходов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -813,6 +985,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Sequence number of jump</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядковый номер перехода</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -830,6 +1006,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 							<v8:lang>en</v8:lang>
 							<v8:content>Main page name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя основной страницы</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -844,6 +1024,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Decoration page name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя страницы декорации</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -860,6 +1044,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 							<v8:lang>en</v8:lang>
 							<v8:content>Navigation page name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя страницы навигации</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -874,6 +1062,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>On open handler name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика при открытии</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -890,6 +1082,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 							<v8:lang>en</v8:lang>
 							<v8:content>Go to next handler name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика при переходе далее</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -904,6 +1100,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Go back handler name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика при переходе назад</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -920,6 +1120,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 							<v8:lang>en</v8:lang>
 							<v8:content>Long operation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Длительная операция</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -930,6 +1134,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Long operation handler name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика длительной операции</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -948,6 +1156,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Filter Settings at Node</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка отборов на узле</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -956,6 +1168,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Manual on the offline workplace configuration</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инструкция по настройке автономного рабочего места</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -972,6 +1188,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange plan name</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя плана обмена</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -987,6 +1207,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Long operation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Длительная операция</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -998,6 +1222,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>The long operation is completed</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Длительная операция завершена</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1008,6 +1236,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Event log event offline workplace creation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Событие журнала регистрации создание автономного рабочего места</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1024,6 +1256,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Job ID</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1032,6 +1268,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Temporary storage address of the initial image</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес временного хранилища начального образа</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1048,6 +1288,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Setup package attachment file name</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя файла пакета установки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1063,6 +1307,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Address of the temporary storage of information on the installation package</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес временного хранилища информации о пакете установки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1077,6 +1325,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Size of the installation package file</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Размер файла пакета установки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1094,6 +1346,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Synchronization users</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователи синхронизации</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1104,6 +1360,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>User</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1116,6 +1376,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 							<v8:lang>en</v8:lang>
 							<v8:content>Data synchronization is allowed</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Синхронизация данных разрешена</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1126,6 +1390,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Allow data synchronization</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Разрешить синхронизацию данных</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1140,6 +1408,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Force quit the form</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму безусловно</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1150,6 +1422,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Instruction address to set thin client</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес инструкции по настройке тонкого клиента</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1195,6 +1471,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Done</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Готово</v8:content>
+				</v8:item>
 			</Title>
 			<Action>CommandDone</Action>
 		</Command>
@@ -1204,6 +1484,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Next &gt;</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Далее  &gt;</v8:content>
+				</v8:item>
 			</Title>
 			<Action>CommandNext</Action>
 		</Command>
@@ -1211,6 +1495,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>&lt; Back</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>&lt; Back</v8:content>
 				</v8:item>
 			</Title>
@@ -1222,6 +1510,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить</v8:content>
+				</v8:item>
 			</Title>
 			<Action>CommandCancel</Action>
 		</Command>
@@ -1230,6 +1522,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить...</v8:content>
 				</v8:item>
 			</Title>
 			<Picture>
@@ -1245,6 +1541,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Import</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить</v8:content>
+				</v8:item>
 			</Title>
 			<Picture>
 				<xr:Ref>StdPicture.MoveDown</xr:Ref>
@@ -1259,6 +1559,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>How to install or update the 1C:Enterprise platform version</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Как установить или обновить версию платформы 1С:Предприятие</v8:content>
+				</v8:item>
 			</Title>
 			<Action>HowToInstallOrUpdate1CEnterprisePlatformVersion</Action>
 		</Command>
@@ -1268,11 +1572,19 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 					<v8:lang>en</v8:lang>
 					<v8:content>Print</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Print instruction</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать инструкции</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1287,6 +1599,10 @@ To use thin client, read the &lt;link ThinClientSettinInstructionAddress&gt; ins
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Save as...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить как...</v8:content>
 				</v8:item>
 			</Title>
 			<Picture>

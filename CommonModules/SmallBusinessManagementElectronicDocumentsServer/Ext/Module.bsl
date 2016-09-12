@@ -546,7 +546,7 @@ Function FoundCreateProductsServicesReceipt(StringForImport, ParseTree, RefToOwn
 		If ValueIsFilled(RefToOwner) Then // we receive the changes of the existing document
 			
 			If RefToOwner.Posted Then 
-				Raise NStr("en = 'Filling according to the ED is possible only for the unposted document'");
+				Raise NStr("en='Filling according to the ED is possible only for the unposted document';ru='Заполнение на основании ЭД возможно только для непроведенного документа'");
 			EndIf;
 			
 			DocumentObject = RefToOwner.GetObject();
@@ -611,7 +611,7 @@ Function FoundCreateProductsServicesReceipt(StringForImport, ParseTree, RefToOwn
 		DocumentObject.Write(WriteMode);
 	Except
 		
-		WriteLogEvent(NStr("en = 'Filling on the ED basis'"),
+		WriteLogEvent(NStr("en='Filling on the ED basis';ru='Заполнение на основании ЭД'"),
 			EventLogLevel.Error, 
 			Metadata.Documents.PurchaseOrder, 
 			RefToOwner, 
@@ -636,7 +636,7 @@ Function FoundCreateInvoice(StringForImport, ParseTree, RefToOwner = Undefined) 
 		If ValueIsFilled(RefToOwner) Then
 			
 			If RefToOwner.Posted Then 
-				Raise NStr("en = 'Filling according to the ED is possible only for the unposted document'");
+				Raise NStr("en='Filling according to the ED is possible only for the unposted document';ru='Заполнение на основании ЭД возможно только для непроведенного документа'");
 			EndIf;
 			
 			DocumentObject = RefToOwner.GetObject();
@@ -699,7 +699,7 @@ Function FoundCreateInvoice(StringForImport, ParseTree, RefToOwner = Undefined) 
 		
 	Except
 		
-		WriteLogEvent(NStr("en = 'Filling on the ED basis'"),
+		WriteLogEvent(NStr("en='Filling on the ED basis';ru='Заполнение на основании ЭД'"),
 			EventLogLevel.Error, 
 			Metadata.Documents.SupplierInvoiceNote, 
 			RefToOwner, 
@@ -730,7 +730,7 @@ Function FoundCreateCustomerOrder(StringForImport, ParseTree, RefToOwner = Undef
 		If ValueIsFilled(RefToOwner) Then // we receive the changes of the existing document
 			
 			If RefToOwner.Posted Then 
-				Raise NStr("en = 'Filling according to the ED is possible only for the unposted document'");
+				Raise NStr("en='Filling according to the ED is possible only for the unposted document';ru='Заполнение на основании ЭД возможно только для непроведенного документа'");
 			EndIf;
 			
 			DocumentObject = RefToOwner.GetObject();
@@ -837,7 +837,7 @@ Function FoundCreateCustomerOrder(StringForImport, ParseTree, RefToOwner = Undef
 		
 	Except
 		
-		WriteLogEvent(NStr("en = 'Filling on the ED basis'"), 
+		WriteLogEvent(NStr("en='Filling on the ED basis';ru='Заполнение на основании ЭД'"), 
 			EventLogLevel.Error, 
 			Metadata.Documents.CustomerOrder, 
 			RefToOwner, 
@@ -867,7 +867,7 @@ Function FoundCreatePurchaseOrder(StringForImport, ParseTree, RefToOwner = Undef
 		If ValueIsFilled(RefToOwner) Then // we receive the changes of the existing document
 			
 			If RefToOwner.Posted Then 
-				Raise NStr("en = 'Filling according to the ED is possible only for the unposted document'");
+				Raise NStr("en='Filling according to the ED is possible only for the unposted document';ru='Заполнение на основании ЭД возможно только для непроведенного документа'");
 			EndIf;
 			
 			DocumentObject = RefToOwner.GetObject();
@@ -986,7 +986,7 @@ Function FoundCreatePurchaseOrder(StringForImport, ParseTree, RefToOwner = Undef
 		
 	Except
 		
-		WriteLogEvent(NStr("en = 'Filling on the ED basis'"),
+		WriteLogEvent(NStr("en='Filling on the ED basis';ru='Заполнение на основании ЭД'"),
 			EventLogLevel.Error, 
 			Metadata.Documents.PurchaseOrder, 
 			RefToOwner, 
@@ -2394,7 +2394,7 @@ Function CreateRefillVendorsProductsAndServices(ObjectString, ParseTree) Export
 	Try
 		NewEl.Write();
 	Except
-		Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Creating of the catalog item %1.'"), "Supplier products and services"); 
+		Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Creating of the catalog item %1.';ru='Создание элемента справочника %1.'"), "Supplier products and services"); 
 		WriteLogEvent(Text, EventLogLevel.Error,,,DetailErrorDescription(ErrorInfo()));		
 		Raise;
 	EndTry;

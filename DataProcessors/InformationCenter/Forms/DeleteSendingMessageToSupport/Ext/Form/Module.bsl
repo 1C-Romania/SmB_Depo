@@ -14,7 +14,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Parameters.Property("Text") Then 
 		Text = Parameters.Text;
-		StringCursorPosition = NStr("en = 'CursorPosition'");
+		StringCursorPosition = NStr("en='CursorPosition';ru='ПозицияКурсора'");
 		CursorRow = DeterminePositionNumberForCursor(Text, StringCursorPosition) - 9;
 		Text = StrReplace(Text, StringCursorPosition, "");
 		Content.SetHTML(Text, New Structure);
@@ -95,12 +95,13 @@ Procedure Send(Command)
 	
 	SendingResult = SendMessageServer();
 	If SendingResult Then 
-		ShowUserNotification(NStr("en = 'Message is sent.'"));
+		ShowUserNotification(NStr("en='Message is sent.';ru='Сообщение отправлено.'"));
 		Close();
 	Else
 		ClearMessages();
-		ShowMessageToUser(NStr("en = 'Sorry, your message was not sent.
-			|Repeat attempt later.'"));
+		ShowMessageToUser(NStr("en='Sorry, your message was not sent."
+"Repeat attempt later.';ru='К сожалению сообщение не было отправлено."
+"Повторите попытку позже.'"));
 	EndIf;
 	
 EndProcedure
@@ -152,7 +153,7 @@ Function CheckAttributesFilling()
 		EndTry;
 	Else 
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'The Response address is not filled in'"), ,
+			NStr("en='The Response address is not filled in';ru='Не заполнено поле Адрес ответа'"), ,
 			"FromWhom");
 	EndIf;
 	
@@ -181,7 +182,7 @@ Procedure PlaceFilesWithExtension()
 	
 	// Open the files selection dialog.
 	Dialog = New FileDialog(FileDialogMode.Open);
-	Dialog.Title = NStr("en = 'Select the file'");
+	Dialog.Title = NStr("en='Select the file';ru='Выберите файл'");
 	Dialog.Multiselect = False;
 	
 	NotifyDescription = New NotifyDescription("PutFileWithExtensionAlert", ThisObject);
@@ -217,13 +218,13 @@ Procedure PutFileWithAlertExtensionSizeAlert(Size, AdditionalParameters) Export
 	EndIf;
 	
 	If Not TotalFilesSizeIsOptimal(Size) Then 
-		WarningText = NStr("en = 'Unable to add file. Selected files size exceeds the limit in %1 MB'");
+		WarningText = NStr("en='Unable to add file. Selected files size exceeds the limit in %1 MB';ru='Не удалось добавить файл. Размер выбранных файлов превышает предел в %1 Мб'");
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(WarningText, MaximalFileSize);
 		ClearMessages();
 		ShowMessageToUser(WarningText);
 	EndIf;
 	
-	Status(NStr("en = 'File is added to a message.'"));
+	Status(NStr("en='File is added to a message.';ru='Файл добавляется к сообщению.'"));
 
 	// Add files to table.
 	AddFilesInSelectedFiles(AdditionalParameters.FullFileName);
@@ -289,7 +290,7 @@ Procedure PlaceFilesWithoutExtensionAtServer(StorageAddress, FileName)
 	// Check if total files size is correct.
 	FileSize = NewFile.Size();
 	If Not TotalFilesSizeIsOptimal(FileSize) Then 
-		WarningText = NStr("en = 'Selected files size exceeds the limit in %1 MB'");
+		WarningText = NStr("en='Selected files size exceeds the limit in %1 MB';ru='Размер выбранных файлов превышает предел в %1 Мб'");
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(WarningText, MaximalFileSize);
 		ShowMessageToUser(WarningText);
 		DeleteFromTempStorage(StorageAddress);
@@ -452,7 +453,7 @@ Function CreateFormElementsForAttachedFile()
 		DeleteFileButton					= Items.Add("DeleteFileButton" + String(Iteration), Type("FormDecoration"), FileGroup);
 		DeleteFileButton.Type				= FormDecorationType.Picture;
 		DeleteFileButton.Picture		= PictureLib.DeleteDirectly;
-		DeleteFileButton.ToolTip		= NStr("en = 'Delete file'");
+		DeleteFileButton.ToolTip		= NStr("en='Delete file';ru='Удалить файл'");
 		DeleteFileButton.Width			= 2;
 		DeleteFileButton.Height			= 1;
 		DeleteFileButton.PictureSize	= PictureSize.Stretch;

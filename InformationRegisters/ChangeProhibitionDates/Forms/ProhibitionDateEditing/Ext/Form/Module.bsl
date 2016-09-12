@@ -175,15 +175,15 @@ Procedure CommonProhibitionDateWithDescriptionOnChange(Val Context, CalculatePro
 			
 			If Context.CurrentDateAtServer > PermissionTerm Then
 				LabelText = Chars.LF
-				             + NStr("en = 'Term possibility of changing data from %3 to %4 expired %2'");
+				             + NStr("en='Term possibility of changing data from %3 to %4 expired %2';ru='Срок возможности изменения данных с %3 по %4 истек %2'");
 			Else
 				If CalculateProhibitionDate Then
 					Context.ProhibitionDate = CalculatedProhibitionDates.Previous;
 				EndIf;
 				LabelText = Chars.LF
-				             + NStr("en = 'To %2 change of data is possible from %3 to %4'")
+				             + NStr("en='To %2 change of data is possible from %3 to %4';ru='По %2 возможно изменение данных с %3 по %4'")
 				             + Chars.LF
-				             + NStr("en = 'After %2 change of data will be forbidden to %4'")
+				             + NStr("en='After %2 change of data will be forbidden to %4';ru='После %2 будет запрещено изменение данных по %4'")
 				             + Chars.LF;
 			EndIf;
 		Else
@@ -194,7 +194,7 @@ Procedure CommonProhibitionDateWithDescriptionOnChange(Val Context, CalculatePro
 		EndIf;
 		Context.Items.AutomaticalDateExplanation.Title =
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Change of data is forbidden to %1'") + LabelText,
+				NStr("en='Change of data is forbidden to %1';ru='Запрещено изменение данных по %1'") + LabelText,
 				Format(Context.ProhibitionDate, "DLF=D"),
 				Format(PermissionTerm, "DLF=D"),
 				Format(CalculatedProhibitionDates.Previous + TwentyFourHours, "DLF=D"),

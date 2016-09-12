@@ -185,7 +185,7 @@ Function ParentOfPersonalAccessGroups(Val DoNotCreate = False, ItemsGroupDescrip
 	
 	SetPrivilegedMode(True);
 	
-	ItemsGroupDescription = NStr("en = 'Personal access groups'");
+	ItemsGroupDescription = NStr("en='Personal access groups';ru='Персональные группы доступа'");
 	
 	Query = New Query;
 	Query.SetParameter("ItemsGroupDescription", ItemsGroupDescription);

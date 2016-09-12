@@ -658,7 +658,7 @@ EndProcedure
 //
 Function FullNameOfServiceUser(Val ID = Undefined) Export
 	
-	Result = NStr("en = '<Service user %1>'");
+	Result = NStr("en='<Service user %1>';ru='<Служебный пользователь %1>'");
 	
 	If ValueIsFilled(ID) Then
 		
@@ -698,7 +698,7 @@ Function IsSharedInfobaseUser()
 			If Not UserRegisteredAsUnseparated(UserID) Then
 				
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'User with the %1 identifier is not registered as undivided!'"),
+					NStr("en='User with the %1 identifier is not registered as undivided!';ru='Пользователь с идентификатором %1 не зарегистрирован в качестве неразделенного!'"),
 					String(UserID)
 				);
 				
@@ -751,8 +751,8 @@ EndProcedure
 
 Function ExceptionTextUnseparatedUsersWriteProhibited()
 	
-	Return NStr("en = 'Write undivided
-                  |users during the use of separators is denied.'");
+	Return NStr("en='Write undivided"
+"users during the use of separators is denied.';ru='Запись неразделенных пользователей при включенном использовании разделителей запрещена.'");
 	
 EndFunction
 

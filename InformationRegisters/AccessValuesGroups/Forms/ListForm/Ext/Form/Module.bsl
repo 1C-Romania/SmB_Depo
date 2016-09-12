@@ -33,9 +33,9 @@ Procedure RefreshDataRegister(Command)
 	RegisterDataUpdateOnServer(HasChanges);
 	
 	If HasChanges Then
-		Text = NStr("en = 'Updated successfully.'");
+		Text = NStr("en='Updated successfully.';ru='Обновление выполнено успешно.'");
 	Else
-		Text = NStr("en = 'No need to update.'");
+		Text = NStr("en='No need to update.';ru='Обновление не требуется.'");
 	EndIf;
 	
 	ShowMessageBox(, Text);
@@ -51,11 +51,11 @@ Procedure SetConditionalAppearance()
 	
 	ConditionalAppearance.Items.Clear();
 	
-	IssueDataGroup(0, NStr("en = 'Standard access value'"));
-	IssueDataGroup(1, NStr("en = 'Ordinary/external users'"));
-	IssueDataGroup(2, NStr("en = 'Ordinary/external user groups'"));
-	IssueDataGroup(3, NStr("en = 'Performers groups'"));
-	IssueDataGroup(4, NStr("en = 'Authorization objects'"));
+	IssueDataGroup(0, NStr("en='Standard access value';ru='Стандартные значения доступа'"));
+	IssueDataGroup(1, NStr("en='Ordinary/external users';ru='Обычные/внешние пользователи'"));
+	IssueDataGroup(2, NStr("en='Ordinary/external user groups';ru='Обычные/внешние группы пользователей'"));
+	IssueDataGroup(3, NStr("en='Performers groups';ru='Группы исполнителей'"));
+	IssueDataGroup(4, NStr("en='Authorization objects';ru='Объекты авторизации'"));
 	
 EndProcedure
 

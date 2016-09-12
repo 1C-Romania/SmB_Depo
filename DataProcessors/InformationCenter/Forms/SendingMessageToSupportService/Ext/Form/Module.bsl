@@ -53,17 +53,17 @@ Procedure Send(Command)
 	
 	If Items.ReplyTo.Visible Then 
 		If IsBlankString(AddressForAnswer) Then 
-			Raise NStr("en = 'You need to enter email address for an answer'");
+			Raise NStr("en='You need to enter email address for an answer';ru='Необходимо ввести адрес электронной почты для ответа'");
 		EndIf;
 		If Not ParseStringWithPostalAddresses(AddressForAnswer) Then 
 			Notification = New NotifyDescription("SendMessageToSupport", ThisForm);
-			ShowQueryBox(Notification, NStr("en = 'The email address you have typed may be incorrect Send the email?'"), QuestionDialogMode.YesNo);
+			ShowQueryBox(Notification, NStr("en='The email address you have typed may be incorrect Send the email?';ru='Адрес электронной почты возможно введен неверно. Отправить сообщение?'"), QuestionDialogMode.YesNo);
 			Return;
 		EndIf;
 	EndIf;
 	
 	SendMessageServer();
-	ShowUserNotification(NStr("en = 'Message to support is sent.'"));
+	ShowUserNotification(NStr("en='Message to support is sent.';ru='Сообщение в службу поддержки отправлено.'"));
 	Notify("SendingMessageToSupportService");
 	Close();
 	
@@ -112,7 +112,7 @@ Procedure SendMessageToSupport(Result) Export
 	EndIf;
 	
 	SendMessageServer();
-	ShowUserNotification(NStr("en = 'Message to support is sent.'"));
+	ShowUserNotification(NStr("en='Message to support is sent.';ru='Сообщение в службу поддержки отправлено.'"));
 	Notify("SendingMessageToSupportService");
 	Close();
 	
@@ -122,7 +122,7 @@ EndProcedure
 Procedure FillContentWithTemplate()
 	
 	Text = InformationCenterServer.TexttemplateToSupport();
-	StringCursorPosition = NStr("en = 'CursorPosition'");
+	StringCursorPosition = NStr("en='CursorPosition';ru='ПозицияКурсора'");
 	CursorPosition = Find(Text, StringCursorPosition)- 9;
 	Text = StrReplace(Text, StringCursorPosition, "");
 	Content.SetHTML(Text, New Structure);
@@ -180,7 +180,7 @@ Procedure PlaceFilesWithExtension()
 	
 	// Open the files selection dialog.
 	Dialog = New FileDialog(FileDialogMode.Open);
-	Dialog.Title = NStr("en = 'Select the file'");
+	Dialog.Title = NStr("en='Select the file';ru='Выберите файл'");
 	Dialog.Multiselect = False;
 	
 	NotifyDescription = New NotifyDescription("PutFileWithExtensionAlert", ThisObject);
@@ -216,13 +216,13 @@ Procedure PutFileWithAlertExtensionSizeAlert(Size, AdditionalParameters) Export
 	EndIf;
 	
 	If Not TotalFilesSizeIsOptimal(Size) Then 
-		WarningText = NStr("en = 'Unable to add file. Selected files size exceeds the limit in %1 MB'");
+		WarningText = NStr("en='Unable to add file. Selected files size exceeds the limit in %1 MB';ru='Не удалось добавить файл. Размер выбранных файлов превышает предел в %1 Мб'");
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(WarningText, MaximalFileSize);
 		ClearMessages();
 		ShowMessageToUser(WarningText);
 	EndIf;
 	
-	Status(NStr("en = 'File is added to a message.'"));
+	Status(NStr("en='File is added to a message.';ru='Файл добавляется к сообщению.'"));
 
 	// Add files to table.
 	AddFilesInSelectedFiles(AdditionalParameters.FullFileName);
@@ -301,7 +301,7 @@ Procedure PlaceFilesWithoutExtensionAtServer(StorageAddress, FileNameAndExtensio
 	// Check if total files size is correct.
 	FileSize = NewFile.Size();
 	If Not TotalFilesSizeIsOptimal(FileSize) Then 
-		WarningText = NStr("en = 'Selected files size exceeds the limit in %1 MB'");
+		WarningText = NStr("en='Selected files size exceeds the limit in %1 MB';ru='Размер выбранных файлов превышает предел в %1 Мб'");
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(WarningText, MaximalFileSize);
 		ShowMessageToUser(WarningText);
 		DeleteFromTempStorage(StorageAddress);
@@ -362,7 +362,7 @@ Procedure SendMessageServer()
 	MessageText = Content.GetText();
 	
 	If IsBlankString(MessageText) Then 
-		Raise NStr("en = 'Message body can not be empty.'");
+		Raise NStr("en='Message body can not be empty.';ru='Текст сообщения не может быть пустым.'");
 	EndIf;
 	
 	If IsBlankString(Subject) Then 
@@ -459,7 +459,7 @@ Function CreateFormElementsForAttachedFile()
 			Continue;
 		EndIf;
 		
-		FilePresentation = SelectedFile.FileName + SelectedFile.Extension + " (" + Round(SelectedFile.Size / 1024, 2) + NStr("en = ' Kb'") +")";
+		FilePresentation = SelectedFile.FileName + SelectedFile.Extension + " (" + Round(SelectedFile.Size / 1024, 2) + NStr("en=' Kb';ru=' Кб'") +")";
 		
 		IndexOf = SelectedFile.GetID();
 		
@@ -476,7 +476,7 @@ Function CreateFormElementsForAttachedFile()
 		DeleteFileButton = Items.Add("DeleteFileButton" + String(IndexOf), Type("FormDecoration"), FileGroup);
 		DeleteFileButton.Type = FormDecorationType.Picture;
 		DeleteFileButton.Picture = PictureLib.DeleteDirectly;
-		DeleteFileButton.ToolTip = NStr("en = 'Delete file'");
+		DeleteFileButton.ToolTip = NStr("en='Delete file';ru='Удалить файл'");
 		DeleteFileButton.Width = 2;
 		DeleteFileButton.Height = 1;
 		DeleteFileButton.PictureSize = PictureSize.Stretch;

@@ -59,7 +59,7 @@ Procedure FillPredefinedItem(DriverHandler, ObjectID = Undefined, DriverTemplate
 	Try
 		Driver = EquipmentManagerServerCall.PredefinedItem("Catalog.HardwareDrivers." + TempItemName);
 	Except
-		Message = NStr("en = 'Predefined item %Parameter% is not found.'");
+		Message = NStr("en='Predefined item %Parameter% is not found.';ru='Предопределенный элемент ""%Параметр%"" не найден.'");
 		Message = StrReplace(Message, "%Parameter%", "Catalog.HardwareDrivers." + TempItemName);
 		Raise Message;
 	EndTry;

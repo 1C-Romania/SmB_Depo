@@ -153,8 +153,8 @@ EndProcedure
 &AtClient
 Procedure CompanyFilterClean(Command)
 	
-	HeaderText = NStr("en='Confirmation'");
-	QuestionText   = NStr("en='Do you want to clear the filter by companies?'");
+	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
+	QuestionText   = NStr("en='Do you want to clear the filter by companies?';ru='Очистить отбор по организациям?'");
 	Response = Undefined;
 
 	ShowQueryBox(New NotifyDescription("ClearFilterByCompanyEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo,,,HeaderText);
@@ -176,8 +176,8 @@ EndProcedure
 &AtClient
 Procedure ClearDocumentTypesFilter(Command)
 	
-	HeaderText = NStr("en='Confirmation'");
-	QuestionText   = NStr("en='Do you want to clear the filter by document types?'");
+	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
+	QuestionText   = NStr("en='Do you want to clear the filter by document types?';ru='Очистить отбор по видам документов?'");
 	Response = Undefined;
 
 	ShowQueryBox(New NotifyDescription("ClearFilterByDocumentKindEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo,,,HeaderText);
@@ -278,7 +278,7 @@ Procedure RefreshDescriptionCommandsForms()
 		
 	Else
 		
-		NewTitleCompanies = NStr("en = 'Select companies '");
+		NewTitleCompanies = NStr("en='Select companies ';ru='Выбрать организации '");
 		
 	EndIf;
 	
@@ -292,7 +292,7 @@ Procedure RefreshDescriptionCommandsForms()
 		
 	Else
 		
-		NewTitleOfDocuments = NStr("en = 'Select documents types '");
+		NewTitleOfDocuments = NStr("en='Select documents types ';ru='Выбрать виды документов '");
 		
 	EndIf;
 	
@@ -303,38 +303,38 @@ EndProcedure
 &AtServer
 Procedure GetContextDetails()
 	
-	TextDescription = NStr("en = 'All normative-reference information is automatically registered for sending;'");
+	TextDescription = NStr("en='All normative-reference information is automatically registered for sending;';ru='Вся нормативно-справочная информация автоматически регистрируется к отправке;'");
 	
 	If ManualExchange Then
 		
-		TextDescription = NStr("en = 'User individually selects and registers the documents for sending;'");
+		TextDescription = NStr("en='User individually selects and registers the documents for sending;';ru='Пользователь самостоятельно отбирает и регистрирует документы к отправке;'");
 		
 	Else
 		
 		If UseDocumentTypesFilter Then
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'Documents are automatically registered for sending:'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='Documents are automatically registered for sending:';ru='Документы автоматически регистрируются к отправке:'");
 		Else
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'All the documents are automatically registered for sending:'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='All the documents are automatically registered for sending:';ru='Все документы автоматически регистрируются к отправке:'");
 		EndIf;
 		
 		If ValueIsFilled(DocumentsDumpStartDate) Then
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'since %StartDate%'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='since %StartDate%';ru='начиная с %ДатаНачала%'");
 			TextDescription = StrReplace(TextDescription,"%StartDate%", Format(DocumentsDumpStartDate, "DF=dd.MM.yyyy"));
 		EndIf;
 		
 		If UseCompaniesFilter Then
 			CollectionValues = Companies.Unload().UnloadColumn("Company");
 			PresentationCollections = ExchangePlans.ExchangeSmallBusinessAccounting30.ShortPresentationOfCollectionsOfValues(CollectionValues);
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'with filter by companies: %CollectionPresentation%'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='with filter by companies: %CollectionPresentation%';ru='с отбором по организациям: %ПредставлениеКоллекции%'");
 			TextDescription = StrReplace(TextDescription, "%CollectionPresentation%", PresentationCollections);
 		Else
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'By all companies'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='By all companies';ru='по всем организациям'");
 		EndIf;
 		
 		If UseDocumentTypesFilter Then
 			CollectionValues = DocumentKinds.Unload().UnloadColumn("Presentation");
 			PresentationCollections = ExchangePlans.ExchangeSmallBusinessAccounting30.ShortPresentationOfCollectionsOfValues(CollectionValues);
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'with filter by document kinds: %CollectionPresentation%'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='with filter by document kinds: %CollectionPresentation%';ru='с отбором по видам документов: %ПредставлениеКоллекции%'");
 			TextDescription = StrReplace(TextDescription, "%CollectionPresentation%", PresentationCollections);
 		EndIf;
 		

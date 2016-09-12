@@ -22,8 +22,9 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 
 	If ProductsBase  = Undefined Then
 	 	Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device parameters are not set.
-		|For the correct work of the device it is necessary to specify the parameters of its work.'"));
+		Output_Parameters.Add(NStr("en='Device parameters are not set."
+"For the correct work of the device it is necessary to specify the parameters of its work.';ru='Не настроены параметры устройства."
+"Для корректной работы устройства необходимо задать параметры его работы.'"));
 		Result = False;
 	Else
 		DriverObject = New Structure("Parameters", Parameters);
@@ -74,7 +75,7 @@ Function RunCommand(Command, InputParameters = Undefined, Output_Parameters = Un
 	// This command is not supported by the current driver.
 	Else
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.'"));
+		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.';ru='Команда ""%Команда%"" не поддерживается данным драйвером.'"));
 		Output_Parameters[1] = StrReplace(Output_Parameters[1], "%Command%", Command);
 
 		Result = False;
@@ -119,7 +120,7 @@ Function ExportProducts(DriverObject, Parameters, ConnectionParameters, Products
 		Prefix = Prefix + "0";
 	EndIf;
 	
-	Status(NStr("en = 'Products are being exported to the scales with labels printing...'")); 
+	Status(NStr("en='Products are being exported to the scales with labels printing...';ru='Выполняется выгрузка товаров в весы с печатью этикеток...'")); 
 	
 	File = New TextDocument();
 	
@@ -181,7 +182,7 @@ Function ExportProducts(DriverObject, Parameters, ConnectionParameters, Products
 		File.Write(Parameters.ProductsBase, TextEncoding.ANSI);
 	Except
 		Output_Parameters.Add(999);
-		ErrorDescription = NStr("en='Failed to record products file at address: %Address%'");
+		ErrorDescription = NStr("en='Failed to record products file at address: %Address%';ru='Не удалось записать файл товаров по адресу: %Адрес%'");
 		Output_Parameters.Add(StrReplace(ErrorDescription, "%Address%", Parameters.ProductsBase));
 		Result = False;
 	EndTry;
@@ -195,8 +196,9 @@ EndFunction
 Function ClearProductsInScales(DriverObject, Parameters, ConnectionParameters, Output_Parameters) 
 
 	Output_Parameters.Add(999);
-	Output_Parameters.Add(NStr("en='These scales do not support the automatic items clearing.
-	| Run the app of importing data to the scales for clearing products in the scales and click ""Clear PLU in scales"" button.'"));
+	Output_Parameters.Add(NStr("en='These scales do not support the automatic items clearing."
+" Run the app of importing data to the scales for clearing products in the scales and click ""Clear PLU in scales"" button.';ru='Данные весы не поддерживают автоматическую очистку товаров."
+" Для очистки товаров в весах запустите приложение загрузки данных в весы и нажмите кнопку ""Очистить PLU в весах""'"));
 	Result = False;
 
 	Return Result;
@@ -216,7 +218,7 @@ Function DeviceTest(DriverObject, Parameters, ConnectionParameters, Output_Param
 	
 	If IsBlankString(TempProductsBase) Then
 		Result = False;
-		ErrorText = NStr("en='Products base file is not specified.'");
+		ErrorText = NStr("en='Products base file is not specified.';ru='Файл базы товаров не указан.'");
 	EndIf;
 		
 	Output_Parameters.Add(?(Result, 0, 999));

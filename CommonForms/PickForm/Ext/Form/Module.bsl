@@ -2064,7 +2064,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	//If the currency is filled then correct information line header
 	If ValueIsFilled(Currency) Then
 		
-		NewHeaderRow 						= NStr("en = 'Products were selected to the amount of (%InCurrency%)'");
+		NewHeaderRow 						= NStr("en='Products were selected to the amount of (%InCurrency%)';ru='Товаров подобрано на сумму (%ВВалюте%)'");
 		Items.InformationLabel.Title	= StrReplace(NewHeaderRow, "%InCurrency%", Currency.Description);
 		
 	EndIf;
@@ -2266,7 +2266,7 @@ Procedure CompanyOnChange(Item)
 	Else
 		
 		Message 				= New UserMessage;
-		Message.Text 		= NStr("en = 'Fill company to update data of the form'");
+		Message.Text 		= NStr("en='Fill company to update data of the form';ru='Для обновление данных формы заполните организацию'");
 		Message.DataPath	= "Company";
 		Message.Message();
 		

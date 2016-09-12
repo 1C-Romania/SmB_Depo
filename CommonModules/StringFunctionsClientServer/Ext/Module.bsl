@@ -191,7 +191,7 @@ EndFunction
 //  String   - text string with substituted parameters.
 //
 // Example:
-//  PlaceParametersIntoString(NStr("en='%1 went to %2'"), "John", "Zoo") = "John went to the Zoo".
+//  PlaceParametersIntoString(NStr("en='%1 went to %2';ru='%1 пошел в %2'"), "John", "Zoo") = "John went to the Zoo".
 //
 Function PlaceParametersIntoString(Val LookupString,
 	Val Parameter1, Val Parameter2 = Undefined, Val Parameter3 = Undefined,
@@ -243,7 +243,7 @@ EndFunction
 //  ParameterArray = ParameterArray.Add("John");
 //  ParameterArray = ParameterArray.Add("Zoo");
 //
-//  String = PlaceParametersIntoString(NStr("en='%1 went to %2'"), ParameterArray);
+//  String = PlaceParametersIntoString(NStr("en='%1 went to %2';ru='%1 пошел в %2'"), ParameterArray);
 //
 Function PlaceParametersIntoStringFromArray(Val LookupString, Val ParameterArray) Export
 	

@@ -124,7 +124,7 @@ EndFunction
 //
 Function TextForAdministrator() Export
 	
-	Return NStr("en = 'For administrator:'");
+	Return NStr("en='For administrator:';ru='Для администратора:'");
 	
 EndFunction
 
@@ -156,7 +156,7 @@ EndFunction
 //
 Function EventLogMonitorEvent() Export
 	
-	Return NStr("en = 'Users disconnection'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Users disconnection';ru='Завершение работы пользователей'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

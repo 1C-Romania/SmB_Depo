@@ -8,7 +8,7 @@
 //
 Function EventLogMonitorEvent() Export
 	
-	Return NStr("en = 'Address classifier'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Address classifier';ru='Адресный классификатор'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

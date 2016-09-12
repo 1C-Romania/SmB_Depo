@@ -275,13 +275,13 @@ Procedure SetActivityFlagInZone(Val DataArea = Undefined, Val Status = True)
 		If CommonUseReUse.CanUseSeparatedData() Then
 			DataArea = CommonUse.SessionSeparatorValue();
 		Else
-			Raise NStr("en = 'When calling the SetActivityFlagInZone procedure out of the unseparated session the DataArea parameter is obligatory!'");
+			Raise NStr("en='When calling the SetActivityFlagInZone procedure out of the unseparated session the DataArea parameter is obligatory!';ru='При вызове процедуры УстановитьФлагАктивностиВОбласти из неразделенного сеанса параметр ОбластьДанных является обязательным!'");
 		EndIf;
 	Else
 		If Not CommonUseReUse.SessionWithoutSeparator()
 				AND DataArea <> CommonUse.SessionSeparatorValue() Then
 			
-			Raise(NStr("en = 'Prohibited to work with the area data except the current'"));
+			Raise(NStr("en='Prohibited to work with the area data except the current';ru='Запрещено работать с данными области кроме текущей'"));
 			
 		EndIf;
 	EndIf;
@@ -417,7 +417,7 @@ Procedure CopiesCreation(Val CreationParameters, Val StateBuilding) Export
 	If Not RequiredCreating Then
 		WriteLogEvent(
 			EventLogMonitorEvent() + "." 
-				+ NStr("en = 'Skip the creation'", CommonUseClientServer.MainLanguageCode()),
+				+ NStr("en='Skip the creation';ru='Пропуск создания'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information);
 		Return;
 	EndIf;
@@ -500,7 +500,7 @@ Procedure CopiesCreation(Val CreationParameters, Val StateBuilding) Export
 	ParametersEvents.Insert("Duration", CurrentUniversalDate() - ExecutionStarted);
 	
 	WriteEventToLog(
-		NStr("en = 'Creating'", CommonUseClientServer.MainLanguageCode()),
+		NStr("en='Creating';ru='Создание'", CommonUseClientServer.MainLanguageCode()),
 		ParametersEvents);
 	
 EndProcedure
@@ -515,19 +515,25 @@ EndProcedure
 Procedure ErrorCreatingCopies(Val JobParameters, Val ErrorInfo) Export
 	
 	If JobParameters.TryNumber < JobParameters.RestartCountOnFailure Then
-		CommentTemplate = NStr("en = 'An error occurred while creating area backup %1.
-			|Attempt number:
-			|%2
-			|Because: %3'");
+		CommentTemplate = NStr("en='An error occurred while creating area backup %1."
+"Attempt number:"
+"%2"
+"Because: %3';ru='При создании резервной копии области %1 произошла ошибка."
+"Номер"
+"попытки:"
+"%2 По причине: %3'");
 		Level = EventLogLevel.Warning;
-		Event = NStr("en = 'Creation iteration error'", CommonUseClientServer.MainLanguageCode());
+		Event = NStr("en='Creation iteration error';ru='Ошибка итерации создания'", CommonUseClientServer.MainLanguageCode());
 	Else
-		CommentTemplate = NStr("en = 'An unrecoverable error occurred while creating area backup %1.
-			|Attempt number:
-			|%2
-			|Because: %3'");
+		CommentTemplate = NStr("en='An unrecoverable error occurred while creating area backup %1."
+"Attempt number:"
+"%2"
+"Because: %3';ru='При создании резервной копии области %1 произошла невосстановимая ошибка."
+"Номер"
+"попытки:"
+"%2 По причине: %3'");
 		Level = EventLogLevel.Error;
-		Event = NStr("en = 'Creating Error'", CommonUseClientServer.MainLanguageCode());
+		Event = NStr("en='Creating Error';ru='Ошибка создания'", CommonUseClientServer.MainLanguageCode());
 	EndIf;
 	
 	TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
@@ -553,7 +559,7 @@ EndProcedure
 Procedure ScheduleArchivingQueue(Val ExportParameters) Export
 	
 	If Not Users.InfobaseUserWithFullAccess() Then
-		Raise(NStr("en = 'Insufficient rights to perform operation'"));
+		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -610,7 +616,7 @@ EndProcedure
 Procedure ExportAreaToMSStorage(Val ExportParameters, StorageAddress = Undefined) Export
 	
 	If Not Users.InfobaseUserWithFullAccess() Then
-		Raise(NStr("en = 'Access violation'"));
+		Raise(NStr("en='Access violation';ru='Нарушение прав доступа'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -662,7 +668,7 @@ Procedure ExportAreaToMSStorage(Val ExportParameters, StorageAddress = Undefined
 		
 	Except
 		
-		WriteLogEvent(NStr("en = 'Data area backup creation'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Data area backup creation';ru='Создание резервной копии области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Try
 			If ArchiveName <> Undefined Then
@@ -701,7 +707,7 @@ Function ExportingRequired(Val ExportParameters)
 	If Not CommonUseReUse.SessionWithoutSeparator()
 		AND ExportParameters.DataArea <> CommonUse.SessionSeparatorValue() Then
 		
-		Raise(NStr("en = 'Prohibited to work with the area data except the current'"));
+		Raise(NStr("en='Prohibited to work with the area data except the current';ru='Запрещено работать с данными области кроме текущей'"));
 	EndIf;
 	
 	Result = ExportParameters.Force;
@@ -754,7 +760,7 @@ EndFunction
 Procedure CancelZoneBackupCreating(Val CancellationParameters) Export
 	
 	If Not Users.InfobaseUserWithFullAccess() Then
-		Raise(NStr("en = 'Insufficient rights to perform operation'"));
+		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -872,7 +878,7 @@ EndProcedure
 
 Function EventLogMonitorEvent()
 	
-	Return NStr("en = 'Applications backup'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Applications backup';ru='Резервное копирование приложений'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -905,7 +911,7 @@ Function GetZoneBackupSettings(Val DataArea = Undefined) Export
 		AND DataArea <> CommonUse.SessionSeparatorValue() 
 		AND DataArea <> Undefined Then
 		
-		Raise(NStr("en = 'Prohibited to work with the area data except the current'"));
+		Raise(NStr("en='Prohibited to work with the area data except the current';ru='Запрещено работать с данными области кроме текущей'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -921,8 +927,9 @@ Function GetZoneBackupSettings(Val DataArea = Undefined) Export
 	EndIf;
 	
 	If Not OperationExecuted Then
-		MessagePattern = NStr("en = 'An error occurred while receiving
-			|backup: %1.'");
+		MessagePattern = NStr("en='An error occurred while receiving"
+"backup: %1.';ru='Ошибка при получении настроек"
+"резервного копирования: %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ErrorInfo);
 		Raise(MessageText);
 	EndIf;
@@ -945,7 +952,7 @@ Procedure SetZoneBackupSettings(Val DataArea, Val BackupSettings) Export
 	If Not CommonUseReUse.SessionWithoutSeparator()
 		AND DataArea <> CommonUse.SessionSeparatorValue() Then
 		
-		Raise(NStr("en = 'Prohibited to work with the area data except the current'"));
+		Raise(NStr("en='Prohibited to work with the area data except the current';ru='Запрещено работать с данными области кроме текущей'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -962,8 +969,9 @@ Procedure SetZoneBackupSettings(Val DataArea, Val BackupSettings) Export
 	
 	ErrorInfo = Undefined;
 	If Not Proxy.SetSettings(DataArea, XDTOSettings, ErrorInfo) Then
-		MessagePattern = NStr("en = 'An error occurred while saving
-                                |backup settings: %1.'");
+		MessagePattern = NStr("en='An error occurred while saving"
+"backup settings: %1.';ru='Ошибка при сохранении настроек"
+"резервного копирования: %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ErrorInfo);
 		Raise(MessageText);
 	EndIf;

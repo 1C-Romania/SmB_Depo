@@ -17,10 +17,10 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 					New DataCompositionParameter("Warehouse")).Value;
 					
 	If Not ValueIsFilled(Company) Then
-		Raise NStr("en = 'Value of mandatory parameter ""Company"" is not filled in'");
+		Raise NStr("en='Value of mandatory parameter ""Company"" is not filled in';ru='Не заполнено значение обязательного параметра ""Организация""'");
 	EndIf;
 	If Not ValueIsFilled(Warehouse) Then
-		Raise NStr("en = 'Value of mandatory parameter ""Warehouse"" is not filled in'");
+		Raise NStr("en='Value of mandatory parameter ""Warehouse"" is not filled in';ru='Не заполнено значение обязательного параметра ""Склад""'");
 	EndIf;
 	
 	InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Company, Period.EndDate);
@@ -230,28 +230,28 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 				OR (TypeOf(Selection.Recorder) = Type("DocumentRef.SupplierInvoice")
 				AND Selection.OperationKind = Enums.OperationKindsSupplierInvoice.ReturnFromCustomer) Then
 				
-				ContentOperations = NStr("en = 'Sold products'");
+				ContentOperations = NStr("en='Sold products';ru='Проданная продукция'");
 				
 			ElsIf TypeOf(Selection.Recorder) = Type("DocumentRef.CustomerInvoice")
 				AND Selection.OperationKind = Enums.OperationKindsCustomerInvoice.ReturnToVendor Then
 				
-				ContentOperations = NStr("en = 'Products returned to the supplier'");
+				ContentOperations = NStr("en='Products returned to the supplier';ru='Продукция, возвращенная поставщику'");
 				VolumeExpense = - VolumeExpense;
 				QuantityExpense = - QuantityExpense;
 				
 			ElsIf TypeOf(Selection.Recorder) = Type("DocumentRef.InventoryWriteOff") Then
 				
-				ContentOperations = NStr("en = 'Shortage of products'");
+				ContentOperations = NStr("en='Shortage of products';ru='Недостачи продукции'");
 				
 			ElsIf TypeOf(Selection.Recorder) = Type("DocumentRef.InventoryTransfer")
 				AND Selection.OperationKind = Enums.OperationKindsInventoryTransfer.Move
 				AND Selection.StructuralUnitCorr.StructuralUnitType <> Enums.StructuralUnitsTypes.Division Then
 				
-				ContentOperations = NStr("en = 'Products transferred to other division'");
+				ContentOperations = NStr("en='Products transferred to other division';ru='Продукция, переданная в другое подразделение'");
 				
 			Else
 				
-				ContentOperations = NStr("en = 'Written-off products'");
+				ContentOperations = NStr("en='Written-off products';ru='Списанная продукция'");
 				
 			EndIf;
 			

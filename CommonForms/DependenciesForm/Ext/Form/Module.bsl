@@ -345,7 +345,7 @@ Procedure OpenDocumentForm()
 		
 		If Items.DocumentsTree.CurrentData.Ref = DocumentRef AND Form.IsOpen() Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Document is already opened!'");
+			Message.Text = NStr("en='Document is already opened!';ru='Документ уже открыт!'");
 			Message.Message();
 		EndIf;
 		
@@ -547,7 +547,7 @@ Function PostServer(DocumentRef)
 		Object.Unlock();
 	Except
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Impossible to lock the document'");
+		Message.Text = NStr("en='Impossible to lock the document';ru='Невозможно заблокировать документ.'");
 		Message.Message();
 	EndTry; 
 
@@ -567,7 +567,7 @@ Function UndoPostingServer(DocumentRef)
 		Object.Unlock();
 	Except
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Impossible to lock the document'");
+		Message.Text = NStr("en='Impossible to lock the document';ru='Невозможно заблокировать документ.'");
 		Message.Message();
 	EndTry; 
 
@@ -590,7 +590,7 @@ Function SetDeletionMarkServer(DocumentRef)
 	Except
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Impossible to lock the document'");
+		Message.Text = NStr("en='Impossible to lock the document';ru='Невозможно заблокировать документ.'");
 		Message.Message();
 		
 	EndTry; 
@@ -669,8 +669,9 @@ Procedure Refresh(Command)
 	If MainDocumentIsAvailableSofar() Then
 		DisplayDocumentTree(); 
 	Else
-		CloseFormWithWarning(NStr("en = 'The document, for which the report
-									 |on the hierarchy structure was generated, is deleted or not available.'"));
+		CloseFormWithWarning(NStr("en='The document, for which the report"
+"on the hierarchy structure was generated, is deleted or not available.';ru='Документ, для которого сформирован"
+"отчет о структуре подчиненности был удален, или же стал недоступен.'"));
 	EndIf;		
 	
 	
@@ -690,8 +691,9 @@ Procedure OutputForCurrent(Command)
 		DocumentsTree.GetItems().Clear();	
 		DisplayDocumentTree();
 	Else
-		CloseFormWithWarning(NStr("en = 'The document, for which the report
-									 |on the hierarchy structure was generated, is deleted or not available.'"));
+		CloseFormWithWarning(NStr("en='The document, for which the report"
+"on the hierarchy structure was generated, is deleted or not available.';ru='Документ, для которого сформирован"
+"отчет о структуре подчиненности был удален, или же стал недоступен.'"));
 	EndIf;
 		
 EndProcedure
@@ -728,7 +730,7 @@ Procedure Post(Button)
 	Except
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Failed to post the document %Document%!'");;
+		Message.Text = NStr("en='Failed to post the document %Document%!';ru='Не удалось провести документ %Document%!'");;
 		Message.Text = StrReplace(Message.Text, "%Document%", Items.DocumentsTree.CurrentData.DocumentPresentation);
 		Message.Message();
 		
@@ -755,7 +757,7 @@ Procedure UndoPosting(Button)
 	Except
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Failed to make the document %Document% unposted!'");;
+		Message.Text = NStr("en='Failed to make the document %Document% unposted!';ru='Не удалось сделать непроведенным документ %Документ%!'");;
 		Message.Text = StrReplace(Message.Text, "%Document%", Items.DocumentsTree.CurrentData.DocumentPresentation);
 		Message.Message();
 		
@@ -791,7 +793,7 @@ Procedure SetDeletionMark(Button)
 	Except
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Failed to mark the %Document% document for deletion!'");;
+		Message.Text = NStr("en='Failed to mark the %Document% document for deletion!';ru='Не удалось установить пометку удаления на документ %Document%!'");;
 		Message.Text = StrReplace(Message.Text, "%Document%", CurrentRowData.DocumentPresentation);
 		Message.Message();
 		

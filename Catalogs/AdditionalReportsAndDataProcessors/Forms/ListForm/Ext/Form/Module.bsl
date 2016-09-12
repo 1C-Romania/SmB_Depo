@@ -36,7 +36,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If AllPublicationsBesidesUnused.Count() > 1 Then
 		
 		ArrayPresentation = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 or %2'"),
+			NStr("en='%1 or %2';ru='%1 или %2'"),
 			String(AllPublicationsBesidesUnused[0]),
 			String(AllPublicationsBesidesUnused[1]));
 		
@@ -51,8 +51,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndDo;
 	
 	ChoiceList = Items.TypeFilter.ChoiceList;
-	ChoiceList.Add(1, NStr("en = 'Only reports'"));
-	ChoiceList.Add(2, NStr("en = 'Only data processors'"));
+	ChoiceList.Add(1, NStr("en='Only reports';ru='Только отчеты'"));
+	ChoiceList.Add(2, NStr("en='Only data processors';ru='Только обработки'"));
 	For Each EnumValue IN Enums.AdditionalReportsAndDataProcessorsKinds Do
 		ChoiceList.Add(EnumValue, String(EnumValue));
 	EndDo;
@@ -182,13 +182,15 @@ EndProcedure
 &AtClient
 Function ItemSelected(RowData)
 	If TypeOf(RowData.Ref) <> Type("CatalogRef.AdditionalReportsAndDataProcessors") Then
-		ShowMessageBox(, NStr("en = 'The command can not be run for the specified object.
-			|Select additional report or data processor.'"));
+		ShowMessageBox(, NStr("en='The command can not be run for the specified object."
+"Select additional report or data processor.';ru='Команда не может быть выполнена для указанного объекта."
+"Выберите дополнительный отчет или обработку.'"));
 		Return False;
 	EndIf;
 	If RowData.IsFolder Then
-		ShowMessageBox(, NStr("en = 'The command can not be run for the group.
-			|Select additional report or data processor.'"));
+		ShowMessageBox(, NStr("en='The command can not be run for the group."
+"Select additional report or data processor.';ru='Команда не может быть выполнена для группы."
+"Выберите дополнительный отчет или обработку.'"));
 		Return False;
 	EndIf;
 	Return True;
@@ -237,7 +239,7 @@ Function PublicationChange(PublicationVariant)
 	SelectedRows = Items.List.SelectedRows;
 	
 	If SelectedRows.Count() = 0 Then
-		MessageText = NStr("en = 'No additional reports (data processors) selected'");
+		MessageText = NStr("en='No additional reports (data processors) selected';ru='Не выбран ни один дополнительный отчет (обработка)'");
 		OutputWarning = NewExecutionResult.OutputWarning;
 		OutputWarning.Use = True;
 		OutputWarning.Text = MessageText;
@@ -299,17 +301,17 @@ Function PublicationChange(PublicationVariant)
 	
 	If SelectedRows.Count() = 1 Then
 		ObjectName = CommonUse.ObjectAttributeValue(SelectedRows[0], "Description");
-		MessageText = NStr("en = 'Additional report (data processor)  ""%1"" publication is changed'");
+		MessageText = NStr("en='Additional report (data processor)  ""%1"" publication is changed';ru='Изменена публикация дополнительного отчета (обработки) ""%1""'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, ObjectName);
 	Else
-		MessageText = NStr("en = 'Additional reports (data processors) %1 publication is changed'");
+		MessageText = NStr("en='Additional reports (data processors) %1 publication is changed';ru='Изменена публикация у %1 дополнительных отчетов (обработок)'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, SelectedRows.Count());
 	EndIf;
 	
 	OutputNotification = NewExecutionResult.OutputNotification;
 	OutputNotification.Use = True;
 	OutputNotification.Text = MessageText;
-	OutputNotification.Title = NStr("en = 'Publication is changed'");
+	OutputNotification.Title = NStr("en='Publication is changed';ru='Изменена публикация'");
 	
 	Return NewExecutionResult;
 	
@@ -326,9 +328,9 @@ Procedure ListChangeMarkToDelete()
 	FillPropertyValues(Context, TableRow);
 	
 	If Context.DeletionMark Then
-		QuestionText = NStr("en = 'Unmark ""%1"" for deletion?'");
+		QuestionText = NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'");
 	Else
-		QuestionText = NStr("en = 'Mark ""%1"" for deletion?'");
+		QuestionText = NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'");
 	EndIf;
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, TableRow.Description);
 	

@@ -94,8 +94,9 @@ Procedure ChangeSchedule(NewSchedule, AdditionalParameters) Export
 	Modified = True;
 	SetPresentationSchedule(ThisObject);
 	
-	ShowUserNotification(NStr("en = 'Replanning'"), , NStr("en = 'New schedule will be
-		|considered at the following task performance'"));
+	ShowUserNotification(NStr("en='Replanning';ru='Перепланирование'"), , NStr("en='New schedule will be"
+"considered at the following task performance';ru='Новое расписание будет учтено при"
+"следующем выполнении задания'"));
 	
 EndProcedure
 
@@ -107,7 +108,7 @@ Procedure SetPresentationSchedule(Val Form)
 	If Schedule <> Undefined Then
 		Form.SchedulePresentation = String(Schedule);
 	Else
-		Form.SchedulePresentation = NStr("en = '<Not defined>'");
+		Form.SchedulePresentation = NStr("en='<Not defined>';ru='<Не задано>'");
 	EndIf;
 	
 EndProcedure

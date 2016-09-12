@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Setting of the data synchronization with the application on the Internet</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Настройка синхронизации данных с приложением в Интернете</v8:content>
+		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
@@ -36,11 +40,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Main panel</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель основная</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Navigation panel</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель навигации</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -54,6 +66,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Begin</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Начало</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="StartExtendedTooltip" id="278"/>
 					<ChildItems>
@@ -62,6 +78,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization setting (step 1 out of 4)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка синхронизации данных (шаг 1 из 4)</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -76,6 +96,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Information on the data synchronization with &lt;Correspondent Description&gt;</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Информация о синхронизации данных с &lt;Наименование корреспондента&gt;</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="DetailsSynchronizationDataExtendedTooltip" id="281"/>
 								</Button>
@@ -84,6 +108,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group data export settings description</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа описание настроек выгрузки данных</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Vertical</Group>
@@ -98,6 +126,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Data synchronization rules</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Правила синхронизации данных</v8:content>
 												</v8:item>
 											</Title>
 											<Height>5</Height>
@@ -119,11 +151,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Group backup</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа резервное копирование</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group backup</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа резервное копирование</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -147,6 +187,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Before you set synchronization you should create data backup.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Перед настройкой синхронизации рекомендуется создать резервную копию данных.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="BackupLabelContextMenu" id="430"/>
 											<ExtendedTooltip name="LabelBackupExtendedTooltip" id="431"/>
@@ -163,6 +207,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to perform the data analysis.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для выполнения анализа данных.</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Bottom</VerticalAlign>
 									<ContextMenu name="NextLabel1ContextMenu" id="110"/>
@@ -178,6 +226,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Data analysis expectation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ожидание анализа данных</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="DataAnalysisWaitExtendedTooltip" id="286"/>
 					<ChildItems>
@@ -187,11 +239,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Data analysis</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Анализ данных</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Message grouping</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группировка сообщения</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -204,11 +264,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -235,11 +303,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -256,6 +332,11 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Analyzing the data. It may take several minutes.
 Please wait...</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняется анализ данных. Это может занять несколько минут.
+Пожалуйста, подождите..</v8:content>
 												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
@@ -274,6 +355,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data comparison</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сопоставление данных</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="MappingDataExtendedTooltip" id="293"/>
 					<ChildItems>
@@ -282,6 +367,10 @@ Please wait...</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Same data mapping (step 2 out of 4)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сопоставление одинаковых данных (шаг 2 из 4)</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -294,11 +383,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Pages of the data matching status</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страницы статуса сопоставления данных</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Pages of the data matching status</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страницы статуса сопоставления данных</v8:content>
 										</v8:item>
 									</ToolTip>
 									<PagesRepresentation>None</PagesRepresentation>
@@ -310,11 +407,19 @@ Please wait...</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Mapping status unmapped data exists</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Статус сопоставления есть несопоставленные данные</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Mapping status unmapped data exists</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Статус сопоставления есть несопоставленные данные</v8:content>
 												</v8:item>
 											</ToolTip>
 											<ExtendedTooltip name="MappingStateHasUnmappedDataExtendedTooltip" id="296"/>
@@ -330,6 +435,13 @@ This will help you to aviod duplicated items of catalogs, that
 were independently introduced in both applications, for example, with the same names.
 Using the matching it is possible to specify which data is the same in two applications.</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Учет ведется в обеих программах, поэтому следует выполнить сопоставление данных.
+Это позволит избежать появления дублирующихся элементов справочников, которые независимо друг от друга
+были введены в обеих программах, например, с одинаковыми наименованиями.
+С помощью сопоставления можно указать, какие данные являются одинаковыми в двух программах.</v8:content>
+														</v8:item>
 													</Title>
 													<VerticalAlign>Top</VerticalAlign>
 													<ContextMenu name="HasUnmappedObjectsCommentContextMenu" id="218"/>
@@ -343,11 +455,19 @@ Using the matching it is possible to specify which data is the same in two appli
 													<v8:lang>en</v8:lang>
 													<v8:content>Matching status all data is matched</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Статус сопоставления все данные сопоставлены</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Matching status all data is matched</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Статус сопоставления все данные сопоставлены</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -371,6 +491,11 @@ Using the matching it is possible to specify which data is the same in two appli
 															<v8:lang>en</v8:lang>
 															<v8:content>All data has been mapped. 
 Make sure that the automatic data matching is perfomed correctly.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Все данные сопоставлены. 
+Убедитесь, что автоматическое сопоставление данных выполнено правильно.</v8:content>
 														</v8:item>
 													</Title>
 													<VerticalAlign>Center</VerticalAlign>
@@ -513,6 +638,10 @@ Make sure that the automatic data matching is perfomed correctly.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Shows that unmapped data exists</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Признак наличия несопоставленных данных</v8:content>
+												</v8:item>
 											</ToolTip>
 											<EditMode>EnterOnInput</EditMode>
 											<HeaderPicture>
@@ -532,6 +661,10 @@ Make sure that the automatic data matching is perfomed correctly.</v8:content>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Data</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Данные</v8:content>
 												</v8:item>
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
@@ -559,6 +692,10 @@ Make sure that the automatic data matching is perfomed correctly.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to synchronize the data.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для синхронизации данных.</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Bottom</VerticalAlign>
 									<ContextMenu name="NextLabel3ContextMenu" id="142"/>
@@ -574,6 +711,10 @@ Make sure that the automatic data matching is perfomed correctly.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Waiting for data synchronization</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ожидание синхронизации данных</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="WaitSynchronizationDataExtendedTooltip" id="321"/>
 					<ChildItems>
@@ -582,6 +723,10 @@ Make sure that the automatic data matching is perfomed correctly.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Синхронизация данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -594,11 +739,19 @@ Make sure that the automatic data matching is perfomed correctly.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -625,11 +778,19 @@ Make sure that the automatic data matching is perfomed correctly.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -646,6 +807,11 @@ Make sure that the automatic data matching is perfomed correctly.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Data synchronization in progress. It may take several minutes.
 Please wait...</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняется синхронизация данных. Это может занять несколько минут.
+Пожалуйста, подождите..</v8:content>
 												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
@@ -664,11 +830,19 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data receiving rules</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правила получения данных</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data receiving rules</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правила получения данных</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="DataReceivingRulesExtendedTooltip" id="406"/>
@@ -678,6 +852,10 @@ Please wait...</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data receiving rules (step 3 out of 4)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Правила получения данных (шаг 3 из 4)</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -690,11 +868,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Application receipt rules</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Правила получения этого приложения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Application receipt rules</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Правила получения этого приложения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -715,6 +901,10 @@ Please wait...</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group values description by default</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа описание значений по умолчанию</v8:content>
+												</v8:item>
 											</Title>
 											<Group>Vertical</Group>
 											<Representation>None</Representation>
@@ -728,6 +918,10 @@ Please wait...</v8:content>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Values for automatic details filling on receiving data in this application</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Значения для автоматического заполнения реквизитов при получении данных в этом приложении</v8:content>
 														</v8:item>
 													</Title>
 													<MultiLine>true</MultiLine>
@@ -749,11 +943,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Rules for obtaining correspondent</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Правила получения корреспондента</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Rules for obtaining correspondent</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Правила получения корреспондента</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -774,6 +976,10 @@ Please wait...</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group description of the correspondent values by default</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа описание значений по умолчанию корреспондента</v8:content>
+												</v8:item>
 											</Title>
 											<Group>Vertical</Group>
 											<Representation>None</Representation>
@@ -787,6 +993,10 @@ Please wait...</v8:content>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Values for automatic details filling on receiving data in the second application</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Значения для автоматического заполнения реквизитов при получении данных во втором приложении</v8:content>
 														</v8:item>
 													</Title>
 													<MultiLine>true</MultiLine>
@@ -810,6 +1020,10 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to save the settings.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для сохранения настроек.</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Bottom</VerticalAlign>
 									<ContextMenu name="LabelNext5ContextMenu" id="421"/>
@@ -825,6 +1039,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Parameters setting accounting</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка параметров учета</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ParametersSettingAccountingExtendedTooltip" id="328"/>
 					<ChildItems>
@@ -833,6 +1051,10 @@ Please wait...</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Settings for correct reflection of the documents in accounting (step 4 out of 4)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки для правильного отражения документов в учете (шаг 4 из 4)</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -845,11 +1067,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Accounting parameters</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры учета</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Accounting parameters</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры учета</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -870,11 +1100,19 @@ Please wait...</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>This application settings</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Настройки этого приложения</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>This application settings</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Настройки этого приложения</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -920,11 +1158,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Correspondent accounting parameters </v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры учета корреспондента</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Correspondent accounting parameters </v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры учета корреспондента</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -945,11 +1191,19 @@ Please wait...</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Correspondent settings</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Настройки корреспондента</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Correspondent settings</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Настройки корреспондента</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -997,6 +1251,10 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to save the settings.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для сохранения настроек.</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Bottom</VerticalAlign>
 									<ContextMenu name="LabelNextStep4ContextMenu" id="147"/>
@@ -1012,6 +1270,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Waiting for the settings saving</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ожидание сохранения настроек</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="SettingsSaveWaitExtendedTooltip" id="347"/>
 					<ChildItems>
@@ -1019,6 +1281,10 @@ Please wait...</v8:content>
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
+									<v8:content>Save settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
 									<v8:content>Save settings</v8:content>
 								</v8:item>
 							</Title>
@@ -1032,11 +1298,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -1063,11 +1337,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -1084,6 +1366,11 @@ Please wait...</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Saving settings.
 Please wait...</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняется сохранение настроек.
+Пожалуйста, подождите..</v8:content>
 												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
@@ -1102,6 +1389,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>End</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Окончание</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="EndExtendedTooltip" id="354"/>
 					<ChildItems>
@@ -1110,6 +1401,10 @@ Please wait...</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization setup has been successfully completed</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка синхронизации данных успешно завершена</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -1135,6 +1430,12 @@ Please wait...</v8:content>
 You can continue to work in the application without waiting for the synchronization. 
 In the future the data will be synchronized automatically every 15 minutes.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Синхронизация данных между приложениями уже выполняется. 
+Вы можете продолжить работу в приложении, не дожидаясь завершения синхронизации. 
+В дальнейшем данные будут синхронизироваться автоматически каждые 15 минут.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration44ContextMenu" id="196"/>
 									<ExtendedTooltip name="Decoration44ExtendedTooltip" id="360"/>
@@ -1147,6 +1448,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Press the "Done" button to exit the assistant.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нажмите кнопку "Готово" для завершения работы с помощником.</v8:content>
 								</v8:item>
 							</Title>
 							<VerticalAlign>Bottom</VerticalAlign>
@@ -1163,11 +1468,19 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Navigation panel border</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рамка панели навигации</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Navigation panel border</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рамка панели навигации</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -1181,6 +1494,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 							<v8:lang>en</v8:lang>
 							<v8:content>Navigation panel</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Панель навигации</v8:content>
+						</v8:item>
 					</Title>
 					<PagesRepresentation>None</PagesRepresentation>
 					<ExtendedTooltip name="NavigationPanelExtendedTooltip" id="363"/>
@@ -1190,6 +1507,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page start</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации начало</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -1244,6 +1565,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page continuation</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации продолжение</v8:content>
+								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
 							<ExtendedTooltip name="NavigationPageContinuationExtendedTooltip" id="370"/>
@@ -1296,6 +1621,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page end</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации окончание</v8:content>
+								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
 							<ExtendedTooltip name="NavigationPageEndExtendedTooltip" id="376"/>
@@ -1343,6 +1672,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page wait</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации ожидание</v8:content>
+								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
 							<ExtendedTooltip name="NavigationPageWaitExtendedTooltip" id="382"/>
@@ -1377,6 +1710,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Next &gt;</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Далее  &gt;</v8:content>
 												</v8:item>
 											</Title>
 											<ExtendedTooltip name="CommandNext3ExtendedTooltip" id="385"/>
@@ -1416,6 +1753,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Sequence number of jump</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядковый номер перехода</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -1432,6 +1773,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Jump table</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица переходов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1442,6 +1787,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Sequence number of jump</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядковый номер перехода</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1459,6 +1808,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 							<v8:lang>en</v8:lang>
 							<v8:content>Main page name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя основной страницы</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1473,6 +1826,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Decoration page name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя страницы декорации</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1489,6 +1846,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 							<v8:lang>en</v8:lang>
 							<v8:content>Navigation page name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя страницы навигации</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1503,6 +1864,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>On open handler name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика при открытии</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1519,6 +1884,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 							<v8:lang>en</v8:lang>
 							<v8:content>Go to next handler name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика при переходе далее</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1533,6 +1902,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Go back handler name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика при переходе назад</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1549,6 +1922,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 							<v8:lang>en</v8:lang>
 							<v8:content>Long operation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Длительная операция</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1559,6 +1936,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Long operation handler name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика длительной операции</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1574,6 +1955,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Check</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1592,6 +1977,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange plan name</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя плана обмена</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1607,6 +1996,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Корреспондент</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:TypeSet>cfg:ExchangePlanRef</v8:TypeSet>
@@ -1617,6 +2010,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Event log event data synchronization setup</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Событие журнала регистрации настройка синхронизации данных</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1632,6 +2029,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent data area</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Область данных корреспондента</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1649,6 +2050,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent description</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1663,6 +2068,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>This application name</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование этого приложения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1679,6 +2088,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Node setup form context</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контекст формы настройки узлов</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1687,6 +2100,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Default values at node</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Значения по умолчанию на узле</v8:content>
 				</v8:item>
 			</Title>
 			<Type/>
@@ -1697,6 +2114,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Values by default on the correspondent base node</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Значения по умолчанию на узле базы корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1705,6 +2126,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Job ID</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1716,6 +2141,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Temporary storage address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес временного хранилища</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1732,6 +2161,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Data export settings description</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание настроек выгрузки данных</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1746,6 +2179,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent code</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код корреспондента</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1762,6 +2199,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Values details by default</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание значений по умолчанию</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1776,6 +2217,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Description of values by default of the correspondent</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание значений по умолчанию корреспондента</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1792,6 +2237,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent tables</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблицы корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1800,6 +2249,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent data storage address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес хранилища данных корреспондента</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1816,6 +2269,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent accounting parameters are specified</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры учета корреспондента заданы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1826,6 +2283,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent accounting parameters explanatory inscription</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры учета корреспондента поясняющая надпись</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1856,6 +2317,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Session</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Смена</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:UUID</v8:Type>
@@ -1867,6 +2332,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>All data have been mapped</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все данные сопоставлены</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1877,6 +2346,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange message filename</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя файла сообщения обмена</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1893,6 +2366,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Statistics information key</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информация статистики ключ</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1908,6 +2385,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Statistics information data has been successfully imported</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информация статистики данные успешно загружены</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1919,6 +2400,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Receive the matching statistics</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получить статистику сопоставления</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1929,6 +2414,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Reference to detailed description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка на подробное описание</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1945,6 +2434,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent end point</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>конечная точка корреспондента.</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:ExchangePlanRef.MessageExchange</v8:Type>
@@ -1955,6 +2448,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Values by default on the node are provided</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предусмотрены значения по умолчанию на узле</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1967,6 +2464,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Provided values by default on the correspondent base node</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предусмотрены значения по умолчанию на узле базы корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1977,6 +2478,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Filter settings are provided on the node</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предусмотрены настройки отборов на узле</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1989,6 +2494,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Statistics is empty</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статистика пустая</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1999,6 +2508,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Prefix</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Префикс</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -2015,6 +2528,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent prefix</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Префикс корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -2029,6 +2546,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent version</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Версия корреспондента</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -2045,6 +2566,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Form for the setup of default values of the correspondent base</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма настройки значений по умолчанию базы корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -2059,6 +2584,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Nodes settings form</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма настройки узлов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -2075,6 +2604,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Setting Form of Default Values</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма настройки значений по умолчанию</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -2090,6 +2623,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Force quit the form</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму безусловно</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -2100,6 +2637,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Label accounting settings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Надпись настройки параметров учета</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -2116,6 +2657,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Label correspondent accounting settings</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Надпись настройки параметров учета корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -2130,6 +2675,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Address of backup instructions</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес инструкции по выполнению резервного копирования</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -2146,6 +2695,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>User replied yes to mapping</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь ответил да на вопрос о сопоставлении</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -2156,6 +2709,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Variant of exchange settings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант настройки обмена</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -2174,6 +2731,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Next &gt;</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Далее  &gt;</v8:content>
+				</v8:item>
 			</Title>
 			<Action>CommandNext</Action>
 		</Command>
@@ -2181,6 +2742,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>&lt; Back</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>&lt; Back</v8:content>
 				</v8:item>
 			</Title>
@@ -2192,6 +2757,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить</v8:content>
+				</v8:item>
 			</Title>
 			<Action>CommandCancel</Action>
 		</Command>
@@ -2201,6 +2770,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Done</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Готово</v8:content>
+				</v8:item>
 			</Title>
 			<Action>CommandDone</Action>
 		</Command>
@@ -2209,6 +2782,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change the data synchronization rules</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить правила синхронизации данных</v8:content>
 				</v8:item>
 			</Title>
 			<Action>SetupDataExport</Action>
@@ -2220,6 +2797,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Change the automatic filling value</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить значения автоматического заполнения</v8:content>
+				</v8:item>
 			</Title>
 			<Action>ExecuteSettingValuesDefault</Action>
 			<Representation>TextPicture</Representation>
@@ -2229,6 +2810,10 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change the automatic filling value</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить значения автоматического заполнения</v8:content>
 				</v8:item>
 			</Title>
 			<Action>ExecuteValuesByDefaultCorrespondentSetting</Action>
@@ -2240,11 +2825,19 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Run mapping</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить сопоставление</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Perform data matching</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить сопоставление данных</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -2260,11 +2853,19 @@ In the future the data will be synchronized automatically every 15 minutes.</v8:
 					<v8:lang>en</v8:lang>
 					<v8:content>Information on data synchronization</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информация о синхронизации данных</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Data synchronization description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание синхронизации данных</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>

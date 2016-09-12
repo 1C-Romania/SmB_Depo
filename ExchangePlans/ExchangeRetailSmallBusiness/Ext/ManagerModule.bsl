@@ -26,7 +26,7 @@ EndProcedure // DefineSettings()
 //
 Function SettingsFilenameForReceiver() Export
 	
-	Return NStr("en = 'Exchange settings SB-RT'");
+	Return NStr("en='Exchange settings SB-RT';ru='Настройки обмена УНФ-РТ'");
 	
 EndFunction
 
@@ -104,38 +104,38 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 		
 		If ValueIsFilled(FilterSsettingsAtNode.DocumentsDumpStartDate) Then
 			PeriodPresentation = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = ', beginning with %1'"),
+				NStr("en=', beginning with %1';ru=', начиная с %1'"),
 				Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DLF=DD"));
 		Else
-			PeriodPresentation = NStr("en = ' for the whole period of accounting in application.'");
+			PeriodPresentation = NStr("en=' for the whole period of accounting in application.';ru=' за весь период ведения учета в программе.'");
 		EndIf;
 		
-		DocumentsPresentation = NStr("en = 'Send documents [PeriodPresentation]'");
+		DocumentsPresentation = NStr("en='Send documents [PeriodPresentation]';ru='Отправлять документы[ПредставлениеПериода]'");
 		
 		DocumentsPresentation = StrReplace(DocumentsPresentation, "[PeriodPresentation]", PeriodPresentation);
 		
 	ElsIf FilterSsettingsAtNode.DocumentsExportMode = Enums.ExchangeObjectsExportModes.ExportManually Then
 		
-		DocumentsPresentation = NStr("en = 'Send documents only manually.'");
+		DocumentsPresentation = NStr("en='Send documents only manually.';ru='Отправлять документы только вручную.'");
 		
 	ElsIf FilterSsettingsAtNode.DocumentsExportMode = Enums.ExchangeObjectsExportModes.DoNotExport Then
 		
-		DocumentsPresentation = NStr("en = 'Do not send documents.'");
+		DocumentsPresentation = NStr("en='Do not send documents.';ru='Не отправлять документы.'");
 		
 	EndIf;
 	
 	// Reference information
 	If FilterSsettingsAtNode.CatalogsExportMode = Enums.ExchangeObjectsExportModes.ExportByCondition Then
 		
-		RegulatoryReferenceInformationPresentation = NStr("en = 'Send all reference information.'");
+		RegulatoryReferenceInformationPresentation = NStr("en='Send all reference information.';ru='Отправлять всю нормативно-справочную информацию.'");
 		
 	ElsIf FilterSsettingsAtNode.CatalogsExportMode = Enums.ExchangeObjectsExportModes.ExportIfNecessary Then
 		
-		RegulatoryReferenceInformationPresentation = NStr("en = 'Send reference information that is used in the sent documents.'");
+		RegulatoryReferenceInformationPresentation = NStr("en='Send reference information that is used in the sent documents.';ru='Отправлять нормативно-справочную информацию, которая используется в отправляемых документах.'");
 		
 	ElsIf FilterSsettingsAtNode.CatalogsExportMode = Enums.ExchangeObjectsExportModes.DoNotExport Then
 		
-		RegulatoryReferenceInformationPresentation = NStr("en = 'Do not send reference information.'");
+		RegulatoryReferenceInformationPresentation = NStr("en='Do not send reference information.';ru='Не отправлять нормативно-справочную информацию.'");
 		
 	EndIf;
 	
@@ -153,10 +153,10 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 				FilterSsettingsAtNode.Companies.Company,
 				"; ");
 			CompaniesPresentation = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Only by companies: %1.'"),
+				NStr("en='Only by companies: %1.';ru='Только по организациям: %1.'"),
 				FilterPresentationRow);
 		Else
-			CompaniesPresentation = NStr("en = 'By all companies.'");
+			CompaniesPresentation = NStr("en='By all companies.';ru='По всем организациям.'");
 		EndIf;
 		
 		// filter by warehouses
@@ -165,22 +165,24 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 				FilterSsettingsAtNode.Warehouses.Warehouse,
 				"; ");
 			WarehousesPresentation = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Only by warehouses: %1.'"),
+				NStr("en='Only by warehouses: %1.';ru='Только по складам: %1.'"),
 				FilterPresentationRow);
 		Else
-			WarehousesPresentation = NStr("en = 'By all warehouses.'");
+			WarehousesPresentation = NStr("en='By all warehouses.';ru='По всем складам.'");
 		EndIf;
 		
-		DataSendingRestrictionsPresentation = NStr("en = 'Send
-		|data:
-		|[CompanyPresentation] [WarehousesPresentation]'");
+		DataSendingRestrictionsPresentation = NStr("en='Send"
+"data:"
+"[CompanyPresentation] [WarehousesPresentation]';ru='Отправлять"
+"данные:"
+"[ПредставлениеОрганизаций] [ПредставлениеСкладов]'");
 		
 		DataSendingRestrictionsPresentation = StrReplace(DataSendingRestrictionsPresentation, "[CompaniesPresentation]", CompaniesPresentation);
 		DataSendingRestrictionsPresentation = StrReplace(DataSendingRestrictionsPresentation, "[WarehousesPresentation]", WarehousesPresentation);
 		
 	EndIf;
 	
-	Result = NStr("en = '[DocumentsPresentation] [RegulatoryAndReferenceInformationPresentation] [DataSendingRestrictionsPresentation]'");
+	Result = NStr("en='[DocumentsPresentation] [RegulatoryAndReferenceInformationPresentation] [DataSendingRestrictionsPresentation]';ru='[ПредставлениеДокументов] [ПредставлениеНормативноСправочнойИнформации] [ПредставлениеОграниченийОтправкиДанных]'");
 	
 	Result = StrReplace(Result, "[DocumentsPresentation]", DocumentsPresentation);
 	Result = StrReplace(Result, "[RegulatoryReferenceInformationPresentation]", RegulatoryReferenceInformationPresentation);
@@ -211,11 +213,11 @@ EndFunction
 //  Row, Unlimited - presentation of a command displayed in the user interface.
 //
 // ForExample:
-// Return NStr("en = 'Create an exchange in the distributed infobase'");
+// Return NStr("en='Create an exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
 //
 Function CommandTitleForCreationOfNewDataExchange() Export
 	
-	Return NStr("en = 'Create an exchange with 1C:Retail 8, edition configuration. 2.1'");
+	Return NStr("en='Create an exchange with 1C:Retail 8, edition configuration. 2.1';ru='Создать обмен с конфигурацией ""1C: Розница 8, ред. 2.1'");
 	
 EndFunction
 
@@ -302,7 +304,7 @@ EndFunction
 //
 Function BriefInformationOnExchange(SettingID) Export
 	
-	ExplanationText = NStr("en = 'Synchronizes the data between 1C:Retail and 1C:Small business applications, Synchronization is bidirectional and helps each infobase to have actual data.'");
+	ExplanationText = NStr("en='Synchronizes the data between 1C:Retail and 1C:Small business applications, Synchronization is bidirectional and helps each infobase to have actual data.';ru='Позволяет синхронизировать данные между программами 1С:Розница и 1С:Управление небольшой фирмой, Синхронизация является двухсторонней и позволяет иметь актуальные данные в каждой из информационных баз.'");
 	
 	Return ExplanationText;
 	
@@ -399,10 +401,10 @@ Function CorrespondentInfobaseDataTransferRestrictionDetails(FilterSsettingsAtNo
 	
 	If ValueIsFilled(FilterSsettingsAtNode.DocumentsDumpStartDate) Then
 		DocumentsDumpStartDateRestriction = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Beginning with %1'"),
+			NStr("en='Beginning with %1';ru='Начиная с %1'"),
 			Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DLF=DD"));
 	Else
-		DocumentsDumpStartDateRestriction = NStr("en = 'For the whole period of accounting in application'");
+		DocumentsDumpStartDateRestriction = NStr("en='For the whole period of accounting in application';ru='За весь период ведения учета в программе'");
 	EndIf;
 	
 	// Filter by companies
@@ -411,14 +413,14 @@ Function CorrespondentInfobaseDataTransferRestrictionDetails(FilterSsettingsAtNo
 			FilterSsettingsAtNode.Companies.Company,
 			"; ");
 		RestrictionFilterByCompanies = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Only by Companies: %1'"),
+			NStr("en='Only by Companies: %1';ru='Только по организациям: %1'"),
 			FilterPresentationRow);
 	Else
-		RestrictionFilterByCompanies = NStr("en = 'By all companies'");
+		RestrictionFilterByCompanies = NStr("en='By all companies';ru='по всем организациям'");
 	EndIf;
 	
 	Return (
-	NStr("en = 'Export documents and help information:'")
+	NStr("en='Export documents and help information:';ru='Выгружать документы и справочную информацию:'")
 		+ Chars.LF
 		+ DocumentsDumpStartDateRestriction
 		+ Chars.LF

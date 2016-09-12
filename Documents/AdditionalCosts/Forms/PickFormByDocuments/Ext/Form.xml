@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Pick by documents</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Подбор по документам</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -34,6 +38,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Group filter by ProductsAndServices</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа отбора по номенклатуре</v8:content>
+				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
@@ -46,11 +54,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>1. Filtered documents</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>1. Отобранные документы</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute group list of documents</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа реквизитов список документов</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
@@ -71,6 +87,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Filtered documents</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отобранные документы</v8:content>
 								</v8:item>
 							</Title>
 							<CommandSet>
@@ -145,11 +165,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Switches</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Переключатели</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Switches</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Переключатели</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -163,6 +191,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Show inventory, selected from the current document</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отображать запасы выбранные из текущего документа</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
@@ -183,11 +215,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>2. Filter ProductsAndServices</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>2. Номенклатура отбора</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Filter by products and services</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Filter по номенклатуре</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
@@ -256,6 +296,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Use filter by specified ProductsAndServices</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Использовать отбор по указанной номенклатуре</v8:content>
+								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
 							<CheckBoxType>Auto</CheckBoxType>
@@ -272,11 +316,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>3. Selected products and services for the document</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>3. Отобранная номенклатура для документа</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Filtered ProductsAndServices group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа отобранной номенклатуры</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -332,6 +384,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Clear</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Очистить</v8:content>
+									</v8:item>
 								</Title>
 								<ExtendedTooltip name="ClearFilteredInventoryExtendedTooltip" id="113"/>
 							</Button>
@@ -341,11 +397,19 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Fill</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Заполнить</v8:content>
+									</v8:item>
 								</Title>
 								<ToolTip>
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Filtered inventory fill</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Отобранные запасы заполнить</v8:content>
 									</v8:item>
 								</ToolTip>
 								<ExtendedTooltip name="FilteredInventoryFillExtendedTooltip" id="114"/>
@@ -358,6 +422,10 @@
 												<v8:lang>en</v8:lang>
 												<v8:content>By all documents</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>По всем документам</v8:content>
+											</v8:item>
 										</Title>
 										<ExtendedTooltip name="FillCheckedDocumentsExtendedTooltip" id="115"/>
 									</Button>
@@ -368,6 +436,10 @@
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>By current document</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>По текущему документу</v8:content>
 											</v8:item>
 										</Title>
 										<ExtendedTooltip name="FillInCurrentDocumentExtendedTooltip" id="116"/>
@@ -410,6 +482,10 @@
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
+									<v8:content>...</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
 									<v8:content>...</v8:content>
 								</v8:item>
 							</Title>
@@ -528,11 +604,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Footer</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Footer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -553,11 +637,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Group of buttons right binding</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа кнопок привязка справа</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Group of buttons right binding</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа кнопок привязка справа</v8:content>
 						</v8:item>
 					</ToolTip>
 					<HorizontalLocation>Right</HorizontalLocation>
@@ -569,11 +661,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Buttons</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Кнопки</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Buttons</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Кнопки</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ExtendedTooltip name="ButtonsExtendedTooltip" id="134"/>
@@ -609,6 +709,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Filtered inventory</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобранные запасы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -620,6 +724,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Products and services</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция и услуги</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
@@ -629,6 +737,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Characteristic</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Characteristic</v8:content>
 						</v8:item>
 					</Title>
@@ -643,6 +755,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Quantity</v8:content>
 						</v8:item>
 					</Title>
@@ -661,6 +777,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>UOM</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Единицы измерения</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.UOMClassifier</v8:Type>
@@ -676,6 +796,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Batch</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Партия</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ProductsAndServicesBatches</v8:Type>
@@ -689,6 +813,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Price</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -706,6 +834,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT rate</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается ставка НДС</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.VATRates</v8:Type>
@@ -716,6 +848,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается сумма НДС</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -733,6 +869,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Total</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итого</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
@@ -747,6 +887,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Amount</v8:content>
 						</v8:item>
 					</Title>
@@ -765,6 +909,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Receipt document</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ поступления</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:DocumentRef.SupplierInvoice</v8:Type>
@@ -777,6 +925,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Shows whether it is required to move the current item to the document for selection</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отметка необходимости переноса текущей позиции в документ, вызвавший подбор</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -788,6 +940,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Customer order</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заказ покупателя</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:DocumentRef.CustomerOrder</v8:Type>
@@ -798,6 +954,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Factor</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Коэффициент</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -817,6 +977,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Filtered ProductsAndServices</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобранная номенклатура</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -827,6 +991,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Products and services</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция и услуги</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -841,6 +1009,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Filtered documents</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отобранные документы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -852,6 +1024,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Check</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -862,6 +1038,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Receipt document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ поступления</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -877,6 +1057,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Amount includes VAT</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма включает НДС</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -887,6 +1071,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill only by specified ProductsAndServices</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнять только по указанной номенклатуре</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -899,6 +1087,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>VAT taxation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Налогообложение НДС</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.VATTaxationTypes</v8:Type>
@@ -909,6 +1101,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>VAT is used</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Используется НДС</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -921,6 +1117,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Document company</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация документа</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
@@ -932,6 +1132,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Products and services type</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип номенклатуры</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -940,6 +1144,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Characteristics used</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Используются характеристики</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -952,6 +1160,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Batches used</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Используются партии</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -962,6 +1174,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Activate document for current products and services</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Активировать документ для текущей номенклатуры</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -974,6 +1190,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Show products and services for the current document only</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отображать номенклатуру только для текущего документа</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -984,6 +1204,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Add new positions into table footer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавлять новые позиции в подвал таблицы</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -996,6 +1220,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Counterparty</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагенты</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
@@ -1006,6 +1234,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Consolidate multiple companies</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Учет по компании</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1018,6 +1250,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Unique identifier of the owner form</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Уникальный идентификатор формы владельца</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:UUID</v8:Type>
@@ -1028,6 +1264,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Costs document</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ расходов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1060,11 +1300,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill by filtered documents</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по отобранным документам</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill by filtered documents</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по отобранным документам</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>FillByFilteredDocuments</Action>
@@ -1075,11 +1323,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill by current document</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по текущему документу</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Fill by current document</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по текущему документу</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>FillByCurrentDocument</Action>
@@ -1090,11 +1346,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear filtered inventory</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить отобранные запасы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Clear filtered inventory</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить отобранные запасы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ClearFilteredInventory</Action>
@@ -1105,11 +1369,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>OK</Action>
@@ -1120,11 +1392,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Mark all positions</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выделить все позиции</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Mark all positions</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выделить все позиции</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>MarkAllPositions</Action>
@@ -1135,11 +1415,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Unmark all positions</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять выделение со всех позиций</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Unmark all positions</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять выделение со всех позиций</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>UnmarkAllPositions</Action>
@@ -1150,11 +1438,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Documents multiple Pick</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Множественный подбор документов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>DocumentsMultiplePick</Action>

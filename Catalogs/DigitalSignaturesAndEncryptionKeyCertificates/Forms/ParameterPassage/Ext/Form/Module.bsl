@@ -29,7 +29,7 @@ Procedure OpenNewForm(FormKind, ServerParameters, ClientParameters = Undefined,
 	
 	If Find(FormsKinds, "," + FormKind + ",") = 0 Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Error in the procedure OpenNewForm. FormKind ""% 1"" is not supported.'"), FormKind);
+			NStr("en='Error in the procedure OpenNewForm. FormKind ""% 1"" is not supported.';ru='Ошибка в процедуре ОткрытьНовуюФорму. ВидФормы ""%1"" не поддерживается.'"), FormKind);
 	EndIf;
 	
 	If NewFormOwner = Undefined Then

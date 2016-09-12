@@ -66,7 +66,7 @@ Procedure PrepareDataForWrite() Export
 	
 	ReceivingParameters = Undefined;
 	If Not AdditionalProperties.Property("ReceivingParameters", ReceivingParameters) Then
-		Raise NStr("en = 'Getting data parameters are not defined'");
+		Raise NStr("en='Getting data parameters are not defined';ru='Не определены параметры получения данных'");
 	EndIf;
 	
 	DataForWriting = ThisObject.Unload();
@@ -84,8 +84,9 @@ EndProcedure
 
 Procedure VerificationError()
 	
-	Raise NStr("en = 'Inadmissible resource update Data of information
-                            |register record ProgramInterfaceCache inside record transaction from session with enabled division!'");
+	Raise NStr("en='Inadmissible resource update Data of information"
+"register record ProgramInterfaceCache inside record transaction from session with enabled division!';ru='Недопустимое изменение ресурса Данные записи регистра сведений КэшПрограммныхИнтерфейсов"
+"внутри транзакции записи из сеанса с включенным разделением!'");
 	
 EndProcedure
 

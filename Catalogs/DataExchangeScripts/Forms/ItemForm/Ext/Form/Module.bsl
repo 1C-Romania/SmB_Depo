@@ -24,7 +24,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Catalogs.DataExchangeScripts.AddImportingToDataExchangeScripts(Object, InfobaseNode);
 		Catalogs.DataExchangeScripts.AddDumpToDataExchangeScripts(Object, InfobaseNode);
 		
-		Description = NStr("en = 'Synchronization script for %1'");
+		Description = NStr("en='Synchronization script for %1';ru='Сценарий синхронизации для %1'");
 		Object.Description = StringFunctionsClientServer.PlaceParametersIntoString(Description, String(InfobaseNode));
 		
 		JobSchedule = Catalogs.DataExchangeScripts.ScheduledJobDefaultSchedule();
@@ -228,7 +228,7 @@ Procedure RefreshSchedulePresentation()
 	
 	If SchedulePresentation = String(New JobSchedule) Then
 		
-		SchedulePresentation = NStr("en = 'Schedule not specified'");
+		SchedulePresentation = NStr("en='Schedule not specified';ru='Расписание не задано'");
 		
 	EndIf;
 	
@@ -248,7 +248,7 @@ Procedure ExecuteDataExchangeAtClient()
 	
 	If CurrentlyProcessedLineNumber > LineCount Then // exit from recursion
 		OutputState = (LineCount > 1);
-		Status(NStr("en = 'Data is synchronized.'"), ?(OutputState, 100, Undefined));
+		Status(NStr("en='Data is synchronized.';ru='Данные синхронизированы.'"), ?(OutputState, 100, Undefined));
 		Return; // exit
 	EndIf;
 	
@@ -256,7 +256,7 @@ Procedure ExecuteDataExchangeAtClient()
 	
 	OutputState = (LineCount > 1);
 	
-	MessageString = NStr("en = 'Running %1 for %2'");
+	MessageString = NStr("en='Running %1 for %2';ru='Выполняется %1 для %2'");
 	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, 
 							String(CurrentData.RunningAction),
 							String(CurrentData.InfobaseNode));

@@ -360,7 +360,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Parameters.Property("VariantPresentation") AND ValueIsFilled(Parameters.VariantPresentation) Then
 		AutoTitle = False;
 		Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Change report variant ""%1""'"),
+			NStr("en='Change report variant ""%1""';ru='Изменение варианта отчета ""%1""'"),
 			Parameters.VariantPresentation);
 	EndIf;
 	

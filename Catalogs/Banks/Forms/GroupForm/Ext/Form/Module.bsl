@@ -39,9 +39,11 @@ EndProcedure
 &AtClient
 Procedure Change(Command)
 	
-	Text = NStr("en = 'Supplied data is updated automatically.
-		|After the manual change this item will not be updated automatically.
-		|Continue with change?'");
+	Text = NStr("en='Supplied data is updated automatically."
+"After the manual change this item will not be updated automatically."
+"Continue with change?';ru='Поставляемые данные обновляются автоматически."
+"После ручного изменения автоматическое обновление этого элемента производиться не будет."
+"Продолжить с изменением?'");
 	Result = Undefined;
 
 	ShowQueryBox(New NotifyDescription("ChangeEnd", ThisObject), Text, QuestionDialogMode.YesNo,, DialogReturnCode.No);

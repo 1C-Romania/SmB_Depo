@@ -194,7 +194,7 @@ Procedure CheckChangesPossibility(Cancel)
 	Selection = Query.Execute().Select();
 	
 	If Selection.Next() Then
-		MessageText = NStr("en = 'There are register records of settlements with the counterparty in the base. Changing the analytics of settlements accounting is prohibited.'");
+		MessageText = NStr("en='There are register records of settlements with the counterparty in the base. Changing the analytics of settlements accounting is prohibited.';ru='В базе присутствуют движения по взаиморасчетам с контрагентом. Изменение аналитики учета взаиморасчетов запрещено.'");
 		SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText, , , , Cancel);
 	EndIf;
 	
@@ -218,19 +218,19 @@ Procedure AddExtendedTooltipForFillingUsingTIN()
 		RowArray.Add(Chars.LF);
 		
 		If CheckIsEnabled Then
-			RowArray.Add(NStr("en = 'Check of the counterparties based on data is additionally enabled '"));
+			RowArray.Add(NStr("en='Check of the counterparties based on data is additionally enabled ';ru='Дополнительно включена проверка контрагентов по данным '"));
 		Else
-			RowArray.Add(NStr("en = 'You can additionally use the counterparty check based on data of '"));
+			RowArray.Add(NStr("en='You can additionally use the counterparty check based on data of ';ru='Дополнительно можно использовать проверку контрагентов по данным '"));
 		EndIf;
 		
 		RowArray.Add(New FormattedString(NStr("az='FTS.';bg='FTS.';de='FTS.';en='FTS.';et='FTS.';ka='FTS.';lt='FTS.';lv='FTS.';mn='FTS.';pl='FTS.';ro='FTS.';ru='FTS.';sl='FTS.';tr='FTS.'"), New Font(,,True)));
 		
 		If HasRightOnSettingsEditing Then
-			RowArray.Add(NStr("en = 'To configure the check it is necessary to go to '"));
-			RowArray.Add(New FormattedString(NStr("az='Kökləmələr - kontragentlərin yoxlamasının kökləməsidir.';en='Settings - Counterparty check settings.';ru='Настройки - Настройки проверки контрагентов.';lv='Konfigurācijas - Kontrahentu pārbaudes konfigurācijas.'")
+			RowArray.Add(NStr("en='To configure the check it is necessary to go to ';ru='Для настройки проверки необходимо перейти в '"));
+			RowArray.Add(New FormattedString(NStr("az='Kökləmələr - kontragentlərin yoxlamasının kökləməsidir.';en='Settings - Counterparty check settings.';lv='Konfigurācijas - Kontrahentu pārbaudes konfigurācijas.';ru='Настройки - Настройки проверки контрагентов.'")
 				,,,,"CounterpartyVerificationsSetting"));
 		ElsIf HasRightOnCheckingUsage AND Not CheckIsEnabled Then
-			RowArray.Add(NStr("az='Yoxlamanın qurması kökləməsi üçün administratora müraciət edəcəksiniz.';en='To configure the check contact your administrator.';ru='Для настройки проверки обратитесь к администратору.';lv='Pārbaudes konfigurācijai vēršaties pie administratora'"));
+			RowArray.Add(NStr("az='Yoxlamanın qurması kökləməsi üçün administratora müraciət edəcəksiniz.';en='To configure the check contact your administrator.';lv='Pārbaudes konfigurācijai vēršaties pie administratora';ru='Для настройки проверки обратитесь к администратору.'"));
 		EndIf;
 		
 		Items.FillAttributesWithTIN.ExtendedTooltip.Title = New FormattedString(
@@ -779,7 +779,7 @@ Procedure FillAttributesWithTIN(Command)
 	EndIf;
 	
 	If Not ValueIsFilled(Object.TIN) Then
-		ShowMessageBox(, NStr("en='TIN field is not filled';ru='Поле ""ИНН"" не заполнено';lv='Lauks ""NMIN"" nav aizpildīts'"));
+		ShowMessageBox(, NStr("en='TIN field is not filled';lv='Lauks ""NMIN"" nav aizpildīts';ru='Поле ""ИНН"" не заполнено'"));
 		CurrentItem = Items.TIN;
 		Return;
 	ElsIf Not Object.TINEnteredCorrectly Then
@@ -788,7 +788,7 @@ Procedure FillAttributesWithTIN(Command)
 	EndIf;
 	
 	If ValueIsFilled(Object.Description) Then
-		QuestionText = NStr("az='Perezapolnit cari rekvizitlər?';en='Refill current attributes?';ru='Перезаполнить текущие реквизиты?';lv='Aizpildīt no jauna tekošos rekvizītus?'");
+		QuestionText = NStr("az='Perezapolnit cari rekvizitlər?';en='Refill current attributes?';lv='Aizpildīt no jauna tekošos rekvizītus?';ru='Перезаполнить текущие реквизиты?'");
 		NotifyDescription = New NotifyDescription("FillAttributesUsingTINEnd", ThisObject);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 	Else
@@ -805,7 +805,7 @@ Procedure SendEmailToCounterparty(Command)
 	If ListOfEmailAddresses = Undefined Then
 		
 		ListOfEmailAddresses = New ValueList;
-		MessageText = NStr("en = 'Counterparty is not written. The list of emails will be empty.'");
+		MessageText = NStr("en='Counterparty is not written. The list of emails will be empty.';ru='Контрагент не записан. Список электронных адресов будет пуст.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;
@@ -930,7 +930,7 @@ Procedure WriteInformationLabelsForDuplicates(Form, Val DuplicateItemsNumber)
 		
 		DuplicatesMessageParametersStructure = New Structure;
 		
-		DuplicatesMessageParametersStructure.Insert("TINandKPP", ?(ThisIsLegalEntity, NStr("az='VÖENlər və KPP';bg='TIN and KPP';de='TIN and KPP';en='TIN and KPP';et='TIN and KPP';ka='TIN and KPP';lt='TIN and KPP';lv='NMIN un UUIK';mn='TIN and KPP';pl='TIN and KPP';ro='TIN and KPP';ru='ИНН и КПП';sl='TIN and KPP';tr='TIN and KPP'"), NStr("en='TIN';et='ИНН';lt='Reg. Nr.';lv='NMIN';ro='Nr. ORC:';ru='ИНН';tr='Vergi Kimlik No';az='VÖEN'")));
+		DuplicatesMessageParametersStructure.Insert("TINandKPP", ?(ThisIsLegalEntity, NStr("az='VÖENlər və KPP';bg='TIN and KPP';de='TIN and KPP';en='TIN and KPP';et='TIN and KPP';ka='TIN and KPP';lt='TIN and KPP';lv='NMIN un UUIK';mn='TIN and KPP';pl='TIN and KPP';ro='TIN and KPP';ru='ИНН и КПП';sl='TIN and KPP';tr='TIN and KPP'"), NStr("az='VÖEN';en='TIN';et='ИНН';lt='Reg. Nr.';lv='NMIN';ro='Nr. ORC:';ru='ИНН';tr='Vergi Kimlik No'")));
 		
 		If DuplicateItemsNumber = 1 Then
 			DuplicatesMessageParametersStructure.Insert("DuplicateItemsNumber", NStr("az='Bir';bg='един';de='eins';en='one';et='üks';ka='ერთ-ერთი';lt='uno';lv='Viens';mn='нэг';pl='jeden';ro='unul';ru='Один';sl='ena';tr='bir'"));
@@ -1109,9 +1109,11 @@ Procedure ExecuteFillingAttributesUsingTIN()
 	If ValueIsFilled(ErrorDescription) Then
 		If ErrorDescription = "AuthenticationParametersAreNotSpecified" Then
 		
-			QuestionText = NStr("en='For automatic filling the
-				|counterparty attributes it is necessary to connect to the user online support.
-				|Connect now?'");
+			QuestionText = NStr("en='For automatic filling the"
+"counterparty attributes it is necessary to connect to the user online support."
+"Connect now?';ru='Для автоматического заполнения"
+"реквизитов контрагентов необходимо подключиться к интернет-поддержке пользователей."
+"Подключиться сейчас?'");
 			NotifyDescription = New NotifyDescription("EnableInternetSupport", ThisObject);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 		

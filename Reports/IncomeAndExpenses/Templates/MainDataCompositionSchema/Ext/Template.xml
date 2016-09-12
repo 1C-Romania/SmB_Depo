@@ -60,6 +60,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Income</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доход</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -69,6 +73,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Expense</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -86,6 +94,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Item</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Элемент</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -168,6 +180,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Profit (Loss)</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прибыль (убыток)</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<dataSource>DataSource1</dataSource>
@@ -206,6 +222,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Dynamic period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Динамический период</v8:content>
+			</v8:item>
 		</title>
 		<useRestriction>
 			<condition>true</condition>
@@ -241,6 +261,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Begin of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -259,6 +283,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>End of period</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Окончание периода</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -279,6 +307,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>отчетный период</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>v8:StandardPeriod</v8:Type>
@@ -296,6 +328,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Periodicity</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Периодичность</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -317,6 +353,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Output title</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -354,6 +394,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Total</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Итого</v8:content>
+							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
 				</dcsat:tableCell>
@@ -376,6 +420,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Income and expenses by items (for shipment)</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Доходы и расходы по статьям (по отгрузке)</v8:content>
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
@@ -472,6 +520,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Income and expenses by items (for shipment)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доходы и расходы по статьям (по отгрузке)</v8:content>
+						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -532,6 +584,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Business area - specification by items</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Направление деятельности - детализация по статьям</v8:content>
+						</v8:item>
 					</dcsset:userSettingPresentation>
 					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
 				</dcsset:item>
@@ -546,6 +602,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Income and expenses by customer orders (by shipment)</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Доходы и расходы по заказам покупателей (по отгрузке)</v8:content>
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
@@ -657,6 +717,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>&lt;Order not specified&gt;</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt;Заказ не указан&gt;</v8:content>
+								</v8:item>
 							</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
@@ -664,6 +728,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Draw up unfilled orders</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оформление незаполненных заказов</v8:content>
 						</v8:item>
 					</dcsset:presentation>
 				</dcsset:item>
@@ -681,6 +749,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Income and expenses by customer orders (by shipment)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доходы и расходы по заказам покупателей (по отгрузке)</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
@@ -749,6 +821,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Customer order - specification by items</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заказ покупателя - детализация по статьям</v8:content>
+						</v8:item>
 					</dcsset:userSettingPresentation>
 					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
 				</dcsset:item>
@@ -763,6 +839,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Dynamics of income and expenses for shipment)</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Динамика доходов и расходов (по отгрузке)</v8:content>
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
@@ -863,6 +943,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Dynamics of income and expenses for shipment)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Динамика доходов и расходов (по отгрузке)</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
@@ -973,6 +1057,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Business area - specification by items</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Направление деятельности - детализация по статьям</v8:content>
 							</v8:item>
 						</dcsset:userSettingPresentation>
 						<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>

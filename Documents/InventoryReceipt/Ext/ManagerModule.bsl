@@ -172,9 +172,9 @@ Procedure InitializeDocumentData(DocumentRefInventoryReceipt, StructureAdditiona
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	
-	Query.SetParameter("InventoryReceipt", NStr("en = 'Inventory receiving'"));
-	Query.SetParameter("RevenueIncomes", NStr("en = 'Receipt of other income'"));
-	Query.SetParameter("OtherIncome", NStr("en = 'Other inventory receipt'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("RevenueIncomes", NStr("en='Receipt of other income';ru='Поступление прочих доходов'"));
+	Query.SetParameter("OtherIncome", NStr("en='Other inventory receipt';ru='Прочее оприходование запасов'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	

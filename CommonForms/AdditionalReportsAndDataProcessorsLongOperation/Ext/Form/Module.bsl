@@ -16,13 +16,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If BackgroundJobLaunchParameters.Property("SupportText") AND ValueIsFilled(BackgroundJobLaunchParameters.SupportText) Then
 		SupportText = BackgroundJobLaunchParameters.SupportText;
 	Else
-		SupportText = NStr("en = 'Command is executed...'");
+		SupportText = NStr("en='Command is executed...';ru='Команда выполняется...'");
 	EndIf;
 	
 	If BackgroundJobLaunchParameters.Property("Title") AND ValueIsFilled(BackgroundJobLaunchParameters.Title) Then
 		Title = BackgroundJobLaunchParameters.Title;
 	Else
-		Title = NStr("en = 'Please, wait'");
+		Title = NStr("en='Please, wait';ru='Пожалуйста, подождите'");
 	EndIf;
 	
 	Try
@@ -32,7 +32,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			"AdditionalReportsAndDataProcessors.RunCommand", 
 			BackgroundJobLaunchParameters,
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Executing the additional report or data processor ""%1"", command name ""%2""'"),
+				NStr("en='Executing the additional report or data processor ""%1"", command name ""%2""';ru='Выполнение дополнительного отчета или обработки ""%1"", имя команды ""%2""'"),
 				String(BackgroundJobLaunchParameters.AdditionalInformationProcessorRef),
 				BackgroundJobLaunchParameters.CommandID));
 		
@@ -87,10 +87,10 @@ EndProcedure
 
 &AtClient
 Procedure Cancel(Command)
-	QuestionText = NStr("en = 'Durable operation is being performed still.'");
+	QuestionText = NStr("en='Durable operation is being performed still.';ru='Длительная операция еще выполняется.'");
 	
 	Buttons = New ValueList;
-	Buttons.Add(1, NStr("en = 'Continue'"));
+	Buttons.Add(1, NStr("en='Continue';ru='Продолжить'"));
 	Buttons.Add(DialogReturnCode.Abort);
 	
 	DetachIdleHandler("CheckExecution");

@@ -35,11 +35,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Name and synonym of the metadata object</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя и синоним объекта метаданных</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Name and synonym of the metadata object</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя и синоним объекта метаданных</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -67,11 +75,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Full name and full synonym of the metadata object</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полное имя и полный синоним объекта метаданных</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Full name and full synonym of the metadata object</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полное имя и полный синоним объекта метаданных</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -94,6 +110,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Full synonym</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Полный синоним</v8:content>
+						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="FullSynonymContextMenu" id="4"/>
@@ -107,11 +127,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Other properties</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочие свойства</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Other properties</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочие свойства</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -156,6 +184,13 @@ objects of reference types.
 Contains Indefinite for others
 (you can see a view of an empty reference value type in the form.)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для ссылочных типов объектов метаданных 
+содержит пустую ссылку своего типа, 
+для остальных - Неопределено 
+(в форме показано представление типа значения пустой ссылки)</v8:content>
+						</v8:item>
 					</ToolTip>
 					<ContextMenu name="EmptyRefPresentationContextMenu" id="22"/>
 					<ExtendedTooltip name="EmptyRefPresentationExtendedTooltip" id="43"/>
@@ -186,6 +221,10 @@ Contains Indefinite for others
 					<v8:lang>en</v8:lang>
 					<v8:content>Empty reference value</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Значение пустой ссылки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -203,11 +242,19 @@ Contains Indefinite for others
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable editing</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable editing for error search only (requires advanced knowledge of the mechanism work)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования только для целей поиска неисправности (требуется углубленное понимание работы механизма)</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnableEditingAbility</Action>

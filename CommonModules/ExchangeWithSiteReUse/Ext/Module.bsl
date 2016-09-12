@@ -145,7 +145,7 @@ EndFunction
 Function GetValueForExportingByVATRate(VATRate) Export
 	
 	If VATRate.NotTaxable Then 
-		TaxValue = NStr("en = 'Without VAT'");
+		TaxValue = NStr("en='Without VAT';ru='без НДС'");
 	ElsIf VATRate.Rate = 0 Then 
 		TaxValue = "0";
 	ElsIf VATRate.Rate = 10 Then 

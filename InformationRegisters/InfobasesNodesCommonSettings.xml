@@ -38,6 +38,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>General settings of the nodes of infobases</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Общие настройки узлов информационных баз</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<UseStandardCommands>false</UseStandardCommands>
@@ -165,6 +169,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Used to store general settings for the infobases of the exchange counterparties.</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Используется для хранения общих настроек для информационных баз корреспондентов обмена.</v8:content>
+				</v8:item>
 			</Explanation>
 		</Properties>
 		<ChildObjects>
@@ -175,6 +183,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Execute Correction of Information Comparing</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выполнить корректировку информации сопоставления</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -188,6 +200,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Shows that it is required to correct matching information during the data exchange.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак необходимости выполнения корректировки информации сопоставления в процессе обмена данными.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -219,6 +235,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Initial data export</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Начальная выгрузка данных</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Sign of initial data export</Comment>
 					<Type>
@@ -231,6 +251,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Used for the universal data exchanges.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Используется для универсальных обменов данными.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -262,6 +286,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>User for the data synchronization</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь для синхронизации данных</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -274,6 +302,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>User on behalf of which the data is synchronized with the main node</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь от имени которого выполняется синхронизация данных с заданным узлом</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -305,6 +337,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Perform data sending</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выполнить отправку данных</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -317,6 +353,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Sign indicating that in case of another interactive session of data syncronization you should first send the data and then receive and send it. Used for receiving the main node metadata changes through a web service.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак того, что при очередном интерактивном сеансе синхронизации данных следует выполнить сначала отправку данных, а затем получение и отправку. Используется при получении изменений метаданных главного узла через веб-сервис.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -348,6 +388,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Correspondent version</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Версия корреспондента</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Version of the information correspondent base configuration</Comment>
 					<Type>
@@ -364,6 +408,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Version of the information correspondent base configuration</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Версия конфигурации информационной базы-корреспондента</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -395,6 +443,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Sent Number</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер отправленного</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -412,6 +464,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Number of the sent exchange message which contains the correction of the matching information.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер отправленного сообщения обмена, в котором содержится корректировка информации сопоставления.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -443,6 +499,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Number of the sent initial data export</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер отправленного начальная выгрузка данных</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -460,6 +520,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Number of the sent exchange message which contains the sign of initial data import.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер отправленного сообщения обмена, в котором содержится признак начальной выгрузки данных.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -491,6 +555,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Infobase node</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Узел информационной базы</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -503,6 +571,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Exchange plan node the settings are used for.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Узел плана обмена, для которого используются настройки.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>

@@ -75,8 +75,9 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	// Ask a question only in case of early closing of the assistant.
 	If CloseForm <> True AND Not ValueIsFilled(SettingsProfileRef) Then
-		QuestionText = NStr("en = 'Entered data will not be saved.
-							|Are you sure you want to close the wizard?'");
+		QuestionText = NStr("en='Entered data will not be saved."
+"Are you sure you want to close the wizard?';ru='Введенные данные не будут сохранены."
+"Прервать работу помощника?'");
 		NotifyDescription = New NotifyDescription("CompleteBeforeClosing", ThisObject);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 		Cancel = True;
@@ -113,7 +114,7 @@ Procedure CompanyOnChange(Item)
 	
 	If EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEDFOperatorTaxcom") Then
 		CompanyID = "";
-		Items.CaptionIDOfParticipantExchangeED.Title = NStr("en = 'Obtain a unique identifier of the ED exchange participant'");
+		Items.CaptionIDOfParticipantExchangeED.Title = NStr("en='Obtain a unique identifier of the ED exchange participant';ru='Получить уникальный идентификатор участника обмена ЭД.'");
 		ElementFont = Items.CaptionIDOfParticipantExchangeED.Font;
 		Items.CaptionIDOfParticipantExchangeED.Font = New Font(ElementFont, , , False);
 		Items.CaptionIDOfParticipantExchangeED.Hyperlink = True;
@@ -121,7 +122,7 @@ Procedure CompanyOnChange(Item)
 	Else
 		If ValueIsFilled(CompanyID) Then
 			NotifyDescription = New NotifyDescription("CompanyOnChangeComplete", ThisObject);
-			QuestionText = NStr("en = 'The company was modified. Do you want to change the exchange ID of the company?'");
+			QuestionText = NStr("en='The company was modified. Do you want to change the exchange ID of the company?';ru='Была изменена организация. Изменить идентификатор обмена организации?'");
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 		Else
 			CompanyOnChangeComplete(DialogReturnCode.Yes, Undefined);
@@ -142,7 +143,7 @@ Procedure UseDSOnChange(Item)
 	
 	If ValueIsFilled(CryptoCertificate) Then
 		NotifyDescription = New NotifyDescription("UseDSOnChangeComplete", ThisObject);
-		QuestionText = NStr("en = 'Data on the certificate will be cleared. Continue?'");
+		QuestionText = NStr("en='Data on the certificate will be cleared. Continue?';ru='Данные по сертификату будут очищены. Продолжить?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else
 		UseDSOnChangeComplete(Undefined, Undefined);
@@ -330,7 +331,7 @@ Procedure ExchangeDirectory(PathToDirectory)
 	ExecuteParameters.Insert("PathToDirectory", PathToDirectory);
 	
 	FolderDialog = New FileDialog(FileDialogMode.ChooseDirectory);
-	FolderDialog.Title = NStr("en = 'Select network directory for exchange'");
+	FolderDialog.Title = NStr("en='Select network directory for exchange';ru='Выберите сетевой каталог для обмена'");
 	FolderDialog.Directory = PathToDirectory;
 	DirectorySelectionDescription = New NotifyDescription("AfterSelectingDirectory", ThisObject);
 		
@@ -494,7 +495,7 @@ Procedure EDFProfileSettingsTest()
 			
 			If ElectronicDocumentsServiceClient.CheckUsingUsersInternetSupport() Then
 				CommonUseClientServer.MessageToUser(
-					NStr("en = 'You need to obtain a unique identifier of the ED exchange participant.'"), , , , Cancel);
+					NStr("en='You need to obtain a unique identifier of the ED exchange participant.';ru='Необходимо получить уникальный идентификатор участника обмена ЭД.'"), , , , Cancel);
 			Else
 				CommonUseClientServer.MessageToUser(
 					ElectronicDocumentsClientServer.GetMessageText("Field", "Filling", "Company ID"),
@@ -509,7 +510,7 @@ Procedure EDFProfileSettingsTest()
 			If IdentifierLength <> 46 Then
 				CommonUseClientServer.MessageToUser(
 					ElectronicDocumentsClientServer.GetMessageText("Field", "CORRECTNESS", "Company ID", , ,
-						NStr("en = 'Field length is not equal 46.'")),
+						NStr("en='Field length is not equal 46.';ru='Длина поля не равна 46.'")),
 					,
 					"CompanyID",
 					,
@@ -525,17 +526,17 @@ Procedure EDFProfileSettingsTest()
 	CommunicationsTestPass = True;
 	If EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEDFOperatorTaxcom") Then
 		
-		Status(NStr("en = 'Creating an EDF settings profile.'"),
+		Status(NStr("en='Creating an EDF settings profile.';ru='Создание профиля настроек ЭДО.'"),
 			,
-			NStr("en = 'Testing the connection with the operator. Please wait...'"));
+			NStr("en='Testing the connection with the operator. Please wait...';ru='Выполняется тестирование связи с оператором. Пожалуйста, подождите..'"));
 		CertificateTest(CommunicationsTestPass, True);
 		
 	Else
 		If EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEMail") Then
 			
-			Status(NStr("en = 'Creating an EDF settings profile.'"),
+			Status(NStr("en='Creating an EDF settings profile.';ru='Создание профиля настроек ЭДО.'"),
 				,
-				NStr("en = 'Testing ED exchange through electronic mail. Please wait...'"));
+				NStr("en='Testing ED exchange through electronic mail. Please wait...';ru='Выполняется тестирование обмена ЭД через электронную почту. Пожалуйста, подождите..'"));
 			
 			ErrorInfo = "";
 			AdditionalMessage = "";
@@ -544,24 +545,25 @@ Procedure EDFProfileSettingsTest()
 			
 			If ValueIsFilled(ErrorInfo) Then
 				CommonUseClientServer.MessageToUser(StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Verification of the account parameters
-								|is complete with errors: %1'"), ErrorInfo ),,
-					NStr("en = 'Check email account'"));
+					NStr("en='Verification of the account parameters"
+"is complete with errors: %1';ru='Проверка параметров учетной записи завершилась с ошибками:"
+"%1'"), ErrorInfo ),,
+					NStr("en='Check email account';ru='Проверка учетной записи'"));
 				CommunicationsTestPass = False;
 			EndIf;
 			
 		ElsIf EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughDirectory") Then
 			
-			Status(NStr("en = 'Creating an EDF settings profile.'"),
+			Status(NStr("en='Creating an EDF settings profile.';ru='Создание профиля настроек ЭДО.'"),
 				,
-				NStr("en = 'Testing ED exchange through directory. Please wait...'"));
+				NStr("en='Testing ED exchange through directory. Please wait...';ru='Выполняется тестирование обмена ЭД через каталог. Пожалуйста, подождите..'"));
 			TestLinksDirectExchangeAtServer(IncomingDocumentsDir, CommunicationsTestPass);
 			
 		ElsIf EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughFTP") Then
 			
-			Status(NStr("en = 'Creating an EDF settings profile.'"),
+			Status(NStr("en='Creating an EDF settings profile.';ru='Создание профиля настроек ЭДО.'"),
 				,
-				NStr("en = 'Testing ED exchange through FTP. Please wait...'"));
+				NStr("en='Testing ED exchange through FTP. Please wait...';ru='Выполняется тестирование обмена ЭД через FTP. Пожалуйста, подождите..'"));
 			ExchangeConnectionTestThroughFTPOnServer(CommunicationsTestPass);
 			
 		EndIf;
@@ -583,7 +585,7 @@ Procedure SaveParameters(DataSaved)
 		BeginTransaction();
 		NewSettingsProfile = Catalogs.EDFProfileSettings.CreateItem();
 		
-		PatternName = NStr("en = '%1, %2'");
+		PatternName = NStr("en='%1, %2';ru='%1, %2'");
 		NewSettingsProfile.Description = StringFunctionsClientServer.PlaceParametersIntoString(PatternName,
 			Company, EDExchangeMethod);
 			
@@ -851,7 +853,7 @@ Procedure CheckFile(FTPConnection, ErrorText)
 	ResultRow = TextDocument.GetText();
 	DeleteFiles(FileRecipient);
 	If Not ResultRow = TestString Then
-		MessagePattern = NStr("en = '%1 %2.'");
+		MessagePattern = NStr("en='%1 %2.';ru='%1 %2.'");
 		MessageText = ElectronicDocumentsServiceCallServer.GetMessageAboutError("126");
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, MessageText,
 			FTPConnection.GetCurrentDirectory());
@@ -1042,7 +1044,7 @@ Procedure UseDSOnChangeComplete(Val Result, Val AdditionalParameters) Export
 			If EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEDFOperatorTaxcom")
 				AND ElectronicDocumentsServiceClient.CheckUsingUsersInternetSupport() Then
 				CompanyID = "";
-				Items.CaptionIDOfParticipantExchangeED.Title = NStr("en = 'Obtain a unique identifier of the ED exchange participant'");
+				Items.CaptionIDOfParticipantExchangeED.Title = NStr("en='Obtain a unique identifier of the ED exchange participant';ru='Получить уникальный идентификатор участника обмена ЭД.'");
 				ElementFont = Items.CaptionIDOfParticipantExchangeED.Font;
 				Items.CaptionIDOfParticipantExchangeED.Font = New Font(ElementFont, , , False);
 				Items.CaptionIDOfParticipantExchangeED.Hyperlink = True;

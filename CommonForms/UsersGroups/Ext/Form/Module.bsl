@@ -28,7 +28,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	UserCount = UserArray.Count();
 	If UserCount = 0 Then
-		Raise NStr("en = 'No one user is selected.'");
+		Raise NStr("en='No one user is selected.';ru='Не выбрано ни одного пользователя.'");
 	EndIf;
 	
 	UsersType = Undefined;
@@ -39,17 +39,17 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		UserTypeFromArray = TypeOf(UserFromArray);
 		If UserTypeFromArray <> Type("CatalogRef.Users")
 			AND UserTypeFromArray <> Type("CatalogRef.ExternalUsers") Then
-			Raise NStr("en = 'The command can not be run for the specified object.'");
+			Raise NStr("en='The command can not be run for the specified object.';ru='Команда не может быть выполнена для указанного объекта.'");
 		EndIf;
 		
 		If UsersType <> UserTypeFromArray Then
-			Raise NStr("en = 'Command can not be executed for two different kinds of the users at the same time.'");
+			Raise NStr("en='Command can not be executed for two different kinds of the users at the same time.';ru='Команда не может быть выполнена сразу для двух разных видов пользователей.'");
 		EndIf;
 	EndDo;
 		
 	If UserCount > 1
 		AND Parameters.User = Undefined Then
-		Title = NStr("en = 'User groups'");
+		Title = NStr("en='User groups';ru='Группы пользователя'");
 		Items.GroupsTreeMark.ThreeState = True;
 	EndIf;
 	
@@ -147,7 +147,7 @@ Procedure WriteAndCloseBegin(Result = Undefined, AdditionalParameters = Undefine
 	If UserNotification.HasErrors = False Then
 		If UserNotification.Message <> Undefined Then
 			ShowUserNotification(
-				NStr("en = 'User''s move'"), , UserNotification.Message, PictureLib.Information32);
+				NStr("en=""User's move"";ru='Перемещение пользователей'"), , UserNotification.Message, PictureLib.Information32);
 		EndIf;
 	Else
 		
@@ -157,8 +157,8 @@ Procedure WriteAndCloseBegin(Result = Undefined, AdditionalParameters = Undefine
 			
 			QuestionText = UserNotification.Message;
 			QuestionButtons = New ValueList;
-			QuestionButtons.Add("Ok", NStr("en='OK'"));
-			QuestionButtons.Add("ShowReport", NStr("en='Show report'"));
+			QuestionButtons.Add("Ok", NStr("en='OK';ru='Ок'"));
+			QuestionButtons.Add("ShowReport", NStr("en='Show report';ru='Показать отчет'"));
 			Notification = New NotifyDescription("WriteAndCloseQuestionDataProcessor", ThisObject, Report);
 			ShowQueryBox(Notification, QuestionText, QuestionButtons,, QuestionButtons[0].Value);
 		Else
@@ -447,18 +447,20 @@ Procedure GenerateMessageText(DisplacedUsersArray, UserNotification, NotMovedUse
 			For Each NotMovedUser IN NotMovedUsers Do
 				Subject = String(NOTMovedUser.Key);
 			EndDo;
-			UserMessage = NStr("en = 'User ""% 1"" has not managed to
-									|include in the selected group, as they have different types or the groups have the ""All users of the specified type"" sign installed.'");
+			UserMessage = NStr("en='User ""% 1"" has not managed to"
+"include in the selected group, as they have different types or the groups have the ""All users of the specified type"" sign installed.';ru='Пользователя ""%1"" не удалось включить в выбранные группы,"
+"т.к. у них различается тип или у групп установлен признак ""Все пользователи заданного типа"".'");
 		Else
-			MeasurementUnitInWordParameters = NStr("en = 'to user,users,users,,,,,,0'");
+			MeasurementUnitInWordParameters = NStr("en='to user,users,users,,,,,,0';ru='пользователю,пользователям,пользователям,,,,,,0'");
 			Subject = UsersService.WordEndingGenerating(QuantityNotDisplacedUsers, MeasurementUnitInWordParameters);
-			UserMessage = NStr("en = 'Not all users managed to include in
-									|the selected group, as they have different types or the groups have the ""All users of the specified type"" sign installed.'");
+			UserMessage = NStr("en='Not all users managed to include in"
+"the selected group, as they have different types or the groups have the ""All users of the specified type"" sign installed.';ru='Не всех пользователей удалось включить в выбранные группы,"
+"т.к. у них различается тип или у групп установлен признак ""Все пользователи заданного типа"".'");
 			For Each NotMovedUser IN NotMovedUsers Do
 			RowUsers = RowUsers + String(NOTMovedUser.Key) + " : " + 
 				StringFunctionsClientServer.RowFromArraySubrows(NOTMovedUser.Value) + Chars.LF;
 			EndDo;
-			UserNotification.WholeTextMessages = NStr("en = 'Following users have not been included to the groups:'") +
+			UserNotification.WholeTextMessages = NStr("en='Following users have not been included to the groups:';ru='Следующие пользователи не были включены в группы:'") +
 				Chars.LF + Chars.LF + RowUsers;
 		EndIf;
 		UserNotification.Message = StringFunctionsClientServer.PlaceParametersIntoString(
@@ -468,14 +470,14 @@ Procedure GenerateMessageText(DisplacedUsersArray, UserNotification, NotMovedUse
 		Return;
 	ElsIf UserCount = 1 Then
 		DescriptionOfUser = CommonUse.ObjectAttributeValue(DisplacedUsersArray[0], "Description");
-		UserMessage = NStr("en = 'Groups content of user ""%1"" is changed'");
+		UserMessage = NStr("en='Groups content of user ""%1"" is changed';ru='Изменен состав групп у пользователя ""%1""'");
 		UserNotification.Message = StringFunctionsClientServer.PlaceParametersIntoString(
 			UserMessage, DescriptionOfUser);
 	ElsIf UserCount > 1 Then
 		
-		UserMessage = NStr("en = 'Groups content is changed at %1'");
+		UserMessage = NStr("en='Groups content is changed at %1';ru='Изменен состав групп у %1'");
 		RowObject = UsersService.WordEndingGenerating(
-			UserCount, NStr("en = 'of user,users,users,,,,,,0'"));
+			UserCount, NStr("en='of user,users,users,,,,,,0';ru='пользователя,пользователей,пользователей,,,,,,0'"));
 		UserNotification.Message = StringFunctionsClientServer.PlaceParametersIntoString(
 			UserMessage, RowObject);
 		
@@ -500,7 +502,7 @@ Procedure WriteAndCloseQuestionDataProcessor(Response, Report) Export
 	If Response = "Ok" Then
 		Return;
 	Else
-		Report.Show(NStr("en = 'Users not included to the group'"));
+		Report.Show(NStr("en='Users not included to the group';ru='Пользователи, не включенные в группы'"));
 		Return;
 	EndIf;
 	

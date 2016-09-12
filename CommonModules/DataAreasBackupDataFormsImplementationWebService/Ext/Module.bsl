@@ -71,7 +71,7 @@ Function Proxy()
 	SetPrivilegedMode(True);
 	ServiceManagerAddress = Constants.InternalServiceManagerURL.Get();
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en = 'Parameters of connection with the service manager have not been set.'"));
+		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress = ServiceManagerAddress + "/ws/ZoneBackupControl_1_0_2_1?wsdl";

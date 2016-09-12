@@ -8,7 +8,7 @@ Procedure BeforeWrite(Cancel)
 	
 	If Not DataExchange.Load AND ThisObject.IsNew()
 	AND Not Constants.FunctionalOptionAccountingByMultipleCompanies.Get() Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Accounting by several companies is disabled in applicationm .'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Accounting by several companies is disabled in applicationm .';ru='В программе отключен учет по нескольким организациям.'"));
 		Cancel = True;
 	EndIf;
 	

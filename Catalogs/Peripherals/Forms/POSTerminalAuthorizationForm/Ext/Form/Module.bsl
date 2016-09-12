@@ -131,7 +131,7 @@ Procedure ExternalEvent(Source, Event, Data)
 		
 		Result = EquipmentManagerClient.GetEventFromDevice(DetailsEvents, ErrorDescription);
 		If Result = Undefined Then 
-			MessageText = NStr("en = 'An error occurred during the processing of external event from the device:'")
+			MessageText = NStr("en='An error occurred during the processing of external event from the device:';ru='При обработке внешнего события от устройства произошла ошибка:'")
 								+ Chars.LF + ErrorDescription;
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
@@ -165,11 +165,11 @@ Procedure RunOperation(Command)
 	ClearMessages();
 	
 	If Amount = 0 Then
-		Errors = NStr("en='Payment can not be performed for the amount equal to zero.'");
+		Errors = NStr("en='Payment can not be performed for the amount equal to zero.';ru='Платеж не может быть осуществлен на нулевую сумму.'");
 	EndIf;
 	
 	If ShowCardNumber AND Not ValueIsFilled(CardNumber) Then
-		Errors = Errors + ?(IsBlankString(Errors),"",Chars.LF) + NStr("en='Payment can not be performed without number of card.'");
+		Errors = Errors + ?(IsBlankString(Errors),"",Chars.LF) + NStr("en='Payment can not be performed without number of card.';ru='Платеж не может быть осуществлен без номера карты.'");
 	EndIf;
 	
 	If IsBlankString(Errors) Then
@@ -207,12 +207,14 @@ Function CardCodeReceived(CardCode, TracksData)
 			CardNumber = Left(CardData, SeparatorPosition - 1);
 			Items.CardNumber.Visible = True;
 		Else
-			CommonUseClientServer.MessageToUser(NStr("en='Invalid card is specified or an error occurred while reading the card.
-			|Repeat reading or read another card'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Invalid card is specified or an error occurred while reading the card."
+"Repeat reading or read another card';ru='Указана неверная карта или произошла ошибка при считывании карты."
+"Повторите считывание или считайте другую карту'"));
 		EndIf;
 	Else
-		CommonUseClientServer.MessageToUser(NStr("en='Invalid card is specified or an error occurred while reading the card.
-		|Repeat reading or read another card'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Invalid card is specified or an error occurred while reading the card."
+"Repeat reading or read another card';ru='Указана неверная карта или произошла ошибка при считывании карты."
+"Повторите считывание или считайте другую карту'"));
 	EndIf;
 	
 	RefreshDataRepresentation();
@@ -229,8 +231,9 @@ Procedure AmountTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
 	   
 		StandardProcessing = False;
 		StructureValues = New Structure;
-		StructureValues.Insert("Warning", NStr("en = 'Payment amount by card exceeds required non cash payment.
-		|Value will be changed to the maximum.'"));
+		StructureValues.Insert("Warning", NStr("en='Payment amount by card exceeds required non cash payment."
+"Value will be changed to the maximum.';ru='Сумма оплаты по карте превышает необходимую безналичную оплату."
+"Значение будет изменено на максимально возможное.'"));
 		StructureValues.Insert("Value", Format(Items.Amount.MaxValue, "ND=15; NFD=2; NZ=0; NG=0; NN=1"));
 		
 		ValueList = New ValueList;

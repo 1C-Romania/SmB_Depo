@@ -198,7 +198,7 @@ Procedure GenerateNewsList()
 	
 	MoreMessages                          = Items.Add("MoreMessages", Type("FormDecoration"), GroupNews);
 	MoreMessages.Type                      = FormDecorationType.Label;
-	MoreMessages.Title                = NStr("en = 'More messages'");
+	MoreMessages.Title                = NStr("en='More messages';ru='Еще сообщения'");
 	MoreMessages.HorizontalStretch = True;
 	MoreMessages.VerticalAlign    = ItemVerticalAlign.Center;
 	MoreMessages.Hyperlink              = True;

@@ -364,7 +364,7 @@ Function WhenImportingReportAboutRetailSales(Device, ArrayOfData) Export
 	ReportAboutRetailSalesObject.DocumentCurrency    = Selection.Currency;
 	ReportAboutRetailSalesObject.PriceKind             = Selection.PriceKind;
 	ReportAboutRetailSalesObject.CashCR           = Selection.CashCR;
-	ReportAboutRetailSalesObject.Comment        = NStr("en = 'It is loaded from KKM Offline:'") + " " + Device;
+	ReportAboutRetailSalesObject.Comment        = NStr("en='It is loaded from KKM Offline:';ru='Загружено из ККМ Offline:'") + " " + Device;
 	ReportAboutRetailSalesObject.VATTaxation = SmallBusinessServer.VATTaxation(Selection.Company, Selection.StructuralUnit, CurrentDate());
 	ReportAboutRetailSalesObject.CashCRSessionStatus = Enums.CashCRSessionStatuses.Closed;
 	ReportAboutRetailSalesObject.Item = Catalogs.CashFlowItems.PaymentFromCustomers;
@@ -570,7 +570,7 @@ Procedure RefreshProductProduct(ExchangeRule) Export
 	ElsIf Selection.PeripheralsType = Enums.PeripheralTypes.LabelsPrintingScales Then
 		DataCompositionSchema = Catalogs.ExchangeWithPeripheralsOfflineRules.GetTemplate("PLUProductCodesUpdate");
 	Else
-		Raise NStr("en = 'Incorrect peripherals type'");
+		Raise NStr("en='Incorrect peripherals type';ru='Некорректный тип подключаемого оборудования'");
 	EndIf;
 	
 	// Preparation of layout compositing of data composition, importing settings
@@ -694,9 +694,9 @@ Procedure ScheduledJobUpdateGoodsCodes() Export
 	
 	SetPrivilegedMode(True);
 	
-	WriteLogEvent(NStr("en = 'Product codes update for the peripherals Offline'"),
+	WriteLogEvent(NStr("en='Product codes update for the peripherals Offline';ru='Обновление кодов товаров подключаемого оборудования Offline'"),
 	                         EventLogLevel.Information, , ,
-	                         NStr("en = 'Scheduled update of the items codes of the connected equipment Offline has been started.'"));
+	                         NStr("en='Scheduled update of the items codes of the connected equipment Offline has been started.';ru='Начато регламентное обновление кодов товаров подключаемого оборудования Offline.'"));
 	
 	Query = New Query(
 	"SELECT
@@ -711,16 +711,16 @@ Procedure ScheduledJobUpdateGoodsCodes() Export
 		Try
 			RefreshProductProduct(Selection.ExchangeRule);
 		Except
-			WriteLogEvent(NStr("en = 'Product codes update for the peripherals Offline'"),
+			WriteLogEvent(NStr("en='Product codes update for the peripherals Offline';ru='Обновление кодов товаров подключаемого оборудования Offline'"),
 			                         EventLogLevel.Error, , ,
-			                         NStr("en = 'An error occurred during the scheduled update of the Offline peripherals product codes.'")
+			                         NStr("en='An error occurred during the scheduled update of the Offline peripherals product codes.';ru='Во время регламентного обновления кодов товаров подключаемого оборудования Offline произошла ошибка.'")
 			                         + Chars.LF + ErrorInfo().Definition);
 		EndTry;
 	EndDo;
 	
-	WriteLogEvent(NStr("en = 'Product codes update for the peripherals Offline'"),
+	WriteLogEvent(NStr("en='Product codes update for the peripherals Offline';ru='Обновление кодов товаров подключаемого оборудования Offline'"),
 	                         EventLogLevel.Information, , ,
-	                         NStr("en = 'A scheduled update of the item codes of the connected equipment Offline is completed.'"));
+	                         NStr("en='A scheduled update of the item codes of the connected equipment Offline is completed.';ru='Закончено регламентное обновление кодов товаров подключаемого оборудования Offline.'"));
 	
 	SetPrivilegedMode(False);
 	

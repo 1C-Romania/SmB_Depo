@@ -122,26 +122,26 @@ Function FieldsAreFilledCorrectly()
 	
 	If IsBlankString(Login) Then
 		MessageToUser(
-			NStr("en = 'Field ""login"" not filled.'"),
+			NStr("en='Field ""login"" not filled.';ru='Поле ""Логин"" не заполнено.'"),
 			"Login",
 			Cancel);
 	EndIf;
 	
 	If IsBlankString(Password) Then
 		MessageToUser(
-			NStr("en = 'Password field is not filled.'"),
+			NStr("en='Password field is not filled.';ru='Поле ""Пароль"" не заполнено.'"),
 			"Password",
 			Cancel);
 	ElsIf Password <> PasswordConfirmation Then
 		MessageToUser(
-			NStr("en = 'Password and the confirmation do not match.'"),
+			NStr("en='Password and the confirmation do not match.';ru='Не совпадают пароль и его подтверждение.'"),
 			"PasswordConfirmation",
 			Cancel);
 	EndIf;
 	
 	If IsBlankString(Email) Then
 		MessageToUser(
-			NStr("en = 'Email field is not filled.'"),
+			NStr("en='Email field is not filled.';ru='Поле ""E-mail"" не заполнено.'"),
 			"Email",
 			Cancel);
 	EndIf;
@@ -154,10 +154,10 @@ EndFunction
 Function MessageParametersToTechicalSupport()
 	
 	Result = New Structure;
-	Result.Insert("Subject"  , NStr("en = 'Online support. Registration of a new user'"));
+	Result.Insert("Subject"  , NStr("en='Online support. Registration of a new user';ru='Интернет-поддержка. Регистрация нового пользователя.'"));
 	Result.Insert("FromWhom", Email);
 	
-	MessageText = NStr("en = 'Dear Sir or Madam, I can not register a new user to connect Internet Support. Please help me to solve the issue. Login: %1 Email: %2 Last name: %3 Name: %4 Patronymic: %5 City: %6 Phone: %7 Place of employment: %8. %TechnicalParameters% ----------------------------------------------- Best regards, .'");
+	MessageText = NStr("en='Dear Sir or Madam, I can not register a new user to connect Internet Support. Please help me to solve the issue. Login: %1 Email: %2 Last name: %3 Name: %4 Patronymic: %5 City: %6 Phone: %7 Place of employment: %8. %TechnicalParameters% ----------------------------------------------- Best regards, .';ru='Здравствуйте! У меня не получается зарегистрировать нового пользователя для подключения Интернет-поддержки. Прошу помочь разобраться с проблемой. Логин: %1 E-mail: %2 Фамилия: %3 Имя: %4 Отчество: %5 Город: %6 Телефон: %7 Место работы: %8. %ТехническиеПараметры% ----------------------------------------------- С уважением, .'");
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 		MessageText,

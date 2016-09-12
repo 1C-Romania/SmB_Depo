@@ -6,7 +6,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	// Access right check should be the first one.
 	If Not AccessRight("Administration", Metadata) Then
-		Raise NStr("en = 'The use of processing in the interactive mode is available only for administrator.'");
+		Raise NStr("en='The use of processing in the interactive mode is available only for administrator.';ru='Использование обработки в интерактивном режиме доступно только администратору.'");
 	EndIf;
 	
 	If Parameters.Property("AutoTest") Then // Return if the form for analysis is received.
@@ -19,13 +19,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Object.AlgorithmsDebugMode = Parameters.AlgorithmsDebugMode;
 	Object.EventHandlersReadFromFileOfExchangeRules = Parameters.EventHandlersReadFromFileOfExchangeRules;
 	
-	FormTitle = NStr("en = 'Customize handler debugging on data %Event%'");	
-	Event = ?(Parameters.EventHandlersReadFromFileOfExchangeRules, NStr("en = 'exporting'"), NStr("en = 'export'"));
+	FormTitle = NStr("en='Customize handler debugging on data %Event%';ru='Настройка отладки обработчиков при %Событие% данных'");	
+	Event = ?(Parameters.EventHandlersReadFromFileOfExchangeRules, NStr("en='exporting';ru='экспорт'"), NStr("en='export';ru='экспорт'"));
 	FormTitle = StrReplace(FormTitle, "%Event%", Event);
 	Title = FormTitle;
 	
-	ButtonTitle = NStr("en = 'Generate debugging module %Event%'");
-	Event = ?(Parameters.EventHandlersReadFromFileOfExchangeRules, NStr("en = 'export'"), NStr("en = 'import'"));
+	ButtonTitle = NStr("en='Generate debugging module %Event%';ru='Сформировать модуль отладки %Событие%'");
+	Event = ?(Parameters.EventHandlersReadFromFileOfExchangeRules, NStr("en='export';ru='экспорт'"), NStr("en='import';ru='Импортировать'"));
 	ButtonTitle = StrReplace(ButtonTitle, "%Event%", Event);
 	Items.ExportCodeHandlers.Title = ButtonTitle;
 	
@@ -49,9 +49,9 @@ Procedure EventHandlersExternalDataProcessorFileNameStartChoice(Item, ChoiceData
 	
 	FileDialog = New FileDialog(FileDialogMode.Open);
 	
-	FileDialog.Filter     = NStr("en = 'External processing file for the evends handlers (*.epf)|*.epf'");
+	FileDialog.Filter     = NStr("en='External processing file for the evends handlers (*.epf)|*.epf';ru='Файл внешней обработки обработчиков событий (*.epf)|*.epf'");
 	FileDialog.Extension = "epf";
-	FileDialog.Title = NStr("en = 'Select the file'");
+	FileDialog.Title = NStr("en='Select the file';ru='Выберите файл'");
 	FileDialog.Preview = False;
 	FileDialog.FilterIndex = 0;
 	FileDialog.FullFileName = Item.EditText;
@@ -85,7 +85,7 @@ Procedure Done(Command)
 	
 	If IsBlankString(Object.EventHandlersExternalDataProcessorFileName) Then
 		
-		MessageToUser(NStr("en = 'Specify the external processing attachment file name.'"), "EventHandlersExternalDataProcessorFileName");
+		MessageToUser(NStr("en='Specify the external processing attachment file name.';ru='Укажите имя файла внешней обработки.'"), "EventHandlersExternalDataProcessorFileName");
 		Return;
 		
 	EndIf;
@@ -93,7 +93,7 @@ Procedure Done(Command)
 	EventHandlersExternalDataProcessorFile = New File(Object.EventHandlersExternalDataProcessorFileName);
 	If Not EventHandlersExternalDataProcessorFile.Exist() Then
 		
-		MessageToUser(NStr("en = 'Specified file of external processing does not exist.'"), "EventHandlersExternalDataProcessorFileName");
+		MessageToUser(NStr("en='Specified file of external processing does not exist.';ru='Указанный файл внешней обработки не существует.'"), "EventHandlersExternalDataProcessorFileName");
 		Return;
 		
 	EndIf;
@@ -155,12 +155,12 @@ Procedure ExportCodeHandlers(Command)
 	If Not IsBlankString(Object.TemporaryFileNameOfEventHandlers) Then
 		
 		ButtonList = New ValueList;
-		ButtonList.Add(DialogReturnCode.Yes, NStr("en = 'Export repeatedly'"));
-		ButtonList.Add(DialogReturnCode.No, NStr("en = 'Open module'"));
+		ButtonList.Add(DialogReturnCode.Yes, NStr("en='Export repeatedly';ru='Выгрузить повторно'"));
+		ButtonList.Add(DialogReturnCode.No, NStr("en='Open module';ru='Открыть модуль'"));
 		ButtonList.Add(DialogReturnCode.Cancel);
 		
 		NotifyDescription = New NotifyDescription("ExportHandlerCodeEnd", ThisObject);
-		ShowQueryBox(NOTifyDescription, NStr("en = 'Debugging module with the handlers code is already exported.'"), ButtonList,,DialogReturnCode.No);
+		ShowQueryBox(NOTifyDescription, NStr("en='Debugging module with the handlers code is already exported.';ru='Модуль отладки с кодом обработчиков уже выгружен.'"), ButtonList,,DialogReturnCode.No);
 		
 	Else
 		
@@ -203,14 +203,14 @@ Procedure ShowEventHandlersInWindow()
 	If HandlerFile.Exist() AND HandlerFile.Size() <> 0 Then
 		TextDocument = New TextDocument;
 		TextDocument.Read(Object.TemporaryFileNameOfEventHandlers);
-		TextDocument.Show(NStr("en = 'Handler debugging module'"));
+		TextDocument.Show(NStr("en='Handler debugging module';ru='Модуль отладки обработчиков'"));
 	EndIf;
 	
 	ErrorFile = New File(Object.TemporaryFileNameOfExchangeProtocol);
 	If ErrorFile.Exist() AND ErrorFile.Size() <> 0 Then
 		TextDocument = New TextDocument;
 		TextDocument.Read(Object.TemporaryFileNameOfEventHandlers);
-		TextDocument.Show(NStr("en = 'Handler module export errors'"));
+		TextDocument.Show(NStr("en='Handler module export errors';ru='Ошибки выгрузки модуля обработчиков'"));
 	EndIf;
 	
 EndProcedure

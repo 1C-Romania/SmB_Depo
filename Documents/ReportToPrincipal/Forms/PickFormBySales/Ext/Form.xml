@@ -25,6 +25,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Cancel</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отменить</v8:content>
+					</v8:item>
 				</Title>
 				<ExtendedTooltip name="CloseExtendedTooltip" id="207"/>
 			</Button>
@@ -54,11 +58,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Quick filters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Быстрые отборы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Quick filters</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Быстрые отборы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -72,11 +84,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>For period</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По периоду</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>For period</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По периоду</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
@@ -134,11 +154,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Inventory pickup</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор запасов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Inventory pickup</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор запасов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -234,11 +262,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Products and services</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Продукция и услуги</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Products and services</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Продукция и услуги</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>InCell</Group>
@@ -336,6 +372,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Inventory table</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица запасов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -346,6 +386,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Selected</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отобранные</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -358,6 +402,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Products and services</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продукция и услуги</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ProductsAndServices</v8:Type>
@@ -367,6 +415,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Characteristic</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Characteristic</v8:content>
 						</v8:item>
 					</Title>
@@ -381,6 +433,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Quantity</v8:content>
 						</v8:item>
 					</Title>
@@ -399,6 +455,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Sold</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продано</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
@@ -415,6 +475,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Batch</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Партия</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ProductsAndServicesBatches</v8:Type>
@@ -429,6 +493,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Customer order</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заказ покупателя</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:DocumentRef.CustomerOrder</v8:Type>
@@ -439,6 +507,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Price</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -454,6 +526,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Amount</v8:content>
 						</v8:item>
 					</Title>
@@ -472,6 +548,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Receipt Price</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена поступления</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
@@ -488,6 +568,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Purchase order</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заказ поставщику</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:DocumentRef.PurchaseOrder</v8:Type>
@@ -499,6 +583,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Customer</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Покупатель</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
@@ -509,6 +597,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of sale</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата реализации</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -540,6 +632,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Batch owner</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Владелец партий</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
@@ -550,6 +646,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Contract</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контакт</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -562,6 +662,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вал.</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
@@ -572,6 +676,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Current document</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий документ</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -584,6 +692,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Counterparty price kind</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид цен контрагента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.CounterpartyPriceKind</v8:Type>
@@ -594,6 +706,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>From</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Списать из</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -608,6 +724,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>to</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>до</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -636,11 +756,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Move into document</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перенести в документ</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Add new rows to the document</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить новые строки в документ</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>MoveIntoDocumentExecute</Action>
@@ -651,11 +779,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Select rows</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать строки</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Select rows</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать строки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -671,11 +807,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Exclude strings</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить строки</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Exclude strings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить строки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -690,11 +834,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Select Highlighted</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать выделенные</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Select highlighted rows</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать выделенные строки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ChooseHighlightedLines</Action>
@@ -705,11 +857,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Exclude selected</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить выделенные</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Exclude selected strings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить выделенные строки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ExcludeSelectedRows</Action>
@@ -720,11 +880,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Set date interval</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить интервал</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Set date interval</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить интервал</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Use>

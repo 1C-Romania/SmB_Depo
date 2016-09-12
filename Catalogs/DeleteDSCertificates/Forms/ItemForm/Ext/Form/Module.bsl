@@ -79,7 +79,7 @@ Procedure SetEnabledVisible()
 			
 			NameAndSurnameOfOwner = "";
 			If NewCertificate.Subject.Property("SN") Then
-				TemplateOwnerNameAndSurname = NStr("en = '%1 %2'");
+				TemplateOwnerNameAndSurname = NStr("en='%1 %2';ru='%1 %2'");
 				NameAndSurnameOfOwner = StringFunctionsClientServer.PlaceParametersIntoString(TemplateOwnerNameAndSurname,
 				NewCertificate.Subject.SN, NewCertificate.Subject.GN);
 			ElsIf NewCertificate.Subject.Property("CN") Then
@@ -133,9 +133,9 @@ EndProcedure
 Procedure FillHeadingsHyperlinks()
 	
 	If Object.RememberCertificatePassword Then
-		HyperlinksTextOfPassword = NStr("en = 'Change password.'");
+		HyperlinksTextOfPassword = NStr("en='Change password.';ru='Изменить пароль.'");
 	Else
-		HyperlinksTextOfPassword = NStr("en = 'Password is not saved.'");
+		HyperlinksTextOfPassword = NStr("en='Password is not saved.';ru='Пароль не сохранен.'");
 	EndIf;
 	
 	Items.ButtonPassword.Title       = HyperlinksTextOfPassword;
@@ -150,7 +150,7 @@ Procedure SetPassword(RememberPassword = False)
 	
 	Map = New Map;
 	Map.Insert(Object.Ref, CertificateParameters);
-	OperationKind = NStr("en = 'Saving the password in certificate'");
+	OperationKind = NStr("en='Saving the password in certificate';ru='Сохранение пароля в сертификате'");
 	
 	AdditionalParameters = New Structure;
 	AdditionalParameters.Insert("ForWrite", True);
@@ -331,14 +331,14 @@ Procedure CertificateSettingsTest(Command)
 	
 	If Modified Then
 		
-		QuestionText = NStr("en = 'Certificate settings have been changed. Do you want to continue the test?'");
+		QuestionText = NStr("en='Certificate settings have been changed. Do you want to continue the test?';ru='Изменены настройки сертификата. Продолжить выполнение теста?'");
 		ButtonList = New ValueList();
-		ButtonList.Add("Execute", NStr("en = 'Save and perform the test'"));
-		ButtonList.Add("Cancel", NStr("en = 'Cancel the test'"));
+		ButtonList.Add("Execute", NStr("en='Save and perform the test';ru='Сохранить и выполнить тест'"));
+		ButtonList.Add("Cancel", NStr("en='Cancel the test';ru='Отменить тест'"));
 		
 		NotificationHandler = New NotifyDescription("PerformNotificationTextSettings", ThisObject);
 		
-		ShowQueryBox(NotificationHandler, QuestionText, ButtonList, , "Execute", NStr("en = 'Certificate settings test'"));
+		ShowQueryBox(NotificationHandler, QuestionText, ButtonList, , "Execute", NStr("en='Certificate settings test';ru='Тест настроек сертификата'"));
 		
 		
 	Else
@@ -360,7 +360,7 @@ Procedure AppointmentOpening(Item, StandardProcessing)
 	Try
 		DigitalSignatureClient.OpenCertificate(Object.Imprint);
 	Except
-		ShowMessageBox(,NStr("en = 'It is impossible to open the certificate. Perhaps, it has not been installed to the local computer'"));
+		ShowMessageBox(,NStr("en='It is impossible to open the certificate. Perhaps, it has not been installed to the local computer';ru='Невозможно открыть сертификат. Возможно он не установлен на локальный компьютер.'"));
 	EndTry;
 	
 EndProcedure
@@ -446,8 +446,9 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	
 	If Object.RestrictAccessToCertificate AND Not ValueIsFilled(Object.User) Then
 		Cancel = True;
-		ShowMessageBox(,NStr("en = 'The user to whom the certificate is available is not specified!
-		|Specify the user or remove the access restriction.'"));
+		ShowMessageBox(,NStr("en='The user to whom the certificate is available is not specified!"
+"Specify the user or remove the access restriction.';ru='Не указан пользователь, которому доступен сертификат!"
+"Укажите пользователя, либо снимите ограничение доступа.'"));
 	EndIf;
 	
 EndProcedure

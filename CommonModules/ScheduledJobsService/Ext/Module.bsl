@@ -92,7 +92,7 @@ Function ExecuteScheduledJobManually(Val Task) Export
 			ExecuteParameters.BackgroundJobPresentation = ScheduledJobPresentation(Task);
 		EndIf;
 	Else
-		BackgroundJobDescription = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Launch manually: %1'"), ScheduledJobPresentation(Task));
+		BackgroundJobDescription = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Launch manually: %1';ru='Запуск вручную: %1'"), ScheduledJobPresentation(Task));
 		BackgroundJob = BackgroundJobs.Execute(Task.Metadata.MethodName, Task.Parameters, String(Task.UUID), BackgroundJobDescription);
 		ExecuteParameters.BackgroundJobID = String(BackgroundJob.UUID);
 		ExecuteParameters.StartedAt = BackgroundJobs.FindByUUID(BackgroundJob.UUID).Begin;
@@ -158,7 +158,7 @@ EndFunction
 // Returns text "<undefined>".
 Function TextUndefined() Export
 	
-	Return NStr("en = '<not defined>'");
+	Return NStr("en='<not defined>';ru='<не определено>'");
 	
 EndFunction
 
@@ -204,11 +204,11 @@ Procedure CancelBackgroundJob(ID) Export
 	If BackgroundJobArray.Count() = 1 Then
 		BackgroundJob = BackgroundJobArray[0];
 	Else
-		Raise NStr("en = 'Background task is not found on the server.'");
+		Raise NStr("en='Background task is not found on the server.';ru='Фоновое задание не найдено на сервере.'");
 	EndIf;
 	
 	If BackgroundJob.State <> BackgroundJobState.Active Then
-		Raise NStr("en = 'Task is not performed, it can not be canceled.'");
+		Raise NStr("en='Task is not performed, it can not be canceled.';ru='Задание не выполняется, его нельзя отменить.'");
 	EndIf;
 	
 	BackgroundJob.Cancel();

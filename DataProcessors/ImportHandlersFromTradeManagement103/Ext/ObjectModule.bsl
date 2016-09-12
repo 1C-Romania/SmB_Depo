@@ -919,7 +919,7 @@ Procedure OCR_AfterImport_BalanceEntryAdvanceHolderCashDebts(ExchangeFile, Cance
 			NewDocument.Date = Object.Date;
 			NewDocument.Company = Object.Company;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -977,7 +977,7 @@ Procedure OCR_AfterImport_BalanceEntryAdvanceHolderCashlessDebts(ExchangeFile, C
 			NewDocument.Date = Object.Date;
 			NewDocument.Company = Object.Company;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1035,7 +1035,7 @@ Procedure OCR_AfterImport_BalanceEntryImprestAmountCalculation(ExchangeFile, Can
 			NewDocument.Date = Object.Date;
 			NewDocument.Company = Object.Company;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1095,7 +1095,7 @@ Procedure OCR_AfterImport_BalanceEntryClientDebtsForOrders(ExchangeFile, Cancel,
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1155,7 +1155,7 @@ Procedure OCR_AfterImport_BalanceEntryClientRealizationDebts(ExchangeFile, Cance
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1215,7 +1215,7 @@ Procedure OCR_AfterImport_BalanceEntryAgentDebtsForSoldProducts(ExchangeFile, Ca
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1275,7 +1275,7 @@ Procedure OCR_AfterImport_BalanceEntryOtherAccountsDueToCustomers(ExchangeFile, 
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1335,7 +1335,7 @@ Procedure OCR_AfterImport_BalanceEntryOrderAdvancesReceivedFromCustomers(Exchang
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1395,7 +1395,7 @@ Procedure OCR_AfterImport_BalanceEntryOtherAdvancesReceivedFromCustomers(Exchang
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1455,7 +1455,7 @@ Procedure OCR_AfterImport_BalanceEntrySupplierDebtsForOrders(ExchangeFile, Cance
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1515,7 +1515,7 @@ Procedure OCR_AfterImport_BalanceEntrySupplierIncomeDebts(ExchangeFile, Cancel, 
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1575,7 +1575,7 @@ Procedure OCR_AfterImport_BalanceEntryPrincipalDebtsForSoldProducts(ExchangeFile
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1635,7 +1635,7 @@ Procedure OCR_AfterImport_BalanceEntryOtherAccountsPayableToSuppliers(ExchangeFi
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1695,7 +1695,7 @@ Procedure OCR_AfterImport_BalanceEntryOrderAdvancesPaidToSuppliers(ExchangeFile,
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -1755,7 +1755,7 @@ Procedure OCR_AfterImport_BalanceEntryOtherAdvancesPaidToSuppliers(ExchangeFile,
 			NewDocument.Company = Object.Company;
 			NewDocument.Counterparty = String.Counterparty;
 			
-			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%'");
+			StringComment = NStr("en='It is generated automatically by the ""Entering the opening balances"" document #%Number% dated %Date%';ru='Сформирован автоматически документом Ввод начальных остатков № %Номер% от %Дата%'");
 			StringComment = StrReplace(StringComment, "%Number%", String(Object.Number));
 			StringComment = StrReplace(StringComment, "%Date%", String(Object.Date));
 			NewDocument.Comment = StringComment;
@@ -2092,11 +2092,11 @@ Procedure OCR_AfterImport_IndividualsDocuments(ExchangeFile, Cancel, Ref, Object
 
 	
 	// ...From the UT 11 object module
-	TextSeries				= NStr("en = ', series: %1'");
-	TextNumber				= NStr("en = ',  %No'");
-	TextIssuanceDate			= NStr("en = ', issued: %1 year'");
-	TextValidityPeriod		= NStr("en = ', valid till: %1 year'");
-	TextDivisionCode	= NStr("en = ', div. No.%1'");
+	TextSeries				= NStr("en=', series: %1';ru=', серия: %1'");
+	TextNumber				= NStr("en=',  %No';ru=',  %No'");
+	TextIssuanceDate			= NStr("en=', issued: %1 year';ru=', выдан: %1 года'");
+	TextValidityPeriod		= NStr("en=', valid till: %1 year';ru=', действует до: %1 года'");
+	TextDivisionCode	= NStr("en=', div. No.%1';ru=', № подр. %1'");
 	
 	If Object.DocumentKind.IsEmpty() Then
 		Object.Presentation = "";

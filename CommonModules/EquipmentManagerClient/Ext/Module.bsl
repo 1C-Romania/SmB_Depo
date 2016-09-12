@@ -40,7 +40,7 @@ Function ConnectEquipment(ClientID, EETypes = Undefined,
 
 	Result = EquipmentManagerClient.RefreshClientWorkplace();
 	If Not Result Then
-		ErrorDescription = NStr("en = 'It is required to select a work place of the current peripheral session in advance.'");
+		ErrorDescription = NStr("en='It is required to select a work place of the current peripheral session in advance.';ru='Предварительно необходимо выбрать рабочее место подключаемого оборудования текущего сеанса.'");
 		Return False;
 	EndIf;
 	
@@ -57,8 +57,9 @@ Function ConnectEquipment(ClientID, EETypes = Undefined,
 				If DriverObject = Undefined Then
 					// Error message prompting that the driver can not be imported.
 					ErrorDescription = ErrorDescription + ?(IsBlankString(ErrorDescription), "", Chars.LF)
-								   + NStr("en = '%Description%: Cannot export the peripheral driver.
-									 |Check if the driver is correctly installed and registered in the system.'");
+								   + NStr("en='%Description%: Cannot export the peripheral driver."
+"Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства."
+"Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 					ErrorDescription = StrReplace(ErrorDescription, "%Description%", Device.Description);
 					FinalResult = False;
 					Continue;
@@ -89,7 +90,7 @@ Function ConnectEquipment(ClientID, EETypes = Undefined,
 				DriverHandler = EquipmentManagerClientReUse.GetDriverHandler(ANewConnection.DriverHandler, Not ANewConnection.AsConfigurationPart);
 				If DriverHandler = Undefined Then
 					// Error message prompting that the driver can not be imported.
-					ErrorDescription = ErrorDescription +  NStr("en = 'Failed to connect the driver handler.'");
+					ErrorDescription = ErrorDescription +  NStr("en='Failed to connect the driver handler.';ru='Не удалось подключить обработчик драйвера.'");
 					FinalResult = False;
 					Continue;
 				Else
@@ -117,7 +118,7 @@ Function ConnectEquipment(ClientID, EETypes = Undefined,
 				Else
 					// Inform user that a peripheral failed to be connected.
 					ErrorDescription = ErrorDescription + ?(IsBlankString(ErrorDescription), "", Chars.LF)
-								   + NStr("en = 'Cannot connect peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)'");
+								   + NStr("en='Cannot connect peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)';ru='Не удалось подключить устройство ""%Наименование%"": %ОписаниеОшибки% (%КодОшибки%)'");
 					ErrorDescription = StrReplace(ErrorDescription, "%Description%"  , Device.Description);
 					ErrorDescription = StrReplace(ErrorDescription, "%ErrorDescription%", Output_Parameters[1]);
 					ErrorDescription = StrReplace(ErrorDescription, "%ErrorCode%"     , Output_Parameters[0]);
@@ -131,8 +132,9 @@ Function ConnectEquipment(ClientID, EETypes = Undefined,
 			FinalResult = FinalResult AND Result;
 		EndDo;
 	ElsIf DeviceIdentifier <> Undefined Then
-		ErrorDescription = NStr("en = 'The selected peripheral can not be used for connection.
-		|Specify other device.'");
+		ErrorDescription = NStr("en='The selected peripheral can not be used for connection."
+"Specify other device.';ru='Выбранное устройство не может использоваться для подключения."
+"Укажите другое устройство.'");
 		FinalResult = False;
 	EndIf;
 
@@ -185,8 +187,9 @@ Function DisableAllEquipment(ErrorDescription = "") Export
 		DriverObject = GetDriverObject(ConnectedDevice);
 		If DriverObject = Undefined Then
 			// Error message prompting that the driver can not be imported.
-			ErrorDescription = NStr("en = '""%Description%"": Cannot export the peripheral driver.
-										|Check if the driver is correctly installed and registered in the system.'");
+			ErrorDescription = NStr("en='""%Description%"": Cannot export the peripheral driver."
+"Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства."
+"Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 			ErrorDescription = StrReplace(ErrorDescription, "%Description%", ConnectedDevice.Description);
 			FinalResult = False;
 			Continue;
@@ -208,7 +211,7 @@ Function DisableAllEquipment(ErrorDescription = "") Export
 				Output_Parameters);
 				
 		If Not Result Then
-			ErrorDescription = NStr("en = 'An error occurred while disconnecting peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)'");
+			ErrorDescription = NStr("en='An error occurred while disconnecting peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)';ru='При отключении устройства ""%Наименование%"" произошла ошибка: %ОписаниеОшибки% (%КодОшибки%)'");
 			ErrorDescription = StrReplace(ErrorDescription, "%Description%", ConnectedDevice.Description);
 			ErrorDescription = StrReplace(ErrorDescription, "%ErrorDescription%", Output_Parameters[1]);
 			ErrorDescription = StrReplace(ErrorDescription, "%ErrorCode%", Output_Parameters[0]);
@@ -248,8 +251,9 @@ Function DisableEquipment(ClientID, EETypes = Undefined, DeviceIdentifier = Unde
 					DriverObject = GetDriverObject(ConnectedDevice);
 					If DriverObject = Undefined Then
 						// Error message prompting that the driver can not be imported.
-						ErrorDescription = NStr("en = '""%Description%"": Cannot export the peripheral driver.
-													|Check if the driver is correctly installed and registered in the system.'");
+						ErrorDescription = NStr("en='""%Description%"": Cannot export the peripheral driver."
+"Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства."
+"Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 						ErrorDescription = StrReplace(ErrorDescription, "%Description%", ConnectedDevice.Description);
 						FinalResult = False;
 						Continue;
@@ -272,7 +276,7 @@ Function DisableEquipment(ClientID, EETypes = Undefined, DeviceIdentifier = Unde
 							
 					If Not Result Then
 						ErrorDescription = ErrorDescription + ?(IsBlankString(ErrorDescription), "", Chars.LF)
-									   + NStr("en = 'An error occurred while disconnecting peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)'");
+									   + NStr("en='An error occurred while disconnecting peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)';ru='При отключении устройства ""%Наименование%"" произошла ошибка: %ОписаниеОшибки% (%КодОшибки%)'");
 						ErrorDescription = StrReplace(ErrorDescription, "%Description%", ConnectedDevice.Description);
 						ErrorDescription = StrReplace(ErrorDescription, "%ErrorDescription%", Output_Parameters[1]);
 						ErrorDescription = StrReplace(ErrorDescription, "%ErrorCode%", Output_Parameters[0]);
@@ -339,14 +343,14 @@ Procedure StartEnableEquipmentEnd(ExecutionResult, Parameters) Export
 		EndIf;
 		glPeripherals.PeripheralsConnectingParameters.Add(Parameters.ANewConnection);
 		If Parameters.AlertOnConnect <> Undefined Then
-			ErrorDescription = NStr("en = 'No errors.'");
+			ErrorDescription = NStr("en='No errors.';ru='Ошибок нет.'");
 			ExecutionResult = New Structure("Result, ErrorDetails", True, ErrorDescription);
 			ExecuteNotifyProcessing(Parameters.AlertOnConnect, ExecutionResult);
 		EndIf;
 	Else
 		// Inform user that a peripheral failed to be connected.
 		If Parameters.AlertOnConnect <> Undefined Then
-			ErrorDescription = NStr("en = 'Cannot connect peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)'");
+			ErrorDescription = NStr("en='Cannot connect peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)';ru='Не удалось подключить устройство ""%Наименование%"": %ОписаниеОшибки% (%КодОшибки%)'");
 			ErrorDescription = StrReplace(ErrorDescription, "%Description%"  , Parameters.ANewConnection.Description);
 			ErrorDescription = StrReplace(ErrorDescription, "%ErrorDescription%", Parameters.Output_Parameters[1]);
 			ErrorDescription = StrReplace(ErrorDescription, "%ErrorCode%"     , Parameters.Output_Parameters[0]);
@@ -363,8 +367,9 @@ Procedure StartEnablingDeviceGettingDriverObjectEnd(DriverObject, Parameters) Ex
 		
 		If Parameters.AlertOnConnect <> Undefined Then
 			// Error message prompting that the driver can not be imported.
-			ErrorDescription = NStr("en = '%Description%: Cannot export the peripheral driver.
-										|Check if the driver is correctly installed and registered in the system.'");
+			ErrorDescription = NStr("en='%Description%: Cannot export the peripheral driver."
+"Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства."
+"Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 			ErrorDescription = StrReplace(ErrorDescription, "%Description%", Parameters.ANewConnection.Description);
 			ExecutionResult = New Structure("Result, ErrorDetails", False, ErrorDescription);
 			ExecuteNotifyProcessing(Parameters.AlertOnConnect, ExecutionResult);
@@ -387,7 +392,7 @@ Procedure StartConnectPeripheral(AlertOnConnect, ClientID, EETypes = Undefined, 
 	Result = EquipmentManagerClient.RefreshClientWorkplace();
 	If Not Result Then
 		If AlertOnConnect <> Undefined Then
-			ErrorDescription = NStr("en = 'It is required to select a work place of the current peripheral session in advance.'");
+			ErrorDescription = NStr("en='It is required to select a work place of the current peripheral session in advance.';ru='Предварительно необходимо выбрать рабочее место подключаемого оборудования текущего сеанса.'");
 			ExecutionResult = New Structure("Result, ErrorDetails", Result, ErrorDescription);
 			ExecuteNotifyProcessing(AlertOnConnect, ExecutionResult);
 		EndIf;
@@ -428,7 +433,7 @@ Procedure StartConnectPeripheral(AlertOnConnect, ClientID, EETypes = Undefined, 
 				If DriverHandler = Undefined Then
 					// Report an error: can not connect the handler.
 					If AlertOnConnect <> Undefined Then
-						ErrorDescription = NStr("en = 'Failed to connect the driver handler.'");
+						ErrorDescription = NStr("en='Failed to connect the driver handler.';ru='Не удалось подключить обработчик драйвера.'");
 						ExecutionResult = New Structure("Result, ErrorDetails", False, ErrorDescription);
 						ExecuteNotifyProcessing(AlertOnConnect, ExecutionResult);
 					EndIf;
@@ -447,8 +452,9 @@ Procedure StartConnectPeripheral(AlertOnConnect, ClientID, EETypes = Undefined, 
 						If DriverObject = Undefined Then
 							If AlertOnConnect <> Undefined Then
 								// Error message prompting that the driver can not be imported.
-								ErrorDescription = NStr("en = '%Description%: Cannot export the peripheral driver.
-													|Check if the driver is correctly installed and registered in the system.'");
+								ErrorDescription = NStr("en='%Description%: Cannot export the peripheral driver."
+"Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства."
+"Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 								ErrorDescription = StrReplace(ErrorDescription, "%Description%",ANewConnection.Description);
 								ExecutionResult = New Structure("Result, ErrorDetails", False, ErrorDescription);
 								ExecuteNotifyProcessing(AlertOnConnect, ExecutionResult);
@@ -470,7 +476,7 @@ Procedure StartConnectPeripheral(AlertOnConnect, ClientID, EETypes = Undefined, 
 								glPeripherals.PeripheralsConnectingParameters.Add(ANewConnection);
 								
 								If AlertOnConnect <> Undefined Then
-									ErrorDescription = NStr("en = 'No errors.'");
+									ErrorDescription = NStr("en='No errors.';ru='Ошибок нет.'");
 									ExecutionResult = New Structure("Result, ErrorDetails", True, ErrorDescription);
 									ExecuteNotifyProcessing(AlertOnConnect, ExecutionResult);
 								EndIf;
@@ -478,7 +484,7 @@ Procedure StartConnectPeripheral(AlertOnConnect, ClientID, EETypes = Undefined, 
 							Else
 								// Inform user that a peripheral failed to be connected.
 								If AlertOnConnect <> Undefined Then
-									ErrorDescription = NStr("en = 'Cannot connect peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)'");
+									ErrorDescription = NStr("en='Cannot connect peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)';ru='Не удалось подключить устройство ""%Наименование%"": %ОписаниеОшибки% (%КодОшибки%)'");
 									ErrorDescription = StrReplace(ErrorDescription, "%Description%"  , ANewConnection.Description);
 									ErrorDescription = StrReplace(ErrorDescription, "%ErrorDescription%", Output_Parameters[1]);
 									ErrorDescription = StrReplace(ErrorDescription, "%ErrorCode%"     , Output_Parameters[0]);
@@ -501,7 +507,7 @@ Procedure StartConnectPeripheral(AlertOnConnect, ClientID, EETypes = Undefined, 
 		EndDo;
 		
 	ElsIf  DeviceIdentifier <> Undefined AND AlertOnConnect <> Undefined Then
-		ErrorDescription =  NStr("en = 'The selected peripheral can not be used for connection. Specify other device.'");
+		ErrorDescription =  NStr("en='The selected peripheral can not be used for connection. Specify other device.';ru='Выбранное устройство не может использоваться для подключения. Укажите другое устройство.'");
 		ExecutionResult = New Structure("Result, ErrorDetails", Result, ErrorDescription);
 		ExecuteNotifyProcessing(AlertOnConnect, ExecutionResult);
 	EndIf;
@@ -535,14 +541,14 @@ Procedure StartDisconnectEquipmentEnd(ExecutionResult, Parameters) Export
 			glPeripherals.PeripheralsConnectingParameters.Delete(ArrayLineNumber);
 		EndIf;
 		If Parameters.AlertOnDisconnect <> Undefined Then
-			ErrorDescription = NStr("en = 'No errors.'");
+			ErrorDescription = NStr("en='No errors.';ru='Ошибок нет.'");
 			ExecutionResult = New Structure("Result, ErrorDetails", True, ErrorDescription);
 			ExecuteNotifyProcessing(Parameters.AlertOnDisconnect, ExecutionResult);
 		EndIf;
 	Else
 		// Inform user that a peripheral failed to be connected.
 		If Parameters.AlertOnDisconnect <> Undefined Then
-			ErrorDescription = NStr("en = 'An error occurred while disconnecting peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)'");
+			ErrorDescription = NStr("en='An error occurred while disconnecting peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)';ru='При отключении устройства ""%Наименование%"" произошла ошибка: %ОписаниеОшибки% (%КодОшибки%)'");
 			ErrorDescription = StrReplace(ErrorDescription, "%Description%"  , Parameters.ConnectedDevice.Description);
 			ErrorDescription = StrReplace(ErrorDescription, "%ErrorDescription%", Parameters.Output_Parameters[1]);
 			ErrorDescription = StrReplace(ErrorDescription, "%ErrorCode%"     , Parameters.Output_Parameters[0]);
@@ -559,8 +565,9 @@ Procedure StartDisconnectEquipmentGettingDriverObjectEnd(DriverObject, Parameter
 		
 		If Parameters.AlertOnDisconnect <> Undefined Then
 			// Error message prompting that the driver can not be imported.
-			ErrorDescription = NStr("en = '%Description%: Cannot export the peripheral driver.
-										|Check if the driver is correctly installed and registered in the system.'");
+			ErrorDescription = NStr("en='%Description%: Cannot export the peripheral driver."
+"Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства."
+"Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 			ErrorDescription = StrReplace(ErrorDescription, "%Description%", Parameters.ConnectedDevice.Description);
 			ExecutionResult = New Structure("Result, ErrorDetails", False, ErrorDescription);
 			ExecuteNotifyProcessing(Parameters.AlertOnDisconnect, ExecutionResult);
@@ -594,7 +601,7 @@ Procedure StartDisconnectEquipment(AlertOnDisconnect, ClientID, EETypes = Undefi
 					If DriverHandler = Undefined Then
 						// Report an error: can not connect the handler.
 						If AlertOnDisconnect <> Undefined Then
-							ErrorDescription = NStr("en = 'Failed to connect the driver handler.'");
+							ErrorDescription = NStr("en='Failed to connect the driver handler.';ru='Не удалось подключить обработчик драйвера.'");
 							ExecutionResult = New Structure("Result, ErrorDetails", False, ErrorDescription);
 							ExecuteNotifyProcessing(AlertOnDisconnect, ExecutionResult);
 						EndIf;
@@ -610,8 +617,9 @@ Procedure StartDisconnectEquipment(AlertOnDisconnect, ClientID, EETypes = Undefi
 							If DriverObject = Undefined Then
 								If AlertOnDisconnect <> Undefined Then
 									// Error message prompting that the driver can not be imported.
-									ErrorDescription = NStr("en = '%Description%: Cannot export the peripheral driver.
-														|Check if the driver is correctly installed and registered in the system.'");
+									ErrorDescription = NStr("en='%Description%: Cannot export the peripheral driver."
+"Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства."
+"Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 									ErrorDescription = StrReplace(ErrorDescription, "%Description%",ConnectedDevice.Description);
 									ExecutionResult = New Structure("Result, ErrorDetails", False, ErrorDescription);
 									ExecuteNotifyProcessing(AlertOnDisconnect, ExecutionResult);
@@ -622,7 +630,7 @@ Procedure StartDisconnectEquipment(AlertOnDisconnect, ClientID, EETypes = Undefi
 								If Not Result Then
 									// Inform user that a peripheral failed to be connected.
 									If AlertOnDisconnect <> Undefined Then
-										ErrorDescription = NStr("en = 'An error occurred while disconnecting peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)'");
+										ErrorDescription = NStr("en='An error occurred while disconnecting peripheral ""%Description%"": %ErrorDescription% (%ErrorCode%)';ru='При отключении устройства ""%Наименование%"" произошла ошибка: %ОписаниеОшибки% (%КодОшибки%)'");
 										ErrorDescription = StrReplace(ErrorDescription, "%Description%"  , ConnectedDevice.Description);
 										ErrorDescription = StrReplace(ErrorDescription, "%ErrorDescription%", Output_Parameters[1]);
 										ErrorDescription = StrReplace(ErrorDescription, "%ErrorCode%"     , Output_Parameters[0]);
@@ -639,7 +647,7 @@ Procedure StartDisconnectEquipment(AlertOnDisconnect, ClientID, EETypes = Undefi
 								EndIf;
 								
 								If AlertOnDisconnect <> Undefined Then
-									ErrorDescription = NStr("en = 'No errors.'");
+									ErrorDescription = NStr("en='No errors.';ru='Ошибок нет.'");
 									ExecutionResult = New Structure("Result, ErrorDetails", True, ErrorDescription);
 									ExecuteNotifyProcessing(AlertOnDisconnect, ExecutionResult);
 								EndIf;
@@ -688,8 +696,9 @@ Function ConnectEquipmentOnOpenForms(Form, SupportedPeripheralTypes) Export
 		
 		If Not EquipmentConnected Then
 			
-			MessageText = NStr("en = 'An error occurred while
-									|connecting peripherals: ""%ErrorDetails%"".'");
+			MessageText = NStr("en='An error occurred while"
+"connecting peripherals: ""%ErrorDetails%"".';ru='При подключении оборудования"
+"произошла ошибка: ""%ОписаниеОшибки%"".'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 			CommonUseClientServer.MessageToUser(MessageText);
 			
@@ -760,8 +769,9 @@ Function RunCommand(ID, Command, InputParameters, Output_Parameters, Timeout = -
 			
 			// Error message prompting that the driver can not be imported.
 			Output_Parameters = New Array();
-			ErrorDescription = NStr("en = '""%Description%"": Cannot export the peripheral driver.
-										|Check if the driver is correctly installed and registered in the system.'");
+			ErrorDescription = NStr("en='""%Description%"": Cannot export the peripheral driver."
+"Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства."
+"Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 			ErrorDescription = StrReplace(ErrorDescription, "%Description%", ConnectedDevice.Description);
 			Output_Parameters.Add(999);
 			Output_Parameters.Add(ErrorDescription);
@@ -776,10 +786,10 @@ Function RunCommand(ID, Command, InputParameters, Output_Parameters, Timeout = -
 			If DriverHandler = Undefined Then
 				// Error message prompting that the driver can not be imported.
 				Output_Parameters = New Array();
-				MessageText = NStr("en = 'Failed to connect the driver handler.'");
+				MessageText = NStr("en='Failed to connect the driver handler.';ru='Не удалось подключить обработчик драйвера.'");
 				Output_Parameters.Add(999);
 				Output_Parameters.Add(MessageText);
-				Output_Parameters.Add(NStr("en='Not set'"));
+				Output_Parameters.Add(NStr("en='Not set';ru='Не установлен'"));
 			Else
 				// Forcefully replace asynchronous handler to the synchronous one as you work in the synchronous mode.
 				If DriverHandler = PeripheralsUniversalDriverClientAsynchronously Then
@@ -798,7 +808,7 @@ Function RunCommand(ID, Command, InputParameters, Output_Parameters, Timeout = -
 	Else
 		// Report an error saying that the device is not connected.
 		Output_Parameters = New Array();
-		MessageText = NStr("en = 'The peripheral is not connected. Before the operation performance the device must be connected.'");
+		MessageText = NStr("en='The peripheral is not connected. Before the operation performance the device must be connected.';ru='Устройство не подключено. Перед выполнением операции устройство должно быть подключено.'");
 		Output_Parameters.Add(999);
 		Output_Parameters.Add(MessageText);
 	EndIf;
@@ -829,11 +839,12 @@ Function RunAdditionalCommand(Command, InputParameters, Output_Parameters, ID, P
 			
 			// Error message prompting that the driver can not be imported.
 			Output_Parameters = New Array();
-			MessageText = NStr("en = 'Unable to import device driver.
-										|Check if the driver is correctly installed and registered in the system.'");
+			MessageText = NStr("en='Unable to import device driver."
+"Check if the driver is correctly installed and registered in the system.';ru='Не удалось загрузить драйвер устройства."
+"Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 			Output_Parameters.Add(999);
 			Output_Parameters.Add(MessageText);
-			Output_Parameters.Add(NStr("en='Not set'"));
+			Output_Parameters.Add(NStr("en='Not set';ru='Не установлен'"));
 			
 		Else
 			
@@ -842,10 +853,10 @@ Function RunAdditionalCommand(Command, InputParameters, Output_Parameters, ID, P
 			If DriverHandler = Undefined Then
 				// Error message prompting that the driver can not be imported.
 				Output_Parameters = New Array();
-				MessageText = NStr("en = 'Failed to connect the driver handler.'");
+				MessageText = NStr("en='Failed to connect the driver handler.';ru='Не удалось подключить обработчик драйвера.'");
 				Output_Parameters.Add(999);
 				Output_Parameters.Add(MessageText);
-				Output_Parameters.Add(NStr("en='Not set'"));
+				Output_Parameters.Add(NStr("en='Not set';ru='Не установлен'"));
 			Else
 				// Forcefully replace asynchronous handler to the synchronous one as you work in the synchronous mode.
 				If DriverHandler = PeripheralsUniversalDriverClientAsynchronously Then
@@ -858,7 +869,7 @@ Function RunAdditionalCommand(Command, InputParameters, Output_Parameters, ID, P
 					Parameters,
 					TempConnectionParameters);
 					If Not Result Then
-						Output_Parameters.Add(NStr("en='Installed'"));
+						Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
 					EndIf;
 			EndIf
 				
@@ -866,10 +877,10 @@ Function RunAdditionalCommand(Command, InputParameters, Output_Parameters, ID, P
 	Else
 		// Report an error saying that the device is enabled.
 		Output_Parameters = New Array();
-		MessageText = NStr("en = 'The equipment is connected. Before you start, the device must be disabled.'");
+		MessageText = NStr("en='The equipment is connected. Before you start, the device must be disabled.';ru='Устройство подключено. Перед выполнением операции устройство должно быть отключено.'");
 		Output_Parameters.Add(999);
 		Output_Parameters.Add(MessageText);
-		Output_Parameters.Add(NStr("en='Installed'"));
+		Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
 	EndIf;
 	
 	Return Result;
@@ -883,12 +894,13 @@ Procedure StartAdditionalCommandExecutionEnd(DriverObject, CommandParameters) Ex
 	
 	If DriverObject = Undefined Then
 		// Error message prompting that the driver can not be imported.
-		ErrorText = NStr("en = 'Unable to import device driver.
-								|Check if the driver is correctly installed and registered in the system.'");
+		ErrorText = NStr("en='Unable to import device driver."
+"Check if the driver is correctly installed and registered in the system.';ru='Не удалось загрузить драйвер устройства."
+"Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 		Output_Parameters = New Array();
 		Output_Parameters.Add(999);
 		Output_Parameters.Add(ErrorText);
-		Output_Parameters.Add(NStr("en='Not set'"));
+		Output_Parameters.Add(NStr("en='Not set';ru='Не установлен'"));
 		ExecutionResult = New Structure("Result, Output_Parameters", False, Output_Parameters);
 		ExecuteNotifyProcessing(CommandParameters.AlertOnEnd, ExecutionResult);
 	Else
@@ -897,11 +909,11 @@ Procedure StartAdditionalCommandExecutionEnd(DriverObject, CommandParameters) Ex
 		
 		If DriverHandler = Undefined Then
 			// Inform that the driver handler failed to be connected.
-			ErrorText = NStr("en = 'Failed to connect the driver handler.'");
+			ErrorText = NStr("en='Failed to connect the driver handler.';ru='Не удалось подключить обработчик драйвера.'");
 			Output_Parameters = New Array();
 			Output_Parameters.Add(999);
 			Output_Parameters.Add(ErrorText);
-			Output_Parameters.Add(NStr("en='Not set'"));
+			Output_Parameters.Add(NStr("en='Not set';ru='Не установлен'"));
 			ExecutionResult = New Structure("Result, Output_Parameters", False, Output_Parameters);
 			ExecuteNotifyProcessing(CommandParameters.AlertOnEnd, ExecutionResult);
 		Else
@@ -916,7 +928,7 @@ Procedure StartAdditionalCommandExecutionEnd(DriverObject, CommandParameters) Ex
 				Result = DriverHandler.RunCommand(CommandParameters.Command, CommandParameters.InputParameters,
 					Output_Parameters, DriverObject, CommandParameters.Parameters, TempConnectionParameters);
 				If Not Result Then
-					Output_Parameters.Add(NStr("en='Installed'"));
+					Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
 				EndIf;
 				ExecutionResult = New Structure("Result, Output_Parameters", Result, Output_Parameters);
 				ExecuteNotifyProcessing(CommandParameters.AlertOnEnd, ExecutionResult);
@@ -945,11 +957,11 @@ Procedure StartExecuteAdditionalCommand(AlertOnEnd, Command, InputParameters, ID
 		StartReceivingDriverObject(Notification, EquipmentData);
 	Else
 		// Report an error saying that the device is enabled.
-		ErrorText = NStr("en = 'The equipment is connected. Before you start, the device must be disabled.'");
+		ErrorText = NStr("en='The equipment is connected. Before you start, the device must be disabled.';ru='Устройство подключено. Перед выполнением операции устройство должно быть отключено.'");
 		Output_Parameters = New Array();
 		Output_Parameters.Add(999);
 		Output_Parameters.Add(ErrorText);
-		Output_Parameters.Add(NStr("en='Installed'"));
+		Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
 		ExecutionResult = New Structure("Result, Output_Parameters", False, Output_Parameters);
 		ExecuteNotifyProcessing(AlertOnEnd, ExecutionResult);
 	EndIf;
@@ -1015,7 +1027,7 @@ Procedure ExecuteEquipmentSetup(ID) Export
 		Handler = New NotifyDescription("ExecuteEquipmentSettingEnd", ThisObject);
 		OpenForm("CommonForm." + SettingsForm, FormParameters,,,  ,, Handler, FormWindowOpeningMode.LockWholeInterface);
 	Else
-		CommonUseClientServer.MessageToUser(NStr("en='An error occurred while initializing the driver customization form.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='An error occurred while initializing the driver customization form.';ru='Произошла ошибка инициализации формы настройки драйвера.'")); 
 	EndIf;
 	
 EndProcedure
@@ -1034,7 +1046,7 @@ Procedure ExecuteEquipmentSettingEnd(Result, Parameters) Export
 		If CompletionResult Then 
 			RefreshReusableValues();
 		Else
-			ErrorInfo = NStr("en='Failed to save the device parameters.'");
+			ErrorInfo = NStr("en='Failed to save the device parameters.';ru='Не удалось сохранить параметры устройства.'");
 			CommonUseClientServer.MessageToUser(ErrorInfo);
 		EndIf;
 		
@@ -1112,7 +1124,7 @@ Procedure BeginEnableExtensionFileOperationsEnd(Attached, AdditionalParameters) 
 	
 	If Not Attached AND AdditionalParameters.OfferInstallation Then
 		Notification = New NotifyDescription("BeginInstallFileSystemExtensionEnd", ThisObject, AdditionalParameters);
-		MessageText = NStr("en = 'To continue work, you need to install 1C: Enterprise web client extension. Install?'");
+		MessageText = NStr("en='To continue work, you need to install 1C: Enterprise web client extension. Install?';ru='Для продолжении работы необходимо установить расширение для веб-клиента ""1С:Предприятие"". Установить?'");
 		ShowQueryBox(Notification, MessageText, QuestionDialogMode.YesNo); 
 	EndIf;
 	
@@ -1158,8 +1170,8 @@ Procedure StartDriverFileSelection(AlertOnSelection) Export
 	
 	FileOpeningDialog = New FileDialog(FileDialogMode.Open);
 	FileOpeningDialog.Multiselect = False;
-	FileOpeningDialog.Title = NStr("en = 'Select a driver file'");
-	FileOpeningDialog.Filter = NStr("en = 'Driver file'") + ?(EquipmentManagerClientReUse.IsLinuxClient(), "(*.zip)|*.zip", "(*.zip, *.exe)| *.zip; *.exe");  
+	FileOpeningDialog.Title = NStr("en='Select a driver file';ru='Выберите файл драйвера'");
+	FileOpeningDialog.Filter = NStr("en='Driver file';ru='Файл драйвера'") + ?(EquipmentManagerClientReUse.IsLinuxClient(), "(*.zip)|*.zip", "(*.zip, *.exe)| *.zip; *.exe");  
 	
 	Parameters = New Structure("AlertOnSelection", AlertOnSelection);
 	Notification = New NotifyDescription("DriverFileChoiceEnd", ThisObject, Parameters);
@@ -1198,7 +1210,7 @@ Procedure OfferSelectDevice(SelectionNotification, EquipmentType, HeaderTextSele
 	NotConnectedMessage = "", MessageNotSelected = "", WithoutMessages = False, MessageText = "") Export
 	
 	If Not EquipmentManagerClient.RefreshClientWorkplace() Then
-		MessageText = NStr("en = 'It is required to select a work place of the current peripheral session in advance.'");
+		MessageText = NStr("en='It is required to select a work place of the current peripheral session in advance.';ru='Предварительно необходимо выбрать рабочее место подключаемого оборудования текущего сеанса.'");
 		If Not WithoutMessages Then
 		      CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -1344,7 +1356,7 @@ Procedure StartWeightReceivingFromElectronicScales(AlertOnGetWeight, UUID) Expor
 	
 	NotifyDescription = New NotifyDescription("StartWeightReceivingFromElectronicScalesEnd", ThisObject, Context);
 	EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "ElectronicScales",
-		NStr("en='Choose electronic scales'"), NStr("en='Electronic scales are not connected.'"), NStr("en='Electronic scales are not selected.'"));
+		NStr("en='Choose electronic scales';ru='Выберите электронные весы'"), NStr("en='Electronic scales are not connected.';ru='Электронные весы не подключены.'"), NStr("en='Electronic scales are not selected.';ru='Электронные весы не выбраны.'"));
 	
 EndProcedure
 
@@ -1368,8 +1380,9 @@ Procedure StartWeightReceivingFromElectronicScalesEnd(DeviceIdentifier, Paramete
 				ExecuteNotifyProcessing(Parameters.NextAlert, Weight);
 			EndIf;
 		Else
-			MessageText = NStr("en = 'An error occurred while using electronic scales.
-								|Additional description: |%Additional description%'");
+			MessageText = NStr("en='An error occurred while using electronic scales."
+"Additional description: |%Additional description%';ru='При использовании электронных весов произошла ошибка."
+"Дополнительное описание: |%ДополнительноеОписание%'");
 			MessageText = StrReplace(MessageText, "%AdditionalDetails%", Output_Parameters[1]);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -1379,8 +1392,9 @@ Procedure StartWeightReceivingFromElectronicScalesEnd(DeviceIdentifier, Paramete
 		
 	Else
 		// An error occurred while connecting weights
-		MessageText = NStr("en = 'An error occurred while enabling electronic scales.
-				|Additional description: %AdditionalDetails%'");
+		MessageText = NStr("en='An error occurred while enabling electronic scales."
+"Additional description: %AdditionalDetails%';ru='При подключении электронных весов произошла ошибка."
+"Дополнительное описание: %ДополнительноеОписание%'");
 		MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(ErrorDescription);
 	EndIf;
@@ -1404,7 +1418,7 @@ Procedure StartDataExportVTSD(AlertOnDataExport, UUID, ProductsExportTable) Expo
 	
 	NotifyDescription = New NotifyDescription("StartDataExportToDCTEnd", ThisObject, Context);
 	EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "DataCollectionTerminal",
-		NStr("en='Select the data collector'"), NStr("en='Data collection terminal is not enabled.'"));
+		NStr("en='Select the data collector';ru='Выберите терминал сбора данных'"), NStr("en='Data collection terminal is not enabled.';ru='Терминал сбора данных не подключен.'"));
 	
 EndProcedure
 
@@ -1454,9 +1468,11 @@ Procedure StartDataExportToDCTEnd(DeviceIdentifier, Parameters) Export
 				
 		Result = EquipmentManagerClient.RunCommand(DeviceIdentifier, "ImportDirectory", InputParameters, Output_Parameters);
 		If Not Result Then
-			MessageText = NStr("en='An error occurred while exporting data to the data collection terminal.
-									|%ErrorDetails%
-									|Data is not exported to the data collection terminal.'");
+			MessageText = NStr("en='An error occurred while exporting data to the data collection terminal."
+"%ErrorDetails%"
+"Data is not exported to the data collection terminal.';ru='При выгрузке данных в терминал сбора данных произошла ошибка."
+"%ОписаниеОшибки%"
+"Данные в терминал сбора данных не выгружены.'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
@@ -1468,9 +1484,11 @@ Procedure StartDataExportToDCTEnd(DeviceIdentifier, Parameters) Export
 		EquipmentManagerClient.DisableEquipmentById(Parameters.UUID, DeviceIdentifier);
 			
 	Else
-		MessageText = NStr("en='An error occurred when connecting the device.
-								  |%ErrorDetails%
-								  |Data is not exported to the data collection terminal.'");
+		MessageText = NStr("en='An error occurred when connecting the device."
+"%ErrorDetails%"
+"Data is not exported to the data collection terminal.';ru='При подключении устройства произошла ошибка."
+"%ОписаниеОшибки%"
+"Данные в терминал сбора данных не выгружены.'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -1491,7 +1509,7 @@ Procedure StartImportDataFromDCT(AlertOnImportData, UUID, CollapseData = True) E
 	
 	NotifyDescription = New NotifyDescription("StartImportDataFromDCTEnd", ThisObject, Context);
 	EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "DataCollectionTerminal",
-		NStr("en='Select the data collector'"), NStr("en='Data collection terminal is not enabled.'"));
+		NStr("en='Select the data collector';ru='Выберите терминал сбора данных'"), NStr("en='Data collection terminal is not enabled.';ru='Терминал сбора данных не подключен.'"));
 		
 EndProcedure
 
@@ -1538,9 +1556,11 @@ Procedure StartImportDataFromDCTEnd(DeviceIdentifier, Parameters) Export
 			EndIf;
 			
 		Else
-			MessageText = NStr("en='An error occurred while exporting data from the data collection terminal.
-									  |%ErrorDetails%
-									  |Data from the data collection terminal is not imported.'");
+			MessageText = NStr("en='An error occurred while exporting data from the data collection terminal."
+"%ErrorDetails%"
+"Data from the data collection terminal is not imported.';ru='При загрузке данных из терминала сбора данных произошла ошибка."
+"%ОписаниеОшибки%"
+"Данные из терминала сбора данных не загружены.'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -1548,9 +1568,11 @@ Procedure StartImportDataFromDCTEnd(DeviceIdentifier, Parameters) Export
 		EquipmentManagerClient.DisableEquipmentById(Parameters.UUID, DeviceIdentifier);
 		
 	Else
-		MessageText = NStr("en='An error occurred when connecting the device.
-								  |%ErrorDetails%
-								  |Data from the data collection terminal is not imported.'");
+		MessageText = NStr("en='An error occurred when connecting the device."
+"%ErrorDetails%"
+"Data from the data collection terminal is not imported.';ru='При подключении устройства произошла ошибка."
+"%ОписаниеОшибки%"
+"Данные из терминала сбора данных не загружены.'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -1569,7 +1591,7 @@ Procedure StartClearingDataVTSD(AlertWhenClearingData, UUID) Export
 	
 	NotifyDescription = New NotifyDescription("StartClearingDataToDCTEnd", ThisObject, Context);
 	EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "DataCollectionTerminal",
-		NStr("en='Select the data collector'"), NStr("en='Data collection terminal is not enabled.'"));
+		NStr("en='Select the data collector';ru='Выберите терминал сбора данных'"), NStr("en='Data collection terminal is not enabled.';ru='Терминал сбора данных не подключен.'"));
 		
 EndProcedure
 
@@ -1586,8 +1608,9 @@ Procedure StartClearingDataToDCTEnd(DeviceIdentifier, Parameters) Export
 		Result = EquipmentManagerClient.RunCommand(DeviceIdentifier, "ClearTable", InputParameters, Output_Parameters);
 		
 		If Not Result Then
-			MessageText = NStr("en='An error occurred while clearing data in the data collection terminal.
-									  |%ErrorDescription%'");
+			MessageText = NStr("en='An error occurred while clearing data in the data collection terminal."
+"%ErrorDescription%';ru='При очистке данных в терминале сбора данных произошла ошибка."
+"%ОписаниеОшибки%'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
@@ -1599,9 +1622,11 @@ Procedure StartClearingDataToDCTEnd(DeviceIdentifier, Parameters) Export
 		EquipmentManagerClient.DisableEquipmentById(Parameters.UUID, DeviceIdentifier);
 		
 	Else
-		MessageText = NStr("en='An error occurred when connecting the device.
-								  |%ErrorDetails%
-								  |Data is not exported to the data collection terminal.'");
+		MessageText = NStr("en='An error occurred when connecting the device."
+"%ErrorDetails%"
+"Data is not exported to the data collection terminal.';ru='При подключении устройства произошла ошибка."
+"%ОписаниеОшибки%"
+"Данные в терминал сбора данных не выгружены.'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -1639,7 +1664,7 @@ Procedure StartEnablePOSTerminal(AlertOnEnd, UUID, POSTerminal = Undefined) Expo
 	Else
 		NotifyDescription = New NotifyDescription("EnablePOSTerminalEnd", ThisObject, Context);
 		EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "POSTerminal",
-			NStr("en='Select the POS terminal'"), NStr("en='POS-Terminal is not connected.'"));
+			NStr("en='Select the POS terminal';ru='Выберите эквайринговый терминал'"), NStr("en='POS-Terminal is not connected.';ru='Эквайринговый терминал не подключен.'"));
 	EndIf;
 	
 EndProcedure
@@ -1651,9 +1676,11 @@ Procedure EnablePOSTerminalEnd(DeviceIdentifierET, Parameters) Export
 	ResultET = EquipmentManagerClient.ConnectEquipmentByID(Parameters.UUID, DeviceIdentifierET, ErrorDescription);
 	
 	If Not ResultET Then
-		MessageText = NStr("en = 'When POS terminal connection there
-						|was error: ""%ErrorDescription%"".
-						|The operation was not performed.'");
+		MessageText = NStr("en='When POS terminal connection there"
+"was error: ""%ErrorDescription%""."
+"The operation was not performed.';ru='При подключении эквайрингового"
+"терминала произошла ошибка: ""%ОписаниеОшибки%""."
+"Операция не была проведена.'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	Else
@@ -1677,7 +1704,7 @@ Procedure EnablePOSTerminalEnd(DeviceIdentifierET, Parameters) Export
 			Parameters.Insert("ReceiptsPrintOnTerminal"             , False);
 			NotifyDescription = New NotifyDescription("EnableFiscalRegistrarEnd", ThisObject, Parameters);
 			EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "FiscalRegister",
-					NStr("en='Select a fiscal register to print POS receipts.'"), NStr("en='Fiscal register for printing acquiring receipts is not enabled.'"));
+					NStr("en='Select a fiscal register to print POS receipts.';ru='Выберите фискальный регистратор для печати эквайринговых чеков'"), NStr("en='Fiscal register for printing acquiring receipts is not enabled.';ru='Фискальный регистратор для печати эквайринговых чеков не подключен.'"));
 		EndIf;
 		
 	EndIf;
@@ -1697,9 +1724,11 @@ Procedure EnableFiscalRegistrarEnd(DeviceIdentifierFR, Parameters) Export
 			EquipmentManagerClient.DisableEquipmentById(Parameters.UUID, Parameters.EnabledDeviceIdentifierET);
 		EndIf;
 			
-		MessageText = NStr("en = 'When fiscal registrar connection there
-					|was error: ""%ErrorDescription%"".
-					|Operation can not be executed.'");
+		MessageText = NStr("en='When fiscal registrar connection there"
+"was error: ""%ErrorDescription%""."
+"Operation can not be executed.';ru='При подключении фискального регистратора произошла ошибка:"
+"""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
@@ -1743,7 +1772,7 @@ EndProcedure
 Procedure ExecuteTotalsRevisionPOSTerminalEnd(Result, Parameters) Export
 	
 	If Not TypeOf(Result) = Type("Structure") Then
-		MessageText = NStr("en = 'An error occurred while executing operation.'");
+		MessageText = NStr("en='An error occurred while executing operation.';ru='При выполнении операции произошла ошибка.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;
@@ -1756,9 +1785,11 @@ Procedure ExecuteTotalsRevisionPOSTerminalEnd(Result, Parameters) Export
 	ResultET = EquipmentManagerClient.RunCommand(Result.EnabledDeviceIdentifierET, "Settlement", InputParameters, Output_Parameters);
 	
 	If Not ResultET Then
-		MessageText = NStr("en = 'When operation execution there
-					|was error: ""%ErrorDescription%"".
-					|Totals reconciliation is not executed.'");
+		MessageText = NStr("en='When operation execution there"
+"was error: ""%ErrorDescription%""."
+"Totals reconciliation is not executed.';ru='При выполнении операции возникла ошибка:"
+"""%ОписаниеОшибки%""."
+"Отмена по карте не была произведена.'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 		CommonUseClientServer.MessageToUser(MessageText);
 	Else
@@ -1777,13 +1808,14 @@ Procedure ExecuteTotalsRevisionPOSTerminalEnd(Result, Parameters) Export
 				ResultFR = EquipmentManagerClient.RunCommand(Result.FREnableDeviceID, "PrintText", InputParameters, Output_Parameters);
 				
 				If Not ResultFR Then
-					MessageText = NStr("en = 'An error occurred while printing
-												|a slip receipt: ""%ErrorDetails%"".'");
+					MessageText = NStr("en='An error occurred while printing"
+"a slip receipt: ""%ErrorDetails%"".';ru='При печати слип чека"
+"возникла ошибка: ""%ОписаниеОшибки%"".'");
 					MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 					CommonUseClientServer.MessageToUser(MessageText);
 				EndIf;
 			Else
-				MessageText = NStr("en = 'Totals reconciliation is successfully executed.'");
+				MessageText = NStr("en='Totals reconciliation is successfully executed.';ru='Операция сверки итогов успешно выполнена.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 		EndIf;
@@ -1815,7 +1847,7 @@ EndProcedure
 Procedure StartDataExportToScalesWithLabelsPrinting(AlertOnDataExport, ClientID, DeviceIdentifier = Undefined, ProductsExportTable, PartialExport = False) Export
 	
 	If ProductsExportTable.Count() = 0 Then
-		MessageText = NStr("en = 'There is no data to export!'");
+		MessageText = NStr("en='There is no data to export!';ru='Нет данных для выгрузки!'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;
@@ -1829,7 +1861,7 @@ Procedure StartDataExportToScalesWithLabelsPrinting(AlertOnDataExport, ClientID,
 	If DeviceIdentifier = Undefined Then
 		NotifyDescription = New NotifyDescription("StartDataExportToScalesWithLablesPrintingEnd", ThisObject, Context);
 		EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "LabelsPrintingScales",
-			NStr("en='Select the label printing scales'"), NStr("en='Scales with labels printing are not enabled.'"));
+			NStr("en='Select the label printing scales';ru='Выберите весы с печатью этикеток'"), NStr("en='Scales with labels printing are not enabled.';ru='Весы с печатью этикеток не подключены.'"));
 	Else
 		StartDataExportToScalesWithLablesPrintingEnd(DeviceIdentifier, Context);
 	EndIf;
@@ -1852,7 +1884,7 @@ EndProcedure
 Procedure StartDataExportToScalesWithLabelsPrintingFileExtensionEnd(Attached, Parameters) Export
 	
 	If Not Attached Then
-		MessageText = NStr("en = 'The operation is unavailable without installed 1C: Enterprise web client extension.'");
+		MessageText = NStr("en='The operation is unavailable without installed 1C: Enterprise web client extension.';ru='Данная операция не доступна без установленного расширения для веб-клиента ""1С:Предприятие"".'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		If Parameters.NextAlert <> Undefined Then
 			ExecuteNotifyProcessing(Parameters.NextAlert, False);
@@ -1886,16 +1918,18 @@ Procedure StartDataExportToScalesWithLabelsPrintingFileExtensionEnd(Attached, Pa
 		Result = EquipmentManagerClient.RunCommand(Parameters.DeviceIdentifier, "ExportProducts", InputParameters, Output_Parameters);
 		
 		If Not Result Then
-			MessageText = NStr("en='An error occurred while exporting data to equipment.
-									  |%ErrorDescription%
-									  |Data is not exported.'");
+			MessageText = NStr("en='An error occurred while exporting data to equipment."
+"%ErrorDescription%"
+"Data is not exported.';ru='При выгрузке данных в оборудование произошла ошибка."
+"%ОписаниеОшибки%"
+"Данные не выгружены.'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			If Parameters.NextAlert <> Undefined Then
 				ExecuteNotifyProcessing(Parameters.NextAlert, True);
 			Else
-				MessageText = NStr("en = 'The data has been exported successfully.'");
+				MessageText = NStr("en='The data has been exported successfully.';ru='Данные выгружены успешно.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 		EndIf;
@@ -1903,9 +1937,11 @@ Procedure StartDataExportToScalesWithLabelsPrintingFileExtensionEnd(Attached, Pa
 		EquipmentManagerClient.DisableEquipmentById(Parameters.ClientID, Parameters.DeviceIdentifier);
 		
 	Else
-		MessageText = NStr("en='An error occurred when connecting the device.
-									|%ErrorDescription%
-									|Data is not exported.'");
+		MessageText = NStr("en='An error occurred when connecting the device."
+"%ErrorDescription%"
+"Data is not exported.';ru='При подключении устройства произошла ошибка."
+"%ОписаниеОшибки%"
+"Данные не выгружены.'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -1921,7 +1957,7 @@ Procedure StartClearingProductsInScalesWithLabelsPrinting(AlertWhenClearingData,
 	If DeviceIdentifier = Undefined Then
 		NotifyDescription = New NotifyDescription("StartClearingProductsInScalesWithLabelsPrintingEnd", ThisObject, Context);
 		EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "LabelsPrintingScales",
-			NStr("en='Select the label printing scales'"), NStr("en='Scales with labels printing are not enabled.'"));
+			NStr("en='Select the label printing scales';ru='Выберите весы с печатью этикеток'"), NStr("en='Scales with labels printing are not enabled.';ru='Весы с печатью этикеток не подключены.'"));
 	Else
 		StartClearingProductsInScalesWithLabelsPrintingEnd(DeviceIdentifier, Context);
 	EndIf;
@@ -1942,8 +1978,9 @@ Procedure StartClearingProductsInScalesWithLabelsPrintingEnd(DeviceIdentifier, P
 		Result = EquipmentManagerClient.RunCommand(DeviceIdentifier, "ClearBase", InputParameters, Output_Parameters);
 		
 		If Not Result Then
-			MessageText = NStr("en='An error occurred while clearing data to equipment.
-									  |%ErrorDescription%'");
+			MessageText = NStr("en='An error occurred while clearing data to equipment."
+"%ErrorDescription%';ru='При очистке данных в оборудование произошла ошибка."
+"%ОписаниеОшибки%'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 			
 			CommonUseClientServer.MessageToUser(MessageText);
@@ -1951,15 +1988,16 @@ Procedure StartClearingProductsInScalesWithLabelsPrintingEnd(DeviceIdentifier, P
 			If Parameters.NextAlert <> Undefined Then
 				ExecuteNotifyProcessing(Parameters.NextAlert, True);
 			Else
-				MessageText = NStr("en = 'Data is successfully cleared.'");
+				MessageText = NStr("en='Data is successfully cleared.';ru='Очистка данных успешно завершена.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 		EndIf;
 			
 		EquipmentManagerClient.DisableEquipmentById(Parameters.ClientID, DeviceIdentifier);
 	Else
-		MessageText = NStr("en='An error occurred when connecting the device.
-								  |%ErrorDescription%'");
+		MessageText = NStr("en='An error occurred when connecting the device."
+"%ErrorDescription%';ru='При подключении устройства произошла ошибка."
+"%ОписаниеОшибки%'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -1981,7 +2019,7 @@ Procedure StartProductsCleaningInCROffline(AlertWhenClearingData, UUID, DeviceId
 	If DeviceIdentifier = Undefined Then
 		NotifyDescription = New NotifyDescription("StartCleaningProductsCROfflineEnd", ThisObject, Context);
 		EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "CashRegistersOffline",
-			NStr("en='Select CR Offline'"), NStr("en='Offline CRs are not connected.'"));
+			NStr("en='Select CR Offline';ru='Выберите ККМ Offline'"), NStr("en='Offline CRs are not connected.';ru='ККМ Offline не подключены.'"));
 	Else
 		StartCleaningProductsCROfflineEnd(DeviceIdentifier, Context);
 	EndIf;
@@ -2004,7 +2042,7 @@ EndProcedure
 Procedure StartCleaningProductsToCROfflineFileExtensionEnd(Attached, Parameters) Export
 	
 	If Not Attached Then
-		MessageText = NStr("en = 'The operation is unavailable without installed 1C: Enterprise web client extension.'");
+		MessageText = NStr("en='The operation is unavailable without installed 1C: Enterprise web client extension.';ru='Данная операция не доступна без установленного расширения для веб-клиента ""1С:Предприятие"".'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		If Parameters.NextAlert <> Undefined Then
 			ExecuteNotifyProcessing(Parameters.NextAlert, False);
@@ -2018,7 +2056,7 @@ Procedure StartCleaningProductsToCROfflineFileExtensionEnd(Attached, Parameters)
 	
 	If Result Then
 		
-		Status(NStr("en = 'Products clearing in CR Offline is in progress...'"));
+		Status(NStr("en='Products clearing in CR Offline is in progress...';ru='Выполняется очистка товаров в ККМ Offline...'"));
 		
 		InputParameters  = Undefined;
 		Output_Parameters = Undefined;
@@ -2026,8 +2064,9 @@ Procedure StartCleaningProductsToCROfflineFileExtensionEnd(Attached, Parameters)
 		Result = EquipmentManagerClient.RunCommand(Parameters.DeviceIdentifier, "ClearBase", InputParameters, Output_Parameters);
 		
 		If Not Result Then
-			MessageText = NStr("en='An error occurred while clearing data to equipment.
-									  |%ErrorDescription%'");
+			MessageText = NStr("en='An error occurred while clearing data to equipment."
+"%ErrorDescription%';ru='При очистке данных в оборудование произошла ошибка."
+"%ОписаниеОшибки%'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -2039,8 +2078,9 @@ Procedure StartCleaningProductsToCROfflineFileExtensionEnd(Attached, Parameters)
 		EndIf;
 			
 	Else
-		MessageText = NStr("en='An error occurred when connecting the device.
-								  |%ErrorDescription%'");
+		MessageText = NStr("en='An error occurred when connecting the device."
+"%ErrorDescription%';ru='При подключении устройства произошла ошибка."
+"%ОписаниеОшибки%'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -2053,7 +2093,7 @@ Procedure StartDataExportToCROffline(AlertOnDataExport, UUID, DeviceIdentifier =
 	ProductsExportTable, PartialExport = False) Export
 	
 	If ProductsExportTable.Count() = 0 Then
-		MessageText = NStr("en = 'There is no data to export!'");
+		MessageText = NStr("en='There is no data to export!';ru='Нет данных для выгрузки!'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;
@@ -2067,7 +2107,7 @@ Procedure StartDataExportToCROffline(AlertOnDataExport, UUID, DeviceIdentifier =
 	If DeviceIdentifier = Undefined Then
 		NotifyDescription = New NotifyDescription("StartDataExportToCROfflineEnd", ThisObject, Context);
 		EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "CashRegistersOffline",
-			NStr("en='Select CR Offline'"), NStr("en='Offline CRs are not connected.'"));
+			NStr("en='Select CR Offline';ru='Выберите ККМ Offline'"), NStr("en='Offline CRs are not connected.';ru='ККМ Offline не подключены.'"));
 	Else
 		StartDataExportToCROfflineEnd(DeviceIdentifier, Context);
 	EndIf;
@@ -2090,7 +2130,7 @@ EndProcedure
 Procedure StartDataExportToCROfflineFileExtensionEnd(Attached, Parameters) Export
 	
 	If Not Attached Then
-		MessageText = NStr("en = 'The operation is unavailable without installed 1C: Enterprise web client extension.'");
+		MessageText = NStr("en='The operation is unavailable without installed 1C: Enterprise web client extension.';ru='Данная операция не доступна без установленного расширения для веб-клиента ""1С:Предприятие"".'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		If Parameters.NextAlert <> Undefined Then
 			ExecuteNotifyProcessing(Parameters.NextAlert, False);
@@ -2104,7 +2144,7 @@ Procedure StartDataExportToCROfflineFileExtensionEnd(Attached, Parameters) Expor
 	
 	If Result Then
 		
-		Status(NStr("en = 'Products export to CR Offline is in progress...'")); 
+		Status(NStr("en='Products export to CR Offline is in progress...';ru='Выполняется выгрузка товаров в ККМ Offline...'")); 
 		
 		ProductsArray = New Array;
 		For Each TSRow IN Parameters.ProductsExportTable Do
@@ -2129,16 +2169,18 @@ Procedure StartDataExportToCROfflineFileExtensionEnd(Attached, Parameters) Expor
 		Result = EquipmentManagerClient.RunCommand(Parameters.DeviceIdentifier, "ExportProducts", InputParameters, Output_Parameters);
 		
 		If Not Result Then
-			MessageText = NStr("en='An error occurred while exporting data to equipment.
-									  |%ErrorDescription%
-									  |Data is not exported.'");
+			MessageText = NStr("en='An error occurred while exporting data to equipment."
+"%ErrorDescription%"
+"Data is not exported.';ru='При выгрузке данных в оборудование произошла ошибка."
+"%ОписаниеОшибки%"
+"Данные не выгружены.'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			If Parameters.NextAlert <> Undefined Then
 				ExecuteNotifyProcessing(Parameters.NextAlert, True);
 			Else
-				MessageText = NStr("en = 'The data has been exported successfully.'");
+				MessageText = NStr("en='The data has been exported successfully.';ru='Данные выгружены успешно.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 		EndIf;
@@ -2146,9 +2188,11 @@ Procedure StartDataExportToCROfflineFileExtensionEnd(Attached, Parameters) Expor
 		EquipmentManagerClient.DisableEquipmentById(Parameters.UUID, Parameters.DeviceIdentifier);
 		
 	Else
-		MessageText = NStr("en='An error occurred when connecting the device.
-									|%ErrorDescription%
-									|Data is not exported.'");
+		MessageText = NStr("en='An error occurred when connecting the device."
+"%ErrorDescription%"
+"Data is not exported.';ru='При подключении устройства произошла ошибка."
+"%ОписаниеОшибки%"
+"Данные не выгружены.'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -2168,7 +2212,7 @@ Procedure StartImportRetailSalesReportFromCROffline(AlertOnImportData, UUID, Dev
 	If DeviceIdentifier = Undefined Then
 		NotifyDescription = New NotifyDescription("StartImportRetailSalesReportFromCROfflineEnd", ThisObject, Context);
 		EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "CashRegistersOffline",
-			NStr("en='Select CR Offline'"), NStr("en='Offline CRs are not connected.'"));
+			NStr("en='Select CR Offline';ru='Выберите ККМ Offline'"), NStr("en='Offline CRs are not connected.';ru='ККМ Offline не подключены.'"));
 	Else
 		StartImportRetailSalesReportFromCROfflineEnd(DeviceIdentifier, Context);
 	EndIf;
@@ -2191,7 +2235,7 @@ EndProcedure
 Procedure StartImportRetailSalesReportFromCROfflineFileExtensionEnd(Attached, Parameters) Export
 	
 	If Not Attached Then
-		MessageText = NStr("en = 'The operation is unavailable without installed 1C: Enterprise web client extension.'");
+		MessageText = NStr("en='The operation is unavailable without installed 1C: Enterprise web client extension.';ru='Данная операция не доступна без установленного расширения для веб-клиента ""1С:Предприятие"".'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		If Parameters.NextAlert <> Undefined Then
 			ExecuteNotifyProcessing(Parameters.NextAlert, False);
@@ -2204,7 +2248,7 @@ Procedure StartImportRetailSalesReportFromCROfflineFileExtensionEnd(Attached, Pa
 	Result = EquipmentManagerClient.ConnectEquipmentByID(Parameters.UUID, Parameters.DeviceIdentifier, ErrorDescription);
 	
 	If Result Then
-		Status(NStr("en = 'Products import from CR Offline is in progress...'"));
+		Status(NStr("en='Products import from CR Offline is in progress...';ru='Выполняется загрузка товаров из ККМ Offline...'"));
 		
 		InputParameters  = New Array;
 		Output_Parameters = Undefined;
@@ -2212,8 +2256,9 @@ Procedure StartImportRetailSalesReportFromCROfflineFileExtensionEnd(Attached, Pa
 		Result = EquipmentManagerClient.RunCommand(Parameters.DeviceIdentifier, "ImportReport", InputParameters, Output_Parameters);
 		
 		If Not Result Then
-			MessageText = NStr("en='An error occurred while importing data from CR Offline.
-									  |%ErrorDescription%'");
+			MessageText = NStr("en='An error occurred while importing data from CR Offline."
+"%ErrorDescription%';ru='При загрузка данных из ККМ Offline произошла ошибка."
+"%ОписаниеОшибки%'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
@@ -2226,8 +2271,9 @@ Procedure StartImportRetailSalesReportFromCROfflineFileExtensionEnd(Attached, Pa
 		EquipmentManagerClient.DisableEquipmentById(Parameters.UUID, Parameters.DeviceIdentifier);
 		
 	Else
-		MessageText = NStr("en='An error occurred when connecting the device.
-								  |%ErrorDescription%'");
+		MessageText = NStr("en='An error occurred when connecting the device."
+"%ErrorDescription%';ru='При подключении устройства произошла ошибка."
+"%ОписаниеОшибки%'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -2248,8 +2294,9 @@ Procedure StartCheckBoxReportImportedCROffline(UUID, DeviceIdentifier) Export;
 		EquipmentManagerClient.RunCommand(DeviceIdentifier, "ReportImported", InputParameters, Output_Parameters);
 	    EquipmentManagerClient.DisableEquipmentById(UUID, DeviceIdentifier);
 	Else
-		MessageText = NStr("en='An error occurred when connecting the device.
-								  |%ErrorDescription%'");
+		MessageText = NStr("en='An error occurred when connecting the device."
+"%ErrorDescription%';ru='При подключении устройства произошла ошибка."
+"%ОписаниеОшибки%'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -2302,26 +2349,26 @@ Function CodeCorrespondsToMCTemplate(TracksData, PatternData) Export
 			OneTrackExist = True;
 			curRow = TracksData[Iterator - 1];
 			If Right(curRow, StrLen(PatternData["Suffix" + String(Iterator)])) <> PatternData["Suffix" + String(Iterator)] Then
-				CommonUseClientServer.MessageToUser(NStr("en='Track'") + Chars.NBSp + String(Iterator) 
-					+ ". "+NStr("en='Card suffix does not match with template suffix.'"));
+				CommonUseClientServer.MessageToUser(NStr("en='Track';ru='Дорожка'") + Chars.NBSp + String(Iterator) 
+					+ ". "+NStr("en='Card suffix does not match with template suffix.';ru='Суффикс карты не соответствует суффиксу шаблона.'"));
 				CheckPassed = False;
 			EndIf;
 			
 			If Left(curRow, StrLen(PatternData["Prefix" + String(Iterator)])) <> PatternData["Prefix" + String(Iterator)] Then
-				CommonUseClientServer.MessageToUser(NStr("en='Track'") + Chars.NBSp + String(Iterator) 
-					+ ". " + NStr("en='Card prefix does not match with template prefix.'"));
+				CommonUseClientServer.MessageToUser(NStr("en='Track';ru='Дорожка'") + Chars.NBSp + String(Iterator) 
+					+ ". " + NStr("en='Card prefix does not match with template prefix.';ru='Префикс карты не соответствует префиксу шаблона.'"));
 				CheckPassed = False;
 			EndIf;
 			
 			If Find(curRow, PatternData["BlocksDelimiter"+String(Iterator)]) = 0 Then
-				CommonUseClientServer.MessageToUser(NStr("en='Track'") + Chars.NBSp + String(Iterator) 
-					+ ". "+NStr("en='Card blocks divider does not match with template blocks divider.'"));
+				CommonUseClientServer.MessageToUser(NStr("en='Track';ru='Дорожка'") + Chars.NBSp + String(Iterator) 
+					+ ". "+NStr("en='Card blocks divider does not match with template blocks divider.';ru='Разделитель блоков карты не соответствует разделителю блоков шаблона.'"));
 				CheckPassed = False;
 			EndIf;
 				
 			If StrLen(curRow) <> PatternData["CodeLength"+String(Iterator)] Then
-				CommonUseClientServer.MessageToUser(NStr("en='Track'") + Chars.NBSp + String(Iterator) 
-					+ ". " + NStr("en='Card code lenght does not match with template code lenght.'"));
+				CommonUseClientServer.MessageToUser(NStr("en='Track';ru='Дорожка'") + Chars.NBSp + String(Iterator) 
+					+ ". " + NStr("en='Card code lenght does not match with template code lenght.';ru='Длина кода карты не соответствует длине кода шаблона.'"));
 				CheckPassed = False;
 			EndIf;
 			
@@ -2334,7 +2381,7 @@ Function CodeCorrespondsToMCTemplate(TracksData, PatternData) Export
 	If OneTrackExist Then 
 		Return True;
 	Else
-		CommonUseClientServer.MessageToUser(NStr("en='In template not specified any available track.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='In template not specified any available track.';ru='В шаблоне не указано ни одной доступной дорожки.'"));
 		Return False;
 	EndIf;
 	
@@ -2359,8 +2406,9 @@ Function GetEventFromDevice(DetailsEvents, ErrorDescription = "") Export
 				DriverObject = GetDriverObject(Connection);
 				If DriverObject = Undefined Then
 					// Error message prompting that the driver can not be imported.
-					ErrorDescription = NStr("en = '""%Description%"": Cannot export the peripheral driver.
-												|Check if the driver is correctly installed and registered in the system.'");
+					ErrorDescription = NStr("en='""%Description%"": Cannot export the peripheral driver."
+"Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства."
+"Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 					ErrorDescription = StrReplace(ErrorDescription, "%Description%", Connection.Description);
 					Continue;
 				EndIf;
@@ -2598,8 +2646,9 @@ Procedure StartDriverSettingFromDistributionInLayout(AlertOnEnd, TemplateName, F
 		Notification = New NotifyDescription("StartDriverSettingFromDistributionEnd", ThisObject, Parameters);
 		BeginRunningApplication(Notification, InstallationDirectory + FileNameTemp, InstallationDirectory, True);
 	Else
-		ErrorText = NStr("en='An error occurred while setting driver from distributive in template.
-							|File %File% is not found in template.'");
+		ErrorText = NStr("en='An error occurred while setting driver from distributive in template."
+"File %File% is not found in template.';ru='Ошибка установки драйвера из дистрибутива в макете."
+"Файл ""%Файл%"" в макете не найден.'");
 		ErrorText = StrReplace(ErrorText, "%File%", FileNameTemp);
 		CommonUseClientServer.MessageToUser(ErrorText); 
 		BeginDeletingFiles(, TempFile);
@@ -2656,8 +2705,9 @@ Procedure StartDriverSettingFromBaseDistribution(AlertOnEnd, DriverData) Export
 			BeginRunningApplication(Notification, InstallationDirectory + InstalledFileName, InstallationDirectory, True);
 		Else
 			FileOfArchive.Close();
-			ErrorText = NStr("en='An error occurred while setting driver from distributive in archive.
-						|Required file is not found in archive.'");
+			ErrorText = NStr("en='An error occurred while setting driver from distributive in archive."
+"Required file is not found in archive.';ru='Ошибка установки драйвера из дистрибутива в архиве."
+"Необходимый файл в архиве не найден.'");
 			CommonUseClientServer.MessageToUser(ErrorText); 
 			BeginDeletingFiles(, FileNameTemp);
 		EndIf;
@@ -2817,10 +2867,10 @@ Procedure SetupDriver(ID, AlertFromDistributionOnEnd = Undefined, AlertFromArchi
 			
 			If DriverData.SuppliedAsDistribution Then
 			#If WebClient Then
-				CommonUseClientServer.MessageToUser(NStr("en='This driver does not support work in web client.'")); 
+				CommonUseClientServer.MessageToUser(NStr("en='This driver does not support work in web client.';ru='Данный драйвер не поддерживает работу в веб-клиенте.'")); 
 			#Else
 				If EquipmentManagerClientReUse.IsLinuxClient() Then
-					CommonUseClientServer.MessageToUser(NStr("en='The driver can not be installed and used in the Linux environment.'")); 
+					CommonUseClientServer.MessageToUser(NStr("en='The driver can not be installed and used in the Linux environment.';ru='Данный драйвер не может быть установлен и использован в среде Linux.'")); 
 					Return;
 				EndIf;
 				StartDriverSettingFromDistributionInLayout(AlertFromDistributionOnEnd, DriverData.DriverTemplateName, DriverData.DriverFileName);
@@ -2833,10 +2883,10 @@ Procedure SetupDriver(ID, AlertFromDistributionOnEnd = Undefined, AlertFromArchi
 			
 			If DriverData.SuppliedAsDistribution Then
 			#If WebClient Then
-				CommonUseClientServer.MessageToUser(NStr("en='This driver does not support work in web client.'")); 
+				CommonUseClientServer.MessageToUser(NStr("en='This driver does not support work in web client.';ru='Данный драйвер не поддерживает работу в веб-клиенте.'")); 
 			#Else
 				If EquipmentManagerClientReUse.IsLinuxClient() Then
-					CommonUseClientServer.MessageToUser(NStr("en='The driver can not be installed and used in the Linux environment.'")); 
+					CommonUseClientServer.MessageToUser(NStr("en='The driver can not be installed and used in the Linux environment.';ru='Данный драйвер не может быть установлен и использован в среде Linux.'")); 
 					Return;
 				EndIf;
 				StartDriverSettingFromBaseDistribution(AlertFromDistributionOnEnd, DriverData);
@@ -2849,7 +2899,7 @@ Procedure SetupDriver(ID, AlertFromDistributionOnEnd = Undefined, AlertFromArchi
 		EndIf;
 		
 	Except
-		CommonUseClientServer.MessageToUser(NStr("en='An error occurred while setting driver.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='An error occurred while setting driver.';ru='Произошла ошибка при установке драйвера.'")); 
 	EndTry;  
 		
 EndProcedure

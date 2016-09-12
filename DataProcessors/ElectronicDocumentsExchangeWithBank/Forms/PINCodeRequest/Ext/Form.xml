@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>PIN code entering</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>PIN code entering</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockWholeInterface</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -30,6 +34,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Cancel</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отменить</v8:content>
+					</v8:item>
 				</Title>
 				<ExtendedTooltip name="FormCloseExtendedTooltip" id="13"/>
 			</Button>
@@ -44,6 +52,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enter PIN for keys storage:</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Введите PIN-код для хранилища ключей:</v8:content>
 				</v8:item>
 			</Title>
 			<ContextMenu name="DecorationHeaderContextMenu" id="2"/>
@@ -68,6 +80,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>PIN</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>PIN</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -83,6 +99,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Bank application</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Программа банка</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.BankApplications</v8:Type>
@@ -96,11 +116,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Done</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Готово</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Done</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Готово</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Done</Action>

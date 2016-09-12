@@ -11,16 +11,18 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not OnlineUserSupport.UseOnlineSupportAllowedInCurrentOperationMode() Then
 		// Administration right is not checked as subsystem
 		// is used only in the local mode.
-		Raise NStr("en = 'The online support is forbidden in the current work mode.'");
+		Raise NStr("en='The online support is forbidden in the current work mode.';ru='Использование Интернет-поддержки запрещено в текущем режиме работы.'");
 	EndIf;
 	
 	If Not Users.InfobaseUserWithFullAccess(, True, False) Then
 		// Administration right is not checked as subsystem
 		// is used only in the local mode.
 		Raise
-			NStr("en = 'Insufficient access rights.
-			|
-			|Setting of the connection to the online support parameters is available only to the system administrator.'");
+			NStr("en='Insufficient access rights."
+""
+"Setting of the connection to the online support parameters is available only to the system administrator.';ru='Недостаточно прав доступа."
+""
+"Настройка параметров подключения к Интернет-поддержке пользователей доступна только администратору системы.'");
 	EndIf;
 	
 	IsClientServerIB = (NOT CommonUse.FileInfobase());
@@ -96,7 +98,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If IsBlankString(Login) Then
-		Items.DecorationExplanationLoginPassword.Title = NStr("en = 'You are not authorized yet'");
+		Items.DecorationExplanationLoginPassword.Title = NStr("en='You are not authorized yet';ru='Вы еще не авторизованы'");
 		Items.Login.Visible = False;
 	EndIf;
 	
@@ -111,11 +113,11 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 			
 			Login = Parameter.Login;
 			If IsBlankString(Login) Then
-				Items.DecorationExplanationLoginPassword.Title = NStr("en = 'You are not authorized yet'");
+				Items.DecorationExplanationLoginPassword.Title = NStr("en='You are not authorized yet';ru='Вы еще не авторизованы'");
 				Items.Login.Visible = False;
 			Else
 				Items.DecorationExplanationLoginPassword.Title =
-					NStr("en = 'When Online support is connected, the following is used:'");
+					NStr("en='When Online support is connected, the following is used:';ru='При подключении Интернет-поддержки используется:'");
 				Items.Login.Visible = True;
 			EndIf;
 			
@@ -155,7 +157,7 @@ Procedure DecorationExplanationGettingLoginPasswordDataProcessorNavigationRef(It
 	StandardProcessing = False;
 	OnlineUserSupportClient.OpenInternetPage(
 		"https://1c-dn.com/user/profile/",
-		NStr("en = 'Support of 1C:Enterprise 8 system users'"));
+		NStr("en='Support of 1C:Enterprise 8 system users';ru='Поддержка пользователей системы 1С:Предприятие 8'"));
 	
 EndProcedure
 

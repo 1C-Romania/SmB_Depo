@@ -77,7 +77,7 @@ Procedure ImportDataFromExternalSourceResultDataProcessor(ImportResult, Addition
 			
 			ProcessPreparedData(ImportResult);
 			Items.List.Refresh();
-			ShowMessageBox(,NStr("en ='The data import is completed.'"));
+			ShowMessageBox(,NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
 			
 		EndIf;
 		
@@ -132,7 +132,7 @@ Procedure ProcessPreparedData(ImportResult)
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Data Import'"), EventLogLevel.Error, Metadata.Catalogs.ProductsAndServices, , ErrorDescription());
+		WriteLogEvent(NStr("en='Data Import';ru='Загрузка данных'"), EventLogLevel.Error, Metadata.Catalogs.ProductsAndServices, , ErrorDescription());
 		RollbackTransaction();
 		
 	EndTry;

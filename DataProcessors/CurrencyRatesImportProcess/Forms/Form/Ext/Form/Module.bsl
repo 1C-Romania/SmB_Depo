@@ -65,7 +65,7 @@ Procedure CurrencyRatesImport()
 	
 	If Not ValueIsFilled(Object.ImportBeginOfPeriod) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Beginning date of loading period has not been defined'"),
+			NStr("en='Beginning date of loading period has not been defined';ru='Не задана дата начала периода загрузки.'"),
 			,
 			"Object.ImportBeginOfPeriod");
 		Return;
@@ -73,7 +73,7 @@ Procedure CurrencyRatesImport()
 	
 	If Not ValueIsFilled(Object.ImportEndOfPeriod) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'End date of loading period has not been defined'"),
+			NStr("en='End date of loading period has not been defined';ru='Не задана дата окончания периода загрузки.'"),
 			,
 			"Object.ImportEndOfPeriod");
 		Return;
@@ -195,7 +195,7 @@ EndProcedure
 Procedure ValidateListOfExportableOfCurrency()
 	If Object.CurrenciesList.Count() = 0 Then
 		NotifyDescription = New NotifyDescription("CheckListImportableCurrenciesEnd", ThisObject);
-		WarningText = NStr("en = 'In the currencies catalog there are no currencies the exchange rates of which is possible to export from the Internet.'");
+		WarningText = NStr("en='In the currencies catalog there are no currencies the exchange rates of which is possible to export from the Internet.';ru='В справочнике валют отсутствуют валюты, курсы которых можно загружать из сети Интернет.'");
 		ShowMessageBox(NOTifyDescription, WarningText);
 	EndIf;
 EndProcedure
@@ -248,7 +248,7 @@ Procedure ExecuteExchangeRatesImport()
 		BackgroundJobID = BackgroundJobsCleanup[0].UUID;
 	Else
 		ResultAddress = PutToTempStorage(Undefined, UUID);
-		BackgroundJobDescription = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Launch manually: %1'"), ScheduledJob.Metadata.Synonym);
+		BackgroundJobDescription = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Launch manually: %1';ru='Запуск вручную: %1'"), ScheduledJob.Metadata.Synonym);
 		
 		ImportParameters = New Structure;
 		ImportParameters.Insert("BeginOfPeriod", Object.ImportBeginOfPeriod);
@@ -329,9 +329,9 @@ Procedure ImportResultProcessing()
 		ErrorPresentation = TrimAll(ErrorList.GetText());
 		If ErrorsCount > 1 Then
 			Buttons = New ValueList;
-			Buttons.Add("Details", NStr("en = 'Details...'"));
-			Buttons.Add("Continue", NStr("en = 'Continue'"));
-			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Failed to import exchange rates  (%1).'"), ErrorsCount);
+			Buttons.Add("Details", NStr("en='Details...';ru='Подробнее...'"));
+			Buttons.Add("Continue", NStr("en='Continue';ru='Продолжить'"));
+			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Failed to import exchange rates  (%1).';ru='Не удалось загрузить курсы валют (%1).'"), ErrorsCount);
 			NotifyDescription = New NotifyDescription("ImportResultProcessingWhenAnsweringQuestion", ThisObject, ErrorPresentation);
 			ShowQueryBox(NOTifyDescription, QuestionText, Buttons);
 		Else

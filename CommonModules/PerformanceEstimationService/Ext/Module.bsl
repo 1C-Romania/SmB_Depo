@@ -242,7 +242,7 @@ Function PermissionsOnServerResources(Directories)
 					Directories.LocalExportDirectory,
 					True,
 					True,
-					NStr("en = 'Network directory for export of performance measurement results.'"));
+					NStr("en='Network directory for export of performance measurement results.';ru='Сетевой каталог для экспорта результатов замеров производительности.'"));
 				permissions.Add(Item);
 			EndIf;
 		EndIf;
@@ -253,7 +253,7 @@ Function PermissionsOnServerResources(Directories)
 					"FTP",
 					Directories.FTPExportDirectory,
 					?(Directories.Property("ExportDirectoryFTPPort"), Directories.ExportDirectoryFTPPort, Undefined),
-					NStr("en = 'FTP-resource for export of performance measurement results.'"));
+					NStr("en='FTP-resource for export of performance measurement results.';ru='FTP-ресурс для экспорта результатов замеров производительности.'"));
 				permissions.Add(Item);
 			EndIf;
 		EndIf;

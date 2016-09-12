@@ -27,7 +27,7 @@ EndProcedure
 Procedure OnOpen(Cancel)
 	
 	#If WebClient Then
-		ShowMessageBox(, NStr("en = 'Folder export is not supported in Web-client.'"));
+		ShowMessageBox(, NStr("en='Folder export is not supported in Web-client.';ru='В Веб-клиенте экспорт каталогов не поддерживается.'"));
 		Cancel = True;
 		Return;
 	#EndIf
@@ -57,8 +57,9 @@ Procedure FolderForExportOpen(Item, StandardProcessing)
 	If Not IsBlankString(ExportDirectory) Then
 		File = New File(ExportDirectory);
 		If Not File.Exist() Then
-			WarningText = NStr("en = 'Cannot open the export folder.
-			                                 |Perhaps, the folder is not created yet.'");
+			WarningText = NStr("en='Cannot open the export folder."
+"Perhaps, the folder is not created yet.';ru='Невозможно открыть папку выгрузки."
+"Возможно, папка еще не создана.'");
 			ShowMessageBox(, WarningText);
 			Return;
 		EndIf;
@@ -121,7 +122,7 @@ Procedure SaveFolder()
 		Try
 			CreateDirectory(FullExportPath);
 		Except
-			ErrorText = NStr("en = 'Cannot create a export folder:'");
+			ErrorText = NStr("en='Cannot create a export folder:';ru='Не удалось создать папку выгрузки:'");
 			ErrorText = ErrorText + Chars.LF + Chars.LF + DetailErrorDescription(ErrorInfo());
 		EndTry;
 		If ErrorText <> "" Then
@@ -132,8 +133,9 @@ Procedure SaveFolder()
 	EndIf;
 	
 	Status(StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Folder ""%1"" is being exported...
-		           |Please, wait.'"),
+		NStr("en='Folder ""%1"" is being exported..."
+"Please, wait.';ru='Выполняется экспорт папки ""%1""..."
+"Пожалуйста, подождите.'"),
 		String(WhatSaving) ));
 	
 	// Get a list of exported files.
@@ -151,8 +153,9 @@ Procedure ExportEnd(Result, ExecuteParameters) Export
 		CommonUseServerCall.CommonSettingsStorageSave("ExportFolderName", "ExportFolderName",  PathToSave);
 		
 		Status(StringFunctionsClientServer.PlaceParametersIntoString(
-		             NStr("en = 'Folder ""%1"" has been
-		                        |successfully exported into a directory on disk ""%2"".'"),
+		             NStr("en='Folder ""%1"" has been"
+"successfully exported into a directory on disk ""%2"".';ru='Успешно завершен"
+"экспорт папки ""%1"" в каталог на диске ""%2"".'"),
 		             String(WhatSaving), String(ExportDirectory) ) );
 		
 		Close();
@@ -366,7 +369,7 @@ Procedure BypassFileTree4(ExecuteParameters)
 	Try
 		CreateDirectory(ExecuteParameters.BaseSaveDirectoryFile);
 	Except
-		ErrorText = NStr("en = 'An error occurred when creating folder ""%1"":'");
+		ErrorText = NStr("en='An error occurred when creating folder ""%1"":';ru='Ошибка создания папки ""%1"":'");
 		ErrorText = StrReplace(ErrorText, "%1", ExecuteParameters.BaseSaveDirectoryFile);
 		ErrorText = ErrorText + Chars.LF + Chars.LF + BriefErrorDescription(ErrorInfo());
 	EndTry;
@@ -484,11 +487,15 @@ Procedure BypassFileTree9(ExecuteParameters)
 	ExecuteParameters.Insert("FileOnDrive", New File(ExecuteParameters.FullFileName));
 	If ExecuteParameters.FileOnDrive.Exist() AND ExecuteParameters.FileOnDrive.IsDirectory() Then
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Folder
-			           |with
-			           |the same name exists instead of file ""%1"".
-			           |
-			           |Reexport the file?'"),
+			NStr("en='Folder"
+"with"
+"the same name exists instead of file ""%1""."
+""
+"Reexport the file?';ru='Вместо"
+"файла"
+"""%1"" существует папка с таким же именем."
+""
+"Повторить экспорт этого файла?'"),
 			ExecuteParameters.FullFileName);
 		FileOperationsServiceClient.PrepareHandlerForDialog(ExecuteParameters);
 		Handler = New NotifyDescription("BypassFileTree10", ThisObject, ExecuteParameters);
@@ -541,12 +548,17 @@ Procedure BypassFileTree11(ExecuteParameters)
 		Else
 			If Not ExecuteParameters.CommonParameters.ForAllFiles Then
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Folder ""%1""
-					           |already contains file
-					           |""%2"", size of the existing file = %3 bytes, date modified is %4.
-					           |size of the saved file = %5 bytes, date modified is %6.
-					           |
-					           |Replace the existing file with a file from the file storage?'"),
+					NStr("en='Folder ""%1"""
+"already contains file"
+"""%2"", size of the existing file = %3 bytes, date modified is %4."
+"size of the saved file = %5 bytes, date modified is %6."
+""
+"Replace the existing file with a file from the file storage?';ru='В"
+"папке ""%1"" существует"
+"файл ""%2"" размер существующего файла = %3 байт, дата изменения %4."
+"размер сохраняемого файла = %5 байт, дата изменения %6."
+""
+"Заменить существующий файл файлом из хранилища файлов?'"),
 					ExecuteParameters.BaseSaveDirectoryFile,
 					ExecuteParameters.FileNameWithExtension,
 					ExecuteParameters.FileOnDrive.Size(),
@@ -645,11 +657,12 @@ Procedure BypassFileTree14(ExecuteParameters)
 	
 	// Update progress bar.
 	TitleState = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Export Folders ""%1""'"),
+		NStr("en='Export Folders ""%1""';ru='Экспорт папки ""%1""'"),
 		ExecuteParameters.WritingFile.FolderDescription);
 	StateText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'File ""%1""
-		           |is being saved on the disk (%2 Mb)...'"),
+		NStr("en='File ""%1"""
+"is being saved on the disk (%2 Mb)...';ru='Сохраняется"
+"на диск файл ""%1"" (%2 Мб)...'"),
 		ExecuteParameters.FileOnDrive.Name,
 		FileFunctionsServiceClientServer.GetStringWithFileSize(SizeInMB));
 	Status(TitleState, , StateText, PictureLib.Information32);
@@ -696,10 +709,13 @@ Procedure BypassFileTree15(ErrorInfo, ExecuteParameters)
 	// A file error occurred when writing the file
 	// and changing its attributes.
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'An error
-		           |occurred while writing file ""%1"".
-		           |
-		           |%2.'"),
+		NStr("en='An error"
+"occurred while writing file ""%1""."
+""
+"%2.';ru='Ошибка"
+"записи файла ""%1""."
+""
+"%2.'"),
 		ExecuteParameters.FullFileName,
 		BriefErrorDescription(ErrorInfo));
 	

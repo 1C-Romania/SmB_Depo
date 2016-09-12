@@ -21,19 +21,21 @@ Function Parameters() Export
 	ParameterPresentation = "";
 	
 	If Not SavedParameters.Property("UnavailableRolesByUserTypes") Then
-		ParameterPresentation = NStr("en = 'Inaccessible roles'");
+		ParameterPresentation = NStr("en='Inaccessible roles';ru='Недоступные роли'");
 		
 	ElsIf Not SavedParameters.Property("AllRoles") Then
-		ParameterPresentation = NStr("en = 'All roles'");
+		ParameterPresentation = NStr("en='All roles';ru='Все роли'");
 		
 	EndIf;
 	
 	If ValueIsFilled(ParameterPresentation) Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Information base updating error.
-			           |Users work parameter is
-			           |not filled: ""%1"".'")
+			NStr("en='Information base updating error."
+"Users work parameter is"
+"not filled: ""%1"".';ru='Ошибка обновления информационной базы."
+"Не заполнен параметр"
+"работы пользователей: ""%1"".'")
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 			ParameterPresentation);
 	EndIf;

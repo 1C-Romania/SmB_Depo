@@ -91,7 +91,7 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 	If ValueIsFilled(FilterSsettingsAtNode.DocumentsDumpStartDate) Then
 		
 		// "Export documents starting from January 1, 2009."
-		NString = NStr("en = 'Beginning with %1'");
+		NString = NStr("en='Beginning with %1';ru='Начиная с %1'");
 		
 		DocumentsDumpStartDateRestriction = StringFunctionsClientServer.PlaceParametersIntoString(NString, Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DLF=DD"));
 		
@@ -106,19 +106,21 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 		
 		FilterPresentationRow = StringFunctionsClientServer.GetStringFromSubstringArray(FilterSsettingsAtNode.Companies.Company, "; ");
 		
-		NString = NStr("en = 'Only by Companies: %1'");
+		NString = NStr("en='Only by Companies: %1';ru='Только по организациям: %1'");
 		
 		RestrictionFilterByCompanies = StringFunctionsClientServer.PlaceParametersIntoString(NString, FilterPresentationRow);
 		
 	Else
 		
-		RestrictionFilterByCompanies = NStr("en = 'By all companies'");
+		RestrictionFilterByCompanies = NStr("en='By all companies';ru='по всем организациям'");
 		
 	EndIf;
 	
-	NString = NStr("en = 'Dump the documents and
-		|directory
-		|inquiries: %1 %2'");
+	NString = NStr("en='Dump the documents and"
+"directory"
+"inquiries: %1 %2';ru='Выгружать документы и справочную информацию:"
+"%1"
+"%2'");
 	
 	ParameterArray = New Array;
 	ParameterArray.Add(DocumentsDumpStartDateRestriction);
@@ -150,11 +152,11 @@ EndFunction
 //  String, Unlimited - presentation of a command displayed in the user interface.
 //
 // ForExample:
-// Return NStr("en = 'Create an exchange in the distributed infobase'");
+// Return NStr("en='Create an exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
 //
 Function CommandTitleForCreationOfNewDataExchange() Export
 	
-	Return NStr("en = 'Create exchange with configuration ""1C:Enterpreneur Reporting 8, version 1.0""'");
+	Return NStr("en='Create exchange with configuration ""1C:Enterpreneur Reporting 8, version 1.0""';ru='Создать обмен с конфигурацией ""1С:Отчетность предпринимателя 8, ред. 1.0""'");
 	
 EndFunction
 
@@ -242,7 +244,7 @@ EndFunction
 //
 Function BriefInformationOnExchange(SettingID) Export
 	
-	ExplanationText = NStr("en = '	Enables data synchronization between 1C:Small Business, version 1.5 and 1C:Enterpreneur Reporting version 2.0. Synchronization is unilateral. From Small Business to Enterpreneur Reporting all necessary data is transferred to prepare and submit the reporting. For more information click Detailed description.'");
+	ExplanationText = NStr("en='	Enables data synchronization between 1C:Small Business, version 1.5 and 1C:Enterpreneur Reporting version 2.0. Synchronization is unilateral. From Small Business to Enterpreneur Reporting all necessary data is transferred to prepare and submit the reporting. For more information click Detailed description.';ru='	Позволяет синхронизировать данные между приложениями 1С:Управление небольшой фирмой, ред. 1.5 и 1С:Отчетность предпринимателя, ред. 2.0. Синхронизация односторонняя. Из приложения Управление небольшой фирмой в приложение Отчетность предпринимателя переносятся все необходимые данные для подготовки и сдачи отчетности. Для получения более подробной информации нажмите на ссылку Подробное описание.'");
 	
 	Return ExplanationText;
 	

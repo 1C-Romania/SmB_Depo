@@ -33,7 +33,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("AppliedRulesDescription", AppliedRulesDescription);
 	DuplicateSearchArea = Parameters.DuplicateSearchArea;
 
-	Title = StrReplace( NStr("en = 'Duplicates search rules %1'"), "%1", Parameters.SelectionAreaPresentation);
+	Title = StrReplace( NStr("en='Duplicates search rules %1';ru='Правила поиска дублей ""%1""'"), "%1", Parameters.SelectionAreaPresentation);
 	
 	InitialSettings = GetFromTempStorage(Parameters.SettingsAddress);
 	DeleteFromTempStorage(Parameters.SettingsAddress);
@@ -81,10 +81,12 @@ Procedure ConsiderAppliedRulesOnChange(Item)
 	
 	Description = New NotifyDescription("EndAppliedRulesUseCleaning", ThisObject);
 	
-	HeaderText = NStr("en = 'Warning'");
-	QuestionText   = NStr("en = 'Warning: searching and deleting item duplicates ignoring delivered restrictions may lead to data misalignment in the application.
-	                            |
-	                            |Disable delivered restrictions use?'");
+	HeaderText = NStr("en='Warning';ru='Предупреждение'");
+	QuestionText   = NStr("en='Warning: searching and deleting item duplicates ignoring delivered restrictions may lead to data misalignment in the application."
+""
+"Disable delivered restrictions use?';ru='Внимание: поиск и удаление дублей элементов без учета поставляемых ограничений может привести к рассогласованию данных в программе."
+""
+"Отключить использование поставляемых ограничений?'");
 	
 	ShowQueryBox(Description, QuestionText, QuestionDialogMode.YesNo,,DialogReturnCode.No, HeaderText);
 EndProcedure
@@ -172,7 +174,7 @@ Function SelectionErrors()
 		EndIf;
 	EndDo;
 	
-	Return NStr("en ='You need to specify at least one rule of duplicates search.'");
+	Return NStr("en='You need to specify at least one rule of duplicates search.';ru='Необходимо указать хотя бы одно правило поиска дублей.'");
 EndFunction
 
 &AtClient

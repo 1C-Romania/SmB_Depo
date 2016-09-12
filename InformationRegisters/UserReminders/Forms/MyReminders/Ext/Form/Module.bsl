@@ -71,11 +71,11 @@ EndProcedure
 Procedure DeleteReminder()
 	
 	DialogButtons = New ValueList;
-	DialogButtons.Add(DialogReturnCode.Yes, NStr("en = 'Delete'"));
-	DialogButtons.Add(DialogReturnCode.Cancel, NStr("en = 'Do not delete'"));
+	DialogButtons.Add(DialogReturnCode.Yes, NStr("en='Delete';ru='Удалить'"));
+	DialogButtons.Add(DialogReturnCode.Cancel, NStr("en='Do not delete';ru='Не удалять'"));
 	NotifyDescription = New NotifyDescription("DeleteReminderEnd", ThisObject);
 	
-	ShowQueryBox(NOTifyDescription, NStr("en = 'Delete reminder?'"), DialogButtons);
+	ShowQueryBox(NOTifyDescription, NStr("en='Delete reminder?';ru='Удалить напоминание?'"), DialogButtons);
 	
 EndProcedure
 

@@ -46,7 +46,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If Object.InfobaseNode.IsEmpty() Then
 			
-			DataExchangeServer.ShowMessageAboutError(NStr("en = 'Data exchange setup is not found.'"), Cancel);
+			DataExchangeServer.ShowMessageAboutError(NStr("en='Data exchange setup is not found.';ru='Настройка обмена данными не найдена.'"), Cancel);
 			Return;
 			
 		EndIf;
@@ -55,7 +55,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	Else
 		
-		DataExchangeServer.ShowMessageAboutError(NStr("en = 'Cannot open the wizard directly.'"), Cancel);
+		DataExchangeServer.ShowMessageAboutError(NStr("en='Cannot open the wizard directly.';ru='Непосредственное открытие помощника не предусмотрено.'"), Cancel);
 		Return;
 		
 	EndIf;
@@ -65,7 +65,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		// Interactive data exchange is supported only for universal exchanges
 		// using objects conversion rules.
 		DataExchangeServer.ShowMessageAboutError(
-			NStr("en = 'For the selected node the data exchange with the setting is not provided.'"), Cancel);
+			NStr("en='For the selected node the data exchange with the setting is not provided.';ru='Для выбранного узла выполнение обмена данными с настройкой не предусмотрено.'"), Cancel);
 		Return;
 		
 	EndIf;
@@ -75,7 +75,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Check whether exchange setting matches filter.
 	If NodesArray.Find(Object.InfobaseNode) = Undefined Then
 		
-		CommonUseClientServer.MessageToUser(NStr("en = 'For the selected node the data matching is not provided.'"),,,, Cancel);
+		CommonUseClientServer.MessageToUser(NStr("en='For the selected node the data matching is not provided.';ru='Для выбранного узла сопоставление данных не предусмотрено.'"),,,, Cancel);
 		Return;
 		
 	EndIf;
@@ -163,7 +163,7 @@ Procedure OnOpen(Cancel)
 	EndIf;
 	
 	If ChangeTitle Then
-		Items.PageTitle.Title = NStr("en='Connecting parameters'");
+		Items.PageTitle.Title = NStr("en='Connecting parameters';ru='Параметры подключения'");
 	EndIf;
 	
 	If NextPage AND ValueIsFilled(Object.ExchangeMessageTransportKind) Then
@@ -179,10 +179,10 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	CurrentPage = Items.MainPanel.CurrentPage;
 	
 	If CurrentPage = Items.BeginningPage Then
-		ConfirmationText = NStr("en='Cancel data synchronization?'");
+		ConfirmationText = NStr("en='Cancel data synchronization?';ru='Отменить синхронизацию данных?'");
 		
 	Else
-		ConfirmationText = NStr("en='Do you want to terminate data synchronization?'");
+		ConfirmationText = NStr("en='Do you want to terminate data synchronization?';ru='Прервать синхронизацию данных?'");
 		
 	EndIf;
 	
@@ -221,17 +221,17 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		
 		Cancel = False;
 		
-		Status(NStr("en = 'Gathering mapping information...'"));
+		Status(NStr("en='Gathering mapping information...';ru='Выполняется сбор информации сопоставления...'"));
 		
 		RefreshDataOfMappingStatisticsAtServer(Cancel, Parameter);
 		
 		If Cancel Then
-			ShowMessageBox(, NStr("en = 'When getting the statistics information the errors occurred.'"));
+			ShowMessageBox(, NStr("en='When getting the statistics information the errors occurred.';ru='При получении информации статистики возникли ошибки.'"));
 		Else
 			
 			ExpandTreeOfInformationStatistics(Parameter.UniqueKey);
 			
-			Status(NStr("en = 'Information accumulation is completed'"));
+			Status(NStr("en='Information accumulation is completed';ru='Сбор информации завершен'"));
 		EndIf;
 		
 	EndIf;
@@ -394,19 +394,19 @@ Procedure RefreshInformationOfMappingFully(Command)
 	
 	If RowKeys.Count() > 0 Then
 		
-		Status(NStr("en = 'Gathering mapping information...'"));
+		Status(NStr("en='Gathering mapping information...';ru='Выполняется сбор информации сопоставления...'"));
 		
 		RefreshInformationOfMappingByRowAtServer(Cancel, RowKeys);
 		
 	EndIf;
 	
 	If Cancel Then
-		ShowMessageBox(, NStr("en = 'When getting the statistics information the errors occurred.'"));
+		ShowMessageBox(, NStr("en='When getting the statistics information the errors occurred.';ru='При получении информации статистики возникли ошибки.'"));
 	Else
 		
 		ExpandTreeOfInformationStatistics(CurrentRowKey);
 		
-		Status(NStr("en = 'Information accumulation is completed'"));
+		Status(NStr("en='Information accumulation is completed';ru='Сбор информации завершен'"));
 	EndIf;
 	
 EndProcedure
@@ -419,7 +419,7 @@ Procedure ExecuteDataImportForRow(Command)
 	SelectedRows = Items.StatisticsInformationTree.SelectedRows;
 	
 	If SelectedRows.Count() = 0 Then
-		NString = NStr("en = 'Select table name in field of statistical information.'");
+		NString = NStr("en='Select table name in field of statistical information.';ru='Выберите имя таблицы в поле статистической информации.'");
 		CommonUseClientServer.MessageToUser(NString,,"StatisticsInformationTree",, Cancel);
 		Return;
 	EndIf;
@@ -439,8 +439,9 @@ Procedure ExecuteDataImportForRow(Command)
 	EndDo;
 	
 	If HasUnmatchedObjects Then
-		NString = NStr("en = 'There are unmatched objects.
-		                     |Unmatched object duplicates will be created while importing data. Continue?'");
+		NString = NStr("en='There are unmatched objects."
+"Unmatched object duplicates will be created while importing data. Continue?';ru='Имеются несопоставленные объекты."
+"При загрузке данных будут созданы дубли несопоставленных объектов. Продолжить?'");
 		
 		Notification = New NotifyDescription("ImportDataForStringQuestionUnmatched", ThisObject, New Structure);
 		Notification.AdditionalParameters.Insert("SelectedRows", SelectedRows);
@@ -465,7 +466,7 @@ Procedure OpenMappingForm(Command)
 	EndIf;
 	
 	If Not CurrentData.UsePreview Then
-		ShowMessageBox(, NStr("en = 'For the data type object comparison can not be performed'"));
+		ShowMessageBox(, NStr("en='For the data type object comparison can not be performed';ru='Для типа данных нельзя выполнить сопоставление объектов.'"));
 		Return;
 	EndIf;
 	
@@ -539,8 +540,8 @@ EndProcedure
 &AtClient
 Procedure ExportAdditionGeneralFilterClearing(Command)
 	
-	HeaderText = NStr("en='Confirmation'");
-	QuestionText   = NStr("en='Clear common filter?'");
+	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
+	QuestionText   = NStr("en='Clear common filter?';ru='Очистить общий отбор?'");
 	NotifyDescription = New NotifyDescription("ExportAdditionGeneralFilterClearingEnd", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo,,,HeaderText);
 	
@@ -548,8 +549,8 @@ EndProcedure
 
 &AtClient
 Procedure ExportAdditionCleaningDetailedFilter(Command)
-	HeaderText = NStr("en='Confirmation'");
-	QuestionText   = NStr("en='Clear detailed filter?'");
+	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
+	QuestionText   = NStr("en='Clear detailed filter?';ru='Очистить детальный отбор?'");
 	NotifyDescription = New NotifyDescription("ExportAdditionDetailedFilterClearingEnd", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo,,,HeaderText);
 EndProcedure
@@ -560,7 +561,7 @@ Procedure ExportAdditionFilterHistory(Command)
 	VariantList = ExportAdditionHistorySettingsServer();
 	
 	// Add variant of saving the current ones.
-	Text = NStr("en='Save the current setting...'");
+	Text = NStr("en='Save the current setting...';ru='Сохранить текущую настройку...'");
 	VariantList.Add(1, Text, , PictureLib.SaveReportSettings);
 	
 	NotifyDescription = New NotifyDescription("ExportAdditionFilterHistorySelectionFromMenu", ThisObject);
@@ -630,9 +631,9 @@ Procedure ExportAdditionFilterHistorySelectionFromMenu(Val SelectedItem, Val Add
 	If TypeOf(SettingRepresentation)=Type("String") Then
 		// Selected a variant - name of the previously saved setting.
 		
-		HeaderText = NStr("en='Confirmation'");
+		HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Restore settings ""%1""?'"), SettingRepresentation);
+		NStr("en='Restore settings ""%1""?';ru='Восстановить настройки ""%1""?'"), SettingRepresentation);
 		
 		NotifyDescription = New NotifyDescription("ExportAdditionFiltersHistoryEnd", ThisObject, SettingRepresentation);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo,,,HeaderText);
@@ -662,14 +663,15 @@ Procedure ImportDataForStringQuestionContinuation(Val SelectedRows)
 		Return;
 	EndIf;
 	
-	Status(NStr("en = 'Data import in progress...'"));
+	Status(NStr("en='Data import in progress...';ru='Выполняется загрузка данных...'"));
 	
 	Cancel = False;
 	ExecuteDataImportAtServer(Cancel, RowKeys);
 	
 	If Cancel Then
-		NString = NStr("en = 'Errors occurred while importing data.
-		                     |Do you want to open the event log?'");
+		NString = NStr("en='Errors occurred while importing data."
+"Do you want to open the event log?';ru='При загрузке данных возникли ошибки."
+"Перейти в журнал регистрации?'");
 		
 		NotifyDescription = New NotifyDescription("GoToEventLogMonitor", ThisObject);
 		ShowQueryBox(NOTifyDescription, NString, QuestionDialogMode.YesNo, ,DialogReturnCode.No);
@@ -677,7 +679,7 @@ Procedure ImportDataForStringQuestionContinuation(Val SelectedRows)
 	EndIf;
 		
 	ExpandTreeOfInformationStatistics(RowKeys[RowKeys.UBound()]);
-	Status(NStr("en = 'The data import is completed.'"));
+	Status(NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
 EndProcedure
 
 &AtClient
@@ -687,7 +689,7 @@ Procedure OpenNodeInformationExchangeDirectory()
 	DirectoryName = GetDirectoryNameAtServer(Object.ExchangeMessageTransportKind, Object.InfobaseNode);
 	
 	If IsBlankString(DirectoryName) Then
-		ShowMessageBox(, NStr("en = 'Information exchange directory is not specified.'"));
+		ShowMessageBox(, NStr("en='Information exchange directory is not specified.';ru='Не задан каталог обмена информацией.'"));
 		Return;
 	EndIf;
 	
@@ -696,7 +698,7 @@ Procedure OpenNodeInformationExchangeDirectory()
 	
 	Notification = New NotifyDescription("AfterWorksWithFilesExpansionCheck", ThisForm, AdditionalParameters);
 	
-	SuggestionText = NStr("en = 'To open a directory, you need to set an extension of working with files.'");
+	SuggestionText = NStr("en='To open a directory, you need to set an extension of working with files.';ru='Для открытия каталога необходимо необходимо установить расширение работы с файлами.'");
 	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Notification, SuggestionText);
 	
 EndProcedure
@@ -712,7 +714,7 @@ Procedure AfterWorksWithFilesExpansionCheck(Result, AdditionalParameters) Export
 		File.BeginInitialization(NOTifyDescription, AdditionalParameters.DirectoryName);
 	
 	Else
-		WarningText = NStr("en = 'Extension for work with files is not installed, you can not open the directory.'");
+		WarningText = NStr("en='Extension for work with files is not installed, you can not open the directory.';ru='Расширение для работы с файлами не установлено, открытие каталога не возможно.'");
 		ShowMessageBox(, WarningText);
 	EndIf;
 	
@@ -736,7 +738,7 @@ Procedure AfterFileExistenceCheck(Exist, AdditionalParameters) Export
 		File.StartCheckingIsDirectory(NOTifyDescription);
 	Else
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Directory ""%1"" does not exist or there is no access to it.'"),
+			NStr("en='Directory ""%1"" does not exist or there is no access to it.';ru='Каталог ""%1"" не существует или к нему нет доступа.'"),
 			AdditionalParameters.DirectoryName
 		);
 		ShowMessageBox(, WarningText);
@@ -753,7 +755,7 @@ Procedure DetermineIsDirectory(IsDirectory, AdditionalParameters) Export
 		BeginRunningApplication(NOTifyDescription, AdditionalParameters.DirectoryName);
 	Else
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '""%1"" is a file, not a directory.'"),
+			NStr("en='""%1"" is a file, not a directory.';ru='""%1"" является файлом, а не каталогом.'"),
 			AdditionalParameters.DirectoryName
 		);
 		ShowMessageBox(, WarningText);
@@ -971,7 +973,7 @@ Procedure DeleteTemporaryDirectoryOfExchangeMessages(TempDirectoryName)
 			DeleteFiles(TempDirectoryName);
 			TempDirectoryName = "";
 		Except
-			WriteLogEvent(NStr("en = 'Data exchange.Temp files deletion'", CommonUseClientServer.MainLanguageCode()),
+			WriteLogEvent(NStr("en='Data exchange.Temp files deletion';ru='Обмен данными.Удаление временных файлов'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo())
 			);
 		EndTry;
@@ -1076,7 +1078,7 @@ Procedure RefreshTransportSettingsPages()
 		Object.ExchangeMessageTransportKind = Undefined;
 		
 		TransportChoiceList.Clear();
-		TransportChoiceList.Add(Undefined, NStr("en='Connection is not configured'") );
+		TransportChoiceList.Add(Undefined, NStr("en='Connection is not configured';ru='подключение не настроено'") );
 		
 		Items.ExchangeMessageTransportKindString.TextColor = StyleColors.ExplanationTextError
 	EndIf;
@@ -1182,7 +1184,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -1282,14 +1284,14 @@ Procedure RefreshRepresentationOfDataExchangeItemsState()
 	
 	Items.PagesOfDataImportStatus.CurrentPage = Items[DataExchangeClient.PagesOfDataImportStatus()[DataImportResult]];
 	If Items.PagesOfDataImportStatus.CurrentPage=Items.ImportStateUndefined Then
-		Items.GoToDataImportEventsEventLogMonitor.Title = NStr("en='Data import has not been performed'");
+		Items.GoToDataImportEventsEventLogMonitor.Title = NStr("en='Data import has not been performed';ru='Загрузка данных не произведена'");
 	Else
 		Items.GoToDataImportEventsEventLogMonitor.Title = DataExchangeClient.HyperlinkHeadersOfDataImport()[DataImportResult];
 	EndIf;
 	
 	Items.PagesOfDataDumpStatus.CurrentPage = Items[DataExchangeClient.PagesOfDataDumpStatus()[DataExportResult]];
 	If Items.PagesOfDataDumpStatus.CurrentPage=Items.ExportStateUndefined Then
-		Items.GoToDataExportEventsEventLogMonitor.Title = NStr("en='Data export is not performed'");
+		Items.GoToDataExportEventsEventLogMonitor.Title = NStr("en='Data export is not performed';ru='Выгрузка данных не произведена'");
 	Else
 		Items.GoToDataExportEventsEventLogMonitor.Title = DataExchangeClient.HyperlinkHeadersOfDataDump()[DataExportResult];
 	EndIf;
@@ -1359,7 +1361,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -1442,7 +1444,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -1575,17 +1577,17 @@ Function Attachable_BeginningPage_OnGoingNext(Cancel)
 	// Check whether form attributes are filled in.
 	If Object.InfobaseNode.IsEmpty() Then
 		
-		NString = NStr("en = 'Specify node of the infobase'");
+		NString = NStr("en='Specify node of the infobase';ru='Укажите узел информационной базы'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.InfobaseNode",, Cancel);
 		
 	ElsIf Object.ExchangeMessageTransportKind.IsEmpty() Then
 		
-		NString = NStr("en = 'Specify the connection variant'");
+		NString = NStr("en='Specify the connection variant';ru='Укажите вариант подключения'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.ExchangeMessageTransportKind",, Cancel);
 		
 	ElsIf ExchangeOverWebService AND IsBlankString(WSPassword) Then
 		
-		NString = NStr("en = 'Password is not specified.'");
+		NString = NStr("en='Password is not specified.';ru='Не указан пароль.'");
 		CommonUseClientServer.MessageToUser(NString,, "WSPassword",, Cancel);
 		
 	EndIf;
@@ -1601,7 +1603,7 @@ Function Attachable_ConnectionCheckWaitingPage_LongOperationProcessing(Cancel, G
 		
 		If Cancel Then
 			
-			ShowMessageBox(, NStr("en = 'Failed to execute the operation.'"));
+			ShowMessageBox(, NStr("en='Failed to execute the operation.';ru='Не удалось выполнить операцию.'"));
 			
 		EndIf;
 		
@@ -1689,7 +1691,7 @@ Procedure TransportMessageExchange()
 	Except
 		IgnoreDataGet = True;
 		WriteErrorInEventLogMonitor(DetailErrorDescription(ErrorInfo()),
-			NStr("en = 'Assistant of an interactive data exchange. Exchange message transport'")
+			NStr("en='Assistant of an interactive data exchange. Exchange message transport';ru='Помощник интерактивного обмена данными.Транспорт сообщения обмена'")
 		);
 		Return;
 	EndTry;
@@ -1761,7 +1763,7 @@ Procedure TransportMessageExchangeLongOperationEnd()
 	Except
 		IgnoreDataGet = True;
 		WriteErrorInEventLogMonitor(DetailErrorDescription(ErrorInfo()),
-			NStr("en = 'Assistant of an interactive data exchange. Exchange message transport'")
+			NStr("en='Assistant of an interactive data exchange. Exchange message transport';ru='Помощник интерактивного обмена данными.Транспорт сообщения обмена'")
 		);
 		Return;
 	EndTry;
@@ -1807,7 +1809,7 @@ Procedure DataAnalysis()
 			UUID,
 			"DataProcessors.InteractiveDataExchangeAssistant.RunAutomaticDataMapping",
 			MethodParameters,
-			NStr("en = 'Exchange message data analysis'")
+			NStr("en='Exchange message data analysis';ru='Анализ данных сообщения обмена'")
 		);
 		
 		If Result.JobCompleted Then
@@ -1822,7 +1824,7 @@ Procedure DataAnalysis()
 		
 		IgnoreDataGet = True;
 		WriteErrorInEventLogMonitor(DetailErrorDescription(ErrorInfo()),
-			NStr("en = 'Interactive data exchange wizard. Data analysis'"));
+			NStr("en='Interactive data exchange wizard. Data analysis';ru='Помощник интерактивного обмена данными.Анализ данных'"));
 		
 	EndTry;
 	
@@ -1882,7 +1884,7 @@ Procedure DataAnalysisLongOperationEnd()
 	Except
 		IgnoreDataGet = True;
 		WriteErrorInEventLogMonitor(DetailErrorDescription(ErrorInfo()),
-			NStr("en = 'Interactive data exchange wizard. Data analysis'")
+			NStr("en='Interactive data exchange wizard. Data analysis';ru='Помощник интерактивного обмена данными.Анализ данных'")
 		);
 		Return;
 	EndTry;
@@ -1936,12 +1938,14 @@ Function Attachable_StatisticsPage_OnGoingNext(Cancel)
 	Cancel = True;
 	
 	Buttons = New ValueList;
-	Buttons.Add(DialogReturnCode.Yes,  NStr("en = 'Continue'"));
-	Buttons.Add(DialogReturnCode.No, NStr("en = 'Cancel'"));
+	Buttons.Add(DialogReturnCode.Yes,  NStr("en='Continue';ru='Продолжить'"));
+	Buttons.Add(DialogReturnCode.No, NStr("en='Cancel';ru='Отменить'"));
 	
-	Message = NStr("en = 'Not all data was mapped. Existence of
-	                       |unmapped data can lead to identical catalog items (duplicates).
-	                       |Continue?'");
+	Message = NStr("en='Not all data was mapped. Existence of"
+"unmapped data can lead to identical catalog items (duplicates)."
+"Continue?';ru='Не все данные сопоставлены. Наличие"
+"несопоставленных данных может привести к появлению одинаковых элементов справочников (дублей)."
+"Продолжить?'");
 	
 	Notification = New NotifyDescription("StatisticsInformationPage_OnMovingFurtherQuestionEnd", ThisObject);
 	
@@ -1998,7 +2002,7 @@ Procedure DataImport()
 			UUID,
 			"DataProcessors.InteractiveDataExchangeAssistant.ExecuteDataImport",
 			MethodParameters,
-			NStr("en = 'Data import from the exchange message'"));
+			NStr("en='Data import from the exchange message';ru='Загрузка данных из сообщения обмена'"));
 		
 		If Result.JobCompleted Then
 			
@@ -2015,7 +2019,7 @@ Procedure DataImport()
 		IgnoreDataGet = True;
 		DeleteTemporaryDirectoryOfExchangeMessages(Object.TemporaryExchangeMessagesDirectoryName);
 		WriteErrorInEventLogMonitor(DetailErrorDescription(ErrorInfo()),
-			NStr("en = 'Interactive data exchange wizard.Data import'"));
+			NStr("en='Interactive data exchange wizard.Data import';ru='Помощник интерактивного обмена данными.Загрузка данных'"));
 		Return;
 	EndTry;
 	
@@ -2332,7 +2336,7 @@ Procedure SetCommonFilterAdditionDescription()
 	Text = DataExchangeServer.InteractiveChangeExportingDescriptionOfAdditionsOfCommonFilter(ExportAddition);
 	FilterAbsent = IsBlankString(Text);
 	If FilterAbsent Then
-		Text = NStr("en='All documents'");
+		Text = NStr("en='All documents';ru='Все документы'");
 	EndIf;
 	
 	Items.ExportAdditionGeneralDocumentsFilter.Title = Text;
@@ -2345,7 +2349,7 @@ Procedure SetAdditionDescriptionInDetails()
 	Text = DataExchangeServer.InteractiveChangeExportingDetailedFilterDescription(ExportAddition);
 	FilterAbsent = IsBlankString(Text);
 	If FilterAbsent Then
-		Text = NStr("en='Additional data have not been selected'");
+		Text = NStr("en='Additional data have not been selected';ru='Дополнительные данные не выбраны'");
 	EndIf;
 	
 	Items.ExportAdditionDetailedFilter.Title = Text;
@@ -2605,8 +2609,8 @@ EndProcedure
 &AtClient
 Procedure CompanyFilterClean(Command)
 	
-	HeaderText = NStr("en='Confirmation'");
-	QuestionText   = NStr("en='Do you want to clear the filter by companies?'");
+	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
+	QuestionText   = NStr("en='Do you want to clear the filter by companies?';ru='Очистить отбор по организациям?'");
 	NotifyDescription = New NotifyDescription("ClearFilterByCompanyEnd", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo,,,HeaderText);
 	
@@ -2640,7 +2644,7 @@ Procedure ExportAdditionLoadSettings(Command)
 	VariantList = ExportAdditionHistorySettingsServer();
 	
 	// Add saving variant of the current
-	Text = NStr("en='Save the current setting...'");
+	Text = NStr("en='Save the current setting...';ru='Сохранить текущую настройку...'");
 	VariantList.Add(1, Text, , PictureLib.SaveReportSettings);
 	
 	NotifyDescription = New NotifyDescription("ExportAdditionFilterHistorySelectionFromMenu", ThisObject);
@@ -2746,7 +2750,7 @@ Procedure InitializeScriptTransfer(ExchangeOverConnectionToCorrespondent)
 			
 		Else
 			
-			Raise NStr("en = 'The specified data synchronization script is not supported.'");
+			Raise NStr("en='The specified data synchronization script is not supported.';ru='Заданный сценарий синхронизации данных не поддерживается.'");
 			
 		EndIf;
 		
@@ -2771,7 +2775,7 @@ Procedure InitializeScriptTransfer(ExchangeOverConnectionToCorrespondent)
 			
 		Else
 			
-			Raise NStr("en = 'The specified data synchronization script is not supported.'");
+			Raise NStr("en='The specified data synchronization script is not supported.';ru='Заданный сценарий синхронизации данных не поддерживается.'");
 			
 		EndIf;
 		
@@ -3113,9 +3117,9 @@ Procedure UpdateFilterByCompanies(AddressOfObject="")
 	ArraySelectedCompanies = GetArraySelectedCompanies();
 	CompaniesSelected = ArraySelectedCompanies.Count() > 0;
 	If Not CompaniesSelected Then
-		Text = NStr("en = 'Select companies '");
+		Text = NStr("en='Select companies ';ru='Выбрать организации '");
 	ElsIf SelectAllCompanies() Then
-		Text = NStr("en = 'All companies '");
+		Text = NStr("en='All companies ';ru='Все организации '");
 	Else
 		Text = ExchangePlans.ExchangeSmallBusinessAccounting30.ShortPresentationOfCollectionsOfValues(ArraySelectedCompanies);
 	EndIf;
@@ -3186,7 +3190,7 @@ EndFunction
 Function FilterPresentation(Period, Filter)
 	
 	ExportAdditionObject = FormAttributeToValue("ExportAddition");
-	DetailsOfEmptySelection = NStr("en='All documents'");
+	DetailsOfEmptySelection = NStr("en='All documents';ru='Все документы'");
 	Return ExportAdditionObject.FilterPresentation(Period, Filter, DetailsOfEmptySelection);
 	
 EndFunction

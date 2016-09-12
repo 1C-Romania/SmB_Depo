@@ -114,7 +114,7 @@ Procedure SeeAttachedFile()
 		
 	Else
 		
-		MessageText = NStr("en='Picture for viewing is absent'");
+		MessageText = NStr("en='Picture for viewing is absent';ru='Отсутстует изображение для просмотра'");
 		CommonUseClientServer.MessageToUser(MessageText,, "PictureURL");
 		
 	EndIf;
@@ -128,7 +128,7 @@ Procedure AddImageAtClient()
 	
 	If Not ValueIsFilled(Object.Ref) Then
 		
-		QuestionText = NStr("en='To select the image it is necessary to record the object. Record?'");
+		QuestionText = NStr("en='To select the image it is necessary to record the object. Record?';ru='Для выбора изображения необходимо записать объект. Записать?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("AddImageAtClientEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);
@@ -296,7 +296,7 @@ Procedure OnOpen(Cancel)
 	
 	If Not ValueIsFilled(Object.Ref)
 	   AND Not FunctionalOptionAccountingByMultipleCompanies Then
-		MessageText = NStr("en = 'You can not add a new company as the ""Accounting for several companies"" check box is not selected in the accounting parameters settings!'");
+		MessageText = NStr("en='You can not add a new company as the ""Accounting for several companies"" check box is not selected in the accounting parameters settings!';ru='Нельзя добавить новую организацию, т.к. в настройках параметров учета не установлен признак ""Учет по нескольким организациям""!'");
 		ShowMessageBox(Undefined,MessageText);
 		Cancel = True;
 	EndIf;
@@ -438,7 +438,7 @@ Procedure BankAccountByDefaultStartChoice(Item, ChoiceData, StandardProcessing)
 		
 		StandardProcessing = False;
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Catalog item is not recorded yet'");
+		Message.Text = NStr("en='Catalog item is not recorded yet';ru='Элемент справочника еще не записан.'");
 		Message.Message();
 		
 	EndIf;
@@ -511,7 +511,7 @@ Procedure AddImageLogo(Command)
 	
 	If Not ValueIsFilled(Object.Ref) Then
 		
-		QuestionText = NStr("en='To select the image it is necessary to record the object. Record?'");
+		QuestionText = NStr("en='To select the image it is necessary to record the object. Record?';ru='Для выбора изображения необходимо записать объект. Записать?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("AddLogoImageEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);
@@ -563,7 +563,7 @@ Procedure ChangeImageLogo(Command)
 		
 	Else
 		
-		MessageText = NStr("en='Picture for editing is absent'");
+		MessageText = NStr("en='Picture for editing is absent';ru='Отсутстует изображение для редактирования'");
 		CommonUseClientServer.MessageToUser(MessageText,, "AddressLogo");
 		
 	EndIf;
@@ -606,7 +606,7 @@ Procedure AddImageFacsimile(Command)
 	
 	If Not ValueIsFilled(Object.Ref) Then
 		
-		QuestionText = NStr("en='To select the image it is necessary to record the object. Record?'");
+		QuestionText = NStr("en='To select the image it is necessary to record the object. Record?';ru='Для выбора изображения необходимо записать объект. Записать?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("AddFacsimileImageEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);
@@ -658,7 +658,7 @@ Procedure ChangeImageFacsimile(Command)
 		
 	Else
 		
-		MessageText = NStr("en='Picture for editing is absent'");
+		MessageText = NStr("en='Picture for editing is absent';ru='Отсутстует изображение для редактирования'");
 		CommonUseClientServer.MessageToUser(MessageText,, "AddressLogo");
 		
 	EndIf;

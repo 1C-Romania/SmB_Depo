@@ -21,8 +21,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If RunMode.File Then
 		Items.GroupAutomaticTextExtraction.Visible = False;
 		AutoTitle = False;
-		Title = NStr("en = 'Full text search management'");
-		Items.SectionDescription.Title = NStr("en = 'Enabling and disabling the fulltext search, fulltext search index update'");
+		Title = NStr("en='Full text search management';ru='Управление полнотекстовым поиском'");
+		Items.SectionDescription.Title = NStr("en='Enabling and disabling the fulltext search, fulltext search index update';ru='Включение и отключение полнотекстового поиска, обновление индекса полнотекстового поиска.'");
 	EndIf;
 	
 	// Items state update.
@@ -64,23 +64,25 @@ EndProcedure
 &AtClient
 Procedure UpdateIndex(Command)
 	Status(
-		NStr("en = 'Full text index is being updated...
-		|Please, wait.'"));
+		NStr("en='Full text index is being updated..."
+"Please, wait.';ru='Идет обновление полнотекстового индекса..."
+"Пожалуйста, подождите.'"));
 	
 	UpdateIndexServer();
 	
-	Status(NStr("en = 'Update of the full-text index is completed.'"));
+	Status(NStr("en='Update of the full-text index is completed.';ru='Обновление полнотекстового индекса завершено.'"));
 EndProcedure
 
 &AtClient
 Procedure ClearIndex(Command)
 	Status(
-		NStr("en = 'Full-text index is being cleared...
-		|Please, wait.'"));
+		NStr("en='Full-text index is being cleared..."
+"Please, wait.';ru='Идет очистка полнотекстового индекса..."
+"Пожалуйста, подождите.'"));
 	
 	ClearIndexServer();
 	
-	Status(NStr("en = 'Full-text index clearance is completed.'"));
+	Status(NStr("en='Full-text index clearance is completed.';ru='Очистка полнотекстового индекса завершена.'"));
 EndProcedure
 
 &AtClient
@@ -122,7 +124,7 @@ Procedure Attachable_OnAttributeChange(Item, RefreshingInterface = True)
 		QuestionText = NStr("en = 'To change the full-text search mode it is required to complete the all users' sessions except the current one.'");
 		
 		Buttons = New ValueList;
-		Buttons.Add("ActiveUsers", NStr("en = 'Active users'"));
+		Buttons.Add("ActiveUsers", NStr("en='Active users';ru='Активные пользователи'"));
 		Buttons.Add(DialogReturnCode.Cancel);
 		
 		Handler = New NotifyDescription("AtAttributeChangeAfterAnsweringQuestion", ThisObject);
@@ -192,14 +194,14 @@ Function PredefinedJobScheduleID(PredefinedName)
 	PredefinedMetadata = Metadata.ScheduledJobs.Find(PredefinedName);
 	If PredefinedMetadata = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Scheduled job ""%1"" is not found in the metadata.'"),
+			NStr("en='Scheduled job ""%1"" is not found in the metadata.';ru='Регламентное задание ""%1"" не найдено в метаданных.'"),
 			PredefinedName);
 	EndIf;
 	
 	ScheduledJob = ScheduledJobs.FindPredefined(PredefinedMetadata);
 	If ScheduledJob = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Scheduled job ""%1"" is not found.'"),
+			NStr("en='Scheduled job ""%1"" is not found.';ru='Регламентное задание ""%1"" не найдено.'"),
 			PredefinedName);
 	EndIf;
 	
@@ -346,15 +348,15 @@ Procedure SetEnabled(AttributePathToData = "")
 			IndexTrue = FullTextSearchServer.SearchIndexTrue();
 			FlagEnabled = Not IndexTrue;
 			If IndexTrue Then
-				IndexStatus = NStr("en = 'Update is not required'");
+				IndexStatus = NStr("en='Update is not required';ru='Обновление не требуется'");
 			Else
-				IndexStatus = NStr("en = 'Update is needed'");
+				IndexStatus = NStr("en='Update is needed';ru='Требуется обновление'");
 			EndIf;
 		Else
 			UpdateDateIndex = '00010101';
 			IndexTrue = False;
 			FlagEnabled = False;
-			IndexStatus = NStr("en = 'Full-text search is disabled'");
+			IndexStatus = NStr("en='Full-text search is disabled';ru='Полнотекстовый поиск отключен'");
 		EndIf;
 		
 		Items.UpdateIndex.Enabled = FlagEnabled;

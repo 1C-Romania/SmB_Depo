@@ -133,13 +133,13 @@ Function AdministrationParameters() Export
 	If CommonUseReUse.DataSeparationEnabled() AND CommonUseReUse.CanUseSeparatedData() Then
 		
 		If Not Users.InfobaseUserWithFullAccess() Then
-			Raise NStr("en ='Insufficient rights to perform operation'");
+			Raise NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'");
 		EndIf;
 		
 	Else
 		
 		If Not Users.InfobaseUserWithFullAccess(, True) Then
-			Raise NStr("en ='Insufficient rights to perform operation'");
+			Raise NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'");
 		EndIf;
 		
 	EndIf;
@@ -703,7 +703,7 @@ EndFunction
 Procedure SaveAuthenticationParametersOnSite(SavedParameters) Export
 	
 	CommonUseClientServer.Validate(NOT CommonUse.SubsystemExists("OnlineUserSupport"), 
-		NStr("en = 'Invalid procedure call.'"), "AddressClassifierService.SaveAuthenticationParametersOnSite");
+		NStr("en='Invalid procedure call.';ru='Недопустимый вызов процедуры.'"), "AddressClassifierService.SaveAuthenticationParametersOnSite");
 		
 	If SavedParameters <> Undefined Then
 		CommonUse.CommonSettingsStorageSave("AuthenticationAtUsersWebsite", "UserCode", SavedParameters.Login);
@@ -733,7 +733,7 @@ Function ClientParametersOnServer() Export
 	If ClientParameters.Count() = 0
 	   AND CurrentRunMode() <> Undefined Then
 		
-		Raise NStr("en = 'Client parameters at server are not filled.'");
+		Raise NStr("en='Client parameters at server are not filled.';ru='Не заполнены параметры клиента на сервере.'");
 	EndIf;
 	
 	Return ClientParameters;
@@ -755,7 +755,7 @@ EndFunction
 Function RunBackgroundJobWithClientContext(MethodName, Parameters = Undefined, Key = "", Description = "") Export
 	
 	If CurrentRunMode() = Undefined Then
-		Raise NStr("en = 'Run the background job with the client context is possible only when there is the client.'");
+		Raise NStr("en='Run the background job with the client context is possible only when there is the client.';ru='Запуск фонового задания с контекстом клиента возможен только при наличии клиента.'");
 	EndIf;
 	
 	AllParameters = New Structure;
@@ -818,9 +818,11 @@ Procedure UpdateApplicationWorkParameters(FindChanges = False,
 				SetExclusiveMode(True);
 			Except
 				ErrorText =
-					NStr("en = 'Unable to update the
-					           |infobase: - Unable to set
-					           |the exclusive mode - Configuration version does not include update without setting the exclusive mode.'");
+					NStr("en='Unable to update the"
+"infobase: - Unable to set"
+"the exclusive mode - Configuration version does not include update without setting the exclusive mode.';ru='Невозможно выполнить"
+"обновление информационной"
+"базы: - Невозможно установить монопольный режим - Версия конфигурации не предусматривает обновление без установки монопольного режима.'");
 				
 				If ExclusiveModeSetupError = Undefined Then
 					Raise ErrorText;
@@ -918,16 +920,16 @@ Procedure CheckForUpdatesApplicationWorkParameters(ConstantName, ParameterNames 
 			EndIf;
 			If CurrentRunMode() = Undefined Then
 				Raise
-					NStr("en = 'Entrance to the application is temporarily impossible due to the update to the new version.'");
+					NStr("en='Entrance to the application is temporarily impossible due to the update to the new version.';ru='Вход в программу временно невозможен в связи с обновлением на новую версию'");
 			Else
 				Raise
-					NStr("en = 'Invalid access to non-updated application
-					           |work parameters (for example, to
-					           |some session parameters): - if they are accessed from the
-					           |form on the initial page (desktop) , then you need to make
-					           |sure there is the CommonUse procedure call in it.OnCreateAtServer;
-					           |- otherwise, it is required to
-					           |  transfer the applied code call after the update of application work parameters.'");
+					NStr("en='Invalid access to non-updated application"
+"work parameters (for example, to"
+"some session parameters): - if they are accessed from the"
+"form on the initial page (desktop) , then you need to make"
+"sure there is the CommonUse procedure call in it.OnCreateAtServer;"
+"- otherwise, it is required to"
+"  transfer the applied code call after the update of application work parameters.';ru='Недопустимое обращение к необновленным параметрам работы программы (например, к некоторым параметрам сеанса): - если это обращение выполняется из формы на начальной странице (рабочем столе), то необходимо убедиться, что в ней имеется вызов процедуры ОбщегоНазначения.ПриСозданииНаСервере; - в остальных случаях необходимо перенести вызов прикладного кода после обновления параметров работы программы.'");
 			EndIf;
 		EndIf;
 	EndIf;
@@ -1346,7 +1348,7 @@ Procedure ValidateExchangePlanContent(Val ExchangePlanName) Export
 		If EnableContent.Count() <> 0 Then
 			
 			DetailsExceptions1 = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The %1 exchange plan must include the following metadata objects: %2'"),
+				NStr("en='The %1 exchange plan must include the following metadata objects: %2';ru='В состав плана обмена %1 должны входить следующие объекты метаданных: %2'"),
 				ExchangePlanName,
 				StringFunctionsClientServer.RowFromArraySubrows(PresentationMetadataObjects(EnableContent), ", "));
 			
@@ -1355,7 +1357,7 @@ Procedure ValidateExchangePlanContent(Val ExchangePlanName) Export
 		If ExcludeFromComposition.Count() <> 0 Then
 			
 			DetailsExceptions2 = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The exchange plan %1 must NOT include the following metadata objects: %2'"),
+				NStr("en='The exchange plan %1 must NOT include the following metadata objects: %2';ru='В состав плана обмена %1 НЕ должны входить следующие объекты метаданных: %2'"),
 				ExchangePlanName,
 				StringFunctionsClientServer.RowFromArraySubrows(PresentationMetadataObjects(ExcludeFromComposition), ", "));
 			
@@ -1364,8 +1366,9 @@ Procedure ValidateExchangePlanContent(Val ExchangePlanName) Export
 		If DisableAutoregistration.Count() <> 0 Then
 			
 			ExceptionDescription3 = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'There should be no objects with the set auto-registration flag in the %1 exchange plan content.
-				|It is required to prohibit the auto-registration for the following metadata objects: %2'"),
+				NStr("en='There should be no objects with the set auto-registration flag in the %1 exchange plan content."
+"It is required to prohibit the auto-registration for the following metadata objects: %2';ru='В составе плана обмена %1 не должно быть объектов с установленным признаком авторегистрации."
+"Требуется запретить авторегистрацию для следующих объектов метаданных: %2'"),
 				ExchangePlanName,
 				StringFunctionsClientServer.RowFromArraySubrows(PresentationMetadataObjects(DisableAutoregistration), ", "));
 			
@@ -1420,19 +1423,19 @@ Procedure RegisterObjectInAllNodes(Val Object, Val ExchangePlanName) Export
 	If CommonUseReUse.DataSeparationEnabled() Then
 		
 		If CommonUseReUse.CanUseSeparatedData() Then
-			Raise NStr("en = 'Registration of the unseparated data modifications in the divided mode.'");
+			Raise NStr("en='Registration of the unseparated data modifications in the divided mode.';ru='Регистрация изменений неразделенных данных в разделенном режиме.'");
 		EndIf;
 		
 		If Not CommonUseReUse.IsSeparatedMetadataObject("ExchangePlan." + ExchangePlanName,
 				CommonUseReUse.MainDataSeparator())
 			Then
-			Raise NStr("en = 'Registration of modifications for undivided exchange plans is not supported.'");
+			Raise NStr("en='Registration of modifications for undivided exchange plans is not supported.';ru='Регистрация изменений для неразделенных планов обмена не поддерживается.'");
 		EndIf;
 		
 		If CommonUseReUse.IsSeparatedMetadataObject(Object.Metadata().FullName(),
 				CommonUseReUse.MainDataSeparator())
 			Then
-			Raise NStr("en = 'Registration of modifications for the separated objects is not supported.'");
+			Raise NStr("en='Registration of modifications for the separated objects is not supported.';ru='Регистрация изменений для разделенных объектов не поддерживается.'");
 		EndIf;
 		
 		QueryText =
@@ -1781,9 +1784,9 @@ Procedure WhenFillingOutPermitsForAccessToExternalResources(PermissionsQueries) 
 	permissions = New Array();
 	
 	permissions.Add(WorkInSafeMode.PermissionToUseTemporaryFilesDirectory(True, True,
-		NStr("en = 'For the application to work.'")));
+		NStr("en='For the application to work.';ru='Для возможности работы программы.'")));
 	permissions.Add(WorkInSafeMode.PermissionToUseExternalComponent("CommonTemplate.DeclinationComponentFullName", 
-		NStr("en = 'To use functions by the full name declension.'")));
+		NStr("en='To use functions by the full name declension.';ru='Для использования функций по склонению ФИО.'")));
 	permissions.Add(WorkInSafeMode.PermissionToUsePrivelegedMode());
 	
 	PermissionsQueries.Add(
@@ -1945,12 +1948,12 @@ Procedure ClearTempFilesDirectory(PathToDirectory) Export
 		DeleteFiles(PathToDirectory);
 	Except
 		WriteLogEvent(
-			NStr("en = 'Standard subsystems'", CommonUseClientServer.MainLanguageCode()),
+			NStr("en='Standard subsystems';ru='Стандартные подсистемы'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Warning,
 			,
 			,
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while clearing the directory of temporary files %1:%2'"),
+				NStr("en='An error occurred while clearing the directory of temporary files %1:%2';ru='Ошибка очистки каталога временных файлов ""%1"":%2'"),
 				PathToDirectory,
 				Chars.LF + DetailErrorDescription(ErrorInfo())));
 	EndTry;
@@ -2435,14 +2438,15 @@ Function EventsHandlers() Export
 		RequiredServerServiceEvents, HandlersOfServerServiceEventsBySubsystems);
 	
 	If AreRequiredEventsWithoutHandlers.Count() > 0 Then
-		EventName  = NStr("en = 'EVENT HANDLERS'", CommonUseClientServer.MainLanguageCode());
+		EventName  = NStr("en='EVENT HANDLERS';ru='Обработчики событий'", CommonUseClientServer.MainLanguageCode());
 		
-		Comment = NStr("en = 'Handlers have not been determined for the following obligatory events:'")
+		Comment = NStr("en='Handlers have not been determined for the following obligatory events:';ru='Для следующих обязательных событий не определены обработчики:'")
 			+ Chars.LF + StringFunctionsClientServer.RowFromArraySubrows(AreRequiredEventsWithoutHandlers, Chars.LF);
 		
 		WriteLogEvent(EventName, EventLogLevel.Error,,, Comment);
-		Raise NStr("en = 'The handlers are not defined for the mandatory events.
-		                             |Look for details in event log.'");
+		Raise NStr("en='The handlers are not defined for the mandatory events."
+"Look for details in event log.';ru='Для обязательных событий не определены обработчики."
+"Подробности см. в журнале регистрации.'");
 	EndIf;
 	
 	// Formatting the descriptions of application events handlers.
@@ -2519,8 +2523,9 @@ Procedure ImportRefreshApplicationWorkParameters(ExclusiveModeSetupError = Undef
 	If CommonUseReUse.DataSeparationEnabled()
 	   AND CommonUseReUse.CanUseSeparatedData() Then
 		Raise
-			NStr("en = 'Program work parameters can not
-			           |be updated in the divided mode of the service model.'");
+			NStr("en='Program work parameters can not"
+"be updated in the divided mode of the service model.';ru='Обновление параметров работы программы не может"
+"быть выполнено в разделенном режиме модели сервиса.'");
 	EndIf;
 	
 	If StandardSubsystemsReUse.DisableCatalogMetadataObjectIDs() Then
@@ -2556,9 +2561,11 @@ Procedure ImportRefreshApplicationWorkParameters(ExclusiveModeSetupError = Undef
 						Except
 							If ExclusiveModeSetupError <> Undefined Then
 								ExclusiveModeSetupError =
-									NStr("en = 'Unable to update the
-									           |infobase: - Unable to set
-									           |the exclusive mode - Configuration version does not include update without setting the exclusive mode.'");
+									NStr("en='Unable to update the"
+"infobase: - Unable to set"
+"the exclusive mode - Configuration version does not include update without setting the exclusive mode.';ru='Невозможно выполнить"
+"обновление информационной"
+"базы: - Невозможно установить монопольный режим - Версия конфигурации не предусматривает обновление без установки монопольного режима.'");
 							EndIf;
 							Raise ExclusiveModeSetupError;
 						EndTry;
@@ -2588,11 +2595,11 @@ Procedure ImportRefreshApplicationWorkParameters(ExclusiveModeSetupError = Undef
 			If ValueIsFilled(CriticalChangesList) Then
 				
 				If RunImport Then
-					EventName = NStr("en = 'Metadata objects identifiers.It is required to import critical changes'",
+					EventName = NStr("en='Metadata objects identifiers.It is required to import critical changes';ru='Идентификаторы объектов метаданных.Требуется загрузить критичные изменения'",
 						CommonUseClientServer.MainLanguageCode());
 				Else
 					// Setting in the IB subordinate node during the first start.
-					EventName = NStr("en = 'Metadata objects identifiers.It is required to execute critical changes'",
+					EventName = NStr("en='Metadata objects identifiers.It is required to execute critical changes';ru='Идентификаторы объектов метаданных.Требуется выполнить критичные изменения'",
 						CommonUseClientServer.MainLanguageCode());
 				EndIf;
 				WriteLogEvent(EventName, EventLogLevel.Error, , , CriticalChangesList);
@@ -2604,15 +2611,19 @@ Procedure ImportRefreshApplicationWorkParameters(ExclusiveModeSetupError = Undef
 				
 				If RunImport Then
 					ErrorText =
-						NStr("en = 'Changes of the Metadata objects identifiers catalog are not
-						           |imported from the main node: verification detected that it is required to
-						           |import critical changes (for the details, see events log monitor in the event Metadata objects identifiersIt is required to import critical changes).'");
+						NStr("en='Changes of the Metadata objects identifiers catalog are not"
+"imported from the main node: verification detected that it is required to"
+"import critical changes (for the details, see events log monitor in the event Metadata objects identifiersIt is required to import critical changes).';ru='Из главного узла не загружены изменения справочника ""Идентификаторы объектов метаданных"":"
+"при проверке обнаружено, что требуется загрузить критичные изменения (см. подробности в журнале"
+"регистрации в событии ""Идентификаторы объектов метаданных.Требуется загрузить критичные изменения"").'");
 				Else
 					// Setting in the IB subordinate node during the first start.
 					ErrorText =
-						NStr("en = 'The Metadata objects identifiers catalog is not
-						           |updated in the main node: the check showed that you need to
-						           |execute the critical changes (for etails, see the evens log monitor in the Metadata objects identifiers.It is required to execute critical changes event).'");
+						NStr("en='The Metadata objects identifiers catalog is not"
+"updated in the main node: the check showed that you need to"
+"execute the critical changes (for etails, see the evens log monitor in the Metadata objects identifiers.It is required to execute critical changes event).';ru='В главном узле не обновлен справочник ""Идентификаторы объектов метаданных"":"
+"при проверке обнаружено, что требуется выполнить критичные изменения (см. подробности в журнале"
+"регистрации в событии ""Идентификаторы объектов метаданных.Требуется выполнить критичные изменения"").'");
 				EndIf;
 				
 				Raise ErrorText;
@@ -2925,7 +2936,7 @@ Procedure DisablePredefinedItemsDeletionMarkupBeforeWriting(Source, Cancel) Expo
 	
 	If Source.IsNew() Then
 		Raise
-			NStr("en = 'It is unacceptable to create the predefined item marked for deletion.'");
+			NStr("en='It is unacceptable to create the predefined item marked for deletion.';ru='Недопустимо создавать предопределенный элемент помеченный на удаление.'");
 	Else
 		OldProperties = CommonUse.ObjectAttributesValues(
 			Source.Ref, "DeletionMark, PredefinedDataName");
@@ -2934,16 +2945,18 @@ Procedure DisablePredefinedItemsDeletionMarkupBeforeWriting(Source, Cancel) Expo
 		   AND OldProperties.DeletionMark <> True Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'It is unacceptable to mark
-				           |the predefined item for deletion: %1'"),
+				NStr("en='It is unacceptable to mark"
+"the predefined item for deletion: %1';ru='Недопустимо помечать"
+"на удаление предопределенный элемент: ""%1"".'"),
 				String(Source.Ref));
 			
 		ElsIf OldProperties.PredefinedDataName = ""
 		        AND OldProperties.DeletionMark = True Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'It is unacceptable to connect the item marked
-				           |for deletion with the name of the predefined: %1.'"),
+				NStr("en='It is unacceptable to connect the item marked"
+"for deletion with the name of the predefined: %1.';ru='Недопустимо связывать с именем предопределенного"
+"элемент, помеченный на удаление: ""%1"".'"),
 				String(Source.Ref));
 		EndIf;
 	EndIf;
@@ -2959,8 +2972,9 @@ Procedure DisablePredefinedItemsDeletionBeforeDeletion(Source, Cancel) Export
 	EndIf;
 	
 	Raise StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'It is unacceptable
-		           |to delete the predefined item %1.'"),
+		NStr("en='It is unacceptable"
+"to delete the predefined item %1.';ru='Недопустимо"
+"удалять предопределенный элемент ""%1"".'"),
 		String(Source.Ref));
 	
 EndProcedure
@@ -3103,8 +3117,9 @@ Procedure BeforeApplicationStart()
 	// Check the main applicationming language installed in configuration.
 	If Metadata.ScriptVariant <> Metadata.ObjectProperties.ScriptVariant.English Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Variant of the %1 ultimate fallback language of configuration is not supported.
-			           |It is required to use %2 language variant.'"),
+			NStr("en='Variant of the %1 ultimate fallback language of configuration is not supported."
+"It is required to use %2 language variant.';ru='Вариант встроенного языка конфигурации ""%1"" не поддерживается."
+"Необходимо использовать вариант языка ""%2"".'"),
 			Metadata.ScriptVariant,
 			Metadata.ObjectProperties.ScriptVariant.English);
 	EndIf;
@@ -3114,7 +3129,7 @@ Procedure BeforeApplicationStart()
 	MinimalPlatformVersion = "8.3.5.1443";
 	If CommonUseClientServer.CompareVersions(SystemInfo.AppVersion, MinimalPlatformVersion) < 0 Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'To start, 1C:Enterprise platform version should be %1 or greater.'"), MinimalPlatformVersion);
+			NStr("en='To start, 1C:Enterprise platform version should be %1 or greater.';ru='Для запуска необходима версия платформы 1С:Предприятие %1 или выше.'"), MinimalPlatformVersion);
 	EndIf;
 	
 	Modes = Metadata.ObjectProperties.CompatibilityMode;
@@ -3142,28 +3157,30 @@ Procedure BeforeApplicationStart()
 	
 	If ValueIsFilled(UnavailableMode) Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Configuration compatibility mode with 1C:Enterprise version %1 is not supported.
-			           |To start it, set the mode of compatibility
-			           |with 1C:Enterprise version not less then 8 in configuration.3.5 or Do not use.'"),
+			NStr("en='Configuration compatibility mode with 1C:Enterprise version %1 is not supported."
+"To start it, set the mode of compatibility"
+"with 1C:Enterprise version not less then 8 in configuration.3.5 or Do not use.';ru='Режим совместимости конфигурации с 1С:Предприятием версии %1 не поддерживается. Для запуска установите в конфигурации режим совместимости с 1С:Предприятием версии не ниже 8.3.5 или ""Не использовать"".'"),
 			UnavailableMode);
 	EndIf;
 	
 	// Check if the configuration version is filled in.
 	If IsBlankString(Metadata.Version) Then
-		Raise NStr("en = 'Version configuration property is not filled.'");
+		Raise NStr("en='Version configuration property is not filled.';ru='Не заполнено свойство конфигурации Версия.'");
 	Else
 		Try
 			ZeroVersion = CommonUseClientServer.CompareVersions(Metadata.Version, "0.0.0.0") = 0;
 		Except
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The property of the Version configuration is filled in incorrectly: %1
-				           |Correct format, for example: ""1.2.3.45"".'"),
+				NStr("en='The property of the Version configuration is filled in incorrectly: %1"
+"Correct format, for example: ""1.2.3.45"".';ru='Не правильно заполнено свойство конфигурации Версия: ""%1""."
+"Правильный формат, например: ""1.2.3.45"".'"),
 				Metadata.Version);
 		EndTry;
 		If ZeroVersion Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The property of the Version configuration is filled in incorrectly: %1
-				           |Version can not be the zero.'"),
+				NStr("en='The property of the Version configuration is filled in incorrectly: %1"
+"Version can not be the zero.';ru='Не правильно заполнено свойство конфигурации Версия: ""%1""."
+"Версия не может быть нулевой.'"),
 				Metadata.Version);
 		EndIf;
 	EndIf;
@@ -3172,8 +3189,9 @@ Procedure BeforeApplicationStart()
 	 Or Not Metadata.DefaultRoles.Contains(Metadata.Roles.SystemAdministrator)
 	 Or Not Metadata.DefaultRoles.Contains(Metadata.Roles.FullRights) Then
 		Raise
-			NStr("en = 'In configuration in the DefaultRoles property the SystemAdministrator
-			           |and FullRights standard roles are not specified or extra roles are specified.'");
+			NStr("en='In configuration in the DefaultRoles property the SystemAdministrator"
+"and FullRights standard roles are not specified or extra roles are specified.';ru='В конфигурации в свойстве ОсновныеРоли не"
+"указаны стандартные роли АдминистраторСистемы и ПолныеПрава или указаны лишние роли.'");
 	EndIf;
 	
 	// Check if it is possible to execute the handlers of session parameters setting for the application start.
@@ -4087,10 +4105,13 @@ Procedure CheckUniquenessOfEventNames(Events)
 			AllEvents.Insert(Event, True);
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while preparing the events list.
-				           |
-				           |Event
-				           |%1 is already added.'"),
+				NStr("en='An error occurred while preparing the events list."
+""
+"Event"
+"%1 is already added.';ru='Ошибка при подготовке списка событий."
+""
+"Событие"
+"""%1"" уже добавлено.'"),
 				Event);
 		EndIf;
 		
@@ -4182,10 +4203,13 @@ Function StandardDetailsEventHandlers(SubsystemDescriptions, HandlersEventsBySub
 				 OR Not ValueIsFilled(Handler.Module) Then
 					
 					Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'AN error occurred while
-						           |preparing %1 event handlers.
-						           |
-						           |Error in %2 module name.'"),
+						NStr("en='AN error occurred while"
+"preparing %1 event handlers."
+""
+"Error in %2 module name.';ru='Ошибка при"
+"подготовке обработчиков события ""%1""."
+""
+"Ошибка в имени модуля ""%2"".'"),
 						Event,
 						Handler.Module);
 				EndIf;
@@ -4195,10 +4219,13 @@ Function StandardDetailsEventHandlers(SubsystemDescriptions, HandlersEventsBySub
 					ModulesHandlers[Event].Insert(Handler.Module, True);
 				Else
 					Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'AN error occurred while
-						           |preparing %1 event handlers.
-						           |
-						           |Module %2 is already added.'"),
+						NStr("en='AN error occurred while"
+"preparing %1 event handlers."
+""
+"Module %2 is already added.';ru='Ошибка при"
+"подготовке обработчиков события ""%1""."
+""
+"Модуль ""%2"" уже добавлен.'"),
 						Event,
 						Handler.Module);
 				EndIf;
@@ -4212,11 +4239,15 @@ Function StandardDetailsEventHandlers(SubsystemDescriptions, HandlersEventsBySub
 					HandlersEvents .Insert(HandlerName, Event);
 				Else
 					Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'AN error occurred while
-						           |preparing %1 event handlers.
-						           |
-						           |%2 handler is already
-						           |added for %3 event.'"),
+						NStr("en='AN error occurred while"
+"preparing %1 event handlers."
+""
+"%2 handler is already"
+"added for %3 event.';ru='Ошибка при"
+"подготовке обработчиков события ""%1""."
+""
+"Обработчик ""%2"""
+"уже добавлен для события ""%3"".'"),
 						Event,
 						HandlerName,
 						HandlersEvents [HandlerName]);

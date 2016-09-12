@@ -271,7 +271,7 @@ Function AttributeCompanyIsAvailable(Object)
 				
 			EndIf;
 			
-			MessageString = NStr("en = 'For the %1 metadata object the attribute with the %2 name is not defined.'");
+			MessageString = NStr("en='For the %1 metadata object the attribute with the %2 name is not defined.';ru='Для объекта метаданных %1 не определен реквизит с именем %2.'");
 			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, ObjectMetadata.FullName(), AttributeNameCompany);
 			Raise MessageString;
 		EndIf;

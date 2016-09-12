@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Choose type of payment</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выберите тип оплаты</v8:content>
+		</v8:item>
 	</Title>
 	<Width>24</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -30,6 +34,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Non-Cash</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Безналичными</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xr:DesignTimeRef">Enum.CashAssetTypes.EnumValue.Noncash</Value>
 					</xr:Value>
@@ -42,6 +50,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Cash</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Наличными</v8:content>
 							</v8:item>
 						</Presentation>
 						<Value xsi:type="xr:DesignTimeRef">Enum.CashAssetTypes.EnumValue.Cash</Value>
@@ -57,11 +69,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Group buttons</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа кнопки</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group buttons</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа кнопки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -95,6 +115,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Selection</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбор</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.CashAssetTypes</v8:Type>
@@ -108,11 +132,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>OK</Action>

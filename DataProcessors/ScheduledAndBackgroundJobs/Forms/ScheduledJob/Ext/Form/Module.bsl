@@ -9,17 +9,20 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise NStr("en = 'Insufficient access rights.
-		                             |
-		                             |Change properties of
-		                             |scheduled job is executed only by administrators.'");
+		Raise NStr("en='Insufficient access rights."
+""
+"Change properties of"
+"scheduled job is executed only by administrators.';ru='Недостаточно прав доступа."
+""
+"Изменение свойств регламентного задания"
+"выполняется только администраторами.'");
 	EndIf;
 	
 	Action = Parameters.Action;
 	
 	If Find(", Add, Copy, Change,", ", " + Action + ",") = 0 Then
 		
-		Raise NStr("en = 'Invalid parameters of opening the form ""Scheduled job"".'");
+		Raise NStr("en='Invalid parameters of opening the form ""Scheduled job"".';ru='Неверные параметры открытия формы ""Регламентное задание"".'");
 	EndIf;
 	
 	If Action = "Add" Then
@@ -52,9 +55,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		ID = String(Task.UUID);
 		If Task.Metadata = Undefined Then
-			MetadataName        = NStr("en = '<no metadata>'");
-			MetadataSynonym     = NStr("en = '<no metadata>'");
-			MetadataMethodName  = NStr("en = '<no metadata>'");
+			MetadataName        = NStr("en='<no metadata>';ru='<нет метаданных>'");
+			MetadataSynonym     = NStr("en='<no metadata>';ru='<нет метаданных>'");
+			MetadataMethodName  = NStr("en='<no metadata>';ru='<нет метаданных>'");
 		Else
 			MetadataName        = Task.Metadata.Name;
 			MetadataSynonym     = Task.Metadata.Synonym;
@@ -67,7 +70,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Action <> "Change" Then
-		ID = NStr("en = '<will be created when recording>'");
+		ID = NStr("en='<will be created when recording>';ru='<будет создан при записи>'");
 		Use = False;
 		
 		Description = ?(
@@ -161,7 +164,7 @@ Procedure TemplateSelectionForNewScheduledJob()
 	// Template selection for scheduled job (metadata).
 	ScheduledJobMetadataDetails.ShowChooseItem(
 		New NotifyDescription("TemplateSelectionForNewScheduledJobEnd", ThisObject),
-		NStr("en = 'Select the scheduled job template'"));
+		NStr("en='Select the scheduled job template';ru='Выберите шаблон регламентного задания'"));
 	
 EndProcedure
 
@@ -252,9 +255,9 @@ Procedure RefreshFormTitle()
 	
 	If Action = "Change" Then
 		Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 (Scheduled job)'"), Presentation);
+			NStr("en='%1 (Scheduled job)';ru='%1 (Регламентное задание)'"), Presentation);
 	Else
-		Title = NStr("en = 'Scheduled job (creating)'");
+		Title = NStr("en='Scheduled job (creating)';ru='Регламентное задание (создание)'");
 	EndIf;
 	
 EndProcedure

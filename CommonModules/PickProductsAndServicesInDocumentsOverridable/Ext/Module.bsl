@@ -125,7 +125,7 @@ Function FullTextSearchProducts(SearchString, SearchResult)
 				
 			Else
 				
-				Raise NStr("en = 'Unknown error'");
+				Raise NStr("en='Unknown error';ru='Неизвестная ошибка'");
 				
 			EndIf;
 			
@@ -188,17 +188,17 @@ Function SearchGoods(SearchString, ErrorDescription) Export
 		
 	ElsIf Result = "TooManyResults" Then
 		
-		ErrorDescription = NStr("en = 'Too many results. Refine your query.'");
+		ErrorDescription = NStr("en='Too many results. Refine your query.';ru='Слишком много результатов. Уточните запрос.'");
 		Return SearchResult;
 		
 	ElsIf Result = "FoundNothing" Then
 		
-		ErrorDescription = NStr("en = 'Nothing found'");
+		ErrorDescription = NStr("en='Nothing found';ru='Ничего не найдено'");
 		Return SearchResult;
 		
 	Else
 		
-		Raise NStr("en = 'Unknown error'");
+		Raise NStr("en='Unknown error';ru='Неизвестная ошибка'");
 		
 	EndIf;
 	

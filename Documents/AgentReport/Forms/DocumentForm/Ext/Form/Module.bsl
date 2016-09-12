@@ -62,13 +62,15 @@ Procedure ProcessPricesKindAndSettlementsCurrencyChange(DocumentParameters)
 		WarningText = "";
 		If QueryPriceKind AND RecalculationRequired Then
 			
-			WarningText = NStr("en = 'The counterparty contract allows for the kind of prices other than prescribed in the document! 
-				|Recalculate the document according to the contract?'") + Chars.LF + Chars.LF;
+			WarningText = NStr("en='The counterparty contract allows for the kind of prices other than prescribed in the document! "
+"Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает вид цен, отличный от установленного в документе! "
+"Пересчитать документ в соответствии с договором?'") + Chars.LF + Chars.LF;
 				
 		EndIf;
 		
-		WarningText = WarningText + NStr("en = 'Settlement currency of the contract with counterparty changed! 
-			|It is necessary to check the document currency!'");
+		WarningText = WarningText + NStr("en='Settlement currency of the contract with counterparty changed! "
+"It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! "
+"Необходимо проверить валюту документа!'");
 			
 		ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, True, QueryPriceKind, WarningText);
 		
@@ -76,8 +78,9 @@ Procedure ProcessPricesKindAndSettlementsCurrencyChange(DocumentParameters)
 		
 		If RecalculationRequired Then
 			
-			QuestionText = NStr("en = 'The counterparty contract allows for the kind of prices other than prescribed in the document! 
-				|Recalculate the document according to the contract?'");
+			QuestionText = NStr("en='The counterparty contract allows for the kind of prices other than prescribed in the document! "
+"Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает вид цен, отличный от установленного в документе! "
+"Пересчитать документ в соответствии с договором?'");
 				
 			NotifyDescription = New NotifyDescription("DefineDocumentRecalculateNeedByContractTerms", ThisObject, DocumentParameters);
 			
@@ -546,7 +549,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en = '%Currency%'");
+			LabelText = NStr("en='%Currency%';ru='%Вал%'");
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
@@ -554,9 +557,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%PriceKind%'");
+			LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %PriceKind%'");
+			LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
@@ -564,9 +567,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%VATTaxation%'");
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %VATTaxation%'");
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
@@ -574,9 +577,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then	
 		If LabelStructure.AmountIncludesVAT Then	
-			LabelText = NStr("en = 'Amount includes VAT'");
+			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
 		Else
-			LabelText = NStr("en = 'Amount does not include VAT'");
+			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
 		EndIf;
 	EndIf;
 	
@@ -753,7 +756,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en = 'Data by barcode is not found: %1%; quantity: %2%'");
+		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -881,7 +884,7 @@ Procedure ProcessContractChange(ContractData = Undefined)
 		
 		If QueryBoxPrepayment = True Then
 			
-			QuestionText = NStr("en = 'Prepayment set-off will be cleared, do you want to continue?'");
+			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
 			
 			NotifyDescription = New NotifyDescription("DefineAdvancePaymentOffsetsRefreshNeed", ThisObject, DocumentParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -975,15 +978,15 @@ Procedure SelectionByBalances(Command)
 	Cancel = SmallBusinessClient.BeforeAddToSubordinateTabularSection(ThisForm, "Inventory");
 	
 	If Not ValueIsFilled(Object.Company) Then
-		MessageText = NStr("en = 'Field ""Company"" is not filled'");
+		MessageText = NStr("en='Field ""Company"" is not filled';ru='Поле ""Организация"" не заполнено'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText,,, "Company", Cancel);
 	EndIf;
 	If Not ValueIsFilled(Object.Counterparty) Then
-		MessageText = NStr("en = 'Field ""Counterparty"" is not filled'");
+		MessageText = NStr("en='Field ""Counterparty"" is not filled';ru='Поле ""Контрагент"" не заполнено'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText,,, "Counterparty", Cancel);
 	EndIf;
 	If Not ValueIsFilled(Object.Contract) Then
-		MessageText = NStr("en = 'Field ""Contract"" is not filled'");
+		MessageText = NStr("en='Field ""Contract"" is not filled';ru='Поле ""Договор"" не заполнено'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText,,, "Contract", Cancel);
 	EndIf;
 	
@@ -1292,7 +1295,7 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 		If MessageText <> "" Then
 			
 			Message = New UserMessage;
-			Message.Text = ?(Cancel, NStr("en = 'Document is not posted! '") + MessageText, MessageText);
+			Message.Text = ?(Cancel, NStr("en='Document is not posted! ';ru='Документ не проведен! '") + MessageText, MessageText);
 			
 			If Cancel Then
 				Message.DataPath = "Object";
@@ -1483,12 +1486,12 @@ EndProcedure // AddCounterpartyToCustomers()
 Procedure EditPrepaymentOffset(Command)
 	
 	If Not ValueIsFilled(Object.Counterparty) Then
-		ShowMessageBox(, NStr("en = 'Specify the counterparty first.'"));
+		ShowMessageBox(, NStr("en='Specify the counterparty first.';ru='Укажите вначале контрагента!'"));
 		Return;
 	EndIf;
 	
 	If Not ValueIsFilled(Object.Contract) Then
-		ShowMessageBox(, NStr("en = 'Specify the counterparty contract first.'"));
+		ShowMessageBox(, NStr("en='Specify the counterparty contract first.';ru='Укажите вначале договор контрагента!'"));
 		Return;
 	EndIf;
 	
@@ -1566,7 +1569,7 @@ Procedure SearchByBarcode(Command)
 	EndIf;
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en = 'Enter barcode'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
 
 EndProcedure
 
@@ -1599,7 +1602,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.'"));
+		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -1617,7 +1620,7 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	
 	If Not Weight = Undefined Then
 		If Weight = 0 Then
-			MessageText = NStr("en = 'Electronic scales returned zero weight.'");
+			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			// Weight is received.

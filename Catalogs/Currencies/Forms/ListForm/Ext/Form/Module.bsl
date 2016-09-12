@@ -48,8 +48,9 @@ EndProcedure
 
 &AtClient
 Procedure CurrenciesBeforeAddRow(Item, Cancel, Copy, Parent, Group)
-	Text = NStr("en = 'There is an option to pick the currency from the classifier.
-	|Select?'");
+	Text = NStr("en='There is an option to pick the currency from the classifier."
+"Select?';ru='Есть возможность подобрать валюту из классификатора."
+"Подобрать?'");
 	Notification = New NotifyDescription("CurrenciesBeforeAddStartEnd", ThisObject);
 	SelectionButtons = New ValueList();
 	SelectionButtons.Add(DialogReturnCode.Yes, "Pick");

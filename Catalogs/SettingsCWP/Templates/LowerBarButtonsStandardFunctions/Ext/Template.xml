@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -83,6 +153,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Action</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Действие</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -94,6 +168,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Command name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя команды</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -105,6 +183,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Button name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Название кнопки</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -115,6 +197,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Button name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Название кнопки</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -127,6 +213,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>ButtonProcedure</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПроцедураКнопки</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -138,15 +228,23 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Key</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>7</f>
+					<f>10</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Alt</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Alt</v8:content>
 						</v8:item>
 					</tl>
@@ -154,10 +252,14 @@
 			</c>
 			<c>
 				<c>
-					<f>7</f>
+					<f>10</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Ctrl</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Ctrl</v8:content>
 						</v8:item>
 					</tl>
@@ -165,22 +267,30 @@
 			</c>
 			<c>
 				<c>
-					<f>7</f>
+					<f>10</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Shift</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>сдвиг</v8:content>
 						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>7</f>
+					<f>10</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>By default</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По умолчанию</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -192,38 +302,50 @@
 		<row>
 			<c>
 				<c>
-					<f>10</f>
+					<f>11</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Go to the search string</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Перейти к строке поиска</v8:content>
 						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>11</f>
+					<f>12</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>11</f>
+					<f>12</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>ProductsAndServicesSearchValue</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЗначениеПоискаНоменклатуры</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>10</f>
+					<f>11</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Go to the search string</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Перейти к строке поиска</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -231,44 +353,15 @@
 			<c>
 				<i>5</i>
 				<c>
-					<f>12</f>
+					<f>13</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>F</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>True</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ж</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -280,6 +373,55 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>15</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -291,11 +433,45 @@
 		<row>
 			<c>
 				<c>
-					<f>10</f>
+					<f>11</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Journal</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Журнал</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>12</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ShowJournal</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПоказатьЖурнал</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>12</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ShowJournal</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПоказатьЖурнал</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -306,29 +482,11 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>ShowJournal</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>11</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>ShowJournal</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>10</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
 							<v8:content>Journal</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Журнал</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -336,44 +494,15 @@
 			<c>
 				<i>5</i>
 				<c>
-					<f>12</f>
+					<f>13</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Z</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>True</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Z</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -385,6 +514,55 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>15</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -396,11 +574,45 @@
 		<row>
 			<c>
 				<c>
-					<f>10</f>
+					<f>11</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Quick sale</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Быстрые товары</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>12</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ShowQuickSales</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПоказатьБыстрыеТовары</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>12</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ShowQuickSales</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПоказатьБыстрыеТовары</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -411,29 +623,11 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>ShowQuickSales</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>11</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>ShowQuickSales</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>10</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
 							<v8:content>Quick sale</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Быстрые товары</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -441,44 +635,15 @@
 			<c>
 				<i>5</i>
 				<c>
-					<f>12</f>
+					<f>13</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>X</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>True</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>X</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -490,6 +655,55 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>15</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -501,11 +715,45 @@
 		<row>
 			<c>
 				<c>
-					<f>10</f>
+					<f>11</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>My PettyCash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Моя касса</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>12</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ShowMyPettyCash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПоказатьМоюКассу</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>12</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ShowMyPettyCash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПоказатьМоюКассу</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -516,29 +764,11 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>ShowMyPettyCash</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>11</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>ShowMyPettyCash</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>10</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
 							<v8:content>My PettyCash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Моя касса</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -546,44 +776,15 @@
 			<c>
 				<i>5</i>
 				<c>
-					<f>12</f>
+					<f>13</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>C</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>True</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>C</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -595,6 +796,55 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>15</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -606,11 +856,45 @@
 		<row>
 			<c>
 				<c>
-					<f>10</f>
+					<f>11</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Withdrawal</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выемка денег</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>12</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Withdrawal</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выемка денег</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>12</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Withdrawal</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выемка денег</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -623,27 +907,9 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Withdrawal</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>11</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Withdrawal</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>10</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Withdrawal</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выемка денег</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -651,44 +917,15 @@
 			<c>
 				<i>5</i>
 				<c>
-					<f>12</f>
+					<f>13</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>F3</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>True</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>F3</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -700,6 +937,55 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>15</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -711,21 +997,44 @@
 		<row>
 			<c>
 				<c>
-					<f>10</f>
+					<f>11</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash deposition</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Внесение денег</v8:content>
 						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>11</f>
+					<f>12</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>CashDeposition</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>CashDeposition</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>12</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>CashDeposition</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>CashDeposition</v8:content>
 						</v8:item>
 					</tl>
@@ -737,18 +1046,11 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>CashDeposition</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>10</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
 							<v8:content>Cash deposition</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Внесение денег</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -756,44 +1058,15 @@
 			<c>
 				<i>5</i>
 				<c>
-					<f>12</f>
+					<f>13</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>F1</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>True</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>F1</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -805,6 +1078,55 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>15</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -814,26 +1136,49 @@
 	<rowsItem>
 		<index>7</index>
 		<row>
-			<formatIndex>15</formatIndex>
+			<formatIndex>16</formatIndex>
 			<c>
 				<c>
-					<f>10</f>
+					<f>11</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Get weight</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Получить вес</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>11</f>
+					<f>12</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>GetWeight</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПолучитьВес</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>12</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>InventoryWeight</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЗапасыВес</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -843,18 +1188,11 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>InventoryWeight</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>10</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
 							<v8:content>Get weight (Ctrl + F2)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Получить вес (Ctrl+F2)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -862,10 +1200,14 @@
 			<c>
 				<i>5</i>
 				<c>
-					<f>12</f>
+					<f>13</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>F2</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>F2</v8:content>
 						</v8:item>
 					</tl>
@@ -873,33 +1215,15 @@
 			</c>
 			<c>
 				<c>
-					<f>13</f>
+					<f>14</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>False</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>True</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -912,6 +1236,40 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>15</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -920,47 +1278,18 @@
 	<rowsItem>
 		<index>8</index>
 		<row>
-			<formatIndex>15</formatIndex>
+			<formatIndex>16</formatIndex>
 			<c>
 				<c>
-					<f>11</f>
+					<f>12</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Print report without blanking</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>16</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>ReportPrintingWithoutBlanking</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>16</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>ReportPrintingWithoutBlankingAllActions</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>11</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Print report without blanking</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Печать отчета без гашения</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -968,6 +1297,31 @@
 			<c>
 				<c>
 					<f>17</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ReportPrintingWithoutBlanking</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПечатьОтчетаБезГашения</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>17</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ReportPrintingWithoutBlankingAllActions</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПечатьОтчетаБезГашенияВсеДействия</v8:content>
+						</v8:item>
+					</tl>
 				</c>
 			</c>
 			<c>
@@ -976,18 +1330,11 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>F12</v8:content>
+							<v8:content>Print report without blanking</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Печать отчета без гашения</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -995,32 +1342,79 @@
 			<c>
 				<c>
 					<f>18</f>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>13</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>F12</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>F12</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>False</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>True</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
 						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>13</f>
+					<f>19</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1038,6 +1432,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Pick</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подобрать</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1048,6 +1446,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Pick</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подобрать</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1060,6 +1462,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>InventoryPick</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЗапасыПодбор</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1071,50 +1477,25 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Pick</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подобрать</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<i>5</i>
 				<c>
-					<f>12</f>
+					<f>13</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>F2</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>True</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>F2</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1126,6 +1507,55 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>15</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1143,16 +1573,9 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Increase quantity</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>0</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>IncreaseQuantity</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Увеличить количество</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1164,6 +1587,25 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>IncreaseQuantity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>УвеличитьКоличество</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>0</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>IncreaseQuantity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>УвеличитьКоличество</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1175,6 +1617,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Increase quantity (Num +)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Увеличить количество (Num +)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1188,38 +1634,54 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>NumAdd</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>NumAdd</v8:content>
 						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>13</f>
+					<f>14</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
 						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>13</f>
+					<f>14</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1231,6 +1693,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1248,6 +1714,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Reduce quantity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уменьшить количество</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1258,6 +1728,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>ReduceQuantity</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>УменьшитьКоличество</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1270,6 +1744,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>ReduceQuantity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>УменьшитьКоличество</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1280,6 +1758,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Reduce quantity (Num -)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уменьшить количество (Num -)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1293,38 +1775,54 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>NumSubtract</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>NumSubtract</v8:content>
 						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>13</f>
+					<f>14</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
 						</v8:item>
 					</tl>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>13</f>
+					<f>14</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1336,6 +1834,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1353,16 +1855,9 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Change quantity</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>0</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>ChangeQuantityUsingCalculator</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изменить количество</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1374,6 +1869,25 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>ChangeQuantityUsingCalculator</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИзменитьКоличествоСПомощьюКалькулятора</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>0</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>ChangeQuantityUsingCalculator</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИзменитьКоличествоСПомощьюКалькулятора</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1385,6 +1899,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Change quantity (Alt + K)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изменить количество (Alt+K)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1398,38 +1916,9 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>K</v8:content>
 						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>True</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>13</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>False</v8:content>
+							<v8:lang>ru</v8:lang>
+							<v8:content>K</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1442,13 +1931,62 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>True</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>14</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>False</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ложь</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>15</f>
+					<tl>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>True</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Истина</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
 		</row>
 	</rowsItem>
 	<templateMode>true</templateMode>
-	<defaultFormatIndex>19</defaultFormatIndex>
+	<defaultFormatIndex>20</defaultFormatIndex>
 	<height>13</height>
 	<vgRows>13</vgRows>
 	<font faceName="Arial" height="8" bold="true" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
@@ -1500,6 +2038,18 @@
 		<backColor>style:ButtonBackColor</backColor>
 	</format>
 	<format>
+		<format>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>BF=False; BT=True</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>БЛ=Ложь; БИ=Истина</v8:content>
+			</v8:item>
+		</format>
+	</format>
+	<format>
 		<font>1</font>
 		<width>169</width>
 	</format>
@@ -1519,6 +2069,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>BF=False; BT=True</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>БЛ=Ложь; БИ=Истина</v8:content>
+			</v8:item>
 		</format>
 	</format>
 	<format>
@@ -1528,6 +2082,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>BF=False; BT=True</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>БЛ=Ложь; БИ=Истина</v8:content>
 			</v8:item>
 		</format>
 	</format>
@@ -1549,6 +2107,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>BF=False; BT=True</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>БЛ=Ложь; БИ=Истина</v8:content>
 			</v8:item>
 		</format>
 	</format>

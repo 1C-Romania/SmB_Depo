@@ -8,7 +8,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Parameters.Property("OptionsArray") Or TypeOf(Parameters.OptionsArray) <> Type("Array") Then
-		ErrorText = NStr("en = 'Report variants are not specified.'");
+		ErrorText = NStr("en='Report variants are not specified.';ru='Не указаны варианты отчетов.'");
 		Return;
 	EndIf;
 	
@@ -32,20 +32,20 @@ EndProcedure
 Procedure ResetCommand(Command)
 	SelectedOptionsQuantity = CustomizableOptions.Count();
 	If SelectedOptionsQuantity = 0 Then
-		ShowMessageBox(, NStr("en = 'Report variants are not specified.'"));
+		ShowMessageBox(, NStr("en='Report variants are not specified.';ru='Не указаны варианты отчетов.'"));
 		Return;
 	EndIf;
 	
 	VariantCount = ResetPlacementSettingsHost(CustomizableOptions);
 	If VariantCount = 1 AND SelectedOptionsQuantity = 1 Then
 		OptionRef = CustomizableOptions[0].Value;
-		NotificationTitle = NStr("en = 'The report variant placement settings have been reset'");
+		NotificationTitle = NStr("en='The report variant placement settings have been reset';ru='Сброшены настройки размещения варианта отчета'");
 		NotificationRef    = GetURL(OptionRef);
 		NotificationText     = String(OptionRef);
 		ShowUserNotification(NotificationTitle, NotificationRef, NotificationText);
 	Else
-		NotificationText = NStr("en = 'Settings for
-		|report options placement are reset (%1 pcs.).'");
+		NotificationText = NStr("en='Settings for"
+"report options placement are reset (%1 pcs.).';ru='Сброшены настройки размещения вариантов отчетов (%1 шт.'");
 		NotificationText = StrReplace(NotificationText, "%1", Format(VariantCount, "NZ=0; NG=0"));
 		ShowUserNotification(, , NotificationText);
 	EndIf;
@@ -103,10 +103,13 @@ Procedure Filter()
 	QuantityAfterFiltering = CustomizableOptions.Count();
 	If QuantityBeforeFiltration <> QuantityAfterFiltering Then
 		If QuantityAfterFiltering = 0 Then
-			ErrorText = NStr("en = 'Not necessary to reset settings of selected report options for one or
-			|multiple reasons: - Custom report options are selected.
-			|- Reports options for deletion are selected.
-			|- Additional or external report variants have been selected.'");
+			ErrorText = NStr("en='Not necessary to reset settings of selected report options for one or"
+"multiple reasons: - Custom report options are selected."
+"- Reports options for deletion are selected."
+"- Additional or external report variants have been selected.';ru='Сброс настроек размещения выбранных вариантов отчетов не требуется по одной"
+"или нескольким причинам: - Выбраны пользовательские варианты отчетов."
+"- Выбраны помеченные на удаление варианты отчетов."
+"- Выбраны варианты дополнительных или внешних отчетов.'");
 			Return;
 		EndIf;
 	EndIf;

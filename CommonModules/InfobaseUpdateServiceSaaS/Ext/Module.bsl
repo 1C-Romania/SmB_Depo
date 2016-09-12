@@ -137,7 +137,7 @@ Procedure GenerateDataAreaUpdatePlan(LibraryID, AllHandlers,
 				If Not Selection.Updated Then
 					EmptyUpdatePlan = False;
 					
-					CommentTemplate = NStr("en = 'Configuration version update has been performed before the %1 library version update'");
+					CommentTemplate = NStr("en='Configuration version update has been performed before the %1 library version update';ru='Обновление версии конфигурации было выполнено до обновления версии библиотеки %1'");
 					TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, Selection.Name);
 					WriteLogEvent(
 						InfobaseUpdate.EventLogMonitorEvent(),
@@ -158,7 +158,7 @@ Procedure GenerateDataAreaUpdatePlan(LibraryID, AllHandlers,
 				If DescriptionUpdateYourPlan = Undefined Then
 					EmptyUpdatePlan = False;
 					
-					CommentTemplate = NStr("en = 'Library update plan %1 has not been found'");
+					CommentTemplate = NStr("en='Library update plan %1 has not been found';ru='Не найден план обновления библиотеки %1'");
 					TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, Selection.Name);
 					WriteLogEvent(
 						InfobaseUpdate.EventLogMonitorEvent(),
@@ -173,8 +173,9 @@ Procedure GenerateDataAreaUpdatePlan(LibraryID, AllHandlers,
 				If DescriptionUpdateYourPlan.VersionOn <> Selection.Version Then
 					EmptyUpdatePlan = False;
 					
-					CommentTemplate = NStr("en = 'Incorrect library update plan
-						|is found %1 An update to version plan is required %2, an update to version plan is found %3'");
+					CommentTemplate = NStr("en='Incorrect library update plan"
+"is found %1 An update to version plan is required %2, an update to version plan is found %3';ru='Обнаружен некорректный"
+"план обновления библиотеки %1 Требуется план обновления на версию %2, найден план для обновления на версию %3'");
 					TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, Selection.Name);
 					WriteLogEvent(
 						InfobaseUpdate.EventLogMonitorEvent(),
@@ -233,8 +234,9 @@ Procedure BeforeInformationBaseUpdating() Export
 		
 		SharedDataVersion = InfobaseUpdateService.IBVersion(Metadata.Name, True);
 		If InfobaseUpdateService.NeedToDoUpdate(Metadata.Version, SharedDataVersion) Then
-			Message = NStr("en = 'Common part of the infobase update is not executed.
-				|Contact your administrator.'");
+			Message = NStr("en='Common part of the infobase update is not executed."
+"Contact your administrator.';ru='Не выполнена общая часть обновления информационной базы."
+"Обратитесь к администратору.'");
 			WriteLogEvent(InfobaseUpdate.EventLogMonitorEvent(), EventLogLevel.Error,,, Message);
 			Raise Message;
 		EndIf;
@@ -530,7 +532,7 @@ Procedure ScheduleDataAreaUpdate(Val LockAreas = True, Val LockMessage = "") Exp
 	If IsBlankString(LockMessage) Then
 		LockMessage = Constants.LockMessageOnConfigurationUpdate.Get();
 		If IsBlankString(LockMessage) Then
-			LockMessage = NStr("en = 'System is locked to perform the update.'");
+			LockMessage = NStr("en='System is locked to perform the update.';ru='Система заблокирована для выполнения обновления.'");
 		EndIf;
 	EndIf;
 	LockParameters = InfobaseConnections.NewLockConnectionParameters();
@@ -753,10 +755,10 @@ Function LockDataAreasVersions() Export
 			LockDataForEdit(RecordKey);
 		Except
 			WriteLogEvent(InfobaseUpdate.EventLogMonitorEvent() + ". " 
-				+ NStr("en = 'Data area updating'", Metadata.DefaultLanguage.LanguageCode),
+				+ NStr("en='Data area updating';ru='Обновление области данных'", Metadata.DefaultLanguage.LanguageCode),
 				EventLogLevel.Error,,,
 				DetailErrorDescription(ErrorInfo()));
-			Raise(NStr("en = 'An error occurred while updating data area. Record of the data area versions has been locked.'"));
+			Raise(NStr("en='An error occurred while updating data area. Record of the data area versions has been locked.';ru='Ошибка обновления области данных. Запись версий области данных заблокирована.'"));
 		EndTry;
 	EndIf;
 	Return RecordKey;
@@ -851,8 +853,9 @@ Function MinimumVersionOfDataAreas() Export
 	SetPrivilegedMode(True);
 	
 	If CommonUseReUse.DataSeparationEnabled() AND CommonUseReUse.CanUseSeparatedData() Then
-		Raise NStr("en = 'Call of
-		                             |the InfobaseUpdateServiceReUse.MinIBVersion() function is not available from the sessions with the set service model separators value.'");
+		Raise NStr("en='Call of"
+"the InfobaseUpdateServiceReUse.MinIBVersion() function is not available from the sessions with the set service model separators value.';ru='Вызов"
+"функции ОбновлениеИнформационнойБазыСлужебныйПовтИсп.МинимальнаяВерсияИБ() недоступен из сеансов с установленным значением разделителей модели сервиса!'");
 	EndIf;
 	
 	Query = New Query;

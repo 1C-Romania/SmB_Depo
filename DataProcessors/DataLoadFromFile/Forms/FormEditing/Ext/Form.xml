@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Form change</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Изменение бланка</v8:content>
+		</v8:item>
 	</Title>
 	<Width>50</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -21,6 +25,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>If data importing is required regularly you can customize column names, presentation and order to simplify importing.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Если регулярно требуется загрузка данных, то можно настроить наименование колонок, их отображение и порядок следования для упрощения загрузки.</v8:content>
 				</v8:item>
 			</Title>
 			<ContextMenu name="ExplanationContextMenu" id="23"/>
@@ -116,11 +124,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Columns list group name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список колонок группа наименование</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Columns list group name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список колонок группа наименование</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>InCell</Group>
@@ -166,11 +182,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Group command bar</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа командная панель</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group command bar</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа командная панель</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalLocation>Right</HorizontalLocation>
@@ -191,6 +215,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Cancel</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отменить</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="CloseExtendedTooltip" id="32"/>
 				</Button>
@@ -210,6 +238,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Columns list</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список колонок</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -221,6 +253,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Visible</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Видимость</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -231,6 +267,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Column</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>колонка</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -247,6 +287,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Column name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование колонки</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -262,6 +306,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Obligatory to complete</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обязательна для заполнения</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -271,6 +319,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Position</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Position</v8:content>
 						</v8:item>
 					</Title>
@@ -289,6 +341,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Column name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование колонки</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -303,6 +359,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Note</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заметка</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -321,6 +381,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Correlation object name</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя объекта сопоставления</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -335,6 +399,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Column description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание колонки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -353,11 +421,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>OK</Action>
@@ -368,11 +444,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Check all</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить все</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Check all</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить все</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -387,11 +471,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Uncheck all</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять флажки</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Uncheck all</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять флажки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -406,11 +498,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Reset settings</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сбросить настройки</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Reset settings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сбросить настройки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ResetSettings</Action>

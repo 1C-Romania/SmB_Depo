@@ -30,9 +30,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.EquipmentType.ReadOnly = ProvidedApplication;
 	Items.Description.ReadOnly = ProvidedApplication;
 	Items.ObjectID.ReadOnly = ProvidedApplication;
-	Items.ObjectID.InputHint = ?(ProvidedApplication, NStr("en='<Not specified>'"), 
-		NStr("en='<ProgID of the component is not entered>'"));
-	Items.DriverTemplateName.InputHint = ?(ProvidedApplication, NStr("en='<Not specified>'"), "");
+	Items.ObjectID.InputHint = ?(ProvidedApplication, NStr("en='<Not specified>';ru='<Не указан>'"), 
+		NStr("en='<ProgID of the component is not entered>';ru='<ProgID компоненты не введен>'"));
+	Items.DriverTemplateName.InputHint = ?(ProvidedApplication, NStr("en='<Not specified>';ru='<Не указан>'"), "");
 	
 	Items.Save.Visible = Not ProvidedApplication;
 	Items.WriteAndClose.Visible = Not ProvidedApplication;
@@ -98,13 +98,13 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	
 	If IsBlankString(Object.EquipmentType) Then 
 		Cancel = True;
-		CommonUseClientServer.MessageToUser(NStr("en='Equipment type is not specified.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='Equipment type is not specified.';ru='Тип оборудования не указан.'")); 
 		Return;
 	EndIf;
 	
 	If IsBlankString(Object.Description) Then 
 		Cancel = True;
-		CommonUseClientServer.MessageToUser(NStr("en='Name is not specified.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='Name is not specified.';ru='Наименование не указано.'")); 
 		Return;
 	EndIf;
 	
@@ -120,7 +120,7 @@ Procedure ExportDriverFileCommand(Command)
 	If ProvidedApplication Then
 		
 		If IsBlankString(Object.DriverTemplateName) Then
-			CommonUseClientServer.MessageToUser(NStr("en='Driver template name is not specified.'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Driver template name is not specified.';ru='Имя макета драйвера не указано.'"));
 			Return;
 		Else
 			ExportDriverLayout();
@@ -129,13 +129,14 @@ Procedure ExportDriverFileCommand(Command)
 	Else 
 		
 		If IsBlankString(Object.DriverFileName) Then
-			CommonUseClientServer.MessageToUser(NStr("en='Driver file is not imported.'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Driver file is not imported.';ru='Файл драйвера не загружен.'"));
 			Return;
 		EndIf;
 		
 		If Modified Then
-			Text = NStr("en='You can continue only after the data is saved.
-				|Write data and continue?'");
+			Text = NStr("en='You can continue only after the data is saved."
+"Write data and continue?';ru='Продолжение операции возможно только после записи данных."
+"Записать данные и продолжить?'");
 			Notification = New NotifyDescription("ExportDriverFileEnd", ThisObject);
 			ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo);
 		Else
@@ -162,7 +163,7 @@ EndProcedure
 Procedure ImportDriverFileCommand(Command)
 	
 	#If WebClient Then
-		ShowMessageBox(, NStr("en='This functionality is available only in thin and thick client mode.'"));
+		ShowMessageBox(, NStr("en='This functionality is available only in thin and thick client mode.';ru='Данный функционал доступен только в режиме тонкого и толстого клиента.'"));
 		Return;
 	#EndIf
 	
@@ -175,8 +176,9 @@ EndProcedure
 Procedure InstallDriverCommand(Command)
 	
 	If Modified Then
-		Text = NStr("en='You can continue only after the data is saved.
-			|Write data and continue?'");
+		Text = NStr("en='You can continue only after the data is saved."
+"Write data and continue?';ru='Продолжение операции возможно только после записи данных."
+"Записать данные и продолжить?'");
 		Notification = New NotifyDescription("SetupDriverEnd", ThisObject);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo);
 	Else
@@ -316,7 +318,7 @@ Function GetDriverInformationByFile(FullFileName)
 		Return Result;
 		
 	Else
-		ShowMessageBox(, NStr("en='Invalid file extension.'"));
+		ShowMessageBox(, NStr("en='Invalid file extension.';ru='Неверное расширение файла.'"));
 		Return Result;
 	EndIf;
 
@@ -327,14 +329,14 @@ EndFunction
 Procedure RefreshDriverCurrentStatus()
 	
 	If NewArchitecture AND IntegrationLibrary Then
-		DriverCurrentStatus = NStr("en='Integration library is installed.'");
-		DriverCurrentStatus = DriverCurrentStatus + ?(MainDriverIsSet, NStr("en='Basic supply of driver is installed.'"),
-																					 NStr("en='Driver main supply is not installed.'")); 
+		DriverCurrentStatus = NStr("en='Integration library is installed.';ru='Установлена интеграционная библиотека.'");
+		DriverCurrentStatus = DriverCurrentStatus + ?(MainDriverIsSet, NStr("en='Basic supply of driver is installed.';ru='Установлена основная поставка драйвера.'"),
+																					 NStr("en='Driver main supply is not installed.';ru='Основная поставка драйвера не установлена.'")); 
 	Else
-		DriverCurrentStatus = NStr("en='Installed on current computer.'");
+		DriverCurrentStatus = NStr("en='Installed on current computer.';ru='Установлен на текущем компьютере.'");
 	EndIf;
 	If Not IsBlankString(CurrentVersion) Then
-		DriverCurrentStatus = DriverCurrentStatus + StrReplace(NStr("en=' (Version: %s)'"), "%s", CurrentVersion);
+		DriverCurrentStatus = DriverCurrentStatus + StrReplace(NStr("en=' (Version: %s)';ru=' (Версия: %s)'"), "%s", CurrentVersion);
 	EndIf;
 	
 EndProcedure
@@ -368,9 +370,9 @@ EndProcedure
 Procedure GettingDriverObjectEnd(DriverObject, Parameters) Export
 	
 	If IsBlankString(Object.ObjectID) AND ProvidedApplication Then
-		DriverCurrentStatus = NStr("en='Driver setup is not required.'");
+		DriverCurrentStatus = NStr("en='Driver setup is not required.';ru='Установка драйвера не требуется.'");
 	ElsIf IsBlankString(DriverObject) Then
-		DriverCurrentStatus = NStr("en='It is not installed on the current computer. Type is not defined:'") + Chars.NBSp + Object.ObjectID;
+		DriverCurrentStatus = NStr("en='It is not installed on the current computer. Type is not defined:';ru='Не установлен на текущем компьютере. Не определен тип:'") + Chars.NBSp + Object.ObjectID;
 		Items.DriverCurrentStatus.TextColor = ErrorColor;
 	Else
 		Items.FormSetupDriver.Enabled = False;
@@ -437,15 +439,15 @@ Procedure UpdateItemsState();
 	
 	If Not IsBlankString(DriverFileName) Or ProvidedApplication Then
 		If IsBlankString(Object.ObjectID) Then
-			AdditionalInformation = NStr("en='ProgID of the component is not specified or driver installation is not required.'");
+			AdditionalInformation = NStr("en='ProgID of the component is not specified or driver installation is not required.';ru='Не указан ProgID компоненты или установка драйвера не требуется.'");
 		ElsIf Object.SuppliedAsDistribution Then
-			AdditionalInformation = NStr("en='Driver comes in the form of supplier distribution.'");
+			AdditionalInformation = NStr("en='Driver comes in the form of supplier distribution.';ru='Драйвер поставляется в виде дистрибутива поставщика.'");
 		Else
-			AdditionalInformation = NStr("en='Driver comes in the form of component in the archive.'") +
-				?(IsBlankString(Object.DriverVersion), "", Chars.LF + NStr("en='Component version in the archive:'") + Chars.NBSp + Object.DriverVersion);
+			AdditionalInformation = NStr("en='Driver comes in the form of component in the archive.';ru='Драйвер поставляется в виде компоненты в архиве.'") +
+				?(IsBlankString(Object.DriverVersion), "", Chars.LF + NStr("en='Component version in the archive:';ru='Версия компоненты в архиве:'") + Chars.NBSp + Object.DriverVersion);
 		EndIf;
 	Else
-		AdditionalInformation = NStr("en='Connection of driver installed on local computers.'");
+		AdditionalInformation = NStr("en='Connection of driver installed on local computers.';ru='Подключение установленного драйвера на локальных компьютерах.'");
 	EndIf;
 	
 EndProcedure
@@ -473,7 +475,7 @@ EndProcedure
 &AtClient
 Procedure SetDriverFromArchiveOnEnd(Result) Export 
 	
-	CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.'")); 
+	CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.';ru='Установка драйвера завершена.'")); 
 	RefreshDriverStatus();
 	
 EndProcedure 
@@ -482,10 +484,10 @@ EndProcedure
 Procedure SettingDriverFromDistributionOnEnd(Result, Parameters) Export 
 	
 	If Result Then
-		CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.';ru='Установка драйвера завершена.'")); 
 		RefreshDriverStatus();
 	Else
-		CommonUseClientServer.MessageToUser(NStr("en='An error occurred when installing the driver from distribution.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='An error occurred when installing the driver from distribution.';ru='При установке драйвера из дистрибутива произошла ошибка.'")); 
 	EndIf;
 
 EndProcedure 

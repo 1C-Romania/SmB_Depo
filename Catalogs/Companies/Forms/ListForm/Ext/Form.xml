@@ -15,11 +15,19 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
 				</Title>
 				<ToolTip>
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
 					</v8:item>
 				</ToolTip>
 				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
@@ -124,6 +132,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
 					</Title>
 					<Width>40</Width>
 					<ContextMenu name="ListNameContextMenu" id="5"/>
@@ -135,6 +147,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Prefix</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Префикс</v8:content>
 						</v8:item>
 					</Title>
 					<Width>8</Width>
@@ -161,6 +177,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Individual</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Физ. лицо</v8:content>
+						</v8:item>
 					</Title>
 					<Width>25</Width>
 					<ContextMenu name="ListIndividualContextMenu" id="27"/>
@@ -172,6 +192,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН</v8:content>
 						</v8:item>
 					</Title>
 					<Width>10</Width>
@@ -188,6 +212,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>KPP</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КПП</v8:content>
+						</v8:item>
 					</Title>
 					<Width>10</Width>
 					<ContextMenu name="ListKPPContextMenu" id="19"/>
@@ -202,6 +230,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>OKPO</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ОКПО</v8:content>
 						</v8:item>
 					</Title>
 					<Width>10</Width>
@@ -236,6 +268,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank account</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банковский счет</v8:content>
+						</v8:item>
 					</Title>
 					<Width>20</Width>
 					<ContextMenu name="ListBankAccountDefaultContextMenu" id="23"/>
@@ -250,6 +286,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Касса</v8:content>
 						</v8:item>
 					</Title>
 					<Width>20</Width>
@@ -274,6 +314,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Full description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Полное наименование</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="ListDescriptionFullContextMenu" id="39"/>
@@ -303,6 +347,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>код</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CodeListContextMenu" id="7"/>
@@ -358,11 +406,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Set main company</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить основную организацию</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Selected item will be populated to the user's documents by default</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбранный элемент будет по умолчанию подставляться в документы пользователя</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CommandSetMainItem</Action>

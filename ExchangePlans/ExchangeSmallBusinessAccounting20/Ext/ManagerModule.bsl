@@ -101,42 +101,42 @@ EndFunction
 //
 Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, CorrespondentVersion, SettingID) Export
 	
-	TextDescription = NStr("en = 'All normative-reference information is automatically registered for sending;'");
+	TextDescription = NStr("en='All normative-reference information is automatically registered for sending;';ru='Вся нормативно-справочная информация автоматически регистрируется к отправке;'");
 	
 	If FilterSsettingsAtNode.ManualExchange Then
 		
-		TextDescription = NStr("en = 'User individually selects and registers the documents for sending;'");
+		TextDescription = NStr("en='User individually selects and registers the documents for sending;';ru='Пользователь самостоятельно отбирает и регистрирует документы к отправке;'");
 		
 		If Not FilterSsettingsAtNode.ImportDocumentsFromEnterprisesAccounting Then
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'Application documents ""Accounting"" not participate in the synchronization;'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='Application documents ""Accounting"" not participate in the synchronization;';ru='Документы приложения ""Бухгалтерия предприятия"" в синхронизации не участвуют;'");
 		EndIf;
 		
 	Else
 		
 		If FilterSsettingsAtNode.UseDocumentTypesFilter Then
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'Document are automatically registered for sending:'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='Document are automatically registered for sending:';ru='Документы автоматически регистрируются к отправке:'");
 		Else
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'All the documents are automatically registered for sending:'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='All the documents are automatically registered for sending:';ru='Все документы автоматически регистрируются к отправке:'");
 		EndIf;
 		
 		If ValueIsFilled(FilterSsettingsAtNode.DocumentsDumpStartDate) Then
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'since %StartDate%'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='since %StartDate%';ru='начиная с %ДатаНачала%'");
 			TextDescription = StrReplace(TextDescription,"%StartDate%", Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DF=dd.MM.yyyy"));
 		EndIf;
 		
 		If FilterSsettingsAtNode.UseCompaniesFilter Then
 			CollectionValues = FilterSsettingsAtNode.Companies.Company;
 			PresentationCollections = ShortPresentationOfCollectionsOfValues(CollectionValues);
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'with filter by companies: %CollectionPresentation%'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='with filter by companies: %CollectionPresentation%';ru='с отбором по организациям: %ПредставлениеКоллекции%'");
 			TextDescription = StrReplace(TextDescription, "%CollectionPresentation%", PresentationCollections);
 		Else
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'By all companies'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='By all companies';ru='по всем организациям'");
 		EndIf;
 		
 		If FilterSsettingsAtNode.UseDocumentTypesFilter Then
 			CollectionValues = FilterSsettingsAtNode.DocumentKinds.Presentation;
 			PresentationCollections = ShortPresentationOfCollectionsOfValues(CollectionValues);
-			TextDescription = TextDescription + Chars.LF + NStr("en = 'with filter by document kinds: %CollectionPresentation%'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='with filter by document kinds: %CollectionPresentation%';ru='с отбором по видам документов: %ПредставлениеКоллекции%'");
 			TextDescription = StrReplace(TextDescription, "%CollectionPresentation%", PresentationCollections);
 		EndIf;
 		
@@ -163,7 +163,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	
 	// Tax kind
 	If ValueIsFilled(DefaultValuesAtNode.TaxKind) Then
-		NString = NStr("en = 'Tax type: %1'");
+		NString = NStr("en='Tax type: %1';ru='Вид налога: %1'");
 		Definition = StringFunctionsClientServer.PlaceParametersIntoString(NString, String(DefaultValuesAtNode.TaxKind));
 	Else
 		Definition = "Tax kind is not specified";
@@ -173,7 +173,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	
 	// Cash flow item (expense)
 	If ValueIsFilled(DefaultValuesAtNode.ExpenseItem) Then
-		NString = NStr("en = 'Cash flow item (expense): %2'");
+		NString = NStr("en='Cash flow item (expense): %2';ru='Статья ДДС (расход): %2'");
 		Definition = StringFunctionsClientServer.PlaceParametersIntoString(NString, , String(DefaultValuesAtNode.ExpenseItem));
 	Else
 		Definition = "Cash flow item (expense) is not specified";
@@ -183,7 +183,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	
 	// Cash flow item (Income)
 	If ValueIsFilled(DefaultValuesAtNode.DebitItem) Then
-		NString = NStr("en = 'Cash flow item (income): %3'");
+		NString = NStr("en='Cash flow item (income): %3';ru='Статья ДДС (приход): %3'");
 		Definition = StringFunctionsClientServer.PlaceParametersIntoString(NString, , , String(DefaultValuesAtNode.DebitItem));
 	Else
 		Definition = "Cash flow item (Income) is not specified";
@@ -193,7 +193,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	
 	// PettyCash
 	If ValueIsFilled(DefaultValuesAtNode.PettyCash) Then
-		NString = NStr("en = 'Petty cash: %4'");
+		NString = NStr("en='Petty cash: %4';ru='Касса: %4'");
 		Definition = StringFunctionsClientServer.PlaceParametersIntoString(NString, , , , String(DefaultValuesAtNode.PettyCash));
 	Else
 		Definition = "Petty cash is not specified";
@@ -203,7 +203,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	
 	// Cash register
 	If ValueIsFilled(DefaultValuesAtNode.CashCR) Then
-		NString = NStr("en = 'Cash Register: %5'");
+		NString = NStr("en='Cash Register: %5';ru='Касса ККМ: %5'");
 		Definition = StringFunctionsClientServer.PlaceParametersIntoString(NString, , , , , String(DefaultValuesAtNode.CashCR));
 	ElsIf Constants.FunctionalOptionAccountingRetail.Get() Then
 		Definition = "CashCR is not specified";
@@ -213,12 +213,17 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	
 	ParameterArray.Add(Definition);
 	
-	NString = NStr("en = 'When loading attributes of the documents will be automatically filled with values:
-		|%1
-		|%2
-		|%3
-		|%4
-		|%5'"
+	NString = NStr("en='When loading attributes of the documents will be automatically filled with values:"
+"%1"
+"%2"
+"%3"
+"%4"
+"%5';ru='При загрузке реквизиты документов будет автоматически дозаполнены значениями:"
+"%1"
+"%2"
+"%3"
+"%4"
+"%5'"
 	);
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoStringFromArray(NString, ParameterArray);
@@ -230,11 +235,11 @@ EndFunction
 //  String, Unlimited - presentation of a command displayed in the user interface.
 //
 // ForExample:
-// Return NStr("en = 'Create an exchange in the distributed infobase'");
+// Return NStr("en='Create an exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
 //
 Function CommandTitleForCreationOfNewDataExchange() Export
 	
-	Return NStr("en = 'Create an exchange with configuration ""1C: Accounting Enterprise 8, ed. 2.0""'");
+	Return NStr("en='Create an exchange with configuration ""1C: Accounting Enterprise 8, ed. 2.0""';ru='Создать обмен с конфигурацией ""1C: Бухгалтерия предприятия 8, ред. 2.0""'");
 	
 EndFunction
 
@@ -321,9 +326,10 @@ EndFunction
 //
 Function BriefInformationOnExchange(SettingID) Export
 	
-	ExplanationText = NStr("en = '	Enables data synchronization between the applications of 1C:Small business, ed. 1.4 and 1C:Accounting 8, ed. 2.0.
-	|From Small Business application to Accounting Enterprise application all catalogs and necessary documents are transferred; from Accounting Enterprise application to Small Business application catalogs and documents of cash management are transferred. 
-	|For more information click on the Detailed Description link.'");
+	ExplanationText = NStr("en='	Enables data synchronization between the applications of 1C:Small business, ed. 1.4 and 1C:Accounting 8, ed. 2.0."
+"From Small Business application to Accounting Enterprise application all catalogs and necessary documents are transferred; from Accounting Enterprise application to Small Business application catalogs and documents of cash management are transferred. "
+"For more information click on the Detailed Description link.';ru='	Позволяет синхронизировать данные между приложениями 1С:Управление небольшой фирмой, ред. 1.4 и 1С:Бухгалтерия предприятия 8, ред. 2.0. Из приложения Управление небольшой фирмой в приложение Бухгалтерия предприятия переносятся справочники и все необходимые документы, а из приложения Бухгалтерия предприятия в приложение Управление небольшой фирмой - справочники и документы учета денежных средств."
+"Для получения более подробной информации нажмите на ссылку Подробное описание.'");
 	
 	Return ExplanationText;
 	

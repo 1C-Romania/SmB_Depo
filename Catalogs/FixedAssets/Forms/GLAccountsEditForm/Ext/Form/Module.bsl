@@ -52,7 +52,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	DepreciationAccount = Parameters.DepreciationAccount;
 	
 	If CancelGLAccountChange(Ref) Then
-		Items.GLAccountsGroup.ToolTip = NStr("en = 'There are transactions in base by this fixed asset! GL account change is prohibited!'");
+		Items.GLAccountsGroup.ToolTip = NStr("en='There are transactions in base by this fixed asset! GL account change is prohibited!';ru='В базе есть движения по этому внеоборотному активу! Изменение счетов учета запрещено!'");
 		Items.GLAccountsGroup.Enabled = False;
 		Items.Default.Visible = False;
 	EndIf;

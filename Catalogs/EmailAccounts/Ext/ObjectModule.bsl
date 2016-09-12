@@ -6,7 +6,7 @@
 //
 Procedure FillObjectByDefaultValues() Export
 	
-	UserName = NStr("en = '1C:Enterprise'");
+	UserName = NStr("en='1C:Enterprise';ru='1С:Предприятие'");
 	UseForReceiving = False;
 	UseForSending = False;
 	LeaveMessageCopiesOnServer = False;
@@ -48,7 +48,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 	If Not IsBlankString(EmailAddress) AND Not CommonUseClientServer.EmailAddressMeetsRequirements(EmailAddress, True) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Postal address is filled incorrectly.'"), ThisObject, "EmailAddress");
+			NStr("en='Postal address is filled incorrectly.';ru='Почтовый адрес заполнен неверно.'"), ThisObject, "EmailAddress");
 		NoncheckableAttributeArray.Add("EmailAddress");
 		Cancel = True;
 	EndIf;

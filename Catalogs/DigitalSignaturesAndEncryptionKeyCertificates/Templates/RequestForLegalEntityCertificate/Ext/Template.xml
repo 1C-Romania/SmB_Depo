@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -50,6 +120,12 @@
 for accession
 of the Regulations and for registering the User in the Certification Authority</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заявление
+на
+присоединение к Регламенту и регистрацию Пользователя в Удостоверяющем центре</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -78,6 +154,14 @@ of the Regulations and for registering the User in the Certification Authority</
 CA Register the authorized
 	representative with the personal data as follows: [Surname] [Name] [Patronymic],
 	[IdentificationDocument]; - to provide this person with the CA User rights established by the CA Regulations; - to make a qualified DS verification key certificate according to the identification data and key application areas stated herein:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>			[ДокументыРуководительДолжность] организации [НаименованиеПолное] [ДокументыРуководитель],
+				действуя на основании документа [ДокументыРуководительОснование],
+			просит: - зарегистрировать
+				в Реестре УЦ уполномоченного представителя с личными данными: [Фамилия]
+				[Имя] [Отчество], [УдостоверениеЛичности]; - наделить его полномочиями Пользователя Удостоверяющего центра, установленными Регламентом УЦ; - изготовить квалифицированный сертификат ключа проверки ЭП в соответствии с указанными в настоящем заявлении идентификационными данными и областями использования ключа:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -114,6 +198,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>Surname (SN)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия (SN)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -138,6 +226,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[SN]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[SN]</v8:content>
 						</v8:item>
 					</tl>
@@ -188,6 +280,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>Name Patronymic (G)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя Отчество (G)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -212,6 +308,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[G]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[G]</v8:content>
 						</v8:item>
 					</tl>
@@ -262,6 +362,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>INILA</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СНИЛС</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -286,6 +390,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[SNILS]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[SNILS]</v8:content>
 						</v8:item>
 					</tl>
@@ -336,6 +444,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -360,6 +472,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[TIN]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[TIN]</v8:content>
 						</v8:item>
 					</tl>
@@ -410,6 +526,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>OGRN</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ОГРН</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -434,6 +554,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[OGRN]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[OGRN]</v8:content>
 						</v8:item>
 					</tl>
@@ -484,6 +608,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>E-Mail (E)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>E-Mail (E)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -508,6 +636,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[E]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[E]</v8:content>
 						</v8:item>
 					</tl>
@@ -558,6 +690,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>Company (O)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация (O)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -582,6 +718,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[O]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[O]</v8:content>
 						</v8:item>
 					</tl>
@@ -632,6 +772,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>Division (OU)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение (OU)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -656,6 +800,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[OU]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[OU]</v8:content>
 						</v8:item>
 					</tl>
@@ -706,6 +854,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>Position (T)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Должность (T)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -730,6 +882,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[T]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[T]</v8:content>
 						</v8:item>
 					</tl>
@@ -780,6 +936,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>Country (C)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страна (C)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -804,6 +964,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[C]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[C]</v8:content>
 						</v8:item>
 					</tl>
@@ -854,6 +1018,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>State (S)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регион (S)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -878,6 +1046,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[S]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[S]</v8:content>
 						</v8:item>
 					</tl>
@@ -928,6 +1100,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>Populated locality (L)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Населенный пункт (L)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -952,6 +1128,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[L]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[L]</v8:content>
 						</v8:item>
 					</tl>
@@ -1002,6 +1182,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>Location address (STREET)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адрес местонахождения (STREET)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1026,6 +1210,10 @@ CA Register the authorized
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[Street]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[Street]</v8:content>
 						</v8:item>
 					</tl>
@@ -1076,6 +1264,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>Individual's key identifier for a certificate request</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИКС запроса на сертификат</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1101,6 +1293,10 @@ CA Register the authorized
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>[IndividualKeyIdentifier]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>[ИдентификаторКлючаСубъекта]</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1150,6 +1346,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>DS verification key</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ проверки ЭП</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1175,6 +1375,10 @@ CA Register the authorized
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>[DSKeyOpenPart]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>[ОткрытаяЧастьКлючаЭП]</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1224,6 +1428,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>Certificate extensions</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расширения сертификата</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1250,6 +1458,10 @@ CA Register the authorized
 							<v8:lang>en</v8:lang>
 							<v8:content>Checks of client's
 authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проверки подлинности клиента (1.3.6.1.5.5.7.3.2) Защищенная электронная почта (1.3.6.1.5.5.7.3.4)</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1307,6 +1519,11 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:content>			In accordance with item 428 of the Russian Federation Civil Code, [DescriptionFull] completely and unconditionally accedes to the Certification Authority Regulations published on the Certification Authority website at http:ca.1c.en.
 			I studied the Certification Authority Regulations and annexes thereto and hereby undertake to observe all provisions of the specified document.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>			[НаименованиеПолное] в соответствии со статьей 428 ГК Российской Федерации полностью и безусловно присоединяется к Регламенту Удостоверяющего центра, условия которого опубликованы на сайте Удостоверяющего центра по адресу http://ca.1c.ru.
+			С Регламентом УЦ и приложениями к нему ознакомлен и обязуюсь соблюдать все положения указанного документа.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1325,6 +1542,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:lang>en</v8:lang>
 							<v8:content>[DocumentsManagerPosition]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>[ДокументыРуководительДолжность]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1341,6 +1562,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>[DescriptionFull]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>[DescriptionFull]</v8:content>
 						</v8:item>
 					</tl>
@@ -1395,6 +1620,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:lang>en</v8:lang>
 							<v8:content>____________ / [DocumentsManager] /</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>____________ / [ДокументыРуководитель] /</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1419,6 +1648,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:lang>en</v8:lang>
 							<v8:content>[RequestDate]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>[ДатаЗаявления]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1437,6 +1670,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:lang>en</v8:lang>
 							<v8:content>Company attributes:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизиты организации:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1452,6 +1689,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>M.P.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>M.P.</v8:content>
 						</v8:item>
 					</tl>
@@ -1472,6 +1713,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:lang>en</v8:lang>
 							<v8:content>Address: [LegalAddress]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адрес: [ЮридическийАдрес]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1489,6 +1734,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>OGRN: [OGRN]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ОГРН: [ОГРН]</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1508,6 +1757,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:lang>en</v8:lang>
 							<v8:content>TIN/Tax Registration Reason Code (KPP): [TIN] / [KPP]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ИНН/КПП: [ИНН] / [КПП]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1525,6 +1778,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank account: [BankAccount]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Р/с: [РасчетныйСчет]</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1544,6 +1801,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:lang>en</v8:lang>
 							<v8:content>in BIC: [BIC]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>в БИК: [БИК]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1562,6 +1823,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:lang>en</v8:lang>
 							<v8:content>Correspondent account: [CorrespondentAccount]</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>К/с: [КорреспондентскийСчет]</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1579,6 +1844,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Tel./Fax: [Phone]</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тел./факс: [Телефон]</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1605,6 +1874,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:lang>en</v8:lang>
 							<v8:content>(filled by an operator of the Certification Authority registration center)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(заполняется оператором центра регистрации Удостоверяющего центра)</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1622,6 +1895,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>This statement of accession of the Certification Authority Regulations was registered in the Certification Authority Register.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данное заявление о присоединении к Регламенту Удостоверяющего центра зарегистрировано в реестре Удостоверяющего центра.</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -1641,6 +1918,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:lang>en</v8:lang>
 							<v8:content>Registration # ___________ dated ________________ "___", 20__.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регистрационный № ___________ от "____" ______________ 20__ г.</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1659,6 +1940,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 							<v8:lang>en</v8:lang>
 							<v8:content>Operator of the Certification Authority registration center</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оператор центра регистрации УЦ</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1669,6 +1954,10 @@ authenticity (1.3.6.1.5.5.7.3.2) Protected electronic mail (1.3.6.1.5.5.7.3.4)</
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>____________ / _____________________________/</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>____________ / _____________________________/</v8:content>
 						</v8:item>
 					</tl>

@@ -83,15 +83,16 @@ Procedure UpdateOwnerParents(RightSettingsOwner, HasChanges, UpdateHierarchy = F
 	OwnerType = TypeOf(RightSettingsOwner);
 	
 	ErrorTitle =
-		NStr("en = 'An error occurred during update of hierarchy of the rights owners by access values.'")
+		NStr("en='An error occurred during update of hierarchy of the rights owners by access values.';ru='Ошибка при обновлении иерархии владельцев прав по значениям доступа.'")
 		+ Chars.LF
 		+ Chars.LF;
 	
 	If PossibleRights.ByTypes.Get(OwnerType) = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle +
-			NStr("en = 'For %1
-			           |type the usage of objects rights settings is not set.'"),
+			NStr("en='For %1"
+"type the usage of objects rights settings is not set.';ru='Для"
+"типа ""%1"" не настроено использование настроек прав объектов.'"),
 			String(OwnerType));
 	EndIf;
 	

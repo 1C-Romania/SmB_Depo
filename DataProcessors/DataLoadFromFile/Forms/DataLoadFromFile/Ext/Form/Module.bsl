@@ -21,7 +21,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ElsIf ValueIsFilled(Parameters.TabularSectionFullName) Then
 		ImportType = "TabularSection";
 	ElsIf Not Users.InfobaseUserWithFullAccess() Then
-		Raise(NStr("en = 'You have no right to open the data import from file'"));
+		Raise(NStr("en='You have no right to open the data import from file';ru='Недостаточно прав для открытия загрузки данных из файла'"));
 		Cancel = True;
 		Return;
 	EndIf;
@@ -39,7 +39,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		ThisObject.Title = Parameters.Title;
 	Else
 		ThisObject.AutoTitle = False;
-		ThisObject.Title = NStr("en = 'Data import to catalog'")
+		ThisObject.Title = NStr("en='Data import to catalog';ru='Загрузка данных в справочник'")
 	EndIf;
 	
 	WebClient = CommonUseClientServer.ThisIsWebClient();
@@ -47,17 +47,17 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.PageVariantTableFilling.Visible = False;
 		Items.DataFillingPages.CurrentPage = Items.PageVariantLoadFromFile;
 		Items.ImportingOption.Visible = False;
-		Items.ExplanationForImportCatalogSelection.Title = NStr("en = 'Select catalog to import data from spreadsheets located in the external files (for example, Microsoft Office Excel, OpenOffice Calc etc).'");
+		Items.ExplanationForImportCatalogSelection.Title = NStr("en='Select catalog to import data from spreadsheets located in the external files (for example, Microsoft Office Excel, OpenOffice Calc etc).';ru='Выбор справочника для загрузки данных из электронных таблиц, расположенных во внешних файлах (например: Microsoft Office Excel, OpenOffice Calc и др.).'");
 		DataImportKind = 1;
 	EndIf;
 	
 	If ImportType = "InsertionFromClipboard" Then
 		FilterComparisonTable = "Unmapped";
 		If Parameters.Property("FieldPresentation") Then
-			Title = NStr("en = 'Insert from clipboard'") + " (" + Parameters.FieldPresentation + ")";
+			Title = NStr("en='Insert from clipboard';ru='Вставить из буфера обмена'") + " (" + Parameters.FieldPresentation + ")";
 			ThisObject.AutoTitle = False;
 		Else
-			Title = NStr("en = 'Insert from clipboard'");
+			Title = NStr("en='Insert from clipboard';ru='Вставить из буфера обмена'");
 		EndIf;
 		
 		DataProcessors.DataLoadFromFile.InitializeSearchRefsMode(TemplateWithData, InformationByColumns, Parameters.TypeDescription);
@@ -67,7 +67,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Items.DataFillingPages.CurrentPage = Items.PageOneColumn;
 			Items.ImportingOption.Visible = False;
 			Items.InsertIntoList.Visible = False;
-			Items.Next.Title = NStr("en = 'Insert into list'");
+			Items.Next.Title = NStr("en='Insert into list';ru='Добавление в список'");
 		Else
 			Items.DataFillingPages.CurrentPage = Items.PageManyColumns;
 		EndIf;
@@ -75,7 +75,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.AssistantPages.CurrentPage = Items.FillingTablesWithData;
 		Items.GroupComparisonSettings.Visible = False;
 		Items.MatchingListColumns.Visible = False;
-		Items.Close.Title = NStr("en = 'Cancel'");
+		Items.Close.Title = NStr("en='Cancel';ru='Отменить'");
 		
 	Else
 		If Not ValueIsFilled(Parameters.TabularSectionFullName) Then 
@@ -125,7 +125,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		If ClosingFormConfirmation = True Then // SB. There were (2.2.5.19): ClosingFormConfirmation <> True
 			Notification = New NotifyDescription("CloseFormEnd", ThisObject);
 			Cancel = True;
-			QuestionText = NStr("en = 'Entered data will not be written. Close the form?'");
+			QuestionText = NStr("en='Entered data will not be written. Close the form?';ru='Введенные данные не будут записаны. Закрыть форму?'");
 			ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo);
 		Else
 			If OpenCatalogAfterAssistantClosing Then 
@@ -143,7 +143,7 @@ EndProcedure
 &AtClient
 Procedure CancelMapping(Command)
 	Notification = New NotifyDescription("AfterQuestionAboutCancelMatch", ThisObject);
-	ShowQueryBox(Notification, NStr("en = 'Cancel matching?'"), QuestionDialogMode.YesNo);
+	ShowQueryBox(Notification, NStr("en='Cancel matching?';ru='Отменить сопоставление?'"), QuestionDialogMode.YesNo);
 EndProcedure
 
 &AtClient
@@ -205,7 +205,7 @@ Procedure Back(Command)
 		Items.AssistantPages.CurrentPage = Items.CatalogSelectionForImport;
 		Items.Back.Visible = False;
 		CommonUseClientServer.SetFormItemProperty(Items, "AnotherWayToImportData", "Visible", True); // SB
-		ThisObject.Title = NStr("en = 'Data import to catalog'");
+		ThisObject.Title = NStr("en='Data import to catalog';ru='Загрузка данных в справочник'");
 		ClearTable();
 	ElsIf Items.AssistantPages.CurrentPage = Items.ExportedDataComparison OR Items.AssistantPages.CurrentPage = Items.NotFound Then
 		Items.AssistantPages.CurrentPage = Items.FillingTablesWithData; 
@@ -213,9 +213,9 @@ Procedure Back(Command)
 		Items.Next.DefaultButton = True;
 		Items.Next.Visible = True;
 		If ImportType = "InsertionFromClipboard" Then 
-			Items.Next.Title = NStr("en = 'Insert into list'");
+			Items.Next.Title = NStr("en='Insert into list';ru='Добавление в список'");
 		Else
-			Items.Next.Title = NStr("en = 'Next >'");
+			Items.Next.Title = NStr("en='Next >';ru='Далее  >'");
 		EndIf;
 		If ImportType = "TabularSection" OR ImportType = "InsertionFromClipboard" Then
 			Items.Back.Visible = False;
@@ -255,7 +255,7 @@ Procedure ExportTemplateToFile(Command)
 			ElsIf FileExtension = "mxl" Then
 				TemplateWithData.Write(PathToFile, SpreadsheetDocumentFileType.mxl);
 			Else
-				ShowMessageBox(, NStr("en = 'Template file was not saved.'"));
+				ShowMessageBox(, NStr("en='Template file was not saved.';ru='Шаблон файла не был сохранен.'"));
 			EndIf;
 		EndIf;
 	Else
@@ -569,9 +569,9 @@ Procedure TransferToImportDataNextStep()
 	ElsIf Items.AssistantPages.CurrentPage = Items.ComparisonResults Then
 		Items.AssistantPages.CurrentPage = Items.ExportedDataComparison;
 		Items.InsertIntoList.Visible = False;
-		Items.Next.Title = NStr("en = 'Insert into list'");
+		Items.Next.Title = NStr("en='Insert into list';ru='Добавление в список'");
 		Items.Next.DefaultButton = True;
-		Items.Back.Title = NStr("en = '< Home'");
+		Items.Back.Title = NStr("en='< Home';ru='< Home'");
 	ElsIf Items.AssistantPages.CurrentPage = Items.ExportedDataComparison Then
 		Items.InsertIntoList.Visible = False;
 		If ImportType = "TabularSection" Then
@@ -581,8 +581,8 @@ Procedure TransferToImportDataNextStep()
 			
 			If Rows.Count() > 0 Then
 				Notification = New NotifyDescription("AfterQuestionAboutInsertIntoTabularSection", ThisObject);
-				ShowQueryBox(Notification, NStr("en = 'Rows with unfilled mandatory columns will be skipped.'") + 
-				Chars.LF + NStr("en = 'Continue?'"), QuestionDialogMode.YesNo);
+				ShowQueryBox(Notification, NStr("en='Rows with unfilled mandatory columns will be skipped.';ru='Строки в которых не заполнены обязательные колонки будут пропущены.'") + 
+				Chars.LF + NStr("en='Continue?';ru='Продолжить?'"), QuestionDialogMode.YesNo);
 				Return;
 			EndIf;
 			
@@ -590,7 +590,7 @@ Procedure TransferToImportDataNextStep()
 			Close(ImportedDataAddress);
 			
 		ElsIf ImportType = "InsertionFromClipboard" Then
-			Items.Back.Title = NStr("en = '< Home_'");
+			Items.Back.Title = NStr("en='< Home_';ru='< Home_'");
 			ClosingFormConfirmation = True;
 			CloseFormAndReturnRefsArray();
 		Else
@@ -635,7 +635,7 @@ Procedure PerformMapping()
 	MatchedQuantityByColumns = 0;
 	ListColumns = "";
 	ExecuteMatchBySelectedAttribute(MatchedQuantityByColumns, ListColumns);
-	ShowUserNotification(NStr("en = 'Matching has been executed'"),, NStr("en = 'Matched items:'") + " " + String(MatchedQuantityByColumns));
+	ShowUserNotification(NStr("en='Matching has been executed';ru='Выполнено сопоставление'"),, NStr("en='Matched items:';ru='Сопоставлено элементов:'") + " " + String(MatchedQuantityByColumns));
 	ShowStatisticsByMatchLoadFromFile();
 EndProcedure
 
@@ -688,25 +688,25 @@ Procedure ShowStatisticsByMatchLoadFromFile()
 	
 	DataAboutMatch = MatchStatistics();
 	
-	TextAll = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'All (%)'"), Statistics.TotalAmount);
+	TextAll = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='All (%)';ru='Все (%1)'"), Statistics.TotalAmount);
 	
-	Items.CreateIfNotMatched.Title = NStr("en = 'Unmatched ('") + Statistics.NotMatched + ")";
-	Items.UpdateExisting.Title = NStr("en = 'Matched items ('") + String(Statistics.Matched) + ")";
+	Items.CreateIfNotMatched.Title = NStr("en='Unmatched (';ru='Несопоставленные ('") + Statistics.NotMatched + ")";
+	Items.UpdateExisting.Title = NStr("en='Matched items (';ru='Сопоставленные элементы ('") + String(Statistics.Matched) + ")";
 	
 	ChoiceList = Items.FilterComparisonTable.ChoiceList;
 	ChoiceList.Clear();
 	ChoiceList.Add("All", TextAll, True);
 	ChoiceList.Add("Unmapped", StringFunctionsClientServer.PlaceParametersIntoString(
-	NStr("en = 'Unmatched (%1 and %2)'"), Statistics.NotMatched, Statistics.TotalAmount));
+	NStr("en='Unmatched (%1 and %2)';ru='Несопоставленные (%1 из %2)'"), Statistics.NotMatched, Statistics.TotalAmount));
 	ChoiceList.Add("Mapped", StringFunctionsClientServer.PlaceParametersIntoString(
-	NStr("en = 'Matched (%1 from %2)'"), Statistics.Matched, Statistics.TotalAmount));
+	NStr("en='Matched (%1 from %2)';ru='Сопоставленные (%1 из %2)'"), Statistics.Matched, Statistics.TotalAmount));
 	ChoiceList.Add("Ambiguous", StringFunctionsClientServer.PlaceParametersIntoString(
-	NStr("en = 'Ambiguous (%1 from %2)'"), Statistics.Ambiguous, Statistics.TotalAmount));
+	NStr("en='Ambiguous (%1 from %2)';ru='Неоднозначные (%1 из %2)'"), Statistics.Ambiguous, Statistics.TotalAmount));
 	
 	If Statistics.Ambiguous > 0 Then 
 		Items.DescriptionAmbiguity.Visible=True;
 		Items.DescriptionAmbiguity.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = '(ambiguities: %1)'"), Statistics.Ambiguous);
+		NStr("en='(ambiguities: %1)';ru='(неоднозначностей: %1)'"), Statistics.Ambiguous);
 	Else 
 		Items.DescriptionAmbiguity.Visible=False;
 	EndIf;
@@ -803,7 +803,7 @@ Procedure FormTemplateByImportType()
 	
 	ExportParameters = New Structure;
 	If ImportType = "UniversalImport" Then
-		ThisObject.Title = NStr("en = 'Import data to catalog'") + CatalogPresentation(CorrelationObjectName)+"""";
+		ThisObject.Title = NStr("en='Import data to catalog';ru='Загрузка данных в справочник ""'") + CatalogPresentation(CorrelationObjectName)+"""";
 		ThisObject.AutoTitle = False;
 	ElsIf ImportType = "AppliedImport" Then
 		DefineImportParameters(ExportParameters);
@@ -811,7 +811,7 @@ Procedure FormTemplateByImportType()
 		If ExportParameters.Property("Title") Then
 			ThisObject.Title = ExportParameters.Title;
 		Else
-			ThisObject.Title = NStr("en = 'Import data to catalog'") + CatalogPresentation(CorrelationObjectName)+"""";
+			ThisObject.Title = NStr("en='Import data to catalog';ru='Загрузка данных в справочник ""'") + CatalogPresentation(CorrelationObjectName)+"""";
 		EndIf;
 	ElsIf ImportType = "OuterImport" Then
 		CommandID = CorrelationObjectName;
@@ -918,7 +918,7 @@ Procedure ExecuteImportedDataMatchStepOnServer(BackgroundJob = False)
 		BackgroundJobResult = LongActions.ExecuteInBackground(UUID, 
 		"DataProcessors.DataLoadFromFile.FillMatchTableWithDataFromTemplateBackground",
 		ServerCallParameters, 
-		NStr("en = 'DataLoadFromFile: Execute the processing server mode FillMatchTableWithDataFromTemplate'"));
+		NStr("en='DataLoadFromFile: Execute the processing server mode FillMatchTableWithDataFromTemplate';ru='ЗагрузкаДанныхИзФайла: Выполнение серверного метода обработки ЗаполнитьТаблицуСопоставленияДаннымиИзШаблона'"));
 		
 		If BackgroundJobResult.JobCompleted Then
 			BackgroundJobStorageAddress = BackgroundJobResult.StorageAddress;
@@ -957,7 +957,7 @@ EndProcedure
 Procedure ExecuteImportedDataMatchStep()
 	
 	If TableWithDataEmpty() Then
-		ShowMessageBox(, (NStr("en ='To go to the data match and import step, you need to fill in the table.'")));	
+		ShowMessageBox(, (NStr("en='To go to the data match and import step, you need to fill in the table.';ru='Для перехода к этапу сопоставления и загрузки данных, необходимо заполнить таблицу.'")));	
 		Return;
 	EndIf;
 	
@@ -965,13 +965,13 @@ Procedure ExecuteImportedDataMatchStep()
 	UnfilledColumnsList = UnfilledMandatoryColumns();
 	If UnfilledColumnsList.Count() > 0 Then 
 		If UnfilledColumnsList.Count() =1  Then 
-			TextAboutColumns = NStr("en = 'Required column'") + " " + UnfilledColumnsList[0] +
-				NStr("en = 'contains unfilled rows, these rows will be skipped during the import'");
+			TextAboutColumns = NStr("en='Required column';ru='Обязательная колонка""'") + " " + UnfilledColumnsList[0] +
+				NStr("en='contains unfilled rows, these rows will be skipped during the import';ru='"" содержит незаполненные строки, эти строки будут пропущены при загрузке'");
 		Else
-			TextAboutColumns = NStr("en = 'Mandatory columns'") + " " + StringFunctionsClientServer.RowFromArraySubrows(UnfilledColumnsList,", ") +
-				NStr("en = 'contain unfilled rows, these rows will be skipped during the import'");
+			TextAboutColumns = NStr("en='Mandatory columns';ru='Обязательные колонки""'") + " " + StringFunctionsClientServer.RowFromArraySubrows(UnfilledColumnsList,", ") +
+				NStr("en='contain unfilled rows, these rows will be skipped during the import';ru='"" содержат незаполненные строки, эти строки будут пропущены при загрузке'");
 		EndIf;
-		TextAboutColumns = TextAboutColumns + Chars.LF + NStr("en = 'Continue?'");
+		TextAboutColumns = TextAboutColumns + Chars.LF + NStr("en='Continue?';ru='Продолжить?'");
 		
 		Notification = New NotifyDescription("AfterQuestionAboutBlankRows", ThisObject);
 		ShowQueryBox(Notification, TextAboutColumns, QuestionDialogMode.YesNo,, DialogReturnCode.No);
@@ -1121,10 +1121,10 @@ Procedure ShowReport(Report)
 	TotalReportIncorrect = Report.Incorrect;
 	
 	Items.FilterReport.ChoiceList.Clear();
-	Items.FilterReport.ChoiceList.Add("AllItems", NStr("en = 'All ('") + Report.TotalAmount + ")");
-	Items.FilterReport.ChoiceList.Add("New", NStr("en = 'New ('") + Report.Created+ ")");
-	Items.FilterReport.ChoiceList.Add("Updated", NStr("en = 'Updated ('") + Report.Updated+ ")");
-	Items.FilterReport.ChoiceList.Add("Skipped", NStr("en = 'Skipped ('") + Report.Skipped+ ")");
+	Items.FilterReport.ChoiceList.Add("AllItems", NStr("en='All (';ru='Все ('") + Report.TotalAmount + ")");
+	Items.FilterReport.ChoiceList.Add("New", NStr("en='New (';ru='Новые ('") + Report.Created+ ")");
+	Items.FilterReport.ChoiceList.Add("Updated", NStr("en='Updated (';ru='Обновленные ('") + Report.Updated+ ")");
+	Items.FilterReport.ChoiceList.Add("Skipped", NStr("en='Skipped (';ru='Пропущенные ('") + Report.Skipped+ ")");
 	FilterReport = Report.ReportType;
 
 	TableReport = Report.TableReport;
@@ -1201,22 +1201,22 @@ Procedure ExecuteImportedDataMatchStepClient()
 		Statistics = MatchStatistics();
 		
 		If Statistics.Matched > 0 Then
-			TextFound = NStr("en = 'From %1 entered rows to a list will be inserted: %2.'");
+			TextFound = NStr("en='From %1 entered rows to a list will be inserted: %2.';ru='Из %1 введенных строк в список будут вставлены: %2.'");
 			Items.LabelResultComparison.Title = StringFunctionsClientServer.PlaceParametersIntoString(TextFound,
 				Statistics.TotalAmount, Statistics.Matched);
 			
 			If Statistics.Ambiguous > 0 AND Statistics.NotFound > 0 Then 
-				TextNotFound = NStr("en = '11 lines will be ignored:'") + Chars.LF + "  - " + NStr("en = 'No data in the application: %1'") 
-					+ Chars.LF + "  - " +NStr("en = 'Several variants for insert: %2'");
+				TextNotFound = NStr("en='11 lines will be ignored:';ru='11 строк будут пропущены:'") + Chars.LF + "  - " + NStr("en='No data in the application: %1';ru='Нет данных в программе: %1'") 
+					+ Chars.LF + "  - " +NStr("en='Several variants for insert: %2';ru='Несколько вариантов для вставки: %2'");
 				TextNotFound = StringFunctionsClientServer.PlaceParametersIntoString(TextNotFound, Statistics.NotFound, Statistics.Ambiguous);
 			ElsIf Statistics.Ambiguous > 0 Then
-				TextNotFound = NStr("en = 'Rows that have several variants in the application will be skipped: %1'");
+				TextNotFound = NStr("en='Rows that have several variants in the application will be skipped: %1';ru='Строки, для которых в программе имеется несколько вариантов, будут пропущены: %1'");
 				TextNotFound = StringFunctionsClientServer.PlaceParametersIntoString(TextNotFound, Statistics.Ambiguous);
 			ElsIf Statistics.NotFound > 0 Then
-				TextNotFound = NStr("en = 'Rows that do not have relevant data in the application will be skipped: %1'");
+				TextNotFound = NStr("en='Rows that do not have relevant data in the application will be skipped: %1';ru='Строки, для которых в программе нет соответствующих данных, будут пропущены: %1'");
 				TextNotFound = StringFunctionsClientServer.PlaceParametersIntoString(TextNotFound, Statistics.NotFound);
 			EndIf;
-			TextNotFound = TextNotFound + Chars.LF + NStr("en = 'To view skipped rows and select data for insert, click Next.'");
+			TextNotFound = TextNotFound + Chars.LF + NStr("en='To view skipped rows and select data for insert, click Next.';ru='Для просмотра пропущенных строк и подбора данных для вставки нажмите ""Далее"".'");
 			Items.DecorationNotFoundAndAmbiguity.Title = TextNotFound;
 			
 			Items.AssistantPages.CurrentPage = Items.ComparisonResults;
@@ -1224,17 +1224,17 @@ Procedure ExecuteImportedDataMatchStepClient()
 			CommonUseClientServer.SetFormItemProperty(Items, "AnotherWayToImportData", "Visible", False); // SB
 			Items.InsertIntoList.Visible = True;
 			Items.Next.Visible = True;
-			Items.Back.Title = NStr("en = '< Back'");
-			Items.Next.Title = NStr("en = 'Next >'");
+			Items.Back.Title = NStr("en='< Back';ru='< Back'");
+			Items.Next.Title = NStr("en='Next >';ru='Далее  >'");
 			Items.Next.DefaultControl = False;
 			Items.InsertIntoList.DefaultControl = True;
 			Items.InsertIntoList.DefaultButton = True;
 			
 			ShowStatisticsByMatchLoadFromFile();
-			SetDesignForMatchingPage(False, Items.ExplanationForRefSearch, False, NStr("en = 'Next >'"));
+			SetDesignForMatchingPage(False, Items.ExplanationForRefSearch, False, NStr("en='Next >';ru='Далее  >'"));
 		Else
 			Items.AssistantPages.CurrentPage = Items.NotFound;
-			Items.Close.Title = NStr("en = 'Close'");
+			Items.Close.Title = NStr("en='Close';ru='Закрыть'");
 			Items.Back.Visible = True;
 			CommonUseClientServer.SetFormItemProperty(Items, "AnotherWayToImportData", "Visible", False); // SB
 			Items.InsertIntoList.Visible = False;
@@ -1246,7 +1246,7 @@ Procedure ExecuteImportedDataMatchStepClient()
 		ShowStatisticsByMatchLoadFromFile();
 		
 		If ImportType = "UniversalImport" Then
-			SetDesignForMatchingPage(True, Items.ExplanationForUniversalImport, True, NStr("en = 'Import data >'"));
+			SetDesignForMatchingPage(True, Items.ExplanationForUniversalImport, True, NStr("en='Import data >';ru='Загрузить данные >'"));
 		ElsIf ImportType = "TabularSection" Then
 			Filter = New Structure("RowMatchResult", "NotMatched");
 			If DataMatchingTable.FindRows(Filter).Count() = 0 Then
@@ -1254,11 +1254,11 @@ Procedure ExecuteImportedDataMatchStepClient()
 				TransferToImportDataNextStep();
 			EndIf;
 			
-			SetDesignForMatchingPage(False, Items.ExplanationForTabularSection, True, NStr("en = 'Import data'"));
+			SetDesignForMatchingPage(False, Items.ExplanationForTabularSection, True, NStr("en='Import data';ru='Загрузить данные'"));
 		ElsIf ImportType = "OuterImport" Then
-			SetDesignForMatchingPage(False, Items.ExplanationForAppliedImport, False, NStr("en = 'Import data >'"));
+			SetDesignForMatchingPage(False, Items.ExplanationForAppliedImport, False, NStr("en='Import data >';ru='Загрузить данные >'"));
 		Else
-			SetDesignForMatchingPage(False, Items.ExplanationForAppliedImport, False, NStr("en = 'Import data >'"));
+			SetDesignForMatchingPage(False, Items.ExplanationForAppliedImport, False, NStr("en='Import data >';ru='Загрузить данные >'"));
 		EndIf;
 	EndIf;
 	
@@ -1411,7 +1411,7 @@ Procedure WriteImportedDataReport(BackgroundJob = False)
 		BackgroundJobResult = LongActions.ExecuteInBackground(UUID, 
 				"DataProcessors.DataLoadFromFile.WriteMatchedData",
 				ServerCallParameters, 
-				NStr("en = 'The DataLoadFromFile subsystem: Write imported data'"));
+				NStr("en='The DataLoadFromFile subsystem: Write imported data';ru='Подсистема ЗагрузкаДанныхИзФайла: Запись загружаемых данных'"));
 		
 		If BackgroundJobResult.JobCompleted Then
 			BackgroundJobStorageAddress = BackgroundJobResult.StorageAddress;
@@ -1480,11 +1480,11 @@ EndProcedure
 Procedure SetDataDesign()
 	
 	If ImportType = "InsertionFromClipboard" Then 
-		TextObjectNotFound = NStr("en='<Not found>'");
+		TextObjectNotFound = NStr("en='<Not found>';ru='<Не найден>'");
 		ColorObjectNotFound = StyleColors.UnavailableCellTextColor;
 		ColorAmbiguity = StyleColors.ExplanationTextError;
 	Else
-		TextObjectNotFound = NStr("en='<New>'");
+		TextObjectNotFound = NStr("en='<New>';ru='<ew>'");
 		ColorObjectNotFound = StyleColors.ResultSuccessColor;
 		ColorAmbiguity = StyleColors.ExplanationTextError;
 	EndIf;
@@ -1513,7 +1513,7 @@ Procedure SetDataDesign()
 	FilterItem.RightValue = "Ambiguity"; 
 	FilterItem.Use = True;
 	ConditionalAppearanceItem.Appearance.SetParameterValue("TextColor", ColorAmbiguity);
-	ConditionalAppearanceItem.Appearance.SetParameterValue("Text", NStr("en='<ambiguity>'"));
+	ConditionalAppearanceItem.Appearance.SetParameterValue("Text", NStr("en='<ambiguity>';ru='<неоднозначность>'"));
 	
 EndProcedure
 
@@ -1739,7 +1739,7 @@ Procedure PlaceDataInMatchTable(ImportedDataAddress, TabularSectionCopyAddress, 
 				FilterItem.RightValue = Ambiguity.Column; 
 				FilterItem.Use = True;
 				ConditionalAppearanceItem.Appearance.SetParameterValue("TextColor", StyleColors.ExplanationTextError);
-				ConditionalAppearanceItem.Appearance.SetParameterValue("Text", NStr("en='<ambiguity>'"));
+				ConditionalAppearanceItem.Appearance.SetParameterValue("Text", NStr("en='<ambiguity>';ru='<неоднозначность>'"));
 			EndDo;
 		EndIf;
 	EndDo;
@@ -1804,7 +1804,7 @@ Function ObjectManager(CorrelationObjectName)
 		ElsIf ObjectArray.ObjectType = "Catalog" Then
 			ObjectManager = Catalogs[ObjectArray.NameObject];
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1 object is not found'"), CorrelationObjectName);
+			Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 object is not found';ru='Объект ""%1"" не найден'"), CorrelationObjectName);
 		EndIf;
 		
 		Return ObjectManager;
@@ -1953,7 +1953,7 @@ Procedure FormReportAboutImport(ReportType = "AllItems", BackgroundJob = False, 
 	BackgroundJobResult = LongActions.ExecuteInBackground(UUID, 
 			"DataProcessors.DataLoadFromFile.FormReportAboutImportBackground",
 			ServerCallParameters, 
-			NStr("en = 'The DataLoadFromFile subsystem: Execute the processing server mode form import report'"));
+			NStr("en='The DataLoadFromFile subsystem: Execute the processing server mode form import report';ru='Подсистема ЗагрузкаДанныхИзФайла: Выполнение серверного метода обработки сформировать отчет о загрузке'"));
 	
 	If BackgroundJobResult.JobCompleted Then
 		BackgroundJobStorageAddress = BackgroundJobResult.StorageAddress;
@@ -1983,10 +1983,10 @@ EndFunction
 Procedure ShowInformationRowAboutMandatoryColumns()
 	
 	If Items.DataFillingPages.CurrentPage = Items.PageVariantLoadFromFile Then
-		ToolTipText = NStr("en = 'To import data, you need to fill in the table having saved a form to a file to fill in in another application.'") + Chars.LF;
-		ToolTipText = ToolTipText  + NStr("en = 'Then import a filled in table in one of the formats: Microsoft Excel workbook (.xlsx text with delimiters (.csv) or spreadsheet document (.mxl).'") + Chars.LF;
+		ToolTipText = NStr("en='To import data, you need to fill in the table having saved a form to a file to fill in in another application.';ru='Для загрузки данных необходимо заполнить таблицу сохранив бланк в файл для заполнения в другой программе.'") + Chars.LF;
+		ToolTipText = ToolTipText  + NStr("en='Then import a filled in table in one of the formats: Microsoft Excel workbook (.xlsx text with delimiters (.csv) or spreadsheet document (.mxl).';ru='Затем загрузить заполненную таблицу в одном из форматов: Книга Microsoft Excel (.xlsx), текст с разделителями (.csv) или табличный документ (.mxl).'") + Chars.LF;
 	Else
-		ToolTipText = NStr("en = 'To fill in the table, it is required to copy data to the table from external file through clipboard.'") + Chars.LF;
+		ToolTipText = NStr("en='To fill in the table, it is required to copy data to the table from external file through clipboard.';ru='Для заполнения таблицы необходимо скопировать данные в таблицу из внешнего файла через буфер обмена.'") + Chars.LF;
 	EndIf;
 	
 	Filter = New Structure("ObligatoryToComplete", True);
@@ -2005,9 +2005,9 @@ Procedure ShowInformationRowAboutMandatoryColumns()
 		ListColumns = Mid(ListColumns, 3);
 		
 		If MandatoryColumns.Count() = 1 Then
-			ToolTipText = ToolTipText + NStr("en = 'Required column:'") + " " + ListColumns;
+			ToolTipText = ToolTipText + NStr("en='Required column:';ru='Колонка обязательная для заполнения:'") + " " + ListColumns;
 		Else
-			ToolTipText = ToolTipText + NStr("en = 'Required columns:'") + " " + ListColumns;
+			ToolTipText = ToolTipText + NStr("en='Required columns:';ru='Колонки обязательные для заполнения:'") + " " + ListColumns;
 		EndIf;
 		
 	EndIf;
@@ -2031,7 +2031,7 @@ Procedure AddStandardColumnsInMatchTable(TemporaryVT, MappingObjectStructure, Ad
 		AddErrorDescriptionFull, AddRowMatchResult, AddAmbiguitiesList)
 		
 	If AddID Then 
-		TemporaryVT.Columns.Add("ID", New TypeDescription("Number"), NStr("en = 'p/p'"));
+		TemporaryVT.Columns.Add("ID", New TypeDescription("Number"), NStr("en='p/p';ru='п/п'"));
 	EndIf;
 	If ValueIsFilled(MappingObjectStructure) Then 
 		If Not ValueIsFilled(MappingObjectStructure.Synonym) Then
@@ -2048,10 +2048,10 @@ Procedure AddStandardColumnsInMatchTable(TemporaryVT, MappingObjectStructure, Ad
 		TemporaryVT.Columns.Add("MappingObject", MappingObjectStructure.ObjectTypeMatchDescription, ColumnsTitle);
 	EndIf;
 	If AddRowMatchResult Then 
-		TemporaryVT.Columns.Add("RowMatchResult", New TypeDescription("String"), NStr("en = 'Result'"));
+		TemporaryVT.Columns.Add("RowMatchResult", New TypeDescription("String"), NStr("en='Result';ru='Результат'"));
 	EndIf;
 	If AddErrorDescriptionFull Then
-		TemporaryVT.Columns.Add("ErrorDescription", New TypeDescription("String"), NStr("en = 'Cause'"));
+		TemporaryVT.Columns.Add("ErrorDescription", New TypeDescription("String"), NStr("en='Cause';ru='Причина'"));
 	EndIf;
 
 	If AddAmbiguitiesList Then 
@@ -2318,7 +2318,7 @@ Procedure CreateMatchTableByInformationAboutColumnsForTP()
 					NewItem.DataPath = "DataMatchTable." + ColumnLevel2.Name;
 					ColumnType = Metadata.FindByType(ColumnLevel2.ValueType.Types()[0]);
 					If ColumnType <> Undefined AND Find(ColumnType.FullName(), "Catalog") > 0 Then
-						NewItem.Title = NStr("en = 'Data from file'");
+						NewItem.Title = NStr("en='Data from file';ru='Данные из файла'");
 					Else
 						NewItem.Title = " ";
 					EndIf;
@@ -2331,7 +2331,7 @@ Procedure CreateMatchTableByInformationAboutColumnsForTP()
 				ColumnsGroupImportedTPData.Group = ColumnsGroup.InCell;
 				Parent = ColumnsGroupImportedTPData;
 				
-				Prefix = NStr("en = 'Data from file:'");
+				Prefix = NStr("en='Data from file:';ru='Данные из файла:'");
 				For Each ColumnAssociation IN AssociationsColumns Do
 					Column2 = TemporaryVT.Columns.Find("Individual_" + ColumnAssociation.ColumnName);
 					If Column2 <> Undefined Then 
@@ -2412,7 +2412,7 @@ Procedure OnEndPlacingFile(Result, TemporaryStorageAddress, FileName, Parameter)
 				TransferToImportDataNextStep();
 			EndIf;
 		Else
-			ShowMessageBox(,NStr("en ='Unable to import data from this file. Make sure that the data in the file is correct.'"));        
+			ShowMessageBox(,NStr("en='Unable to import data from this file. Make sure that the data in the file is correct.';ru='Не получилось загрузить данные из этого файла. Убедитесь в корректности данных в файле.'"));        
 		EndIf;
 	EndIf;
 	
@@ -2474,7 +2474,7 @@ Procedure GetPathToFileSelectionBegin(DialogMode, PathToFile, FileName = "")
 	
 	FileDialog = New FileDialog(DialogMode);
 	
-	FileDialog.Filter                      = NStr("en='Excel 2007 Workbook (*.xlsx)|*.xlsx|Text document with separators (*.csv)|*.csv|Tabular document (*.mxl)|*.mxl'");
+	FileDialog.Filter                      = NStr("en='Excel 2007 Workbook (*.xlsx)|*.xlsx|Text document with separators (*.csv)|*.csv|Tabular document (*.mxl)|*.mxl';ru='Книга Excel 2007 (*.xlsx)|*.xlsx|Текстовый документ c разделителями (*.csv)|*.csv|Табличный документ (*.mxl)|*.mxl'");
 	FileDialog.Title                   = Title;
 	FileDialog.Preview     = False;
 	FileDialog.Extension                  = "xlsx";
@@ -2521,7 +2521,7 @@ Procedure ImportFileWithDataToTabularDocumentOnServer(TemporaryStorageAddress, E
 	BackgroundJobResult = LongActions.ExecuteInBackground(UUID, 
 	"DataProcessors.DataLoadFromFile.ImportFileIntoTable",
 	ServerCallParameters, 
-	NStr("en = 'The DataLoadFromFile subsystem: Execute the processing server method import data from file'"));
+	NStr("en='The DataLoadFromFile subsystem: Execute the processing server method import data from file';ru='Подсистема ЗагрузкаДанныхИзФайла: Выполнение серверного метода загрузка данных из файла'"));
 	
 	If BackgroundJobResult.JobCompleted Then
 		BackgroundJobStorageAddress = BackgroundJobResult.StorageAddress;

@@ -12,7 +12,7 @@ Procedure SubordinatedInvoiceControl()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится счет фактура %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Account on payment # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -359,7 +359,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			CurAmountDiscounts = ManualDiscountCurAmount + AutomaticDiscountCurAmount;
 			If StringInventory.DiscountMarkupPercent <> 100 AND CurAmountDiscounts < CurAmount
 				AND Not ValueIsFilled(StringInventory.Amount) Then
-				MessageText = NStr("en = 'Column ""Amount"" is not populated in string %Number% of list ""Inventory"".'");
+				MessageText = NStr("en='Column ""Amount"" is not populated in string %Number% of list ""Inventory"".';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Запасы"".'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -394,7 +394,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		AND PaymentCalendar.Count() = 1
 		AND Not ValueIsFilled(PaymentCalendar[0].PayDate) Then
 		
-		MessageText = NStr("en = 'Field ""Payment date"" is required.'");
+		MessageText = NStr("en='Field ""Payment date"" is required.';ru='Поле ""Дата оплаты"" не заполнено.'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "PayDate", Cancel);
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentCalendar.PaymentDate");
 		

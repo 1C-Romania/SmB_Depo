@@ -186,7 +186,7 @@ Procedure OpenDocumentsOnCounterparty(Command)
 	
 	CurrentDataOfList = Items.List.CurrentData;
 	If CurrentDataOfList = Undefined OR CurrentDataOfList.IsFolder Then
-		WarningText = NStr("en = 'Command can not be executed for the specified object'");
+		WarningText = NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'");
 		ShowMessageBox(Undefined,WarningText);
 		Return;
 	EndIf;
@@ -205,7 +205,7 @@ Procedure OpenEventsByCounterparty(Command)
 	
 	CurrentDataOfList = Items.List.CurrentData;
 	If CurrentDataOfList = Undefined OR CurrentDataOfList.IsFolder Then
-		WarningText = NStr("en = 'Command can not be executed for the specified object'");
+		WarningText = NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'");
 		ShowMessageBox(Undefined,WarningText);
 		Return;
 	EndIf;
@@ -355,7 +355,7 @@ Procedure CheckIndexOfFullTextSearch()
 			RefreshFullTextSearchIndex();
 		Else
 			Notification = New NotifyDescription("CheckIndexFullTextSearchEnd",ThisForm);
-			ShowQueryBox(Notification,NStr("en='Full text search index is irrelevant. Update index?'"), QuestionDialogMode.YesNo);
+			ShowQueryBox(Notification,NStr("en='Full text search index is irrelevant. Update index?';ru='Индекс полнотекстового поиска неактуален. Обновить индекс?'"), QuestionDialogMode.YesNo);
 		EndIf;
 		
 		Return;
@@ -380,10 +380,10 @@ EndProcedure
 &AtClient
 Procedure RefreshFullTextSearchIndex()
 	
-	Status(NStr("en = 'Full text search index is updating...'"));
+	Status(NStr("en='Full text search index is updating...';ru='Идет обновление индекса полнотекстового поиска...'"));
 	SmallBusinessServer.RefreshFullTextSearchIndex();
 	FulltextSearchIndexActual = True;
-	Status(NStr("en = 'Updating of the full text search index is completed...'"));
+	Status(NStr("en='Updating of the full text search index is completed...';ru='Обновление индекса полнотекстового поиска завершено...'"));
 	
 	ExecuteFullTextSearch();
 	
@@ -401,9 +401,9 @@ Procedure ExecuteFullTextSearch()
 		SmallBusinessClient.FillBasisRow(ThisForm);
 		Items.ChoiceBasis.Visible = True;
 		
-	ElsIf ErrorText = NStr("en = 'Nothing found'") Then
+	ElsIf ErrorText = NStr("en='Nothing found';ru='Ничего не найдено'") Then
 		
-		ChoiceBasis = NStr("en = 'No counterparties have been found'");
+		ChoiceBasis = NStr("en='No counterparties have been found';ru='Не найдено ни одного контрагента'");
 		Items.ChoiceBasis.Visible = True;
 		
 	Else

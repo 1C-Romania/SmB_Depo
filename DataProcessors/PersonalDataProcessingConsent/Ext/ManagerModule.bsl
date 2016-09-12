@@ -23,7 +23,7 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "PersonalDataProcessingConsent") Then
 		PrintManagement.OutputSpreadsheetDocumentToCollection(
 						PrintFormsCollection,
-						"PersonalDataProcessingConsent", NStr("en = 'Agreement on personal data processing'"),
+						"PersonalDataProcessingConsent", NStr("en='Agreement on personal data processing';ru='Согласие на обработку персональных данных'"),
 						PrintOfAgreementOnPDtProcessing(PrintParameters.AgreementPrintData, PrintObjects), ,
 						"DataProcessor.PersonalDataProcessingConsent.PF_MXL_PersonalDataProcessingConsent");
 	EndIf;

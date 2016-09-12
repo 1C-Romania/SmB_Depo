@@ -93,7 +93,7 @@ Function DocumentSeriesSpecifiedProperly(DocumentKind, Val Series , ErrorText) E
 		
 		Pos = Find(Series, "-");
 		If Pos = 0 Then
-			ErrorText = NStr("en = 'The document series must consist of two parts, separated by ""-"".'");
+			ErrorText = NStr("en='The document series must consist of two parts, separated by ""-"".';ru='Серия документа должна состоять из двух частей, разделенных символом ""-"".'");
 			Return False;
 		EndIf;
 		
@@ -102,44 +102,44 @@ Function DocumentSeriesSpecifiedProperly(DocumentKind, Val Series , ErrorText) E
 		
 		Pos = Find(SeriesPart2, "-");
 		If Pos <> 0 Then
-			ErrorText = NStr("en = 'The document series must contain only two symbol groups.'");
+			ErrorText = NStr("en='The document series must contain only two symbol groups.';ru='В серии документа должно быть только две группы символов.'");
 			Return False;
 		EndIf;
 		
 		If IsBlankString(SeriesPart1) Then
-			ErrorText = NStr("en = 'The document series has no numeric part.'");
+			ErrorText = NStr("en='The document series has no numeric part.';ru='В серии документа отсутствует числовая часть.'");
 			Return False;
 			
 		ElsIf  IsBlankString(StringFunctionsClientServer.ReplaceSomeCharactersWithAnothers("IVXLC", SeriesPart1, "          ")) = 0 Then
-			ErrorText = NStr("en = 'Numerical part of a document series must be specified by the following symbols I V X L C.'");
+			ErrorText = NStr("en='Numerical part of a document series must be specified by the following symbols I V X L C.';ru='Числовая часть серии документа должна указываться символами 1 У Х Л С или I V X L C.'");
 			Return False;
 			
 		ElsIf StringFunctionsClientServer.ReplaceSomeCharactersWithAnothers("IVXLC", SeriesPart1, "IVXLC") <> StringFunctionsClientServer.ConvertNumberToRomanNumeral(StringFunctionsClientServer.ConvertDigitToArabicNumeral(StringFunctionsClientServer.ReplaceSomeCharactersWithAnothers("IVXLC", SeriesPart1, "IVXLC"))) Then
-			ErrorText = NStr("en = 'Numerical part of the document series is specified incorrectly.'");
+			ErrorText = NStr("en='Numerical part of the document series is specified incorrectly.';ru='Числовая часть серии документа указана некорректно.'");
 			Return False;
 			
 		ElsIf StrLen(SeriesPart2) <> 2 Or Not IsBlankString(StringFunctionsClientServer.ReplaceSomeCharactersWithAnothers("ABCDEFGHIJKLMNOPQRSTUVWXYZ", SeriesPart2, "                                 ")) Then
-			ErrorText = NStr("en = 'After the separator ""-"" in the document series must be TWO Russian capital letters.'");
+			ErrorText = NStr("en='After the separator ""-"" in the document series must be TWO Russian capital letters.';ru='После разделителя ""-"" в серии документа должны быть ДВЕ pусcкие заглавные буквы.'");
 			Return False;
 			
 		EndIf;
 		
 	ElsIf DocumentType = 2 Then // Series - two letters: military service card, ...
 		If StrLen(Series) <> 2 Or Not IsBlankString(StringFunctionsClientServer.ReplaceSomeCharactersWithAnothers("ABCDEFGHIJKLMNOPQRSTUVWXYZ", Series, "                                 ")) Then
-			ErrorText = NStr("en = 'the document series must contain TWO russian capital letters.'");
+			ErrorText = NStr("en='the document series must contain TWO russian capital letters.';ru='В серии документа должны быть ДВЕ pусcкие заглавные буквы.'");
 			Return False;
 		EndIf;
 		
 	ElsIf DocumentType = 3 Then // Series - two figures: international passport
 		If StrLen(Series) <> 2 Or Not IsBlankString(StringFunctionsClientServer.ReplaceSomeCharactersWithAnothers("0123456789", Series, "          ")) Then
-			ErrorText = NStr("en = 'Document series must contain only TWO digits.'");
+			ErrorText = NStr("en='Document series must contain only TWO digits.';ru='В серии документа должно быть ДВЕ цифры.'");
 			Return False;
 		EndIf;
 		
 	ElsIf DocumentType = 4 Then // Series - two groups of figures: new passport
 		Pos = Find(Series, " ");
 		If Pos = 0 Then
-			ErrorText = NStr("en = 'Document series must contain two digit groups.'");
+			ErrorText = NStr("en='Document series must contain two digit groups.';ru='В серии документа должно быть две группы цифр.'");
 			Return False;
 		EndIf;
 		
@@ -148,17 +148,17 @@ Function DocumentSeriesSpecifiedProperly(DocumentKind, Val Series , ErrorText) E
 		
 		Pos = Find(SecondPart, " ");
 		If Pos <> 0 Then
-			ErrorText = NStr("en = 'Document series must have only two digit groups.'");
+			ErrorText = NStr("en='Document series must have only two digit groups.';ru='В серии документа должно быть только две группы цифр.'");
 			Return False;
 		EndIf;
 		
 		If StrLen(FirstPart) <> 2 Or Not IsBlankString(StringFunctionsClientServer.ReplaceSomeCharactersWithAnothers("0123456789", FirstPart, "          ")) Then
-			ErrorText = NStr("en = 'First group of the document series symbols must contain two digits.'");
+			ErrorText = NStr("en='First group of the document series symbols must contain two digits.';ru='Первая группа символов серии документа должна содержать две цифры.'");
 			Return False;
 		EndIf;
 		
 		If StrLen(SecondPart) <> 2 Or Not IsBlankString(StringFunctionsClientServer.ReplaceSomeCharactersWithAnothers("0123456789", SecondPart, "          ")) Then
-			ErrorText = NStr("en = 'Second group of the document series symbols must contain two digits.'");
+			ErrorText = NStr("en='Second group of the document series symbols must contain two digits.';ru='Вторая группа символов серии документа должна содержать две цифры.'");
 			Return False;
 		EndIf;
 		
@@ -182,7 +182,7 @@ EndFunction
 Function DocumentNumberSpecifiedProperly(DocumentKind, Val Number, ErrorText) Export
 	
 	If Not IsBlankString(StringFunctionsClientServer.ReplaceSomeCharactersWithAnothers("0123456789", Number, "          ")) Then
-		ErrorText = NStr("en = 'Invalid symbols are present in the document number.'");
+		ErrorText = NStr("en='Invalid symbols are present in the document number.';ru='В номере документа присутствуют недопустимые символы.'");
 		Return False;
 	EndIf;
 	
@@ -192,19 +192,19 @@ Function DocumentNumberSpecifiedProperly(DocumentKind, Val Number, ErrorText) Ex
 	
 	If DocumentType = 1 Then
 		If NumberLength <> 6 Then
-			ErrorText = NStr("en = 'The document number must consist of 6 symbols.'");
+			ErrorText = NStr("en='The document number must consist of 6 symbols.';ru='Номер документа должен состоять из 6 символов.'");
 			Return False;
 		EndIf;
 		
 	ElsIf DocumentType = 2 Then
 		If NumberLength <> 7 Then
-			ErrorText = NStr("en = 'The document number must consist of 7 symbols.'");
+			ErrorText = NStr("en='The document number must consist of 7 symbols.';ru='Номер документа должен состоять из 7 символов.'");
 			Return False;
 		EndIf;
 		
 	ElsIf DocumentType = 3 Then
 		If (NumberLength < 6 ) Or ( NumberLength > 7 ) Then
-			ErrorText = NStr("en = 'Document number must consist of 6 or 7 symbols.'");
+			ErrorText = NStr("en='Document number must consist of 6 or 7 symbols.';ru='Номер документа должен состоять из 6 или 7 символов.'");
 			Return False;
 		EndIf;
 		

@@ -21,8 +21,9 @@ Procedure OnOpen(Cancel)
 	
 	#If WebClient Then
 		WarningText =
-			NStr("en = 'File import is not supported in the Web client.
-			           |Use the Create command in files list.'");
+			NStr("en='File import is not supported in the Web client."
+"Use the Create command in files list.';ru='В Веб-клиенте импорт файлов не поддерживается."
+"Используйте команду ""Создать"" в списке файлов.'");
 		ShowMessageBox(, WarningText);
 		Cancel = True;
 		Return;
@@ -36,7 +37,7 @@ Procedure OnOpen(Cancel)
 	EndDo;
 	
 	If DirectoriesOnly Then
-		Title = NStr("en = 'folders Import'");
+		Title = NStr("en='folders Import';ru='Загрузка папок'");
 	EndIf;
 	
 	Status();
@@ -91,13 +92,13 @@ Procedure ImportFiles()
 	
 	If SelectedFiles.Count() = 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'There are no files for adding.'"), , "SelectedFiles");
+			NStr("en='There are no files for adding.';ru='Нет файлов для добавления.'"), , "SelectedFiles");
 		FieldsNotFilled = True;
 	EndIf;
 	
 	If FolderForAdding.IsEmpty() Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Specify the folder.'"), , "FolderForAdding");
+			NStr("en='Specify the folder.';ru='Укажите папку.'"), , "FolderForAdding");
 		FieldsNotFilled = True;
 	EndIf;
 	
@@ -159,9 +160,11 @@ Procedure FillFileList(FilePath, Val TreeItems, TopLevelItem, DirectoriesOnly = 
 		
 		If TopLevelItem = True Then
 			Status(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'There is a collection
-				           |of directory information ""%1"".
-				           |Please, wait.'"),
+				NStr("en='There is a collection"
+"of directory information ""%1""."
+"Please, wait.';ru='Идет"
+"сбор информации о каталоге ""%1""."
+"Пожалуйста, подождите.'"),
 				Path));
 		EndIf;
 		

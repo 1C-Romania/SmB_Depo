@@ -278,7 +278,7 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 		
 		If ArrayOfFoundDocuments.Count() > 0 Then
 			
-			MessageText = NStr("en = 'Document %DocumentPerformance% is already present in the list of selected documents.'");
+			MessageText = NStr("en='Document %DocumentPerformance% is already present in the list of selected documents.';ru='Документ %ПредставлениеДокумента% уже присутствует в списке выбранных документов.'");
 			MessageText = StrReplace(MessageText, "%DocumentPerformance%", ReceiptDocument);
 			
 			CommonUseClientServer.MessageToUser(MessageText);
@@ -394,7 +394,7 @@ Procedure FillByFilteredDocuments(Command)
 	
 	If FilteredInventory.Count() > 0 Then
 		
-		QuestionText = NStr("en = 'Table part will be cleared and filled repeated. Continue?'");
+		QuestionText = NStr("en='Table part will be cleared and filled repeated. Continue?';ru='Табличная часть будит очищена и повторно заполнена. Продолжить?'");
 		
 		Response = Undefined;
 		
@@ -459,7 +459,7 @@ Procedure FillByCurrentDocument(Command)
 	If CurrentRowOfReceiptDocuments = Undefined Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Choose row with a document and retry to fill again'"),
+			NStr("en='Choose row with a document and retry to fill again';ru='Выделите строку с документом и повторите попытку заполнить'"),
 			,
 			"FilteredDocuments",
 			,

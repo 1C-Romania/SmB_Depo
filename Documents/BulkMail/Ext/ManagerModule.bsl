@@ -18,16 +18,16 @@ Procedure PresentationReceiveDataProcessor(Data, Presentation, StandardProcessin
 	
 	StandardProcessing = False;
 	
-	TitlePresentation = NStr("en='Mailing'");
+	TitlePresentation = NStr("en='Mailing';ru='Рассылка'");
 	
 	If Data.DeletionMark Then
-		Status = NStr("en='(deleted)'");
+		Status = NStr("en='(deleted)';ru='(удален)'");
 	Else
 		Status = "(" + Lower(Data.Status) + ")";
 	EndIf;
 	
 	Presentation = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='%1 %2: %3 %4 %5'"),
+		NStr("en='%1 %2: %3 %4 %5';ru='%1 %2: %3 %4 %5'"),
 		TitlePresentation,
 		Data.SendingMethod,
 		ObjectPrefixationClientServer.GetNumberForPrinting(Data.Number, True, True),

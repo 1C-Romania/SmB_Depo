@@ -139,7 +139,7 @@ Procedure StartMechanismFromMenu(LaunchParameters = Undefined) Export
 	
 	If Not CommonUseClient.SubsystemExists("OnlineUserSupport.OnlineSupportMonitor") Then
 		
-		Raise NStr("en = 'Embedding error. The ""Online user support monitor"" subsystem is not available.'");
+		Raise NStr("en='Embedding error. The ""Online user support monitor"" subsystem is not available.';ru='Ошибка встраивания. Отсутствует подсистема ""Монитор Интернет-поддержки пользователей"".'");
 		
 	Else
 		
@@ -199,7 +199,7 @@ Procedure StartWorkWithEDFOperatorMechanism(
 	
 	If Not CommonUseClient.SubsystemExists("OnlineUserSupport.1CTaxcomConnection") Then
 		
-		Raise NStr("en = 'Embedding error. The ""1C-Taxcom connection"" subsystem is not available.'");
+		Raise NStr("en='Embedding error. The ""1C-Taxcom connection"" subsystem is not available.';ru='Ошибка встраивания. Отсутствует подсистема ""Подключение 1С-Такском"".'");
 		
 	Else
 		
@@ -283,7 +283,7 @@ Procedure RunScript(
 			New Structure("StartLocation, StartParameters, ErrorDescription, AtSystemOperationStart",
 				LaunchLocation,
 				LaunchParameters,
-				NStr("en = 'Unknown error. For more details see event log.'"),
+				NStr("en='Unknown error. For more details see event log.';ru='Неизвестная ошибка. Подробнее см. в журнале регистрации.'"),
 				OnStart));
 		
 	EndTry;
@@ -345,7 +345,7 @@ Procedure HandleIUSStartStructure(LaunchLocation, Val StartStructure) Export
 		Status();
 		
 		If StartStructure.OnStart Then
-			ShowUserNotification(NStr("en = 'Online user support'"),
+			ShowUserNotification(NStr("en='Online user support';ru='Интернет-поддержка пользователей'"),
 				,
 				StartStructure.Message,
 				PictureLib.OnlineUserSupport);
@@ -353,7 +353,7 @@ Procedure HandleIUSStartStructure(LaunchLocation, Val StartStructure) Export
 			ShowMessageBox(,
 				StartStructure.Message,
 				,
-				NStr("en = 'Online user support'"));
+				NStr("en='Online user support';ru='Интернет-поддержка пользователей'"));
 		EndIf;
 		
 	EndIf;
@@ -678,11 +678,11 @@ Procedure ServiceCommandsDataProcessor(
 		HandlerContext.ErrorOccurred = True;
 		HandlerContext.ActionsOnErrorForServer.Add("CreateLogRegistrationRecord");
 		HandlerContext.ActionsOnErrorForServer.Add("BreakBusinessProcess");
-		HandlerContext.FullErrorDescription = NStr("en = 'Non-handled exception is thrown:'")
+		HandlerContext.FullErrorDescription = NStr("en='Non-handled exception is thrown:';ru='Произошло необрабатываемое исключение:'")
 			+ " " + DetailErrorDescription(ErrorInfo());
 		
 		HandlerContext.UserErrorDescription =
-			NStr("en = 'Unknown error. For more details see event log.'");
+			NStr("en='Unknown error. For more details see event log.';ru='Неизвестная ошибка. Подробнее см. в журнале регистрации.'");
 		HandlerContext.ActionOnErrorForClient = "ShowMessage";
 		
 	EndTry;
@@ -765,7 +765,7 @@ Procedure ServiceCommandsDataProcessor(
 			ShowMessageBox(,
 				HandlerContext.UserErrorDescription,
 				,
-				NStr("en = 'Online user support'"));
+				NStr("en='Online user support';ru='Интернет-поддержка пользователей'"));
 			Return;
 			
 		EndIf;
@@ -776,7 +776,7 @@ Procedure ServiceCommandsDataProcessor(
 			InteractionContext);
 		
 		If HandlerContext.Property("StopCauseDescription") Then
-			ShowUserNotification(NStr("en = 'Online user support'"),
+			ShowUserNotification(NStr("en='Online user support';ru='Интернет-поддержка пользователей'"),
 				,
 				HandlerContext.StopCauseDescription,
 				PictureLib.OnlineUserSupport);
@@ -823,7 +823,7 @@ Procedure AddServiceCommands(
 			HandlerContext.ActionsOnErrorForServer.Add("CreateLogRegistrationRecord");
 			HandlerContext.ActionOnErrorForClient = "DisplayFormConnectionNotAvailable";
 			HandlerContext.UserErrorDescription =
-				NStr("en = 'An error occurred while connecting to the online support service.'");
+				NStr("en='An error occurred while connecting to the online support service.';ru='Ошибка при подключении к сервису Интернет-поддержки.'");
 		EndIf;
 		
 		Return;
@@ -852,7 +852,7 @@ Procedure AddServiceCommands(
 			HandlerContext.FullErrorDescription = DetailErrorDescription(ErrorInfo());
 			HandlerContext.ActionsOnErrorForServer.Add("CreateLogRegistrationRecord");
 			HandlerContext.ActionOnErrorForClient = "DisplayFormConnectionNotAvailable";
-			HandlerContext.UserErrorDescription = NStr("en = 'An error occurred while retrieving data from the online support server.'");
+			HandlerContext.UserErrorDescription = NStr("en='An error occurred while retrieving data from the online support server.';ru='Ошибка при получении данных с сервера Интернет-поддержки.'");
 		EndIf;
 		
 	EndTry;
@@ -1611,7 +1611,7 @@ Procedure DisplayStatusServiceCall()
 	Status(
 		,
 		,
-		NStr("en = 'Waiting for response from the online user support server'"),
+		NStr("en='Waiting for response from the online user support server';ru='Ожидание ответа от сервера Интернет-поддержки пользователей'"),
 		PictureLib.OnlineUserSupport);
 	
 EndProcedure
@@ -1740,9 +1740,11 @@ Function QuestionWhenAuthorizedUserExits(InteractionContext) Export
 		InteractionContext.COPContext,
 		"login");
 	
-	QuestionText = NStr("en = 'Connection of the user with login
-					|%1 to online support will be disabled. For a new connection you need to enter your login and password once again.
-					|Go to authorization of a new user?'");
+	QuestionText = NStr("en='Connection of the user with login"
+"%1 to online support will be disabled. For a new connection you need to enter your login and password once again."
+"Go to authorization of a new user?';ru='Подключение пользователя"
+"с логином %1 к Интернет-поддержке будет прекращено. Для нового подключения нужно заново ввести логин и пароль."
+"Перейти к авторизации нового пользователя?'");
 	QuestionText = StrReplace(QuestionText, "%1", UserLogin);
 	
 	Return QuestionText;

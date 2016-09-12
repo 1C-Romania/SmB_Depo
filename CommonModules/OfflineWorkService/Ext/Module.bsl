@@ -68,7 +68,7 @@ Function QuestionAboutLongSynchronizationSettingCheckBox(ValueOfFlag = Undefined
 	
 	SettingDetails.Insert("ObjectKey",  "ApplicationSettings");
 	SettingDetails.Insert("SettingsKey", "ShowAlertOnLongSynchronizationAWP");
-	SettingDetails.Insert("Presentation", NStr("en = 'Show alert on long synchronization'"));
+	SettingDetails.Insert("Presentation", NStr("en='Show alert on long synchronization';ru='Показывать предупреждение о длительной синхронизации'"));
 	
 	SettingsDescription = New SettingsDescription;
 	FillPropertyValues(SettingsDescription, SettingDetails);
@@ -360,7 +360,7 @@ EndFunction
 // 
 Function SetupPackageFileName() Export
 	
-	Return NStr("en = 'Offline work.zip'");
+	Return NStr("en='Offline work.zip';ru='Автономная работа.zip'");
 	
 EndFunction
 
@@ -459,7 +459,7 @@ Function OfflineWorkplacesMonitor() Export
 			SynchronizationSetting.SynchronizationDatePresentation =
 				DataExchangeServer.RelativeSynchronizationDate(SynchronizationSetting.SynchronizationDate);
 		Else
-			SynchronizationSetting.SynchronizationDatePresentation = NStr("en = 'were not executed'");
+			SynchronizationSetting.SynchronizationDatePresentation = NStr("en='were not executed';ru='не выполнялась'");
 		EndIf;
 		
 	EndDo;
@@ -471,7 +471,7 @@ EndFunction
 // 
 Function EventLogMonitorEventCreatingOfflineWorkplace() Export
 	
-	Return NStr("en = 'Offline work. Offline workplace creation'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Offline work. Offline workplace creation';ru='Автономная работа.Создание автономного рабочего места'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -479,7 +479,7 @@ EndFunction
 // 
 Function EventLogMonitorEventDeletionOfflineWorkplace() Export
 	
-	Return NStr("en = 'Offline work. Offline workplace deletion'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Offline work. Offline workplace deletion';ru='Автономная работа.Удаление автономного рабочего места'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -516,7 +516,7 @@ EndFunction
 // 
 Function OfflineWorkplaceDescriptionByDefault()
 	
-	Result = NStr("en = 'Offline work - %1'");
+	Result = NStr("en='Offline work - %1';ru='Автономная работа - %1'");
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(Result, UserFullName());
 EndFunction
@@ -525,7 +525,7 @@ EndFunction
 // 
 Function OfflineWorkplacePrefixAllowedSymbols()
 	
-	Return NStr("en = 'ABCDEFGCHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'"); // 54 characters
+	Return NStr("en='ABCDEFGCHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';ru='АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯабвгдежзиклмнопрстуфхцчшэюя'"); // 54 characters
 	
 EndFunction
 
@@ -545,11 +545,11 @@ Procedure SynchronizeDataWithApplicationInInternet() Export
 		MainLanguageCode = CommonUseClientServer.MainLanguageCode();
 		
 		DetailedErrorReprasentationForEventLogMonitor =
-			NStr("en = 'This infobase is not an offline workplace. Data synchronization is cancelled.'",
+			NStr("en='This infobase is not an offline workplace. Data synchronization is cancelled.';ru='Эта информационная база не является автономным рабочим местом. Синхронизация данных отменена.'",
 			CommonUseClientServer.MainLanguageCode())
 		;
 		DetailErrorDescription =
-			NStr("en = 'This infobase is not an offline workplace. Data synchronization is cancelled.'")
+			NStr("en='This infobase is not an offline workplace. Data synchronization is cancelled.';ru='Эта информационная база не является автономным рабочим местом. Синхронизация данных отменена.'")
 		; // String is written to Events log monitor
 		
 		WriteLogEvent(EventLogMonitorEventDataSynchronization(),
@@ -564,7 +564,7 @@ Procedure SynchronizeDataWithApplicationInInternet() Export
 		Enums.ExchangeMessagesTransportKinds.WS);
 	
 	If Cancel Then
-		Raise NStr("en = 'Error occurred while data synchronization with the application on the Internet (see. events log monitor).'");
+		Raise NStr("en='Error occurred while data synchronization with the application on the Internet (see. events log monitor).';ru='В процессе синхронизации данных с приложением в Интернете возникли ошибки (см. журнал регистрации).'");
 	EndIf;
 	
 EndProcedure
@@ -574,8 +574,9 @@ EndProcedure
 Procedure ExecuteConfigurationOfAutonomousWorkWhenYouFirstStart() Export
 	
 	If Not CommonUse.FileInfobase() Then
-		Raise NStr("en = 'First start of offline work place
-								|should be executed in the file work mode of infobase.'");
+		Raise NStr("en='First start of offline work place"
+"should be executed in the file work mode of infobase.';ru='Первый запуск автономного рабочего"
+"места должен выполняться в файловом режиме работы информационной базы.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -765,8 +766,9 @@ Procedure ImportParametersFromInitialImage()
 	Except
 		WriteLogEvent(EventLogMonitorEventCreatingOfflineWorkplace(),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
-		Raise NStr("en = 'Infobase may have been opened in the configurator mode.
-		|Exit the designer and restart the application.'");
+		Raise NStr("en='Infobase may have been opened in the configurator mode."
+"Exit the designer and restart the application.';ru='Возможно, информационная база открыта в режиме конфигуратора."
+"Завершите работу конфигуратора и повторите запуск программы.'");
 	EndTry;
 	
 	// Create exchange plan nodes of offline work place in the zero dara area
@@ -848,8 +850,9 @@ Procedure ImportParametersFromInitialImage()
 		User = Catalogs.Users.GetRef(New UUID(Parameters.Owner)).GetObject();
 		
 		If User = Undefined Then
-			Raise NStr("en = 'User identification is not complete.
-				|Perhaps, the users catalog is not included to the offline exchange plan.'");
+			Raise NStr("en='User identification is not complete."
+"Perhaps, the users catalog is not included to the offline exchange plan.';ru='Идентификация пользователя не выполнена."
+"Возможно, справочник пользователей не включен в состав плана обмена автономной работы.'");
 		EndIf;
 		
 		SetUserPasswordMinLength(0);
@@ -940,8 +943,9 @@ Function GetParametersFromInitialImage()
 	XMLString = Constants.SubordinatedDIBNodeSetup.Get();
 	
 	If IsBlankString(XMLString) Then
-		Raise NStr("en = 'Settings were not found in the offline work place.
-									|Work with the offline worplace is impossible.'");
+		Raise NStr("en='Settings were not found in the offline work place."
+"Work with the offline worplace is impossible.';ru='В автономное рабочее место не были переданы настройки."
+"Работа с автономным рабочим место невозможна.'");
 	EndIf;
 	
 	XMLReader = New XMLReader;
@@ -967,7 +971,7 @@ Function CalculateDataToStructure(XMLReader)
 	Result = New Structure;
 	
 	If XMLReader.NodeType <> XMLNodeType.StartElement Then
-		Raise NStr("en = 'XML reading error'");
+		Raise NStr("en='XML reading error';ru='Ошибка чтения XML'");
 	EndIf;
 	
 	XMLReader.Read();
@@ -989,7 +993,7 @@ EndFunction
 // 
 Function EventLogMonitorEventDataSynchronization()
 	
-	Return NStr("en = 'Offline work.Data synchronization'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Offline work.Data synchronization';ru='Автономная работа.Синхронизация данных'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

@@ -55,10 +55,13 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 	 Or ImportFormat  = Undefined
 	 Or Model          = Undefined Then
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device parameters are not set.
-		|For the correct work of the device it is necessary to specify the parameters of its work.
-		|You can do it using the Parameters setting
-		|form of the peripheral model in the Connection and equipment setting form.'"));
+		Output_Parameters.Add(NStr("en='Device parameters are not set."
+"For the correct work of the device it is necessary to specify the parameters of its work."
+"You can do it using the Parameters setting"
+"form of the peripheral model in the Connection and equipment setting form.';ru='Не настроены параметры устройства."
+"Для корректной работы устройства необходимо задать параметры его работы."
+"Сделать это можно при помощи формы"
+"""Настройка параметров"" модели подключаемого оборудования в форме ""Подключение и настройка оборудования"".'"));
 
 		Result = False;
 	EndIf;
@@ -149,7 +152,7 @@ Function RunCommand(Command, InputParameters = Undefined, Output_Parameters = Un
 	// This command is not supported by the current driver.
 	Else
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.'"));
+		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.';ru='Команда ""%Команда%"" не поддерживается данным драйвером.'"));
 		Output_Parameters[1] = StrReplace(Output_Parameters[1], "%Command%", Command);
 		Result = False;
 
@@ -497,7 +500,7 @@ Function DeviceTest(DriverObject, Parameters, ConnectionParameters, Output_Param
 	Result = ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Parameters);
 
 	Output_Parameters.Add(?(Result, 0, 999));
-	Output_Parameters.Add(?(Result, "", NStr("en='An error occurred while connecting the device'")));
+	Output_Parameters.Add(?(Result, "", NStr("en='An error occurred while connecting the device';ru='Ошибка при подключении устройства'")));
 
 	DisableDevice(DriverObject, Parameters, ConnectionParameters, Output_Parameters);
 
@@ -511,8 +514,8 @@ Function GetDriverVersion(DriverObject, Parameters, ConnectionParameters, Output
 
 	Result = True;
 
-	Output_Parameters.Add(NStr("en='Installed'"));
-	Output_Parameters.Add(NStr("en='Not defined'"));
+	Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
+	Output_Parameters.Add(NStr("en='Not defined';ru='Не определена'"));
 
 	Try
 		Output_Parameters[1] = DriverObject.Version;

@@ -38,7 +38,7 @@ Procedure Filling(FillingData, StandardProcessing)
 	If TypeOf(FillingData.FillBasis) = Type("CatalogRef.Counterparties") Then
 		
 		If FillingData.FillBasis.IsFolder Then
-			Raise NStr("en = 'Unable to select counterparty group.'");
+			Raise NStr("en='Unable to select counterparty group.';ru='Нельзя выбирать группу контрагентов.'");
 		EndIf;
 		
 		FillInByCounterparty(FillingData.FillBasis);
@@ -147,7 +147,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If EventEnding < EventBegin Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='End date can not be less than start date.'"),
+			NStr("en='End date can not be less than start date.';ru='Дата окончания не может быть меньше даты начала.'"),
 			ThisObject,
 			"EndDate",
 			,

@@ -16,7 +16,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	FillPropertyValues(ThisObject, InformationRegisters.ExchangeTransportSettings.TransportSettingsWS(EndPoint));
 	
 	Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Setting the leading end point for ""%1""'"),
+		NStr("en='Setting the leading end point for ""%1""';ru='Установка ведущей конечной точки для ""%1""'"),
 		CommonUse.ObjectAttributeValue(EndPoint, "Description"));
 	
 EndProcedure
@@ -24,7 +24,7 @@ EndProcedure
 &AtClient
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
-	WarningText = NStr("en = 'Do you want to cancel the operation execution?'");
+	WarningText = NStr("en='Do you want to cancel the operation execution?';ru='Отменить выполнение операции?'");
 	CommonUseClient.ShowArbitraryFormClosingConfirmation(
 		ThisObject, Cancel, WarningText, "ForceCloseForm");
 	
@@ -37,7 +37,7 @@ EndProcedure
 &AtClient
 Procedure Set(Command)
 	
-	Status(NStr("en = 'Leading end point is being set. Please wait...'"));
+	Status(NStr("en='Leading end point is being set. Please wait...';ru='Выполняется установка ведущей конечной точки. Пожалуйста, подождите..'"));
 	
 	Cancel = False;
 	FillError = False;
@@ -50,8 +50,9 @@ Procedure Set(Command)
 	
 	If Cancel Then
 		
-		NString = NStr("en = 'Errors occurred when setting the leading end point.
-		|Do you want to open the event log?'");
+		NString = NStr("en='Errors occurred when setting the leading end point."
+"Do you want to open the event log?';ru='При установке ведущей конечной точки возникли ошибки."
+"Перейти в журнал регистрации?'");
 		NotifyDescription = New NotifyDescription("OpenEventLogMonitor", ThisObject);
 		ShowQueryBox(NOTifyDescription, NString, QuestionDialogMode.YesNo, ,DialogReturnCode.No);
 		Return;
@@ -59,7 +60,7 @@ Procedure Set(Command)
 	
 	Notify(MessageExchangeClient.EventNameLeadingEndPointSet());
 	
-	ShowUserNotification(,, NStr("en = 'Installation of the leading end point has been successfully completed.'"));
+	ShowUserNotification(,, NStr("en='Installation of the leading end point has been successfully completed.';ru='Установка ведущей конечной точки успешно завершена.'"));
 	
 	ForceCloseForm = True;
 	

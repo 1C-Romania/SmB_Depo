@@ -100,7 +100,7 @@ Procedure CreateDataExchangeInInfobase(Sender, Settings, FilterSsettingsAtNode, 
 		
 		If CorrespondentEndPoint.IsEmpty() Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Correspondent end point with the %1 script is not found.'"),
+				NStr("en='Correspondent end point with the %1 script is not found.';ru='Не найдена конечная точка корреспондента с кодом ""%1"".'"),
 				Settings.CorrespondentEndPoint);
 		EndIf;
 		
@@ -311,7 +311,7 @@ EndProcedure
 
 Function EventLogMonitorMessageTextSendMessages()
 	
-	Return NStr("en = 'Send messages'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Send messages';ru='Отправка сообщений'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

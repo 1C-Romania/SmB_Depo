@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Purchases</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Закупки</v8:content>
+		</v8:item>
 	</Title>
 	<Width>84</Width>
 	<AutoTitle>false</AutoTitle>
@@ -46,6 +50,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Use these settings to customize accounting detalization by inventory. You can enable usage of several warehouses. Customize purchase order states, reservation and safe custody.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка детализации учета по запасам. Включение использования нескольких складов. Настройка состояний заказов поставщикам, резервирования и ответственного хранения.</v8:content>
+						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
 					<ContextMenu name="SectionDescriptionContextMenu" id="94"/>
@@ -76,6 +84,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>WEB Application</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ВЕБ приложение</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:FormTextColor</TitleTextColor>
 			<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -83,6 +95,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Adoption of changes in the web client</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Принятие изменений в веб-клиенте</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>82</Width>
@@ -106,6 +122,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>In order the changes to take an effect it is necessary to update the system parameters or to restart the application.</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Для того, чтобы изменения вступили в силу, необходимо обновить параметры системы или перезапустить приложение.</v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 				</Button>
@@ -121,12 +141,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Inventory (products and services)</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запасы (номенклатура)</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Inventory (products and services)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запасы (номенклатура)</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>82</Width>
@@ -148,11 +176,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Settings accounting in different units of measurement</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки учет в различных единицах измерений</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Settings accounting in different units of measurement</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки учет в различных единицах измерений</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -165,6 +201,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Enable this option to keep accounts of products and services in different units of measure. For more information, see the option help. </v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Опция включает возможность вести учет номенклатуры в различных единицах измерения. Подробнее можно посмотреть в опциональной справке. </v8:content>
+									</v8:item>
 								</Title>
 							</ExtendedTooltip>
 							<ChildItems>
@@ -174,6 +214,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Accounting in various UOM</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Учет в различных единицах измерения</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
@@ -187,6 +231,10 @@
 												<v8:content>&lt;b&gt;"Account products and services in various units of measure"&lt;/&gt;. 
 
 This option defines the possibility of products and services accounting in various units for example in pieces, blocks, boxes or kilograms. &lt;b&gt;&lt;color #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>"Вести учет номенклатуры в различных единицах измерения".   Эта опция определяет возможность ведения учета номенклатуры в различных единицах измерения, например в штуках, блоках, коробках или килограммах. ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
 											</v8:item>
 										</Title>
 									</ExtendedTooltip>
@@ -202,11 +250,19 @@ This option defines the possibility of products and services accounting in vario
 									<v8:lang>en</v8:lang>
 									<v8:content>Settings use characteristics</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки использовать характеристики</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Settings use characteristics</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки использовать характеристики</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -219,6 +275,10 @@ This option defines the possibility of products and services accounting in vario
 										<v8:lang>en</v8:lang>
 										<v8:content>Enable this option to keep accounts of inventory, work and services by characteristics. For more information, see the option help. </v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Опция позволяет вести учет запасов, работ и услуг в разрезе характеристик. Подробнее можно посмотреть в опциональной справке. </v8:content>
+									</v8:item>
 								</Title>
 							</ExtendedTooltip>
 							<ChildItems>
@@ -228,6 +288,10 @@ This option defines the possibility of products and services accounting in vario
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Accounting by characteristics</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вести учет запасов в разрезе характеристик</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
@@ -247,6 +311,10 @@ The option defines whether it is possible to keep accounts of inventories, works
 
 
 </v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>"Вести учет номенклатуры в разрезе характеристик".   Опция определяет возможность учета запасов, работ и услуг в разрезе характеристик номенклатуры. Характеристики являются дополнительным разрезом аналитики и позволяют организовать структуру номенклатуры в максимально удобном виде. Обычно дополнительными характеристиками являются цвет, размер, мощность и т.п. признаки.  ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
 											</v8:item>
 										</Title>
 									</ExtendedTooltip>
@@ -275,11 +343,19 @@ The option defines whether it is possible to keep accounts of inventories, works
 									<v8:lang>en</v8:lang>
 									<v8:content>Batches using settings</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки использования партий</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Batches using settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки использования партий</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -293,6 +369,10 @@ The option defines whether it is possible to keep accounts of inventories, works
 										<v8:lang>en</v8:lang>
 										<v8:content>Enable this option to specify products and services by batches. For more information, see the option help. </v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Опция позволяет использовать детализацию номенклатуры по партиям. Подробнее можно посмотреть в опциональной справке. </v8:content>
+									</v8:item>
 								</Title>
 							</ExtendedTooltip>
 							<ChildItems>
@@ -302,6 +382,10 @@ The option defines whether it is possible to keep accounts of inventories, works
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Accounting inventories by batches</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Учет запасов в разрезе партий</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
@@ -323,6 +407,10 @@ The parameter defines whether inventory accounting by specific products and serv
 #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
 </v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>"Вести учет запасов в разрезе партий".   Параметр определяет возможность учета запасов в разрезе конкретных партий номенклатуры. Партионный учет предполагает, что каждая партия одного и того же запаса может учитываться на складе отдельно. Ведение партионного учета для запасов, принятых на коммисиию, в переработку или ответственное хранение от стороннего контрагента является обязательным. Для собственных запасов определяется спецификой компании.  ВАЖНО! Партия номенклатуры не является аналогом документа оприходования запасов и не используется для определения стоимости списания товарно-материальных запасов методом FIFO.  ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
+											</v8:item>
 										</Title>
 									</ExtendedTooltip>
 									<Events>
@@ -341,12 +429,20 @@ The parameter defines whether inventory accounting by specific products and serv
 					<v8:lang>en</v8:lang>
 					<v8:content>Warehouse accounting</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Складской учет</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Warehouse accounting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Складской учет</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>82</Width>
@@ -369,6 +465,10 @@ The parameter defines whether inventory accounting by specific products and serv
 									<v8:lang>en</v8:lang>
 									<v8:content>Accounting by several warehouses (two or more)</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вести учет по нескольким складам (двум и более)</v8:content>
+								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -379,6 +479,10 @@ The parameter defines whether inventory accounting by specific products and serv
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Enable this option if you need to keep accounts by several warehouses. Enabling this option also allows to specify warehouses in documents.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Если требуется вести учет по нескольким складам в программном продукте, то необходимо включить эту опцию. Также включение этой опции добавляет возможность указания складов в документах.</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -395,6 +499,10 @@ The parameter defines whether inventory accounting by specific products and serv
 									<v8:lang>en</v8:lang>
 									<v8:content>Structural units catalog</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Справочник "Структурные единицы"</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 							<ExtendedTooltip name="CatalogStructuralUnitsWarehousesExtendedTooltip" id="295">
@@ -402,6 +510,10 @@ The parameter defines whether inventory accounting by specific products and serv
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Go to the structural units catalog with the filter set for warehouses.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Переход к справочнику структурных единиц с установленным отбором по складам.</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -421,11 +533,19 @@ The parameter defines whether inventory accounting by specific products and serv
 									<v8:lang>en</v8:lang>
 									<v8:content>Order warehouse settings</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки ордерный склад</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Order warehouse settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки ордерный склад</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -438,6 +558,10 @@ The parameter defines whether inventory accounting by specific products and serv
 										<v8:lang>en</v8:lang>
 										<v8:content>This option is used to split the accounting of inventory to warehouse and financial accounting. For more information, see the option help. </v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Опция определяет возможность разделения учета запасов на складской и финансовый. Подробнее можно посмотреть в опциональной справке. </v8:content>
+									</v8:item>
 								</Title>
 							</ExtendedTooltip>
 							<ChildItems>
@@ -447,6 +571,10 @@ The parameter defines whether inventory accounting by specific products and serv
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Use order warehouse</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Использовать ордерный склад</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
@@ -469,6 +597,10 @@ etc.&lt;b&gt;&lt;color
 #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
 </v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>"Использовать ордерный склад (разделение складских и финансовых операций по учету запасов)".   Опция определяет возможность разделения учета запасов на складской и финансовый. Механизм используется, когда по каким-либо причинам необходимо разделить учет запасов на складе и учет запасов в управленческом контуре. Тогда для учета запасов на складе используются приходные и расходные складские ордера, а также документ для отражения перемещения запасов внутри структуры склада (например, для распределения поступивших товаров по полкам и ячейкам или комплектации заказа для отгрузки). Для учета запасов в управленческом контуре используются финансовые документы - расходные накладные, перемещения запасов и т.д.  ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
+											</v8:item>
 										</Title>
 									</ExtendedTooltip>
 									<Events>
@@ -483,11 +615,19 @@ etc.&lt;b&gt;&lt;color
 									<v8:lang>en</v8:lang>
 									<v8:content>Accounting settings by cells</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки учет по ячейкам</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Accounting settings by cells</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки учет по ячейкам</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -500,6 +640,10 @@ etc.&lt;b&gt;&lt;color
 										<v8:lang>en</v8:lang>
 										<v8:content>Accounting of warehouse inventory by locations (lanes, racks, shelves, etc.). For more information, see the option help. </v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Учет запасов на складе в разрезе ячеек (проходов, стеллажей, полок и т.д.). Подробнее можно посмотреть в опциональной справке. </v8:content>
+									</v8:item>
 								</Title>
 							</ExtendedTooltip>
 							<ChildItems>
@@ -509,6 +653,10 @@ etc.&lt;b&gt;&lt;color
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Inventory accounting by bins</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Учет запасов по ячейкам</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
@@ -523,6 +671,10 @@ etc.&lt;b&gt;&lt;color
 												<v8:content>&lt;b&gt;"Accounting of warehouse inventory by cells (lanes, racks, shelves, etc.)"&lt;/&gt;.
 This option is used to split the accounting of inventory in terms of the storage places structure. List of storage bins for each warehouse is specified separately. &lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Key parameter. You can not disable this option if there is accounting data in the system.
 </v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>"Учет запасов на складе в разрезе ячеек (проходов, стеллажей, полок и т.д.)". Опция определяет возможность разделить учет запасов в разрезе структуры мест хранения. Перечень ячеек определяется для каждого склада отдельно. ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
 											</v8:item>
 										</Title>
 									</ExtendedTooltip>
@@ -542,12 +694,20 @@ This option is used to split the accounting of inventory in terms of the storage
 					<v8:lang>en</v8:lang>
 					<v8:content>Reservation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Резервирование</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Reservation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Резервирование</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>82</Width>
@@ -563,11 +723,19 @@ This option is used to split the accounting of inventory in terms of the storage
 							<v8:lang>en</v8:lang>
 							<v8:content>Reservation settings FO</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки резервирование ФО</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Reservation settings FO</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки резервирование ФО</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -582,6 +750,10 @@ This option is used to split the accounting of inventory in terms of the storage
 								<v8:lang>en</v8:lang>
 								<v8:content>Use the inventories reservation in warehouses and in expected receipts by the purchase orders, production orders. For more information, see the option help. </v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Использовать резервирование запасов на складах и в ожидаемых поступлениях по заказам поставщикам, заказам на производство. Подробнее можно посмотреть в опциональной справке. </v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 					<ChildItems>
@@ -591,6 +763,10 @@ This option is used to split the accounting of inventory in terms of the storage
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Use inventory reservation</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Использовать резервирование запасов</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -609,6 +785,10 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 &lt;b&gt;&lt;color
 #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
 </v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>"Использовать резервирование запасов на складах и в ожидаемых поступлениях по заказам поставщикам и заказам на производство".  Опция определяет возможность резервирования запасов на складах, учета материальных и других прямых затрат в производстве по заказам покупателей, размещение заказов покупателей в открытых заказах поставщикам и заказам на производство (сборку, разборку).  ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -630,12 +810,20 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 					<v8:lang>en</v8:lang>
 					<v8:content>Purchase orders</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказы поставщикам</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Purchase orders</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказы поставщикам</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>82</Width>
@@ -659,6 +847,10 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 									<v8:lang>en</v8:lang>
 									<v8:content>Several states of purchase orders</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Несколько состояний заказов поставщикам</v8:content>
+								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -669,6 +861,10 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Enable this option to use several purchase order states (three or more). If this option is disabled, order states are edited in the attributes below.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Включение этой опции позволяет использовать несколько состояний для заказов поставщикам (три и более). При выключенной опции состояния заказов редактируются в реквизитах ниже.</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -684,6 +880,10 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 									<v8:lang>en</v8:lang>
 									<v8:content>Purchase order states catalog</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Справочник "Состояния заказов поставщикам"</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 							<ExtendedTooltip name="CatalogCustomerOrderStatusExtendedTooltip" id="321">
@@ -692,6 +892,10 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Go to the purchase order states catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, it is necessary to enable the "Several states of purchase orders" option.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Переход к справочнику состояний заказов поставщиков. Справочник предназначен для самостоятельного создания произвольного количества состояний определенных видов. Для перехода к справочнику необходимо включить опцию "Несколько состояний заказов поставщиков".</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -704,11 +908,19 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 							<v8:lang>en</v8:lang>
 							<v8:content>Default settings of the purchase order states</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка состояния заказов поставщикам по умолчанию</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Default settings of the purchase order states</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка состояния заказов поставщикам по умолчанию</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
@@ -723,11 +935,19 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 									<v8:lang>en</v8:lang>
 									<v8:content>Orders states</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояния заказов</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Orders states</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояния заказов</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -742,6 +962,10 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 											<v8:lang>en</v8:lang>
 											<v8:content>"In process" state</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Состояние "в работе"</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="InProcessStatusContextMenu" id="185"/>
 									<ExtendedTooltip name="StateAtWorkExtendedTooltip" id="316"/>
@@ -755,6 +979,10 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>"Completed" state</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Состояние "Выполнен"</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="CompletedStatusContextMenu" id="190"/>
@@ -779,12 +1007,20 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 					<v8:lang>en</v8:lang>
 					<v8:content>Safe custody</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ответственное хранение</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Safe custody</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ответственное хранение</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>82</Width>
@@ -800,11 +1036,19 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 							<v8:lang>en</v8:lang>
 							<v8:content>Settings of goods receipt for safe custody</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки прием товаров на ответственное хранение</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Settings of goods receipt for safe custody</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки прием товаров на ответственное хранение</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -817,6 +1061,10 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 								<v8:lang>en</v8:lang>
 								<v8:content>Allows to add operations of the inventory receipt for safe custody. To use this option, enable use of products and services batches. For more information, see the option help. </v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Позволяет вводить операции приема запасов на ответственное хранение. Для использования опции необходимо разрешить использование партий номенклатуры. Подробнее можно посмотреть в опциональной справке. </v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 					<ChildItems>
@@ -826,6 +1074,10 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Receipt of inventory for safe custody</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Прием запасов на ответственное хранение</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -847,6 +1099,10 @@ This option is used to receive the inventory from counterparties for safe custod
 #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
 </v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>"Использовать прием запасов на ответственное хранение".   Опция определяет возможность приема запасов сторонних контрагентов на ответственное хранение.  ВАЖНО! Для отличия собственных запасов от запасов, принятых на ответственное хранение, используется дополнительный разрез учета - "Партии номенклатуры". Поэтому для использования опции необходимо в настройках учета, раздел ""Закупки"", включить опцию "Вести учет запасов в разрезе партий".  ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
+									</v8:item>
 								</Title>
 							</ExtendedTooltip>
 							<Events>
@@ -861,11 +1117,19 @@ This option is used to receive the inventory from counterparties for safe custod
 							<v8:lang>en</v8:lang>
 							<v8:content>Settings of goods transfer for safe custody</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки передача товаров на ответственное хранение</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Settings of goods transfer for safe custody</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки передача товаров на ответственное хранение</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -878,6 +1142,10 @@ This option is used to receive the inventory from counterparties for safe custod
 								<v8:lang>en</v8:lang>
 								<v8:content>Allows to add operations of the invenory transfer for safe custody. For more information, see the option help. </v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Позволяет вводить операции передачи запасов на ответственное хранение. Подробнее можно посмотреть в опциональной справке. </v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 					<ChildItems>
@@ -887,6 +1155,10 @@ This option is used to receive the inventory from counterparties for safe custod
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Transfer of inventory for safe custody</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Передача запасов на ответственное хранение</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -905,6 +1177,10 @@ Option determines the possibility to transfer own inventories for safe custody t
 #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
 </v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>"Использовать передачу запасов на ответственное хранение".   Опция определяет возможность передачи собственных запасов на ответственное хранение сторонним контрагентам.  ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
+									</v8:item>
 								</Title>
 							</ExtendedTooltip>
 							<Events>
@@ -921,12 +1197,20 @@ Option determines the possibility to transfer own inventories for safe custody t
 					<v8:lang>en</v8:lang>
 					<v8:content>Other</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочие</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Other</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочие</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>82</Width>
@@ -943,11 +1227,19 @@ Option determines the possibility to transfer own inventories for safe custody t
 							<v8:lang>en</v8:lang>
 							<v8:content>Settings transfer for processing</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки передача в переработку</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Settings transfer for processing</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки передача в переработку</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -961,6 +1253,10 @@ Option determines the possibility to transfer own inventories for safe custody t
 								<v8:lang>en</v8:lang>
 								<v8:content>Use transfer of raw materials and materials to processing. For more information, see the option help. </v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Использовать передачу сырья и материалов в переработку. Подробнее можно посмотреть в опциональной справке. </v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 					<ChildItems>
@@ -970,6 +1266,10 @@ Option determines the possibility to transfer own inventories for safe custody t
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Transfer raw materials for processing</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Передавать сырье и материалы в переработку</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -989,6 +1289,10 @@ Option determines the possibility to transfer own supplies and materials to thir
 #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
 </v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>"Использовать передачу сырья и материалов в переработку".  Опция определяет возможность передачи собственного сырья и материалов сторонним контрагентам для изготовления продукции или переработки.  ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
+									</v8:item>
 								</Title>
 							</ExtendedTooltip>
 							<Events>
@@ -1003,11 +1307,19 @@ Option determines the possibility to transfer own supplies and materials to thir
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of payment to supplier settings</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки срок оплаты поставщику</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Date of payment to supplier settings</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки срок оплаты поставщику</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -1020,6 +1332,10 @@ Option determines the possibility to transfer own supplies and materials to thir
 								<v8:lang>en</v8:lang>
 								<v8:content>Parameter determines default delay of payment to supplier. To be specified in days. For more information, see the option help. </v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Параметр определяет период отсрочки платежа поставщику по умолчанию. Указывается в сутках Подробнее можно посмотреть в опциональной справке. </v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 					<ChildItems>
@@ -1029,6 +1345,10 @@ Option determines the possibility to transfer own supplies and materials to thir
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content> Date of payment to supplier (in days)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content> Срок оплаты поставщику (в сутках)</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -1048,6 +1368,10 @@ It is used for automated insertion of counterparty into the agreement and to det
 
 </v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>"Срок оплаты поставщику (по умолчанию)".   Опция определяет срок отсрочки платежа поставщику по умолчанию, в сутках. Он используется для автоматической подстановки в договор контрагента и для определения даты оплаты при планировании платежей.</v8:content>
+									</v8:item>
 								</Title>
 							</ExtendedTooltip>
 							<Events>
@@ -1065,6 +1389,10 @@ It is used for automated insertion of counterparty into the agreement and to det
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Constants set</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Набор констант</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1115,6 +1443,10 @@ It is used for automated insertion of counterparty into the agreement and to det
 					<v8:lang>en</v8:lang>
 					<v8:content>Work mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим работы</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1126,11 +1458,19 @@ It is used for automated insertion of counterparty into the agreement and to det
 					<v8:lang>en</v8:lang>
 					<v8:content>Structural units catalog</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Справочник "Структурные единицы"</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Open the catalog "Structural unit (warehouses)"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть справочник "Структурные единицы (склады)"</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CatalogStructuralUnitsWarehouses</Action>
@@ -1141,11 +1481,19 @@ It is used for automated insertion of counterparty into the agreement and to det
 					<v8:lang>en</v8:lang>
 					<v8:content>Purchase order states catalog</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Справочник "Состояния заказов поставщикам"</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Open catalog "Purchase order state"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть справочник "Состояния заказов поставщикам"</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CatalogPurchaseOrderStates</Action>
@@ -1156,11 +1504,19 @@ It is used for automated insertion of counterparty into the agreement and to det
 					<v8:lang>en</v8:lang>
 					<v8:content>Update system parameters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить параметры системы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update system parameters</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить параметры системы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>UpdateSystemParameters</Action>

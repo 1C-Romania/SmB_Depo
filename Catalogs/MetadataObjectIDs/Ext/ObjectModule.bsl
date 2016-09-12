@@ -41,8 +41,9 @@ Procedure BeforeDelete(Cancel)
 	
 	If Not DeletionMark Then
 		Catalogs.MetadataObjectIDs.CallExceptionByError(
-			NStr("en = 'Metadata object ID deletion from which
-			           |attribute value ""Deletion mark"" is set False it is not valid.'"));
+			NStr("en='Metadata object ID deletion from which"
+"attribute value ""Deletion mark"" is set False it is not valid.';ru='Удаление идентификаторов объектов метаданных, у которых значение"
+"реквизита ""Пометка удаления"" установлено Ложь недопустимо.'"));
 	EndIf;
 	
 EndProcedure

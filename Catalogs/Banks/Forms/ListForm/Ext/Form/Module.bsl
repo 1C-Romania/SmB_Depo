@@ -41,7 +41,7 @@ Procedure ImportPreparedDataAtClient(DataStructure)
 	
 	If DataStructure.Property("SuccessfullyExecuted") Then
 		
-		NotificationText = NStr("en = 'Banks are updated from classifier'");
+		NotificationText = NStr("en='Banks are updated from classifier';ru='Банки обновлены из классификатора'");
 		ShowUserNotification("Update",, NotificationText);
 		
 	EndIf;
@@ -78,7 +78,7 @@ Function RunOnServer(FileInfobase)
 		Catalogs.Banks.RefreshBanksFromClassifier(ParametersStructure, StorageAddress);
 		Result = New Structure("JobCompleted", True);
 	Else
-		BackgroundJobDescription = NStr("en = 'Update of the banks from classifier'");
+		BackgroundJobDescription = NStr("en='Update of the banks from classifier';ru='Обновление банков из классификатора'");
 		Result = LongActions.ExecuteInBackground(
 			UUID, 
 			"Catalogs.Banks.RefreshBanksFromClassifier", 
@@ -119,8 +119,9 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
 	Cancel = True;
 	
-	QuestionText = NStr("en = 'There is an option to select bank from the classifier.
-		|Select?'");
+	QuestionText = NStr("en='There is an option to select bank from the classifier."
+"Select?';ru='Есть возможность подобрать банк из классификатора."
+"Подобрать?'");
 	
 	AdditionalParameters = New Structure;
 	AdditionalParameters.Insert("IsFolder", Group);
@@ -135,10 +136,13 @@ Procedure UpdateFromClassifier(Command)
 	
 	If Not BanksHaveBeenUpdatedFromClassifier Then
 		
-		QuestionText = NStr("en = 'ATTENTION!
-		|All banks will be updated from the classifier. If bank data was changed manually, such changes could be lost.
-		|To disable automatic update for the bank in future, it is necessary to select the manual modification check box (command ""Edit"").
-		|Continue?'");
+		QuestionText = NStr("en='ATTENTION!"
+"All banks will be updated from the classifier. If bank data was changed manually, such changes could be lost."
+"To disable automatic update for the bank in future, it is necessary to select the manual modification check box (command ""Edit"")."
+"Continue?';ru='ВНИМАНИЕ!"
+"Произойдет обновление всех банков из классификатора. Если данные банков изменялись вручную, то изменения могут быть утеряны."
+"В дальнейшем, для исключения банка из автоматического обновления, необходимо включить признак ручного изменения (команда ""Изменить"")."
+"Продолжить?'");
 		
 		Response = Undefined;
 

@@ -80,12 +80,13 @@ Procedure CheckListBeforeOperation(ResultHandler, ListAttribute)
 	Parameters.Insert("ListAttribute", ListAttribute);
 	
 	If Not SortInListIsSetCorrectly(ListAttribute) Then
-		QuestionText = NStr("en = 'To change the order of items, it
-								|is necessary to configure the list sorting by the field ""Order"". Configure the necessary sorting?'");
+		QuestionText = NStr("en='To change the order of items, it"
+"is necessary to configure the list sorting by the field ""Order"". Configure the necessary sorting?';ru='Для изменения порядка элементов"
+"необходимо настроить сортировку списка по полю ""Порядок"". Настроить необходимую сортировку?'");
 		NotifyDescription = New NotifyDescription("CheckListBeforeOperationResponseForSortingReceived", ThisObject, Parameters);
 		Buttons = New ValueList;
-		Buttons.Add(DialogReturnCode.Yes, NStr("en = 'Configure'"));
-		Buttons.Add(DialogReturnCode.No, NStr("en = 'Do not configure'"));
+		Buttons.Add(DialogReturnCode.Yes, NStr("en='Configure';ru='Настроить'"));
+		Buttons.Add(DialogReturnCode.No, NStr("en='Do not configure';ru='Не настраивать'"));
 		ShowQueryBox(NOTifyDescription, QuestionText, Buttons, , DialogReturnCode.Yes);
 		Return;
 	EndIf;
@@ -110,7 +111,7 @@ Procedure CheckListBeforeOperationResponseForSortingReceived(ResponseResult, Add
 		EndIf;
 	EndDo;
 	
-	CommonUseClientServer.Validate(UserOrderSettings <> Undefined, NStr("en = 'Custom settings for order not found.'"));
+	CommonUseClientServer.Validate(UserOrderSettings <> Undefined, NStr("en='Custom settings for order not found.';ru='Пользовательская настройка порядка не найдена.'"));
 	
 	UserOrderSettings.Items.Clear();
 	Item = UserOrderSettings.Items.Add(Type("DataCompositionOrderItem"));

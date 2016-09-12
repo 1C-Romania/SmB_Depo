@@ -123,7 +123,7 @@ Procedure PrepareDataArea(Val DataAreaCode, Val FromExporting, Val Variant, Val 
 	BeginTransaction();
 	Try
 		If Not ValueIsFilled(Constants.InfobaseUsageMode.Get()) Then
-			MessageText = NStr("en = 'Infobase work mode is not installed'");
+			MessageText = NStr("en='Infobase work mode is not installed';ru='Не установлен режим работы информационной базы'");
 			Raise(MessageText);
 		EndIf;
 		
@@ -135,19 +135,19 @@ Procedure PrepareDataArea(Val DataAreaCode, Val FromExporting, Val Variant, Val 
 		RecordManager.Read();
 		If RecordManager.Selected() Then
 			If RecordManager.Status = Enums.DataAreaStatuses.Deleted Then
-				MessagePattern = NStr("en = 'Data area %1 deleted'");
+				MessagePattern = NStr("en='Data area %1 deleted';ru='Область данных %1 удалена'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, DataAreaCode);
 				Raise(MessageText);
 			ElsIf RecordManager.Status = Enums.DataAreaStatuses.ToDelete Then
-				MessagePattern = NStr("en = 'Data area %1 is being deleted'");
+				MessagePattern = NStr("en='Data area %1 is being deleted';ru='Область данных %1 в процессе удаления'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, DataAreaCode);
 				Raise(MessageText);
 			ElsIf RecordManager.Status = Enums.DataAreaStatuses.New Then
-				MessagePattern = NStr("en = 'Data area %1 is getting prepared to be used'");
+				MessagePattern = NStr("en='Data area %1 is getting prepared to be used';ru='Область данных %1 в процессе подготовки к использованию'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, DataAreaCode);
 				Raise(MessageText);
 			ElsIf RecordManager.Status = Enums.DataAreaStatuses.Used Then
-				MessagePattern = NStr("en = 'Data area %1 is used.'");
+				MessagePattern = NStr("en='Data area %1 is used.';ru='Область данных %1 используется.'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, DataAreaCode);
 				Raise(MessageText);
 			EndIf;
@@ -208,7 +208,7 @@ Procedure DeleteDataArea(Val DataAreaCode) Export
 		RecordManager = InformationRegisters.DataAreas.CreateRecordManager();
 		RecordManager.Read();
 		If Not RecordManager.Selected() Then
-			MessagePattern = NStr("en = 'Data area %1 does not exist.'");
+			MessagePattern = NStr("en='Data area %1 does not exist.';ru='Область данных %1 не существует.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, DataAreaCode);
 			Raise(MessageText);
 		EndIf;
@@ -336,14 +336,14 @@ Procedure SetInfobaseParameters(Parameters) Export
 			
 			CurParameterString = ParameterTable.Find(KeyAndValue.Key, "Name");
 			If CurParameterString = Undefined Then
-				MessagePattern = NStr("en = 'Unknown parameter name %1'");
+				MessagePattern = NStr("en='Unknown parameter name %1';ru='Не известное имя параметра %1'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, KeyAndValue.Key);
-				WriteLogEvent(NStr("en ='RemoteAdministration.SetInfobaseParameters'", 
+				WriteLogEvent(NStr("en='RemoteAdministration.SetInfobaseParameters';ru='УдаленноеАдминистрирование.УстановитьПараметрыИБ'", 
 					CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Warning, , , MessageText);
 				Continue;
 			ElsIf CurParameterString.WriteProhibition Then
-				MessagePattern = NStr("en = 'Parameter %1 can be used for reading only'");
+				MessagePattern = NStr("en='Parameter %1 can be used for reading only';ru='Параметр %1 может использоваться только для чтения'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, KeyAndValue.Key);
 				Raise(MessageText);
 			EndIf;
@@ -370,7 +370,7 @@ Procedure SetInfobaseParameters(Parameters) Export
 		CommitTransaction();
 	Except
 		RollbackTransaction();
-		WriteLogEvent(NStr("en = 'Installation of the IB parameters'", 
+		WriteLogEvent(NStr("en='Installation of the IB parameters';ru='Установка параметров ИБ'", 
 			CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Raise;
@@ -573,7 +573,7 @@ Procedure DataAreaAttach(Parameters) Export
 		RecordManager = InformationRegisters.DataAreas.CreateRecordManager();
 		RecordManager.Read();
 		If Not RecordManager.Selected() Then
-			MessagePattern = NStr("en = 'Data area %1 does not exist.'");
+			MessagePattern = NStr("en='Data area %1 does not exist.';ru='Область данных %1 не существует.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Parameters.Zone);
 			Raise(MessageText);
 		EndIf;
@@ -715,7 +715,7 @@ Function GetLanguageByCode(Val LanguageCode)
 			EndIf;
 		EndDo;
 		
-		MessagePattern = NStr("en = 'Unsupported language code: %1'");
+		MessagePattern = NStr("en='Unsupported language code: %1';ru='Неподдерживаемый код языка: %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Language);
 		Raise(MessageText);
 		
@@ -734,8 +734,9 @@ Function GetEmailAddressStructure(Val EmailAddress)
 		Try
 			EmailAddressStructure = CommonUseClientServer.ParseStringWithPostalAddresses(EmailAddress);
 		Except
-			MessagePattern = NStr("en = 'Incorrect email address is specified:
-				|%1 Error: %2'");
+			MessagePattern = NStr("en='Incorrect email address is specified:"
+"%1 Error: %2';ru='Указан некорректный адрес"
+"электронной почты: %1 Ошибка: %2'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				EmailAddress, ErrorInfo().Definition);
 			Raise(MessageText);
@@ -817,7 +818,7 @@ Function GetAreaUserByServiceUserID(Val ServiceUserID)
 	EndTry;
 	
 	If Result.IsEmpty() Then
-		MessagePattern = NStr("en = 'User with the service user ID %1 has not been found'");
+		MessagePattern = NStr("en='User with the service user ID %1 has not been found';ru='Не найден пользователь с идентификатором пользователя сервиса %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ServiceUserID);
 		Raise(MessageText);
 	EndIf;
@@ -831,7 +832,7 @@ Function GetInfobaseUserByDataAreaUser(Val DataAreaUser)
 	InfobaseUserID = CommonUse.ObjectAttributeValue(DataAreaUser, "InfobaseUserID");
 	IBUser = InfobaseUsers.FindByUUID(InfobaseUserID);
 	If IBUser = Undefined Then
-		MessagePattern = NStr("en = 'For the data area user with ID %1 an infobase user does not exist'");
+		MessagePattern = NStr("en='For the data area user with ID %1 an infobase user does not exist';ru='Для пользователя области данных с идентификатором %1 не существует пользователя информационной базы'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, DataAreaUser.UUID());
 		Raise(MessageText);
 	EndIf;
@@ -896,7 +897,7 @@ EndProcedure
 Function ExchangePlanNodeCodeInService(Val DataAreaNumber) Export
 	
 	If TypeOf(DataAreaNumber) <> Type("Number") Then
-		Raise NStr("en = 'Inccorect number parameter type [1].'");
+		Raise NStr("en='Inccorect number parameter type [1].';ru='Неправильный тип параметра номер [1].'");
 	EndIf;
 	
 	Result = "S0[DataAreaNumber]";

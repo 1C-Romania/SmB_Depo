@@ -54,8 +54,9 @@ EndProcedure // PickFromClassifier()
 //
 Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
-	QuestionText = NStr("en = 'There is an option to add the unit of measurement from the classifier. Add
-		|from classifier? (Yes - add from classifier; No - add yourself; Cancel - cancel operation)'");
+	QuestionText = NStr("en='There is an option to add the unit of measurement from the classifier. Add"
+"from classifier? (Yes - add from classifier; No - add yourself; Cancel - cancel operation)';ru='Имеется возможность добавить единицу измерения из классификатора. Добавить из классификатора?"
+"(Да - добавить из классификатора; Нет - добавить самостоятельно; Отмена - отменить действияе)'");
 		
 	ShowQueryBox(New NotifyDescription("ListBeforeAddingRowEnd", ThisObject),
 		QuestionText,

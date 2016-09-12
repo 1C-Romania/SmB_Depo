@@ -4,11 +4,11 @@
 &AtClient
 Procedure GenerateDescription()
 	
-	Object.Description = NStr("en = 'Series '") + Object.LicenseCardSeries + NStr("en = ' # '") + Object.LicenseCardNumber + NStr("en = ' dated '") + Format(Object.LicenseCardsDateIssued, "DF=dd.MM.yyyy");
+	Object.Description = NStr("en='Series ';ru='серия '") + Object.LicenseCardSeries + NStr("en=' # ';ru=' # '") + Object.LicenseCardNumber + NStr("en=' dated ';ru=' от '") + Format(Object.LicenseCardsDateIssued, "DF=dd.MM.yyyy");
 	
 	If ValueIsFilled(Object.LicenseOwner) Then
 		
-		Object.Description = Object.Description + NStr("en = '. Owner: '") + Object.LicenseOwner;
+		Object.Description = Object.Description + NStr("en='. Owner: ';ru='. Владелец: '") + Object.LicenseOwner;
 		
 	EndIf;
 	

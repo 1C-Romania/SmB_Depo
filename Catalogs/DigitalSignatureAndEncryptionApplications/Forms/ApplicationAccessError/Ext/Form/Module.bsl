@@ -22,10 +22,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	   AND ValueIsFilled(ErrorOnServer) Then
 		
 		ErrorDescription =
-			  NStr("en = 'ON SERVER:'")
+			  NStr("en='ON SERVER:';ru='НА СЕРВЕРЕ:'")
 			+ Chars.LF + Chars.LF + ErrorOnServer.ErrorDescription
 			+ Chars.LF + Chars.LF
-			+ NStr("en = 'ON COMPUTER:'")
+			+ NStr("en='ON COMPUTER:';ru='НА КОМПЬЮТЕРЕ:'")
 			+ Chars.LF + Chars.LF + ErrorOnClient.ErrorDescription;
 	Else
 		ErrorDescription = ErrorOnClient.ErrorDescription;
@@ -126,7 +126,7 @@ Procedure CopyIntoExchangeBuffer(Command)
 	
 	String = Items.ErrorDescription.Title;
 	ShowInputString(New NotifyDescription("CopyIntoExchangeBufferEnd", ThisObject),
-		String, NStr("en = 'Error text for copying'"),, True);
+		String, NStr("en='Error text for copying';ru='Текст ошибки для копирования'"),, True);
 	
 EndProcedure
 

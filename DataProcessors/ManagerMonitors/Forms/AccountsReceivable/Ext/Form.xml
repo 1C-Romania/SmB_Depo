@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Accounts receivable</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Дебиторская задолженность</v8:content>
+		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>None</CommandBarLocation>
@@ -21,11 +25,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Header</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Header</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -39,11 +51,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Filters</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отборы</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Filters</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отборы</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
@@ -57,6 +77,10 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
+									<v8:content>As of</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
 									<v8:content>As of</v8:content>
 								</v8:item>
 							</ToolTip>
@@ -94,11 +118,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Command bar</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Командная панель</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Command bar</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Командная панель</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="CommandBarExtendedTooltip" id="71"/>
@@ -131,11 +163,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Indicators</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показатели</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Indicators</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показатели</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -150,11 +190,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Diagrams</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Диаграммы</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Diagrams</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Диаграммы</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Width>39</Width>
@@ -170,11 +218,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Chart widget debitors</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Виджет диаграмма дебиторы</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Chart widget debitors</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Виджет диаграмма дебиторы</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -189,6 +245,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Debitors</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>дебиторов</v8:content>
 										</v8:item>
 									</Title>
 									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -214,11 +274,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Widget chart debitors on terms</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Виджет диаграмма дебиторы по срокам</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Widget chart debitors on terms</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Виджет диаграмма дебиторы по срокам</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -252,11 +320,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Chart widget debt dynamics</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Виджет диаграмма динамика задолженности</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Chart widget debt dynamics</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Виджет диаграмма динамика задолженности</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -271,6 +347,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Dynamics of accounts receivable</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Динамика задолженности дебиторов</v8:content>
 										</v8:item>
 									</Title>
 									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -291,11 +371,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Tables</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблицы</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Tables</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблицы</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Width>39</Width>
@@ -311,11 +399,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Debitors</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>дебиторов</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Balances creditors</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остатки кредиторы</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -330,11 +426,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Debitors header</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дебиторы шапка</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group common creditors</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа общая кредиторы</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -348,11 +452,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors header left</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы шапка слева</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group number of creditors</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа кредиторы количество</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
@@ -369,6 +481,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Debitors</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>дебиторов</v8:content>
 														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
@@ -390,6 +506,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>0</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>0</v8:content>
+														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
 													<VerticalAlign>Top</VerticalAlign>
@@ -408,11 +528,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors header right</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы шапка справа</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors header right</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы шапка справа</v8:content>
 												</v8:item>
 											</ToolTip>
 											<HorizontalStretch>true</HorizontalStretch>
@@ -428,11 +556,19 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>Debitors debt total</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Дебиторы задолженность итог</v8:content>
+														</v8:item>
 													</Title>
 													<ToolTip>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Group creditors all arrear</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа кредиторы вся задолженность</v8:content>
 														</v8:item>
 													</ToolTip>
 													<Group>Vertical</Group>
@@ -448,6 +584,10 @@
 																<v8:item>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Debt</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Наш долг</v8:content>
 																</v8:item>
 															</Title>
 															<HorizontalAlign>Center</HorizontalAlign>
@@ -467,6 +607,10 @@
 																	<v8:lang>en</v8:lang>
 																	<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>1 000 000,00</v8:content>
+																</v8:item>
 															</Title>
 															<HorizontalAlign>Center</HorizontalAlign>
 															<VerticalAlign>Top</VerticalAlign>
@@ -485,11 +629,19 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>Debitors advance total</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Дебиторы аванс итог</v8:content>
+														</v8:item>
 													</Title>
 													<ToolTip>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Group creditors arrear</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа кредиторы просрочено</v8:content>
 														</v8:item>
 													</ToolTip>
 													<Group>Vertical</Group>
@@ -505,6 +657,10 @@
 																<v8:item>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Advance</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Является ли платеж авансом</v8:content>
 																</v8:item>
 															</Title>
 															<HorizontalAlign>Center</HorizontalAlign>
@@ -523,6 +679,10 @@
 																<v8:item>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>1 000 000,00</v8:content>
 																</v8:item>
 															</Title>
 															<HorizontalAlign>Center</HorizontalAlign>
@@ -546,11 +706,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Debitors information</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дебиторы сведения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group details creditors</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа детальная кредиторы</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -564,11 +732,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors header information</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы сведения шапка</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors header information</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы сведения шапка</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -584,6 +760,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>Counterparty</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Контрагенты</v8:content>
+														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
 													<ContextMenu name="DebitorsCounterpartyHeaderContextMenu" id="115"/>
@@ -596,6 +776,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Debt</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Наш долг</v8:content>
 														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
@@ -610,6 +794,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>Advance</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Является ли платеж авансом</v8:content>
+														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
 													<ContextMenu name="DecorationAdvanceHeaderContextMenu" id="124"/>
@@ -623,11 +811,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors data</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы данные</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors data</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы данные</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -650,6 +846,15 @@
 4 Counterparty
 5 Counterparty 6</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Контрагент
+1
+Контрагент
+2 Контрагент
+3 Контрагент
+4 Контрагент 5 Контрагент 6</v8:content>
+														</v8:item>
 													</Title>
 													<VerticalAlign>Top</VerticalAlign>
 													<ContextMenu name="DebitorsCounterpartyContextMenu" id="129"/>
@@ -663,6 +868,15 @@
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>en</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
 															<v8:content>1
 000,00 1
 000,00 1
@@ -691,6 +905,15 @@
 000,00 1
 000,00 1 000,00</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
 													</Title>
 													<HorizontalAlign>Right</HorizontalAlign>
 													<VerticalAlign>Top</VerticalAlign>
@@ -707,11 +930,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Debitors footer</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дебиторы подвал</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Cash balance additionally</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Остатки ДСДополнительно</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -727,11 +958,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Details</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Расшифровка</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Customers settlements (man. cur.)</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Расчеты с покупателями (упр. вал.)</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Hyperlink>true</Hyperlink>
@@ -761,11 +1000,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Debitors on terms</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дебиторы по срокам</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Balances creditors</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остатки кредиторы</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -780,11 +1027,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Debitors on terms header</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дебиторы по срокам шапка</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group common creditors</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа общая кредиторы</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -799,11 +1054,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors less than 7 total</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы менее7 итог</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group number of creditors</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа кредиторы количество</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
@@ -819,6 +1082,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Up to 7 days</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>до 7 дней</v8:content>
 														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
@@ -839,6 +1106,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>1 000 000,00</v8:content>
+														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
 													<VerticalAlign>Top</VerticalAlign>
@@ -857,11 +1128,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors less than 30 total</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы менее 30 итог</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group creditors all arrear</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа кредиторы вся задолженность</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
@@ -877,6 +1156,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>8-30 days</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>8-30 дней</v8:content>
 														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
@@ -897,6 +1180,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>1 000 000,00</v8:content>
+														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
 													<VerticalAlign>Top</VerticalAlign>
@@ -915,11 +1202,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors more than 30 total</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы более30 итог</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group creditors arrear</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа кредиторы просрочено</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
@@ -935,6 +1230,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>from 31 day</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>от 31 дня</v8:content>
 														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
@@ -954,6 +1253,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>1 000 000,00</v8:content>
 														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
@@ -975,11 +1278,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Debitors on terms information</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дебиторы по срокам сведения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group details creditors</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа детальная кредиторы</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -993,11 +1304,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors on terms information header</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы по срокам сведения шапка</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors header information</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы сведения шапка</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -1013,6 +1332,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>Counterparty</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Контрагенты</v8:content>
+														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
 													<ContextMenu name="DebitorsOnTermsCounterpartyContextMenu" id="182"/>
@@ -1026,6 +1349,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>Up to 7 days</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>до 7 дней</v8:content>
+														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
 													<ContextMenu name="DecorationLessThan7ContextMenu" id="185"/>
@@ -1037,6 +1364,10 @@
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>en</v8:lang>
+															<v8:content>8 - 30</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
 															<v8:content>8 - 30</v8:content>
 														</v8:item>
 													</Title>
@@ -1052,6 +1383,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>over 31</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>свыше 31</v8:content>
+														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
 													<ContextMenu name="DecorationMoreThan31ContextMenu" id="188"/>
@@ -1065,11 +1400,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors on terms data</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы по срокам данные</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors data</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы данные</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -1092,6 +1435,15 @@
 4 Counterparty
 5 Counterparty 6</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Контрагент
+1
+Контрагент
+2 Контрагент
+3 Контрагент
+4 Контрагент 5 Контрагент 6</v8:content>
+														</v8:item>
 													</Title>
 													<VerticalAlign>Top</VerticalAlign>
 													<ContextMenu name="CounterpartiesOnTermsContextMenu" id="193"/>
@@ -1105,6 +1457,15 @@
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>en</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
 															<v8:content>1
 000,00 1
 000,00 1
@@ -1133,6 +1494,15 @@
 000,00 1
 000,00 1 000,00</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
 													</Title>
 													<HorizontalAlign>Right</HorizontalAlign>
 													<VerticalAlign>Top</VerticalAlign>
@@ -1147,6 +1517,15 @@
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>en</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
 															<v8:content>1
 000,00 1
 000,00 1
@@ -1170,11 +1549,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Debitors on terms footer</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дебиторы по срокам подвал</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Cash balance additionally</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Остатки ДСДополнительно</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -1190,11 +1577,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Details</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Расшифровка</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Debt of customers by debt due dates</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Задолженность покупателей по срокам долга</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Hyperlink>true</Hyperlink>
@@ -1224,11 +1619,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Debitors arrear</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дебиторы просрочка</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Balances creditors</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остатки кредиторы</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -1243,11 +1646,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Debitors arrear header</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дебиторы просрочено шапка</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group common creditors</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа общая кредиторы</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -1262,11 +1673,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors arrear header right</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы просрочено шапка справа</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group number of creditors</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа кредиторы количество</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
@@ -1282,6 +1701,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Debitors with arrear</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Дебиторы с просрочкой</v8:content>
 														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
@@ -1302,6 +1725,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>0</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>0</v8:content>
+														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
 													<VerticalAlign>Top</VerticalAlign>
@@ -1320,11 +1747,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors arrear header right</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы просрочено шапка справа</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group creditors all arrear</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа кредиторы вся задолженность</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
@@ -1339,6 +1774,10 @@
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>en</v8:lang>
+															<v8:content>Amount</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
 															<v8:content>Amount</v8:content>
 														</v8:item>
 													</Title>
@@ -1358,6 +1797,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>&lt;fontstyle -33&gt;1 000 &lt;/&gt;&lt;fontstyle -31&gt;000,00&lt;/&gt;</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>1 000 000,00</v8:content>
 														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
@@ -1379,11 +1822,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Debitors arrear information</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дебиторы просрочено сведения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group details creditors</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа детальная кредиторы</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -1397,11 +1848,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors arrear information header</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы просрочено сведения шапка</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors header information</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы сведения шапка</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -1416,6 +1875,10 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Counterparty</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Контрагенты</v8:content>
 														</v8:item>
 													</Title>
 													<HorizontalAlign>Center</HorizontalAlign>
@@ -1443,11 +1906,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors arrear data</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы просрочено данные</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Debitors data</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дебиторы данные</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -1470,6 +1941,15 @@
 4 Counterparty
 5 Counterparty 6</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Контрагент
+1
+Контрагент
+2 Контрагент
+3 Контрагент
+4 Контрагент 5 Контрагент 6</v8:content>
+														</v8:item>
 													</Title>
 													<VerticalAlign>Top</VerticalAlign>
 													<ContextMenu name="DebitorsArrearCounterpartyContextMenu" id="254"/>
@@ -1483,6 +1963,15 @@
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>en</v8:lang>
+															<v8:content>1
+000,00 1
+000,00 1
+000,00 1
+000,00 1
+000,00 1 000,00</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
 															<v8:content>1
 000,00 1
 000,00 1
@@ -1506,11 +1995,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Debitors arrear footer</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дебиторы просрочено подвал</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Cash balance additionally</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Остатки ДСДополнительно</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -1539,11 +2036,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Details</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Расшифровка</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Debt of customers by debt due dates</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Задолженность покупателей по срокам долга</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Hyperlink>true</Hyperlink>
@@ -1602,12 +2107,16 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Debitors</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>дебиторов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.2/data/chart">d5p1:Chart</v8:Type>
 			</Type>
 			<Settings xmlns:d4p1="http://v8.1c.ru/8.2/data/chart" xsi:type="d4p1:Chart">
-				<d4p1:seriesCurId>109</d4p1:seriesCurId>
+				<d4p1:seriesCurId>117</d4p1:seriesCurId>
 				<d4p1:pointsCurId>4</d4p1:pointsCurId>
 				<d4p1:isSeriesDesign>true</d4p1:isSeriesDesign>
 				<d4p1:realSeriesCount>4</d4p1:realSeriesCount>
@@ -1853,12 +2362,16 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Accounts receivable by periods</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дебиторская задолженность по срокам</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.2/data/chart">d5p1:Chart</v8:Type>
 			</Type>
 			<Settings xmlns:d4p1="http://v8.1c.ru/8.2/data/chart" xsi:type="d4p1:Chart">
-				<d4p1:seriesCurId>208</d4p1:seriesCurId>
+				<d4p1:seriesCurId>214</d4p1:seriesCurId>
 				<d4p1:pointsCurId>0</d4p1:pointsCurId>
 				<d4p1:isSeriesDesign>true</d4p1:isSeriesDesign>
 				<d4p1:realSeriesCount>3</d4p1:realSeriesCount>
@@ -2086,13 +2599,17 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Accounts receivable dynamics</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Динамика задолженности покупателей</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.2/data/chart">d5p1:Chart</v8:Type>
 			</Type>
 			<Settings xmlns:d4p1="http://v8.1c.ru/8.2/data/chart" xsi:type="d4p1:Chart">
-				<d4p1:seriesCurId>66</d4p1:seriesCurId>
-				<d4p1:pointsCurId>2015</d4p1:pointsCurId>
+				<d4p1:seriesCurId>68</d4p1:seriesCurId>
+				<d4p1:pointsCurId>2077</d4p1:pointsCurId>
 				<d4p1:isSeriesDesign>true</d4p1:isSeriesDesign>
 				<d4p1:realSeriesCount>1</d4p1:realSeriesCount>
 				<d4p1:realSeriesData>
@@ -2844,6 +3361,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Period presentation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление периода</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -2861,11 +3382,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Refresh</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить календарь</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F5</Shortcut>

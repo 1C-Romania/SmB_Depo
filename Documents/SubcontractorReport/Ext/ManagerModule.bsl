@@ -34,8 +34,8 @@ Procedure GenerateTableManagerial(DocumentRefSubcontractorReport, StructureAddit
 
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
-	Query.SetParameter("SetOffAdvancePayment", NStr("en = 'Setoff of advance payment'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("SetOffAdvancePayment", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
 	
@@ -526,7 +526,7 @@ Procedure DataInitializationByService(DocumentRefSubcontractorReport, StructureA
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
-	Query.SetParameter("ReflectionCostsOnProcessing", NStr("en = 'Reflection of the processing costs'"));
+	Query.SetParameter("ReflectionCostsOnProcessing", NStr("en='Reflection of the processing costs';ru='Отражение расходов по переработке'"));
     //( elmi #11
 	Query.SetParameter("VATExpenses", VATExpenses);
 	Query.SetParameter("VATExpensesCur", VATExpensesCur);
@@ -644,7 +644,7 @@ Procedure DataInitializationByDisposals(DocumentRefSubcontractorReport, Structur
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
-	Query.SetParameter("ReturnWaste", NStr("en = 'Return waste'"));
+	Query.SetParameter("ReturnWaste", NStr("en='Return waste';ru='Возвратные отходы'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -1109,7 +1109,7 @@ Procedure DataInitializationByInventory(DocumentRefSubcontractorReport, Structur
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
-	Query.SetParameter("InventoryDistribution", NStr("en = 'Inventory distribution'"));
+	Query.SetParameter("InventoryDistribution", NStr("en='Inventory distribution';ru='Распределение запасов'"));
 		
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -1436,9 +1436,9 @@ Procedure GenerateTableAccountsPayable(DocumentRefPurchaseInvoice, StructureAddi
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Appearance of vendor liabilities'"));
-	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Appearance of vendor liabilities';ru='Возникновение обязательств перед поставщиком'"));
+	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -1646,7 +1646,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefSubcontractorReport, Structu
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -2326,7 +2326,7 @@ Procedure InitializeDocumentData(DocumentRefSubcontractorReport, StructureAdditi
 	// Temporarily: change motions by the order warehouse.
 	Query.SetParameter("UpdateDateToRelease_1_2_1", Constants.UpdateDateToRelease_1_2_1.Get());
 		
-	Query.SetParameter("InventoryAssembly", NStr("en = 'Production'"));
+	Query.SetParameter("InventoryAssembly", NStr("en='Production';ru='Производство'"));
 
 	ResultsArray = Query.ExecuteBatch();
 	

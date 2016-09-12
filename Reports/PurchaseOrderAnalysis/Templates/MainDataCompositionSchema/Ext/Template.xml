@@ -161,6 +161,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Left to pay / overpaid</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Осталось оплатить / переплачено</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -374,6 +378,10 @@ FROM
 				<v8:lang>en</v8:lang>
 				<v8:content>Begin of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -391,6 +399,10 @@ FROM
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>End of period</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Окончание периода</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -410,6 +422,10 @@ FROM
 				<v8:lang>en</v8:lang>
 				<v8:content>Period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>отчетный период</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -427,6 +443,10 @@ FROM
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Order</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Порядок</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -448,6 +468,10 @@ FROM
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Order state</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Состояние заказа:</v8:content>
 							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
@@ -493,6 +517,10 @@ FROM
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Counterparty:</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Контрагент:</v8:content>
 							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
@@ -543,6 +571,10 @@ FROM
 								<v8:lang>en</v8:lang>
 								<v8:content>Contract:</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Договор:</v8:content>
+							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
@@ -591,6 +623,10 @@ FROM
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Document currency:</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Валюта документа:</v8:content>
 							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
@@ -662,6 +698,10 @@ FROM
 				<v8:lang>en</v8:lang>
 				<v8:content>Purchase order analysis</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Анализ заказа поставщику</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:outputParameters>
@@ -675,6 +715,10 @@ FROM
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Order analysis</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Анализ заказа</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
@@ -763,6 +807,10 @@ FROM
 								<v8:lang>en</v8:lang>
 								<v8:content>UOM</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Единицы измерения</v8:content>
+							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -773,6 +821,10 @@ FROM
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Receipt</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Приход</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -791,6 +843,10 @@ FROM
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Placement</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Размещение</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -814,6 +870,10 @@ FROM
 								<v8:lang>en</v8:lang>
 								<v8:content>Receipt</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Приход</v8:content>
+							</v8:item>
 						</dcscor:value>
 					</dcscor:item>
 				</dcsset:outputParameters>
@@ -828,6 +888,10 @@ FROM
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>For payment</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>К оплате</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -850,6 +914,10 @@ FROM
 								<v8:lang>en</v8:lang>
 								<v8:content>Paid</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>paid</v8:content>
+							</v8:item>
 						</dcsset:lwsTitle>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>Prepayment</dcsset:field>
@@ -863,6 +931,10 @@ FROM
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>TotalAmount</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>всего</v8:content>
 								</v8:item>
 							</dcsset:lwsTitle>
 						</dcsset:item>
@@ -883,6 +955,10 @@ FROM
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Payment</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Оплата</v8:content>
 							</v8:item>
 						</dcscor:value>
 					</dcscor:item>

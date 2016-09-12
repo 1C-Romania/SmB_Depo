@@ -102,7 +102,7 @@ Procedure OutputReportTitle(ReportParameters, Result) Export
 					OR Not Parameter.Use Then
 					Continue;
 				EndIf;
-				TextFilter = TextFilter + ?(IsBlankString(TextFilter), "", NStr("en = ' AND '")) 
+				TextFilter = TextFilter + ?(IsBlankString(TextFilter), "", NStr("en=' AND ';ru=' И '")) 
 					+ TrimAll(Parameter.UserSettingPresentation) + " Equal """ + TrimAll(Parameter.Value) + """";
 				
 			EndDo;
@@ -115,13 +115,13 @@ Procedure OutputReportTitle(ReportParameters, Result) Export
 				OR FilterItem.ViewMode = DataCompositionSettingsItemViewMode.Inaccessible Then
 				Continue;
 			EndIf;
-			TextFilter = TextFilter + ?(IsBlankString(TextFilter), "", NStr("en = ' AND '")) 
+			TextFilter = TextFilter + ?(IsBlankString(TextFilter), "", NStr("en=' AND ';ru=' И '")) 
 				+ TrimAll(FilterItem.LeftValue) + " " + TrimAll(FilterItem.ComparisonType) + " """ + TrimAll(FilterItem.RightValue) + """";
 			
 		EndDo;
 		
 		If Not IsBlankString(TextFilter) Then
-			SettingsDescriptionField.Parameters.NameReportSettings      = NStr("en = 'Filter:'");
+			SettingsDescriptionField.Parameters.NameReportSettings      = NStr("en='Filter:';ru='Фильтр:'");
 			SettingsDescriptionField.Parameters.DescriptionReportSettings = TextFilter;
 			Result.Put(SettingsDescriptionField);
 		EndIf;

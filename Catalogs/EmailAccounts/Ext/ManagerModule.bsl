@@ -121,7 +121,7 @@ Function UserAccountsPermissions(UserAccount = Undefined) Export
 					AccountSettings.Protocol,
 					AccountSettings.Server,
 					AccountSettings.Port,
-					NStr("en = 'Email.'")
+					NStr("en='Email.';ru='Эл. адрес.'")
 				)
 			);
 		EndDo;

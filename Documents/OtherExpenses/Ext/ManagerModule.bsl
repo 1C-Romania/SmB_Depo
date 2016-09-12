@@ -123,9 +123,9 @@ Procedure InitializeDocumentData(DocumentRefOtherExpenses, StructureAdditionalPr
 	Query.SetParameter("Ref", DocumentRefOtherExpenses);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	
-	Query.SetParameter("OtherExpenses", NStr("en = 'Expenses reflection'"));
-	Query.SetParameter("RevenueIncomes", NStr("en = 'Other income'"));
-	Query.SetParameter("OtherIncome", NStr("en = 'Other expenses'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Expenses reflection';ru='Отражение затрат'"));
+	Query.SetParameter("RevenueIncomes", NStr("en='Other income';ru='Прочие доходы'"));
+	Query.SetParameter("OtherIncome", NStr("en='Other expenses';ru='Прочих затраты (расходы)'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	

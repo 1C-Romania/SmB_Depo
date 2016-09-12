@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not CommonUse.UseSessionSeparator() Then 
-		Raise(NStr("en = 'Delimiter value is not specified'"));
+		Raise(NStr("en='Delimiter value is not specified';ru='Не установлено значение разделителя'"));
 	EndIf;
 	
 	SwitchPage(ThisObject);

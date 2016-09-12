@@ -38,6 +38,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Sets of the access values</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наборы значений доступа</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<UseStandardCommands>false</UseStandardCommands>
@@ -171,6 +175,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Read</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Чтение</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -183,6 +191,12 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>When checking the object reading right, use a set with a specified number (select a check box only for one row of the set)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>При проверке права чтения объекта
+использовать набор с заданным номером
+(флажок устанавливается только для одной строки набора)</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -214,6 +228,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Update</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Update</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -226,6 +244,12 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>When checking the object edit right, use a set with a specified number (the check box is selected only for one row of the set)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>При проверке права изменения объекта
+использовать набор с заданным номером
+(флажок устанавливается только для одной строки набора)</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -257,6 +281,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Standard value</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Стандартное значение</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -270,6 +298,11 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Cache attribute used in templates of data access restriction.
 Performs regular check of access values in the allowed list.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кэш-реквизит, используемый в шаблонах ограничения доступа к данным.
+Указывает выполнять обычную проверку значения доступа в списке разрешенных.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -301,6 +334,10 @@ Performs regular check of access values in the allowed list.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Value without groups</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение без групп</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -314,6 +351,11 @@ Performs regular check of access values in the allowed list.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cache attribute used in templates of data access restriction.
 Performs check of access values in the allowed list without value groups.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кэш-реквизит, используемый в шаблонах ограничения доступа к данным.
+Указывает выполнять проверку значения доступа в списке разрешенных без учета групп значений.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -345,6 +387,10 @@ Performs check of access values in the allowed list without value groups.</v8:co
 							<v8:lang>en</v8:lang>
 							<v8:content>Object</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>объект</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -364,6 +410,10 @@ Performs check of access values in the allowed list without value groups.</v8:co
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Reference to the object - the owner of access values sets</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка на объект - владелец наборов значений доступа</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -398,6 +448,10 @@ Performs check of access values in the allowed list without value groups.</v8:co
 							<v8:lang>en</v8:lang>
 							<v8:content>Number of set</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер набора</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -417,6 +471,12 @@ Performs check of access values in the allowed list without value groups.</v8:co
 							<v8:content>Number that groups multiple rows in one set.
 Rows checkings results in set are merged according
 to logical "AND" and object sets checking results according to logical "OR"</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Число, объединяющие несколько строк в один набор.
+Результаты проверок строк в наборе объединяется по логическому "И",
+а результаты проверок наборов объекта по логическому "ИЛИ"</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -451,6 +511,10 @@ to logical "AND" and object sets checking results according to logical "OR"</v8:
 							<v8:lang>en</v8:lang>
 							<v8:content>Access value</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение доступа</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Blank values must be allowed to avoid errors on writing objects that are being checked</Comment>
 					<Type>
@@ -468,6 +532,10 @@ to logical "AND" and object sets checking results according to logical "OR"</v8:
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Link to the value, for example, to a counterparty, a company...</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка на значение, например, на организацию, контрагента, ...</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -502,6 +570,10 @@ to logical "AND" and object sets checking results according to logical "OR"</v8:
 							<v8:lang>en</v8:lang>
 							<v8:content>Adjustment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Корректировка</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -517,6 +589,13 @@ to logical "AND" and object sets checking results according to logical "OR"</v8:
 an access value: - if it is metadata object ID then it specifies
 right checking (empty link - reading, otherwise Change); 
 - if it is metadata object ID, then it specifies right checking (empty link - reading, otherwise Change); - if it is the owner of the rights settings, then it specifies the table to select rights settings.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уточняет значение доступа:
+- если идентификатор объекта метаданных, тогда уточняет проверку права
+(пустая ссылка - Чтение, иначе Изменение);
+- если владелец настроек прав, тогда уточняет таблицу для выбора настроек прав.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>

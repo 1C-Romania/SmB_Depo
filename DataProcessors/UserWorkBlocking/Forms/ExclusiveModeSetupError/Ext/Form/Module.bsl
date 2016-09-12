@@ -10,11 +10,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	MarkedObjectDeletion = Parameters.MarkedObjectDeletion;
 	If MarkedObjectDeletion Then
-		Title = NStr("en = 'Failed to delete the objects marked for deletion'");
-		Items.ErrorMessageText.Title = NStr("en = 'You can not delete objects marked for deletion as other users work in application:'");
+		Title = NStr("en='Failed to delete the objects marked for deletion';ru='Не удалось выполнить удаление помеченных объектов'");
+		Items.ErrorMessageText.Title = NStr("en='You can not delete objects marked for deletion as other users work in application:';ru='Невозможно выполнить удаление помеченных объектов, т.к. в программе работают другие пользователи:'");
 	EndIf;
 	
-	ActiveUsersTemplate = NStr("en = 'Active users (%1)'");
+	ActiveUsersTemplate = NStr("en='Active users (%1)';ru='Активные пользователи (%1)'");
 	
 	ActiveConnectionCount = InfobaseConnections.InfobaseSessionCount();
 	Items.ActiveUsers.Title = StringFunctionsClientServer.
@@ -136,7 +136,7 @@ Procedure TimeOutCompleteWorkUsers()
 		UnlockFileBase();
 		Items.GroupPages.CurrentPage = Items.Page1;
 		AssistantCurrentPage = "Page1";
-		Items.ErrorMessageText.Title = NStr("en = 'Cannot upgrade the application version as it failed to close the sessions of users:'");
+		Items.ErrorMessageText.Title = NStr("en='Cannot upgrade the application version as it failed to close the sessions of users:';ru='Невозможно выполнить обновление версии программы, т.к. не удалось завершить работу пользователей:'");
 		Items.FormRetryApplicationStart.Visible = True;
 		Items.FormCompleteSessionsAndRestartApplication.Visible = True;
 		DetachIdleHandler("TimeOutCompleteWorkUsers");
@@ -152,11 +152,11 @@ Procedure InstallLockOfFileBase()
 	If MarkedObjectDeletion Then
 		Object.LockBegin = CurrentSessionDate() + 2*60;
 		Object.LockEnding = Object.LockBegin + 60;
-		Object.MessageForUsers = NStr("en = 'Application is locked to delete marked objects.'");
+		Object.MessageForUsers = NStr("en='Application is locked to delete marked objects.';ru='Программа заблокирована для удаления помеченных объектов.'");
 	Else
 		Object.LockBegin = CurrentSessionDate() + 2*60;
 		Object.LockEnding = Object.LockBegin + 5*60;
-		Object.MessageForUsers = NStr("en = 'Application is locked to perform the update.'");
+		Object.MessageForUsers = NStr("en='Application is locked to perform the update.';ru='Программа заблокирована для выполнения обновления.'");
 	EndIf;
 	
 	Try

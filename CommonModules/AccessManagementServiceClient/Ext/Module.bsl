@@ -101,7 +101,7 @@ Procedure AccessValueStartChoice(Form, Item, ChoiceData, StandardProcessing) Exp
 		
 		Form.SelectedValuesCurrentTypes.ShowChooseItem(
 			New NotifyDescription("AccessValueSelectionStartContinuation", ThisObject, Form),
-			NStr("en = 'Data type choice'"),
+			NStr("en='Data type choice';ru='Выбор типа данных'"),
 			Form.SelectedValuesCurrentTypes[0]);
 	EndIf;
 	
@@ -359,8 +359,9 @@ Procedure AccessKindsAccessKindPresentationChoiceProcessing(Form, Item, ValueSel
 	   AND Rows[0].GetID() <> Form.Items.AccessKinds.CurrentRow Then
 		
 		ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Access kind ""%1"" is already selected.
-			           |Choose another.'"),
+			NStr("en='Access kind ""%1"" is already selected."
+"Choose another.';ru='Вид доступа ""%1"" уже выбран."
+"Выберите другой.'"),
 			ValueSelected));
 		
 		StandardProcessing = False;

@@ -10,19 +10,22 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	InitializeTree();
 	
 	If Not ElectronicDocumentsService.ImmediateEDSending() Then
-		Items.CommandSign.Title = NStr("en = 'Sign'");
-		Items.GenerateSignAndSend.Title = NStr("en = 'Approve and sign'");
-		Commands.ApproveSignAndSend.ToolTip = NStr("en = 'Approve, sign and prepare
-																	|the selected electronic documents for sending'");
+		Items.CommandSign.Title = NStr("en='Sign';ru='Подписать'");
+		Items.GenerateSignAndSend.Title = NStr("en='Approve and sign';ru='Утвердить и подписать'");
+		Commands.ApproveSignAndSend.ToolTip = NStr("en='Approve, sign and prepare"
+"the selected electronic documents for sending';ru='Утвердить,"
+"подписать и подготовить к отправке выделенные электронные документы'");
 		If Not UseDS Then
-			Items.GenerateSignAndSend.Title = NStr("en = 'Approve'");
-			Commands.ApproveSignAndSend.ToolTip = NStr("en = 'Approve and prepare
-																		|the selected electronic documents for sending'");
+			Items.GenerateSignAndSend.Title = NStr("en='Approve';ru='Утвердить'");
+			Commands.ApproveSignAndSend.ToolTip = NStr("en='Approve and prepare"
+"the selected electronic documents for sending';ru='Утвердить"
+"и подготовить к отправке выделенные электронные документы'");
 		EndIf;
 	ElsIf Not UseDS Then
-		Items.GenerateSignAndSend.Title = NStr("en = 'Approve and send'");
-		Commands.ApproveSignAndSend.ToolTip = NStr("en = 'Approve
-																	|and prepare the selected electronic documents'");
+		Items.GenerateSignAndSend.Title = NStr("en='Approve and send';ru='Утвердить и отправить'");
+		Commands.ApproveSignAndSend.ToolTip = NStr("en='Approve"
+"and prepare the selected electronic documents';ru='Утвердить"
+"и отправить выделенные электронные документы'");
 	EndIf;
 
 	Items.Pages.PagesRepresentation = FormPagesRepresentation.None;
@@ -1263,32 +1266,32 @@ Function DataTreeAction(Val ActionsTree, Queries)
 	
 	DataOnQuantities = DataOnQuantities(Queries);
 	
-	RowPresentation = NStr("en = 'Generate'");
+	RowPresentation = NStr("en='Generate';ru='Сформировать'");
 	SetPresentationRowsTreeRecursively(Tree, "Generate", RowPresentation, DataOnQuantities[0]);
 	
-	SetPresentationRowsTreeRecursively(Tree, "Process", NStr("en = 'Process'"), DataOnQuantities[1]);
+	SetPresentationRowsTreeRecursively(Tree, "Process", NStr("en='Process';ru='Обработать'"), DataOnQuantities[1]);
 	
-	SetPresentationRowsTreeRecursively(Tree, "Approve", NStr("en = 'Approve'"), DataOnQuantities[2]);
+	SetPresentationRowsTreeRecursively(Tree, "Approve", NStr("en='Approve';ru='Утвердить'"), DataOnQuantities[2]);
 
-	SetPresentationRowsTreeRecursively(Tree, "Sign", NStr("en = 'Sign'"), DataOnQuantities[3]);
+	SetPresentationRowsTreeRecursively(Tree, "Sign", NStr("en='Sign';ru='Подписать'"), DataOnQuantities[3]);
 	
-	SetPresentationRowsTreeRecursively(Tree, "Correct", NStr("en = 'Correct'"), DataOnQuantities[4]);
+	SetPresentationRowsTreeRecursively(Tree, "Correct", NStr("en='Correct';ru='Исправить'"), DataOnQuantities[4]);
 	
-	SetPresentationRowsTreeRecursively(Tree, "Cancel", NStr("en = 'Cancel'"), DataOnQuantities[5]);
+	SetPresentationRowsTreeRecursively(Tree, "Cancel", NStr("en='Cancel';ru='Отменить'"), DataOnQuantities[5]);
 
-	SetPresentationRowsTreeRecursively(Tree, "OnControl", NStr("en = 'On control'"), DataOnQuantities[6]);
+	SetPresentationRowsTreeRecursively(Tree, "OnControl", NStr("en='On control';ru='На контроле'"), DataOnQuantities[6]);
 	
-	SetPresentationRowsTreeRecursively(Tree, "Send", NStr("en = 'Send'"), DataOnQuantities[7]);
+	SetPresentationRowsTreeRecursively(Tree, "Send", NStr("en='Send';ru='Отправлять'"), DataOnQuantities[7]);
 
-	RowPresentation = NStr("en = 'Unpack'");
+	RowPresentation = NStr("en='Unpack';ru='распаковывать'");
 	SetPresentationRowsTreeRecursively(Tree, "Unpack", RowPresentation, DataOnQuantities[8]);
 
-	SetPresentationRowsTreeRecursively(Tree, "Unmake", NStr("en = 'Unmake'"), DataOnQuantities[9]);
+	SetPresentationRowsTreeRecursively(Tree, "Unmake", NStr("en='Unmake';ru='Разобрать'"), DataOnQuantities[9]);
 	
-	SetPresentationRowsTreeRecursively(Tree, "Invitation", NStr("en = 'Invitation'"), DataOnQuantities[10]);
-	SetPresentationRowsTreeRecursively(Tree, "InvitationRequired", NStr("en = 'Is necessary to invite'"), DataOnQuantities[11]);
-	SetPresentationRowsTreeRecursively(Tree, "WaitingForApproval", NStr("en = 'Waiting for approval'"), DataOnQuantities[12]);
-	SetPresentationRowsTreeRecursively(Tree, "ApprovalRequired", NStr("en = 'Consent required'"), DataOnQuantities[13]);
+	SetPresentationRowsTreeRecursively(Tree, "Invitation", NStr("en='Invitation';ru='Приглашение'"), DataOnQuantities[10]);
+	SetPresentationRowsTreeRecursively(Tree, "InvitationRequired", NStr("en='Is necessary to invite';ru='Требуется пригласить'"), DataOnQuantities[11]);
+	SetPresentationRowsTreeRecursively(Tree, "WaitingForApproval", NStr("en='Waiting for approval';ru='Ждет согласия'"), DataOnQuantities[12]);
+	SetPresentationRowsTreeRecursively(Tree, "ApprovalRequired", NStr("en='Consent required';ru='Требуется согласие'"), DataOnQuantities[13]);
 	
 	Return Tree;
 
@@ -1307,7 +1310,7 @@ Procedure SetPackagesStatus(Val EDKindsArray, Val PackageStatus, CountOfChanged)
 		Except
 			MessageText = BriefErrorDescription(ErrorInfo());
 			ErrorText    = DetailErrorDescription(ErrorInfo());
-			TextOperations  = NStr("en = 'modification of ED packages status'");
+			TextOperations  = NStr("en='modification of ED packages status';ru='изменение статуса пакетов ЭД'");
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(TextOperations,
 																						ErrorText,
 																						MessageText);
@@ -1390,61 +1393,61 @@ Procedure GenerateTableRapidFilter()
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Company";
-	NewRow.ParameterPresentation = NStr("en = 'Company:'");
+	NewRow.ParameterPresentation = NStr("en='Company:';ru='Организация:'");
 	NewRow.Type = "CatalogRef."+ DescriptionCompanyCatalog;
 	NewRow.Value = ElectronicDocumentsReUse.GetEmptyRef("Companies");
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Counterparty";
-	NewRow.ParameterPresentation = NStr("en = 'Counterparty:'");
+	NewRow.ParameterPresentation = NStr("en='Counterparty:';ru='Контрагент:'");
 	NewRow.Type = "CatalogRef."+ DescriptionCounterpartiesCatalog;
 	NewRow.Value = ElectronicDocumentsReUse.GetEmptyRef("Counterparties");
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Date_From";
-	NewRow.ParameterPresentation = NStr("en = 'Date from:'");
+	NewRow.ParameterPresentation = NStr("en='Date from:';ru='Дата с:'");
 	NewRow.Type = "Date";
 	NewRow.Value = Date(1,1,1);
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Date_To";
-	NewRow.ParameterPresentation = NStr("en = 'Date to:'");
+	NewRow.ParameterPresentation = NStr("en='Date to:';ru='Дата по:'");
 	NewRow.Type = "Date";
 	NewRow.Value = Date(1,1,1);
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Amount_From";
-	NewRow.ParameterPresentation = NStr("en = 'Amount from:'");
+	NewRow.ParameterPresentation = NStr("en='Amount from:';ru='Сумма с:'");
 	NewRow.Type = "Number";
 	NewRow.Value = Undefined;
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Amount_To";
-	NewRow.ParameterPresentation = NStr("en = 'Amount to:'");
+	NewRow.ParameterPresentation = NStr("en='Amount to:';ru='Сумма по:'");
 	NewRow.Type = "Number";
 	NewRow.Value = Undefined;
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "EDKind";
-	NewRow.ParameterPresentation = NStr("en = 'Document kind:'");
+	NewRow.ParameterPresentation = NStr("en='Document kind:';ru='Вид документа:'");
 	NewRow.Type = "EnumRef.EDKinds";
 	NewRow.Value = Enums.EDKinds.EmptyRef();
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "EDDirection";
-	NewRow.ParameterPresentation = NStr("en = 'Direction:'");
+	NewRow.ParameterPresentation = NStr("en='Direction:';ru='Направление:'");
 	NewRow.Type = "EnumRef.EDDirections";
 	NewRow.Value = Enums.EDDirections.EmptyRef();
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "AdditionalInformation";
-	NewRow.ParameterPresentation = NStr("en = 'Add. information:'");
+	NewRow.ParameterPresentation = NStr("en='Add. information:';ru='Доп. информация:'");
 	NewRow.Type = "String";
 	NewRow.Value = "";
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Responsible";
-	NewRow.ParameterPresentation = NStr("en = 'Responsible:'");
+	NewRow.ParameterPresentation = NStr("en='Responsible:';ru='Ответственный:'");
 	NewRow.Type = "CatalogRef.Users";
 	NewRow.Value = Users.AuthorizedUser();
 	
@@ -1527,9 +1530,9 @@ Procedure SetCancelStatus(EDKindsArray)
 	SetPackagesStatus(EDKindsArray,
 							PredefinedValue("Enum.EDPackagesStatuses.Canceled"),
 							Quantity);
-	NotificationText = NStr("en = 'Packages status is changed on ""Canceled"": (%1)'");
+	NotificationText = NStr("en='Packages status is changed on ""Canceled"": (%1)';ru='Изменен статус пакетов на ""Отменен"": (%1)'");
 	NotificationText = StrReplace(NotificationText, "%1", Quantity);
-	ShowUserNotification(NStr("en = 'Electronic document exchange'"), , NotificationText);
+	ShowUserNotification(NStr("en='Electronic document exchange';ru='Обмен электронными документами'"), , NotificationText);
 	RefreshDataTreeAtClient();
 	UpdateDynamicLists();
 	
@@ -1675,20 +1678,21 @@ EndProcedure
 &AtClient
 Procedure NotifyAboutResults(CountOfDigitallySigned, PreparedCnt, SentCnt)
 	
-	StatusText = NStr("en = 'Undefined
-		| ED: signed: (%1)'");
+	StatusText = NStr("en='Undefined"
+" ED: signed: (%1)';ru='Произвольные"
+" ЭД: подписано: (%1)'");
 	Quantity = 0;
 	If SentCnt > 0 Then
-		StatusText = StatusText + Chars.LF + NStr("en = ' sent: (%2)'");
+		StatusText = StatusText + Chars.LF + NStr("en=' sent: (%2)';ru=' отправлено: (%2)'");
 		Quantity = SentCnt;
 	ElsIf PreparedCnt > 0 Then
-		StatusText = NStr("en = ' ready for sending: (%2)'");
+		StatusText = NStr("en=' ready for sending: (%2)';ru=' подготовлено к отправке: (%2)'");
 		Quantity = PreparedCnt;
 	EndIf;
 	
 	If SentCnt > 0 Or PreparedCnt > 0 Then
 		
-		HeaderText = NStr("en = 'Electronic document exchange'");
+		HeaderText = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 		DigitallySignedTotalQty = CountOfDigitallySigned;
 		StatusText = StringFunctionsClientServer.PlaceParametersIntoString(StatusText, DigitallySignedTotalQty, Quantity);
 		
@@ -1742,8 +1746,9 @@ Procedure SendInvitationsServer(PostedInvitations, EDFSettingsProfilesMatchToMar
 			"EmailForInvitation, Counterparty, InvitationText, EDFProfileSettings");
 		
 		If Not ValueIsFilled(EDFSettingsParametersStructure.EmailForInvitation) Then
-			MessagePattern = NStr("en = 'To send recipient invitations for ED
-										|exchange %1, you need to fill email.'");
+			MessagePattern = NStr("en='To send recipient invitations for ED"
+"exchange %1, you need to fill email.';ru='Для отправки приглашения к обмену"
+"ЭД для получателя %1 необходимо заполнить электронную почту.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				EDFSettingsParametersStructure.Counterparty);
 			CommonUseClientServer.MessageToUser(MessageText);
@@ -1756,8 +1761,9 @@ Procedure SendInvitationsServer(PostedInvitations, EDFSettingsProfilesMatchToMar
 			+ AttributeNameExternalCounterpartyCode + ", " + AttributeNameCounterpartyNameForMessageToUser);
 	
 		If Not ValueIsFilled(CounterpartyParametersStructure[AttributeNameCounterpartyTIN]) Then
-			MessagePattern = NStr("en = 'To send recipient invitations for ED
-										|exchange %1, you need to fill TIN.'");
+			MessagePattern = NStr("en='To send recipient invitations for ED"
+"exchange %1, you need to fill TIN.';ru='Для отправки приглашения к обмену"
+"ЭД для получателя %1 необходимо заполнить ИНН.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				EDFSettingsParametersStructure.Counterparty);
 			CommonUseClientServer.MessageToUser(MessageText);
@@ -1931,12 +1937,12 @@ Procedure RejectInvitationsAlert(Result, AdditionalParameters) Export
 	If Result.Property("ProfilesAndCertificatesParametersMatch", ProfilesAndCertificatesParametersMatch)
 		AND ValueIsFilled(ProfilesAndCertificatesParametersMatch) Then
 		
-		HeaderText = NStr("en = 'Invitations are rejected'");
+		HeaderText = NStr("en='Invitations are rejected';ru='Отклоняются приглашения'");
 		
 		RejectedInvitationsQuantity = 0;
 		AcceptRejectContactViaOperatorEDOAtServer(RejectedInvitationsQuantity, ProfilesAndCertificatesParametersMatch, False);
 		
-		MessagePattern = NStr("en = 'Invitations rejected: %1'");
+		MessagePattern = NStr("en='Invitations rejected: %1';ru='Отклонено приглашений: %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, RejectedInvitationsQuantity);
 		
 		ShowUserNotification(HeaderText, , MessageText);
@@ -1944,8 +1950,9 @@ Procedure RejectInvitationsAlert(Result, AdditionalParameters) Export
 		RefreshDataTreeAtClient();
 		UpdateDynamicLists();
 	Else
-		ErrorText = NStr("en = 'When declining the invitations, errors occurred.
-			|Necessary to check EDF settings with specified counterparties.'");
+		ErrorText = NStr("en='When declining the invitations, errors occurred."
+"Necessary to check EDF settings with specified counterparties.';ru='При отклонении приглашений возникли ошибки."
+"Необходимо выполнить тест настроек ЭДО с указанными контрагентами.'");
 		CommonUseClientServer.MessageToUser(ErrorText);
 	EndIf;
 	
@@ -1963,12 +1970,12 @@ Procedure AcceptInvitationsAlert(Result, AdditionalParameters) Export
 	If Result.Property("ProfilesAndCertificatesParametersMatch", ProfilesAndCertificatesParametersMatch)
 		AND ValueIsFilled(ProfilesAndCertificatesParametersMatch) Then
 		
-		HeaderText = NStr("en = 'Invitations are received'");
+		HeaderText = NStr("en='Invitations are received';ru='Принимаются приглашения'");
 		
 		AcceptedInvitationsQuantity = 0;
 		AcceptRejectContactViaOperatorEDOAtServer(AcceptedInvitationsQuantity, ProfilesAndCertificatesParametersMatch, True);
 		
-		MessagePattern = NStr("en = 'Invitations received: %1'");
+		MessagePattern = NStr("en='Invitations received: %1';ru='Принято приглашений: %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, AcceptedInvitationsQuantity);
 		
 		ShowUserNotification(HeaderText, , MessageText);
@@ -1976,8 +1983,9 @@ Procedure AcceptInvitationsAlert(Result, AdditionalParameters) Export
 		RefreshDataTreeAtClient();
 		UpdateDynamicLists();
 	Else
-		ErrorText = NStr("en = 'The errors occurred while getting invitations.
-			|Necessary to check EDF settings with specified counterparties.'");
+		ErrorText = NStr("en='The errors occurred while getting invitations."
+"Necessary to check EDF settings with specified counterparties.';ru='При принятии приглашений возникли ошибки."
+"Необходимо выполнить тест настроек ЭДО с указанными контрагентами.'");
 		CommonUseClientServer.MessageToUser(ErrorText);
 	EndIf;
 	
@@ -1995,12 +2003,12 @@ Procedure SendInvitationNotification(Result, AdditionalParameters) Export
 	If Result.Property("ProfilesAndCertificatesParametersMatch", ProfilesAndCertificatesParametersMatch)
 		AND ValueIsFilled(ProfilesAndCertificatesParametersMatch) Then
 		
-		HeaderText = NStr("en = 'Send invitations to recipients'");
+		HeaderText = NStr("en='Send invitations to recipients';ru='Отправка приглашений получателям'");
 		
 		PostedInvitations = 0;
 		SendInvitationsServer(PostedInvitations, ProfilesAndCertificatesParametersMatch);
 		
-		MessagePattern = NStr("en = 'Invitations sent: %1'");
+		MessagePattern = NStr("en='Invitations sent: %1';ru='Отправлено приглашений: %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, PostedInvitations);
 		
 		ShowUserNotification(HeaderText, , MessageText);
@@ -2008,8 +2016,9 @@ Procedure SendInvitationNotification(Result, AdditionalParameters) Export
 		RefreshDataTreeAtClient();
 		UpdateDynamicLists();
 	Else
-		ErrorText = NStr("en = 'The errors occurred while sending the invitations.
-			|Necessary to check EDF settings with specified counterparties.'");
+		ErrorText = NStr("en='The errors occurred while sending the invitations."
+"Necessary to check EDF settings with specified counterparties.';ru='При отправке приглашений возникли ошибки."
+"Необходимо выполнить тест настроек ЭДО с указанными контрагентами.'");
 		CommonUseClientServer.MessageToUser(ErrorText);
 	EndIf;
 	
@@ -2030,12 +2039,12 @@ Procedure SendPackagesAlert(Result, AdditionalParameters) Export
 													EDKindsArray,
 													ProfilesAndCertificatesParametersMatch);
 
-	NotificationTemplate = NStr("en = 'Packages sent: (%1).'");
+	NotificationTemplate = NStr("en='Packages sent: (%1).';ru='Отправлено пакетов: (%1).'");
 	NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationTemplate, CountSent);
 	
 	Notify("RefreshStateED");
 		
-	NotificationTitle = NStr("en = 'Electronic documents sending'");
+	NotificationTitle = NStr("en='Electronic documents sending';ru='Отправка электронных документов'");
 	ShowUserNotification(NotificationTitle, , NotificationText);
 	
 EndProcedure

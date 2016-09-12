@@ -32,11 +32,12 @@ EndProcedure
 //
 Procedure ShowWarningAboutNeedToFileOperationsExpansion(ResultHandler, CommandPresentation = "") Export
 	If Not ClientSupportsSynchronousCalls() Then
-		WarningText = NStr("en = 'Command ""%1"" can
-			|not be executed in browser Google Chrome.'");
+		WarningText = NStr("en='Command ""%1"" can"
+"not be executed in browser Google Chrome.';ru='Выполнение"
+"команды ""%1"" в браузере Google Chrome не поддерживается.'");
 	Else
-		WarningText = NStr("en = 'For execution of command
-			| ""%1"" you should install the extension for 1C: Enterprise web client.'");
+		WarningText = NStr("en='For execution of command"
+" ""%1"" you should install the extension for 1C: Enterprise web client.';ru='Для выполнения команды ""%1"" необходимо установить расширение для веб-клиента 1С:Предприятие.'");
 	EndIf;
 	If ValueIsFilled(CommandPresentation) Then
 		WarningText = StrReplace(WarningText, "%1", CommandPresentation);
@@ -119,9 +120,9 @@ Function GetImportedFilesList() Export
 	
 	FileOpeningDialog = New FileDialog(FileDialogMode.Open);
 	FileOpeningDialog.FullFileName     = "";
-	FileOpeningDialog.Filter             = NStr("en = 'All files(*.*)|*.*'");
+	FileOpeningDialog.Filter             = NStr("en='All files(*.*)|*.*';ru='Все файлы(*.*)|*.*'");
 	FileOpeningDialog.Multiselect = True;
-	FileOpeningDialog.Title          = NStr("en = 'Select files'");
+	FileOpeningDialog.Title          = NStr("en='Select files';ru='Выбрать файлы'");
 	
 	FileNameArray = New Array;
 	
@@ -191,7 +192,7 @@ Procedure CorrectFileName(FileName, DeleteIncorrectSymbols = False) Export
 	StrException = CommonUseClientServer.GetProhibitedCharsInFileName();
 	
 	ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'File name can not have symbols: %1'"), StrException);
+		NStr("en='File name can not have symbols: %1';ru='В имени файла не должно быть следующих символов: %1'"), StrException);
 	
 	Result = True;
 	
@@ -284,8 +285,9 @@ Procedure ReceiveUserDataWorkingDirectoryAfterReceiptError(ErrorInfo, StandardPr
 	Result = New Structure;
 	Result.Insert("Directory", "");
 	Result.Insert("ErrorDescription", StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Failed to get working directory of user data
-		           |due to: %1'"), BriefErrorDescription(ErrorInfo)));
+		NStr("en='Failed to get working directory of user data"
+"due to: %1';ru='Не удалось получить рабочий каталог данных"
+"пользователя по причине: %1'"), BriefErrorDescription(ErrorInfo)));
 	
 	ExecuteNotifyProcessing(Context.Notification, Result);
 	
@@ -380,13 +382,16 @@ Procedure ActionOnFileOpeningInWorkingDirectory(ResultHandler, FileNameWithPath,
 			// Date is the same but the size is different - rare but possible case.
 			
 			Parameters.Insert("Title",
-				NStr("en = 'The file size differs'"));
+				NStr("en='The file size differs';ru='Размер файла отличается'"));
 			
 			Parameters.Insert("Message",
-				NStr("en = 'File size in working directory and files storage is different.
-				           |
-				           |Take a file from files storage and replace the
-				           |existing file with it or open existing file without update?'"));
+				NStr("en='File size in working directory and files storage is different."
+""
+"Take a file from files storage and replace the"
+"existing file with it or open existing file without update?';ru='Размер файла в рабочем каталоге и в хранилище файлов отличается."
+""
+"Взять файл из хранилища файлов и"
+"заменить им существующий или открыть существующий без обновления?'"));
 		Else
 			// All matches - both date and size.
 			ReturnResult(ResultHandler, "OpenExisting");
@@ -400,14 +405,18 @@ Procedure ActionOnFileOpeningInWorkingDirectory(ResultHandler, FileNameWithPath,
 		If FileData.InWorkingDirectoryForRead = False Then
 			// File in working directory for editing.
 			
-			Parameters.Insert("Title", NStr("en = 'New file in the file storage'"));
+			Parameters.Insert("Title", NStr("en='New file in the file storage';ru='В хранилище файлов новый файл'"));
 			
 			Parameters.Insert("Message",
-				NStr("en = 'File in files storage marked as locked
-				           |for editing has later modification date (newer) than in working directory.
-				           |
-				           |Take a file from files storage and replace the
-				           |existing file with it or open existing file without update?'"));
+				NStr("en='File in files storage marked as locked"
+"for editing has later modification date (newer) than in working directory."
+""
+"Take a file from files storage and replace the"
+"existing file with it or open existing file without update?';ru='Файл в хранилище файлов, отмеченный"
+"как занятый для редактирования, имеет более позднюю дату изменения (новее), чем в рабочем каталоге."
+""
+"Взять файл из хранилища файлов и"
+"заменить им существующий или открыть существующий без обновления?'"));
 		Else
 			// File in working directory for reading.
 			
@@ -429,15 +438,19 @@ Procedure ActionOnFileOpeningInWorkingDirectory(ResultHandler, FileNameWithPath,
 		Else
 			// File in working directory for reading.
 		
-			Parameters.Insert("Title", NStr("en = 'New file in the work directory'"));
+			Parameters.Insert("Title", NStr("en='New file in the work directory';ru='В рабочем каталоге новый файл'"));
 			
 			Parameters.Insert(
 				"Message",
-				NStr("en = 'File in working directory has later modification date
-				           |(newer), than in files storage. It may have been changed.
-				           |
-				           |Open existing file or replace it with
-				           |file from files storage with loss of changes and open?'"));
+				NStr("en='File in working directory has later modification date"
+"(newer), than in files storage. It may have been changed."
+""
+"Open existing file or replace it with"
+"file from files storage with loss of changes and open?';ru='Файл в рабочем каталоге имеет более"
+"позднюю дату изменения (новее), чем в хранилище файлов. Возможно, он был изменен."
+""
+"Открыть существующий файл или"
+"заменить его на файл из хранилища файлов c потерей изменений и открыть?'"));
 		EndIf;
 	EndIf;
 	
@@ -509,8 +522,8 @@ Procedure CheckSignatures(Form, ReferenceToBinaryData, SelectedRows = Undefined)
 	EndIf;
 	
 	DataDescription = New Structure;
-	DataDescription.Insert("Operation",              NStr("en = 'File encryption'"));
-	DataDescription.Insert("DataTitle",       NStr("en = 'File'"));
+	DataDescription.Insert("Operation",              NStr("en='File encryption';ru='Шифрование файла'"));
+	DataDescription.Insert("DataTitle",       NStr("en='File';ru='Файловый'"));
 	DataDescription.Insert("Data",                ReferenceToBinaryData);
 	DataDescription.Insert("Presentation",         Form.Object.Ref);
 	DataDescription.Insert("EncryptionCertificates", Form.Object.Ref);
@@ -639,10 +652,10 @@ Procedure CheckSignaturesAfterRowCheck(Result, AdditionalParameters) Export
 	SignatureRow = AdditionalParameters.SignatureRow;
 	
 	If Result = True Then
-		SignatureRow.Status  = NStr("en = 'Correct'");
+		SignatureRow.Status  = NStr("en='Correct';ru='Исправить'");
 		SignatureRow.Wrong = False;
 	Else
-		SignatureRow.Status  = NStr("en = 'Wrong'") + ". " + String(Result);
+		SignatureRow.Status  = NStr("en='Wrong';ru='Неверна'") + ". " + String(Result);
 		SignatureRow.Wrong = True;
 	EndIf;
 	
@@ -852,7 +865,7 @@ EndProcedure
 Procedure HandleFileAfterReceivingFiles(ReceivedFiles, Context) Export
 	
 	If TypeOf(ReceivedFiles) <> Type("Array") Or ReceivedFiles.Count() = 0 Then
-		HandleFileAfterError(NStr("en = 'File receiving was canceled.'"), , Context);
+		HandleFileAfterError(NStr("en='File receiving was canceled.';ru='Получение файла было отменено.'"), , Context);
 		Return;
 	EndIf;
 	
@@ -864,7 +877,7 @@ EndProcedure
 Procedure HandleFileAfterPlacingFiles(PlacedFiles, Context) Export
 	
 	If TypeOf(PlacedFiles) <> Type("Array") Or PlacedFiles.Count() = 0 Then
-		HandleFileAfterError(NStr("en = 'Place filewas canceled.'"), , Context);
+		HandleFileAfterError(NStr("en='Place filewas canceled.';ru='Помещение файла было отменено.'"), , Context);
 		Return;
 	EndIf;
 	

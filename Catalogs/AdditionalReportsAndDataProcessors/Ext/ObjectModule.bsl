@@ -18,7 +18,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If Not UseForObjectForm AND Not UseForListForm 
 			AND Publication <> Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Disabled Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Disable publication or select at least one form for using'")
+				NStr("en='Disable publication or select at least one form for using';ru='Необходимо отключить публикацию или выбрать для использования как минимум одну из форм'")
 				,
 				,
 				,
@@ -67,9 +67,11 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			Cancel = True;
 			If ItemCheck Then
 				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Name ""%1"" used by this report (data processor) is already used by another additional published report (data processor). 
-					|
-					|To continue it is necessary to change Publication kind from ""%2"" to ""%3"" or ""%4"".'"),
+					NStr("en='Name ""%1"" used by this report (data processor) is already used by another additional published report (data processor). "
+""
+"To continue it is necessary to change Publication kind from ""%2"" to ""%3"" or ""%4"".';ru='Имя ""%1"", используемое данным отчетом (обработкой), уже занято другим опубликованным дополнительным отчетом (обработкой). "
+""
+"Для продолжения необходимо изменить вид Публикации с ""%2"" на ""%3"" или ""%4"".'"),
 					ObjectName,
 					String(Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Used),
 					String(Enums.AdditionalReportsAndDataProcessorsPublicationOptions.DebugMode),
@@ -77,7 +79,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				);
 			Else
 				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Name ""%1"" used by report (data processor) ""% 2"" already occupied by another published additional report (data processor).'"),
+					NStr("en='Name ""%1"" used by report (data processor) ""% 2"" already occupied by another published additional report (data processor).';ru='Имя ""%1"", используемое отчетом (обработкой) ""%2"", уже занято другим опубликованным дополнительным отчетом (обработкой).'"),
 					ObjectName,
 					CommonUse.ObjectAttributeValue(ThisObject.Ref, "Description")
 				);
@@ -101,13 +103,13 @@ Procedure BeforeWrite(Cancel)
 	AdditionalReportsAndDataProcessors.AdditionalProcessingBeforeWrite(ThisObject, Cancel);
 	
 	If IsNew() AND Not AdditionalReportsAndDataProcessors.AddRight(ThisObject) Then
-		Raise NStr("en = 'Insufficient rights for adding the additional reports and processings.'");
+		Raise NStr("en='Insufficient rights for adding the additional reports and processings.';ru='Недостаточно прав для добавления дополнительных отчетов или обработок.'");
 	EndIf;
 	
 	// Preliminary checks
 	If Not IsNew() AND Type <> CommonUse.ObjectAttributeValue(Ref, "Type") Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Impossible to change the existing additional report or processing type.'"),,,,
+			NStr("en='Impossible to change the existing additional report or processing type.';ru='Невозможно сменить вид существующего дополнительного отчета или обработки.'"),,,,
 			Cancel);
 		Return;
 	EndIf;
@@ -345,7 +347,7 @@ Function TaskPresentation(Command)
 		+ ": "
 		+ TrimAll(Description)
 		+ " / "
-		+ NStr("en = 'Command'")
+		+ NStr("en='Command';ru='команда'")
 		+ ": "
 		+ TrimAll(Command.Presentation));
 EndFunction
@@ -401,7 +403,7 @@ Procedure OnWriteGlobalReport(Cancel)
 				ExternalObject = AdditionalReportsAndDataProcessors.GetObjectOfExternalDataProcessor(Ref);
 			EndIf;
 		Except
-			ErrorText = NStr("en = 'Connection error:'") + Chars.LF + DetailErrorDescription(ErrorInfo());
+			ErrorText = NStr("en='Connection error:';ru='Ошибка подключения:'") + Chars.LF + DetailErrorDescription(ErrorInfo());
 			AdditionalReportsAndDataProcessors.WriteError(Ref, ErrorText);
 			AdditionalProperties.Insert("ErrorConnection", ErrorText);
 			Return;

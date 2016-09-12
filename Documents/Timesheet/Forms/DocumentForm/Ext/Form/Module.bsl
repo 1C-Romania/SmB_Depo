@@ -582,7 +582,7 @@ Procedure Fill(Command)
 	 OR Object.WorkedTimePerPeriod.Count() > 0 Then
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("FillEnd", ThisObject), NStr("en = 'Tabular section will be cleared. Continue?'"), Mode, 0);
+		ShowQueryBox(New NotifyDescription("FillEnd", ThisObject), NStr("en='Tabular section will be cleared. Continue?';ru='Табличная часть будет очищена! Продолжить выполнение операции?'"), Mode, 0);
 	Else
 		FillTimesheet();
 	EndIf;

@@ -32,11 +32,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Group period</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период группа</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период группа</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -136,6 +144,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>By companies</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По организациям</v8:content>
+				</v8:item>
 			</Title>
 			<TitleLocation>Top</TitleLocation>
 			<VerticalAlign>Top</VerticalAlign>
@@ -151,6 +163,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>By all companies (recommended)</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>По всем организациям (рекомендуется)</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:decimal">0</Value>
 					</xr:Value>
@@ -163,6 +179,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>By marked companies</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>По отмеченным организациям</v8:content>
 							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:decimal">1</Value>
@@ -268,6 +288,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Only selected companies</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только выбранные организации</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -284,6 +308,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Period kind</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид периода</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.AvailableReportPeriods</v8:Type>
@@ -294,6 +322,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Storage address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес хранилища</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -309,6 +341,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Documnets posted</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проведено документов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -326,6 +362,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Failed to post</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не удалось провести</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -342,6 +382,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Job ID</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:UUID</v8:Type>
@@ -352,6 +396,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Companies table</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица организаций</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -377,6 +425,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Period</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>отчетный период</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -391,6 +443,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Period presentation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление периода</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -407,6 +463,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>End of period</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Окончание периода</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
@@ -421,6 +481,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Period start</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начало периода</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
@@ -434,6 +498,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>RadioButton</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Переключатель</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -452,11 +520,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Execute</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Execute</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ButtonExecute</Action>
@@ -467,11 +543,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Extend period</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Увеличить период</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Extend period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Увеличить период</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -487,11 +571,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Shorten period</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Уменьшить период</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Shorten period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Уменьшить период</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>

@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	List.Parameters.Items[0].Value = Parameters.InfobaseNode;
 	List.Parameters.Items[0].Use = True;
 	
-	Title = NStr("en = 'Data synchronization scripts for: [IBNode]'");
+	Title = NStr("en='Data synchronization scripts for: [IBNode]';ru='Сценарии синхронизации данных для: [УзелИнформационнойБазы]'");
 	Title = StrReplace(Title, "[DataBaseNode]", String(Parameters.InfobaseNode));
 	
 EndProcedure
@@ -148,7 +148,7 @@ Procedure RunScript(Command)
 		Return;
 	EndIf;
 	
-	Message = NStr("en = 'Data is being synchronized according to script ""%1""...'");
+	Message = NStr("en='Data is being synchronized according to script ""%1""...';ru='Синхронизируются данные по сценарию ""%1""...'");
 	Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, String(CurrentData.Ref));
 	
 	Status(Message);
@@ -159,10 +159,10 @@ Procedure RunScript(Command)
 	DataExchangeServerCall.ExecuteDataExchangeByScenarioOfExchangeData(Cancel, CurrentData.Ref);
 	
 	If Cancel Then
-		Message = NStr("en = 'Synchronization script is performed with errors.'");
+		Message = NStr("en='Synchronization script is performed with errors.';ru='Сценарий синхронизации выполнен с ошибками.'");
 		Picture = PictureLib.Error32;
 	Else
-		Message = NStr("en = 'Synchronization script has been successfully completed.'");
+		Message = NStr("en='Synchronization script has been successfully completed.';ru='Сценарий синхронизации успешно выполнен.'");
 		Picture = Undefined;
 	EndIf;
 	

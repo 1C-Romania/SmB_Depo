@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -148,6 +218,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Barcode</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Штрихкод</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -159,6 +233,12 @@
 								<v8:content>Product digital code. 
 Number,
 13 digits Example: 4601234567890</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Цифровой код товара. 
+Число,
+13 цифр Пример: 4601234567890</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -183,6 +263,10 @@ Number,
 							<v8:lang>en</v8:lang>
 							<v8:content>SKU</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Артикул</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -193,6 +277,11 @@ Number,
 								<v8:lang>en</v8:lang>
 								<v8:content>Product digital code. Text value used in documents print forms.
 String, not longer than 25 characters</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Цифровой код товара. Текстовое значение, используется в печатных формах документов.
+Строка, не более 25 символов</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -217,6 +306,10 @@ String, not longer than 25 characters</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -226,6 +319,11 @@ String, not longer than 25 characters</v8:content>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>It is used to easily view products and services in the application.
+</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Используется для быстрой визуальной идентификации номенклатуры в процессе работы с программой.
 </v8:content>
 							</v8:item>
 						</text>
@@ -251,6 +349,10 @@ String, not longer than 25 characters</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Belongs to group</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Входит в группу</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -260,6 +362,10 @@ String, not longer than 25 characters</v8:content>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Group that includes this products and services item.</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа, в которую входит данная позиция номенклатуры.</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -284,6 +390,10 @@ String, not longer than 25 characters</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Type</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -294,6 +404,12 @@ String, not longer than 25 characters</v8:content>
 								<v8:lang>en</v8:lang>
 								<v8:content>Products and services item type that defines itself: inventory - warehouse inventory, work - contract work, service - services, third party services.
 Allowed column value options: Inventory (default value) Service Work Operation Kind of work Expense
+</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Тип позиции номенклатуры, определяющий ее сущность и поведение: запас - складируемые запасы, работа - подрядные работы, услуга - сервисные услуги, услуги сторонних организаций.
+Допустимые варианты значения колонки: Запас (значение по умолчанию) Услуга Работа Операция Вид работ Расход
 </v8:content>
 							</v8:item>
 						</text>
@@ -319,6 +435,10 @@ Allowed column value options: Inventory (default value) Service Work Operation K
 							<v8:lang>en</v8:lang>
 							<v8:content>Unit of measure</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Единица измерения</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -329,6 +449,12 @@ Allowed column value options: Inventory (default value) Service Work Operation K
 								<v8:lang>en</v8:lang>
 								<v8:content>Unit of measure by classifier, which is used for inventory item account record and storage
 Unit code (String, not longer than 4 characters) or Short description of the unit (String, not longer than 25 characters)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Единица измерения по классификатору, в которой осуществляется учет и хранение позиции номенклатуры.
+Код единицы (Строка, не более 4 символов) или 
+Краткое наименование единицы (Строка, не более 25 символов)</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -353,6 +479,10 @@ Unit code (String, not longer than 4 characters) or Short description of the uni
 							<v8:lang>en</v8:lang>
 							<v8:content>Full description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Полное наименование</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -363,6 +493,11 @@ Unit code (String, not longer than 4 characters) or Short description of the uni
 								<v8:lang>en</v8:lang>
 								<v8:content>Products and services name to be printed in all documents
 String of unlimited length</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Наименование номенклатуры, которое будет печататься во всех документах.
+Строка неограниченной длины</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -387,6 +522,10 @@ String of unlimited length</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Business activity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Направление деятельности</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -397,6 +536,11 @@ String of unlimited length</v8:content>
 								<v8:lang>en</v8:lang>
 								<v8:content>Business area within which the products and services item is consumed or sold.
 Item presentation for easy recognition in the list (string, not longer than 50 characters)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Направление деятельности, в рамках которого осуществляется потребление либо продажа позиции номенклатуры.
+Представление элемента, с помощью которого будет удобно отличать его в списке (строка, не более 50 символов)</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -421,6 +565,10 @@ Item presentation for easy recognition in the list (string, not longer than 50 c
 							<v8:lang>en</v8:lang>
 							<v8:content>Products and services category</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатурная группа</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -431,6 +579,11 @@ Item presentation for easy recognition in the list (string, not longer than 50 c
 								<v8:lang>en</v8:lang>
 								<v8:content>Extended products
 and services classifier Product and Services Categories, containing products and services items with similar properties and characteristics (String not longer than 100 characters)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Укрупненный
+классификатор номенклатуры Номенклатурные группы, объединяющие номенклатурные позиции, близкие по свойствам и характеристикам (строка, не более 100 символов)</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -455,6 +608,10 @@ and services classifier Product and Services Categories, containing products and
 							<v8:lang>en</v8:lang>
 							<v8:content>Vendor</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поставщик</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -466,6 +623,12 @@ and services classifier Product and Services Categories, containing products and
 								<v8:content>Products and services supplier. It is used for products and services of the Inventory
 and Service type (only for services of third-party companies) Company counterparties
 - vendors and customers, other companies and private individuals Used for quick visual identification of a counterparty during working with the application (String, not longer than 100 characters).</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Поставщик позиции номенклатуры. Используется для номенклатуры типа: Запас
+и Услуга (только услуги сторонних организаций) Контрагенты организаций
+- поставщики и покупатели, прочие организации и частные лица Используется для быстрой визуальной идентификации контрагента в процессе работы с программой (строка, не более 100 символов).</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -490,6 +653,10 @@ and Service type (only for services of third-party companies) Company counterpar
 							<v8:lang>en</v8:lang>
 							<v8:content>Country</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страна</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -501,6 +668,12 @@ and Service type (only for services of third-party companies) Company counterpar
 								<v8:content>Country that imported a products and services item. Specified for imported products.
 
 Numeric country code according to Countries Classifier (String up to 3 characters) or Short description of the country (String up to 60 characters)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Страна, из которой ввезена позиция номенклатуры. Указывается для импортных товаров.
+
+Числовой код страны по ОКСМ (Строка, не более 3 символов) или Краткое наименование страны мира (Строка, не более 60 символов)</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -525,6 +698,10 @@ Numeric country code according to Countries Classifier (String up to 3 character
 							<v8:lang>en</v8:lang>
 							<v8:content>Specification</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Спецификация</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -535,6 +712,11 @@ Numeric country code according to Countries Classifier (String up to 3 character
 								<v8:lang>en</v8:lang>
 								<v8:content>Specification of the products and services item. It is used as a default value when entering products and services into documents.
 Specifications for products manufacture, work performance (String not longer than 100 characters)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Спецификация изготовления номенклатурной позиции. Используется в качестве значения по умолчанию при вводе номенклатуры в документах.
+Спецификации на изготовление продукции, выполнение работ (строка, не более 100 символов)</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -559,6 +741,10 @@ Specifications for products manufacture, work performance (String not longer tha
 							<v8:lang>en</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -569,6 +755,11 @@ Specifications for products manufacture, work performance (String not longer tha
 								<v8:lang>en</v8:lang>
 								<v8:content>Any additional
 information (String of unlimited length)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Любая
+дополнительная информация (Строка неограниченной длинны)</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -593,6 +784,10 @@ information (String of unlimited length)</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Replenishment method</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Способ пополнения</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -606,6 +801,15 @@ Allowed column value
  options: Purchase (default
  value)
  Production Processing
+</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Способ пополнения запасов номенклатурной позиции по умолчанию: закупка - приобретение у поставщика, производство - изготовление собственными силами, переработка - производство подрядчиком из наших материалов.
+Допустимые
+ варианты значения колонки:
+ Закупка
+ (значение по умолчанию) Производство Переработка
 </v8:content>
 							</v8:item>
 						</text>
@@ -631,6 +835,10 @@ Allowed column value
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT rate</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается ставка НДС</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -642,6 +850,12 @@ Allowed column value
 								<v8:content>Default VAT rate for the products and services item.
 Added value VAT rates applied by the company
 (String, not longer than 10 characters)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Ставка НДС по умолчанию, которым облагается позиция номенклатуры.
+Ставки налога на добавленную стоимость, применяемых на предприятии
+(Строка, не более 10 символов)</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -666,6 +880,10 @@ Added value VAT rates applied by the company
 							<v8:lang>en</v8:lang>
 							<v8:content>Write off method</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Способ списания</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -678,6 +896,13 @@ Added value VAT rates applied by the company
 moving items, etc. Allowed
 column value options: ByAverage (default
 value) FIFO</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Метод оценки стоимости запасов при списании со склада:
+при продажах, перемещении и
+т.д. Допустимые варианты значения колонки:
+ПоСредней (значение по умолчанию) FIFO</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -702,6 +927,10 @@ value) FIFO</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Inventory GL Account</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет учета запасов</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -711,6 +940,11 @@ value) FIFO</v8:content>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>GL account of warehouse inventory. The account keeps track of materials, goods, products.
+</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Счет учета запасов на складе. На счете отражаются материалы, товары, продукция.
 </v8:content>
 							</v8:item>
 						</text>
@@ -736,6 +970,10 @@ value) FIFO</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Expense GL Account</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Счет учета затрат</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -745,6 +983,11 @@ value) FIFO</v8:content>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Expenses GL account, to which inventories costs belong when transferring to production, as well as when showing costs occurring when obtaining services from third-party companies.
+</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Счет учета затрат, на который будет относиться стоимость запасов при передаче в производство, а также при отражении расходов, возникающих при поступлении услуг сторонних организаций.
 </v8:content>
 							</v8:item>
 						</text>
@@ -770,6 +1013,10 @@ value) FIFO</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Price group</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ценовая группа</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -781,6 +1028,12 @@ value) FIFO</v8:content>
 								<v8:content>Price group, to which the products and services item belongs,
 e.g. furniture, trainers, etc. Price
 groups of products and services (String, not longer than 50 characters)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Ценовая группа, к которой относится номенклатурная
+позиция, например, мебель, кроссовки
+и т.п. Ценовые группы товаров и услуг (строка, не более 50 символов)</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -805,6 +1058,10 @@ groups of products and services (String, not longer than 50 characters)</v8:cont
 							<v8:lang>en</v8:lang>
 							<v8:content>Warehouse</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Склад, на который приходуются запасы</v8:content>
+						</v8:item>
 					</tl>
 					<note>
 						<drawingType>Text</drawingType>
@@ -816,6 +1073,12 @@ groups of products and services (String, not longer than 50 characters)</v8:cont
 								<v8:content>Products and services warehouse. It is used as a default value when entering products and services into documents.
 Company structural units: administrative and management
 divisions, production divisions, warehouses Structural unit name. It is used to easily view a structural unit while working with the application. (string, not longer than 50 characters)</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Склад хранения номенклатурной позиции. Используется в качестве значения по умолчанию при вводе номенклатуры в документах.
+Организационно-структурные единицы организаций:
+административно-управленческие подразделения, производственные подразделения, склады Наименование структурной единицы. Используется для быстрой визуальной идентификации структурной единицы в процессе работы с программой. (строка, не более 50 символов)</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>

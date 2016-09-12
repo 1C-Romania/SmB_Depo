@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("ID", ID);
 	Parameters.Property("HardwareDriver", HardwareDriver);
 	
-	Title = NStr("en='Equipment:'") + Chars.NBSp  + String(ID);
+	Title = NStr("en='Equipment:';ru='Оборудование:'") + Chars.NBSp  + String(ID);
 	
 	TextColor = StyleColors.FormTextColor;
 	ErrorColor = StyleColors.NegativeTextColor;
@@ -45,9 +45,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndDo;
 	
 	StopBitList = Items.StopBit.ChoiceList;
-	StopBitList.Add(0, NStr("en='1 stop-bit'"));
-	StopBitList.Add(1, NStr("en='1.5 of the stop-bit'"));
-	StopBitList.Add(2, NStr("en='2 stop-bits'"));
+	StopBitList.Add(0, NStr("en='1 stop-bit';ru='1 стоп-бит'"));
+	StopBitList.Add(1, NStr("en='1.5 of the stop-bit';ru='1.5 стоп-бита'"));
+	StopBitList.Add(2, NStr("en='2 stop-bits';ru='2 стоп-бита'"));
 	
 	SuffixList = Items.Suffix.ChoiceList;
 	SuffixList.Add(8,  "(8) BS");
@@ -177,7 +177,7 @@ Procedure DeviceTest(Command)
 	                                                                      ID,
 	                                                                      tempDeviceParameters);
 	If Not Result Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Error code:'") + Output_Parameters[0]);
+		CommonUseClientServer.MessageToUser(NStr("en='Error code:';ru='Код ошибки:'") + Output_Parameters[0]);
 	EndIf;
 	
 EndProcedure
@@ -185,7 +185,7 @@ EndProcedure
 &AtClient
 Procedure SetDriverFromArchiveOnEnd(Result) Export 
 	
-	CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.'")); 
+	CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.';ru='Установка драйвера завершена.'")); 
 	UpdateInformationAboutDriver();
 	
 EndProcedure 
@@ -194,10 +194,10 @@ EndProcedure
 Procedure SettingDriverFromDistributionOnEnd(Result, Parameters) Export 
 	
 	If Result Then
-		CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='Driver is installed.';ru='Установка драйвера завершена.'")); 
 		UpdateInformationAboutDriver();
 	Else
-		CommonUseClientServer.MessageToUser(NStr("en='An error occurred when installing the driver from distribution.'")); 
+		CommonUseClientServer.MessageToUser(NStr("en='An error occurred when installing the driver from distribution.';ru='При установке драйвера из дистрибутива произошла ошибка.'")); 
 	EndIf;
 
 EndProcedure 
@@ -239,13 +239,13 @@ Procedure UpdateInformationAboutDriver()
 		Version  = Output_Parameters[1];
 	Else
 		Driver = Output_Parameters[2];
-		Version  = NStr("en='Not defined'");
+		Version  = NStr("en='Not defined';ru='Не определена'");
 	EndIf;
 	
-	Items.Driver.TextColor = ?(Driver = NStr("en='Not set'"), ErrorColor, TextColor);
-	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined'"), ErrorColor, TextColor);
+	Items.Driver.TextColor = ?(Driver = NStr("en='Not set';ru='Не установлен'"), ErrorColor, TextColor);
+	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined';ru='Не определена'"), ErrorColor, TextColor);
 	
-	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed'"));
+	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed';ru='Установлен'"));
 	
 EndProcedure
 

@@ -140,7 +140,7 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 		If Not QueryExecutionResult.IsEmpty()
 			AND Not CurrentObject.PriceCurrency = Constants.NationalCurrency.Get() Then
 			
-			MessageText = NStr("en = 'Current price kind is used in retail structural units, that is why we can use national currency only for this kind.'");
+			MessageText = NStr("en='Current price kind is used in retail structural units, that is why we can use national currency only for this kind.';ru='Текущий вид цен используется в розничных структурных единицах, по этому для него можно использовать только национальную валюту.'");
 			CommonUseClientServer.MessageToUser(MessageText, , "Object.PriceCurrency", , Cancel);
 			
 		EndIf;

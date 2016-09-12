@@ -21,7 +21,7 @@ Procedure OnOpen(Cancel)
 	If ChangesTree.GetItems().Count() = 0 Then
 		
 		ShowUserNotification(
-			NStr("en = 'The changes are not registered'")
+			NStr("en='The changes are not registered';ru='Изменения не зарегистрированы.'")
 			,,,
 			PictureLib.Information32);
 			
@@ -53,7 +53,7 @@ Procedure ChangesTreeRefreshServer()
 	If ChangesStructure.Products.Count() > 0 Then
 		
 		TreeRow = TreeRows.Add();
-		TreeRow.ObjectKind = NStr("en = 'Products'");
+		TreeRow.ObjectKind = NStr("en='Products';ru='Товары'");
 	
 		For Each ArrayElement IN ChangesStructure.Products Do
 			ObjectString = TreeRow.GetItems().Add();
@@ -65,7 +65,7 @@ Procedure ChangesTreeRefreshServer()
 	If ChangesStructure.Files.Count() > 0 Then
 		
 		TreeRow = TreeRows.Add();
-		TreeRow.ObjectKind = NStr("en = 'Files'");
+		TreeRow.ObjectKind = NStr("en='Files';ru='Файлы'");
 		
 		For Each ArrayElement IN ChangesStructure.Files Do
 			ObjectString = TreeRow.GetItems().Add();
@@ -77,7 +77,7 @@ Procedure ChangesTreeRefreshServer()
 	If ChangesStructure.Orders.Count() > 0 Then
 		
 		TreeRow = TreeRows.Add();
-		TreeRow.ObjectKind = NStr("en = 'Orders'");
+		TreeRow.ObjectKind = NStr("en='Orders';ru='заказы'");
 		
 		For Each ArrayElement IN ChangesStructure.Orders Do
 			ObjectString = TreeRow.GetItems().Add();

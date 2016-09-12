@@ -35,7 +35,7 @@ Function SuppliedApllicationSettings(OnlyForInitialFill = False) Export
 	
 	// ViPNet CSP
 	Setting = Settings.Add();
-	Setting.Presentation       = NStr("en = 'ViPNet CSP'");
+	Setting.Presentation       = NStr("en='ViPNet CSP';ru='ViPNet CSP'");
 	Setting.ApplicationName        = "Infotecs Cryptographic Service Provider";
 	Setting.ApplicationType        = 2;
 	// Options: GOST R 34.10-2001, GOST 34.10-2012 256, GOST 34.11-2012 512.
@@ -57,7 +57,7 @@ Function SuppliedApllicationSettings(OnlyForInitialFill = False) Export
 	
 	// CryptoPro CSP
 	Setting = Settings.Add();
-	Setting.Presentation       = NStr("en = 'CryptoPro CSP'");
+	Setting.Presentation       = NStr("en='CryptoPro CSP';ru='КриптоПро CSP'");
 	Setting.ApplicationName        = "Crypto-Pro GOST R 34.10-2001 Cryptographic Service Provider";
 	Setting.ApplicationType        = 75;
 	Setting.SignAlgorithm     = "GOST R 34.10-2001";
@@ -75,7 +75,7 @@ Function SuppliedApllicationSettings(OnlyForInitialFill = False) Export
 	
 	// LISSI CSP
 	Setting = Settings.Add();
-	Setting.Presentation       = NStr("en = 'LISSI CSP'");
+	Setting.Presentation       = NStr("en='LISSI CSP';ru='ЛИССИ CSP'");
 	Setting.ApplicationName        = "LISSI-CSP";
 	Setting.ApplicationType        = 75;
 	Setting.SignAlgorithm     = "GOST R 34.10-2001";
@@ -89,7 +89,7 @@ Function SuppliedApllicationSettings(OnlyForInitialFill = False) Export
 	
 	// SignalCOM CSP (RFC 4357)
 	Setting = Settings.Add();
-	Setting.Presentation       = NStr("en = 'SignalCOM CSP (RFC 4357)'");
+	Setting.Presentation       = NStr("en='SignalCOM CSP (RFC 4357)';ru='Сигнал-КОМ CSP (RFC 4357)'");
 	Setting.ApplicationName        = "Signal-COM CPGOST Cryptographic Provider";
 	Setting.ApplicationType        = 75;
 	Setting.SignAlgorithm     = "ECR3410-CP";
@@ -103,7 +103,7 @@ Function SuppliedApllicationSettings(OnlyForInitialFill = False) Export
 	
 	// SignalCOM CSP (ITUT X.509 v.3).
 	Setting = Settings.Add();
-	Setting.Presentation       = NStr("en = 'Signal-COM CSP (ITU-T X.509 v.3)'");
+	Setting.Presentation       = NStr("en='Signal-COM CSP (ITU-T X.509 v.3)';ru='Сигнал-КОМ CSP (ITU-T X.509 v.3)'");
 	Setting.ApplicationName        = "Signal-COM ECGOST Cryptographic Provider";
 	Setting.ApplicationType        = 129;
 	Setting.SignAlgorithm     = "ECR3410";
@@ -117,7 +117,7 @@ Function SuppliedApllicationSettings(OnlyForInitialFill = False) Export
 	
 	// Microsoft Enhanced CSP
 	Setting = Settings.Add();
-	Setting.Presentation       = NStr("en = 'Microsoft Enhanced CSP'");
+	Setting.Presentation       = NStr("en='Microsoft Enhanced CSP';ru='Microsoft Enhanced CSP'");
 	Setting.ApplicationName        = "Microsoft Enhanced Cryptographic Provider v1.0";
 	Setting.ApplicationType        = 1;
 	Setting.SignAlgorithm     = "RSA_SIGN"; // One option.

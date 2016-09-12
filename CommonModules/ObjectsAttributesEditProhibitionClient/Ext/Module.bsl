@@ -108,7 +108,7 @@ EndProcedure
 //
 Procedure CheckReferencesToObject(Val ContinuationProcessor, Val RefArray, Val SynonymsOfAttributes) Export
 	
-	DialogTitle = NStr("en = 'Attributes editing permission'");
+	DialogTitle = NStr("en='Attributes editing permission';ru='Разрешение редактирования реквизитов'");
 	
 	AttributesPresentation = "";
 	For Each AttributesSynonym IN SynonymsOfAttributes Do
@@ -117,26 +117,35 @@ Procedure CheckReferencesToObject(Val ContinuationProcessor, Val RefArray, Val S
 	AttributesPresentation = Left(AttributesPresentation, StrLen(AttributesPresentation) - 2);
 	
 	If SynonymsOfAttributes.Count() > 1 Then
-		QuestionText = NStr("en = 'To avoid misalignment of data in the application, the attributes are not
-			|editable as follows: %1.
-			|
-			|Before permitting their edit, it is
-			|recommended to evaluate the consequences by checking all places of this item usage in the application.
-			|Search of usage places can take a long time.'");
+		QuestionText = NStr("en='To avoid misalignment of data in the application, the attributes are not"
+"editable as follows: %1."
+""
+"Before permitting their edit, it is"
+"recommended to evaluate the consequences by checking all places of this item usage in the application."
+"Search of usage places can take a long time.';ru='Для того чтобы не допустить рассогласования данных в программе, следующие"
+"реквизиты не доступны для редактирования: %1."
+""
+"Перед тем, как разрешить их"
+"редактирование, рекомендуется оценить последствия, проверив все места использования этого элемента в программе."
+"Поиск мест использования может занять длительное время.'");
 								  
 	Else
-		QuestionText = NStr("en = 'To avoid misalignment of data in the application, the %1 attribute is not editable.
-			|
-			|Before permitting its edit, it is recommended
-			|to evaluate the consequences by checking all places of the %2 item usage in the application.
-			|Search of usage places can take a long time.'");
+		QuestionText = NStr("en='To avoid misalignment of data in the application, the %1 attribute is not editable."
+""
+"Before permitting its edit, it is recommended"
+"to evaluate the consequences by checking all places of the %2 item usage in the application."
+"Search of usage places can take a long time.';ru='Для того чтобы не допустить рассогласования данных в программе, реквизит %1 не доступен для редактирования."
+""
+"Перед тем, как разрешить его"
+"редактирование, рекомендуется оценить последствия, проверив все места использования %2 в программе."
+"Поиск мест использования может занять длительное время.'");
 	EndIf;
 	
 	If RefArray.Count() = 1 Then
 		ObjectsPresentation = RefArray[0];
 	Else
 		ObjectsPresentation = StringFunctionsClientServer.PlaceParametersIntoString( 
-			NStr("en = 'selected items (%1)'"), RefArray.Count());
+			NStr("en='selected items (%1)';ru='выбранных элементов (%1)'"), RefArray.Count());
 	EndIf;
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, AttributesPresentation, ObjectsPresentation);
@@ -148,8 +157,8 @@ Procedure CheckReferencesToObject(Val ContinuationProcessor, Val RefArray, Val S
 	Parameters.Insert("ContinuationProcessor", ContinuationProcessor);
 	
 	Buttons = New ValueList;
-	Buttons.Add(DialogReturnCode.Yes, NStr("en = 'Check and allow'"));
-	Buttons.Add(DialogReturnCode.No, NStr("en = 'Cancel'"));
+	Buttons.Add(DialogReturnCode.Yes, NStr("en='Check and allow';ru='Проверить и разрешить'"));
+	Buttons.Add(DialogReturnCode.No, NStr("en='Cancel';ru='Отменить'"));
 	
 	ShowQueryBox(
 		New NotifyDescription("CheckReferencesToObjectAfterCheckConfirmation",
@@ -262,7 +271,7 @@ EndFunction
 Procedure ShowMessageBoxAllVisibleAttributesUnlocked(ContinuationProcessor = Undefined) Export
 	
 	ShowMessageBox(ContinuationProcessor,
-		NStr("en = 'Editing of all the visible object attributes is already allowed.'"));
+		NStr("en='Editing of all the visible object attributes is already allowed.';ru='Редактирование всех видимых реквизитов объекта уже разрешено.'"));
 	
 EndProcedure
 

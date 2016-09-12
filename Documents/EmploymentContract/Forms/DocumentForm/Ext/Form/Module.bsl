@@ -42,7 +42,7 @@ Procedure FillCurrentEmployeesChoiceList()
 	Items.CurrentEmployeeTaxes.ChoiceList.Clear();
 	For Each RowEmployee IN Object.Employees Do
 		
-		RowPresentation = String(RowEmployee.Employee) + NStr("en =', employee code: '") + String(RowEmployee.Employee.Code);
+		RowPresentation = String(RowEmployee.Employee) + NStr("en=', employee code: ';ru=', ТН: '") + String(RowEmployee.Employee.Code);
 		Items.CurrentEmployeeAccrualsDeductions.ChoiceList.Add(RowEmployee.GetID(), RowPresentation);
 		Items.CurrentEmployeeTaxes.ChoiceList.Add(RowEmployee.GetID(), RowPresentation);
 		
@@ -92,7 +92,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not TaxAccounting Then
 		
 		Items.Employees.ExtendedTooltip.Title = 
-			NStr("en = 'Accruals and deductions are itemized on the relevant page for each employee individually.'");
+			NStr("en='Accruals and deductions are itemized on the relevant page for each employee individually.';ru='Начисления и удержания указываются на соответствующей странице для каждого сотрудника в отдельности.'");
 			
 	EndIf;
 		

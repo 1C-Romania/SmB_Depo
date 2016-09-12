@@ -63,9 +63,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	OnePageStorageFormatPrevious = OnePageStorageFormat;
 	
 	If Not UseImageMagickForConvertionToPDF Then
-		Items.FormatOfScannedImage.Title = NStr("en = 'Format'");
+		Items.FormatOfScannedImage.Title = NStr("en='Format';ru='Формат'");
 	Else
-		Items.FormatOfScannedImage.Title = NStr("en = 'Type'");
+		Items.FormatOfScannedImage.Title = NStr("en='Type';ru='Тип'");
 	EndIf;
 	
 	StandardSubsystemsServer.SetGroupHeadersDisplay(ThisObject,

@@ -15,7 +15,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		Cancel = True;
 		CommonUseClientServer.MessageToUser(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '""%1"" is occupied, you must specify another name.'"),
+				NStr("en='""%1"" is occupied, you must specify another name.';ru='""%1"" занято, необходимо указать другое наименование.'"),
 				Description
 			),
 			,
@@ -38,9 +38,9 @@ Procedure BeforeWrite(Cancel)
 	
 	If Not User AND DeletionMarkIsChangedByUser Then
 		If DeletionMark Then
-			ErrorText = NStr("en = 'You can not mark the predefined report variant for deletion.'");
+			ErrorText = NStr("en='You can not mark the predefined report variant for deletion.';ru='Пометка на удаление предопределенного варианта отчета запрещена.'");
 		Else
-			ErrorText = NStr("en = 'You can not uncheck the predefined report variant for deletion.'");
+			ErrorText = NStr("en='You can not uncheck the predefined report variant for deletion.';ru='Снятие пометки удаления предопределенного варианта отчета запрещена.'");
 		EndIf;
 		ReportsVariants.ErrorByVariant(Ref, ErrorText);
 		Raise ErrorText;
@@ -50,18 +50,19 @@ Procedure BeforeWrite(Cancel)
 		DescriptionIsBooked = ReportsVariants.DescriptionIsBooked(Report, Ref, Description);
 		VariantKeyIsBooked  = ReportsVariants.VariantKeyIsBooked(Report, Ref, VariantKey);
 		If DescriptionIsBooked OR VariantKeyIsBooked Then
-			ErrorText = NStr("en = 'Error of unchecking the report variant deletion mark:'");
+			ErrorText = NStr("en='Error of unchecking the report variant deletion mark:';ru='Ошибка снятия пометки удаления варианта отчета:'");
 			If DescriptionIsBooked Then
 				ErrorText = ErrorText + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Name ""%1"" is already occupied with another variant of this report.'"),
+					NStr("en='Name ""%1"" is already occupied with another variant of this report.';ru='Наименование ""%1"" уже занято другим вариантом этого отчета.'"),
 					Description);
 			Else
 				ErrorText = ErrorText + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Variant key ""%1"" is already occupied with another variant of this report.'"),
+					NStr("en='Variant key ""%1"" is already occupied with another variant of this report.';ru='Ключ варианта ""%1"" уже занят другим вариантом этого отчета.'"),
 					VariantKey);
 			EndIf;
-			ErrorText = ErrorText + NStr("en = 'Before unchecking the deletion mark
-			|of the report variant it is necessary to install the deletion mark of the controversial report variant.'");
+			ErrorText = ErrorText + NStr("en='Before unchecking the deletion mark"
+"of the report variant it is necessary to install the deletion mark of the controversial report variant.';ru='Перед снятием пометки удаления варианта отчета"
+"необходимо установить пометку удаления конфликтующего варианта отчета.'");
 			ReportsVariants.ErrorByVariant(Ref, ErrorText);
 			Raise ErrorText;
 		EndIf;
@@ -92,7 +93,7 @@ Procedure IndexSettings()
 			ReportsVariants.IndexSchemaContent(ThisObject);
 		Except
 			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Failed to index the ""%1"" variant scheme of the ""%2"" report:'"),
+				NStr("en='Failed to index the ""%1"" variant scheme of the ""%2"" report:';ru='Не удалось проиндексировать схему варианта ""%1"" отчета ""%2"":'"),
 				VariantKey,
 				String(Report));
 			ReportsVariants.ErrorByVariant(Ref, ErrorText + Chars.LF + DetailErrorDescription(ErrorInfo()));
@@ -164,7 +165,7 @@ Procedure CheckFillingPredefined(Cancel)
 EndProcedure
 
 Function NotFilledField(FieldName)
-	Return StrReplace(NStr("en = 'The field ""%1"" is not filled.'"), "%1", FieldName);
+	Return StrReplace(NStr("en='The field ""%1"" is not filled.';ru='Не заполнено поле ""%1""'"), "%1", FieldName);
 EndFunction
 
 Function ReportsTypesMatch()
@@ -180,7 +181,7 @@ EndFunction
 
 Function ControversialFieldValues(FieldName1, FieldName2)
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Conflicting values of fields ""%1"" and ""%2"".'"),
+		NStr("en='Conflicting values of fields ""%1"" and ""%2"".';ru='Противоречивые значения полей ""%1"" и ""%2""'"),
 		FieldName1,
 		FieldName2
 	);

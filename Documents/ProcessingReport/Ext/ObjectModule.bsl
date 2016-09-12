@@ -106,8 +106,9 @@ Procedure FillTabularSectionBySpecification(NodesSpecificationStack, NodesTable 
 		If Selection.ContentRowType = Enums.SpecificationContentRowTypes.Node Then
 			NodesTable.Clear();
 			If Not NodesSpecificationStack.Find(Selection.Specification) = Undefined Then
-				MessageText = NStr("en = 'During filling in of the Specification materials
-									|tabular section a recursive item occurrence was found'")+" "+Selection.ProductsAndServices+" "+NStr("en = 'in specifications'")+" "+Selection.ProductionSpecification+"
+				MessageText = NStr("en='During filling in of the Specification materials"
+"tabular section a recursive item occurrence was found';ru='При попытке заполнить табличную"
+"часть Материалы по спецификации, обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in specifications';ru='в спецификации'")+" "+Selection.ProductionSpecification+"
 									|The operation failed.";
 				Raise MessageText;
 			EndIf;
@@ -346,7 +347,7 @@ Procedure SubordinatedInvoiceControl()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится счет фактура %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Processing report # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -921,7 +922,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 			If StringProducts.Reserve > StringProducts.Quantity Then
 				
-				MessageText = NStr("en = 'In the row No.%Number% of the ""Products"" tabular section, the quantity of the items shipped from the reserve exceeds the total quantity of inventory.'");
+				MessageText = NStr("en='In the row No.%Number% of the ""Products"" tabular section, the quantity of the items shipped from the reserve exceeds the total quantity of inventory.';ru='В строке №%Номер% табл. части ""Продукция"" количество отгружаемых позиций из резерва превышает общее количество запасов.'");
 				MessageText = StrReplace(MessageText, "%Number%", StringProducts.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -950,7 +951,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			CurAmountDiscounts = ManualDiscountCurAmount + AutomaticDiscountCurAmount;
 			If StringProducts.DiscountMarkupPercent <> 100 AND CurAmountDiscounts < CurAmount
 				AND Not ValueIsFilled(StringProducts.Amount) Then
-				MessageText = NStr("en = 'Column ""Amount"" in the row %Number% of the ""Products"" list is not filled.'");
+				MessageText = NStr("en='Column ""Amount"" in the row %Number% of the ""Products"" list is not filled.';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Продукция"".'");
 				MessageText = StrReplace(MessageText, "%Number%", StringProducts.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -980,7 +981,7 @@ Procedure Filling(FillingData, StandardProcessing)
 	
 	If TypeOf(FillingData) = Type("DocumentRef.CustomerOrder") Then
 		If FillingData.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
-			Raise NStr("en = 'Unable to keep Report on processing according to the job order!'");;
+			Raise NStr("en='Unable to keep Report on processing according to the job order!';ru='Нельзя ввести Отчет о переработке на основании заказ-наряда!'");;
 		EndIf;
 		FillByCustomerOrder(FillingData);
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.InventoryAssembly") Then

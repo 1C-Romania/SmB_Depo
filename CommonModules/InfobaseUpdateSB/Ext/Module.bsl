@@ -61,21 +61,21 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler.PerformModes = "Delay";
 	Handler.Version = "1.5.3.6";
 	Handler.Procedure = "InfobaseUpdateSB.ChangesProhibitionsSectionsDatesUpdate";
-	Handler.Comment = NStr("en = 'Update changes ban dates sections. 
-		|Starting with version 1.5.3 an ability appeared to separately manage the dates of the ban to change the documents Customer order, Vendor order.'");
+	Handler.Comment = NStr("en='Update changes ban dates sections. "
+"Starting with version 1.5.3 an ability appeared to separately manage the dates of the ban to change the documents Customer order, Vendor order.';ru='Обновление разделов дат запрет изменений.  Начиная с версии 1.5.3 появилась возможность раздельно управлять датами запрета изменений для документов Заказ покупателя, Заказ поставщику.'");
 		
 	Handler = Handlers.Add();
 	Handler.PerformModes = "Delay";
 	Handler.Version = "1.5.3.13";
 	Handler.InitialFilling = True;
 	Handler.Procedure = "InfobaseUpdateSB.UpdateContractForms";
-	Handler.Comment = NStr("en = 'Update contracts forms.'");
+	Handler.Comment = NStr("en='Update contracts forms.';ru='Обновление бланков договоров.'");
 	
 	Handler = Handlers.Add();
 	Handler.PerformModes = "Delay";
 	Handler.Version = "1.5.3.26";
 	Handler.Procedure = "InfobaseUpdateSB.TransferDataFromRemoteObjects";
-	Handler.Comment = NStr("en = 'Transfers data from remote metadata objects of alcoholic products account.'");
+	Handler.Comment = NStr("en='Transfers data from remote metadata objects of alcoholic products account.';ru='Переносит данные из удаленных объектов метаданных учета алкогольной продукции.'");
 	
 EndProcedure
 
@@ -1324,22 +1324,22 @@ Procedure WriteCatalogObject(CatalogObject, Inform = False) Export
 
 	If CatalogObject.IsNew() Then
 		If CatalogObject.IsFolder Then
-			MessageStr = NStr("en = 'Created catalog group ""%1"", code: ""%2"", description: ""%3""'") ;
+			MessageStr = NStr("en='Created catalog group ""%1"", code: ""%2"", description: ""%3""';ru='Создана группа справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
 		Else
-			MessageStr = NStr("en = 'Created catalog element ""%1"", code: ""%2"", description: ""%3""'") ;
+			MessageStr = NStr("en='Created catalog element ""%1"", code: ""%2"", description: ""%3""';ru='Создан элемент справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
 		EndIf; 
 	Else
 		If CatalogObject.IsFolder Then
-			MessageStr = NStr("en = 'Processed catalog group ""%1"", code: ""%2"", description: ""%3""'") ;
+			MessageStr = NStr("en='Processed catalog group ""%1"", code: ""%2"", description: ""%3""';ru='Обработана группа справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
 		Else
-			MessageStr = NStr("en = 'Processed catalog element ""%1"", code: ""%2"", description: ""%3""'") ;
+			MessageStr = NStr("en='Processed catalog element ""%1"", code: ""%2"", description: ""%3""';ru='Обработан элемент справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
 		EndIf; 
 	EndIf;
 
 	If CatalogObject.Metadata().CodeLength > 0 Then
 		FullCode = CatalogObject.FullCode();
 	Else
-		FullCode = NStr("en = '<without code>'");
+		FullCode = NStr("en='<without code>';ru='<без кода>'");
 	EndIf; 
 	MessageStr = StringFunctionsClientServer.PlaceParametersIntoString(MessageStr, CatalogObject.Metadata().Synonym, FullCode, CatalogObject.Description);
 
@@ -1351,7 +1351,7 @@ Procedure WriteCatalogObject(CatalogObject, Inform = False) Export
 
 	Except
 
-		MessageText = NStr("en='Failed to complete action: %1'");
+		MessageText = NStr("en='Failed to complete action: %1';ru='Не удалось завершить действие: %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, MessageStr);
 
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -1369,13 +1369,13 @@ Procedure EnableMultipleContactInformationSSLInput()
 	
 	// Companies
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CompanyPhone,			Enums.ContactInformationTypes.Phone,
-		NStr("en='Company''s phone'"), True, False, False, 3, False);
+		NStr("en=""Company's phone"";ru='Телефон организации'"), True, False, False, 3, False);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CompanyFax,				Enums.ContactInformationTypes.Fax,
-		NStr("en='Company''s fax'"), True, False, False, 4, False);
+		NStr("en=""Company's fax"";ru='Факс организации'"), True, False, False, 4, False);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CompanyEmail,				Enums.ContactInformationTypes.EmailAddress,
-		NStr("en='Counterparty email address'"), True, False, False, 5, False);
+		NStr("en='Counterparty email address';ru='Адрес электронной почты контрагента'"), True, False, False, 5, False);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CompanyOtherInformation,	Enums.ContactInformationTypes.Another,
-		NStr("en='Any other contact information'"), True, False, False, 7, False);
+		NStr("en='Any other contact information';ru='Любая другая контактная информация'"), True, False, False, 7, False);
 	
 EndProcedure // EnableMultipleContactInformationInput()
 
@@ -1422,7 +1422,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 			If ParametersStructure.ThisIsLegalEntity = Undefined Then
 				
 				ReturnStructure.TINEnteredCorrectly = False;
-				ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en = 'Unknown counterparty kind. Specify counterparty kind'");
+				ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en='Unknown counterparty kind. Specify counterparty kind';ru='Неизвестен вид контрагента. Укажите вид контрагента'");
 				
 				ReturnStructure.NoErrorsByTIN = False;
 				
@@ -1434,10 +1434,11 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					
 					ReturnStructure.TINEnteredCorrectly = False;
 					
-					ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en = 'TIN of legal entity should consist of 10 digits'");
+					ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en='TIN of legal entity should consist of 10 digits';ru='ИНН юридического лица должен состоять из 10 цифр'");
 					
-					TextForIncorrectTIN = NStr("en = '%
-					|TIN does not contain 10 digits'");
+					TextForIncorrectTIN = NStr("en='%"
+"TIN does not contain 10 digits';ru='%1"
+"ИНН содержит не 10 цифр'");
 					
 					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 					
@@ -1447,10 +1448,11 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					
 					ReturnStructure.TINEnteredCorrectly = False;
 					
-					ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en = 'Individual’s TIN should consist of 12 digits.'");
+					ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en='Individual’s TIN should consist of 12 digits.';ru='ИНН физического лица должен состоять из 12 цифр'");
 					
-					TextForIncorrectTIN = NStr("en = '%
-					|TIN does not contain 12 digits'");
+					TextForIncorrectTIN = NStr("en='%"
+"TIN does not contain 12 digits';ru='%1"
+"ИНН содержит не 12 цифр'");
 					
 					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 					
@@ -1464,10 +1466,11 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 						
 						ReturnStructure.TINEnteredCorrectly = False;
 						
-						ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en = 'TIN should include only digits'");
+						ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en='TIN should include only digits';ru='ИНН должен включать только цифры'");
 						
-						TextForIncorrectTIN = NStr("en = '%
-						|TIN includes not only digits'");
+						TextForIncorrectTIN = NStr("en='%"
+"TIN includes not only digits';ru='%1"
+"ИНН содержит не только цифры'");
 						
 						ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 						
@@ -1514,10 +1517,11 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 								
 								ReturnStructure.TINEnteredCorrectly = False;
 								
-								ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en = 'Legal entity''s TIN is incorrect'");
+								ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en=""Legal entity's TIN is incorrect"";ru='ИНН юридического лица введен некорректно'");
 								
-								TextForIncorrectTIN = NStr("en = '%1
-								|TIN does not correspond to the format'");
+								TextForIncorrectTIN = NStr("en='%1"
+"TIN does not correspond to the format';ru='%1"
+"ИНН не соответствует формату'");
 								
 								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 								
@@ -1581,10 +1585,11 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 								
 								ReturnStructure.TINEnteredCorrectly = False;
 								
-								ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en = 'Individual''s TIN is incorrect'");
+								ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en=""Individual's TIN is incorrect"";ru='ИНН физического лица введен некорректно'");
 								
-								TextForIncorrectTIN = NStr("en = '%1
-								|TIN does not correspond to the format'");
+								TextForIncorrectTIN = NStr("en='%1"
+"TIN does not correspond to the format';ru='%1"
+"ИНН не соответствует формату'");
 								
 								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 								
@@ -1616,7 +1621,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 			
 			ReturnStructure.KPPEnteredCorrectly = False;
 			
-			ReturnStructure.LabelExplanationsOfIncorrectKPP = NStr("en = 'Unknown counterparty kind. Specify counterparty kind'");
+			ReturnStructure.LabelExplanationsOfIncorrectKPP = NStr("en='Unknown counterparty kind. Specify counterparty kind';ru='Неизвестен вид контрагента. Укажите вид контрагента'");
 			
 			ReturnStructure.NoErrorsByKPP = False;
 			
@@ -1645,10 +1650,11 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					
 					ReturnStructure.KPPEnteredCorrectly = False;
 					
-					ReturnStructure.LabelExplanationsOfIncorrectKPP  = NStr("en = 'KPP should contain 9 digits'");
+					ReturnStructure.LabelExplanationsOfIncorrectKPP  = NStr("en='KPP should contain 9 digits';ru='""КПП"" должен содержать 9 цифр'");
 					
-					TextForIncorrectKPP = NStr("en = '&1
-					|KPP does not contain 9 digits'");
+					TextForIncorrectKPP = NStr("en='&1"
+"KPP does not contain 9 digits';ru='%1"
+"КПП содержит не 9 цифр'");
 					
 					ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
 					
@@ -1662,10 +1668,11 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 						
 						ReturnStructure.KPPEnteredCorrectly = False;
 						
-						ReturnStructure.LabelExplanationsOfIncorrectKPP = NStr("en = 'KPP should include only digits'");
+						ReturnStructure.LabelExplanationsOfIncorrectKPP = NStr("en='KPP should include only digits';ru='КПП должен включать только цифры'");
 						
-						TextForIncorrectKPP = NStr("en = '%
-						|KPP includes not only digits'");
+						TextForIncorrectKPP = NStr("en='%"
+"KPP includes not only digits';ru='%1"
+"КПП содержит не только цифры'");
 						
 						ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
 						
@@ -1713,10 +1720,11 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 							
 							ReturnStructure.KPPEnteredCorrectly = False;
 							
-							ReturnStructure.LabelExplanationsOfIncorrectKPP = NStr("en = 'KPP does not correspond to format'");
+							ReturnStructure.LabelExplanationsOfIncorrectKPP = NStr("en='KPP does not correspond to format';ru='КПП не соответствует формату'");
 							
-							TextForIncorrectKPP = NStr("en = '%
-							|KPP does not correspond to the format'");
+							TextForIncorrectKPP = NStr("en='%"
+"KPP does not correspond to the format';ru='%1"
+"КПП не соответствует формату'");
 							
 							ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
 							
@@ -2316,7 +2324,7 @@ Procedure TransferDataFromDeletedObjects(ParametersStructure = Undefined) Export
 	Except
 		RollbackTransaction();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unable to convert data on alcoholic products as: '"), DetailErrorDescription(ErrorInfo()));
+			NStr("en='Unable to convert data on alcoholic products as: ';ru='Не удалось выполнить конвертацию данных по алкогольной продукции по причине: '"), DetailErrorDescription(ErrorInfo()));
 		WriteLogEvent(InfobaseUpdate.EventLogMonitorEvent(), EventLogLevel.Error,,, MessageText);
 	EndTry;
 	

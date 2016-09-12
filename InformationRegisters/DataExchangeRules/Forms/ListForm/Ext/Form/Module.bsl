@@ -25,7 +25,7 @@ Procedure UpdateAllTypicalRules(Command)
 	UpdateAllTypicalRulesAtServer();
 	Items.List.Refresh();
 	
-	ShowUserNotification(NStr("en = 'Rules update has been successfully completed.'"));
+	ShowUserNotification(NStr("en='Rules update has been successfully completed.';ru='Обновление правил успешно завершено.'"));
 	
 EndProcedure
 
@@ -46,7 +46,7 @@ EndProcedure
 Procedure UseStandardRules(Command)
 	UseStandardRulesAtServer();
 	Items.List.Refresh();
-	ShowUserNotification(NStr("en = 'Rules update has been successfully completed.'"));
+	ShowUserNotification(NStr("en='Rules update has been successfully completed.';ru='Обновление правил успешно завершено.'"));
 EndProcedure
 
 &AtServer

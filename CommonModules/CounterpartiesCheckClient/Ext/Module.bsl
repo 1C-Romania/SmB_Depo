@@ -106,25 +106,25 @@ Function WarningTextOnInactiveCounterparties(InactiveCounterparties, FinalState)
 		
 		Counterparty = String(InactiveCounterparties[0]);
 		If FinalState = PredefinedValue("Enum.CounterpartyExistenceStates.KKPDoesNotMeetTIN") Then
-			Substrings.Add(NStr("en = 'Counterparty''s KPP '"));
+			Substrings.Add(NStr("en=""Counterparty's KPP "";ru='КПП контрагента '"));
 			Substrings.Add(Counterparty);
-			Substrings.Add(NStr("en = ' does nor correspond to the data of FTS base'"));
+			Substrings.Add(NStr("en=' does nor correspond to the data of FTS base';ru=' не соответствует данным базы ФНС'"));
 		ElsIf FinalState = PredefinedValue("Enum.CounterpartyExistenceStates.NotAvailableInRegistry") Then
-			Substrings.Add(NStr("en = 'Counterparty '"));
+			Substrings.Add(NStr("en='Counterparty ';ru='Контрагент '"));
 			Substrings.Add(Counterparty);
-			Substrings.Add(NStr("en = ' not in FTS base'"));
+			Substrings.Add(NStr("en=' not in FTS base';ru=' отсутствует в базе ФНС'"));
 		ElsIf FinalState = PredefinedValue("Enum.CounterpartyExistenceStates.ContainsErrorsInData") Then
-			Substrings.Add(NStr("en = 'Counterparty '"));
+			Substrings.Add(NStr("en='Counterparty ';ru='Контрагент '"));
 			Substrings.Add(Counterparty);
-			Substrings.Add(NStr("en = ' contains errors in TIN/KPP'"));
+			Substrings.Add(NStr("en=' contains errors in TIN/KPP';ru=' содержит ошибки в заполнении ИНН/КПП'"));
 		ElsIf FinalState = PredefinedValue("Enum.CounterpartyExistenceStates.ActivitiesDissolved") Then
-			Substrings.Add(NStr("en = 'According to FTS counterparty '"));
+			Substrings.Add(NStr("en='According to FTS counterparty ';ru='По данным ФНС контрагент '"));
 			Substrings.Add(Counterparty);
-			Substrings.Add(NStr("en = ' stopped activity or changed KPP'"));
+			Substrings.Add(NStr("en=' stopped activity or changed KPP';ru=' прекратил деятельность или изменил КПП'"));
 		Else
-			Substrings.Add(NStr("en = 'Counterparty '"));
+			Substrings.Add(NStr("en='Counterparty ';ru='Контрагент '"));
 			Substrings.Add(Counterparty);
-			Substrings.Add(NStr("en = ' not valid by the document date'"));
+			Substrings.Add(NStr("en=' not valid by the document date';ru='недействителен на дату документа'"));
 		EndIf;
 
 		Substrings.Add(Chars.LF);
@@ -134,7 +134,7 @@ Function WarningTextOnInactiveCounterparties(InactiveCounterparties, FinalState)
 		
 		// Text for several counterparties
 		
-		Substrings.Add(NStr("en = 'According to FTS, the following counterparties are not valid by the document date:'"));
+		Substrings.Add(NStr("en='According to FTS, the following counterparties are not valid by the document date:';ru='По данным ФНC следующие контрагенты недействительны на дату документа:'"));
 		For Each InvalidCounterparty IN InactiveCounterparties Do
 			Substrings.Add(Chars.LF);
 			Substrings.Add("- ");

@@ -92,7 +92,7 @@ EndProcedure // FillByAgentReport()
 Procedure FillBySalesInvoice(FillingData)
 	
 	If FillingData.OperationKind = Enums.OperationKindsCustomerInvoice.TransferToProcessing Then
-		ErrorMessage = NStr("en = 'Cannot enter a document based on the operation - ""%OperationKind""'");
+		ErrorMessage = NStr("en='Cannot enter a document based on the operation - ""%OperationKind""';ru='Невозможен ввод документа на основании операции - ""%ВидОперации""!'");
 		ErrorMessage = StrReplace(ErrorMessage, "%OperationKind", FillingData.OperationKind);
 		Raise ErrorMessage;
 	EndIf;

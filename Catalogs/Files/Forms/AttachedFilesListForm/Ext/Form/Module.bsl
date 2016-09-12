@@ -307,8 +307,9 @@ EndProcedure
 &AtClient
 Procedure FilesImport(Command)
 	#If WebClient Then
-		WarningText =  NStr("en = 'File import is not supported in the Web client.
-		                                  |Use the Create command in files list.'");
+		WarningText =  NStr("en='File import is not supported in the Web client."
+"Use the Create command in files list.';ru='В Веб-клиенте импорт файлов не поддерживается."
+"Используйте команду ""Создать"" в списке файлов.'");
 		ShowMessageBox(, WarningText);
 		Return;
 	#EndIf
@@ -691,7 +692,7 @@ Procedure DraganddropProcessingToLinearList(DragParameters, ListFileOwner)
 		
 	ElsIf TypeOf(DragParameters.Value) = Type("File") AND DragParameters.Value.IsFile() = False Then
 		
-		ShowMessageBox(, NStr("en = 'Select only the files without directories.'"));
+		ShowMessageBox(, NStr("en='Select only the files without directories.';ru='Выберите только файлы без каталогов.'"));
 		Return;
 		
 	ElsIf TypeOf(DragParameters.Value) = Type("CatalogRef.Files") Then
@@ -714,13 +715,13 @@ Procedure DraganddropProcessingToLinearList(DragParameters, ListFileOwner)
 		EndIf;
 		
 		If TypeDragged <> Type("File") Then
-			ShowMessageBox(, NStr("en = 'Select files.'"));
+			ShowMessageBox(, NStr("en='Select files.';ru='Выберите файлы.'"));
 			Return;
 		EndIf;
 		
 		For Each AcceptedFile IN DragParameters.Value Do
 			If Not AcceptedFile.IsFile() Then // Only files but not directories.
-				ShowMessageBox(, NStr("en = 'Select only the files without directories.'"));
+				ShowMessageBox(, NStr("en='Select only the files without directories.';ru='Выберите только файлы без каталогов.'"));
 				Return;
 			EndIf;
 		EndDo;
@@ -751,7 +752,7 @@ Procedure DraganddropProcessingToLinearList(DragParameters, ListFileOwner)
 			If ErrorsCount = 1 Then
 				Result.OutputWarning.Text = ErrorsTexts[0];
 			Else
-				ShortAllTextErrors = StrReplace(NStr("en = 'During execution, errors occurred (%1).'"), "%1", String(ErrorsCount));
+				ShortAllTextErrors = StrReplace(NStr("en='During execution, errors occurred (%1).';ru='При выполнении возникли ошибки (%1).'"), "%1", String(ErrorsCount));
 				FullAllTextErrors = "";
 				For Each ErrorText IN ErrorsTexts Do
 					If FullAllTextErrors <> "" Then

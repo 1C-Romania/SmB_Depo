@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Users.InfobaseUserWithFullAccess(, CommonUseReUse.ApplicationRunningMode().Local) Then
-		Raise NStr("en = 'The rights are not sufficient to open the infobase user list.'");
+		Raise NStr("en='The rights are not sufficient to open the infobase user list.';ru='Недостаточно прав для открытия списка пользователей информационной базы.'");
 	EndIf;
 	
 	Users.FindAmbiguousInfobaseUsers(,);
@@ -135,15 +135,18 @@ Procedure CancelMapping(Command)
 	EndIf;
 	
 	Buttons = New ValueList;
-	Buttons.Add("CancelMapping", NStr("en = 'Cancel mapping'"));
-	Buttons.Add("LeaveCompliance", NStr("en = 'Leave mapping'"));
+	Buttons.Add("CancelMapping", NStr("en='Cancel mapping';ru='Отменить сопоставление'"));
+	Buttons.Add("LeaveCompliance", NStr("en='Leave mapping';ru='Оставить сопоставление'"));
 	
 	ShowQueryBox(
 		New NotifyDescription("CancelComplianceContinuation", ThisObject),
-		NStr("en = 'Cancel mapping of infobase user with the user in catalog.
-		           |
-		           |Cancellation of mapping is required very rarely, only if the mapping
-		           |was completed incorrectly, for example, when updating an infobase, thus it is not recommended to cancel mapping for any other reason.'"),
+		NStr("en='Cancel mapping of infobase user with the user in catalog."
+""
+"Cancellation of mapping is required very rarely, only if the mapping"
+"was completed incorrectly, for example, when updating an infobase, thus it is not recommended to cancel mapping for any other reason.';ru='Отмена сопоставления пользователя информационной базы с пользователем в справочнике."
+""
+"Отмена сопоставления требуется крайне редко - только если сопоставление было выполнено некорректно, например,"
+"при обновлении информационной базы, поэтому не рекомендуется отменять сопоставление по любой другой причине.'"),
 		Buttons,
 		,
 		"LeaveCompliance");
@@ -246,7 +249,7 @@ Procedure SetConditionalAppearance()
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
 	FilterElement.RightValue = True;
 
-	Item.Appearance.SetParameterValue("Text", NStr("en = '<No data>'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='<No data>';ru='<Нет данных>'"));
 	Item.Appearance.SetParameterValue("Format", "L=En; BF=No; BT=Yes");
 
 	//
@@ -407,7 +410,7 @@ Procedure DeleteCurrentIBUser(DeleteLine = False)
 	
 	ShowQueryBox(
 		New NotifyDescription("DeleteCurrentIBUserEnd", ThisObject, DeleteLine),
-		NStr("en = 'Delete the infobase user?'"),
+		NStr("en='Delete the infobase user?';ru='Удалить пользователя информационной базы?'"),
 		QuestionDialogMode.YesNo);
 	
 EndProcedure
@@ -433,7 +436,7 @@ Procedure MapIBUser(WithNew = False)
 	If UserTypes.Count() > 1 Then
 		UserTypes.ShowChooseItem(
 			New NotifyDescription("MapIBUserForPointType", ThisObject, WithNew),
-			NStr("en = 'Data type choice'"),
+			NStr("en='Data type choice';ru='Выбор типа данных'"),
 			UserTypes[0]);
 	Else
 		MapIBUserForPointType(UserTypes[0], WithNew);

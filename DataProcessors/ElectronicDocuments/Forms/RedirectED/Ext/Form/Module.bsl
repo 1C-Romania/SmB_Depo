@@ -24,7 +24,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	StorageAddress = PutToTempStorage(ObjectsForProcessings, UUID);
 	
 	If ObjectsForProcessings.Count() > 1 Then
-		Items.ObjectsForProcessings.Title = NStr("en = 'List'");
+		Items.ObjectsForProcessings.Title = NStr("en='List';ru='Списком'");
 	EndIf;
 	
 	If Parameters.Property("Responsible") Then
@@ -34,7 +34,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		ElectronicDocument = ObjectsForProcessings[0];
 		HyperlinkText = ElectronicDocumentsService.GetEDPresentation(ElectronicDocument);
 	Else
-		HyperlinkText = NStr("en = 'Electronic documents (%1)'");
+		HyperlinkText = NStr("en='Electronic documents (%1)';ru='Электронные документы (%1)'");
 		HyperlinkText = StrReplace(HyperlinkText, "%1", ObjectsForProcessings.Count());
 	EndIf;
 	
@@ -95,7 +95,7 @@ Procedure OK(Command)
 	
 	If Not ValueIsFilled(User) Then
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en = 'Responsible person is not specified.'"),, "User");
+		CommonUseClientServer.MessageToUser(NStr("en='Responsible person is not specified.';ru='Не указан ответственный.'"),, "User");
 		Return;
 	EndIf;
 	TotallyED = 0;

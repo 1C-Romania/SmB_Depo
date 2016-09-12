@@ -127,7 +127,7 @@ Procedure SetFilterByResponsible()
 	
 	StringResponsible = ?(ValueIsFilled(Responsible), TrimAll(Responsible.Description), "");
 	
-	Items.ResponsiblePresentation.Title = NStr("en = 'Responsible person: '") + StringResponsible;
+	Items.ResponsiblePresentation.Title = NStr("en='Responsible person: ';ru='Ответственное лицо: '") + StringResponsible;
 	
 	UpdateOrderStages();
 	
@@ -138,7 +138,7 @@ EndProcedure // SetFilterByResponsible()
 &AtServer
 Procedure ClearFilterByResponsible()
 	
-	Items.ResponsiblePresentation.Title = NStr("en = 'Responsible person: <for all>'");
+	Items.ResponsiblePresentation.Title = NStr("en='Responsible person: <for all>';ru='Ответственный: <по всем>'");
 	Responsible = Undefined;
 	
 	UpdateOrderStages();

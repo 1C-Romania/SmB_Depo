@@ -229,7 +229,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		
 		If FillingData.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse Then
 			
-			Raise NStr("en = 'Job sheet can not be based on production order by warehouse!'");
+			Raise NStr("en='Job sheet can not be based on production order by warehouse!';ru='Сдельный наряд не может быть введен на основании заказа на производство по складу!'");
 			
 		ElsIf FillingData.OperationKind = Enums.OperationKindsProductionOrder.Assembly Then
 			

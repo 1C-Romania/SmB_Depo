@@ -18,9 +18,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Check of input parameters.
 	If Not ValueIsFilled(Parameters.DataSource) Then 
 		CommonUseClientServer.Validate(TypeOf(Parameters.CommandParameter) = Type("Array") Or CommonUse.ReferenceTypeValue(Parameters.CommandParameter),
-			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Invalid value of the CommandParameter parameter when calliing the PrintManagementClient.ExecutePrintCommand method.
-				|Expected: Array, AnyRef.
-				|Transferred: %1'"), TypeOf(Parameters.CommandParameter)));
+			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Invalid value of the CommandParameter parameter when calliing the PrintManagementClient.ExecutePrintCommand method."
+"Expected: Array, AnyRef."
+"Transferred: %1';ru='Недопустимое значение параметра ПараметрКоманды при вызове метода УправлениеПечатьюКлиент.ВыполнитьКомандуПечати."
+"Ожидалось: Массив, ЛюбаяСсылка."
+"Передано: %1'"), TypeOf(Parameters.CommandParameter)));
 	EndIf;
 
 	// Backward compatibility support with 2.1.3.
@@ -55,7 +57,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SetPrinterNameInPrintButtonToolTip();
 	SetFormTitle();
 	If IsSetPrint() Then
-		Items.copies.Title = NStr("en = 'Kit copies'");
+		Items.copies.Title = NStr("en='Kit copies';ru='Копий комплекта'");
 	EndIf;
 	
 EndProcedure
@@ -86,7 +88,7 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 				For Each WrittenObject IN WrittenObjects Do
 					Notify("Record_AttachedFile", New Structure, WrittenObject);
 				EndDo;
-				Status(NStr("en = 'Saving has been successfully completed.'"));
+				Status(NStr("en='Saving has been successfully completed.';ru='Сохранение успешно завершено.'"));
 			EndIf;
 		EndIf;
 		
@@ -262,7 +264,7 @@ Procedure GoToDocument(Command)
 	EndDo;
 	
 	NotifyDescription = New NotifyDescription("GoToDocumentEnd", ThisObject);
-	ChoiceList.ShowChooseItem(NOTifyDescription, NStr("en = 'Go to print form'"));
+	ChoiceList.ShowChooseItem(NOTifyDescription, NStr("en='Go to print form';ru='Перейти к печатной форме'"));
 	
 EndProcedure
 
@@ -560,7 +562,7 @@ Procedure AddNumberOfInstancesInPrintFormsPresentations()
 	For Each PrintFormSetting IN PrintFormsSettings Do
 		If PrintFormSetting.Quantity <> 1 Then
 			PrintFormSetting.Presentation = PrintFormSetting.Presentation 
-				+ " (" + PrintFormSetting.Quantity + " " + NStr("en = 'copy.'") + ")";
+				+ " (" + PrintFormSetting.Quantity + " " + NStr("en='copy.';ru='экз.'") + ")";
 		EndIf;
 	EndDo;
 EndProcedure
@@ -571,9 +573,9 @@ Procedure SetOutputEnabledFlagInPrintFormsPresentations(IsAllowedOutput)
 		For Each PrintFormSetting IN PrintFormsSettings Do
 			SpreadsheetDocumentField = Items[PrintFormSetting.AttributeName];
 			If SpreadsheetDocumentField.Output = UseOutput.Disable Then
-				PrintFormSetting.Presentation = PrintFormSetting.Presentation + " (" + NStr("en = 'output disabled'") + ")";
+				PrintFormSetting.Presentation = PrintFormSetting.Presentation + " (" + NStr("en='output disabled';ru='вывод не доступен'") + ")";
 			ElsIf SpreadsheetDocumentField.Protection Then
-				PrintFormSetting.Presentation = PrintFormSetting.Presentation + " (" + NStr("en = 'Only printing'") + ")";
+				PrintFormSetting.Presentation = PrintFormSetting.Presentation + " (" + NStr("en='Only printing';ru='только печать'") + ")";
 			EndIf;
 		EndDo;
 	EndIf;	
@@ -594,7 +596,7 @@ Procedure SetPrinterNameInPrintButtonToolTip()
 	If PrintFormsSettings.Count() > 0 Then
 		PrinterName = ThisObject[PrintFormsSettings[0].AttributeName].PrinterName;
 		If Not IsBlankString(PrinterName) Then
-			ThisObject.Commands["Print"].ToolTip = NStr("en = 'Print on printer'") + " (" + PrinterName + ")";
+			ThisObject.Commands["Print"].ToolTip = NStr("en='Print on printer';ru='Напечатать на принтере'") + " (" + PrinterName + ")";
 		EndIf;
 	EndIf;
 EndProcedure
@@ -611,11 +613,11 @@ Procedure SetFormTitle()
 		Title = FormTitle;
 	Else
 		If IsSetPrint() Then
-			Title = NStr("en = 'Set print'");
+			Title = NStr("en='Set print';ru='Печать комплекта'");
 		ElsIf TypeOf(Parameters.CommandParameter) <> Type("Array") Or Parameters.CommandParameter.Count() > 1 Then
-			Title = NStr("en = 'Printing Documents'");
+			Title = NStr("en='Printing Documents';ru='Печать документов'");
 		Else
-			Title = NStr("en = 'Document print'");
+			Title = NStr("en='Document print';ru='Печать документа'");
 		EndIf;
 	EndIf;
 EndProcedure
@@ -861,13 +863,13 @@ Function DefaultPrintedFormFileName(PrintObject, PrintedFormName)
 		EndIf;
 		ParametersForInsert.Date = Format(ParametersForInsert.Date, "DLF=D");
 		ParametersForInsert.Insert("PrintedFormName", PrintedFormName);
-		Pattern = NStr("en = '[PrintingFormName] # [Number] dated [Date]'");
+		Pattern = NStr("en='[PrintingFormName] # [Number] dated [Date]';ru='[НазваниеПечатнойФормы] № [Номер] от [Дата]'");
 	Else
 		ParametersForInsert = New Structure;
 		ParametersForInsert.Insert("PrintedFormName",PrintedFormName);
 		ParametersForInsert.Insert("ObjectPresentation", CommonUse.SubjectString(PrintObject));
 		ParametersForInsert.Insert("CurrentDate",Format(CurrentSessionDate(), "DLF=D"));
-		Pattern = NStr("en = '[PrintedFormName] - [ObjectPresentation] - [CurrentDate]'");
+		Pattern = NStr("en='[PrintedFormName] - [ObjectPresentation] - [CurrentDate]';ru='[НазваниеПечатнойФормы] - [ПредставлениеОбъекта] - [ТекущаяДата]'");
 	EndIf;
 	
 	Return StringFunctionsClientServer.SubstituteParametersInStringByName(Pattern, ParametersForInsert);
@@ -894,7 +896,7 @@ Function GetFileNameForArchive()
 		If IsBlankString(Result) Then
 			Result = PrintFormSetting.Description;
 		Else
-			Result = NStr("en = 'Documents'");
+			Result = NStr("en='Documents';ru='Документы'");
 			Break;
 		EndIf;
 	EndDo;
@@ -940,7 +942,7 @@ Procedure SavePrintFormsToFolder(FilesListInTempStorage, Val Folder = "")
 		BinaryData.Write(UniqueFileName(Folder + FileToSave.Presentation));
 	EndDo;
 	
-	Status(NStr("en = 'Saving has been successfully completed.'"), , NStr("en = 'to folder:'") + " " + Folder);
+	Status(NStr("en='Saving has been successfully completed.';ru='Сохранение успешно завершено.'"), , NStr("en='to folder:';ru='в папку:'") + " " + Folder);
 	
 EndProcedure
 
@@ -969,7 +971,7 @@ Function AttachPrintFormsToObject(FilesInTemporaryStorage, ObjectForAttaching)
 		ModuleAttachedFiles = CommonUse.CommonModule("AttachedFiles");
 		For Each File IN FilesInTemporaryStorage Do
 			Result.Add(ModuleAttachedFiles.AddFile(ObjectForAttaching, 
-				File.Presentation, , , , File.AddressInTemporaryStorage, , NStr("en = 'Print form'")));
+				File.Presentation, , , , File.AddressInTemporaryStorage, , NStr("en='Print form';ru='Печатная форма'")));
 		EndDo;
 	EndIf;
 	Return Result;
@@ -1038,7 +1040,7 @@ Procedure OpenTemplateForEdit()
 	
 	PrintFormSetting = CurrentPrintFormSetting();
 	
-	DisplayCurrentPrintFormState(NStr("en = 'Template is edited'"));
+	DisplayCurrentPrintFormState(NStr("en='Template is edited';ru='Макет редактируется'"));
 	
 	MetadataObjectTemplateName = PrintFormSetting.PathToTemplate;
 	
@@ -1131,7 +1133,7 @@ Procedure RegeneratePrintForm(TemplateName, AttributeName)
 	Cancel = False;
 	PrintFormsCollection = GeneratePrintForms(TemplateName, Cancel);
 	If Cancel Then
-		Raise NStr("en = 'Print form has not been regenerated.'");
+		Raise NStr("en='Print form has not been regenerated.';ru='Печатная форма не была переформирована.'");
 	EndIf;
 	
 	For Each PrintForm IN PrintFormsCollection Do

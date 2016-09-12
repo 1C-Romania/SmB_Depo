@@ -26,7 +26,7 @@ Function LegalEntityDetailsByTIN(Val TIN) Export
 		Except
 			ErrorInfo = ErrorInfo();
 			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='TIN %1:'"), TIN)
+				NStr("en='TIN %1:';ru='ИНН %1:'"), TIN)
 				+ Chars.LF + DetailErrorDescription(ErrorInfo);
 		EndTry;
 	EndIf;
@@ -87,7 +87,7 @@ Function EntrepreneurDetailsByTIN(Val TIN) Export
 		Except
 			ErrorInfo = ErrorInfo();
 			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='TIN %1:'"), TIN)
+				NStr("en='TIN %1:';ru='ИНН %1:'"), TIN)
 				+ Chars.LF + DetailErrorDescription(ErrorInfo);
 		EndTry;
 	EndIf;
@@ -171,7 +171,7 @@ Function LegalEntitiesDetailsByName(Val Description, Val StateCode = "", Val Add
 		Except
 			ErrorInfo = ErrorInfo();
 			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Name - %1:'"), Description)
+				NStr("en='Name - %1:';ru='Наименование - %1:'"), Description)
 				+ Chars.LF + DetailErrorDescription(ErrorInfo);
 		EndTry;
 	EndIf;
@@ -477,12 +477,12 @@ Procedure FillInPensionFundDetails(XDTODataObject, Attributes)
 		RegistrationInPFR = NewRegistrationInPensionFund();
 		
 		PFRRegistrationNumber = XDTODataObject.PensionFundRegistrationInfo.PensionFundRegistrationNumber;
-		PFRRegistrationNumber = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1-%2-%3'"), 
+		PFRRegistrationNumber = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1-%2-%3';ru='%1-%2-%3'"), 
 					Left(PFRRegistrationNumber, 3), Mid(PFRRegistrationNumber,4, 3), Right(PFRRegistrationNumber, 6));
 		RegistrationInPFR.PFRRegistrationNumber = PFRRegistrationNumber;
 		If XDTODataObject.PensionFundRegistrationInfo.PensionFundAgencyInfo <> Undefined Then
 			PFRBodyCode = XDTODataObject.PensionFundRegistrationInfo.PensionFundAgencyInfo.CodePF;
-			PFRBodyCode = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1-%2'"), 
+			PFRBodyCode = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1-%2';ru='%1-%2'"), 
 				Left(PFRBodyCode, 3), Right(PFRBodyCode, 3));
 			RegistrationInPFR.PFRBodyCode          = PFRBodyCode;
 			RegistrationInPFR.PFRBodyName = XDTODataObject.PensionFundRegistrationInfo.PensionFundAgencyInfo.PensionFundName;
@@ -710,57 +710,57 @@ Procedure HandleServiceError(ErrorDescription, AttributesStructure)
 	
 	If ErrorDescription = "AuthenticationParametersAreNotSpecified" Then
 		ErrorText    = "AuthenticationParametersAreNotSpecified"; // Service text. Must be processed on client.
-		ErrorDescription = NStr("en='Login and password for access to online support are not specified'");
-		EventText   = NStr("en='Access error'", MainLanguageCode);
+		ErrorDescription = NStr("en='Login and password for access to online support are not specified';ru='Не указаны логин и пароль для доступа к интернет-поддержке'");
+		EventText   = NStr("en='Access error';ru='Ошибка доступа'", MainLanguageCode);
 		
 	ElsIf Find(ErrorDescription, """status"":401") > 0 Then
-		ErrorText  = NStr("en='Incorrect login and password to access online support'");
-		EventText = NStr("en='Access error'", MainLanguageCode);
+		ErrorText  = NStr("en='Incorrect login and password to access online support';ru='Неверно указаны логин и пароль для доступа к интернет-поддержке'");
+		EventText = NStr("en='Access error';ru='Ошибка доступа'", MainLanguageCode);
 		
 	ElsIf Find(ErrorDescription, "SERVER-1:") > 0 Then
-		ErrorText  = NStr("en='TIN of the legal entity is not specified'");
-		EventText = NStr("en='Data receiving error'", MainLanguageCode);
+		ErrorText  = NStr("en='TIN of the legal entity is not specified';ru='Не указан ИНН юридического лица'");
+		EventText = NStr("en='Data receiving error';ru='Ошибка получения данных'", MainLanguageCode);
 		
 	ElsIf Find(ErrorDescription, "SERVER-2:") > 0 Then
-		ErrorText  = NStr("en='TIN of legal entity should consist of 10 digits'");
-		EventText = NStr("en='Data receiving error'", MainLanguageCode);
+		ErrorText  = NStr("en='TIN of legal entity should consist of 10 digits';ru='ИНН юридического лица должен состоять из 10 цифр'");
+		EventText = NStr("en='Data receiving error';ru='Ошибка получения данных'", MainLanguageCode);
 		
 	ElsIf Find(ErrorDescription, "SERVER-3:") > 0 Then
 		ErrorText  = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to find data to fill out details by TIN %1'"),
+			NStr("en='Failed to find data to fill out details by TIN %1';ru='Не удалось найти данные для заполнения реквизитов по ИНН %1'"),
 			AttributesStructure.TIN);
-		EventText = NStr("en='Data receiving error'", MainLanguageCode);
+		EventText = NStr("en='Data receiving error';ru='Ошибка получения данных'", MainLanguageCode);
 		
 	ElsIf Find(ErrorDescription, "SERVER-4:") > 0 Then
-		ErrorText  = NStr("en='TIN of the entrepreneur is not specified'");
-		EventText = NStr("en='Data receiving error'", MainLanguageCode);
+		ErrorText  = NStr("en='TIN of the entrepreneur is not specified';ru='Не указан ИНН предпринимателя'");
+		EventText = NStr("en='Data receiving error';ru='Ошибка получения данных'", MainLanguageCode);
 		
 	ElsIf Find(ErrorDescription, "SERVER-5:") > 0 Then
-		ErrorText  = NStr("en='TIN of entrepreneur should consist of 12 digits'");
-		EventText = NStr("en='Data receiving error'", MainLanguageCode);
+		ErrorText  = NStr("en='TIN of entrepreneur should consist of 12 digits';ru='ИНН предпринимателя должен состоять из 12 цифр'");
+		EventText = NStr("en='Data receiving error';ru='Ошибка получения данных'", MainLanguageCode);
 		
 	ElsIf Find(ErrorDescription, "SERVER-6:") > 0 Then
 		ErrorText  = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to find data to fill out details by TIN %1'"),
+			NStr("en='Failed to find data to fill out details by TIN %1';ru='Не удалось найти данные для заполнения реквизитов по ИНН %1'"),
 			AttributesStructure.TIN);
-		EventText = NStr("en='Data receiving error'", MainLanguageCode);
+		EventText = NStr("en='Data receiving error';ru='Ошибка получения данных'", MainLanguageCode);
 		
 	ElsIf Find(ErrorDescription, "SERVER-7:") > 0 Then
-		ErrorText  = NStr("en='Limit of service calls is exceeded for one day'");
-		EventText = NStr("en='Access error'", MainLanguageCode);
+		ErrorText  = NStr("en='Limit of service calls is exceeded for one day';ru='Превышен лимит количества вызовов сервиса за один день'");
+		EventText = NStr("en='Access error';ru='Ошибка доступа'", MainLanguageCode);
 		
 	ElsIf Find(ErrorDescription, "SERVER-8:") > 0 Then
-		ErrorText  = NStr("en='Valid ITS contract is not available'");
-		EventText = NStr("en='Access error'", MainLanguageCode);
+		ErrorText  = NStr("en='Valid ITS contract is not available';ru='Отсутствует действующий договор ИТС'");
+		EventText = NStr("en='Access error';ru='Ошибка доступа'", MainLanguageCode);
 		
 	Else
-		ErrorText  = NStr("en='Service error (for more information see events log monitor)'");
-		EventText = NStr("en='Service error'", MainLanguageCode);
+		ErrorText  = NStr("en='Service error (for more information see events log monitor)';ru='Ошибка при работе с сервисом (подробнее см. Журнал регистрации)'");
+		EventText = NStr("en='Service error';ru='Ошибка при работе с сервисом'", MainLanguageCode);
 	EndIf;
 	
 	AttributesStructure.ErrorDescription = ErrorText;
 	
-	EventName = NStr("en = 'Unified state register data service.'", MainLanguageCode) + " " + EventText;
+	EventName = NStr("en='Unified state register data service.';ru='Сервис данных единых гос_реестров.'", MainLanguageCode) + " " + EventText;
 	WriteLogEvent(EventName, EventLogLevel.Error, , , ErrorDescription);
 	
 EndProcedure

@@ -12,13 +12,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("ID", ID);
 	Parameters.Property("HardwareDriver", HardwareDriver);
 	
-	Title = NStr("en='Equipment:'") + Chars.NBSp  + String(ID);
+	Title = NStr("en='Equipment:';ru='Оборудование:'") + Chars.NBSp  + String(ID);
 	
 	TextColor = StyleColors.FormTextColor;
 	ErrorColor = StyleColors.NegativeTextColor;
 	
 	ListPort = Items.Port.ChoiceList;
-	ListPort.Add(100, NStr("en='<Keyboard>'"));
+	ListPort.Add(100, NStr("en='<Keyboard>';ru='<Keyboard>'"));
 	For IndexOf = 1 To 64 Do
 		ListPort.Add(IndexOf, "COM" + TrimAll(IndexOf));
 	EndDo;
@@ -35,19 +35,19 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SpeedList.Add(12, "38400");
 	
 	DataBitList = Items.DataBit.ChoiceList;
-	DataBitList.Add(3, NStr("en='7 bits'"));
-	DataBitList.Add(4, NStr("en='8 bits'"));
+	DataBitList.Add(3, NStr("en='7 bits';ru='7 бит'"));
+	DataBitList.Add(4, NStr("en='8 bits';ru='8 бит'"));
 	
 	StopBitList = Items.StopBit.ChoiceList;
-	StopBitList.Add(0, NStr("en='1 stop-bit'"));
-	StopBitList.Add(2, NStr("en='2 stop-bits'"));
+	StopBitList.Add(0, NStr("en='1 stop-bit';ru='1 стоп-бит'"));
+	StopBitList.Add(2, NStr("en='2 stop-bits';ru='2 стоп-бита'"));
 	
 	ParityList = Items.Parity.ChoiceList;
-	ParityList.Add(0, NStr("en='No'"));
-	ParityList.Add(1, NStr("en='Oddness'"));
-	ParityList.Add(2, NStr("en='Parity'"));
-	ParityList.Add(3, NStr("en='Installed'"));
-	ParityList.Add(4, NStr("en='Reset'"));
+	ParityList.Add(0, NStr("en='No';ru='Нет'"));
+	ParityList.Add(1, NStr("en='Oddness';ru='Нечетность'"));
+	ParityList.Add(2, NStr("en='Parity';ru='Четность'"));
+	ParityList.Add(3, NStr("en='Installed';ru='Установлен'"));
+	ParityList.Add(4, NStr("en='Reset';ru='Сброшен'"));
 	
 	SetBarcodeParameters(Items.Prefix);
 	SetBarcodeParameters(Items.Suffix);
@@ -168,7 +168,7 @@ Procedure WriteAndCloseExecute()
 		Close(Result);
 		
 	Else
-		MessageText = NStr("en = 'Barcode scanner suffix is not specified. Suffix must be specified to identify the barcode.'");
+		MessageText = NStr("en='Barcode scanner suffix is not specified. Suffix must be specified to identify the barcode.';ru='Не указан суффикс сканера штрихкода. Для идентификации штрихкода суффикс должен быть указан.'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Suffix");
 	EndIf;
 
@@ -262,13 +262,13 @@ Procedure UpdateInformationAboutDriver()
 		Version  = Output_Parameters[1];
 	Else
 		Driver = Output_Parameters[2];
-		Version  = NStr("en='Not defined'");
+		Version  = NStr("en='Not defined';ru='Не определена'");
 	EndIf;
 
-	Items.Driver.TextColor = ?(Driver = NStr("en='Not set'"), ErrorColor, TextColor);
-	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined'"), ErrorColor, TextColor);
+	Items.Driver.TextColor = ?(Driver = NStr("en='Not set';ru='Не установлен'"), ErrorColor, TextColor);
+	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined';ru='Не определена'"), ErrorColor, TextColor);
 
-	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed'"));
+	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed';ru='Установлен'"));
 	
 EndProcedure
 

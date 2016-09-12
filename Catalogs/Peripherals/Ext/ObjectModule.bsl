@@ -37,7 +37,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		Query.SetParameter("Ref"      , Ref);
 
 		If Not Query.Execute().IsEmpty() Then
-			CommonUseClientServer.MessageToUser(NStr("en='Nonunique item description is specified. Specify unique name.'"), ThisObject, , , Cancel);
+			CommonUseClientServer.MessageToUser(NStr("en='Nonunique item description is specified. Specify unique name.';ru='Указано неуникальное наименование элемента. Укажите уникальное наименование.'"), ThisObject, , , Cancel);
 		EndIf;
 	EndIf;
 
@@ -52,7 +52,7 @@ Procedure OnCopy(CopiedObject)
 	DeviceIsInUse = True;
 	Parameters = Undefined;
 
-	Description = NStr("en='%Description% (copy)'");
+	Description = NStr("en='%Description% (copy)';ru='%Наименование% (копия)'");
 	Description = StrReplace(Description, "%Description%", CopiedObject.Description);
 	
 EndProcedure

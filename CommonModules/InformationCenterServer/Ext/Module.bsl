@@ -127,7 +127,7 @@ EndFunction
 //
 Function GetEventNameForEventLogMonitor() Export
 	
-	Return NStr("en = 'Information center'", ServiceTechnologyIntegrationWithSSL.MainLanguageCode());
+	Return NStr("en='Information center';ru='Информационный центр'", ServiceTechnologyIntegrationWithSSL.MainLanguageCode());
 	
 EndFunction
 
@@ -163,7 +163,7 @@ EndFunction
 Function GetInformationCenterProxy() Export
 	
 	If Not ServiceTechnologyIntegrationWithSSL.SubsystemExists("StandardSubsystems.SaaS") Then
-		Raise(NStr("en = 'Impossible to connect to the service Manager.'"));
+		Raise(NStr("en='Impossible to connect to the service Manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
 	EndIf;
 	
 	ModuleSaaSOperations = ServiceTechnologyIntegrationWithSSL.CommonModule("SaaSOperations");
@@ -172,7 +172,7 @@ Function GetInformationCenterProxy() Export
 	ServiceManagerAddress = ModuleSaaSOperations.InternalServiceManagerURL();
 	
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en = 'Parameters of connection with the service manager have not been set.'"));
+		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress       = ServiceManagerAddress + "/ws/ManageInfoCenter?wsdl";
@@ -200,7 +200,7 @@ EndFunction
 Function GetInformationCenterProxy_1_0_1_1() Export
 	
 	If Not ServiceTechnologyIntegrationWithSSL.SubsystemExists("StandardSubsystems.SaaS") Then
-		Raise(NStr("en = 'Impossible to connect to the service Manager.'"));
+		Raise(NStr("en='Impossible to connect to the service Manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
 	EndIf;
 	
 	ModuleSaaSOperations = ServiceTechnologyIntegrationWithSSL.CommonModule("SaaSOperations");
@@ -209,7 +209,7 @@ Function GetInformationCenterProxy_1_0_1_1() Export
 	ServiceManagerAddress = ModuleSaaSOperations.InternalServiceManagerURL();
 	
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en = 'Parameters of connection with the service manager have not been set.'"));
+		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress       = ServiceManagerAddress + "/ws/ManageInfoCenter_1_0_1_1?wsdl";
@@ -237,7 +237,7 @@ EndFunction
 Function GetInformationCenterProxy_1_0_1_2() Export
 	
 	If Not ServiceTechnologyIntegrationWithSSL.SubsystemExists("StandardSubsystems.SaaS") Then
-		Raise(NStr("en = 'Impossible to connect to the service Manager.'"));
+		Raise(NStr("en='Impossible to connect to the service Manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
 	EndIf;
 	
 	ModuleSaaSOperations = ServiceTechnologyIntegrationWithSSL.CommonModule("SaaSOperations");
@@ -246,7 +246,7 @@ Function GetInformationCenterProxy_1_0_1_2() Export
 	ServiceManagerAddress = ModuleSaaSOperations.InternalServiceManagerURL();
 	
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en = 'Parameters of connection with the service manager have not been set.'"));
+		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress       = ServiceManagerAddress + "/ws/ManageInfoCenter_1_0_1_2?wsdl";
@@ -277,7 +277,7 @@ EndFunction
 Function GetIdeasCenterProxy() Export
 	
 	If Not ServiceTechnologyIntegrationWithSSL.SubsystemExists("StandardSubsystems.SaaS") Then
-		Raise(NStr("en = 'Impossible to connect to the service Manager.'"));
+		Raise(NStr("en='Impossible to connect to the service Manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
 	EndIf;
 	
 	ModuleSaaSOperations = ServiceTechnologyIntegrationWithSSL.CommonModule("SaaSOperations");
@@ -286,7 +286,7 @@ Function GetIdeasCenterProxy() Export
 	ServiceManagerAddress = ModuleSaaSOperations.InternalServiceManagerURL();
 	
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en = 'Parameters of connection with the service manager have not been set.'"));
+		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress       = ServiceManagerAddress + "/ws/UsersIdeas_1_0_0_1?wsdl";
@@ -336,8 +336,9 @@ EndFunction
 //
 Function ErrorInformationOutputTextInIdeasCenter() Export 
 	
-	Return NStr("en = 'Ideas center is temporarily unavailable.
-                       |Please try again later.'")
+	Return NStr("en='Ideas center is temporarily unavailable."
+"Please try again later.';ru='Центр идей временно не доступен."
+"Пожалуйста, повторите попытку позже.'")
 	
 EndFunction
 
@@ -414,7 +415,7 @@ EndFunction
 //
 Function GenerateCommentsTitle(Val IdeaPresentation) Export 
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Comments: %1'"), IdeaPresentation.CommentsCount);
+	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Comments: %1';ru='Комментарии: %1'"), IdeaPresentation.CommentsCount);
 	
 EndFunction
 
@@ -428,7 +429,7 @@ EndFunction
 //
 Function GenerateImplementationDateTitle(Val IdeaPresentation) Export 
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Planned date of implementation:% 1'"), IdeaPresentation.PlanMadeDatePresentation);
+	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Planned date of implementation:% 1';ru='Плановая дата реализации: %1'"), IdeaPresentation.PlanMadeDatePresentation);
 	
 EndFunction
 
@@ -442,7 +443,7 @@ EndFunction
 //
 Function GenerateRejectionDate(Val IdeaPresentation) Export 
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Rejected: %1'"), Format(IdeaPresentation.ClosingDate, "DLF=DD"));
+	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Rejected: %1';ru='Отклонено: %1'"), Format(IdeaPresentation.ClosingDate, "DLF=DD"));
 	
 EndFunction
 
@@ -456,7 +457,7 @@ EndFunction
 //
 Function GenerateImplementationDate(Val IdeaPresentation) Export 
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Implemented: %1'"), Format(IdeaPresentation.ClosingDate, "DLF=DD"));
+	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Implemented: %1';ru='Реализовано: %1'"), Format(IdeaPresentation.ClosingDate, "DLF=DD"));
 	
 EndFunction
 
@@ -525,8 +526,9 @@ EndFunction
 //
 Function ErrorInformationTextOutputInSupport() Export 
 	
-	Return NStr("en = 'Support is temporarily unavailable.
-                       |Please try again later.'")
+	Return NStr("en='Support is temporarily unavailable."
+"Please try again later.';ru='Служба поддержки временно не доступна."
+"Пожалуйста, повторите попытку позже.'")
 	
 EndFunction
 
@@ -615,11 +617,15 @@ EndFunction
 //
 Function GenerateTextTemplateToTechnicalSupport() Export
 	
-	Pattern = NStr("en = 'Hello!
-		|<p/>
-		|<p/>CursorPosition
-		|<p/>
-		|From respect, %1.'");
+	Pattern = NStr("en='Hello!"
+"<p/>"
+"<p/>CursorPosition"
+"<p/>"
+"From respect, %1.';ru='Hello!"
+"<p/>"
+"<p/>CursorPosition"
+"<p/>"
+"From respect, %1.'");
 	Pattern = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
 			Users.CurrentUser().FullDescr());
 	
@@ -663,7 +669,7 @@ Function GenerateXMLWithTechnicalParameters(AdditionalParameters = Undefined) Ex
 	Try
 		DeleteFiles(XMLFile);
 	Except
-		WriteLogEvent(NStr("en = 'Information center. Sending a message to support. Failed to delete the technical parameters temporary file.'"), 
+		WriteLogEvent(NStr("en='Information center. Sending a message to support. Failed to delete the technical parameters temporary file.';ru='Информационный центр. Отправка сообщения в техподдержку. Не удалось удалить временный файл технических параметров.'"), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -864,11 +870,15 @@ EndFunction
 //
 Function TexttemplateToSupport() Export
 	
-	Pattern = NStr("en = 'Hello!
-		|<p/>
-		|<p/>CursorPosition
-		|<p/>
-		|From respect, %1.'");
+	Pattern = NStr("en='Hello!"
+"<p/>"
+"<p/>CursorPosition"
+"<p/>"
+"From respect, %1.';ru='Hello!"
+"<p/>"
+"<p/>CursorPosition"
+"<p/>"
+"From respect, %1.'");
 	Pattern = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
 			Users.CurrentUser().FullDescr());
 	
@@ -1055,7 +1065,7 @@ Procedure GenerateOutputGroups(Form, RefsTable, FormGroup, GroupCount, RefsCount
 	If OutputReferenceAll Then 
 		Item                         = Form.Items.Add("RefsAllInformationReferences", Type("FormDecoration"), FormGroup);
 		Item.Type                     = FormDecorationType.Label;
-		Item.Title               = NStr("en = 'All'");
+		Item.Title               = NStr("en='All';ru='Все'");
 		Item.Hyperlink             = True;
 		Item.TextColor              = WebColors.Black;
 		Item.HorizontalAlign = ItemHorizontalLocation.Right;

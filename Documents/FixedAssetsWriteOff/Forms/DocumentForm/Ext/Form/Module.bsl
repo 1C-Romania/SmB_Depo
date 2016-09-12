@@ -362,11 +362,11 @@ EndProcedure // AfterWrite()
 Procedure Calculate(Command)
 	
 	If Object.Posted Then
-		ShowMessageBox(Undefined,NStr("en='Depreciation calculation is possible only in non-posted document'"));
+		ShowMessageBox(Undefined,NStr("en='Depreciation calculation is possible only in non-posted document';ru='Рассчет амортизации возможен только в непроведенном документе.'"));
 		Return;
 	EndIf;
 	
-	ShowQueryBox(New NotifyDescription("CalculateEnd", ThisObject), NStr("en='Entered data will be recalculated. Continue?'"),QuestionDialogMode.YesNo);
+	ShowQueryBox(New NotifyDescription("CalculateEnd", ThisObject), NStr("en='Entered data will be recalculated. Continue?';ru='Введенные данные будут пересчитаны! Продолжить?'"),QuestionDialogMode.YesNo);
 	
 EndProcedure
 

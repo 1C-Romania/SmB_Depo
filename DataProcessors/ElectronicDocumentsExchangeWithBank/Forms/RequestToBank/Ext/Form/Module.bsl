@@ -34,7 +34,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 		
 	If ValueIsFilled(Parameters.ElectronicDocument) Then
-		Title = NStr("en = 'ED query status'");
+		Title = NStr("en='ED query status';ru='Запрос состояния ЭД'");
 	EndIf;
 		
 	PerformCryptoOperationsAtServer = ElectronicDocumentsServiceCallServer.PerformCryptoOperationsAtServer();
@@ -145,7 +145,7 @@ Function SendStatementQueryOnServer(Val QueryParameters, StorageAddress, UUID, J
 	
 	JobCompleted = False;
 		
-	JobDescription = NStr("en = 'Sending statement query to the bank'");
+	JobDescription = NStr("en='Sending statement query to the bank';ru='Отправка запроса выписки в банк'");
 	ExecuteParameters = New Array;
 	ExecuteParameters.Add(QueryParameters);
 	ExecuteParameters.Add(StorageAddress);
@@ -180,7 +180,7 @@ Function SendEDStateQueryOnServer(Val QueryParameters, StorageAddress, UUID, Job
 	
 	JobCompleted = False;
 		
-	JobDescription = NStr("en = 'Sending ED state query to the bank'");
+	JobDescription = NStr("en='Sending ED state query to the bank';ru='Отправка запроса состояния ЭД в банк'");
 	ExecuteParameters = New Array;
 	ExecuteParameters.Add(QueryParameters);
 	ExecuteParameters.Add(StorageAddress);
@@ -290,17 +290,17 @@ Procedure ProcessStatementQueryResult()
 		
 	EndIf;
 	
-	NotificationTitle = NStr("en = 'Electronic document exchange'");
-	NotificationText = NStr("en = 'The sent packages are not present'");
+	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
+	NotificationText = NStr("en='The sent packages are not present';ru='Отправленных пакетов нет'");
 	
 	If SentCnt > 0 Then
-		NotificationText = NStr("en = 'Documents sent: (%1)'");
+		NotificationText = NStr("en='Documents sent: (%1)';ru='Отправлено документов: (%1)'");
 		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText, SentCnt);
 	EndIf;
 	
 	If ReceivedNumber > 0 Then
 		NotificationText = NotificationText
-		+ StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = ', received documents: (%1)'"), ReceivedNumber);
+		+ StringFunctionsClientServer.PlaceParametersIntoString(NStr("en=', received documents: (%1)';ru=', получено документов: (%1)'"), ReceivedNumber);
 	EndIf;
 	
 	Notify("RefreshStateED");
@@ -345,11 +345,11 @@ Procedure ProcessEDStateQueryResult()
 		SentCnt = 1;
 	EndIf;
 	
-	NotificationTitle = NStr("en = 'Electronic document exchange'");
-	NotificationText = NStr("en = 'The sent packages are not present'");
+	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
+	NotificationText = NStr("en='The sent packages are not present';ru='Отправленных пакетов нет'");
 	
 	If SentCnt > 0 Then
-		NotificationText = NStr("en = 'Documents sent: (%1)'");
+		NotificationText = NStr("en='Documents sent: (%1)';ru='Отправлено документов: (%1)'");
 		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText, SentCnt);
 	EndIf;
 	
@@ -378,7 +378,7 @@ Function GetStatementAsynchronouslyOnServer(Val QueryParameters, StorageAddress,
 	
 	JobCompleted = False;
 		
-	JobDescription = NStr("en = 'Getting statement from the bank'");
+	JobDescription = NStr("en='Getting statement from the bank';ru='Получение выписки из банка'");
 	ExecuteParameters = New Array;
 	ExecuteParameters.Add(QueryParameters);
 	ExecuteParameters.Add(StorageAddress);
@@ -413,7 +413,7 @@ Function GetNotificationOnEDStateAsynchronouslyOnServer(Val QueryParameters, Sto
 	
 	JobCompleted = False;
 		
-	JobDescription = NStr("en = 'Getting notifications about ED state'");
+	JobDescription = NStr("en='Getting notifications about ED state';ru='Получение извещения о состоянии ЭД'");
 	ExecuteParameters = New Array;
 	ExecuteParameters.Add(QueryParameters);
 	ExecuteParameters.Add(StorageAddress);
@@ -526,12 +526,12 @@ Procedure HandleStatementReceiptResult()
 		
 	EndIf;
 	
-	NotificationTitle = NStr("en = 'Electronic document exchange'");
+	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 	
 	
 	If ReceivedNumber > 0 Then
 		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Received documents: (%1)'"), ReceivedNumber);
+			NStr("en='Received documents: (%1)';ru='Получено документов: (%1)'"), ReceivedNumber);
 	EndIf;
 	
 	Notify("RefreshStateED");
@@ -584,11 +584,11 @@ Procedure HandleNotificationsOnEDStateReceiptResult()
 		
 	EndIf;
 	
-	NotificationTitle = NStr("en = 'Electronic document exchange'");
+	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 	
 	If ReceivedNumber > 0 Then
 		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Received documents: (%1)'"), ReceivedNumber);
+			NStr("en='Received documents: (%1)';ru='Получено документов: (%1)'"), ReceivedNumber);
 	EndIf;
 	
 	Notify("RefreshStateED");
@@ -632,7 +632,7 @@ Procedure GetStatementThroughAdditionalDataProcessor()
 	BankStatementParameters = New Structure;
 	StartDateString    = Format(Parameters.StartDate,    "DLF=D");
 	EndDateString = Format(Parameters.EndDate, "DLF=D");
-	EDName = NStr("en = 'Bank statement for period from 1% to %2'");
+	EDName = NStr("en='Bank statement for period from 1% to %2';ru='Выписка банка за период с %1 по %2'");
 	EDName = StringFunctionsClientServer.PlaceParametersIntoString(
 						EDName, StartDateString, EndDateString);
 	ReceivedNumber = 0;
@@ -677,12 +677,12 @@ Procedure GetStatementThroughAdditionalDataProcessor()
 	ElectronicDocumentsServiceClient.StartCheckingSignaturesStatusesThroughAdditionalDataProcessor(
 		ExternalAttachableModule, CheckParameters);
 	
-	NotificationTitle = NStr("en = 'Electronic document exchange'");
+	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 			
 	If ReceivedNumber = 0 Then
-		NotificationText = NStr("en = 'No received documents'");
+		NotificationText = NStr("en='No received documents';ru='Полученных документов нет'");
 	Else
-		NotificationText = NStr("en = 'Received documents: (%1)'");
+		NotificationText = NStr("en='Received documents: (%1)';ru='Получено документов: (%1)'");
 		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText, ReceivedNumber);
 	EndIf;
 		
@@ -752,7 +752,7 @@ Procedure GetBankStatementiBank2() Export
 	BankStatementParameters = New Structure;
 	StartDateString = Format(Parameters.StartDate, "DLF=D");
 	EndDateString = Format(Parameters.EndDate, "DLF=D");
-	EDName = NStr("en = 'Bank statement for period from 1% to %2'");
+	EDName = NStr("en='Bank statement for period from 1% to %2';ru='Выписка банка за период с %1 по %2'");
 	EDName = StringFunctionsClientServer.PlaceParametersIntoString(
 						EDName, StartDateString, EndDateString);
 	ReceivedNumber = 0;
@@ -792,12 +792,12 @@ Procedure GetBankStatementiBank2() Export
 	CheckParameters.Insert("CurrentSignaturesCheckIndexiBank2", 0);
 	ElectronicDocumentsServiceClient.StartCheckingSignartureStatusesiBank2(CheckParameters);
 	
-	NotificationTitle = NStr("en = 'Electronic document exchange'");
+	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 			
 	If ReceivedNumber = 0 Then
-		NotificationText = NStr("en = 'No received documents'");
+		NotificationText = NStr("en='No received documents';ru='Полученных документов нет'");
 	Else
-		NotificationText = NStr("en = 'Received documents: (%1)'");
+		NotificationText = NStr("en='Received documents: (%1)';ru='Получено документов: (%1)'");
 		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText, ReceivedNumber);
 	EndIf;
 		

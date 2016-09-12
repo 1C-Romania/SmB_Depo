@@ -30,15 +30,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	TemplateFileName = CommonUseClientServer.ReplaceProhibitedCharsInFileName(TemplatePresentation) + "." + Lower(TemplateType);
 	
 	If Parameters.OnlyOpening Then
-		Title = NStr("en = 'Print form template opening'");
+		Title = NStr("en='Print form template opening';ru='Открытие макета печатной формы'");
 	EndIf;
 	
 	TypeClient = ?(CommonUseClientServer.ThisIsWebClient(), "", "Not") + "WebClient";
 	WindowOptionsKey = TypeClient + Upper(TemplateType);
 	
 	If Not CommonUseClientServer.ThisIsWebClient() AND TemplateType = "MXL" Then
-		Items.DoesLabelChangesNotWebClient.Title = NStr(
-			"en = 'After entering necessary changes into the templates click the ""Complete update"" button'");
+		Items.DoesLabelChangesNotWebClient.Title = NStr("en='After entering necessary changes into the templates click the ""Complete update"" button';ru='После внесения необходимых изменений в макет нажмите на кнопку ""Завершить изменение""'");
 	EndIf;
 	
 	SetApplicationNameForTemplateOpening();
@@ -139,20 +138,20 @@ Procedure SetApplicationNameForTemplateOpening()
 	
 	FileType = Lower(TemplateType);
 	If FileType = "mxl" Then
-		ApplicationNameForOpeningTemplate = NStr("en = '1C:Enterprise - Work with files'");
+		ApplicationNameForOpeningTemplate = NStr("en='1C:Enterprise - Work with files';ru='1С:Предприятие - Работа с файлами'");
 		ApplicationAddressForTemplateOpening = "http://1c-dn.com/developer_tools/fileworkshop/";
 	ElsIf FileType = "doc" Then
-		ApplicationNameForOpeningTemplate = NStr("en = 'Microsoft Word'");
+		ApplicationNameForOpeningTemplate = NStr("en='Microsoft Word';ru='Microsoft Word'");
 		ApplicationAddressForTemplateOpening = "http://office.microsoft.com/en-us/word";
 	ElsIf FileType = "odt" Then
-		ApplicationNameForOpeningTemplate = NStr("en = 'OpenOffice Writer'");
+		ApplicationNameForOpeningTemplate = NStr("en='OpenOffice Writer';ru='OpenOffice Writer'");
 		ApplicationAddressForTemplateOpening = "http://www.openoffice.org/product/writer.html";
 	EndIf;
 	
 	InfoForFilling = New Structure;
 	InfoForFilling.Insert("TemplateName", TemplatePresentation);
 	InfoForFilling.Insert("ApplicationName", ApplicationNameForOpeningTemplate);
-	InfoForFilling.Insert("ActionsDetails", ?(Parameters.OnlyOpening, NStr("en = 'opening'"), NStr("en = 'modification'")));
+	InfoForFilling.Insert("ActionsDetails", ?(Parameters.OnlyOpening, NStr("en='opening';ru='открытия'"), NStr("en='modification';ru='внесения изменений'")));
 	
 	FilledItems = New Array;
 	FilledItems.Add(Items.RefsOnApplicationPageBeforeExportingWebClient);

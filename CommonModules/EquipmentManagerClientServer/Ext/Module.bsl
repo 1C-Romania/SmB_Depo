@@ -5,7 +5,7 @@
 //
 Procedure FillWorkplaceDescription(Object, UserName) Export
 	
-	NameEmptyUser = NStr("en='<User>'");
+	NameEmptyUser = NStr("en='<User>';ru='<Пользователь>'");
 	
 	If IsBlankString(Object.Description) Then
 		

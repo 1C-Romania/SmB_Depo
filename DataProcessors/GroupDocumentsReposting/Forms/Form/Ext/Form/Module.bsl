@@ -88,7 +88,7 @@ Procedure ButtonExecute(Command)
 	ClearMessages();
 	
 	If OnlySelectedCompanies = 1 AND Not ValueIsFilled(CompaniesTable) Then
-		MessageText = NStr("en = 'Companies list is filled incorrectly.'");
+		MessageText = NStr("en='Companies list is filled incorrectly.';ru='Не корректно заполнен список организаций.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;
@@ -111,13 +111,15 @@ EndFunction
 &AtClient
 Procedure ShowResultOfReposting()
 	
-	MessageText = NStr("en='Reposting documents
-	| is executed: - documents
-	|posted: %1; %2'");
+	MessageText = NStr("en='Reposting documents"
+" is executed: - documents"
+"posted: %1; %2';ru='Выполнено перепроведение документов:"
+" - проведено документов: %1;"
+"%2'");
 	If FailedToPost = 0 Then
-		ErrorsMessageBox = NStr("en=' - no errors.'");
+		ErrorsMessageBox = NStr("en=' - no errors.';ru=' - ошибок не обнаружено.'");
 	Else
-		ErrorsMessageBox = NStr("en=' - failed to post documents: %1'");
+		ErrorsMessageBox = NStr("en=' - failed to post documents: %1';ru=' - не удалось провести документов: %1'");
 		ErrorsMessageBox = StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorsMessageBox, FailedToPost);
 	EndIf;
@@ -160,10 +162,10 @@ Procedure InitializingCommandsDocumentAtClient()
 	Result = RunOnServer();
 	
 	If Result = 1 Then
-		ShowMessageBox(Undefined,NStr("en = 'Reposting is being executed already. Expect completion.'"));
+		ShowMessageBox(Undefined,NStr("en='Reposting is being executed already. Expect completion.';ru='Перепроведение уже выполняется. Ожидайте завершения.'"));
 		Return;
 	ElsIf Result = 2 Then
-		ShowMessageBox(Undefined,NStr("en = 'Reposting is already performed by another user.'"));
+		ShowMessageBox(Undefined,NStr("en='Reposting is already performed by another user.';ru='Перепроведение уже выполняется другим пользователем.'"));
 		Return;
 	EndIf;
 	
@@ -252,7 +254,7 @@ Function RunOnServer()
 		Result = New Structure("JobCompleted", True);
 
 	Else
-		JobDescription = NStr("en = 'Group document reposting'");
+		JobDescription = NStr("en='Group document reposting';ru='Групповое перепроведение документов'");
 		Result = LongActions.ExecuteInBackground(
 			UUID,
 			"DataProcessors.GroupDocumentsReposting.RepostingDocuments",

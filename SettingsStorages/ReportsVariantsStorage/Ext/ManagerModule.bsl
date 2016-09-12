@@ -273,7 +273,7 @@ EndProcedure
 //
 Procedure SaveProcessing(ReportKey, VariantKey, Settings, SettingsDescription, User)
 	If Not ReportsVariantsReUse.AddRight() Then
-		Raise NStr("en = 'Insufficient rights to save the report variants'");
+		Raise NStr("en='Insufficient rights to save the report variants';ru='Недостаточно прав для сохранения вариантов отчетов'");
 	EndIf;
 	
 	ReportInformation = ReportsVariants.GenerateInformationAboutReportByDescriptionFull(ReportKey);
@@ -389,7 +389,7 @@ EndProcedure
 //
 Procedure SetDescriptionProcessing(ReportKey, VariantKey, SettingsDescription, User)
 	If Not ReportsVariantsReUse.AddRight() Then
-		Raise NStr("en = 'Insufficient rights to save the report variants'");
+		Raise NStr("en='Insufficient rights to save the report variants';ru='Недостаточно прав для сохранения вариантов отчетов'");
 	EndIf;
 	
 	If TypeOf(ReportKey) = Type("String") Then

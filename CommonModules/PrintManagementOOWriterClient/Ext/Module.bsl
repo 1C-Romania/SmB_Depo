@@ -25,7 +25,7 @@ Function InitializePrintFormOOWriter(Val Pattern = Undefined) Export
 		ServiceManager = New COMObject("com.sun.star.ServiceManager");
 	Except
 		EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Error",
-			NStr("en = 'An error occurred when connecting to the service manager (com.sun.star.ServiceManager).'") + 
+			NStr("en='An error occurred when connecting to the service manager (com.sun.star.ServiceManager).';ru='Ошибка при связи с сервис менеджером (com.sun.star.ServiceManager).'") + 
 			+ Chars.LF + DetailErrorDescription(ErrorInfo()),,True);
 		FailedToGeneratePrintForm(ErrorInfo());
 	EndTry;
@@ -34,7 +34,7 @@ Function InitializePrintFormOOWriter(Val Pattern = Undefined) Export
 		Desktop = ServiceManager.CreateInstance("com.sun.star.frame.Desktop");
 	Except
 		EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Error",
-			NStr("en = 'An error occurred when running the Desktop service (com.sun.star.frame.Desktop).'") + 
+			NStr("en='An error occurred when running the Desktop service (com.sun.star.frame.Desktop).';ru='Ошибка при запуске сервиса Desktop (com.sun.star.frame.Desktop).'") + 
 			+ Chars.LF + DetailErrorDescription(ErrorInfo()),,True);
 		FailedToGeneratePrintForm(ErrorInfo());
 	EndTry;
@@ -90,7 +90,7 @@ Function GetOOWriterTemplate(Val PatternBinaryData, TempFileName) Export
 		ServiceManager = New COMObject("com.sun.star.ServiceManager");
 	Except
 		EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Error",
-			NStr("en = 'An error occurred when connecting to the service manager (com.sun.star.ServiceManager).'") + 
+			NStr("en='An error occurred when connecting to the service manager (com.sun.star.ServiceManager).';ru='Ошибка при связи с сервис менеджером (com.sun.star.ServiceManager).'") + 
 			+ Chars.LF + DetailErrorDescription(ErrorInfo()),,True);
 		FailedToGeneratePrintForm(ErrorInfo());
 	EndTry;
@@ -99,7 +99,7 @@ Function GetOOWriterTemplate(Val PatternBinaryData, TempFileName) Export
 		Desktop = ServiceManager.CreateInstance("com.sun.star.frame.Desktop");
 	Except
 		EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Error",
-			NStr("en = 'An error occurred when running the Desktop service (com.sun.star.frame.Desktop).'") + 
+			NStr("en='An error occurred when running the Desktop service (com.sun.star.frame.Desktop).';ru='Ошибка при запуске сервиса Desktop (com.sun.star.frame.Desktop).'") + 
 			+ Chars.LF + DetailErrorDescription(ErrorInfo()),,True);
 		FailedToGeneratePrintForm(ErrorInfo());
 	EndTry;
@@ -429,7 +429,7 @@ Function GetAreaBeginPosition(Val xDocument, Val AreaName)
 	xSearchDescr.SearchWords = True;
 	xFound = xDocument.findFirst(xSearchDescr);
 	If xFound = Undefined Then
-		Raise NStr("en = 'The beginning of the layout area is not found:'") + " " + AreaName;	
+		Raise NStr("en='The beginning of the layout area is not found:';ru='Не найдено начало области макета:'") + " " + AreaName;	
 	EndIf;
 	Return xFound.End;
 	
@@ -445,7 +445,7 @@ Function GetAreaEndPosition(Val xDocument, Val AreaName)
 	xSearchDescr.SearchWords = True;
 	xFound = xDocument.findFirst(xSearchDescr);
 	If xFound = Undefined Then
-		Raise NStr("en = 'The end of the layout area is not found:'") + " " + AreaName;	
+		Raise NStr("en='The end of the layout area is not found:';ru='Не найден конец области макета:'") + " " + AreaName;	
 	EndIf;
 	Return xFound.Start;
 	
@@ -487,18 +487,19 @@ Function GetComSafeArray()
 EndFunction
 
 Function EventLogMonitorEvent()
-	Return NStr("en = 'Print'");
+	Return NStr("en='Print';ru='Печать'");
 EndFunction
 
 Procedure FailedToGeneratePrintForm(ErrorInfo)
 #If WebClient Then
-	CorrectionText = NStr("en = 'In case of the work through the web the Internet Explorer browser under Windows OS is required.'");
+	CorrectionText = NStr("en='In case of the work through the web the Internet Explorer browser under Windows OS is required.';ru='При работе через веб, требуется браузер Internet Explorer под управлением операционной системы Windows.'");
 #Else		
 	CorrectionText = "";	
 #EndIf
 	ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Failed to generate a print form: %1. 
-			|To show print forms as OpenOffice.org Writer, it is required to install the OpenOffice.org package on the computer. %2'"),
+		NStr("en='Failed to generate a print form: %1. "
+"To show print forms as OpenOffice.org Writer, it is required to install the OpenOffice.org package on the computer. %2';ru='Не удалось сформировать печатную форму: %1. "
+"Для вывода печатных форм в формате OpenOffice.org Writer требуется, чтобы на компьютере был установлен пакет OpenOffice.org. %2'"),
 		BriefErrorDescription(ErrorInfo), CorrectionText);
 	Raise ErrorMessage;
 EndProcedure

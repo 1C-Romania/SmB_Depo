@@ -38,6 +38,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Data change (load) prohibition dates</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Даты запрета изменения (загрузки) данных</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<UseStandardCommands>false</UseStandardCommands>
@@ -171,6 +175,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Prohibition date</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата запрета</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -186,6 +194,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data changes prohibition date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата фактического запрета изменения данных</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -217,6 +229,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Prohibition date description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание даты запрета</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Description of the relative prohibition date used to calculate the prohibition date for the current date</Comment>
 					<Type>
@@ -233,6 +249,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Description of the relative prohibition date used to calculate the prohibition date for the current date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание относительной даты запрета, используемое для вычисления даты запрета на текущую дату</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -264,6 +284,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Comment to a separate setting prohibition by user/usergroup</Comment>
 					<Type>
@@ -280,6 +304,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment to the separate prohibition setting by the user/user group</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий к отдельной настройке запрета по пользователю/группе пользователей</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -311,6 +339,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Section</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Раздел</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -323,6 +355,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Changing prohibition dates section</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Раздел дат запрета изменения</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -357,6 +393,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Object</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>объект</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -369,6 +409,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Object of the modification prohibition dates section (Company, Cash ...)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект раздела дат запрета изменения (Организация, Касса ...)</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -403,6 +447,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>User</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -427,6 +475,16 @@ setting: -user,
 user, -external users
 group, -exchange plan (empty link to a
 node), -exchange plan node</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адресат
+настройки
+запрета: -
+пользователь, -
+группа пользователей, -
+внешний пользователь, - группа внешних пользователей, -
+план обмена (пустая ссылка на узел), - узел плана обмена</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -465,6 +523,10 @@ node), -exchange plan node</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data change prohibition dates</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Даты запрета изменения данных</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Group>ActionsPanelTools</Group>
@@ -476,6 +538,10 @@ node), -exchange plan node</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Prohibition dates of adding, modifying and deleting data</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Даты запрета добавления, изменения и удаления данных</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Picture/>
@@ -490,6 +556,10 @@ node), -exchange plan node</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Importing prohibition dates</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Даты запрета загрузки данных</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Group>ActionsPanelTools</Group>
@@ -501,6 +571,10 @@ node), -exchange plan node</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data import prohibition dates while exchanging data</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Даты запрета добавления, изменения и удаления данных</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Picture/>

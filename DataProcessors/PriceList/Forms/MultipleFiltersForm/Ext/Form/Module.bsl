@@ -13,7 +13,7 @@ Procedure RadioButtonFilterMode(TabularSectionName)
 		
 		If Object[TabularSectionName].Count() > 0 Then
 		
-			QuestionText = NStr("en = 'Multiple filter will be cleared. Continue?'");
+			QuestionText = NStr("en='Multiple filter will be cleared. Continue?';ru='Множественный отбор будет очищен. Продолжить?'");
 			ShowQueryBox(New NotifyDescription("RadioButtonFilterModeEnd", ThisObject, New Structure("TabularSectionName", TabularSectionName)), QuestionText, QuestionDialogMode.YesNo);
             Return;
 			

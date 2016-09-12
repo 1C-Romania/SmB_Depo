@@ -196,7 +196,7 @@ Function PrintForm(ObjectsArray, PrintObjects) Export
 			Template = PrintManagement.PrintedFormsTemplate("Document.SupplierInvoiceNote.PF_MXL_CustomerInvoiceNote1137");
 			AreaClarification = Template.GetArea("ConsolidatedCommission");
 			
-			AreaClarification.Parameters.Fill(New Structure("Clarification", NStr("en='You can not generate received (incoming) customer invoice note based on the report to principal by the summary data (several customers).'")));
+			AreaClarification.Parameters.Fill(New Structure("Clarification", NStr("en='You can not generate received (incoming) customer invoice note based on the report to principal by the summary data (several customers).';ru='Формирование полученного (входящего) счета-фактуры на основании отчета комитенту по сводным данным (несколько покупателей) не поддерживается.'")));
 			SpreadsheetDocument.Put(AreaClarification);
 			
 			Return SpreadsheetDocument;
@@ -827,7 +827,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CustomerInvoiceNoteIncoming";
-	PrintCommand.Presentation = NStr("en = 'Supplier invoice note'");
+	PrintCommand.Presentation = NStr("en='Supplier invoice note';ru='Счет-фактура (полученный)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

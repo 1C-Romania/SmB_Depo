@@ -44,9 +44,9 @@ Function ExtendedDescriptionsReasonsLock() Export
 	Reasons = Enums.ReasonsForDisablingAdditionalReportsAndDataProcessorsSaaS;
 	
 	Result = New Map();
-	Result.Insert(Reasons.BlockAdministratorService, NStr("en = 'Use of the additional data processor is prohibited due to violation of service rules!'"));
-	Result.Insert(Reasons.BlockingByOwner, NStr("en = 'The use of the additional processor is prohibited by its owner!'"));
-	Result.Insert(Reasons.ConfigurationVersionUpdate, NStr("en = 'The use of the additional data processor is temporarily unavailable due to application update. This may take several minutes. We apologize for the inconvenience.'"));
+	Result.Insert(Reasons.BlockAdministratorService, NStr("en='Use of the additional data processor is prohibited due to violation of service rules!';ru='Использование дополнительной обработки запрещено из-за нарушений правил сервиса!'"));
+	Result.Insert(Reasons.BlockingByOwner, NStr("en='The use of the additional processor is prohibited by its owner!';ru='Использование дополнительной обработки запрещено владельцем обработки!'"));
+	Result.Insert(Reasons.ConfigurationVersionUpdate, NStr("en='The use of the additional data processor is temporarily unavailable due to application update. This may take several minutes. We apologize for the inconvenience.';ru='Использование дополнительной обработки временно недоступно по причине выполнения обновления приложения. Данный процесс может занять несколько минут. Приносим извинения на доставленные неудобства.'"));
 	
 	Return New FixedMap(Result);
 	

@@ -189,7 +189,7 @@ Procedure SetEditInListOption()
 
 		
 		ShowQueryBox(New NotifyDescription("SetEditInListEndOption", ThisObject, New Structure("LineCount", LineCount)), 
-			NStr("en='All rows except the first will be deleted. Continue?'"),
+			NStr("en='All rows except the first will be deleted. Continue?';ru='Все строки кроме первой будут удалены. Продолжить?'"),
 			QuestionDialogMode.YesNo
 		);
         Return;

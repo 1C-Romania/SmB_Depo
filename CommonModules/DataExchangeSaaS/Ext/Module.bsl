@@ -324,7 +324,7 @@ Procedure MoveExchangeSettingsToDataStructure_2_1_2_0() Export
 							If CorrespondentEndPoint = Undefined Then
 								
 								Raise StringFunctionsClientServer.PlaceParametersIntoString(
-									NStr("en = 'The correspondent end point is not defined for the address ""%1"".'"),
+									NStr("en='The correspondent end point is not defined for the address ""%1"".';ru='Не определена конечная точка корреспондента для адреса ""%1"".'"),
 									Selection2.Address);
 							EndIf;
 							
@@ -582,7 +582,7 @@ Function InformationExchangeDirectoryRelative(Val Folder)
 	
 	If IsBlankString(Folder) Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Incorrect info exchange catalog format ""%1"".'"),
+			NStr("en='Incorrect info exchange catalog format ""%1"".';ru='Неправильный формат каталога обмена информацией ""%1"".'"),
 			Folder);
 	EndIf;
 	
@@ -594,7 +594,7 @@ Function InformationExchangeDirectoryRelative(Val Folder)
 		
 		If Find(Folder, Delimiter) = 0 Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Incorrect info exchange catalog format ""%1"".'"),
+				NStr("en='Incorrect info exchange catalog format ""%1"".';ru='Неправильный формат каталога обмена информацией ""%1"".'"),
 				Folder);
 		EndIf;
 		
@@ -604,7 +604,7 @@ Function InformationExchangeDirectoryRelative(Val Folder)
 	
 	If Directories.Count() = 0 Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Incorrect info exchange catalog format ""%1"".'"),
+			NStr("en='Incorrect info exchange catalog format ""%1"".';ru='Неправильный формат каталога обмена информацией ""%1"".'"),
 			Folder);
 	EndIf;
 	
@@ -614,7 +614,7 @@ Function InformationExchangeDirectoryRelative(Val Folder)
 		
 		If Directories.Count() = 1 Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Incorrect info exchange catalog format ""%1"".'"),
+				NStr("en='Incorrect info exchange catalog format ""%1"".';ru='Неправильный формат каталога обмена информацией ""%1"".'"),
 				Folder);
 		EndIf;
 		
@@ -1004,7 +1004,7 @@ Procedure OnDeleteOutdatedMessagesExchange() Export
 			Try
 				DeleteFiles(MessageFile.DescriptionFull);
 			Except
-				WriteLogEvent(NStr("en = 'Data exchange'", CommonUseClientServer.MainLanguageCode()),
+				WriteLogEvent(NStr("en='Data exchange';ru='Обмен данными описание'", CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 				Continue;
 			EndTry;
@@ -1053,7 +1053,7 @@ Procedure OnReceiveFileFromStore(Val FileID, FileName) Export
 	QueryResult = Query.Execute();
 	
 	If QueryResult.IsEmpty() Then
-		Definition = NStr("en = 'File with ID %1 is not found.'");
+		Definition = NStr("en='File with ID %1 is not found.';ru='Файл с идентификатором %1 не обнаружен.'");
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(Definition, String(FileID));
 	EndIf;
 	
@@ -1252,7 +1252,7 @@ Procedure ExecuteDataExchangeScenarioActionInFirstInfobase(ScenarioRowIndex, Dat
 			
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Unknown action ""%1"" when exchanging data between data areas.'"),
+				NStr("en='Unknown action ""%1"" when exchanging data between data areas.';ru='Неизвестное действие ""%1"" при обмене данными между областями данных.'"),
 				ScenarioString.RunningAction);
 		EndIf;
 		
@@ -1326,7 +1326,7 @@ Procedure ExecuteDataExchangeScenarioActionInSecondInfobase(ScenarioRowIndex, Da
 		
 	Else
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unknown action ""%1"" when exchanging data between data areas.'"),
+			NStr("en='Unknown action ""%1"" when exchanging data between data areas.';ru='Неизвестное действие ""%1"" при обмене данными между областями данных.'"),
 			ScenarioString.RunningAction);
 	EndIf;
 	
@@ -1497,7 +1497,7 @@ EndFunction
 Function ExchangePlanNodeCodeInService(Val DataAreaNumber) Export
 	
 	If TypeOf(DataAreaNumber) <> Type("Number") Then
-		Raise NStr("en = 'Inccorect number parameter type [1].'");
+		Raise NStr("en='Inccorect number parameter type [1].';ru='Неправильный тип параметра номер [1].'");
 	EndIf;
 	
 	Result = "S0[DataAreaNumber]";
@@ -1512,7 +1512,7 @@ Function GeneratePredefinedNodeDescription() Export
 	
 	ApplicationName = SaaSOperations.GetApplicationName();
 	
-	Return ?(IsBlankString(ApplicationName), NStr("en = 'Application in Internet'"), ApplicationName);
+	Return ?(IsBlankString(ApplicationName), NStr("en='Application in Internet';ru='приложение в Интернете'"), ApplicationName);
 EndFunction
 
 // It receives the end point for the correspondent.
@@ -1541,7 +1541,7 @@ Function CorrespondentEndPoint(Val Correspondent) Export
 	QueryResult = Query.Execute();
 	
 	If QueryResult.IsEmpty() Then
-		MessageString = NStr("en = 'The correspondent end point is not specified for ""%1"".'");
+		MessageString = NStr("en='The correspondent end point is not specified for ""%1"".';ru='Не назначена конечная точка корреспондента для ""%1"".'");
 		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(Correspondent));
 		Raise MessageString;
 	EndIf;
@@ -1594,11 +1594,11 @@ Procedure AvailableNewData(Val Handle, Import) Export
 			
 			Import = False;
 			
-			MessageText = NStr("en = 'Provided exchange rules are not applicable for the current configuration and intended for the %1 exchange plan of the %3 version of the %2 configuration'");
+			MessageText = NStr("en='Provided exchange rules are not applicable for the current configuration and intended for the %1 exchange plan of the %3 version of the %2 configuration';ru='Поставляемые правила обмена не подходят для текущей конфигурации и предназначены для плана обмена %1 конфигурации %2 версии %3'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText,
 				ProvidedRulesDescription.ExchangePlanName, ProvidedRulesDescription.ConfigurationName, ProvidedRulesDescription.ConfigurationVersion);
 			
-			WriteLogEvent(NStr("en = 'Provided data exchange rules. The loading of the provided rules is cancelled.'",
+			WriteLogEvent(NStr("en='Provided data exchange rules. The loading of the provided rules is cancelled.';ru='Поставляемые правила обмена данными.Загрузка поставляемых правил отменена'",
 				CommonUseClientServer.MainLanguageCode()), EventLogLevel.Information,,, MessageText);
 			
 		EndIf;
@@ -1718,7 +1718,7 @@ Procedure CreateExchangeSetting(
 		If IsBlankString(ThisNodeCode) Then
 			
 			// The node code is specified in the IB update handler
-			MessageString = NStr("en = 'For the predefined exchange plan node ""%1"" the code is not specified.'");
+			MessageString = NStr("en='For the predefined exchange plan node ""%1"" the code is not specified.';ru='Для предопределенного узла плана обмена ""%1"" не задан код.'");
 			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, ExchangePlanName);
 			Raise MessageString;
 		EndIf;
@@ -1727,7 +1727,7 @@ Procedure CreateExchangeSetting(
 		If IsBlankString(GetFunctionalOption("InfobasePrefix")) Then
 			
 			If IsBlankString(Prefix) Then
-				Raise NStr("en = 'In the service Manager the prefix for this application is not installed.'");
+				Raise NStr("en='In the service Manager the prefix for this application is not installed.';ru='В Менеджере сервиса не установлен префикс для этого приложения.'");
 			EndIf;
 			
 			DataExchangeServer.SetIBPrefix(Prefix);
@@ -1765,9 +1765,11 @@ Procedure CreateExchangeSetting(
 		
 		If CheckCode AND CorrespondentCode <> ActualCorrespondentCode Then
 			
-			MessageString = NStr("en = 'An error occurred while assigning a correspondent node code.
-				|Set value
-				|""%1"" Actual value ""%2"".'");
+			MessageString = NStr("en='An error occurred while assigning a correspondent node code."
+"Set value"
+"""%1"" Actual value ""%2"".';ru='Ошибка назначения кода узла корреспондента."
+"Назначенное"
+"значение ""%1"" Фактическое значение ""%2"".'");
 			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, CorrespondentCode, ActualCorrespondentCode);
 			Raise MessageString;
 		EndIf;
@@ -1789,7 +1791,7 @@ Procedure CreateExchangeSetting(
 			
 			If IsBlankString(FILEInformationExchangeCommonDirectory) Then
 				
-				MessageString = NStr("en = 'Info exchange directory is not specified for the end point ""%1"".'");
+				MessageString = NStr("en='Info exchange directory is not specified for the end point ""%1"".';ru='Не задан каталог обмена информацией для конечной точки ""%1"".'");
 				MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(CorrespondentEndPoint));
 				Raise MessageString;
 			EndIf;
@@ -1798,7 +1800,7 @@ Procedure CreateExchangeSetting(
 			
 			If Not CommonDirectory.Exist() Then
 				
-				MessageString = NStr("en = 'Info exchange directory ""%1"" does not exist.'");
+				MessageString = NStr("en='Info exchange directory ""%1"" does not exist.';ru='Каталог обмена информацией ""%1"" не существует.'");
 				MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, FILEInformationExchangeCommonDirectory);
 				Raise MessageString;
 			EndIf;
@@ -1857,7 +1859,7 @@ Procedure CreateExchangeSetting(
 			
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Exchange message transport kind ""%1"" is not supported for the %2 end point.'"),
+				NStr("en='Exchange message transport kind ""%1"" is not supported for the %2 end point.';ru='Вид транспорта сообщений обмена ""%1"" для конечной точки %2 не поддерживается.'"),
 				String(TransportSettings.ExchangeMessageTransportKindByDefault),
 				String(CorrespondentEndPoint)
 				);
@@ -1927,10 +1929,10 @@ EndFunction
 Procedure SaveSessionData(Val Message, Val Presentation = "") Export
 	
 	If Not IsBlankString(Presentation) Then
-		Presentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = ' {%1}'"), Presentation);
+		Presentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en=' {%1}';ru=' {%1}'"), Presentation);
 	EndIf;
 	
-	MessageString = NStr("en = 'System messages exchange session ""%1"" is successfully completed.%2'",
+	MessageString = NStr("en='System messages exchange session ""%1"" is successfully completed.%2';ru='Сессия обмена сообщениями системы ""%1"" успешно завершена.%2'",
 		CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
 		String(Message.Body.SessionId), Presentation);
@@ -1945,10 +1947,10 @@ EndProcedure
 Procedure FixSuccessfullSessionCompletion(Val Message, Val Presentation = "") Export
 	
 	If Not IsBlankString(Presentation) Then
-		Presentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = ' {%1}'"), Presentation);
+		Presentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en=' {%1}';ru=' {%1}'"), Presentation);
 	EndIf;
 	
-	MessageString = NStr("en = 'System messages exchange session ""%1"" is successfully completed.%2'",
+	MessageString = NStr("en='System messages exchange session ""%1"" is successfully completed.%2';ru='Сессия обмена сообщениями системы ""%1"" успешно завершена.%2'",
 		CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
 		String(Message.Body.SessionId), Presentation);
@@ -1963,11 +1965,11 @@ EndProcedure
 Procedure FixUnsuccessfullSessionCompletion(Val Message, Val Presentation = "") Export
 	
 	If Not IsBlankString(Presentation) Then
-		Presentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = ' {%1}'"), Presentation);
+		Presentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en=' {%1}';ru=' {%1}'"), Presentation);
 	EndIf;
 	
-	MessageString = NStr("en = 'Error of the %1 system message
-		|exchange session performance. %2 Error description from the correspondent: %3'", CommonUseClientServer.MainLanguageCode());
+	MessageString = NStr("en='Error of the %1 system message"
+"exchange session performance. %2 Error description from the correspondent: %3';ru='Ошибка выполнения сессии обмена сообщениями системы ""%1"".%2 Описание ошибки из корреспондента: %3'", CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
 		String(Message.Body.SessionId), Presentation, Message.Body.ErrorDescription);
 	WriteLogEvent(SystemMessagesExchangeSessionEventLogMonitorEvent(),
@@ -2050,7 +2052,7 @@ EndFunction
 //
 Function EventLogMonitorEventDataSyncronizationSetting() Export
 	
-	Return NStr("en = 'Data exchange in the service model. Data synchronization setup'",
+	Return NStr("en='Data exchange in the service model. Data synchronization setup';ru='Обмен данными в модели сервиса.Настройка синхронизации данных'",
 		CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
@@ -2059,7 +2061,7 @@ EndFunction
 //
 Function EventLogMonitorEventDataSynchronizationMonitor() Export
 	
-	Return NStr("en = 'Data exchange in the service model. Data synchronization monitor'",
+	Return NStr("en='Data exchange in the service model. Data synchronization monitor';ru='Обмен данными в модели сервиса.Монитор синхронизации данных'",
 		CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
@@ -2068,14 +2070,14 @@ EndFunction
 //
 Function EventLogMonitorEventDataSynchronization() Export
 	
-	Return NStr("en = 'Data exchange in the service model. Data synchronization'",
+	Return NStr("en='Data exchange in the service model. Data synchronization';ru='Обмен данными в модели сервиса.Синхронизация данных'",
 		CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
 Function SystemMessagesExchangeSessionEventLogMonitorEvent()
 	
-	Return NStr("en = 'Data exchange in the service model. Sessions of the system messages exchange'",
+	Return NStr("en='Data exchange in the service model. Sessions of the system messages exchange';ru='Обмен данными в модели сервиса.Сессии обмена сообщениями системы'",
 		CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
@@ -2361,7 +2363,7 @@ Function FindInfobaseNode(Val ExchangePlanName, Val NodeCode)
 	EndIf;
 	
 	If Result = Undefined Then
-		Message = NStr("en = 'The exchange plan node is not found. Name of the %1 exchange plan; code of the %2 or %3 node'");
+		Message = NStr("en='The exchange plan node is not found. Name of the %1 exchange plan; code of the %2 or %3 node';ru='Не найден узел плана обмена. Имя плана обмена %1; код узла %2 или %3'");
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, ExchangePlanName, NodeCode, NodeCodeWithPrefix);
 		Raise Message;
 	EndIf;
@@ -2419,8 +2421,9 @@ Procedure BeforeCommonDataWrite(Object, Cancel)
 	OfflineWorkService.DetermineWhetherChangesData(Object.Metadata(), ReadOnly);
 	
 	If ReadOnly Then
-		ErrorString = NStr("en = 'Change of unseparated data (%1) loaded from the application is prohibited for the Offline workplace.
-		|Contact your administrator.'");
+		ErrorString = NStr("en='Change of unseparated data (%1) loaded from the application is prohibited for the Offline workplace."
+"Contact your administrator.';ru='Изменение неразделенных данных (%1), загружаемых из приложения, в Автономном рабочем месте запрещено."
+"Обратитесь к администратору.'");
 		ErrorString = StringFunctionsClientServer.PlaceParametersIntoString(ErrorString, String(Object));
 		Raise ErrorString;
 	EndIf;
@@ -2541,8 +2544,9 @@ Procedure OnCreatingIndependentWorkingPlace() Export
 	If UsersServiceSaaSSTL.UserRegisteredAsUnseparated(
 			InfobaseUsers.CurrentUser().UUID) Then
 		
-		Raise NStr("en = 'You can create the offline workplace only acting as a separated user.
-			|Current user is unseparated.'");
+		Raise NStr("en='You can create the offline workplace only acting as a separated user."
+"Current user is unseparated.';ru='Создать автономное рабочее место можно только от имени разделенного пользователя."
+"Текущий пользователь является неразделенным.'");
 		
 	EndIf;
 	

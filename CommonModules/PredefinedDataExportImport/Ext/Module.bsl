@@ -129,10 +129,12 @@ Procedure AfterObjectExport(Container, ObjectExportManager, Serializer, Object, 
 		Else
 			
 			Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'The %1 metadata object  
-                  |can not be processed by the 
-                  |PredefinedDataExportImport.BeforeObjectExport() handler
-                  |as it is not required to ensure mapping of references to its predefined items!'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='The %1 metadata object  "
+"can not be processed by the "
+"PredefinedDataExportImport.BeforeObjectExport() handler"
+"as it is not required to ensure mapping of references to its predefined items!';ru='Объект метаданных %1 не может быть обработан обработчиком"
+"ВыгрузкаЗагрузкаПредопределенныхДанных.ПередВыгрузкойОбъекта(),"
+"т.к. не требуется обеспечивать сопоставление ссылок на его предопределенные элементы!'", Metadata.DefaultLanguage.LanguageCode),
 			Object.Metadata().FullName()
 		);
 			
@@ -141,9 +143,11 @@ Procedure AfterObjectExport(Container, ObjectExportManager, Serializer, Object, 
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'The %1 metadata object  
-                  |can not be processed by the PredefinedDataExportImport.BeforeObjectExport() handler,
-                  |as it can not contain predefined items!'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='The %1 metadata object  "
+"can not be processed by the PredefinedDataExportImport.BeforeObjectExport() handler,"
+"as it can not contain predefined items!';ru='Объект метаданных %1 не может быть обработан обработчиком"
+"ВыгрузкаЗагрузкаПредопределенныхДанных.ПередВыгрузкойОбъекта(),"
+"т.к. не может содержать предопределенных элементов!'", Metadata.DefaultLanguage.LanguageCode),
 			Object.Metadata().FullName()
 		);
 		
@@ -254,7 +258,7 @@ Function MatchRefs(Container, RefsMappingManager, SourceRefsTable) Export
 				Else
 					
 					Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'The duplicates of predefined items %1 in the table %2 are found!'", Metadata.DefaultLanguage.LanguageCode),
+						NStr("en='The duplicates of predefined items %1 in the table %2 are found!';ru='Обнаружено дублирование предопределенных элементов %1 в таблице %2!'", Metadata.DefaultLanguage.LanguageCode),
 						TableRowSourceLinks.PredefinedDataName,
 						TableRowSourceLinks[ColumnName].Metadata().FullName()
 					);
@@ -311,9 +315,11 @@ Procedure BeforeObjectImport(Container, Object, Artifacts, Cancel) Export
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'The %1 metadata object  
-                  |can not be processed by the PredefinedDataExportImport.BeforeObjectExport() handler,
-                  |as it can not contain predefined items!'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='The %1 metadata object  "
+"can not be processed by the PredefinedDataExportImport.BeforeObjectExport() handler,"
+"as it can not contain predefined items!';ru='Объект метаданных %1 не может быть обработан обработчиком"
+"ВыгрузкаЗагрузкаПредопределенныхДанных.ПередВыгрузкойОбъекта(),"
+"т.к. не может содержать предопределенных элементов!'", Metadata.DefaultLanguage.LanguageCode),
 			Object.Metadata().FullName()
 		);
 		

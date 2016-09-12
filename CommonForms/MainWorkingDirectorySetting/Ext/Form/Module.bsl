@@ -47,7 +47,7 @@ Procedure UserWorkingDirectoryStartChoice(Item, ChoiceData, StandardProcessing)
 	
 	// Choose another path to the working directory.
 	DirectoryName = UserWorkingDirectory;
-	Title = NStr("en = 'Select the main work directory'");
+	Title = NStr("en='Select the main work directory';ru='Выберите основной рабочий каталог'");
 	If Not FileOperationsServiceClient.ChoosePathToWorkingDirectory(DirectoryName, Title, False) Then
 		Return;
 	EndIf;
@@ -100,10 +100,13 @@ EndProcedure
 Procedure ClearLocalFilesCache(Command)
 	
 	QuestionText =
-		NStr("en = 'From the main working directory all files
-		           |will be deleted, except those borrowed by you for editing.
-		           |
-		           |Continue?'");
+		NStr("en='From the main working directory all files"
+"will be deleted, except those borrowed by you for editing."
+""
+"Continue?';ru='Из основного рабочего каталога будут удалены все файлы,"
+"кроме занятых вами для редактирования."
+""
+"Продолжить?'");
 	Handler = New NotifyDescription("ClearLocalFilesCacheAfterAnswerQuestionToContinue", ThisObject);
 	ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo);
 	
@@ -161,8 +164,9 @@ Procedure ClearLocalFilesCacheAfterAnswerQuestionToContinue(Response, ExecutePar
 		Return;
 	EndIf;
 	
-	Status(NStr("en = 'Main working directory is being cleared...
-	                     |Please, wait.'"));
+	Status(NStr("en='Main working directory is being cleared..."
+"Please, wait.';ru='Выполняется очистка основного рабочего каталога..."
+"Пожалуйста, подождите.'"));
 	
 	Handler = New NotifyDescription("ClearLocalFilesCacheEnd", ThisObject);
 	// ClearAll = True.
@@ -175,7 +179,7 @@ Procedure ClearLocalFilesCacheEnd(Result, ExecuteParameters) Export
 	
 	RefreshCurrentStateBusinessDirectory();
 	
-	Status(NStr("en = 'Main working directory has been cleared successfully.'"));
+	Status(NStr("en='Main working directory has been cleared successfully.';ru='Очистка основного рабочего каталога успешно завершена.'"));
 	
 EndProcedure
 

@@ -20,12 +20,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EventLogMonitorEventDataSyncronizationSetting = DataExchangeSaaS.EventLogMonitorEventDataSyncronizationSetting();
 	
 	Items.LabelWarnings.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Disable data
-			|synchronization from % 1?'"), Parameters.CorrespondentDescription);
+		NStr("en='Disable data"
+"synchronization from % 1?';ru='Отключить синхронизацию данных"
+"с ""%1""?'"), Parameters.CorrespondentDescription);
 	
 	Items.TitleInformational.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Data
-			|synchronization with % 1 is disabled.'"), Parameters.CorrespondentDescription);
+		NStr("en='Data"
+"synchronization with % 1 is disabled.';ru='Синхронизация данных"
+"с ""%1"" отключена.'"), Parameters.CorrespondentDescription);
 	
 	// Set the current table of transitions
 	DisableDataSynchronizationScript();
@@ -63,7 +65,7 @@ Procedure LongOperationIdleHandler()
 		WriteErrorInEventLogMonitor(
 			DetailErrorDescription(ErrorInfo()), EventLogMonitorEventDataSyncronizationSetting);
 		SkipBack();
-		ShowMessageBox(, NStr("en = 'Failed to execute the operation.'"));
+		ShowMessageBox(, NStr("en='Failed to execute the operation.';ru='Не удалось выполнить операцию.'"));
 		Return;
 	EndTry;
 	
@@ -75,7 +77,7 @@ Procedure LongOperationIdleHandler()
 		
 		SkipBack();
 		
-		ShowMessageBox(, NStr("en = 'Failed to execute the operation.'"));
+		ShowMessageBox(, NStr("en='Failed to execute the operation.';ru='Не удалось выполнить операцию.'"));
 		
 	Else
 		
@@ -154,7 +156,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -260,7 +262,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -316,7 +318,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -472,7 +474,7 @@ Function Attachable_SynchronizationDisableExpectation_LongOperationProcessing(Ca
 	RequestToDisableSynchronization(Cancel);
 	
 	If Cancel Then
-		ShowMessageBox(, NStr("en = 'Failed to execute the operation.'"));
+		ShowMessageBox(, NStr("en='Failed to execute the operation.';ru='Не удалось выполнить операцию.'"));
 	EndIf;
 	
 EndFunction

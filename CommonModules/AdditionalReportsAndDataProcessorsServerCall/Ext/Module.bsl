@@ -43,7 +43,7 @@ Function PlaceIntoStorage(Refs, FormID) Export
 		Return Undefined;
 	EndIf;
 	If Not AdditionalReportsAndDataProcessors.DataProcessorExportToFileIsAvailable(Refs) Then
-		Raise NStr("en = 'Insufficient rights for exporting the files of additional reports and data processors'");
+		Raise NStr("en='Insufficient rights for exporting the files of additional reports and data processors';ru='Недостаточно прав для выгрузки файлов дополнительных отчетов и обработок'");
 	EndIf;
 	
 	DataProcessorStorage = CommonUse.ObjectAttributeValue(Refs, "DataProcessorStorage");

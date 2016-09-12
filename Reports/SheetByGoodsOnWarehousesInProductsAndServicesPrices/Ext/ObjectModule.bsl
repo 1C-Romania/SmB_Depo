@@ -41,7 +41,7 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 		AND Not EndOfPeriod = Date(1,1,1)
 		AND BeginOfPeriod > EndOfPeriod Then
 		
-		MessageText	 	= NStr("en = 'Begin of the period can not be greater than end of period'");
+		MessageText	 	= NStr("en='Begin of the period can not be greater than end of period';ru='Дата начала периода не должна превышать дату окончания.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		Return;
@@ -51,7 +51,7 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 	If Not ValueIsFilled(PriceKind)
 		OR CompositionTemplate.ParameterValues["PriceKind"].Value = Catalogs.PriceKinds.EmptyRef() Then
 		
-		MessageText	 	= NStr("en = 'The price kind for report generation is not selected.'");
+		MessageText	 	= NStr("en='The price kind for report generation is not selected.';ru='Не выбран вид цены для формирования отчета.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		Return;
@@ -396,7 +396,7 @@ Function PrepareReportParameters(ReportSettings)
 	If ParameterKindOfPrice <> Undefined
 		AND ParameterKindOfPrice.Use Then
 		
-		ParameterKindOfPrice.UserSettingPresentation = NStr("en = 'Price kind'");
+		ParameterKindOfPrice.UserSettingPresentation = NStr("en='Price kind';ru='Вид цены'");
 		ParametersToBeIncludedInSelectionText.Add(ParameterKindOfPrice);
 	EndIf;
 	

@@ -29,11 +29,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If Parameters.CloseOnChoice = False Then
 			// Choice mode.
-			Title = NStr("en = 'Pick up of the groups of external users'");
+			Title = NStr("en='Pick up of the groups of external users';ru='Подбор групп внешних пользователей'");
 			Items.List.Multiselect = True;
 			Items.List.SelectionMode = TableSelectionMode.MultiRow;
 		Else
-			Title = NStr("en = 'Select group of external users'");
+			Title = NStr("en='Select group of external users';ru='Выбор группы внешних пользователей'");
 		EndIf;
 	EndIf;
 EndProcedure

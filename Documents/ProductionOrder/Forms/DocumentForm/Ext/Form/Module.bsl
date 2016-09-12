@@ -354,7 +354,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en = 'Data by barcode is not found: %1%; quantity: %2%'");
+		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -534,7 +534,7 @@ EndProcedure // GetInventoryFromStorage()
 Procedure SearchByBarcode(Command)
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en = 'Enter barcode'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
 
 EndProcedure
 
@@ -559,7 +559,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.'"));
+		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -577,7 +577,7 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	
 	If Not Weight = Undefined Then
 		If Weight = 0 Then
-			MessageText = NStr("en = 'Electronic scales returned zero weight.'");
+			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			// Weight is received.
@@ -858,7 +858,7 @@ Procedure FillByBasis(Command)
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en = 'Document will be completely refilled by ""Basis""! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -921,7 +921,7 @@ Procedure FillUsingCustomerOrder(Command)
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillByCustomerOrderEnd", ThisObject), NStr("en = 'The document will be completely refilled according to ""Customer order""! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByCustomerOrderEnd", ThisObject), NStr("en='The document will be completely refilled according to ""Customer order""! Continue?';ru='Документ будет полностью перезаполнен по ""Заказу покупателя""! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -942,7 +942,7 @@ Procedure ChangeReserveFillByBalances(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Tabular section ""Inventory"" is not filled!'");
+		Message.Text = NStr("en='Tabular section ""Inventory"" is not filled!';ru='Табличная часть ""Запасы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -958,7 +958,7 @@ Procedure ChangeReserveClearReserve(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Tabular section ""Inventory"" is not filled!'");
+		Message.Text = NStr("en='Tabular section ""Inventory"" is not filled!';ru='Табличная часть ""Запасы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -1081,8 +1081,9 @@ Procedure OperationKindChoiceProcessing(Item, ValueSelected, StandardProcessing)
 			If ValueIsFilled(StringProducts.ProductsAndServices)
 				AND StringProducts.ProductsAndServicesType <> ProductsAndServicesTypeInventory Then
 				
-				MessageText = NStr("en = 'Disassembling operation is invalid for works and services!
-								|The %ProductsAndServicesPresentation% products and services could be a work(service) in the %Number% string of the tabular section ""Products""'");
+				MessageText = NStr("en='Disassembling operation is invalid for works and services!"
+"The %ProductsAndServicesPresentation% products and services could be a work(service) in the %Number% string of the tabular section ""Products""';ru='Операция разборки не выполняется для работ и услуг!"
+"В строке №%Номер% табличной части ""Продукция"" номенклатура ""%НоменклатураПредставление%"" является работой (услугой)'");
 				MessageText = StrReplace(MessageText, "%Number%", StringProducts.LineNumber);
 				MessageText = StrReplace(MessageText, "%ProductsAndServicesPresentation%", String(StringProducts.ProductsAndServices));
 				
@@ -1113,7 +1114,7 @@ Procedure StartOnChange(Item)
 	
 	If Object.Start > Object.Finish AND ValueIsFilled(Object.Finish) Then
 		Object.Start = WhenChangingStart;
-		Message(NStr("en='Start date can not be later than the end date.'"));
+		Message(NStr("en='Start date can not be later than the end date.';ru='Дата старта не может быть больше даты финиша.'"));
 	Else
 		WhenChangingStart = Object.Start;
 	EndIf;
@@ -1131,7 +1132,7 @@ Procedure FinishOnChange(Item)
 	
 	If Object.Finish < Object.Start Then
 		Object.Finish = WhenChangingFinish;
-		Message(NStr("en='Finish date can not be less than the start date.'"));
+		Message(NStr("en='Finish date can not be less than the start date.';ru='Дата финиша не может быть меньше даты старта.'"));
 	Else
 		WhenChangingFinish = Object.Finish;
 	EndIf;
@@ -1223,7 +1224,7 @@ Procedure CommandFillBySpecification(Command)
 		Response = Undefined;
 
 		
-		ShowQueryBox(New NotifyDescription("CommandToFillBySpecificationEnd", ThisObject), NStr("en = 'Tabular section ""Materials"" will be refilled! Continue?'"), 
+		ShowQueryBox(New NotifyDescription("CommandToFillBySpecificationEnd", ThisObject), NStr("en='Tabular section ""Materials"" will be refilled! Continue?';ru='Табличная часть ""Материалы"" будет перезаполнена! Продолжить?'"), 
 							QuestionDialogMode.YesNo, 0);
         Return;
 		

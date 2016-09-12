@@ -20,7 +20,7 @@ Function GetFileBinaryData(Val AttachedFile) Export
 		
 	FileObject = AttachedFile.GetObject();
 	CommonUseClientServer.Validate(FileObject <> Undefined, 
-		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Attached file is not found ""%1"" (%2)'"),
+		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Attached file is not found ""%1"" (%2)';ru='Не найден присоединенный файл ""%1"" (%2)'"),
 			String(AttachedFile), AttachedFile.Metadata()));
 	
 	SetPrivilegedMode(True);
@@ -44,11 +44,13 @@ Function GetFileBinaryData(Val AttachedFile) Export
 		Else
 			// Record in the event log.
 			ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'There is no binary data in
-				           |
-				           |the AttachedFiles register Ref to file: ""%1"".'"),
+				NStr("en='There is no binary data in"
+""
+"the AttachedFiles register Ref to file: ""%1"".';ru='Двоичные данные файла отсутствуют в регистре ПрисоединенныеФайлы"
+""
+"Ссылка на файл: ""%1"".'"),
 				GetURL(AttachedFile));
-			WriteLogEvent(NStr("en = 'Files.File opening'", CommonUseClientServer.MainLanguageCode()),
+			WriteLogEvent(NStr("en='Files.File opening';ru='Файлы.Открытие файла'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				Metadata.Catalogs[AttachedFile.Metadata().Name],
 				AttachedFile,
@@ -65,7 +67,7 @@ Function GetFileBinaryData(Val AttachedFile) Export
 		Except
 			// Record in the event log.
 			ErrorInfo = ErrorTextOnFileReceiving(ErrorInfo(), AttachedFile);
-			WriteLogEvent(NStr("en = 'Files. Receiving of file from the volume'", CommonUseClientServer.MainLanguageCode()),
+			WriteLogEvent(NStr("en='Files. Receiving of file from the volume';ru='Файлы.Получение файла из тома'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				Metadata.Catalogs[AttachedFile.Metadata().Name],
 				AttachedFile,
@@ -117,7 +119,7 @@ Function GetFileData(Val AttachedFile,
 		
 	FileObject = AttachedFile.GetObject();
 	CommonUseClientServer.Validate(FileObject <> Undefined, 
-		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Attached file is not found ""%1"" (%2)'"),
+		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Attached file is not found ""%1"" (%2)';ru='Не найден присоединенный файл ""%1"" (%2)'"),
 			String(AttachedFile), AttachedFile.Metadata()));
 	
 	If ForEditing AND Not ValueIsFilled(FileObject.IsEditing) Then
@@ -239,19 +241,20 @@ Function AddFile(Val FilesOwner,
 	
 	BinaryData = GetFromTempStorage(FileAddressInTemporaryStorage);
 	
-	ErrorTitle = NStr("en = 'Error when adding the attached file.'");
+	ErrorTitle = NStr("en='Error when adding the attached file.';ru='Ошибка при добавлении присоединенного файла.'");
 	
 	If NewRefToFile = Undefined Then
 		CatalogName = AttachedFilesService.CatalogNameStorageFiles(FilesOwner, "", ErrorTitle,
-			NStr("en = 'In this case, the ""NewRefToFile"" parameter should be specified.'"));
+			NStr("en='In this case, the ""NewRefToFile"" parameter should be specified.';ru='В этом случае параметр ""НоваяСсылкаНаФайл"" должен быть указан.'"));
 		
 		NewRefToFile = Catalogs[CatalogName].GetRef();
 	Else
 		If Not Catalogs.AllRefsType().ContainsType(TypeOf(NewRefToFile))
 			Or Not ValueIsFilled(NewRefToFile) Then
 			
-			Raise NStr("en = 'Error when adding the attached file.
-				|Reference to the new file is not filled.'");
+			Raise NStr("en='Error when adding the attached file."
+"Reference to the new file is not filled.';ru='Ошибка при добавлении присоединенного файла."
+"Ссылка на новый файл не заполнена.'");
 		EndIf;
 		
 		CatalogName = AttachedFilesService.CatalogNameStorageFiles(
@@ -317,15 +320,16 @@ Function AddFile(Val FilesOwner,
 			RollbackTransaction();
 		EndIf;
 		
-		MessagePattern = NStr("en = 'An error occurred while adding
-		                             |attached file ""%1"": %2'");
+		MessagePattern = NStr("en='An error occurred while adding"
+"attached file ""%1"": %2';ru='Ошибка при добавлении"
+"присоединенного файла ""%1"": %2'");
 		CommentEventLogMonitor = StringFunctionsClientServer.PlaceParametersIntoString(
 			MessagePattern,
 			BaseName + "." + ExtensionWithoutDot,
 			DetailErrorDescription(ErrorInfo));
 		
 		WriteLogEvent(
-			NStr("en = 'Files. Attached file adding'",
+			NStr("en='Files. Attached file adding';ru='Файлы.Добавление присоединенного файла'",
 			     CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
@@ -359,7 +363,7 @@ EndFunction
 //
 Function NewRefToFile(FilesOwner, CatalogName = Undefined) Export
 	
-	ErrorTitle = NStr("en = 'Error when receiving a new reference to the attached file.'");
+	ErrorTitle = NStr("en='Error when receiving a new reference to the attached file.';ru='Ошибка при получении новой ссылки на присоединенный файл.'");
 	
 	CatalogName = AttachedFilesService.CatalogNameStorageFiles(
 		FilesOwner, CatalogName, ErrorTitle);
@@ -451,8 +455,8 @@ EndProcedure
 //
 Function GetAttachedFilesObjectFormNameByOwner(Val FilesOwner) Export
 	
-	ErrorTitle = NStr("en = 'Error when receiving the attached file form name.'");
-	EndErrors = NStr("en = 'In this case the form receiving is impossible.'");
+	ErrorTitle = NStr("en='Error when receiving the attached file form name.';ru='Ошибка при получении имени формы присоединенного файла.'");
+	EndErrors = NStr("en='In this case the form receiving is impossible.';ru='В этом случае получение формы невозможно.'");
 	
 	CatalogName = AttachedFilesService.CatalogNameStorageFiles(
 		FilesOwner, "", ErrorTitle, EndErrors);
@@ -518,8 +522,8 @@ Procedure ConvertFilesToAttached(Val FilesOwner, CatalogName = Undefined) Export
 	ModuleFileOperationsServiceServerCall = CommonUse.CommonModule("FileOperationsServiceServerCall");
 	ModuleFileOperationsService = CommonUse.CommonModule("FileOperationsService");
 	
-	ErrorTitle = NStr("en = 'An error occurred while converting subsystem attached files
-	                             |Work with files to attached files of the Attached files subsystem.'");
+	ErrorTitle = NStr("en='An error occurred while converting subsystem attached files"
+"Work with files to attached files of the Attached files subsystem.';ru='Ошибка при конвертации присоединенных файлов подсистемы Работа с файлами в присоединенные файлы подсистемы Присоединенные файлы.'");
 	
 	CatalogName = AttachedFilesService.CatalogNameStorageFiles(
 		FilesOwner, CatalogName, ErrorTitle);
@@ -784,14 +788,15 @@ Procedure PerformActionsBeforeWriteAttachedFile(Source, Cancel) Export
 	If Not ValueIsFilled(Source.FileOwner) Then
 		
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Owner in file is
-			           |not filled in ""%1"".'"),
+			NStr("en='Owner in file is"
+"not filled in ""%1"".';ru='Не заполнен"
+"владелец в файле ""%1"".'"),
 			Source.Description);
 		
 		If InfobaseUpdate.InfobaseUpdateInProgress() Then
 			
 			WriteLogEvent(
-				NStr("en = 'Files. File record error at IB update'",
+				NStr("en='Files. File record error at IB update';ru='Файлы.Ошибка записи файла при обновлении ИБ'",
 				     CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -965,17 +970,17 @@ Procedure OnCreateAtServerAttachedFile(Val Form) Export
 	EndIf;
 	
 	Form.AutoTitle = False;
-	Form.Title = NStr("en = 'Attached file'");
+	Form.Title = NStr("en='Attached file';ru='Присоединенный файл'");
 	
 	Command = Form.Commands.Add("GoToFileForm");
 	Command.Action = "Attachable_GoToFileForm";
 	
 	Decoration = Form.Items.Add("ExplanationText", Type("FormDecoration"));
-	Decoration.Title = NStr("en = 'In order to proceed to the file card press the hyperlink'");
+	Decoration.Title = NStr("en='In order to proceed to the file card press the hyperlink';ru='Для того, чтобы перейти к карточке файла, нажмите на гиперссылку'");
 	
 	Button = Form.Items.Add("GoToFileForm1", Type("FormButton"));
 	Button.Type        = FormButtonType.Hyperlink;
-	Button.Title  = NStr("en = 'Go to file form'");
+	Button.Title  = NStr("en='Go to file form';ru='Перейти к форме файла'");
 	Button.CommandName = "GoToFileForm";
 	
 EndProcedure
@@ -988,7 +993,7 @@ Procedure CallFormOpeningException(Form) Export
 		Return;
 	EndIf;
 	
-	Raise NStr("en = 'Cannot open the form directly.'");
+	Raise NStr("en='Cannot open the form directly.';ru='Самостоятельное использование формы не предусмотрено.'");
 	
 EndProcedure
 
@@ -1008,9 +1013,11 @@ Function ErrorTextOnFileReceiving(Val ErrorInfo, Val File)
 	
 	If File <> Undefined Then
 		ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1
-			           |
-			           |Ref to file: ""%2"".'"),
+			NStr("en='%1"
+""
+"Ref to file: ""%2"".';ru='%1"
+""
+"Ссылка на файл: ""%2"".'"),
 			ErrorInfo,
 			GetURL(File) );
 	EndIf;
@@ -1065,7 +1072,7 @@ Procedure MarkToDeleteAttachedFiles(Val Source, CatalogName = Undefined)
 			TypeOf(Source.Ref));
 	Except
 		ErrorPresentation = BriefErrorDescription(ErrorInfo());
-		Raise NStr("en = 'Error when marking for deletion of the attached files.'")
+		Raise NStr("en='Error when marking for deletion of the attached files.';ru='Ошибка при пометке на удаление присоединенных файлов.'")
 			+ Chars.LF
 			+ ErrorPresentation;
 	EndTry;
@@ -1092,9 +1099,11 @@ Procedure MarkToDeleteAttachedFiles(Val Source, CatalogName = Undefined)
 		While Selection.Next() Do
 			If Source.DeletionMark AND ValueIsFilled(Selection.IsEditing) Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = '""%1"" can not be
-					           |deleted, so. contains attached
-					           |file ""%2"" taken for editing.'"),
+					NStr("en='""%1"" can not be"
+"deleted, so. contains attached"
+"file ""%2"" taken for editing.';ru='""%1"" не может быть удален,"
+"т.к. содержит присоединенный файл ""%2"","
+"занятый для редактирования.'"),
 					String(Source.Ref),
 					String(Selection.Ref));
 			EndIf;

@@ -97,7 +97,7 @@ Function ConnectExternalDataProcessor(Ref) Export
 		
 	EndIf;
 	
-	WriteNote(Ref, NStr("en = 'Enabling, SafeMode = ""%1"".'"), SafeMode);
+	WriteNote(Ref, NStr("en='Enabling, SafeMode = ""%1"".';ru='Подключение, БезопасныйРежим = ""%1"".'"), SafeMode);
 	
 	DataProcessorName = Manager.Connect(AddressInTemporaryStorage, , SafeMode);
 	
@@ -217,7 +217,7 @@ Procedure PrintByExternalSource(Ref, SourceParameters, PrintFormsCollection,
 	
 	If ExternalDataProcessorObject = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'External processor ""%1"" (type ""%2"") is not served by the ""Additional reports and processors"" subsystem'"),
+			NStr("en='External processor ""%1"" (type ""%2"") is not served by the ""Additional reports and processors"" subsystem';ru='Внешняя обработка ""%1"" (тип ""%2"") не обслуживается подсистемой ""Дополнительные отчеты и обработки""'"),
 			String(Ref),
 			String(TypeOf(Ref)));
 	EndIf;
@@ -232,7 +232,7 @@ Procedure PrintByExternalSource(Ref, SourceParameters, PrintFormsCollection,
 	For Each Str IN PrintFormsCollection Do
 		If Str.SpreadsheetDocument = Undefined Then
 			ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Print handler has not generated spreadsheet document for: %1'"),
+				NStr("en='Print handler has not generated spreadsheet document for: %1';ru='В обработчике печати не был сформирован табличный документ для: %1'"),
 				Str.TemplateName);
 			Raise(ErrorMessageText);
 		EndIf;
@@ -814,7 +814,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	Work = CurrentWorks.Add();
 	Work.ID = "AdditionalReportsAndDataProcessors";
 	Work.ThereIsWork      = OutputToDo AND AdditionalReportsAndDataProcessorsQuantity > 0;
-	Work.Presentation = NStr("en = 'Additional reports and data processors'");
+	Work.Presentation = NStr("en='Additional reports and data processors';ru='Дополнительные отчеты и обработки'");
 	Work.Count    = AdditionalReportsAndDataProcessorsQuantity;
 	Work.Form         = "Catalog.AdditionalReportsAndDataProcessors.Form.CheckAdditionalReportsAndDataProcessors";
 	Work.Owner      = "CheckCompatibilityWithCurrentVersion";
@@ -825,7 +825,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		ToDosGroup = CurrentWorks.Add();
 		ToDosGroup.ID = "CheckCompatibilityWithCurrentVersion";
 		ToDosGroup.ThereIsWork      = Work.ThereIsWork;
-		ToDosGroup.Presentation = NStr("en = 'Check compatibility'");
+		ToDosGroup.Presentation = NStr("en='Check compatibility';ru='Проверить совместимость'");
 		If Work.ThereIsWork Then
 			ToDosGroup.Count = Work.Count;
 		EndIf;
@@ -944,8 +944,9 @@ EndProcedure
 Procedure OnConnectingAdd1Report(Ref, ReportParameters, Result) Export
 	If Not GetFunctionalOption("UseAdditionalReportsAndDataProcessors") Then
 		ReportParameters.Errors = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Item ""%1"" is not enabled as the system ""%2"" is disabled in the application settings.
-			|To enable the subsystem contact the application administrator.'"),
+			NStr("en='Item ""%1"" is not enabled as the system ""%2"" is disabled in the application settings."
+"To enable the subsystem contact the application administrator.';ru='Элемент ""%1"" не подключен, потому что подсистема ""%2"" отключена в настройках программы."
+"Для включения подсистемы обратитесь к администратору программы.'"),
 			"'"+ String(Ref) +"'",
 			AdditionalReportsAndDataProcessorsClientServer.SubsystemDescription("en"));
 		Return;
@@ -962,7 +963,7 @@ Procedure OnConnectingAdd1Report(Ref, ReportParameters, Result) Export
 			Result = True;
 		Except
 			ReportParameters.Errors = 
-				StrReplace(NStr("en = 'An error occurred while enabling an additional report ""%1"":'"), "%1", String(Ref))
+				StrReplace(NStr("en='An error occurred while enabling an additional report ""%1"":';ru='При подключении дополнительного отчета ""%1"" возникла ошибка:'"), "%1", String(Ref))
 				+ Chars.LF
 				+ DetailErrorDescription(ErrorInfo());
 			Result = False;
@@ -971,7 +972,7 @@ Procedure OnConnectingAdd1Report(Ref, ReportParameters, Result) Export
 	Else
 		
 		ReportParameters.Errors = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Item %1 is not an additional report'"), 
+			NStr("en='Item %1 is not an additional report';ru='Элемент %1 не является дополнительным отчетом'"), 
 			"'"+ String(Ref) +"'");
 		
 		Result = False;
@@ -1099,7 +1100,7 @@ Procedure ReceiveAdditionalReportsAndDataProcessorsSettings(UserRef, Settings) E
 	EndIf;
 	
 	// Settings string name displayed in the processor settings tree.
-	SettingName = NStr("en='Prompt access settings to the additional reports and processings'");
+	SettingName = NStr("en='Prompt access settings to the additional reports and processings';ru='Настройки быстрого доступа к дополнительным отчетам и обработкам'");
 	
 	// Settings string picture.
 	SettingPicture = "";
@@ -1556,10 +1557,10 @@ Procedure FillDimensionsCompatibilityMode() Export
 					// If it is impossible to connect the data processor - set permissions
 					// compatibility mode for it with SSL version 2.1.3 and lock temporarily.
 					ErrorText = """" + Object.Description + """:"
-						+ Chars.LF + NStr("en = 'Unable to determine permissions compatibility mode as:'")
+						+ Chars.LF + NStr("en='Unable to determine permissions compatibility mode as:';ru='Не удалось определить режим совместимости разрешений по причине:'")
 						+ Chars.LF + DetailErrorDescription(ErrorInfo())
 						+ Chars.LF
-						+ Chars.LF + NStr("en = 'Object is locked in the compatibility mode with the version 2.1.3.'");
+						+ Chars.LF + NStr("en='Object is locked in the compatibility mode with the version 2.1.3.';ru='Объект заблокирован в режиме совместимости с версией 2.1.3.'");
 					WriteWarning(Object.Ref, ErrorText);
 					CompatibilityMode = Enums.AdditionalReportAndDataProcessorPermissionCompatibilityModes.Version_2_1_3;
 					Publication = Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Disabled;
@@ -1601,7 +1602,7 @@ Procedure RunDataProcessorInScheduledJob(ExternalDataProcessor, CommandID) Expor
 	CommonUse.OnStartExecutingScheduledJob();
 	
 	// Events log monitor record
-	WriteInformation(ExternalDataProcessor, NStr("en = 'Command %1: Start.'"), CommandID);
+	WriteInformation(ExternalDataProcessor, NStr("en='Command %1: Start.';ru='Команда %1: Запуск.'"), CommandID);
 	
 	// Run command
 	Try
@@ -1609,13 +1610,13 @@ Procedure RunDataProcessorInScheduledJob(ExternalDataProcessor, CommandID) Expor
 	Except
 		WriteError(
 			ExternalDataProcessor,
-			NStr("en = 'Command %1: Execution error:%2'"),
+			NStr("en='Command %1: Execution error:%2';ru='Команда %1: Ошибка выполнения:%2'"),
 			CommandID,
 			Chars.LF + DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
 	// Events log monitor record
-	WriteInformation(ExternalDataProcessor, NStr("en = 'Command %1: Ending.'"), CommandID);
+	WriteInformation(ExternalDataProcessor, NStr("en='Command %1: Ending.';ru='Команда %1: Завершение.'"), CommandID);
 	
 EndProcedure
 
@@ -1841,7 +1842,7 @@ Function AssignedMetadataObjectsByExternalObjectKind(Kind) Export
 			NewPurpose.FullMetadataObjectName = AdditionalReportsAndDataProcessorsClientServer.DesktopID();
 			NewPurpose.ObjectDestination = Catalogs.MetadataObjectIDs.EmptyRef();
 			NewPurpose.MetadataObjectKind = "Subsystem";
-			NewPurpose.Presentation = NStr("en = 'Desktop'");
+			NewPurpose.Presentation = NStr("en='Desktop';ru='Рабочий стол'");
 		Else
 			NewPurpose.FullMetadataObjectName = MetadataObject.FullName();
 			NewPurpose.ObjectDestination = CommonUse.MetadataObjectID(MetadataObject);
@@ -1928,7 +1929,7 @@ EndFunction
 Function PresentationOfSection(Section) Export
 	If Section = AdditionalReportsAndDataProcessorsClientServer.DesktopID()
 		OR Section = Catalogs.MetadataObjectIDs.EmptyRef() Then
-		Return NStr("en = 'Desktop'");
+		Return NStr("en='Desktop';ru='Рабочий стол'");
 	EndIf;
 	
 	If TypeOf(Section) = Type("CatalogRef.MetadataObjectIDs") Then
@@ -1944,7 +1945,7 @@ Function PresentationOfSection(Section) Export
 	EndIf;
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Section ""%1""'"), 
+		NStr("en='Section ""%1""';ru='Раздел %1'"), 
 		PresentationOfSection);
 EndFunction
 
@@ -2257,7 +2258,7 @@ Procedure GeneratePopupCommandsFill(Form, Parameters)
 			CommandBar = Form.CommandBar;
 		EndIf;
 		Popup = Items.Insert("PopupAdditionalFillingDataprocessors", Type("FormGroup"), CommandBar);
-		Popup.Title = NStr("en = 'Fill'");
+		Popup.Title = NStr("en='Fill';ru='Заполнить'");
 		Popup.Type = FormGroupType.Popup;
 		Popup.Picture = PictureLib.FillForm;
 		Popup.Representation = ButtonRepresentation.PictureAndText;
@@ -2502,7 +2503,7 @@ Function ExecuteExternalObjectCommand(ExternalObject, CommandID, CommandParamete
 	If CommandDetails = Undefined Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Command %1 is not found!'"), CommandID);
+			NStr("en='Command %1 is not found!';ru='Команда %1 не обнаружена!'"), CommandID);
 		
 	EndIf;
 	IsScriptInSafeMode = (CommandDetails.Use = "ScriptInSafeMode");
@@ -2676,21 +2677,22 @@ Function RegisterDataProcessor(Val Object, Val RegistrationParameters) Export
 		OR Users.InfobaseUserWithFullAccess(, True) Then
 		// do nothing
 	Else
-		Result.ErrorText = NStr("en = 'To enable processor started in the unsafe mode, you need administrator rights.'");
+		Result.ErrorText = NStr("en='To enable processor started in the unsafe mode, you need administrator rights.';ru='Для подключения обработки, запускаемой в небезопасном режиме, требуются административные права.'");
 		Return Result;
 	EndIf;
 	
 	If Not Object.IsNew() AND RegistrationData.Type <> Object.Type Then
 		Result.ErrorText = 
 			StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Imported object kind (%1) does not correspond to the current one (%2).
-			|To import a new object, click Create.'"),
+			NStr("en='Imported object kind (%1) does not correspond to the current one (%2)."
+"To import a new object, click Create.';ru='Вид загружаемого объекта (%1) не соответствует текущему (%2)."
+"Для загрузки нового объекта нажмите ""Создать"".'"),
 			String(RegistrationData.Type),
 			String(Object.Type)
 		);
 		Return Result;
 	ElsIf RegistrationParameters.IsReport <> (RegistrationData.Type = TypeAdditionalReport OR RegistrationData.Type = ReportKind) Then
-		Result.ErrorText = NStr("en = 'Processing type specified in the information about the external processing does not correspond to its extension.'");
+		Result.ErrorText = NStr("en='Processing type specified in the information about the external processing does not correspond to its extension.';ru='Вид обработки, указанный в сведениях о внешней обработке, не соответствует ее расширению.'");
 		Return Result;
 	EndIf;
 	
@@ -2768,7 +2770,7 @@ Function RegisterDataProcessor(Val Object, Val RegistrationParameters) Export
 		
 		If Not ValueIsFilled(CommandDetails.StartVariant) Then
 			CommonUseClientServer.MessageToUser(
-				StrReplace(NStr("en = 'Launch method is not specified for command ""%1"".'"), "%1", CommandDetails.Presentation));
+				StrReplace(NStr("en='Launch method is not specified for command ""%1"".';ru='Для команды ""%1"" не определен способ запуска.'"), "%1", CommandDetails.Presentation));
 		EndIf;
 		
 		Command = Object.Commands.Add();
@@ -2863,15 +2865,17 @@ Procedure OnGetOfRegistrationData(Object, RegistrationData, RegistrationParamete
 	EndTry;
 	If ErrorInfo <> Undefined Then
 		If RegistrationParameters.IsReport Then
-			ErrorText = NStr("en='Unable to enable additional report from file.
-			|It might not be compatible with the application version.'");
+			ErrorText = NStr("en='Unable to enable additional report from file."
+"It might not be compatible with the application version.';ru='Невозможно подключить дополнительный отчет из файла."
+"Возможно, он не подходит для этой версии программы.'");
 		Else
-			ErrorText = NStr("en='Unable to enable additional processor from file.
-			|It may not be suitable for this version of the application.'");
+			ErrorText = NStr("en='Unable to enable additional processor from file."
+"It may not be suitable for this version of the application.';ru='Невозможно подключить дополнительную обработку из файла."
+"Возможно, она не подходит для этой версии программы.'");
 		EndIf;
 		RegistrationResult.ErrorText = ErrorText;
 		RegistrationResult.BriefErrorDescription = BriefErrorDescription(ErrorInfo);
-		ErrorText = ErrorText + Chars.LF + Chars.LF + NStr("en = 'Technical information:'") + Chars.LF;
+		ErrorText = ErrorText + Chars.LF + Chars.LF + NStr("en='Technical information:';ru='Техническая информация:'") + Chars.LF;
 		WriteError(Object.Ref, ErrorText + DetailErrorDescription(ErrorInfo));
 		Return;
 	EndIf;

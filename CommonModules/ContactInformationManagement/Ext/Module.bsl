@@ -195,7 +195,7 @@ Procedure OnCreateAtServer(Form, Object, ItemNameForPlacement = "", TitleLocatio
 				EventLogLevel.Error, , ContactInformationObject.FieldsValues, 
 				DetailErrorDescription(ErrorInfo()));
 				CommonUseClientServer.MessageToUser(
-				NStr("en = 'Incorrect format of contact information.'"), ,
+				NStr("en='Incorrect format of contact information.';ru='Некорректный формат контактной информации.'"), ,
 				ContactInformationObject.AttributeName);
 			EndTry;
 		EndIf;
@@ -365,7 +365,7 @@ Procedure OnCreateAtServer(Form, Object, ItemNameForPlacement = "", TitleLocatio
 		
 		CommandName = "ContactInformationAddInputField";
 		Command = Form.Commands.Add(CommandName);
-		Command.ToolTip = NStr("en = 'Add additional field of the contact information'");
+		Command.ToolTip = NStr("en='Add additional field of the contact information';ru='Добавить дополнительное поле контактной информации'");
 		Command.Representation = ButtonRepresentation.PictureAndText;
 		Command.Picture = PictureLib.AddListItem;
 		Command.Action = "Attachable_ContactInformationExecuteCommand";
@@ -373,7 +373,7 @@ Procedure OnCreateAtServer(Form, Object, ItemNameForPlacement = "", TitleLocatio
 		AddItemDescription(Form, CommandName, 9, True);
 		
 		Button = Form.Items.Add(CommandName,Type("FormButton"), CommandGroup);
-		Button.Title = NStr("en = 'Add'");
+		Button.Title = NStr("en='Add';ru='Добавить'");
 		Button.CommandName = CommandName;
 		AddItemDescription(Form, CommandName, 2);
 		
@@ -530,7 +530,7 @@ Procedure FillCheckProcessingAtServer(Form, Object, Cancel) Export
 				
 				If RequiredFilling AND IsBlankString(Presentation) Then
 					
-					MessageText = NStr("en = 'Field ""%1"" is not filled.'");
+					MessageText = NStr("en='Field ""%1"" is not filled.';ru='Поле ""%1"" не заполнено.'");
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, InformationKind.Description);
 					CommonUseClientServer.MessageToUser(MessageText,,Field);
 					CurrentLevelErrors = 2;
@@ -565,7 +565,7 @@ Procedure FillCheckProcessingAtServer(Form, Object, Cancel) Export
 				AND Not HasOtherFilledThisKingCIRows(Form, TableRow, InformationKind)
 			Then
 				
-				MessageText = NStr("en = 'Field ""%1"" is not filled.'");
+				MessageText = NStr("en='Field ""%1"" is not filled.';ru='Поле ""%1"" не заполнено.'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, InformationKind.Description);
 				CommonUseClientServer.MessageToUser(MessageText,,,AttributeName);
 				CurrentLevelErrors = 2;
@@ -887,7 +887,7 @@ Function CountryAddressesContactInformation(Val XMLString) Export
 	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(TargetNamespace, "ContactInformation"));
 	Address = XDTOAddress.Content;
 	If Address = Undefined Or Address.Type() <> XDTOFactory.Type(TargetNamespace, "Address") Then
-		Raise NStr("en = 'Impossible to define the country, address is awaited.'");
+		Raise NStr("en='Impossible to define the country, address is awaited.';ru='Невозможно определить страну, ожидается адрес.'");
 	EndIf;
 	
 	Result.Description = TrimAll(Address.Country);
@@ -916,7 +916,7 @@ Function AddressesStateContactInformation(Val XMLString) Export
 	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(TargetNamespace, "ContactInformation"));
 	Address = XDTOAddress.Content;
 	If Address = Undefined Or Address.Type() <> XDTOFactory.Type(TargetNamespace, "Address") Then
-		Raise NStr("en = 'Impossible to delete the RF subject, waiting for address.'");
+		Raise NStr("en='Impossible to delete the RF subject, waiting for address.';ru='Невозможно определить субъекта РФ, ожидается адрес.'");
 	EndIf;
 	
 	AddressRF = ContactInformationManagementService.RussianAddress(Address);
@@ -945,7 +945,7 @@ Function CityAddressContactInformation(Val XMLString) Export
 	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(TargetNamespace, "ContactInformation"));
 	Address = XDTOAddress.Content;
 	If Address = Undefined Or Address.Type() <> XDTOFactory.Type(TargetNamespace, "Address") Then
-		Raise NStr("en = 'Impossible to define the city, address is awaited.'");
+		Raise NStr("en='Impossible to define the city, address is awaited.';ru='Невозможно определить город, ожидается адрес.'");
 	EndIf;
 	
 	AddressRF = ContactInformationManagementService.RussianAddress(Address);
@@ -990,7 +990,7 @@ Function DomainAddressContactInformation(Val XMLString) Export
 		EndIf;
 	EndIf;
 	
-	Raise NStr("en = 'Impossible to determine the domain, waiting for email or web link'");	
+	Raise NStr("en='Impossible to determine the domain, waiting for email or web link';ru='Невозможно определить домен, ожидается электронная почта или веб-ссылка.'");	
 EndFunction
 
 // Returns a string with the phone number without a code and additional number.
@@ -1022,7 +1022,7 @@ Function PhoneNumberContactInformation(Val XMLString) Export
 		EndIf;
 	EndIf;
 	
-	Raise NStr("en = 'Impossible to define the number, phone or fax is awaited.'");
+	Raise NStr("en='Impossible to define the number, phone or fax is awaited.';ru='Невозможно определить номер, ожидается телефона или факс.'");
 EndFunction
 
 // Compares two references of contact information.
@@ -1097,7 +1097,7 @@ Procedure CreateContactInformation(TempTablesManager, ObjectsArray, CITypes = Un
 	If TypeOf(ObjectsArray) = Type("Array") AND ObjectsArray.Count() > 0 Then
 		Ref = ObjectsArray.Get(0);
 	Else
-		Raise NStr("en = 'Invalid value for the contact information owners array.'");
+		Raise NStr("en='Invalid value for the contact information owners array.';ru='Неверное значение для массива владельцев контактной информации.'");
 	EndIf;
 	
 	Query = New Query("
@@ -1513,7 +1513,7 @@ Procedure SetPropertiesContactInformationKind(Parameters) Export
 	
 	VerificationSettings = Parameters.VerificationSettings;
 	CheckSettings = TypeOf(VerificationSettings) = Type("Structure");
-	ParametersError   = NStr("en = 'Address verification settings are filled incorrectly'");
+	ParametersError   = NStr("en='Address verification settings are filled incorrectly';ru='Некорректно заполнены настройки проверки адреса'");
 	
 	If CheckSettings AND Parameters.Type = Enums.ContactInformationTypes.Address Then
 		If VerificationSettings.AddressRussianOnly Then
@@ -2028,9 +2028,9 @@ Function InputField(Form, EditInDialogOnly, Type, AttributeName, ToolTip, IsNewC
 		CommandName = "ContextMenu" + AttributeName;
 		Command = Form.Commands.Add(CommandName);
 		Button = Form.Items.Add(CommandName,Type("FormButton"), Item.ContextMenu);
-		Command.ToolTip = NStr("en = 'Enter comment'");
+		Command.ToolTip = NStr("en='Enter comment';ru='Ввести комментарий'");
 		Command.Action = "Attachable_ContactInformationExecuteCommand";
-		Button.Title = NStr("en = 'Enter comment'");
+		Button.Title = NStr("en='Enter comment';ru='Ввести комментарий'");
 		Button.CommandName = CommandName;
 		Command.ModifiesStoredData = True;
 		
@@ -2091,21 +2091,21 @@ Function Action(Form, Type, AttributeName, ActionsGroup, QuantityAddresses, IsCo
 		
 		If Type = Enums.ContactInformationTypes.Address Then
 			
-			Item.Title = NStr("en = 'Fill'");
-			Command.ToolTip = NStr("en = 'Fill in address from another field'");
+			Item.Title = NStr("en='Fill';ru='Заполнить'");
+			Command.ToolTip = NStr("en='Fill in address from another field';ru='Заполнить адрес из другого поля'");
 			Command.Picture = PictureLib.MoveLeft;
 			Command.ModifiesStoredData = True;
 			
 		ElsIf Type = Enums.ContactInformationTypes.WebPage Then
 			
-			Item.Title = NStr("en = 'Goto'");
-			Command.ToolTip = NStr("en = 'Navigate to link'");
+			Item.Title = NStr("en='Goto';ru='Перейти'");
+			Command.ToolTip = NStr("en='Navigate to link';ru='Перейти по ссылке'");
 			Command.Picture = PictureLib.ContactInformationForNavigateLink;
 			
 		ElsIf Type = Enums.ContactInformationTypes.EmailAddress Then
 			
-			Item.Title = NStr("en = 'Write letter'");
-			Command.ToolTip = NStr("en = 'Write letter'");
+			Item.Title = NStr("en='Write letter';ru='Написать письмо'");
+			Command.ToolTip = NStr("en='Write letter';ru='Написать письмо'");
 			Command.Picture = PictureLib.SendByEmail;
 			
 		EndIf;
@@ -2561,7 +2561,7 @@ Function FillEMailErrors(Source, InformationKind, Val AttributeName = "", Attrib
 			Result = CommonUseClientServer.ParseStringWithPostalAddresses(EMail_Address.Value);
 			If Result.Count() > 1 Then
 				
-				ErrorString = NStr("en = 'Entry of the single email address is permitted'");
+				ErrorString = NStr("en='Entry of the single email address is permitted';ru='Допускается ввод только одного адреса электронной почты'");
 				
 			EndIf;
 		Except

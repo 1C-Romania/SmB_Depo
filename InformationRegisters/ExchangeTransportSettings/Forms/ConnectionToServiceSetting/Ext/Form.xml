@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Setup of connection to the application in the Internet</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Настройка подключения к приложению в Интернете</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -40,6 +44,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Verify connection and close</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Проверить подключение и закрыть</v8:content>
+					</v8:item>
 				</Title>
 				<ExtendedTooltip name="FormWriteAndCloseExtendedTooltip" id="23"/>
 			</Button>
@@ -63,6 +71,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Name and password of the application user in the Internet</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя и пароль пользователя приложения в Интернете</v8:content>
+				</v8:item>
 			</Title>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
@@ -74,6 +86,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Application user in the Internet</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь приложения в Интернете</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Width>30</Width>
@@ -95,6 +111,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Password of the application user in the Internet</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Пароль пользователя приложения в Интернете</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Width>30</Width>
@@ -136,6 +156,13 @@ For automatic synchronization of data with an
 application on the Internet
 it is recommended to specify a separate user with limited rights (rights only on the data synchronization).</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Хранение пароля в программе небезопасно.
+Для автоматической синхронизации данных
+с приложением в Интернете
+рекомендуется указывать отдельного пользователя с ограниченными правами (только права на синхронизацию данных).</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="Decoration3ContextMenu" id="19"/>
 							<ExtendedTooltip name="Decoration3ExtendedTooltip" id="32"/>
@@ -164,6 +191,10 @@ it is recommended to specify a separate user with limited rights (rights only on
 					<v8:lang>en</v8:lang>
 					<v8:content>Address to restore the account password</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес для восстановления пароля учетной записи</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -179,6 +210,10 @@ it is recommended to specify a separate user with limited rights (rights only on
 					<v8:lang>en</v8:lang>
 					<v8:content>Automatic synchronization setup</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка автоматической синхронизации</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -189,6 +224,10 @@ it is recommended to specify a separate user with limited rights (rights only on
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Application user</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь приложения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -203,11 +242,19 @@ it is recommended to specify a separate user with limited rights (rights only on
 					<v8:lang>en</v8:lang>
 					<v8:content>Forgot password?</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Забыли пароль?</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Proceeding to the page of the password recovery</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Переход к странице восстановления пароля</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>PasswordForgotten</Action>
@@ -218,11 +265,19 @@ it is recommended to specify a separate user with limited rights (rights only on
 					<v8:lang>en</v8:lang>
 					<v8:content>Access parameters to the Internet</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры доступа в Интернет</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Access parameters to the Internet</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры доступа в Интернет</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>AccessToInternetParameters</Action>

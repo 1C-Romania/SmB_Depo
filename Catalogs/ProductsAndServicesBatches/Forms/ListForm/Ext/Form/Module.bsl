@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			OR Not ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem Then
 			
 			AutoTitle = False;
-			Title = NStr("en = 'Batches are stored for inventories only'");
+			Title = NStr("en='Batches are stored for inventories only';ru='Партии хранятся только для запасов'");
 			
 			Items.List.ReadOnly = True;
 			

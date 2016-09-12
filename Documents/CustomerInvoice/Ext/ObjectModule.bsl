@@ -220,7 +220,7 @@ Procedure FillByPurchaseInvoice(FillingData, Operation = "")
 			OR FillingData.OperationKind = Enums.OperationKindsSupplierInvoice.ReceptionForCommission Then
 			OperationKind = Enums.OperationKindsCustomerInvoice.SaleToCustomer;
 		Else
-			ErrorMessage = NStr("en = 'Cannot input ""Sale to customer"" operation on the basis of the operation ""%OperationKind""!'");
+			ErrorMessage = NStr("en='Cannot input ""Sale to customer"" operation on the basis of the operation ""%OperationKind""!';ru='Невозможен ввод операции ""Продажа покупателю"" на основании операции - ""%ВидОперации""!'");
 			ErrorMessage = StrReplace(ErrorMessage, "%OperationKind", FillingData.OperationKind);
 			Raise ErrorMessage;
 		EndIf;
@@ -235,7 +235,7 @@ Procedure FillByPurchaseInvoice(FillingData, Operation = "")
 		ElsIf FillingData.OperationKind = Enums.OperationKindsSupplierInvoice.ReceptionForSafeCustody Then
 			OperationKind = Enums.OperationKindsCustomerInvoice.ReturnFromSafeCustody;
 		Else
-			ErrorMessage = NStr("en = 'Cannot input the ""Return"" operation on the basis of the operation ""%OperationKind""!'");
+			ErrorMessage = NStr("en='Cannot input the ""Return"" operation on the basis of the operation ""%OperationKind""!';ru='Невозможен ввод операции ""Возврат"" на основании операции - ""%ВидОперации""!'");
 			ErrorMessage = StrReplace(ErrorMessage, "%OperationKind", FillingData.OperationKind);
 			Raise ErrorMessage;
 		EndIf;			
@@ -1164,7 +1164,7 @@ Procedure SubordinatedInvoiceControl()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится счет фактура %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Sales invoice No " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -1195,7 +1195,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		OR (TypeOf(FillingData) = Type("Structure") AND FillingData.Property("Basis")
 		AND FillingData.Basis.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder) Then
 		
-		Raise NStr("en = 'Expense Invoice can not be entered on the basis of Job order!'");
+		Raise NStr("en='Expense Invoice can not be entered on the basis of Job order!';ru='Нельзя ввести Расходную накладную на основании заказ-наряда!'");
 		
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.SupplierInvoice") Then
 		FillByPurchaseInvoice(FillingData);
@@ -1304,7 +1304,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If FoundStringInventory = Undefined
 		   AND QuantityInventory > 0
 		   AND Counterparty.DoOperationsByOrders Then
-			MessageText = NStr("en = 'Advance by order different from the one specified in tabular sections ""inventory"" or ""Expenses"" can not be accepted.'");
+			MessageText = NStr("en='Advance by order different from the one specified in tabular sections ""inventory"" or ""Expenses"" can not be accepted.';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличных частях ""Запасы"" или ""Расходы""!'");
 			SmallBusinessServer.ShowMessageAboutError(
 				,
 				MessageText,
@@ -1324,7 +1324,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 			If StringInventory.Reserve > StringInventory.Quantity Then
 				
-				MessageText = NStr("en = 'In row #%Number% of tabular section ""Inventory and services"" the quantity of shipped items from the reserve exceeds the total quantity of inventory.'");
+				MessageText = NStr("en='In row #%Number% of tabular section ""Inventory and services"" the quantity of shipped items from the reserve exceeds the total quantity of inventory.';ru='В строке №%Номер% табл. части ""Запасы и услуги"" количество отгружаемых позиций из резерва превышает общее количество запасов.'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -1353,7 +1353,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			CurAmountDiscounts = ManualDiscountCurAmount + AutomaticDiscountCurAmount;
 			If StringInventory.DiscountMarkupPercent <> 100 AND CurAmountDiscounts < CurAmount
 				AND Not ValueIsFilled(StringInventory.Amount) Then
-				MessageText = NStr("en = 'Column ""Amount"" is not populated in string %Number% of list ""Inventory"".'");
+				MessageText = NStr("en='Column ""Amount"" is not populated in string %Number% of list ""Inventory"".';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Запасы"".'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,

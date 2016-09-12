@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Data encryption</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Шифрование данных</v8:content>
+		</v8:item>
 	</Title>
 	<Width>55</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -29,6 +33,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Cancel</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отменить</v8:content>
+					</v8:item>
 				</Title>
 				<ExtendedTooltip name="FormCloseExtendedTooltip" id="304"/>
 			</Button>
@@ -50,6 +58,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Data presentation group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа представление данных</v8:content>
+				</v8:item>
 			</Title>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
@@ -62,6 +74,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные</v8:content>
 						</v8:item>
 					</Title>
 					<Hiperlink>true</Hiperlink>
@@ -79,6 +95,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Encryption variants</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Варианты шифрования</v8:content>
+				</v8:item>
 			</Title>
 			<PagesRepresentation>None</PagesRepresentation>
 			<ExtendedTooltip name="EncryptionVariantsExtendedTooltip" id="495"/>
@@ -89,6 +109,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Select from the catalog</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбрать из справочника</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="SelectFromCatalogExtendedTooltip" id="497"/>
 					<ChildItems>
@@ -97,6 +121,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group personal certificate</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа личный сертификат</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -111,11 +139,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Personal Certificate</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Личный сертификат</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Personal certificate allows user to decrypt data that is encrypted by him.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Личный сертификат позволяет пользователю расшифровать данные, которые он шифрует.</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -143,6 +179,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Certificates of users who are allowed to decrypt data besides you</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сертификаты тех, кому разрешено расшифровывать данные, кроме Вас</v8:content>
 								</v8:item>
 							</Title>
 							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
@@ -205,6 +245,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>Certificates command bar</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Сертификаты командная панель</v8:content>
+													</v8:item>
 												</Title>
 												<CommandSource>Item.EncryptionCertificates</CommandSource>
 												<ExtendedTooltip name="CertificatesCommandBarExtendedTooltip" id="488"/>
@@ -258,6 +302,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Specified certificates set</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указанный набор сертификатов</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="SpecifiedCertificatesSetExtendedTooltip" id="499"/>
 					<ChildItems>
@@ -266,6 +314,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Certificates of users that are allowed to decrypt data</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сертификаты тех, кому разрешено расшифровывать данные</v8:content>
 								</v8:item>
 							</Title>
 							<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
@@ -358,6 +410,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Data presentation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представления данных</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -373,6 +429,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.DigitalSignaturesAndEncryptionKeyCertificates</v8:Type>
@@ -384,6 +444,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate thumbprint</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отпечаток сертификата</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -400,6 +464,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Select certificate list</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат список выбора</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
@@ -410,6 +478,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificates filter</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор сертификатов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -422,6 +494,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate application</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат программа</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.DigitalSignatureAndEncryptionApplications</v8:Type>
@@ -433,6 +509,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Notify on expiration</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оповестить об окончании срока действия</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -443,6 +523,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>The certificate is valid through</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат действителен до</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -458,6 +542,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate on server error description</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат на сервере описание ошибки</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -466,6 +554,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cryptography manager on server error description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Менеджер криптографии на сервере описание ошибки</v8:content>
 				</v8:item>
 			</Title>
 			<Type/>
@@ -476,6 +568,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Filter of thumbprints</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор отпечатков</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -484,6 +580,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Encryption certificates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификаты шифрования</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -495,6 +595,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Certificate</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сертификат</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -509,6 +613,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate enhanced protection of the private key</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сертификат усиленная защита закрытого ключа</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -519,6 +627,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Without confirmation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Без подтверждения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -531,6 +643,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Perform on server</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнять на сервере</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -539,6 +655,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificate address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес сертификата</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -555,6 +675,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Certificates set</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Набор сертификатов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -565,6 +689,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Presentation</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -581,6 +709,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Imprint</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отпечаток</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -596,6 +728,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Ref</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -610,6 +746,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Dates Address</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адрес данных</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -628,6 +768,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Address of certificates properties</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес свойств сертификатов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -643,6 +787,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Set of certificates is specified</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Указан набор сертификатов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -656,6 +804,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Encrypt</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Зашифровать</v8:content>
+				</v8:item>
 			</Title>
 			<Action>Encrypt</Action>
 		</Command>
@@ -665,11 +817,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Open certificate</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть сертификат</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Open certificate</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть сертификат</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>OpenCertificate</Action>
@@ -679,6 +839,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
 				</v8:item>
 			</Title>
 			<Action>Pick</Action>

@@ -9,39 +9,39 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	MetadataObject = Metadata.FindByFullName(Parameters.FullObjectName);
 	
 	If CommonUseSTL.ThisIsConstant(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'constant'");
+		ObjectTypePresentation = NStr("en='constant';ru='постоянная'");
 	ElsIf CommonUseSTL.ThisIsCatalog(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'catalog'");
+		ObjectTypePresentation = NStr("en='catalog';ru='каталог'");
 	ElsIf CommonUseSTL.ThisIsDocument(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'document'");
+		ObjectTypePresentation = NStr("en='document';ru='документ'");
 	ElsIf CommonUseSTL.IsSequenceRecordSet(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'sequences'");
+		ObjectTypePresentation = NStr("en='sequences';ru='последовательности'");
 	ElsIf CommonUseSTL.IsDocumentJournal(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'document log'");
+		ObjectTypePresentation = NStr("en='document log';ru='журналу документов'");
 	ElsIf CommonUseSTL.IsEnum(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'enumeration'");
+		ObjectTypePresentation = NStr("en='enumeration';ru='перечислению'");
 	ElsIf CommonUseSTL.ThisIsChartOfCharacteristicTypes(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'plan of characteristic types'");
+		ObjectTypePresentation = NStr("en='plan of characteristic types';ru='плану видов характеристик'");
 	ElsIf CommonUseSTL.ThisIsChartOfAccounts(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'accounts plan'");
+		ObjectTypePresentation = NStr("en='accounts plan';ru='плану счетов'");
 	ElsIf CommonUseSTL.ThisIsChartOfCalculationTypes(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'plan of calculation types'");
+		ObjectTypePresentation = NStr("en='plan of calculation types';ru='плану видов расчета'");
 	ElsIf CommonUseSTL.ThisIsInformationRegister(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'information register'");
+		ObjectTypePresentation = NStr("en='information register';ru='регистру сведений'");
 	ElsIf CommonUseSTL.ThisIsAccumulationRegister(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'accumulation register'");
+		ObjectTypePresentation = NStr("en='accumulation register';ru='регистру накопления'");
 	ElsIf CommonUseSTL.IsAccountingRegister(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'accounting register'");
+		ObjectTypePresentation = NStr("en='accounting register';ru='регистру бухгалтерии'");
 	ElsIf CommonUseSTL.ThisIsCalculationRegister(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'calculation register'");
+		ObjectTypePresentation = NStr("en='calculation register';ru='регистру расчета'");
 	ElsIf CommonUseSTL.IsRecalculationRecordSet(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'recalculation'");
+		ObjectTypePresentation = NStr("en='recalculation';ru='перерасчет'");
 	ElsIf CommonUseSTL.ThisIsBusinessProcess(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'business-process'");
+		ObjectTypePresentation = NStr("en='business-process';ru='бизнес-процесс'");
 	ElsIf CommonUseSTL.ThisIsTask(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'task'");
+		ObjectTypePresentation = NStr("en='task';ru='задаче'");
 	ElsIf CommonUseSTL.ThisIsExchangePlan(MetadataObject) Then
-		ObjectTypePresentation = NStr("en = 'exchange plan'");
+		ObjectTypePresentation = NStr("en='exchange plan';ru='плану обмена'");
 	EndIf;
 	
 	If Parameters.Insert Then
@@ -78,21 +78,21 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Tree.Columns.Add("Class", New TypeDescription("Number", , New NumberQualifiers(10, 0, AllowedSign.Nonnegative)));
 	Tree.Columns.Add("Picture", New TypeDescription("Picture"));
 	
-	AddTreeRootString(Tree, "Constant", NStr("en = 'Constants'"), 1, PictureLib.Constant);
-	AddTreeRootString(Tree, "Catalog", NStr("en = 'Catalogs'"), 2, PictureLib.Catalog);
-	AddTreeRootString(Tree, "Document", NStr("en = 'Documents'"), 3, PictureLib.Document);
-	AddTreeRootString(Tree, "DocumentJournal", NStr("en = 'Document journals'"), 4, PictureLib.DocumentJournal);
-	AddTreeRootString(Tree, "Enum", NStr("en = 'Enum'"), 5, PictureLib.Enum);
-	AddTreeRootString(Tree, "ChartOfCharacteristicTypes", NStr("en = 'Charts of characteristics types'"), 6, PictureLib.ChartOfCharacteristicTypes);
-	AddTreeRootString(Tree, "ChartOfAccounts", NStr("en = 'Charts of accounts'"), 7, PictureLib.ChartOfAccounts);
-	AddTreeRootString(Tree, "ChartOfCalculationTypes", NStr("en = 'Charts of calculation types'"), 8, PictureLib.ChartOfCalculationTypes);
-	AddTreeRootString(Tree, "InformationRegister", NStr("en = 'Information registers'"), 9, PictureLib.InformationRegister);
-	AddTreeRootString(Tree, "AccumulationRegister", NStr("en = 'Accumulation registers'"), 10, PictureLib.AccumulationRegister);
-	AddTreeRootString(Tree, "AccountingRegister", NStr("en = 'Accounting registers'"), 11, PictureLib.AccountingRegister);
-	AddTreeRootString(Tree, "CalculationRegister", NStr("en = 'Calculation registers'"), 12, PictureLib.CalculationRegister);
-	AddTreeRootString(Tree, "BusinessProcess", NStr("en = 'Business-processes'"), 13, PictureLib.BusinessProcess);
-	AddTreeRootString(Tree, "Task", NStr("en = 'Tasks'"), 14, PictureLib.Task);
-	AddTreeRootString(Tree, "ExchangePlan", NStr("en = 'Exchange plans'"), 15, PictureLib.ExchangePlan);
+	AddTreeRootString(Tree, "Constant", NStr("en='Constants';ru='Константы'"), 1, PictureLib.Constant);
+	AddTreeRootString(Tree, "Catalog", NStr("en='Catalogs';ru='Справочники'"), 2, PictureLib.Catalog);
+	AddTreeRootString(Tree, "Document", NStr("en='Documents';ru='Документы'"), 3, PictureLib.Document);
+	AddTreeRootString(Tree, "DocumentJournal", NStr("en='Document journals';ru='Журналы документов'"), 4, PictureLib.DocumentJournal);
+	AddTreeRootString(Tree, "Enum", NStr("en='Enum';ru='Перечисление'"), 5, PictureLib.Enum);
+	AddTreeRootString(Tree, "ChartOfCharacteristicTypes", NStr("en='Charts of characteristics types';ru='Планы видов характеристик'"), 6, PictureLib.ChartOfCharacteristicTypes);
+	AddTreeRootString(Tree, "ChartOfAccounts", NStr("en='Charts of accounts';ru='Планы счетов'"), 7, PictureLib.ChartOfAccounts);
+	AddTreeRootString(Tree, "ChartOfCalculationTypes", NStr("en='Charts of calculation types';ru='Планы видов расчета'"), 8, PictureLib.ChartOfCalculationTypes);
+	AddTreeRootString(Tree, "InformationRegister", NStr("en='Information registers';ru='Регистры сведений'"), 9, PictureLib.InformationRegister);
+	AddTreeRootString(Tree, "AccumulationRegister", NStr("en='Accumulation registers';ru='Регистры накопления'"), 10, PictureLib.AccumulationRegister);
+	AddTreeRootString(Tree, "AccountingRegister", NStr("en='Accounting registers';ru='Регистры бухгалтерии'"), 11, PictureLib.AccountingRegister);
+	AddTreeRootString(Tree, "CalculationRegister", NStr("en='Calculation registers';ru='Регистры расчета'"), 12, PictureLib.CalculationRegister);
+	AddTreeRootString(Tree, "BusinessProcess", NStr("en='Business-processes';ru='Деловые процессы'"), 13, PictureLib.BusinessProcess);
+	AddTreeRootString(Tree, "Task", NStr("en='Tasks';ru='Задания'"), 14, PictureLib.Task);
+	AddTreeRootString(Tree, "ExchangePlan", NStr("en='Exchange plans';ru='Планы обмена'"), 15, PictureLib.ExchangePlan);
 	
 	For Each Dependence IN Parameters.ObjectDependencies Do
 		AddTreeSubstring(Tree, Metadata.FindByFullName(Dependence));
@@ -143,7 +143,7 @@ Procedure AddTreeSubstring(Tree, Val MetadataObject)
 	
 	If RowOwner = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unknown metadata object: %1'"), DescriptionFull);
+			NStr("en='Unknown metadata object: %1';ru='Неизвестный объект метаданных: %1'"), DescriptionFull);
 	EndIf;
 	
 	NewRow = RowOwner.Rows.Add();

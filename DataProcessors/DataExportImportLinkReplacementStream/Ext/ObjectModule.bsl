@@ -16,7 +16,7 @@ Procedure Initialize(Container, Handlers) Export
 	
 	If CurrentInitialization Then
 		
-		Raise NStr("en = 'The object has been initialized before.'");
+		Raise NStr("en='The object has been initialized before.';ru='Объект уже был инициализирован ранее!'");
 		
 	Else
 		

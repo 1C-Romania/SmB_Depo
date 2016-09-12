@@ -249,10 +249,10 @@ EndProcedure // FillPaymentDetails()
 Procedure FillByCashOutflowPlan(BasisDocument, Amount = Undefined)
 	
 	If BasisDocument.PaymentConfirmationStatus = Enums.PaymentApprovalStatuses.NotApproved Then
-		Raise NStr("en = 'Unable to enter the money expense according to the unapproved application!'");
+		Raise NStr("en='Unable to enter the money expense according to the unapproved application!';ru='Нельзя ввести расход денег на основании неутвержденной заявки!'");
 	EndIf;
 	If BasisDocument.CashAssetsType = Enums.CashAssetTypes.Cash Then
-		Raise NStr("en = 'Unable to enter the money expense. Invalid payment method is specified in the application (cash assets type)!'");
+		Raise NStr("en='Unable to enter the money expense. Invalid payment method is specified in the application (cash assets type)!';ru='Нельзя ввести расход денег. В заявке указан не верный способ оплаты (тип денежных средств)!'");
 	EndIf;
 
 	Query = New Query;
@@ -416,7 +416,7 @@ EndProcedure // FillByCashOutflowPlan()
 Procedure FillByCashTransferPlan(BasisDocument, Amount = Undefined)
 	
 	If BasisDocument.PaymentConfirmationStatus = Enums.PaymentApprovalStatuses.NotApproved Then
-		Raise NStr("en = 'You can not enter the cash register records basing on the unapproved plan document!'");
+		Raise NStr("en='You can not enter the cash register records basing on the unapproved plan document!';ru='Нельзя ввести перемещение денег на основании неутвержденного планового документа!'");
 	EndIf;
 	
 	Query = New Query;
@@ -2307,7 +2307,7 @@ EndProcedure // FillByPayrollSheet()
 Procedure FillByTaxAccrual(BasisDocument)
 	
 	If BasisDocument.OperationKind <> Enums.OperationKindsTaxAccrual.Accrual Then
-		Raise NStr("en='Payment expense can be entered only according to the accrual of taxes but not the refund.'");
+		Raise NStr("en='Payment expense can be entered only according to the accrual of taxes but not the refund.';ru='Расход со счета можно ввести только на основании начисления налогов, а не возмещения.'");
 	EndIf;
 	
 	Query = New Query;
@@ -2401,7 +2401,7 @@ Procedure SubordinatedInvoiceControl()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Expense with account # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -2492,15 +2492,15 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				   AND Not RowPaymentDetails.AdvanceFlag)) Then
 					If PaymentDetails.Count() = 1 Then
 						If OperationKind = Enums.OperationKindsPaymentExpense.Vendor Then
-							MessageText = NStr("en = 'Specify the shipment document or the advance payment sign.'");
+							MessageText = NStr("en='Specify the shipment document or the advance payment sign.';ru='Укажите документ отгрузки или признак аванса платежа.'");
 						Else
-							MessageText = NStr("en = 'Specify the settlements document.'");
+							MessageText = NStr("en='Specify the settlements document.';ru='Укажите документ расчетов.'");
 						EndIf;
 					Else
 						If OperationKind = Enums.OperationKindsPaymentExpense.Vendor Then
-							MessageText = NStr("en = 'Specify the shipment document or payment flag in the %LineNumber% row of the ""Payment details"" list.'");
+							MessageText = NStr("en='Specify the shipment document or payment flag in the %LineNumber% row of the ""Payment details"" list.';ru='Укажите документ отгрузки или признак оплаты в строке %НомерСтроки% списка ""Расшифровка платежа"".'");
 						Else
-							MessageText = NStr("en = 'Specify the payment document in the row %LineNumber% of the list ""Payment details"".'");
+							MessageText = NStr("en='Specify the payment document in the row %LineNumber% of the list ""Payment details"".';ru='Укажите документ расчетов в строке %НомерСтроки% списка ""Расшифровка платежа"".'");
 						EndIf;
 						MessageText = StrReplace(MessageText, "%LineNumber%", String(RowPaymentDetails.LineNumber));
 					EndIf;
@@ -2518,7 +2518,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		PaymentAmount = PaymentDetails.Total("PaymentAmount");
 		If PaymentAmount <> DocumentAmount Then
-			MessageText = NStr("en = 'Document amount: %DocumentAmount% %CashAssetsCurrency% does not correspond to the posted payments in the tabular section: %PaymentAmount% %CashAssetsCurrency%!'");
+			MessageText = NStr("en='Document amount: %DocumentAmount% %CashAssetsCurrency% does not correspond to the posted payments in the tabular section: %PaymentAmount% %CashAssetsCurrency%!';ru='Сумма документа: %СуммаДокумента% %ВалютаДенежныхСредств%, не соответствует сумме разнесенных платежей в табличной части: %СуммаПлатежа% %ВалютаДенежныхСредств%!'");
 			MessageText = StrReplace(MessageText, "%DocumentAmount%", String(DocumentAmount));
 			MessageText = StrReplace(MessageText, "%PaymentAmount%", String(PaymentAmount));
 			MessageText = StrReplace(MessageText, "%CashCurrency%", TrimAll(String(CashCurrency)));
@@ -2566,7 +2566,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
 		PaymentAmount = PayrollPayment.Total("PaymentAmount");
 		If PaymentAmount <> DocumentAmount Then
-			MessageText = NStr("en = 'Document amount: %DocumentAmount% %CashAssetsCurrency% does not correspond to the posted payments in the tabular section: %PaymentAmount% %CashAssetsCurrency%!'");
+			MessageText = NStr("en='Document amount: %DocumentAmount% %CashAssetsCurrency% does not correspond to the posted payments in the tabular section: %PaymentAmount% %CashAssetsCurrency%!';ru='Сумма документа: %СуммаДокумента% %ВалютаДенежныхСредств%, не соответствует сумме разнесенных платежей в табличной части: %СуммаПлатежа% %ВалютаДенежныхСредств%!'");
 			MessageText = StrReplace(MessageText, "%DocumentAmount%", String(DocumentAmount));
 			MessageText = StrReplace(MessageText, "%PaymentAmount%", String(PaymentAmount));
 			MessageText = StrReplace(MessageText, "%CashCurrency%", TrimAll(String(CashCurrency)));

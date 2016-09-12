@@ -12,8 +12,8 @@ Procedure GenerateTableCashAssets(DocumentRef, StructureAdditionalProperties)
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("CashTransfering", NStr("en='Cash flow'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("CashTransfering", NStr("en='Cash flow';ru='Cash flow'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -174,7 +174,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRef, StructureAdditionalPropert
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -290,9 +290,9 @@ Procedure GenerateTableManagerial(DocumentRef, StructureAdditionalProperties)
 	Query.SetParameter("Ref", DocumentRef);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
-	Query.SetParameter("Content", NStr("en = 'Write-off of the cash to any account'"));
-	Query.SetParameter("TaxPay", NStr("en='Tax payment'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("Content", NStr("en='Write-off of the cash to any account';ru='Списание денежных средств на произвольный счет'"));
+	Query.SetParameter("TaxPay", NStr("en='Tax payment';ru='Оплата налога'"));
 	
 	Query.Text =
 	"SELECT

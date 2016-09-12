@@ -168,7 +168,7 @@ Procedure Show(Command)
 	If Report 	= "<Not selected>" Then
 	
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Report is not selected!'");	
+		Message.Text = NStr("en='Report is not selected!';ru='Не выбран отчет!'");	
 		Message.Field = "Report";
 		Message.Message();	
 	

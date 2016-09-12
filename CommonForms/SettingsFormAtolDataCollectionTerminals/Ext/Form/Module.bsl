@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("ID", ID);
 	Parameters.Property("HardwareDriver", HardwareDriver);
 	
-	Title = NStr("en='Equipment:'") + Chars.NBSp  + String(ID);
+	Title = NStr("en='Equipment:';ru='Оборудование:'") + Chars.NBSp  + String(ID);
 	
 	TextColor = StyleColors.FormTextColor;
 	ErrorColor = StyleColors.NegativeTextColor;
@@ -247,13 +247,13 @@ Procedure DeviceTest(Command)
 	                                                                      ID,
 	                                                                      tempDeviceParameters);
 	If Result Then
-		MessageText = NStr("en = 'Test successfully performed.'");
+		MessageText = NStr("en='Test successfully performed.';ru='Тест успешно выполнен.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	Else
 		AdditionalDetails = ?(TypeOf(Output_Parameters) = Type("Array")
 		                           AND Output_Parameters.Count() >= 2,
-		                           NStr("en = 'Additional description:'") + " " + Output_Parameters[1], "");
-		MessageText = NStr("en = 'Test failed.%Linefeed% %AdditionalDetails%'");
+		                           NStr("en='Additional description:';ru='Дополнительное описание:'") + " " + Output_Parameters[1], "");
+		MessageText = NStr("en='Test failed.%Linefeed% %AdditionalDetails%';ru='Тест не пройден.%ПереводСтроки%%ДополнительноеОписание%'");
 		MessageText = StrReplace(MessageText, "%Linefeed%", ?(IsBlankString(AdditionalDetails), "", Chars.LF));
 		MessageText = StrReplace(MessageText, "%AdditionalDetails%", ?(IsBlankString(AdditionalDetails), "", AdditionalDetails));
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -332,13 +332,13 @@ Procedure UpdateInformationAboutDriver()
 		Version  = Output_Parameters[1];
 	Else
 		Driver = Output_Parameters[2];
-		Version  = NStr("en='Not defined'");
+		Version  = NStr("en='Not defined';ru='Не определена'");
 	EndIf;
 
-	Items.Driver.TextColor = ?(Driver = NStr("en='Not set'"), ErrorColor, TextColor);
-	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined'"), ErrorColor, TextColor);
+	Items.Driver.TextColor = ?(Driver = NStr("en='Not set';ru='Не установлен'"), ErrorColor, TextColor);
+	Items.Version.TextColor  = ?(Version  = NStr("en='Not defined';ru='Не определена'"), ErrorColor, TextColor);
 
-	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed'"));
+	Items.SetupDriver.Enabled = Not (Driver = NStr("en='Installed';ru='Установлен'"));
 
 EndProcedure
 

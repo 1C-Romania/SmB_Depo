@@ -48,7 +48,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	CompanyOwner = TypeOf(Ref.Owner) = Type("CatalogRef.Companies");
 	
 	If CancelGLAccountChange(Ref) Then
-		Items.GLAccountsGroup.ToolTip = NStr("en = 'There are transactions in base by this bank account! You can not change the GL account!'");
+		Items.GLAccountsGroup.ToolTip = NStr("en='There are transactions in base by this bank account! You can not change the GL account!';ru='В базе есть движения по этому банковскому счету! Изменение счета учета запрещено!'");
 		Items.GLAccountsGroup.Enabled = False;
 		Items.Default.Visible = False;
 	EndIf;
@@ -60,7 +60,7 @@ Procedure OnOpen(Cancel)
 	
 	If Not CompanyOwner Then
 		Cancel = True;
-		ShowMessageBox(, NStr("en='GL accounts are edited only for bank accounts of companies!'"));
+		ShowMessageBox(, NStr("en='GL accounts are edited only for bank accounts of companies!';ru='Счета учетов редактируются только для банковских счетов организаций!'"));
 	EndIf;
 
 EndProcedure

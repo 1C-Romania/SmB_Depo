@@ -18,8 +18,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		If Not CanChangeUsers Then
 			If Object.Ref.IsEmpty() Then
 				Raise
-					NStr("en = 'Creation of new users
-					           |is not supported in the demo mode.'");
+					NStr("en='Creation of new users"
+"is not supported in the demo mode.';ru='В демонстрационном режиме не поддерживается создание новых пользователей.'");
 			EndIf;
 			ReadOnly = True;
 		EndIf;
@@ -183,7 +183,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	ClearMessages();
 	
 	If CanLogOnToApplication Then
-		QuestionsTitle = NStr("en = 'Record of the infobase user'");
+		QuestionsTitle = NStr("en='Record of the infobase user';ru='Запись пользователя информационной базы'");
 		
 		If ActionsInForm.Roles = "Edit"
 		   AND IBUserRoles.Count() = 0 Then
@@ -192,7 +192,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 				Cancel = True;
 				ShowQueryBox(
 					New NotifyDescription("AfterAnswerToQuestionAboutRecordWithEmptyRoleList", ThisObject, WriteParameters),
-					NStr("en = 'A role was not assigned to the Infobase user. Continue?'"),
+					NStr("en='A role was not assigned to the Infobase user. Continue?';ru='Пользователю информационной базы не установлено ни одной роли. Продолжить?'"),
 					QuestionDialogMode.YesNo,
 					,
 					,
@@ -385,8 +385,9 @@ Procedure CanLogOnToApplicationOnChange(Item)
 	If Object.DeletionMark AND CanLogOnToApplication Then
 		CanLogOnToApplication = False;
 		ShowMessageBox(,
-			NStr("en = 'To allow access to the
-			           |application remove the mark for deletion of this user.'"));
+			NStr("en='To allow access to the"
+"application remove the mark for deletion of this user.';ru='Чтобы разрешить вход"
+"в программу, требуется снять пометку на удаление с этого пользователя.'"));
 		Return;
 	EndIf;
 	
@@ -409,7 +410,7 @@ Procedure CanLogOnToApplicationOnChange(Item)
 	   AND Not CanLogOnToApplication Then
 		
 		ShowMessageBox(,
-			NStr("en = 'After saving, only administrator can allow log on.'"));
+			NStr("en='After saving, only administrator can allow log on.';ru='После записи вход в программу сможет разрешить только администратор.'"));
 	EndIf;
 	
 	CanLogOnToApplicationDirectChangeValue = CanLogOnToApplication;
@@ -753,7 +754,7 @@ Procedure SetConditionalAppearance()
 	FilterElement = FilterGroup1.Items.Add(Type("DataCompositionFilterItem"));
 	FilterElement.LeftValue = New DataCompositionField("Roles.Name");
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
-	FilterElement.RightValue = NStr("en = 'FullRights'");
+	FilterElement.RightValue = NStr("en='FullRights';ru='ПолныеПрава'");
 
 	FilterElement = FilterGroup1.Items.Add(Type("DataCompositionFilterItem"));
 	FilterElement.LeftValue = New DataCompositionField("PreventChangesToAdministrativeAccess");
@@ -778,7 +779,7 @@ Procedure SetConditionalAppearance()
 	FilterElement = FilterGroup1.Items.Add(Type("DataCompositionFilterItem"));
 	FilterElement.LeftValue = New DataCompositionField("Roles.Name");
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
-	FilterElement.RightValue = NStr("en = 'FullRights'");
+	FilterElement.RightValue = NStr("en='FullRights';ru='ПолныеПрава'");
 
 	FilterElement = FilterGroup1.Items.Add(Type("DataCompositionFilterItem"));
 	FilterElement.LeftValue = New DataCompositionField("PreventChangesToAdministrativeAccess");
@@ -1379,7 +1380,7 @@ Procedure DefineUserInconsistenciesWithUserIB(WriteParameters = Undefined)
 				Or ActionsInForm.ItemProperties = "Edit";
 			
 			PropertiesAdjustment.Insert(0, StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Full name ""%1""'"), IBUserFullName));
+				NStr("en='Full name ""%1""';ru='Полное имя ""%1""'"), IBUserFullName));
 		EndIf;
 		
 		If PropertiesAdjustment.Count() > 0 Then
@@ -1397,12 +1398,13 @@ Procedure DefineUserInconsistenciesWithUserIB(WriteParameters = Undefined)
 			EndIf;
 			Items.PropertiesMismatchNote.Title =
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'The following infobase user properties differ from those specified
-					           |in this form: %1.'"), StringPropertyClarification)
+					NStr("en='The following infobase user properties differ from those specified"
+"in this form: %1.';ru='Следующие свойства пользователя информационной базы отличаются"
+"от указанных в этой форме: %1.'"), StringPropertyClarification)
 				+ Chars.LF
 				+ ?(ShowCommandsDifferences,
-					NStr("en = 'Click ""Write"" to resolve the differences and not to show this warning message.'"),
-					NStr("en = 'To resolve the differences, contact your administrator.'"));
+					NStr("en='Click ""Write"" to resolve the differences and not to show this warning message.';ru='Нажмите ""Записать"", чтобы устранить различия и не выводить это предупреждение.'"),
+					NStr("en='To resolve the differences, contact your administrator.';ru='Обратитесь к администратору, чтобы устранить различия.'"));
 		Else
 			ShowMismatch = False;
 		EndIf;

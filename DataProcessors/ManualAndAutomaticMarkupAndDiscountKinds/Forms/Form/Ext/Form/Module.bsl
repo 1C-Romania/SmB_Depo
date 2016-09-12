@@ -51,12 +51,13 @@ Procedure ValidateListFilter()
 	SortingSetupParameters.Insert("ListItem", Items.AutomaticDiscounts);
 	
 	If Not SortInListIsSetCorrectly() Then
-		QuestionText = NStr("en = 'It is recommended
-								|to sort the list by the field ""Order"". Configure the necessary sorting?'");
+		QuestionText = NStr("en='It is recommended"
+"to sort the list by the field ""Order"". Configure the necessary sorting?';ru='Сортировку"
+"списка рекомендуется установить по полю ""Порядок"". Настроить необходимую сортировку?'");
 		NotifyDescription = New NotifyDescription("CheckListBeforeOperationResponseForSortingReceived", ThisObject, SortingSetupParameters);
 		Buttons = New ValueList;
-		Buttons.Add(DialogReturnCode.Yes, NStr("en = 'Configure'"));
-		Buttons.Add(DialogReturnCode.No, NStr("en = 'Do not configure'"));
+		Buttons.Add(DialogReturnCode.Yes, NStr("en='Configure';ru='Настроить'"));
+		Buttons.Add(DialogReturnCode.No, NStr("en='Do not configure';ru='Не настраивать'"));
 		ShowQueryBox(NOTifyDescription, QuestionText, Buttons, , DialogReturnCode.Yes);
 		Return;
 	EndIf;
@@ -137,7 +138,7 @@ Procedure SetListSortingByFieldOrderAtClient()
 		EndIf;
 	EndDo;
 	
-	CommonUseClientServer.Validate(UserOrderSettings <> Undefined, NStr("en = 'Custom settings for order not found.'"));
+	CommonUseClientServer.Validate(UserOrderSettings <> Undefined, NStr("en='Custom settings for order not found.';ru='Пользовательская настройка порядка не найдена.'"));
 	
 	UserOrderSettings.Items.Clear();
 	Item = UserOrderSettings.Items.Add(Type("DataCompositionOrderItem"));
@@ -162,7 +163,7 @@ Procedure SetListSortingByFieldOrderAtServer()
 		EndIf;
 	EndDo;
 	
-	CommonUseClientServer.Validate(UserOrderSettings <> Undefined, NStr("en = 'Custom settings for order not found.'"));
+	CommonUseClientServer.Validate(UserOrderSettings <> Undefined, NStr("en='Custom settings for order not found.';ru='Пользовательская настройка порядка не найдена.'"));
 	
 	UserOrderSettings.Items.Clear();
 	Item = UserOrderSettings.Items.Add(Type("DataCompositionOrderItem"));

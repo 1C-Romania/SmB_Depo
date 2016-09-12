@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Edit GL Accounts</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Редактирование счетов учета</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -19,6 +23,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Restore default</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Восстановить по умолчанию</v8:content>
 					</v8:item>
 				</Title>
 				<ExtendedTooltip name="DefaultExtendedTooltip" id="26"/>
@@ -35,11 +43,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>GL account</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Указывается счет учета</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>GL account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Указывается счет учета</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>false</HorizontalStretch>
@@ -53,6 +69,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>With Customer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>С покупателем</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTipRepresentation>ShowTop</ToolTipRepresentation>
@@ -68,6 +88,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Accounts receivable</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дебиторская задолженность</v8:content>
 								</v8:item>
 							</Title>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -92,6 +116,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Customer advances</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Авансы покупателя</v8:content>
 								</v8:item>
 							</Title>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -118,6 +146,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>With Vendor</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>С поставщиком</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTipRepresentation>ShowTop</ToolTipRepresentation>
 					<HorizontalStretch>false</HorizontalStretch>
@@ -132,6 +164,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Accounts Payable</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расчеты с поставщиком</v8:content>
 								</v8:item>
 							</Title>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -156,6 +192,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Suppliers advances</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Авансы поставщику</v8:content>
 								</v8:item>
 							</Title>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -186,6 +226,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Customer advances GL Account</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет учета авансов покупателя</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:ChartOfAccountsRef.Managerial</v8:Type>
@@ -197,6 +241,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Settlements with Customer GL Account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет учета расчетов с покупателем</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -210,6 +258,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Settlements with vendor GL Account</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет учета расчетов с поставщиком</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:ChartOfAccountsRef.Managerial</v8:Type>
@@ -221,6 +273,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Vendors advances GL account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет учета авансов поставщику</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -236,6 +292,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Save and close</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
 			</Title>
 		</Command>
 		<Command name="Default" id="2">
@@ -244,11 +304,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>By default</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По умолчанию</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Restore default GL accounts</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Восстановить счета учета по умолчанию</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Default</Action>

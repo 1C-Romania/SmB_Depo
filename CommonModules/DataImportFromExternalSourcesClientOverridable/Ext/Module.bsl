@@ -72,12 +72,12 @@ Procedure OnClearGeneralValue(Form, DataLoadSettings, DataMatchingTable) Export
 	If DataLoadSettings.FillingObjectFullName = "Catalog.Counterparties" 
 		OR DataLoadSettings.FillingObjectFullName = "Catalog.ProductsAndServices" Then
 		
-		Form.Items.CommonValueCatalog.Title = NStr("en ='< not indicated  >'");
+		Form.Items.CommonValueCatalog.Title = NStr("en='< not indicated  >';ru='< не указана >'");
 		FillInParentFieldInDataMappingTable(Undefined, DataMatchingTable, DataLoadSettings);
 		
 	ElsIf DataLoadSettings.FillingObjectFullName = "InformationRegister.ProductsAndServicesPrices" Then
 		
-		Form.Items.CommonValueIR.Title = NStr("en ='< not indicated  >'");
+		Form.Items.CommonValueIR.Title = NStr("en='< not indicated  >';ru='< не указана >'");
 		FillInParentFieldInDataMappingTable(DataImportFromExternalSourcesOverridable.DefaultPriceKind(), DataMatchingTable, DataLoadSettings);
 		
 	EndIf;
@@ -97,11 +97,11 @@ Procedure WhenProcessingCommonValueSelectionResult(Result, AdditionalSettings) E
 		If DataLoadSettings.FillingObjectFullName = "Catalog.Counterparties"
 			OR DataLoadSettings.FillingObjectFullName = "Catalog.ProductsAndServices" Then
 			
-			Form.Items.CommonValueCatalog.Title = NStr("en ='< '") + String(Result) + NStr("en =' >'");
+			Form.Items.CommonValueCatalog.Title = NStr("en='< ';ru='< '") + String(Result) + NStr("en=' >';ru=' >'");
 			
 		ElsIf DataLoadSettings.FillingObjectFullName = "InformationRegister.ProductsAndServicesPrices" Then
 			
-			Form.Items.CommonValueIR.Title = NStr("en ='< '") + String(Result) + NStr("en =' >'");
+			Form.Items.CommonValueIR.Title = NStr("en='< ';ru='< '") + String(Result) + NStr("en=' >';ru=' >'");
 			
 		EndIf;
 		

@@ -51,6 +51,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Use this section to customize parameters of import, storage and processing of files.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка параметров загрузки, хранения и обработки файлов.</v8:content>
+						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
 					<ContextMenu name="SectionDescriptionContextMenu" id="2017"/>
@@ -81,12 +85,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Volumes management</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Управление томами</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group file volume management</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа управление томами файлов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>82</Width>
@@ -108,6 +120,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Select where you want store files: in the infobase or in the disk volumes.</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Выбор между хранением файлов в информационной базе или в томах на диске.</v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 					<Events>
@@ -124,6 +140,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Setup of connection to the files storage volumes (folders) on the file server.</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Настройка подключения к томам (папкам) хранения файлов на файловом сервере.</v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 				</Button>
@@ -135,12 +155,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>File characteristic management</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Управление характеристиками файлов</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group files management</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа управление файлами</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>82</Width>
@@ -155,11 +183,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Group maximal data area file size</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа максимальный размер файла области данных</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Group maximal data area file size</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа максимальный размер файла области данных</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Width>82</Width>
@@ -175,11 +211,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Group size</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа размер</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group size</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа размер</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -192,6 +236,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Import restriction for files exceeding the size limit.</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Ограничение загрузки файлов, превышающих указанный размер.</v8:content>
+									</v8:item>
 								</Title>
 							</ExtendedTooltip>
 							<ChildItems>
@@ -201,6 +249,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Mbyte</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Мбайт</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
@@ -224,11 +276,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Group files extensions lists</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа списки расширений файлов</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Group files extensions lists</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа списки расширений файлов</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Width>82</Width>
@@ -249,6 +309,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Text file extensions</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расширения текстовых файлов</v8:content>
+								</v8:item>
 							</InputHint>
 							<ContextMenu name="TextFileExtensionsListContextMenu" id="1975"/>
 							<ExtendedTooltip name="TextFileExtensionsListExtendedTooltip" id="2070">
@@ -256,6 +320,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>File extensions containing text data (to be specified with "space").</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Расширения файлов, содержащих текстовые данные (указываются через "пробел").</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -279,6 +347,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Open Document file extensions</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Расширения файлов Open Document</v8:content>
+										</v8:item>
 									</InputHint>
 									<ContextMenu name="ExtensionsListFilesOpenDocumentDataAreasContextMenu" id="730"/>
 									<ExtendedTooltip name="ListExtensionsFilesOpenDocumentDataAreasExtendedTooltip" id="2067">
@@ -286,6 +358,10 @@
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>File extensions of open documents format (ODF) for office applications (to be specified with "space").</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Расширения файлов открытого формата документов (ODF) для офисных приложений (указываются через "пробел").</v8:content>
 											</v8:item>
 										</Title>
 									</ExtendedTooltip>
@@ -308,11 +384,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Group of the file import management</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа управление загрузкой файлов</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Group of the file import management</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа управление загрузкой файлов</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Width>82</Width>
@@ -329,6 +413,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Prohibit importing files with the extensions as follows</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Запретить загрузку файлов со следующими расширениями</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -349,6 +437,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Prohibited extensions list</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Список запрещенных расширений</v8:content>
+								</v8:item>
 							</InputHint>
 							<ContextMenu name="ProhibitedFileExtensionListDataAreasContextMenu" id="726"/>
 							<ExtendedTooltip name="ProhibitedExtensionListDataAreaExtendedTooltip" id="2059">
@@ -356,6 +448,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>File extensions which import to the application folders you want to restrict (to be specified with "space").</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Расширения файлов, для которых будет запрещена загрузка в папки программы (указываются через "пробел").</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -372,6 +468,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Digital signatures </v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>электронные подписи </v8:content>
 				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
@@ -394,6 +494,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Horizontal group</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Горизонтальная группа</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 					<Group>Horizontal</Group>
@@ -405,6 +509,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Enable the data signature to ensure their stability and data encryption for trusted access restriction.</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Разрешить подписание данных для гарантии их неизменности и шифрование данных для надежного ограничения доступа.</v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 					<ChildItems>
@@ -414,6 +522,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Digital signature</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Электронная подпись</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -430,6 +542,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Encryption</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Шифрование</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -451,6 +567,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Parameters setup for means of cryptography: digital signature and encryption application.</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Настройка параметров для использования средств криптографии: электронной подписи и шифрования.</v8:content>
 							</v8:item>
 						</Title>
 					</ExtendedTooltip>
@@ -493,6 +613,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Maximum file size</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Максимальный размер файла</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -510,6 +634,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Work mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим работы</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -518,6 +646,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Maximum file size</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Максимальный размер файла</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -538,11 +670,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>File storage volumes</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тома хранения файлов</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Catalog of the file storage volume</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Справочник тома хранения файлов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CatalogFileStorageVolumes</Action>
@@ -553,11 +693,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Digital signatures and encryption settings</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки электронной подписи и шифрования</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Digital signatures and encryption settings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки электронной подписи и шифрования</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>DigitalSignaturesAndEncryptionSettings</Action>

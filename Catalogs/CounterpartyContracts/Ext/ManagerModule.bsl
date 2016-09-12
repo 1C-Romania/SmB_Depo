@@ -108,16 +108,18 @@ Function ContractMeetsDocumentTerms(MessageText, Contract, Company, Counterparty
 		Return True;
 	EndIf;
 	
-	MessageText = NStr("en = 'Contract attributes do not match the document terms:'");
+	MessageText = NStr("en='Contract attributes do not match the document terms:';ru='Реквизиты договора не соответствуют условиям документа:'");
 	
 	If DoesNotMatchCompany Then
-		MessageText = MessageText + NStr("en = '
-		| - The company does not match'");
+		MessageText = MessageText + NStr("en='"
+" - The company does not match';ru='"
+" - Не совпадает организация'");
 	EndIf;
 	
 	If DoesNotMatchContractKind Then
-		MessageText = MessageText + NStr("en = '
-		| - Contract kind does not match'");
+		MessageText = MessageText + NStr("en='"
+" - Contract kind does not match';ru='"
+" - Не совпадает вид договора'");
 	EndIf;
 	
 	Return False;
@@ -338,7 +340,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.Handler = "SmallBusinessClient.PrintCounterpartyContract";
 	PrintCommand.ID = "ContractForm";
-	PrintCommand.Presentation = NStr("en = 'Contract form'");
+	PrintCommand.Presentation = NStr("en='Contract form';ru='Бланк договора'");
 	PrintCommand.FormsList = "ItemForm,ListForm,ChoiceForm,ChoiceFormWithCounterparty";
 	PrintCommand.Order = 1;
 	

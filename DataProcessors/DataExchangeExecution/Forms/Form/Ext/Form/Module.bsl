@@ -18,7 +18,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		If DataExchangeServer.IsSubordinateDIBNode() Then
 			InfobaseNode = DataExchangeServer.MasterNode();
 		Else
-			DataExchangeServer.ShowMessageAboutError(NStr("en = 'Form parameters have not been set. Form can not be opened.'"), Cancel);
+			DataExchangeServer.ShowMessageAboutError(NStr("en='Form parameters have not been set. Form can not be opened.';ru='Не заданы параметры формы. Форма не может быть открыта.'"), Cancel);
 			Return;
 		EndIf;
 		
@@ -27,7 +27,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	HasErrors = ((DataExchangeServer.MasterNode() = InfobaseNode) AND ConfigurationChanged());
 	
 	// We set form title.
-	Title = NStr("en = 'Data synchronization with ""%1""'");
+	Title = NStr("en='Data synchronization with ""%1""';ru='Синхронизация данных с ""%1""'");
 	Title = StringFunctionsClientServer.PlaceParametersIntoString(Title, String(InfobaseNode));
 	
 	IsInRoleAddChangeOfDataExchanges = Users.RolesAvailable("DataSynchronizationSetting");
@@ -240,7 +240,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -295,7 +295,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -351,7 +351,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -686,7 +686,7 @@ EndFunction
 Function Attachable_QueryUserPassword_OnGoingNext(Cancel)
 	
 	If IsBlankString(WSPassword) Then
-		NString = NStr("en = 'Password is not specified.'");
+		NString = NStr("en='Password is not specified.';ru='Не указан пароль.'");
 		CommonUseClientServer.MessageToUser(NString,, "WSPassword",, Cancel);
 		Return Undefined;
 	EndIf;

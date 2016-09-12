@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Import from spreadsheet</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Загрузка из электронной таблицы</v8:content>
+		</v8:item>
 	</Title>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<AutoTitle>false</AutoTitle>
@@ -22,11 +26,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Importing stages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Этапы загрузки</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Importing stages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Этапы загрузки</v8:content>
 				</v8:item>
 			</ToolTip>
 			<PagesRepresentation>None</PagesRepresentation>
@@ -38,11 +50,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Greeting</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Приветствие</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Greeting</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Приветствие</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="GreetingExtendedTooltip" id="154"/>
@@ -53,6 +73,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group greeting main</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа приветствие основная</v8:content>
 								</v8:item>
 							</Title>
 							<HorizontalStretch>true</HorizontalStretch>
@@ -68,6 +92,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Hello</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Здравствуйте</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration2ContextMenu" id="31"/>
@@ -88,6 +116,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Use the wizard to import data from spreadsheets (e.g. MS Office Excel, OpenOffice Calc, etc.) Before the import starts it is necessary to perform the preparative actions.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Этот мастер поможет вам импортировать данные из электронной таблицы (например: MS Office Excel, OpenOffice Calc и др.). Перед началом импорта необходимо произвести подготовительные действия.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="Decoration3ContextMenu" id="33"/>
 											<ExtendedTooltip name="Decoration3ExtendedTooltip" id="158"/>
@@ -101,6 +133,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>1. Save a spreadsheet in the CSV format with the ";" separator:</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>1. Сохраните электронную таблицу в формате CSV с разделителем ";":</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration4ContextMenu" id="35"/>
@@ -117,6 +153,13 @@
   and then click Save as; - Select file
   type CSV (delimiter - commas); - Specify a attachment file name, and then click Save</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Например, в Excel для этого необходимо:
+  - Перейти в меню "Файл" и нажать кнопку "Сохранить как";
+  - Выбрать тип файла "CSV (разделитель - запятые)";
+  - Указать имя файла и нажать на кнопку "Сохранить".</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration15ContextMenu" id="83"/>
 									<ExtendedTooltip name="Decoration15ExtendedTooltip" id="160"/>
@@ -128,6 +171,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>2. Select the file received at the previous stage:</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>2. Выберите файл, полученный на предыдущем этапе:</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration5ContextMenu" id="37"/>
 									<ExtendedTooltip name="Decoration5ExtendedTooltip" id="161"/>
@@ -138,6 +185,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Path to load file</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Путь к файлу загрузки</v8:content>
 										</v8:item>
 									</Title>
 									<Width>40</Width>
@@ -160,6 +211,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>The extension of file processing is not connected. File is required to specify at the following step.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Не подключено расширение работы с файлами. Файл требуется указать на следующем шаге.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="WarningExportingContextMenu" id="146"/>
 									<ExtendedTooltip name="WarningExportExtendedTooltip" id="163"/>
@@ -170,6 +225,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>3. Select the directory which will be imported:</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>3. Выберите справочник, который будет загружаться:</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration6ContextMenu" id="39"/>
@@ -191,6 +250,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>ProductsAndServices import</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Загрузка номенклатуры</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">ProductsAndServices</Value>
 											</xr:Value>
@@ -203,6 +266,10 @@
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Import counterparties</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Загрузка контрагентов</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">Counterparties</Value>
@@ -217,6 +284,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>Import prices</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Загрузка цен</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">Prices</Value>
 											</xr:Value>
@@ -229,6 +300,10 @@
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Import balance</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Загрузка остатков</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">Balance</Value>
@@ -250,11 +325,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Group greeting empty</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа приветствие пустая</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group greeting empty</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа приветствие пустая</v8:content>
 								</v8:item>
 							</ToolTip>
 							<VerticalStretch>true</VerticalStretch>
@@ -275,6 +358,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group greeting footer</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа приветствие подвал</v8:content>
 								</v8:item>
 							</Title>
 							<VerticalStretch>false</VerticalStretch>
@@ -303,11 +390,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Mapping</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сопоставление</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Mapping</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сопоставление</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="MappingExtendedTooltip" id="171"/>
@@ -326,6 +421,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Indicate warehouse</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Укажите склад</v8:content>
+										</v8:item>
 									</Title>
 									<TitleLocation>None</TitleLocation>
 									<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -333,6 +432,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Indicate warehouse</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Укажите склад</v8:content>
 										</v8:item>
 									</InputHint>
 									<ContextMenu name="WarehouseContextMenu" id="94"/>
@@ -346,6 +449,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Indicate price kind</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Укажите вид цен</v8:content>
+										</v8:item>
 									</Title>
 									<TitleLocation>None</TitleLocation>
 									<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -353,6 +460,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Indicate price kind</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Укажите вид цен</v8:content>
 										</v8:item>
 									</InputHint>
 									<ContextMenu name="PriceTypeContextMenu" id="89"/>
@@ -365,6 +476,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Specify country of origin</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Укажите страну происхождения</v8:content>
 										</v8:item>
 									</InputHint>
 									<ContextMenu name="CountryOfOriginContextMenu" id="152"/>
@@ -392,6 +507,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Please indicate a column of the table in which attributes that you want to import are situated:</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Укажите в какой колонке таблицы находятся реквизиты, которые вы хотите загрузить:</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration9ContextMenu" id="50"/>
 									<ExtendedTooltip name="Decoration9ExtendedTooltip" id="173"/>
@@ -403,6 +522,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Mapping Group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа сопоставления</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -483,11 +606,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Group mapping footer</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа сопоставление подвал</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group mapping footer</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа сопоставление подвал</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -520,11 +651,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Creating</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Создание</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Creating</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Создание</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="CreatingExtendedTooltip" id="188"/>
@@ -541,6 +680,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Check the items, which need to be loaded:</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отметьте флажками позиции, которые должны быть загружены:</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration14ContextMenu" id="80"/>
@@ -738,11 +881,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Creating footer</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Создание подвал</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Creating footer</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Создание подвал</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -775,11 +926,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>End</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Окончание</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>End</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Окончание</v8:content>
 						</v8:item>
 					</ToolTip>
 					<VerticalStretch>true</VerticalStretch>
@@ -795,6 +954,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Importing complete. You can verify the correctness of the attributes filling</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Загрузка завершена. Вы можете проверить правильность заполнения реквизитов</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="Decoration1ContextMenu" id="29"/>
 									<ExtendedTooltip name="Decoration1ExtendedTooltip" id="216"/>
@@ -805,6 +968,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>here</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>здесь</v8:content>
 										</v8:item>
 									</Title>
 									<Hyperlink>true</Hyperlink>
@@ -871,6 +1038,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Barcode</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Штрихкод</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>xs:string</v8:Type>
@@ -885,6 +1056,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>CCD #</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Номер ГТД</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
@@ -903,6 +1078,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>File Path</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Путь к файлу</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -923,6 +1102,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Attributes</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реквизиты</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -933,6 +1116,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Attribute</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизит</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -949,6 +1136,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Column number</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер колонки</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
@@ -963,6 +1154,10 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>IsRequired</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>IsRequired</v8:content>
 						</v8:item>
 					</Title>
@@ -983,6 +1178,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Source address</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Источник адрес</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -997,6 +1196,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Transaction kind</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид операции</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1013,6 +1216,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Price kind</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид цены</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.PriceKinds</v8:Type>
@@ -1022,6 +1229,10 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>As of</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>As of</v8:content>
 				</v8:item>
 			</Title>
@@ -1038,6 +1249,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Warehouse</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Склад, на который приходуются запасы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
@@ -1049,6 +1264,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Source text</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст источника</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/txtedt">d5p1:TextDocument</v8:Type>
@@ -1059,6 +1278,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Country of origin</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страна происхождения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1120,11 +1343,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Next &gt;&gt;</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Следующие &gt;&gt;</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Greeting Next</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приветствие далее</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>GreetingNext</Action>
@@ -1136,11 +1367,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Next &gt;&gt;</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Следующие &gt;&gt;</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Mapping Next</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставление далее</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>MappingNext</Action>
@@ -1151,11 +1390,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>&lt;&lt; Back</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt;&lt; Назад</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Mapping Back</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставление назад</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>MappingBack</Action>
@@ -1166,11 +1413,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Creating mark all</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создание отметить все</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Creating mark all</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создание отметить все</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1186,11 +1441,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Creating unmark check</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создание снять отметку</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Creating unmark check</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создание снять отметку</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1206,11 +1469,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Mark new only</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметить только новые</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Mark new only</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отметить только новые</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>MarkNewOnly</Action>
@@ -1221,11 +1492,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Import -&gt;</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить -&gt;</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Creating forward</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создание вперед</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CreationForward</Action>
@@ -1236,11 +1515,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>&lt;&lt; Back</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt;&lt; Назад</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Creating back</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создание назад</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CreatingBack</Action>
@@ -1251,11 +1538,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Exit</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Завершить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Exit</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Завершить</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Done</Action>

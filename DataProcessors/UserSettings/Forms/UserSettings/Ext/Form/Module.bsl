@@ -24,7 +24,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		UserRef = Parameters.User;
 		Items.UserRef.Visible = False;
-		Title = NStr("en = 'User settings'");
+		Title = NStr("en='User settings';ru='Пользовательские настройки'");
 		InfobaseUser = DataProcessors.UserSettings.IBUserName(UserRef);
 	Else
 		UserRef = Users.CurrentUser();
@@ -119,8 +119,8 @@ Procedure UserRefStartChoice(Item, ChoiceData, StandardProcessing)
 	
 	If UseExternalUsers Then
 		TypeChoiceUsers = New ValueList;
-		TypeChoiceUsers.Add("ExternalUsers", NStr("en = 'External users'"));
-		TypeChoiceUsers.Add("Users", NStr("en = 'Users'"));
+		TypeChoiceUsers.Add("ExternalUsers", NStr("en='External users';ru='Внешние пользователи'"));
+		TypeChoiceUsers.Add("Users", NStr("en='Users';ru='Пользователи'"));
 		
 		Notification = New NotifyDescription("UserRefToStartChoiceEnd", ThisObject, FilterParameters);
 		TypeChoiceUsers.ShowChooseItem(Notification);
@@ -161,7 +161,7 @@ EndProcedure
 Procedure SettingsBeforeDelete(Item, Cancel)
 	
 	Cancel = True;
-	QuestionText = NStr("en = 'Clear the selected settings?'");
+	QuestionText = NStr("en='Clear the selected settings?';ru='Очистить выделенные настройки?'");
 	Notification = New NotifyDescription("SettingsBeforeDeleteEnd", ThisObject, Item);
 	ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo,, DialogReturnCode.Yes);
 	
@@ -200,14 +200,14 @@ Procedure CopyAllSettings(Command)
 	
 	UserType = TypeOf(UserRef);
 	CopiedSettings.Clear();
-	CopiedSettings.Add("ReportsSettings", NStr("en='Report settings'"));
-	CopiedSettings.Add("ExternalViewSettings", NStr("en='Appearance settings'"));
-	CopiedSettings.Add("FormsData", NStr("en='Form data'"));
-	CopiedSettings.Add("PersonalSettings", NStr("en='Personal settings'"));
-	CopiedSettings.Add("Favorites", NStr("en='Favorites'"));
-	CopiedSettings.Add("PrintSettings", NStr("en='Print settings'"));
+	CopiedSettings.Add("ReportsSettings", NStr("en='Report settings';ru='Настройки отчета'"));
+	CopiedSettings.Add("ExternalViewSettings", NStr("en='Appearance settings';ru='Настройки внешнего вида'"));
+	CopiedSettings.Add("FormsData", NStr("en='Form data';ru='Данные форм'"));
+	CopiedSettings.Add("PersonalSettings", NStr("en='Personal settings';ru='Персональные настройки'"));
+	CopiedSettings.Add("Favorites", NStr("en='Favorites';ru='Избранное'"));
+	CopiedSettings.Add("PrintSettings", NStr("en='Print settings';ru='Настройки печати'"));
 	CopiedSettings.Add(
-		"OtherUserSettings", NStr("en='Additional reports and processings settings'"));
+		"OtherUserSettings", NStr("en='Additional reports and processings settings';ru='Настройки дополнительных отчетов и обработок'"));
 	
 	FormParameters = New Structure("User, UserType, ActionType", 
 										UserRef, UserType, "CopyAll");
@@ -220,7 +220,7 @@ Procedure CopyReportsSettings(Command)
 	
 	UserType = TypeOf(UserRef);
 	CopiedSettings.Clear();
-	CopiedSettings.Add("ReportsSettings", NStr("en='Report settings'"));
+	CopiedSettings.Add("ReportsSettings", NStr("en='Report settings';ru='Настройки отчета'"));
 	
 	FormParameters = New Structure("User, UserType, ActionType", 
 										UserRef, UserType, "CopyAll");
@@ -233,7 +233,7 @@ Procedure CopyExternalViewSettings(Command)
 	
 	UserType = TypeOf(UserRef);
 	CopiedSettings.Clear();
-	CopiedSettings.Add("ExternalViewSettings", NStr("en='Appearance settings'"));
+	CopiedSettings.Add("ExternalViewSettings", NStr("en='Appearance settings';ru='Настройки внешнего вида'"));
 	
 	FormParameters = New Structure("User, UserType, ActionType", 
 										UserRef, UserType, "CopyAll");
@@ -246,8 +246,8 @@ Procedure CopyReportsSettingsAndExternalType(Command)
 	
 	UserType = TypeOf(UserRef);
 	CopiedSettings.Clear();
-	CopiedSettings.Add("ReportsSettings", NStr("en='Report settings'"));
-	CopiedSettings.Add("ExternalViewSettings", NStr("en='Appearance settings'"));
+	CopiedSettings.Add("ReportsSettings", NStr("en='Report settings';ru='Настройки отчета'"));
+	CopiedSettings.Add("ExternalViewSettings", NStr("en='Appearance settings';ru='Настройки внешнего вида'"));
 	
 	FormParameters = New Structure("User, UserType, ActionType", 
 										UserRef, UserType, "CopyAll");
@@ -262,13 +262,13 @@ Procedure Clear(Command)
 	SelectedRows = SettingsTree.SelectedRows;
 	If SelectedRows.Count() = 0 Then
 		
-		ShowMessageBox(,NStr("en = 'Select the settings to delete.'"));
+		ShowMessageBox(,NStr("en='Select the settings to delete.';ru='Необходимо выбрать настройки, которые требуется удалить.'"));
 		Return;
 		
 	EndIf;
 	
 	Notification = New NotifyDescription("ClearEnd", ThisObject, SettingsTree);
-	QuestionText = NStr("en = 'Clear the selected settings?'");
+	QuestionText = NStr("en='Clear the selected settings?';ru='Очистить выделенные настройки?'");
 	ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo,, DialogReturnCode.Yes);
 	
 EndProcedure
@@ -280,13 +280,13 @@ Procedure ClearSelectedUserSettings(Command)
 	SelectedRows = SettingsTree.SelectedRows;
 	If SelectedRows.Count() = 0 Then
 		
-		ShowMessageBox(,NStr("en = 'Select the settings to delete.'"));
+		ShowMessageBox(,NStr("en='Select the settings to delete.';ru='Необходимо выбрать настройки, которые требуется удалить.'"));
 		Return;
 		
 	EndIf;
 	
-	QuestionText = NStr("en = 'Clear the
-		|selected settings? It will open the selection window of users who should clear settings.'");
+	QuestionText = NStr("en='Clear the"
+"selected settings? It will open the selection window of users who should clear settings.';ru='Очистить выделенные настройки? Откроется окно выбора пользователей, которым необходимо очистить настройки.'");
 	Notification = New NotifyDescription("ClearSelectedUserSettingsEnd", ThisObject);
 	ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo,, DialogReturnCode.Yes);
 	
@@ -295,11 +295,11 @@ EndProcedure
 &AtClient
 Procedure ClearAllSettings(Command)
 	
-	QuestionText = NStr("en = 'Clear all the %1 user settings?'");
+	QuestionText = NStr("en='Clear all the %1 user settings?';ru='Очистить все настройки у пользователя ""%1""?'");
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, UserRef);
 	QuestionButtons = New ValueList;
-	QuestionButtons.Add("Clear", NStr("en='Clear'"));
-	QuestionButtons.Add("Cancel", NStr("en='Cancel'"));
+	QuestionButtons.Add("Clear", NStr("en='Clear';ru='Очистить'"));
+	QuestionButtons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
 	
 	Notification = New NotifyDescription("ClearAllSettingsEnd", ThisObject);
 	ShowQueryBox(Notification, QuestionText, QuestionButtons,, QuestionButtons[1].Value);
@@ -309,11 +309,11 @@ EndProcedure
 &AtClient
 Procedure ClearReportsAndAppearanceSettings(Command)
 	
-	QuestionText = NStr("en = 'Clear all report and appearance settings of the %1 user?'");
+	QuestionText = NStr("en='Clear all report and appearance settings of the %1 user?';ru='Очистить все настройки отчетов и внешнего вида у пользователя ""%1""?'");
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, UserRef);
 	QuestionButtons = New ValueList;
-	QuestionButtons.Add("Clear", NStr("en='Clear'"));
-	QuestionButtons.Add("Cancel", NStr("en='Cancel'"));
+	QuestionButtons.Add("Clear", NStr("en='Clear';ru='Очистить'"));
+	QuestionButtons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
 	
 	Notification = New NotifyDescription("ClearReportsAndAppearanceSettingsEnd", ThisObject);
 	ShowQueryBox(Notification, QuestionText, QuestionButtons,, QuestionButtons[1].Value);
@@ -331,12 +331,13 @@ EndProcedure
 &AtClient
 Procedure ClearAllUserSettings(Command)
 	
-	QuestionText = NStr("en = 'All user settings will be cleared.
-	|Continue?'");
+	QuestionText = NStr("en='All user settings will be cleared."
+"Continue?';ru='Сейчас будут очищены все настройки всех пользователей."
+"Продолжить?'");
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, UserRef);
 	QuestionButtons = New ValueList;
-	QuestionButtons.Add("ClearAll", NStr("en='Clear all'"));
-	QuestionButtons.Add("Cancel", NStr("en='Cancel'"));
+	QuestionButtons.Add("ClearAll", NStr("en='Clear all';ru='Очистить все'"));
+	QuestionButtons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
 	
 	Notification = New NotifyDescription("ClearAllUserSettingsEnd", ThisObject);
 	ShowQueryBox(Notification, QuestionText, QuestionButtons,, QuestionButtons[1].Value);
@@ -378,9 +379,9 @@ Procedure CalculateSettingsCount()
 	
 	If SettingsCount <> 0 Then
 		Items.ReportsSettingsPage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Reports settings (%1)'"), SettingsCount);
+			NStr("en='Reports settings (%1)';ru='Настройки отчетов (%1)'"), SettingsCount);
 	Else
-		Items.ReportsSettingsPage.Title = NStr("en='Report settings'");
+		Items.ReportsSettingsPage.Title = NStr("en='Report settings';ru='Настройки отчета'");
 	EndIf;
 	
 	ReportsSettingsAmount = SettingsCount;
@@ -389,9 +390,9 @@ Procedure CalculateSettingsCount()
 	
 	If SettingsCount <> 0 Then
 		Items.AppearancePage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Appearance (%1)'"), SettingsCount);
+			NStr("en='Appearance (%1)';ru='Внешний вид (%1)'"), SettingsCount);
 	Else
-		Items.AppearancePage.Title = NStr("en='Appearance'");
+		Items.AppearancePage.Title = NStr("en='Appearance';ru='Оформление'");
 	EndIf;
 	
 	AppearanceSettingsAmount = SettingsCount;
@@ -400,9 +401,9 @@ Procedure CalculateSettingsCount()
 	
 	If SettingsCount <> 0 Then
 		Items.OtherSettingsPage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Other settings (%1)'"), SettingsCount);
+			NStr("en='Other settings (%1)';ru='Прочие настройки (%1)'"), SettingsCount);
 	Else
-		Items.OtherSettingsPage.Title = NStr("en='Other settings'");
+		Items.OtherSettingsPage.Title = NStr("en='Other settings';ru='Прочие настройки'");
 	EndIf;
 	
 	OtherSettingsAmount = SettingsCount;
@@ -683,22 +684,22 @@ Procedure Attachable_ExecuteNotifyProcessing()
 			
 			If SettingsArray.Count() = 7 Then
 				ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'All the settings are copied %1'"), ExplanationToWhomSettingsAreCopied);
+					NStr("en='All the settings are copied %1';ru='Скопированы все настройки %1'"), ExplanationToWhomSettingsAreCopied);
 			Else
 				ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = '%1 copied %2'"), SettingsNames, ExplanationToWhomSettingsAreCopied);
+					NStr("en='%1 copied %2';ru='%1 скопированы %2'"), SettingsNames, ExplanationToWhomSettingsAreCopied);
 			EndIf;
 				
-			Status(NStr("en = 'Settings are being copied'"));
+			Status(NStr("en='Settings are being copied';ru='Выполняется копирование настроек'"));
 			
 			Report = Undefined;
 			CopyAllSettingsAtServer(InfobaseUser, UsersTarget, SettingsArray, Report);
 			
 			If Report <> Undefined Then
-				QuestionText = NStr("en = 'Not all the report variants and settings have been copied.'");
+				QuestionText = NStr("en='Not all the report variants and settings have been copied.';ru='Не все варианты отчетов и настройки были скопированы.'");
 				QuestionButtons = New ValueList;
-				QuestionButtons.Add("Ok", NStr("en='OK'"));
-				QuestionButtons.Add("ShowReport", NStr("en='Show report'"));
+				QuestionButtons.Add("Ok", NStr("en='OK';ru='Ок'"));
+				QuestionButtons.Add("ShowReport", NStr("en='Show report';ru='Показать отчет'"));
 				
 				Notification = New NotifyDescription("NotificationProcessingShowQueryBox", ThisObject, Report);
 				ShowQueryBox(Notification, QuestionText, QuestionButtons,, QuestionButtons[0].Value);
@@ -707,7 +708,7 @@ Procedure Attachable_ExecuteNotifyProcessing()
 			EndIf;
 				
 			ShowUserNotification(
-				NStr("en = 'Copying of settings'"), , ExplanationText, PictureLib.Information32);
+				NStr("en='Copying of settings';ru='Копирование настроек'"), , ExplanationText, PictureLib.Information32);
 			
 			Return;
 		EndIf;
@@ -742,10 +743,10 @@ Procedure Attachable_ExecuteNotifyProcessing()
 		CopyAtServer(UsersTarget, PersonalReportsSettings, Report);
 		
 		If Report <> Undefined Then
-			QuestionText = NStr("en = 'Not all the report variants and settings have been copied.'");
+			QuestionText = NStr("en='Not all the report variants and settings have been copied.';ru='Не все варианты отчетов и настройки были скопированы.'");
 			QuestionButtons = New ValueList;
-			QuestionButtons.Add("Ok", NStr("en='OK'"));
-			QuestionButtons.Add("ShowReport", NStr("en='Show report'"));
+			QuestionButtons.Add("Ok", NStr("en='OK';ru='Ок'"));
+			QuestionButtons.Add("ShowReport", NStr("en='Show report';ru='Показать отчет'"));
 			
 			Notification = New NotifyDescription("NotificationProcessingShowQueryBox", ThisObject, Report);
 			ShowQueryBox(Notification, QuestionText, QuestionButtons,, QuestionButtons[0].Value);
@@ -760,7 +761,7 @@ Procedure Attachable_ExecuteNotifyProcessing()
 			ExplanationText = UsersServiceClient.GeneratingExplanationOnCopying(
 				SettingRepresentation, SettingsCount, ExplanationToWhomSettingsAreCopied);
 			ShowUserNotification(
-				NStr("en = 'Copying of settings'"), , ExplanationText, PictureLib.Information32);
+				NStr("en='Copying of settings';ru='Копирование настроек'"), , ExplanationText, PictureLib.Information32);
 			
 		EndIf;
 		
@@ -795,8 +796,8 @@ Procedure ClearAllUserSettingsEnd(Response, AdditionalParameters) Export
 	ClearSettingsOfAllUsersAtServer();
 	CommonUseClient.RefreshApplicationInterface();
 	
-	ShowUserNotification(NStr("en = 'Clear settings'"), ,
-		NStr("en='All settings of all the users have been cleared'"), PictureLib.Information32);
+	ShowUserNotification(NStr("en='Clear settings';ru='Очистить настройки'"), ,
+		NStr("en='All settings of all the users have been cleared';ru='Очищены все настройки всех пользователя'"), PictureLib.Information32);
 	
 EndProcedure
 
@@ -819,10 +820,10 @@ Procedure ClearAllSettingsEnd(Response, AdditionalParameters) Export
 	ClearAllSettingsAtServer(ClearedSettings);
 	CommonUseClient.RefreshApplicationInterface();
 	
-	ExplanationText = NStr("en = 'All the %1 user settings have been cleared'");
+	ExplanationText = NStr("en='All the %1 user settings have been cleared';ru='Очищены все настройки пользователя ""%1""'");
 	ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(ExplanationText, UserRef);
 	ShowUserNotification(
-		NStr("en = 'Clear settings'"), , ExplanationText, PictureLib.Information32);
+		NStr("en='Clear settings';ru='Очистить настройки'"), , ExplanationText, PictureLib.Information32);
 	
 EndProcedure
 
@@ -841,10 +842,10 @@ Procedure ClearReportsAndAppearanceSettingsEnd(Response, AdditionalParameters) E
 	ClearAllSettingsAtServer(ClearedSettings);
 	CommonUseClient.RefreshApplicationInterface();
 	
-	ExplanationText = NStr("en = 'All report and appearance settings of the %1 user have been cleared'");
+	ExplanationText = NStr("en='All report and appearance settings of the %1 user have been cleared';ru='Очищены все настройки отчетов и внешнего вида у пользователя ""%1""'");
 	ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(ExplanationText, UserRef);
 	ShowUserNotification(
-		NStr("en = 'Clear settings'"), , ExplanationText, PictureLib.Information32);
+		NStr("en='Clear settings';ru='Очистить настройки'"), , ExplanationText, PictureLib.Information32);
 	
 EndProcedure
 
@@ -999,11 +1000,11 @@ Procedure NotifyAboutDeleting(SettingsCount, SettingName = Undefined, UserCount 
 	SubjectInWords = UsersServiceClient.GeneratingSettingsCountString(SettingsCount);
 	If SettingsCount = 1
 		AND UserCount = Undefined Then
-		ExplanationText = NStr("en = 'The %1 is cleared for the %2 user'");
+		ExplanationText = NStr("en='The %1 is cleared for the %2 user';ru='""%1"" очищена пользователю ""%2""'");
 		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
 			ExplanationText, SettingName, String(UserRef));
 	ElsIf UserCount = Undefined Then
-		ExplanationText = NStr("en = 'The %1 is cleared for the %2 user'");
+		ExplanationText = NStr("en='The %1 is cleared for the %2 user';ru='""%1"" очищена пользователю ""%2""'");
 		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
 			ExplanationText, SubjectInWords, String(UserRef));
 	EndIf;
@@ -1014,11 +1015,11 @@ Procedure NotifyAboutDeleting(SettingsCount, SettingName = Undefined, UserCount 
 	If UserCount <> Undefined Then
 		
 		If SettingsCount = 1 Then
-			ExplanationText = NStr("en = '""%1"" cleared %2'");
+			ExplanationText = NStr("en='""%1"" cleared %2';ru='""%1"" очищена %2'");
 			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
 				ExplanationText, SettingName, ExplanationWhomSettingsCleared);
 		Else
-			ExplanationText = NStr("en = 'Cleared %1 %2'");
+			ExplanationText = NStr("en='Cleared %1 %2';ru='Очищено %1 %2'");
 			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
 				ExplanationText, SubjectInWords, ExplanationWhomSettingsCleared);
 		EndIf;
@@ -1026,7 +1027,7 @@ Procedure NotifyAboutDeleting(SettingsCount, SettingName = Undefined, UserCount 
 	EndIf;
 	
 	ShowUserNotification(
-		NStr("en = 'Clear settings'"), , ExplanationText, PictureLib.Information32);
+		NStr("en='Clear settings';ru='Очистить настройки'"), , ExplanationText, PictureLib.Information32);
 	
 EndProcedure
 
@@ -1035,18 +1036,21 @@ Procedure CopySettings()
 	
 	SettingsTree = SelectedSettingsPageFormTable();
 	If SettingsTree.SelectedRows.Count() = 0 Then
-		ShowMessageBox(,NStr("en = 'Select the settings to copy.'"));
+		ShowMessageBox(,NStr("en='Select the settings to copy.';ru='Необходимо выбрать настройки, которые требуется скопировать.'"));
 		Return;
 	ElsIf SettingsTree.SelectedRows.Count() = 1 Then
 		
 		If SettingsTree.CurrentData.Type = "PersonalVariant" Then
-			ShowMessageBox(,NStr("en = 'Impossible to copy the personal report variant.
-			|If you want to make personal report variant to be
-			|available to other users, then you need to resave it with the ""Only for author"" mark removed.'"));
+			ShowMessageBox(,NStr("en='Impossible to copy the personal report variant."
+"If you want to make personal report variant to be"
+"available to other users, then you need to resave it with the ""Only for author"" mark removed.';ru='Невозможно скопировать личный вариант отчета."
+"Для того чтобы личный вариант отчета стал доступен"
+"другим пользователям, необходимо его пересохранить со снятой пометкой ""Только для автора"".'"));
 			Return;
 		ElsIf SettingsTree.CurrentData.Type = "SettingPersonal" Then
-			ShowMessageBox(,NStr("en = 'Impossible to copy setting of the personal report variant.
-			|Copying of the individual report variant settings is not provided.'"));
+			ShowMessageBox(,NStr("en='Impossible to copy setting of the personal report variant."
+"Copying of the individual report variant settings is not provided.';ru='Невозможно скопировать настройку личного варианта отчета."
+"Копирование настроек личных вариантов отчетов не предусмотрено.'"));
 			Return;
 		EndIf;
 		

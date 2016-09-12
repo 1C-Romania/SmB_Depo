@@ -65,7 +65,7 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler = Handlers.Add();
 	Handler.Version = "2.1.5.18";
 	Handler.PerformModes = "Delay";
-	Handler.Comment = NStr("en = 'Additional attributes and information restructuring'");
+	Handler.Comment = NStr("en='Additional attributes and information restructuring';ru='Реструктуризация дополнительных реквизитов и сведений'");
 	Handler.Procedure = "PropertiesManagementService.UpdateAllSetsGroupsPropertiesContent";
 	
 EndProcedure
@@ -899,7 +899,7 @@ Procedure OnFillAccessKinds(AccessKinds) Export
 	
 	AccessKind = AccessKinds.Add();
 	AccessKind.Name = "AdditionalInformation";
-	AccessKind.Presentation = NStr("en = 'Additional data'");
+	AccessKind.Presentation = NStr("en='Additional data';ru='Дополнительные сведения'");
 	AccessKind.ValuesType   = Type("ChartOfCharacteristicTypesRef.AdditionalAttributesAndInformation");
 	
 EndProcedure

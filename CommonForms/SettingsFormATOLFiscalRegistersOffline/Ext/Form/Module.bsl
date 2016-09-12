@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Parameters.Property("ID", ID);
 	
-	Title = NStr("en='Equipment:'") + Chars.NBSp  + String(ID);
+	Title = NStr("en='Equipment:';ru='Оборудование:'") + Chars.NBSp  + String(ID);
 	
 	tempProductsBase = Undefined;
 	tempReportFile = Undefined;
@@ -23,8 +23,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ReportFile   = ?(tempReportFile = Undefined, "", tempReportFile);
 	ExportFlag = ?(tempExportFlag = Undefined, "", tempExportFlag);
 	
-	Driver = NStr("en='Not necessary'");
-	Version  = NStr("en='Not defined'");
+	Driver = NStr("en='Not necessary';ru='Не требуется'");
+	Version  = NStr("en='Not defined';ru='Не определена'");
 	
 EndProcedure
 
@@ -98,13 +98,13 @@ Procedure WriteAndClose(Command)
 
 	If IsBlankString(ProductsBase) Then
 		Result = False;
-		CommonErrorText = NStr("en='Products base file is not specified.'");
+		CommonErrorText = NStr("en='Products base file is not specified.';ru='Файл базы товаров не указан.'");
 	EndIf;
 	
 	If IsBlankString(ReportFile) Then
 		Result = False;
 		CommonErrorText = CommonErrorText + ?(IsBlankString(CommonErrorText), "", Chars.LF); 
-		CommonErrorText = CommonErrorText + NStr("en='Report file is not specified.'") 
+		CommonErrorText = CommonErrorText + NStr("en='Report file is not specified.';ru='Файл отчета не указан.'") 
 	EndIf;
 	
 	If IsBlankString(CommonErrorText) Then
@@ -122,7 +122,7 @@ Procedure WriteAndClose(Command)
 		
 	Else
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en= 'When verifying the following errors have been detected:'")+ Chars.LF + CommonErrorText);
+		CommonUseClientServer.MessageToUser(NStr("en='When verifying the following errors have been detected:';ru='При проверке были обнаружены следующие ошибки:'")+ Chars.LF + CommonErrorText);
 	EndIf;
 	   
 EndProcedure
@@ -150,10 +150,10 @@ Procedure DeviceTest(Command)
 
 	AdditionalDetails = ?(TypeOf(Output_Parameters) = Type("Array")
 	                           AND Output_Parameters.Count() >= 2,
-	                           NStr("en = 'Additional description:'") + " " + Output_Parameters[1],
+	                           NStr("en='Additional description:';ru='Дополнительное описание:'") + " " + Output_Parameters[1],
 	                           "");
 	If Result Then
-		MessageText = NStr("en = 'Test completed successfully. %AdditionalDetails%%Linefeed%'");
+		MessageText = NStr("en='Test completed successfully. %AdditionalDetails%%Linefeed%';ru='Тест успешно выполнен.%ПереводСтроки%%ДополнительноеОписание%'");
 		MessageText = StrReplace(MessageText, "%Linefeed%", ?(IsBlankString(AdditionalDetails),
 		                                                                  "",
 		                                                                  Chars.LF));
@@ -162,7 +162,7 @@ Procedure DeviceTest(Command)
 		                                                                           AdditionalDetails));
 		CommonUseClientServer.MessageToUser(MessageText);
 	Else
-		MessageText = NStr("en = 'Test failed.%Linefeed% %AdditionalDetails%'");
+		MessageText = NStr("en='Test failed.%Linefeed% %AdditionalDetails%';ru='Тест не пройден.%ПереводСтроки%%ДополнительноеОписание%'");
 		MessageText = StrReplace(MessageText, "%Linefeed%", ?(IsBlankString(AdditionalDetails),
 		                                                                  "",
 		                                                                  Chars.LF));

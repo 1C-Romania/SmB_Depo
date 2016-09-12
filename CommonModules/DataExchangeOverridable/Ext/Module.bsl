@@ -12,7 +12,7 @@
 //
 Procedure OnDefineDefaultInfobasePrefix(Prefix) Export
 	
-	Prefix = NStr("en = 'FR'");
+	Prefix = NStr("en='FR';ru='ФР'");
 	
 EndProcedure
 
@@ -278,7 +278,7 @@ EndProcedure
 //
 //
 Function InfobasePrefixByDefault() Export
-	Return NStr("en = 'FR'");
+	Return NStr("en='FR';ru='ФР'");
 EndFunction
 
 #EndRegion

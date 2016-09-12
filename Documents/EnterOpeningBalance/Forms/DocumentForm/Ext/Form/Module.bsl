@@ -734,7 +734,7 @@ Procedure FixedAssetsVolumeProductsWorksForDepreciationCalculationOnChange(Item)
 	StructureData = GetDataFixedAsset(TabularSectionRow.FixedAsset);
 	
 	If Not StructureData.MethodOfDepreciationProportionallyProductsAmount Then
-		ShowMessageBox(Undefined,NStr("en = '""Volume of Production Work for calculating depreciation ""can not be filled with for the specified depreciation accrual method!'"));
+		ShowMessageBox(Undefined,NStr("en='""Volume of Production Work for calculating depreciation ""can not be filled with for the specified depreciation accrual method!';ru='""Объем продукции (работ) для исчисления амортизации"" не может быть заполнен для указанного способа начисления амортизации!'"));
 		TabularSectionRow.AmountOfProductsServicesForDepreciationCalculation = 0;
 	EndIf;
 	
@@ -751,7 +751,7 @@ Procedure FixedAssetsUsagePeriodForDepreciationCalculationOnChange(Item)
 	StructureData = GetDataFixedAsset(TabularSectionRow.FixedAsset);
 	
 	If StructureData.MethodOfDepreciationProportionallyProductsAmount Then
-		ShowMessageBox(Undefined,NStr("en = 'The useful life of the asset can not be filled for the specified method of calculating depreciation!'"));
+		ShowMessageBox(Undefined,NStr("en='The useful life of the asset can not be filled for the specified method of calculating depreciation!';ru='""Срок использования для вычисления амортизации"" не может быть заполнен для указанного способа начисления амортизации!'"));
 		TabularSectionRow.UsagePeriodForDepreciationCalculation = 0;
 	EndIf;
 	
@@ -785,7 +785,7 @@ Procedure FixedAssetsCurrentOutputQuantityOnChange(Item)
 	StructureData = GetDataFixedAsset(TabularSectionRow.FixedAsset);
 	
 	If Not StructureData.MethodOfDepreciationProportionallyProductsAmount Then
-		ShowMessageBox(Undefined,NStr("en = '""Volume of Production Work for calculating depreciation ""can not be filled with for the specified depreciation accrual method!'"));
+		ShowMessageBox(Undefined,NStr("en='""Volume of Production Work for calculating depreciation ""can not be filled with for the specified depreciation accrual method!';ru='""Объем продукции (работ) для исчисления амортизации"" не может быть заполнен для указанного способа начисления амортизации!'"));
 		TabularSectionRow.CurrentOutputQuantity = 0;
 	EndIf;
 
@@ -1255,7 +1255,7 @@ Procedure CashAssetsCashAssetsCurrencyStartChoice(Item, ChoiceData, StandardProc
 	// If type of cash assets is changed, appropriate actions are required.
 	If ValueIsFilled(StructureData.CashAssetsType)
 	   AND StructureData.CashAssetsType <> Cash Then
-		ShowMessageBox(Undefined,NStr("en='It is prohibited to change currency of the bank account!'"));
+		ShowMessageBox(Undefined,NStr("en='It is prohibited to change currency of the bank account!';ru='Для банковского счета нельзя изменить валюту денежных средств!'"));
 		StandardProcessing = False;
 	EndIf;
 
@@ -1595,9 +1595,9 @@ Procedure OtherSectionsCurrencyStartChoice(Item, ChoiceData, StandardProcessing)
 	If Not StructureData.Currency Then
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.Account) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	
@@ -1616,9 +1616,9 @@ Procedure OtherSectionsCurrencyOnChange(Item)
 		CurrentRow.Currency = Undefined;
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.Account) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	
@@ -1636,9 +1636,9 @@ Procedure OtherSectionsAmountCurStartChoice(Item, ChoiceData, StandardProcessing
 	If Not StructureData.Currency Then
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.Account) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	
@@ -1657,9 +1657,9 @@ Procedure OtherSectionsAmountCurOnChange(Item)
 		CurrentRow.AmountCur = Undefined;
 		StandardProcessing = False;
 		If ValueIsFilled(CurrentRow.Account) Then
-			ShowMessageBox(Undefined,NStr("en = 'For the selected account the currency flag is not set!'"));
+			ShowMessageBox(Undefined,NStr("en='For the selected account the currency flag is not set!';ru='У выбранного счета не установлен признак валютный!'"));
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Specify the account first.'"));
+			ShowMessageBox(Undefined,NStr("en='Specify the account first.';ru='Укажите в начале счет!'"));
 		EndIf;
 	EndIf;
 	
@@ -1814,7 +1814,7 @@ Procedure InventoryByCCDDStartRMNumberChoice(Item, ChoiceData, StandardProcessin
 		
 		If Not ValueIsFilled(DataCurrentRows.CountryOfOrigin) Then
 			
-			MessageText = NStr("en = 'Country of origin is not filled!'");
+			MessageText = NStr("en='Country of origin is not filled!';ru='Не заполнена страна происхождения!'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			
 			StandardProcessing = False;
@@ -1824,7 +1824,7 @@ Procedure InventoryByCCDDStartRMNumberChoice(Item, ChoiceData, StandardProcessin
 		If ValueIsFilled(DataCurrentRows.CountryOfOrigin)
 		   AND DataCurrentRows.CountryOfOrigin = PredefinedValue("Catalog.WorldCountries.Russia") Then
 			
-			MessageText = NStr("en = 'CCD accounting for the native products is not kept!'");
+			MessageText = NStr("en='CCD accounting for the native products is not kept!';ru='Учет ГТД для отечественных товаров не ведется!'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			
 			StandardProcessing = False;
@@ -1834,7 +1834,7 @@ Procedure InventoryByCCDDStartRMNumberChoice(Item, ChoiceData, StandardProcessin
 		If (ValueIsFilled(DataCurrentRows.ProductsAndServices)
 			AND Not ProductsAndServicesTypeInventory(DataCurrentRows.ProductsAndServices)) Then
 			
-			MessageText = NStr("en = 'CCD account is kept only for products and services with the ""Inventory"" type.'");
+			MessageText = NStr("en='CCD account is kept only for products and services with the ""Inventory"" type.';ru='Учет ГТД в программе ведеться только для номенклатуры с типом ""Запас"".'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			StandardProcessing = False;
 			
@@ -1980,7 +1980,7 @@ Procedure ProcessPreparedDataInventory(ImportResult)
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Data Import'"), EventLogLevel.Error, Metadata.Documents.EnterOpeningBalance, , NStr("en ='Inventory: '") + ErrorDescription());
+		WriteLogEvent(NStr("en='Data Import';ru='Загрузка данных'"), EventLogLevel.Error, Metadata.Documents.EnterOpeningBalance, , NStr("en='Inventory: ';ru='Запасы: '") + ErrorDescription());
 		RollbackTransaction();
 		
 	EndTry;
@@ -2043,7 +2043,7 @@ Procedure ProcessPreparedDataAccountsReceivable(ImportResult)
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Data Import'"), EventLogLevel.Error, Metadata.Documents.EnterOpeningBalance, , NStr("en ='Accounts receivable: '") + ErrorDescription());
+		WriteLogEvent(NStr("en='Data Import';ru='Загрузка данных'"), EventLogLevel.Error, Metadata.Documents.EnterOpeningBalance, , NStr("en='Accounts receivable: ';ru='Расчеты с покупателями: '") + ErrorDescription());
 		RollbackTransaction();
 		
 	EndTry;
@@ -2106,7 +2106,7 @@ Procedure ProcessPreparedDataAccountsPayable(ImportResult)
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Data Import'"), EventLogLevel.Error, Metadata.Documents.EnterOpeningBalance, , NStr("en ='Accounts receivable: '") + ErrorDescription());
+		WriteLogEvent(NStr("en='Data Import';ru='Загрузка данных'"), EventLogLevel.Error, Metadata.Documents.EnterOpeningBalance, , NStr("en='Accounts receivable: ';ru='Расчеты с покупателями: '") + ErrorDescription());
 		RollbackTransaction();
 		
 	EndTry;

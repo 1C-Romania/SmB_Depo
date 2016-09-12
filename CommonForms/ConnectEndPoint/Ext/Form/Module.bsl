@@ -17,7 +17,7 @@ EndProcedure
 &AtClient
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
-	WarningText = NStr("en = 'Do you want to cancel the connection to the end point?'");
+	WarningText = NStr("en='Do you want to cancel the connection to the end point?';ru='Отменить подключение конечной точки?'");
 	Notification = New NotifyDescription("ConnectAndClose", ThisObject);
 	CommonUseClient.ShowFormClosingConfirmation(Notification, Cancel, WarningText);
 	
@@ -41,7 +41,7 @@ EndProcedure
 &AtClient
 Procedure ConnectAndClose(Result = Undefined, AdditionalParameters = Undefined) Export
 	
-	Status(NStr("en = 'End point is being connected. Please wait...'"));
+	Status(NStr("en='End point is being connected. Please wait...';ru='Выполняется подключение конечной точки. Пожалуйста, подождите..'"));
 	
 	Cancel = False;
 	FillError = False;
@@ -54,8 +54,9 @@ Procedure ConnectAndClose(Result = Undefined, AdditionalParameters = Undefined) 
 	
 	If Cancel Then
 		
-		NString = NStr("en = 'There were errors when connecting to the end point.
-		|Do you want to open the event log?'");
+		NString = NStr("en='There were errors when connecting to the end point."
+"Do you want to open the event log?';ru='При подключении конечной точки возникли ошибки."
+"Перейти в журнал регистрации?'");
 		NotifyDescription = New NotifyDescription("OpenEventLogMonitor", ThisObject);
 		ShowQueryBox(NOTifyDescription, NString, QuestionDialogMode.YesNo, ,DialogReturnCode.No);
 		Return;
@@ -63,7 +64,7 @@ Procedure ConnectAndClose(Result = Undefined, AdditionalParameters = Undefined) 
 	
 	Notify(MessageExchangeClient.EndPointAddedEventName());
 	
-	ShowUserNotification(,,NStr("en = 'End point connection has been successfully completed.'"));
+	ShowUserNotification(,,NStr("en='End point connection has been successfully completed.';ru='Подключение конечной точки успешно завершено.'"));
 	
 	Modified = False;
 	

@@ -185,7 +185,7 @@ Procedure TimeLimitToOnChange(Item)
 	If TimeLimitTo <= TimeLimitFrom 
 		AND TimeLimitTo <> '00010101000000'
 		AND TimeLimitFrom <> '00010101000000' Then
-		Message(NStr("en='Ending time can not be less or equal to beginning time.'"));
+		Message(NStr("en='Ending time can not be less or equal to beginning time.';ru='Время окончания не может быть меньше или равно времени начала.'"));
 		TimeLimitTo = TimeLimitFrom + 1800;
 		Return;
 	EndIf;

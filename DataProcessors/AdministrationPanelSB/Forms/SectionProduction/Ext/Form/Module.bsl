@@ -233,14 +233,14 @@ Function CheckRecordsByProductionSubsystemRegisters()
 	// 1. Inventory Register.
 	If Not ResultsArray[0].IsEmpty() Then
 		
-		ErrorText = NStr("en = 'There are activities on the register ""Inventory"" in the infobase ,where financial account has the Indirect costs type or Unfinished production type! Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = NStr("en='There are activities on the register ""Inventory"" in the infobase ,where financial account has the Indirect costs type or Unfinished production type! Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют движения по регистру ""Запасы"", где счет учета имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 2. The Inventory received register.
 	If Not ResultsArray[1].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'The Inventory Received accumulation register contains information about receipt for processing! Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The Inventory Received accumulation register contains information about receipt for processing! Removal of the flag ""Production"" is prohibited!';ru='Регистр накопления ""Запасы принятые"" содержит информацию о приеме в переработку! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
@@ -487,126 +487,126 @@ Function CancellationUncheckFunctionalOptionUseSubsystemProduction()
 	// 1. Order for production Document.
 	If Not ResultsArray[0].IsEmpty() Then
 		
-		ErrorText = NStr("en = 'The infobase contains the Production order documents! Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = NStr("en='The infobase contains the Production order documents! Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Заказ на производство""! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 2. Production Document.
 	If Not ResultsArray[1].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'The infobase contains the Production documents! Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The infobase contains the Production documents! Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Производство""! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 3. The Cost allocation document.
 	If Not ResultsArray[2].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'The infobase contains documents ""Cost allocation"". Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The infobase contains documents ""Cost allocation"". Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Распределение затрат""! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 4. Customer order (Order for processing) document.
 	If Not ResultsArray[3].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'The infobase contains the documents ""Customer order"" with the  operation kind ""Order for processing""! Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The infobase contains the documents ""Customer order"" with the  operation kind ""Order for processing""! Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Заказ покупателя"" с видом операции ""Заказ на переработку""! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 5. The Job sheet document
 	If Not ResultsArray[4].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'The infobase contains the Job sheet documents! Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The infobase contains the Job sheet documents! Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Сдельный наряд""! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 6. Transfer between cells document (transfer - division).
 	If Not ResultsArray[5].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'The infobase contains documents ""Transfer between cells"", where company structural unit has the Division type. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The infobase contains documents ""Transfer between cells"", where company structural unit has the Division type. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Перемещение по ячейкам"", где структурная единица компании имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 7. The Inventory transfer document (division, indirect costs).
 	If Not ResultsArray[6].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are ""Inventory Transfer"" documents in the infobase, where structural unit of company having Division type and/or the account of expenses having type Indirect costs! Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Inventory Transfer"" documents in the infobase, where structural unit of company having Division type and/or the account of expenses having type Indirect costs! Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Перемещение запасов"", где структурная единица компании имеет тип Подразделение и/или счет затрат имеет тип Косвенные затраты! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 8. Enter opening balance document (division, indirect costs).
 	If Not ResultsArray[7].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are ""Enter opening balance"" documents in the infobase, where structural unit of the company has the Division type and/or the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Enter opening balance"" documents in the infobase, where structural unit of the company has the Division type and/or the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Ввод начальных остатков"", где структурная единица компании имеет тип Подразделение и/или счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 9. Fixed assets enter document (unfinished production, indirect costs).
 	If Not ResultsArray[8].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are ""Fixed assets enter"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Fixed assets enter"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Принятие к учету имущества"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 10. Document Inventory receipt (division).
 	If Not ResultsArray[9].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are ""Inventory receipt"" documents in the infobase, where structural company unit has the Division type. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Inventory receipt"" documents in the infobase, where structural company unit has the Division type. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Оприходование запасов"", где структурная единица компании имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 11. The Budget document (unfinished production, indirect costs).
 	If Not ResultsArray[10].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are ""Budget"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Budget"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Бюджет"", где счета затрат имеют тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 12. The Fixed asserts modernization document (unfinished production, indirect costs).
 	If Not ResultsArray[11].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are ""Fixed assets modernization"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Fixed assets modernization"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Изменение параметров имущества"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 13. Payroll document (unfinished production, indirect costs).
 	If Not ResultsArray[12].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are ""Payroll"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Payroll"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Начисление зарплаты"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 14. Tax accrual document (unfinished production, indirect costs).
 	If Not ResultsArray[13].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are ""Tax accrual"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Tax accrual"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Начисление налогов"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 15. The Operation document (unfinished production, indirect costs).
 	If Not ResultsArray[14].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are ""Operation"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Operation"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Операция"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 16. The Other expenses document (unfinished production,indirect costs).
 	If Not ResultsArray[15].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are ""Other expenses"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Other expenses"" documents in the infobase, where the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Прочие затраты (расходы)"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 17. Catalog ProductsAndServices (unfinished production, indirect costs).
 	If Not ResultsArray[16].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are ""Products and services"" catalog items in the infobase, where the account of expenses has type Indirect costs, Unfinished production or the ""Production"" method of inventory receipt. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Products and services"" catalog items in the infobase, where the account of expenses has type Indirect costs, Unfinished production or the ""Production"" method of inventory receipt. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют элементы справочника ""Номенклатура"", где счет учета затрат имеет тип Косвенные затраты, Незавершенное производство или способ пополнения запаса Производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 18. Catalog Structural units (division).
 	If Not ResultsArray[17].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en = 'There are items of catalog ""Structural unit"" in the infobase, where the autoshift parameter (shift, batching) has the Division type. Removal of the flag ""Production"" is prohibited!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are items of catalog ""Structural unit"" in the infobase, where the autoshift parameter (shift, batching) has the Division type. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют элементы справочника ""Структурная единица"", где параметр автоперемещения (перемещение, комплектация) имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
@@ -642,14 +642,19 @@ Function CancellationUncheckUseProductionOrderStates()
 	Result = Query.Execute();
 	If Not Result.IsEmpty() Then
 		
-		ErrorText = NStr(
-			"en = 'The base contains the documents ""Production order""  with the ""Opened"" and/or ""Executed (not closed)"" status!
-			|Disabling the option is prohibited!
-			|Note:
-			|If there are documents in the state with
-			|the status ""Open"", set them to state with the status ""In progress""
-			|or ""Executed (closed)"" If there are documents in the state
-			|with the status ""Executed (not closed)"", then set them to state with the status ""Executed (closed)"".'"
+		ErrorText = NStr("en='The base contains the documents ""Production order""  with the ""Opened"" and/or ""Executed (not closed)"" status!"
+"Disabling the option is prohibited!"
+"Note:"
+"If there are documents in the state with"
+"the status ""Open"", set them to state with the status ""In progress"""
+"or ""Executed (closed)"" If there are documents in the state"
+"with the status ""Executed (not closed)"", then set them to state with the status ""Executed (closed)"".';ru='В базе есть документы ""Заказ на производство"" в состоянии со статусом ""Открыт"" и/или ""Выполнен (не закрыт)""!"
+"Снятие опции запрещено!"
+"Примечание:"
+"Если есть документы в состоянии со статусом ""Открыт"", "
+"то установите для них состояние со статусом ""В работе"" или ""Выполнен (закрыт)"""
+"Если есть документы в состоянии со статусом ""Выполнен (не закрыт)"","
+"то установите для них состояние со статусом ""Выполнен (закрыт)"".'"
 		);
 		
 	EndIf;
@@ -677,7 +682,7 @@ Function CancellationUncheckFunctionalOptionTolling()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'The Inventory Received accumulation register contains information about receipt for processing! The flag removal is prohibited!'");
+		ErrorText = NStr("en='The Inventory Received accumulation register contains information about receipt for processing! The flag removal is prohibited!';ru='Регистр накопления ""Запасы принятые"" содержит информацию о приеме в переработку! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -703,7 +708,7 @@ Function CancellationUncheckFunctionalOptionUseTechOperations()
 		
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en = 'The base contains information about the work centers import or the documents of the type ""Job sheet""! The flag removal is prohibited!'");
+		ErrorText = NStr("en='The base contains information about the work centers import or the documents of the type ""Job sheet""! The flag removal is prohibited!';ru='В базе присутствует информация о загрузке рабочих центров или документы вида ""Сдельный наряд""! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -714,7 +719,7 @@ Function CancellationUncheckFunctionalOptionUseTechOperations()
 	If Not QueryResult.IsEmpty() Then
 		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + 
-			NStr("en = 'The base contains ProductsAndServices with the type ""Operation""! The flag removal is prohibited!'");
+			NStr("en='The base contains ProductsAndServices with the type ""Operation""! The flag removal is prohibited!';ru='В базе присутствует номенклатура с типом ""Операция""! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -771,7 +776,7 @@ Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 		If Not ConstantsSet.UseProductionOrderStates
 			AND Not ValueIsFilled(ConstantsSet.ProductionOrdersInProgressStatus) Then
 			
-			ErrorText = NStr("en = '""Use several production order statuses"" flag is removed but ""In progress"" parameter of the production order status is not filled!'");
+			ErrorText = NStr("en='""Use several production order statuses"" flag is removed but ""In progress"" parameter of the production order status is not filled!';ru='Снят флаг ""Использовать несколько состояний заказов на производство"", но не заполнен параматр состояния заказа на производство ""В работе""!'");
 			
 			Result.Insert("Field", 				AttributePathToData);
 			Result.Insert("ErrorText", 		ErrorText);
@@ -787,7 +792,7 @@ Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 		If Not ConstantsSet.UseProductionOrderStates
 			AND Not ValueIsFilled(ConstantsSet.ProductionOrdersCompletedStatus) Then
 			
-			ErrorText = NStr("en = '""Use several production order statuses"" flag is removed, but ""Executed"" parameter of the production order status  is not filled!'");
+			ErrorText = NStr("en='""Use several production order statuses"" flag is removed, but ""Executed"" parameter of the production order status  is not filled!';ru='Снят флаг ""Использовать несколько состояний заказов на производство"", но не заполнен параматр состояния заказа на производство ""Выполнен""!'");
 			
 			Result.Insert("Field", 				AttributePathToData);
 			Result.Insert("ErrorText", 		ErrorText);

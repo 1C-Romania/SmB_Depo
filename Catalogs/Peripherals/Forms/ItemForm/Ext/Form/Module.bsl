@@ -149,7 +149,7 @@ Procedure ProcessChoiceHandler(SelectedHandler, StandardProcessing = True)
 	Object.Description = "'" + String(SelectedHandler) + "'"
 						+ ?(IsBlankString(String(Object.Workplace)),
 							"",
-							" " + NStr("en='on'") + " " + String(Object.Workplace));
+							" " + NStr("en='on';ru='на'") + " " + String(Object.Workplace));
 
 EndProcedure
 

@@ -238,7 +238,7 @@ EndProcedure
 &AtClient
 Procedure DeleteFromLocalFilesCacheExecute()
 	
-	QuestionText = NStr("en = 'Do you want to delete the selected files out of the main work directory?'");
+	QuestionText = NStr("en='Do you want to delete the selected files out of the main work directory?';ru='Удалить выбранные файлы из основного рабочего каталога?'");
 	Handler = New NotifyDescription("DeleteFromLocalCacheAfterAnsweringQuestion", ThisObject);
 	ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo);
 	
@@ -309,8 +309,9 @@ Procedure DeleteFromLocalCacheFilesInCycle(ExecuteParameters)
 	
 	If ExecuteParameters.IsLockedFiles Then
 		ShowMessageBox(,
-			NStr("en = 'You can not delete files from
-			           |main working directory held for editing.'"));
+			NStr("en='You can not delete files from"
+"main working directory held for editing.';ru='Нельзя удалять из основного рабочего каталога файлы,"
+"занятые для редактирования.'"));
 	EndIf;
 	
 	Items.List.Refresh();

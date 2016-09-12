@@ -40,13 +40,13 @@ Procedure GetDocumentPresentation(Source, Data, Presentation, StandardProcessing
 	
 	Status = "";
 	If Data.DeletionMark Then
-		Status = NStr("en='(deleted)'");
+		Status = NStr("en='(deleted)';ru='(удален)'");
 	ElsIf Data.Property("Posted") AND Not Data.Posted Then
-		Status = NStr("en='(not posted)'");
+		Status = NStr("en='(not posted)';ru='(не проведен)'");
 	EndIf;
 	
 	Presentation = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='%1 %2 from %3 %4'"),
+		NStr("en='%1 %2 from %3 %4';ru='%1 %2 от %3 %4'"),
 		Data.Ref.Metadata().Presentation(),
 		?(Data.Property("Number"), ObjectPrefixationClientServer.GetNumberForPrinting(Data.Number, True, True), ""),
 		Format(Data.Date, "DLF=D"),

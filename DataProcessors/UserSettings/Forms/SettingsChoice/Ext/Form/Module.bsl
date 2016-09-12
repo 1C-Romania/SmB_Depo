@@ -297,7 +297,7 @@ Procedure UpdatePageTitle(SettingsCount)
 	If SelectedSettingsPage = "ReportsSettingsPage" Then
 		
 		ReportsSettingsAmount = ReportsSettingsAmount + SettingsCount;
-		HeaderText = ?(ReportsSettingsAmount = 0, NStr("en='Report settings'"), NStr("en='Reports settings (%1)'"));
+		HeaderText = ?(ReportsSettingsAmount = 0, NStr("en='Report settings';ru='Настройки отчета'"), NStr("en='Reports settings (%1)';ru='Настройки отчетов (%1)'"));
 		
 		Items.ReportsSettingsPage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
 			HeaderText, ReportsSettingsAmount);
@@ -305,7 +305,7 @@ Procedure UpdatePageTitle(SettingsCount)
 	ElsIf SelectedSettingsPage = "AppearancePage" Then
 		
 		AppearanceSettingsAmount = AppearanceSettingsAmount + SettingsCount;
-		HeaderText = ?(AppearanceSettingsAmount = 0, NStr("en='Appearance'"), NStr("en='Appearance (%1)'"));
+		HeaderText = ?(AppearanceSettingsAmount = 0, NStr("en='Appearance';ru='Оформление'"), NStr("en='Appearance (%1)';ru='Внешний вид (%1)'"));
 		
 		Items.AppearancePage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
 			HeaderText, AppearanceSettingsAmount);
@@ -313,7 +313,7 @@ Procedure UpdatePageTitle(SettingsCount)
 	ElsIf SelectedSettingsPage = "OtherSettingsPage" Then
 		
 		OtherSettingsAmount = OtherSettingsAmount + SettingsCount;
-		HeaderText = ?(OtherSettingsAmount = 0, NStr("en='Other settings'"), NStr("en='Other settings (%1)'"));
+		HeaderText = ?(OtherSettingsAmount = 0, NStr("en='Other settings';ru='Прочие настройки'"), NStr("en='Other settings (%1)';ru='Прочие настройки (%1)'"));
 		
 		Items.OtherSettingsPage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
 			HeaderText, OtherSettingsAmount);
@@ -607,15 +607,15 @@ Procedure ImportMarksValues(ValueTree, MarkedSettings, KindSettings)
 		If KindSettings = "ReportsSettings" Then
 			ReportsSettingsAmount = MarkedCount;
 			Items.ReportsSettingsPage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Reports settings (%1)'"), MarkedCount);
+				NStr("en='Reports settings (%1)';ru='Настройки отчетов (%1)'"), MarkedCount);
 		ElsIf KindSettings = "ExternalView" Then
 			AppearanceSettingsAmount = MarkedCount;
 			Items.AppearancePage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Appearance (%1)'"), MarkedCount);
+				NStr("en='Appearance (%1)';ru='Внешний вид (%1)'"), MarkedCount);
 		ElsIf KindSettings = "OtherSettings" Then
 			OtherSettingsAmount = MarkedCount;
 			Items.OtherSettingsPage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Other settings (%1)'"), MarkedCount);
+				NStr("en='Other settings (%1)';ru='Прочие настройки (%1)'"), MarkedCount);
 		EndIf;
 		
 	EndIf;

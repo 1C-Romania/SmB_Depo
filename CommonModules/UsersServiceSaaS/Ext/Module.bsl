@@ -48,7 +48,7 @@ Function GetActionsWithServiceUser(Val User = Undefined) Export
 			If IsRightToAddUsers() Then
 				Return ActionsWithNewServiceUser();
 			Else
-				Raise NStr("en = 'Insufficient access rights to add the new users'");
+				Raise NStr("en='Insufficient access rights to add the new users';ru='Недостаточно прав доступа для добавления новых пользователей'");
 			EndIf;
 			
 		EndIf;
@@ -183,7 +183,7 @@ Procedure BeforeStartIBUserProcessor(UserObject, ProcessingParameters) Export
 	If TypeOf(UserObject) = Type("CatalogObject.ExternalUsers")
 	   AND CommonUseReUse.DataSeparationEnabled() Then
 		
-		Raise NStr("en = 'The service model does not support external users.'");
+		Raise NStr("en='The service model does not support external users.';ru='Внешние пользователи не поддерживаются в модели сервиса.'");
 	EndIf;
 	
 	AutoAttributes.Insert("ServiceUserID", OldUser.ServiceUserID);
@@ -192,9 +192,11 @@ Procedure BeforeStartIBUserProcessor(UserObject, ProcessingParameters) Export
 		
 		If Not CommonUseReUse.SessionWithoutSeparator() Then
 			Raise
-				NStr("en = 'Only undivided
-				           |users can be
-				           |updated upon messages via the remote administration channel.'");
+				NStr("en='Only undivided"
+"users can be"
+"updated upon messages via the remote administration channel.';ru='Обновление"
+"пользователя по"
+"сообщению канала удаленного администрирования доступно только неразделенным пользователям.'");
 		EndIf;
 		
 		ProcessingParameters.Insert("RemoteAdministrationChannelMessageProcessing");
@@ -210,9 +212,11 @@ Procedure BeforeStartIBUserProcessor(UserObject, ProcessingParameters) Export
 		If ValueIsFilled(OldUser.ServiceUserID) Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while writing user %1.
-				           |You can not modify
-				           |the service user ID already set in a catalog item.'"),
+				NStr("en='An error occurred while writing user %1."
+"You can not modify"
+"the service user ID already set in a catalog item.';ru='Ошибка при записи пользователя ""%1""."
+"Нельзя изменять"
+"уже установленный идентификатор пользователя сервиса в элементе справочника.'"),
 				UserObject.Description);
 			
 		EndIf;
@@ -226,11 +230,15 @@ Procedure BeforeStartIBUserProcessor(UserObject, ProcessingParameters) Export
 				True) Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while writing user %1.
-				           |You can not
-				           |set the service
-				           |user identifier ""%2"" to this catalog item, because it
-				           |is already used in the item ""%3"".'"),
+				NStr("en='An error occurred while writing user %1."
+"You can not"
+"set the service"
+"user identifier ""%2"" to this catalog item, because it"
+"is already used in the item ""%3"".';ru='Ошибка при записи пользователя ""%1""."
+"Нельзя устанавливать идентификатор"
+"пользователя сервиса ""%2"""
+"в этот элемент справочника, т.к. он"
+"уже используется в элементе ""%3"".'"),
 				UserObject.Description,
 				AutoAttributes.ServiceUserID,
 				FoundUser);
@@ -276,9 +284,11 @@ Procedure BeforeEndUserIBUserProcessor(UserObject, ProcessingParameters) Export
 	
 	If AutoAttributes.ServiceUserID <> UserObject.ServiceUserID Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'An error occurred while writing user %1.
-			           |Changing the ServiceUserID attribute is not permitted.
-			           |Attribute update is performed automatically.'"),
+			NStr("en='An error occurred while writing user %1."
+"Changing the ServiceUserID attribute is not permitted."
+"Attribute update is performed automatically.';ru='Ошибка при записи пользователя ""%1""."
+"Реквизит ИдентификаторПользователяСервиса не допускается изменять."
+"Обновление реквизита выполняется автоматически.'"),
 			UserObject.Ref);
 	EndIf;
 	
@@ -631,7 +641,7 @@ Function XDTOObjectAccessRightsToActionsWithServiceUser(Factory, XDTOObjectAcces
 			CIKind = SaaSReUse.AccordanceCIXDTOTypesToUserCI().Get(
 				AccessRightsOfXDTOObject.Object.ContactType);
 			If CIKind = Undefined Then
-				MessagePattern = NStr("en = 'An unknown contact information type was received: %1'");
+				MessagePattern = NStr("en='An unknown contact information type was received: %1';ru='Получен неизвестный вид контактной информации: %1'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 					MessagePattern, AccessRightsOfXDTOObject.Object.ContactType);
 				Raise(MessageText);
@@ -645,7 +655,7 @@ Function XDTOObjectAccessRightsToActionsWithServiceUser(Factory, XDTOObjectAcces
 				EndIf;
 			EndDo;
 		Else
-			MessagePattern = NStr("en = 'An unknown type of access objects was received: %1'");
+			MessagePattern = NStr("en='An unknown type of access objects was received: %1';ru='Получен неизвестный тип объектов доступа: %1'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 				MessagePattern, CommonUse.XDTOTypePresentation(AccessRightsOfXDTOObject.Object.Type()));
 			Raise(MessageText);

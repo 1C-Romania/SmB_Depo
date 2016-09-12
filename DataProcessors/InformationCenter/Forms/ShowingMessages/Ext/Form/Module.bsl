@@ -64,7 +64,7 @@ EndProcedure
 &AtServer
 Procedure OpenAllMessages()
 	
-	Title = NStr("en = 'Messages'");
+	Title = NStr("en='Messages';ru='Сообщения'");
 	GenerateAllNewsList();
 	Items.CommonGroup.CurrentPage = Items.GroupNews;
 	

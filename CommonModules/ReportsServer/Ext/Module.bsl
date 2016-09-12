@@ -1113,19 +1113,19 @@ Procedure FillSettingPresentation(SettingProperty, IsCustomSetting)
 			
 			If SettingProperty.Subtype = "SeriesChart" Then
 				
-				ItemHeader = NStr("en = 'Series'");
+				ItemHeader = NStr("en='Series';ru='Серия'");
 				
 			ElsIf SettingProperty.Subtype = "PointChart" Then
 				
-				ItemHeader = NStr("en = 'Points'");
+				ItemHeader = NStr("en='Points';ru='Точки'");
 				
 			ElsIf SettingProperty.Subtype = "RowTable" Then
 				
-				ItemHeader = NStr("en = 'Rows'");
+				ItemHeader = NStr("en='Rows';ru='Строки'");
 				
 			ElsIf SettingProperty.Subtype = "ColumnTable" Then
 				
-				ItemHeader = NStr("en = 'Columns'");
+				ItemHeader = NStr("en='Columns';ru='Колонки'");
 				
 			Else
 				
@@ -1135,7 +1135,7 @@ Procedure FillSettingPresentation(SettingProperty, IsCustomSetting)
 			
 		ElsIf SettingProperty.Type = "Filter" Then
 			
-			ItemHeader = NStr("en = 'Filter'");
+			ItemHeader = NStr("en='Filter';ru='Фильтр'");
 			
 		ElsIf SettingProperty.Type = "FilterItemGroup" Then
 			
@@ -1147,35 +1147,35 @@ Procedure FillSettingPresentation(SettingProperty, IsCustomSetting)
 			
 		ElsIf SettingProperty.Type = "Order" Then
 			
-			ItemHeader = NStr("en = 'Sort'");
+			ItemHeader = NStr("en='Sort';ru='Сортировка'");
 			
 		ElsIf SettingProperty.Type = "SelectedFields" Then
 			
-			ItemHeader = NStr("en = 'Fields'");
+			ItemHeader = NStr("en='Fields';ru='Поля'");
 			
 		ElsIf SettingProperty.Type = "ConditionalAppearance" Then
 			
-			ItemHeader = NStr("en = 'Appearance'");
+			ItemHeader = NStr("en='Appearance';ru='Оформление'");
 			
 		ElsIf SettingProperty.Type = "ConditionalAppearanceItem" Then
 			
 			DesignPresentation = String(DCUsersSetting.Appearance);
 			If DesignPresentation = "" Then
-				ItemHeader = NStr("en = 'Not arrange'");
+				ItemHeader = NStr("en='Not arrange';ru='Не оформлять'");
 			Else
 				ItemHeader = DesignPresentation;
 			EndIf;
 			
 			FieldsPresentation = String(DCUsersSetting.Fields);
 			If FieldsPresentation = "" Then
-				ItemHeader = ItemHeader + " / " + NStr("en = 'All fields'");
+				ItemHeader = ItemHeader + " / " + NStr("en='All fields';ru='Все поля'");
 			Else
-				ItemHeader = ItemHeader + " / " + NStr("en = 'Fields:'") + " " + FieldsPresentation;
+				ItemHeader = ItemHeader + " / " + NStr("en='Fields:';ru='Поля:'") + " " + FieldsPresentation;
 			EndIf;
 			
 			FilterPresentation = FilterPresentation(DCUsersSetting.Filter);
 			If FilterPresentation <> "" Then
-				ItemHeader = ItemHeader + " / " + NStr("en = 'Condition:'") + " " + FilterPresentation;
+				ItemHeader = ItemHeader + " / " + NStr("en='Condition:';ru='Состояние:'") + " " + FilterPresentation;
 			EndIf;
 			
 		ElsIf SettingProperty.Type = "SettingsParameterValue" Then
@@ -1188,32 +1188,32 @@ Procedure FillSettingPresentation(SettingProperty, IsCustomSetting)
 			
 			GroupFields = KDVariantSetting.GroupFields;
 			If GroupFields.Items.Count() = 0 Then
-				ItemHeader = NStr("en = '<Detailed records>'");
+				ItemHeader = NStr("en='<Detailed records>';ru='<Детальные записи>'");
 			Else
 				ItemHeader = TrimAll(String(GroupFields));
 			EndIf;
 			If IsBlankString(ItemHeader) Then
-				ItemHeader = NStr("en = 'Group'");
+				ItemHeader = NStr("en='Group';ru='Группировка'");
 			EndIf;
 			
 		ElsIf SettingProperty.Type = "Table" Then
 			
-			ItemHeader = NStr("en = 'Table'");
+			ItemHeader = NStr("en='Table';ru='Таблица'");
 			
 		ElsIf SettingProperty.Type = "Chart" Then
 			
-			ItemHeader = NStr("en = 'Chart'");
+			ItemHeader = NStr("en='Chart';ru='Диаграмма'");
 			
 		ElsIf SettingProperty.Type = "NestedObjectSettings" Then
 			
 			ItemHeader = String(DCUsersSetting);
 			If IsBlankString(ItemHeader) Then
-				ItemHeader = NStr("en = 'Nested group'");
+				ItemHeader = NStr("en='Nested group';ru='Вложенная группировка'");
 			EndIf;
 			
 		ElsIf SettingProperty.Type = "SettingsStructure" Then
 			
-			ItemHeader = NStr("en = 'Structure'");
+			ItemHeader = NStr("en='Structure';ru='Состав'");
 			
 		Else
 			
@@ -1276,35 +1276,35 @@ Function FilterPresentation(KDNode, KDRowsSet = Undefined)
 				PresentationConditions = "<=";
 			
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.InHierarchy Then
-				PresentationConditions = NStr("en = 'In group'");
+				PresentationConditions = NStr("en='In group';ru='В группе'");
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.NotInHierarchy Then
-				PresentationConditions = NStr("en = 'Not in the group'");
+				PresentationConditions = NStr("en='Not in the group';ru='Не в группе'");
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.InList Then
-				PresentationConditions = NStr("en = 'In list'");
+				PresentationConditions = NStr("en='In list';ru='В списке'");
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.NotInList Then
-				PresentationConditions = NStr("en = 'Not in the list'");
+				PresentationConditions = NStr("en='Not in the list';ru='Не в списке'");
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.InListByHierarchy Then
-				PresentationConditions = NStr("en = 'In list including subordinate'");
+				PresentationConditions = NStr("en='In list including subordinate';ru='В списке включая подчиненные'");
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.NotInListByHierarchy Then
-				PresentationConditions = NStr("en = 'Not in the list including subordinate'");
+				PresentationConditions = NStr("en='Not in the list including subordinate';ru='Не в списке включая подчиненные'");
 			
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.Contains Then
-				PresentationConditions = NStr("en = 'Contains'");
+				PresentationConditions = NStr("en='Contains';ru='Содержит'");
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.NotContains Then
-				PresentationConditions = NStr("en = 'Doesn''t contain'");
+				PresentationConditions = NStr("en=""Doesn't contain"";ru='Не содержит'");
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.Like Then
-				PresentationConditions = NStr("en = 'Like'");
+				PresentationConditions = NStr("en='Like';ru='Подобно'");
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.NotLike Then
-				PresentationConditions = NStr("en = 'Not like'");
+				PresentationConditions = NStr("en='Not like';ru='Не подобно'");
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.BeginsWith Then
-				PresentationConditions = NStr("en = 'Begins with'");
+				PresentationConditions = NStr("en='Begins with';ru='Начинается с'");
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.NotBeginsWith Then
-				PresentationConditions = NStr("en = 'Not beginning with'");
+				PresentationConditions = NStr("en='Not beginning with';ru='Не начинается с'");
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.Filled Then
-				PresentationConditions = NStr("en = 'Filled'");
+				PresentationConditions = NStr("en='Filled';ru='заполненный'");
 				ValuePresentation = "";
 			ElsIf KDItem.ComparisonType = DataCompositionComparisonType.NotFilled Then
-				PresentationConditions = NStr("en = 'not filled'");
+				PresentationConditions = NStr("en='not filled';ru='Не заполнено'");
 				ValuePresentation = "";
 			EndIf;
 			
@@ -1563,7 +1563,7 @@ Procedure OutputSettingItems(Form, Items, SettingProperty, OutputGroup, Other) E
 			// Standard period.
 			Period = Items.Add(AuthorPresentationActualName, Type("FormField"), PageStandardPeriod);
 			Period.Type       = FormFieldType.InputField;
-			Period.Title = NStr("en = 'Period'");
+			Period.Title = NStr("en='Period';ru='отчетный период'");
 			Period.HorizontalStretch = True;
 			Period.ChoiceButton   = True;
 			Period.OpenButton = False;
@@ -1669,12 +1669,12 @@ Procedure OutputSettingItems(Form, Items, SettingProperty, OutputGroup, Other) E
 					If TypeInformation.ContainsReferenceTypes Then
 						CommandPickUp = Form.Commands.Add(CompleteNameButton);
 						CommandPickUp.Action    = "Attachable_ListWithPickup_Pickup";
-						CommandPickUp.Title   = NStr("en = 'Pick'");
+						CommandPickUp.Title   = NStr("en='Pick';ru='Подобрать'");
 						CommandPickUp.Representation = ButtonRepresentation.Text;
 					Else
 						CommandPickUp = Form.Commands.Add(CompleteNameButton);
 						CommandPickUp.Action    = "Attachable_ListWithSelection_Add";
-						CommandPickUp.Title   = NStr("en = 'Add'");
+						CommandPickUp.Title   = NStr("en='Add';ru='Добавить'");
 						CommandPickUp.Representation = ButtonRepresentation.Text;
 						CommandPickUp.Picture    = PictureLib.CreateListItem;
 					EndIf;
@@ -1686,7 +1686,7 @@ Procedure OutputSettingItems(Form, Items, SettingProperty, OutputGroup, Other) E
 					If Other.HasDataLoadFromFile Then
 						InsertCommand = Form.Commands.Add(InsertNameButton);
 						InsertCommand.Action    = "Attachable_ListWithSelection_InsertFromBuffer";
-						InsertCommand.Title   = NStr("en = 'Insert from clipboard...'");
+						InsertCommand.Title   = NStr("en='Insert from clipboard...';ru='Вставить из буфера обмена...'");
 						InsertCommand.Picture    = PictureLib.FillForm;
 						InsertCommand.Representation = ButtonRepresentation.Picture;
 						

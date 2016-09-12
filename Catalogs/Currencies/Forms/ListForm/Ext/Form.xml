@@ -17,11 +17,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>User settings group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пользовательских настроек</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>User settings group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пользовательских настроек</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -35,11 +43,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Command bar</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Command bar</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</ToolTip>
 			<CommandSource>Form</CommandSource>
@@ -125,6 +141,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Digital code</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цифровой код</v8:content>
+						</v8:item>
 					</Title>
 					<Width>9</Width>
 					<Wrap>false</Wrap>
@@ -137,6 +157,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Character code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код символьный</v8:content>
 						</v8:item>
 					</Title>
 					<Width>9</Width>
@@ -156,11 +180,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Multiplicity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Multiplicity</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency conversion factor. Displayed if not equal to 1.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кратность валюты. Отображается, если не равна 1.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
@@ -182,6 +214,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Unit conversion factor equal to 1 is not displayed</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>кратность равная единице не отображается</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ShowInHeader>false</ShowInHeader>
@@ -280,11 +316,19 @@ FROM
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick from classifier...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать из классификатора...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pick currencies from All russian currency classifier</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать валюты из Общероссийского классификатора валют</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>PickFromACC</Action>
@@ -295,11 +339,19 @@ FROM
 					<v8:lang>en</v8:lang>
 					<v8:content>Import currency rates..</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить курсы валют...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Import exchange rates from site</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить курсы валют с веб-сайта РБК</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CurrencyRatesImport</Action>

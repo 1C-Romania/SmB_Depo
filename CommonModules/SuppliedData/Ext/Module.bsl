@@ -298,7 +298,7 @@ Function ProvidedDataFromCache(Val RefOrIdentifier) Export
 			// Record in the event log.
 			ErrorInfo = ErrorTextOnFileReceiving(ErrorInfo(), RefOrIdentifier);
 			WriteLogEvent(
-				NStr("en = 'Supplied data.Receipt of file out of the volume'", 
+				NStr("en='Supplied data.Receipt of file out of the volume';ru='Поставляемые данные.Получение файла из тома'", 
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				Metadata.Catalogs.SuppliedData,
@@ -306,10 +306,13 @@ Function ProvidedDataFromCache(Val RefOrIdentifier) Export
 				ErrorInfo);
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred while opening file: file is not found on server.
-				           |Contact your administrator.
-				           |
-				           |File: ""%1.%2"".'"),
+				NStr("en='An error occurred while opening file: file is not found on server."
+"Contact your administrator."
+""
+"File: ""%1.%2"".';ru='Ошибка открытия файла: файл не найден на сервере."
+"Обратитесь к администратору."
+""
+"Файл: ""%1.%2"".'"),
 				FileObject.Description,
 				FileObject.Extension);
 		EndTry;
@@ -433,7 +436,7 @@ Function GetDataDescription(Val Handle) Export
 		
 		Definition = Definition + 
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = ', added: %1 (%2), it is recommended to import: %3 (%2)'"), 
+			NStr("en=', added: %1 (%2), it is recommended to import: %3 (%2)';ru=', добавлен: %1 (%2), рекомендовано загрузить: %3 (%2)'"), 
 			ToLocalTime(Handle.CreationDate, SessionTimeZone()), TimeZonePresentation(SessionTimeZone()), 
 			ToLocalTime(Handle.RecommendedUpdateDate));
 	Else
@@ -445,7 +448,7 @@ Function GetDataDescription(Val Handle) Export
 		
 		Definition = Definition + 
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = ', added: %1 (%2)'"), 
+			NStr("en=', added: %1 (%2)';ru=', добавлен: %1 (%2)'"), 
 			ToLocalTime(Handle.AddingDate, SessionTimeZone()), TimeZonePresentation(SessionTimeZone()));
 	EndIf;
 		
@@ -732,9 +735,11 @@ Function ErrorTextOnFileReceiving(Val ErrorInfo, Val File)
 	
 	If File <> Undefined Then
 		ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1
-			           |
-			           |Ref to file: ""%2"".'"),
+			NStr("en='%1"
+""
+"Ref to file: ""%2"".';ru='%1"
+""
+"Ссылка на файл: ""%2"".'"),
 			ErrorInfo,
 			GetURL(File) );
 	EndIf;

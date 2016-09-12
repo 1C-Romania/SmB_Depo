@@ -964,7 +964,7 @@ Procedure SetupAtServer(RemoveActuality = False)
 	While Selection.Next() Do
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'The string %ProductsAndServices%%Charachteristic% is duplicated!'");
+		Message.Text = NStr("en='The string %ProductsAndServices%%Charachteristic% is duplicated!';ru='Дублируется строка: %Номенклатура%%Характеристика%!'");
 		Message.Text = StrReplace(Message.Text, "%ProductsAndServices%", Selection.ProductsAndServices);
 		Message.Text = StrReplace(Message.Text, "%Characteristic%", ?(ValueIsFilled(Selection.Characteristic), 
 										(" (" + Selection.Characteristic + ")"), ""));
@@ -975,7 +975,7 @@ Procedure SetupAtServer(RemoveActuality = False)
 	
 	If Cancel Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'The price setup is canceled!'");
+		Message.Text = NStr("en='The price setup is canceled!';ru='Установка цен отменена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -988,7 +988,7 @@ Procedure SetupAtServer(RemoveActuality = False)
 		If Selection.double Then
 			
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Price for the products and services %ProductsAndServices%%Characteristic% to %ToDate% has been already specified! New price is not written!'");
+			Message.Text = NStr("en='Price for the products and services %ProductsAndServices%%Characteristic% to %ToDate% has been already specified! New price is not written!';ru='Для номенклатуры %Номенклатура%%Характеристика% на %НаДату% уже установлена цена! Новая цена не записана!'");
 			Message.Text = StrReplace(Message.Text, "%ToDate%", Format(InstallationPeriod, "DF=dd.MM.yy"));
 			Message.Text = StrReplace(Message.Text, "%ProductsAndServices%", Selection.ProductsAndServices);
 			Message.Text = StrReplace(Message.Text, "%Characteristic%", ?(ValueIsFilled(Selection.Characteristic), 
@@ -1008,7 +1008,7 @@ Procedure SetupAtServer(RemoveActuality = False)
 		ElsIf Not ValueIsFilled(Selection.Price) AND (NOT RemoveActuality) Then
 			
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Price for products and services %ProductsAndServices%%Characteristic% is not specified!'");
+			Message.Text = NStr("en='Price for products and services %ProductsAndServices%%Characteristic% is not specified!';ru='Для номенклатуры %Номенклатура%%Характеристика% не указана цена!'");
 			Message.Text = StrReplace(Message.Text, "%ProductsAndServices%", Selection.ProductsAndServices);
 			Message.Text = StrReplace(Message.Text, "%Characteristic%", ?(ValueIsFilled(Selection.Characteristic), 
 										 (" (" + Selection.Characteristic + ")"), ""));
@@ -1110,8 +1110,9 @@ Procedure ClearTabularSection()
 		
 	EndIf;
 	
-	QuestionText = NStr("en = 'Tabular section will be cleared.
-								|Continue?'");
+	QuestionText = NStr("en='Tabular section will be cleared."
+"Continue?';ru='Табличная часть будет очищена!"
+"Продолжить?'");
 	
 	NotifyDescription = New NotifyDescription("DetermineNecessityForTabularSectionClearing", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -1254,7 +1255,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If ParameterPriceKind.CalculatesDynamically Then
 			
-			MessageText = NStr("en = 'Dynamic price kinds generating is prohibited!'");
+			MessageText = NStr("en='Dynamic price kinds generating is prohibited!';ru='Нельзя формировать динамические виды цен!'");
 			SmallBusinessServer.ShowMessageAboutError(Object, MessageText, , , , Cancel);
 			
 		EndIf;
@@ -1384,7 +1385,7 @@ Procedure Set(Command)
 	If Not ValueIsFilled(PriceKindInstallation) Then
 	
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Step 1: The prices type is not selected!'");
+		Message.Text = NStr("en='Step 1: The prices type is not selected!';ru='Шаг 1: Не выбран Вид цен!'");
 		Message.Field = "PriceKindInstallation";
 		Message.Message();
 		Return;
@@ -1394,7 +1395,7 @@ Procedure Set(Command)
 	If Not ValueIsFilled(InstallationPeriod) Then
 	
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Step 4: Prices setting date is not selected!'");
+		Message.Text = NStr("en='Step 4: Prices setting date is not selected!';ru='Шаг 4: Не выбрана дата установки цен!'");
 		Message.Field = "InstallationPeriod";
 		Message.Message();
 		Return;

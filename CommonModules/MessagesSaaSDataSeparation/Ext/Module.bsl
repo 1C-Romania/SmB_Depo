@@ -86,7 +86,7 @@ Procedure OnMessageSending(MessageChannel, MessageBody, MessageObject) Export
 			AND MessagesSaaSReUse.TypeAreaBody().IsDescendant(Message.Body.Type()) Then
 			
 			If CommonUse.SessionSeparatorValue() <> Message.Body.Zone Then
-				MessagePattern = NStr("en = 'Attempt to send the message on behalf of the area %1 from the area %2'");
+				MessagePattern = NStr("en='Attempt to send the message on behalf of the area %1 from the area %2';ru='Попытка отправить сообщение от имени области %1 из области %2'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, 
 					Message.Body.Zone, 
 					CommonUse.SessionSeparatorValue());
@@ -277,7 +277,7 @@ Procedure ProcessKeyAreasInMessage(Message)
 				
 				If AreaCurrentKey <> Message.Body.ZoneKey Then
 					
-					Raise NStr("en = 'Invalid data area key in the message!'");
+					Raise NStr("en='Invalid data area key in the message!';ru='Неверный ключ области данных в сообщении!'");
 					
 				EndIf;
 				

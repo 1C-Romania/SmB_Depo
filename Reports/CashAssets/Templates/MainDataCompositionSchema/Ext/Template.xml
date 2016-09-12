@@ -14,6 +14,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Bank account, Petty cash</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Банковский счет, касса</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
@@ -53,6 +57,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Closing balance</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сальдо на конец периода составило</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:balance>true</dcscom:balance>
@@ -74,6 +82,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Expense</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход</v8:content>
+				</v8:item>
 			</title>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -89,6 +101,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Opening balance</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начальные остатки по имуществу</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -111,6 +127,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Receipt</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приход</v8:content>
+				</v8:item>
 			</title>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -126,6 +146,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Closing balance (Cur.)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Конечный остаток (вал.)</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -148,6 +172,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Expense (Cur.)</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход (вал.)</v8:content>
+				</v8:item>
 			</title>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -163,6 +191,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Opening balance (Cur.)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начальный остаток (вал.)</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -184,6 +216,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Receipt (gross)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поступление (вал.)</v8:content>
 				</v8:item>
 			</title>
 			<appearance>
@@ -208,6 +244,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Movement document</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ движения</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -377,6 +417,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Amount (cur.)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма (вал.)</v8:content>
 				</v8:item>
 			</title>
 			<appearance>
@@ -659,6 +703,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Amount receipt</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма приход</v8:content>
+					</v8:item>
 				</title>
 			</field>
 			<field xsi:type="DataSetFieldField">
@@ -668,6 +716,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Amount expense</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма расход</v8:content>
 					</v8:item>
 				</title>
 			</field>
@@ -679,6 +731,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Amount (cur.) closing balance</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма вал конечный остаток</v8:content>
+					</v8:item>
 				</title>
 			</field>
 			<field xsi:type="DataSetFieldField">
@@ -688,6 +744,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Amount (Cur.) Opening balance</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма вал начальный остаток</v8:content>
 					</v8:item>
 				</title>
 			</field>
@@ -699,6 +759,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Amount closing balance</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма конечный остаток</v8:content>
+					</v8:item>
 				</title>
 			</field>
 			<field xsi:type="DataSetFieldField">
@@ -708,6 +772,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Amount Opening balance</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма начальный остаток</v8:content>
 					</v8:item>
 				</title>
 			</field>
@@ -719,6 +787,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Amount (Cur.) Receipt</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма вал приход</v8:content>
+					</v8:item>
 				</title>
 			</field>
 			<field xsi:type="DataSetFieldField">
@@ -729,6 +801,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Amount (Cur.) Expense</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сумма вал расход</v8:content>
+					</v8:item>
 				</title>
 			</field>
 			<field xsi:type="DataSetFieldField">
@@ -738,6 +814,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Period Year</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период год</v8:content>
 					</v8:item>
 				</title>
 				<role>
@@ -753,6 +833,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Ten-Day Period</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период декада</v8:content>
+					</v8:item>
 				</title>
 				<role>
 					<dcscom:periodNumber>4</dcscom:periodNumber>
@@ -766,6 +850,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Day period</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период день</v8:content>
 					</v8:item>
 				</title>
 				<role>
@@ -781,6 +869,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Period Quarter</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период квартал</v8:content>
+					</v8:item>
 				</title>
 				<role>
 					<dcscom:periodNumber>6</dcscom:periodNumber>
@@ -795,6 +887,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Month period</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период месяц</v8:content>
+					</v8:item>
 				</title>
 				<role>
 					<dcscom:periodNumber>5</dcscom:periodNumber>
@@ -808,6 +904,10 @@
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Period Week</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период неделя</v8:content>
 					</v8:item>
 				</title>
 				<role>
@@ -929,6 +1029,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Dynamic period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Динамический период</v8:content>
+			</v8:item>
 		</title>
 		<useRestriction>
 			<condition>true</condition>
@@ -1022,6 +1126,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Begin of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -1041,6 +1149,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>End of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Окончание периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -1059,6 +1171,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>отчетный период</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>v8:StandardPeriod</v8:Type>
@@ -1076,6 +1192,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Periodicity</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Периодичность</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -1098,6 +1218,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Nature of analysis</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Характер анализа</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:string</v8:Type>
@@ -1115,6 +1239,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Dynamics of changes</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Динамика изменений</v8:content>
+				</v8:item>
 			</presentation>
 		</availableValue>
 		<availableValue>
@@ -1124,6 +1252,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Dynamics and structure of changes</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Динамика и структура изменений</v8:content>
+				</v8:item>
 			</presentation>
 		</availableValue>
 		<availableValue>
@@ -1132,6 +1264,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Auto</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Авто</v8:content>
 				</v8:item>
 			</presentation>
 		</availableValue>
@@ -1144,6 +1280,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Output title</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -1196,6 +1336,10 @@ END</dcsat:expression>
 								<v8:lang>en</v8:lang>
 								<v8:content>Total</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Итого</v8:content>
+							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
 				</dcsat:tableCell>
@@ -1219,6 +1363,10 @@ END</dcsat:expression>
 				<v8:lang>en</v8:lang>
 				<v8:content>Cash assets (man. cur.)</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Денежные средства (упр. вал.)</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
@@ -1235,6 +1383,10 @@ END</dcsat:expression>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Receipt</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Приход</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
@@ -1263,6 +1415,10 @@ END</dcsat:expression>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Receipt</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Приход</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
@@ -1378,6 +1534,10 @@ END</dcsat:expression>
 									<v8:lang>en</v8:lang>
 									<v8:content>&lt; &gt;</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt; &gt;</v8:content>
+								</v8:item>
 							</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
@@ -1385,6 +1545,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Empty items design</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оформление незаполненных статей</v8:content>
 						</v8:item>
 					</dcsset:presentation>
 				</dcsset:item>
@@ -1407,6 +1571,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash assets</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Денежные средства</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
@@ -1460,6 +1628,10 @@ END</dcsat:expression>
 										<v8:lang>en</v8:lang>
 										<v8:content>Counterparty</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Контрагенты</v8:content>
+									</v8:item>
 								</dcsset:lwsTitle>
 							</dcsset:item>
 							<dcsset:placement>Auto</dcsset:placement>
@@ -1471,6 +1643,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>By movement documents</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По документам движения</v8:content>
 						</v8:item>
 					</dcsset:userSettingPresentation>
 				</dcsset:item>
@@ -1485,6 +1661,10 @@ END</dcsat:expression>
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Cash balance (man. cur.)</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Остатки денежных средств (упр. вал.)</v8:content>
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
@@ -1534,6 +1714,10 @@ END</dcsat:expression>
 					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>As of</v8:content>
 						</v8:item>
 					</dcsset:userSettingPresentation>
@@ -1598,6 +1782,10 @@ END</dcsat:expression>
 									<v8:lang>en</v8:lang>
 									<v8:content>&lt; &gt;</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt; &gt;</v8:content>
+								</v8:item>
 							</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
@@ -1605,6 +1793,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Empty items design</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оформление незаполненных статей</v8:content>
 						</v8:item>
 					</dcsset:presentation>
 				</dcsset:item>
@@ -1627,6 +1819,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash balance</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остатки денежных средств</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
@@ -1669,6 +1865,10 @@ END</dcsat:expression>
 				<v8:lang>en</v8:lang>
 				<v8:content>Cash movement (man. cur.)</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Движение денежных средств (упр. вал.)</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
@@ -1679,6 +1879,10 @@ END</dcsat:expression>
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
 					</dcsset:lwsTitle>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>AmountReceipt</dcsset:field>
@@ -1686,6 +1890,10 @@ END</dcsat:expression>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Receipt</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Приход</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
@@ -1696,6 +1904,10 @@ END</dcsat:expression>
 								<v8:lang>en</v8:lang>
 								<v8:content>Expense</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Расход</v8:content>
+							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -1704,6 +1916,10 @@ END</dcsat:expression>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Pure cash flow</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Чистый денежный поток</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
@@ -1716,6 +1932,10 @@ END</dcsat:expression>
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount (cur.)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма (вал.)</v8:content>
+						</v8:item>
 					</dcsset:lwsTitle>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:use>false</dcsset:use>
@@ -1724,6 +1944,10 @@ END</dcsat:expression>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Receipt</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Приход</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
@@ -1735,6 +1959,10 @@ END</dcsat:expression>
 								<v8:lang>en</v8:lang>
 								<v8:content>Expense</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Расход</v8:content>
+							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -1744,6 +1972,10 @@ END</dcsat:expression>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Pure cash flow</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Чистый денежный поток</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
@@ -1855,6 +2087,10 @@ END</dcsat:expression>
 									<v8:lang>en</v8:lang>
 									<v8:content>&lt; &gt;</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt; &gt;</v8:content>
+								</v8:item>
 							</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
@@ -1862,6 +2098,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Empty items design</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оформление незаполненных статей</v8:content>
 						</v8:item>
 					</dcsset:presentation>
 				</dcsset:item>
@@ -1883,6 +2123,10 @@ END</dcsat:expression>
 					<dcscor:value xsi:type="v8:LocalStringType">
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Cash flow</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Cash flow</v8:content>
 						</v8:item>
 					</dcscor:value>
@@ -1954,6 +2198,10 @@ END</dcsat:expression>
 											<v8:lang>en</v8:lang>
 											<v8:content>Counterparty</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Контрагенты</v8:content>
+										</v8:item>
 									</dcsset:lwsTitle>
 								</dcsset:item>
 								<dcsset:placement>Auto</dcsset:placement>
@@ -1965,6 +2213,10 @@ END</dcsat:expression>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>By movement documents</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>По документам движения</v8:content>
 							</v8:item>
 						</dcsset:userSettingPresentation>
 					</dcsset:item>
@@ -1981,6 +2233,10 @@ END</dcsat:expression>
 				<v8:lang>en</v8:lang>
 				<v8:content>Cash assets</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Денежные средства</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
@@ -1995,6 +2251,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Receipt</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Приход</v8:content>
 						</v8:item>
 					</dcsset:lwsTitle>
 				</dcsset:item>
@@ -2112,6 +2372,10 @@ END</dcsat:expression>
 									<v8:lang>en</v8:lang>
 									<v8:content>&lt; &gt;</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt; &gt;</v8:content>
+								</v8:item>
 							</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
@@ -2119,6 +2383,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Empty items design</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оформление незаполненных статей</v8:content>
 						</v8:item>
 					</dcsset:presentation>
 				</dcsset:item>
@@ -2145,6 +2413,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash assets</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Денежные средства</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
@@ -2214,6 +2486,10 @@ END</dcsat:expression>
 											<v8:lang>en</v8:lang>
 											<v8:content>Counterparty</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Контрагенты</v8:content>
+										</v8:item>
 									</dcsset:lwsTitle>
 								</dcsset:item>
 								<dcsset:placement>Auto</dcsset:placement>
@@ -2225,6 +2501,10 @@ END</dcsat:expression>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>By movement documents</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>По документам движения</v8:content>
 							</v8:item>
 						</dcsset:userSettingPresentation>
 					</dcsset:item>
@@ -2241,6 +2521,10 @@ END</dcsat:expression>
 				<v8:lang>en</v8:lang>
 				<v8:content>Cash balance</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Остатки денежных средств</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
@@ -2250,6 +2534,10 @@ END</dcsat:expression>
 					<dcsset:lwsTitle>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Balance</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Balance</v8:content>
 						</v8:item>
 					</dcsset:lwsTitle>
@@ -2289,6 +2577,10 @@ END</dcsat:expression>
 					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>As of</v8:content>
 						</v8:item>
 					</dcsset:userSettingPresentation>
@@ -2363,6 +2655,10 @@ END</dcsat:expression>
 									<v8:lang>en</v8:lang>
 									<v8:content>&lt; &gt;</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt; &gt;</v8:content>
+								</v8:item>
 							</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
@@ -2370,6 +2666,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Empty items design</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оформление незаполненных статей</v8:content>
 						</v8:item>
 					</dcsset:presentation>
 				</dcsset:item>
@@ -2396,6 +2696,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash balance</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остатки денежных средств</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
@@ -2455,6 +2759,10 @@ END</dcsat:expression>
 				<v8:lang>en</v8:lang>
 				<v8:content>Cash flow</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Cash flow</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
@@ -2466,6 +2774,10 @@ END</dcsat:expression>
 							<v8:lang>en</v8:lang>
 							<v8:content>Receipt</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Приход</v8:content>
+						</v8:item>
 					</dcsset:lwsTitle>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -2475,6 +2787,10 @@ END</dcsat:expression>
 							<v8:lang>en</v8:lang>
 							<v8:content>Expense</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расход</v8:content>
+						</v8:item>
 					</dcsset:lwsTitle>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -2483,6 +2799,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Pure cash flow</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Чистый денежный поток</v8:content>
 						</v8:item>
 					</dcsset:lwsTitle>
 				</dcsset:item>
@@ -2592,6 +2912,10 @@ END</dcsat:expression>
 									<v8:lang>en</v8:lang>
 									<v8:content>&lt; &gt;</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt; &gt;</v8:content>
+								</v8:item>
 							</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
@@ -2599,6 +2923,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Empty items design</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оформление незаполненных статей</v8:content>
 						</v8:item>
 					</dcsset:presentation>
 				</dcsset:item>
@@ -2624,6 +2952,10 @@ END</dcsat:expression>
 					<dcscor:value xsi:type="v8:LocalStringType">
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Cash flow</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Cash flow</v8:content>
 						</v8:item>
 					</dcscor:value>
@@ -2711,6 +3043,10 @@ END</dcsat:expression>
 												<v8:lang>en</v8:lang>
 												<v8:content>Counterparty</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Контрагенты</v8:content>
+											</v8:item>
 										</dcsset:lwsTitle>
 									</dcsset:item>
 									<dcsset:placement>Auto</dcsset:placement>
@@ -2722,6 +3058,10 @@ END</dcsat:expression>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>By movement documents</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>По документам движения</v8:content>
 								</v8:item>
 							</dcsset:userSettingPresentation>
 						</dcsset:item>
@@ -2739,6 +3079,10 @@ END</dcsat:expression>
 				<v8:lang>en</v8:lang>
 				<v8:content>Cash receipt dynamics</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Динамика поступления денежных средств</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
@@ -2749,6 +3093,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Receipt</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Приход</v8:content>
 						</v8:item>
 					</dcsset:lwsTitle>
 				</dcsset:item>
@@ -2851,6 +3199,10 @@ END</dcsat:expression>
 									<v8:lang>en</v8:lang>
 									<v8:content>&lt; &gt;</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt; &gt;</v8:content>
+								</v8:item>
 							</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
@@ -2858,6 +3210,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Empty items design</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оформление незаполненных статей</v8:content>
 						</v8:item>
 					</dcsset:presentation>
 				</dcsset:item>
@@ -2874,6 +3230,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash receipt dynamics</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Динамика поступления денежных средств</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
@@ -2936,6 +3296,10 @@ END</dcsat:expression>
 						<v8:lang>en</v8:lang>
 						<v8:content>Chart by the items</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Диаграмма по статьям</v8:content>
+					</v8:item>
 				</dcsset:userSettingPresentation>
 			</dcsset:item>
 			<dcsset:item xsi:type="dcsset:StructureItemTable">
@@ -2990,6 +3354,10 @@ END</dcsat:expression>
 				<v8:lang>en</v8:lang>
 				<v8:content>Cash expense dynamics</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Динамика расхода денежных средств</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
@@ -3000,6 +3368,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Expense</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расход</v8:content>
 						</v8:item>
 					</dcsset:lwsTitle>
 				</dcsset:item>
@@ -3102,6 +3474,10 @@ END</dcsat:expression>
 									<v8:lang>en</v8:lang>
 									<v8:content>&lt; &gt;</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>&lt; &gt;</v8:content>
+								</v8:item>
 							</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
@@ -3109,6 +3485,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Empty items design</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оформление незаполненных статей</v8:content>
 						</v8:item>
 					</dcsset:presentation>
 				</dcsset:item>
@@ -3125,6 +3505,10 @@ END</dcsat:expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash expense dynamics</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Динамика расхода денежных средств</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
@@ -3186,6 +3570,10 @@ END</dcsat:expression>
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Chart by the items</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Диаграмма по статьям</v8:content>
 					</v8:item>
 				</dcsset:userSettingPresentation>
 			</dcsset:item>

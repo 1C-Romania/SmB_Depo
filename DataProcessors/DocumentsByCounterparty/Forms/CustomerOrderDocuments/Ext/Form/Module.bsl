@@ -105,7 +105,7 @@ Procedure UpdateDocumentsTableAtServer()
 	
 	If IsBlankString(QueryTextByDocuments) Then
 		
-		CommonUseClientServer.MessageToUser(NStr("en = 'It is neccesary to set content of documents'"),,"ThisForm");
+		CommonUseClientServer.MessageToUser(NStr("en='It is neccesary to set content of documents';ru='Необходимо настроить состав документов'"),,"ThisForm");
 		Return;
 		
 	EndIf;

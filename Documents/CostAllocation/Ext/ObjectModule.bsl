@@ -895,7 +895,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.CustomerOrder")
 		AND FillingData.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then	
 		
-		Raise NStr("en = 'Cost allocation can not be entered on the basis of job order!'");
+		Raise NStr("en='Cost allocation can not be entered on the basis of job order!';ru='Нельзя ввести Распределение затрат на основании заказ-наряда!'");
 		
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.CustomerOrder")
 		AND FillingData.OperationKind = Enums.OperationKindsCustomerOrder.OrderForSale Then
@@ -1059,14 +1059,14 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If Inventory.Total("Quantity") <> InventoryDistribution.Total("Quantity") Then
 
-		MessageText = NStr("en = 'The inventory quantity does not match with the quantity of allocation!'");
+		MessageText = NStr("en='The inventory quantity does not match with the quantity of allocation!';ru='Количество запасов не соответствует количеству распределения!'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText,,,"Inventory",Cancel);
 			
 	EndIf;
 	
 	If Costs.Total("Amount") <> CostAllocation.Total("Amount") Then
 
-		MessageText = NStr("en = 'Amount of expenses does not match the amount of distribution!'");
+		MessageText = NStr("en='Amount of expenses does not match the amount of distribution!';ru='Сумма расходов не соответствует сумме распределения!'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText,,,"Costs",Cancel);
 			
 	EndIf;
@@ -1077,7 +1077,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 			If StringInventory.Reserve > StringInventory.Quantity Then
 				
-				MessageText = NStr("en = 'In row No.%Number% of the ""Inventory"" tabular section, the number of positions for write-off from reserve exceeds the total inventory quantity.'");
+				MessageText = NStr("en='In row No.%Number% of the ""Inventory"" tabular section, the number of positions for write-off from reserve exceeds the total inventory quantity.';ru='В строке №%Номер% табл. части """"Запасы"""" количество позиций к списанию из резерва превышает общее количество запасов.'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -1096,7 +1096,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 			If StringInventoryDistribution.Reserve > StringInventoryDistribution.Quantity Then
 				
-				MessageText = NStr("en = 'In row No.%Number% of the ""Inventory allocation"" tabular section, the number of positions for write-off from reserve exceeds the total inventory quantity.'");
+				MessageText = NStr("en='In row No.%Number% of the ""Inventory allocation"" tabular section, the number of positions for write-off from reserve exceeds the total inventory quantity.';ru='В строке №%Номер% табл. части ""Распределение запасов"" количество позиций к списанию из резерва превышает общее количество запасов.'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventoryDistribution.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,

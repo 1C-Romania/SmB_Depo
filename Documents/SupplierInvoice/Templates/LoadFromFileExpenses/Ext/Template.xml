@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -12,6 +12,76 @@
 			<id>ru</id>
 			<code>Русский</code>
 			<description>Русский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>az</id>
+			<code>Azerbaijani</code>
+			<description>Azerbaijani</description>
+		</languageInfo>
+		<languageInfo>
+			<id>am</id>
+			<code>Armenian</code>
+			<description>Armenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>bg</id>
+			<code>Bulgarian</code>
+			<description>Bulgarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>et</id>
+			<code>Estonian</code>
+			<description>Estonian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>fr</id>
+			<code>French</code>
+			<description>French</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ka</id>
+			<code>Georgian</code>
+			<description>Georgian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>de</id>
+			<code>German</code>
+			<description>German</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lv</id>
+			<code>Latvian</code>
+			<description>Latvian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>lt</id>
+			<code>Lithuanian</code>
+			<description>Lithuanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>mn</id>
+			<code>Mongolian</code>
+			<description>Mongolian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>pl</id>
+			<code>Polish</code>
+			<description>Polish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>ro</id>
+			<code>Romanian</code>
+			<description>Romanian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sl</id>
+			<code>Slovenian</code>
+			<description>Slovenian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>tr</id>
+			<code>Turkish</code>
+			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -64,6 +134,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>SKU</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Артикул</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>ProductsAndServices</detailParameter>
 					<note>
@@ -74,6 +148,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Product digital code. Text value used in documents print forms.</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Цифровой код товара. Текстовое значение, используется в печатных формах документов.</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -109,6 +187,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Inventory position cost of which is displayed by document data and will be appropriated to inventory costs.</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Позиция номенклатуры, стоимость которой отражается данным документом и будет отнесена на стоимость запасов</v8:content>
+							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
 						<beginRowOffset>-21</beginRowOffset>
@@ -132,6 +214,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Quantity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Quantity</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>Quantity</detailParameter>
 					<note>
@@ -142,6 +228,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Quantity of the inventory position</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество номенклатурной позиции</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -166,6 +256,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Unit chan.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ед. изм.</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>MeasurementUnit</detailParameter>
 					<note>
@@ -176,6 +270,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Unit of measurement of the products and services item</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Единица измерения номенклатурной позиции.</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -200,6 +298,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Price</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>Price</detailParameter>
 					<note>
@@ -210,6 +312,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Products and services item price</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Цена номенклатурной позиции</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -234,6 +340,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>VAT</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>НДС</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>VATRate</detailParameter>
 					<note>
@@ -244,6 +354,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>VAT rate</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Указывается ставка НДС</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -268,6 +382,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Division</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>разделение</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>StructuralUnit</detailParameter>
 					<note>
@@ -278,6 +396,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Structural unit to which the services (expenses) will be charged</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Структурная единица, на которую буду отнесены услуги (расходы)</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
@@ -302,6 +424,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Business activity</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Направление деятельности</v8:content>
+						</v8:item>
 					</tl>
 					<detailParameter>BusinessActivity</detailParameter>
 					<note>
@@ -312,6 +438,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Business activity of the company to which the cost of services (expenses) will be charged</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Направление деятельности компании, на которую буду отнесены услуги (расходы)</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>

@@ -78,12 +78,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Ref = Parameters.Ref;
 	
 	If CancelGLAccountWithCustomerChange(Ref) Then
-		Items.WithCustomer.ToolTip = NStr("en = 'There are transactions in base by this customer! Settlement GL account change with customer is prohibited!'");
+		Items.WithCustomer.ToolTip = NStr("en='There are transactions in base by this customer! Settlement GL account change with customer is prohibited!';ru='В базе есть движения по этому покупателю! Изменение счетов учета расчетов с покупателем запрещено!'");
 		Items.WithCustomer.Enabled = False;
 	EndIf;
 		
 	If CancelGLAccountWithVendorChange(Ref) Then
-		Items.WithVendor.ToolTip = NStr("en = 'There are transactions in base by this supplier! Settlement GL account change with supplier is prohibited!'");
+		Items.WithVendor.ToolTip = NStr("en='There are transactions in base by this supplier! Settlement GL account change with supplier is prohibited!';ru='В базе есть движения по этому поставщику! Изменение счетов учета расчетов с поставщиком запрещено!'");
 		Items.WithVendor.Enabled = False;
 	EndIf;
 	

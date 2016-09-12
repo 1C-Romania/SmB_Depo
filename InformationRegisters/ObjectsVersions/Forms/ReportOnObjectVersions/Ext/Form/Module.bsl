@@ -34,12 +34,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			StringOfVersionsNumber = Left(StringOfVersionsNumber, StrLen(StringOfVersionsNumber) - 2);
 			
 			Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			                 NStr("en = 'Versions comparison ""%1"" (No.No. %2)'"),
+			                 NStr("en='Versions comparison ""%1"" (No.No. %2)';ru='Сравнение версий ""%1"" (№№ %2)'"),
 			                 CommonUse.SubjectString(ObjectReference),
 			                 StringOfVersionsNumber);
 		Else
 			Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			                 NStr("en = 'Object version ""%1"" No.%2'"),
+			                 NStr("en='Object version ""%1"" No.%2';ru='Версия объекта ""%1"" №%2'"),
 			                 ObjectReference,
 			                 String(ComparedVersions[0]));
 		EndIf;
@@ -578,7 +578,7 @@ EndFunction
 Function OutputHeader(ReportTS, VersionsNumbersArray, NumberOfVersions)
 	
 	AreaHeader = Common_Template.GetArea("Header");
-	AreaHeader.Parameters.ReportDescription = NStr("en = 'Report by Changes of the Object''s Versions'");
+	AreaHeader.Parameters.ReportDescription = NStr("en=""Report by Changes of the Object's Versions"";ru='Отчет по изменениям версий объекта'");
 	AreaHeader.Parameters.ObjectDescription = String(ObjectReference);
 	
 	ReportTS.Output(AreaHeader);
@@ -1048,7 +1048,7 @@ EndFunction
 Function GetDescriptionByVersion(VersionNumber)
 	
 	InfoAboutVersions = ObjectVersioning.InfoAboutObjectVersion(ObjectReference, VersionNumber);
-	Definition = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'No. %1 / (%2) / %3'"), 
+	Definition = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='No. %1 / (%2) / %3';ru='№ %1 / (%2) / %3'"), 
 		VersionNumber, String(InfoAboutVersions.VersionDate), TrimAll(String(InfoAboutVersions.VersionAuthor)));
 	InfoAboutVersions.Insert("Definition", Definition);
 	
@@ -1274,7 +1274,7 @@ Procedure AddLineNumbersInTabularSections(TabularSections)
 		If Table.Columns.Find("LineNumber") <> Undefined Then
 			Continue;
 		EndIf;
-		Table.Columns.Insert(0, "LineNumber",,NStr("en = 'No. rows'"));
+		Table.Columns.Insert(0, "LineNumber",,NStr("en='No. rows';ru='№ строки'"));
 		For LineNumber = 1 To Table.Count() Do
 			Table[LineNumber-1].LineNumber = LineNumber;
 		EndDo;

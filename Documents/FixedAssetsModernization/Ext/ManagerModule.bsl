@@ -51,8 +51,8 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefFixedAssetsModernization, St
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
-	Query.SetParameter("IncomeReflection", NStr("en = 'Income accounting'"));
-	Query.SetParameter("CostsReflection", NStr("en = 'Costs reflection'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
+	Query.SetParameter("CostsReflection", NStr("en='Costs reflection';ru='Отражение расходов'"));
 	
 	Query.Text =
 	"SELECT
@@ -100,8 +100,8 @@ Procedure GenerateTableManagerial(DocumentRefFixedAssetsModernization, Structure
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
-	Query.SetParameter("IncomeReflection", NStr("en = 'Income accounting'"));
-	Query.SetParameter("CostsReflection", NStr("en = 'Costs reflection'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
+	Query.SetParameter("CostsReflection", NStr("en='Costs reflection';ru='Отражение расходов'"));
 	
 	Query.Text =
 	"SELECT

@@ -38,6 +38,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Object rights settings</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки прав объектов</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<UseStandardCommands>false</UseStandardCommands>
@@ -171,6 +175,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Right denied</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право запрещено</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -183,6 +191,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The check box shows that the right is denied.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Флажок, показывающий, что настроено запрещение права.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -214,6 +226,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Inheritance allowed</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наследование разрешено</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -227,6 +243,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>A checkbox indicating that
 the right setting inheritance is permitted to subordinate objects.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Флажок, показывающий, что разрешено наследование настройки права нижестоящими объектами.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -258,6 +278,10 @@ the right setting inheritance is permitted to subordinate objects.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Setup order</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок настройки</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -276,6 +300,11 @@ the right setting inheritance is permitted to subordinate objects.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Settings order used when
 getting the settings list for the rights setting form.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядок настройки,
+используемых при получении списка настроек для формы настройки прав.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -307,6 +336,10 @@ getting the settings list for the rights setting form.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Right permission level</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень разрешения права</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -328,6 +361,14 @@ Level
 right:
 0 - not permitted, 1 -
 permitted without inheritance, 2 - permitted with inheritance.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вспомогательный реквизит, используемый в шаблонах ограничения доступа к данным.
+Уровень
+права:
+0 - не разрешено,
+1 - разрешено без возможности наследования, 2 - разрешено с возможностью наследования.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -359,6 +400,10 @@ permitted without inheritance, 2 - permitted with inheritance.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Right denied level</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень запрещения права</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -380,6 +425,14 @@ Level
 right:
 0 - not permitted, 1 -
 permitted without inheritance, 2 - permitted with inheritance.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вспомогательный реквизит, используемый в шаблонах ограничения доступа к данным.
+Уровень
+права:
+0 - не разрешено,
+1 - разрешено без возможности наследования, 2 - разрешено с возможностью наследования.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -411,6 +464,10 @@ permitted without inheritance, 2 - permitted with inheritance.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Reading permission level</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень разрешения чтения</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -432,6 +489,14 @@ Reading level for
 the specified table:
 0 - not permitted, 1 -
 permitted without inheritance, 2 - permitted with inheroitance.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вспомогательный реквизит, используемый в шаблонах ограничения доступа к данным.
+Уровень
+чтения для указанной
+таблицы: 0 - не разрешено, 1
+- разрешено без возможности наследования, 2 - разрешено с возможностью наследования.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -463,6 +528,10 @@ permitted without inheritance, 2 - permitted with inheroitance.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Reading denied level</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень запрещения чтения</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -484,6 +553,14 @@ Reading level for
 the specified table:
 0 - not permitted, 1 -
 permitted without inheritance, 2 - permitted with inheroitance.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вспомогательный реквизит, используемый в шаблонах ограничения доступа к данным.
+Уровень
+чтения для указанной
+таблицы: 0 - не разрешено, 1
+- разрешено без возможности наследования, 2 - разрешено с возможностью наследования.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -515,6 +592,10 @@ permitted without inheritance, 2 - permitted with inheroitance.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Change permission level</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень разрешения изменения</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -536,6 +617,14 @@ Change level for
 the specified table:
 0 - not permitted, 1 -
 permitted without inheritance, 2 - permitted with inheritance.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вспомогательный реквизит, используемый в шаблонах ограничения доступа к данным.
+Уровень изменения
+для указанной
+таблицы: 0 - не разрешено, 1
+- разрешено без возможности наследования, 2 - разрешено с возможностью наследования.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -567,6 +656,10 @@ permitted without inheritance, 2 - permitted with inheritance.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Change denied level</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень запрещения изменения</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -588,6 +681,14 @@ Change level for
 the specified table:
 0 - not permitted, 1 -
 permitted without inheritance, 2 - permitted with inheritance.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вспомогательный реквизит, используемый в шаблонах ограничения доступа к данным.
+Уровень изменения
+для указанной
+таблицы: 0 - не разрешено, 1
+- разрешено без возможности наследования, 2 - разрешено с возможностью наследования.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -619,6 +720,10 @@ permitted without inheritance, 2 - permitted with inheritance.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Object</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>объект</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -632,6 +737,11 @@ permitted without inheritance, 2 - permitted with inheritance.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>An object is a rights owner for itself and its
 subordinate objects (for example, a folder may store rights settings for itself and for the files).</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект - владелец настроек прав для себя
+и для подчиненных объектов (например, папка может хранить настройки прав для себя и для файлов).</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -666,6 +776,10 @@ subordinate objects (for example, a folder may store rights settings for itself 
 							<v8:lang>en</v8:lang>
 							<v8:content>User</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -681,6 +795,10 @@ subordinate objects (for example, a folder may store rights settings for itself 
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The user, whose object right is being configured.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь для которого настраивается право на объекты.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -715,6 +833,10 @@ subordinate objects (for example, a folder may store rights settings for itself 
 							<v8:lang>en</v8:lang>
 							<v8:content>Right</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Право</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -731,6 +853,10 @@ subordinate objects (for example, a folder may store rights settings for itself 
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name of the right being configured.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя права, которое настраивается.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -765,6 +891,10 @@ subordinate objects (for example, a folder may store rights settings for itself 
 							<v8:lang>en</v8:lang>
 							<v8:content>Table</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -778,6 +908,11 @@ subordinate objects (for example, a folder may store rights settings for itself 
 							<v8:lang>en</v8:lang>
 							<v8:content>Auxiliary dimension used in data access restricting templates.
 Identifier of the table, the right configuration applies to.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вспомогательное измерение, используемое в шаблонах ограничения доступа к данным.
+Идентификатор таблицы, к которой относится настройка права.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>

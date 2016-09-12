@@ -91,7 +91,7 @@ Procedure ChangeCardOfObjectOwnerAndChangeListAppearance(OwnerRef, NewBankAccoun
 		
 	Except
 		
-		MessageText = NStr("en = 'Failed to change bank account in owner card by default.'");
+		MessageText = NStr("en='Failed to change bank account in owner card by default.';ru='Не удалось поменять банковский счет по умолчанию в карточке владельца.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndTry;
@@ -154,7 +154,7 @@ Procedure SetAsBankAccountByDefault(Command)
 	
 	If CurrentListRow = Undefined Then
 		
-		MessageText = NStr("en = 'Bank account to be set as a default is not selected.'");
+		MessageText = NStr("en='Bank account to be set as a default is not selected.';ru='Не выбран банковский счет, который необходимо установить как банковский счет по умолчанию'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		Return;

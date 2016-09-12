@@ -12,11 +12,19 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
 				</Title>
 				<ToolTip>
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
 					</v8:item>
 				</ToolTip>
 				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
@@ -52,6 +60,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Standard attributes</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стандартные реквизиты</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -89,11 +101,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Additional attributes</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные реквизиты объекта</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Additional attributes</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные реквизиты объекта</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -118,6 +138,10 @@
 								<v8:content>&lt;b&gt;"Corr. account."&lt;/&gt; The attribute defines an account that will be used in bank or cash documents when importing to "Enterprise Accounting".
 
 &lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;The account is populated with an item for accounting documents with operation types "Other", "Taxes" and "Salary", i.e. for the documents with which the default account can not be associated with.</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>"Корр. счет". Реквизит определяет счет учета, который будет подставлен в банковский или кассовый документ при загрузке в "Бухгалтерию предприятия".  ВАЖНО! Счет учета подставляется из статьи для документов учета денежных средств с видами операций "Прочее", "Налоги" и "Зарплата", т.е. для тех документов, для которых нет возможности задать счета учета по умолчанию.</v8:content>
 							</v8:item>
 						</Title>
 					</ExtendedTooltip>

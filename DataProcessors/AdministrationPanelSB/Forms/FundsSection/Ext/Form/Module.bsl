@@ -191,7 +191,7 @@ Function CancellationUncheckFunctionalCurrencyTransactionsAccounting()
 	
 	If Not QueryResult.IsEmpty() Then
 		
-		MessageText = NStr("en = 'Currencies that are different from the national are registered in the base! It is required to delete them. The flag removal is prohibited!'");
+		MessageText = NStr("en='Currencies that are different from the national are registered in the base! It is required to delete them. The flag removal is prohibited!';ru='В базе заведены валюты, отличные от национальной! Необходимо их удалить. Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -287,7 +287,7 @@ Function CancellationToChangeAccountingCurrency()
 	
 	If AreRecords Then
 		
-		MessageText = NStr("en = 'There are records in the base of the ""amount"" accumulation registers! You can not change the accounting currency!'");	
+		MessageText = NStr("en='There are records in the base of the ""amount"" accumulation registers! You can not change the accounting currency!';ru='В базе есть движения по ""суммовым"" регистрам накопления! Изменение валюты учета запрещено!'");	
 		
 	EndIf;
 	

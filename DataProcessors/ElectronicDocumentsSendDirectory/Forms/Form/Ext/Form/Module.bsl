@@ -5,8 +5,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not Parameters.Property("FormID")
 		OR Parameters.FormID = Undefined Then
 		
-		ErrorMessage = NStr("en='This data processor is intended to be called from the ""EDF Settings"".
-			|You can not call it manually.'");
+		ErrorMessage = NStr("en='This data processor is intended to be called from the ""EDF Settings""."
+"You can not call it manually.';ru='Данная обработка предназначена для вызова из ""Настройки ЭДО""."
+"Вызывать ее вручную запрещено.'");
 			
 		Raise ErrorMessage;
 		Return;
@@ -20,7 +21,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	//	ValueIsFilled(Agreement) And Agreement.AgreementState <> Enum.AgreementStatesED.Acts Then
 	//	
 	//	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-	//		NStr("en = 'You can not send a directory for an agreement with the ""%1"" state!'"), Agreement.AgreementState);
+	//		NStr("en='You can not send a directory for an agreement with the ""%1"" state!';ru='Нельзя отправить каталог для соглашения с состоянием ""%1""!'"), Agreement.AgreementState);
 	//	
 	//	Raise MessageText;
 	//	
@@ -49,8 +50,9 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		Cancel = True;
 		
 		NotifyDescription = New NotifyDescription("BeforeCloseQuestionEnd", ThisObject);
-		QuestionText = NStr("en = 'Selected products will not be sent. 
-							|Continue?'");
+		QuestionText = NStr("en='Selected products will not be sent. "
+"Continue?';ru='Подобранные товары отправлены не будут. "
+"Продолжить?'");
 		
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 		
@@ -290,7 +292,7 @@ EndProcedure
 Procedure FillProductsTable(Command)
 	
 	If Object.Products.Count() > 0 Then
-		QuestionText = NStr("en = 'Products table will be refilled. Continue?'");
+		QuestionText = NStr("en='Products table will be refilled. Continue?';ru='Таблица товаров будет перезаполнена. Продолжить?'");
 		ShowQueryBox(New NotifyDescription("FillProductsTableEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo,,DialogReturnCode.Yes);
 	Else
 		FillProductsTableAtServer();

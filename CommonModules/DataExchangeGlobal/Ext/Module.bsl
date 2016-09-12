@@ -26,10 +26,11 @@ EndProcedure
 Procedure CheckUpdateNecessity(SiteConfigurationUpdateRequiredRIB)
 	
 	If SiteConfigurationUpdateRequiredRIB Then
-		Explanation = NStr("en = 'Application update received from ""%1"".
-			|It is necessary to install the application update after which the data synchronization will be continued.'");
+		Explanation = NStr("en='Application update received from ""%1""."
+"It is necessary to install the application update after which the data synchronization will be continued.';ru='Получено обновление программы из ""%1""."
+"Необходимо установить обновление программы, после чего синхронизация данных будет продолжена.'");
 		Explanation = StringFunctionsClientServer.PlaceParametersIntoString(Explanation, StandardSubsystemsClientReUse.ClientWorkParameters().MasterNode);
-		ShowUserNotification(NStr("en = 'Install update'"), "e1cib/app/DataProcessor.DataExchangeExecution",
+		ShowUserNotification(NStr("en='Install update';ru='Установить обновление'"), "e1cib/app/DataProcessor.DataExchangeExecution",
 			Explanation, PictureLib.Warning32);
 		Notify("DataExchangeCompleted");
 	EndIf;

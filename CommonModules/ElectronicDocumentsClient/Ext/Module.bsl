@@ -107,8 +107,9 @@ Procedure RefillDocument(CommandParameter, Source = Undefined, MappingAlreadyCom
 	EndIf;
 	
 	PostedDocumentsArray = ElectronicDocumentsServiceCallServer.PostedDocumentsArray(RefArray);
-	Pattern = NStr("en = 'Processing document %1.
-						|The operation is available only for unposted documents.'");
+	Pattern = NStr("en='Processing document %1."
+"The operation is available only for unposted documents.';ru='Обработка документа %1."
+"Операция возможна только для непроведенных документов!'");
 	For Each Document IN PostedDocumentsArray Do
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, Document);
 		CommonUseClientServer.MessageToUser(ErrorText);
@@ -134,7 +135,7 @@ Procedure RefillDocument(CommandParameter, Source = Undefined, MappingAlreadyCom
 	
 	If AccordanceOfEDIOwners.Count() = 0 Then
 		For Each CurrentDocument IN RefArray Do
-			Pattern = NStr("en = 'Electronic document is not found for %1'");
+			Pattern = NStr("en='Electronic document is not found for %1';ru='Электронный документ для %1 не найден'");
 			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, CurrentDocument);
 			CommonUseClientServer.MessageToUser(ErrorText);
 		EndDo;
@@ -198,8 +199,8 @@ Procedure RefillDocument(CommandParameter, Source = Undefined, MappingAlreadyCom
 		
 	If ArrayChangedOwners.Count() > 0 Then
 		
-		StateTextOutput = NStr("en = 'Document is refilled.'");
-		HeaderText = NStr("en = 'Electronic document exchange'");
+		StateTextOutput = NStr("en='Document is refilled.';ru='Документ перезаполнен.'");
+		HeaderText = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 		ShowUserNotification(HeaderText, , StateTextOutput);
 		
 	EndIf;
@@ -273,7 +274,7 @@ Procedure OpenActualED(CommandParameter, Source = Undefined, OpenParameters = Un
 			EndIf;
 			
 		Else
-			TemplateText = NStr("en = '%1. Actual electronic document is not found!'");
+			TemplateText = NStr("en='%1. Actual electronic document is not found!';ru='%1. Актуальный электронный документ не найден!'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateText, CurItm);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -355,7 +356,7 @@ Procedure RunCommandDocumentForms(Object, Form, CommandName) Export
 				StrPosted = ?(Posted, "write and post.
 				|Write and post?", "write. Write?");
 				
-				MessagePattern = NStr("en = 'Document is changed. To generate the electronic document it must be %1'");
+				MessagePattern = NStr("en='Document is changed. To generate the electronic document it must be %1';ru='Документ изменен. Для формирования электронного документа его необходимо %1'");
 				QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, StrPosted);
 				
 				AdditionalParameters = New Structure();
@@ -366,7 +367,7 @@ Procedure RunCommandDocumentForms(Object, Form, CommandName) Export
 				
 				Handler = New NotifyDescription( "WriteInForm", ThisObject, AdditionalParameters);
 				
-				ShowQueryBox( Handler, QuestionText, QuestionDialogMode.OKCancel, , DialogReturnCode.Cancel, NStr("en = 'Document is changed.'"));
+				ShowQueryBox( Handler, QuestionText, QuestionDialogMode.OKCancel, , DialogReturnCode.Cancel, NStr("en='Document is changed.';ru='Документ изменен.'"));
 				
 			EndIf;
 		EndIf;
@@ -387,7 +388,7 @@ Procedure WriteInForm(Response, AdditionalParameters) Export
 			Try
 				Cancel = Not Form.WriteInForm(DocumentWriteMode.Posting);
 			Except
-				ShowMessageBox(, NStr("en = 'The operation failed.'"));
+				ShowMessageBox(, NStr("en='The operation failed.';ru='Операция не выполнена:'"));
 				Cancel = True;
 			EndTry;
 		Else
@@ -608,8 +609,9 @@ Procedure ProcessFilePlacingResult(SelectionComplete, FileURL, SelectedFileName,
 	UUID = AdditionalParameters.UUID;
 	
 	If Not (Upper(Extension) = Upper("zip") Or Upper(Extension) = Upper("xml")) Then
-		MessageText = NStr("en = 'Invalid file format.
-		|Select a file with extension ""zip"" or ""xml"".'");
+		MessageText = NStr("en='Invalid file format."
+"Select a file with extension ""zip"" or ""xml"".';ru='Не корректный формат файла."
+"Выберите файл с расширением ""zip"" или ""xml"".'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;
@@ -653,7 +655,7 @@ Procedure CloseEDFForcibly(EDOwnersArray) Export
 	Handler = New NotifyDescription("CloseForciblyRowInputResult", ThisObject, AdditionalParameters);
 	
 	ClosingReason = "";
-	ShowInputString(Handler, ClosingReason, NStr("en = 'Specify a reason for closing EDF'"),,True);
+	ShowInputString(Handler, ClosingReason, NStr("en='Specify a reason for closing EDF';ru='Укажите причину закрытия документооборота'"),,True);
 	
 	
 EndProcedure
@@ -662,7 +664,7 @@ Procedure CloseForciblyRowInputResult(ClosingReason, AdditionalParameters) Expor
 	
 	If Not ValueIsFilled(ClosingReason) Then
 		
-		MessageText = NStr("en = 'To close EDF by selected ED, specify a closure reason.'");
+		MessageText = NStr("en='To close EDF by selected ED, specify a closure reason.';ru='Для закрытия документооборота по выбранным ЭД необходимо указать причину закрытия!'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -672,9 +674,9 @@ Procedure CloseForciblyRowInputResult(ClosingReason, AdditionalParameters) Expor
 	ProcessedEDCount = 0;
 	ElectronicDocumentsServiceCallServer.CloseDocumentsForcedly(RefArray, ClosingReason, ProcessedEDCount);
 	
-	NotificationText = NStr("en = 'ED documents states are changed to ""Closed forcibly"": (%1)'");
+	NotificationText = NStr("en='ED documents states are changed to ""Closed forcibly"": (%1)';ru='Изменено состояние ЭД документов на ""Закрыт принудительно"": (%1)'");
 	NotificationText = StrReplace(NotificationText, "%1", ProcessedEDCount);
-	ShowUserNotification(NStr("en = 'Documents processing'"), , NotificationText);
+	ShowUserNotification(NStr("en='Documents processing';ru='Обработка документов'"), , NotificationText);
 	If ProcessedEDCount > 0 Then
 		Notify("RefreshStateED");
 	EndIf;
@@ -763,7 +765,7 @@ Procedure GetBankStatement(EDAgreement, StartDate, Val EndDate, Owner, AccountNo
 	
 	CurrentSessionDate = CommonUseClient.SessionDate();
 	If StartDate > CurrentSessionDate OR EndDate > EndOfDay(CurrentSessionDate) Then
-		MessageText = NStr("en = 'Query period is specified incorrectly'");
+		MessageText = NStr("en='Query period is specified incorrectly';ru='Период запроса указан неверно'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Period");
 		Return;
 	EndIf;
@@ -778,7 +780,7 @@ Procedure GetBankStatement(EDAgreement, StartDate, Val EndDate, Owner, AccountNo
 	
 	StatusUsed = PredefinedValue("Enum.EDAgreementsStatuses.Acts");
 	If Not EDFSettingAttributes.AgreementStatus = StatusUsed Then
-		MessageText = NStr("en = 'EDF settings are incorrect, the operation can not be run'");
+		MessageText = NStr("en='EDF settings are incorrect, the operation can not be run';ru='Настройка ЭДО не действует, операция невозможна'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;

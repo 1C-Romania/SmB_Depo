@@ -71,7 +71,7 @@ Procedure SetEDAttributeValue(ParameterKind, Val ObjectList, Val ParameterValue,
 		Try
 			LockDataForEdit(Selection.Ref);
 		Except
-			ErrorText = NStr("en='Unable to lock electronic document (%Object%). %ErrorDescription%'");
+			ErrorText = NStr("en='Unable to lock electronic document (%Object%). %ErrorDescription%';ru='Не удалось заблокировать электронный документ (%Объект%). %ОписаниеОшибки%'");
 			ErrorText = StrReplace(ErrorText, "%Object%",         Selection.Ref);
 			ErrorText = StrReplace(ErrorText, "%ErrorDescription%", BriefErrorDescription(ErrorInfo()));
 			ErrorCommonText = ErrorCommonText+Chars.LF+ErrorText;
@@ -87,7 +87,7 @@ Procedure SetEDAttributeValue(ParameterKind, Val ObjectList, Val ParameterValue,
 			EndIf;
 			NumberOfProcessed = NumberOfProcessed + 1;
 		Except
-			ErrorText = NStr("en='Failed to write the electronic document (%Object%). %ErrorDescription%'");
+			ErrorText = NStr("en='Failed to write the electronic document (%Object%). %ErrorDescription%';ru='Не удалось выполнить запись электронного документа (%Объект%). %ОписаниеОшибки%'");
 			ErrorText = StrReplace(ErrorText, "%Object%",         Selection.Ref);
 			ErrorText = StrReplace(ErrorText, "%ErrorDescription%", BriefErrorDescription(ErrorInfo()));
 			ErrorCommonText = ErrorCommonText+Chars.LF+ErrorText;
@@ -105,7 +105,7 @@ EndProcedure
 Procedure CompareEDData(CurrentList)
 	
 	#If Not ThickClientManagedApplication AND Not ThickClientOrdinaryApplication Then
-		Message(NStr("en='Electronic documents matching can be performed only in the thick client mode.'"));
+		Message(NStr("en='Electronic documents matching can be performed only in the thick client mode.';ru='Сравнение электронных документов можно сделать только в режиме толстого клиента.'"));
 		Return;
 	#Else
 		If CurrentList.CurrentData = Undefined
@@ -137,7 +137,7 @@ Procedure SetPackagesStatus(PackagesTable, PackageStatus, CountOfChanged)
 			MessageText = BriefErrorDescription(ErrorInfo());
 			ErrorText = DetailErrorDescription(ErrorInfo());
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-				NStr("en = 'modification of ED packages status'"), ErrorText, MessageText);
+				NStr("en='modification of ED packages status';ru='изменение статуса пакетов ЭД'"), ErrorText, MessageText);
 		EndTry;
 	EndDo;
 	
@@ -167,7 +167,7 @@ EndFunction
 Procedure PerformEDComparison(ParametersStructure)
 	
 	#If Not ThickClientManagedApplication AND Not ThickClientOrdinaryApplication Then
-		MessageText = NStr("en='Electronic documents matching can be performed only in the thick client mode.'");
+		MessageText = NStr("en='Electronic documents matching can be performed only in the thick client mode.';ru='Сравнение электронных документов можно сделать только в режиме толстого клиента.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	#Else
@@ -176,7 +176,7 @@ Procedure PerformEDComparison(ParametersStructure)
 		EDSecond = ParametersStructure.EDSecond;
 		
 		If Not (ValueIsFilled(EDFirst) AND ValueIsFilled(EDSecond)) Then
-			MessageText = NStr("en='No one of the compared electronic documents has been specified.'");
+			MessageText = NStr("en='No one of the compared electronic documents has been specified.';ru='Не указан один из сравниваемых электронных документов.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		EndIf;
@@ -187,7 +187,7 @@ Procedure PerformEDComparison(ParametersStructure)
 		TemporaryFilesList = ElectronicDocumentsService.PrepareEDViewTemporaryFiles(EDKindsArray);
 		
 		If TemporaryFilesList = Undefined Then
-			MessageText = NStr("en='Error when parsing the electronic document.'");
+			MessageText = NStr("en='Error when parsing the electronic document.';ru='Ошибка при разборе электронного документа.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		EndIf;
@@ -265,20 +265,20 @@ Procedure NotifyUserAboutResponsibleChange(NumberOfProcessed, ObjectList, Respon
 		
 		ObjectList.Refresh();
 		
-		MessageText = NStr("en='For %NumberProcessed% from %TotalNumber% of
-		|selected electronic documents responsible ""%Responsible%"" is set'");
+		MessageText = NStr("en='For %NumberProcessed% from %TotalNumber% of"
+"selected electronic documents responsible ""%Responsible%"" is set';ru='Для %КоличествоОбработанных% из %КоличествоВсего% выделенных эл.документов установлен ответственный ""%Ответственный%""'");
 		MessageText = StrReplace(MessageText, "%NumberSelected%", NumberOfProcessed);
 		MessageText = StrReplace(MessageText, "%CountTotal%",        ObjectList.SelectedRows.Count());
 		MessageText = StrReplace(MessageText, "%Responsible%",          Responsible);
-		HeaderText = NStr("en='Responsible ""%Responsible%"" is set'");
+		HeaderText = NStr("en='Responsible ""%Responsible%"" is set';ru='Ответственный ""%Ответственный%"" установлен'");
 		HeaderText = StrReplace(HeaderText, "%Responsible%", Responsible);
 		ShowUserNotification(HeaderText, , MessageText, PictureLib.Information32);
 		
 	Else
 		
-		MessageText = NStr("en='Responsible ""%Responsible%"" is not set for any electronicdocument.'");
+		MessageText = NStr("en='Responsible ""%Responsible%"" is not set for any electronicdocument.';ru='Ответственный ""%Ответственный%"" не установлен ни для одного эл.документа.'");
 		MessageText = StrReplace(MessageText, "%Responsible%", Responsible);
-		HeaderText = NStr("en='Responsible ""%Responsible%"" is not set'");
+		HeaderText = NStr("en='Responsible ""%Responsible%"" is not set';ru='Ответственный ""%Ответственный%"" не установлен'");
 		HeaderText = StrReplace(HeaderText, "%Responsible%", Responsible);
 		ShowUserNotification(HeaderText,, MessageText, PictureLib.Information32);
 		
@@ -360,13 +360,13 @@ EndProcedure
 &AtClient
 Procedure CommandSendNotification(SentPackagesCnt, AdditionalParameters) Export
 	
-	NotificationTitle = NStr("en = 'Electronic document exchange'");
-	NotificationText     = NStr("en = 'The sent packages are not present'");
+	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
+	NotificationText     = NStr("en='The sent packages are not present';ru='Отправленных пакетов нет'");
 	
 	If ValueIsFilled(SentPackagesCnt) Then
 	
 		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Number of sent packages: (%1)'"), SentPackagesCnt);
+			NStr("en='Number of sent packages: (%1)';ru='Отправлено пакетов: (%1)'"), SentPackagesCnt);
 	EndIf;
 	
 	ShowUserNotification(NotificationTitle, , NotificationText);
@@ -381,10 +381,10 @@ Procedure SetStatusToUnpacking(Command)
 	Quantity = 0;
 	SetPackagesStatus(PackagesTable, PredefinedValue("Enum.EDPackagesStatuses.ToUnpacking"), Quantity);
 	
-	NotificationText = NStr("en = 'Packages status is changed to ""To extract""'") + ": (%1)";
+	NotificationText = NStr("en='Packages status is changed to ""To extract""';ru='Изменен статус пакетов на ""К распаковке""'") + ": (%1)";
 	NotificationText = StrReplace(NotificationText, "%1", Quantity);
 	
-	ShowUserNotification(NStr("en = 'Electronic document exchange'"), , NotificationText);
+	ShowUserNotification(NStr("en='Electronic document exchange';ru='Обмен электронными документами'"), , NotificationText);
 	Items[PackagesTable].Refresh();
 	
 EndProcedure
@@ -400,9 +400,9 @@ Procedure SetCancelStatus(Command)
 	
 	Quantity = 0;
 	SetPackagesStatus(PackagesTable, PredefinedValue("Enum.EDPackagesStatuses.Canceled"), Quantity);
-	NotificationText = NStr("en = 'Packages status is changed to ""Canceled""'") + ": (%1)";
+	NotificationText = NStr("en='Packages status is changed to ""Canceled""';ru='Изменен статус пакетов на ""Отменен""'") + ": (%1)";
 	NotificationText = StrReplace(NotificationText, "%1", Quantity);
-	ShowUserNotification(NStr("en = 'Electronic document exchange'"), , NotificationText);
+	ShowUserNotification(NStr("en='Electronic document exchange';ru='Обмен электронными документами'"), , NotificationText);
 	Items[PackagesTable].Refresh();
 	
 EndProcedure
@@ -413,9 +413,9 @@ Procedure SetStatusPreparedToSending(Command)
 	PackagesTable = "UnshippedPackages";
 	Quantity = 0;
 	SetPackagesStatus(PackagesTable, PredefinedValue("Enum.EDPackagesStatuses.PreparedToSending"), Quantity);
-	NotificationText = NStr("en = 'Packages status is changed to ""Ready for sending""'" + ": (%1)");
+	NotificationText = NStr("en='Packages status is changed to ""Ready for sending""';ru='Изменен статус пакетов на ""Подготовлен к отправке""'" + ": (%1)");
 	NotificationText = StrReplace(NotificationText, "%1", Quantity);
-	ShowUserNotification(NStr("en = 'Electronic document exchange'"), , NotificationText);
+	ShowUserNotification(NStr("en='Electronic document exchange';ru='Обмен электронными документами'"), , NotificationText);
 	Items[PackagesTable].Refresh();
 	
 EndProcedure

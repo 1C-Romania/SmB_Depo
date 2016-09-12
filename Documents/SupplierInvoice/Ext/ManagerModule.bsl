@@ -333,7 +333,7 @@ Procedure GenerateTableCustomerInvoices(DocumentRefPurchaseInvoice, StructureAdd
 	|	TableInventory.Order,
 	|	TableInventory.RecordType";
 	
-	Query.SetParameter("OtherExpenses", NStr("en = 'Expenses reflection'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Expenses reflection';ru='Отражение затрат'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -598,7 +598,7 @@ Procedure GenerateTableInventoryReturn(DocumentRefPurchaseInvoice, StructureAddi
 			TableRowReceipt.Amount = - AmountToBeWrittenOff;
 			TableRowReceipt.Quantity = - QuantityWanted;
 			
-			TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer'");
+			TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
 			
 			TableRowReceipt.GLAccount = RowTableInventory.CorrGLAccount;
 			
@@ -838,12 +838,12 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPurchaseInvoice, StructureAd
 	|	Ordering,
 	|	LineNumber";
 	
-	Query.SetParameter("OtherExpenses", NStr("en = 'Expenses reflection'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Expenses reflection';ru='Отражение затрат'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
-	Query.SetParameter("IncomeReflection", NStr("en='Income accounting'"));
-	Query.SetParameter("CostsReflection", NStr("en='Costs reflection'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
+	Query.SetParameter("CostsReflection", NStr("en='Costs reflection';ru='Отражение расходов'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -1174,7 +1174,7 @@ Procedure GenerateTableInventoryReceived(DocumentRefPurchaseInvoice, StructureAd
 	|	TableInventoryReceived.GLAccountVendorSettlements";
 		
 	Query.SetParameter("InventoryReception", "");
-	Query.SetParameter("InventoryIncomeReturn", NStr("en = 'Inventory receiving'"));
+	Query.SetParameter("InventoryIncomeReturn", NStr("en='Inventory receiving';ru='Прием запасов'"));
 	Query.SetParameter("AdmAccountingCurrency", Constants.AccountingCurrency.Get());
 	
 	QueryResult = Query.Execute();
@@ -1695,9 +1695,9 @@ Procedure GenerateTableAccountsPayable(DocumentRefPurchaseInvoice, StructureAddi
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Appearance of vendor liabilities'"));
-	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Appearance of vendor liabilities';ru='Возникновение обязательств перед поставщиком'"));
+	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -1998,9 +1998,9 @@ Procedure GenerateTableCustomerAccounts(DocumentRefPurchaseInvoice, StructureAdd
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("DebtCancelling", NStr("en='Debt cancelling'"));
-	Query.SetParameter("PrepaymentRecovery", NStr("en='Prepayment recovery'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("DebtCancelling", NStr("en='Debt cancelling';ru='Сторнирование долга'"));
+	Query.SetParameter("PrepaymentRecovery", NStr("en='Prepayment recovery';ru='Восстановление предоплаты'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -2467,8 +2467,8 @@ Procedure GenerateTableRetailAmountAccounting(DocumentRefPurchaseInvoice, Struct
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("RetailIncome", NStr("en = 'Receipt to retail'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("RetailIncome", NStr("en='Receipt to retail';ru='Поступление в розницу'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -3227,16 +3227,16 @@ Procedure GenerateTableManagerial(DocumentRefPurchaseInvoice, StructureAdditiona
 	|	Ordering,
 	|	LineNumber";
 		
-	Query.SetParameter("InventoryReceipt", NStr("en = 'Inventory receiving'"));
-	Query.SetParameter("OtherExpenses", NStr("en = 'Expenses reflection'"));
-	Query.SetParameter("SetOffAdvancePayment", NStr("en = 'Setoff of advance payment'"));
-	Query.SetParameter("PrepaymentReversal", NStr("en = 'Prepayment reversing'"));
-	Query.SetParameter("ReversalOfReserves", NStr("en = 'Cost price reversing'"));
-	Query.SetParameter("IncomeReversal", NStr("en = 'Revenue reversing'"));
-	Query.SetParameter("Markup", NStr("en = 'Markup'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Expenses reflection';ru='Отражение затрат'"));
+	Query.SetParameter("SetOffAdvancePayment", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("PrepaymentReversal", NStr("en='Prepayment reversing';ru='Сторнирование предоплаты'"));
+	Query.SetParameter("ReversalOfReserves", NStr("en='Cost price reversing';ru='Сторнирование себестоимости'"));
+	Query.SetParameter("IncomeReversal", NStr("en='Revenue reversing';ru='Сторнирование выручки'"));
+	Query.SetParameter("Markup", NStr("en='Markup';ru='Наценка'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	Query.SetParameter("OperationKind", DocumentRefPurchaseInvoice.OperationKind);
 	//( elmi #11
 	Query.SetParameter("PreVATInventory", NStr("en='pre VAT goods'"));
@@ -3786,8 +3786,8 @@ Procedure InitializeDocumentData(DocumentRefPurchaseInvoice, StructureAdditional
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
 	
-	Query.SetParameter("InventoryReceipt", NStr("en = 'Inventory receiving'"));
-	Query.SetParameter("InventoryWriteOff", NStr("en = 'Inventory write off'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("InventoryWriteOff", NStr("en='Inventory write off';ru='Списание запасов'"));
 	
 	Query.SetParameter("AccountingCurrency", Constants.AccountingCurrency.Get());
 	Query.SetParameter("CurrencyNational", Constants.NationalCurrency.Get());
@@ -5666,28 +5666,28 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "Consignment";
-	PrintCommand.Presentation = NStr("en = 'Supplier invoice'");
+	PrintCommand.Presentation = NStr("en='Supplier invoice';ru='Приходная накладная'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InvoiceWithCost";
-	PrintCommand.Presentation = NStr("en = 'Supplier invoice (with services)'");
+	PrintCommand.Presentation = NStr("en='Supplier invoice (with services)';ru='Приходная накладная (с услугами)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InvoiceInRetailPrices";
-	PrintCommand.Presentation = NStr("en = 'Supplier invoice (in Retail Prices)'");
+	PrintCommand.Presentation = NStr("en='Supplier invoice (in Retail Prices)';ru='Приходная накладная (в розничных ценах)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MerchandiseFillingForm";
-	PrintCommand.Presentation = NStr("en = 'Merchandise filling form'");
+	PrintCommand.Presentation = NStr("en='Merchandise filling form';ru='Бланк товарного наполнения'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 10;
@@ -5697,7 +5697,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 		PrintCommand = PrintCommands.Add();
 		PrintCommand.Handler = "SmallBusinessClient.PrintLabelsAndPriceTagsFromDocuments";
 		PrintCommand.ID = "LabelsPrintingFromSupplierInvoice";
-		PrintCommand.Presentation = NStr("en = 'Labels printing'");
+		PrintCommand.Presentation = NStr("en='Labels printing';ru='Печать этикеток'");
 		PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 		PrintCommand.CheckPostingBeforePrint = False;
 		PrintCommand.Order = 14;
@@ -5705,7 +5705,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 		PrintCommand = PrintCommands.Add();
 		PrintCommand.Handler = "SmallBusinessClient.PrintLabelsAndPriceTagsFromDocuments";
 		PrintCommand.ID = "PriceTagsPrintingFromSupplierInvoice";
-		PrintCommand.Presentation = NStr("en = 'Tags printing'");
+		PrintCommand.Presentation = NStr("en='Tags printing';ru='Печать ценников'");
 		PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 		PrintCommand.CheckPostingBeforePrint = False;
 		PrintCommand.Order = 17;

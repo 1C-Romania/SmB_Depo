@@ -64,7 +64,7 @@ Procedure ListBeforeDelete(Item, Cancel)
 	
 	FileData = FileOperationsServiceServerCall.FileData(Items.List.CurrentRow);
 	If FileData.CurrentVersion = Items.List.CurrentRow Then
-		ShowMessageBox(, NStr("en = 'Active version can not be deleted.'"));
+		ShowMessageBox(, NStr("en='Active version can not be deleted.';ru='Активную версию нельзя удалить.'"));
 		Cancel = True;
 	EndIf;
 	

@@ -31,7 +31,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.FormNotPlace.Visible = False;
 		Items.FormOpenExisting.DefaultButton = True;
 	Else
-		Raise NStr("en = 'Unknown action with file'");
+		Raise NStr("en='Unknown action with file';ru='Неизвестное действие над файлом'");
 	EndIf;
 	
 EndProcedure

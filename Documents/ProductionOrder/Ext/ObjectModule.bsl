@@ -104,8 +104,9 @@ Procedure FillTabularSectionBySpecification(NodesSpecificationStack, NodesTable 
 		If Selection.ContentRowType = Enums.SpecificationContentRowTypes.Node Then
 			NodesTable.Clear();
 			If Not NodesSpecificationStack.Find(Selection.Specification) = Undefined Then
-				MessageText = NStr("en = 'During filling in of the Specification materials
-									|tabular section a recursive item occurrence was found'")+" "+Selection.ProductsAndServices+" "+NStr("en = 'in specifications'")+" "+Selection.ProductionSpecification+"
+				MessageText = NStr("en='During filling in of the Specification materials"
+"tabular section a recursive item occurrence was found';ru='При попытке заполнить табличную"
+"часть Материалы по спецификации, обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in specifications';ru='в спецификации'")+" "+Selection.ProductionSpecification+"
 									|The operation failed.";
 				Raise MessageText;
 			EndIf;
@@ -776,7 +777,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If (Inventory.Total("Reserve") > 0 OR Products.Total("Reserve") > 0)
 		AND Not ValueIsFilled(StructuralUnitReserve) Then
 		
-		MessageText = NStr("en = 'Reserve warehouse is not specified!'");
+		MessageText = NStr("en='Reserve warehouse is not specified!';ru='Не указан склад резерва!'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText,,, "StructuralUnitReserve", Cancel);
 		
 	EndIf;
@@ -789,7 +790,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				If StringInventory.Reserve > StringInventory.Quantity Then
 					
-					MessageText = NStr("en = 'In string No.%Number% of tablular section ""Materials"" quantity of reserved positions exceeds the total materials.'");
+					MessageText = NStr("en='In string No.%Number% of tablular section ""Materials"" quantity of reserved positions exceeds the total materials.';ru='В строке №%Номер% табл. части ""Материалы"" количество резервируемых позиций превышает общее количество материалов.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,
@@ -810,7 +811,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				If StringProducts.Reserve > StringProducts.Quantity Then
 					
-					MessageText = NStr("en = 'In string No.%Number% of tabular section ""Products"" quantity of the reserved positions exceeds the total products.'");
+					MessageText = NStr("en='In string No.%Number% of tabular section ""Products"" quantity of the reserved positions exceeds the total products.';ru='В строке №%Номер% табл. части ""Материалы"" количество резервируемых позиций превышает общее количество материалов.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringProducts.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,
@@ -835,8 +836,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		ArrayOfStringsServices = Products.FindRows(FilterStructure);
 		If Products.Count() = ArrayOfStringsServices.Count() Then
 			
-			MessageText = NStr("en = 'Demand for materials is not planned for services!
-							|Services only are indicated in the tabular section ""Products"". It is necessary to clear the tabular section ""Materials"".'");
+			MessageText = NStr("en='Demand for materials is not planned for services!"
+"Services only are indicated in the tabular section ""Products"". It is necessary to clear the tabular section ""Materials"".';ru='Планирование потребностей в материалах не выполняется для услуг!"
+"В табличной части ""Продукция"" указаны только услуги. Необходимо очистить табличную часть ""Материалы"".'");
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText,,,, Cancel);
 			
 		EndIf;
@@ -846,7 +848,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Not Constants.UseProductionOrderStates.Get() Then
 		
 		If Not ValueIsFilled(OrderState) Then
-			MessageText = NStr("en = 'Field ""Order state"" is not filled. IN the accounting parameters settings it is necessary to install the statuses values.'");
+			MessageText = NStr("en='Field ""Order state"" is not filled. IN the accounting parameters settings it is necessary to install the statuses values.';ru='Поле ""Состояние заказа"" не заполнено. В настройках параметров учета необходимо установить значения состояний.'");
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "OrderState", Cancel);
 		EndIf;
 		

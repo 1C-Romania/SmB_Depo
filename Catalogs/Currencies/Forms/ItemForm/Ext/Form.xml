@@ -26,6 +26,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
+				</v8:item>
 			</ToolTip>
 			<ExtendedTooltip name="PagesExtendedTooltip" id="73"/>
 			<ChildItems>
@@ -35,11 +39,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Basic information</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основные сведения</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Basic information</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основные сведения</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="MainInfoGroupExtendedTooltip" id="74"/>
@@ -67,11 +79,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Group method to set a rate</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа способ установки курса</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group method to set a rate</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа способ установки курса</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -85,11 +105,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Group method to set a rateleft column</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа способ установки курса левая колонка</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group method to set a rateleft column</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа способ установки курса левая колонка</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -104,6 +132,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Exchange rate</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Курс валюты</v8:content>
+												</v8:item>
 											</Title>
 											<RadioButtonType>Auto</RadioButtonType>
 											<ColumnsCount>1</ColumnsCount>
@@ -116,6 +148,10 @@
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>entered manually</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>вводится вручную</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xr:DesignTimeRef">Enum.CurrencyRateSetMethods.EnumValue.ManualInput</Value>
@@ -130,6 +166,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>exported from the Internet</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>загружается из Интернета</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xr:DesignTimeRef">Enum.CurrencyRateSetMethods.EnumValue.ExportFromInternet</Value>
 													</xr:Value>
@@ -143,6 +183,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>associated with the rate of another currency:</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>связан с курсом другой валюты:</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xr:DesignTimeRef">Enum.CurrencyRateSetMethods.EnumValue.MarkupOnExchangeRateOfOtherCurrencies</Value>
 													</xr:Value>
@@ -155,6 +199,10 @@
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>calculated by using the formula:</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>рассчитывается по формуле:</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xr:DesignTimeRef">Enum.CurrencyRateSetMethods.EnumValue.CalculationByFormula</Value>
@@ -175,11 +223,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Group method to set a rateright column</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа способ установки курса правая колонка</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group method to set a rateright column</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа способ установки курса правая колонка</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -205,11 +261,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Group markup on rate of other currency</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа наценка на курс другой валюты</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Factor which is applied to the exchage rate of the main currency to calculate the exchange rate of the current currency.</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Коэффициент, который применяется к курсу основной валюты для вычисления курса текущей валюты.</v8:content>
 												</v8:item>
 											</ToolTip>
 											<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -244,6 +308,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>Factor which is applied to the selected currency rate for calculating the rate of the current currency</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Коэффициент, применяемый к курсу выбранной валюты для вычисления курса текущей валюты</v8:content>
+														</v8:item>
 													</ToolTip>
 													<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 													<Width>7</Width>
@@ -262,6 +330,10 @@
 															<v8:lang>en</v8:lang>
 															<v8:content>%</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>%</v8:content>
+														</v8:item>
 													</Title>
 													<ContextMenu name="Decoration1ContextMenu" id="127"/>
 													<ExtendedTooltip name="Decoration1ExtendedTooltip" id="128"/>
@@ -274,11 +346,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Group rate calculation formula</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа формула расчета курса</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group rate calculation formula</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа формула расчета курса</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
@@ -309,11 +389,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency writing parameters</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметры прописи валюты</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Group amount in words</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа сумма прописью</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="TotalInWordsGroupExtendedTooltip" id="83"/>
@@ -324,11 +412,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Integer part</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Целая часть</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Declination of the whole part</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Склонение целой части</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -336,6 +432,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Integer part in word in home language parameters</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Параметры прописи целой части для русского языка</v8:content>
 								</v8:item>
 							</Format>
 							<ExtendedTooltip name="DeclinationWholePartExtendedTooltip" id="84"/>
@@ -346,6 +446,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Gender</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Род</v8:content>
 										</v8:item>
 									</Title>
 									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
@@ -365,6 +469,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>Male</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Мужской</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">Male</Value>
 											</xr:Value>
@@ -378,6 +486,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>Female</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Женский</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">Female</Value>
 											</xr:Value>
@@ -390,6 +502,10 @@
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Neuter</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Средний</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">Neuter</Value>
@@ -412,6 +528,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>one</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Один</v8:content>
+										</v8:item>
 									</Title>
 									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 									<Width>10</Width>
@@ -430,6 +550,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Two</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Две</v8:content>
+										</v8:item>
 									</Title>
 									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 									<Width>10</Width>
@@ -447,6 +571,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>five</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пять</v8:content>
 										</v8:item>
 									</Title>
 									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
@@ -467,11 +595,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Fraction</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дробная часть</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group fraction Settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа параметры дробной части</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -483,11 +619,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Fraction</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дробная часть</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Declination of fractional part</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Склонение дробной части</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -496,6 +640,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Fractional part in words rules for home language</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры прописи дробной части для русского языка</v8:content>
 										</v8:item>
 									</Format>
 									<ShowTitle>false</ShowTitle>
@@ -507,6 +655,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Gender</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Род</v8:content>
 												</v8:item>
 											</Title>
 											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
@@ -526,6 +678,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>Male</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Мужской</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">Male</Value>
 													</xr:Value>
@@ -539,6 +695,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>Female</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Женский</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">Female</Value>
 													</xr:Value>
@@ -551,6 +711,10 @@
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>Neuter</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Средний</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">Neuter</Value>
@@ -573,6 +737,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>one</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Один</v8:content>
+												</v8:item>
 											</Title>
 											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 											<Width>10</Width>
@@ -591,6 +759,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Two</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Две</v8:content>
+												</v8:item>
 											</Title>
 											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
 											<Width>10</Width>
@@ -608,6 +780,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>five</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Пять</v8:content>
 												</v8:item>
 											</Title>
 											<FooterHorizontalAlign>Left</FooterHorizontalAlign>
@@ -628,11 +804,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Group number of digits of fraction part</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа число разрядов дробной части</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group number of digits of fraction part</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа число разрядов дробной части</v8:content>
 										</v8:item>
 									</ToolTip>
 									<HorizontalStretch>true</HorizontalStretch>
@@ -661,6 +845,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>2 character</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>2 знака</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">2 character</Value>
 													</xr:Value>
@@ -674,6 +862,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>1 character</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>1 знак</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">1 character</Value>
 													</xr:Value>
@@ -686,6 +878,10 @@
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>3 character</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>3 знака</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">3 character</Value>
@@ -709,11 +905,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Amount wording example</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пример прописи суммы</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group in words sample</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа пример прописи</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -724,6 +928,10 @@
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
+													<v8:content>Amount</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
 													<v8:content>Amount</v8:content>
 												</v8:item>
 											</Title>
@@ -770,6 +978,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>In words field1 in english</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле прописи1на русском</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -785,6 +997,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>In words field2 in english</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле прописи2на русском</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -802,6 +1018,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>In words field3 in english</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле прописи3на русском</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -817,6 +1037,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>In words field4 in english</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле прописи4на русском</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -834,6 +1058,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>In words field5 in english</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле прописи5на русском</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -849,6 +1077,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>In words field6 in english</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле прописи6на русском</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -866,6 +1098,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>In words field7 in english</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле прописи7на русском</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -881,6 +1117,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>In words field8 in english</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле прописи8на русском</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -898,6 +1138,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Number of decimal digits</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Число разрядов дробной части</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -914,6 +1158,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Dependent currency rate</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Курс валюты зависит от курса другой валюты</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -925,6 +1173,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Amount number</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма число</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -942,6 +1194,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Amount in words</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма прописью</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -956,6 +1212,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Manual edit text</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст ручного изменения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -974,6 +1234,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Manual edit</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ручное изменение</v8:content>
 				</v8:item>
 			</Title>
 			<Type/>

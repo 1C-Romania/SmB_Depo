@@ -445,7 +445,7 @@ Procedure LoadFromFile(ExportableData, ExportParameters, Cancel) Export
 				
 				If CatalogItem = Undefined Then
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Counterparty with %1 name does not exists.'"), TableRow.Description);
+					NStr("en='Counterparty with %1 name does not exists.';ru='Контрагента с наименованием %1 не существует.'"), TableRow.Description);
 					Raise MessageText;
 				EndIf;
 			EndIf;
@@ -828,7 +828,7 @@ Procedure FillPriceListDetailsProductsAndServicesHierarchy(PrintingStructure, Se
 	
 	If OutputProductsAndServicesWithoutParent Then
 		
-		ParameterValues.PriceGroup = NStr("en = '<...>'");
+		ParameterValues.PriceGroup = NStr("en='<...>';ru='<...>'");
 		FillAreaParameters("PriceGroup", ParameterValues, PrintingStructure);
 		OutputEmptyParent = False;
 		PrintingStructure.SpreadsheetDocument.StartRowGroup();
@@ -1030,7 +1030,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 		
 		PrintCommand = PrintCommands.Add();
 		PrintCommand.ID = "PriceList";
-		PrintCommand.Presentation = NStr("en = 'PRICE-SHEET'");
+		PrintCommand.Presentation = NStr("en='PRICE-SHEET';ru='ПРАЙС-ЛИСТ'");
 		PrintCommand.FormsList = "ItemForm,ListForm,CounterpartiesListForm";
 		PrintCommand.CheckPostingBeforePrint = False;
 		PrintCommand.Order = 1;

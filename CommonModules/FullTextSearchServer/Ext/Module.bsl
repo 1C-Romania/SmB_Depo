@@ -8,14 +8,14 @@
 // Updates fulltext search index.
 Procedure FullTextSearchUpdateIndex() Export
 	
-	UpdateIndex(NStr("en = 'Full-text search index updating'"), False, True);
+	UpdateIndex(NStr("en='Full-text search index updating';ru='Обновление индекса ППД'"), False, True);
 	
 EndProcedure
 
 // Merges full-text search indexes.
 Procedure FullTextSearchIndexMerge() Export
 	
-	UpdateIndex(NStr("en = 'Full-text search Index Merging'"), True);
+	UpdateIndex(NStr("en='Full-text search Index Merging';ru='Слияние индекса ППД'"), True);
 	
 EndProcedure
 
@@ -95,10 +95,10 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	Work = CurrentWorks.Add();
 	Work.ID  = IDFullTextSearch;
 	Work.ThereIsWork       = (DaysSinceLastUpdate >= 1 AND Not FullTextSearch.IndexTrue());
-	Work.Presentation  = NStr("en = 'Full-text search index is outdated'");
+	Work.Presentation  = NStr("en='Full-text search index is outdated';ru='Индекс полнотекстового поиска устарел'");
 	Work.Form          = "DataProcessor.AdministrationPanelSSL.Form.FullTextSearchAndTextsExtractionManagement";
 	Work.ToolTip      = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Last update %1 ago'"), Interval);
+		NStr("en='Last update %1 ago';ru='Последнее обновление %1 назад'"), Interval);
 	Work.Owner       = Section;
 	
 EndProcedure
@@ -162,13 +162,13 @@ Procedure UpdateIndex(ProcedureRepresentation, AllowMerge = False, ByPortions = 
 	
 	CommonUse.OnStartExecutingScheduledJob();
 	
-	LogRecord(Undefined, NStr("en = 'Launching procedure ""%1"".'"), , ProcedureRepresentation);
+	LogRecord(Undefined, NStr("en='Launching procedure ""%1"".';ru='Запуск процедуры ""%1"".'"), , ProcedureRepresentation);
 	
 	Try
 		FullTextSearch.UpdateIndex(AllowMerge, ByPortions);
-		LogRecord(Undefined, NStr("en = 'Procedure was successfully complete ""%1"".'"), , ProcedureRepresentation);
+		LogRecord(Undefined, NStr("en='Procedure was successfully complete ""%1"".';ru='Успешное завершение процедуры ""%1"".'"), , ProcedureRepresentation);
 	Except
-		LogRecord(Undefined, NStr("en = 'An error occurred while executing procedure ""%1"":'"), ErrorInfo(), ProcedureRepresentation);
+		LogRecord(Undefined, NStr("en='An error occurred while executing procedure ""%1"":';ru='Ошибка выполнения процедуры ""%1"":'"), ErrorInfo(), ProcedureRepresentation);
 	EndTry;
 	
 EndProcedure
@@ -226,7 +226,7 @@ Procedure LogRecord(JournalLevel = Undefined, CommentWithParameters = "",
 	
 	// Record in the event log.
 	WriteLogEvent(
-		NStr("en = 'Full text indexing'", CommonUseClientServer.MainLanguageCode()), 
+		NStr("en='Full text indexing';ru='Полнотекстовое индексирование'", CommonUseClientServer.MainLanguageCode()), 
 		JournalLevel, , , 
 		TextForLog);
 	

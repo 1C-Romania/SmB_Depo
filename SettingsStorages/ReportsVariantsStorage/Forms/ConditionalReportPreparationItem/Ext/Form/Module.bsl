@@ -7,16 +7,16 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Parameters.Property("SettingsComposer", SettingsComposer) Then
-		Raise NStr("en = 'The SettingsLinker service parameter has not been passed.'");
+		Raise NStr("en='The SettingsLinker service parameter has not been passed.';ru='Не передан служебный параметр ""КомпоновщикНастроек"".'");
 	EndIf;
 	If Not Parameters.Property("ReportSettings", ReportSettings) Then
-		Raise NStr("en = 'The ReportSettings service parameter has not been passed.'");
+		Raise NStr("en='The ReportSettings service parameter has not been passed.';ru='Не передан служебный параметр ""НастройкиОтчета"".'");
 	EndIf;
 	If Not Parameters.Property("CurrentCDHostIdentifier", CurrentCDHostIdentifier) Then
-		Raise NStr("en = 'Service parameter ""CurrentKDNodeIdentifier"" is not sent.'");
+		Raise NStr("en='Service parameter ""CurrentKDNodeIdentifier"" is not sent.';ru='Не передан служебный параметр ""ИдентификаторТекущегоУзлаКД"".'");
 	EndIf;
 	If Not Parameters.Property("DCIdentifier", DCIdentifier) Then
-		Raise NStr("en = 'Service parameter ""DCIdentifier"" is not sent.'");
+		Raise NStr("en='Service parameter ""DCIdentifier"" is not sent.';ru='Не передан служебный параметр ""ИдентификаторКД"".'");
 	EndIf;
 	
 	Source = New DataCompositionAvailableSettingsSource(ReportSettings.SchemaURL);
@@ -24,11 +24,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	KDNode = KDNode(ThisObject);
 	If KDNode = Undefined Then
-		Raise NStr("en = 'Report node is not found.'");
+		Raise NStr("en='Report node is not found.';ru='Не найден узел отчета.'");
 	EndIf;
 	KDItem = KDNode.GetObjectByID(DCIdentifier);
 	If KDItem = Undefined Then
-		Raise NStr("en = 'Item of conditional appearance is not found.'");
+		Raise NStr("en='Item of conditional appearance is not found.';ru='Не найден элемент условного оформления.'");
 	EndIf;
 	
 	SettingsComposer.Settings.ConditionalAppearance.Items.Clear();

@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Online user support</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Интернет-поддержка пользователей</v8:content>
+		</v8:item>
 	</Title>
 	<Width>57</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -53,12 +57,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Header group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа заголовка</v8:content>
+				</v8:item>
 			</Title>
 			<TitleFont ref="sys:DefaultGUIFont" height="14" kind="WindowsFont"/>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Header group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа заголовка</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -78,6 +90,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Online user support icon</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Иконка Интернет-поддержки пользователей</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>CommonPicture.OnlineUserSupport</xr:Ref>
@@ -95,6 +111,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>With online user support, you can always receive updates, export extras and stay informed.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подключитесь к Интернет-поддержке пользователей и Вы сможете оперативно получать обновления, скачивать дополнения и узнавать всю важную информацию.</v8:content>
+						</v8:item>
 					</Title>
 					<ContextMenu name="TitleExplanationContextMenu" id="8"/>
 					<ExtendedTooltip name="TitleExplanationExtendedTooltip" id="46"/>
@@ -107,11 +127,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Details group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа информационной части</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Details group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа информационной части</v8:content>
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -126,11 +154,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Details title group</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа заголовка информационной части</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Details title group</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа заголовка информационной части</v8:content>
 						</v8:item>
 					</ToolTip>
 					<HorizontalStretch>true</HorizontalStretch>
@@ -148,6 +184,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Warning icon</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Иконка предупреждения</v8:content>
+								</v8:item>
 							</Title>
 							<Picture>
 								<xr:Ref>CommonPicture.OnlineUserSupportAttention</xr:Ref>
@@ -163,6 +203,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Online support request error</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ошибка обращения к Интернет-поддержке</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="InformationComponentTitleContextMenu" id="14"/>
@@ -182,11 +226,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Details</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расшифровка</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Details</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расшифровка</v8:content>
 						</v8:item>
 					</ToolTip>
 					<HorizontalStretch>true</HorizontalStretch>
@@ -209,6 +261,17 @@ Possible causes:
 
 For more information on the error, see the log file.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Попытка обращения к сервису Интернет-поддержки пользователей оказалась неудачной. Попробуйте настроить соединение (самостоятельно или с помощью вашего администратора) и повторите попытку подключения.
+
+Возможные причины:
+• нет подключения к сети Интернет;
+• брандмауэр блокирует попытки программы подключиться к сети Интернет;
+• на веб-узле возникли неполадки.
+
+Подробное описание ошибки см. в журнале регистрации.</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="DetailsInformationContextMenu" id="17"/>
 							<ExtendedTooltip name="DetailsInformationExtendedTooltip" id="52"/>
@@ -220,6 +283,10 @@ For more information on the error, see the log file.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>If required, configure the &lt;link WebITSParams&gt; parameters to access &lt;/&gt;&lt;link WebITSParams&gt;online&lt;/&gt;&lt;link WebITSParams&gt; support&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>При необходимости настройте параметры доступа к Интернет-поддержке</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="DecorationParametersContextMenu" id="39"/>
@@ -235,6 +302,10 @@ For more information on the error, see the log file.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>If you have any questions or concerns, write an email to &lt;link SendMail&gt;webits-info@1c.ru&lt;/&gt;</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>При возникновении проблем отправьте письмо по адресу webits-info@1c.ru</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="SupportMessageLabelContextMenu" id="30"/>
@@ -269,6 +340,10 @@ For more information on the error, see the log file.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Launch location</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Место запуска</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -284,6 +359,10 @@ For more information on the error, see the log file.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Launch parameters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стартовые параметры</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -292,6 +371,10 @@ For more information on the error, see the log file.</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Run online support when launching the application</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запускать Интернет-поддержку при начале работы с программой</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -303,6 +386,10 @@ For more information on the error, see the log file.</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Error description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание ошибки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -321,11 +408,19 @@ For more information on the error, see the log file.</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Retry connection attempt</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Повторить попытку подключения</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Retry connection attempt</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Повторить попытку подключения</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>RetryConnectionAttempt</Action>

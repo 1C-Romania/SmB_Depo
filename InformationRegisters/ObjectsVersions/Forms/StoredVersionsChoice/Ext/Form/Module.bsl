@@ -14,7 +14,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If ObjectVersioning.LastVersionNumber(Ref) = 0 Then
 		Items.MainPage.CurrentPage = Items.VersionsForCompareThereAreNo;
 		Items.NoneOfVersions.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-	       NStr("en = 'There are no previous versions: ""%1"".'"),
+	       NStr("en='There are no previous versions: ""%1"".';ru='Предыдущие версии отсутствуют: ""%1"".'"),
 	       String(Ref));
 	EndIf;
 	
@@ -25,7 +25,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.VersionsListGoToVersion.Visible = TransitionToVersionAllowed;
 	Items.TechnicalInformationOnObjectChange.Visible = TransitionToVersionAllowed;
 	
-	Attributes = NStr("en = 'All'")
+	Attributes = NStr("en='All';ru='Все'")
 EndProcedure
 
 &AtClient
@@ -95,7 +95,7 @@ Procedure GenerateChangesReport(Command)
 	ComparedVersions = GenerateListOfSelectedVersions(SelectedRows);
 	
 	If ComparedVersions.Count() < 2 Then
-		ShowMessageBox(, NStr("en = 'To generate the report on changes it is necessary to select at least two versions.'"));
+		ShowMessageBox(, NStr("en='To generate the report on changes it is necessary to select at least two versions.';ru='Для формирования отчета по изменениям необходимо выбрать хотя бы две версии.'"));
 		Return;
 	EndIf;
 	
@@ -157,14 +157,16 @@ Procedure GoToSelectedVersion(CancelPosting = False)
 		CommonUseClientServer.MessageToUser(ErrorMessageText);
 	ElsIf Result = "PostingError" Then
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Version was not changed due to: 
-   		|%1
-				|Change to the selected version and cancel the posting?'"),
+			NStr("en='Version was not changed due to: "
+"%1"
+"Change to the selected version and cancel the posting?';ru='Переход на версию не был выполнен по причине:"
+"%1"
+"Перейти на выбранную версию с отменой проведения?'"),
 			ErrorMessageText);
 			
 		NotifyDescription = New NotifyDescription("GoToSelectedVersionQueryIsAsked", ThisObject);
 		Buttons = New ValueList;
-		Buttons.Add("Goto", NStr("en = 'Goto'"));
+		Buttons.Add("Goto", NStr("en='Goto';ru='Перейти'"));
 		Buttons.Add(DialogReturnCode.Cancel);
 		ShowQueryBox(NOTifyDescription, QuestionText, Buttons);
 	Else //Result = "RecoveryIsCompleted"
@@ -176,7 +178,7 @@ Procedure GoToSelectedVersion(CancelPosting = False)
 				// Do nothing if the form has no Read() method.
 			EndTry;
 		EndIf;
-		ShowMessageBox(, NStr("en = 'Proceeding to the old version has been successfully perfomed.'"));
+		ShowMessageBox(, NStr("en='Proceeding to the old version has been successfully perfomed.';ru='Переход к старой версий выполнен успешно.'"));
 	EndIf;
 	
 EndProcedure
@@ -205,7 +207,7 @@ Function GoToVersionServer(Ref, VersionNumber, UndoPosting = False)
 	
 	Object.AdditionalProperties.Insert("ObjectVersioningCommentToVersion",
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Proceeding to the version #%1 from %2 has been performed'"),
+			NStr("en='Proceeding to the version #%1 from %2 has been performed';ru='Выполнен переход к версии №%1 от %2'"),
 			String(VersionNumber),
 			Format(Information.VersionDate, "DLF=DT")) );
 			
@@ -313,7 +315,7 @@ EndProcedure
 &AtClient
 Procedure AttributesClearing(Item, StandardProcessing)
 	StandardProcessing = False;
-	Attributes = NStr("en = 'All'");
+	Attributes = NStr("en='All';ru='Все'");
 	Filter.Clear();
 	UpdateVersionList();
 EndProcedure

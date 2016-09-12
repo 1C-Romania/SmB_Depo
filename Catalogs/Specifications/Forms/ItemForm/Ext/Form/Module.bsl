@@ -161,7 +161,7 @@ Procedure ContentProductsAndServicesChoiceProcessing(Item, ValueSelected, Standa
 	
 	// Prohibit loop references
 	If ValueSelected = Object.Owner Then
-		CommonUseClientServer.MessageToUser(NStr("en='Products can not be the part of the specification.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Products can not be the part of the specification.';ru='В состав спецификации не может входить продукция.'"));
 		StandardProcessing = False;
 	EndIf;
 	

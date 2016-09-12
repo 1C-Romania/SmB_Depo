@@ -18,7 +18,7 @@ Function GetConfigurationExchangePlans()
 		
 		If IsBlankString(ExchangeFeature.ExchangeRole) Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Return value of the ConfigurationNameSource() function is not specified in the %1 exchange plan manager module'"),
+				NStr("en='Return value of the ConfigurationNameSource() function is not specified in the %1 exchange plan manager module';ru='Не задано возвращаемое значение функции ИмяКонфигурацииИсточника() в модуле менеджера плана обмена %1'"),
 				ExchangePlanName
 			);
 		EndIf;
@@ -110,7 +110,7 @@ Function ExecuteDataExchangeScenarioActionInFirstInfobase(ScenarioRowIndex, Data
 		
 	Else
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unknown data exchange mode %1'"), String(ExchangeMode)
+			NStr("en='Unknown data exchange mode %1';ru='Неизвестный режим обмена данными %1'"), String(ExchangeMode)
 		);
 	EndIf;
 	
@@ -164,7 +164,7 @@ Function ExecuteDataExchangeScenarioActionInSecondInfobase(ScenarioRowIndex, Dat
 		
 	Else
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unknown data exchange mode %1'"), String(ExchangeMode)
+			NStr("en='Unknown data exchange mode %1';ru='Неизвестный режим обмена данными %1'"), String(ExchangeMode)
 		);
 	EndIf;
 	

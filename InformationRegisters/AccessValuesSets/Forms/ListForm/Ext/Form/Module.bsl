@@ -51,8 +51,8 @@ Procedure SetConditionalAppearance()
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
 	FilterElement.RightValue = Catalogs.MetadataObjectIDs.EmptyRef();
 
-	Item.Appearance.SetParameterValue("Text", NStr("en = 'Checking right Reading'"));
-	Item.Appearance.SetParameterValue("Text", NStr("en = 'Checking right Change'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='Checking right Reading';ru='Проверка права Чтение'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='Checking right Change';ru='Проверка права Изменение'"));
 
 EndProcedure
 

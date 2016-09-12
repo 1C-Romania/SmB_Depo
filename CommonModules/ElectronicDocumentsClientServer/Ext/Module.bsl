@@ -55,27 +55,33 @@ Function GetMessageText(FieldKind = "Field", MessageKind = "Filling",
 
 	If Upper(FieldKind) = "Field" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en = 'Field ""%1"" is not filled.'");
+			Pattern = NStr("en='Field ""%1"" is not filled.';ru='Поле ""%1"" не заполнено.'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
-			Pattern = NStr("en = '%1 field is filled in incorrectly.
-                           |
-                           |%4'");
+			Pattern = NStr("en='%1 field is filled in incorrectly."
+""
+"%4';ru='Поле ""%1"" заполнено некорректно."
+""
+"%4'");
 		EndIf;
 	ElsIf Upper(FieldKind) = "Column" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en = 'Empty column ""%1"" of row %2 in list ""%3"".'");
+			Pattern = NStr("en='Empty column ""%1"" of row %2 in list ""%3"".';ru='Не заполнена колонка ""%1"" в строке %2 списка ""%3"".'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
-			Pattern = NStr("en = 'Column %1 is filled in incorrectly in %2 row of %3 list.
-                           |
-                           |%4'");
+			Pattern = NStr("en='Column %1 is filled in incorrectly in %2 row of %3 list."
+""
+"%4';ru='Некорректно заполнена колонка ""%1"" в строке %2 списка ""%3""."
+""
+"%4'");
 		EndIf;
 	ElsIf Upper(FieldKind) = "LIST" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en = 'No row is entered in list ""%3"".'");
+			Pattern = NStr("en='No row is entered in list ""%3"".';ru='Не введено ни одной строки в список ""%3"".'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
-			Pattern = NStr("en = 'List %3 is filled in incorrectly.
-                           |
-                           |%4'");
+			Pattern = NStr("en='List %3 is filled in incorrectly."
+""
+"%4';ru='Некорректно заполнен список ""%3""."
+""
+"%4'");
 		EndIf;
 	EndIf;
 
@@ -134,7 +140,7 @@ Function FilledAttributesSettingsEDFWithBanks(Object, IsTest = False) Export
 	EndIf;
 		
 	If IsTest AND Object.AgreementStatus <> StatusUsed Then
-		MessageText = NStr("en = 'This EDF setting is only active for status %1'");
+		MessageText = NStr("en='This EDF setting is only active for status %1';ru='Данная настройка ЭДО будет активна только в статусе %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, StatusUsed);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;

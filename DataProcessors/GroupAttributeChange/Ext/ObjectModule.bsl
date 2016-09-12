@@ -17,7 +17,7 @@ Function ExternalDataProcessorInfo() Export
 		RegistrationParameters.SafeMode = False;
 		
 		NewCommand = RegistrationParameters.Commands.Add();
-		NewCommand.Presentation = NStr("en = 'Group change of attributes'");
+		NewCommand.Presentation = NStr("en='Group change of attributes';ru='Групповое изменение реквизитов'");
 		NewCommand.ID = "OpenGlobally";
 		NewCommand.Use = ModuleAdditionalReportsAndDataProcessorsClientServer.TypeCommandsFormOpening();
 		NewCommand.ShowAlert = False;
@@ -570,7 +570,7 @@ Function ObjectKindByKind(Type) Export
 	
 	Else
 		Raise PlaceParametersIntoString(
-			NStr("en='InvalidValueTypeParameter%1'"), String(Type));
+			NStr("en='InvalidValueTypeParameter%1';ru='Неверный тип значения параметра (%1)'"), String(Type));
 	
 	EndIf;
 	
@@ -718,7 +718,7 @@ Function ObjectAttributesValues(Refs, Val Attributes) Export
 		EndDo;
 	Else
 		Raise PlaceParametersIntoString(
-			NStr("en = 'Invalid type of Attributes second parameter: %1'"),
+			NStr("en='Invalid type of Attributes second parameter: %1';ru='Неверный тип второго параметра Реквизиты: %1'"),
 			String(TypeOf(Attributes)));
 	EndIf;
 	
@@ -848,7 +848,7 @@ EndFunction
 //  String   - text string with substituted parameters.
 //
 // Example:
-//  PlaceParametersIntoString(NStr("en='%1 went to %2'"), "John", "Zoo") = "John went to the Zoo".
+//  PlaceParametersIntoString(NStr("en='%1 went to %2';ru='%1 пошел в %2'"), "John", "Zoo") = "John went to the Zoo".
 //
 Function PlaceParametersIntoString(Val LookupString,
 	Val Parameter1, Val Parameter2 = Undefined, Val Parameter3 = Undefined)
@@ -927,7 +927,7 @@ Function CommonModule(Name) Export
 	
 	If TypeOf(Module) <> Type("CommonModule") Then
 		Raise PlaceParametersIntoString(
-			NStr("en = 'Common module ""%1"" is not found.'"), Name);
+			NStr("en='Common module ""%1"" is not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
 	EndIf;
 	
 	Return Module;

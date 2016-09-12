@@ -222,7 +222,7 @@ Function CheckIsSomethingFitsSomewhere()
 		EndDo;
 		
 		If CountByHorizontal <> ArrayOfTables.Count() Then
-			MessageText = NStr("en='Maximal amount by horizontal: '") + ArrayOfTables.Count();
+			MessageText = NStr("en='Maximal amount by horizontal: ';ru='Максимальное количество по горизонтали: '") + ArrayOfTables.Count();
 			SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText, , , "CountByHorizontal", Error);
 		EndIf;
 		
@@ -240,7 +240,7 @@ Function CheckIsSomethingFitsSomewhere()
 		EndDo;
 		
 		If VerticalQuantity <> ArrayOfTables.Count() Then
-			MessageText = NStr("en='Maximal amount by vertical: '") + ArrayOfTables.Count();
+			MessageText = NStr("en='Maximal amount by vertical: ';ru='Максимальное количество по вертикали: '") + ArrayOfTables.Count();
 			SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText, , , "VerticalQuantity", Error);
 		EndIf;
 		
@@ -286,7 +286,7 @@ Procedure SetPrintArea(Command)
 		
 		ClearMessages();
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Print area is incorrect'");
+		Message.Text = NStr("en='Print area is incorrect';ru='Некорректная область печати'");
 		Message.Field = "SpreadsheetDocumentField";
 		Message.Message();
 		
@@ -423,7 +423,7 @@ EndProcedure // PlaceDefaultTemplateToSpreadsheetDocument()
 Procedure DefaultLabel(Command)
 	
 	Notification = New NotifyDescription("DefaultTemplateCompletion",ThisForm,"DefaultLabelTemplate");
-	ShowQueryBox(Notification,NStr("en = 'The edited template will be changed by the default template, continue?'"), QuestionDialogMode.YesNo);
+	ShowQueryBox(Notification,NStr("en='The edited template will be changed by the default template, continue?';ru='Редактируемый шаблон будет заменен на шаблон по умолчанию, продолжить?'"), QuestionDialogMode.YesNo);
 	
 EndProcedure // DefaultLabel()
 
@@ -433,7 +433,7 @@ EndProcedure // DefaultLabel()
 Procedure PriceTagByDefault(Command)
 	
 	Notification = New NotifyDescription("DefaultTemplateCompletion",ThisForm,"DefaultTagTemplate");
-	ShowQueryBox(Notification,NStr("en = 'The edited template will be changed by the default template, continue?'"), QuestionDialogMode.YesNo);
+	ShowQueryBox(Notification,NStr("en='The edited template will be changed by the default template, continue?';ru='Редактируемый шаблон будет заменен на шаблон по умолчанию, продолжить?'"), QuestionDialogMode.YesNo);
 	
 EndProcedure // PriceTagByDefault()
 
@@ -460,7 +460,7 @@ Procedure Union(Command)
 		
 		ClearMessages();
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Incorrect area!'");
+		Message.Text = NStr("en='Incorrect area!';ru='Некорректная область!'");
 		Message.Field = "SpreadsheetDocumentField";
 		Message.Message();
 		
@@ -482,7 +482,7 @@ Procedure UndoMerge(Command)
 		
 		ClearMessages();
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Incorrect area!'");
+		Message.Text = NStr("en='Incorrect area!';ru='Некорректная область!'");
 		Message.Field = "SpreadsheetDocumentField";
 		Message.Message();
 		

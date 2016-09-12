@@ -26,19 +26,22 @@ Procedure ConfigureReportsVariants(Settings, ReportSettings) Export
 	If Properties.ShowSections AND Not Properties.AllSectionsWithoutObjects Then
 		VariantName = "ImportingProhibitionDatesBySectionsObjectsForUsers";
 		VariantDesc =
-			NStr("en = 'Displays no-import dates
-			           |for users grouped by sections with objects.'");
+			NStr("en='Displays no-import dates"
+"for users grouped by sections with objects.';ru='Выводит даты"
+"запрета загрузки для пользователей, сгруппированные по разделам с объектами.'");
 		
 	ElsIf Properties.AllSectionsWithoutObjects Then
 		VariantName = "ImportingProhibitionDatesBySectionsForUsers";
 		VariantDesc =
-			NStr("en = 'Displays no-import dates
-			           |for users grouped by sections.'");
+			NStr("en='Displays no-import dates"
+"for users grouped by sections.';ru='Выводит даты"
+"запрета загрузки для пользователей, сгруппированные по разделам.'");
 	Else
 		VariantName = "ImportingProhibitionDatesByObjectsForUsers";
 		VariantDesc =
-			NStr("en = 'Displays no-import dates
-			           |for users grouped by objects.'");
+			NStr("en='Displays no-import dates"
+"for users grouped by objects.';ru='Выводит даты"
+"запрета загрузки для пользователей, сгруппированные по объектам.'");
 	EndIf;
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, VariantName);
 	VariantSettings.Enabled  = True;
@@ -47,19 +50,22 @@ Procedure ConfigureReportsVariants(Settings, ReportSettings) Export
 	If Properties.ShowSections AND Not Properties.AllSectionsWithoutObjects Then
 		VariantName = "ImportingProhibitionDatesByUsers";
 		VariantDesc =
-			NStr("en = 'Displays no-import dates for sections
-			           |with objects grouped by users.'");
+			NStr("en='Displays no-import dates for sections"
+"with objects grouped by users.';ru='Выводит даты запрета загрузки"
+"для разделов с объектами, сгруппированные по пользователям.'");
 		
 	ElsIf Properties.AllSectionsWithoutObjects Then
 		VariantName = "ImportingProhibitionDatesByUsersWithoutObjects";
 		VariantDesc =
-			NStr("en = 'Displays no-import dates
-			           |for sections grouped by users.'");
+			NStr("en='Displays no-import dates"
+"for sections grouped by users.';ru='Выводит даты"
+"запрета загрузки для разделов, сгруппированные по пользователям.'");
 	Else
 		VariantName = "ImportingProhibitionDatesByUsersWithoutSections";
 		VariantDesc =
-			NStr("en = 'Displays no-import dates
-			           |for objects grouped by users.'");
+			NStr("en='Displays no-import dates"
+"for objects grouped by users.';ru='Выводит даты"
+"запрета загрузки для объектов, сгруппированные по пользователям.'");
 	EndIf;
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, VariantName);
 	VariantSettings.Enabled  = True;

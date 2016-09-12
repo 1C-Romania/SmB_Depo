@@ -28,8 +28,9 @@ Procedure ProcessPricesKindAndSettlementsCurrencyChange(DocumentParameters)
 	
 	If OpenFormPricesAndCurrencies Then
 		
-		WarningText = NStr("en = 'Settlement currency of the contract with counterparty changed! 
-										|It is necessary to check the document currency!'");
+		WarningText = NStr("en='Settlement currency of the contract with counterparty changed! "
+"It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! "
+"Необходимо проверить валюту документа!'");
 		
 		ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, True, False, WarningText);
 		
@@ -422,7 +423,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 		
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
 			
-			LabelText = NStr("en = '%Currency%'");
+			LabelText = NStr("en='%Currency%';ru='%Вал%'");
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 			
 		EndIf;
@@ -434,11 +435,11 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 		
 		If IsBlankString(LabelText) Then
 			
-			LabelText = LabelText + NStr("en = '%VATTaxation%'");
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
 			
 		Else
 			
-			LabelText = LabelText + NStr("en = ' • %VATTaxation%'");
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
 			
 		EndIf;
 		
@@ -451,11 +452,11 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 		
 		If LabelStructure.AmountIncludesVAT Then	
 			
-			LabelText = NStr("en = 'Amount includes VAT'");
+			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
 			
 		Else
 			
-			LabelText = NStr("en = 'Amount does not include VAT'");
+			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
 			
 		EndIf;
 		
@@ -790,7 +791,7 @@ Procedure ProcessContractChange(ContractData = Undefined)
 		
 		If QueryBoxPrepayment = True Then
 			
-			QuestionText = NStr("en = 'Prepayment set-off will be cleared, do you want to continue?'");
+			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
 			
 			NotifyDescription = New NotifyDescription("DefineAdvancePaymentOffsetsRefreshNeed", ThisObject, DocumentParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -958,12 +959,12 @@ EndProcedure
 Procedure PrepaymentSetoffExecute(Command)
 	
 	If Not ValueIsFilled(Object.Counterparty) Then
-		ShowMessageBox(, NStr("en = 'Specify the counterparty first.'"));
+		ShowMessageBox(, NStr("en='Specify the counterparty first.';ru='Укажите вначале контрагента!'"));
 		Return;
 	EndIf;
 	
 	If Not ValueIsFilled(Object.Contract) Then
-		ShowMessageBox(, NStr("en = 'Specify the counterparty contract first.'"));
+		ShowMessageBox(, NStr("en='Specify the counterparty contract first.';ru='Укажите вначале договор контрагента!'"));
 		Return;
 	EndIf;
 	
@@ -1241,11 +1242,11 @@ EndProcedure // FixedAssetsAmountOnChange()
 Procedure Calculate(Command)
 	
 	If Object.Posted Then
-		ShowMessageBox(Undefined,NStr("en='Depreciation calculation is possible only in non-posted document'"));
+		ShowMessageBox(Undefined,NStr("en='Depreciation calculation is possible only in non-posted document';ru='Рассчет амортизации возможен только в непроведенном документе.'"));
 		Return;
 	EndIf;
 	
-	ShowQueryBox(New NotifyDescription("CalculateEnd", ThisObject), NStr("en='Entered data will be recalculated. Continue?'"),QuestionDialogMode.YesNo);
+	ShowQueryBox(New NotifyDescription("CalculateEnd", ThisObject), NStr("en='Entered data will be recalculated. Continue?';ru='Введенные данные будут пересчитаны! Продолжить?'"),QuestionDialogMode.YesNo);
 		
 EndProcedure
 

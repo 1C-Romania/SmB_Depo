@@ -211,7 +211,7 @@ EndProcedure
 Procedure ChooseDocument(Command)
 	
 	Modified = False;
-	QuestionText = NStr("en = 'Warning! It is not recommended to select a document to be registered for manual accounting. Continue?'");
+	QuestionText = NStr("en='Warning! It is not recommended to select a document to be registered for manual accounting. Continue?';ru='Внимание! Не рекомендуется выбирать документ отражения в учете вручную. Продолжить?'");
 	NotifyDescription = New NotifyDescription("ChooseDocumentContinue", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No);
 	
@@ -282,7 +282,7 @@ Procedure OpenCertificate(Command)
 		ShowCertificate(Items.DS.CurrentData.LineNumber, Items.DS.CurrentData.Imprint);
 	Else
 		ClearMessages();
-		ErrorText = NStr("en = 'Select the certificates in the installed signatures list.'");
+		ErrorText = NStr("en='Select the certificates in the installed signatures list.';ru='Выберите сертификат в списке установленных подписей.'");
 		CommonUseClientServer.MessageToUser(ErrorText);
 	EndIf;
 	
@@ -295,7 +295,7 @@ Procedure CheckSignatures(Command)
 	
 	If BankApplication = PredefinedValue("Enum.BankApplications.SberbankOnline") Then
 		#If WebClient Then
-			MessageText = NStr("en = 'Verification of signatures from WEB browser is impossible'");
+			MessageText = NStr("en='Verification of signatures from WEB browser is impossible';ru='Невозможна проверка подписей из WEB-браузера'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		#Else
@@ -527,7 +527,7 @@ Procedure RefillComments()
 	Query.SetParameter("IsBlankString", "");
 	Result = Query.Execute();
 	Selection = Result.Select();
-	CommentTemplate = NStr("en = '%1, %2 (status - %3, responsible person - %4): %5'");
+	CommentTemplate = NStr("en='%1, %2 (status - %3, responsible person - %4): %5';ru='%1, %2 (статус - %3, ответственный - %4): %5'");
 	PreviousComment = "";
 	FirstComment = True;
 	Array = New Array;
@@ -668,7 +668,7 @@ Procedure ChangeVisibleEnabled()
 		OR Not (CryptographyIsUsed = True)
 		AND CommonUse.ObjectAttributeValue(Object.EDAgreement, "EDExchangeMethod") = Enums.EDExchangeMethods.ThroughBankWebSource
 		AND ElectronicDocumentsService.ImmediateEDSending() Then
-		Items.CommandApproveED.Title = NStr("en = 'Approve and send'");
+		Items.CommandApproveED.Title = NStr("en='Approve and send';ru='Утвердить и отправить'");
 	EndIf;
 	
 	If ElectronicDocumentsService.ImmediateEDSending() Then
@@ -690,7 +690,7 @@ Procedure ChangeVisibleEnabled()
 			
 			Items.RefillDocument.Visible = False;
 		ElsIf Object.EDKind = Enums.EDKinds.ProductsDirectory Then
-			Items.RefillDocument.Title = NStr("en = 'Compare ProductsAndServices'");
+			Items.RefillDocument.Title = NStr("en='Compare ProductsAndServices';ru='Сопоставить номенклатуру'");
 		ElsIf Object.EDKind = Enums.EDKinds.TORG12Customer
 			OR Object.EDKind = Enums.EDKinds.ActCustomer
 			OR Object.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient
@@ -752,7 +752,7 @@ Procedure ChangeVisibleEnabled()
 		If Object.Ref.EDKind = Enums.EDKinds.CustomerInvoiceNote
 			Or Object.Ref.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
 			
-			Items.RejectCommand.Title = NStr("en = 'Request clarification on the e-document'");
+			Items.RejectCommand.Title = NStr("en='Request clarification on the e-document';ru='Запросить уточнение по электронному документу'");
 			Items.RejectCommand.Picture = PictureLib.UserWithoutNecessaryProperties;
 		EndIf;
 		
@@ -839,7 +839,7 @@ Procedure ChangeVisibleEnabled()
 		Items.FolderPagesFooter.CurrentPage = Items.FolderPagesFooter.ChildItems.GroupPageRejection;
 		
 		If Object.EDStatus = Enums.EDStatuses.TransferError Then
-			Items.RejectionReasonsRejectionReason.Title = NStr("en = 'Exchange error'");
+			Items.RejectionReasonsRejectionReason.Title = NStr("en='Exchange error';ru='Ошибка обмена'");
 			NewRow.RejectionReason = Object.RejectionReason;
 		EndIf;
 		
@@ -854,7 +854,7 @@ Procedure ChangeVisibleEnabled()
 		NewRow.RejectionReason = LinkToED.RejectionReason;
 		
 		Items.FolderPagesFooter.CurrentPage = Items.FolderPagesFooter.ChildItems.GroupPageRejection;
-		Items.RejectionReasonsRejectionReason.Title = NStr("en = 'Cancellation reason'");
+		Items.RejectionReasonsRejectionReason.Title = NStr("en='Cancellation reason';ru='Причина аннулирования'");
 		Items.RejectCommand.Enabled = False;
 		If Object.EDStatus = Enums.EDStatuses.CancellationOfferReceived
 			OR Object.EDKind = Enums.EDKinds.CancellationOffer
@@ -960,9 +960,9 @@ Procedure SetFormTitle()
 								OR Object.Ref.EDKind = Enums.EDKinds.QueryProbe) Then
 		
 		If Not ValueIsFilled(EDVersion) OR Object.Ref.EDFormingDateBySender <= EDVersion Then
-			Title = Title + NStr("en = ' - out of date'");
+			Title = Title + NStr("en=' - out of date';ru=' - неактуальный'");
 		ElsIf Object.EDFormingDateBySender > EDVersion Then
-			Title = Title + NStr("en = ' - new'");
+			Title = Title + NStr("en=' - new';ru=' - новый'");
 		EndIf;
 		
 	EndIf;
@@ -972,8 +972,8 @@ EndProcedure
 &AtServer
 Procedure ClearNotificationOfIrrelevant()
 	
-	Title = StrReplace(Title, NStr("en = ' - out of date'"), "");
-	Title = StrReplace(Title, NStr("en = ' - new'"), "");
+	Title = StrReplace(Title, NStr("en=' - out of date';ru=' - неактуальный'"), "");
+	Title = StrReplace(Title, NStr("en=' - new';ru=' - новый'"), "");
 	
 EndProcedure
 
@@ -1059,10 +1059,10 @@ EndProcedure
 Procedure FillSignatureStatus(NewRow, CurRow)
 	
 	If ValueIsFilled(CurRow.SignatureVerificationDate) Then
-		NewRow.SignatureIsCorrect = ?(CurRow.SignatureIsCorrect, NStr("en = 'Correct'"), NStr("en = 'Wrong'"))
+		NewRow.SignatureIsCorrect = ?(CurRow.SignatureIsCorrect, NStr("en='Correct';ru='Исправить'"), NStr("en='Wrong';ru='Неверна'"))
 			+" (" + CurRow.SignatureVerificationDate + ")";
 	Else
-		NewRow.SignatureIsCorrect = NStr("en = 'Not checked'");
+		NewRow.SignatureIsCorrect = NStr("en='Not checked';ru='Не проверена'");
 	EndIf
 	
 EndProcedure
@@ -1217,7 +1217,7 @@ Function EDDataFile(LinkToED = Undefined, Val SubordinatedEDFileName = Undefined
 		EndIf;
 		
 		If FileName = Undefined Then
-			ErrorText = NStr("en = 'Unable to view electronic document. Verify the work directory setting'");
+			ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 			CommonUseClientServer.MessageToUser(ErrorText);
 			Return Undefined;
 		EndIf;
@@ -1238,7 +1238,7 @@ Function EDDataFile(LinkToED = Undefined, Val SubordinatedEDFileName = Undefined
 				EndIf;
 			
 				If AdditDataFileName = Undefined Then
-					ErrorText = NStr("en = 'Unable to get additional data of the electronic document. Verify the work directory setting'");
+					ErrorText = NStr("en='Unable to get additional data of the electronic document. Verify the work directory setting';ru='Не удалось получить доп. данные электронного документа. Проверьте настройку рабочего каталога'");
 					CommonUseClientServer.MessageToUser(ErrorText);
 					Return Undefined;
 				EndIf;
@@ -1260,7 +1260,7 @@ Function EDDataFile(LinkToED = Undefined, Val SubordinatedEDFileName = Undefined
 			FolderForUnpacking = ElectronicDocumentsService.WorkingDirectory(,LinkToED.UUID());
 			
 			If FolderForUnpacking = Undefined Then
-				ErrorText = NStr("en = 'Unable to view electronic document. Verify the work directory setting'");
+				ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 				CommonUseClientServer.MessageToUser(ErrorText);
 				Return Undefined;
 			EndIf;
@@ -1272,7 +1272,7 @@ Function EDDataFile(LinkToED = Undefined, Val SubordinatedEDFileName = Undefined
 				If Not ElectronicDocumentsService.PossibleToExtractFiles(ZipReading, FolderForUnpacking) Then
 					MessageText = ElectronicDocumentsReUse.GetMessageAboutError("006");
 				EndIf;
-				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED package Unpacking'"),
+				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED package Unpacking';ru='распаковка пакета ЭД'"),
 					ErrorText, MessageText);
 				DeleteFiles(FolderForUnpacking);
 				Return Undefined;
@@ -1818,7 +1818,7 @@ EndProcedure
 Procedure AddCertificateToTrusted(SignatureData)
 	
 	If SignatureData <> Undefined AND SignatureData.MissingInList Then 
-		QuestionText = NStr("en = 'Do you want to add the %1 certificate to the list of expected counterparty certificates?'");
+		QuestionText = NStr("en='Do you want to add the %1 certificate to the list of expected counterparty certificates?';ru='Добавить сертификат %1 в список ожидаемых сертификатов контрагента?'");
 		QuestionText = StrReplace(QuestionText, "%1", SignatureData.CertificateIsIssuedTo);
 		AddData = New Structure("SignatureData", SignatureData);
 		NotifyDescription = New NotifyDescription("AddCertificateToTrustedComplete", ThisObject, AddData);
@@ -2102,7 +2102,7 @@ Procedure ConfirmPaymentEndiBank2(Val Result, Val AdditionalParameters) Export
 		EndIf;
 		
 		If Not IsBlankString(Result.ErrorText) OR Result.Status = "30" Then
-			MessageText = NStr("en = 'An error occurred when confirming a payment order: '") + Result.ErrorText;
+			MessageText = NStr("en='An error occurred when confirming a payment order: ';ru='Ошибка при подтверждении платежного поручения: '") + Result.ErrorText;
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		EndIf;
@@ -2111,7 +2111,7 @@ Procedure ConfirmPaymentEndiBank2(Val Result, Val AdditionalParameters) Export
 		
 		Notify("RefreshStateED");
 		
-		ShowUserNotification(NStr("en = 'The document is confirmed'"));
+		ShowUserNotification(NStr("en='The document is confirmed';ru='Документ подтвержден'"));
 		
 	EndIf;
 	
@@ -2137,15 +2137,17 @@ Procedure ConfirmPaymentCompleteThroughAdditionalProcessing(Val Result, Val Addi
 		Try
 			Result = ExternalAttachableModule.SendRequest(XMLCertificate, 5, QueryParameters);
 		Except
-			ErrorTemplate = NStr("en = 'Error of a payment order confirmation.
-									|Error code:
-									|%1 %2'");
+			ErrorTemplate = NStr("en='Error of a payment order confirmation."
+"Error code:"
+"%1 %2';ru='Ошибка подтверждения платежного поручения."
+"Код"
+"ошибки: %1 %2'");
 			ErrorDetails = ExternalAttachableModule.ErrorDetails();
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 																ErrorTemplate,
 																ErrorDetails.Code,
 																ErrorDetails.Message);
-			Operation = NStr("en = 'Payment order confirmation'");
+			Operation = NStr("en='Payment order confirmation';ru='Подтверждение платежного поручения'");
 			DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation,
 				DetailErrorDescription, MessageText, 1);
@@ -2153,11 +2155,11 @@ Procedure ConfirmPaymentCompleteThroughAdditionalProcessing(Val Result, Val Addi
 		EndTry;
 		
 		If Result.Count() = 0 Then
-			ShowUserNotification(NStr("en = 'No data for confirmation'"));
+			ShowUserNotification(NStr("en='No data for confirmation';ru='Нет данных для подтверждения'"));
 		EndIf;
 		
 		If Not IsBlankString(Result[0].ErrorText) Then
-			MessageText = NStr("en = 'An error occurred when confirming a payment order: '") + Result[0].ErrorText;
+			MessageText = NStr("en='An error occurred when confirming a payment order: ';ru='Ошибка при подтверждении платежного поручения: '") + Result[0].ErrorText;
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		EndIf;
@@ -2166,7 +2168,7 @@ Procedure ConfirmPaymentCompleteThroughAdditionalProcessing(Val Result, Val Addi
 		
 		Notify("RefreshStateED");
 		
-		ShowUserNotification(NStr("en = 'The document is confirmed'"));
+		ShowUserNotification(NStr("en='The document is confirmed';ru='Документ подтвержден'"));
 	EndIf;
 	
 EndProcedure
@@ -2203,7 +2205,7 @@ Procedure ConfirmPaymentThroughAdditionalProcessing(ExternalAttachableModule, Ad
 			ContinueConfirmationPaymentAfterEnteringPasswordCertificateThroughAdditionalProcessing(CertificateData,
 				AdditionalParameters);
 		Else
-			OperationKind = NStr("en = 'Authentication on bank resource'");
+			OperationKind = NStr("en='Authentication on bank resource';ru='Аутентификация на ресурсе банка.'");
 			If ElectronicDocumentsServiceClient.PasswordToCertificateReceived2(AvailableCertificates, OperationKind) Then
 				AdditionalParameters.Insert("AccCertificatesAndTheirStructures", AvailableCertificates);
 			Else
@@ -2236,7 +2238,7 @@ Procedure ChooseDocumentContinue(Val Result, Val AdditionalParameters) Export
 	If Result = DialogReturnCode.Yes Then
 		SelValue = Object.FileOwner;
 		NotifyDescription = New NotifyDescription("ChooseDocumentComplete", ThisObject);
-		ToolTip = NStr("en = 'Specify a document to be registered in accounting'");
+		ToolTip = NStr("en='Specify a document to be registered in accounting';ru='Укажите документ отражения в учете'");
 		ShowInputValue(NOTifyDescription, SelValue, ToolTip);
 	EndIf;
 	
@@ -2255,7 +2257,7 @@ Procedure AddCertificateToTrustedComplete(Val Result, Val AdditionalParameters) 
 		CertificateAdded = False;
 		AddSigningCertificateInAgreement(SignatureData.Imprint, CertificateAdded);
 		If Not CertificateAdded Then 
-			MessageText = NStr("en = 'Error of adding the signature certificate to the list of the expected certificates!'");
+			MessageText = NStr("en='Error of adding the signature certificate to the list of the expected certificates!';ru='Ошибка добавления сертификата подписи в список ожидаемых сертификатов!'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			FillTableDS();
@@ -2319,7 +2321,7 @@ Procedure ConfirmPaymentiBank2(ExternalAttachableModule, AdditionalParameters = 
 	AdditionalParameters.Insert("AccCertificatesAndTheirStructures", AvailableCertificates);
 	
 	If Not PasswordIsSetPreviously Then
-		OperationKind = NStr("en = 'Authentication on bank resource'");
+		OperationKind = NStr("en='Authentication on bank resource';ru='Аутентификация на ресурсе банка.'");
 		
 		If Not ElectronicDocumentsServiceClient.PasswordToCertificateReceived2(AvailableCertificates, OperationKind) Then
 			
@@ -2423,8 +2425,8 @@ Procedure ConfirmiBank2Payment(AuthenticationCompleted, Parameters) Export
 	EndIf;
 	
 	If Not Result.Ways.Property("SMS") Then
-		ErrorText = NStr("en = 'Payment confirmation by SMS is not supported.'");
-		Operation = NStr("en = 'Initializing a payment confirmation procedure'");
+		ErrorText = NStr("en='Payment confirmation by SMS is not supported.';ru='Подтверждение платежа по SMS не поддерживается.'");
+		Operation = NStr("en='Initializing a payment confirmation procedure';ru='Инициализация процедуры подтверждения платежа'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 												Operation, ErrorText, ErrorText, 1);
 		Return;
@@ -2459,15 +2461,17 @@ Procedure ExecuteConfirmPaymentThroughAdditionalProcessing(AuthenticationComplet
 	Try
 		Result = ExternalAttachableModule.SendRequest(XMLCertificate, 4, QueryParameters);
 	Except
-		ErrorTemplate = NStr("en = 'An error occurred while initializing the confirmation session.
-							|Error code:
-							|%1 %2'");
+		ErrorTemplate = NStr("en='An error occurred while initializing the confirmation session."
+"Error code:"
+"%1 %2';ru='Ошибка инициализации сессии подтверждения."
+"Код"
+"ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 															ErrorTemplate,
 															ErrorDetails.Code,
 															ErrorDetails.Message);
-		Operation = NStr("en = 'Initializing the confirmation session'");
+		Operation = NStr("en='Initializing the confirmation session';ru='Инициализация сессии подтверждения'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation,
 			DetailErrorDescription, MessageText, 1);

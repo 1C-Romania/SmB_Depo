@@ -68,7 +68,7 @@ EndProcedure // FillKindPrices()
 //
 Function GenerateDescription(ContractNo, ContractDate, SettlementsCurrency)
 	
-	TextName = NStr("en = '# %ContractNo% from %ContractDate% (%SettlementsCurrency%)'");
+	TextName = NStr("en='# %ContractNo% from %ContractDate% (%SettlementsCurrency%)';ru='№ %НомерДоговора% от %ДатаДоговора% (%ВалютаРасчетов%)'");
 	TextName = StrReplace(TextName, "%ContractNo%", TrimAll(ContractNo));
 	TextName = StrReplace(TextName, "%ContractDate%", ?(ValueIsFilled(ContractDate), TrimAll(String(Format(ContractDate, "DF=dd.MM.yyyy"))), ""));
 	TextName = StrReplace(TextName, "%SettlementsCurrency%", TrimAll(String(SettlementsCurrency)));

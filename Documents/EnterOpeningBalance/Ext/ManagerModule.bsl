@@ -146,7 +146,7 @@ Procedure InitializeDocumentDataManagerial(DocumentRefEnterOpeningBalance, Struc
 	
 	Query.SetParameter("Ref", DocumentRefEnterOpeningBalance);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("Content", NStr("en = 'Enter opening balance'"));
+	Query.SetParameter("Content", NStr("en='Enter opening balance';ru='Ввод начальных остатков'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -284,8 +284,8 @@ Procedure InitializeDocumentDataAdvanceHolderPayments(DocumentRefEnterOpeningBal
 	
 	Query.SetParameter("Ref", DocumentRefEnterOpeningBalance);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AdvanceHolderDebtEmergence", NStr("en = 'Entering of advance holder debt balances'"));
-	Query.SetParameter("DebtRepaymentToAdvanceHolder", NStr("en = 'Entering of advance holder debt residue'"));
+	Query.SetParameter("AdvanceHolderDebtEmergence", NStr("en='Entering of advance holder debt balances';ru='Ввод остатков задолженности подотчетника'"));
+	Query.SetParameter("DebtRepaymentToAdvanceHolder", NStr("en='Entering of advance holder debt residue';ru='Ввод остатков задолженности перед подотчетником'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -360,7 +360,7 @@ Procedure InitializeDocumentDataPayrollPayments(DocumentRefEnterOpeningBalance, 
 	
 	Query.SetParameter("Ref", DocumentRefEnterOpeningBalance);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("OccurrenceOfObligationsToStaff", NStr("en = 'Appearence of liability to staff'"));
+	Query.SetParameter("OccurrenceOfObligationsToStaff", NStr("en='Appearence of liability to staff';ru='Возникновение обязательств перед персоналом'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -419,7 +419,7 @@ Procedure InitializeDocumentDataTaxesSettlements(DocumentRefEnterOpeningBalance,
 	
 	Query.SetParameter("Ref", DocumentRefEnterOpeningBalance);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("TaxAccrual", NStr("en = 'Entering the debts balance to the budget'"));
+	Query.SetParameter("TaxAccrual", NStr("en='Entering the debts balance to the budget';ru='Ввод остатков задолженности перед бюджетом'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -584,8 +584,8 @@ Procedure InitializeDocumentDataAccountsReceivable(DocumentRefEnterOpeningBalanc
 	
 	Query.SetParameter("Ref", DocumentRefEnterOpeningBalance);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en = 'Entering of customers debt balances'"));
-	Query.SetParameter("CustomerObligationsRepayment", NStr("en = 'Balance entering of customers advances'"));
+	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Entering of customers debt balances';ru='Ввод остатков задолженности покупателей'"));
+	Query.SetParameter("CustomerObligationsRepayment", NStr("en='Balance entering of customers advances';ru='Ввод остатков авансов от покупателей'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -750,8 +750,8 @@ Procedure InitializeDocumentDataAccountsPayable(DocumentRefEnterOpeningBalance, 
  
 	Query.SetParameter("Ref", DocumentRefEnterOpeningBalance);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en = 'Entering debt balances to suppliers'"));
-	Query.SetParameter("VendorObligationsRepayment", NStr("en = 'Entering the balances of advances to suppliers'"));
+	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Entering debt balances to suppliers';ru='Ввод остатков задолженности поставщикам'"));
+	Query.SetParameter("VendorObligationsRepayment", NStr("en='Entering the balances of advances to suppliers';ru='Ввод остатков авансов поставщикам'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -1008,7 +1008,7 @@ Procedure DocumentDataInitializationCashAssets(DocumentRefEnterOpeningBalance, S
 	
 	Query.SetParameter("Ref", DocumentRefEnterOpeningBalance);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("ContentOfAccountingRecord", NStr("en = 'Entering of the cash funds balances'"));
+	Query.SetParameter("ContentOfAccountingRecord", NStr("en='Entering of the cash funds balances';ru='Ввод остатков денежных средств'"));
 		
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -1467,11 +1467,11 @@ Procedure InitializeInventoryDocumentData(DocumentRefEnterOpeningBalance, Struct
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
 	Query.SetParameter("UseReservation", Constants.FunctionalOptionInventoryReservation.Get());
-	Query.SetParameter("InventoryReceipt", NStr("en = 'Inventory receiving'"));
-	Query.SetParameter("ExpediturePosting", NStr("en = 'Expediture posting'"));
-	Query.SetParameter("InventoryAcceptedReceiving", NStr("en = 'Receipt of received inventory'"));
-	Query.SetParameter("TransferredInventoryReceipt", NStr("en = 'Receipt of the inventories transferred'"));
-	Query.SetParameter("InventoryReception", NStr("en = 'Inventory receiving'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("ExpediturePosting", NStr("en='Expediture posting';ru='Оприходование затрат'"));
+	Query.SetParameter("InventoryAcceptedReceiving", NStr("en='Receipt of received inventory';ru='Оприходование запасов принятых'"));
+	Query.SetParameter("TransferredInventoryReceipt", NStr("en='Receipt of the inventories transferred';ru='Оприходование запасов переданных'"));
+	Query.SetParameter("InventoryReception", NStr("en='Inventory receiving';ru='Прием запасов'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -1671,8 +1671,8 @@ Procedure DataInitializationFixedAssetsDataInitialization(DocumentRefEnterOpenin
 	
 	Query.SetParameter("Ref", DocumentRefEnterOpeningBalance);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("FixedAssetAcceptanceForAccounting", NStr("en = 'Enter opening balance for fixed assets'"));
-	Query.SetParameter("DepreciationAccrual", NStr("en = 'Entry of opening balances for depreciation'"));
+	Query.SetParameter("FixedAssetAcceptanceForAccounting", NStr("en='Enter opening balance for fixed assets';ru='Ввод начальных остатков по внеоборотным активам'"));
+	Query.SetParameter("DepreciationAccrual", NStr("en='Entry of opening balances for depreciation';ru='Ввод начальных остатков по амортизации'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 

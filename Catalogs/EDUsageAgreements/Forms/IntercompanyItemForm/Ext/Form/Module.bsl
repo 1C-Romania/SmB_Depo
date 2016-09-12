@@ -243,10 +243,13 @@ Procedure CheckDocumentsUniqueness(TabularSectionDocuments, CheckResult, ErrorTe
 		If CurrentDocumentOfAgreement.ToForm Then
 			For Each DocumentInOtherAgreements IN DocumentsTypesOtherAgreements Do
 				If CurrentDocumentOfAgreement[?(ChecksIncomingDocuments, "IncomingDocument", "OutgoingDocument")] = DocumentInOtherAgreements.DocumentType Then
-					ErrorText = NStr("en = 'For a kind of documents %1
-					|%2 a valid agreement already exists between parties %3
-					|- %4: %5.
-					|'");
+					ErrorText = NStr("en='For a kind of documents %1"
+"%2 a valid agreement already exists between parties %3"
+"- %4: %5."
+"';ru='По виду электронных документов"
+"%1 %2 уже существует действующее соглашение между"
+"участниками %3 - %4: %5."
+"'");
 					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
 						ErrorText, DocumentInOtherAgreements.DocumentType,
 						?(ChecksIncomingDocuments, "Incoming", "Outgoing"),
@@ -269,8 +272,9 @@ Procedure ValidateWriteAgreement(ContinuationHandler)
 	
 	AdditParameters = New Structure("ContinuationHandler", ContinuationHandler);
 	If Not Object.DeleteIsTypical Then
-		QuestionText = NStr("en = 'External certificates can be selected only in the written agreement.
-		|Write agreement?'");
+		QuestionText = NStr("en='External certificates can be selected only in the written agreement."
+"Write agreement?';ru='Внешние сертификаты можно выбирать только в записанном соглашении."
+"Записать соглашение?'");
 		NotifyDescription = New NotifyDescription("FinishCheckingAgreement", ThisObject, AdditParameters);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else
@@ -282,7 +286,7 @@ EndProcedure
 &AtClient
 Procedure ChangeCaptionDirectionDocuments()
 	
-	MessagePattern = NStr("en='From: %1, to: %2'");
+	MessagePattern = NStr("en='From: %1, to: %2';ru='От кого: %1, кому: %2'");
 	TitleDocumentsDirection = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, 
 		Object.Company, Object.Counterparty);
 	
@@ -361,12 +365,12 @@ EndFunction
 Procedure RefreshFormTitle()
 	
 	If Object.DeleteIsTypical Then
-		HeaderText = NStr("en='Typical setup of EDF between companies'");
+		HeaderText = NStr("en='Typical setup of EDF between companies';ru='Типовая настройка ЭДО между организациями'");
 	Else
-		HeaderText = NStr("en='EDF setup between companies'");
+		HeaderText = NStr("en='EDF setup between companies';ru='Настройка ЭДО между организациями'");
 	EndIf;
 	If Not ValueIsFilled(Object.Ref) Then
-		Title = HeaderText + NStr("en=' (creation)'");
+		Title = HeaderText + NStr("en=' (creation)';ru=' (создание)'");
 	Else
 		Title = HeaderText;
 	EndIf;
@@ -474,7 +478,7 @@ Procedure SenderCompanyProcessingOfChoice(Item, ValueSelected, StandardProcessin
 	NotifyDescription = New NotifyDescription("HandleChangeSenderRecipient", ThisObject, AdditParameters);
 	If ValueIsFilled(Object.CompanyID) Then
 		If ValueSelected <> Object.Company Then
-			QuestionText = NStr("en = 'The company was modified. Do you want to change the exchange ID of the company?'");
+			QuestionText = NStr("en='The company was modified. Do you want to change the exchange ID of the company?';ru='Была изменена организация. Изменить идентификатор обмена организации?'");
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 		EndIf;
 	Else
@@ -506,7 +510,7 @@ Procedure PayeeChoiceProcessing(Item, ValueSelected, StandardProcessing)
 	NotifyDescription = New NotifyDescription("HandleChangeSenderRecipient", ThisObject, AdditParameters);
 	If ValueIsFilled(Object.CounterpartyID) Then
 		If ValueSelected <> Object.Counterparty Then
-			QuestionText = NStr("en = 'Recipient company has been changed. Do you want to change the recipient ID?'");
+			QuestionText = NStr("en='Recipient company has been changed. Do you want to change the recipient ID?';ru='Была изменена организация получатель. Изменить идентификатор получателя?'");
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 		EndIf;
 	Else
@@ -653,10 +657,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			ReReadDataByCertificate(DocumentObject);
 		Except
 			MessageText = BriefErrorDescription(ErrorInfo())
-				+ NStr("en = ' (see details in Event log monitor).'");
+				+ NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 			ErrorText = DetailErrorDescription(ErrorInfo());
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-				NStr("en = 'the agreement form opening'"), ErrorText, MessageText);
+				NStr("en='the agreement form opening';ru='открытие формы соглашения'"), ErrorText, MessageText);
 		EndTry;
 	EndIf;
 	
@@ -693,7 +697,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	RowArray = Object.ExchangeFilesFormats.FindRows(New Structure("Use, FileFormat",
 		True, PredefinedValue("Enum.EDExchangeFileFormats.XML")));
 	If RowArray.Count() = 0 Then
-		MessageText = NStr("en='Outgoing document format ""CommerceML(*.xml)"" is mandatory for use.'");
+		MessageText = NStr("en='Outgoing document format ""CommerceML(*.xml)"" is mandatory for use.';ru='Формат исходящего документа ""CommerceML(*.xml)"" обязателен к использованию.'");
 		CommonUseClientServer.MessageToUser(
 			MessageText, Object.Ref, "FilesFormatsExchangeFilesFormats", , Cancel);
 	EndIf;

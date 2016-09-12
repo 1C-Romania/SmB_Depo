@@ -432,7 +432,7 @@ Procedure OnTransferringToFolderExecution(TransportParameters, Attachments) Expo
 	EndDo;
 	
 	Comment = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Report mailing %1 from %2'"),
+		NStr("en='Report mailing %1 from %2';ru='Рассылка отчетов %1 от %2'"),
 		"'"+ TransportParameters.Mailing +"'",
 		Format(TransportParameters.ExecutionDate, "DLF=DT"));
 	
@@ -688,8 +688,8 @@ Procedure OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights) Expor
 	Right = PossibleRights.Add();
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "Read";
-	Right.Title     = NStr("en = 'Read'");
-	Right.ToolTip     = NStr("en = 'Folders and files reading'");
+	Right.Title     = NStr("en='Read';ru='Чтение'");
+	Right.ToolTip     = NStr("en='Folders and files reading';ru='Чтение папок и файлов'");
 	Right.InitialValue = True;
 	// Rights for standard templates of access restrictions.
 	Right.ReadingInTables.Add("*");
@@ -698,9 +698,9 @@ Procedure OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights) Expor
 	Right = PossibleRights.Add();
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "FoldersUpdate";
-	Right.Title     = NStr("en = 'Folders update'");
-	Right.ToolTip     = NStr("en = 'Addition, change
-	                                 |and deletion mark of files folders'");
+	Right.Title     = NStr("en='Folders update';ru='Изменение папок'");
+	Right.ToolTip     = NStr("en='Addition, change"
+"and deletion mark of files folders';ru='Добавление, изменение и пометка удаления папок файлов'");
 	// Rights required for this right.
 	Right.RequiredRights.Add("Read");
 	// Rights for standard templates of access restrictions.
@@ -710,8 +710,8 @@ Procedure OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights) Expor
 	Right = PossibleRights.Add();
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "FilesUpdate";
-	Right.Title     = NStr("en = 'Files update'");
-	Right.ToolTip     = NStr("en = 'Files editing in folder'");
+	Right.Title     = NStr("en='Files update';ru='Изменение файлов'");
+	Right.ToolTip     = NStr("en='Files editing in folder';ru='Изменение файлов в папке'");
 	// Rights required for this right.
 	Right.RequiredRights.Add("Read");
 	// Rights for standard templates of access restrictions.
@@ -721,8 +721,8 @@ Procedure OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights) Expor
 	Right = PossibleRights.Add();
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "FilesAdd";
-	Right.Title     = NStr("en = 'Files add'");
-	Right.ToolTip     = NStr("en = 'Adding files to folder'");
+	Right.Title     = NStr("en='Files add';ru='Добавление файлов'");
+	Right.ToolTip     = NStr("en='Adding files to folder';ru='Добавление файлов в папку'");
 	// Rights required for this right.
 	Right.RequiredRights.Add("FilesUpdate");
 	
@@ -730,16 +730,16 @@ Procedure OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights) Expor
 	Right = PossibleRights.Add();
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "FileDeletionMark";
-	Right.Title     = NStr("en = 'Deletion mark'");
-	Right.ToolTip     = NStr("en = 'Deletion mark of files in folder'");
+	Right.Title     = NStr("en='Deletion mark';ru='ПометкаУдаления'");
+	Right.ToolTip     = NStr("en='Deletion mark of files in folder';ru='Пометка удаления файлов в папке'");
 	// Rights required for this right.
 	Right.RequiredRights.Add("FilesUpdate");
 	
 	Right = PossibleRights.Add();
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "RightsManagement";
-	Right.Title     = NStr("en = 'Rights management'");
-	Right.ToolTip     = NStr("en = 'Folder rights management'");
+	Right.Title     = NStr("en='Rights management';ru='Управление правами'");
+	Right.ToolTip     = NStr("en='Folder rights management';ru='Управление правами папки'");
 	// Rights required for this right.
 	Right.RequiredRights.Add("Read");
 	
@@ -864,7 +864,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work = CurrentWorks.Add();
 		Work.ID  = IdentifierEditedFiles;
 		Work.ThereIsWork       = CountEmployedFiles > 0;
-		Work.Presentation  = NStr("en = 'Edited files'");
+		Work.Presentation  = NStr("en='Edited files';ru='Редактируемые файлы'");
 		Work.Quantity     = CountEmployedFiles;
 		Work.Important         = False;
 		Work.Form          = "Catalog.Files.Form.EditableFiles";
@@ -887,26 +887,26 @@ Function GetEncodingsList() Export
 
 	EncodingsList = New ValueList;
 	
-	EncodingsList.Add("ibm852",       NStr("en = 'IBM852 (Central European  DOS)'"));
-	EncodingsList.Add("ibm866",       NStr("en = 'IBM866 (Cyrillic DOS)'"));
-	EncodingsList.Add("iso-8859-1",   NStr("en = 'ISO-8859-1 (Western European ISO)'"));
-	EncodingsList.Add("iso-8859-2",   NStr("en = 'ISO-8859-2 (Central European ISO)'"));
-	EncodingsList.Add("iso-8859-3",   NStr("en = 'ISO-8859-3 (Latin 3 ISO)'"));
-	EncodingsList.Add("iso-8859-4",   NStr("en = 'ISO-8859-4 (Baltic ISO)'"));
-	EncodingsList.Add("iso-8859-5",   NStr("en = 'ISO-8859-5 (Cyrillic ISO)'"));
-	EncodingsList.Add("iso-8859-7",   NStr("en = 'ISO-8859-7 (Greek ISO)'"));
-	EncodingsList.Add("iso-8859-9",   NStr("en = 'ISO-8859-9 (Turkish ISO)'"));
-	EncodingsList.Add("iso-8859-15",  NStr("en = 'ISO-8859-15 (Latin 9 ISO)'"));
-	EncodingsList.Add("koi8-r",       NStr("en = 'KOI8-R (Cyrillic KOI8-R)'"));
-	EncodingsList.Add("koi8-u",       NStr("en = 'KOI8-U (Cyrillic KOI8-U)'"));
-	EncodingsList.Add("us-ascii",     NStr("en = 'US-ASCII (USA)'"));
-	EncodingsList.Add("utf-8",        NStr("en = 'UTF-8 (Unicode UTF-8)'"));
-	EncodingsList.Add("windows-1250", NStr("en = 'Windows-1250 (Central European Windows)'"));
-	EncodingsList.Add("windows-1251", NStr("en = 'windows-1251 (Cyrillic Windows)'"));
-	EncodingsList.Add("windows-1252", NStr("en = 'Windows-1252 (Western European Windows)'"));
-	EncodingsList.Add("windows-1253", NStr("en = 'Windows-1253 (Greek Windows)'"));
-	EncodingsList.Add("windows-1254", NStr("en = 'Windows-1254 (Turkish Windows)'"));
-	EncodingsList.Add("windows-1257", NStr("en = 'Windows-1257 (Baltic Windows)'"));
+	EncodingsList.Add("ibm852",       NStr("en='IBM852 (Central European  DOS)';ru='IBM852 (Центральноевропейская DOS)'"));
+	EncodingsList.Add("ibm866",       NStr("en='IBM866 (Cyrillic DOS)';ru='IBM866 (Кириллица DOS)'"));
+	EncodingsList.Add("iso-8859-1",   NStr("en='ISO-8859-1 (Western European ISO)';ru='ISO-8859-1 (Западноевропейская ISO)'"));
+	EncodingsList.Add("iso-8859-2",   NStr("en='ISO-8859-2 (Central European ISO)';ru='ISO-8859-2 (Центральноевропейская ISO)'"));
+	EncodingsList.Add("iso-8859-3",   NStr("en='ISO-8859-3 (Latin 3 ISO)';ru='ISO-8859-3 (Латиница 3 ISO)'"));
+	EncodingsList.Add("iso-8859-4",   NStr("en='ISO-8859-4 (Baltic ISO)';ru='ISO-8859-4 (Балтийская ISO)'"));
+	EncodingsList.Add("iso-8859-5",   NStr("en='ISO-8859-5 (Cyrillic ISO)';ru='ISO-8859-5 (Кириллица ISO)'"));
+	EncodingsList.Add("iso-8859-7",   NStr("en='ISO-8859-7 (Greek ISO)';ru='ISO-8859-7 (Греческая ISO)'"));
+	EncodingsList.Add("iso-8859-9",   NStr("en='ISO-8859-9 (Turkish ISO)';ru='ISO-8859-9 (Турецкая ISO)'"));
+	EncodingsList.Add("iso-8859-15",  NStr("en='ISO-8859-15 (Latin 9 ISO)';ru='ISO-8859-15 (Латиница 9 ISO)'"));
+	EncodingsList.Add("koi8-r",       NStr("en='KOI8-R (Cyrillic KOI8-R)';ru='KOI8-R (Кириллица KOI8-R)'"));
+	EncodingsList.Add("koi8-u",       NStr("en='KOI8-U (Cyrillic KOI8-U)';ru='KOI8-U (Кириллица KOI8-U)'"));
+	EncodingsList.Add("us-ascii",     NStr("en='US-ASCII (USA)';ru='US-ASCII (США)'"));
+	EncodingsList.Add("utf-8",        NStr("en='UTF-8 (Unicode UTF-8)';ru='UTF-8 (Юникод UTF-8)'"));
+	EncodingsList.Add("windows-1250", NStr("en='Windows-1250 (Central European Windows)';ru='Windows-1250 (Центральноевропейская Windows)'"));
+	EncodingsList.Add("windows-1251", NStr("en='windows-1251 (Cyrillic Windows)';ru='windows-1251 (Кириллица Windows)'"));
+	EncodingsList.Add("windows-1252", NStr("en='Windows-1252 (Western European Windows)';ru='Windows-1252 (Западноевропейская Windows)'"));
+	EncodingsList.Add("windows-1253", NStr("en='Windows-1253 (Greek Windows)';ru='Windows-1253 (Греческая Windows)'"));
+	EncodingsList.Add("windows-1254", NStr("en='Windows-1254 (Turkish Windows)';ru='Windows-1254 (Турецкая Windows)'"));
+	EncodingsList.Add("windows-1257", NStr("en='Windows-1257 (Baltic Windows)';ru='Windows-1257 (Балтийская Windows)'"));
 	
 	Return EncodingsList;
 
@@ -1239,7 +1239,7 @@ EndFunction
 //
 Function EventLogMonitorForExchange() 
 	
-	Return NStr("en = 'Files. Failed to send the file when exchanging the data'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Files. Failed to send the file when exchanging the data';ru='Файлы.Не удалось отправить файл при обмене данными'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

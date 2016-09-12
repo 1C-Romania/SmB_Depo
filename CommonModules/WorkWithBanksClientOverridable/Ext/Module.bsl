@@ -7,7 +7,7 @@ Procedure ProcessManualEditFlag(Val Form) Export
 	Items  = Form.Items;
 	
 	If Form.ManualChanging = Undefined Then
-		Form.ManualEditText = NStr("en = 'The item is created manually. Automatic update is impossible.'");
+		Form.ManualEditText = NStr("en='The item is created manually. Automatic update is impossible.';ru='Элемент создан вручную. Автоматическое обновление не возможно.'");
 		
 		Items.UpdateFromClassifier.Enabled = False;
 		Items.Change.Enabled = False;
@@ -18,7 +18,7 @@ Procedure ProcessManualEditFlag(Val Form) Export
 			Items.CorrAccount.Enabled = True;
 		EndIf;
 	ElsIf Form.ManualChanging = True Then
-		Form.ManualEditText = NStr("en = 'Automatic item update is disabled.'");
+		Form.ManualEditText = NStr("en='Automatic item update is disabled.';ru='Автоматическое обновление элемента отключено.'");
 		
 		Items.UpdateFromClassifier.Enabled = True;
 		Items.Change.Enabled = False;
@@ -29,7 +29,7 @@ Procedure ProcessManualEditFlag(Val Form) Export
 			Items.CorrAccount.Enabled = False;
 		EndIf;
 	Else
-		Form.ManualEditText = NStr("en = 'Item is updated automatically.'");
+		Form.ManualEditText = NStr("en='Item is updated automatically.';ru='Элемент обновляется автоматически.'");
 		
 		Items.UpdateFromClassifier.Enabled = False;
 		Items.Change.Enabled = True;
@@ -43,8 +43,9 @@ EndProcedure
 //
 Procedure RefreshItemFromClassifier(Val Form, ExecuteUpdate) Export
 	
-	QuestionText = NStr("en = 'The item data will be replaced with the data from the classifier.
-							|All manual changes will be lost. Continue?'");
+	QuestionText = NStr("en='The item data will be replaced with the data from the classifier."
+"All manual changes will be lost. Continue?';ru='Данные элемента будут заменены данными из классификатора."
+"Все ручные изменения будут потеряны. Продолжить?'");
 							
 	AdditionalParameters = New Structure;
 	AdditionalParameters.Insert("Form", Form);

@@ -61,7 +61,7 @@ Procedure OnSwitchUsingSecurityProfiles() Export
 	
 	WriteLogEvent(GetFilesFromInternetClientServer.EventLogMonitorEvent(),
 		EventLogLevel.Warning, Metadata.Constants.ProxyServerSetting,,
-		NStr("en = 'Proxy server settings are reset to system settings when enabling the security profiles.'"));
+		NStr("en='Proxy server settings are reset to system settings when enabling the security profiles.';ru='При включении профилей безопасности настройки прокси-сервера сброшены на системные.'"));
 	
 EndProcedure
 
@@ -74,7 +74,7 @@ EndProcedure
 Procedure SaveProxySettingsAt1CEnterpriseServer(Val Settings) Export
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise(NStr("en = 'Insufficient rights to perform operation'"));
+		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);

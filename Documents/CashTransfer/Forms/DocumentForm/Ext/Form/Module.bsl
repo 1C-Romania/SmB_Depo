@@ -331,7 +331,7 @@ Procedure CashAssetsCurrencyOnChange(Item)
 			Mode = QuestionDialogMode.YesNo;
 			Response = Undefined;
 
-			ShowQueryBox(New NotifyDescription("CashAssetsCurrencyOnChangeEnd", ThisObject, New Structure("StructureData", StructureData)), NStr("en = 'Document currency is changed. Recalculate document amount?'"), Mode);
+			ShowQueryBox(New NotifyDescription("CashAssetsCurrencyOnChangeEnd", ThisObject, New Structure("StructureData", StructureData)), NStr("en='Document currency is changed. Recalculate document amount?';ru='Изменилась валюта документа. Пересчитать сумму документа?'"), Mode);
             Return;
 		EndIf;
 		CashAssetsCurrencyOnChangeFragment();
@@ -448,18 +448,18 @@ EndFunction // GetPettyCashDefaultCurrencyOnServer()
 Procedure FillByBasis(Command)
 	
 	If Not ValueIsFilled(Object.BasisDocument) Then
-		ShowMessageBox(Undefined,NStr("en='Basis document is not selected!'"));
+		ShowMessageBox(Undefined,NStr("en='Basis document is not selected!';ru='Не выбран документ основание!'"));
 		Return;
 	EndIf;
 	
 	If TypeOf(Object.BasisDocument) = Type("DocumentRef.CashTransferPlan")
 		AND Not DocumentApproved(Object.BasisDocument) Then
-		Raise NStr("en = 'You can not enter the cash register records basing on the unapproved plan document!'");
+		Raise NStr("en='You can not enter the cash register records basing on the unapproved plan document!';ru='Нельзя ввести перемещение денег на основании неутвержденного планового документа!'");
 	EndIf;
 	
 	Response = Undefined;
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en = 'Document will be completely refilled by ""Basis""! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 

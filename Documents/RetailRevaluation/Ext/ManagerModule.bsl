@@ -11,8 +11,8 @@ Procedure GenerateTableRetailAmountAccounting(DocumentRefRetailRevaluation, Stru
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("RetailRevaluation", NStr("en = 'Revaluation in retail'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("RetailRevaluation", NStr("en='Revaluation in retail';ru='Переоценка в рознице'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -91,9 +91,9 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefRetailRevaluation, Structure
 	
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
-	Query.SetParameter("IncomeReflection", NStr("en = 'Income accounting'"));
-	Query.SetParameter("CostsReflection", NStr("en = 'Costs reflection'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
+	Query.SetParameter("CostsReflection", NStr("en='Costs reflection';ru='Отражение расходов'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
 	"SELECT
@@ -172,10 +172,10 @@ Procedure GenerateTableManagerial(DocumentRefRetailRevaluation, StructureAdditio
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
-	Query.SetParameter("TradeMarkup", NStr("en = 'Trade markup'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
-	Query.SetParameter("IncomeReflection", NStr("en = 'Income accounting'"));
-	Query.SetParameter("CostsReflection", NStr("en = 'Costs reflection'"));
+	Query.SetParameter("TradeMarkup", NStr("en='Trade markup';ru='Торговая наценка'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
+	Query.SetParameter("CostsReflection", NStr("en='Costs reflection';ru='Отражение расходов'"));
 		
 	Query.Text =
 	"SELECT

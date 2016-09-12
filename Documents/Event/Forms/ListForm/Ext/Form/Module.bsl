@@ -270,7 +270,7 @@ Procedure SetFilterInformationPanel()
 		CommonUseClientServer.SetDynamicListParameter(List, "Contacts", Contacts, ValueIsFilled(FilterContactPerson));
 		
 		ThisForm.AutoTitle = False;
-		ThisForm.Title = NStr("en = ' Event (contact person: '") + String(InformationPanel.ContactPerson) + ")";
+		ThisForm.Title = NStr("en=' Event (contact person: ';ru=' Событие (контактное лицо: '") + String(InformationPanel.ContactPerson) + ")";
 		
 		Items.FilterCounterparty.Visible = False;
 		
@@ -281,7 +281,7 @@ Procedure SetFilterInformationPanel()
 		CommonUseClientServer.SetDynamicListParameter(List, "BasisDocument", FilterBasis, ValueIsFilled(FilterBasis));
 		
 		ThisForm.AutoTitle = False;
-		ThisForm.Title = NStr("en = ' Event (basis: '") + String(InformationPanel.BasisOrderAccounts) + ")";
+		ThisForm.Title = NStr("en=' Event (basis: ';ru=' Событие (основание: '") + String(InformationPanel.BasisOrderAccounts) + ")";
 		
 		Items.FilterCounterparty.Visible = False;
 		

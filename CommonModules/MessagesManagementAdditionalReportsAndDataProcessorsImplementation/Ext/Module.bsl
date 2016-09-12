@@ -259,7 +259,7 @@ Function GetAreaUserByServiceUserID(Val ServiceUserID)
 	EndTry;
 	
 	If Result.IsEmpty() Then
-		MessagePattern = NStr("en = 'User with the service user ID %1 has not been found'");
+		MessagePattern = NStr("en='User with the service user ID %1 has not been found';ru='Не найден пользователь с идентификатором пользователя сервиса %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ServiceUserID);
 		Raise(MessageText);
 	EndIf;

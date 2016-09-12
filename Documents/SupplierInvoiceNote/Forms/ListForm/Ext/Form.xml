@@ -9,11 +9,19 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Important commands group</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
+					</v8:item>
 				</Title>
 				<ToolTip>
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Important commands group</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа важные команды</v8:content>
 					</v8:item>
 				</ToolTip>
 				<ExtendedTooltip name="ImportantCommandsGroupExtendedTooltip" id="54"/>
@@ -24,11 +32,19 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
 				</Title>
 				<ToolTip>
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
 					</v8:item>
 				</ToolTip>
 				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
@@ -148,12 +164,20 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Date</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
 					</Title>
 					<Width>10</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<Format>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>DLF=D</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>DLF=D</v8:content>
 						</v8:item>
 					</Format>
@@ -170,6 +194,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Number</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
 					</Title>
 					<Width>11</Width>
 					<HorizontalStretch>false</HorizontalStretch>
@@ -183,6 +211,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Number (in.)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер (вх.)</v8:content>
+						</v8:item>
 					</Title>
 					<Width>11</Width>
 					<HorizontalStretch>false</HorizontalStretch>
@@ -195,6 +227,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Date (in.)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата (вх.)</v8:content>
 						</v8:item>
 					</Title>
 					<Width>10</Width>
@@ -231,6 +267,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Counterparty</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагенты</v8:content>
+						</v8:item>
 					</Title>
 					<ContextMenu name="CounterpartyContextMenu" id="13"/>
 					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="35"/>
@@ -241,6 +281,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Contract</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контакт</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="ContractContextMenu" id="15"/>
@@ -259,6 +303,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вал.</v8:content>
+						</v8:item>
 					</Title>
 					<Width>7</Width>
 					<HorizontalStretch>false</HorizontalStretch>
@@ -275,6 +323,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount includes VAT</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма включает НДС</v8:content>
+						</v8:item>
 					</Title>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="AmountIncludesVATContextMenu" id="19"/>
@@ -289,6 +341,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CommentContextMenu" id="25"/>
@@ -388,6 +444,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Only returns</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только возвраты</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

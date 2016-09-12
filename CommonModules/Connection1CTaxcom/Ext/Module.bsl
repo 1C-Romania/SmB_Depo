@@ -128,10 +128,10 @@ Procedure OnCreateInteractionContext(Context) Export
 	LaunchLocation = Context.COPContext.MainParameters.LaunchLocation;
 	If LaunchLocation = "taxcomGetID" Then
 		Context.Insert("MessageActionsUnavailable",
-			NStr("en = 'Get a unique identifier of the Taxcom is unavailable for this configuration subscriber.'"));
+			NStr("en='Get a unique identifier of the Taxcom is unavailable for this configuration subscriber.';ru='Получение уникального идентификатора абонента Такском недоступно для этой конфигурации.'"));
 	ElsIf LaunchLocation = "taxcomPrivat" Then
 		Context.Insert("MessageActionsUnavailable",
-			NStr("en = 'Work with a personal account of the Taxcom is unavailable for this configuration subscriber.'"));
+			NStr("en='Work with a personal account of the Taxcom is unavailable for this configuration subscriber.';ru='Работа с личным кабинетом абонента Такском недоступна для этой конфигурации.'"));
 	EndIf;
 	
 EndProcedure
@@ -231,7 +231,7 @@ Procedure PrepareDSCertificateForSending(COPContext, HandlerContext)
 		
 		HandlerContext.ErrorOccurred = True;
 		HandlerContext.UserErrorDescription =
-			NStr("en = 'Unable to receive binary data of the certificate. Certificate is not found in the list of parameters.'");
+			NStr("en='Unable to receive binary data of the certificate. Certificate is not found in the list of parameters.';ru='Не удалось получить двоичные данные сертификата. Сертификат не обнаружен в списке параметров.'");
 		HandlerContext.ActionOnErrorForClient = "ShowMessage";
 		HandlerContext.ActionsOnErrorForServer.Add("BreakBusinessProcess");
 		Return;
@@ -241,7 +241,7 @@ Procedure PrepareDSCertificateForSending(COPContext, HandlerContext)
 	CertificateBinaryData = Connection1CTaxcom.CertificateBinaryData(DSCertificate);
 	If CertificateBinaryData = Undefined Then
 		
-		MessageForRegistrationLog = NStr("en = 'Error receiving binary data of the certificate. There is no certificate binary data or the certificate was deleted.'");
+		MessageForRegistrationLog = NStr("en='Error receiving binary data of the certificate. There is no certificate binary data or the certificate was deleted.';ru='Ошибка при получении двоичных данных сертификата. Двоичные данные сертификата отсутствуют, либо сертификат был удален.'");
 		OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
 			MessageForRegistrationLog, DSCertificate);
 		
@@ -250,7 +250,7 @@ Procedure PrepareDSCertificateForSending(COPContext, HandlerContext)
 		HandlerContext.ActionsOnErrorForServer.Add("CreateLogRegistrationRecord");
 		HandlerContext.ActionsOnErrorForServer.Add("BreakBusinessProcess");
 		HandlerContext.UserErrorDescription =
-			NStr("en = 'Error receiving certificate data. For more details see the event log.'");
+			NStr("en='Error receiving certificate data. For more details see the event log.';ru='Ошибка при получении данных сертификата. Подробнее см. в журнале регистрации.'");
 		HandlerContext.ActionOnErrorForClient = "ShowMessage";
 		Return;
 		
@@ -290,14 +290,15 @@ Procedure PrepareDataAboutCompanies(COPContext, HandlerContext)
 		
 		HandlerContext.ErrorOccurred = True;
 		HandlerContext.FullErrorDescription =
-			NStr("en = 'Unable to receive company registration data.'")
+			NStr("en='Unable to receive company registration data.';ru='Не удалось получить регистрационные данные организации.'")
 			+ " " + DetailErrorDescription(ErrorInfo());
 		HandlerContext.ActionsOnErrorForServer.Add("CreateLogRegistrationRecord");
 		HandlerContext.ActionsOnErrorForServer.Add("BreakBusinessProcess");
 		
 		HandlerContext.UserErrorDescription =
-			NStr("en = 'Error receiving company data.
-				 |See more in the registration log'");
+			NStr("en='Error receiving company data."
+"See more in the registration log';ru='Ошибка при получении данных организации."
+"Подробнее см. в журнале регистрации'");
 		HandlerContext.ActionOnErrorForClient = "ShowMessage";
 		Return;
 		

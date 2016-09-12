@@ -114,7 +114,7 @@ EndFunction
 //
 Procedure UnknownChannelNameError(Val MessageChannel) Export
 	
-	MessagePattern = NStr("en = 'Unknown message channel name %1'");
+	MessagePattern = NStr("en='Unknown message channel name %1';ru='Неизвестное имя канала сообщений %1'");
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, MessageChannel);
 	Raise(MessageText);
 	
@@ -166,7 +166,7 @@ EndFunction
 //
 Procedure WriteMessageStartProcessing(Val Message) Export
 	
-	WriteLogEvent(NStr("en = 'Messages in the service models. Start of processing'",
+	WriteLogEvent(NStr("en='Messages in the service models. Start of processing';ru='Сообщения в модели сервиса.Начало обработки'",
 		CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,
 		,
@@ -182,7 +182,7 @@ EndProcedure
 //
 Procedure WriteEventEndDataProcessors(Val Message) Export
 	
-	WriteLogEvent(NStr("en = 'Messages in the service model. End of processing'",
+	WriteLogEvent(NStr("en='Messages in the service model. End of processing';ru='Сообщения в модели сервиса.Окончание обработки'",
 		CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,
 		,
@@ -196,7 +196,7 @@ Procedure WriteEventEndDataProcessors(Val Message) Export
 Procedure DeliverQuickMessages() Export
 	
 	If TransactionActive() Then
-		Raise(NStr("en = 'Fast messages delivery is impossible in transaction'"));
+		Raise(NStr("en='Fast messages delivery is impossible in transaction';ru='Доставка быстрых сообщений невозможна в транзакции'"));
 	EndIf;
 	
 	JobMethodName = "MessageExchange.DeliverMessages";
@@ -227,11 +227,11 @@ Procedure DeliverQuickMessages() Export
 	EndIf;
 		
 	Try
-		BackgroundJobs.Execute(JobMethodName, , JobKey, NStr("en = 'Instant messages delivery'"))
+		BackgroundJobs.Execute(JobMethodName, , JobKey, NStr("en='Instant messages delivery';ru='Доставка быстрых сообщений'"))
 	Except
 		// Additional exception data processor
 		// is not required, the expected exception - duplication of a job with the same key.
-		WriteLogEvent(NStr("en = 'Instant messages delivery'",
+		WriteLogEvent(NStr("en='Instant messages delivery';ru='Доставка быстрых сообщений'",
 			CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , ,
 			DetailErrorDescription(ErrorInfo()));
 	EndTry;
@@ -260,14 +260,14 @@ Procedure BeforeMessageSending(Val MessageChannel, Val MessageBody) Export
 	If BodyContainTypedMessage(MessageBody, Message) Then
 		If MessagesSaaSReUse.TypeAreaBody().IsDescendant(Message.Body.Type()) Then
 			If CommonUse.SessionSeparatorValue() <> Message.Body.Zone Then
-				WriteLogEvent(NStr("en = 'Messages in the service model. Message sending'",
+				WriteLogEvent(NStr("en='Messages in the service model. Message sending';ru='Сообщения в модели сервиса.Отправка сообщения'",
 					CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					,
 					,
 					MessagePresentationForLog(Message));
 					
-				ErrorTemplate = NStr("en = 'Error at message sending. Data area %1 does not match the current one (%2).'");
+				ErrorTemplate = NStr("en='Error at message sending. Data area %1 does not match the current one (%2).';ru='Ошибка при отправке сообщения. Область данных %1 не совпадает с текущей (%2).'");
 				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate, 
 					Message.Body.Zone, CommonUse.SessionSeparatorValue());
 					
@@ -295,7 +295,7 @@ Procedure OnMessageSending(MessageChannel, MessageBody, MessageObject) Export
 		Message.Header.Sent = CurrentUniversalDate();
 		MessageBody = WriteMessageToUntypedBody(Message);
 		
-		WriteLogEvent(NStr("en = 'Messages in the service model. Sending'",
+		WriteLogEvent(NStr("en='Messages in the service model. Sending';ru='Сообщения в модели сервиса.Отправка'",
 			CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,
 			,
@@ -333,7 +333,7 @@ Procedure OnMessageReceiving(MessageChannel, MessageBody, MessageObject) Export
 		
 		MessageBody = WriteMessageToUntypedBody(Message);
 		
-		WriteLogEvent(NStr("en = 'Messages in the service model. Receiving'",
+		WriteLogEvent(NStr("en='Messages in the service model. Receiving';ru='Сообщения в модели сервиса.Получение'",
 			CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,
 			,
@@ -397,7 +397,7 @@ EndFunction
 
 Function MessagePresentationForLog(Val Message)
 	
-	Pattern = NStr("en = 'Channel: %1'", CommonUseClientServer.MainLanguageCode());
+	Pattern = NStr("en='Channel: %1';ru='Канал: %1'", CommonUseClientServer.MainLanguageCode());
 	Presentation = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
 		ChannelNameByMessageType(Message.Body.Type()));
 		
@@ -405,12 +405,12 @@ Function MessagePresentationForLog(Val Message)
 	Record.SetString();
 	XDTOFactory.WriteXML(Record, Message.Header, , , , XMLTypeAssignment.Explicit);
 		
-	Pattern = NStr("en = 'Title: %1'", CommonUseClientServer.MainLanguageCode());
+	Pattern = NStr("en='Title: %1';ru='Заголовок: %1'", CommonUseClientServer.MainLanguageCode());
 	Presentation = Presentation + Chars.LF + StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
 		Record.Close());
 		
 	If MessagesSaaSReUse.TypeAreaBody().IsDescendant(Message.Body.Type()) Then
-		Pattern = NStr("en = 'Data area: %1'", CommonUseClientServer.MainLanguageCode());
+		Pattern = NStr("en='Data area: %1';ru='Область данных: %1'", CommonUseClientServer.MainLanguageCode());
 		Presentation = Presentation + Chars.LF + StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
 			Format(Message.Body.Zone, "NZ=0; NG="));
 	EndIf;
@@ -433,13 +433,13 @@ Procedure BroadcastMessageToCorrespondentIfNecessary(Message, Val InformationCon
 	
 	InterfaceMessages = TranslationXDTOService.GetInterfaceMessages(Message);
 	If InterfaceMessages = Undefined Then
-		Raise NStr("en = 'The application failed to define interface of the message being sent: there is no interface handler registered for any of the types used in the message!'");
+		Raise NStr("en='The application failed to define interface of the message being sent: there is no interface handler registered for any of the types used in the message!';ru='Не удалось определить интерфейс отправляемого сообщения: ни для одного из типов, используемых в сообщении, не зарегистрирован обработчик интерфейса!'");
 	EndIf;
 	
 	If Not InformationConnection.Property("URL") 
 			Or Not ValueIsFilled(InformationConnection.URL) Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'URL of the messages exchange service with the infobase %1 is not specified'"), RecipientPresentation);
+			NStr("en='URL of the messages exchange service with the infobase %1 is not specified';ru='Не задан URL сервиса обмена сообщениями с информационной базой %1'"), RecipientPresentation);
 	EndIf;
 	
 	CorrespondentVersion = MessageInterfacesSaaS.InterfaceVersionCorrespondent(
@@ -447,7 +447,7 @@ Procedure BroadcastMessageToCorrespondentIfNecessary(Message, Val InformationCon
 	
 	If CorrespondentVersion = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Correspondent %1 does not support the %2 interface messages versions receipt supported by the current infobase!'"),
+			NStr("en='Correspondent %1 does not support the %2 interface messages versions receipt supported by the current infobase!';ru='Корреспондент %1 не поддерживает получение версий сообщений интерфейса %2, поддерживаемых текущей информационной базой!'"),
 			RecipientPresentation, InterfaceMessages.ProgramInterface);
 	EndIf;
 	

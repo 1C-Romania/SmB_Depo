@@ -335,7 +335,7 @@ Procedure LoadFromFile(ExportableData, ImportParameters, Cancel) Export
 				
 				If CatalogItem = Undefined Then
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Products and services with %1 name does not exist.'"), TableRow.Description);
+					NStr("en='Products and services with %1 name does not exist.';ru='Номенклатура с наименованием ""%1"" не существует.'"), TableRow.Description);
 					Raise MessageText;
 				EndIf;
 			EndIf;

@@ -5,14 +5,14 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
 	If Not ValueIsFilled(DataProcessorFileName) Or Not ValueIsFilled(DataProcessorFileAddress) Then
 		
-		CommonUseClientServer.MessageToUser(NStr("en = 'Specify file of external report or data processor'"), , "DataProcessorFileAddress");
+		CommonUseClientServer.MessageToUser(NStr("en='Specify file of external report or data processor';ru='Укажите файл внешнего отчета или обработки'"), , "DataProcessorFileAddress");
 		Cancel = True;
 		
 	EndIf;
 	
 	If Not ValueIsFilled(SafeMode) Then
 		
-		CommonUseClientServer.MessageToUser(NStr("en = 'Specify a safe mode to connect an external module'"), , "SafeMode");
+		CommonUseClientServer.MessageToUser(NStr("en='Specify a safe mode to connect an external module';ru='Укажите безопасный режим для подключения внешнего модуля'"), , "SafeMode");
 		Cancel = True;
 		
 	EndIf;
@@ -92,7 +92,7 @@ EndProcedure
 Function EnableOnServer()
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise NStr("en = 'Insufficient access rights.'");
+		Raise NStr("en='Insufficient access rights.';ru='Недостаточно прав доступа.'");
 	EndIf;
 	
 	Extension = Right(Lower(TrimAll(DataProcessorFileName)), 3);

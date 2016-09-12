@@ -30,6 +30,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Peripherals</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Периферийные устройства</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<Hierarchical>false</Hierarchical>
@@ -236,6 +240,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Peripherals name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование подключаемого оборудования</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -265,6 +273,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Peripherals code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код подключаемого оборудования</v8:content>
 						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
@@ -317,6 +329,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Peripherals instance</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Экземпляр подключаемого оборудования</v8:content>
+				</v8:item>
 			</ObjectPresentation>
 			<ExtendedObjectPresentation/>
 			<ListPresentation/>
@@ -334,6 +350,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Peripheral type</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип оборудования</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -346,6 +366,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Hardware type of connected peripheral instance.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип оборудования подключаемого экземпляра устройства.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -378,6 +402,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Device Identifier</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор устройства</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Unique identifier of hardware standard device</Comment>
 					<Type>
@@ -394,6 +422,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>A unique device identifier (GUID)to set up correspondence with the device as defined in the external equipment control system. It is indexed to enable search and insertion.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уникальный идентификатор устройства (GUID), позволяет установить соответствие с устройством, определенном во внешней системе управления оборудованием. Индексируется для возможности поиска и вставки по нему.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -426,6 +458,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Device is disconnected</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Устройство отключено</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -438,6 +474,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The device with the set attribute does not participate in the mechanism (connection, disabling, commands execution)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Устройство с установленным признаком не участвует в работе механизма (подключение, отключение, выполнение команд)</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -470,6 +510,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Device is in use</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Устройство используется</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -482,6 +526,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Device with a selected flag participates in the mechanism operation (connection, exit, command execution).</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Устройство с установленным признаком участвует в работе механизма (подключение, отключение, выполнение команд).</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -514,6 +562,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Hardware driver</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Драйвер оборудования</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -526,6 +578,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Peripheral equipment driver.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Драйвер подключаемого оборудования.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -558,6 +614,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Parameters</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметры</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -570,6 +630,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Connection parameters of the device instance.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметры подключения экземпляра устройства.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -602,6 +666,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Workplace</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>рабочее место</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -614,6 +682,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Workplace on which the device sample has been created.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Рабочее место, на котором был создан экземпляр устройства.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -646,6 +718,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Reinstallation is required</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Требуется переустановка</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -658,6 +734,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Component reinstallation is required</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Требуется переустановка компоненты</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -690,6 +770,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Installation is required</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Требуется установка</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -702,6 +786,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Component installation is required</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Требуется установка компоненты</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -733,6 +821,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Exchange rule</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правило обмена</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment>Intended for exchange with offline equipment</Comment>
@@ -773,6 +865,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Infobase node</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Узел информационной базы</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Intended for exchange with offline equipment</Comment>
 					<Type>
@@ -812,6 +908,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Serial number</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Серийный номер</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -828,6 +928,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Device serial number</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Серийный номер устройства</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -860,6 +964,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Component Version</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Версия компоненты</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment>Component Version</Comment>
 					<Type>
@@ -876,6 +984,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Version of the peripheral driver component</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Версия компоненты драйвера подключаемого оборудования</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -908,6 +1020,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Driver handler (not used)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>(Не используется) Обработчик драйвера</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -920,6 +1036,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Defines the driver handler (not used).</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Определяет обработчика драйвера (Не используется).</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -957,6 +1077,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Peripherals</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Периферийные устройства</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>

@@ -187,9 +187,9 @@ Function QueryByPlannedPaymentsBalance()
 	Query.SetParameter("StartDate", Report.DelayedPaymentsPeriod.StartDate);
 	Query.SetParameter("EndDate", EndOfDay(Report.FuturePaymentsPeriod.EndDate));
 	Query.SetParameter("WorkingDate", Report.WorkingDate);
-	Query.SetParameter("OverduePayments", NStr("en = 'Total Overdue payments'"));
-	Query.SetParameter("ScheduledPayments", NStr("en = 'Total scheduled payments'"));
-	Query.SetParameter("TextSummary", NStr("en = 'Total payments'"));
+	Query.SetParameter("OverduePayments", NStr("en='Total Overdue payments';ru='Итого просроченные платежи'"));
+	Query.SetParameter("ScheduledPayments", NStr("en='Total scheduled payments';ru='Итого запланированные платежи'"));
+	Query.SetParameter("TextSummary", NStr("en='Total payments';ru='Всего платежи'"));
 	
 	Return Query;
 
@@ -225,9 +225,9 @@ Function QueryByCashAssetsBalance()
 	Query.Text = QueryText;
 	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
 	Query.SetParameter("WorkingDate", Report.WorkingDate);
-	Query.SetParameter("PaymentStatus", NStr("en = 'Available balance'"));
-	Query.SetParameter("TextSummary", NStr("en = 'Total payments'"));
-	Query.SetParameter("Payment", NStr("en = 'Current balance'"));
+	Query.SetParameter("PaymentStatus", NStr("en='Available balance';ru='Доступный остаток'"));
+	Query.SetParameter("TextSummary", NStr("en='Total payments';ru='Всего платежи'"));
+	Query.SetParameter("Payment", NStr("en='Current balance';ru='Текущий остаток'"));
 	
 	Return Query;
 

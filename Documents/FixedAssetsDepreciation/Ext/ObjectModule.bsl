@@ -49,7 +49,7 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectMonthEndErrors(AdditionalProperties, RegisterRecords, Cancel);
 	
 	If AdditionalProperties.TableForRegisterRecords.TableMonthEndErrors.Count() > 0 Then
-		MessageText = NStr("en = 'During the depreciation accrual the notifications were generated! See details in the month end report.'");
+		MessageText = NStr("en='During the depreciation accrual the notifications were generated! See details in the month end report.';ru='При начислении амортизации были сформированы предупреждения! Подробнее см. в отчете о закрытии месяца.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	

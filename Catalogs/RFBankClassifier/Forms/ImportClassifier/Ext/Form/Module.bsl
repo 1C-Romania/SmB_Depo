@@ -62,7 +62,7 @@ Procedure PathToITSDiskStartChoice(Item, ChoiceData, StandardProcessing)
 	ClearMessages();
 	
 	SelectDirectoryDialog = New FileDialog(FileDialogMode.ChooseDirectory);
-	SelectDirectoryDialog.Title = NStr("en = 'Specify path to ITS disk'");
+	SelectDirectoryDialog.Title = NStr("en='Specify path to ITS disk';ru='Укажите путь к диску ИТС'");
 	SelectDirectoryDialog.Directory   = PathToITSDisk;
 	
 	If Not SelectDirectoryDialog.Choose() Then
@@ -74,7 +74,7 @@ Procedure PathToITSDiskStartChoice(Item, ChoiceData, StandardProcessing)
 	DataFile = New File(PathToITSDisk + "Database\Garant\MorphDB\Morph.dlc");
 	If Not DataFile.Exist() Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en ='Classifier data was not found in the specified directory. It is necessary to specify the path to the disk 1C:ITS on which there is the base ""Garant. Taxes, accounting, entrepreneurship.""'"),
+			NStr("en='Classifier data was not found in the specified directory. It is necessary to specify the path to the disk 1C:ITS on which there is the base ""Garant. Taxes, accounting, entrepreneurship.""';ru='В указанном каталоге не обнаружены данные классификатора. Необходимо указать путь к диску 1С:ИТС, на котором содержится база ""Гарант. Налоги, бухучет, предпринимательство.""'"),
 			,
 			"PathToITSDisk");
 	EndIf;
@@ -96,7 +96,7 @@ Procedure GoToNext(Command)
 		If ImportingOption = "ITS" AND Not ValueIsFilled(PathToITSDisk) AND CommonUseClientServer.IsLinuxClient() Then
 			// Under Linux - search of drive letters is impossible.
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'When working under Linux OS it is necessary to distinctly specify the path to the disk'"),
+				NStr("en='When working under Linux OS it is necessary to distinctly specify the path to the disk';ru='При работе в ОС Linux необходимо явно указать путь к диску'"),
 				,
 				"PathToITSDisk");
 			Return;
@@ -179,15 +179,15 @@ Procedure ImportResult()
 	// classifier in the events log monitor and in import form.
 	
 	If ImportingOption = "ITS" Then
-		Source = NStr("en ='ITS disk'");
+		Source = NStr("en='ITS disk';ru='Диск ИТС'");
 	Else
-		Source = NStr("en ='RBK site'");
+		Source = NStr("en='RBK site';ru='Сайт РБК'");
 	EndIf;
 	
 	ClassifierImportParameters = GetFromTempStorage(StorageAddress);
 	
 	EventName = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en ='Banks classifier import. %1.'"), Source);
+		NStr("en='Banks classifier import. %1.';ru='Загрузка классификатора банков. %1.'"), Source);
 	
 	If ClassifierImportParameters["ImportCompleted"] Then
 		EventLogMonitorClient.AddMessageForEventLogMonitor(EventName,, 
@@ -214,13 +214,15 @@ Procedure Attachable_CheckJobExecution()
 	Try
 		JobCompleted = JobCompleted(JobID);
 	Except
-		EventLogMonitorClient.AddMessageForEventLogMonitor(NStr("en = 'Import banks classifier'", CommonUseClientServer.MainLanguageCode()),
+		EventLogMonitorClient.AddMessageForEventLogMonitor(NStr("en='Import banks classifier';ru='Загрузка классификатора банков'", CommonUseClientServer.MainLanguageCode()),
 			"Error", DetailErrorDescription(ErrorInfo()), , True);
 			
 		Items.ExplanationText.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Bank classifier import is aborted
-				|by the reason of: %1
-				|Details see in events log monitor.'"),
+			NStr("en='Bank classifier import is aborted"
+"by the reason of: %1"
+"Details see in events log monitor.';ru='Загрузка классификатора"
+"банков прервана по причине:"
+"%1 Подробности см. в журнале регистрации.'"),
 			BriefErrorDescription(ErrorInfo()));
 			
 		Items.FormPages.CurrentPage = Items.ResultPage;
@@ -320,8 +322,9 @@ Procedure GetDataBIKITSdisc(ITSFilesImportingParameters)
 		ITSFilesImportingParameters.Insert("ITSDataBinaryDataAddress", ITSDataBinaryDataAddress);
 		DataFile = Undefined;
 	Else
-		MessageText = NStr("en ='On the drive 1C:ITS BIC RF classifier data was not found. 
-		|To install, you need 1C:ITS disk containing the database ""Garant. Taxes, accounting, entrepreneurship.""'");
+		MessageText = NStr("en='On the drive 1C:ITS BIC RF classifier data was not found. "
+"To install, you need 1C:ITS disk containing the database ""Garant. Taxes, accounting, entrepreneurship.""';ru='На диске 1С:ИТС не обнаружены данные классификатора БИК РФ. "
+"Для установки требуется диск 1С:ИТС, на котором содержится база ""Гарант. Налоги, бухучет, предпринимательство.""'");
 		ITSFilesImportingParameters.Insert("MessageText", MessageText);
 	EndIf;
 	
@@ -342,7 +345,7 @@ Procedure GetDiskSorterITS(ITSFilesImportingParameters)
 		BinaryDataAddress = PutToTempStorage(New BinaryData(FileDataProcessors.FullName));
 		ITSFilesImportingParameters.Insert("ITSPreparingBinaryDataAddress", BinaryDataAddress);
 	Else
-		ITSFilesImportingParameters.Insert("MessageText", NStr("en ='File for the data preparation processing of the BIC RF classifier has not been found on the ITS disk.'"));
+		ITSFilesImportingParameters.Insert("MessageText", NStr("en='File for the data preparation processing of the BIC RF classifier has not been found on the ITS disk.';ru='На диске ИТС не обнаружен файл обработки подготовки данных классификатора БИК РФ.'"));
 	EndIf;
 	
 EndProcedure
@@ -364,7 +367,7 @@ Procedure SetChangesInInterface()
 	If Items.FormPages.CurrentPage = Items.PageSelectSource
 		Or Items.FormPages.CurrentPage = Items.ImportingFromRBKSite Then
 		Items.FormButtonBack.Visible  = False;
-		Items.FormNextButton.Title = NStr("en ='Import'");
+		Items.FormNextButton.Title = NStr("en='Import';ru='Загрузить'");
 		Items.FormCancelButton.Enabled = True;
 		Items.FormNextButton.Enabled  = True;
 	ElsIf Items.FormPages.CurrentPage = Items.ImportingInProgress Then
@@ -373,7 +376,7 @@ Procedure SetChangesInInterface()
 		Items.FormCancelButton.Enabled = True;
 	Else
 		Items.FormButtonBack.Visible = True;
-		Items.FormNextButton.Title = NStr("en ='Close'");
+		Items.FormNextButton.Title = NStr("en='Close';ru='Закрыть'");
 		Items.FormCancelButton.Enabled = False;
 		Items.FormNextButton.Enabled  = True;
 	EndIf;
@@ -415,7 +418,7 @@ Function GetRBCDataFromServer(RBKFilesImportingParameters)
 		Raise TextImportingIsProhibited();
 	EndIf;
 	
-	JobDescription = NStr("en = 'Import bank classifier'");
+	JobDescription = NStr("en='Import bank classifier';ru='Загрузить классификатор банков'");
 	
 	Result = LongActions.ExecuteInBackground(
 		UUID,
@@ -432,7 +435,7 @@ EndFunction
 
 &AtServer
 Function TextImportingIsProhibited()
-	Return NStr("en = 'Import of the banks classifier in the separated mode is prohibited'");
+	Return NStr("en='Import of the banks classifier in the separated mode is prohibited';ru='Загрузка классификатора банков в разделенном режиме запрещена.'");
 EndFunction
 
 #EndRegion

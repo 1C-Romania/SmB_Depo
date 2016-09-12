@@ -62,7 +62,7 @@ Procedure CommandSetMainItem(Command)
 		SetMainItem();
 		Notify("UserSettingsChanged");
 	Else
-		ShowMessageBox(Undefined,NStr("en='Item should be recorded first!'"));
+		ShowMessageBox(Undefined,NStr("en='Item should be recorded first!';ru='Элемент необходимо вначале записать!'"));
 	EndIf;
 	
 EndProcedure // CommandSetMainItem()

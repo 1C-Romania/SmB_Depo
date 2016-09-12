@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Data synchronization setup wizard</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Помощник настройки синхронизации данных</v8:content>
+		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
@@ -37,6 +41,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Main panel</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель основная</v8:content>
+				</v8:item>
 			</Title>
 			<PagesRepresentation>None</PagesRepresentation>
 			<ExtendedTooltip name="MainPanelExtendedTooltip" id="1928"/>
@@ -47,11 +55,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page beginning</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера начало</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page beginning</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера начало</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageStartExtendedTooltip" id="1929"/>
@@ -61,6 +77,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group data synchronization description</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа описание синхронизации данных</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -91,6 +111,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Group backup</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа резервное копирование</v8:content>
+								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
 							<Representation>NormalSeparation</Representation>
@@ -113,6 +137,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Before you set synchronization you should create data backup.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Перед настройкой синхронизации рекомендуется создать резервную копию данных.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="BackupLabelContextMenu" id="2452"/>
 									<ExtendedTooltip name="LabelBackupExtendedTooltip" id="2453"/>
@@ -127,6 +155,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Select method of data synchronization setting</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выбор способа настройки синхронизации данных</v8:content>
 								</v8:item>
 							</Title>
 							<VerticalStretch>false</VerticalStretch>
@@ -149,6 +181,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>Specify the settings manually</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Указать настройки вручную</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">SetupNewDataExchange</Value>
 											</xr:Value>
@@ -166,11 +202,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Group selection from file</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа выбор из файла</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group selection from file</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа выбор из файла</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -194,6 +238,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>Import file with settings that you created in another application</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Загрузить файл с настройками, созданный в другой программе</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">ContinueDataExchangeSetup</Value>
 													</xr:Value>
@@ -211,6 +259,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Specify the attachment file name with the saved data synchronization settings, that was exported on setting in the first application</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Укажите имя файла с сохраненными настройками синхронизации данных, который был выгружен при настройке в первой программе</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>None</TitleLocation>
@@ -230,6 +282,14 @@
  to data synchronization form - select needed data
  synchronization and open its parameters - in the form command panel select All actions –&gt; Get data synchronization settings for another application...</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Если файл настроек синхронизации данных утерян, то для формирования нового файла необходимо:
+ - перейти в первую программу 
+ - перейти в форму синхронизации данных 
+ - выбрать требуемую синхронизацию данных и открыть ее параметры 
+ - в командной панели формы следует выбрать пункт меню: "Все действия" –&gt; "Получить настройки синхронизации данных для другой программы..."</v8:content>
+													</v8:item>
 												</Title>
 											</ExtendedTooltip>
 											<Events>
@@ -245,6 +305,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content> If data has already been synchronized in the %ApplicationCorrespondent% application and the settings have been saved in an external file, these settings can be used by specifying the path to the file in which they are stored. </v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content> Если синхронизация данных уже производилась в программе "%ПрограммаКорреспондент%", и настройки были сохранены во внешнем файле, то эти настройки можно использовать, указав путь до файла, в котором они хранятся. </v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
@@ -265,6 +329,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Press the "Next" button to select the connection variant.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нажмите кнопку "Далее" для выбора варианта подключения.</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="NextLabelAssistantRunVariantContextMenu" id="124"/>
 							<ExtendedTooltip name="NextLabelAssistantRunVariantExtendedTooltip" id="1953"/>
@@ -277,6 +345,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page assistant mode selection</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера выбор режима работы помощника</v8:content>
+						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageStartExchangeWithServiceSetupExtendedTooltip" id="1954"/>
 					<ChildItems>
@@ -285,6 +357,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Setting of the data synchronization with the application in the service</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка синхронизации данных с приложением в сервисе</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -296,6 +372,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Specify connection parameters to the application in the Internet</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Укажите параметры подключения к приложению в Интернете</v8:content>
 										</v8:item>
 									</Title>
 									<Width>70</Width>
@@ -311,6 +391,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Specify connection parameters to the application on the Internet:</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Укажите параметры подключения к приложению в Интернете:</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTipRepresentation>Button</ToolTipRepresentation>
 											<ContextMenu name="DecorationConnectionToServiceParametersContextMenu" id="2490"/>
@@ -324,6 +408,10 @@ in the User and Password fields you should specify the name and password of appl
 
 Important! User name must not contain the characters [InvalidCharacters ]. Otherwise you should create a user in the application on the Internet, whose name will not contain hidden characters. This user must be application administrator.</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Для настройки синхронизации данных с приложением, расположенным в Интернете, необходимо указать в поле Адрес веб-ссылку к этому приложению (точно такую же, как при открытии этого приложения в браузере). Например: http://www.1cfresh.com/ea_demo/123/ В полях Пользователь и Пароль необходимо указать имя и пароль администратора приложения.  Важно! Имя пользователя не должно содержать служебных символов "[НедопустимыеСимволы]". В противном случае в приложении, расположенном в Интернете, необходимо создать пользователя, в имени которого не будут содержаться служебные символы. Этот пользователь должен быть администратором приложения.</v8:content>
+													</v8:item>
 												</Title>
 											</ExtendedTooltip>
 										</LabelDecoration>
@@ -333,6 +421,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Address of application</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Адрес приложения</v8:content>
 												</v8:item>
 											</Title>
 											<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -353,6 +445,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 															<v8:lang>en</v8:lang>
 															<v8:content>User</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Пользователь</v8:content>
+														</v8:item>
 													</Title>
 													<Width>30</Width>
 													<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -365,6 +461,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Password</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Пароль</v8:content>
 														</v8:item>
 													</Title>
 													<Width>30</Width>
@@ -414,11 +514,19 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 											<v8:lang>en</v8:lang>
 											<v8:content>Group backup</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа резервное копирование</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group backup</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа резервное копирование</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -442,6 +550,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 													<v8:lang>en</v8:lang>
 													<v8:content>Before you set synchronization you should create data backup.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Перед настройкой синхронизации рекомендуется создать резервную копию данных.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="BackupLabelServiceContextMenu" id="2460"/>
 											<ExtendedTooltip name="BackupLabelServiceExtendedTooltip" id="2461"/>
@@ -458,6 +570,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to specify the synchronization parameters.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для задания параметров синхронизации.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="LabelNextAssistantPageServiceExchangeSettingStartContextMenu" id="1245"/>
 									<ExtendedTooltip name="AssistantPageStartExchangeWithServiceSetupNextLabelExtendedTooltip" id="1968"/>
@@ -472,11 +588,19 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page data exchange parameters setup</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров обмена данными</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page parameters setting</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageDataExchangeSetupParameterExtendedTooltip" id="1969"/>
@@ -487,11 +611,19 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization parameters setup</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка параметров синхронизации данных</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group assistant page data exchange parameter setting</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа страница мастера настройка параметров обмена данными</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -504,6 +636,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>This infobase (application) name</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Наименование этой информационной базы (программы)</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Top</TitleLocation>
@@ -519,6 +655,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>This infobase prefix</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Префикс этой информационной базы</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="SourceInfobasePrefixExchangeWithServiceContextMenu" id="1790"/>
@@ -537,6 +677,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 													<v8:lang>en</v8:lang>
 													<v8:content>Application name in the Internet</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование приложения в Интернете</v8:content>
+												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
 											<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -551,6 +695,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Application prefix in the Internet</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Префикс приложения в Интернете</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="TargetInfobasePrefixExchangeWithServiceContextMenu" id="1792"/>
@@ -572,6 +720,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 													<v8:lang>en</v8:lang>
 													<v8:content>Data synchronization rules</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Правила синхронизации данных</v8:content>
+												</v8:item>
 											</Title>
 											<MultiLine>true</MultiLine>
 											<ContextMenu name="DataExportSettingsDescriptionContextMenu" id="1284"/>
@@ -592,6 +744,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to proceed to the data matching.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для перехода к сопоставлению данных.</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Bottom</VerticalAlign>
 									<ContextMenu name="NextLabelConfirmSettings6ContextMenu" id="1282"/>
@@ -607,11 +763,19 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page data exchange parameters setup</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров обмена данными</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page parameters setting</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageDataExchangeOverWebServiceParameterSetupExtendedTooltip" id="1980"/>
@@ -621,6 +785,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data sending rules</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Правила отправки данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -640,6 +808,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 													<v8:lang>en</v8:lang>
 													<v8:content>This infobase (application) name</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование этой информационной базы (программы)</v8:content>
+												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
 											<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -652,6 +824,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Prefix</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Префикс</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
@@ -673,6 +849,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 													<v8:lang>en</v8:lang>
 													<v8:content>Application name in the Internet</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование приложения в Интернете</v8:content>
+												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
 											<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -685,6 +865,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Prefix</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Префикс</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
@@ -707,6 +891,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 													<v8:lang>en</v8:lang>
 													<v8:content>Data synchronization rules</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Правила синхронизации данных</v8:content>
+												</v8:item>
 											</Title>
 											<MultiLine>true</MultiLine>
 											<ContextMenu name="DataExportSettingsDescription1ContextMenu" id="1782"/>
@@ -720,6 +908,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 													<v8:lang>en</v8:lang>
 													<v8:content>Change data sending rules</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Изменить правила отправки данных</v8:content>
+												</v8:item>
 											</Title>
 											<ExtendedTooltip name="SetupDataExport1ExtendedTooltip" id="1989"/>
 										</Button>
@@ -732,6 +924,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to proceed to the data matching.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для перехода к сопоставлению данных.</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Bottom</VerticalAlign>
@@ -748,11 +944,19 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 							<v8:lang>en</v8:lang>
 							<v8:content>Page of the data matching assistant</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера сопоставление данных</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page of the data matching assistant</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера сопоставление данных</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageDataMappingExtendedTooltip" id="1991"/>
@@ -763,11 +967,19 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 									<v8:lang>en</v8:lang>
 									<v8:content>Same data matching</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сопоставление одинаковых данных</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group assistant page data mapping</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа страница мастера сопоставление данных</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -780,6 +992,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 											<v8:lang>en</v8:lang>
 											<v8:content>Same data matching</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сопоставление одинаковых данных</v8:content>
+										</v8:item>
 									</Title>
 									<PagesRepresentation>None</PagesRepresentation>
 									<ExtendedTooltip name="DataMappingStatePagesExtendedTooltip" id="1993"/>
@@ -790,11 +1006,19 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 													<v8:lang>en</v8:lang>
 													<v8:content>Mapping status unmapped data exists</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Статус сопоставления есть несопоставленные данные</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Mapping status unmapped data exists</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Статус сопоставления есть несопоставленные данные</v8:content>
 												</v8:item>
 											</ToolTip>
 											<ExtendedTooltip name="MappingStateHasUnmappedDataExtendedTooltip" id="1994"/>
@@ -809,6 +1033,13 @@ Important! User name must not contain the characters [InvalidCharacters ]. Other
 This will help to avoid duplicate of catalogs that were independently
 introduced in both applications, e.g. with the same names.
 Use matching to specify which data is the same in two applications.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Учет ведется в обеих программах, поэтому следует выполнить сопоставление данных.
+Это позволит избежать появления дублирующихся элементов справочников, которые независимо друг от друга
+были введены в обеих программах, например, с одинаковыми наименованиями.
+С помощью сопоставления можно указать, какие данные являются одинаковыми в двух программах.</v8:content>
 														</v8:item>
 													</Title>
 													<VerticalAlign>Top</VerticalAlign>
@@ -923,10 +1154,18 @@ Use matching to specify which data is the same in two applications.</v8:content>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>NZ=</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>NZ=</v8:content>
+																</v8:item>
 															</Format>
 															<EditFormat>
 																<v8:item>
 																	<v8:lang>en</v8:lang>
+																	<v8:content>NZ=</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
 																	<v8:content>NZ=</v8:content>
 																</v8:item>
 															</EditFormat>
@@ -943,11 +1182,19 @@ Use matching to specify which data is the same in two applications.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Matching status all data is matched</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Статус сопоставления все данные сопоставлены</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Matching status all data is matched</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Статус сопоставления все данные сопоставлены</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -958,6 +1205,10 @@ Use matching to specify which data is the same in two applications.</v8:content>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Message grouping</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группировка сообщения</v8:content>
 														</v8:item>
 													</ToolTip>
 													<Group>Horizontal</Group>
@@ -986,6 +1237,11 @@ Use matching to specify which data is the same in two applications.</v8:content>
 																	<v8:content>All data has been mapped. 
 Proceed next to continue setup.</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Все данные сопоставлены. 
+Перейдите далее для продолжения настройки.</v8:content>
+																</v8:item>
 															</Title>
 															<VerticalAlign>Center</VerticalAlign>
 															<ContextMenu name="Decoration36ContextMenu" id="1749"/>
@@ -1005,6 +1261,10 @@ Proceed next to continue setup.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to synchronize the data.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для синхронизации данных.</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Bottom</VerticalAlign>
 									<ContextMenu name="DataMappingPageNextLabelContextMenu" id="1335"/>
@@ -1020,6 +1280,10 @@ Proceed next to continue setup.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page of the data matching assistant</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера сопоставление данных</v8:content>
+						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageDataExchangeCreatedSuccessfullyExtendedTooltip" id="2008"/>
 					<ChildItems>
@@ -1028,6 +1292,10 @@ Proceed next to continue setup.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization setup has been successfully completed</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка синхронизации данных успешно завершена</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -1041,6 +1309,10 @@ Proceed next to continue setup.</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Picture clock</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Картинка часы</v8:content>
 										</v8:item>
 									</Title>
 									<Picture>
@@ -1072,6 +1344,10 @@ Proceed next to continue setup.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Predefined schedule group</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа предопределенного расписания</v8:content>
+												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
 											<Representation>NormalSeparation</Representation>
@@ -1100,6 +1376,10 @@ Proceed next to continue setup.</v8:content>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Every 15 minutes</v8:content>
 																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Каждые 15 минут</v8:content>
+																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">Every15Minutes</Value>
 																			</xr:Value>
@@ -1112,6 +1392,10 @@ Proceed next to continue setup.</v8:content>
 																					<v8:item>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Every 30 minutes</v8:content>
+																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Каждые 30 минут</v8:content>
 																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">Every30Minutes</Value>
@@ -1126,6 +1410,10 @@ Proceed next to continue setup.</v8:content>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Every hour</v8:content>
 																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Каждый час</v8:content>
+																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">EveryHour</Value>
 																			</xr:Value>
@@ -1139,6 +1427,10 @@ Proceed next to continue setup.</v8:content>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Every day, at 8:00</v8:content>
 																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Каждый день, в 8:00</v8:content>
+																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">EveryDayIn_8_00</Value>
 																			</xr:Value>
@@ -1151,6 +1443,10 @@ Proceed next to continue setup.</v8:content>
 																					<v8:item>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Another schedule</v8:content>
+																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Другое расписание</v8:content>
 																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">OtherSchedule</Value>
@@ -1174,11 +1470,19 @@ Proceed next to continue setup.</v8:content>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>User schedule page</v8:content>
 																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Страница пользовательского расписания</v8:content>
+																				</v8:item>
 																			</Title>
 																			<ToolTip>
 																				<v8:item>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>User schedule page</v8:content>
+																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Страница пользовательского расписания</v8:content>
 																				</v8:item>
 																			</ToolTip>
 																			<ExtendedTooltip name="CustomSchedulePageExtendedTooltip" id="2019"/>
@@ -1206,11 +1510,19 @@ Proceed next to continue setup.</v8:content>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Blank page of the user schedule</v8:content>
 																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Пустая страница пользовательского расписания</v8:content>
+																				</v8:item>
 																			</Title>
 																			<ToolTip>
 																				<v8:item>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Blank page of the user schedule</v8:content>
+																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Пустая страница пользовательского расписания</v8:content>
 																				</v8:item>
 																			</ToolTip>
 																			<ExtendedTooltip name="EmptyCustomSchedulePageExtendedTooltip" id="2022"/>
@@ -1233,6 +1545,10 @@ Proceed next to continue setup.</v8:content>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Unavailable page of the predefined schedule</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Недоступная страница предопределенного расписания</v8:content>
+																</v8:item>
 															</ToolTip>
 															<ExtendedTooltip name="NotAvailablePredefinedSchedulePageExtendedTooltip" id="2024"/>
 															<ChildItems>
@@ -1251,6 +1567,10 @@ Proceed next to continue setup.</v8:content>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Every 15 minutes</v8:content>
 																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Каждые 15 минут</v8:content>
+																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">Every15Minutes</Value>
 																			</xr:Value>
@@ -1263,6 +1583,10 @@ Proceed next to continue setup.</v8:content>
 																					<v8:item>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Every 30 minutes</v8:content>
+																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Каждые 30 минут</v8:content>
 																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">Every30Minutes</Value>
@@ -1277,6 +1601,10 @@ Proceed next to continue setup.</v8:content>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Every hour</v8:content>
 																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Каждый час</v8:content>
+																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">EveryHour</Value>
 																			</xr:Value>
@@ -1290,6 +1618,10 @@ Proceed next to continue setup.</v8:content>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Every day, at 8:00</v8:content>
 																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Каждый день, в 8:00</v8:content>
+																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">EveryDayIn_8_00</Value>
 																			</xr:Value>
@@ -1302,6 +1634,10 @@ Proceed next to continue setup.</v8:content>
 																					<v8:item>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Another schedule</v8:content>
+																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Другое расписание</v8:content>
 																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:string">OtherSchedule</Value>
@@ -1337,6 +1673,10 @@ Proceed next to continue setup.</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Press the "Done" button to exit the assistant.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нажмите кнопку "Готово" для завершения работы с помощником.</v8:content>
+								</v8:item>
 							</Title>
 							<VerticalAlign>Bottom</VerticalAlign>
 							<ContextMenu name="DoneLabel12ContextMenu" id="1351"/>
@@ -1350,6 +1690,10 @@ Proceed next to continue setup.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page of the data matching assistant</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера сопоставление данных</v8:content>
+						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageAddingDocumentDataToAccountingRecordSettingsExtendedTooltip" id="2031"/>
 					<ChildItems>
@@ -1358,6 +1702,10 @@ Proceed next to continue setup.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Settings to record the documents</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки для отражения документов в учете</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -1377,6 +1725,10 @@ Proceed next to continue setup.</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Accounting settings</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки Учета</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -1435,12 +1787,20 @@ Proceed next to continue setup.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Settings of the correspondent accounting parameters</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки параметров учета корреспондента</v8:content>
+										</v8:item>
 									</Title>
 									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Settings of the correspondent accounting parameters</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки параметров учета корреспондента</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -1503,6 +1863,10 @@ Proceed next to continue setup.</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Press the "Next" button to perform the data synchronization.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нажмите кнопку "Далее" для выполнения синхронизации данных.</v8:content>
+								</v8:item>
 							</Title>
 							<VerticalAlign>Bottom</VerticalAlign>
 							<ContextMenu name="NextLabel3ContextMenu" id="1344"/>
@@ -1516,11 +1880,19 @@ Proceed next to continue setup.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page receiving parameters data</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера параметры получения данных</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page receiving parameters data</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера параметры получения данных</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageReceivingParametersDataExtendedTooltip" id="2408"/>
@@ -1530,6 +1902,10 @@ Proceed next to continue setup.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data receiving rules</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Правила получения данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -1563,6 +1939,10 @@ Proceed next to continue setup.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Values to fill details when receiving data in this application</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Значения для заполнения реквизитов при получении данных в этой программе</v8:content>
+														</v8:item>
 													</Title>
 													<VerticalStretch>true</VerticalStretch>
 													<MultiLine>true</MultiLine>
@@ -1576,6 +1956,10 @@ Proceed next to continue setup.</v8:content>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Change rules of getting data for this application</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Изменить правила получения данных для этой программы</v8:content>
 														</v8:item>
 													</Title>
 													<ExtendedTooltip name="DefaultValueSetup6ExtendedTooltip" id="2041"/>
@@ -1611,6 +1995,10 @@ Proceed next to continue setup.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Values to fill details on receiving data in the application located on the Internet</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Значения для заполнения реквизитов при получении данных в приложении, расположенном в Интернете</v8:content>
+														</v8:item>
 													</Title>
 													<VerticalStretch>true</VerticalStretch>
 													<MultiLine>true</MultiLine>
@@ -1624,6 +2012,10 @@ Proceed next to continue setup.</v8:content>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Change rules of getting data for another application</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Изменить правила получения данных для другой программы</v8:content>
 														</v8:item>
 													</Title>
 													<ExtendedTooltip name="CorrespondentInfobaseDefaultValueSetupViaWebServiceExtendedTooltip" id="2049"/>
@@ -1642,6 +2034,10 @@ Proceed next to continue setup.</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Press the "Next" button to perform the data synchronization.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нажмите кнопку "Далее" для выполнения синхронизации данных.</v8:content>
+								</v8:item>
 							</Title>
 							<VerticalAlign>Bottom</VerticalAlign>
 							<ContextMenu name="LabelNextStep4ContextMenu" id="2444"/>
@@ -1655,11 +2051,19 @@ Proceed next to continue setup.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page assistant mode selection</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера выбор режима работы помощника</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page assistant mode selection</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера выбор режима работы помощника</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageAssistantRunModeChoiceExtendedTooltip" id="2051"/>
@@ -1669,6 +2073,10 @@ Proceed next to continue setup.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Selection of option of connection to another application</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выбор варианта подключения к другой программе</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -1695,6 +2103,10 @@ Proceed next to continue setup.</v8:content>
 																<v8:lang>en</v8:lang>
 																<v8:content>Direct connection to the application on this computer or in the local network</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Прямое подключение к программе на этом компьютере или в локальной сети</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">ExchangeOverExternalConnection</Value>
 													</xr:Value>
@@ -1708,6 +2120,10 @@ Proceed next to continue setup.</v8:content>
 																<v8:lang>en</v8:lang>
 																<v8:content>Direct connection to the application through the Internet</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Прямое подключение к программе через Интернет</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">ExchangeOverWebService</Value>
 													</xr:Value>
@@ -1720,6 +2136,10 @@ Proceed next to continue setup.</v8:content>
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>Other connections (network directory, FTP, email)</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Другие каналы связи (сетевой каталог, FTP, электронная почта)</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:string">ExchangeOverOrdinaryCommunicationChannels</Value>
@@ -1742,6 +2162,10 @@ Proceed next to continue setup.</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Indent group</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа отступ</v8:content>
+								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
 							<Representation>NormalSeparation</Representation>
@@ -1754,11 +2178,19 @@ Proceed next to continue setup.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Transport parameters page</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница параметров транспорта</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Transport parameters page</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница параметров транспорта</v8:content>
 										</v8:item>
 									</ToolTip>
 									<HorizontalStretch>true</HorizontalStretch>
@@ -1771,11 +2203,19 @@ Proceed next to continue setup.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>COM transport parameters page</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница параметров транспорта COM</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>COM transport parameters page</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница параметров транспорта COM</v8:content>
 												</v8:item>
 											</ToolTip>
 											<ExtendedTooltip name="TransportParameterPageCOMExtendedTooltip" id="2066"/>
@@ -1787,6 +2227,11 @@ Proceed next to continue setup.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>This connection variant is recommended in case if either another application is located
 on the same computer that the application is or the both applications are located in the same local network (in the same office).</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Данный вариант подключения рекомендуется в том случае, если другая
+программа находится на том же компьютере, что и эта программа, или обе программы расположены в одной локальной сети (в одном офисе).</v8:content>
 														</v8:item>
 													</Title>
 													<ContextMenu name="Decoration59ContextMenu" id="1905"/>
@@ -1817,6 +2262,16 @@ Pay attention to the following parameters (they can all be copied from the About
 • Base - for server mode, specify the name of infobase at 1C:Enterprise server. 
 • User - username of the user who is currently logged into the infobase. If there is ; in the name of the user, use the name from the beggining of the row up to ; as user name for connection. </v8:content>
 																	</v8:item>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Для настройки синхронизации данных необходимо знать где находится программа, с которой нужно настроить синхронизацию (другая программа). Для этого достаточно открыть программу. В главном меню выбрать пункт "Справка\О программе...". 
+Обратите внимание на следующие параметры (все они могут быть скопированы из формы "О программе..."): 
+• Режим - либо файловый либо серверный. Если режим файловый, то информационная база находится в каталоге на данном компьютере или в локальной сети. Если режим серверный, то для подключения нужно знать имя сервера и имя информационной базы на сервере. 
+• Каталог - для файлового режима указывается каталог, в котором располагается информационная база. 
+• Сервер - для серверного режима указывается имя сервера 1С:Предприятия, на котором расположена информационная база. 
+• База - для серверного режима указывается имя информационной базы на сервере 1С:Предприятия. 
+• Пользователь - имя пользователя, который вошел в информационную базу. Если в имени пользователя присутствует ";", то в качестве имени пользователя для подключения нужно использовать имя от начала строки до ";".</v8:content>
+																	</v8:item>
 																</Title>
 															</ExtendedTooltip>
 															<ChildItems>
@@ -1826,6 +2281,10 @@ Pay attention to the following parameters (they can all be copied from the About
 																		<v8:item>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Specify connection parameters to another application</v8:content>
+																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Укажите параметры подключения к другой программе</v8:content>
 																		</v8:item>
 																	</Title>
 																	<TitleLocation>Top</TitleLocation>
@@ -1841,6 +2300,10 @@ Pay attention to the following parameters (they can all be copied from the About
 																						<v8:lang>en</v8:lang>
 																						<v8:content>On this computer or on the computer in local network</v8:content>
 																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>На данном компьютере или на компьютере в локальной сети</v8:content>
+																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:decimal">0</Value>
 																			</xr:Value>
@@ -1853,6 +2316,10 @@ Pay attention to the following parameters (they can all be copied from the About
 																					<v8:item>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>At 1C:Enterprise server</v8:content>
+																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>На сервере 1С:Предприятие</v8:content>
 																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:decimal">1</Value>
@@ -1884,11 +2351,19 @@ Pay attention to the following parameters (they can all be copied from the About
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Infobase work variants</v8:content>
 																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Варианты работы информационной базы</v8:content>
+																		</v8:item>
 																	</Title>
 																	<ToolTip>
 																		<v8:item>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Infobase work variants</v8:content>
+																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Варианты работы информационной базы</v8:content>
 																		</v8:item>
 																	</ToolTip>
 																	<PagesRepresentation>None</PagesRepresentation>
@@ -1900,11 +2375,19 @@ Pay attention to the following parameters (they can all be copied from the About
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Page work variant file</v8:content>
 																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Страница вариант работы файловый</v8:content>
+																				</v8:item>
 																			</Title>
 																			<ToolTip>
 																				<v8:item>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Page work variant file</v8:content>
+																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Страница вариант работы файловый</v8:content>
 																				</v8:item>
 																			</ToolTip>
 																			<ExtendedTooltip name="FileModePageExtendedTooltip" id="2076"/>
@@ -1929,11 +2412,19 @@ Pay attention to the following parameters (they can all be copied from the About
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Page work variant client server</v8:content>
 																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Страница вариант работы клиент серверный</v8:content>
+																				</v8:item>
 																			</Title>
 																			<ToolTip>
 																				<v8:item>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Page work variant client server</v8:content>
+																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Страница вариант работы клиент серверный</v8:content>
 																				</v8:item>
 																			</ToolTip>
 																			<Group>Horizontal</Group>
@@ -1945,6 +2436,10 @@ Pay attention to the following parameters (they can all be copied from the About
 																						<v8:item>
 																							<v8:lang>en</v8:lang>
 																							<v8:content>Server cluster</v8:content>
+																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Кластер серверов</v8:content>
 																						</v8:item>
 																					</Title>
 																					<Width>20</Width>
@@ -1959,6 +2454,10 @@ Pay attention to the following parameters (they can all be copied from the About
 																						<v8:item>
 																							<v8:lang>en</v8:lang>
 																							<v8:content>Infobase name</v8:content>
+																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Имя информационной базы</v8:content>
 																						</v8:item>
 																					</Title>
 																					<Width>20</Width>
@@ -1994,6 +2493,10 @@ Pay attention to the following parameters (they can all be copied from the About
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Authentication of 1C Enterprise</v8:content>
 																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Аутентификация 1С Предприятия</v8:content>
+																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:decimal">0</Value>
 																			</xr:Value>
@@ -2006,6 +2509,10 @@ Pay attention to the following parameters (they can all be copied from the About
 																					<v8:item>
 																						<v8:lang>en</v8:lang>
 																						<v8:content>Operating system authentication</v8:content>
+																					</v8:item>
+																					<v8:item>
+																						<v8:lang>ru</v8:lang>
+																						<v8:content>Аутентификация операционной системы</v8:content>
 																					</v8:item>
 																				</Presentation>
 																				<Value xsi:type="xs:decimal">1</Value>
@@ -2023,6 +2530,10 @@ Pay attention to the following parameters (they can all be copied from the About
 																		<v8:item>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Authentication of 1C Enterprise</v8:content>
+																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Аутентификация 1С Предприятия</v8:content>
 																		</v8:item>
 																	</Title>
 																	<Width>40</Width>
@@ -2052,11 +2563,19 @@ Pay attention to the following parameters (they can all be copied from the About
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Group of the COM connection verification button group</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Группа кнопок проверки подключения COM</v8:content>
+																</v8:item>
 															</Title>
 															<ToolTip>
 																<v8:item>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Group of the COM connection verification button group</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Группа кнопок проверки подключения COM</v8:content>
 																</v8:item>
 															</ToolTip>
 															<Group>Horizontal</Group>
@@ -2082,6 +2601,10 @@ Pay attention to the following parameters (they can all be copied from the About
 															<v8:lang>en</v8:lang>
 															<v8:content>Press "Next" to configure the data synchronization parameters.</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Нажмите "Далее" для настройки параметров синхронизации данных.</v8:content>
+														</v8:item>
 													</Title>
 													<VerticalAlign>Bottom</VerticalAlign>
 													<ContextMenu name="NextLabelContextMenu" id="848"/>
@@ -2095,11 +2618,19 @@ Pay attention to the following parameters (they can all be copied from the About
 													<v8:lang>en</v8:lang>
 													<v8:content>WS transport parameter page</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница параметров транспорта WS</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>WS transport parameter page</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница параметров транспорта WS</v8:content>
 												</v8:item>
 											</ToolTip>
 											<ExtendedTooltip name="TransportParameterPageWSExtendedTooltip" id="2092"/>
@@ -2111,6 +2642,11 @@ Pay attention to the following parameters (they can all be copied from the About
 															<v8:lang>en</v8:lang>
 															<v8:content>This connection variant is recommended to select
 if the application is located in another network (office) and nevertheless is available for the connection through the Internet.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Этот вариант подключения рекомендуется
+выбрать, если программа находится в другой сети (офисе) и при этом доступна для подключения через Интернет.</v8:content>
 														</v8:item>
 													</Title>
 													<ContextMenu name="Decoration60ContextMenu" id="1909"/>
@@ -2130,6 +2666,10 @@ if the application is located in another network (office) and nevertheless is av
 																	<v8:lang>en</v8:lang>
 																	<v8:content>Specify connection parameters to another application</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Укажите параметры подключения к другой программе</v8:content>
+																</v8:item>
 															</Title>
 															<Group>Vertical</Group>
 															<Representation>None</Representation>
@@ -2142,6 +2682,10 @@ if the application is located in another network (office) and nevertheless is av
 																		<v8:item>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>Specify connection parameters to another application:</v8:content>
+																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Укажите параметры подключения к другой программе:</v8:content>
 																		</v8:item>
 																	</Title>
 																	<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -2156,6 +2700,14 @@ Pay attention to the following parameters (they can all be copied from the About
 • Address - address of infobase on the Internet. 
 • User - username of the user, who is currently logged into the infobase. If there is ; in the name of the user then you need to use the name from the beggining of the row up to ; as user name for connection.
 Important! User name must not contain the characters [InvalidCharacters ]. IN the opposite case in second infobase you need to create a user whose name will not contain hidden characters. This user must be administrator.</v8:content>
+																			</v8:item>
+																			<v8:item>
+																				<v8:lang>ru</v8:lang>
+																				<v8:content>Для настройки синхронизации данных нужно знать где находится программа, с которой нужно настроить синхронизацию (другая программа). Для этого достаточно открыть программу в режиме веб-клиента. В главном меню выбрать пункт "Справка\О программе...". 
+Обратите внимание на следующие параметры (все они могут быть скопированы из формы "О программе..."): 
+• Адрес - адрес информационной базы в Интернете. 
+• Пользователь - имя пользователя, который вошел в информационную базу. Если в имени пользователя присутствует ";", то в качестве имени пользователя для подключения нужно использовать имя от начала строки до ";".
+Важно! Имя пользователя не должно содержать служебных символов "[НедопустимыеСимволы]". В противном случае во второй информационной базе необходимо создать пользователя, в имени которого не будут содержаться служебные символы. Этот пользователь должен быть администратором.</v8:content>
 																			</v8:item>
 																		</Title>
 																	</ExtendedTooltip>
@@ -2172,6 +2724,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. IN th
 																				<v8:item>
 																					<v8:lang>en</v8:lang>
 																					<v8:content>Application address</v8:content>
+																				</v8:item>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Адрес программы</v8:content>
 																				</v8:item>
 																			</Title>
 																			<Width>50</Width>
@@ -2243,6 +2799,10 @@ Important! User name must not contain the characters [InvalidCharacters ]. IN th
 															<v8:lang>en</v8:lang>
 															<v8:content>Press "Next" to configure the data synchronization parameters.</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Нажмите "Далее" для настройки параметров синхронизации данных.</v8:content>
+														</v8:item>
 													</Title>
 													<VerticalAlign>Bottom</VerticalAlign>
 													<ContextMenu name="ContextMenu" id="1752"/>
@@ -2256,11 +2816,19 @@ Important! User name must not contain the characters [InvalidCharacters ]. IN th
 													<v8:lang>en</v8:lang>
 													<v8:content>Transport parameters page</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница параметров транспорта</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Transport parameters page</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница параметров транспорта</v8:content>
 												</v8:item>
 											</ToolTip>
 											<ExtendedTooltip name="TransportParameterPageExtendedTooltip" id="2109"/>
@@ -2275,6 +2843,16 @@ between which the data is set can operate offline and independently at different
 
 This connection option can be used not only for synchronization of the data with the applications located in other networks (offices) but also for the applications within one network.</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>В случае если к другой программе нет возможности прямого подключения по локальной сети
+или через Интернет (веб-сервисы), рекомендуется использовать другие каналы связи: сетевой
+каталог, FTP-ресурс или электронную почту. При этом программы, между которыми настроена
+синхронизация данных, могут работать полностью автономно друг от друга и в разное время.
+
+Такой вариант подключения подходит не только для синхронизации данных с программами,
+расположенными в других сетях (офисах), но и для программ в одной сети.</v8:content>
+														</v8:item>
 													</Title>
 													<VerticalAlign>Top</VerticalAlign>
 													<ContextMenu name="Decoration61ContextMenu" id="1911"/>
@@ -2287,6 +2865,10 @@ This connection option can be used not only for synchronization of the data with
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Press "Next" to configure the connection parameters.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Нажмите "Далее" для настройки параметров подключения.</v8:content>
 														</v8:item>
 													</Title>
 													<VerticalAlign>Bottom</VerticalAlign>
@@ -2307,11 +2889,19 @@ This connection option can be used not only for synchronization of the data with
 							<v8:lang>en</v8:lang>
 							<v8:content>FILE parameters assistant</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера задание параметров транспорта FILE</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>FILE parameters assistant</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера задание параметров транспорта FILE</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageSetTransportParametersFILEExtendedTooltip" id="2112"/>
@@ -2321,6 +2911,10 @@ This connection option can be used not only for synchronization of the data with
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Choose directory for data synchronization files</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выбор каталога для файлов синхронизации данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -2343,11 +2937,19 @@ This connection option can be used not only for synchronization of the data with
 											<v8:lang>en</v8:lang>
 											<v8:content>FILE transport settings</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки транспорта FILE</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>FILE transport settings</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки транспорта FILE</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -2361,6 +2963,10 @@ This connection option can be used not only for synchronization of the data with
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Indicate directory in 1C:Enterprise of network directory available from the server</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Укажите каталог на сервере 1С:Предприятия или сетевой каталог, доступный с сервера.</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="InformationExchangeDirectoryAtServerSelectionCommentContextMenu" id="756"/>
@@ -2430,6 +3036,10 @@ This connection option can be used not only for synchronization of the data with
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to set up the connection through the FTP resource.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для настройки подключения через FTP-ресурс.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="LabelNextFILEContextMenu" id="700"/>
 									<ExtendedTooltip name="LabelNextFILEExtendedTooltip" id="2124"/>
@@ -2444,11 +3054,19 @@ This connection option can be used not only for synchronization of the data with
 							<v8:lang>en</v8:lang>
 							<v8:content>FTP parameters assistant</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера задание параметров транспорта FTP</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>FTP parameters assistant</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера задание параметров транспорта FTP</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageSetTransportParametersFTPExtendedTooltip" id="2125"/>
@@ -2458,6 +3076,10 @@ This connection option can be used not only for synchronization of the data with
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Connection parameters setup through the FTP resource</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка параметров подключения через FTP-ресурс</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -2480,11 +3102,19 @@ This connection option can be used not only for synchronization of the data with
 											<v8:lang>en</v8:lang>
 											<v8:content>Transport settings FTP</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки транспорта FTP</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Transport settings FTP</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки транспорта FTP</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -2499,6 +3129,10 @@ This connection option can be used not only for synchronization of the data with
 													<v8:lang>en</v8:lang>
 													<v8:content>Specify the path to the FTP directory, e.g. "ftp://SyncServer/Accounting/"</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Укажите путь к FTP каталогу, например, "ftp://SyncServer/Accounting/"</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="Decoration54ContextMenu" id="1859"/>
 											<ExtendedTooltip name="Decoration54ExtendedTooltip" id="2129"/>
@@ -2509,11 +3143,19 @@ This connection option can be used not only for synchronization of the data with
 													<v8:lang>en</v8:lang>
 													<v8:content>Group server port</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа сервер порт</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group server port</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа сервер порт</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -2534,6 +3176,10 @@ This connection option can be used not only for synchronization of the data with
 															<v8:lang>en</v8:lang>
 															<v8:content>NG=0</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>NG=0</v8:content>
+														</v8:item>
 													</EditFormat>
 													<AutoMarkIncomplete>true</AutoMarkIncomplete>
 													<ContextMenu name="FTPConnectionPortContextMenu" id="636"/>
@@ -2547,11 +3193,19 @@ This connection option can be used not only for synchronization of the data with
 													<v8:lang>en</v8:lang>
 													<v8:content>Group user password</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа пользователь пароль</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group user password</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа пользователь пароль</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -2592,6 +3246,10 @@ This connection option can be used not only for synchronization of the data with
 															<v8:lang>en</v8:lang>
 															<v8:content>KB (0 - no restrictions)</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>КБ (0 – нет ограничений)</v8:content>
+														</v8:item>
 													</Title>
 													<ContextMenu name="Decoration51ContextMenu" id="1852"/>
 													<ExtendedTooltip name="Decoration51ExtendedTooltip" id="2138"/>
@@ -2611,11 +3269,19 @@ This connection option can be used not only for synchronization of the data with
 													<v8:lang>en</v8:lang>
 													<v8:content>Group of setting password message exchange FTP</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа задания пароля сообщения обмена FTP</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group of setting password message exchange FTP</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа задания пароля сообщения обмена FTP</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -2651,6 +3317,10 @@ This connection option can be used not only for synchronization of the data with
 													<v8:lang>en</v8:lang>
 													<v8:content>Indent of the FTP test push button</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Отступ кнопки проверки подключения FTP</v8:content>
+												</v8:item>
 											</ToolTip>
 											<Group>Vertical</Group>
 											<Representation>NormalSeparation</Representation>
@@ -2680,6 +3350,10 @@ This connection option can be used not only for synchronization of the data with
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to set the connection by email.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для настройки подключения по почте.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="NextLabelFTPContextMenu" id="714"/>
 									<ExtendedTooltip name="NextLabelFTPExtendedTooltip" id="2147"/>
@@ -2694,11 +3368,19 @@ This connection option can be used not only for synchronization of the data with
 							<v8:lang>en</v8:lang>
 							<v8:content>EMAIL parameters assistant</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера задание параметров транспорта EMAIL</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>EMAIL parameters assistant</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера задание параметров транспорта EMAIL</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageSetTransportParametersEMAILExtendedTooltip" id="2148"/>
@@ -2709,11 +3391,19 @@ This connection option can be used not only for synchronization of the data with
 									<v8:lang>en</v8:lang>
 									<v8:content>Setup of the connection parameters by email</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка параметров подключения по электронной почте</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group assistant page transport EMAIL parameters setting</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа страница мастера задание параметров транспорта EMAIL</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -2736,11 +3426,19 @@ This connection option can be used not only for synchronization of the data with
 											<v8:lang>en</v8:lang>
 											<v8:content>Transport settings EMAIL</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки транспорта EMAIL</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Transport settings EMAIL</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки транспорта EMAIL</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -2771,6 +3469,10 @@ This connection option can be used not only for synchronization of the data with
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>KB (0 - no restrictions)</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>КБ (0 – нет ограничений)</v8:content>
 														</v8:item>
 													</Title>
 													<ContextMenu name="Decoration52ContextMenu" id="1855"/>
@@ -2830,6 +3532,10 @@ This connection option can be used not only for synchronization of the data with
 											<v8:lang>en</v8:lang>
 											<v8:content>Press "Next" button to set up additional data exchange parameters.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для настройки дополнительных параметров обмена данными.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="NextLabelEMAILContextMenu" id="707"/>
 									<ExtendedTooltip name="NextLabelEMAILExtendedTooltip" id="2162"/>
@@ -2844,11 +3550,19 @@ This connection option can be used not only for synchronization of the data with
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page parameters setting</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page parameters setting</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageParameterSetupExtendedTooltip" id="2163"/>
@@ -2858,6 +3572,10 @@ This connection option can be used not only for synchronization of the data with
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization parameters setup</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка параметров синхронизации данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -2877,6 +3595,10 @@ This connection option can be used not only for synchronization of the data with
 													<v8:lang>en</v8:lang>
 													<v8:content>This infobase name</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование этой информационной базы</v8:content>
+												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
 											<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -2889,6 +3611,10 @@ This connection option can be used not only for synchronization of the data with
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Prefix</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Префикс</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
@@ -2916,6 +3642,10 @@ This connection option can be used not only for synchronization of the data with
 													<v8:lang>en</v8:lang>
 													<v8:content>Second infobase name</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование другой информационной базы</v8:content>
+												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
 											<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -2928,6 +3658,10 @@ This connection option can be used not only for synchronization of the data with
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Prefix</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Префикс</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
@@ -2942,6 +3676,10 @@ This connection option can be used not only for synchronization of the data with
 														<v8:lang>en</v8:lang>
 														<v8:content>To learn prefix of the second infobase, run the application and go to the data synchronization form. If in the second infobase the prefix is not specified, you should specify any prefix. This prefix will be set in the second base, when you set synchronization data.</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Для того чтобы узнать префикс второй информационной базы следует выполнить запуск программы и перейти в форму синхронизации данных. Если во второй информационной базе префикс не задан, то следует указать любой желаемый префикс. Этот префикс будет установлен во второй базе при настройке синхронизации данных.</v8:content>
+													</v8:item>
 												</Title>
 											</ExtendedTooltip>
 										</InputField>
@@ -2953,11 +3691,19 @@ This connection option can be used not only for synchronization of the data with
 											<v8:lang>en</v8:lang>
 											<v8:content>Group method of connection</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа способ подключения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group method of connection</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа способ подключения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -2980,6 +3726,10 @@ This connection option can be used not only for synchronization of the data with
 																<v8:lang>en</v8:lang>
 																<v8:content>Local or network folder</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Локальный или сетевой каталог</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xr:DesignTimeRef">Enum.ExchangeMessagesTransportKinds.EnumValue.FILE</Value>
 													</xr:Value>
@@ -2993,6 +3743,10 @@ This connection option can be used not only for synchronization of the data with
 																<v8:lang>en</v8:lang>
 																<v8:content>FTPresource</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>FTP-ресурс</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xr:DesignTimeRef">Enum.ExchangeMessagesTransportKinds.EnumValue.FTP</Value>
 													</xr:Value>
@@ -3005,6 +3759,10 @@ This connection option can be used not only for synchronization of the data with
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>Emails</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Почтовые сообщения</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xr:DesignTimeRef">Enum.ExchangeMessagesTransportKinds.EnumValue.EMAIL</Value>
@@ -3029,11 +3787,19 @@ This connection option can be used not only for synchronization of the data with
 									<v8:lang>en</v8:lang>
 									<v8:content>Node settings</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки узла</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Node settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки узла</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -3048,11 +3814,19 @@ This connection option can be used not only for synchronization of the data with
 											<v8:lang>en</v8:lang>
 											<v8:content>Limits on data transferring:</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ограничения передачи данных:</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Permission group frame</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Рамка группы ограничений</v8:content>
 										</v8:item>
 									</ToolTip>
 									<HorizontalStretch>true</HorizontalStretch>
@@ -3070,6 +3844,11 @@ This connection option can be used not only for synchronization of the data with
 													<v8:lang>en</v8:lang>
 													<v8:content>Data sending rules
 in %Application%</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Правила отправки
+данных в %Программа%</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
@@ -3092,6 +3871,10 @@ in %Application%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Default values:</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Значения по умолчанию:</v8:content>
+										</v8:item>
 									</Title>
 									<HorizontalStretch>true</HorizontalStretch>
 									<VerticalStretch>false</VerticalStretch>
@@ -3108,6 +3891,11 @@ in %Application%</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Rules of the
 data from %Progrem%</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Правила
+получения данных из %Программа%</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
@@ -3139,6 +3927,10 @@ data from %Progrem%</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Press the "Next" button to verify the parameters and to complete the data synchronization settings.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нажмите кнопку "Далее" для проверки параметров и завершения настройки синхронизации данных.</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="NextLabelConfirmSettingsContextMenu" id="132"/>
 							<ExtendedTooltip name="NextLabelConfirmSettingsExtendedTooltip" id="2191"/>
@@ -3151,11 +3943,19 @@ data from %Progrem%</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page parameters setting for the second setup step</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров второго этапа настройки</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page parameters setting</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageSecondSetupStageParameterSetupExtendedTooltip" id="2192"/>
@@ -3165,6 +3965,10 @@ data from %Progrem%</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization parameters setup</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка параметров синхронизации данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -3187,6 +3991,10 @@ data from %Progrem%</v8:content>
 														<v8:lang>en</v8:lang>
 														<v8:content>Local or network folder</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Локальный или сетевой каталог</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.ExchangeMessagesTransportKinds.EnumValue.FILE</Value>
 											</xr:Value>
@@ -3200,6 +4008,10 @@ data from %Progrem%</v8:content>
 														<v8:lang>en</v8:lang>
 														<v8:content>FTPresource</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>FTP-ресурс</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.ExchangeMessagesTransportKinds.EnumValue.FTP</Value>
 											</xr:Value>
@@ -3212,6 +4024,10 @@ data from %Progrem%</v8:content>
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Emails</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Почтовые сообщения</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.ExchangeMessagesTransportKinds.EnumValue.EMAIL</Value>
@@ -3228,11 +4044,19 @@ data from %Progrem%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Node settings</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки узла</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Node settings</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки узла</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -3247,11 +4071,19 @@ data from %Progrem%</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Limits on data transferring:</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Ограничения передачи данных:</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Permission group frame</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Рамка группы ограничений</v8:content>
 												</v8:item>
 											</ToolTip>
 											<HorizontalStretch>true</HorizontalStretch>
@@ -3269,6 +4101,11 @@ data from %Progrem%</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Data sending rules
 in %Application%</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Правила отправки
+данных в %Программа%</v8:content>
 														</v8:item>
 													</Title>
 													<TitleLocation>Top</TitleLocation>
@@ -3291,6 +4128,10 @@ in %Application%</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Default values:</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Значения по умолчанию:</v8:content>
+												</v8:item>
 											</Title>
 											<HorizontalStretch>true</HorizontalStretch>
 											<VerticalStretch>false</VerticalStretch>
@@ -3307,6 +4148,11 @@ in %Application%</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Rules of the
 data from %Progrem%</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Правила
+получения данных из %Программа%</v8:content>
 														</v8:item>
 													</Title>
 													<TitleLocation>Top</TitleLocation>
@@ -3338,6 +4184,10 @@ data from %Progrem%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Press the "Next" button to verify the parameters and to complete the data synchronization settings.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Далее" для проверки параметров и завершения настройки синхронизации данных.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="NextLabelConfirmSettings3ContextMenu" id="1068"/>
 									<ExtendedTooltip name="NextLabelConfirmSettings3ExtendedTooltip" id="2205"/>
@@ -3352,11 +4202,19 @@ data from %Progrem%</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page set parameters for the external connection of the first base</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров для внешнего соединения первой базы</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page parameters setting</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageFirstInfobaseExternalConnectionParameterSetupExtendedTooltip" id="2206"/>
@@ -3366,6 +4224,10 @@ data from %Progrem%</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization parameters setup for this application</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка параметров синхронизации данных для этой программы</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -3378,6 +4240,10 @@ data from %Progrem%</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Infobase description</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Наименование информационной базы</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Top</TitleLocation>
@@ -3400,11 +4266,19 @@ data from %Progrem%</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Node settings</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки узла</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Node settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки узла</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -3419,11 +4293,19 @@ data from %Progrem%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Limits on data transferring:</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ограничения передачи данных:</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Permission group frame</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Рамка группы ограничений</v8:content>
 										</v8:item>
 									</ToolTip>
 									<HorizontalStretch>true</HorizontalStretch>
@@ -3441,6 +4323,11 @@ data from %Progrem%</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Data sending rules
 in %Application%</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Правила отправки
+данных в %Программа%</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
@@ -3463,6 +4350,10 @@ in %Application%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Default values:</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Значения по умолчанию:</v8:content>
+										</v8:item>
 									</Title>
 									<HorizontalStretch>true</HorizontalStretch>
 									<VerticalStretch>false</VerticalStretch>
@@ -3479,6 +4370,11 @@ in %Application%</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Rules of the
 data from %Progrem%</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Правила
+получения данных из %Программа%</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
@@ -3510,6 +4406,10 @@ data from %Progrem%</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Press the "Next" button for the settings of the data synchronization parameters of the other application.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нажмите кнопку "Далее" для настройки параметров синхронизации другой программы.</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="NextLabelConfirmSettings1ContextMenu" id="934"/>
 							<ExtendedTooltip name="NextLabelConfirmSettings1ExtendedTooltip" id="2221"/>
@@ -3522,11 +4422,19 @@ data from %Progrem%</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page set parameters for the external connection of the second base</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров для внешнего соединения второй базы</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page parameters setting</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера настройка параметров</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageSecondInfobaseExternalConnectionParameterSetupExtendedTooltip" id="2222"/>
@@ -3536,6 +4444,10 @@ data from %Progrem%</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization parameter setting for another application</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка параметров синхронизации данных для другой программы</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -3548,6 +4460,10 @@ data from %Progrem%</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Infobase description</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Наименование информационной базы</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Top</TitleLocation>
@@ -3569,11 +4485,19 @@ data from %Progrem%</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Node settings</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки узла</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Node settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки узла</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -3588,11 +4512,19 @@ data from %Progrem%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Limits on data transferring:</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ограничения передачи данных:</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Permission group frame</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Рамка группы ограничений</v8:content>
 										</v8:item>
 									</ToolTip>
 									<HorizontalStretch>true</HorizontalStretch>
@@ -3610,6 +4542,11 @@ data from %Progrem%</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Data sending rules
 in %Application%</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Правила отправки
+данных в %Программа%</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
@@ -3632,6 +4569,10 @@ in %Application%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Default values:</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Значения по умолчанию:</v8:content>
+										</v8:item>
 									</Title>
 									<HorizontalStretch>true</HorizontalStretch>
 									<VerticalStretch>false</VerticalStretch>
@@ -3648,6 +4589,11 @@ in %Application%</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Rules of the
 data from %Progrem%</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Правила
+получения данных из %Программа%</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Top</TitleLocation>
@@ -3679,6 +4625,10 @@ data from %Progrem%</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Press the "Next" button to verify the parameters and to complete the data synchronization settings.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нажмите кнопку "Далее" для проверки параметров и завершения настройки синхронизации данных.</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="NextLabelConfirmSettings2ContextMenu" id="1032"/>
 							<ExtendedTooltip name="NextLabelConfirmSettings2ExtendedTooltip" id="2237"/>
@@ -3691,11 +4641,19 @@ data from %Progrem%</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page exchange setting result</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера итог настройки обмена</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page exchange setting result</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера итог настройки обмена</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageExchangeSetupResultsExtendedTooltip" id="2238"/>
@@ -3705,6 +4663,10 @@ data from %Progrem%</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Everything is ready for the data synchronization</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Все готово для начала синхронизации данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -3720,6 +4682,10 @@ data from %Progrem%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Data will be synchronized with the following parameters</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Данные будут синхронизироваться со следующими параметрами</v8:content>
+										</v8:item>
 									</Title>
 									<TitleLocation>Top</TitleLocation>
 									<HorizontalAlign>Left</HorizontalAlign>
@@ -3734,11 +4700,19 @@ data from %Progrem%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group of the information inscription about the opening of the matching assistant</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа надписи информации об открытии помощника сопоставления</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group of the information inscription about the opening of the matching assistant</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа надписи информации об открытии помощника сопоставления</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -3754,6 +4728,10 @@ data from %Progrem%</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Decoration information</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Декорация информация</v8:content>
+												</v8:item>
 											</Title>
 											<Picture>
 												<xr:Ref>CommonPicture.Information</xr:Ref>
@@ -3768,6 +4746,10 @@ data from %Progrem%</v8:content>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>After the data synchronization setting is created the data synchronization interaction window will be opened.</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>После завершения создания настройки синхронизации данных будет открыто окно интерактивной синхронизации данных.</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="MappingAssistantOpenCommentLabelContextMenu" id="724"/>
@@ -3785,11 +4767,19 @@ data from %Progrem%</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page end with export settings</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера окончание с выгрузкой настройки</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page 14</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница 14</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageEndWithSettingsExportExtendedTooltip" id="2244"/>
@@ -3799,6 +4789,10 @@ data from %Progrem%</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>First setup stage has been successfully completed</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Первый этап настройки успешно завершен</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -3811,11 +4805,19 @@ data from %Progrem%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Pages of display of final action</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страницы отображения финального действия</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Pages of display of final action</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страницы отображения финального действия</v8:content>
 										</v8:item>
 									</ToolTip>
 									<PagesRepresentation>None</PagesRepresentation>
@@ -3827,11 +4829,19 @@ data from %Progrem%</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Page export data for mapping</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница выполнить выгрузку данных для сопоставления</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Page export data for mapping</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница выполнить выгрузку данных для сопоставления</v8:content>
 												</v8:item>
 											</ToolTip>
 											<ExtendedTooltip name="ExecuteDataExportForMappingPageExtendedTooltip" id="2256"/>
@@ -3842,11 +4852,19 @@ data from %Progrem%</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Exchange settings file group</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа файла настроек обмена</v8:content>
+														</v8:item>
 													</Title>
 													<ToolTip>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Exchange settings file group</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа файла настроек обмена</v8:content>
 														</v8:item>
 													</ToolTip>
 													<Group>Horizontal</Group>
@@ -3885,6 +4903,10 @@ data from %Progrem%</v8:content>
 																		<v8:item>
 																			<v8:lang>en</v8:lang>
 																			<v8:content>To complete the data synchronization settings, you should save the settings file for another application. IN the assistant in another application specify this file:</v8:content>
+																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Для завершения настройки синхронизации данных необходимо сохранить файл настроек для другой программы. В помощнике в другой программе укажите этот файл:</v8:content>
 																		</v8:item>
 																	</Title>
 																	<VerticalAlign>Bottom</VerticalAlign>
@@ -3949,6 +4971,11 @@ data from %Progrem%</v8:content>
 																			<v8:content>Perform data sending
 to%Application% now (recommended)</v8:content>
 																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Выполнить
+отправку данных в %Программа% сейчас (рекомендуется)</v8:content>
+																		</v8:item>
 																	</Title>
 																	<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
 																	<TitleLocation>Right</TitleLocation>
@@ -3967,6 +4994,13 @@ to%Application% now (recommended)</v8:content>
 Once you set synchronization, you will be able to import the data from this file into another application and specify which data is the same for two synchronizing applications.
  Also the data can be sent later out of the data synchronization list.</v8:content>
 																		</v8:item>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>При нажатии на кнопку готово будет произведена выгрузка данных из этой программы в файл.
+Сразу после завершения настройки синхронизации возможно будет выполнить загрузку данных из этого
+файла в другой программе и указать, какие данные являются одинаковыми для двух синхронизирующихся
+программ. Также отправку данных можно выполнить позднее из списка синхронизации данных.</v8:content>
+																		</v8:item>
 																	</Title>
 																	<ContextMenu name="MappingFlagCommentLabelContextMenu" id="597"/>
 																	<ExtendedTooltip name="MappingFlagCommentLabelExtendedTooltip" id="2260"/>
@@ -3983,11 +5017,19 @@ Once you set synchronization, you will be able to import the data from this file
 													<v8:lang>en</v8:lang>
 													<v8:content>Page to perform creation of the initial image of the subordinate node</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница выполнить создание начального образа подчиненного узла</v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Page to perform creation of the initial image of the subordinate node</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница выполнить создание начального образа подчиненного узла</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Group>Horizontal</Group>
@@ -4018,6 +5060,15 @@ To do so, open the parameters of the set synchronization and run the Create init
 
 </v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Создание начального образа может занять длительное время.
+После создания необходимо развернуть информационную
+базу из созданного образа и выполнить первоначальный запуск программы для завершения настройки. Возможно создать начальный образ позднее.
+Для этого необходимо открыть параметры настроенной синхронизации и выполнить команду «Создание начального образа подчиненного узла распределенной информационной базы».
+
+</v8:content>
+																</v8:item>
 															</Title>
 															<ContextMenu name="InitialImageCreationFlagCommentLabelContextMenu" id="599"/>
 															<ExtendedTooltip name="InitialImageCreationFlagCommentLabelExtendedTooltip" id="2265"/>
@@ -4041,6 +5092,10 @@ To do so, open the parameters of the set synchronization and run the Create init
 											<v8:lang>en</v8:lang>
 											<v8:content>Press "Done" to Exit the Assistant</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Нажмите кнопку "Готово" для выхода из помощника.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="DoneLabelContextMenu" id="350"/>
 									<ExtendedTooltip name="DoneLabelExtendedTooltip" id="2270"/>
@@ -4055,11 +5110,19 @@ To do so, open the parameters of the set synchronization and run the Create init
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page ending with exchange by external connection</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера окончание с обменом по внешнему соединению</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page 14</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница 14</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageEndWithExchangeOverExternalConnectionExtendedTooltip" id="2271"/>
@@ -4069,6 +5132,10 @@ To do so, open the parameters of the set synchronization and run the Create init
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization setup has been successfully completed</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройка синхронизации данных успешно завершена</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -4092,11 +5159,19 @@ To do so, open the parameters of the set synchronization and run the Create init
 											<v8:lang>en</v8:lang>
 											<v8:content>Group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группировка</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группировка</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4112,6 +5187,11 @@ To do so, open the parameters of the set synchronization and run the Create init
 													<v8:content>Perform data synchronization
 with %Application%</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполнить
+синхронизацию данных с %Программа%</v8:content>
+												</v8:item>
 											</Title>
 											<TitleLocation>Right</TitleLocation>
 											<CheckBoxType>Auto</CheckBoxType>
@@ -4126,6 +5206,10 @@ with %Application%</v8:content>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Right after the setting completion it will be possible to specify which of the objects are the same in the two synchronizing applications and to synchronize the data.</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сразу после завершения настройки можно будет указать, какие объекты являются одинаковыми в двух синхронизирующихся программах, и синхронизировать данные.</v8:content>
 												</v8:item>
 											</Title>
 											<TitleHeight>2</TitleHeight>
@@ -4149,6 +5233,10 @@ with %Application%</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Press "Done" to Exit the Assistant</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нажмите кнопку "Готово" для выхода из помощника.</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="DoneLabel1ContextMenu" id="900"/>
 							<ExtendedTooltip name="DoneLabel1ExtendedTooltip" id="2282"/>
@@ -4161,11 +5249,19 @@ with %Application%</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page awaiting of data exchange creation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера ожидание создания настройки обмена данными</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page 14</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница 14</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageWaitForDataExchangeSettingsCreationExtendedTooltip" id="2283"/>
@@ -4175,6 +5271,10 @@ with %Application%</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization setting creation</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Создание настройки синхронизации данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -4187,11 +5287,19 @@ with %Application%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4218,11 +5326,19 @@ with %Application%</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4242,6 +5358,12 @@ with %Application%</v8:content>
 A new data synchronization settings in progress.
 Please wait...</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>
+Выполняется создание новой настройки синхронизации данных.
+Пожалуйста, подождите..</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="Decoration12ContextMenu" id="766"/>
 											<ExtendedTooltip name="Decoration12ExtendedTooltip" id="2289"/>
@@ -4258,11 +5380,19 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page awaiting for data analysis creation of exchange setting</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера ожидание анализа данных создание настройки обмена</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page 14</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница 14</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageWaitForExchangeSettingsCreationDataAnalysisExtendedTooltip" id="2290"/>
@@ -4272,6 +5402,10 @@ Please wait...</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data analysis</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Анализ данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -4284,11 +5418,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4315,11 +5457,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4338,6 +5488,11 @@ Please wait...</v8:content>
 													<v8:content>Data synchronization setting creation in progress.
 Please wait...</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняется создание настройки синхронизации данных.
+Пожалуйста, подождите..</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
 											<ContextMenu name="Decoration33ContextMenu" id="1389"/>
@@ -4355,11 +5510,19 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page data analysis awaiting receiving of a message</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера ожидание анализа данных получение сообщения</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page 14</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница 14</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageWaitForDataAnalysisGetMessageExtendedTooltip" id="2297"/>
@@ -4369,6 +5532,10 @@ Please wait...</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data analysis</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Анализ данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -4381,11 +5548,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4412,11 +5587,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4435,6 +5618,11 @@ Please wait...</v8:content>
 													<v8:content>Receiving data.
 Please wait...</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняется получение данных.
+Пожалуйста, подождите..</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
 											<ContextMenu name="Decoration17ContextMenu" id="1300"/>
@@ -4452,11 +5640,19 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page awaiting for data analysis automatic matching</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера ожидание анализа данных автоматическое сопоставление</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page 14</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница 14</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageWaitForDataAnalysisAutomaticMappingExtendedTooltip" id="2304"/>
@@ -4466,6 +5662,10 @@ Please wait...</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data analysis</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Анализ данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -4478,11 +5678,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4509,11 +5717,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4532,6 +5748,11 @@ Please wait...</v8:content>
 													<v8:content>Automatic data matching is in progress.
 Please wait...</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняется автоматическое сопоставление данных.
+Пожалуйста, подождите..</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
 											<ContextMenu name="Decoration76ContextMenu" id="1537"/>
@@ -4549,11 +5770,19 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Waiting for data synchronization</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ожидание синхронизации данных</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page 14</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница 14</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="WaitSynchronizationDataExtendedTooltip" id="2311"/>
@@ -4563,6 +5792,10 @@ Please wait...</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data synchronization</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Синхронизация данных</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -4575,11 +5808,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4606,11 +5847,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4629,6 +5878,11 @@ Please wait...</v8:content>
 													<v8:content>Data synchronization in progress.
 Please wait...</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняется синхронизация данных.
+Пожалуйста, подождите..</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
 											<ContextMenu name="Decoration64ContextMenu" id="1495"/>
@@ -4646,6 +5900,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page 14</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница 14</v8:content>
+						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageWaitForSaveSettingsExtendedTooltip" id="2318"/>
 					<ChildItems>
@@ -4653,6 +5911,10 @@ Please wait...</v8:content>
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
+									<v8:content>Save settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
 									<v8:content>Save settings</v8:content>
 								</v8:item>
 							</Title>
@@ -4666,11 +5928,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4697,11 +5967,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4720,6 +5998,11 @@ Please wait...</v8:content>
 													<v8:content>Saving settings.
 Please wait...</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняется сохранение настроек.
+Пожалуйста, подождите..</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
 											<ContextMenu name="Decoration30ContextMenu" id="1330"/>
@@ -4737,6 +6020,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page 14</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница 14</v8:content>
+						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageWaitForConnectionToServiceCheckExtendedTooltip" id="2325"/>
 					<ChildItems>
@@ -4745,6 +6032,10 @@ Please wait...</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Connection verification</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка подключения</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -4757,11 +6048,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4788,11 +6087,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4811,6 +6118,11 @@ Please wait...</v8:content>
 													<v8:content>Verification of the connection with the application on the Internet in progress.
 Please wait...</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выполняется проверка установки соединения с приложением в Интернете.
+Пожалуйста, подождите..</v8:content>
+												</v8:item>
 											</Title>
 											<VerticalAlign>Center</VerticalAlign>
 											<ContextMenu name="Decoration34ContextMenu" id="1742"/>
@@ -4828,11 +6140,19 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Assistant page awaiting for the external connection verification</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница мастера ожидание проверки подключения внешнего соединения</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Page 14</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница 14</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="AssistantPageWaitForCheckExternalConnectionConnectedExtendedTooltip" id="2332"/>
@@ -4842,6 +6162,10 @@ Please wait...</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Connection verification</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка подключения</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -4854,11 +6178,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group images</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа картинки</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4885,11 +6217,19 @@ Please wait...</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Message group</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа сообщения</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
@@ -4909,6 +6249,12 @@ Please wait...</v8:content>
 Establishing of connection with another application in progress.
 Please wait...</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>
+Выполняется проверка установки соединения с другой программой.
+Пожалуйста, подождите..</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="Decoration14ContextMenu" id="864"/>
 											<ExtendedTooltip name="Decoration14ExtendedTooltip" id="2338"/>
@@ -4927,11 +6273,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Navigation panel border</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рамка панели навигации</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Navigation panel border</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рамка панели навигации</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -4945,6 +6299,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Navigation panel</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Панель навигации</v8:content>
+						</v8:item>
 					</Title>
 					<PagesRepresentation>None</PagesRepresentation>
 					<ExtendedTooltip name="NavigationPanelExtendedTooltip" id="2340"/>
@@ -4955,11 +6313,19 @@ Please wait...</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page start</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации начало</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page start</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации начало</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -5131,6 +6497,10 @@ Please wait...</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Next &gt;</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Далее  &gt;</v8:content>
+												</v8:item>
 											</Title>
 											<ExtendedTooltip name="NextCommand5ExtendedTooltip" id="2362"/>
 										</Button>
@@ -5200,11 +6570,19 @@ Please wait...</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page ending and back</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации окончание и назад</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Navigation page ending and back</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница навигации окончание и назад</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -5267,6 +6645,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Assistant Operation Option</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант работы мастера</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -5281,6 +6663,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Infobase location</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расположение информационной базы</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5297,6 +6683,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Datebase type</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип информационной базы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -5312,6 +6702,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Filter Settings at Node</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка отборов на узле</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -5320,6 +6714,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange settings result presentation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление результата настройки обмена</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5341,6 +6739,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Schedule settings variant</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант настройки расписания</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -5355,6 +6757,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Settings filename for receiver</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя файла настроек для приемника</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5371,6 +6777,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Data transfer restrictions, details</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание ограничений передачи данных</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -5386,6 +6796,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Default values at node</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Значения по умолчанию на узле</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -5394,6 +6808,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Values details by default</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание значений по умолчанию</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5410,6 +6828,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Create an initial image of the RIB subordinate node (recommended)</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать начальный образ подчиненнего узла РИБ (рекомендуется)</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5421,6 +6843,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Form of initial image creation exists</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма создания начального образа существует</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5431,6 +6857,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Form name of creating initial image</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя формы создания начального образа</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5447,6 +6877,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Continue the data synchronization setting without possibility of the objects matching (not recommended)</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продолжить настройку синхронизации данных без возможности сопоставления объектов (не рекомендуется)</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5457,6 +6891,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Local or network folder</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Локальный или сетевой каталог</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5469,6 +6907,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>FTPresource</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>FTP-ресурс</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5479,6 +6921,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Emails</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Почтовые сообщения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5491,6 +6937,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Jump table</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица переходов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -5501,6 +6951,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Sequence number of jump</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Порядковый номер перехода</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -5518,6 +6972,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Main page name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя основной страницы</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -5532,6 +6990,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Decoration page name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя страницы декорации</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -5548,6 +7010,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Navigation page name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя страницы навигации</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -5562,6 +7028,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>On open handler name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика при открытии</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -5578,6 +7048,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Go to next handler name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика при переходе далее</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -5592,6 +7066,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Go back handler name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика при переходе назад</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -5608,6 +7086,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Long operation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Длительная операция</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -5618,6 +7100,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Long operation handler name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя обработчика длительной операции</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -5636,6 +7122,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Sequence number of jump</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядковый номер перехода</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -5652,6 +7142,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Assistant work mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим работы мастера</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -5667,6 +7161,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Perform data import in this application</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить загрузку данных в этой программе</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5677,6 +7175,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Direct connection</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прямое подключение</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5689,6 +7191,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Filter settings on the correspondent base node</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка отборов на узле базы корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -5698,6 +7204,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Values by default on the correspondent base node</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Значения по умолчанию на узле базы корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -5706,6 +7216,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Description of the data transfer restrictions of the correspondent base</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание ограничений передачи данных базы корреспондента</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5722,6 +7236,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Description of values by default of the correspondent base</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание значений по умолчанию базы корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -5737,6 +7255,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>File infobase</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информационная база файловая</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5747,6 +7269,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Filter settings are provided on the node</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предусмотрены настройки отборов на узле</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5759,6 +7285,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Values by default on the node are provided</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предусмотрены значения по умолчанию на узле</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5769,6 +7299,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>On the correspondent base node the filter settings are provided</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предусмотрены настройки отборов на узле базы корреспондента</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5785,6 +7319,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Provided values by default on the correspondent base node</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предусмотрены значения по умолчанию на узле базы корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -5799,6 +7337,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Event log event establish connection to the web service</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Событие журнала регистрации установка подключения к web сервису</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5815,6 +7357,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Long operation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Длительная операция</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5825,6 +7371,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Event log event data exchange creation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Событие журнала регистрации создание обмена данными</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5841,6 +7391,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange with service setup</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка обмена с сервисом</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5851,6 +7405,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Data export settings description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание настроек выгрузки данных</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5866,6 +7424,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Node setup form context</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контекст формы настройки узлов</v8:content>
 				</v8:item>
 			</Title>
 			<Type/>
@@ -5885,6 +7447,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Message file ID in service</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор файла сообщения в сервисе</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -5900,6 +7466,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>The long operation is completed</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Длительная операция завершена</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5910,6 +7480,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Action start date</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата начала операции</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5924,6 +7498,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Accounting parameters accounting explanatory inscription</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки параметров учета поясняющая надпись</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5940,6 +7518,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Additional settings explanatory inscription</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные настройки поясняющая надпись</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -5955,6 +7537,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Accounting parameter settings are specified</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки параметров учета заданы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5966,6 +7552,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Settings of the correspondent accounting parameters are set</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки параметров учета корреспондента заданы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -5976,6 +7566,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Settings of the correspondent accounting parameters explanatory inscription</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки параметров учета корреспондента поясняющая надпись</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -5992,6 +7586,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Information statistics tree</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево информации статистики</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTree</v8:Type>
@@ -6002,6 +7600,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -6017,6 +7619,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Mapped, %</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сопоставлено, %</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -6034,6 +7640,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Картинка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>v8ui:Picture</v8:Type>
@@ -6044,6 +7654,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Objects in the IB, pcs</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объектов в этой базе, шт</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -6061,6 +7675,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Objects in the IB, pcs</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объектов в этой базе, шт</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
@@ -6076,6 +7694,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Left to map, pieces</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Осталось сопоставить, шт</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -6103,6 +7725,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Key</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -6118,6 +7744,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Use preview</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать предварительный просмотр</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -6128,6 +7758,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Rule name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя правила</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -6144,6 +7778,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Receiver table name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя таблицы приемника</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -6158,6 +7796,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Object type as string</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип объекта строкой</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -6174,6 +7816,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Table fields</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поля таблицы</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -6188,6 +7834,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Search fields</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поля поиска</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -6204,6 +7854,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Source type as string</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип источника строкой</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -6218,6 +7872,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Receiver type as string</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип приемника строкой</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -6234,6 +7892,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data successfully loaded</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные успешно загружены</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -6244,6 +7906,10 @@ Please wait...</v8:content>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Deleting the Object</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это удаление объекта</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -6258,6 +7924,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>All data have been mapped</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Все данные сопоставлены</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -6269,6 +7939,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Synchronize the data automatically</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизировать данные автоматически</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -6279,6 +7953,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Predefined data exchange schedule</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Предопределенное расписание обмена данными</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -6295,6 +7973,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>User description presentation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление пользовательского описания</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -6310,6 +7992,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Data exchange performance schedule</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расписание выполнения обмена данными</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -6318,6 +8004,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Durable operation status</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние длительной операции</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -6343,6 +8033,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Event log enabled</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Журнал регистрации включен</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -6353,6 +8047,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Authentification type</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип аутентификации</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -6370,6 +8068,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Exchange plan synonym</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синоним плана обмена</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -6384,6 +8086,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Reference to detailed description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка на подробное описание</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -6400,6 +8106,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Settings have been read</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки зачитаны</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -6410,6 +8120,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Nodes settings form</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма настройки узлов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -6426,6 +8140,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Form of the correspondent base node setup</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма настройки узла базы корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -6440,6 +8158,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Form for the setup of default values of the correspondent base</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма настройки значений по умолчанию базы корреспондента</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -6456,6 +8178,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Correspondent configuration version</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Версия конфигурации корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -6470,6 +8196,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Node Configuration Form</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма настройки узла</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -6486,6 +8216,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Setting Form of Default Values</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма настройки значений по умолчанию</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -6501,6 +8235,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Close form without warnings</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму без предупреждения</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -6511,6 +8249,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Use WS message exchange transport</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать транспорт сообщений обмена WS</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -6523,6 +8265,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Data exchange settings file successfully imported</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Файл настроек обмена данными успешно загружен</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -6533,6 +8279,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Label accounting settings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Надпись настройки параметров учета</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -6549,6 +8299,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Label correspondent accounting settings</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Надпись настройки параметров учета корреспондента</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -6563,6 +8317,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Address of backup instructions</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес инструкции по выполнению резервного копирования</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -6579,6 +8337,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>It is the continuation of setting in subordinate DIB node</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это продолжение настройки в подчиненном узле РИБ</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -6589,6 +8351,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Short description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Краткое наименование</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -6605,6 +8371,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>This XDTO exchange plan</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это план обмена XDTO</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -6618,6 +8388,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Next &gt;</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Далее  &gt;</v8:content>
+				</v8:item>
 			</Title>
 			<Action>CommandNext</Action>
 		</Command>
@@ -6625,6 +8399,10 @@ Please wait...</v8:content>
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>&lt; Back</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>&lt; Back</v8:content>
 				</v8:item>
 			</Title>
@@ -6636,6 +8414,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить</v8:content>
+				</v8:item>
 			</Title>
 			<Action>CommandCancel</Action>
 		</Command>
@@ -6645,11 +8427,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change the data export rules</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить правила выгрузки данных</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Data synchronization rules</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Правила синхронизации данных</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>DataRegistrationRestrictionsSetting</Action>
@@ -6660,6 +8450,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Help</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Справка</v8:content>
 				</v8:item>
 			</Title>
 			<Picture>
@@ -6675,11 +8469,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Save</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Save</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Save the data synchronization settings file</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить файл настроек синхронизации данных</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -6695,11 +8497,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change the automatic filling value</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить значения автоматического заполнения</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change rules of getting data for this application</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить правила получения данных для этой программы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ValuesSettingByDefault</Action>
@@ -6711,11 +8521,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Validate the ability to write to directory</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить возможность записи в каталог</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Verify connection through the local or network directory</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить подключение через локальный или сетевой каталог</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -6731,11 +8549,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Check connection</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить соединение</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Check connection via FTP resource</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить подключение через FTP ресурс</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -6751,11 +8577,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Check connection</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить соединение</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Check connection to the email</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить подключение по электронной почте</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -6771,11 +8605,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Check connection</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить соединение</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Verify connection to another application</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить подключение к другой программе</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -6791,6 +8633,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change the data export rules</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить правила выгрузки данных</v8:content>
+				</v8:item>
 			</Title>
 			<Action>CorrespondentInfobaseRegistrationRestrictionSetupThroughExternalConnection</Action>
 			<Representation>TextPicture</Representation>
@@ -6801,6 +8647,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change the automatic filling value</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить значения автоматического заполнения</v8:content>
+				</v8:item>
 			</Title>
 			<Action>CorrespondentInfobaseDefaultValueSetupViaExternalConnection</Action>
 			<Representation>TextPicture</Representation>
@@ -6810,6 +8660,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Check connection</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить соединение</v8:content>
 				</v8:item>
 			</Title>
 			<Picture>
@@ -6825,11 +8679,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change the automatic filling value</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить значения автоматического заполнения</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change rules of getting data for this application</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить правила получения данных для этой программы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CorrespondentInfobaseDefaultValueSetupViaWebService</Action>
@@ -6847,6 +8709,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Data synchronization rules</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Правила синхронизации данных</v8:content>
+				</v8:item>
 			</ToolTip>
 			<Picture>
 				<xr:Ref>StdPicture.FilterCriterion</xr:Ref>
@@ -6861,11 +8727,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Done</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Готово</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Done command</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда готово</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CommandDone</Action>
@@ -6876,11 +8750,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change the data synchronization rules</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить правила синхронизации данных</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change data sending rules for this application and for application on the Internet</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить правила отправки данных для этой программы и для приложения в Интернете</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>SetupDataExport</Action>
@@ -6892,11 +8774,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Run mapping</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить сопоставление</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Perform data matching</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить сопоставление данных</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -6912,6 +8802,10 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Configure...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить...</v8:content>
+				</v8:item>
 			</Title>
 			<Action>ChangeCustomSchedule</Action>
 		</Command>
@@ -6920,6 +8814,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Detailed description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подробное описание</v8:content>
 				</v8:item>
 			</Title>
 			<Picture>
@@ -6934,11 +8832,19 @@ Please wait...</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Access parameters to the Internet</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры доступа в Интернет</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Access parameters to the Internet</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры доступа в Интернет</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>AccessToInternetParameters</Action>

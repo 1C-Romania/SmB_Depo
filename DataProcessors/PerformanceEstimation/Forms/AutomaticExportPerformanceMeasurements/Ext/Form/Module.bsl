@@ -58,7 +58,7 @@ Function FillCheckProcessingAtServer()
 		Perform = ThisObject[SelectPath.Key.DataPath];
 		PathElement = SelectPath.Value;
 		If Perform AND IsBlankString(TrimAll(ThisObject[PathElement.DataPath])) Then
-			MessageText = NStr("en = 'Field ""%1"" is not filled'");
+			MessageText = NStr("en='Field ""%1"" is not filled';ru='Поле ""%1"" не заполнено'");
 			MessageText = StrReplace(MessageText, "%1", PathElement.Title);
 			CommonUseClientServer.MessageToUser(
 				MessageText,
@@ -129,7 +129,7 @@ Procedure SelectExportDirectoryItIsProposed(FileOperationsExtensionConnected, Ad
 		
 		FileChoice = New FileDialog(FileDialogMode.ChooseDirectory);
 		FileChoice.Multiselect = False;
-		FileChoice.Title = NStr("en = 'Export directory selection'");
+		FileChoice.Title = NStr("en='Export directory selection';ru='Выбор каталога экспорта'");
 		
 		NotifyDescription = New NotifyDescription("ActionAfterExportDirectorySelection", ThisObject);
 		FileChoice.Show(NOTifyDescription);

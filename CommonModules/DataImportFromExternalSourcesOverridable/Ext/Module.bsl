@@ -16,8 +16,8 @@
 			
 		EndIf;
 		
-		TextNewItem	= NStr("en ='<New item will be created>'");
-		TextSkipped		= NStr("en ='<Data will be skipped>'");
+		TextNewItem	= NStr("en='<New item will be created>';ru='<Будет создан новый элемент>'");
+		TextSkipped		= NStr("en='<Data will be skipped>';ru='<Данные будут пропущены>'");
 		ConditionalAppearanceText = ?(DataLoadSettings.CreateIfNotMatched, TextNewItem, TextSkipped);
 		
 	ElsIf DataLoadSettings.IsInformationRegisterImport Then
@@ -28,7 +28,7 @@
 			
 		EndIf;
 		
-		ConditionalAppearanceText = NStr("en ='<Row will be skipped...>'");
+		ConditionalAppearanceText = NStr("en='<Row will be skipped...>';ru='<Строка будет пропущена...>'");
 		
 	EndIf;
 	
@@ -69,8 +69,8 @@ Procedure ChangeConditionalDesignText(ConditionalAppearance, DataLoadSettings) E
 			
 		EndIf;
 		
-		TextNewItem	= NStr("en ='<New item will be created>'");
-		TextSkipped		= NStr("en ='<Data will be skipped>'");
+		TextNewItem	= NStr("en='<New item will be created>';ru='<Будет создан новый элемент>'");
+		TextSkipped		= NStr("en='<Data will be skipped>';ru='<Данные будут пропущены>'");
 		ConditionalAppearanceText = ?(DataLoadSettings.CreateIfNotMatched, TextNewItem, TextSkipped);
 		
 	EndIf;

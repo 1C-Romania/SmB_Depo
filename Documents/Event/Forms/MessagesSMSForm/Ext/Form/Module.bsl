@@ -107,7 +107,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
 	If Object.Parties.Count() = 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Recipient list is not filled.'"),
+			NStr("en='Recipient list is not filled.';ru='Список получателей не заполнен.'"),
 			,
 			"Object.Parties",
 			,
@@ -116,7 +116,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
 	If IsBlankString(Object.Content) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Field ""Content"" is not filled.'"),
+			NStr("en='Field ""Content"" is not filled.';ru='Поле ""Содержание"" не заполнено.'"),
 			,
 			"Object.Content",
 			,
@@ -255,8 +255,9 @@ Procedure Send(Command)
 		If AvailableRightSettingsSMS Then
 			OpenForm("CommonForm.SMSSendingSettings",,ThisForm,,,,New NotifyDescription("SMSSendingCheckSettings", ThisObject), FormWindowOpeningMode.LockOwnerWindow);
 		Else
-			MessageText = NStr("en = 'To send SMS, it is necessary to configure sending parameters.
-				|Address to the administrator to perform settings.'");
+			MessageText = NStr("en='To send SMS, it is necessary to configure sending parameters."
+"Address to the administrator to perform settings.';ru='Для отправки SMS требуется настройка параметров отправки."
+"Для выполнения настроек обратитесь к администратору.'");
 			ShowMessageBox(, MessageText);
 		EndIf;
 	EndIf;
@@ -354,7 +355,7 @@ Function GenerateCharacterQuantityLabel(SendTransliterated, val MessageText)
 	CharsCount = StrLen(MessageText);
 	MessageCount   = Int(CharsCount / CharactersInMessage) + 1;
 	CharactersLeft      = CharactersInMessage - CharsCount % CharactersInMessage;
-	MessageTextTemplate = NStr("en = 'Message - %1, remained characters - %2'");
+	MessageTextTemplate = NStr("en='Message - %1, remained characters - %2';ru='Сообщение - %1, осталось символов - %2'");
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(MessageTextTemplate, MessageCount, CharactersLeft);
 	
@@ -367,7 +368,7 @@ Procedure CheckAndConvertRecipientNumbers(Cancel)
 		
 		If IsBlankString(Recipient.HowToContact) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = '""Phone number"" field is not filled.'"),
+				NStr("en='""Phone number"" field is not filled.';ru='Поле ""Номер телефона"" не заполнено.'"),
 				,
 				CommonUseClientServer.PathToTabularSection("Object.Parties", Recipient.LineNumber, "HowToContact"),
 				,
@@ -377,7 +378,7 @@ Procedure CheckAndConvertRecipientNumbers(Cancel)
 		
 		If StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Recipient.HowToContact, ";", True).Count() > 1 Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Only one phone number should be specified.'"),
+				NStr("en='Only one phone number should be specified.';ru='Должен быть указан только один номер телефона.'"),
 				,
 				CommonUseClientServer.PathToTabularSection("Object.Parties", Recipient.LineNumber, "HowToContact"),
 				,
@@ -390,7 +391,7 @@ Procedure CheckAndConvertRecipientNumbers(Cancel)
 			Recipient.NumberForSending = CheckResult.SendingNumber;
 		Else
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'Incorrect format of phone number.'"),
+				NStr("en='Incorrect format of phone number.';ru='Неверный формат номера телефона.'"),
 				,
 				CommonUseClientServer.PathToTabularSection("Object.Parties", Recipient.LineNumber, "HowToContact"),
 				,
@@ -431,7 +432,7 @@ Procedure SMSSendingSettingsAreExecuted()
 		Object.EventBegin = Object.Date;
 		Object.EventEnding = Object.Date;
 		Write();
-		ShowUserNotification(NStr("en = 'SMS is successfully sent'"), GetURL(Object.Ref), String(Object.Ref), PictureLib.Information32);
+		ShowUserNotification(NStr("en='SMS is successfully sent';ru='SMS успешно отправлено'"), GetURL(Object.Ref), String(Object.Ref), PictureLib.Information32);
 		Close();
 	Else
 		CommonUseClientServer.MessageToUser(ErrorDescription,,"Object");
@@ -594,7 +595,7 @@ Procedure FillContentEvents(EventSubject)
 	If Not IsBlankString(Object.Content) Then
 		
 		ShowQueryBox(New NotifyDescription("FillEventContentEnd", ThisObject, New Structure("EventSubject", EventSubject)),
-			NStr("en = 'Do you want to refill the content by the selected topic?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='Do you want to refill the content by the selected topic?';ru='Перезаполнить содержание по выбранной теме?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 		
 	EndIf;

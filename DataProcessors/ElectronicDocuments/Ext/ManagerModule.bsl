@@ -138,17 +138,17 @@ Function GenerateEDTakskomPackageAttachedFile(ExchangeStructure) Export
 			ZipContainer.Write();
 			BinaryDataPackage = New BinaryData(ArchiveFileName);
 		Except
-			MessagePattern = NStr("en = '%1 (see details in event log monitor).'");
+			MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-				NStr("en = 'ED package generation - non-recurring transaction'"), DetailErrorDescription(ErrorInfo()),
+				NStr("en='ED package generation - non-recurring transaction';ru='Формирование пакета ЭД - однократная сделка'"), DetailErrorDescription(ErrorInfo()),
 				MessageText);
 		EndTry;
 		DeleteFiles(ArchiveFileName);
 	Else
-		MessagePattern = NStr("en = 'During the generation %1 the
-		|following  errors occurred: %2'");
+		MessagePattern = NStr("en='During the generation %1 the"
+"following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ExchangeStructure.EDKind,
 			ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -168,13 +168,13 @@ Function QuickExchangeNameSavedFile(EDOwner)
 		If TypeOf(EDOwner) = Type("CatalogRef.Companies") Then
 			
 			AttributesStructure = CommonUse.ObjectAttributesValues(EDOwner, "Description");
-			FileTemplate = NStr("en = '%1'");
+			FileTemplate = NStr("en='%1';ru='%1'");
 			FileDescription = StringFunctionsClientServer.PlaceParametersIntoString(FileTemplate, AttributesStructure.Description);
 			
 		Else
 			
 			AttributesStructure = CommonUse.ObjectAttributesValues(EDOwner, "Number, Date");		
-			FileTemplate = NStr("en = '%1 # %2 date %3'");
+			FileTemplate = NStr("en='%1 # %2 date %3';ru='%1 № %2 от %3'");
 			FileDescription = StringFunctionsClientServer.PlaceParametersIntoString(FileTemplate, String(TypeOf(EDOwner)),
 															AttributesStructure.Number, Format(AttributesStructure.Date, "DLF=D"));
 		EndIf;

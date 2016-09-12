@@ -557,7 +557,7 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 		PrintManagementModule = CommonUse.CommonModule("PrintManagement");
 		PrintManagementModule.OutputSpreadsheetDocumentToCollection(
 				PrintFormsCollection,
-				"BusinessCalendar", NStr("en = 'Business calendar'"),
+				"BusinessCalendar", NStr("en='Business calendar';ru='Производственный календарь'"),
 				Catalogs.BusinessCalendars.PrintingFormBusinessCalendar(PrintParameters),
 				,
 				"Catalog.BusinessCalendars.PF_MXL_BusinessCalendar");
@@ -629,7 +629,7 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 		While SelectionByQuarter.Next() Do
 			NumberOfQuarter = Template.GetArea("Quarter");
 			NumberOfQuarter.Parameters.NumberOfQuarter = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '%1 Quarter'"), SelectionByQuarter.QuarterWeek);
+				NStr("en='%1 Quarter';ru='%1 квартал'"), SelectionByQuarter.QuarterWeek);
 			SpreadsheetDocument.Put(NumberOfQuarter);
 			
 			HeaderBlock = Template.GetArea("HeaderBlock");
@@ -731,7 +731,7 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 			ColumnOfMonth.Parameters.CalendarDays 	= CalendarDaysQ;
 			ColumnOfMonth.Parameters.WorkDays 		= WorkingDaysQr;
 			ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '%1 Quarter'"), SelectionByQuarter.QuarterWeek);
+				NStr("en='%1 Quarter';ru='%1 квартал'"), SelectionByQuarter.QuarterWeek);
 			SpreadsheetDocument.Join(ColumnOfMonth);
 			
 			If SelectionByQuarter.QuarterWeek = 2 
@@ -744,7 +744,7 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 				ColumnOfMonth.Parameters.CalendarDays 	= HalfYearCalendarDays1;
 				ColumnOfMonth.Parameters.WorkDays 		= WeekdaysHalfYear1;
 				ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = '%1 half-year'"), SelectionByQuarter.QuarterWeek / 2);
+					NStr("en='%1 half-year';ru='%1 полугодие'"), SelectionByQuarter.QuarterWeek / 2);
 				SpreadsheetDocument.Join(ColumnOfMonth);
 			EndIf;
 			
@@ -758,7 +758,7 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 		ColumnOfMonth.Parameters.CalendarDays 	= CalendarDaysOfYear;
 		ColumnOfMonth.Parameters.WorkDays 		= WorkingDaysOfYear;
 		ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 year'"), Format(SelectionByYear.YearCalendar, "NG="));
+			NStr("en='%1 year';ru='%1 год'"), Format(SelectionByYear.YearCalendar, "NG="));
 		SpreadsheetDocument.Join(ColumnOfMonth);
 		
 	EndDo;
@@ -768,14 +768,14 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 	ColumnOfMonth.Parameters.WorkingTime36 	= WorkingTime36Year;
 	ColumnOfMonth.Parameters.WorkingTime24 	= WorkingTime24Year;
 	ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = '%1 year'"), Format(YearNumber, "NG="));
+		NStr("en='%1 year';ru='%1 год'"), Format(YearNumber, "NG="));
 	SpreadsheetDocument.Put(ColumnOfMonth);
 	
 	ColumnOfMonth = Template.GetArea("ColumnOfMonthAvg");
 	ColumnOfMonth.Parameters.WorkingTime40 	= Format(WorkingTime40Year / 12, "NFD=2; NG=0");
 	ColumnOfMonth.Parameters.WorkingTime36 	= Format(WorkingTime36Year / 12, "NFD=2; NG=0");
 	ColumnOfMonth.Parameters.WorkingTime24 	= Format(WorkingTime24Year / 12, "NFD=2; NG=0");
-	ColumnOfMonth.Parameters.NameOfMonth 		= NStr("en = 'Average monthly quantity'");
+	ColumnOfMonth.Parameters.NameOfMonth 		= NStr("en='Average monthly quantity';ru='Среднемесячное количество'");
 	SpreadsheetDocument.Join(ColumnOfMonth);
 	
 	Return SpreadsheetDocument;

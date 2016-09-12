@@ -68,12 +68,12 @@ EndProcedure
 Procedure SignFile(AttachedFile, FormID, AdditionalParameters = Undefined) Export
 	
 	If Not ValueIsFilled(AttachedFile) Then
-		ShowMessageBox(, NStr("en = 'The file to be signed is not selected.'"));
+		ShowMessageBox(, NStr("en='The file to be signed is not selected.';ru='Не выбран файл, который нужно подписать.'"));
 		Return;
 	EndIf;
 	
 	If Not CommonUseClient.SubsystemExists("StandardSubsystems.DigitalSignature") Then
-		ShowMessageBox(, NStr("en = 'Insertion of digital signatures is not supported.'"));
+		ShowMessageBox(, NStr("en='Insertion of digital signatures is not supported.';ru='Добавление электронных подписей не поддерживается.'"));
 		Return;
 	EndIf;
 	
@@ -81,8 +81,9 @@ Procedure SignFile(AttachedFile, FormID, AdditionalParameters = Undefined) Expor
 	
 	If Not ModuleDigitalSignatureClient.UseDigitalSignatures() Then
 		ShowMessageBox(,
-			NStr("en = 'To add a digital
-			           |signature, activate the option of using digital signatures in the application settings.'"));
+			NStr("en='To add a digital"
+"signature, activate the option of using digital signatures in the application settings.';ru='Чтобы добавить"
+"электронную подпись, включите в настройках программы использование электронных подписей.'"));
 		Return;
 	EndIf;
 	
@@ -123,7 +124,7 @@ Procedure SaveWithDS(Val AttachedFile, Val FileData, Val FormID) Export
 	Parameters.Insert("FormID", FormID);
 	
 	DataDescription = New Structure;
-	DataDescription.Insert("DataTitle",     NStr("en = 'File'"));
+	DataDescription.Insert("DataTitle",     NStr("en='File';ru='Файловый'"));
 	DataDescription.Insert("ShowComment", True);
 	DataDescription.Insert("Object",              AttachedFile);
 	DataDescription.Insert("Data",              New NotifyDescription(

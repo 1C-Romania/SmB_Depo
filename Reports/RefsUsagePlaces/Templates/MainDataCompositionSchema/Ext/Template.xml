@@ -14,6 +14,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Ref</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:TypeSet xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:AnyRef</v8:TypeSet>
@@ -27,6 +31,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Data</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные</v8:content>
+				</v8:item>
 			</title>
 			<presentationExpression>DataPresentation</presentationExpression>
 		</field>
@@ -37,6 +45,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Data presentation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представления данных</v8:content>
 				</v8:item>
 			</title>
 			<valueType>
@@ -54,6 +66,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Reference type</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылочный тип</v8:content>
 				</v8:item>
 			</title>
 			<useRestriction>
@@ -77,6 +93,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Auxiliary data</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вспомогательные данные</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:Type>xs:boolean</v8:Type>
@@ -95,6 +115,10 @@ END</expression>
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Listings</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Вхождений</v8:content>
 			</v8:item>
 		</title>
 		<useRestriction>
@@ -117,6 +141,10 @@ END</expression>
 				<v8:lang>en</v8:lang>
 				<v8:content>Items list</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Список элементов</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:TypeSet xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:AnyRef</v8:TypeSet>
@@ -132,6 +160,10 @@ END</expression>
 				<v8:lang>en</v8:lang>
 				<v8:content>Usage locations of application objects</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Места использования объектов программы</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:dataParameters>
@@ -143,6 +175,10 @@ END</expression>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Items list</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список элементов</v8:content>
 						</v8:item>
 					</dcsset:userSettingPresentation>
 				</dcscor:item>
@@ -186,6 +222,10 @@ END</expression>
 								<v8:lang>en</v8:lang>
 								<v8:content>Description</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Description</v8:content>
+							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -195,6 +235,10 @@ END</expression>
 								<v8:lang>en</v8:lang>
 								<v8:content>Code</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>код</v8:content>
+							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -203,6 +247,10 @@ END</expression>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Listings</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Вхождений</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
@@ -222,6 +270,10 @@ END</expression>
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>NZ='Not used'</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>ЧН='Не используется'</v8:content>
 									</v8:item>
 								</dcscor:value>
 							</dcscor:item>
@@ -260,6 +312,10 @@ END</expression>
 									<v8:lang>en</v8:lang>
 									<v8:content>Usage location</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Места использования</v8:content>
+								</v8:item>
 							</dcsset:lwsTitle>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -268,6 +324,10 @@ END</expression>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Listings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вхождений</v8:content>
 								</v8:item>
 							</dcsset:lwsTitle>
 						</dcsset:item>

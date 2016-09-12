@@ -39,11 +39,11 @@ Procedure BeforeWrite(Cancel)
 				RefEncrypted = AttributesStructure.Encrypted;
 				
 				If DigitallySigned AND RefDigitallySigned Then
-					Raise NStr("en = 'Digitally signed version can not be edited.'");
+					Raise NStr("en='Digitally signed version can not be edited.';ru='Подписанную версию нельзя редактировать.'");
 				EndIf;
 				
 				If Encrypted AND RefEncrypted AND DigitallySigned AND Not RefDigitallySigned Then
-					Raise NStr("en = 'Encrypted file can not be signed.'");
+					Raise NStr("en='Encrypted file can not be signed.';ru='Зашифрованный файл нельзя подписывать.'");
 				EndIf;
 				
 			EndIf;
@@ -64,11 +64,11 @@ Procedure BeforeWrite(Cancel)
 	
 	If Owner.CurrentVersion = Ref Then
 		If DeletionMark = True AND Owner.DeletionMark <> True Then
-			Raise NStr("en = 'Active version can not be deleted.'");
+			Raise NStr("en='Active version can not be deleted.';ru='Активную версию нельзя удалить.'");
 		EndIf;
 	ElsIf ParentalVersion.IsEmpty() Then
 		If DeletionMark = True AND Owner.DeletionMark <> True Then
-			Raise NStr("en = 'Unable to delete the first version.'");
+			Raise NStr("en='Unable to delete the first version.';ru='Первую версию нельзя удалить.'");
 		EndIf;
 	ElsIf DeletionMark = True AND Owner.DeletionMark <> True Then
 		// Clear the reference to parent one for subordinate and marked versions - 

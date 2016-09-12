@@ -11,16 +11,17 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not IsBlankString(Parameters.SuggestionText) Then
 		Items.CommentDecoration.Title = Parameters.SuggestionText
 			+ Chars.LF
-			+ NStr("en = 'Set?'");
+			+ NStr("en='Set?';ru='Задавать?'");
 		
 	ElsIf Not Parameters.PossibleToContinueWithoutInstallation Then
 		Items.CommentDecoration.Title =
-			NStr("en = 'For the action execution it is required to install extension for the 1C:Enterprise web client.
-			           |Install?'");
+			NStr("en='For the action execution it is required to install extension for the 1C:Enterprise web client."
+"Install?';ru='Для выполнения действия требуется установить расширение для веб-клиента 1С:Предприятие."
+"Установить?'");
 	EndIf;
 	
 	If Not Parameters.PossibleToContinueWithoutInstallation Then
-		Items.ContinueWithoutInstallation.Title = NStr("en = 'Cancel'");
+		Items.ContinueWithoutInstallation.Title = NStr("en='Cancel';ru='Отменить'");
 		Items.DoNotRemindMore.Visible = False;
 	EndIf;
 	

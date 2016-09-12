@@ -16,7 +16,7 @@ Procedure OpenFile(Val FileName) Export
 	
 	If CurrentInitialization Then
 		
-		Raise NStr("en = 'The object has been initialized before.'");
+		Raise NStr("en='The object has been initialized before.';ru='Объект уже был инициализирован ранее!'");
 		
 	Else
 		
@@ -29,11 +29,11 @@ Procedure OpenFile(Val FileName) Export
 		If ReadStream.NodeType <> XMLNodeType.StartElement
 			Or ReadStream.Name <> "Data" Then
 			
-			Raise(NStr("en = 'The XML reading error. Incorrect file format. Waiting the start of the Data item.'"));
+			Raise(NStr("en='The XML reading error. Incorrect file format. Waiting the start of the Data item.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента Data.'"));
 		EndIf;
 
 		If Not ReadStream.Read() Then
-			Raise(NStr("en = 'The XML reading error. File completion is detected.'"));
+			Raise(NStr("en='The XML reading error. File completion is detected.';ru='Ошибка чтения XML. Обнаружено завершение файла.'"));
 		EndIf;
 		
 		//
@@ -49,7 +49,7 @@ Function ReadInfobaseDataObject() Export
 	If ReadStream.NodeType = XMLNodeType.StartElement Then
 		
 		If ReadStream.Name <> "DumpElement" Then
-			Raise NStr("en = 'The XML reading error. Incorrect file format. Awaiting the DumpElement item start.'");
+			Raise NStr("en='The XML reading error. Incorrect file format. Awaiting the DumpElement item start.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента DumpElement.'");
 		EndIf;
 		
 		ReadStream.Read(); // <DumpElement>
@@ -181,10 +181,11 @@ Function ReadFlowFragment()
 		ReadStream.Read();
 	Except
 		TextEL = ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'An error occurred while copying a fragment of the source file. Partially copied
-                  |fragment:% 1'"),
+			NStr("en='An error occurred while copying a fragment of the source file. Partially copied"
+"fragment:% 1';ru='Ошибка копирования фрагмента исходного файла. Частично"
+"скопированный фрагмент: %1'"),
 				WriteFragment.Close());
-		WriteLogEvent(NStr("en = 'Exporting/importing data. XML read error'", 
+		WriteLogEvent(NStr("en='Exporting/importing data. XML read error';ru='Выгрузка/загрузка данных.Ошибка чтения XML'", 
 			ServiceTechnologyIntegrationWithSSL.MainLanguageCode()), EventLogLevel.Error, , , TextEL);
 		Raise;
 	EndTry;
@@ -208,13 +209,19 @@ EndFunction
 Procedure XMLReaderCallException(Val Fragment, Val ErrorText)
 	
 	Raise StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'An error occurred while reading data from file %1: while reading fragment 
-              |
-              |%2
-              |
-              |an error occurred:
-              |
-              |%3.'"),
+		NStr("en='An error occurred while reading data from file %1: while reading fragment "
+""
+"%2"
+""
+"an error occurred:"
+""
+"%3.';ru='Ошибка при чтении данных из файла %1: при чтении фрагмента %2"
+""
+"произошла"
+""
+"ошибка:"
+""
+"%3.'"),
 		CurrentFileName,
 		Fragment,
 		ErrorText

@@ -41,8 +41,8 @@ Function PrintForm(ObjectsArray, PrintObjects)
 		Query = New Query;
 		Query.SetParameter("CurrentDocument",   CurrentDocument);
 		Query.SetParameter("RegistrationPeriod", EndOfMonth(CurrentDocument.RegistrationPeriod));
-		Query.SetParameter("Bas", NStr("en = 'Bas.'"));
-		Query.SetParameter("comb", NStr("en = 'comb.'"));
+		Query.SetParameter("Bas", NStr("en='Bas.';ru='Осн.'"));
+		Query.SetParameter("comb", NStr("en='comb.';ru='Совм.'"));
 		Query.Text =
 		"SELECT
 		|	PayrollSheetEmployees.Employee.Code AS EmployeeCode,
@@ -182,7 +182,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "PayrollSheet";
-	PrintCommand.Presentation = NStr("en = 'Payroll sheet'");
+	PrintCommand.Presentation = NStr("en='Payroll sheet';ru='ПЛАТЕЖНАЯ ВЕДОМОСТЬ'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

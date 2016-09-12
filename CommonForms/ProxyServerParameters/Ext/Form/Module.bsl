@@ -11,9 +11,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ProxySettingAtClient = Parameters.ProxySettingAtClient;
 	If Not Parameters.ProxySettingAtClient
 		AND Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise NStr("en = 'Insufficient access rights.
-			|
-			|Proxy server is configured by the administrator.'");
+		Raise NStr("en='Insufficient access rights."
+""
+"Proxy server is configured by the administrator.';ru='Недостаточно прав доступа."
+""
+"Настройка прокси-сервера выполняется администратором.'");
 	EndIf;
 	
 	If ProxySettingAtClient Then
@@ -86,7 +88,7 @@ Procedure OnOpen(Cancel)
 	
 	If ProxySettingAtClient Then
 #If WebClient Then
-		ShowMessageBox(, NStr("en = 'In the web client the proxy server parameters must be specified in the browser settings.'"));
+		ShowMessageBox(, NStr("en='In the web client the proxy server parameters must be specified in the browser settings.';ru='В веб-клиенте параметры прокси-сервера необходимо задавать в настройках браузера.'"));
 		Cancel = True;
 		Return;
 #EndIf

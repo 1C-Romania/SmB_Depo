@@ -25,7 +25,7 @@ Procedure OnOpen(Cancel)
 	Representation.Visible                      = True;
 	Representation.AdditionalShowMode = AdditionalShowMode.Irrelevance;
 	Representation.Picture                       = PictureLib.LongOperation48;
-	Representation.Text                          = NStr("en = 'Generating the report...'");
+	Representation.Text                          = NStr("en='Generating the report...';ru='Отчет формируется...'");
 	
 	AttachIdleHandler("RunCreation", 0.1, True);
 EndProcedure

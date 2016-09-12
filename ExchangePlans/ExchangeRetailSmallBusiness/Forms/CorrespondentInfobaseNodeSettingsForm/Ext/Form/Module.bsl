@@ -160,12 +160,12 @@ Procedure GenerateCompanyTableTitle()
 	
 	If CompanySubsidiaryAttributeSynchronizationMode = "SynchronizeDataBySelectedCompaniesOnly" Then
 		
-		PageTitle = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'By companies (%1)'"),
+		PageTitle = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='By companies (%1)';ru='По организациям (%1)'"),
 			SelectedRowsQuantity("CompanySubsidiaryAttribute")
 		);
 	Else
 		
-		PageTitle = NStr("en = 'By all companies'");
+		PageTitle = NStr("en='By all companies';ru='по всем организациям'");
 	EndIf;
 	
 	Items.CompaniesPage.Title = PageTitle;

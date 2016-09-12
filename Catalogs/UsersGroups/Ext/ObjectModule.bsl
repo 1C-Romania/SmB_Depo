@@ -24,7 +24,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Parent = Catalogs.UsersGroups.AllUsers Then
 		CommonUseClientServer.AddUserError(Errors,
 			"Object.Parent",
-			NStr("en = 'Predefined group ""All users"" can''t be a parent.'"),
+			NStr("en='Predefined group ""All users"" can''t be a parent.';ru='Предопределенная группа ""Все пользователи"" не может быть родителем.'"),
 			"");
 	EndIf;
 	
@@ -38,10 +38,10 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If Not ValueIsFilled(CurrentRow.User) Then
 			CommonUseClientServer.AddUserError(Errors,
 				"Object.Content[%1].User",
-				NStr("en = 'User is not selected.'"),
+				NStr("en='User is not selected.';ru='Пользователь не выбран.'"),
 				"Object.Content",
 				LineNumber,
-				NStr("en = 'User in the row %1 is not selected.'"));
+				NStr("en='User in the row %1 is not selected.';ru='Пользователь в строке %1 не выбран.'"));
 			Continue;
 		EndIf;
 		
@@ -50,10 +50,10 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If FoundValues.Count() > 1 Then
 			CommonUseClientServer.AddUserError(Errors,
 				"Object.Content[%1].User",
-				NStr("en = 'User is not unique.'"),
+				NStr("en='User is not unique.';ru='Пользователь повторяется.'"),
 				"Object.Content",
 				LineNumber,
-				NStr("en = 'User in the %1 row is repeated.'"));
+				NStr("en='User in the %1 row is repeated.';ru='Пользователь в строке %1 повторяется.'"));
 		EndIf;
 	EndDo;
 	
@@ -75,13 +75,15 @@ Procedure BeforeWrite(Cancel)
 	If Ref = Catalogs.UsersGroups.AllUsers Then
 		If Not Parent.IsEmpty() Then
 			Raise
-				NStr("en = 'Predefined
-				           |group ""All users"" can be in the root only.'");
+				NStr("en='Predefined"
+"group ""All users"" can be in the root only.';ru='Предопределенная"
+"группа ""Все пользователи"" может быть только в корне.'");
 		EndIf;
 		If Content.Count() > 0 Then
 			Raise
-				NStr("en = 'Adding users to
-				           |the folder ""everyone"" is not supported.'");
+				NStr("en='Adding users to"
+"the folder ""everyone"" is not supported.';ru='Добавление пользователей в группу"
+"""Все пользователи"" не поддерживается.'");
 		EndIf;
 	Else
 		If Parent = Catalogs.UsersGroups.AllUsers Then

@@ -42,10 +42,13 @@ Procedure RefreshDataRegister(HasChanges = Undefined, CheckOnly = False) Export
 		MetadataObject = Metadata.FindByFullName(String.SubordinateTable);
 		If MetadataObject = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred
-				           |in the OnFillingAccessRightDependencies procedure of the AccessManagementOverridable general module.
-				           |
-				           |Subordinate table ""%1"" is not found.'"),
+				NStr("en='An error occurred"
+"in the OnFillingAccessRightDependencies procedure of the AccessManagementOverridable general module."
+""
+"Subordinate table ""%1"" is not found.';ru='Ошибка"
+"в процедуре ПриЗаполненииЗависимостейПравДоступа общего модуля УправлениеДоступомПереопределяемый."
+""
+"Не найдена подчиненная таблица ""%1"".'"),
 				String.SubordinateTable);
 		EndIf;
 		NewRow.SubordinateTable = CommonUse.MetadataObjectID(
@@ -54,10 +57,13 @@ Procedure RefreshDataRegister(HasChanges = Undefined, CheckOnly = False) Export
 		MetadataObject = Metadata.FindByFullName(String.MasterTable);
 		If MetadataObject = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'An error occurred
-				           |in the OnFillingAccessRightDependencies procedure of the AccessManagementOverridable general module.
-				           |
-				           |Leading table ""%1"" is not found.'"),
+				NStr("en='An error occurred"
+"in the OnFillingAccessRightDependencies procedure of the AccessManagementOverridable general module."
+""
+"Leading table ""%1"" is not found.';ru='Ошибка"
+"в процедуре ПриЗаполненииЗависимостейПравДоступа общего модуля УправлениеДоступомПереопределяемый."
+""
+"Не найдена ведущая таблица ""%1"".'"),
 				String.MasterTable);
 		EndIf;
 		NewRow.MasterTableType = CommonUse.ObjectManagerByFullName(

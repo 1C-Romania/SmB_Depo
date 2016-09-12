@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Data import to catalog</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Загрузка данных в справочник</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<SaveDataInSettings>UseList</SaveDataInSettings>
@@ -23,6 +27,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Assistant pages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы помощника</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTipRepresentation>None</ToolTipRepresentation>
 			<PagesRepresentation>None</PagesRepresentation>
@@ -34,6 +42,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Catalog selection for import</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбор справочника для загрузки</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="CatalogSelectionForImportExtendedTooltip" id="4"/>
 					<ChildItems>
@@ -43,6 +55,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Catalog selection for import</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выбор справочника для загрузки</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -56,6 +72,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Selection of catalog for data importing from spreadsheet by copying to clipboard or from external files (for example, Microsoft Office Excel, OpenOffice Calc etc.)</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Выбор справочника для загрузки данных из электронных таблиц через копирование в буфер обмена или из внешних файлов (например: Microsoft Office Excel, OpenOffice Calc и др.)</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
@@ -146,6 +166,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Data entry to tables</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заполнение таблицы данными</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="TableFillingWithDataExtendedTooltip" id="6"/>
 					<ChildItems>
@@ -163,6 +187,10 @@
 												<v8:lang>en</v8:lang>
 												<v8:content>Table filling</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Заполнение таблицы</v8:content>
+											</v8:item>
 										</Presentation>
 										<Value xsi:type="xs:decimal">0</Value>
 									</xr:Value>
@@ -175,6 +203,10 @@
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>From external file</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Из внешнего файла</v8:content>
 											</v8:item>
 										</Presentation>
 										<Value xsi:type="xs:decimal">1</Value>
@@ -201,6 +233,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>To fill in the table, it is required to copy data to the table from external file through clipboard.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Для заполнения таблицы необходимо скопировать данные в таблицу из внешнего файла через буфер обмена.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="LabelToolTipForFillingContextMenu" id="140"/>
 											<ExtendedTooltip name="LabelToolTipForFillingExtendedTooltip" id="141"/>
@@ -211,6 +247,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Preview</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Предварительный просмотр</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>None</TitleLocation>
@@ -298,6 +338,10 @@
 Then import the completed table in one
 of the formats: Microsoft Excel 2007 (.xlsx text with delimiters (.csv) or spreadsheet document (.mxl).</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Для загрузки данных необходимо сохранить бланк в файл для заполнения в другой программе. Затем загрузить заполненную таблицу в одном из форматов: Книга Microsoft Excel 2007 (.xlsx), текст с разделителями (.csv) или табличный документ (.mxl).</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="ExplanationVariantLoadFromFileContextMenu" id="610"/>
 											<ExtendedTooltip name="ExplanationVariantLoadFromFileExtendedTooltip" id="611"/>
@@ -333,6 +377,10 @@ of the formats: Microsoft Excel 2007 (.xlsx text with delimiters (.csv) or sprea
 											<v8:lang>en</v8:lang>
 											<v8:content>Page one column</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница одна колонка</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="PageOneColumnExtendedTooltip" id="497"/>
 									<ChildItems>
@@ -343,6 +391,10 @@ of the formats: Microsoft Excel 2007 (.xlsx text with delimiters (.csv) or sprea
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Enter data that was previously copied in clipboard:</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Введите данные, скопированные ранее в буфер обмена:</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="LabelWhenYouTypeInOneColumnContextMenu" id="499"/>
@@ -367,11 +419,19 @@ of the formats: Microsoft Excel 2007 (.xlsx text with delimiters (.csv) or sprea
 							<v8:lang>en</v8:lang>
 							<v8:content>Notfound</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ненайдено</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Notfound</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ненайдено</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="NotfoundExtendedTooltip" id="544"/>
@@ -382,11 +442,19 @@ of the formats: Microsoft Excel 2007 (.xlsx text with delimiters (.csv) or sprea
 									<v8:lang>en</v8:lang>
 									<v8:content>Group not found</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа не найдено</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group not found</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа не найдено</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -401,6 +469,10 @@ of the formats: Microsoft Excel 2007 (.xlsx text with delimiters (.csv) or sprea
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Decoration information32</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация информация32</v8:content>
 										</v8:item>
 									</Title>
 									<Picture>
@@ -417,6 +489,10 @@ of the formats: Microsoft Excel 2007 (.xlsx text with delimiters (.csv) or sprea
 											<v8:lang>en</v8:lang>
 											<v8:content>Unable to insert entered data in the list because There is no relevant data in the application. </v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Не удалось вставить введенные данные в список, т.к. в программе нет соответствующих данных. </v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="DecorationNotFoundContextMenu" id="546"/>
 									<ExtendedTooltip name="DecorationNotFoundExtendedTooltip" id="547"/>
@@ -431,11 +507,19 @@ of the formats: Microsoft Excel 2007 (.xlsx text with delimiters (.csv) or sprea
 							<v8:lang>en</v8:lang>
 							<v8:content>Comparison results</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результаты сопоставления</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Comparison results</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результаты сопоставления</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="ComparisonResultsExtendedTooltip" id="505"/>
@@ -446,11 +530,19 @@ of the formats: Microsoft Excel 2007 (.xlsx text with delimiters (.csv) or sprea
 									<v8:lang>en</v8:lang>
 									<v8:content>Comparison result</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Результат сопоставления</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group comparison result</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа результат сопоставления</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -464,6 +556,10 @@ of the formats: Microsoft Excel 2007 (.xlsx text with delimiters (.csv) or sprea
 											<v8:lang>en</v8:lang>
 											<v8:content>From %1 entered lines %2 will be inserted in the list.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Из %1 введенных строк в список будут вставлены %2.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="LabelComparisonResultContextMenu" id="531"/>
 									<ExtendedTooltip name="LabelComparisonResultExtendedTooltip" id="532"/>
@@ -476,6 +572,13 @@ of the formats: Microsoft Excel 2007 (.xlsx text with delimiters (.csv) or sprea
 be skipped: - No data
 in the application: 8 - Several
 variants for insertion: 2 To view missed rows and select data for insertion press "Next".</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Будут пропущены: 
+- Нет данных в программе: 8 
+- Несколько вариантов для вставки: 2 
+Для просмотра пропущенных строк и подбора данных для вставки нажмите "Далее".</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="DecorationNotfoundAndAmbiguityContextMenu" id="510"/>
@@ -491,6 +594,10 @@ variants for insertion: 2 To view missed rows and select data for insertion pres
 							<v8:lang>en</v8:lang>
 							<v8:content>Exported data comparison</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сопоставление загружаемых данных</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ExportedDataComparisonExtendedTooltip" id="192"/>
 					<ChildItems>
@@ -499,6 +606,10 @@ variants for insertion: 2 To view missed rows and select data for insertion pres
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Exported data comparison</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сопоставление загружаемых данных</v8:content>
 								</v8:item>
 							</Title>
 							<HorizontalStretch>true</HorizontalStretch>
@@ -514,6 +625,11 @@ variants for insertion: 2 To view missed rows and select data for insertion pres
 											<v8:content>For some entered rows there is no data in the application or there are several variants.
 To insert such rows you should select relevant objects in the column "Object" with left mouse button.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Для некоторых введенных строк не найдено данных в программе, либо имеется несколько вариантов.
+Для вставки таких строк следует выбрать соответствующие объекты, щелкнув левой кнопкой мыши в колонке "Объект".</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
 									<ContextMenu name="ExplanationForRefSearchContextMenu" id="502"/>
@@ -526,6 +642,10 @@ To insert such rows you should select relevant objects in the column "Object" wi
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>For some imported data perfect match was not found in the application. For unmatched data new records will be created or it will be skipped (depending on the settings). When required it is possible to match data manually by filling in the column "%1".</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Для некоторых загруженных данных в программе не найдено однозначного соответствия. Для несопоставленных данных будут созданы новые записи, либо они будут пропущены (в зависимости от настройки). При необходимости возможно сопоставить данные вручную, заполнив колонку "%1".</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
@@ -543,6 +663,12 @@ To insert such rows you should select relevant objects in the column "Object" wi
 
 Depending on settings new items will be created for unmatched data or unmatched data will be skipped. Matched data will be updated or will not be imported.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сопоставьте загружаемые данные с элементами в справочнике. Сопоставление возможно произвести несколько раз, выбирая разные колонки для сравнения. Также возможно сопоставить отдельные строки таблицы, выбрав значение в колонке.
+
+В зависимости от настройки, для несопоставленных данных будут созданы новые элементы, либо они будут пропущены, сопоставленные данные также будут обновлены либо не загружены.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="ExplanationForUniversalImportContextMenu" id="410"/>
 									<ExtendedTooltip name="ExplanationForUniversalImportExtendedTooltip" id="411"/>
@@ -557,6 +683,10 @@ Depending on settings new items will be created for unmatched data or unmatched 
 It is required to match these values with data in the application manually. 
 If necessary data is absent in the application please enter it.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Для некоторых значений в колонках таблицы не найдены однозначные соответствия в данных программы (выделены красным цветом). Необходимо сопоставить эти значения с данными в программе вручную.  В случае если в программе отсутствуют необходимые данные, то ввести их.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="ExplanationForTabularSectionContextMenu" id="465"/>
 									<ExtendedTooltip name="ExplanationForTabularSectionExtendedTooltip" id="466"/>
@@ -570,11 +700,19 @@ If necessary data is absent in the application please enter it.</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Match by columns</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выполнить сопоставление по колонкам</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Select one or several columns by which imported data will be compared with data in the application</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выберите одну или несколько колонок, по которым будут сопоставлены загруженные данные с данными из программы</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Width>35</Width>
@@ -587,6 +725,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Specify columns for matching</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Укажите колонки для сопоставления</v8:content>
 								</v8:item>
 							</InputHint>
 							<ContextMenu name="ComparisonColumnsListContextMenu" id="457"/>
@@ -607,6 +749,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Show</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Показывать</v8:content>
+										</v8:item>
 									</Title>
 									<Width>20</Width>
 									<HorizontalStretch>false</HorizontalStretch>
@@ -626,6 +772,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 														<v8:lang>en</v8:lang>
 														<v8:content>All</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Все</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string"/>
 											</xr:Value>
@@ -638,6 +788,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Notall</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Невсе</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">1</Value>
@@ -661,6 +815,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group command bar</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа командная панель</v8:content>
 										</v8:item>
 									</Title>
 									<CommandSource>Item.DataMatchingTable</CommandSource>
@@ -692,6 +850,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group matched data</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа сопоставляемые данные</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -766,6 +928,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Exported data matching:</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сопоставление загружаемых данных:</v8:content>
+								</v8:item>
 							</Title>
 							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Vertical</Group>
@@ -779,11 +945,19 @@ If necessary data is absent in the application please enter it.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group total unmatched</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа итого неспоставленых</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group total unmatched</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа итого неспоставленых</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -798,6 +972,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Matched items % 1)</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сопоставленные элементы (%1)</v8:content>
+												</v8:item>
 											</Title>
 											<TitleLocation>Left</TitleLocation>
 											<RadioButtonType>Auto</RadioButtonType>
@@ -809,6 +987,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 														<Presentation>
 															<v8:item>
 																<v8:lang>en</v8:lang>
+																<v8:content>Update</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
 																<v8:content>Update</v8:content>
 															</v8:item>
 														</Presentation>
@@ -823,6 +1005,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>Skip</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Пропустить</v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:decimal">0</Value>
@@ -839,6 +1025,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Unmatched (%1)</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Несопоставленные (%1)</v8:content>
+												</v8:item>
 											</Title>
 											<TitleLocation>Left</TitleLocation>
 											<RadioButtonType>Auto</RadioButtonType>
@@ -851,6 +1041,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 															<v8:item>
 																<v8:lang>en</v8:lang>
 																<v8:content>create </v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>создаем </v8:content>
 															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:decimal">1</Value>
@@ -865,6 +1059,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 																<v8:lang>en</v8:lang>
 																<v8:content>Skip</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Пропустить</v8:content>
+															</v8:item>
 														</Presentation>
 														<Value xsi:type="xs:decimal">0</Value>
 													</xr:Value>
@@ -878,6 +1076,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>en</v8:lang>
+													<v8:content>( including ambiguities: %1 )</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
 													<v8:content>( including ambiguities: %1 )</v8:content>
 												</v8:item>
 											</Title>
@@ -896,6 +1098,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Report on data import</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отчет о загрузке данных</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="ReportOnDataImportExtendedTooltip" id="73"/>
 					<ChildItems>
@@ -904,6 +1110,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Data importing complete</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Загрузка данных завершена</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -914,6 +1124,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Consolidated data details</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Расшифровка сводных данных</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Horizontal</Group>
@@ -926,6 +1140,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Group report total</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа отчет итог</v8:content>
 												</v8:item>
 											</Title>
 											<Group>Horizontal</Group>
@@ -940,6 +1158,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Group report created and updated</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа отчет созданные и обновленные</v8:content>
+														</v8:item>
 													</Title>
 													<Group>Vertical</Group>
 													<Representation>None</Representation>
@@ -953,6 +1175,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>NZ=0</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>ЧН=0</v8:content>
+																</v8:item>
 															</Format>
 															<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 															<ContextMenu name="TotalReportCreatedContextMenu" id="476"/>
@@ -964,6 +1190,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 																<v8:item>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>NZ=0</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>ЧН=0</v8:content>
 																</v8:item>
 															</Format>
 															<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -978,6 +1208,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 															<v8:lang>en</v8:lang>
 															<v8:content>Group missed</v8:content>
 														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа пропущенные</v8:content>
+														</v8:item>
 													</Title>
 													<Group>Vertical</Group>
 													<Representation>None</Representation>
@@ -991,6 +1225,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>NZ=0</v8:content>
 																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>ЧН=0</v8:content>
+																</v8:item>
 															</Format>
 															<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 															<ContextMenu name="TotalReportUpdatedContextMenu" id="479"/>
@@ -1002,6 +1240,10 @@ If necessary data is absent in the application please enter it.</v8:content>
 																<v8:item>
 																	<v8:lang>en</v8:lang>
 																	<v8:content>NZ=0</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>ЧН=0</v8:content>
 																</v8:item>
 															</Format>
 															<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -1022,6 +1264,11 @@ If necessary data is absent in the application please enter it.</v8:content>
 											<v8:content>Created and updated catalog items "%1" can be corrected by simultaneously marking several rows and pressing "Change attributes". Some items can be opened by double clicking.
 If necessary missed rows can be saved to file, corrected and imported again later.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Созданные и обновленные элементы справочника "%1" можно откорректировать, выделив сразу несколько строк и нажав кнопку "Измененить реквизиты". Отдельные элементы можно открыть по двойному щелчку мыши.
+При необходимости, пропущенные строки можно сохранить в файл, подкорректировать и позднее загрузить повторно.</v8:content>
+										</v8:item>
 									</Title>
 									<VerticalAlign>Top</VerticalAlign>
 									<ContextMenu name="ImportReportExplanationContextMenu" id="376"/>
@@ -1035,6 +1282,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 									<v8:lang>en</v8:lang>
 									<v8:content>Report control command bar</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Командная панель управления отчета</v8:content>
+								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
@@ -1047,6 +1298,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Show</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Показывать</v8:content>
 										</v8:item>
 									</Title>
 									<HorizontalAlign>Right</HorizontalAlign>
@@ -1065,6 +1320,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 														<v8:lang>en</v8:lang>
 														<v8:content>All (100)</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Все (100)</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">0</Value>
 											</xr:Value>
@@ -1077,6 +1336,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>New (20)</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Новые (20)</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">1</Value>
@@ -1091,6 +1354,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 														<v8:lang>en</v8:lang>
 														<v8:content>Updated (78)</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Обновленные (78)</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">2</Value>
 											</xr:Value>
@@ -1104,6 +1371,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 														<v8:lang>en</v8:lang>
 														<v8:content>Missed (2)</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Пропущенные (2)</v8:content>
+													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">3</Value>
 											</xr:Value>
@@ -1116,6 +1387,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Incorrect (2)</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Некорректные (2)</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xs:string">4</Value>
@@ -1136,6 +1411,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 											<v8:lang>en</v8:lang>
 											<v8:content>Report control panel commands</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Команды панели управления отчета</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="ReportControlPanelCommandsExtendedTooltip" id="434"/>
 									<ChildItems>
@@ -1148,6 +1427,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Save...</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Сохранить...</v8:content>
 												</v8:item>
 											</Title>
 											<ExtendedTooltip name="SaveExtendedTooltip" id="173"/>
@@ -1176,6 +1459,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 									<v8:lang>en</v8:lang>
 									<v8:content>Report on export</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отчет о загрузке</v8:content>
+								</v8:item>
 							</Title>
 							<TitleLocation>None</TitleLocation>
 							<Height>1</Height>
@@ -1193,11 +1480,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 							<v8:lang>en</v8:lang>
 							<v8:content>Long actions</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Длительные операции</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Long actions</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Длительные операции</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="LongActionsExtendedTooltip" id="554"/>
@@ -1208,11 +1503,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 									<v8:lang>en</v8:lang>
 									<v8:content>Group information on execution</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа информация о выполенение</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Group information on execution</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа информация о выполенение</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -1226,11 +1529,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 											<v8:lang>en</v8:lang>
 											<v8:content>Group progress</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа прогресс</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group progress</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа прогресс</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Height>6</Height>
@@ -1245,6 +1556,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Please wait...</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Пожалуйста, подождите...</v8:content>
 												</v8:item>
 											</Title>
 											<VerticalAlign>Bottom</VerticalAlign>
@@ -1272,6 +1587,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Command bar</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
+				</v8:item>
 			</Title>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
@@ -1284,6 +1603,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 							<v8:lang>en</v8:lang>
 							<v8:content>Group back</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа назад</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="GroupBackExtendedTooltip" id="474"/>
 					<ChildItems>
@@ -1294,6 +1617,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
+									<v8:content>&lt; Back</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
 									<v8:content>&lt; Back</v8:content>
 								</v8:item>
 							</Title>
@@ -1308,6 +1635,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Open catalog "% 1" with button "Done"</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Открыть справочник "%1" по кнопке "Готово"</v8:content>
 						</v8:item>
 					</Title>
 					<TitleLocation>Right</TitleLocation>
@@ -1337,6 +1668,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 							<v8:lang>en</v8:lang>
 							<v8:content>Group next close</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа далее закрыть</v8:content>
+						</v8:item>
 					</Title>
 					<HorizontalLocation>Right</HorizontalLocation>
 					<ExtendedTooltip name="GroupNextCloseExtendedTooltip" id="472"/>
@@ -1362,6 +1697,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 									<v8:lang>en</v8:lang>
 									<v8:content>Close</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Закрыть</v8:content>
+								</v8:item>
 							</Title>
 							<ExtendedTooltip name="CloseExtendedTooltip" id="46"/>
 						</Button>
@@ -1383,6 +1722,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Import variants list</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список вариантов загрузки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
@@ -1394,6 +1737,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Template with data</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаблон с данными</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
@@ -1404,6 +1751,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update existing</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновлять существующие</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1421,6 +1772,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Match by column</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставить по колонке</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
@@ -1431,6 +1786,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Create if unmapped</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создавать если не сопоставлено</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1448,6 +1807,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Table report</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица отчет</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
@@ -1458,6 +1821,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Filter report</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Фильтр отчет</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1474,6 +1841,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Open catalog after assistant closing</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть справочник после закрытия помощника</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1485,6 +1856,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Data matching table</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица сопоставления данных</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1495,6 +1870,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Correlation object name</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя объекта сопоставления</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1511,6 +1890,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Import type</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип загрузки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1526,6 +1909,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Information by columns</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Информация по колонкам</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -1536,6 +1923,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Column name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование колонки</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1552,6 +1943,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 							<v8:lang>en</v8:lang>
 							<v8:content>Column presentation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление колонки</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1567,6 +1962,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 							<v8:lang>en</v8:lang>
 							<v8:content>Column type</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип колонки</v8:content>
+						</v8:item>
 					</Title>
 					<Type/>
 				</Column>
@@ -1575,6 +1974,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Obligatory to complete</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обязательна для заполнения</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1585,6 +1988,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Position</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Position</v8:content>
 						</v8:item>
 					</Title>
@@ -1603,6 +2010,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 							<v8:lang>en</v8:lang>
 							<v8:content>Association</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ассоциация</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -1617,6 +2028,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Synonym</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Синоним</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1633,6 +2048,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 							<v8:lang>en</v8:lang>
 							<v8:content>Visible</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Видимость</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -1643,6 +2062,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Note</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заметка</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1658,6 +2081,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Width</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ширина</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -1677,6 +2104,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Link external data processor</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Внешняя обработка ссылка</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
@@ -1687,6 +2118,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Filter comparison table</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Фильтр таблица сопоставления</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1703,6 +2138,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Matching columns list</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список колонок сопоставления</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1718,6 +2157,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Export parameters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры загрузки</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1726,6 +2169,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>New items created</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создано новых элементов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1743,6 +2190,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Updated existing</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновлено существующих</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -1758,6 +2209,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Skipped</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пропущенные</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1775,6 +2230,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>including due to incorrect data</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>в т.ч. из-за некорректных данных</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -1791,6 +2250,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Command Identifier</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор команды</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -1806,6 +2269,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Filter parameters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры отбора</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1814,6 +2281,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Template with data one column</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шаблон с данными одна колонка</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1830,6 +2301,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Background job ID</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор фонового задания</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -1838,6 +2313,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Background job storage address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Фоновое задание адрес хранилища</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1853,6 +2332,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Background order percent</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Фоновое задание процент</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1870,6 +2353,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Import option</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант загрузки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -1886,6 +2373,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Attributes created</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реквизиты созданы</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1896,6 +2387,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Additional parameters</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополниетельные параметры</v8:content>
 				</v8:item>
 			</Title>
 			<Type/>
@@ -1931,11 +2426,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Import table from file...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить таблицу из файла...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Importing of prepared data from file to the table</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузка подготовленных данных из файла в таблицу</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ImportTemplateFromFile</Action>
@@ -1946,11 +2449,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Save form for filling...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить бланк для заполнения...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Saves form for filling as an empty table to the file. You can save file in one out of three formats (Excel 2007, text file with delimiters CSV, MXL table)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохраняет в файл бланк для заполнения в виде пустой таблицы. Доступно сохранение в один из трех выбраных форматов файла (Книга Excel 2007, Текстовый файл с разделителями CSV, MXL таблица)</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ExportTemplateToFile</Action>
@@ -1961,6 +2472,10 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Next &gt;</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Далее  &gt;</v8:content>
+				</v8:item>
 			</Title>
 			<Action>Next</Action>
 		</Command>
@@ -1970,11 +2485,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Back</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назад</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Back</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назад</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Back</Action>
@@ -1985,11 +2508,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Change attributes</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить реквизиты</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change attributes</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить реквизиты</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>GroupAttributeChange</Action>
@@ -2000,11 +2531,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Disambiguate...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Неоднозначность ...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Opens window from lists of matching catalog items to select correct item</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открывает окно со списков совпадающих элементов справочника для выбора правильногоэлемента</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnableAmbiguity</Action>
@@ -2015,11 +2554,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Insert into list</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавление в список</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Insert into list</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавление в список</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>InsertIntoList</Action>
@@ -2030,11 +2577,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Change form</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить бланк</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>If data importing is required regularly you can customize column names, presentation and order to simplify importing.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Если регулярно требуется загрузка данных, то можно настроить наименование колонок, их отображение и порядок следования для упрощения загрузки.</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ChangeForm</Action>
@@ -2045,11 +2600,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel mapping</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить сопоставление</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel mapping</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить сопоставление</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CancelMapping</Action>
@@ -2060,11 +2623,19 @@ If necessary missed rows can be saved to file, corrected and imported again late
 					<v8:lang>en</v8:lang>
 					<v8:content>Import data with other method</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить данные другим способом</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Import data with other method</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить данные другим способом</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ImportDataWithOtherMethodClick</Action>

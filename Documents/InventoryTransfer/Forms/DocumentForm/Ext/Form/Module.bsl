@@ -477,7 +477,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en = 'Data by barcode is not found: %1%; quantity: %2%'");
+		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -885,7 +885,7 @@ EndProcedure // GetInventoryFromStorage()
 Procedure SearchByBarcode(Command)
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en = 'Enter barcode'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
 	
 EndProcedure
 
@@ -910,7 +910,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.'"));
+		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -928,7 +928,7 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	
 	If Not Weight = Undefined Then
 		If Weight = 0 Then
-			MessageText = NStr("en = 'Electronic scales returned zero weight.'");
+			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			// Weight is received.
@@ -1177,7 +1177,7 @@ Procedure FillByBasis(Command)
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en = 'Document will be completely refilled by ""Basis""! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -1199,7 +1199,7 @@ Procedure FillByBalanceAtWarehouse(Command)
 	If Object.Inventory.Count() > 0 Then
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("FillByBalanceOnWarehouseEnd", ThisObject), NStr("en = 'Tabular section will be cleared. Continue?'"), QuestionDialogMode.YesNo, 0);
+		ShowQueryBox(New NotifyDescription("FillByBalanceOnWarehouseEnd", ThisObject), NStr("en='Tabular section will be cleared. Continue?';ru='Табличная часть будет очищена! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
         Return; 
 	EndIf;
 	
@@ -1232,7 +1232,7 @@ Procedure ChangeReserveFillByReserves(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Tabular section ""Inventory"" is not filled!'");
+		Message.Text = NStr("en='Tabular section ""Inventory"" is not filled!';ru='Табличная часть ""Запасы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -1248,7 +1248,7 @@ Procedure ChangeReserveClearReserve(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en = 'Tabular section ""Inventory"" is not filled!'");
+		Message.Text = NStr("en='Tabular section ""Inventory"" is not filled!';ru='Табличная часть ""Запасы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;

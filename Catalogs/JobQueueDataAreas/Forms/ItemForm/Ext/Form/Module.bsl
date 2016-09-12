@@ -56,7 +56,7 @@ Procedure SchedulePresentationStartChoice(Item, ChoiceData, StandardProcessing)
 	LockFormDataForEdit();
 	
 	If ValueIsFilled(Object.Pattern) Then
-		ShowMessageBox(, NStr("en = 'For the jobs based on the templates, the schedule is specified in the template.'"));
+		ShowMessageBox(, NStr("en='For the jobs based on the templates, the schedule is specified in the template.';ru='Для заданий на основе шаблонов, расписание задается в шаблоне.'"));
 		Return;
 	EndIf;
 	
@@ -99,8 +99,9 @@ Procedure ChangeSchedule(NewSchedule, AdditionalParameters) Export
 	Modified = True;
 	SetPresentationSchedule(ThisObject);
 	
-	ShowUserNotification(NStr("en = 'Replanning'"), , NStr("en = 'New schedule will be taken into account
-		|when executing the next job'"));
+	ShowUserNotification(NStr("en='Replanning';ru='Перепланирование'"), , NStr("en='New schedule will be taken into account"
+"when executing the next job';ru='Новое расписание будет учтено"
+"при следующем выполнении задания'"));
 	
 EndProcedure
 
@@ -112,9 +113,9 @@ Procedure SetPresentationSchedule(Val Form)
 	If Schedule <> Undefined Then
 		Form.SchedulePresentation = String(Schedule);
 	ElsIf ValueIsFilled(Form.Object.Pattern) Then
-		Form.SchedulePresentation = NStr("en = '<Set in template>'");
+		Form.SchedulePresentation = NStr("en='<Set in template>';ru='<Задается в шаблоне>'");
 	Else
-		Form.SchedulePresentation = NStr("en = '<Not defined>'");
+		Form.SchedulePresentation = NStr("en='<Not defined>';ru='<Не задано>'");
 	EndIf;
 	
 EndProcedure

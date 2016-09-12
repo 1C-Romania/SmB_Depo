@@ -34,7 +34,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	If ResponseBeforeClose <> True Then
 		Cancel = True;
 		NotifyDescription = New NotifyDescription("BeforeCloseEnd", ThisObject);
-		ShowQueryBox(NOTifyDescription, NStr("en = 'Settings were changed. Save changes?'"), 
+		ShowQueryBox(NOTifyDescription, NStr("en='Settings were changed. Save changes?';ru='Настройки были изменены. Сохранить изменения?'"), 
 			QuestionDialogMode.YesNoCancel, , DialogReturnCode.Yes);
 	EndIf;
 		

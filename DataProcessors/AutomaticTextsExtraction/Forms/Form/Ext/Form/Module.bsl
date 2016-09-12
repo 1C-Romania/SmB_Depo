@@ -39,13 +39,13 @@ Procedure OnOpen(Cancel)
 	
 	If CommonUseClientServer.ThisIsWebClient() Then
 		Cancel = True;
-		ShowMessageBox(, NStr("en = 'Text extraction is not supported in the web client.'"));
+		ShowMessageBox(, NStr("en='Text extraction is not supported in the web client.';ru='Извлечение текстов не поддерживается в Веб-клиенте.'"));
 		Return;
 	EndIf;
 	
 	If CommonUseClientServer.IsLinuxClient() Then
 		Cancel = True;
-		MessageText = NStr("en = 'Text extraction is not supported in the client under Linux OS.'");
+		MessageText = NStr("en='Text extraction is not supported in the client under Linux OS.';ru='Извлечение текстов не поддерживается в клиенте под управлением ОС Linux.'");
 		ShowMessageBox(, MessageText);
 		Return;
 	EndIf;
@@ -115,10 +115,13 @@ Procedure ExtractAll(Command)
 		ExtractionOfTextsClient(PortionSize);
 		
 		ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Text extraction from
-			         |all files with not extract text is completed.
-			         |
-			         |Number of processed files: %1.'"),
+			NStr("en='Text extraction from"
+"all files with not extract text is completed."
+""
+"Number of processed files: %1.';ru='Завершено извлечение текста из"
+"всех файлов с неизвлеченным текстом."
+""
+"Обработано файлов: %1.'"),
 			FilesCountWithUnextractedTextBeforeOperationStart));
 	#EndIf
 	
@@ -132,7 +135,7 @@ EndProcedure
 Procedure WriteLogEventServer(MessageText)
 	
 	WriteLogEvent(
-		NStr("en = 'Files. Text extraction'",
+		NStr("en='Files. Text extraction';ru='Файлы.Извлечение текста'",
 		     CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Error,
 		,
@@ -149,7 +152,7 @@ Procedure UpdateOfCountdown()
 	Left = ExtractionStartForecastedTime - CurrentDate();
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Text extraction will start in %1 sec'"),
+		NStr("en='Text extraction will start in %1 sec';ru='До начала извлечения текстов осталось %1 сек'"),
 		Left);
 	
 	If Left <= 1 Then
@@ -179,7 +182,7 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 	// database and is used only on client for information purposes, therefore it is not necessary to replace with CurrentSessionDate.
 	ExtractionStartForecastedTime = CurrentDate() + RunTimeInterval;
 	
-	Status(NStr("en = 'Extracting text started'"));
+	Status(NStr("en='Extracting text started';ru='Начато извлечение текста'"));
 	
 	Try
 		
@@ -190,7 +193,7 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 		FilesArray = GetFilesForTextExtraction(PortionSizeCurrent);
 		
 		If FilesArray.Count() = 0 Then
-			Status(NStr("en = 'No file to extract the text from!'"));
+			Status(NStr("en='No file to extract the text from!';ru='Нет файлов для извлечения текста'"));
 			Return;
 		EndIf; 
 		
@@ -209,7 +212,7 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 					FileDescription, Extension);
 				
 				Progress = IndexOf * 100 / FilesArray.Count();
-				Status(NStr("en = 'Extracting text from file'"), Progress, NameWithExtension);
+				Status(NStr("en='Extracting text from file';ru='Идет извлечение текста файла'"), Progress, NameWithExtension);
 				
 				FileFunctionsServiceClient.ExtractVersionText(
 					FileOrFileVersion, FileURL, Extension, UUID, Encoding);
@@ -219,8 +222,8 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 				ErrorDescriptionInfo = BriefErrorDescription(ErrorInfo());
 				
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'An unknown error occurred while
-					           |extracting text from  file ""%1""'"),
+					NStr("en='An unknown error occurred while"
+"extracting text from  file ""%1""';ru='Во время извлечения текста из файла ""%1"" произошла неизвестная ошибка'"),
 					String(FileOrFileVersion));
 				
 				MessageText = MessageText + String(ErrorDescriptionInfo);
@@ -235,8 +238,9 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 		EndDo;
 		
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Text extraction is completed.
-			           |Number of processed files: %1'"),
+			NStr("en='Text extraction is completed."
+"Number of processed files: %1';ru='Извлечение текста завершено."
+"Обработано файлов: %1'"),
 			FilesArray.Count());
 		
 		Status(MessageText);
@@ -246,8 +250,8 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 		ErrorDescriptionInfo = BriefErrorDescription(ErrorInfo());
 		
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'An unknown error occurred while
-			           |extracting text from  file ""%1""'"),
+			NStr("en='An unknown error occurred while"
+"extracting text from  file ""%1""';ru='Во время извлечения текста из файла ""%1"" произошла неизвестная ошибка'"),
 			String(FileOrFileVersion));
 		
 		MessageText = MessageText + String(ErrorDescriptionInfo);

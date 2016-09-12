@@ -38,6 +38,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Close</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Закрыть</v8:content>
+					</v8:item>
 				</Title>
 				<ExtendedTooltip name="FormCloseExtendedTooltip" id="104"/>
 			</Button>
@@ -57,11 +61,19 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Functions</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Функции</v8:content>
+					</v8:item>
 				</Title>
 				<ToolTip>
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Functions</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Функции</v8:content>
 					</v8:item>
 				</ToolTip>
 				<ExtendedTooltip name="FeaturesExtendedTooltip" id="87"/>
@@ -72,11 +84,19 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Importing group</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа загрузки</v8:content>
+							</v8:item>
 						</Title>
 						<ToolTip>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Importing group</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа загрузки</v8:content>
 							</v8:item>
 						</ToolTip>
 						<ExtendedTooltip name="ImportingGroupExtendedTooltip" id="91"/>
@@ -94,11 +114,19 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Export group</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа выгрузка</v8:content>
+							</v8:item>
 						</Title>
 						<ToolTip>
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Export group</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа выгрузка</v8:content>
 							</v8:item>
 						</ToolTip>
 						<ExtendedTooltip name="ExportGroupExtendedTooltip" id="99"/>
@@ -135,6 +163,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Driver type</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип драйвера</v8:content>
+				</v8:item>
 			</Title>
 			<HorizontalStretch>true</HorizontalStretch>
 			<ListChoiceMode>true</ListChoiceMode>
@@ -150,6 +182,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>It is provided with the configuration</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Поставляемый в составе конфигурации</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:boolean">true</Value>
 					</xr:Value>
@@ -162,6 +198,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Plugged-in based on 1C:Compatible standard</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Подключаемый по стандарту "1С:Cовместимо"</v8:content>
 							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:boolean">false</Value>
@@ -204,11 +244,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Driver attachment file name</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя файла драйвера</v8:content>
+				</v8:item>
 			</Title>
 			<InputHint>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>&lt;Driver file is not exported&gt;</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt;Файл драйвера не загружен&gt;</v8:content>
 				</v8:item>
 			</InputHint>
 			<ContextMenu name="DriverFileNameContextMenu" id="79"/>
@@ -232,6 +280,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>&lt;Additional info is not available&gt;</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt;Дополнительная информация отсутствует&gt;</v8:content>
+				</v8:item>
 			</InputHint>
 			<ContextMenu name="AdditionalInformationContextMenu" id="96"/>
 			<ExtendedTooltip name="AdditionalInformationExtendedTooltip" id="97"/>
@@ -244,11 +296,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Current status</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий статус</v8:content>
+				</v8:item>
 			</Title>
 			<InputHint>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>&lt;No information&gt;</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt;Нет информации&gt;</v8:content>
 				</v8:item>
 			</InputHint>
 			<ContextMenu name="DriverCurrentStatusContextMenu" id="114"/>
@@ -269,6 +329,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Compatibility of equipment types</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Соответствие типов оборудования</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
@@ -279,6 +343,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Driver attachment file name at the form</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя файл драйвера на форме</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -295,6 +363,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Driver link</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка на драйвер</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -310,6 +382,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>It is provided with the configuration</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поставляемый в составе конфигурации</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -320,6 +396,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Additional information</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительная информация</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -336,6 +416,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Driver current status</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий статус драйвера</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -351,6 +435,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Color of the text</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цвет текста</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8ui:Color</v8:Type>
@@ -362,6 +450,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Error color</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цвет ошибки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8ui:Color</v8:Type>
@@ -372,6 +464,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Installation color</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цвет установки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -393,6 +489,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Current status</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий статус</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -407,6 +507,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Current version</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая версия</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -423,6 +527,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>New architecture</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Новая архитектура</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -434,6 +542,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Integration library</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Интеграционная библиотека</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -444,6 +556,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Main driver is installed</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основной драйвер установлен</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -458,11 +574,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Import driver file</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить файл драйвера</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Import driver file command</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить файл драйвера команда</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ImportDriverFileCommand</Action>
@@ -474,11 +598,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Export driver file</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить файл драйвера</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Export driver file command</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить файл драйвера команда</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ExportDriverFileCommand</Action>
@@ -489,11 +621,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Install driver</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить драйвер</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Install driver command</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить драйвер команда</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>InstallDriverCommand</Action>

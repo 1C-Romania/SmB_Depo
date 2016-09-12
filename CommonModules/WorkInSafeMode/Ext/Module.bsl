@@ -459,7 +459,7 @@ Procedure ExecuteConfigurationMethod(Val MethodName, Val Parameters = Undefined)
 		ValidateConfigurationMethodName(MethodName);
 	Except
 		ErrorInfo = ErrorInfo();
-		Raise NStr("en = 'An error occurred when calling procedure ExecuteConfigurationMethod of common module WorkInSafeMode.'")
+		Raise NStr("en='An error occurred when calling procedure ExecuteConfigurationMethod of common module WorkInSafeMode.';ru='Ошибка при вызове процедуры ВыполнитьМетодКонфигурации общего модуля РаботаВБезопасномРежиме.'")
 			+ Chars.LF + BriefErrorDescription(ErrorInfo);
 	EndTry;
 	
@@ -508,7 +508,7 @@ Procedure ExecuteObjectMethod(Val Object, Val MethodName, Val Parameters = Undef
 		Test = New Structure(MethodName, MethodName);
 	Except
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Incorrect parameter value MethodName (%1)'"),
+			NStr("en='Incorrect parameter value MethodName (%1)';ru='Некорректное значение параметра ИмяМетода (%1)'"),
 			MethodName);
 	EndTry;
 	
@@ -552,15 +552,16 @@ Procedure ValidateConfigurationMethodName(Val MethodName) Export
 	NameParts = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(MethodName, ".");
 	If NameParts.Count() <> 2 AND NameParts.Count() <> 3 Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Wrong parameter format MethodName (%1)'"),
+			NStr("en='Wrong parameter format MethodName (%1)';ru='Неправильный формат параметра ИмяМетода (%1)'"),
 			MethodName);
 	EndIf;
 	
 	ObjectName = NameParts[0];
 	If NameParts.Count() = 2 AND Metadata.CommonModules.Find(ObjectName) = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Wrong format of the
-			           |parameter MethodName (%1): General module ""%2"" is not found.'"),
+			NStr("en='Wrong format of the"
+"parameter MethodName (%1): General module ""%2"" is not found.';ru='Неправильный"
+"формат параметра ИмяМетода (%1): Не найден общий модуль ""%2"".'"),
 			MethodName,
 			ObjectName);
 	EndIf;
@@ -574,8 +575,9 @@ Procedure ValidateConfigurationMethodName(Val MethodName) Export
 		EndTry;
 		If Manager = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Incorrect format of
-				           |the parameter MethodName (%1): manager of the object ""%2"" is not found.'"),
+				NStr("en='Incorrect format of"
+"the parameter MethodName (%1): manager of the object ""%2"" is not found.';ru='Неправильный"
+"формат параметра ИмяМетода (%1): Не найден менеджер объекта ""%2"".'"),
 				MethodName,
 				FullObjectName);
 		EndIf;
@@ -588,11 +590,12 @@ Procedure ValidateConfigurationMethodName(Val MethodName) Export
 		// For example: MyProcedure
 		TempStructure.Insert(ObjectMethodName);
 	Except
-		WriteLogEvent(NStr("en = 'Safe method execution'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Safe method execution';ru='Безопасное выполнение метода'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Incorrect format of
-			           |parameter MethodName (%1): Method name ""%2"" does not correspond to the requirements of generation of procedures and functions names.'"),
+			NStr("en='Incorrect format of"
+"parameter MethodName (%1): Method name ""%2"" does not correspond to the requirements of generation of procedures and functions names.';ru='Неправильный"
+"формат параметра ИмяМетода (%1): Имя метода ""%2"" не соответствует требованиям образования имен процедур и функций.'"),
 			MethodName,
 			ObjectMethodName);
 	EndTry;
@@ -633,9 +636,11 @@ Procedure CheckPossibilityToExecuteSessionSettingsSetupHandlers() Export
 			Else
 				
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Cannot execute handlers of session parameters setup due to: security profile %1 is absent in servers cluster of 1C:Enterprise or it is prohibited to use it as security profile of safe mode.
-                          |
-                          |For restoration of the application it is required to disable the use of security profile through the cluster console and reconfigure security profiles using configuration interface (corresponding commands are located in the section of application settings'"),
+					NStr("en='Cannot execute handlers of session parameters setup due to: security profile %1 is absent in servers cluster of 1C:Enterprise or it is prohibited to use it as security profile of safe mode."
+""
+"For restoration of the application it is required to disable the use of security profile through the cluster console and reconfigure security profiles using configuration interface (corresponding commands are located in the section of application settings';ru='Невозможно выполнение обработчиков установки параметров сеанса по причине: профиль безопасности %1 отсутствует в кластере серверов 1С:Предприятия, или для него запрещено использование в качестве профиля безопасности безопасного режима."
+""
+"Для восстановления работоспособности программы требуется отключить использование профиля безопасности через консоль кластера и заново настроить профили безопасности с помощью интерфейса конфигурации (соответствующие команды находятся в разделе настроек программы).'"),
 					InfobaseProfile);
 				
 			EndIf;
@@ -651,9 +656,11 @@ Procedure CheckPossibilityToExecuteSessionSettingsSetupHandlers() Export
 			// Profile of IB is available for execution of handlers, but it is impossible to set privileged mode.
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'It is impossible to execute handlers of session parameters setup due to: security profile %1 does not contain a permission to set privileged mode. It may have been edited through the cluster console.
-                      |
-                      |For restoration of the application it is required to disable the use of security profile through the cluster console and reconfigure security profiles using configuration interface (corresponding commands are located in the section of application settings'"),
+				NStr("en='It is impossible to execute handlers of session parameters setup due to: security profile %1 does not contain a permission to set privileged mode. It may have been edited through the cluster console."
+""
+"For restoration of the application it is required to disable the use of security profile through the cluster console and reconfigure security profiles using configuration interface (corresponding commands are located in the section of application settings';ru='Невозможно выполнение обработчиков установки параметров сеанса по причине: профиль безопасности %1 не содержит разрешения на установку привилегированного режима. Возможно, он был отредактирован через консоль кластера."
+""
+"Для восстановления работоспособности программы требуется отключить использование профиля безопасности через консоль кластера и заново настроить профили безопасности с помощью интерфейса конфигурации (соответствующие команды находятся в разделе настроек программы).'"),
 				InfobaseProfile);
 			
 		EndIf;
@@ -670,9 +677,11 @@ Procedure CheckPossibilityToExecuteSessionSettingsSetupHandlers() Export
 		Except
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Cannot execute handlers of session parameters setup due to: %1.
-                      |
-                      |Maybe a security profile was set for infobase through the cluster console which does not allow to execute external modules without setup of safe mode. IN this case, to restore application operation, it is required to disable the use of security profile through the cluster console and reconfigure security profiles using configuration interface (corresponding commands are located in the section of application settings).At the same time, the application will be automatically configured for shared use with enabled security profiles.'"),
+				NStr("en='Cannot execute handlers of session parameters setup due to: %1."
+""
+"Maybe a security profile was set for infobase through the cluster console which does not allow to execute external modules without setup of safe mode. IN this case, to restore application operation, it is required to disable the use of security profile through the cluster console and reconfigure security profiles using configuration interface (corresponding commands are located in the section of application settings).At the same time, the application will be automatically configured for shared use with enabled security profiles.';ru='Невозможно выполнение обработчиков установки параметров сеанса по причине: %1."
+""
+"Возможно, для информационной базы через консоль кластера был установлен профиль безопасности, не допускающий выполнения внешних модулей без установки безопасного режима. В этом случае для восстановления работоспособности программы требуется отключить использование профиля безопасности через консоль кластера и заново настроить профили безопасности с помощью интерфейса конфигурации (соответствующие команды находятся в разделе настроек программы).При этом программа будет автоматически корректно настроена на использование совместно с включенными профилями безопасности.'"),
 				BriefErrorDescription(ErrorInfo())
 			);
 			
@@ -847,7 +856,7 @@ Function ObjectManagerByName(Name)
 	EndIf;
 	
 	Raise StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Failed to get a manager for the object ""%1""'"), Name);
+		NStr("en='Failed to get a manager for the object ""%1""';ru='Не удалось получить менеджер для объекта ""%1""'"), Name);
 	
 EndFunction
 
@@ -864,13 +873,13 @@ Function PossibleToExecuteSessionParametersSetupHandlersWithoutSafeModeInstallat
 		
 	Except
 		
-		WriteLogEventTemplate = NStr("en = 'During installation of session parameters an error occurred: -------------------------------------------------------------------------------------------- %1 -------------------------------------------------------------------------------------------- Launch of the application is not possible.'");
+		WriteLogEventTemplate = NStr("en='During installation of session parameters an error occurred: -------------------------------------------------------------------------------------------- %1 -------------------------------------------------------------------------------------------- Launch of the application is not possible.';ru='При установке параметров сеанса произошла ошибка: -------------------------------------------------------------------------------------------- %1 -------------------------------------------------------------------------------------------- Запуск программы будет невозможен.'");
 		
 		WriteLogEventText = StringFunctionsClientServer.PlaceParametersIntoString(
 			WriteLogEventTemplate, DetailErrorDescription(ErrorInfo()));
 		
 		WriteLogEvent(
-			NStr("en = 'Session parameters setup'", CommonUseClientServer.MainLanguageCode()),
+			NStr("en='Session parameters setup';ru='Установка параметров сеанса'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
 			,

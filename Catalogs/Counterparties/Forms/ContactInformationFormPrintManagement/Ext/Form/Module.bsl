@@ -22,11 +22,12 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	If Modified Then
 		
-		QuestionText = NStr("en = 'Contact information content was modified.
-			|Save changes?'");
+		QuestionText = NStr("en='Contact information content was modified."
+"Save changes?';ru='Состав контактной информации был изменен."
+"Сохранить изменения?'");
 		
 		Notification = New NotifyDescription("BeforeCloseSaveOffered", ThisForm);
-		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.Cancel, NStr("en = 'Edit content contact information'"));
+		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.Cancel, NStr("en='Edit content contact information';ru='Редактирование состава контактной информации'"));
 		
 		Cancel = True;
 		

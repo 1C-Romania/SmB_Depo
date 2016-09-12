@@ -38,6 +38,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Infobases objects matching</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Соответствия объектов информационных баз</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<UseStandardCommands>false</UseStandardCommands>
@@ -165,6 +169,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Is used to store the information of these infobase objects matching to the objects of the exchange infobase-correspondent.</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Используется для хранения информации сопоставления объектов этой информационной базы с объектами информационной базы-корреспондента обмена.</v8:content>
+				</v8:item>
 			</Explanation>
 		</Properties>
 		<ChildObjects>
@@ -175,6 +183,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>UniqueSourceHandleAsString</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уникальный идентификатор источника строкой</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -193,6 +205,11 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Line presentation of the correspondent infobase object type.
 The row of a unique object identifier of a reference type of this infobase (derivative of the SourceUUID dimension value).</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Строковое представление типа объекта информационной базы корреспондента.
+Строка уникального идентификатора объекта ссылочного типа этой информационной базы (производная от значения измерения УникальныйИдентификаторИсточника).</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -224,6 +241,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 							<v8:lang>en</v8:lang>
 							<v8:content>The Object Exported By Refference</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект выгружен по ссылке</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -236,6 +257,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Shows that the register record is used to identify objects imported by the link. When importing the data such records are deleted when possible.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак того, что запись регистра используется для идентификации объектов, выгруженных по ссылке. При загрузке данных такие записи удаляются по возможности.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -267,6 +292,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 							<v8:lang>en</v8:lang>
 							<v8:content>Infobase node</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Узел информационной базы</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -279,6 +308,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Exchange plan node in terms of which the objects matching information is stored.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Узел плана обмена, в разрезе которого храниться информация сопоставления объектов.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -313,6 +346,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 							<v8:lang>en</v8:lang>
 							<v8:content>Unique source handle</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уникальный идентификатор источника</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -325,6 +362,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Reference to any object of the reference type if this infobase.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка на любой объект ссылочного типа этой информационной базы.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -359,6 +400,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 							<v8:lang>en</v8:lang>
 							<v8:content>Unique receiver handle</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уникальный идентификатор приемника</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -375,6 +420,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Row of a unique object ID of the infobase reference type of the correspondent.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Строка уникального идентификатора объекта ссылочного типа информационной базы корреспондента.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -409,6 +458,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 							<v8:lang>en</v8:lang>
 							<v8:content>Receiver type</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип приемника</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -425,6 +478,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Line presentation of the correspondent infobase object type.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Строковое представление типа объекта информационной базы корреспондента.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -459,6 +516,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 							<v8:lang>en</v8:lang>
 							<v8:content>Source type</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип источника</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -475,6 +536,10 @@ The row of a unique object identifier of a reference type of this infobase (deri
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The string that represents the type of object of this infobase.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Строковое представление типа объекта этой информационной базы.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>

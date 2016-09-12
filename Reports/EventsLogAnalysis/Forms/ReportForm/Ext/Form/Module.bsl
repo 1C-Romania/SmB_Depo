@@ -43,7 +43,7 @@ Procedure ResultDetailProcessing(Item, Details, StandardProcessing)
 		
 	EndIf;
 	
-	If Not CurrentVariantDescription = NStr("en = 'Duration of the scheduled jobs work'") Then
+	If Not CurrentVariantDescription = NStr("en='Duration of the scheduled jobs work';ru='Продолжительность работы регламентных заданий'") Then
 		StandardProcessing = True;
 		Return;
 	EndIf;
@@ -53,8 +53,8 @@ Procedure ResultDetailProcessing(Item, Details, StandardProcessing)
 	If TypeDetails = "DecryptionScheduledJobs" Then
 		
 		VariantDetails = New ValueList;
-		VariantDetails.Add("InfoAboutScheduledJob", NStr("en = 'Information on the scheduled job'"));
-		VariantDetails.Add("OpenEventLogMonitor", NStr("en = 'Proceed to the event log'"));
+		VariantDetails.Add("InfoAboutScheduledJob", NStr("en='Information on the scheduled job';ru='Сведения о регламентном задании'"));
+		VariantDetails.Add("OpenEventLogMonitor", NStr("en='Proceed to the event log';ru='Перейти к журналу регистрации'"));
 		
 		NotifyDescription = New NotifyDescription("ResultDetailDataProcessorEnd", ThisObject, Details);
 		ShowChooseFromMenu(NOTifyDescription, VariantDetails);
@@ -113,7 +113,7 @@ Procedure ResultDetailDataProcessorEnd(SelectedVariant, Details) Export
 		For Each GanttChartPoint IN ListPoints Do
 			
 			DetailsDots = GanttChartPoint.Details;
-			If GanttChartPoint.Value = NStr("en = 'Background jobs'") Then
+			If GanttChartPoint.Value = NStr("en='Background jobs';ru='Фоновые задания'") Then
 				Continue;
 			EndIf;
 			
@@ -231,7 +231,7 @@ Function GenerateReportServer(ReportParameters)
 		UUID,
 		"Reports.EventsLogAnalysis.Generate",
 		ReportParameters,
-		NStr("en = 'Report execution: Events log monitor analysis'"));
+		NStr("en='Report execution: Events log monitor analysis';ru='Выполнение отчета: Анализ журнала регистрации'"));
 	
 	StorageAddress       = ExecutionResult.StorageAddress;
 	JobID = ExecutionResult.JobID;

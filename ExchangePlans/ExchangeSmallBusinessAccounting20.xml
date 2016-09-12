@@ -31,6 +31,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>1C:Enterprise Accounting 8, ed. 2.0</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>1C:Enterprise Accounting 8, ed. 2.0</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<UseStandardCommands>true</UseStandardCommands>
@@ -255,6 +259,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Documents export start date</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата начала выгрузки документов</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -296,6 +304,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Use Companies Filter</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать отбор по организациям</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -334,6 +346,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Tax kind</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид налога</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -346,6 +362,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The value will be added to the "Tax kind" attribute when importing from Enterprise Accounting the cash outflow documents reflecting the payment of taxes.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение будет использовано для заполнения реквизита "Вид налога" при загрузке документов расхода денежных средств из конфигурации "Бухгалтерии предприятия" отражающих оплату налогов</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -377,6 +397,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash flow item (expense)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статья ДДС (расход)</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -389,6 +413,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The value will be added to the "CF item" attribute when importing the cash outflow documents in case this field is not filled in Enterprise Accounting.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение будет использовано для заполнения реквизита "Статья ДДС" при загрузке документов расхода денежных средств в том случае, когда в конфигурации "Бухгалтерии предприятия" данное поле не заполнено.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -420,6 +448,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash flow item (Income)</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статья ДДС (приход)</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -432,6 +464,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Value will be used to fill in the "CF item" attribute when importing the cash assets receipt documents in case if this field is not filled in the "Enterprise Accounting" configuration.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение будет использовано для заполнения реквизита "Статья ДДС" при загрузке документов прихода денежных средств в том случае, когда в конфигурации "Бухгалтерии предприятия" данное поле не заполнено.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -463,6 +499,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Petty cash</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Касса</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -475,6 +515,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The value will be added to the "Petty cash" attribute when importing the cash documents.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение будет использовано для заполнения реквизита "Касса" при загрузке кассовых документов.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -506,6 +550,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Cash register</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Касса ККМ</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -518,6 +566,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>The value will be added to the "Cash Register" attribute when exporting the cash receipt documents from the retail outlet.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение будет использовано для заполнения реквизита "Касса ККМ" при загрузке документов поступления денежных средств в кассу из розничной торговой точки.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -548,6 +600,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Export mode if necessary</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Режим выгрузки при необходимости</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -587,6 +643,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Register changes</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Регистрировать изменения</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -624,6 +684,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Manual exchange</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ручной обмен</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -663,6 +727,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Use selection by document types</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать отбор по видам документов</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -701,6 +769,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Import the documents from enterprise accounting</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Загружать документы из бухгалтерии предприятия</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -738,6 +810,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Data synchronization mode</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Режим синхронизации данных</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -786,6 +862,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Companies</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Компании</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -876,6 +956,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document kinds</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Виды документов</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<ToolTip/>
@@ -917,6 +1001,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>metadata object name</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Имя объекта метаданных</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -956,6 +1044,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Presentation</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Представление</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>

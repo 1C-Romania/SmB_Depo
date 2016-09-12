@@ -41,8 +41,7 @@ Procedure RunPreliminaryControl(Cancel)
 	If Not QueryResult.IsEmpty() Then
 		QueryResultSelection = QueryResult.Select();
 		While QueryResultSelection.Next() Do
-			MessageText = NStr(
-				"en = 'Assets %FixedAsset% in list ""Assets"" string %LineNumber% is indicated repeatedly.'"
+			MessageText = NStr("en='Assets %FixedAsset% in list ""Assets"" string %LineNumber% is indicated repeatedly.';ru='Имущество ""%ВнеоборотныйАктив%"" указанное в строке %НомерСтроки% списка ""Имущество"", указано повторно.'"
 			);
 			MessageText = StrReplace(MessageText, "%LineNumber%", QueryResultSelection.LineNumber);
 			MessageText = StrReplace(MessageText, "%FixedAsset%", QueryResultSelection.FixedAsset);
@@ -80,8 +79,7 @@ Procedure RunPreliminaryControl(Cancel)
 	EndIf;
 		
 	If TotalOriginalCost <> Amount Then
-		MessageText = NStr(
-			"en = 'Products and services cost: %Amount% is inappropriate to amount of initial property costs: %TotalInitialCost%'"
+		MessageText = NStr("en='Products and services cost: %Amount% is inappropriate to amount of initial property costs: %TotalInitialCost%';ru='Стоимость номенклатуры: %Сумма% , не соответствует сумме первоначальных стоимостей имущества: %ИтогПервоначальнаяСтоимость%'"
 		);
 		MessageText = StrReplace(MessageText, "%Amount%", TrimAll(String(Amount))); 
 		MessageText = StrReplace(MessageText, "%TotalOriginalCost%", TrimAll(String(TotalOriginalCost)));
@@ -126,8 +124,7 @@ Procedure RunPreliminaryControl(Cancel)
 	For Each RowOfFixedAssets IN FixedAssets Do
 			
 		If ArrayVAStatus.Find(RowOfFixedAssets.FixedAsset) <> Undefined Then
-			MessageText = NStr(
-				"en = 'For property ""%FixedAsset%"" indicated in string %LineNumber% of list ""Property"" current state is ""It is accepted for accounting"".'"
+			MessageText = NStr("en='For property ""%FixedAsset%"" indicated in string %LineNumber% of list ""Property"" current state is ""It is accepted for accounting"".';ru='Для имущества ""%ВнеоборотныйАктив%"" указанного в строке %НомерСтроки% списка ""Имущество"", текущее состояние ""Принят к учету"".'"
 			);
 			MessageText = StrReplace(MessageText, "%FixedAsset%", TrimAll(String(RowOfFixedAssets.FixedAsset))); 
 			MessageText = StrReplace(MessageText, "%LineNumber%",String(RowOfFixedAssets.LineNumber));
@@ -216,8 +213,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 		If RowOfFixedAssets.FixedAsset.DepreciationMethod = Enums.FixedAssetsDepreciationMethods.Linear
 		   AND RowOfFixedAssets.UsagePeriodForDepreciationCalculation = 0 Then
-			MessageText = NStr(
-				"en = 'For property ""%FixedAsset%"" indicated in string %LineNumber% of list ""Property"" should be filled with ""Usage period for depreciation calculation"".'"
+			MessageText = NStr("en='For property ""%FixedAsset%"" indicated in string %LineNumber% of list ""Property"" should be filled with ""Usage period for depreciation calculation"".';ru='Для имущества ""%ВнеоборотныйАктив%"" указанного в строке %НомерСтроки% списка ""Имущество"", должен быть заполнен ""Срок использования для вычисления амортизации"".'"
 			);
 			MessageText = StrReplace(MessageText, "%FixedAsset%", TrimAll(String(RowOfFixedAssets.FixedAsset))); 
 			MessageText = StrReplace(MessageText, "%LineNumber%",String(RowOfFixedAssets.LineNumber));
@@ -233,8 +229,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 		If RowOfFixedAssets.FixedAsset.DepreciationMethod = Enums.FixedAssetsDepreciationMethods.ProportionallyToProductsVolume
 		   AND RowOfFixedAssets.AmountOfProductsServicesForDepreciationCalculation = 0 Then
-			MessageText = NStr(
-				"en = 'For property ""%FixedAsset%"" indicated in string %LineNumber% of list ""Property"" should be filled with ""Product (work) volume for depreciation calculation in physical terms."".'"
+			MessageText = NStr("en='For property ""%FixedAsset%"" indicated in string %LineNumber% of list ""Property"" should be filled with ""Product (work) volume for depreciation calculation in physical terms."".';ru='Для имущества ""%ВнеоборотныйАктив%"" указанного в строке %НомерСтроки% списка ""Имущество"", должен быть заполнен ""Объем продукции (работ) для исчисления амортизации в натуральных ед."".'"
 			);
 			MessageText = StrReplace(MessageText, "%FixedAsset%", TrimAll(String(RowOfFixedAssets.FixedAsset))); 
 			MessageText = StrReplace(MessageText, "%LineNumber%",String(RowOfFixedAssets.LineNumber));

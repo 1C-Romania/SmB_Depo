@@ -30,6 +30,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Work order</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказ наряд</v8:content>
+				</v8:item>
 			</Synonym>
 			<Comment/>
 			<UseStandardCommands>true</UseStandardCommands>
@@ -52,6 +56,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Document posting flag</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак проведения документа</v8:content>
 						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
@@ -83,6 +91,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Ref to document</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка на документ</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -97,6 +109,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Ref</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -118,6 +134,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document deletion mark</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка удаления документа</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -132,6 +152,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Deletion mark</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПометкаУдаления</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -153,6 +177,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document date</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата документа</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -167,6 +195,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -188,6 +220,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Document No.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер документа</v8:content>
+						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
 					<xr:Format/>
@@ -201,6 +237,10 @@
 					<xr:Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
 							<v8:content>Number</v8:content>
 						</v8:item>
 					</xr:Synonym>
@@ -276,12 +316,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Work orders</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Задания на работу</v8:content>
+				</v8:item>
 			</ListPresentation>
 			<ExtendedListPresentation/>
 			<Explanation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>The task to perform job or provide service</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Задания на выполнение работ или оказание услуг</v8:content>
 				</v8:item>
 			</Explanation>
 			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
@@ -307,6 +355,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company on behalf of which the task is formed. Selected from Companies reference. Attribute is displayed in the form if in the accounting parameters settings the accounting by several companies is enabled</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация, от лица которой оформляется задание. Выбирается из справочника "Организации". Реквизит отображается на форме, если в настройках параметров учета включено ведение учета по нескольким организациям</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -338,6 +390,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Operation</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Операция</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -350,6 +406,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>It is necessary to select a task type: External (contract type task), Internal (own company task type).</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Необходимо выбрать вид задания: Внешняя (выполнение какого-либо задания по конкретному заказу, по договору), Внутренняя (выполнение какого-либо задания для компании).</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -381,6 +441,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>State</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Состояние</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -393,6 +457,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Classification of the tasks category</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Классификация категории заданий</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -424,6 +492,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Work kind</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид работ</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -436,6 +508,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Planned kind of work</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Планируемый вид работ</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -477,6 +553,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Price kind</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид цены</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -489,6 +569,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>kind of price that determines job cost for the consumer</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид цен, по которому определяется стоимость работ для заказчика</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -526,6 +610,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Performer</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исполнитель</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -538,6 +626,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Employees that is given the task</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сотрудник, которому назначается задание</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -569,6 +661,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Division</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>разделение</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -581,6 +677,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Division where the task is planned</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение, в котором планируется задание</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -616,6 +716,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Amount</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Amount</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -633,6 +737,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Fill document amount</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заполняется сумма документа</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -663,6 +771,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Work kind position</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Положение вида работ</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment>Position of the works type (in the heading, in the list)</Comment>
@@ -702,6 +814,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Event</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Событие</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -714,6 +830,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Service attribute to register for event</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Служебный реквизит для регистрации связи с событием</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -745,6 +865,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -761,6 +885,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Any additional information related to the document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Указывается любая дополнительная информация к документу</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -792,6 +920,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Author</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ведомость составил</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -804,6 +936,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>User who created the document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь, создавший документ</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -848,6 +984,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Works</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Работает</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<ToolTip/>
@@ -889,6 +1029,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Work kind</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вид работ</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -901,6 +1045,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Planned kind of work</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Планируемый вид работ</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -940,6 +1088,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Customer</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Покупатель</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -954,6 +1106,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Consumer works, services</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Заказчик работы, услуги</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -983,6 +1139,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Work, service</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Работа, услуга</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -995,6 +1155,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Work, service, for which task is running</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Работа, услуга, для которой выполняется задание</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1043,6 +1207,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Characteristic</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Characteristic</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1055,6 +1223,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Characteristic of the ProductsAndServices for the production of which the operation is executed</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Характеристика номенклатуры, для изготовления которой выполняется задание</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1095,6 +1267,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Day</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>день</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1110,6 +1286,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Date-the planned date for the task to be completed</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>День - планируемая дата выполнения задания</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1139,6 +1319,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Start time</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Время начала</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1153,17 +1337,29 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>DF='H:mm'</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ='H:mm'</v8:content>
+								</v8:item>
 							</Format>
 							<EditFormat>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>DF='H:mm'</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ='H:mm'</v8:content>
+								</v8:item>
 							</EditFormat>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Start time of the task</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Время начала выполнения задания</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1193,6 +1389,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>End time</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Время конца</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1207,17 +1407,29 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>DF='H:mm'</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ='H:mm'</v8:content>
+								</v8:item>
 							</Format>
 							<EditFormat>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>DF='H:mm'</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ='H:mm'</v8:content>
+								</v8:item>
 							</EditFormat>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>End time of the task</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Время окончания выполнения задания</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1247,6 +1459,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Duration</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Продолжительность</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1261,17 +1477,29 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>DF='H:mm'</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ='H:mm'</v8:content>
+								</v8:item>
 							</Format>
 							<EditFormat>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>DF='H:mm'</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ='H:mm'</v8:content>
+								</v8:item>
 							</EditFormat>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Assignment duration in the format HH: MM</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Длительность выполнения задания в формате ЧЧ:ММ</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1301,6 +1529,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Duration (H)</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Длительность (ч)</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1318,6 +1550,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Duration (hours) - work duration in hours</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Длительность (ч) - длительность выполнения задания в часах</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1347,6 +1583,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Price</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Цена</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1364,6 +1604,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Price-cost of hour of work</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Цена - стоимость часа работы по заданию</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1393,6 +1637,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Amount</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1410,6 +1658,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Amount - cost of work performed for the client</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма - стоимость выполнения задания для клиента</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1439,6 +1691,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Description</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Description</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1455,6 +1711,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Any additional information about the work</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Указывается любая дополнительная информация по работе</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1496,12 +1756,20 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional attributes</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительные реквизиты объекта</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional attributes inventory batch</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительные реквизиты партии запасов</v8:content>
 						</v8:item>
 					</ToolTip>
 					<FillChecking>DontCheck</FillChecking>
@@ -1542,6 +1810,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Property</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Свойство</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1554,6 +1826,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Additional attribute</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>(Дополнительный реквизит)</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1583,6 +1859,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Value</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Значение</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1595,6 +1875,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Additional attributes value</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Значение дополнительного реквизита</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1630,6 +1914,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Text string</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текстовая строка</v8:content>
+								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
@@ -1646,6 +1934,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Additional attribute string full text</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Полный текст строкового дополнительного реквизита</v8:content>
 								</v8:item>
 							</ToolTip>
 							<MarkNegatives>false</MarkNegatives>
@@ -1678,6 +1970,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Time tracking</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Учет времени</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Group>FormCommandBarCreateBasedOn</Group>
@@ -1699,6 +1995,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Event</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Событие</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>

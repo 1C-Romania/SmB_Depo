@@ -38,7 +38,7 @@ Procedure NewBarcode(Command)
 	
 	If UseExchangeWithPeripheralsOffline Then
 		WeightProductPrefix = 1;
-		ShowInputNumber(New NotifyDescription("NewBarcodeEnd", ThisObject, New Structure("WeightProductPrefix", WeightProductPrefix)), WeightProductPrefix, NStr("en = 'If it is a weight item then enter the prefix of the weight item and press the Cancell button'"), 1, 0);
+		ShowInputNumber(New NotifyDescription("NewBarcodeEnd", ThisObject, New Structure("WeightProductPrefix", WeightProductPrefix)), WeightProductPrefix, NStr("en='If it is a weight item then enter the prefix of the weight item and press the Cancell button';ru='Если товар весовой, то введите префикс весового товара или нажмите кнопку Отмена'"), 1, 0);
 	Else
 		Record.Barcode = GenerateBarcodeEAN13();
 	EndIf;
@@ -151,10 +151,10 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	If Selection.Next() // Barcode is already written in the database
 	   AND Record.SourceRecordKey.Barcode <> Record.Barcode Then
 		
-		ErrorDescription = NStr("en='Such barcode is already specified  for products and services %ProductsAndServices%'");
+		ErrorDescription = NStr("en='Such barcode is already specified  for products and services %ProductsAndServices%';ru='Такой штрихкод уже назначен для номенклатуры %Номенклатура%'");
 		ErrorDescription = StrReplace(ErrorDescription, "%ProductsAndServices%", """" + Selection.ProductsAndServicesPresentation + """"
-		                + ?(ValueIsFilled(Selection.Characteristic), " " + NStr("en='with characteristic'") + " """ + Selection.CharacteristicPresentation + """", "")
-		                + ?(ValueIsFilled(Selection.Batch), " """ + NStr("en='with the batch'") + " " + Selection.BatchPresentation + """", ""));
+		                + ?(ValueIsFilled(Selection.Characteristic), " " + NStr("en='with characteristic';ru='с характеристикой'") + " """ + Selection.CharacteristicPresentation + """", "")
+		                + ?(ValueIsFilled(Selection.Batch), " """ + NStr("en='with the batch';ru='с партией'") + " " + Selection.BatchPresentation + """", ""));
 		
 		SmallBusinessServer.ShowMessageAboutError(ThisForm, ErrorDescription, , , "Record.Barcode", Cancel);
 		

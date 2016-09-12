@@ -105,7 +105,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en = '%Currency%'");
+			LabelText = NStr("en='%Currency%';ru='%Вал%'");
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
@@ -113,9 +113,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%PriceKind%'");
+			LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
 		Else	
-			LabelText = LabelText + NStr("en = ' • %PriceKind%'");
+			LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
@@ -123,9 +123,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Margins discount kind.
 	If ValueIsFilled(LabelStructure.DiscountKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%DiscountMarkupKind%'");
+			LabelText = LabelText + NStr("en='%DiscountMarkupKind%';ru='%ВидСкидкиНаценки%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %MarkupDiscountKind%'");
+			LabelText = LabelText + NStr("en=' • %MarkupDiscountKind%';ru=' • %ВидСкидкиНаценки%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
 	EndIf;
@@ -133,9 +133,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%VATTaxation%'");
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %VATTaxation%'");
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
@@ -143,9 +143,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then
 		If LabelStructure.AmountIncludesVAT Then
-			LabelText = NStr("en = 'Amount includes VAT'");
+			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
 		Else
-			LabelText = NStr("en = 'Amount does not include VAT'");
+			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
 		EndIf;
 	EndIf;
 	
@@ -2217,8 +2217,9 @@ Procedure CounterpartyOnChange(Item)
 			
 			If RecalculationRequired Then
 			
-				Message = NStr("en = 'The price and discount conditions in the contract with counterparty differ from price and discount in the document! 
-										|Recalculate the document according to the contract?'");
+				Message = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! "
+"Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! "
+"Пересчитать документ в соответствии с договором?'");
 									
 				ShowQueryBox(New NotifyDescription("CounterpartyOnChangeEnd1", ThisObject, New Structure("SettlementsCurrencyBeforeChange, ContractBeforeChange, StructureData", SettlementsCurrencyBeforeChange, ContractBeforeChange, StructureData)), Message, QuestionDialogMode.YesNo);
                 Return;
@@ -2270,7 +2271,7 @@ Procedure CounterpartyOnChangeFragment1(Val SettlementsCurrencyBeforeChange, Val
         EndIf;
         
         Object.DocumentCurrency = StructureData.SettlementsCurrency;
-        ShowMessageBox(New NotifyDescription("CounterpartyOnChangeEnd", ThisObject, New Structure("SettlementsCurrencyBeforeChange, StructureData", SettlementsCurrencyBeforeChange, StructureData)), NStr("en = 'Settlement currency of the contract with counterparty changed! It is necessary to check the document currency!'"));
+        ShowMessageBox(New NotifyDescription("CounterpartyOnChangeEnd", ThisObject, New Structure("SettlementsCurrencyBeforeChange, StructureData", SettlementsCurrencyBeforeChange, StructureData)), NStr("en='Settlement currency of the contract with counterparty changed! It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! Необходимо проверить валюту документа!'"));
         Return;
         
     EndIf;
@@ -2360,8 +2361,9 @@ Procedure ContractOnChange(Item)
 			
 			If RecalculationRequired Then
 			
-				Message = NStr("en = 'The price and discount conditions in the contract with counterparty differ from price and discount in the document! 
-										|Recalculate the document according to the contract?'");
+				Message = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! "
+"Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! "
+"Пересчитать документ в соответствии с договором?'");
 									
 				ShowQueryBox(New NotifyDescription("ContractOnChangeEnd1", ThisObject, New Structure("SettlementsCurrencyBeforeChange, ContractBeforeChange, StructureData", SettlementsCurrencyBeforeChange, ContractBeforeChange, StructureData)), Message, QuestionDialogMode.YesNo);
                 Return;
@@ -2412,7 +2414,7 @@ Procedure ContractOnChangeFragment(Val SettlementsCurrencyBeforeChange, Val Cont
         EndIf;
         
         Object.DocumentCurrency = StructureData.SettlementsCurrency;
-        ShowMessageBox(New NotifyDescription("ContractOnChangeEnd", ThisObject, New Structure("SettlementsCurrencyBeforeChange", SettlementsCurrencyBeforeChange)), NStr("en = 'Settlement currency of the contract with counterparty changed! It is necessary to check the document currency!'"));
+        ShowMessageBox(New NotifyDescription("ContractOnChangeEnd", ThisObject, New Structure("SettlementsCurrencyBeforeChange", SettlementsCurrencyBeforeChange)), NStr("en='Settlement currency of the contract with counterparty changed! It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! Необходимо проверить валюту документа!'"));
         
     EndIf;
 
@@ -2546,7 +2548,7 @@ Procedure StartOnChange(Item)
 	
 	If Object.Start > Object.Finish Then
 		Object.Start = WhenChangingStart;
-		Message(NStr("en='Start date can not be later than the end date.'"));
+		Message(NStr("en='Start date can not be later than the end date.';ru='Дата старта не может быть больше даты финиша.'"));
 	Else
 		WhenChangingStart = Object.Start;
 	EndIf;
@@ -2564,7 +2566,7 @@ Procedure FinishOnChange(Item)
 	
 	If Object.Finish < Object.Start Then
 		Object.Finish = WhenChangingFinish;
-		Message(NStr("en='Finish date can not be less than the start date.'"));
+		Message(NStr("en='Finish date can not be less than the start date.';ru='Дата финиша не может быть меньше даты старта.'"));
 	Else
 		WhenChangingFinish = Object.Finish;
 	EndIf;

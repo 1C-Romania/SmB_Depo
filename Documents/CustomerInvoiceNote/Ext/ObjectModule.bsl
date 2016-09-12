@@ -233,8 +233,9 @@ Procedure FillByCashReceipt(FillingData, FillingMultipleDocuments = False)
 	// Check data for an advance invoice
 	If QueryResult.IsEmpty() Then
 		
-		ErrorMessage = NStr("en = 'No data found for the advance invoice.
-							|Basis document ""%BasisDocument"".'");
+		ErrorMessage = NStr("en='No data found for the advance invoice."
+"Basis document ""%BasisDocument"".';ru='Нет данных для счета-фактуры на аванс!"
+"Основание ""%ДокументОснование"".'");
 		
 		ErrorMessage = StrReplace(ErrorMessage, "%BasisDocument", FillingData);
 		
@@ -338,8 +339,9 @@ Procedure FillByPaymentReceipt(FillingData, FillingMultipleDocuments = False)
 	// Check data for an advance invoice
 	If QueryResult.IsEmpty() Then
 		
-		ErrorMessage = NStr("en = 'No data found for the advance invoice.
-							|Basis document ""%BasisDocument"".'");
+		ErrorMessage = NStr("en='No data found for the advance invoice."
+"Basis document ""%BasisDocument"".';ru='Нет данных для счета-фактуры на аванс!"
+"Основание ""%ДокументОснование"".'");
 		
 		ErrorMessage = StrReplace(ErrorMessage, "%BasisDocument", FillingData);
 		
@@ -440,7 +442,7 @@ Procedure FillCCDNumbers(FillingData, FillingMultipleDocuments = False)
 	
 	If TypeOf(FillDocument) = Type("DocumentRef.CustomerOrder")
 	   AND FillDocument.OperationKind <> Enums.OperationKindsCustomerOrder.JobOrder Then
-		Raise NStr("en = 'Invoice can be entered on the basis of the job order only!'");
+		Raise NStr("en='Invoice can be entered on the basis of the job order only!';ru='Счет-фактуру можно ввести только на основании заказ-наряда!'");
 	EndIf;
 	
 	If TypeOf(FillDocument) = Type("DocumentRef.ProcessingReport") Then
@@ -743,7 +745,7 @@ Procedure FillByOtherDocuments(FillingData) Export
 	
 	If TypeOf(FillingData) = Type("DocumentRef.CustomerOrder")
 		AND FillingData.OperationKind <> Enums.OperationKindsCustomerOrder.JobOrder Then
-		Raise NStr("en = 'Invoice can be entered on the basis of the job order only!'");
+		Raise NStr("en='Invoice can be entered on the basis of the job order only!';ru='Счет-фактуру можно ввести только на основании заказ-наряда!'");
 	EndIf;
 	
 	If TypeOf(FillingData) = Type("DocumentRef.AcceptanceCertificate") Then
@@ -987,9 +989,9 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		If ValueIsFilled(InvoiceFound)
 			AND InvoiceFound.Ref <> Ref Then
 			
-			MessageText = NStr(
-				"en = 'Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%"".
-				|Cannot add another document ""Invoice"".'"
+			MessageText = NStr("en='Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%""."
+"Cannot add another document ""Invoice"".';ru='Для документа ""%Ссылка%"" уже введен счет-фактура ""%СчетФактура%""."
+"Запись еще одного документа ""Счет-фактура"" не допускается!'"
 			);
 			
 			MessageText = StrReplace(MessageText, "%Ref%", CurRow.BasisDocument);
@@ -1065,7 +1067,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			AND (NOT ValueIsFilled(InventoryTableRow.CountryOfOrigin)
 				OR InventoryTableRow.CountryOfOrigin = Catalogs.WorldCountries.Russia) Then
 			
-			ErrorText = NStr("en = 'Incorrect country of origin in string [%LineNumberWithError%]'");
+			ErrorText = NStr("en='Incorrect country of origin in string [%LineNumberWithError%]';ru='В строке [%НомерСтрокиСОшибкой%] не верно указана страна происхождения'");
 			ErrorText = StrReplace(ErrorText, "%LineNumberWithError%", TrimAll(InventoryTableRow.LineNumber));
 			
 			SmallBusinessServer.ShowMessageAboutError(
@@ -1085,7 +1087,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				AND Not InventoryTableRow.CountryOfOrigin = Catalogs.WorldCountries.Russia)
 			AND Not ValueIsFilled(InventoryTableRow.CCDNo) Then
 			
-			ErrorText = NStr("en = 'Specify the CCD number in string [%LineNumberWithError%]'");
+			ErrorText = NStr("en='Specify the CCD number in string [%LineNumberWithError%]';ru='В строке [%НомерСтрокиСОшибкой%] не указан номер ГТД'");
 			ErrorText = StrReplace(ErrorText, "%LineNumberWithError%", TrimAll(InventoryTableRow.LineNumber));
 			
 			SmallBusinessServer.ShowMessageAboutError(
@@ -1115,7 +1117,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If ValueIsFilled(BasisDocument)
 			AND Not BasisDocument.Posted Then
 			
-			ErrorText = NStr("en = 'Basis document %BasisDocumentView% is not posted. Invoice posting is impossible.'");
+			ErrorText = NStr("en='Basis document %BasisDocumentView% is not posted. Invoice posting is impossible.';ru='Документ-основание %ПредставлениеДокументаОснования% не проведен. Проведение счет фактуры не возможно.'");
 			ErrorText = StrReplace(ErrorText, "%BasisDocumentView%", """" + TypeOf(BasisDocument) + " #" + BasisDocument.Number + " dated " + BasisDocument.Date + """");
 			
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, ErrorText, , , , Cancel);
@@ -1144,8 +1146,9 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		InvoiceFound = SmallBusinessServer.GetSubordinateInvoice(BasisDocument);
 		If ValueIsFilled(InvoiceFound) AND InvoiceFound.Ref <> Ref Then
 		
-			MessageText = NStr("en = 'Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%"". 
-									|Cannot add another document ""Invoice"".'");
+			MessageText = NStr("en='Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%"". "
+"Cannot add another document ""Invoice"".';ru='Для документа ""%Ссылка%"" уже введен счет-фактура ""%СчетФактура%"". "
+"Запись еще одного документа ""Счет-фактура"" не допускается!'");
 			MessageText = StrReplace(MessageText, "%Ref%", BasisDocument);
 			MessageText = StrReplace(MessageText, "%CustomerInvoiceNote%", InvoiceFound.Ref);
 			MessageField = "Object.BasisDocument";

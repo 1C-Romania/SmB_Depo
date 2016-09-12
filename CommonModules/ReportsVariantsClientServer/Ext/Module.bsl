@@ -8,17 +8,17 @@
 
 // Presentation of the subsystem. Used when recording into the event log and in other places.
 Function SubsystemDescription(LanguageCode) Export
-	Return NStr("en = 'Reports variants'", ?(LanguageCode = Undefined, CommonUseClientServer.MainLanguageCode(), LanguageCode));
+	Return NStr("en='Reports variants';ru='Варианты отчетов'", ?(LanguageCode = Undefined, CommonUseClientServer.MainLanguageCode(), LanguageCode));
 EndFunction
 
 // Presentation of the importance group.
 Function PresentationSeeAlso() Export
-	Return NStr("en = 'See also'");
+	Return NStr("en='See also';ru='См также'");
 EndFunction 
 
 // Presentation of the importance group.
 Function PresentationImportant() Export
-	Return NStr("en = 'Important'");
+	Return NStr("en='Important';ru='Важный'");
 EndFunction
 
 // Name of the notification event for changing the report variant.

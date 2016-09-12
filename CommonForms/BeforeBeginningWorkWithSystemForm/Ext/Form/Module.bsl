@@ -7,7 +7,7 @@ Procedure BalanceEntering(Command)
 	If SmallBusinessServer.InfobaseUserWithFullAccess(,, False) Then
 		OpenFormBalanceEntering();
 	Else
-		MessageText = NStr("en='Only the user with the ""Administrator"" access rights profile is able to perform this action.'");
+		MessageText = NStr("en='Only the user with the ""Administrator"" access rights profile is able to perform this action.';ru='Выполнить это действие может только пользователь с профилем прав доступа ""Администратор"".'");
 		ShowMessageBox(Undefined,MessageText);
 	EndIf;
 	
@@ -21,7 +21,7 @@ Procedure FillInformationAboutCompany(Command)
 	If SmallBusinessServer.InfobaseUserWithFullAccess(,, False) Then
 		OpenFormFillingInformationAboutCompany();
 	Else
-		MessageText = NStr("en='Only the user with the ""Administrator"" access rights profile is able to perform this action.'");
+		MessageText = NStr("en='Only the user with the ""Administrator"" access rights profile is able to perform this action.';ru='Выполнить это действие может только пользователь с профилем прав доступа ""Администратор"".'");
 		ShowMessageBox(Undefined,MessageText);
 	EndIf;
 	

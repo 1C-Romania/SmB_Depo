@@ -167,7 +167,7 @@ Procedure SetPeriod(PeriodName, Direction)
 	Result.Clear();
 	
 	//Indicate to user that it is necessary to generate (update) the report
-	Result.Area(2,2,2,2).Text 		= NStr("en = 'Report is not generated. Click Create to generate the report.'");
+	Result.Area(2,2,2,2).Text 		= NStr("en='Report is not generated. Click Create to generate the report.';ru='Отчет не сформирован. Нажмите ""Сформировать"" для получения отчета.'");
 	Result.Area(2,2,2,2).TextColor 	= New Color(138,138,138);
 	Result.Area(2,2,2,2).Font 		= New Font(Result.Area(2,2,2,2).Font, ,12);
 	
@@ -255,7 +255,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.SettingsComposerUserSettings.Visible = False;
 	
 	//Indicate to user that it is necessary to generate the report
-	Result.Area(2,2,2,2).Text 		= NStr("en = 'Report is not generated. Click Create to generate the report.'");
+	Result.Area(2,2,2,2).Text 		= NStr("en='Report is not generated. Click Create to generate the report.';ru='Отчет не сформирован. Нажмите ""Сформировать"" для получения отчета.'");
 	Result.Area(2,2,2,2).TextColor 	= New Color(138,138,138);
 	Result.Area(2,2,2,2).Font 		= New Font(Result.Area(2,2,2,2).Font, ,12);
 	

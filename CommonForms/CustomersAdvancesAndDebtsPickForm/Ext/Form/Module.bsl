@@ -73,9 +73,9 @@ Procedure CheckFillOfFormAttributes(Cancel)
 		If CurrencyTransactionsAccounting
 		AND Not ValueIsFilled(RowListFilteredAdvancesAndDebts.ExchangeRate) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Column ""Exchange rate"" is not filled in the row. '")
+			Message.Text = NStr("en='Column ""Exchange rate"" is not filled in the row. ';ru='Не заполнена колонка ""Курс"" в строке '")
 				+ String(LineNumber)
-				+ NStr("en = ' ""Filtered Advances and debts"" list.'");
+				+ NStr("en=' ""Filtered Advances and debts"" list.';ru=' списка ""Отобранные авансы и долги"".'");
 			Message.Field = "Document";
 			Message.Message();
 			Cancel = True;
@@ -83,18 +83,18 @@ Procedure CheckFillOfFormAttributes(Cancel)
 		If CurrencyTransactionsAccounting
 		AND Not ValueIsFilled(RowListFilteredAdvancesAndDebts.Multiplicity) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Column ""Multiplicity"" is not filled in the row. '")
+			Message.Text = NStr("en='Column ""Multiplicity"" is not filled in the row. ';ru='Не заполнена колонка ""Кратность"" в строке '")
 				+ String(LineNumber)
-				+ NStr("en = ' ""Filtered Advances and debts"" list.'");
+				+ NStr("en=' ""Filtered Advances and debts"" list.';ru=' списка ""Отобранные авансы и долги"".'");
 			Message.Field = "Document";
 			Message.Message();
 			Cancel = True;
 		EndIf;
 		If Not ValueIsFilled(RowListFilteredAdvancesAndDebts.SettlementsAmount) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'Field ""Settlements amount"" is not filled in row '")
+			Message.Text = NStr("en='Field ""Settlements amount"" is not filled in row ';ru='Не заполнена колонка ""Сумма расчетов"" в строке '")
 				+ String(LineNumber)
-				+ NStr("en = ' ""Filtered Advances and debts"" list.'");
+				+ NStr("en=' ""Filtered Advances and debts"" list.';ru=' списка ""Отобранные авансы и долги"".'");
 			Message.Field = "Document";
 			Message.Message();
 			Cancel = True;
@@ -102,9 +102,9 @@ Procedure CheckFillOfFormAttributes(Cancel)
 		If CurrencyTransactionsAccounting
 		AND Not ValueIsFilled(RowListFilteredAdvancesAndDebts.AccountingAmount) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en = 'No filled column ""Accounting Amount"" in row. '")
+			Message.Text = NStr("en='No filled column ""Accounting Amount"" in row. ';ru='Не заполнена колонка ""Сумма учета"" в строке '")
 				+ String(LineNumber)
-				+ NStr("en = ' ""Filtered advances and debts"" list.'");
+				+ NStr("en=' ""Filtered advances and debts"" list.';ru=' списка ""Отобранные авансы и долги"".'");
 			Message.Field = "Document";
 			Message.Message();
 			Cancel = True;
@@ -251,7 +251,7 @@ Procedure AddRowIntoFiltered(CurrentRow)
 	If AskAmount Then
 		
 		NotifyDescription = New NotifyDescription("OpenPricesAndCurrencyFormEnd", ThisObject, New Structure("CurrentRow, SettlementsAmount.", CurrentRow, SettlementsAmount));
-		ShowInputNumber(NOTifyDescription, SettlementsAmount, NStr("en = 'Enter the amount of settlements'"));
+		ShowInputNumber(NOTifyDescription, SettlementsAmount, NStr("en='Enter the amount of settlements';ru='Введите сумму расчетов'"));
 		
 	Else
 		

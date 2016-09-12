@@ -70,9 +70,9 @@ Procedure HyperlinkPostponedUpdateClick(Item)
 	Else
 		
 		If ValueIsFilled(BeginTimeOfPendingUpdate) Then
-			WarningText = NStr("en = 'Data processing has not completed yet.'");
+			WarningText = NStr("en='Data processing has not completed yet.';ru='Обработка данных еще не завершилась.'");
 		Else
-			WarningText = NStr("en = 'Data processing has not been performed yet.'");
+			WarningText = NStr("en='Data processing has not been performed yet.';ru='Обработка данных еще не выполнялась.'");
 		EndIf;
 		
 		ShowMessageBox(,WarningText);
@@ -157,9 +157,9 @@ Procedure GenerateDeferredHandlerTable(PerformedAllProcessors = True, InitialFil
 	EndIf;
 	
 	If HandlersAreNotExecuted Then
-		Items.ExplanationText.Title = NStr("en = 'It is recommended to run failed procedure of data processor.'");
+		Items.ExplanationText.Title = NStr("en='It is recommended to run failed procedure of data processor.';ru='Рекомендуется запустить невыполненные процедуры обработки данных.'");
 	Else
-		Items.ExplanationText.Title = NStr("en = 'Outstanding procedures are recommended to be restarted.'");
+		Items.ExplanationText.Title = NStr("en='Outstanding procedures are recommended to be restarted.';ru='Невыполненные процедуры рекомендуется запустить повторно.'");
 	EndIf;
 	
 	DelayedHandlers.Sort("Weight Desc");
@@ -195,28 +195,28 @@ Procedure AddDeferredHandler(HandlerLine, HandlersAreNotExecuted, PerformedAllPr
 	If HandlerLine.Status = "Completed" Then
 		HandlersAreNotExecuted = False;
 		ListRow.InformationAboutUpdateProcedure = 
-			NStr("en = 'Procedure ""%1"" of data processor is completed successfully.'");
-		ListRow.HandlerStatus = NStr("en = 'Completed'");
+			NStr("en='Procedure ""%1"" of data processor is completed successfully.';ru='Процедура ""%1"" обработки данных завершилась успешно.'");
+		ListRow.HandlerStatus = NStr("en='Completed';ru='Completed'");
 		ListRow.Weight = 1;
 		ListRow.StatusPicture = PictureLib.Successfully;
 	ElsIf HandlerLine.Status = "Running" Then
 		HandlersAreNotExecuted = False;
 		ListRow.InformationAboutUpdateProcedure = 
-			NStr("en = 'Procedure ""%1"" of data processor is executed now.'");
-		ListRow.HandlerStatus = NStr("en = 'Running'");
+			NStr("en='Procedure ""%1"" of data processor is executed now.';ru='Процедура ""%1"" обработки данных в данный момент выполняется.'");
+		ListRow.HandlerStatus = NStr("en='Running';ru='Выполняется'");
 		ListRow.Weight = 3;
 	ElsIf HandlerLine.Status = "Error" Then
 		HandlersAreNotExecuted = False;
 		PerformedAllProcessors = False;
 		ListRow.InformationAboutUpdateProcedure = HandlerLine.ErrorInfo;
-		ListRow.HandlerStatus = NStr("en = 'Error'");
+		ListRow.HandlerStatus = NStr("en='Error';ru='Ошибка'");
 		ListRow.Weight = 4;
 		ListRow.StatusPicture = PictureLib.Stop;
 	Else
 		PerformedAllProcessors = False;
-		ListRow.HandlerStatus = NStr("en = 'It was not executed.'");
+		ListRow.HandlerStatus = NStr("en='It was not executed.';ru='Не выполнялась'");
 		ListRow.Weight = 2;
-		ListRow.InformationAboutUpdateProcedure = NStr("en = 'Procedure ""%1"" of data processor was not executed yet.'");
+		ListRow.InformationAboutUpdateProcedure = NStr("en='Procedure ""%1"" of data processor was not executed yet.';ru='Процедура ""%1"" обработки данных еще не выполнялась.'");
 	EndIf;
 	
 	ListRow.InformationAboutUpdateProcedure = StringFunctionsClientServer.PlaceParametersIntoString(

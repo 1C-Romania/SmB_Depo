@@ -94,7 +94,7 @@ Function GetInformationAboutRules() Export
 		Return InfoString;
 	EndIf;
 	
-	InfoString = NStr("en = 'Registration rules of this infobase objects (%1) from %2'");
+	InfoString = NStr("en='Registration rules of this infobase objects (%1) from %2';ru='Правила регистрации объектов этой информационной базы (%1) от %2'");
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(InfoString,
 					GetConfigurationPresentationFromRegistrationRules(),
@@ -956,7 +956,7 @@ Procedure RunExchangePlanPresenceCheckup()
 	
 	If Registration.ExchangePlanName <> ExchangePlanImportName Then
 		
-		ErrorDescription = NStr("en = 'In the registration rules the %1 exchange plan is specified but the import is performed for the %2 exchange plan.'");
+		ErrorDescription = NStr("en='In the registration rules the %1 exchange plan is specified but the import is performed for the %2 exchange plan.';ru='В правилах регистрации указан план обмена %1, а загрузка выполняется для плана обмена %2'");
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescription, Registration.ExchangePlanName, ExchangePlanImportName);
 		MessageAboutProcessingError(5, ErrorDescription);
 		
@@ -1214,12 +1214,12 @@ Function MessagesInitialization()
 	Messages = New Map;
 	MainLanguageCode = CommonUseClientServer.MainLanguageCode();
 	
-	Messages.Insert(0, NStr("en = 'Internal error'", MainLanguageCode));
-	Messages.Insert(1, NStr("en = 'File rules opening error'", MainLanguageCode));
-	Messages.Insert(2, NStr("en = 'Error loading rules'", MainLanguageCode));
-	Messages.Insert(3, NStr("en = 'Rules format error'", MainLanguageCode));
-	Messages.Insert(4, NStr("en = 'Error when receiving the file of rules for reading'", MainLanguageCode));
-	Messages.Insert(5, NStr("en = 'The imported registration rules are not intended for the current exchange plan.'", MainLanguageCode));
+	Messages.Insert(0, NStr("en='Internal error';ru='Внутренняя ошибка'", MainLanguageCode));
+	Messages.Insert(1, NStr("en='File rules opening error';ru='Ошибка открытия файла правил'", MainLanguageCode));
+	Messages.Insert(2, NStr("en='Error loading rules';ru='Ошибка при загрузке правил'", MainLanguageCode));
+	Messages.Insert(3, NStr("en='Rules format error';ru='Ошибка формата правил'", MainLanguageCode));
+	Messages.Insert(4, NStr("en='Error when receiving the file of rules for reading';ru='Ошибка при получении файла правил для чтения'", MainLanguageCode));
+	Messages.Insert(5, NStr("en='The imported registration rules are not intended for the current exchange plan.';ru='Загружаемые правила регистрации не предназначены для текущего плана обмена.'", MainLanguageCode));
 	
 	Return Messages;
 	

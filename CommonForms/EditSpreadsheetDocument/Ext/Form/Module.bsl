@@ -60,7 +60,7 @@ EndProcedure
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Save changes in %1?'"), DocumentName);
+			NStr("en='Save changes in %1?';ru='Сохранить изменения в %1?'"), DocumentName);
 	NotifyDescription = New NotifyDescription("ConfirmAndClose", ThisObject);
 	CommonUseClient.ShowFormClosingConfirmation(NOTifyDescription, Cancel, QuestionText);
 	
@@ -373,7 +373,7 @@ Procedure StartSaveFileDialog(Val EndProcessor)
 	
 	SaveFileDialog = New FileDialog(FileDialogMode.Save);
 	SaveFileDialog.FullFileName = DocumentName;
-	SaveFileDialog.Filter = NStr("en = 'Spreadsheet document'") + " (*.mxl)|*.mxl";
+	SaveFileDialog.Filter = NStr("en='Spreadsheet document';ru='Табличный документ'") + " (*.mxl)|*.mxl";
 	
 	NotifyDescription = New NotifyDescription("WhenFileSelectionDialogComplete", ThisObject, EndProcessor);
 	SaveFileDialog.Show(NOTifyDescription);
@@ -433,9 +433,9 @@ Procedure SetTitle()
 	
 	Title = DocumentName;
 	If IsNew() Then
-		Title = Title + " (" + NStr("en = 'create'") + ")";
+		Title = Title + " (" + NStr("en='create';ru='создать'") + ")";
 	ElsIf EditProhibited Then
-		Title = Title + " (" + NStr("en = 'Read only'") + ")";
+		Title = Title + " (" + NStr("en='Read only';ru='только просмотр'") + ")";
 	EndIf;
 	
 EndProcedure

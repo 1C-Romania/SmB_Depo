@@ -45,7 +45,7 @@ EndProcedure
 Procedure LockCurrentDataArea(Val CheckNoOtherSessions = False, Val SeparatedLock = False) Export
 	
 	If Not CommonUseReUse.CanUseSeparatedData() Then
-		Raise(NStr("en = 'The locking of the area can be installed only in case if the separators use is enabled'"));
+		Raise(NStr("en='The locking of the area can be installed only in case if the separators use is enabled';ru='Блокировка области может быть установлена только при включенном использовании разделителей'"));
 	EndIf;
 	
 	KeyVar = CreateAuxiliaryDataRecordKeyOfInformationRegister(
@@ -62,19 +62,21 @@ Procedure LockCurrentDataArea(Val CheckNoOtherSessions = False, Val SeparatedLoc
 			CurrentTry = CurrentTry + 1;
 			
 			If CurrentTry = AttemptCount Then
-				CommentTemplate = NStr("en = 'Cannot lock the data area
-					|as %1'");
+				CommentTemplate = NStr("en='Cannot lock the data area"
+"as %1';ru='Не удалось установить блокировку"
+"области данных по причине: %1'");
 				TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, 
 					DetailErrorDescription(ErrorInfo()));
 				WriteLogEvent(
-					NStr("en = 'Data area locking'", CommonUseClientServer.MainLanguageCode()),
+					NStr("en='Data area locking';ru='Блокировка области данных'", CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					,
 					,
 					TextOfComment);
 					
-				TextPattern = NStr("en = 'Cannot lock the data area
-					|as %1'");
+				TextPattern = NStr("en='Cannot lock the data area"
+"as %1';ru='Не удалось установить блокировку"
+"области данных по причине: %1'");
 				Text = StringFunctionsClientServer.PlaceParametersIntoString(TextPattern, 
 					BriefErrorDescription(ErrorInfo()));
 					
@@ -117,14 +119,14 @@ Procedure LockCurrentDataArea(Val CheckNoOtherSessions = False, Val SeparatedLoc
 				EndIf;
 				
 				TextSessions = TextSessions + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = '%1 (session - %2)'", CommonUseClientServer.MainLanguageCode()),
+					NStr("en='%1 (session - %2)';ru='%1 (сеанс - %2)'", CommonUseClientServer.MainLanguageCode()),
 					ConflictSession.User.Name,
 					Format(ConflictSession.SessionNumber, "NG=0"));
 				
 			EndDo;
 			
 			ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The operation can not be executed as Other users are working in the application: %1'",
+				NStr("en='The operation can not be executed as Other users are working in the application: %1';ru='Операция не может быть выполнена, т.к. в приложении работают другие пользователи: %1'",
 					CommonUseClientServer.MainLanguageCode()),
 				TextSessions);
 			Raise ErrorMessage;
@@ -244,7 +246,7 @@ Procedure PrepareDataAreaToUse(Val DataArea, Val ExportFileID,
 												 Val Variant = Undefined) Export
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise(NStr("en = 'Insufficient rights to perform operation'"));
+		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -294,7 +296,7 @@ EndProcedure
 Procedure CopyAreaData(Val SourceArea, Val DestinationArea) Export
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise(NStr("en = 'Insufficient rights to perform operation'"));
+		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -316,7 +318,7 @@ Procedure CopyAreaData(Val SourceArea, Val DestinationArea) Export
 	Try
 		ExportFileName = ModuleDataAreasExportImport.ExportCurrentDataAreaToArchive();
 	Except
-		WriteLogEvent(NStr("en = 'Copying of data area'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Copying of data area';ru='Копирование области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		If ExportFileName <> Undefined Then
 			Try
@@ -332,7 +334,7 @@ Procedure CopyAreaData(Val SourceArea, Val DestinationArea) Export
 	Try
 		ModuleDataAreasExportImport.ImportCurrentDataAreaFromArchive(ExportFileName);
 	Except
-		WriteLogEvent(NStr("en = 'Copying of data area'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Copying of data area';ru='Копирование области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Try
 			DeleteFiles(ExportFileName);
@@ -364,7 +366,7 @@ EndProcedure
 Procedure ClearDataArea(Val DataArea, Val DeleteUsers = True) Export
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise(NStr("en = 'Insufficient rights to perform operation'"));
+		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -686,7 +688,7 @@ Procedure DataAreasMaintenance() Export
 		Else
 			
 			ChangeAreasStateAndNotifyManager(Manager, ?(Manager.Status = Enums.DataAreaStatuses.New,
-				"FatalError", "ErrorDelete"), NStr("en = 'The number of attempts to process the area has been exhausted'"));
+				"FatalError", "ErrorDelete"), NStr("en='The number of attempts to process the area has been exhausted';ru='Исчерпано количество попыток обработки области'"));
 			
 			UnlockDataForEdit(Key);
 			
@@ -706,7 +708,7 @@ Function GetServiceManagerProxy(Val UserPassword = Undefined) Export
 	
 	ServiceManagerAddress = Constants.InternalServiceManagerURL.Get();
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en = 'Parameters of connection with the service manager have not been set.'"));
+		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress = ServiceManagerAddress + "/ws/ManagementApplication_1_0_3_1?wsdl";
@@ -734,7 +736,7 @@ EndFunction
 Procedure SetSessionSeparation(Val Use = Undefined, Val DataArea = Undefined) Export
 	
 	If Not CommonUseReUse.SessionWithoutSeparator() Then
-		Raise(NStr("en = 'To change the session separation is possible only out of the session launched without separators specification'"));
+		Raise(NStr("en='To change the session separation is possible only out of the session launched without separators specification';ru='Изменить разделение сеанса возможно только из сеанса запущенного без указания разделителей'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -764,7 +766,7 @@ Function SessionSeparatorValue() Export
 		Return 0;
 	Else
 		If Not CommonUse.UseSessionSeparator() Then
-			Raise(NStr("en = 'Delimiter value is not specified'"));
+			Raise(NStr("en='Delimiter value is not specified';ru='Не установлено значение разделителя'"));
 		EndIf;
 		
 		// Get a separator value of the current data area.
@@ -1024,11 +1026,11 @@ Procedure ProcessInformationAboutWebServiceError(Val ErrorInfo, Val SubsystemNam
 	EndIf;
 	
 	EventName = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = '%1.An error occurred while calling the web service operation'", CommonUseClientServer.MainLanguageCode()),
+		NStr("en='%1.An error occurred while calling the web service operation';ru='%1.Ошибка вызова операции web-сервиса'", CommonUseClientServer.MainLanguageCode()),
 		SubsystemName);
 	
 	ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'An error occurred when calling operation %1 of web service %2: %3'", CommonUseClientServer.MainLanguageCode()),
+		NStr("en='An error occurred when calling operation %1 of web service %2: %3';ru='Ошибка при вызове операции %1 веб-сервиса %2: %3'", CommonUseClientServer.MainLanguageCode()),
 		OperationName,
 		WebServiceName,
 		ErrorInfo.DetailErrorDescription);
@@ -1082,7 +1084,7 @@ Function GetFileFromServiceManagerStorage(Val FileID) Export
 	
 	ServiceManagerAddress = Constants.InternalServiceManagerURL.Get();
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en = 'Parameters of connection with the service manager have not been set.'"));
+		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	StorageAccessParameters = New Structure;
@@ -1140,11 +1142,15 @@ Procedure CheckPossibilityToUseConfigurationSaaS() Export
 	If STLDescription = Undefined Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '1C:Service technology library is not implemented in the configuration.
-                  |The configuration can not be used in the service model without this library implementation.
-                  |
-                  |To use this configuration in the service model, it
-                  |is required to embed the 1C:Library of service technology library of the version not less than %1.'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='1C:Service technology library is not implemented in the configuration."
+"The configuration can not be used in the service model without this library implementation."
+""
+"To use this configuration in the service model, it"
+"is required to embed the 1C:Library of service technology library of the version not less than %1.';ru='В конфигурацию не внедрена библиотека ""1С:Библиотека технологии сервиса""."
+"Без внедрения этой библиотеки конфигурация не может использоваться в модели сервиса."
+""
+"Для использования этой конфигурации в модели"
+"сервиса требуется внедрить библиотеку ""1С:Библиотека технологии сервиса"" версии не младше %1!'", Metadata.DefaultLanguage.LanguageCode),
 			RequiredSTLVersion());
 		
 	Else
@@ -1154,10 +1160,13 @@ Procedure CheckPossibilityToUseConfigurationSaaS() Export
 		If CommonUseClientServer.CompareVersions(STLVersion, RequiredSTLVersion()) < 0 Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'To use configuration in the service model with the current
-                      |SSL version, it is required to update used version of the 1C:Library of service technology library.
-                      |
-                      |Version in use: %1, a version not older than %2 is required!'", Metadata.DefaultLanguage.LanguageCode),
+				NStr("en='To use configuration in the service model with the current"
+"SSL version, it is required to update used version of the 1C:Library of service technology library."
+""
+"Version in use: %1, a version not older than %2 is required!';ru='Для использования конфигурации в модели сервиса с"
+"текущей версией БСП требуется обновить используемую версию библиотеки ""1С:Библиотека технологии сервиса""!"
+""
+"Используемая версия: %1, требуется версия не младше %2!'", Metadata.DefaultLanguage.LanguageCode),
 				STLVersion, RequiredSTLVersion());
 			
 		EndIf;
@@ -1174,9 +1183,11 @@ EndProcedure
 Procedure CallExceptionNotAvailableSTLSubsystem(Val SubsystemName) Export
 	
 	Raise StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Cannot perform the operation as subsystem ""%1"" is not implemented in the configuration.
-              |This subsystem is input to the library of service technology content that should be embedded separately to the configuration content.
-              |Check whether subsystem ""%1"" exists and is correctly implemented.'"),
+		NStr("en='Cannot perform the operation as subsystem ""%1"" is not implemented in the configuration."
+"This subsystem is input to the library of service technology content that should be embedded separately to the configuration content."
+"Check whether subsystem ""%1"" exists and is correctly implemented.';ru='Невозможно выполнить операцию по причине - в конфигурации не внедрена подсистема ""%1""."
+"Данная подсистема поставляется в состав библиотеки технологии сервиса, которая должна отдельно внедряться в состав конфигурации."
+"Проверьте наличие и корректность внедрения подсистемы ""%1"".'"),
 		SubsystemName
 	);
 	
@@ -1409,12 +1420,12 @@ Procedure OnCheckingSafeModeDataSharing() Export
 		
 		If SeparationSwitched Then
 			// Safe mode of data separation is not set.
-			WriteLogEvent(NStr("en = 'Publication error'", CommonUseClientServer.MainLanguageCode()), 
+			WriteLogEvent(NStr("en='Publication error';ru='Ошибка публикации'", CommonUseClientServer.MainLanguageCode()), 
 				EventLogLevel.Error,
 				,
 				,
-				NStr("en = 'Safe mode for data separation is not enabled at publication'"));
-			Raise(NStr("en = 'Info base is published incorrectly. Session work will be terminated.'"));
+				NStr("en='Safe mode for data separation is not enabled at publication';ru='При публикации не включен режим безопасного разделения данных'"));
+			Raise(NStr("en='Info base is published incorrectly. Session work will be terminated.';ru='Информационная база опубликована некорректно. Работа сеанса будет прекращена.'"));
 		EndIf;
 		
 	EndIf;
@@ -1434,10 +1445,13 @@ Procedure WhenCheckingLockDataAreasOnRun(ErrorDescription) Export
 			AND DataAreaBlocked(CommonUse.SessionSeparatorValue()) Then
 		
 		ErrorDescription =
-			NStr("en = 'The application launch is temporarily unavailable.
-			           |Scheduled operations of the application maintenance are in progress.
-			           |
-			           |Try to start the appliation in several minutes.'");
+			NStr("en='The application launch is temporarily unavailable."
+"Scheduled operations of the application maintenance are in progress."
+""
+"Try to start the appliation in several minutes.';ru='Запуск приложения временно недоступен."
+"Выполняются регламентные операции по обслуживанию приложения."
+""
+"Попробуйте запустить приложение через несколько минут.'");
 		
 	EndIf;
 	
@@ -1900,7 +1914,7 @@ Function ParametersSelections(Val FullMetadataObjectName) Export
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'ParametersSelections () function must not be used for the %1 object.'"),
+			NStr("en='ParametersSelections () function must not be used for the %1 object.';ru='Функция ПараметрыВыборки() не должна использоваться для объекта %1.'"),
 			FullMetadataObjectName);
 		
 	EndIf;
@@ -1975,11 +1989,11 @@ Function GetRecordManagerOfDataAreas(Val DataArea, Val Status)
 		RecordManager.Read();
 		
 		If Not RecordManager.Selected() Then
-			MessagePattern = NStr("en = 'Data area %1 not found'");
+			MessagePattern = NStr("en='Data area %1 not found';ru='Область данных %1 не найдена'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, DataArea);
 			Raise(MessageText);
 		ElsIf RecordManager.Status <> Status Then
-			MessagePattern = NStr("en = 'Data area status %1 is not equal to ""%2""'");
+			MessagePattern = NStr("en='Data area status %1 is not equal to ""%2""';ru='Статус области данных %1 не равен ""%2""'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, DataArea, Status);
 			Raise(MessageText);
 		EndIf;
@@ -1987,7 +2001,7 @@ Function GetRecordManagerOfDataAreas(Val DataArea, Val Status)
 		CommitTransaction();
 	Except
 		RollbackTransaction();
-		WriteLogEvent(NStr("en = 'Preparation of data area'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Preparation of data area';ru='Подготовка области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Raise;
 	EndTry;
@@ -2021,7 +2035,7 @@ Procedure ChangeAreasStateAndNotifyManager(Val RecordManager, Val ResultOf, Val 
 		RecordManager.Status = Enums.DataAreaStatuses.Deleted;
 		MessageType = MessageRemoteAdministratorControlInterface.MessageDataAreaDeleted();
 	ElsIf ResultOf = "FatalError" Then
-		WriteLogEvent(NStr("en = 'Preparation of data area'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Preparation of data area';ru='Подготовка области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , ErrorInfo);
 		RecordManager.ProcessingError = True;
 		MessageType = MessageRemoteAdministratorControlInterface.MessageErrorPreparingDataArea();
@@ -2031,7 +2045,7 @@ Procedure ChangeAreasStateAndNotifyManager(Val RecordManager, Val ResultOf, Val 
 		MessageType = MessageRemoteAdministratorControlInterface.MessageErrorDeletingDataArea();
 		IncludeMessageAboutError = True;
 	Else
-		Raise NStr("en = 'Unexpected return code'");
+		Raise NStr("en='Unexpected return code';ru='Неожиданный код возврата'");
 	EndIf;
 	
 	// Send a message on the area readiness to the service manager.
@@ -2106,7 +2120,7 @@ Function PrepareDataFromExportingArea(Val DataArea, Val ExportFileID, ErrorInfo)
 	
 	If ExportFileName = Undefined Then
 		
-		ErrorInfo = NStr("en = 'No initial data file for the area'");
+		ErrorInfo = NStr("en='No initial data file for the area';ru='Нет файла начальных данных для области'");
 		
 		Return "FatalError";
 	EndIf;
@@ -2131,7 +2145,7 @@ Function PrepareDataFromExportingArea(Val DataArea, Val ExportFileID, ErrorInfo)
 	Try
 		DeleteFiles(ExportFileName);
 	Except
-		WriteLogEvent(NStr("en = 'Preparation of data area'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Preparation of data area';ru='Подготовка области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	Return Result;
@@ -2350,7 +2364,7 @@ Procedure WhenCompletingTablesOfParametersOfIB(Val ParameterTable) Export
 	
 	CurParameterString = ParameterTable.Add();
 	CurParameterString.Name = "ConfigurationVersion";
-	CurParameterString.Description = NStr("en = 'Configuration version'");
+	CurParameterString.Description = NStr("en='Configuration version';ru='Версия конфигурации'");
 	CurParameterString.WriteProhibition = True;
 	CurParameterString.Type = New TypeDescription("String", , New StringQualifiers(0, AllowedLength.Variable));
 	
@@ -2447,7 +2461,7 @@ Function GetFileFromStorage(Val FileID, Val ConnectionParameters,
 				EndIf;
 				
 				WriteInJournalFileStoreEvent(
-					NStr("en = 'Extraction'", CommonUseClientServer.MainLanguageCode()),
+					NStr("en='Extraction';ru='Извлечение'", CommonUseClientServer.MainLanguageCode()),
 					FileID,
 					SizeReceivedFile,
 					CurrentUniversalDate() - ExecutionStarted,
@@ -2458,7 +2472,7 @@ Function GetFileFromStorage(Val FileID, Val ConnectionParameters,
 				ExchangeOverFS = False;
 			EndIf;
 		Except
-			WriteLogEvent(NStr("en = 'Receiving the file from the storage'", CommonUseClientServer.MainLanguageCode()),
+			WriteLogEvent(NStr("en='Receiving the file from the storage';ru='Получение файла из хранилища'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 			ExchangeOverFS = False;
 		EndTry;
@@ -2513,7 +2527,7 @@ Function GetFileFromStorage(Val FileID, Val ConnectionParameters,
 	
 	Dearchiver = New ZipFileReader(ArchiveName);
 	If Dearchiver.Items.Count() > 1 Then
-		Raise(NStr("en = 'The received archive contains more than one file'"));
+		Raise(NStr("en='The received archive contains more than one file';ru='В полученном архиве содержится более одного файла'"));
 	EndIf;
 	
 	FileName = AssemblyDirectory + Dearchiver.Items[0].Name;
@@ -2546,7 +2560,7 @@ Function GetFileFromStorage(Val FileID, Val ConnectionParameters,
 	EndTry;
 	
 	WriteInJournalFileStoreEvent(
-		NStr("en = 'Extraction'", CommonUseClientServer.MainLanguageCode()),
+		NStr("en='Extraction';ru='Извлечение'", CommonUseClientServer.MainLanguageCode()),
 		FileID,
 		SizeReceivedFile,
 		CurrentUniversalDate() - ExecutionStarted,
@@ -2590,7 +2604,8 @@ Function PutFileToStorage(Val AddressDataFile, Val ConnectionParameters, Val Fil
 				Result = ProxyDescription.Proxy.ReadFileFromFS(TargetFile.Name, FileProperties.Name);
 				SizeOfSourceFile = TargetFile.Size();
 				WriteInJournalFileStoreEvent(
-					NStr("en = 'Unit'", CommonUseClientServer.MainLanguageCode()),
+					NStr("en='Unit';ru='Единица"
+"измерения'", CommonUseClientServer.MainLanguageCode()),
 					Result,
 					SizeOfSourceFile,
 					CurrentUniversalDate() - ExecutionStarted,
@@ -2612,13 +2627,14 @@ Function PutFileToStorage(Val AddressDataFile, Val ConnectionParameters, Val Fil
 			Result = ProxyDescription.Proxy.ReadFileFromFS(TargetFile.Name, FileProperties.Name);
 			SizeOfSourceFile = TargetFile.Size();
 			WriteInJournalFileStoreEvent(
-				NStr("en = 'Unit'", CommonUseClientServer.MainLanguageCode()),
+				NStr("en='Unit';ru='Единица"
+"измерения'", CommonUseClientServer.MainLanguageCode()),
 				Result,
 				SizeOfSourceFile,
 				CurrentUniversalDate() - ExecutionStarted,
 				ExchangeOverFS);
 		Except
-			WriteLogEvent(NStr("en = 'Insert File Exchange through FS'", CommonUseClientServer.MainLanguageCode()),
+			WriteLogEvent(NStr("en='Insert File Exchange through FS';ru='Добавление файла.Обмен через ФС'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 			ExchangeOverFS = False;
 		EndTry;
@@ -2641,7 +2657,7 @@ Function PutFileToStorage(Val AddressDataFile, Val ConnectionParameters, Val Fil
 				FileCopy(FileProperties.DescriptionFull, FullFileName);
 			Else
 				Raise(StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Adding a file to the storage. File %1 has not been found.'"), FileProperties.DescriptionFull));
+					NStr("en='Adding a file to the storage. File %1 has not been found.';ru='Добавление файла в хранилище. Не найден файл %1.'"), FileProperties.DescriptionFull));
 			EndIf;
 		Else
 			Description.Data.Write(FullFileName);
@@ -2702,7 +2718,8 @@ Function PutFileToStorage(Val AddressDataFile, Val ConnectionParameters, Val Fil
 		EndIf;
 		
 		WriteInJournalFileStoreEvent(
-			NStr("en = 'Unit'", CommonUseClientServer.MainLanguageCode()),
+			NStr("en='Unit';ru='Единица"
+"измерения'", CommonUseClientServer.MainLanguageCode()),
 			Result,
 			SizeOfSourceFile,
 			CurrentUniversalDate() - ExecutionStarted,
@@ -2730,19 +2747,19 @@ Function GetFileNameWithData(Val AddressDataFile, Val FileName = "")
 	
 	If TypeOf(AddressDataFile) = Type("String") Then // File data address in a temporary storage.
 		If IsBlankString(AddressDataFile) Then
-			Raise(NStr("en = 'Storage address is incorrect.'"));
+			Raise(NStr("en='Storage address is incorrect.';ru='Неверный адрес хранилища.'"));
 		EndIf;
 		FileData = GetFromTempStorage(AddressDataFile);
 	ElsIf TypeOf(AddressDataFile) = Type("File") Then // File type object.
 		If Not AddressDataFile.Exist() Then
-			Raise(NStr("en = 'File not found'"));
+			Raise(NStr("en='File not found';ru='Файл не найден.'"));
 		EndIf;
 		FileData = Undefined;
 		FileName = AddressDataFile.DescriptionFull;
 	ElsIf TypeOf(AddressDataFile) = Type("BinaryData") Then // File data.
 		FileData = AddressDataFile;
 	Else
-		Raise(NStr("en = 'Incorrect data type'"));
+		Raise(NStr("en='Incorrect data type';ru='Неверный тип данных'"));
 	EndIf;
 	
 	If IsBlankString(FileName) Then
@@ -2952,7 +2969,7 @@ Procedure WriteInJournalFileStoreEvent(Val Event,
 	EndIf;
 	
 	WriteLogEvent(
-		NStr("en = 'Storage of Files'", CommonUseClientServer.MainLanguageCode()) + "." + Event,
+		NStr("en='Storage of Files';ru='Хранилище файлов'", CommonUseClientServer.MainLanguageCode()) + "." + Event,
 		EventLogLevel.Information,
 		,
 		,
@@ -2987,7 +3004,7 @@ Procedure DeleteTemporaryFiles(Val FileName)
 			EndIf;
 		EndIf;
 	Except
-		WriteLogEvent(NStr("en = 'Perform temp files deletion operations'", 
+		WriteLogEvent(NStr("en='Perform temp files deletion operations';ru='Выполнение операции удаления временного файла'", 
 			CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 		Return;
@@ -3049,7 +3066,7 @@ Function StructuralObjectToXDTOObject(Val StructuralTypeValue)
 	
 	If Not StructuralTypeToSerialize(StructuralType) Then
 		ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 type is not a structural one or its serialization is not currently supported.'"),
+			NStr("en='%1 type is not a structural one or its serialization is not currently supported.';ru='Тип %1 не является структурным или его сериализация в настоящее время не поддерживается.'"),
 			StructuralType);
 		Raise(ErrorInfo);
 	EndIf;
@@ -3162,7 +3179,7 @@ Function XDTOObjectToStructuralObject(XDTODataObject)
 	
 	If Not StructuralTypeToSerialize(StructuralType) Then
 		ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 type is not a structural one or its serialization is not currently supported.'"),
+			NStr("en='%1 type is not a structural one or its serialization is not currently supported.';ru='Тип %1 не является структурным или его сериализация в настоящее время не поддерживается.'"),
 			StructuralType);
 		Raise(ErrorInfo);
 	EndIf;
@@ -3350,7 +3367,7 @@ EndFunction
 Function ImportAreaOfSuppliedData(Val DataArea, Val ExportFileID, Val Variant, MessageAboutFatalError)
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise(NStr("en = 'Insufficient rights to perform operation'"));
+		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	DataFileFound = False;
@@ -3373,8 +3390,9 @@ Function ImportAreaOfSuppliedData(Val DataArea, Val ExportFileID, Val Variant, M
 			DataFileFound = True;
 		Else
 			MessageAboutFatalError = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Specified file of initial data is not applicable for this configuration.
-			|Descriptor of file: %1'"),
+			NStr("en='Specified file of initial data is not applicable for this configuration."
+"Descriptor of file: %1';ru='Указанный файл начальных данных не подходит для данной конфигурации."
+"Дескриптор файла: %1'"),
 			SuppliedData.GetDataDescription(Handle));
 			Return "FatalError";
 		EndIf;
@@ -3386,13 +3404,13 @@ Function ImportAreaOfSuppliedData(Val DataArea, Val ExportFileID, Val Variant, M
 	
 		If Descriptors.Descriptor.Count() = 0 Then
 			MessageAboutFatalError = 
-			NStr("en = 'The service manager does not contain the initial data file for the current configuration version.'");
+			NStr("en='The service manager does not contain the initial data file for the current configuration version.';ru='В менеджере сервиса нет файла начальных данных для текущей версии конфигурации.'");
 			Return "FatalError";
 		EndIf;
 		
 		If Descriptors.Descriptor[0].FileGUID <> ExportFileID Then
 			MessageAboutFatalError = 
-			NStr("en = 'Initial data file that is present in the service manager differs from one specified in the message for the area preparation. Area can not be prepared.'");
+			NStr("en='Initial data file that is present in the service manager differs from one specified in the message for the area preparation. Area can not be prepared.';ru='Файл начальных данных, имеющийся в менеджере сервиса, отличается от указанного в сообщении на подготовку области. Область не может быть подготовлена.'");
 			Return "FatalError";
 		EndIf;
 		
@@ -3400,7 +3418,7 @@ Function ImportAreaOfSuppliedData(Val DataArea, Val ExportFileID, Val Variant, M
 			
 		If ExportFileName = Undefined Then
 			MessageAboutFatalError = 
-			NStr("en = 'There is no required file of the initial data in the service manager, it may have been replaced. Area can not be prepared.'");
+			NStr("en='There is no required file of the initial data in the service manager, it may have been replaced. Area can not be prepared.';ru='В менеджере сервиса больше нет требуемого файла начальных данных, вероятно он был заменен. Область не может быть подготовлена.'");
 			Return False;
 		EndIf;
 		
@@ -3426,7 +3444,7 @@ Function ImportAreaOfSuppliedData(Val DataArea, Val ExportFileID, Val Variant, M
 		
 	Except
 		
-		WriteLogEvent(NStr("en = 'Copying of data area'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Copying of data area';ru='Копирование области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Try
 			DeleteFiles(ExportFileName);
@@ -3454,7 +3472,7 @@ Procedure ControlDataOnWriteBrain(Val Source)
 	
 	If CommonUseReUse.DataSeparationEnabled() AND CommonUseReUse.CanUseSeparatedData() Then
 		
-		ExceptionsRepresentation = NStr("en = 'Access violation!'", CommonUseClientServer.MainLanguageCode());
+		ExceptionsRepresentation = NStr("en='Access violation!';ru='Нарушение прав доступа!'", CommonUseClientServer.MainLanguageCode());
 		
 		WriteLogEvent(
 			ExceptionsRepresentation,
@@ -3908,10 +3926,13 @@ Procedure ControlUndividedDataWhenUpdating() Export
 		EndDo;
 		
 		CalledExceptions.Add(StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'All metadata objects that do not belong to SSL
-                  |separators (%1) should be included in the events subscriptions (%2)
-                  |that control the failure of writing the undivided data in the divided sessions.
-                  |The following metadata objects do not meet this criteria: %3.'"),
+			NStr("en='All metadata objects that do not belong to SSL"
+"separators (%1) should be included in the events subscriptions (%2)"
+"that control the failure of writing the undivided data in the divided sessions."
+"The following metadata objects do not meet this criteria: %3.';ru='Все объекты метаданных, не входящие в состав"
+"разделителей БСП (%1), должны быть включены в состав подписок"
+"на события (%2), контролирующих невозможность записи неразделенных данных в разделенных сеансах."
+"Следующие объекты метаданных не удовлетворяют этому критерию: %3.'"),
 			TextDelimiter, SubscriptionsText, ErrorMessage));
 		
 	EndIf;
@@ -3931,8 +3952,9 @@ Procedure ControlUndividedDataWhenUpdating() Export
 		EndDo;
 		
 		CalledExceptions.Add(StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'All configuration metadata objects should be separated by no more than one SSL separator (%1).
-                  |The following objects do not meet this criteria: %2'"),
+			NStr("en='All configuration metadata objects should be separated by no more than one SSL separator (%1)."
+"The following objects do not meet this criteria: %2';ru='Все объекты метаданных конфигурации должны быть разделены не более чем одним разделителем БСП (%1)."
+"Следующие объекты не удовлетворяют этому критерию: %2'"),
 			TextDelimiter, ErrorMessage));
 		
 	EndIf;
@@ -3953,7 +3975,7 @@ Procedure ControlUndividedDataWhenUpdating() Export
 	
 	If Not IsBlankString(ResultingExcept) Then
 		
-		ResultingExcept = NStr("en = 'Errors in the configuration metadata structure have been found:'") + Chars.LF + Chars.CR + ResultingExcept;
+		ResultingExcept = NStr("en='Errors in the configuration metadata structure have been found:';ru='Обнаружены ошибки в структуре метаданных конфигурации:'") + Chars.LF + Chars.CR + ResultingExcept;
 		Raise ResultingExcept;
 		
 	EndIf;
@@ -3987,9 +4009,11 @@ Procedure ControlDelimitersOnUpgrading() Export
 	If OrderOfApplicationData <= InternalDataOrder Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Configuration metadata structure rupture is found: common
-                  |attribute %1 must be located in the configuration metadata
-                  |tree up to the common attribute %2 in order.'"),
+			NStr("en='Configuration metadata structure rupture is found: common"
+"attribute %1 must be located in the configuration metadata"
+"tree up to the common attribute %2 in order.';ru='Обнаружено нарушение структуры метаданных"
+"конфигурации: общий реквизит %1 должен быть расположен"
+"в дереве метаданных конфигурации до общего реквизита %2 по порядку!'"),
 			InternalSplitter.Name,
 			SeparatorOfApplied.Name);
 		

@@ -11,11 +11,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	MasterNode = Constants.MasterNode.Get();
 	
 	If Not ValueIsFilled(MasterNode) Then
-		Raise NStr("en = 'Main node is not saved.'");
+		Raise NStr("en='Main node is not saved.';ru='Главный узел не сохранен.'");
 	EndIf;
 	
 	If ExchangePlans.MasterNode() <> Undefined Then
-		Raise NStr("en = 'Main node is restored.'");
+		Raise NStr("en='Main node is restored.';ru='Главный узел установлен.'");
 	EndIf;
 	
 	Items.WarningText.Title = StringFunctionsClientServer.PlaceParametersIntoString(

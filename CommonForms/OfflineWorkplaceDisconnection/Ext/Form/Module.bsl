@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	OfflineWorkplace = Parameters.OfflineWorkplace;
 	
 	If Not ValueIsFilled(OfflineWorkplace) Then
-		Raise NStr("en = 'Offline workplace is not specified.'");
+		Raise NStr("en='Offline workplace is not specified.';ru='Не задано автономное рабочее место.'");
 	EndIf;
 	
 	EventLogMonitorEventDeletionOfflineWorkplace = OfflineWorkService.EventLogMonitorEventDeletionOfflineWorkplace();
@@ -80,7 +80,7 @@ Procedure LongOperationIdleHandler()
 		
 		LongOperation = False;
 		SkipBack();
-		ShowMessageBox(,NStr("en = 'The errors have occurred during the work.'"));
+		ShowMessageBox(,NStr("en='The errors have occurred during the work.';ru='В процессе работы возникли ошибки.'"));
 		
 	EndTry;
 	
@@ -128,7 +128,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -240,7 +240,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -296,7 +296,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -432,7 +432,7 @@ Procedure DeleteOfflineWorkplace(Cancel)
 					UUID,
 					"OfflineWorkService.DeleteOfflineWorkplace",
 					New Structure("OfflineWorkplace", OfflineWorkplace),
-					NStr("en = 'Offline workplace deletion'"));
+					NStr("en='Offline workplace deletion';ru='Удаление автономного рабочего места'"));
 	
 	If Not Result.JobCompleted Then
 		LongOperation = True;
@@ -462,7 +462,7 @@ Function Attachable_Wait_LongOperationProcessing(Cancel, GoToNext)
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en = 'The errors have occurred during the work.'"));
+		ShowMessageBox(, NStr("en='The errors have occurred during the work.';ru='В процессе работы возникли ошибки.'"));
 		
 	ElsIf Not LongOperation Then
 		

@@ -10,11 +10,11 @@ Function CheckFillOfFormAttributes()
 	
 	// Attributes filling check.
 	If Not ValueIsFilled(Object.Encoding) Then
-		MessageText = NStr("en = 'Coding is not specified in the settings!'");
+		MessageText = NStr("en='Coding is not specified in the settings!';ru='В настройках не указана кодировка!'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText, , , "Encoding", CheckResultOk);
 	EndIf;
 	If Not ValueIsFilled(Object.FormatVersion) Then
-		MessageText = NStr("en = 'Exchange format version is not configured in the settings!'");
+		MessageText = NStr("en='Exchange format version is not configured in the settings!';ru='В настройках не указана версия формата обмена!'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText, , , "FormatVersion", CheckResultOk);
 	EndIf;
 	
@@ -114,13 +114,13 @@ Function GetDateFromString(Receiver, Source)
 	Buffer = Source;
 	DotPosition = Find(Buffer, ".");
 	If DotPosition = 0 Then
-		Return NStr("en = 'The incorrect format of the date row'");
+		Return NStr("en='The incorrect format of the date row';ru='Неверный формат строки с датой'");
 	EndIf;
 	NumberDate = Left(Buffer, DotPosition - 1);
 	Buffer = Mid(Buffer, DotPosition + 1);
 	DotPosition = Find(Buffer, ".");
 	If DotPosition = 0 Then
-		Return NStr("en = 'The incorrect format of the date row'");
+		Return NStr("en='The incorrect format of the date row';ru='Неверный формат строки с датой'");
 	EndIf;
 	DateMonth = Left(Buffer, DotPosition - 1);
 	DateYear = Mid(Buffer, DotPosition + 1);
@@ -134,7 +134,7 @@ Function GetDateFromString(Receiver, Source)
 	Try
 		Receiver = Date(Number(DateYear), Number(DateMonth), Number(NumberDate));
 	Except
-		Return NStr("en = 'Failed to convert string to date'");
+		Return NStr("en='Failed to convert string to date';ru='Не удалось преобразовать строку в дату'");
 	EndTry;
 	
 	Return Receiver;
@@ -200,7 +200,7 @@ Function FindContract(OwnerTreaty, CompanyContracts = Undefined, ContractKindsLi
 		Selection.Next();
 		Return Selection.Ref;
 	Else
-		Return NStr("en = 'Not found'");
+		Return NStr("en='Not found';ru='Не найден'");
 	EndIf;
 	
 EndFunction // FindContract()
@@ -297,8 +297,7 @@ Function ImportDocumentSection(DocumentRow, ImportCurrentRow, ImportLineCount, I
 			Else
 				
 				// Invalid title attribute.
-				MessageText = NStr(
-					"en = 'Invalid attribute of payment document, string %Import%: %ParseString%'"
+				MessageText = NStr("en='Invalid attribute of payment document, string %Import%: %ParseString%';ru='Неверный реквизит платежного документа, строка %Импорт%: %СтрокаРазбора%'"
 				);
 				MessageText = StrReplace(MessageText, "%Import%", (ImportCurrentRow - 1));
 				MessageText = StrReplace(MessageText, "%ParsingString%", ParsingString);
@@ -309,8 +308,7 @@ Function ImportDocumentSection(DocumentRow, ImportCurrentRow, ImportLineCount, I
 		Else
 			
 			// Invalid title attribute.
-			MessageText = NStr(
-				"en = 'Broken structure of payment document, string %Import%: %ParseString%'"
+			MessageText = NStr("en='Broken structure of payment document, string %Import%: %ParseString%';ru='Нарушена структура платежного документа, строка %Импорт%: %СтрокаРазбора%'"
 			);
 			MessageText = StrReplace(MessageText, "%Import%", (ImportCurrentRow - 1));
 			MessageText = StrReplace(MessageText, "%ParsingString%", ParsingString);
@@ -338,8 +336,7 @@ Function ImportBankAccSection(SAAccountRow, ImportCurrentRow, ImportLineCount, I
 			SAAccountRow[Tag] = Value;
 		Else
 			// Invalid title attribute.
-			MessageText = NStr(
-				"en = 'Invalid attribute of settlement account description section, string %Import%: %ParseString%'"
+			MessageText = NStr("en='Invalid attribute of settlement account description section, string %Import%: %ParseString%';ru='Неверный реквизит в секции описания расчетного счета, строка %Импорт%: %СтрокаРазбора%'"
 			);
 			MessageText = StrReplace(MessageText, "%Import%", (ImportCurrentRow - 1));
 			MessageText = StrReplace(MessageText, "%ParsingString%", ParsingString);
@@ -366,7 +363,7 @@ Procedure CheckForBlankImportValue(ImportRow, PropertyName, PresentationProperti
 	
 	If ImportIsNotEmpty[0][PropertyName] = True Then
 		If Not ValueIsFilled(ImportRow[PropertyName]) Then
-			RowRemark = NStr("en = '""%PropertyName%"" is not filled!'");
+			RowRemark = NStr("en='""%PropertyName%"" is not filled!';ru='Не заполнено ""%ИмяСвойства%""!'");
 			RowRemark = StrReplace(RowRemark, "%PropertyName%", PropertyName);
 			AddComment(ImportRow, 3, RowRemark);
 		EndIf;
@@ -387,7 +384,7 @@ Function ImportHeaderString(HeaderRowText, TagsHeader, ImportTitle, ImportCurren
 	Else
 		
 		// Invalid title attribute.
-		MessageText = NStr("en = 'Invalid title attribute, string %Import%: %TitleStringText%'");
+		MessageText = NStr("en='Invalid title attribute, string %Import%: %TitleStringText%';ru='Неверный реквизит заголовка, строка %Импорт%: %ТекстСтрокиЗаголовка%'");
 		MessageText = StrReplace(MessageText, "%Import%", (ImportCurrentRow - 1));
 		MessageText = StrReplace(MessageText, "%TitleStringText%", HeaderRowText);
 		SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText);
@@ -508,7 +505,7 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 		EndDo;
 		
 		If QuantityDoc > 1 Then
-			RowRemark = NStr("en = 'Several (%QuantityDoc%) corresponding documents have been found in the infobase!'");
+			RowRemark = NStr("en='Several (%QuantityDoc%) corresponding documents have been found in the infobase!';ru='В информационной базе найдено несколько(%КоличествоДок%) соответствующих документов!'");
 			RowRemark = StrReplace(RowRemark, "%QuantityDoc%", QuantityDoc);
 			AddComment(DocumentRow, 1, RowRemark);
 		EndIf;
@@ -603,16 +600,16 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 			DocumentRow.CounterpartyAccount = SearchSelection.Ref;
 			Counterparty = SearchSelection.Owner;
 		Else
-			RowRemark = NStr("en = 'Counterparty account is not found (%CounterpartyAccount%).'");
+			RowRemark = NStr("en='Counterparty account is not found (%CounterpartyAccount%).';ru='Не найден счет контрагента (%СчетКонтрагента%).'");
 			RowRemark = StrReplace(RowRemark, "%CounterpartyAccount%", CounterpartyAccount);
 			AddComment(DocumentRow, 2, RowRemark);
-			StringGLCounterpartyAccount = NStr("en = 'Not found (%CounterpartyAccount%).'");
+			StringGLCounterpartyAccount = NStr("en='Not found (%CounterpartyAccount%).';ru='Не найден (%AccountOfCompany%).'");
 			StringGLCounterpartyAccount = StrReplace(RowRemark, "%CounterpartyAccount%", CounterpartyAccount);
 			DocumentRow.CounterpartyAccount = StringGLCounterpartyAccount;
 		EndIf;
 		
 		If SearchSelection.Count() > 1 Then
-			RowRemark = NStr("en = 'The several (%Quantity%) same banking accounts have been found in the infobase!'");
+			RowRemark = NStr("en='The several (%Quantity%) same banking accounts have been found in the infobase!';ru='В информационной базе найдено несколько(%Количество%) одинаковых банковских счетов!'");
 			RowRemark = StrReplace(RowRemark, "%Quantity%", SearchSelection.Count());
 			AddComment(DocumentRow, 1, RowRemark);
 		EndIf;
@@ -660,23 +657,23 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 			EndIf;
 			
 			If FoundsCounterparties.Count() > 1 Then
-				RowRemark = NStr("en = 'Several (%Quantity%) same TIN counterparties have been found in the infobase!'");
+				RowRemark = NStr("en='Several (%Quantity%) same TIN counterparties have been found in the infobase!';ru='В информационной базе найдено несколько(%Количество%) контрагентов с одинаковым ИНН!'");
 				RowRemark = StrReplace(RowRemark, "%Quantity%", FoundsCounterparties.Count());
 				AddComment(DocumentRow, 2, RowRemark);
 			ElsIf FoundsCounterparties.Count() = 0 Then
-				RowRemark = NStr("en = 'Counterparty is not found (%CounterpartyName%,TIN %TINCounterparty%).'");
+				RowRemark = NStr("en='Counterparty is not found (%CounterpartyName%,TIN %TINCounterparty%).';ru='Не найден контрагент (%CounterpartyName%, ИНН %TINCounterparty%).'");
 				RowRemark = StrReplace(RowRemark, "%CounterpartyName%", CounterpartyName);
 				RowRemark = StrReplace(RowRemark, "%TINCounterparty%", TINCounterparty);
 				AddComment(DocumentRow, 2, RowRemark);
-				StringCounterparty = NStr("en = 'Not found (%CounterpartyName%, TIN, %TINCounterparty%).'");
+				StringCounterparty = NStr("en='Not found (%CounterpartyName%, TIN, %TINCounterparty%).';ru='Не найден (%CounterpartyName%, ИНН %TINCounterparty%).'");
 				StringCounterparty = StrReplace(StringCounterparty, "%CounterpartyName%", CounterpartyName);
 				StringCounterparty = StrReplace(StringCounterparty, "%TINCounterparty%", TINCounterparty);
 				DocumentRow.Counterparty = StringGLCounterpartyAccount;
 			EndIf;
 			
 		Else
-			AddComment(DocumentRow, 2, NStr("en = 'The TIN of the counterparty is not specified. '"));
-			StringCounterparty = NStr("en = 'Not found (%CounterpartyName%, TIN is not specified).'");
+			AddComment(DocumentRow, 2, NStr("en='The TIN of the counterparty is not specified. ';ru='Не указан ИНН контрагента. '"));
+			StringCounterparty = NStr("en='Not found (%CounterpartyName%, TIN is not specified).';ru='Не найден (%ИмяКонтрагента%, не указан ИНН).'");
 			StringCounterparty = StrReplace(StringCounterparty, "%CounterpartyName%", CounterpartyName);
 			DocumentRow.Counterparty = StringCounterparty;
 		EndIf;
@@ -686,11 +683,11 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 	If DocumentRow.OperationKind <> Enums.OperationKindsPaymentExpense.Taxes
 	AND Not ValueIsFilled(DocumentRow.Contract) Then
 		DocumentRow.Contract = FindContract(DocumentRow.Counterparty, Object.Company);
-		If DocumentRow.Contract = NStr("en = 'Not found'") Then
+		If DocumentRow.Contract = NStr("en='Not found';ru='Не найден'") Then
 			DocumentRow.Contract = FindContract(DocumentRow.Counterparty);
 		EndIf;
-		If DocumentRow.Contract = NStr("en = 'Not found'") Then
-			AddComment(DocumentRow, 2, NStr("en = 'The counterparty contract is not found. '"));
+		If DocumentRow.Contract = NStr("en='Not found';ru='Не найден'") Then
+			AddComment(DocumentRow, 2, NStr("en='The counterparty contract is not found. ';ru='Не найден договор контрагента. '"));
 		EndIf;
 	EndIf;
 	
@@ -720,7 +717,7 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 			DocumentRow.AmountDebited = Amount;
 		EndIf;
 	Else
-		RowRemark = NStr("en = 'Incorrect document amount (%Buffer%) is specified!'");
+		RowRemark = NStr("en='Incorrect document amount (%Buffer%) is specified!';ru='Указана неверная сумма документа(%Буфер%)!'");
 		RowRemark = StrReplace(RowRemark, "%Buffer%", Buffer);
 		AddComment(DocumentRow, 4, RowRemark);
 	EndIf;
@@ -965,7 +962,7 @@ Function FillDocumentsForImport(ImportTextForParsing)
 					Return "";
 				EndIf;
 			Else
-				MessageText = NStr("en = 'Broken structure of import file, string %Import%: %Str%'");
+				MessageText = NStr("en='Broken structure of import file, string %Import%: %Str%';ru='Нарушена структура файла импорта, строка %Импорт%: %Стр%'");
 				MessageText = StrReplace(MessageText, "%Import%", (ImportCurrentRow - 1));
 				MessageText = StrReplace(MessageText, "%Str%", Str);
 				Return MessageText;
@@ -976,7 +973,7 @@ Function FillDocumentsForImport(ImportTextForParsing)
 			
 			StringBAAccounts = BankAccountsToImport.Add();
 			If Not ImportBankAccSection(StringBAAccounts, ImportCurrentRow, ImportLineCount, ImportTextForParsing, SettlementsAccountsTags) Then
-				MessageText = NStr("en = 'Import file structure is broken in the current account description section! String: %Import%'");
+				MessageText = NStr("en='Import file structure is broken in the current account description section! String: %Import%';ru='Нарушена структура файла импорта в секции описания расчетного счета! Строка: %Импорт%'");
 				MessageText = StrReplace(MessageText, "%Import%", (ImportCurrentRow - 1));
 				Return MessageText;
 			EndIf;
@@ -1010,9 +1007,9 @@ Function FillDocumentsForImport(ImportTextForParsing)
 					If ValueIsFilled(Object.BankAccount)
 					   AND FoundBankAccount <> Object.BankAccount Then
 						If Object.BankAccount.AccountNo = Value Then
-							MessageText = NStr("en = 'The account in the file title (%Value%) is different from the specified one!'");
+							MessageText = NStr("en='The account in the file title (%Value%) is different from the specified one!';ru='В заголовке файла указан счет (%Значение%) отличный от указанного!'");
 						Else
-							MessageText = NStr("en = 'There are several bank accounts of companies with the same number!'");
+							MessageText = NStr("en='There are several bank accounts of companies with the same number!';ru='В базе есть несколько банковский счетов организаций с одинаковым номером!'");
 						EndIf;
 						MessageText = StrReplace(MessageText, "%Value%", Value);
 						Return MessageText;
@@ -1027,7 +1024,7 @@ Function FillDocumentsForImport(ImportTextForParsing)
 						StringBAAccounts.BankAcc = Value;
 					EndIf;
 				Else
-					MessageText = NStr("en = 'In the file title there is an account that does not belong to the Company: %Value%!'");
+					MessageText = NStr("en='In the file title there is an account that does not belong to the Company: %Value%!';ru='В заголовке файла указан счет, не принадлежащий организации: %Значение%!'");
 					MessageText = StrReplace(MessageText, "%Value%", Value);
 					Return MessageText;
 				EndIf;
@@ -1040,7 +1037,7 @@ Function FillDocumentsForImport(ImportTextForParsing)
 		// ENDFILE.
 		ElsIf Left(Upper(TrimAll(Str)), 10) = "EndFile" Then
 			If Not ImportExchangeSign Then
-				MessageText = NStr("en = '""1CClientBankExchange"" is missing in the file of import!'");
+				MessageText = NStr("en='""1CClientBankExchange"" is missing in the file of import!';ru='В файле импорта отсутствует признак обмена ""1CClientBankExchange""!'");
 				Return MessageText;
 			EndIf;
 			
@@ -1111,7 +1108,7 @@ Function FillDocumentsForImport(ImportTextForParsing)
 	If Not IsFoundEndFile Then
 		BankAccountsToImport.Clear();
 		DocumentsForImport.Clear();
-		MessageText = NStr("en = 'Invalid file format (EndFile section not found)!'");
+		MessageText = NStr("en='Invalid file format (EndFile section not found)!';ru='Файл загрузки не соответствует стандарту (не найдена секция КонецФайла)!'");
 		SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText);
 	EndIf;
 	
@@ -1149,20 +1146,20 @@ Function ReadFile(PathToFileFromSetting)
 	Try
 		ReadStream.Read(File, Codin);
 	Except
-		MessageText = NStr("en = 'An error occurred while reading file %File%.'");
+		MessageText = NStr("en='An error occurred while reading file %File%.';ru='Ошибка чтения файла %Файл%.'");
 		MessageText = StrReplace(MessageText, "%File%", File);
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText);
 		Return Undefined;
 	EndTry;
 	
 	If ReadStream.LineCount() < 1 Then
-		MessageText = NStr("en = 'There is no data in the file!'");
+		MessageText = NStr("en='There is no data in the file!';ru='В файле нет данных!'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText);
 		Return Undefined;
 	EndIf;
 	
 	If TrimAll(ReadStream.GetLine(1)) <> "1CClientBankExchange" Then
-		MessageText = NStr("en = 'Specified file is not file of exchange or specified code is incorrect!'");
+		MessageText = NStr("en='Specified file is not file of exchange or specified code is incorrect!';ru='Указанный файл не является файлом обмена или неверно указана кодировка!'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText);
 		Return Undefined;
 	EndIf;
@@ -1186,7 +1183,7 @@ Function ReadElectronicBankStatementAtServer(AlertStack)
 	EndIf;
 	
 	If Not FileOperationsExtensionConnected Then
-		MessageText = NStr("en = 'For statement reading the file work extension must be installed.'");
+		MessageText = NStr("en='For statement reading the file work extension must be installed.';ru='Для чтения выписки расширение работы с файлами должно быть установлено.'");
 		AlertStack.Add(New Structure("Text", MessageText));
 		Return Undefined;
 	EndIf;
@@ -1203,19 +1200,19 @@ Function ReadElectronicBankStatementAtServer(AlertStack)
 	Try
 		ReadStream.Read(TempFileName, Codin);
 	Except
-		MessageText = NStr("en = 'File is not read.'");
+		MessageText = NStr("en='File is not read.';ru='Файл не прочитан.'");
 		AlertStack.Add(New Structure("Text", MessageText));
 		Return Undefined;
 	EndTry;
 	
 	If ReadStream.LineCount() < 1 Then
-		MessageText = NStr("en = 'There is no data in the file!'");
+		MessageText = NStr("en='There is no data in the file!';ru='В файле нет данных!'");
 		AlertStack.Add(New Structure("Text", MessageText));
 		Return Undefined;
 	EndIf;
 	
 	If TrimAll(ReadStream.GetLine(1)) <> "1CClientBankExchange" Then
-		MessageText = NStr("en = 'Specified file is not file of exchange or specified code is incorrect!'");
+		MessageText = NStr("en='Specified file is not file of exchange or specified code is incorrect!';ru='Указанный файл не является файлом обмена или неверно указана кодировка!'");
 		AlertStack.Add(New Structure("Text", MessageText));
 		Return Undefined;
 	EndIf;
@@ -1237,7 +1234,7 @@ Procedure ReadDataFromFile()
 		
 		If Not ValueIsFilled(BankElectronicStatement) Then
 			SmallBusinessClient.ShowMessageAboutError(ThisForm,
-			NStr("en = 'For getting electronic bank statement click ""Request a statement""'")
+			NStr("en='For getting electronic bank statement click ""Request a statement""';ru='Для получения электронной выписки банка нажмите кнопку ""Запросить выписку""'")
 			,, "BankElectronicStatement");
 			Return;
 		EndIf;
@@ -1292,7 +1289,7 @@ Procedure ReadDataFromFile()
 		
 		
 		If ImportTextForParsing = Undefined Then
-			MessageText = NStr("en = 'Import file does not contain data!'");
+			MessageText = NStr("en='Import file does not contain data!';ru='Файл загрузки не содержит данных!'");
 			SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText);
 			Return;
 		EndIf;
@@ -1302,7 +1299,7 @@ Procedure ReadDataFromFile()
 	EndIf;
 	
 	//If ImportTextForParsing = Undefined Then
-	//	MessageText = NStr("en = 'Import file does not contain data!'");
+	//	MessageText = NStr("en='Import file does not contain data!';ru='Файл загрузки не содержит данных!'");
 	//	SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText);
 	//	Return;
 	//EndIf;
@@ -1341,14 +1338,14 @@ Function PeriodFilledWith()
 	
 	If Not ValueIsFilled(Object.StartPeriod) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Start period date is not filled'")
+			NStr("en='Start period date is not filled';ru='Не заполнена дата начала периода'")
 			,, "Object.StartPeriod");
 		PeriodFilledWith = False;
 	EndIf;
 	
 	If Not ValueIsFilled(Object.EndPeriod) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'End period date is not filled'")
+			NStr("en='End period date is not filled';ru='Не заполнена дата окончания периода'")
 			,, "Object.EndPeriod");
 		PeriodFilledWith = False;
 	EndIf;
@@ -1455,12 +1452,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				ImportFile = TextDocument.GetText();
 				DeleteFiles(TempFileName);
 			Except
-				WriteLogEvent(NStr("en = 'Exchange with bank. Temporary file'"), 
+				WriteLogEvent(NStr("en='Exchange with bank. Temporary file';ru='Обмен с банком.Временный файл'"), 
 				EventLogLevel.Error,
 				,
 				,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The temporary file saving to the disk is failed by reason: %1'"),
+				NStr("en='The temporary file saving to the disk is failed by reason: %1';ru='Не удалось сохранение временного файла на диск по причине: %1'"),
 				ErrorDescription()));
 				Return;
 			EndTry;
@@ -1516,7 +1513,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Parameters.Property("DirectExchangeWithBanksAgreement") Then
 		DirectExchangeWithBanksAgreement = Parameters.DirectExchangeWithBanksAgreement;
 		If ValueIsFilled(DirectExchangeWithBanksAgreement) Then
-			TemplateText = NStr("en = 'The direct exchange agreement is effectife from %1: bank statement will be imported to 1C:Small Business directly from the bank'");
+			TemplateText = NStr("en='The direct exchange agreement is effectife from %1: bank statement will be imported to 1C:Small Business directly from the bank';ru='С %1 действует соглашение о прямом обмене: банковская выписка будет загружена в 1С:Управление небольшой фирмой напрямую из банка'");
 			LabelText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
 			DirectMessageExchange = LabelText;
 		EndIf;
@@ -1653,11 +1650,11 @@ Procedure ImportExecute(Command)
 			
 		EndIf;
 		
-		ShowMessageBox(Undefined,NStr("en = 'Importing of the payment documents has been completed'"));
+		ShowMessageBox(Undefined,NStr("en='Importing of the payment documents has been completed';ru='Загрузка платежных документов завершена.'"));
 		
 	Else
 		
-		ShowMessageBox(Undefined,NStr("en = 'List of documents for loadings empty'"));
+		ShowMessageBox(Undefined,NStr("en='List of documents for loadings empty';ru='Список документов для загрузки пуст.'"));
 		
 	EndIf;
 	
@@ -1731,7 +1728,7 @@ Procedure ImportSelection(Item, SelectedRow, Field, StandardProcessing)
 		If ValueIsFilled(Items.ImportTable.CurrentData.ErrorsDescriptionFull) Then
 			ShowMessageBox(Undefined,Items.ImportTable.CurrentData.ErrorsDescriptionFull);
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Document is ready for import!'"));
+			ShowMessageBox(Undefined,NStr("en='Document is ready for import!';ru='Документ готов к загрузке!'"));
 		EndIf;
 	ElsIf Field.Name = "ImportPaymentDestination" Then
 		StandardProcessing = False;
@@ -1776,7 +1773,7 @@ Procedure ImportOrderStartChoice(Item, ChoiceData, StandardProcessing)
 		
 		StandardProcessing	= False;
 		
-		MessageText			= NStr("en = 'The counterparty has not been identified, the order selection is impossible.'");
+		MessageText			= NStr("en='The counterparty has not been identified, the order selection is impossible.';ru='Контрагент не идентифицирован, выбор заказа не возможен.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;

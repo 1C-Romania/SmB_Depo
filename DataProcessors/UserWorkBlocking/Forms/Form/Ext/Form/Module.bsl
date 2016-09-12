@@ -44,7 +44,7 @@ EndProcedure
 &AtServer
 Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
-	InformationAboutLockingSessions = InfobaseConnections.InformationAboutLockingSessions(NStr("en = 'Blocking is not set.'"));
+	InformationAboutLockingSessions = InfobaseConnections.InformationAboutLockingSessions(NStr("en='Blocking is not set.';ru='Блокировка не установлена.'"));
 	
 	If InformationAboutLockingSessions.LockSessionsPresent Then
 		Raise InformationAboutLockingSessions.MessageText;
@@ -56,14 +56,14 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	If Object.LockBegin > Object.LockEnding 
 		AND ValueIsFilled(Object.LockEnding) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'End date of locking can not be less than start date of lock. Blocking is not set.'"),,
+			NStr("en='End date of locking can not be less than start date of lock. Blocking is not set.';ru='Дата окончания блокировки не может быть меньше даты начала блокировки. Блокировка не установлена.'"),,
 			"Object.LockEnding",,Cancel);
 		Return;
 	EndIf;
 	
 	If Not ValueIsFilled(Object.LockBegin) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Start date of locking is not specified.'"),,	"Object.LockBegin",,Cancel);
+			NStr("en='Start date of locking is not specified.';ru='Не указана дата начала блокировки.'"),,	"Object.LockBegin",,Cancel);
 		Return;
 	EndIf;
 	
@@ -78,8 +78,9 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		If Parameter.Status = "Done" Then
 			Close();
 		ElsIf Parameter.Status = "Error" Then
-			ShowMessageBox(,NStr("en = 'Cannot terminate sessions of all active users.
-				|Look for details in event log.'"), 30);
+			ShowMessageBox(,NStr("en='Cannot terminate sessions of all active users."
+"Look for details in event log.';ru='Не удалось завершить работу всех активных пользователей."
+"Подробности см. в журнале регистрации.'"), 30);
 			Close();
 		EndIf;
 	EndIf;
@@ -115,32 +116,36 @@ Procedure Apply(Command)
 			Return;
 		EndTry;
 		
-		QuestionTitle = NStr("en = 'User work locking'");
+		QuestionTitle = NStr("en='User work locking';ru='Блокировка работы пользователей'");
 		If NumberOfSessions > 1 AND Object.LockBegin < CommonUseClient.SessionDate() + 5 * 60 Then
-			QuestionText = NStr("en = 'Too early start time of blocking is set, users may not have enough time to save all their data and terminate their sessions.
-				|It is recommended to set start time 5 minutes later than the current time.'");
+			QuestionText = NStr("en='Too early start time of blocking is set, users may not have enough time to save all their data and terminate their sessions."
+"It is recommended to set start time 5 minutes later than the current time.';ru='Указано слишком близкое время начала действия блокировки, к которому пользователи могут не успеть сохранить все свои данные и завершить работу."
+"Рекомендуется установить время начала на 5 минут относительно текущего времени.'");
 			Buttons = New ValueList;
-			Buttons.Add(DialogReturnCode.Yes, NStr("en = 'Block in 5 minutes'"));
-			Buttons.Add(DialogReturnCode.No, NStr("en = 'Lock now'"));
-			Buttons.Add(DialogReturnCode.Cancel, NStr("en = 'Cancel'"));
+			Buttons.Add(DialogReturnCode.Yes, NStr("en='Block in 5 minutes';ru='Заблокировать через 5 минут'"));
+			Buttons.Add(DialogReturnCode.No, NStr("en='Lock now';ru='Заблокировать сейчас'"));
+			Buttons.Add(DialogReturnCode.Cancel, NStr("en='Cancel';ru='Отменить'"));
 			Notification = New NotifyDescription("ApplyEnd", ThisObject, "TooCloseLockTime");
 			ShowQueryBox(Notification, QuestionText, Buttons,,, QuestionTitle);
 		ElsIf Object.LockBegin > CommonUseClient.SessionDate() + 60 * 60 Then
-			QuestionText = NStr("en = 'Stat time of blocking is too late (more than in a hour).
-				|Do you want to schedule the locking for the specified time?'");
+			QuestionText = NStr("en='Stat time of blocking is too late (more than in a hour)."
+"Do you want to schedule the locking for the specified time?';ru='Указано слишком большое время начала действия блокировки (более, чем через час)."
+"Запланировать блокировку на указанное время?'");
 			Buttons = New ValueList;
-			Buttons.Add(DialogReturnCode.No, NStr("en = 'Schedule'"));
-			Buttons.Add(DialogReturnCode.Yes, NStr("en = 'Lock now'"));
-			Buttons.Add(DialogReturnCode.Cancel, NStr("en = 'Cancel'"));
+			Buttons.Add(DialogReturnCode.No, NStr("en='Schedule';ru='Расписание'"));
+			Buttons.Add(DialogReturnCode.Yes, NStr("en='Lock now';ru='Заблокировать сейчас'"));
+			Buttons.Add(DialogReturnCode.Cancel, NStr("en='Cancel';ru='Отменить'"));
 			Notification = New NotifyDescription("ApplyEnd", ThisObject, "TooMuchLockTime");
 			ShowQueryBox(Notification, QuestionText, Buttons,,, QuestionTitle);
 		Else
 			If Object.LockBegin - CommonUseClient.SessionDate() > 15*60 Then
-				QuestionText = NStr("en = 'Sessions of all active users will be terminated during the period from %1 to %2.
-					|Continue?'");
+				QuestionText = NStr("en='Sessions of all active users will be terminated during the period from %1 to %2."
+"Continue?';ru='Завершение работы всех активных пользователей будет произведено в период с %1 по %2."
+"Продолжить?'");
 			Else
-				QuestionText = NStr("en = 'Sessions of all active users will be terminated by %2.
-					|Continue?'");
+				QuestionText = NStr("en='Sessions of all active users will be terminated by %2."
+"Continue?';ru='Сеансы всех активных пользователей будут завершены к %2."
+"Продолжить?'");
 			EndIf;
 			Notification = New NotifyDescription("ApplyEnd", ThisObject, "Confirmation");
 			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
@@ -203,9 +208,10 @@ Procedure ApplyEnd(Response, Variant) Export
 	If Not ThisIsFileBase AND Not EnteredCorrectAdministrationParameters AND SessionWithoutSeparator Then
 		
 		NotifyDescription = New NotifyDescription("AfterAdministrationParametersGettingOnBlocking", ThisObject);
-		FormTitle = NStr("en = 'Management of session blocking'");
-		ExplanatoryInscription = NStr("en = 'For session lock management it
-			|is necessary to enter administration parameters of server cluster and infobases'");
+		FormTitle = NStr("en='Management of session blocking';ru='Управление блокировкой сеансов'");
+		ExplanatoryInscription = NStr("en='For session lock management it"
+"is necessary to enter administration parameters of server cluster and infobases';ru='Для управления блокировкой сеансов"
+"необходимо ввести параметры администрирования кластера серверов и информационной базы'");
 		InfobaseConnectionsClient.ShowAdministrationParameters(NOTifyDescription, True,
 			True, AdministrationParameters, FormTitle, ExplanatoryInscription);
 		
@@ -223,9 +229,10 @@ Procedure Stop(Command)
 	If Not ThisIsFileBase AND Not EnteredCorrectAdministrationParameters AND SessionWithoutSeparator Then
 		
 		NotifyDescription = New NotifyDescription("AfterAdministrationParametersGettingWhenLockCanceling", ThisObject);
-		FormTitle = NStr("en = 'Management of session blocking'");
-		ExplanatoryInscription = NStr("en = 'For session lock management it
-			|is necessary to enter administration parameters of server cluster and infobases'");
+		FormTitle = NStr("en='Management of session blocking';ru='Управление блокировкой сеансов'");
+		ExplanatoryInscription = NStr("en='For session lock management it"
+"is necessary to enter administration parameters of server cluster and infobases';ru='Для управления блокировкой сеансов"
+"необходимо ввести параметры администрирования кластера серверов и информационной базы'");
 		InfobaseConnectionsClient.ShowAdministrationParameters(NOTifyDescription, True,
 			True, AdministrationParameters, FormTitle, ExplanatoryInscription);
 		
@@ -241,9 +248,10 @@ EndProcedure
 Procedure AdministrationParameters(Command)
 	
 	NotifyDescription = New NotifyDescription("AfterAdministrationParametersReceiving", ThisObject);
-	FormTitle = NStr("en = 'Management of the scheduled job blocking'");
-	ExplanatoryInscription = NStr("en = 'For management of scheduled jobs
-		|locking it is necessary to enter administration parameters of server cluster and infobases'");
+	FormTitle = NStr("en='Management of the scheduled job blocking';ru='Управление блокировкой регламентных заданий'");
+	ExplanatoryInscription = NStr("en='For management of scheduled jobs"
+"locking it is necessary to enter administration parameters of server cluster and infobases';ru='Для управления блокировкой"
+"регламентных заданий необходимо ввести параметры администрирования кластера серверов и информационной базы'");
 	InfobaseConnectionsClient.ShowAdministrationParameters(NOTifyDescription, True,
 		True, AdministrationParameters, FormTitle, ExplanatoryInscription);
 	
@@ -268,7 +276,7 @@ Procedure SetConditionalAppearance()
 	FilterElement = Item.Filter.Items.Add(Type("DataCompositionFilterItem"));
 	FilterElement.LeftValue = New DataCompositionField("UsersWorkProhibitionStatus");
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
-	FilterElement.RightValue = NStr("en = 'Prohibited'");
+	FilterElement.RightValue = NStr("en='Prohibited';ru='Запрещено'");
 
 	Item.Appearance.SetParameterValue("TextColor", StyleColors.ExplanationTextError);
 
@@ -296,7 +304,7 @@ Procedure SetConditionalAppearance()
 	FilterElement = Item.Filter.Items.Add(Type("DataCompositionFilterItem"));
 	FilterElement.LeftValue = New DataCompositionField("UsersWorkProhibitionStatus");
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
-	FilterElement.RightValue = NStr("en = 'Timed Out'");
+	FilterElement.RightValue = NStr("en='Timed Out';ru='Истекло'");
 
 	Item.Appearance.SetParameterValue("TextColor", StyleColors.BlockedAttributeColor);
 
@@ -310,7 +318,7 @@ Procedure SetConditionalAppearance()
 	FilterElement = Item.Filter.Items.Add(Type("DataCompositionFilterItem"));
 	FilterElement.LeftValue = New DataCompositionField("UsersWorkProhibitionStatus");
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
-	FilterElement.RightValue = NStr("en = 'Allowed'");
+	FilterElement.RightValue = NStr("en='Allowed';ru='Разрешено'");
 
 	Item.Appearance.SetParameterValue("TextColor", StyleColors.FormTextColor);
 
@@ -376,9 +384,9 @@ Procedure RefreshSettingsPage()
 	Items.ApplyCommand.DefaultButton = True;
 	Items.StopCommand.Visible = False;
 	Items.ApplyCommand.Title = ?(Object.ProhibitUserWorkTemporarily,
-		NStr("en='Remove lock'"), NStr("en='Set lock'"));
+		NStr("en='Remove lock';ru='Снять блокировку'"), NStr("en='Set lock';ru='Установить блокировку'"));
 	Items.DisableScheduledJobs.Title = ?(Object.DisableScheduledJobs,
-		NStr("en='Leave the scheduled jobs locking'"), NStr("en='Also to prohibit the scheduled jobs work'"));
+		NStr("en='Leave the scheduled jobs locking';ru='Оставить блокировку работы регламентных заданий'"), NStr("en='Also to prohibit the scheduled jobs work';ru='Также запретить работу регламентных заданий'"));
 	
 EndProcedure
 
@@ -397,8 +405,9 @@ EndProcedure
 Procedure UpdateLockState(Form)
 	
 	Form.Items.Status.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Please wait...
-			|User operation is terminated. Active sessions left: %1'"),
+		NStr("en='Please wait..."
+"User operation is terminated. Active sessions left: %1';ru='Пожалуйста, подождите.."
+"Работа пользователей завершается. Осталось активных сеансов: %1'"),
 			Form.NumberOfSessions);
 	
 EndProcedure
@@ -439,17 +448,17 @@ Procedure InstallStarterStatusBanUsers()
 	InitialUsersWorkProhibitionStatusValue = Object.ProhibitUserWorkTemporarily;
 	If Object.ProhibitUserWorkTemporarily Then
 		If CurrentSessionDate() < Object.LockBegin Then
-			InitialUserWorkProhibitionState = NStr("en = 'The users work in the application will be prohibited at the specified time'");
+			InitialUserWorkProhibitionState = NStr("en='The users work in the application will be prohibited at the specified time';ru='Работа пользователей в программе будет запрещена в указанное время'");
 			UsersWorkProhibitionStatus = "Planned";
 		ElsIf CurrentSessionDate() > Object.LockEnding AND Object.LockEnding <> '00010101' Then
-			InitialUserWorkProhibitionState = NStr("en = 'Work of the users in the application is permitted (prohibition period expired)'");;
+			InitialUserWorkProhibitionState = NStr("en='Work of the users in the application is permitted (prohibition period expired)';ru='Работа пользователей в программе разрешена (истек срок запрета)'");;
 			UsersWorkProhibitionStatus = "Timed Out";
 		Else
-			InitialUserWorkProhibitionState = NStr("en = 'Users are not allowed to work in the application'");
+			InitialUserWorkProhibitionState = NStr("en='Users are not allowed to work in the application';ru='Работа пользователей в программе запрещена'");
 			UsersWorkProhibitionStatus = "Prohibited";
 		EndIf;
 	Else
-		InitialUserWorkProhibitionState = NStr("en = 'Users are allowed to work in the application'");
+		InitialUserWorkProhibitionState = NStr("en='Users are allowed to work in the application';ru='Работа пользователей в программе разрешена'");
 		UsersWorkProhibitionStatus = "Allowed";
 	EndIf;
 	
@@ -499,9 +508,9 @@ Procedure AfterAdministrationParametersGettingOnBlocking(Result, AdditionalParam
 		Return;
 	EndIf;
 	
-	ShowUserNotification(NStr("en = 'User work locking'"),
+	ShowUserNotification(NStr("en='User work locking';ru='Блокировка работы пользователей'"),
 		"e1cib/app/DataProcessor.UserWorkBlocking",
-		?(Object.ProhibitUserWorkTemporarily, NStr("en = 'The lock is established.'"), NStr("en = 'Unlocked.'")),
+		?(Object.ProhibitUserWorkTemporarily, NStr("en='The lock is established.';ru='Блокировка установлена.'"), NStr("en='Unlocked.';ru='Блокировка снята.'")),
 		PictureLib.Information32);
 	InfobaseConnectionsClient.SetIdleHandlerOfUserSessionsTermination(	Object.ProhibitUserWorkTemporarily);
 	
@@ -532,8 +541,9 @@ Procedure AfterAdministrationParametersGettingWhenLockCanceling(Result, Addition
 	EndIf;
 	
 	InfobaseConnectionsClient.SetIdleHandlerOfUserSessionsTermination(False);
-	ShowMessageBox(,NStr("en = 'Termination of active user sessions has been canceled. 
-		|New users can not log on to the application.'"));
+	ShowMessageBox(,NStr("en='Termination of active user sessions has been canceled. "
+"New users can not log on to the application.';ru='Завершение работы активных пользователей отменено. "
+"Вход в программу новых пользователей оставлен заблокированным.'"));
 	
 EndProcedure
 

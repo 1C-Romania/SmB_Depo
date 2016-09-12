@@ -166,9 +166,9 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work.ID  = IdentifierBanks;
 		Work.ThereIsWork       = Result.ClassifierObsolete;
 		Work.Important         = Result.ClassifierOverdue;
-		Work.Presentation  = NStr("en = 'Banks classifier is outdated'");
+		Work.Presentation  = NStr("en='Banks classifier is outdated';ru='Классификатор банков устарел'");
 		Work.ToolTip      = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Last update %1 ago'"), Result.OverdueAmountAsString);
+			NStr("en='Last update %1 ago';ru='Последнее обновление %1 назад'"), Result.OverdueAmountAsString);
 		Work.Form          = "Catalog.RFBankClassifier.Form.ImportClassifier";
 		Work.FormParameters = New Structure("OpenFromList", True);
 		Work.Owner       = Section;
@@ -233,7 +233,7 @@ Function permissions()
 	Protocol = "HTTP";
 	Address = "cbrates.rbc.ru";
 	Port = Undefined;
-	Definition = NStr("en = 'Import banks classifier from the Internet.'");
+	Definition = NStr("en='Import banks classifier from the Internet.';ru='Загрузка классификатора банков из интернета.'");
 	
 	permissions = New Array;
 	permissions.Add( 
@@ -259,7 +259,7 @@ EndFunction
 Procedure SupplementMessageText(ClassifierImportParameters) Export
 	
 	If IsBlankString(ClassifierImportParameters["MessageText"]) Then
-		MessageText = NStr("en ='Banks classifier is loaded successfully.'");
+		MessageText = NStr("en='Banks classifier is loaded successfully.';ru='Загрузка классификатора банков РФ выполнена успешно.'");
 	Else
 		MessageText = ClassifierImportParameters["MessageText"];
 	EndIf;
@@ -267,16 +267,18 @@ Procedure SupplementMessageText(ClassifierImportParameters) Export
 	If ClassifierImportParameters["Exported"] > 0 Then
 		
 		MessageText = MessageText + StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en ='
-		|New updated: %1.'"), ClassifierImportParameters["Exported"]);
+		NStr("en='"
+"New updated: %1.';ru='"
+"Загружено новых: %1.'"), ClassifierImportParameters["Exported"]);
 	
 	EndIf;
 	
 	If ClassifierImportParameters["Updated"] > 0 Then
 		
 		MessageText = MessageText + StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en ='
-		|Records updated: %1.'"), ClassifierImportParameters["Updated"]);
+		NStr("en='"
+"Records updated: %1.';ru='"
+"Обновлено записей: %1.'"), ClassifierImportParameters["Updated"]);
 
 	EndIf;
 	
@@ -315,7 +317,7 @@ Procedure GetRBCData(ClassifierImportParameters, StorageAddress = "") Export
 	Try
 		RBCZIPFile = New ZipFileReader(RBKFilesReceivingParameters["PathToRBCFile"]);
 	Except
-		MessageText = NStr("en ='The problems occurred with the banks classifier file obtained form the RBC website.'");
+		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК.'");
 		MessageText = MessageText + DetailErrorDescription(ErrorInfo());
 	EndTry;
 	
@@ -330,7 +332,7 @@ Procedure GetRBCData(ClassifierImportParameters, StorageAddress = "") Export
 	Try
 		RBCZIPFile.ExtractAll(TemporaryDirectory);
 	Except
-		MessageText = NStr("en ='The problems occurred with the banks classifier file obtained form the RBC website.'");
+		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК.'");
 		MessageText = MessageText + DetailErrorDescription(ErrorInfo());
 	EndTry;	
 	
@@ -345,8 +347,9 @@ Procedure GetRBCData(ClassifierImportParameters, StorageAddress = "") Export
 	PathToFileBIKRBK = CommonUseClientServer.AddFinalPathSeparator(TemporaryDirectory) + "bnkseek.txt";
 	FileBIKRBK	   = New File(PathToFileBIKRBK);
 	If Not FileBIKRBK.Exist() Then
-		MessageText = NStr("en ='The problems occurred with the banks classifier file obtained form the RBC website. 
-									|Archive does not contain information - banks classifier.'");
+		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website. "
+"Archive does not contain information - banks classifier.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК. "
+"Архив не содержит информацию - классификатор банков.'");
 		ClassifierImportParameters.Insert("MessageText", MessageText);
 		If Not IsBlankString(StorageAddress) Then
 			PutToTempStorage(ClassifierImportParameters, StorageAddress);
@@ -357,8 +360,9 @@ Procedure GetRBCData(ClassifierImportParameters, StorageAddress = "") Export
 	PathToRBKStatesFile = CommonUseClientServer.AddFinalPathSeparator(TemporaryDirectory) + "reg.txt";
 	RBCStatesFile		= New File(PathToRBKStatesFile);
 	If Not RBCStatesFile.Exist() Then
-		MessageText = NStr("en ='The problems occurred with the banks classifier file obtained form the RBC website. 
-									|Archive does not contain information about states.'");
+		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website. "
+"Archive does not contain information about states.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК. "
+"Архив не содержит информацию о регионах.'");
 		ClassifierImportParameters.Insert("MessageText", MessageText);
 		If Not IsBlankString(StorageAddress) Then
 			PutToTempStorage(ClassifierImportParameters, StorageAddress);
@@ -369,8 +373,9 @@ Procedure GetRBCData(ClassifierImportParameters, StorageAddress = "") Export
 	PathToFileNonPerformingBanks = InativeBanksFileName(TemporaryDirectory);
 	NonOperationalBanksFile = New File(PathToFileNonPerformingBanks);
 	If Not NonOperationalBanksFile.Exist() Then
-		MessageText = NStr("en ='The problems occurred with the banks classifier file obtained form the RBC website. 
-									|Archive does not contain information on the inactive banks.'");
+		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website. "
+"Archive does not contain information on the inactive banks.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК. "
+"Архив не содержит информацию о недействующих банках.'");
 		ClassifierImportParameters.Insert("MessageText", MessageText);
 		If Not IsBlankString(StorageAddress) Then
 			PutToTempStorage(ClassifierImportParameters, StorageAddress);
@@ -421,7 +426,7 @@ Procedure ImportBanksClassifier() Export
 	EventLevel = EventLogLevel.Information;
 	
 	If CommonUse.IsSubordinateDIBNode() Then
-		WriteLogEvent(EventNameInEventLogMonitor(), EventLevel, , , NStr("en = 'Import in the subordinate RIB node is not provided'"));
+		WriteLogEvent(EventNameInEventLogMonitor(), EventLevel, , , NStr("en='Import in the subordinate RIB node is not provided';ru='Загрузка в подчиненном узле РИБ не предусмотрена'"));
 		Return;
 	EndIf;
 	
@@ -527,12 +532,14 @@ Procedure GetRBKDataFromInternet(RBKFilesReceivingParameters) Export
 	Else
 		If CommonUse.FileInfobase() Then
 			AdditionalMessage = 
-				NStr("en ='
-				|Perhaps, the settings of the Internet connection are inaccurate or incorrect'");
+				NStr("en='"
+"Perhaps, the settings of the Internet connection are inaccurate or incorrect';ru='"
+"Возможно неточные или неправильные настройки подключения к Интернету.'");
 		Else
 			AdditionalMessage =
-				NStr("en ='
-				|Perhaps, the Internet connection settings on the 1C:Enterprise server are inaccurate or incorrect.'");
+				NStr("en='"
+"Perhaps, the Internet connection settings on the 1C:Enterprise server are inaccurate or incorrect.';ru='"
+"Возможно неточные или неправильные настройки подключения к Интернету на сервере 1С:Предприятие.'");
 		EndIf;	
 		
 		ErrorInfo = ResultFromInternet.ErrorInfo + AdditionalMessage; 
@@ -659,7 +666,7 @@ Function GetBankFieldsStructure(Val String, States)
 	StateCode = Mid(Bank.BIN, 3, 2);
 	Region = States[StateCode];
 	If Region = Undefined Then
-		Region = NStr("en = 'Other territories'");
+		Region = NStr("en='Other territories';ru='Другие территории'");
 		StateCode = "";
 	EndIf;
 	
@@ -704,7 +711,7 @@ Function ClassifierFilesReceived(FolderWithFiles)
 		If Not File.Exist() Then
 			WriteErrorInEventLogMonitor(
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'File %1 has not been found'"),
+					NStr("en='File %1 has not been found';ru='Не найден файл %1'"),
 					FileName));
 			Result = False;
 		EndIf;
@@ -757,7 +764,7 @@ EndProcedure
 
 Function EventNameInEventLogMonitor()
 	
-	Return NStr("en = 'Banks classifier import. RBK site'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Banks classifier import. RBK site';ru='Загрузка классификатора банков. Сайт РБК'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

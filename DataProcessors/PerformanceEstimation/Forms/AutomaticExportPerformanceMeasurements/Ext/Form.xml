@@ -16,6 +16,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Save and close</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сохранить и закрыть</v8:content>
+					</v8:item>
 				</Title>
 				<ExtendedTooltip name="FormSaveCloseExtendedTooltip" id="25"/>
 			</Button>
@@ -54,11 +58,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Settings of export to the local directory</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки экспорта в локальный каталог</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Settings of export to the local directory</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки экспорта в локальный каталог</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -80,6 +92,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Local export directory</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Локальный каталог экспорта</v8:content>
+						</v8:item>
 					</Title>
 					<ChoiceButton>true</ChoiceButton>
 					<ContextMenu name="LocalDirectoryExportContextMenu" id="10"/>
@@ -97,11 +113,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Export settings for FTP</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки экспорта на FTP</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Export settings for FTP</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки экспорта на FTP</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -122,6 +146,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>ftp-server address</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адрес ftp-сервера</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="FTPDirectoryExportContextMenu" id="23"/>
@@ -145,6 +173,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Local export directory</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Локальный каталог экспорта</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -161,6 +193,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>To export</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнять экспорт</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -172,6 +208,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Export to the local directory is being performed</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнять экспорт в локальный каталог</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -185,6 +225,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Perform export to FTP</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнять экспорт на FTP</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -196,6 +240,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>ftp-server address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес ftp-сервера</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -215,11 +263,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Configure the export schedule</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить расписание экспорта</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Configure the export schedule</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить расписание экспорта</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ConfigureExportSchedule</Action>
@@ -230,10 +286,18 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Save settings</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Save settings</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>Save settings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>Save settings</v8:content>
 				</v8:item>
 			</ToolTip>
@@ -245,11 +309,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Save and close</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Save close</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить закрыть</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>SaveClose</Action>

@@ -12,14 +12,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Parameters.InsertIntoList Then
 		InsertIntoList = True;
-		Items.Select.Title = NStr("en = 'Add'");
+		Items.Select.Title = NStr("en='Add';ru='Добавить'");
 		
 		Items.ExplanationEnhancedPassword.Title =
-			NStr("en = 'Click Add to go to password entry.'");
+			NStr("en='Click Add to go to password entry.';ru='Нажмите Добавить, чтобы перейти к вводу пароля.'");
 		
 		PersonalListOnAdd = Parameters.PersonalListOnAdd;
 		Items.ShowAll.ToolTip =
-			NStr("en = 'Show all certificates without filter (for example including the added and expired ones)'");
+			NStr("en='Show all certificates without filter (for example including the added and expired ones)';ru='Показать все сертификаты без отбора (например, включая добавленные и просроченные)'");
 	EndIf;
 	
 	ForEncryptionAndDecryption = Parameters.ForEncryptionAndDecryption;
@@ -27,18 +27,18 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If ForEncryptionAndDecryption = True Then
 		If Parameters.InsertIntoList Then
-			Title = NStr("en = 'Addition of a certificate for data encryption and decryption'");
+			Title = NStr("en='Addition of a certificate for data encryption and decryption';ru='Добавление сертификата для шифрования и расшифровки данных'");
 		Else
-			Title = NStr("en = 'Select certificate for data encryption and decryption'");
+			Title = NStr("en='Select certificate for data encryption and decryption';ru='Выбор сертификата для шифрования и расшифровки данных'");
 		EndIf;
 	ElsIf ForEncryptionAndDecryption = False Then
 		If Parameters.InsertIntoList Then
-			Title = NStr("en = 'Addition of a certificate for data signing'");
+			Title = NStr("en='Addition of a certificate for data signing';ru='Добавление сертификата для подписания данных'");
 		EndIf;
 	ElsIf DigitalSignature.UseEncryption() Then
-		Title = NStr("en = 'Addition of a certificate for signing and encrypting data'");
+		Title = NStr("en='Addition of a certificate for signing and encrypting data';ru='Добавление сертификата для подписания и шифрования данных'");
 	Else
-		Title = NStr("en = 'Addition of a certificate for data signing'");
+		Title = NStr("en='Addition of a certificate for data signing';ru='Добавление сертификата для подписания данных'");
 	EndIf;
 	
 	CreateDigitalSignaturesAtServer = DigitalSignatureClientServer.CommonSettings(
@@ -46,7 +46,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If CreateDigitalSignaturesAtServer Then
 		Items.GroupCertificates.Title =
-			NStr("en = 'Personal certificates on computer and server'");
+			NStr("en='Personal certificates on computer and server';ru='Личные сертификаты на компьютере и сервере'");
 	EndIf;
 	
 	If CommonUse.SubsystemExists("StandardSubsystems.Companies") Then
@@ -130,7 +130,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	   AND Items.CertificateCompany.AutoMarkIncomplete = True
 	   AND Not ValueIsFilled(CertificateCompany) Then
 		
-		MessageText = NStr("en = 'Field Company is not filled.'");
+		MessageText = NStr("en='Field Company is not filled.';ru='Поле Организация не заполнено.'");
 		CommonUseClientServer.MessageToUser(MessageText,, "CertificateCompany",, Cancel);
 	EndIf;
 	
@@ -144,7 +144,7 @@ EndProcedure
 Procedure CertificatesNotAvailableOnClientLabelClick(Item)
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en = 'Certificates on computer'"), "", ErrorReceivingCertificatesOnClient, New Structure);
+		NStr("en='Certificates on computer';ru='Сертификаты на компьютере'"), "", ErrorReceivingCertificatesOnClient, New Structure);
 	
 EndProcedure
 
@@ -152,7 +152,7 @@ EndProcedure
 Procedure CertificatesNotAvailableAtServerLabelClick(Item)
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en = 'Certificates on server'"), "", ErrorReceivingCertificatesAtServer, New Structure);
+		NStr("en='Certificates on server';ru='Сертификаты на сервере'"), "", ErrorReceivingCertificatesAtServer, New Structure);
 	
 EndProcedure
 
@@ -334,9 +334,9 @@ Procedure SelectAfterCertificateCheck(Result, Context) Export
 		ErrorOnClient = Result;
 		
 		If ForEncryptionAndDecryption = True Then
-			FormTitle = NStr("en = 'Encryption and decryption check'");
+			FormTitle = NStr("en='Encryption and decryption check';ru='Проверка шифрования и расшифровки'");
 		Else
-			FormTitle = NStr("en = 'Validation of digital signature setting'");
+			FormTitle = NStr("en='Validation of digital signature setting';ru='Проверка установки электронной подписи'");
 		EndIf;
 		DigitalSignatureServiceClient.ShowRequestToApplicationError(
 			FormTitle, "", ErrorOnClient, Context.ErrorOnServer);
@@ -510,7 +510,7 @@ Procedure GoToCurrentCertificateChoice(Notification)
 	Result.Insert("UpdateCertificatesList", False);
 	
 	If Items.Certificates.CurrentData = Undefined Then
-		Result.ErrorDescription = NStr("en = 'Select the certificate that will be used.'");
+		Result.ErrorDescription = NStr("en='Select the certificate that will be used.';ru='Выделите сертификат, который будет использоваться.'");
 		ExecuteNotifyProcessing(Notification, Result);
 		Return;
 	EndIf;
@@ -520,8 +520,9 @@ Procedure GoToCurrentCertificateChoice(Notification)
 	If CurrentData.ThisRequest Then
 		Result.UpdateCertificatesList = True;
 		Result.ErrorDescription =
-			NStr("en = 'For this certificate a statement for issue is not yet executed.
-			           |Open the statement for the certificate issue and perform the required steps.'");
+			NStr("en='For this certificate a statement for issue is not yet executed."
+"Open the statement for the certificate issue and perform the required steps.';ru='Для этого сертификата заявление на выпуск еще не исполнено."
+"Откройте заявление на выпуск сертификата и выполните требуемые шаги.'");
 		ExecuteNotifyProcessing(Notification, Result);
 		Return;
 	EndIf;
@@ -539,7 +540,7 @@ Procedure GoToCurrentCertificateChoice(Notification)
 		If FillInCurrentCertificatePropertiesOnServer(CurrentData.Imprint, Context.SavedProperties) Then
 			GoToCurrentCertificateChoiceAfterFillingCertificateProperties(Context);
 		Else
-			Result.ErrorDescription = NStr("en = 'Certificate is not found on server (may be deleted).'");
+			Result.ErrorDescription = NStr("en='Certificate is not found on server (may be deleted).';ru='Сертификат не найден на сервере (возможно удален).'");
 			Result.UpdateCertificatesList = True;
 			ExecuteNotifyProcessing(Notification, Result);
 		EndIf;
@@ -559,7 +560,7 @@ Procedure GoToCurrentCertificateChoiceAfterCertificateSearch(SearchResult, Conte
 	
 	If TypeOf(SearchResult) <> Type("CryptoCertificate") Then
 		If SearchResult.Property("CertificateNotFound") Then
-			Context.Result.ErrorDescription = NStr("en = 'Certificate is not found on the computer (may be deleted).'");
+			Context.Result.ErrorDescription = NStr("en='Certificate is not found on the computer (may be deleted).';ru='Сертификат не найден на компьютере (возможно удален).'");
 		Else
 			Context.Result.ErrorDescription = SearchResult.ErrorDescription;
 		EndIf;
@@ -635,7 +636,7 @@ Procedure GoToCurrentCertificateChoiceAfterFillingCertificateProperties(Context)
 	Items.Select.DefaultButton = True;
 	
 	If InsertIntoList Then
-		String = ?(ValueIsFilled(Certificate), NStr("en = 'Refresh'"), NStr("en = 'Add'"));
+		String = ?(ValueIsFilled(Certificate), NStr("en='Refresh';ru='Обновить календарь'"), NStr("en='Add';ru='Добавить'"));
 		If Items.Select.Title <> String Then
 			Items.Select.Title = String;
 		EndIf;
@@ -674,9 +675,9 @@ Procedure CheckCertificateAfterCreatingCryptographyManager(Result, Context) Expo
 	   AND Result.Common Then
 		
 		If ForEncryptionAndDecryption = True Then
-			Result.Insert("ErrorTitle", NStr("en = 'Failed to pass the encryption check for the following reason:'"));
+			Result.Insert("ErrorTitle", NStr("en='Failed to pass the encryption check for the following reason:';ru='Не удалось пройти проверку шифрования по причине:'"));
 		Else
-			Result.Insert("ErrorTitle", NStr("en = 'Failed to pass the signing check for the following reason:'"));
+			Result.Insert("ErrorTitle", NStr("en='Failed to pass the signing check for the following reason:';ru='Не удалось пройти проверку подписания по причине:'"));
 		EndIf;
 		ExecuteNotifyProcessing(Parameters.Notification, Result);
 		Return;
@@ -863,9 +864,9 @@ Function CheckCertificateAndWriteInCatalog(Val PasswordValue, ErrorOnServer)
 	   AND ErrorOnServer.Common Then
 		
 		If ForEncryptionAndDecryption = True Then
-			ErrorOnServer.Insert("ErrorTitle", NStr("en = 'Failed to pass the encryption check for the following reason:'"));
+			ErrorOnServer.Insert("ErrorTitle", NStr("en='Failed to pass the encryption check for the following reason:';ru='Не удалось пройти проверку шифрования по причине:'"));
 		Else
-			ErrorOnServer.Insert("ErrorTitle", NStr("en = 'Failed to pass the signing check for the following reason:'"));
+			ErrorOnServer.Insert("ErrorTitle", NStr("en='Failed to pass the signing check for the following reason:';ru='Не удалось пройти проверку подписания по причине:'"));
 		EndIf;
 		Return False;
 	EndIf;
@@ -991,8 +992,9 @@ Procedure FillEncryptionError(Error, ErrorDescription, ApplicationDescription, E
 	
 	ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
 		+ StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Failed to pass the encryption check using the appliaction %1
-			           |for the following reason: %2'"),
+			NStr("en='Failed to pass the encryption check using the appliaction %1"
+"for the following reason: %2';ru='Не удалось пройти проверку шифрования с помощью программы %1 по причине:"
+"%2'"),
 			ApplicationDescription.Description,
 			ErrorPresentation);
 	
@@ -1010,8 +1012,9 @@ Procedure FillDecryptionError(Error, ErrorDescription, ApplicationDescription, E
 	
 	ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
 		+ StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Failed to pass the decryption check using the application %1
-			           |for the following reason: %2'"),
+			NStr("en='Failed to pass the decryption check using the application %1"
+"for the following reason: %2';ru='Не удалось пройти проверку расшифровки с"
+"помощью программы %1 по причине: %2'"),
 			ApplicationDescription.Description,
 			ErrorPresentation);
 	
@@ -1032,8 +1035,9 @@ Procedure FillSignatureError(Error, ErrorDescription, ApplicationDescription, Er
 	
 	ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
 		+ StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unable to check the signing using the %1 application because
-			           |of: %2'"),
+			NStr("en='Unable to check the signing using the %1 application because"
+"of: %2';ru='Не удалось пройти проверку подписания с помощью"
+"программы %1 по причине: %2'"),
 			ApplicationDescription.Description,
 			ErrorPresentation);
 	

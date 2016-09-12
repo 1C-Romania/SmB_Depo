@@ -12,7 +12,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If StartDate > EndDate Then
 			
 			Message = New UserMessage;
-			Message.Text = NStr("en = '""Start date"" is greater than ""Ending date"" field value.'");
+			Message.Text = NStr("en='""Start date"" is greater than ""Ending date"" field value.';ru='Значение поля ""Дата начала"" больше значения поля ""Дата окончания""'");
 			Message.Field = "Object.StartDate";
 			Message.Message();
 			

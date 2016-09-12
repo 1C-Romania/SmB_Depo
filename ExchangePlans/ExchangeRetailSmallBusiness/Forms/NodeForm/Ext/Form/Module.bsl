@@ -173,10 +173,10 @@ Procedure GenerateCompanyTableTitle()
 	
 	CompaniesCount = SelectedRowsQuantity("Companies");
 	If CompaniesCount > 0 Then
-		LabelTitle = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'By the selected companies (%1):'"),
+		LabelTitle = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='By the selected companies (%1):';ru='По выбранным организациям (%1):'"),
 			CompaniesCount);
 	Else
-		LabelTitle = NStr("en = 'In selected companies:'");
+		LabelTitle = NStr("en='In selected companies:';ru='По выбранным организациям:'");
 	EndIf;
 	Items.CompaniesSyncMode.ChoiceList[1].Presentation = LabelTitle;
 	
@@ -187,10 +187,10 @@ Procedure GenerateTableTitleWarehouses()
 	
 	WarehousesQuantity = SelectedRowsQuantity("Warehouses");
 	If WarehousesQuantity > 0 Then
-		LabelTitle = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'By the selected warehouses (%1)'"),
+		LabelTitle = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='By the selected warehouses (%1)';ru='По выбранным складам (%1):'"),
 			WarehousesQuantity);
 	Else
-		LabelTitle = NStr("en = 'In selected warehouses:'");
+		LabelTitle = NStr("en='In selected warehouses:';ru='По выбранным складам:'");
 	EndIf;
 	Items.WarehousesSyncMode.ChoiceList[1].Presentation = LabelTitle;
 	

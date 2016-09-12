@@ -77,20 +77,20 @@ Procedure ChangeVisibleOfEnabledWhenCreatingServer()
 
 		If Upper(EDKind) = Upper("CompanyAttributes") Then
 			
-			Title = NStr("en = 'Data import from the file'");
+			Title = NStr("en='Data import from the file';ru='Загрузка данных из файла'");
 			
 			Items.SettingsGroupCatalogs.Visible = True;
 			Items.SettingsGroupDocuments.Visible = False;
 		Else
 			
-			Title = NStr("en = 'Document loading from the file'");
+			Title = NStr("en='Document loading from the file';ru='Загрузка документа из файла'");
 			
 			Items.SettingsGroupCatalogs.Visible = False;
 			Items.SettingsGroupDocuments.Visible = True;
 		EndIf;
 		
 	Else
-		Text = NStr("en = 'Electronic document'");
+		Text = NStr("en='Electronic document';ru='Электронный документ'");
 		Title = Text;
 		Items.SettingsGroupCatalogs.Visible = False;
 		Items.SettingsGroupDocuments.Visible = False;
@@ -100,7 +100,7 @@ Procedure ChangeVisibleOfEnabledWhenCreatingServer()
 	
 	If EDKind = Enums.EDKinds.ProductsDirectory Then
 		Items.Import.Visible = False;
-		Items.ObjectType.Title = NStr("en = 'Import'");
+		Items.ObjectType.Title = NStr("en='Import';ru='Загрузить'");
 		ObjectType = "Products directory";
 	EndIf;
 	
@@ -131,7 +131,7 @@ Procedure ToViewEDServer(EDStructure, Cancel)
 			If Not ElectronicDocumentsService.PossibleToExtractFiles(ZIPReading, FolderForUnpacking) Then
 				MessageText = ElectronicDocumentsReUse.GetMessageAboutError("006");
 			EndIf;
-			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED archive unpacking'"),
+			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED archive unpacking';ru='Распаковка архива ЭД'"),
 			ErrorText, MessageText);
 			
 			DeleteFiles(ArchiveFileName);
@@ -166,12 +166,12 @@ Procedure ToViewEDServer(EDStructure, Cancel)
 		
 		If CardFile = Undefined Or InformationFile = Undefined Then
 			
-			MessagePattern = NStr("en = 'Error occurred when reading data from the ""%1No."" file (see details in the event log).'");
+			MessagePattern = NStr("en='Error occurred when reading data from the ""%1No."" file (see details in the event log).';ru='Возникла ошибка при чтении данных из файла ""%1№"" (подробности см. в Журнале регистрации).'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, EDStructure.FileName);
 			
-			MessagePattern = NStr("en = '""%1"" file does not contain electronic documents.'");
+			MessagePattern = NStr("en='""%1"" file does not contain electronic documents.';ru='Файл ""%1"" не содержит электронных документов.'");
 			ErrorPresentation = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, EDStructure.FileName);
-			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED reading'"),
+			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
 			ErrorPresentation,
 			MessageText);
 			DeleteFiles(FolderForUnpacking);
@@ -383,7 +383,7 @@ Function CreateDocumentForIB(FormData, MessageText, Write = False)
 			
 		Except
 			
-			MessagePattern = NStr("en = '%1. %2 '");
+			MessagePattern = NStr("en='%1. %2 ';ru='%1. %2 '");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				ErrorInfo().Definition,
 				BriefErrorDescription(ErrorInfo()));
@@ -427,7 +427,7 @@ Function EDDataFile(LinkToED, Val SubordinatedEDFileName = Undefined)
 		EndIf;
 		
 		If FileName = Undefined Then
-			ErrorText = NStr("en = 'Unable to view electronic document. Verify the work directory setting'");
+			ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 			CommonUseClientServer.MessageToUser(ErrorText);
 			Return Undefined;
 		EndIf;
@@ -446,7 +446,7 @@ Function EDDataFile(LinkToED, Val SubordinatedEDFileName = Undefined)
 			FolderForUnpacking = ElectronicDocumentsService.WorkingDirectory(,LinkToED.UUID());
 			
 			If FolderForUnpacking = Undefined Then
-				ErrorText = NStr("en = 'Unable to view electronic document. Verify the work directory setting'");
+				ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 				CommonUseClientServer.MessageToUser(ErrorText);
 				Return Undefined;
 			EndIf;
@@ -458,7 +458,7 @@ Function EDDataFile(LinkToED, Val SubordinatedEDFileName = Undefined)
 				If Not ElectronicDocumentsService.PossibleToExtractFiles(ZipReading, FolderForUnpacking) Then
 					MessageText = ElectronicDocumentsReUse.GetMessageAboutError("006");
 				EndIf;
-				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en = 'ED package Unpacking'"),
+				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED package Unpacking';ru='распаковка пакета ЭД'"),
 					ErrorText, MessageText);
 				ZipReading.Close();
 				DeleteFiles(FolderForUnpacking);
@@ -519,8 +519,9 @@ Function EDDataFile(LinkToED, Val SubordinatedEDFileName = Undefined)
 						EndIf;
 					
 						If AdditDataFileName = Undefined Then
-							ErrorText = NStr("en = 'Unable to get additional data of the electronic document.
-													|Verify the work directory setting'");
+							ErrorText = NStr("en='Unable to get additional data of the electronic document."
+"Verify the work directory setting';ru='Не удалось получить доп. данные электронного документа."
+"Проверьте настройку рабочего каталога'");
 							CommonUseClientServer.MessageToUser(ErrorText);
 							Return Undefined;
 						EndIf;
@@ -581,11 +582,11 @@ Procedure GenerateServiceMessageText()
 	
 	If ValueIsFilled(FileNameCML) Then
 		
-		ItemTitle = NStr("en = ""Failed to read the file"""+ FileNameCML+".""'");
+		ItemTitle = NStr("en='Failed to read the file';ru='Не удалось прочитать файл'"+ FileNameCML+".""'");
 		
 	Else
 		
-		ItemTitle = NStr("en = '""*.xml"" file of the electronic document is not found.'");
+		ItemTitle = NStr("en='""*.xml"" file of the electronic document is not found.';ru='Не найден файл электронного документа ""* .xml.""'");
 		
 	EndIf;
 	
@@ -600,7 +601,7 @@ Procedure ImportCompanyAttributes()
 	MessageText = "";
 	
 	If DocumentImportMethod = 1 AND Not ValueIsFilled(IBDocument) Then
-		MessageText = NStr("en = 'Catalog item to be refilled is not specified.'");
+		MessageText = NStr("en='Catalog item to be refilled is not specified.';ru='Не указан элемент справочника для перезаполнения.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Cancel = True;
 	EndIf;
@@ -650,20 +651,20 @@ Procedure ImportDocumentEDF()
 	MessageText = "";
 	
 	If Not CanImportEDWithType(EDKind) Then
-		MessageText = NStr("en = 'Import of electronic documents of the ""%1"" kind is not supported.'");
+		MessageText = NStr("en='Import of electronic documents of the ""%1"" kind is not supported.';ru='Не поддерживается загрузка электронных документов вида ""%1"".'");
 		MessageText = StrReplace(MessageText, "%1", ObjectType);
 		CommonUseClientServer.MessageToUser(MessageText);
 		Cancel = True;
 	EndIf;
 	
 	If Not ValueIsFilled(Counterparty) Then
-		MessageText = NStr("en = 'Counterparty is not specified.'");
+		MessageText = NStr("en='Counterparty is not specified.';ru='Не указан контрагент.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Cancel = True;
 	EndIf;
 	
 	If DocumentImportMethod = 1 AND Not ValueIsFilled(IBDocument) Then
-		MessageText = NStr("en = 'Document for refilling is not specified.'");
+		MessageText = NStr("en='Document for refilling is not specified.';ru='Не указан документ для перезаполнения.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Cancel = True;
 	EndIf;

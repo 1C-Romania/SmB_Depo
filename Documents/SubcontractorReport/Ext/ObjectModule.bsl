@@ -119,8 +119,9 @@ Procedure FillTabularSectionBySpecification(NodesSpecificationStack, NodesTable 
 		If Selection.ContentRowType = Enums.SpecificationContentRowTypes.Node Then
 			NodesTable.Clear();
 			If Not NodesSpecificationStack.Find(Selection.Specification) = Undefined Then
-				MessageText = NStr("en = 'During filling in of the Specification materials
-									|tabular section a recursive item occurrence was found'")+" "+Selection.ProductsAndServices+" "+NStr("en = 'in specifications'")+" "+Selection.ProductionSpecification+"
+				MessageText = NStr("en='During filling in of the Specification materials"
+"tabular section a recursive item occurrence was found';ru='При попытке заполнить табличную"
+"часть Материалы по спецификации, обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in specifications';ru='в спецификации'")+" "+Selection.ProductionSpecification+"
 									|The operation failed.";
 				Raise MessageText;
 			EndIf;
@@ -622,7 +623,7 @@ Procedure SubordinatedInvoiceControl()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Subcontractor report # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -670,7 +671,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		FillByGoodsReceipt(FillingData);
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.CustomerInvoice") Then
 		If FillingData.OperationKind <> Enums.OperationKindsCustomerInvoice.TransferToProcessing Then
-			Raise NStr("en = 'Report on processing is displayed only according to the transfer for processing!'");;
+			Raise NStr("en='Report on processing is displayed only according to the transfer for processing!';ru='Отчет о переработке вводится только на основании передачи в переработку!'");;
 		EndIf;
 		FillBySalesInvoice(FillingData);
 	ElsIf TypeOf(FillingData) = Type("Structure") Then

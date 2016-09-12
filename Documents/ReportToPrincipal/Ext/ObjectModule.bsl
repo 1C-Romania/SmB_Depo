@@ -462,7 +462,7 @@ Procedure SubordinatedInvoiceControl()
 		CustomerInvoiceNote	 = InvoiceStructure.Ref;
 		If CustomerInvoiceNote.Posted Then
 			
-			MessageText = NStr("en = 'As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.'");
+			MessageText = NStr("en='As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится счет фактура %ПредставлениеСчетФактуры%.'");
 			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Report consignor  # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
 			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
 			
@@ -563,7 +563,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If FoundStringInventory = Undefined
 		   AND QuantityInventory > 0
 		   AND Counterparty.DoOperationsByOrders Then
-			MessageText = NStr("en = 'Advance by order that is different form specified in the tabular section ""Inventory"" can not be accepted!'");
+			MessageText = NStr("en='Advance by order that is different form specified in the tabular section ""Inventory"" can not be accepted!';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличной части ""Запасы""!'");
 			SmallBusinessServer.ShowMessageAboutError(
 				,
 				MessageText,

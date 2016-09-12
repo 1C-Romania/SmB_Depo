@@ -109,7 +109,7 @@ EndProcedure
 Procedure CityCodeOnChange(Item)
 	
 	If (CountryCode = "+7" OR CountryCode = "8") AND Left(CityCode, 1) = "9" AND StrLen(CityCode) <> 3 Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'Codes of the mobile phones starting with the digit 9 have the fixed length of 3 digits, for example 916.'"),, "CityCode");
+		CommonUseClientServer.MessageToUser(NStr("en='Codes of the mobile phones starting with the digit 9 have the fixed length of 3 digits, for example 916.';ru='Кода мобильных телефонов начинающиеся на цифру 9 имеют фиксированную длину в 3 цифры, например - 916.'"),, "CityCode");
 	EndIf;
 	
 	FillPhonePresentation();
@@ -356,7 +356,7 @@ EndFunction
 Procedure FillErrorMessage(ErrorList)
 	
 	If ErrorList.Count()=0 Then
-		ShowMessageBox(, NStr("en='Phone number is entered correctly.'"));
+		ShowMessageBox(, NStr("en='Phone number is entered correctly.';ru='Телефон введен корректно.'"));
 		Return;
 	EndIf;
 	

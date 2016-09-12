@@ -12,6 +12,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Default bank account</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Банковский счет по умолчанию</v8:content>
+					</v8:item>
 				</Title>
 				<ExtendedTooltip name="FormIsSetAsDefaultAccountBankExtendedTooltip" id="13"/>
 			</Button>
@@ -21,11 +25,19 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
+					</v8:item>
 				</Title>
 				<ToolTip>
 					<v8:item>
 						<v8:lang>en</v8:lang>
 						<v8:content>Global commands group</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа глобальные команды</v8:content>
 					</v8:item>
 				</ToolTip>
 				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
@@ -122,6 +134,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Code</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>код</v8:content>
+						</v8:item>
 					</Title>
 					<ContextMenu name="CodeContextMenu" id="7"/>
 					<ExtendedTooltip name="CodeExtendedTooltip" id="15"/>
@@ -133,6 +149,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Presentation</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="DescriptionContextMenu" id="5"/>
@@ -153,6 +173,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Bank</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банк</v8:content>
+						</v8:item>
 					</Title>
 					<ContextMenu name="BankContextMenu" id="11"/>
 					<ExtendedTooltip name="BankExtendedTooltip" id="17"/>
@@ -163,6 +187,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Currency</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вал.</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CashAssetsCurrencyContextMenu" id="9"/>
@@ -256,11 +284,19 @@ FROM
 					<v8:lang>en</v8:lang>
 					<v8:content>Set as a default bank account</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить как банк счет по умолчанию</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Set as a default bank account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить как банк счет по умолчанию</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>SetAsBankAccountByDefault</Action>

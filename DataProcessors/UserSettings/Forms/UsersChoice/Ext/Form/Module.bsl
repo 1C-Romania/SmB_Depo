@@ -25,8 +25,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	CopyAll = (Parameters.ActionType = "CopyAll");
 	ClearingSettings = (Parameters.ActionType = "Clearing");
 	If ClearingSettings Then
-		Title = NStr("en='Selection of users to clear the settings'");
-		Items.Label.Title = NStr("en='Select users to clear the settings for:'");
+		Title = NStr("en='Selection of users to clear the settings';ru='Выбор пользователей для очистки настроек'");
+		Items.Label.Title = NStr("en='Select users to clear the settings for:';ru='Выберите пользователей, которым необходимо очистить настройки'");
 	EndIf;
 	
 	If Parameters.Property("SelectedUsers") Then
@@ -176,7 +176,7 @@ Procedure Select(Command)
 	EndDo;
 	
 	If UsersTarget.Count() = 0 Then
-		ShowMessageBox(,NStr("en = 'It is necessary to mark one or several users.'"));
+		ShowMessageBox(,NStr("en='It is necessary to mark one or several users.';ru='Необходимо отметить одного или несколько пользователей.'"));
 		Return;
 	EndIf;
 	
@@ -388,7 +388,7 @@ Procedure UpdateGroupTitle(Form, UsersGroup, UsersListRow, ValueMark)
 		UsersMarked = UsersGroup.UsersMarked;
 		UsersGroup.UsersMarked = ?(ValueMark, UsersMarked + 1, UsersMarked - 1);
 		UsersGroup.GroupDescriptionAndIsMarkedUsers = 
-			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 (%2)'"),
+			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 (%2)';ru='%1 (%2)'"),
 			String(UsersGroup.Group), UsersGroup.UsersMarked);
 	EndIf;
 	

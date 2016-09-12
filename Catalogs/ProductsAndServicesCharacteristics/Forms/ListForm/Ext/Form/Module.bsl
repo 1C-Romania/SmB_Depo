@@ -16,7 +16,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				AND Not OwnerObject.ProductsAndServicesType = Enums.ProductsAndServicesTypes.Work Then
 				
 				AutoTitle = False;
-				Title = NStr("en = 'Characteristics are stored only for inventory, services and work'");
+				Title = NStr("en='Characteristics are stored only for inventory, services and work';ru='Характеристики хранятся только для запасов, услуг и работ'");
 				
 				Items.List.ReadOnly = True;
 				
@@ -55,7 +55,7 @@ Procedure ChangeSetOfAdditionalAttributesAndInformation(Command)
 		ParametersOfFormOfPropertiesSet = New Structure("Key", SetOfAdditAttributes);
 		OpenForm("Catalog.AdditionalAttributesAndInformationSets.Form.ItemForm", ParametersOfFormOfPropertiesSet);
 	Else
-		ShowMessageBox(Undefined,NStr("en = 'You can not receive the set of object properties. Perhaps, the necessary attributes are not filled.'"));
+		ShowMessageBox(Undefined,NStr("en='You can not receive the set of object properties. Perhaps, the necessary attributes are not filled.';ru='Нельзя получить набор свойств объекта. Возможно не заполнены необходимые реквизиты.'"));
 	EndIf;
 	
 EndProcedure // ChangeSetOfAdditionalAttributesAndInformation()

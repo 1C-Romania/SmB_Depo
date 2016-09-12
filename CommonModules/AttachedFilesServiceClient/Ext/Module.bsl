@@ -25,7 +25,7 @@ Function GetFileIntoWorkingDirectory(Val FileBinaryDataAddress,
 		CreateDirectory(DirectorySave);
 	Except
 		ErrorInfo = BriefErrorDescription(ErrorInfo());
-		ErrorInfo = NStr("en = 'Error of directory creation on the disk:'") + " " + ErrorInfo;
+		ErrorInfo = NStr("en='Error of directory creation on the disk:';ru='Ошибка создания каталога на диске:'") + " " + ErrorInfo;
 		CommonUseClientServer.MessageToUser(ErrorInfo);
 		Return False;
 	EndTry;
@@ -74,9 +74,11 @@ Function PutFileToStorage(Val PathToFile, Val FormID) Export
 	If Not PutFiles(FilesToPlace, PlacedFiles, , False, FormID) Then
 		CommonUseClientServer.MessageToUser(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Error when
-				           |placing
-				           |the %1 file into a temporary storage.'"),
+				NStr("en='Error when"
+"placing"
+"the %1 file into a temporary storage.';ru='Ошибка"
+"при"
+"помещении файла ""%1"" во временное хранилище.'"),
 				PathToFile) );
 		Return Result;
 	EndIf;
@@ -111,7 +113,7 @@ Procedure AddFilesByDragging(Val FileOwner, Val FormID, Val FileNameArray) Expor
 		AttachedFile = AttachedFilesArray[0];
 		
 		ShowUserNotification(
-			NStr("en = 'Creating'"),
+			NStr("en='Creating';ru='Создание'"),
 			GetURL(AttachedFile),
 			AttachedFile,
 			PictureLib.Information32);
@@ -170,9 +172,11 @@ Procedure PlaceSelectedFilesIntoWebStorageEnd(Result, Address, SelectedFileName,
 		BaseName = PathStrings[PathStrings.Count()-2];
 	Else
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Error when
-			           |placing
-			           |the %1 file into a temporary storage.'"),
+			NStr("en='Error when"
+"placing"
+"the %1 file into a temporary storage.';ru='Ошибка"
+"при"
+"помещении файла ""%1"" во временное хранилище.'"),
 			FileName);
 	EndIf;
 	
@@ -233,7 +237,7 @@ Procedure PlaceEditedFileOnDriveIntoStorageExtensionRequested(FileOperationsExte
 			InformationAboutFile = PutFileToStorage(FullFileNameAtClient, FormID);
 		Else
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'File is not found in the work directory.'"));
+				NStr("en='File is not found in the work directory.';ru='Файл не найден в рабочем каталоге.'"));
 		EndIf;
 		
 		ExecuteNotifyProcessing(AdditionalParameters.ResultHandler, InformationAboutFile);
@@ -253,12 +257,17 @@ Procedure PlaceEditedFileOnDriveIntoCompletedStorageRoom(InformationAboutFile, A
 	EndIf;
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Name of
-		           |the
-		           |selected file ""%1"" differs from the
-		           |name of the file in the %2 storage.
-		           |
-		           |Continue?'"),
+		NStr("en='Name of"
+"the"
+"selected file ""%1"" differs from the"
+"name of the file in the %2 storage."
+""
+"Continue?';ru='Имя выбранного файла"
+"""%1"""
+"отличается от имени файла в хранилище"
+"""%2""."
+""
+"Продолжить?'"),
 		InformationAboutFile.FileName,
 		FileData.FileName);
 		
@@ -313,7 +322,7 @@ Procedure SelectFileOnDriveAndPlaceIntoStorageExtensionRequested(FileOperationsE
 		FileChoice.FullFileName = FileData.Description + "." + FileData.Extension;
 		FileChoice.Extension = FileData.Extension;
 		FileChoice.Filter = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'All files (*.%1)|*.%1'"), FileData.Extension);
+			NStr("en='All files (*.%1)|*.%1';ru='Все файлы (*.%1)|*.%1'"), FileData.Extension);
 		
 		InformationAboutFile = Undefined;
 		If FileChoice.Choose() Then
@@ -419,7 +428,7 @@ Procedure OpenDirectoryWithFileExtensionRequested(FileOperationsExtensionConnect
 	If FileOperationsExtensionConnected Then
 		UserWorkingDirectory = FileFunctionsServiceClient.UserWorkingDirectory();
 		If IsBlankString(UserWorkingDirectory) Then
-			ShowMessageBox(, NStr("en = 'The working directory is not set'"));
+			ShowMessageBox(, NStr("en='The working directory is not set';ru='Не задан рабочий каталог'"));
 			Return;
 		EndIf;
 		
@@ -427,10 +436,13 @@ Procedure OpenDirectoryWithFileExtensionRequested(FileOperationsExtensionConnect
 		File = New File(FullPath);
 		If Not File.Exist() Then
 			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'File
-				           |""%1"" is absent in the working directory.
-				           |
-				           |Do you want to receive the file from the file storage?'"),
+				NStr("en='File"
+"""%1"" is absent in the working directory."
+""
+"Do you want to receive the file from the file storage?';ru='Файл"
+"""%1"" отсутствует в рабочем каталоге."
+""
+"Получить файл из хранилища файлов?'"),
 				File.Name);
 			AdditionalParameters.Insert("UserWorkingDirectory", UserWorkingDirectory);
 			AdditionalParameters.Insert("FullPath", FullPath);
@@ -492,7 +504,7 @@ Procedure PlaceAttachedFile(Notification, AttachedFile, FormID, AdditionalParame
 	EndIf;
 	
 	Context.Insert("ErrorTitle",
-		NStr("en = 'Failed to place the file from your computer into storage due to:'") + Chars.LF);
+		NStr("en='Failed to place the file from your computer into storage due to:';ru='Не удалось поместить файл с компьютера в хранилище файлов по причине:'") + Chars.LF);
 	
 	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(New NotifyDescription(
 		"PlaceAttachedFileAfterConnectionExpansions", ThisObject, Context),, False);
@@ -505,7 +517,7 @@ Procedure PlaceAttachedFileAfterConnectionExpansions(ExtensionAttached, Context)
 	If Not ExtensionAttached Then
 		Result = New Structure;
 		Result.Insert("ErrorDescription", Context.ErrorTitle +
-			NStr("en = 'The extension for work with files is not installed in the Internet browser.'"));
+			NStr("en='The extension for work with files is not installed in the Internet browser.';ru='В обозреватель интернет не установлено расширение для работы с файлами.'"));
 		ExecuteNotifyProcessing(Context.Notification, Result);
 		Return;
 	EndIf;
@@ -541,7 +553,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 		Action.Insert("File", Context.FileDir);
 		Action.Insert("ErrorTitle", Context.ErrorTitle +
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Directory is not created due to:'"), Context.FileDir));
+				NStr("en='Directory is not created due to:';ru='Создание каталога не выполнено по причине:'"), Context.FileDir));
 		ActionsWithFile.Add(Action);
 		
 		Action = New Structure;
@@ -550,7 +562,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 		Action.Insert("Properties", New Structure("ReadOnly", False));
 		Action.Insert("ErrorTitle", Context.ErrorTitle +
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The ""View only"" property of the file is not changed due to:'"), Context.FullFileName));
+				NStr("en='The ""View only"" property of the file is not changed due to:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
 		ActionsWithFile.Add(Action);
 		
 		Action = New Structure;
@@ -558,7 +570,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 		Action.Insert("File", Context.FullFileName);
 		Action.Insert("ErrorTitle", Context.ErrorTitle +
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'File is not deleted due to:'"), Context.FullFileName));
+				NStr("en='File is not deleted due to:';ru='Удаление файла не выполнено по причине:'"), Context.FullFileName));
 		ActionsWithFile.Add(Action);
 		
 		Action = New Structure;
@@ -567,7 +579,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 		Action.Insert("Source", Context.FullNameOfThePlacedFile);
 		Action.Insert("ErrorTitle", Context.ErrorTitle +
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'File is not copied due to:'"), Context.FullFileName));
+				NStr("en='File is not copied due to:';ru='Копирование файла не выполнено по причине:'"), Context.FullFileName));
 		ActionsWithFile.Add(Action);
 	EndIf;
 	
@@ -577,7 +589,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("Properties", New Structure("ReadOnly", True));
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'The ""View only"" property of the file is not changed due to:'"), Context.FullFileName));
+			NStr("en='The ""View only"" property of the file is not changed due to:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
 	Context.Insert("FileProperties", New Structure);
@@ -591,7 +603,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("Properties", Context.FileProperties);
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File property is not got due to:'"), Context.FullFileName));
+			NStr("en='File property is not got due to:';ru='Получение свойств файла не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
 	Context.Insert("PlacingAction", New Structure);
@@ -667,7 +679,7 @@ Procedure GetAttachedFile(Notification, AttachedFile, FormID, AdditionalParamete
 	EndIf;
 	
 	Context.Insert("ErrorTitle",
-		NStr("en = 'Failed to get the file onto your computer from the storage due to:'") + Chars.LF);
+		NStr("en='Failed to get the file onto your computer from the storage due to:';ru='Не удалось получить файл на компьютер из хранилища файлов по причине:'") + Chars.LF);
 	
 	If Context.ForEditing
 	   AND Context.FileData.IsEditing <> UsersClientServer.AuthorizedUser() Then
@@ -675,7 +687,7 @@ Procedure GetAttachedFile(Notification, AttachedFile, FormID, AdditionalParamete
 		Result = New Structure;
 		Result.Insert("FullFileName", "");
 		Result.Insert("ErrorDescription", Context.ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'The %1 user is already editing the file.'"), String(Context.FileData.IsEditing)));
+			NStr("en='The %1 user is already editing the file.';ru='Файл уже редактирует пользователь %1.'"), String(Context.FileData.IsEditing)));
 		ExecuteNotifyProcessing(Context.Notification, Result);
 		Return;
 	EndIf;
@@ -694,7 +706,7 @@ Procedure GetAttachedFileAfterConnectionExpansions(ExtensionAttached, Context) E
 		Result = New Structure;
 		Result.Insert("FullFileName", "");
 		Result.Insert("ErrorDescription", Context.ErrorTitle +
-			NStr("en = 'The extension for work with files is not installed in the Internet browser.'"));
+			NStr("en='The extension for work with files is not installed in the Internet browser.';ru='В обозреватель интернет не установлено расширение для работы с файлами.'"));
 		ExecuteNotifyProcessing(Context.Notification, Result);
 		Return;
 	EndIf;
@@ -726,7 +738,7 @@ Procedure GetAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("File", Context.FileDir);
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Directory is not created due to:'"), Context.FileDir));
+			NStr("en='Directory is not created due to:';ru='Создание каталога не выполнено по причине:'"), Context.FileDir));
 	ActionsWithFile.Add(Action);
 	
 	Action = New Structure;
@@ -735,7 +747,7 @@ Procedure GetAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("Properties", New Structure("ReadOnly", False));
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'The ""View only"" property of the file is not changed due to:'"), Context.FullFileName));
+			NStr("en='The ""View only"" property of the file is not changed due to:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
 	Action = New Structure;
@@ -743,7 +755,7 @@ Procedure GetAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("File", Context.FullFileName);
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File is not deleted due to:'"), Context.FullFileName));
+			NStr("en='File is not deleted due to:';ru='Удаление файла не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
 	Action = New Structure;
@@ -763,7 +775,7 @@ Procedure GetAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("Properties", FileProperties);
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File property is not set due to:'"), Context.FullFileName));
+			NStr("en='File property is not set due to:';ru='Установка свойств файла не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
 	FileFunctionsServiceClient.HandleFile(New NotifyDescription(
@@ -806,8 +818,8 @@ Procedure SignFile(AttachedFile, FileData, FormID, EndProcessor, HandlerOnReceiv
 	ExecuteParameters.Insert("FormID", FormID);
 	
 	DataDescription = New Structure;
-	DataDescription.Insert("Operation",            NStr("en = 'Signing file'"));
-	DataDescription.Insert("DataTitle",     NStr("en = 'File'"));
+	DataDescription.Insert("Operation",            NStr("en='Signing file';ru='Подписание файла'"));
+	DataDescription.Insert("DataTitle",     NStr("en='File';ru='Файловый'"));
 	DataDescription.Insert("Presentation",       AttachedFile);
 	DataDescription.Insert("ShowComment", True);
 	
@@ -838,7 +850,7 @@ Procedure AddSignatureFromFile(AttachedFile, FormID, EndProcessor, HandlerOnRece
 	ExecuteParameters.Insert("AttachedFile",   AttachedFile);
 	
 	DataDescription = New Structure;
-	DataDescription.Insert("DataTitle",     NStr("en = 'File'"));
+	DataDescription.Insert("DataTitle",     NStr("en='File';ru='Файловый'"));
 	DataDescription.Insert("Presentation",       AttachedFile);
 	DataDescription.Insert("ShowComment", True);
 	
@@ -931,14 +943,15 @@ Procedure GetEncryptedData(ResultHandler, Val AttachedFile, Val FileData, Val Fo
 	
 	If FileData.Encrypted Then
 		ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'The
-			           |file ""%1"" is already encrypted.'"), String(AttachedFile)));
+			NStr("en='The"
+"file ""%1"" is already encrypted.';ru='Файл"
+"""%1"" уже зашифрован.'"), String(AttachedFile)));
 		ExecuteNotifyProcessing(ResultHandler, Undefined);
 		Return;
 	EndIf;
 	
 	If ValueIsFilled(FileData.IsEditing) Then
-		ShowMessageBox(, NStr("en = 'File locked for editing can not be encrypted.'"));
+		ShowMessageBox(, NStr("en='File locked for editing can not be encrypted.';ru='Нельзя зашифровать занятый файл.'"));
 		ExecuteNotifyProcessing(ResultHandler, Undefined);
 		Return;
 	EndIf;
@@ -954,8 +967,8 @@ Procedure GetEncryptedData(ResultHandler, Val AttachedFile, Val FileData, Val Fo
 	AdditionalParameters.Insert("FormID", FormID);
 	
 	DataDescription = New Structure;
-	DataDescription.Insert("Operation",            NStr("en = 'File encryption'"));
-	DataDescription.Insert("DataTitle",     NStr("en = 'File'"));
+	DataDescription.Insert("Operation",            NStr("en='File encryption';ru='Шифрование файла'"));
+	DataDescription.Insert("DataTitle",     NStr("en='File';ru='Файловый'"));
 	DataDescription.Insert("Data",              FileData.FileBinaryDataRef);
 	DataDescription.Insert("Presentation",       AdditionalParameters.AttachedFile);
 	DataDescription.Insert("NotifyAboutCompletion", False);
@@ -1009,7 +1022,7 @@ Procedure NotifyAboutChangeAndDeleteFileInWorkDirectory(Val AttachedFile, Val Fi
 		ModuleDigitalSignatureClient = CommonUseClient.CommonModule("DigitalSignatureClient");
 		ModuleDigitalSignatureClient.InformAboutObjectEncryption(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'File: %1'"), AttachedFile));
+				NStr("en='File: %1';ru='Файл: %1'"), AttachedFile));
 	EndIf;
 	
 	Parameters = New Structure;
@@ -1098,8 +1111,8 @@ Procedure GetDecryptedData(ResultHandler, Val AttachedFile, Val FileData, Val Fo
 	AdditionalParameters.Insert("FormID", FormID);
 	
 	DataDescription = New Structure;
-	DataDescription.Insert("Operation",              NStr("en = 'File decryption'"));
-	DataDescription.Insert("DataTitle",       NStr("en = 'File'"));
+	DataDescription.Insert("Operation",              NStr("en='File decryption';ru='Расшифровка файла'"));
+	DataDescription.Insert("DataTitle",       NStr("en='File';ru='Файловый'"));
 	DataDescription.Insert("Data",                FileData.FileBinaryDataRef);
 	DataDescription.Insert("Presentation",         AdditionalParameters.AttachedFile);
 	DataDescription.Insert("EncryptionCertificates", AdditionalParameters.AttachedFile);
@@ -1176,7 +1189,7 @@ Procedure NotifyAboutFileDecrypting(Val AttachedFile) Export
 	ModuleDigitalSignatureClient = CommonUseClient.CommonModule("DigitalSignatureClient");
 	ModuleDigitalSignatureClient.InformAboutObjectDecryption(
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'File: %1'"), AttachedFile));
+			NStr("en='File: %1';ru='Файл: %1'"), AttachedFile));
 	
 EndProcedure
 
@@ -1231,9 +1244,11 @@ Procedure PlaceSelectedFilesToStorage(Val SelectedFiles,
 		If Not PutFiles(FilesToPlace, PlacedFiles, , False, FormID) Then
 			CommonUseClientServer.MessageToUser(
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Error when
-					           |placing
-					           |the %1 file into a temporary storage.'"),
+					NStr("en='Error when"
+"placing"
+"the %1 file into a temporary storage.';ru='Ошибка"
+"при"
+"помещении файла ""%1"" во временное хранилище.'"),
 					File.FullName) );
 			Continue;
 		EndIf;
@@ -1276,26 +1291,28 @@ Procedure UpdateStateAboutFileSaving(Val SelectedFiles, Val File, Val CurrentPos
 	If SelectedFiles.Count() > 1 Then
 		
 		If CurrentPosition = Undefined Then
-			Status(NStr("en = 'File saving has been completed.'"));
+			Status(NStr("en='File saving has been completed.';ru='Сохранение файлов завершено.'"));
 		Else
 			IndicatorPercent = CurrentPosition * 100 / SelectedFiles.Count();
 			
 			LabelMore = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The %1 file is being saved (%2 Mb)...'"), File.Name, SizeInMB);
+				NStr("en='The %1 file is being saved (%2 Mb)...';ru='Сохраняется файл ""%1"" (%2 Мб) ...'"), File.Name, SizeInMB);
 				
-			StatusText = NStr("en = 'Several files saving.'");
+			StatusText = NStr("en='Several files saving.';ru='Сохранение нескольких файлов.'");
 			
 			Status(StatusText, IndicatorPercent, LabelMore, PictureLib.Information32);
 		EndIf;
 	Else
 		If CurrentPosition = Undefined Then
 			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The %1 file
-				           |(%2 Mb) is saved.'"), File.Name, SizeInMB);
+				NStr("en='The %1 file"
+"(%2 Mb) is saved.';ru='Сохранение"
+"файла ""%1"" (%2 Мб) завершено.'"), File.Name, SizeInMB);
 		Else
 			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Is Saved file ""%1"" (%2 MB).
-				           |You Are Welcome, please wait...'"), File.Name, SizeInMB);
+				NStr("en='Is Saved file ""%1"" (%2 MB)."
+"You Are Welcome, please wait...';ru='Сохраняется файл ""%1"" (%2 Мб)."
+"Пожалуйста, подождите...'"), File.Name, SizeInMB);
 		EndIf;
 		Status(ExplanationText);
 	EndIf;
@@ -1398,8 +1415,8 @@ Procedure AddFilesExtensionRequested(FileOperationsExtensionConnected, Additiona
 		
 		FileChoice = New FileDialog(FileDialogMode.Open);
 		FileChoice.Multiselect = True;
-		FileChoice.Title = NStr("en = 'Select file'");
-		FileChoice.Filter = ?(ValueIsFilled(Filter), Filter, NStr("en = 'All files'") + " (*.*)|*.*");
+		FileChoice.Title = NStr("en='Select file';ru='Выбор файла'");
+		FileChoice.Filter = ?(ValueIsFilled(Filter), Filter, NStr("en='All files';ru='Все файлы'") + " (*.*)|*.*");
 		
 		If FileChoice.Choose() Then
 			AttachedFilesArray = New Array;
@@ -1413,7 +1430,7 @@ Procedure AddFilesExtensionRequested(FileOperationsExtensionConnected, Additiona
 				AttachedFile = AttachedFilesArray[0];
 				
 				ShowUserNotification(
-					NStr("en = 'Creating:'"),
+					NStr("en='Creating:';ru='Создание:'"),
 					GetURL(AttachedFile),
 					AttachedFile,
 					PictureLib.Information32);
@@ -1444,7 +1461,7 @@ Procedure AddFilesEnd(AttachedFile, AdditionalParameters) Export
 	EndIf;
 	
 	ShowUserNotification(
-		NStr("en = 'Creating'"),
+		NStr("en='Creating';ru='Создание'"),
 		GetURL(AttachedFile),
 		AttachedFile,
 		PictureLib.Information32);
@@ -1480,7 +1497,7 @@ Procedure SaveFileAsExtensionRequested(FileOperationsExtensionConnected, Additio
 		FileChoice.FullFileName = FileData.FileName;
 		FileChoice.Extension = FileData.Extension;
 		FileChoice.Filter = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'All files (*.%1)|*.%1'"), FileData.Extension);
+			NStr("en='All files (*.%1)|*.%1';ru='Все файлы (*.%1)|*.%1'"), FileData.Extension);
 		
 		If Not FileChoice.Choose() Then
 			Return;
@@ -1490,8 +1507,8 @@ Procedure SaveFileAsExtensionRequested(FileOperationsExtensionConnected, Additio
 		
 		ExplanationText =
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'The %1 file (%2
-				           |Mb) is being saved. Please wait...'"),
+				NStr("en='The %1 file (%2"
+"Mb) is being saved. Please wait...';ru='Сохраняется файл ""%1"" (%2 Мб) Пожалуйста, подождите.'"),
 				FileData.FileName, 
 				FileFunctionsServiceClientServer.GetStringWithFileSize(SizeInMB) );
 		
@@ -1504,7 +1521,7 @@ Procedure SaveFileAsExtensionRequested(FileOperationsExtensionConnected, Additio
 		ReceivedFiles = New Array;
 		
 		If GetFiles(FilesToReceive, ReceivedFiles, , False) Then
-			Status(NStr("en = 'The file is successfully saved.'"), , FileChoice.FullFileName);
+			Status(NStr("en='The file is successfully saved.';ru='Файл успешно сохранен.'"), , FileChoice.FullFileName);
 		EndIf;
 		FullFileName = FileChoice.FullFileName;
 	Else
@@ -1600,10 +1617,13 @@ Procedure OpenFileByApplication(Val FileNameToOpen, FileData)
 		Except
 			ErrorInfo = ErrorInfo();
 			ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'While opening
-				           |the
-				           |%1 file
-				           |the error occurred: ""%2"".'"),
+				NStr("en='While opening"
+"the"
+"%1 file"
+"the error occurred: ""%2"".';ru='При"
+"открытии"
+"файла"
+"""%1"" произошла ошибка: ""%2"".'"),
 				FileNameToOpen,
 				ErrorInfo.Definition));
 		EndTry;

@@ -50,11 +50,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Access</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступ</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Access</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступ</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Height>11</Height>
@@ -65,6 +73,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Allowed actions (roles)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Разрешенные действия (роли)</v8:content>
 						</v8:item>
 					</Title>
 					<Width>48</Width>
@@ -137,6 +149,10 @@
 												<v8:lang>en</v8:lang>
 												<v8:content>Roles standard commands</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Роли стандартные команды</v8:content>
+											</v8:item>
 										</Title>
 										<CommandSource>Item.Roles</CommandSource>
 										<ExtendedTooltip name="RolesStandardCommandsExtendedTooltip" id="304"/>
@@ -175,6 +191,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Column roles</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Роли колонок</v8:content>
+										</v8:item>
 									</Title>
 									<Group>InCell</Group>
 									<ExtendedTooltip name="RolesGroupExtendedTooltip" id="262"/>
@@ -209,6 +229,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Access restrictions</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ограничения доступа</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="TypesAndValuesOfAccessExtendedTooltip" id="265"/>
 					<ChildItems>
@@ -222,6 +246,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Access kinds</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Виды доступа</v8:content>
 								</v8:item>
 							</Title>
 							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -294,6 +322,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Permitted access values determination method</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Способ определения разрешенных значений доступа</v8:content>
+										</v8:item>
 									</ToolTip>
 									<AutoCellHeight>true</AutoCellHeight>
 									<ListChoiceMode>true</ListChoiceMode>
@@ -322,6 +354,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>It is not used now, as this option is disabled in the application.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>В данный момент не используется, т.к. эта возможность отключена в программе.</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="TextAccessKindNotUsedContextMenu" id="247"/>
 									<ExtendedTooltip name="TextTypeOfAccessIsNotUsedExtendedTooltip" id="283"/>
@@ -332,11 +368,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Access kind types</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Типы видов доступа</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Access kind types</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Типы видов доступа</v8:content>
 										</v8:item>
 									</ToolTip>
 									<PagesRepresentation>None</PagesRepresentation>
@@ -347,6 +391,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Preset access kind</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Предустановленный вид доступа</v8:content>
 												</v8:item>
 											</Title>
 											<Height>8</Height>
@@ -435,6 +483,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Common access kind</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Обычный вид доступа</v8:content>
+												</v8:item>
 											</Title>
 											<Group>Horizontal</Group>
 											<ShowTitle>false</ShowTitle>
@@ -446,6 +498,11 @@
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Set the values list in the access groups.
+ </v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Список значений назначается в группах доступа.
  </v8:content>
 														</v8:item>
 													</Title>
@@ -467,6 +524,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Description</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Description</v8:content>
+						</v8:item>
 					</Title>
 					<ExtendedTooltip name="PageDescriptionExtendedTooltip" id="333"/>
 					<ChildItems>
@@ -476,11 +537,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Standard Profile Changed</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Поставляемый профиль изменен</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Standard Profile Changed</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Поставляемый профиль изменен</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
@@ -495,6 +564,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Supplied profile changed picture</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Поставляемый профиль изменен картинка</v8:content>
 										</v8:item>
 									</Title>
 									<Picture>
@@ -511,12 +584,22 @@
 											<v8:content>The supplied profile has been changed.
 The description may differ from current profile settings.</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>В поставляемый профиль были внесены изменения.
+Описание может отличаться от текущей настройки профиля.</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>To recall profile settings
 supplied with application solution, click Restore by initial filling on the More menu.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Чтобы восстановить
+поставляемую настройку профиля, выберите в меню "Еще" команду "Восстановить по начальному заполнению".</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -535,6 +618,10 @@ supplied with application solution, click Restore by initial filling on the More
 									<v8:lang>en</v8:lang>
 									<v8:content>Supplied profile desciption.</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Описание поставляемого профиля.</v8:content>
+								</v8:item>
 							</ToolTip>
 							<MultiLine>true</MultiLine>
 							<ExtendedEdit>true</ExtendedEdit>
@@ -548,6 +635,10 @@ supplied with application solution, click Restore by initial filling on the More
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="CommentPageExtendedTooltip" id="302"/>
@@ -578,6 +669,10 @@ supplied with application solution, click Restore by initial filling on the More
 								<v8:lang>en</v8:lang>
 								<v8:content>Access kind</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Вид доступа</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>xs:string</v8:Type>
@@ -592,6 +687,10 @@ supplied with application solution, click Restore by initial filling on the More
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Access Value</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Значения доступа</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
@@ -609,6 +708,10 @@ supplied with application solution, click Restore by initial filling on the More
 						<Title>
 							<v8:item>
 								<v8:lang>en</v8:lang>
+								<v8:content>N</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
 								<v8:content>N</v8:content>
 							</v8:item>
 						</Title>
@@ -630,6 +733,10 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>Label access kind</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Надпись вид доступа</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -648,6 +755,10 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>Profile access groups update required</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Требуется обновить группы доступа профиля</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -659,6 +770,10 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>Object recorded</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект записывался</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -669,6 +784,10 @@ supplied with application solution, click Restore by initial filling on the More
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Roles</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Роли</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -682,6 +801,10 @@ supplied with application solution, click Restore by initial filling on the More
 							<v8:lang>en</v8:lang>
 							<v8:content>Check</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -692,6 +815,10 @@ supplied with application solution, click Restore by initial filling on the More
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Allowed action (role)</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Разрешенное действие (роль)</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -707,6 +834,10 @@ supplied with application solution, click Restore by initial filling on the More
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture no</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер картинки</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -724,6 +855,10 @@ supplied with application solution, click Restore by initial filling on the More
 							<v8:lang>en</v8:lang>
 							<v8:content>Name</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -739,6 +874,10 @@ supplied with application solution, click Restore by initial filling on the More
 							<v8:lang>en</v8:lang>
 							<v8:content>This is role</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это роль</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -751,6 +890,10 @@ supplied with application solution, click Restore by initial filling on the More
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show roles subsystems</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать подсистемы ролей</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -766,6 +909,10 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>Profile filling check required</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Требуется проверить заполнение профиля</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -777,6 +924,10 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>Role collection</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Коллекция ролей</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -787,6 +938,10 @@ supplied with application solution, click Restore by initial filling on the More
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Role</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Роль</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -805,6 +960,10 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>Procedure completed when creating on server</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнена процедура при создании на сервере</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -815,6 +974,10 @@ supplied with application solution, click Restore by initial filling on the More
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Standard proattachment description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание поставляемого профиля</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -833,11 +996,19 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>Restore by initial filling</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Восстановить по начальному заполнению</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Restore the profile by initial filling (only for the profiles supplied with the application solution)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Восстановить профиль по начальному заполнению (только для профилей поставляемых с прикладным решением)</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>RestoreByInitialFilling</Action>
@@ -848,11 +1019,19 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>Only selected roles</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Только выбранные роли</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show only selected roles</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать только выбранные роли</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -868,11 +1047,19 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable roles</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить роли</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable roles</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить роли</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -888,11 +1075,19 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>Exclude roles</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить роли</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Exclude roles</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исключить роли</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -908,11 +1103,19 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>By subsystems</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>По подсистемам</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group role list by subsystems</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группировать список ролей по подсистемам</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -928,11 +1131,19 @@ supplied with application solution, click Restore by initial filling on the More
 					<v8:lang>en</v8:lang>
 					<v8:content>Show unused access types</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать неиспользуемые виды доступа</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Show unused access types</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показывать неиспользуемые виды доступа</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ShowUnusedAccessKinds</Action>

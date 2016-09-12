@@ -306,7 +306,7 @@ Function SendExchangeMessage()
 		
 		Try
 			
-			Archiver = New ZipFileWriter(ArchiveTempFileName, ExchangeMessageArchivePassword, NStr("en = 'Exchange message file'"));
+			Archiver = New ZipFileWriter(ArchiveTempFileName, ExchangeMessageArchivePassword, NStr("en='Exchange message file';ru='Файл сообщения обмена'"));
 			Archiver.Add(ExchangeMessageFileName());
 			Archiver.Write();
 			
@@ -421,11 +421,11 @@ Function GetExchangeMessage()
 		
 		GetMessageAboutError(1);
 		
-		MessageString = NStr("en = 'Exchange data folder on server:  ""%1""'");
+		MessageString = NStr("en='Exchange data folder on server:  ""%1""';ru='Каталог обмена информацией на сервере: ""%1""'");
 		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, FolderAtFTPServer);
 		SupplementErrorMessage(MessageString);
 		
-		MessageString = NStr("en = 'Exchange message attachment file name: ""%1"" or ""%2""'");
+		MessageString = NStr("en='Exchange message attachment file name: ""%1"" or ""%2""';ru='Имя файла сообщения обмена: ""%1"" или ""%2""'");
 		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, MessageFileTemplateName + ".xml", MessageFileTemplateName + ".zip");
 		SupplementErrorMessage(MessageString);
 		
@@ -498,7 +498,7 @@ EndProcedure
 Procedure SetStatusBarMessageAboutError(Val Message)
 	
 	If Message = Undefined Then
-		Message = NStr("en = 'Internal error'");
+		Message = NStr("en='Internal error';ru='Внутренняя ошибка'");
 	EndIf;
 	
 	ErrorMessageString   = Message;
@@ -545,21 +545,21 @@ Procedure ErrorMessagesInitialization()
 	ErrorMessages = New Map;
 	
 	// Common error codes
-	ErrorMessages.Insert(001, NStr("en = 'Exchange plan catalog does not have data file.'"));
-	ErrorMessages.Insert(002, NStr("en = 'Error while unzipping message''s zipped file'"));
-	ErrorMessages.Insert(003, NStr("en = 'Error while zipping the file of message exchange'"));
-	ErrorMessages.Insert(004, NStr("en = 'Error when creating the temporary directory.'"));
-	ErrorMessages.Insert(005, NStr("en = 'The archive does not contain the exchange file.'"));
+	ErrorMessages.Insert(001, NStr("en='Exchange plan catalog does not have data file.';ru='В каталоге обмена информацией не был обнаружен файл сообщения с данными.'"));
+	ErrorMessages.Insert(002, NStr("en=""Error while unzipping message's zipped file"";ru='Ошибка при распаковке сжатого файла сообщения.'"));
+	ErrorMessages.Insert(003, NStr("en='Error while zipping the file of message exchange';ru='Ошибка при сжатии файла сообщения обмена.'"));
+	ErrorMessages.Insert(004, NStr("en='Error when creating the temporary directory.';ru='Ошибка при создании временного каталога.'"));
+	ErrorMessages.Insert(005, NStr("en='The archive does not contain the exchange file.';ru='Архив не содержит файл сообщения обмена.'"));
 	
 	// Errors codes, that are dependent on the transport kind.
-	ErrorMessages.Insert(101, NStr("en = 'The server path is not specified.'"));
-	ErrorMessages.Insert(102, NStr("en = 'Initialization error of connection to the FTP-server'"));
-	ErrorMessages.Insert(103, NStr("en = 'Connection to FTP - server error, check if the specified path is correct and resource access rights.'"));
-	ErrorMessages.Insert(104, NStr("en = 'Error while searching for the file on FTP-server'"));
-	ErrorMessages.Insert(105, NStr("en = 'Error while receiving the file form FTP-server'"));
-	ErrorMessages.Insert(106, NStr("en = 'Error while deleting file on FTP-server, check access rights for the resource'"));
+	ErrorMessages.Insert(101, NStr("en='The server path is not specified.';ru='Не задан путь на сервере.'"));
+	ErrorMessages.Insert(102, NStr("en='Initialization error of connection to the FTP-server';ru='Ошибка инициализации подключения к FTP-серверу.'"));
+	ErrorMessages.Insert(103, NStr("en='Connection to FTP - server error, check if the specified path is correct and resource access rights.';ru='Ошибка подключения к FTP-серверу, проверьте правильность задания пути и права доступа к ресурсу.'"));
+	ErrorMessages.Insert(104, NStr("en='Error while searching for the file on FTP-server';ru='Ошибка при поиске файлов на FTP-сервере.'"));
+	ErrorMessages.Insert(105, NStr("en='Error while receiving the file form FTP-server';ru='Ошибка при получении файла с FTP-сервера.'"));
+	ErrorMessages.Insert(106, NStr("en='Error while deleting file on FTP-server, check access rights for the resource';ru='Ошибка удаления файла на FTP-сервере, проверьте права доступа к ресурсу.'"));
 	
-	ErrorMessages.Insert(108, NStr("en = 'Maximum size of the exchange message has been exceeded'"));
+	ErrorMessages.Insert(108, NStr("en='Maximum size of the exchange message has been exceeded';ru='Превышен допустимый размер сообщения обмена.'"));
 	
 EndProcedure
 
@@ -643,9 +643,11 @@ Function RunFileDeleteAtFTPServer(Val FileName, ConnectionVerification = False)
 		
 		If ConnectionVerification Then
 			
-			ErrorInfo = NStr("en = 'Failed to check connection by test file ""%1"".
-			|Perhaps, the specified directory does not exist or is not available.
-			|It is also recommended to see the FTP-server documentation to set up the support of the Cyrillic names files.'");
+			ErrorInfo = NStr("en='Failed to check connection by test file ""%1""."
+"Perhaps, the specified directory does not exist or is not available."
+"It is also recommended to see the FTP-server documentation to set up the support of the Cyrillic names files.';ru='Не удалось проверить подключение с помощью тестового файла ""%1""."
+"Возможно, заданный каталог не существует или не доступен."
+"Рекомендуется также обратиться к документации по FTP-серверу для настройки поддержки имен файлов с кириллицей.'");
 			ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, DataExchangeServer.FileNameOfVerificationOfConnection());
 			SupplementErrorMessage(ErrorInfo);
 			
@@ -682,7 +684,7 @@ ExchangeMessageTemporaryFile    = Undefined;
 FTPServerName       = Undefined;
 FolderAtFTPServer = Undefined;
 
-ObjectName = NStr("en = 'Data processor: %1'");
+ObjectName = NStr("en='Data processor: %1';ru='Обработка: %1'");
 ObjectName = StringFunctionsClientServer.PlaceParametersIntoString(ObjectName, Metadata().Name);
 
 #EndRegion

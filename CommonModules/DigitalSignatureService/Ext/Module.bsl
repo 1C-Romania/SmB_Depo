@@ -175,34 +175,35 @@ Function CryptoManager(Operation, ShowError = True, ErrorDescription = "", Appli
 	EndIf;
 	
 	If Operation = "Signing" Then
-		ErrorTitle = NStr("en = 'Unable to sign data on the %1 server because:'");
+		ErrorTitle = NStr("en='Unable to sign data on the %1 server because:';ru='Не удалось подписать данные на сервере %1 по причине:'");
 		
 	ElsIf Operation = "SignatureCheck" Then
-		ErrorTitle = NStr("en = 'Unable to check a signature on the %1 server because:'");
+		ErrorTitle = NStr("en='Unable to check a signature on the %1 server because:';ru='Не удалось проверить подпись на сервере %1 по причине:'");
 		
 	ElsIf Operation = "Encryption" Then
-		ErrorTitle = NStr("en = 'Unable to encrypt data on the %1 server because:'");
+		ErrorTitle = NStr("en='Unable to encrypt data on the %1 server because:';ru='Не удалось зашифровать данные на сервере %1 по причине:'");
 		
 	ElsIf Operation = "Details" Then
-		ErrorTitle = NStr("en = 'Unable to decrypt data on the %1 server because:'");
+		ErrorTitle = NStr("en='Unable to decrypt data on the %1 server because:';ru='Не удалось расшифровать данные на сервере %1 по причине:'");
 		
 	ElsIf Operation = "CertificateCheck" Then
-		ErrorTitle = NStr("en = 'Unable to check certificate on the %1 server because:'");
+		ErrorTitle = NStr("en='Unable to check certificate on the %1 server because:';ru='Не удалось проверить сертификат на сервере %1 по причине:'");
 		
 	ElsIf Operation = "GetCertificates" Then
-		ErrorTitle = NStr("en = 'Unable to get certificates on %1 server because:'");
+		ErrorTitle = NStr("en='Unable to get certificates on %1 server because:';ru='Не удалось получить сертификаты на сервере %1 по причине:'");
 		
 	ElsIf Operation <> "" Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Error in the CryptographyManager function.
-			           |Wrong of the %1 Operation parameter value.'"), Operation);
+			NStr("en='Error in the CryptographyManager function."
+"Wrong of the %1 Operation parameter value.';ru='Ошибка в функции МенеджерКриптографии."
+"Неверное значение параметра Операция ""%1"".'"), Operation);
 		
 	ElsIf TypeOf(ErrorDescription) = Type("Structure")
 	        AND ErrorDescription.Property("ErrorTitle") Then
 		
 		ErrorTitle = ErrorDescription.ErrorTitle;
 	Else
-		ErrorTitle = NStr("en = 'Unable to run an operation on the %1 server because:'");
+		ErrorTitle = NStr("en='Unable to run an operation on the %1 server because:';ru='Не удалось выполнить операцию на сервере %1 по причине:'");
 	EndIf;
 	
 	ErrorTitle = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTitle, ComputerName);
@@ -215,22 +216,22 @@ Function CryptoManager(Operation, ShowError = True, ErrorDescription = "", Appli
 	ErrorProperties.Insert("Errors", Errors);
 	
 	If Errors.Count() = 0 Then
-		ErrorText = NStr("en = 'Use of no application is expected.'");
+		ErrorText = NStr("en='Use of no application is expected.';ru='Не предусмотрено использование ни одной программы.'");
 		ErrorProperties.Common = True;
 		ErrorProperties.Insert("Instruction", True);
 		ErrorProperties.Insert("ApplicationsSetting", True);
 		
 	ElsIf ValueIsFilled(Application) Then
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 application is not available or installed.'"), Application);
+			NStr("en='%1 application is not available or installed.';ru='Программа %1 не доступна или не установлена.'"), Application);
 	Else
-		ErrorText = NStr("en = 'No application is available or installed.'");
+		ErrorText = NStr("en='No application is available or installed.';ru='Ни одна из программ не доступна или не установлена.'");
 	EndIf;
 	ErrorProperties.Insert("Description", ErrorText);
 	
 	If Not Users.InfobaseUserWithFullAccess(,, False) Then
 		ErrorText = ErrorText + Chars.LF + Chars.LF
-			+ NStr("en = 'Contact your administrator.'");
+			+ NStr("en='Contact your administrator.';ru='Обратитесь к администратору.'");
 	EndIf;
 	
 	ErrorProperties.Insert("ErrorDescription", ErrorTitle + Chars.LF + ErrorText);
@@ -311,16 +312,18 @@ Function GetCertificateByImprint(Imprint, InPersonalStorageOnly,
 	
 	If ValueIsFilled(ErrorPresentation) Then
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Certificate is not found
-			           |on the server because: %1
-			           |'"),
+			NStr("en='Certificate is not found"
+"on the server because: %1"
+"';ru='Сертификат"
+"не найден на сервере по причине: %1"
+"'"),
 			ErrorPresentation);
 	Else
-		ErrorText = NStr("en = 'Certificate is not found on server.'");
+		ErrorText = NStr("en='Certificate is not found on server.';ru='Сертификат не найден на сервере.'");
 	EndIf;
 		
 	If Not Users.InfobaseUserWithFullAccess(,, False) Then
-		ErrorText = ErrorText + Chars.LF + NStr("en = 'Contact your administrator.'")
+		ErrorText = ErrorText + Chars.LF + NStr("en='Contact your administrator.';ru='Обратитесь к администратору.'")
 	EndIf;
 	
 	ErrorText = TrimR(ErrorText);
@@ -401,7 +404,7 @@ Procedure CheckPresentationUniqueness(Presentation, CertificatRef, Field, Cancel
 	|	AND Certificates.Description = &Description";
 	
 	If Not Query.Execute().IsEmpty() Then
-		MessageText = NStr("en = 'Certificate with this presentation already exists.'");
+		MessageText = NStr("en='Certificate with this presentation already exists.';ru='Сертификат с таким представлением уже существует.'");
 		CommonUseClientServer.MessageToUser(MessageText,, Field,, Cancel);
 	EndIf;
 	
@@ -1262,9 +1265,11 @@ Procedure FillCertificateAdditionalProperties(Form)
 		Certificate = Form.Certificate;
 		Form.Certificate = Undefined;
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'An error of the
-			           |infobase occurred while receiving %1
-			           |certificate data: %2'"),
+			NStr("en='An error of the"
+"infobase occurred while receiving %1"
+"certificate data: %2';ru='При получении"
+"данных сертификата ""%1"" из информационной"
+"базы возникла ошибка: %2'"),
 			Certificate,
 			BriefErrorDescription(ErrorInfo));
 	EndTry;

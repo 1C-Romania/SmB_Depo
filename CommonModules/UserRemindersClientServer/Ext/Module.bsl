@@ -39,11 +39,11 @@ Function TimePresentation(Val Time, FullPresentation = True, OutputSeconds = Tru
 	Result = "";
 	
 	// Presentation of the time measurement units in the accusative case for quantities: 1, 2-4, 5-20.
-	WeeksRepresentation	= NStr("en = 'Week'")  + "," + NStr("en = 'of the week'")  + "," + NStr("en = 'weeks'");
-	DaysRepresentation	= NStr("en = 'day'")    + "," + NStr("en = 'days'")     + "," + NStr("en = 'days'");
-	HoursRepresentation	= NStr("en = 'hour'")     + "," + NStr("en = 'hours'")    + "," + NStr("en = 'Hours'");
-	MinutesRepresentation	= NStr("en = 'minute'")  + "," + NStr("en = 'Minutes'")  + "," + NStr("en = 'minutes'");
-	SecondsRepresentation	= NStr("en = 'second'") + "," + NStr("en = 'Seconds'") + "," + NStr("en = 'Seconds'");
+	WeeksRepresentation	= NStr("en='Week';ru='Неделя'")  + "," + NStr("en='of the week';ru='недели'")  + "," + NStr("en='weeks';ru='недель'");
+	DaysRepresentation	= NStr("en='day';ru='дне'")    + "," + NStr("en='days';ru='дня'")     + "," + NStr("en='days';ru='дня'");
+	HoursRepresentation	= NStr("en='hour';ru='час'")     + "," + NStr("en='hours';ru='часа'")    + "," + NStr("en='Hours';ru='часы'");
+	MinutesRepresentation	= NStr("en='minute';ru='минуту'")  + "," + NStr("en='Minutes';ru='минуты'")  + "," + NStr("en='minutes';ru='минут'");
+	SecondsRepresentation	= NStr("en='second';ru='секунду'") + "," + NStr("en='Seconds';ru='секунды'") + "," + NStr("en='Seconds';ru='секунды'");
 	
 	Time = Number(Time);
 	
@@ -192,19 +192,19 @@ Function ReplaceUnitDimensionsOnFactor(Val Unit)
 	
 	// Time measurement unit will be determined by the first three characters.
 	FirstThreeSymbols = Left(Unit,3);
-	If FirstThreeSymbols = NStr("en = 'week'") Or FirstThreeSymbols = NStr("en = 'n'") Then
+	If FirstThreeSymbols = NStr("en='week';ru='неделю'") Or FirstThreeSymbols = NStr("en='n';ru='н'") Then
 		Result = 60*60*24*7;
-	ElsIf FirstThreeSymbols = NStr("en = 'day'") 
-		  Or FirstThreeSymbols = NStr("en = 'day'")
-		  Or FirstThreeSymbols = NStr("en = 'days'")
-		  Or FirstThreeSymbols = NStr("en = 'days'")
-		  Or FirstThreeSymbols = NStr("en = 'd'") Then
+	ElsIf FirstThreeSymbols = NStr("en='day';ru='дне'") 
+		  Or FirstThreeSymbols = NStr("en='day';ru='дне'")
+		  Or FirstThreeSymbols = NStr("en='days';ru='дня'")
+		  Or FirstThreeSymbols = NStr("en='days';ru='дня'")
+		  Or FirstThreeSymbols = NStr("en='d';ru='дн'") Then
 		Result = 60*60*24;
-	ElsIf FirstThreeSymbols = NStr("en = 'hour'") Or FirstThreeSymbols = NStr("en = 'ch'") Then
+	ElsIf FirstThreeSymbols = NStr("en='hour';ru='час'") Or FirstThreeSymbols = NStr("en='ch';ru='ch'") Then
 		Result = 60*60;
-	ElsIf FirstThreeSymbols = NStr("en = 'min'") Or FirstThreeSymbols = NStr("en = 'm'") Then
+	ElsIf FirstThreeSymbols = NStr("en='min';ru='мин'") Or FirstThreeSymbols = NStr("en='m';ru='m'") Then
 		Result = 60;
-	ElsIf FirstThreeSymbols = NStr("en = 'sec'") Or FirstThreeSymbols = NStr("en = 'From'") Then
+	ElsIf FirstThreeSymbols = NStr("en='sec';ru='сек'") Or FirstThreeSymbols = NStr("en='From';ru='Списать из'") Then
 		Result = 1;
 	EndIf;
 	

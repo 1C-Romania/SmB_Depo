@@ -16,7 +16,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	For Each SuppliedSetup IN SuppliedSettings Do
 		Items.Description.ChoiceList.Add(SuppliedSetup.Presentation);
 	EndDo;
-	Items.Description.ChoiceList.Add("", NStr("en = '<Another application>'"));
+	Items.Description.ChoiceList.Add("", NStr("en='<Another application>';ru='<Другая программа>'"));
 	
 	// Filling a new object according to the supplied setting.
 	If Not ValueIsFilled(Object.Ref) Then
@@ -82,7 +82,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	If Not Query.Execute().IsEmpty() Then
 		Cancel = True;
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'A application with such name and type has been already added to the list.'"),
+			NStr("en='A application with such name and type has been already added to the list.';ru='Программа с указанным именем и типом уже добавлена в список.'"),
 			,
 			"Object.ApplicationName");
 	EndIf;
@@ -149,8 +149,9 @@ Procedure SetDeletionMark(Command)
 	
 	ShowQueryBox(
 		New NotifyDescription("SetDeletionMarkAfterReplyingToQuestion", ThisObject),
-		NStr("en = 'To set the deletion mark you have to save your changes.
-		           |Write the data?'"), QuestionDialogMode.YesNo);
+		NStr("en='To set the deletion mark you have to save your changes."
+"Write the data?';ru='Для установки отметки удаления необходимо записать внесенные Вами изменения."
+"Записать данные?'"), QuestionDialogMode.YesNo);
 	
 EndProcedure
 

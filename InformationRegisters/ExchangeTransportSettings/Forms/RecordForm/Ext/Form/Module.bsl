@@ -267,8 +267,8 @@ EndProcedure
 &AtClient
 Procedure NotifyUserAboutConnectionResults(Val ErrorConnection)
 	
-	WarningText = ?(ErrorConnection, NStr("en = 'Failed to install connection.'"),
-											   NStr("en = 'Connection has been successfully installed.'"));
+	WarningText = ?(ErrorConnection, NStr("en='Failed to install connection.';ru='Не удалось установить подключение.'"),
+											   NStr("en='Connection has been successfully installed.';ru='Подключение успешно установлено.'"));
 	ShowMessageBox(, WarningText);
 	
 EndProcedure

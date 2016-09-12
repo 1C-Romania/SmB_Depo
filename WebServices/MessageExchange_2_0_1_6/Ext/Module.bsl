@@ -14,7 +14,7 @@ Function DeliverMessages(SenderCode, StreamStorage)
 	
 	If Sender.IsEmpty() Then
 		
-		Raise NStr("en = 'Incorrect settings of connection to the end point have been specified.'");
+		Raise NStr("en='Incorrect settings of connection to the end point have been specified.';ru='Заданы неправильные настройки подключения к конечной точке.'");
 		
 	EndIf;
 	
@@ -44,10 +44,13 @@ Function DeliverMessages(SenderCode, StreamStorage)
 	
 	If DataReadInPart Then
 		
-		Raise NStr("en = 'Error occurred when delivering quick messages
-                                |- some messages were not delivered due to specified data area locks!
-                                |
-                                |These messages will be processed within the messages processing queue of the system.'");
+		Raise NStr("en='Error occurred when delivering quick messages"
+"- some messages were not delivered due to specified data area locks!"
+""
+"These messages will be processed within the messages processing queue of the system.';ru='Произошла ошибка при доставке быстрых сообщений - некоторые сообщения"
+"не были доставлены из-за установленных блокировок областей данных!"
+""
+"Эти сообщения будут обработаны в рамках очереди обработки сообщений системы'");
 		
 	EndIf;
 	
@@ -109,7 +112,7 @@ Function RefreshConnectionSettings(Code, XDTOConnectionSettings)
 	
 	EndPoint = ExchangePlans.MessageExchange.FindByCode(Code);
 	If EndPoint.IsEmpty() Then
-		Raise NStr("en = 'Incorrect settings of connection to the end point have been specified.'");
+		Raise NStr("en='Incorrect settings of connection to the end point have been specified.';ru='Заданы неправильные настройки подключения к конечной точке.'");
 	EndIf;
 	
 	BeginTransaction();
@@ -167,7 +170,7 @@ Function CheckConnectionAtSender(SenderCode)
 	
 	If MessageExchangeInternal.ThisNodeCode() <> SenderCode Then
 		
-		Raise NStr("en = 'Receiver base connection settings indicate another sender.'");
+		Raise NStr("en='Receiver base connection settings indicate another sender.';ru='Настройки подключения базы получателя указывают на другого отправителя.'");
 		
 	EndIf;
 	

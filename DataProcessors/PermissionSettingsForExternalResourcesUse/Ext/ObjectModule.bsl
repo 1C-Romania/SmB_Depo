@@ -416,8 +416,9 @@ Procedure CalculateQueriesApplication() Export
 		Try
 			LockDataForEdit(Semaphore());
 		Except
-			Raise NStr("en = 'An error occurred when trying to access the settings of permissions to use external resources by a competitor.
-                                |Try to perform the operation later.'");
+			Raise NStr("en='An error occurred when trying to access the settings of permissions to use external resources by a competitor."
+"Try to perform the operation later.';ru='Ошибка конкурентного доступа к настройке разрешений на использование внешних ресурсов."
+"Попробуйте выполнить операцию позже.'");
 		EndTry;
 		
 	EndIf;
@@ -1073,7 +1074,7 @@ EndFunction
 //
 Function NewSecurityProfileDescription(Val SoftwareModuleType, Val SoftwareModuleID) Export
 	
-	Pattern = NStr("en = '[Infobase %1] %2 ""%3""'");
+	Pattern = NStr("en='[Infobase %1] %2 ""%3""';ru='[Infobase %1] %2 ""%3""'");
 	
 	InfobaseName = "";
 	ConnectionString = InfobaseConnectionString();
@@ -1084,12 +1085,12 @@ Function NewSecurityProfileDescription(Val SoftwareModuleType, Val SoftwareModul
 		EndIf;
 	EndDo;
 	If IsBlankString(InfobaseName) Then
-		Raise NStr("en = 'Infobase connection row does not contain the infobase name.'");
+		Raise NStr("en='Infobase connection row does not contain the infobase name.';ru='Строка соединения информационной базы не содержит имени информационной базы!'");
 	EndIf;
 	
 	If SoftwareModuleType = Catalogs.MetadataObjectIDs.EmptyRef() Then
 		Return StringFunctionsClientServer.PlaceParametersIntoString(Pattern, InfobaseName,
-			NStr("en = 'Security profile for the infobase'"), InfobaseConnectionString());
+			NStr("en='Security profile for the infobase';ru='Профиль безопасности для информационной базы'"), InfobaseConnectionString());
 	Else
 		ProgramModule = WorkInSafeModeService.RefFromPermissionsRegister(SoftwareModuleType, SoftwareModuleID);
 		Dictionary = WorkInSafeModeService.ExternalModuleManager(ProgramModule).ExternalModuleContainerDictionary();

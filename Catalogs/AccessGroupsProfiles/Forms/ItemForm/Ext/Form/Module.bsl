@@ -166,12 +166,12 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 			CommonUseClientServer.AddUserError(Errors,
 				"Roles[%1].RolesSynonym",
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Role ""%1"" is not found in the metadata.'"),
+					NStr("en='Role ""%1"" is not found in the metadata.';ru='Роль ""%1"" не найдена в метаданных.'"),
 					String.Synonym),
 				"Roles",
 				TreeItems.IndexOf(String),
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Role ""%2"" in row %1 is not found in the metadata.'"),
+					NStr("en='Role ""%2"" in row %1 is not found in the metadata.';ru='Роль ""%2"" в строке %1 не найдена в метаданных.'"),
 					"%1", String.Synonym));
 		EndIf;
 	EndDo;
@@ -387,7 +387,7 @@ Procedure RestoreByInitialFilling(Command)
 	
 	ShowQueryBox(
 		New NotifyDescription("RestoreByInitialFillingContinuation", ThisObject),
-		NStr("en = 'Do you want to restore the profile by the initial filling content?'"),
+		NStr("en='Do you want to restore the profile by the initial filling content?';ru='Восстановить профиль по содержимому начального заполнения?'"),
 		QuestionDialogMode.YesNo);
 	
 EndProcedure
@@ -489,9 +489,9 @@ Procedure RestoreByInitialFillingEnd(Response, NotSpecified) Export
 	UsersServiceClient.ExpandRolesSubsystems(ThisObject);
 	
 	If UpdateAccessGroups Then
-		Text = NStr("en = 'Profile ""%1%"" restored by start filling content, profile access groups updated'");
+		Text = NStr("en='Profile ""%1%"" restored by start filling content, profile access groups updated';ru='Профиль ""%1"" восстановлен по содержимому начального заполнения, группы доступа профиля обновлены.'");
 	Else
-		Text = NStr("en = 'Profile ""%1%"" restored by start filling content, profile access groups not updated'");
+		Text = NStr("en='Profile ""%1%"" restored by start filling content, profile access groups not updated';ru='Профиль ""%1"" восстановлен по содержимому начального заполнения, группы доступа профиля не обновлены.'");
 	EndIf;
 	
 	ShowUserNotification(StringFunctionsClientServer.PlaceParametersIntoString(
@@ -539,9 +539,12 @@ EndProcedure
 Function QuestionTextUpdateProfileAccessGroups()
 	
 	Return
-		NStr("en = 'Do you want to update access groups which use this profile?
-		           |
-		           |Excess access kinds with specified access values 		              |will be deleted, and missing access kinds will be added.'");
+		NStr("en='Do you want to update access groups which use this profile?"
+""
+"Excess access kinds with specified access values 		              |will be deleted, and missing access kinds will be added.';ru='Обновить группы доступа, использующие этот профиль?"
+""
+"Будут удалены лишние виды доступа с заданными для них"
+"значениями доступа и добавлены недостающие виды доступа'");
 		
 EndFunction
 

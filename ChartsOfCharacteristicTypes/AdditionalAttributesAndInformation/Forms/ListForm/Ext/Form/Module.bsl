@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	CommonUseClientServer.SetDynamicListParameter(
 		List,
 		"PresentationGroupingOfCommonProperties",
-		NStr("en = 'Common (for several sets)'"),
+		NStr("en='Common (for several sets)';ru='Общие (для нескольких наборов)'"),
 		True);
 	
 	// Properties grouping by sets.

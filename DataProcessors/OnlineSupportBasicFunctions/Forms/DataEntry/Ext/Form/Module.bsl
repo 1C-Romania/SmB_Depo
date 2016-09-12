@@ -39,7 +39,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			+ ?(IsBlankString(Parameters.FigurePrecision), "0", Parameters.FigurePrecision);
 		
 	Else
-		Raise NStr("en = 'Unknown type of input data.'");
+		Raise NStr("en='Unknown type of input data.';ru='Неизвестный тип вводимых данных.'");
 		
 	EndIf;
 	

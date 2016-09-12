@@ -142,8 +142,8 @@ Procedure SetConditionalAppearance()
 	FilterElement.LeftValue = New DataCompositionField("Journal.Event");
 	FilterElement.ComparisonType = DataCompositionComparisonType.InList;
 	ValueList = New ValueList;
-	ValueList.Add(NStr("en = '_$Session$_.AuthenticationError'"));
-	ValueList.Add(NStr("en = '_$Access$_.AccessDenied'"));
+	ValueList.Add(NStr("en='_$Session$_.AuthenticationError';ru='_$Session$_.AuthenticationError'"));
+	ValueList.Add(NStr("en='_$Access$_.AccessDenied';ru='_$Access$_.AccessDenied'"));
 	FilterElement.RightValue = ValueList;
 
 	Item.Appearance.SetParameterValue("BackColor", StyleColors.EventRefusal);
@@ -207,7 +207,7 @@ Function ReadJournal(EventLogMonitorFilterAtClient)
 		UUID, 
 		"EventLogMonitor.ReadEventLogMonitorEvents", 
 		ReportParameters, 
-		NStr("en = 'Personal data protection'"));
+		NStr("en='Personal data protection';ru='Защита персональных данных'"));
 					
 	StorageAddress       = ExecutionResult.StorageAddress;
 	JobID = ExecutionResult.JobID;

@@ -14,7 +14,7 @@ Procedure SetEnabledVisible()
 	EndIf;
 	
 	If TableED.Count() > 1 Then
-		Items.ObjectsForProcessings.Title = NStr("en = 'List'");
+		Items.ObjectsForProcessings.Title = NStr("en='List';ru='Списком'");
 	EndIf;
 	
 	Items.ObjectsForProcessings.Visible = (TableED.Count() > 0);
@@ -180,8 +180,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	OperationKind = Parameters.OperationKind;
 	
-	If OperationKind = NStr("en = 'Authentication at the bank server'") Then
-		Title = NStr("en = 'Enter the authentication data'");
+	If OperationKind = NStr("en='Authentication at the bank server';ru='Аутентификация на сервере банка'") Then
+		Title = NStr("en='Enter the authentication data';ru='Введите данные аутентификации'");
 		Items.Pages.CurrentPage = Items.EnterLoginAndPassword;
 		If TypeOf(Parameters.Map) = Type("Map") AND Parameters.Map.Count() > 0 Then
 			For Each KeyAndValue IN Parameters.Map Do
@@ -212,7 +212,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If TypeOf(Parameters.ObjectsForProcessings) = Type("Array") AND Parameters.ObjectsForProcessings.Count() > 0 Then
 		If Parameters.ObjectsForProcessings.Count() = 1 Then
 			ElectronicDocument = Parameters.ObjectsForProcessings[0];
-			TemplateHyperlink = NStr("en = '%1 # %2 date %3'");
+			TemplateHyperlink = NStr("en='%1 # %2 date %3';ru='%1 № %2 от %3'");
 			EDOwner = Undefined;
 			If TypeOf(ElectronicDocument) = Type("DocumentRef.EDPackage") Then
 				AttributesStructure = CommonUse.ObjectAttributesValues(ElectronicDocument, "Number, Date");
@@ -229,7 +229,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 					|FileOwner, FileDescription, BasicUnitName, Extension");
 				If TypeOf(AttributesStructure.FileOwner) = Type("CatalogRef.EDUsageAgreements") Then
 					If AttributesStructure.EDKind = Enums.EDKinds.ProductsDirectory Then
-						TemplateHyperlink = NStr("en = '%1 %2 from %3'");
+						TemplateHyperlink = NStr("en='%1 %2 from %3';ru='%1 %2 от %3'");
 						HyperlinkText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateHyperlink,
 							AttributesStructure.EDKind, AttributesStructure.Company,
 							Format(AttributesStructure.SenderDocumentDate, "DLF=D"));
@@ -244,9 +244,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 					HyperlinkText = ?(ValueIsFilled(AttributesStructure.FileDescription),
 						AttributesStructure.FileDescription, AttributesStructure.Description) + "." + AttributesStructure.Extension;
 				ElsIf ElectronicDocumentsServiceCallServer.ThisIsServiceDocument(ElectronicDocument) Then
-					OperationKind = NStr("en = 'Service electronic documents signing'");
+					OperationKind = NStr("en='Service electronic documents signing';ru='Подписание служебных электронных документов'");
 					
-					TemplateHyperlink = NStr("en = '%1'");
+					TemplateHyperlink = NStr("en='%1';ru='%1'");
 					HyperlinkText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateHyperlink,
 						AttributesStructure.EDKind);
 				Else
@@ -266,7 +266,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				NewRow.ElectronicDocument = KeyAndValue.Key;
 				NewRow.EDOwner          = KeyAndValue.Value.FileOwner;
 			EndDo;
-			TemplateHyperlink = NStr("en = 'Electronic documents (%1)'");
+			TemplateHyperlink = NStr("en='Electronic documents (%1)';ru='Электронные документы (%1)'");
 			HyperlinkText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateHyperlink,
 				Parameters.ObjectsForProcessings.Count());
 		EndIf;

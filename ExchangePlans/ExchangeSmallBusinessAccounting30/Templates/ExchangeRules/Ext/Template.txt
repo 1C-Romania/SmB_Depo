@@ -17827,7 +17827,7 @@ Try
 	EndIf;
 	
 Except
-	RegisterDoMessageBox(NStr("en = 'An error occurred while executing a postponed filling. Conversion rules: '")+Object);
+	RegisterDoMessageBox(NStr("en='An error occurred while executing a postponed filling. Conversion rules: ';ru='Ошибка при выполнении отложенного заполнения. Правила конвертации: '")+Object);
 EndTry
 
 </Text>

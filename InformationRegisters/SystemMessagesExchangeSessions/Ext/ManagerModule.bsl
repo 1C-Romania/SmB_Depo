@@ -45,7 +45,7 @@ Function StatusOfSession(Val Session) Export
 	QueryResult = Query.Execute();
 	
 	If QueryResult.IsEmpty() Then
-		MessageString = NStr("en = 'System message exchange session ""%1"" is not found.'");
+		MessageString = NStr("en='System message exchange session ""%1"" is not found.';ru='Сессия обмена сообщениями системы ""%1"" не найдена.'");
 		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(Session));
 		Raise MessageString;
 	EndIf;
@@ -121,7 +121,7 @@ Function GetSessionData(Val Session) Export
 		QueryResult = Query.Execute();
 		
 		If QueryResult.IsEmpty() Then
-			MessageString = NStr("en = 'System message exchange session ""%1"" is not found.'");
+			MessageString = NStr("en='System message exchange session ""%1"" is not found.';ru='Сессия обмена сообщениями системы ""%1"" не найдена.'");
 			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(Session));
 			Raise MessageString;
 		EndIf;

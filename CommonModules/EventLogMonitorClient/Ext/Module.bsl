@@ -26,7 +26,7 @@
 //
 // Example:
 //  EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Warning",
-//     NStr("en = 'It is impossible to connect to the Internet to check for updates'"));
+//     NStr("en='It is impossible to connect to the Internet to check for updates';ru='Невозможно подключиться к сети Интернет для проверки обновлений.'"));
 //
 Procedure AddMessageForEventLogMonitor(Val EventName, Val LevelPresentation = "Information", 
 	Val Comment = "", Val EventDate = "", Val WriteEvents = False) Export
@@ -75,26 +75,27 @@ EndProcedure
 Procedure OpenDataForViewing(CurrentData) Export
 	
 	If CurrentData = Undefined Or CurrentData.Data = Undefined Then
-		ShowMessageBox(, NStr("en = 'There is no data associated with this event log record (see ""Data"" column)'"));
+		ShowMessageBox(, NStr("en='There is no data associated with this event log record (see ""Data"" column)';ru='Эта запись журнала регистрации не связана с данными (см. колонку ""Данные"")'"));
 		Return;
 	EndIf;
 	
 	Try
 		ShowValue(, CurrentData.Data);
 	Except
-		WarningText = NStr("en = 'This events log monitor record is connected to the data but they can not be displayed.
-									|%1'");
+		WarningText = NStr("en='This events log monitor record is connected to the data but they can not be displayed."
+"%1';ru='Эта запись журнала регистрации связана с данными, но отобразить их невозможно."
+"%1'");
 		If CurrentData.Event = "_$Data$_.Delete" Then 
 			// this - deletion event
 			WarningText =
 					StringFunctionsClientServer.PlaceParametersIntoString(
 						WarningText,
-						NStr("en = 'Data is deleted from IB'"));
+						NStr("en='Data is deleted from IB';ru='Данные удалены из информационной базы'"));
 		Else
 			WarningText =
 				StringFunctionsClientServer.PlaceParametersIntoString(
 						WarningText,
-						NStr("en = 'Maybe, data was deleted from info base'"));
+						NStr("en='Maybe, data was deleted from info base';ru='Возможно, данные удалены из информационной базы'"));
 		EndIf;
 		ShowMessageBox(, WarningText);
 	EndTry;

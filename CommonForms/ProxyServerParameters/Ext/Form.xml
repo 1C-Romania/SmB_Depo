@@ -54,6 +54,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Do not use proxy server</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Не использовать прокси-сервер</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:decimal">0</Value>
 					</xr:Value>
@@ -67,6 +71,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Use system proxy settings</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Использовать системные настройки прокси-сервера</v8:content>
+							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:decimal">1</Value>
 					</xr:Value>
@@ -79,6 +87,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Use other proxy settings:</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Использовать другие настройки прокси-сервера:</v8:content>
 							</v8:item>
 						</Presentation>
 						<Value xsi:type="xs:decimal">2</Value>
@@ -97,11 +109,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Proxy server configuration</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка прокси сервера</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Proxy parameters</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры прокси</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -115,11 +135,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Server address group</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа адрес сервера</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Server address group</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа адрес сервера</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
@@ -134,6 +162,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>IP address or proxy server name</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>IP адрес или имя прокси сервера</v8:content>
+								</v8:item>
 							</ToolTip>
 							<Wrap>false</Wrap>
 							<ContextMenu name="ProxyServerContextMenu" id="10"/>
@@ -145,6 +177,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Proxy server port</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Порт прокси сервера</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Wrap>false</Wrap>
@@ -161,11 +197,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Group user password</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа пользователь пароль</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Group user password</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа пользователь пароль</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
@@ -180,6 +224,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Login to authorize on the proxy server</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Логин для авторизации на прокси сервере</v8:content>
+								</v8:item>
 							</ToolTip>
 							<Wrap>false</Wrap>
 							<ContextMenu name="UserContextMenu" id="6"/>
@@ -191,6 +239,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Password for proxy server authorization</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Пароль для авторизации на прокси сервере</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Wrap>false</Wrap>
@@ -206,11 +258,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional parameters</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополниетельные параметры</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional parameter group</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа дополнительных параметров</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
@@ -248,6 +308,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>User</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -264,6 +328,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Password</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -279,6 +347,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Port</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порт</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -297,6 +369,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Server address</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес сервера</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -313,6 +389,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Bypass proxy server for local addresses</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не использовать прокси для локальных адресов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -325,6 +405,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Setting proxy at client</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка прокси на клиенте</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -335,6 +419,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Proxy server usage variant</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант использования прокси-сервера</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -353,6 +441,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Use system settings</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать системные настройки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -363,6 +455,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Use proxy</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать прокси</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -375,6 +471,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Exceptions servers</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Серверы исключений</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
@@ -386,6 +486,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>One proxy for all protocols</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Один прокси для всех протоколов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -396,6 +500,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Server address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес сервера</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -411,6 +519,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Port</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порт</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -428,6 +540,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Server address</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес сервера</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -443,6 +559,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Server address</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес сервера</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -457,6 +577,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Port</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порт</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -474,6 +598,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Port</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порт</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -490,6 +618,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Attempt to save the settings to the file has been performed</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнена попытка сохранения настроек в файл</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -503,6 +635,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>OK</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ок</v8:content>
+				</v8:item>
 			</Title>
 			<Action>OKButton</Action>
 			<Representation>TextPicture</Representation>
@@ -513,11 +649,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Additionally</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительно</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Proxy server additional parameters</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные параметры прокси-сервера</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ProxyServerAdditionalParameters</Action>
@@ -528,11 +672,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cancel</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Button cancel</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кнопка отмена</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ButtonCancel</Action>

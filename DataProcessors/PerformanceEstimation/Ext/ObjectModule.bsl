@@ -338,7 +338,7 @@ Procedure CalculateTotalAPDEX(TableOfKeyOperations)
 	EndDo;
 	
 	If MinimalPriority < 1 Then
-		MessageText = NStr("en = 'Priorities are filled incorrectly. Calculation of APDEX total is impossible.'");
+		MessageText = NStr("en='Priorities are filled incorrectly. Calculation of APDEX total is impossible.';ru='Неверно заполнены приоритеты. Расчет итогового APDEX невозможен.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;

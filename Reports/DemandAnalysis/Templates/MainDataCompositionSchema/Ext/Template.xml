@@ -39,6 +39,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Contract</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контакт</v8:content>
+				</v8:item>
 			</title>
 			<inputParameters>
 				<dcscor:item>
@@ -66,6 +70,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Ordered from vendors</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заказано поставщикам</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -83,6 +91,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Reserved in warehouse</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Зарезервировано на складе</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -96,6 +108,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Counterparty</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагенты</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -121,6 +137,12 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>To supply</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>надлежит
+отпус-
+тить</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:balance>true</dcscom:balance>
@@ -135,6 +157,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Project</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проект</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -169,6 +195,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>UOM</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Единицы измерения</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -178,6 +208,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>To be released</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Осталось отпустить</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -194,6 +228,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Released</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Released</v8:content>
+				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -202,6 +240,10 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>Required</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>Required</v8:content>
 				</v8:item>
 			</title>
@@ -213,6 +255,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>In production</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В производстве</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -448,6 +494,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Begin of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -466,6 +516,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>End of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Окончание периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -483,6 +537,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Period</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>отчетный период</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -503,6 +561,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Output title</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:boolean</v8:Type>
@@ -518,6 +580,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Inventory demand</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Потребность в запасах</v8:content>
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
@@ -588,6 +654,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>As of</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>As of</v8:content>
+						</v8:item>
 					</dcsset:userSettingPresentation>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -624,6 +694,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Demand analysis</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Анализ потребности</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>

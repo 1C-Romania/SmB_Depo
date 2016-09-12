@@ -14,7 +14,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	// Create structure with the processor attributes.
 	
-	Items.LoginLabel.Title = NStr("en = 'Login:'") + " " + Parameters.login;
+	Items.LoginLabel.Title = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	FormStatus      = Parameters.statusApplicationFormED;
 	RequestNumber      = Parameters.numberRequestED;
@@ -33,16 +33,16 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If FormStatus = "new" OR Not ValueIsFilled(FormStatus) Then
 		
-		Items.FormHeaderLabel.Title = NStr("en = 'ED exchange participant application for registration'");
-		Items.RequestStatusLabel.Title = NStr("en = 'New application'");
+		Items.FormHeaderLabel.Title = NStr("en='ED exchange participant application for registration';ru='Заявка на регистрацию участника обмена ЭД'");
+		Items.RequestStatusLabel.Title = NStr("en='New application';ru='Новая заявка'");
 		Items.SendApplication.Visible = True;
 		
 		Items.ApplicationForRegistrationPages.CurrentPage = Items.ApplicationForRegistrationPage;
 		
 	ElsIf FormStatus = "change" Then
 		
-		Items.FormHeaderLabel.Title = NStr("en = 'Change data of ED exchange participant'");
-		Items.RequestStatusLabel.Title = NStr("en = 'New application'");
+		Items.FormHeaderLabel.Title = NStr("en='Change data of ED exchange participant';ru='Изменение данных участника обмена ЭД'");
+		Items.RequestStatusLabel.Title = NStr("en='New application';ru='Новая заявка'");
 		Items.SendApplication.Visible = True;
 		
 		Items.ApplicationForRegistrationPages.CurrentPage = Items.ApplicationForChangePage;
@@ -50,7 +50,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ElsIf FormStatus = "show" Then
 		
 		HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Application No%1 from %2'"),
+			NStr("en='Application No%1 from %2';ru='Заявка №%1 от %2'"),
 			RequestNumber,
 			Format(RequestDate, "DF = mm dd yyyy y.  HH:mm:ss"));
 		
@@ -73,23 +73,23 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Not ValueIsFilled(RequestStatus) OR RequestStatus = "none" Then
 		
-		TextStatus = NStr("en='New application.'");
+		TextStatus = NStr("en='New application.';ru='Новая заявка.'");
 		Items.CauseLabel.Visible = False;
 		
 	ElsIf RequestStatus = "notconsidered" Then
 		
-		TextStatus = NStr("en='Operator has not yet reviewed your application.'");
+		TextStatus = NStr("en='Operator has not yet reviewed your application.';ru='Заявка оператором еще не рассмотрена.'");
 		Items.CauseLabel.Visible = False;
 		
 	ElsIf RequestStatus = "rejected" Then
 		
-		TextStatus = NStr("en='Operator rejected application.'");
+		TextStatus = NStr("en='Operator rejected application.';ru='Заявка оператором отклонена.'");
 		Items.CauseLabel.Visible = True;
 		
 	Else
 		
 		// RequestStatus = obtained
-		TextStatus = NStr("en='Application is successfully executed by operator'");
+		TextStatus = NStr("en='Application is successfully executed by operator';ru='Заявка успешно выполнена оператором'");
 		Items.CauseLabel.Visible = False;
 		
 	EndIf;
@@ -134,7 +134,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 			NotifyDescription = New NotifyDescription("OnAnswerQuestionAboutClosingModifiedForm",
 				ThisObject);
 			
-			QuestionText = NStr("en = 'Data was changed. Close form without saving data?'");
+			QuestionText = NStr("en='Data was changed. Close form without saving data?';ru='Данные изменены. Закрыть форму без сохранени данных?'");
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 			Return;
 			
@@ -224,7 +224,7 @@ Procedure SendApplication(Command)
 	If IsBlankString(Company) Then
 		Error    = True;
 		Message = New UserMessage;
-		Message.Text = NStr("en ='The Company field is not filled in'");
+		Message.Text = NStr("en='The Company field is not filled in';ru='Не заполнено поле ""Организация""'");
 		Message.Field = "Company";
 		Message.Message();
 	EndIf;
@@ -232,7 +232,7 @@ Procedure SendApplication(Command)
 	If IsBlankString(Address) Then
 		Error    = True;
 		Message = New UserMessage;
-		Message.Text = NStr("en ='The Address field is not filled in'");
+		Message.Text = NStr("en='The Address field is not filled in';ru='Не заполнено поле ""Адрес""'");
 		Message.Field = "Address";
 		Message.Message();
 	EndIf;
@@ -240,7 +240,7 @@ Procedure SendApplication(Command)
 	If IsBlankString(Phone) Then
 		Error    = True;
 		Message = New UserMessage;
-		Message.Text = NStr("en ='The Phone field is not filled in'");
+		Message.Text = NStr("en='The Phone field is not filled in';ru='Не заполнено поле ""Телефон""'");
 		Message.Field = "Phone";
 		Message.Message();
 	EndIf;
@@ -251,7 +251,7 @@ Procedure SendApplication(Command)
 		Error    = True;
 		Message = New UserMessage;
 		Message.Text =
-			NStr("en ='State code is not specified (State code should be specified in the Address of the ED exchange participant form)'");
+			NStr("en='State code is not specified (State code should be specified in the Address of the ED exchange participant form)';ru='Не указан ""Код региона"" (Код региона нужно указать в форме ""Адрес участника обмена ЭД"")'");
 		Message.Field = "Address";
 		Message.Message();
 	EndIf;
@@ -259,7 +259,7 @@ Procedure SendApplication(Command)
 	If IsBlankString(TIN) Then
 		Error    = True;
 		Message = New UserMessage;
-		Message.Text = NStr("en ='The TIN field is not filled in'");
+		Message.Text = NStr("en='The TIN field is not filled in';ru='Не заполнено поле ""ИНН""'");
 		Message.Field = "TIN";
 		Message.Message();
 	EndIf;
@@ -267,7 +267,7 @@ Procedure SendApplication(Command)
 	If LegalEntityIndividual <> "LegalEntity" AND LegalEntityIndividual <> "Ind" Then
 		Error    = True;
 		Message = New UserMessage;
-		Message.Text = NStr("en ='Company type (legal entity or individual) is not selected'");
+		Message.Text = NStr("en='Company type (legal entity or individual) is not selected';ru='Не выбран тип организации (юридическое или физическое лицо)'");
 		Message.Field = "LegalEntityIndividual";
 		Message.Message();
 	EndIf;
@@ -275,7 +275,7 @@ Procedure SendApplication(Command)
 	If IsBlankString(KPP) AND LegalEntityIndividual = "LegalEntity" Then
 		Error    = True;
 		Message = New UserMessage;
-		Message.Text = NStr("en ='The KPP field is not filled in'");
+		Message.Text = NStr("en='The KPP field is not filled in';ru='Не заполнено поле ""КПП""'");
 		Message.Field = "KPP";
 		Message.Message();
 	EndIf;
@@ -283,7 +283,7 @@ Procedure SendApplication(Command)
 	If IsBlankString(OGRN) AND LegalEntityIndividual = "LegalEntity" Then
 		Error    = True;
 		Message = New UserMessage;
-		Message.Text = NStr("en ='The OGRN field is not filled in'");
+		Message.Text = NStr("en='The OGRN field is not filled in';ru='Не заполнено поле ""ОГРН""'");
 		Message.Field = "OGRN";
 		Message.Message();
 	EndIf;
@@ -291,7 +291,7 @@ Procedure SendApplication(Command)
 	If IsBlankString(TaxAuthorityCode) Then
 		Error    = True;
 		Message = New UserMessage;
-		Message.Text = NStr("en ='The Tax authority code field is not filled in'");
+		Message.Text = NStr("en='The Tax authority code field is not filled in';ru='Не заполнено поле ""Код налогового органа""'");
 		Message.Field = "TaxAuthorityCode";
 		Message.Message();
 	EndIf;
@@ -299,7 +299,7 @@ Procedure SendApplication(Command)
 	If IsBlankString(Surname) Then
 		Error    = True;
 		Message = New UserMessage;
-		Message.Text = NStr("en ='The Surname field is not filled in'");
+		Message.Text = NStr("en='The Surname field is not filled in';ru='Не заполнено поле ""Фамилия""'");
 		Message.Field = "Surname";
 		Message.Message();
 	EndIf;
@@ -307,7 +307,7 @@ Procedure SendApplication(Command)
 	If IsBlankString(Name) Then
 		Error    = True;
 		Message = New UserMessage;
-		Message.Text = NStr("en ='The Name field is not filled in'");
+		Message.Text = NStr("en='The Name field is not filled in';ru='Не заполнено поле ""Имя""'");
 		Message.Field = "Name";
 		Message.Message();
 	EndIf;
@@ -318,7 +318,7 @@ Procedure SendApplication(Command)
 		If StrLen(Phone) > 20 Then
 			Error    = True;
 			Message = New UserMessage;
-			Message.Text = NStr("en ='Phone should contain 20 or fewer characters.'");
+			Message.Text = NStr("en='Phone should contain 20 or fewer characters.';ru='""Телефон"" должен содержать не более 20 символов'");
 			Message.Field = "Phone";
 			Message.Message();
 		EndIf;
@@ -330,14 +330,14 @@ Procedure SendApplication(Command)
 			If StrLen(TrimAll(StateCode)) <> 2 Then
 				Error    = True;
 				Message = New UserMessage;
-				Message.Text = NStr("en ='State code should contain 2 digits'");
+				Message.Text = NStr("en='State code should contain 2 digits';ru='""Код региона"" должен содержать 2 цифры'");
 				Message.Field = "Address";
 				Message.Message();
 			Else
 				If StateCodeNumber > 99 OR StateCodeNumber < 1 Then
 					Error    = True;
 					Message = New UserMessage;
-					Message.Text = NStr("en ='State code should be from 01 to 99'");
+					Message.Text = NStr("en='State code should be from 01 to 99';ru='""Код региона"" должен быть от 01 до 99'");
 					Message.Field = "StateCode";
 					Message.Message();
 				EndIf;
@@ -345,7 +345,7 @@ Procedure SendApplication(Command)
 		Except
 			Error    = True;
 			Message = New UserMessage;
-			Message.Text = NStr("en ='Invalid characters are used in the State code'");
+			Message.Text = NStr("en='Invalid characters are used in the State code';ru='В ""Коде региона"" использованы недопустимые символы'");
 			Message.Field = "Address";
 			Message.Message();
 		EndTry;
@@ -357,20 +357,20 @@ Procedure SendApplication(Command)
 			If StrLen(TrimAll(TIN)) <> 12 AND LegalEntityIndividual = "Ind" Then
 				Error    = True;
 				Message = New UserMessage;
-				Message.Text = NStr("en ='TIN should contain 12 digits'");
+				Message.Text = NStr("en='TIN should contain 12 digits';ru='""ИНН"" должен содержать 12 цифр'");
 				Message.Field = "TIN";
 				Message.Message();
 			ElsIf StrLen(TrimAll(TIN)) <> 10 AND LegalEntityIndividual = "LegalEntity" Then
 				Error    = True;
 				Message = New UserMessage;
-				Message.Text = NStr("en ='TIN should contain 10 digits'");
+				Message.Text = NStr("en='TIN should contain 10 digits';ru='""ИНН"" должен содержать 10 цифр'");
 				Message.Field = "TIN";
 				Message.Message();
 			EndIf;
 		Except
 			Error    = True;
 			Message = New UserMessage;
-			Message.Text = NStr("en ='Invalid characters are used in TIN'");
+			Message.Text = NStr("en='Invalid characters are used in TIN';ru='В ""ИНН"" использованы недопустимые символы'");
 			Message.Field = "TIN";
 			Message.Message();
 		EndTry;
@@ -382,14 +382,14 @@ Procedure SendApplication(Command)
 			If StrLen(TrimAll(KPP)) <> 9 Then
 				Error    = True;
 				Message = New UserMessage;
-				Message.Text = NStr("en ='KPP should contain 9 digits'");
+				Message.Text = NStr("en='KPP should contain 9 digits';ru='""КПП"" должен содержать 9 цифр'");
 				Message.Field = "KPP";
 				Message.Message();
 			EndIf;
 		Except
 			Error    = True;
 			Message = New UserMessage;
-			Message.Text = NStr("en ='Invalid characters are used in KPP'");
+			Message.Text = NStr("en='Invalid characters are used in KPP';ru='В ""КПП"" использованы недопустимые символы'");
 			Message.Field = "KPP";
 			Message.Message();
 		EndTry;
@@ -401,20 +401,20 @@ Procedure SendApplication(Command)
 			If StrLen(TrimAll(OGRN)) <> 13  AND LegalEntityIndividual = "LegalEntity" Then
 				Error    = True;
 				Message = New UserMessage;
-				Message.Text = NStr("en ='OGRN should contain 13 digits'");
+				Message.Text = NStr("en='OGRN should contain 13 digits';ru='""ОГРН"" должен содержать 13 цифр'");
 				Message.Field = "OGRN";
 				Message.Message();
 			ElsIf StrLen(TrimAll(OGRN)) <> 15  AND LegalEntityIndividual = "Ind" Then
 				Error    = True;
 				Message = New UserMessage;
-				Message.Text = NStr("en ='OGRN should contain 15 digits'");
+				Message.Text = NStr("en='OGRN should contain 15 digits';ru='""ОГРН"" должен содержать 15 цифр'");
 				Message.Field = "OGRN";
 				Message.Message();
 			EndIf;
 		Except
 			Error    = True;
 			Message = New UserMessage;
-			Message.Text = NStr("en ='Invalid characters are used in OGRN'");
+			Message.Text = NStr("en='Invalid characters are used in OGRN';ru='В ""ОГРН"" использованы недопустимые символы'");
 			Message.Field = "OGRN";
 			Message.Message();
 		EndTry;
@@ -426,14 +426,14 @@ Procedure SendApplication(Command)
 			If StrLen(TrimAll(TaxAuthorityCode)) <> 4 Then
 				Error    = True;
 				Message = New UserMessage;
-				Message.Text = NStr("en ='Tax authority code should contain 4 digits'");
+				Message.Text = NStr("en='Tax authority code should contain 4 digits';ru='""Код налогового органа"" должен содержать 4 цифры'");
 				Message.Field = "TaxAuthorityCode";
 				Message.Message();
 			EndIf;
 		Except
 			Error    = True;
 			Message = New UserMessage;
-			Message.Text = NStr("en ='Invalid characters are used in the Tax authority code'");
+			Message.Text = NStr("en='Invalid characters are used in the Tax authority code';ru='В ""Коде налогового органа"" использованы недопустимые символы'");
 			Message.Field = "TaxAuthorityCode";
 			Message.Message();
 		EndTry;
@@ -742,17 +742,17 @@ EndProcedure
 Function MessageParametersToTechicalSupport()
 	
 	Result = New Structure;
-	Result.Insert("Subject", NStr("en = '1C-Taxcom. ED exchange participant application for registration'"));
+	Result.Insert("Subject", NStr("en='1C-Taxcom. ED exchange participant application for registration';ru='1С-Такском. Заявка на регистрацию участника обмена ЭД'"));
 	Result.Insert("Whom", "1c-taxcom@1c.ru");
 	
-	MessageText = NStr("en = 'Dear sir or madam, %1. Would you help me to solve the problem.? Login: %2. %3 %TechnicalParameters% ----------------------------------------------- Sincerely, .'");
+	MessageText = NStr("en='Dear sir or madam, %1. Would you help me to solve the problem.? Login: %2. %3 %TechnicalParameters% ----------------------------------------------- Sincerely, .';ru='Здравствуйте! %1. Прошу помочь разобраться с проблемой. Логин: %2. %3 %ТехническиеПараметры% ----------------------------------------------- С уважением, .'");
 	
 	If FormStatus = "new" OR IsBlankString(FormStatus) Then
-		WhatFailed = NStr("en = 'I can not send an application for registration of ED exchange participant'");
+		WhatFailed = NStr("en='I can not send an application for registration of ED exchange participant';ru='У меня не получается отправить заявку на регистрацию участника обмена ЭД'");
 	ElsIf FormStatus = "change" Then
-		WhatFailed = NStr("en = 'I can not send an application for changing the data of ED exchange participant'");
+		WhatFailed = NStr("en='I can not send an application for changing the data of ED exchange participant';ru='У меня не получается отправить заявку на изменение данных участника обмена ЭД'");
 	ElsIf FormStatus = "show" Then
-		WhatFailed = NStr("en = 'I have some problems with an application of ED exchange participant'");
+		WhatFailed = NStr("en='I have some problems with an application of ED exchange participant';ru='У меня возникли проблемы с заявкой участника обмена ЭД'");
 	EndIf;
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(

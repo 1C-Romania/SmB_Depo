@@ -152,7 +152,7 @@ Function ServerPlatformTypeAsString() Export
 	EndIf;
 	
 	Raise StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Unknown platform type  ""%1""'"),
+		NStr("en='Unknown platform type  ""%1""';ru='Неизвестный тип платформы ""%1""'"),
 		String(SystemInfo.PlatformType));
 	
 EndFunction
@@ -301,15 +301,15 @@ EndFunction
 Function WriteErrorToEventLogMonitorAtStartOrExit(StopWork, Val Event, Val ErrorText) Export
 	
 	If Event = "Start" Then
-		EventName = NStr("en = 'Application start'", CommonUseClientServer.MainLanguageCode());
+		EventName = NStr("en='Application start';ru='Запуск программы'", CommonUseClientServer.MainLanguageCode());
 		If StopWork Then
-			ErrorDescriptionBegin = NStr("en = 'An exception case occurred when starting the application. Application start is aborted.'");
+			ErrorDescriptionBegin = NStr("en='An exception case occurred when starting the application. Application start is aborted.';ru='Возникла исключительная ситуация при запуске программы. Запуск программы аварийно завершен.'");
 		Else
-			ErrorDescriptionBegin = NStr("en = 'An exception case occurred when starting the application.'");
+			ErrorDescriptionBegin = NStr("en='An exception case occurred when starting the application.';ru='Возникла исключительная ситуация при запуске программы.'");
 		EndIf;
 	Else
-		EventName = NStr("en = 'Application end'", CommonUseClientServer.MainLanguageCode());
-		ErrorDescriptionBegin = NStr("en = 'An exception case occurred at the application exit.'");
+		EventName = NStr("en='Application end';ru='Завершение программы'", CommonUseClientServer.MainLanguageCode());
+		ErrorDescriptionBegin = NStr("en='An exception case occurred at the application exit.';ru='Возникла исключительная ситуация при завершении программы.'");
 	EndIf;
 	
 	ErrorDescription = ErrorDescriptionBegin

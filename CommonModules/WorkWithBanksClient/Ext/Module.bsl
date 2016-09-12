@@ -28,9 +28,9 @@ EndProcedure
 Procedure NotifyClassifierOutOfDate() Export
 	
 	ShowUserNotification(
-		NStr("en = 'Banks classifier is outdated'"),
+		NStr("en='Banks classifier is outdated';ru='Классификатор банков устарел'"),
 		URLFormsExport(),
-		NStr("en = 'Update the banks clasifier'"),
+		NStr("en='Update the banks clasifier';ru='Обновить классификатор банков'"),
 		PictureLib.Warning32);
 	
 EndProcedure
@@ -40,9 +40,9 @@ EndProcedure
 Procedure NotifyClassifierUpdatedSuccessfully() Export
 	
 	ShowUserNotification(
-		NStr("en = 'Banks classifier has been successfully updated'"),
+		NStr("en='Banks classifier has been successfully updated';ru='Классификатор банков успешно обновлен'"),
 		URLFormsExport(),
-		NStr("en = 'Banks classifier is updated'"),
+		NStr("en='Banks classifier is updated';ru='Классификатор банков обновлен'"),
 		PictureLib.Information32);
 	
 EndProcedure
@@ -51,7 +51,7 @@ EndProcedure
 //
 Procedure NotifyClassifierIsActual() Export
 	
-	ShowMessageBox(,NStr("en = 'Banks classifier is relevant.'"));
+	ShowMessageBox(,NStr("en='Banks classifier is relevant.';ru='Классификатор банков актуален.'"));
 	
 EndProcedure
 

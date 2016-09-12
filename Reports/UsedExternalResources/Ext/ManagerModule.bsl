@@ -19,20 +19,30 @@
 //   False (Settings, ReportSettings,True/False); Repor//t supports only this mode.
 //
 Procedure ConfigureReportsVariants(Settings, ReportSettings) Export
-	ReportSettings.Description = NStr("en = 'External Resources used by the application and additional modules'");
+	ReportSettings.Description = NStr("en='External Resources used by the application and additional modules';ru='Внешние ресурсы, используемые программой и дополнительными модулями'");
 	ReportSettings.DefineFormSettings = True;
 	ReportSettings.SearchSettings.FieldNames = 
-		NStr("en = 'Name and
-		|ID of
-		|the
-		|COM class
-		|Computer name
-		|Address Data reading Data recording
-		|Template or
-		|component attachment file name
-		|Check
-		|sum Command
-		|bar template Protocol Internet resource address Port'");
+		NStr("en='Name and"
+"ID of"
+"the"
+"COM class"
+"Computer name"
+"Address Data reading Data recording"
+"Template or"
+"component attachment file name"
+"Check"
+"sum Command"
+"bar template Protocol Internet resource address Port';ru='Имя"
+"и идентификатор"
+"COM-класса"
+"Имя"
+"компьютера"
+"Адрес Чтение данных"
+"Запись данных"
+"Имя макета или файла"
+"компоненты"
+"Контрольная сумма"
+"Шаблон командной строки Протокол Адрес Интернет-ресурса Порт'");
 	ReportSettings.SearchSettings.ParametersAndFiltersNames = "";
 EndProcedure
 
@@ -134,14 +144,14 @@ Function PresentationRequestsPermissionsToUseExternalResources(Val Administratio
 			If AsRequired Then
 				
 				HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'For %1 ""%2"" it is required to use the following external resources:'"),
+					NStr("en='For %1 ""%2"" it is required to use the following external resources:';ru='Для %1 ""%2"" требуется использование следующих внешних ресурсов:'"),
 					Lower(Dictionary.Genitive),
 					ModuleName);
 				
 			Else
 				
 				HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'For %1 ""%2"" the following permissions to use external resources will be granted:'"),
+					NStr("en='For %1 ""%2"" the following permissions to use external resources will be granted:';ru='Для %1 ""%2"" будут предоставлены следующие разрешения на использование внешних ресурсов:'"),
 					Lower(Dictionary.Genitive),
 					ModuleName);
 				
@@ -173,11 +183,11 @@ Function PresentationRequestsPermissionsToUseExternalResources(Val Administratio
 		If ToDelete.Count() > 0 Then
 			
 			If AsRequired Then
-				Raise NStr("en = 'Incorrect request of permissions'");
+				Raise NStr("en='Incorrect request of permissions';ru='Некорректный запрос разрешений'");
 			EndIf;
 			
 			HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'The following permissions for external resources use previously provided to %1 ""%2"" will be deleted:'"),
+					NStr("en='The following permissions for external resources use previously provided to %1 ""%2"" will be deleted:';ru='Будут удалены следующие ранее предоставленные для %1 ""%2"" разрешения на использование внешних ресурсов:'"),
 					Lower(Dictionary.Genitive),
 					ModuleName);
 			
@@ -240,7 +250,7 @@ Procedure GenerateOperationsPresentation(SpreadsheetDocument, Val Template, Val 
 			EndIf;
 			
 			HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Security profile for %1 ""%2"" will be deleted.'"),
+					NStr("en='Security profile for %1 ""%2"" will be deleted.';ru='Будет удален профиль безопасности для %1 ""%2"".'"),
 					Lower(Dictionary.Genitive),
 					ModuleName);
 			
@@ -350,11 +360,11 @@ Procedure GeneratePermissionPresentation(Val SpreadsheetDocument, Val Template, 
 						If DefinitionType = "FileSystemAccess" Then
 							
 							If Resolution.Path = "/temp" Then
-								AuthorizationAdding.Insert("Path", NStr("en = 'Temporary files directory'"));
+								AuthorizationAdding.Insert("Path", NStr("en='Temporary files directory';ru='Каталог временных файлов'"));
 							EndIf;
 							
 							If Resolution.Path = "/bin" Then
-								AuthorizationAdding.Insert("Path", NStr("en = 'Directory in which server 1C:Enterprise is installed.'"));
+								AuthorizationAdding.Insert("Path", NStr("en='Directory in which server 1C:Enterprise is installed.';ru='Каталог, в который установлен сервер 1С:Предприятия'"));
 							EndIf;
 							
 						EndIf;
@@ -390,8 +400,8 @@ Function ConfigurationModuleDictionary() Export
 	
 	Result = New Structure();
 	
-	Result.Insert("Nominative", NStr("en = 'Application'"));
-	Result.Insert("Genitive", NStr("en = 'application'"));
+	Result.Insert("Nominative", NStr("en='Application';ru='Приложение'"));
+	Result.Insert("Genitive", NStr("en='application';ru='заявление'"));
 	
 	Return Result;
 	

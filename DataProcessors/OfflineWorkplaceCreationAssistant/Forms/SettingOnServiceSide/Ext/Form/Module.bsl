@@ -32,8 +32,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	InstructionForSettingOfflineWorkplace = OfflineWorkService.InstructionTextFromTemplate("InstructionForSettingOfflineWorkplace");
 	
-	ItemTitle = NStr("en = 'For an offline work on your computer the
-							|platform ""1C: Enterprise 8.3"" version [PlatformVersion] should be installed'");
+	ItemTitle = NStr("en='For an offline work on your computer the"
+"platform ""1C: Enterprise 8.3"" version [PlatformVersion] should be installed';ru='Для автономной работы на Вашем компьютере должна быть установлена платформа ""1С:Предприятие 8.3"" версии [ВерсияПлатформы]'");
 	ItemTitle = StrReplace(ItemTitle, "[PlatformVersion]", DataExchangeSaaS.RequiredPlatformVersion());
 	Items.ExplanationalTitleAboutPlatformVersion.Title = ItemTitle;
 	
@@ -89,7 +89,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	NotifyDescription = New NotifyDescription("CancelCreatingStandAloneWorkingPlace", ThisObject);
 	
-	WarningText = NStr("en = 'Do you want to cancel the offline workplace creating?'");
+	WarningText = NStr("en='Do you want to cancel the offline workplace creating?';ru='Отменить создание автономного рабочего места?'");
 	CommonUseClient.ShowArbitraryFormClosingConfirmation(
 		ThisObject, Cancel, WarningText, "ForceCloseForm", NotifyDescription);
 	
@@ -115,7 +115,7 @@ Procedure LongOperationIdleHandler()
 	Except
 		LongOperation = False;
 		SkipBack();
-		ShowMessageBox(, NStr("en = 'Failed to execute the operation.'"));
+		ShowMessageBox(, NStr("en='Failed to execute the operation.';ru='Не удалось выполнить операцию.'"));
 		
 		WriteErrorInEventLogMonitor(
 			DetailErrorDescription(ErrorInfo()), EventLogMonitorEventCreatingOfflineWorkplace);
@@ -218,7 +218,7 @@ Procedure HowToInstallOrUpdate1CEnterprisePlatformVersion(Command)
 	
 	FormParameters = New Structure;
 	FormParameters.Insert("TemplateName", "HowToInstallOrUpdate1CEnterprisePlatformVersion");
-	FormParameters.Insert("Title", NStr("en = 'How to install or update the 1C:Enterprise platform version'"));
+	FormParameters.Insert("Title", NStr("en='How to install or update the 1C:Enterprise platform version';ru='Как установить или обновить версию платформы 1С:Предприятие'"));
 	
 	OpenForm("DataProcessor.OfflineWorkplaceCreationAssistant.Form.AdditionalDetails", FormParameters, ThisObject, "HowToInstallOrUpdate1CEnterprisePlatformVersion");
 	
@@ -235,7 +235,7 @@ EndProcedure
 Procedure SaveInstructionAs(Command)
 	
 	AddressInTemporaryStorage = GetTemplate();
-	GetFile(AddressInTemporaryStorage, NStr("en = 'Instruction on setting the offline workplace.html'"));
+	GetFile(AddressInTemporaryStorage, NStr("en='Instruction on setting the offline workplace.html';ru='Инструкция по настройке автономного рабочего места.html'"));
 	
 EndProcedure
 
@@ -311,7 +311,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -417,7 +417,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -473,7 +473,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en = 'Page for displaying has not been defined.'");
+		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -618,7 +618,7 @@ Procedure CreateInitialImageOfOfflineWorkspaceOnServer(Cancel)
 						UUID,
 						"OfflineWorkService.CreateOfflineWorkplaceInitialImage",
 						ContextAssistant,
-						NStr("en = 'Creating of an offline workplace initial image'"),
+						NStr("en='Creating of an offline workplace initial image';ru='Создание начального образа автономного рабочего места'"),
 						True);
 		
 		InitialImageTemporaryStorageAddress           = Result.StorageAddress;
@@ -658,7 +658,7 @@ Function AddressOfApplicationOnWeb()
 	ConnectionParameters = StringFunctionsClientServer.GetParametersFromString(InfobaseConnectionString());
 	
 	If Not ConnectionParameters.Property("ws") Then
-		Raise NStr("en = 'You can create an offline workplace in the web client mode only.'");
+		Raise NStr("en='You can create an offline workplace in the web client mode only.';ru='Создать автономное рабочее место можно только в режиме веб-клиента.'");
 	EndIf;
 	
 	Return ConnectionParameters.ws;
@@ -749,7 +749,7 @@ Function Attachable_SettingExportings_OnGoingNext(Cancel)
 	
 	If IsBlankString(Object.OfflineWorkplaceDescription) Then
 		
-		NString = NStr("en = 'Offline workplace name is not specified.'");
+		NString = NStr("en='Offline workplace name is not specified.';ru='Не задано наименование автономного рабочего места.'");
 		CommonUseClientServer.MessageToUser(NString,,"Object.OfflineWorkplaceDescription",, Cancel);
 		
 	EndIf;
@@ -810,7 +810,7 @@ Function Attachable_End_OnOpen(Cancel, SkipPage, IsGoNext)
 	ItemTitle = "[SetupPackageFileName] ([SetupPackageFileSize] [MeasurementUnit])";
 	ItemTitle = StrReplace(ItemTitle, "[SetupPackageFileName]", SetupPackageFileName);
 	ItemTitle = StrReplace(ItemTitle, "[SetupPackageFileSize]", Format(SetupPackageFileSize, "NFD=1; NG=3,0"));
-	ItemTitle = StrReplace(ItemTitle, "[MeasurementUnit]", NStr("en = 'MB'"));
+	ItemTitle = StrReplace(ItemTitle, "[MeasurementUnit]", NStr("en='MB';ru='MB'"));
 	
 	Items.ImportInitialImageToComputerUser.Title = ItemTitle;
 	

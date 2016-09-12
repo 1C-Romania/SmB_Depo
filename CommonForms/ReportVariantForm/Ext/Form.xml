@@ -48,6 +48,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Settings table</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица настроек</v8:content>
+				</v8:item>
 			</Title>
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
@@ -90,6 +94,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Settings group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа настроек</v8:content>
+				</v8:item>
 			</Title>
 			<ExtendedTooltip name="SettingPagesExtendedTooltip" id="131"/>
 			<ChildItems>
@@ -98,6 +106,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Parameters</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметры</v8:content>
 						</v8:item>
 					</Title>
 					<Picture>
@@ -116,6 +128,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Parameters settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки параметов</v8:content>
 								</v8:item>
 							</Title>
 							<SearchStringLocation>None</SearchStringLocation>
@@ -157,6 +173,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>User fields</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользовательские поля</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>StdPicture.DataCompositionUserFields</xr:Ref>
@@ -175,6 +195,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>User fields settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки пользовательских полей</v8:content>
 								</v8:item>
 							</Title>
 							<SearchStringLocation>None</SearchStringLocation>
@@ -216,6 +240,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Grouping fields</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группируемые поля</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>StdPicture.DataCompositionGroupFields</xr:Ref>
@@ -229,6 +257,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Grouped field pages</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы группируемых полей</v8:content>
+								</v8:item>
 							</Title>
 							<PagesRepresentation>None</PagesRepresentation>
 							<ExtendedTooltip name="GroupFieldsPagesExtendedTooltip" id="137"/>
@@ -238,6 +270,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Page of the fields grouped</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница группируемых полей</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Horizontal</Group>
@@ -259,6 +295,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Available fields of the grouped fields</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Доступные поля группируемых полей</v8:content>
 												</v8:item>
 											</Title>
 											<SearchStringLocation>None</SearchStringLocation>
@@ -303,6 +343,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>The table of grouped fields</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Таблица группируемых полей</v8:content>
+												</v8:item>
 											</Title>
 											<SearchStringLocation>None</SearchStringLocation>
 											<ViewStatusLocation>None</ViewStatusLocation>
@@ -343,6 +387,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Page of the unavailable grouped fields</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница недоступных группируемых полей</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="GroupFieldsUnavailableSettingsExtendedTooltip" id="141"/>
 									<ChildItems>
@@ -355,6 +403,11 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Current item can not contain the grouping field.
 In the structure tree, select a grouping for which it is required to view or change the grouping fields structure.</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Текущий элемент не может содержать поля группировки.
+Выберите в дереве структуры группировку, для которой требуется просмотреть или изменить состав полей группировки.</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="UnavailableGroupFieldsInscriptionContextMenu" id="24"/>
@@ -372,6 +425,10 @@ In the structure tree, select a grouping for which it is required to view or cha
 							<v8:lang>en</v8:lang>
 							<v8:content>Fields</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поля</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>StdPicture.DataCompositionSelection</xr:Ref>
@@ -385,6 +442,10 @@ In the structure tree, select a grouping for which it is required to view or cha
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>The current item has individual settings of the selected fields (for the detailed item setting)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текущий элемент имеет собственные настройки выбранных полей (для детальной настройки элемента)</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -401,6 +462,10 @@ In the structure tree, select a grouping for which it is required to view or cha
 									<v8:lang>en</v8:lang>
 									<v8:content>Fields pages</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы полей</v8:content>
+								</v8:item>
 							</Title>
 							<PagesRepresentation>None</PagesRepresentation>
 							<ExtendedTooltip name="SelectedFieldsPagesExtendedTooltip" id="145"/>
@@ -410,6 +475,10 @@ In the structure tree, select a grouping for which it is required to view or cha
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Fields page</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница полей</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Horizontal</Group>
@@ -431,6 +500,10 @@ In the structure tree, select a grouping for which it is required to view or cha
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Fields of available fields</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Доступные поля полей</v8:content>
 												</v8:item>
 											</Title>
 											<SearchStringLocation>None</SearchStringLocation>
@@ -476,6 +549,10 @@ In the structure tree, select a grouping for which it is required to view or cha
 													<v8:lang>en</v8:lang>
 													<v8:content>Table of fields</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Таблица полей</v8:content>
+												</v8:item>
 											</Title>
 											<SearchStringLocation>None</SearchStringLocation>
 											<ViewStatusLocation>None</ViewStatusLocation>
@@ -516,6 +593,10 @@ In the structure tree, select a grouping for which it is required to view or cha
 											<v8:lang>en</v8:lang>
 											<v8:content>Disconnected fields page</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница отключенных полей</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="SelectedFieldsDisabledSettingsExtendedTooltip" id="149"/>
 									<ChildItems>
@@ -530,6 +611,12 @@ In the structure tree, select a grouping for which it is required to view or cha
 In the structure tree, select an item - report for editing its selected fields.
 If you want the current item to have selected fields that differ from the selected report fields, select the check box above the text.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выбранные поля для текущего элемента будут автоматически формироваться на основании выбранных полей всего отчета.
+Выберите в дереве структуры элемент - отчет для редактирования его выбранных полей.
+Если необходимо, чтобы текущий элемент имел выбранные поля, отличные от выбранных полей отчета, установите флажок, расположенный над этим текстом.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="LocalSelectedFieldsInscriptionContextMenu" id="38"/>
 											<ExtendedTooltip name="LocalSelectedFieldsInscriptionExtendedTooltip" id="150"/>
@@ -539,6 +626,10 @@ If you want the current item to have selected fields that differ from the select
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Selected report fields</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Нажмите здесь для перехода к выбранным полям отчета.</v8:content>
 												</v8:item>
 											</Title>
 											<Hyperlink>true</Hyperlink>
@@ -556,6 +647,10 @@ If you want the current item to have selected fields that differ from the select
 											<v8:lang>en</v8:lang>
 											<v8:content>Page of inaccessible fields</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница недоступных полей</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="SelectedFieldsUnavailableSettingsExtendedTooltip" id="152"/>
 									<ChildItems>
@@ -569,6 +664,11 @@ If you want the current item to have selected fields that differ from the select
 													<v8:content>The selected fields can not be set for the current item.
 In the structure tree, select an item - report for editing its selected fields.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>У текущего элемента не могут быть установлены выбранные поля.
+Выберите в дереве структуры элемент - отчет для редактирования его выбранных полей.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="UnavailableSelectedFieldsInscriptionContextMenu" id="43"/>
 											<ExtendedTooltip name="UnavailableSelectedFieldsInscriptionExtendedTooltip" id="153"/>
@@ -578,6 +678,10 @@ In the structure tree, select an item - report for editing its selected fields.<
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Selected report fields</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Нажмите здесь для перехода к выбранным полям отчета.</v8:content>
 												</v8:item>
 											</Title>
 											<Hyperlink>true</Hyperlink>
@@ -599,6 +703,10 @@ In the structure tree, select an item - report for editing its selected fields.<
 							<v8:lang>en</v8:lang>
 							<v8:content>Filter</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фильтр</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>StdPicture.DataCompositionFilter</xr:Ref>
@@ -612,6 +720,10 @@ In the structure tree, select an item - report for editing its selected fields.<
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>The current item has individual filter (to filter records displayed in the item)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текущий элемент имеет собственный отбор (для фильтрации записей, выводимых в элементе)</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -628,6 +740,10 @@ In the structure tree, select an item - report for editing its selected fields.<
 									<v8:lang>en</v8:lang>
 									<v8:content>Filter pages</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы отбора</v8:content>
+								</v8:item>
 							</Title>
 							<PagesRepresentation>None</PagesRepresentation>
 							<ExtendedTooltip name="FilterPagesExtendedTooltip" id="157"/>
@@ -637,6 +753,10 @@ In the structure tree, select an item - report for editing its selected fields.<
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Fields page</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница полей</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Horizontal</Group>
@@ -658,6 +778,10 @@ In the structure tree, select an item - report for editing its selected fields.<
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Available filter fields</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Доступные поля отбора</v8:content>
 												</v8:item>
 											</Title>
 											<SearchStringLocation>None</SearchStringLocation>
@@ -703,6 +827,10 @@ In the structure tree, select an item - report for editing its selected fields.<
 													<v8:lang>en</v8:lang>
 													<v8:content>Filter table</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Таблица отбора</v8:content>
+												</v8:item>
 											</Title>
 											<SearchStringLocation>None</SearchStringLocation>
 											<ViewStatusLocation>None</ViewStatusLocation>
@@ -745,6 +873,10 @@ In the structure tree, select an item - report for editing its selected fields.<
 											<v8:lang>en</v8:lang>
 											<v8:content>Page of the disabled filter</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница отключенного отбора</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="DisabledFilterSettingsExtendedTooltip" id="161"/>
 									<ChildItems>
@@ -759,6 +891,12 @@ In the structure tree, select an item - report for editing its selected fields.<
 In the structure tree, select a report to edit the report filter.
 If you want the current item to have its own filter, select the check box above the text.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>В текущем элементе отбор не установлен.
+Выберите в дереве структуры отчет для редактирования отбора отчета в целом.
+Если необходимо, чтобы текущий элемент имел собственный отбор, установите флажок, расположенный над этим текстом.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="LocalFilterInscriptionContextMenu" id="59"/>
 											<ExtendedTooltip name="LocalFilterInscriptionExtendedTooltip" id="162"/>
@@ -768,6 +906,10 @@ If you want the current item to have its own filter, select the check box above 
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Report filter</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Нажмите здесь для перехода к отбору отчета.</v8:content>
 												</v8:item>
 											</Title>
 											<Hyperlink>true</Hyperlink>
@@ -785,6 +927,10 @@ If you want the current item to have its own filter, select the check box above 
 											<v8:lang>en</v8:lang>
 											<v8:content>Unavailable filter page</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница недоступного отбора</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="UnavailableFilterSettingsExtendedTooltip" id="164"/>
 									<ChildItems>
@@ -798,6 +944,11 @@ If you want the current item to have its own filter, select the check box above 
 													<v8:content>The filter can not be set for the current item.
 In the structure tree, select a report to edit the report filter.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>У текущего элемента не может быть установлен отбор.
+Выберите в дереве структуры отчет для редактирования отбора отчета в целом.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="InaccessibleFilterStaticContextMenu" id="64"/>
 											<ExtendedTooltip name="InaccessibleFilterStaticExtendedTooltip" id="165"/>
@@ -807,6 +958,10 @@ In the structure tree, select a report to edit the report filter.</v8:content>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Report filter</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Нажмите здесь для перехода к отбору отчета.</v8:content>
 												</v8:item>
 											</Title>
 											<Hyperlink>true</Hyperlink>
@@ -828,6 +983,10 @@ In the structure tree, select a report to edit the report filter.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Sort</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сортировка</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>StdPicture.DataCompositionOrder</xr:Ref>
@@ -841,6 +1000,10 @@ In the structure tree, select a report to edit the report filter.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>The current item has individual sort (to sort records displayed in the item)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текущий элемент имеет собственную сортировку (для упорядочивания записей, выводимых в элементе)</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -857,6 +1020,10 @@ In the structure tree, select a report to edit the report filter.</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Sorting pages</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы сортировки</v8:content>
+								</v8:item>
 							</Title>
 							<PagesRepresentation>None</PagesRepresentation>
 							<ExtendedTooltip name="OrderPagesExtendedTooltip" id="169"/>
@@ -866,6 +1033,10 @@ In the structure tree, select a report to edit the report filter.</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Sorting page</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница сортировки</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Horizontal</Group>
@@ -887,6 +1058,10 @@ In the structure tree, select a report to edit the report filter.</v8:content>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Available sorting fields</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Доступные поля сортировки</v8:content>
 												</v8:item>
 											</Title>
 											<SearchStringLocation>None</SearchStringLocation>
@@ -931,6 +1106,10 @@ In the structure tree, select a report to edit the report filter.</v8:content>
 													<v8:lang>en</v8:lang>
 													<v8:content>Table of sorting</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Таблица сортировки</v8:content>
+												</v8:item>
 											</Title>
 											<SearchStringLocation>None</SearchStringLocation>
 											<ViewStatusLocation>None</ViewStatusLocation>
@@ -971,6 +1150,10 @@ In the structure tree, select a report to edit the report filter.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Page of the disabled sorting</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница отключенной сортировки</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="DisabledOrderSettingsExtendedTooltip" id="173"/>
 									<ChildItems>
@@ -985,6 +1168,12 @@ In the structure tree, select a report to edit the report filter.</v8:content>
 In the structure tree, select a report to edit the report sorting.
 If you want the current item to have its own sorting, select the check box above the text.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>В текущем элементе сортировка не установлена.
+Выберите в дереве структуры отчет для редактирования сортировки отчета в целом
+Если необходимо, чтобы текущий элемент имел собственную сортировку, установите флажок, расположенный над этим текстом.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="LocalOrderInscriptionContextMenu" id="80"/>
 											<ExtendedTooltip name="LocalOrderInscriptionExtendedTooltip" id="174"/>
@@ -994,6 +1183,10 @@ If you want the current item to have its own sorting, select the check box above
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Report sort</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Нажмите здесь для перехода к сортировке отчета.</v8:content>
 												</v8:item>
 											</Title>
 											<Hyperlink>true</Hyperlink>
@@ -1011,6 +1204,10 @@ If you want the current item to have its own sorting, select the check box above
 											<v8:lang>en</v8:lang>
 											<v8:content>Page of the unavailable sorting</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница недоступной сортировки</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="UnavailableOrderSettingsExtendedTooltip" id="176"/>
 									<ChildItems>
@@ -1024,6 +1221,11 @@ If you want the current item to have its own sorting, select the check box above
 													<v8:content>Sorting can not be set for the current item.
 In the structure tree, select a report to edit the report sorting.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>У текущего элемента не может быть установлена сортировка.
+Выберите в дереве структуры отчет для редактирования сортировки отчета в целом</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="InaccessibleOrderStaticContextMenu" id="85"/>
 											<ExtendedTooltip name="InaccessibleOrderStaticExtendedTooltip" id="177"/>
@@ -1033,6 +1235,10 @@ In the structure tree, select a report to edit the report sorting.</v8:content>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Report sort</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Нажмите здесь для перехода к сортировке отчета.</v8:content>
 												</v8:item>
 											</Title>
 											<Hyperlink>true</Hyperlink>
@@ -1054,6 +1260,10 @@ In the structure tree, select a report to edit the report sorting.</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Conditional appearance</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Условное оформление</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>StdPicture.DataCompositionConditionalAppearance</xr:Ref>
@@ -1067,6 +1277,10 @@ In the structure tree, select a report to edit the report sorting.</v8:content>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Current item has own conditional appearance (to register the records displayed in the item)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текущий элемент имеет собственное условное оформление (для оформления записей, выводимых в элементе)</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -1083,6 +1297,10 @@ In the structure tree, select a report to edit the report sorting.</v8:content>
 									<v8:lang>en</v8:lang>
 									<v8:content>Conditional appearance pages</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы условного оформления</v8:content>
+								</v8:item>
 							</Title>
 							<PagesRepresentation>None</PagesRepresentation>
 							<ExtendedTooltip name="ConditionalAppearancePagesExtendedTooltip" id="181"/>
@@ -1092,6 +1310,10 @@ In the structure tree, select a report to edit the report sorting.</v8:content>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Conditional appearance page</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница условного оформления</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Horizontal</Group>
@@ -1107,6 +1329,10 @@ In the structure tree, select a report to edit the report sorting.</v8:content>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Conditional appearance table</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Таблица условного оформления</v8:content>
 												</v8:item>
 											</Title>
 											<SearchStringLocation>None</SearchStringLocation>
@@ -1149,6 +1375,10 @@ In the structure tree, select a report to edit the report sorting.</v8:content>
 											<v8:lang>en</v8:lang>
 											<v8:content>Page of the disabled conditional appearance</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница отключенного условного оформления</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="DisabledConditionalAppearanceSettingsExtendedTooltip" id="184"/>
 									<ChildItems>
@@ -1163,6 +1393,12 @@ In the structure tree, select a report to edit the report sorting.</v8:content>
 In the structure tree, select a report to edit the conditional appearance of the report.
 If you want the current item to have its own conditional appearance, select the check box above the text.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>В текущем элементе условное оформление не установлено.
+Выберите в дереве структуры отчет для редактирования условного оформления отчета в целом.
+Если необходимо, чтобы текущий элемент имел собственное условное оформление, установите флажок, расположенный над этим текстом.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="LocalConditionalAppearanceInscriptionContextMenu" id="98"/>
 											<ExtendedTooltip name="LocalConditionalAppearanceInscriptionExtendedTooltip" id="185"/>
@@ -1172,6 +1408,10 @@ If you want the current item to have its own conditional appearance, select the 
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Conditional report appearance</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Нажмите здесь для перехода к условному оформлению отчета.</v8:content>
 												</v8:item>
 											</Title>
 											<Hyperlink>true</Hyperlink>
@@ -1189,6 +1429,10 @@ If you want the current item to have its own conditional appearance, select the 
 											<v8:lang>en</v8:lang>
 											<v8:content>Page of the unavailable conditional appearance</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница недоступного условного оформления</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="ConditionalAppearanceUnavailableSettingsExtendedTooltip" id="187"/>
 									<ChildItems>
@@ -1202,6 +1446,11 @@ If you want the current item to have its own conditional appearance, select the 
 													<v8:content>The conditional appearance can not be set for the current item.
 In the structure tree, select a report to edit the conditional appearance of the report.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>У текущего элемента не может быть установлено условное оформление.
+Выберите в дереве структуры отчет для редактирования условного оформления отчета в целом.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="InaccessibleConditionalAppearanceStaticContextMenu" id="103"/>
 											<ExtendedTooltip name="InaccessibleConditionalAppearanceStaticExtendedTooltip" id="188"/>
@@ -1211,6 +1460,10 @@ In the structure tree, select a report to edit the conditional appearance of the
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Conditional report appearance</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Нажмите здесь для перехода к условному оформлению отчета.</v8:content>
 												</v8:item>
 											</Title>
 											<Hyperlink>true</Hyperlink>
@@ -1232,6 +1485,10 @@ In the structure tree, select a report to edit the conditional appearance of the
 							<v8:lang>en</v8:lang>
 							<v8:content>Additional settings</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Редактировать дополнительные настройки почтового сервера</v8:content>
+						</v8:item>
 					</Title>
 					<Picture>
 						<xr:Ref>StdPicture.DataCompositionOutputParameters</xr:Ref>
@@ -1245,6 +1502,10 @@ In the structure tree, select a report to edit the conditional appearance of the
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Current item has individual additional settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текущий элемент имеет собственные дополнительные настройки</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
@@ -1261,6 +1522,10 @@ In the structure tree, select a report to edit the conditional appearance of the
 									<v8:lang>en</v8:lang>
 									<v8:content>Additional setting pages</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы дополнительных настроек</v8:content>
+								</v8:item>
 							</Title>
 							<PagesRepresentation>None</PagesRepresentation>
 							<ExtendedTooltip name="OutputParametersPagesExtendedTooltip" id="192"/>
@@ -1270,6 +1535,10 @@ In the structure tree, select a report to edit the conditional appearance of the
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Additional settings page</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница дополнительных настроек</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Horizontal</Group>
@@ -1285,6 +1554,10 @@ In the structure tree, select a report to edit the conditional appearance of the
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Additional settings table</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Таблица дополнительных настроек</v8:content>
 												</v8:item>
 											</Title>
 											<SearchStringLocation>None</SearchStringLocation>
@@ -1326,6 +1599,10 @@ In the structure tree, select a report to edit the conditional appearance of the
 											<v8:lang>en</v8:lang>
 											<v8:content>Page of the disabled additional settings</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница отключенных дополнительных настроек</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="OutputParametersDisabledSettingsExtendedTooltip" id="195"/>
 									<ChildItems>
@@ -1340,6 +1617,12 @@ In the structure tree, select a report to edit the conditional appearance of the
 Select in the structure tree the report for editing the additional settings of the report in general.
 If you want the current item to have its own additional settings, select the check box above the text.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>В текущем элементе дополнительные настройки не установлены.
+Выберите в дереве структуры отчет для редактирования дополнительных настроек отчета в целом.
+Если необходимо, чтобы текущий элемент имел собственные дополнительные настройки, установите флажок, расположенный над этим текстом.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="LocalOutputParametersInscriptionContextMenu" id="116"/>
 											<ExtendedTooltip name="LocalOutputParametersInscriptionExtendedTooltip" id="196"/>
@@ -1349,6 +1632,10 @@ If you want the current item to have its own additional settings, select the che
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Click here to proceed to the additional report settings.</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Нажмите здесь для перехода к дополнительным настройкам отчета.</v8:content>
 												</v8:item>
 											</Title>
 											<Hyperlink>true</Hyperlink>
@@ -1366,6 +1653,10 @@ If you want the current item to have its own additional settings, select the che
 											<v8:lang>en</v8:lang>
 											<v8:content>Page of the unavailable additional settings</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница недоступных дополнительных настроек</v8:content>
+										</v8:item>
 									</Title>
 									<ExtendedTooltip name="OutputParametersUnavailableSettingsExtendedTooltip" id="198"/>
 									<ChildItems>
@@ -1379,6 +1670,11 @@ If you want the current item to have its own additional settings, select the che
 													<v8:content>Additional settings can not be set for the current item.
 Select in the structure tree the report for editing the additional settings of the report in general.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>У текущего элемента не могут быть установлены дополнительные настройки.
+Выберите в дереве структуры отчет для редактирования дополнительных настроек отчета в целом.</v8:content>
+												</v8:item>
 											</Title>
 											<ContextMenu name="UnavailableOutputParametersInscriptionContextMenu" id="121"/>
 											<ExtendedTooltip name="UnavailableOutputParametersInscriptionExtendedTooltip" id="199"/>
@@ -1388,6 +1684,10 @@ Select in the structure tree the report for editing the additional settings of t
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Click here to proceed to the additional report settings.</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Нажмите здесь для перехода к дополнительным настройкам отчета.</v8:content>
 												</v8:item>
 											</Title>
 											<Hyperlink>true</Hyperlink>
@@ -1419,6 +1719,10 @@ Select in the structure tree the report for editing the additional settings of t
 					<v8:lang>en</v8:lang>
 					<v8:content>Local selected fields</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Локальные выбранные поля</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1429,6 +1733,10 @@ Select in the structure tree the report for editing the additional settings of t
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Local filter</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Локальный отбор</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1441,6 +1749,10 @@ Select in the structure tree the report for editing the additional settings of t
 					<v8:lang>en</v8:lang>
 					<v8:content>Local order</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Локальный порядок</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1452,6 +1764,10 @@ Select in the structure tree the report for editing the additional settings of t
 					<v8:lang>en</v8:lang>
 					<v8:content>Local conditional appearance</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Локальное условное оформление</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -1462,6 +1778,10 @@ Select in the structure tree the report for editing the additional settings of t
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Local conditional appearance</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Локальное условное оформление</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1476,11 +1796,19 @@ Select in the structure tree the report for editing the additional settings of t
 					<v8:lang>en</v8:lang>
 					<v8:content>Exit</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Завершить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Exit</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Завершить</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>FinishEdit</Action>

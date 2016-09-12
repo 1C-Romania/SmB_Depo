@@ -26,11 +26,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Description:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование:</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Short property representation which is displayed in value edit forms.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Краткое представление свойства, которое выводится в формах редактирования его значения.</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ContextMenu name="DecorationDescriptionContextMenu" id="82"/>
@@ -60,6 +68,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Additional attribute</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>(Дополнительный реквизит)</v8:content>
+									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:decimal">0</Value>
 							</xr:Value>
@@ -72,6 +84,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Additional information</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Дополнительная информация</v8:content>
 									</v8:item>
 								</Presentation>
 								<Value xsi:type="xs:decimal">1</Value>
@@ -99,11 +115,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Pages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Странницы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<ExtendedTooltip name="PagesExtendedTooltip" id="168"/>
@@ -114,11 +138,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Main</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основные</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Main page</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основная страница</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ExtendedTooltip name="MainPageExtendedTooltip" id="170"/>
@@ -128,6 +160,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Attribute value type</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Тип значения реквизита</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
@@ -141,6 +177,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Value type:</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Тип значения:</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="DecorationValueTypeContextMenu" id="75"/>
 									<ExtendedTooltip name="DecorationValueTypeExtendedTooltip" id="123"/>
@@ -152,6 +192,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Selected type data will be specified in the attribute. For example, text, data, number etc</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>В реквизите будут указываться данные выбранного типа. Например, текст, дата, число и т.п.</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ToolTipRepresentation>Button</ToolTipRepresentation>
@@ -175,6 +219,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Group multiline</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа многострочность</v8:content>
+								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
@@ -186,6 +234,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group multiline text box settings</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа многострочное поле ввода настройки</v8:content>
 										</v8:item>
 									</Title>
 									<Group>Horizontal</Group>
@@ -207,6 +259,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content> Lines</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content> строк</v8:content>
+												</v8:item>
 											</Title>
 											<TitleLocation>Right</TitleLocation>
 											<SpinButton>true</SpinButton>
@@ -227,6 +283,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Additional values:</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дополнительные значения:</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
@@ -270,6 +330,10 @@
 														<v8:lang>en</v8:lang>
 														<v8:content>Value editing context menu</v8:content>
 													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Значения контекстное меню редактирования</v8:content>
+													</v8:item>
 												</Title>
 												<ExtendedTooltip name="ValuesContextMenuEditingExtendedTooltip" id="134"/>
 												<ChildItems>
@@ -299,6 +363,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>Value context menu standard commands</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Значения контекстное меню стандартные команды</v8:content>
+															</v8:item>
 														</Title>
 														<CommandSource>Item.Values</CommandSource>
 														<ExtendedTooltip name="ValuesContextMenuStandardCommandsExtendedTooltip" id="139"/>
@@ -315,6 +383,10 @@
 													<v8:item>
 														<v8:lang>en</v8:lang>
 														<v8:content>Values editing command panel</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Значения командная панель редактирования</v8:content>
 													</v8:item>
 												</Title>
 												<ExtendedTooltip name="ValuesCommandBarEditingExtendedTooltip" id="140"/>
@@ -412,11 +484,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Clarification of values list</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Уточнение списка значений</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Clarification of values list</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Уточнение списка значений</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
@@ -430,11 +510,19 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>List of the values which is common with the attribute "Colour" of the "ProductsAndServices (bags)" set. </v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Список значений общий с реквизитом "Цвет" набора "Номенклатура (сумки)" </v8:content>
+												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Proceeding to the value list editing.</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Переход к редактированию списка значений.</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Hyperlink>true</Hyperlink>
@@ -459,6 +547,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Other attributes</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Остальные реквизиты</v8:content>
+								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
@@ -472,6 +564,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Pop-up help</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Всплывающая подсказка</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="ToolTipContextMenu" id="31"/>
 									<ExtendedTooltip name="ToolTipExtendedTooltip" id="155"/>
@@ -481,6 +577,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Group values forms headers</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа заголовки форм значений</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalStretch>false</VerticalStretch>
@@ -496,6 +596,10 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Used in the title of the additional property form.</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Используется в заголовке формы дополнительного значения свойства.</v8:content>
+												</v8:item>
 											</ToolTip>
 											<Width>20</Width>
 											<ContextMenu name="ValueFormHeaderContextMenu" id="34"/>
@@ -507,6 +611,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Used in the title of the additional property selection form.</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Используется в заголовке формы выбора дополнительного значения свойства.</v8:content>
 												</v8:item>
 											</ToolTip>
 											<Width>20</Width>
@@ -523,6 +631,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Sets specifications</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Уточнение наборов</v8:content>
+								</v8:item>
 							</Title>
 							<Group>Horizontal</Group>
 							<Representation>NormalSeparation</Representation>
@@ -535,11 +647,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Common attribute is included to the "Cash Voucher" set </v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Общий реквизит входит в набор "Расходный кассовый ордер" </v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>Go to set.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Переход к набору.</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Hyperlink>true</Hyperlink>
@@ -563,6 +683,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Comment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание</v8:content>
 						</v8:item>
 					</Title>
 					<ExtendedTooltip name="CommentPageExtendedTooltip" id="172"/>
@@ -600,6 +724,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>This is additional information</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это дополнительное сведение</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:decimal</v8:Type>
@@ -620,6 +748,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>List of sets</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список наборов</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
@@ -630,6 +762,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Multiline Text Box</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Многострочное поле ввода</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -645,6 +781,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Multiline Text Box Number</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Многострочное поле ввода число</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -665,6 +805,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Values</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Значения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -701,6 +845,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Show set specification</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать уточнение набора</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -711,6 +859,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Current set of properties</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий набор свойств</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -725,11 +877,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Format</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Формат</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Value format will be used when properties editing by user</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Формат значения будет использован при редактировании свойства пользователем</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EditValueFormat</Action>
@@ -741,11 +901,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Change...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change the kind of additional attribute.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить вид дополнительного реквизита.</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>SpecificationOfValuesListChange</Action>
@@ -756,11 +924,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Change...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change the kind of additional attribute.</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить вид дополнительного реквизита.</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>SpecificationsSetsChange</Action>

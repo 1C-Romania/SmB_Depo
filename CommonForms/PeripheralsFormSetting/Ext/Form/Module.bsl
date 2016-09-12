@@ -11,7 +11,7 @@ Procedure CatalogPeripherals(Command)
 	
 	If Modified Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Data is not written yet! You can start editing the ""Companies"" catalog only after the data is written!'");
+		Message.Text = NStr("en='Data is not written yet! You can start editing the ""Companies"" catalog only after the data is written!';ru='Данные еще не записаны! Переход к редактированию справочника ""Организации"" возможен только после записи данных!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -26,7 +26,7 @@ Procedure OpenExchangeRulesWithPeripherals(Command)
 	
 	If Modified Then
 		Mode = QuestionDialogMode.YesNo;
-		MessageText = NStr("en = 'Data is not written yet! You can go to settings only after the data is written! Record?'");
+		MessageText = NStr("en='Data is not written yet! You can go to settings only after the data is written! Record?';ru='Данные еще не записаны! Переход к настройкам возможен только после записи данных! Записать?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("OpenExchangeRulesWithPeripheralsEnd", ThisObject), MessageText, Mode, 0);

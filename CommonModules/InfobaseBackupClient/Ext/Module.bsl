@@ -33,8 +33,8 @@ Procedure OnStart(Parameters) Export
 	CheckInfobaseBackup(FixedParametersOfInfobaseBackup);
 	
 	If FixedParametersOfInfobaseBackup.RecoverHasBeenPerformed Then
-		NotificationText = NStr("en = 'Data recovery has been successfully performed.'");
-		ShowUserNotification(NStr("en = 'Data is restored.'"), , NotificationText);
+		NotificationText = NStr("en='Data recovery has been successfully performed.';ru='Восстановление данных проведено успешно.'");
+		ShowUserNotification(NStr("en='Data is restored.';ru='Данные восстановлены.'"), , NotificationText);
 	EndIf;
 	
 	VariantNotifications = FixedParametersOfInfobaseBackup.NotificationParameter;
@@ -130,7 +130,7 @@ Procedure OnGetListOfWarningsToCompleteJobs(Warnings) Export
 	EndIf;
 	
 	WarningParameters = StandardSubsystemsClient.AlertOnEndWork();
-	WarningParameters.FlagText = NStr("en = 'Perform the backup'");
+	WarningParameters.FlagText = NStr("en='Perform the backup';ru='Выполнить резервное копирование'");
 	WarningParameters.Priority = 50;
 	
 	ActionIfMarked = WarningParameters.ActionIfMarked;
@@ -316,7 +316,7 @@ Procedure DeleteBackupsBySetting() Export
 		Except
 			
 			EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Error",
-				NStr("en = 'Failed to clear the directory with the backup copies.'") + Chars.LF 
+				NStr("en='Failed to clear the directory with the backup copies.';ru='Не удалось провести очистку каталога с резервными копиями.'") + Chars.LF 
 				+ DetailErrorDescription(ErrorInfo()),,True);
 			
 		EndTry;
@@ -346,9 +346,9 @@ Procedure CheckInfobaseBackup(Parameters)
 		
 	Else
 		
-		ShowUserNotification(NStr("en = 'Backup'"),
+		ShowUserNotification(NStr("en='Backup';ru='Резервное копирование'"),
 			"e1cib/command/CommonCommand.ShowBackupResult",
-			NStr("en = 'Backup has been successfully performed'"), PictureLib.Information32);
+			NStr("en='Backup has been successfully performed';ru='Резервное копирование проведено успешно'"), PictureLib.Information32);
 		InfobaseBackupServerCall.SetSettingValue("CopyingHasBeenPerformed", False);
 		
 	EndIf;
@@ -365,8 +365,8 @@ Procedure NotifyUserAboutBackingUp(VariantNotifications) Export
 	ExplanationText = "";
 	If VariantNotifications = "Overdue" Then
 		
-		ExplanationText = NStr("en = 'Automatic backup was not executed.'"); 
-		ShowUserNotification(NStr("en = 'Backup'"),
+		ExplanationText = NStr("en='Automatic backup was not executed.';ru='Автоматическое резервное копирование не было выполнено.'"); 
+		ShowUserNotification(NStr("en='Backup';ru='Резервное копирование'"),
 			"e1cib/app/DataProcessor.InfobaseBackup", ExplanationText, PictureLib.Warning32);
 		
 	ElsIf VariantNotifications = "YetNotConfigured" Then
@@ -375,8 +375,8 @@ Procedure NotifyUserAboutBackingUp(VariantNotifications) Export
 		SettingsFormName = StringFunctionsClientServer.PlaceParametersIntoString(
 			SettingsFormName, BackupSettingsFormName());
 			
-		ExplanationText = NStr("en = 'Recommended to set info base backup.'"); 
-		ShowUserNotification(NStr("en = 'Backup'"),
+		ExplanationText = NStr("en='Recommended to set info base backup.';ru='Рекомендуется настроить резервное копирование информационной базы.'"); 
+		ShowUserNotification(NStr("en='Backup';ru='Резервное копирование'"),
 			SettingsFormName, ExplanationText, PictureLib.Warning32);
 			
 	EndIf;
@@ -407,7 +407,7 @@ EndFunction
 //
 Function EventLogMonitorEvent() Export
 	
-	Return NStr("en = 'Info base backup'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Info base backup';ru='Резервное копирование информационной базы'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -421,7 +421,7 @@ Function ClientParametersOfBackup() Export
 		ParametersStructure = New Structure();
 		ParametersStructure.Insert("UpdateDateTimeIsSet", False);
 		ParametersStructure.Insert("ApplicationFileName", StandardSubsystemsClient.ApplicationExecutedFileName());
-		ParametersStructure.Insert("EventLogMonitorEvent", NStr("en = 'Infobase backup'"));
+		ParametersStructure.Insert("EventLogMonitorEvent", NStr("en='Infobase backup';ru='Резервное копирование ИБ'"));
 		
 		// Determine temporary files directory.
 		CurrentDate = CommonUseClient.SessionDate();

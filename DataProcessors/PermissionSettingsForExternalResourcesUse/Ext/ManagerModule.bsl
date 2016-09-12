@@ -145,7 +145,7 @@ EndProcedure
 Function RunUsageCheckQueriesProcessor() Export
 	
 	If TransactionActive() Then
-		Raise NStr("en = 'Transaction active'");
+		Raise NStr("en='Transaction active';ru='Транзакция активна'");
 	EndIf;
 	
 	Result = New Structure();
@@ -231,7 +231,7 @@ EndProcedure
 Procedure LockGrantedPermissionsRegisters(Val ProgramModule = Undefined, Val LockConnectionModes = True) Export
 	
 	If Not TransactionActive() Then
-		Raise NStr("en = 'Transaction is not active!'");
+		Raise NStr("en='Transaction is not active!';ru='Транзакция не активна!'");
 	EndIf;
 	
 	Block = New DataLock();
@@ -341,7 +341,7 @@ Function PermissionsTableRow(Val PermissionTable, Val Filter, Val AddWithout = T
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Violation of lines uniqueness in the permissions table with filter %1'"),
+			NStr("en='Violation of lines uniqueness in the permissions table with filter %1';ru='Нарушение уникальности строк в таблице разрешений по отбору %1'"),
 			CommonUse.ValueToXMLString(Filter));
 		
 	EndIf;

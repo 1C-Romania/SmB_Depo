@@ -580,7 +580,7 @@ Procedure InitializeDocumentData(DocumentRefPurchaseOrder, StructureAdditionalPr
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches",  StructureAdditionalProperties.AccountingPolicy.UseBatches);
-	Query.SetParameter("InventoryReservation", NStr("en = 'Inventory reservation'"));
+	Query.SetParameter("InventoryReservation", NStr("en='Inventory reservation';ru='Резервирование запасов'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -733,7 +733,7 @@ Procedure CheckEnteringAbilityOnTheBasisOfVendorOrder(FillingData, AttributeValu
 	
 	If AttributeValues.Property("Posted") Then
 		If Not AttributeValues.Posted Then
-			ErrorText = NStr("en='Document %Document% is not processed. Entry according to the unposted document is prohibited.'");
+			ErrorText = NStr("en='Document %Document% is not processed. Entry according to the unposted document is prohibited.';ru='Документ %Документ% не проведен. Ввод на основании непроведенного документа запрещен.'");
 			ErrorText = StrReplace(ErrorText, "%Document%", FillingData);
 			Raise ErrorText;
 		EndIf;
@@ -741,7 +741,7 @@ Procedure CheckEnteringAbilityOnTheBasisOfVendorOrder(FillingData, AttributeValu
 	
 	If AttributeValues.Property("Closed") Then
 		If AttributeValues.Closed Then
-			ErrorText = NStr("en='Document %Document% is closed (completed). Entry on the basis of the closed order is completed.'");
+			ErrorText = NStr("en='Document %Document% is closed (completed). Entry on the basis of the closed order is completed.';ru='Документ %Документ% закрыт (выполнен). Ввод на основании закрытого заказа запрещен.'");
 			ErrorText = StrReplace(ErrorText, "%Document%", FillingData);
 			Raise ErrorText;
 		EndIf;
@@ -749,7 +749,7 @@ Procedure CheckEnteringAbilityOnTheBasisOfVendorOrder(FillingData, AttributeValu
 	
 	If AttributeValues.Property("OrderState") Then
 		If AttributeValues.OrderState.OrderStatus = Enums.OrderStatuses.Open Then
-			ErrorText = NStr("en='Document %Document% in state %OrderState%. Input on the basis is forbidden.'");
+			ErrorText = NStr("en='Document %Document% in state %OrderState%. Input on the basis is forbidden.';ru='Документ %Документ% в состоянии %СостояниеЗаказа%. Ввод на основании запрещен.'");
 			ErrorText = StrReplace(ErrorText, "%Document%", FillingData);
 			ErrorText = StrReplace(ErrorText, "%OrderState%", AttributeValues.OrderState);
 			Raise ErrorText;
@@ -1290,7 +1290,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "VendorsOrderTemplate";
-	PrintCommand.Presentation = NStr("en = 'Purchase order'");
+	PrintCommand.Presentation = NStr("en='Purchase order';ru='Заказ поставщику'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

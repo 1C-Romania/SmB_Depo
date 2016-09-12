@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>File locations</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Размещение файлов</v8:content>
+		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
@@ -33,11 +37,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Path to archive with the files of initial image</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Путь к архиву с файлами начального образа</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>File base path group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа путь файловой базы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -51,6 +63,10 @@
 							<v8:content>For the 1C:Enterprise server running 
 under Microsoft Windows, (type 
 "\\servername\resource\files.zip")</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для сервера 1С:Предприятия под управлением Microsoft Windows, (вида "\\servername\resource\files.zip")</v8:content>
 						</v8:item>
 					</Title>
 					<TitleLocation>Top</TitleLocation>
@@ -68,6 +84,10 @@ under Microsoft Windows, (type
 							<v8:lang>en</v8:lang>
 							<v8:content>For the 1C:Enterprise server running under Linux</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для сервера 1С:Предприятия под управлением Linux</v8:content>
+						</v8:item>
 					</Title>
 					<TitleLocation>Top</TitleLocation>
 					<ContextMenu name="PathToLinuxArchiveContextMenu" id="5"/>
@@ -83,6 +103,10 @@ under Microsoft Windows, (type
 					<v8:lang>en</v8:lang>
 					<v8:content>Path to windows archive</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Путь к архиву windows</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -97,6 +121,10 @@ under Microsoft Windows, (type
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Path to Linux archive</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Путь к архиву linux</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -115,11 +143,19 @@ under Microsoft Windows, (type
 					<v8:lang>en</v8:lang>
 					<v8:content>Place</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Разместить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Place</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Разместить</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>Place</Action>

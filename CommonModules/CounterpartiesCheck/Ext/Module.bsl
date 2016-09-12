@@ -69,7 +69,7 @@ Procedure CheckCounterpartyBackgroundJob(Parameters) Export
 	Except
 		
 		ErrorInfo = ErrorInfo();
-		WriteLogEvent(NStr("en = 'Check counterparties.Check counterparty from the counterparty card'"),
+		WriteLogEvent(NStr("en='Check counterparties.Check counterparty from the counterparty card';ru='Проверка контрагентов.Проверка контрагента из карточки контрагента'"),
 			EventLogLevel.Error,,,DetailErrorDescription(ErrorInfo));
 			
 	EndTry;
@@ -163,7 +163,7 @@ Procedure CounterpartiesCheckAfterBackgroundJobCheckingSwitch() Export
 	Try
 	
 		BackgroundJobs.Execute("CounterpartiesCheck.CounterpartiesCheckAfterCheckStart", 
-		, "CheckAfterEnableMechanism", NStr("en = 'Check counterparties'"));
+		, "CheckAfterEnableMechanism", NStr("en='Check counterparties';ru='Проверка контрагентов'"));
 
 	Except
 		
@@ -171,7 +171,7 @@ Procedure CounterpartiesCheckAfterBackgroundJobCheckingSwitch() Export
 		// the previous Special processing is not required background job was not finished
 		
 		ErrorInfo = ErrorInfo();
-		WriteLogEvent(NStr("en = 'Check counterparties.Check counterparties in background job'"),
+		WriteLogEvent(NStr("en='Check counterparties.Check counterparties in background job';ru='Проверка контрагентов.Проверка контрагентов в фоновом задании'"),
 			EventLogLevel.Error,,,DetailErrorDescription(ErrorInfo));
 			
 	EndTry;
@@ -263,7 +263,7 @@ Function ProxyService(ErrorDescription = "") Export
 		ServiceAddress = ServiceSettings.ServiceAddress;
 		
 		If Not ValueIsFilled(ServiceAddress) Then
-			ErrorDescription = NStr("en = 'Service address of data check service is not specified.'");
+			ErrorDescription = NStr("en='Service address of data check service is not specified.';ru='Не указан адрес сервиса проверки данных по контрагенту'");
 		Else
 			WSProxy = GetWSProxy(ServiceAddress);
 		EndIf;
@@ -271,7 +271,7 @@ Function ProxyService(ErrorDescription = "") Export
 	Except
 		
 		ErrorInfo = ErrorInfo();
-		WriteLogEvent(NStr("en = 'Check counterparties.Error accessing the web service of counterparties checking'"),
+		WriteLogEvent(NStr("en='Check counterparties.Error accessing the web service of counterparties checking';ru='Проверка контрагентов.Ошибка доступа к веб-сервису проверки контрагентов'"),
 			EventLogLevel.Error,,,DetailErrorDescription(ErrorInfo));
 			
 		ErrorDescription = ErrorInfo.Description;
@@ -307,7 +307,7 @@ EndProcedure
 
 Function WarningTextAboutServiceOperationTestMode() Export
 	
-	Return NStr("en = 'FTS web service is currently in the test mode'");
+	Return NStr("en='FTS web service is currently in the test mode';ru='В настоящее время веб-сервис ФНС работает в тестовом режиме'");
 	
 EndFunction
 
@@ -318,25 +318,25 @@ Procedure SetLablesInReportsPanelOnCreateAtServer(Form) Export
 	// All counterparties are correct
 	FormItem = Form.Items.Find("TextOnCorrectCounterparties");
 	If FormItem <> Undefined Then
-		FormItem.Title = New FormattedString(NStr("en = 'Check of the counterparties according to FTS data is successful'"), RefForInstruction);
+		FormItem.Title = New FormattedString(NStr("en='Check of the counterparties according to FTS data is successful';ru='Проверка контрагентов по данным ФНС выполнена успешно'"), RefForInstruction);
 	EndIf;
 	
 	// There are incorrect counterparties
 	FormItem = Form.Items.Find("TextOnBadCounterparties");
 	If FormItem <> Undefined Then
-		FormItem.Title = New FormattedString(NStr("en = 'Inactive counterparties were found according to FTS data.'"), RefForInstruction);
+		FormItem.Title = New FormattedString(NStr("en='Inactive counterparties were found according to FTS data.';ru='Обнаружены недействующие контрагенты по данным ФНС'"), RefForInstruction);
 	EndIf;
 	
 	// Check is in progress
 	FormItem = Form.Items.Find("TextOnCheckInProgress");
 	If FormItem <> Undefined Then
-		FormItem.Title = New FormattedString(NStr("en = 'Counterparties check is in progress according to FTS data'"), RefForInstruction);
+		FormItem.Title = New FormattedString(NStr("en='Counterparties check is in progress according to FTS data';ru='Выполняется проверка контрагентов согласно данным ФНС'"), RefForInstruction);
 	EndIf;
 	
 	// No access to web service
 	FormItem = Form.Items.Find("TextNoAccessToService");
 	If FormItem <> Undefined Then
-		FormItem.Title = New FormattedString(NStr("en = 'Unable to check counterparties: FTS service is temporarily unavailable'"), RefForInstruction);
+		FormItem.Title = New FormattedString(NStr("en='Unable to check counterparties: FTS service is temporarily unavailable';ru='Не удалось произвести проверку контрагентов: сервис ФНС временно недоступен'"), RefForInstruction);
 	EndIf;
 	
 EndProcedure
@@ -469,7 +469,7 @@ Procedure CounterpartiesCheckInDocumentBackgroundJob(Form, Item = Undefined) Exp
 		
 		Try
 		 	BackgroundJob = BackgroundJobs.Execute("CounterpartiesCheck.CounterpartiesCheckInDocument", 
-				Parameters, , NStr("en = 'Check counterparties in document'"));
+				Parameters, , NStr("en='Check counterparties in document';ru='Проверка контрагентов в документе'"));
 				
 			If BackgroundJob <> Undefined Then 
 				Form.CounterpartiesCheckJobID = BackgroundJob.UUID;
@@ -479,7 +479,7 @@ Procedure CounterpartiesCheckInDocumentBackgroundJob(Form, Item = Undefined) Exp
 			// Exception appears when you try to run the background job until
 			// the previous Special processing is not required background job was not finished
 			ErrorInfo = ErrorInfo();
-			WriteLogEvent(NStr("en = 'Check counterparties.Counterparties check as a background job in the document'"),
+			WriteLogEvent(NStr("en='Check counterparties.Counterparties check as a background job in the document';ru='Проверка контрагентов.Проверка контрагентов фоновым заданием в документе'"),
 				EventLogLevel.Error,,,DetailErrorDescription(ErrorInfo));
 				
 		EndTry;
@@ -657,7 +657,7 @@ Procedure SaveCheckResultsInRegister(CounterpartiesData)
 			ErrorInfo = ErrorInfo();
 			
 			WriteLogEvent(
-			NStr("en = 'Check counterparties. Write counterparties checking results to the register'"), 
+			NStr("en='Check counterparties. Write counterparties checking results to the register';ru='Проверка контрагентов.Запись результатов проверки контрагентов в регистр'"), 
 			EventLogLevel.Error,,,
 			DetailErrorDescription(ErrorInfo));
 			
@@ -762,7 +762,7 @@ Procedure AddCounterpartyInQueryService(WSQuery, Proxy, TargetNamespace, Counter
 		
 		CounterpartyData.Status = Enums.CounterpartyExistenceStates.ContainsErrorsInData;
 		
-		WriteLogEvent(NStr("en = 'Check counterparties.Create data to call the FTS web service'"),
+		WriteLogEvent(NStr("en='Check counterparties.Create data to call the FTS web service';ru='Проверка контрагентов.Формирование данных для обращения к сервису ФНС'"),
 			EventLogLevel.Error,,,DetailErrorDescription(ErrorInfo));
 	EndTry; 
 				
@@ -789,7 +789,7 @@ Procedure ProcessServiceResponse(NdsResponse, CounterpartiesDataToCheckWithServi
 				ErrorInfo = ErrorInfo();
 				
 				WriteLogEvent(
-				NStr("en = 'Check counterparties.Web service response processing'"), 
+				NStr("en='Check counterparties.Web service response processing';ru='Проверка контрагентов.Обработка ответа от веб-сервиса'"), 
 				EventLogLevel.Error,,,
 				DetailErrorDescription(ErrorInfo));
 			

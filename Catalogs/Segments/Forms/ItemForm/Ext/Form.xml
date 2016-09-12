@@ -16,11 +16,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Description group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа описаний</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Description group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа описаний</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -49,11 +57,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Rules</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>правила</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Rules</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>правила</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
@@ -219,6 +235,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Comment</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Примечание</v8:content>
+				</v8:item>
 			</InputHint>
 			<ContextMenu name="CommentContextMenu" id="23"/>
 			<ExtendedTooltip name="CommentExtendedTooltip" id="24"/>
@@ -238,6 +258,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Used rules</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Используемые правила</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTable</v8:Type>
@@ -249,6 +273,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -265,6 +293,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Rule</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правило</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:string</v8:Type>
@@ -280,6 +312,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Comparison kind</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид сравнения</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>dcsset:DataCompositionComparisonType</v8:Type>
@@ -291,6 +327,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Value</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение</v8:content>
+						</v8:item>
 					</Title>
 					<Type/>
 				</Column>
@@ -299,6 +339,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Key of a dynamic rule</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ динамического правила</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -317,6 +361,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Available rules</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступные правила</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>v8:ValueTree</v8:Type>
@@ -327,6 +375,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -358,6 +410,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Available kinds of comparison</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доступные виды сравнения</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>v8:ValueListType</v8:Type>
@@ -368,6 +424,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Type of filter value</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип значения отбора</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -380,6 +440,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Comparison kind</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид сравнения</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>dcsset:DataCompositionComparisonType</v8:Type>
@@ -391,6 +455,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Value properties</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Свойства значения</v8:content>
+						</v8:item>
 					</Title>
 					<Type/>
 				</Column>
@@ -399,6 +467,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Key of a dynamic rule</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ динамического правила</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -415,6 +487,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Folder</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это группа</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
@@ -425,6 +501,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Picture index</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс картинки</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -441,6 +521,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Multiple use</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Множественное использование</v8:content>
 						</v8:item>
 					</Title>
 					<Type>

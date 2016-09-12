@@ -371,9 +371,11 @@ Procedure CheckCorrectnessOfDetailsOfDocumentFill(QuestionText)
 	
 	If Selection.Count() > 1 Then
 		
-		QuestionText = NStr("en = 'Document created in several currencies will not be transferred to Enterprise Accounting.
-			|
-			|Do you like to continue document record?'");
+		QuestionText = NStr("en='Document created in several currencies will not be transferred to Enterprise Accounting."
+""
+"Do you like to continue document record?';ru='Документ оформленный в нескольких валютах не будет перенесен в ""Бухгалтерию предприятия""."
+""
+"Продолжить запись документа?'");
 			
 		Return;
 		
@@ -383,10 +385,13 @@ Procedure CheckCorrectnessOfDetailsOfDocumentFill(QuestionText)
 	If Object.OperationKind = Enums.OperationKindsNetting.Netting
 		AND SumAdvancesDebitor <> SumAdvancesLender Then
 		
-		QuestionText = NStr("en = 'Document which advance amount in tabular section ""Accounts receivable"" does
-			|not correspond to the advance amount of tabular section ""Accounts payable"" will not be transferred to Enterprise Accounting.
-			|
-			|Do you like to continue document record?'");
+		QuestionText = NStr("en='Document which advance amount in tabular section ""Accounts receivable"" does"
+"not correspond to the advance amount of tabular section ""Accounts payable"" will not be transferred to Enterprise Accounting."
+""
+"Do you like to continue document record?';ru='Документ, у которого сумма авансов в табличной части"
+"""Расчеты с покупателем"" не соответствует сумме авансов в табличной части ""Расчеты с поставщиком"" не будет перенесен в ""Бухгалтерию предприятия""."
+""
+"Продолжить запись документа?'");
 			
 		Return;
 		
@@ -1041,7 +1046,7 @@ EndProcedure
 Procedure PickAccountsReceivable(Command)
 	
 	If Not ValueIsFilled(Object.CounterpartySource) Then
-		ShowMessageBox(, NStr("en = 'Specify the customer first!'"));
+		ShowMessageBox(, NStr("en='Specify the customer first!';ru='Укажите вначале покупателя!'"));
 		Return;
 	EndIf;
 	
@@ -1126,7 +1131,7 @@ EndProcedure // GetDebitorFromStorage()
 Procedure PickVendorSettlements(Command)
 	
 	If Not ValueIsFilled(Object.Counterparty) Then
-		ShowMessageBox(, NStr("en = 'Specify the vendor first!'"));
+		ShowMessageBox(, NStr("en='Specify the vendor first!';ru='Укажите вначале поставщика!'"));
 		Return;
 	EndIf;
 	
@@ -1233,7 +1238,7 @@ Procedure FillByDocumentBase(Command)
 	If Not ValueIsFilled(Object.BasisDocument) Then
 		
 		Message				= New UserMessage;
-		Message.Text			= NStr("en = 'Select the basis document.'");
+		Message.Text			= NStr("en='Select the basis document.';ru='Выберите документ основание.'");
 		Message.DataPath	= "BasisDocument";
 		Message.Message();
 		
@@ -1241,7 +1246,7 @@ Procedure FillByDocumentBase(Command)
 		
 	EndIf;
 	
-	QuestionText 	= NStr("en = 'Document will be cleared and filled according to basis document. Continue?'");
+	QuestionText 	= NStr("en='Document will be cleared and filled according to basis document. Continue?';ru='Документ будит очищен и заполнен по документу-основанию. Продолжить?'");
 	Response = Undefined;
 
 	ShowQueryBox(New NotifyDescription("FillAccordingToBasisDocumentEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo, );

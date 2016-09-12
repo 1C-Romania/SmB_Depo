@@ -79,8 +79,8 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 		
 		If ValueIsFilled(QuestionText) Then
 			Buttons = New ValueList;
-			Buttons.Add("ContinueWrite",            NStr("en = 'Continue write'"));
-			Buttons.Add("BackToEnteringNames", NStr("en = 'Return to the name entry'"));
+			Buttons.Add("ContinueWrite",            NStr("en='Continue write';ru='Продолжить запись'"));
+			Buttons.Add("BackToEnteringNames", NStr("en='Return to the name entry';ru='Вернуться к вводу наименования'"));
 			
 			ShowQueryBox(
 				New NotifyDescription("AfterAnswerToAQuestionWhenNameIsAlreadyUsed", ThisObject, WriteParameters),
@@ -249,13 +249,13 @@ Procedure AdditionalValuesWithWeightOnChange(Item)
 	   AND Not Object.AdditionalValuesWithWeight Then
 		
 		QuestionText =
-			NStr("en = 'Do you want
-			           |
-			           |to clear the entered weight coefficients? Data will be recorded.'");
+			NStr("en='Do you want"
+""
+"to clear the entered weight coefficients? Data will be recorded.';ru='Очистить введенные весовые коэффициенты? Данные будут записаны.'");
 		
 		Buttons = New ValueList;
-		Buttons.Add("ClearAndWrite", NStr("en = 'Clean and write'"));
-		Buttons.Add("Cancel", NStr("en = 'Cancel'"));
+		Buttons.Add("ClearAndWrite", NStr("en='Clean and write';ru='Очистить и записать'"));
+		Buttons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
 		
 		ShowQueryBox(
 			New NotifyDescription("AfterWeightCoefficientsClearingConfirmation", ThisObject),
@@ -636,18 +636,21 @@ Procedure WriteObject(VariantOfTextOfQuestion, ContinuationProcedureName, Additi
 	
 	If VariantOfTextOfQuestion = "TransitionToListOfValues" Then
 		QuestionText =
-			NStr("en = 'Transition to values
-			           |list work is possible only after the data record.
-			           |
-			           |Data will be written.'");
+			NStr("en='Transition to values"
+"list work is possible only after the data record."
+""
+"Data will be written.';ru='Переход"
+"к работе со списком значений возможен только после записи данных."
+""
+"Данные будут записаны.'");
 	Else
 		QuestionText =
-			NStr("en = 'Data will be written.'")
+			NStr("en='Data will be written.';ru='Данные будут записаны.'")
 	EndIf;
 	
 	Buttons = New ValueList;
 	Buttons.Add("Write", NStr("en = 'Write'"));
-	Buttons.Add("Cancel", NStr("en = 'Cancel'"));
+	Buttons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
 	
 	ShowQueryBox(
 		New NotifyDescription(
@@ -692,43 +695,43 @@ Procedure EditValueFormatEnd(Text, NotSpecified) Export
 		For Each Substring IN Array Do
 			If Find(Substring, "DP=") > 0 OR Find(Substring, "DE=") > 0 Then
 				WarningText = WarningText + Chars.LF +
-					NStr("en = 'Empty date fields representation is not supported in the input fields.'");
+					NStr("en='Empty date fields representation is not supported in the input fields.';ru='Представление пустой даты не поддерживается в полях ввода.'");
 				Continue;
 			EndIf;
 			If Find(Substring, "NZ=") > 0 OR Find(Substring, "NZ=") > 0 Then
 				WarningText = WarningText + Chars.LF +
-					NStr("en = 'Empty number representing is not supported in the input fields.'");
+					NStr("en='Empty number representing is not supported in the input fields.';ru='Представление пустого числа не поддерживается в полях ввода.'");
 				Continue;
 			EndIf;
 			If Find(Substring, "DF=") > 0 OR Find(Substring, "DF=") > 0 Then
 				If Find(Substring, "ddd") > 0 OR Find(Substring, "ddd") > 0 Then
 					WarningText = WarningText + Chars.LF +
-						NStr("en = 'Short name of weekday is not supported in the input fields.'");
+						NStr("en='Short name of weekday is not supported in the input fields.';ru='Кратное название дня недели не поддерживается в полях ввода.'");
 				EndIf;
 				If Find(Substring, "dddd") > 0 OR Find(Substring, "dddd") > 0 Then
 					WarningText = WarningText + Chars.LF +
-						NStr("en = 'Full weekday name is not suppoted in the input fields.'");
+						NStr("en='Full weekday name is not suppoted in the input fields.';ru='Полное название дня недели не поддерживается в полях ввода.'");
 				EndIf;
 				If Find(Substring, "MMM") > 0 OR Find(Substring, "MMM") > 0 Then
 					WarningText = WarningText + Chars.LF +
-						NStr("en = 'Short name of month is not supported in the input fields.'");
+						NStr("en='Short name of month is not supported in the input fields.';ru='Кратное название месяца не поддерживается в полях ввода.'");
 				EndIf;
 				If Find(Substring, "MMMM") > 0 OR Find(Substring, "MMMM") > 0 Then
 					WarningText = WarningText + Chars.LF +
-						NStr("en = 'Full month name is not supported in the input fields.'");
+						NStr("en='Full month name is not supported in the input fields.';ru='Полное название месяца не поддерживается в полях ввода.'");
 				EndIf;
 			EndIf;
 			If Find(Substring, "DLF=") > 0 OR Find(Substring, "DLF=") > 0 Then
 				If Find(Substring, "DD") > 0 OR Find(Substring, "DD") > 0 Then
 					WarningText = WarningText + Chars.LF +
-						NStr("en = 'Long date (month in words) is not supported in the input fields.'");
+						NStr("en='Long date (month in words) is not supported in the input fields.';ru='Длинная дата (месяц прописью) не поддерживается в полях ввода.'");
 				EndIf;
 			EndIf;
 		EndDo;
 		
 		If ValueIsFilled(WarningText) Then
 			WarningText = WarningText + Chars.LF +
-				NStr("en = 'There are no any limits where text box fields are used.'");
+				NStr("en='There are no any limits where text box fields are used.';ru='В местах использования полей надписей ограничений нет.'");
 			ShowMessageBox(, WarningText);
 		EndIf;
 	EndIf;
@@ -830,11 +833,15 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 				   AND Not Object.ValueType.ContainsType(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) Then
 					
 					WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'It is impossible
-						           |to delet the type ""%1"", as additional values are already input.
-						           |It is necessary to delete additional input values first.
-						           |
-						           |Deleted type is restored.'"),
+						NStr("en='It is impossible"
+"to delet the type ""%1"", as additional values are already input."
+"It is necessary to delete additional input values first."
+""
+"Deleted type is restored.';ru='Недопустимо"
+"удалять тип ""%1"", так как дополнительные значения уже введены."
+"Сначала нужно удалить введенные дополнительные значения."
+""
+"Удаленный тип восстановлен.'"),
 						String(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) );
 					
 					Object.ValueType = New TypeDescription(
@@ -846,11 +853,15 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 				        AND Not Object.ValueType.ContainsType(Type("CatalogRef.ObjectsPropertiesValues")) Then
 					
 					WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'It is impossible
-						           |to delet the type ""%1"", as additional values are already input.
-						           |It is necessary to delete additional input values first.
-						           |
-						           |Deleted type is restored.'"),
+						NStr("en='It is impossible"
+"to delet the type ""%1"", as additional values are already input."
+"It is necessary to delete additional input values first."
+""
+"Deleted type is restored.';ru='Недопустимо"
+"удалять тип ""%1"", так как дополнительные значения уже введены."
+"Сначала нужно удалить введенные дополнительные значения."
+""
+"Удаленный тип восстановлен.'"),
 						String(Type("CatalogRef.ObjectsPropertiesValues")) );
 					
 					Object.ValueType = New TypeDescription(
@@ -868,11 +879,15 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 			If Not OldValueType.ContainsType(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) Then
 				
 				WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'It is impossible to
-					           |use ""%1""
-					           |and ""%2"" value types simultaneously.
-					           |
-					           |Second type deleted.'"),
+					NStr("en='It is impossible to"
+"use ""%1"""
+"and ""%2"" value types simultaneously."
+""
+"Second type deleted.';ru='Недопустимо одновременно"
+"использовать"
+"типы значения ""%1"" и ""%2""."
+""
+"Второй тип удален.'"),
 					String(Type("CatalogRef.ObjectsPropertiesValues")),
 					String(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) );
 				
@@ -883,11 +898,15 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 					"CatalogRef.ObjectsPropertiesValuesHierarchy");
 			Else
 				WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'It is impossible to
-					           |use ""%1""
-					           |and ""%2"" value types simultaneously.
-					           |
-					           |First type deleted.'"),
+					NStr("en='It is impossible to"
+"use ""%1"""
+"and ""%2"" value types simultaneously."
+""
+"First type deleted.';ru='Недопустимо одновременно"
+"использовать"
+"типы значения ""%1"" и ""%2""."
+""
+"Первый тип удален.'"),
 					String(Type("CatalogRef.ObjectsPropertiesValues")),
 					String(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) );
 				
@@ -949,9 +968,9 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 			Object.AdditionalValuesOwner, "PropertiesSet, Title, ThisIsAdditionalInformation");
 		
 		If PropertiesOfOwner.ThisIsAdditionalInformation <> True Then
-			SpecificationTemplate = NStr("en = 'Values list is common with the attribute ""%1"" of set ""%2"".'");
+			SpecificationTemplate = NStr("en='Values list is common with the attribute ""%1"" of set ""%2"".';ru='Список значений общий с реквизитом ""%1"" набора ""%2""'");
 		Else
-			SpecificationTemplate = NStr("en = 'Values list is common with the information ""%1"" of set ""%2""'");
+			SpecificationTemplate = NStr("en='Values list is common with the information ""%1"" of set ""%2""';ru='Список значений общий со сведением ""%1"" набора ""%2""'");
 		EndIf;
 		
 		Items.ClarificationOfValuesListComment.Title =
@@ -990,18 +1009,18 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 			   AND ListOfSets.Count() < 2 Then
 				
 				If Object.ThisIsAdditionalInformation Then
-					SpecificationTemplate = NStr("en = 'Information is included in the set: %1'");
+					SpecificationTemplate = NStr("en='Information is included in the set: %1';ru='Сведение входит в набор: %1'");
 				Else
-					SpecificationTemplate = NStr("en = 'Attribute is included in the set: %1'");
+					SpecificationTemplate = NStr("en='Attribute is included in the set: %1';ru='Реквизит входит в набор: %1'");
 				EndIf;
 				TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
 					SpecificationTemplate, TrimAll(ListOfSets[0].Presentation));
 			Else
 				If ListOfSets.Count() > 1 Then
 					If Object.ThisIsAdditionalInformation Then
-						SpecificationTemplate = NStr("en = 'Common information is included to %1 %2'");
+						SpecificationTemplate = NStr("en='Common information is included to %1 %2';ru='Общее сведение входит в %1 %2'");
 					Else
-						SpecificationTemplate = NStr("en = 'Common attribute is included to %1 %2'");
+						SpecificationTemplate = NStr("en='Common attribute is included to %1 %2';ru='Общий реквизит входит в %1 %2'");
 					EndIf;
 					
 					StringSets = TrimAll(NumberInWords(
@@ -1019,9 +1038,9 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 						SpecificationTemplate, Format(ListOfSets.Count(), "NG="), StringSets);
 				Else
 					If Object.ThisIsAdditionalInformation Then
-						SpecificationTemplate = NStr("en = 'Common information is included in the set: %1'");
+						SpecificationTemplate = NStr("en='Common information is included in the set: %1';ru='Общее сведение входит в набор: %1'");
 					Else
-						SpecificationTemplate = NStr("en = 'Common attribiute is included in the set: %1'");
+						SpecificationTemplate = NStr("en='Common attribiute is included in the set: %1';ru='Общий реквизит входит в набор: %1'");
 					EndIf;
 					
 					TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
@@ -1034,15 +1053,15 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 			
 			If ValueIsFilled(Object.PropertySet) Then
 				If Object.ThisIsAdditionalInformation Then
-					TextOfComment = NStr("en = 'Information is not included in a set'");
+					TextOfComment = NStr("en='Information is not included in a set';ru='Сведение не входит в набор'");
 				Else
-					TextOfComment = NStr("en = 'Attribute is not included in the set'");
+					TextOfComment = NStr("en='Attribute is not included in the set';ru='Реквизит не входит в набор'");
 				EndIf;
 			Else
 				If Object.ThisIsAdditionalInformation Then
-					TextOfComment = NStr("en = 'Common information is not included into the sets'");
+					TextOfComment = NStr("en='Common information is not included into the sets';ru='Общее сведение не входит в наборы'");
 				Else
-					TextOfComment = NStr("en = 'Common information is not included into the sets'");
+					TextOfComment = NStr("en='Common information is not included into the sets';ru='Общее сведение не входит в наборы'");
 				EndIf;
 			EndIf;
 		EndIf;
@@ -1050,7 +1069,7 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 		Items.SetsSpecificationsComment.Title = TextOfComment + " ";
 		
 		If Items.SetsSpecificationsComment.Hyperlink Then
-			Items.SetsSpecificationsComment.ToolTip = NStr("en = 'Proceeding to the set'");
+			Items.SetsSpecificationsComment.ToolTip = NStr("en='Proceeding to the set';ru='Переход к набору'");
 		Else
 			Items.SetsSpecificationsComment.ToolTip = "";
 		EndIf;
@@ -1185,27 +1204,33 @@ Function NameIsAlreadyUsed(Val Title, Val CurrentProperty, Val PropertySet, NewD
 	
 	If ValueIsFilled(Selection.PropertySet) Then
 		If Selection.ThisIsAdditionalInformation Then
-			QuestionText = NStr("en = 'There is additional 
-			                          | information with the name ""%1"".'");
+			QuestionText = NStr("en='There is additional "
+" information with the name ""%1"".';ru='Существует дополнительное сведение с наименованием ""%1"".'");
 		Else
-			QuestionText = NStr("en = 'There is additional attribute
-			                          |with name ""%1"".'");
+			QuestionText = NStr("en='There is additional attribute"
+"with name ""%1"".';ru='Существует дополнительный"
+"реквизит с наименованием ""%1"".'");
 		EndIf;
 	Else
 		If Selection.ThisIsAdditionalInformation Then
-			QuestionText = NStr("en = 'There is common additional information
-			                          |with name ""%1"".'");
+			QuestionText = NStr("en='There is common additional information"
+"with name ""%1"".';ru='Существует общее дополнительное"
+"сведение с наименованием ""%1"".'");
 		Else
-			QuestionText = NStr("en = 'There is common additional attribute
-			                          |with name ""%1"".'");
+			QuestionText = NStr("en='There is common additional attribute"
+"with name ""%1"".';ru='Существует общий дополнительный"
+"реквизит с наименованием ""%1"".'");
 		EndIf;
 	EndIf;
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		QuestionText + NStr("en ='
-		                         |
-		                         |It is recommended
-		                         |to use another name otherwise the applicationm may work incorrectly.'"),
+		QuestionText + NStr("en='"
+""
+"It is recommended"
+"to use another name otherwise the applicationm may work incorrectly.';ru='"
+""
+"Рекомендуется"
+"использовать другое наименование, иначе программа может работать некорректно.'"),
 		NewDescription);
 	
 	Return QuestionText;
@@ -1219,29 +1244,29 @@ Function GetTitle(Object)
 		
 		If ValueIsFilled(Object.PropertySet) Then
 			If Object.ThisIsAdditionalInformation Then
-				Title = String(Object.Title) + " " + NStr("en = 'Additional information'");
+				Title = String(Object.Title) + " " + NStr("en='Additional information';ru='Дополнительная информация'");
 			Else
-				Title = String(Object.Title) + " " + NStr("en = 'Additional attribute'");
+				Title = String(Object.Title) + " " + NStr("en='Additional attribute';ru='(Дополнительный реквизит)'");
 			EndIf;
 		Else
 			If Object.ThisIsAdditionalInformation Then
-				Title = String(Object.Title) + " " + NStr("en = '(Common additional information)'");
+				Title = String(Object.Title) + " " + NStr("en='(Common additional information)';ru='(Общее дополнительное сведение)'");
 			Else
-				Title = String(Object.Title) + " " + NStr("en = '(Common additional attribute)'");
+				Title = String(Object.Title) + " " + NStr("en='(Common additional attribute)';ru='(Общий дополнительный реквизит)'");
 			EndIf;
 		EndIf;
 	Else
 		If ValueIsFilled(Object.PropertySet) Then
 			If Object.ThisIsAdditionalInformation Then
-				Title = NStr("en = 'Additional information (create)'");
+				Title = NStr("en='Additional information (create)';ru='Дополнительное сведение (создание)'");
 			Else
-				Title = NStr("en = 'Additional attribute (create)'");
+				Title = NStr("en='Additional attribute (create)';ru='Дополнительный реквизит (создание)'");
 			EndIf;
 		Else
 			If Object.ThisIsAdditionalInformation Then
-				Title = NStr("en = 'Common additional information (creation)'");
+				Title = NStr("en='Common additional information (creation)';ru='Общее дополнительное сведение (создание)'");
 			Else
-				Title = NStr("en = 'Common additional attribute (creation)'");
+				Title = NStr("en='Common additional attribute (creation)';ru='Общий дополнительный реквизит (создание)'");
 			EndIf;
 		EndIf;
 	EndIf;
@@ -1254,9 +1279,9 @@ EndFunction
 Procedure SetTitleOfFormatButton(Form)
 	
 	If IsBlankString(Form.Object.FormatProperties) Then
-		HeaderText = NStr("en = 'Format by default'");
+		HeaderText = NStr("en='Format by default';ru='Формат по умолчанию'");
 	Else
-		HeaderText = NStr("en = 'Format is installed'");
+		HeaderText = NStr("en='Format is installed';ru='Формат установлен'");
 	EndIf;
 	
 	Form.Items.EditValueFormat.Title = HeaderText;

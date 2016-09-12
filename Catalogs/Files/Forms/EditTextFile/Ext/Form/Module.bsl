@@ -38,7 +38,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		FileData.FullDescrOfVersion, FileData.Extension);
 	
 	If Not EditMode Then
-		TitleString = TitleString + NStr("en=' (read only)'");
+		TitleString = TitleString + NStr("en=' (read only)';ru=' (только просмотр)'");
 	EndIf;
 	Title = TitleString;
 	
@@ -55,7 +55,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				EncodingPresentation = ItemOfList.Presentation;
 			EndIf;
 		Else
-			EncodingPresentation = NStr("en='By default'");
+			EncodingPresentation = NStr("en='By default';ru='По умолчанию'");
 		EndIf;
 		
 	EndIf;
@@ -112,7 +112,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		NameAndExtension = CommonUseClientServer.GetNameWithExtention(
 			FileData.FullDescrOfVersion,
 			FileData.Extension);
-		QuestionText = StrReplace(NStr("en ='File ""%1"" was modified.'"), "%1", NameAndExtension);
+		QuestionText = StrReplace(NStr("en='File ""%1"" was modified.';ru='Файл ""%1"" был изменен.'"), "%1", NameAndExtension);
 		FormParameters = New Structure;
 		FormParameters.Insert("QuestionText", QuestionText);
 		Handler = New NotifyDescription("BeforeCloseAfterAnsweringOnQuestionOnExitFromTextEditor", ThisObject);
@@ -137,7 +137,7 @@ Procedure SaveAs(Command)
 	
 	FileChoice.FullFileName = NameWithExtension;
 	Filter = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'All files (*.%1)|*.%1'"), FileData.Extension, FileData.Extension);
+		NStr("en='All files (*.%1)|*.%1';ru='Все файлы (*.%1)|*.%1'"), FileData.Extension, FileData.Extension);
 	FileChoice.Filter = Filter;
 	
 	If FileChoice.Choose() Then
@@ -151,7 +151,7 @@ Procedure SaveAs(Command)
 		
 		Text.Write(SelectedFullFileName, TextEncodingForWrite);
 		
-		Status(NStr("en = 'The file was successfully saved'"), , SelectedFullFileName);
+		Status(NStr("en='The file was successfully saved';ru='Файл успешно сохранен'"), , SelectedFullFileName);
 		
 	EndIf;
 	
@@ -205,7 +205,7 @@ EndProcedure
 &AtClient
 Procedure ShowDifference(Command)
 	#If WebClient Then
-		ShowMessageBox(, NStr("en = 'Version comparing is not supported in the web client'"));
+		ShowMessageBox(, NStr("en='Version comparing is not supported in the web client';ru='Сравнение версий в веб-клиенте не поддерживается.'"));
 	#Else
 		ExecuteParameters = New Structure;
 		ExecuteParameters.Insert("CurrentStep", 1);
@@ -339,7 +339,7 @@ Procedure SetCommandsEnabled()
 		FileData.FullDescrOfVersion, FileData.Extension);
 	
 	If Not EditMode Then
-		TitleString = TitleString + NStr("en=' (read only)'");
+		TitleString = TitleString + NStr("en=' (read only)';ru=' (только просмотр)'");
 	EndIf;
 	Title = TitleString;
 	

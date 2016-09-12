@@ -22,7 +22,7 @@ Procedure FillPaymentDestination()
 		AND ValueIsFilled(BasisDocument)
 		AND TypeOf(BasisDocument) = Type("DocumentRef.SupplierInvoiceForPayment")
 		AND ValueIsFilled(BasisDocument.IncomingDocumentNumber) Then
-		PaymentText = NStr("en='Payment against the invoice for payment No.%AccountNumber%'");
+		PaymentText = NStr("en='Payment against the invoice for payment No.%AccountNumber%';ru='Оплата по счету N %НомерСчета%'");
 		PaymentText = StrReplace(PaymentText, "%AccountNo%", TrimAll(String(BasisDocument.IncomingDocumentNumber)));
 		If ValueIsFilled(BasisDocument.IncomingDocumentDate) Then
 			PaymentText = PaymentText + " dated " + TrimAll(String(Format(BasisDocument.IncomingDocumentDate, "DF=dd MMMM yyyy'"))) + " g.";
@@ -34,7 +34,7 @@ Procedure FillPaymentDestination()
 	
 	If ValueIsFilled(VATRate)
 	AND Not VATRate.NotTaxable Then
-		TextVAT = NStr("en = 'VAT(%VATRate%) %VATAmount%'");
+		TextVAT = NStr("en='VAT(%VATRate%) %VATAmount%';ru='НДС(%VATRate%) %VATAmount%'");
 		TextVAT = StrReplace(TextVAT, "%VATRate%", String(VATRate));
 		TextVAT = StrReplace(TextVAT, "%VATAmount%", String(Format(VATAmount, "ND=15; NFD=2; NDS=-; NZ=0-00; NG=")));
 		WithoutTaxVAT = False;
@@ -42,20 +42,19 @@ Procedure FillPaymentDestination()
 	
 	If ValueIsFilled(VATAmount)
 	AND Not ValueIsFilled(VATRate) Then
-		TextVAT = NStr("en = 'VAT %VATAmount%'");
+		TextVAT = NStr("en='VAT %VATAmount%';ru='НДС %СуммаНДС%'");
 		TextVAT = StrReplace(TextVAT, "%VATAmount%", String(Format(VATAmount, "ND=15; NFD=2; NDS=-; NZ=0-00; NG=")));
 		WithoutTaxVAT = False;
 	EndIf;
 	
 	TextAmount = String(Format(DocumentAmount, "ND=15; NFD=2; NDS=-; NZ=0-00; NG="));
 	
-	TextPaymentDestination = NStr(
-		"en = '%TextDestination% Amount %TextAmount% %VATRateValue% %TextVAT%'"
+	TextPaymentDestination = NStr("en='%TextDestination% Amount %TextAmount% %VATRateValue% %TextVAT%';ru='%ТекстНазначение% Сумма %ТекстСумма% %ЗначениеСтавкиНДС% %ТекстНДС%'"
 	);
 	
 	TextPaymentDestination = StrReplace(TextPaymentDestination, "%TextDestination%", PaymentText);
 	TextPaymentDestination = StrReplace(TextPaymentDestination, "%TextAmount%", TextAmount);
-	TextPaymentDestination = StrReplace(TextPaymentDestination, "%VATRateValue%", ?(WithoutTaxVAT, NStr("en = 'Without tax (VAT)'"), NStr("en = 'including'")));
+	TextPaymentDestination = StrReplace(TextPaymentDestination, "%VATRateValue%", ?(WithoutTaxVAT, NStr("en='Without tax (VAT)';ru='Без налога (НДС)'"), NStr("en='including';ru='В т.ч.'")));
 	TextPaymentDestination = StrReplace(TextPaymentDestination, "%TextVAT%", TextVAT);
 	
 	PaymentDestination = TextPaymentDestination;
@@ -357,10 +356,10 @@ EndProcedure // FillBySupplierInvoiceForPayment()
 Procedure FillByCashOutflowPlan(BasisDocument);
 	
 	If BasisDocument.PaymentConfirmationStatus = Enums.PaymentApprovalStatuses.NotApproved Then
-		Raise NStr("en = 'You can not enter a payment order on the basis of non-confirmed application!'");
+		Raise NStr("en='You can not enter a payment order on the basis of non-confirmed application!';ru='Нельзя ввести платежное поручение на основании не утвержденной заявки!'");
 	EndIf;
 	If BasisDocument.CashAssetsType = Enums.CashAssetTypes.Cash Then
-		Raise NStr("en = 'You can not enter a payment order. Invalid payment method is specified in the application (cash assets type)!'");
+		Raise NStr("en='You can not enter a payment order. Invalid payment method is specified in the application (cash assets type)!';ru='Нельзя ввести платежное поручение. В заявке указан не верный способ оплаты (тип денежных средств)!'");
 	EndIf;
 	
 	Query = New Query;

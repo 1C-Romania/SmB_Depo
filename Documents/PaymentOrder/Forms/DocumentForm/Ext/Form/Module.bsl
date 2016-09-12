@@ -29,7 +29,7 @@ Procedure SetFormFrom2014Year()
 		Items.PaymentIdentifier.WarningOnEdit = "";
 	ElsIf Object.OperationKind = Enums.OperationKindsPaymentOrder.Payment Then
 		Items.PaymentIdentifier.WarningOnEditRepresentation = WarningOnEditRepresentation.Show;
-		Items.PaymentIdentifier.WarningOnEdit = NStr("en = 'Payment ID is used only for payment into the budget until 03/31/2014'");
+		Items.PaymentIdentifier.WarningOnEdit = NStr("en='Payment ID is used only for payment into the budget until 03/31/2014';ru='До 31.03.2014 идентификатор платежа используется только для платежей в бюджет'");
 	EndIf;
 	
 	If Object.OperationKind = Enums.OperationKindsPaymentOrder.Payment Then
@@ -156,7 +156,7 @@ Procedure FillByDocumentAndSetEnabled()
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillInByDocumentAndSetAvailableEnd", ThisObject), NStr("en = 'The document will be cleared and filled in by the ""Basis"". Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillInByDocumentAndSetAvailableEnd", ThisObject), NStr("en='The document will be cleared and filled in by the ""Basis"". Continue?';ru='Документ будет очищен и заполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -197,7 +197,7 @@ Procedure GeneratePaymentDestination(UpdateAmount = False)
 			AND ValueIsFilled(Object.BasisDocument)
 			AND TypeOf(Object.BasisDocument) = Type("DocumentRef.SupplierInvoiceForPayment")
 			AND ValueIsFilled(IncomingDocumentNumber) Then
-			PaymentDestination = NStr("en='Payment against the invoice for payment No.%AccountNumber%'");
+			PaymentDestination = NStr("en='Payment against the invoice for payment No.%AccountNumber%';ru='Оплата по счету N %НомерСчета%'");
 			PaymentDestination = StrReplace(PaymentDestination, "%AccountNo%", TrimAll(String(IncomingDocumentNumber)));
 			If ValueIsFilled(IncomingDocumentDate) Then
 				PaymentDestination = PaymentDestination + " dated " + TrimAll(String(Format(IncomingDocumentDate, "DF=dd MMMM yyyy'"))) + " g.";
@@ -212,23 +212,22 @@ Procedure GeneratePaymentDestination(UpdateAmount = False)
 	
 	If ValueIsFilled(Object.VATRate)
 	AND Not WithoutTaxVAT Then
-		TextVAT = NStr("en = 'VAT(%VATRate%) %VATAmount%'");
+		TextVAT = NStr("en='VAT(%VATRate%) %VATAmount%';ru='НДС(%VATRate%) %VATAmount%'");
 		TextVAT = StrReplace(TextVAT, "%VATRate%", String(Object.VATRate));
 		TextVAT = StrReplace(TextVAT, "%VATAmount%", String(Format(Object.VATAmount, "ND=15; NFD=2; NDS=-; NZ=0-00; NG=")));
 	EndIf;
 	
 	If ValueIsFilled(Object.VATAmount)
 	AND Not ValueIsFilled(Object.VATRate) Then
-		TextVAT = NStr("en = 'VAT %VATAmount%'");
+		TextVAT = NStr("en='VAT %VATAmount%';ru='НДС %СуммаНДС%'");
 		TextVAT = StrReplace(TextVAT, "%VATAmount%", String(Format(Object.VATAmount, "ND=15; NFD=2; NDS=-; NZ=0-00; NG=")));
 	EndIf;
 	
-	TextPaymentDestination = NStr(
-		"en = '%TextDestination% Amount %TextAmount% %VATRateValue% %TextVAT%'"
+	TextPaymentDestination = NStr("en='%TextDestination% Amount %TextAmount% %VATRateValue% %TextVAT%';ru='%ТекстНазначение% Сумма %ТекстСумма% %ЗначениеСтавкиНДС% %ТекстНДС%'"
 	);
 	TextPaymentDestination = StrReplace(TextPaymentDestination, "%TextDestination%", TextDestination);
 	TextPaymentDestination = StrReplace(TextPaymentDestination, "%TextAmount%", TextAmount);
-	TextPaymentDestination = StrReplace(TextPaymentDestination, "%VATRateValue%", ?(WithoutTaxVAT OR (NOT ValueIsFilled(Object.VATAmount) AND Not ValueIsFilled(Object.VATRate)), NStr("en = 'Without tax (VAT)'"), NStr("en = 'including'")));
+	TextPaymentDestination = StrReplace(TextPaymentDestination, "%VATRateValue%", ?(WithoutTaxVAT OR (NOT ValueIsFilled(Object.VATAmount) AND Not ValueIsFilled(Object.VATRate)), NStr("en='Without tax (VAT)';ru='Без налога (НДС)'"), NStr("en='including';ru='В т.ч.'")));
 	TextPaymentDestination = StrReplace(TextPaymentDestination, "%TextVAT%", TextVAT);
 	
 	Object.PaymentDestination = TextPaymentDestination;
@@ -887,7 +886,7 @@ Procedure CompanyAccountOnChange(Item)
 		Object.DocumentCurrency = StructureData.CashCurrency;
 		
 		If Object.DocumentAmount <> 0 Then
-			MessageText = NStr("en = 'Currency of the bank account has been changed. Recalculate the document amount?'");
+			MessageText = NStr("en='Currency of the bank account has been changed. Recalculate the document amount?';ru='Изменилась валюта банковского счета. Пересчитать суммы документа?'");
 			
 			Mode = QuestionDialogMode.YesNo;
 			Response = Undefined;
@@ -1047,7 +1046,7 @@ Procedure OperationKindOnChange(Item)
 		Items.PaymentIdentifier.WarningOnEdit = "";
 	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsPaymentOrder.Payment") Then
 		Items.PaymentIdentifier.WarningOnEditRepresentation = WarningOnEditRepresentation.Show;
-		Items.PaymentIdentifier.WarningOnEdit = NStr("en = 'Payment ID is used only for payment into the budget until 03/31/2014'");
+		Items.PaymentIdentifier.WarningOnEdit = NStr("en='Payment ID is used only for payment into the budget until 03/31/2014';ru='До 31.03.2014 идентификатор платежа используется только для платежей в бюджет'");
 	EndIf;
 	
 	GeneratePaymentDestination();

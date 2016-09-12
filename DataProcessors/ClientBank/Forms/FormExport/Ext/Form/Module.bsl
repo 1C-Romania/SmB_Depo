@@ -39,33 +39,33 @@ Function CheckFillOfFormAttributes(DirectExchangeWithBanks = False)
 	
 	// Attributes filling check.
 	If Not ValueIsFilled(Object.StartPeriod) Then
-		MessageText = NStr("en = 'Beginning period is required!'");
+		MessageText = NStr("en='Beginning period is required!';ru='Не заполнен начальный период!'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText, , , "StartPeriod", CheckResultOk);
 	EndIf;
 	If Not ValueIsFilled(Object.EndPeriod) Then
-		MessageText = NStr("en = 'Ending period is required!'");
+		MessageText = NStr("en='Ending period is required!';ru='Не заполнен конечный период!'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText, , , "EndPeriod", CheckResultOk);
 	EndIf;
 	If Not ValueIsFilled(Object.Company) Then
-		MessageText = NStr("en = 'Company is required!'");
+		MessageText = NStr("en='Company is required!';ru='Не заполнена организация!'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText, , , "Company", CheckResultOk);
 	EndIf;
 	If Not ValueIsFilled(Object.BankAccount) Then
-		MessageText = NStr("en = 'Bank account is required!'");
+		MessageText = NStr("en='Bank account is required!';ru='Не заполнен банковский счет!'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText, , , "BankAccount", CheckResultOk);
 	EndIf;
 	
 	If Not DirectExchangeWithBanks Then
 		If Not ValueIsFilled(Object.Application) Then
-			MessageText = NStr("en = 'Receiver application is not filled out.'");
+			MessageText = NStr("en='Receiver application is not filled out.';ru='Не заполнена программа приемник!'");
 			SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText, , , "Application", CheckResultOk);
 		EndIf;
 		If Not ValueIsFilled(Object.Encoding) Then
-			MessageText = NStr("en = 'Encoding is required!'");
+			MessageText = NStr("en='Encoding is required!';ru='Не заполнена кодировка!'");
 			SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText, , , "Encoding", CheckResultOk);
 		EndIf;
 		If Not ValueIsFilled(Object.FormatVersion) Then
-			MessageText = NStr("en = 'There is no exchange format version!'");
+			MessageText = NStr("en='There is no exchange format version!';ru='Не указана версия формата обмена!'");
 			SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText, , , "FormatVersion", CheckResultOk);
 		EndIf;
 	EndIf;
@@ -119,7 +119,7 @@ EndFunction // CheckForCorrectnessAndBlankExportValue()
 Procedure CheckForBlankExportValue(RowExporting, PropertyName)
 	
 	If Not ValueIsFilled(RowExporting[TrimAll(PropertyName)]) Then
-		RowRemark = NStr("en = '""%PropertyName%"" is not filled!'");
+		RowRemark = NStr("en='""%PropertyName%"" is not filled!';ru='Не заполнено ""%ИмяСвойства%""!'");
 		RowRemark = StrReplace(RowRemark, "%PropertyName%", PropertyName);
 		AddComment(RowExporting, 3, RowRemark);
 		SetReadiness(RowExporting.Readiness, 4);
@@ -135,10 +135,10 @@ Procedure CheckForCorrectionNumbernessOnDump(RowExporting)
 	Value = TrimAll(RowExporting.Number);
 	Try
 		If Number(String(Number(Right(Value, 3)))) = 0 Then
-			AddComment(RowExporting, 4, NStr("en = 'Number should end with three digits which are not ""000""!'"));
+			AddComment(RowExporting, 4, NStr("en='Number should end with three digits which are not ""000""!';ru='Номер должен оканчиваться на три цифры и не на ""000""!'"));
 		EndIf;
 	Except
-		AddComment(RowExporting, 4, NStr("en = 'Number should end with three digits which are not ""000""!'"));
+		AddComment(RowExporting, 4, NStr("en='Number should end with three digits which are not ""000""!';ru='Номер должен оканчиваться на три цифры и не на ""000""!'"));
 	EndTry;
 	
 EndProcedure // CheckForCorrectionNumbernessOnExport()
@@ -175,7 +175,7 @@ Function CheckTaxAttributesFill(RowExporting)
 		AddComment(
 			RowExporting,
 			3,
-			NStr("en = 'Invalid value of the Preparer status attribute field for payments to budget on the ""Fund transfer to the budget"" tab.'")
+			NStr("en='Invalid value of the Preparer status attribute field for payments to budget on the ""Fund transfer to the budget"" tab.';ru='Неверное значение поля реквизита для платежей в бюджет ""Статус составителя"" на закладке ""Перечисление в бюджет"".'")
 		);
 		SetReadiness(RowExporting.Readiness, 4);
 	EndIf;
@@ -184,7 +184,7 @@ Function CheckTaxAttributesFill(RowExporting)
 		AddComment(
 			RowExporting,
 			3,
-			NStr("en = 'The BCC field on the ""Fund transfer to the budget"" tab is not filled in.'")
+			NStr("en='The BCC field on the ""Fund transfer to the budget"" tab is not filled in.';ru='Не заполнено поле ""КБК"" на закладке ""Перечисление в бюджет"".'")
 		);
 		SetReadiness(RowExporting.Readiness, 4);
 	EndIf;
@@ -193,13 +193,13 @@ Function CheckTaxAttributesFill(RowExporting)
 			AddComment(
 				RowExporting,
 				3,
-				NStr("en = 'The OKTMO code field on the ""Fund transfer to the budget"" tab is not filled in.'")
+				NStr("en='The OKTMO code field on the ""Fund transfer to the budget"" tab is not filled in.';ru='Не заполнено поле ""Код ОКТМО"" на закладке ""Перечисление в бюджет"".'")
 			);
 		Else
 			AddComment(
 				RowExporting,
 				3,
-				NStr("en = 'The OKATO code field on the ""Fund transfer to the budget"" tab is not filled in.'")
+				NStr("en='The OKATO code field on the ""Fund transfer to the budget"" tab is not filled in.';ru='Не заполнено поле ""Код ОКАТО"" на закладке ""Перечисление в бюджет"".'")
 			);
 		EndIf;
 		SetReadiness(RowExporting.Readiness, 4);
@@ -211,7 +211,7 @@ Function CheckTaxAttributesFill(RowExporting)
 			AddComment(
 				RowExporting,
 				3,
-				NStr("en = 'When the preparer status is ""08"", specify ""0"" in the Payment reason field on the ""Fund transfer to the budget"" tab.'")
+				NStr("en='When the preparer status is ""08"", specify ""0"" in the Payment reason field on the ""Fund transfer to the budget"" tab.';ru='При статусе составителя ""08"" следует указать ""0"" в поле ""Основание платежа"" на закладке ""Перечисление в бюджет"".'")
 			);
 			SetReadiness(RowExporting.Readiness, 4);
 		EndIf;
@@ -219,7 +219,7 @@ Function CheckTaxAttributesFill(RowExporting)
 			AddComment(
 				RowExporting,
 				3,
-				NStr("en = 'When preparer status is ""08"", specify ""0"" in the ""Tax period"" field on the ""Fund transfer to the budget"" tab.'")
+				NStr("en='When preparer status is ""08"", specify ""0"" in the ""Tax period"" field on the ""Fund transfer to the budget"" tab.';ru='При статусе составителя ""08"" следует указать ""0"" в поле ""Налоговый период"" на закладке ""Перечисление в бюджет"".'")
 			);
 			SetReadiness(RowExporting.Readiness, 4);
 		EndIf;
@@ -227,7 +227,7 @@ Function CheckTaxAttributesFill(RowExporting)
 			AddComment(
 				RowExporting,
 				3,
-				NStr("en = 'When the preparer status is ""08"", the Document number field on the ""Fund transfer to the budget"" tab should be empty.'")
+				NStr("en='When the preparer status is ""08"", the Document number field on the ""Fund transfer to the budget"" tab should be empty.';ru='При статусе составителя ""08"" не следует заполнять поле ""Номер документа"" на закладке ""Перечисление в бюджет"".'")
 			);
 			SetReadiness(RowExporting.Readiness, 4);
 		EndIf;
@@ -235,7 +235,7 @@ Function CheckTaxAttributesFill(RowExporting)
 			AddComment(
 				RowExporting,
 				3,
-				NStr("en = 'When the preparer status is ""08"", the Document date field on the ""Fund transfer to the budget"" tab should be empty.'")
+				NStr("en='When the preparer status is ""08"", the Document date field on the ""Fund transfer to the budget"" tab should be empty.';ru='При статусе составителя ""08"" не следует заполнять поле ""Дата документа"" на закладке ""Перечисление в бюджет"".'")
 			);
 			SetReadiness(RowExporting.Readiness, 4);
 		EndIf;
@@ -243,7 +243,7 @@ Function CheckTaxAttributesFill(RowExporting)
 			AddComment(
 				RowExporting,
 				3,
-				NStr("en = 'When preparer status is ""08"", specify ""0"" in the Payment type field on the ""Fund transfer to the budget"" tab.'")
+				NStr("en='When preparer status is ""08"", specify ""0"" in the Payment type field on the ""Fund transfer to the budget"" tab.';ru='При статусе составителя ""08"" следует указать ""0"" в поле ""Тип платежа"" на закладке ""Перечисление в бюджет"".'")
 			);
 			SetReadiness(RowExporting.Readiness, 4);
 		EndIf;
@@ -255,7 +255,7 @@ Function CheckTaxAttributesFill(RowExporting)
 					AddComment(
 						RowExporting,
 						3,
-						NStr("en = 'The Tax period field value on the ""Fund transfer to the budget"" tab might be invalid.'")
+						NStr("en='The Tax period field value on the ""Fund transfer to the budget"" tab might be invalid.';ru='Возможно, неверно указано значение в поле ""Налоговый период"" на закладке ""Перечисление в бюджет"".'")
 					);
 					SetReadiness(RowExporting.Readiness, 4);
 				EndIf;
@@ -266,7 +266,7 @@ Function CheckTaxAttributesFill(RowExporting)
 					AddComment(
 						RowExporting,
 						3,
-						NStr("en = 'The Tax period field value on the ""Fund transfer to the budget"" tab might be invalid.'")
+						NStr("en='The Tax period field value on the ""Fund transfer to the budget"" tab might be invalid.';ru='Возможно, неверно указано значение в поле ""Налоговый период"" на закладке ""Перечисление в бюджет"".'")
 					);
 					SetReadiness(RowExporting.Readiness, 4);
 				EndIf;
@@ -276,7 +276,7 @@ Function CheckTaxAttributesFill(RowExporting)
 				AddComment(
 					RowExporting,
 					3,
-					NStr("en = 'When the payment reason is ""AA"" or ""EA"", specify ""0"" in the Tax period field on the ""Fund transfer to the budget"" tab.'")
+					NStr("en='When the payment reason is ""AA"" or ""EA"", specify ""0"" in the Tax period field on the ""Fund transfer to the budget"" tab.';ru='При основании платежа ""АП"" или ""АР"" следует указать ""0"" в поле ""Налоговый период"" на закладке ""Перечисление в бюджет"".'")
 				);
 				SetReadiness(RowExporting.Readiness, 4);
 			EndIf;
@@ -286,7 +286,7 @@ Function CheckTaxAttributesFill(RowExporting)
 					AddComment(
 						RowExporting,
 						3,
-						NStr("en = 'The Tax period field value on the ""Fund transfer to the budget"" tab might be invalid.'")
+						NStr("en='The Tax period field value on the ""Fund transfer to the budget"" tab might be invalid.';ru='Возможно, неверно указано значение в поле ""Налоговый период"" на закладке ""Перечисление в бюджет"".'")
 					);
 					SetReadiness(RowExporting.Readiness, 4);
 				EndIf;
@@ -314,7 +314,7 @@ Function CheckTaxAttributesFill(RowExporting)
 						AddComment(
 							RowExporting,
 							3,
-							NStr("en = 'The Tax period field value on the ""Fund transfer to the budget"" tab might be invalid.'")
+							NStr("en='The Tax period field value on the ""Fund transfer to the budget"" tab might be invalid.';ru='Возможно, неверно указано значение в поле ""Налоговый период"" на закладке ""Перечисление в бюджет"".'")
 						);
 						SetReadiness(RowExporting.Readiness, 4);
 					EndIf;
@@ -326,7 +326,7 @@ Function CheckTaxAttributesFill(RowExporting)
 						AddComment(
 							RowExporting,
 							3,
-							NStr("en = 'The Tax period field value on the ""Fund transfer to the budget"" tab is invalid.'")
+							NStr("en='The Tax period field value on the ""Fund transfer to the budget"" tab is invalid.';ru='Неверно указано значение в поле ""Налоговый период"" на закладке ""Перечисление в бюджет"".'")
 						);
 						SetReadiness(RowExporting.Readiness, 4);
 					EndIf;
@@ -338,7 +338,7 @@ Function CheckTaxAttributesFill(RowExporting)
 						AddComment(
 							RowExporting,
 							3,
-							NStr("en = 'The Tax period field value on the ""Fund transfer to the budget"" tab is invalid.'")
+							NStr("en='The Tax period field value on the ""Fund transfer to the budget"" tab is invalid.';ru='Неверно указано значение в поле ""Налоговый период"" на закладке ""Перечисление в бюджет"".'")
 						);
 						SetReadiness(RowExporting.Readiness, 4);
 					EndIf;
@@ -349,7 +349,7 @@ Function CheckTaxAttributesFill(RowExporting)
 						AddComment(
 							RowExporting,
 							3,
-							NStr("en = 'The Tax period field value on the ""Fund transfer to the budget"" tab is invalid.'")
+							NStr("en='The Tax period field value on the ""Fund transfer to the budget"" tab is invalid.';ru='Неверно указано значение в поле ""Налоговый период"" на закладке ""Перечисление в бюджет"".'")
 						);
 						SetReadiness(RowExporting.Readiness, 4);
 					EndIf;
@@ -358,7 +358,7 @@ Function CheckTaxAttributesFill(RowExporting)
 						AddComment(
 							RowExporting,
 							3,
-							NStr("en = 'The Tax period field value on the ""Fund transfer to the budget"" tab might be invalid.'")
+							NStr("en='The Tax period field value on the ""Fund transfer to the budget"" tab might be invalid.';ru='Возможно, неверно указано значение в поле ""Налоговый период"" на закладке ""Перечисление в бюджет"".'")
 						); 
 						SetReadiness(RowExporting.Readiness, 4);
 					EndIf;
@@ -368,7 +368,7 @@ Function CheckTaxAttributesFill(RowExporting)
 				AddComment(
 					RowExporting,
 					3,
-					NStr("en = 'When the payment reason is ""TP"" or ""ZD"", specify ""0"" in the Document number field on the ""Fund transfer to the budget"" tab.'")
+					NStr("en='When the payment reason is ""TP"" or ""ZD"", specify ""0"" in the Document number field on the ""Fund transfer to the budget"" tab.';ru='При основании платежа ""ТП"" или ""ЗД"" необходимо указывать ""0"" в поле ""Номер документа"" на закладке ""Перечисление в бюджет"".'")
 				);
 				SetReadiness(RowExporting.Readiness, 4);
 			EndIf;
@@ -377,7 +377,7 @@ Function CheckTaxAttributesFill(RowExporting)
 					AddComment(
 						RowExporting,
 						3,
-						NStr("en = 'When payment reason is ""ZD"", the Document date field on the ""Fund transfer to the budget"" tab should be empty.'")
+						NStr("en='When payment reason is ""ZD"", the Document date field on the ""Fund transfer to the budget"" tab should be empty.';ru='При основании платежа ""ЗД"" не должно заполняться поле ""Дата документа"" на закладке ""Перечисление в бюджет"".'")
 					);
 					SetReadiness(RowExporting.Readiness, 4);
 				EndIf;
@@ -387,7 +387,7 @@ Function CheckTaxAttributesFill(RowExporting)
 			AddComment(
 				RowExporting,
 				3,
-				NStr("en = 'The Payment reason field value on the ""Fund transfer to the budget"" tab is invalid.'")
+				NStr("en='The Payment reason field value on the ""Fund transfer to the budget"" tab is invalid.';ru='Неверно указано значение в поле ""Основание платежа"" на закладке ""Перечисление в бюджет"".'")
 			);
 			SetReadiness(RowExporting.Readiness, 4);
 		EndIf;
@@ -397,7 +397,7 @@ Function CheckTaxAttributesFill(RowExporting)
 			AddComment(
 				RowExporting,
 				3,
-				NStr("en = 'The Payment type field value on the ""Fund transfer to the budget"" tab is invalid.'")
+				NStr("en='The Payment type field value on the ""Fund transfer to the budget"" tab is invalid.';ru='Неверно указано значение в поле ""Тип платежа"" на закладке ""Перечисление в бюджет"".'")
 			);
 			SetReadiness(RowExporting.Readiness, 4);
 		EndIf;
@@ -642,19 +642,19 @@ Procedure SaveExportFile(DumpStream)
 					EndIf;
 				EndDo;
 				If ExportOnline Then
-					MessageText = NStr("en = 'Data have been successfully exported to the file.'");
+					MessageText = NStr("en='Data have been successfully exported to the file.';ru='Данные успешно выгружены в файл.'");
 				Else
-					MessageText = NStr("en = 'Data is successfully exported to the file '") + Object.ExportFile + ".";
+					MessageText = NStr("en='Data is successfully exported to the file ';ru='Данные успешно выгружены в файл '") + Object.ExportFile + ".";
 				EndIf;
 			Else
-				MessageText = NStr("en = 'Operation canceled'");
+				MessageText = NStr("en='Operation canceled';ru='Операция отменена'");
 			EndIf;
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
 		
 	Except
 		
-		MessageText = NStr("en = 'Writing data to the file is failed. The disk may be write-protected.'");
+		MessageText = NStr("en='Writing data to the file is failed. The disk may be write-protected.';ru='Не удалось записать данные в файл. Возможно, диск защищен от записи.'");
 		ShowMessageBox(Undefined,MessageText);
 		
 	EndTry
@@ -719,7 +719,7 @@ Procedure FormManagementOnServer()
 	If GetFunctionalOption("UseEDExchangeWithBanks")
 		AND ValueIsFilled(DirectExchangeWithBanksAgreement) Then
 		
-		TemplateText = NStr("en = 'Direct exchange agreement acts from %1: payment orders will be sent in bank by 1C:Company'");
+		TemplateText = NStr("en='Direct exchange agreement acts from %1: payment orders will be sent in bank by 1C:Company';ru='С %1 действует соглашение о прямом обмене: платежные поручения будут отправлены в банк из 1С:Управление небольшой фирмой'");
 		LabelText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
 		DirectMessageExchange = LabelText;
 	EndIf;
@@ -874,8 +874,9 @@ Procedure ExportExecute(Command)
 				   SaveExportFile(Result.ExportAddress);
 			   EndIf;	   
 		    Else		
-				   WarningText = NStr("en = 'Export document list is empty.
-				                      |Verify the correctness of the specified banking account and the export period.'")
+				   WarningText = NStr("en='Export document list is empty."
+"Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст."
+"Проверьте правильность указанного банковского счета и периода выгрузки.'")
 			EndIf;	
 	    //) elmi
 		
@@ -887,8 +888,9 @@ Procedure ExportExecute(Command)
 	Else
 		
 		ShowMessageBox(Undefined,
-			NStr("en = 'Export document list is empty.
-				 |Verify the correctness of the specified banking account and the export period.'")
+			NStr("en='Export document list is empty."
+"Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст."
+"Проверьте правильность указанного банковского счета и периода выгрузки.'")
 		);
 		
 	EndIf;
@@ -925,8 +927,9 @@ Procedure SendToBank(Command)
 	Else
 		
 		ShowMessageBox(Undefined,
-			NStr("en = 'Export document list is empty.
-				 |Verify the correctness of the specified banking account and the export period.'")
+			NStr("en='Export document list is empty."
+"Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст."
+"Проверьте правильность указанного банковского счета и периода выгрузки.'")
 		);
 		
 	EndIf;
@@ -1028,7 +1031,7 @@ Procedure ExportSelection(Item, SelectedRow, Field, StandardProcessing)
 		If ValueIsFilled(Items.Exporting.CurrentData.ErrorsDescriptionFull) Then
 			ShowMessageBox(Undefined,Items.Exporting.CurrentData.ErrorsDescriptionFull);
 		Else
-			ShowMessageBox(Undefined,NStr("en = 'Document is ready for export!'"));
+			ShowMessageBox(Undefined,NStr("en='Document is ready for export!';ru='Документ готов к выгрузке!'"));
 		EndIf;
 	ElsIf Field.Name = "ExportPaymentDestination" Then
 		ShowMessageBox(Undefined,Items.Exporting.CurrentData.PaymentDestination);

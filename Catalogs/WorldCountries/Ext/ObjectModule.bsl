@@ -51,7 +51,7 @@ Function ExistingItem() Export
 	Selection = QueryResult.Select();
 	If Selection.Next() Then
 		Result = New Structure("ErrorDescription", StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='The country %2 with code %1 already exists. Change the code or use the already existing data.'"), 
+			NStr("en='The country %2 with code %1 already exists. Change the code or use the already existing data.';ru='С кодом %1 уже существует страна %2. Измените код или используйте уже существующие данные.'"), 
 			Code, Selection.Description));
 		
 		For Each Field IN QueryResult.Columns Do

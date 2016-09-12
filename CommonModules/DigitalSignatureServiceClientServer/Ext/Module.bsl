@@ -84,7 +84,7 @@ Function CryptographyManagerApplicationsDescription(Application, Errors) Export
 		EndDo;
 		If ApplicationNotFound Then
 			CryptographyManagerAddError(Errors, Application,
-				NStr("en = 'Not intended for use.'"), True);
+				NStr("en='Not intended for use.';ru='Не предусмотрена для использования.'"), True);
 			Return Undefined;
 		EndIf;
 		ApplicationsDescription = New Array;
@@ -101,13 +101,13 @@ Function CryptographyManagerApplicationProperties(ApplicationDescription, IsLinu
 	
 	If Not ValueIsFilled(ApplicationDescription.ApplicationName) Then
 		CryptographyManagerAddError(Errors, ApplicationDescription.Ref,
-			NStr("en = 'Application name is not specified.'"), True);
+			NStr("en='Application name is not specified.';ru='Не указано имя программы.'"), True);
 		Return Undefined;
 	EndIf;
 	
 	If Not ValueIsFilled(ApplicationDescription.ApplicationType) Then
 		CryptographyManagerAddError(Errors, ApplicationDescription.Ref,
-			NStr("en = 'Application type is not specified.'"), True);
+			NStr("en='Application type is not specified.';ru='Не указан тип программы.'"), True);
 		Return Undefined;
 	EndIf;
 	
@@ -123,7 +123,7 @@ Function CryptographyManagerApplicationProperties(ApplicationDescription, IsLinu
 		
 		If Not ValueIsFilled(PathToApplication) Then
 			CryptographyManagerAddError(Errors, ApplicationDescription.Ref,
-				NStr("en = 'Not intended for use.'"), IsServer, , , True);
+				NStr("en='Not intended for use.';ru='Не предусмотрена для использования.'"), IsServer, , , True);
 			Return Undefined;
 		EndIf;
 	Else
@@ -149,7 +149,7 @@ Function CryptographyManagerAlgorithmsSet(ApplicationDescription, Manager, Error
 		Manager = Undefined;
 		// The platform uses the general Unknown cryptography algorithm message. Required more specific.
 		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unknown %1 signature algorithm is selected.'"), SignAlgorithm), True);
+			NStr("en='Unknown %1 signature algorithm is selected.';ru='Выбран неизвестный алгоритм подписи ""%1"".'"), SignAlgorithm), True);
 		Return False;
 	EndTry;
 	
@@ -160,7 +160,7 @@ Function CryptographyManagerAlgorithmsSet(ApplicationDescription, Manager, Error
 		Manager = Undefined;
 		// The platform uses the general Unknown cryptography algorithm message. Required more specific.
 		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unknown %1 hashing algorithm is selected.'"), HashAlgorithm), True);
+			NStr("en='Unknown %1 hashing algorithm is selected.';ru='Выбран неизвестный алгоритм хеширования ""%1"".'"), HashAlgorithm), True);
 		Return False;
 	EndTry;
 	
@@ -171,7 +171,7 @@ Function CryptographyManagerAlgorithmsSet(ApplicationDescription, Manager, Error
 		Manager = Undefined;
 		// The platform uses the general Unknown cryptography algorithm message. Required more specific.
 		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unknown %1 encryption algorithm is selected.'"), EncryptionAlgorithm), True);
+			NStr("en='Unknown %1 encryption algorithm is selected.';ru='Выбран неизвестный алгоритм шифрования ""%1"".'"), EncryptionAlgorithm), True);
 		Return False;
 	EndTry;
 	
@@ -183,7 +183,7 @@ EndFunction
 Procedure CryptographyManagerApplicationNotFound(ApplicationDescription, Errors, IsServer) Export
 	
 	CryptographyManagerAddError(Errors, ApplicationDescription.Ref,
-		NStr("en = 'The application is not found on the computer.'"), IsServer, True);
+		NStr("en='The application is not found on the computer.';ru='Программа не найдена на компьютере.'"), IsServer, True);
 	
 EndProcedure
 
@@ -192,7 +192,7 @@ Function CryptographyManagerApplicationNameMatch(ApplicationDescription, Applica
 	
 	If ApplicationNameReceived <> ApplicationDescription.ApplicationName Then
 		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Another application with the %1 name is received.'"), ApplicationNameReceived), IsServer, True);
+			NStr("en='Another application with the %1 name is received.';ru='Получена другая программа с именем ""%1"".'"), ApplicationNameReceived), IsServer, True);
 		Return False;
 	EndIf;
 	
@@ -349,12 +349,12 @@ EndFunction
 Function DataReceiveErrorTitle(Operation) Export
 	
 	If Operation = "Signing" Then
-		Return NStr("en = 'An error occurred receiving data for signing:'");
+		Return NStr("en='An error occurred receiving data for signing:';ru='При получении данных для подписания возникла ошибка:'");
 		
 	ElsIf Operation = "Encryption" Then
-		Return NStr("en = 'An error occurred receiving data for encryption:'");
+		Return NStr("en='An error occurred receiving data for encryption:';ru='При получении данных для шифрования возникла ошибка:'");
 	Else
-		Return NStr("en = 'An error occurred receiving data for decryption:'");
+		Return NStr("en='An error occurred receiving data for decryption:';ru='При получении данных для расшифровки возникла ошибка:'");
 	EndIf;
 	
 EndFunction
@@ -363,7 +363,7 @@ EndFunction
 Function EmptySignatureData(SignatureData, ErrorDescription) Export
 	
 	If Not ValueIsFilled(SignatureData) Then
-		ErrorDescription = NStr("en = 'Empty cignature is formed.'");
+		ErrorDescription = NStr("en='Empty cignature is formed.';ru='Сформирована пустая подпись.'");
 		Return True;
 	EndIf;
 	
@@ -375,7 +375,7 @@ EndFunction
 Function EmptyEncryptedData(EncryptedData, ErrorDescription) Export
 	
 	If Not ValueIsFilled(EncryptedData) Then
-		ErrorDescription = NStr("en = 'Empty data is formed.'");
+		ErrorDescription = NStr("en='Empty data is formed.';ru='Сформированы пустые данные.'");
 		Return True;
 	EndIf;
 	
@@ -387,7 +387,7 @@ EndFunction
 Function EmptyDecryptedData(DecryptedData, ErrorDescription) Export
 	
 	If Not ValueIsFilled(DecryptedData) Then
-		ErrorDescription = NStr("en = 'Empty data is formed.'");
+		ErrorDescription = NStr("en='Empty data is formed.';ru='Сформированы пустые данные.'");
 		Return True;
 	EndIf;
 	

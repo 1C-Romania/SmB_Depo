@@ -3,7 +3,7 @@
 Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	Parameters = New Structure;
 	Parameters.Insert("FileOwner", CommandParameter);
-	Title = NStr("en = 'Attached files'");
+	Title = NStr("en='Attached files';ru='Присоединенные файлы'");
 	Parameters.Insert("FormTitle", Title);
 	
 	OpenForm(

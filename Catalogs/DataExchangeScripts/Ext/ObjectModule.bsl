@@ -74,7 +74,7 @@ Procedure DeleteScheduledJob(Cancel)
 		Try
 			ScheduledJobObject.Delete();
 		Except
-			MessageString = NStr("en = 'An error occurred while deleting scheduled job: %1'");
+			MessageString = NStr("en='An error occurred while deleting scheduled job: %1';ru='Ошибка при удалении регламентного задания: %1'");
 			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, BriefErrorDescription(ErrorInfo()));
 			DataExchangeServer.ShowMessageAboutError(MessageString, Cancel);
 		EndTry;

@@ -39,19 +39,19 @@ EndProcedure // RecalculateDocumentAtClient()
 &AtClient
 Procedure GenerateToolTipsToAttributes()
 	
-	TitleAmountCheque = NStr("en='Receipt amount (%Currency%)'");
+	TitleAmountCheque = NStr("en='Receipt amount (%Currency%)';ru='Сумма чека (%Валюта%)'");
 	TitleAmountCheque = StrReplace(TitleAmountCheque, "%Currency%", Object.DocumentCurrency);
 	Items.DocumentAmount.ToolTip = TitleAmountCheque;
 	
-	TitleReceivedCash = NStr("en='Received in cash (%Currency%)'");
+	TitleReceivedCash = NStr("en='Received in cash (%Currency%)';ru='Получено наличными (%Currency%)'");
 	TitleReceivedCash = StrReplace(TitleReceivedCash, "%Currency%", Object.DocumentCurrency);
 	Items.CashReceived.ToolTip = TitleReceivedCash;
 	
-	TitlePaymentWithPaymentCards = NStr("en='By payment cards (%Currency%)'");
+	TitlePaymentWithPaymentCards = NStr("en='By payment cards (%Currency%)';ru='Платежными картами (%Currency%)'");
 	TitlePaymentWithPaymentCards = StrReplace(TitlePaymentWithPaymentCards, "%Currency%", Object.DocumentCurrency);
 	Items.PaymentWithPaymentCardsTotalAmount.ToolTip = TitlePaymentWithPaymentCards;
 	
-	TitleAmountPutting = NStr("en='Change (%Currency%)'");
+	TitleAmountPutting = NStr("en='Change (%Currency%)';ru='Сдача (%Currency%)'");
 	TitleAmountPutting = StrReplace(TitleAmountPutting, "%Currency%", Object.DocumentCurrency);
 	Items.AmountShortChange.ToolTip = TitleAmountPutting;
 	
@@ -62,7 +62,7 @@ Procedure CheckPaymentAmounts(Cancel)
 	
 	If Object.DocumentAmount > Object.CashReceived + Object.PaymentWithPaymentCards.Total("Amount") Then
 		
-		ErrorText = NStr("en='The payment amount is less than the receipt amount'");
+		ErrorText = NStr("en='The payment amount is less than the receipt amount';ru='Сумма оплаты меньше суммы чека'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -75,7 +75,7 @@ Procedure CheckPaymentAmounts(Cancel)
 	
 	If Object.DocumentAmount < Object.PaymentWithPaymentCards.Total("Amount") Then
 		
-		ErrorText = NStr("en='The amount of payment by payment cards exceeds the amount of cheque'");
+		ErrorText = NStr("en='The amount of payment by payment cards exceeds the amount of cheque';ru='Сумма оплаты платежными картами превышает сумму чека'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -265,7 +265,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en = 'Data by barcode is not found: %1%; quantity: %2%'");
+		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -759,7 +759,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en = '%Currency%'");
+			LabelText = NStr("en='%Currency%';ru='%Вал%'");
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
@@ -767,9 +767,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%PriceKind%'");
+			LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %PriceKind%'");
+			LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
@@ -777,9 +777,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Margins discount kind.
 	If ValueIsFilled(LabelStructure.DiscountKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%DiscountMarkupKind%'");
+			LabelText = LabelText + NStr("en='%DiscountMarkupKind%';ru='%ВидСкидкиНаценки%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %MarkupDiscountKind%'");
+			LabelText = LabelText + NStr("en=' • %MarkupDiscountKind%';ru=' • %ВидСкидкиНаценки%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
 	EndIf;
@@ -787,9 +787,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Discount card.
 	If ValueIsFilled(LabelStructure.DiscountCard) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%DiscountCard%'");
+			LabelText = LabelText + NStr("en='%DiscountCard%';ru='%ДисконтнаяКарта%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %DiscountCard%'");
+			LabelText = LabelText + NStr("en=' • %DiscountCard%';ru=' • %ДисконтнаяКарта%'");
 		EndIf;
 		LabelText = StrReplace(LabelText, "%DiscountCard%", String(LabelStructure.DiscountPercentByDiscountCard)+"% by map"); //ShortLP(String(LabelStructure.DiscountCard)));
 	EndIf;	
@@ -797,9 +797,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en = '%VATTaxation%'");
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
 		Else
-			LabelText = LabelText + NStr("en = ' • %VATTaxation%'");
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
 		EndIf;	
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
@@ -807,9 +807,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then	
 		If LabelStructure.AmountIncludesVAT Then	
-			LabelText = NStr("en = 'Amount includes VAT'");
+			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
 		Else
-			LabelText = NStr("en = 'Amount does not include VAT'");
+			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
 		EndIf;
 	EndIf;
 	
@@ -827,7 +827,7 @@ Procedure SetModeReadOnly()
 	ReadOnly = True; // Receipt is issued. Change information is forbidden.
 	
 	If CashCRUseWithoutEquipmentConnection Then
-		Items.IssueReceipt.Title = NStr("en='Cancel issuing'");
+		Items.IssueReceipt.Title = NStr("en='Cancel issuing';ru='Отменить пробитие'");
 		Items.IssueReceipt.Enabled = True;
 	Else
 		Items.IssueReceipt.Enabled = False;
@@ -850,7 +850,7 @@ EndProcedure // SetModeOnlyViewing()
 //
 Procedure CancelModeViewOnly()
 	
-	Items.IssueReceipt.Title = NStr("en='Issue receipt'");
+	Items.IssueReceipt.Title = NStr("en='Issue receipt';ru='Пробить чек'");
 	ReadOnly = False;
 	Items.PricesAndCurrency.Enabled = True;
 	Items.InventoryWeight.Enabled = True;
@@ -1038,19 +1038,19 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	SmallBusinessClientServer.SetPictureForComment(Items.AdvancedPage, Object.Comment);
 	
-	TitleAmountCheque = NStr("en='Receipt amount (%Currency%)'");
+	TitleAmountCheque = NStr("en='Receipt amount (%Currency%)';ru='Сумма чека (%Валюта%)'");
 	TitleAmountCheque = StrReplace(TitleAmountCheque, "%Currency%", Object.DocumentCurrency);
 	Items.DocumentAmount.ToolTip = TitleAmountCheque;
 	
-	TitleReceivedCash = NStr("en='Received in cash (%Currency%)'");
+	TitleReceivedCash = NStr("en='Received in cash (%Currency%)';ru='Получено наличными (%Currency%)'");
 	TitleReceivedCash = StrReplace(TitleReceivedCash, "%Currency%", Object.DocumentCurrency);
 	Items.CashReceived.ToolTip = TitleReceivedCash;
 	
-	TitlePaymentWithPaymentCards = NStr("en='By payment cards (%Currency%)'");
+	TitlePaymentWithPaymentCards = NStr("en='By payment cards (%Currency%)';ru='Платежными картами (%Currency%)'");
 	TitlePaymentWithPaymentCards = StrReplace(TitlePaymentWithPaymentCards, "%Currency%", Object.DocumentCurrency);
 	Items.PaymentWithPaymentCardsTotalAmount.ToolTip = TitlePaymentWithPaymentCards;
 	
-	TitleAmountPutting = NStr("en='Change (%Currency%)'");
+	TitleAmountPutting = NStr("en='Change (%Currency%)';ru='Сдача (%Currency%)'");
 	TitleAmountPutting = StrReplace(TitleAmountPutting, "%Currency%", Object.DocumentCurrency);
 	Items.AmountShortChange.ToolTip = TitleAmountPutting;
 
@@ -1250,7 +1250,7 @@ Procedure DisplayInformationOnCustomerDisplay()
 		"",
 		TrimAll(Items.Inventory.CurrentData.ProductsAndServices)
 	  + Chars.LF
-	  + NStr("en='Total: '")
+	  + NStr("en='Total: ';ru='Итого: '")
 	  + Format(Object.DocumentAmount, "NFD=2; NGS=' '; NZ=0")
 	);
 
@@ -1271,10 +1271,11 @@ Procedure DisplayInformationOnCustomerDisplay()
 		);
 		
 		If Not Result Then
-			MessageText = NStr(
-				"en = 'When using customer display error occurred.
-				|Additional
-				|description: %AdditionalDetails%'"
+			MessageText = NStr("en='When using customer display error occurred."
+"Additional"
+"description: %AdditionalDetails%';ru='При использовании дисплея покупателя произошла ошибка."
+"Дополнительное"
+"описание: %ДополнительноеОписание%'"
 			);
 			MessageText = StrReplace(
 				MessageText,
@@ -1295,7 +1296,7 @@ EndProcedure // DisplayInformationOnCustomerDisplay()
 Procedure SearchByBarcode(Command)
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en = 'Enter barcode'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
 
 EndProcedure
 
@@ -1320,7 +1321,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.'"));
+		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -1338,7 +1339,7 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	
 	If Not Weight = Undefined Then
 		If Weight = 0 Then
-			MessageText = NStr("en = 'Electronic scales returned zero weight.'");
+			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			// Weight is received.
@@ -1393,7 +1394,7 @@ Procedure IssueReceipt()
 	If Object.ReceiptCRNumber <> 0
 	AND Not CashCRUseWithoutEquipmentConnection Then
 		
-		MessageText = NStr("en = 'Check has already been issued on the fiscal record!'");
+		MessageText = NStr("en='Check has already been issued on the fiscal record!';ru='Чек уже пробит на фискальном регистраторе!'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -1533,11 +1534,13 @@ Procedure IssueReceipt()
 							
 						Else
 							
-							MessageText = NStr(
-								"en = 'When printing a receipt, an error occurred.
-								|Receipt is not printed on the fiscal register.
-								|Additional
-								|description: %AdditionalDetails%'"
+							MessageText = NStr("en='When printing a receipt, an error occurred."
+"Receipt is not printed on the fiscal register."
+"Additional"
+"description: %AdditionalDetails%';ru='При печати чека произошла ошибка."
+"Чек не напечатан на фискальном регистраторе."
+"Дополнительное"
+"описание: %ДополнительноеОписание%'"
 							);
 							MessageText = StrReplace(
 								MessageText,
@@ -1553,11 +1556,13 @@ Procedure IssueReceipt()
 						
 					Else
 						
-						MessageText = NStr(
-							"en = 'An error occurred when connecting the device.
-							|Receipt is not printed on the fiscal register.
-							|Additional
-							|description: %AdditionalDetails%'"
+						MessageText = NStr("en='An error occurred when connecting the device."
+"Receipt is not printed on the fiscal register."
+"Additional"
+"description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка."
+"Чек не напечатан на фискальном регистраторе."
+"Дополнительное"
+"описание: %ДополнительноеОписание%'"
 						);
 						MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 						CommonUseClientServer.MessageToUser(MessageText);
@@ -1566,14 +1571,14 @@ Procedure IssueReceipt()
 					
 				Else
 					
-					MessageText = NStr("en = 'Fiscal registration has not been selected'");
+					MessageText = NStr("en='Fiscal registration has not been selected';ru='Не выбран фискальный регистратор'");
 					CommonUseClientServer.MessageToUser(MessageText);
 					
 				EndIf;
 				
 			Else
 				
-				MessageText = NStr("en = 'First, you need to select the workplace of the current session peripherals.'");
+				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				
 			EndIf;
@@ -1599,7 +1604,7 @@ Procedure IssueReceipt()
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en = 'Failed to post the document'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 EndProcedure // PrintReceipt()
@@ -1619,7 +1624,7 @@ Procedure IssueReceiptExecute(Command)
 	
 	If Object.DeletionMark Then
 		
-		ErrorText = NStr("en='The document is marked for deletion.'");
+		ErrorText = NStr("en='The document is marked for deletion.';ru='Документ помечен на удаление'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -1713,18 +1718,22 @@ Procedure AddPaymentByCard(Command)
 								
 								OpenForm("Catalog.Peripherals.Form.POSTerminalAuthorizationForm", FormParameters,,,,, New NotifyDescription("AddPaymentByCardEnd", ThisObject, New Structure("FRDeviceIdentifier, ETDeviceIdentifier, CardNumber", DeviceIdentifierFR, DeviceIdentifierET, CardNumber)));
 							Else
-								MessageText = NStr("en = 'An error occurred while connecting
-								|the fiscal register: ""%ErrorDescription%"".
-								|Operation by card has not been performed.'");
+								MessageText = NStr("en='An error occurred while connecting"
+"the fiscal register: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении фискального регистратора произошла ошибка:"
+"""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 								CommonUseClientServer.MessageToUser(MessageText);
 							EndIf;
 							
 						Else
 							
-							MessageText = NStr("en = 'When POS terminal connection there
-								|was error: ""%ErrorDescription%"".
-								|Operation by card has not been performed.'");
+							MessageText = NStr("en='When POS terminal connection there"
+"was error: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении эквайрингового"
+"терминала произошла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 							CommonUseClientServer.MessageToUser(MessageText);
 							
@@ -1736,7 +1745,7 @@ Procedure AddPaymentByCard(Command)
 				
 			Else
 				
-				MessageText = NStr("en = 'First, you need to select the workplace of the current session peripherals.'");
+				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				
 			EndIf;
@@ -1748,7 +1757,7 @@ Procedure AddPaymentByCard(Command)
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en = 'Failed to post the document'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 EndProcedure
@@ -1812,10 +1821,11 @@ Procedure AddPaymentByCardEnd(Result1, AdditionalParameters) Export
             
         Else
             
-            MessageText = NStr(
-            "en = 'When operation execution there
-            |was error: ""%ErrorDescription%"".
-            |Payment by card has not been performed.'"
+            MessageText = NStr("en='When operation execution there"
+"was error: ""%ErrorDescription%""."
+"Payment by card has not been performed.';ru='При выполнении операции возникла ошибка:"
+"""%ОписаниеОшибки%""."
+"Отмена по карте не была произведена'"
             );
             MessageText = StrReplace(
             MessageText,
@@ -1843,10 +1853,11 @@ Procedure AddPaymentByCardEnd(Result1, AdditionalParameters) Export
             InputParameters,
             Output_Parameters);
             
-            MessageText = NStr(
-            "en = 'When printing slip receipt
-            |there was error: ""%ErrorDescription%"".
-            |Operation by card has been cancelled.'"
+            MessageText = NStr("en='When printing slip receipt"
+"there was error: ""%ErrorDescription%""."
+"Operation by card has been cancelled.';ru='При печати слип-чека"
+"возникла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте была отменена.'"
             );
             MessageText = StrReplace(MessageText,
             "%ErrorDescription%",
@@ -1892,7 +1903,7 @@ Procedure DeletePaymentByCard(Command)
 	//Check selected string in payment table by payment cards
 	CurrentData = Items.PaymentWithPaymentCards.CurrentData;
 	If CurrentData = Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en='Select the string to remove payment card'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Select the string to remove payment card';ru='Выберите строку удаляемой оплаты картой.'"));
 		Return;
 	EndIf;
 	
@@ -1969,9 +1980,11 @@ Procedure DeletePaymentByCard(Command)
 									
 								Else
 									
-									MessageText = NStr("en = 'When operation execution there
-									|was error: ""%ErrorDescription%"".
-									|Cancellation by card has not been performed.'");
+									MessageText = NStr("en='When operation execution there"
+"was error: ""%ErrorDescription%""."
+"Cancellation by card has not been performed.';ru='При выполнении операции возникла ошибка:"
+"""%ОписаниеОшибки%""."
+"Отмена по карте не была произведена.'");
 									MessageText = StrReplace(MessageText,
 																 "%ErrorDescription%",
 																 Output_Parameters[1]);
@@ -1983,9 +1996,11 @@ Procedure DeletePaymentByCard(Command)
 									
 									ErrorDescriptionFR = Output_Parameters[1];
 									
-									MessageText = NStr("en = 'When printing slip receipt
-									|there was error: ""%ErrorDescription%"".
-									|Operation by card has been cancelled.'");
+									MessageText = NStr("en='When printing slip receipt"
+"there was error: ""%ErrorDescription%""."
+"Operation by card has been cancelled.';ru='При печати слип-чека"
+"возникла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте была отменена.'");
 									MessageText = StrReplace(MessageText,
 																 "%ErrorDescription%",
 																 ErrorDescriptionFR);
@@ -2008,30 +2023,34 @@ Procedure DeletePaymentByCard(Command)
 								EquipmentManagerClient.DisableEquipmentById(UUID,
 																								 DeviceIdentifierET);
 							Else
-								MessageText = NStr("en = 'An error occurred while connecting
-								|the fiscal register: ""%ErrorDescription%"".
-								|Operation by card has not been performed.'");
+								MessageText = NStr("en='An error occurred while connecting"
+"the fiscal register: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении фискального регистратора произошла ошибка:"
+"""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 								CommonUseClientServer.MessageToUser(MessageText);
 							EndIf;
 						Else
-							MessageText = NStr("en = 'When POS terminal connection there
-								|was error: ""%ErrorDescription%"".
-								|Operation by card has not been performed.'");
+							MessageText = NStr("en='When POS terminal connection there"
+"was error: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении эквайрингового"
+"терминала произошла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 							CommonUseClientServer.MessageToUser(MessageText);
 						EndIf;
 					EndIf;
 				EndIf;
 			Else
-				MessageText = NStr("en = 'First, you need to select the workplace of the current session peripherals.'");
+				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en = 'Failed to post the document'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 EndProcedure
@@ -2050,8 +2069,9 @@ Procedure PrintLastSlipReceipt(Command)
 			If Not glPeripherals.Property("LastSlipReceipt", SlipCheckString)
 			 Or TypeOf(SlipCheckString) <> Type("String")
 			 Or IsBlankString(SlipCheckString) Then
-				CommonUseClientServer.MessageToUser(NStr("en='Slip check is absent.
-				|Acquiring operation may not have been executed for this session.'"));
+				CommonUseClientServer.MessageToUser(NStr("en='Slip check is absent."
+"Acquiring operation may not have been executed for this session.';ru='Слип-чек отсутствует."
+"Возможно для данного сеанса еще не выполнялась эквайринговая операция.'"));
 				Return;
 			EndIf;
 			
@@ -2077,8 +2097,9 @@ Procedure PrintLastSlipReceipt(Command)
 																			  InputParameters,
 																			  Output_Parameters);
 					If Not ResultFR Then
-						MessageText = NStr("en = 'When printing slip receipt
-						|there was error: ""%ErrorDescription%"".'");
+						MessageText = NStr("en='When printing slip receipt"
+"there was error: ""%ErrorDescription%"".';ru='При печати слип-чека"
+"возникла ошибка: ""%ОписаниеОшибки%"".'");
 						MessageText = StrReplace(MessageText,
 													 "%ErrorDescription%",
 													 Output_Parameters[1]);
@@ -2089,14 +2110,14 @@ Procedure PrintLastSlipReceipt(Command)
 					EquipmentManagerClient.DisableEquipmentById(UUID,
 																					 DeviceIdentifierFR);
 				Else
-					MessageText = NStr("en = 'An error occurred while connecting
-					|the fiscal register: ""%ErrorDescription%"".'");
+					MessageText = NStr("en='An error occurred while connecting"
+"the fiscal register: ""%ErrorDescription%"".';ru='При подключении фискального регистратора произошла ошибка: ""%ОписаниеОшибки%"".'");
 					MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 					CommonUseClientServer.MessageToUser(MessageText);
 				EndIf;
 			EndIf;
 		Else
-			MessageText = NStr("en = 'First, you need to select the workplace of the current session peripherals.'");
+			MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 			
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -2387,7 +2408,7 @@ Function PaymentFormOnChangeAtServer(ErrorDescription = "")
 			
 			Object.PaymentForm = Enums.CashAssetTypes.EmptyRef();
 			
-			ErrorDescription = NStr("en = 'Paid in cash. Cannot set payment method ""in cash""'");
+			ErrorDescription = NStr("en='Paid in cash. Cannot set payment method ""in cash""';ru='Проведена оплата платежными картами! Установить форму оплаты ""Наличными"" невозможно'");
 			Return False;
 			
 		EndIf;
@@ -2802,9 +2823,9 @@ EndProcedure
 Procedure DiscountCardIsSelected(DiscountCard)
 
 	ShowUserNotification(
-		NStr("en = 'Discount card read'"),
+		NStr("en='Discount card read';ru='Считана дисконтная карта'"),
 		GetURL(DiscountCard),
-		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Discount card %1 is read'"), DiscountCard),
+		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Discount card %1 is read';ru='Считана дисконтная карта %1'"), DiscountCard),
 		PictureLib.Information32);
 	
 	DiscountCardIsSelectedAdditionally(DiscountCard);
@@ -2827,7 +2848,7 @@ Procedure DiscountCardIsSelectedAdditionally(DiscountCard)
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 	
 	If Object.Inventory.Count() > 0 Then
-		Text = NStr("en = 'Refill discounts in all rows?'");
+		Text = NStr("en='Refill discounts in all rows?';ru='Перезаполнить скидки во всех строках?'");
 		Notification = New NotifyDescription("DiscountCardIsSelectedAdditionallyEnd", ThisObject);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	EndIf;
@@ -3076,7 +3097,7 @@ Procedure OpenInformationAboutDiscountsClient()
 	ParameterStructure.Insert("Workplace", Workplace);
 	
 	If Not Object.DiscountsAreCalculated Then
-		QuestionText = NStr("en='Discounts (markups) are not calculated, calculate?'");
+		QuestionText = NStr("en='Discounts (markups) are not calculated, calculate?';ru='Скидки (наценки) не рассчитаны, рассчитать?'");
 		
 		AdditionalParameters = New Structure; 
 		AdditionalParameters.Insert("ParameterStructure", ParameterStructure);

@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not AccessRight("SaveUserData", Metadata) Then
-		ErrorText = NStr("en = 'Data saving right is not available. Contact your administrator.'");
+		ErrorText = NStr("en='Data saving right is not available. Contact your administrator.';ru='Отсутствует право сохранения данных. Обратитесь к администратору.'");
 		// Denial is set in OnOpen.
 		Return;
 	EndIf;
@@ -59,7 +59,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.CheckSignaturesAtServer.Visible = False;
 		Items.ToSignAtServer.Visible = False;
 		Items.ApplicationsExplanation.Title =
-			NStr("en = 'List of the applications specified by the administrator, which can be used on the computer.'");
+			NStr("en='List of the applications specified by the administrator, which can be used on the computer.';ru='Список программ, предусмотренных администратором, которые можно использовать на компьютере.'");
 	EndIf;
 	
 	If Not DigitalSignature.CommonSettings().CertificateIssueApplicationAvailable Then
@@ -356,9 +356,9 @@ Procedure ApplicationsSetDeleteMark(Command)
 	EndIf;
 	
 	If CurrentData.DeletionMark Then
-		QuestionText = NStr("en = 'Unmark ""%1"" for deletion?'");
+		QuestionText = NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'");
 	Else
-		QuestionText = NStr("en = 'Mark ""%1"" for deletion?'");
+		QuestionText = NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'");
 	EndIf;
 	
 	QuestionContent = New Array;
@@ -484,43 +484,53 @@ Procedure RefreshCurrentItemsVisible()
 	If Constants.UseEncryption.Get()
 	 Or DigitalSignature.CommonSettings().CertificateIssueApplicationAvailable Then
 		
-		Items.CertificatesCreate.Title = NStr("en = 'Add...'");
-		Items.CertificatesContextMenuCreate.Title = NStr("en = 'Add...'");
+		Items.CertificatesCreate.Title = NStr("en='Add...';ru='Добавить...'");
+		Items.CertificatesContextMenuCreate.Title = NStr("en='Add...';ru='Добавить...'");
 		Items.ExtensionForEncryptedFiles.Visible = True;
 	Else
-		Items.CertificatesCreate.Title = NStr("en = 'Add'");
-		Items.CertificatesContextMenuCreate.Title = NStr("en = 'Add'");
+		Items.CertificatesCreate.Title = NStr("en='Add';ru='Добавить'");
+		Items.CertificatesContextMenuCreate.Title = NStr("en='Add';ru='Добавить'");
 		Items.ExtensionForEncryptedFiles.Visible = False;
 	EndIf;
 	
 	If Constants.UseEncryption.Get() Then
 		Items.AddFromInstalledOnComputer.Title =
-			NStr("en = 'From installed on computer...'");
+			NStr("en='From installed on computer...';ru='Из установленных на компьютере...'");
 	Else
 		Items.AddFromInstalledOnComputer.Title =
-			NStr("en = 'From installed on computer'");
+			NStr("en='From installed on computer';ru='Из установленных на компьютере'");
 	EndIf;
 	
 	If Constants.UseDigitalSignatures.Get() Then
-		CheckBoxTitle = NStr("en = 'Check signatures and certificates on server'");
+		CheckBoxTitle = NStr("en='Check signatures and certificates on server';ru='Проверять подписи и сертификаты на сервере'");
 		CheckBoxToolTip =
-			NStr("en = 'It allows you not to install
-			           |the application to the user computer to check digital signatures and certificates.
-			           |
-			           |Important: at least one of
-			           |the applications from the list must
-			           |be installed on each computer with working 1C:Enterprise server or Web server which uses a file infobase.'");
+			NStr("en='It allows you not to install"
+"the application to the user computer to check digital signatures and certificates."
+""
+"Important: at least one of"
+"the applications from the list must"
+"be installed on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не устанавливать"
+"программу на компьютер пользователя для проверки электронных подписей и сертификатов."
+""
+"Важно: на каждый"
+"компьютер, где работает сервер 1С:Предприятия"
+"или веб-сервер, использующий файловую информационную базу, должна быть установлена хотя бы одна из программ в списке.'");
 		Items.ExtensionForSignatureFiles.Visible = True;
 		Items.ActionsOnSavingDataWithDigitalSignature.Visible = True;
 	Else
-		CheckBoxTitle = NStr("en = 'Check certificates on server'");
+		CheckBoxTitle = NStr("en='Check certificates on server';ru='Проверять сертификаты на сервере'");
 		CheckBoxToolTip =
-			NStr("en = 'It is not necessary to install
-			           |the application and certificate to the users computer to check certificates.
-			           |
-			           |Important: at least one of
-			           |the applications from the list must
-			           |be installed on each computer with working 1C:Enterprise server or Web server which uses a file infobase.'");
+			NStr("en='It is not necessary to install"
+"the application and certificate to the users computer to check certificates."
+""
+"Important: at least one of"
+"the applications from the list must"
+"be installed on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не устанавливать"
+"программу на компьютер пользователя для проверки сертификатов."
+""
+"Важно: на каждый"
+"компьютер, где работает сервер 1С:Предприятия"
+"или веб-сервер, использующий файловую информационную базу, должна быть установлена хотя бы одна из программ в списке.'");
 		Items.ExtensionForSignatureFiles.Visible = False;
 		Items.ActionsOnSavingDataWithDigitalSignature.Visible = False;
 	EndIf;
@@ -528,32 +538,47 @@ Procedure RefreshCurrentItemsVisible()
 	Items.CheckSignaturesAtServer.ExtendedTooltip.Title = CheckBoxToolTip;
 	
 	If Not Constants.UseDigitalSignatures.Get() Then
-		CheckBoxTitle = NStr("en = 'Encrypt and decrypt on the server'");
+		CheckBoxTitle = NStr("en='Encrypt and decrypt on the server';ru='Шифровать и расшифровывать на сервере'");
 		CheckBoxToolTip =
-			NStr("en = 'It is not necessary to
-			           |install the application and certificate to the user''s computer for encryption and decryption.
-			           |
-			           |Important: the application and the
-			           |private key certificate must be installed
-			           |on each computer with working 1C:Enterprise server or Web server which uses a file infobase.'");
+			NStr("en=""It is not necessary to"
+"install the application and certificate to the user's computer for encryption and decryption."
+""
+"Important: the application and the"
+"private key certificate must be installed"
+"on each computer with working 1C:Enterprise server or Web server which uses a file infobase."";ru='Позволяет не"
+"устанавливать программу и сертификат на компьютер пользователя для шифрования и расшифровки."
+""
+"Важно: на каждый"
+"компьютер, где работает сервер 1С:Предприятия"
+"или веб-сервер, использующий файловую информационную базу, должна быть установлена программа и сертификат с закрытым ключом.'");
 	ElsIf Not Constants.UseEncryption.Get() Then
-		CheckBoxTitle = NStr("en = 'Sign on server'");
+		CheckBoxTitle = NStr("en='Sign on server';ru='Подписывать на сервере'");
 		CheckBoxToolTip =
-			NStr("en = 'It is not necessary to
-			           |install the application and certificate to the users computer for signing.
-			           |
-			           |Important: the application and the
-			           |private key certificate must be installed
-			           |on each computer with working 1C:Enterprise server or Web server which uses a file infobase.'");
+			NStr("en='It is not necessary to"
+"install the application and certificate to the users computer for signing."
+""
+"Important: the application and the"
+"private key certificate must be installed"
+"on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не"
+"устанавливать программу и сертификат на компьютер пользователя для подписания."
+""
+"Важно: на каждый"
+"компьютер, где работает сервер 1С:Предприятия"
+"или веб-сервер, использующий файловую информационную базу, должна быть установлена программа и сертификат с закрытым ключом.'");
 	Else
-		CheckBoxTitle = NStr("en = 'Sign and encrypt on server'");
+		CheckBoxTitle = NStr("en='Sign and encrypt on server';ru='Подписывать и шифровать на сервере'");
 		CheckBoxToolTip =
-			NStr("en = 'It allows you not to
-			           |install the application and the certificate on the computer of the user for signing, encryption and decryption.
-			           |
-			           |Important: the application and the
-			           |private key certificate must be installed
-			           |on each computer with working 1C:Enterprise server or Web server which uses a file infobase.'");
+			NStr("en='It allows you not to"
+"install the application and the certificate on the computer of the user for signing, encryption and decryption."
+""
+"Important: the application and the"
+"private key certificate must be installed"
+"on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не устанавливать"
+"программу и сертификат на компьютер пользователя для подписания, шифрования и расшифровки."
+""
+"Важно: на каждый"
+"компьютер, где работает сервер 1С:Предприятия"
+"или веб-сервер, использующий файловую информационную базу, должна быть установлена программа и сертификат с закрытым ключом.'");
 	EndIf;
 	Items.ToSignAtServer.Title = CheckBoxTitle;
 	Items.ToSignAtServer.ExtendedTooltip.Title = CheckBoxToolTip;
@@ -681,7 +706,7 @@ Procedure ExpectationHandlerDefineInstalledApplicationsContinueCycle(Manager, Co
 	Errors            = Context.ExecuteParameters.ErrorProperties.Errors;
 	
 	If Manager <> Undefined Then
-		UpdateValue(ApplicationDescription.CheckResult, NStr("en = 'Installed on the computer.'"));
+		UpdateValue(ApplicationDescription.CheckResult, NStr("en='Installed on the computer.';ru='Установлена на компьютере.'"));
 		UpdateValue(ApplicationDescription.Use, True);
 		ExpectationHandlerDefineInstalledApplicationsCycleBegin(Context);
 		Return;
@@ -692,12 +717,12 @@ Procedure ExpectationHandlerDefineInstalledApplicationsContinueCycle(Manager, Co
 	EndDo;
 	
 	If Error.PathNotSpecified Then
-		UpdateValue(ApplicationDescription.CheckResult, NStr("en = 'Path to the application is not specified.'"));
+		UpdateValue(ApplicationDescription.CheckResult, NStr("en='Path to the application is not specified.';ru='Не указан путь к программе.'"));
 		UpdateValue(ApplicationDescription.Use, "");
 	Else
-		ErrorText = NStr("en = 'Not set on the computer.'") + " " + Error.Description;
+		ErrorText = NStr("en='Not set on the computer.';ru='Не установлена на компьютере.'") + " " + Error.Description;
 		If Error.ToAdmin AND Not InfobaseUserWithFullAccess Then
-			ErrorText = ErrorText + " " + NStr("en = 'Contact your administrator.'");
+			ErrorText = ErrorText + " " + NStr("en='Contact your administrator.';ru='Обратитесь к администратору.'");
 		EndIf;
 		UpdateValue(ApplicationDescription.CheckResult, ErrorText);
 		UpdateValue(ApplicationDescription.Use, False);

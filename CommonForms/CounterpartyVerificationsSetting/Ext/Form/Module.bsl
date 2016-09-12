@@ -86,11 +86,11 @@ EndProcedure
 Function AccessParametersCheckResult()
 	
 	If Not CounterpartiesCheck.HasAccessToFTSService() Then
-		WarningText = NStr("en = 'Access to the web service is not available'");
+		WarningText = NStr("en='Access to the web service is not available';ru='Доступ к веб-сервису отсутствует'");
 		Return WarningText;
 	EndIf;
 	
-	WarningText = NStr("en = 'Checking of acces to the web service is complete successfully!'");
+	WarningText = NStr("en='Checking of acces to the web service is complete successfully!';ru='Проверка доступа к веб-сервису успешно пройдена!'");
 	Return WarningText;
 	
 EndFunction

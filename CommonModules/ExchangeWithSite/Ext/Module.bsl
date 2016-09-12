@@ -69,7 +69,7 @@ Function PerformTestConnectionToSite(ExchangeNode, MessageText) Export
 	
 	If Not GetConnectionSettings(ExchangeNode, ConnectionSettings, ErrorDescription) Then
 		
-		MessageText = NStr("en = 'Error on receiving connection with site parameters'") + Chars.LF + ErrorDescription;
+		MessageText = NStr("en='Error on receiving connection with site parameters';ru='Ошибка при получении параметров подключения к сайту.'") + Chars.LF + ErrorDescription;
 		Return False;
 		
 	EndIf;
@@ -77,7 +77,7 @@ Function PerformTestConnectionToSite(ExchangeNode, MessageText) Export
 	Join = SetConnectionWithServer(ConnectionSettings, ErrorDescription);
 	If Join = Undefined Then
 		
-		MessageText = NStr("en = 'Error on setting connection with site.'") + Chars.LF + ErrorDescription;
+		MessageText = NStr("en='Error on setting connection with site.';ru='Ошибка при установке соединения с сайтом.'") + Chars.LF + ErrorDescription;
 		Return False;
 		
 	EndIf;
@@ -87,11 +87,11 @@ Function PerformTestConnectionToSite(ExchangeNode, MessageText) Export
 	Successfully = PerformAuthorizationForConnection(Join, ConnectionSettings, ServerResponse, ErrorDescription, ConnectionType);
 	If Successfully Then
 		
-		MessageText = NStr("en = 'Connection with site set successfully.'");
+		MessageText = NStr("en='Connection with site set successfully.';ru='Соединение с сайтом успешно установлено.'");
 		
 	Else
 		
-		MessageText = NStr("en = 'Can not set connection.'") + Chars.LF + ErrorDescription;
+		MessageText = NStr("en='Can not set connection.';ru='Не удалось установить соединение.'") + Chars.LF + ErrorDescription;
 		
 	EndIf;
 	
@@ -403,7 +403,7 @@ Procedure TaskExecuteExchange(NodeCodeExchange) Export
 			EventLogLevel.Error,
 			ExchangeNode.Metadata(),
 			ExchangeNode,
-			NStr("en = 'Do not found exchange node with code'") + " " + NodeCodeExchange);
+			NStr("en='Do not found exchange node with code';ru='Не найден узел обмена с кодом'") + " " + NodeCodeExchange);
 		
 		Return;
 		
@@ -415,7 +415,7 @@ Procedure TaskExecuteExchange(NodeCodeExchange) Export
 			EventLogLevel.Information,
 			ExchangeNode.Metadata(),
 			ExchangeNode,
-			NStr("en = 'Exchange setting is marked for removing. The exchange has been canceled.'"));
+			NStr("en='Exchange setting is marked for removing. The exchange has been canceled.';ru='Настройка обмена помечена на удаление. Обмен отменен.'"));
 		
 		Return;
 		
@@ -428,13 +428,13 @@ Procedure TaskExecuteExchange(NodeCodeExchange) Export
 			EventLogLevel.Warning,
 			ExchangeNode.Metadata(),
 			ExchangeNode,
-			MessageText + NStr("en = ' The exchange has been canceled.'"));
+			MessageText + NStr("en=' The exchange has been canceled.';ru=' Обмен отменен.'"));
 		
 		Return;
 		
 	EndIf;
 	
-	RunExchange(ExchangeNode, NStr("en = 'Background exchange'"));
+	RunExchange(ExchangeNode, NStr("en='Background exchange';ru='Фоновый обмен'"));
 	
 EndProcedure
 
@@ -557,7 +557,7 @@ Procedure RunExchange(ExchangeNode, ExchangeRunMode, ExportChangesOnly = True) E
 	If MainParameters.ProductsExchange Then 
 		
 		InformationTableRow.ActionOnExchange = Enums.ActionsAtExchange.DataExport;
-		InformationTableRow.Definition = String(CurrentDate()) + " " + NStr("en = 'Products export launch'");
+		InformationTableRow.Definition = String(CurrentDate()) + " " + NStr("en='Products export launch';ru='Запуск выгрузки товаров'");
 		
 		ProductsSucessfullyExported = ExportProductsAndServices(MainParameters, InformationTableRow);
 		
@@ -749,14 +749,14 @@ Function ExportOfferFolderToSite(Parameters, InformationTableRow)
 		
 		InformationTableRow.Definition = 
 			InformationTableRow.Definition + Chars.LF
-			+ CurrentDate() + NStr("en = ' Products are successfully exported to the site.'")
-			+ ?(IsBlankString(ErrorDescription), "", Chars.LF + NStr("en = 'Additional information about export:'") + Chars.LF + ErrorDescription);
+			+ CurrentDate() + NStr("en=' Products are successfully exported to the site.';ru=' Товары успешно выгружены на сайт.'")
+			+ ?(IsBlankString(ErrorDescription), "", Chars.LF + NStr("en='Additional information about export:';ru='Дополнительная информация о выгрузке:'") + Chars.LF + ErrorDescription);
 		
 	Else
 		
 		InformationTableRow.Definition = 
 			InformationTableRow.Definition + Chars.LF
-			+ CurrentDate() + NStr("en = ' Export on site was completed with errors.'") + Chars.LF + ErrorDescription;
+			+ CurrentDate() + NStr("en=' Export on site was completed with errors.';ru=' Выгрузка на сайт завершилась с ошибками.'") + Chars.LF + ErrorDescription;
 		
 	EndIf;
 	
@@ -769,7 +769,7 @@ Function ExportOfferFolderToSite(Parameters, InformationTableRow)
 		InformationTableRow.Definition = 
 			InformationTableRow.Definition
 			+ Chars.LF
-			+ ExceptionalErrorDescription(NStr("en = 'Can not clear exchange directory: '")
+			+ ExceptionalErrorDescription(NStr("en='Can not clear exchange directory: ';ru='Не удалось очистить каталог обмена: '")
 				+ Parameters.DirectoryOnHardDisk);
 		
 	EndTry;
@@ -1380,7 +1380,7 @@ Function ExportClassifierAndDirectory(Parameters, DirectoryFileName, CMLPackage)
 	Except
 		
 		AddErrorDescriptionFull(ResultStructure.ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Failed to record goods classifier XML-file on disc: '")
+			ExceptionalErrorDescription(NStr("en='Failed to record goods classifier XML-file on disc: ';ru='Не удалось записать XML-файл классификатора товаров на диск: '")
 				+ DirectoryFileName + Chars.LF + ErrorDescription()));
 			
 		ResultStructure.ExportedPictures = 0;
@@ -1851,7 +1851,7 @@ Function ExportFile(FileData, Parameters, ErrorDescription) Export
 			
 			AddErrorDescriptionFull(ErrorDescription, 
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Failed to receive file data %1 of products and services %2'"),
+					NStr("en='Failed to receive file data %1 of products and services %2';ru='Не удалось получить данные файла %1 номенклатуры %2'"),
 					FileData.File,
 					Parameters.ProductsAndServicesSelection.ProductsAndServices));
 					
@@ -1871,7 +1871,7 @@ Function ExportFile(FileData, Parameters, ErrorDescription) Export
 		Except
 			
 			AddErrorDescriptionFull(ErrorDescription, 
-				ExceptionalErrorDescription(NStr("en = 'ProductsAndServices file export: '")
+				ExceptionalErrorDescription(NStr("en='ProductsAndServices file export: ';ru='Выгрузка файла номенклатуры: '")
 					+ Parameters.ProductsAndServicesSelection.ProductsAndServices));
 					
 			Return FileURL;
@@ -1898,7 +1898,7 @@ Function ExportFile(FileData, Parameters, ErrorDescription) Export
 		
 		AddErrorDescriptionFull(ErrorDescription, ExceptionalErrorDescription(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Failed to create the directory %1. ProductsAndServices: %2'"),
+				NStr("en='Failed to create the directory %1. ProductsAndServices: %2';ru='Не удалось создать каталог %1. Номенклатура: %2'"),
 				FileDir,
 				Parameters.ProductsAndServicesSelection.ProductsAndServices))
 		);
@@ -1917,7 +1917,7 @@ Function ExportFile(FileData, Parameters, ErrorDescription) Export
 		
 		AddErrorDescriptionFull(ErrorDescription, ExceptionalErrorDescription(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Failed to record the %1 file to the disk. ProductsAndServices: %2'"),
+				NStr("en='Failed to record the %1 file to the disk. ProductsAndServices: %2';ru='Не удалось записать файл %1 на диск. Номенклатура: %2'"),
 				FullFileName,
 				Parameters.ProductsAndServicesSelection.ProductsAndServices))
 		);
@@ -2112,7 +2112,7 @@ Function ExportPackageOfOffers(Parameters, PriceFileName, CMLPackage)
 	Except
 		
 		AddErrorDescriptionFull(ResultStructure.ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Failed to record XML-file offers package on disc: '")
+			ExceptionalErrorDescription(NStr("en='Failed to record XML-file offers package on disc: ';ru='Не удалось записать XML-файл пакета предложений на диск: '")
 				+ PriceFileName + Chars.LF + ErrorDescription()));
 			
 		ResultStructure.ExportedOffers = 0;
@@ -2422,7 +2422,7 @@ Procedure PrepareFinalInformationAboutGoodsExport(DirectoriesTable, InformationT
 	
 	InformationTableRow.Definition = 
 		InformationTableRow.Definition + Chars.LF
-		+ CurrentDate() + NStr("en = ' Generating files of goods export completed'");
+		+ CurrentDate() + NStr("en=' Generating files of goods export completed';ru=' Завершено формирование файлов выгрузки товаров'");
 	
 	For Each Directory IN DirectoriesTable Do
 		
@@ -2443,18 +2443,18 @@ Procedure PrepareFinalInformationAboutGoodsExport(DirectoriesTable, InformationT
 	
 	InformationTableRow.Definition = 
 		InformationTableRow.Definition + Chars.LF
-		+ NStr("en = 'Products exported: '") + ResultStructure.ProductsExported + Chars.LF
-		+ NStr("en = 'offers: '") + ResultStructure.ExportedOffers + Chars.LF
-		+ NStr("en = 'images: '") + ResultStructure.ExportedPictures + Chars.LF;
+		+ NStr("en='Products exported: ';ru='Выгружено товаров: '") + ResultStructure.ProductsExported + Chars.LF
+		+ NStr("en='offers: ';ru='предложений: '") + ResultStructure.ExportedOffers + Chars.LF
+		+ NStr("en='images: ';ru='картинок: '") + ResultStructure.ExportedPictures + Chars.LF;
 	
 	For Each Directory IN DirectoriesTable Do
 		
 		InformationTableRow.Definition = 
 			InformationTableRow.Definition + Chars.LF
-			+ NStr("en = 'For the directory too '") + Directory.Directory + ":" + Chars.LF 
-			+ NStr("en = 'products: '") + Directory.ResultStructure.ProductsExported + Chars.LF
-			+ NStr("en = 'offers: '") + Directory.ResultStructure.ExportedOffers + Chars.LF
-			+ NStr("en = 'images: '") + Directory.ResultStructure.ExportedPictures + Chars.LF;
+			+ NStr("en='For the directory too ';ru='В том числе для каталога '") + Directory.Directory + ":" + Chars.LF 
+			+ NStr("en='products: ';ru='товаров: '") + Directory.ResultStructure.ProductsExported + Chars.LF
+			+ NStr("en='offers: ';ru='предложений: '") + Directory.ResultStructure.ExportedOffers + Chars.LF
+			+ NStr("en='images: ';ru='картинок: '") + Directory.ResultStructure.ExportedPictures + Chars.LF;
 		
 		If IsBlankString(Directory.ResultStructure.ErrorDescription) Then
 			Continue;
@@ -2462,7 +2462,7 @@ Procedure PrepareFinalInformationAboutGoodsExport(DirectoriesTable, InformationT
 		
 		InformationTableRow.Definition = 
 			InformationTableRow.Definition + Chars.LF
-			+ NStr("en = 'Errors in exporting directory process '") + Directory.Directory + ":"
+			+ NStr("en='Errors in exporting directory process ';ru='Ошибки в процессе выгрузки каталога '") + Directory.Directory + ":"
 			+ Directory.ResultStructure.ErrorDescription + Chars.LF;
 		
 	EndDo;
@@ -2474,7 +2474,7 @@ Procedure CommitProductsAndServicesExportCompletion(InformationTableRow, Result)
 	EndDate = CurrentDate();
 	
 	InformationTableRow.Definition = InformationTableRow.Definition + Chars.LF
-		+ EndDate + " " + NStr("en = 'Products export is completed'");
+		+ EndDate + " " + NStr("en='Products export is completed';ru='Завершена выгрузка товаров'");
 		
 	InformationTableRow.ExchangeProcessResult = Result;
 	InformationTableRow.EndDate = EndDate;
@@ -2595,7 +2595,7 @@ Function ImportOrdersFromSite(Parameters, StatisticsStructure, ErrorDescription)
 	ErrorDescription = "";
 	If Not PerformAuthorizationForConnection(Join, Parameters.ConnectionSettings, ServerResponse, ErrorDescription, ConnectionType) Then
 		
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Orders import has not been performed.'"));
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='Orders import has not been performed.';ru='Загрузка заказов не выполнена.'"));
 		Return False;
 		
 	EndIf;
@@ -2614,7 +2614,7 @@ Function ImportOrdersFromSite(Parameters, StatisticsStructure, ErrorDescription)
 	
 	If ServerResponse = Undefined Then 
 		
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Orders import has not been performed.'"));
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='Orders import has not been performed.';ru='Загрузка заказов не выполнена.'"));
 		Return False;
 		
 	EndIf;
@@ -2637,7 +2637,7 @@ Function ImportOrdersFromSite(Parameters, StatisticsStructure, ErrorDescription)
 	
 	If IsBlankString(XMLString) Then
 		
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Failed to read data, exported from server.'"));
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='Failed to read data, exported from server.';ru='Не удалось прочитать данные, загруженные с сервера.'"));
 		Return False;
 		
 	EndIf;
@@ -2645,7 +2645,7 @@ Function ImportOrdersFromSite(Parameters, StatisticsStructure, ErrorDescription)
 	If Not ExportOrders(XMLString, StatisticsStructure, Parameters, ErrorDescription) Then 
 		
 		AddErrorDescriptionFull(ErrorDescription, 
-			NStr("en = 'Failed to process documents, exported from server.'"));
+			NStr("en='Failed to process documents, exported from server.';ru='Не удалось обработать документы, загруженные с сервера.'"));
 			
 		Return False;
 		
@@ -2661,7 +2661,7 @@ Function ImportOrdersFromSite(Parameters, StatisticsStructure, ErrorDescription)
 	If ServerResponse = Undefined Then 
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			NStr("en = 'Orders import has not been performed.'"));
+			NStr("en='Orders import has not been performed.';ru='Загрузка заказов не выполнена.'"));
 		Return False;
 		
 	EndIf;
@@ -2687,7 +2687,7 @@ Function ImportOrdersFromFile(Parameters, StatisticsStructure, ErrorDescription)
 	If Not File.Exist()
 		OR File.IsDirectory() Then
 		
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Import file not found.'") + ": " + Parameters.ImportFile);
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='Import file not found.';ru='Файл загрузки не найден'") + ": " + Parameters.ImportFile);
 		Return False;
 		
 	EndIf;
@@ -2725,7 +2725,7 @@ Function ExportOrders(OrdersData, StatisticsStructure, Parameters, ErrorDescript
 		
 	ElsIf Not XDTOObjectContainsProperty(XDTOOrders, "Document") Then
 		
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'No documents for processing.'"));
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='No documents for processing.';ru='Нет документов для обработки.'"));
 		Return True;
 		
 	EndIf;
@@ -2772,7 +2772,7 @@ Function ExportOrders(OrdersData, StatisticsStructure, Parameters, ErrorDescript
 			Except
 				
 				AddErrorDescriptionFull(ErrorDescription,
-					ExceptionalErrorDescription(NStr("en = 'Failed to cancel order: '")
+					ExceptionalErrorDescription(NStr("en='Failed to cancel order: ';ru='Не удалось отменить заказ: '")
 						+ DocumentRef));
 				
 			EndTry;
@@ -2834,7 +2834,7 @@ Function GetXDTOOrders(XMLString, Parameters, ErrorDescription)
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Failed to read XML'")));
+			ExceptionalErrorDescription(NStr("en='Failed to read XML';ru='Не удалось прочитать XML'")));
 			
 		Return Undefined;
 		
@@ -2845,7 +2845,7 @@ Function GetXDTOOrders(XMLString, Parameters, ErrorDescription)
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Failed to read XML'")));
+			ExceptionalErrorDescription(NStr("en='Failed to read XML';ru='Не удалось прочитать XML'")));
 			
 		Return Undefined;
 		
@@ -2957,7 +2957,7 @@ Function CreateUpdateOrders(XDTODocuments, PreviouslyImportedOrders, StatisticsS
 			
 			AddErrorDescriptionFull(ErrorDescription,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Error in node value <Document>.<BusinessTransaction> of XML document (%1)'"),
+					NStr("en='Error in node value <Document>.<BusinessTransaction> of XML document (%1)';ru='Ошибка в значении узла <Документ>.<ХозОперация> документа XML (%1)'"),
 					DocumentXDTO.BusinessTransaction));
 			
 			Return False;
@@ -2968,7 +2968,7 @@ Function CreateUpdateOrders(XDTODocuments, PreviouslyImportedOrders, StatisticsS
 			
 			AddErrorDescriptionFull(ErrorDescription,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Error in node value <Document>.<Currency> of XML document (%1)'"),
+					NStr("en='Error in node value <Document>.<Currency> of XML document (%1)';ru='Ошибка в значении узла <Документ>.<Валюта> документа XML (%1)'"),
 					DocumentXDTO.Currency));
 				
 			Return False;
@@ -2990,8 +2990,8 @@ Function CreateUpdateOrders(XDTODocuments, PreviouslyImportedOrders, StatisticsS
 				StatisticsStructure.Skipped.Add(FounRow.CustomerOrder);
 				
 				AddErrorDescriptionFull(ErrorDescription,
-					String(DocumentObject.Ref) + NStr("en = ' skipped because of:'") + Chars.LF 
-					+ NStr("en = 'Order state - Closed.'"));
+					String(DocumentObject.Ref) + NStr("en=' skipped because of:';ru=' пропущен по причине:'") + Chars.LF 
+					+ NStr("en='Order state - Closed.';ru='Статус заказа - ""Закрыт"".'"));
 				
 				Continue;
 				
@@ -3039,7 +3039,7 @@ Function CreateUpdateOrders(XDTODocuments, PreviouslyImportedOrders, StatisticsS
 			StatisticsStructure.Skipped.Add(DocumentObject.Ref);
 			
 			Message = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '%1 is ignored since exist the documents entered according to the order.'"),
+				NStr("en='%1 is ignored since exist the documents entered according to the order.';ru='%1 пропущен, т.к. существуют документы, введенные на основании заказа.'"),
 				DocumentObject.Ref);
 			
 			AddErrorDescriptionFull(ErrorDescription, Message);
@@ -3047,7 +3047,7 @@ Function CreateUpdateOrders(XDTODocuments, PreviouslyImportedOrders, StatisticsS
 			If UpdateCreateAdditionalOrderInfo(DocumentObject.Ref, OrderProperties, ErrorDescription) Then
 				
 				Message = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Order %1 properties updated.'"),
+					NStr("en='Order %1 properties updated.';ru='Свойства заказа %1 обновлены.'"),
 					DocumentObject.Ref);
 				
 				AddErrorDescriptionFull(ErrorDescription, Message);
@@ -3084,7 +3084,7 @@ Function CreateUpdateOrders(XDTODocuments, PreviouslyImportedOrders, StatisticsS
 				StatisticsStructure.Skipped.Add(DocumentObject);
 				
 				AddErrorDescriptionFull(ErrorDescription,
-					ExceptionalErrorDescription(NStr("en = 'Failed to record order #'") + DocumentObject.Number));
+					ExceptionalErrorDescription(NStr("en='Failed to record order #';ru='Не удалось записать заказ №'") + DocumentObject.Number));
 				
 				Return False;
 				
@@ -3397,7 +3397,7 @@ Function UpdateCreateAdditionalOrderInfo(CustomerOrder, OrderProperties, ErrorDe
 		If Property = Undefined Then
 			
 			PropertyObject = ChartsOfCharacteristicTypes.AdditionalAttributesAndInformation.CreateItem();
-			PropertyObject.Comment = NStr("en = 'Created automatically at the order importing from the site'");
+			PropertyObject.Comment = NStr("en='Created automatically at the order importing from the site';ru='Создано автоматически при загрузке заказа с сайта'");
 			PropertyObject.Description = PropertyAsString;
 			PropertyObject.Title = PropertyAsString;
 			PropertyObject.ValueType = New TypeDescription("String");
@@ -3493,7 +3493,7 @@ Function FillOrderWithXDTODocumentData(DocumentObject, DocumentXDTO, OrderProper
 	
 	If Not IdentifyCounterparty(DocumentObject, DocumentXDTO, Parameters, ErrorDescription) Then
 		AddErrorDescriptionFull(ErrorDescription,
-			NStr("en = 'Failed  to identify the counterparty for the order number: '") + DocumentXDTO.Number);
+			NStr("en='Failed  to identify the counterparty for the order number: ';ru='Не удалось идентифицировать контрагента для заказа номер: '") + DocumentXDTO.Number);
 	EndIf;
 	
 	If ValueIsFilled(DocumentObject.Counterparty)
@@ -3515,13 +3515,13 @@ Function FillOrderWithXDTODocumentData(DocumentObject, DocumentXDTO, OrderProper
 	
 	If Not Parameters.ExchangeOverWebService Then
 		Comment = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = ', % %No'"),
+			NStr("en=', % %No';ru=', % %No'"),
 			DocumentXDTO.Number,
 			?(Parameters.ExportToSite, Parameters.ConnectionSettings.Server, "(Site)")
 		);
 	Else
 		Comment = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = ', % %No'"), 
+			NStr("en=', % %No';ru=', % %No'"), 
 			DocumentXDTO.Number, 
 			"(Site)"
 		);
@@ -3883,7 +3883,7 @@ Function IdentifyCounterparty(DocumentObject, DocumentXDTO, Parameters, ErrorDes
 		If IsBlankString(Description) Then
 			
 			AddErrorDescriptionFull(ErrorDescription, 
-				NStr("en = 'Counterparty name is not filled!'"));
+				NStr("en='Counterparty name is not filled!';ru='Наименование контрагента не заполнено!'"));
 			
 			Return False;
 			
@@ -3893,7 +3893,7 @@ Function IdentifyCounterparty(DocumentObject, DocumentXDTO, Parameters, ErrorDes
 		
 		If Parameters.CounterpartiesIdentificationMethod = Enums.CounterpartiesIdentificationMethods.Description Then
 			
-			TextOfMessageFoundFewCounterparties = NStr("en = ' by description: '") + Description;
+			TextOfMessageFoundFewCounterparties = NStr("en=' by description: ';ru=' по наименованию: '") + Description;
 			
 			Query.Text = Query.Text + " WHERE Counterparties.Name = &Name ";
 			
@@ -3904,7 +3904,7 @@ Function IdentifyCounterparty(DocumentObject, DocumentXDTO, Parameters, ErrorDes
 			If IsBlankString(TIN) Then
 				
 				AddErrorDescriptionFull(ErrorDescription, 
-					NStr("en = 'Counterparty TIN is not filled!'"));
+					NStr("en='Counterparty TIN is not filled!';ru='ИНН контрагента не заполнен!'"));
 				
 				Return False;
 				
@@ -3912,7 +3912,7 @@ Function IdentifyCounterparty(DocumentObject, DocumentXDTO, Parameters, ErrorDes
 			
 			TextOfMessageFoundFewCounterparties = 
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = ' by TIN: %1, KPP: %2'"),
+					NStr("en=' by TIN: %1, KPP: %2';ru=' по ИНН: %1, КПП: %2'"),
 					TIN, KPP);
 			
 			Query.Text = Query.Text + " WHERE Counterparties.TIN = &TIN AND Counterparties.KPP = &KPP ";
@@ -3939,7 +3939,7 @@ Function IdentifyCounterparty(DocumentObject, DocumentXDTO, Parameters, ErrorDes
 		If Not ValueIsFilled(CounterpartyRef) Then
 			
 			AddErrorDescriptionFull(ErrorDescription, 
-				NStr("en = 'Failed to find or create counterparty!'"));
+				NStr("en='Failed to find or create counterparty!';ru='Не удалось найти или создать контрагента!'"));
 			
 			Return False;
 			
@@ -4304,7 +4304,7 @@ Procedure FillDataOfCatalogsSubordinatedToCounterparty(DocumentObject, Counterpa
 			Item = Catalogs.ContactPersons.CreateItem();
 			Item.Owner = CounterpartyObject.Ref;
 			Item.Description = Description;
-			Item.Comment = NStr("en = 'Created automaticly on order import from site '") + CurrentDate();
+			Item.Comment = NStr("en='Created automaticly on order import from site ';ru='Создан автоматически при импорте заказа с сайта '") + CurrentDate();
 			Item.Write();
 			
 		EndDo;
@@ -4387,7 +4387,7 @@ Procedure FillDataOfCatalogsSubordinatedToCounterparty(DocumentObject, Counterpa
 			If Not ValueIsFilled(Currency) Then
 				
 				AddErrorDescriptionFull(ErrorDescription,
-					ExceptionalErrorDescription(NStr("en = 'Failed to define bank account currency: '")
+					ExceptionalErrorDescription(NStr("en='Failed to define bank account currency: ';ru='Не удалось определить валюту банковского счета: '")
 					+ AccountNo));
 				
 				Continue;
@@ -4758,7 +4758,7 @@ Function FindCreateProductsAndServicesDescription(XDTOProduct, IsService, Produc
 			Else
 				
 				AddErrorDescriptionFull(ErrorDescription,
-					NStr("en = 'ProductsAndServices characteristics is not found by the unique ID: '") + IDCharacteristics);
+					NStr("en='ProductsAndServices characteristics is not found by the unique ID: ';ru='Характеристика номенклатуры не найдена по уникальному идентификатору: '") + IDCharacteristics);
 				
 			EndIf;
 			
@@ -4767,7 +4767,7 @@ Function FindCreateProductsAndServicesDescription(XDTOProduct, IsService, Produc
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Failed to search the ProductAndServices characteristic by the unique ID: '") + IDCharacteristics));
+			ExceptionalErrorDescription(NStr("en='Failed to search the ProductAndServices characteristic by the unique ID: ';ru='Не удалось выполнить поиск характеристики номенклатуры по уникальному идентификатору: '") + IDCharacteristics));
 		
 	EndTry;
 	
@@ -4815,14 +4815,14 @@ Function FindCreateProductsAndServices(XDTOProduct, IsService, Parameters, VATRa
 			Else
 				
 				AddErrorDescriptionFull(ErrorDescription,
-					NStr("en = 'ProductsAndServices is not found by UUID: '") + ProductsAndServicesID);
+					NStr("en='ProductsAndServices is not found by UUID: ';ru='Номенклатура не найдена по уникальному идентификатору: '") + ProductsAndServicesID);
 					
 			EndIf;
 			
 		Except
 			
 			AddErrorDescriptionFull(ErrorDescription,
-				ExceptionalErrorDescription(NStr("en = 'Failed to execute item search by UUID: '") + XDTOProduct.ID));
+				ExceptionalErrorDescription(NStr("en='Failed to execute item search by UUID: ';ru='Не удалось выполнить поиск номенклатуры по уникальному идентификатору: '") + XDTOProduct.ID));
 			
 		EndTry;
 		
@@ -5158,7 +5158,7 @@ Function ExportOrdersIntoFile(Parameters, StatisticsStructure, ErrorDescription)
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Failed to record XML-file on disc: '")
+			ExceptionalErrorDescription(NStr("en='Failed to record XML-file on disc: ';ru='Не удалось записать XML-файл на диск: '")
 				+ ExchangeFileFullName + Chars.LF + ErrorDescription()));
 				
 		StatisticsStructure.Exported.Clear();
@@ -5627,24 +5627,24 @@ Procedure WriteOrdersInformationIntoInformationTable(InformationTable, StartDate
 	
 	If Action = Enums.ActionsAtExchange.DataImport Then
 		
-		Definition = String(StartDate) + " " + NStr("en = 'Run orders import'")
-			+ Chars.LF + NStr("en = 'Processed: '") + StatisticsStructure.ProcessedOnImport
-			+ Chars.LF + NStr("en = 'Imported: '") + StatisticsStructure.Exported.Count();
+		Definition = String(StartDate) + " " + NStr("en='Run orders import';ru='Запуск загрузки заказов'")
+			+ Chars.LF + NStr("en='Processed: ';ru='Обработано: '") + StatisticsStructure.ProcessedOnImport
+			+ Chars.LF + NStr("en='Imported: ';ru='Загружено: '") + StatisticsStructure.Exported.Count();
 		
 		DisplayListOfDocumentsForLog(Definition, StatisticsStructure.Exported);
 		
 		Definition = Definition
-			+ Chars.LF + NStr("en = 'Skipped: '") + StatisticsStructure.Skipped.Count();
+			+ Chars.LF + NStr("en='Skipped: ';ru='Пропущено: '") + StatisticsStructure.Skipped.Count();
 		
 		DisplayListOfDocumentsForLog(Definition, StatisticsStructure.Skipped);
 		
 		Definition = Definition
-			+ Chars.LF + NStr("en = 'Updated: '") + StatisticsStructure.Updated.Count();
+			+ Chars.LF + NStr("en='Updated: ';ru='Обновлено: '") + StatisticsStructure.Updated.Count();
 		
 		DisplayListOfDocumentsForLog(Definition, StatisticsStructure.Updated);
 		
 		Definition = Definition
-			+ Chars.LF + NStr("en = 'Created: '") + StatisticsStructure.Created.Count();
+			+ Chars.LF + NStr("en='Created: ';ru='Создано: '") + StatisticsStructure.Created.Count();
 		
 		DisplayListOfDocumentsForLog(Definition, StatisticsStructure.Created);
 		
@@ -5652,12 +5652,12 @@ Procedure WriteOrdersInformationIntoInformationTable(InformationTable, StartDate
 			+ Chars.LF
 			+ InformationTableRow.EndDate
 			+ " "
-			+ NStr("en = 'Orders import ended'");
+			+ NStr("en='Orders import ended';ru='Завершена загрузка заказов'");
 			
 	Else
 		
-		Definition = String(StartDate) + " " + NStr("en = 'Run orders export'")
-			+ Chars.LF + NStr("en = 'Exported: '") + StatisticsStructure.Exported.Count();
+		Definition = String(StartDate) + " " + NStr("en='Run orders export';ru='Запуск выгрузки заказов'")
+			+ Chars.LF + NStr("en='Exported: ';ru='Выгружено: '") + StatisticsStructure.Exported.Count();
 		
 		DisplayListOfDocumentsForLog(Definition, StatisticsStructure.Exported);
 		
@@ -5665,7 +5665,7 @@ Procedure WriteOrdersInformationIntoInformationTable(InformationTable, StartDate
 			+ Chars.LF
 			+ InformationTableRow.EndDate
 			+ " "
-			+ NStr("en = 'Orders export ended'");
+			+ NStr("en='Orders export ended';ru='Завершена выгрузка заказов'");
 	
 	EndIf;
 	
@@ -5682,7 +5682,7 @@ Procedure WriteOrdersInformationIntoInformationTable(InformationTable, StartDate
 	EndIf;
 	
 	InformationTableRow.Definition = InformationTableRow.Definition
-		+ Chars.LF + NStr("en = 'Additional information:'") + Chars.LF + ErrorDescription;
+		+ Chars.LF + NStr("en='Additional information:';ru='Дополнительная информация:'") + Chars.LF + ErrorDescription;
 	
 EndProcedure
 
@@ -5724,7 +5724,7 @@ Function GetMainExchangeParametersStructure() Export
 	MainParameters.Insert("GeneratingDate", GeneratingDate);
 	MainParameters.Insert("UseCharacteristics", GetFunctionalOption("UseCharacteristics"));
 	MainParameters.Insert("CurrencyTransactionsAccounting", GetFunctionalOption("CurrencyTransactionsAccounting"));
-	MainParameters.Insert("DescriptionTax", NStr("en = 'VAT'"));
+	MainParameters.Insert("DescriptionTax", NStr("en='VAT';ru='НДС'"));
 	
 	Return MainParameters;
 
@@ -5832,7 +5832,7 @@ Function SetConnectionWithServer(ConnectionParameters, ErrorDescription)
 		AddErrorDescriptionFull(ErrorDescription,
 			ExceptionalErrorDescription(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Failed to connect the server %1:%2. Verify the correctness of the address server, port, user name and a password.'"),
+				NStr("en='Failed to connect the server %1:%2. Verify the correctness of the address server, port, user name and a password.';ru='Не удалось установить соединение с сервером %1:%2. Проверьте правильность адреса сервера, порт, имя пользователя и пароль.'"),
 				ConnectionParameters.Server,
 				ConnectionParameters.Port)
 			)
@@ -5854,7 +5854,7 @@ Function PerformAuthorizationForConnection(Join, ConnectionParameters,
 	
 	If Join = Undefined Then
 		
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Authorization not executed.'"));
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='Authorization not executed.';ru='Авторизация не выполнена.'"));
 		Return False;
 		
 	EndIf;
@@ -5868,16 +5868,16 @@ Function PerformAuthorizationForConnection(Join, ConnectionParameters,
 	
 	If ServerResponse = Undefined Then 
 		
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Authorization not executed.'"));
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='Authorization not executed.';ru='Авторизация не выполнена.'"));
 		Return False;
 		
 	EndIf;
 	
 	If TrimAll(Lower(StrGetLine(ServerResponse, 1))) <> "success" Then
 		
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Authorization not executed.'")
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='Authorization not executed.';ru='Авторизация не выполнена.'")
 			+ Chars.LF 
-			+ NStr("en = 'Failed to set connection with the server. Verify user name and password.'"));
+			+ NStr("en='Failed to set connection with the server. Verify user name and password.';ru='Не удалось установить соединение с сервером. Проверьте имя пользователя и пароль.'"));
 			
 		Return False;
 		
@@ -5915,7 +5915,7 @@ Function ImportToSite(Parameters,
 	Successfully = PerformAuthorizationForConnection(Join, ConnectionSettings, ServerResponse, ErrorDescription, ConnectionType);
 	
 	If Not Successfully Then
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Import to site has not been performed.'"));
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='Import to site has not been performed.';ru='Выгрузка на сайт не выполнена.'"));
 		Return False;
 	EndIf;
 	
@@ -5933,7 +5933,7 @@ Function ImportToSite(Parameters,
 	
 	If ServerResponse = Undefined Then 
 		
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Import to site has not been performed.'"));
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='Import to site has not been performed.';ru='Выгрузка на сайт не выполнена.'"));
 		Return False;
 		
 	EndIf;
@@ -5943,7 +5943,7 @@ Function ImportToSite(Parameters,
 	
 	If StrLineCount(ServerResponse) <> 2 Then
 		
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Import to site has not been performed.'") + Chars.LF + NStr("en = 'Failed to read the server reply. Exchange parameters have not been received.'"));
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='Import to site has not been performed.';ru='Выгрузка на сайт не выполнена.'") + Chars.LF + NStr("en='Failed to read the server reply. Exchange parameters have not been received.';ru='Не удалось прочитать ответ сервера. Параметры обмена не получены.'"));
 		Return False;
 		
 	EndIf;
@@ -5958,7 +5958,7 @@ Function ImportToSite(Parameters,
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Exhange parameters receiving error (file size limitation)!'")));
+			ExceptionalErrorDescription(NStr("en='Exhange parameters receiving error (file size limitation)!';ru='Ошибка получения параметров обмена (ограничение размера файла)!'")));
 		
 		ExchangeFileFragmentSizeLimit = -1;
 		
@@ -5997,7 +5997,7 @@ Function ImportToSite(Parameters,
 		If ServerResponse = Undefined Then
 			
 			AddErrorDescriptionFull(ErrorDescription, 
-				NStr("en = 'Failed to receive the server reply. File is not sent.'") + " (" + CurFile.Value + ").");
+				NStr("en='Failed to receive the server reply. File is not sent.';ru='Не удалось получить ответ сервера. Файл не отправлен.'") + " (" + CurFile.Value + ").");
 				
 			HasErrors = True;
 			Break;
@@ -6009,8 +6009,8 @@ Function ImportToSite(Parameters,
 		If ExchangeState = ConnectionSettings.ServerResponse_CurrentOperationAbnormalEnd Then
 			
 			AddErrorDescriptionFull(ErrorDescription,
-				NStr("en = 'Error occurred on server side. File is not sent.'") + " (" + CurFile.Value + ")."
-				+ Chars.LF + NStr("en = 'Server response: '") + Chars.LF + ServerResponse);
+				NStr("en='Error occurred on server side. File is not sent.';ru='Произошла ошибка на стороне сервера. Файл не отправлен.'") + " (" + CurFile.Value + ")."
+				+ Chars.LF + NStr("en='Server response: ';ru='Ответ сервера: '") + Chars.LF + ServerResponse);
 			
 			HasErrors = True;
 			Break;
@@ -6020,16 +6020,16 @@ Function ImportToSite(Parameters,
 			If StrLineCount(ServerResponse) > 1 Then
 				
 				AddErrorDescriptionFull(ErrorDescription,
-					NStr("en = 'Received extended status of successful session completion.'")
-					+ Chars.LF + NStr("en = 'Server response: '") + Chars.LF + ServerResponse);
+					NStr("en='Received extended status of successful session completion.';ru='Получен расширенный статус успешного завершения сеанса.'")
+					+ Chars.LF + NStr("en='Server response: ';ru='Ответ сервера: '") + Chars.LF + ServerResponse);
 				
 			EndIf;
 			
 		Else
 			
 			AddErrorDescriptionFull(ErrorDescription,
-				NStr("en = 'Error occurred on server side. Operation completion status is not received. File is not sent.'") + " (" + CurFile.Value + ")."
-				+ Chars.LF + NStr("en = 'Server response: '") + Chars.LF + ServerResponse);
+				NStr("en='Error occurred on server side. Operation completion status is not received. File is not sent.';ru='Произошла ошибка на стороне сервера. Не получен статус завершения операции. Файл не отправлен.'") + " (" + CurFile.Value + ")."
+				+ Chars.LF + NStr("en='Server response: ';ru='Ответ сервера: '") + Chars.LF + ServerResponse);
 			
 			HasErrors = True;
 			Break;
@@ -6072,13 +6072,13 @@ Function ImportToSite(Parameters,
 					Successfully = False;
 					
 					AddErrorDescriptionFull(ErrorDescription, CurFile.Name + ": "
-						+ NStr("en = 'Failed to receive the current exchange process state. Exchange data has been sent but not imported.'"));
+						+ NStr("en='Failed to receive the current exchange process state. Exchange data has been sent but not imported.';ru='Не удалось получить текущее состояние процесса обмена. Данные обмена отправлены, но не загружены.'"));
 					
 				ElsIf StrLineCount(ServerResponse) = 0 Then
 					
 					Successfully = False;
 					AddErrorDescriptionFull(ErrorDescription, CurFile.Name + ": "
-						+ NStr("en = 'Failed to read the data of the current exchange process status. Exchange data has been sent but not imported.'"));
+						+ NStr("en='Failed to read the data of the current exchange process status. Exchange data has been sent but not imported.';ru='Не удалось прочитать данные о текущем состоянии процесса обмена. Данные обмена отправлены, но не загружены.'"));
 					
 				Else
 					
@@ -6088,8 +6088,8 @@ Function ImportToSite(Parameters,
 						
 						Successfully = False;
 						AddErrorDescriptionFull(ErrorDescription, CurFile.Name + ": "
-							+ NStr("en = 'Error occurred on server side.'")
-							+ Chars.LF + NStr("en = 'Server response'") + ": " + Chars.LF + ServerResponse);
+							+ NStr("en='Error occurred on server side.';ru='Произошла ошибка на стороне сервера.'")
+							+ Chars.LF + NStr("en='Server response';ru='Ответ сервера'") + ": " + Chars.LF + ServerResponse);
 						
 					ElsIf ExchangeState = ConnectionSettings.ServerResponse_CurrentOperationSuccessfulCompletion Then
 						
@@ -6104,8 +6104,8 @@ Function ImportToSite(Parameters,
 						Successfully = False;
 						
 						AddErrorDescriptionFull(ErrorDescription, CurFile.Name + ": "
-							+ NStr("en = 'Error occurred on server side. Unknown import status has been received.'")
-							+ Chars.LF + NStr("en = 'Server response'") + ": " + Chars.LF + ServerResponse);
+							+ NStr("en='Error occurred on server side. Unknown import status has been received.';ru='Произошла ошибка на стороне сервера. Получен неизвестный статус импорта.'")
+							+ Chars.LF + NStr("en='Server response';ru='Ответ сервера'") + ": " + Chars.LF + ServerResponse);
 						
 					EndIf;
 					
@@ -6172,12 +6172,12 @@ Function SendFileToServer(FullFileName, Join, QueryParameters="", Headers="", Er
 		If AnswerText.LineCount()>0 Then
 			ServerResponse = AnswerText.GetText();
 		Else
-			AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Sending file to the server: Blank server response is received.'"));
+			AddErrorDescriptionFull(ErrorDescription, NStr("en='Sending file to the server: Blank server response is received.';ru='Отправка файла на сервер: Получен пустой ответ сервера.'"));
 		EndIf;
 		
 	Else
 		
-		AddErrorDescriptionFull(ErrorDescription, NStr("en = 'Sending file to server: Server response is not received.'")); 
+		AddErrorDescriptionFull(ErrorDescription, NStr("en='Sending file to server: Server response is not received.';ru='Отправка файла на сервер: Ответ сервера не получен.'")); 
 		
 	EndIf;
 	
@@ -6229,7 +6229,7 @@ Function PrepareZIPArchives(DirectoryOnHardDisk, ErrorDescription)
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Failed to write zip-archive to disc!'")));
+			ExceptionalErrorDescription(NStr("en='Failed to write zip-archive to disc!';ru='Не удалось записать zip-архив на диск!'")));
 		Return NewFileList;
 		
 	EndTry;
@@ -6360,9 +6360,9 @@ Function GetDataFromServer(Join, QueryParameters = "", Headers = "", ErrorDescri
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Failed to receive data from the server. Verify the correctness of the address server, port, user name and a password.'")
+			ExceptionalErrorDescription(NStr("en='Failed to receive data from the server. Verify the correctness of the address server, port, user name and a password.';ru='Не удалось получить данные с сервера. Проверьте правильность адреса сервера, порт, имя пользователя и пароль,'")
 				+ Chars.LF
-				+ NStr("en = 'also Internet connection settings.'")));
+				+ NStr("en='also Internet connection settings.';ru='а также настройки подключения к Интернет.'")));
 		
 	EndTry;
 	
@@ -6378,13 +6378,13 @@ Function GetDataFromServer(Join, QueryParameters = "", Headers = "", ErrorDescri
 			ServerResponse = AnswerText.GetText();
 		Else
 			AddErrorDescriptionFull(ErrorDescription,
-				NStr("en = 'Data receiving from the server: Blank server response is received.'"));
+				NStr("en='Data receiving from the server: Blank server response is received.';ru='Получение данных с сервера: Получен пустой ответ сервера.'"));
 		EndIf;
 		
 	Else
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			NStr("en = 'Receiving data from server: Server response is not received.'"));
+			NStr("en='Receiving data from server: Server response is not received.';ru='Получение данных с сервера: Ответ сервера не получен.'"));
 			
 	EndIf;
 	
@@ -6737,7 +6737,7 @@ Procedure DisplayListOfDocumentsForLog(Definition, DocumentArray)
 		Return;
 	EndIf;
 	
-	Definition = Definition + ". " + NStr("en = 'Documents list:'");
+	Definition = Definition + ". " + NStr("en='Documents list:';ru='Список документов:'");
 	
 	For Each Doc IN DocumentArray Do
 		
@@ -6753,7 +6753,7 @@ Procedure DisplayListOfDocumentsForLog(Definition, DocumentArray)
 		
 		Definition = Definition + Chars.LF + Chars.NBSp + Chars.NBSp
 			+ StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '# %1 date %2 (# %3 date %4 on site)'"),
+				NStr("en='# %1 date %2 (# %3 date %4 on site)';ru='№ %1 от %2 (№ %3 от %4 на сайте)'"),
 				Doc.Number,
 				Doc.Date,
 				OrderNumberOnSite,
@@ -6777,7 +6777,7 @@ Function UnpackZIPArchive(ZIPString, ErrorDescription) Export
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Failed to unpack archive with orders!'")));
+			ExceptionalErrorDescription(NStr("en='Failed to unpack archive with orders!';ru='Не удалось распаковать архив с заказами!'")));
 			
 		Return "";
 		
@@ -6793,7 +6793,7 @@ Function UnpackZIPArchive(ZIPString, ErrorDescription) Export
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Failed to write archive with orders: '")
+			ExceptionalErrorDescription(NStr("en='Failed to write archive with orders: ';ru='Не удалось записать архив с заказами: '")
 				+ FileName));
 				
 		Return "";
@@ -6822,7 +6822,7 @@ Function UnpackZIPArchive(ZIPString, ErrorDescription) Export
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription,
-			ExceptionalErrorDescription(NStr("en = 'Can not unpack archive with orders: '")
+			ExceptionalErrorDescription(NStr("en='Can not unpack archive with orders: ';ru='Не удалось распаковать архив с заказами: '")
 				+ FileName));
 				
 		Return "";
@@ -7432,7 +7432,7 @@ Function ExceptionalErrorDescription(MessageBeginText = "", MessageEndText = "")
 	
 	DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 	
-	MessageText = NStr("en = 'Error occurred: '")
+	MessageText = NStr("en='Error occurred: ';ru='Произошла ошибка: '")
 		+ MessageBeginText
 		+ ?(IsBlankString(MessageEndText), "", Chars.LF + MessageEndText)
 		+ ?(IsBlankString(DetailErrorDescription), "", Chars.LF + DetailErrorDescription);
@@ -7517,9 +7517,9 @@ Function AnalyzeSiteAddress(Val SiteAddress, ConnectionSettings, ErrorDescriptio
 		Except
 			
 			AddErrorDescriptionFull(ErrorDescription,
-				ExceptionalErrorDescription(NStr("en = 'Can not obtain port number: '")
+				ExceptionalErrorDescription(NStr("en='Can not obtain port number: ';ru='Не удалось получить номер порта: '")
 					+ PortString + Chars.LF
-					+ NStr("en = 'Check if site address entered correctly.'")));
+					+ NStr("en='Check if site address entered correctly.';ru='Проверьте правильность ввода адреса сайта.'")));
 				
 			Return False;
 			

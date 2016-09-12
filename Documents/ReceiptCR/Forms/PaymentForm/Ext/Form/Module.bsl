@@ -681,7 +681,7 @@ Procedure OK(Command)
 	
 	If Object.DocumentAmount > CashReceived + Object.PaymentWithPaymentCards.Total("Amount") Then
 		
-		ErrorText = NStr("en='The payment amount is less than the receipt amount'");
+		ErrorText = NStr("en='The payment amount is less than the receipt amount';ru='Сумма оплаты меньше суммы чека'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -693,7 +693,7 @@ Procedure OK(Command)
 	EndIf;
 	If Object.DocumentAmount < Object.PaymentWithPaymentCards.Total("Amount") Then
 		
-		ErrorText = NStr("en='The amount of payment by payment cards exceeds the amount of cheque'");
+		ErrorText = NStr("en='The amount of payment by payment cards exceeds the amount of cheque';ru='Сумма оплаты платежными картами превышает сумму чека'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -963,18 +963,22 @@ Procedure AddPaymentByCard()
 								
 								OpenForm("Catalog.Peripherals.Form.POSTerminalAuthorizationForm", FormParameters,,,,, New NotifyDescription("AddPaymentByCardEnd", ThisObject, New Structure("FRDeviceIdentifier, ETDeviceIdentifier, CardNumber", DeviceIdentifierFR, DeviceIdentifierET, CardNumber)), FormWindowOpeningMode.LockOwnerWindow);
 							Else
-								MessageText = NStr("en = 'When fiscal registrar connection there
-								|was error: ""%ErrorDescription%"".
-								|Operation by card has not been performed.'");
+								MessageText = NStr("en='When fiscal registrar connection there"
+"was error: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении фискального регистратора произошла ошибка:"
+"""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 								CommonUseClientServer.MessageToUser(MessageText);
 							EndIf;
 							
 						Else
 							
-							MessageText = NStr("en = 'When POS terminal connection there
-								|was error: ""%ErrorDescription%"".
-								|Operation by card has not been performed.'");
+							MessageText = NStr("en='When POS terminal connection there"
+"was error: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении эквайрингового"
+"терминала произошла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 							CommonUseClientServer.MessageToUser(MessageText);
 							
@@ -986,7 +990,7 @@ Procedure AddPaymentByCard()
 				
 			Else
 				
-				MessageText = NStr("en = 'First, you need to select the workplace of the current session peripherals.'");
+				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				
 			EndIf;
@@ -998,7 +1002,7 @@ Procedure AddPaymentByCard()
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en = 'Failed to post the document'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 EndProcedure
@@ -1061,10 +1065,11 @@ Procedure AddPaymentByCardEnd(Result1, AdditionalParameters) Export
 			
 		Else
 			
-			MessageText = NStr(
-			"en = 'When operation execution there
-			|was error: ""%ErrorDescription%"".
-			|Payment by card has not been performed.'"
+			MessageText = NStr("en='When operation execution there"
+"was error: ""%ErrorDescription%""."
+"Payment by card has not been performed.';ru='При выполнении операции возникла ошибка:"
+"""%ОписаниеОшибки%""."
+"Отмена по карте не была произведена'"
 			);
 			MessageText = StrReplace(
 			MessageText,
@@ -1092,10 +1097,11 @@ Procedure AddPaymentByCardEnd(Result1, AdditionalParameters) Export
 			InputParameters,
 			Output_Parameters);
 			
-			MessageText = NStr(
-			"en = 'When printing slip receipt
-			|there was error: ""%ErrorDescription%"".
-			|Operation by card has been cancelled.'"
+			MessageText = NStr("en='When printing slip receipt"
+"there was error: ""%ErrorDescription%""."
+"Operation by card has been cancelled.';ru='При печати слип-чека"
+"возникла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте была отменена.'"
 			);
 			MessageText = StrReplace(MessageText,
 			"%ErrorDescription%",
@@ -1163,12 +1169,12 @@ Procedure DeletePaymentByCardAfterCardSelection(CurrentData)
 	
 	//Check selected string in payment table by payment cards
 	If CurrentData = Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en='Select the string to remove payment card'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Select the string to remove payment card';ru='Выберите строку удаляемой оплаты картой.'"));
 		Return;
 	EndIf;
 	
 	If CurrentData.Amount = 0 Then
-		CommonUseClientServer.MessageToUser(NStr("en='Amount in the selected string = 0.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Amount in the selected string = 0.';ru='Сумма в выбранной строке = 0.'"));
 		Return;
 	EndIf;
 	
@@ -1248,9 +1254,11 @@ Procedure DeletePaymentByCardAfterCardSelection(CurrentData)
 									
 								Else
 									
-									MessageText = NStr("en = 'When operation execution there
-									|was error: ""%ErrorDescription%"".
-									|Cancellation by card has not been performed.'");
+									MessageText = NStr("en='When operation execution there"
+"was error: ""%ErrorDescription%""."
+"Cancellation by card has not been performed.';ru='При выполнении операции возникла ошибка:"
+"""%ОписаниеОшибки%""."
+"Отмена по карте не была произведена.'");
 									MessageText = StrReplace(MessageText,
 																 "%ErrorDescription%",
 																 Output_Parameters[1]);
@@ -1262,9 +1270,11 @@ Procedure DeletePaymentByCardAfterCardSelection(CurrentData)
 									
 									ErrorDescriptionFR = Output_Parameters[1];
 									
-									MessageText = NStr("en = 'When printing slip receipt
-									|there was error: ""%ErrorDescription%"".
-									|Operation by card has been cancelled.'");
+									MessageText = NStr("en='When printing slip receipt"
+"there was error: ""%ErrorDescription%""."
+"Operation by card has been cancelled.';ru='При печати слип-чека"
+"возникла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте была отменена.'");
 									MessageText = StrReplace(MessageText,
 																 "%ErrorDescription%",
 																 ErrorDescriptionFR);
@@ -1298,30 +1308,34 @@ Procedure DeletePaymentByCardAfterCardSelection(CurrentData)
 								EquipmentManagerClient.DisableEquipmentById(UUID,
 																								 DeviceIdentifierET);
 							Else
-								MessageText = NStr("en = 'When fiscal registrar connection there
-								|was error: ""%ErrorDescription%"".
-								|Operation by card has not been performed.'");
+								MessageText = NStr("en='When fiscal registrar connection there"
+"was error: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении фискального регистратора произошла ошибка:"
+"""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 								CommonUseClientServer.MessageToUser(MessageText);
 							EndIf;
 						Else
-							MessageText = NStr("en = 'When POS terminal connection there
-								|was error: ""%ErrorDescription%"".
-								|Operation by card has not been performed.'");
+							MessageText = NStr("en='When POS terminal connection there"
+"was error: ""%ErrorDescription%""."
+"Operation by card has not been performed.';ru='При подключении эквайрингового"
+"терминала произошла ошибка: ""%ОписаниеОшибки%""."
+"Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 							CommonUseClientServer.MessageToUser(MessageText);
 						EndIf;
 					EndIf;
 				EndIf;
 			Else
-				MessageText = NStr("en = 'First, you need to select the workplace of the current session peripherals.'");
+				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en = 'Failed to post the document'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 EndProcedure

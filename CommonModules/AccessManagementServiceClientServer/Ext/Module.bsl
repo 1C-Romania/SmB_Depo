@@ -44,17 +44,17 @@ Procedure FillInAllAllowedPresentation(Form, AccessTypeDescription, AddValuesNum
 	
 	If Form.ThisIsAccessGroupsProfile Then
 		If ValueCount = 0 Then
-			NumberAndSubject = NStr("en = 'not assigned'");
+			NumberAndSubject = NStr("en='not assigned';ru='не назначены'");
 		Else
 			NumberInWords          = NumberInWords(
 				ValueCount,
 				"L=en_US",
-				NStr("en = ',,,,,,,,0'"));
+				NStr("en=',,,,,,,,0';ru=',,,,,,,,0'"));
 			
 			SubjectAndNumberInWords = NumberInWords(
 				ValueCount,
 				"L=en_US",
-				NStr("en = 'value,values,values,,,,,,0'"));
+				NStr("en='value,values,values,,,,,,0';ru='-го значения,-х значений,-и значений,,,,,,0'"));
 			
 			NumberAndSubject = StrReplace(
 				SubjectAndNumberInWords,
@@ -70,18 +70,18 @@ Procedure FillInAllAllowedPresentation(Form, AccessTypeDescription, AddValuesNum
 	
 	If ValueCount = 0 Then
 		Presentation = ?(AccessTypeDescription.AllAllowed,
-			NStr("en = 'All allowed, without exceptions'"),
-			NStr("en = 'All restricted, without exceptions'"));
+			NStr("en='All allowed, without exceptions';ru='Все разрешены, без исключений'"),
+			NStr("en='All restricted, without exceptions';ru='Все запрещены, без исключений'"));
 	Else
 		NumberInWords = NumberInWords(
 			ValueCount,
 			"L=en_US",
-			NStr("en = ',,,,,,,,0'"));
+			NStr("en=',,,,,,,,0';ru=',,,,,,,,0'"));
 		
 		SubjectAndNumberInWords = NumberInWords(
 			ValueCount,
 			"L=en_US",
-			NStr("en = 'value, values, values,,,,,,0'"));
+			NStr("en='value, values, values,,,,,,0';ru='значение,значения,значений,,,,,,0'"));
 		
 		NumberAndSubject = StrReplace(
 			SubjectAndNumberInWords,
@@ -90,8 +90,8 @@ Procedure FillInAllAllowedPresentation(Form, AccessTypeDescription, AddValuesNum
 		
 		Presentation = StringFunctionsClientServer.PlaceParametersIntoString(
 			?(AccessTypeDescription.AllAllowed,
-				NStr("en = 'All allowed, except of %1'"),
-				NStr("en = 'All restricted, except of %1'")),
+				NStr("en='All allowed, except of %1';ru='Все разрешены, кроме %1'"),
+				NStr("en='All restricted, except of %1';ru='Все запрещены, кроме %1'")),
 			NumberAndSubject);
 	EndIf;
 	
@@ -188,17 +188,17 @@ Procedure OnChangeCurrentAccessKind(Form) Export
 		
 		If CurrentData.AccessKind = Form.AccessTypeUsers Then
 			PatternLabel = ?(CurrentData.AllAllowed,
-				NStr("en = 'Prohibited values (%1) - current user is always allowed'"),
-				NStr("en = 'Allowed values (%1) - current user always allowed'") );
+				NStr("en='Prohibited values (%1) - current user is always allowed';ru='Запрещенные значения (%1) - текущий пользователь всегда разрешен'"),
+				NStr("en='Allowed values (%1) - current user always allowed';ru='Разрешенные значения (%1) - текущий пользователь всегда разрешен'") );
 		
 		ElsIf CurrentData.AccessKind = Form.AccessKindExternalUsers Then
 			PatternLabel = ?(CurrentData.AllAllowed,
-				NStr("en = 'Restricted values (%1) - current external user always allowed'"),
-				NStr("en = 'Permitted values (1%) - the current external user is always allowed'") );
+				NStr("en='Restricted values (%1) - current external user always allowed';ru='Запрещенные значения (%1) - текущий внешний пользователь всегда разрешен'"),
+				NStr("en='Permitted values (1%) - the current external user is always allowed';ru='Разрешенные значения (%1) - текущий внешний пользователь всегда разрешен'") );
 		Else
 			PatternLabel = ?(CurrentData.AllAllowed,
-				NStr("en = 'Prohibited values (%1)'"),
-				NStr("en = 'Allowed values (%1)'") );
+				NStr("en='Prohibited values (%1)';ru='Запрещенные значения (%1)'"),
+				NStr("en='Allowed values (%1)';ru='Разрешенные значения (%1)'") );
 		EndIf;
 		
 		// Update of the field LabelAccessKind.
@@ -245,7 +245,7 @@ Procedure OnChangeCurrentAccessKind(Form) Export
 	EndIf;
 	
 	If Form.SelectedValuesCurrentTypes.Count() = 0 Then
-		Form.SelectedValuesCurrentTypes.Add(Undefined, NStr("en = 'Undefined'"));
+		Form.SelectedValuesCurrentTypes.Add(Undefined, NStr("en='Undefined';ru='Неопределено'"));
 	EndIf;
 	
 	Items.AccessValues.Enabled = ValuesAreEditable;
@@ -353,10 +353,10 @@ Procedure AllowedValuesEditFormFillCheckProcessingAtServerProcessor(
 		If AccessKindRow.AccessKind = Undefined Then
 			CommonUseClientServer.AddUserError(Errors,
 				Parameters.PathToTables + "AccessKinds[%1].AccessKind",
-				NStr("en = 'Access type is not selected.'"),
+				NStr("en='Access type is not selected.';ru='Вид доступа не выбран.'"),
 				"AccessKinds",
 				AccessKinds.Find(AccessKindRow),
-				NStr("en = 'Access type in row %1 is not selected.'"),
+				NStr("en='Access type in row %1 is not selected.';ru='Вид доступа в строке %1 не выбран.'"),
 				Parameters.AccessKinds.IndexOf(AccessKindRow));
 			Cancel = True;
 			Break;
@@ -369,10 +369,10 @@ Procedure AllowedValuesEditFormFillCheckProcessingAtServerProcessor(
 		If FoundAccessTypes.Count() > 1 Then
 			CommonUseClientServer.AddUserError(Errors,
 				Parameters.PathToTables + "AccessKinds[%1].AccessKind",
-				NStr("en = 'The access type repeats.'"),
+				NStr("en='The access type repeats.';ru='Вид доступа повторяется.'"),
 				"AccessKinds",
 				AccessKinds.Find(AccessKindRow),
-				NStr("en = 'Access type in the %1 row is repeated.'"),
+				NStr("en='Access type in the %1 row is repeated.';ru='Вид доступа в строке %1 повторяется.'"),
 				Parameters.AccessKinds.IndexOf(AccessKindRow));
 			Cancel = True;
 			Break;
@@ -395,10 +395,10 @@ Procedure AllowedValuesEditFormFillCheckProcessingAtServerProcessor(
 				
 				CommonUseClientServer.AddUserError(Errors,
 					Parameters.PathToTables + "AccessValues[%1].AccessValue",
-					NStr("en = 'Value is not selected.'"),
+					NStr("en='Value is not selected.';ru='Значение не выбрано.'"),
 					"AccessValues",
 					AccessValues.Find(AccessValueString),
-					NStr("en = 'Value in the row %1 is not selected.'"),
+					NStr("en='Value in the row %1 is not selected.';ru='Значение в строке %1 не выбрано.'"),
 					Parameters.AccessValues.IndexOf(AccessValueString));
 				Cancel = True;
 				Break;
@@ -414,10 +414,10 @@ Procedure AllowedValuesEditFormFillCheckProcessingAtServerProcessor(
 				
 				CommonUseClientServer.AddUserError(Errors,
 					Parameters.PathToTables + "AccessValues[%1].AccessValue",
-					NStr("en = 'Value is being repeated.'"),
+					NStr("en='Value is being repeated.';ru='Значение повторяется.'"),
 					"AccessValues",
 					AccessValues.Find(AccessValueString),
-					NStr("en = 'Value in the %1 row is repeated.'"),
+					NStr("en='Value in the %1 row is repeated.';ru='Значение в строке %1 повторяется.'"),
 					Parameters.AccessValues.IndexOf(AccessValueString));
 				Cancel = True;
 				Break;

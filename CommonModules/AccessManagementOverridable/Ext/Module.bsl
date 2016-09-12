@@ -25,12 +25,12 @@ Procedure OnFillAccessKinds(AccessKinds) Export
 
 	AccessKind = AccessKinds.Add();
 	AccessKind.Name = "PettyCashes";
-	AccessKind.Presentation    = NStr("en = 'PettyCashes'");
+	AccessKind.Presentation    = NStr("en='PettyCashes';ru='Кассы'");
 	AccessKind.ValuesType      = Type("CatalogRef.PettyCashes");
 	
 	AccessKind = AccessKinds.Add();
 	AccessKind.Name = "CounterpartiesGroup";
-	AccessKind.Presentation    = NStr("en = 'Counterparty groups'");
+	AccessKind.Presentation    = NStr("en='Counterparty groups';ru='Группы контрагентов'");
 	AccessKind.ValuesType      = Type("CatalogRef.Counterparties");
 	AccessKind.ValueGroupType = Type("CatalogRef.CounterpartiesAccessGroups");
 
@@ -67,8 +67,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Name           = "Sales";
 	ProfileDescription.ID = "76337576-bff4-11df-9174-e0cb4ed5f4c3";	
 	ProfileDescription.Description = NStr("en = 'Sales'");
-	ProfileDescription.Definition = NStr(
-		"en = 'Use this profile to work with the Sales and Service sections.'"
+	ProfileDescription.Definition = NStr("en='Use this profile to work with the Sales and Service sections.';ru='Под профилем осуществляется работа с разделами Продажи и Сервис.'"
 	);
 	
 	// SSL
@@ -157,9 +156,8 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "EditDocumentPrices";
 	ProfileDescription.ID = "76337579-bff4-11df-9174-e0cb4ed5f4c3";	
-	ProfileDescription.Description = NStr("en = 'Edit document prices (additionally)'");
-	ProfileDescription.Definition = NStr(
-		"en = 'Service profile that determines whether it is possible to edit prices in documents for managers.'"
+	ProfileDescription.Description = NStr("en='Edit document prices (additionally)';ru='Редактирование цен документов (дополнительно)'");
+	ProfileDescription.Definition = NStr("en='Service profile that determines whether it is possible to edit prices in documents for managers.';ru='Служебный профиль, определяющий возможность редактирования цен в документах для менеджеров.'"
 	);
 	
 	ProfileDescription.Roles.Add("UseDataImportFromExternalSources");
@@ -173,9 +171,8 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "ProductsAndServicesEditing";
 	ProfileDescription.ID = "76337580-bff4-11df-9174-e0cb4ed5f4c3";	
-	ProfileDescription.Description = NStr("en = 'Products and services (additionally)'");
-	ProfileDescription.Definition = NStr(
-		"en = 'Service profile that determines whether it is possible to edit products and services for managers.'"
+	ProfileDescription.Description = NStr("en='Products and services (additionally)';ru='Редактирование номенклатуры (дополнительно)'");
+	ProfileDescription.Definition = NStr("en='Service profile that determines whether it is possible to edit products and services for managers.';ru='Служебный профиль, определяющий возможность редактирования номенклатуры для менеджеров.'"
 	);
 	
 	ProfileDescription.Roles.Add("AddChangeProductsAndServices");
@@ -188,9 +185,8 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "ReturnsFromCustomers";
 	ProfileDescription.ID = "76337581-bff4-11df-9174-e0cb4ed5f4c3";	
-	ProfileDescription.Description = NStr("en = 'Returns from customers (additionally)'");
-	ProfileDescription.Definition = NStr(
-		"en = 'Service profile that determines whether it is possible to work with returns from customers.'"
+	ProfileDescription.Description = NStr("en='Returns from customers (additionally)';ru='Возвраты от покупателей (дополнительно)'");
+	ProfileDescription.Definition = NStr("en='Service profile that determines whether it is possible to work with returns from customers.';ru='Служебный профиль, определяющий возможность работы с возвратами от покупателей.'"
 	);
 	
 	ProfileDescription.Roles.Add("AdditionChangeOfReturnsFromBuyers");
@@ -210,9 +206,8 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "Purchases";
 	ProfileDescription.ID = "76337577-bff4-11df-9174-e0cb4ed5f4c3";	
-	ProfileDescription.Description = NStr("en = 'Purchases'");
-	ProfileDescription.Definition = NStr(
-		"en = 'Use this profile to work with the Purchases section.'"
+	ProfileDescription.Description = NStr("en='Purchases';ru='Закупки'");
+	ProfileDescription.Definition = NStr("en='Use this profile to work with the Purchases section.';ru='Под профилем осуществляется работа с разделом Закупки.'"
 	);
 	
 	// SSL
@@ -299,9 +294,8 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "ReturnsToVendors";
 	ProfileDescription.ID = "76337582-bff4-11df-9174-e0cb4ed5f4c3";	
-	ProfileDescription.Description = NStr("en = 'Returns to vendors (additionally)'");
-	ProfileDescription.Definition = NStr(
-		"en = 'Service profile that determines whether it is possible to work with returns to vendors.'"
+	ProfileDescription.Description = NStr("en='Returns to vendors (additionally)';ru='Возвраты поставщикам (дополнительно)'");
+	ProfileDescription.Definition = NStr("en='Service profile that determines whether it is possible to work with returns to vendors.';ru='Служебный профиль, определяющий возможность работы с возвратами поставщикам.'"
 	);
 	
 	ProfileDescription.Roles.Add("AddChangeReturnsToVendors");
@@ -318,9 +312,8 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "Production";
 	ProfileDescription.ID = "76337578-bff4-11df-9174-e0cb4ed5f4c3";	
-	ProfileDescription.Description = NStr("en = 'Production'");
-	ProfileDescription.Definition = NStr(
-		"en = 'Use this profile to work with the Production section.'"
+	ProfileDescription.Description = NStr("en='Production';ru='Производство'");
+	ProfileDescription.Definition = NStr("en='Use this profile to work with the Production section.';ru='Под профилем осуществляется работа с разделом Производство.'"
 	);
 	
 	// SSL
@@ -406,9 +399,8 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "Funds";
 	ProfileDescription.ID = "76337575-bff4-11df-9174-e0cb4ed5f4c3";
-	ProfileDescription.Description = NStr("en = 'Funds'");
-	ProfileDescription.Definition = NStr(
-		"en = 'Use this profile to work with the Funds section: bank, petty cash and payment schedule  section.'"
+	ProfileDescription.Description = NStr("en='Funds';ru='Деньги'");
+	ProfileDescription.Definition = NStr("en='Use this profile to work with the Funds section: bank, petty cash and payment schedule  section.';ru='Под профилем осуществляется работа с разделом Деньги: банк, касса и платежный календарь.'"
 	);
 	
 	// SSL
@@ -489,9 +481,8 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "Salary";
 	ProfileDescription.ID = "76337574-bff4-11df-9174-e0cb4ed5f4c3";
-	ProfileDescription.Description = NStr("en = 'Salary'");
-	ProfileDescription.Definition = NStr(
-		"en = 'Use this profile to work with section Payroll: HR management and payroll management.'"
+	ProfileDescription.Description = NStr("en='Salary';ru='Зарплата'");
+	ProfileDescription.Definition = NStr("en='Use this profile to work with section Payroll: HR management and payroll management.';ru='Под профилем осуществляется работа с разделом Зарплата: кадровый учет и расчет зарплаты.'"
 	);
 	
 	// SSL

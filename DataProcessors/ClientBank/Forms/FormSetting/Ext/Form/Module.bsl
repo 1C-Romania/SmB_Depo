@@ -60,8 +60,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("DirectExchangeWithBanksAgreement", DirectExchangeWithBanksAgreement);
 	If ValueIsFilled(DirectExchangeWithBanksAgreement) Then
 		Items.GroupExchangeKinds.CurrentPage = Items.GroupDirectExchange;
-		LabelText = NStr("en = 'The direct exchange agreement is signed with bank %1.
-			|The signed payment orders and bank statement request are sent from 1C:Small Business.'");
+		LabelText = NStr("en='The direct exchange agreement is signed with bank %1."
+"The signed payment orders and bank statement request are sent from 1C:Small Business.';ru='С банком %1 действует соглашение о прямом обмене."
+"Отправка подписанных платежных поручений и запрос банковской выписки осуществляется из 1С:Управление небольшой фирмой.'");
 		DirectMessageExchange = StringFunctionsClientServer.PlaceParametersIntoString(
 			LabelText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
 			
@@ -116,7 +117,7 @@ Procedure BeginEnableExtensionFileOperationsEnd(Attached, AdditionalParameters) 
 	
 	If Not Attached Then
 		Notification = New NotifyDescription("BeginInstallFileSystemExtensionEnd", ThisObject, AdditionalParameters);
-		MessageText = NStr("en = 'To continue work, you need to install 1C: Enterprise web client extension. Install?'");
+		MessageText = NStr("en='To continue work, you need to install 1C: Enterprise web client extension. Install?';ru='Для продолжении работы необходимо установить расширение для веб-клиента ""1С:Предприятие"". Установить?'");
 		ShowQueryBox(Notification, MessageText, QuestionDialogMode.YesNo); 
 	EndIf;
 	
@@ -130,7 +131,7 @@ Procedure BeginEnableExtensionFileOperationsEnd(Attached, AdditionalParameters) 
     //) elmi
 	FileOpeningDialog.Filter = Filter;
 	FileOpeningDialog.Multiselect = False;
-	FileOpeningDialog.Title = NStr("en = 'Select the file'");
+	FileOpeningDialog.Title = NStr("en='Select the file';ru='Выберите файл'");
 	
 	Notification = New NotifyDescription("FileOpeningDialogEnd", ThisObject, AdditionalParameters);
 	FileOpeningDialog.Show(Notification);

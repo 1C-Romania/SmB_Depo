@@ -25,7 +25,7 @@ Function ResultMappingObjects(Parameters) Export
 		MappingObjects.ApplyTableOfUnapprovedRecords(Cancel);
 		
 		If Cancel Then
-			Raise NStr("en = 'Errors occurred when mapping the data.'");
+			Raise NStr("en='Errors occurred when mapping the data.';ru='Возникли ошибки в процессе сопоставления объектов.'");
 		EndIf;
 		
 		Return Undefined;
@@ -49,7 +49,7 @@ Function ResultMappingObjects(Parameters) Export
 		MappingObjects.ApplyTableOfUnapprovedRecords(Cancel);
 		
 		If Cancel Then
-			Raise NStr("en = 'Errors occurred when mapping the data.'");
+			Raise NStr("en='Errors occurred when mapping the data.';ru='Возникли ошибки в процессе сопоставления объектов.'");
 		EndIf;
 		
 	EndIf;
@@ -58,7 +58,7 @@ Function ResultMappingObjects(Parameters) Export
 	MappingObjects.PerformMappingOfObjects(Cancel);
 	
 	If Cancel Then
-		Raise NStr("en = 'Errors occurred when mapping the data.'");
+		Raise NStr("en='Errors occurred when mapping the data.';ru='Возникли ошибки в процессе сопоставления объектов.'");
 	EndIf;
 	
 	Result = New Structure;
@@ -106,7 +106,7 @@ Function ResultOfAutomaticMappingObjects(Parameters) Export
 	MappingObjects.RunAutomaticObjectMapping(Cancel, Parameters.FormAttributes.MappingFieldList);
 	
 	If Cancel Then
-		Raise NStr("en = 'During the automatic objects matching the errors have occurred.'");
+		Raise NStr("en='During the automatic objects matching the errors have occurred.';ru='Возникли ошибки в процессе автоматического сопоставления объектов.'");
 	EndIf;
 	
 	Result = New Structure;

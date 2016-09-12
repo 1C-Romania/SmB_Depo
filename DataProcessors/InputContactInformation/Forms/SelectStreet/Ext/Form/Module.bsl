@@ -72,7 +72,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.Pages.PagesRepresentation = FormPagesRepresentation.None;
 	EndIf;
 	If Items.AdditionalTerritories.Visible = False AND Items.StreetsAndSettlements.Visible = False Then
-		BriefErrorDescription = NStr("en = 'Data of streets, settlements and additional territories for the entered address are absent'");
+		BriefErrorDescription = NStr("en='Data of streets, settlements and additional territories for the entered address are absent';ru='Данные о улицах, населенных пунктах и дополнительных территориях для введенного адреса отсутствуют'");
 		Return;
 	EndIf;
 	Items.SelectStreet.DefaultButton = True;
@@ -395,11 +395,12 @@ Procedure MakeSelection(Val LineNumber)
 	Notification = New NotifyDescription("MakeSelectionEndQuestion", ThisObject, Data);
 	
 	WarningIrrelevant = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en = 'Address ""%1"" is not applicable.
-		           |Continue?'"),
+		NStr("en='Address ""%1"" is not applicable."
+"Continue?';ru='Адрес ""%1"" неактуален."
+"Продолжить?'"),
 		Data.Presentation
 	);
-	TitleWarnings = NStr("en = 'Confirmation'");
+	TitleWarnings = NStr("en='Confirmation';ru='Подтверждение'");
 	
 	ShowQueryBox(Notification, WarningIrrelevant, QuestionDialogMode.YesNo, , ,TitleWarnings);
 	

@@ -16,8 +16,9 @@ EndProcedure
 
 &AtClient
 Procedure BeforeClose(Cancel, StandardProcessing)
-	QuestionText = NStr("en = 'List of the displayed commands was changed.
-	|Save changes?'");
+	QuestionText = NStr("en='List of the displayed commands was changed."
+"Save changes?';ru='Список выводимых команд был изменен."
+"Сохранить изменения?'");
 	Handler = New NotifyDescription("SaveAndInformAboutSelection", ThisObject);
 	CommonUseClient.ShowFormClosingConfirmation(Handler, Cancel, QuestionText);
 EndProcedure

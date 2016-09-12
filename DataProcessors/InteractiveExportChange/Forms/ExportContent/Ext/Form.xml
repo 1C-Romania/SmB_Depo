@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Content of data being sent</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Состав отправляемых данных</v8:content>
+		</v8:item>
 	</Title>
 	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -114,6 +118,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Metadata full name</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Полное имя метаданных</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>xs:string</v8:Type>
@@ -129,6 +137,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Filter</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Фильтр</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>dcsset:Filter</v8:Type>
@@ -139,6 +151,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Period</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>отчетный период</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
@@ -151,6 +167,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Choice of the period</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Выбор периода</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>xs:boolean</v8:Type>
@@ -161,6 +181,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Presentation</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Представление</v8:content>
 							</v8:item>
 						</Title>
 						<Type>
@@ -177,6 +201,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>Selection string</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Отбор строкой</v8:content>
+							</v8:item>
 						</Title>
 						<Type>
 							<v8:Type>xs:string</v8:Type>
@@ -190,6 +218,10 @@
 						<Title>
 							<v8:item>
 								<v8:lang>en</v8:lang>
+								<v8:content>Quantity</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
 								<v8:content>Quantity</v8:content>
 							</v8:item>
 						</Title>
@@ -210,6 +242,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Result</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
@@ -221,6 +257,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Settings composer</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Компоновщик настроек</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>dcsset:SettingsComposer</v8:Type>
@@ -231,6 +271,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Schema URL composition</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес схемы компоновки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -247,6 +291,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Details data address</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес данных расшифровки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -261,6 +309,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Base name for form</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Базовое имя для формы</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -277,6 +329,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Background job ID</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор фонового задания</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -285,6 +341,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Background result address</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес результата фонового задания</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -301,6 +361,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Simplified mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Упрощенный режим</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
@@ -314,11 +378,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Generate</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Create</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать отчет</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -333,11 +405,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Settings...</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки...</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Report settings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки отчета</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -352,11 +432,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Select setting</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать настройку</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Select setting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать настройку</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -370,11 +458,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Save setting</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить настройку</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Save setting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить настройку</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -388,11 +484,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Set standard settings</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить стандартные настройки</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Standard setting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стандартная настройка</v8:content>
 				</v8:item>
 			</ToolTip>
 		</Command>

@@ -48,7 +48,7 @@ Function ExternalModuleExecutionMode(Val ExternalModule) Export
 		EndIf;
 		
 	Else
-		Raise NStr("en = 'The function is not intended for call in the infobase in which division by data areas is disabled!'");
+		Raise NStr("en='The function is not intended for call in the infobase in which division by data areas is disabled!';ru='Функция не предназначена для вызова в информационной базе, в которой выключено разделение по областям данных!'");
 	EndIf;
 	
 EndFunction
@@ -409,7 +409,7 @@ Function AuthorizationKey(Val Resolution) Export
 	Key = XDTOFactory.Create(XDTOFactory.Type("http://www.w3.org/2001/XMLSchema", "hexBinary"), Hashing.HashSum).LexicalMeaning;
 	
 	If StrLen(Key) > 32 Then
-		Raise NStr("en = 'Exceeding key length'");
+		Raise NStr("en='Exceeding key length';ru='Превышение дланы ключа'");
 	EndIf;
 	
 	Return Key;
@@ -452,7 +452,7 @@ Function PermissionsTableRow(Val PermissionTable, Val Filter, Val AddWithout = T
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Violation of lines uniqueness in the permissions table with filter %1'"),
+			NStr("en='Violation of lines uniqueness in the permissions table with filter %1';ru='Нарушение уникальности строк в таблице разрешений по отбору %1'"),
 			CommonUse.ValueToXMLString(Filter));
 		
 	EndIf;
@@ -471,7 +471,7 @@ EndFunction
 Procedure LockGrantedPermissionsRegisters(Val ApplicationModule = Undefined, Val LockExternalModulesConnectionModes = True) Export
 	
 	If Not TransactionActive() Then
-		Raise NStr("en = 'Transaction is not active!'");
+		Raise NStr("en='Transaction is not active!';ru='Транзакция не активна!'");
 	EndIf;
 	
 	Registers = New Array();
@@ -625,12 +625,17 @@ Procedure AddPermission(Val SoftwareModuleType, Val SoftwareModuleID, Val OwnerT
 	If Manager.Selected() Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Duplication of permissions
-                  |by key
-                  |fields: -SowtwareModuleType: %1
-                  |-SowtwareModuleIdentifier: 2%
-                  |- OwnerType: %3
-                  |-OwnerIdentifier: %4 - PermissionKey: %5.'"),
+			NStr("en='Duplication of permissions"
+"by key"
+"fields: -SowtwareModuleType: %1"
+"-SowtwareModuleIdentifier: 2%"
+"- OwnerType: %3"
+"-OwnerIdentifier: %4 - PermissionKey: %5.';ru='Дублирование"
+"разрешений"
+"по ключевым полям:"
+"- ТипПрограммногоМодуля:"
+"%1 - ИдентификаторПрограммногоМодуля:"
+"%2 - ТипВладельца: %3 - ИдентификаторВладельца: %4 - КлючРазрешения: %5.'"),
 			String(SoftwareModuleType),
 			String(SoftwareModuleID),
 			String(OwnerType),
@@ -684,12 +689,17 @@ Procedure DeletePermission(Val SoftwareModuleType, Val SoftwareModuleID, Val Own
 		If Manager.AuthorizationBody <> CommonUse.ObjectXDTOInXMLString(Resolution) Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Collection of
-	                  |permissions by
-	                  |the keys: -SowtwareModuleType:
-	                  |%1 -SowtwareModuleIdentifier: 2%
-	                  |- OwnerType: %3
-	                  |-OwnerIdentifier: %4 - PermissionKey: %5.'"),
+				NStr("en='Collection of"
+"permissions by"
+"the keys: -SowtwareModuleType:"
+"%1 -SowtwareModuleIdentifier: 2%"
+"- OwnerType: %3"
+"-OwnerIdentifier: %4 - PermissionKey: %5.';ru='Коллзиция"
+"разрешений"
+"по ключам: -"
+"ТипПрограммногоМодуля: %1 -"
+"ИдентификаторПрограммногоМодуля: %2"
+"- ТипВладельца: %3 - ИдентификаторВладельца: %4 - КлючРазрешения: %5.'"),
 				String(SoftwareModuleType),
 				String(SoftwareModuleID),
 				String(OwnerType),
@@ -703,12 +713,17 @@ Procedure DeletePermission(Val SoftwareModuleType, Val SoftwareModuleID, Val Own
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Attempt to delete
-                  |a nonexistent permission:
-                  |-SowtwareModuleType: %1
-                  |-SowtwareModuleIdentifier: 2%
-                  |- OwnerType: %3
-                  |-OwnerIdentifier: %4 - PermissionKey: %5.'"),
+			NStr("en='Attempt to delete"
+"a nonexistent permission:"
+"-SowtwareModuleType: %1"
+"-SowtwareModuleIdentifier: 2%"
+"- OwnerType: %3"
+"-OwnerIdentifier: %4 - PermissionKey: %5.';ru='Попытка"
+"удаления несуществующего"
+"разрешения: -"
+"ТипПрограммногоМодуля: %1"
+"- ИдентификаторПрограммногоМодуля: %2"
+"- ТипВладельца: %3 - ИдентификаторВладельца: %4 - КлючРазрешения: %5.'"),
 			String(SoftwareModuleType),
 			String(SoftwareModuleID),
 			String(OwnerType),
@@ -926,7 +941,7 @@ Function PackageProcessingResult(Val PackageIdentifier) Export
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Package of queries %1 not found'"), PackageIdentifier);
+			NStr("en='Package of queries %1 not found';ru='Не найден пакет запросов %1'"), PackageIdentifier);
 		
 	EndIf;
 	
@@ -966,7 +981,7 @@ Function PackageProcessingState(Val PackageIdentifier)
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Package of queries %1 not found'"), PackageIdentifier);
+			NStr("en='Package of queries %1 not found';ru='Не найден пакет запросов %1'"), PackageIdentifier);
 		
 	EndIf;
 	
@@ -1051,7 +1066,7 @@ Function SerializeQueriesOnExternalResourcesUse(Val QueryIDs) Export
 			Else
 				
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Software module is not serialized by the key: - Type: 1% - Identifier: %2'"),
+					NStr("en='Software module is not serialized by the key: - Type: 1% - Identifier: %2';ru='Не сериализован программный модуль по ключу: - Тип: %1 - Идентификатор: %2'"),
 					Selection.SoftwareModuleType,
 					Selection.SoftwareModuleID);
 				

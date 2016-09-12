@@ -669,7 +669,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en = 'Data by barcode is not found: %1%; quantity: %2%'");
+		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -744,7 +744,7 @@ Function GenerateFilterHeaderFromList(ItemList)
 	EndDo;
 	
 	If FilterHeaderString = "" Then
-		FilterHeaderString = NStr("en = 'Filter not set'");
+		FilterHeaderString = NStr("en='Filter not set';ru='Отбор не установлен'");
 	EndIf;
 	
 	Return FilterHeaderString;
@@ -785,7 +785,7 @@ EndProcedure // ResetFilterSettings()
 Procedure ClearFilterConditionByProductsAndServices()
 
 	ProductsAndServicesList.Clear();
-	Items.SetFilterByProductsAndServices.Title = NStr("en = 'Filter not set'");
+	Items.SetFilterByProductsAndServices.Title = NStr("en='Filter not set';ru='Отбор не установлен'");
 
 EndProcedure // ClearFilterConditionByProductsAndServices()
 
@@ -793,7 +793,7 @@ EndProcedure // ClearFilterConditionByProductsAndServices()
 Procedure ClearFilterCriteriaByProductAndServicesGroups()
 
 	ListProductsAndServicesGroups.Clear();
-	Items.SetFilterByProductsAndServicesGroups.Title = NStr("en = 'Filter not set'");
+	Items.SetFilterByProductsAndServicesGroups.Title = NStr("en='Filter not set';ru='Отбор не установлен'");
 
 EndProcedure // ClearFilterCriteriaByProductsAndServicesGroups()
 
@@ -801,7 +801,7 @@ EndProcedure // ClearFilterCriteriaByProductsAndServicesGroups()
 Procedure ClearFilterCriteriaByProductsAndServicesCategories()
 
 	ProductsAndServicesGroupsList.Clear();
-	Items.SetFilterByProductsAndServicesCategories.Title = NStr("en = 'Filter not set'");
+	Items.SetFilterByProductsAndServicesCategories.Title = NStr("en='Filter not set';ru='Отбор не установлен'");
 
 EndProcedure // ClearFilterCriteriaByProductsAndServicesCategories()
 
@@ -883,7 +883,7 @@ EndProcedure // GetInventoryFromStorage()
 Procedure SearchByBarcode(Command)
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en = 'Enter barcode'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
 
 EndProcedure
 
@@ -908,7 +908,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.'"));
+		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -926,7 +926,7 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	
 	If Not Weight = Undefined Then
 		If Weight = 0 Then
-			MessageText = NStr("en = 'Electronic scales returned zero weight.'");
+			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			// Weight is received.
@@ -1181,7 +1181,7 @@ Procedure CommandFillByBalanceAtWarehouse()
 	If Object.Inventory.Count() > 0 Then
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("FillCommandByBalanceOnWarehouseEnd", ThisObject), NStr("en = 'Tabular section will be cleared. Continue?'"), QuestionDialogMode.YesNo, 0);
+		ShowQueryBox(New NotifyDescription("FillCommandByBalanceOnWarehouseEnd", ThisObject), NStr("en='Tabular section will be cleared. Continue?';ru='Табличная часть будет очищена! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
         Return; 
 	EndIf;
 
@@ -1215,7 +1215,7 @@ Procedure CommandFillOnlyAccountingData()
 	If Object.Inventory.Count() > 0 Then
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("CommandFillOnlyAccountingDataEnd", ThisObject), NStr("en = 'Accounting data will be cleared! Continue?'"), QuestionDialogMode.YesNo, 0);
+		ShowQueryBox(New NotifyDescription("CommandFillOnlyAccountingDataEnd", ThisObject), NStr("en='Accounting data will be cleared! Continue?';ru='Учетные данные будут очищены! Продолжить?'"), QuestionDialogMode.YesNo, 0);
         Return; 
 	Else
 		Return;
@@ -1251,7 +1251,7 @@ Procedure CommandFillByPriceKind(Command)
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("CommandFillByPriceKindEnd1", ThisObject), NStr("en = 'Prices will be refilled! Continue?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("CommandFillByPriceKindEnd1", ThisObject), NStr("en='Prices will be refilled! Continue?';ru='Цены будут перезаполнены! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -1289,7 +1289,7 @@ Procedure CommandZeroQuantityAndTheAmount(Command)
 	If Object.Inventory.Count() > 0 Then
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("CommandZeroOutQuantityAndAmountEnd", ThisObject), NStr("en = 'Quantity and Amount columns will be cleared! Continue?'"), QuestionDialogMode.YesNo, 0);
+		ShowQueryBox(New NotifyDescription("CommandZeroOutQuantityAndAmountEnd", ThisObject), NStr("en='Quantity and Amount columns will be cleared! Continue?';ru='Колонки ""Количество"" и ""Сумма"" будут очищены! Продолжить?'"), QuestionDialogMode.YesNo, 0);
         Return;
 	Else
 		Return;

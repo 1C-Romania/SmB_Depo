@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	// Fill in form fields
-	Items.LoginLabel.Title = NStr("en = 'Login:'") + " " + Parameters.login;
+	Items.LoginLabel.Title = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	GenerateForm(Parameters);
 	
@@ -26,10 +26,11 @@ Procedure OnOpen(Cancel)
 	
 #If WebClient Then
 	ShowMessageBox(,
-		NStr("en = 'Some references may work incorrectly in the web client.
-			|Sorry for the inconvenience.'"),
+		NStr("en='Some references may work incorrectly in the web client."
+"Sorry for the inconvenience.';ru='В веб-клиенте некоторые ссылки могут работать неправильно."
+"Приносим извинения за неудобства.'"),
 		,
-		NStr("en = 'Online user support'"));
+		NStr("en='Online user support';ru='Интернет-поддержка пользователей'"));
 #EndIf
 	
 EndProcedure

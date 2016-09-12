@@ -36,7 +36,7 @@ Procedure StartWorkWithEDFOperatorMechanism(
 	
 	If Not ValueIsFilled(DSCertificate) Then
 		
-		ErrorText = NStr("en = 'Subscriber certificate'");
+		ErrorText = NStr("en='Subscriber certificate';ru='""Сертификат абонента""'");
 		ErrorsCount = ErrorsCount + 1;
 		
 	EndIf;
@@ -44,10 +44,10 @@ Procedure StartWorkWithEDFOperatorMechanism(
 	If Not ValueIsFilled(Company) Then
 		
 		If Not IsBlankString(ErrorText) Then
-			ErrorText = ErrorText + " " + NStr("en = 'and'") + " ";
+			ErrorText = ErrorText + " " + NStr("en='and';ru='а также'") + " ";
 		EndIf;
 		
-		ErrorText = ErrorText + NStr("en = '""Company""'");
+		ErrorText = ErrorText + NStr("en='""Company""';ru='""ompany""'");
 		ErrorsCount = ErrorsCount + 1;
 		
 	EndIf;
@@ -58,18 +58,18 @@ Procedure StartWorkWithEDFOperatorMechanism(
 	If ErrorsCount > 0 Then
 		
 		If ErrorsCount = 1 Then
-			AdditText = NStr("en = 'Please fill in the field'") + " ";
+			AdditText = NStr("en='Please fill in the field';ru='Пожалуйста, заполните поле'") + " ";
 		Else
-			AdditText = NStr("en = 'Please fill in the fields'") + " ";
+			AdditText = NStr("en='Please fill in the fields';ru='Пожалуйста, заполните поля'") + " ";
 		EndIf;
 		
 		MessageText = AdditText + ErrorText;
 		
 		If BusinessProcessOption = "taxcomGetID" Then
 			MessageText = MessageText
-				+ " " + NStr("en = 'before receiving a unique ididentifier of ED exchange participant'");
+				+ " " + NStr("en='before receiving a unique ididentifier of ED exchange participant';ru='до получения уникального идентификатора участника обмена ЭД'");
 		ElsIf BusinessProcessOption = "taxcomPrivat" Then
-			MessageText = MessageText + " " + NStr("en = 'before going to personal account'");
+			MessageText = MessageText + " " + NStr("en='before going to personal account';ru='до перехода в личный кабинет'");
 		EndIf;
 		
 		ShowMessageBox(, MessageText);
@@ -83,31 +83,41 @@ Procedure StartWorkWithEDFOperatorMechanism(
 		If IsBlankString(CompanyID) Then
 			// This is an ididentifier receipt
 			UserNotificationText = 
-			NStr("en = 'You can receive a unique identifier of
-					   |ED exchange member after connecting to the users
-					   |online support service and checking the authenticity of the owner specified in the subscriber certificate agreement.
-					   |Continue?'");
+			NStr("en='You can receive a unique identifier of"
+"ED exchange member after connecting to the users"
+"online support service and checking the authenticity of the owner specified in the subscriber certificate agreement."
+"Continue?';ru='Получение уникального идентификатора"
+"участника обмена ЭД будет доступно после подключения"
+"к сервису Интернет-поддержки пользователей и проверки подлинности владельца указанного в соглашении сертификата абонента."
+"Продолжить?'");
 		Else
 			UserNotificationText =
-			NStr("en = 'You can add a new certificate
-					   |into an agreement after connecting to users online
-					   |support service and checking the authenticity of the owner specified in the subscriber certificate agreement.
-					   |Continue?'");
+			NStr("en='You can add a new certificate"
+"into an agreement after connecting to users online"
+"support service and checking the authenticity of the owner specified in the subscriber certificate agreement."
+"Continue?';ru='Добавление нового сертификата в соглашение будет выполнено"
+"после подключения к сервису Интернет-поддержки пользователей и проверки"
+"подлинности владельца указанного в соглашении сертификата абонента."
+"Продолжить?'");
 		EndIf;
 		
 	ElsIf BusinessProcessOption = "taxcomPrivat" Then
 		
 		UserNotificationText = 
-		NStr("en = 'You can log in the personal account
-				   |of the ED exchange participant after connecting to
-				   |the users online support and checking the authenticity of the owner specified in the subscriber certificate agreement.
-				   |Continue?'");
+		NStr("en='You can log in the personal account"
+"of the ED exchange participant after connecting to"
+"the users online support and checking the authenticity of the owner specified in the subscriber certificate agreement."
+"Continue?';ru='Вход в личный кабинет участника"
+"обмена ЭД будет доступен после подключения"
+"к сервису Интернет-поддержки пользователей и проверки подлинности владельца указанного в соглашении сертификата абонента."
+"Продолжить?'");
 		
 	Else
 		
 		WarningText = StrReplace(
-			NStr("en = 'Error occurred inserting users online support mechanism.
-						|An incorrect version of the business process is specified (%1).'"),
+			NStr("en='Error occurred inserting users online support mechanism."
+"An incorrect version of the business process is specified (%1).';ru='Ошибка встраивания механизма Интернет-поддержки пользователей."
+"Указан неверный вариант бизнес-процесса (%1).'"),
 			"%1",
 			BusinessProcessOption);
 		ShowMessageBox(, WarningText);
@@ -338,8 +348,9 @@ Procedure DecryptControlDSMarkerServer(
 	HandlerContext,
 	CurrentForm)
 	
-	ErrorMessageForUser = NStr("en = 'Error checking certificate password.
-		|For more details see the event log.'");
+	ErrorMessageForUser = NStr("en='Error checking certificate password."
+"For more details see the event log.';ru='Ошибка при проверке пароля сертификата."
+"Подробнее см в журнале регистрации.'");
 	
 	// Receive the required session parameters to execute decryption operation
 	ParametersForDecryption = OnlineUserSupportClientServer.SessionParametersForDecryption(
@@ -349,7 +360,7 @@ Procedure DecryptControlDSMarkerServer(
 		// Business process error: markerED mandatory parameter is not available
 		OnlineUserSupportClient.EndBusinessProcess(InteractionContext);
 		OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-			NStr("en = 'Error occurred checking the certificate owner authenticity. Authentication marker is not available (markerED)'"));
+			NStr("en='Error occurred checking the certificate owner authenticity. Authentication marker is not available (markerED)';ru='Ошибка при проверке подлинности владельца сертификата. Отсутствует маркер аутентификации (markerED)'"));
 		ShowMessageBox(, ErrorMessageForUser);
 		Return;
 	EndIf;
@@ -360,8 +371,9 @@ Procedure DecryptControlDSMarkerServer(
 		// Error occurred receiving marker binary data from base64 row
 		OnlineUserSupportClient.EndBusinessProcess(InteractionContext);
 		MessageForRegistrationLog = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Error occurred checking the certificate owner authenticity. Unable to receive marker binary data.
-				|%1'"),
+			NStr("en='Error occurred checking the certificate owner authenticity. Unable to receive marker binary data."
+"%1';ru='Ошибка при проверке подлинности владельца сертификата. Не удалось получить двоичные данные маркера (markerED)."
+"%1'"),
 			DetailErrorDescription(ErrorInfo()));
 		OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(MessageForRegistrationLog);
 		ShowMessageBox(, ErrorMessageForUser);
@@ -391,7 +403,7 @@ Procedure DecryptControlDSMarkerServer(
 		// Unable to receive certificate ref - end business process
 		OnlineUserSupportClient.EndBusinessProcess(InteractionContext);
 		OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-			NStr("en = 'Error occurred checking the certificate owner authenticity. Certificate is not specified (IDDSCertificate, IDDSCertificate_Dop)'"));
+			NStr("en='Error occurred checking the certificate owner authenticity. Certificate is not specified (IDDSCertificate, IDDSCertificate_Dop)';ru='Ошибка при проверке подлинности владельца сертификата. Не указан сертификат (IDCertificateED, IDCertificateED_Dop)'"));
 		ShowMessageBox(, ErrorMessageForUser);
 		Return;
 		
@@ -400,7 +412,7 @@ Procedure DecryptControlDSMarkerServer(
 	// Call the StandardSubsystems.DigitalSignature
 	// applicationming interface Forming description of data for decryption
 	DataDescription = New Structure;
-	DataDescription.Insert("Operation", NStr("en = 'Certificate password check'"));
+	DataDescription.Insert("Operation", NStr("en='Certificate password check';ru='Проверка пароля сертификата'"));
 	DataDescription.Insert("DataTitle", "");
 	
 	DataDescription.Insert("ItIsAuthentication"        , True);
@@ -469,7 +481,7 @@ Procedure ShowEDFApplicationRejection(InteractionContext) Export
 	
 	MessageText = "";
 	If Not IsBlankString(ReasonDescription.ErrorCode) Then
-		MessageText = NStr("en = 'Error code: %1'");
+		MessageText = NStr("en='Error code: %1';ru='Код ошибки: %1'");
 		MessageText = StrReplace(MessageText, "%1", ReasonDescription.ErrorCode);
 	EndIf;
 	
@@ -484,7 +496,7 @@ Procedure ShowEDFApplicationRejection(InteractionContext) Export
 	EndIf;
 	
 	If IsBlankString(ReasonDescription.ErrorText) Then
-		MessageText = NStr("en = 'Unknown error. Contact support.'");
+		MessageText = NStr("en='Unknown error. Contact support.';ru='Неизвестная ошибка. Обратитесь в службу техподдержки.'");
 	EndIf;
 	
 	ShowMessageBox(, MessageText);
@@ -515,9 +527,11 @@ EndFunction
 //
 Function TechnicalEDFParametersText(InteractionContext, Val Certificate = Undefined) Export
 	
-	TechnicalParameters = NStr("en = 'Parameters of ED
-		|
-		|exchange participant - the certificate thumbprint: %1'");
+	TechnicalParameters = NStr("en='Parameters of ED"
+""
+"exchange participant - the certificate thumbprint: %1';ru='Параметры"
+""
+"участника обмена ЭД: - отпечаток сертификата: %1'");
 	
 	If Not ValueIsFilled(Certificate) Then
 		Certificate = OnlineUserSupportClientServer.SessionParameterValue(
@@ -544,8 +558,9 @@ Function TechnicalEDFParametersText(InteractionContext, Val Certificate = Undefi
 	
 	If Not IsBlankString(ErrorCode) Then
 		
-		ErrorDataPage = Chars.LF + NStr("en = '- error code:
-			|%1, - error description: %2'");
+		ErrorDataPage = Chars.LF + NStr("en='- error code:"
+"%1, - error description: %2';ru='- код"
+"ошибки: %1, - описание ошибки: %2'");
 		
 		TechnicalParameters = TechnicalParameters
 			+ StringFunctionsClientServer.PlaceParametersIntoString(

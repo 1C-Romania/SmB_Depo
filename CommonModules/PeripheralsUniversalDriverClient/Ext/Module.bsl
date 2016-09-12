@@ -26,7 +26,7 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 		Except
 			Result = False;
 			Output_Parameters.Add(999);
-			Output_Parameters.Add(NStr("en='An error occurred while accessing a driver.'"));
+			Output_Parameters.Add(NStr("en='An error occurred while accessing a driver.';ru='Ошибка обращения к драйверу.'"));
 			Return Result;
 		EndTry;
 	EndIf;
@@ -297,7 +297,7 @@ Function RunCommand(Command, InputParameters = Undefined, Output_Parameters = Un
 	// This command is not supported by the current driver.
 	Else
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.'"));
+		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.';ru='Команда ""%Команда%"" не поддерживается данным драйвером.'"));
 		Output_Parameters[1] = StrReplace(Output_Parameters[1], "%Command%", Command);
 		Result = False;
 		
@@ -443,7 +443,7 @@ Function OpenReceipt(DriverObject, Parameters, ConnectionParameters, ReturnRecei
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.OpenReceipt>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.OpenReceipt>.';ru='Ошибка вызова метода <DriverObject.OpenReceipt>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -489,7 +489,7 @@ Function CloseReceipt(DriverObject, Parameters, ConnectionParameters, PaymentsTa
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.CloseReceipt>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.CloseReceipt>.';ru='Ошибка вызова метода <DriverObject.CloseReceipt>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -508,7 +508,7 @@ Function CancelReceipt(DriverObject, Parameters, ConnectionParameters, Output_Pa
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.CancelReceipt>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.CancelReceipt>.';ru='Ошибка вызова метода <DriverObject.CancelReceipt>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;   
@@ -540,7 +540,7 @@ Function PrintReportWithoutBlanking(DriverObject, Parameters, ConnectionParamete
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintReportWithoutBlanking>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintReportWithoutBlanking>.';ru='Ошибка вызова метода <DriverObject.PrintReportWithoutBlanking>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -572,7 +572,7 @@ Function PrintReportWithBlanking(DriverObject, Parameters, ConnectionParameters,
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintReportWithBlanking>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintReportWithBlanking>.';ru='Ошибка вызова метода <DriverObject.PrintReportWithBlanking>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -601,7 +601,7 @@ Function PrintFiscalLine(DriverObject, Parameters, ConnectionParameters,
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintFiscString>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintFiscString>.';ru='Ошибка вызова метода <DriverObject.PrintFiscString>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -628,7 +628,7 @@ Function PrintNotFiscalLine(DriverObject, Parameters, ConnectionParameters, Text
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintNonFiscalLine>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintNonFiscalLine>.';ru='Ошибка вызова метода <DriverObject.PrintNonFiscalLine>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -661,7 +661,7 @@ Function Encashment(DriverObject, Parameters, ConnectionParameters, EncashmentTy
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintDepositWithdrawReceipt>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintDepositWithdrawReceipt>.';ru='Ошибка вызова метода <DriverObject.PrintDepositWithdrawReceipt>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -687,7 +687,7 @@ Function PrintBarcode(DriverObject, Parameters, ConnectionParameters, BarCodeTyp
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintDashCode>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PrintDashCode>.';ru='Ошибка вызова метода <DriverObject.PrintDashCode>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -713,7 +713,7 @@ Function OpenCashDrawer(DriverObject, Parameters, ConnectionParameters, Output_P
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.OpenCashBox>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.OpenCashBox>.';ru='Ошибка вызова метода <DriverObject.OpenCashBox>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -743,7 +743,7 @@ Function GetRowWidth(DriverObject, Parameters, ConnectionParameters, Output_Para
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.GetRowWidth>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.GetRowWidth>.';ru='Ошибка вызова метода <DriverObject.GetRowWidth>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -768,7 +768,7 @@ Function ReceiptsPrintOnTerminal(DriverObject, Parameters, ConnectionParameters,
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ReceiptsPrintOnTerminal>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ReceiptsPrintOnTerminal>.';ru='Ошибка вызова метода <DriverObject.ReceiptsPrintOnTerminal>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -783,7 +783,7 @@ Function DayTotalsByCards(DriverObject, Parameters, ConnectionParameters, Output
 	Response     = False;
 	SlipReceipt   = "";
 
-	ConnectionParameters.OperationKind = NStr("en='Totals revision'");
+	ConnectionParameters.OperationKind = NStr("en='Totals revision';ru='Сверка итогов'");
 
 	Try
 		Response = DriverObject.DayTotalsByCards(ConnectionParameters.DeviceID, SlipReceipt);
@@ -803,7 +803,7 @@ Function DayTotalsByCards(DriverObject, Parameters, ConnectionParameters, Output
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.DayTotalsByCards>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.DayTotalsByCards>.';ru='Ошибка вызова метода <DriverObject.DayTotalsByCards>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 
 	Return Result;
@@ -820,14 +820,14 @@ Function PayByPaymentCard(DriverObject, Parameters, ConnectionParameters,
 	AuthorizationCode = Undefined;
 	SlipReceipt        = "";
 	
-	ConnectionParameters.OperationKind = NStr("en='Pay'");
+	ConnectionParameters.OperationKind = NStr("en='Pay';ru='Оплатить'");
 	
 	If Not (Amount > 0) Then
 		Result = False;
-		ConnectionParameters.OperationKind = NStr("en='Cancel'");
+		ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Operation amouny is incorrect.'"));
+		Output_Parameters.Add(NStr("en='Operation amouny is incorrect.';ru='Не корректная сумма операции.'"));
 		Return Result;
 	EndIf;
 	
@@ -845,7 +845,7 @@ Function PayByPaymentCard(DriverObject, Parameters, ConnectionParameters,
 			Output_Parameters.Add(AuthorizationCode);
 		Else
 			Result = False;
-			ConnectionParameters.OperationKind = NStr("en='Cancel'");
+			ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 			Output_Parameters.Clear();
 			Output_Parameters.Add(999);
 			Output_Parameters.Add("");
@@ -855,7 +855,7 @@ Function PayByPaymentCard(DriverObject, Parameters, ConnectionParameters,
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PayByPaymentCard>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PayByPaymentCard>.';ru='Ошибка вызова метода <DriverObject.PayByPaymentCard>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -873,14 +873,14 @@ Function ReturnPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 	SlipReceipt        = "";
 	CardNumber     = "";
 	
-	ConnectionParameters.OperationKind = NStr("en='Payment return'");
+	ConnectionParameters.OperationKind = NStr("en='Payment return';ru='Возврат платежа'");
 	
 	If Not (Amount > 0) Then
 		Result = False;
-		ConnectionParameters.OperationKind = NStr("en='Cancel'");
+		ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Operation amouny is incorrect.'"));
+		Output_Parameters.Add(NStr("en='Operation amouny is incorrect.';ru='Не корректная сумма операции.'"));
 		Return Result;
 	EndIf;
 	
@@ -898,7 +898,7 @@ Function ReturnPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 			Output_Parameters.Add(AuthorizationCode);
 		Else
 			Result = False;
-			ConnectionParameters.OperationKind = NStr("en='Cancel'");
+			ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 			Output_Parameters.Clear();
 			Output_Parameters.Add(999);
 			Output_Parameters.Add("");
@@ -908,7 +908,7 @@ Function ReturnPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ReturnPaymentByPaymentCard>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ReturnPaymentByPaymentCard>.';ru='Ошибка вызова метода <DriverObject.ReturnPaymentByPaymentCard>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -927,14 +927,14 @@ Function CancelPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 	CardNumber     = "";
 
 	
-	ConnectionParameters.OperationKind = NStr("en='Cancel payment'");
+	ConnectionParameters.OperationKind = NStr("en='Cancel payment';ru='Отменить платеж'");
 	
 	If Not (Amount > 0) Then
 		Result = False;
-		ConnectionParameters.OperationKind = NStr("en='Cancel'");
+		ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Operation amouny is incorrect.'"));
+		Output_Parameters.Add(NStr("en='Operation amouny is incorrect.';ru='Не корректная сумма операции.'"));
 		Return Result;
 	EndIf;
 	
@@ -948,7 +948,7 @@ Function CancelPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 			Output_Parameters[0].Add(SlipReceipt);
 		Else
 			Result = False;
-			ConnectionParameters.OperationKind = NStr("en='Cancel'");
+			ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 			Output_Parameters.Clear();
 			Output_Parameters.Add(999);
 			Output_Parameters.Add("");
@@ -958,7 +958,7 @@ Function CancelPaymentByPaymentCard(DriverObject, Parameters, ConnectionParamete
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.CancelPaymentByPaymentCard>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.CancelPaymentByPaymentCard>.';ru='Ошибка вызова метода <DriverObject.CancelPaymentByPaymentCard>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -986,7 +986,7 @@ Function EmergencyCancelOperations(DriverObject, Parameters, ConnectionParameter
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.EmergencyCancelOperations>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.EmergencyCancelOperations>.';ru='Ошибка вызова метода <DriverObject.EmergencyCancelOperations>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 
 	Return Result;
@@ -1002,14 +1002,14 @@ Function PreauthorizeByPaymentCard(DriverObject, Parameters, ConnectionParameter
 	AuthorizationCode = Undefined;
 	SlipReceipt        = "";
 	
-	ConnectionParameters.OperationKind = NStr("en='Pre-authorize payment'");
+	ConnectionParameters.OperationKind = NStr("en='Pre-authorize payment';ru='Преавторизовать платеж'");
 	
 	If Not (Amount > 0) Then
 		Result = False;
-		ConnectionParameters.OperationKind = NStr("en='Cancel'");
+		ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Operation amouny is incorrect.'"));
+		Output_Parameters.Add(NStr("en='Operation amouny is incorrect.';ru='Не корректная сумма операции.'"));
 		Return Result;
 	EndIf;
 	
@@ -1027,7 +1027,7 @@ Function PreauthorizeByPaymentCard(DriverObject, Parameters, ConnectionParameter
 			Output_Parameters.Add(AuthorizationCode);
 		Else
 			Result = False;
-			ConnectionParameters.OperationKind = NStr("en='Cancel'");
+			ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 			Output_Parameters.Clear();
 			Output_Parameters.Add(999);
 			Output_Parameters.Add("");
@@ -1037,7 +1037,7 @@ Function PreauthorizeByPaymentCard(DriverObject, Parameters, ConnectionParameter
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PreauthorizationByPaymentCard>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.PreauthorizationByPaymentCard>.';ru='Ошибка вызова метода <DriverObject.PreauthorizationByPaymentCard>.'") + Chars.LF + ErrorDescription());
 	 EndTry;
 	
 	Return Result;
@@ -1052,7 +1052,7 @@ Function CancelPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 	AuthorizationCode = Undefined;
 	SlipReceipt        = "";
 	
-	ConnectionParameters.OperationKind = NStr("en='Cancel preauthorization'");
+	ConnectionParameters.OperationKind = NStr("en='Cancel preauthorization';ru='Отменить преавторизацию'");
 	
 	Try
 		Response = DriverObject.CancelPreauthorizationByPaymentCard(ConnectionParameters.DeviceID, CardNumber, Amount, 
@@ -1064,7 +1064,7 @@ Function CancelPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 			Output_Parameters[0].Add(SlipReceipt);
 		Else
 			Result = False; 
-			ConnectionParameters.OperationKind = NStr("en='Cancel'");
+			ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 			Output_Parameters.Clear();
 			Output_Parameters.Add(999);
 			Output_Parameters.Add("");
@@ -1074,7 +1074,7 @@ Function CancelPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.CancelPreauthorizationByPaymentCard>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.CancelPreauthorizationByPaymentCard>.';ru='Ошибка вызова метода <DriverObject.CancelPreauthorizationByPaymentCard>.'") + Chars.LF + ErrorDescription());
 	 EndTry;
 	 
 	 Return Result;
@@ -1089,7 +1089,7 @@ Function FinishPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 	AuthorizationCode = Undefined;
 	SlipReceipt        = "";
 	
-	ConnectionParameters.OperationKind = NStr("en='Finish preauthorization'");
+	ConnectionParameters.OperationKind = NStr("en='Finish preauthorization';ru='Завершить преавторизацию'");
 	
 	Try
 		Response = DriverObject.FinishPreauthorizationByPaymentCard(ConnectionParameters.DeviceID, CardNumber, Amount, 
@@ -1101,7 +1101,7 @@ Function FinishPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 			Output_Parameters[0].Add(SlipReceipt);
 		Else
 			Result = False; 
-			ConnectionParameters.OperationKind = NStr("en='Cancel'");
+			ConnectionParameters.OperationKind = NStr("en='Cancel';ru='Отменить'");
 			Output_Parameters.Clear();
 			Output_Parameters.Add(999);
 			Output_Parameters.Add("");
@@ -1111,7 +1111,7 @@ Function FinishPreauthorizationByPaymentCard(DriverObject, Parameters, Connectio
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.FinishPreauthorizationByPaymentCard>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.FinishPreauthorizationByPaymentCard>.';ru='Ошибка вызова метода <DriverObject.FinishPreauthorizationByPaymentCard>.'") + Chars.LF + ErrorDescription());
 	 EndTry;
 	 
 	Return Result;
@@ -1131,7 +1131,7 @@ Function ExportTable(DriverObject, Parameters, ConnectionParameters, ExportingTa
 	If ExportingTable.Count() = 0 Then
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='There is no data to export.'"));
+		Output_Parameters.Add(NStr("en='There is no data to export.';ru='Нет данных для выгрузки.'"));
 		Return False;
 	EndIf;
 	
@@ -1143,7 +1143,7 @@ Function ExportTable(DriverObject, Parameters, ConnectionParameters, ExportingTa
 	PackageStatus     = "first";
 	
 	CurrentPercent = 0;
-	Status(NStr("en='Initializing export...'"), Round(CurrentPercent));
+	Status(NStr("en='Initializing export...';ru='Инициализация выгрузки...'"), Round(CurrentPercent));
 	PercentIncrement = 100 / (RecordsTotal / PackageSize);
 	
 	ProductsArray = New Array;
@@ -1195,7 +1195,7 @@ Function ExportTable(DriverObject, Parameters, ConnectionParameters, ExportingTa
 			CurrentPackage = CurrentPackage + 1;
 			
 			CurrentPercent = CurrentPercent + PercentIncrement;
-			Status(NStr("en='Exporting data ...'"), Round(CurrentPercent));
+			Status(NStr("en='Exporting data ...';ru='Выгрузка данных...'"), Round(CurrentPercent));
 			 
 		 EndIf;
 		
@@ -1211,7 +1211,7 @@ Function Import_Table(DriverObject, Parameters, ConnectionParameters, Output_Par
 
 	Result = True;
 	DataExport = "";
-	Status(NStr("en='Importing data...'"));
+	Status(NStr("en='Importing data...';ru='Выполняется загрузка данных...'"));
 	
 	Try
 		
@@ -1233,7 +1233,7 @@ Function Import_Table(DriverObject, Parameters, ConnectionParameters, Output_Par
 			Result = False;
 			Output_Parameters.Clear();
 			Output_Parameters.Add(999);
-			Output_Parameters.Add(NStr("en='There is no data for loading.'"));
+			Output_Parameters.Add(NStr("en='There is no data for loading.';ru='Нет данных для загрузки.'"));
 		Else
 			Output_Parameters.Add(ArrayOfData);
 		EndIf;   
@@ -1242,7 +1242,7 @@ Function Import_Table(DriverObject, Parameters, ConnectionParameters, Output_Par
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ImportingTable>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ImportingTable>.';ru='Ошибка вызова метода <DriverObject.ImportingTable>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -1255,7 +1255,7 @@ Function ClearTable(DriverObject, Parameters, ConnectionParameters, Output_Param
 	
 	Result = True;
 	
-	Status(NStr("en='Running operation...'"));	
+	Status(NStr("en='Running operation...';ru='Выполнение операции...'"));	
 	
 	Try
 		Response = DriverObject.ClearTable(ConnectionParameters.DeviceID);
@@ -1270,7 +1270,7 @@ Function ClearTable(DriverObject, Parameters, ConnectionParameters, Output_Param
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ClearTable>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ClearTable>.';ru='Ошибка вызова метода <DriverObject.ClearTable>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -1300,7 +1300,7 @@ Function OutputLineToCustomerDisplay(DriverObject, Parameters, ConnectionParamet
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.OutputLineToCustomerDisplay>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.OutputLineToCustomerDisplay>.';ru='Ошибка вызова метода <DriverObject.OutputLineToCustomerDisplay>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -1326,7 +1326,7 @@ Function ClearCustomerDisplay(DriverObject, Parameters, ConnectionParameters, Ou
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ClearCustomerDisplay>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ClearCustomerDisplay>.';ru='Ошибка вызова метода <DriverObject.ClearCustomerDisplay>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -1358,7 +1358,7 @@ Function GetOutputParameters(DriverObject, Parameters, ConnectionParameters, Out
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.GetOutputParameters>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.GetOutputParameters>.';ru='Ошибка вызова метода <DriverObject.GetOutputParameters>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -1392,7 +1392,7 @@ Function GetWeight(DriverObject, Parameters, ConnectionParameters, Output_Parame
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.GetWeight>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.GetWeight>.';ru='Ошибка вызова метода <DriverObject.GetWeight>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -1420,7 +1420,7 @@ Function Tare(DriverObject, Parameters, ConnectionParameters, Output_Parameters,
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.Tare>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.Tare>.';ru='Ошибка вызова метода <DriverObject.Tare>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -1452,7 +1452,7 @@ Function ClearProductsInScales(DriverObject, Parameters, ConnectionParameters, O
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ClearProducts>.'") +  ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ClearProducts>.';ru='Ошибка вызова метода <DriverObject.ClearProducts>.'") +  ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -1468,7 +1468,7 @@ Function ExportProducts(DriverObject, Parameters, ConnectionParameters, Exportin
 	If ExportingTable.Count() = 0 Then
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='There is no data to export.'"));
+		Output_Parameters.Add(NStr("en='There is no data to export.';ru='Нет данных для выгрузки.'"));
 		Return False;
 	EndIf;
 	
@@ -1480,7 +1480,7 @@ Function ExportProducts(DriverObject, Parameters, ConnectionParameters, Exportin
 	PackageStatus     = "first";
 	
 	CurrentPercent = 0;
-	Status(NStr("en='Initializing export...'"), Round(CurrentPercent));
+	Status(NStr("en='Initializing export...';ru='Инициализация выгрузки...'"), Round(CurrentPercent));
 	PercentIncrement = 100 / (RecordsTotal / PackageSize);
 	
 	ProductsArray = New Array;
@@ -1531,7 +1531,7 @@ Function ExportProducts(DriverObject, Parameters, ConnectionParameters, Exportin
 			CurrentPackage = CurrentPackage + 1;
 			
 			CurrentPercent = CurrentPercent + PercentIncrement;
-			Status(NStr("en='Exporting data ...'"), Round(CurrentPercent));
+			Status(NStr("en='Exporting data ...';ru='Выгрузка данных...'"), Round(CurrentPercent));
 			 
 		 EndIf;
 		
@@ -1579,7 +1579,7 @@ Function DeviceTest(DriverObject, Parameters, ConnectionParameters, Output_Param
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.DeviceText>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.DeviceText>.';ru='Ошибка вызова метода <DriverObject.DeviceText>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -1615,7 +1615,7 @@ Function ExecuteAdditionalAction(DriverObject, Parameters, ConnectionParameters,
 		Result = False;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ExecuteAdditionalAction>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ExecuteAdditionalAction>.';ru='Ошибка вызова метода <DriverObject.ExecuteAdditionalAction>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 	Return Result;
@@ -1628,8 +1628,8 @@ Function GetDriverVersion(DriverObject, Parameters, ConnectionParameters, Output
 
 	Result = True;
 
-	Output_Parameters.Add(NStr("en='Installed'"));
-	Output_Parameters.Add(NStr("en='Not defined'"));
+	Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
+	Output_Parameters.Add(NStr("en='Not defined';ru='Не определена'"));
 
 	Try
 		Output_Parameters[1] = DriverObject.GetVersionNumber();
@@ -1647,12 +1647,12 @@ Function GetDriverDescription(DriverObject, Parameters, ConnectionParameters, Ou
 	Result = True;
 	
 	Output_Parameters.Clear();
-	Output_Parameters.Add(NStr("en='Installed'"));
-	Output_Parameters.Add(NStr("en='Not defined'"));
+	Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
+	Output_Parameters.Add(NStr("en='Not defined';ru='Не определена'"));
 	
-	Output_Parameters.Add(NStr("en='Undefined'"));
-	Output_Parameters.Add(NStr("en='Undefined'"));
-	Output_Parameters.Add(NStr("en='Undefined'"));
+	Output_Parameters.Add(NStr("en='Undefined';ru='Неопределено'"));
+	Output_Parameters.Add(NStr("en='Undefined';ru='Неопределено'"));
+	Output_Parameters.Add(NStr("en='Undefined';ru='Неопределено'"));
 	Output_Parameters.Add(Undefined);
 	Output_Parameters.Add(Undefined);
 	Output_Parameters.Add(Undefined);
@@ -1706,7 +1706,7 @@ Function GetDriverDescription(DriverObject, Parameters, ConnectionParameters, Ou
 		Output_Parameters[10] = AdditionalActions;
 	Except
 		Result = False;
-		CommonUseClientServer.MessageToUser(NStr("en='Error when receiving the driver description'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Error when receiving the driver description';ru='Ошибка получения описания драйвера'"));
 	EndTry;
 	
 	Return Result;

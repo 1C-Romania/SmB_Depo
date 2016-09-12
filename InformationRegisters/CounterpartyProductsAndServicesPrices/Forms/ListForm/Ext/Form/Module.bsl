@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		If ProductsAndServices.ProductsAndServicesType <> Enums.ProductsAndServicesTypes.InventoryItem Then
 			
 			AutoTitle = False;
-			Title = NStr("en = 'Counterparties prices can be entered only for the items with the Inventory type'");
+			Title = NStr("en='Counterparties prices can be entered only for the items with the Inventory type';ru='Цены контрагентов можно вводить только для номенклатуры с типом Запас'");
 			
 			Items.List.ReadOnly = True;
 			

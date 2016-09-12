@@ -125,11 +125,15 @@ Procedure AfterObjectExport(Container, ObjectExportManager, Serializer, Object, 
 	If Not ObjectFoundInCache Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'The %1 metadata object can not
-                  |be the JointlySeparatedDataExport.BeforeObjectExport() handler, as it is not in the cache of jointly separated objects.
-                  |If after editing the metadata configuration structure cache has not been
-                  |updated - you should update the cache of jointly separated objects 
-                  |by calling the JointlySeparatedDataExportImport.FillCacheJointlySeparatedObjects() method'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='The %1 metadata object can not"
+"be the JointlySeparatedDataExport.BeforeObjectExport() handler, as it is not in the cache of jointly separated objects."
+"If after editing the metadata configuration structure cache has not been"
+"updated - you should update the cache of jointly separated objects "
+"by calling the JointlySeparatedDataExportImport.FillCacheJointlySeparatedObjects() method';ru='Объект метаданных %1 не может быть обработчиком ВыгрузкаСовместноРазделенныхДанных.ПередВыгрузкойОбъекта(),"
+"т.к. отсутствует в кэше совместно-разделенных объектов."
+"Если после редактирования структуры метаданных конфигурации кэш не обновлялся - необходимо выполнять"
+"обновление кэша совместно-разделенных объектов с помощью вызова метода"
+"ВыгрузкаЗагрузкаСовиестноРазделенныхДаннных.ЗаполнитьКэшСовместноРазделенныхОбъектов()'", Metadata.DefaultLanguage.LanguageCode),
 			Object.Metadata().FullName()
 		);
 		
@@ -288,11 +292,15 @@ Procedure BeforeObjectImport(Container, Object, Artifacts, Cancel) Export
 	If Not ObjectFoundInCache Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en = 'The %1 metadata object can not
-                  |be the JointlySeparatedDataExport.BeforeObjectImport() handler, as it is not in the cache of jointly separated objects.
-                  |If after editing the metadata configuration structure cache has not been
-                  |updated - you should update the cache of jointly separated objects
-                  |by calling the JointlySeparatedDataExportImport.FillCacheJointlySeparatedObjects() method'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='The %1 metadata object can not"
+"be the JointlySeparatedDataExport.BeforeObjectImport() handler, as it is not in the cache of jointly separated objects."
+"If after editing the metadata configuration structure cache has not been"
+"updated - you should update the cache of jointly separated objects"
+"by calling the JointlySeparatedDataExportImport.FillCacheJointlySeparatedObjects() method';ru='Объект метаданных %1 не может быть обработчиком ВыгрузкаСовместноРазделенныхДанных.ПередЗагрузкойОбъекта(),"
+"т.к. отсутствует в кэше совместно-разделенных объектов."
+"Если после редактирования структуры метаданных конфигурации кэш не обновлялся - необходимо выполнять"
+"обновление кэша совместно-разделенных объектов с помощью вызова метода"
+"ВыгрузкаЗагрузкаСовиестноРазделенныхДаннных.ЗаполнитьКэшСовместноРазделенныхОбъектов()'", Metadata.DefaultLanguage.LanguageCode),
 			Object.Metadata().FullName()
 		);
 		

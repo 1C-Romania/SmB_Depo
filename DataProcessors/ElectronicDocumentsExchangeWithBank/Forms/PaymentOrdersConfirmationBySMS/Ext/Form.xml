@@ -5,6 +5,10 @@
 			<v8:lang>en</v8:lang>
 			<v8:content>Payment order confirmation</v8:content>
 		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Подтверждение платежного поручения</v8:content>
+		</v8:item>
 	</Title>
 	<Width>43</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -31,6 +35,10 @@
 						<v8:lang>en</v8:lang>
 						<v8:content>Cancel</v8:content>
 					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отменить</v8:content>
+					</v8:item>
 				</Title>
 				<ExtendedTooltip name="FormCancelCommandExtendedTooltip" id="106"/>
 			</Button>
@@ -48,11 +56,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Document</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>документ</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Electronic document</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Электронный документ</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Hiperlink>true</Hiperlink>
@@ -89,6 +105,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>ID session</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ID cессии</v8:content>
+				</v8:item>
 			</Title>
 			<Width>8</Width>
 			<HorizontalStretch>false</HorizontalStretch>
@@ -103,6 +123,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Password</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль</v8:content>
+				</v8:item>
 			</Title>
 			<ContextMenu name="PasswordContextMenu" id="100"/>
 			<ExtendedTooltip name="PasswordExtendedTooltip" id="110"/>
@@ -113,11 +137,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Group explanation</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пояснения</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Group explanation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пояснения</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -131,11 +163,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Group explanation first row</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа пояснение первая строка</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Group explanation first row</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа пояснение первая строка</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
@@ -151,6 +191,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Warning!</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Внимание!</v8:content>
+								</v8:item>
 							</Title>
 							<ContextMenu name="AttentionDecorationContextMenu" id="43"/>
 							<ExtendedTooltip name="AttentionDecorationExtendedTooltip" id="113"/>
@@ -161,6 +205,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Make sure that the BIK and account in SMS</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Убедитесь, что БИК и счет, указанные в SMS</v8:content>
 								</v8:item>
 							</Title>
 							<VerticalAlign>Top</VerticalAlign>
@@ -175,6 +223,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>message correspond to real recipient details.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>сообщении соответствуют реальным реквизитам получателя.</v8:content>
+						</v8:item>
 					</Title>
 					<ContextMenu name="DecorationConfirmationSMS_P2ContextMenu" id="87"/>
 					<ExtendedTooltip name="DecorationConfirmationSMS_P2ExtendedTooltip" id="115"/>
@@ -188,6 +240,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Confirmation code</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код подтверждения</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -204,6 +260,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Electronic document</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Электронный документ</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.EDAttachedFiles</v8:Type>
@@ -213,6 +273,10 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>Session ID</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>Session ID</v8:content>
 				</v8:item>
 			</Title>
@@ -230,6 +294,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Hyperlink text</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст гипер ссылки</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -245,6 +313,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>ED agreement</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Соглашение ЭД</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.EDUsageAgreements</v8:Type>
@@ -256,6 +328,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Bank application</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Программа банка</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.BankApplications</v8:Type>
@@ -265,6 +341,10 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>Amount</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>Amount</v8:content>
 				</v8:item>
 			</Title>
@@ -282,6 +362,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Recipient</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получатель:</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -297,6 +381,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>BIN</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>БИК</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -311,6 +399,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -329,11 +421,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Confirm</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подтвердить</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Confirm signature</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подтвердить подпись</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CommandConfirm</Action>

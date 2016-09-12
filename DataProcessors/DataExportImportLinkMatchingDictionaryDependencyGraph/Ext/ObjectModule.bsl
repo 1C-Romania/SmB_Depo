@@ -51,7 +51,7 @@ Procedure AddVertex(Val MetadataObjectName, Val IfNotExist = True) Export
 		If IfNotExist Then
 			Return;
 		Else
-			Raise NStr("en = 'An attempt to duplicate.'");
+			Raise NStr("en='An attempt to duplicate.';ru='Попытка дублирования!'");
 		EndIf;
 		
 	Else
@@ -131,7 +131,7 @@ Function MetadataObject(Val DescriptionFull)
 	If MetadataObject = Undefined Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Metadata object %1 does not exist in the current configuration. The object exists in the data file.'"),
+			NStr("en='Metadata object %1 does not exist in the current configuration. The object exists in the data file.';ru='В текущей конфигурации отсутствует объект метаданных %1, присутствующих в файле данных!'"),
 			DescriptionFull
 		);
 		
@@ -168,7 +168,7 @@ Function Vertex(Val MetadataObject, Val ExceptionIfNotExist = True)
 		If ExceptionIfNotExist Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'No vertex for metadata object %1 in the graph.'"),
+				NStr("en='No vertex for metadata object %1 in the graph.';ru='В графе отсутствует вершина для объекта метаданных %1!'"),
 				MetadataObject.FullName());
 			
 		Else
@@ -180,7 +180,7 @@ Function Vertex(Val MetadataObject, Val ExceptionIfNotExist = True)
 	Else
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Non-unique graph for metadata object %1.'"),
+			NStr("en='Non-unique graph for metadata object %1.';ru='Нарушение уникальности граф для объекта метаданных %1!'"),
 			MetadataObject.FullName());
 		
 	EndIf;
@@ -198,7 +198,7 @@ Procedure SearchInDepth(Vertex, SortResult)
 	// If it is a gray vertex - a cycle is found, can not process topological sort
 	If Vertex.Color = Gray Then
 		
-		Raise NStr("en = 'Recursive dependence.'");
+		Raise NStr("en='Recursive dependence.';ru='Рекурсивная зависимость!'");
 		
 	ElsIf Vertex.Color = White Then
 		

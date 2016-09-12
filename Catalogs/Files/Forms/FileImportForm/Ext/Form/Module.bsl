@@ -10,8 +10,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Not Parameters.Property("FolderForAdding") Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'This data processor is called from the other configuration procedures.
-			           |Prohibited to call it manually.'"));
+			NStr("en='This data processor is called from the other configuration procedures."
+"Prohibited to call it manually.';ru='Данная обработка вызывается из других процедур конфигурации."
+"Вручную ее вызывать запрещено.'"));
 		Cancel = True;
 		Return;
 	EndIf;
@@ -74,7 +75,7 @@ Procedure AddRun()
 	
 	If SelectedFiles.Count() = 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'There are no files for adding.'"), , "SelectedFiles");
+			NStr("en='There are no files for adding.';ru='Нет файлов для добавления.'"), , "SelectedFiles");
 		FieldsNotFilled = True;
 	EndIf;
 	
@@ -85,7 +86,7 @@ Procedure AddRun()
 
 	If FilesOwnerForAdd.IsEmpty() Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Specify the folder.'"), , "FolderForAdding");
+			NStr("en='Specify the folder.';ru='Укажите папку.'"), , "FolderForAdding");
 		FieldsNotFilled = True;
 	EndIf;
 	
@@ -194,10 +195,10 @@ Procedure SelectFilesExecuteAfterExtensionInstallation(ExtensionIsSet, ExecutePa
 	
 	FileOpeningDialog = New FileDialog(Mode);
 	FileOpeningDialog.FullFileName = "";
-	Filter = NStr("en = 'All files(*.*)|*.*'");
+	Filter = NStr("en='All files(*.*)|*.*';ru='Все файлы(*.*)|*.*'");
 	FileOpeningDialog.Filter = Filter;
 	FileOpeningDialog.Multiselect = True;
-	FileOpeningDialog.Title = NStr("en = 'Select files'");
+	FileOpeningDialog.Title = NStr("en='Select files';ru='Выбрать файлы'");
 	If FileOpeningDialog.Choose() Then
 		SelectedFiles.Clear();
 		

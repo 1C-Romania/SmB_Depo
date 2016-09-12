@@ -69,7 +69,7 @@ Procedure ExecutePrintCommandToPrinter(PrintManagerName, TemplateNames, ObjectsA
 #EndIf
 	
 	If PrintForms.Cancel Then
-		CommonUseClientServer.MessageToUser(NStr("en = 'You are not authorized to send a print form to the printer, contact your administrator.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='You are not authorized to send a print form to the printer, contact your administrator.';ru='Нет прав для вывода печатной формы на принтер, обратитесь к администратору.'"));
 		Return;
 	EndIf;
 	
@@ -155,9 +155,11 @@ Procedure ExecuteConnectedPrintCommand(Val Command, Val Form, Val Source) Export
 		
 		If Source.Ref.IsEmpty() Then
 			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Data is still not recorded.
-					|Execution of action ""%1"" is possible only after data is recorded.
-					|Data will be written.'"),
+				NStr("en='Data is still not recorded."
+"Execution of action ""%1"" is possible only after data is recorded."
+"Data will be written.';ru='Данные еще не записаны."
+"Выполнение действия ""%1"" возможно только после записи данных."
+"Данные будут записаны.'"),
 				CommandDetails.Presentation);
 				
 			NotifyDescription = New NotifyDescription("ExecuteConnectedPrintCommandRecordConfirmation", PrintManagementServiceClient, AdditionalParameters);
@@ -407,7 +409,7 @@ Function TemplateArea(Val RefsOnTemplate, Val DetailsOfArea) Export
 		Else
 			Raise
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'The area type is not specified or is specified incorrectly: %1.'"), DetailsOfArea.AreaType);
+					NStr("en='The area type is not specified or is specified incorrectly: %1.';ru='Тип области не указан или указан не корректно: %1.'"), DetailsOfArea.AreaType);
 		EndIf;
 		
 		If Area <> Undefined Then
@@ -426,7 +428,7 @@ Function TemplateArea(Val RefsOnTemplate, Val DetailsOfArea) Export
 		Else
 			Raise
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'The area type is not specified or is specified incorrectly: %1.'"), DetailsOfArea.AreaName);
+					NStr("en='The area type is not specified or is specified incorrectly: %1.';ru='Тип области не указан или указан не корректно: %1.'"), DetailsOfArea.AreaName);
 		EndIf;
 		
 		If Area <> Undefined Then
@@ -478,7 +480,7 @@ Procedure JoinArea(Val PrintForm,
 					DevelopedArea = PrintManagementMSWordClient.JoinArea(PrintForm, TemplateArea, TransitionToNextString);
 				EndIf;
 			Else
-				Raise(NStr("en = 'Area type is not specified or specified incorrectly'"));
+				Raise(NStr("en='Area type is not specified or specified incorrectly';ru='Тип области не указан или указан не корректно.'"));
 			EndIf;
 			
 			DetailsOfArea.Insert("Area", DevelopedArea);
@@ -500,7 +502,7 @@ Procedure JoinArea(Val PrintForm,
 				PrintManagementOOWriterClient.SetMainCursorOnDocumentBody(PrintForm);
 				PrintManagementOOWriterClient.JoinArea(PrintForm, TemplateArea, TransitionToNextString, True);
 			Else
-				Raise(NStr("en = 'Area type is not specified or specified incorrectly'"));
+				Raise(NStr("en='Area type is not specified or specified incorrectly';ru='Тип области не указан или указан не корректно.'"));
 			EndIf;
 			// Contains area type and boundaries (if required).
 			PrintForm.LastDisplayedArea = DetailsOfArea;
@@ -510,7 +512,7 @@ Procedure JoinArea(Val PrintForm,
 		ErrorInfo = ?(Right(ErrorInfo, 1) = ".", ErrorInfo, ErrorInfo + ".");
 		ErrorInfo = ErrorInfo + " " +
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'An error occurred while printing the area ""%1""  from the template.'"),
+					NStr("en='An error occurred while printing the area ""%1""  from the template.';ru='Ошибка при попытке вывести область ""%1"" из макета.'"),
 					TemplateArea.DetailsOfArea.AreaName);
 		Raise ErrorInfo;
 	EndTry;
@@ -537,7 +539,7 @@ Procedure FillParameters(Val PrintForm, Val Data) Export
 				OR DetailsOfArea.AreaType = "List" Then
 			PrintManagementMSWordClient.FillParameters(PrintForm.LastDisplayedArea.Area, Data);
 		Else
-			Raise(NStr("en = 'Area type is not specified or specified incorrectly'"));
+			Raise(NStr("en='Area type is not specified or specified incorrectly';ru='Тип области не указан или указан не корректно.'"));
 		EndIf;
 	ElsIf PrintForm.Type = "ODT" Then
 		If		PrintForm.LastDisplayedArea.AreaType = "Header" Then
@@ -602,7 +604,7 @@ Procedure JoinAndFillCollection(Val PrintForm,
 		ElsIf	DetailsOfArea.AreaType = "List" Then
 			PrintManagementMSWordClient.JoinAndFillSet(PrintForm, TemplateArea, Data, TransitionToNextString);
 		Else
-			Raise(NStr("en = 'Area type is not specified or specified incorrectly'"));
+			Raise(NStr("en='Area type is not specified or specified incorrectly';ru='Тип области не указан или указан не корректно.'"));
 		EndIf;
 	ElsIf PrintForm.Type = "ODT" Then
 		If		DetailsOfArea.AreaType = "TableRow" Then
@@ -610,7 +612,7 @@ Procedure JoinAndFillCollection(Val PrintForm,
 		ElsIf	DetailsOfArea.AreaType = "List" Then
 			PrintManagementOOWriterClient.JoinAndFillCollection(PrintForm, TemplateArea, Data, False, TransitionToNextString);
 		Else
-			Raise(NStr("en = 'Area type is not specified or specified incorrectly'"));
+			Raise(NStr("en='Area type is not specified or specified incorrectly';ru='Тип области не указан или указан не корректно.'"));
 		EndIf;
 	EndIf;
 	
@@ -765,9 +767,9 @@ Function CheckDocumentsPosted(DocumentsArray, FormSource = Undefined) Export
 	If UnpostedDocumentsCount > 0 Then
 		
 		If UnpostedDocumentsCount = 1 Then
-			QuestionText = NStr("en = 'To print a document, you need to post it first. Do you want to post the document and continue?'");
+			QuestionText = NStr("en='To print a document, you need to post it first. Do you want to post the document and continue?';ru='Для того чтобы распечатать документ, его необходимо предварительно провести. Выполнить проведение документа и продолжить?'");
 		Else
-			QuestionText = NStr("en = 'To print documents, you need to post them first. Do you want to post the documents and continue?'");
+			QuestionText = NStr("en='To print documents, you need to post them first. Do you want to post the documents and continue?';ru='Для того чтобы распечатать документы, их необходимо предварительно провести. Выполнить проведение документов и продолжить?'");
 		EndIf;
 		
 		ResponseCode = DoQueryBox(QuestionText, QuestionDialogMode.YesNo);
@@ -778,7 +780,7 @@ Function CheckDocumentsPosted(DocumentsArray, FormSource = Undefined) Export
 		DataAboutUnpostedDocuments = CommonUseServerCall.PostDocuments(DocumentsRequiredPosting);
 		
 		// inform about the documents that were not processed
-		MessagePattern = NStr("en = 'Document %1 is not posted: %2 Cannot print.'");
+		MessagePattern = NStr("en='Document %1 is not posted: %2 Cannot print.';ru='Документ %1 не проведен: %2 Печать невозможна.'");
 		UnpostedDocuments = New Array;
 		For Each InformationAboutDocument IN DataAboutUnpostedDocuments Do
 			CommonUseClientServer.MessageToUser(
@@ -819,12 +821,12 @@ Function CheckDocumentsPosted(DocumentsArray, FormSource = Undefined) Export
 	If UnpostedDocumentsCount > 0 Then
 		// ask a user if it is necessary to continue printing when there are unprocessed documents.
 		
-		DialogText = NStr("en = 'Failed to post one or several documents.'");
+		DialogText = NStr("en='Failed to post one or several documents.';ru='Не удалось провести один или несколько документов.'");
 		DialogButtons = New ValueList;
 		
 		If AreDocumentsWhichCanPrint Then
-			DialogText = DialogText + " " + NStr("en = 'Continue?'");
-			DialogButtons.Add(DialogReturnCode.Ignore, NStr("en = 'Continue'"));
+			DialogText = DialogText + " " + NStr("en='Continue?';ru='Продолжить?'");
+			DialogButtons.Add(DialogReturnCode.Ignore, NStr("en='Continue';ru='Продолжить'"));
 			DialogButtons.Add(DialogReturnCode.Cancel);
 		Else
 			DialogButtons.Add(DialogReturnCode.OK);
@@ -854,7 +856,7 @@ EndFunction
 Function InitializeTemplate(Val TemplateBinaryData, Val TemplateType, Val PathToDirectory = "", Val TemplateName = "") Export
 	
 #If WebClient Then
-	MessageText = NStr("en = 'To continue print, extension for work with files needed to be installed.'");
+	MessageText = NStr("en='To continue print, extension for work with files needed to be installed.';ru='Для продолжения печати необходимо установить расширение работы с файлами.'");
 	If Not CommonUseClient.FileOperationsExtensionConnected(MessageText) Then
 		Return Undefined;
 	EndIf;

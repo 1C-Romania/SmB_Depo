@@ -15,24 +15,26 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Permanent interface
 	StatePresentation = Items.SearchWasNotRun.StatePresentation;
 	StatePresentation.Visible = True;
-	StatePresentation.Text = NStr("en = 'Duplicates search is not in progress. 
-	                                        |Set filter and comparison criteria and click Find duplicates.'");
+	StatePresentation.Text = NStr("en='Duplicates search is not in progress. "
+"Set filter and comparison criteria and click Find duplicates.';ru='Поиск дублей не выполнялся. "
+"Задайте условия отбора и сравнения и нажмите ""Найти дубли"".'");
 	StatePresentation.Picture = Items.Warning32.Picture;
 	
 	StatePresentation = Items.SearchExecution.StatePresentation;
 	StatePresentation.Visible = True;
-	StatePresentation.Text = NStr("en = 'Searching for duplicates...'");
+	StatePresentation.Text = NStr("en='Searching for duplicates...';ru='Поиск дублей...'");
 	StatePresentation.Picture = Items.LongOperation48.Picture;
 	
 	StatePresentation = Items.DeleteExecution.StatePresentation;
 	StatePresentation.Visible = True;
-	StatePresentation.Text = NStr("en = 'Deleting duplicates ...'");
+	StatePresentation.Text = NStr("en='Deleting duplicates ...';ru='Удаление дублей...'");
 	StatePresentation.Picture = Items.LongOperation48.Picture;
 	
 	StatePresentation = Items.DuplicatesAreNotFound.StatePresentation;
 	StatePresentation.Visible = True;
-	StatePresentation.Text = NStr("en = 'Duplicates by specified parameters are not found.
-	                                        |Change filter and comparison criteria, click Find duplicates'");
+	StatePresentation.Text = NStr("en='Duplicates by specified parameters are not found."
+"Change filter and comparison criteria, click Find duplicates';ru='Не обнаружено дублей по указанным параметрам."
+"Измените условия отбора и сравнения, нажмите ""Найти дубли""'");
 	StatePresentation.Picture = Items.Warning32.Picture;
 	
 	// Stepped assistant
@@ -220,7 +222,7 @@ Procedure UpdateCandidateUsagePlaces(Val DataRow)
 		EndDo;
 		
 		Items.CurrentDuplicateGroupDescription.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'For the %1 item duplicates (%2) are found'"),
+			NStr("en='For the %1 item duplicates (%2) are found';ru='Для элемента ""%1"" найдены дубли (%2)'"),
 			OriginalName, RowData.Quantity);
 		
 		Items.UsagePlacesPages.CurrentPage = Items.GroupDetails;
@@ -237,13 +239,13 @@ Procedure UpdateCandidateUsagePlaces(Val DataRow)
 	
 	If RowData.Quantity = 0 Then
 		Items.CurrentDuplicateGroupDescription.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 item is not used'"), 
+			NStr("en='%1 item is not used';ru='Элемент ""%1"" не используется'"), 
 			RowData.Description);
 		
 		Items.UsagePlacesPages.CurrentPage = Items.GroupDetails;
 	Else
 		Items.CandidateUsagePlaces.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 usage places (%2)'"), 
+			NStr("en='%1 usage places (%2)';ru='Места использования ""%1"" (%2)'"), 
 			RowData.Description, RowData.Quantity);
 		
 		Items.UsagePlacesPages.CurrentPage = Items.UsagePlaces;
@@ -306,7 +308,7 @@ Procedure UpdateUnprocessedDuplicatesUsagePlaces(Val DataRow)
 		EndDo;
 		
 		Items.CurrentDuplicateGroupDescription1.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'For the %1 item duplicates (%2) are found'"),
+			NStr("en='For the %1 item duplicates (%2) are found';ru='Для элемента ""%1"" найдены дубли (%2)'"),
 			OriginalName, RowData.Quantity);
 		
 		Items.UsagePlacesPagesRaw.CurrentPage = Items.GroupDetailsRaw;
@@ -324,13 +326,13 @@ Procedure UpdateUnprocessedDuplicatesUsagePlaces(Val DataRow)
 	
 	If RowData.Quantity = 0 Then
 		Items.CurrentDuplicateGroupDescription1.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 item was successfully processed'"), 
+			NStr("en='%1 item was successfully processed';ru='Элемент ""%1"" успешно обработан'"), 
 			RowData.Description);
 		
 		Items.UsagePlacesPagesRaw.CurrentPage = Items.GroupDetailsRaw;
 	Else
 		Items.CandidateUsagePlaces.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unable to substitute duplicates in some places (%1)'"), 
+			NStr("en='Unable to substitute duplicates in some places (%1)';ru='Не удалось заменить дубли в некоторых местах (%1)'"), 
 			RowData.Quantity);
 		
 		Items.UsagePlacesPagesRaw.CurrentPage = Items.UsagePlaceDescriptionRaw;
@@ -576,7 +578,7 @@ Procedure SetColorAndConditionalDesign()
 	AppearanceFilter.ComparisonType = DataCompositionComparisonType.Equal;
 	AppearanceFilter.RightValue = 0;
 	
-	DesignElement.Appearance.SetParameterValue("Text", NStr("en = 'Not Used'"));
+	DesignElement.Appearance.SetParameterValue("Text", NStr("en='Not Used';ru='Не используется'"));
 	
 	AppearanceField = DesignElement.Fields.Items.Add();
 	AppearanceField.Field = New DataCompositionField("FoundDuplicatesCount");
@@ -724,7 +726,7 @@ Procedure ChangeMainItemHierarchically(Val RowData, Val Parent)
 	ChangeCandidatesMarksierarchically(RowData);
 	
 	// And change a group name
-	Parent.Description = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1 (%2)'"), 
+	Parent.Description = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 (%2)';ru='%1 (%2)'"), 
 		RowData.Description, Parent.Quantity);
 EndProcedure
 
@@ -781,7 +783,7 @@ Function FillDuplicatesSearchResults(Val Data)
 	
 	// Save usage places for the future filter.
 	CandidateUsagePlaces.Clear();
-	Items.CurrentDuplicateGroupDescription.Title = NStr("en = 'No duplicates are found'");
+	Items.CurrentDuplicateGroupDescription.Title = NStr("en='No duplicates are found';ru='Дублей не найдено'");
 	
 	If IsTempStorageURL(UsePlaceAddress) Then
 		DeleteFromTempStorage(UsePlaceAddress);
@@ -799,10 +801,11 @@ Function FillDuplicatesSearchResults(Val Data)
 	// There are no search errors
 	If TotalDuplicatesFound = 0 Then
 		FoundDuplicatesStatusDescription = New FormattedString(Items.Information16.Picture, " ",
-			NStr("en = 'Duplicates by the specified conditions are not found'"));
+			NStr("en='Duplicates by the specified conditions are not found';ru='Не обнаружено дублей по указанным условиям'"));
 	Else
 		FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Duplicates of items are found: %2 (among items: %1). All selected items will be marked for deletion and substituted for the originals in all usage places (marked with an arrow).'"),
+			NStr("en='Duplicates of items are found: %2 (among items: %1). All selected items will be marked for deletion and substituted for the originals in all usage places (marked with an arrow).';ru='Найдены дубли элементов: %2 (среди элементов: %1). Все отмеченные элементы будут помечены на удаление "
+"и заменены во всех местах использования на оригиналы (отмечены стрелкой).'"),
 			TotalDuplicatesFound, TotalDuplicatesFound - TreeItems.Count()),
 			, ColorsExplanationText);
 	EndIf;
@@ -842,19 +845,21 @@ Function FillDuplicatesDeletetionResults(Val ErrorsTable)
 			// Many duplicates to one item.
 			If LastCandidate = Undefined Then
 				FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'All found duplicates (%1) are successfully merged'"), TotallyProcessed));
+					NStr("en='All found duplicates (%1) are successfully merged';ru='Все найденные дубли (%1) успешно объединены'"), TotallyProcessed));
 			Else
 				LastCandidateRow = CommonUse.SubjectString(LastCandidate);
 				FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'All found duplicates (%1) are
-					           |successfully merged to %2.'"),
+					NStr("en='All found duplicates (%1) are"
+"successfully merged to %2.';ru='Все найденные дубли (%1)"
+"успешно объединены в ""%2""'"),
 					TotallyProcessed, LastCandidateRow));
 			EndIf;
 		Else
 			// Many duplicates to many groups.
 			FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'All found duplicates (%1) are successfully merged.
-				           |Kept items (%2).'"),
+				NStr("en='All found duplicates (%1) are successfully merged."
+"Kept items (%2).';ru='Все найденные дубли (%1) успешно объединены."
+"Оставлено элементов (%2).'"),
 				TotallyProcessed, TotallyMain));
 		EndIf;
 	EndIf;
@@ -958,14 +963,14 @@ EndProcedure
 &AtClient
 Procedure UpdateSearchRulesDescription()
 	RulesText = "";
-	Conjunction        = " " + NStr("en = 'AND'") + " ";
+	Conjunction        = " " + NStr("en='AND';ru='А ТАКЖЕ'") + " ";
 	
 	For Each Rule In SearchRules Do
 		
 		If Rule.Rule = "Equal" Then
-			Comparison = NStr("en = '%1 matches'");
+			Comparison = NStr("en='%1 matches';ru='%1 совпадает'");
 		ElsIf Rule.Rule = "Like" Then
-			Comparison = NStr("en = '%1 matches by the similar words'");
+			Comparison = NStr("en='%1 matches by the similar words';ru='%1 совпадает по похожим словам'");
 		Else
 			Comparison = "";
 		EndIf;
@@ -985,7 +990,7 @@ Procedure UpdateSearchRulesDescription()
 		
 	RulesText = RulesText + AppliedText;
 	If IsBlankString(RulesText) Then
-		Items.SearchRules.Title = NStr("en = 'Rules are not specified'");
+		Items.SearchRules.Title = NStr("en='Rules are not specified';ru='Правила не заданы'");
 	Else
 		Items.SearchRules.Title = TrimAll(Mid(RulesText, StrLen(Conjunction)));
 	EndIf;
@@ -998,7 +1003,7 @@ Procedure UpdateFilterDescription()
 	
 	FilterDescription = String(ComposerPreFilter.Settings.Filter);
 	If IsBlankString(FilterDescription) Then
-		FilterDescription = NStr("en = 'All items'");
+		FilterDescription = NStr("en='All items';ru='Все элементы'");
 		Items.ClearFilterRules.Enabled = False;
 	Else
 		Items.ClearFilterRules.Enabled = True;
@@ -1073,8 +1078,8 @@ Procedure InitializeSelectionAndRulesLinker()
 	RulesTable = FormAttributeToValue("SearchRules");
 	
 	AllComparisonVariants.Clear();
-	AllComparisonVariants.Add("Equal",   NStr("en = 'Matches'"));
-	AllComparisonVariants.Add("Like", NStr("en = 'Matches by similar words'"));
+	AllComparisonVariants.Add("Equal",   NStr("en='Matches';ru='Совпадает'"));
+	AllComparisonVariants.Add("Like", NStr("en='Matches by similar words';ru='Совпадает по похожим словам'"));
 
 	AddMetaAttributesRules(RulesTable, IgnoredAttributes, AllComparisonVariants, MetaArea.StandardAttributes);
 	AddMetaAttributesRules(RulesTable, IgnoredAttributes, AllComparisonVariants, MetaArea.Attributes);
@@ -1217,10 +1222,10 @@ Procedure InitializeAssistantScript()
 	// 0. Search was not run
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Visible = False;
-	ButtonsAssistant.Next.Title = NStr("en = 'Find duplicates >'");
-	ButtonsAssistant.Next.ToolTip = NStr("en = 'Find duplicates by the specified criteria'");
-	ButtonsAssistant.Cancel.Title = NStr("en = 'Close'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en = 'Cancel to search and substitute duplicates.'");
+	ButtonsAssistant.Next.Title = NStr("en='Find duplicates >';ru='Найти дубли >'");
+	ButtonsAssistant.Next.ToolTip = NStr("en='Find duplicates by the specified criteria';ru='Найти дубли по указанным критериям'");
+	ButtonsAssistant.Cancel.Title = NStr("en='Close';ru='Закрыть'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Cancel to search and substitute duplicates.';ru='Отказаться от поиска и замены дублей'");
 	
 	AddAssistantStep(Items.StepSearchWasNotRun,
 		AssistantStepAction("OnActivating",         "StepSearchNotExecutedOnActivating",
@@ -1232,8 +1237,8 @@ Procedure InitializeAssistantScript()
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Visible = False;
 	ButtonsAssistant.Next.Visible = False;
-	ButtonsAssistant.Cancel.Title = NStr("en = 'Break'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en = 'Stop duplicates search'");
+	ButtonsAssistant.Cancel.Title = NStr("en='Break';ru='Прервать'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Stop duplicates search';ru='Прервать поиск дублей'");
 	
 	AddAssistantStep(Items.StepSearchExecution,
 		AssistantStepAction("OnActivating",         "StepSearchExecutionOnActivating",
@@ -1244,10 +1249,10 @@ Procedure InitializeAssistantScript()
 	// 2. Search results processor, select main items.
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Visible = False;
-	ButtonsAssistant.Next.Title = NStr("en = 'Delete duplicates >'");
-	ButtonsAssistant.Next.ToolTip = NStr("en = 'Delete duplicates'");
-	ButtonsAssistant.Cancel.Title = NStr("en = 'Close'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en = 'Cancel to search and substitute duplicates.'");
+	ButtonsAssistant.Next.Title = NStr("en='Delete duplicates >';ru='Удалить дубли >'");
+	ButtonsAssistant.Next.ToolTip = NStr("en='Delete duplicates';ru='Удаление дублей'");
+	ButtonsAssistant.Cancel.Title = NStr("en='Close';ru='Закрыть'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Cancel to search and substitute duplicates.';ru='Отказаться от поиска и замены дублей'");
 	
 	AddAssistantStep(Items.StepSelectMainItem,
 		AssistantStepAction("OnActivating",         "StepSelectMainItemOnActivating",
@@ -1259,8 +1264,8 @@ Procedure InitializeAssistantScript()
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Visible = False;
 	ButtonsAssistant.Next.Visible = False;
-	ButtonsAssistant.Cancel.Title = NStr("en = 'Break'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en = 'Break duplicates deletion'");
+	ButtonsAssistant.Cancel.Title = NStr("en='Break';ru='Прервать'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Break duplicates deletion';ru='Прервать удаление дублей'");
 	
 	AddAssistantStep(Items.StepDeleteExecution,
 		AssistantStepAction("OnActivating",         "StepDeleteExecutionOnActivating",
@@ -1270,11 +1275,11 @@ Procedure InitializeAssistantScript()
 	
 	// 4. Successful deletion
 	ButtonsAssistant = ButtonsAssistant();
-	ButtonsAssistant.Back.Title = NStr("en = '<New search'");
-	ButtonsAssistant.Back.ToolTip = NStr("en = 'Start a new search with other parameters'");
+	ButtonsAssistant.Back.Title = NStr("en='<New search';ru='< Новый поиск'");
+	ButtonsAssistant.Back.ToolTip = NStr("en='Start a new search with other parameters';ru='Начать новый поиск с другими параметрами'");
 	ButtonsAssistant.Next.Visible = False;
 	ButtonsAssistant.Cancel.DefaultButton = True;
-	ButtonsAssistant.Cancel.Title = NStr("en = 'Close'");
+	ButtonsAssistant.Cancel.Title = NStr("en='Close';ru='Закрыть'");
 	
 	AddAssistantStep(Items.StepSuccessfulDelete,
 		AssistantStepAction("OnActivating",         "StepSuccessfulDeletetionOnActivating",
@@ -1285,9 +1290,9 @@ Procedure InitializeAssistantScript()
 	// 5. Incomplete deletion
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Visible = False;
-	ButtonsAssistant.Next.Title = NStr("en = 'Repeat deletion >'");
-	ButtonsAssistant.Next.ToolTip = NStr("en = 'Delete duplicates'");
-	ButtonsAssistant.Cancel.Title = NStr("en = 'Close'");
+	ButtonsAssistant.Next.Title = NStr("en='Repeat deletion >';ru='Повторить удаление >'");
+	ButtonsAssistant.Next.ToolTip = NStr("en='Delete duplicates';ru='Удаление дублей'");
+	ButtonsAssistant.Cancel.Title = NStr("en='Close';ru='Закрыть'");
 	
 	AddAssistantStep(Items.StepFailedReplacements,
 		AssistantStepAction("OnActivating",         "StepFailedReplacementsOnActivating",
@@ -1298,9 +1303,9 @@ Procedure InitializeAssistantScript()
 	// 6. No duplicates are found
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Visible = False;
-	ButtonsAssistant.Next.Title = NStr("en = 'Find duplicates >'");
-	ButtonsAssistant.Next.ToolTip = NStr("en = 'Find duplicates by the specified criteria'");
-	ButtonsAssistant.Cancel.Title = NStr("en = 'Close'");
+	ButtonsAssistant.Next.Title = NStr("en='Find duplicates >';ru='Найти дубли >'");
+	ButtonsAssistant.Next.ToolTip = NStr("en='Find duplicates by the specified criteria';ru='Найти дубли по указанным критериям'");
+	ButtonsAssistant.Cancel.Title = NStr("en='Close';ru='Закрыть'");
 	
 	AddAssistantStep(Items.DuplicateStepIsNotFound,
 		AssistantStepAction("OnActivating",         "StepDuplicatesAreNotFoundOnActivating",
@@ -1332,7 +1337,7 @@ Procedure StepSearchNotExecutedBeforeNextAction(Val StepParameters, Val Addition
 		Return;
 	EndIf;
 	
-	WarningText = NStr("en = 'You need to select duplicates search area'");
+	WarningText = NStr("en='You need to select duplicates search area';ru='Необходимо выбрать область поиска дублей'");
 	ShowMessageBox(, WarningText);
 EndProcedure
 
@@ -1677,9 +1682,9 @@ EndFunction
 Function ButtonsAssistant()
 	Result = New Structure("Next, Back, Cancel", AssistantButton(), AssistantButton(), AssistantButton());
 	Result.Next.DefaultButton = True;
-	Result.Next.Title = NStr("en='Next >'");
-	Result.Back.Title = NStr("en='< Back'");
-	Result.Cancel.Title = NStr("en='Cancel'");
+	Result.Next.Title = NStr("en='Next >';ru='Далее  >'");
+	Result.Back.Title = NStr("en='< Back';ru='< Back'");
+	Result.Cancel.Title = NStr("en='Cancel';ru='Отменить'");
 	Return Result;
 EndFunction
 
@@ -1728,7 +1733,7 @@ EndProcedure
 Procedure RunAssistant()
 	
 	If StepByStepAssistantSettings.StartPage = Undefined Then
-		Raise NStr("en = 'Before launching the assistant, an initial page should be set.'");
+		Raise NStr("en='Before launching the assistant, an initial page should be set.';ru='Перед запуском мастера должна быть установлена начальная страница.'");
 		
 	ElsIf StepByStepAssistantSettings.StartPage = -1 Then
 		// Warming up. Check if all steps have action handlers.
@@ -1742,7 +1747,7 @@ Procedure RunAssistant()
 						Test = New NotifyDescription(HandlerName, ThisObject);
 					Except
 						Text = StringFunctionsClientServer.PlaceParametersIntoString(
-							NStr("en = 'Error of %1 event handler creation for %2 page, %3 procedure is not defined'"),
+							NStr("en='Error of %1 event handler creation for %2 page, %3 procedure is not defined';ru='Ошибка создания обработчика события %1 для страницы %2, не определена процедура %3'"),
 							NameActions, 
 							StepDescription.Page, 
 							HandlerName
@@ -1783,7 +1788,7 @@ Procedure AssistantStep(Val CommandCode)
 	ElsIf CommandCode = "Cancel" Then
 		Direction = 0;
 	Else
-		Raise NStr("en = 'Incorrect command of the assistant step'");
+		Raise NStr("en='Incorrect command of the assistant step';ru='Некорректная команда шага помощника'");
 	EndIf;
 		
 	StepDescription = StepByStepAssistantSettings.Steps[StepByStepAssistantSettings.CurrentStepNumber];
@@ -1824,7 +1829,7 @@ Procedure GoToAssistantStep(Val IdentifierStep, Val TriggerEvents = False)
 	NextStep = AssistantStepNumberByIdentifier(IdentifierStep);
 	If NextStep = Undefined Then
 		Error = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = '%1 assistant step is not found'"),
+			NStr("en='%1 assistant step is not found';ru='Не найден шаг помощника %1'"),
 			IdentifierStep
 		);
 		Raise Error;
@@ -1857,11 +1862,11 @@ Procedure AssistantStepEnd(Val StepParameters)
 		
 	ElsIf StepParameters = 1 AND NextStep > LastStep Then
 		// You are trying to take a step outside forward.
-		Raise NStr("en='You are trying to go out of the assistant last step.'");
+		Raise NStr("en='You are trying to go out of the assistant last step.';ru='Попытка выхода за последний шаг мастера'");
 		
 	ElsIf StepParameters = -1 AND NextStep < 0 Then
 		// You are trying to take a step outside back.
-		Raise NStr("en='You are trying to go back from the assistant first step.'");
+		Raise NStr("en='You are trying to go back from the assistant first step.';ru='Попытка выхода назад из первого шага мастера'");
 		
 	EndIf;
 	
@@ -1944,7 +1949,7 @@ Function AssistantStepNumberByIdentifier(Val IdentifierStep)
 		EndIf;
 	EndDo;
 	
-	Raise StrReplace(NStr("en = 'Not found step ""%1"".'"), "%1", SearchName);
+	Raise StrReplace(NStr("en='Not found step ""%1"".';ru='Не найдено шаг ""%1"".'"), "%1", SearchName);
 EndFunction
 
 // Returns the cancel check box
@@ -1997,14 +2002,14 @@ Function BackgroundJobImportOnClient(InterruptIfNotCompleted, ShowDialogBeforeCl
 			Handler = New NotifyDescription("AfterTaskCancellationAndClosingFormConfirmation", ThisObject);
 			
 			If StepByStepAssistantSettings.ProcedureName = "BackgroundDuplicatesSearch" Then
-				QuestionText = NStr("en = 'Stop the duplicates search and close the form?'");
+				QuestionText = NStr("en='Stop the duplicates search and close the form?';ru='Прервать поиск дублей и закрыть форму?'");
 			ElsIf StepByStepAssistantSettings.ProcedureName = "DuplicatesBackgroundDeletetion" Then
-				QuestionText = NStr("en = 'Stop the duplicates deletion and close the form?'");
+				QuestionText = NStr("en='Stop the duplicates deletion and close the form?';ru='Прервать удаление дублей и закрыть форму?'");
 			EndIf;
 			
 			Buttons = New ValueList;
-			Buttons.Add(DialogReturnCode.Abort, NStr("en = 'Break'"));
-			Buttons.Add(DialogReturnCode.No, NStr("en = 'Do not interrupt'"));
+			Buttons.Add(DialogReturnCode.Abort, NStr("en='Break';ru='Прервать'"));
+			Buttons.Add(DialogReturnCode.No, NStr("en='Do not interrupt';ru='Не прерывать'"));
 			
 			ShowQueryBox(Handler, QuestionText, Buttons, , DialogReturnCode.No);
 		EndIf;
@@ -2064,7 +2069,7 @@ Function BackGroundJobStart(Val ProcedureName)
 	
 	If ProcedureName = "BackgroundDuplicatesSearch" Then
 		
-		MethodName = NStr("en = 'Search and delete duplicates: Search duplicates'");
+		MethodName = NStr("en='Search and delete duplicates: Search duplicates';ru='Поиск и удаление дублей: Поиск дублей'");
 		
 		MethodParameters.Insert("DuplicateSearchArea",     DuplicateSearchArea);
 		MethodParameters.Insert("MaxDuplicatesQuantity", 1500);
@@ -2083,7 +2088,7 @@ Function BackGroundJobStart(Val ProcedureName)
 		
 	ElsIf ProcedureName = "DuplicatesBackgroundDeletetion" Then
 		
-		MethodName = NStr("en = 'Search and delete duplicates: Delete duplicates'");
+		MethodName = NStr("en='Search and delete duplicates: Delete duplicates';ru='Поиск и удаление дублей: Удаление дублей'");
 		
 		MethodParameters.Insert("RemovalMethod", "Check");
 		MethodParameters.Insert("SubstitutionsPairs", DuplicatesSubstitutionsPairs());

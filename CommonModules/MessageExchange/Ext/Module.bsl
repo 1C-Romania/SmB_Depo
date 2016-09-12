@@ -89,7 +89,7 @@ EndProcedure
 Procedure DeliverMessages() Export
 	
 	If TransactionActive() Then
-		Raise NStr("en = 'Delivery of the system instant messages  can not be performed in the active transaction.'");
+		Raise NStr("en='Delivery of the system instant messages  can not be performed in the active transaction.';ru='Доставка быстрых сообщений системы не может выполняться в активной транзакции.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -441,7 +441,7 @@ Procedure SendMessageToMessageChannel(MessageChannel, MessageBody, Recipient, Is
 			
 			If TypeOf(Item) <> Type("ExchangePlanRef.MessageExchange") Then
 				
-				Raise NStr("en = 'Wrong receiver for the MessagesExchange method is specified.SendMessage().'");
+				Raise NStr("en='Wrong receiver for the MessagesExchange method is specified.SendMessage().';ru='Указан неправильный получатель для метода ОбменСообщениями.ОтправитьСообщение().'");
 				
 			EndIf;
 			
@@ -455,7 +455,7 @@ Procedure SendMessageToMessageChannel(MessageChannel, MessageBody, Recipient, Is
 		
 	Else
 		
-		Raise NStr("en = 'Wrong receiver for the MessagesExchange method is specified.SendMessage().'");
+		Raise NStr("en='Wrong receiver for the MessagesExchange method is specified.SendMessage().';ru='Указан неправильный получатель для метода ОбменСообщениями.ОтправитьСообщение().'");
 		
 	EndIf;
 	
@@ -529,26 +529,26 @@ Procedure SendMessageToRecipient(MessageChannel, MessageBody, Recipient, IsInsta
 	
 	If Not TransactionActive() Then
 		
-		Raise NStr("en = 'Sending of messages can be performed in transaction only.'");
+		Raise NStr("en='Sending of messages can be performed in transaction only.';ru='Отправка сообщений может выполняться только в транзакции.'");
 		
 	EndIf;
 	
 	If Not ValueIsFilled(MessageChannel) Then
 		
-		Raise NStr("en = 'The ""MessagesChannel"" parameter value is not specified for the MessagesExchange method.SendMessage.'");
+		Raise NStr("en='The ""MessagesChannel"" parameter value is not specified for the MessagesExchange method.SendMessage.';ru='Не задано значение параметра ""КаналСообщений"" для метода ОбменСообщениями.ОтправитьСообщение.'");
 		
 	ElsIf StrLen(MessageChannel) > 150 Then
 		
-		Raise NStr("en = 'Messages channel name length must not exceed 150 symbols.'");
+		Raise NStr("en='Messages channel name length must not exceed 150 symbols.';ru='Длина имени канала сообщений не должна превышать 150 символов.'");
 		
 	ElsIf Not ValueIsFilled(Recipient) Then
 		
-		Raise NStr("en = 'The ""Receiver"" parameter value is not specified for the MessagesExchange method.SendMessage.'");
+		Raise NStr("en='The ""Receiver"" parameter value is not specified for the MessagesExchange method.SendMessage.';ru='Не задано значение параметра ""Получатель"" для метода ОбменСообщениями.ОтправитьСообщение.'");
 		
 	ElsIf CommonUse.ObjectAttributeValue(Recipient, "Blocked") Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Attempt to send message to the locked end point ""%1"".'"),
+			NStr("en='Attempt to send message to the locked end point ""%1"".';ru='Попытка отправки сообщения заблокированной конечной точке ""%1"".'"),
 			String(Recipient));
 	EndIf;
 	

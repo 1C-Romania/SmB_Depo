@@ -14,6 +14,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Day</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>день</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:Type>xs:dateTime</v8:Type>
@@ -30,6 +34,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Payment date</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата платежа</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:Type>xs:dateTime</v8:Type>
@@ -45,6 +53,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Planning document</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ планирования</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -79,6 +91,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вал.</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Currencies</v8:Type>
@@ -91,6 +107,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Bank account, Petty cash</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Банковский счет, касса</v8:content>
 				</v8:item>
 			</title>
 			<valueType>
@@ -106,6 +126,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash assets type</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип денежных средств</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.CashAssetTypes</v8:Type>
@@ -117,6 +141,10 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
+					<v8:content>Amount</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
 					<v8:content>Amount</v8:content>
 				</v8:item>
 			</title>
@@ -137,6 +165,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Payment amount</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма платежа (итог)</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:Type>xs:decimal</v8:Type>
@@ -155,6 +187,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Payment</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оплата</v8:content>
+				</v8:item>
 			</title>
 			<useRestriction>
 				<condition>true</condition>
@@ -172,6 +208,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Payment status</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус платежа</v8:content>
 				</v8:item>
 			</title>
 			<orderExpression>
@@ -195,6 +235,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Payment currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Валюта платежа</v8:content>
+				</v8:item>
 			</title>
 			<useRestriction>
 				<condition>true</condition>
@@ -216,6 +260,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Document date</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата документа</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:Type>xs:dateTime</v8:Type>
@@ -231,6 +279,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Counterparty, item, comment</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент, статья, комментарий</v8:content>
 				</v8:item>
 			</title>
 			<valueType>
@@ -248,6 +300,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Receipt</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приход</v8:content>
 				</v8:item>
 			</title>
 			<useRestriction>
@@ -271,6 +327,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Expense</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход</v8:content>
+				</v8:item>
 			</title>
 			<useRestriction>
 				<condition>true</condition>
@@ -293,6 +353,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Summary text</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст итога</v8:content>
+				</v8:item>
 			</title>
 			<useRestriction>
 				<condition>true</condition>
@@ -313,6 +377,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Payment order</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Порядок платежа</v8:content>
 				</v8:item>
 			</title>
 			<useRestriction>
@@ -342,6 +410,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Day</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>день</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:periodNumber>3</dcscom:periodNumber>
@@ -362,6 +434,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Payment date</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата платежа</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:periodNumber>2</dcscom:periodNumber>
@@ -381,6 +457,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Planning document</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ планирования</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -412,6 +492,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Bank account, Petty cash</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Банковский счет, касса</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
@@ -428,6 +512,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Opening balance by Account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начальный остаток по счету</v8:content>
 				</v8:item>
 			</title>
 			<useRestriction>
@@ -468,6 +556,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Balance by account</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток по счету</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:balance>true</dcscom:balance>
@@ -501,6 +593,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вал.</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Currencies</v8:Type>
@@ -513,6 +609,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Payment status</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус платежа</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -535,6 +635,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash assets type</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип денежных средств</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.CashAssetTypes</v8:Type>
@@ -552,6 +656,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Day</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>день</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -573,6 +681,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Payment date</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата платежа</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:periodNumber>2</dcscom:periodNumber>
@@ -592,6 +704,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Planning document</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ планирования</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -623,6 +739,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вал.</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
@@ -639,6 +759,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash assets type</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип денежных средств</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:EnumRef.CashAssetTypes</v8:Type>
@@ -651,6 +775,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Opening balance by Currency</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начальный остаток по валюте</v8:content>
 				</v8:item>
 			</title>
 			<useRestriction>
@@ -691,6 +819,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Balance by currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток по валюте</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:balance>true</dcscom:balance>
@@ -729,6 +861,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Day</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>день</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:periodNumber>3</dcscom:periodNumber>
@@ -749,6 +885,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Payment date</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата платежа</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:periodNumber>2</dcscom:periodNumber>
@@ -768,6 +908,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Planning document</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ планирования</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -798,6 +942,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Initial balance by the funds type</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начальный остаток по типу денежных средств</v8:content>
 				</v8:item>
 			</title>
 			<useRestriction>
@@ -838,6 +986,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Balance by the funds type</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток по типу денежных средств</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:balance>true</dcscom:balance>
@@ -871,6 +1023,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Currency</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вал.</v8:content>
+				</v8:item>
 			</title>
 			<valueType>
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d5p1:CatalogRef.Currencies</v8:Type>
@@ -883,6 +1039,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Cash assets type</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип денежных средств</v8:content>
 				</v8:item>
 			</title>
 			<role>
@@ -1006,6 +1166,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Working date</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Рабочая дата</v8:content>
+			</v8:item>
 		</title>
 		<value xsi:nil="true"/>
 		<useRestriction>true</useRestriction>
@@ -1016,6 +1180,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Start date</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -1033,6 +1201,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>End date</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -1064,6 +1236,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Output title</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -1741,6 +1917,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Payment calendar</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Платежный календарь</v8:content>
+			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:filter>
@@ -1927,6 +2107,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Payment calendar</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Платежный календарь</v8:content>
+						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -1973,6 +2157,10 @@
 							<dcsset:lwsTitle>
 								<v8:item>
 									<v8:lang>en</v8:lang>
+									<v8:content>Balance</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
 									<v8:content>Balance</v8:content>
 								</v8:item>
 							</dcsset:lwsTitle>
@@ -2030,6 +2218,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Balance</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Balance</v8:content>
+									</v8:item>
 								</dcsset:lwsTitle>
 							</dcsset:item>
 						</dcsset:selection>
@@ -2063,6 +2255,10 @@
 											<v8:item>
 												<v8:lang>en</v8:lang>
 												<v8:content>Undefined</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Неопределено</v8:content>
 											</v8:item>
 										</dcscor:value>
 									</dcscor:item>
@@ -2107,6 +2303,10 @@
 									<dcsset:lwsTitle>
 										<v8:item>
 											<v8:lang>en</v8:lang>
+											<v8:content>Balance</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
 											<v8:content>Balance</v8:content>
 										</v8:item>
 									</dcsset:lwsTitle>

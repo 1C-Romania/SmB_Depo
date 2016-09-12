@@ -1645,11 +1645,11 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 	
 	// Return if search is not effective.
 	If SearchList.TooManyResults() Then
-		Return NStr("en = 'Too many results, refine query.'");
+		Return NStr("en='Too many results, refine query.';ru='Слишком много результатов, уточните запрос.'");
 	EndIf;
 
 	If SearchList.TotalCount() = 0 Then
-		Return NStr("en = 'Nothing found'");
+		Return NStr("en='Nothing found';ru='Ничего не найдено'");
 	EndIf;
 	
 	ItemCount = SearchList.TotalCount();
@@ -1675,13 +1675,13 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 			If Item.Metadata = Metadata.Catalogs.Counterparties Then
 				
 				Counterparty = Item.Value;
-				Basis = NStr("en = 'Found: Counterparty - '") + Item.Description;
+				Basis = NStr("en='Found: Counterparty - ';ru='Найдено: Контрагент - '") + Item.Description;
 				
 			// Contact persons
 			ElsIf Item.Metadata = Metadata.Catalogs.ContactPersons Then
 				
 				Counterparty = Item.Value.Owner;
-				BasisTemplate = NStr("en = 'Found: Contact person ""%1"" - %2'");
+				BasisTemplate = NStr("en='Found: Contact person ""%1"" - %2';ru='Найдено: Контактное лицо ""%1"" - %2'");
 				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Description);
 				
 			// Individuals
@@ -1691,10 +1691,10 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 				If FoundCounterpartiesTable <> Undefined Then
 					
 					For Each TableRow IN FoundCounterpartiesTable Do
-						BasisTemplate = NStr("en = 'Find: Individual ""%1"" of the contact person ""%2"" - %3'");
+						BasisTemplate = NStr("en='Find: Individual ""%1"" of the contact person ""%2"" - %3';ru='Найдено: Физическое лицо ""%1"" контактного лица ""%2"" - %3'");
 						Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, TableRow.Presentation, Item.Description);
 						If Not AddCounterpartyToListOfFoundByFulltextSearch(CounterpartiesList, TableRow.Counterparty, Basis, ItemRef) Then
-							Return NStr("en = 'Too many results, refine query.'");
+							Return NStr("en='Too many results, refine query.';ru='Слишком много результатов, уточните запрос.'");
 						EndIf;
 					EndDo;
 					
@@ -1704,14 +1704,14 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 			ElsIf Item.Metadata = Metadata.Catalogs.CounterpartyContracts Then
 				
 				Counterparty = Item.Value.Owner;
-				BasisTemplate =  NStr("en = 'Found: Contract ""%1"" - %2'");
+				BasisTemplate =  NStr("en='Found: Contract ""%1"" - %2';ru='Найдено: Договор ""%1"" - %2'");
 				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Description);
 				
 			// Bank accounts
 			ElsIf Item.Metadata = Metadata.Catalogs.BankAccounts Then
 				
 				Counterparty = Item.Value.Owner;
-				BasisTemplate =  NStr("en = 'Found: Bank account ""%1"" - %2'");
+				BasisTemplate =  NStr("en='Found: Bank account ""%1"" - %2';ru='Найдено: Банковский счет ""%1"" - %2'");
 				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Description);
 				
 			ElsIf Not ValueIsFilled(Item.Value.Counterparty) Then
@@ -1723,7 +1723,7 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 			
 			If Not Item.Metadata = Metadata.Catalogs.Individuals Then
 				If Not AddCounterpartyToListOfFoundByFulltextSearch(CounterpartiesList, Counterparty, Basis, ItemRef) Then
-					Return NStr("en = 'Too many results, refine query.'");
+					Return NStr("en='Too many results, refine query.';ru='Слишком много результатов, уточните запрос.'");
 				EndIf;
 			EndIf;
 			
@@ -1740,7 +1740,7 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 	EndDo;
 	
 	If CounterpartiesList.Count() = 0 Then
-		Return NStr("en = 'Nothing found'");
+		Return NStr("en='Nothing found';ru='Ничего не найдено'");
 	EndIf;
 	
 	Return Undefined;
@@ -3018,7 +3018,7 @@ Function RecalculateFromCurrencyToCurrency(Amount, InitRate, FinRate,	Repetition
 	
 	If InitRate = 0 OR FinRate = 0 OR RepetitionBeg = 0 OR RepetitionEnd = 0 Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Null exchange rate has been found. Recalculation is not executed.'");
+		Message.Text = NStr("en='Null exchange rate has been found. Recalculation is not executed.';ru='Обнаружен нулевой курс валюты. Пересчет не выполнен.'");
 		Message.Message();
 		Return Amount;
 	EndIf;
@@ -4029,7 +4029,7 @@ EndFunction // ProductsAndServicesPresentation()
 Function GetPassportDataAsString(DataStructure) Export
 
 	If Not ValueIsFilled(DataStructure.Ind) Then
-		Return NStr("en = 'There is no data on the identity card.'");
+		Return NStr("en='There is no data on the identity card.';ru='Отсутствуют данные об удостоверении личности.'");
 	EndIf; 
 	
 	Query = New Query("SELECT
@@ -4051,7 +4051,7 @@ Function GetPassportDataAsString(DataStructure) Export
 	QueryResult = Query.Execute();
 	
 	If QueryResult.IsEmpty() Then
-		Return NStr("en = 'There is no data on the identity card.'");
+		Return NStr("en='There is no data on the identity card.';ru='Отсутствуют данные об удостоверении личности.'");
 	Else
 		PassportData = QueryResult.Unload()[0];
 		DocumentKind       = PassportData.DocumentKind;
@@ -4065,7 +4065,7 @@ Function GetPassportDataAsString(DataStructure) Export
 			AND Not ValueIsFilled(DocumentKind)
 			AND Not ValueIsFilled(Series + Number + WhoIssued + NumberUnits)) Then
 
-			PersonalDataList = NStr("en = '%DocumentKind% Series: %Series%, No. %Number%, Issued: %DateIssued%, %IssuedBy%; division No. %DivisionNumber%'");
+			PersonalDataList = NStr("en='%DocumentKind% Series: %Series%, No. %Number%, Issued: %DateIssued%, %IssuedBy%; division No. %DivisionNumber%';ru='%ВидДокумента% Серия: %Серия%, № %Номер%, Выдан: %ДатаВыдачи% года, %КемВыдан%; № подр. %НомерПодразделения%'");
 			
 			PersonalDataList = StrReplace(PersonalDataList, "%DocumentKind%", ?(DocumentKind.IsEmpty(),"","" + DocumentKind + ", "));
 			PersonalDataList = StrReplace(PersonalDataList, "%Series%", Series);
@@ -4077,7 +4077,7 @@ Function GetPassportDataAsString(DataStructure) Export
 			Return PersonalDataList;
 
 		Else
-			Return NStr("en = 'There is no data on the identity card.'");
+			Return NStr("en='There is no data on the identity card.';ru='Отсутствуют данные об удостоверении личности.'");
 		EndIf;
 	EndIf;
 
@@ -4107,10 +4107,10 @@ EndFunction // GetStructuralUnitTypePresentation()
 //
 Procedure ShowMessageAboutPostingToInventoryInWarehousesRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleTemplate = ErrorTitle + Chars.LF + NStr("en = 'There is not enough inventories %StructuralUnitType% %StructuralUnitPresentation%'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleTemplate = ErrorTitle + Chars.LF + NStr("en='There is not enough inventories %StructuralUnitType% %StructuralUnitPresentation%';ru='Не хватает запасов %ТипСтруктурнойЕдиницы% %СтруктурнаяЕдиницаПредставление%'");
 	
-	MessagePattern = NStr("en = 'Products and services: %ProductsAndServicesCharacteristicsBatch%, balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%'");
+	MessagePattern = NStr("en='Products and services: %ProductsAndServicesCharacteristicsBatch%, balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%';ru='Номенклатура: %НоменклатураХарактеристикаПартия%, остаток %КоличествоОстаток% %ЕдиницаИзмерения%, недостаточно %Количество% %ЕдиницаИзмерения%'");
 		
 	TitleInDetailsShow = True;
 	AccountingBySeveralWarehouses = Constants.FunctionalOptionAccountingByMultipleWarehouses.Get();
@@ -4148,11 +4148,11 @@ EndProcedure // ReportErrorsPostingByRegisterInventoryInWarehouses()
 //
 Procedure ShowMessageAboutPostingToInventoryInWarehousesRegisterErrorsAsList(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Lack of inventories'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Lack of inventories';ru='Не хватает запасов'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
-	MessagePattern = NStr("en = 'ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%, %StructuralUnitType% %StructuralUnitPresentation% Balance %BalanceQuantity% %MeasurementUnit%, Not Enough %Quantity% %MeasurementUnit%'");
+	MessagePattern = NStr("en='ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%, %StructuralUnitType% %StructuralUnitPresentation% Balance %BalanceQuantity% %MeasurementUnit%, Not Enough %Quantity% %MeasurementUnit%';ru='Номенклатура: %НоменклатураХарактеристикаПартия%, %ТипСтруктурнойЕдиницы% %СтруктурнаяЕдиницаПредставление% остаток %КоличествоОстаток% %ЕдиницаИзмерения%, недостаточно %Количество% %ЕдиницаИзмерения%'");
 		
 	AccountingBySeveralWarehouses = Constants.FunctionalOptionAccountingByMultipleWarehouses.Get();
 	AccountingBySeveralDivisions = Constants.FunctionalOptionAccountingByMultipleDivisions.Get();
@@ -4184,10 +4184,10 @@ EndProcedure // ReportErrorsPostingByRegisterInventoryInWarehousesAsList()
 //
 Procedure ShowMessageAboutPostingToInventoryRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleTemplate = ErrorTitle + Chars.LF + NStr("en = 'Insufficient balance by accounting of inventories and expenses %StructuralUnitType% %StructuralUnitPresentation%'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleTemplate = ErrorTitle + Chars.LF + NStr("en='Insufficient balance by accounting of inventories and expenses %StructuralUnitType% %StructuralUnitPresentation%';ru='Не хватает остатка по учету запасов и затрат %ТипСтруктурнойЕдиницы% %СтруктурнаяЕдиницаПредставление%'");
 	
-	MessagePattern = NStr("en = 'Products and services: %ProductsAndServicesCharacteristicsBatch%, balance %BalanceQuantity% %MeasurementUnit%, not enough %QuantityAndReserve% %MeasurementUnit%'");
+	MessagePattern = NStr("en='Products and services: %ProductsAndServicesCharacteristicsBatch%, balance %BalanceQuantity% %MeasurementUnit%, not enough %QuantityAndReserve% %MeasurementUnit%';ru='Номенклатура: %НоменклатураХарактеристикаПартия%, остаток %КоличествоОстаток% %ЕдиницаИзмерения%, недостаточно %КоличествоИРезерв% %ЕдиницаИзмерения%'");
 	
 	TitleInDetailsShow = True;
 	AccountingBySeveralWarehouses = Constants.FunctionalOptionAccountingByMultipleWarehouses.Get();
@@ -4231,11 +4231,11 @@ EndProcedure // ReportErrorsPostingByRegisterInventory()
 //
 Procedure ShowMessageAboutPostingToInventoryRegisterErrorsAsList(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Missing inventory and cost accounting balance'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Missing inventory and cost accounting balance';ru='Не хватает остатка по учету запасов и затрат'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
-	MessagePattern = NStr("en = 'ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%, %StructuralUnitType%  %StructuralUnitPresentation%, balance %BalanceQuantity% %MeasurementUnit%, not enough %QuantityAndReserve% %MeasurementUnit%'");
+	MessagePattern = NStr("en='ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%, %StructuralUnitType%  %StructuralUnitPresentation%, balance %BalanceQuantity% %MeasurementUnit%, not enough %QuantityAndReserve% %MeasurementUnit%';ru='Номенклатура: %НоменклатураХарактеристикаПартия%, %ТипСтруктурнойЕдиницы% %СтруктурнаяЕдиницаПредставление%, остаток %КоличествоОстаток% %ЕдиницаИзмерения%, недостаточно %КоличествоИРезерв% %ЕдиницаИзмерения%'");
 		
 	AccountingBySeveralWarehouses = Constants.FunctionalOptionAccountingByMultipleWarehouses.Get();
 	AccountingBySeveralDivisions = Constants.FunctionalOptionAccountingByMultipleDivisions.Get();
@@ -4274,9 +4274,9 @@ EndProcedure // ReportErrorsPostingByRegisterInventoryAsList()
 //
 Procedure ShowMessageAboutPostingToInventoryTransferredRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleTemplate = ErrorTitle + Chars.LF + NStr("en = 'Not enough inventory passed to the third party counterparty %CounterpartyPresentation%'");
-	MessagePattern = NStr("en = 'ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%,'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleTemplate = ErrorTitle + Chars.LF + NStr("en='Not enough inventory passed to the third party counterparty %CounterpartyPresentation%';ru='Не хватает запасов, переданных стороннему контрагенту %КонтрагентПредставление%'");
+	MessagePattern = NStr("en='ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%,';ru='Номенклатура: %НоменклатураХарактеристикаПартия%,'");
 	
 	TitleInDetailsShow = True;
 	AccountingCurrency = Constants.AccountingCurrency.Get();
@@ -4293,7 +4293,7 @@ Procedure ShowMessageAboutPostingToInventoryTransferredRegisterErrors(DocObject,
 		
 		If RecordsSelection.QuantityBalanceInventoryTransferred <> 0 Then
 			
-			TextOfMessageQuantity = NStr("en = 'balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%'");
+			TextOfMessageQuantity = NStr("en='balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%';ru='остаток %КоличествоОстаток% %ЕдиницаИзмерения%, недостаточно %Количество% %ЕдиницаИзмерения%'");
 			
 			TextOfMessageQuantity = StrReplace(TextOfMessageQuantity, "%BalanceQuantity%", String(RecordsSelection.BalanceInventoryTransferred));
 			TextOfMessageQuantity = StrReplace(TextOfMessageQuantity, "%Quantity%", String(-RecordsSelection.QuantityBalanceInventoryTransferred));
@@ -4305,9 +4305,11 @@ Procedure ShowMessageAboutPostingToInventoryTransferredRegisterErrors(DocObject,
 		
 		If RecordsSelection.SettlementsAmountBalanceInventoryTransferred <> 0 Then
 			
-			TextOfMessageAmount = NStr("en = 'Accounting
-				|amount: balance %AmountBalance%
-				|%Currency%, not enough %Amount %Currency%'");
+			TextOfMessageAmount = NStr("en='Accounting"
+"amount: balance %AmountBalance%"
+"%Currency%, not enough %Amount %Currency%';ru='Сумма"
+"расчетов:"
+"остаток %СуммаОстаток% %Валюта%, недостаточно %Сумма% %Валюта%'");
 			
 			TextOfMessageAmount = StrReplace(TextOfMessageAmount, "%AmountBalance%", String(RecordsSelection.SettlementsAmountInventoryTransferred));
 			TextOfMessageAmount = StrReplace(TextOfMessageAmount, "%Amount%", String(-RecordsSelection.SettlementsAmountBalanceInventoryTransferred));
@@ -4328,12 +4330,13 @@ EndProcedure // ReportErrorsPostingByRegisterInventoryPassed()
 //
 Procedure ShowMessageAboutPostingToInventoryTransferredRegisterErrorsAsList(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Lack of inventories transferred the third-party company'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Lack of inventories transferred the third-party company';ru='Не хватает запасов, переданных стороннему контрагенту'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
-	MessagePattern = NStr("en = 'Products
-		|and services: %ProductsAndServicesCharacteristicsBatch%, counterparty %CounterpartyPresentation%'");
+	MessagePattern = NStr("en='Products"
+"and services: %ProductsAndServicesCharacteristicsBatch%, counterparty %CounterpartyPresentation%';ru='Номенклатура:"
+"%НоменклатураХарактеристикаПартия%, контрагент %КонтрагентПредставление%'");
 	AccountingCurrency = Constants.AccountingCurrency.Get();
 	While RecordsSelection.Next() Do
 		
@@ -4344,7 +4347,7 @@ Procedure ShowMessageAboutPostingToInventoryTransferredRegisterErrorsAsList(DocO
 		
 		If RecordsSelection.QuantityBalanceInventoryTransferred <> 0 Then
 			
-			TextOfMessageQuantity = NStr("en = 'balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%'");
+			TextOfMessageQuantity = NStr("en='balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%';ru='остаток %КоличествоОстаток% %ЕдиницаИзмерения%, недостаточно %Количество% %ЕдиницаИзмерения%'");
 			
 			TextOfMessageQuantity = StrReplace(TextOfMessageQuantity, "%BalanceQuantity%", String(RecordsSelection.BalanceInventoryTransferred));
 			TextOfMessageQuantity = StrReplace(TextOfMessageQuantity, "%Quantity%", String(-RecordsSelection.QuantityBalanceInventoryTransferred));
@@ -4356,9 +4359,11 @@ Procedure ShowMessageAboutPostingToInventoryTransferredRegisterErrorsAsList(DocO
 		
 		If RecordsSelection.SettlementsAmountBalanceInventoryTransferred <> 0 Then
 			
-			TextOfMessageAmount = NStr("en = 'Accounting
-				|amount: balance %AmountBalance%
-				|%Currency%, not enough %Amount %Currency%'");
+			TextOfMessageAmount = NStr("en='Accounting"
+"amount: balance %AmountBalance%"
+"%Currency%, not enough %Amount %Currency%';ru='Сумма"
+"расчетов:"
+"остаток %СуммаОстаток% %Валюта%, недостаточно %Сумма% %Валюта%'");
 			
 			TextOfMessageAmount = StrReplace(TextOfMessageAmount, "%AmountBalance%", String(RecordsSelection.SettlementsAmountInventoryTransferred));
 			TextOfMessageAmount = StrReplace(TextOfMessageAmount, "%Amount%", String(-RecordsSelection.SettlementsAmountBalanceInventoryTransferred));
@@ -4378,9 +4383,9 @@ EndProcedure // ReportErrorsPostingByRegisterInventoryPassedAsList()
 //
 Procedure ShowMessageAboutPostingToInventoryReceivedRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleTemplate = ErrorTitle + Chars.LF + NStr("en = 'Not enough reserves received from a third-party counterparty %CounterpartyPresentation%'");
-	MessagePattern = NStr("en = 'ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%,'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleTemplate = ErrorTitle + Chars.LF + NStr("en='Not enough reserves received from a third-party counterparty %CounterpartyPresentation%';ru='Не хватает запасов, поступивших от стороннего контрагента %КонтрагентПредставление%'");
+	MessagePattern = NStr("en='ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%,';ru='Номенклатура: %НоменклатураХарактеристикаПартия%,'");
 	
 	TitleInDetailsShow = True;
 	AccountingCurrency = Constants.AccountingCurrency.Get();
@@ -4397,7 +4402,7 @@ Procedure ShowMessageAboutPostingToInventoryReceivedRegisterErrors(DocObject, Re
 		
 		If RecordsSelection.QuantityBalanceInventoryReceived <> 0 Then
 			
-			TextOfMessageQuantity = NStr("en = 'balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%'");
+			TextOfMessageQuantity = NStr("en='balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%';ru='остаток %КоличествоОстаток% %ЕдиницаИзмерения%, недостаточно %Количество% %ЕдиницаИзмерения%'");
 			
 			TextOfMessageQuantity = StrReplace(TextOfMessageQuantity, "%BalanceQuantity%", String(RecordsSelection.BalanceInventoryReceived));
 			TextOfMessageQuantity = StrReplace(TextOfMessageQuantity, "%Quantity%", String(-RecordsSelection.QuantityBalanceInventoryReceived));
@@ -4409,9 +4414,11 @@ Procedure ShowMessageAboutPostingToInventoryReceivedRegisterErrors(DocObject, Re
 		
 		If RecordsSelection.SettlementsAmountBalanceInventoryReceived <> 0 Then
 			
-			TextOfMessageAmount = NStr("en = 'Accounting
-				|amount: balance %AmountBalance%
-				|%Currency%, not enough %Amount %Currency%'");
+			TextOfMessageAmount = NStr("en='Accounting"
+"amount: balance %AmountBalance%"
+"%Currency%, not enough %Amount %Currency%';ru='Сумма"
+"расчетов:"
+"остаток %СуммаОстаток% %Валюта%, недостаточно %Сумма% %Валюта%'");
 			
 			TextOfMessageAmount = StrReplace(TextOfMessageAmount, "%AmountBalance%", String(RecordsSelection.SettlementsAmountInventoryReceived));
 			TextOfMessageAmount = StrReplace(TextOfMessageAmount, "%Amount%", String(-RecordsSelection.SettlementsAmountBalanceInventoryReceived));
@@ -4431,11 +4438,12 @@ EndProcedure // ReportErrorsPostingByRegisterInventoryReceived()
 //
 Procedure ShowMessageAboutPostingToInventoryReceivedRegisterErrorsAsList(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Lack of inventories received from the third-party company'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Lack of inventories received from the third-party company';ru='Не хватает запасов, поступивших от стороннего контрагента'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
-	MessagePattern = NStr("en = 'Products
-		|and services: %ProductsAndServicesCharacteristicsBatch%, counterparty %CounterpartyPresentation%'");
+	MessagePattern = NStr("en='Products"
+"and services: %ProductsAndServicesCharacteristicsBatch%, counterparty %CounterpartyPresentation%';ru='Номенклатура:"
+"%НоменклатураХарактеристикаПартия%, контрагент %КонтрагентПредставление%'");
 		
 	AccountingCurrency = Constants.AccountingCurrency.Get();
 	While RecordsSelection.Next() Do
@@ -4447,7 +4455,7 @@ Procedure ShowMessageAboutPostingToInventoryReceivedRegisterErrorsAsList(DocObje
 		
 		If RecordsSelection.QuantityBalanceInventoryReceived <> 0 Then
 			
-			TextOfMessageQuantity = NStr("en = 'balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%'");
+			TextOfMessageQuantity = NStr("en='balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%';ru='остаток %КоличествоОстаток% %ЕдиницаИзмерения%, недостаточно %Количество% %ЕдиницаИзмерения%'");
 			
 			TextOfMessageQuantity = StrReplace(TextOfMessageQuantity, "%BalanceQuantity%", String(RecordsSelection.BalanceInventoryReceived));
 			TextOfMessageQuantity = StrReplace(TextOfMessageQuantity, "%Quantity%", String(-RecordsSelection.QuantityBalanceInventoryReceived));
@@ -4459,9 +4467,11 @@ Procedure ShowMessageAboutPostingToInventoryReceivedRegisterErrorsAsList(DocObje
 		
 		If RecordsSelection.SettlementsAmountBalanceInventoryReceived <> 0 Then
 			
-			TextOfMessageAmount = NStr("en = 'Accounting
-				|amount: balance %AmountBalance%
-				|%Currency%, not enough %Amount %Currency%'");
+			TextOfMessageAmount = NStr("en='Accounting"
+"amount: balance %AmountBalance%"
+"%Currency%, not enough %Amount %Currency%';ru='Сумма"
+"расчетов:"
+"остаток %СуммаОстаток% %Валюта%, недостаточно %Сумма% %Валюта%'");
 			
 			TextOfMessageAmount = StrReplace(TextOfMessageAmount, "%AmountBalance%", String(RecordsSelection.SettlementsAmountInventoryReceived));
 			TextOfMessageAmount = StrReplace(TextOfMessageAmount, "%Amount%", String(-RecordsSelection.SettlementsAmountBalanceInventoryReceived));
@@ -4481,11 +4491,11 @@ EndProcedure // ReportErrorsPostingByRegisterInventoryReceivedAsList()
 //
 Procedure ShowMessageAboutPostingToInventoryByCCDRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Lack of inventories in terms of CCD'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Lack of inventories in terms of CCD';ru='Не хватает запасов в разрезе ГТД'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
-	MessagePattern = NStr("en = 'Products and services: %ProductsAndServicesCharacteristicsBatch%, balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%'");
+	MessagePattern = NStr("en='Products and services: %ProductsAndServicesCharacteristicsBatch%, balance %BalanceQuantity% %MeasurementUnit%, not enough %Quantity% %MeasurementUnit%';ru='Номенклатура: %НоменклатураХарактеристикаПартия%, остаток %КоличествоОстаток% %ЕдиницаИзмерения%, недостаточно %Количество% %ЕдиницаИзмерения%'");
 		
 	While RecordsSelection.Next() Do
 		
@@ -4509,14 +4519,17 @@ EndProcedure // ReportErrorsPostingByRegisterInventoryInSectionCCD()
 //
 Procedure ShowMessageAboutPostingToCustomerOrdersRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Executed more than specified in the customer order'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Executed more than specified in the customer order';ru='Оформлено больше, чем указано в заказе покупателя'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
-	MessagePattern = NStr("en = 'Products
-		|and services: %ProductsAndServicesCharacteristicsBatch%, warehouse
-		|balance %BalanceQuantity% %MeasurementUnit%, exceeds
-		|%Quantity% %MeasurementUnit% %CustomerOrder%'");
+	MessagePattern = NStr("en='Products"
+"and services: %ProductsAndServicesCharacteristicsBatch%, warehouse"
+"balance %BalanceQuantity% %MeasurementUnit%, exceeds"
+"%Quantity% %MeasurementUnit% %CustomerOrder%';ru='Номенклатура:"
+"%НоменклатураХарактеристикаПартия%, остаток"
+"по заказу %КоличествоОстаток% %ЕдиницаИзмерения%,"
+"превышает на %Количество% %ЕдиницаИзмерения% %ЗаказПокупателя%'");
 		
 	While RecordsSelection.Next() Do
 		
@@ -4538,14 +4551,17 @@ EndProcedure // ReportErrorsPostingByRegisterCustomerOrders()
 //
 Procedure ShowMessageAboutPostingToPurchaseOrdersRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Executed more than specified in the purchase order'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Executed more than specified in the purchase order';ru='Оформлено больше, чем указано в заказе поставщику'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
-	MessagePattern = NStr("en = 'Products
-		|and services: %ProductsAndServicesCharacteristicsBatch%, order
-		|balance %BalanceQuantity% %MeasurementUnit%, exceeds
-		|%Quantity% %MeasurementUnit% %PurchaseOrder%'");
+	MessagePattern = NStr("en='Products"
+"and services: %ProductsAndServicesCharacteristicsBatch%, order"
+"balance %BalanceQuantity% %MeasurementUnit%, exceeds"
+"%Quantity% %MeasurementUnit% %PurchaseOrder%';ru='Номенклатура:"
+"%НоменклатураХарактеристикаПартия%, остаток"
+"по заказу %КоличествоОстаток% %ЕдиницаИзмерения%,"
+"превышает на %Количество% %ЕдиницаИзмерения% %ЗаказПоставщику%'");
 		
 	While RecordsSelection.Next() Do
 		
@@ -4567,14 +4583,17 @@ EndProcedure // ReportErrorsPostingByRegisterPurchaseOrders()
 //
 Procedure ShowMessageAboutPostingToProductionOrdersRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Executed more than specified in the production order'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Executed more than specified in the production order';ru='Оформлено больше, чем указано в заказе на производство'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
-	MessagePattern = NStr("en = 'Products
-		|and services: %ProductsAndServicesCharacteristicsBatch%, order
-		|balance %BalanceQuantity% %MeasurementUnit%, exceeds
-		|%Quantity% %MeasurementUnit% %ProductionOrder%'");
+	MessagePattern = NStr("en='Products"
+"and services: %ProductsAndServicesCharacteristicsBatch%, order"
+"balance %BalanceQuantity% %MeasurementUnit%, exceeds"
+"%Quantity% %MeasurementUnit% %ProductionOrder%';ru='Номенклатура:"
+"%НоменклатураХарактеристикаПартия%, остаток"
+"по заказу %КоличествоОстаток% %ЕдиницаИзмерения%,"
+"превышает на %Количество% %ЕдиницаИзмерения% %ЗаказНаПроизводство%'");
 		
 	While RecordsSelection.Next() Do
 		
@@ -4596,11 +4615,11 @@ EndProcedure // ReportErrorsPostingByRegisterProductionOrders()
 //
 Procedure ShowMessageAboutPostingToInventoryDemandRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Formed more than the inventory needed'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Formed more than the inventory needed';ru='Оформлено больше, чем есть потребность в запасах'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
-	MessagePattern = NStr("en = 'Products and services: %ProductsAndServicesCharacteristicsBatch%, requirement %BalanceQuantity% %MeasurementUnit%, exceeds %Quantity% %MeasurementUnit% %CustomerOrder%'");
+	MessagePattern = NStr("en='Products and services: %ProductsAndServicesCharacteristicsBatch%, requirement %BalanceQuantity% %MeasurementUnit%, exceeds %Quantity% %MeasurementUnit% %CustomerOrder%';ru='Номенклатура: %НоменклатураХарактеристикаПартия%, потребность %КоличествоОстаток% %ЕдиницаИзмерения%, превышает на %Количество% %ЕдиницаИзмерения% %ЗаказПокупателя%'");
 		
 	While RecordsSelection.Next() Do
 		
@@ -4622,11 +4641,11 @@ EndProcedure // ReportErrorsPostingByRegisterNeedForInventory()
 //
 Procedure ShowMessageAboutPostingToOrdersPlacementRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Executed more than placed of inventories in the orders'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Executed more than placed of inventories in the orders';ru='Оформлено больше, чем размещено запасов в заказах'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
-	MessagePattern = NStr("en = 'ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%, located %BalanceQuantity% %MeasurementUnit% in %SupplySource%, exceeds on %Quantity% %MeasurementUnit% by %CustomerOrder%'");
+	MessagePattern = NStr("en='ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%, located %BalanceQuantity% %MeasurementUnit% in %SupplySource%, exceeds on %Quantity% %MeasurementUnit% by %CustomerOrder%';ru='Номенклатура: %НоменклатураХарактеристикаПартия%, размещено %КоличествоОстаток% %ЕдиницаИзмерения% в %ИсточникОбеспечения%, превышает на %Количество% %ЕдиницаИзмерения% по %ЗаказПокупателя%'");
 		
 	While RecordsSelection.Next() Do
 		
@@ -4649,11 +4668,11 @@ EndProcedure // ReportErrorsPostingByRegisterOrdersPlacing()
 //
 Procedure ShowMessageAboutPostingToCashAssetsRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Lack of the cash resources'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Lack of the cash resources';ru='Не хватает денежных средств'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
-	MessagePattern = NStr("en = '%PettyCashAccount%: %PettyCashAccountPresentation%, balance %AmountBalance% %Currency%, not enough %Amount% %Currency%'");
+	MessagePattern = NStr("en='%PettyCashAccount%: %PettyCashAccountPresentation%, balance %AmountBalance% %Currency%, not enough %Amount% %Currency%';ru='%СчетКасса%: %ПредставлениеСчетаКассы%, остаток %СуммаОстаток% %Валюта%, недостаточно %Сумма% %Валюта%'");
 		
 	While RecordsSelection.Next() Do
 		
@@ -4684,11 +4703,11 @@ EndProcedure // ReportErrorsPostingByRegisterInventoryCashAssets()
 //
 Procedure ErrorMessageOfPostingOnRegisterOfCashAtCashRegisters(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Insufficient funds in CR'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Insufficient funds in CR';ru='Не хватает денежных средств в кассе ККМ'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
-	MessagePattern = NStr("en = 'Cash Register: %CRPettyCashPresentation%, balance %AmountBalance% %Currency%, not enough %Amount% %Currency%'"
+	MessagePattern = NStr("en='Cash Register: %CRPettyCashPresentation%, balance %AmountBalance% %Currency%, not enough %Amount% %Currency%';ru='Касса ККМ: %ПредставлениеКассыККМ%, остаток %СуммаОстаток% %Валюта%, недостаточно %Сумма% %Валюта%'"
 	);
 		
 	While RecordsSelection.Next() Do
@@ -4709,12 +4728,13 @@ EndProcedure // ReportErrorsPostingOnCashRegisterInCRPettyCashes()
 //
 Procedure ShowMessageAboutPostingToAdvanceHolderPaymentsRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Settlements with advance holder will be negattive'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Settlements with advance holder will be negattive';ru='Расчеты с подотчетным лицом станут отрицательными'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
-	MessagePattern = NStr("en = '%AdvanceHolderPresentation%,
-		|Cash balance assets issued to advance holder: %AdvanceHolderBalance% %CurrencyPresentation%'");
+	MessagePattern = NStr("en='%AdvanceHolderPresentation%,"
+"Cash balance assets issued to advance holder: %AdvanceHolderBalance% %CurrencyPresentation%';ru='%ПредставлениеПодотчетногоЛица%,"
+"Остаток выданных подотчетному лицу денежных средств: %ОстатокУПодотчетногоЛица% %ВалютаПредставление%'");
 		
 	While RecordsSelection.Next() Do
 		
@@ -4734,8 +4754,8 @@ EndProcedure // ReportErrorsPostingByRegisterAdvanceHoldersSettlements()
 //
 Procedure ShowMessageAboutPostingToAccountsPayableRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Cannot record the accounts payables.'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Cannot record the accounts payables.';ru='Нет возможности зафиксировать расчеты с поставщиками'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
 	While RecordsSelection.Next() Do
@@ -4743,10 +4763,11 @@ Procedure ShowMessageAboutPostingToAccountsPayableRegisterErrors(DocObject, Reco
 		If RecordsSelection.RegisterRecordsOfCashDocuments Then
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
-				MessageText = NStr(
-					"en = '%CounterpartyPresentation% - debt balance to the vendor by the calculation document is less than the paid amount.
-					|Posted amount payable: %AmountCurrOnWrite% %CurrencyPresentation%.
-					|Debt before the balance provider:% SummaOstatkaDebt% ValûtaPredstavlenie%.'"
+				MessageText = NStr("en='%CounterpartyPresentation% - debt balance to the vendor by the calculation document is less than the paid amount."
+"Posted amount payable: %AmountCurrOnWrite% %CurrencyPresentation%."
+"Debt before the balance provider:% SummaOstatkaDebt% ValûtaPredstavlenie%.';ru='%ПредставлениеКонтрагента% - остаток задолженности перед поставщиком по документу расчетов меньше оплаченной суммы."
+"Разнесенная сумма платежа: %СуммаВалПриЗаписи% %ВалютаПредставление%."
+"Остаток задолженности перед поставщиком: %СуммаОстаткаЗадолженности% %ВалютаПредставление%.'"
 				);
 				MessageText = StrReplace(MessageText, "%SumCurOnWrite%", String(RecordsSelection.SumCurOnWrite));
 				MessageText = StrReplace(MessageText, "%RemainingDebtAmount%", String(RecordsSelection.DebtBalanceAmount));
@@ -4754,13 +4775,12 @@ Procedure ShowMessageAboutPostingToAccountsPayableRegisterErrors(DocObject, Reco
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
 				If RecordsSelection.AmountOfOutstandingAdvances = 0 Then
-					MessageText = NStr(
-						"en = '%CounterpartyPresentation% - paid advances to the supplier under the document are already set off completely in the trade documents.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - paid advances to the supplier under the document are already set off completely in the trade documents.';ru='%ПредставлениеКонтрагента% - выданные по документу авансы поставщику уже полностью зачтены в товарных документах.'"
 					);
 				Else
-					MessageText = NStr(
-						"en = '%CounterpartyPresentation% - advances issued to vendor by document are already partially accounted in the  trade documents.
-						|Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - advances issued to vendor by document are already partially accounted in the  trade documents."
+"Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - выданные по документу авансы поставщику уже частично зачтены в товарных документах."
+"Остаток незачтенных авансов: %СуммаНепогашенныхАвансов% %ВалютаПредставление%.'"
 					);
 					MessageText = StrReplace(MessageText, "%UnpaidAdvancesAmount%", String(RecordsSelection.AmountOfOutstandingAdvances));
 				EndIf;
@@ -4770,22 +4790,22 @@ Procedure ShowMessageAboutPostingToAccountsPayableRegisterErrors(DocObject, Reco
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
 				If RecordsSelection.AmountOfOutstandingDebt = 0 Then
-					MessageText = NStr(
-						"en = '%CounterpartyPresentation% - debt to supplier under the document is already paid completely.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - debt to supplier under the document is already paid completely.';ru='%ПредставлениеКонтрагента% - задолженность перед поставщиком по документу уже полностью оплачена.'"
 					);
 				Else
-					MessageText = NStr(
-						"en = '%CounterpartyPresentation% - vendor debt by the document is partially paid off.
-						|Balance of unpaid debt amount: %UnpaidDebtAmount% %CurrencyPresentation%.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - vendor debt by the document is partially paid off."
+"Balance of unpaid debt amount: %UnpaidDebtAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - задолженность перед поставщиком по документу уже частично оплачена."
+"Остаток непогашенной суммы задолженности: %СуммаНепогашеннойЗадолженности% %ВалютаПредставление%.'"
 					);
 					MessageText = StrReplace(MessageText, "%UnpaidDebtAmount%", String(RecordsSelection.AmountOfOutstandingDebt));
 				EndIf;
 			EndIf;
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
-				MessageText = NStr(
-					"en = '%CounterpartyPresentation% - accounted advances amount can not be more than the balance of advances issued to vendor.
-					|Accounted amount:
-					|%CurrAmountOnWrite %CurrencyPresentation% Issued advances balance: %IssuedAdvancesAmount% %CurrencyPresentation%.'"
+				MessageText = NStr("en='%CounterpartyPresentation% - accounted advances amount can not be more than the balance of advances issued to vendor."
+"Accounted amount:"
+"%CurrAmountOnWrite %CurrencyPresentation% Issued advances balance: %IssuedAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - зачитываемая сумма авансов не может быть больше остатка выданных авансов поставщику."
+"Зачитываемая"
+"сумма: %СуммаВалПриЗаписи% %ВалютаПредставление% Остаток выданных авансов: %СуммаВыданныхАвансов% %ВалютаПредставление%.'"
 				);
 				MessageText = StrReplace(MessageText, "%SumCurOnWrite%", String(RecordsSelection.SumCurOnWrite));
 				MessageText = StrReplace(MessageText, "%IssuedAdvancesAmount%", String(RecordsSelection.AdvanceAmountsPaid));
@@ -4806,8 +4826,8 @@ EndProcedure // ReportErrorsPostingByRegisterAccountsPayable()
 //
 Procedure ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'No possiblity to fix the settlements with customers'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='No possiblity to fix the settlements with customers';ru='Нет возможности зафиксировать расчеты с покупателями'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
 	While RecordsSelection.Next() Do
@@ -4815,10 +4835,11 @@ Procedure ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocObject, R
 		If RecordsSelection.RegisterRecordsOfCashDocuments Then
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
-				MessageText = NStr(
-					"en = '%CounterpartyPresentation% - balance customer debt by calculations document is less than posted payment amount.
-					|Posted amount payable: %AmountCurrOnWrite% %CurrencyPresentation%.
-					|Remaining customer debt: %RemainingDebtAmount% %CurrencyPresentation%.'"
+				MessageText = NStr("en='%CounterpartyPresentation% - balance customer debt by calculations document is less than posted payment amount."
+"Posted amount payable: %AmountCurrOnWrite% %CurrencyPresentation%."
+"Remaining customer debt: %RemainingDebtAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - остаток задолженность покупателя по документу расчетов меньше разнесенной суммы платежа."
+"Разнесенная сумма платежа: %СуммаВалПриЗаписи% %ВалютаПредставление%."
+"Остаток задолженности покупателя: %СуммаОстаткаЗадолженности% %ВалютаПредставление%.'"
 				);
 				MessageText = StrReplace(MessageText, "%SumCurOnWrite%", String(RecordsSelection.SumCurOnWrite));
 				MessageText = StrReplace(MessageText, "%RemainingDebtAmount%", String(RecordsSelection.DebtBalanceAmount));
@@ -4826,13 +4847,12 @@ Procedure ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocObject, R
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
 				If RecordsSelection.AmountOfOutstandingAdvances = 0 Then
-					MessageText = NStr(
-						"en = '%CounterpartyPresentation% - received by the document advances from the customer are already set off completely in the trade documents.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - received by the document advances from the customer are already set off completely in the trade documents.';ru='%ПредставлениеКонтрагента% - полученные по документу авансы от покупателя уже полностью зачтены в товарных документах.'"
 					);
 				Else
-					MessageText = NStr(
-						"en = '%CounterpartyPresentation% - advances received by the document from the customer are partially accounted in the trade documents.
-						|Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - advances received by the document from the customer are partially accounted in the trade documents."
+"Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - полученные по документу авансы от покупателя уже частично зачтены в товарных документах."
+"Остаток незачтенных авансов: %СуммаНепогашенныхАвансов% %ВалютаПредставление%.'"
 					);
 					MessageText = StrReplace(MessageText, "%UnpaidAdvancesAmount%", String(RecordsSelection.AmountOfOutstandingAdvances));
 				EndIf;
@@ -4842,23 +4862,23 @@ Procedure ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocObject, R
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
 				If RecordsSelection.AmountOfOutstandingDebt = 0 Then
-					MessageText = NStr(
-						"en = '%CounterpartyPresentation% - customer debt on the document has already been paid off.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - customer debt on the document has already been paid off.';ru='%ПредставлениеКонтрагента% - задолженность покупателя по документу уже полностью оплачена.'"
 					);
 				Else
-					MessageText = NStr(
-						"en = '%CounterpartyPresentation% - customer debt on the document has been partially paid off.
-						|Balance of unpaid debt amount: %UnpaidDebtAmount% %CurrencyPresentation%.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - customer debt on the document has been partially paid off."
+"Balance of unpaid debt amount: %UnpaidDebtAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - задолженность покупателя по документу уже частично оплачена."
+"Остаток непогашенной суммы задолженности: %СуммаНепогашеннойЗадолженности% %ВалютаПредставление%.'"
 					);
 					MessageText = StrReplace(MessageText, "%UnpaidDebtAmount%", String(RecordsSelection.AmountOfOutstandingDebt));
 				EndIf;
 			EndIf;
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
-				MessageText = NStr(
-					"en = '%CounterpartyPresentation% - accounted advances amount can not be more than balance of advances received from customer.
-					|Accounted amount:
-					|%CurrAmountOnWrite %CurrencyPresentation% Received advances balance: %ReceivedAdvancesAmount% %CurrencyPresentation%.'"
+				MessageText = NStr("en='%CounterpartyPresentation% - accounted advances amount can not be more than balance of advances received from customer."
+"Accounted amount:"
+"%CurrAmountOnWrite %CurrencyPresentation% Received advances balance: %ReceivedAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - зачитываемая сумма авансов не может быть больше остатка полученных авансов от покупателя."
+"Зачитываемая"
+"сумма: %СуммаВалПриЗаписи% %ВалютаПредставление% Остаток полученных авансов: %СуммаПолученныхАвансов% %ВалютаПредставление%.'"
 				);
 				MessageText = StrReplace(MessageText, "%SumCurOnWrite%", String(RecordsSelection.SumCurOnWrite));
 				MessageText = StrReplace(MessageText, "%ReceivedAdvancesAmount%", String(RecordsSelection.AdvanceAmountsReceived));
@@ -4879,12 +4899,13 @@ EndProcedure // ReportErrorsPostingByRegisterAccountsReceivable()
 //
 Procedure ShowMessageAboutPostingToFixedAssetsRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en = 'Perhaps property has already  been written off or transferred'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Perhaps property has already  been written off or transferred';ru='Возможно имущество уже списано или передано'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
-	MessagePattern = NStr("en = 'Property:
-		|%ProductsAndServicesCharacteristicsBatch%, depreciated property cost: %Cost%'");
+	MessagePattern = NStr("en='Property:"
+"%ProductsAndServicesCharacteristicsBatch%, depreciated property cost: %Cost%';ru='Имущество:"
+"%НоменклатураХарактеристикаПартия%, остаточная стоимость имущества: %Стоимость%'");
 		
 	While RecordsSelection.Next() Do
 		
@@ -4902,10 +4923,10 @@ EndProcedure // ReportErrorsPostingByRegisterFixedAssets()
 //
 Procedure ShowMessageAboutPostingToRetailAmountAccountingRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en = 'Error:'");
-	MessageTitleTemplate = ErrorTitle + Chars.LF + NStr("en = 'The debt of retail outlet %StructuralUnitPresentation% is already paid'");
+	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
+	MessageTitleTemplate = ErrorTitle + Chars.LF + NStr("en='The debt of retail outlet %StructuralUnitPresentation% is already paid';ru='Задолженность розничной точки %СтруктурнаяЕдиницаПредставление% уже погашена'");
 	
-	MessagePattern = NStr("en = 'Debt balance (amount accounting): %BalanceInRetail% %CurrencyPresentation%'");
+	MessagePattern = NStr("en='Debt balance (amount accounting): %BalanceInRetail% %CurrencyPresentation%';ru='Остаток задолженности (суммовой учет): %ОстатокВРознице% %ВалютаПредставление%'");
 	
 	TitleInDetailsShow = True;
 	While RecordsSelection.Next() Do
@@ -5010,7 +5031,7 @@ Function CalculateParameterValue(ParametersStructure, CalculationParameter, Erro
 			Else
 				
 				Message = New UserMessage();
-				Message.Text = NStr("en = 'Parameter value query is not specified '") + QueryParameter.Name + ErrorText;
+				Message.Text = NStr("en='Parameter value query is not specified ';ru='Не задано значение параметра запроса '") + QueryParameter.Name + ErrorText;
 				Message.Message();
 				
 				Return 0;
@@ -5502,7 +5523,7 @@ Procedure Denoding(ContentStructure, ContentTable, TableOfOperations) Export
 				
 				For Each EntAttributeString IN RecursiveEntryStrings Do
 					
-					MessageText = NStr("en = 'Detected a recursive item occurrence'")+" "+ProductsAndServicesSelection.ProductsAndServices+" "+NStr("en = 'in element'")+" "+ContentStructure.ProductsAndServices+"!";
+					MessageText = NStr("en='Detected a recursive item occurrence';ru='Обнаружено рекурсивное вхождение элемента'")+" "+ProductsAndServicesSelection.ProductsAndServices+" "+NStr("en='in element';ru='в элемент'")+" "+ContentStructure.ProductsAndServices+"!";
 					ShowMessageAboutError(ContentStructure.Object, MessageText);
 					
 				EndDo;
@@ -5976,7 +5997,7 @@ Function CompaniesDescriptionFull(ListInformation, List = "", WithPrefix = True)
 			Except
 
 				Message = New UserMessage();
-				Message.Text = NStr("en = 'Failed to define the value of Company parameter '") + ParameterName;
+				Message.Text = NStr("en='Failed to define the value of Company parameter ';ru='Не удалось определить значение параметра организации: '") + ParameterName;
 				Message.Message();
 
 			EndTry;
@@ -6419,7 +6440,7 @@ Function SpreadsheetDocumentFitsPage(Spreadsheet, AreasToPut, ResultOnError = Tr
 	Except
 		ErrorDescription = ErrorInfo();
 		WriteLogEvent(
-			NSTr("en = 'Impossible to get information about the current printer (perhaps, no printers are installed in the system)'"),
+			NSTr("en='Impossible to get information about the current printer (perhaps, no printers are installed in the system)';ru='Невозможно получить информацию о текущем принтере (возможно, в системе не установлено ни одного принтера)'"),
 			EventLogLevel.Error,,, ErrorDescription.Definition);
 		Return ResultOnError;
 	EndTry;
@@ -6477,9 +6498,11 @@ Procedure ValidateOperationKind(CommandParameter, Errors) Export
 		
 		If DocumentRef.Date < Date('20130101') Then 
 			
-			MessageText = NStr("en = '__________________
-										|Printing of the universal transmission document is available from January 1, 2013. 
-										|For the %1 document the print form is not generated.'");
+			MessageText = NStr("en='__________________"
+"Printing of the universal transmission document is available from January 1, 2013. "
+"For the %1 document the print form is not generated.';ru='__________________"
+"Печать универсального передаточного документа доступна c 1 января 2013. "
+"Для документа %1 печатная форма не сформирована.'");
 			
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, DocumentRef);
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
@@ -6489,7 +6512,9 @@ Procedure ValidateOperationKind(CommandParameter, Errors) Export
 		ElsIf TypeOf(DocumentRef) = Type("DocumentRef.CustomerOrder")
 			AND DocumentRef.OperationKind <> Enums.OperationKindsCustomerOrder.JobOrder Then
 			
-			MessageText = NStr("en = 'Unable to print universal transfer document %1 as action is available only for the job orders!'");
+			MessageText = NStr("en='Unable to print universal transfer document %1 as action is available only for the job orders!';ru='Нельзя напечатать универсальный передаточный документ "
+"%1, "
+"т.к. действие доступно только для заказ-нарядов!'");
 			
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, DocumentRef);
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
@@ -6498,9 +6523,11 @@ Procedure ValidateOperationKind(CommandParameter, Errors) Export
 			
 		ElsIf Not ValueIsFilled(DocumentRef.Counterparty) Then 
 			
-			MessageText = NStr("en = '__________________
-										|To print universal transfer document, you should fill in counterparty. 
-										|For the %1 document the print form is not generated.'");
+			MessageText = NStr("en='__________________"
+"To print universal transfer document, you should fill in counterparty. "
+"For the %1 document the print form is not generated.';ru='__________________"
+"Для печати универсального передаточного документа необходимо заполнить контрагента. "
+"Для документа %1 печатная форма не сформирована.'");
 			
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, DocumentRef);
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
@@ -6693,7 +6720,7 @@ Procedure SetTextAboutInvoice(DocumentForm, Received = False) Export
 
 	InvoiceFound = SmallBusinessServer.GetSubordinateInvoice(DocumentForm.Object.Ref, Received);
 	If ValueIsFilled(InvoiceFound) Then
-		InvoiceText = NStr("en = '# %Number% dated %Date% y.'");
+		InvoiceText = NStr("en='# %Number% dated %Date% y.';ru='№ %Номер% от %Дата% г.'");
 		InvoiceText = StrReplace(InvoiceText, "%Number%", InvoiceFound.Number);
 		InvoiceText = StrReplace(InvoiceText, "%Date%", Format(InvoiceFound.Date, "DF=dd.MM.yyyy"));
 		DocumentForm.InvoiceText = InvoiceText;	
@@ -6833,7 +6860,7 @@ Function ValidateExtractAccountsInvoices(SourcesPrint, DocumentImplementation, U
 			
 			NewInvoice.Write(DocumentWriteMode.Write);
 			
-			MessageText = NStr("en = 'Subordinate document is generated Customer invoice note No %1 from %2.'");
+			MessageText = NStr("en='Subordinate document is generated Customer invoice note No %1 from %2.';ru='Сформирован подчиненный документ Cчет-фактура № %1 от %2.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, NewInvoice.Number, NewInvoice.Date);
 			
 			CustomerInvoiceNote = NewInvoice.Ref;
@@ -6842,7 +6869,7 @@ Function ValidateExtractAccountsInvoices(SourcesPrint, DocumentImplementation, U
 			
 		Except
 			
-			MessageText = NStr("en = 'Cannot generate a subordinate document Customer invoice note for document %1'");
+			MessageText = NStr("en='Cannot generate a subordinate document Customer invoice note for document %1';ru='Не удалось сформировать подчиненный документ Счет-фактура для документа %1'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, DocumentImplementation);
 			
 		EndTry;
@@ -7035,7 +7062,7 @@ Procedure SetStandardFilterSettings(CurrentUser) Export
 	If Not ValueIsFilled(CurrentUser) Then
 		
 		CommonUseClientServer.MessageToUser(
-		NStr("en= 'User for whom default filter settings are set is not specified.'")
+		NStr("en='User for whom default filter settings are set is not specified.';ru='Неуказан пользователь, для которого устанавливаются настройки подбора по умолчанию.'")
 		);
 		
 		Return;
@@ -7252,7 +7279,7 @@ Procedure FillSubjectSendingText(SendingParameters, ObjectsArray, PrintFormsColl
 		EndIf;
 	EndIf;
 	
-	Subject = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1 %2 %3'"),
+	Subject = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 %2 %3';ru='%1 %2 %3'"),
 		DocumentTitlePresentation,
 		PresentationForWhom,
 		PresentationFromWhom
@@ -10017,7 +10044,7 @@ EndFunction // GetQueryTextExchangeRateDifferncesRetailAmountAccounting()
 Function ClearDataInDatabase() Export
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise(NStr("en = 'Insufficient rights to perform operation'"));
+		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -10026,7 +10053,7 @@ Function ClearDataInDatabase() Export
 		CommonUse.LockInfobase();
 	Except
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Failed to install the monopoly mode (%1)'"),
+			NStr("en='Failed to install the monopoly mode (%1)';ru='Не удалось установить монопольный режим (%1)'"),
 			BriefErrorDescription(ErrorInfo()));
 		Return False;
 	EndTry;
@@ -10188,7 +10215,7 @@ Function ClearDataInDatabase() Export
 		
 	Except
 		RollbackTransaction();
-		WriteLogEvent(NStr("en = 'Data Deletion'"), 
+		WriteLogEvent(NStr("en='Data Deletion';ru='Удаление данных'"), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Return False;
 	EndTry;
@@ -10730,7 +10757,7 @@ Function GetCalendarByProductionCalendaRF() Export
 	BusinessCalendarRF = CalendarSchedules.BusinessCalendarOfRussiaFederation();
 	If BusinessCalendarRF = Undefined Then
 		
-		WriteLogEvent(NStr("en = 'Failed to fill the work graphs data for the company according to the RF production calendar.'"), 
+		WriteLogEvent(NStr("en='Failed to fill the work graphs data for the company according to the RF production calendar.';ru='Неудалось заполнить данные граффиков работы для организации на основании производственного календаря РФ.'"), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		
 		Return Undefined;
@@ -10765,21 +10792,21 @@ Procedure RefreshPredefinedKindsOfContractualPartnerContactInformation() Export
 	AddressCheckParameters.Insert("IncludeCountryInPresentation", False);
 	
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyLegalAddress,          Enums.ContactInformationTypes.Address,
-		NStr("en='Counterparty legal address'"), False, False, False, 1, , AddressCheckParameters);
+		NStr("en='Counterparty legal address';ru='Юридический адрес контрагента'"), False, False, False, 1, , AddressCheckParameters);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyFactAddress,        Enums.ContactInformationTypes.Address,
-		NStr("en='Counterparty physical address'"), False, False, False, 2);
+		NStr("en='Counterparty physical address';ru='Фактический адрес контрагента'"), False, False, False, 2);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyShippingAddress,     Enums.ContactInformationTypes.Address,
-		NStr("en='Shipping address'"), True, False, False, 3, False);
+		NStr("en='Shipping address';ru='адрес доставки'"), True, False, False, 3, False);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyPhone,          Enums.ContactInformationTypes.Phone,
-		NStr("en='Counterparty phone'"), True, False, False, 4, False);
+		NStr("en='Counterparty phone';ru='Телефон контрагента'"), True, False, False, 4, False);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyFax,             Enums.ContactInformationTypes.Fax,
-		NStr("en='Counterparty fax'"), True, False, False, 5, False);
+		NStr("en='Counterparty fax';ru='Факс контрагента'"), True, False, False, 5, False);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyEmail,            Enums.ContactInformationTypes.EmailAddress,
-		NStr("en='Counterparty email address'"), True, False, False, 6, False);
+		NStr("en='Counterparty email address';ru='Адрес электронной почты контрагента'"), True, False, False, 6, False);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyPostalAddress,    Enums.ContactInformationTypes.Address,
-		NStr("en='Counterparty mail address'"), False, False, False, 7);
+		NStr("en='Counterparty mail address';ru='Почтовый адрес контрагента'"), False, False, False, 7);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyOtherInformation, Enums.ContactInformationTypes.Another,
-		NStr("en='Any other counterparty information'"), True, False, False, 8, False);
+		NStr("en='Any other counterparty information';ru='Любая другая информация контрагента'"), True, False, False, 8, False);
 	
 EndProcedure // UpdatePredefinedContactInformationTypesCounterparty()
 
@@ -10793,26 +10820,26 @@ Procedure RefreshPredefinedKindsOfContactInformationOfIndividual() Export
 	AddressCheckParameters.Insert("IncludeCountryInPresentation", False);
 	
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.IndividuaAddressForlInformation, Enums.ContactInformationTypes.Address,
-		NStr("en='Address for the individual generation'"), False, False, False, 1, , AddressCheckParameters);
+		NStr("en='Address for the individual generation';ru='Адрес для информирования физического лица'"), False, False, False, 1, , AddressCheckParameters);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.IndividualAddressOutsideRF, Enums.ContactInformationTypes.Address,
-		NStr("en='Address outside FR of individual'"), False, False, False, 2);
+		NStr("en='Address outside FR of individual';ru='Адрес за пределами РФ физического лица'"), False, False, False, 2);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.IndividualAddressByRegistration, Enums.ContactInformationTypes.Address,
-		NStr("en='Individual''s official residential registration'"), False, False, False, 3);
+		NStr("en=""Individual's official residential registration"";ru='Адрес по прописке физического лица'"), False, False, False, 3);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.IndividualPlaceOfResidence, Enums.ContactInformationTypes.Address,
-		NStr("en='Individual''s residential address'"), False, False, False, 4, , AddressCheckParameters);
+		NStr("en=""Individual's residential address"";ru='Адрес проживания физического лица'"), False, False, False, 4, , AddressCheckParameters);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.OtherIndInfo, Enums.ContactInformationTypes.Another,
-		NStr("en='Any other information of individual'"), True, False, False, 5, False);
+		NStr("en='Any other information of individual';ru='Любая другая информация физического лица'"), True, False, False, 5, False);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.IndividualPhone, Enums.ContactInformationTypes.Phone,
-		NStr("en='Individual phone'"), True, False, False, 6, False);
+		NStr("en='Individual phone';ru='Телефон физического лица'"), True, False, False, 6, False);
 		
 EndProcedure //UpdatePredefinedContactInformationOfIndividualTypes()
 
 Procedure RefreshPredefinedKindsOfContactInformationContactPerson() Export
 	
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.ContactPersonPhone, Enums.ContactInformationTypes.Phone,
-		NStr("en='Counterparty phone'"), True, False, False, 1, False);
+		NStr("en='Counterparty phone';ru='Телефон контрагента'"), True, False, False, 1, False);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.ContactPersonEmail, Enums.ContactInformationTypes.EmailAddress,
-		NStr("en='Counterparty email address'"), True, False, False, 2, False);
+		NStr("en='Counterparty email address';ru='Адрес электронной почты контрагента'"), True, False, False, 2, False);
 	
 EndProcedure //UpdatePredefinedContactInformationTypesContactPerson()
 
@@ -10826,9 +10853,9 @@ Procedure UpdatePredefinedStructuralUnitsContactInformationTypes() Export
 	AddressCheckParameters.Insert("IncludeCountryInPresentation", False);
 	
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.StructuralUnitsFactAddress, Enums.ContactInformationTypes.Address,
-		NStr("en='Structural unit actual address'"), False, False, False, 1);
+		NStr("en='Structural unit actual address';ru='Фактический адрес структурной единицы'"), False, False, False, 1);
 	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.StructuralUnitsPhone,   Enums.ContactInformationTypes.Phone,
-		NStr("en='Structural unit phone'"), True, False, False, 2, False);
+		NStr("en='Structural unit phone';ru='Телефон структурной единицы'"), True, False, False, 2, False);
 		
 EndProcedure // UpdatePredefinedContactInformationTypesCounterparty()
 

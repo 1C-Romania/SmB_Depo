@@ -47,6 +47,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Use these settings to set states of the Job order kind documents.</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Позволяет произвести настройку состояний для документов вида Заказ-наряд.</v8:content>
+						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
 					<ContextMenu name="SectionDescriptionContextMenu" id="94"/>
@@ -77,6 +81,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>WEB Application</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ВЕБ приложение</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:FormTextColor</TitleTextColor>
 			<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -84,6 +92,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Adoption of changes in the web client</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Принятие изменений в веб-клиенте</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>82</Width>
@@ -107,6 +119,10 @@
 								<v8:lang>en</v8:lang>
 								<v8:content>In order the changes to take an effect it is necessary to update the system parameters or to restart the application.</v8:content>
 							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Для того, чтобы изменения вступили в силу, необходимо обновить параметры системы или перезапустить приложение.</v8:content>
+							</v8:item>
 						</Title>
 					</ExtendedTooltip>
 				</Button>
@@ -122,6 +138,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable section use</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить использование раздела</v8:content>
 				</v8:item>
 			</Title>
 			<TitleTextColor>style:BusinessCalendarDayTypeSaturdayColor</TitleTextColor>
@@ -140,12 +160,20 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Job orders</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Задания на работу</v8:content>
+				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Job orders</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Задания на работу</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Width>86</Width>
@@ -168,6 +196,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Several job order states</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Несколько состояний заказ-наряда</v8:content>
+								</v8:item>
 							</Title>
 							<TitleLocation>Right</TitleLocation>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -178,6 +210,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Enable this option to use several states of the Job order kind documents (three and more) If the option is disabled, job order states are edited in the attributes below.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Включение этой опции позволяет использовать несколько состояний для документов вида Заказ-наряд (три и более). При выключенной опции состояния заказ-нарядов редактируются в реквизитах ниже.</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -193,6 +229,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Job order states catalog</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Справочник "Состояния заказ-нарядов"</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 							<ExtendedTooltip name="CatalogJobOrderStatesExtendedTooltip" id="161">
@@ -201,6 +241,10 @@
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>Go to the job order states catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, enable the "Several job order states" option.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Переход к справочнику состояний заказ-нарядов. Справочник предназначен для самостоятельного создания произвольного количества состояний определенных видов. Для перехода к справочнику необходимо включить опцию "Несколько состояний заказ-нарядов".</v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -213,11 +257,19 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Job order statuses setup by default</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка состояния заказ нарядов по умолчанию</v8:content>
+						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Job order statuses setup by default</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройка состояния заказ нарядов по умолчанию</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
@@ -232,11 +284,19 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Orders states</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояния заказов</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Orders states</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояния заказов</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
@@ -251,6 +311,10 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>"In process" state</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Состояние "в работе"</v8:content>
+										</v8:item>
 									</Title>
 									<ContextMenu name="InProcessStatusContextMenu" id="117"/>
 									<ExtendedTooltip name="StateAtWorkExtendedTooltip" id="156"/>
@@ -264,6 +328,10 @@
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>"Completed" state</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Состояние "Выполнен"</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="CompletedStatusContextMenu" id="122"/>
@@ -290,6 +358,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Work mode</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим работы</v8:content>
+				</v8:item>
 			</Title>
 			<Type/>
 		</Attribute>
@@ -298,6 +370,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Constants set</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Набор констант</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -332,11 +408,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Job order states catalog</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Справочник "Состояния заказ-нарядов"</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Open catalog "Customer order state"</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть справочник "Состояния заказов покупателей"</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>CatalogJobOrderStates</Action>
@@ -347,11 +431,19 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Update system parameters</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить параметры системы</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update system parameters</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить параметры системы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>UpdateSystemParameters</Action>

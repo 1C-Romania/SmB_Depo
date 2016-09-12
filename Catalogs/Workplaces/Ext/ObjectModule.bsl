@@ -5,9 +5,9 @@
 Procedure OnCopy(CopiedObject)
 
 	CurrentUser = InfobaseUsers.CurrentUser();
-	Description = ?(IsBlankString(String(Code)), NStr("en = 'Workplace'"), String(Code))
+	Description = ?(IsBlankString(String(Code)), NStr("en='Workplace';ru='рабочее место'"), String(Code))
 	             + ?(IsBlankString(String(Code)), ": ", "/")
-	             + ?(IsBlankString(String(CurrentUser)), NStr("en = 'User'"), String(CurrentUser));
+	             + ?(IsBlankString(String(CurrentUser)), NStr("en='User';ru='Пользователь'"), String(CurrentUser));
 		 
 	// Add item existence check with such description.
 	Query = New Query("

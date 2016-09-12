@@ -459,7 +459,7 @@ Function GetCurrentScheduleOnDate(Date)
 	EndDo;
 	
 	If Not ValueIsFilled(WorkSchedule) Then
-		WorkSchedule = NStr("en='<Not set>'");
+		WorkSchedule = NStr("en='<Not set>';ru='<Не установлено>'");
 		Items.Schedule.Hyperlink = False;
 	Else 
 		Items.Schedule.Hyperlink = True;
@@ -510,7 +510,7 @@ Procedure MarkSelectedAsNonWorkingYear()
 	
 	If ThereAreSuitableDays
 	   AND CurSchedule = Undefined Then
-		ShowMessageBox(Undefined,NStr("en='Set schedule for selected days first!'"));
+		ShowMessageBox(Undefined,NStr("en='Set schedule for selected days first!';ru='Установите вначале график для выбранных дней!'"));
 	EndIf;
 	
 	MarkSelectedAsNonWorkingYearAtServer();
@@ -525,7 +525,7 @@ Procedure MarkSelectedAsNonWorkingDay()
 	
 	CurSchedule = GetCurrentScheduleOnDate(ScheduleDate);
 	If CurSchedule = Undefined Then
-		ShowMessageBox(Undefined,NStr("en='Set schedule for that day first!'"));
+		ShowMessageBox(Undefined,NStr("en='Set schedule for that day first!';ru='Установите вначале график для этого дня!'"));
 		Return;
 	EndIf;
 	
@@ -604,7 +604,7 @@ Procedure MarkSelectedAsWorkingYear()
 	
 	If ThereAreSuitableDays
 	   AND CurSchedule = Undefined Then
-		ShowMessageBox(Undefined,NStr("en='Set schedule for selected days first!'"));
+		ShowMessageBox(Undefined,NStr("en='Set schedule for selected days first!';ru='Установите вначале график для выбранных дней!'"));
 	EndIf;
 	
 	MarkSelectedAsWorkingYearAtServer();
@@ -619,7 +619,7 @@ Procedure MarkSelectedAsWorkingDay()
 	
 	CurSchedule = GetCurrentScheduleOnDate(ScheduleDate);
 	If CurSchedule = Undefined Then
-		ShowMessageBox(Undefined,NStr("en='Set schedule for that day first!'"));
+		ShowMessageBox(Undefined,NStr("en='Set schedule for that day first!';ru='Установите вначале график для этого дня!'"));
 		Return;
 	EndIf;
 	
@@ -1037,7 +1037,7 @@ Procedure SetTimetable(Command)
 	If Not ValueIsFilled(Object.Ref) Then
 		Notification = New NotifyDescription("SetTimetableEnd",ThisForm);
 		Mode = QuestionDialogMode.OKCancel;
-		Text = NStr("en='You can set the schedule only after the company resource is written! Resource will be written.'");
+		Text = NStr("en='You can set the schedule only after the company resource is written! Resource will be written.';ru='Установка графика возможна только после записи ресурса предприятия! Ресурс будет записан.'");
 		ShowQueryBox(Notification,Text, Mode, 0);
 		Return;
 	EndIf;
@@ -1173,7 +1173,7 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 		MonthNumber = SelectedArea.Top - 1;
 		DayNumber = SelectedArea.Left - 1;
 		If MonthNumber < 1 OR MonthNumber > 12 OR DayNumber < 1 OR DayNumber > 31 OR DayNumber > NumberOfDaysInMonthAtClient(MonthNumber, Year(ScheduleDate)) Then
-			ShowMessageBox(Undefined,NStr("en='You need to select a day of schedule setting first!'"));
+			ShowMessageBox(Undefined,NStr("en='You need to select a day of schedule setting first!';ru='Вначале необходимо выделить день установки графика!'"));
 			Return;
 		EndIf;
 		SetTimetableAtServer(Date(Year(ScheduleDate), MonthNumber, DayNumber, 0, 0, 0));

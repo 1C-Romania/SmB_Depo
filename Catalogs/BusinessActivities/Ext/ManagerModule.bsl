@@ -8,7 +8,7 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 		
 		If Not Parameters.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Expenses Then
 			
-			MessageText = NStr("en = 'Business activity can not be indicated for this expense!'");
+			MessageText = NStr("en='Business activity can not be indicated for this expense!';ru='Для этого расхода нельзя выбрать направление деятельности!'");
 			SmallBusinessServer.ShowMessageAboutError(, MessageText);
 			
 			StandardProcessing = False;
@@ -23,7 +23,7 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 			
 			If Parameters.GLExpenseAccount.TypeOfAccount = Enums.GLAccountsTypes.OtherExpenses Then
 				
-				MessageText = NStr("en = 'Business activity should not be chosen for the account type ""Other expenses"".'");
+				MessageText = NStr("en='Business activity should not be chosen for the account type ""Other expenses"".';ru='Для счета типа ""Прочие расходы"" направление деятельности не указывается!'");
 				SmallBusinessServer.ShowMessageAboutError(, MessageText);
 				
 				StandardProcessing = False;
@@ -31,7 +31,7 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 			ElsIf Parameters.GLExpenseAccount.TypeOfAccount = Enums.GLAccountsTypes.UnfinishedProduction
 				  OR Parameters.GLExpenseAccount.TypeOfAccount = Enums.GLAccountsTypes.IndirectExpenses Then
 				  
-				MessageText = NStr("en = 'Business activity should not be chosen for the account type ""Incomplete production"" or ""Indirect expenses""!'");
+				MessageText = NStr("en='Business activity should not be chosen for the account type ""Incomplete production"" or ""Indirect expenses""!';ru='Для счета типа ""Незавершенное производство"" или ""Косвенные затраты"" направление деятельности не указывается!'");
 				SmallBusinessServer.ShowMessageAboutError(, MessageText);
 				
 				StandardProcessing = False;
@@ -40,7 +40,7 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 			
 		Else
 			
-			MessageText = NStr("en = 'Account is not selected!'");
+			MessageText = NStr("en='Account is not selected!';ru='Не выбран счет!'");
 			SmallBusinessServer.ShowMessageAboutError(, MessageText);
 			
 			StandardProcessing = False;

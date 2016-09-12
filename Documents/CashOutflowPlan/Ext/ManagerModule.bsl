@@ -123,7 +123,7 @@ Procedure GenerateCashOutflowPlanning(SpreadsheetDocument, ObjectsArray, PrintOb
 		
 		DocumentNumber = SmallBusinessServer.GetNumberForPrintingConsideringDocumentDate(DocumentData.DocumentDate, DocumentData.Number, DocumentData.Prefix);
 		DocumentDate = Format(DocumentData.DocumentDate, "DF=dd MMMM yyyy'");
-		Title = NStr("en ='Planning of the cash assets outflow # '") + DocumentNumber + NStr("en =' dated '") + DocumentDate;
+		Title = NStr("en='Planning of the cash assets outflow # ';ru='Планирование расхода денежных средств № '") + DocumentNumber + NStr("en=' dated ';ru=' от '") + DocumentDate;
 		FillStructureSection.Insert("Title", Title);
 		TemplateArea.Parameters.Fill(FillStructureSection);
 		SpreadsheetDocument.Put(TemplateArea);
@@ -150,11 +150,11 @@ Procedure GenerateCashOutflowPlanning(SpreadsheetDocument, ObjectsArray, PrintOb
 		FundingSourceDescription = "";
 		If DocumentData.CAType = Enums.CashAssetTypes.Noncash Then
 			
-			FundingSourceDescription = NStr("en ='company settlement account No. '") + DocumentData.BANumber;
+			FundingSourceDescription = NStr("en='company settlement account No. ';ru='расчетный счет организации № '") + DocumentData.BANumber;
 			
 		ElsIf DocumentData.CAType = Enums.CashAssetTypes.Noncash Then
 			
-			FundingSourceDescription = NStr("en ='Organisation''s cash '") + DocumentData.PettyCash;
+			FundingSourceDescription = NStr("en=""Organisation's cash "";ru='касса организации '") + DocumentData.PettyCash;
 			
 		EndIf;
 		FillStructureSection.Insert("FundingSourceDescription", FundingSourceDescription);
@@ -218,7 +218,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CashOutflowPlanning";
-	PrintCommand.Presentation = NStr("en = 'Cash outflow planning'");
+	PrintCommand.Presentation = NStr("en='Cash outflow planning';ru='Планирование расходов ДС'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

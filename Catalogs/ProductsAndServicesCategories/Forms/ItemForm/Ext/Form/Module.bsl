@@ -24,11 +24,12 @@ Procedure ConfigureCharacteristicsPropertiesSetClick(Item)
 	
 	If Not ValueIsFilled(Object.SetOfCharacteristicProperties) Then
 		
-		QuestionText = NStr("en = 'Characteristic
-		|property set edit is possible only after item record, write the item?'");
+		QuestionText = NStr("en='Characteristic"
+"property set edit is possible only after item record, write the item?';ru='Редактирование набора свойств характеристик"
+"возможно только после записи элемента, записать элемент?'");
 		
 		Notification = New NotifyDescription("ConfigureSetOfPropertiesCharacteristicsClickEnd",ThisForm);
-		ShowQueryBox(Notification,QuestionText, QuestionDialogMode.OKCancel,,DialogReturnCode.Cancel, NStr("en = 'Edit the characteristic property set'"));
+		ShowQueryBox(Notification,QuestionText, QuestionDialogMode.OKCancel,,DialogReturnCode.Cancel, NStr("en='Edit the characteristic property set';ru='Редактирование набора свойств характеристик'"));
 		
 		Return;
 		

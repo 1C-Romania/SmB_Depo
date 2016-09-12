@@ -14,6 +14,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Bank account or petty cash</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Bank account or petty cash</v8:content>
+				</v8:item>
 			</title>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
@@ -336,6 +340,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Planned balance</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Планируемый остаток</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:decimal</v8:Type>
@@ -354,6 +362,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Planned balance in specified currency</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Планируемый остаток в указанной валюте</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -404,6 +416,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Begin of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -420,6 +436,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Current date</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Текущая дата</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -441,6 +461,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>End of period</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Окончание периода</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
@@ -458,6 +482,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Period</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>отчетный период</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -477,6 +505,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Currency of the totals</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Валюта итогов</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Currencies</v8:Type>
@@ -493,6 +525,10 @@
 				<v8:lang>en</v8:lang>
 				<v8:content>Output title</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выводить заголовок</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:boolean</v8:Type>
@@ -508,6 +544,10 @@
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Planned cash balance</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Планируемые остатки ДС</v8:content>
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
@@ -543,7 +583,72 @@
 					<dcsset:left xsi:type="dcscor:Field">BankAccountPettyCash</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:userSettingID>bf3be764-0746-4e45-9dba-56db79a01b73</dcsset:userSettingID>
-					<dcsset:userSettingPresentation xsi:type="xs:string">Bank account or petty cash</dcsset:userSettingPresentation>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>az</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>am</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>bg</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>et</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>fr</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ka</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>de</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>lv</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>lt</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>mn</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ro</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>sl</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>tr</v8:lang>
+							<v8:content>Bank account or petty cash</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
 				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>
@@ -621,6 +726,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Amount</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Amount</v8:content>
+								</v8:item>
 							</dcsset:lwsTitle>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -629,6 +738,10 @@
 								<v8:item>
 									<v8:lang>en</v8:lang>
 									<v8:content>Total</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Итого</v8:content>
 								</v8:item>
 							</dcsset:lwsTitle>
 						</dcsset:item>
@@ -666,6 +779,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Show by currencies</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Показывать по валютам</v8:content>
 							</v8:item>
 						</dcsset:userSettingPresentation>
 					</dcsset:item>
@@ -742,6 +859,10 @@
 												<v8:lang>en</v8:lang>
 												<v8:content>Select overdue</v8:content>
 											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Выделить просроченные</v8:content>
+											</v8:item>
 										</dcsset:presentation>
 									</dcsset:item>
 								</dcsset:filter>
@@ -761,6 +882,10 @@
 										<v8:lang>en</v8:lang>
 										<v8:content>Select overdue</v8:content>
 									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Выделить просроченные</v8:content>
+									</v8:item>
 								</dcsset:presentation>
 								<dcsset:userSettingID>2c8de659-f16d-4513-9288-7728ca914cf2</dcsset:userSettingID>
 							</dcsset:item>
@@ -770,6 +895,10 @@
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Show registers</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Показывать регистраторы</v8:content>
 							</v8:item>
 						</dcsset:userSettingPresentation>
 					</dcsset:item>

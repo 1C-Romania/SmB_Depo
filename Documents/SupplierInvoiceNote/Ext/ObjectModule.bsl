@@ -464,9 +464,11 @@ Procedure FillByCashBankDocument(FillingData)
 		
 	Else // Check data for an advance invoice
 		
-		ErrorMessage = NStr("en = 'No data found for the advance invoice.
-			|Basis
-			|document: %1.'");
+		ErrorMessage = NStr("en='No data found for the advance invoice."
+"Basis"
+"document: %1.';ru='Нет данных для счета-фактуры на аванс!"
+"Документ-основание:"
+"%1.'");
 		
 		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessage, FillingData);
 		
@@ -694,8 +696,9 @@ Procedure Filling(FillingData, StandardProcessing) Export
 			If ValueIsFilled(InvoiceFound) 
 				AND InvoiceFound.Ref <> Ref Then
 			
-				MessageText = NStr("en = 'Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%"". 
-										|Cannot add another document ""Supplier Invoice"".'");
+				MessageText = NStr("en='Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%"". "
+"Cannot add another document ""Supplier Invoice"".';ru='Для документа ""%Ссылка%"" уже введен счет-фактура ""%СчетФактура%"". "
+"Запись еще одного документа ""Счет-фактура (полученный)"" не допускается!'");
 				MessageText = StrReplace(MessageText, "%Ref%", FillingData);
 				MessageText = StrReplace(MessageText, "%CustomerInvoiceNote%", InvoiceFound.Ref);
 				
@@ -753,7 +756,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			AND (NOT ValueIsFilled(InventoryTableRow.CountryOfOrigin) 
 				OR InventoryTableRow.CountryOfOrigin = Catalogs.WorldCountries.Russia) Then
 		
-			ErrorText = NStr("en = 'Incorrect country of origin in string [%LineNumberWithError%]'");
+			ErrorText = NStr("en='Incorrect country of origin in string [%LineNumberWithError%]';ru='В строке [%НомерСтрокиСОшибкой%] не верно указана страна происхождения'");
 			ErrorText = StrReplace(ErrorText, "%LineNumberWithError%", TrimAll(InventoryTableRow.LineNumber));
 		
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, 
@@ -770,7 +773,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				AND Not InventoryTableRow.CountryOfOrigin = Catalogs.WorldCountries.Russia)
 			AND Not ValueIsFilled(InventoryTableRow.CCDNo) Then
 			
-			ErrorText = NStr("en = 'Specify the CCD number in string [%LineNumberWithError%]'");
+			ErrorText = NStr("en='Specify the CCD number in string [%LineNumberWithError%]';ru='В строке [%НомерСтрокиСОшибкой%] не указан номер ГТД'");
 			ErrorText = StrReplace(ErrorText, "%LineNumberWithError%", TrimAll(InventoryTableRow.LineNumber));
 			
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, 
@@ -788,7 +791,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If ValueIsFilled(BasisDocument)
 		AND Not BasisDocument.Posted Then
 		
-		ErrorText = NStr("en = 'Basis document %BasisDocumentView% is not posted. Invoice posting is impossible.'");
+		ErrorText = NStr("en='Basis document %BasisDocumentView% is not posted. Invoice posting is impossible.';ru='Документ-основание %ПредставлениеДокументаОснования% не проведен. Проведение счет фактуры не возможно.'");
 		ErrorText = StrReplace(ErrorText, "%BasisDocumentView%", """" + TypeOf(BasisDocument) + " #" + BasisDocument.Number + " dated " + BasisDocument.Date + """");
 		
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, ErrorText, , , , Cancel);
@@ -817,8 +820,9 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 			InvoiceFound = SmallBusinessServer.GetSubordinateInvoice(BasisDocument, True);
 			If ValueIsFilled(InvoiceFound) AND InvoiceFound.Ref <> Ref Then
 			
-				MessageText = NStr("en = 'Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%"". 
-										|Cannot add another document ""Supplier Invoice"".'");
+				MessageText = NStr("en='Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%"". "
+"Cannot add another document ""Supplier Invoice"".';ru='Для документа ""%Ссылка%"" уже введен счет-фактура ""%СчетФактура%"". "
+"Запись еще одного документа ""Счет-фактура (полученный)"" не допускается!'");
 				MessageText = StrReplace(MessageText, "%Ref%", BasisDocument);						
 				MessageText = StrReplace(MessageText, "%CustomerInvoiceNote%", InvoiceFound.Ref);
 				MessageField = "Object.BasisDocument";

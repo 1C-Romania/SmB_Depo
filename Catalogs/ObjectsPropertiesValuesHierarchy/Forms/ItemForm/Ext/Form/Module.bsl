@@ -80,24 +80,24 @@ Procedure SetTitle()
 	If Not IsBlankString(PropertyName) Then
 		If ValueIsFilled(Object.Ref) Then
 			Title = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '%1 (%2)'"),
+				NStr("en='%1 (%2)';ru='%1 (%2)'"),
 				Object.Description,
 				PropertyName);
 		Else
 			Title = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '%1 (Creating)'"), PropertyName);
+				NStr("en='%1 (Creating)';ru='%1 (Создание)'"), PropertyName);
 		EndIf;
 	Else
 		PropertyName = String(AttributeValues.Title);
 		
 		If ValueIsFilled(Object.Ref) Then
 			Title = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '%1 (Property value %2)'"),
+				NStr("en='%1 (Property value %2)';ru='%1 (Значение свойства %2)'"),
 				Object.Description,
 				PropertyName);
 		Else
 			Title = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '%1 Property value (Create)'"), PropertyName);
+				NStr("en='%1 Property value (Create)';ru='Значение свойства %1 (Создание)'"), PropertyName);
 		EndIf;
 	EndIf;
 	

@@ -46,14 +46,14 @@ EndProcedure
 Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	If Not ValueIsFilled(OptionName) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en = 'Field ""Description"" is not filled out'"),
+			NStr("en='Field ""Description"" is not filled out';ru='Поле ""Наименование"" не заполнено'"),
 			,
 			"Description");
 		Cancel = True;
 	ElsIf ReportsVariants.DescriptionIsBooked(Context.ReportRef, VariantRef, OptionName) Then
 		CommonUseClientServer.MessageToUser(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = '""%1"" is occupied, you must specify another Description.'"),
+				NStr("en='""%1"" is occupied, you must specify another Description.';ru='""%1"" занято, необходимо указать другое Наименование.'"),
 				OptionName
 			),
 			,
@@ -121,7 +121,7 @@ Procedure DescriptionStartChoice(Item, ChoiceData, StandardProcessing)
 	StandardProcessing = False;
 	Notification = New NotifyDescription("DescriptionStartChoiceEnd", ThisObject);
 	CommonUseClient.ShowMultilineTextEditingForm(Notification, Items.Definition.EditText,
-		NStr("en = 'Definition'"));
+		NStr("en='Definition';ru='Определение'"));
 EndProcedure
 
 #EndRegion
@@ -157,21 +157,21 @@ Procedure VariantsOfReportBeforeDelition(Item, Cancel)
 	EndIf;
 	
 	If Not Context.FullRightsForVariants AND Not Variant.AuthorCurrentUser Then
-		WarningText = NStr("en = 'The access rights are not sufficient to delete the report variant ""%1"".'");
+		WarningText = NStr("en='The access rights are not sufficient to delete the report variant ""%1"".';ru='Недостаточно прав доступа для удаления варианта отчета ""%1"".'");
 		WarningText = StrReplace(WarningText, "%1", Variant.Description);
 		ShowMessageBox(, WarningText);
 		Return;
 	EndIf;
 	
 	If Not Variant.User Then
-		ShowMessageBox(, NStr("en = 'Impossible to delete the predefined report variant.'"));
+		ShowMessageBox(, NStr("en='Impossible to delete the predefined report variant.';ru='Невозможно удалить предопределенный вариант отчета.'"));
 		Return;
 	EndIf;
 	
 	If Variant.DeletionMark Then
-		QuestionText = NStr("en = 'Unmark ""%1"" for deletion?'");
+		QuestionText = NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'");
 	Else
-		QuestionText = NStr("en = 'Mark ""%1"" for deletion?'");
+		QuestionText = NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'");
 	EndIf;
 	QuestionText = StrReplace(QuestionText, "%1", Variant.Description);
 	
@@ -277,7 +277,7 @@ Procedure ExecuteBatch(Result, Package) Export
 	If Package.CheckPage1 = True Then
 		// Description is not entered.
 		If Not ValueIsFilled(OptionName) Then
-			ErrorText = NStr("en = 'Field ""Description"" is not filled out'");
+			ErrorText = NStr("en='Field ""Description"" is not filled out';ru='Поле ""Наименование"" не заполнено'");
 			CommonUseClientServer.MessageToUser(ErrorText, , "OptionName");
 			Return;
 		EndIf;
@@ -287,7 +287,7 @@ Procedure ExecuteBatch(Result, Package) Export
 			Found = ReportVariants.FindRows(New Structure("Ref", VariantRef));
 			Variant = Found[0];
 			If Not RightVariantModification(Variant, RightVariantSettings(Variant, Context.FullRightsForVariants)) Then
-				ErrorText = NStr("en = 'The rights are not sufficient to change the variant ""%1"", it is necessary to select another variant or change the Description.'");
+				ErrorText = NStr("en='The rights are not sufficient to change the variant ""%1"", it is necessary to select another variant or change the Description.';ru='Недостаточно прав для изменения варианта ""%1"", необходимо выбрать другой вариант или изменить Наименование.'");
 				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, OptionName);
 				CommonUseClientServer.MessageToUser(ErrorText, , "OptionName");
 				Return;
@@ -295,11 +295,12 @@ Procedure ExecuteBatch(Result, Package) Export
 			
 			If Not Package.Property("QueryOnRewritingIsPassed") Then
 				If Variant.DeletionMark = True Then
-					QuestionText = NStr("en = 'Report variant ""%1"" is marked to delete.
-					|Do you want to replace the marked for deletion report variant?'");
+					QuestionText = NStr("en='Report variant ""%1"" is marked to delete."
+"Do you want to replace the marked for deletion report variant?';ru='Вариант отчета ""%1"" помечен на удаление."
+"Заменить помеченный на удаление вариант отчета?'");
 					DefaultButton = DialogReturnCode.No;
 				Else
-					QuestionText = NStr("en = 'Replace previously saved report variant ""%1""?'");
+					QuestionText = NStr("en='Replace previously saved report variant ""%1""?';ru='Заменить ранее сохраненный вариант отчета ""%1""?'");
 					DefaultButton = DialogReturnCode.Yes;
 				EndIf;
 				QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, OptionName);
@@ -366,7 +367,7 @@ Procedure OpenVariantForModification()
 		Return;
 	EndIf;
 	If Not RightVariantSettings(Variant, Context.FullRightsForVariants) Then
-		WarningText = NStr("en = 'The access rights are not sufficient to change the variant ""%1"".'");
+		WarningText = NStr("en='The access rights are not sufficient to change the variant ""%1"".';ru='Недостаточно прав доступа для изменения варианта ""%1"".'");
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(WarningText, Variant.Description);
 		ShowMessageBox(, WarningText);
 		Return;
@@ -459,7 +460,7 @@ EndFunction
 
 &AtClientAtServerNoContext
 Function GenerateFreeName(Variant, ReportVariants)
-	VariantNameTemplate = TrimAll(Variant.Description) +" - "+ NStr("en = 'copy'");
+	VariantNameTemplate = TrimAll(Variant.Description) +" - "+ NStr("en='copy';ru='копия'");
 	
 	FreeName = VariantNameTemplate;
 	Found = ReportVariants.FindRows(New Structure("Description", FreeName));
@@ -534,7 +535,7 @@ Procedure CheckAndWriteOnServer(Package)
 	VariantIsNew = Not ValueIsFilled(VariantRef);
 	
 	If VariantIsNew AND ReportsVariants.DescriptionIsBooked(Context.ReportRef, VariantRef, OptionName) Then
-		ErrorText = NStr("en = '""%1"" is occupied, you must specify another Description.'");
+		ErrorText = NStr("en='""%1"" is occupied, you must specify another Description.';ru='""%1"" занято, необходимо указать другое Наименование.'");
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, OptionName);
 		CommonUseClientServer.MessageToUser(ErrorText, , "OptionName");
 		Package.Cancel = True;
@@ -647,8 +648,9 @@ Procedure FillVariantsList()
 		Except
 			ReportsVariants.ErrorByVariant(Undefined,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = 'Failed to receive a predefined
-					|variants list of the external report ""%1"":'"),
+					NStr("en='Failed to receive a predefined"
+"variants list of the external report ""%1"":';ru='Не удалось получить"
+"список предопределенных вариантов внешнего отчета ""%1"":'"),
 					Context.ReportRef
 				) + Chars.LF + DetailErrorDescription(ErrorInfo()));
 			Return;

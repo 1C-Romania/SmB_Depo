@@ -7,7 +7,7 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	EndIf;
 	
 	If GroupIsSelected(CommandParameter) Then
-		Raise NStr("en = 'You can''t select segment group.'");
+		Raise NStr("en=""You can't select segment group."";ru='Нельзя выбирать группу сегментов.'");
 	EndIf;
 	
 	ReportParametersAndFilter = New Structure("Segment", CommandParameter);

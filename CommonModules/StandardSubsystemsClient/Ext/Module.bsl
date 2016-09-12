@@ -43,7 +43,7 @@ Procedure SetAdvancedApplicationCaption(OnLaunch = False) Export
 	Else
 		CaptionPattern = "%1 / %2";
 		ApplicationCaption = StringFunctionsClientServer.PlaceParametersIntoString(CaptionPattern, 
-			NStr("en = 'Separators are not installed'"), ClientParameters.DetailedInformation);
+			NStr("en='Separators are not installed';ru='Не установлены разделители'"), ClientParameters.DetailedInformation);
 	EndIf;
 	
 	CommonUseClientOverridable.OnSettingClientApplicationTitle(ApplicationCaption, OnLaunch);
@@ -607,8 +607,8 @@ Procedure ShowWarningAndContinue(Parameters, WarningText) Export
 	If Parameters.Cancel Then
 		
 		Buttons = New ValueList();
-		Buttons.Add("Restart", NStr("en = 'Restart'"));
-		Buttons.Add("Complete",     NStr("en = 'Exit'"));
+		Buttons.Add("Restart", NStr("en='Restart';ru='Перезапустить'"));
+		Buttons.Add("Complete",     NStr("en='Exit';ru='Завершить'"));
 		
 		QuestionParameters = QuestionToUserParameters();
 		QuestionParameters.DefaultButton = "Restart";
@@ -621,11 +621,11 @@ Procedure ShowWarningAndContinue(Parameters, WarningText) Export
 	Else
 
 		Buttons = New ValueList();
-		Buttons.Add("Continue", NStr("en = 'Continue'"));
+		Buttons.Add("Continue", NStr("en='Continue';ru='Продолжить'"));
 		If Parameters.Property("Restart") Then
-			Buttons.Add("Restart", NStr("en = 'Restart'"));
+			Buttons.Add("Restart", NStr("en='Restart';ru='Перезапустить'"));
 		EndIf;
-		Buttons.Add("Complete", NStr("en = 'Exit'"));
+		Buttons.Add("Complete", NStr("en='Exit';ru='Завершить'"));
 		
 		QuestionParameters = QuestionToUserParameters();
 		QuestionParameters.DefaultButton = "Continue";
@@ -810,11 +810,11 @@ Procedure ShowExecutionResult(Form, Result, EndProcessor = Undefined) Export
 		OutputWarning = Result.OutputWarning;
 		If ValueIsFilled(OutputWarning.ErrorsText) Then
 			Buttons = New ValueList;
-			Buttons.Add(1, NStr("en = 'Details...'"));
+			Buttons.Add(1, NStr("en='Details...';ru='Подробнее...'"));
 			If TypeOf(Form) = Type("ManagedForm") AND ValueIsFilled(OutputWarning.PathToAttributeForms) Then
-				Buttons.Add(2, NStr("en = 'Go to attribute'"));
+				Buttons.Add(2, NStr("en='Go to attribute';ru='Перейти к реквизиту'"));
 			EndIf;
-			Buttons.Add(0, NStr("en = 'Continue'"));
+			Buttons.Add(0, NStr("en='Continue';ru='Продолжить'"));
 			
 			AdditionalParameters = New Structure;
 			AdditionalParameters.Insert("OutputWarning",   OutputWarning);
@@ -885,7 +885,7 @@ Procedure ShowExecutionResultEnd(Response, Result) Export
 			FullText = String(Result.OutputWarning.Text) + Chars.LF + Chars.LF + Result.OutputWarning.ErrorsText;
 			Title = Result.OutputWarning.Title;
 			If IsBlankString(Title) Then
-				Title = NStr("en = 'Details'");
+				Title = NStr("en='Details';ru='Расшифровка'");
 			EndIf;
 			Handler = New NotifyDescription("ShowExecutionResultEnd", ThisObject, Result);
 			ShowInputString(Handler, FullText, Title, , True);
@@ -1610,21 +1610,25 @@ Procedure PlatformVersionCheckOnlineProcessorOnStart(Parameters, NotSpecified) E
 	
 	If ClientParameters.MustExit Then
 		If ClientParameters.HasAccessForUpdateVersionsOfPlatform Then
-			MessageText = NStr("en = 'It is impossible to log in the application.
-				|It is necessary to update the 1C:Enterprise platform version previously.'");
+			MessageText = NStr("en='It is impossible to log in the application."
+"It is necessary to update the 1C:Enterprise platform version previously.';ru='Вход в программу невозможен."
+"Необходимо предварительно обновить версию платформы 1С:Предприятие.'");
 		Else
-			MessageText = NStr("en = 'It is impossible to log in the application.
-				|It is necessary to contact the administrator to update the 1C:Enterprise platform version.'");
+			MessageText = NStr("en='It is impossible to log in the application."
+"It is necessary to contact the administrator to update the 1C:Enterprise platform version.';ru='Вход в программу невозможен."
+"Необходимо обратиться к администратору для обновления версии платформы 1С:Предприятие.'");
 		EndIf;
 	Else
 		If ClientParameters.HasAccessForUpdateVersionsOfPlatform Then
 			MessageText = 
-				NStr("en='It is recommended to shut the application down and update 1C:Enterprise platform version.
-			         |Otherwise some application possibilities will be unavailable or will work incorrectly.'");
+				NStr("en='It is recommended to shut the application down and update 1C:Enterprise platform version."
+"Otherwise some application possibilities will be unavailable or will work incorrectly.';ru='Рекомендуется завершить работу программы и обновить версию платформы 1С:Предприятия."
+"В противном случае некоторые возможности программы будут недоступны или будут работать некорректно.'");
 		Else
 			MessageText = 
-				NStr("en='It is recommended to close the application and contact administrator to update 1C:Enterprise platform version.
-			         |Otherwise some application possibilities will be unavailable or will work incorrectly.'");
+				NStr("en='It is recommended to close the application and contact administrator to update 1C:Enterprise platform version."
+"Otherwise some application possibilities will be unavailable or will work incorrectly.';ru='Рекомендуется завершить работу программы и обратиться к администратору для обновления версии платформы 1С:Предприятия."
+"В противном случае некоторые возможности программы будут недоступны или будут работать некорректно.'");
 		EndIf;
 	EndIf;
 	
@@ -1680,8 +1684,9 @@ Procedure OnlineLinkWithMainNodeRestoreProcessor(Parameters, NotSpecified) Expor
 		Parameters.Cancel = True;
 		ShowMessageBox(
 			AlertWithoutResult(Parameters.ContinuationProcessor),
-			NStr("en = 'Sign in to the application is temporarily unavailable before the restoration of connection with the main node.
-			           |Contact administrator for the details.'"),
+			NStr("en='Sign in to the application is temporarily unavailable before the restoration of connection with the main node."
+"Contact administrator for the details.';ru='Вход в программу временно невозможен до восстановления связи с главным узлом."
+"Обратитесь к администратору за подробностями.'"),
 			15);
 		Return;
 	EndIf;
@@ -1726,8 +1731,9 @@ Procedure OpenActiveUsersList(FormParameters = Undefined) Export
 	Else
 		
 		ShowMessageBox(,
-			NStr("en = 'To open a list of active users, go to
-				       |menu All functions - Standard - Active users.'"));
+			NStr("en='To open a list of active users, go to"
+"menu All functions - Standard - Active users.';ru='Для того чтобы открыть список активных пользователей,"
+"перейдите в меню Все функции - Стандартные - Активные пользователи.'"));
 		
 	EndIf;
 	
@@ -1872,15 +1878,16 @@ Procedure SetSessionSeparation()
 	
 	If LaunchParameters.Count() < 2 Then
 		Raise
-			NStr("en = 'When specifying launch parameter
-			           |EnterDataArea, specify a separator value as an additional parameter.'");
+			NStr("en='When specifying launch parameter"
+"EnterDataArea, specify a separator value as an additional parameter.';ru='При указании параметра"
+"запуска ВойтиВОбластьДанных, дополнительным параметром необходимо указать значение разделителя.'");
 	EndIf;
 	
 	Try
 		SeparatorValue = Number(LaunchParameters[1]);
 	Except
 		Raise
-			NStr("en = 'The separator value in the LogOnDataArea parameter must be the digit.'");
+			NStr("en='The separator value in the LogOnDataArea parameter must be the digit.';ru='Значением разделителя в параметре ВойтиВОбластьДанных должно быть число.'");
 	EndTry;
 	
 	CommonUseServerCall.SetSessionSeparation(True, SeparatorValue);
@@ -2154,16 +2161,16 @@ EndProcedure
 Procedure AskExitConfirmation(Parameters, ResponseProcessor) Export
 	
 	Buttons = New ValueList;
-	Buttons.Add("DialogReturnCode.Yes",  NStr("en = 'Exit'"));
-	Buttons.Add("DialogReturnCode.No", NStr("en = 'Cancel'"));
+	Buttons.Add("DialogReturnCode.Yes",  NStr("en='Exit';ru='Завершить'"));
+	Buttons.Add("DialogReturnCode.No", NStr("en='Cancel';ru='Отменить'"));
 	
 	QuestionParameters = QuestionToUserParameters();
 	QuestionParameters.LockWholeInterface = True;
 	QuestionParameters.DefaultButton = "DialogReturnCode.Yes";
-	QuestionParameters.Title = NStr("en = 'Exit'");
+	QuestionParameters.Title = NStr("en='Exit';ru='Завершить'");
 	QuestionParameters.DontAskAgain = False;
 	
-	ShowQuestionToUser(ResponseProcessor, NStr("en = 'Do you want to exit the application?'"), Buttons, QuestionParameters);
+	ShowQuestionToUser(ResponseProcessor, NStr("en='Do you want to exit the application?';ru='Завершить работу с программой?'"), Buttons, QuestionParameters);
 	
 EndProcedure
 
@@ -2209,8 +2216,8 @@ Procedure OpenApplicationWarningForm(Parameters, ResponseProcessor, UserWarning,
 				FormParameters.Insert("ExitApplication", True);
 			EndIf;
 			
-			FormParameters.Insert("YesButtonTitle",  NStr("en = 'Complete'"));
-			FormParameters.Insert("TitleNoButton", NStr("en = 'Cancel'"));
+			FormParameters.Insert("YesButtonTitle",  NStr("en='Complete';ru='Закончить редактирование'"));
+			FormParameters.Insert("TitleNoButton", NStr("en='Cancel';ru='Отменить'"));
 			
 		EndIf;
 		FormOpenParameters = New Structure;
@@ -2260,7 +2267,7 @@ Procedure ProcessErrorOnStartOrEnd(Parameters, ErrorInfo, Event, StopWork = Fals
 		StopWork, Event, DetailErrorDescription(ErrorInfo));	
 	
 	WarningText = ErrorDescriptionBegin + Chars.LF
-		+ NStr("en = 'Error details are written to the event log monitor.'")
+		+ NStr("en='Error details are written to the event log monitor.';ru='Техническая информация об ошибке записана в журнал регистрации.'")
 		+ Chars.LF + Chars.LF
 		+ BriefErrorDescription(ErrorInfo);
 	
@@ -2310,7 +2317,7 @@ Procedure ShowFilePlaceWhenConnectingFileExtensions(ExtensionAttached, Additiona
 	If DialogueParameters.Property("Mode") Then
 		Mode = DialogueParameters.Mode;
 		If Mode = FileDialogMode.ChooseDirectory Then
-			Raise NStr("en = 'Catalog selection is not supported'");
+			Raise NStr("en='Catalog selection is not supported';ru='Выбор каталога не поддерживается'");
 		EndIf;
 	Else
 		Mode = FileDialogMode.Open;

@@ -16,8 +16,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ItIsAuthentication = Parameters.ItIsAuthentication;
 	
 	If ItIsAuthentication Then
-		Items.FormDrillDown.Title = NStr("en = 'OK'");
-		Items.ExplanationEnhancedPassword.Title = NStr("en = 'Click OK to proceed to enter the password.'");
+		Items.FormDrillDown.Title = NStr("en='OK';ru='Ок'");
+		Items.ExplanationEnhancedPassword.Title = NStr("en='Click OK to proceed to enter the password.';ru='Нажмите ОК, чтобы перейти к вводу пароля.'");
 	EndIf;
 	
 EndProcedure
@@ -384,9 +384,11 @@ Procedure DecryptData(Notification)
 	
 	If Not ValueIsFilled(CertificateApplication) Then
 		Context.ErrorOnClient.Insert("ErrorDescription",
-			NStr("en = 'Selected certificate has no indicated application for a closed key.
-			           |Select the certificate again from the
-			           |full list or open the certificate and specify the application manually.'"));
+			NStr("en='Selected certificate has no indicated application for a closed key."
+"Select the certificate again from the"
+"full list or open the certificate and specify the application manually.';ru='У выбранного сертификата не указана программа для закрытого ключа."
+"Выберите сертификат повторно"
+"из полного списка или откройте сертификат и укажите программу вручную.'"));
 		ShowError(Context.ErrorOnClient, Context.ErrorOnServer);
 		ExecuteNotifyProcessing(Context.Notification, False);
 		Return;
@@ -577,7 +579,7 @@ Procedure WriteEncryptionCertificatesAtServer(ObjectsDescription, FormID, Error)
 	Except
 		ErrorInfo = ErrorInfo();
 		RollbackTransaction();
-		Error.Insert("ErrorDescription", NStr("en = 'When clearing the encryption certificates, an error occurred:'")
+		Error.Insert("ErrorDescription", NStr("en='When clearing the encryption certificates, an error occurred:';ru='При очистке сертификатов шифрования возникла ошибка:'")
 			+ Chars.LF + BriefErrorDescription(ErrorInfo));
 	EndTry;
 	
@@ -592,7 +594,7 @@ Procedure ShowError(ErrorOnClient, ErrorOnServer)
 	EndIf;
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en = 'Failed to decrypt the data'"), "",
+		NStr("en='Failed to decrypt the data';ru='Не удалось расшифровать данные'"), "",
 		ErrorOnClient, ErrorOnServer, , ProcessingAfterWarning);
 	
 EndProcedure

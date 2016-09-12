@@ -128,7 +128,7 @@ Procedure SetAsContactPersonByDefault(Command)
 	
 	If CurrentListRow = Undefined Then
 		
-		MessageText = NStr("en = 'The contact person which is necessary to be set as a Contact person by default is not selected.'");
+		MessageText = NStr("en='The contact person which is necessary to be set as a Contact person by default is not selected.';ru='Не выбрано контактное лицо, которое необходимо установить как Контактным лицом по умолчанию'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		Return;
@@ -180,7 +180,7 @@ Procedure ChangeCardOfCounterpartyAndChangeListAppearance(Counterparty, NewConta
 		
 	Except
 		
-		MessageText = NStr("en = 'Failed to change the default contact person in the counterparty card.'");
+		MessageText = NStr("en='Failed to change the default contact person in the counterparty card.';ru='Не удалось поменять контактное лицо по умолчанию в карточке контрагента.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndTry;

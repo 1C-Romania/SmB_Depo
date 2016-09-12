@@ -62,7 +62,7 @@ Procedure RunNewDataExchangeCreationActions(Cancel) Export
 		
 	Except
 		
-		MessageText = NStr("en = 'Error was occurred on data exchange settings saving: '");
+		MessageText = NStr("en='Error was occurred on data exchange settings saving: ';ru='При сохранении настроек обмена данными возникла ошибка: '");
 		
 		DataExchangeServer.ShowMessageAboutError(MessageText + ErrorDescription(), Cancel);
 		WriteLogEvent(MessageText, EventLogLevel.Error,,, ErrorDescription());

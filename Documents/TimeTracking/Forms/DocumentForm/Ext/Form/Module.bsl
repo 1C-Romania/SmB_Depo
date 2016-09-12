@@ -79,13 +79,13 @@ EndFunction
 //
 Procedure SetColumnHeaders()
 
-	Items.OperationsMonDuration.Title = NStr("en = 'Mo '") + Format(Object.DateFrom, "DF=dd.MM");
-	Items.OperationsTuDuration.Title = NStr("en = 'Tu '") + Format(Object.DateFrom + 86400, "DF=dd.MM");
-	Items.OperationsAverageDuration.Title = NStr("en = 'We '") + Format(Object.DateFrom + 86400*2, "DF=dd.MM");
-	Items.OperationsThDuration.Title = NStr("en = 'Th '") + Format(Object.DateFrom + 86400*3, "DF=dd.MM");
-	Items.OperationsFrDuration.Title = NStr("en = 'Fr '") + Format(Object.DateFrom + 86400*4, "DF=dd.MM");
-	Items.OperationsSaDuration.Title = NStr("en = 'Sa '") + Format(Object.DateFrom + 86400*5, "DF=dd.MM");
-	Items.OperationsSuDuration.Title = NStr("en = 'Su '") + Format(Object.DateFrom + 86400*6, "DF=dd.MM");
+	Items.OperationsMonDuration.Title = NStr("en='Mo ';ru='Пн '") + Format(Object.DateFrom, "DF=dd.MM");
+	Items.OperationsTuDuration.Title = NStr("en='Tu ';ru='Вт '") + Format(Object.DateFrom + 86400, "DF=dd.MM");
+	Items.OperationsAverageDuration.Title = NStr("en='We ';ru='Ср '") + Format(Object.DateFrom + 86400*2, "DF=dd.MM");
+	Items.OperationsThDuration.Title = NStr("en='Th ';ru='Чт '") + Format(Object.DateFrom + 86400*3, "DF=dd.MM");
+	Items.OperationsFrDuration.Title = NStr("en='Fr ';ru='Пт '") + Format(Object.DateFrom + 86400*4, "DF=dd.MM");
+	Items.OperationsSaDuration.Title = NStr("en='Sa ';ru='Сб '") + Format(Object.DateFrom + 86400*5, "DF=dd.MM");
+	Items.OperationsSuDuration.Title = NStr("en='Su ';ru='Вс '") + Format(Object.DateFrom + 86400*6, "DF=dd.MM");
 
 EndProcedure
 
@@ -277,13 +277,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
 	
-	Items.OperationsMonDuration.Title = NStr("en = 'Mo '") + Format(Object.DateFrom, "DF=dd.MM");
-	Items.OperationsTuDuration.Title = NStr("en = 'Tu '") + Format(Object.DateFrom + 86400, "DF=dd.MM");
-	Items.OperationsAverageDuration.Title = NStr("en = 'We '") + Format(Object.DateFrom + 86400*2, "DF=dd.MM");
-	Items.OperationsThDuration.Title = NStr("en = 'Th '") + Format(Object.DateFrom + 86400*3, "DF=dd.MM");
-	Items.OperationsFrDuration.Title = NStr("en = 'Fr '") + Format(Object.DateFrom + 86400*4, "DF=dd.MM");
-	Items.OperationsSaDuration.Title = NStr("en = 'Sa '") + Format(Object.DateFrom + 86400*5, "DF=dd.MM");
-	Items.OperationsSuDuration.Title = NStr("en = 'Su '") + Format(Object.DateFrom + 86400*6, "DF=dd.MM");
+	Items.OperationsMonDuration.Title = NStr("en='Mo ';ru='Пн '") + Format(Object.DateFrom, "DF=dd.MM");
+	Items.OperationsTuDuration.Title = NStr("en='Tu ';ru='Вт '") + Format(Object.DateFrom + 86400, "DF=dd.MM");
+	Items.OperationsAverageDuration.Title = NStr("en='We ';ru='Ср '") + Format(Object.DateFrom + 86400*2, "DF=dd.MM");
+	Items.OperationsThDuration.Title = NStr("en='Th ';ru='Чт '") + Format(Object.DateFrom + 86400*3, "DF=dd.MM");
+	Items.OperationsFrDuration.Title = NStr("en='Fr ';ru='Пт '") + Format(Object.DateFrom + 86400*4, "DF=dd.MM");
+	Items.OperationsSaDuration.Title = NStr("en='Sa ';ru='Сб '") + Format(Object.DateFrom + 86400*5, "DF=dd.MM");
+	Items.OperationsSuDuration.Title = NStr("en='Su ';ru='Вс '") + Format(Object.DateFrom + 86400*6, "DF=dd.MM");
 	
 	If Not Constants.FunctionalOptionUseJobSharing.Get() Then
 		If Items.Find("EmployeeCode") <> Undefined Then		
@@ -382,7 +382,7 @@ Procedure FillByPlan(Command)
 	
 	If Not ValueIsFilled(Object.Company) Then
         Message = New UserMessage();
-		Message.Text = NStr("en = 'Company is required! Completion is cancelled.'");
+		Message.Text = NStr("en='Company is required! Completion is cancelled.';ru='Не заполнена организация! Заполнение отменено.'");
 		Message.Field = "Object.Company";
 		Message.Message();
 		Return;
@@ -390,7 +390,7 @@ Procedure FillByPlan(Command)
 
 	If Not ValueIsFilled(Object.StructuralUnit) Then
         Message = New UserMessage();
-		Message.Text = NStr("en = 'The division is not filled! Completion is cancelled.'");
+		Message.Text = NStr("en='The division is not filled! Completion is cancelled.';ru='Не заполнено подразделение! Заполнение отменено.'");
 		Message.Field = "Object.StructuralUnit";
 		Message.Message();
 		Return;
@@ -398,7 +398,7 @@ Procedure FillByPlan(Command)
 
 	If Not ValueIsFilled(Object.Employee) Then
         Message = New UserMessage();
-		Message.Text = NStr("en = 'Employee is not selected. Completion is cancelled.'");
+		Message.Text = NStr("en='Employee is not selected. Completion is cancelled.';ru='Не выбран сотрудник! Заполнение отменено.'");
 		Message.Field = "Object.Employee";
 		Message.Message();
 		Return;
@@ -406,7 +406,7 @@ Procedure FillByPlan(Command)
 
 	If Not ValueIsFilled(Object.DateFrom) Then
         Message = New UserMessage();
-		Message.Text = NStr("en = 'Week beginning is not selected. Completion is cancelled.'");
+		Message.Text = NStr("en='Week beginning is not selected. Completion is cancelled.';ru='Не выбрано начало недели! Заполнение отменено.'");
 		Message.Field = "Object.DateFrom";
 		Message.Message();
 		Return;
@@ -414,7 +414,7 @@ Procedure FillByPlan(Command)
 
 	If Not ValueIsFilled(Object.DateTo) Then
         Message = New UserMessage();
-		Message.Text = NStr("en = 'The end of the week is not selected. Completion is cancelled.'");
+		Message.Text = NStr("en='The end of the week is not selected. Completion is cancelled.';ru='Не выбрано окончание недели! Заполнение отменено.'");
 		Message.Field = "Object.DateTo";
 		Message.Message();
 		Return;
@@ -423,7 +423,7 @@ Procedure FillByPlan(Command)
 	If Object.Operations.Count() > 0 Then
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("FillInByPlanEnd", ThisObject), NStr("en = 'Tabular section of the document will be cleared. Continue?'"), QuestionDialogMode.YesNo, 0);
+		ShowQueryBox(New NotifyDescription("FillInByPlanEnd", ThisObject), NStr("en='Tabular section of the document will be cleared. Continue?';ru='Табличная часть документа будет очищена! Продолжить?'"), QuestionDialogMode.YesNo, 0);
         Return; 
 	EndIf;
 	

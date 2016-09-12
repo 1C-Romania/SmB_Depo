@@ -14,7 +14,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	FillFileStoragesNames();
 	
 	If FileStoragesNames.Count() = 0 Then
-		Raise NStr("en = 'File storages are not found.'");
+		Raise NStr("en='File storages are not found.';ru='Не найдены хранилища файлов.'");
 		
 	ElsIf FileStoragesNames.Count() = 1 Then
 		Items.FileStoragePresentation.Visible = False;

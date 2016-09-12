@@ -9,14 +9,14 @@ Procedure SetMainItem(SelectedItem, SettingName)
 	If SettingName = "MainWarehouse" 
 		AND SelectedItem.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'You can not choose division as the main warehouse!'");	
+		Message.Text = NStr("en='You can not choose division as the main warehouse!';ru='В качестве основного склада нельзя выбирать Подразделение!'");	
 		Message.Message();
 		Return;
 	EndIf; 
 	If SettingName = "MainDivision" 
 		AND SelectedItem.StructuralUnitType <> Enums.StructuralUnitsTypes.Division Then
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'You must choose division as main division!'");	
+		Message.Text = NStr("en='You must choose division as main division!';ru='В качестве основного подразделения необходимо выбрать Подразделение!'");	
 		Message.Message();
 		Return;
 	EndIf; 
@@ -95,14 +95,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			   AND Parameters.GLExpenseAccount.TypeOfAccount <> Enums.GLAccountsTypes.UnfinishedProduction
 			   AND Parameters.GLExpenseAccount.TypeOfAccount <> Enums.GLAccountsTypes.IndirectExpenses Then
 				
-				MessageText = NStr("en = 'Division should not be filled for this type of account!'");
+				MessageText = NStr("en='Division should not be filled for this type of account!';ru='Для данного типа счета подразделение не указывается!'");
 				SmallBusinessServer.ShowMessageAboutError(, MessageText, , , , Cancel);
 				
 			EndIf;
 			
 		Else
 			
-			MessageText = NStr("en = 'Account is not selected!'");
+			MessageText = NStr("en='Account is not selected!';ru='Не выбран счет!'");
 			SmallBusinessServer.ShowMessageAboutError(, MessageText, , , , Cancel);
 			
 		EndIf;
@@ -181,7 +181,7 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	If Not AccountingBySeveralDivisions AND Not AccountingBySeveralWarehouses Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Accounting is not made by several warehouses and divisions! Adding new structural item is prohibited!'");
+		Message.Text = NStr("en='Accounting is not made by several warehouses and divisions! Adding new structural item is prohibited!';ru='Не ведется учет по нескольким складам и подразделениям! Добавление новой структурной единицы запрещено!'");
 		Message.Message();
 		
 		Cancel = True;
@@ -191,7 +191,7 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 		AND Not ShowWarehouse Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Accounting is not made by several divisions! Adding new division is prohibited!'");
+		Message.Text = NStr("en='Accounting is not made by several divisions! Adding new division is prohibited!';ru='Не ведется учет по нескольким подразделениям! Добавление нового подразделения запрещено!'");
 		Message.Message();
 		
 		Cancel = True;
@@ -201,7 +201,7 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 		AND ShowWarehouse Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en = 'Accounting is not made by several warehouses! Adding new warehouse is prohibited!'");
+		Message.Text = NStr("en='Accounting is not made by several warehouses! Adding new warehouse is prohibited!';ru='Не ведется учет по нескольким складам! Добавление нового склада запрещено!'");
 		Message.Message();
 		
 		Cancel = True;

@@ -74,8 +74,8 @@ Procedure GenerateTableInventory(DocumentRefReportOnRetailSales, StructureAdditi
 	|	TableInventory.CustomerOrder,
 	|	TableInventory.InventoryGLAccount";
 	
-	Query.SetParameter("InventoryReceipt", NStr("en = 'Inventory receiving'"));
-	Query.SetParameter("InventoryWriteOff", NStr("en = 'Inventory write off'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("InventoryWriteOff", NStr("en='Inventory write off';ru='Списание запасов'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -287,7 +287,7 @@ Procedure GenerateTableInventorySale(DocumentRefReportOnRetailSales, StructureAd
 				RowIncomeAndExpenses.AmountExpense = AmountToBeWrittenOff;
 				RowIncomeAndExpenses.Amount = AmountToBeWrittenOff;
 				
-				RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection'");
+				RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
 				
 			EndIf;
 			
@@ -440,7 +440,7 @@ Procedure GenerateTableInventoryReceived(DocumentRefReportOnRetailSales, Structu
 	|ORDER BY
 	|	LineNumber";
 	
-	Query.SetParameter("InventoryReceiptProductsOnCommission", NStr("en = 'Sale of commission goods'"));
+	Query.SetParameter("InventoryReceiptProductsOnCommission", NStr("en='Sale of commission goods';ru='Реализация комиссионных товаров'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -531,8 +531,8 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReportOnRetailSales, Structu
 	
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
-	Query.SetParameter("IncomeReflection", NStr("en='Income accounting'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
 	Query.SetParameter("CompletePosting", StructureAdditionalProperties.ForPosting.CompletePosting);
 	
 	QueryResult = Query.Execute();
@@ -648,9 +648,9 @@ Procedure GenerateTableCashAssetsInCashRegisters(DocumentRefReportOnRetailSales,
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("CompletePosting", StructureAdditionalProperties.ForPosting.CompletePosting);
-	Query.SetParameter("CashFundsReceipt", NStr("en = 'Cash receipt to the cash registers'"));
-	Query.SetParameter("PaymentWithPaymentCards", NStr("en = 'Payment by cards'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
+	Query.SetParameter("CashFundsReceipt", NStr("en='Cash receipt to the cash registers';ru='Поступление денежных средств в кассу ККМ'"));
+	Query.SetParameter("PaymentWithPaymentCards", NStr("en='Payment by cards';ru='Оплата платежными картами'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Execute();
 	
@@ -880,9 +880,9 @@ Procedure GenerateTableManagerial(DocumentRefReportOnRetailSales, StructureAddit
 	|	Order,
 	|	LineNumber";
 	
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference'"));
-	Query.SetParameter("IncomeReflection", NStr("en = 'Sales revenue'"));
-	Query.SetParameter("ReflectionOfPaymentByCards", NStr("en = 'Payment by cards'"));
+	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Sales revenue';ru='Выручка от продажи'"));
+	Query.SetParameter("ReflectionOfPaymentByCards", NStr("en='Payment by cards';ru='Оплата платежными картами'"));
 	Query.SetParameter("AccountingCurrency", Constants.AccountingCurrency.Get());
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
@@ -1367,7 +1367,7 @@ Function CashCRSessionOpen(CashCR, ErrorDescription = "") Export
 			
 			CompletedSuccessfully = False;
 			// Shift may not have been closed.
-			ErrorDescription = NStr("en = 'More than 24 hours have passed since the opening. It is required to close petty cash shift.'");
+			ErrorDescription = NStr("en='More than 24 hours have passed since the opening. It is required to close petty cash shift.';ru='С момента открытия кассовой смены истекло более 24 часов. Необходимо выполнить закрытие кассовой смены.'");
 			
 		EndIf;
 		
@@ -1388,7 +1388,7 @@ Function CashCRSessionOpen(CashCR, ErrorDescription = "") Export
 			NewCashCRSession.Write(DocumentWriteMode.Posting);
 		Else
 			CompletedSuccessfully = False;
-			ErrorDescription = NStr("en = 'Verify the retail warehouse and cash register settings.'");
+			ErrorDescription = NStr("en='Verify the retail warehouse and cash register settings.';ru='Проверьте настройки розничного склада и кассы ККМ.'");
 		EndIf;
 		
 	EndIf;
@@ -1731,9 +1731,9 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		RollbackTransaction();
 		
 		StructureReturns.RetailReport = Undefined;
-		StructureReturns.ErrorDescription = NStr(
-			"en = 'An error occurred while generating retail sales report.
-			|Cash session closing is not completed.'"
+		StructureReturns.ErrorDescription = NStr("en='An error occurred while generating retail sales report."
+"Cash session closing is not completed.';ru='При формировании отчета о розничных продажах произошла ошибка."
+"Закрытие кассовой смены не выполнено.'"
 		);
 		
 	EndTry;
@@ -1787,10 +1787,11 @@ Function DeleteDeferredReceipts(CashCRSession, ErrorDescription)
 		
 		Result = False;
 		
-		ErrorDescription = NStr(
-			"en = 'An error occurred while deleting deferred receipts.
-			|Additional
-			|description: %AdditionalDetails%'"
+		ErrorDescription = NStr("en='An error occurred while deleting deferred receipts."
+"Additional"
+"description: %AdditionalDetails%';ru='При удалении отложенных чеков произошла ошибка."
+"Дополнительное"
+"описание: %ДополнительноеОписание%'"
 		);
 		ErrorDescription = StrReplace(ErrorDescription, "%AdditionalDetails%", ErrorInfo().Definition);
 		
@@ -1854,11 +1855,13 @@ Procedure RunReceiptsBackup(ObjectCashCRSession, ErrorDescription = "") Export
 		
 		RollbackTransaction();
 		
-		ErrorDescription = NStr(
-			"en = 'An error occurred while archiving receipts CR.
-			|Receipts CR are not archived.
-			|Additional
-			|description: %AdditionalDetails%'"
+		ErrorDescription = NStr("en='An error occurred while archiving receipts CR."
+"Receipts CR are not archived."
+"Additional"
+"description: %AdditionalDetails%';ru='При архивации чеков ККМ произошла ошибка."
+"Архивация чеков ККМ не выполнена."
+"Дополнительное"
+"описание: %ДополнительноеОписание%'"
 		);
 		ErrorDescription = StrReplace(ErrorDescription, "%AdditionalDetails%", ErrorInfo().Definition);
 
@@ -2179,7 +2182,7 @@ Function SessionIsOpen(CashCRSession, Date, ErrorDescription = "") Export
 			If Date - Selection.CashCRSessionStart < 86400 Then
 				SessionIsOpen = True;
 			Else
-				ErrorDescription = NStr("en = 'More than 24 hours have passed since the opening. It is required to close petty cash shift'");
+				ErrorDescription = NStr("en='More than 24 hours have passed since the opening. It is required to close petty cash shift';ru='С момента открытия кассовой смены истекло более 24 часов. Необходимо выполнить закрытие кассовой смены'");
 				SessionIsOpen = False;
 			EndIf;
 			
@@ -2188,7 +2191,7 @@ Function SessionIsOpen(CashCRSession, Date, ErrorDescription = "") Export
 			If Selection.CashCRSessionEnd >= Date AND Selection.CashCRSessionStart <= Date Then
 				SessionIsOpen = True;
 			Else
-				ErrorDescription = NStr("en = 'Session is not opened'");
+				ErrorDescription = NStr("en='Session is not opened';ru='Смена не открыта'");
 				SessionIsOpen = False;
 			EndIf;
 			
@@ -2196,7 +2199,7 @@ Function SessionIsOpen(CashCRSession, Date, ErrorDescription = "") Export
 		
 	Else
 		
-		ErrorDescription = NStr("en = 'Session is not opened'");
+		ErrorDescription = NStr("en='Session is not opened';ru='Смена не открыта'");
 		SessionIsOpen = False;
 		
 	EndIf;
@@ -2670,7 +2673,7 @@ Function GeneratePrintFormKM3(ObjectsArray, PrintObjects)
 		If Selection.CashCRType = Enums.CashCRTypes.AutonomousCashRegister Then
 			
 			Text = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'It is no needs to print the Statement of cash return by unused receipts (KM-3) for the document %1 with the ""Self checkout"" petty cash type'"),
+				NStr("en='It is no needs to print the Statement of cash return by unused receipts (KM-3) for the document %1 with the ""Self checkout"" petty cash type';ru='Для документа %1 с типом кассы ""Автономная ККМ"" печать Акта о возврате денежных сумм по неиспользованным чекам (КМ-3) не требуется.'"),
 				Selection.Ref
 			);
 			
@@ -2746,7 +2749,7 @@ Function GeneratePrintFormKM3(ObjectsArray, PrintObjects)
 		If Not DocumentPrinted Then
 			
 			Text = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'No data to print the Act on the cash amounts return for the unused checks (KM-3) by the document of %1.'"),
+				NStr("en='No data to print the Act on the cash amounts return for the unused checks (KM-3) by the document of %1.';ru='Нет данных для печати Акта о возврате денежных сумм по неиспользованным чекам (КМ-3) по документу %1.'"),
 				Selection.Ref
 			);
 			
@@ -2811,21 +2814,21 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "RetailReport";
-	PrintCommand.Presentation = NStr("en = 'Retail report'");
+	PrintCommand.Presentation = NStr("en='Retail report';ru='Отчет о розничных продажах'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "KM6";
-	PrintCommand.Presentation = NStr("en = 'KM6 (Report for shift)'");
+	PrintCommand.Presentation = NStr("en='KM6 (Report for shift)';ru='КМ6 (Отчет за смену)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "KM3";
-	PrintCommand.Presentation = NStr("en = 'KM3 (Cash assets return certificate)'");
+	PrintCommand.Presentation = NStr("en='KM3 (Cash assets return certificate)';ru='КМ3 (Акт о возврате денежных сумм)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;

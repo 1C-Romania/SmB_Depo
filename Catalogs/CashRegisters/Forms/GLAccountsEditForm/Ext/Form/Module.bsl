@@ -47,7 +47,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Ref = Parameters.Ref;
 	
 	If CancelGLAccountChange(Ref) Then
-		Items.GLAccountsGroup.ToolTip = NStr("en = 'There are transactions in base by this cash register! You can not change the GL account!'");
+		Items.GLAccountsGroup.ToolTip = NStr("en='There are transactions in base by this cash register! You can not change the GL account!';ru='В базе есть движения по этой кассе ККМ! Изменение счета учета запрещено!'");
 		Items.GLAccountsGroup.Enabled = False;
 		Items.Default.Visible = False;
 	EndIf;

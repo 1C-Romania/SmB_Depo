@@ -21,7 +21,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not ValueIsFilled(ElectronicDocument) Then
-		MessageText = NStr("en = 'Electronic document has not been selected'");
+		MessageText = NStr("en='Electronic document has not been selected';ru='Не выбран электронный документ'");
 		CommonUseClientServer.MessageToUser(MessageText, , "ElectronicDocument", , Cancel);
 		Return;
 	EndIf;
@@ -125,8 +125,9 @@ Procedure ReadCounterpartyProductsAndServices(Command)
 	
 	If Modified Then
 		
-		QuestionText = NStr("en = 'Unsaved changes will be lost.
-			|Continue?'");
+		QuestionText = NStr("en='Unsaved changes will be lost."
+"Continue?';ru='Несохраненные изменения будут утеряны."
+"Продолжить?'");
 			
 		NotificationHandler = New NotifyDescription("ReadProductsAndServicesNotification", ThisObject);
 		ShowQueryBox(NotificationHandler, QuestionText, QuestionDialogMode.YesNo,,, "Filling the products and services list");
@@ -214,7 +215,7 @@ Procedure SaveDirectoryData(LinkToED)
 		EndIf;
 		
 		If FileName = Undefined Then
-			ErrorText = NStr("en = 'Unable to view electronic document. Verify the work directory setting'");
+			ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 			CommonUseClientServer.MessageToUser(ErrorText);
 			Return;
 		EndIf;
@@ -238,8 +239,9 @@ Procedure SaveDirectoryData(LinkToED)
 					EndIf;
 			
 					If AdditDataFileName = Undefined Then
-						ErrorText = NStr("en = 'Unable to get additional data of the electronic document.
-												| Verify the work directory setting'");
+						ErrorText = NStr("en='Unable to get additional data of the electronic document."
+" Verify the work directory setting';ru='Не удалось получить доп. данные электронного документа."
+" Проверьте настройку рабочего каталога'");
 						CommonUseClientServer.MessageToUser(ErrorText);
 						Return;
 					EndIf;
@@ -255,7 +257,7 @@ Procedure SaveDirectoryData(LinkToED)
 			FolderForUnpacking = ElectronicDocumentsService.WorkingDirectory( , LinkToED.UUID());
 			
 			If FolderForUnpacking = Undefined Then
-				ErrorText = NStr("en = 'Unable to view electronic document. Verify the work directory setting'");
+				ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 				CommonUseClientServer.MessageToUser(ErrorText);
 				ZIPReading.Close();
 				DeleteFiles(FileName);
@@ -269,7 +271,7 @@ Procedure SaveDirectoryData(LinkToED)
 				If Not ElectronicDocumentsService.PossibleToExtractFiles(ZipReading, FolderForUnpacking) Then
 					MessageText = ElectronicDocumentsReUse.GetMessageAboutError("006");
 				EndIf;
-				Operation = NStr("en = 'ED unpacking'");
+				Operation = NStr("en='ED unpacking';ru='Распаковка ЭД'");
 				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation,
 																							ErrorText,
 																							MessageText);
@@ -348,8 +350,8 @@ Procedure ReadCounterpartyProductsAndServicesServer()
 	ElectronicDocumentsOverridable.ProductsAndServicesCorrespondenceQueryText(Query.Text);
 	
 	If Not ValueIsFilled(Query.Text) Then
-		MessageText = NStr("en = 'The mapping of products and services and suppliers products and services is not defined.
-		|It is required to fill the ElectronicDocumentsOverridable procedure.ProductsAndServicesCorrespondenceQueryText.'");
+		MessageText = NStr("en='The mapping of products and services and suppliers products and services is not defined."
+"It is required to fill the ElectronicDocumentsOverridable procedure.ProductsAndServicesCorrespondenceQueryText.';ru='Не определено сопоставление номенклатуры и номенклатуры поставщиков. Необходимо заполнить процедуру ЭлектронныеДокументыПереопределяемый.ТекстЗапросаСопоставленияНоменклатуры.'");
 		Raise(MessageText);
 	EndIf;
 	

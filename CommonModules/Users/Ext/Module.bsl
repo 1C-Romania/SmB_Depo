@@ -623,7 +623,7 @@ EndProcedure
 // Returns the full name of an unspecified user for display in interfaces.
 Function UnspecifiedUserFullName() Export
 	
-	Return NStr("en = '<Not specified>'");
+	Return NStr("en='<Not specified>';ru='<Не указан>'");
 	
 EndFunction
 
@@ -781,7 +781,7 @@ Function ReadIBUser(Val ID,
 	
 	If IBUser = Undefined Then
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'The user of the ""%1"" infobase is not found.'"), ID);
+			NStr("en='The user of the ""%1"" infobase is not found.';ru='Пользователь информационной базы ""%1"" не найден.'"), ID);
 		Return False;
 	EndIf;
 	
@@ -838,9 +838,11 @@ Function WriteIBUser(Val ID,
 		EndIf;
 	ElsIf CreateNew = True Then
 		ErrorDescription = ErrorDescriptionOnIBUserWrite(
-			NStr("en = 'Unable to create
-			           |infobase
-			           |user %1 as they already exist.'"),
+			NStr("en='Unable to create"
+"infobase"
+"user %1 as they already exist.';ru='Невозможно"
+"создать"
+"пользователя информационной базы %1, так как он уже существует.'"),
 			OldProperties.Name,
 			OldProperties.UUID);
 		Return False;
@@ -857,9 +859,9 @@ Function WriteIBUser(Val ID,
 			
 			If Not OldPasswordIsSame Then
 				ErrorDescription = ErrorDescriptionOnIBUserWrite(
-					NStr("en = 'While writing infobase user
-					           |%1
-					           |an old password is specified incorrectly.'"),
+					NStr("en='While writing infobase user"
+"%1"
+"an old password is specified incorrectly.';ru='При записи пользователя информационной базы %1, старый пароль указан не верно.'"),
 					OldProperties.Name,
 					OldProperties.UUID);
 				Return False;
@@ -890,10 +892,13 @@ Function WriteIBUser(Val ID,
 		UsersService.WriteInfobaseUser(IBUser);
 	Except
 		ErrorDescription = ErrorDescriptionOnIBUserWrite(
-			NStr("en = 'An error occurred while
-			           |writing infobase user
-			           |%1:
-			           |%2.'"),
+			NStr("en='An error occurred while"
+"writing infobase user"
+"%1:"
+"%2.';ru='При записи пользователя"
+"информационной базы %1"
+"произошла"
+"ошибка: ""%2"".'"),
 			IBUser.Name,
 			?(PreliminaryRead, OldProperties.UUID, Undefined),
 			ErrorInfo());
@@ -950,10 +955,13 @@ Function DeleteInfobaseUsers(Val ID,
 			
 		Except
 			ErrorDescription = ErrorDescriptionOnIBUserWrite(
-				NStr("en = 'An error occurred while
-				           |deleting infobase user
-				           |%1:
-				           |%2.'"),
+				NStr("en='An error occurred while"
+"deleting infobase user"
+"%1:"
+"%2.';ru='При удалении пользователя"
+"информационной базы %1"
+"произошла"
+"ошибка: ""%2"".'"),
 				IBUser.Name,
 				IBUser.UUID,
 				ErrorInfo());
@@ -1164,16 +1172,20 @@ Procedure CopyInfobaseUserProperties(Receiver,
 					
 						If StrLen(PropertyValue) > 64 Then
 							Raise StringFunctionsClientServer.PlaceParametersIntoString(
-								NStr("en = 'An error occurred while
-								           |writing infobase user Name
-								           |(for login): %1 exceeds 64 characters length.'"),
+								NStr("en='An error occurred while"
+"writing infobase user Name"
+"(for login): %1 exceeds 64 characters length.';ru='Ошибка записи пользователя"
+"информационной базы"
+"Имя (для входа): ""%1"" превышает длину 64 символа.'"),
 								PropertyValue);
 							
 						ElsIf Find(PropertyValue, ":") > 0 Then
 							Raise StringFunctionsClientServer.PlaceParametersIntoString(
-								NStr("en = 'An error occurred while
-								           |writing infobase user Name
-								           |(for login): %1 contains disallowed character :.'"),
+								NStr("en='An error occurred while"
+"writing infobase user Name"
+"(for login): %1 contains disallowed character :.';ru='Ошибка записи пользователя"
+"информационной базы"
+"Имя (для входа): ""%1"" содержит запрещенный символ "":"".'"),
 								PropertyValue);
 						EndIf;
 					EndIf;
@@ -1375,7 +1387,7 @@ Procedure FindAmbiguousInfobaseUsers(Val User,
 		Return;
 	EndIf;
 	
-	ErrorDescription = NStr("en = 'Database error:'") + Chars.LF;
+	ErrorDescription = NStr("en='Database error:';ru='Ошибка в базе данных:'") + Chars.LF;
 	CurrentAmbiguousID = Undefined;
 	
 	For Each String In Exporting Do
@@ -1397,7 +1409,7 @@ Procedure FindAmbiguousInfobaseUsers(Val User,
 				EndIf;
 				
 				If CurrentInfobaseUser = Undefined Then
-					NameForEntering = NStr("en = '<not found>'");
+					NameForEntering = NStr("en='<not found>';ru='<не найден>'");
 				Else
 					NameForEntering = CurrentInfobaseUser.Name;
 				EndIf;
@@ -1405,10 +1417,12 @@ Procedure FindAmbiguousInfobaseUsers(Val User,
 				ErrorDescription = ErrorDescription
 					+ StringFunctionsClientServer.PlaceParametersIntoString(
 						?(ServiceUserID,
-						NStr("en = 'Service user with
-						           |the identifier %2 corresponds to more than one item in the Users catalog:'"),
-						NStr("en = 'IB user %1 with
-						           |identifier %2 corresponds to more than one item in the Users catalog:'") ),
+						NStr("en='Service user with"
+"the identifier %2 corresponds to more than one item in the Users catalog:';ru='Пользователю"
+"сервиса с идентификатором ""%2"" соответствует более одного элемента в справочнике Пользователи:'"),
+						NStr("en='IB user %1 with"
+"identifier %2 corresponds to more than one item in the Users catalog:';ru='Пользователю"
+"ИБ ""%1"" с идентификатором ""%2"" соответствует более одного элемента в справочнике Пользователи:'") ),
 						NameForEntering,
 						CurrentAmbiguousID);
 			EndIf;
@@ -1422,8 +1436,9 @@ Procedure FindAmbiguousInfobaseUsers(Val User,
 			EndIf;
 			ErrorDescription = ErrorDescription
 				+ StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en = '
-					           |	""%1"" with %2 reference ID'"),
+					NStr("en='"
+"	""%1"" with %2 reference ID';ru='"
+"	""%1"" с идентификатором ссылки %2'"),
 					String.User,
 					String.User.UUID());
 		EndIf;
@@ -1484,7 +1499,7 @@ Function ErrorDescriptionOnIBUserWrite(ErrorTemplate,
 	
 	If WriteInJournal Then
 		WriteLogEvent(
-			NStr("en = 'Users.Error of the IB user record'",
+			NStr("en='Users.Error of the IB user record';ru='Пользователи.Ошибка записи пользователя ИБ'",
 			     CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,

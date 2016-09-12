@@ -88,7 +88,7 @@ Procedure OpenReportOrForm(CurrentItem, User, CurrentUser, FormNamePersonalSetti
 	EndIf;
 	
 	If User <> CurrentUser Then
-		WarningText = NStr("en = 'To view settings of other user, run the application on behalf of this user and open the needed report or form.'");
+		WarningText = NStr("en='To view settings of other user, run the application on behalf of this user and open the needed report or form.';ru='Для просмотра настроек другого пользователя необходимо запустить программу от его имени и открыть нужный отчет или форму.'");
 		ShowMessageBox(,WarningText);
 		Return;
 	EndIf;
@@ -120,19 +120,21 @@ Procedure OpenReportOrForm(CurrentItem, User, CurrentUser, FormNamePersonalSetti
 				ItemParent = ValueTreeItem.CurrentData.GetParent();
 				
 				If ValueTreeItem.CurrentData.RowType = "DesktopSettings" Then
-					ShowMessageBox(,NStr("en = 'To view desktop settings, go to the ""Desktop"" section
-						|in the command interface of the application.'"));
+					ShowMessageBox(,NStr("en='To view desktop settings, go to the ""Desktop"" section"
+"in the command interface of the application.';ru='Для просмотра настроек рабочего стола перейдите"
+"к разделу ""Рабочий стол"" в командном интерфейсе программы.'"));
 					Return;
 				EndIf;
 				
 				If ValueTreeItem.CurrentData.RowType = "CommandInterfaceSettings" Then
-					ShowMessageBox(,NStr("en = 'To view command interface settings, select the
-						|required section of the command interface of the application.'"));
+					ShowMessageBox(,NStr("en='To view command interface settings, select the"
+"required section of the command interface of the application.';ru='Для просмотра настроек командного интерфейса"
+"выберите нужный раздел командного интерфейса программы.'"));
 					Return;
 				EndIf;
 				
 				If ItemParent <> Undefined Then
-					WarningText = NStr("en = 'To  view this setting, open ""%1"" and go to form ""%2"".'");
+					WarningText = NStr("en='To  view this setting, open ""%1"" and go to form ""%2"".';ru='Для просмотра данной настройки необходимо открыть ""%1"" и затем перейти к форме ""%2"".'");
 					WarningText = StringFunctionsClientServer.PlaceParametersIntoString(WarningText,
 						ItemParent.Setting, ValueTreeItem.CurrentData.Setting);
 					ShowMessageBox(,WarningText);
@@ -143,7 +145,7 @@ Procedure OpenReportOrForm(CurrentItem, User, CurrentUser, FormNamePersonalSetti
 			
 		EndDo;
 		
-		ShowMessageBox(,NStr("en = 'This setting is impossible to view.'"));
+		ShowMessageBox(,NStr("en='This setting is impossible to view.';ru='Данную настройку невозможно просмотреть.'"));
 		Return;
 		
 	ElsIf ValueTreeItem.Name = "OtherSettings" Then
@@ -154,12 +156,12 @@ Procedure OpenReportOrForm(CurrentItem, User, CurrentUser, FormNamePersonalSetti
 			Return;
 		EndIf;
 		
-		ShowMessageBox(,NStr("en = 'This setting is impossible to view.'"));
+		ShowMessageBox(,NStr("en='This setting is impossible to view.';ru='Данную настройку невозможно просмотреть.'"));
 		Return;
 		
 	EndIf;
 	
-	ShowMessageBox(,NStr("en = 'Select the setting for viewing.'"));
+	ShowMessageBox(,NStr("en='Select the setting for viewing.';ru='Выберите настройку для просмотра.'"));
 	
 EndProcedure
 
@@ -176,11 +178,11 @@ Function GeneratingSettingsCountString(SettingsCount) Export
 	NumberInWords = NumberInWords(
 		SettingsCount,
 		"L=en_US",
-		NStr("en = ',,,,,,,,0'"));
+		NStr("en=',,,,,,,,0';ru=',,,,,,,,0'"));
 	SubjectAndNumberInWords = NumberInWords(
 		SettingsCount,
 		"L=en_US",
-		NStr("en = 'setting,settings,settings,,,,,,0'"));
+		NStr("en='setting,settings,settings,,,,,,0';ru='setting,settings,settings,,,,,,0'"));
 	SubjectInWords = StrReplace(
 		SubjectAndNumberInWords,
 		NumberInWords,
@@ -207,12 +209,12 @@ Function GeneratingExplanationOnCopying(SettingRepresentation, SettingsCount, Ex
 			SettingRepresentation = Left(SettingRepresentation, 24) + "...";
 		EndIf;
 		
-		ExplanationText = NStr("en = '""%1"" copied %2'");
+		ExplanationText = NStr("en='""%1"" copied %2';ru='""%1"" скопирована %2'");
 		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
 			ExplanationText, SettingRepresentation, ExplanationToWhomSettingsAreCopied);
 	Else
 		SubjectInWords = GeneratingSettingsCountString(SettingsCount);
-		ExplanationText = NStr("en = 'Copied %1 %2'");
+		ExplanationText = NStr("en='Copied %1 %2';ru='Скопировано %1 %2'");
 		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
 			ExplanationText, SubjectInWords, ExplanationToWhomSettingsAreCopied);
 	EndIf;
@@ -233,11 +235,11 @@ EndFunction
 Function ExplanationUsers(UserCount, User) Export
 	
 	If UserCount = 1 Then
-		ExplanationToWhomSettingsAreCopied = NStr("en = 'to user ""%1""'");
+		ExplanationToWhomSettingsAreCopied = NStr("en='to user ""%1""';ru='пользователю ""%1""'");
 		ExplanationToWhomSettingsAreCopied = StringFunctionsClientServer.PlaceParametersIntoString(
 			ExplanationToWhomSettingsAreCopied, User);
 	Else
-		ExplanationToWhomSettingsAreCopied = NStr("en = '%1 to users'");
+		ExplanationToWhomSettingsAreCopied = NStr("en='%1 to users';ru='%1 пользователям'");
 		ExplanationToWhomSettingsAreCopied = StringFunctionsClientServer.PlaceParametersIntoString(
 			ExplanationToWhomSettingsAreCopied, UserCount);
 	EndIf;

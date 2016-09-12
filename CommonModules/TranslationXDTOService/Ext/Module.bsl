@@ -115,7 +115,7 @@ Function ExecuteBroadcast(Val InitialObject, Val InitialVersionsDetails, Val Det
 			DetailsOfResultingVersions);
 	If TransmissionChainOfInterface = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Translation handler from %1 version to the %2 version is not registered in the configuration!'"),
+			NStr("en='Translation handler from %1 version to the %2 version is not registered in the configuration!';ru='В конфигурации не зарегистрирован обработчик трансляции из версии %1 в версию %2!'"),
 			GeneratePresentationVersions(InitialVersionsDetails),
 			GeneratePresentationVersions(DetailsOfResultingVersions));
 	Else
@@ -248,7 +248,7 @@ Function TransmitObject(Val Object, Val RulesBroadcastInterfaces)
 	
 	If TransmissionChainOfInterface = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Failed to define the translation handler for the (%1) package, impossible to execute the standard translation for this property processing'"), 
+			NStr("en='Failed to define the translation handler for the (%1) package, impossible to execute the standard translation for this property processing';ru='Не удалось определить обработчик трансляции для пакета {%1}, невозможно выполнение стандартной трансляции для обработки данного свойства'"), 
 			SourceObjectPackage);
 	EndIf;
 	
@@ -291,7 +291,7 @@ Function StandardProcessing(Val Object, Val PackageResultObject, Val RulesBroadc
 		ResultedObjectType = XDTOFactory.Type(PackageResultObject, SourceObjectType.Name);
 		If ResultedObjectType = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Failed to complete standard processing of the %1 translation type into the %2 package: the %1 type does not exist in the %2 package.'"),
+				NStr("en='Failed to complete standard processing of the %1 translation type into the %2 package: the %1 type does not exist in the %2 package.';ru='Не удалось выполнить стандартную обработку трансляции типа %1 в пакет %2: тип %1 не существует в пакете %2!'"),
 				"{" + SourceObjectType.NamespaceURI + "}" + SourceObjectType.Name,
 				"{" + PackageResultObject + "}");
 		EndIf;
@@ -306,7 +306,7 @@ Function StandardProcessing(Val Object, Val PackageResultObject, Val RulesBroadc
 		If PropertyOfOriginal = Undefined Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Failed to complete the standard processing of the %1 type conversion into the %2 type: the %3 property is not defined for the %1 type!'"),
+				NStr("en='Failed to complete the standard processing of the %1 type conversion into the %2 type: the %3 property is not defined for the %1 type!';ru='Не удалось выполнить стандартную обработку конвертации типа %1 в тип %2: свойство %3 не определено для типа %1!'"),
 				"{" + SourceObjectType.NamespaceURI + "}" + SourceObjectType.Name,
 				"{" + ResultedObjectType.NamespaceURI + "}" + ResultedObjectType.Name,
 				Property.LocalName);
@@ -320,7 +320,7 @@ Function StandardProcessing(Val Object, Val PackageResultObject, Val RulesBroadc
 		TranslatedProperty = ResultedObjectType.Properties.Get(Property.LocalName);
 		If TranslatedProperty = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en = 'Failed to complete the standard processing of the %1 type conversion into the %2 type: the %3 property is not defined for the %2 type!'"),
+				NStr("en='Failed to complete the standard processing of the %1 type conversion into the %2 type: the %3 property is not defined for the %2 type!';ru='Не удалось выполнить стандартную обработку конвертации типа %1 в тип %2: свойство %3 не определено для типа %2!'"),
 				"{" + SourceObjectType.NamespaceURI + "}" + SourceObjectType.Name,
 				"{" + ResultedObjectType.NamespaceURI + "}" + ResultedObjectType.Name,
 				Property.LocalName);

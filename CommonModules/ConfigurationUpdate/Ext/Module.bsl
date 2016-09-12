@@ -88,7 +88,7 @@ Procedure AbortExecuteIfExternalUserAuthorized(Val MessageText = "") Export
 		ErrorMessage = MessageText;
 		
 		If IsBlankString(ErrorMessage) Then
-			ErrorMessage = NStr("en = 'Specified operation is not allowed for external user.'");
+			ErrorMessage = NStr("en='Specified operation is not allowed for external user.';ru='Данная операция не доступна внешнему пользователю системы.'");
 		EndIf;
 		
 		Raise ErrorMessage;
@@ -132,11 +132,11 @@ EndFunction
 //
 Procedure FinishUpdate(Val UpdateResult, Val Email, Val UpdateAdministratorName) Export
 
-	MessageText = NStr("en = 'Update completion from external script.'");
+	MessageText = NStr("en='Update completion from external script.';ru='Завершение обновления из внешнего скрипта.'");
 	WriteLogEvent(EventLogMonitorEvent(), EventLogLevel.Information,,,MessageText);
 	
 	If Not CheckAccessForUpdate() Then
-		MessageText = NStr("en = 'Insufficient rights to complete the configuration update.'");
+		MessageText = NStr("en='Insufficient rights to complete the configuration update.';ru='Недостаточно прав для завершения обновления конфигурации.'");
 		WriteLogEvent(EventLogMonitorEvent(), EventLogLevel.Error,,,MessageText);
 		Raise MessageText;
 	EndIf;
@@ -147,11 +147,11 @@ Procedure FinishUpdate(Val UpdateResult, Val Email, Val UpdateAdministratorName)
 		AND Not IsBlankString(Email) Then
 		Try
 			SendNotificationAboutUpdate(UpdateAdministratorName, Email, UpdateResult);
-			MessageText = NStr("en = 'Notification of successfully installed updates has been sent to the email address:'")
+			MessageText = NStr("en='Notification of successfully installed updates has been sent to the email address:';ru='Уведомление об обновлении успешно отправлено на адрес электронной почты:'")
 				+ " " + Email;
 			WriteLogEvent(EventLogMonitorEvent(), EventLogLevel.Information,,,MessageText);
 		Except
-			MessageText = NStr("en = 'Error when sending email:'")
+			MessageText = NStr("en='Error when sending email:';ru='Ошибка при отправке письма электронной почты:'")
 				+ " " + Email + Chars.LF + DetailErrorDescription(ErrorInfo());
 			WriteLogEvent(EventLogMonitorEvent(), EventLogLevel.Error,,,MessageText);
 		EndTry;
@@ -411,17 +411,21 @@ EndFunction
 
 Procedure SendNotificationAboutUpdate(Val UserName, Val AddressOfDestination, Val SuccessfulRefresh)
 	
-	Subject = ? (SuccessfulRefresh, NStr("en = 'Successful configuration update ""%1"", version %2'"), 
-		NStr("en = 'Error configuration updating ""%1"", %2 version'"));
+	Subject = ? (SuccessfulRefresh, NStr("en='Successful configuration update ""%1"", version %2';ru='Успешное обновление конфигурации ""%1"", версия %2'"), 
+		NStr("en='Error configuration updating ""%1"", %2 version';ru='Ошибка обновления конфигурации ""%1"", версия %2'"));
 	Subject = StringFunctionsClientServer.PlaceParametersIntoString(Subject, Metadata.BriefInformation, Metadata.Version);
 	
-	Details = ?(SuccessfulRefresh, NStr("en = 'Configuration update completed successfully'"), 
-		NStr("en = 'Errors occurred while updating configuration. Details are written to the events log monitor.'"));
-	Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = '%1
-		|
-		|Configuration:
-		|%2 Version:
-		|%3 Connection string: %4'"),
+	Details = ?(SuccessfulRefresh, NStr("en='Configuration update completed successfully';ru='Обновление конфигурации завершено успешно.'"), 
+		NStr("en='Errors occurred while updating configuration. Details are written to the events log monitor.';ru='При обновлении конфигурации произошли ошибки. Подробности записаны в журнал регистрации.'"));
+	Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1"
+""
+"Configuration:"
+"%2 Version:"
+"%3 Connection string: %4';ru='%1"
+""
+"Конфигурация:"
+"%2"
+"Версия: %3 Строка соединения: %4'"),
 	Details, Metadata.BriefInformation, Metadata.Version, InfobaseConnectionString());
 	
 	EmailParameters = New Structure;
@@ -437,7 +441,7 @@ EndProcedure
 
 // Returns event name for events log monitor record.
 Function EventLogMonitorEvent() Export
-	Return NStr("en = 'Configuration update'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Configuration update';ru='Обновление конфигурации'", CommonUseClientServer.MainLanguageCode());
 EndFunction
 
 ////////////////////////////////////////////////////////////////////////////////

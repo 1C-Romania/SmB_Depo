@@ -90,7 +90,7 @@ EndProcedure
 Procedure RequestStatement(Command)
 	
 	If Not ValueIsFilled(Period) Then
-		MessageText = NStr("en = 'You should select period of the query'");
+		MessageText = NStr("en='You should select period of the query';ru='Необходимо выбрать период запроса'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Period");
 		Return;
 	EndIf;
@@ -191,13 +191,13 @@ EndProcedure
 Procedure QueryExtractSberbank(Command)
 	
 	If Not ValueIsFilled(Period) Then
-		MessageText = NStr("en = 'You should select period of the query'");
+		MessageText = NStr("en='You should select period of the query';ru='Необходимо выбрать период запроса'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Period");
 		Return;
 	EndIf;
 		
 	If Period.StartDate > Period.EndDate Then
-		MessageText = NStr("en = 'Date of period start shall be earlier than date of period end'");
+		MessageText = NStr("en='Date of period start shall be earlier than date of period end';ru='Дата начала периода должна быть меньше даты окончания'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Period");
 		Return;
 	EndIf;
@@ -311,10 +311,10 @@ Procedure GetSberbankElectronicDocumentsStates(EDAgreement, EDKind)
 		AttachableModule1C = ElectronicDocumentsServiceClient.ValueFromCache("AttachableModule1CForSberbank");
 		For Each Item IN ArrayOfQueries Do
 			Response = AttachableModule1C.sendRequests(Item);
-			Description = NStr("en = 'Document status request has been sent'");
+			Description = NStr("en='Document status request has been sent';ru='Оправлен запрос статуса документа'");
 			ElectronicDocumentsServiceCallServer.WriteEventToLogAudit(
 													EDAgreement, Description, Item);
-			Description = NStr("en = 'Document status request ID has been received'");
+			Description = NStr("en='Document status request ID has been received';ru='Получены идентификатор запроса статуса документа'");
 			ElectronicDocumentsServiceCallServer.WriteEventToLogAudit(
 														EDAgreement, Description, Response);
 			ArrayOfIDs = New Array;
@@ -322,9 +322,9 @@ Procedure GetSberbankElectronicDocumentsStates(EDAgreement, EDKind)
 			ElectronicDocumentsServiceCallServer.SaveIdentifiers(ArrayOfIDs, EDAgreement, EDKind);
 		EndDo;
 	Except
-		OperationKind = NStr("en = 'Receiving information about states of electronic documents'");
-		MessageText = NStr("en = 'There is no connection with the bank server'") + Chars.LF
-						+ NStr("en = 'details in the event log'");
+		OperationKind = NStr("en='Receiving information about states of electronic documents';ru='Получение информации о состоянии электронных документов'");
+		MessageText = NStr("en='There is no connection with the bank server';ru='Нет связи с сервером банка'") + Chars.LF
+						+ NStr("en='details in the event log';ru='Подробности в журнале регистрации'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 			OperationKind, ErrorDescription(), MessageText, 1);
 		SentCnt = 0;

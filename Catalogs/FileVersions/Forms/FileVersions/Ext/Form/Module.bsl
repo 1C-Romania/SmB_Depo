@@ -39,7 +39,7 @@ Procedure ActivateExecute()
 		FillList();
 		Notify("Record_File", New Structure("Event", "ActiveVersionChanged"), Parameters.File);
 	Else
-		ShowMessageBox(, NStr("en = 'Change of the active version is allowed only for the files that are not locked'"));
+		ShowMessageBox(, NStr("en='Change of the active version is allowed only for the files that are not locked';ru='Смена активной версии разрешена только для не занятых файлов.'"));
 	EndIf;
 	
 EndProcedure
@@ -150,7 +150,7 @@ EndProcedure
 Procedure Compare(Command)
 	
 	#If WebClient Then
-		ShowMessageBox(, NStr("en = 'Versions matching not supported in the web-client.'"));
+		ShowMessageBox(, NStr("en='Versions matching not supported in the web-client.';ru='Сравнение версий не поддерживается в веб-клиенте.'"));
 		Return;
 	#EndIf
 	
@@ -181,19 +181,24 @@ Procedure Compare(Command)
 		
 		If Not ExtensionIsSupported Then
 			WarningText =
-				NStr("en = 'Versions matching is supported only for files
-				           |   of the following
-				           |   types: Text document (.txt) RTF
-				           |   document (.rtf) Microsoft Word document (.doc,
-				           |   .docx) HTML document (.html
-				           |   .htm) Text document OpenDocument (.odt)'");
+				NStr("en='Versions matching is supported only for files"
+"   of the following"
+"   types: Text document (.txt) RTF"
+"   document (.rtf) Microsoft Word document (.doc,"
+"   .docx) HTML document (.html"
+"   .htm) Text document OpenDocument (.odt)';ru='Сравнение версий поддерживается только"
+"   для файлов"
+"   следующих типов: Текстовый документ (.txt)"
+"   Документ формата RTF (.rtf) Документ Microsoft"
+"   Word (.doc, .docx) Документ"
+"   HTML (.html .htm) Текстовый документ OpenDocument (.odt)'");
 			ShowMessageBox(, WarningText);
 			Return;
 		EndIf;
 		
 		If StandardSubsystemsClientReUse.ClientWorkParameters().ThisIsBasicConfigurationVersion Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en = 'This operation is not supported in the base version.'"));
+				NStr("en='This operation is not supported in the base version.';ru='Данная операция не поддерживается в базовой версии.'"));
 			Return;
 		EndIf;
 		
@@ -391,11 +396,11 @@ Procedure MarkToDeleteUnmark()
 	
 	If CurrentData.DeletionMark Then 
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Unmark ""%1"" for deletion?'"),
+			NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'"),
 			String(CurrentData.Ref));
 	Else
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en = 'Mark ""%1"" for deletion?'"),
+			NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'"),
 			String(CurrentData.Ref));
 	EndIf;
 	
@@ -490,7 +495,7 @@ Procedure VersionsComparisonAutomatic(Result, ExecuteParameters) Export
 		ExecuteParameters.File2Data = FileOperationsServiceServerCall.FileDataForOpening(
 			Ref2, UUID);
 		
-		StatusText = NStr("en = 'Matching of ""%1"" file versions in progress...'");
+		StatusText = NStr("en='Matching of ""%1"" file versions in progress...';ru='Выполняется сравнение версий файла ""%1""...'");
 		StatusText = StrReplace(StatusText, "%1", String(ExecuteParameters.File1Data.Ref));
 		Status(StatusText);
 		ExecuteParameters.CurrentStep = 3;

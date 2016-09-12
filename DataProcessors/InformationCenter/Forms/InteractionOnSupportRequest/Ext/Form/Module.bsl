@@ -122,7 +122,7 @@ Procedure FillFormItems(DataByInteraction)
 	Items.Files.Visible = (DataByInteraction.Files.Count() <> 0);
 	For Each CurrentFile IN DataByInteraction.Files Do 
 		NewItem = Files.Add();
-		NewItem.Presentation = CurrentFile.Name + "." + CurrentFile.Extension + " (" + Round(CurrentFile.Size / 1024, 2) + NStr("en = ' Kb'") + ")";
+		NewItem.Presentation = CurrentFile.Name + "." + CurrentFile.Extension + " (" + Round(CurrentFile.Size / 1024, 2) + NStr("en=' Kb';ru=' Кб'") + ")";
 		NewItem.Picture = FileFunctionsServiceClientServer.GetFileIconIndex(CurrentFile.Extension);
 		NewItem.ID = New UUID(CurrentFile.Id);
 	EndDo;

@@ -18,6 +18,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>User settings group</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пользовательских настроек</v8:content>
+				</v8:item>
 			</Title>
 			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
@@ -29,6 +33,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Command bar</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Командная панель</v8:content>
 				</v8:item>
 			</Title>
 			<CommandSource>Form</CommandSource>
@@ -127,6 +135,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Flag set as True shows the availability of a right to add in a specified table for a specified user within the specified access group</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Флажок, установленный истина, показывает наличие права добавления в заданной таблице для заданного пользователя в пределах заданной группы доступа</v8:content>
+						</v8:item>
 					</ToolTip>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ListReadContextMenu" id="25"/>
@@ -192,11 +204,19 @@ FROM
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable editing</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Enable editing for error search only (requires advanced knowledge of the mechanism work)</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность редактирования только для целей поиска неисправности (требуется углубленное понимание работы механизма)</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>EnableEditingAbility</Action>
@@ -207,11 +227,19 @@ FROM
 					<v8:lang>en</v8:lang>
 					<v8:content>Update register data</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить данные регистра</v8:content>
+				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Update register data</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить данные регистра</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>RefreshDataRegister</Action>

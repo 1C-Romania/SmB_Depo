@@ -66,7 +66,7 @@ Procedure RepostingDocuments(ParametersStructure, StorageAddress) Export
 			
 			ErrorInfo = ErrorInfo();
 			
-			MessageText = NStr("en = 'Document %1 is not posted! %2 Due to: %3'");
+			MessageText = NStr("en='Document %1 is not posted! %2 Due to: %3';ru='Документ %1 не проведен! %2 По причине: %3'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText,
 						String(DocumentObject), Chars.LF, ErrorDescription());
 						
@@ -126,9 +126,11 @@ Procedure ShowErrors(ErrorList)
 		
 		If LimitOutputMessages = 0 Then
 			
-			MessageText = NStr("en = '%1 errors were found while reposting. 
-			|First 50 error messages are provided for review. 
-			|It is necessary to fix the specified errors and after that to repost the documents.'");
+			MessageText = NStr("en='%1 errors were found while reposting. "
+"First 50 error messages are provided for review. "
+"It is necessary to fix the specified errors and after that to repost the documents.';ru='При перепроведении выявлено %1 ошибок. "
+"Сообщения о первых 50 ошибках предоставлены к ознакомлению. "
+"Необходимо исправить указанные ошибки, после чего принять решение о повторном перепроведении документов.'");
 			
 			StringFunctionsClientServer.PlaceParametersIntoString(ErrorString, ErrorList.Count());
 			

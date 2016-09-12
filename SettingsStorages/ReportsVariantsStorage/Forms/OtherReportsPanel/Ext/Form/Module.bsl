@@ -10,7 +10,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	FillPropertyValues(ThisObject, Parameters, "VariantRef, ReportRef, SubsystemRef, ReportDescription");
-	Items.GroupOtherReportVariants.Title = ReportName + " (" + NStr("en = 'Report variants'") + "):";
+	Items.GroupOtherReportVariants.Title = ReportName + " (" + NStr("en='Report variants';ru='Варианты отчета'") + "):";
 	
 	If ClientApplicationInterfaceCurrentVariant() = ClientApplicationInterfaceVariant.Version8_2 Then
 		ReportVariantsGroupsColour = StyleColors.ReportsVariantsGroupColor82;
@@ -62,7 +62,7 @@ Procedure VariantPress(Item)
 		
 	ElsIf Not ValueIsFilled(Variant.ReportName) Then
 		
-		WarningText = StrReplace(NStr("en = 'Report name for option ""%1"" is not filled in.'"), "%1", Variant.Description);
+		WarningText = StrReplace(NStr("en='Report name for option ""%1"" is not filled in.';ru='Не заполнено имя отчета для варианта ""%1"".'"), "%1", Variant.Description);
 		ShowMessageBox(, WarningText);
 		Return;
 		
@@ -264,7 +264,7 @@ Procedure DisplayHyperlinkOnPanel(OutputTable, Variant, Group, ShowToolTips)
 		Label.ToolTip = TrimAll(Variant.Definition);
 	EndIf;
 	If ValueIsFilled(Variant.Author) Then
-		Label.ToolTip = TrimL(Label.ToolTip + Chars.LF) + NStr("en = 'Author:'") + " " + TrimAll(String(Variant.Author));
+		Label.ToolTip = TrimL(Label.ToolTip + Chars.LF) + NStr("en='Author:';ru='Автор:'") + " " + TrimAll(String(Variant.Author));
 	EndIf;
 	If ShowToolTips Then
 		Label.ToolTipRepresentation = ToolTipRepresentation.ShowBottom;
