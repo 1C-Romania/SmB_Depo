@@ -3,9 +3,16 @@
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
+	If Parameters.Property("AutoTest") Then
+		Return;
+	EndIf;  	
+
 	AddressInBasisDocumentsStorage = Parameters.AddressInBasisDocumentsStorage;
-	BasisDocuments.Load(GetFromTempStorage(AddressInBasisDocumentsStorage));
 	
+	If AddressInBasisDocumentsStorage<>"" Then
+		BasisDocuments.Load(GetFromTempStorage(AddressInBasisDocumentsStorage));
+	EndIf;
+		
 EndProcedure
 
 #EndRegion
