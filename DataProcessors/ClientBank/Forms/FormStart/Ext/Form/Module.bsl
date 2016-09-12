@@ -3,6 +3,7 @@
 &AtClient
 Procedure LoadFromFile(Command)
 	
+		
 	If ValueIsFilled(DirectExchangeWithBanksAgreement) Then
 		
 		OpenForm(
@@ -10,7 +11,7 @@ Procedure LoadFromFile(Command)
 			New Structure("Company, BankAccountOfTheCompany, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, DirectExchangeWithBanksAgreement",
 				Object.Company, Object.BankAccount, Object.CFItemIncoming, Object.CFItemOutgoing, Object.PostImported, Object.FillDebtsAutomatically, DirectExchangeWithBanksAgreement)
 		);
-		
+			
 	Else
 	
 		SmallBusinessClient.ImportDataFromStatementFile(

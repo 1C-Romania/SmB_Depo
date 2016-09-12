@@ -1666,11 +1666,13 @@ Procedure ImportDataFromFileStatementsFragment(AdditionalParameters)
 	
 	OpenForm(
 		"DataProcessor.ClientBank.Form.FormImport",
-		New Structure("FileForProcessorAddress, PathToFile, Company, CompanyBankAcc, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, Application, Encoding, FormatVersion",
+		//( elmi #17 (112-00003) 
+		//New Structure("FileForProcessorAddress, PathToFile, Company, CompanyBankAcc, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, Application, Encoding, FormatVersion",
+		New Structure("AddressOfFileForProcessing, PathToFile, Company, BankAccountOfTheCompany, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, Application, Encoding, FormatVersion",
+		//) elmi
 		AdditionalParameters.AddressInStorage, AdditionalParameters.PathToFile1, AdditionalParameters.Company, AdditionalParameters.BankAccount, AdditionalParameters.CFItemIncoming, AdditionalParameters.CFItemOutgoing, AdditionalParameters.PostImported, AdditionalParameters.FillDebtsAutomatically, AdditionalParameters.Application, AdditionalParameters.Encoding, AdditionalParameters.FormatVersion)
 	);
 	
-
 	
 EndProcedure
 

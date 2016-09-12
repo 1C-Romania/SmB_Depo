@@ -1138,7 +1138,10 @@ Procedure SetVisibleEnabled(Registration = False)
 		Else
 			PrescriptionPresentation = "";
 			For Each PurposeRow In Object.Purpose Do
-				Attributes = CommonUse.ObjectAttributesValues(PurposeRow.ObjectDestination, "Name, DeletionMark");
+				//( elmi  Lost in translation - fixed for  #17
+				//Attributes = CommonUse.ObjectAttributesValues(PurposeRow.ObjectDestination, "Name, DeletionMark");
+				Attributes = CommonUse.ObjectAttributesValues(PurposeRow.ObjectDestination, "Description, DeletionMark");
+				//) elmi  
 				If Attributes.DeletionMark Then
 					Continue;
 				EndIf;

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
 	<Title>
 		<v8:item>
 			<v8:lang>en</v8:lang>
@@ -243,7 +243,7 @@
 						<Event name="Click">BankElectronicStatementClick</Event>
 					</Events>
 				</LabelField>
-				<Table name="Import" id="186">
+				<Table name="ImportTable" id="186">
 					<SkipOnInput>false</SkipOnInput>
 					<ChangeRowSet>false</ChangeRowSet>
 					<ChangeRowOrder>false</ChangeRowOrder>
@@ -255,8 +255,8 @@
 					<ViewStatusLocation>None</ViewStatusLocation>
 					<SearchControlLocation>None</SearchControlLocation>
 					<RowFilter xsi:nil="true"/>
-					<ContextMenu name="ImportingContextMenu" id="187"/>
-					<AutoCommandBar name="ImportCommandBar" id="188">
+					<ContextMenu name="ImportTableContextMenu" id="187"/>
+					<AutoCommandBar name="ImportTableCommandBar" id="188">
 						<Autofill>false</Autofill>
 						<ChildItems>
 							<Button name="ImportUpdate1" id="387">
@@ -306,30 +306,30 @@
 							</ButtonGroup>
 						</ChildItems>
 					</AutoCommandBar>
-					<ExtendedTooltip name="ImportExtendedTooltip" id="467"/>
-					<SearchStringAddition name="ImportSearchString" id="497">
+					<ExtendedTooltip name="ImportTableExtendedTooltip" id="467"/>
+					<SearchStringAddition name="ImportTableSearchString" id="497">
 						<AdditionSource>
-							<Item>Import</Item>
+							<Item>ImportTable</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ImportSearchStringContextMenu" id="498"/>
-						<ExtendedTooltip name="ImportSearchStringExtendedTooltip" id="499"/>
+						<ContextMenu name="ImportTableSearchStringContextMenu" id="498"/>
+						<ExtendedTooltip name="ImportTableSearchStringExtendedTooltip" id="499"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="ImportViewStatus" id="500">
+					<ViewStatusAddition name="ImportTableViewStatus" id="500">
 						<AdditionSource>
-							<Item>Import</Item>
+							<Item>ImportTable</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ImportViewStatusContextMenu" id="501"/>
-						<ExtendedTooltip name="ImportViewStatusExtendedTooltip" id="502"/>
+						<ContextMenu name="ImportTableViewStatusContextMenu" id="501"/>
+						<ExtendedTooltip name="ImportTableViewStatusExtendedTooltip" id="502"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="ImportSearchManagement" id="503">
+					<SearchControlAddition name="ImportTableSearchControl" id="503">
 						<AdditionSource>
-							<Item>Import</Item>
+							<Item>ImportTable</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="ImportSearchManagementContextMenu" id="504"/>
-						<ExtendedTooltip name="ImportSearchManagementExtendedTooltip" id="505"/>
+						<ContextMenu name="ImportTableSearchControlContextMenu" id="504"/>
+						<ExtendedTooltip name="ImportTableSearchControlExtendedTooltip" id="505"/>
 					</SearchControlAddition>
 					<Events>
 						<Event name="Selection">ImportSelection</Event>
@@ -471,6 +471,12 @@
 											<ContextMenu name="ImportAmountWrittenOffContextMenu" id="212"/>
 											<ExtendedTooltip name="ImportAmountWrittenOffExtendedTooltip" id="476"/>
 										</InputField>
+										<InputField name="ImportTableDocument" id="590">
+											<DataPath>Object.Import.Document</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ImportTableDocumentContextMenu" id="591"/>
+											<ExtendedTooltip name="ImportTableDocumentExtendedTooltip" id="592"/>
+										</InputField>
 										<InputField name="ImportDocumentName" id="381">
 											<DataPath>Object.Import.DocumentName</DataPath>
 											<UserVisible>
@@ -588,7 +594,7 @@
 					<ExtendedTooltip name="TotalsExtendedTooltip" id="534"/>
 					<ChildItems>
 						<LabelField name="ImportDetailsErrors" id="402">
-							<DataPath>Items.Import.CurrentData.ErrorsDescriptionFull</DataPath>
+							<DataPath>Items.ImportTable.CurrentData.ErrorsDescriptionFull</DataPath>
 							<TitleLocation>None</TitleLocation>
 							<TextColor>style:SpecialTextColor</TextColor>
 							<ContextMenu name="ImportDetailsErrorsContextMenu" id="403"/>

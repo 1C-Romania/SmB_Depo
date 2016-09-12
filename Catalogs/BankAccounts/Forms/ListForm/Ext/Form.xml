@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="FormCommandBar" id="-1">
 		<ChildItems>
@@ -176,6 +176,11 @@
 					<ContextMenu name="OwnerContextMenu" id="29"/>
 					<ExtendedTooltip name="OwnerExtendedTooltip" id="30"/>
 				</InputField>
+				<LabelField name="ExternalDataProcessor" id="48">
+					<DataPath>1/72</DataPath>
+					<ContextMenu name="ExternalDataProcessorContextMenu" id="49"/>
+					<ExtendedTooltip name="ExternalDataProcessorExtendedTooltip" id="50"/>
+				</LabelField>
 				<LabelField name="AgreementOnDirectExchange" id="45">
 					<DataPath>List.AgreementOnDirectExchange</DataPath>
 					<ContextMenu name="AgreementOnDirectExchangeContextMenu" id="46"/>
@@ -219,7 +224,6 @@
 	CatalogBankAccount.Predefined,
 	CatalogBankAccount.PredefinedDataName,
 	EDUsageAgreements.AgreementStatus AS AgreementOnDirectExchange
-
 FROM
 	Catalog.BankAccounts AS CatalogBankAccount
 		LEFT JOIN Catalog.EDUsageAgreements AS EDUsageAgreements

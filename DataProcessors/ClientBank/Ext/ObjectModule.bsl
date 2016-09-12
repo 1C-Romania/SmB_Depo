@@ -756,11 +756,14 @@ Function CreateCounterparty(StringCounterparty = Undefined) Export
 		NewItem.TIN = StringCounterparty.GetItems()[1].Value;
 		NewItem.KPP = StringCounterparty.GetItems()[2].Value;
 		
-		If StrLen(NewItem.TIN) = 12 Then
-			NewItem.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind;
-		Else
+		
+		//( elmi #17 (112-00003) 
+		//If StrLen(NewItem.TIN) = 12 Then
+		//	NewItem.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind;
+		//Else
 			NewItem.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity;
-		EndIf;
+		//EndIf;
+		//) elmi #17 (112-00003) 
 		
 		NewItem.GLAccountCustomerSettlements = ChartsOfAccounts.Managerial.AccountsReceivable;
 		NewItem.CustomerAdvancesGLAccount = ChartsOfAccounts.Managerial.AccountsByAdvancesReceived;
@@ -933,17 +936,26 @@ Procedure Import(ImportTitle) Export
 	IntervalBeginExport = Date("00010101");
 	ExportIntervalEnd  = Date("00010101");
 	DocumentsForImport.Indexes.Add("Document");
-	Result = GetDateFromString(IntervalBeginExport, ImportTitle.StartDate);
-	If Not ValueIsFilled(Result) Then
-		MessageText  = NStr("en = 'In the import file title there is invalid date of the period beginning! File can not be imported!'");
-		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
-		Return;
+	
+	//( elmi  #17 (112-00003) (
+	If ImportTitle <> Undefined Then
+	//) elmi 	
+		
+		Result = GetDateFromString(IntervalBeginExport, ImportTitle.StartDate);
+		If Not ValueIsFilled(Result) Then
+			MessageText  = NStr("en = 'In the import file title there is invalid date of the period beginning! File can not be imported!'");
+			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
+			Return;
+		EndIf;
+		Result = GetDateFromString(ExportIntervalEnd, ImportTitle.EndDate);
+		If Not ValueIsFilled(Result) Then
+			MessageText = NStr("en = 'The header of the imported file has a wrong date of the beginning of the period!'");
+			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
+		EndIf;
+	
+	//( elmi  #17 (112-00003) 
 	EndIf;
-	Result = GetDateFromString(ExportIntervalEnd, ImportTitle.EndDate);
-	If Not ValueIsFilled(Result) Then
-		MessageText = NStr("en = 'The header of the imported file has a wrong date of the beginning of the period!'");
-		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
-	EndIf;
+	//) elmi 
 	
 	// We import the marked document sections.
 	For Each SectionRow IN DocumentsForImport Do

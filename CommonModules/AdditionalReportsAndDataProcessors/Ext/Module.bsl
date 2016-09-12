@@ -1756,7 +1756,10 @@ Function NewQueryByAvailableCommands(KindOfDataProcessors, FullNameOrLinkOfParen
 	
 	Query.SetParameter("Kind", KindOfDataProcessors);
 	If Users.RolesAvailable("AddChangeAdditionalReportsAndDataProcessors") Then
-		QueryText = StrReplace(QueryText, "Publishing = &Publishing", "Publishing <> &Publishing");
+		//( elmi Lost in translation - fixed for  #17
+		//QueryText = StrReplace(QueryText, "Publishing = &Publishing", "Publishing <> &Publishing");
+		  QueryText = StrReplace(QueryText, "Publication = &Publication", "Publication <> &Publication");
+		//) elmi 
 		Query.SetParameter("Publication", Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Disabled);
 	Else
 		Query.SetParameter("Publication", Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Used);

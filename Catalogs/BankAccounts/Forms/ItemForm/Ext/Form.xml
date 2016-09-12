@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="FormCommandBar" id="-1">
@@ -306,6 +306,11 @@
 									<BackColor>style:ManagingFieldBackgroundColor</BackColor>
 									<ContextMenu name="DescriptionContextMenu" id="4"/>
 									<ExtendedTooltip name="DescriptionExtendedTooltip" id="145"/>
+								</InputField>
+								<InputField name="ExternalDataProcessor1" id="169">
+									<DataPath>Object.ExternalDataProcessor</DataPath>
+									<ContextMenu name="ExternalDataProcessor1ContextMenu" id="170"/>
+									<ExtendedTooltip name="ExternalDataProcessor1ExtendedTooltip" id="171"/>
 								</InputField>
 								<LabelDecoration name="IndentDecoration" id="152">
 									<ContextMenu name="IndentDecorationContextMenu" id="153"/>
@@ -748,6 +753,11 @@
 							</InputHint>
 							<ContextMenu name="PermissionNumberAndDateContextMenu" id="28"/>
 							<ExtendedTooltip name="PermissionNumberAndDateExtendedTooltip" id="142"/>
+						</InputField>
+						<InputField name="ExternalDataProcessor" id="166">
+							<DataPath>Object.ExternalDataProcessor</DataPath>
+							<ContextMenu name="ExternalDataProcessorContextMenu" id="167"/>
+							<ExtendedTooltip name="ExternalDataProcessorExtendedTooltip" id="168"/>
 						</InputField>
 					</ChildItems>
 				</Page>

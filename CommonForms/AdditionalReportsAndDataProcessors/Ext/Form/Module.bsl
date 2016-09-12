@@ -159,8 +159,13 @@ Procedure RunDataProcessorByParameters()
 		Return;
 	EndIf;
 	
+	//( elmi Lost in translation - fixed for  #17
+	//ExecuteCommand = New Structure(
+	//	"Refs, Presentation, Identifier, StartVariant, ShowAlert, Modifier, DestinationObjects, IsReport, Kind");
 	ExecuteCommand = New Structure(
-		"Refs, Presentation, Identifier, StartVariant, ShowAlert, Modifier, DestinationObjects, IsReport, Kind");
+		"Ref, Presentation, ID, StartVariant, ShowAlert, Modifier, DestinationObjects, IsReport, Type");
+	//) elmi 	
+		
 	FillPropertyValues(ExecuteCommand, DataProcessorData);
 	If Not ThisIsGlobalDataProcessors Then
 		ExecuteCommand.DestinationObjects = DestinationObjects.UnloadValues();

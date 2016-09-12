@@ -303,11 +303,15 @@ EndProcedure
 // Opens data processor form.
 Procedure RunOpenOfProcessingForm(ExecuteCommand, Form, DestinationObjects) Export
 	ProcessingParameters = New Structure("CommandID, AdditionalDataProcessorRef, FormName, SessionKey");
-	ProcessingParameters.CommandID          = ExecuteCommand.ID;
-	ProcessingParameters.AdditionalInformationProcessorRef = ExecuteCommand.Ref;
-	ProcessingParameters.FormName                      = ?(Form = Undefined, Undefined, Form.FormName);
+	//( elmi Lost in translation - fixed for  #17
+	//ProcessingParameters.AdditionalDataProcessorRef = ExecuteCommand.Refs;
+    ProcessingParameters.AdditionalDataProcessorRef = ExecuteCommand.Ref;
+    //) elmi
+
+	ProcessingParameters.CommandID        = ExecuteCommand.ID;
 	ProcessingParameters.SessionKey = ExecuteCommand.Ref.UUID();
-	
+	ProcessingParameters.FormName                      = ?(Form = Undefined, Undefined, Form.FormName);
+		
 	If TypeOf(DestinationObjects) = Type("Array") Then
 		ProcessingParameters.Insert("DestinationObjects", DestinationObjects);
 	EndIf;

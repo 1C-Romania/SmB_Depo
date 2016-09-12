@@ -85,7 +85,10 @@ EndFunction // CreateMatchFromString()
 &AtServer
 Procedure DataLoadFromFile()
 	
-	FormAttributeToValue("Object").Load(ImportTitle);
+	//( elmi #17 (112-00003) 
+	//FormAttributeToValue("Object").Load(ImportTitle);
+	FormAttributeToValue("Object").Import(ImportTitle);
+    //) elmi  
 	
 EndProcedure // DataLoadFromFile()
 
@@ -884,8 +887,11 @@ Procedure ListOfNotFound(DocumentRow, BankAccount, CounterpartyTable)
 		If DirectSettlements Then
 			
 			AddNewAttributeDescription("Bank",            "BANK1",   CounterpartyType, AttributesOfNewCounterparty.GetItems(), DocumentRow);
-			AddNewAttributeDescription("City of bank",     "BANK2",   CounterpartyType, AttributesOfNewCounterparty.GetItems(), DocumentRow);
-			AddNewAttributeDescription("Bank code",       "BIN",     CounterpartyType, AttributesOfNewCounterparty.GetItems(), DocumentRow);
+			AddNewAttributeDescription("City of bank",    "BANK2",   CounterpartyType, AttributesOfNewCounterparty.GetItems(), DocumentRow);
+			//( elmi #17 (112-00003) 
+			//AddNewAttributeDescription("Bank code",     "BIN",     CounterpartyType, AttributesOfNewCounterparty.GetItems(), DocumentRow);
+			AddNewAttributeDescription("Bank code",       "BIC",     CounterpartyType, AttributesOfNewCounterparty.GetItems(), DocumentRow);
+			//) elmi
 			AddNewAttributeDescription("Corr. bank account", "BALANCEDACCOUNT", CounterpartyType, AttributesOfNewCounterparty.GetItems(), DocumentRow);
 			
 		Else
@@ -1223,12 +1229,16 @@ EndFunction // ReadElectronicBankStatement()
 &AtClient
 Procedure ReadDataFromFile()
 	
+	//( elmi #17 (112-00003) 
+	ExternalDataProcessorRefs = GetExternalDataProcessor(Object.BankAccount);  
+	//) elmi
+	
 	If ValueIsFilled(DirectExchangeWithBanksAgreement) Then
 		
 		If Not ValueIsFilled(BankElectronicStatement) Then
 			SmallBusinessClient.ShowMessageAboutError(ThisForm,
-				NStr("en = 'For getting electronic bank statement click ""Request a statement""'")
-				,, "BankElectronicStatement");
+			NStr("en = 'For getting electronic bank statement click ""Request a statement""'")
+			,, "BankElectronicStatement");
 			Return;
 		EndIf;
 		
@@ -1243,20 +1253,62 @@ Procedure ReadDataFromFile()
 			
 		EndIf;
 		
+	//( elmi #17 (112-00003) 
+	ElsIf  ValueIsFilled(ExternalDataProcessorRefs) Then
+		
+		ParametersOfDataProcessor = New Structure("CommandID, AdditionalInformationProcessorRef, ArrayOfPurposes, PathToFile, ExecutionResult"); 
+		ParametersOfDataProcessor.CommandID                           = "ImportFromClientBankExternalDP";
+		ParametersOfDataProcessor.AdditionalInformationProcessorRef   = ExternalDataProcessorRefs;
+		ParametersOfDataProcessor.ArrayOfPurposes                     = Object.BankAccount;
+		ParametersOfDataProcessor.PathToFile                          = Object.ImportFile;
+		ParametersOfDataProcessor.ExecutionResult                     = New Structure("ImportStream, WarningText, ListOfNotFound" );
+		
+		RunCommandOnServer( ParametersOfDataProcessor);
+		
+		Result = ParametersOfDataProcessor.ExecutionResult;
+		
+		If Result <> Undefined Then
+			If Result.Property("WarningText") Then
+				If ValueIsFilled(Result.WarningText) Then
+					WarningText = Result.WarningText;
+				EndIf;	   
+			EndIf;	
+			If Result.Property("ImportStream") AND Result.Property("ListOfNotFound") Then 
+				FillTableFromExternalDataProcessor( Result.ImportStream, Result.ListOfNotFound );
+				Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
+			Else		
+				WarningText = НСтр("en='The file of downloading contains no data!'");
+			EndIf;	
+			
+		Else	  
+			WarningText = НСтр("en='The file of downloading contains no data!'");
+		EndIf;
+	//) elmi
+		
 	Else
 		
 		// We get source data.
 		ImportTextForParsing = ReadFile(Object.ImportFile);
 		
+		
+		If ImportTextForParsing = Undefined Then
+			MessageText = NStr("en = 'Import file does not contain data!'");
+			SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText);
+			Return;
+		EndIf;
+		
+		WarningText = FillDocumentsForImport(ImportTextForParsing);
+		
 	EndIf;
 	
-	If ImportTextForParsing = Undefined Then
-		MessageText = NStr("en = 'Import file does not contain data!'");
-		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText);
-		Return;
-	EndIf;
+	//If ImportTextForParsing = Undefined Then
+	//	MessageText = NStr("en = 'Import file does not contain data!'");
+	//	SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText);
+	//	Return;
+	//EndIf;
+	//WarningText = FillDocumentsForImport(ImportTextForParsing);
 	
-	WarningText = FillDocumentsForImport(ImportTextForParsing);
+	//) elmi
 	
 	If ValueIsFilled(WarningText) Then
 		ShowMessageBox(Undefined,WarningText);
@@ -1331,7 +1383,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Parameters.Property("BankAccountOfTheCompany")
-	   AND ValueIsFilled(Parameters.BankAccountOfTheCompany) Then
+		AND ValueIsFilled(Parameters.BankAccountOfTheCompany) Then
 		Object.BankAccount = Parameters.BankAccountOfTheCompany;
 		ThisForm.Title = "Importing account statements: " + Parameters.BankAccountOfTheCompany.Description;
 	EndIf;
@@ -1391,6 +1443,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Object.CFItemOutgoing = Catalogs.CashFlowItems.PaymentToVendor;
 	EndIf;
 	
+	
 	If Parameters.Property("AddressOfFileForProcessing") Then
 		ImportFile = GetFromTempStorage(Parameters.AddressOfFileForProcessing);
 		If TypeOf(ImportFile) = Type("BinaryData") Then
@@ -1403,19 +1456,61 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				DeleteFiles(TempFileName);
 			Except
 				WriteLogEvent(NStr("en = 'Exchange with bank. Temporary file'"), 
-					EventLogLevel.Error,
-					,
-					,
-					StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en = 'The temporary file saving to the disk is failed by reason: %1'"),
-						ErrorDescription()));
+				EventLogLevel.Error,
+				,
+				,
+				StringFunctionsClientServer.PlaceParametersIntoString(
+				NStr("en = 'The temporary file saving to the disk is failed by reason: %1'"),
+				ErrorDescription()));
 				Return;
 			EndTry;
 		EndIf;
 		ImportFile = StrReplace(StrReplace(ImportFile, "e","e"), "E", "E");
 		ReadStream.SetText(ImportFile);
-		WarningText = FillDocumentsForImport(ImportFile);
+		
+		//( elmi #17 (112-00003) 
+		//WarningText = FillDocumentsForImport(ImportFile);
+		
+		ExternalDataProcessorRefs = Object.BankAccount.ExternalDataProcessor;  
+		
+		If  ValueIsFilled(ExternalDataProcessorRefs) Then
+			
+			ParametersOfDataProcessor = New Structure("CommandID, AdditionalInformationProcessorRef, ArrayOfPurposes, PathToFile, ExecutionResult"); 
+			ParametersOfDataProcessor.CommandID                           = "ImportFromClientBankExternalDP";
+			ParametersOfDataProcessor.AdditionalInformationProcessorRef   = ExternalDataProcessorRefs;
+			ParametersOfDataProcessor.ArrayOfPurposes                     = Object.BankAccount;
+			ParametersOfDataProcessor.PathToFile                          = Object.ImportFile;
+			ParametersOfDataProcessor.ExecutionResult                     = New Structure("ImportStream, WarningText, ListOfNotFound" );
+			
+			RunCommandOnServer( ParametersOfDataProcessor);
+			
+			Result = ParametersOfDataProcessor.ExecutionResult;
+			
+			If Result <> Undefined Then
+				If Result.Property("WarningText") Then
+					If ValueIsFilled(Result.WarningText) Then
+						WarningText = Result.WarningText;
+					EndIf;	   
+				EndIf;	
+				If Result.Property("ImportStream") AND Result.Property("ListOfNotFound") Then 
+					FillTableFromExternalDataProcessor( Result.ImportStream, Result.ListOfNotFound );
+					Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
+				Else		
+					WarningText = НСтр("en='The file of downloading contains no data!'");
+				EndIf;	
+				
+			Else	  
+				WarningText = НСтр("en='The file of downloading contains no data!'");
+			EndIf;
+			
+			
+		Else	 
+			WarningText = FillDocumentsForImport(ImportFile);
+		EndIf;	 
+		//) elmi	 
+		
 		Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
+		
 	EndIf;
 	
 	If Parameters.Property("DirectExchangeWithBanksAgreement") Then
@@ -1544,10 +1639,17 @@ Procedure ImportExecute(Command)
 		
 		If FileOperationsExtensionConnected Then
 			
-			WarningText = FillDocumentsForImport(ReadStream.GetText()); // Table refresh.
-			If ValueIsFilled(WarningText) Then
-				ShowMessageBox(Undefined,WarningText);
-			EndIf;
+			 //( elmi #17 (112-00003)   
+			 ExternalDataProcessorRefs = GetExternalDataProcessor(Object.BankAccount);  
+			 If  ValueIsFilled(ExternalDataProcessorRefs) Then
+				 // table part  ImportBankAccounts isn't fill  till
+			 Else	 
+				 WarningText = FillDocumentsForImport(ReadStream.GetText()); // Table refresh.
+				 If ValueIsFilled(WarningText) Then
+					 ShowMessageBox(Undefined,WarningText);
+				 EndIf;
+			 EndIf;	 
+			//) elmi
 			
 		EndIf;
 		
@@ -1623,27 +1725,27 @@ Procedure ImportSelection(Item, SelectedRow, Field, StandardProcessing)
 	
 	If Field.Name = "ImportExport" Then
 		StandardProcessing = False;
-		Items.Import.CurrentData.Import = Not (Items.Import.CurrentData.Import);
+		Items.ImportTable.CurrentData.Import = Not (Items.ImportTable.CurrentData.Import);
 	ElsIf Field.Name = "ImportPictureNumber" Then 
 		StandardProcessing = False;
-		If ValueIsFilled(Items.Import.CurrentData.ErrorsDescriptionFull) Then
-			ShowMessageBox(Undefined,Items.Import.CurrentData.ErrorsDescriptionFull);
+		If ValueIsFilled(Items.ImportTable.CurrentData.ErrorsDescriptionFull) Then
+			ShowMessageBox(Undefined,Items.ImportTable.CurrentData.ErrorsDescriptionFull);
 		Else
 			ShowMessageBox(Undefined,NStr("en = 'Document is ready for import!'"));
 		EndIf;
 	ElsIf Field.Name = "ImportPaymentDestination" Then
 		StandardProcessing = False;
-		ShowMessageBox(Undefined,Items.Import.CurrentData.PaymentDestination);
-	ElsIf ValueIsFilled(Items.Import.CurrentData.Document)
+		ShowMessageBox(Undefined,Items.ImportTable.CurrentData.PaymentDestination);
+	ElsIf ValueIsFilled(Items.ImportTable.CurrentData.Document)
 		AND (Field.Name = "ImportDocumentName"
 		OR Field.Name = "ImportDocDate"
 		OR Field.Name = "ImportDocNumber"
 		OR Field.Name = "ImportDocumentSum"
 		OR Field.Name = "ImportAmountDebited"
 		OR Field.Name = "ImportAmountWrittenOff") Then
-		OpenForm("Document." + Items.Import.CurrentData.DocumentKind + ".ObjectForm",
-			New Structure("Key", Items.Import.CurrentData.Document),
-			Items.Import.CurrentData.Document
+		OpenForm("Document." + Items.ImportTable.CurrentData.DocumentKind + ".ObjectForm",
+			New Structure("Key", Items.ImportTable.CurrentData.Document),
+			Items.ImportTable.CurrentData.Document
 		);
 	EndIf;
 	
@@ -1669,7 +1771,7 @@ EndProcedure // CreateNewCounterparty()
 &AtClient
 Procedure ImportOrderStartChoice(Item, ChoiceData, StandardProcessing)
 	
-	CurrentRowOfTabularSection = Items.Import.CurrentData;
+	CurrentRowOfTabularSection = Items.ImportTable.CurrentData;
 	If TypeOf(CurrentRowOfTabularSection.Counterparty) = Type("String") Then
 		
 		StandardProcessing	= False;
@@ -1686,7 +1788,7 @@ EndProcedure //ImportOrderStartChoice()
 &AtClient
 Procedure ImportExportOnChange(Item)
 	
-	CurRow = Items.Import.CurrentData;
+	CurRow = Items.ImportTable.CurrentData;
 	FillAmount76AtClient(CurRow)
 	
 EndProcedure // ImportingImportOnChange()
@@ -1768,3 +1870,47 @@ Function RiseGetFormInterface()
 	Return RiseTranslation.GetFormInterface(ThisForm);
 EndFunction
 // Rise } Popov N 2016-05-25
+
+
+//( elmi #17 (112-00003) 
+&AtServer
+Function FillTableFromExternalDataProcessor(ImportStream, ListOfNotFound );
+
+Object.Import.Clear();
+
+For Each String IN ImportStream Do
+    NewString = Object.Import.Add();
+    FillPropertyValues(NewString, String);
+EndDo;
+
+Elements = CounterpartyTable.GetItems(); 
+Elements.Clear();
+
+For Each String IN ListOfNotFound Do
+	ListOfNotFound(String, Object.BankAccount, CounterpartyTable);
+КонецЦикла;
+
+FormAttributeToValue("Object");
+
+Return "";
+
+EndFunction
+//) elmi
+
+//( elmi #17 (112-00003) 
+&AtServer
+Function  GetExternalDataProcessor(Account)
+	
+	    Return Account.ExternalDataProcessor;
+	     
+EndFunction
+//) elmi
+
+//( elmi #17 (112-00003)	
+&AtServer
+Procedure RunCommandOnServer(ParametersDataProcessors) Export
+	
+AdditionalReportsAndDataProcessors.RunCommand( ParametersDataProcessors );
+	
+EndProcedure	
+//) elmi

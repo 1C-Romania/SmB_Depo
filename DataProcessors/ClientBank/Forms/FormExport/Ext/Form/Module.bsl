@@ -626,12 +626,17 @@ Procedure SaveExportFile(DumpStream)
 	Try
 		
 		ExportOnline = Object.ExportFile = "1c_to_kl.txt" OR ThisIsWebClient;
+		
 		Result = GetFile(DumpStream, Object.ExportFile, ExportOnline);
 		
 		// We check those documents that were successfully exported.
 		If Result <> Undefined Then
 			If Result Then
-				For Each SectionRow IN Object.Export Do
+				//( elmi #17 (112-00003) 
+				//For Each SectionRow IN Object.Export Do
+				For Each SectionRow IN Object.Exporting Do
+				//) elmi
+				
 					If SectionRow.Readiness = - 2 Then
 						SectionRow.Readiness = - 1;
 					EndIf;
@@ -837,9 +842,48 @@ Procedure ExportExecute(Command)
 	
 	If Object.Exporting.Count() > 0 Then
 		
-		DumpStream = DonwloadDataToFile();
-		SaveExportFile(DumpStream);
+		//( elmi #17 (112-00003) 
+		ExternalDataProcessorRefs = GetExternalDataProcessor(Object.BankAccount);
 		
+		If ValueIsFilled(ExternalDataProcessorRefs) Then
+   		
+			ArrayOfPurposes  = New  Array;
+		    ArrayOfPurposes.Insert(0, Object.BankAccount); 
+
+			ExportArray  =  PutToTempStorage(UpLoadTSExporting(), UUID);
+			
+			ParametersOfDataProcessor = New Structure("CommandID, AdditionalInformationProcessorRef, ArrayOfPurposes, ExportArray, ExecutionResult" ); 
+    	    ParametersOfDataProcessor.CommandID                           = "ExportFromClientBankExternalDP";
+	        ParametersOfDataProcessor.AdditionalInformationProcessorRef   = ExternalDataProcessorRefs;
+	        ParametersOfDataProcessor.ArrayOfPurposes                     = Object.BankAccount;
+	        ParametersOfDataProcessor.ExportArray                         = ExportArray;
+            ParametersOfDataProcessor.ExecutionResult                     = New Structure("ExportAddress, WarningText" );
+			
+			//Elmi_SmalBusinessServer.RunCommandOnServer( ParametersOfDataProcessor);
+			RunCommandOnServer( ParametersOfDataProcessor);
+			
+		    Result = ParametersOfDataProcessor.ExecutionResult;
+		
+		    If Result <> Undefined Then
+			   If Result.Property("WarningText") Then
+				  If ValueIsFilled(Result.WarningText) Then
+					WarningText = Result.WarningText;
+				  EndIf;	   
+			   EndIf;	
+			   If Result.Property("ExportAddress")  Then 
+				   SaveExportFile(Result.ExportAddress);
+			   EndIf;	   
+		    Else		
+				   WarningText = NStr("en = 'Export document list is empty.
+				                      |Verify the correctness of the specified banking account and the export period.'")
+			EndIf;	
+	    //) elmi
+		
+	    Else 
+	    	DumpStream = DonwloadDataToFile();
+		    SaveExportFile(DumpStream);
+			
+		EndIf;	
 	Else
 		
 		ShowMessageBox(Undefined,
@@ -849,6 +893,7 @@ Procedure ExportExecute(Command)
 		
 	EndIf;
 	
+			
 EndProcedure // ExportExecute()
 
 &AtClient
@@ -1023,6 +1068,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		FillDump();
 	EndIf;
 	
+
 EndProcedure // NotificationProcessing()
 
 // Filling the amount of marked items.
@@ -1054,7 +1100,6 @@ Procedure DowloadingExportOnChange(Item)
 EndProcedure // DowloadingExportOnChange()
 
 
-
 // Rise { Popov N 2016-05-25
 &AtClient
 Function RiseGetFormInterfaceClient() Export
@@ -1066,3 +1111,59 @@ Function RiseGetFormInterface()
 	Return RiseTranslation.GetFormInterface(ThisForm);
 EndFunction
 // Rise } Popov N 2016-05-25
+
+
+//( elmi #17 (112-00003) 
+&AtServer
+Function UpLoadTSExporting ()
+	
+VT = Object.Exporting.Unload();
+
+Return  TransformValueTableIntoArrayOfStructure(VT);
+
+
+EndFunction	
+//) elmi
+
+//( elmi #17 (112-00003) 
+&AtServer
+Function TransformValueTableIntoArrayOfStructure(vtData) Export
+    
+    arData = New Array;
+	
+
+    For Each StringVT IN vtData Do
+    
+        StrucStringVT = New Structure;
+		
+		For Each ColumnName Из vtData.Columns Do
+            StrucStringVT.Insert(ColumnName.Name, StringVT[ColumnName.Name]);
+        EndDo;
+        
+        arData.Add(StrucStringVT);
+        
+    EndDo;
+    
+    Возврат arData;
+    
+EndFunction
+//) elmi
+
+
+//( elmi #17 (112-00003) 
+&AtServer
+Function  GetExternalDataProcessor(Account)
+	
+	    Return Account.ExternalDataProcessor;
+	     
+EndFunction
+//) elmi
+
+
+//elmi #17 (112-00003)	
+&AtServer
+Procedure RunCommandOnServer(ParametersDataProcessors) Export
+	
+AdditionalReportsAndDataProcessors.RunCommand( ParametersDataProcessors );
+	
+EndProcedure	

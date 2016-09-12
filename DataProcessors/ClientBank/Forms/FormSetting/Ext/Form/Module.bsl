@@ -82,8 +82,11 @@ EndProcedure // OnCreateAtServer
 Procedure Ok(Command)
 	
 	ReturnParameters = New Structure(
-		"Script, Application, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, ExportFile, ImportFile, FormatVersion",
-		Encoding, Application, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, ExportFile, ImportFile, FormatVersion
+	//( elmi #17 (112-00003) 
+	//"Script, Application, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, ExportFile, ImportFile, FormatVersion",
+	"Encoding, Application, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, ExportFile, ImportFile, FormatVersion",
+	//) elmi
+	Encoding, Application, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, ExportFile, ImportFile, FormatVersion
 	);
 	Notify("SettingsChange" + IDOwner, ReturnParameters);
 	Close();
@@ -121,7 +124,10 @@ Procedure BeginEnableExtensionFileOperationsEnd(Attached, AdditionalParameters) 
 	
 	FileOpeningDialog = New FileDialog(Mode);
 	FileOpeningDialog.FullFileName = ImportFile;
-	Filter = "Text file(*.txt)|*.txt";
+	//( elmi #17 (112-00003) 
+	//Filter = "Text file(*.txt)|*.txt";
+	Filter = "Text file(*.txt)|*.txt|Xml file(*.xml)|*.xml|";
+    //) elmi
 	FileOpeningDialog.Filter = Filter;
 	FileOpeningDialog.Multiselect = False;
 	FileOpeningDialog.Title = NStr("en = 'Select the file'");
