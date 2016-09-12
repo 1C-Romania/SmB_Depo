@@ -66,7 +66,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "Sales";
 	ProfileDescription.ID = "76337576-bff4-11df-9174-e0cb4ed5f4c3";	
-	ProfileDescription.Description = NStr("en = 'Sales'");
+	ProfileDescription.Description = NStr("en = 'Sales';ru='Продажи'");
 	ProfileDescription.Definition = NStr("en='Use this profile to work with the Sales and Service sections.';ru='Под профилем осуществляется работа с разделами Продажи и Сервис.'"
 	);
 	
