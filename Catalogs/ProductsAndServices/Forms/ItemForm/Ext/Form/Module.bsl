@@ -663,6 +663,28 @@ Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
 	
 EndProcedure // AfterWriteOnServer()
 
+
+// Rise { Bernavski N 2016-09-13
+&AtServer
+Function CheckUniquenessOfNomenclature()
+		
+	StructureSearch = New Structure("Code,Description",Undefined,"=");
+	
+	If ValueIsFilled(Object.DescriptionFull) Then
+		StructureSearch.Insert("DescriptionFull", "=");	
+	EndIf;
+	
+	If ValueIsFilled(Object.SKU) Then
+		StructureSearch.Insert("SKU", "=");
+	EndIf;
+	
+	FoundObjects = Catalogs.ProductsAndServices.FindDuplicates(Object, StructureSearch);
+	                                            
+	Return FoundObjects;	 
+	
+EndFunction
+// Rise } Bernavski N 2016-09-13
+
 &AtClient
 // BeforeRecord event handler procedure.
 //
@@ -671,6 +693,40 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	// StandardSubsystems.PerformanceEstimation
 	PerformanceEstimationClientServer.StartTimeMeasurement("CatalogProductsAndServicesWrite");
 	// StandardSubsystems.PerformanceEstimation
+	
+	// Rise { Bernavski N 2016-09-13
+	If Not Cancel And Object.Ref.IsEmpty() And ValueIsFilled(Object.Description)And SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.CurrentUser(),"SearchDuplicatesOfProductsAndServices") = True Then
+		Try
+			FoundObjects = CheckUniquenessOfNomenclature();
+		Except             
+			Cancel = True;
+			Info = ErrorInfo();
+			If Info.Cause <> Undefined Then
+				ErrorDescription = Info.Cause.Description;
+			Else
+				ErrorDescription = Info.Description;
+			EndIf;
+
+			Raise(ErrorDescription);
+		EndTry;	
+		If FoundObjects.Count() > 0 Then      
+			FormParameters = New Structure;
+			FormParameters.Insert("FoundObjects", FoundObjects); 
+			
+			Result = OpenFormModal("Catalog.ProductsAndServices.Form.DuplicatesChoiceForm", FormParameters, ThisForm); 
+			If  Result = Undefined Then
+				Cancel = True;	
+			ElsIf Not Result = True Then 	
+				Cancel = True;
+				NotifyWritingNew(Result);
+				Modified = False;
+				If ThisForm.IsOpen() Then
+					Close();
+				EndIf;	
+			EndIf;
+		EndIf;
+	EndIf;
+	// Rise } Bernavski N 2016-09-13
 	
 EndProcedure //BeforeWrite()
 
