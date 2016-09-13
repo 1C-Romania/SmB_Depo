@@ -1765,7 +1765,7 @@ Procedure OnChangingDocumentTypeOnServer()
 		Items.DocumentNumber.Title = NStr("en='Series and number';ru='Серия и номер'");
 		Items.DocumentNumber.Mask = "99 99 999999";
 	Else
-		Items.DocumentNumber.Title = NStr("en='Number';ru='Number'");
+		Items.DocumentNumber.Title = NStr("en='Number';ru='Номер'");
 		Items.DocumentNumber.Mask = "";
 	EndIf;
 	
@@ -3585,7 +3585,7 @@ Procedure FillAttributesStatements(All = False)
 		String.Attribute = NStr("en='Series and number';ru='Серия и номер'");
 		String.Value = AttributePresentationRFPassportNumber(DocumentNumber);
 	Else
-		String.Attribute = NStr("en='Number';ru='Number'");
+		String.Attribute = NStr("en='Number';ru='Номер'");
 		String.Value = DocumentNumber;
 	EndIf;
 	

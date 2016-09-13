@@ -1625,7 +1625,7 @@ EndFunction
 Function GetAttributePresentationInLanguage(Val AttributeName) Export
 	
 	If      AttributeName = "Number" Then
-		Return NStr("en='Number';ru='Number'");
+		Return NStr("en='Number';ru='Номер'");
 	ElsIf AttributeName = "Name" Then
 		Return NStr("en='Description';ru='Description'");
 	ElsIf AttributeName = "Code" Then

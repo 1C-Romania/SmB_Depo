@@ -25340,7 +25340,7 @@ EndFunction
 Function PrepareDataByServiceDocument(ObjectReference, EDStructure, Tree)
 	
 	CommonUseED.FillTreeAttributeValue(Tree, "FileID", EDStructure.FileID);
-	CommonUseED.FillTreeAttributeValue(Tree, "ApplicationVersion", NStr("en='1C:Enterprise 8';ru='1C:Enterprise 8'"));
+	CommonUseED.FillTreeAttributeValue(Tree, "ApplicationVersion", NStr("en='1C:Enterprise 8';ru='1С:Предприятие 8'"));
 	CommonUseED.FillTreeAttributeValue(Tree, "Sender.EDFParticipantId", EDStructure.SenderID);
 	CommonUseED.FillTreeAttributeValue(Tree, "Recipient.EDFParticipantId", EDStructure.RecipientID);
 	If EDStructure.EDKind = Enums.EDKinds.CancellationOffer Then

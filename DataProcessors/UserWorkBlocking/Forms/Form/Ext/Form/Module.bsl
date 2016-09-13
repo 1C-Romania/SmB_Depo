@@ -290,7 +290,7 @@ Procedure SetConditionalAppearance()
 	FilterElement = Item.Filter.Items.Add(Type("DataCompositionFilterItem"));
 	FilterElement.LeftValue = New DataCompositionField("UsersWorkProhibitionStatus");
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
-	FilterElement.RightValue = NStr("en = 'Planned'");
+	FilterElement.RightValue = NStr("en = 'Planned',en = 'Запланировано'");
 
 	Item.Appearance.SetParameterValue("TextColor", StyleColors.ExplanationTextError);
 

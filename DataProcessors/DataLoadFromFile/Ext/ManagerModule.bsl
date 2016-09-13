@@ -631,7 +631,7 @@ Procedure CreateColumnStandardAttributes(InformationByColumns, CatalogMetadata, 
 		TypePresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("ru =  Row (no more than %1 characters)"), DescriptionOfType.StringQualifiers.Length);
 		ColumnWidth = ?(DescriptionOfType.StringQualifiers.Length < 30, DescriptionOfType.StringQualifiers.Length + 1, 30);
 	ElsIf DataType = Type("Number") Then	
-		TypePresentation = NStr("en='Number';ru='Number'");
+		TypePresentation = NStr("en='Number';ru='Номер'");
 	Else
 		If CatalogMetadata.StandardAttributes[ColumnName].Type.Types().Count() = 1 Then 
 			TypePresentation = String(DataType); 
