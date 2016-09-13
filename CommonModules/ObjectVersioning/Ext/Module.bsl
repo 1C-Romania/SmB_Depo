@@ -1627,13 +1627,13 @@ Function GetAttributePresentationInLanguage(Val AttributeName) Export
 	If      AttributeName = "Number" Then
 		Return NStr("en='Number';ru='Номер'");
 	ElsIf AttributeName = "Name" Then
-		Return NStr("en='Description';ru='Description'");
+		Return NStr("en='Description';ru='Наименование'");
 	ElsIf AttributeName = "Code" Then
 		Return NStr("en='Code';ru='код'");
 	ElsIf AttributeName = "IsFolder" Then
 		Return NStr("en='IsFolder';ru='IsFolder'");
 	ElsIf AttributeName = "Description" Then
-		Return NStr("en='Description';ru='Description'");
+		Return NStr("en='Description';ru='Наименование'");
 	ElsIf AttributeName = "Date" Then
 		Return NStr("en='Date';ru='Дата'");
 	ElsIf AttributeName = "Posted" Then

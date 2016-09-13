@@ -1471,7 +1471,7 @@ Procedure AddCertificateForEncryptionOnlyFromFileAfterPostingFile(Address, Conte
 	
 	If Not Form.IsOpen() Then
 		Buttons = New ValueList;
-		Buttons.Add("Open", NStr("en = 'Open'"));
+		Buttons.Add("Open", NStr("en='Open';ru='Открыть'"));
 		Buttons.Add("Cancel",  NStr("en='Cancel';ru='Отменить'"));
 		ShowQueryBox(
 			New NotifyDescription("AddCertificateForEncryptionOnlyFromFileAfterWarningAboutExisting",
