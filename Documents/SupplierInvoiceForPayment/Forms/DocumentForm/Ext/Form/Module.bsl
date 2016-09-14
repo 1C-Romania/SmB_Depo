@@ -497,31 +497,52 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en='%Currency%';ru='%Вал%'");
-			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
+			//===============================
+			//©# (Begin)	AlekS [2016-09-13]
+			//LabelText = NStr("en='%Currency%';ru='%Вал%'");
+			//LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
+			LabelText = TrimAll(String(LabelStructure.DocumentCurrency));
+			//©# (End)		AlekS [2016-09-13]
+			//===============================
 		EndIf;
 	EndIf;
 	
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.CounterpartyPriceKind) Then
-		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%CounterpartyPriceKind%';ru='%ВидЦенКонтрагента%'");
-		Else
-			LabelText = LabelText + NStr("en=' • %CounterpartyPriceKind%';ru=' • %ВидЦенКонтрагента%'");
-		EndIf;
-		LabelText = StrReplace(LabelText, "%CounterpartyPriceKind%", TrimAll(String(LabelStructure.CounterpartyPriceKind)));
+		//===============================
+		//©# (Begin)	AlekS [2016-09-13]
+		//If IsBlankString(LabelText) Then
+		//	LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
+		//Else
+		//	LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
+		//EndIf;
+		//LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
+		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.CounterpartyPriceKind));
+		//©# (End)		AlekS [2016-09-13]
+		//===============================
 	EndIf;
 	
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
-		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		Else
-			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
-		EndIf;
-		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
+		//If IsBlankString(LabelText) Then
+		//	LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
+		//Else
+		//	LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
+		//EndIf;
+		//LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
+		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.VATTaxation));
+		//©# (End)		AlekS [2016-09-13]
+		//===============================
 	EndIf;
 	
+	
+//===============================
+//©# (Begin)	AlekS [2016-09-13]
+//
+//  THIS FLAG HAS NO CHANCE TO BE SHOWED - need attention !   8-(
+//
+//©# (End)		AlekS [2016-09-13]
+//===============================
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then	
 		If LabelStructure.AmountIncludesVAT Then	

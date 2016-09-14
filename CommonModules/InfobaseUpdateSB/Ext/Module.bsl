@@ -28,7 +28,7 @@
 Procedure OnAddSubsystem(Definition) Export
 	
 	Definition.Name	= "SmallBusiness";
-	Definition.Version = "1.5.3.37";
+	Definition.Version = "1.5.3.38";
 	
 EndProcedure
 

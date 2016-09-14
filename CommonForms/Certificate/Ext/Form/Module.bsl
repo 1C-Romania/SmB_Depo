@@ -118,7 +118,7 @@ Procedure FillSubjectProperties(Certificate)
 	PropertiesPresentation.Add("Settlement",  NStr("en='Settlement';ru='НаселПункт'"));
 	PropertiesPresentation.Add("Street",            NStr("en='Street';ru='Улица'"));
 	PropertiesPresentation.Add("Company",      NStr("en = 'Company'"));
-	PropertiesPresentation.Add("Division",    NStr("en='Division';ru='разделение'"));
+	PropertiesPresentation.Add("Division",    NStr("en='Division';ru='Подразделение'"));
 	PropertiesPresentation.Add("Position",        NStr("en='Position';ru='Position'"));
 	PropertiesPresentation.Add("Email", NStr("en='Email';ru='Электронное письмо'"));
 	PropertiesPresentation.Add("OGRN",             NStr("en='OGRN';ru='ОГРН'"));
@@ -146,16 +146,16 @@ Procedure FillIssuerProperties(Certificate)
 	Collection = DigitalSignatureClientServer.CertificateIssuerProperties(Certificate);
 	
 	PropertiesPresentation = New ValueList;
-	PropertiesPresentation.Add("CommonName",         NStr("en='Common name';ru='Общее имя'"));
-	PropertiesPresentation.Add("Country",           NStr("en='Country';ru='Страна'"));
-	PropertiesPresentation.Add("Region",           NStr("en='Region';ru='Регион'"));
-	PropertiesPresentation.Add("Settlement",  NStr("en='Settlement';ru='НаселПункт'"));
-	PropertiesPresentation.Add("Street",            NStr("en='Street';ru='Улица'"));
-	PropertiesPresentation.Add("Company",      NStr("en = 'Company'"));
-	PropertiesPresentation.Add("Division",    NStr("en='Division';ru='разделение'"));
-	PropertiesPresentation.Add("Email", NStr("en='Email';ru='Электронное письмо'"));
-	PropertiesPresentation.Add("OGRN",             NStr("en='OGRN';ru='ОГРН'"));
-	PropertiesPresentation.Add("TIN",              NStr("en='TIN';ru='ИНН'"));
+	PropertiesPresentation.Add("CommonName",NStr("en='Common name';ru='Общее имя'"));
+	PropertiesPresentation.Add("Country",   NStr("en='Country';ru='Страна'"));
+	PropertiesPresentation.Add("Region",    NStr("en='Region';ru='Регион'"));
+	PropertiesPresentation.Add("Settlement",NStr("en='Settlement';ru='НаселПункт'"));
+	PropertiesPresentation.Add("Street",    NStr("en='Street';ru='Улица'"));
+	PropertiesPresentation.Add("Company",   NStr("en='Company';ru='Организация'"));
+	PropertiesPresentation.Add("Division",  NStr("en='Division';ru='Подразделение'"));
+	PropertiesPresentation.Add("Email",		NStr("en='Email';ru='Электронное письмо'"));
+	PropertiesPresentation.Add("OGRN",      NStr("en='OGRN';ru='ОГРН'"));
+	PropertiesPresentation.Add("TIN",       NStr("en='TIN';ru='ИНН'"));
 	
 	For Each ItemOfList IN PropertiesPresentation Do
 		If Not ValueIsFilled(Collection[ItemOfList.Value]) Then
