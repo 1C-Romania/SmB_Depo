@@ -687,15 +687,15 @@ EndFunction
 &AtClient
 Procedure DuplicatesListFormClosure(ClosingResult, AdditionalParameters) Export
 	
-	If  ClosingResult = Undefined Then
-		Cancel = True;	
-	ElsIf Not ClosingResult = True Then 	
-		Cancel = True;
+	If Not ClosingResult = True Then 	
 		NotifyWritingNew(ClosingResult);
 		Modified = False;
-		If ThisForm.IsOpen() Then
+		If ThisForm.IsOpen() And ClosingResult <> Undefined Then
 			Close();
-		EndIf;	
+		EndIf;
+	ElsIf ClosingResult = True Then 	
+		CheckedOnDuplicates = True;
+		Write();
 	EndIf;
 	
 EndProcedure
@@ -711,7 +711,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	// StandardSubsystems.PerformanceEstimation
 	
 	// Rise { Bernavski N 2016-09-13
-	If Not Cancel And Object.Ref.IsEmpty() And ValueIsFilled(Object.Description)And SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.CurrentUser(),"SearchDuplicatesOfProductsAndServices") = True Then
+	If Not Cancel And Not CheckedOnDuplicates And Object.Ref.IsEmpty() And ValueIsFilled(Object.Description)And SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.CurrentUser(),"SearchDuplicatesOfProductsAndServices") = True Then
 		Try
 			FoundObjects = CheckUniquenessOfNomenclature();
 		Except             
@@ -733,6 +733,8 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 			FormParameters.Insert("FoundObjects", FoundObjects); 
 			
 			OpenForm("Catalog.ProductsAndServices.Form.DuplicatesChoiceForm", FormParameters, ThisForm,,,,NotifyDescription,FormWindowOpeningMode.LockOwnerWindow); 
+			Cancel = True;
+			CheckedOnDuplicates = False;
 		EndIf;
 	EndIf;
 	// Rise } Bernavski N 2016-09-13
