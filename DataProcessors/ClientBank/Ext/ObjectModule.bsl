@@ -575,7 +575,7 @@ Procedure WriteObject(ObjectToWrite, SectionRow, IsNewDocument)
 			EndIf;
 			//( elmi Lost in translation
 			//MessageText = NStr("en='%Status% %ObjectName%.';ru='%Статус% %НазваниеОбъекта%.'");
-			MessageText = NStr("en='%Status% %ObjectName%.';ru='%Status% %ObjectName%.'");
+			MessageText = NStr("en='%Status% %NameObject%.';ru='%Status% %NameObject%.'");
 			//) elmi
 			MessageText = StrReplace(MessageText, "%Status%" , ?(IsNewDocument, NStr("en='Created ';ru='Создан '"), NStr("en='Overwritten ';ru='Перезаписан '")));
 			MessageText = StrReplace(MessageText, "%NameObject%", NameObject);
@@ -593,7 +593,7 @@ Procedure WriteObject(ObjectToWrite, SectionRow, IsNewDocument)
 		EndTry;
 	Else
 		//( elmi Lost in translation
-		MessageText = NStr("en='%NameObject% already exists. Perhaps, import has been previously performed.';ru='Уже существует %НазваниеОбъекта%. Возможно загрузка производилась ранее.'");
+		//MessageText = NStr("en='%NameObject% already exists. Perhaps, import has been previously performed.';ru='Уже существует %НазваниеОбъекта%. Возможно загрузка производилась ранее.'");
 		MessageText = NStr("en='%NameObject% already exists. Perhaps, import has been previously performed.';ru='Уже существует %NameObject%. Возможно загрузка производилась ранее.'");
 		//) elmi
 		MessageText = StrReplace(MessageText, "%NameObject%", NameObject);
@@ -605,7 +605,7 @@ Procedure WriteObject(ObjectToWrite, SectionRow, IsNewDocument)
 			ObjectToWrite.Write(DocumentWriteMode.Posting);
 			//( elmi Lost in translation
 			//MessageText = NStr("en='%Status% %ObjectName% %Status%';ru='%Статус% %НазваниеОбъекта% %Статус%'");
-			MessageText = NStr("en='%Status% %ObjectName% %Status%';ru='%Status% %ObjectName% %Status%'");
+			MessageText = NStr("en='%Status% %NameObject% %Status%';ru='%Status% %NameObject% %Status%'");
 			//) elmi
 			MessageText = StrReplace(MessageText, "%Status%", ?(ObjectPosted, NStr("en='Reposted ';ru='Перепроведен '"), NStr("en='Posted ';ru='Posted '")));
 			MessageText = StrReplace(MessageText, "%NameObject%", NameObject);
