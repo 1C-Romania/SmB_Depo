@@ -151,10 +151,15 @@ Function GeneratePriceLabel(LabelStructure)
 	
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
-		LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
-		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
+		//===============================
+		//©# (Begin)	AlekS [2016-09-13]
+		//LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
+		//LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
+		LabelText = TrimAll(String(LabelStructure.PriceKind));
+		//©# (End)		AlekS [2016-09-13]
+		//===============================
 	Else
-		LabelText = LabelText + NStr("en='specify kind of prices';ru='указать вид цен'");
+		LabelText = LabelText + NStr("en='specify kind of prices';ru='укажите вид цен'");
 	EndIf;
 	
 	Return LabelText;
