@@ -285,6 +285,308 @@ Procedure ExecuteRegisterRecordsOnRegisterTakes(Ref, TIN = "", KPP = "", NeedToD
 	
 EndProcedure
 
+// Rise { Bernavski N 2016-09-16
+Function FindDuplicates(SeekingObject, StructureSearch) Экспорт
+		
+	mSeekingObject   = SeekingObject;
+	mStructureSearch             = StructureSearch;
+	                        
+	FoundObjects = New ValueTable;
+	FoundObjects.Columns.Add("Ref");
+	CatalogName = SeekingObject.Ref.Metadata().Name;
+	
+	Query = New Query;
+	Query.Text = "
+	|SELECT 
+	|	Ref*
+	|FROM Catalog." + CatalogName + " AS Catalog
+	|WHERE NOT Catalog.IsFolder";
+	
+	Attributes = "";
+	StringWhere = "";
+	InQueryOnlyEquality = True;
+	ObjectMetadata = SeekingObject.Ref.Metadata();
+	AttributesMetadata = ObjectMetadata.Attributes;
+	StructureOfOriginalAttributes = New Structure;
+	
+	For each KeyAndValue In StructureSearch Do
+		AttributeName     = KeyAndValue.Key;
+		DegreeOfSimilarity = KeyAndValue.Value;
+		AttributeValue    = SeekingObject[AttributeName];
+		 
+		AttributeMetadata    = AttributesMetadata.Find(AttributeName);
+		AttributePresentation = ?(AttributeMetadata = Undefined, AttributeName, String(AttributeMetadata));
+		
+		StructureOfOriginalAttribute = New Structure("AttributeValue,DegreeOfSimilarity,Wordlist"
+		,AttributeValue,DegreeOfSimilarity,GetWordList(AttributeValue));
+		
+		StructureOfOriginalAttributes.Insert(AttributeName,StructureOfOriginalAttribute);
+		
+		If Not AttributeMetadata = Undefined Then
+			AttributeType  = AttributeMetadata.Type;
+		ElsIf AttributeName = "Code" Then
+			
+			If ObjectMetadata.CodeType = Metadata.ObjectProperties.CatalogCodeType.String Then
+				AttributeType = New TypeDescription("String", New StringQualifiers(ObjectMetadata.CodeLength));
+			Else 
+				AttributeType = New TypeDescription("Number", New NumberQualifiers(ObjectMetadata.CodeLength));
+			EndIf;
+			
+		ElsIf AttributeName = "Description" Then
+			
+			AttributeType = New TypeDescription("String", New StringQualifiers(ObjectMetadata.DescriptionLength));
+			
+		Else
+			AttributeType = Undefined;
+			
+		EndIf; 
+		
+		FoundObjects.Columns.Add(AttributeName, AttributeType, AttributePresentation);
+		FoundObjects.Columns.Add(AttributeName+"_Flag");
+		
+		Attributes = Attributes+",
+		|	"+ AttributeName;
+		
+		If ValueIsFilled(AttributeValue) Then
+			
+			If DegreeOfSimilarity = "=" Then
+				
+				SignComparisons = ?(Not AttributeMetadata = Undefined And AttributeMetadata.Type.ContainsType(Type("String")) и AttributeMetadata.Type.StringQualifiers.Length = 0,"Подобно","=");
+				StringWhere = ?(StringWhere = "", "",StringWhere +" Or ")+"Catalog."+AttributeName +" " +SignComparisons+ " &"+AttributeName;
+				Query.SetParameter(""+AttributeName,AttributeValue);
+				
+			ElsIf Not DegreeOfSimilarity = Undefined Then
+				
+				InQueryOnlyEquality = False;
+				
+			EndIf;
+			
+		EndIf;
+		
+	EndDo;
+	
+	Query.Text = StrReplace(Query.Text, "*", Attributes);
+	
+	If InQueryOnlyEquality Then
+		
+		Query.Text = Query.Text + Chars.LF + "	And("+StringWhere+")";
+		
+	EndIf;
+	
+	CatalogTable = Query.Execute().Unload();
+	
+	For each Row In CatalogTable Do
+		
+		StructureFound = New Structure;
+		
+		For each KeyAndValue In StructureOfOriginalAttributes Do
+			
+			DegreeOfSimilarity   = KeyAndValue.Value.DegreeOfSimilarity;
+			
+			If DegreeOfSimilarity = "=" Then
+				
+				AttributeName      = KeyAndValue.Key;
+				AttributeValue = KeyAndValue.Value.AttributeValue;
+				
+				If AttributeValue = Row[AttributeName] Then
+					
+					StructureFound.Insert(AttributeName);
+					
+				EndIf;
+				
+			ElsIf Not DegreeOfSimilarity = Undefined Then
+				
+				AttributeName      = KeyAndValue.Key;
+				
+				ListOfSearchWords  = KeyAndValue.Value.Wordlist.Copy();
+				ListOfFoundWords = GetWordList(Row[AttributeName]);
+				
+				If Not CheckDifferenceWords(ListOfSearchWords,ListOfFoundWords,DegreeOfSimilarity) Then
+					
+					StructureFound.Insert(AttributeName);
+					
+				EndIf;
+				 
+			EndIf;
+			
+		EndDo;
+		
+		If Not StructureFound.Count()=0 Then
+			
+			NewRow = FoundObjects.Add();
+			NewRow.Ref = Row.Ref;
+			
+			For each KeyAndValue In StructureSearch Do
+				
+				AttributeName    = KeyAndValue.Key;
+				
+				NewRow[AttributeName] = Row[AttributeName];
+				NewRow[AttributeName+"_Flag"] = StructureFound.Property(AttributeName);
+				
+			EndDo;
+			
+		EndIf;
+		 
+	EndDo;
+	
+	ArrayOfItemsFound = New ValueList;
+	
+	For each TableRow In FoundObjects Do
+		StructureOfItemsFound = New Structure;
+		
+		For each Column In FoundObjects.Columns Do
+			StructureOfItemsFound.Insert(Column.Name, TableRow[Column.Name]);		
+		EndDo;
+		
+		ArrayOfItemsFound.Add(StructureOfItemsFound);
+	EndDo;
+	
+	Return ArrayOfItemsFound;
+	
+EndFunction 
+
+Function GetWordList(AttributeValue)
+	
+	Wordlist = New ValueList;
+	Word = "";
+	
+	For index = 1 To StrLen(AttributeValue) Do
+		Character = Mid(AttributeValue, index, 1);
+		
+		If ThisIsLetter(Character) Then
+			Word = Word + Character;
+		Else
+			If Word <> "" Then
+				Wordlist.Add(Upper(Word));
+				Word = "";
+			EndIf;
+		EndIf;
+	EndDo;
+	
+	If Word <> "" Then
+		Wordlist.Add(Upper(Word));
+	EndIf;
+	
+	Wordlist.SortByValue();
+	
+	Return Wordlist;
+	
+EndFunction // ()
+
+Function CheckDifferenceWords(Wordlist1, Wordlist2, PermissibleDifferenceWords)
+	ListDistinguishWords = New ValueList;
+	
+	For each Word1 In Wordlist1 Do
+		IsCouple = False;
+		
+		For each Word2 In Wordlist2 Do
+			If CompareWords(Word1.Value, Word2.Value, PermissibleDifferenceWords) Then
+				IsCouple = True;
+				Wordlist2.Delete(Word2);
+				
+				Break;
+			EndIf;
+		EndDo;
+		
+		If Not IsCouple Then
+			ListDistinguishWords.Add(Word1.Value);
+		EndIf;
+	EndDo;	
+	
+	Wordlist1 = ListDistinguishWords;
+	
+	Return Not (Wordlist1.Count() = 0 And Wordlist2.Count() = 0)
+	
+EndFunction
+
+Function ThisIsLetter (Character)
+	
+	Code = CharCode(Character);
+	
+	If (Code<=47) OR (Code>=58 И Code<=64) OR (Code>=91 И Code<=96)  OR (Code>=123 И Code<=126) Then
+		Return False;
+	Else
+		Return True;
+	EndIf;
+	
+EndFunction
+
+Function CompareWords(Word1, Word2, PermissibleDifferenceWords)
+	
+	TableLetters = New ValueTable;
+	TableLetters.Columns.Add("Position");
+	TableLetters.Columns.Add("NumberOfMissed");
+	TableLetters.Columns.Add("WordLength");
+	TableLetters.Columns.Add("Skipped");
+
+	TableLetters.Clear();
+	TableLettersEmpty = True;
+		
+	If StrLen(Word1)<=StrLen(Word2) Then
+		Word = Upper(Word1);
+		SeekingWord = Upper(Word2);
+	Else
+		Word = Upper(Word2);
+		SeekingWord = Upper(Word1);
+	EndIf;
+	
+	For index = 1 по StrLen(Word) Do
+		Character = Mid(Word, index, 1);
+		
+		If TableLettersEmpty  Then
+			Pos = Find(SeekingWord, Character);
+			correction = 0;
+			
+			While Pos > 0 Do
+				TableLettersEmpty = False;
+				
+				NewLine = TableLetters.Add();
+				NewLine.Position = Pos + correction;
+				NewLine.WordLength = 1;
+				NewLine.NumberOfMissed = 0;
+				
+				correction = correction + Pos;
+				Pos = Find(Mid(SeekingWord, correction+1), Character);
+			EndDo;
+		Else
+			For each Entry In TableLetters Do
+				If Mid(SeekingWord, Entry.Position + Entry.WordLength, 1) = Character Then
+					Entry.WordLength = Entry.WordLength + 1;
+				ElsIf Mid(Word, Entry.Position + Entry.WordLength - Entry.NumberOfMissed, 1) = Entry.Skipped Then
+					Entry.Skipped = "";
+					Entry.WordLength = Entry.WordLength + 1;
+					
+					If Mid(SeekingWord, Entry.Position + Entry.WordLength, 1) = Character Then
+						Entry.WordLength = Entry.WordLength + 1;
+					Else
+						Entry.NumberOfMissed = Entry.NumberOfMissed + 1;
+					EndIf;
+				Else					
+					If Round((Entry.NumberOfMissed + 1) / StrLen(SeekingWord) * 100)<=PermissibleDifferenceWords Then
+						Entry.NumberOfMissed = Entry.NumberOfMissed + 1;
+						Entry.WordLength = Entry.WordLength + 1;
+						Entry.Skipped = Character;
+					Else
+						Entry.NumberOfMissed = Entry.NumberOfMissed + 1;
+					EndIf;
+				EndIf;
+			EndDo;			
+		EndIf;		
+	EndDo;
+	
+	If TableLettersEmpty Then
+		Return False;
+	EndIf;
+	
+	TableLetters.Sort("WordLength DESC, NumberOfMissed ASC");
+	
+	MatchedCharacters = TableLetters[0].WordLength - TableLetters[0].NumberOfMissed;
+	
+	Return (Round(MatchedCharacters / StrLen(SeekingWord) * 100) >= (100 - PermissibleDifferenceWords));
+		
+EndFunction
+// Rise } Bernavski N 2016-09-16
+
 #EndRegion
 
 #Region DataLoadFromFile

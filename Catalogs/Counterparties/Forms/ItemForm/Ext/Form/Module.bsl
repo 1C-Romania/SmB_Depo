@@ -502,6 +502,47 @@ Procedure OnReadAtServer(CurrentObject)
 	
 EndProcedure // OnReadAtServer()
 
+// Rise { Bernavski N 2016-09-16
+&AtServer
+Function CheckUniquenessOfCounterparty()
+		
+	StructureSearch = New Structure("Code,Description",Undefined,"=");
+	
+	If ValueIsFilled(Object.DescriptionFull) Then
+		StructureSearch.Insert("DescriptionFull", "=");	
+	EndIf;
+	
+	If ValueIsFilled(Object.TIN) Then
+		StructureSearch.Insert("TIN", "=");
+	EndIf;
+	
+	If ValueIsFilled(Object.KPP) Then
+		StructureSearch.Insert("KPP", "=");
+	EndIf;
+	
+	FoundObjects = Catalogs.Counterparties.FindDuplicates(Object, StructureSearch);
+	                                            
+	Return FoundObjects;	 
+	
+EndFunction
+
+&AtClient
+Procedure OnCloseSelection(ClosingResult, AdditionalParameters) Export
+	
+	If Not ClosingResult = True Then 	
+		NotifyWritingNew(ClosingResult);
+		Modified = False;
+		If ThisForm.IsOpen() And ClosingResult <> Undefined Then
+			Close();
+		EndIf;
+	ElsIf ClosingResult = True Then 	
+		CheckedOnDuplicates = True;
+		Write();
+	EndIf;
+	
+EndProcedure // OnCloseSelection()
+// Rise } Bernavski N 2016-09-16
+
 // BeforeRecord event handler procedure.
 //
 &AtClient
@@ -510,6 +551,35 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	// StandardSubsystems.PerformanceEstimation
 	PerformanceEstimationClientServer.StartTimeMeasurement("CatalogCounterpartiesWrite");
 	// End StandardSubsystems.PerformanceEstimation
+	
+	// Rise { Bernavski N 2016-09-16
+	If Not Cancel And Not CheckedOnDuplicates And Object.Ref.IsEmpty() And ValueIsFilled(Object.Description)And SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.CurrentUser(),"SearchDuplicatesOfCounterpartyWithoutCheckingCorrectnessTINAndKPP") = True Then
+		Try
+			FoundObjects = CheckUniquenessOfCounterparty();
+		Except             
+			Cancel = True;
+			Info = ErrorInfo();
+			If Info.Cause <> Undefined Then
+				ErrorDescription = Info.Cause.Description;
+			Else
+				ErrorDescription = Info.Description;
+			EndIf;
+
+			Raise(ErrorDescription);
+		EndTry;	
+		If FoundObjects.Count() > 0 Then      
+			
+			NotifyDescription 		= New NotifyDescription("OnCloseSelection", ThisObject);
+			
+			FormParameters = New Structure;
+			FormParameters.Insert("FoundObjects", FoundObjects); 
+			
+			OpenForm("Catalog.Counterparties.Form.DuplicatesCheckOnWriteForm", FormParameters, ThisForm,,,,NotifyDescription,FormWindowOpeningMode.LockOwnerWindow); 
+			Cancel = True;
+			CheckedOnDuplicates = False;
+		EndIf;
+	EndIf;
+	// Rise } Bernavski N 2016-09-16
 	
 EndProcedure //BeforeWrite()
 
