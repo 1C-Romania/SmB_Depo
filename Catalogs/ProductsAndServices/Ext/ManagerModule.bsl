@@ -730,6 +730,7 @@ EndProcedure
 
 #EndRegion
 
+#Region CheckingDuplicates
 // Rise { Bernavski N 2016-09-13
 Function FindDuplicates(SeekingObject, StructureSearch) Экспорт
 		
@@ -1031,4 +1032,6 @@ Function CompareWords(Word1, Word2, PermissibleDifferenceWords)
 		
 EndFunction
 // Rise } Bernavski N 2016-09-13
+#EndRegion
+
 #EndIf
