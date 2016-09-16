@@ -573,12 +573,18 @@ Procedure WriteObject(ObjectToWrite, SectionRow, IsNewDocument)
 			Else
 				ObjectToWrite.Write(DocumentWriteMode.Write);
 			EndIf;
-			MessageText = NStr("en='%Status% %ObjectName%.';ru='%Статус% %НазваниеОбъекта%.'");
+			//( elmi Lost in translation
+			//MessageText = NStr("en='%Status% %ObjectName%.';ru='%Статус% %НазваниеОбъекта%.'");
+			MessageText = NStr("en='%Status% %ObjectName%.';ru='%Status% %ObjectName%.'");
+			//) elmi
 			MessageText = StrReplace(MessageText, "%Status%" , ?(IsNewDocument, NStr("en='Created ';ru='Создан '"), NStr("en='Overwritten ';ru='Перезаписан '")));
 			MessageText = StrReplace(MessageText, "%NameObject%", NameObject);
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 		Except
-			MessageText = NStr("en='%ObjectNameLeft% %NameObjectMid% %Status%! Errors occurred while writing!';ru='%НазваниеОбъектаЛев% %НазваниеОбъектаСред% %Статус%! Произошли ошибки при записи!'");
+			//( elmi Lost in translation
+			//MessageText = NStr("en='%ObjectNameLeft% %NameObjectMid% %Status%! Errors occurred while writing!';ru='%НазваниеОбъектаЛев% %НазваниеОбъектаСред% %Статус%! Произошли ошибки при записи!'");
+			MessageText = NStr("en='%ObjectNameLeft% %NameObjectMid% %Status%! Errors occurred while writing!';ru='%ObjectNameLeft% %NameObjectMid% %Status%! Произошли ошибки при записи!'");
+			//) elmi
 			MessageText = StrReplace(MessageText, "%ObjectNameLeft%", Upper(Left(NameObject, 1)));
 			MessageText = StrReplace(MessageText, "%NameObjectMid%", Mid(NameObject, 2));
 			MessageText = StrReplace(MessageText, "%Status%", ?(ObjectToWrite.IsNew(), NStr("en=' not created';ru=' не создан'"), NStr("en=' not written';ru=' не записан'")));
@@ -586,7 +592,10 @@ Procedure WriteObject(ObjectToWrite, SectionRow, IsNewDocument)
 			Return;
 		EndTry;
 	Else
+		//( elmi Lost in translation
 		MessageText = NStr("en='%NameObject% already exists. Perhaps, import has been previously performed.';ru='Уже существует %НазваниеОбъекта%. Возможно загрузка производилась ранее.'");
+		MessageText = NStr("en='%NameObject% already exists. Perhaps, import has been previously performed.';ru='Уже существует %NameObject%. Возможно загрузка производилась ранее.'");
+		//) elmi
 		MessageText = StrReplace(MessageText, "%NameObject%", NameObject);
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 	EndIf;
@@ -594,13 +603,19 @@ Procedure WriteObject(ObjectToWrite, SectionRow, IsNewDocument)
 	If PostImported AND (ObjectModified OR Not ObjectPosted) Then
 		Try
 			ObjectToWrite.Write(DocumentWriteMode.Posting);
-			MessageText = NStr("en='%Status% %ObjectName% %Status%';ru='%Статус% %НазваниеОбъекта% %Статус%'");
+			//( elmi Lost in translation
+			//MessageText = NStr("en='%Status% %ObjectName% %Status%';ru='%Статус% %НазваниеОбъекта% %Статус%'");
+			MessageText = NStr("en='%Status% %ObjectName% %Status%';ru='%Status% %ObjectName% %Status%'");
+			//) elmi
 			MessageText = StrReplace(MessageText, "%Status%", ?(ObjectPosted, NStr("en='Reposted ';ru='Перепроведен '"), NStr("en='Posted ';ru='Posted '")));
 			MessageText = StrReplace(MessageText, "%NameObject%", NameObject);
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
 			SectionRow.Posted = ObjectToWrite.Posted;
 		Except
-			MessageText = NStr("en='%ObjectNameLeft% %NameObjectMid% is failed! Errors occurred while posting!';ru='%НазваниеОбъектаЛев% %НазваниеОбъектаСред% не проведен! Произошли ошибки при проведении!'");
+			//( elmi Lost in translation
+			//MessageText = NStr("en='%ObjectNameLeft% %NameObjectMid% is failed! Errors occurred while posting!';ru='%НазваниеОбъектаЛев% %НазваниеОбъектаСред% не проведен! Произошли ошибки при проведении!'");
+			MessageText = NStr("en='%ObjectNameLeft% %NameObjectMid% is failed! Errors occurred while posting!';ru='%ObjectNameLeft% %NameObjectMid% не проведен! Произошли ошибки при проведении!'");
+			//) elmi
 			MessageText = StrReplace(MessageText, "%ObjectNameLeft%", Upper(Left(NameObject, 1)));
 			MessageText = StrReplace(MessageText, "%NameObjectMid%", Mid(NameObject, 2));
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
@@ -1532,6 +1547,10 @@ Function AreNotDigits(Val CheckString) Export
 	Return False;
 	
 EndFunction // AreNotDigits()
+
+Procedure FillCheckProcessing(Cancel, CheckedAttributes)
+	// Вставить содержимое обработчика.
+EndProcedure
 
 #EndRegion
 

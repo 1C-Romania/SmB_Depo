@@ -1262,25 +1262,24 @@ Procedure ReadDataFromFile()
 		
 		RunCommandOnServer( ParametersOfDataProcessor);
 		
+		WarningText = "";
 		Result = ParametersOfDataProcessor.ExecutionResult;
 		
 		If Result <> Undefined Then
-			If Result.Property("WarningText") Then
-				If ValueIsFilled(Result.WarningText) Then
-					WarningText = Result.WarningText;
-				EndIf;	   
-			EndIf;	
-			If Result.Property("ImportStream") AND Result.Property("ListOfNotFound") Then 
-				FillTableFromExternalDataProcessor( Result.ImportStream, Result.ListOfNotFound );
-				Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
-			Else		
-				WarningText = НСтр("en='The file of downloading contains no data!'");
-			EndIf;	
-			
+			If ValueIsFilled(Result.WarningText) Then
+				WarningText = Result.WarningText;
+			Else	
+				If Result.Property("ImportStream") Then 
+					FillTableFromExternalDataProcessor( Result.ImportStream );
+					Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
+				Else
+					WarningText = НСтр("en = 'Error in data import!';ru='Ошибка в данных импорта!'");
+				EndIf	
+			EndIF;		
 		Else	  
-			WarningText = НСтр("en='The file of downloading contains no data!'");
+			WarningText = НСтр("en='The file of downloading contains no data!';ru='Файл загрузки не содержит данных'");
 		EndIf;
-	//) elmi
+    //) elmi
 		
 	Else
 		
@@ -1481,25 +1480,23 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			
 			RunCommandOnServer( ParametersOfDataProcessor);
 			
+			WarningText="";
 			Result = ParametersOfDataProcessor.ExecutionResult;
 			
 			If Result <> Undefined Then
-				If Result.Property("WarningText") Then
-					If ValueIsFilled(Result.WarningText) Then
+			   If ValueIsFilled(Result.WarningText) Then
 						WarningText = Result.WarningText;
-					EndIf;	   
-				EndIf;	
-				If Result.Property("ImportStream") AND Result.Property("ListOfNotFound") Then 
-					FillTableFromExternalDataProcessor( Result.ImportStream, Result.ListOfNotFound );
-					Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
-				Else		
-					WarningText = НСтр("en='The file of downloading contains no data!'");
-				EndIf;	
-				
+			   Else	
+				    If Result.Property("ImportStream") Then 
+				        FillTableFromExternalDataProcessor( Result.ImportStream );
+					    Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
+					Else
+						WarningText = НСтр("en = 'Error in data import!';ru='Ошибка в данных импорта!'");
+					EndIf	
+			   EndIF;		
 			Else	  
-				WarningText = НСтр("en='The file of downloading contains no data!'");
+				WarningText = НСтр("en='The file of downloading contains no data!';ru='Файл загрузки не содержит данных'");
 			EndIf;
-			
 			
 		Else	 
 			WarningText = FillDocumentsForImport(ImportFile);
@@ -1636,21 +1633,50 @@ Procedure ImportExecute(Command)
 		
 		If FileOperationsExtensionConnected Then
 			
-			 //( elmi #17 (112-00003)   
-			 ExternalDataProcessorRefs = GetExternalDataProcessor(Object.BankAccount);  
-			 If  ValueIsFilled(ExternalDataProcessorRefs) Then
-				 // table part  ImportBankAccounts isn't fill  till
-			 Else	 
-				 WarningText = FillDocumentsForImport(ReadStream.GetText()); // Table refresh.
-				 If ValueIsFilled(WarningText) Then
-					 ShowMessageBox(Undefined,WarningText);
-				 EndIf;
-			 EndIf;	 
-			//) elmi
+			//( elmi #17 (112-00003)  
+			ExternalDataProcessorRefs = GetExternalDataProcessor(Object.BankAccount);  
+			
+			If  ValueIsFilled(ExternalDataProcessorRefs) Then      // Table refresh.
+				
+				ParametersOfDataProcessor = New Structure("CommandID, AdditionalInformationProcessorRef, ArrayOfPurposes, PathToFile, ExecutionResult"); 
+				ParametersOfDataProcessor.CommandID                           = "ImportFromClientBankExternalDP";
+				ParametersOfDataProcessor.AdditionalInformationProcessorRef   = ExternalDataProcessorRefs;
+				ParametersOfDataProcessor.ArrayOfPurposes                     = Object.BankAccount;
+				ParametersOfDataProcessor.PathToFile                          = Object.ImportFile;
+				ParametersOfDataProcessor.ExecutionResult                     = New Structure("ImportStream, WarningText" );
+				
+				RunCommandOnServer( ParametersOfDataProcessor);
+				
+				WarningText = "";
+				Result = ParametersOfDataProcessor.ExecutionResult;
+								
+				If Result <> Undefined Then
+					If ValueIsFilled(Result.WarningText) Then
+						WarningText = Result.WarningText;
+					Else	
+						If Result.Property("ImportStream") Then 
+							FillTableFromExternalDataProcessor( Result.ImportStream );
+							Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
+						Else
+							WarningText = НСтр("en = 'Error in data import!';ru='Ошибка в данных импорта!'");
+						EndIf	
+					EndIF;		
+				Else	  
+					WarningText = НСтр("en='The file of downloading contains no data!';ru='Файл загрузки не содержит данных'");
+				EndIf;
+			//) elmi	 
+				
+			Else	 
+				WarningText = FillDocumentsForImport(ReadStream.GetText()); // Table refresh.
+				
+			EndIf;	 
 			
 		EndIf;
 		
-		ShowMessageBox(Undefined,NStr("en='Importing of the payment documents has been completed';ru='Загрузка платежных документов завершена.'"));
+		//( elmi #17 (112-00003) 
+		//ShowMessageBox(Undefined,NStr("en='Importing of the payment documents has been completed';ru='Загрузка платежных документов завершена.'"));
+		ShowMessageBox(Undefined, ?( ValueIsFilled(WarningText), WarningText ,NStr("en = 'Importing of the payment documents has been completed';ru='Загрузка платежных документов завершена.'")));
+		//) elmi
 		
 	Else
 		
@@ -1871,27 +1897,31 @@ EndFunction
 
 //( elmi #17 (112-00003) 
 &AtServer
-Function FillTableFromExternalDataProcessor(ImportStream, ListOfNotFound );
+Procedure FillTableFromExternalDataProcessor(ImportStream)
 
 Object.Import.Clear();
 
 For Each String IN ImportStream Do
-    NewString = Object.Import.Add();
+   
+	NewString = Object.Import.Add();
+	
+	RecognizeDataInDocumentRow(String);
+	
+	If TypeOf(String.Counterparty) = Type("String")
+		OR TypeOf(String.CounterpartyAccount) = Type("String") Then
+		
+		// We add attributes in tabular section for further use.
+		ListOfNotFound(String, Object.BankAccount, CounterpartyTable);
+		
+	EndIf;
+
     FillPropertyValues(NewString, String);
+	
 EndDo;
-
-Elements = CounterpartyTable.GetItems(); 
-Elements.Clear();
-
-For Each String IN ListOfNotFound Do
-	ListOfNotFound(String, Object.BankAccount, CounterpartyTable);
-КонецЦикла;
 
 FormAttributeToValue("Object");
 
-Return "";
-
-EndFunction
+EndProcedure
 //) elmi
 
 //( elmi #17 (112-00003) 

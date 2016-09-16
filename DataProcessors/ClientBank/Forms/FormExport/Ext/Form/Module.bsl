@@ -859,26 +859,31 @@ Procedure ExportExecute(Command)
 	        ParametersOfDataProcessor.ExportArray                         = ExportArray;
             ParametersOfDataProcessor.ExecutionResult                     = New Structure("ExportAddress, WarningText" );
 			
-			//Elmi_SmalBusinessServer.RunCommandOnServer( ParametersOfDataProcessor);
 			RunCommandOnServer( ParametersOfDataProcessor);
 			
+			WarningText = "";
 		    Result = ParametersOfDataProcessor.ExecutionResult;
 		
-		    If Result <> Undefined Then
-			   If Result.Property("WarningText") Then
-				  If ValueIsFilled(Result.WarningText) Then
-					WarningText = Result.WarningText;
-				  EndIf;	   
-			   EndIf;	
-			   If Result.Property("ExportAddress")  Then 
-				   SaveExportFile(Result.ExportAddress);
-			   EndIf;	   
-		    Else		
-				   WarningText = NStr("en='Export document list is empty."
+			If Result <> Undefined Then
+				If ValueIsFilled(Result.WarningText) Then
+				   WarningText = Result.WarningText;
+				Else	
+					If ValueIsFilled(Result.ExportAddress)  Тогда 
+						SaveExportFile(Result.ExportAddress);
+					Else
+						WarningText = НСтр("en = 'Error in data export!',ru='Ошибка в данных экспорта!'");
+					EndIF;	
+				EndIF;		
+			Else	  
+				WarningText = NStr("en='Export document list is empty."
 "Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст."
-"Проверьте правильность указанного банковского счета и периода выгрузки.'")
-			EndIf;	
-	    //) elmi
+"Проверьте правильность указанного банковского счета и периода выгрузки.'");
+			EndIf;
+			
+			If ValueIsFilled(WarningText) Then
+          		ShowMessageBox(Undefined,WarningText);
+	        EndIf;
+        //) elmi
 		
 	    Else 
 	    	DumpStream = DonwloadDataToFile();
@@ -894,7 +899,6 @@ Procedure ExportExecute(Command)
 		);
 		
 	EndIf;
-	
 			
 EndProcedure // ExportExecute()
 
