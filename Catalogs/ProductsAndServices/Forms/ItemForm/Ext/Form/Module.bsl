@@ -683,6 +683,22 @@ Function CheckUniquenessOfNomenclature()
 	Return FoundObjects;	 
 	
 EndFunction
+
+&AtClient
+Procedure DuplicatesListFormClosure(ClosingResult, AdditionalParameters) Export
+	
+	If  ClosingResult = Undefined Then
+		Cancel = True;	
+	ElsIf Not ClosingResult = True Then 	
+		Cancel = True;
+		NotifyWritingNew(ClosingResult);
+		Modified = False;
+		If ThisForm.IsOpen() Then
+			Close();
+		EndIf;	
+	EndIf;
+	
+EndProcedure
 // Rise } Bernavski N 2016-09-13
 
 &AtClient
@@ -710,20 +726,13 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 			Raise(ErrorDescription);
 		EndTry;	
 		If FoundObjects.Count() > 0 Then      
+			
+			NotifyDescription = New NotifyDescription("DuplicatesListFormClosure", ThisForm);
+			
 			FormParameters = New Structure;
 			FormParameters.Insert("FoundObjects", FoundObjects); 
 			
-			Result = OpenFormModal("Catalog.ProductsAndServices.Form.DuplicatesChoiceForm", FormParameters, ThisForm); 
-			If  Result = Undefined Then
-				Cancel = True;	
-			ElsIf Not Result = True Then 	
-				Cancel = True;
-				NotifyWritingNew(Result);
-				Modified = False;
-				If ThisForm.IsOpen() Then
-					Close();
-				EndIf;	
-			EndIf;
+			OpenForm("Catalog.ProductsAndServices.Form.DuplicatesChoiceForm", FormParameters, ThisForm,,,,NotifyDescription,FormWindowOpeningMode.LockOwnerWindow); 
 		EndIf;
 	EndIf;
 	// Rise } Bernavski N 2016-09-13
