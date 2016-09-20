@@ -230,9 +230,9 @@ Procedure RegisterCOMConnector(Val ExecuteSessionReboot = True) Export
 		ShowMessageBox(,MessageText + Chars.LF + NStr("en='Look for details in event log.';ru='Подробности см. в Журнале регистрации.'"));
 	ElsIf ExecuteSessionReboot Then
 		Notification = New NotifyDescription("RegisterCOMConnectorEnd", ThisObject);
-		QuestionText = NStr("en='To finish registration of comcntr component, you should restart application."
-"Restart now?';ru='Для завершения перерегистрации компоненты comcntr необходимо перезапустить программу."
-"Перезапустить?'");
+		QuestionText = NStr("en='To finish registration of comcntr component, you should restart application.
+		|Restart now?';ru='Для завершения перерегистрации компоненты comcntr необходимо перезапустить программу.
+		|Перезапустить?'");
 		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo);
 	EndIf;
 	
@@ -653,9 +653,9 @@ Procedure RequestCloseFormConfirmation(Cancel, Modified = True, ActionSelected =
 	EndIf;
 	
 	QuestionText = ?(IsBlankString(WarningText), 
-		NStr("en='Data is changed, changes will be canceled."
-"Cancel and close?';ru='Данные были изменены, внесенные изменения будут отменены."
-"Отменить и закрыть?'"),
+		NStr("en='Data is changed, changes will be canceled.
+		|Cancel and close?';ru='Данные были изменены, внесенные изменения будут отменены.
+		|Отменить и закрыть?'"),
 		WarningText);
 	Result = DoQueryBox(QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No, 
 		NStr("en='Cancel changes';ru='Отменить изменения'"));

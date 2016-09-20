@@ -67,9 +67,9 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					
 					ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en='TIN of legal entity should consist of 10 digits';ru='ИНН юридического лица должен состоять из 10 цифр'"),,ColorHighlightIncorrectValues);
 					
-					TextForIncorrectTIN = NStr("en='%"
-"TIN does not contain 10 digits';ru='%1"
-"ИНН содержит не 10 цифр'");
+					TextForIncorrectTIN = NStr("en='%
+		|TIN does not contain 10 digits';ru='%1
+		|ИНН содержит не 10 цифр'");
 					
 					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 					
@@ -81,9 +81,9 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					
 					ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en='Individual’s TIN should consist of 12 digits.';ru='ИНН физического лица должен состоять из 12 цифр'"),,ColorHighlightIncorrectValues);
 					
-					TextForIncorrectTIN = NStr("en='%"
-"TIN does not contain 12 digits';ru='%1"
-"ИНН содержит не 12 цифр'");
+					TextForIncorrectTIN = NStr("en='%
+		|TIN does not contain 12 digits';ru='%1
+		|ИНН содержит не 12 цифр'");
 					
 					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 					
@@ -95,9 +95,9 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					
 					ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en='The first two TIN digits can not be ""00""';ru='Первые две цифры ИНН не могут быть ""00""'"),,ColorHighlightIncorrectValues);
 					
-					TextForIncorrectTIN = NStr("en='%1"
-"The first two TIN digits can not be ""00""';ru='%1"
-"Первые две цифры ИНН не могут быть ""00""'");
+					TextForIncorrectTIN = NStr("en='%1
+		|The first two TIN digits can not be ""00""';ru='%1
+		|Первые две цифры ИНН не могут быть ""00""'");
 					
 					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 					
@@ -113,9 +113,9 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 						
 						ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en='TIN should include only digits';ru='ИНН должен включать только цифры'"),,ColorHighlightIncorrectValues);
 						
-						TextForIncorrectTIN = NStr("en='%"
-"TIN includes not only digits';ru='%1"
-"ИНН содержит не только цифры'");
+						TextForIncorrectTIN = NStr("en='%
+		|TIN includes not only digits';ru='%1
+		|ИНН содержит не только цифры'");
 						
 						ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 						
@@ -164,9 +164,9 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 								
 								ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en=""Legal entity's TIN is incorrect"";ru='ИНН юридического лица введен некорректно'"),,ColorHighlightIncorrectValues);
 								
-								TextForIncorrectTIN = NStr("en='%1"
-"TIN does not correspond to the format';ru='%1"
-"ИНН не соответствует формату'");
+								TextForIncorrectTIN = NStr("en='%1
+		|TIN does not correspond to the format';ru='%1
+		|ИНН не соответствует формату'");
 								
 								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 								
@@ -232,9 +232,9 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 								
 								ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en=""Individual's TIN is incorrect"";ru='ИНН физического лица введен некорректно'"),,ColorHighlightIncorrectValues);
 								
-								TextForIncorrectTIN = NStr("en='%1"
-"TIN does not correspond to the format';ru='%1"
-"ИНН не соответствует формату'");
+								TextForIncorrectTIN = NStr("en='%1
+		|TIN does not correspond to the format';ru='%1
+		|ИНН не соответствует формату'");
 								
 								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 								
@@ -302,9 +302,9 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					
 					ReturnStructure.LabelExplanationsOfIncorrectKPP  = New FormattedString(NStr("en='KPP should contain 9 digits';ru='""КПП"" должен содержать 9 цифр'"),,ColorHighlightIncorrectValues);
 					
-					TextForIncorrectKPP = NStr("en='&1"
-"KPP does not contain 9 digits';ru='%1"
-"КПП содержит не 9 цифр'");
+					TextForIncorrectKPP = NStr("en='&1
+		|KPP does not contain 9 digits';ru='%1
+		|КПП содержит не 9 цифр'");
 					
 					ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
 					
@@ -320,9 +320,9 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 						
 						ReturnStructure.LabelExplanationsOfIncorrectKPP = New FormattedString(NStr("en='KPP should include only digits';ru='КПП должен включать только цифры'"),,ColorHighlightIncorrectValues);
 						
-						TextForIncorrectKPP = NStr("en='%"
-"KPP includes not only digits';ru='%1"
-"КПП содержит не только цифры'");
+						TextForIncorrectKPP = NStr("en='%
+		|KPP includes not only digits';ru='%1
+		|КПП содержит не только цифры'");
 						
 						ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
 						
@@ -372,9 +372,9 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 							
 							ReturnStructure.LabelExplanationsOfIncorrectKPP = New FormattedString(NStr("en='KPP does not correspond to format';ru='КПП не соответствует формату'"),,ColorHighlightIncorrectValues);
 							
-							TextForIncorrectKPP = NStr("en='%"
-"KPP does not correspond to the format';ru='%1"
-"КПП не соответствует формату'");
+							TextForIncorrectKPP = NStr("en='%
+		|KPP does not correspond to the format';ru='%1
+		|КПП не соответствует формату'");
 							
 							ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
 							

@@ -199,11 +199,11 @@ Function InfobaseLockedForUpdate(ForPrivilegedMode = True) Export
 	EndIf;
 	
 	MessageToSystemAdministrator =
-		NStr("en='Entrance to the application is temporarily impossible due to the update to the new version."
-"To finish the update of application version"
-"you must be an administrator (the System administrator and Full rights roles).';ru='Вход в программу временно невозможен в связи с обновлением на новую версию"
-"Для завершения обновления версии"
-"программы требуются административные права (роли ""Администратор системы"" и ""Полные права"").'");
+		NStr("en='Entrance to the application is temporarily impossible due to the update to the new version.
+		|To finish the update of application version
+		|you must be an administrator (the System administrator and Full rights roles).';ru='Вход в программу временно невозможен в связи с обновлением на новую версию
+		|Для завершения обновления версии
+		|программы требуются административные права (роли ""Администратор системы"" и ""Полные права"").'");
 	
 	SetPrivilegedMode(True);
 	DataSeparationEnabled = CommonUseReUse.DataSeparationEnabled();
@@ -213,9 +213,9 @@ Function InfobaseLockedForUpdate(ForPrivilegedMode = True) Export
 	If ShouldUpdateUndividedDataInformationBase() Then
 		
 		MessageAdministratorDataAreas =
-			NStr("en='Access to the application is temporarily impossible due to the update to a new version."
-"Contact the service administrator for the details.';ru='Вход в приложение временно невозможен в связи с обновлением на новую версию."
-"Обратитесь к администратору сервиса за подробностями.'");
+			NStr("en='Access to the application is temporarily impossible due to the update to a new version.
+		|Contact the service administrator for the details.';ru='Вход в приложение временно невозможен в связи с обновлением на новую версию.
+		|Обратитесь к администратору сервиса за подробностями.'");
 		
 		If CanUseSeparatedData Then
 			Message = MessageAdministratorDataAreas;
@@ -264,15 +264,15 @@ Function InfobaseLockedForUpdate(ForPrivilegedMode = True) Export
 	If DataSeparationEnabled Then
 		// Message to the service user.
 		Message =
-			NStr("en='Access to the application is temporarily impossible due to the update to a new version."
-"Contact the service administrator for the details.';ru='Вход в приложение временно невозможен в связи с обновлением на новую версию."
-"Обратитесь к администратору сервиса за подробностями.'");
+			NStr("en='Access to the application is temporarily impossible due to the update to a new version.
+		|Contact the service administrator for the details.';ru='Вход в приложение временно невозможен в связи с обновлением на новую версию.
+		|Обратитесь к администратору сервиса за подробностями.'");
 	Else
 		// Message to user of a local mode.
 		Message =
-			NStr("en='Entrance to the application is temporarily impossible due to the update to the new version."
-"Contact administrator for the details.';ru='Вход в программу временно невозможен в связи с обновлением на новую версию"
-"Обратитесь к администратору за подробностями.'");
+			NStr("en='Entrance to the application is temporarily impossible due to the update to the new version.
+		|Contact administrator for the details.';ru='Вход в программу временно невозможен в связи с обновлением на новую версию
+		|Обратитесь к администратору за подробностями.'");
 	EndIf;
 	
 	Return Message;
@@ -371,15 +371,15 @@ Function RunInfobaseUpdate(UpdateParameters) Export
 	
 	If DataUpdateMode = "TransitionFromAnotherApplication" Then
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Change configuration name to %1."
-"You will be transited from another application.';ru='Изменилось имя конфигурации на ""%1""."
-"Будет выполнен переход с другой программы.'"),
+			NStr("en='Change configuration name to %1.
+		|You will be transited from another application.';ru='Изменилось имя конфигурации на ""%1"".
+		|Будет выполнен переход с другой программы.'"),
 			Metadata.Name);
 	ElsIf DataUpdateMode = "VersionUpdate" Then
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Number of the configuration version: from %1 to %2."
-"Infobase update will be performed.';ru='Изменился номер версии конфигурации: с ""%1"" на ""%2""."
-"Будет выполнено обновление информационной базы.'"),
+			NStr("en='Number of the configuration version: from %1 to %2.
+		|Infobase update will be performed.';ru='Изменился номер версии конфигурации: с ""%1"" на ""%2"".
+		|Будет выполнено обновление информационной базы.'"),
 			DataVersion, MetadataVersion);
 	Else 
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(
@@ -689,9 +689,9 @@ Function DataUpdateMode() Export
 	If Not StandardProcessing Then
 		CommonUseClientServer.CheckParameter("OnDefineDataUpdateMode", "DataUpdateMode",
 			DataUpdateMode, Type("String"));
-		Message = NStr("en='Invalid value of the %1 parameter in %2. "
-"Expected: %3; sent value: %4 (%5 type).';ru='Недопустимое значение параметра %1 в %2. "
-"Ожидалось: %3; передано значение: %4 (тип %5).'");
+		Message = NStr("en='Invalid value of the %1 parameter in %2. 
+		|Expected: %3; sent value: %4 (%5 type).';ru='Недопустимое значение параметра %1 в %2. 
+		|Ожидалось: %3; передано значение: %4 (тип %5).'");
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(Message,
 			"DataUpdateMode", "OnDefineDataUpdateMode", 
 			NStr("en='InitialFilling, VersionUpdate or TransferFromAnotherApplication';ru='НачальноеЗаполнение, ОбновлениеВерсии или ПереходСДругойПрограммы'"), 
@@ -1275,17 +1275,17 @@ Function LockInfobase(IBBlock, ExceptWhenImpossibleLockIB)
 	
 	// Process unsuccessful attempt to set an exclusive mode.
 	Message = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Unable to update infobase:"
-"- Unable to set an"
-"exclusive mode - Configuration version does not include update without setting"
-"an"
-"exclusive mode"
-"More about error: %1';ru='Невозможно выполнить обновление информационной базы:"
-"- Невозможно установить монопольный режим"
-"- Версия конфигурации не предусматривает обновление без установки монопольного режима"
-""
-"Подробности ошибки:"
-"%1'"),
+		NStr("en='Unable to update infobase:
+		|- Unable to set an
+		|exclusive mode - Configuration version does not include update without setting
+		|an
+		|exclusive mode
+		|More about error: %1';ru='Невозможно выполнить обновление информационной базы:
+		|- Невозможно установить монопольный режим
+		|- Версия конфигурации не предусматривает обновление без установки монопольного режима
+		|
+		|Подробности ошибки:
+		|%1'"),
 		BriefErrorDescription(ErrorInfo));
 	
 	WriteError(Message);
@@ -1445,13 +1445,13 @@ Procedure GoFromAnotherApplication()
 			
 			HandlerName = Handler.Procedure;
 			WriteError(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred calling a transition"
-"handler"
-"from another"
-"application %1: %2';ru='При вызове обработчика перехода"
-"с"
-"другой программы"
-"""%1"" произошла ошибка: ""%2"".'"),
+				NStr("en='An error occurred calling a transition
+		|handler
+		|from another
+		|application %1: %2';ru='При вызове обработчика перехода
+		|с
+		|другой программы
+		|""%1"" произошла ошибка: ""%2"".'"),
 				HandlerName,
 				DetailErrorDescription(ErrorInfo())));
 			
@@ -1709,9 +1709,9 @@ Procedure FormListDelayedUpdateHandlers(IterationsUpdate)
 				
 				If RowHandlers.ExclusiveMode = True Then
 					
-					ErrorText = NStr("en='The delayed %1"
-"handler should not have the ExclusiveMode trait.';ru='У отложенного"
-"обработчика ""%1"" не должен быть установлен признак ""МонопольныйРежим"".'");
+					ErrorText = NStr("en='The delayed %1
+		|handler should not have the ExclusiveMode trait.';ru='У отложенного
+		|обработчика ""%1"" не должен быть установлен признак ""МонопольныйРежим"".'");
 					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
 						ErrorText, RowHandlers.Procedure);
 					WriteError(ErrorText);
@@ -2557,13 +2557,13 @@ Procedure ExecuteHandlerUpdate(Handler, Parameters, AdditionalParameters)
 		HandlerName = Handler.Procedure + "(" + ?(HandlerParameters = Undefined, "", "Parameters") + ")";
 		
 		WriteError(StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='During the call"
-"of"
-"the update"
-"handler: %1 an error occurred: %2';ru='При вызове"
-"обработчика"
-"обновления:"
-"""%1"" произошла ошибка: ""%2"".'"),
+			NStr("en='During the call
+		|of
+		|the update
+		|handler: %1 an error occurred: %2';ru='При вызове
+		|обработчика
+		|обновления:
+		|""%1"" произошла ошибка: ""%2"".'"),
 			HandlerName,
 			DetailErrorDescription(ErrorInfo())));
 		
@@ -2685,20 +2685,20 @@ Procedure ValidateNestedTransaction(TransactionActiveOnExecutionStart, Processor
 			Try
 				Constants.UseSeparationByDataAreas.Get();
 			Except
-				CommentTemplate = NStr("en='An error executing the"
-"%1 handler update: Update handler absorbed the exception during the active external transaction."
-"In case of the active transactions opened above of the stack the exception is also to be located above of the stack.';ru='Ошибка выполнения обработчика"
-"обновления %1: Обработчиком обновления было поглощено исключение при активной внешней транзакции."
-"При активных транзакциях, открытых выше по стеку, исключение также необходимо пробрасывать выше по стеку.'");
+				CommentTemplate = NStr("en='An error executing the
+		|%1 handler update: Update handler absorbed the exception during the active external transaction.
+		|In case of the active transactions opened above of the stack the exception is also to be located above of the stack.';ru='Ошибка выполнения обработчика
+		|обновления %1: Обработчиком обновления было поглощено исключение при активной внешней транзакции.
+		|При активных транзакциях, открытых выше по стеку, исключение также необходимо пробрасывать выше по стеку.'");
 				Comment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, ProcessorsName);
 				
 				WriteLogEvent(EventName, EventLogLevel.Error,,, Comment);
 				Raise(Comment);
 			EndTry;
 		Else
-			CommentTemplate = NStr("en='An error occurred executing"
-"the %1 application handler: Handler of the update closed an extra transaction previously opened (up in a stack).';ru='Ошибка выполнения"
-"обработчика обновления %1: Обработчиком обновления была закрыта лишняя транзакция, открытая ранее (выше по стеку).'");
+			CommentTemplate = NStr("en='An error occurred executing
+		|the %1 application handler: Handler of the update closed an extra transaction previously opened (up in a stack).';ru='Ошибка выполнения
+		|обработчика обновления %1: Обработчиком обновления была закрыта лишняя транзакция, открытая ранее (выше по стеку).'");
 			Comment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, ProcessorsName);
 			
 			WriteLogEvent(EventName, EventLogLevel.Error,,, Comment);
@@ -2706,9 +2706,9 @@ Procedure ValidateNestedTransaction(TransactionActiveOnExecutionStart, Processor
 		EndIf;
 	Else
 		If TransactionActive() Then
-			CommentTemplate = NStr("en='An error occurred executing"
-"the %1 application handler: The transaction opened inside the handler remained active (was not closed or canceled).';ru='Ошибка выполнения"
-"обработчика обновления %1: Открытая внутри обработчика обновления транзакция осталась активной (не была закрыта или отменена).'");
+			CommentTemplate = NStr("en='An error occurred executing
+		|the %1 application handler: The transaction opened inside the handler remained active (was not closed or canceled).';ru='Ошибка выполнения
+		|обработчика обновления %1: Открытая внутри обработчика обновления транзакция осталась активной (не была закрыта или отменена).'");
 			Comment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, ProcessorsName);
 			
 			WriteLogEvent(EventName, EventLogLevel.Error,,, Comment);
@@ -2736,17 +2736,17 @@ Procedure ValidateHandlersProperties(IterationUpdate)
 			Except
 				ZeroVersion = False;
 				ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Handler has filled the Version property wrong: %1."
-"Right format, for example: 21.3.70.';ru='У обработчика не правильно заполнено свойство Версия: ""%1""."
-"Правильный формат, например: ""2.1.3.70"".'"),
+					NStr("en='Handler has filled the Version property wrong: %1.
+		|Right format, for example: 21.3.70.';ru='У обработчика не правильно заполнено свойство Версия: ""%1"".
+		|Правильный формат, например: ""2.1.3.70"".'"),
 					Metadata.Version);
 			EndTry;
 			
 			If ZeroVersion Then
 				ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Handler has filled the Version property wrong: %1."
-"Version can not be the zero.';ru='У обработчика не правильно заполнено свойство Версия: ""%1""."
-"Версия не может быть нулевой.'"),
+					NStr("en='Handler has filled the Version property wrong: %1.
+		|Version can not be the zero.';ru='У обработчика не правильно заполнено свойство Версия: ""%1"".
+		|Версия не может быть нулевой.'"),
 					Metadata.Version);
 			EndIf;
 			
@@ -2754,9 +2754,9 @@ Procedure ValidateHandlersProperties(IterationUpdate)
 			   AND Handler.ExecuteUnderMandatory <> True
 			   AND Handler.Priority <> 0 Then
 				
-				ErrorDescription = NStr("en='The Priority property or the ExecuteInMandatoryGroup"
-"property is filled wrong in the handler.';ru='У обработчика не правильно заполнено"
-"свойство Приоритет или свойство ВыполнятьВГруппеОбязательных.'");
+				ErrorDescription = NStr("en='The Priority property or the ExecuteInMandatoryGroup
+		|property is filled wrong in the handler.';ru='У обработчика не правильно заполнено
+		|свойство Приоритет или свойство ВыполнятьВГруппеОбязательных.'");
 			EndIf;
 		EndIf;
 		
@@ -2765,9 +2765,9 @@ Procedure ValidateHandlersProperties(IterationUpdate)
 			AND Handler.PerformModes <> "Promptly"
 			AND Handler.PerformModes <> "Delay" Then
 			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en=""Handler's ExecutionMode property is filled wrong in the %1 handler."
-"Allowed value: Exclusive, Deferred, Online."";ru='У обработчика ""%1"" не правильно заполнено свойство РежимВыполнения."
-"Допустимое значение: ""Монопольно"", ""Отложенно"", ""Оперативно"".'"),
+				NStr("en=""Handler's ExecutionMode property is filled wrong in the %1 handler.
+		|Allowed value: Exclusive, Deferred, Online."";ru='У обработчика ""%1"" не правильно заполнено свойство РежимВыполнения.
+		|Допустимое значение: ""Монопольно"", ""Отложенно"", ""Оперативно"".'"),
 				Handler.Procedure);
 		EndIf;
 		
@@ -2775,9 +2775,9 @@ Procedure ValidateHandlersProperties(IterationUpdate)
 		   AND Handler.Optional = True
 		   AND Handler.InitialFilling = True Then
 			
-			ErrorDescription = NStr("en='The Optional or InitialFilling property is"
-"filled wrong in the handler.';ru='У обработчика не правильно заполнено"
-"свойство Опциональный или свойство НачальноеЗаполнение.'");
+			ErrorDescription = NStr("en='The Optional or InitialFilling property is
+		|filled wrong in the handler.';ru='У обработчика не правильно заполнено
+		|свойство Опциональный или свойство НачальноеЗаполнение.'");
 		EndIf;
 			
 		If Not ValueIsFilled(ErrorDescription) Then

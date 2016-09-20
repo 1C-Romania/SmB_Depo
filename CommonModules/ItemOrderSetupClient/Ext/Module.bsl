@@ -80,9 +80,9 @@ Procedure CheckListBeforeOperation(ResultHandler, ListAttribute)
 	Parameters.Insert("ListAttribute", ListAttribute);
 	
 	If Not SortInListIsSetCorrectly(ListAttribute) Then
-		QuestionText = NStr("en='To change the order of items, it"
-"is necessary to configure the list sorting by the field ""Order"". Configure the necessary sorting?';ru='Для изменения порядка элементов"
-"необходимо настроить сортировку списка по полю ""Порядок"". Настроить необходимую сортировку?'");
+		QuestionText = NStr("en='To change the order of items, it
+		|is necessary to configure the list sorting by the field ""Order"". Configure the necessary sorting?';ru='Для изменения порядка элементов
+		|необходимо настроить сортировку списка по полю ""Порядок"". Настроить необходимую сортировку?'");
 		NotifyDescription = New NotifyDescription("CheckListBeforeOperationResponseForSortingReceived", ThisObject, Parameters);
 		Buttons = New ValueList;
 		Buttons.Add(DialogReturnCode.Yes, NStr("en='Configure';ru='Настроить'"));

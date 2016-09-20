@@ -107,6 +107,7 @@ Function IsRole(Val Role, Val ObjectReference = Undefined, Val User = Undefined)
 			
 			If Upper(String.AccessKind) = Upper("EditRight") Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+//{{MRG[ <-> ]
 				NStr("en='An error occurred in the HasRole function of the AccessManagement module."
 "In the access values set the EditingRight"
 "access kind is specified of table with ID ""%1""."
@@ -116,12 +117,25 @@ Function IsRole(Val Role, Val ObjectReference = Undefined, Val User = Undefined)
 "вид доступа ПравоИзменения таблицы с идентификтором ""%1""."
 "В ограничении проверки роли (как"
 "дополнительного права) может быть зависимость только от права Чтения.'"),
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
+//		|In the access values set the EditingRight
+//		|access kind is specified of table with ID ""%1"".
+//		|In the restriction role checks (as
+//		|an additional right) can depend only on the Reading right.';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом.
+//		|В наборе значений доступа указан
+//		|вид доступа ПравоИзменения таблицы с идентификтором ""%1"".
+//		|В ограничении проверки роли (как
+//		|дополнительного права) может быть зависимость только от права Чтения.'"),
+//}}MRG[ <-> ]
 					String.AccessValue);
 			EndIf;
 		ElsIf AccessKindNames.Get(String.AccessKind) <> Undefined
 		      OR String.AccessKind = "RightSettings" Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+//{{MRG[ <-> ]
 				NStr("en='An error occurred in the HasRole function of the AccessManagement module."
 "Access values set contains known access kind"
 """%2"" that you should not specify."
@@ -133,13 +147,34 @@ Function IsRole(Val Role, Val ObjectReference = Undefined, Val User = Undefined)
 ""
 "Указывать требуется"
 "только специальные виды доступа ""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
+//		|Access values set contains known access kind
+//		|""%2"" that you should not specify.
+//		|
+//		|Specify only special access
+//		|kinds ""ReadingRight"", ""ChangingRight"" if they are used.';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом.
+//		|Набор значений доступа содержит известный
+//		|вид доступа ""%2"", который не требуется указывать.
+//		|
+//		|Указывать требуется
+//		|только специальные виды доступа ""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
+//}}MRG[ <-> ]
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+//{{MRG[ <-> ]
 				NStr("en='An error occurred in the HasRole function of the AccessManagement module."
 "Access values set contains unknown access kind ""%2"".';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом."
 "Набор значений доступа содержит неизвестный вид доступа ""%2"".'"),
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
+//		|Access values set contains unknown access kind ""%2"".';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом.
+//		|Набор значений доступа содержит неизвестный вид доступа ""%2"".'"),
+//}}MRG[ <-> ]
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		EndIf;
@@ -527,9 +562,16 @@ Procedure OnFormCreationAccessValues(Form,
 	EndIf;
 	
 	ErrorTitle =
+//{{MRG[ <-> ]
 		NStr("en='An error occurred"
 "in the OnCreateAccessValueForm procedure of the AccessManagement general module.';ru='Ошибка"
 "в процедуре ПриСозданииФормыЗначенияДоступа общего модуля УправлениеДоступом.'");
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//		NStr("en='An error occurred
+//		|in the OnCreateAccessValueForm procedure of the AccessManagement general module.';ru='Ошибка
+//		|в процедуре ПриСозданииФормыЗначенияДоступа общего модуля УправлениеДоступом.'");
+//}}MRG[ <-> ]
 	
 	GroupsProperties = AccessValuesGroupsProperties(AccessValueType, ErrorTitle);
 	
@@ -542,6 +584,7 @@ Procedure OnFormCreationAccessValues(Form,
 	If TypeOf(AccessValuesGroup) <> GroupsProperties.Type Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF + Chars.LF +
+//{{MRG[ <-> ]
 			NStr("en='For access values of"
 "the ""%1"" type access kind ""%2"" is used"
 "with the values type ""%3"" specified in the overridable module."
@@ -551,6 +594,18 @@ Procedure OnFormCreationAccessValues(Form,
 """%2"" с типом значений ""%3"", заданным в переопределяемом модуле."
 "Но этот тип не совпадает с типом ""%4"""
 "в форме значения доступа у реквизита ГруппаДоступа.'"),
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//			NStr("en='For access values of
+//		|the ""%1"" type access kind ""%2"" is used
+//		|with the values type ""%3"" specified in the overridable module.
+//		|But this type does not match the type ""%4"" in
+//		|the access value form in the AccessGroup attribute.';ru='Для значений доступа
+//		|типа ""%1"" используются вид доступа
+//		|""%2"" с типом значений ""%3"", заданным в переопределяемом модуле.
+//		|Но этот тип не совпадает с типом ""%4""
+//		|в форме значения доступа у реквизита ГруппаДоступа.'"),
+//}}MRG[ <-> ]
 			String(AccessValueType),
 			String(GroupsProperties.AccessKind),
 			String(GroupsProperties.Type),
@@ -633,9 +688,16 @@ EndProcedure
 Function AccessValuesGroupsAllowingAccessValuesChange(AccessValuesType, ReturnAll = False) Export
 	
 	ErrorTitle =
+//{{MRG[ <-> ]
 		NStr("en='An error occurred"
 "in the AccessValueGroupsAllowingAccessValuesChange procedure of the AccessManagement general module.';ru='Ошибка"
 "в процедуре ГруппыЗначенийДоступаРазрешающиеИзменениеЗначенийДоступа общего модуля УправлениеДоступом.'");
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//		NStr("en='An error occurred
+//		|in the AccessValueGroupsAllowingAccessValuesChange procedure of the AccessManagement general module.';ru='Ошибка
+//		|в процедуре ГруппыЗначенийДоступаРазрешающиеИзменениеЗначенийДоступа общего модуля УправлениеДоступом.'");
+//}}MRG[ <-> ]
 	
 	GroupsProperties = AccessValuesGroupsProperties(AccessValuesType, ErrorTitle);
 	
@@ -831,6 +893,7 @@ Procedure FillAccessValueSets(Val Object, Table, Val RefOnSubordinatedObject = U
 	
 	If Not SetsAreFilling Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+//{{MRG[ <-> ]
 			NStr("en='Wrong parameters."
 "Object type"
 """%1"" is found in no subscription"
@@ -840,6 +903,18 @@ Procedure FillAccessValueSets(Val Object, Table, Val RefOnSubordinatedObject = U
 "объекта ""%1"" не найден ни"
 "в одной из подписок"
 "на события ""Записать наборы значений доступа"", ""Записать зависимые наборы значений доступа"".'"),
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//			NStr("en='Wrong parameters.
+//		|Object type
+//		|""%1"" is found in no subscription
+//		|to events ""Write access
+//		|value sets"", ""Write dependent access value sets"".';ru='Неверные параметры.
+//		|Тип
+//		|объекта ""%1"" не найден ни
+//		|в одной из подписок
+//		|на события ""Записать наборы значений доступа"", ""Записать зависимые наборы значений доступа"".'"),
+//}}MRG[ <-> ]
 			ValueTypeObject);
 	EndIf;
 	
@@ -1343,6 +1418,7 @@ Procedure ReplaceRightsInObjectRightSettings(RenamingsTable) Export
 					+ String.NewName;
 			EndDo;
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+//{{MRG[ <-> ]
 				NStr("en='An error occurred in"
 "the RenameRightInObjectRightsSettings procedure parameters of the AccessManagement general module."
 ""
@@ -1352,6 +1428,18 @@ Procedure ReplaceRightsInObjectRightSettings(RenamingsTable) Export
 ""
 "После обновления будут повторяться настройки"
 "следующих новых имен прав: %1.'"),
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//				NStr("en='An error occurred in
+//		|the RenameRightInObjectRightsSettings procedure parameters of the AccessManagement general module.
+//		|
+//		|Settings of the following rights new names will
+//		|be repeated: %1.';ru='Ошибка в
+//		|параметрах процедуры ПереименоватьПравоВНастройкахПравОбъектов общего модуля УправлениеДоступом.
+//		|
+//		|После обновления будут повторяться настройки
+//		|следующих новых имен прав: %1.'"),
+//}}MRG[ <-> ]
 				RepeatedRightsNewNames);
 		EndIf;
 		
@@ -1503,6 +1591,7 @@ Procedure ClarifyAccessValueSets(ObjectReference, Table)
 		      OR String.AccessKind = "RightSettings" Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+//{{MRG[ <-> ]
 				NStr("en='Object ""%1"" generated access"
 "values set containing known access kind ""%2"" that should not be specified."
 ""
@@ -1512,13 +1601,32 @@ Procedure ClarifyAccessValueSets(ObjectReference, Table)
 ""
 "Указывать требуется"
 "только специальные виды доступа ""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//				NStr("en='Object ""%1"" generated access
+//		|values set containing known access kind ""%2"" that should not be specified.
+//		|
+//		|Specify only special access
+//		|kinds ""ReadingRight"", ""ChangingRight"" if they are used.';ru='Объект ""%1""
+//		|сформировал набор значений доступа, содержащий известный вид доступа ""%2"", который не требуется указывать.
+//		|
+//		|Указывать требуется
+//		|только специальные виды доступа ""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
+//}}MRG[ <-> ]
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+//{{MRG[ <-> ]
 				NStr("en='Object ""%1"" generated access"
 "values set containing unknown access kind ""%2"".';ru='Объект ""%1"""
 "сформировал набор значений доступа, содержащий неизвестный вид доступа ""%2"".'"),
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//				NStr("en='Object ""%1"" generated access
+//		|values set containing unknown access kind ""%2"".';ru='Объект ""%1""
+//		|сформировал набор значений доступа, содержащий неизвестный вид доступа ""%2"".'"),
+//}}MRG[ <-> ]
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		EndIf;
@@ -1896,9 +2004,16 @@ Function AccessValuesGroupsProperties(AccessValueType, ErrorTitle)
 	If AccessTypeProperties = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF + Chars.LF +
+//{{MRG[ <-> ]
 			NStr("en='For the access values"
 "of the ""%1"" type access value groups are not used.';ru='Для значений"
 "доступа типа ""%1"" не используются группы значений доступа.'"),
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//			NStr("en='For the access values
+//		|of the ""%1"" type access value groups are not used.';ru='Для значений
+//		|доступа типа ""%1"" не используются группы значений доступа.'"),
+//}}MRG[ <-> ]
 			String(AccessValueType));
 	EndIf;
 	

@@ -352,9 +352,9 @@ Procedure DecryptControlDSMarkerServer(
 	HandlerContext,
 	CurrentForm)
 	
-	ErrorMessageForUser = NStr("en='Error checking certificate password."
-"For more details see the event log.';ru='Ошибка при проверке пароля сертификата."
-"Подробнее см в журнале регистрации.'");
+	ErrorMessageForUser = NStr("en='Error checking certificate password.
+		|For more details see the event log.';ru='Ошибка при проверке пароля сертификата.
+		|Подробнее см в журнале регистрации.'");
 	
 	// Receive the required session parameters to execute decryption operation
 	ParametersForDecryption = OnlineUserSupportClientServer.SessionParametersForDecryption(
@@ -375,9 +375,9 @@ Procedure DecryptControlDSMarkerServer(
 		// Error occurred receiving marker binary data from base64 row
 		OnlineUserSupportClient.EndBusinessProcess(InteractionContext);
 		MessageForRegistrationLog = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Error occurred checking the certificate owner authenticity. Unable to receive marker binary data."
-"%1';ru='Ошибка при проверке подлинности владельца сертификата. Не удалось получить двоичные данные маркера (markerED)."
-"%1'"),
+			NStr("en='Error occurred checking the certificate owner authenticity. Unable to receive marker binary data.
+		|%1';ru='Ошибка при проверке подлинности владельца сертификата. Не удалось получить двоичные данные маркера (markerED).
+		|%1'"),
 			DetailErrorDescription(ErrorInfo()));
 		OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(MessageForRegistrationLog);
 		ShowMessageBox(, ErrorMessageForUser);
@@ -531,11 +531,11 @@ EndFunction
 //
 Function TechnicalEDFParametersText(InteractionContext, Val Certificate = Undefined) Export
 	
-	TechnicalParameters = NStr("en='Parameters of ED"
-""
-"exchange participant - the certificate thumbprint: %1';ru='Параметры"
-""
-"участника обмена ЭД: - отпечаток сертификата: %1'");
+	TechnicalParameters = NStr("en='Parameters of ED
+		|
+		|exchange participant - the certificate thumbprint: %1';ru='Параметры
+		|
+		|участника обмена ЭД: - отпечаток сертификата: %1'");
 	
 	If Not ValueIsFilled(Certificate) Then
 		Certificate = OnlineUserSupportClientServer.SessionParameterValue(
@@ -562,9 +562,9 @@ Function TechnicalEDFParametersText(InteractionContext, Val Certificate = Undefi
 	
 	If Not IsBlankString(ErrorCode) Then
 		
-		ErrorDataPage = Chars.LF + NStr("en='- error code:"
-"%1, - error description: %2';ru='- код"
-"ошибки: %1, - описание ошибки: %2'");
+		ErrorDataPage = Chars.LF + NStr("en='- error code:
+		|%1, - error description: %2';ru='- код
+		|ошибки: %1, - описание ошибки: %2'");
 		
 		TechnicalParameters = TechnicalParameters
 			+ StringFunctionsClientServer.PlaceParametersIntoString(

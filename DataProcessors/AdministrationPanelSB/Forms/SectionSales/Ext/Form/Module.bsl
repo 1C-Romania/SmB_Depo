@@ -267,19 +267,19 @@ Function CancellationUncheckUseCustomerOrderStates()
 	
 	If Not Result.IsEmpty() Then
 		
-		ErrorText = NStr("en='There are documents %PresentationDocumentTypes% in the base in a state with the status ""Open"" and/or ""Executed (not closed)""!"
-"Disabling the option is prohibited!"
-"Note:"
-"If there are documents in the state with"
-"the status ""Open"", set them to state with the status ""In progress"""
-"or ""Executed (closed)"" If there are documents in the state"
-"with the status ""Executed (not closed)"", then set them to state with the status ""Executed (closed)"".';ru='В базе есть документы %ПредставлениеТипыДокументов% в состоянии со статусом ""Открыт"" и/или ""Выполнен (не закрыт)""!"
-"Снятие опции запрещено!"
-"Примечание:"
-"Если есть документы в"
-"состоянии со статусом ""Открыт"", то установите для них состояние со"
-"статусом ""В работе"" или ""Выполнен (закрыт)"" Если есть документы"
-"в состоянии со статусом ""Выполнен (не закрыт)"", то установите для них состояние со статусом ""Выполнен (закрыт)"".'"
+		ErrorText = NStr("en='There are documents %PresentationDocumentTypes% in the base in a state with the status ""Open"" and/or ""Executed (not closed)""!
+		|Disabling the option is prohibited!
+		|Note:
+		|If there are documents in the state with
+		|the status ""Open"", set them to state with the status ""In progress""
+		|or ""Executed (closed)"" If there are documents in the state
+		|with the status ""Executed (not closed)"", then set them to state with the status ""Executed (closed)"".';ru='В базе есть документы %ПредставлениеТипыДокументов% в состоянии со статусом ""Открыт"" и/или ""Выполнен (не закрыт)""!
+		|Снятие опции запрещено!
+		|Примечание:
+		|Если есть документы в
+		|состоянии со статусом ""Открыт"", то установите для них состояние со
+		|статусом ""В работе"" или ""Выполнен (закрыт)"" Если есть документы
+		|в состоянии со статусом ""Выполнен (не закрыт)"", то установите для них состояние со статусом ""Выполнен (закрыт)"".'"
 				);
 		PresentationDocumentTypes = "";
 		Selection = Result.Select();

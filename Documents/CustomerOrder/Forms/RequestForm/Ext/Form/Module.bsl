@@ -2243,9 +2243,9 @@ Procedure CounterpartyOnChange(Item)
 			
 			If RecalculationRequired Then
 			
-				Message = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! "
-"Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! "
-"Пересчитать документ в соответствии с договором?'");
+				Message = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! 
+		|Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! 
+		|Пересчитать документ в соответствии с договором?'");
 									
 				ShowQueryBox(New NotifyDescription("CounterpartyOnChangeEnd1", ThisObject, New Structure("SettlementsCurrencyBeforeChange, ContractBeforeChange, StructureData", SettlementsCurrencyBeforeChange, ContractBeforeChange, StructureData)), Message, QuestionDialogMode.YesNo);
                 Return;
@@ -2387,9 +2387,9 @@ Procedure ContractOnChange(Item)
 			
 			If RecalculationRequired Then
 			
-				Message = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! "
-"Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! "
-"Пересчитать документ в соответствии с договором?'");
+				Message = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! 
+		|Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! 
+		|Пересчитать документ в соответствии с договором?'");
 									
 				ShowQueryBox(New NotifyDescription("ContractOnChangeEnd1", ThisObject, New Structure("SettlementsCurrencyBeforeChange, ContractBeforeChange, StructureData", SettlementsCurrencyBeforeChange, ContractBeforeChange, StructureData)), Message, QuestionDialogMode.YesNo);
                 Return;

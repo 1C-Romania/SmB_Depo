@@ -944,9 +944,9 @@ EndProcedure
 Procedure OnConnectingAdd1Report(Ref, ReportParameters, Result) Export
 	If Not GetFunctionalOption("UseAdditionalReportsAndDataProcessors") Then
 		ReportParameters.Errors = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Item ""%1"" is not enabled as the system ""%2"" is disabled in the application settings."
-"To enable the subsystem contact the application administrator.';ru='Элемент ""%1"" не подключен, потому что подсистема ""%2"" отключена в настройках программы."
-"Для включения подсистемы обратитесь к администратору программы.'"),
+			NStr("en='Item ""%1"" is not enabled as the system ""%2"" is disabled in the application settings.
+		|To enable the subsystem contact the application administrator.';ru='Элемент ""%1"" не подключен, потому что подсистема ""%2"" отключена в настройках программы.
+		|Для включения подсистемы обратитесь к администратору программы.'"),
 			"'"+ String(Ref) +"'",
 			AdditionalReportsAndDataProcessorsClientServer.SubsystemDescription("en"));
 		Return;
@@ -2684,9 +2684,9 @@ Function RegisterDataProcessor(Val Object, Val RegistrationParameters) Export
 	If Not Object.IsNew() AND RegistrationData.Type <> Object.Type Then
 		Result.ErrorText = 
 			StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Imported object kind (%1) does not correspond to the current one (%2)."
-"To import a new object, click Create.';ru='Вид загружаемого объекта (%1) не соответствует текущему (%2)."
-"Для загрузки нового объекта нажмите ""Создать"".'"),
+			NStr("en='Imported object kind (%1) does not correspond to the current one (%2).
+		|To import a new object, click Create.';ru='Вид загружаемого объекта (%1) не соответствует текущему (%2).
+		|Для загрузки нового объекта нажмите ""Создать"".'"),
 			String(RegistrationData.Type),
 			String(Object.Type)
 		);
@@ -2865,13 +2865,13 @@ Procedure OnGetOfRegistrationData(Object, RegistrationData, RegistrationParamete
 	EndTry;
 	If ErrorInfo <> Undefined Then
 		If RegistrationParameters.IsReport Then
-			ErrorText = NStr("en='Unable to enable additional report from file."
-"It might not be compatible with the application version.';ru='Невозможно подключить дополнительный отчет из файла."
-"Возможно, он не подходит для этой версии программы.'");
+			ErrorText = NStr("en='Unable to enable additional report from file.
+		|It might not be compatible with the application version.';ru='Невозможно подключить дополнительный отчет из файла.
+		|Возможно, он не подходит для этой версии программы.'");
 		Else
-			ErrorText = NStr("en='Unable to enable additional processor from file."
-"It may not be suitable for this version of the application.';ru='Невозможно подключить дополнительную обработку из файла."
-"Возможно, она не подходит для этой версии программы.'");
+			ErrorText = NStr("en='Unable to enable additional processor from file.
+		|It may not be suitable for this version of the application.';ru='Невозможно подключить дополнительную обработку из файла.
+		|Возможно, она не подходит для этой версии программы.'");
 		EndIf;
 		RegistrationResult.ErrorText = ErrorText;
 		RegistrationResult.BriefErrorDescription = BriefErrorDescription(ErrorInfo);

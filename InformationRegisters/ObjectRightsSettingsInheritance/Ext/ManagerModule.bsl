@@ -90,9 +90,9 @@ Procedure UpdateOwnerParents(RightSettingsOwner, HasChanges, UpdateHierarchy = F
 	If PossibleRights.ByTypes.Get(OwnerType) = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle +
-			NStr("en='For %1"
-"type the usage of objects rights settings is not set.';ru='Для"
-"типа ""%1"" не настроено использование настроек прав объектов.'"),
+			NStr("en='For %1
+		|type the usage of objects rights settings is not set.';ru='Для
+		|типа ""%1"" не настроено использование настроек прав объектов.'"),
 			String(OwnerType));
 	EndIf;
 	

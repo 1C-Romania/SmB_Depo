@@ -305,9 +305,9 @@ EndProcedure
 &AtClient
 Procedure FolderImport(Command)
 	#If WebClient Then
-		WarningText = NStr("en='Import of folders is unavailable in the web client."
-"Use the Create command in files list.';ru='В веб-клиенте импорт папок недоступен."
-"Используйте команду ""Создать"" в списке файлов.'");
+		WarningText = NStr("en='Import of folders is unavailable in the web client.
+		|Use the Create command in files list.';ru='В веб-клиенте импорт папок недоступен.
+		|Используйте команду ""Создать"" в списке файлов.'");
 		ShowMessageBox(, WarningText);
 		Return;
 	#EndIf
@@ -361,9 +361,9 @@ Procedure FindFilesOrFolders()
 	
 	If Result = "FoundNothing" Then
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='File or folder with"
-"%1 in the name or code is not found';ru='Не удалось найти"
-"файл или папку, наименование или код которых содержит ""%1"".'"),
+			NStr("en='File or folder with
+		|%1 in the name or code is not found';ru='Не удалось найти
+		|файл или папку, наименование или код которых содержит ""%1"".'"),
 			SearchString);
 		ShowMessageBox(, WarningText);
 	Else
@@ -872,9 +872,9 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 				If DraggingValue.Count() = 1 Then
 					NotificationTitle = NStr("en='File copied.';ru='Файл скопирован.'");
 					NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='%1"
-"file has been copied to the %2 folder';ru='Файл"
-"""%1"" скопирован в папку ""%2""'"),
+						NStr("en='%1
+		|file has been copied to the %2 folder';ru='Файл
+		|""%1"" скопирован в папку ""%2""'"),
 						DraggingValue[0],
 						String(FolderForAdding));
 				Else
@@ -898,9 +898,9 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 				If DraggingValue.Count() = 1 Then
 					NotificationTitle = NStr("en='File has been moved';ru='Файл перенесен.'");
 					NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='The"
-"file ""%1"" was moved to the folder ""%2""';ru='Файл"
-"""%1"" перенесен в папку ""%2""'"),
+						NStr("en='The
+		|file ""%1"" was moved to the folder ""%2""';ru='Файл
+		|""%1"" перенесен в папку ""%2""'"),
 						String(DraggingValue[0]),
 						String(FolderForAdding));
 				Else
@@ -930,9 +930,9 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 				Items.Folders.CurrentRow = DraggingValue[0];
 				NotificationTitle = NStr("en='Folder has been moved.';ru='Папка перенесена.'");
 				NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Folder"
-"""%1"" moved to ""%2""';ru='Папка"
-"""%1"" перенесена в папку ""%2""'"),
+					NStr("en='Folder
+		|""%1"" moved to ""%2""';ru='Папка
+		|""%1"" перенесена в папку ""%2""'"),
 					String(DraggingValue[0]),
 					String(FolderForAdding));
 			Else

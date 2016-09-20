@@ -859,13 +859,13 @@ EndProcedure
 Function MessageTextErrorsInPDFConversions(ResultFile)
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='File ""%1"" is not found."
-"Check whether application ImageMagick"
-"is installed and a correct path to"
-"PDF conversion application is specified in the scan settings form.';ru='Не найден файл ""%1""."
-"Проверьте, что"
-"установлена программа ImageMagick и указан правильный"
-"путь к программе преобразования в PDF в форме настроек сканирования.'"),
+		NStr("en='File ""%1"" is not found.
+		|Check whether application ImageMagick
+		|is installed and a correct path to
+		|PDF conversion application is specified in the scan settings form.';ru='Не найден файл ""%1"".
+		|Проверьте, что
+		|установлена программа ImageMagick и указан правильный
+		|путь к программе преобразования в PDF в форме настроек сканирования.'"),
 		ResultFile);
 		
 	Return MessageText;

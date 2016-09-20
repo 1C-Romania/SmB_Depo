@@ -187,9 +187,9 @@ Procedure ChooseAndClose()
 	AdditionalParameters = New Structure;
 	AdditionalParameters.Insert("VariantKey", Variant.VariantKey);
 	If Variant.PictureIndex = 4 Then
-		QuestionText = NStr("en='Selected report variant is marked for deletion."
-"Select this report variant?';ru='Выбранный вариант отчета помечен на удаление."
-"Выбрать этот варианта отчета?'");
+		QuestionText = NStr("en='Selected report variant is marked for deletion.
+		|Select this report variant?';ru='Выбранный вариант отчета помечен на удаление.
+		|Выбрать этот варианта отчета?'");
 		Handler = New NotifyDescription("SelectAndCloseEnd", ThisObject, AdditionalParameters);
 		ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo, 60);
 	Else
@@ -387,9 +387,9 @@ Procedure FillVariantsList()
 		Except
 			ReportsVariants.ErrorByVariant(Undefined,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Failed to receive a predefined"
-"variants list of the external report ""%1"":';ru='Не удалось получить"
-"список предопределенных вариантов внешнего отчета ""%1"":'"),
+					NStr("en='Failed to receive a predefined
+		|variants list of the external report ""%1"":';ru='Не удалось получить
+		|список предопределенных вариантов внешнего отчета ""%1"":'"),
 					ReportInformation.ReportName
 				) + Chars.LF + DetailErrorDescription(ErrorInfo()));
 			Return;

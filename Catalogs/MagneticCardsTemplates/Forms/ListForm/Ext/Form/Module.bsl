@@ -12,9 +12,9 @@ Procedure OnOpen(Cancel)
 
 		If Not EquipmentManagerClient.ConnectEquipmentByType(UUID, 
 			SupporTypesVO, ErrorDescription) Then
-			MessageText = NStr("en='An error occurred while"
-"connecting peripherals: ""%ErrorDetails%"".';ru='При подключении оборудования"
-"произошла ошибка: ""%ОписаниеОшибки%"".'");
+			MessageText = NStr("en='An error occurred while
+		|connecting peripherals: ""%ErrorDetails%"".';ru='При подключении оборудования
+		|произошла ошибка: ""%ОписаниеОшибки%"".'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -44,9 +44,9 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 			ClearMessages();
 			If Parameter[1][3] = Undefined
 				OR Parameter[1][3].Count() = 0 Then
-				CommonUseClientServer.MessageToUser(NStr("en='It was not succeeded to read fields. "
-"Perhaps, template has been configured incorrectly.';ru='Не удалось прочитать поля. "
-"Возможно, шаблон настроен неверно.'"));
+				CommonUseClientServer.MessageToUser(NStr("en='It was not succeeded to read fields. 
+		|Perhaps, template has been configured incorrectly.';ru='Не удалось прочитать поля. 
+		|Возможно, шаблон настроен неверно.'"));
 			Else
 				TemplateFound = False;
 				For Each curTemplate IN Parameter[1][3] Do
@@ -54,9 +54,9 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 					OpenForm("Catalog.MagneticCardsTemplates.ObjectForm", New Structure("Key", curTemplate.Pattern));
 				EndDo;
 				If Not TemplateFound Then
-					CommonUseClientServer.MessageToUser(NStr("en='Code does not match this template. "
-"Perhaps, template has been configured incorrectly.';ru='Код не соответствует данному шаблону. "
-"Возможно, шаблон настроен неверно.'"));
+					CommonUseClientServer.MessageToUser(NStr("en='Code does not match this template. 
+		|Perhaps, template has been configured incorrectly.';ru='Код не соответствует данному шаблону. 
+		|Возможно, шаблон настроен неверно.'"));
 				EndIf;
 			EndIf;
 		EndIf;

@@ -41,25 +41,25 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			NStr("en='By infobases';ru='По информационным базам'");
 		
 		Items.Reports.ToolTip
-			= NStr("en='Reports by the data"
-"import prohibition dates set ""By the infobases"".';ru='Отчеты по"
-"датам запрета загрузки данных, установленным ""По информационным базам"".'");
+			= NStr("en='Reports by the data
+		|import prohibition dates set ""By the infobases"".';ru='Отчеты по
+		|датам запрета загрузки данных, установленным ""По информационным базам"".'");
 		
 		Commands.ProhibitionDatesByUsers.Title
 			= NStr("en='Prohibition dates by infobases';ru='Даты запрета по информационным базам'");
 		
 		Commands.ProhibitionDatesByUsers.ToolTip
-			= NStr("en='Data import prohibition"
-"dates by the infobases and applications.';ru='Даты запрета"
-"загрузки данных по информационным базам и программам.'");
+			= NStr("en='Data import prohibition
+		|dates by the infobases and applications.';ru='Даты запрета
+		|загрузки данных по информационным базам и программам.'");
 		
 		Commands.ProhibitionDatesBySectionsObjectsForUsers.Title =
 			NStr("en='Prohibition dates by sections and objects for the infobases';ru='Даты запрета по разделам и объектам для информационных баз'");
 		
 		Commands.ProhibitionDatesBySectionsObjectsForUsers.ToolTip =
-			NStr("en='Data import prohibition"
-"dates by sections and objects for infobases and applications.';ru='Даты запрета"
-"загрузки данных по разделам и объектам для информационных баз и программ.'");
+			NStr("en='Data import prohibition
+		|dates by sections and objects for infobases and applications.';ru='Даты запрета
+		|загрузки данных по разделам и объектам для информационных баз и программ.'");
 		
 		Items.UsersFullPresentation.Title =
 			NStr("en='Application: infobase';ru='Программа: информационная база'");
@@ -4237,9 +4237,9 @@ EndFunction
 Function MessageTextProhibitionDateSettingNotUsed(ProhibitionDateSettingToForm, ProhibitionDateSettingInDatabase)
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Prohibition date setting"
-"""%1"" is not set, therefore, prohibition date setting will be saved ""%2"".';ru='Установка"
-"даты запрета ""%1"" не настроена, поэтому будет сохранена установка даты запрета ""%2"".'"),
+		NStr("en='Prohibition date setting
+		|""%1"" is not set, therefore, prohibition date setting will be saved ""%2"".';ru='Установка
+		|даты запрета ""%1"" не настроена, поэтому будет сохранена установка даты запрета ""%2"".'"),
 		ProhibitionDateSettingToForm,
 		ProhibitionDateSettingInDatabase);
 	
@@ -4250,21 +4250,21 @@ Function MessageTextSpecifiedModeNotUsed(SpecifiedModeInForm, SpecifiedModeInDat
 	
 	If PurposeForAll(CurrentUser) Then
 		Return StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Prohibition date specification"
-"method ""%1"" is not set"
-"for ""%2"", therefore, prohibition date specification method will be saved ""%3"".';ru='Способ"
-"указания даты запрета ""%1"""
-"не настроен ""%2"", поэтому будет сохранен способ указания даты запрета ""%3"".'"),
+			NStr("en='Prohibition date specification
+		|method ""%1"" is not set
+		|for ""%2"", therefore, prohibition date specification method will be saved ""%3"".';ru='Способ
+		|указания даты запрета ""%1""
+		|не настроен ""%2"", поэтому будет сохранен способ указания даты запрета ""%3"".'"),
 			SpecifiedModeInForm,
 			PresentationTextForAllUsers(Form),
 			SpecifiedModeInDataBase);
 	Else
 		Return StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Prohibition date specification"
-"method ""%1"" is not set for"
-"""%1"", therefore, prohibition date specification method will be saved ""%3"".';ru='Способ"
-"указания даты запрета ""%1"" не"
-"настроен для ""%2"", поэтому будет сохранен способ указания даты запрета ""%3"".'"),
+			NStr("en='Prohibition date specification
+		|method ""%1"" is not set for
+		|""%1"", therefore, prohibition date specification method will be saved ""%3"".';ru='Способ
+		|указания даты запрета ""%1"" не
+		|настроен для ""%2"", поэтому будет сохранен способ указания даты запрета ""%3"".'"),
 			SpecifiedModeInForm,
 			CurrentUser,
 			SpecifiedModeInDataBase);
@@ -4389,31 +4389,31 @@ EndFunction
 &AtClientAtServerNoContext
 Function MessageTextSectionsAlreadyFilledCanSetProhibitionDatesForSections()
 	
-	Return NStr("en='Sections"
-"are already filled in,"
-"you can set the prohibition dates for sections.';ru='Разделы"
-"уже заполнены,"
-"можно установить даты запрета для разделов.'");
+	Return NStr("en='Sections
+		|are already filled in,
+		|you can set the prohibition dates for sections.';ru='Разделы
+		|уже заполнены,
+		|можно установить даты запрета для разделов.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextSectionsAlreadyFilledCanSetProhibitionDatesForSectionsAndObjects()
 	
-	Return NStr("en='Sections"
-"are already filled in,"
-"you can set the prohibition date for sections and objects.';ru='Разделы"
-"уже заполнены,"
-"можно установить даты запрета для разделов и объектов.'");
+	Return NStr("en='Sections
+		|are already filled in,
+		|you can set the prohibition date for sections and objects.';ru='Разделы
+		|уже заполнены,
+		|можно установить даты запрета для разделов и объектов.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextObjectAlreadySelectedCanSetProhibitionDate()
 	
-	Return NStr("en='Object"
-"is already selected, you can set the prohibition date.';ru='Объект"
-"уже выбран, можно установить дату запрета.'");
+	Return NStr("en='Object
+		|is already selected, you can set the prohibition date.';ru='Объект
+		|уже выбран, можно установить дату запрета.'");
 	
 EndFunction
 

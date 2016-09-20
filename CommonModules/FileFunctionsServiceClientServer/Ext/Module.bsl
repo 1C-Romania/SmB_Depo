@@ -194,9 +194,9 @@ Function GetUniqueNameWithPath(DirectoryName, FileName) Export
 				CreateDirectory(FullSubDirectory);
 			Except
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='An error occurred when"
-"creating directory ""%1"": ""%2"".';ru='Ошибка при"
-"создании каталога ""%1"": ""%2"".'"),
+					NStr("en='An error occurred when
+		|creating directory ""%1"": ""%2"".';ru='Ошибка при
+		|создании каталога ""%1"": ""%2"".'"),
 					FullSubDirectory,
 					BriefErrorDescription(ErrorInfo()) );
 			EndTry;
@@ -247,9 +247,9 @@ Function CheckFileImportingPossibility(File,
 		SizeInMbMax = CommonSettings.MaximumFileSize / (1024 * 1024);
 		
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Size of the file"
-"""%1"" (%2 Mb) exceeds the maximum allowed file size (%3Mb).';ru='Размер файла"
-"""%1"" (%2 Мб) превышает максимально допустимый размер файла (%3 Мб).'"),
+			NStr("en='Size of the file
+		|""%1"" (%2 Mb) exceeds the maximum allowed file size (%3Mb).';ru='Размер файла
+		|""%1"" (%2 Мб) превышает максимально допустимый размер файла (%3 Мб).'"),
 			File.Name,
 			GetStringWithFileSize(SizeInMB),
 			GetStringWithFileSize(SizeInMbMax));
@@ -270,9 +270,9 @@ Function CheckFileImportingPossibility(File,
 	If Not CheckFileExtensionForImporting(File.Extension, False) Then
 		
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Cannot import files with extension ""%1""."
-"Contact your administrator.';ru='Загрузка файлов с расширением ""%1"" запрещена."
-"Обратитесь к администратору.'"),
+			NStr("en='Cannot import files with extension ""%1"".
+		|Contact your administrator.';ru='Загрузка файлов с расширением ""%1"" запрещена.
+		|Обратитесь к администратору.'"),
 			File.Extension);
 		
 		If CallingException Then
@@ -311,9 +311,9 @@ Function CheckFileExtensionForImporting(FileExtension, CallingException = True) 
 		
 		If CallingException Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Cannot import files with extension ""%1""."
-"Contact your administrator.';ru='Загрузка файлов с расширением ""%1"" запрещена."
-"Обратитесь к администратору.'"),
+				NStr("en='Cannot import files with extension ""%1"".
+		|Contact your administrator.';ru='Загрузка файлов с расширением ""%1"" запрещена.
+		|Обратитесь к администратору.'"),
 				FileExtension);
 		Else
 			Return False;
@@ -348,9 +348,9 @@ Procedure CheckFileSizeForImporting(File) Export
 		EndIf;
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Size of the file"
-"""%1"" (%2 Mb) exceeds the maximum allowed file size (%3Mb).';ru='Размер файла"
-"""%1"" (%2 Мб) превышает максимально допустимый размер файла (%3 Мб).'"),
+			NStr("en='Size of the file
+		|""%1"" (%2 Mb) exceeds the maximum allowed file size (%3Mb).';ru='Размер файла
+		|""%1"" (%2 Мб) превышает максимально допустимый размер файла (%3 Мб).'"),
 			Name,
 			GetStringWithFileSize(SizeInMB),
 			GetStringWithFileSize(SizeInMbMax));
@@ -397,11 +397,11 @@ EndFunction
 Function NewFileCreationError(ErrorInfo) Export
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='An error occurred when creating a new file."
-""
-"%1';ru='Ошибка создания нового файла."
-""
-"%1'"),
+		NStr("en='An error occurred when creating a new file.
+		|
+		|%1';ru='Ошибка создания нового файла.
+		|
+		|%1'"),
 		BriefErrorDescription(ErrorInfo));
 
 EndFunction
@@ -411,29 +411,29 @@ Function ErrorFileIsNotFoundInFileStorage(FileName, SearchInVolume = True) Expor
 	
 	If SearchInVolume Then
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error"
-"occurred while opening file ""%1""."
-""
-"File is not found in the file storage."
-"The file might have been deleted by an antivirus software."
-"Contact your administrator.';ru='Ошибка"
-"открытия файла: ""%1""."
-""
-"Файл не найден в хранилище файлов."
-"Возможно файл удален антивирусной программой."
-"Обратитесь к администратору.'"),
+			NStr("en='An error
+		|occurred while opening file ""%1"".
+		|
+		|File is not found in the file storage.
+		|The file might have been deleted by an antivirus software.
+		|Contact your administrator.';ru='Ошибка
+		|открытия файла: ""%1"".
+		|
+		|Файл не найден в хранилище файлов.
+		|Возможно файл удален антивирусной программой.
+		|Обратитесь к администратору.'"),
 			FileName);
 	Else
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error"
-"occurred while opening file ""%1""."
-""
-"File is not found in the file storage."
-"Contact your administrator.';ru='Ошибка"
-"открытия файла: ""%1""."
-""
-"Файл не найден в хранилище файлов."
-"Обратитесь к администратору.'"),
+			NStr("en='An error
+		|occurred while opening file ""%1"".
+		|
+		|File is not found in the file storage.
+		|Contact your administrator.';ru='Ошибка
+		|открытия файла: ""%1"".
+		|
+		|Файл не найден в хранилище файлов.
+		|Обратитесь к администратору.'"),
 			FileName);
 	EndIf;
 	

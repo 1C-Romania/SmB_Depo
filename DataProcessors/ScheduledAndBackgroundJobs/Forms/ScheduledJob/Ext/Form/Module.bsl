@@ -9,13 +9,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise NStr("en='Insufficient access rights."
-""
-"Change properties of"
-"scheduled job is executed only by administrators.';ru='Недостаточно прав доступа."
-""
-"Изменение свойств регламентного задания"
-"выполняется только администраторами.'");
+		Raise NStr("en='Insufficient access rights.
+		|
+		|Change properties of
+		|scheduled job is executed only by administrators.';ru='Недостаточно прав доступа.
+		|
+		|Изменение свойств регламентного задания
+		|выполняется только администраторами.'");
 	EndIf;
 	
 	Action = Parameters.Action;

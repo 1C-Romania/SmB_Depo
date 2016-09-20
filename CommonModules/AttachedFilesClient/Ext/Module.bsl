@@ -81,9 +81,9 @@ Procedure SignFile(AttachedFile, FormID, AdditionalParameters = Undefined) Expor
 	
 	If Not ModuleDigitalSignatureClient.UseDigitalSignatures() Then
 		ShowMessageBox(,
-			NStr("en='To add a digital"
-"signature, activate the option of using digital signatures in the application settings.';ru='Чтобы добавить"
-"электронную подпись, включите в настройках программы использование электронных подписей.'"));
+			NStr("en='To add a digital
+		|signature, activate the option of using digital signatures in the application settings.';ru='Чтобы добавить
+		|электронную подпись, включите в настройках программы использование электронных подписей.'"));
 		Return;
 	EndIf;
 	

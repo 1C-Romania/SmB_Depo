@@ -18,9 +18,9 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
 	Cancel = True;
 	
-	QuestionText = NStr("en='There is an option to select bank from the classifier."
-"Select?';ru='Есть возможность подобрать банк из классификатора."
-"Подобрать?'");
+	QuestionText = NStr("en='There is an option to select bank from the classifier.
+		|Select?';ru='Есть возможность подобрать банк из классификатора.
+		|Подобрать?'");
 	
 	AdditionalParameters = New Structure;
 	AdditionalParameters.Insert("IsFolder", Group);

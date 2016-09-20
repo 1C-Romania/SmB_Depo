@@ -202,26 +202,26 @@ Function MessageParametersToTechicalSupport()
 	Result = New Structure;
 	Result.Insert("Subject", NStr("en='Online support. Registration number entry.';ru='Интернет-поддержка. Ввод регистрационного номера.'"));
 	
-	MessageText = NStr("en='Hello!"
-"I can not enter registration number for the software product"
-"to connect to Online Support."
-"Please help me to solve this issue."
-""
-"Login: %1."
-"Registration number: %2."
-"%TechnicalParameters%"
-"-----------------------------------------------"
-"Kind Regards, .';ru='Здравствуйте!"
-"У меня не получается ввести регистрационный номер программного продукта"
-"для подключения Интернет-поддержки."
-"Прошу помочь разобраться с проблемой."
-""
-"Логин: %1."
-"Регистрационный номер: %2."
-""
-"%ТехническиеПараметры%"
-"-----------------------------------------------"
-"С уважением, .'");
+	MessageText = NStr("en='Hello!
+		|I can not enter registration number for the software product
+		|to connect to Online Support.
+		|Please help me to solve this issue.
+		|
+		|Login: %1.
+		|Registration number: %2.
+		|%TechnicalParameters%
+		|-----------------------------------------------
+		|Kind Regards, .';ru='Здравствуйте!
+		|У меня не получается ввести регистрационный номер программного продукта
+		|для подключения Интернет-поддержки.
+		|Прошу помочь разобраться с проблемой.
+		|
+		|Логин: %1.
+		|Регистрационный номер: %2.
+		|
+		|%ТехническиеПараметры%
+		|-----------------------------------------------
+		|С уважением, .'");
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(
 		InteractionContext.COPContext,

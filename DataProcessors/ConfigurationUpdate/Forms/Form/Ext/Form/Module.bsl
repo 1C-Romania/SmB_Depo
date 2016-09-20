@@ -910,10 +910,10 @@ Procedure BeforePageOpen(NewCurrentPage = Undefined)
 				
 				PlatformVersion = ?(PlatformUpdateIsNeeded, AvailableUpdateStructure.PlatformVersion,
 					ConfigurationUpdateClient.PlatformNextEdition());
-				CaptionPattern = NStr("en='To update this version 1C:Enterprise platform"
-"higher than <b>%1<b> version is required. It is required to <a href = ""HowToUpdatePlatform>update to a new platform version</a>, after that you can install this update.';ru='Для обновления на эту версию требуется платформа 1С:Предприятие"
-"не ниже версии <b>%1</b>. Необходимо <a href = ""КакОбновитьПлатформу"">перейти на новую версию платформы</a>,"
-"после чего можно будет установить это обновление.'");
+				CaptionPattern = NStr("en='To update this version 1C:Enterprise platform
+		|higher than <b>%1<b> version is required. It is required to <a href = ""HowToUpdatePlatform>update to a new platform version</a>, after that you can install this update.';ru='Для обновления на эту версию требуется платформа 1С:Предприятие
+		|не ниже версии <b>%1</b>. Необходимо <a href = ""КакОбновитьПлатформу"">перейти на новую версию платформы</a>,
+		|после чего можно будет установить это обновление.'");
 				TitleString = StringFunctionsClientServer.PlaceParametersIntoString(CaptionPattern, AvailableUpdateStructure.PlatformVersion);
 				Items.DecorationUpdatePlatform.Title = StringFunctionsClientServer.FormattedString(TitleString);
 				
@@ -1645,14 +1645,14 @@ Function GoToChoiceOfUpdateMode(IsGoNext = False)
 		NotifyDescription = New NotifyDescription("AfterAdministrationParametersReceiving", ThisObject, IsGoNext);
 		FormTitle = NStr("en='Setting update';ru='Установка обновления'");
 		If ThisIsFileBase Then
-			ExplanatoryInscription = NStr("en='To set the update"
-"it is necessary to enter the infobase administration parameters';ru='Для установки"
-"обновления необходимо ввести параметры администрирования информационной базы'");
+			ExplanatoryInscription = NStr("en='To set the update
+		|it is necessary to enter the infobase administration parameters';ru='Для установки
+		|обновления необходимо ввести параметры администрирования информационной базы'");
 			QueryClusterAdministrationParameters = False;
 		Else
-			ExplanatoryInscription = NStr("en='To install the update it"
-"is necessary to enter the administration parameters for the server and infobase cluster';ru='Для установки обновления"
-"необходимо ввести параметры администрирования кластера серверов и информационной базы'");
+			ExplanatoryInscription = NStr("en='To install the update it
+		|is necessary to enter the administration parameters for the server and infobase cluster';ru='Для установки обновления
+		|необходимо ввести параметры администрирования кластера серверов и информационной базы'");
 			QueryClusterAdministrationParameters = True;
 		EndIf;
 		
@@ -1711,9 +1711,9 @@ Procedure AfterAdministrationParametersReceiving(Result, IsGoNext) Export
 		ShowMessageBox(, WarningText);
 		
 		NameLogEvents = ConfigurationUpdateClient.EventLogMonitorEvent();
-		MessageText = NStr("en='Failed to install the application update, i.e. correct"
-"infobase administration parameters were not entered.';ru='Не удалось установить обновление программы, т.к. не были введены"
-"корректные параметры администрирования информационной базы.'");
+		MessageText = NStr("en='Failed to install the application update, i.e. correct
+		|infobase administration parameters were not entered.';ru='Не удалось установить обновление программы, т.к. не были введены
+		|корректные параметры администрирования информационной базы.'");
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, "Error", MessageText);
 		
 		NewCurrentPage = Items.FailureRefresh;
@@ -2140,8 +2140,8 @@ Function GetFileOfUpdateDescription()
 	Try
 		DeleteFiles(FileName);
 	Except
-		MessageText = NStr("en='Error while deleting the"
-"temporary file %1 %2';ru='Ошибка при удалении временного файла %1 %2'");
+		MessageText = NStr("en='Error while deleting the
+		|temporary file %1 %2';ru='Ошибка при удалении временного файла %1 %2'");
 		NameLogEvents =	ConfigurationUpdateClient.EventLogMonitorEvent();
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents,
 			"Error", StringFunctionsClientServer.PlaceParametersIntoString(MessageText, FileName,
@@ -2183,8 +2183,8 @@ Function GetFileOfUpdateOrder()
 	Try
 		DeleteFiles(FileName);
 	Except
-		MessageText = NStr("en='Error while deleting the"
-"temporary file %1 %2';ru='Ошибка при удалении временного файла %1 %2'");
+		MessageText = NStr("en='Error while deleting the
+		|temporary file %1 %2';ru='Ошибка при удалении временного файла %1 %2'");
 			
 		NameLogEvents = ConfigurationUpdateClient.EventLogMonitorEvent();
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents,
@@ -2406,9 +2406,9 @@ Function GetUpdate(OutputMessages = True)
 				If Not AuthenticationResult.ResultValue Then
 					
 					Items.AccessGroupOnSite.CurrentPage = Items.AccessGroupOnSite.ChildItems.LegalityCheckError;
-					ErrorText = NStr("en='Failed to confirm the update authentication through the Internet"
-"due to: %1';ru='Не удалось подтвердить легальность получения обновления через"
-"Интернет по причине: %1'");
+					ErrorText = NStr("en='Failed to confirm the update authentication through the Internet
+		|due to: %1';ru='Не удалось подтвердить легальность получения обновления через
+		|Интернет по причине: %1'");
 					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, AuthenticationResult.ErrorText);
 					Items.LegalityCheckErrorText.Title = ErrorText;
 					Return Pages.ConnectionToSite.Name;
@@ -2496,9 +2496,9 @@ Function CopyFile(FileNameSource, FileNamePurpose, OutputMessages = False)
 		FileCopy(FileNameSource, FileNamePurpose);
 	Except
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Error while"
-"copying: %1 (source:% 2; receiver: 3%)';ru='Ошибка"
-"при копировании: %1 (источник: %2; приемник: %3)'"), 
+			NStr("en='Error while
+		|copying: %1 (source:% 2; receiver: 3%)';ru='Ошибка
+		|при копировании: %1 (источник: %2; приемник: %3)'"), 
 				DetailErrorDescription(ErrorInfo()),
 				FileNameSource, FileNamePurpose);
 		EventLogMonitorClient.AddMessageForEventLogMonitor(

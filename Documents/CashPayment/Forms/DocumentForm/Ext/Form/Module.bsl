@@ -1597,11 +1597,11 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 		NotifyDescription = New NotifyDescription("BeforeWriteEnd", ThisObject, New Structure("WriteParameters", WriteParameters));
 		
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='While using the exchange you should reflect operation ""%1"" in ""Enterprise accounting""."
-""
-"Do you want to cancel the document record?';ru='При использовании обмена операцию ""%1"" рекомендуется отражать в ""Бухгалтерии предприятия""."
-""
-"Отменить запись документа?'"),
+			NStr("en='While using the exchange you should reflect operation ""%1"" in ""Enterprise accounting"".
+		|
+		|Do you want to cancel the document record?';ru='При использовании обмена операцию ""%1"" рекомендуется отражать в ""Бухгалтерии предприятия"".
+		|
+		|Отменить запись документа?'"),
 			String(OperationKind));
 			
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo,, DialogReturnCode.Yes);		
@@ -1951,13 +1951,13 @@ Procedure EnableFiscalRegistrarEnd(DeviceIdentifier, Parameters) Export
 				
 			Else
 				
-				MessageText = NStr("en='When printing a receipt, an error occurred."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При печати чека произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+				MessageText = NStr("en='When printing a receipt, an error occurred.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При печати чека произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 				);
 				MessageText = StrReplace(
 					MessageText,
@@ -1973,13 +1973,13 @@ Procedure EnableFiscalRegistrarEnd(DeviceIdentifier, Parameters) Export
 			
 		Else
 			
-			MessageText = NStr("en='An error occurred when connecting the device."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+			MessageText = NStr("en='An error occurred when connecting the device.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 			);
 			MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 			CommonUseClientServer.MessageToUser(MessageText);

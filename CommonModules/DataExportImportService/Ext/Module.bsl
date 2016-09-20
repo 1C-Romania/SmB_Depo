@@ -131,9 +131,9 @@ Procedure ImportDataFromDirectory(Val ImportingDirectory, Val ExportParameters) 
 		AND CommonUseClientServer.CompareVersions(PlatformVersion, "8.3.4.0") < 0) Then
 		
 		Raise
-			NStr("en='For executing the data import it is required to update the technology platform ""1C:Enterprise""."
-"For version 8.2 you should use release 8.2.19 (or higher)."
-"For version 8.3 you should use release 8.3.4 (or higher).';ru='Для выполнения загрузки данных требуется обновить технологическую платформу ""1С:Предприятие"". Для версии 8.2 необходимо использовать релиз 8.2.19 (или более новый). Для версии 8.3 необходимо использовать релиз 8.3.4 (или более новый).'");
+			NStr("en='For executing the data import it is required to update the technology platform ""1C:Enterprise"".
+		|For version 8.2 you should use release 8.2.19 (or higher).
+		|For version 8.3 you should use release 8.3.4 (or higher).';ru='Для выполнения загрузки данных требуется обновить технологическую платформу ""1С:Предприятие"". Для версии 8.2 необходимо использовать релиз 8.2.19 (или более новый). Для версии 8.3 необходимо использовать релиз 8.3.4 (или более новый).'");
 		
 	EndIf;
 	

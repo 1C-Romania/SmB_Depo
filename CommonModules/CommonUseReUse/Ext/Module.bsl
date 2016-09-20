@@ -558,11 +558,11 @@ Function CacheVersionsData(Val ID, Val DataType, Val ReceivingParameters, Val Us
 			EndTry;
 			
 			If Result.IsEmpty() Then
-				MessagePattern = NStr("en='An error occurred while updating the versions cache. Data is not received."
-"Record identifier:"
-"%1 Data type: %2';ru='Ошибка при обновлении кэша версий. Данные не получены."
-"Идентификатор"
-"записи: %1 Тип данных: %2'");
+				MessagePattern = NStr("en='An error occurred while updating the versions cache. Data is not received.
+		|Record identifier:
+		|%1 Data type: %2';ru='Ошибка при обновлении кэша версий. Данные не получены.
+		|Идентификатор
+		|записи: %1 Тип данных: %2'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 					MessagePattern, ID, DataType);
 					
@@ -619,9 +619,9 @@ Function InterfaceOptions() Export
 		ErrorInfo = ErrorInfo();
 		EventName = NStr("en='Interface setting';ru='Настройка интерфейса'", CommonUseClientServer.MainLanguageCode());
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while receiving"
-"interface options: %1';ru='При получении опций интерфейса"
-"произошла ошибка: %1'"),
+			NStr("en='An error occurred while receiving
+		|interface options: %1';ru='При получении опций интерфейса
+		|произошла ошибка: %1'"),
 			DetailErrorDescription(ErrorInfo));
 		WriteLogEvent(EventName, EventLogLevel.Error,,, ErrorText);
 	EndTry;

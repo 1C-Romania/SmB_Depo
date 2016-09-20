@@ -1740,11 +1740,11 @@ Function QuestionWhenAuthorizedUserExits(InteractionContext) Export
 		InteractionContext.COPContext,
 		"login");
 	
-	QuestionText = NStr("en='Connection of the user with login"
-"%1 to online support will be disabled. For a new connection you need to enter your login and password once again."
-"Go to authorization of a new user?';ru='Подключение пользователя"
-"с логином %1 к Интернет-поддержке будет прекращено. Для нового подключения нужно заново ввести логин и пароль."
-"Перейти к авторизации нового пользователя?'");
+	QuestionText = NStr("en='Connection of the user with login
+		|%1 to online support will be disabled. For a new connection you need to enter your login and password once again.
+		|Go to authorization of a new user?';ru='Подключение пользователя
+		|с логином %1 к Интернет-поддержке будет прекращено. Для нового подключения нужно заново ввести логин и пароль.
+		|Перейти к авторизации нового пользователя?'");
 	QuestionText = StrReplace(QuestionText, "%1", UserLogin);
 	
 	Return QuestionText;

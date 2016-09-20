@@ -361,8 +361,8 @@ Function MessageParametersToTechicalSupport()
 	Result.Insert("Subject", NStr("en='1C-Taxcom. ED exchange participant application for registration';ru='1С-Такском. Заявка на регистрацию участника обмена ЭД'"));
 	Result.Insert("Whom", "1c-taxcom@1c.ru");
 	
-	MessageText = NStr("en='Hello! I can not send an application to register ED exchange participant. Would you help me to solve the problem? Login: %1. %2 %TechnicalParameters% ----------------------------------------------- Sincerely, .';ru='Здравствуйте! У меня не получается отправить заявку на регистрацию участника обмена ЭД. Прошу помочь разобраться с проблемой. Логин: %1. %2 %ТехническиеПараметры% "
-"----------------------------------------------- С уважением, .'");
+	MessageText = NStr("en='Hello! I can not send an application to register ED exchange participant. Would you help me to solve the problem? Login: %1. %2 %TechnicalParameters% ----------------------------------------------- Sincerely, .';ru='Здравствуйте! У меня не получается отправить заявку на регистрацию участника обмена ЭД. Прошу помочь разобраться с проблемой. Логин: %1. %2 %ТехническиеПараметры% 
+		|----------------------------------------------- С уважением, .'");
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(
 		InteractionContext.COPContext,

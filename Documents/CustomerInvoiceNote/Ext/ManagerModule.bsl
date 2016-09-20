@@ -133,9 +133,9 @@ Procedure RunControl(DocumentRefInvoice, AdditionalProperties, Cancel, PostingDe
 				PresentationProductsAndServicesText = PresentationProductsAndServicesText + " | """ + TrimAll(QueryResultSelection.CountryOfOrigin) + """";
 			EndIf;
 
-			MessageText = NStr("en='%ProductsAndServicesPresentationText% - negative balance of inventories in CCD accounting."
-"Inventory balance by CCD accounting (number): %BalanceQuantity%.';ru='%ПредставлениеНоменклатурыТекст% - отрицательный остаток запасов в разрезе ГТД."
-"Остаток запасов в разрезе ГТД (количество): %КоличествоОстаток%.'");
+			MessageText = NStr("en='%ProductsAndServicesPresentationText% - negative balance of inventories in CCD accounting.
+		|Inventory balance by CCD accounting (number): %BalanceQuantity%.';ru='%ПредставлениеНоменклатурыТекст% - отрицательный остаток запасов в разрезе ГТД.
+		|Остаток запасов в разрезе ГТД (количество): %КоличествоОстаток%.'");
 			MessageText = StrReplace(MessageText, "%%ProductsAndServicesPresentationText%", PresentationProductsAndServicesText);
 			MessageText = StrReplace(MessageText, "%BalanceQuantity%", QueryResultSelection.QuantityBalanceInventoryByCCD);
 								
@@ -248,11 +248,11 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		If ItIsUniversalTransferDocument 
 			AND Header.DocumentDate < Date('20130101') Then 
 			
-			MessageText = NStr("en='__________________"
-"Printing of the universal transmission document is available from January 1, 2013. "
-"For the %1 document the print form is not generated.';ru='__________________"
-"Печать универсального передаточного документа доступна c 1 января 2013. "
-"Для документа %1 печатная форма не сформирована.'");
+			MessageText = NStr("en='__________________
+		|Printing of the universal transmission document is available from January 1, 2013. 
+		|For the %1 document the print form is not generated.';ru='__________________
+		|Печать универсального передаточного документа доступна c 1 января 2013. 
+		|Для документа %1 печатная форма не сформирована.'");
 			
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Header.Ref);
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);

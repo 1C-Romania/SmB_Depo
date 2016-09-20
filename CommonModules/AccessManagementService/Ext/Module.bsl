@@ -592,21 +592,21 @@ EndFunction
 //
 Procedure AfterWriteAdministratorOnAuthorization(Comment) Export
 	
-	Comment = NStr("en='Detected that the"
-"user of infobase with role ""Full rights"""
-"was"
-"created in the Configurator: -"
-"user is not found in catalog"
-"Users, - user is registered in the catalog Users, - user is added to access group Administrators."
-""
-"The infobase users should be created in the 1C:Enterprise mode.';ru='Обнаружено,"
-"что пользователь информационной базы с"
-"ролью"
-"""Полные права"" был создан в"
-"Конфигураторе: - пользователь не найден в"
-"справочнике Пользователи, - пользователь зарегистрирован в справочнике Пользователи, - пользователь добавлен в группу доступа Администраторы."
-""
-"Пользователей информационной базы следует создавать в режиме 1С:Предприятия.'");
+	Comment = NStr("en='Detected that the
+		|user of infobase with role ""Full rights""
+		|was
+		|created in the Configurator: -
+		|user is not found in catalog
+		|Users, - user is registered in the catalog Users, - user is added to access group Administrators.
+		|
+		|The infobase users should be created in the 1C:Enterprise mode.';ru='Обнаружено,
+		|что пользователь информационной базы с
+		|ролью
+		|""Полные права"" был создан в
+		|Конфигураторе: - пользователь не найден в
+		|справочнике Пользователи, - пользователь зарегистрирован в справочнике Пользователи, - пользователь добавлен в группу доступа Администраторы.
+		|
+		|Пользователей информационной базы следует создавать в режиме 1С:Предприятия.'");
 	
 EndProcedure
 
@@ -618,9 +618,9 @@ Procedure OnAuthorizationAdministratorOnStart(Administrator) Export
 	// Administrator will be automatically added to access group Administrators at authorization.
 	If Not Users.InfobaseUserWithFullAccess(, Not CommonUseReUse.DataSeparationEnabled()) Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Insufficient rights to"
-"add user ""%1"" to access group Administrators.';ru='Недостаточно"
-"прав для добавления пользователя ""%1"" в группу доступа Администраторы.'"),
+			NStr("en='Insufficient rights to
+		|add user ""%1"" to access group Administrators.';ru='Недостаточно
+		|прав для добавления пользователя ""%1"" в группу доступа Администраторы.'"),
 			String(Administrator));
 	EndIf;
 	
@@ -836,13 +836,13 @@ Procedure UpdateUsersRoles(Val Users1 = Undefined,
 								,
 								,
 								StringFunctionsClientServer.PlaceParametersIntoString(
-									NStr("en='When updating the roles"
-"of user"
-"""%1"", role ""%2"" of"
-"access groups profile ""%3"" was not found in metadata.';ru='При обновлении"
-"ролей пользователя"
-"""%1"" роль"
-"""%2"" профиля групп доступа ""%3"" не найдена в метаданных.'"),
+									NStr("en='When updating the roles
+		|of user
+		|""%1"", role ""%2"" of
+		|access groups profile ""%3"" was not found in metadata.';ru='При обновлении
+		|ролей пользователя
+		|""%1"" роль
+		|""%2"" профиля групп доступа ""%3"" не найдена в метаданных.'"),
 									String(CurrentUser),
 									String.Role,
 									String(Profile)),
@@ -910,11 +910,11 @@ Procedure CheckEnabledOfUserAccessAdministratorsGroupIB(GroupUsers, ErrorDescrip
 	
 	If Not FoundActiveAdministrator Then
 		ErrorDescription =
-			NStr("en='In access group"
-"Administrators there must be at least"
-"one user who is allowed to access the application.';ru='В группе"
-"доступа Администраторы должен быть хотя"
-"бы один пользователь, которому разрешен вход в программу.'");
+			NStr("en='In access group
+		|Administrators there must be at least
+		|one user who is allowed to access the application.';ru='В группе
+		|доступа Администраторы должен быть хотя
+		|бы один пользователь, которому разрешен вход в программу.'");
 	EndIf;
 	
 EndProcedure
@@ -1386,11 +1386,11 @@ EndProcedure
 // 
 Procedure OnDeterminingIssueBeforeWriteTextOfFirstAdministrator(QuestionText) Export
 	
-	QuestionText = NStr("en='First user is added to user"
-"list of the application, that is why he or she will be automatically included into access group Administrators. "
-"Continue?';ru='В список пользователей"
-"программы добавляется первый пользователь, поэтому он будет автоматически включен в группу доступа Администраторы. "
-"Продолжить?'")
+	QuestionText = NStr("en='First user is added to user
+		|list of the application, that is why he or she will be automatically included into access group Administrators. 
+		|Continue?';ru='В список пользователей
+		|программы добавляется первый пользователь, поэтому он будет автоматически включен в группу доступа Администраторы. 
+		|Продолжить?'")
 	
 EndProcedure
 
@@ -2009,11 +2009,11 @@ Function GetAccessValueSetsOfTabularSection(Object) Export
 	
 	If Object.Metadata().TabularSections.Find("AccessValuesSets") = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Wrong parameters."
-"""Access value sets"""
-"tabular section is not found in object of the type ""%1"".';ru='Неверные параметры."
-"У объекта"
-"типа ""%1"" не найдена табличная часть ""Наборы значений доступа"".'"),
+			NStr("en='Wrong parameters.
+		|""Access value sets""
+		|tabular section is not found in object of the type ""%1"".';ru='Неверные параметры.
+		|У объекта
+		|типа ""%1"" не найдена табличная часть ""Наборы значений доступа"".'"),
 			ValueTypeObject);
 	EndIf;
 	
@@ -2064,13 +2064,13 @@ Procedure RecordSetsOfAccessValues(Val Object, HasChanges = Undefined) Export
 	
 	If Not SetsRecord Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Wrong parameters."
-"Object type"
-"""%1"" is not found in the"
-"subscriptions to events ""Write access value sets"".';ru='Неверные параметры."
-"Тип"
-"объекта ""%1"" не найден"
-"в подписках на события ""Записать наборы значений доступа"".'"),
+				NStr("en='Wrong parameters.
+		|Object type
+		|""%1"" is not found in the
+		|subscriptions to events ""Write access value sets"".';ru='Неверные параметры.
+		|Тип
+		|объекта ""%1"" не найден
+		|в подписках на события ""Записать наборы значений доступа"".'"),
 				ValueTypeObject);
 	EndIf;
 	
@@ -2079,11 +2079,11 @@ Procedure RecordSetsOfAccessValues(Val Object, HasChanges = Undefined) Export
 	
 	If ObjectPossibleTypes.Get(TypeOf(ObjectReference)) = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while writing"
-"access value sets: type ""%1"" is not"
-"specified in the AccessValueSets information register in the Object dimension.';ru='Ошибка при записи"
-"наборов значений доступа: в регистре"
-"сведений НаборыЗначенийДоступа в измерении Объект не задан тип ""%1"".'"),
+				NStr("en='An error occurred while writing
+		|access value sets: type ""%1"" is not
+		|specified in the AccessValueSets information register in the Object dimension.';ru='Ошибка при записи
+		|наборов значений доступа: в регистре
+		|сведений НаборыЗначенийДоступа в измерении Объект не задан тип ""%1"".'"),
 				ObjectReference.Metadata().FullName());
 	EndIf;
 	
@@ -2102,13 +2102,13 @@ Procedure RecordSetsOfAccessValues(Val Object, HasChanges = Undefined) Export
 			
 			If Not TabularSectionFilledIn Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='Wrong parameters."
-"Object type"
-"""%1"" is not found in the"
-"subscriptions to events ""Fill in access value sets of tabular sections"".';ru='Неверные параметры."
-"Тип"
-"объекта ""%1"" не найден"
-"в подписках на события ""Заполнить наборы значений доступа табличных частей"".'"),
+						NStr("en='Wrong parameters.
+		|Object type
+		|""%1"" is not found in the
+		|subscriptions to events ""Fill in access value sets of tabular sections"".';ru='Неверные параметры.
+		|Тип
+		|объекта ""%1"" не найден
+		|в подписках на события ""Заполнить наборы значений доступа табличных частей"".'"),
 						ValueTypeObject);
 			EndIf;
 			// Object is already written with the AccessValueSets tabular section.
@@ -2195,13 +2195,13 @@ Procedure RecordDependentSetsOfAccessValues(Val Object) Export
 	
 	If Not ItIsLeadingObject Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Wrong parameters."
-"Object type"
-"""%1"" is not found in the"
-"subscriptions to events ""Write dependent access value sets"".';ru='Неверные параметры."
-"Тип"
-"объекта ""%1"" не найден"
-"в подписке на события ""Записать зависимые наборы значений доступа"".'"),
+			NStr("en='Wrong parameters.
+		|Object type
+		|""%1"" is not found in the
+		|subscriptions to events ""Write dependent access value sets"".';ru='Неверные параметры.
+		|Тип
+		|объекта ""%1"" не найден
+		|в подписке на события ""Записать зависимые наборы значений доступа"".'"),
 			ValueTypeObject);
 	EndIf;
 	
@@ -2231,24 +2231,24 @@ Procedure UpdateSetsOfAccessValues(ObjectReference, HasChanges = Undefined) Expo
 	If Not SetsRecord Then
 		Raise(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Wrong parameters."
-"Object type"
-"""%1"" is not found in the"
-"subscription to events ""Write access value sets"".';ru='Неверные параметры."
-"Тип"
-"объекта ""%1"" не найден"
-"в подписке на события ""Записать наборы значений доступа"".'"),
+				NStr("en='Wrong parameters.
+		|Object type
+		|""%1"" is not found in the
+		|subscription to events ""Write access value sets"".';ru='Неверные параметры.
+		|Тип
+		|объекта ""%1"" не найден
+		|в подписке на события ""Записать наборы значений доступа"".'"),
 				ValueTypeObject));
 	EndIf;
 	
 	If Metadata.InformationRegisters.AccessValuesSets.Dimensions.Object.Type.Types().Find(TypeOf(ObjectReference)) = Undefined Then
 		Raise(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while writing"
-"access value sets: type ""%1"" is not"
-"specified in the AccessValueSets information register in the Object dimension';ru='Ошибка при записи"
-"наборов значений доступа: в регистре"
-"сведений НаборыЗначенийДоступа в измерении Объект не задан тип %1'"),
+				NStr("en='An error occurred while writing
+		|access value sets: type ""%1"" is not
+		|specified in the AccessValueSets information register in the Object dimension';ru='Ошибка при записи
+		|наборов значений доступа: в регистре
+		|сведений НаборыЗначенийДоступа в измерении Объект не задан тип %1'"),
 				ObjectReference.Metadata().FullName()));
 	EndIf;
 	
@@ -2639,11 +2639,11 @@ Procedure SetCriteriaForQuery(Val Query, Val Values, Val ParameterNameValues, Va
 		IndexOfSeparator = Find(CurrentRow, ":");
 		If IndexOfSeparator = 0 Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while executing the AccessManagement procedure.SetFilterCriteriaInQuery()."
-""
-"In the ParameterNameFilterConditionsFieldName parameter separator (colon)"
-"is not found in the next string of"
-"""<Condition parameter name>:<Field name>"" ""%1"" format.';ru='Ошибка при выполнении процедуры УправлениеДоступом.УстановитьУсловиеОтбораВЗапросе().  В параметре ИмяПараметраУсловияОтбораИмяПоля не найден разделитель (двоеточие) в следующей строке формата ""<Имя параметра условия>:<Имя поля>"" ""%1"".'"),
+				NStr("en='An error occurred while executing the AccessManagement procedure.SetFilterCriteriaInQuery().
+		|
+		|In the ParameterNameFilterConditionsFieldName parameter separator (colon)
+		|is not found in the next string of
+		|""<Condition parameter name>:<Field name>"" ""%1"" format.';ru='Ошибка при выполнении процедуры УправлениеДоступом.УстановитьУсловиеОтбораВЗапросе().  В параметре ИмяПараметраУсловияОтбораИмяПоля не найден разделитель (двоеточие) в следующей строке формата ""<Имя параметра условия>:<Имя поля>"" ""%1"".'"),
 				CurrentRow);
 		EndIf;
 		ParameterNameFilterConditions = Left(CurrentRow, IndexOfSeparator-1);
@@ -3225,13 +3225,13 @@ Function MetadataObjectEmptyRef(MetadataObjectDesc) Export
 	
 	If MetadataObject = Undefined Then
 		Raise
-			NStr("en='An error occurred"
-"in the MetadataObjectEmptyRef function of the AccessManagementService general module."
-""
-"Wrong parameter MetadataObjectDescription.';ru='Ошибка"
-"в функции ПустаяСсылкаОбъектаМетаданных общего модуля УправлениеДоступомСлужебный."
-""
-"Наверный параметр ОписаниеОбъектаМетаданных.'");
+			NStr("en='An error occurred
+		|in the MetadataObjectEmptyRef function of the AccessManagementService general module.
+		|
+		|Wrong parameter MetadataObjectDescription.';ru='Ошибка
+		|в функции ПустаяСсылкаОбъектаМетаданных общего модуля УправлениеДоступомСлужебный.
+		|
+		|Наверный параметр ОписаниеОбъектаМетаданных.'");
 	EndIf;
 	
 	EmptyRef = Undefined;
@@ -3240,15 +3240,15 @@ Function MetadataObjectEmptyRef(MetadataObjectDesc) Export
 		EmptyRef = ObjectManager.EmptyRef();
 	Except
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred"
-"in the MetadataObjectEmptyRef function of the AccessManagementService general module."
-""
-"Unable to receive an empty ref for"
-"the metadata object ""%1"".';ru='Ошибка в функции ПустаяСсылкаОбъектаМетаданных"
-"общего модуля УправлениеДоступомСлужебный."
-""
-"Не удалось получить пустую ссылка для объекта метаданных"
-"""%1"".'"),
+			NStr("en='An error occurred
+		|in the MetadataObjectEmptyRef function of the AccessManagementService general module.
+		|
+		|Unable to receive an empty ref for
+		|the metadata object ""%1"".';ru='Ошибка в функции ПустаяСсылкаОбъектаМетаданных
+		|общего модуля УправлениеДоступомСлужебный.
+		|
+		|Не удалось получить пустую ссылка для объекта метаданных
+		|""%1"".'"),
 			MetadataObject.FullName());
 	EndTry;
 	
@@ -3326,13 +3326,13 @@ Function TextOfQuerySelectionChanges(SelectNewQueryText,
 	
 	If Find(SelectNewQueryText, "&InsertFieldsRowChangeKind") = 0 Then
 		Raise
-			NStr("en='An error occurred in"
-"the OldSelectionQueryText parameter value of the ChangesSelectionQueryText procedure of the AccessManagementService module."
-""
-"String is not found in the query text ""&InsertFieldsRowChangeKind"".';ru='Ошибка в"
-"значении параметра ТекстЗапросаВыбораСтарых процедуры ТекстЗапросаВыбораИзменений модуля УправлениеДоступомСлужебный."
-""
-"В тексте запроса не найдена строка ""&ПодстановкаПоляВидИзмененияСтроки"".'");
+			NStr("en='An error occurred in
+		|the OldSelectionQueryText parameter value of the ChangesSelectionQueryText procedure of the AccessManagementService module.
+		|
+		|String is not found in the query text ""&InsertFieldsRowChangeKind"".';ru='Ошибка в
+		|значении параметра ТекстЗапросаВыбораСтарых процедуры ТекстЗапросаВыбораИзменений модуля УправлениеДоступомСлужебный.
+		|
+		|В тексте запроса не найдена строка ""&ПодстановкаПоляВидИзмененияСтроки"".'");
 	EndIf;
 	
 	TextOfQuerySelectOld = StrReplace(
@@ -3340,13 +3340,13 @@ Function TextOfQuerySelectionChanges(SelectNewQueryText,
 	
 	If Find(SelectNewQueryText, "&InsertFieldsRowChangeKind") = 0 Then
 		Raise
-			NStr("en='An error occurred in"
-"the NewSelectionQueryText parameter value of the ChangesSelectionQueryText procedure of the AccessManagementService module."
-""
-"String is not found in the query text ""&InsertFieldsRowChangeKind"".';ru='Ошибка в"
-"значении параметра ТекстЗапросаВыбораНовых процедуры ТекстЗапросаВыбораИзменений модуля УправлениеДоступомСлужебный."
-""
-"В тексте запроса не найдена строка ""&ПодстановкаПоляВидИзмененияСтроки"".'");
+			NStr("en='An error occurred in
+		|the NewSelectionQueryText parameter value of the ChangesSelectionQueryText procedure of the AccessManagementService module.
+		|
+		|String is not found in the query text ""&InsertFieldsRowChangeKind"".';ru='Ошибка в
+		|значении параметра ТекстЗапросаВыбораНовых процедуры ТекстЗапросаВыбораИзменений модуля УправлениеДоступомСлужебный.
+		|
+		|В тексте запроса не найдена строка ""&ПодстановкаПоляВидИзмененияСтроки"".'");
 	EndIf;
 	
 	SelectNewQueryText = StrReplace(
@@ -3833,13 +3833,13 @@ Procedure OnChangeSetsOfAccessValues(Val ObjectReference)
 			Except
 				BriefErrorDescription = BriefErrorDescription(ErrorInfo());
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='An error occurred while updating dependent"
-"access values set"
-"of"
-"the object ""%1"": %2';ru='При обновлении зависимого набора"
-"значений доступа объекта"
-"""%1"""
-"возникла ошибка: %2'"),
+					NStr("en='An error occurred while updating dependent
+		|access values set
+		|of
+		|the object ""%1"": %2';ru='При обновлении зависимого набора
+		|значений доступа объекта
+		|""%1""
+		|возникла ошибка: %2'"),
 					String(RefOnDependentObject),
 					BriefErrorDescription);
 			EndTry;
@@ -3856,9 +3856,9 @@ Procedure FillParameters(InputParameters, Val AllParameters, Val MandatoryParame
 		Parameters = New Structure;
 	Else
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Incorrect properties set type ""%1""."
-"Allowed types: Structure, Undefined.';ru='Некорректный тип набора свойств ""%1""."
-"Допустимые типы: Структура, Неопределено.'"),
+			NStr("en='Incorrect properties set type ""%1"".
+		|Allowed types: Structure, Undefined.';ru='Некорректный тип набора свойств ""%1"".
+		|Допустимые типы: Структура, Неопределено.'"),
 			TypeOf(InputParameters));
 	EndIf;
 	
@@ -4359,13 +4359,13 @@ Procedure RecordUserOnRolesUpdate(UserRef, IBUser, WasFullRights, ServiceUserPas
 			EndIf;
 			
 			Raise
-				NStr("en='To change administrative"
-"access, service user password is required."
-""
-"Operation can be performed only interactively';ru='Для изменения"
-"административного доступа требуется пароль пользователя сервиса."
-""
-"Операция может быть выполнена только интерактивно.'");
+				NStr("en='To change administrative
+		|access, service user password is required.
+		|
+		|Operation can be performed only interactively';ru='Для изменения
+		|административного доступа требуется пароль пользователя сервиса.
+		|
+		|Операция может быть выполнена только интерактивно.'");
 		EndIf;
 		
 		OnWriteServiceUser(UserRef, False, ServiceUserPassword);
@@ -4630,33 +4630,33 @@ Procedure ExceptWithErrorSearchRecords(Parameters)
 		   AND ChangesRow.RowChangeKind <> -1 Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred"
-"in the UpdateRecordSets procedure of the AccessManagementService general module."
-""
-"NewRecords parameter incorrect"
-"value – RowChangeKind column contains invalid value ""%1""."
-""
-"Only 2 values are available: ""1"" and ""-1"".';ru='Ошибка"
-"в процедуре ОбновитьНаборыЗаписей общего модуля УправлениеДоступомСлужебный."
-""
-"Неверное значение"
-"параметра НовыеЗаписи - колонка ВидИзмененияСтроки содержит недопустимое значение ""%1""."
-""
-"Допустимо только 2 значения: ""1"" и ""-1"".'"),
+				NStr("en='An error occurred
+		|in the UpdateRecordSets procedure of the AccessManagementService general module.
+		|
+		|NewRecords parameter incorrect
+		|value – RowChangeKind column contains invalid value ""%1"".
+		|
+		|Only 2 values are available: ""1"" and ""-1"".';ru='Ошибка
+		|в процедуре ОбновитьНаборыЗаписей общего модуля УправлениеДоступомСлужебный.
+		|
+		|Неверное значение
+		|параметра НовыеЗаписи - колонка ВидИзмененияСтроки содержит недопустимое значение ""%1"".
+		|
+		|Допустимо только 2 значения: ""1"" и ""-1"".'"),
 				String(ChangesRow.RowChangeKind));
 		EndIf;
 	EndDo;
 	
 	Raise
-		NStr("en='An error occurred"
-"in the UpdateRecordSets procedure of the AccessManagementService general module."
-""
-"Unable to find the required"
-"string in the NewRecords parameter value.';ru='Ошибка"
-"в процедуре ОбновитьНаборыЗаписей общего модуля УправлениеДоступомСлужебный."
-""
-"Не удалось найти"
-"требуемую в строку в значении параметра НовыеЗаписи.'");
+		NStr("en='An error occurred
+		|in the UpdateRecordSets procedure of the AccessManagementService general module.
+		|
+		|Unable to find the required
+		|string in the NewRecords parameter value.';ru='Ошибка
+		|в процедуре ОбновитьНаборыЗаписей общего модуля УправлениеДоступомСлужебный.
+		|
+		|Не удалось найти
+		|требуемую в строку в значении параметра НовыеЗаписи.'");
 	
 EndProcedure
 

@@ -592,11 +592,11 @@ EndFunction
 Function PermissionIsNotGrantedTextOfExceptionForLimiter(Val SessionKey, Val TypeRequiredPermissions, Val CheckedRestriction, Val Limiter)
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='For additional report or data"
-"processor %1 the {%2}%3 permission"
-"is not granted when delimiter %4 is %5.';ru='Для дополнительного отчета"
-"или обработки %1 не предоставлено"
-"разрешение {%2}%3 при значении ограничителя %4 равном %5!'"),
+		NStr("en='For additional report or data
+		|processor %1 the {%2}%3 permission
+		|is not granted when delimiter %4 is %5.';ru='Для дополнительного отчета
+		|или обработки %1 не предоставлено
+		|разрешение {%2}%3 при значении ограничителя %4 равном %5!'"),
 		String(SessionKey), TypeRequiredPermissions.NamespaceURI, TypeRequiredPermissions.Name,
 		CheckedRestriction.LocalName, Limiter);
 	
@@ -606,9 +606,9 @@ EndFunction
 Function ExceptionTextNotInstalledLimiterIsRequired(Val SessionKey, Val TypeRequiredPermissions, Val CheckedRestriction)
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='When the {%2}%3 permission was"
-"granted for additional report or data processor %1, mandatory delimiter %4 was not specified.';ru='Для дополнительного отчета"
-"или обработки %1 при предоставлении разрешения {%2}%3 не был указан обязательный ограничитель %4!'"),
+		NStr("en='When the {%2}%3 permission was
+		|granted for additional report or data processor %1, mandatory delimiter %4 was not specified.';ru='Для дополнительного отчета
+		|или обработки %1 при предоставлении разрешения {%2}%3 не был указан обязательный ограничитель %4!'"),
 		String(SessionKey), TypeRequiredPermissions.NamespaceURI, TypeRequiredPermissions.Name,
 		CheckedRestriction.LocalName);
 	

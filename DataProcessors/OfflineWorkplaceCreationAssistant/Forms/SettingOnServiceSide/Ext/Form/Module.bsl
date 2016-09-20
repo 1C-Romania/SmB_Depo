@@ -32,8 +32,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	InstructionForSettingOfflineWorkplace = OfflineWorkService.InstructionTextFromTemplate("InstructionForSettingOfflineWorkplace");
 	
-	ItemTitle = NStr("en='For an offline work on your computer the"
-"platform ""1C: Enterprise 8.3"" version [PlatformVersion] should be installed';ru='Для автономной работы на Вашем компьютере должна быть установлена платформа ""1С:Предприятие 8.3"" версии [ВерсияПлатформы]'");
+	ItemTitle = NStr("en='For an offline work on your computer the
+		|platform ""1C: Enterprise 8.3"" version [PlatformVersion] should be installed';ru='Для автономной работы на Вашем компьютере должна быть установлена платформа ""1С:Предприятие 8.3"" версии [ВерсияПлатформы]'");
 	ItemTitle = StrReplace(ItemTitle, "[PlatformVersion]", DataExchangeSaaS.RequiredPlatformVersion());
 	Items.ExplanationalTitleAboutPlatformVersion.Title = ItemTitle;
 	

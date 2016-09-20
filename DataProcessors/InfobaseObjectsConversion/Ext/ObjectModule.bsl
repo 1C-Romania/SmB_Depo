@@ -1932,9 +1932,9 @@ Function DumpByRule(Source					= Undefined,
 				LR.Value            = Source;
 				LR.ValueType         = PropertyStructure.RefTypeAsString;
 				LR.PErrorMessages = 71;
-				LR.Text               = NStr("en='In the values conversion rule (VCR) you should match Source value to Receiver value."
-"If there is no receiver appropriate value, specify an empty value.';ru='В правиле конвертации значений (ПКЗ) необходимо сопоставить значение Источника значению Приемника."
-"Если подходящего значения приемника нет, то указать пустое значение.'");
+				LR.Text               = NStr("en='In the values conversion rule (VCR) you should match Source value to Receiver value.
+		|If there is no receiver appropriate value, specify an empty value.';ru='В правиле конвертации значений (ПКЗ) необходимо сопоставить значение Источника значению Приемника.
+		|Если подходящего значения приемника нет, то указать пустое значение.'");
 				//
 				WriteInExecutionProtocol(71, LR);
 				
@@ -3370,13 +3370,13 @@ Function OpenExportFile()
 	Try
 		ExchangeFile.Open(ExchangeFileName, TextEncoding.UTF8);
 	Except
-		ErrorPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while opening file for exchange message writing."
-"File name ""%1""."
-"Error"
-"description: %2';ru='Ошибка при открытии файла для записи сообщения обмена."
-"Имя файла ""%1""."
-"Описание"
-"ошибки: %2'"),
+		ErrorPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while opening file for exchange message writing.
+		|File name ""%1"".
+		|Error
+		|description: %2';ru='Ошибка при открытии файла для записи сообщения обмена.
+		|Имя файла ""%1"".
+		|Описание
+		|ошибки: %2'"),
 			String(ExchangeFileName),
 			DetailErrorDescription(ErrorInfo())
 		);
@@ -5424,9 +5424,9 @@ Procedure RestoreRulesFromInternalFormat() Export
 	StorageRulesFormatVersion = Undefined;
 	RuleStructure.Property("StorageRulesFormatVersion", StorageRulesFormatVersion);
 	If StorageRulesFormatVersion <> FormatVersionStorageRulesExchange() Then
-		Raise NStr("en='Version of exchange rules storing format does not correspond to the expected one."
-"Rules of exchange are required to be imported again.';ru='Версия формата хранения правил обмена не соответствует ожидаемой."
-"Требуется выполнить загрузку правил обмена повторно.'"
+		Raise NStr("en='Version of exchange rules storing format does not correspond to the expected one.
+		|Rules of exchange are required to be imported again.';ru='Версия формата хранения правил обмена не соответствует ожидаемой.
+		|Требуется выполнить загрузку правил обмена повторно.'"
 		);
 	EndIf;
 	
@@ -5967,15 +5967,15 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 		LockDataForEdit(MessageReader.Sender);
 	Except
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Setting lock on data exchange error."
-"Data exchange may be performed by another session."
-""
-"Details:"
-"%1';ru='Ошибка установки блокировки на обмен данными."
-"Возможно, обмен данными выполняется другим сеансом."
-""
-"Подробности:"
-"%1'"),
+			NStr("en='Setting lock on data exchange error.
+		|Data exchange may be performed by another session.
+		|
+		|Details:
+		|%1';ru='Ошибка установки блокировки на обмен данными.
+		|Возможно, обмен данными выполняется другим сеансом.
+		|
+		|Подробности:
+		|%1'"),
 			BriefErrorDescription(ErrorInfo())
 		);
 	EndTry;
@@ -6295,9 +6295,9 @@ Procedure DeleteDocumentRegisterRecords(DocumentObject)
 			RegisterRecordRow.RecordSet.Write();
 		Except
 			// RlS or subsystem of the change prohibition date may have worked.
-			ErrorMessage = NStr("en='Operation is"
-"not executed: %1 %2';ru='Операция"
-"не выполнена: %1 %2'");
+			ErrorMessage = NStr("en='Operation is
+		|not executed: %1 %2';ru='Операция
+		|не выполнена: %1 %2'");
 			ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessage,
 				RegisterRecordRow.Name, BriefErrorDescription(ErrorInfo()));
 			Raise ErrorMessage;
@@ -9973,13 +9973,13 @@ Procedure DumpGroupOfProperties(Source, Receiver, IncomingData, OutgoingData, OC
 			
 		Except
 			
-			ErrorMessageString = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while creating temporary file for the data import."
-"File name ""%1""."
-"Error"
-"description: %2';ru='Ошибка при создании временного файла для выгрузки данных."
-"Имя файла ""%1""."
-"Описание"
-"ошибки: %2'"),
+			ErrorMessageString = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while creating temporary file for the data import.
+		|File name ""%1"".
+		|Error
+		|description: %2';ru='Ошибка при создании временного файла для выгрузки данных.
+		|Имя файла ""%1"".
+		|Описание
+		|ошибки: %2'"),
 				String(RecordFileName),
 				DetailErrorDescription(ErrorInfo()));
 				
@@ -15863,9 +15863,9 @@ Procedure MessagesInitialization()
 	
 	ErrorMessages.Insert(79, NStr("en='Error in the event handler AfterObjectExportToFile';ru='Ошибка в обработчике события ПослеВыгрузкиОбъектаВФайл'"));
 	
-	ErrorMessages.Insert(80, NStr("en='Error of the predefined item property setting."
-"You can not mark the predefined item to be deleted. Mark for deletion for the objects is not installed.';ru='Ошибка установки свойства предопределенного элемента."
-"Нельзя помечать на удаление предопределенный элемент. Пометка на удаление для объекта не установлена.'"));
+	ErrorMessages.Insert(80, NStr("en='Error of the predefined item property setting.
+		|You can not mark the predefined item to be deleted. Mark for deletion for the objects is not installed.';ru='Ошибка установки свойства предопределенного элемента.
+		|Нельзя помечать на удаление предопределенный элемент. Пометка на удаление для объекта не установлена.'"));
 	//
 	ErrorMessages.Insert(83, NStr("en='Error of the reference to the object tabular section. Tabular section of the document can not be modified.';ru='Ошибка обращения к табличной части объекта. Табличная часть объекта не может быть изменена.'"));
 	ErrorMessages.Insert(84, NStr("en='Change prohibition dates collision.';ru='Коллизия дат запрета изменения.'"));

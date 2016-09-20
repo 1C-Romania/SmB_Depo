@@ -132,9 +132,9 @@ Procedure EndSession(Command)
 			
 			NotifyDescription = New NotifyDescription("EndSessionContinuation", ThisObject);
 			FormTitle = NStr("en='Terminate session';ru='Завершить сеанс'");
-			ExplanatoryInscription = NStr("en='To end the session it"
-"is necessary to enter administration parameters of server cluster';ru='Для завершения сеанса"
-"необходимо ввести параметры администрирования кластера серверов'");
+			ExplanatoryInscription = NStr("en='To end the session it
+		|is necessary to enter administration parameters of server cluster';ru='Для завершения сеанса
+		|необходимо ввести параметры администрирования кластера серверов'");
 			InfobaseConnectionsClient.ShowAdministrationParameters(NOTifyDescription, False, True, AdministrationParameters, FormTitle, ExplanatoryInscription);
 			
 		Else

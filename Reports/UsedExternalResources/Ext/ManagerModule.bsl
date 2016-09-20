@@ -22,27 +22,27 @@ Procedure ConfigureReportsVariants(Settings, ReportSettings) Export
 	ReportSettings.Description = NStr("en='External Resources used by the application and additional modules';ru='Внешние ресурсы, используемые программой и дополнительными модулями'");
 	ReportSettings.DefineFormSettings = True;
 	ReportSettings.SearchSettings.FieldNames = 
-		NStr("en='Name and"
-"ID of"
-"the"
-"COM class"
-"Computer name"
-"Address Data reading Data recording"
-"Template or"
-"component attachment file name"
-"Check"
-"sum Command"
-"bar template Protocol Internet resource address Port';ru='Имя"
-"и идентификатор"
-"COM-класса"
-"Имя"
-"компьютера"
-"Адрес Чтение данных"
-"Запись данных"
-"Имя макета или файла"
-"компоненты"
-"Контрольная сумма"
-"Шаблон командной строки Протокол Адрес Интернет-ресурса Порт'");
+		NStr("en='Name and
+		|ID of
+		|the
+		|COM class
+		|Computer name
+		|Address Data reading Data recording
+		|Template or
+		|component attachment file name
+		|Check
+		|sum Command
+		|bar template Protocol Internet resource address Port';ru='Имя
+		|и идентификатор
+		|COM-класса
+		|Имя
+		|компьютера
+		|Адрес Чтение данных
+		|Запись данных
+		|Имя макета или файла
+		|компоненты
+		|Контрольная сумма
+		|Шаблон командной строки Протокол Адрес Интернет-ресурса Порт'");
 	ReportSettings.SearchSettings.ParametersAndFiltersNames = "";
 EndProcedure
 

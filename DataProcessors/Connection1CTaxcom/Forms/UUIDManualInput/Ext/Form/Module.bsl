@@ -123,18 +123,18 @@ Function MessageParametersToTechicalSupport()
 		NStr("en='1C-Taxcom. Enter a unique identifier of ED exchange participant manually';ru='1С-Такском. Ввод уникального идентификатора участника обмена ЭД вручную.'"));
 	Result.Insert("Whom", "1c-taxcom@1c.ru");
 	
-	MessageText = NStr("en='Hello! I can not enter a unique identifier of ED participant manually. Would you help me to solve the problem? Login: %1. %2 %TechnicalParameters% ----------------------------------------------- Sincerely, .';ru='Здравствуйте!"
-"У меня не получается ввести уникальный идентификатор участника ЭД вручную."
-""
-"Прошу помочь разобраться с проблемой."
-""
-"Логин: %1."
-""
-"%2"
-""
-"%ТехническиеПараметры%"
-"-----------------------------------------------"
-"С уважением, .'");
+	MessageText = NStr("en='Hello! I can not enter a unique identifier of ED participant manually. Would you help me to solve the problem? Login: %1. %2 %TechnicalParameters% ----------------------------------------------- Sincerely, .';ru='Здравствуйте!
+		|У меня не получается ввести уникальный идентификатор участника ЭД вручную.
+		|
+		|Прошу помочь разобраться с проблемой.
+		|
+		|Логин: %1.
+		|
+		|%2
+		|
+		|%ТехническиеПараметры%
+		|-----------------------------------------------
+		|С уважением, .'");
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(
 		InteractionContext.COPContext,

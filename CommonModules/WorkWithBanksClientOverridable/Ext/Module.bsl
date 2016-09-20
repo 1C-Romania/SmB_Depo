@@ -43,9 +43,9 @@ EndProcedure
 //
 Procedure RefreshItemFromClassifier(Val Form, ExecuteUpdate) Export
 	
-	QuestionText = NStr("en='The item data will be replaced with the data from the classifier."
-"All manual changes will be lost. Continue?';ru='Данные элемента будут заменены данными из классификатора."
-"Все ручные изменения будут потеряны. Продолжить?'");
+	QuestionText = NStr("en='The item data will be replaced with the data from the classifier.
+		|All manual changes will be lost. Continue?';ru='Данные элемента будут заменены данными из классификатора.
+		|Все ручные изменения будут потеряны. Продолжить?'");
 							
 	AdditionalParameters = New Structure;
 	AdditionalParameters.Insert("Form", Form);

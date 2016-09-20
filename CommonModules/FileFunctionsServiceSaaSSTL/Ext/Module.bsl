@@ -252,9 +252,9 @@ Procedure BeforeObjectExport(Container, ObjectExportManager, Serializer, Object,
 	If Handler = Undefined Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='Metadata object %1 can not be"
-"processed by the FileFunctionsServiceSaaSSTL.BeforeObjectExport() handler';ru='Объект метаданных %1"
-"не может быть обработан обработчиком ФайловыеФункцииСлужебныйВМоделиСервисаБТС.ПередВыгрузкойОбъекта()!'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='Metadata object %1 can not be
+		|processed by the FileFunctionsServiceSaaSSTL.BeforeObjectExport() handler';ru='Объект метаданных %1
+		|не может быть обработан обработчиком ФайловыеФункцииСлужебныйВМоделиСервисаБТС.ПередВыгрузкойОбъекта()!'", Metadata.DefaultLanguage.LanguageCode),
 			Object.Metadata().FullName()
 		);
 		
@@ -288,9 +288,9 @@ Procedure BeforeObjectImport(Container, Object, Artifacts, Cancel) Export
 	If Handler = Undefined Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='Metadata object %1 can not be"
-"processed by the FileFunctionsServiceSaaSSTL.BeforeObjectExport() handler';ru='Объект метаданных %1"
-"не может быть обработан обработчиком ФайловыеФункцииСлужебныйВМоделиСервисаБТС.ПередВыгрузкойОбъекта()!'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='Metadata object %1 can not be
+		|processed by the FileFunctionsServiceSaaSSTL.BeforeObjectExport() handler';ru='Объект метаданных %1
+		|не может быть обработан обработчиком ФайловыеФункцииСлужебныйВМоделиСервисаБТС.ПередВыгрузкойОбъекта()!'", Metadata.DefaultLanguage.LanguageCode),
 			Object.Metadata().FullName()
 		);
 		

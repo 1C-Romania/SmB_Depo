@@ -125,9 +125,9 @@ Procedure DisableDataSynchronization(Command)
 		
 		If CurrentData.SynchronizationSettingsInServiceManager Then
 			
-			ShowMessageBox(, NStr("en='To disable the data synchronization go to service manager."
-"In the service manager use the ""Data Synchronization"" command.';ru='Для отключения синхронизации данных перейдите в менеджер сервиса."
-"В менеджере сервиса воспользуйтесь командой ""Синхронизация данных"".'"));
+			ShowMessageBox(, NStr("en='To disable the data synchronization go to service manager.
+		|In the service manager use the ""Data Synchronization"" command.';ru='Для отключения синхронизации данных перейдите в менеджер сервиса.
+		|В менеджере сервиса воспользуйтесь командой ""Синхронизация данных"".'"));
 		Else
 			
 			FormParameters = New Structure;
@@ -517,9 +517,9 @@ Procedure PerformDataSynchronizationSetting(Val CurrentData)
 			
 		ElsIf CurrentData.SynchronizationSettingsInServiceManager Then
 			
-			ShowMessageBox(, NStr("en='To set the data synchronization go to service manager."
-"In the service manager use the ""Data Synchronization"" command.';ru='Для настройки синхронизации данных перейдите в менеджер сервиса."
-"В менеджере сервиса воспользуйтесь командой ""Синхронизация данных"".'"));
+			ShowMessageBox(, NStr("en='To set the data synchronization go to service manager.
+		|In the service manager use the ""Data Synchronization"" command.';ru='Для настройки синхронизации данных перейдите в менеджер сервиса.
+		|В менеджере сервиса воспользуйтесь командой ""Синхронизация данных"".'"));
 		Else
 			
 			FormParameters = New Structure;

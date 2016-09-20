@@ -140,13 +140,13 @@ Procedure CancelMapping(Command)
 	
 	ShowQueryBox(
 		New NotifyDescription("CancelComplianceContinuation", ThisObject),
-		NStr("en='Cancel mapping of infobase user with the user in catalog."
-""
-"Cancellation of mapping is required very rarely, only if the mapping"
-"was completed incorrectly, for example, when updating an infobase, thus it is not recommended to cancel mapping for any other reason.';ru='Отмена сопоставления пользователя информационной базы с пользователем в справочнике."
-""
-"Отмена сопоставления требуется крайне редко - только если сопоставление было выполнено некорректно, например,"
-"при обновлении информационной базы, поэтому не рекомендуется отменять сопоставление по любой другой причине.'"),
+		NStr("en='Cancel mapping of infobase user with the user in catalog.
+		|
+		|Cancellation of mapping is required very rarely, only if the mapping
+		|was completed incorrectly, for example, when updating an infobase, thus it is not recommended to cancel mapping for any other reason.';ru='Отмена сопоставления пользователя информационной базы с пользователем в справочнике.
+		|
+		|Отмена сопоставления требуется крайне редко - только если сопоставление было выполнено некорректно, например,
+		|при обновлении информационной базы, поэтому не рекомендуется отменять сопоставление по любой другой причине.'"),
 		Buttons,
 		,
 		"LeaveCompliance");

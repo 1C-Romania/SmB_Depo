@@ -395,9 +395,9 @@ Procedure MakeSelection(Val LineNumber)
 	Notification = New NotifyDescription("MakeSelectionEndQuestion", ThisObject, Data);
 	
 	WarningIrrelevant = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Address ""%1"" is not applicable."
-"Continue?';ru='Адрес ""%1"" неактуален."
-"Продолжить?'"),
+		NStr("en='Address ""%1"" is not applicable.
+		|Continue?';ru='Адрес ""%1"" неактуален.
+		|Продолжить?'"),
 		Data.Presentation
 	);
 	TitleWarnings = NStr("en='Confirmation';ru='Подтверждение'");

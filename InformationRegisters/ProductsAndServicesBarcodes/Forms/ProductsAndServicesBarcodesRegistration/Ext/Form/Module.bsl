@@ -59,11 +59,11 @@ Procedure MoveIntoDocument(Command)
 		FoundUnregisteredGoods = ProductsAndServicesBarcodes.FindRows(New Structure("Registered, RegisteredByProcessing", False, False));
 		If FoundUnregisteredGoods.Count() > 0 Then
 			
-			QuestionText = NStr("en='The corresponding products and services are specified not for all new barcodes."
-"These products will not be transferred in the document."
-"Put them aside as not scanned.';ru='Не для всех новых штрихкодов указана соответствующая номенклатура."
-"Эти товары не будут перенесены в документ."
-"Отложите их в сторону как неотсканированные.'"
+			QuestionText = NStr("en='The corresponding products and services are specified not for all new barcodes.
+		|These products will not be transferred in the document.
+		|Put them aside as not scanned.';ru='Не для всех новых штрихкодов указана соответствующая номенклатура.
+		|Эти товары не будут перенесены в документ.
+		|Отложите их в сторону как неотсканированные.'"
 			);
 			
 			QuestionResult = Undefined;
@@ -272,9 +272,9 @@ Procedure Cancel(Command, Cancel = False)
 		
 		NotifyDescription = New NotifyDescription("CancelEnd", ThisObject);
 		
-		QuestionText = NStr("en='All products will not be transferred in the document."
-"Put them aside as not scanned.';ru='Все товары не будут перенесены в документ."
-"Отложите их в сторону как неотсканированные.'"
+		QuestionText = NStr("en='All products will not be transferred in the document.
+		|Put them aside as not scanned.';ru='Все товары не будут перенесены в документ.
+		|Отложите их в сторону как неотсканированные.'"
 		);
 		
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.OKCancel);

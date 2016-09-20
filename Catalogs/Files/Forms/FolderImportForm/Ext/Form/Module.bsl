@@ -10,9 +10,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Not Parameters.Property("DirectoryOnHardDisk") Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='This data processor is called from the other configuration procedures."
-"Prohibited to call it manually.';ru='Данная обработка вызывается из других процедур конфигурации."
-"Вручную ее вызывать запрещено.'")); 
+			NStr("en='This data processor is called from the other configuration procedures.
+		|Prohibited to call it manually.';ru='Данная обработка вызывается из других процедур конфигурации.
+		|Вручную ее вызывать запрещено.'")); 
 		Cancel = True;
 		Return;
 	EndIf;

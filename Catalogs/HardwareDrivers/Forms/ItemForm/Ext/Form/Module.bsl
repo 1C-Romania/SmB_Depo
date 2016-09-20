@@ -134,9 +134,9 @@ Procedure ExportDriverFileCommand(Command)
 		EndIf;
 		
 		If Modified Then
-			Text = NStr("en='You can continue only after the data is saved."
-"Write data and continue?';ru='Продолжение операции возможно только после записи данных."
-"Записать данные и продолжить?'");
+			Text = NStr("en='You can continue only after the data is saved.
+		|Write data and continue?';ru='Продолжение операции возможно только после записи данных.
+		|Записать данные и продолжить?'");
 			Notification = New NotifyDescription("ExportDriverFileEnd", ThisObject);
 			ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo);
 		Else
@@ -176,9 +176,9 @@ EndProcedure
 Procedure InstallDriverCommand(Command)
 	
 	If Modified Then
-		Text = NStr("en='You can continue only after the data is saved."
-"Write data and continue?';ru='Продолжение операции возможно только после записи данных."
-"Записать данные и продолжить?'");
+		Text = NStr("en='You can continue only after the data is saved.
+		|Write data and continue?';ru='Продолжение операции возможно только после записи данных.
+		|Записать данные и продолжить?'");
 		Notification = New NotifyDescription("SetupDriverEnd", ThisObject);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo);
 	Else
@@ -254,7 +254,8 @@ Procedure ImportDriverFile(FullFileName)
 	
 	TempDriverFile = New File(FullFileName);
 	
-	If GetDriverInformationByFile(TempDriverFile.DescriptionFull) Then
+	//If GetDriverInformationByFile(TempDriverFile.DescriptionFull) Then
+	If GetDriverInformationByFile(TempDriverFile.FullName) Then
 		Notification = New NotifyDescription("ImportDriverFileWhenFinished", ThisObject, TempDriverFile.Name);
 		BeginPuttingFiles(Notification, Undefined, TempDriverFile.DescriptionFull, False) 
 	EndIf;

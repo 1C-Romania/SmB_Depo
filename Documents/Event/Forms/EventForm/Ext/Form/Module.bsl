@@ -390,9 +390,9 @@ Procedure SendEmailToCounterparty(Command)
 		
 		ListOfEmailAddresses	= New ValueList;
 		NotificationText = NStr("en='Event is not written.';ru='Событие не записано.'");
-		NotificationExplanation = NStr("en='Electronic addresses"
-"list will be blank.';ru='Список электронных адресов"
-"будет пуст.'");
+		NotificationExplanation = NStr("en='Electronic addresses
+		|list will be blank.';ru='Список электронных адресов
+		|будет пуст.'");
 		ShowUserNotification(NotificationText, , NotificationExplanation, PictureLib.Information32);
 		
 	Else

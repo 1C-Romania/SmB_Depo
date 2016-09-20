@@ -460,21 +460,21 @@ Procedure OnAddParametersJobsClientLogicStandardSubsystemsRunning(Parameters) Ex
 		LockReason = NStr("en='to post the scheduled works';ru='для проведения регламентных работ'");
 	EndIf;
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Application administator set %1 %2 users work lock."
-""
-"Application is temporarily unavailable.';ru='Администратором приложения установлена блокировка работы пользователей %1 %2."
-""
-"Приложение временно недоступно.'"),
+		NStr("en='Application administator set %1 %2 users work lock.
+		|
+		|Application is temporarily unavailable.';ru='Администратором приложения установлена блокировка работы пользователей %1 %2.
+		|
+		|Приложение временно недоступно.'"),
 		LockPeriod, LockReason);
 	Parameters.Insert("DataAreaSessionsLocked", MessageText);
 	MessageText = "";
 	If Users.InfobaseUserWithFullAccess() Then
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Application administator set %1 %2 users work lock."
-""
-"Do you want to enter to the locked application?';ru='Администратором приложения установлена блокировка работы пользователей %1 %2."
-""
-"Войти в заблокированное приложение?'"),
+			NStr("en='Application administator set %1 %2 users work lock.
+		|
+		|Do you want to enter to the locked application?';ru='Администратором приложения установлена блокировка работы пользователей %1 %2.
+		|
+		|Войти в заблокированное приложение?'"),
 			LockPeriod, LockReason);
 	EndIf;
 	Parameters.Insert("OfferLogOn", MessageText);
@@ -686,18 +686,18 @@ Function GenerateLockMessage(Val Message, Val KeyCode) Export
 	
 	If CommonUseReUse.DataSeparationEnabled() AND CommonUseReUse.CanUseSeparatedData() Then
 		MessageText = MessageText +
-		    NStr("en='%1"
-"To allow uses work you can open application with the AllowUsersWork parameter. For"
-"example: http://<server web address>/?C=AllowUsersWork';ru='%1"
-"Для разрешения работы пользователей можно открыть приложение с параметром РазрешитьРаботуПользователей. Например:"
-"http://<веб-адрес сервера>/?C=РазрешитьРаботуПользователей'");
+		    NStr("en='%1
+		|To allow uses work you can open application with the AllowUsersWork parameter. For
+		|example: http://<server web address>/?C=AllowUsersWork';ru='%1
+		|Для разрешения работы пользователей можно открыть приложение с параметром РазрешитьРаботуПользователей. Например:
+		|http://<веб-адрес сервера>/?C=РазрешитьРаботуПользователей'");
 	Else
 		MessageText = MessageText +
-		    NStr("en='%1"
-"To allow users work, use servers cluster console or start ""1C:Enterprise"" with parameters:"
-"ENTERPRISE %2 /AllowUsersWork /UC%3';ru='%1"
-"Для того чтобы разрешить работу пользователей, воспользуйтесь консолью кластера серверов или запустите"
-"""1С:Предприятие"" с параметрами: ENTERPRISE %2 /CРазрешитьРаботуПользователей /UC%3'");
+		    NStr("en='%1
+		|To allow users work, use servers cluster console or start ""1C:Enterprise"" with parameters:
+		|ENTERPRISE %2 /AllowUsersWork /UC%3';ru='%1
+		|Для того чтобы разрешить работу пользователей, воспользуйтесь консолью кластера серверов или запустите
+		|""1С:Предприятие"" с параметрами: ENTERPRISE %2 /CРазрешитьРаботуПользователей /UC%3'");
 	EndIf;
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText,
 		InfobaseConnectionsClientServer.TextForAdministrator(), InfobasePathString, 
@@ -876,13 +876,13 @@ Function InformationAboutLockingSessions(MessageText = "") Export
 	
 	If LockSessionsPresent Then
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='There are active sessions"
-"of work with application that can not"
-"be"
-"completed forcibly: %1 %2';ru='Имеются активные"
-"сеансы работы с программой, которые не"
-"могут"
-"быть завершены принудительно: %1 %2'"),
+			NStr("en='There are active sessions
+		|of work with application that can not
+		|be
+		|completed forcibly: %1 %2';ru='Имеются активные
+		|сеансы работы с программой, которые не
+		|могут
+		|быть завершены принудительно: %1 %2'"),
 			ActiveSessionNames, MessageText);
 		InformationAboutLockingSessions.Insert("MessageText", Message);
 		

@@ -17,9 +17,9 @@ Procedure BeforeWrite(Cancel)
 	If Not ValueIsFilled(FileOwner) Then
 		
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Owner in file is"
-"not filled in ""%1"".';ru='Не заполнен"
-"владелец в файле ""%1"".'"),
+			NStr("en='Owner in file is
+		|not filled in ""%1"".';ru='Не заполнен
+		|владелец в файле ""%1"".'"),
 			Description);
 		
 		If InfobaseUpdate.InfobaseUpdateInProgress() Then
@@ -110,9 +110,9 @@ Procedure BeforeWrite(Cancel)
 			// Try set deletion mark.
 			If DeletionMarkIsMarked AND Not IsEditing.IsEmpty() Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Cannot delete"
-"file ""%1"", so. it is locked for editing by user ""%2"".';ru='Нельзя удалить файл ""%1"","
-"т.к. он занят для редактирования пользователем ""%2""'"),
+					NStr("en='Cannot delete
+		|file ""%1"", so. it is locked for editing by user ""%2"".';ru='Нельзя удалить файл ""%1"",
+		|т.к. он занят для редактирования пользователем ""%2""'"),
 					FullDescr,
 					String(IsEditing) );
 			EndIf;
@@ -123,9 +123,9 @@ Procedure BeforeWrite(Cancel)
 		If FullDescr <> VIBDescription Then 
 			If Not IsEditing.IsEmpty() Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='File can not be"
-"renamed ""%1"", so. it is locked for editing by user ""%2"".';ru='Нельзя переименовать файл ""%1"","
-"т.к. он занят для редактирования пользователем ""%2"".'"),
+					NStr("en='File can not be
+		|renamed ""%1"", so. it is locked for editing by user ""%2"".';ru='Нельзя переименовать файл ""%1"",
+		|т.к. он занят для редактирования пользователем ""%2"".'"),
 					VIBDescription,
 					String(IsEditing));
 			EndIf;

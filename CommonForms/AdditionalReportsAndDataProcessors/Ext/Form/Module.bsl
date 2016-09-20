@@ -278,9 +278,9 @@ Procedure ShowProcessingExecutionResult(Result, CloseThisForm)
 		Items.Pages.CurrentPage = Items.PageOpenProcessing;
 		Items.PagesCommandBars.CurrentPage = Items.PageOpenDataProcessorPageCommandBar;
 		// Output of the error message.
-		WarningText = NStr("en='Failed to execute the ""%1"" command."
-"Look for details in event log.';ru='Не удалось выполнить команду ""%1""."
-"Подробности см. в журнале регистрации.'");
+		WarningText = NStr("en='Failed to execute the ""%1"" command.
+		|Look for details in event log.';ru='Не удалось выполнить команду ""%1"".
+		|Подробности см. в журнале регистрации.'");
 		WarningText = StrReplace(WarningText, "%1", ExecuteCommand.Presentation);
 		ShowMessageBox(, WarningText);
 		// Cancel closing.

@@ -140,9 +140,9 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 			
 		ElsIf SimplifiedInterfaceOfAccessRightsSettings Then
 			ShowMessageBox(,
-				NStr("en='Personal"
-"access groups are created only in the ""Access rights"" form.';ru='Персональные"
-"группы доступа создаются только в форме ""Права доступа"".'"));
+				NStr("en='Personal
+		|access groups are created only in the ""Access rights"" form.';ru='Персональные
+		|группы доступа создаются только в форме ""Права доступа"".'"));
 		Else
 			ShowMessageBox(, NStr("en='Personal access groups are not used.';ru='Персональные группы доступа не используются.'"));
 		EndIf;
@@ -153,9 +153,9 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 		Cancel = True;
 		
 		ShowMessageBox(,
-			NStr("en='Are used only personal"
-"access groups which are created only in the ""Access rights"" form.';ru='Используются только персональные группы доступа,"
-"которые создаются только в форме """"Права доступа"""".'"));
+			NStr("en='Are used only personal
+		|access groups which are created only in the ""Access rights"" form.';ru='Используются только персональные группы доступа,
+		|которые создаются только в форме """"Права доступа"""".'"));
 	EndIf;
 	
 EndProcedure

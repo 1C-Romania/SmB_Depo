@@ -515,23 +515,23 @@ EndProcedure
 Procedure ErrorCreatingCopies(Val JobParameters, Val ErrorInfo) Export
 	
 	If JobParameters.TryNumber < JobParameters.RestartCountOnFailure Then
-		CommentTemplate = NStr("en='An error occurred while creating area backup %1."
-"Attempt number:"
-"%2"
-"Because: %3';ru='При создании резервной копии области %1 произошла ошибка."
-"Номер"
-"попытки:"
-"%2 По причине: %3'");
+		CommentTemplate = NStr("en='An error occurred while creating area backup %1.
+		|Attempt number:
+		|%2
+		|Because: %3';ru='При создании резервной копии области %1 произошла ошибка.
+		|Номер
+		|попытки:
+		|%2 По причине: %3'");
 		Level = EventLogLevel.Warning;
 		Event = NStr("en='Creation iteration error';ru='Ошибка итерации создания'", CommonUseClientServer.MainLanguageCode());
 	Else
-		CommentTemplate = NStr("en='An unrecoverable error occurred while creating area backup %1."
-"Attempt number:"
-"%2"
-"Because: %3';ru='При создании резервной копии области %1 произошла невосстановимая ошибка."
-"Номер"
-"попытки:"
-"%2 По причине: %3'");
+		CommentTemplate = NStr("en='An unrecoverable error occurred while creating area backup %1.
+		|Attempt number:
+		|%2
+		|Because: %3';ru='При создании резервной копии области %1 произошла невосстановимая ошибка.
+		|Номер
+		|попытки:
+		|%2 По причине: %3'");
 		Level = EventLogLevel.Error;
 		Event = NStr("en='Creating Error';ru='Ошибка создания'", CommonUseClientServer.MainLanguageCode());
 	EndIf;
@@ -927,9 +927,9 @@ Function GetZoneBackupSettings(Val DataArea = Undefined) Export
 	EndIf;
 	
 	If Not OperationExecuted Then
-		MessagePattern = NStr("en='An error occurred while receiving"
-"backup: %1.';ru='Ошибка при получении настроек"
-"резервного копирования: %1'");
+		MessagePattern = NStr("en='An error occurred while receiving
+		|backup: %1.';ru='Ошибка при получении настроек
+		|резервного копирования: %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ErrorInfo);
 		Raise(MessageText);
 	EndIf;
@@ -969,9 +969,9 @@ Procedure SetZoneBackupSettings(Val DataArea, Val BackupSettings) Export
 	
 	ErrorInfo = Undefined;
 	If Not Proxy.SetSettings(DataArea, XDTOSettings, ErrorInfo) Then
-		MessagePattern = NStr("en='An error occurred while saving"
-"backup settings: %1.';ru='Ошибка при сохранении настроек"
-"резервного копирования: %1'");
+		MessagePattern = NStr("en='An error occurred while saving
+		|backup settings: %1.';ru='Ошибка при сохранении настроек
+		|резервного копирования: %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ErrorInfo);
 		Raise(MessageText);
 	EndIf;

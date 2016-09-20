@@ -1731,9 +1731,9 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		RollbackTransaction();
 		
 		StructureReturns.RetailReport = Undefined;
-		StructureReturns.ErrorDescription = NStr("en='An error occurred while generating retail sales report."
-"Cash session closing is not completed.';ru='При формировании отчета о розничных продажах произошла ошибка."
-"Закрытие кассовой смены не выполнено.'"
+		StructureReturns.ErrorDescription = NStr("en='An error occurred while generating retail sales report.
+		|Cash session closing is not completed.';ru='При формировании отчета о розничных продажах произошла ошибка.
+		|Закрытие кассовой смены не выполнено.'"
 		);
 		
 	EndTry;
@@ -1787,11 +1787,11 @@ Function DeleteDeferredReceipts(CashCRSession, ErrorDescription)
 		
 		Result = False;
 		
-		ErrorDescription = NStr("en='An error occurred while deleting deferred receipts."
-"Additional"
-"description: %AdditionalDetails%';ru='При удалении отложенных чеков произошла ошибка."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+		ErrorDescription = NStr("en='An error occurred while deleting deferred receipts.
+		|Additional
+		|description: %AdditionalDetails%';ru='При удалении отложенных чеков произошла ошибка.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 		);
 		ErrorDescription = StrReplace(ErrorDescription, "%AdditionalDetails%", ErrorInfo().Definition);
 		
@@ -1855,13 +1855,13 @@ Procedure RunReceiptsBackup(ObjectCashCRSession, ErrorDescription = "") Export
 		
 		RollbackTransaction();
 		
-		ErrorDescription = NStr("en='An error occurred while archiving receipts CR."
-"Receipts CR are not archived."
-"Additional"
-"description: %AdditionalDetails%';ru='При архивации чеков ККМ произошла ошибка."
-"Архивация чеков ККМ не выполнена."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+		ErrorDescription = NStr("en='An error occurred while archiving receipts CR.
+		|Receipts CR are not archived.
+		|Additional
+		|description: %AdditionalDetails%';ru='При архивации чеков ККМ произошла ошибка.
+		|Архивация чеков ККМ не выполнена.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 		);
 		ErrorDescription = StrReplace(ErrorDescription, "%AdditionalDetails%", ErrorInfo().Definition);
 

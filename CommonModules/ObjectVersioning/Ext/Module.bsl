@@ -250,9 +250,9 @@ Procedure RefreshInformationAboutObjectsVersions(Parameters) Export
 				EventLogLevel.Error, RecordSet.Metadata(),
 				,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Failed to update information about the No.%1 version of ""%2"""
-"object by reason of: %3';ru='Не удалось обновить сведения о версии №%1 объекта ""%2"" по причине:"
-"%3'", CommonUseClientServer.MainLanguageCode()),
+					NStr("en='Failed to update information about the No.%1 version of ""%2""
+		|object by reason of: %3';ru='Не удалось обновить сведения о версии №%1 объекта ""%2"" по причине:
+		|%3'", CommonUseClientServer.MainLanguageCode()),
 					Selection.VersionNumber,
 					CommonUse.SubjectString(Selection.Object),
 					DetailErrorDescription(ErrorInfo())));
@@ -930,11 +930,11 @@ Function RestoreObjectByXML(Val AddressInTemporaryStorage = "", ErrorMessageText
 	Except
 		WriteLogEvent(NStr("en='Versioning';ru='Версионирование'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
-		ErrorMessageText = NStr("en='Failed to proceed to the selected version."
-"Possible cause: the object version has been recorded in another application version."
-"Technical information about error: %1';ru='Не удалось перейти на выбранную версию."
-"Возможная причина: версия объекта была записана в другой версии программы."
-"Техническая информация об ошибке: %1'");
+		ErrorMessageText = NStr("en='Failed to proceed to the selected version.
+		|Possible cause: the object version has been recorded in another application version.
+		|Technical information about error: %1';ru='Не удалось перейти на выбранную версию.
+		|Возможная причина: версия объекта была записана в другой версии программы.
+		|Техническая информация об ошибке: %1'");
 		ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageText, BriefErrorDescription(ErrorInfo()));
 		Return Undefined;
 	EndTry;

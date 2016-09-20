@@ -21,9 +21,9 @@ Procedure CheckInputBasedOnPossibility(FillingData, AttributeValues)
 	EndIf;
 	
 	If Cancel Then
-		ErrorMessage = NStr("en='You can not enter the ""Receipt to order warehouse"" operation."
-"Document ""%DocumentRef"" has no order warehouse!';ru='Невозможен ввод операции ""Поступления на ордерный склад""."
-"Документ ""%ДокументСсылка"" не имеет ордерного склада!'");
+		ErrorMessage = NStr("en='You can not enter the ""Receipt to order warehouse"" operation.
+		|Document ""%DocumentRef"" has no order warehouse!';ru='Невозможен ввод операции ""Поступления на ордерный склад"".
+		|Документ ""%ДокументСсылка"" не имеет ордерного склада!'");
 		ErrorMessage = StrReplace(ErrorMessage, "%DocumentRef", FillingData.Ref);
 		Raise ErrorMessage;
 	EndIf;
@@ -398,9 +398,9 @@ Procedure FillByInventoryAssembly(FillingData)
 	EndIf;
 	
 	If ArrayTSOrder.Count() = 0 Then
-		ErrorMessage = NStr("en='You can not enter the ""Receipt to order warehouse"" operation."
-"Document ""%DocumentRef"" has no order warehouse!';ru='Невозможен ввод операции ""Поступления на ордерный склад""."
-"Документ ""%ДокументСсылка"" не имеет ордерного склада!'");
+		ErrorMessage = NStr("en='You can not enter the ""Receipt to order warehouse"" operation.
+		|Document ""%DocumentRef"" has no order warehouse!';ru='Невозможен ввод операции ""Поступления на ордерный склад"".
+		|Документ ""%ДокументСсылка"" не имеет ордерного склада!'");
 		ErrorMessage = StrReplace(ErrorMessage, "%DocumentRef", FillingData.Ref);
 		Raise ErrorMessage;
 	EndIf;

@@ -813,9 +813,9 @@ Function RulesOfExchangeAndFileNamesAreSame()
 	
 	If Upper(TrimAll(RulesFilename)) = Upper(TrimAll(DataFileName)) Then
 		
-		MessageToUser(NStr("en='Exchange rules file can not match with the data file."
-"Select the other file for the data export.';ru='Файл правил обмена не может совпадать с файлом данных."
-"Выберите другой файл для выгрузки данных.'"));
+		MessageToUser(NStr("en='Exchange rules file can not match with the data file.
+		|Select the other file for the data export.';ru='Файл правил обмена не может совпадать с файлом данных.
+		|Выберите другой файл для выгрузки данных.'"));
 		Return True;
 		
 	Else
@@ -1840,9 +1840,9 @@ Function ValidateVersionAndPlatformCompatibilityMode()
 		AND Metadata.CompatibilityMode <> Metadata.ObjectProperties.CompatibilityMode["Version8_3_1"]
 		AND Metadata.CompatibilityMode <> Metadata.ObjectProperties.CompatibilityMode["Version8_3_2"]))) Then
 		
-		Raise NStr("en='DataProcessor is used to start"
-"on 1C:Enterprise 8.3 platform version with compatibility mode off or above';ru='Обработка предназначена"
-"для запуска на версии платформы 1С:Предприятие 8.3 с отключенным режимом совместимости или выше'");
+		Raise NStr("en='DataProcessor is used to start
+		|on 1C:Enterprise 8.3 platform version with compatibility mode off or above';ru='Обработка предназначена
+		|для запуска на версии платформы 1С:Предприятие 8.3 с отключенным режимом совместимости или выше'");
 		
 	EndIf;
 	

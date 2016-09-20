@@ -75,9 +75,9 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	// Ask a question only in case of early closing of the assistant.
 	If CloseForm <> True AND Not ValueIsFilled(SettingsProfileRef) Then
-		QuestionText = NStr("en='Entered data will not be saved."
-"Are you sure you want to close the wizard?';ru='Введенные данные не будут сохранены."
-"Прервать работу помощника?'");
+		QuestionText = NStr("en='Entered data will not be saved.
+		|Are you sure you want to close the wizard?';ru='Введенные данные не будут сохранены.
+		|Прервать работу помощника?'");
 		NotifyDescription = New NotifyDescription("CompleteBeforeClosing", ThisObject);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 		Cancel = True;
@@ -545,9 +545,9 @@ Procedure EDFProfileSettingsTest()
 			
 			If ValueIsFilled(ErrorInfo) Then
 				CommonUseClientServer.MessageToUser(StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Verification of the account parameters"
-"is complete with errors: %1';ru='Проверка параметров учетной записи завершилась с ошибками:"
-"%1'"), ErrorInfo ),,
+					NStr("en='Verification of the account parameters
+		|is complete with errors: %1';ru='Проверка параметров учетной записи завершилась с ошибками:
+		|%1'"), ErrorInfo ),,
 					NStr("en='Check email account';ru='Проверка учетной записи'"));
 				CommunicationsTestPass = False;
 			EndIf;

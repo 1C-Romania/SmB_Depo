@@ -247,18 +247,18 @@ Procedure FormTargetItemAndToolTip(Context)
 		
 		If Context.PermanentlyDeletionRight Then
 			If Context.CurrentRemovalVariant = "Mark" Then
-				ToolTipText = NStr("en='The selected item will be"
-"replaced with %1 and <a href = ""DeletionModeSwitch>marked for deletion</a>.';ru='Выбранный элемент будет заменен на ""%1"""
-"и <a href = ""ПереключениеРежимаУдаления"">помечен на удаление</a>.'");
+				ToolTipText = NStr("en='The selected item will be
+		|replaced with %1 and <a href = ""DeletionModeSwitch>marked for deletion</a>.';ru='Выбранный элемент будет заменен на ""%1""
+		|и <a href = ""ПереключениеРежимаУдаления"">помечен на удаление</a>.'");
 			Else
-				ToolTipText = NStr("en='The selected item will be"
-"replaced with %1 and <a href = ""DeletionModeSwitch>permanently deleted</a>.';ru='Выбранный элемент будет заменен на ""%1"""
-"и <a href = ""ПереключениеРежимаУдаления"">удален безвозвратно</a>.'");
+				ToolTipText = NStr("en='The selected item will be
+		|replaced with %1 and <a href = ""DeletionModeSwitch>permanently deleted</a>.';ru='Выбранный элемент будет заменен на ""%1""
+		|и <a href = ""ПереключениеРежимаУдаления"">удален безвозвратно</a>.'");
 			EndIf;
 		Else
-			ToolTipText = NStr("en='The selected item will be"
-"replaced with %1 and marked for deletion.';ru='Выбранный элемент будет"
-"заменен на ""%1"" и помечен на удаление.'");
+			ToolTipText = NStr("en='The selected item will be
+		|replaced with %1 and marked for deletion.';ru='Выбранный элемент будет
+		|заменен на ""%1"" и помечен на удаление.'");
 		EndIf;
 			
 		ToolTipText = StringFunctionsClientServer.PlaceParametersIntoString(ToolTipText, Context.TargetItem);
@@ -268,18 +268,18 @@ Procedure FormTargetItemAndToolTip(Context)
 		
 		If Context.PermanentlyDeletionRight Then
 			If Context.CurrentRemovalVariant = "Mark" Then
-				ToolTipText = NStr("en='The selected items (%1) will be"
-"replaced with %2 and <a href = ""DeletionModeSwitch>marked for deletion</a>.';ru='Выбранные элементы (%1) будут заменены на ""%2"""
-"и <a href = ""ПереключениеРежимаУдаления"">помечены на удаление</a>.'");
+				ToolTipText = NStr("en='The selected items (%1) will be
+		|replaced with %2 and <a href = ""DeletionModeSwitch>marked for deletion</a>.';ru='Выбранные элементы (%1) будут заменены на ""%2""
+		|и <a href = ""ПереключениеРежимаУдаления"">помечены на удаление</a>.'");
 			Else
-				ToolTipText = NStr("en='The selected items (%1) will be"
-"replaced with %2 and <a href = ""DeletionModeSwitch>permanently deleted</a>.';ru='Выбранные элементы (%1) будут заменены на ""%2"""
-"и <a href = ""ПереключениеРежимаУдаления"">удалены безвозвратно</a>.'");
+				ToolTipText = NStr("en='The selected items (%1) will be
+		|replaced with %2 and <a href = ""DeletionModeSwitch>permanently deleted</a>.';ru='Выбранные элементы (%1) будут заменены на ""%2""
+		|и <a href = ""ПереключениеРежимаУдаления"">удалены безвозвратно</a>.'");
 			EndIf;
 		Else
-			ToolTipText = NStr("en='The selected items (%1) will be"
-"replaced with %2 and marked for deletion.';ru='Выбранные элементы (%1) будут"
-"заменены на ""%2"" и помечен на удаление.'");
+			ToolTipText = NStr("en='The selected items (%1) will be
+		|replaced with %2 and marked for deletion.';ru='Выбранные элементы (%1) будут
+		|заменены на ""%2"" и помечен на удаление.'");
 		EndIf;
 			
 		ToolTipText = StringFunctionsClientServer.PlaceParametersIntoString(ToolTipText, 
@@ -319,9 +319,9 @@ EndFunction
 Procedure FormLabelFailedReplacements()
 	
 	Items.ResultFailedReplacements.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Unable to replace items (%1 from %2). IN some places of use, an automatic"
-"replacement for %3 can not be executed.';ru='Не удалось заменить элементы (%1 из %2). В некоторых местах использования не может быть произведена"
-"автоматическая замена на ""%3""'"),
+		NStr("en='Unable to replace items (%1 from %2). IN some places of use, an automatic
+		|replacement for %3 can not be executed.';ru='Не удалось заменить элементы (%1 из %2). В некоторых местах использования не может быть произведена
+		|автоматическая замена на ""%3""'"),
 		FailedReplacements.GetItems().Count(),
 		ReplaceReferences.Count(),
 		TargetItem);
@@ -566,14 +566,14 @@ Procedure InitializeReplacedReferences(Val RefArray)
 	Result = Query.ExecuteBatch();
 	Conditions = Result[1].Unload()[0];
 	If Conditions.HasFolders Then
-		ParametersErrorText = NStr("en='One of the replaced items is a group."
-"Groups can not be replaced.';ru='Один из заменяемых элементов является группой."
-"Группы не могут быть заменены.'");
+		ParametersErrorText = NStr("en='One of the replaced items is a group.
+		|Groups can not be replaced.';ru='Один из заменяемых элементов является группой.
+		|Группы не могут быть заменены.'");
 		Return;
 	ElsIf Conditions.OwnersQuantity > 1 Then 
-		ParametersErrorText = NStr("en='Replaced items have different owners."
-"Such items can not be replaced.';ru='У заменяемых элементов разные владельцы."
-"Такие элементы не могут быть заменены.'");
+		ParametersErrorText = NStr("en='Replaced items have different owners.
+		|Such items can not be replaced.';ru='У заменяемых элементов разные владельцы.
+		|Такие элементы не могут быть заменены.'");
 		Return;
 	ElsIf Conditions.QuantityRefs <> QuantityRefs Then
 		ParametersErrorText = NStr("en='All replaced items should be of the same type.';ru='Все заменяемые элементы должны быть одного типа.'");
@@ -686,9 +686,9 @@ Procedure StepSelectTargetItemBeforeNextAction(Val StepParameters, Val Additiona
 	CurrentOwner = AttributeValue(CurrentData, "Owner");
 	If CurrentOwner <> ReplaceableLinksCommonOwner Then
 		ShowMessageBox( , StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='You can not replace it with the object subordinate to another user."
-"The selected item has %1 as an owner, and the replaced item has %2 as an owner.';ru='Нельзя заменять на элемент, подчиненный другому владельцу."
-"У выбранного элемента владелец ""%1"", а у заменяемого - ""%2"".'"),
+			NStr("en='You can not replace it with the object subordinate to another user.
+		|The selected item has %1 as an owner, and the replaced item has %2 as an owner.';ru='Нельзя заменять на элемент, подчиненный другому владельцу.
+		|У выбранного элемента владелец ""%1"", а у заменяемого - ""%2"".'"),
 			CurrentOwner, ReplaceableLinksCommonOwner
 		));
 		Return;

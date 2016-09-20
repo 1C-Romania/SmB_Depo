@@ -62,9 +62,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			// Import only the updated and perhaps added RF constituent entities!
 			IdsForUpdates = UpdatedData.UnloadColumn("ID");
 		Else
-			WarningOnOpening = NStr("en='Address classifier update is not required."
-"Actual address information is already imported to the application.';ru='Обновление адресного классификатора не требуется."
-"В программу уже загружены актуальные адресные сведения.'");
+			WarningOnOpening = NStr("en='Address classifier update is not required.
+		|Actual address information is already imported to the application.';ru='Обновление адресного классификатора не требуется.
+		|В программу уже загружены актуальные адресные сведения.'");
 			Return;
 			
 		EndIf;
@@ -269,9 +269,9 @@ EndProcedure
 Procedure Import(Command)
 	
 	If ImportingSourceCode = "DIRECTORY" Then
-		Text = NStr("en='To import address classifier from"
-"the folder it is neseccary to set the extension for work with files.';ru='Для загрузки адресного классификатора"
-"из папки необходимо установить расширение для работы с файлами.'");
+		Text = NStr("en='To import address classifier from
+		|the folder it is neseccary to set the extension for work with files.';ru='Для загрузки адресного классификатора
+		|из папки необходимо установить расширение для работы с файлами.'");
 		ExtensionControlWorksWithFile(Text, ImportingSourceCode, ImportAddress);
 		
 	ElsIf ImportingSourceCode = "Site" Then

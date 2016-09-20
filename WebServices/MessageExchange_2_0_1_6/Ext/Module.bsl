@@ -44,13 +44,13 @@ Function DeliverMessages(SenderCode, StreamStorage)
 	
 	If DataReadInPart Then
 		
-		Raise NStr("en='Error occurred when delivering quick messages"
-"- some messages were not delivered due to specified data area locks!"
-""
-"These messages will be processed within the messages processing queue of the system.';ru='Произошла ошибка при доставке быстрых сообщений - некоторые сообщения"
-"не были доставлены из-за установленных блокировок областей данных!"
-""
-"Эти сообщения будут обработаны в рамках очереди обработки сообщений системы'");
+		Raise NStr("en='Error occurred when delivering quick messages
+		|- some messages were not delivered due to specified data area locks!
+		|
+		|These messages will be processed within the messages processing queue of the system.';ru='Произошла ошибка при доставке быстрых сообщений - некоторые сообщения
+		|не были доставлены из-за установленных блокировок областей данных!
+		|
+		|Эти сообщения будут обработаны в рамках очереди обработки сообщений системы'");
 		
 	EndIf;
 	

@@ -73,11 +73,11 @@ Procedure OnOpen(Cancel)
 		Cancel = True;
 		ShowQueryBox(
 			New NotifyDescription("OnOpenAfterSettingAdministratorProfileConfirmation", ThisObject),
-			NStr("en='Administrators access group must have the Administrator profile."
-""
-"Set profile in the access group (no - open only for view)?';ru='У группы доступа Администраторы должен быть профиль Администратор."
-""
-"Установить профиль в группе доступа (нет - открыть только для просмотра)?'"),
+			NStr("en='Administrators access group must have the Administrator profile.
+		|
+		|Set profile in the access group (no - open only for view)?';ru='У группы доступа Администраторы должен быть профиль Администратор.
+		|
+		|Установить профиль в группе доступа (нет - открыть только для просмотра)?'"),
 			QuestionDialogMode.YesNo,
 			,
 			DialogReturnCode.No);
@@ -92,11 +92,11 @@ Procedure OnOpen(Cancel)
 			Cancel = True;
 			ShowQueryBox(
 				New NotifyDescription("OnOpenAfterUpdateConfirmationAccessKinds", ThisObject),
-				NStr("en='Profile access kinds content of this access group has been changed."
-""
-"Do you want to update the access types in the access group (no - open for viewing only)?';ru='Изменился состав видов доступа профиля этой группы доступа."
-""
-"Обновить виды доступа в группе доступа (нет - открыть только для просмотра)?'"),
+				NStr("en='Profile access kinds content of this access group has been changed.
+		|
+		|Do you want to update the access types in the access group (no - open for viewing only)?';ru='Изменился состав видов доступа профиля этой группы доступа.
+		|
+		|Обновить виды доступа в группе доступа (нет - открыть только для просмотра)?'"),
 				QuestionDialogMode.YesNo,
 				,
 				DialogReturnCode.No);
@@ -213,9 +213,9 @@ Procedure AfterWrite(WriteParameters)
 	If WriteParameters.Property("NotifyThatTheProfileIsMarkedForDeletion") Then
 		
 		ShowMessageBox(,
-			NStr("en='Access group does not affect"
-"the participants rights as its profile is marked for deletion.';ru='Группа доступа"
-"не влияет на права участников так как ее профиль помечен на удаление.'"));
+			NStr("en='Access group does not affect
+		|the participants rights as its profile is marked for deletion.';ru='Группа доступа
+		|не влияет на права участников так как ее профиль помечен на удаление.'"));
 	EndIf;
 	
 EndProcedure
@@ -518,18 +518,18 @@ Procedure UsersBeforeDeleteRow(Item, Cancel)
 		        Type("CatalogRef.UsersGroups") Then
 			
 			ShowMessageBox(,
-				NStr("en='Users group are displayed"
-"for reference to show that they have access to users group."
-"You can not delete them in this list.';ru='Пользователи"
-"групп отображаются для сведения, что они получают доступ групп пользователей."
-"Их нельзя удалить в этом списке.'"));
+				NStr("en='Users group are displayed
+		|for reference to show that they have access to users group.
+		|You can not delete them in this list.';ru='Пользователи
+		|групп отображаются для сведения, что они получают доступ групп пользователей.
+		|Их нельзя удалить в этом списке.'"));
 		Else
 			ShowMessageBox(,
-				NStr("en='External users group are displayed"
-"for information that they access external users group."
-"You can not delete them in this list.';ru='Внешние пользователи"
-"групп отображаются для сведения, что они получают доступ групп внешних пользователей."
-"Их нельзя удалить в этом списке.'"));
+				NStr("en='External users group are displayed
+		|for information that they access external users group.
+		|You can not delete them in this list.';ru='Внешние пользователи
+		|групп отображаются для сведения, что они получают доступ групп внешних пользователей.
+		|Их нельзя удалить в этом списке.'"));
 		EndIf;
 	EndIf;
 	

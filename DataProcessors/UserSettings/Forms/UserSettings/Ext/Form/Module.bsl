@@ -285,8 +285,8 @@ Procedure ClearSelectedUserSettings(Command)
 		
 	EndIf;
 	
-	QuestionText = NStr("en='Clear the"
-"selected settings? It will open the selection window of users who should clear settings.';ru='Очистить выделенные настройки? Откроется окно выбора пользователей, которым необходимо очистить настройки.'");
+	QuestionText = NStr("en='Clear the
+		|selected settings? It will open the selection window of users who should clear settings.';ru='Очистить выделенные настройки? Откроется окно выбора пользователей, которым необходимо очистить настройки.'");
 	Notification = New NotifyDescription("ClearSelectedUserSettingsEnd", ThisObject);
 	ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo,, DialogReturnCode.Yes);
 	
@@ -331,9 +331,9 @@ EndProcedure
 &AtClient
 Procedure ClearAllUserSettings(Command)
 	
-	QuestionText = NStr("en='All user settings will be cleared."
-"Continue?';ru='Сейчас будут очищены все настройки всех пользователей."
-"Продолжить?'");
+	QuestionText = NStr("en='All user settings will be cleared.
+		|Continue?';ru='Сейчас будут очищены все настройки всех пользователей.
+		|Продолжить?'");
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, UserRef);
 	QuestionButtons = New ValueList;
 	QuestionButtons.Add("ClearAll", NStr("en='Clear all';ru='Очистить все'"));
@@ -1041,16 +1041,16 @@ Procedure CopySettings()
 	ElsIf SettingsTree.SelectedRows.Count() = 1 Then
 		
 		If SettingsTree.CurrentData.Type = "PersonalVariant" Then
-			ShowMessageBox(,NStr("en='Impossible to copy the personal report variant."
-"If you want to make personal report variant to be"
-"available to other users, then you need to resave it with the ""Only for author"" mark removed.';ru='Невозможно скопировать личный вариант отчета."
-"Для того чтобы личный вариант отчета стал доступен"
-"другим пользователям, необходимо его пересохранить со снятой пометкой ""Только для автора"".'"));
+			ShowMessageBox(,NStr("en='Impossible to copy the personal report variant.
+		|If you want to make personal report variant to be
+		|available to other users, then you need to resave it with the ""Only for author"" mark removed.';ru='Невозможно скопировать личный вариант отчета.
+		|Для того чтобы личный вариант отчета стал доступен
+		|другим пользователям, необходимо его пересохранить со снятой пометкой ""Только для автора"".'"));
 			Return;
 		ElsIf SettingsTree.CurrentData.Type = "SettingPersonal" Then
-			ShowMessageBox(,NStr("en='Impossible to copy setting of the personal report variant."
-"Copying of the individual report variant settings is not provided.';ru='Невозможно скопировать настройку личного варианта отчета."
-"Копирование настроек личных вариантов отчетов не предусмотрено.'"));
+			ShowMessageBox(,NStr("en='Impossible to copy setting of the personal report variant.
+		|Copying of the individual report variant settings is not provided.';ru='Невозможно скопировать настройку личного варианта отчета.
+		|Копирование настроек личных вариантов отчетов не предусмотрено.'"));
 			Return;
 		EndIf;
 		

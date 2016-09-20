@@ -90,9 +90,9 @@ Procedure MakeSelection(Val LineNumber)
 	Notification = New NotifyDescription("MakeSelectionEndQuestion", ThisObject, Data);
 	
 	WarningIrrelevant = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Address ""%2, %1"" is not applicable."
-"Continue?';ru='Адрес ""%2, %1"" неактуален."
-"Продолжить?'"),
+		NStr("en='Address ""%2, %1"" is not applicable.
+		|Continue?';ru='Адрес ""%2, %1"" неактуален.
+		|Продолжить?'"),
 		TrimAll(CommonPartPresentation), Data.Presentation
 	);
 		

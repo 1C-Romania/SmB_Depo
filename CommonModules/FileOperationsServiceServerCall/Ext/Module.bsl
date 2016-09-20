@@ -1304,9 +1304,9 @@ EndFunction
 Function GenerateObtainingErrorTextFileFromVolumeForAdministrator(FunctionErrorInfo, FileRef) Export
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Ref to the file: ""%1""."
-"""%2"".';ru='Ссылка на файл: ""%1""."
-"""%2"".'"),
+		NStr("en='Ref to the file: ""%1"".
+		|""%2"".';ru='Ссылка на файл: ""%1"".
+		|""%2"".'"),
 		GetURL(FileRef),
 		DetailErrorDescription(FunctionErrorInfo));
 	

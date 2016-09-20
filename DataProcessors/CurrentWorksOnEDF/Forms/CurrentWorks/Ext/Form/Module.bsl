@@ -12,20 +12,20 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not ElectronicDocumentsService.ImmediateEDSending() Then
 		Items.CommandSign.Title = NStr("en='Sign';ru='Подписать'");
 		Items.GenerateSignAndSend.Title = NStr("en='Approve and sign';ru='Утвердить и подписать'");
-		Commands.ApproveSignAndSend.ToolTip = NStr("en='Approve, sign and prepare"
-"the selected electronic documents for sending';ru='Утвердить,"
-"подписать и подготовить к отправке выделенные электронные документы'");
+		Commands.ApproveSignAndSend.ToolTip = NStr("en='Approve, sign and prepare
+		|the selected electronic documents for sending';ru='Утвердить,
+		|подписать и подготовить к отправке выделенные электронные документы'");
 		If Not UseDS Then
 			Items.GenerateSignAndSend.Title = NStr("en='Approve';ru='Утвердить'");
-			Commands.ApproveSignAndSend.ToolTip = NStr("en='Approve and prepare"
-"the selected electronic documents for sending';ru='Утвердить"
-"и подготовить к отправке выделенные электронные документы'");
+			Commands.ApproveSignAndSend.ToolTip = NStr("en='Approve and prepare
+		|the selected electronic documents for sending';ru='Утвердить
+		|и подготовить к отправке выделенные электронные документы'");
 		EndIf;
 	ElsIf Not UseDS Then
 		Items.GenerateSignAndSend.Title = NStr("en='Approve and send';ru='Утвердить и отправить'");
-		Commands.ApproveSignAndSend.ToolTip = NStr("en='Approve"
-"and prepare the selected electronic documents';ru='Утвердить"
-"и отправить выделенные электронные документы'");
+		Commands.ApproveSignAndSend.ToolTip = NStr("en='Approve
+		|and prepare the selected electronic documents';ru='Утвердить
+		|и отправить выделенные электронные документы'");
 	EndIf;
 
 	Items.Pages.PagesRepresentation = FormPagesRepresentation.None;
@@ -1678,9 +1678,9 @@ EndProcedure
 &AtClient
 Procedure NotifyAboutResults(CountOfDigitallySigned, PreparedCnt, SentCnt)
 	
-	StatusText = NStr("en='Undefined"
-" ED: signed: (%1)';ru='Произвольные"
-" ЭД: подписано: (%1)'");
+	StatusText = NStr("en='Undefined
+		| ED: signed: (%1)';ru='Произвольные
+		| ЭД: подписано: (%1)'");
 	Quantity = 0;
 	If SentCnt > 0 Then
 		StatusText = StatusText + Chars.LF + NStr("en=' sent: (%2)';ru=' отправлено: (%2)'");
@@ -1746,9 +1746,9 @@ Procedure SendInvitationsServer(PostedInvitations, EDFSettingsProfilesMatchToMar
 			"EmailForInvitation, Counterparty, InvitationText, EDFProfileSettings");
 		
 		If Not ValueIsFilled(EDFSettingsParametersStructure.EmailForInvitation) Then
-			MessagePattern = NStr("en='To send recipient invitations for ED"
-"exchange %1, you need to fill email.';ru='Для отправки приглашения к обмену"
-"ЭД для получателя %1 необходимо заполнить электронную почту.'");
+			MessagePattern = NStr("en='To send recipient invitations for ED
+		|exchange %1, you need to fill email.';ru='Для отправки приглашения к обмену
+		|ЭД для получателя %1 необходимо заполнить электронную почту.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				EDFSettingsParametersStructure.Counterparty);
 			CommonUseClientServer.MessageToUser(MessageText);
@@ -1761,9 +1761,9 @@ Procedure SendInvitationsServer(PostedInvitations, EDFSettingsProfilesMatchToMar
 			+ AttributeNameExternalCounterpartyCode + ", " + AttributeNameCounterpartyNameForMessageToUser);
 	
 		If Not ValueIsFilled(CounterpartyParametersStructure[AttributeNameCounterpartyTIN]) Then
-			MessagePattern = NStr("en='To send recipient invitations for ED"
-"exchange %1, you need to fill TIN.';ru='Для отправки приглашения к обмену"
-"ЭД для получателя %1 необходимо заполнить ИНН.'");
+			MessagePattern = NStr("en='To send recipient invitations for ED
+		|exchange %1, you need to fill TIN.';ru='Для отправки приглашения к обмену
+		|ЭД для получателя %1 необходимо заполнить ИНН.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				EDFSettingsParametersStructure.Counterparty);
 			CommonUseClientServer.MessageToUser(MessageText);
@@ -1950,9 +1950,9 @@ Procedure RejectInvitationsAlert(Result, AdditionalParameters) Export
 		RefreshDataTreeAtClient();
 		UpdateDynamicLists();
 	Else
-		ErrorText = NStr("en='When declining the invitations, errors occurred."
-"Necessary to check EDF settings with specified counterparties.';ru='При отклонении приглашений возникли ошибки."
-"Необходимо выполнить тест настроек ЭДО с указанными контрагентами.'");
+		ErrorText = NStr("en='When declining the invitations, errors occurred.
+		|Necessary to check EDF settings with specified counterparties.';ru='При отклонении приглашений возникли ошибки.
+		|Необходимо выполнить тест настроек ЭДО с указанными контрагентами.'");
 		CommonUseClientServer.MessageToUser(ErrorText);
 	EndIf;
 	
@@ -1983,9 +1983,9 @@ Procedure AcceptInvitationsAlert(Result, AdditionalParameters) Export
 		RefreshDataTreeAtClient();
 		UpdateDynamicLists();
 	Else
-		ErrorText = NStr("en='The errors occurred while getting invitations."
-"Necessary to check EDF settings with specified counterparties.';ru='При принятии приглашений возникли ошибки."
-"Необходимо выполнить тест настроек ЭДО с указанными контрагентами.'");
+		ErrorText = NStr("en='The errors occurred while getting invitations.
+		|Necessary to check EDF settings with specified counterparties.';ru='При принятии приглашений возникли ошибки.
+		|Необходимо выполнить тест настроек ЭДО с указанными контрагентами.'");
 		CommonUseClientServer.MessageToUser(ErrorText);
 	EndIf;
 	
@@ -2016,9 +2016,9 @@ Procedure SendInvitationNotification(Result, AdditionalParameters) Export
 		RefreshDataTreeAtClient();
 		UpdateDynamicLists();
 	Else
-		ErrorText = NStr("en='The errors occurred while sending the invitations."
-"Necessary to check EDF settings with specified counterparties.';ru='При отправке приглашений возникли ошибки."
-"Необходимо выполнить тест настроек ЭДО с указанными контрагентами.'");
+		ErrorText = NStr("en='The errors occurred while sending the invitations.
+		|Necessary to check EDF settings with specified counterparties.';ru='При отправке приглашений возникли ошибки.
+		|Необходимо выполнить тест настроек ЭДО с указанными контрагентами.'");
 		CommonUseClientServer.MessageToUser(ErrorText);
 	EndIf;
 	

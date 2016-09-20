@@ -439,9 +439,9 @@ Procedure ExecuteDataImportForRow(Command)
 	EndDo;
 	
 	If HasUnmatchedObjects Then
-		NString = NStr("en='There are unmatched objects."
-"Unmatched object duplicates will be created while importing data. Continue?';ru='Имеются несопоставленные объекты."
-"При загрузке данных будут созданы дубли несопоставленных объектов. Продолжить?'");
+		NString = NStr("en='There are unmatched objects.
+		|Unmatched object duplicates will be created while importing data. Continue?';ru='Имеются несопоставленные объекты.
+		|При загрузке данных будут созданы дубли несопоставленных объектов. Продолжить?'");
 		
 		Notification = New NotifyDescription("ImportDataForStringQuestionUnmatched", ThisObject, New Structure);
 		Notification.AdditionalParameters.Insert("SelectedRows", SelectedRows);
@@ -669,9 +669,9 @@ Procedure ImportDataForStringQuestionContinuation(Val SelectedRows)
 	ExecuteDataImportAtServer(Cancel, RowKeys);
 	
 	If Cancel Then
-		NString = NStr("en='Errors occurred while importing data."
-"Do you want to open the event log?';ru='При загрузке данных возникли ошибки."
-"Перейти в журнал регистрации?'");
+		NString = NStr("en='Errors occurred while importing data.
+		|Do you want to open the event log?';ru='При загрузке данных возникли ошибки.
+		|Перейти в журнал регистрации?'");
 		
 		NotifyDescription = New NotifyDescription("GoToEventLogMonitor", ThisObject);
 		ShowQueryBox(NOTifyDescription, NString, QuestionDialogMode.YesNo, ,DialogReturnCode.No);
@@ -1941,11 +1941,11 @@ Function Attachable_StatisticsPage_OnGoingNext(Cancel)
 	Buttons.Add(DialogReturnCode.Yes,  NStr("en='Continue';ru='Продолжить'"));
 	Buttons.Add(DialogReturnCode.No, NStr("en='Cancel';ru='Отменить'"));
 	
-	Message = NStr("en='Not all data was mapped. Existence of"
-"unmapped data can lead to identical catalog items (duplicates)."
-"Continue?';ru='Не все данные сопоставлены. Наличие"
-"несопоставленных данных может привести к появлению одинаковых элементов справочников (дублей)."
-"Продолжить?'");
+	Message = NStr("en='Not all data was mapped. Existence of
+		|unmapped data can lead to identical catalog items (duplicates).
+		|Continue?';ru='Не все данные сопоставлены. Наличие
+		|несопоставленных данных может привести к появлению одинаковых элементов справочников (дублей).
+		|Продолжить?'");
 	
 	Notification = New NotifyDescription("StatisticsInformationPage_OnMovingFurtherQuestionEnd", ThisObject);
 	

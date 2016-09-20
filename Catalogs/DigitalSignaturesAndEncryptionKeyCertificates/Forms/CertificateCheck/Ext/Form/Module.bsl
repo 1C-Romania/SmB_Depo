@@ -485,9 +485,9 @@ Procedure CheckOnClientSideAfterCreatingCryptographyManager(Result, Context) Exp
 		ErrorDescription = "";
 	Else
 		ErrorDescription = Result + Chars.LF + Chars.LF
-			+ NStr("en='Signing, the created signature, encryption"
-"and decryption can not be checked.';ru='Проверка подписания, созданной"
-"подписи, шифрования и расшифровки не могут быть выполнены.'");
+			+ NStr("en='Signing, the created signature, encryption
+		|and decryption can not be checked.';ru='Проверка подписания, созданной
+		|подписи, шифрования и расшифровки не могут быть выполнены.'");
 	EndIf;
 	SetItem(ThisObject, "ApplicationAvailability", False, ErrorDescription, True);
 	
@@ -749,9 +749,9 @@ Procedure CheckOnServerSide(Val PasswordValue)
 	EndIf;
 	If ValueIsFilled(ErrorDescription) Then
 		ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
-			+ NStr("en='Signing, the created signature, encryption"
-"and decryption can not be checked.';ru='Проверка подписания, созданной"
-"подписи, шифрования и расшифровки не могут быть выполнены.'");
+			+ NStr("en='Signing, the created signature, encryption
+		|and decryption can not be checked.';ru='Проверка подписания, созданной
+		|подписи, шифрования и расшифровки не могут быть выполнены.'");
 	EndIf;
 	SetItem(ThisObject, "ApplicationAvailability", True, ErrorDescription, True);
 	

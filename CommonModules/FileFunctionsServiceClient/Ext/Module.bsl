@@ -32,12 +32,12 @@ EndProcedure
 //
 Procedure ShowWarningAboutNeedToFileOperationsExpansion(ResultHandler, CommandPresentation = "") Export
 	If Not ClientSupportsSynchronousCalls() Then
-		WarningText = NStr("en='Command ""%1"" can"
-"not be executed in browser Google Chrome.';ru='Выполнение"
-"команды ""%1"" в браузере Google Chrome не поддерживается.'");
+		WarningText = NStr("en='Command ""%1"" can
+		|not be executed in browser Google Chrome.';ru='Выполнение
+		|команды ""%1"" в браузере Google Chrome не поддерживается.'");
 	Else
-		WarningText = NStr("en='For execution of command"
-" ""%1"" you should install the extension for 1C: Enterprise web client.';ru='Для выполнения команды ""%1"" необходимо установить расширение для веб-клиента 1С:Предприятие.'");
+		WarningText = NStr("en='For execution of command
+		| ""%1"" you should install the extension for 1C: Enterprise web client.';ru='Для выполнения команды ""%1"" необходимо установить расширение для веб-клиента 1С:Предприятие.'");
 	EndIf;
 	If ValueIsFilled(CommandPresentation) Then
 		WarningText = StrReplace(WarningText, "%1", CommandPresentation);
@@ -285,9 +285,9 @@ Procedure ReceiveUserDataWorkingDirectoryAfterReceiptError(ErrorInfo, StandardPr
 	Result = New Structure;
 	Result.Insert("Directory", "");
 	Result.Insert("ErrorDescription", StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Failed to get working directory of user data"
-"due to: %1';ru='Не удалось получить рабочий каталог данных"
-"пользователя по причине: %1'"), BriefErrorDescription(ErrorInfo)));
+		NStr("en='Failed to get working directory of user data
+		|due to: %1';ru='Не удалось получить рабочий каталог данных
+		|пользователя по причине: %1'"), BriefErrorDescription(ErrorInfo)));
 	
 	ExecuteNotifyProcessing(Context.Notification, Result);
 	
@@ -385,13 +385,13 @@ Procedure ActionOnFileOpeningInWorkingDirectory(ResultHandler, FileNameWithPath,
 				NStr("en='The file size differs';ru='Размер файла отличается'"));
 			
 			Parameters.Insert("Message",
-				NStr("en='File size in working directory and files storage is different."
-""
-"Take a file from files storage and replace the"
-"existing file with it or open existing file without update?';ru='Размер файла в рабочем каталоге и в хранилище файлов отличается."
-""
-"Взять файл из хранилища файлов и"
-"заменить им существующий или открыть существующий без обновления?'"));
+				NStr("en='File size in working directory and files storage is different.
+		|
+		|Take a file from files storage and replace the
+		|existing file with it or open existing file without update?';ru='Размер файла в рабочем каталоге и в хранилище файлов отличается.
+		|
+		|Взять файл из хранилища файлов и
+		|заменить им существующий или открыть существующий без обновления?'"));
 		Else
 			// All matches - both date and size.
 			ReturnResult(ResultHandler, "OpenExisting");
@@ -408,15 +408,15 @@ Procedure ActionOnFileOpeningInWorkingDirectory(ResultHandler, FileNameWithPath,
 			Parameters.Insert("Title", NStr("en='New file in the file storage';ru='В хранилище файлов новый файл'"));
 			
 			Parameters.Insert("Message",
-				NStr("en='File in files storage marked as locked"
-"for editing has later modification date (newer) than in working directory."
-""
-"Take a file from files storage and replace the"
-"existing file with it or open existing file without update?';ru='Файл в хранилище файлов, отмеченный"
-"как занятый для редактирования, имеет более позднюю дату изменения (новее), чем в рабочем каталоге."
-""
-"Взять файл из хранилища файлов и"
-"заменить им существующий или открыть существующий без обновления?'"));
+				NStr("en='File in files storage marked as locked
+		|for editing has later modification date (newer) than in working directory.
+		|
+		|Take a file from files storage and replace the
+		|existing file with it or open existing file without update?';ru='Файл в хранилище файлов, отмеченный
+		|как занятый для редактирования, имеет более позднюю дату изменения (новее), чем в рабочем каталоге.
+		|
+		|Взять файл из хранилища файлов и
+		|заменить им существующий или открыть существующий без обновления?'"));
 		Else
 			// File in working directory for reading.
 			
@@ -442,15 +442,15 @@ Procedure ActionOnFileOpeningInWorkingDirectory(ResultHandler, FileNameWithPath,
 			
 			Parameters.Insert(
 				"Message",
-				NStr("en='File in working directory has later modification date"
-"(newer), than in files storage. It may have been changed."
-""
-"Open existing file or replace it with"
-"file from files storage with loss of changes and open?';ru='Файл в рабочем каталоге имеет более"
-"позднюю дату изменения (новее), чем в хранилище файлов. Возможно, он был изменен."
-""
-"Открыть существующий файл или"
-"заменить его на файл из хранилища файлов c потерей изменений и открыть?'"));
+				NStr("en='File in working directory has later modification date
+		|(newer), than in files storage. It may have been changed.
+		|
+		|Open existing file or replace it with
+		|file from files storage with loss of changes and open?';ru='Файл в рабочем каталоге имеет более
+		|позднюю дату изменения (новее), чем в хранилище файлов. Возможно, он был изменен.
+		|
+		|Открыть существующий файл или
+		|заменить его на файл из хранилища файлов c потерей изменений и открыть?'"));
 		EndIf;
 	EndIf;
 	

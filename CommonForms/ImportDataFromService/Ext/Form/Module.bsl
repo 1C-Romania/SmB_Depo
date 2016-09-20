@@ -25,8 +25,8 @@ Procedure ContinueDataImport(SelectionComplete, StorageAddress, SelectedFileName
 	If SelectionComplete Then
 		
 		Status(
-			NStr("en='Data is being imported from the service."
-"Operation can take a long time, please, wait...';ru='Выполняется загрузка данных из сервиса. Операция может занять продолжительное время, пожалуйста, подождите...'"),);
+			NStr("en='Data is being imported from the service.
+		|Operation can take a long time, please, wait...';ru='Выполняется загрузка данных из сервиса. Операция может занять продолжительное время, пожалуйста, подождите...'"),);
 		
 		RunImport(StorageAddress, ExportInformationAboutUsers);
 		Terminate(True);
@@ -71,11 +71,11 @@ Procedure RunImport(Val FileURL, Val ExportInformationAboutUsers)
 			,
 			WriteLogEventText);
 
-		ExceptionPattern = NStr("en='An error occurred during data import: %1."
-""
-"Detailed information for support service is written to the events log monitor. If you do not know the cause of error, you should contact technical support service providing the donwloaded events log monitor and file from which it was attempted to import data.';ru='При загрузке данных произошла ошибка: %1."
-""
-"Расширенная информация для службы поддержки записана в журнал регистрации. Если Вам неизвестна причина ошибки - рекомендуется обратиться в службу технической поддержки, предоставив для расследования выгрузку журнала регистрации и файл, из которого предпринималась попытка ззагрузить данные.'");
+		ExceptionPattern = NStr("en='An error occurred during data import: %1.
+		|
+		|Detailed information for support service is written to the events log monitor. If you do not know the cause of error, you should contact technical support service providing the donwloaded events log monitor and file from which it was attempted to import data.';ru='При загрузке данных произошла ошибка: %1.
+		|
+		|Расширенная информация для службы поддержки записана в журнал регистрации. Если Вам неизвестна причина ошибки - рекомендуется обратиться в службу технической поддержки, предоставив для расследования выгрузку журнала регистрации и файл, из которого предпринималась попытка ззагрузить данные.'");
 
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(ExceptionPattern, BriefErrorDescription(ErrorInfo));
 		

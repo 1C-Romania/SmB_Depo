@@ -107,11 +107,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.SecondApplicationData.Title = SecondApplicationName;
 	
 	Items.Explanation.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='To match data"
-"""%1"" to data ""%2"", use the ""Match automatically"" command...""."
-"Remaining unmatched data can be linked with each other manually.';ru='Для сопоставления данных ""%1"""
-"с данными ""%2"" воспользуйтесь командой ""Сопоставить автоматически...""."
-"Оставшиеся несопоставленные данные можно связать друг с другом вручную.'"),
+		NStr("en='To match data
+		|""%1"" to data ""%2"", use the ""Match automatically"" command..."".
+		|Remaining unmatched data can be linked with each other manually.';ru='Для сопоставления данных ""%1""
+		|с данными ""%2"" воспользуйтесь командой ""Сопоставить автоматически..."".
+		|Оставшиеся несопоставленные данные можно связать друг с другом вручную.'"),
 		ThisApplicationName, SecondApplicationName);
 	
 	ScriptExecutionMappingObjects();
@@ -710,9 +710,9 @@ Procedure ImportDataAfterDataReceivedConfirmation()
 	ExecuteDataImportAtServer(Cancel);
 	
 	If Cancel Then
-		NString = NStr("en='Errors occurred while receiving data."
-"Do you want to open the event log?';ru='При получении данных возникли ошибки."
-"Перейти в журнал регистрации?'");
+		NString = NStr("en='Errors occurred while receiving data.
+		|Do you want to open the event log?';ru='При получении данных возникли ошибки.
+		|Перейти в журнал регистрации?'");
 		
 		Notification = New NotifyDescription("ImportDataAfterQuestionAboutTransferToEventsLogMonitor", ThisObject);
 		ShowQueryBox(Notification, NString, QuestionDialogMode.YesNo, ,DialogReturnCode.No);

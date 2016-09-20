@@ -107,9 +107,9 @@ Procedure RefillDocument(CommandParameter, Source = Undefined, MappingAlreadyCom
 	EndIf;
 	
 	PostedDocumentsArray = ElectronicDocumentsServiceCallServer.PostedDocumentsArray(RefArray);
-	Pattern = NStr("en='Processing document %1."
-"The operation is available only for unposted documents.';ru='Обработка документа %1."
-"Операция возможна только для непроведенных документов!'");
+	Pattern = NStr("en='Processing document %1.
+		|The operation is available only for unposted documents.';ru='Обработка документа %1.
+		|Операция возможна только для непроведенных документов!'");
 	For Each Document IN PostedDocumentsArray Do
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, Document);
 		CommonUseClientServer.MessageToUser(ErrorText);
@@ -609,9 +609,9 @@ Procedure ProcessFilePlacingResult(SelectionComplete, FileURL, SelectedFileName,
 	UUID = AdditionalParameters.UUID;
 	
 	If Not (Upper(Extension) = Upper("zip") Or Upper(Extension) = Upper("xml")) Then
-		MessageText = NStr("en='Invalid file format."
-"Select a file with extension ""zip"" or ""xml"".';ru='Не корректный формат файла."
-"Выберите файл с расширением ""zip"" или ""xml"".'");
+		MessageText = NStr("en='Invalid file format.
+		|Select a file with extension ""zip"" or ""xml"".';ru='Не корректный формат файла.
+		|Выберите файл с расширением ""zip"" или ""xml"".'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;

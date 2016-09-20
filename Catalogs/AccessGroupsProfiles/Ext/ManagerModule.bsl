@@ -496,9 +496,9 @@ Function StandardProfileChanged(Profile) Export
 		RoleMetadata = Metadata.Roles.Find(Role);
 		If RoleMetadata = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Role ""%2"" is not"
-"found in metadata while checking supplied profile.';ru='При проверке"
-"поставляемого профиля ""%1"" роль ""%2"" не найдена в метаданных.'"),
+				NStr("en='Role ""%2"" is not
+		|found in metadata while checking supplied profile.';ru='При проверке
+		|поставляемого профиля ""%1"" роль ""%2"" не найдена в метаданных.'"),
 				ProfileProperties.Description,
 				Role);
 		EndIf;
@@ -809,25 +809,25 @@ Function ProvidedProfiles()
 		ProfileDescriptions, UpdateParameters);
 	
 	ErrorTitle =
-		NStr("en='Invalid values are set in"
-"the OnFillingSuppliedAccessGroupProfiles procedure of the AccessManagementOverridable general module."
-""
-"';ru='Заданы недопустимые"
-"значения в процедуре ПриЗаполненииПоставляемыхПрофилейГруппДоступа общего модуля УправлениеДоступомПереопределяемый."
-""
-"'");
+		NStr("en='Invalid values are set in
+		|the OnFillingSuppliedAccessGroupProfiles procedure of the AccessManagementOverridable general module.
+		|
+		|';ru='Заданы недопустимые
+		|значения в процедуре ПриЗаполненииПоставляемыхПрофилейГруппДоступа общего модуля УправлениеДоступомПереопределяемый.
+		|
+		|'");
 	
 	If UpdateParameters.RestrictProfilesChanging
 	   AND Not UpdateParameters.UpdateChangedProfiles Then
 		
 		Raise ErrorTitle +
-			NStr("en='When in the"
-"UpdateParameters parameter the"
-"UpdateChangedProfiles property is set"
-"to False, then the ProhibitProfilesChange property should also be set to False.';ru='Когда"
-"в параметре ПараметрыОбновления"
-"свойство ОбновлятьИзмененныеПрофили установлено"
-"Ложь, тогда свойство ЗапретитьИзменениеПрофилей тоже должно быть установлено Ложь.'");
+			NStr("en='When in the
+		|UpdateParameters parameter the
+		|UpdateChangedProfiles property is set
+		|to False, then the ProhibitProfilesChange property should also be set to False.';ru='Когда
+		|в параметре ПараметрыОбновления
+		|свойство ОбновлятьИзмененныеПрофили установлено
+		|Ложь, тогда свойство ЗапретитьИзменениеПрофилей тоже должно быть установлено Ложь.'");
 	EndIf;
 	
 	// Description for filling the "Administrator" predefined profile.
@@ -838,13 +838,13 @@ Function ProvidedProfiles()
 	AdministratorProfileDescription.Roles.Add("FullRights");
 	//SB
 	AdministratorProfileDescription.Definition =
-		NStr("en='Profile is designed for work of the executive staff and service functions execution. "
-"Provides unlimited access to all the information system data. "
-""
-"Use the profile to work with all sections: - Sales, Purchases, Services, Production, Funds, Salary, Company, Analysis and Settings.';ru='Профиль предназначен для работы управленческого персонала и выполнения сервисных функций. "
-"Предоставляет неограниченный доступ ко всем данным информационной системы. "
-""
-"Под профилем осуществляется работа со всеми разделами: - Продажи, Закупки, Сервис, Производство, Деньги, Зарплата, Предприятие, Анализ и Настройки.'");
+		NStr("en='Profile is designed for work of the executive staff and service functions execution. 
+		|Provides unlimited access to all the information system data. 
+		|
+		|Use the profile to work with all sections: - Sales, Purchases, Services, Production, Funds, Salary, Company, Analysis and Settings.';ru='Профиль предназначен для работы управленческого персонала и выполнения сервисных функций. 
+		|Предоставляет неограниченный доступ ко всем данным информационной системы. 
+		|
+		|Под профилем осуществляется работа со всеми разделами: - Продажи, Закупки, Сервис, Производство, Деньги, Зарплата, Предприятие, Анализ и Настройки.'");
 	//End SB.
 	ProfileDescriptions.Add(AdministratorProfileDescription);
 	
@@ -862,18 +862,18 @@ Function ProvidedProfiles()
 		For Each Role IN ProfileDescription.Roles Do
 			If AllRoles.Get(Role) = Undefined Then
 				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='In the proattachment description"
-"""%1 (%2)"" role ""%3"" is not found in metadata.';ru='В описании профиля"
-"""%1 (%2)"" роль ""%3"" не найдена в метаданных.'"),
+					NStr("en='In the proattachment description
+		|""%1 (%2)"" role ""%3"" is not found in metadata.';ru='В описании профиля
+		|""%1 (%2)"" роль ""%3"" не найдена в метаданных.'"),
 					ProfileDescription.Name,
 					ProfileDescription.ID,
 					Role);
 			EndIf;
 			If Upper(Left(Role, StrLen("Profile"))) = Upper("Profile") Then
 				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='In the proattachment description"
-"""%1 (%2)"" invalid role ""%3"" is specified.';ru='В описании профиля"
-"""%1 (%2)"" указана недопустимая роль ""%3"".'"),
+					NStr("en='In the proattachment description
+		|""%1 (%2)"" invalid role ""%3"" is specified.';ru='В описании профиля
+		|""%1 (%2)"" указана недопустимая роль ""%3"".'"),
 					ProfileDescription.Name,
 					ProfileDescription.ID,
 					Role);
@@ -901,9 +901,9 @@ Function ProvidedProfiles()
 			AccessKindRefiner = ItemOfList.Presentation;
 			If AccessKindsProperties.ByNames.Get(AccessTypeName) = Undefined Then
 				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='In the profile"
-"description ""%1"" invalid access kind ""%3"" is specified.';ru='В описании профиля ""%1"""
-"указан несуществующий вид доступа ""%2"".'"),
+					NStr("en='In the profile
+		|description ""%1"" invalid access kind ""%3"" is specified.';ru='В описании профиля ""%1""
+		|указан несуществующий вид доступа ""%2"".'"),
 					?(ValueIsFilled(ProfileDescription.Name),
 					  ProfileDescription.Name,
 					  ProfileDescription.ID),
@@ -915,19 +915,19 @@ Function ProvidedProfiles()
 			   AND AccessKindRefiner <> "InitiallyAllAllowed" Then
 				
 				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='In the profile"
-"description ""%1"" for the access kind ""2"" unknown refiner ""%3"" is specified."
-""
-"Only the following"
-"refiners are valid: -"
-"""AllProhibitedInBeginning"""
-"or """", - ""AllAllowedInBeginning"", - ""Preset"".';ru='В описании профиля ""%1"""
-"для вида доступа ""%2"" указано неизвестное уточнение ""%3""."
-""
-"Допустимы только следующие уточнения:"
-"- ""ВначалеВсеЗапрещены"" или """","
-"- ""ВначалеВсеРазрешены"","
-"- ""Предустановленный"".'"),
+					NStr("en='In the profile
+		|description ""%1"" for the access kind ""2"" unknown refiner ""%3"" is specified.
+		|
+		|Only the following
+		|refiners are valid: -
+		|""AllProhibitedInBeginning""
+		|or """", - ""AllAllowedInBeginning"", - ""Preset"".';ru='В описании профиля ""%1""
+		|для вида доступа ""%2"" указано неизвестное уточнение ""%3"".
+		|
+		|Допустимы только следующие уточнения:
+		|- ""ВначалеВсеЗапрещены"" или """",
+		|- ""ВначалеВсеРазрешены"",
+		|- ""Предустановленный"".'"),
 					?(ValueIsFilled(ProfileDescription.Name),
 					  ProfileDescription.Name,
 					  ProfileDescription.ID),
@@ -954,13 +954,13 @@ Function ProvidedProfiles()
 			AccessTypeProperties = AccessKindsProperties.ByNames.Get(AccessKind);
 			If AccessTypeProperties = Undefined Then
 				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='In the profile"
-"description ""%1"" invalid access kind"
-"""2"" is specified"
-"for access value ""%3"".';ru='В описании профиля ""%1"""
-"указан несуществующий вид доступа ""%2"""
-"для значения доступа"
-"""%3"".'"),
+					NStr("en='In the profile
+		|description ""%1"" invalid access kind
+		|""2"" is specified
+		|for access value ""%3"".';ru='В описании профиля ""%1""
+		|указан несуществующий вид доступа ""%2""
+		|для значения доступа
+		|""%3"".'"),
 					?(ValueIsFilled(ProfileDescription.Name),
 					  ProfileDescription.Name,
 					  ProfileDescription.ID),
@@ -983,13 +983,13 @@ Function ProvidedProfiles()
 			
 			If MetadataObject = Undefined Then
 				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='In the profile"
-"description ""%1"" for the"
-"access kind ""2"" specified access value"
-"type ""%3"" does not exist.';ru='В описании профиля ""%1"""
-"для вида доступа ""%2"""
-"не существует тип указанного значения доступа"
-"""%3"".'"),
+					NStr("en='In the profile
+		|description ""%1"" for the
+		|access kind ""2"" specified access value
+		|type ""%3"" does not exist.';ru='В описании профиля ""%1""
+		|для вида доступа ""%2""
+		|не существует тип указанного значения доступа
+		|""%3"".'"),
 					?(ValueIsFilled(ProfileDescription.Name),
 					  ProfileDescription.Name,
 					  ProfileDescription.ID),
@@ -1006,13 +1006,13 @@ Function ProvidedProfiles()
 			
 			If AccessValueEmptyRef = Undefined Then
 				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='In the profile"
-"description ""%1"" for the"
-"access kind ""2"" not a reference"
-"type of access value ""%3"" is specified.';ru='В описании профиля ""%1"""
-"для вида доступа ""%2"""
-"указан не ссылочный тип значения доступа"
-"""%3"".'"),
+					NStr("en='In the profile
+		|description ""%1"" for the
+		|access kind ""2"" not a reference
+		|type of access value ""%3"" is specified.';ru='В описании профиля ""%1""
+		|для вида доступа ""%2""
+		|указан не ссылочный тип значения доступа
+		|""%3"".'"),
 					?(ValueIsFilled(ProfileDescription.Name),
 					  ProfileDescription.Name,
 					  ProfileDescription.ID),
@@ -1026,11 +1026,11 @@ Function ProvidedProfiles()
 			 OR AccessKindPropertiesByType.Name <> AccessKind Then
 				
 				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='In the profile"
-"description ""%1"" access value"
-"of the ""3"" type is specified that is not specified in the access kind ""%2"" properties.';ru='В описании профиля ""%1"""
-"указано значение доступа ""%3"""
-"типа, который не указан в свойствах вида доступа ""%2"".'"),
+					NStr("en='In the profile
+		|description ""%1"" access value
+		|of the ""3"" type is specified that is not specified in the access kind ""%2"" properties.';ru='В описании профиля ""%1""
+		|указано значение доступа ""%3""
+		|типа, который не указан в свойствах вида доступа ""%2"".'"),
 					?(ValueIsFilled(ProfileDescription.Name),
 					  ProfileDescription.Name,
 					  ProfileDescription.ID),
@@ -1040,13 +1040,13 @@ Function ProvidedProfiles()
 			
 			If AccessValuesTable.FindRows(Filter).Count() > 0 Then
 				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='In the profile"
-"description ""%1"" for access"
-"kind ""%2"" access value"
-"""%3"" is specified again.';ru='В описании профиля ""%1"""
-"для вида доступа ""%2"""
-"повторно указано значение доступа"
-"""%3"".'"),
+					NStr("en='In the profile
+		|description ""%1"" for access
+		|kind ""%2"" access value
+		|""%3"" is specified again.';ru='В описании профиля ""%1""
+		|для вида доступа ""%2""
+		|повторно указано значение доступа
+		|""%3"".'"),
 					?(ValueIsFilled(ProfileDescription.Name),
 					  ProfileDescription.Name,
 					  ProfileDescription.ID),
@@ -1148,9 +1148,9 @@ Function UpdateProfileOfAccessGroups(ProfileProperties, DoNotUpdateUsersRoles = 
 			RoleMetadata = Metadata.Roles.Find(Role);
 			If RoleMetadata = Undefined Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='While updating supplied profile"
-"""%1"" role ""%2"" is not found in metadata.';ru='При обновлении поставляемого"
-"профиля ""%1"" роль ""%2"" не найдена в метаданных.'"),
+					NStr("en='While updating supplied profile
+		|""%1"" role ""%2"" is not found in metadata.';ru='При обновлении поставляемого
+		|профиля ""%1"" роль ""%2"" не найдена в метаданных.'"),
 					ProfileProperties.Description,
 					Role);
 			EndIf;

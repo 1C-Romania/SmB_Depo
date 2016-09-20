@@ -55,21 +55,21 @@ Procedure LimitAccessOnRecordsLevelOnChange(Item)
 	If ConstantsSet.LimitAccessOnRecordsLevel Then
 		
 		QuestionText =
-			NStr("en='Do you want to enable"
-""
-"the access restriction on the write level?"
-"Filling data will be required which will"
-"be executed by schedule job parts ""Filling data for access restriction"" (perform step in events log monitor)."
-""
-"Execution can greatly slow down the"
-"application work and it is executed from a few seconds to many hours (depending on data volume).';ru='Включить ограничение доступа на уровне записей?"
-""
-"Потребуется заполнение данных, которое будет выполняться частями"
-"регламентным заданием ""Заполнение данных для ограничения доступа"""
-"(ход выполнения в журнале регистрации)."
-""
-"Выполнение может сильно замедлить работу программы и выполняться"
-"от нескольких секунд до многих часов (в зависимости от объема данных).'");
+			NStr("en='Do you want to enable
+		|
+		|the access restriction on the write level?
+		|Filling data will be required which will
+		|be executed by schedule job parts ""Filling data for access restriction"" (perform step in events log monitor).
+		|
+		|Execution can greatly slow down the
+		|application work and it is executed from a few seconds to many hours (depending on data volume).';ru='Включить ограничение доступа на уровне записей?
+		|
+		|Потребуется заполнение данных, которое будет выполняться частями
+		|регламентным заданием ""Заполнение данных для ограничения доступа""
+		|(ход выполнения в журнале регистрации).
+		|
+		|Выполнение может сильно замедлить работу программы и выполняться
+		|от нескольких секунд до многих часов (в зависимости от объема данных).'");
 		
 		ShowQueryBox(
 			New NotifyDescription(

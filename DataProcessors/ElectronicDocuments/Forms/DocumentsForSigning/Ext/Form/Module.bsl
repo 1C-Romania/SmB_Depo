@@ -227,9 +227,9 @@ Procedure AfterGettingThumbprintsExecuteActions(Prints, AdditionalParameters = U
 	CompleteListOfCertificatesAndDocuments(CertificateTumbprintsArray);
 	
 	If CertificatesTable.Count() = 0 Then
-		WarningText = NStr("en='No signature certificates for"
-"the user or the documents signing rules are not configured!';ru='Нет сертификатов подписи"
-"для пользователя или не настроены правила подписи документов!'"); 
+		WarningText = NStr("en='No signature certificates for
+		|the user or the documents signing rules are not configured!';ru='Нет сертификатов подписи
+		|для пользователя или не настроены правила подписи документов!'"); 
 		ShowMessageBox(, WarningText);
 		Close();
 		Return;
@@ -411,9 +411,9 @@ Procedure OnOpen(Cancel)
 	Else
 		Enabled = False;
 		Handler = New NotifyDescription("AfterInstallExpansionForCryptographyWork", ThisObject);
-		QuestionText = NStr("en='For working with EP"
-"it is required to install the work extension with cryptography.';ru='Для работы с ЭП необходимо установить"
-"расширение работы с криптографией.'");
+		QuestionText = NStr("en='For working with EP
+		|it is required to install the work extension with cryptography.';ru='Для работы с ЭП необходимо установить
+		|расширение работы с криптографией.'");
 		DigitalSignatureClient.SetExtension(False, Handler, QuestionText);
 	EndIf;
 	

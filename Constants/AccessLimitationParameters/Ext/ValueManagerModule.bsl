@@ -149,13 +149,13 @@ Function AccessKindsProperties()
 		AccessManagementServiceReUse.TypesTableFields("DefinedType.AccessValue"));
 	
 	ErrorTitle =
-		NStr("en='An error occurred"
-"in the FillAccessKindProperty procedure of the AccessManagementOverridable general module."
-""
-"';ru='Ошибка"
-"в процедуре ЗаполнитьСвойстваВидаДоступа общего модуля УправлениеДоступомПереопределяемый."
-""
-"'");
+		NStr("en='An error occurred
+		|in the FillAccessKindProperty procedure of the AccessManagementOverridable general module.
+		|
+		|';ru='Ошибка
+		|в процедуре ЗаполнитьСвойстваВидаДоступа общего модуля УправлениеДоступомПереопределяемый.
+		|
+		|'");
 	
 	Parameters.Insert("ErrorTitle", ErrorTitle);
 	
@@ -296,9 +296,9 @@ Function AccessKindsProperties()
 		TypeOf(ChartsOfCharacteristicTypes.DeleteAccessKinds.EmptyRef())) = Undefined Then
 	
 		ErrorDescription =
-			NStr("en='Type ChartOfCharacteristicTypesRef.DeleteAccessKinds"
-"required to transfer to"
-"the application new versions is not specified in the ""Access value"" determined type.';ru='Тип ПланВидовХарактеристикСсылка.УдалитьВидыДоступа, необходимый для перехода на новые версии программы не указан в определяемом типе ""Значение доступа"".'");
+			NStr("en='Type ChartOfCharacteristicTypesRef.DeleteAccessKinds
+		|required to transfer to
+		|the application new versions is not specified in the ""Access value"" determined type.';ru='Тип ПланВидовХарактеристикСсылка.УдалитьВидыДоступа, необходимый для перехода на новые версии программы не указан в определяемом типе ""Значение доступа"".'");
 		
 		Raise Parameters.ErrorTitle + ErrorDescription;
 	EndIf;
@@ -360,9 +360,9 @@ Procedure FillAccessValuesWithGroups(String, AccessValuesWithGroups, Properties,
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			Parameters.ErrorTitle +
-			NStr("en='Access value type ""%1"" that uses"
-"value groups is not specified in the subscription to the ""Update access value groups"" event.';ru='Тип значения доступа ""%1"","
-"использующий группы значений, не указан в подписке на событие ""Обновить группы значений доступа"".'"),
+			NStr("en='Access value type ""%1"" that uses
+		|value groups is not specified in the subscription to the ""Update access value groups"" event.';ru='Тип значения доступа ""%1"",
+		|использующий группы значений, не указан в подписке на событие ""Обновить группы значений доступа"".'"),
 			String(ObjectType));
 	EndIf;
 	
@@ -401,14 +401,14 @@ Procedure CheckType(AccessKind, Type, AllTypes, Parameters, GroupTypesCheck = Fa
 	If Not CommonUse.IsReference(Type) Then
 		If GroupTypesCheck Then
 			ErrorDescription =
-				NStr("en='Type ""%1"" is specified as value groups type for the access kind ""%2""."
-"But it is not reference type.';ru='Тип ""%1"" указан, как тип групп значений, для вида доступа ""%2""."
-"Однако это не тип ссылки.'");
+				NStr("en='Type ""%1"" is specified as value groups type for the access kind ""%2"".
+		|But it is not reference type.';ru='Тип ""%1"" указан, как тип групп значений, для вида доступа ""%2"".
+		|Однако это не тип ссылки.'");
 		Else
 			ErrorDescription =
-				NStr("en='Type ""%1"" is specified as values type for the access kind ""%2""."
-"But it is not reference type.';ru='Тип ""%1"" указан, как тип значений, для вида доступа ""%2""."
-"Однако это не тип ссылки.'");
+				NStr("en='Type ""%1"" is specified as values type for the access kind ""%2"".
+		|But it is not reference type.';ru='Тип ""%1"" указан, как тип значений, для вида доступа ""%2"".
+		|Однако это не тип ссылки.'");
 		EndIf;
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			Parameters.ErrorTitle + ErrorDescription, Type, AccessKind.Name);
@@ -420,27 +420,27 @@ Procedure CheckType(AccessKind, Type, AllTypes, Parameters, GroupTypesCheck = Fa
 	If GroupTypesCheck Then
 		If CheckIntersection Then
 			ErrorDescription =
-				NStr("en='Type ""%1"" is specified as values type for the access kind ""%2""."
-"For the access kind ""%3"" it can not be specified as values group type.';ru='Тип ""%1"" указан, как тип значений, для вида доступа ""%2""."
-"Для вида доступа ""%3"" его нельзя указать, как тип групп значений.'");
+				NStr("en='Type ""%1"" is specified as values type for the access kind ""%2"".
+		|For the access kind ""%3"" it can not be specified as values group type.';ru='Тип ""%1"" указан, как тип значений, для вида доступа ""%2"".
+		|Для вида доступа ""%3"" его нельзя указать, как тип групп значений.'");
 		Else
 			ForSameAccessTypeNoError = True;
 			ErrorDescription =
-				NStr("en='Value groups type ""%1"" is specified for the access kind ""%2""."
-"For the access kind ""%3"" it can not be specified.';ru='Тип групп значений ""%1"" уже указан для вида доступа ""%2""."
-"Для вида доступа ""%3"" его нельзя указать.'");
+				NStr("en='Value groups type ""%1"" is specified for the access kind ""%2"".
+		|For the access kind ""%3"" it can not be specified.';ru='Тип групп значений ""%1"" уже указан для вида доступа ""%2"".
+		|Для вида доступа ""%3"" его нельзя указать.'");
 		EndIf;
 	Else
 		If CheckIntersection Then
 			ErrorDescription =
-				NStr("en='Type ""%1"" is specified as value groups type for the access kind ""%2""."
-"For the access kind ""%3"" it can not be specified as values type.';ru='Тип ""%1"" указан, как тип групп значений, для вида доступа ""%2""."
-"Для вида доступа ""%3"" его нельзя указать, как тип значений.'");
+				NStr("en='Type ""%1"" is specified as value groups type for the access kind ""%2"".
+		|For the access kind ""%3"" it can not be specified as values type.';ru='Тип ""%1"" указан, как тип групп значений, для вида доступа ""%2"".
+		|Для вида доступа ""%3"" его нельзя указать, как тип значений.'");
 		Else
 			ErrorDescription =
-				NStr("en='Values type ""%1"" is specified for the access kind ""%2""."
-"For the access kind ""%3"" it can not be specified.';ru='Тип значений ""%1"" уже указан для вида доступа ""%2""."
-"Для вида доступа ""%3"" его нельзя указать.'");
+				NStr("en='Values type ""%1"" is specified for the access kind ""%2"".
+		|For the access kind ""%3"" it can not be specified.';ru='Тип значений ""%1"" уже указан для вида доступа ""%2"".
+		|Для вида доступа ""%3"" его нельзя указать.'");
 		EndIf;
 	EndIf;
 	
@@ -458,14 +458,14 @@ Procedure CheckType(AccessKind, Type, AllTypes, Parameters, GroupTypesCheck = Fa
 	If Parameters.DefinedAccessValuesType.Get(Type) = Undefined Then
 		If GroupTypesCheck Then
 			ErrorDescription =
-				NStr("en='Access value groups type ""%1"" of the"
-"access kind ""%2"" is not specified in the ""Access value"" defined type.';ru='Тип групп значений доступа"
-"""%1"" вида доступа ""%2"" не указан в определяемом типе ""Значение доступа"".'");
+				NStr("en='Access value groups type ""%1"" of the
+		|access kind ""%2"" is not specified in the ""Access value"" defined type.';ru='Тип групп значений доступа
+		|""%1"" вида доступа ""%2"" не указан в определяемом типе ""Значение доступа"".'");
 		Else
 			ErrorDescription =
-				NStr("en='Access value type ""%1"" of the"
-"access kind ""%2"" is specified in the ""Access value"" defined type.';ru='Тип значений доступа"
-"""%1"" вида доступа ""%2"" не указан в определяемом типе ""Значение доступа"".'");
+				NStr("en='Access value type ""%1"" of the
+		|access kind ""%2"" is specified in the ""Access value"" defined type.';ru='Тип значений доступа
+		|""%1"" вида доступа ""%2"" не указан в определяемом типе ""Значение доступа"".'");
 		EndIf;
 	EndIf;
 	

@@ -247,22 +247,22 @@ Function MessageParametersToTechicalSupport()
 	Result.Insert("Subject", NStr("en='Online support. Authorization.';ru='Интернет-поддержка. Авторизация.'"));
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Hello!"
-"I can not authorize and connect to online support."
-"My login and password are entered correctly. Please help me to solve the issue."
-""
-"Login: %1."
-"%TechnicalParameters%"
-"-----------------------------------------------"
-"Best regards, .';ru='Здравствуйте!"
-"У меня не получается пройти авторизацию и подключить Интернет-поддержку."
-"Логин и пароль мной введены правильно. Прошу помочь разобраться с проблемой."
-""
-"Логин: %1."
-""
-"%ТехническиеПараметры%"
-"-----------------------------------------------"
-"С уважением, .'"),
+		NStr("en='Hello!
+		|I can not authorize and connect to online support.
+		|My login and password are entered correctly. Please help me to solve the issue.
+		|
+		|Login: %1.
+		|%TechnicalParameters%
+		|-----------------------------------------------
+		|Best regards, .';ru='Здравствуйте!
+		|У меня не получается пройти авторизацию и подключить Интернет-поддержку.
+		|Логин и пароль мной введены правильно. Прошу помочь разобраться с проблемой.
+		|
+		|Логин: %1.
+		|
+		|%ТехническиеПараметры%
+		|-----------------------------------------------
+		|С уважением, .'"),
 		Login);
 	
 	Result.Insert("MessageText", MessageText);

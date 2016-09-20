@@ -176,9 +176,9 @@ Procedure Next(Command)
 	
 	If CurrentData.ThisRequest Then
 		ShowMessageBox(,
-			NStr("en='For this certificate a statement for issue is not yet executed."
-"Open the statement for the certificate issue and perform the required steps.';ru='Для этого сертификата заявление на выпуск еще не исполнено."
-"Откройте заявление на выпуск сертификата и выполните требуемые шаги.'"));
+			NStr("en='For this certificate a statement for issue is not yet executed.
+		|Open the statement for the certificate issue and perform the required steps.';ru='Для этого сертификата заявление на выпуск еще не исполнено.
+		|Откройте заявление на выпуск сертификата и выполните требуемые шаги.'"));
 		UpdateCertificatesList();
 		Return;
 	EndIf;

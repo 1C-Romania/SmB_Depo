@@ -60,9 +60,9 @@ EndProcedure
 Procedure SetupDriver(Command)
 	
 	If IntegrationLibrary Then
-		Text = NStr("en='Driver installation requires connection to the Internet."
-"Continue?';ru='Driver installation requires connection to the Internet."
-"Continue?'");
+		Text = NStr("en='Driver installation requires connection to the Internet.
+		|Continue?';ru='Driver installation requires connection to the Internet.
+		|Continue?'");
 		Notification = New NotifyDescription("DriverSettingEnd",  ThisObject);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo);
 	Else

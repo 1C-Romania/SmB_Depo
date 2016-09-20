@@ -447,15 +447,15 @@ Procedure GenerateMessageText(DisplacedUsersArray, UserNotification, NotMovedUse
 			For Each NotMovedUser IN NotMovedUsers Do
 				Subject = String(NOTMovedUser.Key);
 			EndDo;
-			UserMessage = NStr("en='User ""% 1"" has not managed to"
-"include in the selected group, as they have different types or the groups have the ""All users of the specified type"" sign installed.';ru='Пользователя ""%1"" не удалось включить в выбранные группы,"
-"т.к. у них различается тип или у групп установлен признак ""Все пользователи заданного типа"".'");
+			UserMessage = NStr("en='User ""% 1"" has not managed to
+		|include in the selected group, as they have different types or the groups have the ""All users of the specified type"" sign installed.';ru='Пользователя ""%1"" не удалось включить в выбранные группы,
+		|т.к. у них различается тип или у групп установлен признак ""Все пользователи заданного типа"".'");
 		Else
 			MeasurementUnitInWordParameters = NStr("en='to user,users,users,,,,,,0';ru='пользователю,пользователям,пользователям,,,,,,0'");
 			Subject = UsersService.WordEndingGenerating(QuantityNotDisplacedUsers, MeasurementUnitInWordParameters);
-			UserMessage = NStr("en='Not all users managed to include in"
-"the selected group, as they have different types or the groups have the ""All users of the specified type"" sign installed.';ru='Не всех пользователей удалось включить в выбранные группы,"
-"т.к. у них различается тип или у групп установлен признак ""Все пользователи заданного типа"".'");
+			UserMessage = NStr("en='Not all users managed to include in
+		|the selected group, as they have different types or the groups have the ""All users of the specified type"" sign installed.';ru='Не всех пользователей удалось включить в выбранные группы,
+		|т.к. у них различается тип или у групп установлен признак ""Все пользователи заданного типа"".'");
 			For Each NotMovedUser IN NotMovedUsers Do
 			RowUsers = RowUsers + String(NOTMovedUser.Key) + " : " + 
 				StringFunctionsClientServer.RowFromArraySubrows(NOTMovedUser.Value) + Chars.LF;

@@ -567,31 +567,31 @@ EndProcedure
 &AtClient
 Function MessageParametersToTechicalSupport()
 	
-	MessageText = NStr("en='Hello!"
-"I can not enter additional information of my company"
-"when connecting to online support. Please help to solve the issue."
-""
-"Login: %1"
-"Company name: %2"
-"Business type: %3"
-"TIN: %4"
-"KPP: %5"
-"Director: %6"
-"Phone: %7"
-"Email: %8"
-"Fax: %9';ru='Здравствуйте!"
-"У меня не получается ввести дополнительную информацию о моей организации"
-"при подключении Интернет-поддержки. Прошу помочь разобраться с проблемой."
-""
-"Логин: %1"
-"Название организации: %2"
-"Тип деятельности: %3"
-"ИНН: %4"
-"КПП: %5"
-"Руководитель: %6"
-"Телефон: %7"
-"Адрес электронной почты: %8"
-"Факс: %9'");
+	MessageText = NStr("en='Hello!
+		|I can not enter additional information of my company
+		|when connecting to online support. Please help to solve the issue.
+		|
+		|Login: %1
+		|Company name: %2
+		|Business type: %3
+		|TIN: %4
+		|KPP: %5
+		|Director: %6
+		|Phone: %7
+		|Email: %8
+		|Fax: %9';ru='Здравствуйте!
+		|У меня не получается ввести дополнительную информацию о моей организации
+		|при подключении Интернет-поддержки. Прошу помочь разобраться с проблемой.
+		|
+		|Логин: %1
+		|Название организации: %2
+		|Тип деятельности: %3
+		|ИНН: %4
+		|КПП: %5
+		|Руководитель: %6
+		|Телефон: %7
+		|Адрес электронной почты: %8
+		|Факс: %9'");
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(
 		InteractionContext.COPContext,
@@ -609,21 +609,21 @@ Function MessageParametersToTechicalSupport()
 		EmailAddress,
 		Fax);
 	
-	MessageTextContinued = NStr("en='Address: %1"
-"Place of purchase: %2"
-"Date of purchase: %3"
-"Number of workplaces: %4"
-"Responsible employee: %5"
-"%TechnicalParameters%"
-"-----------------------------------------------"
-"Yours sincerely, .';ru='Адрес: %1 "
-"Место покупки: %2 "
-"Дата покупки: %3 "
-"Число рабочих мест: %4 "
-"Ответственный сотрудник: %5 "
-"%ТехническиеПараметры% "
-"----------------------------------------------- "
-"С уважением, .'");
+	MessageTextContinued = NStr("en='Address: %1
+		|Place of purchase: %2
+		|Date of purchase: %3
+		|Number of workplaces: %4
+		|Responsible employee: %5
+		|%TechnicalParameters%
+		|-----------------------------------------------
+		|Yours sincerely, .';ru='Адрес: %1 
+		|Место покупки: %2 
+		|Дата покупки: %3 
+		|Число рабочих мест: %4 
+		|Ответственный сотрудник: %5 
+		|%ТехническиеПараметры% 
+		|----------------------------------------------- 
+		|С уважением, .'");
 	
 	MessageTextContinued = StringFunctionsClientServer.PlaceParametersIntoString(
 		MessageTextContinued,

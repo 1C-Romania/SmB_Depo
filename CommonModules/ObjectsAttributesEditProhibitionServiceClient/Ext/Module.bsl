@@ -43,14 +43,14 @@ Procedure CheckReferencesToObjectAfterCheckConfirmation(Response, Parameters) Ex
 	If CommonUseServerCall.ThereAreRefsToObject(Parameters.RefArray) Then
 		
 		If Parameters.RefArray.Count() = 1 Then
-			MessageText = NStr("en='Item ""%1"" is already used in other places in the application."
-"It is not recommended to allow editing due to the risk of data misalignment.';ru='Элемент ""%1"" уже используется в других местах в программе."
-"Не рекомендуется разрешать редактирование из-за риска рассогласования данных.'");
+			MessageText = NStr("en='Item ""%1"" is already used in other places in the application.
+		|It is not recommended to allow editing due to the risk of data misalignment.';ru='Элемент ""%1"" уже используется в других местах в программе.
+		|Не рекомендуется разрешать редактирование из-за риска рассогласования данных.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Parameters.RefArray[0]);
 		Else
-			MessageText = NStr("en='Selected items (%1) are already used in other places in the application."
-"It is not recommended to allow editing due to the risk of data misalignment.';ru='Выбранные элементы (%1) уже используются в других местах в программе."
-"Не рекомендуется разрешать редактирование из-за риска рассогласования данных.'");
+			MessageText = NStr("en='Selected items (%1) are already used in other places in the application.
+		|It is not recommended to allow editing due to the risk of data misalignment.';ru='Выбранные элементы (%1) уже используются в других местах в программе.
+		|Не рекомендуется разрешать редактирование из-за риска рассогласования данных.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Parameters.RefArray.Count());
 		EndIf;
 		

@@ -42,16 +42,16 @@ Procedure HandleCounterpartiesPriceKindChangeAndSettlementsCurrency(DocumentPara
 		
 		WarningText = "";
 		If ModifiedCounterpartyPriceKind Then
-			WarningText = NStr("en='Counterparty contract specifies the counterparty"
-"price kind that differs from the kind specified for the document! "
-"Perhaps you have to refill prices.';ru='Договор с контрагентом"
-"предусматривает вид цен контрагента, отличный от установленного в документе! "
-"Возможно, необходимо перезаполнить цены.'") + Chars.LF + Chars.LF;
+			WarningText = NStr("en='Counterparty contract specifies the counterparty
+		|price kind that differs from the kind specified for the document! 
+		|Perhaps you have to refill prices.';ru='Договор с контрагентом
+		|предусматривает вид цен контрагента, отличный от установленного в документе! 
+		|Возможно, необходимо перезаполнить цены.'") + Chars.LF + Chars.LF;
 		EndIf;
 		
-		WarningText = WarningText + NStr("en='Settlement currency of the contract with counterparty changed!"
-"It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом!"
-"Необходимо проверить валюту документа!'");
+		WarningText = WarningText + NStr("en='Settlement currency of the contract with counterparty changed!
+		|It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом!
+		|Необходимо проверить валюту документа!'");
 										
 		ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, True, ModifiedCounterpartyPriceKind, WarningText);
 		
@@ -59,9 +59,9 @@ Procedure HandleCounterpartiesPriceKindChangeAndSettlementsCurrency(DocumentPara
 		
 		If Object.Inventory.Count() > 0 Then
 			
-			QuestionText = NStr("en='The counterparty contract allows for the kind of prices other than prescribed in the document! "
-"Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает вид цен, отличный от установленного в документе! "
-"Пересчитать документ в соответствии с договором?'");
+			QuestionText = NStr("en='The counterparty contract allows for the kind of prices other than prescribed in the document! 
+		|Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает вид цен, отличный от установленного в документе! 
+		|Пересчитать документ в соответствии с договором?'");
 										
 			NotifyDescription = New NotifyDescription("DefineDocumentRecalculateNeedByContractTerms", ThisObject, DocumentParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);

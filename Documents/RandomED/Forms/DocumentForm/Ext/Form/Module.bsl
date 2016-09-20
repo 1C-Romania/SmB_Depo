@@ -1110,9 +1110,9 @@ EndProcedure
 Procedure CheckDocumentRecord(ContinuationProcessor)
 	
 	If Modified OR Object.Ref.IsEmpty() Then
-		QuestionText = NStr("en='To continue operation, it is required to write the document."
-"Write document?';ru='Для продолжения операции необходимо записать документ."
-"Записать документ?'");
+		QuestionText = NStr("en='To continue operation, it is required to write the document.
+		|Write document?';ru='Для продолжения операции необходимо записать документ.
+		|Записать документ?'");
 		AdditParameters = New Structure("ProcedureName", ContinuationProcessor);
 		NotifyDescription = New NotifyDescription("EndDocumentWritingCheck", ThisObject, AdditParameters);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);

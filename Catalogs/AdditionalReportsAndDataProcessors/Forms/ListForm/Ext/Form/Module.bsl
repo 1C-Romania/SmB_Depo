@@ -182,15 +182,15 @@ EndProcedure
 &AtClient
 Function ItemSelected(RowData)
 	If TypeOf(RowData.Ref) <> Type("CatalogRef.AdditionalReportsAndDataProcessors") Then
-		ShowMessageBox(, NStr("en='The command can not be run for the specified object."
-"Select additional report or data processor.';ru='Команда не может быть выполнена для указанного объекта."
-"Выберите дополнительный отчет или обработку.'"));
+		ShowMessageBox(, NStr("en='The command can not be run for the specified object.
+		|Select additional report or data processor.';ru='Команда не может быть выполнена для указанного объекта.
+		|Выберите дополнительный отчет или обработку.'"));
 		Return False;
 	EndIf;
 	If RowData.IsFolder Then
-		ShowMessageBox(, NStr("en='The command can not be run for the group."
-"Select additional report or data processor.';ru='Команда не может быть выполнена для группы."
-"Выберите дополнительный отчет или обработку.'"));
+		ShowMessageBox(, NStr("en='The command can not be run for the group.
+		|Select additional report or data processor.';ru='Команда не может быть выполнена для группы.
+		|Выберите дополнительный отчет или обработку.'"));
 		Return False;
 	EndIf;
 	Return True;

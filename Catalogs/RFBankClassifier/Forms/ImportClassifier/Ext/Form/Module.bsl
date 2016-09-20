@@ -218,11 +218,11 @@ Procedure Attachable_CheckJobExecution()
 			"Error", DetailErrorDescription(ErrorInfo()), , True);
 			
 		Items.ExplanationText.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Bank classifier import is aborted"
-"by the reason of: %1"
-"Details see in events log monitor.';ru='Загрузка классификатора"
-"банков прервана по причине:"
-"%1 Подробности см. в журнале регистрации.'"),
+			NStr("en='Bank classifier import is aborted
+		|by the reason of: %1
+		|Details see in events log monitor.';ru='Загрузка классификатора
+		|банков прервана по причине:
+		|%1 Подробности см. в журнале регистрации.'"),
 			BriefErrorDescription(ErrorInfo()));
 			
 		Items.FormPages.CurrentPage = Items.ResultPage;
@@ -322,9 +322,9 @@ Procedure GetDataBIKITSdisc(ITSFilesImportingParameters)
 		ITSFilesImportingParameters.Insert("ITSDataBinaryDataAddress", ITSDataBinaryDataAddress);
 		DataFile = Undefined;
 	Else
-		MessageText = NStr("en='On the drive 1C:ITS BIC RF classifier data was not found. "
-"To install, you need 1C:ITS disk containing the database ""Garant. Taxes, accounting, entrepreneurship.""';ru='На диске 1С:ИТС не обнаружены данные классификатора БИК РФ. "
-"Для установки требуется диск 1С:ИТС, на котором содержится база ""Гарант. Налоги, бухучет, предпринимательство.""'");
+		MessageText = NStr("en='On the drive 1C:ITS BIC RF classifier data was not found. 
+		|To install, you need 1C:ITS disk containing the database ""Garant. Taxes, accounting, entrepreneurship.""';ru='На диске 1С:ИТС не обнаружены данные классификатора БИК РФ. 
+		|Для установки требуется диск 1С:ИТС, на котором содержится база ""Гарант. Налоги, бухучет, предпринимательство.""'");
 		ITSFilesImportingParameters.Insert("MessageText", MessageText);
 	EndIf;
 	

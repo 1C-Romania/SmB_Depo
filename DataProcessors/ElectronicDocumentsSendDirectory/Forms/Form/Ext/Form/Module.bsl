@@ -5,9 +5,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not Parameters.Property("FormID")
 		OR Parameters.FormID = Undefined Then
 		
-		ErrorMessage = NStr("en='This data processor is intended to be called from the ""EDF Settings""."
-"You can not call it manually.';ru='Данная обработка предназначена для вызова из ""Настройки ЭДО""."
-"Вызывать ее вручную запрещено.'");
+		ErrorMessage = NStr("en='This data processor is intended to be called from the ""EDF Settings"".
+		|You can not call it manually.';ru='Данная обработка предназначена для вызова из ""Настройки ЭДО"".
+		|Вызывать ее вручную запрещено.'");
 			
 		Raise ErrorMessage;
 		Return;
@@ -50,9 +50,9 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		Cancel = True;
 		
 		NotifyDescription = New NotifyDescription("BeforeCloseQuestionEnd", ThisObject);
-		QuestionText = NStr("en='Selected products will not be sent. "
-"Continue?';ru='Подобранные товары отправлены не будут. "
-"Продолжить?'");
+		QuestionText = NStr("en='Selected products will not be sent. 
+		|Continue?';ru='Подобранные товары отправлены не будут. 
+		|Продолжить?'");
 		
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 		

@@ -2137,11 +2137,11 @@ Procedure ConfirmPaymentCompleteThroughAdditionalProcessing(Val Result, Val Addi
 		Try
 			Result = ExternalAttachableModule.SendRequest(XMLCertificate, 5, QueryParameters);
 		Except
-			ErrorTemplate = NStr("en='Error of a payment order confirmation."
-"Error code:"
-"%1 %2';ru='Ошибка подтверждения платежного поручения."
-"Код"
-"ошибки: %1 %2'");
+			ErrorTemplate = NStr("en='Error of a payment order confirmation.
+		|Error code:
+		|%1 %2';ru='Ошибка подтверждения платежного поручения.
+		|Код
+		|ошибки: %1 %2'");
 			ErrorDetails = ExternalAttachableModule.ErrorDetails();
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 																ErrorTemplate,
@@ -2461,11 +2461,11 @@ Procedure ExecuteConfirmPaymentThroughAdditionalProcessing(AuthenticationComplet
 	Try
 		Result = ExternalAttachableModule.SendRequest(XMLCertificate, 4, QueryParameters);
 	Except
-		ErrorTemplate = NStr("en='An error occurred while initializing the confirmation session."
-"Error code:"
-"%1 %2';ru='Ошибка инициализации сессии подтверждения."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='An error occurred while initializing the confirmation session.
+		|Error code:
+		|%1 %2';ru='Ошибка инициализации сессии подтверждения.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 															ErrorTemplate,

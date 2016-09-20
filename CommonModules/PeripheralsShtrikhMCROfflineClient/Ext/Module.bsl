@@ -28,9 +28,9 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 	 Or ReportFile   = Undefined
 	 Or ExportFlag = Undefined  Then
 	 	Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device parameters are not set."
-"For the correct work of the device it is necessary to specify the parameters of its work.';ru='Не настроены параметры устройства."
-"Для корректной работы устройства необходимо задать параметры его работы.'"));
+		Output_Parameters.Add(NStr("en='Device parameters are not set.
+		|For the correct work of the device it is necessary to specify the parameters of its work.';ru='Не настроены параметры устройства.
+		|Для корректной работы устройства необходимо задать параметры его работы.'"));
 		Result = False;
 	Else
 		DriverObject = New Structure("Parameters", Parameters);

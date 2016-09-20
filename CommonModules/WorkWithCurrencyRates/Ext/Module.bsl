@@ -710,11 +710,11 @@ Function CurrencyRatesImportByParameters(Val Currencies, Val ImportBeginOfPeriod
 			OperationStatus = IsBlankString(ExplainingMessage);
 		Else
 			ExplainingMessage = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Unable to receive data file with exchange rates"
-"%1"
-"- %2): %3 There may not be an access to website with exchange rates or non-existent currency is specified.';ru='Невозможно получить файл данных с"
-"курсами"
-"валюты (%1 - %2): %3 Возможно, нет доступа к веб сайту с курсами валют, либо указана несуществующая валюта.'"),
+				NStr("en='Unable to receive data file with exchange rates
+		|%1
+		|- %2): %3 There may not be an access to website with exchange rates or non-existent currency is specified.';ru='Невозможно получить файл данных с
+		|курсами
+		|валюты (%1 - %2): %3 Возможно, нет доступа к веб сайту с курсами валют, либо указана несуществующая валюта.'"),
 				Currency.CurrencyCode,
 				Currency.Currency,
 				Result.ErrorInfo);

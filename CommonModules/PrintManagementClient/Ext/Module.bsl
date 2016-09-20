@@ -155,11 +155,11 @@ Procedure ExecuteConnectedPrintCommand(Val Command, Val Form, Val Source) Export
 		
 		If Source.Ref.IsEmpty() Then
 			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Data is still not recorded."
-"Execution of action ""%1"" is possible only after data is recorded."
-"Data will be written.';ru='Данные еще не записаны."
-"Выполнение действия ""%1"" возможно только после записи данных."
-"Данные будут записаны.'"),
+				NStr("en='Data is still not recorded.
+		|Execution of action ""%1"" is possible only after data is recorded.
+		|Data will be written.';ru='Данные еще не записаны.
+		|Выполнение действия ""%1"" возможно только после записи данных.
+		|Данные будут записаны.'"),
 				CommandDetails.Presentation);
 				
 			NotifyDescription = New NotifyDescription("ExecuteConnectedPrintCommandRecordConfirmation", PrintManagementServiceClient, AdditionalParameters);

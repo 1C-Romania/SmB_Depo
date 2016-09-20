@@ -1130,9 +1130,9 @@ Function GetOptimumAggregatesServer()
 		StandardSubsystemsClientServer.DisplayWarning(
 			Result,
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Aggregates for %1 and %2 registers are successfully received."
-"Not received: %3.';ru='Агрегаты успешно получены для %1 из %2 регистров."
-"Не получены: %3.'"),
+				NStr("en='Aggregates for %1 and %2 registers are successfully received.
+		|Not received: %3.';ru='Агрегаты успешно получены для %1 из %2 регистров.
+		|Не получены: %3.'"),
 				Successfully,
 				Total,
 				Total - Successfully),

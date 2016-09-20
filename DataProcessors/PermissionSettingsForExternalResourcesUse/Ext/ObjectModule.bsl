@@ -416,9 +416,9 @@ Procedure CalculateQueriesApplication() Export
 		Try
 			LockDataForEdit(Semaphore());
 		Except
-			Raise NStr("en='An error occurred when trying to access the settings of permissions to use external resources by a competitor."
-"Try to perform the operation later.';ru='Ошибка конкурентного доступа к настройке разрешений на использование внешних ресурсов."
-"Попробуйте выполнить операцию позже.'");
+			Raise NStr("en='An error occurred when trying to access the settings of permissions to use external resources by a competitor.
+		|Try to perform the operation later.';ru='Ошибка конкурентного доступа к настройке разрешений на использование внешних ресурсов.
+		|Попробуйте выполнить операцию позже.'");
 		EndTry;
 		
 	EndIf;

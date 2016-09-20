@@ -1238,11 +1238,11 @@ Function Attachable_DataMapping_OnGoingNext(Cancel)
 		Buttons.Add(DialogReturnCode.Yes, "Continue");
 		Buttons.Add(DialogReturnCode.No, "Cancel");
 		
-		Message = NStr("en='Not all data was mapped. Existence of"
-"unmapped data can lead to identical catalog items (duplicates)."
-"Continue?';ru='Не все данные сопоставлены. Наличие"
-"несопоставленных данных может привести к появлению одинаковых элементов справочников (дублей)."
-"Продолжить?'");
+		Message = NStr("en='Not all data was mapped. Existence of
+		|unmapped data can lead to identical catalog items (duplicates).
+		|Continue?';ru='Не все данные сопоставлены. Наличие
+		|несопоставленных данных может привести к появлению одинаковых элементов справочников (дублей).
+		|Продолжить?'");
 		
 		NotifyDescription = New NotifyDescription("HandleUserResponseWhenCompared", ThisObject);
 		ShowQueryBox(NOTifyDescription, Message, Buttons,, DialogReturnCode.No);

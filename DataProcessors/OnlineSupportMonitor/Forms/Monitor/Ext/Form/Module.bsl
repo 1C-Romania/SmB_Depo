@@ -60,9 +60,9 @@ Procedure OnOpen(Cancel)
 	
 #If WebClient Then
 	ShowMessageBox(,
-		NStr("en='Some references may work incorrectly in the web client."
-"Sorry for the inconvenience.';ru='В веб-клиенте некоторые ссылки могут работать неправильно."
-"Приносим извинения за неудобства.'"),
+		NStr("en='Some references may work incorrectly in the web client.
+		|Sorry for the inconvenience.';ru='В веб-клиенте некоторые ссылки могут работать неправильно.
+		|Приносим извинения за неудобства.'"),
 		,
 		NStr("en='Online user support';ru='Интернет-поддержка пользователей'"));
 #EndIf
@@ -251,9 +251,9 @@ Function ConfigurationUpdateMainProcessorFormName(ErrorInfo)
 		If MetadataMainForm <> Undefined Then
 			Return MetadataMainForm.FullName();
 		Else
-			ErrorInfo = NStr("en='An error occurred while calling an automatic update."
-"For more details see the event log.';ru='Ошибка при вызове автоматического обновления."
-"Подробнее см. в журнале регистрации.'");
+			ErrorInfo = NStr("en='An error occurred while calling an automatic update.
+		|For more details see the event log.';ru='Ошибка при вызове автоматического обновления.
+		|Подробнее см. в журнале регистрации.'");
 			OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
 				NStr("en='An error occurred while calling an automatic update. The main form of the ConfigurationUpdate processor is unavailable.';ru='Ошибка при вызове автоматического обновления. Отсутствует основная форма обработки ОбновлениеКонфигурации.'"));
 			Return Undefined;

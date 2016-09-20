@@ -201,9 +201,9 @@ Procedure SessionParametersSetting(Val ParameterName, SpecifiedParameters) Expor
 	
 	If Not CommonUseReUse.CanUseSeparatedData() Then
 		Raise
-			NStr("en='Invalid CurrentUser session"
-"parameter receipt is session without specifying all separators.';ru='Недопустимое получение"
-"параметра сеанса ТекущийПользователь в сеансе без указания всех разделителей.'");
+			NStr("en='Invalid CurrentUser session
+		|parameter receipt is session without specifying all separators.';ru='Недопустимое получение
+		|параметра сеанса ТекущийПользователь в сеансе без указания всех разделителей.'");
 	EndIf;
 	
 	BeginTransaction();
@@ -341,19 +341,19 @@ Procedure SessionParametersSetting(Val ParameterName, SpecifiedParameters) Expor
 				RollbackTransaction();
 				
 				ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Authorization not executed. System work will be complete."
-"User: %1 is not found in the ""Users"" catalog."
-""
-"An error occurred while adding user to"
-"catalog: %2."
-""
-"Contact your administrator.';ru='Авторизация не выполнена. Работа системы будет завершена."
-"Пользователь: %1 не найден в справочнике ""Пользователи""."
-""
-"При попытке добавления пользователя в справочник"
-"возникла ошибка: ""%2""."
-""
-"Обратитесь к администратору.'"),
+					NStr("en='Authorization not executed. System work will be complete.
+		|User: %1 is not found in the ""Users"" catalog.
+		|
+		|An error occurred while adding user to
+		|catalog: %2.
+		|
+		|Contact your administrator.';ru='Авторизация не выполнена. Работа системы будет завершена.
+		|Пользователь: %1 не найден в справочнике ""Пользователи"".
+		|
+		|При попытке добавления пользователя в справочник
+		|возникла ошибка: ""%2"".
+		|
+		|Обратитесь к администратору.'"),
 					UserName,
 					BriefErrorDescription(ErrorInfo()) );
 				
@@ -374,9 +374,9 @@ Procedure SessionParametersSetting(Val ParameterName, SpecifiedParameters) Expor
 	 OR CurrentExternalUser = Undefined Then
 		
 		ErrorMessageText = MessageTextUserNotFoundInCatalog(UserName) +
-			NStr("en='"
-"When searching the user an internal error has occurred.';ru='"
-"Возникла внутренняя ошибка при поиске пользователя.'");
+			NStr("en='
+		|When searching the user an internal error has occurred.';ru='
+		|Возникла внутренняя ошибка при поиске пользователя.'");
 		Raise ErrorMessageText;
 	EndIf;
 	
@@ -465,17 +465,17 @@ Function AuthenticateCurrentUser(OnStart = False) Export
 			User = Users.CreateAdministrator(CurrentInfobaseUser);
 			
 			Comment =
-				NStr("en='Start on behalf of the user with"
-"the ""Full rights"" role that is not registered in users list."
-"Auto registration in users list is executed."
-""
-"To maintain a list and users rights setting,"
-"use the Users list, 1C:Enterprise configuration mode should not be used.';ru='Выполняется запуск от имени пользователя с ролью ""Полные права"","
-"который не зарегистрирован в списке пользователей."
-"Выполнена автоматическая регистрация в списке пользователей."
-""
-"Для ведения списка и настройки прав пользователей предназначен список Пользователи,"
-"режим конфигурирования 1С:Предприятия для этого использовать не следует.'");
+				NStr("en='Start on behalf of the user with
+		|the ""Full rights"" role that is not registered in users list.
+		|Auto registration in users list is executed.
+		|
+		|To maintain a list and users rights setting,
+		|use the Users list, 1C:Enterprise configuration mode should not be used.';ru='Выполняется запуск от имени пользователя с ролью ""Полные права"",
+		|который не зарегистрирован в списке пользователей.
+		|Выполнена автоматическая регистрация в списке пользователей.
+		|
+		|Для ведения списка и настройки прав пользователей предназначен список Пользователи,
+		|режим конфигурирования 1С:Предприятия для этого использовать не следует.'");
 			
 			AfterWriteAdministratorOnAuthorization(Comment);
 			
@@ -488,15 +488,15 @@ Function AuthenticateCurrentUser(OnStart = False) Export
 				Comment);
 		Else
 			ErrorMessageText =
-				NStr("en='Unable to start as user with"
-"the Administration right as they are not registered in the users list."
-""
-"To maintain a list and users rights setting,"
-"use the Users list, 1C:Enterprise configuration mode should not be used.';ru='Запуск от имени пользователя с правом Администрирование невозможен,"
-"так как он не зарегистрирован в списке пользователей."
-""
-"Для ведения списка и настройки прав пользователей предназначен список Пользователи,"
-"режим конфигурирования 1С:Предприятия для этого использовать не следует.'");
+				NStr("en='Unable to start as user with
+		|the Administration right as they are not registered in the users list.
+		|
+		|To maintain a list and users rights setting,
+		|use the Users list, 1C:Enterprise configuration mode should not be used.';ru='Запуск от имени пользователя с правом Администрирование невозможен,
+		|так как он не зарегистрирован в списке пользователей.
+		|
+		|Для ведения списка и настройки прав пользователей предназначен список Пользователи,
+		|режим конфигурирования 1С:Предприятия для этого использовать не следует.'");
 		EndIf;
 	EndIf;
 	
@@ -612,8 +612,8 @@ Procedure ProcessRolesInterface(Action, Parameters) Export
 		FillRoles(Parameters);
 	Else
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Error in the UsersService procedure.RolesInterfaceProcessor()"
-"Incorrect value of the Action parameter: %1.';ru='Ошибка в процедуре ПользователиСлужебный.ОбработатьИнтерфейсРолей() Неверное значение параметра Действие: ""%1"".'"),
+			NStr("en='Error in the UsersService procedure.RolesInterfaceProcessor()
+		|Incorrect value of the Action parameter: %1.';ru='Ошибка в процедуре ПользователиСлужебный.ОбработатьИнтерфейсРолей() Неверное значение параметра Действие: ""%1"".'"),
 			Action);
 	EndIf;
 	
@@ -1436,9 +1436,9 @@ Procedure BeginOfDBUserProcessing(UserObject,
 	
 	If Not IBUserDescription.Property("Action") Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while writing user %1."
-"In the IBUserDescription parameter the Action property is not specified.';ru='Ошибка при записи пользователя ""%1""."
-"В параметре ОписаниеПользователяИБ не указано свойство Действие.'"),
+			NStr("en='An error occurred while writing user %1.
+		|In the IBUserDescription parameter the Action property is not specified.';ru='Ошибка при записи пользователя ""%1"".
+		|В параметре ОписаниеПользователяИБ не указано свойство Действие.'"),
 			UserObject.Ref);
 	EndIf;
 	
@@ -1446,11 +1446,11 @@ Procedure BeginOfDBUserProcessing(UserObject,
 	   AND IBUserDescription.Action <> "Delete" Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while writing user %1."
-"In the IBUserDescription"
-"parameter incorrect value is specified %2 of the Action property.';ru='Ошибка при записи пользователя ""%1""."
-"В параметре ОписаниеПользователяИБ указано"
-"неверное значение ""%2"" свойства Действие.'"),
+			NStr("en='An error occurred while writing user %1.
+		|In the IBUserDescription
+		|parameter incorrect value is specified %2 of the Action property.';ru='Ошибка при записи пользователя ""%1"".
+		|В параметре ОписаниеПользователяИБ указано
+		|неверное значение ""%2"" свойства Действие.'"),
 			UserObject.Ref,
 			IBUserDescription.Action);
 	EndIf;
@@ -1498,11 +1498,11 @@ Procedure BeginOfDBUserProcessing(UserObject,
 		
 		If ProcessingParameters.OldIBUserExist Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while writing user %1."
-"You can not match IB user with to"
-"user in the directory with which another IB user is already matched.';ru='Ошибка при записи пользователя ""%1""."
-"Нельзя сопоставить пользователя"
-"ИБ с пользователем в справочнике, с которым уже сопоставлен другой пользователем ИБ.'"),
+				NStr("en='An error occurred while writing user %1.
+		|You can not match IB user with to
+		|user in the directory with which another IB user is already matched.';ru='Ошибка при записи пользователя ""%1"".
+		|Нельзя сопоставить пользователя
+		|ИБ с пользователем в справочнике, с которым уже сопоставлен другой пользователем ИБ.'"),
 				UserObject.Description);
 		EndIf;
 		
@@ -1514,13 +1514,13 @@ Procedure BeginOfDBUserProcessing(UserObject,
 			FoundUser) Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while writing user %1."
-"You can not match IB user to this user"
-"in the directory as it is already matched to another"
-"user in the directory %2.';ru='Ошибка при записи пользователя ""%1""."
-"Нельзя сопоставить пользователя ИБ"
-"с этим пользователем в справочнике, так как он уже"
-"сопоставлен с другим пользователем в справочнике ""%2"".'"),
+				NStr("en='An error occurred while writing user %1.
+		|You can not match IB user to this user
+		|in the directory as it is already matched to another
+		|user in the directory %2.';ru='Ошибка при записи пользователя ""%1"".
+		|Нельзя сопоставить пользователя ИБ
+		|с этим пользователем в справочнике, так как он уже
+		|сопоставлен с другим пользователем в справочнике ""%2"".'"),
 				FoundUser,
 				UserObject.Description);
 		EndIf;
@@ -1760,11 +1760,11 @@ Function NeedToCreateFirstAdministrator(Val IBUserDescription,
 				OR Roles.Find(Users.SystemAdministratorRole().Name) = Undefined Then
 				
 				// Prepare the question text during the first administrator record.
-				Text = NStr("en='The first user is added to"
-"the application user list, that is why it will be automatically assigned with the Full rights role."
-"Continue?';ru='В список пользователей"
-"программы добавляется первый пользователь, поэтому ему автоматически будет назначена роль ""Полные права""."
-"Продолжить?'");
+				Text = NStr("en='The first user is added to
+		|the application user list, that is why it will be automatically assigned with the Full rights role.
+		|Continue?';ru='В список пользователей
+		|программы добавляется первый пользователь, поэтому ему автоматически будет назначена роль ""Полные права"".
+		|Продолжить?'");
 				
 				If Not BanEditOfRoles() Then
 					Return True;
@@ -1781,11 +1781,11 @@ Function NeedToCreateFirstAdministrator(Val IBUserDescription,
 			EndIf;
 		Else
 			// Check before writing an external user.
-			Text = NStr("en='First infobase user must have full rights."
-"External user can not be full."
-"First, create administrator in the Users catalog.';ru='Первый пользователь информационной базы должен иметь полные права."
-"Внешний пользователь не может быть полноправным."
-"Сначала создайте администратора в справочнике Пользователи.'");
+			Text = NStr("en='First infobase user must have full rights.
+		|External user can not be full.
+		|First, create administrator in the Users catalog.';ru='Первый пользователь информационной базы должен иметь полные права.
+		|Внешний пользователь не может быть полноправным.
+		|Сначала создайте администратора в справочнике Пользователи.'");
 			Return True;
 		EndIf;
 	EndIf;
@@ -1991,9 +1991,9 @@ Function CheckIBUserFullName(Val IBUserDescription, Cancel) Export
 				IBUser.OSUser = IBUserDescription.OSUser;
 			Except
 				CommonUseClientServer.MessageToUser(
-					NStr("en='OS user must have"
-"format ""\\DomainName\UserName"".';ru='OS user must have"
-"format ""\\DomainName\UserName"".'"),
+					NStr("en='OS user must have
+		|format ""\\DomainName\UserName"".';ru='OS user must have
+		|format ""\\DomainName\UserName"".'"),
 					,
 					"OSUser",
 					,
@@ -2643,15 +2643,15 @@ Procedure RefreshRolesOfExternalUsers(Val ExternalUserArray = Undefined) Export
 		While Selection.Next() Do
 			
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='While updating external"
-"user"
-"roles %1"
-"role %2 of external"
-"users group %3 is not found in metadata.';ru='При обновлении"
-"ролей"
-"внешнего пользователя"
-"""%1"" роль"
-"""%2"" группы внешних пользователей ""%3"" не найдена в метаданных.'"),
+				NStr("en='While updating external
+		|user
+		|roles %1
+		|role %2 of external
+		|users group %3 is not found in metadata.';ru='При обновлении
+		|ролей
+		|внешнего пользователя
+		|""%1"" роль
+		|""%2"" группы внешних пользователей ""%3"" не найдена в метаданных.'"),
 				TrimAll(Selection.ExternalUser.Description),
 				Selection.Role,
 				String(Selection.ExternalUserGroup));
@@ -3092,11 +3092,11 @@ Function GeneratingMessageToUser(UserArray, GroupReceiver,
 		Else
 			Subject = "";
 			UserNotification.Users = StringFunctionsClientServer.RowFromArraySubrows(ArrayIsNotDisplacedUsers, Chars.LF);
-			UserMessage = NStr("en='Not all users can be included in"
-"group %2 as only %3 are included in the"
-"content of its participants or the group has a flag ""All users of the specified type"".';ru='Не все пользователи могут быть включены в группу ""%2"","
-"т.к. в состав ее участников входят только %3"
-"или у группы стоит признак ""Все пользователи заданного типа"".'");
+			UserMessage = NStr("en='Not all users can be included in
+		|group %2 as only %3 are included in the
+		|content of its participants or the group has a flag ""All users of the specified type"".';ru='Не все пользователи могут быть включены в группу ""%2"",
+		|т.к. в состав ее участников входят только %3
+		|или у группы стоит признак ""Все пользователи заданного типа"".'");
 		EndIf;
 		
 		AuthorizationObjectTypePresentationItem = Metadata.FindByType(TypeOf(GroupReceiver.TypeOfAuthorizationObjects)).Synonym;
@@ -3836,27 +3836,27 @@ EndProcedure
 Function MessageTextUserNotFoundInCatalog(UserName)
 	
 	If ExternalUsers.UseExternalUsers() Then
-		ErrorMessageText = NStr("en='Authorization not executed. System work will be complete."
-""
-"User %1 is not"
-"found in catalogs ""Users"" and ""External users""."
-""
-"Contact your administrator.';ru='Авторизация не выполнена. Работа системы будет завершена."
-""
-"Пользователь"
-"""%1"" не найден в справочниках ""Пользователи"" и ""Внешние пользователи""."
-""
-"Обратитесь к администратору.'");
+		ErrorMessageText = NStr("en='Authorization not executed. System work will be complete.
+		|
+		|User %1 is not
+		|found in catalogs ""Users"" and ""External users"".
+		|
+		|Contact your administrator.';ru='Авторизация не выполнена. Работа системы будет завершена.
+		|
+		|Пользователь
+		|""%1"" не найден в справочниках ""Пользователи"" и ""Внешние пользователи"".
+		|
+		|Обратитесь к администратору.'");
 	Else
-		ErrorMessageText = NStr("en='Authorization not executed. System work will be complete."
-""
-"User %1 is not found in the ""Users"" catalog."
-""
-"Contact your administrator.';ru='Авторизация не выполнена. Работа системы будет завершена."
-""
-"Пользователь ""%1"" не найден в справочнике ""Пользователи""."
-""
-"Обратитесь к администратору.'");
+		ErrorMessageText = NStr("en='Authorization not executed. System work will be complete.
+		|
+		|User %1 is not found in the ""Users"" catalog.
+		|
+		|Contact your administrator.';ru='Авторизация не выполнена. Работа системы будет завершена.
+		|
+		|Пользователь ""%1"" не найден в справочнике ""Пользователи"".
+		|
+		|Обратитесь к администратору.'");
 	EndIf;
 	
 	ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageText, UserName);
@@ -4465,25 +4465,25 @@ Procedure CheckUserRights(IBUser, CheckMode)
 			
 			If RoleDescription.IsDeletedRole Then
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Attempt to change roles content in user"
-"%1"
-"with role %2 providing rights on"
-"changing general data: %3.';ru='Попытка изменить состав ролей у"
-"пользователя"
-"%1 с ролью ""%2"", предоставляющей"
-"права на изменение общих данных: ""%3"".'"),
+					NStr("en='Attempt to change roles content in user
+		|%1
+		|with role %2 providing rights on
+		|changing general data: %3.';ru='Попытка изменить состав ролей у
+		|пользователя
+		|%1 с ролью ""%2"", предоставляющей
+		|права на изменение общих данных: ""%3"".'"),
 					IBUser.FullName,
 					Role.Presentation(),
 					TableString);
 			Else
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Attempt to assign to user"
-"%1"
-"invalid role %2 providing rights on"
-"changing general data: %3';ru='Попытка назначить"
-"пользователю"
-"%1 недопустимую роль ""%2"", предоставляющую"
-"права на изменение общих данных: ""%3"".'"),
+					NStr("en='Attempt to assign to user
+		|%1
+		|invalid role %2 providing rights on
+		|changing general data: %3';ru='Попытка назначить
+		|пользователю
+		|%1 недопустимую роль ""%2"", предоставляющую
+		|права на изменение общих данных: ""%3"".'"),
 					IBUser.FullName,
 					Role.Presentation(),
 					TableString);
@@ -4503,21 +4503,21 @@ Procedure CheckUserRights(IBUser, CheckMode)
 				
 				If RoleDescription.IsDeletedRole Then
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='Attempt to change roles content in user"
-"%1"
-"with role %2 providing right %3.';ru='Попытка изменить состав ролей у"
-"пользователя"
-"""%1"" с ролью ""%2"", предоставляющей право ""%3"".'"),
+						NStr("en='Attempt to change roles content in user
+		|%1
+		|with role %2 providing right %3.';ru='Попытка изменить состав ролей у
+		|пользователя
+		|""%1"" с ролью ""%2"", предоставляющей право ""%3"".'"),
 						String(IBUser),
 						Role.Presentation(),
 						Right);
 				Else
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='Attempt to assign to user"
-"%1"
-"invalid role %2 providing right %3.';ru='Попытка назначить пользователю"
-"""%1"""
-"недопустимую роль ""%2"", предоставляющую право ""%3"".'"),
+						NStr("en='Attempt to assign to user
+		|%1
+		|invalid role %2 providing right %3.';ru='Попытка назначить пользователю
+		|""%1""
+		|недопустимую роль ""%2"", предоставляющую право ""%3"".'"),
 						String(IBUser),
 						Role.Presentation(),
 						Right);
@@ -4550,9 +4550,9 @@ Procedure CheckUserRights(IBUser, CheckMode)
 	
 	If AddedRoles.Count() = 1 Then
 		AddingMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Role %2 can not be"
-"added to user %1.';ru='Пользователю ""%1"""
-"не может быть добавлена роль ""%2"".'"),
+			NStr("en='Role %2 can not be
+		|added to user %1.';ru='Пользователю ""%1""
+		|не может быть добавлена роль ""%2"".'"),
 			IBUser.FullName,
 			AddedRoles[0].Role.Presentation());
 		
@@ -5076,27 +5076,27 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 	   AND AttributesToLock.Service <> UserObject.Service Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while writing user %1."
-"Service attribute is not allowed to change in the subscriptions on the events.';ru='Ошибка при записи пользователя ""%1""."
-"Реквизит Служебный не допускается изменять в подписках на события.'"),
+			NStr("en='An error occurred while writing user %1.
+		|Service attribute is not allowed to change in the subscriptions on the events.';ru='Ошибка при записи пользователя ""%1"".
+		|Реквизит Служебный не допускается изменять в подписках на события.'"),
 			UserObject.Ref);
 	EndIf;
 	
 	If AttributesToLock.Prepared <> UserObject.Prepared Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while writing user %1."
-"Prepared attribute can not be changed in the events subscriptions.';ru='Ошибка при записи пользователя ""%1""."
-"Реквизит Подготовлен не допускается изменять в подписках на события.'"),
+			NStr("en='An error occurred while writing user %1.
+		|Prepared attribute can not be changed in the events subscriptions.';ru='Ошибка при записи пользователя ""%1"".
+		|Реквизит Подготовлен не допускается изменять в подписках на события.'"),
 			UserObject.Ref);
 	EndIf;
 	
 	If AutoAttributes.InfobaseUserID <> UserObject.InfobaseUserID Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while writing user %1."
-"Attribute InfobaseUserID can not be changed."
-"Attribute update is performed automatically.';ru='Ошибка при записи пользователя ""%1""."
-"Реквизит ИдентификаторПользователяИБ не допускается изменять."
-"Обновление реквизита выполняется автоматически.'"),
+			NStr("en='An error occurred while writing user %1.
+		|Attribute InfobaseUserID can not be changed.
+		|Attribute update is performed automatically.';ru='Ошибка при записи пользователя ""%1"".
+		|Реквизит ИдентификаторПользователяИБ не допускается изменять.
+		|Обновление реквизита выполняется автоматически.'"),
 			UserObject.Ref);
 	EndIf;
 	
@@ -5104,11 +5104,11 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 				UserObject.InfobaseUserProperties) Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while writing user %1."
-"Attribute InfobaseUserProperties can not be changed."
-"Attribute update is performed automatically.';ru='Ошибка при записи пользователя ""%1""."
-"Реквизит СвойстваПользователяИБ не допускается изменять."
-"Обновление реквизита выполняется автоматически.'"),
+			NStr("en='An error occurred while writing user %1.
+		|Attribute InfobaseUserProperties can not be changed.
+		|Attribute update is performed automatically.';ru='Ошибка при записи пользователя ""%1"".
+		|Реквизит СвойстваПользователяИБ не допускается изменять.
+		|Обновление реквизита выполняется автоматически.'"),
 			UserObject.Ref);
 	EndIf;
 	
@@ -5119,9 +5119,9 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 	   AND Users.CanLogOnToApplication(UserObject.InfobaseUserID) Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while writing user %1."
-"You can not mark for deletion a user who is allowed to log in the application.';ru='Ошибка при записи пользователя ""%1""."
-"Нельзя помечать на удаление пользователя, которому разрешен вход в программу.'"),
+			NStr("en='An error occurred while writing user %1.
+		|You can not mark for deletion a user who is allowed to log in the application.';ru='Ошибка при записи пользователя ""%1"".
+		|Нельзя помечать на удаление пользователя, которому разрешен вход в программу.'"),
 			UserObject.Ref);
 	EndIf;
 	
@@ -5130,9 +5130,9 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 	   AND Users.CanLogOnToApplication(UserObject.InfobaseUserID) Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while writing user %1."
-"Unable to mark user who is allowed to log in application as invalid.';ru='Ошибка при записи пользователя ""%1""."
-"Нельзя пометить недействительным пользователя, которому разрешен вход в программу.'"),
+			NStr("en='An error occurred while writing user %1.
+		|Unable to mark user who is allowed to log in application as invalid.';ru='Ошибка при записи пользователя ""%1"".
+		|Нельзя пометить недействительным пользователя, которому разрешен вход в программу.'"),
 			UserObject.Ref);
 	EndIf;
 	
@@ -5141,9 +5141,9 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 	   AND Users.CanLogOnToApplication(UserObject.InfobaseUserID) Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while writing user %1."
-"Unable to mark as ready a user who is allowed to log in the application.';ru='Ошибка при записи пользователя ""%1""."
-"Нельзя пометить подготовленным пользователя, которому разрешен вход в программу.'"),
+			NStr("en='An error occurred while writing user %1.
+		|Unable to mark as ready a user who is allowed to log in the application.';ru='Ошибка при записи пользователя ""%1"".
+		|Нельзя пометить подготовленным пользователя, которому разрешен вход в программу.'"),
 			UserObject.Ref);
 	EndIf;
 	

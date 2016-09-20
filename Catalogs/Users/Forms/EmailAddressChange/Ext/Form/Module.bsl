@@ -27,9 +27,9 @@ Procedure ChangeEmailAddress(Command)
 	QuestionText = "";
 	If Not ValueIsFilled(OldEmail) Then
 		QuestionText =
-			NStr("en='Email address of service user is changed."
-"The subscriber owners or administrators will not be able to change the user parameters any more.';ru='Адрес электронной почты пользователя сервиса изменен."
-"Владельцы и администраторы абонента больше не смогут изменять параметры пользователя.'")
+			NStr("en='Email address of service user is changed.
+		|The subscriber owners or administrators will not be able to change the user parameters any more.';ru='Адрес электронной почты пользователя сервиса изменен.
+		|Владельцы и администраторы абонента больше не смогут изменять параметры пользователя.'")
 			+ Chars.LF
 			+ Chars.LF;
 	EndIf;
@@ -62,9 +62,9 @@ Procedure ChangeEmailEnd(Response, NotSpecified) Export
 		
 		ShowMessageBox(
 			New NotifyDescription("Close", ThisObject),
-			NStr("en='The email with confirmation request was sent to the specified address."
-"Email will be changed only after confirmation of the request by a user.';ru='На указанный адрес отправлено письмо с запросом на подтверждение."
-"Почта будет изменена только после подтверждения запроса пользователем.'"));
+			NStr("en='The email with confirmation request was sent to the specified address.
+		|Email will be changed only after confirmation of the request by a user.';ru='На указанный адрес отправлено письмо с запросом на подтверждение.
+		|Почта будет изменена только после подтверждения запроса пользователем.'"));
 		
 	ElsIf Response = DialogReturnCode.No Then
 		Close();

@@ -235,13 +235,13 @@ Procedure RefreshVisibleAtServer()
 	Items.InstallUpdate.Visible = IsInRoleSynchronizationSettingData;
 	
 	If IsInRoleSynchronizationSettingData Then
-		Items.InformationLabelReceivedRefreshEnabled.Title = NStr("en='Software update has been exported from the Internet."
-"It is necessary to install the received update after which the synchronization will be continued.';ru='Получено обновление программы из Интернета."
-"Необходимо установить полученное обновление, после чего синхронизация будет продолжена.'");
+		Items.InformationLabelReceivedRefreshEnabled.Title = NStr("en='Software update has been exported from the Internet.
+		|It is necessary to install the received update after which the synchronization will be continued.';ru='Получено обновление программы из Интернета.
+		|Необходимо установить полученное обновление, после чего синхронизация будет продолжена.'");
 	Else
-		Items.InformationLabelReceivedRefreshEnabled.Title = NStr("en='Software update has been exported from the Internet."
-"Contact the infobase administrator to install the received update.';ru='Получено обновление программы из Интернета."
-"Обратитесь к администратору информационной базы для установки полученного обновления.'");
+		Items.InformationLabelReceivedRefreshEnabled.Title = NStr("en='Software update has been exported from the Internet.
+		|Contact the infobase administrator to install the received update.';ru='Получено обновление программы из Интернета.
+		|Обратитесь к администратору информационной базы для установки полученного обновления.'");
 	EndIf;
 	
 	ShowSynchronizationLongTimeWarning = OfflineWorkService.QuestionAboutLongSynchronizationSettingCheckBox();

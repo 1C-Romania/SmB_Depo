@@ -1017,9 +1017,9 @@ Procedure Import(ImportTitle) Export
 					EndIf;
 				EndIf; 
 			Else
-				MessageText = NStr("en='The %Operation% payment document No. %Number% from %Date%"
-"can not be imported: %CheckResult%!';ru='Платежный документ ""%Операция%"" №%Номер% от %Дата%"
-"не может быть загружен: %РезультатПроверки%!'"
+				MessageText = NStr("en='The %Operation% payment document No. %Number% from %Date%
+		|can not be imported: %CheckResult%!';ru='Платежный документ ""%Операция%"" №%Номер% от %Дата%
+		|не может быть загружен: %РезультатПроверки%!'"
 				);
 				MessageText = StrReplace(MessageText, "%Operation%", SectionRow.Operation);
 				MessageText = StrReplace(MessageText, "%Number%", SectionRow.Number);

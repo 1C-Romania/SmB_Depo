@@ -206,9 +206,9 @@ Procedure SpecifyAPDEX(Command)
 	EndIf;
 	
 	If TSRow[Item.Name] = 0 Then
-		ShowMessageBox(,NStr("en='There are no performance measurements."
-"Unable to calculate target time.';ru='Отсутствуют замеры производительности."
-"Рассчитать целевое время невозможно.'"));
+		ShowMessageBox(,NStr("en='There are no performance measurements.
+		|Unable to calculate target time.';ru='Отсутствуют замеры производительности.
+		|Рассчитать целевое время невозможно.'"));
 		Return;
 	EndIf;
 	
@@ -283,9 +283,9 @@ Procedure SpecifyEndAPDEX(Val APDEX, Val AdditionalParameters) Export
 	EndIf;
 	
 	If 0 > APDEX Or APDEX > 1 Then
-		ShowMessageBox(,NStr("en='You entered an incorrect APDEX measure."
-"Permitted values from 0 to 1.';ru='Введен неправильный показатель APDEX."
-"Допустимые значения от 0 до 1.'"));
+		ShowMessageBox(,NStr("en='You entered an incorrect APDEX measure.
+		|Permitted values from 0 to 1.';ru='Введен неправильный показатель APDEX.
+		|Допустимые значения от 0 до 1.'"));
 		Return;
 	EndIf;
 	

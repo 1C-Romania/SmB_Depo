@@ -20,14 +20,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EventLogMonitorEventDataSyncronizationSetting = DataExchangeSaaS.EventLogMonitorEventDataSyncronizationSetting();
 	
 	Items.LabelWarnings.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Disable data"
-"synchronization from % 1?';ru='Отключить синхронизацию данных"
-"с ""%1""?'"), Parameters.CorrespondentDescription);
+		NStr("en='Disable data
+		|synchronization from % 1?';ru='Отключить синхронизацию данных
+		|с ""%1""?'"), Parameters.CorrespondentDescription);
 	
 	Items.TitleInformational.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Data"
-"synchronization with % 1 is disabled.';ru='Синхронизация данных"
-"с ""%1"" отключена.'"), Parameters.CorrespondentDescription);
+		NStr("en='Data
+		|synchronization with % 1 is disabled.';ru='Синхронизация данных
+		|с ""%1"" отключена.'"), Parameters.CorrespondentDescription);
 	
 	// Set the current table of transitions
 	DisableDataSynchronizationScript();

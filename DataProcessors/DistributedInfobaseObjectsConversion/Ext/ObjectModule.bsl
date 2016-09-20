@@ -336,9 +336,9 @@ Procedure ReadPriorityChangesFromExchangeMessages(Val MessageReader, CommonDataN
 			If NonUniqueRecordsAreFound("Catalog.MetadataObjectIDs") Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					NonUniqueRecordErrorTemplate(),
-					NStr("en='Before exporting of the"
-"metadata object IDs non unique records were found in catalog.';ru='Перед загрузкой идентификаторов объектов метаданных"
-"в справочнике найдены не уникальные записи.'"));
+					NStr("en='Before exporting of the
+		|metadata object IDs non unique records were found in catalog.';ru='Перед загрузкой идентификаторов объектов метаданных
+		|в справочнике найдены не уникальные записи.'"));
 			EndIf;
 			
 			While CanReadXML(MessageReader.XMLReader) Do
@@ -381,13 +381,13 @@ Procedure ReadPriorityChangesFromExchangeMessages(Val MessageReader, CommonDataN
 			
 			If Cancel Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Import of important changes is not completed."
-"While importing predefined items, non-unique records were found."
-"For the following reasons the continuation is impossible."
-"%1';ru='Загрузка важных изменений не выполнена."
-"При загрузке предопределенных элементов найдены не уникальные записи."
-"По следующим причинам продолжение невозможно."
-"%1'"),
+					NStr("en='Import of important changes is not completed.
+		|While importing predefined items, non-unique records were found.
+		|For the following reasons the continuation is impossible.
+		|%1';ru='Загрузка важных изменений не выполнена.
+		|При загрузке предопределенных элементов найдены не уникальные записи.
+		|По следующим причинам продолжение невозможно.
+		|%1'"),
 					DenialDescription);
 			EndIf;
 			
@@ -399,9 +399,9 @@ Procedure ReadPriorityChangesFromExchangeMessages(Val MessageReader, CommonDataN
 					,
 					,
 					StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='While importing predefined items, non-unique records were found."
-"%1';ru='При загрузке предопределенных элементов найдены не уникальные записи."
-"%1'"),
+						NStr("en='While importing predefined items, non-unique records were found.
+		|%1';ru='При загрузке предопределенных элементов найдены не уникальные записи.
+		|%1'"),
 						PredefinedItemDoubles));
 			EndIf;
 			
@@ -606,25 +606,25 @@ EndFunction
 
 Function NonUniqueRecordErrorTemplate()
 	Return
-		NStr("en='Import of important changes is not completed."
-"%1"
-"Information base correction is required."
-"1. Open the configurator, go to"
-"   the Administration menu, select item ""Testing and correction ...""."
-"2. IN the"
-"   opened form - activate the Checking of the logical infobase integrity item only"";"
-"   - select the Testing and correction variant and not Testing only"";"
-"   - click Execute."
-"3. After this, launch 1C:Enterprise and resync data.';ru='Загрузка важных изменений не выполнена."
-"%1"
-"Требуется исправление информационной базы."
-"1. Откройте конфигуратор, перейдите в меню Администрирование,"
-"   выберите пункт ""Тестирование и исправление ...""."
-"2. В открывшейся форме"
-"   - включите только пункт ""Проверка логической целостности информационной базы"";"
-"   - выберите вариант ""Тестирование и исправление"", а не ""Только тестирование"";"
-"   - нажмите Выполнить."
-"3. После этого запустите 1С:Предприятие и выполните повторную синхронизацию данных.'");
+		NStr("en='Import of important changes is not completed.
+		|%1
+		|Information base correction is required.
+		|1. Open the configurator, go to
+		|   the Administration menu, select item ""Testing and correction ..."".
+		|2. IN the
+		|   opened form - activate the Checking of the logical infobase integrity item only"";
+		|   - select the Testing and correction variant and not Testing only"";
+		|   - click Execute.
+		|3. After this, launch 1C:Enterprise and resync data.';ru='Загрузка важных изменений не выполнена.
+		|%1
+		|Требуется исправление информационной базы.
+		|1. Откройте конфигуратор, перейдите в меню Администрирование,
+		|   выберите пункт ""Тестирование и исправление ..."".
+		|2. В открывшейся форме
+		|   - включите только пункт ""Проверка логической целостности информационной базы"";
+		|   - выберите вариант ""Тестирование и исправление"", а не ""Только тестирование"";
+		|   - нажмите Выполнить.
+		|3. После этого запустите 1С:Предприятие и выполните повторную синхронизацию данных.'");
 EndFunction
 
 Procedure RefreshPredefinedDeletion()

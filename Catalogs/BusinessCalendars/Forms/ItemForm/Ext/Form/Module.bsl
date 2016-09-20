@@ -156,13 +156,13 @@ Procedure Print(Command)
 		Handler = New NotifyDescription("PrintEnd", ThisObject);
 		ShowQueryBox(
 			Handler,
-			NStr("en='Business calendar data is not written yet."
-"You can print it only after data recording."
-""
-"Record?';ru='Данные производственного календаря еще не записаны."
-"Печать возможна только после записи данных."
-""
-"Записать?'"),
+			NStr("en='Business calendar data is not written yet.
+		|You can print it only after data recording.
+		|
+		|Record?';ru='Данные производственного календаря еще не записаны.
+		|Печать возможна только после записи данных.
+		|
+		|Записать?'"),
 			QuestionDialogMode.YesNo,
 			,
 			DialogReturnCode.Yes);

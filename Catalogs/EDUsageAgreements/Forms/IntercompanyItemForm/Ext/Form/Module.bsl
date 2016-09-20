@@ -243,13 +243,13 @@ Procedure CheckDocumentsUniqueness(TabularSectionDocuments, CheckResult, ErrorTe
 		If CurrentDocumentOfAgreement.ToForm Then
 			For Each DocumentInOtherAgreements IN DocumentsTypesOtherAgreements Do
 				If CurrentDocumentOfAgreement[?(ChecksIncomingDocuments, "IncomingDocument", "OutgoingDocument")] = DocumentInOtherAgreements.DocumentType Then
-					ErrorText = NStr("en='For a kind of documents %1"
-"%2 a valid agreement already exists between parties %3"
-"- %4: %5."
-"';ru='По виду электронных документов"
-"%1 %2 уже существует действующее соглашение между"
-"участниками %3 - %4: %5."
-"'");
+					ErrorText = NStr("en='For a kind of documents %1
+		|%2 a valid agreement already exists between parties %3
+		|- %4: %5.
+		|';ru='По виду электронных документов
+		|%1 %2 уже существует действующее соглашение между
+		|участниками %3 - %4: %5.
+		|'");
 					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
 						ErrorText, DocumentInOtherAgreements.DocumentType,
 						?(ChecksIncomingDocuments, "Incoming", "Outgoing"),
@@ -272,9 +272,9 @@ Procedure ValidateWriteAgreement(ContinuationHandler)
 	
 	AdditParameters = New Structure("ContinuationHandler", ContinuationHandler);
 	If Not Object.DeleteIsTypical Then
-		QuestionText = NStr("en='External certificates can be selected only in the written agreement."
-"Write agreement?';ru='Внешние сертификаты можно выбирать только в записанном соглашении."
-"Записать соглашение?'");
+		QuestionText = NStr("en='External certificates can be selected only in the written agreement.
+		|Write agreement?';ru='Внешние сертификаты можно выбирать только в записанном соглашении.
+		|Записать соглашение?'");
 		NotifyDescription = New NotifyDescription("FinishCheckingAgreement", ThisObject, AdditParameters);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else

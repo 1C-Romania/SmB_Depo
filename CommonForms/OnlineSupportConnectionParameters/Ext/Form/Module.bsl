@@ -18,11 +18,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		// Administration right is not checked as subsystem
 		// is used only in the local mode.
 		Raise
-			NStr("en='Insufficient access rights."
-""
-"Setting of the connection to the online support parameters is available only to the system administrator.';ru='Недостаточно прав доступа."
-""
-"Настройка параметров подключения к Интернет-поддержке пользователей доступна только администратору системы.'");
+			NStr("en='Insufficient access rights.
+		|
+		|Setting of the connection to the online support parameters is available only to the system administrator.';ru='Недостаточно прав доступа.
+		|
+		|Настройка параметров подключения к Интернет-поддержке пользователей доступна только администратору системы.'");
 	EndIf;
 	
 	IsClientServerIB = (NOT CommonUse.FileInfobase());

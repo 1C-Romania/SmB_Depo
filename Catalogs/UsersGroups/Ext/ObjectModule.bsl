@@ -75,15 +75,15 @@ Procedure BeforeWrite(Cancel)
 	If Ref = Catalogs.UsersGroups.AllUsers Then
 		If Not Parent.IsEmpty() Then
 			Raise
-				NStr("en='Predefined"
-"group ""All users"" can be in the root only.';ru='Предопределенная"
-"группа ""Все пользователи"" может быть только в корне.'");
+				NStr("en='Predefined
+		|group ""All users"" can be in the root only.';ru='Предопределенная
+		|группа ""Все пользователи"" может быть только в корне.'");
 		EndIf;
 		If Content.Count() > 0 Then
 			Raise
-				NStr("en='Adding users to"
-"the folder ""everyone"" is not supported.';ru='Добавление пользователей в группу"
-"""Все пользователи"" не поддерживается.'");
+				NStr("en='Adding users to
+		|the folder ""everyone"" is not supported.';ru='Добавление пользователей в группу
+		|""Все пользователи"" не поддерживается.'");
 		EndIf;
 	Else
 		If Parent = Catalogs.UsersGroups.AllUsers Then

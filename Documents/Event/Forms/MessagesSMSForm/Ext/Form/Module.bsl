@@ -255,9 +255,9 @@ Procedure Send(Command)
 		If AvailableRightSettingsSMS Then
 			OpenForm("CommonForm.SMSSendingSettings",,ThisForm,,,,New NotifyDescription("SMSSendingCheckSettings", ThisObject), FormWindowOpeningMode.LockOwnerWindow);
 		Else
-			MessageText = NStr("en='To send SMS, it is necessary to configure sending parameters."
-"Address to the administrator to perform settings.';ru='Для отправки SMS требуется настройка параметров отправки."
-"Для выполнения настроек обратитесь к администратору.'");
+			MessageText = NStr("en='To send SMS, it is necessary to configure sending parameters.
+		|Address to the administrator to perform settings.';ru='Для отправки SMS требуется настройка параметров отправки.
+		|Для выполнения настроек обратитесь к администратору.'");
 			ShowMessageBox(, MessageText);
 		EndIf;
 	EndIf;

@@ -263,15 +263,15 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 		
 	ElsIf IsMoveFromOneToSeveral Then
 		
-		InventoryTransferredCountInWords = NStr("en='Positions withdrawn from cell ""%1"": %2."
-"General quantity: %3.';ru='Из ячейки ""%1"" изъято позиций: %2."
-"Общим количеством: %3.'");
+		InventoryTransferredCountInWords = NStr("en='Positions withdrawn from cell ""%1"": %2.
+		|General quantity: %3.';ru='Из ячейки ""%1"" изъято позиций: %2.
+		|Общим количеством: %3.'");
 		
 	Else
 		
-		InventoryTransferredCountInWords = NStr("en='Positions delivered to cell ""%1"": %2."
-"General quantity: %3.';ru='В ячейку ""%1"" поступило позиций: %2."
-"Общим количеством: %3.'");
+		InventoryTransferredCountInWords = NStr("en='Positions delivered to cell ""%1"": %2.
+		|General quantity: %3.';ru='В ячейку ""%1"" поступило позиций: %2.
+		|Общим количеством: %3.'");
 		
 	EndIf;
 	

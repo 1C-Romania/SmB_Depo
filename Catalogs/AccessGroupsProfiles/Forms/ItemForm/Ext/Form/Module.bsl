@@ -539,12 +539,12 @@ EndProcedure
 Function QuestionTextUpdateProfileAccessGroups()
 	
 	Return
-		NStr("en='Do you want to update access groups which use this profile?"
-""
-"Excess access kinds with specified access values 		              |will be deleted, and missing access kinds will be added.';ru='Обновить группы доступа, использующие этот профиль?"
-""
-"Будут удалены лишние виды доступа с заданными для них"
-"значениями доступа и добавлены недостающие виды доступа'");
+		NStr("en='Do you want to update access groups which use this profile?
+		|
+		|Excess access kinds with specified access values 		              |will be deleted, and missing access kinds will be added.';ru='Обновить группы доступа, использующие этот профиль?
+		|
+		|Будут удалены лишние виды доступа с заданными для них
+		|значениями доступа и добавлены недостающие виды доступа'");
 		
 EndFunction
 

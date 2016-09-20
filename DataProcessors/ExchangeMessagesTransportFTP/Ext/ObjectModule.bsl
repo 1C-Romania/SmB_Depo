@@ -643,11 +643,11 @@ Function RunFileDeleteAtFTPServer(Val FileName, ConnectionVerification = False)
 		
 		If ConnectionVerification Then
 			
-			ErrorInfo = NStr("en='Failed to check connection by test file ""%1""."
-"Perhaps, the specified directory does not exist or is not available."
-"It is also recommended to see the FTP-server documentation to set up the support of the Cyrillic names files.';ru='Не удалось проверить подключение с помощью тестового файла ""%1""."
-"Возможно, заданный каталог не существует или не доступен."
-"Рекомендуется также обратиться к документации по FTP-серверу для настройки поддержки имен файлов с кириллицей.'");
+			ErrorInfo = NStr("en='Failed to check connection by test file ""%1"".
+		|Perhaps, the specified directory does not exist or is not available.
+		|It is also recommended to see the FTP-server documentation to set up the support of the Cyrillic names files.';ru='Не удалось проверить подключение с помощью тестового файла ""%1"".
+		|Возможно, заданный каталог не существует или не доступен.
+		|Рекомендуется также обратиться к документации по FTP-серверу для настройки поддержки имен файлов с кириллицей.'");
 			ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, DataExchangeServer.FileNameOfVerificationOfConnection());
 			SupplementErrorMessage(ErrorInfo);
 			

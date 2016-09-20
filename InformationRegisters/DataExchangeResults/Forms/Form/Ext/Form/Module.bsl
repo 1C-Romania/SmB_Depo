@@ -205,16 +205,16 @@ Procedure ColissionsOnActivateRow(Item)
 		
 		If Item.CurrentData.OtherVersionAccepted Then
 			
-			ConflictReason = NStr("en='Conflict was allowed automatically in favour of the application ""%1""."
-"Version in this application was changed to version from another application.';ru='Конфликт был разрешен автоматически в пользу программы ""%1""."
-"Версия в этой программе была замененена на версию из другой программы.'");
+			ConflictReason = NStr("en='Conflict was allowed automatically in favour of the application ""%1"".
+		|Version in this application was changed to version from another application.';ru='Конфликт был разрешен автоматически в пользу программы ""%1"".
+		|Версия в этой программе была замененена на версию из другой программы.'");
 			ConflictReason = StringFunctionsClientServer.PlaceParametersIntoString(ConflictReason, Item.CurrentData.OtherVersionAuthor);
 			
 		Else
 			
-			ConflictReason =NStr("en='Conflict was allowed automatically in favour of this application."
-"Version in this application was saved, version from another application was rejected.';ru='Конфликт был разрешен автоматически в пользу этой программы."
-"Версия в этой программе была сохранена, версия из другой программы была отклонена.'");
+			ConflictReason =NStr("en='Conflict was allowed automatically in favour of this application.
+		|Version in this application was saved, version from another application was rejected.';ru='Конфликт был разрешен автоматически в пользу этой программы.
+		|Версия в этой программе была сохранена, версия из другой программы была отклонена.'");
 			
 		EndIf;
 		

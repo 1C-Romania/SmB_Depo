@@ -297,17 +297,17 @@ Function ErrorMessages() Export
 	
 	ErrorMessages.Insert(79, NStr("en='Error in the event handler AfterObjectExportToFile';ru='Ошибка в обработчике события ПослеВыгрузкиОбъектаВФайл'"));
 	
-	ErrorMessages.Insert(80, NStr("en='Error of the predefined item property setting."
-"You can not mark the predefined item to be deleted. Mark for deletion for the objects is not installed.';ru='Ошибка установки свойства предопределенного элемента."
-"Нельзя помечать на удаление предопределенный элемент. Пометка на удаление для объекта не установлена.'"));
+	ErrorMessages.Insert(80, NStr("en='Error of the predefined item property setting.
+		|You can not mark the predefined item to be deleted. Mark for deletion for the objects is not installed.';ru='Ошибка установки свойства предопределенного элемента.
+		|Нельзя помечать на удаление предопределенный элемент. Пометка на удаление для объекта не установлена.'"));
 	//
-	ErrorMessages.Insert(81, NStr("en='The object change collision occurred."
-"This infobase object has been replaced by the second infobase object version.';ru='Возникла коллизия изменений объектов."
-"Объект этой информационной базы был заменен версией объекта из второй информационной базы.'"));
+	ErrorMessages.Insert(81, NStr("en='The object change collision occurred.
+		|This infobase object has been replaced by the second infobase object version.';ru='Возникла коллизия изменений объектов.
+		|Объект этой информационной базы был заменен версией объекта из второй информационной базы.'"));
 	//
-	ErrorMessages.Insert(82, NStr("en='The object change collision occurred."
-"Object from the second infobase is not accepted. This infobase object has not been modified.';ru='Возникла коллизия изменений объектов."
-"Объект из второй информационной базы не принят. Объект этой информационной базы не изменен.'"));
+	ErrorMessages.Insert(82, NStr("en='The object change collision occurred.
+		|Object from the second infobase is not accepted. This infobase object has not been modified.';ru='Возникла коллизия изменений объектов.
+		|Объект из второй информационной базы не принят. Объект этой информационной базы не изменен.'"));
 	//
 	ErrorMessages.Insert(83, NStr("en='Error of the reference to the object tabular section. Tabular section of the document can not be modified.';ru='Ошибка обращения к табличной части объекта. Табличная часть объекта не может быть изменена.'"));
 	ErrorMessages.Insert(84, NStr("en='Change prohibition dates collision.';ru='Коллизия дат запрета изменения.'"));
@@ -1583,11 +1583,11 @@ Function TempFileStorageDirectory() Export
 		Directory = New File(Result);
 		If Not Directory.Exist() Then
 			
-			MessagePattern = NStr("en='Temporary file directory does not exist."
-"It is necessary to make sure that the right"
-"parameter value %1 is specified in the application settings.';ru='Каталог временных файлов не существует."
-"Необходимо убедиться, что в настройках"
-"программы задано правильное значение параметра ""%1"".'");
+			MessagePattern = NStr("en='Temporary file directory does not exist.
+		|It is necessary to make sure that the right
+		|parameter value %1 is specified in the application settings.';ru='Каталог временных файлов не существует.
+		|Необходимо убедиться, что в настройках
+		|программы задано правильное значение параметра ""%1"".'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ConstantRepresentation);
 			Raise(MessageText);
 			

@@ -519,9 +519,9 @@ Function EDDataFile(LinkToED, Val SubordinatedEDFileName = Undefined)
 						EndIf;
 					
 						If AdditDataFileName = Undefined Then
-							ErrorText = NStr("en='Unable to get additional data of the electronic document."
-"Verify the work directory setting';ru='Не удалось получить доп. данные электронного документа."
-"Проверьте настройку рабочего каталога'");
+							ErrorText = NStr("en='Unable to get additional data of the electronic document.
+		|Verify the work directory setting';ru='Не удалось получить доп. данные электронного документа.
+		|Проверьте настройку рабочего каталога'");
 							CommonUseClientServer.MessageToUser(ErrorText);
 							Return Undefined;
 						EndIf;

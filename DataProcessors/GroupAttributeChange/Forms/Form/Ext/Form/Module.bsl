@@ -801,11 +801,11 @@ Procedure ProcessChangeResult(ResultOfChange = Undefined, ContinueProcessing = U
 			Return; // Early exit from the cycle and procedure.
 		EndIf;
 		
-		QuestionText = NStr("en='Errors occurred while changing items (item groups)."
-"Do you want to terminate the items modification and proceed to the errors viewing?"
-"';ru='При изменении элементов (группы элементов) возникли ошибки."
-"Прервать изменение элементов и перейти к просмотру ошибок?"
-"'");
+		QuestionText = NStr("en='Errors occurred while changing items (item groups).
+		|Do you want to terminate the items modification and proceed to the errors viewing?
+		|';ru='При изменении элементов (группы элементов) возникли ошибки.
+		|Прервать изменение элементов и перейти к просмотру ошибок?
+		|'");
 		Buttons = New ValueList;
 		Buttons.Add(DialogReturnCode.Abort, NStr("en='Break';ru='Прервать'"));
 		Buttons.Add(DialogReturnCode.Ignore, NStr("en='Continue';ru='Продолжить'"));
@@ -872,9 +872,9 @@ Procedure FinishChangeOfObjects()
 		If Object.ChangeInTransaction Or CurrentStateChanges.CountOfChanged = 0 Then
 			MessagePattern = NStr("en='Changes are not performed';ru='Изменения не выполнены.'");
 		Else
-			MessagePattern = NStr("en='Partly modified."
-"Modified: %1; Failed to change: %3';ru='Изменения выполнены частично."
-"Изменено: %1; Не удалось изменить: %3'");
+			MessagePattern = NStr("en='Partly modified.
+		|Modified: %1; Failed to change: %3';ru='Изменения выполнены частично.
+		|Изменено: %1; Не удалось изменить: %3'");
 		EndIf;
 	EndIf;
 	
@@ -921,9 +921,9 @@ Procedure GoToPageAllDone()
 	
 	Items.Pages.CurrentPage = Items.AllDone;
 	Items.LabelSuccessfullyCompleted.Title = PlaceParametersIntoString(
-		NStr("en='Attributes of selected items were changed."
-"Total modified items:% 1';ru='Реквизиты выбранных элементов были изменены."
-"Всего изменено элементов: %1'"), CurrentStateChanges.CountOfChanged);
+		NStr("en='Attributes of selected items were changed.
+		|Total modified items:% 1';ru='Реквизиты выбранных элементов были изменены.
+		|Всего изменено элементов: %1'"), CurrentStateChanges.CountOfChanged);
 	Items.FormChange.Title = NStr("en='Done';ru='Готово'");
 	Items.FormBack.Visible = True;
 	
@@ -3819,9 +3819,9 @@ Function ValidateVersionAndPlatformCompatibilityMode()
 		AND Metadata.CompatibilityMode <> Metadata.ObjectProperties.CompatibilityMode["Version8_3_1"]
 		AND Metadata.CompatibilityMode <> Metadata.ObjectProperties.CompatibilityMode["Version8_3_2"]))) Then
 		
-		Raise NStr("en='DataProcessor is used to start"
-"on 1C:Enterprise 8.3 platform version with compatibility mode off or above';ru='Обработка предназначена"
-"для запуска на версии платформы 1С:Предприятие 8.3 с отключенным режимом совместимости или выше'");
+		Raise NStr("en='DataProcessor is used to start
+		|on 1C:Enterprise 8.3 platform version with compatibility mode off or above';ru='Обработка предназначена
+		|для запуска на версии платформы 1С:Предприятие 8.3 с отключенным режимом совместимости или выше'");
 		
 	EndIf;
 	

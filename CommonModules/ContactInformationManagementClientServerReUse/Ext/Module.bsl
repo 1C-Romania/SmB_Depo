@@ -220,8 +220,8 @@ Function TypesOfAddressingAddressesRF() Export
 	Result.Add(ObjectStringAddress("2010", NStr("en='Apartment';ru='Квартира'"),  3, 1));
 	Result.Add(ObjectStringAddress("2030", NStr("en='Office';ru='офис'"),      3, 2));
 	Result.Add(ObjectStringAddress("2040", NStr("en='Box';ru='коробка'"),      3, 3));
-	Result.Add(ObjectStringAddress("2020", NStr("en='Unit';ru='Единица"
-"измерения'"), 3, 4));
+	Result.Add(ObjectStringAddress("2020", NStr("en='Unit';ru='Единица
+		|измерения'"), 3, 4));
 	Result.Add(ObjectStringAddress("2050", NStr("en='Room';ru='Комната'"),   3, 5));
 	//  Our abbreviations for supporting the backward match during parsing.
 	Result.Add(ObjectStringAddress("2010", NStr("en='app.';ru='приложение.'"),       3, 6));

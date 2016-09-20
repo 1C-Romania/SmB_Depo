@@ -20,9 +20,9 @@ Procedure FillByDocumentBase()
 		
 	EndIf;
 	
-	QuestionText = NStr("en='The document will be completely refilled by ""Base""."
-"Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""."
-"Продолжить выполнение операции?'");
+	QuestionText = NStr("en='The document will be completely refilled by ""Base"".
+		|Continue?';ru='Документ будет полностью перезаполнен по ""Основанию"".
+		|Продолжить выполнение операции?'");
 								
 	NotifyDescription = New NotifyDescription("DetermineNeedForDocumentFillByBasis", ThisObject);
 	
@@ -830,9 +830,9 @@ Procedure ProcessContractChange()
 			AND Object.DocumentCurrency <> StructureData.SettlementsCurrency
 			AND Object.Inventory.Count() > 0 Then
 			
-			WarningText = NStr("en='Settlement currency of the contract with counterparty changed! "
-"It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! "
-"Необходимо проверить валюту документа!'");
+			WarningText = NStr("en='Settlement currency of the contract with counterparty changed! 
+		|It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! 
+		|Необходимо проверить валюту документа!'");
 			
 			ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, True, WarningText);
 			
@@ -2086,9 +2086,9 @@ Procedure InventoryCCDNumberOnChange(Item)
 			
 			If DateCCD > Object.Date Then
 				
-				QuestionText = NStr("en='CCD is selected with the date later than the document date."
-"Continue?';ru='Выбрана ГТД с датой регистрации старше, чем дата документа."
-"Продолжить?'");
+				QuestionText = NStr("en='CCD is selected with the date later than the document date.
+		|Continue?';ru='Выбрана ГТД с датой регистрации старше, чем дата документа.
+		|Продолжить?'");
 				
 				WarningResult = New NotifyDescription("WarningsAboutCCDDateResultProcessing", ThisObject);
 				ShowQueryBox(WarningResult, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No);

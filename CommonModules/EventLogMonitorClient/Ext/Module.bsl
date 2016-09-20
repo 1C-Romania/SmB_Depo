@@ -82,9 +82,9 @@ Procedure OpenDataForViewing(CurrentData) Export
 	Try
 		ShowValue(, CurrentData.Data);
 	Except
-		WarningText = NStr("en='This events log monitor record is connected to the data but they can not be displayed."
-"%1';ru='Эта запись журнала регистрации связана с данными, но отобразить их невозможно."
-"%1'");
+		WarningText = NStr("en='This events log monitor record is connected to the data but they can not be displayed.
+		|%1';ru='Эта запись журнала регистрации связана с данными, но отобразить их невозможно.
+		|%1'");
 		If CurrentData.Event = "_$Data$_.Delete" Then 
 			// this - deletion event
 			WarningText =

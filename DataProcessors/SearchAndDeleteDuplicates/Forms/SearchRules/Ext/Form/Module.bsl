@@ -82,11 +82,11 @@ Procedure ConsiderAppliedRulesOnChange(Item)
 	Description = New NotifyDescription("EndAppliedRulesUseCleaning", ThisObject);
 	
 	HeaderText = NStr("en='Warning';ru='Предупреждение'");
-	QuestionText   = NStr("en='Warning: searching and deleting item duplicates ignoring delivered restrictions may lead to data misalignment in the application."
-""
-"Disable delivered restrictions use?';ru='Внимание: поиск и удаление дублей элементов без учета поставляемых ограничений может привести к рассогласованию данных в программе."
-""
-"Отключить использование поставляемых ограничений?'");
+	QuestionText   = NStr("en='Warning: searching and deleting item duplicates ignoring delivered restrictions may lead to data misalignment in the application.
+		|
+		|Disable delivered restrictions use?';ru='Внимание: поиск и удаление дублей элементов без учета поставляемых ограничений может привести к рассогласованию данных в программе.
+		|
+		|Отключить использование поставляемых ограничений?'");
 	
 	ShowQueryBox(Description, QuestionText, QuestionDialogMode.YesNo,,DialogReturnCode.No, HeaderText);
 EndProcedure

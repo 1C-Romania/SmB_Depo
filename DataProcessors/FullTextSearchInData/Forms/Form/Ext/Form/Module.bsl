@@ -224,11 +224,11 @@ Procedure Search(Direction, Cancel = Undefined)
 		Items.Back.Enabled = False;
 		
 		SearchText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Words combination ""%1"" can not be found anywhere.<br><br>"
-"<b>Recommendations:</b>"
-"<li>Make sure all words are written correctly."
-"<> Try to use other key words."
-"<li>Try to reduce the number of the searched words.';ru='Комбинация слов ""%1"" нигде не встречается.<br><br> <b>Рекомендации:</b> <li>Убедитесь, что все слова написаны без ошибок. <li>Попробуйте использовать другие ключевые слова. <li>Попробуйте уменьшить количество искомых слов.'"),
+			NStr("en='Words combination ""%1"" can not be found anywhere.<br><br>
+		|<b>Recommendations:</b>
+		|<li>Make sure all words are written correctly.
+		|<> Try to use other key words.
+		|<li>Try to reduce the number of the searched words.';ru='Комбинация слов ""%1"" нигде не встречается.<br><br> <b>Рекомендации:</b> <li>Убедитесь, что все слова написаны без ошибок. <li>Попробуйте использовать другие ключевые слова. <li>Попробуйте уменьшить количество искомых слов.'"),
 			TrimAll(SearchString));
 		
 		HTMLText = 

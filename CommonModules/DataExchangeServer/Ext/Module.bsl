@@ -738,8 +738,8 @@ Procedure BeforeCheckingIdentifiersOfMetadataObjectsInSubordinateNodeDIB(Cancel 
 			DetailErrorDescription(ErrorInfo()));
 		
 		Raise
-			NStr("en='Changes of the Metadata objects identifiers catalog have not"
-"been exported from the main node: data import error.For more information, see the events log monitor.';ru='Из главного узла не загружены изменения справочника ""Идентификаторы объектов метаданных"": ошибка загрузки данных.См. подробности в журнале регистрации.'");
+			NStr("en='Changes of the Metadata objects identifiers catalog have not
+		|been exported from the main node: data import error.For more information, see the events log monitor.';ru='Из главного узла не загружены изменения справочника ""Идентификаторы объектов метаданных"": ошибка загрузки данных.См. подробности в журнале регистрации.'");
 	EndTry;
 	SetPrivilegedMode(True);
 	SetDataExchangeMessageImportModeBeforeStart("ImportAllowed", False);
@@ -749,22 +749,22 @@ Procedure BeforeCheckingIdentifiersOfMetadataObjectsInSubordinateNodeDIB(Cancel 
 		
 		If ConfigurationChanged() Then
 			Raise
-				NStr("en='Application modifications received from the main node are imported."
-"Finish application work. Open the application in"
-"the configurator and run the Update data base configuration (F7) command."
-""
-"After this start the application.';ru='Загружены изменения программы, полученные из главного узла."
-"Завершите работу программы. Откройте программу"
-"в конфигураторе и выполните команду ""Обновить конфигурацию базы данных (F7)""."
-""
-"После этого запустите программу.'");
+				NStr("en='Application modifications received from the main node are imported.
+		|Finish application work. Open the application in
+		|the configurator and run the Update data base configuration (F7) command.
+		|
+		|After this start the application.';ru='Загружены изменения программы, полученные из главного узла.
+		|Завершите работу программы. Откройте программу
+		|в конфигураторе и выполните команду ""Обновить конфигурацию базы данных (F7)"".
+		|
+		|После этого запустите программу.'");
 		EndIf;
 		
 		EnableExchangeMessageDataExportRepetitionBeforeRunning();
 		
 		Raise
-			NStr("en='Changes of the Metadata objects identifiers catalog have not"
-"been exported from the main node: data import error.For more information, see the events log monitor.';ru='Из главного узла не загружены изменения справочника ""Идентификаторы объектов метаданных"": ошибка загрузки данных.См. подробности в журнале регистрации.'");
+			NStr("en='Changes of the Metadata objects identifiers catalog have not
+		|been exported from the main node: data import error.For more information, see the events log monitor.';ru='Из главного узла не загружены изменения справочника ""Идентификаторы объектов метаданных"": ошибка загрузки данных.См. подробности в журнале регистрации.'");
 	EndIf;
 	
 EndProcedure
@@ -782,68 +782,68 @@ Procedure WhenErrorChecksIdsMetadataObjectsInSubordinateSiteDIB(OnImport, Callin
 		
 		If CallingException Then
 			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='The changes of the Metadata objects identifiers are not"
-"imported from the main node: the check showed that you need to"
-"import the critical changes (for details, see the evens log monitor in the Metadata objects identifiers.It is required to import critical changes event)."
-""
-"If the data exchange message is not"
-"available, then restart the application, set the connection parameters and repeat the synchronization."
-"If all required changes are not received from"
-"the main node, then update the infobase"
-"in the main node, register data for restoring"
-"the subordinate DIB node and repeat data synchronization in the main and subordinate nodes."
-""
-"To update the infobase in the main node, start"
-"the application once with the StartInfobaseUpdate start parameters."
-"%1"
-"';ru='Из главного узла не загружены изменения справочника"
-"""Идентификаторы объектов метаданных"": при проверке обнаружено, что"
-"требуется загрузить критичные изменения (см. подробности в журнале регистрации в событии ""Идентификаторы объектов метаданных.Требуется загрузить критичные изменения"")."
-""
-"Если недоступно сообщение обмена"
-"данными, тогда перезапустите программу, настройте параметры подключения и повторите синхронизацию."
-"Если из главного узла не получены все"
-"необходимые изменения, тогда в главном узле"
-"выполните обновление информационной базы, зарегистрируйте"
-"данные для восстановления подчиненного узла РИБ и повторите синхронизацию данных в главном и подчиненном узлах."
-""
-"Чтобы выполнить обновление информационной базы в"
-"главном узле, один раз выполните запуск программы с параметром запуска ЗапуститьОбновлениеИнформационнойБазы."
-"%1"
-"'"),
+				NStr("en='The changes of the Metadata objects identifiers are not
+		|imported from the main node: the check showed that you need to
+		|import the critical changes (for details, see the evens log monitor in the Metadata objects identifiers.It is required to import critical changes event).
+		|
+		|If the data exchange message is not
+		|available, then restart the application, set the connection parameters and repeat the synchronization.
+		|If all required changes are not received from
+		|the main node, then update the infobase
+		|in the main node, register data for restoring
+		|the subordinate DIB node and repeat data synchronization in the main and subordinate nodes.
+		|
+		|To update the infobase in the main node, start
+		|the application once with the StartInfobaseUpdate start parameters.
+		|%1
+		|';ru='Из главного узла не загружены изменения справочника
+		|""Идентификаторы объектов метаданных"": при проверке обнаружено, что
+		|требуется загрузить критичные изменения (см. подробности в журнале регистрации в событии ""Идентификаторы объектов метаданных.Требуется загрузить критичные изменения"").
+		|
+		|Если недоступно сообщение обмена
+		|данными, тогда перезапустите программу, настройте параметры подключения и повторите синхронизацию.
+		|Если из главного узла не получены все
+		|необходимые изменения, тогда в главном узле
+		|выполните обновление информационной базы, зарегистрируйте
+		|данные для восстановления подчиненного узла РИБ и повторите синхронизацию данных в главном и подчиненном узлах.
+		|
+		|Чтобы выполнить обновление информационной базы в
+		|главном узле, один раз выполните запуск программы с параметром запуска ЗапуститьОбновлениеИнформационнойБазы.
+		|%1
+		|'"),
 				?(DataExchangeReUse.ThisIsOfflineWorkplace(),
-				NStr("en='To register data for restoration of DIB subordinate node, open"
-"Data synchronization settings in the main node"
-"in the Administration section, go to Autonomous work. Open the Changes registration form"
-"on the Content of the sent data command"
-"and run the Register data for restoration of DIB subordinate node (the More menu) command in this form.';ru='Чтобы зарегистрировать данные для восстановления подчиненного узла"
-"РИБ, в главном узле в разделе ""Администрирование"""
-"откройте ""Настройки синхронизации данных"", перейдите по ссылке ""Автономная работа"". По команде ""Состав отправляемых"
-"данных"" откройте форму ""Регистрация"
-"изменений"", в которой выполните команду ""Зарегистрировать данные для восстановления подчиненного узла РИБ"" (меню Еще).'"),
-				NStr("en='To register data for restoration of DIB subordinate node, open"
-"Data synchronization settings in the main node"
-"in the Administration section, go to Data synchronization. Open the Changes registration form"
-"on the Content of the sent data command"
-"and run the Register data for restoration of DIB subordinate node (the More menu) command in this form.';ru='Чтобы зарегистрировать данные для восстановления подчиненного узла"
-"РИБ, в главном узле в разделе ""Администрирование"""
-"откройте ""Настройки синхронизации данных"", перейдите по ссылке ""Синхронизация данных"". По команде ""Состав отправляемых"
-"данных"" откройте форму ""Регистрация"
-"изменений"", в которой выполните команду ""Зарегистрировать данные для восстановления подчиненного узла РИБ"" (меню Еще).'")));
+				NStr("en='To register data for restoration of DIB subordinate node, open
+		|Data synchronization settings in the main node
+		|in the Administration section, go to Autonomous work. Open the Changes registration form
+		|on the Content of the sent data command
+		|and run the Register data for restoration of DIB subordinate node (the More menu) command in this form.';ru='Чтобы зарегистрировать данные для восстановления подчиненного узла
+		|РИБ, в главном узле в разделе ""Администрирование""
+		|откройте ""Настройки синхронизации данных"", перейдите по ссылке ""Автономная работа"". По команде ""Состав отправляемых
+		|данных"" откройте форму ""Регистрация
+		|изменений"", в которой выполните команду ""Зарегистрировать данные для восстановления подчиненного узла РИБ"" (меню Еще).'"),
+				NStr("en='To register data for restoration of DIB subordinate node, open
+		|Data synchronization settings in the main node
+		|in the Administration section, go to Data synchronization. Open the Changes registration form
+		|on the Content of the sent data command
+		|and run the Register data for restoration of DIB subordinate node (the More menu) command in this form.';ru='Чтобы зарегистрировать данные для восстановления подчиненного узла
+		|РИБ, в главном узле в разделе ""Администрирование""
+		|откройте ""Настройки синхронизации данных"", перейдите по ссылке ""Синхронизация данных"". По команде ""Состав отправляемых
+		|данных"" откройте форму ""Регистрация
+		|изменений"", в которой выполните команду ""Зарегистрировать данные для восстановления подчиненного узла РИБ"" (меню Еще).'")));
 			
 			Raise ErrorText;
 		EndIf;
 		
 	ElsIf CallingException Then // Setting in the IB subordinate node during the first start.
 			ErrorText =
-				NStr("en='The Metadata objects identifiers catalog is not"
-"updated in the main node: the check showed that you need to"
-"execute the critical changes (for details, see the events log monitor in the Metadata objects identifiers.It is required to execute critical changes event)."
-""
-"Update the infobase on the main node and try to create a subordinate node again."
-""
-"To update the infobase in the main node, start"
-"the application once with the StartInfobaseUpdate start parameters.';ru='В главном узле не обновлен справочник ""Идентификаторы объектов метаданных"": при проверке обнаружено, что требуется выполнить критичные изменения (см. подробности в журнале регистрации в событии ""Идентификаторы объектов метаданных.Требуется выполнить критичные изменения"").  В главном узле выполните обновление информационной базы и повторите создание подчиненного узла.  Чтобы выполнить обновление информационной базы в главном узле, один раз выполните запуск программы с параметром запуска ЗапуститьОбновлениеИнформационнойБазы.'");
+				NStr("en='The Metadata objects identifiers catalog is not
+		|updated in the main node: the check showed that you need to
+		|execute the critical changes (for details, see the events log monitor in the Metadata objects identifiers.It is required to execute critical changes event).
+		|
+		|Update the infobase on the main node and try to create a subordinate node again.
+		|
+		|To update the infobase in the main node, start
+		|the application once with the StartInfobaseUpdate start parameters.';ru='В главном узле не обновлен справочник ""Идентификаторы объектов метаданных"": при проверке обнаружено, что требуется выполнить критичные изменения (см. подробности в журнале регистрации в событии ""Идентификаторы объектов метаданных.Требуется выполнить критичные изменения"").  В главном узле выполните обновление информационной базы и повторите создание подчиненного узла.  Чтобы выполнить обновление информационной базы в главном узле, один раз выполните запуск программы с параметром запуска ЗапуститьОбновлениеИнформационнойБазы.'");
 				
 			Raise ErrorText;
 	EndIf;
@@ -1657,9 +1657,9 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = CommonUse.CommonModule("AccessManagement").AccessGroupProfileNewDescription();
 	ProfileDescription.ID = ProfileSyncAccessDataWithOtherApplications();
 	ProfileDescription.Description = NStr("en='Data synchronization with other applications';ru='Синхронизация данных с другими программами'");
-	ProfileDescription.Definition = NStr("en='Assigned additionally to those users who have"
-"access to tools for monitoring and data synchronization with other applications.';ru='Дополнительно назначается тем пользователям,"
-"которым должны быть доступны средства для мониторинга и синхронизации данных с другими программами.'");
+	ProfileDescription.Definition = NStr("en='Assigned additionally to those users who have
+		|access to tools for monitoring and data synchronization with other applications.';ru='Дополнительно назначается тем пользователям,
+		|которым должны быть доступны средства для мониторинга и синхронизации данных с другими программами.'");
 	
 	// Main possibilities of the profile.
 	ProfileRoles = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(
@@ -5761,9 +5761,9 @@ Procedure ValidateExternalConnection()
 	
 	If CommonUse.ThisLinuxServer() Then
 		
-		Raise NStr("en='Data synchronization via the direct connection on server managed by Linux OS is not available."
-"You need to use Windows OS for data synchronization via the direct connection.';ru='Синхронизация данных через прямое подключение на сервере под управлением ОС Linux недоступно."
-"Для синхронизации данных через прямое подключение требуется использовать ОС Windows.'");
+		Raise NStr("en='Data synchronization via the direct connection on server managed by Linux OS is not available.
+		|You need to use Windows OS for data synchronization via the direct connection.';ru='Синхронизация данных через прямое подключение на сервере под управлением ОС Linux недоступно.
+		|Для синхронизации данных через прямое подключение требуется использовать ОС Windows.'");
 			
 	EndIf;
 	
@@ -7409,9 +7409,9 @@ Function CorrespondentTablesData(Tables, Val ExchangePlanName) Export
 			
 			If TypesAttribute.Count() <> 1 Then
 				
-				MessageString = NStr("en='Compound data type is not supported by default values."
-"Attribute %1.';ru='Составной тип данных для значений по умолчанию не поддерживается."
-"Реквизит ""%1"".'");
+				MessageString = NStr("en='Compound data type is not supported by default values.
+		|Attribute %1.';ru='Составной тип данных для значений по умолчанию не поддерживается.
+		|Реквизит ""%1"".'");
 				MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, Attribute.FullName());
 				Raise MessageString;
 			EndIf;
@@ -7420,9 +7420,9 @@ Function CorrespondentTablesData(Tables, Val ExchangePlanName) Export
 			
 			If Not CommonUse.ThisIsCatalog(MetadataObject) Then
 				
-				MessageString = NStr("en='Default values selection is supported only for catalogs."
-"Attribute %1.';ru='Выбор значений по умолчанию поддерживается только для справочников."
-"Реквизит ""%1"".'");
+				MessageString = NStr("en='Default values selection is supported only for catalogs.
+		|Attribute %1.';ru='Выбор значений по умолчанию поддерживается только для справочников.
+		|Реквизит ""%1"".'");
 				MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, Attribute.FullName());
 				Raise MessageString;
 			EndIf;
@@ -7729,11 +7729,11 @@ Procedure ExecuteCheckupOfExchangeRulesImportedFromFilePresence(ImportedFromFile
 			
 		EndDo;
 		
-		MessageString = NStr("en='For %1 exchange plans the exchange rules imported from file are used."
-"These rules can be incompatible with the new application version."
-"To prevent the possible error occurance when working with the application it is recommended to actualize the exchange rules from the file.';ru='Для планов обмена %1 используются правила обмена, загруженные из файла."
-"Эти правила могут быть несовместимы с новой версией программы."
-"Для предупреждения возможного возникновения ошибок при работе с программой рекомендуется актуализировать правила обмена из файла.'",
+		MessageString = NStr("en='For %1 exchange plans the exchange rules imported from file are used.
+		|These rules can be incompatible with the new application version.
+		|To prevent the possible error occurance when working with the application it is recommended to actualize the exchange rules from the file.';ru='Для планов обмена %1 используются правила обмена, загруженные из файла.
+		|Эти правила могут быть несовместимы с новой версией программы.
+		|Для предупреждения возможного возникновения ошибок при работе с программой рекомендуется актуализировать правила обмена из файла.'",
 				CommonUseClientServer.MainLanguageCode());
 		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, StringFunctionsClientServer.RowFromArraySubrows(ExchangePlansArray));
 		
@@ -8629,9 +8629,9 @@ Procedure SynchronizeWhenNoUpdateOfInformationBase(
 				ClearDataExchangeMessageFromMainNode();
 				SetPrivilegedMode(False);
 				WriteEventGetData(MasterNode(),
-					NStr("en='Return to the data base configuration is found."
-"Synchronization is cancelled.';ru='Обнаружен возврат к конфигурации базы данных."
-"Синхронизация отменена.'"));
+					NStr("en='Return to the data base configuration is found.
+		|Synchronization is cancelled.';ru='Обнаружен возврат к конфигурации базы данных.
+		|Синхронизация отменена.'"));
 				Return;
 			EndIf;
 		EndIf;
@@ -10648,8 +10648,8 @@ Procedure RegisterErrorDocument(Object, ExchangeNode, ErrorMessage) Export
 		
 	EndIf;
 	
-	MessageString = NStr("en='Unable to post %1 document received from another infobase.%2"
-"All attriutes mandatory for filling are not filled in.';ru='Не удалось провести документ %1, полученный из другой информационной базы.%2 Возможно не заполнены все реквизиты, обязательные к заполнению.'",
+	MessageString = NStr("en='Unable to post %1 document received from another infobase.%2
+		|All attriutes mandatory for filling are not filled in.';ru='Не удалось провести документ %1, полученный из другой информационной базы.%2 Возможно не заполнены все реквизиты, обязательные к заполнению.'",
 		CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(Object), CauseErrors);
 	
@@ -10710,8 +10710,8 @@ Procedure RegisterErrorRecordsObject(Object, ExchangeNode, ErrorMessage) Export
 		
 	EndIf;
 	
-	MessageString = NStr("en='Unable to write %1 object received from another infobase.%2"
-"All attriutes mandatory for filling are not filled in.';ru='Не удалось записать объект %1, полученный из другой информационной базы.%2 Возможно не заполнены все реквизиты, обязательные к заполнению.'",
+	MessageString = NStr("en='Unable to write %1 object received from another infobase.%2
+		|All attriutes mandatory for filling are not filled in.';ru='Не удалось записать объект %1, полученный из другой информационной базы.%2 Возможно не заполнены все реквизиты, обязательные к заполнению.'",
 		CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(Object), CauseErrors);
 	

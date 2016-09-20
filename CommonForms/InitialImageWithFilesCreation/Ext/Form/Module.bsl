@@ -128,9 +128,9 @@ Procedure CreateInitialImage(Command)
 		
 		If Not CanCreateFilebase Then
 			Raise
-				NStr("en='Creation of initial image of"
-"file infobase is not supported at this platform.';ru='Создание начального образа файловой информационной базы"
-"на данной платформе не поддерживается.'");
+				NStr("en='Creation of initial image of
+		|file infobase is not supported at this platform.';ru='Создание начального образа файловой информационной базы
+		|на данной платформе не поддерживается.'");
 		EndIf;
 		
 		If Not CreateFileInitialImageAtServer() Then

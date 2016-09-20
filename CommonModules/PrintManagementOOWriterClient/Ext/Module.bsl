@@ -497,9 +497,9 @@ Procedure FailedToGeneratePrintForm(ErrorInfo)
 	CorrectionText = "";	
 #EndIf
 	ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Failed to generate a print form: %1. "
-"To show print forms as OpenOffice.org Writer, it is required to install the OpenOffice.org package on the computer. %2';ru='Не удалось сформировать печатную форму: %1. "
-"Для вывода печатных форм в формате OpenOffice.org Writer требуется, чтобы на компьютере был установлен пакет OpenOffice.org. %2'"),
+		NStr("en='Failed to generate a print form: %1. 
+		|To show print forms as OpenOffice.org Writer, it is required to install the OpenOffice.org package on the computer. %2';ru='Не удалось сформировать печатную форму: %1. 
+		|Для вывода печатных форм в формате OpenOffice.org Writer требуется, чтобы на компьютере был установлен пакет OpenOffice.org. %2'"),
 		BriefErrorDescription(ErrorInfo), CorrectionText);
 	Raise ErrorMessage;
 EndProcedure

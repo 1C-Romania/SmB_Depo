@@ -67,9 +67,9 @@ EndProcedure
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	If NotExportedDocumentsExist AND SelectedDocumentsTable.Count() > 0 Then
-		QuestionText = NStr("en='There are non-loaded documents in the choice list!"
-"Do you really want to close the form?';ru='В списке выбора есть невыгруженные документы!"
-"Выдействительно хотите закрыть форму?'");
+		QuestionText = NStr("en='There are non-loaded documents in the choice list!
+		|Do you really want to close the form?';ru='В списке выбора есть невыгруженные документы!
+		|Выдействительно хотите закрыть форму?'");
 		Cancel = True;
 		NotifyDescription = New NotifyDescription("BeforeCloseEnd", ThisObject);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
@@ -678,9 +678,9 @@ Function CreateImportFile(Val DocumentsTable)
 			If DataFileFound Then
 				Files = FindFiles(DirectoryAddress, ED.Description + "*.p7s");
 				If Files.Count() = 0 Then
-					MessageText = NStr("en='Not managed to import the signature for"
-"the electronic document ""%1"", created on the basis of the document ""%2""!';ru='Не удалось выгрузить подпись для электронного документа ""%1"","
-"сформированного на основании документа ""%2""!'");
+					MessageText = NStr("en='Not managed to import the signature for
+		|the electronic document ""%1"", created on the basis of the document ""%2""!';ru='Не удалось выгрузить подпись для электронного документа ""%1"",
+		|сформированного на основании документа ""%2""!'");
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, ED, VTRow.Document);
 					CommonUseClientServer.MessageToUser(MessageText);
 				Else
@@ -692,9 +692,9 @@ Function CreateImportFile(Val DocumentsTable)
 					VTInventoryString.SignatureFileSize = File.Size();
 				EndIf;
 			Else
-				MessageText = NStr("en='Not managed to import the"
-"electronic document ""%1"",created on the basis of the document ""%2""!';ru='Не удалось выгрузить подпись для электронного документа ""%1"","
-"сформированного на основании документа ""%2""!'");
+				MessageText = NStr("en='Not managed to import the
+		|electronic document ""%1"",created on the basis of the document ""%2""!';ru='Не удалось выгрузить подпись для электронного документа ""%1"",
+		|сформированного на основании документа ""%2""!'");
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, ED, VTRow.IBDocument);
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
@@ -1082,11 +1082,11 @@ Procedure Exporting()
 		FoundStrings = SelectedDocumentsTable.FindRows(Filter);
 		NotifyDescription = New NotifyDescription("HandleAnswerToTheQuestionOnGroundsOf", ThisObject);
 		If FoundStrings.Count() > 0 Then
-			QuestionText = NStr("en='The list of selected documents has the"
-"documents of the type ""%1"" with the blank basis documents attributes (number, date)!"
-"Continue importing?';ru='В списке выбранных документов, присутствуют"
-"документы вида ""%1"", с незаполненными реквизитами документов-оснований (номер, дата)!"
-"Продолжить выгрузку?'");
+			QuestionText = NStr("en='The list of selected documents has the
+		|documents of the type ""%1"" with the blank basis documents attributes (number, date)!
+		|Continue importing?';ru='В списке выбранных документов, присутствуют
+		|документы вида ""%1"", с незаполненными реквизитами документов-оснований (номер, дата)!
+		|Продолжить выгрузку?'");
 			QuestionText = StrReplace(QuestionText, "%1", FoundStrings[0].EDKind);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 30, DialogReturnCode.No);
 		Else

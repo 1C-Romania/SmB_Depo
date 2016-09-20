@@ -336,9 +336,9 @@ EndFunction
 //
 Function ErrorInformationOutputTextInIdeasCenter() Export 
 	
-	Return NStr("en='Ideas center is temporarily unavailable."
-"Please try again later.';ru='Центр идей временно не доступен."
-"Пожалуйста, повторите попытку позже.'")
+	Return NStr("en='Ideas center is temporarily unavailable.
+		|Please try again later.';ru='Центр идей временно не доступен.
+		|Пожалуйста, повторите попытку позже.'")
 	
 EndFunction
 
@@ -526,9 +526,9 @@ EndFunction
 //
 Function ErrorInformationTextOutputInSupport() Export 
 	
-	Return NStr("en='Support is temporarily unavailable."
-"Please try again later.';ru='Служба поддержки временно не доступна."
-"Пожалуйста, повторите попытку позже.'")
+	Return NStr("en='Support is temporarily unavailable.
+		|Please try again later.';ru='Служба поддержки временно не доступна.
+		|Пожалуйста, повторите попытку позже.'")
 	
 EndFunction
 
@@ -617,15 +617,15 @@ EndFunction
 //
 Function GenerateTextTemplateToTechnicalSupport() Export
 	
-	Pattern = NStr("en='Hello!"
-"<p/>"
-"<p/>CursorPosition"
-"<p/>"
-"From respect, %1.';ru='Hello!"
-"<p/>"
-"<p/>CursorPosition"
-"<p/>"
-"From respect, %1.'");
+	Pattern = NStr("en='Hello!
+		|<p/>
+		|<p/>CursorPosition
+		|<p/>
+		|From respect, %1.';ru='Hello!
+		|<p/>
+		|<p/>CursorPosition
+		|<p/>
+		|From respect, %1.'");
 	Pattern = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
 			Users.CurrentUser().FullDescr());
 	
@@ -870,15 +870,15 @@ EndFunction
 //
 Function TexttemplateToSupport() Export
 	
-	Pattern = NStr("en='Hello!"
-"<p/>"
-"<p/>CursorPosition"
-"<p/>"
-"From respect, %1.';ru='Hello!"
-"<p/>"
-"<p/>CursorPosition"
-"<p/>"
-"From respect, %1.'");
+	Pattern = NStr("en='Hello!
+		|<p/>
+		|<p/>CursorPosition
+		|<p/>
+		|From respect, %1.';ru='Hello!
+		|<p/>
+		|<p/>CursorPosition
+		|<p/>
+		|From respect, %1.'");
 	Pattern = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
 			Users.CurrentUser().FullDescr());
 	

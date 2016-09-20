@@ -309,11 +309,11 @@ Function SaveFileFromParts(TransferId, PartQuantity, FileId)
 		FileName = CommonUseClientServer.GetFullFileName(TemporaryDirectory, GetPartFileName(PartNumber));
 		
 		If FindFiles(FileName).Count() = 0 Then
-			MessagePattern = NStr("en='Fragment of transfer session %1 with ID %2 is not found."
-"It is necessary to make sure that"
-"in application settings parameters ""Directory of temporary files for Linux"" and ""Directory of temporary files for Windows"" are specified.';ru='Не найден фрагмент %1 сессии передачи с идентификатором %2."
-"Необходимо убедиться, что в настройках программы заданы параметры"
-"""Каталог временных файлов для Linux"" и ""Каталог временных файлов для Windows"".'");
+			MessagePattern = NStr("en='Fragment of transfer session %1 with ID %2 is not found.
+		|It is necessary to make sure that
+		|in application settings parameters ""Directory of temporary files for Linux"" and ""Directory of temporary files for Windows"" are specified.';ru='Не найден фрагмент %1 сессии передачи с идентификатором %2.
+		|Необходимо убедиться, что в настройках программы заданы параметры
+		|""Каталог временных файлов для Linux"" и ""Каталог временных файлов для Windows"".'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, String(PartNumber), String(TransferId));
 			Raise(MessageText);
 		EndIf;

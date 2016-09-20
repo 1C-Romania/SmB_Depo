@@ -57,9 +57,9 @@ Procedure Place(Command)
 	ClearMessages();
 	
 	If IsBlankString(PathToWindowsArchive) AND IsBlankString(PathToLinuxArchive) Then
-		Text = NStr("en='Specify the full name"
-"of the archive with files of the initial image (file *.zip)';ru='Укажите полное"
-"имя архива с файлами начального образа (файл *.zip)'");
+		Text = NStr("en='Specify the full name
+		|of the archive with files of the initial image (file *.zip)';ru='Укажите полное
+		|имя архива с файлами начального образа (файл *.zip)'");
 		CommonUseClientServer.MessageToUser(Text, , "PathToWindowsArchive");
 		Return;
 	EndIf;
@@ -67,9 +67,9 @@ Procedure Place(Command)
 	If Not StandardSubsystemsClientReUse.ClientWorkParameters().FileInfobase Then
 	
 		If Not IsBlankString(PathToWindowsArchive) AND (Left(PathToWindowsArchive, 2) <> "\\" OR Find(PathToWindowsArchive, ":") <> 0) Then
-			ErrorText = NStr("en='Path to archive with initial"
-"image files must be in UNC format (\\servername\resource).';ru='Путь к архиву"
-"с файлами начального образа должен быть в формате UNC (\\servername\resource).'");
+			ErrorText = NStr("en='Path to archive with initial
+		|image files must be in UNC format (\\servername\resource).';ru='Путь к архиву
+		|с файлами начального образа должен быть в формате UNC (\\servername\resource).'");
 			CommonUseClientServer.MessageToUser(ErrorText, , "PathToWindowsArchive");
 			Return;
 		EndIf;
@@ -79,16 +79,16 @@ Procedure Place(Command)
 	Status(
 		NStr("en='Data exchange';ru='Обмен данными описание'"),
 		,
-		NStr("en='File placement from"
-"archive with initial image files is executed...';ru='Осуществляется размещение файлов из"
-"архива с файлами начального образа...'"),
+		NStr("en='File placement from
+		|archive with initial image files is executed...';ru='Осуществляется размещение файлов из
+		|архива с файлами начального образа...'"),
 		PictureLib.CreateInitialImage);
 	
 	AddFilesToVolumes();
 	
-	NotificationText = NStr("en='File placement from archive"
-"with initial image files is successfully completed.';ru='Размещение файлов из архива с файлами"
-"начального образа успешно завершено.'");
+	NotificationText = NStr("en='File placement from archive
+		|with initial image files is successfully completed.';ru='Размещение файлов из архива с файлами
+		|начального образа успешно завершено.'");
 	ShowUserNotification(NotificationText);
 	
 EndProcedure

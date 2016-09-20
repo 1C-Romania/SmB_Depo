@@ -334,9 +334,9 @@ Function NewOUSServiceDescription(
 			
 		Except
 			ErrorMessage = StrReplace(
-				NStr("en='An error occurred while creating the description of the web service."
-"Unable to receive WSDL-description from the online user support server (%1).';ru='Ошибка при создании описания веб-сервиса."
-"Не удалось получить WSDL-описание с сервера Интернет-поддержки пользователей (%1).'"),
+				NStr("en='An error occurred while creating the description of the web service.
+		|Unable to receive WSDL-description from the online user support server (%1).';ru='Ошибка при создании описания веб-сервиса.
+		|Не удалось получить WSDL-описание с сервера Интернет-поддержки пользователей (%1).'"),
 					"%1",
 					WSDLAddress)
 				+ " " + DetailErrorDescription(ErrorInfo());
@@ -361,9 +361,9 @@ Function NewOUSServiceDescription(
 		DOMDocument = DOMBuilder.Read(XMLReader);
 	Except
 		ErrorMessage = StrReplace(
-				NStr("en='An error occurred while describing web service (%1)."
-"An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1)."
-"Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
+				NStr("en='An error occurred while describing web service (%1).
+		|An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1).
+		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
 			+ " " + DetailErrorDescription(ErrorInfo());
@@ -375,9 +375,9 @@ Function NewOUSServiceDescription(
 	SchemeNodes = DOMDocument.GetElementByTagName("wsdl:types");
 	If SchemeNodes.Count() = 0 Then
 		
-		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1)."
-"An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1)."
-"Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1).
+		|An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1).
+		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
 			+ Chars.LF
@@ -390,9 +390,9 @@ Function NewOUSServiceDescription(
 	SchemeDescriptionNode = SchemeNodes[0].FirstSubsidiary;
 	If SchemeDescriptionNode = Undefined Then
 		
-		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1)."
-"An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1)."
-"Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1).
+		|An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1).
+		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
 			+ " " + NStr("en='Description item of the (<xs:schema ...>) data types is unavailable';ru='Отсутствует элемент описания типов данных (<xs:schema ...>)'");
@@ -406,9 +406,9 @@ Function NewOUSServiceDescription(
 	Try
 		ServiceDataScheme = SchemeBuilder.CreateXMLSchema(SchemeDescriptionNode);
 	Except
-		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1)."
-"An error occurred during creating the data scheme from WSDL-description of the online user support web service.';ru='Ошибка при создании описания веб-сервиса (%1)."
-"Ошибка при создании схемы данных из WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1).
+		|An error occurred during creating the data scheme from WSDL-description of the online user support web service.';ru='Ошибка при создании описания веб-сервиса (%1).
+		|Ошибка при создании схемы данных из WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
 			+ " " + DetailErrorDescription(ErrorInfo());
@@ -421,9 +421,9 @@ Function NewOUSServiceDescription(
 	Try
 		ServiceFactory = New XDTOFactory(SchemaSet);
 	Except
-		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1)."
-"An error occurred during creating XDTO factory from WSDL-description of the web service of online user support:';ru='Ошибка при создании описания веб-сервиса (%1)."
-"Ошибка при создании фабрики XDTO из WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1).
+		|An error occurred during creating XDTO factory from WSDL-description of the web service of online user support:';ru='Ошибка при создании описания веб-сервиса (%1).
+		|Ошибка при создании фабрики XDTO из WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
 			+ " " + DetailErrorDescription(ErrorInfo());
@@ -439,9 +439,9 @@ Function NewOUSServiceDescription(
 	OfURIService = DOMNodeAttributeValue(RootElement, "targetNamespace");
 	If Not ValueIsFilled(OfURIService) Then
 		
-		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1)."
-"An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1)."
-"Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1).
+		|An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1).
+		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
 			+ " " + NStr("en='URI of names space in the WSDL-description is unavailable.';ru='Отсутствует URI пространства имен в WSDL-описании.'");
@@ -455,9 +455,9 @@ Function NewOUSServiceDescription(
 	// Define the address of the web service port
 	ServicesNodes = RootElement.GetElementByTagName("wsdl:service");
 	If ServicesNodes.Count() = 0 Then
-		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1)."
-"An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1)."
-"Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1).
+		|An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1).
+		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
 			+ " " + NStr("en='Description of the web services is unavailable in WSDL-description (<wsdl:service ...>).';ru='Отсутствует описание веб-сервисов в WSDL-описании (<wsdl:service ...>).'");
@@ -472,9 +472,9 @@ Function NewOUSServiceDescription(
 	PortsNodes = ServiceNode.GetElementByTagName("wsdl:port");
 	
 	If PortsNodes.Count() = 0 Then
-		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1)."
-"An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1)."
-"Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1).
+		|An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1).
+		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
 			+ " " + NStr("en='There is no description of ports in WSDL-description (<wsdl:port ...>).';ru='Отсутствует описание портов в WSDL-описании (<wsdl:port ...>).'");
@@ -487,9 +487,9 @@ Function NewOUSServiceDescription(
 	
 	If Not ValueIsFilled(PortName) Then
 		
-		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1)."
-"An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1)."
-"Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1).
+		|An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1).
+		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
 			+ " " + StrReplace(NStr("en='Unable to define the name of service port (%1).';ru='Не удалось определить имя порта сервиса (%1).'"),
@@ -508,9 +508,9 @@ Function NewOUSServiceDescription(
 	
 	If Not ValueIsFilled(PortAddress) Then
 		
-		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1)."
-"An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1)."
-"Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while describing web service (%1).
+		|An error occurred during reading WSDL-description of the online user support web service:';ru='Ошибка при создании описания веб-сервиса (%1).
+		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
 			+ " " + StrReplace(NStr("en='Unable to define URL of the specified service port (%1).';ru='Не удалось определить URL заданного порта сервиса (%1).'"),
@@ -604,9 +604,9 @@ Function OUSService_isReady(OUSServiceDescription) Export
 	
 	ObjectType = UOSServiceFactoryRootPropertyValueType("isReadyResponse", OUSServiceDescription);
 	If ObjectType = Undefined Then
-		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the isReady operation of service (%1)."
-"Unable to define the type of the isReadyResponse root property.';ru='Ошибка при вызове операции isReady сервиса (%1)."
-"Не удалось определить тип корневого свойства isReadyResponse.'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the isReady operation of service (%1).
+		|Unable to define the type of the isReadyResponse root property.';ru='Ошибка при вызове операции isReady сервиса (%1).
+		|Не удалось определить тип корневого свойства isReadyResponse.'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress);
 		Raise ErrorMessage;
@@ -631,9 +631,9 @@ Function OUSService_isReady(OUSServiceDescription) Export
 	If TypeOf(Value) = Type("Structure") Then
 		
 		// Description of SOAP exception is returned
-		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the isReady operation of service (%1)."
-"SOAP error:';ru='Ошибка при вызове операции isReady сервиса (%1)."
-"Ошибка SOAP:'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the isReady operation of service (%1).
+		|SOAP error:';ru='Ошибка при вызове операции isReady сервиса (%1).
+		|Ошибка SOAP:'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress)
 			+ " " + DescriptionSOAPExceptionToRow(Value);
@@ -667,9 +667,9 @@ Function OUSService_isConfigurationSupported(ConfigurationName, OUSServiceDescri
 		OUSServiceDescription);
 	
 	If PropertyValueType = Undefined Then
-		ErrorMessage = StrReplace(NStr("en='An error occurred during calling the isConfigurationSupported operation of (%1) service."
-"Unable to define the type of the isConfigurationSupported root property.';ru='Ошибка при вызове операции isConfigurationSupported сервиса (%1)."
-"Не удалось определить тип корневого свойства isConfigurationSupported.'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred during calling the isConfigurationSupported operation of (%1) service.
+		|Unable to define the type of the isConfigurationSupported root property.';ru='Ошибка при вызове операции isConfigurationSupported сервиса (%1).
+		|Не удалось определить тип корневого свойства isConfigurationSupported.'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress);
 		Raise ErrorMessage;
@@ -701,9 +701,9 @@ Function OUSService_isConfigurationSupported(ConfigurationName, OUSServiceDescri
 	
 	ObjectType = UOSServiceFactoryRootPropertyValueType("isConfigurationSupportedResponse", OUSServiceDescription);
 	If ObjectType = Undefined Then
-		ErrorMessage = StrReplace(NStr("en='An error occurred during calling the isConfigurationSupported operation of (%1) service."
-"Unable to define the type of the isConfigurationSupportedResponse root property.';ru='Ошибка при вызове операции isConfigurationSupported сервиса (%1)."
-"Не удалось определить тип корневого свойства isConfigurationSupportedResponse.'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred during calling the isConfigurationSupported operation of (%1) service.
+		|Unable to define the type of the isConfigurationSupportedResponse root property.';ru='Ошибка при вызове операции isConfigurationSupported сервиса (%1).
+		|Не удалось определить тип корневого свойства isConfigurationSupportedResponse.'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress);
 		Raise ErrorMessage;
@@ -777,9 +777,9 @@ Function OUSService_process(QueryParameters, OUSServiceDescription) Export
 	
 	ObjectType = UOSServiceFactoryRootPropertyValueType("processResponse", OUSServiceDescription);
 	If ObjectType = Undefined Then
-		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the process operation of service (%1)."
-"Unable to define the type of the processResponse root property.';ru='Ошибка при вызове операции process сервиса (%1)."
-"Не удалось определить тип корневого свойства processResponse.'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the process operation of service (%1).
+		|Unable to define the type of the processResponse root property.';ru='Ошибка при вызове операции process сервиса (%1).
+		|Не удалось определить тип корневого свойства processResponse.'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress);
 		Raise ErrorMessage;
@@ -850,9 +850,9 @@ Function OUSService_sendmailtonet(QueryParameters, OUSServiceDescription) Export
 	
 	ObjectType = UOSServiceFactoryRootPropertyValueType("processResponse", OUSServiceDescription);
 	If ObjectType = Undefined Then
-		ErrorMessage = StrReplace(NStr("en='An error occurred during calling the sendmailtonet operation of service (%1)."
-"Unable to define the type of the processResponse root property.';ru='Ошибка при вызове операции sendmailtonet сервиса (%1)."
-"Не удалось определить тип корневого свойства processResponse.'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred during calling the sendmailtonet operation of service (%1).
+		|Unable to define the type of the processResponse root property.';ru='Ошибка при вызове операции sendmailtonet сервиса (%1).
+		|Не удалось определить тип корневого свойства processResponse.'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress);
 		Raise ErrorMessage;

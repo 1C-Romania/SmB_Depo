@@ -214,31 +214,31 @@ Function TextFillingErrors(FieldKind = "Field", MessageKind = "Filling",
 		If Upper(MessageKind) = "FillType" Then
 			Pattern = NStr("en='Field ""%1"" is not filled';ru='Поле ""%1"" не заполнено'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
-			Pattern = NStr("en='%1 field is filled in incorrectly."
-""
-"%4';ru='Поле ""%1"" заполнено некорректно."
-""
-"%4'");
+			Pattern = NStr("en='%1 field is filled in incorrectly.
+		|
+		|%4';ru='Поле ""%1"" заполнено некорректно.
+		|
+		|%4'");
 		EndIf;
 	ElsIf Upper(FieldKind) = "Column" Then
 		If Upper(MessageKind) = "FillType" Then
 			Pattern = NStr("en='%1 column is not filled in in %2 row of %3 list';ru='Не заполнена колонка ""%1"" в строке %2 списка ""%3""'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
-			Pattern = NStr("en='Column %1 is filled in incorrectly in %2 row of %3 list."
-""
-"%4';ru='Некорректно заполнена колонка ""%1"" в строке %2 списка ""%3""."
-""
-"%4'");
+			Pattern = NStr("en='Column %1 is filled in incorrectly in %2 row of %3 list.
+		|
+		|%4';ru='Некорректно заполнена колонка ""%1"" в строке %2 списка ""%3"".
+		|
+		|%4'");
 		EndIf;
 	ElsIf Upper(FieldKind) = "LIST" Then
 		If Upper(MessageKind) = "FillType" Then
 			Pattern = NStr("en='No row has been entered to list %3';ru='Не введено ни одной строки в список ""%3""'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
-			Pattern = NStr("en='List %3 is filled in incorrectly."
-""
-"%4';ru='Некорректно заполнен список ""%3""."
-""
-"%4'");
+			Pattern = NStr("en='List %3 is filled in incorrectly.
+		|
+		|%4';ru='Некорректно заполнен список ""%3"".
+		|
+		|%4'");
 		EndIf;
 	EndIf;
 
@@ -2732,9 +2732,9 @@ Procedure CheckParameter(Val ProcedureOrFunctionName, Val ParameterName, Val Par
 	Validate(ThisTypeDescription Or TypeOf(ExpectedTypes) = Type("Type"), 
 		NStr("en='ExpectedTypes parameter value is invalid';ru='Недопустимо значение параметра ОжидаемыеТипы'"), Context);
 		
-	InvalidParameter = NStr("en='Invalid value of the %1 parameter in %2. "
-"Expected: %3; sent value: %4 (%5 type).';ru='Недопустимое значение параметра %1 в %2. "
-"Ожидалось: %3; передано значение: %4 (тип %5).'");
+	InvalidParameter = NStr("en='Invalid value of the %1 parameter in %2. 
+		|Expected: %3; sent value: %4 (%5 type).';ru='Недопустимое значение параметра %1 в %2. 
+		|Ожидалось: %3; передано значение: %4 (тип %5).'");
 	Validate((ThisTypeDescription AND ExpectedTypes.ContainsType(TypeOf(ParameterValue)))
 		Or (NOT ThisTypeDescription AND ExpectedTypes = TypeOf(ParameterValue)), 
 		StringFunctionsClientServer.PlaceParametersIntoString(InvalidParameter, 
@@ -2746,12 +2746,12 @@ Procedure CheckParameter(Val ProcedureOrFunctionName, Val ParameterName, Val Par
 		Validate(TypeOf(ExpectedPropertyTypes) = Type("Structure"), 
 			NStr("en='ProcedureOrFunctionName parameter value is invalid';ru='Недопустимо значение параметра ИмяПроцедурыИлиФункции'"), Context);
 			
-		NoProperty = NStr("en='Invalid parameter value %1 (Structure) in %2. "
-"%3 property was expected in the structure (%4 type).';ru='Недопустимое значение параметра %1 (Структура) в %2. "
-"В структуре ожидалось свойство %3 (тип %4).'");
-		InvalidProperty = NStr("en='Invalid %1 property value in %2 parameter (Structure) in %3. "
-"Expected: %4; passed value: %5 (%6 type).';ru='Недопустимое значение свойства %1 в параметре %2 (Структура) в %3. "
-"Ожидалось: %4; передано значение: %5 (тип %6).'");
+		NoProperty = NStr("en='Invalid parameter value %1 (Structure) in %2. 
+		|%3 property was expected in the structure (%4 type).';ru='Недопустимое значение параметра %1 (Структура) в %2. 
+		|В структуре ожидалось свойство %3 (тип %4).'");
+		InvalidProperty = NStr("en='Invalid %1 property value in %2 parameter (Structure) in %3. 
+		|Expected: %4; passed value: %5 (%6 type).';ru='Недопустимое значение свойства %1 в параметре %2 (Структура) в %3. 
+		|Ожидалось: %4; передано значение: %5 (тип %6).'");
 		For Each Property IN ExpectedPropertyTypes Do
 			
 			ExpectedPropertyName = Property.Key;

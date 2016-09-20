@@ -357,11 +357,12 @@ Procedure AccessKindsAccessKindPresentationChoiceProcessing(Form, Item, ValueSel
 	
 	If Rows.Count() > 0
 	   AND Rows[0].GetID() <> Form.Items.AccessKinds.CurrentRow Then
-		
+	   
+	   //  AlekS    need attention !
 		ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Access kind ""%1"" is already selected."
-"Choose another.';ru='Вид доступа ""%1"" уже выбран."
-"Выберите другой.'"),
+			NStr("en='Access kind ""%1"" is already selected.
+		|Choose another.';ru='Вид доступа ""%1"" уже выбран.
+		|Выберите другой.'"),
 			ValueSelected));
 		
 		StandardProcessing = False;

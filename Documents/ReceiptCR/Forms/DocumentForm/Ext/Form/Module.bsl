@@ -1303,11 +1303,11 @@ Procedure DisplayInformationOnCustomerDisplay()
 		);
 		
 		If Not Result Then
-			MessageText = NStr("en='When using customer display error occurred."
-"Additional"
-"description: %AdditionalDetails%';ru='При использовании дисплея покупателя произошла ошибка."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+			MessageText = NStr("en='When using customer display error occurred.
+		|Additional
+		|description: %AdditionalDetails%';ru='При использовании дисплея покупателя произошла ошибка.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 			);
 			MessageText = StrReplace(
 				MessageText,
@@ -1566,13 +1566,13 @@ Procedure IssueReceipt()
 							
 						Else
 							
-							MessageText = NStr("en='When printing a receipt, an error occurred."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При печати чека произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+							MessageText = NStr("en='When printing a receipt, an error occurred.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При печати чека произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 							);
 							MessageText = StrReplace(
 								MessageText,
@@ -1588,13 +1588,13 @@ Procedure IssueReceipt()
 						
 					Else
 						
-						MessageText = NStr("en='An error occurred when connecting the device."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+						MessageText = NStr("en='An error occurred when connecting the device.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 						);
 						MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 						CommonUseClientServer.MessageToUser(MessageText);
@@ -1750,22 +1750,22 @@ Procedure AddPaymentByCard(Command)
 								
 								OpenForm("Catalog.Peripherals.Form.POSTerminalAuthorizationForm", FormParameters,,,,, New NotifyDescription("AddPaymentByCardEnd", ThisObject, New Structure("FRDeviceIdentifier, ETDeviceIdentifier, CardNumber", DeviceIdentifierFR, DeviceIdentifierET, CardNumber)));
 							Else
-								MessageText = NStr("en='An error occurred while connecting"
-"the fiscal register: ""%ErrorDescription%""."
-"Operation by card has not been performed.';ru='При подключении фискального регистратора произошла ошибка:"
-"""%ОписаниеОшибки%""."
-"Операция по карте не была выполнена.'");
+								MessageText = NStr("en='An error occurred while connecting
+		|the fiscal register: ""%ErrorDescription%"".
+		|Operation by card has not been performed.';ru='При подключении фискального регистратора произошла ошибка:
+		|""%ОписаниеОшибки%"".
+		|Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 								CommonUseClientServer.MessageToUser(MessageText);
 							EndIf;
 							
 						Else
 							
-							MessageText = NStr("en='When POS terminal connection there"
-"was error: ""%ErrorDescription%""."
-"Operation by card has not been performed.';ru='При подключении эквайрингового"
-"терминала произошла ошибка: ""%ОписаниеОшибки%""."
-"Операция по карте не была выполнена.'");
+							MessageText = NStr("en='When POS terminal connection there
+		|was error: ""%ErrorDescription%"".
+		|Operation by card has not been performed.';ru='При подключении эквайрингового
+		|терминала произошла ошибка: ""%ОписаниеОшибки%"".
+		|Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 							CommonUseClientServer.MessageToUser(MessageText);
 							
@@ -1853,11 +1853,11 @@ Procedure AddPaymentByCardEnd(Result1, AdditionalParameters) Export
             
         Else
             
-            MessageText = NStr("en='When operation execution there"
-"was error: ""%ErrorDescription%""."
-"Payment by card has not been performed.';ru='При выполнении операции возникла ошибка:"
-"""%ОписаниеОшибки%""."
-"Отмена по карте не была произведена'"
+            MessageText = NStr("en='When operation execution there
+		|was error: ""%ErrorDescription%"".
+		|Payment by card has not been performed.';ru='При выполнении операции возникла ошибка:
+		|""%ОписаниеОшибки%"".
+		|Отмена по карте не была произведена'"
             );
             MessageText = StrReplace(
             MessageText,
@@ -1885,11 +1885,11 @@ Procedure AddPaymentByCardEnd(Result1, AdditionalParameters) Export
             InputParameters,
             Output_Parameters);
             
-            MessageText = NStr("en='When printing slip receipt"
-"there was error: ""%ErrorDescription%""."
-"Operation by card has been cancelled.';ru='При печати слип-чека"
-"возникла ошибка: ""%ОписаниеОшибки%""."
-"Операция по карте была отменена.'"
+            MessageText = NStr("en='When printing slip receipt
+		|there was error: ""%ErrorDescription%"".
+		|Operation by card has been cancelled.';ru='При печати слип-чека
+		|возникла ошибка: ""%ОписаниеОшибки%"".
+		|Операция по карте была отменена.'"
             );
             MessageText = StrReplace(MessageText,
             "%ErrorDescription%",
@@ -2012,11 +2012,11 @@ Procedure DeletePaymentByCard(Command)
 									
 								Else
 									
-									MessageText = NStr("en='When operation execution there"
-"was error: ""%ErrorDescription%""."
-"Cancellation by card has not been performed.';ru='При выполнении операции возникла ошибка:"
-"""%ОписаниеОшибки%""."
-"Отмена по карте не была произведена.'");
+									MessageText = NStr("en='When operation execution there
+		|was error: ""%ErrorDescription%"".
+		|Cancellation by card has not been performed.';ru='При выполнении операции возникла ошибка:
+		|""%ОписаниеОшибки%"".
+		|Отмена по карте не была произведена.'");
 									MessageText = StrReplace(MessageText,
 																 "%ErrorDescription%",
 																 Output_Parameters[1]);
@@ -2028,11 +2028,11 @@ Procedure DeletePaymentByCard(Command)
 									
 									ErrorDescriptionFR = Output_Parameters[1];
 									
-									MessageText = NStr("en='When printing slip receipt"
-"there was error: ""%ErrorDescription%""."
-"Operation by card has been cancelled.';ru='При печати слип-чека"
-"возникла ошибка: ""%ОписаниеОшибки%""."
-"Операция по карте была отменена.'");
+									MessageText = NStr("en='When printing slip receipt
+		|there was error: ""%ErrorDescription%"".
+		|Operation by card has been cancelled.';ru='При печати слип-чека
+		|возникла ошибка: ""%ОписаниеОшибки%"".
+		|Операция по карте была отменена.'");
 									MessageText = StrReplace(MessageText,
 																 "%ErrorDescription%",
 																 ErrorDescriptionFR);
@@ -2055,20 +2055,20 @@ Procedure DeletePaymentByCard(Command)
 								EquipmentManagerClient.DisableEquipmentById(UUID,
 																								 DeviceIdentifierET);
 							Else
-								MessageText = NStr("en='An error occurred while connecting"
-"the fiscal register: ""%ErrorDescription%""."
-"Operation by card has not been performed.';ru='При подключении фискального регистратора произошла ошибка:"
-"""%ОписаниеОшибки%""."
-"Операция по карте не была выполнена.'");
+								MessageText = NStr("en='An error occurred while connecting
+		|the fiscal register: ""%ErrorDescription%"".
+		|Operation by card has not been performed.';ru='При подключении фискального регистратора произошла ошибка:
+		|""%ОписаниеОшибки%"".
+		|Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 								CommonUseClientServer.MessageToUser(MessageText);
 							EndIf;
 						Else
-							MessageText = NStr("en='When POS terminal connection there"
-"was error: ""%ErrorDescription%""."
-"Operation by card has not been performed.';ru='При подключении эквайрингового"
-"терминала произошла ошибка: ""%ОписаниеОшибки%""."
-"Операция по карте не была выполнена.'");
+							MessageText = NStr("en='When POS terminal connection there
+		|was error: ""%ErrorDescription%"".
+		|Operation by card has not been performed.';ru='При подключении эквайрингового
+		|терминала произошла ошибка: ""%ОписаниеОшибки%"".
+		|Операция по карте не была выполнена.'");
 								MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 							CommonUseClientServer.MessageToUser(MessageText);
 						EndIf;
@@ -2101,9 +2101,9 @@ Procedure PrintLastSlipReceipt(Command)
 			If Not glPeripherals.Property("LastSlipReceipt", SlipCheckString)
 			 Or TypeOf(SlipCheckString) <> Type("String")
 			 Or IsBlankString(SlipCheckString) Then
-				CommonUseClientServer.MessageToUser(NStr("en='Slip check is absent."
-"Acquiring operation may not have been executed for this session.';ru='Слип-чек отсутствует."
-"Возможно для данного сеанса еще не выполнялась эквайринговая операция.'"));
+				CommonUseClientServer.MessageToUser(NStr("en='Slip check is absent.
+		|Acquiring operation may not have been executed for this session.';ru='Слип-чек отсутствует.
+		|Возможно для данного сеанса еще не выполнялась эквайринговая операция.'"));
 				Return;
 			EndIf;
 			
@@ -2129,9 +2129,9 @@ Procedure PrintLastSlipReceipt(Command)
 																			  InputParameters,
 																			  Output_Parameters);
 					If Not ResultFR Then
-						MessageText = NStr("en='When printing slip receipt"
-"there was error: ""%ErrorDescription%"".';ru='При печати слип-чека"
-"возникла ошибка: ""%ОписаниеОшибки%"".'");
+						MessageText = NStr("en='When printing slip receipt
+		|there was error: ""%ErrorDescription%"".';ru='При печати слип-чека
+		|возникла ошибка: ""%ОписаниеОшибки%"".'");
 						MessageText = StrReplace(MessageText,
 													 "%ErrorDescription%",
 													 Output_Parameters[1]);
@@ -2142,8 +2142,8 @@ Procedure PrintLastSlipReceipt(Command)
 					EquipmentManagerClient.DisableEquipmentById(UUID,
 																					 DeviceIdentifierFR);
 				Else
-					MessageText = NStr("en='An error occurred while connecting"
-"the fiscal register: ""%ErrorDescription%"".';ru='При подключении фискального регистратора произошла ошибка: ""%ОписаниеОшибки%"".'");
+					MessageText = NStr("en='An error occurred while connecting
+		|the fiscal register: ""%ErrorDescription%"".';ru='При подключении фискального регистратора произошла ошибка: ""%ОписаниеОшибки%"".'");
 					MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 					CommonUseClientServer.MessageToUser(MessageText);
 				EndIf;

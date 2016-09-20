@@ -149,9 +149,9 @@ Procedure SetDeletionMark(Command)
 	
 	ShowQueryBox(
 		New NotifyDescription("SetDeletionMarkAfterReplyingToQuestion", ThisObject),
-		NStr("en='To set the deletion mark you have to save your changes."
-"Write the data?';ru='Для установки отметки удаления необходимо записать внесенные Вами изменения."
-"Записать данные?'"), QuestionDialogMode.YesNo);
+		NStr("en='To set the deletion mark you have to save your changes.
+		|Write the data?';ru='Для установки отметки удаления необходимо записать внесенные Вами изменения.
+		|Записать данные?'"), QuestionDialogMode.YesNo);
 	
 EndProcedure
 

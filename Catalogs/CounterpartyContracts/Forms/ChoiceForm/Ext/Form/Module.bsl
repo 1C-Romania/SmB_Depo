@@ -111,11 +111,11 @@ Procedure ValueChoiceList(Item, Value, StandardProcessing)
 		QuestionParameters.Insert("Value", Value);
 		
 		NotifyDescription = New NotifyDescription("ValueChoiceListEnd", ThisObject, QuestionParameters);
-		QuestionText = QuestionText + NStr("en='"
-""
-"Select other contract?';ru='"
-""
-"Выбрать другой договор?'");
+		QuestionText = QuestionText + NStr("en='
+		|
+		|Select other contract?';ru='
+		|
+		|Выбрать другой договор?'");
 		
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 		

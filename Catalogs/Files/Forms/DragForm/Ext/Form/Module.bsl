@@ -21,9 +21,9 @@ Procedure OnOpen(Cancel)
 	
 	#If WebClient Then
 		WarningText =
-			NStr("en='File import is not supported in the Web client."
-"Use the Create command in files list.';ru='В Веб-клиенте импорт файлов не поддерживается."
-"Используйте команду ""Создать"" в списке файлов.'");
+			NStr("en='File import is not supported in the Web client.
+		|Use the Create command in files list.';ru='В Веб-клиенте импорт файлов не поддерживается.
+		|Используйте команду ""Создать"" в списке файлов.'");
 		ShowMessageBox(, WarningText);
 		Cancel = True;
 		Return;
@@ -160,11 +160,11 @@ Procedure FillFileList(FilePath, Val TreeItems, TopLevelItem, DirectoriesOnly = 
 		
 		If TopLevelItem = True Then
 			Status(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='There is a collection"
-"of directory information ""%1""."
-"Please, wait.';ru='Идет"
-"сбор информации о каталоге ""%1""."
-"Пожалуйста, подождите.'"),
+				NStr("en='There is a collection
+		|of directory information ""%1"".
+		|Please, wait.';ru='Идет
+		|сбор информации о каталоге ""%1"".
+		|Пожалуйста, подождите.'"),
 				Path));
 		EndIf;
 		

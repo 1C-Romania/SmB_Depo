@@ -106,20 +106,20 @@ Procedure ImportRules(Cancel, Record, TemporaryStorageAddress = "", RulesFilenam
 						
 					Else
 						
-						NString = NStr("en='File names in archive does not correspond to the expected ones. Files"
-"are expected: ExchangeRules.xml - conversion rules for"
-"the current application; CorrespondentExchangeRules.xml - conversion rules for application-correspondent.';ru='Имена файлов в архиве не соответствуют ожидаемым. Ожидаются файлы:"
-"ExchangeRules.xml - правила конвертации для текущей программы;"
-"CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента.'");
+						NString = NStr("en='File names in archive does not correspond to the expected ones. Files
+		|are expected: ExchangeRules.xml - conversion rules for
+		|the current application; CorrespondentExchangeRules.xml - conversion rules for application-correspondent.';ru='Имена файлов в архиве не соответствуют ожидаемым. Ожидаются файлы:
+		|ExchangeRules.xml - правила конвертации для текущей программы;
+		|CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента.'");
 						DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 						
 					EndIf;
 					
 				// Old format
 				ElsIf UnpackedFileList.Count() = 1 Then
-					NString = NStr("en='No conversion rules file is found in the archive. Expected files quantity in archive - two. Files"
-"are expected: ExchangeRules.xml - conversion rules for"
-"the current application; CorrespondentExchangeRules.xml - conversion rules for application-correspondent.';ru='В архиве найден один файл правил конвертации. Ожидаемое количество файлов в архиве - два. Ожидаются файлы: ExchangeRules.xml - правила конвертации для текущей программы; CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента.'");
+					NString = NStr("en='No conversion rules file is found in the archive. Expected files quantity in archive - two. Files
+		|are expected: ExchangeRules.xml - conversion rules for
+		|the current application; CorrespondentExchangeRules.xml - conversion rules for application-correspondent.';ru='В архиве найден один файл правил конвертации. Ожидаемое количество файлов в архиве - два. Ожидаются файлы: ExchangeRules.xml - правила конвертации для текущей программы; CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента.'");
 					DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 				// There are several files in the archive but there should be one - deny importing.
 				ElsIf UnpackedFileList.Count() > 1 Then
@@ -290,10 +290,10 @@ Procedure ImportRuleSet(Cancel, DataForWriting, ErrorDescription, TemporaryStora
 			
 			// Files quantity does not correspond to the expected one - deny importing.
 			If UnpackedFileList.Count() <> 3 Then
-				NString = NStr("en='Incorrect rules set format. Expected files quantity in archive - three. Files"
-"are expected: ExchangeRules.xml - conversion rules for"
-"the current application; CorrespondentExchangeRules.xml - conversion rules"
-"for the application-correspondent; RegistrationRules.xml - rules of registration for the current application.';ru='Не верный формат комплекта правил. Ожидаемое количество файлов в архиве - три. Ожидаются файлы: ExchangeRules.xml - правила конвертации для текущей программы; CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента; RegistrationRules.xml - правила регистрации для текущей программы.'");
+				NString = NStr("en='Incorrect rules set format. Expected files quantity in archive - three. Files
+		|are expected: ExchangeRules.xml - conversion rules for
+		|the current application; CorrespondentExchangeRules.xml - conversion rules
+		|for the application-correspondent; RegistrationRules.xml - rules of registration for the current application.';ru='Не верный формат комплекта правил. Ожидаемое количество файлов в архиве - три. Ожидаются файлы: ExchangeRules.xml - правила конвертации для текущей программы; CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента; RegistrationRules.xml - правила регистрации для текущей программы.'");
 				DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 			EndIf;
 				
@@ -307,10 +307,10 @@ Procedure ImportRuleSet(Cancel, DataForWriting, ErrorDescription, TemporaryStora
 				ElsIf ReceivedFile.Name ="RegistrationRules.xml" Then
 					RegistrationBinaryData = New BinaryData(ReceivedFile.DescriptionFull);
 				Else
-					NString = NStr("en='File names in archive does not correspond to the expected ones. Files are expected:<BR>      |ExchangeRules.xml - conversion rules for the current application; <BR>      |CorrespondentExchangeRules.xml - conversion rules for application-correspondent; <BR>      |RegistrationRules.xml - rules of registration for the current application.';ru='Имена файлов в архиве не соответствуют ожидаемым. Ожидаются файлы:"
-"ExchangeRules.xml - правила конвертации для текущей программы;"
-"CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента;"
-"RegistrationRules.xml - правила регистрации для текущей программы.'");
+					NString = NStr("en='File names in archive does not correspond to the expected ones. Files are expected:<BR>      |ExchangeRules.xml - conversion rules for the current application; <BR>      |CorrespondentExchangeRules.xml - conversion rules for application-correspondent; <BR>      |RegistrationRules.xml - rules of registration for the current application.';ru='Имена файлов в архиве не соответствуют ожидаемым. Ожидаются файлы:
+		|ExchangeRules.xml - правила конвертации для текущей программы;
+		|CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента;
+		|RegistrationRules.xml - правила регистрации для текущей программы.'");
 
 					DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 					Break;
@@ -462,10 +462,10 @@ Procedure ImportProvidedRules(ExchangePlanName, RulesFilename) Export
 		
 		// Files quantity does not correspond to the expected one - deny importing.
 		If UnpackedFileList.Count() <> 3 Then
-			Raise NStr("en='Incorrect rules set format. Expected files quantity in archive - three. Files"
-"are expected: ExchangeRules.xml - conversion rules for"
-"the current application; CorrespondentExchangeRules.xml - conversion rules"
-"for the application-correspondent; RegistrationRules.xml - rules of registration for the current application.';ru='Не верный формат комплекта правил. Ожидаемое количество файлов в архиве - три. Ожидаются файлы: ExchangeRules.xml - правила конвертации для текущей программы; CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента; RegistrationRules.xml - правила регистрации для текущей программы.'");
+			Raise NStr("en='Incorrect rules set format. Expected files quantity in archive - three. Files
+		|are expected: ExchangeRules.xml - conversion rules for
+		|the current application; CorrespondentExchangeRules.xml - conversion rules
+		|for the application-correspondent; RegistrationRules.xml - rules of registration for the current application.';ru='Не верный формат комплекта правил. Ожидаемое количество файлов в архиве - три. Ожидаются файлы: ExchangeRules.xml - правила конвертации для текущей программы; CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента; RegistrationRules.xml - правила регистрации для текущей программы.'");
 		EndIf;
 		
 		// Put rules received file back to the binary data.
@@ -478,13 +478,13 @@ Procedure ImportProvidedRules(ExchangePlanName, RulesFilename) Export
 			ElsIf ReceivedFile.Name ="RegistrationRules.xml" Then
 				RegistrationBinaryData = New BinaryData(ReceivedFile.DescriptionFull);
 			Else
-				Raise NStr("en='File names in archive does not correspond to the expected ones. Files"
-"are expected: ExchangeRules.xml - conversion rules for"
-"the current application; CorrespondentExchangeRules.xml - conversion rules"
-"for the application-correspondent; RegistrationRules.xml - rules of registration for the current application.';ru='Имена файлов в архиве не соответствуют ожидаемым. Ожидаются файлы:"
-"ExchangeRules.xml - правила конвертации для текущей программы;"
-"CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента;"
-"RegistrationRules.xml - правила регистрации для текущей программы.'");
+				Raise NStr("en='File names in archive does not correspond to the expected ones. Files
+		|are expected: ExchangeRules.xml - conversion rules for
+		|the current application; CorrespondentExchangeRules.xml - conversion rules
+		|for the application-correspondent; RegistrationRules.xml - rules of registration for the current application.';ru='Имена файлов в архиве не соответствуют ожидаемым. Ожидаются файлы:
+		|ExchangeRules.xml - правила конвертации для текущей программы;
+		|CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента;
+		|RegistrationRules.xml - правила регистрации для текущей программы.'");
 			EndIf;
 			
 		EndDo;
@@ -836,9 +836,9 @@ Procedure DefineRuleKindForDataExchange(RuleKind, FileName, Cancel)
 	Except
 		Rules = Undefined;
 		
-		NString = NStr("en='Unable to determine rules kind because an error occurred while parsing XML-file [FileName]. "
-"The wrong file may be selected or XML-file has an incorrect structure. Choose the correct file.';ru='Не удалось определить вид правил из-за ошибки в разбора XML-файла [ИмяФайла]. "
-"Возможно выбран не тот файл, либо XML-файл имеет некорректную структуру. Выберите корректный файл.'");
+		NString = NStr("en='Unable to determine rules kind because an error occurred while parsing XML-file [FileName]. 
+		|The wrong file may be selected or XML-file has an incorrect structure. Choose the correct file.';ru='Не удалось определить вид правил из-за ошибки в разбора XML-файла [ИмяФайла]. 
+		|Возможно выбран не тот файл, либо XML-файл имеет некорректную структуру. Выберите корректный файл.'");
 		NString = StringFunctionsClientServer.SubstituteParametersInStringByName(NString, New Structure("FileName", FileName));
 		DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 		Return;
@@ -856,9 +856,9 @@ Procedure DefineRuleKindForDataExchange(RuleKind, FileName, Cancel)
 			
 		Else
 			
-			NString = NStr("en='nable to determine rules kind because an error occurred in XML-file rules format [FileName]."
-"The wrong file may be selected or XML-file has an incorrect structure. Choose the correct file.';ru='Не удалось определить вид правил из-за ошибки в разбора XML-файла [ИмяФайла]. "
-"Возможно выбран не тот файл, либо XML-файл имеет некорректную структуру. Выберите корректный файл.'");
+			NString = NStr("en='nable to determine rules kind because an error occurred in XML-file rules format [FileName].
+		|The wrong file may be selected or XML-file has an incorrect structure. Choose the correct file.';ru='Не удалось определить вид правил из-за ошибки в разбора XML-файла [ИмяФайла]. 
+		|Возможно выбран не тот файл, либо XML-файл имеет некорректную структуру. Выберите корректный файл.'");
 			NString = StringFunctionsClientServer.SubstituteParametersInStringByName(NString, New Structure("FileName", FileName));
 			DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 			
@@ -866,9 +866,9 @@ Procedure DefineRuleKindForDataExchange(RuleKind, FileName, Cancel)
 		
 	Else
 		
-		NString = NStr("en='nable to determine rules kind because an error occurred in XML-file rules format [FileName]."
-"The wrong file may be selected or XML-file has an incorrect structure. Choose the correct file.';ru='Не удалось определить вид правил из-за ошибки в разбора XML-файла [ИмяФайла]. "
-"Возможно выбран не тот файл, либо XML-файл имеет некорректную структуру. Выберите корректный файл.'");
+		NString = NStr("en='nable to determine rules kind because an error occurred in XML-file rules format [FileName].
+		|The wrong file may be selected or XML-file has an incorrect structure. Choose the correct file.';ru='Не удалось определить вид правил из-за ошибки в разбора XML-файла [ИмяФайла]. 
+		|Возможно выбран не тот файл, либо XML-файл имеет некорректную структуру. Выберите корректный файл.'");
 		NString = StringFunctionsClientServer.SubstituteParametersInStringByName(NString, New Structure("FileName", FileName));
 		DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 		

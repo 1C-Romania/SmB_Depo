@@ -307,9 +307,9 @@ EndProcedure
 &AtClient
 Procedure FilesImport(Command)
 	#If WebClient Then
-		WarningText =  NStr("en='File import is not supported in the Web client."
-"Use the Create command in files list.';ru='В Веб-клиенте импорт файлов не поддерживается."
-"Используйте команду ""Создать"" в списке файлов.'");
+		WarningText =  NStr("en='File import is not supported in the Web client.
+		|Use the Create command in files list.';ru='В Веб-клиенте импорт файлов не поддерживается.
+		|Используйте команду ""Создать"" в списке файлов.'");
 		ShowMessageBox(, WarningText);
 		Return;
 	#EndIf

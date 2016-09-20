@@ -172,9 +172,9 @@ Procedure BeforeStart(Parameters) Export
 		Parameters.InteractiveDataProcessor = New NotifyDescription(
 			"ShowWarningAndContinue",
 			StandardSubsystemsClient.ThisObject,
-			NStr("en='Launch"
-"parameter RegisterFullIOMChangeForDIBSubordinateNodes can be used only with parameter StartInformationBaseUpdate.';ru='Параметр"
-"запуска ЗарегистрироватьПолноеИзменениеИОМДляПодчиненныхУзловРИБ можно использовать только совместно с параметром ЗапуститьОбновлениеИнформационнойБазы.'"));
+			NStr("en='Launch
+		|parameter RegisterFullIOMChangeForDIBSubordinateNodes can be used only with parameter StartInformationBaseUpdate.';ru='Параметр
+		|запуска ЗарегистрироватьПолноеИзменениеИОМДляПодчиненныхУзловРИБ можно использовать только совместно с параметром ЗапуститьОбновлениеИнформационнойБазы.'"));
 	EndIf;
 	
 EndProcedure

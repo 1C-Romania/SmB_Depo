@@ -15,13 +15,13 @@ Procedure BeforeWrite(Cancel)
 		Return;
 	EndIf;
 	
-	Raise(NStr("en='You can change the"
-"sections of the change prohibition dates in the Designer only."
-""
-"Deleting is allowed.';ru='Изменение разделов дат запрета изменения"
-"выполняется только через конфигуратор."
-""
-"Удаление допустимо.'"));
+	Raise(NStr("en='You can change the
+		|sections of the change prohibition dates in the Designer only.
+		|
+		|Deleting is allowed.';ru='Изменение разделов дат запрета изменения
+		|выполняется только через конфигуратор.
+		|
+		|Удаление допустимо.'"));
 	
 EndProcedure
 

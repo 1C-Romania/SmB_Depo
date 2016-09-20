@@ -1598,15 +1598,15 @@ Function CopyingReportGenerating(NOTCopiedReportsSettings,
 	If UserVariantsReportsTable <> Undefined
 		AND UserVariantsReportsTable.Count() <> 0 Then
 		HeaderArea = TabTemplate.GetArea("Title");
-		HeaderArea.Parameters.Definition = NStr("en='"
-"It is impossible to copy the personal variants of reports."
-"If you want to make personal report variant to"
-"be available to other users, then you need to resave it with the ""Only for author"" mark removed."
-"List of the skipped report variants:';ru='"
-"Невозможно скопировать личные варианты отчетов."
-"Для того чтобы личный вариант отчета стал"
-"доступен другим пользователям, необходимо его пересохранить со снятой пометкой ""Только для автора""."
-"Список пропущенных вариантов отчетов:'");
+		HeaderArea.Parameters.Definition = NStr("en='
+		|It is impossible to copy the personal variants of reports.
+		|If you want to make personal report variant to
+		|be available to other users, then you need to resave it with the ""Only for author"" mark removed.
+		|List of the skipped report variants:';ru='
+		|Невозможно скопировать личные варианты отчетов.
+		|Для того чтобы личный вариант отчета стал
+		|доступен другим пользователям, необходимо его пересохранить со снятой пометкой ""Только для автора"".
+		|Список пропущенных вариантов отчетов:'");
 		Spreadsheet.Put(HeaderArea);
 		
 		Spreadsheet.Put(TabTemplate.GetArea("IsBlankString"));
@@ -1627,9 +1627,9 @@ Function CopyingReportGenerating(NOTCopiedReportsSettings,
 	
 	If NotCopiedReportsSettings.Count() <> 0 Then
 		HeaderArea = TabTemplate.GetArea("Title");
-		HeaderArea.Parameters.Definition = NStr("en='"
-"Following users have insufficient rights for the reports:';ru='"
-"У следующих пользователй недостаточно прав на отчеты:'");
+		HeaderArea.Parameters.Definition = NStr("en='
+		|Following users have insufficient rights for the reports:';ru='
+		|У следующих пользователй недостаточно прав на отчеты:'");
 		Spreadsheet.Put(HeaderArea);
 		
 		AreaContent = TabTemplate.GetArea("ReportContent");

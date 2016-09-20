@@ -6284,17 +6284,17 @@ Procedure ImportAddressClassifierFromSite(RFTerritorialEntitiesCodes = Undefined
 		If Not ImportedFile.Status Then
 			DeleteTemporaryFile(TemporaryDirectory);
 			Raise ImportedFile.ErrorInfo + Chars.LF + 
-				NStr("en='Possible"
-"reasons: • Login and password were entered incorrectly"
-"or were not entered"
-"at all • No Internet"
-"Connection • The website is encountering problems • Firewall or other middleware (antiviruses etc) prevents"
-"a application from connecting to the Inter• Connecting to the Internet via proxy server but its parameters are not specified in the application.';ru='Возможные"
-"причины: • Некорректно введен или"
-"не введен логин и"
-"пароль; • Нет подключения"
-"к Интернету; • На веб-узле возникли неполадки; • Брандмауэр или другое промежуточное ПО (антивирусы и"
-"т.п.) блокируют попытки программы подключиться к Интернету; • Подключение к Интернету выполняется через прокси-сервер, но его параметры не заданы в программе.'");
+				NStr("en='Possible
+		|reasons: • Login and password were entered incorrectly
+		|or were not entered
+		|at all • No Internet
+		|Connection • The website is encountering problems • Firewall or other middleware (antiviruses etc) prevents
+		|a application from connecting to the Inter• Connecting to the Internet via proxy server but its parameters are not specified in the application.';ru='Возможные
+		|причины: • Некорректно введен или
+		|не введен логин и
+		|пароль; • Нет подключения
+		|к Интернету; • На веб-узле возникли неполадки; • Брандмауэр или другое промежуточное ПО (антивирусы и
+		|т.п.) блокируют попытки программы подключиться к Интернету; • Подключение к Интернету выполняется через прокси-сервер, но его параметры не заданы в программе.'");
 		EndIf;
 	
 		TerritorialEntitiesCodesForImport.Add(TerritorialEntityCode);
@@ -7266,11 +7266,8 @@ Procedure DeleteTemporaryFile(FullFileName) Export
 		DeleteFiles(FullFileName)
 	Except
 		WriteLogEvent(EventLogMonitorEvent(), EventLogLevel.Warning,
-			,, StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Unable to delete a"
-"temporary"
-"file %1 as: %2';ru='Unable to delete a"
-"temporary"
-"file %1 as: %2'"), FullFileName, DetailErrorDescription(ErrorInfo())));
+			,, StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Unable to delete a temporary file %1 as: %2';
+			|ru='Невозможно удалить временный файл %1 как: %2'"), FullFileName, DetailErrorDescription(ErrorInfo())));
 	EndTry
 	
 EndProcedure

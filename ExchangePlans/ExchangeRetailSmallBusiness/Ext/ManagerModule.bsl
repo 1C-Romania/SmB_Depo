@@ -171,11 +171,11 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 			WarehousesPresentation = NStr("en='By all warehouses.';ru='По всем складам.'");
 		EndIf;
 		
-		DataSendingRestrictionsPresentation = NStr("en='Send"
-"data:"
-"[CompanyPresentation] [WarehousesPresentation]';ru='Отправлять"
-"данные:"
-"[ПредставлениеОрганизаций] [ПредставлениеСкладов]'");
+		DataSendingRestrictionsPresentation = NStr("en='Send
+		|data:
+		|[CompanyPresentation] [WarehousesPresentation]';ru='Отправлять
+		|данные:
+		|[ПредставлениеОрганизаций] [ПредставлениеСкладов]'");
 		
 		DataSendingRestrictionsPresentation = StrReplace(DataSendingRestrictionsPresentation, "[CompaniesPresentation]", CompaniesPresentation);
 		DataSendingRestrictionsPresentation = StrReplace(DataSendingRestrictionsPresentation, "[WarehousesPresentation]", WarehousesPresentation);

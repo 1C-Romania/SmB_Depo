@@ -249,9 +249,9 @@ Procedure AdditionalValuesWithWeightOnChange(Item)
 	   AND Not Object.AdditionalValuesWithWeight Then
 		
 		QuestionText =
-			NStr("en='Do you want"
-""
-"to clear the entered weight coefficients? Data will be recorded.';ru='Очистить введенные весовые коэффициенты? Данные будут записаны.'");
+			NStr("en='Do you want
+		|
+		|to clear the entered weight coefficients? Data will be recorded.';ru='Очистить введенные весовые коэффициенты? Данные будут записаны.'");
 		
 		Buttons = New ValueList;
 		Buttons.Add("ClearAndWrite", NStr("en='Clean and write';ru='Очистить и записать'"));
@@ -636,13 +636,13 @@ Procedure WriteObject(VariantOfTextOfQuestion, ContinuationProcedureName, Additi
 	
 	If VariantOfTextOfQuestion = "TransitionToListOfValues" Then
 		QuestionText =
-			NStr("en='Transition to values"
-"list work is possible only after the data record."
-""
-"Data will be written.';ru='Переход"
-"к работе со списком значений возможен только после записи данных."
-""
-"Данные будут записаны.'");
+			NStr("en='Transition to values
+		|list work is possible only after the data record.
+		|
+		|Data will be written.';ru='Переход
+		|к работе со списком значений возможен только после записи данных.
+		|
+		|Данные будут записаны.'");
 	Else
 		QuestionText =
 			NStr("en='Data will be written.';ru='Данные будут записаны.'")
@@ -833,15 +833,15 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 				   AND Not Object.ValueType.ContainsType(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) Then
 					
 					WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='It is impossible"
-"to delet the type ""%1"", as additional values are already input."
-"It is necessary to delete additional input values first."
-""
-"Deleted type is restored.';ru='Недопустимо"
-"удалять тип ""%1"", так как дополнительные значения уже введены."
-"Сначала нужно удалить введенные дополнительные значения."
-""
-"Удаленный тип восстановлен.'"),
+						NStr("en='It is impossible
+		|to delet the type ""%1"", as additional values are already input.
+		|It is necessary to delete additional input values first.
+		|
+		|Deleted type is restored.';ru='Недопустимо
+		|удалять тип ""%1"", так как дополнительные значения уже введены.
+		|Сначала нужно удалить введенные дополнительные значения.
+		|
+		|Удаленный тип восстановлен.'"),
 						String(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) );
 					
 					Object.ValueType = New TypeDescription(
@@ -853,15 +853,15 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 				        AND Not Object.ValueType.ContainsType(Type("CatalogRef.ObjectsPropertiesValues")) Then
 					
 					WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='It is impossible"
-"to delet the type ""%1"", as additional values are already input."
-"It is necessary to delete additional input values first."
-""
-"Deleted type is restored.';ru='Недопустимо"
-"удалять тип ""%1"", так как дополнительные значения уже введены."
-"Сначала нужно удалить введенные дополнительные значения."
-""
-"Удаленный тип восстановлен.'"),
+						NStr("en='It is impossible
+		|to delet the type ""%1"", as additional values are already input.
+		|It is necessary to delete additional input values first.
+		|
+		|Deleted type is restored.';ru='Недопустимо
+		|удалять тип ""%1"", так как дополнительные значения уже введены.
+		|Сначала нужно удалить введенные дополнительные значения.
+		|
+		|Удаленный тип восстановлен.'"),
 						String(Type("CatalogRef.ObjectsPropertiesValues")) );
 					
 					Object.ValueType = New TypeDescription(
@@ -879,15 +879,15 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 			If Not OldValueType.ContainsType(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) Then
 				
 				WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='It is impossible to"
-"use ""%1"""
-"and ""%2"" value types simultaneously."
-""
-"Second type deleted.';ru='Недопустимо одновременно"
-"использовать"
-"типы значения ""%1"" и ""%2""."
-""
-"Второй тип удален.'"),
+					NStr("en='It is impossible to
+		|use ""%1""
+		|and ""%2"" value types simultaneously.
+		|
+		|Second type deleted.';ru='Недопустимо одновременно
+		|использовать
+		|типы значения ""%1"" и ""%2"".
+		|
+		|Второй тип удален.'"),
 					String(Type("CatalogRef.ObjectsPropertiesValues")),
 					String(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) );
 				
@@ -898,15 +898,15 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 					"CatalogRef.ObjectsPropertiesValuesHierarchy");
 			Else
 				WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='It is impossible to"
-"use ""%1"""
-"and ""%2"" value types simultaneously."
-""
-"First type deleted.';ru='Недопустимо одновременно"
-"использовать"
-"типы значения ""%1"" и ""%2""."
-""
-"Первый тип удален.'"),
+					NStr("en='It is impossible to
+		|use ""%1""
+		|and ""%2"" value types simultaneously.
+		|
+		|First type deleted.';ru='Недопустимо одновременно
+		|использовать
+		|типы значения ""%1"" и ""%2"".
+		|
+		|Первый тип удален.'"),
 					String(Type("CatalogRef.ObjectsPropertiesValues")),
 					String(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) );
 				
@@ -1204,33 +1204,33 @@ Function NameIsAlreadyUsed(Val Title, Val CurrentProperty, Val PropertySet, NewD
 	
 	If ValueIsFilled(Selection.PropertySet) Then
 		If Selection.ThisIsAdditionalInformation Then
-			QuestionText = NStr("en='There is additional "
-" information with the name ""%1"".';ru='Существует дополнительное сведение с наименованием ""%1"".'");
+			QuestionText = NStr("en='There is additional 
+		| information with the name ""%1"".';ru='Существует дополнительное сведение с наименованием ""%1"".'");
 		Else
-			QuestionText = NStr("en='There is additional attribute"
-"with name ""%1"".';ru='Существует дополнительный"
-"реквизит с наименованием ""%1"".'");
+			QuestionText = NStr("en='There is additional attribute
+		|with name ""%1"".';ru='Существует дополнительный
+		|реквизит с наименованием ""%1"".'");
 		EndIf;
 	Else
 		If Selection.ThisIsAdditionalInformation Then
-			QuestionText = NStr("en='There is common additional information"
-"with name ""%1"".';ru='Существует общее дополнительное"
-"сведение с наименованием ""%1"".'");
+			QuestionText = NStr("en='There is common additional information
+		|with name ""%1"".';ru='Существует общее дополнительное
+		|сведение с наименованием ""%1"".'");
 		Else
-			QuestionText = NStr("en='There is common additional attribute"
-"with name ""%1"".';ru='Существует общий дополнительный"
-"реквизит с наименованием ""%1"".'");
+			QuestionText = NStr("en='There is common additional attribute
+		|with name ""%1"".';ru='Существует общий дополнительный
+		|реквизит с наименованием ""%1"".'");
 		EndIf;
 	EndIf;
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		QuestionText + NStr("en='"
-""
-"It is recommended"
-"to use another name otherwise the applicationm may work incorrectly.';ru='"
-""
-"Рекомендуется"
-"использовать другое наименование, иначе программа может работать некорректно.'"),
+		QuestionText + NStr("en='
+		|
+		|It is recommended
+		|to use another name otherwise the applicationm may work incorrectly.';ru='
+		|
+		|Рекомендуется
+		|использовать другое наименование, иначе программа может работать некорректно.'"),
 		NewDescription);
 	
 	Return QuestionText;

@@ -295,9 +295,9 @@ Procedure ExecuteBatch(Result, Package) Export
 			
 			If Not Package.Property("QueryOnRewritingIsPassed") Then
 				If Variant.DeletionMark = True Then
-					QuestionText = NStr("en='Report variant ""%1"" is marked to delete."
-"Do you want to replace the marked for deletion report variant?';ru='Вариант отчета ""%1"" помечен на удаление."
-"Заменить помеченный на удаление вариант отчета?'");
+					QuestionText = NStr("en='Report variant ""%1"" is marked to delete.
+		|Do you want to replace the marked for deletion report variant?';ru='Вариант отчета ""%1"" помечен на удаление.
+		|Заменить помеченный на удаление вариант отчета?'");
 					DefaultButton = DialogReturnCode.No;
 				Else
 					QuestionText = NStr("en='Replace previously saved report variant ""%1""?';ru='Заменить ранее сохраненный вариант отчета ""%1""?'");
@@ -648,9 +648,9 @@ Procedure FillVariantsList()
 		Except
 			ReportsVariants.ErrorByVariant(Undefined,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Failed to receive a predefined"
-"variants list of the external report ""%1"":';ru='Не удалось получить"
-"список предопределенных вариантов внешнего отчета ""%1"":'"),
+					NStr("en='Failed to receive a predefined
+		|variants list of the external report ""%1"":';ru='Не удалось получить
+		|список предопределенных вариантов внешнего отчета ""%1"":'"),
 					Context.ReportRef
 				) + Chars.LF + DetailErrorDescription(ErrorInfo()));
 			Return;

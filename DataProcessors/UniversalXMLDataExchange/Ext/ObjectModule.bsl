@@ -12885,13 +12885,13 @@ Procedure MessagesInitialization()
 	
 	deMessages.Insert(78, NStr("en='Error creating external data processor from file with event handler procedures';ru='Ошибка создания внешней обработки из файла с процедурами обработчиков событий'"));
 	
-	deMessages.Insert(79, NStr("en='Algorithms code can not be integrated to the handler because of the found recursive algorithms call. "
-"If in the process of debugging there is no need to debug algorithms"
-"code, specify ""do not debug algorithms"" mode If it is required to debug algorithms with a recursive"
-"call, then specify ""debug algorithms as procedures"" mode and repeat import.';ru='Код алгоритмов не может быть интегрирован в обработчик из-за обнаруженного рекурсивного вызова алгоритмов. "
-"Если в процессе отладки нет необходимости отлаживать код"
-"алгоритмов, то укажите режим ""не отлаживать алгоритмы"" Если необходимо выполнять отладку алгоритмов с рекурсивным"
-"вызовом, то укажите режим ""алгоритмы отлаживать как процедуры"" и повторите выгрузку.'"));
+	deMessages.Insert(79, NStr("en='Algorithms code can not be integrated to the handler because of the found recursive algorithms call. 
+		|If in the process of debugging there is no need to debug algorithms
+		|code, specify ""do not debug algorithms"" mode If it is required to debug algorithms with a recursive
+		|call, then specify ""debug algorithms as procedures"" mode and repeat import.';ru='Код алгоритмов не может быть интегрирован в обработчик из-за обнаруженного рекурсивного вызова алгоритмов. 
+		|Если в процессе отладки нет необходимости отлаживать код
+		|алгоритмов, то укажите режим ""не отлаживать алгоритмы"" Если необходимо выполнять отладку алгоритмов с рекурсивным
+		|вызовом, то укажите режим ""алгоритмы отлаживать как процедуры"" и повторите выгрузку.'"));
 	
 	deMessages.Insert(80, NStr("en='You must have the full rights to execute the data exchange';ru='Обмен данными можно проводить только под полными правами'"));
 	
@@ -13284,9 +13284,9 @@ Function ConnectToInformationBase(ConnectionStructure, ErrorMessageString = "")
 		
 	Except
 		
-		ErrorMessageString = NStr("en='The following error occurred while trying to"
-"connect to COM-server: %1';ru='При попытке соединения с COM-сервером"
-"произошла следующая ошибка: %1'");
+		ErrorMessageString = NStr("en='The following error occurred while trying to
+		|connect to COM-server: %1';ru='При попытке соединения с COM-сервером
+		|произошла следующая ошибка: %1'");
 		ErrorMessageString = PlaceParametersIntoString(ErrorMessageString, ErrorDescription());
 		
 		MessageToUser(ErrorMessageString);

@@ -11,9 +11,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Parameters.FileOwner = Undefined Then
-		Raise NStr("en='Attached file list can"
-"be looked at only in the form of an objectowner.';ru='Список присоединенных файлов можно посмотреть"
-"только в форме объекта-владельца.'");
+		Raise NStr("en='Attached file list can
+		|be looked at only in the form of an objectowner.';ru='Список присоединенных файлов можно посмотреть
+		|только в форме объекта-владельца.'");
 	EndIf;
 	
 	If Parameters.ChoiceMode Then
@@ -376,13 +376,13 @@ Procedure SetDeletionMark(Command)
 	CurrentData = Items.List.CurrentData;
 	
 	If CurrentData.DeletionMark Then
-		QuestionText = NStr("en='Unmark the %1 file"
-"from deletion?';ru='Снять пометку на удаление с файла"
-"""%1""?'");
+		QuestionText = NStr("en='Unmark the %1 file
+		|from deletion?';ru='Снять пометку на удаление с файла
+		|""%1""?'");
 	Else
-		QuestionText = NStr("en='Mark the"
-"%1 file for deletion?';ru='Пометить"
-"на удаление файл ""%1""?'");
+		QuestionText = NStr("en='Mark the
+		|%1 file for deletion?';ru='Пометить
+		|на удаление файл ""%1""?'");
 	EndIf;
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, CurrentData.Ref);
@@ -716,9 +716,9 @@ Function ValidateActionAllowed(Val CurrentAction = "")
 		If CurrentData.FileCurrentUserIsEditing Then
 			WarningText = NStr("en='Action is unavailable because the file is locked for editing.';ru='Действие недоступно, так как файл занят для редактирования.'");
 		Else
-			WarningText = NStr("en='Action is unavailable because file"
-"is served for editing by another user.';ru='Действие недоступно, так как файл занят для редактирования"
-"другим пользователем.'");
+			WarningText = NStr("en='Action is unavailable because file
+		|is served for editing by another user.';ru='Действие недоступно, так как файл занят для редактирования
+		|другим пользователем.'");
 		EndIf;
 		
 		ShowMessageBox(, WarningText);

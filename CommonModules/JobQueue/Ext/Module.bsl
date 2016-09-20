@@ -468,9 +468,9 @@ Procedure ChangeTask(ID, JobParameters) Export
 			For Each KeyAndValue IN JobParameters Do
 				ParameterDescription = ParameterDescriptions.Find(Upper(KeyAndValue.Key), "NameUpper");
 				If Not ParameterDescription.Pattern Then
-					MessagePattern = NStr("en='Queue job with ID %1 is created from template."
-"Cannot change  parameter %2 of jobs with set template.';ru='Задание очереди с идентификатором %1 создано на основе шаблона."
-"Изменение параметра %2 заданий с установленным шаблоном запрещено.'");
+					MessagePattern = NStr("en='Queue job with ID %1 is created from template.
+		|Cannot change  parameter %2 of jobs with set template.';ru='Задание очереди с идентификатором %1 создано на основе шаблона.
+		|Изменение параметра %2 заданий с установленным шаблоном запрещено.'");
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, 
 						ID, ParameterDescription.Name);
 					Raise(MessageText);
@@ -611,9 +611,9 @@ Procedure DeleteJob(ID) Export
 				CommonUseReUse.SupportDataSplitter()
 			) Then
 		If ValueIsFilled(Task.Pattern) Then
-			MessagePattern = NStr("en='Queue job with ID %1 is created from template."
-"Deletion of tasks with the installed template is prohibited.';ru='Задание очереди с идентификатором %1 создано на основе шаблона."
-"Удаление заданий с установленным шаблоном запрещено.'");
+			MessagePattern = NStr("en='Queue job with ID %1 is created from template.
+		|Deletion of tasks with the installed template is prohibited.';ru='Задание очереди с идентификатором %1 создано на основе шаблона.
+		|Удаление заданий с установленным шаблоном запрещено.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ID);
 			Raise(MessageText);
 		EndIf;
@@ -724,9 +724,9 @@ Procedure ValidateJobParameters(Parameters, Mode)
 				// Check keys
 				For Each KeyName IN DescriptionFilterKeys Do
 					If Not FilterDescription.Property(KeyName) Then
-						MessagePattern = NStr("en='Invalid filter description in the filter description collection %1 is passed."
-"There is no property %2.';ru='Передано недопустимое описание отбора в коллекции описания отбора %1."
-"Отсутствует свойство %2.'");
+						MessagePattern = NStr("en='Invalid filter description in the filter description collection %1 is passed.
+		|There is no property %2.';ru='Передано недопустимое описание отбора в коллекции описания отбора %1.
+		|Отсутствует свойство %2.'");
 						MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, 
 							KeyAndValue.Key, KeyName);
 						Raise(MessageText);
@@ -746,9 +746,9 @@ Procedure ValidateJobParameters(Parameters, Mode)
 					OR FilterDescription.ComparisonType = ComparisonType.NotInList Then
 					
 					If TypeOf(FilterDescription.Value) <> Type("Array") Then
-						MessagePattern = NStr("en='Invalid type %1 in the filter description in the filter description collection %2 is passed."
-"For matching type %3 the Array type is awaited.';ru='Передан недопустимый тип %1 в описании отбора в коллекции описания отбора %2."
-"Для вида сравнения %3 ожидается тип Массив.'");
+						MessagePattern = NStr("en='Invalid type %1 in the filter description in the filter description collection %2 is passed.
+		|For matching type %3 the Array type is awaited.';ru='Передан недопустимый тип %1 в описании отбора в коллекции описания отбора %2.
+		|Для вида сравнения %3 ожидается тип Массив.'");
 						MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, 
 							TypeOf(FilterDescription.Value), KeyAndValue.Key, FilterDescription.ComparisonType);
 						Raise(MessageText);

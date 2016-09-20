@@ -321,11 +321,11 @@ Procedure RunOpenOfProcessingForm(ExecuteCommand, Form, DestinationObjects) Expo
 		ProcessingForm = ExternalDataProcessor.GetForm(, Form);
 		If ProcessingForm = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='For the report or data processor ""%1"" the"
-"main form is not assigned or the main form is not intended to be launched in the usual application."
-"Command ""%2"" can not be run.';ru='Для отчета или обработки ""%1"" не"
-"назначена основная форма, или основная форма не предназначена для запуска в обычном приложении."
-"Команда ""%2"" не может быть выполнена.'"),
+				NStr("en='For the report or data processor ""%1"" the
+		|main form is not assigned or the main form is not intended to be launched in the usual application.
+		|Command ""%2"" can not be run.';ru='Для отчета или обработки ""%1"" не
+		|назначена основная форма, или основная форма не предназначена для запуска в обычном приложении.
+		|Команда ""%2"" не может быть выполнена.'"),
 				String(ExecuteCommand.Ref),
 				ExecuteCommand.Presentation);
 		EndIf;
@@ -360,11 +360,11 @@ Procedure RunClientMethodOfDataProcessor(ExecuteCommand, Form, DestinationObject
 		ProcessingForm = ExternalDataProcessor.GetForm(, Form);
 		If ProcessingForm = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='For the report or data processor ""%1"" the"
-"main form is not assigned or the main form is not intended to be launched in the usual application."
-"Command ""%2"" can not be run.';ru='Для отчета или обработки ""%1"" не"
-"назначена основная форма, или основная форма не предназначена для запуска в обычном приложении."
-"Команда ""%2"" не может быть выполнена.'"),
+				NStr("en='For the report or data processor ""%1"" the
+		|main form is not assigned or the main form is not intended to be launched in the usual application.
+		|Command ""%2"" can not be run.';ru='Для отчета или обработки ""%1"" не
+		|назначена основная форма, или основная форма не предназначена для запуска в обычном приложении.
+		|Команда ""%2"" не может быть выполнена.'"),
 				String(ExecuteCommand.Ref),
 				ExecuteCommand.Presentation);
 		EndIf;

@@ -1563,11 +1563,11 @@ Function RequiredAttributesString(DocumentData, MessageText)
 	EndDo;
 	
 	If StrLen(MandatoryData) > 300 Then
-		Pattern = NStr("en='Cannot generate QR code for"
-"document %1 A line of required attributes must"
-"be shorter than 300 characters: ""%2""';ru='Невозможно создать"
-"QR-код для документа %1 Строка обязательных реквизитов"
-"должна быть меньше 300 символов: ""%2""'");
+		Pattern = NStr("en='Cannot generate QR code for
+		|document %1 A line of required attributes must
+		|be shorter than 300 characters: ""%2""';ru='Невозможно создать
+		|QR-код для документа %1 Строка обязательных реквизитов
+		|должна быть меньше 300 символов: ""%2""'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(Pattern,
 		                                                                         DocumentData.Ref,
 		                                                                         MandatoryData);

@@ -372,9 +372,9 @@ Procedure ImportRulesExecute(Val PlacedFileAddress, Val FileName, Val IsArchive)
 		Return;
 	EndIf;
 	
-	ErrorText = NStr("en='Errors were found during the import."
-"Do you want to open the event log?';ru='При загрузке данных возникли ошибки."
-"Перейти в журнал регистрации?'");
+	ErrorText = NStr("en='Errors were found during the import.
+		|Do you want to open the event log?';ru='При загрузке данных возникли ошибки.
+		|Перейти в журнал регистрации?'");
 	
 	Notification = New NotifyDescription("ShowEventLogMonitorOnError", ThisObject);
 	ShowQueryBox(Notification, ErrorText, QuestionDialogMode.YesNo, ,DialogReturnCode.No);
@@ -477,13 +477,13 @@ Procedure UpdateRuleInfo()
 	
 	If Record.RulesSource = Enums.RuleSourcesForDataExchange.File Then
 		
-		RulesInformation = NStr("en='Use of rules imported"
-"from the file may lead to errors when updating application to a new version."
-""
-"[InformationAboutRules]';ru='Использование"
-"правил, загруженных из файла, может привести к ошибкам при переходе на новую версию программы."
-""
-"[ИнформацияОПравилах]'");
+		RulesInformation = NStr("en='Use of rules imported
+		|from the file may lead to errors when updating application to a new version.
+		|
+		|[InformationAboutRules]';ru='Использование
+		|правил, загруженных из файла, может привести к ошибкам при переходе на новую версию программы.
+		|
+		|[ИнформацияОПравилах]'");
 		
 		RulesInformation = StrReplace(RulesInformation, "[InformationAboutRules]", Record.RulesInformation);
 		

@@ -44,11 +44,11 @@ Function GetFileBinaryData(Val AttachedFile) Export
 		Else
 			// Record in the event log.
 			ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='There is no binary data in"
-""
-"the AttachedFiles register Ref to file: ""%1"".';ru='Двоичные данные файла отсутствуют в регистре ПрисоединенныеФайлы"
-""
-"Ссылка на файл: ""%1"".'"),
+				NStr("en='There is no binary data in
+		|
+		|the AttachedFiles register Ref to file: ""%1"".';ru='Двоичные данные файла отсутствуют в регистре ПрисоединенныеФайлы
+		|
+		|Ссылка на файл: ""%1"".'"),
 				GetURL(AttachedFile));
 			WriteLogEvent(NStr("en='Files.File opening';ru='Файлы.Открытие файла'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
@@ -252,9 +252,9 @@ Function AddFile(Val FilesOwner,
 		If Not Catalogs.AllRefsType().ContainsType(TypeOf(NewRefToFile))
 			Or Not ValueIsFilled(NewRefToFile) Then
 			
-			Raise NStr("en='Error when adding the attached file."
-"Reference to the new file is not filled.';ru='Ошибка при добавлении присоединенного файла."
-"Ссылка на новый файл не заполнена.'");
+			Raise NStr("en='Error when adding the attached file.
+		|Reference to the new file is not filled.';ru='Ошибка при добавлении присоединенного файла.
+		|Ссылка на новый файл не заполнена.'");
 		EndIf;
 		
 		CatalogName = AttachedFilesService.CatalogNameStorageFiles(
@@ -320,9 +320,9 @@ Function AddFile(Val FilesOwner,
 			RollbackTransaction();
 		EndIf;
 		
-		MessagePattern = NStr("en='An error occurred while adding"
-"attached file ""%1"": %2';ru='Ошибка при добавлении"
-"присоединенного файла ""%1"": %2'");
+		MessagePattern = NStr("en='An error occurred while adding
+		|attached file ""%1"": %2';ru='Ошибка при добавлении
+		|присоединенного файла ""%1"": %2'");
 		CommentEventLogMonitor = StringFunctionsClientServer.PlaceParametersIntoString(
 			MessagePattern,
 			BaseName + "." + ExtensionWithoutDot,
@@ -522,8 +522,8 @@ Procedure ConvertFilesToAttached(Val FilesOwner, CatalogName = Undefined) Export
 	ModuleFileOperationsServiceServerCall = CommonUse.CommonModule("FileOperationsServiceServerCall");
 	ModuleFileOperationsService = CommonUse.CommonModule("FileOperationsService");
 	
-	ErrorTitle = NStr("en='An error occurred while converting subsystem attached files"
-"Work with files to attached files of the Attached files subsystem.';ru='Ошибка при конвертации присоединенных файлов подсистемы Работа с файлами в присоединенные файлы подсистемы Присоединенные файлы.'");
+	ErrorTitle = NStr("en='An error occurred while converting subsystem attached files
+		|Work with files to attached files of the Attached files subsystem.';ru='Ошибка при конвертации присоединенных файлов подсистемы Работа с файлами в присоединенные файлы подсистемы Присоединенные файлы.'");
 	
 	CatalogName = AttachedFilesService.CatalogNameStorageFiles(
 		FilesOwner, CatalogName, ErrorTitle);
@@ -788,9 +788,9 @@ Procedure PerformActionsBeforeWriteAttachedFile(Source, Cancel) Export
 	If Not ValueIsFilled(Source.FileOwner) Then
 		
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Owner in file is"
-"not filled in ""%1"".';ru='Не заполнен"
-"владелец в файле ""%1"".'"),
+			NStr("en='Owner in file is
+		|not filled in ""%1"".';ru='Не заполнен
+		|владелец в файле ""%1"".'"),
 			Source.Description);
 		
 		If InfobaseUpdate.InfobaseUpdateInProgress() Then
@@ -1013,11 +1013,11 @@ Function ErrorTextOnFileReceiving(Val ErrorInfo, Val File)
 	
 	If File <> Undefined Then
 		ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='%1"
-""
-"Ref to file: ""%2"".';ru='%1"
-""
-"Ссылка на файл: ""%2"".'"),
+			NStr("en='%1
+		|
+		|Ref to file: ""%2"".';ru='%1
+		|
+		|Ссылка на файл: ""%2"".'"),
 			ErrorInfo,
 			GetURL(File) );
 	EndIf;
@@ -1099,11 +1099,11 @@ Procedure MarkToDeleteAttachedFiles(Val Source, CatalogName = Undefined)
 		While Selection.Next() Do
 			If Source.DeletionMark AND ValueIsFilled(Selection.IsEditing) Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='""%1"" can not be"
-"deleted, so. contains attached"
-"file ""%2"" taken for editing.';ru='""%1"" не может быть удален,"
-"т.к. содержит присоединенный файл ""%2"","
-"занятый для редактирования.'"),
+					NStr("en='""%1"" can not be
+		|deleted, so. contains attached
+		|file ""%2"" taken for editing.';ru='""%1"" не может быть удален,
+		|т.к. содержит присоединенный файл ""%2"",
+		|занятый для редактирования.'"),
 					String(Source.Ref),
 					String(Selection.Ref));
 			EndIf;

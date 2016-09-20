@@ -1179,11 +1179,11 @@ Procedure ExecuteFillingAttributesUsingTIN()
 	If ValueIsFilled(ErrorDescription) Then
 		If ErrorDescription = "AuthenticationParametersAreNotSpecified" Then
 		
-			QuestionText = NStr("en='For automatic filling the"
-"counterparty attributes it is necessary to connect to the user online support."
-"Connect now?';ru='Для автоматического заполнения"
-"реквизитов контрагентов необходимо подключиться к интернет-поддержке пользователей."
-"Подключиться сейчас?'");
+			QuestionText = NStr("en='For automatic filling the
+		|counterparty attributes it is necessary to connect to the user online support.
+		|Connect now?';ru='Для автоматического заполнения
+		|реквизитов контрагентов необходимо подключиться к интернет-поддержке пользователей.
+		|Подключиться сейчас?'");
 			NotifyDescription = New NotifyDescription("EnableInternetSupport", ThisObject);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 		

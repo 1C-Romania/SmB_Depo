@@ -12,11 +12,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		, , Parameters.DetailedErrorMessage);
 	
 	ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='An error occurred while updating"
-""
-"application version: %1';ru='При обновлении версии"
-""
-"программы возникла ошибка: %1'"),
+		NStr("en='An error occurred while updating
+		|
+		|application version: %1';ru='При обновлении версии
+		|
+		|программы возникла ошибка: %1'"),
 		Parameters.AShortErrorMessage);
 	
 	Items.ErrorMessageText.Title = ErrorMessageText;

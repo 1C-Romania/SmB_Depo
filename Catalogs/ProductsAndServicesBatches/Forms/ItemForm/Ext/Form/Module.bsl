@@ -65,9 +65,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Not Object.Owner.UseBatches Then
 	
 		Message = New UserMessage();
-		Message.Text = NStr("en='Products and services are not accounted by batches!"
-"Select the ""Use batches"" check box in the products and services card';ru='Для номенклатуры не ведется учет по партиям!"
-"Установите флаг ""Использовать партии"" в карточке номенклатуры'");
+		Message.Text = NStr("en='Products and services are not accounted by batches!
+		|Select the ""Use batches"" check box in the products and services card';ru='Для номенклатуры не ведется учет по партиям!
+		|Установите флаг ""Использовать партии"" в карточке номенклатуры'");
 		Message.Message();
 		Cancel = True;
 		

@@ -49,8 +49,8 @@ Procedure ResetCommand(Command)
 		NotificationText     = String(OptionRef);
 		ShowUserNotification(NotificationTitle, NotificationRef, NotificationText);
 	Else
-		NotificationText = NStr("en='Custom settings"
-"of report options are reset (%1 pcs.).';ru='Сброшены пользовательские настройки вариантов отчетов (%1 шт.).'");
+		NotificationText = NStr("en='Custom settings
+		|of report options are reset (%1 pcs.).';ru='Сброшены пользовательские настройки вариантов отчетов (%1 шт.).'");
 		NotificationText = StrReplace(NotificationText, "%1", Format(VariantCount, "NZ=0; NG=0"));
 		ShowUserNotification(, , NotificationText);
 	EndIf;

@@ -92,9 +92,9 @@ Procedure StatusOnChange(Item)
 		
 		If ThroughEDFOperator Then
 			
-			QuestionText = NStr("en='When cancelling the agreement validity, reject an invitation."
-"Reject?';ru='При отмене действия соглашения необходимо отклонить приглашение."
-"Отклонить?'");
+			QuestionText = NStr("en='When cancelling the agreement validity, reject an invitation.
+		|Reject?';ru='При отмене действия соглашения необходимо отклонить приглашение.
+		|Отклонить?'");
 			NotifyDescription = New NotifyDescription("FinishStateChange", ThisObject);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 		Else
@@ -290,9 +290,9 @@ Procedure EnableAgreementSetupExtendedMode(Command)
 	
 	NotifyDescription = New NotifyDescription("CompleteInclusionAdvancedModeSettings", ThisObject);
 	If Object.AgreementSetupExtendedMode Then
-		QuestionText = NStr("en='Changes of the extended mode will be cleared."
-"Continue?';ru='Изменения раcширенного режима будут очищены."
-"Продолжить?'");
+		QuestionText = NStr("en='Changes of the extended mode will be cleared.
+		|Continue?';ru='Изменения раcширенного режима будут очищены.
+		|Продолжить?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else
 		Object.AgreementSetupExtendedMode = Not Object.AgreementSetupExtendedMode;
@@ -335,11 +335,11 @@ EndProcedure
 Procedure OutgoingDocumentsBeforeStartChangingAtServer(Cancel)
 	
 	If Not Object.AgreementSetupExtendedMode Then
-		MessageText = NStr("en='You can change tabular section"
-"""Electronic documents"" as follows: ""group"" -"
-"in EDF Profile settings, ""individual"" - in the extended settings mode.';ru='Изменение табличной части"
-"""Электронные документы"" возможно: ""групповое"""
-"- в Профиле настроек ЭДО; ""индивидуальное"" - в расширенном режиме настроек.'");
+		MessageText = NStr("en='You can change tabular section
+		|""Electronic documents"" as follows: ""group"" -
+		|in EDF Profile settings, ""individual"" - in the extended settings mode.';ru='Изменение табличной части
+		|""Электронные документы"" возможно: ""групповое""
+		|- в Профиле настроек ЭДО; ""индивидуальное"" - в расширенном режиме настроек.'");
 		CommonUseClientServer.MessageToUser(MessageText, , , , Cancel);
 	EndIf;
 	
@@ -984,9 +984,9 @@ Procedure CounterpartyIdUsageUnique(Cancel)
 		
 		Selection = Result.Select();
 		While Selection.Next() Do
-			MessagePattern = NStr("en='Counterparty"
-"identifier %1 is already used in EDF setting between counterparty %2 and company %3';ru='Идентификатор"
-"контрагента %1 уже используется в настройке ЭДО между контрагентом %2 и организацией %3'");
+			MessagePattern = NStr("en='Counterparty
+		|identifier %1 is already used in EDF setting between counterparty %2 and company %3';ru='Идентификатор
+		|контрагента %1 уже используется в настройке ЭДО между контрагентом %2 и организацией %3'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Selection.CounterpartyID,
 			Selection.Counterparty, Selection.Company);
 			CommonUseClientServer.MessageToUser(MessageText, , , , Cancel);
@@ -1024,9 +1024,9 @@ EndFunction
 Procedure TestLinksDirectExchangeAtServer(IncomingDocumentsDir, OutgoingDocumentsDir, EDFProfileSettings)
 	
 	// Block of checking the access to directories.
-	MessagePattern = NStr("en='Checking access to exchange directories."
-"%1';ru='Проверка доступа к каталогам обмена."
-"%1'");
+	MessagePattern = NStr("en='Checking access to exchange directories.
+		|%1';ru='Проверка доступа к каталогам обмена.
+		|%1'");
 	Try
 		If ElectronicDocumentsServiceCallServer.ValidateCatalogAvailabilityForDirectExchange(IncomingDocumentsDir)
 			AND ElectronicDocumentsServiceCallServer.ValidateCatalogAvailabilityForDirectExchange(OutgoingDocumentsDir) Then
@@ -1275,9 +1275,9 @@ Procedure AfterObtainingPrintsExecuteCheckCertificates(Prints, AdditionalParamet
 		EndIf;
 	EndDo;
 	If Certificate = Undefined Then
-		MessageText = NStr("en='Exchange text by %1 profile. No available certificates in the profile."
-"Test not executed.';ru='Тест обмена по профилю %1. В профиле нет доступных сертификатов."
-"Тест не выполнен.'");
+		MessageText = NStr("en='Exchange text by %1 profile. No available certificates in the profile.
+		|Test not executed.';ru='Тест обмена по профилю %1. В профиле нет доступных сертификатов.
+		|Тест не выполнен.'");
 		MessageText = StrReplace(MessageText, "%1", ProfileEDF);
 		CommonUseClientServer.MessageToUser(MessageText);
 	Else

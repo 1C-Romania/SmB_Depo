@@ -252,9 +252,9 @@ Procedure UsersGroupsDrag(Item, DragParameters, StandardProcessing, String, Fiel
 	
 	If SelectHierarchy Then
 		ShowMessageBox(,
-			NStr("en='To drag user names to groups,"
-"clear the ""Show child group users"" check box.';ru='Для перетаскивания пользователя"
-"в группы необходимо отключить флажок ""Показывать пользователей дочерних групп"".'"));
+			NStr("en='To drag user names to groups,
+		|clear the ""Show child group users"" check box.';ru='Для перетаскивания пользователя
+		|в группы необходимо отключить флажок ""Показывать пользователей дочерних групп"".'"));
 		Return;
 	EndIf;
 	

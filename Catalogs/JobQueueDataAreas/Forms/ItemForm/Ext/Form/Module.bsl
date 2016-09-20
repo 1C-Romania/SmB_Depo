@@ -99,9 +99,9 @@ Procedure ChangeSchedule(NewSchedule, AdditionalParameters) Export
 	Modified = True;
 	SetPresentationSchedule(ThisObject);
 	
-	ShowUserNotification(NStr("en='Replanning';ru='Перепланирование'"), , NStr("en='New schedule will be taken into account"
-"when executing the next job';ru='Новое расписание будет учтено"
-"при следующем выполнении задания'"));
+	ShowUserNotification(NStr("en='Replanning';ru='Перепланирование'"), , NStr("en='New schedule will be taken into account
+		|when executing the next job';ru='Новое расписание будет учтено
+		|при следующем выполнении задания'"));
 	
 EndProcedure
 

@@ -115,13 +115,13 @@ Procedure ExtractAll(Command)
 		ExtractionOfTextsClient(PortionSize);
 		
 		ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Text extraction from"
-"all files with not extract text is completed."
-""
-"Number of processed files: %1.';ru='Завершено извлечение текста из"
-"всех файлов с неизвлеченным текстом."
-""
-"Обработано файлов: %1.'"),
+			NStr("en='Text extraction from
+		|all files with not extract text is completed.
+		|
+		|Number of processed files: %1.';ru='Завершено извлечение текста из
+		|всех файлов с неизвлеченным текстом.
+		|
+		|Обработано файлов: %1.'"),
 			FilesCountWithUnextractedTextBeforeOperationStart));
 	#EndIf
 	
@@ -222,8 +222,8 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 				ErrorDescriptionInfo = BriefErrorDescription(ErrorInfo());
 				
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='An unknown error occurred while"
-"extracting text from  file ""%1""';ru='Во время извлечения текста из файла ""%1"" произошла неизвестная ошибка'"),
+					NStr("en='An unknown error occurred while
+		|extracting text from  file ""%1""';ru='Во время извлечения текста из файла ""%1"" произошла неизвестная ошибка'"),
 					String(FileOrFileVersion));
 				
 				MessageText = MessageText + String(ErrorDescriptionInfo);
@@ -238,9 +238,9 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 		EndDo;
 		
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Text extraction is completed."
-"Number of processed files: %1';ru='Извлечение текста завершено."
-"Обработано файлов: %1'"),
+			NStr("en='Text extraction is completed.
+		|Number of processed files: %1';ru='Извлечение текста завершено.
+		|Обработано файлов: %1'"),
 			FilesArray.Count());
 		
 		Status(MessageText);
@@ -250,8 +250,8 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 		ErrorDescriptionInfo = BriefErrorDescription(ErrorInfo());
 		
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An unknown error occurred while"
-"extracting text from  file ""%1""';ru='Во время извлечения текста из файла ""%1"" произошла неизвестная ошибка'"),
+			NStr("en='An unknown error occurred while
+		|extracting text from  file ""%1""';ru='Во время извлечения текста из файла ""%1"" произошла неизвестная ошибка'"),
 			String(FileOrFileVersion));
 		
 		MessageText = MessageText + String(ErrorDescriptionInfo);

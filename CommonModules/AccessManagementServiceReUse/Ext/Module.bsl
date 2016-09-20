@@ -38,11 +38,11 @@ Function Parameters() Export
 	If ValueIsFilled(ParameterPresentation) Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Information base updating error."
-"Access limitation parameter is"
-"not filled in: ""%1"".';ru='Ошибка обновления информационной базы."
-"Не заполнен параметр"
-"ограничения доступа: ""%1"".'")
+			NStr("en='Information base updating error.
+		|Access limitation parameter is
+		|not filled in: ""%1"".';ru='Ошибка обновления информационной базы.
+		|Не заполнен параметр
+		|ограничения доступа: ""%1"".'")
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 			ParameterPresentation);
 	EndIf;
@@ -159,13 +159,13 @@ Function ConstantRightsRestrictionKindsOfMetadataObjects() Export
 			
 			If ValueIsFilled(ErrorExplanation) Then
 				Raise(StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='An error occurred in kind description string of"
-"the metadata object right restriction: ""%1""."
-""
-"';ru='Ошибка в строке описания вида ограничений"
-"права объекта метаданных: ""%1""."
-""
-"'"), CurrentRow) + ErrorExplanation);
+						NStr("en='An error occurred in kind description string of
+		|the metadata object right restriction: ""%1"".
+		|
+		|';ru='Ошибка в строке описания вида ограничений
+		|права объекта метаданных: ""%1"".
+		|
+		|'"), CurrentRow) + ErrorExplanation);
 			Else
 				AccessTypeProperties = AccessKindsByNames.Get(AccessKind);
 				NewDetails = RightsAccessKinds.Add();

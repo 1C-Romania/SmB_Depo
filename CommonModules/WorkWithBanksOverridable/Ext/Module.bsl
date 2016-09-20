@@ -327,9 +327,9 @@ Function RefreshBanksFromClassifier(Val BankList = Undefined, Val DataArea) Expo
 				Try
 					Parent.Write();
 				Except
-					MessagePattern   = NStr("en='Error when recording the bank-group (state) %1."
-"%2';ru='Ошибка при записи банка-группы (региона) %1."
-"%2'");
+					MessagePattern   = NStr("en='Error when recording the bank-group (state) %1.
+		|%2';ru='Ошибка при записи банка-группы (региона) %1.
+		|%2'");
 					MessageText    = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 						BanksSelection.ParentDescription,
 					DetailErrorDescription(ErrorInfo()));
@@ -352,9 +352,9 @@ Function RefreshBanksFromClassifier(Val BankList = Undefined, Val DataArea) Expo
 		Try
 			Bank.Write();
 		Except
-			MessagePattern   = NStr("en='Error when recording the bank"
-"with BIC %1 %2';ru='Ошибка при записи"
-"банка с БИКом %1 %2'");
+			MessagePattern   = NStr("en='Error when recording the bank
+		|with BIC %1 %2';ru='Ошибка при записи
+		|банка с БИКом %1 %2'");
 			MessageText    = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				BanksSelection.Code,
 				DetailErrorDescription(ErrorInfo()));
@@ -416,9 +416,9 @@ Function RefreshBanksFromClassifier(Val BankList = Undefined, Val DataArea) Expo
 		Try
 			Bank.Write();
 		Except
-			MessagePattern   = NStr("en='Error when recording the bank"
-"with BIC %1 %2';ru='Ошибка при записи"
-"банка с БИКом %1 %2'");
+			MessagePattern   = NStr("en='Error when recording the bank
+		|with BIC %1 %2';ru='Ошибка при записи
+		|банка с БИКом %1 %2'");
 			MessageText    = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				BanksSelection.Code,
 				DetailErrorDescription(ErrorInfo()));

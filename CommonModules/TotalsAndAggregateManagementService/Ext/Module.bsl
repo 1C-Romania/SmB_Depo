@@ -134,9 +134,9 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	Prototype.Important   = True;
 	Prototype.Form    = DataProcessorFullName + ".Form";
 	Prototype.Presentation = NStr("en='Optimize the application';ru='Оптимизировать программу'");
-	Prototype.ToolTip     = NStr("en='Speed up documents processing and reports generation."
-"Mandatory monthly procedure, can take some time.';ru='Ускорить проведение документов и формирование отчетов."
-"Обязательная ежемесячная процедура, может занять некоторое время.'");
+	Prototype.ToolTip     = NStr("en='Speed up documents processing and reports generation.
+		|Mandatory monthly procedure, can take some time.';ru='Ускорить проведение документов и формирование отчетов.
+		|Обязательная ежемесячная процедура, может занять некоторое время.'");
 	
 	For Each Section IN Sections Do
 		Work = CurrentWorks.Add();

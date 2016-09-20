@@ -239,9 +239,9 @@ Procedure UpdateInformationInServiceInformationRegister(Cancel)
 	
 	If Cancel Then
 		Raise
-			NStr("en='Failed to record service information on automatic discounts and extra charges."
-"Details in the event log.';ru='Не удалось записать служебную информацию по автоматическим скидкам, наценкам."
-"Подробности в журнале регистрации.'");
+			NStr("en='Failed to record service information on automatic discounts and extra charges.
+		|Details in the event log.';ru='Не удалось записать служебную информацию по автоматическим скидкам, наценкам.
+		|Подробности в журнале регистрации.'");
 	EndIf;
 	
 EndProcedure

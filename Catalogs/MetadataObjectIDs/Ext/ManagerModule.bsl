@@ -459,11 +459,11 @@ Procedure ImportDataToSubordinateNode(Objects) Export
 				ImportedProperty.Ref = Object.GetNewObjectRef();
 				If Not ValueIsFilled(ImportedProperty.Ref) Then
 					Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='An error occurred while importing metadata objects IDs."
-"Unable to import new item in which ref of"
-"a new one is not specified: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных."
-"Невозможно загрузить новый элемент у которого не указана ссылка нового:"
-"""%1"".'"),
+						NStr("en='An error occurred while importing metadata objects IDs.
+		|Unable to import new item in which ref of
+		|a new one is not specified: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных.
+		|Невозможно загрузить новый элемент у которого не указана ссылка нового:
+		|""%1"".'"),
 						Object.FullName);
 				EndIf;
 			EndIf;
@@ -549,11 +549,11 @@ Procedure ImportDataToSubordinateNode(Objects) Export
 			
 			If DescriptionFullsImported.Get(Lower(Object.FullName)) <> Undefined Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='An error occurred while importing metadata objects IDs."
-"Unable to import two items in which full"
-"name matches: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных."
-"Невозможно загрузить два элемента у"
-"которых совпадает полное имя: ""%1"".'"),
+					NStr("en='An error occurred while importing metadata objects IDs.
+		|Unable to import two items in which full
+		|name matches: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных.
+		|Невозможно загрузить два элемента у
+		|которых совпадает полное имя: ""%1"".'"),
 					Object.FullName);
 			EndIf;
 			DescriptionFullsImported.Insert(Lower(Object.FullName));
@@ -564,22 +564,22 @@ Procedure ImportDataToSubordinateNode(Objects) Export
 				
 				If ImportedKeys.Get(MetadataObjectKey) <> Undefined Then
 					Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='An error occurred while importing metadata objects IDs."
-"Unable to import two items in which metadata object"
-"key matches: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных."
-"Невозможно загрузить два элемента у которых"
-"совпадает ключ объекта метаданных: ""%1"".'"),
+						NStr("en='An error occurred while importing metadata objects IDs.
+		|Unable to import two items in which metadata object
+		|key matches: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных.
+		|Невозможно загрузить два элемента у которых
+		|совпадает ключ объекта метаданных: ""%1"".'"),
 						String(MetadataObjectKey));
 				EndIf;
 				ImportedKeys.Insert(MetadataObjectKey);
 				
 				If ImportedProperty.MetadataObjectByKey <> ImportedProperty.MetadataObjectByDescriptionFull Then
 					Raise StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='An error occurred while importing metadata objects IDs."
-"Unable to import item metadata object of"
-"which  ""%1"" does not correspond to the full name ""%2"".';ru='Ошибка загрузки идентификаторов объектов метаданных."
-"Невозможно загрузить элемент у которого ключ объекта метаданных"
-"""%1"" не соответствует полному имени ""%2"".'"),
+						NStr("en='An error occurred while importing metadata objects IDs.
+		|Unable to import item metadata object of
+		|which  ""%1"" does not correspond to the full name ""%2"".';ru='Ошибка загрузки идентификаторов объектов метаданных.
+		|Невозможно загрузить элемент у которого ключ объекта метаданных
+		|""%1"" не соответствует полному имени ""%2"".'"),
 						String(MetadataObjectKey), Object.FullName);
 				EndIf;
 				
@@ -667,23 +667,23 @@ Procedure CheckUse() Export
 	   AND ValueIsFilled(CommonUse.ObjectManagerByFullName("Constant.MasterNode").Get()) Then
 		
 		Raise
-			NStr("en='""Metadata objects IDs"" catalog can not be"
-"used in the infobase with the unconfirmed cancellation of the main node."
-""
-"To restore the connection with the main node,"
-"run 1C:Enterprise and click the Restore button or"
-"applicationmatically set the main node saved in the Main node constant."
-""
-"To confirm that you want to cancel connection with"
-"the main node, run 1C:Enterprise and click the Disable button or applicationmatically clear the Main node constant.';ru='Справочник ""Идентификаторы объектов"
-"метаданных"" не может использоваться в информационной базе с неподтвержденной отменой главного узла."
-""
-"Для восстановления связи с главным узлом"
-"запустите 1C:Предприятие и нажмите кнопку Восстановить"
-"или программно установите главный узел, сохраненный в константе Главный узел."
-""
-"Для подтверждения отмены связи с"
-"главным узлом запустите 1C:Предприятие и нажмите кнопку Отключить или программно очистите константу Главный узел.'");
+			NStr("en='""Metadata objects IDs"" catalog can not be
+		|used in the infobase with the unconfirmed cancellation of the main node.
+		|
+		|To restore the connection with the main node,
+		|run 1C:Enterprise and click the Restore button or
+		|applicationmatically set the main node saved in the Main node constant.
+		|
+		|To confirm that you want to cancel connection with
+		|the main node, run 1C:Enterprise and click the Disable button or applicationmatically clear the Main node constant.';ru='Справочник ""Идентификаторы объектов
+		|метаданных"" не может использоваться в информационной базе с неподтвержденной отменой главного узла.
+		|
+		|Для восстановления связи с главным узлом
+		|запустите 1C:Предприятие и нажмите кнопку Восстановить
+		|или программно установите главный узел, сохраненный в константе Главный узел.
+		|
+		|Для подтверждения отмены связи с
+		|главным узлом запустите 1C:Предприятие и нажмите кнопку Отключить или программно очистите константу Главный узел.'");
 	EndIf;
 	
 EndProcedure
@@ -1059,29 +1059,29 @@ Procedure CheckObjectsBeforeWriting(Object, AutoUpdate = False) Export
 		If Object.IsNew() Then
 			
 			CallExceptionByError(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='It is possible to"
-"create new metadata object ID only automatically while updating catalog data.';ru='Создание нового"
-"идентификатора объекта метаданных возможно только автоматически при обновлении данных справочника.'"),
+				NStr("en='It is possible to
+		|create new metadata object ID only automatically while updating catalog data.';ru='Создание нового
+		|идентификатора объекта метаданных возможно только автоматически при обновлении данных справочника.'"),
 				Object.FullName));
 				
 		ElsIf FullNameChangeIsProhibited(Object) Then
 			
 			CallExceptionByError(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='While changing metadata object ID"
-"full name ""%1"" was specified that"
-"can be set only automatically while updating catalog data.';ru='При изменении идентификатора объекта"
-"метаданных указано полное имя"
-"""%1"", которое может быть установлено только автоматически при обновлении данных справочника.'"),
+				NStr("en='While changing metadata object ID
+		|full name ""%1"" was specified that
+		|can be set only automatically while updating catalog data.';ru='При изменении идентификатора объекта
+		|метаданных указано полное имя
+		|""%1"", которое может быть установлено только автоматически при обновлении данных справочника.'"),
 				Object.FullName));
 		
 		ElsIf FullNameIsUsed(Object.FullName, Object.Ref) Then
 			
 			CallExceptionByError(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='While changing metadada object ID"
-"full name is"
-"specified ""%1"" that is used in the catalog.';ru='При изменении идентификатора объекта"
-"метаданных указано"
-"полное имя ""%1"", которое уже используется в справочнике.'"),
+				NStr("en='While changing metadada object ID
+		|full name is
+		|specified ""%1"" that is used in the catalog.';ru='При изменении идентификатора объекта
+		|метаданных указано
+		|полное имя ""%1"", которое уже используется в справочнике.'"),
 				Object.FullName));
 		
 		EndIf;
@@ -1095,9 +1095,9 @@ Procedure CheckObjectsBeforeWriting(Object, AutoUpdate = False) Export
 		   AND Not IsCollection(Object.GetNewObjectRef()) Then
 			
 			CallExceptionByError(
-				NStr("en='You can add new items"
-"only in the main node of the distributed infobase.';ru='Добавление новых элементов"
-"может быть выполнено только в главном узле распределенной информационной базы.'"));
+				NStr("en='You can add new items
+		|only in the main node of the distributed infobase.';ru='Добавление новых элементов
+		|может быть выполнено только в главном узле распределенной информационной базы.'"));
 		EndIf;
 		
 		If Not Object.DeletionMark
@@ -1105,9 +1105,9 @@ Procedure CheckObjectsBeforeWriting(Object, AutoUpdate = False) Export
 			
 			If Upper(Object.FullName) <> Upper(CommonUse.ObjectAttributeValue(Object.Ref, "FullName")) Then
 				CallExceptionByError(
-					NStr("en='It is possible to change ""Full"
-"name"" attribute only in the main node of the distributed infobase.';ru='Изменение реквизита ""Полное"
-"имя"" может быть выполнено только в главном узле распределенной информационной базы.'"));
+					NStr("en='It is possible to change ""Full
+		|name"" attribute only in the main node of the distributed infobase.';ru='Изменение реквизита ""Полное
+		|имя"" может быть выполнено только в главном узле распределенной информационной базы.'"));
 			EndIf;
 		EndIf;
 	EndIf;
@@ -1517,9 +1517,9 @@ Function MetadataFindByFullName(FullName)
 				Return Undefined;
 			EndIf;
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while searching for a child subsystem by a full name (while searching ""%1"" was found ""%2"")."
-"Do not give subsystems the same names or use the recent platform version.';ru='Ошибка при поиске дочерней подсистемы по полному имени (при поиске ""%1"" была найдена ""%2"")."
-"Не следует называть подсистемы одинаково, либо использовать более новую версию платформы.'"),
+				NStr("en='An error occurred while searching for a child subsystem by a full name (while searching ""%1"" was found ""%2"").
+		|Do not give subsystems the same names or use the recent platform version.';ru='Ошибка при поиске дочерней подсистемы по полному имени (при поиске ""%1"" была найдена ""%2"").
+		|Не следует называть подсистемы одинаково, либо использовать более новую версию платформы.'"),
 				FullName,
 				MetadataObject.FullName());
 		Else

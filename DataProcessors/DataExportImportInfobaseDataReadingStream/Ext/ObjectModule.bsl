@@ -181,9 +181,9 @@ Function ReadFlowFragment()
 		ReadStream.Read();
 	Except
 		TextEL = ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='An error occurred while copying a fragment of the source file. Partially copied"
-"fragment:% 1';ru='Ошибка копирования фрагмента исходного файла. Частично"
-"скопированный фрагмент: %1'"),
+			NStr("en='An error occurred while copying a fragment of the source file. Partially copied
+		|fragment:% 1';ru='Ошибка копирования фрагмента исходного файла. Частично
+		|скопированный фрагмент: %1'"),
 				WriteFragment.Close());
 		WriteLogEvent(NStr("en='Exporting/importing data. XML read error';ru='Выгрузка/загрузка данных.Ошибка чтения XML'", 
 			ServiceTechnologyIntegrationWithSSL.MainLanguageCode()), EventLogLevel.Error, , , TextEL);
@@ -209,19 +209,19 @@ EndFunction
 Procedure XMLReaderCallException(Val Fragment, Val ErrorText)
 	
 	Raise StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='An error occurred while reading data from file %1: while reading fragment "
-""
-"%2"
-""
-"an error occurred:"
-""
-"%3.';ru='Ошибка при чтении данных из файла %1: при чтении фрагмента %2"
-""
-"произошла"
-""
-"ошибка:"
-""
-"%3.'"),
+		NStr("en='An error occurred while reading data from file %1: while reading fragment 
+		|
+		|%2
+		|
+		|an error occurred:
+		|
+		|%3.';ru='Ошибка при чтении данных из файла %1: при чтении фрагмента %2
+		|
+		|произошла
+		|
+		|ошибка:
+		|
+		|%3.'"),
 		CurrentFileName,
 		Fragment,
 		ErrorText

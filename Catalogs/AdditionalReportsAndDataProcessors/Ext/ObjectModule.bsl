@@ -67,11 +67,11 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			Cancel = True;
 			If ItemCheck Then
 				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Name ""%1"" used by this report (data processor) is already used by another additional published report (data processor). "
-""
-"To continue it is necessary to change Publication kind from ""%2"" to ""%3"" or ""%4"".';ru='Имя ""%1"", используемое данным отчетом (обработкой), уже занято другим опубликованным дополнительным отчетом (обработкой). "
-""
-"Для продолжения необходимо изменить вид Публикации с ""%2"" на ""%3"" или ""%4"".'"),
+					NStr("en='Name ""%1"" used by this report (data processor) is already used by another additional published report (data processor). 
+		|
+		|To continue it is necessary to change Publication kind from ""%2"" to ""%3"" or ""%4"".';ru='Имя ""%1"", используемое данным отчетом (обработкой), уже занято другим опубликованным дополнительным отчетом (обработкой). 
+		|
+		|Для продолжения необходимо изменить вид Публикации с ""%2"" на ""%3"" или ""%4"".'"),
 					ObjectName,
 					String(Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Used),
 					String(Enums.AdditionalReportsAndDataProcessorsPublicationOptions.DebugMode),

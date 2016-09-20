@@ -54,9 +54,9 @@ Procedure ConnectAndClose(Result = Undefined, AdditionalParameters = Undefined) 
 	
 	If Cancel Then
 		
-		NString = NStr("en='There were errors when connecting to the end point."
-"Do you want to open the event log?';ru='При подключении конечной точки возникли ошибки."
-"Перейти в журнал регистрации?'");
+		NString = NStr("en='There were errors when connecting to the end point.
+		|Do you want to open the event log?';ru='При подключении конечной точки возникли ошибки.
+		|Перейти в журнал регистрации?'");
 		NotifyDescription = New NotifyDescription("OpenEventLogMonitor", ThisObject);
 		ShowQueryBox(NOTifyDescription, NString, QuestionDialogMode.YesNo, ,DialogReturnCode.No);
 		Return;

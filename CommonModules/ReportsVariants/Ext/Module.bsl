@@ -171,9 +171,9 @@ Function ReportDescription(OptionsTree, ReportValueOrMetadata) Export
 	
 	If RowReport = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while"
-"receiving report description ""%1"", it is not connected to subsystem ""%2""';ru='Ошибка получения"
-"описания отчета ""%1"", он не подключен к подсистеме ""%2""'"),
+			NStr("en='An error occurred while
+		|receiving report description ""%1"", it is not connected to subsystem ""%2""';ru='Ошибка получения
+		|описания отчета ""%1"", он не подключен к подсистеме ""%2""'"),
 			String(ReportValueOrMetadata),
 			ReportsVariantsClientServer.SubsystemDescription(""));
 	EndIf;
@@ -391,9 +391,9 @@ Procedure AddFullUpdateHandlers(Handlers, Version) Export
 		Handler.SharedData     = True;
 		Handler.Version    = Version;
 		Handler.Procedure = "ReportsVariants.DeferredGeneralDataFullUpdate";
-		Handler.Comment = NStr("en='Full update of an reports search index that are provided in the application."
-"Reports search is temporary unavailable.';ru='Полное обновление индекса поиска отчетов, предусмотренных в программе."
-"Поиск отчетов временно недоступен.'");
+		Handler.Comment = NStr("en='Full update of an reports search index that are provided in the application.
+		|Reports search is temporary unavailable.';ru='Полное обновление индекса поиска отчетов, предусмотренных в программе.
+		|Поиск отчетов временно недоступен.'");
 	EndIf;
 	
 	Handler = Handlers.Add();
@@ -401,9 +401,9 @@ Procedure AddFullUpdateHandlers(Handlers, Version) Export
 	Handler.SharedData     = False;
 	Handler.Version    = Version;
 	Handler.Procedure = "ReportsVariants.DeferredSeparatedDataFullUpdate";
-	Handler.Comment = NStr("en='Full update of reports search index saved by users."
-"Reports search is temporary unavailable.';ru='Полное обновление индекса поиска отчетов, сохраненных пользователями."
-"Поиск отчетов временно недоступен.'");
+	Handler.Comment = NStr("en='Full update of reports search index saved by users.
+		|Reports search is temporary unavailable.';ru='Полное обновление индекса поиска отчетов, сохраненных пользователями.
+		|Поиск отчетов временно недоступен.'");
 	
 EndProcedure
 
@@ -831,9 +831,9 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 		Handler.SharedData     = True;
 		Handler.Version      = "*";
 		Handler.Procedure   = "ReportsVariants.DeferredGeneralDataIncrementalUpdate";
-		Handler.Comment = NStr("en='Incremental update of reports search update present in the application."
-"Reports search is temporary unavailable.';ru='Инкрементальное обновление индекса поиска отчетов, предусмотренных в программе."
-"Поиск отчетов временно недоступен.'");
+		Handler.Comment = NStr("en='Incremental update of reports search update present in the application.
+		|Reports search is temporary unavailable.';ru='Инкрементальное обновление индекса поиска отчетов, предусмотренных в программе.
+		|Поиск отчетов временно недоступен.'");
 	EndIf;
 	
 	// 3.2. Fill in information to search for reports variants.
@@ -842,9 +842,9 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler.SharedData     = False;
 	Handler.Version    = "2.2.3.31";
 	Handler.Procedure = "ReportsVariants.ReduceQuickSettingsQuantity";
-	Handler.Comment = NStr("en='Decreases the quick"
-"settings quantity in the user reports down to 2.';ru='Уменьшает"
-"количество быстрых настроек в пользовательских отчетах до 2 шт.'");
+	Handler.Comment = NStr("en='Decreases the quick
+		|settings quantity in the user reports down to 2.';ru='Уменьшает
+		|количество быстрых настроек в пользовательских отчетах до 2 шт.'");
 	
 EndProcedure
 
@@ -1652,11 +1652,11 @@ Function KeysChanges()
 		If Found.Count() > 0 Then
 			Conflict = Found[0];
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while registering changes"
-"of report variant name ""%1"": Relevant variant"
-"name ""%2"" (old name ""%3"") is also an old name ""%4"" (relevant name ""%5"").';ru='Ошибка регистрации изменений имени"
-"варианта отчета ""%1"": Актуальное имя варианта"
-"""%2"" (старое имя ""%3"") так же числится как старое имя ""%4"" (актуальное имя ""%5"").'"),
+				NStr("en='An error occurred while registering changes
+		|of report variant name ""%1"": Relevant variant
+		|name ""%2"" (old name ""%3"") is also an old name ""%4"" (relevant name ""%5"").';ru='Ошибка регистрации изменений имени
+		|варианта отчета ""%1"": Актуальное имя варианта
+		|""%2"" (старое имя ""%3"") так же числится как старое имя ""%4"" (актуальное имя ""%5"").'"),
 				String(Update.Report),
 				Update.ActualOptionName,
 				Update.OldOptionName,
@@ -1667,13 +1667,13 @@ Function KeysChanges()
 		If Found.Count() > 2 Then
 			Conflict = Found[1];
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while registring report"
-"variant name ""%1"": Old variant name ""%2"""
-"(relevant name ""%3"") is listed as an"
-"old report variant name ""%4"" (relevant name ""%5"").';ru='Ошибка регистрации изменений имени варианта отчета ""%1"":"
-"Старое имя варианта ""%2"" (актуальное имя ""%3"")"
-"так же числится как старое имя "
-"варианта отчета ""%4"" (актуальное имя ""%5"").'"),
+				NStr("en='An error occurred while registring report
+		|variant name ""%1"": Old variant name ""%2""
+		|(relevant name ""%3"") is listed as an
+		|old report variant name ""%4"" (relevant name ""%5"").';ru='Ошибка регистрации изменений имени варианта отчета ""%1"":
+		|Старое имя варианта ""%2"" (актуальное имя ""%3"")
+		|так же числится как старое имя 
+		|варианта отчета ""%4"" (актуальное имя ""%5"").'"),
 				String(Update.Report),
 				Update.OldOptionName,
 				Update.ActualOptionName,
@@ -3494,9 +3494,9 @@ Function IndexSchemaContent(VariantObject) Export
 		// Report object.
 		If Not RowReport.SystemInfo.BuiltOnDCS Then
 			If RowReport.Placement.Count() > 0 Then
-				ErrorText = NStr("en='For report ""%2"" search settings are not filled in: names of fields or parameters and filters."
-"For more information - see the ""SetReportVariants"" procedure of the ""ReportVariantsPredefined"" module.';ru='Для отчета ""%2"" не заполнены настройки поиска: наименования полей или параметров и отборов."
-"Подробнее - см. процедуру ""НастроитьВариантыОтчетов"" модуля ""ВариантыОтчетовПереопределяемый"".'");
+				ErrorText = NStr("en='For report ""%2"" search settings are not filled in: names of fields or parameters and filters.
+		|For more information - see the ""SetReportVariants"" procedure of the ""ReportVariantsPredefined"" module.';ru='Для отчета ""%2"" не заполнены настройки поиска: наименования полей или параметров и отборов.
+		|Подробнее - см. процедуру ""НастроитьВариантыОтчетов"" модуля ""ВариантыОтчетовПереопределяемый"".'");
 				ErrorByVariant(VariantObject.Ref, ErrorText, "", VariantObject.Report);
 			EndIf;
 			Return False; // Problem detected.

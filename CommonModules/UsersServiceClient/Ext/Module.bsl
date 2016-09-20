@@ -120,16 +120,16 @@ Procedure OpenReportOrForm(CurrentItem, User, CurrentUser, FormNamePersonalSetti
 				ItemParent = ValueTreeItem.CurrentData.GetParent();
 				
 				If ValueTreeItem.CurrentData.RowType = "DesktopSettings" Then
-					ShowMessageBox(,NStr("en='To view desktop settings, go to the ""Desktop"" section"
-"in the command interface of the application.';ru='Для просмотра настроек рабочего стола перейдите"
-"к разделу ""Рабочий стол"" в командном интерфейсе программы.'"));
+					ShowMessageBox(,NStr("en='To view desktop settings, go to the ""Desktop"" section
+		|in the command interface of the application.';ru='Для просмотра настроек рабочего стола перейдите
+		|к разделу ""Рабочий стол"" в командном интерфейсе программы.'"));
 					Return;
 				EndIf;
 				
 				If ValueTreeItem.CurrentData.RowType = "CommandInterfaceSettings" Then
-					ShowMessageBox(,NStr("en='To view command interface settings, select the"
-"required section of the command interface of the application.';ru='Для просмотра настроек командного интерфейса"
-"выберите нужный раздел командного интерфейса программы.'"));
+					ShowMessageBox(,NStr("en='To view command interface settings, select the
+		|required section of the command interface of the application.';ru='Для просмотра настроек командного интерфейса
+		|выберите нужный раздел командного интерфейса программы.'"));
 					Return;
 				EndIf;
 				

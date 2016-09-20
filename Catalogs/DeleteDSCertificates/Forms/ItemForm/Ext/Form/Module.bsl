@@ -446,9 +446,9 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	
 	If Object.RestrictAccessToCertificate AND Not ValueIsFilled(Object.User) Then
 		Cancel = True;
-		ShowMessageBox(,NStr("en='The user to whom the certificate is available is not specified!"
-"Specify the user or remove the access restriction.';ru='Не указан пользователь, которому доступен сертификат!"
-"Укажите пользователя, либо снимите ограничение доступа.'"));
+		ShowMessageBox(,NStr("en='The user to whom the certificate is available is not specified!
+		|Specify the user or remove the access restriction.';ru='Не указан пользователь, которому доступен сертификат!
+		|Укажите пользователя, либо снимите ограничение доступа.'"));
 	EndIf;
 	
 EndProcedure

@@ -119,9 +119,9 @@ Procedure FillTabularSectionBySpecification(NodesSpecificationStack, NodesTable 
 		If Selection.ContentRowType = Enums.SpecificationContentRowTypes.Node Then
 			NodesTable.Clear();
 			If Not NodesSpecificationStack.Find(Selection.Specification) = Undefined Then
-				MessageText = NStr("en='During filling in of the Specification materials"
-"tabular section a recursive item occurrence was found';ru='При попытке заполнить табличную"
-"часть Материалы по спецификации, обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in specifications';ru='в спецификации'")+" "+Selection.ProductionSpecification+"
+				MessageText = NStr("en='During filling in of the Specification materials
+		|tabular section a recursive item occurrence was found';ru='При попытке заполнить табличную
+		|часть Материалы по спецификации, обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in specifications';ru='в спецификации'")+" "+Selection.ProductionSpecification+"
 									|The operation failed.";
 				Raise MessageText;
 			EndIf;

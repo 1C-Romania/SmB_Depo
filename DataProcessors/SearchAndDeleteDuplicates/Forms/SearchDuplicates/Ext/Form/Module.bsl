@@ -15,9 +15,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Permanent interface
 	StatePresentation = Items.SearchWasNotRun.StatePresentation;
 	StatePresentation.Visible = True;
-	StatePresentation.Text = NStr("en='Duplicates search is not in progress. "
-"Set filter and comparison criteria and click Find duplicates.';ru='Поиск дублей не выполнялся. "
-"Задайте условия отбора и сравнения и нажмите ""Найти дубли"".'");
+	StatePresentation.Text = NStr("en='Duplicates search is not in progress. 
+		|Set filter and comparison criteria and click Find duplicates.';ru='Поиск дублей не выполнялся. 
+		|Задайте условия отбора и сравнения и нажмите ""Найти дубли"".'");
 	StatePresentation.Picture = Items.Warning32.Picture;
 	
 	StatePresentation = Items.SearchExecution.StatePresentation;
@@ -32,9 +32,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	StatePresentation = Items.DuplicatesAreNotFound.StatePresentation;
 	StatePresentation.Visible = True;
-	StatePresentation.Text = NStr("en='Duplicates by specified parameters are not found."
-"Change filter and comparison criteria, click Find duplicates';ru='Не обнаружено дублей по указанным параметрам."
-"Измените условия отбора и сравнения, нажмите ""Найти дубли""'");
+	StatePresentation.Text = NStr("en='Duplicates by specified parameters are not found.
+		|Change filter and comparison criteria, click Find duplicates';ru='Не обнаружено дублей по указанным параметрам.
+		|Измените условия отбора и сравнения, нажмите ""Найти дубли""'");
 	StatePresentation.Picture = Items.Warning32.Picture;
 	
 	// Stepped assistant
@@ -804,8 +804,8 @@ Function FillDuplicatesSearchResults(Val Data)
 			NStr("en='Duplicates by the specified conditions are not found';ru='Не обнаружено дублей по указанным условиям'"));
 	Else
 		FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Duplicates of items are found: %2 (among items: %1). All selected items will be marked for deletion and substituted for the originals in all usage places (marked with an arrow).';ru='Найдены дубли элементов: %2 (среди элементов: %1). Все отмеченные элементы будут помечены на удаление "
-"и заменены во всех местах использования на оригиналы (отмечены стрелкой).'"),
+			NStr("en='Duplicates of items are found: %2 (among items: %1). All selected items will be marked for deletion and substituted for the originals in all usage places (marked with an arrow).';ru='Найдены дубли элементов: %2 (среди элементов: %1). Все отмеченные элементы будут помечены на удаление 
+		|и заменены во всех местах использования на оригиналы (отмечены стрелкой).'"),
 			TotalDuplicatesFound, TotalDuplicatesFound - TreeItems.Count()),
 			, ColorsExplanationText);
 	EndIf;
@@ -849,17 +849,17 @@ Function FillDuplicatesDeletetionResults(Val ErrorsTable)
 			Else
 				LastCandidateRow = CommonUse.SubjectString(LastCandidate);
 				FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='All found duplicates (%1) are"
-"successfully merged to %2.';ru='Все найденные дубли (%1)"
-"успешно объединены в ""%2""'"),
+					NStr("en='All found duplicates (%1) are
+		|successfully merged to %2.';ru='Все найденные дубли (%1)
+		|успешно объединены в ""%2""'"),
 					TotallyProcessed, LastCandidateRow));
 			EndIf;
 		Else
 			// Many duplicates to many groups.
 			FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='All found duplicates (%1) are successfully merged."
-"Kept items (%2).';ru='Все найденные дубли (%1) успешно объединены."
-"Оставлено элементов (%2).'"),
+				NStr("en='All found duplicates (%1) are successfully merged.
+		|Kept items (%2).';ru='Все найденные дубли (%1) успешно объединены.
+		|Оставлено элементов (%2).'"),
 				TotallyProcessed, TotallyMain));
 		EndIf;
 	EndIf;

@@ -125,9 +125,9 @@ Procedure ReadCounterpartyProductsAndServices(Command)
 	
 	If Modified Then
 		
-		QuestionText = NStr("en='Unsaved changes will be lost."
-"Continue?';ru='Несохраненные изменения будут утеряны."
-"Продолжить?'");
+		QuestionText = NStr("en='Unsaved changes will be lost.
+		|Continue?';ru='Несохраненные изменения будут утеряны.
+		|Продолжить?'");
 			
 		NotificationHandler = New NotifyDescription("ReadProductsAndServicesNotification", ThisObject);
 		ShowQueryBox(NotificationHandler, QuestionText, QuestionDialogMode.YesNo,,, "Filling the products and services list");
@@ -239,9 +239,9 @@ Procedure SaveDirectoryData(LinkToED)
 					EndIf;
 			
 					If AdditDataFileName = Undefined Then
-						ErrorText = NStr("en='Unable to get additional data of the electronic document."
-" Verify the work directory setting';ru='Не удалось получить доп. данные электронного документа."
-" Проверьте настройку рабочего каталога'");
+						ErrorText = NStr("en='Unable to get additional data of the electronic document.
+		| Verify the work directory setting';ru='Не удалось получить доп. данные электронного документа.
+		| Проверьте настройку рабочего каталога'");
 						CommonUseClientServer.MessageToUser(ErrorText);
 						Return;
 					EndIf;
@@ -350,8 +350,8 @@ Procedure ReadCounterpartyProductsAndServicesServer()
 	ElectronicDocumentsOverridable.ProductsAndServicesCorrespondenceQueryText(Query.Text);
 	
 	If Not ValueIsFilled(Query.Text) Then
-		MessageText = NStr("en='The mapping of products and services and suppliers products and services is not defined."
-"It is required to fill the ElectronicDocumentsOverridable procedure.ProductsAndServicesCorrespondenceQueryText.';ru='Не определено сопоставление номенклатуры и номенклатуры поставщиков. Необходимо заполнить процедуру ЭлектронныеДокументыПереопределяемый.ТекстЗапросаСопоставленияНоменклатуры.'");
+		MessageText = NStr("en='The mapping of products and services and suppliers products and services is not defined.
+		|It is required to fill the ElectronicDocumentsOverridable procedure.ProductsAndServicesCorrespondenceQueryText.';ru='Не определено сопоставление номенклатуры и номенклатуры поставщиков. Необходимо заполнить процедуру ЭлектронныеДокументыПереопределяемый.ТекстЗапросаСопоставленияНоменклатуры.'");
 		Raise(MessageText);
 	EndIf;
 	

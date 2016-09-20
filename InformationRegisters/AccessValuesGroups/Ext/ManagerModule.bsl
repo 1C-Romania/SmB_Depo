@@ -77,13 +77,13 @@ Procedure UpdateUsersGroups(Parameters = Undefined, HasChanges = Undefined) Expo
 		UpdateType = "AuthorizationObjects";
 	Else
 		Raise
-			NStr("en='An error occurred"
-"in the UpdateUsersGroups procedure of the information register manager module Access value groups."
-""
-"Incorrect parameters are specified.';ru='Ошибка"
-"в процедуре ОбновитьГруппировкиПользователей модуля менеджера регистра сведений Группы значений доступа."
-""
-"Указаны неверные параметры.'");
+			NStr("en='An error occurred
+		|in the UpdateUsersGroups procedure of the information register manager module Access value groups.
+		|
+		|Incorrect parameters are specified.';ru='Ошибка
+		|в процедуре ОбновитьГруппировкиПользователей модуля менеджера регистра сведений Группы значений доступа.
+		|
+		|Указаны неверные параметры.'");
 	EndIf;
 	
 	BeginTransaction();
@@ -375,18 +375,18 @@ Procedure RefreshGroupsAccessValues(AccessValue, HasChanges)
 	AccessTypeProperties = AccessValuesWithGroups.ByTypes.Get(AccessValueType);
 	
 	ErrorTitle =
-		NStr("en='An error occurred while updating access value groups."
-""
-"';ru='Ошибка при обновлении групп значений доступа."
-""
-"'");
+		NStr("en='An error occurred while updating access value groups.
+		|
+		|';ru='Ошибка при обновлении групп значений доступа.
+		|
+		|'");
 	
 	If AccessTypeProperties = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle +
-			NStr("en='Access"
-"value groups usage is not set for the type ""%1"".';ru='Для"
-"типа ""%1"" не настроено использование групп значений доступа.'"),
+			NStr("en='Access
+		|value groups usage is not set for the type ""%1"".';ru='Для
+		|типа ""%1"" не настроено использование групп значений доступа.'"),
 			String(AccessValueType));
 	EndIf;
 	
@@ -418,22 +418,22 @@ Procedure RefreshGroupsAccessValues(AccessValue, HasChanges)
 			 OR MetadataTabularSection.Attributes.Find("AccessGroup") = Undefined Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					ErrorTitle +
-					NStr("en='AccessGroups special tabular"
-"section with the AccessGroup special"
-"attribute is not created in the access values type.""%1""';ru='У типа значений доступа ""%1"" не создана специальная табличная часть ГруппыДоступа со специальным реквизитом ГруппаДоступа.'"),
+					NStr("en='AccessGroups special tabular
+		|section with the AccessGroup special
+		|attribute is not created in the access values type.""%1""';ru='У типа значений доступа ""%1"" не создана специальная табличная часть ГруппыДоступа со специальным реквизитом ГруппаДоступа.'"),
 					String(AccessValueType));
 			Else
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					ErrorTitle +
-					NStr("en='Unable to read"
-"the AccessGroup"
-"tabular section with the AccessGroup"
-"attribute in the access value"
-"""%1"" of the type ""%2"" by mistake: %3';ru='У значения"
-"доступа"
-"""%1"" типа ""%2"" не удалось"
-"прочитать табличную часть ГруппаДоступа"
-"с реквизитом ГруппаДоступа по ошибке: %3'"),
+					NStr("en='Unable to read
+		|the AccessGroup
+		|tabular section with the AccessGroup
+		|attribute in the access value
+		|""%1"" of the type ""%2"" by mistake: %3';ru='У значения
+		|доступа
+		|""%1"" типа ""%2"" не удалось
+		|прочитать табличную часть ГруппаДоступа
+		|с реквизитом ГруппаДоступа по ошибке: %3'"),
 					String(AccessValue),
 					String(AccessValueType),
 					BriefErrorDescription(Error));
@@ -442,20 +442,20 @@ Procedure RefreshGroupsAccessValues(AccessValue, HasChanges)
 			If TypeMetadata.Attributes.Find("AccessGroup") = Undefined Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					ErrorTitle +
-					NStr("en='AccessGroup special attribute"
-"is not created in the access values type ""%1"".';ru='У типа"
-"значений доступа ""%1"" не создан специальный реквизит ГруппаДоступа.'"),
+					NStr("en='AccessGroup special attribute
+		|is not created in the access values type ""%1"".';ru='У типа
+		|значений доступа ""%1"" не создан специальный реквизит ГруппаДоступа.'"),
 					String(AccessValueType));
 			Else
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					ErrorTitle +
-					NStr("en='Unable to read"
-"the AccessGroup"
-"attribute in the access value ""%1"""
-"of the type ""%2"" by mistake: %3';ru='У значения"
-"доступа"
-"""%1"" типа ""%2"" не удалось прочитать"
-"реквизит ГруппаДоступа по ошибке: %3'"),
+					NStr("en='Unable to read
+		|the AccessGroup
+		|attribute in the access value ""%1""
+		|of the type ""%2"" by mistake: %3';ru='У значения
+		|доступа
+		|""%1"" типа ""%2"" не удалось прочитать
+		|реквизит ГруппаДоступа по ошибке: %3'"),
 					String(AccessValue),
 					String(AccessValueType),
 					BriefErrorDescription(Error));
@@ -795,13 +795,13 @@ Procedure UpgradeGroupsOfPerformers(PerformersGroups = Undefined,
 		ParameterValue   = Performers;
 	Else
 		Raise
-			NStr("en='An error occurred"
-"in the UpdatePerformersGroup procedure of the AccessValueGroups information register manager module."
-""
-"Incorrect parameters are specified.';ru='Ошибка"
-"в процедуре ОбновитьГруппыИсполнителей модуля менеджера регистра сведений ГруппыЗначенийДоступа."
-""
-"Указаны неверные параметры.'");
+			NStr("en='An error occurred
+		|in the UpdatePerformersGroup procedure of the AccessValueGroups information register manager module.
+		|
+		|Incorrect parameters are specified.';ru='Ошибка
+		|в процедуре ОбновитьГруппыИсполнителей модуля менеджера регистра сведений ГруппыЗначенийДоступа.
+		|
+		|Указаны неверные параметры.'");
 	EndIf;
 	
 	NoneGroupsPerformers = True;

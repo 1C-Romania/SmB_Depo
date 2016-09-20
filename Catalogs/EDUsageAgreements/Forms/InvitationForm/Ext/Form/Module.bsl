@@ -234,9 +234,9 @@ Procedure SendInvitationsServer(PostedInvitations, Marker)
 		+ AttributeNameExternalCounterpartyCode + ", " + AttributeNameCounterpartyNameForMessageToUser);
 		
 	If Not ValueIsFilled(Email) Then
-		MessagePattern = NStr("en='To send recipient invitations for ED"
-"exchange %1, you need to fill email.';ru='Для отправки приглашения к обмену"
-"ЭД для получателя %1 необходимо заполнить электронную почту.'");
+		MessagePattern = NStr("en='To send recipient invitations for ED
+		|exchange %1, you need to fill email.';ru='Для отправки приглашения к обмену
+		|ЭД для получателя %1 необходимо заполнить электронную почту.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Recipient);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
@@ -244,9 +244,9 @@ Procedure SendInvitationsServer(PostedInvitations, Marker)
 	EndIf;
 	
 	If Not ValueIsFilled(CounterpartyParametersStructure[AttributeNameCounterpartyTIN]) Then
-		MessagePattern = NStr("en='To send recipient invitations for ED"
-"exchange %1, you need to fill TIN.';ru='Для отправки приглашения к обмену"
-"ЭД для получателя %1 необходимо заполнить ИНН.'");
+		MessagePattern = NStr("en='To send recipient invitations for ED
+		|exchange %1, you need to fill TIN.';ru='Для отправки приглашения к обмену
+		|ЭД для получателя %1 необходимо заполнить ИНН.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Recipient);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
@@ -354,9 +354,9 @@ Procedure SendInvitationNotification(Result, AdditionalParameters) Export
 			Close();
 		EndIf;
 	Else
-		ErrorTemplate = NStr("en='There was an error sending an invitation."
-"Must run EDF settings test with counterparty %1.';ru='При отправке приглашения возникли ошибки."
-"Необходимо выполнить тест настроек ЭДО с контрагентом %1.'");
+		ErrorTemplate = NStr("en='There was an error sending an invitation.
+		|Must run EDF settings test with counterparty %1.';ru='При отправке приглашения возникли ошибки.
+		|Необходимо выполнить тест настроек ЭДО с контрагентом %1.'");
 		
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate, Recipient);
 		CommonUseClientServer.MessageToUser(ErrorText);
@@ -392,9 +392,9 @@ Procedure RejectInvitationNotification(Result, AdditionalParameters) Export
 			Close();
 		EndIf;
 	Else
-		ErrorTemplate = NStr("en='There was an error rejecting an invitation."
-"Must run EDF settings test with counterparty %1.';ru='При отклонении приглашения возникли ошибки."
-"Необходимо выполнить тест настроек ЭДО с контрагентом %1.'");
+		ErrorTemplate = NStr("en='There was an error rejecting an invitation.
+		|Must run EDF settings test with counterparty %1.';ru='При отклонении приглашения возникли ошибки.
+		|Необходимо выполнить тест настроек ЭДО с контрагентом %1.'");
 		
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate, Recipient);
 		CommonUseClientServer.MessageToUser(ErrorText);
@@ -430,9 +430,9 @@ Procedure AcceptInvitationNotification(Result, AdditionalParameters) Export
 			Close();
 		EndIf;
 	Else
-		ErrorTemplate = NStr("en='There was an error accepting an invitation."
-"Must run EDF settings test with counterparty %1.';ru='При принятии приглашения возникли ошибки."
-"Необходимо выполнить тест настроек ЭДО с контрагентом %1.'");
+		ErrorTemplate = NStr("en='There was an error accepting an invitation.
+		|Must run EDF settings test with counterparty %1.';ru='При принятии приглашения возникли ошибки.
+		|Необходимо выполнить тест настроек ЭДО с контрагентом %1.'");
 		
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate, Recipient);
 		CommonUseClientServer.MessageToUser(ErrorText);

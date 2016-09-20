@@ -319,9 +319,9 @@ Procedure TransferFileToExternalObject(Val SessionKey, ExternalObject, Val Binar
 	Except
 		AdditionalReportsAndDataProcessors.WriteWarning(
 			Undefined,
-			NStr("en='Cannot delete temporary file"
-"""%1"": %2';ru='Не удалось удалить"
-"временный файл ""%1"": %2'"),
+			NStr("en='Cannot delete temporary file
+		|""%1"": %2';ru='Не удалось удалить
+		|временный файл ""%1"": %2'"),
 			TempFile,
 			DetailErrorDescription(ErrorInfo()));
 	EndTry;
@@ -820,11 +820,11 @@ Procedure CheckCorrectnessOfCallOnEnvironment()
 	
 	If Not AdditionalReportsAndDataProcessorsInSafeModeService.CheckCorrectnessOfCallOnEnvironment() Then
 		
-		Raise NStr("en='Incorrect function call of common module AdditionalReportsAndDataProcessorsInSafeMode."
-"Exported functions of the module to be used in the"
-"safe mode must be called only from the script.';ru='Некорректный вызов функции общего модуля ДополнительныеОтчетыИОбработкиВБезопасномРежиме!"
-"Экспортируемые функции данного модуля для использования"
-"в безопасном режиме должны вызываться только из сценария!'");
+		Raise NStr("en='Incorrect function call of common module AdditionalReportsAndDataProcessorsInSafeMode.
+		|Exported functions of the module to be used in the
+		|safe mode must be called only from the script.';ru='Некорректный вызов функции общего модуля ДополнительныеОтчетыИОбработкиВБезопасномРежиме!
+		|Экспортируемые функции данного модуля для использования
+		|в безопасном режиме должны вызываться только из сценария!'");
 		
 	EndIf;
 	

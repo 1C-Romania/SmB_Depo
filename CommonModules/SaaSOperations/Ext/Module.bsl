@@ -62,9 +62,9 @@ Procedure LockCurrentDataArea(Val CheckNoOtherSessions = False, Val SeparatedLoc
 			CurrentTry = CurrentTry + 1;
 			
 			If CurrentTry = AttemptCount Then
-				CommentTemplate = NStr("en='Cannot lock the data area"
-"as %1';ru='Не удалось установить блокировку"
-"области данных по причине: %1'");
+				CommentTemplate = NStr("en='Cannot lock the data area
+		|as %1';ru='Не удалось установить блокировку
+		|области данных по причине: %1'");
 				TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, 
 					DetailErrorDescription(ErrorInfo()));
 				WriteLogEvent(
@@ -74,9 +74,9 @@ Procedure LockCurrentDataArea(Val CheckNoOtherSessions = False, Val SeparatedLoc
 					,
 					TextOfComment);
 					
-				TextPattern = NStr("en='Cannot lock the data area"
-"as %1';ru='Не удалось установить блокировку"
-"области данных по причине: %1'");
+				TextPattern = NStr("en='Cannot lock the data area
+		|as %1';ru='Не удалось установить блокировку
+		|области данных по причине: %1'");
 				Text = StringFunctionsClientServer.PlaceParametersIntoString(TextPattern, 
 					BriefErrorDescription(ErrorInfo()));
 					
@@ -1142,15 +1142,15 @@ Procedure CheckPossibilityToUseConfigurationSaaS() Export
 	If STLDescription = Undefined Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='1C:Service technology library is not implemented in the configuration."
-"The configuration can not be used in the service model without this library implementation."
-""
-"To use this configuration in the service model, it"
-"is required to embed the 1C:Library of service technology library of the version not less than %1.';ru='В конфигурацию не внедрена библиотека ""1С:Библиотека технологии сервиса""."
-"Без внедрения этой библиотеки конфигурация не может использоваться в модели сервиса."
-""
-"Для использования этой конфигурации в модели"
-"сервиса требуется внедрить библиотеку ""1С:Библиотека технологии сервиса"" версии не младше %1!'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='1C:Service technology library is not implemented in the configuration.
+		|The configuration can not be used in the service model without this library implementation.
+		|
+		|To use this configuration in the service model, it
+		|is required to embed the 1C:Library of service technology library of the version not less than %1.';ru='В конфигурацию не внедрена библиотека ""1С:Библиотека технологии сервиса"".
+		|Без внедрения этой библиотеки конфигурация не может использоваться в модели сервиса.
+		|
+		|Для использования этой конфигурации в модели
+		|сервиса требуется внедрить библиотеку ""1С:Библиотека технологии сервиса"" версии не младше %1!'", Metadata.DefaultLanguage.LanguageCode),
 			RequiredSTLVersion());
 		
 	Else
@@ -1160,13 +1160,13 @@ Procedure CheckPossibilityToUseConfigurationSaaS() Export
 		If CommonUseClientServer.CompareVersions(STLVersion, RequiredSTLVersion()) < 0 Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='To use configuration in the service model with the current"
-"SSL version, it is required to update used version of the 1C:Library of service technology library."
-""
-"Version in use: %1, a version not older than %2 is required!';ru='Для использования конфигурации в модели сервиса с"
-"текущей версией БСП требуется обновить используемую версию библиотеки ""1С:Библиотека технологии сервиса""!"
-""
-"Используемая версия: %1, требуется версия не младше %2!'", Metadata.DefaultLanguage.LanguageCode),
+				NStr("en='To use configuration in the service model with the current
+		|SSL version, it is required to update used version of the 1C:Library of service technology library.
+		|
+		|Version in use: %1, a version not older than %2 is required!';ru='Для использования конфигурации в модели сервиса с
+		|текущей версией БСП требуется обновить используемую версию библиотеки ""1С:Библиотека технологии сервиса""!
+		|
+		|Используемая версия: %1, требуется версия не младше %2!'", Metadata.DefaultLanguage.LanguageCode),
 				STLVersion, RequiredSTLVersion());
 			
 		EndIf;
@@ -1183,11 +1183,11 @@ EndProcedure
 Procedure CallExceptionNotAvailableSTLSubsystem(Val SubsystemName) Export
 	
 	Raise StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Cannot perform the operation as subsystem ""%1"" is not implemented in the configuration."
-"This subsystem is input to the library of service technology content that should be embedded separately to the configuration content."
-"Check whether subsystem ""%1"" exists and is correctly implemented.';ru='Невозможно выполнить операцию по причине - в конфигурации не внедрена подсистема ""%1""."
-"Данная подсистема поставляется в состав библиотеки технологии сервиса, которая должна отдельно внедряться в состав конфигурации."
-"Проверьте наличие и корректность внедрения подсистемы ""%1"".'"),
+		NStr("en='Cannot perform the operation as subsystem ""%1"" is not implemented in the configuration.
+		|This subsystem is input to the library of service technology content that should be embedded separately to the configuration content.
+		|Check whether subsystem ""%1"" exists and is correctly implemented.';ru='Невозможно выполнить операцию по причине - в конфигурации не внедрена подсистема ""%1"".
+		|Данная подсистема поставляется в состав библиотеки технологии сервиса, которая должна отдельно внедряться в состав конфигурации.
+		|Проверьте наличие и корректность внедрения подсистемы ""%1"".'"),
 		SubsystemName
 	);
 	
@@ -1445,13 +1445,13 @@ Procedure WhenCheckingLockDataAreasOnRun(ErrorDescription) Export
 			AND DataAreaBlocked(CommonUse.SessionSeparatorValue()) Then
 		
 		ErrorDescription =
-			NStr("en='The application launch is temporarily unavailable."
-"Scheduled operations of the application maintenance are in progress."
-""
-"Try to start the appliation in several minutes.';ru='Запуск приложения временно недоступен."
-"Выполняются регламентные операции по обслуживанию приложения."
-""
-"Попробуйте запустить приложение через несколько минут.'");
+			NStr("en='The application launch is temporarily unavailable.
+		|Scheduled operations of the application maintenance are in progress.
+		|
+		|Try to start the appliation in several minutes.';ru='Запуск приложения временно недоступен.
+		|Выполняются регламентные операции по обслуживанию приложения.
+		|
+		|Попробуйте запустить приложение через несколько минут.'");
 		
 	EndIf;
 	
@@ -2604,8 +2604,8 @@ Function PutFileToStorage(Val AddressDataFile, Val ConnectionParameters, Val Fil
 				Result = ProxyDescription.Proxy.ReadFileFromFS(TargetFile.Name, FileProperties.Name);
 				SizeOfSourceFile = TargetFile.Size();
 				WriteInJournalFileStoreEvent(
-					NStr("en='Unit';ru='Единица"
-"измерения'", CommonUseClientServer.MainLanguageCode()),
+					NStr("en='Unit';ru='Единица
+		|измерения'", CommonUseClientServer.MainLanguageCode()),
 					Result,
 					SizeOfSourceFile,
 					CurrentUniversalDate() - ExecutionStarted,
@@ -2627,8 +2627,8 @@ Function PutFileToStorage(Val AddressDataFile, Val ConnectionParameters, Val Fil
 			Result = ProxyDescription.Proxy.ReadFileFromFS(TargetFile.Name, FileProperties.Name);
 			SizeOfSourceFile = TargetFile.Size();
 			WriteInJournalFileStoreEvent(
-				NStr("en='Unit';ru='Единица"
-"измерения'", CommonUseClientServer.MainLanguageCode()),
+				NStr("en='Unit';ru='Единица
+		|измерения'", CommonUseClientServer.MainLanguageCode()),
 				Result,
 				SizeOfSourceFile,
 				CurrentUniversalDate() - ExecutionStarted,
@@ -2718,8 +2718,8 @@ Function PutFileToStorage(Val AddressDataFile, Val ConnectionParameters, Val Fil
 		EndIf;
 		
 		WriteInJournalFileStoreEvent(
-			NStr("en='Unit';ru='Единица"
-"измерения'", CommonUseClientServer.MainLanguageCode()),
+			NStr("en='Unit';ru='Единица
+		|измерения'", CommonUseClientServer.MainLanguageCode()),
 			Result,
 			SizeOfSourceFile,
 			CurrentUniversalDate() - ExecutionStarted,
@@ -3390,9 +3390,9 @@ Function ImportAreaOfSuppliedData(Val DataArea, Val ExportFileID, Val Variant, M
 			DataFileFound = True;
 		Else
 			MessageAboutFatalError = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Specified file of initial data is not applicable for this configuration."
-"Descriptor of file: %1';ru='Указанный файл начальных данных не подходит для данной конфигурации."
-"Дескриптор файла: %1'"),
+			NStr("en='Specified file of initial data is not applicable for this configuration.
+		|Descriptor of file: %1';ru='Указанный файл начальных данных не подходит для данной конфигурации.
+		|Дескриптор файла: %1'"),
 			SuppliedData.GetDataDescription(Handle));
 			Return "FatalError";
 		EndIf;
@@ -3926,13 +3926,13 @@ Procedure ControlUndividedDataWhenUpdating() Export
 		EndDo;
 		
 		CalledExceptions.Add(StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='All metadata objects that do not belong to SSL"
-"separators (%1) should be included in the events subscriptions (%2)"
-"that control the failure of writing the undivided data in the divided sessions."
-"The following metadata objects do not meet this criteria: %3.';ru='Все объекты метаданных, не входящие в состав"
-"разделителей БСП (%1), должны быть включены в состав подписок"
-"на события (%2), контролирующих невозможность записи неразделенных данных в разделенных сеансах."
-"Следующие объекты метаданных не удовлетворяют этому критерию: %3.'"),
+			NStr("en='All metadata objects that do not belong to SSL
+		|separators (%1) should be included in the events subscriptions (%2)
+		|that control the failure of writing the undivided data in the divided sessions.
+		|The following metadata objects do not meet this criteria: %3.';ru='Все объекты метаданных, не входящие в состав
+		|разделителей БСП (%1), должны быть включены в состав подписок
+		|на события (%2), контролирующих невозможность записи неразделенных данных в разделенных сеансах.
+		|Следующие объекты метаданных не удовлетворяют этому критерию: %3.'"),
 			TextDelimiter, SubscriptionsText, ErrorMessage));
 		
 	EndIf;
@@ -3952,9 +3952,9 @@ Procedure ControlUndividedDataWhenUpdating() Export
 		EndDo;
 		
 		CalledExceptions.Add(StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='All configuration metadata objects should be separated by no more than one SSL separator (%1)."
-"The following objects do not meet this criteria: %2';ru='Все объекты метаданных конфигурации должны быть разделены не более чем одним разделителем БСП (%1)."
-"Следующие объекты не удовлетворяют этому критерию: %2'"),
+			NStr("en='All configuration metadata objects should be separated by no more than one SSL separator (%1).
+		|The following objects do not meet this criteria: %2';ru='Все объекты метаданных конфигурации должны быть разделены не более чем одним разделителем БСП (%1).
+		|Следующие объекты не удовлетворяют этому критерию: %2'"),
 			TextDelimiter, ErrorMessage));
 		
 	EndIf;
@@ -4009,11 +4009,11 @@ Procedure ControlDelimitersOnUpgrading() Export
 	If OrderOfApplicationData <= InternalDataOrder Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Configuration metadata structure rupture is found: common"
-"attribute %1 must be located in the configuration metadata"
-"tree up to the common attribute %2 in order.';ru='Обнаружено нарушение структуры метаданных"
-"конфигурации: общий реквизит %1 должен быть расположен"
-"в дереве метаданных конфигурации до общего реквизита %2 по порядку!'"),
+			NStr("en='Configuration metadata structure rupture is found: common
+		|attribute %1 must be located in the configuration metadata
+		|tree up to the common attribute %2 in order.';ru='Обнаружено нарушение структуры метаданных
+		|конфигурации: общий реквизит %1 должен быть расположен
+		|в дереве метаданных конфигурации до общего реквизита %2 по порядку!'"),
 			InternalSplitter.Name,
 			SeparatorOfApplied.Name);
 		

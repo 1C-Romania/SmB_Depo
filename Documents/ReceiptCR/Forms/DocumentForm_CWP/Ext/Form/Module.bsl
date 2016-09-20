@@ -861,13 +861,13 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 							
 						Else
 							
-							MessageText = NStr("en='When printing a receipt, an error occurred."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При печати чека произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+							MessageText = NStr("en='When printing a receipt, an error occurred.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При печати чека произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 							);
 							MessageText = StrReplace(
 								MessageText,
@@ -883,13 +883,13 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 						
 					Else
 						
-						MessageText = NStr("en='An error occurred when connecting the device."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+						MessageText = NStr("en='An error occurred when connecting the device.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 						);
 						MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 						CommonUseClientServer.MessageToUser(MessageText);
@@ -1020,13 +1020,13 @@ Procedure CashCRSessionOpen()
 					
 					If Not Result Then
 						
-						MessageText = NStr("en='An error occurred when opening the session."
-"Session is not opened."
-"Additional"
-"description: %AdditionalDetails%';ru='При открытии смены произошла ошибка."
-"Смена не открыта."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+						MessageText = NStr("en='An error occurred when opening the session.
+		|Session is not opened.
+		|Additional
+		|description: %AdditionalDetails%';ru='При открытии смены произошла ошибка.
+		|Смена не открыта.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 						);
 						MessageText = StrReplace(
 							MessageText,
@@ -1039,13 +1039,13 @@ Procedure CashCRSessionOpen()
 					
 				Else
 					
-					MessageText = NStr("en='An error occurred when opening the session."
-"Session is not opened."
-"Additional"
-"description: %AdditionalDetails%';ru='При открытии смены произошла ошибка."
-"Смена не открыта."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+					MessageText = NStr("en='An error occurred when opening the session.
+		|Session is not opened.
+		|Additional
+		|description: %AdditionalDetails%';ru='При открытии смены произошла ошибка.
+		|Смена не открыта.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 					);
 					MessageText = StrReplace(
 						MessageText,
@@ -1067,13 +1067,13 @@ Procedure CashCRSessionOpen()
 				
 			Else
 				
-				MessageText = NStr("en='An error occurred when connecting the device."
-"Session is not opened on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка."
-"Смена не открыта на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+				MessageText = NStr("en='An error occurred when connecting the device.
+		|Session is not opened on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка.
+		|Смена не открыта на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 				);
 				MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 				CommonUseClientServer.MessageToUser(MessageText);
@@ -1246,13 +1246,13 @@ Procedure FundsIntroductionFiscalRegisterConnectionsEnd(DeviceIdentifier, Parame
 			
 			If Not Result Then
 				
-				MessageText = NStr("en='When printing a receipt, an error occurred."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При печати чека произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+				MessageText = NStr("en='When printing a receipt, an error occurred.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При печати чека произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 				);
 				MessageText = StrReplace(MessageText,
 				"%AdditionalDetails%",
@@ -1267,13 +1267,13 @@ Procedure FundsIntroductionFiscalRegisterConnectionsEnd(DeviceIdentifier, Parame
 			
 		Else
 			
-			MessageText = NStr("en='An error occurred when connecting the device."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+			MessageText = NStr("en='An error occurred when connecting the device.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 			);
 			MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 			CommonUseClientServer.MessageToUser(MessageText);
@@ -1375,13 +1375,13 @@ Procedure CashWithdrawalFiscalRegisterConnectionsEnd(DeviceIdentifier, Parameter
 				
 				If Not Result Then
 					
-					MessageText = NStr("en='When printing a receipt, an error occurred."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При печати чека произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+					MessageText = NStr("en='When printing a receipt, an error occurred.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При печати чека произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 					);
 					MessageText = StrReplace(
 					MessageText,
@@ -1397,13 +1397,13 @@ Procedure CashWithdrawalFiscalRegisterConnectionsEnd(DeviceIdentifier, Parameter
 				
 			Else
 				
-				MessageText = NStr("en='An error occurred when connecting the device."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+				MessageText = NStr("en='An error occurred when connecting the device.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 				);
 				MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 				CommonUseClientServer.MessageToUser(MessageText);
@@ -1514,11 +1514,11 @@ Procedure ReportPrintingWithoutBlankingExecuteEnd(DeviceIdentifier, AdditionalPa
 			                                                        Output_Parameters);
 
 			If Not Result Then
-				MessageText = NStr("en='An error occurred while getting the report from fiscal register."
-"%ErrorDescription%"
-"Report on fiscal register is not formed.';ru='При снятии отчета на фискальном регистраторе произошла ошибка."
-"%ОписаниеОшибки%"
-"Отчет на фискальном регистраторе не сформирован.'");
+				MessageText = NStr("en='An error occurred while getting the report from fiscal register.
+		|%ErrorDescription%
+		|Report on fiscal register is not formed.';ru='При снятии отчета на фискальном регистраторе произошла ошибка.
+		|%ОписаниеОшибки%
+		|Отчет на фискальном регистраторе не сформирован.'");
 				MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
@@ -1580,11 +1580,11 @@ Procedure CloseCashCRSession(Command)
 		DocumentArray = CloseCashCRSessionAtServer(CashCR, ErrorDescription);
 		
 		If ValueIsFilled(ErrorDescription) Then
-			MessageText = NStr("en='Session is closed on the fiscal register, but errors occurred when generating the retail sales report."
-"Additional"
-"description: %AdditionalDetails%';ru='Смена закрыта на фискальном регистраторе, но при формировании отчета о розничных продажах возникли ошибки."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+			MessageText = NStr("en='Session is closed on the fiscal register, but errors occurred when generating the retail sales report.
+		|Additional
+		|description: %AdditionalDetails%';ru='Смена закрыта на фискальном регистраторе, но при формировании отчета о розничных продажах возникли ошибки.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 			);
 			MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 			CommonUseClientServer.MessageToUser(MessageText);
@@ -1634,11 +1634,11 @@ Procedure CloseCashCRSession(Command)
 				
 				If Not Result AND Not UseWithoutEquipmentConnection Then
 					
-					MessageText = NStr("en='Error occurred when closing the session on the fiscal register."
-"""%ErrorDescription%"""
-"Report on fiscal register is not formed.';ru='При закрытии смены на фискальном регистраторе произошла ошибка."
-"""%ОписаниеОшибки%"""
-"Отчет на фискальном регистраторе не сформирован.'"
+					MessageText = NStr("en='Error occurred when closing the session on the fiscal register.
+		|""%ErrorDescription%""
+		|Report on fiscal register is not formed.';ru='При закрытии смены на фискальном регистраторе произошла ошибка.
+		|""%ОписаниеОшибки%""
+		|Отчет на фискальном регистраторе не сформирован.'"
 					);
 					MessageText = StrReplace(
 						MessageText,
@@ -1659,11 +1659,11 @@ Procedure CloseCashCRSession(Command)
 					ElsIf ValueIsFilled(ErrorDescription)
 						 AND Not UseWithoutEquipmentConnection Then
 						
-						MessageText = NStr("en='Session is closed on the fiscal register, but errors occurred when generating the retail sales report."
-"Additional"
-"description: %AdditionalDetails%';ru='Смена закрыта на фискальном регистраторе, но при формировании отчета о розничных продажах возникли ошибки."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+						MessageText = NStr("en='Session is closed on the fiscal register, but errors occurred when generating the retail sales report.
+		|Additional
+		|description: %AdditionalDetails%';ru='Смена закрыта на фискальном регистраторе, но при формировании отчета о розничных продажах возникли ошибки.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 						);
 						MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 						CommonUseClientServer.MessageToUser(MessageText);
@@ -1690,13 +1690,13 @@ Procedure CloseCashCRSession(Command)
 				
 			Else
 				
-				MessageText = NStr("en='An error occurred when connecting the device."
-"Report is not printed and session is not closed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка."
-"Отчет не напечатан и смена не закрыта на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+				MessageText = NStr("en='An error occurred when connecting the device.
+		|Report is not printed and session is not closed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка.
+		|Отчет не напечатан и смена не закрыта на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 				);
 				MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 				CommonUseClientServer.MessageToUser(MessageText);
@@ -1821,11 +1821,11 @@ Function CancelReceiptCR(CashCR)
 				If Result Then
 					ReceiptIsCanceled = True;
 				Else
-					MessageText = NStr("en='When cancellation receipt there was error. Receipt is not cancelled on fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При аннулировании чека произошла ошибка. Чек не аннулирован на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'");
+					MessageText = NStr("en='When cancellation receipt there was error. Receipt is not cancelled on fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При аннулировании чека произошла ошибка. Чек не аннулирован на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'");
 					MessageText = StrReplace(MessageText,
 												 "%AdditionalDetails%",
 												 Output_Parameters[1]);
@@ -1836,11 +1836,11 @@ Function CancelReceiptCR(CashCR)
 				EquipmentManagerClient.DisableEquipmentById(ThisObject, DeviceIdentifierFR);
 				
 			Else
-				MessageText = NStr("en='An error occurred when connecting the device. Receipt is not cancelled on fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка. Чек не аннулирован на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'");
+				MessageText = NStr("en='An error occurred when connecting the device. Receipt is not cancelled on fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка. Чек не аннулирован на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'");
 				MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
@@ -1954,9 +1954,9 @@ Procedure PrintCopyOnFiscalRegistrarEnd(DeviceIdentifierFR, Parameters) Export
 			EquipmentManagerClient.DisableEquipmentById(UUID,
 			                                                                 DeviceIdentifierFR);
 		Else
-			MessageText = NStr("en='When fiscal registrar connection there was error: ""%ErrorDescription%""."
-"Slip receipt is not printed.';ru='При подключении фискального регистратора произошла ошибка: ""%ОписаниеОшибки%""."
-"Слип-чек не напечатан.'");
+			MessageText = NStr("en='When fiscal registrar connection there was error: ""%ErrorDescription%"".
+		|Slip receipt is not printed.';ru='При подключении фискального регистратора произошла ошибка: ""%ОписаниеОшибки%"".
+		|Слип-чек не напечатан.'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -4793,11 +4793,11 @@ Procedure DisplayInformationOnCustomerDisplay()
 		);
 		
 		If Not Result Then
-			MessageText = NStr("en='When using customer display error occurred."
-"Additional"
-"description: %AdditionalDetails%';ru='При использовании дисплея покупателя произошла ошибка."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+			MessageText = NStr("en='When using customer display error occurred.
+		|Additional
+		|description: %AdditionalDetails%';ru='При использовании дисплея покупателя произошла ошибка.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 			);
 			MessageText = StrReplace(
 				MessageText,

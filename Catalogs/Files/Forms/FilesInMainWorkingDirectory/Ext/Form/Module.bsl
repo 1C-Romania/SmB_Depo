@@ -309,9 +309,9 @@ Procedure DeleteFromLocalCacheFilesInCycle(ExecuteParameters)
 	
 	If ExecuteParameters.IsLockedFiles Then
 		ShowMessageBox(,
-			NStr("en='You can not delete files from"
-"main working directory held for editing.';ru='Нельзя удалять из основного рабочего каталога файлы,"
-"занятые для редактирования.'"));
+			NStr("en='You can not delete files from
+		|main working directory held for editing.';ru='Нельзя удалять из основного рабочего каталога файлы,
+		|занятые для редактирования.'"));
 	EndIf;
 	
 	Items.List.Refresh();

@@ -571,13 +571,13 @@ Procedure CheckDocumentsUniqueness(TabularSectionDocuments, CheckResult, ErrorTe
 		If CurrentDocumentOfAgreement.ToForm Then
 			For Each DocumentInOtherAgreements IN CheckResult Do
 				If CurrentDocumentOfAgreement.OutgoingDocument = DocumentInOtherAgreements.DocumentType Then
-					ErrorText = NStr("en='For a kind of documents %1"
-"%2 a valid agreement already exists between parties %3"
-"- %4: %5."
-"';ru='По виду электронных документов"
-"%1 %2 уже существует действующее соглашение между"
-"участниками %3 - %4: %5."
-"'");
+					ErrorText = NStr("en='For a kind of documents %1
+		|%2 a valid agreement already exists between parties %3
+		|- %4: %5.
+		|';ru='По виду электронных документов
+		|%1 %2 уже существует действующее соглашение между
+		|участниками %3 - %4: %5.
+		|'");
 					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
 						ErrorText, 
 						DocumentInOtherAgreements.DocumentType, 
@@ -771,9 +771,9 @@ Function RecordedAgreement(Handler)
 		Return True;
 	EndIf;
 	
-	QuestionText = NStr("en='You can export certificates using only the written EDF settings."
-"Record?';ru='Загружать сертификаты можно только в записанных настройках ЭДО."
-"Записать?'");
+	QuestionText = NStr("en='You can export certificates using only the written EDF settings.
+		|Record?';ru='Загружать сертификаты можно только в записанных настройках ЭДО.
+		|Записать?'");
 	
 	op = New NotifyDescription(Handler, ThisObject);
 	ShowQueryBox(op, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
@@ -1034,9 +1034,9 @@ Function SberbankCertificateBinaryData(IDCertificate)
 	Res = AttachableModule.GetCertificateVPNKeyTLS(IDCertificate, CertificateBase64);
 	If Res <> 0 Then
 		ClearMessages();
-		MessageText = NStr("en='An error occurred while getting a certificate data."
-"details in the event log';ru='При получении данных сертификата произошла ошибка."
-"подробности в журнале регистрации'");
+		MessageText = NStr("en='An error occurred while getting a certificate data.
+		|details in the event log';ru='При получении данных сертификата произошла ошибка.
+		|подробности в журнале регистрации'");
 		ErrorText = NStr("en='AddIn.Bicrypt component has returned an error code at the certificate receiving';ru='Компонента AddIn.Bicrypt при получении сертификата вернула код ошибки'") + Res;
 		Operation = NStr("en='Cryptography certificate receiving.';ru='Получение сертификата криптографии.'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
@@ -1062,9 +1062,9 @@ Procedure GetSberbankCertificateIdentifier(EDAgreement, Parameters = Undefined) 
 	Res = AttachableModule.GetListIdentCertificatesVPNKeyTLS(0, IdentifiersCertificates);
 	If Res <> 0 Then
 		ClearMessages();
-		MessageText = NStr("en='An error occurred while getting a list of available certificates."
-"details in the event log';ru='Ошибка получения списка доступных сертификатов."
-"подробности в журнале регистрации'");
+		MessageText = NStr("en='An error occurred while getting a list of available certificates.
+		|details in the event log';ru='Ошибка получения списка доступных сертификатов.
+		|подробности в журнале регистрации'");
 		ErrorText = NStr("en='The AddIn.Bicrypt component has returned an error code when receiving the list of the certificates';ru='Компонента AddIn.Bicrypt при получении списка доступных сертификатов вернула код ошибки'")
 						+ Res;
 		Operation = NStr("en='Electronic document signing.';ru='Подписание электронного документа.'");
@@ -1106,9 +1106,9 @@ Procedure GetSberbankCertificateIdentifier(EDAgreement, Parameters = Undefined) 
 										DigitalSignatureClientServer.SubjectPresentation(Certificate));
 		Except
 			ClearMessages();
-			MessageText = NStr("en='An error occurred when reading a certificate."
-"Look for details in event log.';ru='Ошибка чтения сертификата."
-"Подробности см. в журнале регистрации.'");
+			MessageText = NStr("en='An error occurred when reading a certificate.
+		|Look for details in event log.';ru='Ошибка чтения сертификата.
+		|Подробности см. в журнале регистрации.'");
 			ErrorText = ErrorDescription();
 			Operation = NStr("en='Certificate data reading.';ru='Чтение данных сертификата.'");
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);

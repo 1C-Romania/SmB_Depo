@@ -844,9 +844,9 @@ Procedure CreateRefreshExchangePlanNodes(FilterSsettingsAtNode, DefaultValuesAtN
 		
 		If MasterNode = Undefined Then
 			
-			Raise NStr("en='The main node for the current infobase is not determined."
-"Perhaps, the infobase is not a subordinate node in the RIB.';ru='Главный узел для текущей информационной базы не определен."
-"Возможно, информационная база не является подчиненным узлом в РИБ.'");
+			Raise NStr("en='The main node for the current infobase is not determined.
+		|Perhaps, the infobase is not a subordinate node in the RIB.';ru='Главный узел для текущей информационной базы не определен.
+		|Возможно, информационная база не является подчиненным узлом в РИБ.'");
 		EndIf;
 		
 		NewNode = MasterNode.GetObject();
@@ -1150,9 +1150,9 @@ Procedure RunAssistantParametersImport(Cancel, XMLString) Export
 	If Not IsBlankString(InfobasePrefix)
 		AND InfobasePrefix <> SourceInfobasePrefix Then
 		
-		ErrorMessageStringField = NStr("en='Prefix of the second infobase was specified incorrectly at the first stage of the exchange setting."
-"Exchange setup is required to be restarted.';ru='На первом этапе настройки обмена был неправильно указан префикс второй информационной базы."
-"Настройку обмена требуется начать заново.'");
+		ErrorMessageStringField = NStr("en='Prefix of the second infobase was specified incorrectly at the first stage of the exchange setting.
+		|Exchange setup is required to be restarted.';ru='На первом этапе настройки обмена был неправильно указан префикс второй информационной базы.
+		|Настройку обмена требуется начать заново.'");
 		//
 		DataExchangeServer.ShowMessageAboutError(ErrorMessageString(), Cancel);
 		

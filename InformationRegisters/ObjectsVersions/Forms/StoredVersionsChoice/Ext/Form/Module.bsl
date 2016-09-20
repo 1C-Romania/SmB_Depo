@@ -157,11 +157,11 @@ Procedure GoToSelectedVersion(CancelPosting = False)
 		CommonUseClientServer.MessageToUser(ErrorMessageText);
 	ElsIf Result = "PostingError" Then
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Version was not changed due to: "
-"%1"
-"Change to the selected version and cancel the posting?';ru='Переход на версию не был выполнен по причине:"
-"%1"
-"Перейти на выбранную версию с отменой проведения?'"),
+			NStr("en='Version was not changed due to: 
+		|%1
+		|Change to the selected version and cancel the posting?';ru='Переход на версию не был выполнен по причине:
+		|%1
+		|Перейти на выбранную версию с отменой проведения?'"),
 			ErrorMessageText);
 			
 		NotifyDescription = New NotifyDescription("GoToSelectedVersionQueryIsAsked", ThisObject);

@@ -142,11 +142,11 @@ Procedure ShowFormClosingConfirmationWithFiles(Form, Cancel, ObjectRef, Attribut
 	EndIf;
 	
 	Cancel = True;
-	QuestionText = NStr("en='One or several files are occupied by you for editing."
-""
-"Continue?';ru='Один или несколько файлов заняты вами для редактирования."
-""
-"Продолжить?'");
+	QuestionText = NStr("en='One or several files are occupied by you for editing.
+		|
+		|Continue?';ru='Один или несколько файлов заняты вами для редактирования.
+		|
+		|Продолжить?'");
 	CommonUseClient.ShowArbitraryFormClosingConfirmation(Form, Cancel, QuestionText, AttributeName);
 	
 EndProcedure

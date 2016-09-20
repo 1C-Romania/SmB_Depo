@@ -409,13 +409,13 @@ Function CheckMergedRefs(Val RefsSet)
 	
 	Control = Query.Execute().Unload()[0];
 	If Control.HasFolders Then
-		Result.Error = NStr("en='One of the merged items is a group."
-"The groups can not be merged.';ru='Один из объединяемых элементов является группой."
-"Группы не могут быть объединены.'");
+		Result.Error = NStr("en='One of the merged items is a group.
+		|The groups can not be merged.';ru='Один из объединяемых элементов является группой.
+		|Группы не могут быть объединены.'");
 	ElsIf Control.OwnersQuantity > 1 Then 
-		Result.Error = NStr("en='Merged items have different owners."
-"Such items can not be merged.';ru='У объединяемых элементов различные владельцы."
-"Такие элементы не могут быть объединены.'");
+		Result.Error = NStr("en='Merged items have different owners.
+		|Such items can not be merged.';ru='У объединяемых элементов различные владельцы.
+		|Такие элементы не могут быть объединены.'");
 	ElsIf Control.QuantityRefs <> QuantityRefs Then
 		Result.Error = NStr("en='All merged items should be of the same type.';ru='Все объединяемые элементы должны быть одного типа.'");
 	Else 
@@ -461,17 +461,17 @@ Procedure FormMergingToolTip()
 
 	If PermanentlyDeletionRight Then
 		If CurrentRemovalVariant = "Mark" Then
-			ToolTipText = NStr("en='Items (%1) will be <a href = ""DeletionModeSwitch > marked"
-"for deletion</a> and replaced in all places of use with %2 (marked with an arrow).';ru='Элементы (%1) будут <a href = ""ПереключениеРежимаУдаления"">помечены на удаление</a> и заменены во всех местах"
-"использования на ""%2"" (отмечен стрелкой).'");
+			ToolTipText = NStr("en='Items (%1) will be <a href = ""DeletionModeSwitch > marked
+		|for deletion</a> and replaced in all places of use with %2 (marked with an arrow).';ru='Элементы (%1) будут <a href = ""ПереключениеРежимаУдаления"">помечены на удаление</a> и заменены во всех местах
+		|использования на ""%2"" (отмечен стрелкой).'");
 		Else
-			ToolTipText = NStr("en='Items (%1) will be <a href = ""DeletionModeSwitch > deleted permanently</a> and replaced in all places of use with %2 (marked with an arrow).';ru='Элементы (%1) будут <a href = ""ПереключениеРежимаУдаления"">удалены безвозвратно</a> и заменены во всех местах"
-"использования на ""%2"" (отмечен стрелкой).'");
+			ToolTipText = NStr("en='Items (%1) will be <a href = ""DeletionModeSwitch > deleted permanently</a> and replaced in all places of use with %2 (marked with an arrow).';ru='Элементы (%1) будут <a href = ""ПереключениеРежимаУдаления"">удалены безвозвратно</a> и заменены во всех местах
+		|использования на ""%2"" (отмечен стрелкой).'");
 		EndIf;
 	Else
-		ToolTipText = NStr("en='Items (%1) will be marked for deletion and replaced"
-"in all places of use with %2 (marked with an arrow).';ru='Элементы (%1) будут помечены на удаление"
-"и заменены во всех местах использования на ""%2"" (отмечен стрелкой).'");
+		ToolTipText = NStr("en='Items (%1) will be marked for deletion and replaced
+		|in all places of use with %2 (marked with an arrow).';ru='Элементы (%1) будут помечены на удаление
+		|и заменены во всех местах использования на ""%2"" (отмечен стрелкой).'");
 	EndIf;
 		
 	ToolTipText = StringFunctionsClientServer.PlaceParametersIntoString(ToolTipText, UsagePlaces.Count()-1, MainItem);
@@ -493,9 +493,9 @@ EndFunction
 Procedure FormLabelFailedReplacements()
 	
 	Items.ResultFailedReplacements.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Items merging was not executed. IN some places of use an automatic"
-"replacement with %1 can not be executed.';ru='Объединение элементов не выполнено. В некоторых местах использования не может быть произведена"
-"автоматическая замена на ""%1"".'"),
+		NStr("en='Items merging was not executed. IN some places of use an automatic
+		|replacement with %1 can not be executed.';ru='Объединение элементов не выполнено. В некоторых местах использования не может быть произведена
+		|автоматическая замена на ""%1"".'"),
 		MainItem);
 	
 EndProcedure

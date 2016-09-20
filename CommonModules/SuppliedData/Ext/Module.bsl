@@ -306,13 +306,13 @@ Function ProvidedDataFromCache(Val RefOrIdentifier) Export
 				ErrorInfo);
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while opening file: file is not found on server."
-"Contact your administrator."
-""
-"File: ""%1.%2"".';ru='Ошибка открытия файла: файл не найден на сервере."
-"Обратитесь к администратору."
-""
-"Файл: ""%1.%2"".'"),
+				NStr("en='An error occurred while opening file: file is not found on server.
+		|Contact your administrator.
+		|
+		|File: ""%1.%2"".';ru='Ошибка открытия файла: файл не найден на сервере.
+		|Обратитесь к администратору.
+		|
+		|Файл: ""%1.%2"".'"),
 				FileObject.Description,
 				FileObject.Extension);
 		EndTry;
@@ -735,11 +735,11 @@ Function ErrorTextOnFileReceiving(Val ErrorInfo, Val File)
 	
 	If File <> Undefined Then
 		ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='%1"
-""
-"Ref to file: ""%2"".';ru='%1"
-""
-"Ссылка на файл: ""%2"".'"),
+			NStr("en='%1
+		|
+		|Ref to file: ""%2"".';ru='%1
+		|
+		|Ссылка на файл: ""%2"".'"),
 			ErrorInfo,
 			GetURL(File) );
 	EndIf;

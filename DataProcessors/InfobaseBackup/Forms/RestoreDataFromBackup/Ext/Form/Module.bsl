@@ -286,9 +286,9 @@ EndProcedure
 &AtServer
 Procedure CancelPreparation()
 	
-	Items.LabelItWasNotPossible.Title = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1."
-"Preparation for data restoration from the backup is cancelled. Infobase is locked.';ru='%1."
-"Подготовка к восстановлению данных из резервной копии отменена. Информационная база разблокирована.'"),
+	Items.LabelItWasNotPossible.Title = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1.
+		|Preparation for data restoration from the backup is cancelled. Infobase is locked.';ru='%1.
+		|Подготовка к восстановлению данных из резервной копии отменена. Информационная база разблокирована.'"),
 		InfobaseConnections.EnabledSessionsMessage());
 	Items.DataImportPages.CurrentPage = Items.PageOfErrorsOnCopying;
 	Items.Done.Visible = False;

@@ -23,9 +23,9 @@ Procedure OnOpen(Cancel)
 		SupporTypesVO.Add("MagneticCardReader");
 
 		If Not EquipmentManagerClient.ConnectEquipmentByType(UUID, SupporTypesVO, ErrorDescription) Then
-			MessageText = NStr("en='An error occurred while"
-"connecting peripherals: ""%ErrorDetails%"".';ru='При подключении оборудования"
-"произошла ошибка: ""%ОписаниеОшибки%"".'");
+			MessageText = NStr("en='An error occurred while
+		|connecting peripherals: ""%ErrorDetails%"".';ru='При подключении оборудования
+		|произошла ошибка: ""%ОписаниеОшибки%"".'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;

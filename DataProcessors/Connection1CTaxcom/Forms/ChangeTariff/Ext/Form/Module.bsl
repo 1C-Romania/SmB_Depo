@@ -353,29 +353,29 @@ Function MessageParametersToTechicalSupport()
 	Result.Insert("Subject", NStr("en='1C-Taxcom. Change tariff.';ru='1C-Taxcom. Change tariff.'"));
 	Result.Insert("Whom", "1c-taxcom@1c.ru");
 	
-	MessageText = NStr("en='Dear sir or madam,"
-"I can not change tariff of work "
-"with ED exchange operator. "
-"Would you help me to solve the problem. "
-""
-"Login: %1. "
-""
-"%2 "
-""
-"TechnicalParameters% "
-"----------------------------------------------- "
-"Sincerely, .';ru='Здравствуйте!"
-"У меня не получается изменить тариф"
-"работы с оператором обмена ЭД."
-"Прошу помочь разобраться с проблемой."
-""
-"Логин: %1."
-""
-"%2"
-""
-"%ТехническиеПараметры%"
-"-----------------------------------------------"
-"С уважением, .'");
+	MessageText = NStr("en='Dear sir or madam,
+		|I can not change tariff of work 
+		|with ED exchange operator. 
+		|Would you help me to solve the problem. 
+		|
+		|Login: %1. 
+		|
+		|%2 
+		|
+		|TechnicalParameters% 
+		|----------------------------------------------- 
+		|Sincerely, .';ru='Здравствуйте!
+		|У меня не получается изменить тариф
+		|работы с оператором обмена ЭД.
+		|Прошу помочь разобраться с проблемой.
+		|
+		|Логин: %1.
+		|
+		|%2
+		|
+		|%ТехническиеПараметры%
+		|-----------------------------------------------
+		|С уважением, .'");
 	
 	UserLogin = OnlineUserSupportClientServer.SessionParameterValue(
 		InteractionContext.COPContext,

@@ -75,9 +75,9 @@ Procedure Send(Command)
 	
 	If Not SendingResult Then
 		ShowMessageBox(,
-			NStr("en='An error occurred while sending email."
-"For more details see the event log.';ru='При отправке письма произошла ошибка."
-"Подробнее см. в журнале регистрации.'"));
+			NStr("en='An error occurred while sending email.
+		|For more details see the event log.';ru='При отправке письма произошла ошибка.
+		|Подробнее см. в журнале регистрации.'"));
 	Else
 		Close();
 		ShowMessageBox(, NStr("en='Message is sent successfully.';ru='Сообщение успешно отправлено.'"));
@@ -126,13 +126,13 @@ Procedure WriteEmail(Parameters)
 	
 	If IsBlankString(Message) Then
 		Message = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='<Enter email content>,"
-""
-"Login: %1"
-"Kind Regards, .';ru='<Заполните"
-""
-"содержимое письма>,"
-"Логин: %1 С уважением, .'"),
+			NStr("en='<Enter email content>,
+		|
+		|Login: %1
+		|Kind Regards, .';ru='<Заполните
+		|
+		|содержимое письма>,
+		|Логин: %1 С уважением, .'"),
 			Parameters.Login);
 	EndIf;
 	
@@ -153,25 +153,25 @@ Function TechnicalParametersText(OnStart)
 		CallServicePosition = NStr("en='manual';ru='руководство'");
 	EndIf;
 	
-	TechnicalParameters = NStr("en='Technical parameters of connection:"
-"(needed to simulate the described issue) "
-""
-"- configuration name: %1,"
-"- configuration version: %2,"
-"- platform version: %3,"
-"- online support library version: %4,"
-"- user language: %5,"
-"- application kind: managed,"
-"- service call: %6.';ru='Технические параметры подключения:"
-"(нужны для воспроизведения описанной проблемы)"
-""
-"- имя конфигурации: %1,"
-"- номер версии конфигурации: %2,"
-"- номер версии платформы: %3,"
-"- версия библиотеки Интернет-поддержки: %4,"
-"- язык пользователя: %5,"
-"- вид приложения: управляемый,"
-"- вызов сервиса: %6.'")
+	TechnicalParameters = NStr("en='Technical parameters of connection:
+		|(needed to simulate the described issue) 
+		|
+		|- configuration name: %1,
+		|- configuration version: %2,
+		|- platform version: %3,
+		|- online support library version: %4,
+		|- user language: %5,
+		|- application kind: managed,
+		|- service call: %6.';ru='Технические параметры подключения:
+		|(нужны для воспроизведения описанной проблемы)
+		|
+		|- имя конфигурации: %1,
+		|- номер версии конфигурации: %2,
+		|- номер версии платформы: %3,
+		|- версия библиотеки Интернет-поддержки: %4,
+		|- язык пользователя: %5,
+		|- вид приложения: управляемый,
+		|- вызов сервиса: %6.'")
 		+ Chars.LF;
 	
 	TechnicalParameters = StringFunctionsClientServer.PlaceParametersIntoString(

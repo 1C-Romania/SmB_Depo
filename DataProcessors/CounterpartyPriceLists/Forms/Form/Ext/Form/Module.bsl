@@ -1039,9 +1039,9 @@ Procedure Copy(Command)
 	If Not TypeOf(DetailFromArea) = Type("Structure") Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Impossible to copy the price."
-"Perhaps, empty cell is selected.';ru='Невозможно скопировать цену."
-"Возможно выбрана пустая ячейка.'")
+			NStr("en='Impossible to copy the price.
+		|Perhaps, empty cell is selected.';ru='Невозможно скопировать цену.
+		|Возможно выбрана пустая ячейка.'")
 					);
 		Return;
 		
@@ -1076,9 +1076,9 @@ Procedure Copy(Command)
 		Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Perhaps a blank cell is selected."
-"Copying is not possible.';ru='Возможно указана пустая ячейка."
-"Копирование не возможно.'")
+			NStr("en='Perhaps a blank cell is selected.
+		|Copying is not possible.';ru='Возможно указана пустая ячейка.
+		|Копирование не возможно.'")
 				);
 				
 		Return;
@@ -1108,9 +1108,9 @@ Procedure Change(Command)
 		Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Impossible to change the price."
-"Perhaps, empty cell is selected.';ru='Невозможно изменить цену."
-"Возможно выбрана пустая ячейка.'")
+			NStr("en='Impossible to change the price.
+		|Perhaps, empty cell is selected.';ru='Невозможно изменить цену.
+		|Возможно выбрана пустая ячейка.'")
 					);
 		Return;
 		
@@ -1161,9 +1161,9 @@ Procedure Delete(Command)
 		Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='It is impossible to delete the price."
-"Perhaps, empty cell is selected.';ru='Невозможно удалить цену."
-"Возможно выбрана пустая ячейка.'")
+			NStr("en='It is impossible to delete the price.
+		|Perhaps, empty cell is selected.';ru='Невозможно удалить цену.
+		|Возможно выбрана пустая ячейка.'")
 					);
 		Return;
 		

@@ -119,9 +119,9 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
 	Cancel = True;
 	
-	QuestionText = NStr("en='There is an option to select bank from the classifier."
-"Select?';ru='Есть возможность подобрать банк из классификатора."
-"Подобрать?'");
+	QuestionText = NStr("en='There is an option to select bank from the classifier.
+		|Select?';ru='Есть возможность подобрать банк из классификатора.
+		|Подобрать?'");
 	
 	AdditionalParameters = New Structure;
 	AdditionalParameters.Insert("IsFolder", Group);
@@ -136,13 +136,13 @@ Procedure UpdateFromClassifier(Command)
 	
 	If Not BanksHaveBeenUpdatedFromClassifier Then
 		
-		QuestionText = NStr("en='ATTENTION!"
-"All banks will be updated from the classifier. If bank data was changed manually, such changes could be lost."
-"To disable automatic update for the bank in future, it is necessary to select the manual modification check box (command ""Edit"")."
-"Continue?';ru='ВНИМАНИЕ!"
-"Произойдет обновление всех банков из классификатора. Если данные банков изменялись вручную, то изменения могут быть утеряны."
-"В дальнейшем, для исключения банка из автоматического обновления, необходимо включить признак ручного изменения (команда ""Изменить"")."
-"Продолжить?'");
+		QuestionText = NStr("en='ATTENTION!
+		|All banks will be updated from the classifier. If bank data was changed manually, such changes could be lost.
+		|To disable automatic update for the bank in future, it is necessary to select the manual modification check box (command ""Edit"").
+		|Continue?';ru='ВНИМАНИЕ!
+		|Произойдет обновление всех банков из классификатора. Если данные банков изменялись вручную, то изменения могут быть утеряны.
+		|В дальнейшем, для исключения банка из автоматического обновления, необходимо включить признак ручного изменения (команда ""Изменить"").
+		|Продолжить?'");
 		
 		Response = Undefined;
 

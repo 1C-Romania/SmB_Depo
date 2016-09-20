@@ -60,9 +60,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("DirectExchangeWithBanksAgreement", DirectExchangeWithBanksAgreement);
 	If ValueIsFilled(DirectExchangeWithBanksAgreement) Then
 		Items.GroupExchangeKinds.CurrentPage = Items.GroupDirectExchange;
-		LabelText = NStr("en='The direct exchange agreement is signed with bank %1."
-"The signed payment orders and bank statement request are sent from 1C:Small Business.';ru='С банком %1 действует соглашение о прямом обмене."
-"Отправка подписанных платежных поручений и запрос банковской выписки осуществляется из 1С:Управление небольшой фирмой.'");
+		LabelText = NStr("en='The direct exchange agreement is signed with bank %1.
+		|The signed payment orders and bank statement request are sent from 1C:Small Business.';ru='С банком %1 действует соглашение о прямом обмене.
+		|Отправка подписанных платежных поручений и запрос банковской выписки осуществляется из 1С:Управление небольшой фирмой.'");
 		DirectMessageExchange = StringFunctionsClientServer.PlaceParametersIntoString(
 			LabelText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
 			

@@ -89,31 +89,31 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Not DoNotUseManualInput Then
 		If Not ValueIsFilled(DefaultCodeType) Then
-			Text = NStr("en='Read the discount card with barcode"
-"scanner (magnetic card reader) or enter code manually';ru='Считайте дисконтную карту при"
-"помощи сканера штрихкода (считывателя магнитных карт) или введите код вручную'");
+			Text = NStr("en='Read the discount card with barcode
+		|scanner (magnetic card reader) or enter code manually';ru='Считайте дисконтную карту при
+		|помощи сканера штрихкода (считывателя магнитных карт) или введите код вручную'");
 		ElsIf DefaultCodeType = PredefinedValue("Enum.CardCodesTypes.MagneticCode") Then
-			Text = NStr("en='Read discount card with"
-"magnetic card reader or enter the magnetic code manually';ru='Считайте дисконтную"
-"карту при помощи считывателя магнитных карт или введите магнитный код вручную'");
+			Text = NStr("en='Read discount card with
+		|magnetic card reader or enter the magnetic code manually';ru='Считайте дисконтную
+		|карту при помощи считывателя магнитных карт или введите магнитный код вручную'");
 		ElsIf DefaultCodeType = PredefinedValue("Enum.CardCodesTypes.Barcode") Then
-			Text = NStr("en='Read the discount card with"
-"barcode scanner or enter barcode manually';ru='Считайте дисконтную карту"
-"при помощи сканера штрихкода или введите штрихкод вручную'");
+			Text = NStr("en='Read the discount card with
+		|barcode scanner or enter barcode manually';ru='Считайте дисконтную карту
+		|при помощи сканера штрихкода или введите штрихкод вручную'");
 		EndIf;
 	Else
 		If Not ValueIsFilled(DefaultCodeType) Then
-			Text = NStr("en='Read the discount card with"
-"barcode scanner (magnetic card reader)';ru='Считайте дисконтную карту"
-"при помощи сканера штрихкода (считывателя магнитных карт)'");
+			Text = NStr("en='Read the discount card with
+		|barcode scanner (magnetic card reader)';ru='Считайте дисконтную карту
+		|при помощи сканера штрихкода (считывателя магнитных карт)'");
 		ElsIf DefaultCodeType = PredefinedValue("Enum.CardCodesTypes.MagneticCode") Then
-			Text = NStr("en='Read discount card with"
-"magnetic cards reader';ru='Считайте дисконтную карту"
-"при помощи считывателя магнитных карт'");
+			Text = NStr("en='Read discount card with
+		|magnetic cards reader';ru='Считайте дисконтную карту
+		|при помощи считывателя магнитных карт'");
 		ElsIf DefaultCodeType = PredefinedValue("Enum.CardCodesTypes.Barcode") Then
-			Text = NStr("en='Read the discount card"
-"with barcode scanner';ru='Считайте дисконтную"
-"карту при помощи сканера штрихкода'");
+			Text = NStr("en='Read the discount card
+		|with barcode scanner';ru='Считайте дисконтную
+		|карту при помощи сканера штрихкода'");
 		EndIf;
 	EndIf;
 	LabelReadingDiscountCard = Text;
@@ -495,13 +495,13 @@ Procedure GoToPage(Page)
 	
 	If Page = Items.Pages.ChildItems.GroupChoiceDiscountCard Then
 		If CodeType = PredefinedValue("Enum.CardCodesTypes.MagneticCode") Then
-			Text = NStr("en='Several discount cards with magnetic code ""%1"" are detected."
-"Select suitable card.';ru='Обнаружено несколько дисконтных карт с магнитным кодом ""%1""."
-"Выберите подходящую карту.'");
+			Text = NStr("en='Several discount cards with magnetic code ""%1"" are detected.
+		|Select suitable card.';ru='Обнаружено несколько дисконтных карт с магнитным кодом ""%1"".
+		|Выберите подходящую карту.'");
 		Else
-			Text = NStr("en='Several discount cards with barcode ""%1"" are detected."
-"Select suitable card.';ru='Обнаружено несколько дисконтных карт со штрихкодом ""%1""."
-"Выберите подходящую карту.'");
+			Text = NStr("en='Several discount cards with barcode ""%1"" are detected.
+		|Select suitable card.';ru='Обнаружено несколько дисконтных карт со штрихкодом ""%1"".
+		|Выберите подходящую карту.'");
 		EndIf;
 		LabelChoiceDiscountCard = StringFunctionsClientServer.PlaceParametersIntoString(Text, CardCode);
 	EndIf;
@@ -602,19 +602,19 @@ Procedure HandleReceivedCodeOnClient(Data, ReceivedCodeType, Preprocessing)
 	If FoundDiscountCards.Count() > 1 OR Not ThereAreFoundCards Then
 		GoToPage(Items.Pages.ChildItems.GroupChoiceDiscountCard);
 		If ThereAreFoundCards Then		
-			Text = NStr("en='Several discount cards with code ""%1"" are detected."
-"Select suitable card.';ru='Обнаружено несколько дисконтных карт с кодом ""%1""."
-"Выберите подходящую карту.'");
+			Text = NStr("en='Several discount cards with code ""%1"" are detected.
+		|Select suitable card.';ru='Обнаружено несколько дисконтных карт с кодом ""%1"".
+		|Выберите подходящую карту.'");
 			LabelChoiceDiscountCard = StringFunctionsClientServer.PlaceParametersIntoString(Text, CardCode);
 		Else // Only the kinds of cards for new card registration.
 			If CodeType = PredefinedValue("Enum.CardCodesTypes.Barcode") Then
-				Text = NStr("en='Card with barcode ""% 1"" is not registered."
-"Select a suitable kind of card for registration of new discount card.';ru='Карта со штрихкодом ""%1"" не зарегистрирована."
-"Выберите подходящий вид карты для регистрации новой дисконтной карты.'");
+				Text = NStr("en='Card with barcode ""% 1"" is not registered.
+		|Select a suitable kind of card for registration of new discount card.';ru='Карта со штрихкодом ""%1"" не зарегистрирована.
+		|Выберите подходящий вид карты для регистрации новой дисконтной карты.'");
 			Else
-				Text = NStr("en='Card with magnetic code ""%1"" is not registered."
-"Select a suitable kind of card for registration of new discount card.';ru='Карта с магнитным кодом ""%1"" не зарегистрирована."
-"Выберите подходящий вид карты для регистрации новой дисконтной карты.'");			   
+				Text = NStr("en='Card with magnetic code ""%1"" is not registered.
+		|Select a suitable kind of card for registration of new discount card.';ru='Карта с магнитным кодом ""%1"" не зарегистрирована.
+		|Выберите подходящий вид карты для регистрации новой дисконтной карты.'");			   
 			EndIf;				   
 			LabelChoiceDiscountCard = StringFunctionsClientServer.PlaceParametersIntoString(Text, CardCode);
 		EndIf;

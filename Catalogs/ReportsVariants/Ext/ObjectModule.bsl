@@ -60,9 +60,9 @@ Procedure BeforeWrite(Cancel)
 					NStr("en='Variant key ""%1"" is already occupied with another variant of this report.';ru='Ключ варианта ""%1"" уже занят другим вариантом этого отчета.'"),
 					VariantKey);
 			EndIf;
-			ErrorText = ErrorText + NStr("en='Before unchecking the deletion mark"
-"of the report variant it is necessary to install the deletion mark of the controversial report variant.';ru='Перед снятием пометки удаления варианта отчета"
-"необходимо установить пометку удаления конфликтующего варианта отчета.'");
+			ErrorText = ErrorText + NStr("en='Before unchecking the deletion mark
+		|of the report variant it is necessary to install the deletion mark of the controversial report variant.';ru='Перед снятием пометки удаления варианта отчета
+		|необходимо установить пометку удаления конфликтующего варианта отчета.'");
 			ReportsVariants.ErrorByVariant(Ref, ErrorText);
 			Raise ErrorText;
 		EndIf;

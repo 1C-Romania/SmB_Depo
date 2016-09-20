@@ -170,9 +170,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			If (ValueIsFilled(CompanyCertificateForDetails) AND Not ValueIsFilled(CounterpartyCertificateForEncryption.Get()))
 				OR (NOT ValueIsFilled(CompanyCertificateForDetails) AND ValueIsFilled(CounterpartyCertificateForEncryption.Get())) Then
 				
-				MessageText = NStr("en='For correct encryption work"
-"it is required to specify simultaneously encryption certificates for company and counterparty.';ru='Для корректной работы шифрования необходимо"
-"одновременно указывать сертификаты шифрования для организации и контрагента.'");
+				MessageText = NStr("en='For correct encryption work
+		|it is required to specify simultaneously encryption certificates for company and counterparty.';ru='Для корректной работы шифрования необходимо
+		|одновременно указывать сертификаты шифрования для организации и контрагента.'");
 				CommonUseClientServer.MessageToUser(MessageText, , , , Cancel);
 			EndIf;
 		EndIf;

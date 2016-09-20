@@ -101,9 +101,9 @@ EndProcedure
 Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	If Not Copy Then
 		Cancel = True;
-		QuestionText = NStr("en='There is option to select the world country from the classifier."
-"Select?';ru='Есть возможность подобрать страну мира из классификатора."
-"Подобрать?'");
+		QuestionText = NStr("en='There is option to select the world country from the classifier.
+		|Select?';ru='Есть возможность подобрать страну мира из классификатора.
+		|Подобрать?'");
 								
 		NotificationHandler = New NotifyDescription("NotificationPickQueryFromClassifier", ThisObject);
 		SelectionButtons = New ValueList();

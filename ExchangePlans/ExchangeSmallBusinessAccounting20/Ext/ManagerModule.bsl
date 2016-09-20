@@ -213,17 +213,17 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	
 	ParameterArray.Add(Definition);
 	
-	NString = NStr("en='When loading attributes of the documents will be automatically filled with values:"
-"%1"
-"%2"
-"%3"
-"%4"
-"%5';ru='При загрузке реквизиты документов будет автоматически дозаполнены значениями:"
-"%1"
-"%2"
-"%3"
-"%4"
-"%5'"
+	NString = NStr("en='When loading attributes of the documents will be automatically filled with values:
+		|%1
+		|%2
+		|%3
+		|%4
+		|%5';ru='При загрузке реквизиты документов будет автоматически дозаполнены значениями:
+		|%1
+		|%2
+		|%3
+		|%4
+		|%5'"
 	);
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoStringFromArray(NString, ParameterArray);
@@ -326,10 +326,10 @@ EndFunction
 //
 Function BriefInformationOnExchange(SettingID) Export
 	
-	ExplanationText = NStr("en='	Enables data synchronization between the applications of 1C:Small business, ed. 1.4 and 1C:Accounting 8, ed. 2.0."
-"From Small Business application to Accounting Enterprise application all catalogs and necessary documents are transferred; from Accounting Enterprise application to Small Business application catalogs and documents of cash management are transferred. "
-"For more information click on the Detailed Description link.';ru='	Позволяет синхронизировать данные между приложениями 1С:Управление небольшой фирмой, ред. 1.4 и 1С:Бухгалтерия предприятия 8, ред. 2.0. Из приложения Управление небольшой фирмой в приложение Бухгалтерия предприятия переносятся справочники и все необходимые документы, а из приложения Бухгалтерия предприятия в приложение Управление небольшой фирмой - справочники и документы учета денежных средств."
-"Для получения более подробной информации нажмите на ссылку Подробное описание.'");
+	ExplanationText = NStr("en='	Enables data synchronization between the applications of 1C:Small business, ed. 1.4 and 1C:Accounting 8, ed. 2.0.
+		|From Small Business application to Accounting Enterprise application all catalogs and necessary documents are transferred; from Accounting Enterprise application to Small Business application catalogs and documents of cash management are transferred. 
+		|For more information click on the Detailed Description link.';ru='	Позволяет синхронизировать данные между приложениями 1С:Управление небольшой фирмой, ред. 1.4 и 1С:Бухгалтерия предприятия 8, ред. 2.0. Из приложения Управление небольшой фирмой в приложение Бухгалтерия предприятия переносятся справочники и все необходимые документы, а из приложения Бухгалтерия предприятия в приложение Управление небольшой фирмой - справочники и документы учета денежных средств.
+		|Для получения более подробной информации нажмите на ссылку Подробное описание.'");
 	
 	Return ExplanationText;
 	

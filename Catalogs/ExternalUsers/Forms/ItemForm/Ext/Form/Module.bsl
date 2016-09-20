@@ -370,9 +370,9 @@ Procedure CanLogOnToApplicationOnChange(Item)
 	If Object.DeletionMark AND CanLogOnToApplication Then
 		CanLogOnToApplication = False;
 		ShowMessageBox(,
-			NStr("en='To allow logging on, clear"
-"the deletion mark for the external user.';ru='Чтобы разрешить вход в"
-"программу, требуется снять пометку на удаление с этого внешнего пользователя.'"));
+			NStr("en='To allow logging on, clear
+		|the deletion mark for the external user.';ru='Чтобы разрешить вход в
+		|программу, требуется снять пометку на удаление с этого внешнего пользователя.'"));
 		Return;
 	EndIf;
 	
@@ -975,9 +975,9 @@ Procedure DefineUserInconsistenciesWithUserIB(WriteParameters = Undefined)
 			EndIf;
 			Items.PropertiesMismatchNote.Title =
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='The following infobase user properties differ from those specified"
-"in this form: %1.';ru='Следующие свойства пользователя информационной базы отличаются"
-"от указанных в этой форме: %1.'"), StringPropertyClarification)
+					NStr("en='The following infobase user properties differ from those specified
+		|in this form: %1.';ru='Следующие свойства пользователя информационной базы отличаются
+		|от указанных в этой форме: %1.'"), StringPropertyClarification)
 				+ Chars.LF
 				+ ?(ShowCommandsDifferences Or FoundDifferencesCanBeResolvedWithoutAdministrator,
 					NStr("en='Click ""Write"" to resolve the differences and not to show this warning message.';ru='Нажмите ""Записать"", чтобы устранить различия и не выводить это предупреждение.'"),

@@ -64,11 +64,11 @@ Procedure ExecuteOperationByPaymentCardEnd(Result, Parameters) Export
 		ResultET = EquipmentManagerClient.RunCommand(Parameters.EnabledDeviceIdentifierET, Parameters.OperationKind, InputParameters, Output_Parameters);
 		
 		If Not ResultET Then
-			MessageText = NStr("en='When operation execution there"
-"was error: ""%ErrorDescription%""."
-"Operation by card was not made.';ru='При выполнении операции возникла ошибка:"
-"""%ОписаниеОшибки%""."
-"Отмена по карте не была произведена'");
+			MessageText = NStr("en='When operation execution there
+		|was error: ""%ErrorDescription%"".
+		|Operation by card was not made.';ru='При выполнении операции возникла ошибка:
+		|""%ОписаниеОшибки%"".
+		|Отмена по карте не была произведена'");
 			MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
@@ -111,11 +111,11 @@ Procedure ExecuteOperationByPaymentCardEnd(Result, Parameters) Export
 				// Executing the operation on POS terminal
 				EquipmentManagerClient.RunCommand(Parameters.EnabledDeviceIdentifierET, "EmergencyVoid", InputParameters, Output_Parameters);
 				
-				MessageText = NStr("en='An error occurred while printing"
-"a slip receipt: ""%ErrorDetails%""."
-"Operation by card has been cancelled.';ru='При печати слип чека"
-"возникла ошибка: ""%ОписаниеОшибки%""."
-"Операция по карте была отменена.'");
+				MessageText = NStr("en='An error occurred while printing
+		|a slip receipt: ""%ErrorDetails%"".
+		|Operation by card has been cancelled.';ru='При печати слип чека
+		|возникла ошибка: ""%ОписаниеОшибки%"".
+		|Операция по карте была отменена.'");
 				MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescriptionFR);
 				CommonUseClientServer.MessageToUser(MessageText);
 			Else
@@ -245,9 +245,9 @@ Procedure PrintLastSlipReceiptEnd(DeviceIdentifier, Parameters) Export
 			
 			ResultFR = EquipmentManagerClient.RunCommand(DeviceIdentifier, "PrintText", InputParameters, Output_Parameters);
 			If Not ResultFR Then
-				MessageText = NStr("en='When document printing there"
-"is error: ""%ErrorDescription%"".';ru='При печати документа произошла ошибка:"
-"""%ОписаниеОшибки%"".'");
+				MessageText = NStr("en='When document printing there
+		|is error: ""%ErrorDescription%"".';ru='При печати документа произошла ошибка:
+		|""%ОписаниеОшибки%"".'");
 				MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
@@ -259,8 +259,8 @@ Procedure PrintLastSlipReceiptEnd(DeviceIdentifier, Parameters) Export
 		EquipmentManagerClient.DisableEquipmentById(UUID, DeviceIdentifier);
 		
 	Else
-		MessageText = NStr("en='An error occurred while connecting"
-"the fiscal register: ""%ErrorDescription%"".';ru='При подключении фискального регистратора произошла ошибка: ""%ОписаниеОшибки%"".'");
+		MessageText = NStr("en='An error occurred while connecting
+		|the fiscal register: ""%ErrorDescription%"".';ru='При подключении фискального регистратора произошла ошибка: ""%ОписаниеОшибки%"".'");
 		MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescription);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;

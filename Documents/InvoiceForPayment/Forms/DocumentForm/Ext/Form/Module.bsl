@@ -979,15 +979,15 @@ Procedure ProcessContractChange()
 			WarningText = "";
 			If QueryPriceKind Then
 				
-				WarningText = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! "
-"Perhaps you have to refill prices.';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! "
-"Возможно, необходимо перезаполнить цены.'") + Chars.LF + Chars.LF;
+				WarningText = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! 
+		|Perhaps you have to refill prices.';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! 
+		|Возможно, необходимо перезаполнить цены.'") + Chars.LF + Chars.LF;
 				
 			EndIf;
 			
-			WarningText = WarningText + NStr("en='Settlement currency of the contract with counterparty changed!"
-"It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом!"
-"Необходимо проверить валюту документа!'"
+			WarningText = WarningText + NStr("en='Settlement currency of the contract with counterparty changed!
+		|It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом!
+		|Необходимо проверить валюту документа!'"
 			);
 			
 			ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, True, PriceKindChanged, WarningText);
@@ -1014,9 +1014,9 @@ Procedure ProcessContractChange()
 			
 			If RecalculationRequired Then
 				
-				MessageText = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! "
-"Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! "
-"Пересчитать документ в соответствии с договором?'");
+				MessageText = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! 
+		|Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! 
+		|Пересчитать документ в соответствии с договором?'");
 										
 				Mode = QuestionDialogMode.YesNo;
 				ShowQueryBox(New NotifyDescription("ProcessContractChangeEnd", ThisObject, New Structure("ContractBeforeChange, SettlementsCurrencyBeforeChange, StructureData", ContractBeforeChange, SettlementsCurrencyBeforeChange, StructureData)), MessageText, Mode, 0);
@@ -1934,14 +1934,14 @@ Procedure CounterpartyOnChange(Item)
 			
 			WarningText = "";
 			If QueryPriceKind Then
-				WarningText = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! "
-"Perhaps you have to refill prices.';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! "
-"Возможно, необходимо перезаполнить цены.'") + Chars.LF + Chars.LF;
+				WarningText = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! 
+		|Perhaps you have to refill prices.';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! 
+		|Возможно, необходимо перезаполнить цены.'") + Chars.LF + Chars.LF;
 			EndIf;
 			
-			WarningText = WarningText + NStr("en='Settlement currency of the contract with counterparty changed!"
-"It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом!"
-"Необходимо проверить валюту документа!'"
+			WarningText = WarningText + NStr("en='Settlement currency of the contract with counterparty changed!
+		|It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом!
+		|Необходимо проверить валюту документа!'"
 			);
 			ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, True, PriceKindChanged, WarningText);
 		
@@ -1967,9 +1967,9 @@ Procedure CounterpartyOnChange(Item)
 			
 			If RecalculationRequired Then
 				
-				Message = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! "
-"Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! "
-"Пересчитать документ в соответствии с договором?'");
+				Message = NStr("en='The price and discount conditions in the contract with counterparty differ from price and discount in the document! 
+		|Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает условия цен и скидок, отличные от установленных в документе! 
+		|Пересчитать документ в соответствии с договором?'");
 				
 				ShowQueryBox(New NotifyDescription("CounterpartyOnChangeEnd", ThisObject, New Structure("SettlementsCurrencyBeforeChange, ContractBeforeChange, StructureData", SettlementsCurrencyBeforeChange, ContractBeforeChange, StructureData)), Message, QuestionDialogMode.YesNo);
 				Return;

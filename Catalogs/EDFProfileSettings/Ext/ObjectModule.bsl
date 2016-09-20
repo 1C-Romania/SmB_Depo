@@ -29,13 +29,13 @@ Function EDFProfileSettingsIsUnique() Export
 	CurrentSettingsProfileIsUnique = Result.IsEmpty();
 	
 	If Not CurrentSettingsProfileIsUnique Then
-		MessagePattern = NStr("en='Infobase already contains a settings profile"
-"with details: Company"
-"- %1; Company ID"
-"- %2; Exchange method - %3;';ru='В информационной базе уже существует"
-"профиль настроек с"
-"реквизитами: Организация -"
-"%1; Идентификатор организации - %2; Способ обмена - %3;'");
+		MessagePattern = NStr("en='Infobase already contains a settings profile
+		|with details: Company
+		|- %1; Company ID
+		|- %2; Exchange method - %3;';ru='В информационной базе уже существует
+		|профиль настроек с
+		|реквизитами: Организация -
+		|%1; Идентификатор организации - %2; Способ обмена - %3;'");
 		Selection = Result.Select();
 		Selection.Next();
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(

@@ -457,10 +457,10 @@ Procedure ErrorMessagesInitialization(ErrorMessages)
 	ErrorMessages.Insert("003", );
 	ErrorMessages.Insert("004", );
 	ErrorMessages.Insert("005", );
-	ErrorMessages.Insert("006", NStr("en='Cannot extract files from the archive. Path to the archive files must be up to 256 characters."
-"Possible methods"
-" to fix the error: - in the operating system settings, in the environment"
-" variables, change a path to temporary files; - change a place of temporary file directory in procedure ""ElectronicDocumentsOverridable.TemporaryFilesCurrentDirectory"".';ru='Невозможно извлечь файлы из архива. Путь к файлам архива должен быть короче 256 символов. Возможные способы устранения ошибки: - в настройках операционнной системы, в переменных среды, изменить путь к временным файлам; - изменить размещение каталога временных файлов в процедуре ""ЭлектронныеДокументыПереопределяемый.ТекущийКаталогВременныхФайлов"".'"));
+	ErrorMessages.Insert("006", NStr("en='Cannot extract files from the archive. Path to the archive files must be up to 256 characters.
+		|Possible methods
+		| to fix the error: - in the operating system settings, in the environment
+		| variables, change a path to temporary files; - change a place of temporary file directory in procedure ""ElectronicDocumentsOverridable.TemporaryFilesCurrentDirectory"".';ru='Невозможно извлечь файлы из архива. Путь к файлам архива должен быть короче 256 символов. Возможные способы устранения ошибки: - в настройках операционнной системы, в переменных среды, изменить путь к временным файлам; - изменить размещение каталога временных файлов в процедуре ""ЭлектронныеДокументыПереопределяемый.ТекущийКаталогВременныхФайлов"".'"));
 	// 1C code errors
 	ErrorMessages.Insert("0", NStr("en='One of the available in the request signatures belongs to the unknown person.';ru='Одна из имеющихся в запросе подписей принадлежит неизвестному лицу.'"));
 	ErrorMessages.Insert("2", NStr("en='One of signatures is incorrect';ru='Одна из подписей неверна'"));
@@ -476,9 +476,9 @@ Procedure ErrorMessagesInitialization(ErrorMessages)
 	ErrorMessages.Insert("12", NStr("en='All the available signatures in the request are not enough to get a right of access to the requested account.';ru='Всех имеющихся в запросе подписей недостаточно для того, чтобы получить право на доступ к запрашиваемому счету.'"));
 	ErrorMessages.Insert("13", NStr("en='HTTP query URL is incorrect. Only the resources requests and statuses are supported.';ru='HTTP запрос URL неверный. Поддерживаются только запросы ресурсов и состояния.'"));
 	ErrorMessages.Insert("14", NStr("en='Error of transport container verification.';ru='Ошибка проверки транспортного контейнера.'"));
-	ErrorMessages.Insert("15", NStr("en='Error of the business data container verification."
-"Contact bank support';ru='Ошибка проверки контейнера бизнес данных."
-"Необходимо обратиться в тех.поддержку банка'"));
+	ErrorMessages.Insert("15", NStr("en='Error of the business data container verification.
+		|Contact bank support';ru='Ошибка проверки контейнера бизнес данных.
+		|Необходимо обратиться в тех.поддержку банка'"));
 	ErrorMessages.Insert("16", NStr("en='Statement of account has too small initial date.';ru='В выписке счета слишком малая начальная дата.'"));
 	ErrorMessages.Insert("17", NStr("en='The statement has too big end date.';ru='В выписке счета слишком большая конечная дата.'"));
 	ErrorMessages.Insert("18", NStr("en='The document date is incorrect.';ru='Неверная дата документа.'"));

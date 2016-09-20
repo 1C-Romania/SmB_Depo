@@ -13,14 +13,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If CommonUseReUse.DataSeparationEnabled() Then
 		FormHeaderText = NStr("en='Donwload data to local version';ru='Выгрузить данные в локальную версию'");
-		MessageText      = NStr("en='Data from the service will be exported to the"
-"file for its following import and use in the local version.';ru='Данные из сервиса будут выгружены в файл"
-"для последующей их загрузки и использования в локальной версии.'");
+		MessageText      = NStr("en='Data from the service will be exported to the
+		|file for its following import and use in the local version.';ru='Данные из сервиса будут выгружены в файл
+		|для последующей их загрузки и использования в локальной версии.'");
 	Else
 		FormHeaderText = NStr("en='Export data for migration to service';ru='Выгрузить данные для перехода в сервис'");
-		MessageText      = NStr("en='Data from the local version will be exported to the"
-"file for its following import and use in the service mode.';ru='Данные из локальной версии будут выгружены в"
-"файл для последующей их загрузки и использования в режиме сервиса.'");
+		MessageText      = NStr("en='Data from the local version will be exported to the
+		|file for its following import and use in the service mode.';ru='Данные из локальной версии будут выгружены в
+		|файл для последующей их загрузки и использования в режиме сервиса.'");
 	EndIf;
 	Items.WarningDecoration.Title = MessageText;
 	Title = FormHeaderText;
@@ -273,11 +273,11 @@ Procedure HandleError(Val ShortPresentation, Val DetailedPresentation)
 		,
 		WriteLogEventText);
 	
-	ExceptionPattern = NStr("en='An error occurred while exporting the data: %1."
-""
-"Detailed information for support service is written to the events log monitor. If you do not know the reason of error, you are recommended to contact the technical support service providing to them the infobase and exported event log monitor for investigation.';ru='При выгрузке данных произошла ошибка: %1."
-""
-"Расширенная информация для службы поддержки записана в журнал регистрации. Если Вам неизвестна причина ошибки - рекомендуется обратиться в службу технической поддержки, предоставив для расследования информационную базу и выгрузку журнала регистрации.'");
+	ExceptionPattern = NStr("en='An error occurred while exporting the data: %1.
+		|
+		|Detailed information for support service is written to the events log monitor. If you do not know the reason of error, you are recommended to contact the technical support service providing to them the infobase and exported event log monitor for investigation.';ru='При выгрузке данных произошла ошибка: %1.
+		|
+		|Расширенная информация для службы поддержки записана в журнал регистрации. Если Вам неизвестна причина ошибки - рекомендуется обратиться в службу технической поддержки, предоставив для расследования информационную базу и выгрузку журнала регистрации.'");
 	
 	Raise StringFunctionsClientServer.PlaceParametersIntoString(ExceptionPattern, ShortPresentation);
 	

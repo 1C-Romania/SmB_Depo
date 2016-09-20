@@ -22,9 +22,9 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 
 	If ProductsBase  = Undefined Then
 	 	Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device parameters are not set."
-"For the correct work of the device it is necessary to specify the parameters of its work.';ru='Не настроены параметры устройства."
-"Для корректной работы устройства необходимо задать параметры его работы.'"));
+		Output_Parameters.Add(NStr("en='Device parameters are not set.
+		|For the correct work of the device it is necessary to specify the parameters of its work.';ru='Не настроены параметры устройства.
+		|Для корректной работы устройства необходимо задать параметры его работы.'"));
 		Result = False;
 	Else
 		DriverObject = New Structure("Parameters", Parameters);
@@ -196,9 +196,9 @@ EndFunction
 Function ClearProductsInScales(DriverObject, Parameters, ConnectionParameters, Output_Parameters) 
 
 	Output_Parameters.Add(999);
-	Output_Parameters.Add(NStr("en='These scales do not support the automatic items clearing."
-" Run the app of importing data to the scales for clearing products in the scales and click ""Clear PLU in scales"" button.';ru='Данные весы не поддерживают автоматическую очистку товаров."
-" Для очистки товаров в весах запустите приложение загрузки данных в весы и нажмите кнопку ""Очистить PLU в весах""'"));
+	Output_Parameters.Add(NStr("en='These scales do not support the automatic items clearing.
+		| Run the app of importing data to the scales for clearing products in the scales and click ""Clear PLU in scales"" button.';ru='Данные весы не поддерживают автоматическую очистку товаров.
+		| Для очистки товаров в весах запустите приложение загрузки данных в весы и нажмите кнопку ""Очистить PLU в весах""'"));
 	Result = False;
 
 	Return Result;

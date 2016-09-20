@@ -64,9 +64,9 @@ Procedure VerifyAccountForEmailSending(ResultHandler) Export
 			OpenForm("Catalog.EmailAccounts.Form.AccountSetupAssistant", 
 				New Structure("ContextMode", True), , , , , ResultHandler);
 		Else	
-			MessageText = NStr("en='To send an email, you need to configure the email account."
-"Contact your administrator.';ru='Для отправки письма требуется настройка учетной записи электронной почты."
-"Обратитесь к администратору.'");
+			MessageText = NStr("en='To send an email, you need to configure the email account.
+		|Contact your administrator.';ru='Для отправки письма требуется настройка учетной записи электронной почты.
+		|Обратитесь к администратору.'");
 			NotifyDescription = New NotifyDescription("VerifyAccountForEmailSendingEnd", ThisObject, ResultHandler);
 			ShowMessageBox(NOTifyDescription, MessageText);
 		EndIf;
@@ -214,9 +214,9 @@ Procedure CheckPossibilityOfSendingAndReceivingOfEmails(ResultHandler, UserAccou
 	
 	If ValueIsFilled(ErrorInfo) Then
 		ShowMessageBox(ResultHandler, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Account parameters have been checked"
-"with errors: %1';ru='Проверка параметров учетной"
-"записи завершилась с ошибками: %1'"), ErrorInfo ),,
+			NStr("en='Account parameters have been checked
+		|with errors: %1';ru='Проверка параметров учетной
+		|записи завершилась с ошибками: %1'"), ErrorInfo ),,
 			NStr("en='Check email account';ru='Проверка учетной записи'"));
 	Else
 		ShowMessageBox(ResultHandler, StringFunctionsClientServer.PlaceParametersIntoString(

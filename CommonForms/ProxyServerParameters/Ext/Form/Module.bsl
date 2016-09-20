@@ -11,11 +11,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ProxySettingAtClient = Parameters.ProxySettingAtClient;
 	If Not Parameters.ProxySettingAtClient
 		AND Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise NStr("en='Insufficient access rights."
-""
-"Proxy server is configured by the administrator.';ru='Недостаточно прав доступа."
-""
-"Настройка прокси-сервера выполняется администратором.'");
+		Raise NStr("en='Insufficient access rights.
+		|
+		|Proxy server is configured by the administrator.';ru='Недостаточно прав доступа.
+		|
+		|Настройка прокси-сервера выполняется администратором.'");
 	EndIf;
 	
 	If ProxySettingAtClient Then

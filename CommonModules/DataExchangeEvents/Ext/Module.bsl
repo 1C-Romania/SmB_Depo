@@ -1212,11 +1212,11 @@ Procedure ExecuteObjectRegistrationRulesForExchangePlans(ArrayOfNodesResult, Obj
 		ExecuteObjectRegistrationRulesForExchangePlansTryExcept(ArrayOfNodesResult, Object, ExchangePlanName, AdditionalParameters);
 	Except
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while executing object registration for %1 exchange plan."
-"Error"
-"description: %2';ru='Ошибка выполнения правил регистрации объектов для плана обмена %1."
-"Описание"
-"ошибки: %2'"),
+			NStr("en='An error occurred while executing object registration for %1 exchange plan.
+		|Error
+		|description: %2';ru='Ошибка выполнения правил регистрации объектов для плана обмена %1.
+		|Описание
+		|ошибки: %2'"),
 			ExchangePlanName,
 			DetailErrorDescription(ErrorInfo()));
 	EndTry;
@@ -2147,24 +2147,24 @@ Procedure GetValuesOfConstantAlgorithms(ORR, ValueTree)
 					
 				Except
 					
-					MessageString = NStr("en='An error occurred while"
-"calculating constant value:"
-"Exchange plan: [ExchangePlanName]"
-"Metadata object: [MetadataObjectName]"
-"Error"
-"description: [Description] Algorithm:"
-"//"
-"{Algorithm start} [ConstantValue] // {Algorithm end}"
-"';ru='Ошибка алгоритма вычисления "
-"значения константы: "
-"План обмена: [ИмяПланаОбмена] "
-"Объект метаданных: [ОбъектМетаданныхИмя] "
-"Описание ошибки: "
-"[Описание] "
-"Алгоритм: "
-"// {Начало алгоритма} "
-"[ЗначениеКонстанты] "
-"// {Окончание алгоритма}'");
+					MessageString = NStr("en='An error occurred while
+		|calculating constant value:
+		|Exchange plan: [ExchangePlanName]
+		|Metadata object: [MetadataObjectName]
+		|Error
+		|description: [Description] Algorithm:
+		|//
+		|{Algorithm start} [ConstantValue] // {Algorithm end}
+		|';ru='Ошибка алгоритма вычисления 
+		|значения константы: 
+		|План обмена: [ИмяПланаОбмена] 
+		|Объект метаданных: [ОбъектМетаданныхИмя] 
+		|Описание ошибки: 
+		|[Описание] 
+		|Алгоритм: 
+		|// {Начало алгоритма} 
+		|[ЗначениеКонстанты] 
+		|// {Окончание алгоритма}'");
 					MessageString = StrReplace(MessageString, "[ExchangePlanName]",      ORR.ExchangePlanName);
 					MessageString = StrReplace(MessageString, "[MetadataObjectName]", ORR.MetadataObjectName);
 					MessageString = StrReplace(MessageString, "[Definition]",            ErrorInfo().Definition);
@@ -2358,13 +2358,13 @@ Procedure ExecuteORRHandlerBeforeProcessing(ORR, Cancel, Object, MetadataObject,
 		Try
 			Execute(ORR.BeforeProcess);
 		Except
-			MessageString = NStr("en='An error occurred while executing handler: ""[HandlerName]"";"
-"Exchange plan: [ExchangePlanName];"
-"Metadata object: [MetadataObjectName]"
-"Error description: [Description]';ru='Ошибка при выполнении обработчика: ""[ИмяОбработчика]"";"
-"План обмена: [ИмяПланаОбмена];"
-"Объект метаданных: [ОбъектМетаданныхИмя]"
-"Описание ошибки: [Описание]'");
+			MessageString = NStr("en='An error occurred while executing handler: ""[HandlerName]"";
+		|Exchange plan: [ExchangePlanName];
+		|Metadata object: [MetadataObjectName]
+		|Error description: [Description]';ru='Ошибка при выполнении обработчика: ""[ИмяОбработчика]"";
+		|План обмена: [ИмяПланаОбмена];
+		|Объект метаданных: [ОбъектМетаданныхИмя]
+		|Описание ошибки: [Описание]'");
 			MessageString = StrReplace(MessageString, "[HandlerName]",      NStr("en='Before processing';ru='Перед обработкой'"));
 			MessageString = StrReplace(MessageString, "[ExchangePlanName]",      ORR.ExchangePlanName);
 			MessageString = StrReplace(MessageString, "[MetadataObjectName]", ORR.MetadataObjectName);
@@ -2389,8 +2389,8 @@ Procedure ExecuteORRHandlerOnProcessing(Cancel, ORR, Object, AdditionalParameter
 		Try
 			Execute(ORR.OnProcess);
 		Except
-			MessageString = NStr("en='An error occurred while executing handler: ""[HandlerName]""; Exchange plan: [ExchangePlanName]; Metadata object: [MetadataObjectName] Error description: [Description]';ru='Ошибка при выполнении обработчика: ""[ИмяОбработчика]""; План обмена: [ИмяПланаОбмена]; Объект метаданных: [ОбъектМетаданныхИмя]"
-"Описание ошибки: [Описание]'");
+			MessageString = NStr("en='An error occurred while executing handler: ""[HandlerName]""; Exchange plan: [ExchangePlanName]; Metadata object: [MetadataObjectName] Error description: [Description]';ru='Ошибка при выполнении обработчика: ""[ИмяОбработчика]""; План обмена: [ИмяПланаОбмена]; Объект метаданных: [ОбъектМетаданныхИмя]
+		|Описание ошибки: [Описание]'");
 			MessageString = StrReplace(MessageString, "[HandlerName]",      NStr("en='On processing';ru='При обработке'"));
 			MessageString = StrReplace(MessageString, "[ExchangePlanName]",      ORR.ExchangePlanName);
 			MessageString = StrReplace(MessageString, "[MetadataObjectName]", ORR.MetadataObjectName);
@@ -2413,8 +2413,8 @@ Procedure ExecuteORRHandlerOnProcessingAdditional(Cancel, ORR, Object, QueryText
 		Try
 			Execute(ORR.OnProcessAdditional);
 		Except
-			MessageString = NStr("en='An error occurred while executing handler: ""[HandlerName]""; Exchange plan: [ExchangePlanName]; Metadata object: [MetadataObjectName] Error description: [Description]';ru='Ошибка при выполнении обработчика: ""[ИмяОбработчика]""; План обмена: [ИмяПланаОбмена]; Объект метаданных: [ОбъектМетаданныхИмя]"
-"Описание ошибки: [Описание]'");
+			MessageString = NStr("en='An error occurred while executing handler: ""[HandlerName]""; Exchange plan: [ExchangePlanName]; Metadata object: [MetadataObjectName] Error description: [Description]';ru='Ошибка при выполнении обработчика: ""[ИмяОбработчика]""; План обмена: [ИмяПланаОбмена]; Объект метаданных: [ОбъектМетаданныхИмя]
+		|Описание ошибки: [Описание]'");
 			MessageString = StrReplace(MessageString, "[HandlerName]",      NStr("en='When processing (additional)';ru='При обработке (дополнительный)'"));
 			MessageString = StrReplace(MessageString, "[ExchangePlanName]",      ORR.ExchangePlanName);
 			MessageString = StrReplace(MessageString, "[MetadataObjectName]", ORR.MetadataObjectName);
@@ -2433,8 +2433,8 @@ Procedure ExecuteORRHandlerAfterProcessing(ORR, Cancel, Object, MetadataObject, 
 		Try
 			Execute(ORR.AfterProcessing);
 		Except
-			MessageString = NStr("en='An error occurred while executing handler: ""[HandlerName]""; Exchange plan: [ExchangePlanName]; Metadata object: [MetadataObjectName] Error description: [Description]';ru='Ошибка при выполнении обработчика: ""[ИмяОбработчика]""; План обмена: [ИмяПланаОбмена]; Объект метаданных: [ОбъектМетаданныхИмя]"
-"Описание ошибки: [Описание]'");
+			MessageString = NStr("en='An error occurred while executing handler: ""[HandlerName]""; Exchange plan: [ExchangePlanName]; Metadata object: [MetadataObjectName] Error description: [Description]';ru='Ошибка при выполнении обработчика: ""[ИмяОбработчика]""; План обмена: [ИмяПланаОбмена]; Объект метаданных: [ОбъектМетаданныхИмя]
+		|Описание ошибки: [Описание]'");
 			MessageString = StrReplace(MessageString, "[HandlerName]",      NStr("en='After processing';ru='После обработки'"));
 			MessageString = StrReplace(MessageString, "[ExchangePlanName]",      ORR.ExchangePlanName);
 			MessageString = StrReplace(MessageString, "[MetadataObjectName]", ORR.MetadataObjectName);
@@ -3411,15 +3411,15 @@ Procedure RegisterColissionWarningEventLogMonitor(Object, ObjectMetadata, WriteO
 	
 	If WriteObject Then
 		
-		WarningTextRL = NStr("en='Object changes conflict appeared."
-"This infobase object has been replaced by the second infobase object version.';ru='Возник конфликт изменений объектов."
-"Объект этой информационной базы был заменен версией объекта из второй информационной базы.'");
+		WarningTextRL = NStr("en='Object changes conflict appeared.
+		|This infobase object has been replaced by the second infobase object version.';ru='Возник конфликт изменений объектов.
+		|Объект этой информационной базы был заменен версией объекта из второй информационной базы.'");
 		
 	Else
 		
-		WarningTextRL = NStr("en='Object changes conflict appeared."
-"Object from the second infobase is not accepted. This infobase object has not been modified.';ru='Возник конфликт изменений объектов."
-"Объект из второй информационной базы не принят. Объект этой информационной базы не изменен.'");
+		WarningTextRL = NStr("en='Object changes conflict appeared.
+		|Object from the second infobase is not accepted. This infobase object has not been modified.';ru='Возник конфликт изменений объектов.
+		|Объект из второй информационной базы не принят. Объект этой информационной базы не изменен.'");
 		
 	EndIf;
 	

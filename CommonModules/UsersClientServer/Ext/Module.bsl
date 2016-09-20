@@ -40,9 +40,9 @@ Function CurrentUser() Export
 	
 	If TypeOf(AuthorizedUser) <> Type("CatalogRef.Users") Then
 		Raise
-			NStr("en='Unable to get"
-"the current user in the external user session.';ru='Невозможно"
-"получить текущего пользователя в сеансе внешнего пользователя.'");
+			NStr("en='Unable to get
+		|the current user in the external user session.';ru='Невозможно
+		|получить текущего пользователя в сеансе внешнего пользователя.'");
 	EndIf;
 	
 	Return AuthorizedUser;
@@ -63,9 +63,9 @@ Function CurrentExternalUser() Export
 	
 	If TypeOf(AuthorizedUser) <> Type("CatalogRef.ExternalUsers") Then
 		Raise
-			NStr("en='Unable to get the"
-"current external user in the user session.';ru='Невозможно"
-"получить текущего внешнего пользователя в сеансе пользователя.'");
+			NStr("en='Unable to get the
+		|current external user in the user session.';ru='Невозможно
+		|получить текущего внешнего пользователя в сеансе пользователя.'");
 	EndIf;
 	
 	Return AuthorizedUser;

@@ -24,15 +24,15 @@ Procedure ConfigureReportsVariants(Settings, ReportSettings) Export
 	
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, "UsersActivityAnalysis");
 	VariantSettings.Definition = 
-		NStr("en='It allows to monitor"
-"users activity in the application (how intense and with which objects users work).';ru='Позволяет выполнять"
-"мониторинг активности пользователей в программе (насколько интенсивно и с какими объектами работают пользователи).'");
+		NStr("en='It allows to monitor
+		|users activity in the application (how intense and with which objects users work).';ru='Позволяет выполнять
+		|мониторинг активности пользователей в программе (насколько интенсивно и с какими объектами работают пользователи).'");
 	
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, "ActiveUser");
 	VariantSettings.Definition = 
-		NStr("en='Detailed information"
-"about the objects with which the user worked in the application.';ru='Подробная"
-"информация о том, с какими объектами работал пользователь в программе.'");
+		NStr("en='Detailed information
+		|about the objects with which the user worked in the application.';ru='Подробная
+		|информация о том, с какими объектами работал пользователь в программе.'");
 	
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, "EventLogMonitorControl");
 	VariantSettings.Definition = NStr("en='List of critical records in the events log monitor.';ru='Список критичных записей журнала регистрации.'");

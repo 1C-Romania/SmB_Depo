@@ -50,9 +50,9 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		Cancel = True;
 		DetachIdleHandler("BackgroundJobCheckAtClient");
 		Handler = New NotifyDescription("BeforeCloseAnswerOnQuestion", ThisObject);
-		QuestionText = NStr("en='The marked ones are still being deleted."
-"Abort?';ru='Удаление помеченных еще выполняется."
-"Прервать?'");
+		QuestionText = NStr("en='The marked ones are still being deleted.
+		|Abort?';ru='Удаление помеченных еще выполняется.
+		|Прервать?'");
 		Buttons = New ValueList;
 		Buttons.Add(DialogReturnCode.Abort);
 		Buttons.Add(DialogReturnCode.Ignore, NStr("en='Do not interrupt';ru='Не прерывать'"));
@@ -369,9 +369,9 @@ Procedure ShowConnectionsNotRemovedOnClient()
 		// Nothing is selected or a group is selected.
 		CurrentPage = Items.PageSelectNotRemovedObject;
 		NotRemovedToolTip = " ";
-		ErrorText = NStr("en='Select the object to"
-"determine the reason why it failed to be deleted.';ru='Выберите объект,"
-"чтобы узнать причину, по которой его не удалось удалить.'");
+		ErrorText = NStr("en='Select the object to
+		|determine the reason why it failed to be deleted.';ru='Выберите объект,
+		|чтобы узнать причину, по которой его не удалось удалить.'");
 	Else
 		// Ref to the object that is not deleted is selected.
 		Hidden = ConnectionsNotRemoved.FindRows(New Structure("Visible", True));
@@ -1137,20 +1137,20 @@ Procedure BackgroundJobImportResult(Result)
 		ElsIf NotRemovedQuantity = 0 Then
 			Items.FormPages.CurrentPage = Items.PageSuccessfullyCompleted;
 			NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Removing marked objects successfully completed."
-"Objects deleted: %1.';ru='Удаление помеченных объектов успешно завершено."
-"Удалено объектов: %1.'"),
+				NStr("en='Removing marked objects successfully completed.
+		|Objects deleted: %1.';ru='Удаление помеченных объектов успешно завершено.
+		|Удалено объектов: %1.'"),
 				Format(DeletedQuantity, "NZ=0; NG=")
 			);
 			Items.LabelSuccessfullyCompleted.Title = NotificationText;
 		Else
 			Items.FormPages.CurrentPage = Items.PageReasonsRemovingUnavailable;
 			NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Marked objects are deleted."
-"Objects deleted:"
-"%1, Not deleted: %2.';ru='Удаление помеченных объектов завершено."
-"Удалено"
-"объектов: %1, Не удалено: %2.'"),
+				NStr("en='Marked objects are deleted.
+		|Objects deleted:
+		|%1, Not deleted: %2.';ru='Удаление помеченных объектов завершено.
+		|Удалено
+		|объектов: %1, Не удалено: %2.'"),
 				Format(DeletedQuantity, "NZ=0; NG="),
 				Format(NOTRemovedQuantity, "NZ=0; NG=")
 			);

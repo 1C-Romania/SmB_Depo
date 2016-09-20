@@ -27,11 +27,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	NodeNameLabel = NStr("en='Failed to install the application update"
-"received from ""%1""."
-"Technical information see <a href = ""EventLogMonitor"">Event log monitor</a>.';ru='Не удалось установить обновление программы, полученное из"
-"""%1""."
-"Техническую информацию см. в <a href = ""ЖурналРегистрации"">Журнале регистрации</a>.'");
+	NodeNameLabel = NStr("en='Failed to install the application update
+		|received from ""%1"".
+		|Technical information see <a href = ""EventLogMonitor"">Event log monitor</a>.';ru='Не удалось установить обновление программы, полученное из
+		|""%1"".
+		|Техническую информацию см. в <a href = ""ЖурналРегистрации"">Журнале регистрации</a>.'");
 	NodeNameLabel = StringFunctionsClientServer.PlaceParametersIntoString(NodeNameLabel, InfobaseNode.Description);
 	Items.InformationLabelNodeName.Title = StringFunctionsClientServer.FormattedString(NodeNameLabel);
 	
@@ -78,9 +78,9 @@ Procedure SynchronizeAndContinue(Command)
 		
 	ElsIf StatusUpdate = "ConfigurationUpdate" Then
 		
-		WarningText = NStr("en='Changes which are not applied yet were received from the main node."
-"It is necessary to open the designer and update the data base configuration.';ru='Из главного узла получены изменения, которые еще не применены."
-"Требуется открыть конфигуратор и обновить конфигурацию базы данных.'");
+		WarningText = NStr("en='Changes which are not applied yet were received from the main node.
+		|It is necessary to open the designer and update the data base configuration.';ru='Из главного узла получены изменения, которые еще не применены.
+		|Требуется открыть конфигуратор и обновить конфигурацию базы данных.'");
 		
 	EndIf;
 	
@@ -179,18 +179,18 @@ Procedure SynchronizeAndContinueWithoutIBUpdateEnd()
 		If Constants.ImportDataExchangeMessage.Get() = False Then
 			Constants.ImportDataExchangeMessage.Set(True);
 		EndIf;
-		WarningText = NStr("en='Changes which should be applied were received from the main node."
-"It is necessary to open the designer and update the data base configuration.';ru='Из главного узла получены изменения, которые нужно применить."
-"Требуется открыть конфигуратор и обновить конфигурацию базы данных.'");
+		WarningText = NStr("en='Changes which should be applied were received from the main node.
+		|It is necessary to open the designer and update the data base configuration.';ru='Из главного узла получены изменения, которые нужно применить.
+		|Требуется открыть конфигуратор и обновить конфигурацию базы данных.'");
 	Else
 		
 		If InfobaseUpdate.InfobaseUpdateRequired() Then
 			EnableExchangeMessageDataExportRepetitionBeforeRunning();
 		EndIf;
 		
-		WarningText = NStr("en='Data receipt out of the main node has completed with errors."
-"Look for details in event log.';ru='Получение данных из главного узла завершилось с ошибками."
-"Подробности см. в журнале регистрации.'");
+		WarningText = NStr("en='Data receipt out of the main node has completed with errors.
+		|Look for details in event log.';ru='Получение данных из главного узла завершилось с ошибками.
+		|Подробности см. в журнале регистрации.'");
 		
 		DataExchangeServer.SetDataExchangeMessageImportModeBeforeStart("ImportAllowed", False);
 		
@@ -335,9 +335,9 @@ Procedure SynchronizeAndContinueWithIBUpdateEnd()
 		If Constants.ImportDataExchangeMessage.Get() = False Then
 			Constants.ImportDataExchangeMessage.Set(True);
 		EndIf;
-		WarningText = NStr("en='Changes which should be applied were received from the main node."
-"It is necessary to open the designer and update the data base configuration.';ru='Из главного узла получены изменения, которые нужно применить."
-"Требуется открыть конфигуратор и обновить конфигурацию базы данных.'");
+		WarningText = NStr("en='Changes which should be applied were received from the main node.
+		|It is necessary to open the designer and update the data base configuration.';ru='Из главного узла получены изменения, которые нужно применить.
+		|Требуется открыть конфигуратор и обновить конфигурацию базы данных.'");
 		
 	Else
 		
@@ -345,9 +345,9 @@ Procedure SynchronizeAndContinueWithIBUpdateEnd()
 		
 		EnableExchangeMessageDataExportRepetitionBeforeRunning();
 		
-		WarningText = NStr("en='Data receipt out of the main node has completed with errors."
-"Look for details in event log.';ru='Получение данных из главного узла завершилось с ошибками."
-"Подробности см. в журнале регистрации.'");
+		WarningText = NStr("en='Data receipt out of the main node has completed with errors.
+		|Look for details in event log.';ru='Получение данных из главного узла завершилось с ошибками.
+		|Подробности см. в журнале регистрации.'");
 		
 	EndIf;
 	

@@ -233,9 +233,9 @@ Procedure FillByCashReceipt(FillingData, FillingMultipleDocuments = False)
 	// Check data for an advance invoice
 	If QueryResult.IsEmpty() Then
 		
-		ErrorMessage = NStr("en='No data found for the advance invoice."
-"Basis document ""%BasisDocument"".';ru='Нет данных для счета-фактуры на аванс!"
-"Основание ""%ДокументОснование"".'");
+		ErrorMessage = NStr("en='No data found for the advance invoice.
+		|Basis document ""%BasisDocument"".';ru='Нет данных для счета-фактуры на аванс!
+		|Основание ""%ДокументОснование"".'");
 		
 		ErrorMessage = StrReplace(ErrorMessage, "%BasisDocument", FillingData);
 		
@@ -339,9 +339,9 @@ Procedure FillByPaymentReceipt(FillingData, FillingMultipleDocuments = False)
 	// Check data for an advance invoice
 	If QueryResult.IsEmpty() Then
 		
-		ErrorMessage = NStr("en='No data found for the advance invoice."
-"Basis document ""%BasisDocument"".';ru='Нет данных для счета-фактуры на аванс!"
-"Основание ""%ДокументОснование"".'");
+		ErrorMessage = NStr("en='No data found for the advance invoice.
+		|Basis document ""%BasisDocument"".';ru='Нет данных для счета-фактуры на аванс!
+		|Основание ""%ДокументОснование"".'");
 		
 		ErrorMessage = StrReplace(ErrorMessage, "%BasisDocument", FillingData);
 		
@@ -989,9 +989,9 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		If ValueIsFilled(InvoiceFound)
 			AND InvoiceFound.Ref <> Ref Then
 			
-			MessageText = NStr("en='Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%""."
-"Cannot add another document ""Invoice"".';ru='Для документа ""%Ссылка%"" уже введен счет-фактура ""%СчетФактура%""."
-"Запись еще одного документа ""Счет-фактура"" не допускается!'"
+			MessageText = NStr("en='Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%"".
+		|Cannot add another document ""Invoice"".';ru='Для документа ""%Ссылка%"" уже введен счет-фактура ""%СчетФактура%"".
+		|Запись еще одного документа ""Счет-фактура"" не допускается!'"
 			);
 			
 			MessageText = StrReplace(MessageText, "%Ref%", CurRow.BasisDocument);
@@ -1146,9 +1146,9 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		InvoiceFound = SmallBusinessServer.GetSubordinateInvoice(BasisDocument);
 		If ValueIsFilled(InvoiceFound) AND InvoiceFound.Ref <> Ref Then
 		
-			MessageText = NStr("en='Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%"". "
-"Cannot add another document ""Invoice"".';ru='Для документа ""%Ссылка%"" уже введен счет-фактура ""%СчетФактура%"". "
-"Запись еще одного документа ""Счет-фактура"" не допускается!'");
+			MessageText = NStr("en='Invoice note ""%InvoiceNote%"" already exists for document ""%Reference%"". 
+		|Cannot add another document ""Invoice"".';ru='Для документа ""%Ссылка%"" уже введен счет-фактура ""%СчетФактура%"". 
+		|Запись еще одного документа ""Счет-фактура"" не допускается!'");
 			MessageText = StrReplace(MessageText, "%Ref%", BasisDocument);
 			MessageText = StrReplace(MessageText, "%CustomerInvoiceNote%", InvoiceFound.Ref);
 			MessageField = "Object.BasisDocument";

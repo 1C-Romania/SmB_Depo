@@ -51,13 +51,13 @@ Procedure OnExit(Warnings) Export
 		AND OfflineWorkParameters.SynchronizationWithServiceHasNotBeenExecutedLongAgo Then
 		
 		WarningParameters = StandardSubsystemsClient.AlertOnEndWork();
-		WarningParameters.ExtendedTooltip = NStr("en='In some cases data synchronization can take a long time:"
-" - slow communication channel;"
-" - large data volume;"
-" - application update is avaliable in the Internet.';ru='В некоторых случаях синхронизация данных может занять длительное время:"
-" - медленный канал связи;"
-" - большой объем данных;"
-" - доступно обновление приложения в Интернете.'");
+		WarningParameters.ExtendedTooltip = NStr("en='In some cases data synchronization can take a long time:
+		| - slow communication channel;
+		| - large data volume;
+		| - application update is avaliable in the Internet.';ru='В некоторых случаях синхронизация данных может занять длительное время:
+		| - медленный канал связи;
+		| - большой объем данных;
+		| - доступно обновление приложения в Интернете.'");
 
 		WarningParameters.FlagText = NStr("en='Data synchronization with the application in the Internet';ru='Синхронизировать данные с приложением в Интернете'");
 		WarningParameters.Priority = 80;

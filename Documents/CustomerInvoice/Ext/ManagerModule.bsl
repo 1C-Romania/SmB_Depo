@@ -4575,9 +4575,9 @@ Function GenerateServicesAcceptanceCertificate(SpreadsheetDocument, CurrentDocum
 		
 	Else
 		
-		MessageText = NStr("en='ATTENTION! User template may be used for generating the ""Certificate of services provided"" document. "
-"Standard printing mechanism may work incorrecty.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет для формирования документа ""Акт об оказании услуг"". "
-"Штатный механизм печати может работать некоректно.'");
+		MessageText = NStr("en='ATTENTION! User template may be used for generating the ""Certificate of services provided"" document. 
+		|Standard printing mechanism may work incorrecty.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет для формирования документа ""Акт об оказании услуг"". 
+		|Штатный механизм печати может работать некоректно.'");
 		CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 		
 	EndIf;
@@ -5981,11 +5981,11 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 				
 				PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, TemplateName, PFPresentation, New SpreadsheetDocument);
 				
-				MessageText = NStr("en='__________________"
-"%1 document."
-"To generate printing form, it is required to select invoice for payment with document-base or specify customer order in the tabular section.';ru='__________________"
-"Документ %1."
-"Для формирования печатной формы необходимо либо выбрать документом-основанием счет на оплату, либо указать в табличной части заказ покупателя.'");
+				MessageText = NStr("en='__________________
+		|%1 document.
+		|To generate printing form, it is required to select invoice for payment with document-base or specify customer order in the tabular section.';ru='__________________
+		|Документ %1.
+		|Для формирования печатной формы необходимо либо выбрать документом-основанием счет на оплату, либо указать в табличной части заказ покупателя.'");
 				
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, PrintObject);
 				CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
@@ -6055,11 +6055,11 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 				
 				PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CustomerInvoiceNote", "Account-texture", New SpreadsheetDocument);
 				
-				MessageText = NStr("en='__________________"
-"%1 document."
-"Customer invoice note is not generated.';ru='__________________"
-"Документ %1."
-"Счет-фактура не сформирована.'");
+				MessageText = NStr("en='__________________
+		|%1 document.
+		|Customer invoice note is not generated.';ru='__________________
+		|Документ %1.
+		|Счет-фактура не сформирована.'");
 				
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, PrintObject);
 				CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);

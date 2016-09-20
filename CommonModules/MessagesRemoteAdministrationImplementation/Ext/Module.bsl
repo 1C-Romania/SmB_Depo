@@ -734,9 +734,9 @@ Function GetEmailAddressStructure(Val EmailAddress)
 		Try
 			EmailAddressStructure = CommonUseClientServer.ParseStringWithPostalAddresses(EmailAddress);
 		Except
-			MessagePattern = NStr("en='Incorrect email address is specified:"
-"%1 Error: %2';ru='Указан некорректный адрес"
-"электронной почты: %1 Ошибка: %2'");
+			MessagePattern = NStr("en='Incorrect email address is specified:
+		|%1 Error: %2';ru='Указан некорректный адрес
+		|электронной почты: %1 Ошибка: %2'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
 				EmailAddress, ErrorInfo().Definition);
 			Raise(MessageText);

@@ -812,9 +812,9 @@ Procedure WriteChangesAtServer(Cancel)
 							
 							If ValueIsFilled(ErrorDescription) Then
 								Raise
-									NStr("en='At least one user must have the Administrator profile"
-"to log on to the application.';ru='Профиль Администратор должен быть хотя бы"
-"у одного пользователя, которому разрешен вход в программу.'");
+									NStr("en='At least one user must have the Administrator profile
+		|to log on to the application.';ru='Профиль Администратор должен быть хотя бы
+		|у одного пользователя, которому разрешен вход в программу.'");
 							EndIf;
 						EndIf;
 					EndIf;

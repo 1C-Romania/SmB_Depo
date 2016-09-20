@@ -1226,11 +1226,11 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 		NotifyDescription = New NotifyDescription("BeforeWriteEnd", ThisObject, New Structure("WriteParameters", WriteParameters));
 		
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='While using the exchange you should reflect operation ""%1"" in ""Enterprise accounting""."
-""
-"Do you want to cancel the document record?';ru='При использовании обмена операцию ""%1"" рекомендуется отражать в ""Бухгалтерии предприятия""."
-""
-"Отменить запись документа?'"),
+			NStr("en='While using the exchange you should reflect operation ""%1"" in ""Enterprise accounting"".
+		|
+		|Do you want to cancel the document record?';ru='При использовании обмена операцию ""%1"" рекомендуется отражать в ""Бухгалтерии предприятия"".
+		|
+		|Отменить запись документа?'"),
 			String(OperationKind));
 			
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo,, DialogReturnCode.Yes);

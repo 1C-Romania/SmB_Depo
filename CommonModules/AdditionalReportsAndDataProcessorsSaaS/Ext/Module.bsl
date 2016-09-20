@@ -33,9 +33,9 @@ Function SuppliedDataProcessor(UsingDataProcessor) Export
 	
 	If Not CommonUseReUse.CanUseSeparatedData() Then
 		
-		Raise NStr("en='AdditionalReportsAndDataProcessorsSaaS.SuppliedDataProcessor()"
-"function usage is only available in sessions with the specified data separation.';ru='Использование"
-"функции ДополнительныеОтчетыИОбработкиВМоделиСервиса.ПоставляемаяОбработка() доступно только сеансов с установленным разделением данных!'");
+		Raise NStr("en='AdditionalReportsAndDataProcessorsSaaS.SuppliedDataProcessor()
+		|function usage is only available in sessions with the specified data separation.';ru='Использование
+		|функции ДополнительныеОтчетыИОбработкиВМоделиСервиса.ПоставляемаяОбработка() доступно только сеансов с установленным разделением данных!'");
 		
 	EndIf;
 	
@@ -71,9 +71,9 @@ Function UsingDataProcessor(SuppliedDataProcessor) Export
 	
 	If Not CommonUseReUse.CanUseSeparatedData() Then
 		
-		Raise NStr("en='AdditionalReportsAndDataProcessorsSaaS.UsedDataProcessor()"
-"function usage is only available in sessions with the specified data separation.';ru='Использование"
-"функции ДополнительныеОтчетыИОбработкиВМоделиСервиса.ИспользуемаяОбработка() доступно только сеансов с установленным разделением данных!'");
+		Raise NStr("en='AdditionalReportsAndDataProcessorsSaaS.UsedDataProcessor()
+		|function usage is only available in sessions with the specified data separation.';ru='Использование
+		|функции ДополнительныеОтчетыИОбработкиВМоделиСервиса.ИспользуемаяОбработка() доступно только сеансов с установленным разделением данных!'");
 		
 	EndIf;
 	

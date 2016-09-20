@@ -173,9 +173,9 @@ Procedure GenerateDataAreaUpdatePlan(LibraryID, AllHandlers,
 				If DescriptionUpdateYourPlan.VersionOn <> Selection.Version Then
 					EmptyUpdatePlan = False;
 					
-					CommentTemplate = NStr("en='Incorrect library update plan"
-"is found %1 An update to version plan is required %2, an update to version plan is found %3';ru='Обнаружен некорректный"
-"план обновления библиотеки %1 Требуется план обновления на версию %2, найден план для обновления на версию %3'");
+					CommentTemplate = NStr("en='Incorrect library update plan
+		|is found %1 An update to version plan is required %2, an update to version plan is found %3';ru='Обнаружен некорректный
+		|план обновления библиотеки %1 Требуется план обновления на версию %2, найден план для обновления на версию %3'");
 					TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, Selection.Name);
 					WriteLogEvent(
 						InfobaseUpdate.EventLogMonitorEvent(),
@@ -234,9 +234,9 @@ Procedure BeforeInformationBaseUpdating() Export
 		
 		SharedDataVersion = InfobaseUpdateService.IBVersion(Metadata.Name, True);
 		If InfobaseUpdateService.NeedToDoUpdate(Metadata.Version, SharedDataVersion) Then
-			Message = NStr("en='Common part of the infobase update is not executed."
-"Contact your administrator.';ru='Не выполнена общая часть обновления информационной базы."
-"Обратитесь к администратору.'");
+			Message = NStr("en='Common part of the infobase update is not executed.
+		|Contact your administrator.';ru='Не выполнена общая часть обновления информационной базы.
+		|Обратитесь к администратору.'");
 			WriteLogEvent(InfobaseUpdate.EventLogMonitorEvent(), EventLogLevel.Error,,, Message);
 			Raise Message;
 		EndIf;
@@ -853,9 +853,9 @@ Function MinimumVersionOfDataAreas() Export
 	SetPrivilegedMode(True);
 	
 	If CommonUseReUse.DataSeparationEnabled() AND CommonUseReUse.CanUseSeparatedData() Then
-		Raise NStr("en='Call of"
-"the InfobaseUpdateServiceReUse.MinIBVersion() function is not available from the sessions with the set service model separators value.';ru='Вызов"
-"функции ОбновлениеИнформационнойБазыСлужебныйПовтИсп.МинимальнаяВерсияИБ() недоступен из сеансов с установленным значением разделителей модели сервиса!'");
+		Raise NStr("en='Call of
+		|the InfobaseUpdateServiceReUse.MinIBVersion() function is not available from the sessions with the set service model separators value.';ru='Вызов
+		|функции ОбновлениеИнформационнойБазыСлужебныйПовтИсп.МинимальнаяВерсияИБ() недоступен из сеансов с установленным значением разделителей модели сервиса!'");
 	EndIf;
 	
 	Query = New Query;

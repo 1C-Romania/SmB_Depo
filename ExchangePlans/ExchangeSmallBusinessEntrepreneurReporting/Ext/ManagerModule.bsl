@@ -116,11 +116,11 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 		
 	EndIf;
 	
-	NString = NStr("en='Dump the documents and"
-"directory"
-"inquiries: %1 %2';ru='Выгружать документы и справочную информацию:"
-"%1"
-"%2'");
+	NString = NStr("en='Dump the documents and
+		|directory
+		|inquiries: %1 %2';ru='Выгружать документы и справочную информацию:
+		|%1
+		|%2'");
 	
 	ParameterArray = New Array;
 	ParameterArray.Add(DocumentsDumpStartDateRestriction);

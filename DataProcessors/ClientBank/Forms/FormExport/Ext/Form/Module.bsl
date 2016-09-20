@@ -875,9 +875,9 @@ Procedure ExportExecute(Command)
 					EndIF;	
 				EndIF;		
 			Else	  
-				WarningText = NStr("en='Export document list is empty."
-"Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст."
-"Проверьте правильность указанного банковского счета и периода выгрузки.'");
+				WarningText = NStr("en='Export document list is empty.
+		|Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст.
+		|Проверьте правильность указанного банковского счета и периода выгрузки.'");
 			EndIf;
 			
 			If ValueIsFilled(WarningText) Then
@@ -893,9 +893,9 @@ Procedure ExportExecute(Command)
 	Else
 		
 		ShowMessageBox(Undefined,
-			NStr("en='Export document list is empty."
-"Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст."
-"Проверьте правильность указанного банковского счета и периода выгрузки.'")
+			NStr("en='Export document list is empty.
+		|Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст.
+		|Проверьте правильность указанного банковского счета и периода выгрузки.'")
 		);
 		
 	EndIf;
@@ -931,9 +931,9 @@ Procedure SendToBank(Command)
 	Else
 		
 		ShowMessageBox(Undefined,
-			NStr("en='Export document list is empty."
-"Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст."
-"Проверьте правильность указанного банковского счета и периода выгрузки.'")
+			NStr("en='Export document list is empty.
+		|Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст.
+		|Проверьте правильность указанного банковского счета и периода выгрузки.'")
 		);
 		
 	EndIf;

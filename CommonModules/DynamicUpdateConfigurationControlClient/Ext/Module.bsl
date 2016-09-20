@@ -29,11 +29,11 @@ Procedure DynamicUpdateCheckWaitHandler() Export
 		
 	DetachIdleHandler("IdleHandlerOfIBDynamicChangesCheckup");
 	
-	MessageText = NStr("en='Application version has been updated (changes were made to the info base configuration)."
-"It is recommended to restart the application for further operations."
-"Restart now?';ru='Версия программы обновлена (внесены изменения в конфигурацию информационной базы)."
-"Для дальнейшей работы рекомендуется перезапустить программу."
-"Перезапустить?'");
+	MessageText = NStr("en='Application version has been updated (changes were made to the info base configuration).
+		|It is recommended to restart the application for further operations.
+		|Restart now?';ru='Версия программы обновлена (внесены изменения в конфигурацию информационной базы).
+		|Для дальнейшей работы рекомендуется перезапустить программу.
+		|Перезапустить?'");
 								
 	NotifyDescription = New NotifyDescription("DynamicUpdateCheckWaitHandlerEnd", ThisObject);
 	ShowQueryBox(NOTifyDescription, MessageText, QuestionDialogMode.YesNo);

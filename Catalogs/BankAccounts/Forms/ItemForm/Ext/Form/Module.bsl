@@ -139,9 +139,9 @@ Function CheckCorrectnessOfAccountNumbers(Number, ForeignCurrencyAccount = False
 	ElsIf Not StringFunctionsClientServer.OnlyNumbersInString(Number) Then
 		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", " ") +
-			NStr("en='The bank account number must contain only digits."
-"Perhaps, numer is specified incorrectly';ru='В номере банковского счета присутствуют не только цифры."
-"Возможно, номер указан неверно'");
+			NStr("en='The bank account number must contain only digits.
+		|Perhaps, numer is specified incorrectly';ru='В номере банковского счета присутствуют не только цифры.
+		|Возможно, номер указан неверно'");
 		Result = False;
 		
 	EndIf;

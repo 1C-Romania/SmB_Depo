@@ -28,9 +28,9 @@ Procedure DefineLaunchPossibility(LaunchLocation, InternetSupportParameters, Act
 		
 		ActionsDetails.Insert("Action", "ShowMessage");
 		ActionsDetails.Insert("Message",
-			NStr("en='Use of"
-"Online support monitor banned in current mode.';ru='Использование"
-"монитора Интернет-поддержки запрещено в текущем режиме работы.'"));
+			NStr("en='Use of
+		|Online support monitor banned in current mode.';ru='Использование
+		|монитора Интернет-поддержки запрещено в текущем режиме работы.'"));
 		Return;
 		
 	EndIf;

@@ -100,13 +100,13 @@ EndProcedure
 Procedure ClearLocalFilesCache(Command)
 	
 	QuestionText =
-		NStr("en='From the main working directory all files"
-"will be deleted, except those borrowed by you for editing."
-""
-"Continue?';ru='Из основного рабочего каталога будут удалены все файлы,"
-"кроме занятых вами для редактирования."
-""
-"Продолжить?'");
+		NStr("en='From the main working directory all files
+		|will be deleted, except those borrowed by you for editing.
+		|
+		|Continue?';ru='Из основного рабочего каталога будут удалены все файлы,
+		|кроме занятых вами для редактирования.
+		|
+		|Продолжить?'");
 	Handler = New NotifyDescription("ClearLocalFilesCacheAfterAnswerQuestionToContinue", ThisObject);
 	ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo);
 	
@@ -164,9 +164,9 @@ Procedure ClearLocalFilesCacheAfterAnswerQuestionToContinue(Response, ExecutePar
 		Return;
 	EndIf;
 	
-	Status(NStr("en='Main working directory is being cleared..."
-"Please, wait.';ru='Выполняется очистка основного рабочего каталога..."
-"Пожалуйста, подождите.'"));
+	Status(NStr("en='Main working directory is being cleared...
+		|Please, wait.';ru='Выполняется очистка основного рабочего каталога...
+		|Пожалуйста, подождите.'"));
 	
 	Handler = New NotifyDescription("ClearLocalFilesCacheEnd", ThisObject);
 	// ClearAll = True.

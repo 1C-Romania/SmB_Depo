@@ -267,18 +267,18 @@ Procedure SupplementMessageText(ClassifierImportParameters) Export
 	If ClassifierImportParameters["Exported"] > 0 Then
 		
 		MessageText = MessageText + StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='"
-"New updated: %1.';ru='"
-"Загружено новых: %1.'"), ClassifierImportParameters["Exported"]);
+		NStr("en='
+		|New updated: %1.';ru='
+		|Загружено новых: %1.'"), ClassifierImportParameters["Exported"]);
 	
 	EndIf;
 	
 	If ClassifierImportParameters["Updated"] > 0 Then
 		
 		MessageText = MessageText + StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='"
-"Records updated: %1.';ru='"
-"Обновлено записей: %1.'"), ClassifierImportParameters["Updated"]);
+		NStr("en='
+		|Records updated: %1.';ru='
+		|Обновлено записей: %1.'"), ClassifierImportParameters["Updated"]);
 
 	EndIf;
 	
@@ -347,9 +347,9 @@ Procedure GetRBCData(ClassifierImportParameters, StorageAddress = "") Export
 	PathToFileBIKRBK = CommonUseClientServer.AddFinalPathSeparator(TemporaryDirectory) + "bnkseek.txt";
 	FileBIKRBK	   = New File(PathToFileBIKRBK);
 	If Not FileBIKRBK.Exist() Then
-		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website. "
-"Archive does not contain information - banks classifier.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК. "
-"Архив не содержит информацию - классификатор банков.'");
+		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website. 
+		|Archive does not contain information - banks classifier.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК. 
+		|Архив не содержит информацию - классификатор банков.'");
 		ClassifierImportParameters.Insert("MessageText", MessageText);
 		If Not IsBlankString(StorageAddress) Then
 			PutToTempStorage(ClassifierImportParameters, StorageAddress);
@@ -360,9 +360,9 @@ Procedure GetRBCData(ClassifierImportParameters, StorageAddress = "") Export
 	PathToRBKStatesFile = CommonUseClientServer.AddFinalPathSeparator(TemporaryDirectory) + "reg.txt";
 	RBCStatesFile		= New File(PathToRBKStatesFile);
 	If Not RBCStatesFile.Exist() Then
-		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website. "
-"Archive does not contain information about states.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК. "
-"Архив не содержит информацию о регионах.'");
+		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website. 
+		|Archive does not contain information about states.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК. 
+		|Архив не содержит информацию о регионах.'");
 		ClassifierImportParameters.Insert("MessageText", MessageText);
 		If Not IsBlankString(StorageAddress) Then
 			PutToTempStorage(ClassifierImportParameters, StorageAddress);
@@ -373,9 +373,9 @@ Procedure GetRBCData(ClassifierImportParameters, StorageAddress = "") Export
 	PathToFileNonPerformingBanks = InativeBanksFileName(TemporaryDirectory);
 	NonOperationalBanksFile = New File(PathToFileNonPerformingBanks);
 	If Not NonOperationalBanksFile.Exist() Then
-		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website. "
-"Archive does not contain information on the inactive banks.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК. "
-"Архив не содержит информацию о недействующих банках.'");
+		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website. 
+		|Archive does not contain information on the inactive banks.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК. 
+		|Архив не содержит информацию о недействующих банках.'");
 		ClassifierImportParameters.Insert("MessageText", MessageText);
 		If Not IsBlankString(StorageAddress) Then
 			PutToTempStorage(ClassifierImportParameters, StorageAddress);
@@ -532,14 +532,14 @@ Procedure GetRBKDataFromInternet(RBKFilesReceivingParameters) Export
 	Else
 		If CommonUse.FileInfobase() Then
 			AdditionalMessage = 
-				NStr("en='"
-"Perhaps, the settings of the Internet connection are inaccurate or incorrect';ru='"
-"Возможно неточные или неправильные настройки подключения к Интернету.'");
+				NStr("en='
+		|Perhaps, the settings of the Internet connection are inaccurate or incorrect';ru='
+		|Возможно неточные или неправильные настройки подключения к Интернету.'");
 		Else
 			AdditionalMessage =
-				NStr("en='"
-"Perhaps, the Internet connection settings on the 1C:Enterprise server are inaccurate or incorrect.';ru='"
-"Возможно неточные или неправильные настройки подключения к Интернету на сервере 1С:Предприятие.'");
+				NStr("en='
+		|Perhaps, the Internet connection settings on the 1C:Enterprise server are inaccurate or incorrect.';ru='
+		|Возможно неточные или неправильные настройки подключения к Интернету на сервере 1С:Предприятие.'");
 		EndIf;	
 		
 		ErrorInfo = ResultFromInternet.ErrorInfo + AdditionalMessage; 

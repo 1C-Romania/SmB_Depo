@@ -66,11 +66,11 @@ Procedure Done(Command)
 			EndIf;
 			Close(True);
 		Except
-			ErrorTemplate = NStr("en='SMS authentication error."
-"Error code:"
-"%1 %2';ru='Ошибка SMS аутентификации."
-"Код"
-"ошибки: %1 %2'");
+			ErrorTemplate = NStr("en='SMS authentication error.
+		|Error code:
+		|%1 %2';ru='Ошибка SMS аутентификации.
+		|Код
+		|ошибки: %1 %2'");
 			If BankApplication = PredefinedValue("Enum.BankApplications.ExchangeThroughTheAdditionalInformationProcessor") Then
 				ErrorDetails = ExternalAttachableModule.ErrorDetails();
 			Else
@@ -120,11 +120,11 @@ Procedure SendSMS()
 		EndIf;
 	Except
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
-		ErrorTemplate = NStr("en='SMS authentication launch error."
-"Error code:"
-"%1 %2';ru='Ошибка запуска аутентификации по SMS."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='SMS authentication launch error.
+		|Error code:
+		|%1 %2';ru='Ошибка запуска аутентификации по SMS.
+		|Код
+		|ошибки: %1 %2'");
 		If BankApplication = PredefinedValue("Enum.BankApplications.ExchangeThroughTheAdditionalInformationProcessor") Then
 			ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		Else

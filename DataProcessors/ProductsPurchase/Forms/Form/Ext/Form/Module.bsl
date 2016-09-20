@@ -813,13 +813,13 @@ Function OrderSetServer()
 		
 		RollbackTransaction();
 		
-		ErrorDescription = NStr("en='While generating an order, an error occurred."
-"Order generation is canceled."
-"Additional"
-"description: %AdditionalDetails%';ru='При формировании заказов произошла ошибка."
-"Формирование заказов отменено."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+		ErrorDescription = NStr("en='While generating an order, an error occurred.
+		|Order generation is canceled.
+		|Additional
+		|description: %AdditionalDetails%';ru='При формировании заказов произошла ошибка.
+		|Формирование заказов отменено.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 		);
 		
 		ErrorDescription = StrReplace(ErrorDescription, "%AdditionalDetails%", ErrorInfo().Definition);

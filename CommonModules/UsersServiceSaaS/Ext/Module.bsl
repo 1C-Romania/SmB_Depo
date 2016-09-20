@@ -192,11 +192,11 @@ Procedure BeforeStartIBUserProcessor(UserObject, ProcessingParameters) Export
 		
 		If Not CommonUseReUse.SessionWithoutSeparator() Then
 			Raise
-				NStr("en='Only undivided"
-"users can be"
-"updated upon messages via the remote administration channel.';ru='Обновление"
-"пользователя по"
-"сообщению канала удаленного администрирования доступно только неразделенным пользователям.'");
+				NStr("en='Only undivided
+		|users can be
+		|updated upon messages via the remote administration channel.';ru='Обновление
+		|пользователя по
+		|сообщению канала удаленного администрирования доступно только неразделенным пользователям.'");
 		EndIf;
 		
 		ProcessingParameters.Insert("RemoteAdministrationChannelMessageProcessing");
@@ -212,11 +212,11 @@ Procedure BeforeStartIBUserProcessor(UserObject, ProcessingParameters) Export
 		If ValueIsFilled(OldUser.ServiceUserID) Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while writing user %1."
-"You can not modify"
-"the service user ID already set in a catalog item.';ru='Ошибка при записи пользователя ""%1""."
-"Нельзя изменять"
-"уже установленный идентификатор пользователя сервиса в элементе справочника.'"),
+				NStr("en='An error occurred while writing user %1.
+		|You can not modify
+		|the service user ID already set in a catalog item.';ru='Ошибка при записи пользователя ""%1"".
+		|Нельзя изменять
+		|уже установленный идентификатор пользователя сервиса в элементе справочника.'"),
 				UserObject.Description);
 			
 		EndIf;
@@ -230,15 +230,15 @@ Procedure BeforeStartIBUserProcessor(UserObject, ProcessingParameters) Export
 				True) Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while writing user %1."
-"You can not"
-"set the service"
-"user identifier ""%2"" to this catalog item, because it"
-"is already used in the item ""%3"".';ru='Ошибка при записи пользователя ""%1""."
-"Нельзя устанавливать идентификатор"
-"пользователя сервиса ""%2"""
-"в этот элемент справочника, т.к. он"
-"уже используется в элементе ""%3"".'"),
+				NStr("en='An error occurred while writing user %1.
+		|You can not
+		|set the service
+		|user identifier ""%2"" to this catalog item, because it
+		|is already used in the item ""%3"".';ru='Ошибка при записи пользователя ""%1"".
+		|Нельзя устанавливать идентификатор
+		|пользователя сервиса ""%2""
+		|в этот элемент справочника, т.к. он
+		|уже используется в элементе ""%3"".'"),
 				UserObject.Description,
 				AutoAttributes.ServiceUserID,
 				FoundUser);
@@ -284,11 +284,11 @@ Procedure BeforeEndUserIBUserProcessor(UserObject, ProcessingParameters) Export
 	
 	If AutoAttributes.ServiceUserID <> UserObject.ServiceUserID Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while writing user %1."
-"Changing the ServiceUserID attribute is not permitted."
-"Attribute update is performed automatically.';ru='Ошибка при записи пользователя ""%1""."
-"Реквизит ИдентификаторПользователяСервиса не допускается изменять."
-"Обновление реквизита выполняется автоматически.'"),
+			NStr("en='An error occurred while writing user %1.
+		|Changing the ServiceUserID attribute is not permitted.
+		|Attribute update is performed automatically.';ru='Ошибка при записи пользователя ""%1"".
+		|Реквизит ИдентификаторПользователяСервиса не допускается изменять.
+		|Обновление реквизита выполняется автоматически.'"),
 			UserObject.Ref);
 	EndIf;
 	

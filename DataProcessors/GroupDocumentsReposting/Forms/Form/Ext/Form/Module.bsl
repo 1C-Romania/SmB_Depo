@@ -111,11 +111,11 @@ EndFunction
 &AtClient
 Procedure ShowResultOfReposting()
 	
-	MessageText = NStr("en='Reposting documents"
-" is executed: - documents"
-"posted: %1; %2';ru='Выполнено перепроведение документов:"
-" - проведено документов: %1;"
-"%2'");
+	MessageText = NStr("en='Reposting documents
+		| is executed: - documents
+		|posted: %1; %2';ru='Выполнено перепроведение документов:
+		| - проведено документов: %1;
+		|%2'");
 	If FailedToPost = 0 Then
 		ErrorsMessageBox = NStr("en=' - no errors.';ru=' - ошибок не обнаружено.'");
 	Else

@@ -829,13 +829,13 @@ EndProcedure
 Procedure EnterAddressInFreeForm(Command)
 	
 	If AllowInputAddressInFreeForm Then
-		QuestionText = NStr("en='Changes entered manually will be lost."
-"Continue?';ru='Изменения, введенные вручную, будут потеряны."
-"Продолжить?'");
+		QuestionText = NStr("en='Changes entered manually will be lost.
+		|Continue?';ru='Изменения, введенные вручную, будут потеряны.
+		|Продолжить?'");
 	Else
-		QuestionText = NStr("en='Enter the address in"
-"a free form? Addresses entered in the free form may fail to pass the verification according to the address classifier.';ru='Ввести адрес в свободной форме? "
-"Адреса, введенные в свободной форме, могут не пройти проверку по адресному классификатору.'");
+		QuestionText = NStr("en='Enter the address in
+		|a free form? Addresses entered in the free form may fail to pass the verification according to the address classifier.';ru='Ввести адрес в свободной форме? 
+		|Адреса, введенные в свободной форме, могут не пройти проверку по адресному классификатору.'");
 	EndIf;
 	
 	Notification = New NotifyDescription("EnterAddressInFreeFormEnd", ThisObject);

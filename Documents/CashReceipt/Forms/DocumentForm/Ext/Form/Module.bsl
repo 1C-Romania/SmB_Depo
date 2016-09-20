@@ -1682,13 +1682,13 @@ Procedure EnableFiscalRegistrarEnd(DeviceIdentifier, Parameters) Export
 				Write(New Structure("WriteMode", DocumentWriteMode.Posting));
 				
 			Else
-				MessageText = NStr("en='When printing a receipt, an error occurred."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При печати чека произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+				MessageText = NStr("en='When printing a receipt, an error occurred.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При печати чека произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 				);
 				MessageText = StrReplace(
 					MessageText,
@@ -1703,13 +1703,13 @@ Procedure EnableFiscalRegistrarEnd(DeviceIdentifier, Parameters) Export
 			
 		Else
 			
-			MessageText = NStr("en='An error occurred when connecting the device."
-"Receipt is not printed on the fiscal register."
-"Additional"
-"description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка."
-"Чек не напечатан на фискальном регистраторе."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'"
+			MessageText = NStr("en='An error occurred when connecting the device.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка.
+		|Чек не напечатан на фискальном регистраторе.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'"
 			);
 			MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 			CommonUseClientServer.MessageToUser(MessageText);

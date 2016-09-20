@@ -2729,11 +2729,11 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 			QueryResultSelection = ResultsArray[0].Select();
 			While QueryResultSelection.Next() Do
 				If QueryResultSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
-					MessageText = NStr("en='%CounterpartyPresentation% - customer debt balance by settlements document is less than written amount."
-"Written-off amount: %SumCurOnWrite% %CurrencyPresentation%."
-"Remaining customer debt: %RemainingDebtAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - остаток задолженности покупателя по документу расчетов меньше списываемой суммы."
-"Списываемая сумма: %СуммаВалПриЗаписи% %ВалютаПредставление%."
-"Остаток задолженности покупателя: %СуммаОстаткаЗадолженности% %ВалютаПредставление%.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - customer debt balance by settlements document is less than written amount.
+		|Written-off amount: %SumCurOnWrite% %CurrencyPresentation%.
+		|Remaining customer debt: %RemainingDebtAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - остаток задолженности покупателя по документу расчетов меньше списываемой суммы.
+		|Списываемая сумма: %СуммаВалПриЗаписи% %ВалютаПредставление%.
+		|Остаток задолженности покупателя: %СуммаОстаткаЗадолженности% %ВалютаПредставление%.'"
 					);
 				EndIf;
 				If QueryResultSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
@@ -2741,9 +2741,9 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 						MessageText = NStr("en='%PresentationOfCounterparty% - perhaps the advances of the customer have not been received or they have been completely set off in the trade documents.';ru='%ПредставлениеКонтрагента% - возможно, авансов от покупателя не было или они уже полностью зачтены в товарных документах.'"
 						);
 					Else
-						MessageText = NStr("en='%CounterpartyPresentation% - advances received from customer are already partially set off in commercial documents."
-"Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - полученные авансы от покупателя уже частично зачтены в товарных документах."
-"Остаток незачтенных авансов: %СуммаНепогашенныхАвансов% %ВалютаПредставление%.'"
+						MessageText = NStr("en='%CounterpartyPresentation% - advances received from customer are already partially set off in commercial documents.
+		|Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - полученные авансы от покупателя уже частично зачтены в товарных документах.
+		|Остаток незачтенных авансов: %СуммаНепогашенныхАвансов% %ВалютаПредставление%.'"
 						);
 						MessageText = StrReplace(MessageText, "%UnpaidAdvancesAmount%", String(QueryResultSelection.AmountOfOutstandingAdvances));
 					EndIf;
@@ -2780,11 +2780,11 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 			QueryResultSelection = ResultsArray[1].Select();
 			While QueryResultSelection.Next() Do
 				If QueryResultSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
-					MessageText = NStr("en='%CounterpartyPresentation% - debt to vendor balance by settlements document is less than written amount."
-"Written-off amount: %SumCurOnWrite% %CurrencyPresentation%."
-"Debt before the balance provider:% SummaOstatkaDebt% ValûtaPredstavlenie%.';ru='%ПредставлениеКонтрагента% - остаток задолженности перед поставщиком по документу расчетов меньше списываемой суммы."
-"Списываемая сумма: %СуммаВалПриЗаписи% %ВалютаПредставление%."
-"Остаток задолженности перед поставщиком: %СуммаОстаткаЗадолженности% %ВалютаПредставление%.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - debt to vendor balance by settlements document is less than written amount.
+		|Written-off amount: %SumCurOnWrite% %CurrencyPresentation%.
+		|Debt before the balance provider:% SummaOstatkaDebt% ValûtaPredstavlenie%.';ru='%ПредставлениеКонтрагента% - остаток задолженности перед поставщиком по документу расчетов меньше списываемой суммы.
+		|Списываемая сумма: %СуммаВалПриЗаписи% %ВалютаПредставление%.
+		|Остаток задолженности перед поставщиком: %СуммаОстаткаЗадолженности% %ВалютаПредставление%.'"
 					);
 				EndIf;
 				If QueryResultSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
@@ -2792,9 +2792,9 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 						MessageText = NStr("en=""%PresentationOfCounterparty% - perhaps the vendor didn't get the advances or they have been completely set off in the trade documents ."";ru='%ПредставлениеКонтрагента% - возможно, авансов поставщику не было или они уже полностью зачтены в товарных документах.'"
 						);
 					Else
-						MessageText = NStr("en='%CounterpartyPresentation% - advances issued to vendors are already partially set off in commercial documents."
-"Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - выданные авансы поставщику уже частично зачтены в товарных документах."
-"Остаток незачтенных авансов: %СуммаНепогашенныхАвансов% %ВалютаПредставление%.'"
+						MessageText = NStr("en='%CounterpartyPresentation% - advances issued to vendors are already partially set off in commercial documents.
+		|Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - выданные авансы поставщику уже частично зачтены в товарных документах.
+		|Остаток незачтенных авансов: %СуммаНепогашенныхАвансов% %ВалютаПредставление%.'"
 						);
 						MessageText = StrReplace(MessageText, "%UnpaidAdvancesAmount%", String(QueryResultSelection.AmountOfOutstandingAdvances));
 					EndIf;

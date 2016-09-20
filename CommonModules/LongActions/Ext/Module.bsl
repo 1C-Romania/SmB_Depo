@@ -165,9 +165,9 @@ Function JobCompleted(Val JobID) Export
 		ErrorText = BriefErrorDescription(GetErrorInfo(Task.ErrorInfo));
 		Raise(ErrorText);
 	ElsIf ActionNotExecuted Then
-		Raise(NStr("en='Unable to execute this operation. "
-"Look for details in event log.';ru='Не удалось выполнить данную операцию. "
-"Подробности см. в журнале регистрации.'"));
+		Raise(NStr("en='Unable to execute this operation. 
+		|Look for details in event log.';ru='Не удалось выполнить данную операцию. 
+		|Подробности см. в журнале регистрации.'"));
 	EndIf;
 	
 EndFunction

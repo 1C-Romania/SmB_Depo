@@ -57,8 +57,8 @@ Function DependenciesUndividedMetadataObjects() Export
 			If FieldTypes = Undefined Then
 				
 				Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-					NStr("en='the %1 field can not be used as the natural key field of the %2 object: object field has not been detected!';ru='Поле %1 не может использоваться в качестве поля естественного ключа объекта %2:"
-"поле объекта не обнаружено!'", Metadata.DefaultLanguage.LanguageCode),
+					NStr("en='the %1 field can not be used as the natural key field of the %2 object: object field has not been detected!';ru='Поле %1 не может использоваться в качестве поля естественного ключа объекта %2:
+		|поле объекта не обнаружено!'", Metadata.DefaultLanguage.LanguageCode),
 					NaturalKeyField,
 					CommonClassifierType.FullName()
 				);
@@ -72,9 +72,9 @@ Function DependenciesUndividedMetadataObjects() Export
 					If FieldType = Type("ValueStorage") Then
 						
 						Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-							NStr("en='The %1 field is can not be used as a field"
-"of natural object key %2: using of values ValueStorage type as fields of natural key is not supported!';ru='Поле %1 не может использоваться в качестве поля естественного ключа объекта %2: использование"
-"значений типа ХранилищеЗначения в качестве полей естественного ключа не поддерживается!'", Metadata.DefaultLanguage.LanguageCode),
+							NStr("en='The %1 field is can not be used as a field
+		|of natural object key %2: using of values ValueStorage type as fields of natural key is not supported!';ru='Поле %1 не может использоваться в качестве поля естественного ключа объекта %2: использование
+		|значений типа ХранилищеЗначения в качестве полей естественного ключа не поддерживается!'", Metadata.DefaultLanguage.LanguageCode),
 							NaturalKeyField,
 							CommonClassifierType.FullName()
 						);
@@ -96,13 +96,13 @@ Function DependenciesUndividedMetadataObjects() Export
 					Else
 						
 						Raise StringFunctionsClientServer.PlaceParametersIntoString(
-							NStr("en='The %1 field is can not be used as a"
-"field of natural object key %2: as field type can be"
-"used object %3 which is"
-"not included in the common data set through predefined procedure DataExportImportPredefined.WhenFillingCommonDataTypesSupportingMatchingRefsOnImport()';ru='Поле %1 не может использоваться в качестве поля естественного ключа объекта %2:"
-"в качестве типа поля может использоваться объект %3, который не включен в набор"
-"общих данных через переопределяемую процедуру"
-"                                  ВыгрузкаЗагрузкаДанныхПереопределяемый.ПриЗаполненииТиповОбщихДанныхПоддерживающихСопоставлениеСсылокПриЗагрузке()'", Metadata.DefaultLanguage.LanguageCode),
+							NStr("en='The %1 field is can not be used as a
+		|field of natural object key %2: as field type can be
+		|used object %3 which is
+		|not included in the common data set through predefined procedure DataExportImportPredefined.WhenFillingCommonDataTypesSupportingMatchingRefsOnImport()';ru='Поле %1 не может использоваться в качестве поля естественного ключа объекта %2:
+		|в качестве типа поля может использоваться объект %3, который не включен в набор
+		|общих данных через переопределяемую процедуру
+		|                                  ВыгрузкаЗагрузкаДанныхПереопределяемый.ПриЗаполненииТиповОбщихДанныхПоддерживающихСопоставлениеСсылокПриЗагрузке()'", Metadata.DefaultLanguage.LanguageCode),
 							NaturalKeyField,
 							CommonClassifierType.FullName(),
 							Refs.Metadata().FullName()
@@ -309,9 +309,9 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 	If CommonUseSTL.ThisIsConstant(MetadataObject) Then
 		
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='As the value of divided constant %1 the"
-"references to undivided %2 object are used';ru='В качестве значения разделенной константы %1 используются ссылки на"
-"неразделенный объект %2'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='As the value of divided constant %1 the
+		|references to undivided %2 object are used';ru='В качестве значения разделенной константы %1 используются ссылки на
+		|неразделенный объект %2'", Metadata.DefaultLanguage.LanguageCode),
 			MetadataObject.FullName(),
 			MetadataRefs.FullName()
 		);
@@ -319,9 +319,9 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 	ElsIf CommonUseSTL.ThisIsReferenceData(MetadataObject) Then
 		
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='As the value of attribute %1 the divided  object %2"
-"the references to undivided object %3 are used';ru='В качестве значения реквизита %1 разделенного объекта %2 используются ссылки на"
-"неразделенный объект %3'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='As the value of attribute %1 the divided  object %2
+		|the references to undivided object %3 are used';ru='В качестве значения реквизита %1 разделенного объекта %2 используются ссылки на
+		|неразделенный объект %3'", Metadata.DefaultLanguage.LanguageCode),
 			FieldName,
 			MetadataObject.FullName(),
 			MetadataRefs.FullName()
@@ -330,9 +330,9 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 	ElsIf CommonUseSTL.ThisIsRecordSet(MetadataObject) Then
 		
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='As the value of measurement, resource or attribute %1 divided record set %2 the"
-"references to undivided object %3 are used';ru='В качестве значения измерения, ресурса или реквизита %1 разделенного набора записей %2 используются ссылки на"
-"неразделенный объект %3'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='As the value of measurement, resource or attribute %1 divided record set %2 the
+		|references to undivided object %3 are used';ru='В качестве значения измерения, ресурса или реквизита %1 разделенного набора записей %2 используются ссылки на
+		|неразделенный объект %3'", Metadata.DefaultLanguage.LanguageCode),
 			FieldName,
 			MetadataObject.FullName(),
 			MetadataRefs.FullName()
@@ -350,9 +350,9 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 	If OnExport Then
 		
 		ErrorText = ErrorText +
-			NStr("en=' (the composite data type is set for the object as the value type, and which contain references both to undivided and separated data, but there was detected an attempt to export the references to undivided object).';ru=' (в качестве типа значения для объекта установлен составной тип данных,"
-"который может содержать ссылки как на разделенные данные, так и на неразделенные,"
-"но при выгрузке была диагностирована попытка выгрузки ссылки на неразделенный объект).'", Metadata.DefaultLanguage.LanguageCode);
+			NStr("en=' (the composite data type is set for the object as the value type, and which contain references both to undivided and separated data, but there was detected an attempt to export the references to undivided object).';ru=' (в качестве типа значения для объекта установлен составной тип данных,
+		|который может содержать ссылки как на разделенные данные, так и на неразделенные,
+		|но при выгрузке была диагностирована попытка выгрузки ссылки на неразделенный объект).'", Metadata.DefaultLanguage.LanguageCode);
 		
 	Else
 		
@@ -361,40 +361,40 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 	EndIf;
 	
 	ErrorSupplement = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='In this case undivided %1 object is not included in the"
-"content of the common data types for which the execution of matching refs during exporting and importing is possible."
-"This situation is unacceptable, as on importing of exported data in"
-"another IB ""broken"" references to %1 object will be imported."
-""
-"For corrective action it is required to implement for"
-"%1 object mechanism of defining fields that uniquely identify the natural key"
-"of the object and include %1 object in the content"
-"of common data types for which the execution of"
-"matching refs during exporting and importing is possible, specified the metadata %1 object in the procedure DataExportImportPredefined.WhenFillingCommonDataTypesSupportingMatchingRefsOnImport().';ru='При этом неразделенный объект %1 не включен в состав типов общих данных,"
-"для которых возможно выполнение сопоставления ссылок при выгрузке и загрузке."
-"Данная ситуация является недопустимой, т.к. при загрузке выгруженных данных в другую ИБ"
-"будут загружены ""битые"" ссылки на объект %1."
-""
-"Для исправления ситуации требуется реализовать для объекта %1 механизм определения"
-"полей, однозначно определяющих естественный ключ объекта и включить объект %1 в состав"
-"типов общих данных, для которых возможно выполнение сопоставления ссылок при"
-"выгрузке и загрузке, указав объект метаданных %1 в процедуре"
-"ВыгрузкаЗагрузкаДанныхПереопределяемый.ПриЗаполненииТиповОбщихДанныхПоддерживающихСопоставлениеСсылокПриЗагрузке().'", Metadata.DefaultLanguage.LanguageCode),
+		NStr("en='In this case undivided %1 object is not included in the
+		|content of the common data types for which the execution of matching refs during exporting and importing is possible.
+		|This situation is unacceptable, as on importing of exported data in
+		|another IB ""broken"" references to %1 object will be imported.
+		|
+		|For corrective action it is required to implement for
+		|%1 object mechanism of defining fields that uniquely identify the natural key
+		|of the object and include %1 object in the content
+		|of common data types for which the execution of
+		|matching refs during exporting and importing is possible, specified the metadata %1 object in the procedure DataExportImportPredefined.WhenFillingCommonDataTypesSupportingMatchingRefsOnImport().';ru='При этом неразделенный объект %1 не включен в состав типов общих данных,
+		|для которых возможно выполнение сопоставления ссылок при выгрузке и загрузке.
+		|Данная ситуация является недопустимой, т.к. при загрузке выгруженных данных в другую ИБ
+		|будут загружены ""битые"" ссылки на объект %1.
+		|
+		|Для исправления ситуации требуется реализовать для объекта %1 механизм определения
+		|полей, однозначно определяющих естественный ключ объекта и включить объект %1 в состав
+		|типов общих данных, для которых возможно выполнение сопоставления ссылок при
+		|выгрузке и загрузке, указав объект метаданных %1 в процедуре
+		|ВыгрузкаЗагрузкаДанныхПереопределяемый.ПриЗаполненииТиповОбщихДанныхПоддерживающихСопоставлениеСсылокПриЗагрузке().'", Metadata.DefaultLanguage.LanguageCode),
 		MetadataRefs.FullName()
 	);
 	
 	If Not OnExport Then
 		
 		ErrorSupplement = ErrorSupplement + StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='"
-"If the correct matching refs of undivided IB data from which"
-"the data is exported and the IB in which the data is imported"
-"is guaranteed by using other mechanisms"
-"you must specify metadata %1 object in the procedure DataExportImportPredefined.WhenFillingCommonDataTypesDoNotRequireMatchingRefsOnImport().';ru='"
-"Если корректное сопоставление ссылок на неразделенные данные в ИБ, из которой выгружены"
-"данные и ИБ, в которую они загружаются, гарантируется с помощью других механизмов, необходимо"
-"указать объект метаданных %1 в процедуре"
-"ВыгрузкаЗагрузкаДанныхПереопределяемый.ПриЗаполненииТиповОбщихДанныхНеТребующихСопоставлениеСсылокПриЗагрузке().'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='
+		|If the correct matching refs of undivided IB data from which
+		|the data is exported and the IB in which the data is imported
+		|is guaranteed by using other mechanisms
+		|you must specify metadata %1 object in the procedure DataExportImportPredefined.WhenFillingCommonDataTypesDoNotRequireMatchingRefsOnImport().';ru='
+		|Если корректное сопоставление ссылок на неразделенные данные в ИБ, из которой выгружены
+		|данные и ИБ, в которую они загружаются, гарантируется с помощью других механизмов, необходимо
+		|указать объект метаданных %1 в процедуре
+		|ВыгрузкаЗагрузкаДанныхПереопределяемый.ПриЗаполненииТиповОбщихДанныхНеТребующихСопоставлениеСсылокПриЗагрузке().'", Metadata.DefaultLanguage.LanguageCode),
 			MetadataRefs.FullName()
 		);
 		

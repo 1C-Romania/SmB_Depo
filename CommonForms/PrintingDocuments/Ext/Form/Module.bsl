@@ -18,11 +18,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Check of input parameters.
 	If Not ValueIsFilled(Parameters.DataSource) Then 
 		CommonUseClientServer.Validate(TypeOf(Parameters.CommandParameter) = Type("Array") Or CommonUse.ReferenceTypeValue(Parameters.CommandParameter),
-			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Invalid value of the CommandParameter parameter when calliing the PrintManagementClient.ExecutePrintCommand method."
-"Expected: Array, AnyRef."
-"Transferred: %1';ru='Недопустимое значение параметра ПараметрКоманды при вызове метода УправлениеПечатьюКлиент.ВыполнитьКомандуПечати."
-"Ожидалось: Массив, ЛюбаяСсылка."
-"Передано: %1'"), TypeOf(Parameters.CommandParameter)));
+			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Invalid value of the CommandParameter parameter when calliing the PrintManagementClient.ExecutePrintCommand method.
+		|Expected: Array, AnyRef.
+		|Transferred: %1';ru='Недопустимое значение параметра ПараметрКоманды при вызове метода УправлениеПечатьюКлиент.ВыполнитьКомандуПечати.
+		|Ожидалось: Массив, ЛюбаяСсылка.
+		|Передано: %1'"), TypeOf(Parameters.CommandParameter)));
 	EndIf;
 
 	// Backward compatibility support with 2.1.3.

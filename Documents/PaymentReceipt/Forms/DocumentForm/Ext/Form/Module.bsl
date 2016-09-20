@@ -1327,9 +1327,9 @@ Procedure AfterWrite(WriteParameters)
 	If Not InvoiceText = "Enter invoice note"
 		AND ?(NOT UpdateSubordinatedInvoice = Undefined, UpdateSubordinatedInvoice, False) Then
 		
-		QuestionText = NStr("en='Changes were made in the document. "
-"Is it required to fill in the subordinate invoice once again?';ru='В документе были произведены изменения. "
-"Требуется ли повторно заполнить подчиненный Счет-фактуру?'");
+		QuestionText = NStr("en='Changes were made in the document. 
+		|Is it required to fill in the subordinate invoice once again?';ru='В документе были произведены изменения. 
+		|Требуется ли повторно заполнить подчиненный Счет-фактуру?'");
 		NotifyDescription = New NotifyDescription("DefineNecessityToFillSubordinateInvoiceNote", ThisObject);
 		
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);

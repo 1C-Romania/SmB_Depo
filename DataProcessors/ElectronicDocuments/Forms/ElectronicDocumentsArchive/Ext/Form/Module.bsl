@@ -265,8 +265,8 @@ Procedure NotifyUserAboutResponsibleChange(NumberOfProcessed, ObjectList, Respon
 		
 		ObjectList.Refresh();
 		
-		MessageText = NStr("en='For %NumberProcessed% from %TotalNumber% of"
-"selected electronic documents responsible ""%Responsible%"" is set';ru='Для %КоличествоОбработанных% из %КоличествоВсего% выделенных эл.документов установлен ответственный ""%Ответственный%""'");
+		MessageText = NStr("en='For %NumberProcessed% from %TotalNumber% of
+		|selected electronic documents responsible ""%Responsible%"" is set';ru='Для %КоличествоОбработанных% из %КоличествоВсего% выделенных эл.документов установлен ответственный ""%Ответственный%""'");
 		MessageText = StrReplace(MessageText, "%NumberSelected%", NumberOfProcessed);
 		MessageText = StrReplace(MessageText, "%CountTotal%",        ObjectList.SelectedRows.Count());
 		MessageText = StrReplace(MessageText, "%Responsible%",          Responsible);

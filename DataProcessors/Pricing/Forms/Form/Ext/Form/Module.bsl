@@ -1110,9 +1110,9 @@ Procedure ClearTabularSection()
 		
 	EndIf;
 	
-	QuestionText = NStr("en='Tabular section will be cleared."
-"Continue?';ru='Табличная часть будет очищена!"
-"Продолжить?'");
+	QuestionText = NStr("en='Tabular section will be cleared.
+		|Continue?';ru='Табличная часть будет очищена!
+		|Продолжить?'");
 	
 	NotifyDescription = New NotifyDescription("DetermineNecessityForTabularSectionClearing", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);

@@ -559,9 +559,9 @@ Procedure CompanyDataDetailsDocumentOpen(Item, StandardProcessing)
 			
 		Else
 			
-			MessageText = NStr("en='The string is not bound to the payment document. "
-"To bind it, it is required to enable the visible of the corresponding column and specify a document.';ru='Строка не привязана к расчетному документу. "
-"Для привязки необходимо включить видимость соответствующей колонки и указать документ самостоятельно.'");
+			MessageText = NStr("en='The string is not bound to the payment document. 
+		|To bind it, it is required to enable the visible of the corresponding column and specify a document.';ru='Строка не привязана к расчетному документу. 
+		|Для привязки необходимо включить видимость соответствующей колонки и указать документ самостоятельно.'");
 				
 			CommonUseClientServer.MessageToUser(MessageText);
 			
@@ -587,9 +587,9 @@ Procedure CounterpartyDataDetailsDocumentOpen(Item, StandardProcessing)
 			
 		Else
 			
-			MessageText = NStr("en='The string is not bound to the payment document. "
-"To bind it, it is required to enable the visible of the corresponding column and specify a document.';ru='Строка не привязана к расчетному документу. "
-"Для привязки необходимо включить видимость соответствующей колонки и указать документ самостоятельно.'");
+			MessageText = NStr("en='The string is not bound to the payment document. 
+		|To bind it, it is required to enable the visible of the corresponding column and specify a document.';ru='Строка не привязана к расчетному документу. 
+		|Для привязки необходимо включить видимость соответствующей колонки и указать документ самостоятельно.'");
 				
 			CommonUseClientServer.MessageToUser(MessageText);
 			

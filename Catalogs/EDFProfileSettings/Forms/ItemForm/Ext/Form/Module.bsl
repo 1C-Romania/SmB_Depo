@@ -185,9 +185,9 @@ Procedure InscriptionPrivateOfficeExchangeEDMemberPress(Item)
 	
 	NotifyDescription = New NotifyDescription("GotoInPersonalArea", ThisObject);
 	If Modified Then
-		QuestionText = NStr("en='You can perform this action only in a recorded EDF settings profile."
-"Record?';ru='Выполнить действие можно только в записанном профиле настроек ЭДО."
-"Записать?'");
+		QuestionText = NStr("en='You can perform this action only in a recorded EDF settings profile.
+		|Record?';ru='Выполнить действие можно только в записанном профиле настроек ЭДО.
+		|Записать?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else
 		ExecuteNotifyProcessing(NOTifyDescription, DialogReturnCode.Yes);
@@ -211,9 +211,9 @@ EndProcedure
 Procedure CompanyIDTextEnterEnd(Item, Text, ChoiceData, Parameters, StandardProcessing)
 	
 	If Not MonitorEDSettingsContent Then
-		QuestionText = NStr("en='Changes of ""EDF settings profile"" will be applied to all related ""EDF settings""."
-"Continue?';ru='Изменения ""Профиля настроек ЭДО"" будут применены для всех связанных с ним ""Настроек ЭДО""."
-"Продолжить?'");
+		QuestionText = NStr("en='Changes of ""EDF settings profile"" will be applied to all related ""EDF settings"".
+		|Continue?';ru='Изменения ""Профиля настроек ЭДО"" будут применены для всех связанных с ним ""Настроек ЭДО"".
+		|Продолжить?'");
 		NotificationParameters = New Structure;
 		NotificationParameters.Insert("OldCompanyID", Object.CompanyID);
 		NotifyDescription = New NotifyDescription("AllowEditingCompanyIDComplete", ThisObject, NotificationParameters);
@@ -296,9 +296,9 @@ EndProcedure
 Procedure OutgoingDocumentsBeforeStartChanging(Item, Cancel)
 	
 	If Not MonitorEDSettingsContent Then
-		QuestionText = NStr("en='Changes of ""EDF settings profile"" will be applied to all related ""EDF settings""."
-"Continue?';ru='Изменения ""Профиля настроек ЭДО"" будут применены для всех связанных с ним ""Настроек ЭДО""."
-"Продолжить?'");
+		QuestionText = NStr("en='Changes of ""EDF settings profile"" will be applied to all related ""EDF settings"".
+		|Continue?';ru='Изменения ""Профиля настроек ЭДО"" будут применены для всех связанных с ним ""Настроек ЭДО"".
+		|Продолжить?'");
 		NotificationParameters = New Structure;
 		NotificationParameters.Insert("RowID", Item.CurrentData.GetID());
 		NotificationParameters.Insert("FormatVersion",       Item.CurrentData.FormatVersion);
@@ -526,9 +526,9 @@ Procedure OpenChoiceFormDSCertificate()
 			AND Object.CompanySignatureCertificates.Count() > 0 Then
 			// This operation is prohibited. Since the agreement already has at least
 			// one certificate, but the identifier is not received yet
-			WarningText = NStr("en='Before adding new certificates to"
-"the agreement, you need to get an EDF exchange participant ID';ru='Перед добавлением новых"
-"сертификатов в соглашение необходимо получить идентификатор участника обмена ЭДО'");
+			WarningText = NStr("en='Before adding new certificates to
+		|the agreement, you need to get an EDF exchange participant ID';ru='Перед добавлением новых
+		|сертификатов в соглашение необходимо получить идентификатор участника обмена ЭДО'");
 			ShowMessageBox(, WarningText, 30);
 			Return;
 			
@@ -588,9 +588,9 @@ Procedure CompleteSettingsProfileTest(Val Result, Val AdditionalParameters) Expo
 		PathToParentDirectoryEDFProfileSettings = Object.IncomingDocumentsResource;
 		
 		// Block of checking the access to directories.
-		MessagePattern = NStr("en='Test. Check of access to the shared directory for ED exchange."
-"%1';ru='Тест. Проверка доступа к общему каталогу для обмена ЭД."
-"%1'");
+		MessagePattern = NStr("en='Test. Check of access to the shared directory for ED exchange.
+		|%1';ru='Тест. Проверка доступа к общему каталогу для обмена ЭД.
+		|%1'");
 		Try
 			If ElectronicDocumentsServiceCallServer.ValidateCatalogAvailabilityForDirectExchange(
 				PathToParentDirectoryEDFProfileSettings) Then
@@ -617,9 +617,9 @@ Procedure CompleteSettingsProfileTest(Val Result, Val AdditionalParameters) Expo
 		PathToParentDirectoryEDFProfileSettings = Object.IncomingDocumentsResource;
 		
 		// Block of checking the access to directories.
-		MessagePattern = NStr("en='Test. Check of access to the shared directory for ED exchange."
-"%1';ru='Тест. Проверка доступа к общему каталогу для обмена ЭД."
-"%1'");
+		MessagePattern = NStr("en='Test. Check of access to the shared directory for ED exchange.
+		|%1';ru='Тест. Проверка доступа к общему каталогу для обмена ЭД.
+		|%1'");
 		Try
 			If ElectronicDocumentsServiceCallServer.ValidateCatalogAvailabilityForDirectExchange(
 				PathToParentDirectoryEDFProfileSettings) Then

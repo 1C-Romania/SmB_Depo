@@ -586,9 +586,9 @@ Function GetDataForChecking(PreliminaryData)
 	
 	If DataSources.Count() = 0 Then
 		Raise(StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Data sources for table ""%1"""
-"for change prohibition check are not found.';ru='Для проверки запрета"
-"изменения не найдены источники данных для таблицы ""%1"".'"),
+			NStr("en='Data sources for table ""%1""
+		|for change prohibition check are not found.';ru='Для проверки запрета
+		|изменения не найдены источники данных для таблицы ""%1"".'"),
 			Filter.Table));
 	EndIf;
 	

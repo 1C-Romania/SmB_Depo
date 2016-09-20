@@ -455,9 +455,9 @@ EndProcedure
 &AtServer
 Procedure CancelPreparation()
 	
-	Items.LabelItWasNotPossible.Title = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1."
-"Preparation for a backup is canceled. Infobase is locked.';ru='%1."
-"Подготовка к резервному копированию отменена. Информационная база разблокирована.'"),
+	Items.LabelItWasNotPossible.Title = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1.
+		|Preparation for a backup is canceled. Infobase is locked.';ru='%1.
+		|Подготовка к резервному копированию отменена. Информационная база разблокирована.'"),
 		InfobaseConnections.EnabledSessionsMessage());
 	Items.AssistantPages.CurrentPage = Items.PageOfErrorsOnCopying;
 	Items.GoToEventLogMonitor1.Visible = False;

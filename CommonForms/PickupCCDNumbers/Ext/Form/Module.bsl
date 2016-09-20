@@ -171,9 +171,9 @@ Procedure InventoryTableNumberCCDOnChange(Item)
 	
 	If CCDRegistrationDate > DocumentDate Then
 		
-		QuestionText = NStr("en='You selected the CCD which registration date is older than the date of the document. "
-"Continue?';ru='Выбрана ГТД, у которой дата регистрации старше даты документа. "
-"Продолжить?'");
+		QuestionText = NStr("en='You selected the CCD which registration date is older than the date of the document. 
+		|Continue?';ru='Выбрана ГТД, у которой дата регистрации старше даты документа. 
+		|Продолжить?'");
 		
 		Notification = New NotifyDescription("NoCCDWhenCheckDateEnd", ThisObject, "RowData.CCDNo");
 		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No);
@@ -227,9 +227,9 @@ Procedure NumberCCDOnChange(Item)
 	
 	If CCDRegistrationDate > DocumentDate Then
 		
-		QuestionText = NStr("en='You selected the CCD which registration date is older than the date of the document. "
-"Continue?';ru='Выбрана ГТД, у которой дата регистрации старше даты документа. "
-"Продолжить?'");
+		QuestionText = NStr("en='You selected the CCD which registration date is older than the date of the document. 
+		|Continue?';ru='Выбрана ГТД, у которой дата регистрации старше даты документа. 
+		|Продолжить?'");
 		
 		Notification = New NotifyDescription("NoCCDWhenCheckDateEnd", ThisObject, "CCDNo");
 		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No);

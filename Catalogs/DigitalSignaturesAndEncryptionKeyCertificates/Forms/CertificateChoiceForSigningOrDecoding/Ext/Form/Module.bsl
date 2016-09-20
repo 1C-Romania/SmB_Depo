@@ -520,9 +520,9 @@ Procedure GoToCurrentCertificateChoice(Notification)
 	If CurrentData.ThisRequest Then
 		Result.UpdateCertificatesList = True;
 		Result.ErrorDescription =
-			NStr("en='For this certificate a statement for issue is not yet executed."
-"Open the statement for the certificate issue and perform the required steps.';ru='Для этого сертификата заявление на выпуск еще не исполнено."
-"Откройте заявление на выпуск сертификата и выполните требуемые шаги.'");
+			NStr("en='For this certificate a statement for issue is not yet executed.
+		|Open the statement for the certificate issue and perform the required steps.';ru='Для этого сертификата заявление на выпуск еще не исполнено.
+		|Откройте заявление на выпуск сертификата и выполните требуемые шаги.'");
 		ExecuteNotifyProcessing(Notification, Result);
 		Return;
 	EndIf;
@@ -992,9 +992,9 @@ Procedure FillEncryptionError(Error, ErrorDescription, ApplicationDescription, E
 	
 	ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
 		+ StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to pass the encryption check using the appliaction %1"
-"for the following reason: %2';ru='Не удалось пройти проверку шифрования с помощью программы %1 по причине:"
-"%2'"),
+			NStr("en='Failed to pass the encryption check using the appliaction %1
+		|for the following reason: %2';ru='Не удалось пройти проверку шифрования с помощью программы %1 по причине:
+		|%2'"),
 			ApplicationDescription.Description,
 			ErrorPresentation);
 	
@@ -1012,9 +1012,9 @@ Procedure FillDecryptionError(Error, ErrorDescription, ApplicationDescription, E
 	
 	ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
 		+ StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to pass the decryption check using the application %1"
-"for the following reason: %2';ru='Не удалось пройти проверку расшифровки с"
-"помощью программы %1 по причине: %2'"),
+			NStr("en='Failed to pass the decryption check using the application %1
+		|for the following reason: %2';ru='Не удалось пройти проверку расшифровки с
+		|помощью программы %1 по причине: %2'"),
 			ApplicationDescription.Description,
 			ErrorPresentation);
 	
@@ -1035,9 +1035,9 @@ Procedure FillSignatureError(Error, ErrorDescription, ApplicationDescription, Er
 	
 	ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
 		+ StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Unable to check the signing using the %1 application because"
-"of: %2';ru='Не удалось пройти проверку подписания с помощью"
-"программы %1 по причине: %2'"),
+			NStr("en='Unable to check the signing using the %1 application because
+		|of: %2';ru='Не удалось пройти проверку подписания с помощью
+		|программы %1 по причине: %2'"),
 			ApplicationDescription.Description,
 			ErrorPresentation);
 	

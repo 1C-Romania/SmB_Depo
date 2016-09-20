@@ -597,9 +597,9 @@ Procedure FailedToGeneratePrintForm(ErrorInfo)
 	CorrectionText = "";	
 #EndIf
 	ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Failed to generate a print form: %1. "
-"To display print forms in the Microsoft Word format, install Microsoft Office package on your computer. %2';ru='Не удалось сформировать печатную форму: %1. "
-"Для вывода печатных форм в формате Microsoft Word требуется, чтобы на компьютере был установлен пакет Microsoft Office. %2'"),
+		NStr("en='Failed to generate a print form: %1. 
+		|To display print forms in the Microsoft Word format, install Microsoft Office package on your computer. %2';ru='Не удалось сформировать печатную форму: %1. 
+		|Для вывода печатных форм в формате Microsoft Word требуется, чтобы на компьютере был установлен пакет Microsoft Office. %2'"),
 		BriefErrorDescription(ErrorInfo), CorrectionText);
 	Raise ErrorMessage;
 EndProcedure

@@ -64,9 +64,9 @@ EndProcedure
 &AtClient
 Procedure UpdateIndex(Command)
 	Status(
-		NStr("en='Full text index is being updated..."
-"Please, wait.';ru='Идет обновление полнотекстового индекса..."
-"Пожалуйста, подождите.'"));
+		NStr("en='Full text index is being updated...
+		|Please, wait.';ru='Идет обновление полнотекстового индекса...
+		|Пожалуйста, подождите.'"));
 	
 	UpdateIndexServer();
 	
@@ -76,9 +76,9 @@ EndProcedure
 &AtClient
 Procedure ClearIndex(Command)
 	Status(
-		NStr("en='Full-text index is being cleared..."
-"Please, wait.';ru='Идет очистка полнотекстового индекса..."
-"Пожалуйста, подождите.'"));
+		NStr("en='Full-text index is being cleared...
+		|Please, wait.';ru='Идет очистка полнотекстового индекса...
+		|Пожалуйста, подождите.'"));
 	
 	ClearIndexServer();
 	

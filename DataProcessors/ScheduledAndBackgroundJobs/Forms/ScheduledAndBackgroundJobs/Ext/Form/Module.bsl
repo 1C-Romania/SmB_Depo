@@ -10,13 +10,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise NStr("en='Insufficient access rights."
-""
-"Work with scheduled and"
-"background jobs is executed only by administrators.';ru='Недостаточно прав доступа."
-""
-"Работа с"
-"регламентными и фоновыми заданиями выполняется только администраторами.'");
+		Raise NStr("en='Insufficient access rights.
+		|
+		|Work with scheduled and
+		|background jobs is executed only by administrators.';ru='Недостаточно прав доступа.
+		|
+		|Работа с
+		|регламентными и фоновыми заданиями выполняется только администраторами.'");
 	EndIf;
 	
 	EmptyID = String(New UUID("00000000-0000-0000-0000-000000000000"));
@@ -208,9 +208,9 @@ Procedure ExecuteScheduledJobManually(Command)
 			
 			ShowUserNotification(
 				NStr("en='Scheduled job procedure is running';ru='Запущена процедура регламентного задания'"), ,
-				StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1."
-"Procedure is launched in the background job %2';ru='%1."
-"Процедура запущена в фоновом задании %2'"),
+				StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1.
+		|Procedure is launched in the background job %2';ru='%1.
+		|Процедура запущена в фоновом задании %2'"),
 					CurrentData.Description,
 					String(ExecuteParameters.StartedAt)),
 				PictureLib.ExecuteScheduledJobManually);
@@ -224,9 +224,9 @@ Procedure ExecuteScheduledJobManually(Command)
 		ElsIf ExecuteParameters.ProcedureAlreadyExecuting Then
 			EventsAboutErrorsArray.Add(
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Scheduled job procedure"
-"  ""%1"" is already in progress in %2 session, opened %3.';ru='Процедура"
-"  регламентного задания ""%1"" уже выполняется в сеансе %2, открытом %3.'"),
+					NStr("en='Scheduled job procedure
+		|  ""%1"" is already in progress in %2 session, opened %3.';ru='Процедура
+		|  регламентного задания ""%1"" уже выполняется в сеансе %2, открытом %3.'"),
 					CurrentData.Description,
 					ExecuteParameters.BackgroundJobPresentation,
 					String(ExecuteParameters.StartedAt)));
@@ -325,11 +325,11 @@ Procedure CancelBackgroundJob(Command)
 		CancelBackgroundJobAtServer(Items.BackgroundJobTable.CurrentData.ID);
 		
 		ShowMessageBox(,
-			NStr("en='Job was cancelled, but the"
-"cancellation state will be set"
-"by server only in seconds, you might need to update data manually.';ru='Задание отменено, но"
-"состояние отмены будет установлено"
-"сервером только через секунды, возможно потребуется обновить данные вручную.'"));
+			NStr("en='Job was cancelled, but the
+		|cancellation state will be set
+		|by server only in seconds, you might need to update data manually.';ru='Задание отменено, но
+		|состояние отмены будет установлено
+		|сервером только через секунды, возможно потребуется обновить данные вручную.'"));
 	EndIf;
 	
 EndProcedure
@@ -584,9 +584,9 @@ Procedure ShowMessageAboutScheduledJobManualProcessingCompletion()
 			NStr("en='Scheduled job procedure has been completed';ru='Выполнена процедура регламентного задания'"),
 			,
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='%1."
-"The procedure has been completed at the background job %2';ru='%1."
-"Процедура завершена в фоновом задании %2'"),
+				NStr("en='%1.
+		|The procedure has been completed at the background job %2';ru='%1.
+		|Процедура завершена в фоновом задании %2'"),
 				Notification.ScheduledJobPresentation,
 				String(Notification.FinishedAt)),
 			PictureLib.ExecuteScheduledJobManually);

@@ -67,11 +67,11 @@ Procedure OnOpen(Cancel)
 		EndIf;
 	Except
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
-		ErrorTemplate = NStr("en='Error when sending confirmation code of payment order."
-"Error code:"
-"%1 %2';ru='Ошибка отправки кода подтверждения платежного поручения."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Error when sending confirmation code of payment order.
+		|Error code:
+		|%1 %2';ru='Ошибка отправки кода подтверждения платежного поручения.
+		|Код
+		|ошибки: %1 %2'");
 		If Parameters.BankApplication = PredefinedValue("Enum.BankApplications.ExchangeThroughTheAdditionalInformationProcessor") Then
 			ErrorDetails = AttachableModule.ErrorDetails();
 		Else

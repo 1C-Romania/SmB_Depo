@@ -24,9 +24,9 @@ Procedure DeviceChoiceProcessing(Item, ValueSelected, StandardProcessing)
 
 	If DeviceWorkplace(ValueSelected) = Record.Workplace Then
 		StandardProcessing = False;
-		MessageText = NStr("en='Selected device is already linked to this workplace!"
-"Specify the remote device to use by network';ru='Выбранное устройство уже привязано к данному рабочему месту!"
-"Укажите удаленное устройство для использования по сети'");
+		MessageText = NStr("en='Selected device is already linked to this workplace!
+		|Specify the remote device to use by network';ru='Выбранное устройство уже привязано к данному рабочему месту!
+		|Укажите удаленное устройство для использования по сети'");
 		CommonUseClientServer.MessageToUser(MessageText, , );
 	EndIf;
 

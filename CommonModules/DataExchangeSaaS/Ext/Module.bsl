@@ -1765,11 +1765,11 @@ Procedure CreateExchangeSetting(
 		
 		If CheckCode AND CorrespondentCode <> ActualCorrespondentCode Then
 			
-			MessageString = NStr("en='An error occurred while assigning a correspondent node code."
-"Set value"
-"""%1"" Actual value ""%2"".';ru='Ошибка назначения кода узла корреспондента."
-"Назначенное"
-"значение ""%1"" Фактическое значение ""%2"".'");
+			MessageString = NStr("en='An error occurred while assigning a correspondent node code.
+		|Set value
+		|""%1"" Actual value ""%2"".';ru='Ошибка назначения кода узла корреспондента.
+		|Назначенное
+		|значение ""%1"" Фактическое значение ""%2"".'");
 			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, CorrespondentCode, ActualCorrespondentCode);
 			Raise MessageString;
 		EndIf;
@@ -1968,8 +1968,8 @@ Procedure FixUnsuccessfullSessionCompletion(Val Message, Val Presentation = "") 
 		Presentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en=' {%1}';ru=' {%1}'"), Presentation);
 	EndIf;
 	
-	MessageString = NStr("en='Error of the %1 system message"
-"exchange session performance. %2 Error description from the correspondent: %3';ru='Ошибка выполнения сессии обмена сообщениями системы ""%1"".%2 Описание ошибки из корреспондента: %3'", CommonUseClientServer.MainLanguageCode());
+	MessageString = NStr("en='Error of the %1 system message
+		|exchange session performance. %2 Error description from the correspondent: %3';ru='Ошибка выполнения сессии обмена сообщениями системы ""%1"".%2 Описание ошибки из корреспондента: %3'", CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
 		String(Message.Body.SessionId), Presentation, Message.Body.ErrorDescription);
 	WriteLogEvent(SystemMessagesExchangeSessionEventLogMonitorEvent(),
@@ -2421,9 +2421,9 @@ Procedure BeforeCommonDataWrite(Object, Cancel)
 	OfflineWorkService.DetermineWhetherChangesData(Object.Metadata(), ReadOnly);
 	
 	If ReadOnly Then
-		ErrorString = NStr("en='Change of unseparated data (%1) loaded from the application is prohibited for the Offline workplace."
-"Contact your administrator.';ru='Изменение неразделенных данных (%1), загружаемых из приложения, в Автономном рабочем месте запрещено."
-"Обратитесь к администратору.'");
+		ErrorString = NStr("en='Change of unseparated data (%1) loaded from the application is prohibited for the Offline workplace.
+		|Contact your administrator.';ru='Изменение неразделенных данных (%1), загружаемых из приложения, в Автономном рабочем месте запрещено.
+		|Обратитесь к администратору.'");
 		ErrorString = StringFunctionsClientServer.PlaceParametersIntoString(ErrorString, String(Object));
 		Raise ErrorString;
 	EndIf;
@@ -2544,9 +2544,9 @@ Procedure OnCreatingIndependentWorkingPlace() Export
 	If UsersServiceSaaSSTL.UserRegisteredAsUnseparated(
 			InfobaseUsers.CurrentUser().UUID) Then
 		
-		Raise NStr("en='You can create the offline workplace only acting as a separated user."
-"Current user is unseparated.';ru='Создать автономное рабочее место можно только от имени разделенного пользователя."
-"Текущий пользователь является неразделенным.'");
+		Raise NStr("en='You can create the offline workplace only acting as a separated user.
+		|Current user is unseparated.';ru='Создать автономное рабочее место можно только от имени разделенного пользователя.
+		|Текущий пользователь является неразделенным.'");
 		
 	EndIf;
 	

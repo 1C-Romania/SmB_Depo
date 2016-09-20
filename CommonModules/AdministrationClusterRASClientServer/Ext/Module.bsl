@@ -1605,19 +1605,22 @@ Function RunCommand(Val Pattern, Val ClusterAdministrationParameters, Val Parame
 	If Not ClientFile.Exist() Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Unable to run operation of the servers cluster administration as: file %1 is not found."
-""
-"To administer cluster via administer server (ras), you need to"
-"install a client of administer server (ras) on this computer."
-"To install"
-"it: - For computers with Windows OS you need to reinstall the platform by installing the component 1C:Enterprise server administer"";"
-"- For computers with Linux OS you need to install the 1c-enterprise83-server* pack.';ru='Невозможно выполнить операцию администрирования кластера серверов по причине: файл %1 не найден!"
-"                  |"
-"                  |Для администрирования кластера через сервер администрирования (ras) требуется установить на данном"
-"                  |компьютере клиент сервера администрирования (rac)."
-"                  |Для его установки:"
-"                  |- Для компьютеров с ОС Windows требуется перестановить платформу, установив компонент ""Администрирование сервера 1С:Предприятия"";"
-"                  |- Для компьютеров с ОС Linux требуется установить пакет 1c-enterprise83-server*.'"),
+			NStr("en='Unable to run operation of the servers cluster administration as: file %1 is not found.
+		|
+		|To administer cluster via administer server (ras), you need to
+		|install a client of administer server (ras) on this computer.
+		|
+		|To install it: 
+		|- for computers with Windows OS you need to reinstall the platform by installing the component 1C:Enterprise server administer"";
+		|- for computers with Linux OS you need to install the 1c-enterprise83-server* pack.';
+		|ru='Невозможно выполнить операцию администрирования кластера серверов по причине: файл %1 не найден!
+		|
+		|Для администрирования кластера через сервер администрирования (ras) требуется  		
+		|установить на данном компьютере клиент сервера администрирования (ras).
+		|
+		|Для его установки:
+		|- для компьютеров с ОС Windows требуется перестановить платформу, установив компонент ""Администрирование сервера 1С:Предприятия"";
+		|- для компьютеров с ОС Linux требуется установить пакет 1c-enterprise83-server*.'"),
 			ClientFile.DescriptionFull);
 		
 	EndIf;

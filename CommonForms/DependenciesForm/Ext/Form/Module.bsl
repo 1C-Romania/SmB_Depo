@@ -669,9 +669,9 @@ Procedure Refresh(Command)
 	If MainDocumentIsAvailableSofar() Then
 		DisplayDocumentTree(); 
 	Else
-		CloseFormWithWarning(NStr("en='The document, for which the report"
-"on the hierarchy structure was generated, is deleted or not available.';ru='Документ, для которого сформирован"
-"отчет о структуре подчиненности был удален, или же стал недоступен.'"));
+		CloseFormWithWarning(NStr("en='The document, for which the report
+		|on the hierarchy structure was generated, is deleted or not available.';ru='Документ, для которого сформирован
+		|отчет о структуре подчиненности был удален, или же стал недоступен.'"));
 	EndIf;		
 	
 	
@@ -691,9 +691,9 @@ Procedure OutputForCurrent(Command)
 		DocumentsTree.GetItems().Clear();	
 		DisplayDocumentTree();
 	Else
-		CloseFormWithWarning(NStr("en='The document, for which the report"
-"on the hierarchy structure was generated, is deleted or not available.';ru='Документ, для которого сформирован"
-"отчет о структуре подчиненности был удален, или же стал недоступен.'"));
+		CloseFormWithWarning(NStr("en='The document, for which the report
+		|on the hierarchy structure was generated, is deleted or not available.';ru='Документ, для которого сформирован
+		|отчет о структуре подчиненности был удален, или же стал недоступен.'"));
 	EndIf;
 		
 EndProcedure

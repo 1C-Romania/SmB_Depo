@@ -165,27 +165,27 @@ Function MessageParametersToTechicalSupport()
 		InteractionContext.COPContext,
 		"login");
 	
-	MessageText = NStr("en='Hello!"
-"I can not register the software product"
-"to connect to the online support. Please help to solve this issue."
-""
-"Login: %1."
-"Registration number: %2."
-"PIN: %3."
-""
-"%TechnicalParameters%"
-"-----------------------------------------------"
-"Best regards, .';ru='Здравствуйте!"
-"У меня не получается зарегистрировать программный продукт"
-"для подключения Интернет-поддержки. Прошу помочь разобраться с проблемой."
-""
-"Логин: %1."
-"Регистрационный номер: %2."
-"Пинкод: %3."
-""
-"%ТехническиеПараметры%"
-"-----------------------------------------------"
-"С уважением, .'");
+	MessageText = NStr("en='Hello!
+		|I can not register the software product
+		|to connect to the online support. Please help to solve this issue.
+		|
+		|Login: %1.
+		|Registration number: %2.
+		|PIN: %3.
+		|
+		|%TechnicalParameters%
+		|-----------------------------------------------
+		|Best regards, .';ru='Здравствуйте!
+		|У меня не получается зарегистрировать программный продукт
+		|для подключения Интернет-поддержки. Прошу помочь разобраться с проблемой.
+		|
+		|Логин: %1.
+		|Регистрационный номер: %2.
+		|Пинкод: %3.
+		|
+		|%ТехническиеПараметры%
+		|-----------------------------------------------
+		|С уважением, .'");
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 		MessageText,

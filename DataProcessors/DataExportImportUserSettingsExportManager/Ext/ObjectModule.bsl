@@ -91,17 +91,17 @@ Procedure ExportSettingsStandardStorages()
 					NStr("en='DataExportImport.SettingExportSkipped';ru='ВыгрузкаЗагрузкаДанных.ВыгрузкаНастройкиПропущена'", Metadata.DefaultLanguage.LanguageCode),
 					EventLogLevel.Warning,,,
 					StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='The setting export is skipped as the setting can not"
-"be"
-"read:"
-"SettingsKey=%1"
-"ObjectKey=%2 User=%3 Presentation=%4"
-"';ru='Выгрузка настройки пропущена, т.к. настройка не может быть прочитана:"
-"КлючНастроек=%1"
-"КлючОбъекта=%2"
-"Пользователь=%3"
-"Представление=%4"
-"'", Metadata.DefaultLanguage.LanguageCode),
+						NStr("en='The setting export is skipped as the setting can not
+		|be
+		|read:
+		|SettingsKey=%1
+		|ObjectKey=%2 User=%3 Presentation=%4
+		|';ru='Выгрузка настройки пропущена, т.к. настройка не может быть прочитана:
+		|КлючНастроек=%1
+		|КлючОбъекта=%2
+		|Пользователь=%3
+		|Представление=%4
+		|'", Metadata.DefaultLanguage.LanguageCode),
 						Selection.SettingsKey,
 						Selection.ObjectKey,
 						Selection.User,

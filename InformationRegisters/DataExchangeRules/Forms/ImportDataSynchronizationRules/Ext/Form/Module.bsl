@@ -38,9 +38,9 @@ EndProcedure
 &AtClient
 Procedure OnOpen(Cancel)
 	
-	ToolTipTemplate = NStr("en='Rules set can be imported"
-"from %1 or found in %2';ru='Комплект правил"
-"можно скачать с %1 или найти в %2'");
+	ToolTipTemplate = NStr("en='Rules set can be imported
+		|from %1 or found in %2';ru='Комплект правил
+		|можно скачать с %1 или найти в %2'");
 	
 	TemplateUpdatesDirectory = NStr("en='directory of the %1 application delivery';ru='каталоге поставки программы ""%1""'");
 	TemplateUpdatesDirectory = StringFunctionsClientServer.PlaceParametersIntoString(TemplateUpdatesDirectory, ApplicationName);
@@ -371,9 +371,9 @@ Procedure WriteAndClose(Command)
 	Else
 		If ConversionRulesSource = PredefinedValue("Enum.RuleSourcesForDataExchange.ConfigurationTemplate") Then
 			
-			ErrorDescription = NStr("en='Rules from file are not imported. Closure will result in using the typical conversion rules."
-"Use typical conversion rules?';ru='Правила из файла не загружены. Закрытие приведет к использованию типовых правил конвертации."
-"Использовать типовые правила конвертации?'");
+			ErrorDescription = NStr("en='Rules from file are not imported. Closure will result in using the typical conversion rules.
+		|Use typical conversion rules?';ru='Правила из файла не загружены. Закрытие приведет к использованию типовых правил конвертации.
+		|Использовать типовые правила конвертации?'");
 			
 			Notification = New NotifyDescription("CloseRulesImportForm", ThisObject);
 			
@@ -423,10 +423,10 @@ Procedure ImportRulesEnd(Val FilesPlacingResult, Val AdditionalParameters) Expor
 	NameParts = CommonUseClientServer.SplitFullFileName(FilesPlacingResult.Name);
 	
 	If Lower(NameParts.Extension) <> ".zip" Then
-		CommonUseClientServer.MessageToUser(NStr("en='Incorrect format of the rule set file. Awaiting zip archive containing"
-"three files: ExchangeRules.xml - conversion rules for"
-"the current application; CorrespondentExchangeRules.xml - conversion rules"
-"for the application-correspondent; RegistrationRules.xml - rules of registration for the current application.';ru='Некорректный формат файла комплекта правил. Ожидается zip архив, содержащий три файла: ExchangeRules.xml - правила конвертации для текущей программы; CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента; RegistrationRules.xml - правила регистрации для текущей программы.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Incorrect format of the rule set file. Awaiting zip archive containing
+		|three files: ExchangeRules.xml - conversion rules for
+		|the current application; CorrespondentExchangeRules.xml - conversion rules
+		|for the application-correspondent; RegistrationRules.xml - rules of registration for the current application.';ru='Некорректный формат файла комплекта правил. Ожидается zip архив, содержащий три файла: ExchangeRules.xml - правила конвертации для текущей программы; CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента; RegistrationRules.xml - правила регистрации для текущей программы.'"));
 	EndIf;
 	
 	BeforeRulesImport(PlacedFileAddress, NameParts.Name);
@@ -471,9 +471,9 @@ Procedure ImportRulesExecute(Val PlacedFileAddress, Val FileName, ErrorDescripti
 		StandardSubsystemsClient.ShowQuestionToUser(Notification, ErrorDescription.ErrorText, Buttons, FormParameters);
 		
 	ElsIf Cancel Then
-		ErrorText = NStr("en='Errors were found during the import."
-"Do you want to open the event log?';ru='При загрузке данных возникли ошибки."
-"Перейти в журнал регистрации?'");
+		ErrorText = NStr("en='Errors were found during the import.
+		|Do you want to open the event log?';ru='При загрузке данных возникли ошибки.
+		|Перейти в журнал регистрации?'");
 		Notification = New NotifyDescription("ShowEventLogMonitorOnError", ThisObject);
 		ShowQueryBox(Notification, ErrorText, QuestionDialogMode.YesNo, ,DialogReturnCode.No);
 	Else

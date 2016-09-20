@@ -39,9 +39,9 @@ Procedure ControlOfUserSessionTerminationMode() Export
 	
 	MessageText = InfobaseConnectionsClientServer.ExtractLockMessage(CurrentMode.Message);
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='It is recommended to end current work and save all data. The application will be closed down %1 in %2. "
-"%3';ru='Рекомендуется завершить текущую работу и сохранить все свои данные. Работа программы будет завершена %1 в %2. "
-"%3'"),
+		NStr("en='It is recommended to end current work and save all data. The application will be closed down %1 in %2. 
+		|%3';ru='Рекомендуется завершить текущую работу и сохранить все свои данные. Работа программы будет завершена %1 в %2. 
+		|%3'"),
 		DateTimeBeginningLock, TimeTimeBeginningLock, MessageText);
 	
 	If Not WorkParameters.DataSeparationEnabled
@@ -112,9 +112,9 @@ Procedure TerminateUserSessions() Export
 		
 	If Not ForceTermination Then
 		
-		MessageText = NStr("en='Active sessions: %1"
-"Next sessions check will be executed in a minute.';ru='Активных сеансов: %1."
-"Следующая проверка сеансов будет выполнена через минуту.'");
+		MessageText = NStr("en='Active sessions: %1
+		|Next sessions check will be executed in a minute.';ru='Активных сеансов: %1.
+		|Следующая проверка сеансов будет выполнена через минуту.'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 			MessageText, NumberOfSessions);
 		ShowUserNotification(NStr("en='Users disconnection';ru='Завершение работы пользователей'"), 

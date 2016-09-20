@@ -1610,25 +1610,25 @@ Procedure PlatformVersionCheckOnlineProcessorOnStart(Parameters, NotSpecified) E
 	
 	If ClientParameters.MustExit Then
 		If ClientParameters.HasAccessForUpdateVersionsOfPlatform Then
-			MessageText = NStr("en='It is impossible to log in the application."
-"It is necessary to update the 1C:Enterprise platform version previously.';ru='Вход в программу невозможен."
-"Необходимо предварительно обновить версию платформы 1С:Предприятие.'");
+			MessageText = NStr("en='It is impossible to log in the application.
+		|It is necessary to update the 1C:Enterprise platform version previously.';ru='Вход в программу невозможен.
+		|Необходимо предварительно обновить версию платформы 1С:Предприятие.'");
 		Else
-			MessageText = NStr("en='It is impossible to log in the application."
-"It is necessary to contact the administrator to update the 1C:Enterprise platform version.';ru='Вход в программу невозможен."
-"Необходимо обратиться к администратору для обновления версии платформы 1С:Предприятие.'");
+			MessageText = NStr("en='It is impossible to log in the application.
+		|It is necessary to contact the administrator to update the 1C:Enterprise platform version.';ru='Вход в программу невозможен.
+		|Необходимо обратиться к администратору для обновления версии платформы 1С:Предприятие.'");
 		EndIf;
 	Else
 		If ClientParameters.HasAccessForUpdateVersionsOfPlatform Then
 			MessageText = 
-				NStr("en='It is recommended to shut the application down and update 1C:Enterprise platform version."
-"Otherwise some application possibilities will be unavailable or will work incorrectly.';ru='Рекомендуется завершить работу программы и обновить версию платформы 1С:Предприятия."
-"В противном случае некоторые возможности программы будут недоступны или будут работать некорректно.'");
+				NStr("en='It is recommended to shut the application down and update 1C:Enterprise platform version.
+		|Otherwise some application possibilities will be unavailable or will work incorrectly.';ru='Рекомендуется завершить работу программы и обновить версию платформы 1С:Предприятия.
+		|В противном случае некоторые возможности программы будут недоступны или будут работать некорректно.'");
 		Else
 			MessageText = 
-				NStr("en='It is recommended to close the application and contact administrator to update 1C:Enterprise platform version."
-"Otherwise some application possibilities will be unavailable or will work incorrectly.';ru='Рекомендуется завершить работу программы и обратиться к администратору для обновления версии платформы 1С:Предприятия."
-"В противном случае некоторые возможности программы будут недоступны или будут работать некорректно.'");
+				NStr("en='It is recommended to close the application and contact administrator to update 1C:Enterprise platform version.
+		|Otherwise some application possibilities will be unavailable or will work incorrectly.';ru='Рекомендуется завершить работу программы и обратиться к администратору для обновления версии платформы 1С:Предприятия.
+		|В противном случае некоторые возможности программы будут недоступны или будут работать некорректно.'");
 		EndIf;
 	EndIf;
 	
@@ -1684,9 +1684,9 @@ Procedure OnlineLinkWithMainNodeRestoreProcessor(Parameters, NotSpecified) Expor
 		Parameters.Cancel = True;
 		ShowMessageBox(
 			AlertWithoutResult(Parameters.ContinuationProcessor),
-			NStr("en='Sign in to the application is temporarily unavailable before the restoration of connection with the main node."
-"Contact administrator for the details.';ru='Вход в программу временно невозможен до восстановления связи с главным узлом."
-"Обратитесь к администратору за подробностями.'"),
+			NStr("en='Sign in to the application is temporarily unavailable before the restoration of connection with the main node.
+		|Contact administrator for the details.';ru='Вход в программу временно невозможен до восстановления связи с главным узлом.
+		|Обратитесь к администратору за подробностями.'"),
 			15);
 		Return;
 	EndIf;
@@ -1731,9 +1731,9 @@ Procedure OpenActiveUsersList(FormParameters = Undefined) Export
 	Else
 		
 		ShowMessageBox(,
-			NStr("en='To open a list of active users, go to"
-"menu All functions - Standard - Active users.';ru='Для того чтобы открыть список активных пользователей,"
-"перейдите в меню Все функции - Стандартные - Активные пользователи.'"));
+			NStr("en='To open a list of active users, go to
+		|menu All functions - Standard - Active users.';ru='Для того чтобы открыть список активных пользователей,
+		|перейдите в меню Все функции - Стандартные - Активные пользователи.'"));
 		
 	EndIf;
 	
@@ -1878,9 +1878,9 @@ Procedure SetSessionSeparation()
 	
 	If LaunchParameters.Count() < 2 Then
 		Raise
-			NStr("en='When specifying launch parameter"
-"EnterDataArea, specify a separator value as an additional parameter.';ru='При указании параметра"
-"запуска ВойтиВОбластьДанных, дополнительным параметром необходимо указать значение разделителя.'");
+			NStr("en='When specifying launch parameter
+		|EnterDataArea, specify a separator value as an additional parameter.';ru='При указании параметра
+		|запуска ВойтиВОбластьДанных, дополнительным параметром необходимо указать значение разделителя.'");
 	EndIf;
 	
 	Try

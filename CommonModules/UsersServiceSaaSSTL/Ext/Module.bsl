@@ -751,8 +751,8 @@ EndProcedure
 
 Function ExceptionTextUnseparatedUsersWriteProhibited()
 	
-	Return NStr("en='Write undivided"
-"users during the use of separators is denied.';ru='Запись неразделенных пользователей при включенном использовании разделителей запрещена.'");
+	Return NStr("en='Write undivided
+		|users during the use of separators is denied.';ru='Запись неразделенных пользователей при включенном использовании разделителей запрещена.'");
 	
 EndFunction
 

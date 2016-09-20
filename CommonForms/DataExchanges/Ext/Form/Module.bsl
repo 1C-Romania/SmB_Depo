@@ -624,9 +624,9 @@ Procedure SetOneSynchronizationItems()
 		Or ConfiguredSynchronization.LastExportDate <> BlankDate
 		Or ConfiguredSynchronization.LastDataExportResult <> 0 Then
 		
-		HintOfExport = NStr("en='Data is"
-"sent: %SendingDate% The last attempt: %AttemptData%';ru='Данные отправлены: %ДатаОтправки%"
-"Последняя попытка: %ДатаПопытки%'");
+		HintOfExport = NStr("en='Data is
+		|sent: %SendingDate% The last attempt: %AttemptData%';ru='Данные отправлены: %ДатаОтправки%
+		|Последняя попытка: %ДатаПопытки%'");
 		HintOfExport = StrReplace(HintOfExport, "%SendingDate%", ConfiguredSynchronization.LastSuccessfulExportDatePresentation);
 		HintOfExport = StrReplace(HintOfExport, "%TryDate%", ConfiguredSynchronization.LastImportDatePresentation);
 		
@@ -640,9 +640,9 @@ Procedure SetOneSynchronizationItems()
 		Or ConfiguredSynchronization.LastImportDate <> BlankDate
 		Or ConfiguredSynchronization.LastDataImportResult <> 0 Then
 		
-		HintOfImport = NStr("en='Data is"
-"received: %DateReveiced% The last attempt: %AttemptDate%';ru='Данные"
-"получены: %ДатаПолучения% Последняя попытка: %ДатаПопытки%'");
+		HintOfImport = NStr("en='Data is
+		|received: %DateReveiced% The last attempt: %AttemptDate%';ru='Данные
+		|получены: %ДатаПолучения% Последняя попытка: %ДатаПопытки%'");
 		HintOfImport = StrReplace(HintOfImport, "%DateReceived%", ConfiguredSynchronization.LastSuccessfulImportDatePresentation);
 		HintOfImport = StrReplace(HintOfImport, "%TryDate%", ConfiguredSynchronization.LastExportDatePresentation);
 		

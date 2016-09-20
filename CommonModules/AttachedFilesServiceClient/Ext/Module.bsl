@@ -74,11 +74,11 @@ Function PutFileToStorage(Val PathToFile, Val FormID) Export
 	If Not PutFiles(FilesToPlace, PlacedFiles, , False, FormID) Then
 		CommonUseClientServer.MessageToUser(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Error when"
-"placing"
-"the %1 file into a temporary storage.';ru='Ошибка"
-"при"
-"помещении файла ""%1"" во временное хранилище.'"),
+				NStr("en='Error when
+		|placing
+		|the %1 file into a temporary storage.';ru='Ошибка
+		|при
+		|помещении файла ""%1"" во временное хранилище.'"),
 				PathToFile) );
 		Return Result;
 	EndIf;
@@ -172,11 +172,11 @@ Procedure PlaceSelectedFilesIntoWebStorageEnd(Result, Address, SelectedFileName,
 		BaseName = PathStrings[PathStrings.Count()-2];
 	Else
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Error when"
-"placing"
-"the %1 file into a temporary storage.';ru='Ошибка"
-"при"
-"помещении файла ""%1"" во временное хранилище.'"),
+			NStr("en='Error when
+		|placing
+		|the %1 file into a temporary storage.';ru='Ошибка
+		|при
+		|помещении файла ""%1"" во временное хранилище.'"),
 			FileName);
 	EndIf;
 	
@@ -257,17 +257,17 @@ Procedure PlaceEditedFileOnDriveIntoCompletedStorageRoom(InformationAboutFile, A
 	EndIf;
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Name of"
-"the"
-"selected file ""%1"" differs from the"
-"name of the file in the %2 storage."
-""
-"Continue?';ru='Имя выбранного файла"
-"""%1"""
-"отличается от имени файла в хранилище"
-"""%2""."
-""
-"Продолжить?'"),
+		NStr("en='Name of
+		|the
+		|selected file ""%1"" differs from the
+		|name of the file in the %2 storage.
+		|
+		|Continue?';ru='Имя выбранного файла
+		|""%1""
+		|отличается от имени файла в хранилище
+		|""%2"".
+		|
+		|Продолжить?'"),
 		InformationAboutFile.FileName,
 		FileData.FileName);
 		
@@ -436,13 +436,13 @@ Procedure OpenDirectoryWithFileExtensionRequested(FileOperationsExtensionConnect
 		File = New File(FullPath);
 		If Not File.Exist() Then
 			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='File"
-"""%1"" is absent in the working directory."
-""
-"Do you want to receive the file from the file storage?';ru='Файл"
-"""%1"" отсутствует в рабочем каталоге."
-""
-"Получить файл из хранилища файлов?'"),
+				NStr("en='File
+		|""%1"" is absent in the working directory.
+		|
+		|Do you want to receive the file from the file storage?';ru='Файл
+		|""%1"" отсутствует в рабочем каталоге.
+		|
+		|Получить файл из хранилища файлов?'"),
 				File.Name);
 			AdditionalParameters.Insert("UserWorkingDirectory", UserWorkingDirectory);
 			AdditionalParameters.Insert("FullPath", FullPath);
@@ -943,9 +943,9 @@ Procedure GetEncryptedData(ResultHandler, Val AttachedFile, Val FileData, Val Fo
 	
 	If FileData.Encrypted Then
 		ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='The"
-"file ""%1"" is already encrypted.';ru='Файл"
-"""%1"" уже зашифрован.'"), String(AttachedFile)));
+			NStr("en='The
+		|file ""%1"" is already encrypted.';ru='Файл
+		|""%1"" уже зашифрован.'"), String(AttachedFile)));
 		ExecuteNotifyProcessing(ResultHandler, Undefined);
 		Return;
 	EndIf;
@@ -1244,11 +1244,11 @@ Procedure PlaceSelectedFilesToStorage(Val SelectedFiles,
 		If Not PutFiles(FilesToPlace, PlacedFiles, , False, FormID) Then
 			CommonUseClientServer.MessageToUser(
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Error when"
-"placing"
-"the %1 file into a temporary storage.';ru='Ошибка"
-"при"
-"помещении файла ""%1"" во временное хранилище.'"),
+					NStr("en='Error when
+		|placing
+		|the %1 file into a temporary storage.';ru='Ошибка
+		|при
+		|помещении файла ""%1"" во временное хранилище.'"),
 					File.FullName) );
 			Continue;
 		EndIf;
@@ -1305,14 +1305,14 @@ Procedure UpdateStateAboutFileSaving(Val SelectedFiles, Val File, Val CurrentPos
 	Else
 		If CurrentPosition = Undefined Then
 			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='The %1 file"
-"(%2 Mb) is saved.';ru='Сохранение"
-"файла ""%1"" (%2 Мб) завершено.'"), File.Name, SizeInMB);
+				NStr("en='The %1 file
+		|(%2 Mb) is saved.';ru='Сохранение
+		|файла ""%1"" (%2 Мб) завершено.'"), File.Name, SizeInMB);
 		Else
 			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Is Saved file ""%1"" (%2 MB)."
-"You Are Welcome, please wait...';ru='Сохраняется файл ""%1"" (%2 Мб)."
-"Пожалуйста, подождите...'"), File.Name, SizeInMB);
+				NStr("en='Is Saved file ""%1"" (%2 MB).
+		|You Are Welcome, please wait...';ru='Сохраняется файл ""%1"" (%2 Мб).
+		|Пожалуйста, подождите...'"), File.Name, SizeInMB);
 		EndIf;
 		Status(ExplanationText);
 	EndIf;
@@ -1507,8 +1507,8 @@ Procedure SaveFileAsExtensionRequested(FileOperationsExtensionConnected, Additio
 		
 		ExplanationText =
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='The %1 file (%2"
-"Mb) is being saved. Please wait...';ru='Сохраняется файл ""%1"" (%2 Мб) Пожалуйста, подождите.'"),
+				NStr("en='The %1 file (%2
+		|Mb) is being saved. Please wait...';ru='Сохраняется файл ""%1"" (%2 Мб) Пожалуйста, подождите.'"),
 				FileData.FileName, 
 				FileFunctionsServiceClientServer.GetStringWithFileSize(SizeInMB) );
 		
@@ -1617,13 +1617,13 @@ Procedure OpenFileByApplication(Val FileNameToOpen, FileData)
 		Except
 			ErrorInfo = ErrorInfo();
 			ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='While opening"
-"the"
-"%1 file"
-"the error occurred: ""%2"".';ru='При"
-"открытии"
-"файла"
-"""%1"" произошла ошибка: ""%2"".'"),
+				NStr("en='While opening
+		|the
+		|%1 file
+		|the error occurred: ""%2"".';ru='При
+		|открытии
+		|файла
+		|""%1"" произошла ошибка: ""%2"".'"),
 				FileNameToOpen,
 				ErrorInfo.Definition));
 		EndTry;

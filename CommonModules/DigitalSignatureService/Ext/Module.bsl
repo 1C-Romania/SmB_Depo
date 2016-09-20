@@ -194,9 +194,9 @@ Function CryptoManager(Operation, ShowError = True, ErrorDescription = "", Appli
 		
 	ElsIf Operation <> "" Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Error in the CryptographyManager function."
-"Wrong of the %1 Operation parameter value.';ru='Ошибка в функции МенеджерКриптографии."
-"Неверное значение параметра Операция ""%1"".'"), Operation);
+			NStr("en='Error in the CryptographyManager function.
+		|Wrong of the %1 Operation parameter value.';ru='Ошибка в функции МенеджерКриптографии.
+		|Неверное значение параметра Операция ""%1"".'"), Operation);
 		
 	ElsIf TypeOf(ErrorDescription) = Type("Structure")
 	        AND ErrorDescription.Property("ErrorTitle") Then
@@ -312,11 +312,11 @@ Function GetCertificateByImprint(Imprint, InPersonalStorageOnly,
 	
 	If ValueIsFilled(ErrorPresentation) Then
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Certificate is not found"
-"on the server because: %1"
-"';ru='Сертификат"
-"не найден на сервере по причине: %1"
-"'"),
+			NStr("en='Certificate is not found
+		|on the server because: %1
+		|';ru='Сертификат
+		|не найден на сервере по причине: %1
+		|'"),
 			ErrorPresentation);
 	Else
 		ErrorText = NStr("en='Certificate is not found on server.';ru='Сертификат не найден на сервере.'");
@@ -1265,11 +1265,11 @@ Procedure FillCertificateAdditionalProperties(Form)
 		Certificate = Form.Certificate;
 		Form.Certificate = Undefined;
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error of the"
-"infobase occurred while receiving %1"
-"certificate data: %2';ru='При получении"
-"данных сертификата ""%1"" из информационной"
-"базы возникла ошибка: %2'"),
+			NStr("en='An error of the
+		|infobase occurred while receiving %1
+		|certificate data: %2';ru='При получении
+		|данных сертификата ""%1"" из информационной
+		|базы возникла ошибка: %2'"),
 			Certificate,
 			BriefErrorDescription(ErrorInfo));
 	EndTry;

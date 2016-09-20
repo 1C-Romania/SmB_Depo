@@ -455,11 +455,11 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 			EndIf;
 			
 			ErrorDescriptionTemplate =
-				NStr("en='Failed to add"
-"file ""%1"" to volume"
-"""%2"" (%3): ""%4"".';ru='Ошибка"
-"при добавлении файла"
-"""%1"" в том ""%2"" (%3): ""%4"".'");
+				NStr("en='Failed to add
+		|file ""%1"" to volume
+		|""%2"" (%3): ""%4"".';ru='Ошибка
+		|при добавлении файла
+		|""%1"" в том ""%2"" (%3): ""%4"".'");
 			
 			AllErrorsDetailedDescription = AllErrorsDetailedDescription
 				+ StringFunctionsClientServer.PlaceParametersIntoString(
@@ -487,13 +487,13 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 	
 	// Record in the event
 	// log monitor for the administrator - display errors from all volumes.
-	MessageAboutErrorTemplate = NStr("en='Failed to add the file to the volumes."
-"List"
-""
-"of errors: %1';ru='Не удалось добавить файл ни в один из томов."
-"Список"
-""
-"ошибок: %1'");
+	MessageAboutErrorTemplate = NStr("en='Failed to add the file to the volumes.
+		|List
+		|
+		|of errors: %1';ru='Не удалось добавить файл ни в один из томов.
+		|Список
+		|
+		|ошибок: %1'");
 	
 	WriteLogEvent(
 		NStr("en='Files. File adding';ru='Файлы.Добавление файла'", CommonUseClientServer.MainLanguageCode()),
@@ -505,13 +505,13 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 	Else
 		// Message to ordinary user.
 		ExceptionString = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to add"
-"the file: ""%1.%2""."
-""
-"Contact your administrator.';ru='Не удалось"
-"добавить файл: ""%1.%2""."
-""
-"Обратитесь к администратору.'"),
+			NStr("en='Failed to add
+		|the file: ""%1.%2"".
+		|
+		|Contact your administrator.';ru='Не удалось
+		|добавить файл: ""%1.%2"".
+		|
+		|Обратитесь к администратору.'"),
 			BaseName, Extension);
 	EndIf;
 	
@@ -924,9 +924,9 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 				 OR Find(PathToArchiveWithVolumeFiles, ":") <> 0) Then
 					
 					CommonUseClientServer.MessageToUser(
-						NStr("en='Path to archive volume files must"
-"be in the UNC format (\\servername\resource)';ru='Путь к файловой базе"
-"должен быть в формате UNC (\\servername\resource)'"),
+						NStr("en='Path to archive volume files must
+		|be in the UNC format (\\servername\resource)';ru='Путь к файловой базе
+		|должен быть в формате UNC (\\servername\resource)'"),
 						,
 						"PathToArchiveWithWindowsVolumesFiles");
 					Return False;
@@ -938,9 +938,9 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 			If Not IsBlankString(FileBaseFullName) AND (Left(FileBaseFullName, 2) <> "\\" OR Find(FileBaseFullName, ":") <> 0) Then
 				
 				CommonUseClientServer.MessageToUser(
-					NStr("en='Path to archive volume"
-"files must be in the UNC format (\\servername\resource)';ru='Путь к"
-"файловой базе должен быть в формате UNC (\\servername\resource)'"),
+					NStr("en='Path to archive volume
+		|files must be in the UNC format (\\servername\resource)';ru='Путь к
+		|файловой базе должен быть в формате UNC (\\servername\resource)'"),
 					,
 					"WindowsFileBaseFullName");
 				Return False;
@@ -966,9 +966,9 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 	If BaseFile.Exist() Then
 		CommonUseClientServer.MessageToUser(
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='File ""%1"" already exists."
-"Enter another attachment file name.';ru='Файл ""%1"" уже существует."
-"Введите другое имя файла.'"),
+				NStr("en='File ""%1"" already exists.
+		|Enter another attachment file name.';ru='Файл ""%1"" уже существует.
+		|Введите другое имя файла.'"),
 				FileBaseFullName),, "WindowsFileBaseFullName");
 		Return False;
 	EndIf;
@@ -987,9 +987,9 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 		If File.Exist() Then
 			CommonUseClientServer.MessageToUser(
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='File ""%1"" already exists."
-"Enter another attachment file name.';ru='Файл ""%1"" уже существует."
-"Введите другое имя файла.'"),
+					NStr("en='File ""%1"" already exists.
+		|Enter another attachment file name.';ru='Файл ""%1"" уже существует.
+		|Введите другое имя файла.'"),
 					PathToArchiveWithVolumeFiles),, "PathToArchiveWithWindowsVolumesFiles");
 			Return False;
 		EndIf;
@@ -1080,9 +1080,9 @@ Function CreateServerInitialImageAtServer(Node, ConnectionString, PathToArchiveW
 			 OR Find(PathToArchiveWithVolumeFiles, ":") <> 0) Then
 				
 				CommonUseClientServer.MessageToUser(
-					NStr("en='Path to the archive with files"
-"of the volumes must be in UNC format (\\servername\resource).';ru='Путь к архиву с"
-"файлами томов должен быть в формате UNC (\\servername\resource).'"),
+					NStr("en='Path to the archive with files
+		|of the volumes must be in UNC format (\\servername\resource).';ru='Путь к архиву с
+		|файлами томов должен быть в формате UNC (\\servername\resource).'"),
 					,
 					"PathToArchiveWithWindowsVolumesFiles");
 				Return False;
@@ -1107,9 +1107,9 @@ Function CreateServerInitialImageAtServer(Node, ConnectionString, PathToArchiveW
 		If File.Exist() Then
 			CommonUseClientServer.MessageToUser(
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='File ""%1"" already exists."
-"Enter another attachment file name.';ru='Файл ""%1"" уже существует."
-"Введите другое имя файла.'"),
+					NStr("en='File ""%1"" already exists.
+		|Enter another attachment file name.';ru='Файл ""%1"" уже существует.
+		|Введите другое имя файла.'"),
 					FilePath));
 			Return False;
 		EndIf;
@@ -1370,13 +1370,13 @@ Procedure ExtractTextFromFilesOnServer() Export
 				,
 				,
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='During scheduled text extraction from"
-"file"
-"""%1"" an"
-"error occurred: ""%2"".';ru='Во время регламентного извлечения"
-"текста"
-"из файла"
-"""%1"" произошла ошибка: ""%2"".'"),
+					NStr("en='During scheduled text extraction from
+		|file
+		|""%1"" an
+		|error occurred: ""%2"".';ru='Во время регламентного извлечения
+		|текста
+		|из файла
+		|""%1"" произошла ошибка: ""%2"".'"),
 					NameWithExtensionFile,
 					DetailErrorDescription(ErrorInfo()) ));
 		EndTry;

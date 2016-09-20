@@ -99,9 +99,9 @@ Procedure Send(Command)
 		Close();
 	Else
 		ClearMessages();
-		ShowMessageToUser(NStr("en='Sorry, your message was not sent."
-"Repeat attempt later.';ru='К сожалению сообщение не было отправлено."
-"Повторите попытку позже.'"));
+		ShowMessageToUser(NStr("en='Sorry, your message was not sent.
+		|Repeat attempt later.';ru='К сожалению сообщение не было отправлено.
+		|Повторите попытку позже.'"));
 	EndIf;
 	
 EndProcedure

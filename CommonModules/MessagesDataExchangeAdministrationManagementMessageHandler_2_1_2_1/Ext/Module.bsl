@@ -138,13 +138,13 @@ Procedure ConnectCorrespondent(Message, Sender)
 			
 			// A wrong exchange correspondent was connected.
 			// We send a message to the error service manager
-			ErrorPresentation = NStr("en=""Error at connecting the exchange correspondent's end point."
-"The web service connection settings do not correspond to the expected ones."
-"The code of the expected exchange correspondent's end point is %1."
-"Code of the connected end point of the exchange correspondent %2."";ru='Ошибка при подключении конечной точки корреспондента обмена."
-"Настройки подключения веб-сервиса не соответствуют ожидаемым."
-"Код ожидаемой конечной точки корреспондента обмена %1."
-"Код подключенной конечной точки корреспондента обмена %2.'");
+			ErrorPresentation = NStr("en=""Error at connecting the exchange correspondent's end point.
+		|The web service connection settings do not correspond to the expected ones.
+		|The code of the expected exchange correspondent's end point is %1.
+		|Code of the connected end point of the exchange correspondent %2."";ru='Ошибка при подключении конечной точки корреспондента обмена.
+		|Настройки подключения веб-сервиса не соответствуют ожидаемым.
+		|Код ожидаемой конечной точки корреспондента обмена %1.
+		|Код подключенной конечной точки корреспондента обмена %2.'");
 			ErrorPresentation = StringFunctionsClientServer.PlaceParametersIntoString(ErrorPresentation,
 				Body.RecipientId,
 				ConnectedCorrespondentCode);
@@ -184,11 +184,11 @@ Procedure ConnectCorrespondent(Message, Sender)
 		
 		If Cancel Then // We send a message to the error service manager
 			
-			ErrorPresentation = NStr("en=""Failed to update parameters of connecting this end point and the exchange correspondent's end point."
-"The code of this"
-"end point is %1 The code of the exchange correspondent's end point is %2"";ru='Ошибка обновления параметров подключения этой конечной точки и конечной точки корреспондента обмена."
-"Код этой"
-"конечной токи %1 Код конечной точки корреспондента обмена %2'");
+			ErrorPresentation = NStr("en=""Failed to update parameters of connecting this end point and the exchange correspondent's end point.
+		|The code of this
+		|end point is %1 The code of the exchange correspondent's end point is %2"";ru='Ошибка обновления параметров подключения этой конечной точки и конечной точки корреспондента обмена.
+		|Код этой
+		|конечной токи %1 Код конечной точки корреспондента обмена %2'");
 			ErrorPresentation = StringFunctionsClientServer.PlaceParametersIntoString(ErrorPresentation,
 				MessageExchangeInternal.ThisNodeCode(),
 				Body.RecipientId);

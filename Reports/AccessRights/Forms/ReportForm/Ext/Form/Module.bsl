@@ -11,14 +11,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not ValueIsFilled(Parameters.User) Then
 		If AccessManagementService.SimplifiedInterfaceOfAccessRightsSettings() Then
 			Raise
-				NStr("en='To open report, open the"
-"user card, click the ""Access rights"" link, and then click ""Access rights report"".';ru='Чтобы открыть отчет откройте"
-"карточку пользователя, перейдите по ссылке ""Права доступа"", нажмите на кнопку ""Отчет по правам доступа"".'");
+				NStr("en='To open report, open the
+		|user card, click the ""Access rights"" link, and then click ""Access rights report"".';ru='Чтобы открыть отчет откройте
+		|карточку пользователя, перейдите по ссылке ""Права доступа"", нажмите на кнопку ""Отчет по правам доступа"".'");
 		Else
 			Raise
-				NStr("en='To open report, open the user card or"
-"user group card, click the ""Access rights"" link, and then click ""Access rights report"".';ru='Чтобы открыть отчет откройте карточку пользователя"
-"или группы пользователей, перейдите по ссылке ""Права доступа"", нажмите на кнопку ""Отчет по правам доступа"".'");
+				NStr("en='To open report, open the user card or
+		|user group card, click the ""Access rights"" link, and then click ""Access rights report"".';ru='Чтобы открыть отчет откройте карточку пользователя
+		|или группы пользователей, перейдите по ссылке ""Права доступа"", нажмите на кнопку ""Отчет по правам доступа"".'");
 		EndIf;
 	EndIf;
 	
@@ -943,14 +943,14 @@ Procedure OutputReport(Ref)
 									
 									If RolesCount > 1 Then
 										AccessGroupPresentationClarification =
-											NStr("en='(profile:"
-"%1, roles: %2)';ru='(profile:"
-"%1, roles: %2)'")
+											NStr("en='(profile:
+		|%1, roles: %2)';ru='(profile:
+		|%1, roles: %2)'")
 									Else
 										AccessGroupPresentationClarification =
-											NStr("en='(profile:"
-"%1, role: %2)';ru='(profile:"
-"%1, role: %2)'")
+											NStr("en='(profile:
+		|%1, role: %2)';ru='(profile:
+		|%1, role: %2)'")
 									EndIf;
 									
 									Area.Parameters.ProfileOrAccessGroupPresentation =
@@ -1107,81 +1107,81 @@ Procedure OutputReport(Ref)
 				If ObjectDescription.Insert AND ObjectDescription.Update Then
 					If ObjectDescription.AddingNotLimited AND ObjectDescription.ChangingNotLimited Then
 						If ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is not limited, not limited)';ru='(добавление,"
-"не ограничено"
-"изменение, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is not limited, not limited)';ru='(добавление,
+		|не ограничено
+		|изменение, не ограничено)'");
 						ElsIf Not ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding*,"
-"modification is not limited, not limited)';ru='(добавление*,"
-"не ограничено изменение, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding*,
+		|modification is not limited, not limited)';ru='(добавление*,
+		|не ограничено изменение, не ограничено)'");
 						ElsIf ObjectDescription.InteractiveInsert AND Not ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is not limited*, not limited)';ru='(добавление,"
-"не ограничено"
-"изменение*, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is not limited*, not limited)';ru='(добавление,
+		|не ограничено
+		|изменение*, не ограничено)'");
 						Else // NO ObjectDescription.InteractiveInsert AND NO ObjectDescription.Editing
-							ObjectPresentationClarification = NStr("en='(adding*,"
-"modification is not limited*, not limited)';ru='(добавление*,"
-"не ограничено изменение*, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding*,
+		|modification is not limited*, not limited)';ru='(добавление*,
+		|не ограничено изменение*, не ограничено)'");
 						EndIf;
 					ElsIf Not ObjectDescription.AddingNotLimited AND ObjectDescription.ChangingNotLimited Then
 						If ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is limited, not limited)';ru='(добавление,"
-"ограничено"
-"изменение, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is limited, not limited)';ru='(добавление,
+		|ограничено
+		|изменение, не ограничено)'");
 						ElsIf Not ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding*,"
-"modification is limited, not limited)';ru='(добавление*,"
-"ограничено"
-"изменение, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding*,
+		|modification is limited, not limited)';ru='(добавление*,
+		|ограничено
+		|изменение, не ограничено)'");
 						ElsIf ObjectDescription.InteractiveInsert AND Not ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is limited*, not limited)';ru='(добавление,"
-"ограничено"
-"изменение*, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is limited*, not limited)';ru='(добавление,
+		|ограничено
+		|изменение*, не ограничено)'");
 						Else // NO ObjectDescription.InteractiveInsert AND NO ObjectDescription.Editing
-							ObjectPresentationClarification = NStr("en='(adding*,"
-"modification is limited*, not limited)';ru='(добавление*,"
-"ограничено"
-"изменение*, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding*,
+		|modification is limited*, not limited)';ru='(добавление*,
+		|ограничено
+		|изменение*, не ограничено)'");
 						EndIf;
 					ElsIf ObjectDescription.AddingNotLimited AND Not ObjectDescription.ChangingNotLimited Then
 						If ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is not limited, limited)';ru='(добавление,"
-"не ограничено изменение, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is not limited, limited)';ru='(добавление,
+		|не ограничено изменение, ограничено)'");
 						ElsIf Not ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding*,"
-"modification is not limited, limited)';ru='(добавление*,"
-"не ограничено изменение, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding*,
+		|modification is not limited, limited)';ru='(добавление*,
+		|не ограничено изменение, ограничено)'");
 						ElsIf ObjectDescription.InteractiveInsert AND Not ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is not limited*, limited)';ru='(добавление,"
-"не ограничено изменение*, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is not limited*, limited)';ru='(добавление,
+		|не ограничено изменение*, ограничено)'");
 						Else // NO ObjectDescription.InteractiveInsert AND NO ObjectDescription.Editing
-							ObjectPresentationClarification = NStr("en='(adding*,"
-"modification is not limited*, limited)';ru='(добавление*,"
-"не ограничено изменение*, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding*,
+		|modification is not limited*, limited)';ru='(добавление*,
+		|не ограничено изменение*, ограничено)'");
 						EndIf;
 					Else // NO ObjectDescription.AddingWithoutRestriction AND NO ObjectDescription.ChangingWithoutRestriction
 						If ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is limited, limited)';ru='(добавление,"
-"ограничено изменение, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is limited, limited)';ru='(добавление,
+		|ограничено изменение, ограничено)'");
 						ElsIf Not ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(add*,"
-"limited modified, limited)';ru='(добавление*, ограничено"
-"изменение, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(add*,
+		|limited modified, limited)';ru='(добавление*, ограничено
+		|изменение, ограничено)'");
 						ElsIf ObjectDescription.InteractiveInsert AND Not ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is limited*, limited)';ru='(добавление,"
-"ограничено"
-"изменение*, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is limited*, limited)';ru='(добавление,
+		|ограничено
+		|изменение*, ограничено)'");
 						Else // NO ObjectDescription.InteractiveInsert AND NO ObjectDescription.Editing
-							ObjectPresentationClarification = NStr("en='(adding*, modification is limited*, limited)';ru='(добавление*, ограничено"
-"изменение*, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding*, modification is limited*, limited)';ru='(добавление*, ограничено
+		|изменение*, ограничено)'");
 						EndIf;
 					EndIf;
 					
@@ -1189,30 +1189,30 @@ Procedure OutputReport(Ref)
 					
 					If ObjectDescription.ChangingNotLimited Then
 						If ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is not available, not limited)';ru='(добавление"
-"не доступно изменение, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is not available, not limited)';ru='(добавление
+		|не доступно изменение, не ограничено)'");
 						Else // NO ObjectDescription.Editing
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is not available*, not limited)';ru='(добавление"
-"не доступно изменение*, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is not available*, not limited)';ru='(добавление
+		|не доступно изменение*, не ограничено)'");
 						EndIf;
 					Else // NO ObjectDescription.ChangeWithoutRestriction
 						If ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is not available, limited)';ru='(добавление"
-"не доступно изменение, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is not available, limited)';ru='(добавление
+		|не доступно изменение, ограничено)'");
 						Else // NO ObjectDescription.Editing
-							ObjectPresentationClarification = NStr("en='(adding,"
-"modification is not available*, limited)';ru='(добавление"
-"не доступно изменение*, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding,
+		|modification is not available*, limited)';ru='(добавление
+		|не доступно изменение*, ограничено)'");
 						EndIf;
 					EndIf;
 					
 				Else // NO ObjectDescription.Adding AND NO ObjectDescription.Changing
-					ObjectPresentationClarification = NStr("en='(adding"
-"is not available, modification is not available)';ru='(добавление"
-"не доступно изменение не доступно)'");
+					ObjectPresentationClarification = NStr("en='(adding
+		|is not available, modification is not available)';ru='(добавление
+		|не доступно изменение не доступно)'");
 				EndIf;
 			Else
 				If ObjectDescription.Update Then
@@ -1307,14 +1307,14 @@ Procedure OutputReport(Ref)
 									EndIf;
 									If RolesCount > 1 Then
 										AccessGroupPresentationClarification =
-											NStr("en='(profile:"
-"%1, roles: %2)';ru='(profile:"
-"%1, roles: %2)'")
+											NStr("en='(profile:
+		|%1, roles: %2)';ru='(profile:
+		|%1, roles: %2)'")
 									Else
 										AccessGroupPresentationClarification =
-											NStr("en='(profile:"
-"%1, role: %2)';ru='(profile:"
-"%1, role: %2)'")
+											NStr("en='(profile:
+		|%1, role: %2)';ru='(profile:
+		|%1, role: %2)'")
 									EndIf;
 									
 									Area.Parameters.ProfileOrAccessGroupPresentation =

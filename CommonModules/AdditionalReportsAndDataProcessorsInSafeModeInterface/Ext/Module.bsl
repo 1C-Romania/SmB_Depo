@@ -708,9 +708,9 @@ Function COMClassIdentifierInBackwardCompatibilityMode(Val ProgId)
 	If CLSID = Undefined Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Permission to use the COM class %1 can not be given to the additional data processor that runs in backward compatibility mode with permission mechanism implemented in the version SSL 2.1.3."
-"To use the COM class, it is required to process additional data processor to work without backward compatibility mode';ru='Разрешение на использование COM-класса %1 не может быть предоставлено дополнительной обработке, работающей в режиме обратной совместимости с механизмом разрешений, реализованным в версии БСП 2.1.3."
-"Для использования COM-класса требуется переработать дополнительную обработку для работы без режима обратной совместимости'"),
+			NStr("en='Permission to use the COM class %1 can not be given to the additional data processor that runs in backward compatibility mode with permission mechanism implemented in the version SSL 2.1.3.
+		|To use the COM class, it is required to process additional data processor to work without backward compatibility mode';ru='Разрешение на использование COM-класса %1 не может быть предоставлено дополнительной обработке, работающей в режиме обратной совместимости с механизмом разрешений, реализованным в версии БСП 2.1.3.
+		|Для использования COM-класса требуется переработать дополнительную обработку для работы без режима обратной совместимости'"),
 				  ProgId
 		);
 		

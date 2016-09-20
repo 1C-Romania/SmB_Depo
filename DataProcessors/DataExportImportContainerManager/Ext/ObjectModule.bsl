@@ -195,9 +195,9 @@ Procedure InitializeImport(Val ImportingDirectory, Val ImportParameters) Export
 	ContentFile = New File(ContentFileName);
 	If Not ContentFile.Exist() Then
 		
-		Raise NStr("en='An error occurred while importing the data. Incorrect file format. File PackageContents.xml is not found in the archive."
-"The file might have been received from previous versions or corrupted.';ru='Ошибка загрузки данных. Неверный формат файла. В архиве не обнаржен файл PackageContents.xml."
-"Возможно, файл был получен из предыдущих версий программы или поврежден!'");
+		Raise NStr("en='An error occurred while importing the data. Incorrect file format. File PackageContents.xml is not found in the archive.
+		|The file might have been received from previous versions or corrupted.';ru='Ошибка загрузки данных. Неверный формат файла. В архиве не обнаржен файл PackageContents.xml.
+		|Возможно, файл был получен из предыдущих версий программы или поврежден!'");
 		
 	EndIf;
 	

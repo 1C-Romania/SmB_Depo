@@ -2037,9 +2037,9 @@ Procedure OnStartExecutingScheduledJob() Export
 	
 	If StandardSubsystemsServer.ShouldUpdateApplicationWorkParameters() Then
 		Raise
-			NStr("en='Entrance to the application is temporarily impossible due to the update to the new version."
-"It is recommended to prohibit the execution of the scheduled jobs during the update.';ru='Вход в программу временно невозможен в связи с обновлением на новую версию"
-"Рекомендуется запрещать выполнение регламентных заданий на время обновления.'");
+			NStr("en='Entrance to the application is temporarily impossible due to the update to the new version.
+		|It is recommended to prohibit the execution of the scheduled jobs during the update.';ru='Вход в программу временно невозможен в связи с обновлением на новую версию
+		|Рекомендуется запрещать выполнение регламентных заданий на время обновления.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -2049,9 +2049,9 @@ Procedure OnStartExecutingScheduledJob() Export
 	   AND ValueIsFilled(Constants.MasterNode.Get()) Then
 		
 		Raise
-			NStr("en='Sign in to the application is temporarily unavailable before the restoration of connection with the main node."
-"It is recommended to prohibit the execution of the scheduled jobs on time of restoration.';ru='Вход в программу временно невозможен до восстановления связи с главным узлом."
-"Рекомендуется запрещать выполнение регламентных заданий на время восстановления.'");
+			NStr("en='Sign in to the application is temporarily unavailable before the restoration of connection with the main node.
+		|It is recommended to prohibit the execution of the scheduled jobs on time of restoration.';ru='Вход в программу временно невозможен до восстановления связи с главным узлом.
+		|Рекомендуется запрещать выполнение регламентных заданий на время восстановления.'");
 	EndIf;
 	
 EndProcedure
@@ -2917,13 +2917,13 @@ Function MetadataObjectID(MetadataObjectDesc) Export
 		MetadataObject = Metadata.FindByType(MetadataObjectDesc);
 		If MetadataObject = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID()."
-""
-"Metadata object is not"
-"found by the type: %1';ru='Ошибка при выполнении функции ОбщегоНазначения.ИдентификаторОбъектаМетаданных()."
-""
-"Объект метаданных"
-"не найден по типу: ""%1"".'"),
+				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID().
+		|
+		|Metadata object is not
+		|found by the type: %1';ru='Ошибка при выполнении функции ОбщегоНазначения.ИдентификаторОбъектаМетаданных().
+		|
+		|Объект метаданных
+		|не найден по типу: ""%1"".'"),
 				MetadataObjectDesc);
 		Else
 			FullMetadataObjectName = MetadataObject.FullName();
@@ -2970,13 +2970,13 @@ Function MetadataObjectByID(ID) Export
 	
 	If Exporting.Count() = 0 Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID()."
-""
-"Identifier"
-"%1 is not found in the Metadata objects identifiers catalog.';ru='Ошибка при выполнении функции ОбщегоНазначения.ОбъектМетаданныхПоИдентификатору()"
-""
-"Идентификатор"
-"""%1"" не найден в справочнике ""Идентификаторы объектов метаданных"".'")
+			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID().
+		|
+		|Identifier
+		|%1 is not found in the Metadata objects identifiers catalog.';ru='Ошибка при выполнении функции ОбщегоНазначения.ОбъектМетаданныхПоИдентификатору()
+		|
+		|Идентификатор
+		|""%1"" не найден в справочнике ""Идентификаторы объектов метаданных"".'")
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 			String(ID));
 	EndIf;
@@ -2987,47 +2987,47 @@ Function MetadataObjectByID(ID) Export
 		If CheckResult.MetadataObject = Undefined Then
 			If CheckResult.MetadataObjectKey = Undefined Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID()."
-""
-"Nonexistent"
-"metadata object %2 corresponds"
-"to identifier %1 in"
-"the Metadata objects identifiers catalog.';ru='Ошибка при выполнении функции ОбщегоНазначения.ОбъектМетаданныхПоИдентификатору()"
-""
-"Идентификатору"
-"""%1"" найденому"
-"в справочнике ""Идентификаторы объектов"
-"метаданных"", соответствует несуществующий объект метаданных ""%2"".'")
+					NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID().
+		|
+		|Nonexistent
+		|metadata object %2 corresponds
+		|to identifier %1 in
+		|the Metadata objects identifiers catalog.';ru='Ошибка при выполнении функции ОбщегоНазначения.ОбъектМетаданныхПоИдентификатору()
+		|
+		|Идентификатору
+		|""%1"" найденому
+		|в справочнике ""Идентификаторы объектов
+		|метаданных"", соответствует несуществующий объект метаданных ""%2"".'")
 					+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 					String(ID),
 					Exporting[0].FullName);
 			Else
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID()."
-""
-"%1"
-"identifier found in the Metadata"
-"objects identifiers catalog corresponds to the removed metadata object.';ru='Ошибка при выполнении функции ОбщегоНазначения.ОбъектМетаданныхПоИдентификатору()"
-""
-"Идентификатору"
-"""%1"" найденому"
-"в справочнике ""Идентификаторы объектов метаданных"", соответствует удаленный объект метаданных.'")
+					NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID().
+		|
+		|%1
+		|identifier found in the Metadata
+		|objects identifiers catalog corresponds to the removed metadata object.';ru='Ошибка при выполнении функции ОбщегоНазначения.ОбъектМетаданныхПоИдентификатору()
+		|
+		|Идентификатору
+		|""%1"" найденому
+		|в справочнике ""Идентификаторы объектов метаданных"", соответствует удаленный объект метаданных.'")
 					+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 					String(ID));
 			EndIf;
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID()."
-""
-"Identifier"
-"%1 found in the Metadata"
-"objects identifiers catalog corresponds"
-"to the %2 metadata object. Its full name differs from the one specified in the identifier.';ru='Ошибка при выполнении функции ОбщегоНазначения.ИдентификаторОбъектаМетаданных()."
-""
-"Идентификатору ""%1"""
-"найденому в справочнике ""Идентификаторы объектов метаданных"","
-"соответствует объект метаданных ""%2"","
-"полное имя которого отличается от заданного в идентификаторе.'")
+				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID().
+		|
+		|Identifier
+		|%1 found in the Metadata
+		|objects identifiers catalog corresponds
+		|to the %2 metadata object. Its full name differs from the one specified in the identifier.';ru='Ошибка при выполнении функции ОбщегоНазначения.ИдентификаторОбъектаМетаданных().
+		|
+		|Идентификатору ""%1""
+		|найденому в справочнике ""Идентификаторы объектов метаданных"",
+		|соответствует объект метаданных ""%2"",
+		|полное имя которого отличается от заданного в идентификаторе.'")
 				+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 				String(ID),
 				CheckResult.MetadataObject.FullName());
@@ -3036,15 +3036,15 @@ Function MetadataObjectByID(ID) Export
 	
 	If Exporting[0].DeletionMark Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID()."
-""
-"%1"
-"identifier is found in"
-"the Metadata objects identifier catalog but the Deletion markup attribute value is not set to True.';ru='Ошибка при выполнении функции ОбщегоНазначения.ОбъектМетаданныхПоИдентификатору()"
-""
-"Идентификатор"
-"""%1"" найден"
-"в справочнике ""Идентификаторы объектов метаданных"", но значение реквизита ""Пометка удаления"" установлено Истина.'")
+			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID().
+		|
+		|%1
+		|identifier is found in
+		|the Metadata objects identifier catalog but the Deletion markup attribute value is not set to True.';ru='Ошибка при выполнении функции ОбщегоНазначения.ОбъектМетаданныхПоИдентификатору()
+		|
+		|Идентификатор
+		|""%1"" найден
+		|в справочнике ""Идентификаторы объектов метаданных"", но значение реквизита ""Пометка удаления"" установлено Истина.'")
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 			String(ID));
 	EndIf;
@@ -3077,11 +3077,11 @@ Procedure AddRenaming(Total, IBVersion, FormerFullName, NewFullName, LibraryID =
 	If FormerCollectionName <> NewCollectionName Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF + Chars.LF
-			+ NStr("en='Types names of the renamed metadata object do not match."
-"Previous"
-"type: %1, new type: %2.';ru='Не совпадают имена типов переименованного объекта метаданных."
-"Прежний"
-"тип: ""%1"", новый тип: ""%2"".'"),
+			+ NStr("en='Types names of the renamed metadata object do not match.
+		|Previous
+		|type: %1, new type: %2.';ru='Не совпадают имена типов переименованного объекта метаданных.
+		|Прежний
+		|тип: ""%1"", новый тип: ""%2"".'"),
 			FormerFullName,
 			NewFullName);
 	EndIf;
@@ -3098,15 +3098,15 @@ Procedure AddRenaming(Total, IBVersion, FormerFullName, NewFullName, LibraryID =
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF + Chars.LF
-			+ NStr("en='It is not required to describe renaming for"
-"metadata object type %1 as information about metadata object of this type is updated automatically."
-""
-"It is required to describe renamings"
-"only for the following types: %2.';ru='Для типа объекта метаданных ""%1"" не"
-"требуется описывать переименование, так как сведения об объектах метаданных этого типа обновляются автоматически."
-""
-"Описывать переименования"
-"требуется только для следующих типов: %2.'"),
+			+ NStr("en='It is not required to describe renaming for
+		|metadata object type %1 as information about metadata object of this type is updated automatically.
+		|
+		|It is required to describe renamings
+		|only for the following types: %2.';ru='Для типа объекта метаданных ""%1"" не
+		|требуется описывать переименование, так как сведения об объектах метаданных этого типа обновляются автоматически.
+		|
+		|Описывать переименования
+		|требуется только для следующих типов: %2.'"),
 			FormerFullName,
 			NewFullName,
 			ValidTypesList);
@@ -4761,9 +4761,9 @@ Function GetInterfaceVersionsViaExternalConnection(ExternalConnection, Val Inter
 	Try
 		XMLInterfaceVersions = ExternalConnection.StandardSubsystemsServer.SupportedVersions(InterfaceName);
 	Except
-		MessageString = NStr("en='Correspondent does not support the subsystems interfaces versioning."
-"Error description: %1';ru='Корреспондент не поддерживает версионирование интерфейсов подсистем."
-"Описание ошибки: %1'");
+		MessageString = NStr("en='Correspondent does not support the subsystems interfaces versioning.
+		|Error description: %1';ru='Корреспондент не поддерживает версионирование интерфейсов подсистем.
+		|Описание ошибки: %1'");
 		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, DetailErrorDescription(ErrorInfo()));
 		WriteLogEvent(NStr("en='Interface versions receiving';ru='Получение версий интерфейса'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , MessageString);
@@ -5338,15 +5338,15 @@ Function GetWSDL(Val Address, Val UserName, Val Password, Val Timeout)
 	// Try to create WS definitions on the basis of a received file.
 	Definitions = New WSDefinitions(FileDescription.Path);
 	If Definitions.Services.Count() = 0 Then
-		MessagePattern = NStr("en='An error occurred while"
-"receiving the file of web service description: The received file does not contain any service description."
-""
-"Description file address may"
-"be incorrect: %1';ru='Ошибка получения"
-"файла описания web-сервиса: В полученном файле не содержится ни одного описания сервиса."
-""
-"Возможно, адрес"
-"файла описания указан неверно: %1'");
+		MessagePattern = NStr("en='An error occurred while
+		|receiving the file of web service description: The received file does not contain any service description.
+		|
+		|Description file address may
+		|be incorrect: %1';ru='Ошибка получения
+		|файла описания web-сервиса: В полученном файле не содержится ни одного описания сервиса.
+		|
+		|Возможно, адрес
+		|файла описания указан неверно: %1'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Address);
 		Raise(MessageText);
 	EndIf;
@@ -5411,9 +5411,9 @@ Procedure CheckingDataFixed(Data, DataInValueOfFixedTypes = False)
 	EndIf;
 	
 	Raise StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='An error occurred in the FixedData function of the CommonUse common module."
-"Data of the %1 type can not be recorded.';ru='Ошибка в функции ФиксированныеДанные общего модуля ОбщегоНазначения."
-"Данные типа ""%1"" не могут быть зафиксированы.'"),
+		NStr("en='An error occurred in the FixedData function of the CommonUse common module.
+		|Data of the %1 type can not be recorded.';ru='Ошибка в функции ФиксированныеДанные общего модуля ОбщегоНазначения.
+		|Данные типа ""%1"" не могут быть зафиксированы.'"),
 		String(DataType) );
 	
 EndProcedure
@@ -5554,9 +5554,9 @@ Function ManagerServerModule(Name)
 	
 	If Not ObjectFound Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='%1 metadata object"
-"is not found or manager module receipt is not supported for it.';ru='Объект метаданных"
-"""%1"" не найден, либо для него не поддерживается получение модуля менеджера.'"), Name);
+			NStr("en='%1 metadata object
+		|is not found or manager module receipt is not supported for it.';ru='Объект метаданных
+		|""%1"" не найден, либо для него не поддерживается получение модуля менеджера.'"), Name);
 	EndIf;
 	
 	Module = WorkInSafeMode.EvalInSafeMode(Name);
@@ -5882,9 +5882,9 @@ Procedure ReplaceInObject(Results, Val UsagePlace, Val WriteParameters, Val Inte
 			Block.Lock();
 		Except
 			// Add record about an unsuccessful attempt to lock the result.
-			Error = NStr("en='Unable to lock one or several objects from"
-"the list %1';ru='Не удалось заблокировать один или"
-"несколько объектов из списка %1'");
+			Error = NStr("en='Unable to lock one or several objects from
+		|the list %1';ru='Не удалось заблокировать один или
+		|несколько объектов из списка %1'");
 			Error = StrReplace(Error, "%1", LockListDescription(Block));
 			For Each String In ProcessedRows Do
 				AddReplacementResult(Results, String.Ref, 

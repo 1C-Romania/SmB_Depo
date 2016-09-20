@@ -110,9 +110,9 @@ EndProcedure
 Procedure RaiseServiceDisplayExports()
 	
 	If SupportRequestID = Undefined Then 
-		Raise NStr("en='Service providing request to support is temporarily unavailable."
-"Please, try again later';ru='Сервис по отображению обращений в техподдержку временно недоступен."
-"Пожалуйста, повторите попытку позже'");
+		Raise NStr("en='Service providing request to support is temporarily unavailable.
+		|Please, try again later';ru='Сервис по отображению обращений в техподдержку временно недоступен.
+		|Пожалуйста, повторите попытку позже'");
 	EndIf;
 	
 EndProcedure

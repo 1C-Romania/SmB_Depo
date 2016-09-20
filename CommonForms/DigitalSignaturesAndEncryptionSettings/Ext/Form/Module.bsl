@@ -504,33 +504,33 @@ Procedure RefreshCurrentItemsVisible()
 	If Constants.UseDigitalSignatures.Get() Then
 		CheckBoxTitle = NStr("en='Check signatures and certificates on server';ru='Проверять подписи и сертификаты на сервере'");
 		CheckBoxToolTip =
-			NStr("en='It allows you not to install"
-"the application to the user computer to check digital signatures and certificates."
-""
-"Important: at least one of"
-"the applications from the list must"
-"be installed on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не устанавливать"
-"программу на компьютер пользователя для проверки электронных подписей и сертификатов."
-""
-"Важно: на каждый"
-"компьютер, где работает сервер 1С:Предприятия"
-"или веб-сервер, использующий файловую информационную базу, должна быть установлена хотя бы одна из программ в списке.'");
+			NStr("en='It allows you not to install
+		|the application to the user computer to check digital signatures and certificates.
+		|
+		|Important: at least one of
+		|the applications from the list must
+		|be installed on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не устанавливать
+		|программу на компьютер пользователя для проверки электронных подписей и сертификатов.
+		|
+		|Важно: на каждый
+		|компьютер, где работает сервер 1С:Предприятия
+		|или веб-сервер, использующий файловую информационную базу, должна быть установлена хотя бы одна из программ в списке.'");
 		Items.ExtensionForSignatureFiles.Visible = True;
 		Items.ActionsOnSavingDataWithDigitalSignature.Visible = True;
 	Else
 		CheckBoxTitle = NStr("en='Check certificates on server';ru='Проверять сертификаты на сервере'");
 		CheckBoxToolTip =
-			NStr("en='It is not necessary to install"
-"the application and certificate to the users computer to check certificates."
-""
-"Important: at least one of"
-"the applications from the list must"
-"be installed on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не устанавливать"
-"программу на компьютер пользователя для проверки сертификатов."
-""
-"Важно: на каждый"
-"компьютер, где работает сервер 1С:Предприятия"
-"или веб-сервер, использующий файловую информационную базу, должна быть установлена хотя бы одна из программ в списке.'");
+			NStr("en='It is not necessary to install
+		|the application and certificate to the users computer to check certificates.
+		|
+		|Important: at least one of
+		|the applications from the list must
+		|be installed on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не устанавливать
+		|программу на компьютер пользователя для проверки сертификатов.
+		|
+		|Важно: на каждый
+		|компьютер, где работает сервер 1С:Предприятия
+		|или веб-сервер, использующий файловую информационную базу, должна быть установлена хотя бы одна из программ в списке.'");
 		Items.ExtensionForSignatureFiles.Visible = False;
 		Items.ActionsOnSavingDataWithDigitalSignature.Visible = False;
 	EndIf;
@@ -540,45 +540,45 @@ Procedure RefreshCurrentItemsVisible()
 	If Not Constants.UseDigitalSignatures.Get() Then
 		CheckBoxTitle = NStr("en='Encrypt and decrypt on the server';ru='Шифровать и расшифровывать на сервере'");
 		CheckBoxToolTip =
-			NStr("en=""It is not necessary to"
-"install the application and certificate to the user's computer for encryption and decryption."
-""
-"Important: the application and the"
-"private key certificate must be installed"
-"on each computer with working 1C:Enterprise server or Web server which uses a file infobase."";ru='Позволяет не"
-"устанавливать программу и сертификат на компьютер пользователя для шифрования и расшифровки."
-""
-"Важно: на каждый"
-"компьютер, где работает сервер 1С:Предприятия"
-"или веб-сервер, использующий файловую информационную базу, должна быть установлена программа и сертификат с закрытым ключом.'");
+			NStr("en=""It is not necessary to
+		|install the application and certificate to the user's computer for encryption and decryption.
+		|
+		|Important: the application and the
+		|private key certificate must be installed
+		|on each computer with working 1C:Enterprise server or Web server which uses a file infobase."";ru='Позволяет не
+		|устанавливать программу и сертификат на компьютер пользователя для шифрования и расшифровки.
+		|
+		|Важно: на каждый
+		|компьютер, где работает сервер 1С:Предприятия
+		|или веб-сервер, использующий файловую информационную базу, должна быть установлена программа и сертификат с закрытым ключом.'");
 	ElsIf Not Constants.UseEncryption.Get() Then
 		CheckBoxTitle = NStr("en='Sign on server';ru='Подписывать на сервере'");
 		CheckBoxToolTip =
-			NStr("en='It is not necessary to"
-"install the application and certificate to the users computer for signing."
-""
-"Important: the application and the"
-"private key certificate must be installed"
-"on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не"
-"устанавливать программу и сертификат на компьютер пользователя для подписания."
-""
-"Важно: на каждый"
-"компьютер, где работает сервер 1С:Предприятия"
-"или веб-сервер, использующий файловую информационную базу, должна быть установлена программа и сертификат с закрытым ключом.'");
+			NStr("en='It is not necessary to
+		|install the application and certificate to the users computer for signing.
+		|
+		|Important: the application and the
+		|private key certificate must be installed
+		|on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не
+		|устанавливать программу и сертификат на компьютер пользователя для подписания.
+		|
+		|Важно: на каждый
+		|компьютер, где работает сервер 1С:Предприятия
+		|или веб-сервер, использующий файловую информационную базу, должна быть установлена программа и сертификат с закрытым ключом.'");
 	Else
 		CheckBoxTitle = NStr("en='Sign and encrypt on server';ru='Подписывать и шифровать на сервере'");
 		CheckBoxToolTip =
-			NStr("en='It allows you not to"
-"install the application and the certificate on the computer of the user for signing, encryption and decryption."
-""
-"Important: the application and the"
-"private key certificate must be installed"
-"on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не устанавливать"
-"программу и сертификат на компьютер пользователя для подписания, шифрования и расшифровки."
-""
-"Важно: на каждый"
-"компьютер, где работает сервер 1С:Предприятия"
-"или веб-сервер, использующий файловую информационную базу, должна быть установлена программа и сертификат с закрытым ключом.'");
+			NStr("en='It allows you not to
+		|install the application and the certificate on the computer of the user for signing, encryption and decryption.
+		|
+		|Important: the application and the
+		|private key certificate must be installed
+		|on each computer with working 1C:Enterprise server or Web server which uses a file infobase.';ru='Позволяет не устанавливать
+		|программу и сертификат на компьютер пользователя для подписания, шифрования и расшифровки.
+		|
+		|Важно: на каждый
+		|компьютер, где работает сервер 1С:Предприятия
+		|или веб-сервер, использующий файловую информационную базу, должна быть установлена программа и сертификат с закрытым ключом.'");
 	EndIf;
 	Items.ToSignAtServer.Title = CheckBoxTitle;
 	Items.ToSignAtServer.ExtendedTooltip.Title = CheckBoxToolTip;

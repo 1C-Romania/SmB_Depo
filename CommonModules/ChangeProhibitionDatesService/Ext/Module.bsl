@@ -307,14 +307,14 @@ Procedure RecalculateCurrentValuesOfRelativeProhibitionDates(WriteResultDescript
 	ElsIf Cancel Then
 		If AreUpdatedDates Then
 			ResultDescription =
-				NStr("en='Some current values of the relative prohibition dates have been recalculated."
-"During recalculation, errors occurred:';ru='Пересчитаны некоторые текущие значения относительных дат запрета."
-"При пересчете возникли ошибки:'");
+				NStr("en='Some current values of the relative prohibition dates have been recalculated.
+		|During recalculation, errors occurred:';ru='Пересчитаны некоторые текущие значения относительных дат запрета.
+		|При пересчете возникли ошибки:'");
 		Else
 			ResultDescription =
-				NStr("en='Current prohibition dates are not recalculated."
-"During recalculation, errors occurred:';ru='Не пересчитаны текущие значения дат запрета."
-"При пересчете возникли ошибки:'");
+				NStr("en='Current prohibition dates are not recalculated.
+		|During recalculation, errors occurred:';ru='Не пересчитаны текущие значения дат запрета.
+		|При пересчете возникли ошибки:'");
 		EndIf;
 		ResultDescription = ResultDescription + ErrorPresentation;
 	Else
@@ -340,9 +340,9 @@ Procedure RecalculateCurrentValuesOfRelativeProhibitionDates(WriteResultDescript
 	
 	If Cancel Then
 		Raise
-			NStr("en='Failed to calculate all the relative prohibition dates."
-"Details in the event log.';ru='Не удалось пересчитать все относительные даты запрета."
-"Подробности в журнале регистрации.'");
+			NStr("en='Failed to calculate all the relative prohibition dates.
+		|Details in the event log.';ru='Не удалось пересчитать все относительные даты запрета.
+		|Подробности в журнале регистрации.'");
 	EndIf;
 	
 EndProcedure
@@ -586,19 +586,19 @@ Function GetRegisterFields(DataSources, Table) Export
 		
 		If Fields.Count() = 0 Then
 			Raise(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='The date field for"
-"the table ""%1"" in data source"
-"for changing prohibition check is not specified.';ru='Для проверки"
-"запрета изменения в"
-"источнике данных для таблицы ""%1"" не задано поле даты.'"),
+				NStr("en='The date field for
+		|the table ""%1"" in data source
+		|for changing prohibition check is not specified.';ru='Для проверки
+		|запрета изменения в
+		|источнике данных для таблицы ""%1"" не задано поле даты.'"),
 				Table));
 		ElsIf Not ValueIsFilled(Fields[0]) Then
 			Raise(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='The date field for"
-"the table ""%1"" in data source"
-"for changing prohibition check is specified incorrectly: %2.';ru='Для проверки"
-"запрета изменения в"
-"источнике данных для таблицы ""%1"" неверно задано поле даты: %2.'"),
+				NStr("en='The date field for
+		|the table ""%1"" in data source
+		|for changing prohibition check is specified incorrectly: %2.';ru='Для проверки
+		|запрета изменения в
+		|источнике данных для таблицы ""%1"" неверно задано поле даты: %2.'"),
 				Table,
 				DataSource.DataField));
 		EndIf;
@@ -613,11 +613,11 @@ Function GetRegisterFields(DataSources, Table) Export
 			
 			If Not ValueIsFilled(Fields[0]) Then
 				Raise(StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Object field for the"
-"table ""%1"" in data source for"
-"changing prohibition check is specified incorrectly: %2.';ru='Для проверки"
-"запрета изменения в источнике"
-"данных для таблицы ""%1"" неверно задано поле объекта: %2.'"),
+					NStr("en='Object field for the
+		|table ""%1"" in data source for
+		|changing prohibition check is specified incorrectly: %2.';ru='Для проверки
+		|запрета изменения в источнике
+		|данных для таблицы ""%1"" неверно задано поле объекта: %2.'"),
 					Table,
 					DataSource.ObjectField));
 			EndIf;
@@ -842,9 +842,9 @@ Function GetDataSources(Filter)
 	
 	If DataSources.Count() = 0 Then
 		Raise(StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Data sources for table ""%1"""
-"for changing prohibition check are not found.';ru='Для проверки запрета изменения не найдены"
-"источники данных для таблицы ""%1"".'"),
+			NStr("en='Data sources for table ""%1""
+		|for changing prohibition check are not found.';ru='Для проверки запрета изменения не найдены
+		|источники данных для таблицы ""%1"".'"),
 			Filter.Table));
 	EndIf;
 	
@@ -862,19 +862,19 @@ Procedure AddField(MetadataObject,
 	Fields = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Field, ".");
 	If Fields.Count() = 0 Then
 		Raise(StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='The %2 is not"
-"specified in the data source for"
-"table ""%1"" for changing prohibition check.';ru='Для проверки запрета изменения в источнике данных для таблицы ""%1"" не задано %2.'"),
+			NStr("en='The %2 is not
+		|specified in the data source for
+		|table ""%1"" for changing prohibition check.';ru='Для проверки запрета изменения в источнике данных для таблицы ""%1"" не задано %2.'"),
 			Table,
 			FieldTypeForMessages));
 		
 	ElsIf Not ValueIsFilled(Fields[0]) Then
 		Raise(StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='The %2 in the"
-"data source for table ""%1"" for"
-"changing prohibition check is specified incorrectly: ""%3"".';ru='Для проверки"
-"запрета изменения в"
-"источнике данных для таблицы ""%1"" неверно задано %2: ""%3""'"),
+			NStr("en='The %2 in the
+		|data source for table ""%1"" for
+		|changing prohibition check is specified incorrectly: ""%3"".';ru='Для проверки
+		|запрета изменения в
+		|источнике данных для таблицы ""%1"" неверно задано %2: ""%3""'"),
 			Table,
 			FieldTypeForMessages,
 			Field));
@@ -887,25 +887,25 @@ Procedure AddField(MetadataObject,
 	If MetadataObject.TabularSections.Find(Fields[0]) <> Undefined Then
 		If Fields.Count() = 1 Then
 			Raise(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='The %2 in the"
-"data source for table ""%1"" for"
-"changing prohibition check"
-"is specified incorrectly: the field of the defined tabular section ""%3"" is not specified.';ru='Для проверки"
-"запрета изменения в"
-"источнике данных"
-"для таблицы ""%1"" неверно задано %2: не задано поле заданной табличной части ""%3"".'"),
+				NStr("en='The %2 in the
+		|data source for table ""%1"" for
+		|changing prohibition check
+		|is specified incorrectly: the field of the defined tabular section ""%3"" is not specified.';ru='Для проверки
+		|запрета изменения в
+		|источнике данных
+		|для таблицы ""%1"" неверно задано %2: не задано поле заданной табличной части ""%3"".'"),
 				Table,
 				FieldTypeForMessages,
 				Field));
 		ElsIf Not ValueIsFilled(Fields[1]) Then
 			Raise(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='The %2 in the"
-"data source for table ""%1"" for"
-"changing prohibition check"
-"is specified incorrectly: the field of the defined tabular section ""%3"" is specified incorrectly.';ru='Для проверки"
-"запрета изменения"
-"в источнике данных"
-"для таблицы ""%1"" неверно задано %2: неверно задано поле заданной табличной части ""%3"".'"),
+				NStr("en='The %2 in the
+		|data source for table ""%1"" for
+		|changing prohibition check
+		|is specified incorrectly: the field of the defined tabular section ""%3"" is specified incorrectly.';ru='Для проверки
+		|запрета изменения
+		|в источнике данных
+		|для таблицы ""%1"" неверно задано %2: неверно задано поле заданной табличной части ""%3"".'"),
 				Table,
 				FieldTypeForMessages,
 				Field));

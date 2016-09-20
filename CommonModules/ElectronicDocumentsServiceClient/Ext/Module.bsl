@@ -515,11 +515,11 @@ Procedure CheckDS(Result, Parameters) Export
 	
 	If TypeOf(Result) = Type("String") Then
 		OperationKind = NStr("en='Signature check';ru='Проверка подписи'");
-		MessageText = NStr("en='When verifying the signature"
-"of electronic"
-"document: %1 error occurred: %2';ru='При проверке подписи"
-"электронного"
-"документа: %1 произошла ошибка: %2'");
+		MessageText = NStr("en='When verifying the signature
+		|of electronic
+		|document: %1 error occurred: %2';ru='При проверке подписи
+		|электронного
+		|документа: %1 произошла ошибка: %2'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 								MessageText, Parameters.CheckedED, Result);
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
@@ -591,11 +591,11 @@ Procedure GetNextSignatureStatus(Result, Parameters) Export
 		Parameters.CheckResult.Add(RecordStructure);
 	ElsIf TypeOf(Result) = Type("String") Then
 		OperationKind = NStr("en='Signature check';ru='Проверка подписи'");
-		MessageText = NStr("en='When verifying the signature"
-"of electronic"
-"document: %1 error occurred: %2';ru='При проверке подписи"
-"электронного"
-"документа: %1 произошла ошибка: %2'");
+		MessageText = NStr("en='When verifying the signature
+		|of electronic
+		|document: %1 error occurred: %2';ru='При проверке подписи
+		|электронного
+		|документа: %1 произошла ошибка: %2'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 								MessageText, Parameters.CheckedED, Result);
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
@@ -3504,11 +3504,11 @@ Function SetiBank2CertificatePassword(XMLCertificate, Password) Export
 	Try
 		ExternalAttachableModule.SetCertificatePassword(XMLCertificate, Password);
 	Except
-		ErrorTemplate = NStr("en='Error setting certificate password."
-"Error code:"
-"%1 %2';ru='Ошибка установки пароля сертификата."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Error setting certificate password.
+		|Error code:
+		|%1 %2';ru='Ошибка установки пароля сертификата.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -3561,11 +3561,11 @@ Procedure EstablishConnectioniBank2(EDAgreement, XMLCertificate, NotifyDescripti
 		Try
 			ExternalAttachableModule.SetProxy(XMLProxySettings);
 		Except
-			ErrorTemplate = NStr("en='An error occurred when setting proxy server settings."
-"Error code:"
-"%1 %2';ru='Ошибка установки настроек прокси-сервера."
-"Код"
-"ошибки: %1 %2'");
+			ErrorTemplate = NStr("en='An error occurred when setting proxy server settings.
+		|Error code:
+		|%1 %2';ru='Ошибка установки настроек прокси-сервера.
+		|Код
+		|ошибки: %1 %2'");
 			ErrorDetails = InformationAboutErroriBank2();
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 								ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -3603,11 +3603,11 @@ Procedure EstablishConnectioniBank2(EDAgreement, XMLCertificate, NotifyDescripti
 			EndIf;
 			
 		Except
-			ErrorTemplate = NStr("en='An error occurred while connecting."
-"Error code:"
-"%1 %2';ru='Ошибка установки соединения."
-"Код"
-"ошибки: %1 %2'");
+			ErrorTemplate = NStr("en='An error occurred while connecting.
+		|Error code:
+		|%1 %2';ru='Ошибка установки соединения.
+		|Код
+		|ошибки: %1 %2'");
 			ErrorDetails = InformationAboutErroriBank2();
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 								ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -3644,11 +3644,11 @@ Function SetStoragePINCodeiBank2(StorageIdentifier, PinCode) Export
 	Try
 		ExternalAttachableModule.SetStoragePINCode(StorageIdentifier, PinCode);
 	Except
-		ErrorTemplate = NStr("en='PIN code setup error."
-"Error code:"
-"%1 %2';ru='PIN code setup error."
-"Error code:"
-"%1 %2'");
+		ErrorTemplate = NStr("en='PIN code setup error.
+		|Error code:
+		|%1 %2';ru='PIN code setup error.
+		|Error code:
+		|%1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -3758,11 +3758,11 @@ Function ConnectediBank2Storages() Export
 		XMLDevices = ExternalAttachableModule.CertificatesStorages();
 		Device = DeSerializedData(XMLDevices);
 	Except
-		ErrorTemplate = NStr("en='An error occurred when searching for connected storages."
-"Error code:"
-"%1 %2';ru='Ошибка при поиске подключенных хранилищ."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='An error occurred when searching for connected storages.
+		|Error code:
+		|%1 %2';ru='Ошибка при поиске подключенных хранилищ.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -3774,9 +3774,9 @@ Function ConnectediBank2Storages() Export
 	EndTry;
 	
 	If Device.Count() = 0 Then
-		MessageText = NStr("en='No storage is found."
-"Verify that your device is connected to your computer and then try again';ru='Не найдено ни одного хранилища."
-"Убедитесь, что устройство подключено к компьютеру и повторите операцию'");
+		MessageText = NStr("en='No storage is found.
+		|Verify that your device is connected to your computer and then try again';ru='Не найдено ни одного хранилища.
+		|Убедитесь, что устройство подключено к компьютеру и повторите операцию'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -3842,11 +3842,11 @@ Function SendQueryiBank2(TypeQuery, SendingData) Export
 		ResultXML = ExternalAttachableModule.SendRequest(TypeQuery, XMLSendingData);
 		Result = DeSerializedData(ResultXML);
 	Except
-		ErrorTemplate = NStr("en='Data sending error."
-"Error code:"
-"%1 %2';ru='Ошибка отправки данных."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Data sending error.
+		|Error code:
+		|%1 %2';ru='Ошибка отправки данных.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -3880,11 +3880,11 @@ Function RequiredToSetStoragePINCodeiBank2(StorageIdentifier) Export
 		PINRequired = ExternalAttachableModule.RequiredToSetStoragePINCode(StorageIdentifier);
 	Except
 		ClearMessages();
-		ErrorTemplate = NStr("en='An error occurred when checking the need to input PIN code."
-"Error code:"
-"%1 %2';ru='Ошибка проверки необходимости ввода PIN-кода."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='An error occurred when checking the need to input PIN code.
+		|Error code:
+		|%1 %2';ru='Ошибка проверки необходимости ввода PIN-кода.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -4025,11 +4025,11 @@ Procedure SigningEDiBank2(AuthenticationCompleted, Parameters) Export
 				CommonUseClientServer.SupplementArray(DataProcessorData.SchemasDataArray,  NewDataSchemesArray);
 				CommonUseClientServer.SupplementArray(DataProcessorData.EDArrayWithSchemas, DataProcessorData.EDArrayWithoutSchemas);
 			Except
-				ErrorTemplate = NStr("en='Data scheme receiving error."
-"Error code:"
-"%1 %2';ru='Ошибка получения схемы данных."
-"Код"
-"ошибки: %1 %2'");
+				ErrorTemplate = NStr("en='Data scheme receiving error.
+		|Error code:
+		|%1 %2';ru='Ошибка получения схемы данных.
+		|Код
+		|ошибки: %1 %2'");
 				ErrorDetails = InformationAboutErroriBank2();
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -4058,11 +4058,11 @@ Procedure SigningEDiBank2(AuthenticationCompleted, Parameters) Export
 				
 				StartCheckingSignartureStatusesiBank2(Parameters);
 			Except
-				ErrorTemplate = NStr("en='An error occurred when signing documents."
-"Error code:"
-"%1 %2';ru='Ошибка подписания документов."
-"Код"
-"ошибки: %1 %2'");
+				ErrorTemplate = NStr("en='An error occurred when signing documents.
+		|Error code:
+		|%1 %2';ru='Ошибка подписания документов.
+		|Код
+		|ошибки: %1 %2'");
 				ErrorDetails = InformationAboutErroriBank2();
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -4128,11 +4128,11 @@ Procedure CheckiBank2SignaturesStatuses(AvailableStorage, Parameters) Export
 				RecordStructure.Insert("Result", SignatureValid);
 				CheckResult.Add(RecordStructure);
 			Except
-				ErrorTemplate = NStr("en='Signature check error."
-"Error code:"
-"%1 %2';ru='Ошибка проверки подписи."
-"Код"
-"ошибки: %1 %2'");
+				ErrorTemplate = NStr("en='Signature check error.
+		|Error code:
+		|%1 %2';ru='Ошибка проверки подписи.
+		|Код
+		|ошибки: %1 %2'");
 				ErrorDetails = InformationAboutErroriBank2();
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -4283,11 +4283,11 @@ Function iBank2CertificateData(XMLCertificate) Export
 		XMLCertificateData = ExternalAttachableModule.CertificateData(XMLCertificate);
 		CertificateData = DeSerializedData(XMLCertificateData);
 	Except
-		ErrorTemplate = NStr("en='An error occurred when receiving the certificate data."
-"Error code:"
-"%1 %2';ru='Ошибка получения данных сертификата."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='An error occurred when receiving the certificate data.
+		|Error code:
+		|%1 %2';ru='Ошибка получения данных сертификата.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -4592,11 +4592,11 @@ Procedure ContinueiBank2AgreementTest(Parameters)
 	Try
 		ExternalAttachableModule.SetCertificatePassword(XMLCertificate, UserPassword);
 	Except
-		ErrorTemplate = NStr("en='Authorization error on bank resource."
-"Error code:"
-"%1 %2';ru='Ошибка авторизации на ресурсе банка."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Authorization error on bank resource.
+		|Error code:
+		|%1 %2';ru='Ошибка авторизации на ресурсе банка.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -4649,11 +4649,11 @@ Procedure ContinueAgreementTestAfterAutenticationiBank2(AuthenticationCompleted,
 		XMLSignaturesArray = ExternalAttachableModule.Sign(XMLCertificate, XMLSignatureArray);
 		SignaturesArray = DeSerializedData(XMLSignaturesArray);
 	Except
-		ErrorTemplate = NStr("en='Signature setup error."
-"Error code:"
-"%1 %2';ru='Ошибка установки подписи."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Signature setup error.
+		|Error code:
+		|%1 %2';ru='Ошибка установки подписи.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -4676,11 +4676,11 @@ Procedure ContinueAgreementTestAfterAutenticationiBank2(AuthenticationCompleted,
 		SignatureValid = ExternalAttachableModule.VerifySignature(
 			XMLCertificate, XMLBinaryData, SignatureXML, AdditXMLParameters);
 	Except
-		ErrorTemplate = NStr("en='Signature check error."
-"Error code:"
-"%1 %2';ru='Ошибка проверки подписи."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Signature check error.
+		|Error code:
+		|%1 %2';ru='Ошибка проверки подписи.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -4721,9 +4721,9 @@ Procedure ContinueAgreementTestAfterEnteringPasswordToiBank2Certificate(ReturnPa
 	TargetID = Parameters.TargetID;
 	
 	If Parameters.AccCertificatesAndTheirStructures.Count() = 0 Then
-		MessageText = NStr("en='Password for certificate is not provided."
-"Test is interrupted.';ru='Не введен пароль для сертификата."
-"Тест прерван.'");
+		MessageText = NStr("en='Password for certificate is not provided.
+		|Test is interrupted.';ru='Не введен пароль для сертификата.
+		|Тест прерван.'");
 		MessageToUser(MessageText, TargetID);
 		Return;
 	EndIf;
@@ -4872,11 +4872,11 @@ Procedure StartiBank2CertificatesTest(Parameters)
 	Try
 		ExternalAttachableModule.SendRequest("1", Undefined);
 	Except
-		ErrorTemplate = NStr("en='An error occurred when sending a test request."
-"Error code:"
-"%1 %2';ru='Ошибка отправки тестового запроса."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='An error occurred when sending a test request.
+		|Error code:
+		|%1 %2';ru='Ошибка отправки тестового запроса.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -5077,11 +5077,11 @@ Function SetStoragePINCodeThroughAdditionalDataProcessor(ExternalAttachableModul
 	Try
 		ExternalAttachableModule.SetStoragePINCode(StorageIdentifier, PinCode);
 	Except
-		ErrorTemplate = NStr("en='PIN code setup error."
-"Error code:"
-"%1 %2';ru='PIN code setup error."
-"Error code:"
-"%1 %2'");
+		ErrorTemplate = NStr("en='PIN code setup error.
+		|Error code:
+		|%1 %2';ru='PIN code setup error.
+		|Error code:
+		|%1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate,
 		                                                                         ErrorDetails.Code,
@@ -5803,11 +5803,11 @@ Procedure SigningEDThroughAdditDataProcessor(AuthenticationCompleted, Parameters
 				NewDataSchemesArray = ExternalAttachableModule.DataSchema(
 						XMLCertificate, DataProcessorData.TextDataEDArray);
 			Except
-				ErrorTemplate = NStr("en='Data scheme receiving error."
-"Error code:"
-"%1 %2';ru='Ошибка получения схемы данных."
-"Код"
-"ошибки: %1 %2'");
+				ErrorTemplate = NStr("en='Data scheme receiving error.
+		|Error code:
+		|%1 %2';ru='Ошибка получения схемы данных.
+		|Код
+		|ошибки: %1 %2'");
 				ErrorDetails = ExternalAttachableModule.ErrorDetails();
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -5833,11 +5833,11 @@ Procedure SigningEDThroughAdditDataProcessor(AuthenticationCompleted, Parameters
 				SignaturesArray = ExternalAttachableModule.Sign(
 					XMLCertificate, DataProcessorData.SchemasDataArray, ParametersSignatures);
 			Except
-				ErrorTemplate = NStr("en='An error occurred when signing documents."
-"Error code:"
-"%1 %2';ru='Ошибка подписания документов."
-"Код"
-"ошибки: %1 %2'");
+				ErrorTemplate = NStr("en='An error occurred when signing documents.
+		|Error code:
+		|%1 %2';ru='Ошибка подписания документов.
+		|Код
+		|ошибки: %1 %2'");
 				ErrorDetails = ExternalAttachableModule.ErrorDetails();
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -5985,11 +5985,11 @@ Procedure CheckSignaturesStatusesThroughAdditionalDataProcessor(AvailableStorage
 					RecordStructure.Insert("Result", SignatureValid);
 					CheckResult.Add(RecordStructure);
 				Except
-					ErrorTemplate = NStr("en='Signature check error."
-"Error code:"
-"%1 %2';ru='Ошибка проверки подписи."
-"Код"
-"ошибки: %1 %2'");
+					ErrorTemplate = NStr("en='Signature check error.
+		|Error code:
+		|%1 %2';ru='Ошибка проверки подписи.
+		|Код
+		|ошибки: %1 %2'");
 					ErrorDetails = ExternalAttachableModule.ErrorDetails();
 					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 										ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -6025,9 +6025,9 @@ Procedure ContinueAgreementTestAfterEnteringPasswordToCertificateThroughAddition
 	TargetID = Parameters.TargetID;
 	
 	If Parameters.AccCertificatesAndTheirStructures.Count() = 0 Then
-		MessageText = NStr("en='Password for certificate is not provided."
-"Test is interrupted.';ru='Не введен пароль для сертификата."
-"Тест прерван.'");
+		MessageText = NStr("en='Password for certificate is not provided.
+		|Test is interrupted.';ru='Не введен пароль для сертификата.
+		|Тест прерван.'");
 		MessageToUser(MessageText, TargetID);
 		Return;
 	EndIf;
@@ -6175,11 +6175,11 @@ Function SetCertificatePasswordThroughAdditionalDataProcessor(ExternalAttachable
 		Try
 			ExternalAttachableModule.SetCertificatePassword(XMLCertificate, Password);
 		Except
-			ErrorTemplate = NStr("en='Error setting certificate password."
-"Error code:"
-"%1 %2';ru='Ошибка установки пароля сертификата."
-"Код"
-"ошибки: %1 %2'");
+			ErrorTemplate = NStr("en='Error setting certificate password.
+		|Error code:
+		|%1 %2';ru='Ошибка установки пароля сертификата.
+		|Код
+		|ошибки: %1 %2'");
 			ErrorDetails = ExternalAttachableModule.ErrorDetails();
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 																ErrorTemplate,
@@ -6214,11 +6214,11 @@ Function StoragePINCodeIsSetThroughAdditionalDataProcessor(ExternalAttachableMod
 	Try
 		StoragePINCodeIsSet = ExternalAttachableModule.StoragePINCodeIsSet(StorageIdentifier);
 	Except
-		ErrorTemplate = NStr("en='An error occurred when checking the set PIN code."
-"Error code:"
-"%1 %2';ru='Ошибка проверки установленного PIN-кода."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='An error occurred when checking the set PIN code.
+		|Error code:
+		|%1 %2';ru='Ошибка проверки установленного PIN-кода.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate,
 		                                                                         ErrorDetails.Code,
@@ -6269,11 +6269,11 @@ Function SendQueryThroughAdditionalDataProcessor(ExternalAttachableModule, XMLCe
 	Try
 		Result = ExternalAttachableModule.SendRequest(XMLCertificate, TypeQuery, SendingData);
 	Except
-		ErrorTemplate = NStr("en='Data sending error."
-"Error code:"
-"%1 %2';ru='Ошибка отправки данных."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Data sending error.
+		|Error code:
+		|%1 %2';ru='Ошибка отправки данных.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate,
 		                                                                         ErrorDetails.Code,
@@ -6304,11 +6304,11 @@ Function CertificateDataThroughAdditionalDataProcessor(ExternalAttachableModule,
 	Try
 		CertificateData = ExternalAttachableModule.CertificateData(XMLCertificate);
 	Except
-		ErrorTemplate = NStr("en='An error occurred when receiving the certificate data."
-"Error code:"
-"%1 %2';ru='Ошибка получения данных сертификата."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='An error occurred when receiving the certificate data.
+		|Error code:
+		|%1 %2';ru='Ошибка получения данных сертификата.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 															ErrorTemplate,
@@ -6397,11 +6397,11 @@ Procedure StartAgreementTestThroughAdditionalDataProcessor(Parameters) Export
 	Try
 		ExternalAttachableModule.SendRequest(XMLCertificate, 1);
 	Except
-		ErrorTemplate = NStr("en='An error occurred when sending a test request."
-"Error code:"
-"%1 %2';ru='Ошибка отправки тестового запроса."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='An error occurred when sending a test request.
+		|Error code:
+		|%1 %2';ru='Ошибка отправки тестового запроса.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -6428,11 +6428,11 @@ Function ConnectedStoragesThroughAdditionalDataProcessor(ExternalAttachableModul
 	Try
 		Device = ExternalAttachableModule.CertificatesStorages();
 	Except
-		ErrorTemplate = NStr("en='An error occurred when searching for connected storages."
-"Error code:"
-"%1 %2';ru='Ошибка при поиске подключенных хранилищ."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='An error occurred when searching for connected storages.
+		|Error code:
+		|%1 %2';ru='Ошибка при поиске подключенных хранилищ.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -6444,9 +6444,9 @@ Function ConnectedStoragesThroughAdditionalDataProcessor(ExternalAttachableModul
 	EndTry;
 	
 	If Device.Count() = 0 Then
-		MessageText = NStr("en='No storage is found."
-"Verify that your device is connected to your computer and then try again';ru='Не найдено ни одного хранилища."
-"Убедитесь, что устройство подключено к компьютеру и повторите операцию'");
+		MessageText = NStr("en='No storage is found.
+		|Verify that your device is connected to your computer and then try again';ru='Не найдено ни одного хранилища.
+		|Убедитесь, что устройство подключено к компьютеру и повторите операцию'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -6492,11 +6492,11 @@ Procedure EstablishConnectionThroughAdditionalDataProcessor(EDAgreement, Externa
 		EndIf;
 		
 	Except
-		ErrorTemplate = NStr("en='An error occurred while connecting."
-"Error code:"
-"%1 %2';ru='Ошибка установки соединения."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='An error occurred while connecting.
+		|Error code:
+		|%1 %2';ru='Ошибка установки соединения.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -6529,11 +6529,11 @@ Function RequiredToSetStoragePINCodeThroughAdditionalDataProcessor(ExternalAttac
 		PINRequired = ExternalAttachableModule.SettingStoragePINCodeRequired(StorageIdentifier);
 	Except
 		ClearMessages();
-		ErrorTemplate = NStr("en='An error occurred when checking the need to input PIN code."
-"Error code:"
-"%1 %2';ru='Ошибка проверки необходимости ввода PIN-кода."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='An error occurred when checking the need to input PIN code.
+		|Error code:
+		|%1 %2';ru='Ошибка проверки необходимости ввода PIN-кода.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate,
 		                                                                         ErrorDetails.Code,
@@ -6606,11 +6606,11 @@ Procedure ContinueAgreementTestThroughAdditionalDataProcessorAfterAuthentication
 	Try
 		SignaturesArray = ExternalAttachableModule.Sign(XMLCertificate, SignatureArray, ParametersSignatures);
 	Except
-		ErrorTemplate = NStr("en='Signature setup error."
-"Error code:"
-"%1 %2';ru='Ошибка установки подписи."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Signature setup error.
+		|Error code:
+		|%1 %2';ru='Ошибка установки подписи.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 															ErrorTemplate,
@@ -6636,11 +6636,11 @@ Procedure ContinueAgreementTestThroughAdditionalDataProcessorAfterAuthentication
 		                                                            SignaturesArray[0],
 		                                                            AdditParameters);
 	Except
-		ErrorTemplate = NStr("en='Signature check error."
-"Error code:"
-"%1 %2';ru='Ошибка проверки подписи."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Signature check error.
+		|Error code:
+		|%1 %2';ru='Ошибка проверки подписи.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 															ErrorTemplate,
@@ -6800,11 +6800,11 @@ Function InitializeAdditionalDataProcessorInterface(EDAgreement, VersionHandling
 		Try
 			AttachableModule.Initialize();
 		Except
-			ErrorTemplate = NStr("en='Error of additional data processor initialization."
-"Error code:"
-"%1 %2';ru='Ошибка инициализации дополнительной обработки."
-"Код"
-"ошибки: %1 %2'");
+			ErrorTemplate = NStr("en='Error of additional data processor initialization.
+		|Error code:
+		|%1 %2';ru='Ошибка инициализации дополнительной обработки.
+		|Код
+		|ошибки: %1 %2'");
 			ErrorDetails = AttachableModule.ErrorDetails();
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 								ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -6819,11 +6819,11 @@ Function InitializeAdditionalDataProcessorInterface(EDAgreement, VersionHandling
 			ComponentAddress = "";
 			InitializationExecuted = AttachableModule.BeginInitialization(ComponentAddress);
 		Except
-			ErrorTemplate = NStr("en='Error of additional data processor initialization."
-"Error code:"
-"%1 %2';ru='Ошибка инициализации дополнительной обработки."
-"Код"
-"ошибки: %1 %2'");
+			ErrorTemplate = NStr("en='Error of additional data processor initialization.
+		|Error code:
+		|%1 %2';ru='Ошибка инициализации дополнительной обработки.
+		|Код
+		|ошибки: %1 %2'");
 			ErrorDetails = AttachableModule.ErrorDetails();
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 								ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -6853,11 +6853,11 @@ Function InitializeAdditionalDataProcessorInterface(EDAgreement, VersionHandling
 			Try
 				AttachableModule.CompleteInitialization();
 			Except
-				ErrorTemplate = NStr("en='Initialization completion error."
-"Error code:"
-"%1 %2';ru='Ошибка завершения инициализации."
-"Код"
-"ошибки: %1 %2'");
+				ErrorTemplate = NStr("en='Initialization completion error.
+		|Error code:
+		|%1 %2';ru='Ошибка завершения инициализации.
+		|Код
+		|ошибки: %1 %2'");
 				ErrorDetails = AttachableModule.ErrorDetails();
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -6933,11 +6933,11 @@ Procedure ContinueAgreementTestThroughAdditionalDataProcessor(Parameters)
 	Try
 		ExternalAttachableModule.SetCertificatePassword(XMLCertificate, UserPassword);
 	Except
-		ErrorTemplate = NStr("en='Authorization error on bank resource."
-"Error code:"
-"%1 %2';ru='Ошибка авторизации на ресурсе банка."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Authorization error on bank resource.
+		|Error code:
+		|%1 %2';ru='Ошибка авторизации на ресурсе банка.
+		|Код
+		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
@@ -7046,9 +7046,9 @@ Procedure AfterConnectingExternalComponentSendQueryOnNightAccountStatementsSberb
 	Try
 		Res = AttachableModule.SignDataThroughVPNKeyTLS(SignatureRowBase64, IDCertificate, DS);
 		If Res <> 0 Then
-			MessageText = NStr("en='An error occurred when"
-"signing DS See details in the event log';ru='При подписании ЭП"
-"произошла ошибка Подробности в журнале регистрации'");
+			MessageText = NStr("en='An error occurred when
+		|signing DS See details in the event log';ru='При подписании ЭП
+		|произошла ошибка Подробности в журнале регистрации'");
 			ErrorText = NStr("en='AddIn.Bicrypt component has returned an error code at the signing';ru='Компонента AddIn.Bicrypt при подписании вернула код ошибки'") + " " + Res;
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
 			ClearAuthorizationDataSberbank();
@@ -7056,9 +7056,9 @@ Procedure AfterConnectingExternalComponentSendQueryOnNightAccountStatementsSberb
 		EndIf;
 	Except
 		ClearMessages();
-		MessageText = NStr("en='An error occurred when"
-"signing DS See details in the event log';ru='При подписании ЭП"
-"произошла ошибка Подробности в журнале регистрации'");
+		MessageText = NStr("en='An error occurred when
+		|signing DS See details in the event log';ru='При подписании ЭП
+		|произошла ошибка Подробности в журнале регистрации'");
 		ErrorText = ErrorDescription();
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
 		Return;
@@ -7164,22 +7164,22 @@ Procedure AfterConnectingComponentDetermineSberbankSignaturesStatuses(Attachable
 				Else
 					CheckResult.Add(False);
 				EndIf;
-				TextForLog = NStr("en='Executing the operation: Signature check."
-"Signature for electronic document"
-"verified: %1 Verification result: signature %2.';ru='Выполнение операции: Проверка подписи."
-"Проверена подпись"
-"для электронного документа: %1 Результат проверки: подпись %2.'");
+				TextForLog = NStr("en='Executing the operation: Signature check.
+		|Signature for electronic document
+		|verified: %1 Verification result: signature %2.';ru='Выполнение операции: Проверка подписи.
+		|Проверена подпись
+		|для электронного документа: %1 Результат проверки: подпись %2.'");
 				TextForLog = StringFunctionsClientServer.PlaceParametersIntoString(TextForLog,
 					ED, ?(ReturnCode = 0, "correct","incorrect"));
 				ElectronicDocumentsServiceCallServer.WriteToEventLogMonitor(TextForLog, 1, "Information", ED);
 			Except
-				ErrorDescription = NStr("en='Verification of digital signature validity."
-"An error occurred during the verification of electronic signature."
-"Additional"
-"description: %AdditionalDetails%';ru='Проверка валидности электронной подписи."
-"Во время проверки валидности электронной подписи произошла ошибка."
-"Дополнительное"
-"описание: %ДополнительноеОписание%'");
+				ErrorDescription = NStr("en='Verification of digital signature validity.
+		|An error occurred during the verification of electronic signature.
+		|Additional
+		|description: %AdditionalDetails%';ru='Проверка валидности электронной подписи.
+		|Во время проверки валидности электронной подписи произошла ошибка.
+		|Дополнительное
+		|описание: %ДополнительноеОписание%'");
 				ErrorDescription = StrReplace(ErrorDescription, "%AdditionalDetails%", ErrorInfo().Definition);
 				ElectronicDocumentsServiceCallServer.WriteToEventLogMonitor(ErrorDescription, 1, "Error");
 				CheckResult.Add(Undefined);
@@ -7273,9 +7273,9 @@ Procedure AfterConnectingComponentSignSberbankED(AttachableModule, Parameters) E
 
 		ElectronicDocumentsServiceCallServer.AddSignature(ED, SignatureData);
 		
-		Comment = NStr("en='Running: %1."
-"Set the signature: %2, certificate: %3';ru='Выполнение операции: %1."
-"Установил подпись: %2, сертификат: %3'");
+		Comment = NStr("en='Running: %1.
+		|Set the signature: %2, certificate: %3';ru='Выполнение операции: %1.
+		|Установил подпись: %2, сертификат: %3'");
 		Comment = StringFunctionsClientServer.PlaceParametersIntoString(
 														Comment,
 														Operation,
@@ -7839,9 +7839,9 @@ Function SberbankCertificateIdentifier(AttachableModule, CertificateBinaryData)
 		AttachableModule.FindCertificate(SerialNumber, 0, 0, 0, 0, 0, 0, 0, 0, IDCertificate);
 		If IsBlankString(IDCertificate) Then
 			Operation = NStr("en='Search for signature certificate on bank key by serial number';ru='Поиск сертификата подписи на банковском ключе по серийному номеру'");
-			MessageText = NStr("en='Signature certificate is not found"
-"on bank key See details in the event log';ru='Не найден сертификат подписи"
-"на банковском ключе Подробности в журнале регистрации'");
+			MessageText = NStr("en='Signature certificate is not found
+		|on bank key See details in the event log';ru='Не найден сертификат подписи
+		|на банковском ключе Подробности в журнале регистрации'");
 			ErrorText = NStr("en='Certificate signature is not found on bank key';ru='Не найден сертификат подписи на банковском ключе'");
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 												Operation, ErrorText, MessageText, 1);
@@ -7849,9 +7849,9 @@ Function SberbankCertificateIdentifier(AttachableModule, CertificateBinaryData)
 		EndIf;
 	Except
 		ClearMessages();
-		MessageText = NStr("en='When searching for certificate on bank key,"
-"an error occurred See details in the event log';ru='При поиске сертификата на банковском"
-"ключе произошла ошибка Подробности в журнале регистрации'");
+		MessageText = NStr("en='When searching for certificate on bank key,
+		|an error occurred See details in the event log';ru='При поиске сертификата на банковском
+		|ключе произошла ошибка Подробности в журнале регистрации'");
 		ErrorText = ErrorDescription();
 		ClearAuthorizationDataSberbank();
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
@@ -7931,9 +7931,9 @@ Procedure CompleteSessionOnToken(SessionCompleted) Export
 	IsError = Not (Res = 0);
 	If IsError Then
 		ClearMessages();
-		MessageText = NStr("en='Failed to complete the session on token."
-"Token restart is required';ru='Не удалось завершить сессию на токене."
-"Необходим перезапуск токена'");
+		MessageText = NStr("en='Failed to complete the session on token.
+		|Token restart is required';ru='Не удалось завершить сессию на токене.
+		|Необходим перезапуск токена'");
 		ErrorText = NStr("en='AddIn.Bicrypt component at the completion of the session on the token has returned an error code';ru='Компонента AddIn.Bicrypt при завершении сессии на токене вернула код ошибки'") + Res;
 		Operation = NStr("en='Session completion on token';ru='Завершение сессии на токене.'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
@@ -8088,9 +8088,9 @@ Procedure FinishSettingVirtualChannelWithSberbank(EDAgreement, ND)
 	If Not ConnectionResult = 0 Then
 		ClearMessages();
 		Operation = NStr("en='Virtual channel installation';ru='Установка виртуального канала'");
-		MessageText = NStr("en='Failed to install connection to the server."
-"It is necessary to verify the TLS VPN Key work.';ru='Не удалось установить связь с сервером."
-"Необходимо проверить работу TLS VPN Key.'");
+		MessageText = NStr("en='Failed to install connection to the server.
+		|It is necessary to verify the TLS VPN Key work.';ru='Не удалось установить связь с сервером.
+		|Необходимо проверить работу TLS VPN Key.'");
 		ErrorText = NStr("en='AddIn.Bicrypt component has returned an error code at installation of the virtual channel';ru='Компонента AddIn.Bicrypt при установке виртуального канала вернула код ошибки'")
 							+ " " + ConnectionResult;
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
@@ -8114,9 +8114,9 @@ Function GetBusinessSystemNumber()
 	Res = AttachableModule.GetListBusinessSystemsVPNKeyTLS(BusinessSystem);
 	If Res <> 0 Then
 		ClearMessages();
-		MessageText = NStr("en='An error occurred when receiving a list of business systems."
-"Details in the event log.';ru='Ошибка при получении списка бизнес систем."
-"Подробности в журнале регистрации.'");
+		MessageText = NStr("en='An error occurred when receiving a list of business systems.
+		|Details in the event log.';ru='Ошибка при получении списка бизнес систем.
+		|Подробности в журнале регистрации.'");
 		ErrorText = NStr("en='When receving the list of business systems, component AddIn.Bicrypt returned %1 error code';ru='Компонента AddIn.Bicrypt при получении списка бизнес систем вернула код ошибки %1'");
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, Res);
 		Operation = NStr("en='Receiving the business system list.';ru='Получение списка бизнес систем.'");
@@ -8138,9 +8138,9 @@ Function GetBusinessSystemNumber()
 		EndDo;
 	Except
 		ClearMessages();
-		MessageText = NStr("en='An error occurred when reading a list of business systems."
-"Details in the event log.';ru='Ошибка чтения списка бизнес систем."
-"Подробности в журнале регистрации.'");
+		MessageText = NStr("en='An error occurred when reading a list of business systems.
+		|Details in the event log.';ru='Ошибка чтения списка бизнес систем.
+		|Подробности в журнале регистрации.'");
 		ErrorText = NStr("en='AddIn.Bicrypt component has returned an error code at business systems list receiving';ru='Компонента AddIn.Bicrypt при получении списка бизнес систем код ошибки'") + Res
 						+ Chars.LF + NStr("en='Return list content:';ru='Содержимое списка возврата:'") + " " + Chars.LF + BusinessSystem + "'";
 		Operation = NStr("en='Receiving the business system list.';ru='Получение списка бизнес систем.'");
@@ -8148,9 +8148,9 @@ Function GetBusinessSystemNumber()
 	EndTry;
 
 	If NumberBusinessSystem = -1 Then
-		MessageText = NStr("en='Business system is not found in bank key."
-"It is necessary to verify the TLS VPN Key work.';ru='Не найдена бизнес система на банковском ключе."
-"Необходимо проверить работу TLS VPN Key.'");
+		MessageText = NStr("en='Business system is not found in bank key.
+		|It is necessary to verify the TLS VPN Key work.';ru='Не найдена бизнес система на банковском ключе.
+		|Необходимо проверить работу TLS VPN Key.'");
 		Operation = NStr("en='Search of the business system on the electronic key.';ru='Поиск бизнес системы на электронном ключе.'");
 		ErrorText = NStr("en='Business system has not been found on the electronic key:';ru='На электронном ключе не найдена бизнес система:'") + " " + NameBusinessSystem 
 					+ Chars.LF
@@ -8289,9 +8289,9 @@ Procedure DetermineErrorAndInformUser(EDAgreement, TypeQuery, IDRequest, Company
 		EndIf;
 		CommonUseClientServer.MessageToUser(MessageText);
 	ElsIf Ticket = "00000000-0000-0000-0000-000000000007" Then
-		MessageText = NStr("en='Invalid company identifier."
-"Check EDF settings with the bank or contact your bank';ru='Неверный идентификатор организации."
-"Проверьте настройки ЭДО с банком или обратитесь в свой банк'");
+		MessageText = NStr("en='Invalid company identifier.
+		|Check EDF settings with the bank or contact your bank';ru='Неверный идентификатор организации.
+		|Проверьте настройки ЭДО с банком или обратитесь в свой банк'");
 		If TypeOf(TypeQuery) = Type("CatalogRef.EDAttachedFiles") Then
 			RejectedByBank = PredefinedValue("Enum.EDStatuses.RejectedByBank");
 			ChangingParameters = New Structure;
@@ -8301,9 +8301,9 @@ Procedure DetermineErrorAndInformUser(EDAgreement, TypeQuery, IDRequest, Company
 		EndIf;
 		CommonUseClientServer.MessageToUser(MessageText);
 	Else
-		MessageText = NStr("en='Bank server returned unknown error code."
-"Repeat session or contact your bank.';ru='Сервер банка вернул неизвестный код ошибки."
-"Повторите сеанс связи или обратитесь в свой банк.'");
+		MessageText = NStr("en='Bank server returned unknown error code.
+		|Repeat session or contact your bank.';ru='Сервер банка вернул неизвестный код ошибки.
+		|Повторите сеанс связи или обратитесь в свой банк.'");
 	EndIf;
 	
 	//TODO
@@ -8358,8 +8358,8 @@ Procedure NotifyUserAboutResponsibleChange(Responsible, CountTotal, NumberOfProc
 	
 	If NumberOfProcessed > 0 Then
 			
-		MessageText = NStr("en='For %NumberProcessed% from %TotalNumber% of"
-"selected electronic documents responsible ""%Responsible%"" is set';ru='Для %КоличествоОбработанных% из %КоличествоВсего% выделенных эл.документов установлен ответственный ""%Ответственный%""'");
+		MessageText = NStr("en='For %NumberProcessed% from %TotalNumber% of
+		|selected electronic documents responsible ""%Responsible%"" is set';ru='Для %КоличествоОбработанных% из %КоличествоВсего% выделенных эл.документов установлен ответственный ""%Ответственный%""'");
 		MessageText = StrReplace(MessageText, "%NumberSelected%", NumberOfProcessed);
 		MessageText = StrReplace(MessageText, "%CountTotal%",        CountTotal);
 		MessageText = StrReplace(MessageText, "%Responsible%",          Responsible);

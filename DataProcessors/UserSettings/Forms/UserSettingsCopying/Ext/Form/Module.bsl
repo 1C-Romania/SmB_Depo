@@ -183,9 +183,9 @@ Procedure UserRefOnChange(Item)
 		For Each UserTarget IN UsersReceiversSettings.UserArray Do
 		
 			If UserRef = UserTarget Then
-				ShowMessageBox(,NStr("en='You can not copy the user"
-"settings to yourself, select another user.';ru='Нельзя копировать настройки"
-"пользователя самому себе, выберите другого пользователя.'"));
+				ShowMessageBox(,NStr("en='You can not copy the user
+		|settings to yourself, select another user.';ru='Нельзя копировать настройки
+		|пользователя самому себе, выберите другого пользователя.'"));
 				UserRef = UserRefOld;
 				Return;
 			EndIf;

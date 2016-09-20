@@ -631,9 +631,9 @@ Procedure ProcessContractChange()
 			AND Object.DocumentCurrency <> StructureData.SettlementsCurrency
 			AND Object.Inventory.Count() > 0 Then
 			
-			WarningText = NStr("en='Settlement currency of the contract with counterparty changed! "
-"It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! "
-"Необходимо проверить валюту документа!'");
+			WarningText = NStr("en='Settlement currency of the contract with counterparty changed! 
+		|It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! 
+		|Необходимо проверить валюту документа!'");
 			
 			ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, True, WarningText);
 			

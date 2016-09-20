@@ -177,9 +177,9 @@ Procedure ChangeGroup(Command)
 		OpenForm("Catalog.AccessGroups.ObjectForm", FormParameters);
 	Else
 		ShowMessageBox(,
-			NStr("en='Insufficient rights for editing access group."
-"Responsible person for the access group participants and administrator can edit the access group.';ru='Недостаточно прав для редактирования группы доступа."
-"Редактировать группу доступа могут ответственный за участников группы доступа и администратор.'"));
+			NStr("en='Insufficient rights for editing access group.
+		|Responsible person for the access group participants and administrator can edit the access group.';ru='Недостаточно прав для редактирования группы доступа.
+		|Редактировать группу доступа могут ответственный за участников группы доступа и администратор.'"));
 		Return;
 	EndIf;
 	
@@ -381,29 +381,29 @@ Procedure ChangeContentOfGroup(Val AccessGroup, Val Add, ErrorDescription = "")
 	
 	If Not ChangingContentOfUsersOfGroupIsPermitted(AccessGroup) Then
 		If Add Then
-			ErrorDescription = NStr("en='It is not possible to"
-"include the user into"
-"the access group, as current user is"
-"not responsible for the access group members and the user is not an administrator with full rights.';ru='Невозможно включить"
-"пользователя"
-"в группу доступа, так как текущий"
-"пользователь не ответственный за участников группы доступа и не полноправный администратор.'");
+			ErrorDescription = NStr("en='It is not possible to
+		|include the user into
+		|the access group, as current user is
+		|not responsible for the access group members and the user is not an administrator with full rights.';ru='Невозможно включить
+		|пользователя
+		|в группу доступа, так как текущий
+		|пользователь не ответственный за участников группы доступа и не полноправный администратор.'");
 		Else
-			ErrorDescription = NStr("en='It is not possible to"
-"exclude the user from"
-"the access group, as current user is"
-"not responsible for the access group memebers and the user is not an administrator with full rights.';ru='Невозможно исключить"
-"пользователя"
-"из группы доступа, так как текущий"
-"пользователь не ответственный за участников группы доступа и не полноправный администратор.'");
+			ErrorDescription = NStr("en='It is not possible to
+		|exclude the user from
+		|the access group, as current user is
+		|not responsible for the access group memebers and the user is not an administrator with full rights.';ru='Невозможно исключить
+		|пользователя
+		|из группы доступа, так как текущий
+		|пользователь не ответственный за участников группы доступа и не полноправный администратор.'");
 		EndIf;
 		Return;
 	EndIf;
 	
 	If Not Add AND Not UserIncludedInAccessGroup(CurrentAccessGroup) Then
-		ErrorDescription =  NStr("en='It is not possible to"
-"exclude the user from the access group, as the user is included in it indirectly.';ru='Невозможно исключить"
-"пользователя из группы доступа, так как он включен в нее косвенно.'");
+		ErrorDescription =  NStr("en='It is not possible to
+		|exclude the user from the access group, as the user is included in it indirectly.';ru='Невозможно исключить
+		|пользователя из группы доступа, так как он включен в нее косвенно.'");
 		Return;
 	EndIf;
 	

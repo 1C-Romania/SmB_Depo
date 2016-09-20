@@ -147,8 +147,8 @@ Function GenerateEDTakskomPackageAttachedFile(ExchangeStructure) Export
 		EndTry;
 		DeleteFiles(ArchiveFileName);
 	Else
-		MessagePattern = NStr("en='During the generation %1 the"
-"following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='During the generation %1 the
+		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ExchangeStructure.EDKind,
 			ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);

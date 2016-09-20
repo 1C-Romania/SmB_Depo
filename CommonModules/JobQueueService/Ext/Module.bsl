@@ -611,15 +611,15 @@ Procedure HandleError(Val Task, Val ErrorInfoExecutionJobs = Undefined) Export
 		
 	Except
 		
-		CommentTemplate = NStr("en='An error occurred while"
-"executing errors handler"
-"Method alias: %1 Errors"
-"processor method:"
-"%2 As: %3';ru='Ошибка при выполнении"
-"обработчика ошибок"
-"Псевдоним метода: %1 Метод"
-"обработчика ошибок:"
-"%2 По причине: %3'");
+		CommentTemplate = NStr("en='An error occurred while
+		|executing errors handler
+		|Method alias: %1 Errors
+		|processor method:
+		|%2 As: %3';ru='Ошибка при выполнении
+		|обработчика ошибок
+		|Псевдоним метода: %1 Метод
+		|обработчика ошибок:
+		|%2 По причине: %3'");
 		TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
 			CommentTemplate,
 			HandlerErrorsParameters.JobMethodName,
@@ -687,11 +687,11 @@ Procedure RemoveErrorDataProcessorsJobs(Val CallParameters, Val ErrorInfo = Unde
 			
 		Else
 			
-			CommentTemplate = NStr("en='Jobs removal handler was executed."
-"Method alias:"
-"%1 Level of recursion: %2';ru='Был выполнен обработчик снятие заданий."
-"Псевдоним"
-"метода: %1 Уровень рекурсии: %2'");
+			CommentTemplate = NStr("en='Jobs removal handler was executed.
+		|Method alias:
+		|%1 Level of recursion: %2';ru='Был выполнен обработчик снятие заданий.
+		|Псевдоним
+		|метода: %1 Уровень рекурсии: %2'");
 			TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
 				CommentTemplate,
 				HandlerErrorsParameters.JobMethodName,

@@ -44,8 +44,8 @@ Procedure ResetCommand(Command)
 		NotificationText     = String(OptionRef);
 		ShowUserNotification(NotificationTitle, NotificationRef, NotificationText);
 	Else
-		NotificationText = NStr("en='Settings for"
-"report options placement are reset (%1 pcs.).';ru='Сброшены настройки размещения вариантов отчетов (%1 шт.'");
+		NotificationText = NStr("en='Settings for
+		|report options placement are reset (%1 pcs.).';ru='Сброшены настройки размещения вариантов отчетов (%1 шт.'");
 		NotificationText = StrReplace(NotificationText, "%1", Format(VariantCount, "NZ=0; NG=0"));
 		ShowUserNotification(, , NotificationText);
 	EndIf;
@@ -103,13 +103,13 @@ Procedure Filter()
 	QuantityAfterFiltering = CustomizableOptions.Count();
 	If QuantityBeforeFiltration <> QuantityAfterFiltering Then
 		If QuantityAfterFiltering = 0 Then
-			ErrorText = NStr("en='Not necessary to reset settings of selected report options for one or"
-"multiple reasons: - Custom report options are selected."
-"- Reports options for deletion are selected."
-"- Additional or external report variants have been selected.';ru='Сброс настроек размещения выбранных вариантов отчетов не требуется по одной"
-"или нескольким причинам: - Выбраны пользовательские варианты отчетов."
-"- Выбраны помеченные на удаление варианты отчетов."
-"- Выбраны варианты дополнительных или внешних отчетов.'");
+			ErrorText = NStr("en='Not necessary to reset settings of selected report options for one or
+		|multiple reasons: - Custom report options are selected.
+		|- Reports options for deletion are selected.
+		|- Additional or external report variants have been selected.';ru='Сброс настроек размещения выбранных вариантов отчетов не требуется по одной
+		|или нескольким причинам: - Выбраны пользовательские варианты отчетов.
+		|- Выбраны помеченные на удаление варианты отчетов.
+		|- Выбраны варианты дополнительных или внешних отчетов.'");
 			Return;
 		EndIf;
 	EndIf;

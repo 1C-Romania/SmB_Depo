@@ -29,9 +29,9 @@ Procedure CheckInputBasedOnPossibility(FillingData, AttributeValues)
 	EndIf;
 	
 	If Cancel Then
-		ErrorMessage = NStr("en='The ""Expense from order warehouse"" operation can not be entered."
-"Document ""%DocumentRef"" has no order warehouse!';ru='Невозможен ввод операции ""Поступления на ордерный склад""."
-"Документ ""%ДокументСсылка"" не имеет ордерного склада!'");
+		ErrorMessage = NStr("en='The ""Expense from order warehouse"" operation can not be entered.
+		|Document ""%DocumentRef"" has no order warehouse!';ru='Невозможен ввод операции ""Поступления на ордерный склад"".
+		|Документ ""%ДокументСсылка"" не имеет ордерного склада!'");
 		ErrorMessage = StrReplace(ErrorMessage, "%DocumentRef", FillingData.Ref);
 		Raise ErrorMessage;
 	EndIf;

@@ -56,8 +56,8 @@ Procedure OpenCertificateContinuation(Context)
 		
 	ElsIf TypeOf(Context.CertificateData) <> Type("String") Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred calling the OpenCertificate procedure"
-"of the DigitalSignatureClient general module: Incorrect value of the  %1 CertificateData parameter.';ru='Ошибка при вызове процедуры ОткрытьСертификат общего модуля ЭлектроннаяПодписьКлиент: Некорректное значение параметра ДанныеСертификата ""%1"".'"), String(Context.CertificateData));
+			NStr("en='An error occurred calling the OpenCertificate procedure
+		|of the DigitalSignatureClient general module: Incorrect value of the  %1 CertificateData parameter.';ru='Ошибка при вызове процедуры ОткрытьСертификат общего модуля ЭлектроннаяПодписьКлиент: Некорректное значение параметра ДанныеСертификата ""%1"".'"), String(Context.CertificateData));
 	
 	ElsIf IsTempStorageURL(Context.CertificateData) Then
 		Context.CertificateAddress = Context.CertificateData;
@@ -506,9 +506,9 @@ Procedure GetCertificateByThumbprintEnd(Certificate, ErrorPresentation, Context)
 	
 	If ValueIsFilled(ErrorPresentation) Then
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Certificate is not found"
-"on the computer as: %1';ru='Сертификат"
-"не найден на компьютере по причине: %1'"),
+			NStr("en='Certificate is not found
+		|on the computer as: %1';ru='Сертификат
+		|не найден на компьютере по причине: %1'"),
 			ErrorPresentation);
 	Else
 		ErrorText = NStr("en='Certificate is not found on the computer.';ru='Сертификат не найден на компьютере.'");
@@ -941,9 +941,9 @@ Procedure CreateCryptographyManagerAfterWorkWithCryptographyExpansionConnection(
 		
 	ElsIf Operation <> "" Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Error in the CryptographyManager function."
-"Wrong of the %1 Operation parameter value.';ru='Ошибка в функции МенеджерКриптографии."
-"Неверное значение параметра Операция ""%1"".'"), Operation);
+			NStr("en='Error in the CryptographyManager function.
+		|Wrong of the %1 Operation parameter value.';ru='Ошибка в функции МенеджерКриптографии.
+		|Неверное значение параметра Операция ""%1"".'"), Operation);
 	Else
 		ErrorTitle = NStr("en='Unable to execute operation as:';ru='Не удалось выполнить операцию по причине:'");
 	EndIf;
@@ -955,8 +955,8 @@ Procedure CreateCryptographyManagerAfterWorkWithCryptographyExpansionConnection(
 	
 	If Not Attached Then
 		ErrorText =
-			NStr("en='You should set an extension"
-"to work with digital signature and encryption to the Internet Browser.';ru='В обозреватель интернет требуется установить расширение для работы с электронной подписью и шифрованием.'");
+			NStr("en='You should set an extension
+		|to work with digital signature and encryption to the Internet Browser.';ru='В обозреватель интернет требуется установить расширение для работы с электронной подписью и шифрованием.'");
 		
 		ErrorProperties.Insert("Description", ErrorText);
 		ErrorProperties.Insert("Common",  True);
@@ -1499,16 +1499,16 @@ Procedure ShowRequestToApplicationError(FormTitle, ErrorTitle, ErrorOnClient, Er
 	
 	If TypeOf(ErrorOnClient) <> Type("Structure") Then
 		Raise
-			NStr("en='For the"
-"ShowRequestToApplicationError procedure an incorrect ErrorOnClient parameter type is specified.';ru='Для"
-"процедуры ПоказатьОшибкуОбращенияКПрограмме указан некорректный тип параметра ОшибкаНаКлиенте.'");
+			NStr("en='For the
+		|ShowRequestToApplicationError procedure an incorrect ErrorOnClient parameter type is specified.';ru='Для
+		|процедуры ПоказатьОшибкуОбращенияКПрограмме указан некорректный тип параметра ОшибкаНаКлиенте.'");
 	EndIf;
 	
 	If TypeOf(ErrorOnServer) <> Type("Structure") Then
 		Raise
-			NStr("en='For the"
-"ShowRequestToApplicationError procedure an incorrect ErrorOnServer parameter type is specified.';ru='Для"
-"процедуры ПоказатьОшибкуОбращенияКПрограмме указан некорректный тип параметра ОшибкаНаСервере.'");
+			NStr("en='For the
+		|ShowRequestToApplicationError procedure an incorrect ErrorOnServer parameter type is specified.';ru='Для
+		|процедуры ПоказатьОшибкуОбращенияКПрограмме указан некорректный тип параметра ОшибкаНаСервере.'");
 	EndIf;
 	
 	FormParameters = New Structure;
@@ -2200,9 +2200,9 @@ Procedure SetExtensionAfterWorkWithCryptographyExtansionConnectionCheck(Attached
 	
 	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(
 		New NotifyDescription("SetExtensionAfterFileOperationsExtensionConnection", ThisObject, Context),
-		NStr("en='Before you set decryption to work with a digital"
-"signature and encrytion you should set an extension to work with files.';ru='Перед установкой расширения для работы"
-"с электронной подписью и шифрованием необходимо установить расширение для работы с файлами.'"),
+		NStr("en='Before you set decryption to work with a digital
+		|signature and encrytion you should set an extension to work with files.';ru='Перед установкой расширения для работы
+		|с электронной подписью и шифрованием необходимо установить расширение для работы с файлами.'"),
 		False);
 	
 EndProcedure

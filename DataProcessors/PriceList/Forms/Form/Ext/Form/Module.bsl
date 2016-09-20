@@ -626,9 +626,9 @@ Procedure Add(Command)
 		AND DetailFromArea.Dynamic Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Impossible to add the price."
-"Perhaps, dynamic price type is selected.';ru='Невозможно добавить цену."
-"Возможно выбран динамический тип цен .'")
+			NStr("en='Impossible to add the price.
+		|Perhaps, dynamic price type is selected.';ru='Невозможно добавить цену.
+		|Возможно выбран динамический тип цен .'")
 					);
 		Return;
 		
@@ -735,9 +735,9 @@ Procedure Copy(Command)
 		AND DetailFromArea.Dynamic) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Impossible to copy the price."
-"Perhaps, dynamic price type or the blank cell has been selected.';ru='Невозможно скопировать цену."
-"Возможно выбран динамический тип цен или пустая ячейка.'")
+			NStr("en='Impossible to copy the price.
+		|Perhaps, dynamic price type or the blank cell has been selected.';ru='Невозможно скопировать цену.
+		|Возможно выбран динамический тип цен или пустая ячейка.'")
 					);
 		Return;
 		
@@ -772,9 +772,9 @@ Procedure Copy(Command)
 		Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Dynamic price or empty cell is specified."
-"Copying is not possible.';ru='Указана динамическая цена либо пустая ячейка."
-"Копирование не возможно.'")
+			NStr("en='Dynamic price or empty cell is specified.
+		|Copying is not possible.';ru='Указана динамическая цена либо пустая ячейка.
+		|Копирование не возможно.'")
 				);
 				
 		Return;
@@ -807,9 +807,9 @@ Procedure Change(Command)
 		AND DetailFromArea.Dynamic) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Impossible to change the price."
-"Perhaps, dynamic price type or the blank cell has been selected.';ru='Невозможно изменить цену."
-"Возможно выбран динамический тип цен или пустая ячейка.'")
+			NStr("en='Impossible to change the price.
+		|Perhaps, dynamic price type or the blank cell has been selected.';ru='Невозможно изменить цену.
+		|Возможно выбран динамический тип цен или пустая ячейка.'")
 					);
 		Return;
 		

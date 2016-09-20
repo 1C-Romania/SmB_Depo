@@ -296,9 +296,9 @@ Procedure PrepareDataAboutCompanies(COPContext, HandlerContext)
 		HandlerContext.ActionsOnErrorForServer.Add("BreakBusinessProcess");
 		
 		HandlerContext.UserErrorDescription =
-			NStr("en='Error receiving company data."
-"See more in the registration log';ru='Ошибка при получении данных организации."
-"Подробнее см. в журнале регистрации'");
+			NStr("en='Error receiving company data.
+		|See more in the registration log';ru='Ошибка при получении данных организации.
+		|Подробнее см. в журнале регистрации'");
 		HandlerContext.ActionOnErrorForClient = "ShowMessage";
 		Return;
 		

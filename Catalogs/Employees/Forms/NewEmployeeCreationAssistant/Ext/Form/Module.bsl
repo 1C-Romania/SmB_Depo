@@ -813,9 +813,9 @@ Procedure RunControlStaffSchedule(DataStructure, Errors, Cancel)
 		
 		If RatesFree < DataStructure.PlannedTakeRates Then
 			
-			MessageText = NStr("en=""There's not enough vacant positions for job %3 according to structural unit %2 in the company %1 staff list!"
-"Vacant positions %4, required positions %5."";ru='В штатном расписании организации %1 по структурной единице %2 нет достаточного количества свободных ставок для должности %3!"
-"Свободно ставок %4, а требуется ставок %5.'");
+			MessageText = NStr("en=""There's not enough vacant positions for job %3 according to structural unit %2 in the company %1 staff list!
+		|Vacant positions %4, required positions %5."";ru='В штатном расписании организации %1 по структурной единице %2 нет достаточного количества свободных ставок для должности %3!
+		|Свободно ставок %4, а требуется ставок %5.'");
 			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, DataStructure.Company, DataStructure.StructuralUnit, DataStructure.Position, RatesFree, DataStructure.PlannedTakeRates);
 			
 		EndIf;

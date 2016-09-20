@@ -50,9 +50,9 @@ Procedure Set(Command)
 	
 	If Cancel Then
 		
-		NString = NStr("en='Errors occurred when setting the leading end point."
-"Do you want to open the event log?';ru='При установке ведущей конечной точки возникли ошибки."
-"Перейти в журнал регистрации?'");
+		NString = NStr("en='Errors occurred when setting the leading end point.
+		|Do you want to open the event log?';ru='При установке ведущей конечной точки возникли ошибки.
+		|Перейти в журнал регистрации?'");
 		NotifyDescription = New NotifyDescription("OpenEventLogMonitor", ThisObject);
 		ShowQueryBox(NOTifyDescription, NString, QuestionDialogMode.YesNo, ,DialogReturnCode.No);
 		Return;

@@ -556,21 +556,21 @@ Procedure ConfigureReportsVariants(Settings) Export
 	ReportsVariants.SetOutputModeInReportPanels(Settings, Report, True);	
 	Report.Definition = NStr("en='The report presents information about standards and technologies of works and finished products';ru='Отчет предоставляет информацию о нормативном составе и технологии работ, продукции'");
 	Report.SearchSettings.FieldNames =
-		NStr("en='Products"
-"and services"
-"Technological operation Accounting price';ru='Номенклатура"
-"Технологическая"
-"операция Учетная цена'");
+		NStr("en='Products
+		|and services
+		|Technological operation Accounting price';ru='Номенклатура
+		|Технологическая
+		|операция Учетная цена'");
 	Report.SearchSettings.ParametersAndFiltersNames =
-		NStr("en='Date"
-"of calculation"
-"Prices"
-"kind"
-"Products and services Characteristic Specification';ru='Дата"
-"расчета"
-"Вид"
-"цен"
-"Номенклатура Характеристика Спецификация'");
+		NStr("en='Date
+		|of calculation
+		|Prices
+		|kind
+		|Products and services Characteristic Specification';ru='Дата
+		|расчета
+		|Вид
+		|цен
+		|Номенклатура Характеристика Спецификация'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.InventoryTurnover, "Default");
 	Variant.Definition = NStr("en='The report presents analysis of turnover and Average inventory life';ru='Отчет предназначен для анализа оборачиваемости и среднего срока хранения запасов'");
@@ -654,39 +654,39 @@ Procedure ConfigureReportsVariants(Settings) Export
 	ReportsVariants.SetOutputModeInReportPanels(Settings, Report, True);	
 	Report.Definition = NStr("en='Payroll sheet of an arbitrary form. Is intended for internal enterprise reporting';ru='Расчетная ведомость произвольной формы. Предназначена для внутренней отчетности предприятия'");
 	Report.SearchSettings.FieldNames =
-		NStr("en='Employee"
-"code"
-"Employee"
-"Position"
-"Rate"
-"Division Company';ru='Табельный номер Сотрудник Должность Тарифная ставка Подразделение Организация'");
+		NStr("en='Employee
+		|code
+		|Employee
+		|Position
+		|Rate
+		|Division Company';ru='Табельный номер Сотрудник Должность Тарифная ставка Подразделение Организация'");
 	Report.SearchSettings.ParametersAndFiltersNames =
-		NStr("en='Registration"
-"period"
-"Division"
-"Currency Company';ru='Период"
-"регистрации"
-"Подразделение"
-"Валюта Организация'");
+		NStr("en='Registration
+		|period
+		|Division
+		|Currency Company';ru='Период
+		|регистрации
+		|Подразделение
+		|Валюта Организация'");
 	
 	Report = ReportsVariants.ReportDescription(Settings, Metadata.Reports.PayrollSheets);
 	ReportsVariants.SetOutputModeInReportPanels(Settings, Report, True);	
 	Report.Definition = NStr("en='The report generates statemets of earnings, selected and grouped by companies and divisions';ru='Отчет предоставляет возможность сформировать расчетные листки, отобранные и сгруппированные по организациям и подразделениям'");
 	Report.SearchSettings.FieldNames =
-		NStr("en='Employee"
-"code"
-"Employee"
-"Position"
-"Rate"
-"Division Company';ru='Табельный номер Сотрудник Должность Тарифная ставка Подразделение Организация'");
+		NStr("en='Employee
+		|code
+		|Employee
+		|Position
+		|Rate
+		|Division Company';ru='Табельный номер Сотрудник Должность Тарифная ставка Подразделение Организация'");
 	Report.SearchSettings.ParametersAndFiltersNames =
-		NStr("en='Registration"
-"period"
-"Division"
-"Currency Employee';ru='Период"
-"регистрации"
-"Подразделение"
-"Валюта Сотрудник'");
+		NStr("en='Registration
+		|period
+		|Division
+		|Currency Employee';ru='Период
+		|регистрации
+		|Подразделение
+		|Валюта Сотрудник'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.TaxesSettlements, "Statement");
 	Variant.Definition = NStr("en='The report presents information about settlements in respect of taxes and levies, by type of tax';ru='Отчет позволяет получить информацию о расчетах с бюджетом по налогам и сборам, в разрезе видов налогов'");

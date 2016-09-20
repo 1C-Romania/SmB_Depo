@@ -19,11 +19,11 @@ Procedure EditContentOfProperties(Form, Ref = Undefined) Export
 	 OR Not ValueIsFilled(Sets[0].Value) Then
 		
 		ShowMessageBox(,
-			NStr("en='Failed to receive the additional object attributes."
-""
-"Perhaps, the necessary attributes have not been filled for the document.';ru='Не удалось получить наборы дополнительных реквизитов объекта."
-""
-"Возможно у объекта не заполнены необходимые реквизиты.'"));
+			NStr("en='Failed to receive the additional object attributes.
+		|
+		|Perhaps, the necessary attributes have not been filled for the document.';ru='Не удалось получить наборы дополнительных реквизитов объекта.
+		|
+		|Возможно у объекта не заполнены необходимые реквизиты.'"));
 	
 	Else
 		FormParameters = New Structure;

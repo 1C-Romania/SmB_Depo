@@ -120,9 +120,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		AND Not Object.Owner.UseCharacteristics Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='The products and services are not accounted by characteristics!"
-"Select the ""Use characteristics"" check box in products and services card';ru='Для номенклатуры не ведется учет по характеристикам!"
-"Установите флаг ""Использовать характеристики"" в карточке номенклатуры'");
+		Message.Text = NStr("en='The products and services are not accounted by characteristics!
+		|Select the ""Use characteristics"" check box in products and services card';ru='Для номенклатуры не ведется учет по характеристикам!
+		|Установите флаг ""Использовать характеристики"" в карточке номенклатуры'");
 		Message.Message();
 		Cancel = True;
 		

@@ -67,11 +67,11 @@ Procedure PerformFilesTransferToVolumes(Command)
 		Return;
 	EndIf;
 	
-	QuestionText = NStr("en='Do you want to perform the files transfer in"
-""
-"the infobase files to the storage volumes? This operation can take a long time.';ru='Выполнить перенос файлов в информационной базе в тома хранения файлов?"
-""
-"Эта операция может занять продолжительное время'");
+	QuestionText = NStr("en='Do you want to perform the files transfer in
+		|
+		|the infobase files to the storage volumes? This operation can take a long time.';ru='Выполнить перенос файлов в информационной базе в тома хранения файлов?
+		|
+		|Эта операция может занять продолжительное время'");
 	Handler = New NotifyDescription("PerformFilesTransferToVolumesEnd", ThisObject);
 	ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 EndProcedure
@@ -142,9 +142,9 @@ Procedure PerformFilesTransferToVolumesEnd(Response, ExecuteParameters) Export
 	
 	If NumberOf <> 0 Then
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Files transfer to the volumes is completed."
-"Transferred files: %1';ru='Завершен перенос файлов в тома."
-"Перенесено файлов: %1'"),
+			NStr("en='Files transfer to the volumes is completed.
+		|Transferred files: %1';ru='Завершен перенос файлов в тома.
+		|Перенесено файлов: %1'"),
 			NumberOf);
 		ShowMessageBox(, WarningText);
 	EndIf;
@@ -156,9 +156,9 @@ Procedure PerformFilesTransferToVolumesEnd(Response, ExecuteParameters) Export
 			FileArrayWithErrors.Count());
 			
 		If ProcessingAborted Then
-			Explanation = NStr("en='Failed to transfer neither one file out of the package."
-"Transfer aborted.';ru='Не удалось перенести ни одного файла из пакета."
-"Перенос прерван.'");
+			Explanation = NStr("en='Failed to transfer neither one file out of the package.
+		|Transfer aborted.';ru='Не удалось перенести ни одного файла из пакета.
+		|Перенос прерван.'");
 		EndIf;
 		
 		FormParameters = New Structure;
@@ -308,13 +308,13 @@ Function MoveVersion(VersionStructure, MaximumFileSize, FileArrayWithErrors)
 		WriteLogEvent(NStr("en='Files. Error of the file transfer to the volume';ru='Файлы.Ошибка переноса файла в том'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,, FileRef,
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='When transferring to the file volume"
-"""%1"""
-"an error occurred:"
-"""Size exceeds the maximum"".';ru='При переносе в том файла"
-"""%1"""
-"возникла ошибка:"
-"""Размер превышает максимальный"".'"),
+				NStr("en='When transferring to the file volume
+		|""%1""
+		|an error occurred:
+		|""Size exceeds the maximum"".';ru='При переносе в том файла
+		|""%1""
+		|возникла ошибка:
+		|""Размер превышает максимальный"".'"),
 				ANameForLog));
 		
 		Return False; // do not inform anything 
@@ -324,9 +324,9 @@ Function MoveVersion(VersionStructure, MaximumFileSize, FileArrayWithErrors)
 	WriteLogEvent(NStr("en='Files. File transfer to the volume has started';ru='Файлы.Начат перенос файла в том'", CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,, FileRef,
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Start transfer to the file volume"
-"""%1"".';ru='Начат перенос в"
-"том файла ""%1"".'"),
+			NStr("en='Start transfer to the file volume
+		|""%1"".';ru='Начат перенос в
+		|том файла ""%1"".'"),
 			ANameForLog));
 	
 	Try
@@ -380,9 +380,9 @@ Function MoveVersion(VersionStructure, MaximumFileSize, FileArrayWithErrors)
 			NStr("en='Files. Files transfer to the volume is completed';ru='Файлы.Завершен перенос файла в том'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,, FileRef,
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Transfer to the file volume is completed"
-"""%1"".';ru='Завершен перенос в том файла"
-"""%1"".'"), ANameForLog));
+				NStr("en='Transfer to the file volume is completed
+		|""%1"".';ru='Завершен перенос в том файла
+		|""%1"".'"), ANameForLog));
 		
 		CommitTransaction();
 	Except
@@ -399,13 +399,13 @@ Function MoveVersion(VersionStructure, MaximumFileSize, FileArrayWithErrors)
 		WriteLogEvent(NStr("en='Files. Error of the file transfer to the volume';ru='Файлы.Ошибка переноса файла в том'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,, FileRef,
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='When transferring to the file volume"
-"""%1"""
-"an error occurred:"
-"""%2"".';ru='При переносе в том файла"
-"""%1"""
-"возникла"
-"ошибка: ""%2"".'"),
+				NStr("en='When transferring to the file volume
+		|""%1""
+		|an error occurred:
+		|""%2"".';ru='При переносе в том файла
+		|""%1""
+		|возникла
+		|ошибка: ""%2"".'"),
 				ANameForLog,
 				DetailErrorDescription(ErrorInfo)));
 				

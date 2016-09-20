@@ -416,13 +416,13 @@ Procedure ProcessSystemMessageQueue(Filter = Undefined) Export
 		
 		WriteLogEvent(ThisSubsystemEventLogMonitorMessageText(),
 				EventLogLevel.Information,,,
-				NStr("en='System messages queue data processor was started from"
-"the session with established values of separators. Data processing will be made"
-"only for messages saved in a divided directory, in"
-"items which separator values match separator values of the session.';ru='Обработка очереди сообщений системы запущена"
-"из сеанса с установленными значениями разделителей. Обработка будет производиться"
-"только для сообщений, сохраненных в разделенном справочнике,"
-"в элементах со значениями разделителей, совпадающих со значениями разделителей сеанса.'")
+				NStr("en='System messages queue data processor was started from
+		|the session with established values of separators. Data processing will be made
+		|only for messages saved in a divided directory, in
+		|items which separator values match separator values of the session.';ru='Обработка очереди сообщений системы запущена
+		|из сеанса с установленными значениями разделителей. Обработка будет производиться
+		|только для сообщений, сохраненных в разделенном справочнике,
+		|в элементах со значениями разделителей, совпадающих со значениями разделителей сеанса.'")
 		);
 		
 		ProcessMessageInUndividedData = False;
@@ -696,9 +696,9 @@ Procedure SetLeadingEndPointAtRecipient(ThisEndPointCode, LeadingEndPointCode) E
 	
 	If ExchangePlans.MessageExchange.FindByCode(ThisEndPointCode) <> ThisNode() Then
 		ErrorMessageString = NStr("en='Incorrect parameters of connection to the end point were set. Connection parameters indicate another end point.';ru='Заданы неверные параметры подключения к конечной точке. Параметры подключения указывают на другую конечную точку.'");
-		MessageStringForErrorLogRegistration = NStr("en='Incorrect parameters of connection to the end point were set."
-"Connection parameters indicate another end point.';ru='Заданы неверные параметры подключения к конечной точке."
-"Параметры подключения указывают на другую конечную точку.'", CommonUseClientServer.MainLanguageCode());
+		MessageStringForErrorLogRegistration = NStr("en='Incorrect parameters of connection to the end point were set.
+		|Connection parameters indicate another end point.';ru='Заданы неверные параметры подключения к конечной точке.
+		|Параметры подключения указывают на другую конечную точку.'", CommonUseClientServer.MainLanguageCode());
 		WriteLogEvent(LeadingEndPointSettingEventLogMonitorMessageText(),
 				EventLogLevel.Error,,, MessageStringForErrorLogRegistration);
 		Raise ErrorMessageString;

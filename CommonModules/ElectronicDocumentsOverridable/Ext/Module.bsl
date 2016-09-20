@@ -3556,13 +3556,13 @@ EndProcedure
 Procedure MessageTextAboutSystemSettingRequirement(OperationKind, MessageText) Export
 	
 	If Upper(OperationKind) = "WorkWithED" Then
-		MessageText = NStr("en='To work with electronic documents,"
-"it is required to enable elecronic documents exchange in the system settings.';ru='Для работы с электронными"
-"документами необходимо в настройках системы включить использование обмена электронными документами.'");
+		MessageText = NStr("en='To work with electronic documents,
+		|it is required to enable elecronic documents exchange in the system settings.';ru='Для работы с электронными
+		|документами необходимо в настройках системы включить использование обмена электронными документами.'");
 	ElsIf Upper(OperationKind) = "SigningOfED" Then
-		MessageText = NStr("en='To sign ED, it"
-"is required to enable option of using electronic digital signatures in the system settings.';ru='Для возможности"
-"подписания ЭД необходимо в настройках системы включить опцию использования электронных цифровых подписей.'");
+		MessageText = NStr("en='To sign ED, it
+		|is required to enable option of using electronic digital signatures in the system settings.';ru='Для возможности
+		|подписания ЭД необходимо в настройках системы включить опцию использования электронных цифровых подписей.'");
 	ElsIf Upper(OperationKind) = "SettingCryptography" Then
 		MessageText = NStr("en='To be able to set cryptography, you should enable the option of electronic digital signatures usage in the system settings.';ru='Для возможности настройки криптографии необходимо в настройках системы включить опцию использования электронных цифровых подписей.'");
 	ElsIf Upper(OperationKind) = "BANKOPERATIONS" Then

@@ -384,11 +384,11 @@ Procedure DecryptData(Notification)
 	
 	If Not ValueIsFilled(CertificateApplication) Then
 		Context.ErrorOnClient.Insert("ErrorDescription",
-			NStr("en='Selected certificate has no indicated application for a closed key."
-"Select the certificate again from the"
-"full list or open the certificate and specify the application manually.';ru='У выбранного сертификата не указана программа для закрытого ключа."
-"Выберите сертификат повторно"
-"из полного списка или откройте сертификат и укажите программу вручную.'"));
+			NStr("en='Selected certificate has no indicated application for a closed key.
+		|Select the certificate again from the
+		|full list or open the certificate and specify the application manually.';ru='У выбранного сертификата не указана программа для закрытого ключа.
+		|Выберите сертификат повторно
+		|из полного списка или откройте сертификат и укажите программу вручную.'"));
 		ShowError(Context.ErrorOnClient, Context.ErrorOnServer);
 		ExecuteNotifyProcessing(Context.Notification, False);
 		Return;

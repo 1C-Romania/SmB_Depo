@@ -434,9 +434,9 @@ Procedure ConfigureRepresentationSets()
 			NStr("en='Information uses the list of the sample information values.';ru='Сведение использует список значений сведения-образца.'");
 		
 		Items.PropertiesCommon.Title = NStr("en='Common';ru='Общий'");
-		Items.PropertiesCommon.ToolTip = NStr("en='Common additional information used"
-"in several sets of additional information.';ru='Общее дополнительное сведение,"
-"которое используется в нескольких наборах дополнительных сведений.'");
+		Items.PropertiesCommon.ToolTip = NStr("en='Common additional information used
+		|in several sets of additional information.';ru='Общее дополнительное сведение,
+		|которое используется в нескольких наборах дополнительных сведений.'");
 	Else
 		Title = NStr("en='Additional attributes';ru='Дополнительные реквизиты объекта'");
 		CommandCreate.Title          = NStr("en = 'New'");
@@ -469,9 +469,9 @@ Procedure ConfigureRepresentationSets()
 			NStr("en='Attribute uses the list of the sample atrribute values.';ru='Реквизит использует список значений реквизита-образца.'");
 		
 		Items.PropertiesCommon.Title = NStr("en='Common';ru='Общий'");
-		Items.PropertiesCommon.ToolTip = NStr("en='Common additional attribute used"
-"in several sets of additional attributes.';ru='Общий дополнительный реквизит,"
-"который используется в нескольких наборах дополнительных реквизитов.'");
+		Items.PropertiesCommon.ToolTip = NStr("en='Common additional attribute used
+		|in several sets of additional attributes.';ru='Общий дополнительный реквизит,
+		|который используется в нескольких наборах дополнительных реквизитов.'");
 	EndIf;
 	
 	Query = New Query;
@@ -855,26 +855,26 @@ Procedure ExecuteCommandAtServer(Command, Parameter = Undefined)
 				OnChangeOfCurrentSetAtServer();
 				If ThisIsSetOfAdditionalInformation Then
 					Raise
-						NStr("en='Action is not performed since the"
-"content of additional information was changed by another user."
-"New content of additional information is read."
-""
-"Retry the action if necessary';ru='Действие не выполнено,"
-"так как состав дополнительных сведений был изменен другим пользователем."
-"Новый состав дополнительных сведений прочитан."
-""
-"Повторите действие, если требуется.'");
+						NStr("en='Action is not performed since the
+		|content of additional information was changed by another user.
+		|New content of additional information is read.
+		|
+		|Retry the action if necessary';ru='Действие не выполнено,
+		|так как состав дополнительных сведений был изменен другим пользователем.
+		|Новый состав дополнительных сведений прочитан.
+		|
+		|Повторите действие, если требуется.'");
 				Else
 					Raise
-						NStr("en='Action is not performed since the"
-"content of additional attributes was changed by another user."
-"New content of additional attributes is read."
-""
-"Retry the action if necessary';ru='Действие не выполнено,"
-"так как состав дополнительных реквизитов был изменен другим пользователем."
-"Новый состав дополнительных реквизитов прочитан."
-""
-"Повторите действие, если требуется.'");
+						NStr("en='Action is not performed since the
+		|content of additional attributes was changed by another user.
+		|New content of additional attributes is read.
+		|
+		|Retry the action if necessary';ru='Действие не выполнено,
+		|так как состав дополнительных реквизитов был изменен другим пользователем.
+		|Новый состав дополнительных реквизитов прочитан.
+		|
+		|Повторите действие, если требуется.'");
 				EndIf;
 			EndIf;
 			

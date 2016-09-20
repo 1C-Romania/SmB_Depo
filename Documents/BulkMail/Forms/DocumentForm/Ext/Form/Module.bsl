@@ -275,15 +275,15 @@ Procedure SendMailing(Command)
 			If SMSSettingsComplete Then
 				SuccessfullySent = SendSMSMailing();
 			ElsIf AvailableRightSettingsSMS Then
-				MessageText = NStr("en='To send SMS, it is necessary to configure sending parameters."
-"You can adjust the settings in the Settings - Organizer - SMS sending section.';ru='Для отправки SMS требуется настройка параметров отправки."
-"Настройка осуществляется в разделе Настройки - Органайзер - Настройка отправки SMS.'");
+				MessageText = NStr("en='To send SMS, it is necessary to configure sending parameters.
+		|You can adjust the settings in the Settings - Organizer - SMS sending section.';ru='Для отправки SMS требуется настройка параметров отправки.
+		|Настройка осуществляется в разделе Настройки - Органайзер - Настройка отправки SMS.'");
 				ShowMessageBox(, MessageText);
 				Return;
 			Else
-				MessageText = NStr("en='To send SMS, it is necessary to configure sending parameters."
-"Address to the administrator to perform settings.';ru='Для отправки SMS требуется настройка параметров отправки."
-"Для выполнения настроек обратитесь к администратору.'");
+				MessageText = NStr("en='To send SMS, it is necessary to configure sending parameters.
+		|Address to the administrator to perform settings.';ru='Для отправки SMS требуется настройка параметров отправки.
+		|Для выполнения настроек обратитесь к администратору.'");
 				ShowMessageBox(, MessageText);
 				Return;
 			EndIf;

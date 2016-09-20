@@ -417,15 +417,15 @@ Procedure SendNotificationAboutUpdate(Val UserName, Val AddressOfDestination, Va
 	
 	Details = ?(SuccessfulRefresh, NStr("en='Configuration update completed successfully';ru='Обновление конфигурации завершено успешно.'"), 
 		NStr("en='Errors occurred while updating configuration. Details are written to the events log monitor.';ru='При обновлении конфигурации произошли ошибки. Подробности записаны в журнал регистрации.'"));
-	Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1"
-""
-"Configuration:"
-"%2 Version:"
-"%3 Connection string: %4';ru='%1"
-""
-"Конфигурация:"
-"%2"
-"Версия: %3 Строка соединения: %4'"),
+	Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1
+		|
+		|Configuration:
+		|%2 Version:
+		|%3 Connection string: %4';ru='%1
+		|
+		|Конфигурация:
+		|%2
+		|Версия: %3 Строка соединения: %4'"),
 	Details, Metadata.BriefInformation, Metadata.Version, InfobaseConnectionString());
 	
 	EmailParameters = New Structure;

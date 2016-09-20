@@ -63,11 +63,11 @@ Procedure OpenScheduleEnd(NewSchedule, CurrentData) Export
 	LockFormDataForEdit();
 	Modified = True;
 	
-	ShowUserNotification(NStr("en='Replanning';ru='Перепланирование'"), , NStr("en='New schedule will be"
-"considered at the following task"
-"performance by template or update IB version';ru='Новое расписание будет учтено при"
-"следующем выполнении задания по "
-"шаблону или обновлении версии ИБ'"));
+	ShowUserNotification(NStr("en='Replanning';ru='Перепланирование'"), , NStr("en='New schedule will be
+		|considered at the following task
+		|performance by template or update IB version';ru='Новое расписание будет учтено при
+		|следующем выполнении задания по 
+		|шаблону или обновлении версии ИБ'"));
 	
 EndProcedure
 

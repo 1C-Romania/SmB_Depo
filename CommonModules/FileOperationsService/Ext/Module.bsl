@@ -699,8 +699,8 @@ Procedure OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights) Expor
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "FoldersUpdate";
 	Right.Title     = NStr("en='Folders update';ru='Изменение папок'");
-	Right.ToolTip     = NStr("en='Addition, change"
-"and deletion mark of files folders';ru='Добавление, изменение и пометка удаления папок файлов'");
+	Right.ToolTip     = NStr("en='Addition, change
+		|and deletion mark of files folders';ru='Добавление, изменение и пометка удаления папок файлов'");
 	// Rights required for this right.
 	Right.RequiredRights.Add("Read");
 	// Rights for standard templates of access restrictions.

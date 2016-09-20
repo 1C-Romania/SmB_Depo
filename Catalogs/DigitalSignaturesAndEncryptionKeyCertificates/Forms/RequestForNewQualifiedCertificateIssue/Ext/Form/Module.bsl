@@ -317,16 +317,16 @@ Procedure ApplicationChoiceProcessing(Item, ValueSelected, StandardProcessing)
 		
 		If Not InfobaseUserWithFullAccess Then
 			ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Application %1 is not added to the list of used applications yet."
-"Contact your administrator.';ru='Программа %1 еще не добавлена в список используемых программ."
-"Обратитесь к администратору.'"),
+					NStr("en='Application %1 is not added to the list of used applications yet.
+		|Contact your administrator.';ru='Программа %1 еще не добавлена в список используемых программ.
+		|Обратитесь к администратору.'"),
 					Presentation));
 			
 		ElsIf IsSubordinateDIBNode Then
 			ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Application %1 is not added to the list of used applications yet."
-"Add to infobase main node.';ru='Программа %1 еще не добавлена в список используемых программ."
-"Выполните добавление в главном узле информационной базы.'"),
+					NStr("en='Application %1 is not added to the list of used applications yet.
+		|Add to infobase main node.';ru='Программа %1 еще не добавлена в список используемых программ.
+		|Выполните добавление в главном узле информационной базы.'"),
 					Presentation));
 		Else
 			Buttons = New ValueList;
@@ -335,9 +335,9 @@ Procedure ApplicationChoiceProcessing(Item, ValueSelected, StandardProcessing)
 			ShowQueryBox(
 				New NotifyDescription("ApplicationSelectionProcessingContinuation", ThisObject, ValueSelected),
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Application %1 is not added to the list of used applications yet."
-"Add?';ru='Программа %1 еще не добавлена в список используемых программ."
-"Добавить?'"),
+					NStr("en='Application %1 is not added to the list of used applications yet.
+		|Add?';ru='Программа %1 еще не добавлена в список используемых программ.
+		|Добавить?'"),
 					Presentation),
 				Buttons,, "DoNotAdd");
 		EndIf;
@@ -373,17 +373,17 @@ Procedure DecorationKeyGenerationNavigationRefProcessing(Item, URL, StandardProc
 	
 	If URL = "DigitalSignatureKey" Then
 		ShowMessageBox(,
-			NStr("en='Digital signature key is a secret information"
-"saved to a computer, USB drive, floppy disk or"
-"other dara storage device and it is further used to create digital signatures.';ru='Ключ электронной подписи -"
-"это секретная информация, которая сохраняется на компьютер, флешку,"
-"дискету или другой носитель информации и используется в дальнейшем для создания электронных подписей.'"));
+			NStr("en='Digital signature key is a secret information
+		|saved to a computer, USB drive, floppy disk or
+		|other dara storage device and it is further used to create digital signatures.';ru='Ключ электронной подписи -
+		|это секретная информация, которая сохраняется на компьютер, флешку,
+		|дискету или другой носитель информации и используется в дальнейшем для создания электронных подписей.'"));
 		
 	ElsIf URL = "CertificateQuery" Then
 		ShowMessageBox(,
-			NStr("en='Certificate query is not a secret information."
-"It is created on the basis of digital signature"
-"key, sent together with the application for certificate issue and required for certificate issue.';ru='Запрос на сертификат - это не секретная информация, которая создается на основе ключа электронной подписи, отправляется вместе с заявлением на выпуск сертификата и требуется для выпуска сертификата.'"));
+			NStr("en='Certificate query is not a secret information.
+		|It is created on the basis of digital signature
+		|key, sent together with the application for certificate issue and required for certificate issue.';ru='Запрос на сертификат - это не секретная информация, которая создается на основе ключа электронной подписи, отправляется вместе с заявлением на выпуск сертификата и требуется для выпуска сертификата.'"));
 	EndIf;
 	
 EndProcedure
@@ -451,40 +451,40 @@ Procedure InstructionNavigationRefProcessing(Item, URL, StandardProcessing)
 	
 	If ThisIsIndividualEntrepreneur Then
 		WarningText =
-			NStr("en='Set"
-"of documents: 1. Application for certificate issue (prepared in the previous step)."
-"2. Copy of the Tax Authority Registration Certificate (TIN)."
-"3. Copy of sole proprietor registration certificate (OGRN)."
-"4. Copy of the identification document of certificate owner."
-"5. Copy of Personal Insurance Policy Number of the certificate owner.';ru='Комплект"
-"документов: 1. Заявление на выпуск сертификата (подготовленное на предыдущем шаге)."
-"2. Копия свидетельства о постановке на учет в налоговом органе (ИНН)."
-"3. Копия свидетельства о государственной регистрации индивидуального предпринимателя (ОГРН)."
-"4. Копия документа, удостоверяющего личность владельца сертификата."
-"5. Копия страхового свидетельства обязательного пенсионного страхования (СНИЛС) владельца сертификата.'");
+			NStr("en='Set
+		|of documents: 1. Application for certificate issue (prepared in the previous step).
+		|2. Copy of the Tax Authority Registration Certificate (TIN).
+		|3. Copy of sole proprietor registration certificate (OGRN).
+		|4. Copy of the identification document of certificate owner.
+		|5. Copy of Personal Insurance Policy Number of the certificate owner.';ru='Комплект
+		|документов: 1. Заявление на выпуск сертификата (подготовленное на предыдущем шаге).
+		|2. Копия свидетельства о постановке на учет в налоговом органе (ИНН).
+		|3. Копия свидетельства о государственной регистрации индивидуального предпринимателя (ОГРН).
+		|4. Копия документа, удостоверяющего личность владельца сертификата.
+		|5. Копия страхового свидетельства обязательного пенсионного страхования (СНИЛС) владельца сертификата.'");
 	Else
 		WarningText =
-			NStr("en=""Set"
-"of documents: 1. Application for certificate issue (prepared in the previous step)."
-"2. Copy* of the Tax Authority Registration Certificate (TIN)."
-"3. Copy* of Certificate of incorporation (OGRN)."
-"4. Copy* of the identification document of company representative indicated for certificate issue."
-"5. Copy* of the insurance policy of mandatory pension"
-"   insurance (INILA) of a company representative specified for certificate issue."
-"6. Copy* of the document confirming the authority of"
-"   the manager who signed the statement (minutes of founders meeting, decision of the owner, company charter) or relevant extract from the Unified State Register of Legal Entities certified by tax authority."
-""
-"* Copies of documents are certified with manager's signature and company seal."";ru='Комплект"
-"документов: 1. Заявление на выпуск сертификата (подготовленное на предыдущем шаге)."
-"2. Копия* свидетельства о постановке на учет в налоговом органе (ИНН)."
-"3. Копия* свидетельства о государственной регистрации юридического лица (ОГРН)."
-"4. Копия* документа, удостоверяющего личность представителя организации, указанного для выпуска сертификата."
-"5. Копия* страхового свидетельства обязательного"
-"   пенсионного страхования (СНИЛС) представителя организации, указанного для выпуска сертификата."
-"6. Копия* документа, подтверждающего полномочия"
-"   руководителя, подписавшего заявление (протокол собрания учредителей, решение собственника, устав) или актуальная выписка из ЕГРЮЛ, заверенная налоговым органом."
-""
-"* Копии документов заверяются подписью руководителя и печатью организации.'");
+			NStr("en=""Set
+		|of documents: 1. Application for certificate issue (prepared in the previous step).
+		|2. Copy* of the Tax Authority Registration Certificate (TIN).
+		|3. Copy* of Certificate of incorporation (OGRN).
+		|4. Copy* of the identification document of company representative indicated for certificate issue.
+		|5. Copy* of the insurance policy of mandatory pension
+		|   insurance (INILA) of a company representative specified for certificate issue.
+		|6. Copy* of the document confirming the authority of
+		|   the manager who signed the statement (minutes of founders meeting, decision of the owner, company charter) or relevant extract from the Unified State Register of Legal Entities certified by tax authority.
+		|
+		|* Copies of documents are certified with manager's signature and company seal."";ru='Комплект
+		|документов: 1. Заявление на выпуск сертификата (подготовленное на предыдущем шаге).
+		|2. Копия* свидетельства о постановке на учет в налоговом органе (ИНН).
+		|3. Копия* свидетельства о государственной регистрации юридического лица (ОГРН).
+		|4. Копия* документа, удостоверяющего личность представителя организации, указанного для выпуска сертификата.
+		|5. Копия* страхового свидетельства обязательного
+		|   пенсионного страхования (СНИЛС) представителя организации, указанного для выпуска сертификата.
+		|6. Копия* документа, подтверждающего полномочия
+		|   руководителя, подписавшего заявление (протокол собрания учредителей, решение собственника, устав) или актуальная выписка из ЕГРЮЛ, заверенная налоговым органом.
+		|
+		|* Копии документов заверяются подписью руководителя и печатью организации.'");
 	EndIf;
 	
 	ShowMessageBox(, WarningText);
@@ -910,26 +910,26 @@ Procedure GoToPageStatementProcessingPending()
 	Text = "";
 	If Not DocumentsPrinted Then
 		Text =
-			NStr("en='Documents are not yet printed."
-"Statement will not be accepted until printed documents are received.';ru='Документы еще не печатались."
-"Заявление не будет принято пока не будут получены печатные документы.'");
+			NStr("en='Documents are not yet printed.
+		|Statement will not be accepted until printed documents are received.';ru='Документы еще не печатались.
+		|Заявление не будет принято пока не будут получены печатные документы.'");
 	EndIf;
 	
 	If DocumentsPartnerIsIE Then
 		If Not ValueIsFilled(DocumentsPartnerTIN) Then
 			Text = Text + Chars.LF  + Chars.LF +
-				NStr("en='TIN of the service company is not specified."
-"Statement might be processed longer than usual.';ru='Не указан ИНН обслуживающей организации."
-"Заявление может обрабатываться дольше обычного.'");
+				NStr("en='TIN of the service company is not specified.
+		|Statement might be processed longer than usual.';ru='Не указан ИНН обслуживающей организации.
+		|Заявление может обрабатываться дольше обычного.'");
 		EndIf;
 		
 	ElsIf Not ValueIsFilled(DocumentsPartnerTIN)
 	      Or Not ValueIsFilled(DocumentsPartnerKPP) Then
 		
 		Text = Text + Chars.LF  + Chars.LF +
-			NStr("en='TIN or KPP of service company is not specified."
-"Statement might be processed longer than usual.';ru='Не указан ИНН или КПП обслуживающей организации."
-"Заявление может обрабатываться дольше обычного.'");
+			NStr("en='TIN or KPP of service company is not specified.
+		|Statement might be processed longer than usual.';ru='Не указан ИНН или КПП обслуживающей организации.
+		|Заявление может обрабатываться дольше обычного.'");
 	EndIf;
 	
 	ShowQueryBox(
@@ -2281,9 +2281,9 @@ Function SendStatement(ErrorDescription)
 	
 	ErrorDescription = "";
 	ErrorDescriptionTemplate =
-		NStr("en='Failed to send a statement"
-"due to: %1';ru='Не удалось отправить"
-"заявление по причине: %1'");
+		NStr("en='Failed to send a statement
+		|due to: %1';ru='Не удалось отправить
+		|заявление по причине: %1'");
 	
 	Try
 		WebService = CCWebService();
@@ -2356,19 +2356,19 @@ Function SendStatement(ErrorDescription)
 	
 	If ResultCode = "202" Then
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to check the contract for ITS (its.1c.ru)"
-"due to: ticket received for the user %1 is incorrect or obsolete."
-""
-"Try to send the statement once again.';ru='Не удалось проверить договор на ИТС (its.1c.ru) по причине: Билет, полученный для пользователя %1, неверный или устарел.  Попробуйте отправить заявление еще раз.'"),
+			NStr("en='Failed to check the contract for ITS (its.1c.ru)
+		|due to: ticket received for the user %1 is incorrect or obsolete.
+		|
+		|Try to send the statement once again.';ru='Не удалось проверить договор на ИТС (its.1c.ru) по причине: Билет, полученный для пользователя %1, неверный или устарел.  Попробуйте отправить заявление еще раз.'"),
 			AuthenticationParametersOnSite.Login);
 		
 	ElsIf ResultCode = "206" Then
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Statement is not"
-"accepted due to: User %1 does not have a valid contract for ITS (its.1c.en)."
-"To conclude the contact, please contact the service company."
-""
-"After concluding the contract please send the statement once again.';ru='Заявление не принято по причине: Пользователь %1 не имеет действующего договора на ИТС (its.1c.ru). Для заключения договора обратитесь в обслуживающую организацию.  После заключения договора отправьте заявление еще раз.'"),
+			NStr("en='Statement is not
+		|accepted due to: User %1 does not have a valid contract for ITS (its.1c.en).
+		|To conclude the contact, please contact the service company.
+		|
+		|After concluding the contract please send the statement once again.';ru='Заявление не принято по причине: Пользователь %1 не имеет действующего договора на ИТС (its.1c.ru). Для заключения договора обратитесь в обслуживающую организацию.  После заключения договора отправьте заявление еще раз.'"),
 			AuthenticationParametersOnSite.Login);
 	Else
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescriptionTemplate,
@@ -2406,9 +2406,9 @@ Function TicketToSupportSite(ErrorDescription)
 			AuthenticationParametersOnSite = Undefined;
 		EndIf;
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to connect to support website"
-"due to:% 1';ru='Не удалось подключиться к"
-"сайту поддержки по причине: %1'"),
+			NStr("en='Failed to connect to support website
+		|due to:% 1';ru='Не удалось подключиться к
+		|сайту поддержки по причине: %1'"),
 			BriefErrorDescription);
 	EndTry;
 	
@@ -2508,11 +2508,11 @@ EndFunction
 Function QueryForCertificateFileText()
 	
 	ErrorText =
-		NStr("en='Failed to read a previously created certificate request."
-"Statement can not be sent."
-"Delete it and create a new one.';ru='Не удалось прочитать ранее созданный запрос на сертификат."
-"Заявление не может быть отправлено."
-"Удалите его и создайте новое.'");
+		NStr("en='Failed to read a previously created certificate request.
+		|Statement can not be sent.
+		|Delete it and create a new one.';ru='Не удалось прочитать ранее созданный запрос на сертификат.
+		|Заявление не может быть отправлено.
+		|Удалите его и создайте новое.'");
 	
 	If Not ValueIsFilled(RequestAddressForCertificate) Then
 		Raise ErrorText;
@@ -2781,9 +2781,9 @@ Function GetCertificate()
 	Except
 		ErrorInfo = ErrorInfo();
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to parse server response"
-"due to: %1';ru='Не удалось разобрать"
-"ответ сервера по причине: %1'"),
+			NStr("en='Failed to parse server response
+		|due to: %1';ru='Не удалось разобрать
+		|ответ сервера по причине: %1'"),
 			BriefErrorDescription(ErrorInfo));
 	EndTry;
 	
@@ -2902,9 +2902,9 @@ Function GetCertificate()
 	Except
 		ErrorInfo = ErrorInfo();
 		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to parse server response"
-"due to: %1';ru='Не удалось разобрать"
-"ответ сервера по причине: %1'"),
+			NStr("en='Failed to parse server response
+		|due to: %1';ru='Не удалось разобрать
+		|ответ сервера по причине: %1'"),
 			BriefErrorDescription(ErrorInfo));
 	EndTry;
 	
@@ -2999,12 +2999,12 @@ Procedure SetCertificateAfterCreatingCryptographyManager(Manager, Context) Expor
 	Else
 		CreateCryptographyObject(New NotifyDescription(
 			"SetCertificateAfterCreatingCryptographyObject", ThisObject, Context),
-			NStr("en='To install a certificate on"
-"your computer, it is required to install the extension for the web client 1C:Enterprise.';ru='Для установки сертификата"
-"на компьютер требуется установить расширение для веб-клиента 1С:Предприятия.'"),
-			NStr("en='To install a certificate on"
-"your computer, it is required to install additional external component.';ru='Для установки сертификата"
-"на компьютер требуется установить дополнительную внешнюю компоненту.'"));
+			NStr("en='To install a certificate on
+		|your computer, it is required to install the extension for the web client 1C:Enterprise.';ru='Для установки сертификата
+		|на компьютер требуется установить расширение для веб-клиента 1С:Предприятия.'"),
+			NStr("en='To install a certificate on
+		|your computer, it is required to install additional external component.';ru='Для установки сертификата
+		|на компьютер требуется установить дополнительную внешнюю компоненту.'"));
 	EndIf;
 	
 EndProcedure
@@ -3136,11 +3136,11 @@ Procedure SetCertificateAfterCheckingKeyContainerExistence(Exists, Context) Expo
 	
 	If Not Exists Then
 		ErrorCertificateSetup = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to find the key container on the computer."
-"Container name: ""%1""."
-"Path to container: ""%2"".';ru='Не удалось найти контейнер ключа на компьютере."
-"Имя контейнера: ""%1""."
-"Путь к контейнеру: ""%2"".'"),
+			NStr("en='Failed to find the key container on the computer.
+		|Container name: ""%1"".
+		|Path to container: ""%2"".';ru='Не удалось найти контейнер ключа на компьютере.
+		|Имя контейнера: ""%1"".
+		|Путь к контейнеру: ""%2"".'"),
 			KeyContainerName,
 			KeyContainerPath);
 		ExecuteNotifyProcessing(Context.Notification, False);
@@ -3197,9 +3197,9 @@ Procedure SetCertificateAfterCertificateSearch(Result, Context) Export
 				NStr("en='Failed to find the personal certificate installed on your computer.';ru='Не удалось найти личный сертификат, установленный на компьютер.'");
 		Else
 			SearchError = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Failed to find a personal certificate installed on the"
-"computer due to: %1';ru='Не удалось найти личный сертификат, установленный"
-"на компьютер по причине: %1'"),
+				NStr("en='Failed to find a personal certificate installed on the
+		|computer due to: %1';ru='Не удалось найти личный сертификат, установленный
+		|на компьютер по причине: %1'"),
 				Result.ErrorDescription);
 		EndIf;
 		ErrorCertificateSetup = TrimL(ErrorCertificateSetup + Chars.LF + Chars.LF) + SearchError;
@@ -3261,9 +3261,9 @@ Procedure SetCertificateAfterRootCertificateSearch(Result, Context) Export
 				NStr("en='Failed to find the root certificate installed on your computer.';ru='Не удалось найти корневой сертификат, установленный на компьютер.'");
 		Else
 			SearchError = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Failed to find the root certificate installed on the"
-"computer due to: %1';ru='Не удалось найти корневой сертификат, установленный"
-"на компьютер по причине: %1'"),
+				NStr("en='Failed to find the root certificate installed on the
+		|computer due to: %1';ru='Не удалось найти корневой сертификат, установленный
+		|на компьютер по причине: %1'"),
 				Result.ErrorDescription);
 		EndIf;
 		ErrorCertificateSetup = TrimL(ErrorCertificateSetup + Chars.LF + Chars.LF) + SearchError;
@@ -4127,9 +4127,9 @@ Procedure CreateKeyAndCertificateQuery(Notification)
 	Else
 		CreateCryptographyObject(New NotifyDescription(
 			"CreateKeyAndCertificateQueryAfterCreatingCryptographyObject", ThisObject, Context),
-			NStr("en='To create digital signature key and certificate"
-"query, it is required to install extension for web client 1C:Enterprise.';ru='Для создания ключа электронной подписи"
-"и запроса на сертификат требуется установить расширение для веб-клиента 1С:Предприятия.'"),
+			NStr("en='To create digital signature key and certificate
+		|query, it is required to install extension for web client 1C:Enterprise.';ru='Для создания ключа электронной подписи
+		|и запроса на сертификат требуется установить расширение для веб-клиента 1С:Предприятия.'"),
 			NStr("en='To create digital signature key and certificate request, it is required to install additional external component.';ru='Для создания ключа электронной подписи и запроса на сертификат требуется установить дополнительную внешнюю компоненту.'"));
 	EndIf;
 	
@@ -4190,9 +4190,9 @@ Procedure CreateKeyAndCertificateQueryAfterCallErrorCreateContainer(ErrorInfo, S
 	Error = New Structure;
 	Error.Insert("ShowInstruction", True);
 	Error.Insert("ErrorDescription", StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Operation failed due"
-"to:% 1';ru='Не удалось"
-"выполнить операцию по причине: %1'"),
+		NStr("en='Operation failed due
+		|to:% 1';ru='Не удалось
+		|выполнить операцию по причине: %1'"),
 		BriefErrorDescription(ErrorInfo)));
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
@@ -4212,13 +4212,13 @@ Procedure CreateKeyAndCertificateQueryAfterCallCreateContainer(Path, CallParamet
 		Rows = ApplicationsList.FindRows(New Structure("Ref", Object.Application));
 		If Rows[0].ID = "CryptoPro" Then
 			ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Digital signature key is not created."
-""
-"It should be taken into account that in order"
-"to create a key with application %1, administrator rights of the operating system are required.';ru='Ключ электронной подписи не создан."
-""
-"Следует учитывать, что для создания"
-"ключа с помощью программы %1, требуются права администратора операционной системы.'"),
+				NStr("en='Digital signature key is not created.
+		|
+		|It should be taken into account that in order
+		|to create a key with application %1, administrator rights of the operating system are required.';ru='Ключ электронной подписи не создан.
+		|
+		|Следует учитывать, что для создания
+		|ключа с помощью программы %1, требуются права администратора операционной системы.'"),
 				Rows[0].Presentation));
 		Else
 			ShowMessageBox(,
@@ -4916,9 +4916,9 @@ Procedure CreateCryptographyObjectAfterExternalComponentInstallationError(ErrorI
 	ShowMessageBox(New NotifyDescription(
 			"CreateCryptographyObjectAfterErrorWarning", ThisObject, Context),
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to install additional external component"
-"due to: %1';ru='Не удалось установить дополнительную внешнюю"
-"компоненту по причине: %1'"),
+			NStr("en='Failed to install additional external component
+		|due to: %1';ru='Не удалось установить дополнительную внешнюю
+		|компоненту по причине: %1'"),
 			BriefErrorDescription(ErrorInfo)));
 	
 EndProcedure
@@ -4958,9 +4958,9 @@ Procedure CreateCryptographyObjectContinuation(Context)
 		ErrorInfo = ErrorInfo();
 		Cryptography = Undefined;
 		ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to create a cryptography object of external component"
-"due to:% 1';ru='Не удалось создать объект внешней компоненты для"
-"работы с криптографией по причине: %1'"),
+			NStr("en='Failed to create a cryptography object of external component
+		|due to:% 1';ru='Не удалось создать объект внешней компоненты для
+		|работы с криптографией по причине: %1'"),
 			BriefErrorDescription(ErrorInfo)));
 		ExecuteNotifyProcessing(Context.ContinuationProcessor, False);
 		Return;
@@ -4973,9 +4973,9 @@ Procedure CreateCryptographyObjectContinuation(Context)
 			ErrorInfo = ErrorInfo();
 			Cryptography = Undefined;
 			ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Failed to create an object of external component for binary data"
-"due to: %1';ru='Не удалось создать объект внешней компоненты для работы с"
-"двоичными данными по причине: %1'"),
+				NStr("en='Failed to create an object of external component for binary data
+		|due to: %1';ru='Не удалось создать объект внешней компоненты для работы с
+		|двоичными данными по причине: %1'"),
 				BriefErrorDescription(ErrorInfo)));
 			ExecuteNotifyProcessing(Context.ContinuationProcessor, False);
 			Return;
@@ -5015,9 +5015,9 @@ Procedure CreateCryptographyObjectAfterCallErrorCreateCryptographyManager(ErrorI
 	ShowMessageBox(New NotifyDescription(
 			"CreateCryptographyObjectAfterErrorWarning", ThisObject, Context),
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Digital signature application is not available through an"
-"external component due to: %1';ru='Программа электронной подписи не доступна"
-"через внешнюю компоненту по причине: %1'"),
+			NStr("en='Digital signature application is not available through an
+		|external component due to: %1';ru='Программа электронной подписи не доступна
+		|через внешнюю компоненту по причине: %1'"),
 			BriefErrorDescription(ErrorInfo)));
 	
 EndProcedure

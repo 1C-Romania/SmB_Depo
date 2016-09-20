@@ -53,9 +53,9 @@ Procedure ValueChoiceList(Item, Value, StandardProcessing)
 			EndIf;
 		Else
 			ShowMessageBox(,
-				NStr("en='There is not option to select the metadata object group."
-"Choose metadata object.';ru='Невозможно выбрать группу объектов метаданных."
-"Выберите объект метаданных.'"));
+				NStr("en='There is not option to select the metadata object group.
+		|Choose metadata object.';ru='Невозможно выбрать группу объектов метаданных.
+		|Выберите объект метаданных.'"));
 		EndIf;
 	EndIf;
 	

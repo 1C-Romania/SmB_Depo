@@ -115,9 +115,9 @@ EndProcedure
 Procedure ChangeRegistration(Command)
 	
 	QuestionTitle = NStr("en='Confirmation';ru='Подтверждение'");
-	Text = NStr("en='Do you"
-"want to change registration ""%1"" on nodes?';ru='Изменить"
-"регистрацию ""%1"" на узлах?'");
+	Text = NStr("en='Do you
+		|want to change registration ""%1"" on nodes?';ru='Изменить
+		|регистрацию ""%1"" на узлах?'");
 	
 	Text = StrReplace(Text, "%1", RegistrationObject);
 	

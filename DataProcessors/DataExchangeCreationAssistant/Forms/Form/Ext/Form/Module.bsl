@@ -320,9 +320,9 @@ EndProcedure
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	If LongOperation Then
-		ShowMessageBox(, NStr("en='Creating data synchronization."
-"Assistant work can not be completed.';ru='Выполняется создание синхронизации данных."
-"Работа помощника не может быть завершена.'"));
+		ShowMessageBox(, NStr("en='Creating data synchronization.
+		|Assistant work can not be completed.';ru='Выполняется создание синхронизации данных.
+		|Работа помощника не может быть завершена.'"));
 		Cancel = True;
 		Return;
 	EndIf;
@@ -332,9 +332,9 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	EndIf;
 	
 	If IsContinuedInDIBSubordinateNodeSetup Then
-		WarningText = NStr("en='Setting the subordinate node of distributed infobase."
-"Decline to set up and use default values?';ru='Выполняется настройка подчиненного узла распределенной информационной базы."
-"Отказаться от настройки и использовать значения по умолчанию?'");
+		WarningText = NStr("en='Setting the subordinate node of distributed infobase.
+		|Decline to set up and use default values?';ru='Выполняется настройка подчиненного узла распределенной информационной базы.
+		|Отказаться от настройки и использовать значения по умолчанию?'");
 		
 		AlertDescriptionDenyContinueDIB = New NotifyDescription("AlertDescriptionFailedToContinueDIB", ThisObject);
 		CommonUseClient.ShowArbitraryFormClosingConfirmation(ThisObject, Cancel, WarningText, "CloseFormWithoutWarnings", AlertDescriptionDenyContinueDIB);
@@ -1387,9 +1387,9 @@ Procedure LongOperationIdleHandler()
 		
 		CommandBack(Undefined);
 		
-		QuestionText = NStr("en='Errors occurred during creation of data synchronization."
-"Do you want to open the event log?';ru='При создании синхронизации данных возникли ошибки."
-"Перейти в журнал регистрации?'");
+		QuestionText = NStr("en='Errors occurred during creation of data synchronization.
+		|Do you want to open the event log?';ru='При создании синхронизации данных возникли ошибки.
+		|Перейти в журнал регистрации?'");
 		
 		SuggestOpenEventLogMonitor(QuestionText, DataExchangeCreationEventLogMonitorMessageText);
 		
@@ -1419,9 +1419,9 @@ Procedure BackgroundJobTimeoutHandler()
 		
 		CommandBack(Undefined);
 		
-		QuestionText = NStr("en='Errors occurred during creation of data synchronization."
-"Do you want to open the event log?';ru='При создании синхронизации данных возникли ошибки."
-"Перейти в журнал регистрации?'");
+		QuestionText = NStr("en='Errors occurred during creation of data synchronization.
+		|Do you want to open the event log?';ru='При создании синхронизации данных возникли ошибки.
+		|Перейти в журнал регистрации?'");
 		
 		SuggestOpenEventLogMonitor(QuestionText, DataExchangeCreationEventLogMonitorMessageText);
 		
@@ -1529,9 +1529,9 @@ Function ResultPresentationMessagesTransport()
 	
 	If ExchangeWithServiceSetup Then
 		
-		Result = NStr("en='Parameters of connection to the"
-"application in the service: %1';ru='Параметры подключения"
-"к приложению в сервисе: %1'");
+		Result = NStr("en='Parameters of connection to the
+		|application in the service: %1';ru='Параметры подключения
+		|к приложению в сервисе: %1'");
 		Result = StringFunctionsClientServer.PlaceParametersIntoString(Result, GetDescriptionOfSettingsOfExchangeTransport());
 		
 	Else
@@ -1934,9 +1934,9 @@ Procedure CheckWSConnectionAtClient(Cancel, ExtendedCheck = False)
 		
 		If Cancel AND IsSuggestOpenEventLogMonitor Then
 			
-			QuestionText = NStr("en='Connection installation error."
-"Do you want to open the event log?';ru='Ошибка установки подключения."
-"Перейти в журнал регистрации?'");
+			QuestionText = NStr("en='Connection installation error.
+		|Do you want to open the event log?';ru='Ошибка установки подключения.
+		|Перейти в журнал регистрации?'");
 			
 			SuggestOpenEventLogMonitor(QuestionText, EventLogMonitorMessageTextEstablishingConnectionToWebService);
 			
@@ -3144,9 +3144,9 @@ Function Attachable_AssistantPageParameterSetup_OnOpen(Cancel, SkipPage, IsGoNex
 			OR Object.UseTransportParametersFILE
 			OR Object.UseTransportParametersFTP) Then
 		
-		NString = NStr("en='Connection parameters for data synchronization are not specified."
-"At least one connection variant should be configured.';ru='Не указаны параметры подключения для синхронизации данных."
-"Следует настроить хотя бы один вариант подключения.'");
+		NString = NStr("en='Connection parameters for data synchronization are not specified.
+		|At least one connection variant should be configured.';ru='Не указаны параметры подключения для синхронизации данных.
+		|Следует настроить хотя бы один вариант подключения.'");
 		//
 		CommonUseClientServer.MessageToUser(NString,,,, Cancel);
 		
@@ -3185,9 +3185,9 @@ Function Attachable_AssistantPageExchangeSetupResults_OnOpen(Cancel, SkipPage, I
 	If AssistantOperationOption = "SetupNewDataExchange" Then
 		
 		// Display of exchange setup result.
-		MessageString = NStr("en='%1%2%3Prefix of this"
-"infobase: %4 Prefix of the second infobase: %5';ru='%1%2%3Префикс"
-"этой информационной базы: %4 Префикс второй информационной базы: %5'");
+		MessageString = NStr("en='%1%2%3Prefix of this
+		|infobase: %4 Prefix of the second infobase: %5';ru='%1%2%3Префикс
+		|этой информационной базы: %4 Префикс второй информационной базы: %5'");
 		
 		ExchangeSettingsResultPresentation = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
 							ResultPresentationMessagesTransport(),
@@ -3291,9 +3291,9 @@ Function Attachable_AssistantPageWaitForExchangeSettingsCreationDataAnalysis_Lon
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en='Errors occurred when creating data synchronization setup."
-"To solve the problems use the event log.';ru='Возникли ошибки на этапе создания настройки синхронизации данных."
-"Для решения проблем воспользуйтесь журналом регистрации.'"));
+		ShowMessageBox(, NStr("en='Errors occurred when creating data synchronization setup.
+		|To solve the problems use the event log.';ru='Возникли ошибки на этапе создания настройки синхронизации данных.
+		|Для решения проблем воспользуйтесь журналом регистрации.'"));
 		
 	EndIf;
 	
@@ -3332,9 +3332,9 @@ Function Attachable_AssistantPageWaitForDataAnalysisGetMessage_LongOperationProc
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en='At the data analysis stage, errors occurred."
-"To solve the problems use the event log.';ru='Возникли ошибки на этапе анализа данных."
-"Для решения проблем воспользуйтесь журналом регистрации.'"));
+		ShowMessageBox(, NStr("en='At the data analysis stage, errors occurred.
+		|To solve the problems use the event log.';ru='Возникли ошибки на этапе анализа данных.
+		|Для решения проблем воспользуйтесь журналом регистрации.'"));
 		
 	ElsIf Not LongOperation Then
 		
@@ -3371,9 +3371,9 @@ Function Attachable_AssistantPageWaitingDataAnalysisGettingMessageLongOperationE
 		
 		If Cancel Then
 			
-			ShowMessageBox(, NStr("en='At the data analysis stage, errors occurred."
-"To solve the problems use the event log.';ru='Возникли ошибки на этапе анализа данных."
-"Для решения проблем воспользуйтесь журналом регистрации.'"));
+			ShowMessageBox(, NStr("en='At the data analysis stage, errors occurred.
+		|To solve the problems use the event log.';ru='Возникли ошибки на этапе анализа данных.
+		|Для решения проблем воспользуйтесь журналом регистрации.'"));
 			
 		Else
 			
@@ -3477,11 +3477,11 @@ Function Attachable_AssistantPageDataMapping_OnGoingNext(Cancel)
 		Buttons.Add(DialogReturnCode.Yes, "Continue");
 		Buttons.Add(DialogReturnCode.No, "Cancel");
 		
-		Message = NStr("en='Not all data was mapped. Existence of"
-"unmapped data can lead to identical catalog items (duplicates)."
-"Continue?';ru='Не все данные сопоставлены. Наличие"
-"несопоставленных данных может привести к появлению одинаковых элементов справочников (дублей)."
-"Продолжить?'");
+		Message = NStr("en='Not all data was mapped. Existence of
+		|unmapped data can lead to identical catalog items (duplicates).
+		|Continue?';ru='Не все данные сопоставлены. Наличие
+		|несопоставленных данных может привести к появлению одинаковых элементов справочников (дублей).
+		|Продолжить?'");
 							   
 		If Not UserRepliedYesToMapping Then
 			NotifyDescription = New NotifyDescription("HandleUserResponseWhenCompared", ThisObject);
@@ -3572,9 +3572,9 @@ Function Attachable_AssistantPageWaitForCatalogSynchronizationExport_LongOperati
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en='Errors occurred at the stage of catalogs synchronization."
-"To solve the problems use the event log.';ru='Возникли ошибки на этапе синхронизации справочников."
-"Для решения проблем воспользуйтесь журналом регистрации.'"));
+		ShowMessageBox(, NStr("en='Errors occurred at the stage of catalogs synchronization.
+		|To solve the problems use the event log.';ru='Возникли ошибки на этапе синхронизации справочников.
+		|Для решения проблем воспользуйтесь журналом регистрации.'"));
 		
 	EndIf;
 	
@@ -3646,9 +3646,9 @@ Function Attachable_AssistantPageWaitForSaveSettings_LongOperationProcessing(Can
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en='Errors occurred when saving the settings."
-"To solve the problems use the event log.';ru='Возникли ошибки на этапе сохранения настроек."
-"Для решения проблем воспользуйтесь журналом регистрации.'"));
+		ShowMessageBox(, NStr("en='Errors occurred when saving the settings.
+		|To solve the problems use the event log.';ru='Возникли ошибки на этапе сохранения настроек.
+		|Для решения проблем воспользуйтесь журналом регистрации.'"));
 		
 	EndIf;
 	
@@ -3688,9 +3688,9 @@ Function Attachable_AssistantPageWaitForDataSynchronizationImport_LongOperationP
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en='Errors occurred when synchronizing data."
-"To solve the problems use the event log.';ru='Возникли ошибки на этапе синхронизации данных."
-"Для решения проблем воспользуйтесь журналом регистрации.'"));
+		ShowMessageBox(, NStr("en='Errors occurred when synchronizing data.
+		|To solve the problems use the event log.';ru='Возникли ошибки на этапе синхронизации данных.
+		|Для решения проблем воспользуйтесь журналом регистрации.'"));
 		
 	EndIf;
 	
@@ -3782,9 +3782,9 @@ Function Attachable_AssistantPageWaitForDataSynchronizationExport_LongOperationP
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en='Errors occurred when synchronizing data."
-"To solve the problems use the event log.';ru='Возникли ошибки на этапе синхронизации данных."
-"Для решения проблем воспользуйтесь журналом регистрации.'"));
+		ShowMessageBox(, NStr("en='Errors occurred when synchronizing data.
+		|To solve the problems use the event log.';ru='Возникли ошибки на этапе синхронизации данных.
+		|Для решения проблем воспользуйтесь журналом регистрации.'"));
 		
 	EndIf;
 	
@@ -4181,11 +4181,11 @@ Procedure AssistantPageParameterSetup_OnGoingNextAtServer(Cancel)
 	
 	If Not ExchangePlans[Object.ExchangePlanName].FindByCode(DataExchangeServer.ExchangePlanNodeCodeString(Object.TargetInfobasePrefix)).IsEmpty() Then
 		
-		NString = NStr("en='Value of second infobase prefix is not unique."
-"There is already data synchronization for the infobase (application) with specified prefix in the system."
-"Change the prefix value or use the existing synchronization.';ru='Значение префикса второй информационной базы не уникально."
-"В системе уже существует синхронизация данных для информационной базы (программы) с указанным префиксом."
-"Измените значение префикса или используйте существующую синхронизацию.'");
+		NString = NStr("en='Value of second infobase prefix is not unique.
+		|There is already data synchronization for the infobase (application) with specified prefix in the system.
+		|Change the prefix value or use the existing synchronization.';ru='Значение префикса второй информационной базы не уникально.
+		|В системе уже существует синхронизация данных для информационной базы (программы) с указанным префиксом.
+		|Измените значение префикса или используйте существующую синхронизацию.'");
 		//
 		CommonUseClientServer.MessageToUser(NString,, "Object.TargetInfobasePrefix",, Cancel);
 		

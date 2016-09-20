@@ -1381,9 +1381,9 @@ Procedure OperationKindChoiceProcessing(Item, ValueSelected, StandardProcessing)
 			
 			If Not StringProducts.ProductsAndServicesTypeInventory Then
 				
-				MessageText = NStr("en='Disassembling operation is invalid for works and services!"
-"The %ProductsAndServicesPresentation% products and services could be a work(service) in the %Number% string of the tabular section ""Products""';ru='Операция разборки не выполняется для работ и услуг!"
-"В строке №%Номер% табличной части ""Продукция"" номенклатура ""%НоменклатураПредставление%"" является работой (услугой)'");
+				MessageText = NStr("en='Disassembling operation is invalid for works and services!
+		|The %ProductsAndServicesPresentation% products and services could be a work(service) in the %Number% string of the tabular section ""Products""';ru='Операция разборки не выполняется для работ и услуг!
+		|В строке №%Номер% табличной части ""Продукция"" номенклатура ""%НоменклатураПредставление%"" является работой (услугой)'");
 				MessageText = StrReplace(MessageText, "%Number%", StringProducts.LineNumber);
 				MessageText = StrReplace(MessageText, "%ProductsAndServicesPresentation%", String(StringProducts.ProductsAndServices));
 				

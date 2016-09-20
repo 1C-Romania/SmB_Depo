@@ -181,17 +181,17 @@ Procedure Compare(Command)
 		
 		If Not ExtensionIsSupported Then
 			WarningText =
-				NStr("en='Versions matching is supported only for files"
-"   of the following"
-"   types: Text document (.txt) RTF"
-"   document (.rtf) Microsoft Word document (.doc,"
-"   .docx) HTML document (.html"
-"   .htm) Text document OpenDocument (.odt)';ru='Сравнение версий поддерживается только"
-"   для файлов"
-"   следующих типов: Текстовый документ (.txt)"
-"   Документ формата RTF (.rtf) Документ Microsoft"
-"   Word (.doc, .docx) Документ"
-"   HTML (.html .htm) Текстовый документ OpenDocument (.odt)'");
+				NStr("en='Versions matching is supported only for files
+		|   of the following
+		|   types: Text document (.txt) RTF
+		|   document (.rtf) Microsoft Word document (.doc,
+		|   .docx) HTML document (.html
+		|   .htm) Text document OpenDocument (.odt)';ru='Сравнение версий поддерживается только
+		|   для файлов
+		|   следующих типов: Текстовый документ (.txt)
+		|   Документ формата RTF (.rtf) Документ Microsoft
+		|   Word (.doc, .docx) Документ
+		|   HTML (.html .htm) Текстовый документ OpenDocument (.odt)'");
 			ShowMessageBox(, WarningText);
 			Return;
 		EndIf;

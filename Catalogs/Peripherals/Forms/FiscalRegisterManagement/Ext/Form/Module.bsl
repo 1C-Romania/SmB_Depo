@@ -37,11 +37,11 @@ Procedure ReportPrintEnd(DeviceIdentifier, Parameters) Export
 		Result = EquipmentManagerClient.RunCommand(DeviceIdentifier, Parameters.Action, InputParameters, Output_Parameters);
 		
 		If Not Result Then
-			MessageText = NStr("en='An error occurred while getting the report from fiscal register."
-"%ErrorDescription%"
-"Report on fiscal register is not formed.';ru='При снятии отчета на фискальном регистраторе произошла ошибка."
-"%ОписаниеОшибки%"
-"Отчет на фискальном регистраторе не сформирован.'");
+			MessageText = NStr("en='An error occurred while getting the report from fiscal register.
+		|%ErrorDescription%
+		|Report on fiscal register is not formed.';ru='При снятии отчета на фискальном регистраторе произошла ошибка.
+		|%ОписаниеОшибки%
+		|Отчет на фискальном регистраторе не сформирован.'");
 				MessageText = StrReplace(MessageText, "%ErrorDescription%", Output_Parameters[1]);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;

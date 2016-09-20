@@ -462,9 +462,9 @@ Procedure ContinueWriteOnClient(Result, CloseAfterWriting)  Export
 	If WriteParameters.DataProcessorRegistration Then
 		RefreshReusableValues();
 		Handler = New NotifyDescription("WriteOnClientEnd", ThisObject, WriteParameters);
-		WarningText = NStr("en='For applying changes in open"
-"windows it is required to close and open them again.';ru='Для применения изменений"
-"в открытых окнах необходимо их закрыть и открыть заново.'");
+		WarningText = NStr("en='For applying changes in open
+		|windows it is required to close and open them again.';ru='Для применения изменений
+		|в открытых окнах необходимо их закрыть и открыть заново.'");
 		ShowMessageBox(Handler, WarningText);
 	Else
 		WriteOnClientEnd(WriteParameters);
@@ -587,61 +587,61 @@ Procedure UpdateFromFileShowConflicts(RegistrationParameters)
 	If RegistrationParameters.ConflictsCount > 1 Then
 		If RegistrationParameters.IsReport Then
 			QuestionTitle = NStr("en='Conflicts on exporting external report';ru='Конфликты при загрузке внешнего отчета'");
-			QuestionText = NStr("en='Internal name report ""[Name]"" is already engaged other additional report ([Count]): [List]."
-""
-"Select:"
-"1. ""[Continue]"" - export with disabling the publication of this report."
-"2. ""[Disable]"" - export with disabling the publishing of all other conflicting reports."
-"3. ""[Open]"" - cancel exporting and open the list of conflicting reports.';ru='Внутреннее имя отчета ""[Name]"" уже занято другими дополнительными отчетами ([Count]): [List]."
-""
-"Выберите:"
-"1. ""[Continue]"" - выполнить загрузку, отключив публикацию этого отчета."
-"2. ""[Disable]"" - выполнить загрузку, отключив публикацию всех других конфликтующих отчетов."
-"3. ""[Open]"" - отменить загрузку и открыть список конфликтующих отчетов.'");
+			QuestionText = NStr("en='Internal name report ""[Name]"" is already engaged other additional report ([Count]): [List].
+		|
+		|Select:
+		|1. ""[Continue]"" - export with disabling the publication of this report.
+		|2. ""[Disable]"" - export with disabling the publishing of all other conflicting reports.
+		|3. ""[Open]"" - cancel exporting and open the list of conflicting reports.';ru='Внутреннее имя отчета ""[Name]"" уже занято другими дополнительными отчетами ([Count]): [List].
+		|
+		|Выберите:
+		|1. ""[Continue]"" - выполнить загрузку, отключив публикацию этого отчета.
+		|2. ""[Disable]"" - выполнить загрузку, отключив публикацию всех других конфликтующих отчетов.
+		|3. ""[Open]"" - отменить загрузку и открыть список конфликтующих отчетов.'");
 		Else
 			QuestionTitle = NStr("en='Conflicts when exporting external data processor';ru='Конфликты при загрузке внешней обработки'");
-			QuestionText = NStr("en='Internal name of data processor ""[Name]"" is already occupied by other additional data processors ([Count]): [List]."
-""
-"Select:"
-"1. ""[Continue]"" - export with disabling publication of this data processor."
-"2. ""[Disable]"" - export with disabling the publishing of all other conflicting data processors."
-"3. ""[Open]"" - cancel exporting and open the list of conflicting data processors.';ru='Внутреннее имя обработки ""[Name]"" уже занято другими дополнительными обработками ([Count]): [List]."
-""
-"Выберите:"
-"1. ""[Continue]"" - выполнить загрузку, отключив публикацию этой обработки."
-"2. ""[Disable]"" - выполнить загрузку, отключив публикацию всех других конфликтующих обработок."
-"3. ""[Open]"" - отменить загрузку и открыть список конфликтующих обработок.'");
+			QuestionText = NStr("en='Internal name of data processor ""[Name]"" is already occupied by other additional data processors ([Count]): [List].
+		|
+		|Select:
+		|1. ""[Continue]"" - export with disabling publication of this data processor.
+		|2. ""[Disable]"" - export with disabling the publishing of all other conflicting data processors.
+		|3. ""[Open]"" - cancel exporting and open the list of conflicting data processors.';ru='Внутреннее имя обработки ""[Name]"" уже занято другими дополнительными обработками ([Count]): [List].
+		|
+		|Выберите:
+		|1. ""[Continue]"" - выполнить загрузку, отключив публикацию этой обработки.
+		|2. ""[Disable]"" - выполнить загрузку, отключив публикацию всех других конфликтующих обработок.
+		|3. ""[Open]"" - отменить загрузку и открыть список конфликтующих обработок.'");
 		EndIf;
 		DisableButtonPresentation = NStr("en='Disconnect conflicting';ru='Отключить конфликтующие'");
 		OpenButtonPresentation = NStr("en='Cancel and show list';ru='Отменить и показать список'");
 	Else
 		If RegistrationParameters.IsReport Then
 			QuestionTitle = NStr("en='Conflict when exporting external report';ru='Конфликт при загрузке внешнего отчета'");
-			QuestionText = NStr("en='Internal name of report ""[Name]"" is already occupied by other additional report: [List]."
-""
-"Select:"
-"1. ""[Continue]"" - export with disabling the publication of this report."
-"2. ""[Disable]"" - export with disabling the publication of another report."
-"3. ""[Open]"" - cancel exporting and open another report card.';ru='Внутреннее имя отчета ""[Name]"" уже занято другим дополнительным отчетом: [List]."
-""
-"Выберите:"
-"1. ""[Continue]"" - выполнить загрузку, отключив публикацию этого отчета."
-"2. ""[Disable]"" - выполнить загрузку, отключив публикацию другого отчета."
-"3. ""[Open]"" - отменить загрузку и открыть карточку другого отчета.'");
+			QuestionText = NStr("en='Internal name of report ""[Name]"" is already occupied by other additional report: [List].
+		|
+		|Select:
+		|1. ""[Continue]"" - export with disabling the publication of this report.
+		|2. ""[Disable]"" - export with disabling the publication of another report.
+		|3. ""[Open]"" - cancel exporting and open another report card.';ru='Внутреннее имя отчета ""[Name]"" уже занято другим дополнительным отчетом: [List].
+		|
+		|Выберите:
+		|1. ""[Continue]"" - выполнить загрузку, отключив публикацию этого отчета.
+		|2. ""[Disable]"" - выполнить загрузку, отключив публикацию другого отчета.
+		|3. ""[Open]"" - отменить загрузку и открыть карточку другого отчета.'");
 			DisableButtonPresentation = NStr("en='Disable another report';ru='Отключить другой отчет'");
 		Else
 			QuestionTitle = NStr("en='Conflict when exporting external data processor';ru='Конфликт при загрузке внешней обработки'");
-			QuestionText = NStr("en='Internal name of data processor ""[Name]"" is already occupied by another additional data processor: [List]."
-""
-"Select:"
-"1. ""[Continue]"" - export with disabling publication of this data processor."
-"2. ""[Disable]"" - export with disabling publishing another data processor."
-"3. ""[Open]"" - cancel exporting and open another data processor card.';ru='Внутреннее имя обработки ""[Name]"" уже занято другой дополнительной обработкой: [List]."
-""
-"Выберите:"
-"1. ""[Continue]"" - выполнить загрузку, отключив публикацию этой обработки."
-"2. ""[Disable]"" - выполнить загрузку, отключив публикацию другой обработки."
-"3. ""[Open]"" - отменить загрузку и открыть карточку другой обработку.'");
+			QuestionText = NStr("en='Internal name of data processor ""[Name]"" is already occupied by another additional data processor: [List].
+		|
+		|Select:
+		|1. ""[Continue]"" - export with disabling publication of this data processor.
+		|2. ""[Disable]"" - export with disabling publishing another data processor.
+		|3. ""[Open]"" - cancel exporting and open another data processor card.';ru='Внутреннее имя обработки ""[Name]"" уже занято другой дополнительной обработкой: [List].
+		|
+		|Выберите:
+		|1. ""[Continue]"" - выполнить загрузку, отключив публикацию этой обработки.
+		|2. ""[Disable]"" - выполнить загрузку, отключив публикацию другой обработки.
+		|3. ""[Open]"" - отменить загрузку и открыть карточку другой обработку.'");
 			DisableButtonPresentation = NStr("en='Disable another data processor';ru='Отключить другую обработку'");
 		EndIf;
 		OpenButtonPresentation = NStr("en='Cancel and open';ru='Отменить и открыть'");
@@ -749,9 +749,9 @@ Procedure EditScheduledJob(ChoiceMode = False, CheckBoxChanged = False)
 	
 	If ItemCommand.StartVariant <> PredefinedValue("Enum.AdditionalDataProcessorsCallMethods.CallOfServerMethod")
 		AND ItemCommand.StartVariant <> PredefinedValue("Enum.AdditionalDataProcessorsCallMethods.ScriptInSafeMode") Then
-		ErrorText = NStr("en='Startup option command"
-"""%1"" can not be used in scheduled jobs.';ru='Команда с"
-"вариантом запуска ""%1"" не может использоваться в регламентных заданиях.'");
+		ErrorText = NStr("en='Startup option command
+		|""%1"" can not be used in scheduled jobs.';ru='Команда с
+		|вариантом запуска ""%1"" не может использоваться в регламентных заданиях.'");
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, String(ItemCommand.StartVariant));
 		ShowMessageBox(, ErrorText);
 		If CheckBoxChanged Then
@@ -1117,8 +1117,8 @@ Procedure SetVisibleEnabled(Registration = False)
 		ElsIf TypeOf(SafeMode) = Type("String") Then
 			Items.PagesSafeModeWithPermissions.CurrentPage = Items.PagePersonalSecurityProfile;
 			Items.DecorationPersonalSecurityProfileLabel.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Additional report or data processor will connect to"
-"application using ""personal"" security profile %1 which  allows only following operations:';ru='Дополнительный отчет или обработка будет подключаться к программе с использованием ""персонального"" профиля безопасности %1, в котором будут разрешены только следующие операции:'"), SafeMode);
+				NStr("en='Additional report or data processor will connect to
+		|application using ""personal"" security profile %1 which  allows only following operations:';ru='Дополнительный отчет или обработка будет подключаться к программе с использованием ""персонального"" профиля безопасности %1, в котором будут разрешены только следующие операции:'"), SafeMode);
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
 				NStr("en='%1 is not the correct connection mode for additional reports and data processors that require permissions to use security profiles!';ru='%1 не является корректным режимом подключения для дополнительных отчетов и обработок, требующих разрешений на использование профилей безопасности!'"),

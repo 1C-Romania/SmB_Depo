@@ -1318,24 +1318,24 @@ Function CatalogsNamesFilesStorage(FilesOwner, NotCallingException = False) Expo
 		If Metadata.Catalogs.Find(KeyAndValue.Key) = Undefined Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while determining catalogs names to store files."
-"In files owner of"
-"the type ""%1"" nonexistent catalog ""%2"" is specified.';ru='Ошибка при определении имен справочников для хранения файлов."
-"У владельца файлов"
-"типа ""%1"" указан несуществующий справочник ""%2"".'"),
+				NStr("en='An error occurred while determining catalogs names to store files.
+		|In files owner of
+		|the type ""%1"" nonexistent catalog ""%2"" is specified.';ru='Ошибка при определении имен справочников для хранения файлов.
+		|У владельца файлов
+		|типа ""%1"" указан несуществующий справочник ""%2"".'"),
 				String(TypeOfOwnerFiles),
 				String(KeyAndValue.Key));
 				
 		ElsIf Right(KeyAndValue.Key, StrLen("AttachedFiles"))<> "AttachedFiles" Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='An error occurred while determining catalogs names to store files."
-"In files owner of"
-"the type ""%1"" catalog"
-"name ""%2"" is specified without ending ""AttachedFiles"".';ru='Ошибка при определении имен справочников для хранения файлов."
-"У владельца файлов"
-"типа ""%1"" указано"
-"имя справочника ""%2"" без окончания ""ПрисоединенныеФайлы"".'"),
+				NStr("en='An error occurred while determining catalogs names to store files.
+		|In files owner of
+		|the type ""%1"" catalog
+		|name ""%2"" is specified without ending ""AttachedFiles"".';ru='Ошибка при определении имен справочников для хранения файлов.
+		|У владельца файлов
+		|типа ""%1"" указано
+		|имя справочника ""%2"" без окончания ""ПрисоединенныеФайлы"".'"),
 				String(TypeOfOwnerFiles),
 				String(KeyAndValue.Key));
 			
@@ -1345,11 +1345,11 @@ Function CatalogsNamesFilesStorage(FilesOwner, NotCallingException = False) Expo
 		ElsIf KeyAndValue.Value = True Then
 			If MainCatalogSpecified Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='An error occurred while determining catalogs names to store files."
-"Files owner of the"
-"type ""%1"" has main catalog specified more than ones.';ru='Ошибка при определении имен справочников для хранения файлов."
-"У владельца"
-"файлов типа ""%1"" основной справочник указан более одного раза.'"),
+					NStr("en='An error occurred while determining catalogs names to store files.
+		|Files owner of the
+		|type ""%1"" has main catalog specified more than ones.';ru='Ошибка при определении имен справочников для хранения файлов.
+		|У владельца
+		|файлов типа ""%1"" основной справочник указан более одного раза.'"),
 					String(TypeOfOwnerFiles),
 					String(KeyAndValue.Key));
 			EndIf;
@@ -1364,11 +1364,11 @@ Function CatalogsNamesFilesStorage(FilesOwner, NotCallingException = False) Expo
 		EndIf;
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred while determining catalogs names to store files."
-"Files owner of the"
-"type ""%1"" does not have catalogs to store files.';ru='Ошибка при определении имен справочников для хранения файлов."
-"У владельца"
-"файлов типа ""%1"" не имеется справочников для хранения файлов.'"),
+			NStr("en='An error occurred while determining catalogs names to store files.
+		|Files owner of the
+		|type ""%1"" does not have catalogs to store files.';ru='Ошибка при определении имен справочников для хранения файлов.
+		|У владельца
+		|файлов типа ""%1"" не имеется справочников для хранения файлов.'"),
 			String(TypeOfOwnerFiles));
 	EndIf;
 	
@@ -1402,9 +1402,9 @@ Function CatalogNameStorageFiles(FilesOwner, CatalogName = "",
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF +
-			NStr("en='Owner of file ""%1"" of"
-"the type ""%2"" does not have catalogs to store files.';ru='У владельца файлов"
-"""%1"" типа ""%2"" нет справочников для хранения файлов.'"),
+			NStr("en='Owner of file ""%1"" of
+		|the type ""%2"" does not have catalogs to store files.';ru='У владельца файлов
+		|""%1"" типа ""%2"" нет справочников для хранения файлов.'"),
 			String(FilesOwner),
 			String(TypeOf(FilesOwner)));
 	EndIf;
@@ -1420,9 +1420,9 @@ Function CatalogNameStorageFiles(FilesOwner, CatalogName = "",
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF +
-			NStr("en='Owner of file ""%1"" of"
-"the type ""%2"" does not have catalog ""%3"" to store files.';ru='У владельца файлов"
-"""%1"" типа ""%2"" нет справочника ""%3"" для хранения файлов.'"),
+			NStr("en='Owner of file ""%1"" of
+		|the type ""%2"" does not have catalog ""%3"" to store files.';ru='У владельца файлов
+		|""%1"" типа ""%2"" нет справочника ""%3"" для хранения файлов.'"),
 			String(FilesOwner),
 			String(TypeOf(FilesOwner)),
 			String(CatalogName));
@@ -1445,9 +1445,9 @@ Function CatalogNameStorageFiles(FilesOwner, CatalogName = "",
 	EndIf;
 	
 	TemplateErrorReasons = 
-		NStr("en='Main catalog for file storage"
-"is not specified in owner of file ""%1"" of the type ""%2"".';ru='У владельца файлов"
-"""%1"" типа ""%2"" не указан основной справочник для хранения файлов.'") + Chars.LF;
+		NStr("en='Main catalog for file storage
+		|is not specified in owner of file ""%1"" of the type ""%2"".';ru='У владельца файлов
+		|""%1"" типа ""%2"" не указан основной справочник для хранения файлов.'") + Chars.LF;
 			
 	CauseErrors = StringFunctionsClientServer.PlaceParametersIntoString(
 		TemplateErrorReasons, String(FilesOwner), String(TypeOf(FilesOwner)));
@@ -1867,13 +1867,13 @@ EndFunction
 Function ErrorTextOnSavingFileInVolume(Val ErrorInfo, Val File)
 	
 	Return StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='An error occurred while saving"
-"file in volume: ""%1""."
-""
-"Ref to file: ""%2"".';ru='Ошибка, при сохранении"
-"файла в томе: ""%1""."
-""
-"Ссылка на файл: ""%2"".'"),
+		NStr("en='An error occurred while saving
+		|file in volume: ""%1"".
+		|
+		|Ref to file: ""%2"".';ru='Ошибка, при сохранении
+		|файла в томе: ""%1"".
+		|
+		|Ссылка на файл: ""%2"".'"),
 		ErrorInfo,
 		GetURL(File) );
 	

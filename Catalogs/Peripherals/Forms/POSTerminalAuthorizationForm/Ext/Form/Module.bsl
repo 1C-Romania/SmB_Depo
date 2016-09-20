@@ -207,14 +207,14 @@ Function CardCodeReceived(CardCode, TracksData)
 			CardNumber = Left(CardData, SeparatorPosition - 1);
 			Items.CardNumber.Visible = True;
 		Else
-			CommonUseClientServer.MessageToUser(NStr("en='Invalid card is specified or an error occurred while reading the card."
-"Repeat reading or read another card';ru='Указана неверная карта или произошла ошибка при считывании карты."
-"Повторите считывание или считайте другую карту'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Invalid card is specified or an error occurred while reading the card.
+		|Repeat reading or read another card';ru='Указана неверная карта или произошла ошибка при считывании карты.
+		|Повторите считывание или считайте другую карту'"));
 		EndIf;
 	Else
-		CommonUseClientServer.MessageToUser(NStr("en='Invalid card is specified or an error occurred while reading the card."
-"Repeat reading or read another card';ru='Указана неверная карта или произошла ошибка при считывании карты."
-"Повторите считывание или считайте другую карту'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Invalid card is specified or an error occurred while reading the card.
+		|Repeat reading or read another card';ru='Указана неверная карта или произошла ошибка при считывании карты.
+		|Повторите считывание или считайте другую карту'"));
 	EndIf;
 	
 	RefreshDataRepresentation();
@@ -231,9 +231,9 @@ Procedure AmountTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
 	   
 		StandardProcessing = False;
 		StructureValues = New Structure;
-		StructureValues.Insert("Warning", NStr("en='Payment amount by card exceeds required non cash payment."
-"Value will be changed to the maximum.';ru='Сумма оплаты по карте превышает необходимую безналичную оплату."
-"Значение будет изменено на максимально возможное.'"));
+		StructureValues.Insert("Warning", NStr("en='Payment amount by card exceeds required non cash payment.
+		|Value will be changed to the maximum.';ru='Сумма оплаты по карте превышает необходимую безналичную оплату.
+		|Значение будет изменено на максимально возможное.'"));
 		StructureValues.Insert("Value", Format(Items.Amount.MaxValue, "ND=15; NFD=2; NZ=0; NG=0; NN=1"));
 		
 		ValueList = New ValueList;

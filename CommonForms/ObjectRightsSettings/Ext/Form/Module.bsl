@@ -16,9 +16,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If PossibleRights.ByRefsTypes[TypeOf(ObjectReference)] = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Access rights"
-"are not set for the %1 type objects.';ru='Права"
-"доступа не настраиваются для объектов типа ""%1"".'"),
+			NStr("en='Access rights
+		|are not set for the %1 type objects.';ru='Права
+		|доступа не настраиваются для объектов типа ""%1"".'"),
 			String(TypeOf(ObjectReference)));
 	EndIf;
 	
@@ -782,17 +782,17 @@ Procedure CheckOnPosibilityOfRightsChanging(Cancel, CheckOfDeletion = False)
 		Cancel = True;
 		
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='These rights are inherited, they can be changed in"
-"the form of rights setting of the higher %1 folder.';ru='Эти права унаследованы, их можно изменить"
-"в форме настройки прав вышестоящей папки ""%1"".'"),
+			NStr("en='These rights are inherited, they can be changed in
+		|the form of rights setting of the higher %1 folder.';ru='Эти права унаследованы, их можно изменить
+		|в форме настройки прав вышестоящей папки ""%1"".'"),
 			CurrentSettingOwner);
 		
 		If CheckOfDeletion Then
 			MessageText = MessageText + Chars.LF + Chars.LF
 				+ StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='To delete all inherited rights,"
-"clear the %1 check box.';ru='Для удаления всех унаследованных"
-"прав следует снять флажок ""%1"".'"),
+					NStr("en='To delete all inherited rights,
+		|clear the %1 check box.';ru='Для удаления всех унаследованных
+		|прав следует снять флажок ""%1"".'"),
 					Items.InheritParentsRights.Title);
 		EndIf;
 	EndIf;

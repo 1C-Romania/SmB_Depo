@@ -18,18 +18,18 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If CertificateAddress = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Unable to open the"
-"%1 certificate as it is not found in the catalog.';ru='Не удалось открыть сертификат ""%1"","
-"т.к. он не найден в справочнике.'"), Parameters.Ref);
+				NStr("en='Unable to open the
+		|%1 certificate as it is not found in the catalog.';ru='Не удалось открыть сертификат ""%1"",
+		|т.к. он не найден в справочнике.'"), Parameters.Ref);
 		EndIf;
 	Else // Imprint
 		CertificateAddress = CertificateAddress(Parameters.Imprint, UUID);
 		
 		If CertificateAddress = Undefined Then
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Unable to open certificate as it was"
-"not found using the %1 thumbprint.';ru='Не удалось открыть сертификат, т.к. он не найден"
-"по отпечатку ""%1"".'"), Parameters.Imprint);
+				NStr("en='Unable to open certificate as it was
+		|not found using the %1 thumbprint.';ru='Не удалось открыть сертификат, т.к. он не найден
+		|по отпечатку ""%1"".'"), Parameters.Imprint);
 		EndIf;
 	EndIf;
 	

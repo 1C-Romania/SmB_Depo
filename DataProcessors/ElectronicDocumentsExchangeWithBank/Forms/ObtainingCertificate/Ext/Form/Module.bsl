@@ -37,11 +37,11 @@ Procedure OnOpen(Cancel)
 			CertificatesOnDevice = ElectronicDocumentsServiceClient.DeSerializedData(CertificatesOnDevice);
 		EndIf
 	Except
-		ErrorTemplate = NStr("en='Bank certificates receiving error."
-"Error code:"
-"%1 %2';ru='Ошибка получения банковских сертификатов."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Bank certificates receiving error.
+		|Error code:
+		|%1 %2';ru='Ошибка получения банковских сертификатов.
+		|Код
+		|ошибки: %1 %2'");
 		If BankApplication = PredefinedValue("Enum.BankApplications.ExchangeThroughTheAdditionalInformationProcessor") Then
 			ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		Else
@@ -177,11 +177,11 @@ Procedure ContinueReceivingCertificate(Authentication, Parameters) Export
 	Try
 		XMLCertificate = ExternalAttachableModule.ComplementCertificate(XMLCertificate);
 	Except
-		ErrorTemplate = NStr("en='Certificate data addition error."
-"Error code:"
-"%1 %2';ru='Ошибка дополнения данных сертификата."
-"Код"
-"ошибки: %1 %2'");
+		ErrorTemplate = NStr("en='Certificate data addition error.
+		|Error code:
+		|%1 %2';ru='Ошибка дополнения данных сертификата.
+		|Код
+		|ошибки: %1 %2'");
 		If BankApplication = PredefinedValue("Enum.BankApplications.ExchangeThroughTheAdditionalInformationProcessor") Then
 			ErrorDetails = ExternalAttachableModule.ErrorDetails();
 		Else

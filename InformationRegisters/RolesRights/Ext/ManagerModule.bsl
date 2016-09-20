@@ -311,15 +311,15 @@ Function MetadataObjectID(TableIdentifiers, MetadataObject)
 	TableRow = TableIdentifiers.Find(FullName, "FullName");
 	If TableRow = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID()."
-""
-"For the metadata"
-"object %1 an"
-"identifier is not found in the Metadata objects identifiers catalog.';ru='Ошибка при выполнении функции ОбщегоНазначения.ИдентификаторОбъектаМетаданных()."
-""
-"Для объекта"
-"метаданных ""%1"""
-"не найден идентификатор в справочнике ""Идентификаторы объектов метаданных"".'")
+			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID().
+		|
+		|For the metadata
+		|object %1 an
+		|identifier is not found in the Metadata objects identifiers catalog.';ru='Ошибка при выполнении функции ОбщегоНазначения.ИдентификаторОбъектаМетаданных().
+		|
+		|Для объекта
+		|метаданных ""%1""
+		|не найден идентификатор в справочнике ""Идентификаторы объектов метаданных"".'")
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 			FullName);
 	EndIf;

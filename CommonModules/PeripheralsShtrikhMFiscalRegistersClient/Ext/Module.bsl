@@ -56,13 +56,13 @@ Function ConnectDevice(DriverObject, Parameters, ConnectionParameters, Output_Pa
 	 Or PartialCuttingSymbolCode  = Undefined
 	 Or LogDriver                 = Undefined Then
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Device parameters are not set."
-"For the correct work of the device it is necessary to specify the parameters of its work."
-"You can do it using the Parameters setting"
-"form of the peripheral model in the Connection and equipment setting form.';ru='Не настроены параметры устройства."
-"Для корректной работы устройства необходимо задать параметры его работы."
-"Сделать это можно при помощи формы"
-"""Настройка параметров"" модели подключаемого оборудования в форме ""Подключение и настройка оборудования"".'"));
+		Output_Parameters.Add(NStr("en='Device parameters are not set.
+		|For the correct work of the device it is necessary to specify the parameters of its work.
+		|You can do it using the Parameters setting
+		|form of the peripheral model in the Connection and equipment setting form.';ru='Не настроены параметры устройства.
+		|Для корректной работы устройства необходимо задать параметры его работы.
+		|Сделать это можно при помощи формы
+		|""Настройка параметров"" модели подключаемого оборудования в форме ""Подключение и настройка оборудования"".'"));
 
 		Result = False;
 	EndIf;

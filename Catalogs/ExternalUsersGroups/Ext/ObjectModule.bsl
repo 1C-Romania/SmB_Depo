@@ -164,9 +164,9 @@ Procedure BeforeWrite(Cancel)
 			   AND ParentAuthorizationObjectType <> TypeOfAuthorizationObjects Then
 				
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Kind of participants shall be"
-"""%1"" as in the upstream group of external users ""%2"".';ru='Вид участников группы должен"
-"быть ""%1"", как у вышестоящей группы внешних пользователей ""%2"".'"),
+					NStr("en='Kind of participants shall be
+		|""%1"" as in the upstream group of external users ""%2"".';ru='Вид участников группы должен
+		|быть ""%1"", как у вышестоящей группы внешних пользователей ""%2"".'"),
 					ParentAuthorizationObjectType.Metadata().Synonym,
 					Parent);
 			EndIf;
@@ -189,9 +189,9 @@ Procedure BeforeWrite(Cancel)
 			QueryResult = Query.Execute();
 			If Not QueryResult.IsEmpty() Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Cannot change a kind"
-"of participants of group ""%1"" as it has subgroups.';ru='Невозможно изменить"
-"вид участников группы ""%1"", так как у нее имеются подгруппы.'"),
+					NStr("en='Cannot change a kind
+		|of participants of group ""%1"" as it has subgroups.';ru='Невозможно изменить
+		|вид участников группы ""%1"", так как у нее имеются подгруппы.'"),
 					Description);
 			EndIf;
 			
@@ -228,9 +228,9 @@ Procedure BeforeWrite(Cancel)
 						Selection.TypeOfAuthorizationObjects.Metadata().Synonym;
 				EndIf;
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Cannot change a kind"
-"of participants of group ""%1"" as it has subgroup ""%2"" with another kind of participants ""%3"".';ru='Невозможно"
-"изменить вид участников группы ""%1"", так как у нее имеется подгруппа ""%2"" с другим видом участников ""%3"".'"),
+					NStr("en='Cannot change a kind
+		|of participants of group ""%1"" as it has subgroup ""%2"" with another kind of participants ""%3"".';ru='Невозможно
+		|изменить вид участников группы ""%1"", так как у нее имеется подгруппа ""%2"" с другим видом участников ""%3"".'"),
 					Description,
 					Selection.RefPresentation,
 					OtherAuthorizationObjectTypePresentation);

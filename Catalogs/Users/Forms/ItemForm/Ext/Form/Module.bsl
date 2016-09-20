@@ -18,8 +18,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		If Not CanChangeUsers Then
 			If Object.Ref.IsEmpty() Then
 				Raise
-					NStr("en='Creation of new users"
-"is not supported in the demo mode.';ru='В демонстрационном режиме не поддерживается создание новых пользователей.'");
+					NStr("en='Creation of new users
+		|is not supported in the demo mode.';ru='В демонстрационном режиме не поддерживается создание новых пользователей.'");
 			EndIf;
 			ReadOnly = True;
 		EndIf;
@@ -385,9 +385,9 @@ Procedure CanLogOnToApplicationOnChange(Item)
 	If Object.DeletionMark AND CanLogOnToApplication Then
 		CanLogOnToApplication = False;
 		ShowMessageBox(,
-			NStr("en='To allow access to the"
-"application remove the mark for deletion of this user.';ru='Чтобы разрешить вход"
-"в программу, требуется снять пометку на удаление с этого пользователя.'"));
+			NStr("en='To allow access to the
+		|application remove the mark for deletion of this user.';ru='Чтобы разрешить вход
+		|в программу, требуется снять пометку на удаление с этого пользователя.'"));
 		Return;
 	EndIf;
 	
@@ -1398,9 +1398,9 @@ Procedure DefineUserInconsistenciesWithUserIB(WriteParameters = Undefined)
 			EndIf;
 			Items.PropertiesMismatchNote.Title =
 				StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='The following infobase user properties differ from those specified"
-"in this form: %1.';ru='Следующие свойства пользователя информационной базы отличаются"
-"от указанных в этой форме: %1.'"), StringPropertyClarification)
+					NStr("en='The following infobase user properties differ from those specified
+		|in this form: %1.';ru='Следующие свойства пользователя информационной базы отличаются
+		|от указанных в этой форме: %1.'"), StringPropertyClarification)
 				+ Chars.LF
 				+ ?(ShowCommandsDifferences,
 					NStr("en='Click ""Write"" to resolve the differences and not to show this warning message.';ru='Нажмите ""Записать"", чтобы устранить различия и не выводить это предупреждение.'"),

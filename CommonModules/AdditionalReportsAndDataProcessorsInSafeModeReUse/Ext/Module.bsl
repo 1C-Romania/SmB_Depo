@@ -95,19 +95,19 @@ Function Dictionary() Export
 	
 	Presentation = NStr("en='Data transfer to the Internet';ru='Передача данных в сеть Интернет'");
 	Definition = NStr("en='Additional report or processing will be allowed to send the data to the Internet network';ru='Дополнительному отчету или обработке будет разрешено отправлять данные в сеть Интернет'");
-	Effects = NStr("en='Warning! Data sending potentially can"
-"used by an additional report or data processor for"
-"acts that are not alleged by administrator of infobases."
-""
-"Use this additional report or data processor only if you trust"
-"the developer and control restriction (server, protocol and port),"
-"attached to issued permissions.';ru='Внимание! Отправка данных потенциально может использоваться дополнительным"
-"отчетом или обработкой для совершения действий, не предполагаемых администратором"
-"информационной базы."
-""
-"Используйте данный дополнительный отчет или обработку только в том случае, если Вы доверяете"
-"ее разработчику и контролируйте ограничения (сервер, протокол и порт), накладываемые на"
-"выданные разрешения.'");
+	Effects = NStr("en='Warning! Data sending potentially can
+		|used by an additional report or data processor for
+		|acts that are not alleged by administrator of infobases.
+		|
+		|Use this additional report or data processor only if you trust
+		|the developer and control restriction (server, protocol and port),
+		|attached to issued permissions.';ru='Внимание! Отправка данных потенциально может использоваться дополнительным
+		|отчетом или обработкой для совершения действий, не предполагаемых администратором
+		|информационной базы.
+		|
+		|Используйте данный дополнительный отчет или обработку только в том случае, если Вы доверяете
+		|ее разработчику и контролируйте ограничения (сервер, протокол и порт), накладываемые на
+		|выданные разрешения.'");
 	
 	Parameters = ParameterTable();
 	AddParameter(Parameters, "Host", NStr("en='to server %1';ru='на сервер %1'"), NStr("en='on any server';ru='на любой сервера'"));
@@ -129,19 +129,19 @@ Function Dictionary() Export
 	
 	Presentation = NStr("en='References to the web services in the Internet';ru='Обращение к веб-сервисам в сети Интернет'");
 	Definition = NStr("en='Additional report or data processor will be permitted to address the web-services located in the Internet (in this case, additional report or data processor can receive and transfer information from the Internet).';ru='Дополнительному отчету или обработке будет разрешено обращаться к веб-сервисам, расположенным в сети Интернет (при этом возможно как получение дополнительным отчетом или обработкой информации из сети Интернет, так и передача.'");
-	Effects = NStr("en='Warning! Appeal to web services potentially"
-"can be used by an additional report or data"
-"processor for actions that are not alleged by infobases administrator."
-""
-"Use this additional report or data processor only if you"
-"trust the developer and control restriction (connection address), attached"
-"to issued permissions.';ru='Внимание! Обращение к веб-сервисам потенциально может использоваться дополнительным"
-"отчетом или обработкой для совершения действий, не предполагаемых администратором"
-"информационной базы."
-""
-"Используйте данный дополнительный отчет или обработку только в том случае, если Вы доверяете"
-"ее разработчику и контролируйте ограничения (адрес подключения), накладываемые на"
-"выданные разрешения.'");
+	Effects = NStr("en='Warning! Appeal to web services potentially
+		|can be used by an additional report or data
+		|processor for actions that are not alleged by infobases administrator.
+		|
+		|Use this additional report or data processor only if you
+		|trust the developer and control restriction (connection address), attached
+		|to issued permissions.';ru='Внимание! Обращение к веб-сервисам потенциально может использоваться дополнительным
+		|отчетом или обработкой для совершения действий, не предполагаемых администратором
+		|информационной базы.
+		|
+		|Используйте данный дополнительный отчет или обработку только в том случае, если Вы доверяете
+		|ее разработчику и контролируйте ограничения (адрес подключения), накладываемые на
+		|выданные разрешения.'");
 	
 	Parameters = ParameterTable();
 	AddParameter(Parameters, "WsdlDestination", NStr("en='by address %1';ru='по адресу %1'"), NStr("en='by any address';ru='по любому адресу'"));
@@ -161,21 +161,21 @@ Function Dictionary() Export
 	
 	Presentation = NStr("en='Creating COM-object';ru='Создание COM-объекта'");
 	Definition = NStr("en='An additional report or processing will be allowed to use the mechanisms of external software using the COM-connection';ru='Дополнительному отчету или обработке будет разрешено использовать механизмы внешнего программного обеспечения с помощью COM-соединения'");
-	Effects = NStr("en='Warning! Use of thirdparty software funds can"
-"be used by an additional report or data processor for"
-"actions that are not alleged by infobase administrator, and also for"
-"unauthorized circumvention of the restrictions imposed by the additional processing in safe mode."
-""
-"Use this additional report or data processor only if"
-"you trust the developer and control restriction (application ID),"
-"attached to issued permissions.';ru='Внимание! Использование средств стороннего программного обеспечения может использоваться"
-"дополнительным отчетом или обработкой для совершения действий, не предполагаемых администратором"
-"информационной базы, а также для несанкционированного обхода ограничений, накладываемых на дополнительную обработку"
-"в безопасном режиме."
-""
-"Используйте данный дополнительный отчет или обработку только в том случае, если Вы доверяете"
-"ее разработчику и контролируйте ограничения (программный идентификатор), накладываемые на"
-"выданные разрешения.'");
+	Effects = NStr("en='Warning! Use of thirdparty software funds can
+		|be used by an additional report or data processor for
+		|actions that are not alleged by infobase administrator, and also for
+		|unauthorized circumvention of the restrictions imposed by the additional processing in safe mode.
+		|
+		|Use this additional report or data processor only if
+		|you trust the developer and control restriction (application ID),
+		|attached to issued permissions.';ru='Внимание! Использование средств стороннего программного обеспечения может использоваться
+		|дополнительным отчетом или обработкой для совершения действий, не предполагаемых администратором
+		|информационной базы, а также для несанкционированного обхода ограничений, накладываемых на дополнительную обработку
+		|в безопасном режиме.
+		|
+		|Используйте данный дополнительный отчет или обработку только в том случае, если Вы доверяете
+		|ее разработчику и контролируйте ограничения (программный идентификатор), накладываемые на
+		|выданные разрешения.'");
 	
 	Parameters = ParameterTable();
 	AddParameter(Parameters, "ProgId", NStr("en='with application ID %1';ru='с программным идентификатором %1'"), NStr("en='with any application ID';ru='с любым программным идентификатором'"));
@@ -195,21 +195,21 @@ Function Dictionary() Export
 	
 	Presentation = NStr("en='External component object creation';ru='Создание объекта внешней компоненту'");
 	Definition = NStr("en='The additional report or processing will be allowed to use the mechanisms of the external software using the creation of the external component object that is provided in the configuration template';ru='Дополнительному отчету или обработке будет разрешено использовать механизмы внешнего программного обеспечения с помощью создания объекта внешней компоненты, поставляемой в макете конфигурации'");
-	Effects = NStr("en='Warning! Use of thirdparty software funds can"
-"be used by an additional report or data processor for"
-"actions that are not alleged by infobase administrator, and also for"
-"unauthorized circumvention of the restrictions imposed by the additional processing in safe mode."
-""
-"Use this additional report or data processor only if you"
-"trust the developer and control restriction (template name, from which connection"
-"is external component), attached to issued permissions.';ru='Внимание! Использование средств стороннего программного обеспечения может использоваться"
-"дополнительным отчетом или обработкой для совершения действий, не предполагаемых администратором"
-"информационной базы, а также для несанкционированного обхода ограничений, накладываемых на дополнительную обработку"
-"в безопасном режиме."
-""
-"Используйте данный дополнительный отчет или обработку только в том случае, если Вы доверяете"
-"ее разработчику и контролируйте ограничения (имя макета, из которого выполняется подключение внешней"
-"компоненты), накладываемые на выданные разрешения.'");
+	Effects = NStr("en='Warning! Use of thirdparty software funds can
+		|be used by an additional report or data processor for
+		|actions that are not alleged by infobase administrator, and also for
+		|unauthorized circumvention of the restrictions imposed by the additional processing in safe mode.
+		|
+		|Use this additional report or data processor only if you
+		|trust the developer and control restriction (template name, from which connection
+		|is external component), attached to issued permissions.';ru='Внимание! Использование средств стороннего программного обеспечения может использоваться
+		|дополнительным отчетом или обработкой для совершения действий, не предполагаемых администратором
+		|информационной базы, а также для несанкционированного обхода ограничений, накладываемых на дополнительную обработку
+		|в безопасном режиме.
+		|
+		|Используйте данный дополнительный отчет или обработку только в том случае, если Вы доверяете
+		|ее разработчику и контролируйте ограничения (имя макета, из которого выполняется подключение внешней
+		|компоненты), накладываемые на выданные разрешения.'");
 	
 	Parameters = ParameterTable();
 	AddParameter(Parameters, "TemplateName", NStr("en='from template %1';ru='из макета %1'"), NStr("en='from any template';ru='из любого макета'"));

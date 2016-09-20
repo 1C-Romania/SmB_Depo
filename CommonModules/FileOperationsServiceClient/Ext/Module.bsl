@@ -103,9 +103,9 @@ Function PossibilityToReleaseFile(ObjectRef,
 		Return True;
 	ElsIf IsEditing.IsEmpty() Then
 		ErrorString = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Impossible to unlock"
-"file ""%1"" due to it is occupied by nobody.';ru='Невозможно освободить файл ""%1"","
-"т.к. он никем не занят.'"),
+			NStr("en='Impossible to unlock
+		|file ""%1"" due to it is occupied by nobody.';ru='Невозможно освободить файл ""%1"",
+		|т.к. он никем не занят.'"),
 			String(ObjectRef));
 		Return False;
 	Else
@@ -116,9 +116,9 @@ Function PossibilityToReleaseFile(ObjectRef,
 		EndIf;
 		
 		ErrorString = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Impossible to unlock"
-"file ""%1"" due to it is occupied by user ""%2"".';ru='Невозможно освободить файл ""%1"","
-"т.к. он занят пользователем ""%2"".'"),
+			NStr("en='Impossible to unlock
+		|file ""%1"" due to it is occupied by user ""%2"".';ru='Невозможно освободить файл ""%1"",
+		|т.к. он занят пользователем ""%2"".'"),
 			String(ObjectRef),
 			String(IsEditing));
 		Return False;
@@ -163,9 +163,9 @@ Procedure MoveFilesToFolder(ObjectsRef, Folder) Export
 			NStr("en='File transfer';ru='Перенос файла'"),
 			FileData.URL,
 			StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='The"
-"""%1"" file is moved to the ""%2"" folder.';ru='Файл"
-"""%1"" перенесен в папку ""%2"".'"),
+				NStr("en='The
+		|""%1"" file is moved to the ""%2"" folder.';ru='Файл
+		|""%1"" перенесен в папку ""%2"".'"),
 				String(FileData.Ref),
 				String(Folder)),
 			PictureLib.Information32);
@@ -231,26 +231,26 @@ Procedure EndEditWithExtension(ExecuteParameters)
 		If ExecuteParameters.ApplyToAll = False Then
 			If Not IsBlankString(ExecuteParameters.FullPathToFile) Then
 				WarningString = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Failed to put"
-"file ""%1"""
-"(%2) to file storage due to it has not been found in the work directory."
-""
-"Unlock file?';ru='Не удалось поместить файл"
-"""%1"" (%2),"
-"в хранилище файлов, т.к. он не найден в рабочем каталоге."
-""
-"Освободить файл?'"),
+					NStr("en='Failed to put
+		|file ""%1""
+		|(%2) to file storage due to it has not been found in the work directory.
+		|
+		|Unlock file?';ru='Не удалось поместить файл
+		|""%1"" (%2),
+		|в хранилище файлов, т.к. он не найден в рабочем каталоге.
+		|
+		|Освободить файл?'"),
 					String(ExecuteParameters.FileData.Ref),
 					ExecuteParameters.FullPathToFile);
 			Else
 				WarningString = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Failed to place file"
-"""%1"" in files storage due to it has not been found in the work directory."
-""
-"Unlock file?';ru='Не удалось поместить файл ""%1"" в хранилище файлов:"
-"Файл не найден в рабочем каталоге."
-""
-"Освободить файл?'"),
+					NStr("en='Failed to place file
+		|""%1"" in files storage due to it has not been found in the work directory.
+		|
+		|Unlock file?';ru='Не удалось поместить файл ""%1"" в хранилище файлов:
+		|Файл не найден в рабочем каталоге.
+		|
+		|Освободить файл?'"),
 					String(ExecuteParameters.FileData.Ref));
 				WarningString = WarningString + ".";
 			EndIf;
@@ -269,9 +269,9 @@ Procedure EndEditWithExtension(ExecuteParameters)
 		ExecuteParameters.NewVersionFile.SetReadOnly(NOT ReadOnly);
 		ExecuteParameters.NewVersionFile.SetReadOnly(ReadOnly);
 	Except
-		ErrorText = NStr("en='Failed to place the ""%1"" file in"
-"file storage, it may be locked by another application.';ru='Не удалось поместить файл"
-"""%1"" в хранилище файлов, возможно он заблокирован другой программой.'");
+		ErrorText = NStr("en='Failed to place the ""%1"" file in
+		|file storage, it may be locked by another application.';ru='Не удалось поместить файл
+		|""%1"" в хранилище файлов, возможно он заблокирован другой программой.'");
 		ErrorText = StrReplace(ErrorText, "%1", String(ExecuteParameters.FileData.Ref));
 		Raise ErrorText + Chars.LF + Chars.LF + DetailErrorDescription(ErrorInfo());
 	EndTry;
@@ -399,9 +399,9 @@ Procedure FinishEditingWithExtensionAfterCheckingEncrypted(NOTSpecified, Execute
 	Else
 		SizeInMB = FileInformation.Size / (1024 * 1024);
 		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Transfer of ""%1"" file is in progress (%2 Mb)..."
-"Please, wait.';ru='Выполняется передача файла ""%1"" (%2 Мб)..."
-"Пожалуйста, подождите.'"),
+			NStr("en='Transfer of ""%1"" file is in progress (%2 Mb)...
+		|Please, wait.';ru='Выполняется передача файла ""%1"" (%2 Мб)...
+		|Пожалуйста, подождите.'"),
 			FileInformation.BaseName,
 			FileFunctionsServiceClientServer.GetStringWithFileSize(SizeInMB));
 		Status(ExplanationText);
@@ -417,13 +417,13 @@ Procedure FinishEditingWithExtensionAfterCheckingEncrypted(NOTSpecified, Execute
 			ErrorInfo = ErrorInfo();
 			
 			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Failed to place the file in file storage"
-"due to: ""%1""."
-""
-"Repeat operation?';ru='Не удалось поместить файл в"
-"хранилище файлов по причине: ""%1""."
-""
-"Повторить операцию?'"),
+				NStr("en='Failed to place the file in file storage
+		|due to: ""%1"".
+		|
+		|Repeat operation?';ru='Не удалось поместить файл в
+		|хранилище файлов по причине: ""%1"".
+		|
+		|Повторить операцию?'"),
 				BriefErrorDescription(ErrorInfo));
 			
 			Notification  = New NotifyDescription("FinishEditingWithExtensionAfterCheckingEncryptedRepeat", ThisObject, ExecuteParameters);
@@ -512,13 +512,13 @@ Procedure FinishEditingWithExtensionAfterDeletingFileFromWorkingDirectory(Result
 	
 	If ExecuteParameters.ShowAlert Then
 		If ExecuteParameters.VersionUpdated Then
-			ExplanationTemplate = NStr("en='File"
-"""% 1"" is updated and released.';ru='Файл"
-"""%1"" обновлен и освобожден.'");
+			ExplanationTemplate = NStr("en='File
+		|""% 1"" is updated and released.';ru='Файл
+		|""%1"" обновлен и освобожден.'");
 		Else
-			ExplanationTemplate = NStr("en='File"
-"""% 1"" has not been changed and unlocked.';ru='Файл"
-"""%1"" не изменился и освобожден.'");
+			ExplanationTemplate = NStr("en='File
+		|""% 1"" has not been changed and unlocked.';ru='Файл
+		|""%1"" не изменился и освобожден.'");
 		EndIf;
 		
 		ShowUserNotification(
@@ -550,15 +550,15 @@ EndProcedure
 Procedure EndEditingWithExtensionExceptionProcessor(ErrorInfo, ExecuteParameters)
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Failed to place the"
-"""%1"" file to file storage"
-"due to ""%2""."
-""
-"Repeat operation?';ru='Не удалось поместить"
-"файл ""%1"" в"
-"хранилище файлов по причине ""%2""."
-""
-"Повторить операцию?'"),
+		NStr("en='Failed to place the
+		|""%1"" file to file storage
+		|due to ""%2"".
+		|
+		|Repeat operation?';ru='Не удалось поместить
+		|файл ""%1"" в
+		|хранилище файлов по причине ""%2"".
+		|
+		|Повторить операцию?'"),
 		String(ExecuteParameters.FileData.Ref),
 		BriefErrorDescription(ErrorInfo));
 	
@@ -788,13 +788,13 @@ Procedure FinishEditingWithoutExtensionAfterEncryptingFile(DataDescription, Exec
 	NewVersion = ExecuteParameters.FileData.CurrentVersion;
 	If ExecuteParameters.ShowAlert Then
 		If Result.Successfully Then
-			ExplanationTemplate = NStr("en='File"
-"""% 1"" is updated and released.';ru='Файл"
-"""%1"" обновлен и освобожден.'");
+			ExplanationTemplate = NStr("en='File
+		|""% 1"" is updated and released.';ru='Файл
+		|""%1"" обновлен и освобожден.'");
 		Else
-			ExplanationTemplate = NStr("en='File"
-"""% 1"" has not been changed and unlocked.';ru='Файл"
-"""%1"" не изменился и освобожден.'");
+			ExplanationTemplate = NStr("en='File
+		|""% 1"" has not been changed and unlocked.';ru='Файл
+		|""%1"" не изменился и освобожден.'");
 		EndIf;
 		
 		ShowUserNotification(
@@ -826,15 +826,15 @@ EndProcedure
 Procedure FinishEditingExceptionHandler(ErrorInfo, ExecuteParameters) Export
 	
 	ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Failed to place the"
-"""%1"" file to file storage"
-"due to ""%2""."
-""
-"Repeat operation?';ru='Не удалось поместить"
-"файл ""%1"" в"
-"хранилище файлов по причине ""%2""."
-""
-"Повторить операцию?'"),
+		NStr("en='Failed to place the
+		|""%1"" file to file storage
+		|due to ""%2"".
+		|
+		|Repeat operation?';ru='Не удалось поместить
+		|файл ""%1"" в
+		|хранилище файлов по причине ""%2"".
+		|
+		|Повторить операцию?'"),
 		String(ExecuteParameters.ObjectRef),
 		BriefErrorDescription(ErrorInfo));
 	
@@ -1066,15 +1066,15 @@ Procedure UpdateFromFileOnDiskContinued(ExecuteParameters)
 	If ExecuteParameters.ModificationTimeOfSelected < ExecuteParameters.DateFileInBase Then // Newer in the storage.
 		
 		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='File"
-"""%1"" in the file storage has later modification"
-"date (%2) than selected file (%3)."
-""
-"Operation is aborted.';ru='Файл"
-"""%1"" в хранилище файлов имеет более"
-"позднюю дату изменения (%2), чем выбранный файл (%3)."
-""
-"Операция прервана.'"),
+			NStr("en='File
+		|""%1"" in the file storage has later modification
+		|date (%2) than selected file (%3).
+		|
+		|Operation is aborted.';ru='Файл
+		|""%1"" в хранилище файлов имеет более
+		|позднюю дату изменения (%2), чем выбранный файл (%3).
+		|
+		|Операция прервана.'"),
 			String(ExecuteParameters.FileData.Ref),
 			ToLocalTime(ExecuteParameters.DateFileInBase),
 			ToLocalTime(ExecuteParameters.ModificationTimeOfSelected));
@@ -1103,15 +1103,15 @@ Procedure UpdateFromFileOnDiskContinued(ExecuteParameters)
 			If ExecuteParameters.ModificationTimeOfSelected < ChangeTimeInCache Then // There is a newer file in working directory.
 				
 				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='File"
-"""%1"" in working directory has later modification date"
-"(%2) than selected file (%3)."
-""
-"Operation is aborted.';ru='Файл"
-"""%1"" в рабочем каталоге имеет более"
-"позднюю дату изменения (%2), чем выбранный файл (%3)."
-""
-"Операция прервана.'"),
+					NStr("en='File
+		|""%1"" in working directory has later modification date
+		|(%2) than selected file (%3).
+		|
+		|Operation is aborted.';ru='Файл
+		|""%1"" в рабочем каталоге имеет более
+		|позднюю дату изменения (%2), чем выбранный файл (%3).
+		|
+		|Операция прервана.'"),
 					String(ExecuteParameters.FileData.Ref),
 					ToLocalTime(ChangeTimeInCache),
 					ToLocalTime(ExecuteParameters.ModificationTimeOfSelected));
@@ -1127,15 +1127,15 @@ Procedure UpdateFromFileOnDiskContinued(ExecuteParameters)
 					TextDocument.Read(FullFileName);
 				Except
 					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='File"
-"""%1"" in working directory is opened for editing."
-""
-"Finish editing before"
-"updating from file on disk.';ru='Файл"
-"""%1"" в рабочем каталоге открыт для редактирования."
-""
-"Закончите редактирование"
-"перед выполнением обновления из файла на диске.'"),
+						NStr("en='File
+		|""%1"" in working directory is opened for editing.
+		|
+		|Finish editing before
+		|updating from file on disk.';ru='Файл
+		|""%1"" в рабочем каталоге открыт для редактирования.
+		|
+		|Закончите редактирование
+		|перед выполнением обновления из файла на диске.'"),
 						FullFileName);
 					ReturnResultAfterShowWarning(ExecuteParameters.ResultHandler, ErrorText, Undefined);
 					Return;
@@ -1292,9 +1292,9 @@ Procedure LockFileByRefAfterInstallingExtension(ExtensionIsSet, ExecuteParameter
 		NStr("en='File editing';ru='Редактирование файла'"),
 		ExecuteParameters.FileData.URL,
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='The"
-"file ""%1"" busy for editing.';ru='Файл"
-"""%1"" занят для редактирования.'"), String(ExecuteParameters.FileData.Ref)),
+			NStr("en='The
+		|file ""%1"" busy for editing.';ru='Файл
+		|""%1"" занят для редактирования.'"), String(ExecuteParameters.FileData.Ref)),
 		PictureLib.Information32);
 	
 	ReturnResult(ExecuteParameters.ResultHandler, True);
@@ -1437,9 +1437,9 @@ Procedure EditFileByRefAfterInstallingExtension(ExtensionIsSet, ExecuteParameter
 		NStr("en='File editing';ru='Редактирование файла'"),
 		ExecuteParameters.FileData.URL,
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='The"
-"file ""%1"" busy for editing.';ru='Файл"
-"""%1"" занят для редактирования.'"), String(ExecuteParameters.FileData.Ref)),
+			NStr("en='The
+		|file ""%1"" busy for editing.';ru='Файл
+		|""%1"" занят для редактирования.'"), String(ExecuteParameters.FileData.Ref)),
 			PictureLib.Information32);
 	
 	// If it is File without file, then the card is opened.
@@ -1693,13 +1693,13 @@ Procedure UnlockFilesByReferencesAfterInstallingExtension(ExtensionIsSet, Execut
 	
 	ShowQueryBox(
 		Handler,
-		NStr("en='Cancelling files editing"
-"can lead to losing your changes."
-""
-"Continue?';ru='Отмена редактирования"
-"файлов может привести к потере Ваших изменений."
-""
-"Продолжить?'"),
+		NStr("en='Cancelling files editing
+		|can lead to losing your changes.
+		|
+		|Continue?';ru='Отмена редактирования
+		|файлов может привести к потере Ваших изменений.
+		|
+		|Продолжить?'"),
 		QuestionDialogMode.YesNo,
 		,
 		DialogReturnCode.No);
@@ -1816,15 +1816,15 @@ Procedure UnlockFileAfterExtensionInstallation(ExtensionIsSet, ExecuteParameters
 		ExecuteParameters.ResultHandler = PrepareHandlerForDialog(ExecuteParameters.ResultHandler);
 		Handler = New NotifyDescription("UnlockFileAfterAnswerToQuestionCancelEdit", ThisObject, ExecuteParameters);
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Cancellation of"
-"file"
-"""%1"" editing may lead to loss of your changes."
-""
-"Continue?';ru='Отмена"
-"редактирования"
-"файла ""%1"" может привести к потере ваших изменений."
-""
-"Продолжить?'"),
+			NStr("en='Cancellation of
+		|file
+		|""%1"" editing may lead to loss of your changes.
+		|
+		|Continue?';ru='Отмена
+		|редактирования
+		|файла ""%1"" может привести к потере ваших изменений.
+		|
+		|Продолжить?'"),
 			String(ExecuteParameters.ObjectRef));
 		ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No);
 		Return;
@@ -1951,26 +1951,26 @@ Procedure SaveFileWithExpansionChanges(ExecuteParameters)
 	If Not ExecuteParameters.NewVersionFile.Exist() Then
 		If Not IsBlankString(ExecuteParameters.FullPathToFile) Then
 			WarningString = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Failed to place the ""%1"" file in"
-"file storage: File is not found"
-"in working directory: %2."
-""
-"Unlock file?';ru='Не удалось поместить файл"
-"""%1"" в хранилище файлов: Файл"
-"не найден в рабочем каталоге: %2."
-""
-"Освободить файл?'"),
+				NStr("en='Failed to place the ""%1"" file in
+		|file storage: File is not found
+		|in working directory: %2.
+		|
+		|Unlock file?';ru='Не удалось поместить файл
+		|""%1"" в хранилище файлов: Файл
+		|не найден в рабочем каталоге: %2.
+		|
+		|Освободить файл?'"),
 				String(ExecuteParameters.FileData.Ref),
 				ExecuteParameters.FullPathToFile);
 		Else
 			WarningString = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Failed to place the ""%1"" file in"
-"file storage: File is not found in working directory."
-""
-"Unlock file?';ru='Не удалось поместить файл"
-"""%1"" в хранилище файлов: Файл не найден в рабочем каталоге."
-""
-"Освободить файл?'"),
+				NStr("en='Failed to place the ""%1"" file in
+		|file storage: File is not found in working directory.
+		|
+		|Unlock file?';ru='Не удалось поместить файл
+		|""%1"" в хранилище файлов: Файл не найден в рабочем каталоге.
+		|
+		|Освободить файл?'"),
 				String(ExecuteParameters.FileData.Ref));
 		EndIf;
 		
@@ -2096,9 +2096,9 @@ Procedure SaveFileChangesWithExtensionAfterCheckingEncrypted(NOTSpecified, Execu
 	Else
 		SizeInMB = FileInformation.Size / (1024 * 1024);
 		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Transfer of ""%1"" file is in progress (%2 Mb)..."
-"Please, wait.';ru='Выполняется передача файла ""%1"" (%2 Мб)..."
-"Пожалуйста, подождите.'"),
+			NStr("en='Transfer of ""%1"" file is in progress (%2 Mb)...
+		|Please, wait.';ru='Выполняется передача файла ""%1"" (%2 Мб)...
+		|Пожалуйста, подождите.'"),
 			FileInformation.BaseName,
 			FileFunctionsServiceClientServer.GetStringWithFileSize(SizeInMB));
 		Status(ExplanationText);
@@ -2451,9 +2451,9 @@ Function CertificatesNotSpecified(CertificatesArray)
 	
 	If CertificatesArray.Count() = 0 Then
 		ShowMessageBox(,
-			NStr("en='Encrypted file does not have specified certificates."
-"Decrypt the file and encrypt again.';ru='У зашифрованного файла не указаны сертификаты."
-"Расшифруйте файл и зашифруйте заново.'"));
+			NStr("en='Encrypted file does not have specified certificates.
+		|Decrypt the file and encrypt again.';ru='У зашифрованного файла не указаны сертификаты.
+		|Расшифруйте файл и зашифруйте заново.'"));
 		
 		Return True;
 	EndIf;
@@ -2516,9 +2516,9 @@ Procedure LockFileAfterSettingExtension(ExtensionIsSet, ExecuteParameters) Expor
 		NStr("en='File editing';ru='Редактирование файла'"),
 		ExecuteParameters.FileData.URL,
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='The"
-"file ""%1"" busy for editing.';ru='Файл"
-"""%1"" занят для редактирования.'"),
+			NStr("en='The
+		|file ""%1"" busy for editing.';ru='Файл
+		|""%1"" занят для редактирования.'"),
 			String(ExecuteParameters.FileData.Ref)),
 		PictureLib.Information32);
 	
@@ -2577,13 +2577,13 @@ Procedure ReleaseFiles(ResultHandler, ObjectsRef) Export
 	Else
 		ShowQueryBox(
 			Handler,
-			NStr("en='Unlocking the"
-"files may lead to loss of your changes."
-""
-"Unlock files?';ru='Освобождение"
-"файлов может привести к потере ваших изменений."
-""
-"Освободить файлы?'"),
+			NStr("en='Unlocking the
+		|files may lead to loss of your changes.
+		|
+		|Unlock files?';ru='Освобождение
+		|файлов может привести к потере ваших изменений.
+		|
+		|Освободить файлы?'"),
 			QuestionDialogMode.YesNo,
 			,
 			DialogReturnCode.No);
@@ -2688,9 +2688,9 @@ Procedure DeleteFile(ResultHandler, FullFileName, AskQuestion = Undefined, Quest
 	
 	If AskQuestion = True Then
 		QuestionText =
-			NStr("en='Delete"
-"file ""%1"" from working directory?';ru='Удалить"
-"файл ""%1"" из рабочего каталога?'");
+			NStr("en='Delete
+		|file ""%1"" from working directory?';ru='Удалить
+		|файл ""%1"" из рабочего каталога?'");
 		QuestionText = StrReplace(QuestionText, "%1", FullFileName);
 		If QuestionHeader <> Undefined Then
 			QuestionText = QuestionHeader + Chars.LF + Chars.LF + QuestionText;
@@ -2791,9 +2791,9 @@ Procedure GetVersionFileInLocalFilesCacheStart(ExecuteParameters)
 	// Get file path in working directory - with the check on uniqueness.
 	If ExecuteParameters.FullFileName = "" Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='An error occurred when receiving"
-"the file from files storage in working directory.';ru='Ошибка получения"
-"файла из хранилища файлов в рабочий каталог.'"));
+			NStr("en='An error occurred when receiving
+		|the file from files storage in working directory.';ru='Ошибка получения
+		|файла из хранилища файлов в рабочий каталог.'"));
 		ReturnResult(ExecuteParameters.ResultHandler, ExecuteParameters);
 		Return;
 	EndIf;
@@ -2944,13 +2944,13 @@ Procedure FileDir(ResultHandler, FileData) Export
 	ShowQueryBox(
 		Handler,
 		StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='File"
-"""%1"" is absent in the working directory."
-""
-"Do you want to receive the file from the file storage?';ru='Файл"
-"""%1"" отсутствует в рабочем каталоге."
-""
-"Получить файл из хранилища файлов?'"),
+			NStr("en='File
+		|""%1"" is absent in the working directory.
+		|
+		|Do you want to receive the file from the file storage?';ru='Файл
+		|""%1"" отсутствует в рабочем каталоге.
+		|
+		|Получить файл из хранилища файлов?'"),
 			FileName),
 		QuestionDialogMode.YesNo);
 	
@@ -3236,27 +3236,27 @@ Procedure ClearWorkingDirectoryCycleHandler(ExecuteParameters)
 			
 			If ExecuteParameters.ToClearAll = False Then
 				QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Work directory is cleared when adding the file."
-""
-"In files storage file ""%1"""
-"was not found."
-""
-"Do you want to delete it from the work directory?';ru='Выполняется очистка рабочего каталога при добавлении файла."
-""
-"В хранилище файлов не"
-"найден файл ""%1""."
-""
-"Удалить его из рабочего каталога?'"),
+					NStr("en='Work directory is cleared when adding the file.
+		|
+		|In files storage file ""%1""
+		|was not found.
+		|
+		|Do you want to delete it from the work directory?';ru='Выполняется очистка рабочего каталога при добавлении файла.
+		|
+		|В хранилище файлов не
+		|найден файл ""%1"".
+		|
+		|Удалить его из рабочего каталога?'"),
 					ExecuteParameters.DirectoryName + ExecuteParameters.Item.Path);
 			Else
 				QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='In files storage file ""%1"""
-"was not found."
-""
-"Do you want to delete it from the work directory?';ru='В хранилище файлов не"
-"найден файл ""%1""."
-""
-"Удалить его из рабочего каталога?'"),
+					NStr("en='In files storage file ""%1""
+		|was not found.
+		|
+		|Do you want to delete it from the work directory?';ru='В хранилище файлов не
+		|найден файл ""%1"".
+		|
+		|Удалить его из рабочего каталога?'"),
 					ExecuteParameters.DirectoryName + ExecuteParameters.Item.Path);
 			EndIf;
 			
@@ -3449,9 +3449,9 @@ Procedure GetFromServerAndRegisterInLocalFilesCacheStart(ExecuteParameters)
 				If StrLen(ExecuteParameters.FileName) > FileNameMaxLength Then
 					MessageText =
 					StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='The length of path to file (working directory plus file"
-"name) exceeds %1 characters %2';ru='Длина пути к файлу (рабочий каталог плюс имя файла) превышает %1 символов"
-"%2'"),
+						NStr("en='The length of path to file (working directory plus file
+		|name) exceeds %1 characters %2';ru='Длина пути к файлу (рабочий каталог плюс имя файла) превышает %1 символов
+		|%2'"),
 						ExecuteParameters.FullPathMaxLength,
 						ExecuteParameters.FullFileName);
 					
@@ -3477,10 +3477,10 @@ EndProcedure
 Procedure GetFromServerAndRegisterInLocalFilesCacheOfferToSelectDirectory(Response, ExecuteParameters) Export
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='The length of path exceeds"
-"%1"
-""
-" characters: %2 Choose another default working directory?';ru='Длина пути к файлу превышает %1 символов: %2 Выбрать другой основной рабочий каталог?'"),
+		NStr("en='The length of path exceeds
+		|%1
+		|
+		| characters: %2 Choose another default working directory?';ru='Длина пути к файлу превышает %1 символов: %2 Выбрать другой основной рабочий каталог?'"),
 		ExecuteParameters.FullPathMaxLength,
 		ExecuteParameters.FullFileName);
 	Handler = New NotifyDescription("GetFromServerAndRegisterInLocalFilesCacheStartDirectorySelection", ThisObject, ExecuteParameters);
@@ -3562,9 +3562,9 @@ Procedure GetFromServerAndRegisterInLocalFilesCacheContinued(ExecuteParameters)
 	ExecuteParameters.FullFileName = PathToFile + ExecuteParameters.FileName; // the extension could have changed
 	
 	ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Transfer of ""%1"" file is in progress (%2 Mb)..."
-"Please, wait.';ru='Выполняется передача файла ""%1"" (%2 Мб)..."
-"Пожалуйста, подождите.'"),
+		NStr("en='Transfer of ""%1"" file is in progress (%2 Mb)...
+		|Please, wait.';ru='Выполняется передача файла ""%1"" (%2 Мб)...
+		|Пожалуйста, подождите.'"),
 		ExecuteParameters.FileName,
 		FileFunctionsServiceClientServer.GetStringWithFileSize(SizeInMB));
 	
@@ -3868,43 +3868,43 @@ Procedure GetVersionFileInFolderWorkingDirectoryContinued(ExecuteParameters)
 		
 		If ExecuteParameters.FileData.Owner = InFolder Then // The same folder.
 			WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='File ""%1"" already exists in"
-"work"
-"directory and is connected with another file in infobase."
-""
-"File code in files storage: %2."
-"File code in working directory: %3."
-""
-"Rename the one of the infobase files.';ru='В рабочем каталоге уже"
-"есть"
-"файл ""%1"", связанный с другим файлом в информационной базе."
-""
-"Код файла в хранилище файлов: %2."
-"Код файла в рабочем каталоге: %3."
-""
-"Переименуйте один из файлов в информационной базе.'"),
+				NStr("en='File ""%1"" already exists in
+		|work
+		|directory and is connected with another file in infobase.
+		|
+		|File code in files storage: %2.
+		|File code in working directory: %3.
+		|
+		|Rename the one of the infobase files.';ru='В рабочем каталоге уже
+		|есть
+		|файл ""%1"", связанный с другим файлом в информационной базе.
+		|
+		|Код файла в хранилище файлов: %2.
+		|Код файла в рабочем каталоге: %3.
+		|
+		|Переименуйте один из файлов в информационной базе.'"),
 				ExecuteParameters.FullFileName,
 				ExecuteParameters.FileData.FileCode,
 				InRegisterFileCode);
 		Else
 			WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='File ""%1"" already exists in"
-"work"
-"directory and is connected with another file of infobase."
-""
-"File code in files storage: %2."
-"File code in working directory: %3."
-""
-"Change working directory of one of the folders in the infobase."
-"(Two folders must not have the same work directory).';ru='В рабочем каталоге уже"
-"есть"
-"файл ""%1"", связанный с другим файлом информационной базы."
-""
-"Код файла в хранилище файлов: %2."
-"Код файла в рабочем каталоге: %3."
-""
-"В информационной базе измените рабочий каталог одной из папок."
-"(У двух папок не должно быть одинакового рабочего каталога).'"),
+				NStr("en='File ""%1"" already exists in
+		|work
+		|directory and is connected with another file of infobase.
+		|
+		|File code in files storage: %2.
+		|File code in working directory: %3.
+		|
+		|Change working directory of one of the folders in the infobase.
+		|(Two folders must not have the same work directory).';ru='В рабочем каталоге уже
+		|есть
+		|файл ""%1"", связанный с другим файлом информационной базы.
+		|
+		|Код файла в хранилище файлов: %2.
+		|Код файла в рабочем каталоге: %3.
+		|
+		|В информационной базе измените рабочий каталог одной из папок.
+		|(У двух папок не должно быть одинакового рабочего каталога).'"),
 				ExecuteParameters.FullFileName,
 				ExecuteParameters.FileData.FileCode,
 				InRegisterFileCode);
@@ -4038,9 +4038,9 @@ Procedure GetFromServerAndRegisterInFolderWorkingDirectoryStart(ExecuteParameter
 	// Get file path in working directory - with the check on uniqueness.
 	If ExecuteParameters.FullFileName = "" Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='An error occurred when receiving"
-"the file from files storage in working directory.';ru='Ошибка получения"
-"файла из хранилища файлов в рабочий каталог.'"));
+			NStr("en='An error occurred when receiving
+		|the file from files storage in working directory.';ru='Ошибка получения
+		|файла из хранилища файлов в рабочий каталог.'"));
 		ReturnResult(ExecuteParameters.ResultHandler, ExecuteParameters);
 		Return;
 	EndIf;
@@ -4146,9 +4146,9 @@ Procedure CheckFullPathMaxLengthInWorkingDirectoryStart(ExecuteParameters)
 	EndIf;
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Length of full path to file (working directory plus attachment file name) exceeds"
-"%1 characters ""%2"".';ru='Длина полного пути к файлу (рабочий каталог плюс имя файла)"
-"превышает %1 символов ""%2"".'"),
+		NStr("en='Length of full path to file (working directory plus attachment file name) exceeds
+		|%1 characters ""%2"".';ru='Длина полного пути к файлу (рабочий каталог плюс имя файла)
+		|превышает %1 символов ""%2"".'"),
 		ExecuteParameters.FullPathMaxLength,
 		ExecuteParameters.FullFileName);
 	
@@ -4180,15 +4180,15 @@ EndProcedure
 Procedure CheckFullPathMaxLengthInWorkingDirectoryOfferToSelectDirectory(ExecuteParameters)
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Length of full path to file (working directory plus attachment file name) exceeds"
-"%1 characters ""%2""."
-""
-"Do you want to"
-"select another default working directory? (The contents of working directory will be transferred to selected directory).';ru='Длина полного пути к файлу (рабочий каталог плюс имя файла) превышает %1 символов"
-"""%2""."
-""
-"Выбрать другой основной рабочий каталог?"
-"(Содержимое рабочего каталога будет перенесено в выбранный каталог).'"),
+		NStr("en='Length of full path to file (working directory plus attachment file name) exceeds
+		|%1 characters ""%2"".
+		|
+		|Do you want to
+		|select another default working directory? (The contents of working directory will be transferred to selected directory).';ru='Длина полного пути к файлу (рабочий каталог плюс имя файла) превышает %1 символов
+		|""%2"".
+		|
+		|Выбрать другой основной рабочий каталог?
+		|(Содержимое рабочего каталога будет перенесено в выбранный каталог).'"),
 		ExecuteParameters.FullPathMaxLength, ExecuteParameters.FullFileName);
 	Handler = New NotifyDescription("CheckFullPathMaxLengthInWorkingDirectoryStartDirectorySelection", ThisObject, ExecuteParameters);
 	ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo);
@@ -4271,15 +4271,15 @@ Procedure DoCopyDirectoryContent(ResultHandler, Val SourceDirectory, Val Receive
 	If Result.ErrorOccurred Then
 		
 		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to copy"
-"the ""%1"" file."
-"It may be locked by another application."
-""
-"Repeat operation?';ru='Не удалось"
-"скопировать файл ""%1""."
-"Возможно он занят другим приложением."
-""
-"Повторить операцию?'"),
+			NStr("en='Failed to copy
+		|the ""%1"" file.
+		|It may be locked by another application.
+		|
+		|Repeat operation?';ru='Не удалось
+		|скопировать файл ""%1"".
+		|Возможно он занят другим приложением.
+		|
+		|Повторить операцию?'"),
 			Result.FailingFileFullName);
 		
 		ExecuteParameters = New Structure;
@@ -4387,13 +4387,13 @@ Procedure TransferWorkingDirectoryContents(ResultHandler, SourceDirectory, Recei
 	// New path is a subset of the old one. It is prohibited as can lead to the loop.
 	If Find(Lower(ReceiverDirectory), Lower(SourceDirectory)) <> 0 Then
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Selected working"
-"directory"
-"""%1"" is included in"
-"old working directory ""%2"".';ru='Выбранный"
-"рабочий"
-"каталог ""%1"""
-"входит в старый рабочий каталог ""%2"".'"),
+			NStr("en='Selected working
+		|directory
+		|""%1"" is included in
+		|old working directory ""%2"".';ru='Выбранный
+		|рабочий
+		|каталог ""%1""
+		|входит в старый рабочий каталог ""%2"".'"),
 			ReceiverDirectory,
 			SourceDirectory);
 		ReturnResultAfterShowWarning(ResultHandler, WarningText, False);
@@ -4463,13 +4463,13 @@ Procedure TransferWorkingDirectoryContentAfterSuccessAndClearingCancel(Result, E
 	If Result.ErrorOccurred Then
 		// It is necessary to warn that even during operation rollback an error occurred.
 		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Failed to copy back the"
-"content"
-"of directory"
-"""%1"" to directory ""%2"".';ru='Не удалось скопировать"
-"обратно"
-"содержимое"
-"каталога ""%1"" в каталог ""%2"".'"),
+			NStr("en='Failed to copy back the
+		|content
+		|of directory
+		|""%1"" to directory ""%2"".';ru='Не удалось скопировать
+		|обратно
+		|содержимое
+		|каталога ""%1"" в каталог ""%2"".'"),
 			ExecuteParameters.ReceiverDirectory,
 			ExecuteParameters.SourceDirectory);
 		ReturnResultAfterShowWarning(ExecuteParameters.ResultHandler, WarningText, False);
@@ -4527,15 +4527,15 @@ Procedure DeleteDirectoryContentStart(ExecuteParameters)
 		
 		If Not FileRemoved Then
 			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Failed to delete"
-"the ""%1"" file."
-"It may be locked by another application."
-""
-"Repeat operation?';ru='Не удалось"
-"удалить файл ""%1""."
-"Возможно он занят другим приложением."
-""
-"Повторить операцию?'"),
+				NStr("en='Failed to delete
+		|the ""%1"" file.
+		|It may be locked by another application.
+		|
+		|Repeat operation?';ru='Не удалось
+		|удалить файл ""%1"".
+		|Возможно он занят другим приложением.
+		|
+		|Повторить операцию?'"),
 				Path);
 			ExecuteParameters.IndexOf = IndexOf;
 			Handler = New NotifyDescription("DeleteDirectoryContentAfterAnswerToQuestionRepeat", ThisObject, ExecuteParameters);
@@ -4649,11 +4649,11 @@ Procedure FilesImportCycle(ExecuteParameters)
 					ExecuteParameters.FolderForAddCurrent = ExecuteParameters.FirstFolderWithSameName;
 				Else
 					QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-						NStr("en='Folder ""% 1"" already exists."
-""
-"Continue folder import?';ru='Папка ""%1"" уже существует."
-""
-"Продолжить импорт папки?'"),
+						NStr("en='Folder ""% 1"" already exists.
+		|
+		|Continue folder import?';ru='Папка ""%1"" уже существует.
+		|
+		|Продолжить импорт папки?'"),
 						ExecuteParameters.FolderName);
 					Handler = New NotifyDescription("FilesImportCycleAfterResponseToQuestionContinue", ThisObject, ExecuteParameters);
 					ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo);
@@ -4831,11 +4831,11 @@ Procedure SaveAsWithExtension(ExecuteParameters) Export
 				FormOpenParameters.Insert("File", ExecuteParameters.FullFileName);
 				
 				Message = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Date of the"
-"""%1"" file modification in working directory is later (newer) than in file storage."
-"Probably, the file was changed.';ru='Дата"
-"изменения файла ""%1"" в рабочем каталоге более поздняя (новее), чем в хранилище файлов."
-"Возможно, файл был изменен.'"),
+					NStr("en='Date of the
+		|""%1"" file modification in working directory is later (newer) than in file storage.
+		|Probably, the file was changed.';ru='Дата
+		|изменения файла ""%1"" в рабочем каталоге более поздняя (новее), чем в хранилище файлов.
+		|Возможно, файл был изменен.'"),
 					String(ExecuteParameters.FileData.Ref));
 				
 				FormOpenParameters.Insert("Message", Message);
@@ -5007,9 +5007,9 @@ Procedure SaveAsWithExtensionAfterDecryption(DataDescription, ExecuteParameters)
 	
 	ExplanationText =
 	StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='The ""%1"" file saving in progress (%2 Mb)..."
-"Please, wait.';ru='Выполняется сохранение файла ""%1"" (%2 Мб)..."
-"Пожалуйста, подождите.'"),
+		NStr("en='The ""%1"" file saving in progress (%2 Mb)...
+		|Please, wait.';ru='Выполняется сохранение файла ""%1"" (%2 Мб)...
+		|Пожалуйста, подождите.'"),
 		FileName, 
 		FileFunctionsServiceClientServer.GetStringWithFileSize(SizeInMB));
 		
@@ -5201,11 +5201,11 @@ Procedure CheckFilesLimitSize(ResultHandler, CheckParameters)
 		
 		If SelectedDirectory Then
 			Status(StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='There is a collection"
-"of directory information ""%1""."
-"Please, wait.';ru='Идет"
-"сбор информации о каталоге ""%1""."
-"Пожалуйста, подождите.'"),
+				NStr("en='There is a collection
+		|of directory information ""%1"".
+		|Please, wait.';ru='Идет
+		|сбор информации о каталоге ""%1"".
+		|Пожалуйста, подождите.'"),
 				Path));
 			
 			FileArrayThisDirectory = FileFunctionsServiceClientServer.FindFilesPseudo(CheckParameters.PseudoFileSystem, Path);
@@ -6207,9 +6207,9 @@ Function AddFromFileSystemWithExtensionSynchronously(ExecuteParameters) Export
 	SizeInMB = ClientFile.Size() / (1024 * 1024);
 	
 	StatusText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Saving the ""%1"" file (%2 Mb)."
-"Please wait...';ru='Идет сохранение файла ""%1"" (%2 Мб)."
-"Пожалуйста, подождите..'"),
+		NStr("en='Saving the ""%1"" file (%2 Mb).
+		|Please wait...';ru='Идет сохранение файла ""%1"" (%2 Мб).
+		|Пожалуйста, подождите..'"),
 		FileName,
 		FileFunctionsServiceClientServer.GetStringWithFileSize(SizeInMB));
 	Status(StatusText);
@@ -6735,9 +6735,9 @@ Procedure FilesImportRecursivelyAskNextQuestion(ExecuteParameters)
 	ExecuteParameters.FoldersArrayForQuestionFolderAlreadyExists.Delete(0);
 	
 	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en='Folder ""% 1"" already exists."
-"Continue folder import?';ru='Папка ""%1"" уже существует."
-"Продолжить импорт папки?'"),
+		NStr("en='Folder ""% 1"" already exists.
+		|Continue folder import?';ru='Папка ""%1"" уже существует.
+		|Продолжить импорт папки?'"),
 		ExecuteParameters.FolderForAddingToSelectedFiles.Name);
 	
 	Handler = New NotifyDescription("FilesImportRecursivelyAfterAnswerToQuestion", ThisObject, ExecuteParameters);
@@ -6891,11 +6891,11 @@ Procedure FilesImportRecursivelyWithoutDialogs(Val Owner, Val SelectedFiles, Val
 			
 			If Not PutFiles(FilesToPlace, PlacedFiles, , False, ExecuteParameters.FormID) Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Error when"
-"placing"
-"file ""%1"" into temporary storage.';ru='Ошибка"
-"помещения"
-"файла ""%1"" во временное хранилище.'"),
+					NStr("en='Error when
+		|placing
+		|file ""%1"" into temporary storage.';ru='Ошибка
+		|помещения
+		|файла ""%1"" во временное хранилище.'"),
 					SelectedFile.FullName);
 			EndIf;
 			
@@ -7593,9 +7593,9 @@ Function ChoosePathToWorkingDirectory(DirectoryName, Title, OwnerWorkingDirector
 			// You are not authorized to create a directory or such path is absent.
 			
 			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Incorrect path or insufficient rights to record"
-"in directory ""%1"".';ru='Неверный путь или отсутствуют"
-"права на запись в каталог ""%1"".'"),
+				NStr("en='Incorrect path or insufficient rights to record
+		|in directory ""%1"".';ru='Неверный путь или отсутствуют
+		|права на запись в каталог ""%1"".'"),
 				DirectoryName);
 			ShowMessageBox(, ErrorText);
 			Return False;
@@ -7606,15 +7606,15 @@ Function ChoosePathToWorkingDirectory(DirectoryName, Title, OwnerWorkingDirector
 			FileArrayInDirectory = FindFiles(DirectoryName, "*.*");
 			If FileArrayInDirectory.Count() <> 0 Then
 				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='There are already"
-"files"
-"in selected work directory ""%1""."
-""
-"Choose other catalog.';ru='В выбранном"
-"рабочем"
-"каталоге ""%1"" уже есть файлы."
-""
-"Выберите другой каталог.'"),
+					NStr("en='There are already
+		|files
+		|in selected work directory ""%1"".
+		|
+		|Choose other catalog.';ru='В выбранном
+		|рабочем
+		|каталоге ""%1"" уже есть файлы.
+		|
+		|Выберите другой каталог.'"),
 					DirectoryName);
 				ShowMessageBox(, ErrorText);
 				Return False;

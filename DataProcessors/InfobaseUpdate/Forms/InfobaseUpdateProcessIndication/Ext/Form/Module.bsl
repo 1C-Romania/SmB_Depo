@@ -203,9 +203,9 @@ Procedure ImportUpdateApplicationWorkParametersProcessResult(Val AShortErrorMess
 			EndIf;
 		Else
 			AShortErrorMessage =
-				NStr("en='An error occurred while receiving"
-"result from the background job during the application work parameters.';ru='Ошибка получения результата"
-"от фонового задания при обновлении параметров работы программы.'");
+				NStr("en='An error occurred while receiving
+		|result from the background job during the application work parameters.';ru='Ошибка получения результата
+		|от фонового задания при обновлении параметров работы программы.'");
 			
 			DetailedErrorMessage = AShortErrorMessage;
 		EndIf;

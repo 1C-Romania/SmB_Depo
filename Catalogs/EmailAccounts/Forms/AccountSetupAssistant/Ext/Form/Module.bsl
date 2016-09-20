@@ -369,9 +369,9 @@ Procedure SetCurrentPageItems()
 	
 	If CurrentPage = Items.AccountConfiguredSuccessfully Then
 		Items.LabelAccountConfiguredSuccessfully.Title = StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Account parameters"
-"setting is complete.';ru='Настройка"
-"параметров учетной записи %1 завершена.'"), EmailAddress);
+			NStr("en='Account parameters
+		|setting is complete.';ru='Настройка
+		|параметров учетной записи %1 завершена.'"), EmailAddress);
 	EndIf;
 	
 EndProcedure
@@ -926,9 +926,9 @@ Procedure PickSettingsAndCreateAccount()
 	If Not CheckingCompletedWithErrors Then
 		CreateAccount();
 	Else
-		ErrorMessages = NStr("en='Unable to determine connection settings. "
-"Set connection parameters manually.';ru='Не удалось определить настройки подключения. "
-"Настройте параметры подключения вручную.'");
+		ErrorMessages = NStr("en='Unable to determine connection settings. 
+		|Set connection parameters manually.';ru='Не удалось определить настройки подключения. 
+		|Настройте параметры подключения вручную.'");
 			
 		// Settings by default.
 		FillPropertyValues(ThisObject, DefaultSettings(EmailAddress, PasswordForReceivingEmails));

@@ -574,9 +574,9 @@ EndProcedure
 Procedure ExecuteConfigurationOfAutonomousWorkWhenYouFirstStart() Export
 	
 	If Not CommonUse.FileInfobase() Then
-		Raise NStr("en='First start of offline work place"
-"should be executed in the file work mode of infobase.';ru='Первый запуск автономного рабочего"
-"места должен выполняться в файловом режиме работы информационной базы.'");
+		Raise NStr("en='First start of offline work place
+		|should be executed in the file work mode of infobase.';ru='Первый запуск автономного рабочего
+		|места должен выполняться в файловом режиме работы информационной базы.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -766,9 +766,9 @@ Procedure ImportParametersFromInitialImage()
 	Except
 		WriteLogEvent(EventLogMonitorEventCreatingOfflineWorkplace(),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
-		Raise NStr("en='Infobase may have been opened in the configurator mode."
-"Exit the designer and restart the application.';ru='Возможно, информационная база открыта в режиме конфигуратора."
-"Завершите работу конфигуратора и повторите запуск программы.'");
+		Raise NStr("en='Infobase may have been opened in the configurator mode.
+		|Exit the designer and restart the application.';ru='Возможно, информационная база открыта в режиме конфигуратора.
+		|Завершите работу конфигуратора и повторите запуск программы.'");
 	EndTry;
 	
 	// Create exchange plan nodes of offline work place in the zero dara area
@@ -850,9 +850,9 @@ Procedure ImportParametersFromInitialImage()
 		User = Catalogs.Users.GetRef(New UUID(Parameters.Owner)).GetObject();
 		
 		If User = Undefined Then
-			Raise NStr("en='User identification is not complete."
-"Perhaps, the users catalog is not included to the offline exchange plan.';ru='Идентификация пользователя не выполнена."
-"Возможно, справочник пользователей не включен в состав плана обмена автономной работы.'");
+			Raise NStr("en='User identification is not complete.
+		|Perhaps, the users catalog is not included to the offline exchange plan.';ru='Идентификация пользователя не выполнена.
+		|Возможно, справочник пользователей не включен в состав плана обмена автономной работы.'");
 		EndIf;
 		
 		SetUserPasswordMinLength(0);
@@ -943,9 +943,9 @@ Function GetParametersFromInitialImage()
 	XMLString = Constants.SubordinatedDIBNodeSetup.Get();
 	
 	If IsBlankString(XMLString) Then
-		Raise NStr("en='Settings were not found in the offline work place."
-"Work with the offline worplace is impossible.';ru='В автономное рабочее место не были переданы настройки."
-"Работа с автономным рабочим место невозможна.'");
+		Raise NStr("en='Settings were not found in the offline work place.
+		|Work with the offline worplace is impossible.';ru='В автономное рабочее место не были переданы настройки.
+		|Работа с автономным рабочим место невозможна.'");
 	EndIf;
 	
 	XMLReader = New XMLReader;

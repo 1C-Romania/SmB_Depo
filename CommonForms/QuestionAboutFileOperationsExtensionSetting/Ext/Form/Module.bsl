@@ -15,9 +15,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	ElsIf Not Parameters.PossibleToContinueWithoutInstallation Then
 		Items.CommentDecoration.Title =
-			NStr("en='For the action execution it is required to install extension for the 1C:Enterprise web client."
-"Install?';ru='Для выполнения действия требуется установить расширение для веб-клиента 1С:Предприятие."
-"Установить?'");
+			NStr("en='For the action execution it is required to install extension for the 1C:Enterprise web client.
+		|Install?';ru='Для выполнения действия требуется установить расширение для веб-клиента 1С:Предприятие.
+		|Установить?'");
 	EndIf;
 	
 	If Not Parameters.PossibleToContinueWithoutInstallation Then

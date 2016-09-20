@@ -196,27 +196,27 @@ Procedure StandardSetDeletionMark(Command)
 	
 	If Modified Then
 		If ThisObject.Object.DeletionMark Then
-			QuestionText = NStr("en='File changes have to be written for actuation."
-"Write changes and uncheck deletion from"
-"the %1 file?';ru='Для выполнения действия требуется записать изменения файла."
-"Записать изменения и снять"
-"пометку на удаление с файла ""%1""?'");
+			QuestionText = NStr("en='File changes have to be written for actuation.
+		|Write changes and uncheck deletion from
+		|the %1 file?';ru='Для выполнения действия требуется записать изменения файла.
+		|Записать изменения и снять
+		|пометку на удаление с файла ""%1""?'");
 		Else
-			QuestionText = NStr("en='File changes have to be written for actuation."
-"Record changes and mark the"
-"%1 file for deletion?';ru='Для выполнения действия требуется записать изменения файла."
-"Записать изменения и"
-"пометить на удаление файл ""%1""?'");
+			QuestionText = NStr("en='File changes have to be written for actuation.
+		|Record changes and mark the
+		|%1 file for deletion?';ru='Для выполнения действия требуется записать изменения файла.
+		|Записать изменения и
+		|пометить на удаление файл ""%1""?'");
 		EndIf;
 	Else
 		If ThisObject.Object.DeletionMark Then
-			QuestionText = NStr("en='Unmark the %1 file"
-"from deletion?';ru='Снять пометку на удаление с файла"
-"""%1""?'");
+			QuestionText = NStr("en='Unmark the %1 file
+		|from deletion?';ru='Снять пометку на удаление с файла
+		|""%1""?'");
 		Else
-			QuestionText = NStr("en='Mark the"
-"%1 file for deletion?';ru='Пометить"
-"на удаление файл ""%1""?'");
+			QuestionText = NStr("en='Mark the
+		|%1 file for deletion?';ru='Пометить
+		|на удаление файл ""%1""?'");
 		EndIf;
 	EndIf;
 	

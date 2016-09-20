@@ -230,9 +230,9 @@ Function ClearingSettings()
 	If SwitchWhomSettingsCleared = "SelectedUsers"
 		AND UserCount = 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Select the user"
-"or users whom it is necessary to clear the settings for.';ru='Выберите"
-"пользователя или пользователей, которым необходимо очистить настройки.'"), , "Source");
+			NStr("en='Select the user
+		|or users whom it is necessary to clear the settings for.';ru='Выберите
+		|пользователя или пользователей, которым необходимо очистить настройки.'"), , "Source");
 		Return False;
 	EndIf;
 	

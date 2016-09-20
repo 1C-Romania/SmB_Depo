@@ -53,9 +53,9 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	
 	If Not UniquenessCheckByIDClient()Then
 		Cancel = True;
-		Text = NStr("en='Error workplace saving!"
-"Workplace with such client ID already exists.';ru='Ошибка сохранение рабочего места!"
-"Рабочее место с таким идентификатором клиента уже существует.'");
+		Text = NStr("en='Error workplace saving!
+		|Workplace with such client ID already exists.';ru='Ошибка сохранение рабочего места!
+		|Рабочее место с таким идентификатором клиента уже существует.'");
 		CommonUseClientServer.MessageToUser(Text);
 		Return;
 	EndIf;
@@ -63,13 +63,13 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	If Not UniquenessCheckByDescription()Then
 		If ResponseBeforeWrite <> True Then
 			Cancel = True;
-			Text = NStr("en='Nonunique workplace description is specified!"
-"It may probably complicate the identification and selection of a workplace in future."
-"It is recommended to specify a unique workplace description."
-"Continue saving with specified description?';ru='Указано неуникальное наименование рабочего места!"
-"Возможно в дальнейшем это затруднит идентификацию и выбор рабочего места."
-"Рекомендуется указывать уникальное наименование рабочих мест."
-"Продолжить сохранение с указанным наименованием?'");
+			Text = NStr("en='Nonunique workplace description is specified!
+		|It may probably complicate the identification and selection of a workplace in future.
+		|It is recommended to specify a unique workplace description.
+		|Continue saving with specified description?';ru='Указано неуникальное наименование рабочего места!
+		|Возможно в дальнейшем это затруднит идентификацию и выбор рабочего места.
+		|Рекомендуется указывать уникальное наименование рабочих мест.
+		|Продолжить сохранение с указанным наименованием?'");
 			Notification = New NotifyDescription("BeforeWriteEnd", ThisObject);
 			ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo);
 		EndIf;

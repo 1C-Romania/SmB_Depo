@@ -180,9 +180,16 @@ Function FindContract(OwnerTreaty, CompanyContracts = Undefined, ContractKindsLi
 	|ORDER BY
 	|	Priority";
 	
+//{{MRG[ <-> ]
 	//( elmi #17 (112-00003) Lost in translation
 	//Query.SetParameter("OwnerTreaty", OwnerTreaty);
 	//Query.SetParameter("CompanyContracts", CompanyContracts);
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	Query.SetParameter("OwnerTreaty", OwnerTreaty);
+//	Query.SetParameter("CompanyContracts", CompanyContracts);
+//	Query.SetParameter("ContractKindsList", ContractKindsList);
+//}}MRG[ <-> ]
 	//Query.SetParameter("ContractKindsList", ContractKindsList);
 	Query.SetParameter("ContractOwner", OwnerTreaty);
 	Query.SetParameter("CompanyContract", CompanyContracts);
@@ -190,8 +197,14 @@ Function FindContract(OwnerTreaty, CompanyContracts = Undefined, ContractKindsLi
 	//) elmi
 	
 	TextFilter =
+//{{MRG[ <-> ]
 	//( elmi #17 (112-00003) Lost in translation
 	//"	CounterpartyContract.Owner = &ContractOwner"
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	"	CounterpartyContract.Owner = &ContractOwner"
+//  + ?(CompanyContracts <> Undefined, "
+//}}MRG[ <-> ]
 	"	CounterpartyContracts.Owner = &ContractOwner"
 	//) elmi
 	
@@ -453,12 +466,22 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 	// We recognize document date.
 	DocDate = BlankDate;
 	
+//{{MRG[ <-> ]
 	//( elmi #17 (112-00003)
 	If  ValueIsFilled(DocumentRow.DocDate) И TypeOf(DocumentRow.DocDate) = Type("Date") Then
 		Result   =  DocumentRow.DocDate;
 		DocDate  =  DocumentRow.DocDate;
 	Else	 
 	//) elmi	
+//}}MRG[ <-> ]
+//{{MRG[ <-> ]
+//	If Not IsBlankString(DocumentRow.DateCredited) Then
+//		Result = GetDateFromString(DocDate, DocumentRow.DateCredited);
+//	ElsIf Not IsBlankString(DocumentRow.Date_Received) Then
+//		Result = GetDateFromString(DocDate, DocumentRow.Date_Received);
+//	Else
+//		Result = GetDateFromString(DocDate, DocumentRow.Date);
+//}}MRG[ <-> ]
 	
 		If Not IsBlankString(DocumentRow.DateCredited) Then
 			Result = GetDateFromString(DocDate, DocumentRow.DateCredited);
