@@ -180,13 +180,22 @@ Function FindContract(OwnerTreaty, CompanyContracts = Undefined, ContractKindsLi
 	|ORDER BY
 	|	Priority";
 	
-	Query.SetParameter("OwnerTreaty", OwnerTreaty);
-	Query.SetParameter("CompanyContracts", CompanyContracts);
-	Query.SetParameter("ContractKindsList", ContractKindsList);
+	//( elmi #17 (112-00003) Lost in translation
+	//Query.SetParameter("OwnerTreaty", OwnerTreaty);
+	//Query.SetParameter("CompanyContracts", CompanyContracts);
+	//Query.SetParameter("ContractKindsList", ContractKindsList);
+	Query.SetParameter("ContractOwner", OwnerTreaty);
+	Query.SetParameter("CompanyContract", CompanyContracts);
+	Query.SetParameter("ContractTypeList", ContractKindsList);
+	//) elmi
 	
 	TextFilter =
-	"	CounterpartyContract.Owner = &ContractOwner"
-  + ?(CompanyContracts <> Undefined, "
+	//( elmi #17 (112-00003) Lost in translation
+	//"	CounterpartyContract.Owner = &ContractOwner"
+	"	CounterpartyContracts.Owner = &ContractOwner"
+	//) elmi
+	
+	+ ?(CompanyContracts <> Undefined, "
 	|	And CounterpartyContracts.Company = &CompanyContract", "") 
   +	"	And CounterpartyContracts.DeletionMark = FALSE"
   + ?(ContractKindsList <> Undefined, "
@@ -444,13 +453,24 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 	// We recognize document date.
 	DocDate = BlankDate;
 	
-	If Not IsBlankString(DocumentRow.DateCredited) Then
-		Result = GetDateFromString(DocDate, DocumentRow.DateCredited);
-	ElsIf Not IsBlankString(DocumentRow.Date_Received) Then
-		Result = GetDateFromString(DocDate, DocumentRow.Date_Received);
-	Else
-		Result = GetDateFromString(DocDate, DocumentRow.Date);
+	//( elmi #17 (112-00003)
+	If  ValueIsFilled(DocumentRow.DocDate) И TypeOf(DocumentRow.DocDate) = Type("Date") Then
+		Result   =  DocumentRow.DocDate;
+		DocDate  =  DocumentRow.DocDate;
+	Else	 
+	//) elmi	
+	
+		If Not IsBlankString(DocumentRow.DateCredited) Then
+			Result = GetDateFromString(DocDate, DocumentRow.DateCredited);
+		ElsIf Not IsBlankString(DocumentRow.Date_Received) Then
+			Result = GetDateFromString(DocDate, DocumentRow.Date_Received);
+		Else
+			Result = GetDateFromString(DocDate, DocumentRow.Date);
+		EndIf;
+		
+	//( elmi #17 (112-00003)	
 	EndIf;
+    //) elmi	
 	
 	If ValueIsFilled(Result) Then
 		DocumentRow.DocDate = Result;
