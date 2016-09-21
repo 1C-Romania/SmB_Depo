@@ -8186,7 +8186,9 @@ Function GetQueryTextExchangeRatesDifferencesAccountsPayable(TempTablesManager, 
 		|
 		|////////////////////////////////////////////////////////////////////////////////
 		|SELECT
-		|	1 AS Order,
+// Rise { Bernavski N 2016-09-21
+		|	1 AS Priority,
+// Rise } Bernavski N 2016-09-21			
 		|	DocumentTable.LineNumber AS LineNumber,
 		|	DocumentTable.Date AS Period,
 		|	DocumentTable.RecordType AS RecordType,
@@ -8234,7 +8236,9 @@ Function GetQueryTextExchangeRatesDifferencesAccountsPayable(TempTablesManager, 
 		|	TemporaryTableOfExchangeRateDifferencesAccountsPayable AS DocumentTable
 		|
 		|ORDER BY
-		|	Order,
+// Rise { Bernavski N 2016-09-21
+		|	Priority,
+// Rise } Bernavski N 2016-09-21			
 		|	LineNumber
 		|;
 		|
