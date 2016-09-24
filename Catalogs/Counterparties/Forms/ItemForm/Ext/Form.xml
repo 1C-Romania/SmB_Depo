@@ -1373,21 +1373,19 @@
 											</ToolTip>
 											<ExtendedTooltip name="PageCodesLegalEntitiesExtendedTooltip" id="154"/>
 											<ChildItems>
+												<InputField name="RegistrationCountry" id="324">
+													<DataPath>Object.RegistrationCountry</DataPath>
+													<ContextMenu name="RegistrationCountryContextMenu" id="325"/>
+													<ExtendedTooltip name="RegistrationCountryExtendedTooltip" id="326"/>
+													<Events>
+														<Event name="OnChange">RegistrationCountryOnChange</Event>
+													</Events>
+												</InputField>
 												<InputField name="TIN" id="155">
 													<DataPath>Object.TIN</DataPath>
 													<TitleLocation>Left</TitleLocation>
-													<Width>15</Width>
+													<Width>20</Width>
 													<HorizontalStretch>false</HorizontalStretch>
-													<InputHint>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>Enter 10 TIN digits</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Введите ИНН 10 цифр</v8:content>
-														</v8:item>
-													</InputHint>
 													<ContextMenu name="TINContextMenu" id="156"/>
 													<ExtendedTooltip name="TINExtendedTooltip" id="157"/>
 													<Events>
@@ -1397,7 +1395,7 @@
 												<InputField name="KPP" id="158">
 													<DataPath>Object.KPP</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<Width>15</Width>
+													<Width>20</Width>
 													<HorizontalStretch>false</HorizontalStretch>
 													<Wrap>false</Wrap>
 													<InputHint>
@@ -1423,7 +1421,7 @@
 												<InputField name="CodeByOKPO" id="161">
 													<DataPath>Object.CodeByOKPO</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<Width>15</Width>
+													<Width>20</Width>
 													<HorizontalStretch>false</HorizontalStretch>
 													<Wrap>false</Wrap>
 													<ContextMenu name="NCBOCodeContextMenu" id="162"/>
@@ -1470,6 +1468,25 @@
 											</ToolTip>
 											<ExtendedTooltip name="PageCodesIndividualsExtendedTooltip" id="165"/>
 											<ChildItems>
+												<InputField name="CountryOfResidence" id="327">
+													<DataPath>Object.RegistrationCountry</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Contry of residence</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Страна проживания</v8:content>
+														</v8:item>
+													</Title>
+													<Width>10</Width>
+													<ContextMenu name="CountryOfResidenceContextMenu" id="328"/>
+													<ExtendedTooltip name="CountryOfResidenceExtendedTooltip" id="329"/>
+													<Events>
+														<Event name="OnChange">RegistrationCountryOnChange</Event>
+													</Events>
+												</InputField>
 												<InputField name="IndividualTIN" id="166">
 													<DataPath>Object.TIN</DataPath>
 													<TitleLocation>Left</TitleLocation>

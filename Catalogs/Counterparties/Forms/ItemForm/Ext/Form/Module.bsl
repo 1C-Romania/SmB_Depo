@@ -392,7 +392,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	Items.TIN.TypeRestriction = New TypeDescription("String", , New StringQualifiers(10));
+	//( elmi снимаем ограничение по длине TIN
+	//Items.TIN.TypeRestriction = New TypeDescription("String", , New StringQualifiers(10));
+	//) elmi
 	
 	AddExtendedTooltipForFillingUsingTIN();
 	
@@ -404,6 +406,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	StructureToCheckTINandKPP = StructureToCheckTINandKPP(ThisForm, CheckTIN, CheckKPP);
 	
 	ValidateTINandKPP(StructureToCheckTINandKPP, ThisForm);
+	
 	CheckDuplicates(ThisForm);
 	
 	// We received the check usage flag
@@ -696,7 +699,9 @@ EndProcedure // DescriptionOnChange()
 Procedure LegalEntityIndividualOnChange(Item)
 	
 	If Object.LegalEntityIndividual = LegalEntity Then
-		Object.TIN = Left(Object.TIN, 10);
+		//( elmi
+		//Object.TIN = Left(Object.TIN, 10);
+		//) elmi
 		Object.Individual = Undefined;
 	Else
 		Object.KPP = "";
@@ -920,13 +925,16 @@ Function StructureToCheckTINandKPP(Form, CheckTIN, CheckKPP)
 	Object = Form.Object;
 	StructureToCheckTINandKPP = New Structure();
 	
-	StructureToCheckTINandKPP.Insert("TIN",								   Object.TIN);
-	StructureToCheckTINandKPP.Insert("KPP",								   Object.KPP);
-	StructureToCheckTINandKPP.Insert("ThisIsLegalEntity", 						   Object.LegalEntityIndividual = PredefinedValue("Enum.LegalEntityIndividual.LegalEntity"));
+	StructureToCheckTINandKPP.Insert("TIN",							   Object.TIN);
+	StructureToCheckTINandKPP.Insert("KPP",							   Object.KPP);
+	StructureToCheckTINandKPP.Insert("ThisIsLegalEntity", 			   Object.LegalEntityIndividual = PredefinedValue("Enum.LegalEntityIndividual.LegalEntity"));
 	StructureToCheckTINandKPP.Insert("CheckTIN",					   CheckTIN);
 	StructureToCheckTINandKPP.Insert("CheckKPP",					   CheckKPP);
-	StructureToCheckTINandKPP.Insert("ColorHighlightIncorrectValues", Form.ColorHighlightIncorrectValues);
-	
+	StructureToCheckTINandKPP.Insert("ColorHighlightIncorrectValues",  Form.ColorHighlightIncorrectValues);
+	//( elmi 
+	StructureToCheckTINandKPP.Insert("IsNotRussianCompany",		   	   Object.RegistrationCountry <> PredefinedValue("Catalog.WorldCountries.Russia"));
+	//) elmi
+
 	Return StructureToCheckTINandKPP;
 	
 EndFunction
@@ -1439,7 +1447,36 @@ EndProcedure
 
 #EndRegion
 
-
+//( elmi
+#Region ELMI
+&AtClient
+Procedure RegistrationCountryOnChange(Item)
+	
+	CheckTIN = True;
+	CheckKPP = True;
+	
+	StructureToCheckTINandKPP = StructureToCheckTINandKPP(ThisForm, CheckTIN, CheckKPP);
+	
+	ValidateTINandKPP(StructureToCheckTINandKPP, ThisForm);
+	
+	CheckDuplicates(ThisForm);
+	
+	If ValueIsFilled(Object.TIN)
+		AND Object.TINEnteredCorrectly 
+		AND Not ValueIsFilled(Object.Description) Then
+		
+		ErrorDescription = "";
+		FillAttributesUsingTINAtServer(ErrorDescription);
+		
+	EndIf;
+	
+	RunCounterpartyCheck();
+	FillAttributesUsingTIN = False;
+	AttachIdleHandler("Attachable_AllowFillingAttributesUsingTIN", 0.2, True);
+	
+EndProcedure
+#EndRegion 
+//) elmi
 
 
 // Rise { Popov N 2016-05-25
@@ -1452,6 +1489,8 @@ EndFunction
 Function RiseGetFormInterface()
 	Return RiseTranslation.GetFormInterface(ThisForm);
 EndFunction
+
+
 // Rise } Popov N 2016-05-25
 
 FillAttributesUsingTIN = True;

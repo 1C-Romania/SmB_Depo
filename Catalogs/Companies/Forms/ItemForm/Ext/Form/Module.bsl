@@ -26,6 +26,12 @@ EndProcedure // WorkWithImageFlagsManegment()
 &AtServer
 Procedure ReflectUpdateFormsProperty()
 	
+	//( elmi
+	If Object.RegistrationCountry <>  PredefinedValue("Catalog.WorldCountries.Russia") Then
+		Return;
+	EndIf;
+	//) elmi
+	
 	If Object.LegalEntityIndividual = LegalEntity Then
 		
 		If UpdateAvailable Then

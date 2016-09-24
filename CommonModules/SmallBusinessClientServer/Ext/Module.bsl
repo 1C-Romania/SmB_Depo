@@ -22,6 +22,34 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 	
 	ReturnStructure = New Structure;
 	
+	//( elmi
+	IsNotRussianCompany = False;
+	If ParametersStructure.Property("IsNotRussianCompany", IsNotRussianCompany) and IsNotRussianCompany Then
+		If ParametersStructure.CheckTIN Then
+		
+			ReturnStructure.Insert("TINEnteredCorrectly",               True);
+			ReturnStructure.Insert("ExtendedTINPresentation",      		ParametersStructure.TIN);
+			ReturnStructure.Insert("LabelExplanationsOfIncorrectTIN", 	"");
+			ReturnStructure.Insert("EmptyTIN",                        	False);
+			ReturnStructure.Insert("NoErrorsByTIN",                   	ParametersStructure.CheckTIN);
+			
+		EndIf;
+		
+		If ParametersStructure.CheckKPP Then
+			
+			ReturnStructure.Insert("KPPEnteredCorrectly",               True);
+			ReturnStructure.Insert("ExtendedKPPPresentation",      		ParametersStructure.KPP);
+			ReturnStructure.Insert("LabelExplanationsOfIncorrectKPP", 	"");
+			ReturnStructure.Insert("EmptyKPP",                        	False);
+			ReturnStructure.Insert("NoErrorsByKPP",                   	ParametersStructure.CheckKPP);
+		
+		EndIf;
+		
+		Return ReturnStructure;
+		
+	EndIf;
+	//) elmi	
+	
 	If ParametersStructure.CheckTIN Then
 		
 		ReturnStructure.Insert("TINEnteredCorrectly",               True);

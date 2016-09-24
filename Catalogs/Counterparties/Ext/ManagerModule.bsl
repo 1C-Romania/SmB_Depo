@@ -90,6 +90,9 @@ Function EditedAttributesInGroupDataProcessing() Export
 	EditableAttributes.Add("CustomerAdvancesGLAccount");
 	EditableAttributes.Add("GLAccountVendorSettlements");
 	EditableAttributes.Add("VendorAdvancesGLAccount");
+	//( elmi
+	EditableAttributes.Add("RegistrationCountry");
+	//) elmi
 	
 	Return EditableAttributes;
 	
