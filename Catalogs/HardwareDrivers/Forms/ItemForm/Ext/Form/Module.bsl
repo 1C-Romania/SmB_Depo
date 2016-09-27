@@ -436,7 +436,12 @@ Procedure UpdateItemsState();
 		
 	Items.FormExportDriverFile.Visible = VisibleExportFile;
 	Items.FormSetupDriver.Visible     = VisibleExportFile;
-	Items.FormExportDriverFile.Visible = Not ProvidedApplication;
+	//===============================
+	//©# (Begin)	AlekS [2016-09-28]
+	//Items.FormExportDriverFile.Visible = Not ProvidedApplication;
+	Items.FormImportDriverFile.Visible = Not ProvidedApplication;
+	//©# (End)		AlekS [2016-09-28]
+	//===============================
 	
 	If Not IsBlankString(DriverFileName) Or ProvidedApplication Then
 		If IsBlankString(Object.ObjectID) Then
