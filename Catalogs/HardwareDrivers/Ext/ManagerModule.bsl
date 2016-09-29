@@ -52,6 +52,14 @@ EndFunction
 
 Procedure FillPredefinedItem(DriverHandler, ObjectID = Undefined, DriverTemplateName = Undefined, SuppliedAsDistribution = False, DriverVersion = Undefined) Export
 	
+	//===============================
+	//©# (Begin)	AlekS [2016-09-29]
+	If Metadata.CommonTemplates.Find(DriverTemplateName) = Undefined Then
+		Return;
+	EndIf;
+	//©# (End)		AlekS [2016-09-29]
+	//===============================
+	
 	Parameters = EquipmentManagerServerCall.GetDriverParametersForProcessor(String(DriverHandler));
 	
 	TempItemName = StrReplace(Parameters.Name, "Handler", "Driver");
