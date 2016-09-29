@@ -257,7 +257,13 @@ Procedure ImportDriverFile(FullFileName)
 	//If GetDriverInformationByFile(TempDriverFile.DescriptionFull) Then
 	If GetDriverInformationByFile(TempDriverFile.FullName) Then
 		Notification = New NotifyDescription("ImportDriverFileWhenFinished", ThisObject, TempDriverFile.Name);
-		BeginPuttingFiles(Notification, Undefined, TempDriverFile.DescriptionFull, False) 
+		//===============================
+		//©# (Begin)	AlekS [2016-09-30]
+		//BeginPuttingFiles(Notification, Undefined, TempDriverFile.DescriptionFull, False) 
+		BeginPuttingFiles(Notification, Undefined, TempDriverFile.FullName, False) 
+		//©# (End)		AlekS [2016-09-30]
+		//===============================
+	
 	EndIf;
 	
 EndProcedure
