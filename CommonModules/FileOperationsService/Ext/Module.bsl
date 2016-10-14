@@ -783,13 +783,22 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 	
 	Definition = Definition +
 	"
-	|Catalog.FileFolders.Reading.RightSettings.Catalog.FileFolders Catalog.FileFolders.Change.RightSettings.Catalog.FileFolders Catalog.FileVersions.Reading.Object.Catalog.FileFolders Catalog.FileVersions.Change.Object.Catalog.FileFolders Catalog.Files.Reading.Object.Catalog.FileFolders Catalog.Files.Change.Object.Catalog.FileFolders InformationRegister.VersionStoredFiles.Reading.Object.Catalog.FileFolders
+	|Catalog.FileFolders.Read.RightSettings.Catalog.FileFolders
+	|Catalog.FileFolders.Update.RightSettings.Catalog.FileFolders
+	|Catalog.FileVersions.Read.Object.Catalog.FileFolders
+	|Catalog.FileVersions.Update.Object.Catalog.FileFolders
+	|Catalog.Files.Read.Object.Catalog.FileFolders
+	|Catalog.Files.Update.Object.Catalog.FileFolders
+	|InformationRegister.VersionStoredFiles.Read.Object.Catalog.FileFolders
 	|";
 	
 	If CommonUse.SubsystemExists("StandardSubsystems.BusinessProcessesAndTasks") Then
 		Definition = Definition + 
 		"
-		|Catalog.FileVersions.Reading.Object.BusinessProcess.Task Catalog.Files.Reading.Object.BusinessProcess.Task Catalog.Files.Change.Object.BusinessProcess.Task InformationRegister.VersionStoredFiles.Reading.Object.BusinessProcess.Task
+		|Catalog.FileVersions.Read.Object.BusinessProcess.Task
+		|Catalog.Files.Read.Object.BusinessProcess.Task
+		|Catalog.Files.Update.Object.BusinessProcess.Task
+		|InformationRegister.VersionStoredFiles.Read.Object.BusinessProcess.Task
 		|";
 	EndIf;
 	

@@ -9,10 +9,10 @@ Procedure BeforeWrite(Cancel, Replacing)
 	
 	For Each Record IN ThisObject Do
 		Record.DataSize = DataSize(Record.ObjectVersioning);
-		ObjectVersioning = Record.ObjectVersioning.Get();
-		Record.ThereIsVersionData = ObjectVersioning <> Undefined;
+		ObjVersioning = Record.ObjectVersioning.Get();
+		Record.ThereIsVersionData = ObjVersioning <> Undefined;
 		If Record.ThereIsVersionData Then
-			Record.CheckSum = ObjectVersioning.CheckSum(ObjectVersioning);
+			Record.CheckSum = ObjectVersioning.CheckSum(ObjVersioning);
 		EndIf;
 	EndDo;
 EndProcedure

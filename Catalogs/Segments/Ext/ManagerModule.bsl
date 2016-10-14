@@ -633,9 +633,9 @@ Function GenerateQueryOnRules(Segment) Export
 			If SmallBusinessServer.FindQuerySchemaSource(Operator.Sources, "CounterpartiesAdditionalAttributes") = Undefined Then
 				AvailableAdditAttributesTable = SmallBusinessServer.FindAvailableTableQuerySchemaField(AvailableTableCounterparties, "AdditionalAttributes", Type("QuerySchemaAvailableNestedTable"));
 				NewSource = Operator.Sources.Add(AvailableAdditAttributesTable, "CounterpartiesAdditionalAttributes");
-				NewSource.connection.Clear();
-				Operator.Sources[0].connection.Add("CounterpartiesAdditionalAttributes", "Counterparties.Ref = CounterpartiesAdditionalAttributes.Ref");
-				Operator.Sources[0].connection[0].ConnectionType = QuerySchemaJoinType.Inner;
+				NewSource.Joins.Clear();
+				Operator.Sources[0].Joins.Add("CounterpartiesAdditionalAttributes", "Counterparties.Ref = CounterpartiesAdditionalAttributes.Ref");
+				Operator.Sources[0].Joins[0].JoinType = QuerySchemaJoinType.Inner;
 			EndIf;
 			
 			FilterQuery.Add("CounterpartiesAdditionalAttributes.Property = & Property" + RuleNumber);
@@ -654,9 +654,9 @@ Function GenerateQueryOnRules(Segment) Export
 			If SmallBusinessServer.FindQuerySchemaSource(Operator.Sources, "CounterpartiesContactInformation") = Undefined Then
 				AvailableCITable = SmallBusinessServer.FindAvailableTableQuerySchemaField(AvailableTableCounterparties, "ContactInformation", Type("QuerySchemaAvailableNestedTable"));
 				NewSource = Operator.Sources.Add(AvailableCITable, "CounterpartiesContactInformation");
-				NewSource.connection.Clear();
-				Operator.Sources[0].connection.Add("CounterpartiesContactInformation", "Counterparties.Ref = CounterpartiesContactInformation.Ref");
-				Operator.Sources[0].connection[0].ConnectionType = QuerySchemaJoinType.Inner;
+				NewSource.Joins.Clear();
+				Operator.Sources[0].Joins.Add("CounterpartiesContactInformation", "Counterparties.Ref = CounterpartiesContactInformation.Ref");
+				Operator.Sources[0].Joins[0].JoinType = QuerySchemaJoinType.Inner;
 			EndIf;
 			
 			FilterQuery.Add("CounterpartiesContactInformation.Type = & CIKind" + RuleNumber);
@@ -685,9 +685,9 @@ Function GenerateQueryOnRules(Segment) Export
 					|GROUP BY
 					|	EventParties.Contact");
 				
-				NewSource.connection.Clear();
-				Operator.Sources[0].connection.Add("EventsForPeriod", "Counterparties.Ref = EventsForPeriod.Counterparty");
-				Operator.Sources[0].connection[0].ConnectionType = QuerySchemaJoinType.LeftOuter;
+				NewSource.Joins.Clear();
+				Operator.Sources[0].Joins.Add("EventsForPeriod", "Counterparties.Ref = EventsForPeriod.Counterparty");
+				Operator.Sources[0].Joins[0].JoinType = QuerySchemaJoinType.LeftOuter;
 				
 			EndIf;
 			
@@ -736,9 +736,9 @@ Function GenerateQueryOnRules(Segment) Export
 					|GROUP BY
 					|	CustomerOrder.Counterparty");
 				
-				NewSource.connection.Clear();
-				Operator.Sources[0].connection.Add("OrdersForPeriod", "Counterparties.Ref = OrdersForPeriod.Counterparty");
-				Operator.Sources[0].connection[0].ConnectionType = QuerySchemaJoinType.LeftOuter;
+				NewSource.Joins.Clear();
+				Operator.Sources[0].Joins.Add("OrdersForPeriod", "Counterparties.Ref = OrdersForPeriod.Counterparty");
+				Operator.Sources[0].Joins[0].JoinType = QuerySchemaJoinType.LeftOuter;
 				
 			EndIf;
 			
@@ -784,9 +784,9 @@ Function GenerateQueryOnRules(Segment) Export
 					|GROUP BY
 					|	InvoiceForPayment.Counterparty");
 				
-				NewSource.connection.Clear();
-				Operator.Sources[0].connection.Add("AccountsForPeriod", "Counterparties.Ref = AccountsForPeriod.Counterparty");
-				Operator.Sources[0].connection[0].ConnectionType = QuerySchemaJoinType.LeftOuter;
+				NewSource.Joins.Clear();
+				Operator.Sources[0].Joins.Add("AccountsForPeriod", "Counterparties.Ref = AccountsForPeriod.Counterparty");
+				Operator.Sources[0].Joins[0].JoinType = QuerySchemaJoinType.LeftOuter;
 				
 			EndIf;
 			
@@ -840,9 +840,9 @@ Function GenerateQueryOnRules(Segment) Export
 					|FROM
 					|	AccumulationRegister.Sales AS Sales");
 					
-				NewSource.connection.Clear();
-				Operator.Sources[0].connection.Add("SalesProductsAndServices", "Counterparties.Ref = SalesRroductsAndServices.Counterparty");
-				Operator.Sources[0].connection[0].ConnectionType = QuerySchemaJoinType.Inner;
+				NewSource.Joins.Clear();
+				Operator.Sources[0].Joins.Add("SalesProductsAndServices", "Counterparties.Ref = SalesRroductsAndServices.Counterparty");
+				Operator.Sources[0].Joins[0].JoinType = QuerySchemaJoinType.Inner;
 				
 			EndIf;
 			
@@ -919,9 +919,9 @@ Function GenerateQueryOnRules(Segment) Export
 					|		ELSE VALUE(Catalog.Counterparties.EmptyRef)
 					|	END");
 				
-				NewSource.connection.Clear();
-				Operator.Sources[0].connection.Add("SalesIncome", "Counterparties.Ref = SalesIncome.Counterparty");
-				Operator.Sources[0].connection[0].ConnectionType = QuerySchemaJoinType.LeftOuter;
+				NewSource.Joins.Clear();
+				Operator.Sources[0].Joins.Add("SalesIncome", "Counterparties.Ref = SalesIncome.Counterparty");
+				Operator.Sources[0].Joins[0].JoinType = QuerySchemaJoinType.LeftOuter;
 				
 			EndIf;
 			
@@ -960,9 +960,9 @@ Function GenerateQueryOnRules(Segment) Export
 					|WHERE
 					|	AccountsReceivableBalances.AmountBalance > 0");
 				
-				NewSource.connection.Clear();
-				Operator.Sources[0].connection.Add("CustomerDebtAmount", "Counterparties.Ref = CustomerDebtAmount.Counterparty");
-				Operator.Sources[0].connection[0].ConnectionType = QuerySchemaJoinType.LeftOuter;
+				NewSource.Joins.Clear();
+				Operator.Sources[0].Joins.Add("CustomerDebtAmount", "Counterparties.Ref = CustomerDebtAmount.Counterparty");
+				Operator.Sources[0].Joins[0].JoinType = QuerySchemaJoinType.LeftOuter;
 				
 			EndIf;
 			
@@ -1008,9 +1008,9 @@ Function GenerateQueryOnRules(Segment) Export
 					|GROUP BY
 					|	NestedSelect.Counterparty");
 					
-				NewSource.connection.Clear();
-				Operator.Sources[0].connection.Add("CustomerDebtTerm", "Counterparties.Ref = CustomerDebtTerm.Counterparty");
-				Operator.Sources[0].connection[0].ConnectionType = QuerySchemaJoinType.LeftOuter;
+				NewSource.Joins.Clear();
+				Operator.Sources[0].Joins.Add("CustomerDebtTerm", "Counterparties.Ref = CustomerDebtTerm.Counterparty");
+				Operator.Sources[0].Joins[0].JoinType = QuerySchemaJoinType.LeftOuter;
 				
 			EndIf;
 			
@@ -1032,9 +1032,9 @@ Function GenerateQueryOnRules(Segment) Export
 					|FROM
 					|	AccumulationRegister.AccountsPayable.Balance(, SettlementsType = VALUE(Enum.SettlementsTypes.Debt)) AS AccountsPayableBalances");
 				
-				NewSource.connection.Clear();
-				Operator.Sources[0].connection.Add("VendorDebtAmount", "Counterparties.Ref = DebtToVendorAmount.Counterparty");
-				Operator.Sources[0].connection[0].ConnectionType = QuerySchemaJoinType.LeftOuter;
+				NewSource.Joins.Clear();
+				Operator.Sources[0].Joins.Add("VendorDebtAmount", "Counterparties.Ref = DebtToVendorAmount.Counterparty");
+				Operator.Sources[0].Joins[0].JoinType = QuerySchemaJoinType.LeftOuter;
 				
 			EndIf;
 			
@@ -1080,9 +1080,9 @@ Function GenerateQueryOnRules(Segment) Export
 					|GROUP BY
 					|	NestedSelect.Counterparty");
 				
-				NewSource.connection.Clear();
-				Operator.Sources[0].connection.Add("VendorDebtTerm", "Counterparties.Ref = SupplierDebtTerm.Counterparty");
-				Operator.Sources[0].connection[0].ConnectionType = QuerySchemaJoinType.LeftOuter;
+				NewSource.Joins.Clear();
+				Operator.Sources[0].Joins.Add("VendorDebtTerm", "Counterparties.Ref = SupplierDebtTerm.Counterparty");
+				Operator.Sources[0].Joins[0].JoinType = QuerySchemaJoinType.LeftOuter;
 				
 			EndIf;
 			

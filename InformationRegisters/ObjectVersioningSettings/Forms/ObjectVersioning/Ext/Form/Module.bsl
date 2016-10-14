@@ -109,14 +109,14 @@ EndProcedure
 &AtClient
 Procedure InLastWeek(Command)
 	SetVersionStorageTermForSelectedObjects(
-		PredefinedValue("Enum.VersionStorageTerms.InLastWeek"));
+		PredefinedValue("Enum.VersionStorageTerms.RecentWeek"));
 	UpdateInformationAboutOutdatedVersions();
 EndProcedure
 
 &AtClient
 Procedure InLastMonth(Command)
 	SetVersionStorageTermForSelectedObjects(
-		PredefinedValue("Enum.VersionStorageTerms.InLastMonth"));
+		PredefinedValue("Enum.VersionStorageTerms.RecentMonth"));
 	UpdateInformationAboutOutdatedVersions();
 EndProcedure
 
@@ -233,7 +233,7 @@ Procedure FillObjectTypesInValueTree()
 		ElsIf BusinessProcesses.AllRefsType().ContainsType(Type) Then
 			If NodeBusinessProcesses = Undefined Then
 				NodeBusinessProcesses = CMTree.Rows.Add();
-				NodeBusinessProcesses.SynonymNameObject = NStr("en='Business-processes';ru='Деловые процессы'");
+				NodeBusinessProcesses.SynonymNameObject = NStr("en='Business processes';ru='Деловые процессы'");
 				NodeBusinessProcesses.ClassObject = "03BusinessProcessesRoot";
 				NodeBusinessProcesses.ObjectType = "BusinessProcesses";
 			EndIf;

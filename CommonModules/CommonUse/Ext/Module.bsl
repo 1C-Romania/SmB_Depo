@@ -2294,7 +2294,7 @@ Function GetConfigurationMetadataTree(Filter = Undefined) Export
 	NewMetadataObjectCollectionRow("AccumulationRegisters",      NStr("en='Accumulation registers';ru='Регистры накопления'"),       PictureLib.AccumulationRegister,      PictureLib.AccumulationRegister,            CollectionsOfMetadataObjects);
 	NewMetadataObjectCollectionRow("AccountingRegisters",     NStr("en='Accounting registers';ru='Регистры бухгалтерии'"),      PictureLib.AccountingRegister,     PictureLib.AccountingRegister,           CollectionsOfMetadataObjects);
 	NewMetadataObjectCollectionRow("CalculationRegisters",         NStr("en='Calculation registers';ru='Регистры расчета'"),          PictureLib.CalculationRegister,         PictureLib.CalculationRegister,               CollectionsOfMetadataObjects);
-	NewMetadataObjectCollectionRow("BusinessProcesses",          NStr("en='Business-processes';ru='Деловые процессы'"),           PictureLib.BusinessProcess,          PictureLib.BusinessProcessObject,          CollectionsOfMetadataObjects);
+	NewMetadataObjectCollectionRow("BusinessProcesses",          NStr("en='Business processes';ru='Деловые процессы'"),           PictureLib.BusinessProcess,          PictureLib.BusinessProcessObject,          CollectionsOfMetadataObjects);
 	NewMetadataObjectCollectionRow("Tasks",                  NStr("en='Tasks';ru='Задания'"),                    PictureLib.Task,                 PictureLib.TaskObject,                 CollectionsOfMetadataObjects);
 	
 	// Return value of the function.
@@ -5882,9 +5882,9 @@ Procedure ReplaceInObject(Results, Val UsagePlace, Val WriteParameters, Val Inte
 			Block.Lock();
 		Except
 			// Add record about an unsuccessful attempt to lock the result.
-			Error = NStr("en='Unable to lock one or several objects from
-		|the list %1';ru='Не удалось заблокировать один или
-		|несколько объектов из списка %1'");
+			Error = NStr("en='Unable to lock one or several objects from"
+"the list %1';ru='Не удалось заблокировать один или"
+"несколько объектов из списка %1'");
 			Error = StrReplace(Error, "%1", LockListDescription(Block));
 			For Each String In ProcessedRows Do
 				AddReplacementResult(Results, String.Ref, 

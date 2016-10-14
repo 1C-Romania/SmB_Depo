@@ -210,7 +210,7 @@ Procedure Select(Command)
 	Result.Insert("PersonalSettings", OtherSettingsStructure.PersonalSettingsArray);
 	Result.Insert("SettingsCount", SettingsCount);
 	Result.Insert("ReportVariantsTable", UserVariantsReportsTable);
-	Result.Insert("SelectedReportsVariants", SelectedReportsSettings.ReportVariants);
+	Result.Insert("SelectedReportsVariants", SelectedReportsSettings.ReportsVariants);
 	Result.Insert("OtherUserSettings",
 		OtherSettingsStructure.OtherUserSettings);
 	
@@ -262,12 +262,12 @@ Procedure ChangeMark(Item)
 	EndIf;
 	
 	ItemParent = MarkedItem.GetParent();
-	ChildItems = MarkedItem.GetItems();
+	ChildItemsList = MarkedItem.GetItems();
 	SettingsCount = 0;
 	
 	If ItemParent = Undefined Then
 		
-		For Each ChildItem IN ChildItems Do
+		For Each ChildItem IN ChildItemsList Do
 			
 			If ChildItem.Check <> ValueMark Then
 				SettingsCount = SettingsCount + 1
@@ -276,7 +276,7 @@ Procedure ChangeMark(Item)
 			ChildItem.Check = ValueMark;
 		EndDo;
 		
-		If ChildItems.Count() = 0 Then
+		If ChildItemsList.Count() = 0 Then
 			SettingsCount = SettingsCount + 1;
 		EndIf;
 		
@@ -328,12 +328,12 @@ Procedure CheckChildItemsMarksAndMarkParent(TreeItem, ValueMark)
 	ThereAreUnmarked = False;
 	AreMarked = False;
 	
-	ChildItems = TreeItem.GetItems();
-	If ChildItems = Undefined Then
+	ChildItemsList = TreeItem.GetItems();
+	If ChildItemsList = Undefined Then
 		TreeItem.Check = ValueMark;
 	Else
 		
-		For Each ChildItem IN ChildItems Do
+		For Each ChildItem IN ChildItemsList Do
 			
 			If ChildItem.Check = 0 Then
 				ThereAreUnmarked = True;
@@ -361,16 +361,16 @@ Procedure MarkTreeItems(SettingsTree, ValueMark)
 	
 	SettingsCount = 0;
 	For Each TreeItem IN SettingsTree Do
-		ChildItems = TreeItem.GetItems();
+		ChildItemsList = TreeItem.GetItems();
 		
-		For Each ChildItem IN ChildItems Do
+		For Each ChildItem IN ChildItemsList Do
 			
 			ChildItem.Check = ValueMark;
 			SettingsCount = SettingsCount + 1;
 			
 		EndDo;
 		
-		If ChildItems.Count() = 0 Then
+		If ChildItemsList.Count() = 0 Then
 			SettingsCount = SettingsCount + 1;
 		EndIf;
 		
@@ -570,14 +570,14 @@ Procedure ImportMarksValues(ValueTree, MarkedSettings, KindSettings)
 		
 		For Each TreeRow IN ValueTree.GetItems() Do
 			
-			ChildItems = TreeRow.GetItems();
+			ChildItemsList = TreeRow.GetItems();
 			
 			If TreeRow.RowType = MarkedSetting Then
 				
 				If RowMarkedSettings.Check Then
 					TreeRow.Check = 1;
 					
-					If ChildItems.Count() = 0 Then
+					If ChildItemsList.Count() = 0 Then
 						MarkedCount = MarkedCount + 1;
 					EndIf;
 					
@@ -587,7 +587,7 @@ Procedure ImportMarksValues(ValueTree, MarkedSettings, KindSettings)
 				
 			Else
 				
-				For Each ChildItem IN ChildItems Do
+				For Each ChildItem IN ChildItemsList Do
 					
 					If ChildItem.RowType = MarkedSetting Then
 						ChildItem.Check = 1;

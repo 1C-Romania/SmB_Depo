@@ -186,7 +186,7 @@ Procedure RefreshTagFilterValues(Form, MaxStringLength = 85) Export
 		ItemTag.HorizontalAlign = ItemHorizontalLocation.Center;
 		ItemTag.Width = StrLen(TagPresentation);
 		ItemTag.HorizontalStretch = False;
-		ItemTag.SetAction("Click", "Attachable_TagFilterPress");
+		ItemTag.SetAction("Click", "Attachable_TagFilterClick");
 		
 		ItemNumber = ItemNumber + 1;
 		
@@ -199,7 +199,7 @@ Procedure RefreshTagFilterValues(Form, MaxStringLength = 85) Export
 		ItemExplanation.Hyperlink = True;
 		ItemExplanation.Title = "How to work with tags?";
 		ItemExplanation.HorizontalAlign = ItemHorizontalLocation.Center;
-		ItemExplanation.SetAction("Click", "Attachable_TagFilterPress");
+		ItemExplanation.SetAction("Click", "Attachable_TagFilterClick");
 		
 	EndIf;
 	
@@ -282,7 +282,7 @@ Procedure RefreshSegmentsFilterValues(Form, MaxStringLength = 85) Export
 		ItemSegment.HorizontalAlign = ItemHorizontalLocation.Center;
 		ItemSegment.Width = StrLen(SegmentPresentation);
 		ItemSegment.HorizontalStretch = False;
-		ItemSegment.SetAction("Click", "Attachable_SegmentFilterPress");
+		ItemSegment.SetAction("Click", "Attachable_SegmentFilterClick");
 		
 		ItemNumber = ItemNumber + 1;
 		
@@ -295,7 +295,7 @@ Procedure RefreshSegmentsFilterValues(Form, MaxStringLength = 85) Export
 		ItemExplanation.Hyperlink = True;
 		ItemExplanation.Title = "How to work with segments?";
 		ItemExplanation.HorizontalAlign = ItemHorizontalLocation.Center;
-		ItemExplanation.SetAction("Click", "Attachable_SegmentFilterPress");
+		ItemExplanation.SetAction("Click", "Attachable_SegmentFilterClick");
 		
 	EndIf;
 	

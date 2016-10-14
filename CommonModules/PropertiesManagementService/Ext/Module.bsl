@@ -874,7 +874,11 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 		
 		Definition = Definition + 
 		"
-		|Catalog.ObjectPropertiesValues.Reading.AdditionalData Catalog.ObjectsPropertiesValuesHierarchy.Reading.AdditionalData ChartOfCharacteristicTypes.AdditionalAttributesAndData.Reading.AdditionalData InformationRegister.AdditionalData.Reading.AdditionalData InformationRegister.AdditionalData.Change.AdditionalData
+		|Catalog.ObjectsPropertiesValues.Read.AdditionalInformation
+		|Catalog.ObjectsPropertiesValuesHierarchy.Read.AdditionalInformation
+		|ChartOfCharacteristicTypes.AdditionalAttributesAndInformation.Read.AdditionalInformation
+		|InformationRegister.AdditionalInformation.Read.AdditionalInformation
+		|InformationRegister.AdditionalInformation.Update.AdditionalInformation
 		|";
 	EndIf;
 	

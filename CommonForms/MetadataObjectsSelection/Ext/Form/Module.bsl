@@ -231,7 +231,7 @@ Procedure MetadataObjectTreeFill()
 	CollectionsOfMetadataObjects_NewRow("AccumulationRegisters",           NStr("en='Accumulation registers';ru='Регистры накопления'"),            PictureLib.AccumulationRegister,      PictureLib.AccumulationRegister,            False, CollectionsOfMetadataObjects);
 	CollectionsOfMetadataObjects_NewRow("AccountingRegisters",          NStr("en='Accounting registers';ru='Регистры бухгалтерии'"),           PictureLib.AccountingRegister,     PictureLib.AccountingRegister,           False, CollectionsOfMetadataObjects);
 	CollectionsOfMetadataObjects_NewRow("CalculationRegisters",              NStr("en='Calculation registers';ru='Регистры расчета'"),               PictureLib.CalculationRegister,         PictureLib.CalculationRegister,               False, CollectionsOfMetadataObjects);
-	CollectionsOfMetadataObjects_NewRow("BusinessProcesses",               NStr("en='Business-processes';ru='Деловые процессы'"),                PictureLib.BusinessProcess,          PictureLib.BusinessProcessObject,          False, CollectionsOfMetadataObjects);
+	CollectionsOfMetadataObjects_NewRow("BusinessProcesses",               NStr("en='Business processes';ru='Деловые процессы'"),                PictureLib.BusinessProcess,          PictureLib.BusinessProcessObject,          False, CollectionsOfMetadataObjects);
 	CollectionsOfMetadataObjects_NewRow("Tasks",                       NStr("en='Tasks';ru='Задания'"),                         PictureLib.Task,                 PictureLib.TaskObject,                 False, CollectionsOfMetadataObjects);
 	
 	// Predefined items creating.

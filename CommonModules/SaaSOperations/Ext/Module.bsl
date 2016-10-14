@@ -2317,7 +2317,7 @@ EndProcedure
 Procedure OnDetermineCatalogsForDataImport(ImportedCatalogs) Export
 	
 	// Cannot import to the currency classifier.
-	TableRow = ImportedCatalogs.Find(Metadata.Catalogs.JobQueueDataAreas.FullName(), "DescriptionFull");
+	TableRow = ImportedCatalogs.Find(Metadata.Catalogs.JobQueueDataAreas.FullName(), "FullName");
 	If TableRow <> Undefined Then 
 		ImportedCatalogs.Delete(TableRow);
 	EndIf;

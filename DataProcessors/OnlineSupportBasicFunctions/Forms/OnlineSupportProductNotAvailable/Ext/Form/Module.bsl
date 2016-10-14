@@ -65,7 +65,7 @@ Function MessageParametersToTechicalSupport()
 	Result.Insert("Subject",
 		NStr("en='Online support. Online support is not available for the product.';ru='Интернет-поддержка. Интернет-поддержка продукта не оказывается.'"));
 	
-	MessageText = NStr("en = Dear Sir!
+	MessageText = NStr("en = Hello!
 		|When connecting Online support of this software product
 		|the following message is displayed ""Online support of the product is not available"".
 		|Please help me to solve this issue.

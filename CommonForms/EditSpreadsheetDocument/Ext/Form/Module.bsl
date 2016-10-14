@@ -34,7 +34,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.Warning.Visible = IsTemplate AND Parameters.Edit;
 	
 	Items.EditInExternalApplication.Visible = CommonUseClientServer.ThisIsWebClient() 
-		AND Not IsBlankString(Parameters.MetadataObjectTemplateName) AND CommonUse.SubsystemExists("StandardSubsystems.Printing");
+		AND Not IsBlankString(Parameters.MetadataObjectTemplateName) AND CommonUse.SubsystemExists("StandardSubsystems.Print");
 	
 	If Not IsBlankString(Parameters.DocumentName) Then
 		DocumentName = Parameters.DocumentName;
@@ -132,7 +132,7 @@ EndProcedure
 
 &AtClient
 Procedure EditInExternalApplication(Command)
-	If CommonUseClient.SubsystemExists("StandardSubsystems.Printing") Then
+	If CommonUseClient.SubsystemExists("StandardSubsystems.Print") Then
 		OpenParameters = New Structure;
 		OpenParameters.Insert("SpreadsheetDocument", SpreadsheetDocument);
 		OpenParameters.Insert("MetadataObjectTemplateName", Parameters.MetadataObjectTemplateName);
@@ -191,7 +191,7 @@ EndProcedure
 
 &AtServer
 Procedure ImportSpreadsheetDocumentFormMetadata()
-	If CommonUse.SubsystemExists("StandardSubsystems.Printing") Then
+	If CommonUse.SubsystemExists("StandardSubsystems.Print") Then
 		PrintManagementModule = CommonUse.CommonModule("PrintManagement");
 		SpreadsheetDocument = PrintManagementModule.PrintedFormsTemplate(Parameters.MetadataObjectTemplateName);
 	EndIf;

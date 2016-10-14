@@ -1072,8 +1072,16 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 	
 	Definition = Definition + 
 	"
-	|Catalog.ExternalUsers.Read.ExternalUsers Catalog.ExternalUsers.Change.ExternalUsers Catalog.ExternalUsersGroups.Read.ExternalUsers Catalog.UsersGroups.Read.Users Catalog.Users.Read.Users Catalog.Users.Change.Users InformationRegister.UsersGroupsContents.Read.ExternalUsers InformationRegister.UsersGroupsContents.Read.Users
+	|Catalog.ExternalUsers.Read.ExternalUsers
+	|Catalog.ExternalUsers.Update.ExternalUsers
+	|Catalog.ExternalUsersGroups.Read.ExternalUsers
+	|Catalog.UsersGroups.Read.Users
+	|Catalog.Users.Read.Users
+	|Catalog.Users.Update.Users
+	|InformationRegister.UsersGroupsContents.Read.ExternalUsers
+	|InformationRegister.UsersGroupsContents.Read.Users
 	|";
+
 	
 EndProcedure
 

@@ -5273,7 +5273,7 @@ Procedure SendQueryProbeToBank(Val EDAgreement, Val SessionID, QueryPosted) Expo
 
 	DeleteFiles(TempFile);
 	
-	EDName = NStr("en='Query-probe';ru='Запрос-зонд'");
+	EDName = NStr("en='Request-probe';ru='Запрос-зонд'");
 
 	CurrentSessionDate = CurrentSessionDate();
 	ED = AttachedFiles.AddFile(EDAgreement, EDName, "xml", CurrentSessionDate, CurrentSessionDate,

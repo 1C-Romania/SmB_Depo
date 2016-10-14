@@ -41,7 +41,7 @@ Function CommonSettings() Export
 	CommonSettings.Insert("CertificateIssueApplicationAvailable",
 		  CommonUse.SubsystemExists("StandardSubsystems.ContactInformation")
 		AND CommonUse.SubsystemExists("StandardSubsystems.AddressClassifier")
-		AND CommonUse.SubsystemExists("StandardSubsystems.Printing")
+		AND CommonUse.SubsystemExists("StandardSubsystems.Print")
 		AND CommonUse.SubsystemExists("StandardSubsystems.WorkWithCounterparties"));
 	
 	Query = New Query;

@@ -392,7 +392,7 @@ Procedure GenerateTableRapidFilter()
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Amount_From";
-	NewRow.ParameterPresentation = NStr("en='Amount From:';ru='Сумма с:'");
+	NewRow.ParameterPresentation = NStr("en='Amount from:';ru='Сумма с:'");
 	NewRow.Type = "Number";
 	NewRow.Value = Undefined;
 	

@@ -607,7 +607,7 @@ Procedure PrintDocuments(Command)
 	PrintedFormIdentifier = "StatementToIssueCertificate";
 	PrintedFormName = NStr("en='Request for certificate issue';ru='Заявление на выпуск сертификата'");
 	
-	If Not CommonUseClient.SubsystemExists("StandardSubsystems.Printing") Then
+	If Not CommonUseClient.SubsystemExists("StandardSubsystems.Print") Then
 		Document.Show(PrintedFormName);
 		DocumentsPrinted = True;
 		Return;

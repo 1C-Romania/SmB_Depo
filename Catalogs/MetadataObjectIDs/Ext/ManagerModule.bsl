@@ -1028,9 +1028,9 @@ Function MetadataObjectCollectionProperties() Export
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "a8cdd0e0-c27f-4bf0-9718-10ec054dc468";
 	String.Name             = "BusinessProcesses";
-	String.Synonym         = NStr("en='Business-processes';ru='Деловые процессы'");
+	String.Synonym         = NStr("en='Business processes';ru='Деловые процессы'");
 	String.SingularName     = "BusinessProcess";
-	String.SynonymInSingularNumber = NStr("en='Business-process';ru='Бизнес-процесс'");
+	String.SynonymInSingularNumber = NStr("en='Business process';ru='Бизнес-процесс'");
 	
 	// Tasks
 	String = MetadataObjectCollectionProperties.Add();

@@ -1070,22 +1070,22 @@ Function GetDataPresentation(DataId, DataTable)
 			DataPresentation = NStr("en='Document';ru='документ'");
 		
 		ElsIf Metadata.ChartsOfCharacteristicTypes.Contains(MetadataObject) Then
-			DataPresentation = NStr("en='Chart of characteristics kinds ""%1""';ru='План видов характеристик ""%1""'");
+			DataPresentation = NStr("en='Chart of characteristics types ""%1""';ru='План видов характеристик ""%1""'");
 			
 		ElsIf Metadata.ChartsOfAccounts.Contains(MetadataObject) Then
-			DataPresentation = NStr("en='Plan accounts ""%1""';ru='План счетов ""%1""'");
+			DataPresentation = NStr("en='Chart of accounts ""%1""';ru='План счетов ""%1""'");
 			
 		ElsIf Metadata.ChartsOfCalculationTypes.Contains(MetadataObject) Then
 			DataPresentation = NStr("en='Chart of calculation types ""%1""';ru='План видов расчета ""%1""'");
 			
 		ElsIf Metadata.BusinessProcesses.Contains(MetadataObject) Then
-			DataPresentation = NStr("en='Business-process';ru='Бизнес-процесс'");
+			DataPresentation = NStr("en='Business process';ru='Бизнес-процесс'");
 			
 		ElsIf Metadata.Tasks.Contains(MetadataObject) Then
 			DataPresentation = NStr("en='Task';ru='Задача'");
 			
 		ElsIf Metadata.ExchangePlans.Contains(MetadataObject) Then
-			DataPresentation = NStr("en='Plan exchange ""%1""';ru='План обмена ""%1""'");
+			DataPresentation = NStr("en='Exchange plan ""%1""';ru='План обмена ""%1""'");
 		EndIf;
 		
 		If ValueIsFilled(DataPresentation) AND ValueIsFilled(DataId) Then

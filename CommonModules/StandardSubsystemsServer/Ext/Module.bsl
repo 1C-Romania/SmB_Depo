@@ -456,7 +456,7 @@ Procedure OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers) Export
 		ModulePerformanceEstimationService.OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers);
 	EndIf;
 	
-	If CommonUse.SubsystemExists("StandardSubsystems.Printing") Then
+	If CommonUse.SubsystemExists("StandardSubsystems.Print") Then
 		PrintManagementModule = CommonUse.CommonModule("PrintManagement");
 		PrintManagementModule.OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers);
 	EndIf;

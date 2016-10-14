@@ -48,11 +48,11 @@ Function AcceptExchangePackage(DataMobileApplications, CodeMobileComputer, Descr
 	);
 
 	If PeriodExportings = "In last month" Then
-		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.InLastMonth;
+		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.RecentMonth;
 	ElsIf PeriodExportings = "In last week" Then
-		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.InLastWeek;
+		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.RecentWeek;
 	Else
-		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.InLastDay;
+		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.RecentDay;
 	EndIf;
 	
 	If PeriodApplicationInstalledInMobileExportings <> MobileApplicationExportingsPeriod Then
@@ -179,11 +179,11 @@ Function StartExchange(CodeMobileComputer, DescriptionOfMobileComputer, SentNo, 
 	);
 
 	If PeriodExportings = "In last month" Then
-		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.InLastMonth;
+		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.RecentMonth;
 	ElsIf PeriodExportings = "In last week" Then
-		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.InLastWeek;
+		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.RecentWeek;
 	Else
-		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.InLastDay;
+		MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.RecentDay;
 	EndIf;
 	
 	If PeriodApplicationInstalledInMobileExportings <> MobileApplicationExportingsPeriod Then

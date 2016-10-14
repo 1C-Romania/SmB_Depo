@@ -37,7 +37,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ElsIf CommonUseSTL.IsRecalculationRecordSet(MetadataObject) Then
 		ObjectTypePresentation = NStr("en='recalculation';ru='перерасчет'");
 	ElsIf CommonUseSTL.ThisIsBusinessProcess(MetadataObject) Then
-		ObjectTypePresentation = NStr("en='business-process';ru='бизнес-процесс'");
+		ObjectTypePresentation = NStr("en='business process';ru='бизнес-процесс'");
 	ElsIf CommonUseSTL.ThisIsTask(MetadataObject) Then
 		ObjectTypePresentation = NStr("en='task';ru='задаче'");
 	ElsIf CommonUseSTL.ThisIsExchangePlan(MetadataObject) Then
@@ -90,7 +90,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	AddTreeRootString(Tree, "AccumulationRegister", NStr("en='Accumulation registers';ru='Регистры накопления'"), 10, PictureLib.AccumulationRegister);
 	AddTreeRootString(Tree, "AccountingRegister", NStr("en='Accounting registers';ru='Регистры бухгалтерии'"), 11, PictureLib.AccountingRegister);
 	AddTreeRootString(Tree, "CalculationRegister", NStr("en='Calculation registers';ru='Регистры расчета'"), 12, PictureLib.CalculationRegister);
-	AddTreeRootString(Tree, "BusinessProcess", NStr("en='Business-processes';ru='Деловые процессы'"), 13, PictureLib.BusinessProcess);
+	AddTreeRootString(Tree, "BusinessProcess", NStr("en='Business processes';ru='Деловые процессы'"), 13, PictureLib.BusinessProcess);
 	AddTreeRootString(Tree, "Task", NStr("en='Tasks';ru='Задания'"), 14, PictureLib.Task);
 	AddTreeRootString(Tree, "ExchangePlan", NStr("en='Exchange plans';ru='Планы обмена'"), 15, PictureLib.ExchangePlan);
 	

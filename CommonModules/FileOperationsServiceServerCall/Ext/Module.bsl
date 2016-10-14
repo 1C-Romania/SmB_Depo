@@ -925,7 +925,7 @@ Function FileData(FileOrVersionRef) Export
 		|FROM
 		|	Catalog.Files AS Files
 		|		LEFT JOIN Catalog.FileVersions AS FileVersions
-		|		BY Files.CurrentVersion = FileVersions.Ref";
+		|		ON Files.CurrentVersion = FileVersions.Ref";
 		
 		If TypeOf(FileRef) = Type("Array") Then 
 			Query.Text = Query.Text + " WHERE Files.Ref To (&File) ";

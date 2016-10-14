@@ -74,7 +74,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		Items.AssistantPages.CurrentPage = Items.FillingTablesWithData;
 		Items.GroupComparisonSettings.Visible = False;
-		Items.MatchingListColumns.Visible = False;
+		Items.MatchingColumnsList.Visible = False;
 		Items.Close.Title = NStr("en='Cancel';ru='Отменить'");
 		
 	Else
@@ -112,7 +112,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			ChangeFormForInformationByColumns();
 			Items.AssistantPages.CurrentPage = Items.FillingTablesWithData;
 			Items.GroupComparisonSettings.Visible = False;
-			Items.MatchingListColumns.Visible = False;
+			Items.MatchingColumnsList.Visible = False;
 		EndIf;
 	EndIf;
 	
@@ -690,14 +690,14 @@ Procedure ShowStatisticsByMatchLoadFromFile()
 	
 	TextAll = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='All (%)';ru='Все (%1)'"), Statistics.TotalAmount);
 	
-	Items.CreateIfNotMatched.Title = NStr("en='Unmatched (';ru='Несопоставленные ('") + Statistics.NotMatched + ")";
+	Items.CreateIfNotMatched.Title = NStr("en='Unmatched (';ru='Несопоставленные ('") + Statistics.Unmatched + ")";
 	Items.UpdateExisting.Title = NStr("en='Matched items (';ru='Сопоставленные элементы ('") + String(Statistics.Matched) + ")";
 	
 	ChoiceList = Items.FilterComparisonTable.ChoiceList;
 	ChoiceList.Clear();
 	ChoiceList.Add("All", TextAll, True);
 	ChoiceList.Add("Unmapped", StringFunctionsClientServer.PlaceParametersIntoString(
-	NStr("en='Unmatched (%1 and %2)';ru='Несопоставленные (%1 из %2)'"), Statistics.NotMatched, Statistics.TotalAmount));
+	NStr("en='Unmatched (%1 and %2)';ru='Несопоставленные (%1 из %2)'"), Statistics.Unmatched, Statistics.TotalAmount));
 	ChoiceList.Add("Mapped", StringFunctionsClientServer.PlaceParametersIntoString(
 	NStr("en='Matched (%1 from %2)';ru='Сопоставленные (%1 из %2)'"), Statistics.Matched, Statistics.TotalAmount));
 	ChoiceList.Add("Ambiguous", StringFunctionsClientServer.PlaceParametersIntoString(
@@ -1270,7 +1270,7 @@ EndProcedure
 &AtClient
 Procedure SetDesignForMatchingPage(ButtonVisibleMatch, ItemForExplanationText, ButtonVisibleAllowAmbiguity, TextButtonsNext)
 	
-	Items.MatchingListColumns.Visible = ButtonVisibleMatch;
+	Items.MatchingColumnsList.Visible = ButtonVisibleMatch;
 	Items.Back.Visible = True;
 	CommonUseClientServer.SetFormItemProperty(Items, "AnotherWayToImportData", "Visible", False); // SB
 	Items.ExplanationForUniversalImport.Visible = False;
@@ -1468,7 +1468,7 @@ Procedure ClearTable()
 	AttributesMatchTables = ThisObject.GetAttributes("DataMatchingTable");
 	AttributePathsArray = New Array;
 	For Each TableAttribute IN AttributesMatchTables Do
-		AttributePathsArray.Add("DataMatchTable." + TableAttribute.Name);
+		AttributePathsArray.Add("DataMatchingTable." + TableAttribute.Name);
 	EndDo;
 	If AttributePathsArray.Count() > 0 Then
 		ChangeAttributes(,AttributePathsArray);
@@ -2111,7 +2111,7 @@ Procedure CreateMatchTableByInformationAboutColumnsAuto(ObjectTypeMatchDescripti
 	For Each Column IN TemporaryVT.Columns Do
 		NewItem = Items.Add(Column.Name, Type("FormField"), Items.DataMatchingTable);
 		NewItem.Type = FormFieldType.InputField;
-		NewItem.DataPath = "DataMatchTable." + Column.Name;
+		NewItem.DataPath = "DataMatchingTable." + Column.Name;
 		NewItem.Title = Column.Title;
 		NewItem.ReadOnly = True;
 		If NewItem.Type <> FormFieldType.LabelField Then
@@ -2173,7 +2173,7 @@ Procedure CreateMatchTableByInformationAboutColumns()
 	For Each Column IN TemporaryVT.Columns Do
 		NewItem = Items.Add(Column.Name, Type("FormField"), Items.DataMatchingTable);
 		NewItem.Type = FormFieldType.InputField;
-		NewItem.DataPath = "DataMatchTable." + Column.Name;
+		NewItem.DataPath = "DataMatchingTable." + Column.Name;
 		NewItem.Title = Column.Title;
 		NewItem.ReadOnly = True;
 		If NewItem.Type <> FormFieldType.LabelField Then 
@@ -2261,7 +2261,7 @@ Procedure CreateMatchTableByInformationAboutColumnsForTP()
 		NewItem = Items.Add(Column.Name, Type("FormField"), Parent);
 		
 		NewItem.Type = FormFieldType.InputField;
-		NewItem.DataPath = "DataMatchTable." + Column.Name;
+		NewItem.DataPath = "DataMatchingTable." + Column.Name;
 		NewItem.Title = Column.Title;
 		NewItem.ChoiceHistoryOnInput = ChoiceHistoryOnInput.DontUse;
 		
@@ -2315,7 +2315,7 @@ Procedure CreateMatchTableByInformationAboutColumnsForTP()
 				If ColumnLevel2 <> Undefined Then 
 					NewItem = Items.Add(ColumnLevel2.Name, Type("FormField"), Parent);
 					NewItem.Type = FormFieldType.InputField;
-					NewItem.DataPath = "DataMatchTable." + ColumnLevel2.Name;
+					NewItem.DataPath = "DataMatchingTable." + ColumnLevel2.Name;
 					ColumnType = Metadata.FindByType(ColumnLevel2.ValueType.Types()[0]);
 					If ColumnType <> Undefined AND Find(ColumnType.FullName(), "Catalog") > 0 Then
 						NewItem.Title = NStr("en='Data from file';ru='Данные из файла'");

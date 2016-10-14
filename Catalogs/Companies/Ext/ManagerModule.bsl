@@ -301,7 +301,7 @@ Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName
 		
 	Else
 		
-		MessageText = NStr("en='ATTENTION! Perhaps, user template is used Staff mechanism for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
+		MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
 		CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 		
 	EndIf;

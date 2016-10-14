@@ -207,7 +207,7 @@ Function MessageParametersToTechicalSupport()
 	Result.Insert("Subject", NStr("en='Online support. Authorization.';ru='Интернет-поддержка. Авторизация.'"));
 	
 	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
-		NStr("en=""Dear Sir! I can't authorize and connect Online support. My login and password are entered correctly. Please, help me to solve the problem. Login: %1. %TechnicalParameters% ----------------------------------------------- Yours sincerely, ."";ru='Здравствуйте! У меня не получается пройти авторизацию и подключить Интернет-поддержку. Логин и пароль мной введены правильно. Прошу помочь разобраться с проблемой. Логин: %1. %ТехническиеПараметры% ----------------------------------------------- С уважени'"),
+		NStr("en=""Hello! I can't authorize and connect Online support. My login and password are entered correctly. Please, help me to solve the problem. Login: %1. %TechnicalParameters% ----------------------------------------------- Yours sincerely, ."";ru='Здравствуйте! У меня не получается пройти авторизацию и подключить Интернет-поддержку. Логин и пароль мной введены правильно. Прошу помочь разобраться с проблемой. Логин: %1. %ТехническиеПараметры% ----------------------------------------------- С уважени'"),
 		Login);
 	
 	Result.Insert("MessageText", MessageText);

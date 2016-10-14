@@ -454,7 +454,7 @@ Procedure PrintEnd(ResponseOnOfferWrite, ExecuteParameters = Undefined) Export
 	CommandParameter = New Array;
 	CommandParameter.Add(Object.Ref);
 	
-	If CommonUseClient.SubsystemExists("StandardSubsystems.Printing") Then
+	If CommonUseClient.SubsystemExists("StandardSubsystems.Print") Then
 		PrintManagementModuleClient = CommonUseClient.CommonModule("PrintManagementClient");
 		PrintManagementModuleClient.ExecutePrintCommand("Catalog.BusinessCalendars", "BusinessCalendar", 
 			CommandParameter, ThisObject, PrintParameters);

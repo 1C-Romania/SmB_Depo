@@ -417,7 +417,7 @@ Procedure ElectronicDocumentsToSendRefresh()
 	               |	EDStates.ObjectReference.PaymentDestination AS PaymentDestination,
 	               |	EDStates.ObjectReference.CounterpartyAccount AS RecipientAccount,
 	               |	EDStates.ElectronicDocument AS ElectronicDocument,
-	               |	EDStates.ObjectReference.AccountOfCompany AS AccountOfCompany
+	               |	EDStates.ObjectReference.BankAccount AS AccountOfCompany
 	               |FROM
 	               |	InformationRegister.EDStates AS EDStates
 	               |WHERE

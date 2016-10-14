@@ -155,11 +155,11 @@ Procedure CreateCatalogsListForImport(CatalogsListForImport) Export
 		|	Catalog.AdditionalReportsAndDataProcessors.Commands AS AdditionalReportsAndDataProcessorsCommands
 		|WHERE
 		|	AdditionalReportsAndDataProcessorsCommands.StartVariant = &StartVariant
-		|	AND AdditionalReportsAndDataProcessorsCommands.Ref.Kind = &Kind
+		|	AND AdditionalReportsAndDataProcessorsCommands.Ref.Type = &Type
 		|	AND Not AdditionalReportsAndDataProcessorsCommands.Ref.DeletionMark
 		|	AND AdditionalReportsAndDataProcessorsCommands.Ref.Publication = &Publication";
 		Query.SetParameter("StartVariant", Enums.AdditionalDataProcessorsCallMethods.DataLoadFromFile);
-		Query.SetParameter("Kind", Enums.AdditionalReportsAndDataProcessorsKinds.AdditionalInformationProcessor);
+		Query.SetParameter("Type", Enums.AdditionalReportsAndDataProcessorsKinds.AdditionalInformationProcessor);
 		Query.SetParameter("Publication", Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Used);
 		CommandTable = Query.Execute().Unload();
 		
@@ -786,7 +786,7 @@ Procedure CreateInformationByColumnsBasedOnTemplate(AreaTitleTables, ImportParam
 			RowInfoAboutColumns.Position = Position;
 			RowInfoAboutColumns.Association = ?(ValueIsFilled(Association), Association, AttributeName);
 			RowInfoAboutColumns.Visible = True;
-			RowInfoAboutColumns.Note = Cell.Note.Text;
+			RowInfoAboutColumns.Note = Cell.Comment.Text;
 			RowInfoAboutColumns.Width = Cell.ColumnWidth;
 			Position = Position + 1;
 		EndIf;
@@ -945,7 +945,7 @@ Function FormHeaderToFillByInformationByColumns(InformationByColumns, WithNotes 
 				HeaderArea.CurrentArea.ColumnWidth = Column.Width; 
 			EndIf;
 			If WithNotes Then
-				HeaderArea.CurrentArea.Note.Text = Column.Note;
+				HeaderArea.CurrentArea.Comment.Text = Column.Note;
 			EndIf;
 			SpreadsheetDocument.Join(HeaderArea);
 		EndIf;

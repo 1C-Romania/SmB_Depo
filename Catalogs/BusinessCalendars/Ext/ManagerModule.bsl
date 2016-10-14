@@ -553,7 +553,7 @@ EndFunction
 //
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
-	If CommonUse.SubsystemExists("StandardSubsystems.Printing") Then
+	If CommonUse.SubsystemExists("StandardSubsystems.Print") Then
 		PrintManagementModule = CommonUse.CommonModule("PrintManagement");
 		PrintManagementModule.OutputSpreadsheetDocumentToCollection(
 				PrintFormsCollection,

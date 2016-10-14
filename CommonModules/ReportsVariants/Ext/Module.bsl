@@ -1203,7 +1203,7 @@ EndProcedure
 Procedure OnDetermineCatalogsForDataImport(ImportedCatalogs) Export
 	
 	// Import to the UserReportsSettings catalog is prohibited.
-	TableRow = ImportedCatalogs.Find(Metadata.Catalogs.UserReportsSettings.FullName(), "DescriptionFull");
+	TableRow = ImportedCatalogs.Find(Metadata.Catalogs.UserReportsSettings.FullName(), "FullName");
 	If TableRow <> Undefined Then 
 		ImportedCatalogs.Delete(TableRow);
 	EndIf;

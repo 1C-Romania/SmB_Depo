@@ -108,7 +108,7 @@ Procedure GenerateTableManagerial(DocumentRefFixedAssetsWriteOff, StructureAddit
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.SetParameter("DepreciationAccrual", NStr("en='Depriciation accrual';ru='Начисление амортизации'"));
-	Query.SetParameter("DepreciationDebiting", NStr("en='Depreciation depreciation';ru='Списание амортизации'"));
+	Query.SetParameter("DepreciationDebiting", NStr("en='Depreciation  write-off';ru='Списание амортизации'"));
 	Query.SetParameter("OtherExpenses", NStr("en='Other expenses';ru='Прочих затраты (расходы)'"));
 	
 	Query.Text =
@@ -188,7 +188,7 @@ Procedure GenerateTableFixedAssets(DocumentRefFixedAssetsWriteOff, StructureAddi
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
 	Query.SetParameter("DepreciationAccrual", NStr("en='Depriciation accrual';ru='Начисление амортизации'"));
-	Query.SetParameter("DepreciationDebiting", NStr("en='Depreciation depreciation';ru='Списание амортизации'"));
+	Query.SetParameter("DepreciationDebiting", NStr("en='Depreciation  write-off';ru='Списание амортизации'"));
 	Query.SetParameter("WriteOffOfFixedAssetFromAccounting", NStr("en='Fixed assets write off';ru='Списание имущества с учета'"));
 	
 	Query.Text =

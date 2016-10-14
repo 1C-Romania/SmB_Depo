@@ -82,21 +82,21 @@ Procedure OutputReport(Ref)
 	Properties.Insert("Ref", Ref);
 	
 	If TypeOf(Ref) = Type("CatalogRef.Users") Then
-		Properties.Insert("ReportHeader",             NStr("en='Report by user rights';ru='Отчет по правам пользователя'"));
-		Properties.Insert("RolesByProfilesGrouping",   NStr("en='user roles by profiles';ru='Роли пользователя по профилям'"));
+		Properties.Insert("ReportHeader",             NStr("en='User rights report';ru='Отчет по правам пользователя'"));
+		Properties.Insert("RolesByProfilesGrouping",   NStr("en='User roles by profiles';ru='Роли пользователя по профилям'"));
 		Properties.Insert("ObjectPresentation",        NStr("en='User: %1';ru='Пользователь: %1'"));
 		
 	ElsIf TypeOf(Ref) = Type("CatalogRef.ExternalUsers") Then
-		Properties.Insert("ReportHeader",             NStr("en='Report on the external users rights';ru='Отчет по правам внешнего пользователя'"));
+		Properties.Insert("ReportHeader",             NStr("en='External users rights report';ru='Отчет по правам внешнего пользователя'"));
 		Properties.Insert("RolesByProfilesGrouping",   NStr("en='External user roles by profiles';ru='Роли внешнего пользователя по профилям'"));
 		Properties.Insert("ObjectPresentation",        NStr("en='External user: %1';ru='Внешний пользователь: %1'"));
 		
 	ElsIf TypeOf(Ref) = Type("CatalogRef.UsersGroups") Then
-		Properties.Insert("ReportHeader",             NStr("en='Report by the user group rights';ru='Отчет по правам группы пользователей'"));
+		Properties.Insert("ReportHeader",             NStr("en='User group rights report';ru='Отчет по правам группы пользователей'"));
 		Properties.Insert("RolesByProfilesGrouping",   NStr("en='Roles user groups by profiles';ru='Роли группы пользователей по профилям'"));
 		Properties.Insert("ObjectPresentation",        NStr("en='User group: %1';ru='Группа пользователей: %1'"));
 	Else
-		Properties.Insert("ReportHeader",             NStr("en='Report on the external user group rights';ru='Отчет по правам группы внешних пользователей'"));
+		Properties.Insert("ReportHeader",             NStr("en='External user group rights report';ru='Отчет по правам группы внешних пользователей'"));
 		Properties.Insert("RolesByProfilesGrouping",   NStr("en='External user group roles by profiles';ru='Роли группы внешних пользователей по профилям'"));
 		Properties.Insert("ObjectPresentation",        NStr("en='External user group: %1';ru='Группа внешних пользователей: %1'"));
 	EndIf;
@@ -142,7 +142,7 @@ Procedure OutputReport(Ref)
 				StartModePresentation(InfobaseUserProperties.RunMode);
 			
 			If Not ValueIsFilled(InfobaseUserProperties.OSUser) Then
-				Area.Parameters.OSUser = NStr("en='Is not specified';ru='Не указан'");
+				Area.Parameters.OSUser = NStr("en='Not specified';ru='Не указан'");
 			EndIf;
 			Document.Put(Area, 2);
 		Else
@@ -185,8 +185,8 @@ Procedure OutputReport(Ref)
 	|	AccessGroups.Profile,
 	|	AccessGroupsUsers.User,
 	|	CASE
-	|		WHEN VALUETYPE(AccessGroupsUsers.User) <> Type(Catalog.Users)
-	|				AND VALUETYPE(AccessGroupsUsers.User) <> Type(Catalog.ExternalUsers)
+	|		WHEN VALUETYPE(AccessGroupsUsers.User) <> TYPE(Catalog.Users)
+	|				AND VALUETYPE(AccessGroupsUsers.User) <> TYPE(Catalog.ExternalUsers)
 	|			THEN TRUE
 	|		ELSE FALSE
 	|	END AS GroupInvolvement
@@ -200,7 +200,7 @@ Procedure OutputReport(Ref)
 	|			AND (CASE
 	|				WHEN &OutputGroupRights
 	|					THEN AccessGroupsUsers.User = &User
-	|				ELSE TRUE In
+	|				ELSE TRUE IN
 	|						(SELECT TOP 1
 	|							TRUE
 	|						FROM
@@ -265,8 +265,8 @@ Procedure OutputReport(Ref)
 	|	ObjectRightsSettings.Object AS Object,
 	|	ISNULL(SettingsInheritance.Inherit, TRUE) AS Inherit,
 	|	CASE
-	|		WHEN VALUETYPE(ObjectRightsSettings.User) <> Type(Catalog.Users)
-	|				AND VALUETYPE(ObjectRightsSettings.User) <> Type(Catalog.ExternalUsers)
+	|		WHEN VALUETYPE(ObjectRightsSettings.User) <> TYPE(Catalog.Users)
+	|				AND VALUETYPE(ObjectRightsSettings.User) <> TYPE(Catalog.ExternalUsers)
 	|			THEN TRUE
 	|		ELSE FALSE
 	|	END AS GroupInvolvement,
@@ -284,7 +284,7 @@ Procedure OutputReport(Ref)
 	|	CASE
 	|			WHEN &OutputGroupRights
 	|				THEN ObjectRightsSettings.User = &User
-	|			ELSE TRUE In
+	|			ELSE TRUE IN
 	|					(SELECT TOP 1
 	|						TRUE
 	|					FROM
@@ -311,7 +311,8 @@ Procedure OutputReport(Ref)
 	|		LEFT JOIN InformationRegister.ObjectRightsSettings AS ObjectRightsSettings
 	|		ON (ObjectRightsSettings.Object = SettingsInheritance.Object)
 	|			AND (ObjectRightsSettings.Object = SettingsInheritance.Parent)
-	|WHERE SettingsInheritance.Object = SettingsInheritance.Parent
+	|WHERE
+	|	SettingsInheritance.Object = SettingsInheritance.Parent
 	|	AND SettingsInheritance.Inherit = FALSE
 	|	AND ObjectRightsSettings.Object IS NULL 
 	|TOTALS
@@ -415,11 +416,11 @@ Procedure OutputReport(Ref)
 	|			WHEN RolesRights.view
 	|					AND RolesRights.ReadingNotLimited
 	|				THEN 0
-	|			WHEN Not RolesRights.view
+	|			WHEN NOT RolesRights.view
 	|					AND RolesRights.ReadingNotLimited
 	|				THEN 1
 	|			WHEN RolesRights.view
-	|					AND Not RolesRights.ReadingNotLimited
+	|					AND NOT RolesRights.ReadingNotLimited
 	|				THEN 2
 	|			ELSE 3
 	|		END AS KindOfRoles,
@@ -500,7 +501,7 @@ Procedure OutputReport(Ref)
 	|	ProfilesRolesRights.Role.Synonym AS RolePresentation,
 	|	ProfilesRolesRights.KindOfRoles AS KindOfRoles,
 	|	ProfilesRolesRights.Insert AS Insert,
-	|	ProfilesRolesRights.Update AS Update,
+	|	ProfilesRolesRights.Update AS Update1,
 	|	ProfilesRolesRights.AddingNotLimited AS AddingNotLimited,
 	|	ProfilesRolesRights.ChangingNotLimited AS ChangingNotLimited,
 	|	ProfilesRolesRights.InteractiveInsert AS InteractiveInsert,
@@ -520,33 +521,33 @@ Procedure OutputReport(Ref)
 	|			WHEN RolesRights.AddingNotLimited
 	|					AND RolesRights.ChangingNotLimited
 	|				THEN 0
-	|			WHEN Not RolesRights.AddingNotLimited
+	|			WHEN NOT RolesRights.AddingNotLimited
 	|					AND RolesRights.ChangingNotLimited
 	|				THEN 100
 	|			WHEN RolesRights.AddingNotLimited
-	|					AND Not RolesRights.ChangingNotLimited
+	|					AND NOT RolesRights.ChangingNotLimited
 	|				THEN 200
 	|			ELSE 300
 	|		END + CASE
 	|			WHEN RolesRights.Insert
 	|					AND RolesRights.Update
 	|				THEN 0
-	|			WHEN Not RolesRights.Insert
+	|			WHEN NOT RolesRights.Insert
 	|					AND RolesRights.Update
 	|				THEN 10
 	|			WHEN RolesRights.Insert
-	|					AND Not RolesRights.Update
+	|					AND NOT RolesRights.Update
 	|				THEN 20
 	|			ELSE 30
 	|		END + CASE
 	|			WHEN RolesRights.InteractiveInsert
 	|					AND RolesRights.Edit
 	|				THEN 0
-	|			WHEN Not RolesRights.InteractiveInsert
+	|			WHEN NOT RolesRights.InteractiveInsert
 	|					AND RolesRights.Edit
 	|				THEN 1
 	|			WHEN RolesRights.InteractiveInsert
-	|					AND Not RolesRights.Edit
+	|					AND NOT RolesRights.Edit
 	|				THEN 2
 	|			ELSE 3
 	|		END AS KindOfRoles,
@@ -642,7 +643,7 @@ Procedure OutputReport(Ref)
 	|	MAX(ProfilePresentation),
 	|	MAX(RolePresentation),
 	|	MAX(Insert),
-	|	MAX(Update),
+	|	MAX(Update1),
 	|	MAX(AddingNotLimited),
 	|	MAX(ChangingNotLimited),
 	|	MAX(InteractiveInsert),
@@ -693,19 +694,19 @@ Procedure OutputReport(Ref)
 				AccessPresentation = NStr("en='External user access restrictions';ru='Ограничения доступа внешнего пользователя'");
 				
 			ElsIf TypeOf(Ref) = Type("CatalogRef.UsersGroups") Then
-				AccessPresentation = NStr("en='Access restrictions of the user group';ru='Ограничения доступа группы пользователей'");
+				AccessPresentation = NStr("en='Access restrictions of user group';ru='Ограничения доступа группы пользователей'");
 			Else
-				AccessPresentation = NStr("en='Access restrictions of the external user group';ru='Ограничения доступа группы внешних пользователей'");
+				AccessPresentation = NStr("en='Access restrictions of external user group';ru='Ограничения доступа группы внешних пользователей'");
 			EndIf;
 		Else
 			If TypeOf(Ref) = Type("CatalogRef.Users") Then
-				AccessPresentation = NStr("en='User access group';ru='Группы доступа пользователя'");
+				AccessPresentation = NStr("en='User access groups';ru='Группы доступа пользователя'");
 				
 			ElsIf TypeOf(Ref) = Type("CatalogRef.ExternalUsers") Then
 				AccessPresentation = NStr("en='Extrenal user access groups';ru='Группы доступа внешнего пользователя'");
 				
 			ElsIf TypeOf(Ref) = Type("CatalogRef.UsersGroups") Then
-				AccessPresentation = NStr("en='User group access groups';ru='Группы доступа группы пользователей'");
+				AccessPresentation = NStr("en='Access groups user groups';ru='Группы доступа группы пользователей'");
 			Else
 				AccessPresentation = NStr("en='Access groups external user groups';ru='Группы доступа группы внешних пользователей'");
 			EndIf;
@@ -807,11 +808,10 @@ Procedure OutputReport(Ref)
 	ObjectRights = ResultsOfQuery[7].Unload(QueryResultIteration.ByGroups);
 	
 	ObjectRights.Rows.Sort(
-		"ObjectKindOrder
-		|Asc, ObjectPresentation
-		|Asc, ProfilePresentation
-		|Asc,
-		|RoleKind Asc,
+		"ObjectsKindOrder Asc, 
+		|ObjectPresentation Asc, 
+		|ProfilePresentation Asc,
+		|KindOfRoles Asc,
 		|RolePresentation Asc,
 		|AccessGroupPresentation Asc,
 		|AccessKindPresentation Asc, AccessValuePresentation Asc",
@@ -854,15 +854,15 @@ Procedure OutputReport(Ref)
 			
 			If ObjectDescription.ReadingNotLimited Then
 				If ObjectDescription.view Then
-					ObjectPresentationClarification = NStr("en='(Viewing, is unlimited)';ru='(просмотр, не ограничен)'");
+					ObjectPresentationClarification = NStr("en='(viewing, not limited)';ru='(просмотр, не ограничен)'");
 				Else
-					ObjectPresentationClarification = NStr("en='(viewing*, is not limited)';ru='(просмотр*, не ограничен)'");
+					ObjectPresentationClarification = NStr("en='(viewing*, not limited)';ru='(просмотр*, не ограничен)'");
 				EndIf;
 			Else
 				If ObjectDescription.view Then
-					ObjectPresentationClarification = NStr("en='(viewing, is limited)';ru='(просмотр, ограничен)'");
+					ObjectPresentationClarification = NStr("en='(viewing, limited)';ru='(просмотр, ограничен)'");
 				Else
-					ObjectPresentationClarification = NStr("en='(viewing *, is limited)';ru='(просмотр*, ограничен)'");
+					ObjectPresentationClarification = NStr("en='(viewing *, limited)';ru='(просмотр*, ограничен)'");
 				EndIf;
 			EndIf;
 			
@@ -944,13 +944,13 @@ Procedure OutputReport(Ref)
 									If RolesCount > 1 Then
 										AccessGroupPresentationClarification =
 											NStr("en='(profile:
-		|%1, roles: %2)';ru='(profile:
-		|%1, roles: %2)'")
+|%1, roles: %2)';ru='(profile:
+|%1, roles: %2)'")
 									Else
 										AccessGroupPresentationClarification =
 											NStr("en='(profile:
-		|%1, role: %2)';ru='(profile:
-		|%1, role: %2)'")
+|%1, role: %2)';ru='(profile:
+|%1, role: %2)'")
 									EndIf;
 									
 									Area.Parameters.ProfileOrAccessGroupPresentation =
@@ -1058,18 +1058,17 @@ Procedure OutputReport(Ref)
 	// Display objects to edit.
 	ObjectRights = ResultsOfQuery[8].Unload(QueryResultIteration.ByGroups);
 	ObjectRights.Rows.Sort(
-		"ObjectKindOrder
-		|Asc, ObjectPresentation
-		|Asc, ProfilePresentation
-		|Asc,
-		|RoleKind Asc,
+		"ObjectsKindOrder Asc, 
+		|ObjectPresentation Asc, 
+		|ProfilePresentation Asc,
+		|KindOfRoles Asc,
 		|RolePresentation Asc,
 		|AccessGroupPresentation Asc,
 		|AccessKindPresentation Asc, AccessValuePresentation Asc",
 		True);
 	
 	Area = Template.GetArea("ObjectRightsGrouping");
-	Area.Parameters.ObjectRightsGroupingPresentation = NStr("en='Objects editing';ru='Редактирование объектов'");
+	Area.Parameters.ObjectRightsGroupingPresentation = NStr("en='Edit objects';ru='Редактирование объектов'");
 	Document.Put(Area, 1);
 	Area = Template.GetArea("EditObjectsOfLegend");
 	Document.Put(Area, 2);
@@ -1104,121 +1103,121 @@ Procedure OutputReport(Ref)
 			Area.Parameters.OpenListForm = "OpenListForm: " + ObjectDescription.Table;
 			
 			If AddingUsed Then
-				If ObjectDescription.Insert AND ObjectDescription.Update Then
+				If ObjectDescription.Insert AND ObjectDescription.Update1 Then
 					If ObjectDescription.AddingNotLimited AND ObjectDescription.ChangingNotLimited Then
 						If ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is not limited, not limited)';ru='(добавление,
-		|не ограничено
-		|изменение, не ограничено)'");
+|modification is not limited, not limited)';ru='(добавление,
+|не ограничено
+|изменение, не ограничено)'");
 						ElsIf Not ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding*,
-		|modification is not limited, not limited)';ru='(добавление*,
-		|не ограничено изменение, не ограничено)'");
+|modification is not limited, not limited)';ru='(добавление*,
+|не ограничено изменение, не ограничено)'");
 						ElsIf ObjectDescription.InteractiveInsert AND Not ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is not limited*, not limited)';ru='(добавление,
-		|не ограничено
-		|изменение*, не ограничено)'");
+|modification is not limited*, not limited)';ru='(добавление,
+|не ограничено
+|изменение*, не ограничено)'");
 						Else // NO ObjectDescription.InteractiveInsert AND NO ObjectDescription.Editing
 							ObjectPresentationClarification = NStr("en='(adding*,
-		|modification is not limited*, not limited)';ru='(добавление*,
-		|не ограничено изменение*, не ограничено)'");
+|modification is not limited*, not limited)';ru='(добавление*,
+|не ограничено изменение*, не ограничено)'");
 						EndIf;
 					ElsIf Not ObjectDescription.AddingNotLimited AND ObjectDescription.ChangingNotLimited Then
 						If ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is limited, not limited)';ru='(добавление,
-		|ограничено
-		|изменение, не ограничено)'");
+|limited modification, not limited)';ru='(добавление,
+|ограничено
+|изменение, не ограничено)'");
 						ElsIf Not ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding*,
-		|modification is limited, not limited)';ru='(добавление*,
-		|ограничено
-		|изменение, не ограничено)'");
+|modification is limited, not limited)';ru='(добавление*,
+|ограничено
+|изменение, не ограничено)'");
 						ElsIf ObjectDescription.InteractiveInsert AND Not ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is limited*, not limited)';ru='(добавление,
-		|ограничено
-		|изменение*, не ограничено)'");
+|modification is limited*, not limited)';ru='(добавление,
+|ограничено
+|изменение*, не ограничено)'");
 						Else // NO ObjectDescription.InteractiveInsert AND NO ObjectDescription.Editing
 							ObjectPresentationClarification = NStr("en='(adding*,
-		|modification is limited*, not limited)';ru='(добавление*,
-		|ограничено
-		|изменение*, не ограничено)'");
+|modification is limited*, not limited)';ru='(добавление*,
+|ограничено
+|изменение*, не ограничено)'");
 						EndIf;
 					ElsIf ObjectDescription.AddingNotLimited AND Not ObjectDescription.ChangingNotLimited Then
 						If ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is not limited, limited)';ru='(добавление,
-		|не ограничено изменение, ограничено)'");
+|modification is not limited, limited)';ru='(добавление,
+|не ограничено изменение, ограничено)'");
 						ElsIf Not ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding*,
-		|modification is not limited, limited)';ru='(добавление*,
-		|не ограничено изменение, ограничено)'");
+|modification is not limited, limited)';ru='(добавление*,
+|не ограничено изменение, ограничено)'");
 						ElsIf ObjectDescription.InteractiveInsert AND Not ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is not limited*, limited)';ru='(добавление,
-		|не ограничено изменение*, ограничено)'");
+|modification is not limited*, limited)';ru='(добавление,
+|не ограничено изменение*, ограничено)'");
 						Else // NO ObjectDescription.InteractiveInsert AND NO ObjectDescription.Editing
 							ObjectPresentationClarification = NStr("en='(adding*,
-		|modification is not limited*, limited)';ru='(добавление*,
-		|не ограничено изменение*, ограничено)'");
+|modification is not limited*, limited)';ru='(добавление*,
+|не ограничено изменение*, ограничено)'");
 						EndIf;
 					Else // NO ObjectDescription.AddingWithoutRestriction AND NO ObjectDescription.ChangingWithoutRestriction
 						If ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is limited, limited)';ru='(добавление,
-		|ограничено изменение, ограничено)'");
+|limited modification, limited)';ru='(добавление,"
+|ограничено изменение, ограничено)'");
 						ElsIf Not ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(add*,
-		|limited modified, limited)';ru='(добавление*, ограничено
-		|изменение, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(adding*,
+|limited modification, limited)';ru='(добавление*, ограничено
+|изменение, ограничено)'");
 						ElsIf ObjectDescription.InteractiveInsert AND Not ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is limited*, limited)';ru='(добавление,
-		|ограничено
-		|изменение*, ограничено)'");
+|limited modification*, limited)';ru='(добавление,
+|ограничено
+|изменение*, ограничено)'");
 						Else // NO ObjectDescription.InteractiveInsert AND NO ObjectDescription.Editing
 							ObjectPresentationClarification = NStr("en='(adding*, modification is limited*, limited)';ru='(добавление*, ограничено
-		|изменение*, ограничено)'");
+|изменение*, ограничено)'");
 						EndIf;
 					EndIf;
 					
-				ElsIf Not ObjectDescription.Insert AND ObjectDescription.Update Then
+				ElsIf Not ObjectDescription.Insert AND ObjectDescription.Update1 Then
 					
 					If ObjectDescription.ChangingNotLimited Then
 						If ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is not available, not limited)';ru='(добавление
-		|не доступно изменение, не ограничено)'");
+|modification is not available, not limited)';ru='(добавление
+|не доступно изменение, не ограничено)'");
 						Else // NO ObjectDescription.Editing
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is not available*, not limited)';ru='(добавление
-		|не доступно изменение*, не ограничено)'");
+|modification is not available*, not limited)';ru='(добавление
+|не доступно изменение*, не ограничено)'");
 						EndIf;
 					Else // NO ObjectDescription.ChangeWithoutRestriction
 						If ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is not available, limited)';ru='(добавление
-		|не доступно изменение, ограничено)'");
+|modification is not available, limited)';ru='(добавление
+|не доступно изменение, ограничено)'");
 						Else // NO ObjectDescription.Editing
 							ObjectPresentationClarification = NStr("en='(adding,
-		|modification is not available*, limited)';ru='(добавление
-		|не доступно изменение*, ограничено)'");
+|modification is not available*, limited)';ru='(добавление
+|не доступно изменение*, ограничено)'");
 						EndIf;
 					EndIf;
 					
 				Else // NO ObjectDescription.Adding AND NO ObjectDescription.Changing
 					ObjectPresentationClarification = NStr("en='(adding
-		|is not available, modification is not available)';ru='(добавление
-		|не доступно изменение не доступно)'");
+|is not available, modification is not available)';ru='(добавление
+|не доступно изменение не доступно)'");
 				EndIf;
 			Else
-				If ObjectDescription.Update Then
+				If ObjectDescription.Update1 Then
 					If ObjectDescription.ChangingNotLimited Then
 						If ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en='(change, is not limited)';ru='(изменение, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(modification, not limited)';ru='(изменение, не ограничено)'");
 						Else // NO ObjectDescription.Editing
 							ObjectPresentationClarification = NStr("en='(modification*, not limited)';ru='(изменение*, не ограничено)'");
 						EndIf;
@@ -1230,7 +1229,7 @@ Procedure OutputReport(Ref)
 						EndIf;
 					EndIf;
 				Else // NO ObjectDescription.Change
-					ObjectPresentationClarification = NStr("en='(change is not available)';ru='(изменение не доступно)'");
+					ObjectPresentationClarification = NStr("en='modification is not available)';ru='(изменение не доступно)'");
 				EndIf;
 			EndIf;
 			
@@ -1308,13 +1307,13 @@ Procedure OutputReport(Ref)
 									If RolesCount > 1 Then
 										AccessGroupPresentationClarification =
 											NStr("en='(profile:
-		|%1, roles: %2)';ru='(profile:
-		|%1, roles: %2)'")
+|%1, roles: %2)';ru='(profile:
+|%1, roles: %2)'")
 									Else
 										AccessGroupPresentationClarification =
 											NStr("en='(profile:
-		|%1, role: %2)';ru='(profile:
-		|%1, role: %2)'")
+|%1, role: %2)';ru='(profile:
+|%1, role: %2)'")
 									EndIf;
 									
 									Area.Parameters.ProfileOrAccessGroupPresentation =
@@ -1438,7 +1437,7 @@ Procedure OutputReport(Ref)
 		ObjectTypeDescription.ObjectTypeFullDescription      = TypeMetadata.FullName();
 		ObjectTypeDescription.ObjectsKindPresentation = TypeMetadata.Presentation();
 	EndDo;
-	RightSettings.Rows.Sort("ObjectKindPresentation Asc");
+	RightSettings.Rows.Sort("ObjectsKindPresentation Asc");
 	
 	PossibleRights = AccessManagementServiceReUse.Parameters().PossibleRightsForObjectRightsSettings;
 	
@@ -1473,7 +1472,7 @@ Procedure OutputReport(Ref)
 		
 		TitleForSubfolders =
 			NStr("en='For subfolders';ru='Для подпапок'");
-		PromtForSubfolders = NStr("en='Rights not only to the current folder, but also to its subfolders';ru='Права не только для текущей папки, но и для ее нижестоящих папок'");
+		PromtForSubfolders = NStr("en='Rights not only to the current folder but also to its subfolders';ru='Права не только для текущей папки, но и для ее нижестоящих папок'");
 		
 		Area = Template.GetArea("RightsSettingsLegendRow");
 		Area.Parameters.Title = StrReplace(TitleForSubfolders, Chars.LF, " ");
@@ -1625,7 +1624,7 @@ Function AccessKindPresentationTemplate(AccessTypeDescription, OwnersOfRightsSet
 		If AccessTypeDescription.AllAllowed Then
 			If AccessTypeDescription.AccessKind = Catalogs.Users.EmptyRef() Then
 				AccessKindPresentationTemplate =
-					NStr("en='%1 (prohibited, current user is always allowed):';ru='%1 (запрещенные, текущий пользователь всегда разрешен):'");
+					NStr("en='%1 (prohibited, current user is always permitted):';ru='%1 (запрещенные, текущий пользователь всегда разрешен):'");
 				
 			ElsIf AccessTypeDescription.AccessKind = Catalogs.ExternalUsers.EmptyRef() Then
 				AccessKindPresentationTemplate =
@@ -1636,13 +1635,13 @@ Function AccessKindPresentationTemplate(AccessTypeDescription, OwnersOfRightsSet
 		Else
 			If AccessTypeDescription.AccessKind = Catalogs.Users.EmptyRef() Then
 				AccessKindPresentationTemplate =
-					NStr("en='%1 (permitted, current user is always allowed):';ru='%1 (разрешенные, текущий пользователь всегда разрешен):'");
+					NStr("en='%1 (permitted, current user is always permitted):';ru='%1 (разрешенные, текущий пользователь всегда разрешен):'");
 				
 			ElsIf AccessTypeDescription.AccessKind = Catalogs.ExternalUsers.EmptyRef() Then
 				AccessKindPresentationTemplate =
 					NStr("en='%1 (permitted, current external user is always permitted):';ru='%1 (разрешенные, текущий внешний пользователь всегда разрешен):'");
 			Else
-				AccessKindPresentationTemplate = NStr("en='%1 (allowed):';ru='%1 (разрешенные):'");
+				AccessKindPresentationTemplate = NStr("en='%1 (permitted):';ru='%1 (разрешенные):'");
 			EndIf;
 		EndIf;
 	EndIf;
@@ -1686,7 +1685,7 @@ Procedure MergeCellsSetBorders(Val Document,
 		AreaEndRow.Bottom,
 		ColumnNumber);
 	
-	Area.Union();
+	Area.Merge();
 	
 	BorderLine = New Line(SpreadsheetDocumentCellLineType.Dotted);
 	
@@ -1846,7 +1845,7 @@ Function MetadataObjectsRightsRestrictionKinds()
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT DISTINCT
 	|	ConstantRestrictionKinds.Table,
-	|	""Read"" AS Right,
+	|	""Read"" AS Right1,
 	|	VALUETYPE(SetRows.AccessValue) AS ValuesType
 	|INTO VariableRestrictionKinds
 	|FROM
@@ -1894,7 +1893,7 @@ Function MetadataObjectsRightsRestrictionKinds()
 	|
 	|SELECT
 	|	VariableRestrictionKinds.Table,
-	|	VariableRestrictionKinds.Right,
+	|	VariableRestrictionKinds.Right1,
 	|	AccessKindsValueTypes.AccessKind
 	|FROM
 	|	VariableRestrictionKinds AS VariableRestrictionKinds

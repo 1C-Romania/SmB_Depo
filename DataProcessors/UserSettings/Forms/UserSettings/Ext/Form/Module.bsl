@@ -63,7 +63,7 @@ EndProcedure
 Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 	NotificationProcessingParameters = New Structure("EventName, Parameter", EventName, Parameter);
-	AttachIdleHandler("Attachable_ExecuteNotificationProcessing", 0.1, True);
+	AttachIdleHandler("Attachable_ExecuteNotifyProcessing", 0.1, True);
 	
 EndProcedure
 

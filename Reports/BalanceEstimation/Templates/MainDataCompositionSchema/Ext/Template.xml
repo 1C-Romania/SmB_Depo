@@ -707,10 +707,6 @@
 			<field>Total4Fact</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>TotalNGFact</dataPath>
-			<field>TotalNGFact</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Total5Fact</dataPath>
 			<field>Total5Fact</field>
 		</field>
@@ -729,10 +725,6 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ShorttermInvestmentsFact</dataPath>
 			<field>ShorttermInvestmentsFact</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>CreditorsTotalNYFact</dataPath>
-			<field>CreditorsTotalNYFact</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>CreditorsTotalFact</dataPath>
@@ -819,32 +811,16 @@
 			<field>LoansCreditsRejection</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>InventoryOfTotalNRejection</dataPath>
-			<field>InventoryOfTotalNRejection</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>InventoryTotalRejection</dataPath>
 			<field>InventoryTotalRejection</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>CapitalNRejection</dataPath>
-			<field>CapitalNRejection</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>CapitalRejection</dataPath>
 			<field>CapitalRejection</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ShorttermInvestmentsNYRejection</dataPath>
-			<field>ShorttermInvestmentsNYRejection</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ShorttermInvestmentsRejection</dataPath>
 			<field>ShorttermInvestmentsRejection</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>CreditorsConductedTotalRejectionNG</dataPath>
-			<field>CreditorsConductedTotalRejectionNG</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>CreditorsTotalRejection</dataPath>
@@ -971,10 +947,6 @@
 			<field>UndistributedProfitPercent</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>OtherFixedAssetsNYPercent</dataPath>
-			<field>OtherFixedAssetsNYPercent</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>OtherFixedAssetsPercent</dataPath>
 			<field>OtherFixedAssetsPercent</field>
 		</field>
@@ -1001,6 +973,76 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ReserveAdditionalCapitalPercent</dataPath>
 			<field>ReserveAdditionalCapitalPercent</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CreditorsTotalNGFact</dataPath>
+			<field>CreditorsTotalNGFact</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Creditors total NGFact</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ShorttermInvestmentsNGRejection</dataPath>
+			<field>ShorttermInvestmentsNGRejection</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Shortterm investments NGRejection</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>OtherFixedAssetsNGPercent</dataPath>
+			<field>OtherFixedAssetsNGPercent</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other fixed assets NGPercent</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Total5NGFact</dataPath>
+			<field>Total5NGFact</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Total5 NGFact</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InventoryTotalNGRejection</dataPath>
+			<field>InventoryTotalNGRejection</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory total NGRejection</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CapitalNGRejection</dataPath>
+			<field>CapitalNGRejection</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Capital NGRejection</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CreditorsTotalNGRejection</dataPath>
+			<field>CreditorsTotalNGRejection</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Creditors total NGRejection</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<dataSource>DataSource1</dataSource>
 		<query>SELECT ALLOWED
@@ -1056,9 +1098,9 @@
 	SUM(NestedSelect.CapitalFact + NestedSelect.ReserveAdditionalCapitalFact + NestedSelect.UndistributedProfitFact) AS Total3Fact,
 	SUM(NestedSelect.LongtermObligationsNGFact) AS Total4NGFact,
 	SUM(NestedSelect.LongtermObligationsFact) AS Total4Fact,
-	SUM(NestedSelect.LoansCreditsNGFact + NestedSelect.CreditorsTotalNYFact + NestedSelect.OtherShortTermObligationsNGFact) AS TotalNGFact,
+	SUM(NestedSelect.LoansCreditsNGFact + NestedSelect.CreditorsTotalNGFact + NestedSelect.OtherShortTermObligationsNGFact) AS Total5NGFact,
 	SUM(NestedSelect.LoansCreditsFact + NestedSelect.CreditorsTotalFact + NestedSelect.OtherShorttermObligationsFact) AS Total5Fact,
-	SUM(NestedSelect.CapitalNGFact + NestedSelect.ReserveAdditionalCapitalNGFact + NestedSelect.UndistributedProfitNGFact + NestedSelect.LongtermObligationsNGFact + NestedSelect.LoansCreditsNGFact + NestedSelect.CreditorsTotalNYFact + NestedSelect.OtherShortTermObligationsNGFact) AS Total345NGFact,
+	SUM(NestedSelect.CapitalNGFact + NestedSelect.ReserveAdditionalCapitalNGFact + NestedSelect.UndistributedProfitNGFact + NestedSelect.LongtermObligationsNGFact + NestedSelect.LoansCreditsNGFact + NestedSelect.CreditorsTotalNGFact + NestedSelect.OtherShortTermObligationsNGFact) AS Total345NGFact,
 	SUM(NestedSelect.CapitalFact + NestedSelect.ReserveAdditionalCapitalFact + NestedSelect.UndistributedProfitFact + NestedSelect.LongtermObligationsFact + NestedSelect.LoansCreditsFact + NestedSelect.CreditorsTotalFact + NestedSelect.OtherShorttermObligationsFact) AS Total345Fact,
 	SUM(NestedSelect.FixedAssetsFact) AS FixedAssetsFact,
 	SUM(NestedSelect.FixedAssetsNGFact) AS FixedAssetsNGFact,
@@ -1085,7 +1127,7 @@
 	SUM(NestedSelect.LoansCreditsFact) AS LoansCreditsFact,
 	SUM(NestedSelect.LoansCreditsNGFact) AS LoansCreditsNGFact,
 	SUM(NestedSelect.CreditorsTotalFact) AS CreditorsTotalFact,
-	SUM(NestedSelect.CreditorsTotalNYFact) AS CreditorsTotalNYFact,
+	SUM(NestedSelect.CreditorsTotalNGFact) AS CreditorsTotalNGFact,
 	SUM(NestedSelect.OtherShorttermObligationsFact) AS OtherShorttermObligationsFact,
 	SUM(NestedSelect.OtherShortTermObligationsNGFact) AS OtherShortTermObligationsNGFact,
 	SUM(NestedSelect.FixedAssetsFact - NestedSelect.FixedAssets) AS FixedAssetsRejection,
@@ -1093,17 +1135,17 @@
 	SUM(NestedSelect.OtherFixedAssetsFact - NestedSelect.OtherFixedAssets) AS OtherFixedAssetsRejection,
 	SUM(NestedSelect.OtherFixedAssetsNGFact - NestedSelect.OtherFixedAssetsNG) AS OtherFixedAssetsNGRejection,
 	SUM(NestedSelect.InventoryTotalFact - NestedSelect.InventoryTotal) AS InventoryTotalRejection,
-	SUM(NestedSelect.InventoryTotalNGFact - NestedSelect.InventoryTotalNG) AS InventoryOfTotalNRejection,
+	SUM(NestedSelect.InventoryTotalNGFact - NestedSelect.InventoryTotalNG) AS InventoryTotalNGRejection,
 	SUM(NestedSelect.DebitorsTotalFact - NestedSelect.DebitorsTotal) AS DebitorsTotalRejection,
 	SUM(NestedSelect.DebitorsTotalNGFact - NestedSelect.DebitorsTotalNG) AS DebitorsTotalNGRejection,
 	SUM(NestedSelect.CashAssetsTotalFact - NestedSelect.CashAssetsTotal) AS CashAssetsTotalRejection,
 	SUM(NestedSelect.CashAssetsTotalNGFact - NestedSelect.CashAssetsTotalNG) AS CashAssetsTotalNGRejection,
 	SUM(NestedSelect.ShorttermInvestmentsFact - NestedSelect.ShorttermInvestments) AS ShorttermInvestmentsRejection,
-	SUM(NestedSelect.ShorttermInvestmentsNGFact - NestedSelect.ShorttermInvestmentsNG) AS ShorttermInvestmentsNYRejection,
+	SUM(NestedSelect.ShorttermInvestmentsNGFact - NestedSelect.ShorttermInvestmentsNG) AS ShorttermInvestmentsNGRejection,
 	SUM(NestedSelect.OtherCurrentAssetsFact - NestedSelect.OtherCurrentAssets) AS OtherCurrentAssetsRejection,
 	SUM(NestedSelect.OtherCurrentAssetsNGFact - NestedSelect.OtherCurrentAssetsNG) AS OtherCurrentAssetsNGRejection,
 	SUM(NestedSelect.CapitalFact - NestedSelect.Capital) AS CapitalRejection,
-	SUM(NestedSelect.CapitalNGFact - NestedSelect.CapitalNG) AS CapitalNRejection,
+	SUM(NestedSelect.CapitalNGFact - NestedSelect.CapitalNG) AS CapitalNGRejection,
 	SUM(NestedSelect.ReserveAdditionalCapitalFact - NestedSelect.ReserveAdditionalCapital) AS ReserveAdditionalCapitalRejection,
 	SUM(NestedSelect.ReserveAdditionalCapitalNGFact - NestedSelect.ReserveAdditionalCapitalNG) AS ReserveAdditionalCapitalNGRejection,
 	SUM(NestedSelect.UndistributedProfitFact - NestedSelect.UndistributedProfit) AS UndistributedProfitRejection,
@@ -1113,13 +1155,13 @@
 	SUM(NestedSelect.LoansCreditsFact - NestedSelect.LoansCredits) AS LoansCreditsRejection,
 	SUM(NestedSelect.LoansCreditsNGFact - NestedSelect.LoansCreditsNG) AS LoansCreditsNGRejection,
 	SUM(NestedSelect.CreditorsTotalFact - NestedSelect.CreditorsTotal) AS CreditorsTotalRejection,
-	SUM(NestedSelect.CreditorsTotalNYFact - NestedSelect.CreditorsTotalNG) AS CreditorsConductedTotalRejectionNG,
+	SUM(NestedSelect.CreditorsTotalNGFact - NestedSelect.CreditorsTotalNG) AS CreditorsTotalNGRejection,
 	SUM(NestedSelect.OtherShorttermObligationsFact - NestedSelect.OtherShorttermObligations) AS OtherShorttermObligationsRejection,
 	SUM(NestedSelect.OtherShortTermObligationsNGFact - NestedSelect.OtherShortTermObligationsNG) AS OtherShortTermObligationsNGRejection,
 	0 AS FixedAssetsPercent,
 	0 AS FixedAssetsNGPercent,
 	0 AS OtherFixedAssetsPercent,
-	0 AS OtherFixedAssetsNYPercent,
+	0 AS OtherFixedAssetsNGPercent,
 	0 AS InventoryTotalPercent,
 	0 AS InventoryTotalNGPercent,
 	0 AS DebitorsTotalPercent,
@@ -1321,7 +1363,7 @@ FROM
 		0 AS LoansCreditsFact,
 		0 AS LoansCreditsNGFact,
 		0 AS CreditorsTotalFact,
-		0 AS CreditorsTotalNYFact,
+		0 AS CreditorsTotalNGFact,
 		0 AS OtherShorttermObligationsFact,
 		0 AS OtherShortTermObligationsNGFact
 	FROM
@@ -2692,16 +2734,8 @@ FROM
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>CreditorsNYFact</dataPath>
-			<field>CreditorsNYFact</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>CreditorsFact</dataPath>
 			<field>CreditorsFact</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>CreditorsNYRejection</dataPath>
-			<field>CreditorsNYRejection</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>CreditorsRejection</dataPath>
@@ -2714,6 +2748,26 @@ FROM
 		<field xsi:type="DataSetFieldField">
 			<dataPath>CreditorsPercent</dataPath>
 			<field>CreditorsPercent</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CreditorsNGFact</dataPath>
+			<field>CreditorsNGFact</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Creditors NGFact</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CreditorsNGRejection</dataPath>
+			<field>CreditorsNGRejection</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Creditors NGRejection</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<item xsi:type="DataSetQuery">
 			<name>DataSet4</name>
@@ -2791,22 +2845,8 @@ FROM
 				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>CreditorsNYFact</dataPath>
-				<field>CreditorsNYFact</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>CreditorsFact</dataPath>
 				<field>CreditorsFact</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>CreditorsNYRejection</dataPath>
-				<field>CreditorsNYRejection</field>
-				<role>
-					<dcscom:balance>true</dcscom:balance>
-					<dcscom:balanceGroupName>Creditors2</dcscom:balanceGroupName>
-					<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
-					<dcscom:accountField>AccountCreditors</dcscom:accountField>
-				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>CreditorsRejection</dataPath>
@@ -2826,14 +2866,40 @@ FROM
 				<dataPath>CreditorsPercent</dataPath>
 				<field>CreditorsPercent</field>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CreditorsNGFact</dataPath>
+				<field>CreditorsNGFact</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Creditors NGFact</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CreditorsNGRejection</dataPath>
+				<field>CreditorsNGRejection</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Creditors NGRejection</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:balance>true</dcscom:balance>
+					<dcscom:balanceGroupName>Creditors2</dcscom:balanceGroupName>
+					<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
+					<dcscom:accountField>AccountCreditors</dcscom:accountField>
+				</role>
+			</field>
 			<dataSource>DataSource1</dataSource>
 			<query>SELECT ALLOWED
 	AdministrativeBalanceAndTurnovers.Account AS AccountCreditors,
 	AdministrativeBalanceAndTurnovers.AmountOpeningBalanceCr AS CreditorsNG,
 	AdministrativeBalanceAndTurnovers.AmountClosingBalanceCr AS Creditors,
-	0 AS CreditorsNYFact,
+	0 AS CreditorsNGFact,
 	0 AS CreditorsFact,
-	-1 * AdministrativeBalanceAndTurnovers.AmountOpeningBalanceDr AS CreditorsNYRejection,
+	-1 * AdministrativeBalanceAndTurnovers.AmountOpeningBalanceDr AS CreditorsNGRejection,
 	-1 * AdministrativeBalanceAndTurnovers.AmountClosingBalanceDr AS CreditorsRejection,
 	0 AS CreditorsConductedNPercent,
 	0 AS CreditorsPercent
@@ -2891,17 +2957,6 @@ FROM
 				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>CreditorsNYFact</dataPath>
-				<field>CreditorsNYFact</field>
-				<role>
-					<dcscom:balance>true</dcscom:balance>
-					<dcscom:balanceGroupName>Creditors</dcscom:balanceGroupName>
-					<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
-					<dcscom:accountingBalanceType>Credit</dcscom:accountingBalanceType>
-					<dcscom:accountField>AccountCreditors</dcscom:accountField>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>CreditorsFact</dataPath>
 				<field>CreditorsFact</field>
 				<role>
@@ -2909,17 +2964,6 @@ FROM
 					<dcscom:balanceGroupName>Creditors</dcscom:balanceGroupName>
 					<dcscom:balanceType>ClosingBalance</dcscom:balanceType>
 					<dcscom:accountingBalanceType>Credit</dcscom:accountingBalanceType>
-					<dcscom:accountField>AccountCreditors</dcscom:accountField>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>CreditorsNYRejection</dataPath>
-				<field>CreditorsNYRejection</field>
-				<role>
-					<dcscom:balance>true</dcscom:balance>
-					<dcscom:balanceGroupName>Creditors</dcscom:balanceGroupName>
-					<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
-					<dcscom:accountingBalanceType>Debit</dcscom:accountingBalanceType>
 					<dcscom:accountField>AccountCreditors</dcscom:accountField>
 				</role>
 			</field>
@@ -2942,14 +2986,48 @@ FROM
 				<dataPath>CreditorsPercent</dataPath>
 				<field>CreditorsPercent</field>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CreditorsNGFact</dataPath>
+				<field>CreditorsNGFact</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Creditors NGFact</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:balance>true</dcscom:balance>
+					<dcscom:balanceGroupName>Creditors</dcscom:balanceGroupName>
+					<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
+					<dcscom:accountingBalanceType>Credit</dcscom:accountingBalanceType>
+					<dcscom:accountField>AccountCreditors</dcscom:accountField>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CreditorsNGRejection</dataPath>
+				<field>CreditorsNGRejection</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Creditors NGRejection</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:balance>true</dcscom:balance>
+					<dcscom:balanceGroupName>Creditors</dcscom:balanceGroupName>
+					<dcscom:balanceType>OpeningBalance</dcscom:balanceType>
+					<dcscom:accountingBalanceType>Debit</dcscom:accountingBalanceType>
+					<dcscom:accountField>AccountCreditors</dcscom:accountField>
+				</role>
+			</field>
 			<dataSource>DataSource1</dataSource>
 			<query>SELECT ALLOWED
 	AdministrativeBalanceAndTurnovers.Account AS AccountCreditors,
-	AdministrativeBalanceAndTurnovers.AmountOpeningBalanceCr AS CreditorsNYFact,
+	AdministrativeBalanceAndTurnovers.AmountOpeningBalanceCr AS CreditorsNGFact,
 	AdministrativeBalanceAndTurnovers.AmountClosingBalanceCr AS CreditorsFact,
 	0 AS CreditorsNG,
 	0 AS Creditors,
-	AdministrativeBalanceAndTurnovers.AmountOpeningBalanceDr AS CreditorsNYRejection,
+	AdministrativeBalanceAndTurnovers.AmountOpeningBalanceDr AS CreditorsNGRejection,
 	AdministrativeBalanceAndTurnovers.AmountClosingBalanceDr AS CreditorsRejection,
 	0 AS CreditorsConductedNPercent,
 	0 AS CreditorsPercent
@@ -3106,7 +3184,7 @@ FROM
 		</title>
 	</calculatedField>
 	<calculatedField>
-		<dataPath>TotalNGRejection</dataPath>
+		<dataPath>Total5NGRejection</dataPath>
 		<expression>Total5NGFact - Total5NG</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -3246,7 +3324,7 @@ FROM
 		</title>
 	</calculatedField>
 	<calculatedField>
-		<dataPath>TotalNGPercent</dataPath>
+		<dataPath>Total3NGPercent</dataPath>
 		<expression>0</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -3636,10 +3714,6 @@ FROM
 		<expression>SUM(InventoryTotalNG)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>InventoryOfTotalNRejection</dataPath>
-		<expression>SUM(InventoryTotalNGRejection)</expression>
-	</totalField>
-	<totalField>
 		<dataPath>InventoryTotalNGPercent</dataPath>
 		<expression>CASE
  WHEN SUM(InventoryTotalNG) IS NULL OR SUM(InventoryTotalNG) = 0
@@ -3864,13 +3938,6 @@ FROM
 		<expression>SUM(Total3NGRejection)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>TotalNGPercent</dataPath>
-		<expression>CASE
- WHEN SUM(Total3NG) IS NULL OR SUM(Total3NG) = 0
- THEN "-"
- ELSE (SUM(Total3NGFact) - SUM(Total3NG)) * 100 / SUM(Total3NG) END</expression>
-	</totalField>
-	<totalField>
 		<dataPath>Total3NGFact</dataPath>
 		<expression>SUM(Total3NGFact)</expression>
 	</totalField>
@@ -3936,19 +4003,11 @@ FROM
 		<expression>SUM(Total5NG)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>TotalNGRejection</dataPath>
-		<expression>SUM(Total5NGRejection)</expression>
-	</totalField>
-	<totalField>
 		<dataPath>Total5NGPercent</dataPath>
 		<expression>CASE
  WHEN SUM(Total5NG) IS NULL OR SUM(Total5NG) = 0
  THEN "-"
- ELSE (SUM(TotalNGFact) - SUM(Total5NG)) * 100 / SUM(Total5NG) END</expression>
-	</totalField>
-	<totalField>
-		<dataPath>TotalNGFact</dataPath>
-		<expression>SUM(TotalNGFact)</expression>
+ ELSE (SUM(Total5NGFact) - SUM(Total5NG)) * 100 / SUM(Total5NG) END</expression>
 	</totalField>
 	<totalField>
 		<dataPath>Total5Rejection</dataPath>
@@ -3972,10 +4031,6 @@ FROM
 	<totalField>
 		<dataPath>CapitalNG</dataPath>
 		<expression>SUM(CapitalNG)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>CapitalNRejection</dataPath>
-		<expression>SUM(CapitalNGRejection)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>CapitalNGPercent</dataPath>
@@ -4010,10 +4065,6 @@ FROM
 	<totalField>
 		<dataPath>ShorttermInvestmentsNG</dataPath>
 		<expression>SUM(ShortTermInvestmentsNG)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>ShorttermInvestmentsNYRejection</dataPath>
-		<expression>SUM(ShortTermInvestmentsNGRejection)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ShorttermInvestmentsNGPercent</dataPath>
@@ -4054,19 +4105,11 @@ FROM
 		<expression>SUM(CreditorsTotalNG)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>CreditorsConductedTotalRejectionNG</dataPath>
-		<expression>SUM(CreditorsTotalNGRejection)</expression>
-	</totalField>
-	<totalField>
 		<dataPath>CreditorsConductedTotalNGPercent</dataPath>
 		<expression>CASE
  WHEN SUM(CreditorsTotalNG) IS NULL OR SUM(CreditorsTotalNG) = 0
  THEN "-"
- ELSE (SUM(CreditorsTotalNYFact) - SUM(CreditorsTotalNG)) * 100 / SUM(CreditorsTotalNG) END</expression>
-	</totalField>
-	<totalField>
-		<dataPath>CreditorsTotalNYFact</dataPath>
-		<expression>SUM(CreditorsTotalNGFact)</expression>
+ ELSE (SUM(CreditorsTotalNGFact) - SUM(CreditorsTotalNG)) * 100 / SUM(CreditorsTotalNG) END</expression>
 	</totalField>
 	<totalField>
 		<dataPath>CreditorsTotalRejection</dataPath>
@@ -4088,19 +4131,11 @@ FROM
 		<expression>SUM(CreditorsNG)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>CreditorsNYRejection</dataPath>
-		<expression>SUM(CreditorsNGRejection)</expression>
-	</totalField>
-	<totalField>
 		<dataPath>CreditorsConductedNPercent</dataPath>
 		<expression>CASE
  WHEN SUM(CreditorsNG) IS NULL OR SUM(CreditorsNG) = 0
  THEN "-"
- ELSE (SUM(CreditorsNYFact) - SUM(CreditorsNG)) * 100 / SUM(CreditorsNG) END</expression>
-	</totalField>
-	<totalField>
-		<dataPath>CreditorsNYFact</dataPath>
-		<expression>SUM(CreditorsNYFact)</expression>
+ ELSE (SUM(CreditorsNGFact) - SUM(CreditorsNG)) * 100 / SUM(CreditorsNG) END</expression>
 	</totalField>
 	<totalField>
 		<dataPath>CreditorsRejection</dataPath>
@@ -4166,13 +4201,6 @@ FROM
 	<totalField>
 		<dataPath>OtherFixedAssetsNGRejection</dataPath>
 		<expression>SUM(OtherFixedAssetsNGRejection)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>OtherFixedAssetsNYPercent</dataPath>
-		<expression>CASE
- WHEN SUM(OtherFixedAssetsNG) IS NULL OR SUM(OtherFixedAssetsNG)
- = 0 THEN
- "-" ELSE (SUM(OtherFixedAssetsNGFact)) - SUM(OtherFixedAssetsNG) * 100 / SUM(OtherFixedAssetsNG) END</expression>
 	</totalField>
 	<totalField>
 		<dataPath>OtherFixedAssetsNGFact</dataPath>
@@ -4307,6 +4335,41 @@ FROM
 		<dataPath>ReserveAdditionalCapitalFact</dataPath>
 		<expression>SUM(ReserveAdditionalCapitalFact)</expression>
 	</totalField>
+	<totalField>
+		<dataPath>CreditorsNGFact</dataPath>
+		<expression>Sum(CreditorsNGFact)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>CreditorsNGRejection</dataPath>
+		<expression>Sum(CreditorsNGRejection)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Total5NGFact</dataPath>
+		<expression>Sum(Total5NGFact)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Total5NGRejection</dataPath>
+		<expression>Sum(Total5NGRejection)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Total3NGPercent</dataPath>
+		<expression>CASE
+ WHEN SUM(Total3NG) IS NULL OR SUM(Total3NG) = 0
+ THEN "-"
+ ELSE (SUM(Total3NGFact) - SUM(Total3NG)) * 100 / SUM(Total3NG) END</expression>
+	</totalField>
+	<totalField>
+		<dataPath>InventoryTotalNGRejection</dataPath>
+		<expression>Sum(InventoryTotalNGRejection)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>CapitalNGRejection</dataPath>
+		<expression>Sum(CapitalNGRejection)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>CreditorsTotalNGRejection</dataPath>
+		<expression>Sum(CreditorsTotalNGRejection)</expression>
+	</totalField>
 	<parameter>
 		<name>BeginOfPeriod</name>
 		<title xsi:type="v8:LocalStringType">
@@ -4376,6 +4439,10 @@ FROM
 				<v8:lang>en</v8:lang>
 				<v8:content>Company</v8:content>
 			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Контрагент</v8:content>
+			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Companies</v8:Type>
@@ -4390,6 +4457,10 @@ FROM
 			<v8:item>
 				<v8:lang>en</v8:lang>
 				<v8:content>Company</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Контрагент</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -8658,10 +8729,6 @@ FROM
 								<v8:lang>en</v8:lang>
 								<v8:content>Company: </v8:content>
 							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Организация: </v8:content>
-							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
 					<dcsat:item xsi:type="dcsat:Field">
@@ -8737,10 +8804,6 @@ FROM
 								<v8:lang>en</v8:lang>
 								<v8:content>on </v8:content>
 							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>на </v8:content>
-							</v8:item>
 						</dcsat:value>
 						<dcsat:appearance>
 							<dcscor:item>
@@ -8762,10 +8825,6 @@ FROM
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>g.</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
 								<v8:content>g.</v8:content>
 							</v8:item>
 						</dcsat:value>
@@ -8859,10 +8918,6 @@ FROM
 							<v8:item>
 								<v8:lang>en</v8:lang>
 								<v8:content>Planning Period: </v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Период планирования: </v8:content>
 							</v8:item>
 						</dcsat:value>
 					</dcsat:item>
@@ -10431,7 +10486,7 @@ FROM
 				</dcsat:tableCell>
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">OtherFixedAssetsNYPercent</dcsat:value>
+						<dcsat:value xsi:type="dcscor:Parameter">OtherFixedAssetsNGPercent</dcsat:value>
 						<dcsat:appearance>
 							<dcscor:item>
 								<dcscor:parameter>Format</dcscor:parameter>
@@ -11220,7 +11275,7 @@ FROM
 				</dcsat:tableCell>
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">InventoryOfTotalNRejection</dcsat:value>
+						<dcsat:value xsi:type="dcscor:Parameter">InventoryTotalNGRejection</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
@@ -11403,10 +11458,6 @@ FROM
 			<dcsat:expression>OtherFixedAssetsNGRejection</dcsat:expression>
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>OtherFixedAssetsNYPercent</dcsat:name>
-			<dcsat:expression>OtherFixedAssetsNYPercent</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>OtherFixedAssets</dcsat:name>
 			<dcsat:expression>OtherFixedAssets</dcsat:expression>
 		</parameter>
@@ -11463,10 +11514,6 @@ FROM
 			<dcsat:expression>InventoryTotalNGFact</dcsat:expression>
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>InventoryOfTotalNRejection</dcsat:name>
-			<dcsat:expression>InventoryOfTotalNRejection</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>InventoryTotalNGPercent</dcsat:name>
 			<dcsat:expression>InventoryTotalNGPercent</dcsat:expression>
 		</parameter>
@@ -11485,6 +11532,14 @@ FROM
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>InventoryTotalPercent</dcsat:name>
 			<dcsat:expression>InventoryTotalPercent</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>OtherFixedAssetsNGPercent</dcsat:name>
+			<dcsat:expression>OtherFixedAssetsNGPercent</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>InventoryTotalNGRejection</dcsat:name>
+			<dcsat:expression>InventoryTotalNGRejection</dcsat:expression>
 		</parameter>
 	</template>
 	<template>
@@ -12052,7 +12107,7 @@ FROM
 				</dcsat:tableCell>
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">ShorttermInvestmentsNYRejection</dcsat:value>
+						<dcsat:value xsi:type="dcscor:Parameter">ShorttermInvestmentsNGRejection</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
@@ -12393,10 +12448,6 @@ FROM
 			<dcsat:expression>ShorttermInvestmentsNGFact</dcsat:expression>
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>ShorttermInvestmentsNYRejection</dcsat:name>
-			<dcsat:expression>ShorttermInvestmentsNYRejection</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>ShorttermInvestmentsNGPercent</dcsat:name>
 			<dcsat:expression>ShorttermInvestmentsNGPercent</dcsat:expression>
 		</parameter>
@@ -12447,6 +12498,10 @@ FROM
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>CashAssetsTotalPercent</dcsat:name>
 			<dcsat:expression>CashAssetsTotalPercent</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>ShorttermInvestmentsNGRejection</dcsat:name>
+			<dcsat:expression>ShorttermInvestmentsNGRejection</dcsat:expression>
 		</parameter>
 	</template>
 	<template>
@@ -14895,7 +14950,7 @@ FROM
 				</dcsat:tableCell>
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">CapitalNRejection</dcsat:value>
+						<dcsat:value xsi:type="dcscor:Parameter">CapitalNGRejection</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
@@ -15548,7 +15603,7 @@ FROM
 				</dcsat:tableCell>
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">TotalNGPercent</dcsat:value>
+						<dcsat:value xsi:type="dcscor:Parameter">Total3NGPercent</dcsat:value>
 						<dcsat:appearance>
 							<dcscor:item>
 								<dcscor:parameter>Format</dcscor:parameter>
@@ -17182,7 +17237,7 @@ FROM
 				</dcsat:tableCell>
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">CreditorsTotalNYFact</dcsat:value>
+						<dcsat:value xsi:type="dcscor:Parameter">CreditorsTotalNGFact</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
@@ -17201,7 +17256,7 @@ FROM
 				</dcsat:tableCell>
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">CreditorsConductedTotalRejectionNG</dcsat:value>
+						<dcsat:value xsi:type="dcscor:Parameter">CreditorsTotalNGRejection</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
@@ -17432,10 +17487,6 @@ FROM
 			<dcsat:expression>CapitalNGFact</dcsat:expression>
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>CapitalNRejection</dcsat:name>
-			<dcsat:expression>CapitalNRejection</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>CapitalNGPercent</dcsat:name>
 			<dcsat:expression>CapitalNGPercent</dcsat:expression>
 		</parameter>
@@ -17530,10 +17581,6 @@ FROM
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>Total3NGRejection</dcsat:name>
 			<dcsat:expression>Total3NGRejection</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>TotalNGPercent</dcsat:name>
-			<dcsat:expression>TotalNGPercent</dcsat:expression>
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>Total3</dcsat:name>
@@ -17652,14 +17699,6 @@ FROM
 			<dcsat:expression>CreditorsTotalNG</dcsat:expression>
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>CreditorsTotalNYFact</dcsat:name>
-			<dcsat:expression>CreditorsTotalNYFact</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>CreditorsConductedTotalRejectionNG</dcsat:name>
-			<dcsat:expression>CreditorsConductedTotalRejectionNG</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>CreditorsConductedTotalNGPercent</dcsat:name>
 			<dcsat:expression>CreditorsConductedTotalNGPercent</dcsat:expression>
 		</parameter>
@@ -17678,6 +17717,22 @@ FROM
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>CreditorsTotalPercent</dcsat:name>
 			<dcsat:expression>CreditorsTotalPercent</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>CreditorsTotalNGFact</dcsat:name>
+			<dcsat:expression>CreditorsTotalNGFact</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>Total3NGPercent</dcsat:name>
+			<dcsat:expression>Total3NGPercent</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>CapitalNGRejection</dcsat:name>
+			<dcsat:expression>CapitalNGRejection</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>CreditorsTotalNGRejection</dcsat:name>
+			<dcsat:expression>CreditorsTotalNGRejection</dcsat:expression>
 		</parameter>
 	</template>
 	<template>
@@ -17736,7 +17791,7 @@ FROM
 				</dcsat:tableCell>
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">CreditorsNYFact</dcsat:value>
+						<dcsat:value xsi:type="dcscor:Parameter">CreditorsNGFact</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
@@ -17755,7 +17810,7 @@ FROM
 				</dcsat:tableCell>
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">CreditorsNYRejection</dcsat:value>
+						<dcsat:value xsi:type="dcscor:Parameter">CreditorsNGRejection</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
@@ -17890,14 +17945,6 @@ FROM
 			<dcsat:expression>CreditorsNG</dcsat:expression>
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>CreditorsNYFact</dcsat:name>
-			<dcsat:expression>CreditorsNYFact</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>CreditorsNYRejection</dcsat:name>
-			<dcsat:expression>CreditorsNYRejection</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>CreditorsConductedNPercent</dcsat:name>
 			<dcsat:expression>CreditorsConductedNPercent</dcsat:expression>
 		</parameter>
@@ -17916,6 +17963,14 @@ FROM
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>CreditorsPercent</dcsat:name>
 			<dcsat:expression>CreditorsPercent</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>CreditorsNGFact</dcsat:name>
+			<dcsat:expression>CreditorsNGFact</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>CreditorsNGRejection</dcsat:name>
+			<dcsat:expression>CreditorsNGRejection</dcsat:expression>
 		</parameter>
 	</template>
 	<template>
@@ -18197,7 +18252,7 @@ FROM
 				</dcsat:tableCell>
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">TotalNGFact</dcsat:value>
+						<dcsat:value xsi:type="dcscor:Parameter">Total5NGFact</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
@@ -18220,7 +18275,7 @@ FROM
 				</dcsat:tableCell>
 				<dcsat:tableCell>
 					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">TotalNGRejection</dcsat:value>
+						<dcsat:value xsi:type="dcscor:Parameter">Total5NGRejection</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
@@ -18839,14 +18894,6 @@ FROM
 			<dcsat:expression>Total5NG</dcsat:expression>
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>TotalNGFact</dcsat:name>
-			<dcsat:expression>TotalNGFact</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>TotalNGRejection</dcsat:name>
-			<dcsat:expression>TotalNGRejection</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>Total5NGPercent</dcsat:name>
 			<dcsat:expression>Total5NGPercent</dcsat:expression>
 		</parameter>
@@ -18897,6 +18944,14 @@ FROM
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>Total345Percent</dcsat:name>
 			<dcsat:expression>Total345Percent</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>Total5NGFact</dcsat:name>
+			<dcsat:expression>Total5NGFact</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>Total5NGRejection</dcsat:name>
+			<dcsat:expression>Total5NGRejection</dcsat:expression>
 		</parameter>
 	</template>
 	<template>

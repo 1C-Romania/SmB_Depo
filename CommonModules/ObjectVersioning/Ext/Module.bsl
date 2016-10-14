@@ -1164,7 +1164,7 @@ Procedure ClearObsoleteObjectsVersions() Export
 				|	OR";
 			EndIf;
 			Condition = Condition + "
-			|	ObjectsVersions.Object REF " + Type;
+			|	ObjectVersionings.Object REFS " + Type;
 		EndDo;
 		If IsBlankString(Condition) Then
 			Continue;
@@ -1173,7 +1173,7 @@ Procedure ClearObsoleteObjectsVersions() Export
 		AdditionalConditions = AdditionalConditions + StringFunctionsClientServer.PlaceParametersIntoString(
 			"
 			|	%1
-			|	AND ObjectVersionings.VersionData< &RemoveBoundary%2",
+			|	AND ObjectVersionings.VersionDate< &RemoveBoundary%2",
 			Condition,
 			IndexString);
 		Query.SetParameter("TypeList" + IndexString, ObjectsRemovalBoundaries[IndexOf].TypeList);
@@ -1243,9 +1243,9 @@ Function RemoveBoundary(VersionsStorageTerm)
 		Return AddMonth(CurrentSessionDate(), -6);
 	ElsIf VersionsStorageTerm = Enums.VersionStorageTerms.ForLastThreeMonths Then
 		Return AddMonth(CurrentSessionDate(), -3);
-	ElsIf VersionsStorageTerm = Enums.VersionStorageTerms.InLastMonth Then
+	ElsIf VersionsStorageTerm = Enums.VersionStorageTerms.RecentMonth Then
 		Return AddMonth(CurrentSessionDate(), -1);
-	ElsIf VersionsStorageTerm = Enums.VersionStorageTerms.InLastWeek Then
+	ElsIf VersionsStorageTerm = Enums.VersionStorageTerms.RecentWeek Then
 		Return CurrentSessionDate() - 7*24*60*60;
 	Else // VersionsStorageTerm = Enums.VersionStorageStrings.Indefinitely
 		Return '000101010000';
@@ -1307,7 +1307,7 @@ Function InformationAboutLegacyVersions() Export
 				|	OR";
 			EndIf;
 			Condition = Condition + "
-			|	ObjectsVersions.Object REF " + Type;
+			|	ObjectVersionings.Object REFS " + Type;
 		EndDo;
 		If IsBlankString(Condition) Then
 			Continue;
@@ -1316,7 +1316,7 @@ Function InformationAboutLegacyVersions() Export
 		AdditionalConditions = AdditionalConditions + StringFunctionsClientServer.PlaceParametersIntoString(
 			"
 			|	%1
-			|	AND ObjectVersionings.VersionData< &RemoveBoundary%2",
+			|	AND ObjectVersionings.VersionDate< &RemoveBoundary%2",
 			Condition,
 			IndexString);
 		Query.SetParameter("TypeList" + IndexString, ObjectsRemovalBoundaries[IndexOf].TypeList);

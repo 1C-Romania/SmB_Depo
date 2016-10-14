@@ -159,7 +159,7 @@ Function MetadataObjectsForms()
 	StandardFormNames.Add("ObjectForm");
 	StandardFormNames.Add("ListForm");
 	StandardFormNames.Add("ChoiceForm");
-	GetFormListOfMetadataObject(Metadata.BusinessProcesses, "BusinessProcess", NStr("en='Business-process';ru='Бизнес-процесс'"),
+	GetFormListOfMetadataObject(Metadata.BusinessProcesses, "BusinessProcess", NStr("en='Business process';ru='Бизнес-процесс'"),
 		StandardFormNames, PictureLib.BusinessProcess, FormsList);
 	
 	StandardFormNames = New ValueList;
@@ -269,7 +269,7 @@ EndProcedure
 Procedure DeleteUserSettings(ClearedSettings, Sources, UserVariantsReportsTable = Undefined) Export
 	
 	MapStorageSetting = New Map;
-	MapStorageSetting.Insert("ReportsSettings", ReportsUserSettingsStorage);
+	MapStorageSetting.Insert("ReportSettings", ReportsUserSettingsStorage);
 	MapStorageSetting.Insert("ExternalViewSettings", SystemSettingsStorage);
 	MapStorageSetting.Insert("FormsData", FormDataSettingsStorage);
 	MapStorageSetting.Insert("PersonalSettings", CommonSettingsStorage);
@@ -316,7 +316,7 @@ Procedure DeleteUserSettings(ClearedSettings, Sources, UserVariantsReportsTable 
 			
 			Source = IBUserName(Source);
 			
-			If ClearedSetting = "ReportsSettings" Then
+			If ClearedSetting = "ReportSettings" Then
 				
 				If UserVariantsReportsTable = Undefined Then
 					UserVariantsReportsTable = UserReportsVariants(Source);
@@ -359,7 +359,7 @@ Function UserSettingsCopying(UserSourceRef, UsersTarget, CopiedSettings,
 										NotCopiedReportsSettings = Undefined) Export
 	
 	MapStorageSetting = New Map;
-	MapStorageSetting.Insert("ReportsSettings", ReportsUserSettingsStorage);
+	MapStorageSetting.Insert("ReportSettings", ReportsUserSettingsStorage);
 	MapStorageSetting.Insert("ExternalViewSettings", SystemSettingsStorage);
 	MapStorageSetting.Insert("FormsData", FormDataSettingsStorage);
 	MapStorageSetting.Insert("PersonalSettings", CommonSettingsStorage);
@@ -413,7 +413,7 @@ Function UserSettingsCopying(UserSourceRef, UsersTarget, CopiedSettings,
 			Continue;
 		EndIf;
 		
-		If CopiedSetting = "ReportsSettings" Then
+		If CopiedSetting = "ReportSettings" Then
 			
 			If TypeOf(MapStorageSetting["ReportsVariants"]) = Type("StandardSettingsStorageManager") Then
 				ReportVariantsTable = UserReportsVariants(UserSource);

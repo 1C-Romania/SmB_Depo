@@ -411,11 +411,11 @@ Function GetFiltersForDocumentsInMobileApplicationExportings()
 		"MobileApplicationExportingsPeriod"
 	);
 	
-	If MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.InLastMonth Then
+	If MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.RecentMonth Then
 		ExportStartDate = BegOfMonth(CurrentDate());
-	ElsIf MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.InLastWeek Then
+	ElsIf MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.RecentWeek Then
 		ExportStartDate = BegOfWeek(CurrentDate());
-	ElsIf MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.InLastDay Then
+	ElsIf MobileApplicationExportingsPeriod = Enums.ExportPeriodsInMobileApplication.RecentDay Then
 		ExportStartDate = BegOfDay(CurrentDate());
 	EndIf;
 	
