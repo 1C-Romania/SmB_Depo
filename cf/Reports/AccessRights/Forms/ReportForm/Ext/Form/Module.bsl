@@ -1167,7 +1167,7 @@ Procedure OutputReport(Ref)
 					Else // NO ObjectDescription.AddingWithoutRestriction AND NO ObjectDescription.ChangingWithoutRestriction
 						If ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding,
-|limited modification, limited)';ru='(добавление,"
+|limited modification, limited)';ru='(добавление,
 |ограничено изменение, ограничено)'");
 						ElsIf Not ObjectDescription.InteractiveInsert AND ObjectDescription.Edit Then
 							ObjectPresentationClarification = NStr("en='(adding*,
