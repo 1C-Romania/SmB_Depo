@@ -64,7 +64,7 @@ EndProcedure
 //                                       Denial is also set to True, then the application will be restarted.
 //            * CommandBarAdditionalParameters - String - Return value. Makes
 //                                       sense only when Denial and Restart are set to True.
-//            * OnlineProcessor - NotifyDescription - Return value. To open
+//            * ContinuationProcessor  - NotifyDescription - Return value. To open
 //                                       the window that locks application entry, it is required
 //                                       to assign alert handler description to this parameter that opens the window.
 //                                      See example above (for the BeforeStart handler).
@@ -95,6 +95,10 @@ Procedure OnStart(Parameters) Export
 			
 		EndIf;
 		
+	EndIf;
+	
+	If CommonUseServerCall.ThisIsFirstLaunch() Then
+		Parameters.ContinuationProcessor = New NotifyDescription("OpenExternalFirstLaunch", ThisObject, Parameters);
 	EndIf;
 	
 EndProcedure
@@ -170,6 +174,49 @@ Function ProcessStartParameters(LaunchParameterValue, LaunchParameters) Export
 	
 	Return False;
 	
+EndFunction
+
+#EndRegion
+
+#Region ExternalFirstLaunch
+
+Procedure OpenExternalFirstLaunch(Parameters, AdditionalParameters) Export
+	
+	NotifyDescription = New NotifyDescription("CompletionProcessing", ThisObject, AdditionalParameters);
+	
+	File = New File(PathToExternalFirstLaunch());
+	If File.Exist() Then
+		NotifyDescriptionOpenForm = New NotifyDescription("OpenFormAfterPutFile", ThisObject, NotifyDescription);
+		BeginPutFile(NotifyDescriptionOpenForm, "", PathToExternalFirstLaunch(), False);
+	Else
+		CommonUseServerCall.FillDefaultFirstLaunch();
+		ExecuteNotifyProcessing(NotifyDescription, True);
+	EndIf;
+	
+EndProcedure
+
+Procedure OpenFormAfterPutFile(Result, Adress, Path, NotifyDescription) Export
+	
+	If Result = True Then
+		FormName = CommonUseServerCall.FormExternalFirstLaunch(Adress);
+		OpenForm(FormName,,,,,,NotifyDescription);
+	Else
+		CommonUseServerCall.FillDefaultFirstLaunch();
+		ExecuteNotifyProcessing(NotifyDescription, True);
+	EndIf;
+	
+EndProcedure
+
+Procedure CompletionProcessing(Result, Parameters) Export
+	
+	ExecuteNotifyProcessing(Parameters.CompletionProcessing);
+	
+EndProcedure
+
+Function PathToExternalFirstLaunch()
+
+	Return "C:\FirstLaunch.epf";
+
 EndFunction
 
 #EndRegion

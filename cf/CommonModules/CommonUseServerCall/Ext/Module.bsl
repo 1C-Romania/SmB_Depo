@@ -295,3 +295,26 @@ Function StyleFont(StyleFontName) Export
 EndFunction
 
 #EndRegion
+
+#Region ExternalFirstLaunch
+
+Function ThisIsFirstLaunch() Export
+	
+	Return Not ValueIsFilled(Constants.AccountingCurrency.Get());
+	
+EndFunction
+
+Function FormExternalFirstLaunch(Adress) Export
+	
+	NameExternalFirstLaunch = ExternalDataProcessors.Connect(Adress,, False);
+	Return "ExternalDataProcessor." + NameExternalFirstLaunch + ".Form";
+	
+EndFunction
+
+Function FillDefaultFirstLaunch() Export
+
+	InfobaseUpdateSB.DefaultFirstLaunch();
+
+EndFunction 
+
+#EndRegion

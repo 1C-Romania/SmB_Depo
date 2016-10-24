@@ -66,13 +66,6 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 		
 	Handler = Handlers.Add();
 	Handler.PerformModes = "Delay";
-	Handler.Version = "1.5.3.13";
-	Handler.InitialFilling = True;
-	Handler.Procedure = "InfobaseUpdateSB.UpdateContractForms";
-	Handler.Comment = NStr("en='Update contracts forms.';ru='Обновление бланков договоров.'");
-	
-	Handler = Handlers.Add();
-	Handler.PerformModes = "Delay";
 	Handler.Version = "1.5.3.26";
 	Handler.Procedure = "InfobaseUpdateSB.TransferDataFromRemoteObjects";
 	Handler.Comment = NStr("en='Transfers data from remote metadata objects of alcoholic products account.';ru='Переносит данные из удаленных объектов метаданных учета алкогольной продукции.'");
@@ -1776,23 +1769,7 @@ Procedure FirstLaunch() Export
 	IsMainBusinessActivity.ProfitGLAccount = ChartsOfAccounts.Managerial.ProfitsAndLossesWithoutProfitTax;
 	IsMainBusinessActivity.Write();
 	
-	// 3. Fill in taxes kinds.
-	FillTaxTypesFirstLaunch();
-	
-	// 4. Fill in currencies.
-	USDRef = FindCreateCurrency("643", "rub.", "Russian ruble", "ruble, ruble, rubles, M, kopek, kopek, kopeks, F, 2");
-	
-	// 5. Fill in VAT rates.
-	RateVAT18 = FillVATRatesFirstLaunch();
-	
-	// 6. Fill petty cashes.
-	PettyCashRouble = Catalogs.PettyCashes.CreateItem();
-	PettyCashRouble.Description = "Main petty cash";
-	PettyCashRouble.CurrencyByDefault = USDRef;
-	PettyCashRouble.GLAccount = ChartsOfAccounts.Managerial.PettyCash;
-	PettyCashRouble.Write();
-	
-	// 7. Fill the Calendar under BusinessCalendar.
+	// 3. Fill the Calendar under BusinessCalendar.
 	Calendar = SmallBusinessServer.GetCalendarByProductionCalendaRF(); 
 	If Calendar = Undefined Then
 		
@@ -1801,56 +1778,24 @@ Procedure FirstLaunch() Export
 		
 	EndIf;
 	
-	// 8. Fill in companies.
+	// 4. Fill in companies.
 	OurCompanyRef = Catalogs.Companies.MainCompany;
-	OurCompany = OurCompanyRef.GetObject();
-	OurCompany.DescriptionFull	  = "LLC ""Our company""";
-	OurCompany.Prefix				  = "OF-";
-	OurCompany.LegalEntityIndividual			  = Enums.LegalEntityIndividual.LegalEntity;
-	OurCompany.IncludeVATInPrice = True;
-	OurCompany.PettyCashByDefault	  = PettyCashRouble.Ref;
-	OurCompany.DefaultVATRate  = RateVAT18;
-	OurCompany.BusinessCalendar = Calendar;
-	OurCompany.Write();
 	
-	// 9. Fill in divisions.
+	// 5. Fill in divisions.
 	MainDivisionReference = Catalogs.StructuralUnits.MainDivision;
 	MainDivision = MainDivisionReference.GetObject();
-	MainDivision.Company = OurCompany.Ref;
+	MainDivision.Company = OurCompanyRef;
 	MainDivision.StructuralUnitType = Enums.StructuralUnitsTypes.Division;
 	MainDivision.Write();
 	
-	// 10. Fill in the main warehouse.
+	// 6. Fill in the main warehouse.
 	MainWarehouseReference = Catalogs.StructuralUnits.MainWarehouse;
 	MainWarehouse = MainWarehouseReference.GetObject();
 	MainWarehouse.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse;
-	MainWarehouse.Company = OurCompany.Ref;
+	MainWarehouse.Company = OurCompanyRef;
 	MainWarehouse.Write();
 	
-	// 11. Fill in prices kinds.
-	// Wholesale.
-	WholesaleRef = Catalogs.PriceKinds.Wholesale;
-	Wholesale = WholesaleRef.GetObject();
-	Wholesale.PriceCurrency = USDRef;
-	Wholesale.PriceIncludesVAT = True;
-	Wholesale.RoundingOrder = Enums.RoundingMethods.Round1;
-	Wholesale.RoundUp = False;
-	Wholesale.PriceFormat = "ND=15; NFD=2";
-	Wholesale.Write();
-	
-	// Accountable.
-	AccountingReference = Catalogs.PriceKinds.Accounting;
-	Accounting = AccountingReference.GetObject();
-	Accounting.PriceCurrency = USDRef;
-	Accounting.PriceIncludesVAT = True;
-	Accounting.RoundingOrder = Enums.RoundingMethods.Round1;
-	Accounting.RoundUp = False;
-	Accounting.PriceFormat = "ND=15; NFD=2";
-	Accounting.Write();
-	
-	// 12. Fill in constants.
-	Constants.AccountingCurrency.Set(USDRef);
-	Constants.NationalCurrency.Set(USDRef);
+	// 7. Fill in constants.
 	Constants.ControlBalancesOnPosting.Set(true);
 	
 	If Not CommonUseReUse.CanUseSeparatedData() Then
@@ -1865,21 +1810,21 @@ Procedure FirstLaunch() Export
 		Constants.DistributedInformationBaseNodePrefix.Set(DataExchangeOverridable.InfobasePrefixByDefault());
 	EndIf;
 	
-	// 13. Fill in planning period.
+	// 8. Fill in planning period.
 	FillPlanningPeriodFirstLaunch();
 	
-	// 14. Fill in classifier of the working time use.
-	FillClassifierOfWorkingTimeUsage();
+	// 9. Fill in classifier of the working time use.
+	//FillClassifierOfWorkingTimeUsage();
 	
-	// 15. Fill in calculation and accruals kinds parameters.
+	// 10. Fill in calculation and accruals kinds parameters.
 	FillCalculationParametersAndAccrualKinds();
 	
-	// 16. Fill in properties sets.
+	// 11. Fill in properties sets.
 	MainNYReference = Catalogs.ProductsAndServicesCategories.MainGroup;
 	MainNG = MainNYReference.GetObject();
 	MainNG.Write();
 	
-	// 17. Fill in attributes of the predefined measurement units.
+	// 12. Fill in attributes of the predefined measurement units.
 		
 	// Piece.
 	PcsRefs = Catalogs.UOMClassifier.pcs;
@@ -1895,7 +1840,7 @@ Procedure FirstLaunch() Export
 	chObject.InternationalAbbreviation = "HUR";
 	chObject.Write();
 	
-	// 18. Fill in customer orders states.
+	// 13. Fill in customer orders states.
 	OpenOrderState = Catalogs.CustomerOrderStates.Open;
 	OpenOrderStateObject = OpenOrderState.GetObject();
 	OpenOrderStateObject.OrderStatus = Enums.OrderStatuses.Open;
@@ -1917,7 +1862,7 @@ Procedure FirstLaunch() Export
 	
 	Constants.CustomerOrdersCompletedStatus.Set(CompletedOrderStateObject.Ref);
 	
-	// 19. Purchase orders.
+	// 14. Purchase orders.
 	OpenOrderState = Catalogs.PurchaseOrderStates.Open;
 	OpenOrderStateObject = OpenOrderState.GetObject();
 	OpenOrderStateObject.OrderStatus = Enums.OrderStatuses.Open;
@@ -1939,7 +1884,7 @@ Procedure FirstLaunch() Export
 	
 	Constants.PurchaseOrdersCompletedStatus.Set(CompletedOrderStateObject.Ref);
 	
-	// 20. Fill in production orders states.
+	// 15. Fill in production orders states.
 	OpenOrderState = Catalogs.ProductionOrderStates.Open;
 	OpenOrderStateObject = OpenOrderState.GetObject();
 	OpenOrderStateObject.OrderStatus = Enums.OrderStatuses.Open;
@@ -1961,41 +1906,105 @@ Procedure FirstLaunch() Export
 
 	Constants.ProductionOrdersCompletedStatus.Set(CompletedOrderStateObject.Ref);
 	
-	// 21. Set the date of movements change by order warehouse.
+	// 16. Set the date of movements change by order warehouse.
 	Constants.UpdateDateToRelease_1_2_1.Set("19800101");
 	
-	// 22. Set a balances control flag when the CR receipts are given.
+	// 17. Set a balances control flag when the CR receipts are given.
 	Constants.ControlBalancesDuringCreationCRReceipts.Set(True);
 	
-	// 23. Selection settings
+	// 18. Selection settings
 	FillFilterUserSettings();
 	
-	// 24. Constant PlannedTotalsOptimizationDate
+	// 19. Constant PlannedTotalsOptimizationDate
 	Constants.PlannedTotalsOptimizationDate.Set(EndOfMonth(AddMonth(CurrentSessionDate(), 1)));
 	
-	// 25. Contact information
+	// 20. Contact information
 	RefreshPredefinedKindsOfContact();
 	
-	// 26. Price-list constants.
+	// 21. Price-list constants.
 	Constants.PriceListShowCode.Set(Enums.YesNo.Yes);
 	Constants.PriceListShowFullDescr.Set(Enums.YesNo.No);
 	Constants.PriceListUseProductsAndServicesHierarchy.Set(True);
 	Constants.FormPriceListByAvailabilityInWarehouses.Set(False);
 	
-	// 28. Registration
+	// 22. Registration
 	DeleteChangeRegistrationOfBaseClassifiers();
 	
-	// 29. Fill in contracts forms.
-	FillContractsForms();
-
-	// 30. Constant.CustomerInvoiceNote1137UsageBegin
+	// 23. Constant.CustomerInvoiceNote1137UsageBegin
 	Constants.CustomerInvoiceNote1137UsageBegin.Set(Date(2012, 04, 01));
 	
-	// 31. Constant.OffsetAdvancesDebtsAutomatically
+	// 24. Constant.OffsetAdvancesDebtsAutomatically
 	Constants.OffsetAdvancesDebtsAutomatically.Set(Enums.YesNo.No);
 	
-	// 32. BPO
+	// 25. Fill in contracts forms.
+	FillContractsForms();
+	
+	// 26. BPO
 	EquipmentManagerServerCallOverridable.RefreshSuppliedDrivers();
+	
+	CommitTransaction();
+	
+EndProcedure // FirstLaunch()
+
+Procedure DefaultFirstLaunch() Export
+	
+	BeginTransaction();
+	
+	// 1. Fill tax type
+	FillTaxTypesFirstLaunch();
+	
+	// 2. Fill in currencies.
+	USDRef = FindCreateCurrency("643", "rub.", "Russian ruble", "ruble, ruble, rubles, M, kopek, kopek, kopeks, F, 2");
+	
+	// 3. Fill in VAT rates.
+	DefaultRateVAT = FillVATRatesFirstLaunch();
+	
+	// 4. Fill petty cashes.
+	PettyCashRouble = Catalogs.PettyCashes.CreateItem();
+	PettyCashRouble.Description = "Main petty cash";
+	PettyCashRouble.CurrencyByDefault = USDRef;
+	PettyCashRouble.GLAccount = ChartsOfAccounts.Managerial.PettyCash;
+	PettyCashRouble.Write();
+	
+	// 5. Fill in companies.
+	OurCompanyRef = Catalogs.Companies.MainCompany;
+	OurCompany = OurCompanyRef.GetObject();
+	OurCompany.DescriptionFull       = "LLC ""Our company""";
+	OurCompany.Prefix                = "OF-";
+	OurCompany.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity;
+	OurCompany.IncludeVATInPrice     = True;
+	OurCompany.PettyCashByDefault    = PettyCashRouble.Ref;
+	OurCompany.DefaultVATRate        = DefaultRateVAT;
+	OurCompany.BusinessCalendar      = SmallBusinessServer.GetCalendarByProductionCalendaRF();
+	OurCompany.Write();
+	
+	// 6. Fill in prices kinds.
+	// Wholesale.
+	WholesaleRef = Catalogs.PriceKinds.Wholesale;
+	Wholesale = WholesaleRef.GetObject();
+	Wholesale.PriceCurrency = USDRef;
+	Wholesale.PriceIncludesVAT = True;
+	Wholesale.RoundingOrder = Enums.RoundingMethods.Round1;
+	Wholesale.RoundUp = False;
+	Wholesale.PriceFormat = "ND=15; NFD=2";
+	Wholesale.Write();
+	
+	// Accountable.
+	AccountingReference = Catalogs.PriceKinds.Accounting;
+	Accounting = AccountingReference.GetObject();
+	Accounting.PriceCurrency = USDRef;
+	Accounting.PriceIncludesVAT = True;
+	Accounting.RoundingOrder = Enums.RoundingMethods.Round1;
+	Accounting.RoundUp = False;
+	Accounting.PriceFormat = "ND=15; NFD=2";
+	Accounting.Write();
+	
+	// 7. Fill in constants.
+	Constants.AccountingCurrency.Set(USDRef);
+	Constants.NationalCurrency.Set(USDRef);
+	
+	// 8. Fill in classifier of the working time use.
+	FillClassifierOfWorkingTimeUsage();
 	
 	CommitTransaction();
 	
@@ -2009,127 +2018,6 @@ EndProcedure // FirstLaunch()
 Procedure UpdateChangesProhibitionDatesSections(ParametersStructure = Undefined) Export
 	
 	ChangeProhibitionDatesOverridable.UpdateChangesProhibitionDatesSections(ParametersStructure.DataProcessorCompleted);
-	
-EndProcedure
-
-#EndRegion
-
-#Region Update_1_5_3_13
-
-Procedure UpdateContractForms(ParametersStructure = Undefined) Export
-	
-	BeginTransaction();
-	Try
-	
-		Selection = Catalogs.ContractForms.Select();
-		
-		While Selection.Next() Do
-			
-			ReceivedObject = Selection.GetObject();
-			ReceivedObject.InfobaseParameters.Clear();
-			Form = ReceivedObject.Form.Get();
-			
-			TextHTML = Form.HTMLText;
-			
-			Cases = New Array;
-			Cases.Add(Undefined);
-			Cases.Add("nominative");
-			Cases.Add("genitive");
-			Cases.Add("dative");
-			Cases.Add("accusative");
-			Cases.Add("instrumental");
-			Cases.Add("prepositional");
-			
-			For Each ParameterEnumeration IN Enums.ContractsWithCounterpartiesTemplatesParameters Do
-				
-				For Each Case IN Cases Do
-					If Case = Undefined Then
-						PresentationCase = "";
-					Else
-						PresentationCase = " (" + Case + ")";
-					EndIf;
-					
-					Parameter = "{" + String(ParameterEnumeration) + PresentationCase + "}";
-					OccurrenceCount = StrOccurrenceCount(TextHTML, Parameter);
-					For ParameterNumber = 1 To OccurrenceCount Do
-						If ParameterNumber = 1 Then
-							Presentation = "{" + String(ParameterEnumeration) + PresentationCase + "%deleteSymbols%" + "}";
-							ID = "infoParameter" + String(ParameterEnumeration) + ParameterNumber;
-						Else
-							Presentation = "{" + String(ParameterEnumeration) + ParameterNumber + PresentationCase + "}";
-							ID = "infoParameter" + String(ParameterEnumeration) + ParameterNumber;
-						EndIf;
-						
-						FirstOccurence = Find(TextHTML, Parameter);
-						
-						TextHTML = Left(TextHTML, FirstOccurence - 1) + Presentation + Mid(TextHTML, FirstOccurence + StrLen(Parameter));
-						
-						NewRow = ReceivedObject.InfobaseParameters.Add();
-						NewRow.Presentation = StrReplace(Presentation, "%deleteSymbols%", "");
-						NewRow.ID = ID;
-						NewRow.Parameter = ParameterEnumeration;
-						
-					EndDo;
-					TextHTML = StrReplace(TextHTML, "%deleteSymbols%", "");
-				EndDo;
-			EndDo;
-			
-			AdditionalAttributesOwners = New Array;
-			AdditionalAttributesOwners.Add(Documents.CustomerOrder.EmptyRef());
-			AdditionalAttributesOwners.Add(Documents.InvoiceForPayment.EmptyRef());
-			AdditionalAttributesOwners.Add(Catalogs.CounterpartyContracts.EmptyRef());
-			AdditionalAttributesOwners.Add(Catalogs.Counterparties.EmptyRef());
-			
-			For Each Item IN AdditionalAttributesOwners Do
-				AdditionalAttributes = PropertiesManagement.GetListOfProperties(Item, True, False);
-				
-				For Each Attribute IN AdditionalAttributes Do
-					Parameter = "{" + String(Attribute.Description) + "}";
-					OccurrenceCount = StrOccurrenceCount(TextHTML, Parameter);
-					For ParameterNumber = 1 To OccurrenceCount Do
-						If ParameterNumber = 1 Then
-							Presentation = "{" + String(Attribute.Description) + "}";
-						Else
-							Presentation = "{" + String(Attribute.Description) + ParameterNumber + "}";
-						EndIf;
-						
-						ParameterNamePresentation = StrReplace(Attribute.Description, " ", "");
-						ParameterNamePresentation = StrReplace(ParameterNamePresentation, "(", "");
-						ParameterNamePresentation = StrReplace(ParameterNamePresentation, ")", "");
-						ID = "additionalParameter" + ParameterNamePresentation + ParameterNumber;
-						
-						FirstOccurence = Find(TextHTML, Parameter);
-						
-						TextHTML = Left(TextHTML, FirstOccurence - 1) + Presentation + Mid(TextHTML, FirstOccurence + StrLen(Parameter));
-						
-						NewRow = ReceivedObject.InfobaseParameters.Add();
-						NewRow.Presentation = StrReplace(Presentation, "%deleteSymbols%", "");
-						NewRow.ID = ID;
-						NewRow.Parameter = Attribute;
-						
-					EndDo;
-					TextHTML = StrReplace(TextHTML, "%deleteSymbols%", "");
-				EndDo;
-			EndDo;
-			
-			FormattedDocumentStructure = New Structure;
-			FormattedDocumentStructure.Insert("HTMLText", TextHTML);
-			FormattedDocumentStructure.Insert("Attachments", New Structure);
-			
-			ReceivedObject.Form = New ValueStorage(FormattedDocumentStructure);
-			ReceivedObject.Write();
-			
-		EndDo;
-		
-		ParametersStructure.DataProcessorCompleted = True;
-		CommitTransaction();
-		
-	Except
-		
-		ParametersStructure.DataProcessorCompleted = False;
-		RollbackTransaction();
-		
-	EndTry;
 	
 EndProcedure
 
