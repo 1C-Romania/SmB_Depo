@@ -49,7 +49,7 @@ EndProcedure // CalculateAmountTotal()
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Period = Parameters.Period;
-	Company = Parameters.Company;
+	SubsidiaryCompany = Parameters.SubsidiaryCompany;
 	Employee = Parameters.Employee;
 	DocumentCurrency = Parameters.DocumentCurrency;
 	Ref = Parameters.Refs;

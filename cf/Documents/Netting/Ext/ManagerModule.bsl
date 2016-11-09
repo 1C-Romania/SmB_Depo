@@ -2748,7 +2748,7 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 						MessageText = StrReplace(MessageText, "%UnpaidAdvancesAmount%", String(QueryResultSelection.AmountOfOutstandingAdvances));
 					EndIf;
 				EndIf;
-				MessageText = StrReplace(MessageText, "%PresentationCounterparty%", SmallBusinessServer.PresentationOfCounterparty(QueryResultSelection.CounterpartyPresentation, QueryResultSelection.ContractPresentation, QueryResultSelection.DocumentPresentation, QueryResultSelection.OrderPresentation, QueryResultSelection.CalculationsTypesPresentation));
+				MessageText = StrReplace(MessageText, "%CounterpartyPresentation%", SmallBusinessServer.PresentationOfCounterparty(QueryResultSelection.CounterpartyPresentation, QueryResultSelection.ContractPresentation, QueryResultSelection.DocumentPresentation, QueryResultSelection.OrderPresentation, QueryResultSelection.CalculationsTypesPresentation));
 				MessageText = StrReplace(MessageText, "%CurrencyPresentation%", QueryResultSelection.CurrencyPresentation);
 				MessageText = StrReplace(MessageText, "%SumCurOnWrite%", String(QueryResultSelection.SumCurOnWrite));
 				MessageText = StrReplace(MessageText, "%RemainingDebtAmount%", String(QueryResultSelection.DebtBalanceAmount));
@@ -2782,14 +2782,14 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 				If QueryResultSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
 					MessageText = NStr("en='%CounterpartyPresentation% - debt to vendor balance by settlements document is less than written amount.
 		|Written-off amount: %SumCurOnWrite% %CurrencyPresentation%.
-		|Debt before the balance provider:% SummaOstatkaDebt% ValûtaPredstavlenie%.';ru='%ПредставлениеКонтрагента% - остаток задолженности перед поставщиком по документу расчетов меньше списываемой суммы.
+		|Debt before the balance provider:%RemainingDebtAmount% CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - остаток задолженности перед поставщиком по документу расчетов меньше списываемой суммы.
 		|Списываемая сумма: %СуммаВалПриЗаписи% %ВалютаПредставление%.
 		|Остаток задолженности перед поставщиком: %СуммаОстаткаЗадолженности% %ВалютаПредставление%.'"
 					);
 				EndIf;
 				If QueryResultSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
 					If QueryResultSelection.AmountOfOutstandingAdvances = 0 Then
-						MessageText = NStr("en=""%PresentationOfCounterparty% - perhaps the vendor didn't get the advances or they have been completely set off in the trade documents ."";ru='%ПредставлениеКонтрагента% - возможно, авансов поставщику не было или они уже полностью зачтены в товарных документах.'"
+						MessageText = NStr("en=""%CounterpartyPresentation% - perhaps the vendor didn't get the advances or they have been completely set off in the trade documents ."";ru='%ПредставлениеКонтрагента% - возможно, авансов поставщику не было или они уже полностью зачтены в товарных документах.'"
 						);
 					Else
 						MessageText = NStr("en='%CounterpartyPresentation% - advances issued to vendors are already partially set off in commercial documents.
@@ -2799,7 +2799,7 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 						MessageText = StrReplace(MessageText, "%UnpaidAdvancesAmount%", String(QueryResultSelection.AmountOfOutstandingAdvances));
 					EndIf;
 				EndIf;
-				MessageText = StrReplace(MessageText, "%PresentationCounterparty%", SmallBusinessServer.PresentationOfCounterparty(QueryResultSelection.CounterpartyPresentation, QueryResultSelection.ContractPresentation, QueryResultSelection.DocumentPresentation, QueryResultSelection.OrderPresentation, QueryResultSelection.CalculationsTypesPresentation));
+				MessageText = StrReplace(MessageText, "%CounterpartyPresentation%", SmallBusinessServer.PresentationOfCounterparty(QueryResultSelection.CounterpartyPresentation, QueryResultSelection.ContractPresentation, QueryResultSelection.DocumentPresentation, QueryResultSelection.OrderPresentation, QueryResultSelection.CalculationsTypesPresentation));
 				MessageText = StrReplace(MessageText, "%CurrencyPresentation%", QueryResultSelection.CurrencyPresentation);
 				MessageText = StrReplace(MessageText, "%SumCurOnWrite%", String(QueryResultSelection.SumCurOnWrite));
 				MessageText = StrReplace(MessageText, "%RemainingDebtAmount%", String(QueryResultSelection.DebtBalanceAmount));

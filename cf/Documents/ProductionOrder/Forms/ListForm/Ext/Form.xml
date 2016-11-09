@@ -533,13 +533,19 @@
 					<ContextMenu name="CloseContextMenu" id="43"/>
 					<ExtendedTooltip name="ClosedExtendedTooltip" id="86"/>
 				</CheckBoxField>
-				<LabelField name="" id="36">
-					<DataPath>List</DataPath>
-					<ContextMenu name="ContextMenu" id="37"/>
-					<ExtendedTooltip name="ExtendedTooltip" id="98"/>
+				<LabelField name="BasisDocument" id="36">
+					<DataPath>List.BasisDocument</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Basis document</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="BasisDocumentContextMenu" id="37"/>
+					<ExtendedTooltip name="BasisDocumentExtendedTooltip" id="98"/>
 				</LabelField>
 				<LabelField name="CustomerOrder" id="12">
-					<DataPath>1/30</DataPath>
+					<DataPath>List.CustomerOrder</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>

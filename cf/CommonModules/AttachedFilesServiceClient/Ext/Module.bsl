@@ -1495,7 +1495,7 @@ Procedure SaveFileAsExtensionRequested(FileOperationsExtensionConnected, Additio
 		FileChoice = New FileDialog(FileDialogMode.Save);
 		FileChoice.Multiselect = False;
 		FileChoice.FullFileName = FileData.FileName;
-		FileChoice.Extension = FileData.Extension;
+		FileChoice.DefaultExt = FileData.Extension;
 		FileChoice.Filter = StringFunctionsClientServer.PlaceParametersIntoString(
 			NStr("en='All files (*.%1)|*.%1';ru='Все файлы (*.%1)|*.%1'"), FileData.Extension);
 		

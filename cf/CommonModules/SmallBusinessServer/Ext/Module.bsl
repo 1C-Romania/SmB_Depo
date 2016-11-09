@@ -11161,7 +11161,7 @@ Procedure ConfigureUserDesktop(SettingsModified = False) Export
 		Return;
 	EndIf;
 	
-	StartPageSettings = SystemSettingsStorage.Load("General/StartPageSettings");
+	StartPageSettings = CommonUse.SystemSettingsStorageImport("Common/StartPageSettings","");
 	
 	If StartPageSettings = Undefined Then
 		
@@ -11193,7 +11193,7 @@ Procedure ConfigureUserDesktop(SettingsModified = False) Export
 		EndIf;
 		
 		StartPageSettings.SetForms(FormsContent);
-		SystemSettingsStorage.Save("General/StartPageSettings",, StartPageSettings);
+		CommonUse.SystemSettingsStorageSave("Common/StartPageSettings","", StartPageSettings);
 		
 		SettingsModified = True;
 	EndIf;

@@ -1432,7 +1432,7 @@ Procedure Pick(Command)
 	
 	SelectionParameters = New Structure(
 		"AddressPaymentDetailsInStorage,
-		|Company,
+		|SubsidiaryCompany,
 		|Date,
 		|Counterparty,
 		|Ref,

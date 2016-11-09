@@ -4,7 +4,7 @@
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Period = Parameters.Date;
-	Counterparty = Parameters.Counterparty;
+	SubsidiaryCompany = Parameters.SubsidiaryCompany;
 	Counterparty = Parameters.Counterparty;
 	CashCurrency = Parameters.CashCurrency;
 	Ref = Parameters.Ref;
@@ -583,7 +583,7 @@ Procedure FillDebts()
 	|ORDER BY
 	|	DocumentDate";
 	
-	Query.SetParameter("Company", Counterparty);
+	Query.SetParameter("Company", SubsidiaryCompany);
 	Query.SetParameter("Counterparty", Counterparty);
 	Query.SetParameter("Period", Period);
 	Query.SetParameter("Currency", CashCurrency);

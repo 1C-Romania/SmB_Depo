@@ -903,13 +903,13 @@ Procedure AdvancesPick(Command)
 	
 	SelectionParameters = New Structure(
 		"AddressAdvancesPaidInStorage,
-		|Company,
+		|SubsidiaryCompany,
 		|Period,
 		|Employee,
 		|DocumentCurrency,
 		|Refs",
 		AddressAdvancesPaidInStorage,
-		Counterparty,
+		SubsidiaryCompany,
 		Object.Date,
 		Object.Employee,
 		Object.DocumentCurrency,
