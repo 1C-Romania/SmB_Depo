@@ -71,7 +71,7 @@ EndProcedure // CalculateAmountsTotal()
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Counterparty = Parameters.Counterparty;
-	Counterparty = Parameters.Counterparty;
+	SubsidiaryCompany = Parameters.SubsidiaryCompany;
 	Contract = Parameters.Contract;
 	ExchangeRate = Parameters.ExchangeRate;
 	Multiplicity = Parameters.Multiplicity;

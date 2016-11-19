@@ -135,7 +135,7 @@ EndProcedure // CalculateAmountsTotal()
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Counterparty = Parameters.Counterparty;
-	Counterparty = Parameters.Counterparty;
+	SubsidiaryCompany = Parameters.SubsidiaryCompany;
 	Ref = Parameters.Ref;
 	Date = Parameters.Date;
 	CurrencyTransactionsAccounting = Constants.FunctionalCurrencyTransactionsAccounting.Get();
@@ -159,10 +159,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		|Document,
 		|Order,
 		|AccountingAmount,
-		|Rate,
-		|Repetition,
+		|ExchangeRate,
+		|Multiplicity,
 		|SettlementsAmount,
-		|AdvanceFeature.";
+		|AdvanceFlag";
 	
 	ListFilteredAdvancesAndDebts.Load(GetFromTempStorage(AddressListFilteredAdvancesAndDebtsInStorage));
 	

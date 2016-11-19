@@ -135,9 +135,9 @@ Procedure SetVisibleAndEnabled()
 		Items.SettlementsWithDebitor.Visible = True;
 		Items.PaymentsToCreditor.Visible = True;
 		Items.Correspondence.Visible = False;
-		Items.Counterparty.Visible = True;
+		Items.CounterpartySource.Visible = True;
 		Items.CounterpartyRecipient.Visible = True;
-		Items.Counterparty.Title = "Customer";
+		Items.CounterpartySource.Title = "Customer";
 		Items.CounterpartyRecipient.Title = "Vendor";
 		Items.Pages.PagesRepresentation = FormPagesRepresentation.TabsOnTop;
 		
@@ -169,9 +169,9 @@ Procedure SetVisibleAndEnabled()
 		Items.SettlementsWithDebitor.Visible = True;
 		Items.PaymentsToCreditor.Visible = False;
 		Items.Correspondence.Visible = False;
-		Items.Counterparty.Visible = True;
+		Items.CounterpartySource.Visible = True;
 		Items.CounterpartyRecipient.Visible = True;
-		Items.Counterparty.Title = "Customer";
+		Items.CounterpartySource.Title = "Customer";
 		Items.CounterpartyRecipient.Title = "Customer-recipient";
 		Items.Pages.PagesRepresentation = FormPagesRepresentation.TabsOnTop;
 		
@@ -202,9 +202,9 @@ Procedure SetVisibleAndEnabled()
 		Items.SettlementsWithDebitor.Visible = False;
 		Items.PaymentsToCreditor.Visible = True;
 		Items.Correspondence.Visible = False;
-		Items.Counterparty.Visible = True;
+		Items.CounterpartySource.Visible = True;
 		Items.CounterpartyRecipient.Visible = True;
-		Items.Counterparty.Title = "Vendor";
+		Items.CounterpartySource.Title = "Vendor";
 		Items.CounterpartyRecipient.Title = "Vendor-recipient";
 		Items.Pages.PagesRepresentation = FormPagesRepresentation.TabsOnTop;
 		
@@ -235,9 +235,9 @@ Procedure SetVisibleAndEnabled()
 		Items.SettlementsWithDebitor.Visible = True;
 		Items.PaymentsToCreditor.Visible = False;
 		Items.Correspondence.Visible = True;
-		Items.Counterparty.Visible = True;
+		Items.CounterpartySource.Visible = True;
 		Items.CounterpartyRecipient.Visible = False;
-		Items.Counterparty.Title = "Customer";
+		Items.CounterpartySource.Title = "Customer";
 		
 		Items.DebitorContract.Visible = Object.CounterpartySource.DoOperationsByContracts;
 		Items.DebitorDocument.Visible = Object.CounterpartySource.DoOperationsByDocuments;
@@ -252,7 +252,7 @@ Procedure SetVisibleAndEnabled()
 		Items.SettlementsWithDebitor.Visible = False;
 		Items.PaymentsToCreditor.Visible = True;
 		Items.Correspondence.Visible = True;
-		Items.Counterparty.Visible = False;
+		Items.CounterpartySource.Visible = False;
 		Items.CounterpartyRecipient.Visible = True;
 		Items.CounterpartyRecipient.Title = "Vendor";
 		

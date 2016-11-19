@@ -150,11 +150,11 @@
 							<ContextMenu name="CorrespondenceContextMenu" id="186"/>
 							<ExtendedTooltip name="CorrespondenceExtendedTooltip" id="212"/>
 						</InputField>
-						<InputField name="Counterparty" id="108">
+						<InputField name="CounterpartySource" id="108">
 							<DataPath>Object.CounterpartySource</DataPath>
 							<Wrap>false</Wrap>
-							<ContextMenu name="CounterpartyContextMenu" id="109"/>
-							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="215"/>
+							<ContextMenu name="CounterpartySourceContextMenu" id="109"/>
+							<ExtendedTooltip name="CounterpartySourceExtendedTooltip" id="215"/>
 							<Events>
 								<Event name="OnChange">CounterpartyOnChange</Event>
 							</Events>

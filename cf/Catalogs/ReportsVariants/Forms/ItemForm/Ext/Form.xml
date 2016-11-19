@@ -109,8 +109,8 @@
 			<ContextMenu name="DescriptionContextMenu" id="2"/>
 			<ExtendedTooltip name="DescriptionExtendedTooltip" id="161"/>
 		</InputField>
-		<InputField name="Description" id="3">
-			<DataPath>Object.Description</DataPath>
+		<InputField name="Definition" id="3">
+			<DataPath>Object.Definition</DataPath>
 			<TitleLocation>Left</TitleLocation>
 			<Height>2</Height>
 			<HorizontalStretch>true</HorizontalStretch>
@@ -121,8 +121,8 @@
 			<SpinButton>false</SpinButton>
 			<OpenButton>false</OpenButton>
 			<ChoiceListButton>false</ChoiceListButton>
-			<ContextMenu name="DescriptionContextMenu" id="4"/>
-			<ExtendedTooltip name="DescriptionExtendedTooltip" id="162"/>
+			<ContextMenu name="DefinitionContextMenu" id="4"/>
+			<ExtendedTooltip name="DefinitionExtendedTooltip" id="162"/>
 			<Events>
 				<Event name="StartChoice">DescriptionStartChoice</Event>
 			</Events>
