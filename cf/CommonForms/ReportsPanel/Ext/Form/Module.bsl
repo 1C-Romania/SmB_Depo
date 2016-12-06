@@ -1084,7 +1084,21 @@ Procedure FindReportsVariantsForWithdrawal(FillingParameters)
 	ResultTable = Query.Execute().Unload();
 	ResultTable.Columns.Add("DisplayedTogetherWithMain", New TypeDescription("Boolean"));
 	ResultTable.Columns.Add("SubordinateQuantity", New TypeDescription("Number"));
-	
+	//Ryabko Vitaly 2016-12-06 Task Задача №360:Локализация вариантов отчетов (	
+	UserLanguge = InfoBaseUsers.CurrentUser().Language;
+	If NOT UserLanguge = Undefined Then
+		LangKey = InfoBaseUsers.CurrentUser().Language.LanguageCode;
+		If Not LangKey = "en" Then
+			For Each RepVar In ResultTable Do
+				If RepVar.Ref.MultilingualValuesReports.Count() > 0 Then
+					FindLoc = RepVar.Ref.MultilingualValuesReports.Find(LangKey,"LanguageKey");
+					RepVar.Description = FindLoc.Description;
+					RepVar.Definition = FindLoc.Definition;
+				EndIf			
+			EndDo;	
+		EndIf;		
+	EndIf; 
+	//Ryabko Vitaly 2016-12-06 Task Задача №360:Локализация вариантов отчетов )
 	If UseBacklight Then
 		For Each KeyAndValue In SearchResult.VariantsConnectedToSubsystems Do
 			VariantRef = KeyAndValue.Key;
