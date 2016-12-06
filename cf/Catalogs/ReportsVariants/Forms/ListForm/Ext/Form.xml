@@ -562,6 +562,16 @@
 									<ChildItems>
 										<LabelField name="Description" id="4">
 											<DataPath>List.Description</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Description</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование</v8:content>
+												</v8:item>
+											</Title>
 											<Width>40</Width>
 											<ContextMenu name="DescriptionContextMenu" id="5"/>
 											<ExtendedTooltip name="DescriptionExtendedTooltip" id="124"/>
@@ -636,11 +646,21 @@
 									<Group>Horizontal</Group>
 									<ExtendedTooltip name="SecondRowColumnsExtendedTooltip" id="142"/>
 									<ChildItems>
-										<LabelField name="Description" id="143">
-											<DataPath>List.Description</DataPath>
+										<LabelField name="Definition" id="143">
+											<DataPath>List.Definition</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Definition</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Описание</v8:content>
+												</v8:item>
+											</Title>
 											<AutoCellHeight>true</AutoCellHeight>
-											<ContextMenu name="DescriptionContextMenu" id="144"/>
-											<ExtendedTooltip name="DescriptionExtendedTooltip" id="145"/>
+											<ContextMenu name="DefinitionContextMenu" id="144"/>
+											<ExtendedTooltip name="DefinitionExtendedTooltip" id="145"/>
 										</LabelField>
 									</ChildItems>
 								</ColumnGroup>
@@ -749,38 +769,46 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>SELECT ALLOWED
-	Variants.Ref,
-	Variants.DataVersion,
-	Variants.DeletionMark,
-	Variants.User,
-	Not Variants.User AS Predefined,
-	Variants.Description,
-	Not Variants.ForAuthorOnly AS AvailableToAllUsers,
-	Variants.Report,
-	Variants.VariantKey,
-	Variants.ReportType,
-	Variants.Author,
+	Variants.Ref AS Ref,
+	Variants.DataVersion AS DataVersion,
+	Variants.DeletionMark AS DeletionMark,
+	Variants.User AS User,
+	NOT Variants.User AS Predefined,
 	CASE
-		WHEN SubString(Variants.ParametersAndFiltersNames, 1, 1) = ""
-			THEN CAST(Predetermined.ParametersAndFiltersNames AS String(1000))
-		ELSE CAST(Variants.ParametersAndFiltersNames AS String(1000))
+		WHEN MultiLang.Description IS NULL
+			THEN CAST(Variants.Description AS STRING(1000))
+		ELSE CAST(MultiLang.Description AS STRING(1000))
+	END AS Description,
+	NOT Variants.ForAuthorOnly AS AvailableToAllUsers,
+	Variants.Report AS Report,
+	Variants.VariantKey AS VariantKey,
+	Variants.ReportType AS ReportType,
+	Variants.Author AS Author,
+	CASE
+		WHEN SUBSTRING(Variants.ParametersAndFiltersNames, 1, 1) = ""
+			THEN CAST(Predetermined.ParametersAndFiltersNames AS STRING(1000))
+		ELSE CAST(Variants.ParametersAndFiltersNames AS STRING(1000))
 	END AS ParametersAndFiltersNames,
 	CASE
-		WHEN SubString(Variants.FieldNames, 1, 1) = ""
-			THEN CAST(Predetermined.FieldNames AS String(1000))
-		ELSE CAST(Variants.FieldNames AS String(1000))
+		WHEN SUBSTRING(Variants.FieldNames, 1, 1) = ""
+			THEN CAST(Predetermined.FieldNames AS STRING(1000))
+		ELSE CAST(Variants.FieldNames AS STRING(1000))
 	END AS FieldNames,
 	CASE
-		WHEN SubString(Variants.Description, 1, 1) = ""
-			THEN CAST(Predetermined.Description AS String(1000))
-		ELSE CAST(Variants.Description AS String(1000))
+		WHEN MultiLang.Definition IS NULL
+			THEN CASE
+					WHEN SUBSTRING(Variants.Definition, 1, 1) = ""
+						THEN CAST(Predetermined.Definition AS STRING(1000))
+					ELSE CAST(Variants.Definition AS STRING(1000))
+				END
+		ELSE CAST(MultiLang.Definition AS STRING(1000))
 	END AS Definition,
 	CASE
 		WHEN Variants.ReportType = &amp;TypeInternal
 			THEN Variants.Report.Name
 		WHEN Variants.ReportType = &amp;TypeOptional
 			THEN Variants.Report
-		ELSE SubString(CAST(Variants.Report AS String(150)), 14, 137)
+		ELSE SUBSTRING(CAST(Variants.Report AS STRING(150)), 14, 137)
 	END AS ReportName,
 	CASE
 		WHEN Variants.DeletionMark = TRUE
@@ -790,15 +818,24 @@
 		ELSE 3
 	END AS PictureIndex
 FROM
-	Catalog.ReportsVariants AS Variants
-		LEFT JOIN Catalog.PredefinedReportsVariants AS Predetermined
-		ON Variants.PredefinedVariant = Predetermined.Ref
+	(SELECT
+		ReportsVariantsMultilingualValuesReports.Ref AS Ref,
+		ReportsVariantsMultilingualValuesReports.Description AS Description,
+		ReportsVariantsMultilingualValuesReports.Definition AS Definition
+	FROM
+		Catalog.ReportsVariants.MultilingualValuesReports AS ReportsVariantsMultilingualValuesReports
+	WHERE
+		ReportsVariantsMultilingualValuesReports.LanguageKey = &amp;LangKey) AS MultiLang
+		FULL JOIN Catalog.ReportsVariants AS Variants
+			LEFT JOIN Catalog.PredefinedReportsVariants AS Predetermined
+			ON Variants.PredefinedVariant = Predetermined.Ref
+		ON MultiLang.Ref = Variants.Ref
 WHERE
 	CASE
-			WHEN &amp;VariantsOfUser IS NULL 
-				THEN Not Variants.PredefinedVariant IN (&amp;DisabledApplicationOptions)
+			WHEN &amp;VariantsOfUser IS NULL
+				THEN NOT Variants.PredefinedVariant IN (&amp;DisabledApplicationOptions)
 			ELSE Variants.Ref IN (&amp;VariantsOfUser)
-			END</QueryText>
+		END</QueryText>
 				<MainTable>Catalog.ReportsVariants</MainTable>
 				<ListSettings>
 					<dcsset:filter>

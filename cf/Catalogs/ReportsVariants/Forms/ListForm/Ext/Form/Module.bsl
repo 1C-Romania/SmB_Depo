@@ -116,7 +116,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	List.Parameters.SetParameterValue("TypeInternal",     Enums.ReportsTypes.Internal);
 	List.Parameters.SetParameterValue("TypeOptional", Enums.ReportsTypes.Additional);
 	List.Parameters.SetParameterValue("DisabledApplicationOptions", ReportsVariantsReUse.DisabledApplicationOptions());
-	
+	//Ryabko Vitaly 2016-12-06 Task Задача №360:Локализация вариантов отчетов (
+	UserLanguge = InfoBaseUsers.CurrentUser().Language;
+	If NOT UserLanguge = Undefined Then
+		List.Parameters.SetParameterValue("LangKey", InfoBaseUsers.CurrentUser().Language.LanguageCode);
+	EndIf;
+	//Ryabko Vitaly 2016-12-06 Task Задача №360:Локализация вариантов отчетов )
 	CurrentItem = Items.List;
 	
 	// Custom selection by deletion mark.

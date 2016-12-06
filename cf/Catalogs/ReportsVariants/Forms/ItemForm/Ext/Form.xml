@@ -536,6 +536,66 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
+		<Table name="MultilingualValuesReports" id="224">
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Object.MultilingualValuesReports</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="MultilingualValuesReportsContextMenu" id="225"/>
+			<AutoCommandBar name="MultilingualValuesReportsCommandBar" id="226"/>
+			<ExtendedTooltip name="MultilingualValuesReportsExtendedTooltip" id="227"/>
+			<SearchStringAddition name="MultilingualValuesReportsSearchString" id="228">
+				<AdditionSource>
+					<Item>MultilingualValuesReports</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="MultilingualValuesReportsSearchStringContextMenu" id="229"/>
+				<ExtendedTooltip name="MultilingualValuesReportsSearchStringExtendedTooltip" id="230"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="MultilingualValuesReportsViewStatus" id="231">
+				<AdditionSource>
+					<Item>MultilingualValuesReports</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="MultilingualValuesReportsViewStatusContextMenu" id="232"/>
+				<ExtendedTooltip name="MultilingualValuesReportsViewStatusExtendedTooltip" id="233"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="MultilingualValuesReportsSearchControl" id="234">
+				<AdditionSource>
+					<Item>MultilingualValuesReports</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="MultilingualValuesReportsSearchControlContextMenu" id="235"/>
+				<ExtendedTooltip name="MultilingualValuesReportsSearchControlExtendedTooltip" id="236"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="MultilingualValuesReportsLineNumber" id="237">
+					<DataPath>Object.MultilingualValuesReports.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="MultilingualValuesReportsLineNumberContextMenu" id="238"/>
+					<ExtendedTooltip name="MultilingualValuesReportsLineNumberExtendedTooltip" id="239"/>
+				</LabelField>
+				<InputField name="MultilingualValuesReportsLanguageKey" id="240">
+					<DataPath>Object.MultilingualValuesReports.LanguageKey</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="MultilingualValuesReportsLanguageKeyContextMenu" id="241"/>
+					<ExtendedTooltip name="MultilingualValuesReportsLanguageKeyExtendedTooltip" id="242"/>
+				</InputField>
+				<InputField name="MultilingualValuesReportsDescription" id="243">
+					<DataPath>Object.MultilingualValuesReports.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="MultilingualValuesReportsDescriptionContextMenu" id="244"/>
+					<ExtendedTooltip name="MultilingualValuesReportsDescriptionExtendedTooltip" id="245"/>
+				</InputField>
+				<InputField name="MultilingualValuesReportsDefinition" id="246">
+					<DataPath>Object.MultilingualValuesReports.Definition</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="MultilingualValuesReportsDefinitionContextMenu" id="247"/>
+					<ExtendedTooltip name="MultilingualValuesReportsDefinitionExtendedTooltip" id="248"/>
+				</InputField>
+			</ChildItems>
+		</Table>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Object" id="1">
