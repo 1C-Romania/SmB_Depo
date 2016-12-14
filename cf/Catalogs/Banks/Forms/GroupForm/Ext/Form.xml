@@ -22,11 +22,13 @@
 			</Button>
 			<Button name="Change" id="8">
 				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
 				<CommandName>Form.Command.Change</CommandName>
 				<ExtendedTooltip name="ChangeExtendedTooltip" id="12"/>
 			</Button>
 			<Button name="UpdateFromClassifier" id="9">
 				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
 				<CommandName>Form.Command.UpdateFromClassifier</CommandName>
 				<ExtendedTooltip name="UpdateFromClassifierExtendedTooltip" id="13"/>
 			</Button>
@@ -49,15 +51,21 @@
 		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="CodeDescriptionGroup" id="7">
+		<InputField name="Description" id="3">
+			<DataPath>Object.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="DescriptionContextMenu" id="4"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="16"/>
+		</InputField>
+		<UsualGroup name="ParentCode" id="7">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Group: description and code</v8:content>
+					<v8:content>Group: parent and code</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа: наименование и код</v8:content>
+					<v8:content>Группа: родитель и код</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -73,15 +81,26 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="CodeDescriptionGroupExtendedTooltip" id="15"/>
+			<ExtendedTooltip name="ParentCodeExtendedTooltip" id="15"/>
 			<ChildItems>
-				<InputField name="Description" id="3">
-					<DataPath>Object.Description</DataPath>
+				<InputField name="Parent" id="5">
+					<DataPath>Object.Parent</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа</v8:content>
+						</v8:item>
+					</Title>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>31</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="DescriptionContextMenu" id="4"/>
-					<ExtendedTooltip name="DescriptionExtendedTooltip" id="16"/>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>26</MaxWidth>
+					<OpenButton>false</OpenButton>
+					<ContextMenu name="ParentContextMenu" id="6"/>
+					<ExtendedTooltip name="ParentExtendedTooltip" id="14"/>
 				</InputField>
 				<InputField name="Code" id="1">
 					<DataPath>Object.Code</DataPath>
@@ -92,7 +111,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>код</v8:content>
+							<v8:content>Код</v8:content>
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
@@ -101,25 +120,6 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="Parent" id="5">
-			<DataPath>Object.Parent</DataPath>
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Group</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группировка</v8:content>
-				</v8:item>
-			</Title>
-			<EditMode>EnterOnInput</EditMode>
-			<Width>47</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<OpenButton>false</OpenButton>
-			<ContextMenu name="ParentContextMenu" id="6"/>
-			<ExtendedTooltip name="ParentExtendedTooltip" id="14"/>
-		</InputField>
 		<LabelField name="ManualEditText" id="10">
 			<DataPath>ManualEditText</DataPath>
 			<TitleLocation>None</TitleLocation>

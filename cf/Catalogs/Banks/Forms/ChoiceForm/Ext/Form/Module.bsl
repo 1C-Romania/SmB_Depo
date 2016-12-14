@@ -1,21 +1,37 @@
-﻿
-///////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM COMMAND HANDLERS
+﻿#Region FormEventsHandlers
+
+&AtServer
+Procedure OnCreateAtServer(Cancel, StandardProcessing)
+	
+	If Parameters.Property("ListOfFoundBanks") Then
+		
+		SmallBusinessClientServer.SetListFilterItem(List, "Ref", Parameters.ListOfFoundBanks, True,DataCompositionComparisonType.InList);
+		Items.List.ChoiceFoldersAndItems = FoldersAndItemsUse.Items;
+		Items.List.Representation = TableRepresentation.List;
+		
+	EndIf;
+	
+EndProcedure // OnCreateAtServer()
 
 &AtClient
-Procedure PickFromClassifier(Command)
+Procedure NotificationProcessing(EventName, Parameter, Source)
 	
-	FormParameters = New Structure("CloseOnChoice, Multiselect", True, True);
-	OpenForm("Catalog.RFBankClassifier.ChoiceForm", FormParameters, ThisForm);
+	If EventName = "RefreshAfterAdd" Then
+		Items.List.Refresh();
+	EndIf;
+	
+EndProcedure // NotificationProcessing()
 
-EndProcedure
+#EndRegion
 
-///////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM ITEMS EVENTS HANDLERS
+#Region FormItemsEventsHandlers
 
 &AtClient
 Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
+	//--> 15.12.2016 Switch off while work with classifier is not ready
+	Return;
+	//<--
 	Cancel = True;
 	
 	QuestionText = NStr("en='There is an option to select bank from the classifier.
@@ -30,34 +46,19 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
 EndProcedure
 
-///////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+#EndRegion
 
-// Procedure form event handler OnCreateAtServer
-//
-&AtServer
-Procedure OnCreateAtServer(Cancel, StandardProcessing)
-	
-	If Parameters.Property("ListOfFoundBanks") Then
-		
-		SmallBusinessClientServer.SetListFilterItem(List, "Ref", Parameters.ListOfFoundBanks, True,DataCompositionComparisonType.InList);
-		Items.List.ChoiceFoldersAndItems = FoldersAndItemsUse.Items;
-		Items.List.Representation = TableRepresentation.List;
-		
-	EndIf;
-	
-EndProcedure // OnCreateAtServer()
+#Region FormCommandsHandlers
 
-// Form event handler procedure NotificationProcessing
-//
 &AtClient
-Procedure NotificationProcessing(EventName, Parameter, Source)
+Procedure PickFromClassifier(Command)
 	
-	If EventName = "RefreshAfterAdd" Then
-		Items.List.Refresh();
-	EndIf;
-	
-EndProcedure // NotificationProcessing()
+	FormParameters = New Structure("CloseOnChoice, Multiselect", True, True);
+	OpenForm("Catalog.RFBankClassifier.ChoiceForm", FormParameters, ThisForm);
+
+EndProcedure
+
+#EndRegion
 
 #Region InteractiveActionResultHandlers
 

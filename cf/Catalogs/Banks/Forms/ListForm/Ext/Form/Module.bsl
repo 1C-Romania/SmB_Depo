@@ -1,7 +1,96 @@
-﻿&AtClient
+﻿
+#Region FormVariables
+	
+&AtClient
 Var IdleHandlerParameters;
+
 &AtClient
 Var LongOperationForm;
+
+#EndRegion
+
+#Region FormEventsHandlers
+
+&AtServer
+Procedure OnCreateAtServer(Cancel, StandardProcessing)
+	
+	Query = New Query("SELECT TOP 1 * FROM Catalog.Banks AS Banks WHERE Banks.ManualChanging <> 2");
+	QueryExecutionResult = Query.Execute();
+	
+	BanksHaveBeenUpdatedFromClassifier = Not QueryExecutionResult.IsEmpty();
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormItemsEventsHandlers
+
+&AtClient
+Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
+	
+	//--> 15.12.2016 Switch off while work with classifier is not ready
+	Return;
+	//<--
+	Cancel = True;
+	
+	QuestionText = NStr("en='There is an option to select bank from the classifier.
+		|Select?';ru='Есть возможность подобрать банк из классификатора.
+		|Подобрать?'");
+	
+	AdditionalParameters = New Structure;
+	AdditionalParameters.Insert("IsFolder", Group);
+	NotifyDescription = New NotifyDescription("DetermineBankPickNeedFromClassifier", ThisObject, AdditionalParameters);
+	
+	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormCommandsHandlers
+
+&AtClient
+Procedure PickFromClassifier(Command)
+	
+	FormParameters = New Structure("CloseOnChoice, Multiselect", False, True);
+	OpenForm("Catalog.RFBankClassifier.ChoiceForm", FormParameters, ThisForm);
+
+EndProcedure
+
+&AtClient
+Procedure UpdateFromClassifier(Command)
+	
+	If Not BanksHaveBeenUpdatedFromClassifier Then
+		
+		QuestionText = NStr("en='ATTENTION!
+		|All banks will be updated from the classifier. If bank data was changed manually, such changes could be lost.
+		|To disable automatic update for the bank in future, it is necessary to select the manual modification check box (command ""Edit"").
+		|Continue?';ru='ВНИМАНИЕ!
+		|Произойдет обновление всех банков из классификатора. Если данные банков изменялись вручную, то изменения могут быть утеряны.
+		|В дальнейшем, для исключения банка из автоматического обновления, необходимо включить признак ручного изменения (команда ""Изменить"").
+		|Продолжить?'");
+		
+		Response = Undefined;
+
+		
+		ShowQueryBox(New NotifyDescription("UpdateFromClassifierEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo, 0 , DialogReturnCode.No);
+        Return;
+		
+	EndIf;
+	
+	UpdateFromClassifierFragment();
+EndProcedure
+
+&AtClient
+Procedure ChangeSelected(Command)
+	
+	GroupObjectsChangeClient.ChangeSelected(Items.List);
+
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
 
 &AtServerNoContext
 Function JobCompleted(JobID)
@@ -107,55 +196,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 EndProcedure
 
 &AtClient
-Procedure PickFromClassifier(Command)
-	
-	FormParameters = New Structure("CloseOnChoice, Multiselect", False, True);
-	OpenForm("Catalog.RFBankClassifier.ChoiceForm", FormParameters, ThisForm);
-
-EndProcedure
-
-&AtClient
-Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
-	
-	Cancel = True;
-	
-	QuestionText = NStr("en='There is an option to select bank from the classifier.
-		|Select?';ru='Есть возможность подобрать банк из классификатора.
-		|Подобрать?'");
-	
-	AdditionalParameters = New Structure;
-	AdditionalParameters.Insert("IsFolder", Group);
-	NotifyDescription = New NotifyDescription("DetermineBankPickNeedFromClassifier", ThisObject, AdditionalParameters);
-	
-	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
-	
-EndProcedure
-
-&AtClient
-Procedure UpdateFromClassifier(Command)
-	
-	If Not BanksHaveBeenUpdatedFromClassifier Then
-		
-		QuestionText = NStr("en='ATTENTION!
-		|All banks will be updated from the classifier. If bank data was changed manually, such changes could be lost.
-		|To disable automatic update for the bank in future, it is necessary to select the manual modification check box (command ""Edit"").
-		|Continue?';ru='ВНИМАНИЕ!
-		|Произойдет обновление всех банков из классификатора. Если данные банков изменялись вручную, то изменения могут быть утеряны.
-		|В дальнейшем, для исключения банка из автоматического обновления, необходимо включить признак ручного изменения (команда ""Изменить"").
-		|Продолжить?'");
-		
-		Response = Undefined;
-
-		
-		ShowQueryBox(New NotifyDescription("UpdateFromClassifierEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo, 0 , DialogReturnCode.No);
-        Return;
-		
-	EndIf;
-	
-	UpdateFromClassifierFragment();
-EndProcedure
-
-&AtClient
 Procedure UpdateFromClassifierEnd(Result1, AdditionalParameters) Export
     
     Response = Result1;
@@ -194,27 +234,7 @@ Procedure UpdateFromClassifierFragment()
 
 EndProcedure
 
-&AtClient
-Procedure ChangeSelected(Command)
-	
-	GroupObjectsChangeClient.ChangeSelected(Items.List);
-
-EndProcedure
-
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
-
-&AtServer
-// Procedure - OnCreateAtServer event handler.
-//
-Procedure OnCreateAtServer(Cancel, StandardProcessing)
-	
-	Query = New Query("SELECT TOP 1 * FROM Catalog.Banks AS Banks WHERE Banks.ManualChanging <> 2");
-	QueryExecutionResult = Query.Execute();
-	
-	BanksHaveBeenUpdatedFromClassifier = Not QueryExecutionResult.IsEmpty();
-	
-EndProcedure
+#EndRegion
 
 #Region InteractiveActionResultHandlers
 

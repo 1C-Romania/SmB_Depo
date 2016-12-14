@@ -1,5 +1,7 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
+#Region ProgramInterface
+	
 // Function generates query result by
 // banks classifier with filter by Code, correspondent account, name or city
 //
@@ -61,73 +63,6 @@ Function GetQueryResultByClassifier(Code, CorrAccount) Export
 	Return QueryResult;
 	
 EndFunction
-
-// Procedure adds new bank
-// from classifier by Code value or correspondent account.
-//
-// Parameters:
-// Code - String (9) - Bank
-// code CorrAccount - String (20) - Correspondent
-// account of the BanksTable bank account - ValueTable - Banks table
-//
-Procedure AddBanksFromClassifier(Code, CorrAccount, BanksTable)
-	
-	SetPrivilegedMode(True);
-
-	QueryResult = GetQueryResultByClassifier(Code, CorrAccount);
-	
-	BanksClassifierArray = New Array;
-	
-	Selection = QueryResult.Select();
-	While Selection.Next() Do
-		BanksClassifierArray.Add(Selection.Ref);
-	EndDo;
-	
-	If BanksClassifierArray.Count() > 0 Then
-		
-		BanksArray = WorkWithBanksOverridable.BankClassificatorSelection(BanksClassifierArray);
-		
-	Else
-		
-		Return;
-		
-	EndIf;
-	
-	BankFound = False;
-	For Each FoundBank IN BanksArray Do
-		
-		SearchByCode		= Not IsBlankString(Code) AND Not FoundBank.IsFolder;
-		SearchForCorrAccount	= Not IsBlankString(CorrAccount) AND Not FoundBank.IsFolder;
-		
-		If SearchByCode 
-			AND SearchForCorrAccount
-			AND FoundBank.Code = Code 
-			AND FoundBank.CorrAccount = CorrAccount Then
-			
-			BankFound = True;
-			
-		ElsIf SearchByCode 
-			AND Find(FoundBank.Code, Code) > 0 Then
-			
-			BankFound = True;
-			
-		ElsIf SearchForCorrAccount 
-			AND Find(FoundBank.CorrAccount, CorrAccount) Then
-			
-			BankFound = True;
-			
-		EndIf;
-		
-		If BankFound Then
-			
-			NewRow = BanksTable.Add();
-			FillPropertyValues(NewRow, FoundBank);
-			
-		EndIf;
-		
-	EndDo;
-	
-EndProcedure
 
 // Function receives references table for banks by Code or correspondent account.
 //
@@ -210,6 +145,77 @@ Procedure RefreshBanksFromClassifier(ParametersStructure, StorageAddress) Export
 	
 EndProcedure // UpdateBanksFromClassifier()
 
+#EndRegion 
+
+#Region ServiceProceduresAndFunctions
+
+// Procedure adds new bank
+// from classifier by Code value or correspondent account.
+//
+// Parameters:
+// Code - String (9) - Bank
+// code CorrAccount - String (20) - Correspondent
+// account of the BanksTable bank account - ValueTable - Banks table
+//
+Procedure AddBanksFromClassifier(Code, CorrAccount, BanksTable)
+	
+	SetPrivilegedMode(True);
+
+	QueryResult = GetQueryResultByClassifier(Code, CorrAccount);
+	
+	BanksClassifierArray = New Array;
+	
+	Selection = QueryResult.Select();
+	While Selection.Next() Do
+		BanksClassifierArray.Add(Selection.Ref);
+	EndDo;
+	
+	If BanksClassifierArray.Count() > 0 Then
+		
+		BanksArray = WorkWithBanksOverridable.BankClassificatorSelection(BanksClassifierArray);
+		
+	Else
+		
+		Return;
+		
+	EndIf;
+	
+	BankFound = False;
+	For Each FoundBank IN BanksArray Do
+		
+		SearchByCode		= Not IsBlankString(Code) AND Not FoundBank.IsFolder;
+		SearchForCorrAccount	= Not IsBlankString(CorrAccount) AND Not FoundBank.IsFolder;
+		
+		If SearchByCode 
+			AND SearchForCorrAccount
+			AND FoundBank.Code = Code 
+			AND FoundBank.CorrAccount = CorrAccount Then
+			
+			BankFound = True;
+			
+		ElsIf SearchByCode 
+			AND Find(FoundBank.Code, Code) > 0 Then
+			
+			BankFound = True;
+			
+		ElsIf SearchForCorrAccount 
+			AND Find(FoundBank.CorrAccount, CorrAccount) Then
+			
+			BankFound = True;
+			
+		EndIf;
+		
+		If BankFound Then
+			
+			NewRow = BanksTable.Add();
+			FillPropertyValues(NewRow, FoundBank);
+			
+		EndIf;
+		
+	EndDo;
+	
+EndProcedure
+
 // Returns data source focusing on the configuration work mode
 // 
 Function GetDataSource()
@@ -265,6 +271,8 @@ Function GetDataFromBanks(Code, CorrAccount)
 	Return Builder.Result;
 	
 EndFunction // GetQueryResultByClassifierInSeparatedMode()
+
+#EndRegion 
 
 #Region PrintInterface
 

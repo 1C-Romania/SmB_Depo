@@ -1,24 +1,5 @@
 ﻿
-&AtServer
-Procedure FillFormByObject()
-	
-	WorkWithBanksOverridable.ReadManualEditFlag(ThisForm);
-	
-	Items.PagesActivityDiscontinued.CurrentPage = ?(ActivityDiscontinued,
-		Items.PageLabelActivityDiscontinued, Items.PageBlank);
-	
-EndProcedure
-
-///////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
-
-&AtClient
-Procedure AfterWrite(WriteParameters)
-	
-	// Notify the bank account form about the change of bank requisites
-	Notify("RecordedItemBank", Object.Ref, ThisForm);
-
-EndProcedure
+#Region FormEventsHandlers
 
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
@@ -56,6 +37,18 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 EndProcedure
 
 &AtClient
+Procedure AfterWrite(WriteParameters)
+	
+	// Notify the bank account form about the change of bank requisites
+	Notify("RecordedItemBank", Object.Ref, ThisForm);
+
+EndProcedure
+
+#EndRegion
+
+#Region FormCommandsHandlers
+
+&AtClient
 Procedure Change(Command)
 	
 	Text = NStr("en='Supplied data is updated automatically.
@@ -70,6 +63,28 @@ Procedure Change(Command)
 EndProcedure
 
 &AtClient
+Procedure UpdateFromClassifier(Command)
+	
+	ExecuteUpdate = False;
+	WorkWithBanksClientOverridable.RefreshItemFromClassifier(ThisForm, ExecuteUpdate);
+	
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtServer
+Procedure FillFormByObject()
+	
+	WorkWithBanksOverridable.ReadManualEditFlag(ThisForm);
+	
+	Items.LabelActivitiesOfTheBankDiscontinued.Visible = ActivityDiscontinued;
+	Items.EmptyDecoration.Visible = Not ActivityDiscontinued;
+	
+EndProcedure
+
+&AtClient
 Procedure ChangeEnd(Result1, AdditionalParameters) Export
     
     Result = Result1;
@@ -77,21 +92,13 @@ Procedure ChangeEnd(Result1, AdditionalParameters) Export
     If Result = DialogReturnCode.Yes Then
         
         LockFormDataForEdit();
-        Modified = True;
-        ManualChanging    = True;
+        Modified		= True;
+        ManualChanging	= True;
         
         WorkWithBanksClientOverridable.ProcessManualEditFlag(ThisForm);
         
     EndIf;
 
-EndProcedure
-
-&AtClient
-Procedure UpdateFromClassifier(Command)
-	
-	ExecuteUpdate = False;
-	WorkWithBanksClientOverridable.RefreshItemFromClassifier(ThisForm, ExecuteUpdate);
-	
 EndProcedure
 
 &AtServer
@@ -100,6 +107,8 @@ Procedure UpdateAtServer()
 	WorkWithBanksOverridable.RestoreItemFromSharedData(ThisForm);
 	
 EndProcedure
+
+#EndRegion
 
 #Region InteractiveActionResultHandlers
 

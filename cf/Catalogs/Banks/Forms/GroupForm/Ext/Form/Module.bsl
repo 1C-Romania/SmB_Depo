@@ -1,15 +1,5 @@
 ﻿
-&AtServer
-Procedure FillFormByObject()
-	
-	WorkWithBanksOverridable.ReadManualEditFlag(ThisForm);
-	
-EndProcedure
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+#Region FormEventsHandlers
 
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
@@ -36,6 +26,10 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
 EndProcedure
 
+#EndRegion
+
+#Region FormCommandsHandlers
+
 &AtClient
 Procedure Change(Command)
 	
@@ -47,6 +41,25 @@ Procedure Change(Command)
 	Result = Undefined;
 
 	ShowQueryBox(New NotifyDescription("ChangeEnd", ThisObject), Text, QuestionDialogMode.YesNo,, DialogReturnCode.No);
+	
+EndProcedure
+
+&AtClient
+Procedure UpdateFromClassifier(Command)
+	
+	ExecuteUpdate = False;
+	WorkWithBanksClientOverridable.RefreshItemFromClassifier(ThisForm, ExecuteUpdate);
+	
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtServer
+Procedure FillFormByObject()
+	
+	WorkWithBanksOverridable.ReadManualEditFlag(ThisForm);
 	
 EndProcedure
 
@@ -67,20 +80,14 @@ Procedure ChangeEnd(Result1, AdditionalParameters) Export
 
 EndProcedure
 
-&AtClient
-Procedure UpdateFromClassifier(Command)
-	
-	ExecuteUpdate = False;
-	WorkWithBanksClientOverridable.RefreshItemFromClassifier(ThisForm, ExecuteUpdate);
-	
-EndProcedure
-
 &AtServer
 Procedure UpdateAtServer()
 	
 	WorkWithBanksOverridable.RestoreItemFromSharedData(ThisForm);
 	
 EndProcedure
+
+#EndRegion
 
 #Region InteractiveActionResultHandlers
 

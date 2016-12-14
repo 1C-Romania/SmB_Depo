@@ -1,18 +1,13 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
-////////////////////////////////////////////////////////////////////////////////
-// EVENT HANDLERS
+#Region EventsHandlers
 
-// Procedure - event handler "OnCopy".
-//
 Procedure OnCopy(CopiedObject)
 	
 	Code = "";
 	
 EndProcedure // OnCopy()
 
-// Procedure - "FillCheckProcessing" event handler.
-//
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If DataExchange.Load Then
@@ -45,8 +40,8 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			);
 		EndIf;
 		
-		If StrLen(TrimAll(Code)) <> 9 Then
-			MessageText = NStr("en='Bank BIN must have 9 symbols.';ru='БИК банка должен иметь 9 знаков.'");
+		If StrLen(TrimAll(Code)) <> 8 AND StrLen(TrimAll(Code)) <> 11 Then
+			MessageText = NStr("en='SWIFT must have 8 or 11 symbols.';ru='SWIFT банка должен иметь 8 или 11 знаков.'");
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
 				MessageText,
@@ -57,18 +52,6 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			);
 		EndIf;
 
-		If Not StringFunctionsClientServer.OnlyNumbersInString(TrimAll(Code)) Then
-			MessageText = NStr("en='BIN must contain only digits.';ru='В составе БИК банка должны быть только цифры.'");
-			SmallBusinessServer.ShowMessageAboutError(
-				ThisObject,
-				MessageText,
-				,
-				,
-				"Code",
-				Cancel
-			);
-		EndIf;
-		
 	Else
 		
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Code");
@@ -76,5 +59,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	EndIf;
 	
 EndProcedure // FillCheckProcessing()
+
+#EndRegion
 
 #EndIf

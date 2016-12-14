@@ -7,6 +7,7 @@
 		<ChildItems>
 			<Button name="FormToSelectClassifier" id="21">
 				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
 				<CommandName>Form.Command.PickFromClassifier</CommandName>
 				<ExtendedTooltip name="FormToSelectClassifierExtendedTooltip" id="22"/>
 			</Button>
@@ -100,8 +101,16 @@
 					<ContextMenu name="DescriptionContextMenu" id="11"/>
 					<ExtendedTooltip name="DescriptionExtendedTooltip" id="25"/>
 				</LabelField>
+				<LabelField name="BranchName" id="41">
+					<DataPath>List.BranchName</DataPath>
+					<ContextMenu name="BranchNameContextMenu" id="42"/>
+					<ExtendedTooltip name="BranchNameExtendedTooltip" id="43"/>
+				</LabelField>
 				<LabelField name="CorrAccount" id="14">
 					<DataPath>List.CorrAccount</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
 					<Width>20</Width>
 					<ContextMenu name="CorrAccountContextMenu" id="15"/>
 					<ExtendedTooltip name="CorrAccountExtendedTooltip" id="26"/>

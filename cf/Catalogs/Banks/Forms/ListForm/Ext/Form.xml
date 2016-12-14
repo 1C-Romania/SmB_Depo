@@ -6,11 +6,13 @@
 		<ChildItems>
 			<Button name="FormToSelectClassifier" id="33">
 				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
 				<CommandName>Form.Command.PickFromClassifier</CommandName>
 				<ExtendedTooltip name="FormToSelectClassifierExtendedTooltip" id="36"/>
 			</Button>
 			<Button name="RefreshFormOfClassifier" id="34">
 				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
 				<CommandName>Form.Command.UpdateFromClassifier</CommandName>
 				<ExtendedTooltip name="RefreshFormOfClassifierExtendedTooltip" id="37"/>
 			</Button>
@@ -144,11 +146,27 @@
 					<ContextMenu name="DescriptionContextMenu" id="11"/>
 					<ExtendedTooltip name="DescriptionExtendedTooltip" id="41"/>
 				</LabelField>
+				<LabelField name="BranchName" id="66">
+					<DataPath>List.BranchName</DataPath>
+					<ContextMenu name="BranchNameContextMenu" id="67"/>
+					<ExtendedTooltip name="BranchNameExtendedTooltip" id="68"/>
+				</LabelField>
 				<LabelField name="CorrAccount" id="14">
 					<DataPath>List.CorrAccount</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
 					<Width>20</Width>
 					<ContextMenu name="CorrAccountContextMenu" id="15"/>
 					<ExtendedTooltip name="CorrAccountExtendedTooltip" id="42"/>
+				</LabelField>
+				<LabelField name="Address" id="18">
+					<DataPath>List.Address</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="AddressContextMenu" id="19"/>
+					<ExtendedTooltip name="AddressExtendedTooltip" id="44"/>
 				</LabelField>
 				<LabelField name="City" id="16">
 					<DataPath>List.City</DataPath>
@@ -159,13 +177,13 @@
 					<ContextMenu name="CityContextMenu" id="17"/>
 					<ExtendedTooltip name="CityExtendedTooltip" id="43"/>
 				</LabelField>
-				<LabelField name="Address" id="18">
-					<DataPath>List.Address</DataPath>
+				<LabelField name="Country" id="63">
+					<DataPath>List.Country</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
-					<ContextMenu name="AddressContextMenu" id="19"/>
-					<ExtendedTooltip name="AddressExtendedTooltip" id="44"/>
+					<ContextMenu name="CountryContextMenu" id="64"/>
+					<ExtendedTooltip name="CountryExtendedTooltip" id="65"/>
 				</LabelField>
 				<LabelField name="PhoneNumbers" id="20">
 					<DataPath>List.PhoneNumbers</DataPath>
