@@ -2045,7 +2045,7 @@ Procedure AddStandardColumnsInMatchTable(TemporaryVT, MappingObjectStructure, Ad
 		Else
 			ColumnsTitle = MappingObjectStructure.Synonym;
 		EndIf;
-		TemporaryVT.Columns.Add("MappingObject", MappingObjectStructure.ObjectTypeMatchDescription, ColumnsTitle);
+		TemporaryVT.Columns.Add("MappingObject", MappingObjectStructure.ObjectMatchTypeDescription, ColumnsTitle);
 	EndIf;
 	If AddRowMatchResult Then 
 		TemporaryVT.Columns.Add("RowMatchResult", New TypeDescription("String"), NStr("en='Result';ru='Результат'"));
@@ -2070,7 +2070,7 @@ Procedure AddStandardColumnsToAttributesArray(AttributeArray, MappingObjectStruc
 			AttributeArray.Add(New FormAttribute("ID", NumberType, "DataMatchingTable", "ID"));
 		EndIf;
 		If ValueIsFilled(MappingObjectStructure) Then 
-			AttributeArray.Add(New FormAttribute("MappingObject", MappingObjectStructure.ObjectTypeMatchDescription, "DataMatchingTable", CorrelationObjectName));
+			AttributeArray.Add(New FormAttribute("MappingObject", MappingObjectStructure.ObjectMatchTypeDescription, "DataMatchingTable", CorrelationObjectName));
 		EndIf;
 		
 		If AddRowMatchResult Then

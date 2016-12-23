@@ -17,7 +17,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Object.ThisIsInteractiveMode = True;
 	
-	FormTitle = NStr("en='Universal data exchange in the XML format (%VersionHandling%)';ru='Универсальный обмен данными в формате XML (%ВерсияОбработки%)'");
+	FormTitle = NStr("en='Universal data exchange in the XML format (%VersionHandling%)';ru='Универсальный обмен данными в формате XML (%VersionHandling%)'");
 	FormTitle = StrReplace(FormTitle, "%VersionHandling%", ObjectVersioningAsStringAtServer());
 	
 	Title = FormTitle;
@@ -1027,31 +1027,31 @@ Procedure FileChoice(Item, PropertyName, CheckFileExistence, Val DefaultExtensio
 	If DefaultExtension = "txt" Then
 		
 		FileDialog.Filter = "Exchange protocol file (*.txt)|*.txt";
-		FileDialog.Extension = "txt";
+		FileDialog.DefaultExt = "txt";
 		
 	ElsIf Object.ExchangeMode = "Export" Then
 		
 		If DataFileArchiving Then
 			
 			FileDialog.Filter = "Archive data file (*.zip)|*.zip";
-			FileDialog.Extension = "zip";
+			FileDialog.DefaultExt = "zip";
 			
 		ElsIf RulesFileChoice Then
 			
 			FileDialog.Filter = "File data (*.xml)|*.xml|Archive data file (*.zip)|*.zip";
-			FileDialog.Extension = "xml";
+			FileDialog.DefaultExt = "xml";
 			
 		Else
 			
 			FileDialog.Filter = "File data (*.xml)|*.xml";
-			FileDialog.Extension = "xml";
+			FileDialog.DefaultExt = "xml";
 			
 		EndIf; 
 		
 	Else
 		
 		FileDialog.Filter = "File data (*.xml)|*.xml|Archive data file (*.zip)|*.zip";
-		FileDialog.Extension = "xml";
+		FileDialog.DefaultExt = "xml";
 		
 	EndIf;
 	

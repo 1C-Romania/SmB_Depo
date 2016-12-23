@@ -862,7 +862,7 @@ Function PrintForm(ObjectsArray, PrintObjects, PrintParameters) Export
 		ImportingPoint = "";
 		ArrayOfOwners = New Array;
 		ArrayOfOwners.Add(Header.StructuralUnit);
-		Addresses = ContactInformationManagement.ContactInformationOfObjects(ArrayOfOwners, , Catalogs.ContactInformationTypes.StructuralUnitsActualAddress);
+		Addresses = ContactInformationManagement.ContactInformationOfObjects(ArrayOfOwners, , Catalogs.ContactInformationTypes.StructuralUnitsFactAddress);
 		If Addresses.Count() > 0 Then
 			
 			ImportingPoint = Addresses[0].Presentation;

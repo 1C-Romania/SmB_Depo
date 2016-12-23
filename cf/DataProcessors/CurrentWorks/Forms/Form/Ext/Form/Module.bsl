@@ -126,7 +126,7 @@ EndProcedure
 &AtServer
 Procedure UpdateToDoList(CurrentWorks)
 	
-	CurrentWorks.Sort("IsSection Desc, SectionPresentation Asc, Important Desc");
+	CurrentWorks.Sort("ThisIsSection Desc, PresentationOfSection Asc, Important Desc");
 	
 	SectionsWithImportantWork = New Structure;
 	SavedDisplaySettings = CurrentWorksService.SavedDisplaySettings();
@@ -238,7 +238,7 @@ Procedure GenerateToDoList(CurrentWorks)
 	
 	CollapsedSections = CollapsedSections();
 	
-	CurrentWorks.Sort("IsSection Desc, SectionPresentation Asc, Important Desc");
+	CurrentWorks.Sort("ThisIsSection Desc, PresentationOfSection Asc, Important Desc");
 	
 	// If a user did not set sections position in
 	// the works list, then they are sorted according to an order defined in the OnDefineCommandInterfaceSectionsOrder procedure.
@@ -290,13 +290,13 @@ Procedure GenerateToDoList(CurrentWorks)
 			GroupName = "Group" + Work.IDOwner;
 			If CurrentGroup <> GroupName Then
 				CurrentGroup = GroupName;
-				Group        = Group(GroupName, CommonGroup);
+				NewGroup        = Group(GroupName, CommonGroup);
 				If TaxiInterface Then
-					Group.Representation = UsualGroupRepresentation.StrongSeparation;
+					NewGroup.Representation = UsualGroupRepresentation.StrongSeparation;
 				EndIf;
 				
 				If SectionCollapsed = True Then
-					Group.Visible = False;
+					NewGroup.Visible = False;
 				EndIf;
 			EndIf;
 			
@@ -310,7 +310,7 @@ Procedure GenerateToDoList(CurrentWorks)
 				CommonGroup.Visible = True;
 			EndIf;
 			
-			CreateToDo(Work, Group, ToDosVisibleEnabled);
+			CreateToDo(Work, NewGroup, ToDosVisibleEnabled);
 			
 			// Enable indicator of important works.
 			If Work.ThereIsWork
@@ -460,7 +460,7 @@ Procedure Attachable_CheckJobExecution()
 		If JobCompleted(JobID) Then
 			JobCompleteSuccessfully = True;
 			Items.WorkPage.Visible = True;
-			Items.PageLongActions.Visible = False;
+			Items.PageLongOperation.Visible = False;
 			Items.SetForm.Enabled = True;
 			Items.FormRefresh.Enabled  = True;
 			DetachIdleHandler("Attachable_CheckJobExecution");
@@ -468,7 +468,7 @@ Procedure Attachable_CheckJobExecution()
 	Except
 		DetachIdleHandler("Attachable_CheckJobExecution");
 		Items.WorkPage.Visible = True;
-		Items.PageLongActions.Visible = False;
+		Items.PageLongOperation.Visible = False;
 		Items.FormRefresh.Enabled = True;
 		If Not ExecutionAbortedOnStartup Then
 			Raise;
@@ -508,7 +508,7 @@ Procedure LaunchToDoListUpdate(AutoUpdate = False, RefreshDiscreetly = False)
 	
 	If Not RefreshDiscreetly Then
 		Items.WorkPage.Visible = False;
-		Items.PageLongActions.Visible = True;
+		Items.PageLongOperation.Visible = True;
 		Items.SetForm.Enabled = False;
 		Items.FormRefresh.Enabled  = False;
 		Items.NoCurrentWorksPage.Visible = False;
@@ -524,19 +524,19 @@ Function Group(GroupName, Parent = Undefined, GroupType = "")
 		Parent = Items.WorkPage;
 	EndIf;
 	
-	Group = Items.Add(GroupName, Type("FormGroup"), Parent);
-	Group.Type = FormGroupType.UsualGroup;
-	Group.Representation = UsualGroupRepresentation.None;
+	NewGroup = Items.Add(GroupName, Type("FormGroup"), Parent);
+	NewGroup.Type = FormGroupType.UsualGroup;
+	NewGroup.Representation = UsualGroupRepresentation.None;
 	
 	If GroupType = "SectionTitle" Then
-		Group.Group = ChildFormItemsGroup.Horizontal;
+		NewGroup.Group = ChildFormItemsGroup.Horizontal;
 	Else
-		Group.Group = ChildFormItemsGroup.Vertical;
+		NewGroup.Group = ChildFormItemsGroup.Vertical;
 	EndIf;
 	
-	Group.ShowTitle = False;
+	NewGroup.ShowTitle = False;
 	
-	Return Group;
+	Return NewGroup;
 	
 EndFunction
 
@@ -551,7 +551,7 @@ Procedure CreateToDo(Work, Group, ToDosVisibleEnabled)
 	Item.Title = ToDoTitle;
 	Item.Visible = (ToDosVisibleEnabled AND Work.ThereIsWork);
 	Item.Hyperlink = ValueIsFilled(Work.Form);
-	Item.SetAction("Click", "Attachable_ProcessHyperlinkClick");
+	Item.SetAction("Click", "Attachable_HandleClickOnHyperlink");
 	
 	If Work.Important Then
 		Item.TextColor = StyleColors.OverdueDataColor;

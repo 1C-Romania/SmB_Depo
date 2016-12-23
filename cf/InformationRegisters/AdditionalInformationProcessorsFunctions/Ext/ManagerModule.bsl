@@ -61,22 +61,22 @@ Function NewQueryUpdateDataRegister(RefOfMetadataObjects)
 	"SELECT DISTINCT
 	|	AdditionalReportsAndDataProcessorsPurpose.ObjectDestination AS ObjectDestination,
 	|	CASE
-	|		WHEN AdditionalReportsAndDataProcessorsPurpose.Ref.Kind = &ObjectFillingKind
+	|		WHEN AdditionalReportsAndDataProcessorsPurpose.Ref.Type = &ObjectFillingKind
 	|			THEN TRUE
 	|		ELSE FALSE
 	|	END AS UseObjectFill,
 	|	CASE
-	|		WHEN AdditionalReportsAndDataProcessorsPurpose.Ref.Kind = &ReportKind
+	|		WHEN AdditionalReportsAndDataProcessorsPurpose.Ref.Type = &ReportKind
 	|			THEN TRUE
 	|		ELSE FALSE
 	|	END AS UseReports,
 	|	CASE
-	|		WHEN AdditionalReportsAndDataProcessorsPurpose.Ref.Kind = &KindPrintForm
+	|		WHEN AdditionalReportsAndDataProcessorsPurpose.Ref.Type = &KindPrintForm
 	|			THEN TRUE
 	|		ELSE FALSE
 	|	END AS UsePrintForms,
 	|	CASE
-	|		WHEN AdditionalReportsAndDataProcessorsPurpose.Ref.Kind = &KindLinkedObjectsCreation
+	|		WHEN AdditionalReportsAndDataProcessorsPurpose.Ref.Type = &KindLinkedObjectsCreation
 	|			THEN TRUE
 	|		ELSE FALSE
 	|	END AS UseCreatingLinkedObjects,

@@ -12215,7 +12215,7 @@ Procedure OnFillCurrensTodosListCheckCompatibilityWithCurrentVersion(CurrentWork
 	Work.ID = "ExchangeRules";
 	Work.ThereIsWork      = OutputToDo AND ExchangePlansWithRulesFromFile > 0;
 	Work.Presentation = NStr("en='Exchange rules';ru='Правила обмена'");
-	Work.Quantity    = ExchangePlansWithRulesFromFile;
+	Work.Count   = ExchangePlansWithRulesFromFile;
 	Work.Form         = "InformationRegister.DataExchangeRules.Form.ExchangePlanCheck";
 	Work.Owner      = "CheckCompatibilityWithCurrentVersion";
 	

@@ -916,7 +916,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	Work.ID = "PrintFormsTemplates";
 	Work.ThereIsWork      = OutputToDo AND QuantityCustomLayouts > 0;
 	Work.Presentation = NStr("en='Print form templates';ru='Макеты печатных форм'");
-	Work.Quantity    = QuantityCustomLayouts;
+	Work.Count    = QuantityCustomLayouts;
 	Work.Form         = "InformationRegister.UserPrintTemplates.Form.PrintingFormsChecking";
 	Work.Owner      = "CheckCompatibilityWithCurrentVersion";
 	

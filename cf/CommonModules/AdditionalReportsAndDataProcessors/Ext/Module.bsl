@@ -1015,12 +1015,12 @@ Procedure OnPrintCommandsReceive(PrintCommands, FormName) Export
 		PrintCommand = PrintCommands.Add();
 		
 		// Mandatory parameters.
-		FillPropertyValues(PrintCommand, TableRow, "Identifier, Presentation");
+		FillPropertyValues(PrintCommand, TableRow, "ID, Presentation");
 		// Parameters that identify subsystem.
 		PrintCommand.PrintManager = "StandardSubsystems.AdditionalReportsAndDataProcessors";
 		
 		// Additional parameters.
-		PrintCommand.AdditionalParameters = New Structure("Refs, Modifier, StartVariant, ShowAlert");
+		PrintCommand.AdditionalParameters = New Structure("Ref, Modifier, StartVariant, ShowAlert");
 		FillPropertyValues(PrintCommand.AdditionalParameters, TableRow);
 	EndDo;
 	
