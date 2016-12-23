@@ -2660,157 +2660,9 @@ EndFunction // RublesKopecks()
 //
 Function PrintForm(ObjectsArray, PrintObjects)
 	
-	SpreadsheetDocument = New SpreadsheetDocument;
-	SpreadsheetDocument.PrintParametersKey = "PrintParameters_CashExpense";
-	
-	FirstDocument = True;
-	
-	For Each CurrentDocument IN ObjectsArray Do
-		
-		If Not FirstDocument Then
-			SpreadsheetDocument.PutHorizontalPageBreak();
-		EndIf;
-		FirstDocument = False;
-		
-		FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
-	
-		Query = New Query();
-		Query.SetParameter("CurrentDocument", CurrentDocument);
-		
-		If CurrentDocument.OperationKind = Enums.OperationKindsCashPayment.Vendor Then
-			RowDebitSubAccount = "CashPayment.Counterparty.GLAccountVendorSettlements.Code AS DebitSubAccount, CashPayment.Counterparty.VendorAdvancesGLAccount.Code AS DebitAdvanceSubAccount";
-		ElsIf CurrentDocument.OperationKind = Enums.OperationKindsCashPayment.ToAdvanceHolder Then
-			RowDebitSubAccount = "CashPayment.AdvanceHolder.AdvanceHoldersGLAccount.Code
-								  |AS DebitSubAccount, UNDEFINED AS DebitAdvancesSubAccount";
-		ElsIf CurrentDocument.OperationKind = Enums.OperationKindsCashPayment.Taxes Then
-			RowDebitSubAccount = "CashPayment.TaxKind.GLAccount.Code
-								  |AS DebitSubAccount, UNDEFINED AS DebitAdvancesSubAccount";
-		ElsIf CurrentDocument.OperationKind = Enums.OperationKindsCashPayment.ToCustomer Then
-			RowDebitSubAccount = "CashPayment.Counterparty.GLAccountCustomerSettlements.Code AS DebitSubAccount, CashPayment.Counterparty.CustomerAdvancesGLAccount.Code AS DebitAdvanceSubAccount";
-		ElsIf CurrentDocument.OperationKind = Enums.OperationKindsCashPayment.Other Then
-			RowDebitSubAccount = "CashPayment.Mail.Code
-								  |AS DebitSubAccount, UNDEFINED AS DebitAdvancesSubAccount";
-		ElsIf CurrentDocument.OperationKind = Enums.OperationKindsCashPayment.TransferToCashCR Then
-			RowDebitSubAccount = "CashPayment.CashCR.GLAccount.Code
-								  |AS DebitSubAccount, UNDEFINED AS DebitAdvancesSubAccount";
-		ElsIf CurrentDocument.OperationKind = Enums.OperationKindsCashPayment.SalaryForEmployee Then
-			RowDebitSubAccount = "CashPayment.AdvanceHolder.PersonnelGLAccount.Code
-								  |AS DebitSubAccount, UNDEFINED AS DebitAdvancesSubAccount";
-		ElsIf CurrentDocument.OperationKind = Enums.OperationKindsCashPayment.Salary Then
-			QueryAccountEmployee = New Query(
-			"SELECT TOP 1
-			|	PayrollSheetEmployees.Employee.SettlementsHumanResourcesGLAccount.Code AS DebitSubAccount
-			|FROM
-			|	Document.CashPayment.PayrollPayment AS ExpenseFromCashPaymentOfWages
-			|		INNER JOIN Document.PayrollSheet.Employees AS PayrollSheetEmployees
-			|		ON ExpenseFromCashPaymentOfWages.Statement = PayrollSheetEmployees.Ref
-			|WHERE
-			|	ExpenseFromCashPaymentOfWages.Ref = &Ref");
-			QueryAccountEmployee.SetParameter("Ref", CurrentDocument);
-			QueryResult = QueryAccountEmployee.Execute();
-			If QueryResult.IsEmpty() Then
-				RowDebitSubAccount = "UNDEFINED
-									  |AS DebitSubAccount, UNDEFINED AS DebitAdvancesSubAccount";
-			Else
-				RowDebitSubAccount = Left(QueryResult.Unload()[0].DebitSubAccount, 2)
-									+ " AS
-									  |DebitSubAccount, UNDEFINED AS DebitAdvancesSubAccount";
-			EndIf; 
-		Else
-			RowDebitSubAccount = "UNDEFINED
-								 |AS DebitSubAccount, UNDEFINED AS DebitAdvancesSubAccount";
-		EndIf;
-		
-		Query.Text = 
-		"SELECT
-		|	CashPayment.Number AS Number,
-		|	CashPayment.Date AS DocumentDate,
-		|	CashPayment.Company AS Company,
-		|	CashPayment.Company.LegalEntityIndividual AS LegalEntityIndividual,
-		|	CashPayment.Company.Prefix AS Prefix,
-		|	CashPayment.Company.CodeByOKPO AS CompanyByOKPO,
-		|	CashPayment.Company.DescriptionFull AS CompanyPresentation,
-		|	CashPayment.Issue AS Issue,
-		|	CashPayment.Basis AS Basis,
-		|	CashPayment.Application AS Application,
-		|	CashPayment.DocumentAmount AS DocumentAmount,
-		|	CashPayment.ByDocument AS DocumentAttributesWhichIdentifiesPerson,
-		|	CashPayment.PettyCash.GLAccount.Code AS CreditSubAccount,
-		|	CashPayment.CashCurrency AS CashCurrency,
-		|	PRESENTATION(CashPayment.CashCurrency) AS CurrencyPresentation,
-		|	" + RowDebitSubAccount + "
-		|FROM
-		|	Document.CashPayment AS CashPayment
-		|WHERE
-		|	CashPayment.Ref = &CurrentDocument";
-		
-		SelectionForPrinting = Query.Execute().Select();
-		
-		SelectionForPrinting.Next();
-		
-		Currency = SelectionForPrinting.CashCurrency <> Constants.NationalCurrency.Get();
-		
-		// If SelectionForPrinting.DocumentDate < '20140101' Then
-		If True Then
-			Template = PrintManagement.GetTemplate("Document.CashPayment.PF_MXL_CPV");
-			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_Cash_CashExpenseExpense";
-			
-			TemplateArea = Template.GetArea("Header");
-			TemplateArea.Parameters.Fill(SelectionForPrinting);
-			Heads = SmallBusinessServer.OrganizationalUnitsResponsiblePersons(SelectionForPrinting.Company, SelectionForPrinting.DocumentDate);
-			TemplateArea.Parameters.HeadDescriptionFull		  = Heads.HeadDescriptionFull;
-			TemplateArea.Parameters.HeadPost = Heads.HeadPosition;
-			TemplateArea.Parameters.ChiefAccountantNameAndSurname = Heads.ChiefAccountantNameAndSurname;
-			TemplateArea.Parameters.CashierNameAndSurname            = Heads.CashierNameAndSurname;
-			TemplateArea.Parameters.Amount = SmallBusinessServer.FormatPaymentDocumentSUM(
-				SelectionForPrinting.DocumentAmount,
-				False
-			);
-		Else
-			Template = PrintManagement.GetTemplate("Document.CashPayment.PF_MXL_RKO2014");
-			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_Cash_CashExpenseExpense";
-			
-			TemplateArea = Template.GetArea("Header");
-			TemplateArea.Parameters.Fill(SelectionForPrinting);
-			Issue = TrimAll(SelectionForPrinting.Issue);
-			If Find(Issue, " ") > 0 AND Find(Issue, """") = 0 Then
-				TemplateArea.Parameters.RecipientsSNP = IndividualsClientServer.SurnameInitialsOfIndividual(Issue);
-			EndIf;
-			If SelectionForPrinting.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind Then
-				TemplateArea.Parameters.DebitSubAccount = "";
-				TemplateArea.Parameters.CreditSubAccount = "";
-			Else
-				TemplateArea.Parameters.DebitSubAccount = TrimAll(SelectionForPrinting.DebitSubAccount) + ?(ValueIsFilled(SelectionForPrinting.DebitAdvancesSubAccount), "," + TrimAll(SelectionForPrinting.DebitAdvancesSubAccount), "");
-			EndIf;
-			Heads = SmallBusinessServer.OrganizationalUnitsResponsiblePersons(SelectionForPrinting.Company, SelectionForPrinting.DocumentDate);
-			TemplateArea.Parameters.ChiefAccountantPosition = Heads.ChiefAccountantPosition;
-			TemplateArea.Parameters.CashierPosition            = Heads.CashierPosition;
-			TemplateArea.Parameters.ChiefAccountantNameAndSurname = IndividualsClientServer.SurnameInitialsOfIndividual(Heads.ChiefAccountantNameAndSurname);
-			TemplateArea.Parameters.CashierNameAndSurname = IndividualsClientServer.SurnameInitialsOfIndividual(Heads.CashierNameAndSurname);
-			TemplateArea.Parameters.Amount = ?(Currency, Format(SelectionForPrinting.DocumentAmount, "ND=15; NFD=2") + " " + TrimAll(SelectionForPrinting.CashCurrency), DollarsCents(SelectionForPrinting.DocumentAmount));
-		EndIf;
-		
-		If SelectionForPrinting.DocumentDate < Date('20110101') Then
-			DocumentNumber = SmallBusinessServer.GetNumberForPrinting(SelectionForPrinting.Number, SelectionForPrinting.Prefix);
-		Else
-			DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(SelectionForPrinting.Number, True, True);
-		EndIf;
-		
-		TemplateArea.Parameters.DocumentNumber = DocumentNumber;
-		TemplateArea.Parameters.AmountInWords = SmallBusinessServer.FormatPaymentDocumentAmountInWords(
-			SelectionForPrinting.DocumentAmount,
-			SelectionForPrinting.CashCurrency,
-			False
-		);
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, CurrentDocument.Ref);
-	EndDo;
-	
-	SpreadsheetDocument.FitToPage = True;
-	
-	Return SpreadsheetDocument;
+	//SpreadsheetDocument = New SpreadsheetDocument;
+	//
+	//Return SpreadsheetDocument;
 	
 EndFunction // PrintForm()
 
@@ -2827,14 +2679,6 @@ EndFunction // PrintForm()
 //
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "CPV") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CPV", "Cash payment voucher", PrintForm(ObjectsArray, PrintObjects));
-		
-	EndIf;
-	
-	// parameters of sending printing forms by email
-	SmallBusinessServer.FillSendingParameters(OutputParameters.SendingParameters, ObjectsArray, PrintFormsCollection);
 
 EndProcedure
 
@@ -2845,12 +2689,6 @@ EndProcedure
 //
 Procedure AddPrintCommands(PrintCommands) Export
 	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "CPV";
-	PrintCommand.Presentation = NStr("en='KO-2 (Cash voucher)';ru='КО-2 (Расходный кассовый ордер)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 1;
 	
 EndProcedure
 

@@ -271,8 +271,8 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		
 		If ItIsUniversalTransferDocument Then
 			
-			SpreadsheetDocument.PrintParametersKey = "PARAMETRS_PRINT_UniversalTransferDocument";
-			Template = PrintManagement.PrintedFormsTemplate("Document.CustomerInvoiceNote.PF_MXL_UniversalTransferDocument");
+			//SpreadsheetDocument.PrintParametersKey = "PARAMETRS_PRINT_UniversalTransferDocument";
+			//Template = PrintManagement.PrintedFormsTemplate("Document.CustomerInvoiceNote.PF_MXL_UniversalTransferDocument");
 			
 		ElsIf Header.DocumentDate >= CustomerInvoiceNote1137UsageBegin Then
 			
@@ -474,7 +474,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		If Header.OperationKind <> Enums.OperationKindsCustomerInvoiceNote.Advance 
 			OR Header.OperationKind = Enums.OperationKindsCustomerInvoiceNote.OnPrincipalAdvance Then
 			
-			TitleFields = ?(ItIsUniversalTransferDocument, "", "Consignor and its address: ");
+			TitleFields = ?(ItIsUniversalTransferDocument, "", NStr("en='Consignor and its address: ';ru='Consignor and its address: '"));
 			If Header.Same Then
 				
 				TemplateArea.Parameters.PresentationOfShipper = TitleFields + NStr("en='the same';ru='Он же'");
@@ -491,7 +491,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			
 			If ThisIsConsolidatedCustomerInvoice Then
 				
-				TitleFields = ?(ItIsUniversalTransferDocument, "", "Consignee and its address: ");
+				TitleFields = ?(ItIsUniversalTransferDocument, "", NStr("en='Consignee and its address: ';ru='Consignee and its address: '"));
 				PresentationOfConsignee  = "";
 				For Each String IN CustomersTable Do
 					
@@ -504,7 +504,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 				
 			Else
 				
-				TitleFields = ?(ItIsUniversalTransferDocument, "", "Consignee and its address: ");
+				TitleFields = ?(ItIsUniversalTransferDocument, "", NStr("en='Consignee and its address: ';ru='Consignee and its address: '"));
 				If ValueIsFilled(Header.Consignee) Then
 					
 					TemplateArea.Parameters.PresentationOfConsignee  = TitleFields + SmallBusinessServer.CompaniesDescriptionFull(InfoAboutConsignee, "FullDescr, ActualAddress,");
@@ -531,8 +531,8 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			
 		Else
 			
-			TemplateArea.Parameters.PresentationOfShipper = "Consignor and their address: --";
-			TemplateArea.Parameters.PresentationOfConsignee  = "Consignee and their address: --";
+			TemplateArea.Parameters.PresentationOfShipper 	= "Consignor and their address: --";
+			TemplateArea.Parameters.PresentationOfConsignee = "Consignee and their address: --";
 			
 		EndIf;
 		
@@ -559,15 +559,18 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 				
 			EndDo;
 			
+				//   AlekS	need attention !!!
 			TitleFields = ?(ItIsUniversalTransferDocument, "", "TIN/KPP customer: ");
 			TemplateArea.Parameters.TINOfHBuyer = TitleFields + TIN_KPP_customer;
 			
 		Else
 			
+				//   AlekS	need attention !!!
 			KPP = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCustomer, "KPP,", False);
 			If ValueIsFilled(KPP) Then 
 				KPP = "/" + KPP;
 			EndIf;
+				//   AlekS	need attention !!!
 			TitleFields = ?(ItIsUniversalTransferDocument, "", "TIN/KPP customer: ");
 			TemplateArea.Parameters.TINOfHBuyer = TitleFields + SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCustomer, "TIN,", False) + KPP;
 			
@@ -575,11 +578,13 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		
 		If Header.DocumentDate >= CustomerInvoiceNote1137UsageBegin Then
 			
+				//   AlekS	need attention !!!
 			TitleFields = ?(ItIsUniversalTransferDocument, "", "Currency: name, code ");
 			
 			If Not ValueIsFilled(Header.Currency) 
 				OR UseConversion Then
 				
+				//   AlekS	need attention !!!
 				TemplateArea.Parameters.Currency = TitleFields + " Russian ruble,643 ";
 				
 			Else
@@ -604,9 +609,9 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		
 		TemplateArea = Template.GetArea("String");
 		
-		TotalCost	= 0;
+		TotalCost		= 0;
 		TotalVATAmount	= 0;
-		SubtotalTotal		= 0;
+		SubtotalTotal	= 0;
 		
 		Query = New Query;
 		Query.SetParameter("Ref", Header.Ref);
@@ -1169,19 +1174,19 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 		
 	EndIf;
 	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "UniversalTransferDocument") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "UniversalTransferDocument", "Universal transfer document", PrintForm(ObjectsArray, PrintObjects, True));
-		
-		If TypeOf(PrintParameters) = Type("Structure")
-			AND PrintParameters.Property("Errors")
-			AND PrintParameters.Errors <> Undefined Then
-			
-			CommonUseClientServer.ShowErrorsToUser(PrintParameters.Errors);
-			
-		EndIf;
-		
-	EndIf;
+	//If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "UniversalTransferDocument") Then
+	//	
+	//	PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "UniversalTransferDocument", "Universal transfer document", PrintForm(ObjectsArray, PrintObjects, True));
+	//	
+	//	If TypeOf(PrintParameters) = Type("Structure")
+	//		AND PrintParameters.Property("Errors")
+	//		AND PrintParameters.Errors <> Undefined Then
+	//		
+	//		CommonUseClientServer.ShowErrorsToUser(PrintParameters.Errors);
+	//		
+	//	EndIf;
+	//	
+	//EndIf;
 	
 	// parameters of sending printing forms by email
 	SmallBusinessServer.FillSendingParameters(OutputParameters.SendingParameters, ObjectsArray, PrintFormsCollection);
@@ -1202,12 +1207,12 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "UniversalTransferDocument";
-	PrintCommand.Presentation = NStr("en='Universal transfer document';ru='Универсальный передаточный документ'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 4;
+	//PrintCommand = PrintCommands.Add();
+	//PrintCommand.ID = "UniversalTransferDocument";
+	//PrintCommand.Presentation = NStr("en='Universal transfer document';ru='Универсальный передаточный документ'");
+	//PrintCommand.FormsList = "DocumentForm,ListForm";
+	//PrintCommand.CheckPostingBeforePrint = False;
+	//PrintCommand.Order = 4;
 	
 EndProcedure
 

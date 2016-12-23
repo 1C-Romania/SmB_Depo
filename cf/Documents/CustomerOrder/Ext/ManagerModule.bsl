@@ -8785,45 +8785,25 @@ EndFunction // PrintForm()
 Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 	
 	If TemplateName = "CustomerOrderTemplate" Then
-		
 		Return PrintCustomerOrder(ObjectsArray, PrintObjects, TemplateName);
-		
 	ElsIf TemplateName = "InvoiceForPayment" OR TemplateName = "InvoiceForPartialPayment" Then
-		
 		Return PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName);
-		
 	ElsIf TemplateName = "InvoiceForPaymentWithFacsimileSignature" OR TemplateName = "InvoiceForPartialPaymentWithFacsimileSignature" Then
-		
 		Return PrintInvoiceWithFacsimileSignature(ObjectsArray, PrintObjects, StrReplace(TemplateName, "WithFacsimileSignature", ""));
-		
 	ElsIf TemplateName = "ServicesAcceptanceCertificate" OR TemplateName = "ServicesAcceptanceCertificateDetailed" Then
-		
 		Return PrintServicesAcceptanceCertificate(ObjectsArray, PrintObjects, TemplateName);
-		
 	ElsIf TemplateName = "Consignment" OR TemplateName = "SaleInvoiceWithServices" Then
-		
 		Return PrintSalesInvoice(ObjectsArray, PrintObjects, TemplateName);
-		
-	ElsIf TemplateName = "TORG12" OR TemplateName = "TRAD12WithServices" Then
-		
-		Return PrintTORG12(ObjectsArray, PrintObjects, TemplateName);
-		
+	//ElsIf TemplateName = "TORG12" OR TemplateName = "TRAD12WithServices" Then
+	//	Return PrintTORG12(ObjectsArray, PrintObjects, TemplateName);
 	ElsIf TemplateName = "JobOrder" Then
-		
 		Return PrintJobOrder(ObjectsArray, PrintObjects, TemplateName);
-		
 	ElsIf TemplateName = "MerchandiseFillingForm" Then
-		
 		Return PrintMerchandiseFillingForm(ObjectsArray, PrintObjects, TemplateName);
-		
-	ElsIf TemplateName = "UniversalTransferDocument" Then
-		
-		Return GenerateUniversalTransferDocument(ObjectsArray, PrintObjects);
-		
+	//ElsIf TemplateName = "UniversalTransferDocument" Then
+	//	Return GenerateUniversalTransferDocument(ObjectsArray, PrintObjects);
 	ElsIf TemplateName = "AppendixToContract" Then
-		
 		Return PrintAppendixToContract(ObjectsArray, PrintObjects, TemplateName);
-		
 	EndIf;
 	
 EndFunction // PrintForm()
@@ -8842,65 +8822,35 @@ EndFunction // PrintForm()
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "CustomerOrderTemplate") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CustomerOrderTemplate", "Customer order", PrintForm(ObjectsArray, PrintObjects, "CustomerOrderTemplate"));
-		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InvoiceForPayment") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InvoiceForPayment", "Invoice for payment", PrintForm(ObjectsArray, PrintObjects, "InvoiceForPayment"));
-		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InvoiceForPaymentWithFacsimileSignature") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InvoiceForPaymentWithFacsimileSignature", "Invoice for payment", PrintForm(ObjectsArray, PrintObjects, "InvoiceForPaymentWithFacsimileSignature"));
-		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InvoiceForPartialPayment") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InvoiceForPartialPayment", "Invoice for partial payment", PrintForm(ObjectsArray, PrintObjects, "InvoiceForPartialPayment"));
-		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InvoiceForPartialPaymentWithFacsimileSignature") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InvoiceForPartialPaymentWithFacsimileSignature", "Invoice for partial payment", PrintForm(ObjectsArray, PrintObjects, "InvoiceForPartialPaymentWithFacsimileSignature"));
-		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "ServicesAcceptanceCertificate") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "ServicesAcceptanceCertificate", "Services acceptance certificate", PrintForm(ObjectsArray, PrintObjects, "ServicesAcceptanceCertificate"));
-		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "ServicesAcceptanceCertificateDetailed") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "ServicesAcceptanceCertificateDetailed", "Services acceptance certificate (detailed)", PrintForm(ObjectsArray, PrintObjects, "ServicesAcceptanceCertificateDetailed"));
-		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "SaleInvoiceWithServices") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "SaleInvoiceWithServices", "Invoice (services)", PrintForm(ObjectsArray, PrintObjects, "SaleInvoiceWithServices"));
-		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "Consignment") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "Consignment", "Consignment", PrintForm(ObjectsArray, PrintObjects, "Consignment"));
-		
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "TORG12") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "TORG12", "TORG12", PrintForm(ObjectsArray, PrintObjects, "TORG12"));
-		
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "TRAD12WithServices") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "TRAD12WithServices", "TORG12 (with services)", PrintForm(ObjectsArray, PrintObjects, "TRAD12WithServices"));
-		
+	//ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "TORG12") Then
+	//	PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "TORG12", "TORG12", PrintForm(ObjectsArray, PrintObjects, "TORG12"));
+	//ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "TRAD12WithServices") Then
+	//	PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "TRAD12WithServices", "TORG12 (with services)", PrintForm(ObjectsArray, PrintObjects, "TRAD12WithServices"));
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "JobOrder") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "JobOrder", "Job-order", PrintForm(ObjectsArray, PrintObjects, "JobOrder"));
-		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "MerchandiseFillingForm") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "MerchandiseFillingForm", "Merchandise filling form", PrintForm(ObjectsArray, PrintObjects, "MerchandiseFillingForm"));
-		
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "UniversalTransferDocument") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "UniversalTransferDocument", "Universal transfer document", PrintForm(ObjectsArray, PrintObjects, "UniversalTransferDocument"));
-		
+	//ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "UniversalTransferDocument") Then
+	//	PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "UniversalTransferDocument", "Universal transfer document", PrintForm(ObjectsArray, PrintObjects, "UniversalTransferDocument"));
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "AppendixToContract") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "AppendixToContract", "Appendix to contract", PrintForm(ObjectsArray, PrintObjects, "AppendixToContract"));
-		
 	EndIf;
 	
 	// parameters of sending printing forms by email
@@ -9097,23 +9047,23 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
 	PrintCommand.Order = 81;
 	
-	// TORG-12
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "TORG12";
-	PrintCommand.Presentation = NStr("en='TORG12';ru='ТОРГ12'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
-	PrintCommand.Order = 84;
+	//// TORG-12
+	//PrintCommand = PrintCommands.Add();
+	//PrintCommand.ID = "TORG12";
+	//PrintCommand.Presentation = NStr("en='TORG12';ru='ТОРГ12'");
+	//PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	//PrintCommand.CheckPostingBeforePrint = False;
+	//PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
+	//PrintCommand.Order = 84;
 	
-	// TORG-12 (with services)
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "TRAD12WithServices";
-	PrintCommand.Presentation = NStr("en='TORG12 (with services)';ru='ТОРГ12 (с услугами)'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
-	PrintCommand.Order = 87;
+	//// TORG-12 (with services)
+	//PrintCommand = PrintCommands.Add();
+	//PrintCommand.ID = "TRAD12WithServices";
+	//PrintCommand.Presentation = NStr("en='TORG12 (with services)';ru='ТОРГ12 (с услугами)'");
+	//PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	//PrintCommand.CheckPostingBeforePrint = False;
+	//PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
+	//PrintCommand.Order = 87;
 	
 	// Merchandise filling form
 	PrintCommand = PrintCommands.Add();
@@ -9124,15 +9074,15 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
 	PrintCommand.Order = 90;
 	
-	// UPD
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.Handler = "SmallBusinessClient.PrintUTD";
-	PrintCommand.ID = "UniversalTransferDocument";
-	PrintCommand.Presentation = NStr("en='Universal transfer document';ru='Универсальный передаточный документ'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
-	PrintCommand.Order = 93;
+	//// UPD
+	//PrintCommand = PrintCommands.Add();
+	//PrintCommand.Handler = "SmallBusinessClient.PrintUTD";
+	//PrintCommand.ID = "UniversalTransferDocument";
+	//PrintCommand.Presentation = NStr("en='Universal transfer document';ru='Универсальный передаточный документ'");
+	//PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	//PrintCommand.CheckPostingBeforePrint = False;
+	//PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
+	//PrintCommand.Order = 93;
 	
 	// Contract
 	PrintCommand = PrintCommands.Add();

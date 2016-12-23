@@ -2904,126 +2904,9 @@ EndFunction // RublesKopecks()
 //
 Function PrintForm(ObjectsArray, PrintObjects)
 	
-	SpreadsheetDocument = New SpreadsheetDocument;
-	SpreadsheetDocument.PrintParametersKey = "PrintParameters_CashIncome";
-	
-	FirstDocument = True;
-	
-	For Each CurrentDocument IN ObjectsArray Do
-		
-		If Not FirstDocument Then
-			SpreadsheetDocument.PutHorizontalPageBreak();
-		EndIf;
-		
-		FirstDocument = False;
-		
-		FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
-		
-		Query = New Query();
-		Query.SetParameter("CurrentDocument", CurrentDocument);
-		
-		If CurrentDocument.OperationKind = Enums.OperationKindsCashReceipt.Other
-		 OR CurrentDocument.OperationKind = Enums.OperationKindsCashReceipt.CurrencyPurchase Then
-			RowCreditSubAccount = "CashReceipt.Mail.Code
-								  |AS BalancedAccount, UNDEFINED AS AdvancesBalancedAccount";
-		ElsIf CurrentDocument.OperationKind = Enums.OperationKindsCashReceipt.FromAdvanceHolder Then
-			RowCreditSubAccount = "CashReceipt.AdvanceHolder.AdvanceHoldersGLAccount.Code
-								  |AS BalancedAccount, UNDEFINED AS AdvancesBalancedAccount";
-		ElsIf CurrentDocument.OperationKind = Enums.OperationKindsCashReceipt.FromCustomer Then
-			RowCreditSubAccount = "CashReceipt.Counterparty.GLAccountCustomerSettlements.Code AS BalancedAccount, CashReceipt.Counterparty.CustomerAdvancesGLAccount.Code AS AdvancesBalancedAccount";
-		ElsIf CurrentDocument.OperationKind = Enums.OperationKindsCashReceipt.FromVendor Then
-			RowCreditSubAccount = "CashReceipt.Counterparty.GLAccountVendorSettlements.Code AS BalancedAccount, CashReceipt.Counterparty.VendorAdvancesGLAccount.Code AS AdvancesBalancedAccount";
-		Else
-			RowCreditSubAccount = "UNDEFINED
-								  |AS BalancedAccount, UNDEFINED AS AdvancesBalancedAccount";
-		EndIf;
-		                                                                  
-		Query.Text = 
-		"SELECT
-		|	CashReceipt.Ref AS Ref,
-		|	CashReceipt.Number AS Number,
-		|	CashReceipt.Date AS DocumentDate,
-		|	CashReceipt.Company AS Company,
-		|	CashReceipt.Company.LegalEntityIndividual AS LegalEntityIndividual,
-		|	CashReceipt.Company.Prefix AS Prefix,
-		|	CashReceipt.Company.CodeByOKPO AS CompanyByOKPO,
-		|	CashReceipt.Company.DescriptionFull AS CompanyPresentation,
-		|	CashReceipt.PettyCash.GLAccount.Code AS DebitCode,
-		|	CashReceipt.CashCurrency AS CashCurrency,
-		|	PRESENTATION(CashReceipt.CashCurrency) AS CurrencyPresentation,
-		|	CashReceipt.AcceptedFrom AS AcceptedFrom,
-		|	CashReceipt.Basis AS Basis,
-		|	CashReceipt.Application AS Application,
-		|	CashReceipt.DocumentAmount AS DocumentAmount,
-		|	" + RowCreditSubAccount + "
-		|FROM
-		|	Document.CashReceipt AS CashReceipt
-		|WHERE
-		|	CashReceipt.Ref = &CurrentDocument";
-		
-		SelectionForPrinting = Query.Execute().Select();
-		SelectionForPrinting.Next();
-		
-		Currency = SelectionForPrinting.CashCurrency <> Constants.NationalCurrency.Get();
-		
-		// If SelectionForPrinting DocumentDate< 20140101="" then=//"" changes="" in="" project="" instructions="" cash="" operations="" 20140101="" then="" changes="" in="" project="" instructions="" cash="">< 20140101="" then="" changes="" in="" project="" instructions="" cash="" operations="">
-		If True Then
-			SpreadsheetDocument.PrintParametersKey = "PRINT_PARAMETERS_CashReceipt_CashReceipt";
-			Template = PrintManagement.PrintedFormsTemplate("Document.CashReceipt.PF_MXL_CRV");
-			TemplateArea = Template.GetArea("Header");
-			TemplateArea.Parameters.Fill(SelectionForPrinting);
-			TemplateArea.Parameters.Amount = Format(SelectionForPrinting.DocumentAmount, "ND=15; NFD=2") + ?(Currency, " " + TrimAll(SelectionForPrinting.CashCurrency), "");
-			TemplateArea.Parameters.SubAccount = TrimAll(SelectionForPrinting.BalancedAccount) + ?(ValueIsFilled(SelectionForPrinting.AdvancesBalancedAccount), "," + TrimAll(SelectionForPrinting.AdvancesBalancedAccount), "");
-			Heads = SmallBusinessServer.OrganizationalUnitsResponsiblePersons(SelectionForPrinting.Company, SelectionForPrinting.DocumentDate);
-			TemplateArea.Parameters.ChiefAccountantNameAndSurname = Heads.ChiefAccountantNameAndSurname;
-			TemplateArea.Parameters.CashierNameAndSurname = Heads.CashierNameAndSurname;
-		Else
-			SpreadsheetDocument.PrintParametersKey = "PRINT_PARAMETERS_CashReceipt_CashReceipt2014";
-			Template = PrintManagement.PrintedFormsTemplate("Document.CashReceipt.PF_MXL_CRV2014");
-			TemplateArea = Template.GetArea("Header");
-			TemplateArea.Parameters.Fill(SelectionForPrinting);
-			AcceptedFrom = TrimAll(SelectionForPrinting.AcceptedFrom);
-			If Find(AcceptedFrom, " ") > 0 AND Find(AcceptedFrom, """") = 0 Then
-				TemplateArea.Parameters.GiverDescriptionFull = IndividualsClientServer.SurnameInitialsOfIndividual(AcceptedFrom);
-			EndIf;
-			If SelectionForPrinting.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind Then
-				TemplateArea.Parameters.DebitCode = "";
-				TemplateArea.Parameters.SubAccount   = "";
-			Else
-				TemplateArea.Parameters.SubAccount = TrimAll(SelectionForPrinting.BalancedAccount) + ?(ValueIsFilled(SelectionForPrinting.AdvancesBalancedAccount), "," + TrimAll(SelectionForPrinting.AdvancesBalancedAccount), "");
-			EndIf;
-			Heads = SmallBusinessServer.OrganizationalUnitsResponsiblePersons(SelectionForPrinting.Company, SelectionForPrinting.DocumentDate);
-			TemplateArea.Parameters.ChiefAccountantPosition = Heads.ChiefAccountantPosition;
-			TemplateArea.Parameters.CashierPosition            = Heads.CashierPosition;
-			TemplateArea.Parameters.ChiefAccountantNameAndSurname = IndividualsClientServer.SurnameInitialsOfIndividual(Heads.ChiefAccountantNameAndSurname);
-			TemplateArea.Parameters.CashierNameAndSurname = IndividualsClientServer.SurnameInitialsOfIndividual(Heads.CashierNameAndSurname);
-		EndIf;
-		
-		If SelectionForPrinting.DocumentDate < Date('20110101') Then
-			DocumentNumber = SmallBusinessServer.GetNumberForPrinting(SelectionForPrinting.Number, SelectionForPrinting.Prefix);
-		Else
-			DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(SelectionForPrinting.Number, True, True);
-		EndIf;
-		
-		TemplateArea.Parameters.SumOfRubCop = ?(Currency, Format(SelectionForPrinting.DocumentAmount, "ND=15; NFD=2") + " " + TrimAll(SelectionForPrinting.CashCurrency), DollarsCents(SelectionForPrinting.DocumentAmount));
-		TemplateArea.Parameters.DocumentNumber = DocumentNumber;
-		
-		TemplateArea.Parameters.AmountInWords = SmallBusinessServer.FormatPaymentDocumentAmountInWords(
-			SelectionForPrinting.DocumentAmount,
-			SelectionForPrinting.CashCurrency,
-			False
-		);
-		
-		TemplateArea.Parameters.Including = GetTextToo(SelectionForPrinting, CurrentDocument.PaymentDetails);
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, SelectionForPrinting.Ref);
-	EndDo;
-	
-	SpreadsheetDocument.FitToPage = True;
-	
-	Return SpreadsheetDocument;
+	//SpreadsheetDocument = New SpreadsheetDocument;
+	//
+	//Return SpreadsheetDocument;
 	
 EndFunction // PrintForm()
 
@@ -3040,14 +2923,6 @@ EndFunction // PrintForm()
 //
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "OCR") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "OCR", "Cash receipt", PrintForm(ObjectsArray, PrintObjects));
-		
-	EndIf;
-	
-	// parameters of sending printing forms by email
-	SmallBusinessServer.FillSendingParameters(OutputParameters.SendingParameters, ObjectsArray, PrintFormsCollection);
 	
 EndProcedure
 
@@ -3058,11 +2933,6 @@ EndProcedure
 //
 Procedure AddPrintCommands(PrintCommands) Export
 	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "OCR";
-	PrintCommand.Presentation = NStr("en='KO-1 (Cash voucher)';ru='КО-1 (Приходный кассовый ордер)'");
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 1;
 	
 EndProcedure
 

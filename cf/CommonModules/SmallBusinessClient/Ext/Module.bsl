@@ -1222,30 +1222,36 @@ Function GetTitleOfPrintedForms(CommandParameter) Export
 	
 EndFunction // GetPrintedFormTitle()
 
+///////////////////////////////////////////////////////////////////////////////// 
 // UTD formation function
 //
-Function PrintUTD(CommandParameter) Export
-	Var Errors;
-	
-	ObjectArrayPrint = CommandParameter.PrintObjects;
-	SmallBusinessServer.ValidateOperationKind(ObjectArrayPrint, Errors);
-	
-	If ObjectArrayPrint.Count() > 0 Then
-		
-		SmallBusinessClient.GeneratePrintFormsUPD(ObjectArrayPrint);
-		
-	EndIf;
-	
-	If Errors <> Undefined Then
-		
-		CommonUseClientServer.ShowErrorsToUser(Errors);
-		
-	EndIf;
-	
-	Return Undefined;
-	
-EndFunction // GeneratePrintingFormsUTD()
+// was calling from CustomerInvoice.ManagerModule  :
+	//PrintCommand.ID = "UniversalTransferDocument";
+	//PrintCommand.Presentation = NStr("en='Universal transfer document';ru='Универсальный передаточный документ'");
+//
+//Function PrintUTD(CommandParameter) Export
+//	Var Errors;
+//	
+//	ObjectArrayPrint = CommandParameter.PrintObjects;
+//	SmallBusinessServer.ValidateOperationKind(ObjectArrayPrint, Errors);
+//	
+//	If ObjectArrayPrint.Count() > 0 Then
+//		
+//		SmallBusinessClient.GeneratePrintFormsUPD(ObjectArrayPrint);
+//		
+//	EndIf;
+//	
+//	If Errors <> Undefined Then
+//		
+//		CommonUseClientServer.ShowErrorsToUser(Errors);
+//		
+//	EndIf;
+//	
+//	Return Undefined;
+//	
+//EndFunction // GeneratePrintingFormsUTD()
 
+///////////////////////////////////////////////////////////////////////////////// 
 // Application 4 formation function (TN)
 //
 Function PrintWayBill(CommandParameter) Export

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>en</currentLanguage>
+		<currentLanguage>ru</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -82,6 +82,26 @@
 			<id>tr</id>
 			<code>Turkish</code>
 			<description>Turkish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>hu</id>
+			<code>Hungarian</code>
+			<description>Венгерский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>it</id>
+			<code>Italian</code>
+			<description>Итальянский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>es</id>
+			<code>Spanish</code>
+			<description>Испанский</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sv</id>
+			<code>Swedish</code>
+			<description>Шведский</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -421,11 +441,11 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Debt</v8:content>
+							<v8:content>Debt of</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Наш долг</v8:content>
+							<v8:content>Долг</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -437,17 +457,22 @@
 			</c>
 			<c>
 				<c>
-					<f>25</f>
+					<f>24</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Debt</v8:content>
+							<v8:content>Debt of</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Наш долг</v8:content>
+							<v8:content>Долг</v8:content>
 						</v8:item>
 					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>8</f>
 				</c>
 			</c>
 		</row>
@@ -459,7 +484,7 @@
 			<c>
 				<i>6</i>
 				<c>
-					<f>26</f>
+					<f>25</f>
 					<parameter>CompanyShortName</parameter>
 				</c>
 			</c>
@@ -470,7 +495,7 @@
 			</c>
 			<c>
 				<c>
-					<f>27</f>
+					<f>26</f>
 					<parameter>CounterpartyShortName</parameter>
 				</c>
 			</c>
@@ -502,7 +527,7 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>28</f>
+					<f>27</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -518,7 +543,7 @@
 			<c>
 				<i>6</i>
 				<c>
-					<f>29</f>
+					<f>28</f>
 					<parameter>CompanyDebtBeginOfPeriod</parameter>
 					<detailParameter>DocumentRef</detailParameter>
 				</c>
@@ -530,7 +555,7 @@
 			</c>
 			<c>
 				<c>
-					<f>30</f>
+					<f>29</f>
 					<parameter>CounterpartyDebtBeginOfPeriod</parameter>
 					<detailParameter>DocumentRef</detailParameter>
 				</c>
@@ -563,7 +588,7 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>31</f>
+					<f>30</f>
 					<parameter>DocumentDate</parameter>
 					<detailParameter>DocumentRef</detailParameter>
 				</c>
@@ -571,7 +596,7 @@
 			<c>
 				<i>3</i>
 				<c>
-					<f>32</f>
+					<f>31</f>
 					<parameter>CompanyDocumentDescription</parameter>
 					<detailParameter>DocumentRef</detailParameter>
 				</c>
@@ -579,7 +604,7 @@
 			<c>
 				<i>6</i>
 				<c>
-					<f>33</f>
+					<f>32</f>
 					<parameter>CompanyDebtAmount</parameter>
 					<detailParameter>DocumentRef</detailParameter>
 				</c>
@@ -591,7 +616,7 @@
 			</c>
 			<c>
 				<c>
-					<f>34</f>
+					<f>33</f>
 					<parameter>ClientDebtAmount</parameter>
 					<detailParameter>DocumentRef</detailParameter>
 				</c>
@@ -617,7 +642,7 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>35</f>
+					<f>34</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -648,7 +673,7 @@
 			</c>
 			<c>
 				<c>
-					<f>33</f>
+					<f>32</f>
 					<parameter>CompanyDebtAmount</parameter>
 					<detailParameter>DocumentRef</detailParameter>
 				</c>
@@ -660,7 +685,7 @@
 			</c>
 			<c>
 				<c>
-					<f>34</f>
+					<f>33</f>
 					<parameter>ClientDebtAmount</parameter>
 					<detailParameter>DocumentRef</detailParameter>
 				</c>
@@ -686,7 +711,7 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>28</f>
+					<f>27</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -702,7 +727,7 @@
 			<c>
 				<i>6</i>
 				<c>
-					<f>29</f>
+					<f>28</f>
 					<parameter>CompanyDebtEndPeriod</parameter>
 					<detailParameter>DocumentRef</detailParameter>
 				</c>
@@ -714,7 +739,7 @@
 			</c>
 			<c>
 				<c>
-					<f>30</f>
+					<f>29</f>
 					<parameter>CounterpartyDebtEndOfPeriod</parameter>
 					<detailParameter>DocumentRef</detailParameter>
 				</c>
@@ -740,11 +765,16 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>36</f>
+					<f>35</f>
 				</c>
 			</c>
 			<c>
 				<i>3</i>
+				<c>
+					<f>36</f>
+				</c>
+			</c>
+			<c>
 				<c>
 					<f>37</f>
 				</c>
@@ -769,11 +799,6 @@
 					<f>41</f>
 				</c>
 			</c>
-			<c>
-				<c>
-					<f>42</f>
-				</c>
-			</c>
 		</row>
 	</rowsItem>
 	<rowsItem>
@@ -783,7 +808,7 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>43</f>
+					<f>42</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -799,6 +824,11 @@
 			<c>
 				<i>3</i>
 				<c>
+					<f>36</f>
+				</c>
+			</c>
+			<c>
+				<c>
 					<f>37</f>
 				</c>
 			</c>
@@ -820,11 +850,6 @@
 			<c>
 				<c>
 					<f>41</f>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>42</f>
 				</c>
 			</c>
 		</row>
@@ -848,7 +873,7 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>44</f>
+					<f>43</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -863,7 +888,12 @@
 			</c>
 			<c>
 				<c>
-					<f>44</f>
+					<f>43</f>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>36</f>
 				</c>
 			</c>
 			<c>
@@ -889,11 +919,6 @@
 			<c>
 				<c>
 					<f>41</f>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>42</f>
 				</c>
 			</c>
 		</row>
@@ -929,7 +954,7 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>45</f>
+					<f>44</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -985,23 +1010,23 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>46</f>
+					<f>45</f>
 				</c>
 			</c>
 			<c>
 				<i>3</i>
 				<c>
-					<f>46</f>
+					<f>45</f>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>45</f>
 				</c>
 			</c>
 			<c>
 				<c>
 					<f>46</f>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>47</f>
 				</c>
 			</c>
 			<c>
@@ -1028,23 +1053,23 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>46</f>
+					<f>45</f>
 				</c>
 			</c>
 			<c>
 				<i>3</i>
 				<c>
-					<f>46</f>
+					<f>45</f>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>45</f>
 				</c>
 			</c>
 			<c>
 				<c>
 					<f>46</f>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>47</f>
 				</c>
 			</c>
 			<c>
@@ -1071,14 +1096,14 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>48</f>
+					<f>47</f>
 					<parameter>CompanyPresentation</parameter>
 				</c>
 			</c>
 			<c>
 				<i>5</i>
 				<c>
-					<f>47</f>
+					<f>46</f>
 				</c>
 			</c>
 			<c>
@@ -1088,7 +1113,7 @@
 			</c>
 			<c>
 				<c>
-					<f>49</f>
+					<f>48</f>
 					<parameter>PresentationOfCounterparty</parameter>
 				</c>
 			</c>
@@ -1102,18 +1127,18 @@
 	<rowsItem>
 		<index>34</index>
 		<row>
-			<formatIndex>50</formatIndex>
+			<formatIndex>49</formatIndex>
 			<c>
 				<i>1</i>
 				<c>
-					<f>51</f>
+					<f>50</f>
 					<parameter>HeadPost</parameter>
 				</c>
 			</c>
 			<c>
 				<i>5</i>
 				<c>
-					<f>47</f>
+					<f>46</f>
 				</c>
 			</c>
 			<c>
@@ -1123,7 +1148,7 @@
 			</c>
 			<c>
 				<c>
-					<f>52</f>
+					<f>51</f>
 					<parameter>CounterpartyHeadPost</parameter>
 				</c>
 			</c>
@@ -1136,7 +1161,7 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>53</f>
+					<f>52</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -1152,7 +1177,7 @@
 			<c>
 				<i>5</i>
 				<c>
-					<f>47</f>
+					<f>46</f>
 				</c>
 			</c>
 			<c>
@@ -1162,7 +1187,7 @@
 			</c>
 			<c>
 				<c>
-					<f>54</f>
+					<f>53</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -1180,22 +1205,22 @@
 	<rowsItem>
 		<index>36</index>
 		<row>
-			<formatIndex>55</formatIndex>
+			<formatIndex>54</formatIndex>
 			<c>
 				<i>1</i>
 				<c>
-					<f>46</f>
+					<f>45</f>
 				</c>
 			</c>
 			<c>
 				<i>4</i>
 				<c>
-					<f>46</f>
+					<f>45</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>47</f>
+					<f>46</f>
 				</c>
 			</c>
 			<c>
@@ -1217,7 +1242,7 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>53</f>
+					<f>52</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -1233,7 +1258,7 @@
 			<c>
 				<i>5</i>
 				<c>
-					<f>47</f>
+					<f>46</f>
 				</c>
 			</c>
 			<c>
@@ -1243,7 +1268,7 @@
 			</c>
 			<c>
 				<c>
-					<f>54</f>
+					<f>53</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -1261,18 +1286,18 @@
 	<rowsItem>
 		<index>38</index>
 		<row>
-			<formatIndex>55</formatIndex>
+			<formatIndex>54</formatIndex>
 			<c>
 				<i>1</i>
 				<c>
-					<f>56</f>
+					<f>55</f>
 					<parameter>HeadDescriptionFull</parameter>
 				</c>
 			</c>
 			<c>
 				<i>5</i>
 				<c>
-					<f>47</f>
+					<f>46</f>
 				</c>
 			</c>
 			<c>
@@ -1282,7 +1307,7 @@
 			</c>
 			<c>
 				<c>
-					<f>52</f>
+					<f>51</f>
 					<parameter>CounterpartyHeadNameAndSurname</parameter>
 				</c>
 			</c>
@@ -1295,7 +1320,7 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>53</f>
+					<f>52</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -1311,7 +1336,7 @@
 			<c>
 				<i>5</i>
 				<c>
-					<f>47</f>
+					<f>46</f>
 				</c>
 			</c>
 			<c>
@@ -1321,7 +1346,7 @@
 			</c>
 			<c>
 				<c>
-					<f>54</f>
+					<f>53</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -1339,46 +1364,46 @@
 	<rowsItem>
 		<index>41</index>
 		<row>
-			<formatIndex>57</formatIndex>
+			<formatIndex>56</formatIndex>
 			<c>
 				<i>1</i>
 				<c>
-					<f>58</f>
+					<f>57</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>58</f>
+					<f>57</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>58</f>
+					<f>57</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>58</f>
+					<f>57</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>58</f>
+					<f>57</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>58</f>
+					<f>57</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>58</f>
+					<f>57</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>58</f>
+					<f>57</f>
 				</c>
 			</c>
 		</row>
@@ -1435,42 +1460,42 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 		</row>
@@ -1481,42 +1506,42 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 		</row>
@@ -1527,42 +1552,42 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 		</row>
@@ -1573,42 +1598,42 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 		</row>
@@ -1619,42 +1644,42 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 		</row>
@@ -1665,42 +1690,42 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 		</row>
@@ -1711,42 +1736,42 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 		</row>
@@ -1757,42 +1782,42 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 		</row>
@@ -1803,42 +1828,42 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 		</row>
@@ -1849,42 +1874,42 @@
 			<c>
 				<i>1</i>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>59</f>
+					<f>58</f>
 				</c>
 			</c>
 		</row>
@@ -1892,7 +1917,7 @@
 	<drawing>
 		<drawingType>Picture</drawingType>
 		<id>2</id>
-		<formatIndex>60</formatIndex>
+		<formatIndex>59</formatIndex>
 		<beginRow>42</beginRow>
 		<beginRowOffset>12</beginRowOffset>
 		<endRow>52</endRow>
@@ -1955,6 +1980,11 @@
 	<merge>
 		<r>11</r>
 		<c>6</c>
+		<w>1</w>
+	</merge>
+	<merge>
+		<r>11</r>
+		<c>8</c>
 		<w>1</w>
 	</merge>
 	<merge>
@@ -2398,17 +2428,6 @@
 		<rightBorder>0</rightBorder>
 		<width>112</width>
 		<horizontalAlignment>Center</horizontalAlignment>
-		<backColor>style:ButtonBackColor</backColor>
-		<textPlacement>Wrap</textPlacement>
-	</format>
-	<format>
-		<font>4</font>
-		<leftBorder>0</leftBorder>
-		<topBorder>0</topBorder>
-		<rightBorder>0</rightBorder>
-		<width>178</width>
-		<horizontalAlignment>Center</horizontalAlignment>
-		<verticalAlignment>Top</verticalAlignment>
 		<backColor>style:ButtonBackColor</backColor>
 		<textPlacement>Wrap</textPlacement>
 	</format>

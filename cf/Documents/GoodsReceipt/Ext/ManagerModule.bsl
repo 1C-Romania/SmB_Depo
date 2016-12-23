@@ -354,176 +354,6 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			TemplateAreaFooter.Parameters.Fill(Header);
 			SpreadsheetDocument.Put(TemplateAreaFooter);
 			
-		ElsIf TemplateName = "TORG4" Then
-		
-			Query = New Query();
-			Query.SetParameter("CurrentDocument", CurrentDocument);
-			Query.Text = 
-			"SELECT
-			|	GoodsReceipt.Date AS DocumentDate,
-			|	GoodsReceipt.Company AS Company,
-			|	GoodsReceipt.StructuralUnit.Description AS WarehouseDescription,
-			|	GoodsReceipt.StructuralUnit.FRP AS FRP,
-			|	GoodsReceipt.Number,
-			|	GoodsReceipt.Company.Prefix AS Prefix,
-			|	GoodsReceipt.Inventory.(
-			|		LineNumber AS LineNumber,
-			|		ProductsAndServices.DescriptionFull AS InventoryItem,
-			|		ProductsAndServices.SKU AS SKU,
-			|		ProductsAndServices.Code AS Code,
-			|		MeasurementUnit AS MeasurementUnit,
-			|		MeasurementUnit.Code AS MeasurementUnitCode,
-			|		CASE
-			|			WHEN GoodsReceipt.Inventory.MeasurementUnit REFS Catalog.UOM
-			|				THEN GoodsReceipt.Inventory.MeasurementUnit.Factor
-			|			ELSE 1
-			|		END AS QuantityInOnePlace,
-			|		CASE
-			|			WHEN GoodsReceipt.Inventory.MeasurementUnit REFS Catalog.UOM
-			|				THEN GoodsReceipt.Inventory.Quantity * GoodsReceipt.Inventory.MeasurementUnit.Factor
-			|			ELSE GoodsReceipt.Inventory.Quantity
-			|		END AS CountUnits,
-			|		Quantity AS Quantity,
-			|		Characteristic
-			|	)
-			|FROM
-			|	Document.GoodsReceipt AS GoodsReceipt
-			|WHERE
-			|	GoodsReceipt.Ref = &CurrentDocument
-			|
-			|ORDER BY
-			|	LineNumber";
-			
-			Header = Query.Execute().Select();
-			Header.Next();
-			
-			LinesSelectionInventory = Header.Inventory.Select();
-
-			SpreadsheetDocument.PrintParametersName = "PRINTING_PARAMETERS_IncomeOrder_TORG4";
-			
-			Template = PrintManagement.PrintedFormsTemplate("Document.GoodsReceipt.PF_MXL_TORG4");
-			
-			SpreadsheetDocument.PageOrientation = PageOrientation.Landscape;
-			
-			InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate, ,);
-            			
-			TemplateAreaHeader            = Template.GetArea("Header");
-			TemplateAreaTableHeader = Template.GetArea("TableTitle");
-			TemplateAreaRow           = Template.GetArea("String");
-			TemplateAreaTotalByPage  = Template.GetArea("TotalsByPage");
-			TemplateAreaTotalAmount            = Template.GetArea("Total");
-			TemplateAreaFooter           = Template.GetArea("Footer");
-	
-			// Displaying general header attributes
-			If Header.DocumentDate < Date('20110101') Then
-				DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
-			Else
-				DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-			EndIf;		
-			
-			TemplateAreaHeader.Parameters.Fill(Header);
-			TemplateAreaHeader.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany);
-			TemplateAreaHeader.Parameters.CompanyByOKPO        = InfoAboutCompany.CodeByOKPO;
-			TemplateAreaHeader.Parameters.DocumentNumber           = DocumentNumber;
-	        TemplateAreaHeader.Parameters.DocumentDate            = Header.DocumentDate;
-	
-			Heads = SmallBusinessServer.OrganizationalUnitsResponsiblePersons(Header.Company, Header.DocumentDate);
-	
-			TemplateAreaHeader.Parameters.HeadDescriptionFull       = Heads.HeadDescriptionFull;
-			TemplateAreaHeader.Parameters.HeadPost = Heads.HeadPosition;
-
-			SpreadsheetDocument.Put(TemplateAreaHeader);
-	
-			// Initializing page counter
-			PageNumber = 1;
-			
-			// Initializing line counter
-			LineNumber     = 0;
-			LineCount = Header.Inventory.Unload().Count();
-			
-			// initializing totals on the page
-			TotalPiecesByPage     = 0;
-			TotalByPage        	= 0;
-			
-			// initializing totals on the document
-			TotalPcs        = 0;
-			Total	         = 0;
-			Num              = 0;
-			
-			// Displaying multiline part of the document
-			While LinesSelectionInventory.Next() Do
-				
-				LineNumber = LineNumber + 1;
-				
-				TemplateAreaRow.Parameters.Fill(LinesSelectionInventory);
-				
-				TemplateAreaRow.Parameters.InventoryItemDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
-			
-				// Check output
-				RowWithFooter = New Array;
-				If LineNumber = 1 Then
-					RowWithFooter.Add(TemplateAreaTableHeader); // if the first string, then should
-				EndIf;                                                   // fit title
-				RowWithFooter.Add(TemplateAreaRow);
-				RowWithFooter.Add(TemplateAreaTotalByPage);
-				If LineNumber = LineCount Then           // if the last string, should
-					RowWithFooter.Add(TemplateAreaTotalAmount);  // transfer and document footer
-					RowWithFooter.Add(TemplateAreaFooter);
-				EndIf;
-
-				If LineNumber <> 1 AND Not SpreadsheetDocument.CheckPut(RowWithFooter) Then
-					
-					TemplateAreaTotalByPage.Parameters.TotalPiecesByPage        = TotalPiecesByPage;				
-					TemplateAreaTotalByPage.Parameters.TotalByPage        	  = TotalByPage;				
-					SpreadsheetDocument.Put(TemplateAreaTotalByPage);
-					
-					SpreadsheetDocument.PutHorizontalPageBreak();
-					
-					// Clear results for the page
-					TotalPiecesByPage        = 0;
-					TotalByPage        = 0;
-					
-					// Display table header
-					PageNumber = PageNumber + 1;
-					TemplateAreaTableHeader.Parameters.PageNumber = "Page " + PageNumber; 
-					SpreadsheetDocument.Put(TemplateAreaTableHeader);
-					
-				ElsIf LineNumber = 1 Then // first string, everything fits
-					
-					TemplateAreaTableHeader.Parameters.PageNumber = "Page " + PageNumber; 
-					SpreadsheetDocument.Put(TemplateAreaTableHeader);
-					
-				EndIf;
-				
-				SpreadsheetDocument.Put(TemplateAreaRow);
-
-				// Update totals by page
-				TotalPiecesByPage = TotalPiecesByPage + LinesSelectionInventory.CountUnits;
-				TotalByPage = TotalByPage + LinesSelectionInventory.Quantity;
-				// Update totals by document		
-				TotalPcs = TotalPcs + LinesSelectionInventory.CountUnits;		
-				Total = Total + LinesSelectionInventory.Quantity;
-
-			EndDo;
-
-			// Output totals by document
-			TemplateAreaTotalByPage.Parameters.TotalPiecesByPage        = TotalPiecesByPage;
-			TemplateAreaTotalByPage.Parameters.TotalByPage	        = TotalByPage;
-			SpreadsheetDocument.Put(TemplateAreaTotalByPage);
-
-			// Output totals by document
-			TemplateAreaTotalAmount.Parameters.TotalPcs        = TotalPcs;
-			TemplateAreaTotalAmount.Parameters.Total        = Total;
-			SpreadsheetDocument.Put(TemplateAreaTotalAmount);
-			
-			// Output signatures
-			DataAboutIndividual = SmallBusinessServer.IndData(SmallBusinessServer.GetCompany(Header.Company), Header.FRP, Header.DocumentDate);
-		                                                                    
-			TemplateAreaFooter.Parameters.ICFN = DataAboutIndividual.Presentation;
-			TemplateAreaFooter.Parameters.ICPosition = TrimAll(DataAboutIndividual.Position);
-			
-			SpreadsheetDocument.Put(TemplateAreaFooter);
-			
 		ElsIf TemplateName = "MerchandiseFillingForm" Then
 			
 			Query = New Query();
@@ -623,9 +453,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			SpreadsheetDocument.Put(TemplateArea);			
 			
 		EndIf;
-		
 		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, CurrentDocument);
-		
 	EndDo;
 	
 	SpreadsheetDocument.FitToPage = True;
@@ -648,27 +476,15 @@ EndFunction // PrintForm()
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "GoodsReceipt") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "GoodsReceipt", "Purchase order receipt", PrintForm(ObjectsArray, PrintObjects, "GoodsReceipt"));
-		
 	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "M4") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "M4", "M-4", PrintForm(ObjectsArray, PrintObjects, "M4"));
-		
-	EndIf;
-	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "TORG4") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "TORG4", "T-4", PrintForm(ObjectsArray, PrintObjects, "TORG4"));
-		
 	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "MerchandiseFillingForm") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "MerchandiseFillingForm", "Merchandise filling form", PrintForm(ObjectsArray, PrintObjects, "MerchandiseFillingForm"));
-		
 	EndIf;
 	
 	// parameters of sending printing forms by email
@@ -685,21 +501,14 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "M4";
-	PrintCommand.Presentation = NStr("en='M4 (Purchase order receipt)';ru='М4 (Приходный ордер)'");
+	PrintCommand.Presentation = NStr("en='Purchase order receipt';ru='Приходный ордер'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "TORG4";
-	PrintCommand.Presentation = NStr("en='TORG4 (Goods acceptance certificate)';ru='ТОРГ4 (Акт о приемке товара)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 4;
-	
-	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "GoodsReceipt";
-	PrintCommand.Presentation = NStr("en='Purchase order receipt';ru='Приходный ордер'");
+	PrintCommand.Presentation = NStr("en='Purchase order receipt (plain)';ru='Приходный ордер (плоский)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;

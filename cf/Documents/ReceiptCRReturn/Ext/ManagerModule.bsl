@@ -1017,7 +1017,9 @@ Function GeneratePrintFormOfTheBill(ObjectsArray, PrintObjects)
 		While LinesSelectionInventory.Next() Do
 			
 			If Not ValueIsFilled(LinesSelectionInventory.ProductsAndServices) Then
-				Message("Products and services value is not filled in in one of the rows - String during printing is skipped.", MessageStatus.Important);
+				Message(NStr("en='Products and services value is not filled in in one of the rows - String during printing is skipped.';
+							 |ru='Products and services value is not filled in in one of the rows - String during printing is skipped.'"), 
+					MessageStatus.Important);
 				Continue;
 			EndIf;
 			
@@ -1079,10 +1081,10 @@ Function GeneratePrintFormOfTheBill(ObjectsArray, PrintObjects)
 		// Output amount in writing.
 		TemplateArea = Template.GetArea("AmountInWords");
 		AmountToBeWrittenInWords = Total;
-		TemplateArea.Parameters.TotalRow = "Total titles "
-													+ String(LinesSelectionInventory.Count())
-													+ ", in the amount of "
-													+ SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.Currency);
+		TemplateArea.Parameters.TotalRow = NStr("en='Total titles ';ru='Total titles '") + 
+											String(LinesSelectionInventory.Count()) + 
+											NStr("en=', in the amount of ';ru=', in the amount of '") + 
+											SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.Currency);
 																						   
 		TemplateArea.Parameters.AmountInWords = WorkWithCurrencyRates.GenerateAmountInWords(AmountToBeWrittenInWords, Header.Currency);
 		Spreadsheet.Put(TemplateArea);
@@ -1102,108 +1104,12 @@ Function GeneratePrintFormOfTheBill(ObjectsArray, PrintObjects)
 	
 EndFunction // GeneratePettyCashBookCoverAndLastSheetPrintableForm()
 
-// Function generates tabular document with KM3 printing form.
-//
-// Returns:
-//  SpreadsheetDocument - printing form.
-//
-Function GeneratePrintFormKM3(ObjectsArray, PrintObjects)
-	
-	Spreadsheet = New SpreadsheetDocument;
-	Spreadsheet.PrintParametersName = "PRINT_PARAMETERS_Receipt_CM3";
-	
-	Template = PrintManagement.PrintedFormsTemplate("Document.ReceiptCRReturn.PF_MXL_KM3");
-	
-	FirstDocument = True;
-	
-	For Each ReceiptCRReturn IN ObjectsArray Do
-		
-		If Not FirstDocument Then
-			Spreadsheet.PutHorizontalPageBreak();
-		EndIf;
-		FirstDocument = False;
-		
-		FirstLineNumber = Spreadsheet.TableHeight + 1;
-		
-		Query = New Query;
-		Query.SetParameter("CurrentDocument", ReceiptCRReturn);
-		
-		Query.Text =
-		"SELECT
-		|	DocReceipt.Number AS Number,
-		|	DocReceipt.Date AS DocumentDate,
-		|	DocReceipt.CashCR AS CashCR,
-		|	DocReceipt.Author AS Author,
-		|	DocReceipt.CashCR.Presentation AS Customer,
-		|	DocReceipt.DocumentCurrency AS Currency,
-		|	DocReceipt.Company AS Company,
-		|	DocReceipt.Company AS Heads,
-		|	DocReceipt.Company.Presentation AS Vendor,
-		|	"""" AS CashRegisterSerialNumber,
-		|	"""" AS CashRegisterRegistrationNumber,
-		|	DocReceipt.ReceiptCRNumber AS ReceiptNumber,
-		|	DocReceipt.DocumentAmount AS DocumentAmount
-		|FROM
-		|	Document.ReceiptCRReturn AS DocReceipt
-		|WHERE
-		|	DocReceipt.Ref = &CurrentDocument";
-		
-		Header = Query.Execute().Select();
-		Header.Next();
-		
-		TemplateArea = Template.GetArea("ActArea");
-		
-		TemplateArea.Parameters.Fill(Header);
-		
-		InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate, ,);
-		
-		TemplateArea.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,PhoneNumbers,");
-		TemplateArea.Parameters.AmountInWords            = WorkWithCurrencyRates.GenerateAmountInWords(Header.DocumentAmount, Header.Currency);
-
-		TemplateArea.Parameters.DocumentNumber           = "";
-		
-		TemplateArea.Parameters.CompanyByOKPO     = InfoAboutCompany.CodeByOKPO;
-		TemplateArea.Parameters.CompanyTIN        = InfoAboutCompany.TIN;
-		TemplateArea.Parameters.ActivityKindByOKDP = "";
-		
-		Heads          = SmallBusinessServer.OrganizationalUnitsResponsiblePersons(Header.Company, Header.DocumentDate);
-		Head          = Heads.HeadDescriptionFull;
-		SeniorCashier         = Heads.CashierNameAndSurname;
-		HeadPost = Heads.HeadPosition;
-		
-		If ValueIsFilled(Header.Author) Then
-			CashierOperatorNameAndSurname = Header.Author;
-		EndIf;
-		
-		TemplateArea.Parameters.CompanyCashierNameAndSurname   = SeniorCashier;
-		TemplateArea.Parameters.HeadDescriptionFull         = Head;
-		TemplateArea.Parameters.CashierOperatorNameAndSurname = CashierOperatorNameAndSurname;
-		TemplateArea.Parameters.HeadPost   = HeadPost;
-		
-		Spreadsheet.Put(TemplateArea);
-		
-		PrintManagement.SetDocumentPrintArea(Spreadsheet, FirstLineNumber, PrintObjects, ReceiptCRReturn);
-		
-	EndDo;
-		
-	Return Spreadsheet;
-	
-EndFunction // GenerateKM3PrintingForm()
-
 // Document printing procedure.
 //
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "KM3") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "KM3", "KM-3",GeneratePrintFormKM3(ObjectsArray, PrintObjects));
-		
-	EndIf;
-	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "SalesReceipt") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "SalesReceipt", "Sales receipt", GeneratePrintFormOfTheBill(ObjectsArray, PrintObjects));
-		
 	EndIf;
 	
 	// parameters of sending printing forms by email
@@ -1218,20 +1124,6 @@ EndProcedure // Print()
 //
 Procedure AddPrintCommands(PrintCommands) Export
 	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "KM3,SalesReceipt";
-	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 1;
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "KM3";
-	PrintCommand.Presentation = NStr("en='KM3 (Customers money repayment certificate)';ru='КМ3 (Акт о возврате денежных сумм покупателям)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 4;
-
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "SalesReceipt";
 	PrintCommand.Presentation = NStr("en='Sales receipt';ru='Товарный чек'");

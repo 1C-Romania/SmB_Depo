@@ -176,7 +176,8 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		CreditorAccountingSum = Creditor.Total("AccountingAmount");
 		
 		If CreditorAccountingSum <> AccountingAmount Then
-			MessageText = NStr("en='Account amount is not equal to amount in the tabular section ""Accounts payable""!';ru='Сумма учета, не равна сумме учета табличной части ""Расчеты с поставщиком""!'");
+			MessageText = NStr("en='Account amount is not equal to amount in the tabular section ""Accounts payable""!';
+							   |ru='Сумма учета, не равна сумме табличной части ""Расчеты с поставщиком""!'");
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
 				MessageText,

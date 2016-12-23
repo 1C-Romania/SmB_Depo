@@ -371,11 +371,14 @@ Procedure CheckCorrectnessOfDetailsOfDocumentFill(QuestionText)
 	
 	If Selection.Count() > 1 Then
 		
+		//	AlekS   need attention!
+		//	речь идет об Обмене Данными с "1С:БП" ? - нужно проанализировать
 		QuestionText = NStr("en='Document created in several currencies will not be transferred to Enterprise Accounting.
-		|
-		|Do you like to continue document record?';ru='Документ оформленный в нескольких валютах не будет перенесен в ""Бухгалтерию предприятия"".
-		|
-		|Продолжить запись документа?'");
+							|
+							|Do you like to continue document record?';
+							|ru='Документ оформленный в нескольких валютах не будет перенесен в ""Бухгалтерию предприятия"".
+							|
+							|Продолжить запись документа?'");
 			
 		Return;
 		
@@ -385,13 +388,16 @@ Procedure CheckCorrectnessOfDetailsOfDocumentFill(QuestionText)
 	If Object.OperationKind = Enums.OperationKindsNetting.Netting
 		AND SumAdvancesDebitor <> SumAdvancesLender Then
 		
+		//	AlekS   need attention!
+		//	речь идет об Обмене Данными с "1С:БП" ? - нужно проанализировать
 		QuestionText = NStr("en='Document which advance amount in tabular section ""Accounts receivable"" does
-		|not correspond to the advance amount of tabular section ""Accounts payable"" will not be transferred to Enterprise Accounting.
-		|
-		|Do you like to continue document record?';ru='Документ, у которого сумма авансов в табличной части
-		|""Расчеты с покупателем"" не соответствует сумме авансов в табличной части ""Расчеты с поставщиком"" не будет перенесен в ""Бухгалтерию предприятия"".
-		|
-		|Продолжить запись документа?'");
+							|not correspond to the advance amount of tabular section ""Accounts payable"" will not be transferred to Enterprise Accounting.
+							|
+							|Do you like to continue document record?';
+							|ru='Документ, у которого сумма авансов в табличной части
+							|""Расчеты с покупателем"" не соответствует сумме авансов в табличной части ""Расчеты с поставщиком"" не будет перенесен в ""Бухгалтерию предприятия"".
+							|
+							|Продолжить запись документа?'");
 			
 		Return;
 		

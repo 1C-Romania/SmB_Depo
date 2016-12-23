@@ -75,10 +75,10 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			EndIf;
 			
 			TemplateArea = Template.GetArea("Title");
-			TemplateArea.Parameters.HeaderText = "Inventory survey No "
-			+ DocumentNumber
-			+ " from "
-			+ Format(Header.DocumentDate, "DLF=DD");
+			TemplateArea.Parameters.HeaderText = NStr("en='Inventory survey No ';ru='Инвентаризация запасов № '") + 
+												 DocumentNumber + 
+												 NStr("en=' from ';ru=' от '") + 
+												 Format(Header.DocumentDate, "DLF=DD");
 			
 			SpreadsheetDocument.Put(TemplateArea);
 			
@@ -95,10 +95,10 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			EndIf;
 			
 			TemplateArea = Template.GetArea("PrintingTime");
-			TemplateArea.Parameters.PrintingTime = "Date and time of printing: "
-			+ CurrentDate()
-			+ ". User: "
-			+ Users.CurrentUser();
+			TemplateArea.Parameters.PrintingTime = 	NStr("en='Date and time of printing: ';ru='Дата и время печати '") +
+													CurrentDate() + 
+													NStr("en='. User: ';ru='. Пользователь: '") + 
+													Users.CurrentUser();
 			SpreadsheetDocument.Put(TemplateArea);
 			
 			TemplateArea = Template.GetArea("TableHeader");
@@ -121,472 +121,6 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			
 			TemplateArea = Template.GetArea("Total");
 			SpreadsheetDocument.Put(TemplateArea);	
-			
-		ElsIf TemplateName = "INV3" OR TemplateName = "INV3WithoutFactData" Then
-			
-			PrintingCurrency = Constants.NationalCurrency.Get();
-			
-			Query = New Query;
-			Query.SetParameter("CurrentDocument", CurrentDocument);
-			Query.SetParameter("Date", CurrentDocument.Date);
-			Query.Text =
-			"SELECT
-			|	InventoryReconciliation.Number AS Number,
-			|	InventoryReconciliation.Date AS DocumentDate,
-			|	InventoryReconciliation.Date AS BeginDateOfInventory,
-			|	InventoryReconciliation.Date AS EndDateOfInventory,
-			|	InventoryReconciliation.StructuralUnit.FRP AS ResponsiblePerson,
-			|	InventoryReconciliation.Company,
-			|	InventoryReconciliation.StructuralUnit.Presentation AS Division,
-			|	InventoryReconciliation.Company.Prefix AS Prefix,
-			|	InventoryReconciliation.Inventory.(
-			|		LineNumber AS Number,
-			|		ProductsAndServices,
-			|		CASE
-			|			WHEN (CAST(InventoryReconciliation.Inventory.ProductsAndServices.DescriptionFull AS String(1000))) = """"
-			|				THEN InventoryReconciliation.Inventory.ProductsAndServices.Description
-			|			ELSE CAST(InventoryReconciliation.Inventory.ProductsAndServices.DescriptionFull AS String(1000))
-			|		END AS ProductDescription,
-			|		Characteristic,
-			|		ProductsAndServices.SKU AS SKU,
-			|		ProductsAndServices.Code AS ProductCode,
-			|		ProductsAndServices.MeasurementUnit.Description AS MeasurementUnitDescription,
-			|		ProductsAndServices.MeasurementUnit.Code AS MeasurementUnitCodeByOKEI,
-			|		ProductsAndServices.InventoryGLAccount.Code AS SubAccount,
-			|		CAST(CASE
-			|				WHEN Constants.AccountingCurrency = Constants.NationalCurrency
-			|					THEN InventoryReconciliation.Inventory.Price
-			|				ELSE InventoryReconciliation.Inventory.Price * ManagCurrencyRates.ExchangeRate / ManagCurrencyRates.Multiplicity
-			|			END AS NUMBER(15, 2)) AS Price,
-			|		Quantity AS FactCount,
-			|		QuantityAccounting AS AccCount,
-			|		CAST(CASE
-			|				WHEN Constants.AccountingCurrency = Constants.NationalCurrency
-			|					THEN InventoryReconciliation.Inventory.Amount
-			|				ELSE InventoryReconciliation.Inventory.Amount * ManagCurrencyRates.ExchangeRate / ManagCurrencyRates.Multiplicity
-			|			END AS NUMBER(15, 2)) AS FactAmount,
-			|		CAST(CASE
-			|				WHEN Constants.AccountingCurrency = Constants.NationalCurrency
-			|					THEN InventoryReconciliation.Inventory.AmountAccounting
-			|				ELSE InventoryReconciliation.Inventory.AmountAccounting * ManagCurrencyRates.ExchangeRate / ManagCurrencyRates.Multiplicity
-			|			END AS NUMBER(15, 2)) AS AccSum
-			|	)
-			|FROM
-			|	Document.InventoryReconciliation AS InventoryReconciliation
-			|		LEFT JOIN InformationRegister.CurrencyRates.SliceLast(
-			|				&Date,
-			|				Currency In
-			|					(SELECT
-			|						ConstantAccountingCurrency.Value
-			|					FROM
-			|						Constant.AccountingCurrency AS ConstantAccountingCurrency)) AS ManagCurrencyRates
-			|		ON (TRUE),
-			|	Constants AS Constants
-			|WHERE
-			|	InventoryReconciliation.Ref = &CurrentDocument
-			|
-			|ORDER BY
-			|	InventoryReconciliation.Inventory.LineNumber";
-			Header = Query.Execute().Select();
-			
-			Header.Next();
-			
-			StringSelectionProducts = Header.Inventory.Select();
-			
-			// Specify default layout parameters
-			SpreadsheetDocument.TopMargin              = 10;
-			SpreadsheetDocument.LeftMargin               = 0;
-			SpreadsheetDocument.BottomMargin               = 0;
-			SpreadsheetDocument.RightMargin              = 0;
-			SpreadsheetDocument.HeaderSize = 10;
-			SpreadsheetDocument.PageOrientation      = PageOrientation.Landscape;
-			
-			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_InventoryOFInventory_INV3";
-			Template       = PrintManagement.PrintedFormsTemplate("Document.InventoryReconciliation.PF_MXL_INV3");
-			
-			//////////////////////////////////////////////////////////////////////
-			// 1st form page
-			
-			// Displaying invoice header
-			TemplateArea = Template.GetArea("Header");
-			TemplateArea.Parameters.Fill(Header);
-			
-			InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate);
-			CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,");
-			TemplateArea.Parameters.CompanyPresentation = CompanyPresentation;
-			
-			If Header.DocumentDate < Date('20110101') Then
-				DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
-			Else
-				DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-			EndIf;		
-			
-			TemplateArea.Parameters.CompanyByOKPO        = InfoAboutCompany.CodeByOKPO;
-			TemplateArea.Parameters.DocumentDate            = Header.DocumentDate;
-			TemplateArea.Parameters.DocumentNumber           = DocumentNumber;
-			TemplateArea.Parameters.EndDateOfInventoryLocalFormat = Header.EndDateOfInventory; 
-			
-			ICData = SmallBusinessServer.IndData(Header.Company, Header.ResponsiblePerson, Header.DocumentDate);
-			TemplateArea.Parameters.PostFRP1     = ICData.Position;
-			TemplateArea.Parameters.PAName1           = ICData.Presentation;	
-			
-			SpreadsheetDocument.Put(TemplateArea);
-			SpreadsheetDocument.PutHorizontalPageBreak();
-			
-			//////////////////////////////////////////////////////////////////////
-			// 2nd form page
-			
-			TotalFactQuantity = 0;
-			TotalFactAmount      = 0;
-			TotalRealSumTotal = 0;
-			TotalAccQuantity  = 0;
-			TotalAccSum       = 0;
-			
-			RowsOnPageQty = 0;
-			QuantityOnPage      = 0;
-			SheetAmount           = 0;
-			TotalNumber           = 0;
-			
-			PageNumber = 2;
-			Num = 0;
-			
-			// Displaying table title
-			TableTitle = Template.GetArea("TableTitle");
-			TableTitle.Parameters.PageNumber = "Page " + PageNumber; 
-			SpreadsheetDocument.Put(TableTitle);
-			
-			// Displaying multiline part of the document
-			FooterPages  = Template.GetArea("FooterPages");	
-			
-			While StringSelectionProducts.Next() Do
-				
-				Num = Num + 1;
-				TableRow   = Template.GetArea("String");
-				TableRow.Parameters.Fill(StringSelectionProducts);
-				TableRow.Parameters.ProductDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(StringSelectionProducts.ProductDescription, 
-				StringSelectionProducts.Characteristic, StringSelectionProducts.SKU);
-				
-				If TemplateName = "INV3WithoutFactData" Then
-					TableRow.Parameters.FactCount = "";
-					TableRow.Parameters.FactAmount = "";	
-				EndIf;
-				
-				RowWithFooter = New Array;
-				RowWithFooter.Add(TableRow);
-				RowWithFooter.Add(FooterPages);
-				
-				If Not SpreadsheetDocument.CheckPut(RowWithFooter) Then
-					
-					TotalsAreaByPage = Template.GetArea("FooterPages");
-					
-					If TemplateName = "INV3" Then
-						TotalsAreaByPage.Parameters.TotalFactCount = TotalFactQuantity;
-						TotalsAreaByPage.Parameters.TotalAmountOfFact      = TotalFactAmount;	
-					EndIf;
-					TotalsAreaByPage.Parameters.TotalAccountingCount  = TotalAccQuantity;
-					TotalsAreaByPage.Parameters.TotalAccountingSum       = TotalAccSum;
-					
-					TotalsAreaByPage.Parameters.CountOfSequenceNumbersInWordsOnPage     = NumberInWords(RowsOnPageQty, ,",,,,,,,,0");
-					If TemplateName = "INV3" Then
-						TotalsAreaByPage.Parameters.CountTotalUnitsActuallyOnPageInWords = SmallBusinessServer.QuantityInWords(QuantityOnPage);
-						TotalsAreaByPage.Parameters.RealAmountOnPageInWords                 = WorkWithCurrencyRates.GenerateAmountInWords(SheetAmount, PrintingCurrency);	
-					EndIf;
-					
-					SpreadsheetDocument.Put(TotalsAreaByPage);
-					
-					PageNumber = PageNumber + 1;
-					SpreadsheetDocument.PutHorizontalPageBreak();
-					
-					TableTitle.Parameters.PageNumber = "Page " + PageNumber;
-					SpreadsheetDocument.Put(TableTitle);
-					
-					TotalFactQuantity = 0;
-					TotalFactAmount      = 0;
-					TotalAccQuantity  = 0;
-					TotalAccSum       = 0;
-					
-					RowsOnPageQty = 0;
-					QuantityOnPage      = 0;
-					SheetAmount           = 0;
-					
-				EndIf;
-				
-				TableRow.Parameters.Number = Num;
-				
-				SpreadsheetDocument.Put(TableRow);
-				
-				If TemplateName = "INV3" Then
-					TotalFactQuantity = TotalFactQuantity + StringSelectionProducts.FactCount;
-					TotalFactAmount      = TotalFactAmount      + StringSelectionProducts.FactAmount;
-					TotalRealSumTotal = TotalRealSumTotal + StringSelectionProducts.FactAmount;
-				EndIf;
-				TotalAccQuantity  = TotalAccQuantity  + StringSelectionProducts.AccCount;
-				TotalAccSum       = TotalAccSum       + StringSelectionProducts.AccSum;
-				TotalNumber         = TotalNumber         + StringSelectionProducts.FactCount;
-				
-				RowsOnPageQty = RowsOnPageQty + 1;
-				QuantityOnPage      = QuantityOnPage      + StringSelectionProducts.FactCount;
-				SheetAmount           = SheetAmount           + StringSelectionProducts.FactAmount;
-				
-			EndDo;
-			
-			// Display totals on the last page
-			TotalsAreaByPage = Template.GetArea("FooterPages");
-			
-			If TemplateName = "INV3" Then
-				TotalsAreaByPage.Parameters.TotalFactCount  = TotalFactQuantity;
-				TotalsAreaByPage.Parameters.TotalAmountOfFact       = TotalFactAmount;
-				TotalsAreaByPage.Parameters.CountTotalUnitsActuallyOnPageInWords = SmallBusinessServer.QuantityInWords(QuantityOnPage);
-				TotalsAreaByPage.Parameters.RealAmountOnPageInWords                 = WorkWithCurrencyRates.GenerateAmountInWords(SheetAmount, PrintingCurrency);
-			EndIf;
-			TotalsAreaByPage.Parameters.TotalAccountingCount   = TotalAccQuantity;
-			TotalsAreaByPage.Parameters.TotalAccountingSum        = TotalAccSum;
-			TotalsAreaByPage.Parameters.CountOfSequenceNumbersInWordsOnPage     = NumberInWords(RowsOnPageQty, ,",,,,,,,,0");
-			SpreadsheetDocument.Put(TotalsAreaByPage);
-			
-			// Display the footer of the document
-			SpreadsheetDocument.PutHorizontalPageBreak();
-			TemplateArea = Template.GetArea("FooterDescription");
-			TemplateArea.Parameters.Fill(Header);
-			If TemplateName = "INV3" Then
-				TemplateArea.Parameters.CountTotalUnitsActuallyOnPageInWords = SmallBusinessServer.QuantityInWords(TotalNumber);
-				TemplateArea.Parameters.RealAmountOnPageInWords                 = WorkWithCurrencyRates.GenerateAmountInWords(TotalRealSumTotal, PrintingCurrency);
-			EndIf;
-			TemplateArea.Parameters.CountOfSequenceNumbersInWordsOnPage     = NumberInWords(StringSelectionProducts.Count(), ,",,,,,,,,0");
-			
-			SpreadsheetDocument.Put(TemplateArea);
-			
-			TemplateArea = Template.GetArea("FooterDescriptionFRP");
-			TemplateArea.Parameters.Fill(Header);
-			TemplateArea.Parameters.StartingSerialNumber = 1;
-			TemplateArea.Parameters.NumberEnd              = StringSelectionProducts.Count();
-			
-			TemplateArea.Parameters.PostFRP1   = ICData.Position;
-			TemplateArea.Parameters.PAName1         = ICData.Presentation;
-			
-			TemplateArea.Parameters.DocumentDate 	= Header.DocumentDate;
-			
-			SpreadsheetDocument.Put(TemplateArea);	
-			
-		ElsIf TemplateName = "INV19" Then
-			
-			PrintingCurrency = Constants.NationalCurrency.Get();
-
-			Query       = New Query;
-			Query.SetParameter("CurrentDocument", CurrentDocument);
-			Query.SetParameter("Date", CurrentDocument.Date);
-			Query.Text =
-			"SELECT
-			|	InventoryReconciliation.Number AS Number,
-			|	InventoryReconciliation.Date AS DocumentDate,
-			|	InventoryReconciliation.Date AS BeginDateOfInventory,
-			|	InventoryReconciliation.Date AS EndDateOfInventory,
-			|	InventoryReconciliation.StructuralUnit.FRP AS ResponsiblePerson,
-			|	InventoryReconciliation.Company,
-			|	InventoryReconciliation.Company AS Heads,
-			|	InventoryReconciliation.StructuralUnit.Presentation AS DivisionsPresentation,
-			|	InventoryReconciliation.Company.Prefix AS Prefix,
-			|	InventoryReconciliation.Inventory.(
-			|		LineNumber AS Number,
-			|		ProductsAndServices,
-			|		CASE
-			|			WHEN (CAST(InventoryReconciliation.Inventory.ProductsAndServices.DescriptionFull AS String(1000))) = """"
-			|				THEN InventoryReconciliation.Inventory.ProductsAndServices.Description
-			|			ELSE CAST(InventoryReconciliation.Inventory.ProductsAndServices.DescriptionFull AS String(1000))
-			|		END AS ProductDescription,
-			|		Characteristic,
-			|		ProductsAndServices.SKU AS SKU,
-			|		ProductsAndServices.Code AS ProductCode,
-			|		ProductsAndServices.MeasurementUnit.Presentation AS MeasurementUnitDescription,
-			|		ProductsAndServices.MeasurementUnit.Code AS MeasurementUnitCodeByOKEI,
-			|		CAST(CASE
-			|				WHEN Constants.AccountingCurrency = Constants.NationalCurrency
-			|					THEN InventoryReconciliation.Inventory.Price
-			|				ELSE InventoryReconciliation.Inventory.Price * ManagCurrencyRates.ExchangeRate / ManagCurrencyRates.Multiplicity
-			|			END AS NUMBER(15, 2)) AS Price,
-			|		Quantity AS FactCount,
-			|		QuantityAccounting AS AccCount,
-			|		CAST(CASE
-			|				WHEN Constants.AccountingCurrency = Constants.NationalCurrency
-			|					THEN InventoryReconciliation.Inventory.Amount
-			|				ELSE InventoryReconciliation.Inventory.Amount * ManagCurrencyRates.ExchangeRate / ManagCurrencyRates.Multiplicity
-			|			END AS NUMBER(15, 2)) AS FactAmount,
-			|		CAST(CASE
-			|				WHEN Constants.AccountingCurrency = Constants.NationalCurrency
-			|					THEN InventoryReconciliation.Inventory.AmountAccounting
-			|				ELSE InventoryReconciliation.Inventory.AmountAccounting * ManagCurrencyRates.ExchangeRate / ManagCurrencyRates.Multiplicity
-			|			END AS NUMBER(15, 2)) AS AccSum
-			|	)
-			|FROM
-			|	Document.InventoryReconciliation AS InventoryReconciliation
-			|		LEFT JOIN InformationRegister.CurrencyRates.SliceLast(
-			|				&Date,
-			|				Currency In
-			|					(SELECT
-			|						ConstantAccountingCurrency.Value
-			|					FROM
-			|						Constant.AccountingCurrency AS ConstantAccountingCurrency)) AS ManagCurrencyRates
-			|		ON (TRUE),
-			|	Constants AS Constants
-			|WHERE
-			|	InventoryReconciliation.Ref = &CurrentDocument
-			|
-			|ORDER BY
-			|	InventoryReconciliation.Inventory.LineNumber";
-
-			Header = Query.Execute().Select();
-			Header.Next();
-			StringSelectionProducts = Header.Inventory.Select();
-
-			// Printing parameters.
-			SpreadsheetDocument.TopMargin = 0;
-			SpreadsheetDocument.LeftMargin  = 0;
-			SpreadsheetDocument.BottomMargin  = 0;
-			SpreadsheetDocument.RightMargin = 0;
-			SpreadsheetDocument.PageOrientation = PageOrientation.Landscape;
-			
-			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_InventoryInventoryOf_INV19";
-			
-			// Receive layout areas.
-			Template = PrintManagement.PrintedFormsTemplate("Document.InventoryReconciliation.PF_MXL_INV19");
-			
-			TemplateAreaHeader            = Template.GetArea("Header");
-			TemplateAreaTableHeader = Template.GetArea("TableHeader1");
-			TemplateAreaRow           = Template.GetArea("TableString1");
-			TemplateAreaTotalByPage  = Template.GetArea("TotalTables1");
-			TemplateAreaFooter           = Template.GetArea("Footer");
-
-			// Output document header.
-			TemplateAreaHeader.Parameters.Fill(Header);
-			
-			InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate);
-			CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,");
-			TemplateAreaHeader.Parameters.CompanyPresentation = CompanyPresentation;
-			
-			If Header.DocumentDate < Date('20110101') Then
-				DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
-			Else
-				DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-			EndIf;		
-			
-			TemplateAreaHeader.Parameters.CompanyByOKPO        = InfoAboutCompany.CodeByOKPO;
-			TemplateAreaHeader.Parameters.DocumentDate            = Header.DocumentDate;
-			TemplateAreaHeader.Parameters.BeginDateOfInventory = Header.BeginDateOfInventory;
-			TemplateAreaHeader.Parameters.DocumentNumber           = DocumentNumber;
-			
-			ICData = SmallBusinessServer.IndData(Header.Company, Header.ResponsiblePerson, Header.DocumentDate);
-			TemplateAreaHeader.Parameters.PostFRP1     = ICData.Position;
-			TemplateAreaHeader.Parameters.PAName1           = ICData.Presentation;
-
-			Heads = SmallBusinessServer.OrganizationalUnitsResponsiblePersons(Header.Heads, Header.DocumentDate);
-			Head = Heads.HeadDescriptionFull;
-			Accountant    = Heads.ChiefAccountantNameAndSurname;
-
-			SpreadsheetDocument.Put(TemplateAreaHeader);
-			SpreadsheetDocument.PutHorizontalPageBreak();
-
-			PageNumber   = 2;
-			LineNumber     = 1;
-			LineCount = StringSelectionProducts.Count();
-
-			TotalAmountResultExceedCount   = 0;
-			TotalResultSumExcess        = 0;
-			TotalResultShortageAmount = 0;
-			TotalAmountResultLossAmount      = 0;
-
-			// Output table title.
-			TemplateAreaTableHeader.Parameters.PageNumber = "Page " + PageNumber; 
-			SpreadsheetDocument.Put(TemplateAreaTableHeader);
-
-			// Output multiline document section.
-			While StringSelectionProducts.Next() Do
-
-				TemplateAreaRow.Parameters.Fill(StringSelectionProducts);
-				TemplateAreaRow.Parameters.ProductDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(StringSelectionProducts.ProductDescription, 
-																		StringSelectionProducts.Characteristic, StringSelectionProducts.SKU);
-				
-				Difference     = 0;
-				ValueDifference = 0;
-
-				Difference     = StringSelectionProducts.FactCount - StringSelectionProducts.AccCount;
-				ValueDifference = StringSelectionProducts.FactAmount      - StringSelectionProducts.AccSum;
-				
-				If Difference = 0 Then
-					Continue;
-				EndIf;
-
-				TemplateAreaRow.Parameters.Number = LineNumber;
-				
-				If Difference < 0 Then
-					
-					TemplateAreaRow.Parameters.ResultShortageCount = - Difference;
-					TemplateAreaRow.Parameters.ResultLossAmount      = - ValueDifference;
-					TemplateAreaRow.Parameters.ResultExceedCount   = 0;
-					TemplateAreaRow.Parameters.ResultSumExcess        = 0;
-
-					TotalResultShortageAmount = TotalResultShortageAmount + ( - Difference);
-					TotalAmountResultLossAmount      = TotalAmountResultLossAmount      + ( - ValueDifference);
-					TotalAmountResultExceedCount   = TotalAmountResultExceedCount   + 0;
-					TotalResultSumExcess        = TotalResultSumExcess        + 0;
-					
-				Else
-					
-					TemplateAreaRow.Parameters.ResultShortageCount = 0;
-					TemplateAreaRow.Parameters.ResultLossAmount      = 0;
-					TemplateAreaRow.Parameters.ResultExceedCount   = Difference;
-					TemplateAreaRow.Parameters.ResultSumExcess        = ValueDifference;
-
-					TotalResultShortageAmount = TotalResultShortageAmount + 0;
-					TotalAmountResultLossAmount      = TotalAmountResultLossAmount      + 0;
-					TotalAmountResultExceedCount   = TotalAmountResultExceedCount   + Difference;
-					TotalResultSumExcess        = TotalResultSumExcess        + ValueDifference;
-					
-				EndIf;
-
-				// Output check.
-				RowWithFooter = New Array();
-				RowWithFooter.Add(TemplateAreaRow);
-				RowWithFooter.Add(TemplateAreaTotalByPage);
-				RowWithFooter.Add(TemplateAreaFooter);
-				
-				If Not SpreadsheetDocument.CheckPut(RowWithFooter) Then
-					
-					If Not LineCount = 1 Then
-				
-						// Output totals by page.
-						SpreadsheetDocument.Put(TemplateAreaTotalByPage);
-						
-						// Output pages separator.
-						SpreadsheetDocument.PutHorizontalPageBreak();
-						
-						// Output table title.
-						PageNumber = PageNumber + 1;
-						TemplateAreaTableHeader.Parameters.PageNumber = "Page " + PageNumber;
-						SpreadsheetDocument.Put(TemplateAreaTableHeader);
-						
-					EndIf;
-
-				EndIf;
-				
-				SpreadsheetDocument.Put(TemplateAreaRow);
-				
-				LineNumber = LineNumber + 1;
-
-			EndDo;
-
-			// Output totals by page.
-			TemplateAreaTotalByPage.Parameters.TotalAmountResultExceedCount   = TotalAmountResultExceedCount;
-			TemplateAreaTotalByPage.Parameters.TotalResultSumExcess        = TotalResultSumExcess;
-			TemplateAreaTotalByPage.Parameters.TotalResultShortageAmount = TotalResultShortageAmount;
-			TemplateAreaTotalByPage.Parameters.TotalAmountResultLossAmount      = TotalAmountResultLossAmount;
-			SpreadsheetDocument.Put(TemplateAreaTotalByPage);
-			
-			// Output footer.
-			TemplateAreaFooter.Parameters.Fill(Header);
-			TemplateAreaFooter.Parameters.AccountantDescriptionFull = Heads.ChiefAccountantNameAndSurname;
-			TemplateAreaFooter.Parameters.PostFRP1 = ICData.Position;
-			TemplateAreaFooter.Parameters.PAName1       = ICData.Presentation;
-			SpreadsheetDocument.Put(TemplateAreaFooter);
 			
 		ElsIf TemplateName = "InventoryReconciliation" Then
 			
@@ -645,7 +179,10 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			
 			// Displaying invoice header
 			TemplateArea = Template.GetArea("Title");
-			TemplateArea.Parameters.HeaderText = NStr("en='Inventory survey No ';ru='Инвентаризация запасов № '") + DocumentNumber + NStr("en=' from ';ru=' от '") + Format(Header.DocumentDate, "DLF=DD");
+			TemplateArea.Parameters.HeaderText = NStr("en='Inventory survey No ';ru='Инвентаризация запасов № '") + 
+												 DocumentNumber + 
+												 NStr("en=' from ';ru=' от '") + 
+												 Format(Header.DocumentDate, "DLF=DD");
 			SpreadsheetDocument.Put(TemplateArea);
 			
 			// Output company and warehouse data
@@ -657,7 +194,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			TemplateArea.Parameters.CompanyPresentation = CompanyPresentation;
 			
 			TemplateArea.Parameters.CurrencyName = String(PrintingCurrency);
-			TemplateArea.Parameters.Currency             = PrintingCurrency;
+			TemplateArea.Parameters.Currency     = PrintingCurrency;
 			SpreadsheetDocument.Put(TemplateArea);
 
 			// Output table header.
@@ -665,7 +202,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			TemplateArea.Parameters.Fill(Header);
 			SpreadsheetDocument.Put(TemplateArea);
 			
-			TotalAmount        = 0;
+			TotalAmount        		= 0;
 			TotalAmountByAccounting = 0;
 
 			TemplateArea = Template.GetArea("String");
@@ -716,25 +253,9 @@ EndFunction // PrintForm()
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "MerchandiseFillingForm") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "MerchandiseFillingForm", "Merchandise filling form", PrintForm(ObjectsArray, PrintObjects, "MerchandiseFillingForm"));
-		
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "INV3") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "INV3", "INV-3 (Inventory List)", PrintForm(ObjectsArray, PrintObjects, "INV3"));
-		
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "INV3WithoutFactData") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "INV3WithoutFactData", "INV-Inventory List with Empty Actual Data", PrintForm(ObjectsArray, PrintObjects, "INV3WithoutFactData"));
-		
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "INV19") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "INV19", "INV-19 (Collation Statement)", PrintForm(ObjectsArray, PrintObjects, "INV19"));
-		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InventoryReconciliation") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InventoryReconciliation", "Inventory reconciliation", PrintForm(ObjectsArray, PrintObjects, "InventoryReconciliation"));
-		
 	EndIf;
 	
 	// parameters of sending printing forms by email
@@ -750,39 +271,11 @@ EndProcedure // Print()
 Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "InventoryReconciliation,INV3,INV3WithoutFactData,INV19";
-	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 1;
-	
-	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InventoryReconciliation";
 	PrintCommand.Presentation = NStr("en='Inventory reconciliation';ru='Инвентаризации запасов'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "INV3";
-	PrintCommand.Presentation = NStr("en='INV-3 (Inventory List)';ru='ИНВ-3 (Инвентаризационная опись товаров)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 7;
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "INV3WithoutFactData";
-	PrintCommand.Presentation = NStr("en='INV-Inventory List with Empty Actual Data';ru='ИНВ-3 (Инвентаризационная опись с пустыми фактическими данными)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 10;
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "INV19";
-	PrintCommand.Presentation = NStr("en='INV-19 (Collation Statement)';ru='ИНВ-19 (Сличительная ведомость)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 14;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MerchandiseFillingForm";

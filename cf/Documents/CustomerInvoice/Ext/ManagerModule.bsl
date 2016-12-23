@@ -5130,620 +5130,620 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			
 			GenerateUniversalTransferDocument(SpreadsheetDocument, CurrentDocument);
 			
-		ElsIf TemplateName = "TORG12" OR TemplateName = "TRAD12WithServices" Then
-			
-			Query = New Query;
-			Query.SetParameter("CurrentDocument", CurrentDocument);
-			Query.Text =
-			"SELECT
-			|	CustomerInvoice.Date AS DocumentDate,
-			|	CustomerInvoice.Number AS Number,
-			|	CustomerInvoice.Company AS Heads,
-			|	CustomerInvoice.Company.Prefix AS Prefix,
-			|	CustomerInvoice.Company AS Company,
-			|	CustomerInvoice.BankAccount AS BankAccount,
-			|	CustomerInvoice.Counterparty AS Counterparty,
-			|	CustomerInvoice.CounterpartyBankAcc AS CounterpartyBankAcc,
-			|	CustomerInvoice.Company AS Vendor,
-			|	CASE
-			|		WHEN CustomerInvoice.Consignee = VALUE(Catalog.Counterparties.EmptyRef)
-			|			THEN CustomerInvoice.Counterparty
-			|		ELSE CustomerInvoice.Consignee
-			|	END AS Consignee,
-			|	CASE
-			|		WHEN CustomerInvoice.Consignor = VALUE(Catalog.Counterparties.EmptyRef)
-			|			THEN CustomerInvoice.Company
-			|		ELSE CustomerInvoice.Consignor
-			|	END AS Consignor,
-			|	CustomerInvoice.Counterparty AS Payer,
-			|	CustomerInvoice.Contract.Presentation AS Basis,
-			|	CustomerInvoice.DocumentCurrency,
-			|	CustomerInvoice.AmountIncludesVAT,
-			|	CustomerInvoice.IncludeVATInPrice,
-			|	CustomerInvoice.ExchangeRate,
-			|	CustomerInvoice.Multiplicity,
-			|	CustomerInvoice.StampBase AS StampBase,
-			|	CustomerInvoice.Head AS Head,
-			|	CustomerInvoice.HeadPosition AS HeadPosition,
-			|	CustomerInvoice.ChiefAccountant AS ChiefAccountant,
-			|	CustomerInvoice.Released AS Released,
-			|	CustomerInvoice.ReleasedPosition AS ReleasedPosition,
-			|	CustomerInvoice.PowerOfAttorneyIssued,
-			|	CustomerInvoice.PowerOfAttorneyDate,
-			|	CustomerInvoice.PowerAttorneyPerson,
-			|	CustomerInvoice.PowerOfAttorneyNumber
-			|FROM
-			|	Document.CustomerInvoice AS CustomerInvoice
-			|WHERE
-			|	CustomerInvoice.Ref = &CurrentDocument";
-			Header = Query.Execute().Select();
-			
-			Header.Next();
-			
-			UseConversion = (NOT Header.DocumentCurrency = Constants.NationalCurrency.Get());
-			
-			Query = New Query;
-			Query.SetParameter("CurrentDocument", CurrentDocument);
-			
-			Query.Text =
-			"SELECT
-			|	NestedSelect.ProductsAndServices AS ProductsAndServices,
-			|	NestedSelect.Content AS Content,
-			|	CASE
-			|		WHEN (CAST(NestedSelect.ProductsAndServices.DescriptionFull AS String(1000))) = """"
-			|			THEN NestedSelect.ProductsAndServices.Description
-			|		ELSE CAST(NestedSelect.ProductsAndServices.DescriptionFull AS String(1000))
-			|	END AS InventoryItemDescription,
-			|	NestedSelect.Characteristic,
-			|	NestedSelect.ProductsAndServices.Code AS InventoryItemCode,
-			|	NestedSelect.ProductsAndServices.SKU AS SKU,
-			|	NestedSelect.MeasurementUnitForPrint.Description AS BaseUnitDescription,
-			|	NestedSelect.MeasurementUnitForPrint.Code AS BaseUnitCodeRCUM,
-			|	NestedSelect.MeasurementUnitDocument AS MeasurementUnitDocument,
-			|	NestedSelect.MeasurementUnitDocument AS PackagingKind,
-			|	0 AS QuantityInOnePlace,
-			|	NestedSelect.VATRate AS VATRate,
-			|	&Price_Parameter AS Price,
-			|	NestedSelect.Quantity AS Quantity,
-			|	0 AS PlacesQuantity,
-			|	&Amount_Parameter AS Amount,
-			|	&VATAmount_Parameter AS VATAmount,
-			|	&Total_Parameter AS Total,
-			|	NestedSelect.LineNumber AS LineNumber,
-			|	1 AS ID
-			|FROM
-			|	(SELECT
-			|		CustomerInvoiceInventory.ProductsAndServices AS ProductsAndServices,
-			|		CustomerInvoiceInventory.ProductsAndServices.MeasurementUnit AS MeasurementUnitForPrint,
-			|		CustomerInvoiceInventory.MeasurementUnit AS MeasurementUnitDocument,
-			|		CustomerInvoiceInventory.VATRate AS VATRate,
-			|		CustomerInvoiceInventory.Price AS Price,
-			|		SUM(CustomerInvoiceInventory.Quantity) AS Quantity,
-			|		SUM(CustomerInvoiceInventory.Amount) AS Amount,
-			|		SUM(CustomerInvoiceInventory.VATAmount) AS VATAmount,
-			|		SUM(CustomerInvoiceInventory.Total) AS Total,
-			|		MIN(CustomerInvoiceInventory.LineNumber) AS LineNumber,
-			|		CustomerInvoiceInventory.Characteristic AS Characteristic,
-			|		CAST(CustomerInvoiceInventory.Content AS String(1000)) AS Content
-			|	FROM
-			|		Document.CustomerInvoice.Inventory AS CustomerInvoiceInventory
-			|	WHERE
-			|		CustomerInvoiceInventory.Ref = &CurrentDocument
-			|	
-			|	GROUP BY
-			|		CustomerInvoiceInventory.ProductsAndServices,
-			|		CustomerInvoiceInventory.ProductsAndServices.MeasurementUnit,
-			|		CustomerInvoiceInventory.MeasurementUnit,
-			|		CustomerInvoiceInventory.VATRate,
-			|		CustomerInvoiceInventory.Price,
-			|		CustomerInvoiceInventory.Characteristic,
-			|		CAST(CustomerInvoiceInventory.Content AS String(1000))) AS NestedSelect
-			|WHERE
-			|	&ServiceFilterCondition
-			|
-			|ORDER BY
-			|	ID,
-			|	LineNumber";
-			
-			If UseConversion Then
-				
-				Query.Text = StrReplace(Query.Text, "&Price_Parameter", 		"CAST(NestedSelect.Price * &ExchangeRate / &Multiplicity AS Number(15,2))");
-				Query.Text = StrReplace(Query.Text, "&Amount_Parameter", 	"CAST(NestedSelect.Amount * &ExchangeRate / &Multiplicity AS Number(15,2))");
-				Query.Text = StrReplace(Query.Text, "&VATAmount_Parameter", 	"CAST(NestedSelect.VATAmount * &ExchangeRate / &Multiplicity AS Number(15,2))");
-				Query.Text = StrReplace(Query.Text, "&Total_Parameter", 	"CAST(NestedSelect.Total * &ExchangeRate / &Multiplicity AS Number(15,2))");
-				
-				Query.SetParameter("ExchangeRate",		Header.ExchangeRate);
-				Query.SetParameter("Multiplicity",	Header.Multiplicity);
-				
-			Else
-				
-				Query.Text = StrReplace(Query.Text, "&Price_Parameter", 		"NestedSelect.Price");
-				Query.Text = StrReplace(Query.Text, "&Amount_Parameter", 	"NestedSelect.Amount");
-				Query.Text = StrReplace(Query.Text, "&VATAmount_Parameter", 	"NestedSelect.VATAmount");
-				Query.Text = StrReplace(Query.Text, "&Total_Parameter", 	"NestedSelect.Total");
-				
-			EndIf;
-			
-			Query.Text = StrReplace(Query.Text, "&ServiceFilterCondition", 
-				?(TemplateName = "TORG12", "NOT NestedSelect.ProductsAndServices.ProductsAndServicesType = VALUE(Enum.ProductsAndServicesTypes.Service)", "TRUE"));
-			
-			QueryInventory = Query.Execute().Unload();
-			
-			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_ExpenditureInvoice_TRAD12";
-			
-			Template = PrintManagement.PrintedFormsTemplate("Document.CustomerInvoice.PF_MXL_TORG12");
-			
-			TemplateAreaHeader				= Template.GetArea("Header");
-			TemplateAreaTableHeader	= Template.GetArea("TabTitle");
-			TemplateAreaRow				= Template.GetArea("String");
-			TemplateAreaTotalByPage	= Template.GetArea("TotalByPage");
-			TemplateAreaTotalAmount				= Template.GetArea("Total");
-			TemplateAreaFooter				= Template.GetArea("Footer");
-			
-			// Displaying general header attributes
-			
-			InfoAboutVendor			= SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company,		Header.DocumentDate, , Header.BankAccount);
-			InfoAboutShipper	= SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Consignor,Header.DocumentDate, ,);
-			InfoAboutCustomer			= SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Counterparty,		Header.DocumentDate, , Header.CounterpartyBankAcc);
-			InfoAboutConsignee	= SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Consignee,	Header.DocumentDate, ,);
-			
-			TemplateAreaHeader.Parameters.Fill(Header);
-			
-			If Header.DocumentDate < Date('20110101') Then
-				DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
-			Else
-				DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-			EndIf;
-			
-			TemplateAreaHeader.Parameters.DocumentNumber = DocumentNumber;
-			TemplateAreaHeader.Parameters.DocumentDate  = Header.DocumentDate;
-			
-			If Header.Company = Header.Consignor Then
-				TemplateAreaHeader.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutVendor, "FullDescr,TIN,ActualAddress,PhoneNumbers,Fax,AccountNo,Bank,BIN,CorrAccount");
-			Else
-				TemplateAreaHeader.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutShipper, "FullDescr,TIN,ActualAddress,PhoneNumbers,Fax,AccountNo,Bank,BIN,CorrAccount");
-			EndIf;
+//		ElsIf TemplateName = "TORG12" OR TemplateName = "TRAD12WithServices" Then
+//			
+//			Query = New Query;
+//			Query.SetParameter("CurrentDocument", CurrentDocument);
+//			Query.Text =
+//			"SELECT
+//			|	CustomerInvoice.Date AS DocumentDate,
+//			|	CustomerInvoice.Number AS Number,
+//			|	CustomerInvoice.Company AS Heads,
+//			|	CustomerInvoice.Company.Prefix AS Prefix,
+//			|	CustomerInvoice.Company AS Company,
+//			|	CustomerInvoice.BankAccount AS BankAccount,
+//			|	CustomerInvoice.Counterparty AS Counterparty,
+//			|	CustomerInvoice.CounterpartyBankAcc AS CounterpartyBankAcc,
+//			|	CustomerInvoice.Company AS Vendor,
+//			|	CASE
+//			|		WHEN CustomerInvoice.Consignee = VALUE(Catalog.Counterparties.EmptyRef)
+//			|			THEN CustomerInvoice.Counterparty
+//			|		ELSE CustomerInvoice.Consignee
+//			|	END AS Consignee,
+//			|	CASE
+//			|		WHEN CustomerInvoice.Consignor = VALUE(Catalog.Counterparties.EmptyRef)
+//			|			THEN CustomerInvoice.Company
+//			|		ELSE CustomerInvoice.Consignor
+//			|	END AS Consignor,
+//			|	CustomerInvoice.Counterparty AS Payer,
+//			|	CustomerInvoice.Contract.Presentation AS Basis,
+//			|	CustomerInvoice.DocumentCurrency,
+//			|	CustomerInvoice.AmountIncludesVAT,
+//			|	CustomerInvoice.IncludeVATInPrice,
+//			|	CustomerInvoice.ExchangeRate,
+//			|	CustomerInvoice.Multiplicity,
+//			|	CustomerInvoice.StampBase AS StampBase,
+//			|	CustomerInvoice.Head AS Head,
+//			|	CustomerInvoice.HeadPosition AS HeadPosition,
+//			|	CustomerInvoice.ChiefAccountant AS ChiefAccountant,
+//			|	CustomerInvoice.Released AS Released,
+//			|	CustomerInvoice.ReleasedPosition AS ReleasedPosition,
+//			|	CustomerInvoice.PowerOfAttorneyIssued,
+//			|	CustomerInvoice.PowerOfAttorneyDate,
+//			|	CustomerInvoice.PowerAttorneyPerson,
+//			|	CustomerInvoice.PowerOfAttorneyNumber
+//			|FROM
+//			|	Document.CustomerInvoice AS CustomerInvoice
+//			|WHERE
+//			|	CustomerInvoice.Ref = &CurrentDocument";
+//			Header = Query.Execute().Select();
+//			
+//			Header.Next();
+//			
+//			UseConversion = (NOT Header.DocumentCurrency = Constants.NationalCurrency.Get());
+//			
+//			Query = New Query;
+//			Query.SetParameter("CurrentDocument", CurrentDocument);
+//			
+//			Query.Text =
+//			"SELECT
+//			|	NestedSelect.ProductsAndServices AS ProductsAndServices,
+//			|	NestedSelect.Content AS Content,
+//			|	CASE
+//			|		WHEN (CAST(NestedSelect.ProductsAndServices.DescriptionFull AS String(1000))) = """"
+//			|			THEN NestedSelect.ProductsAndServices.Description
+//			|		ELSE CAST(NestedSelect.ProductsAndServices.DescriptionFull AS String(1000))
+//			|	END AS InventoryItemDescription,
+//			|	NestedSelect.Characteristic,
+//			|	NestedSelect.ProductsAndServices.Code AS InventoryItemCode,
+//			|	NestedSelect.ProductsAndServices.SKU AS SKU,
+//			|	NestedSelect.MeasurementUnitForPrint.Description AS BaseUnitDescription,
+//			|	NestedSelect.MeasurementUnitForPrint.Code AS BaseUnitCodeRCUM,
+//			|	NestedSelect.MeasurementUnitDocument AS MeasurementUnitDocument,
+//			|	NestedSelect.MeasurementUnitDocument AS PackagingKind,
+//			|	0 AS QuantityInOnePlace,
+//			|	NestedSelect.VATRate AS VATRate,
+//			|	&Price_Parameter AS Price,
+//			|	NestedSelect.Quantity AS Quantity,
+//			|	0 AS PlacesQuantity,
+//			|	&Amount_Parameter AS Amount,
+//			|	&VATAmount_Parameter AS VATAmount,
+//			|	&Total_Parameter AS Total,
+//			|	NestedSelect.LineNumber AS LineNumber,
+//			|	1 AS ID
+//			|FROM
+//			|	(SELECT
+//			|		CustomerInvoiceInventory.ProductsAndServices AS ProductsAndServices,
+//			|		CustomerInvoiceInventory.ProductsAndServices.MeasurementUnit AS MeasurementUnitForPrint,
+//			|		CustomerInvoiceInventory.MeasurementUnit AS MeasurementUnitDocument,
+//			|		CustomerInvoiceInventory.VATRate AS VATRate,
+//			|		CustomerInvoiceInventory.Price AS Price,
+//			|		SUM(CustomerInvoiceInventory.Quantity) AS Quantity,
+//			|		SUM(CustomerInvoiceInventory.Amount) AS Amount,
+//			|		SUM(CustomerInvoiceInventory.VATAmount) AS VATAmount,
+//			|		SUM(CustomerInvoiceInventory.Total) AS Total,
+//			|		MIN(CustomerInvoiceInventory.LineNumber) AS LineNumber,
+//			|		CustomerInvoiceInventory.Characteristic AS Characteristic,
+//			|		CAST(CustomerInvoiceInventory.Content AS String(1000)) AS Content
+//			|	FROM
+//			|		Document.CustomerInvoice.Inventory AS CustomerInvoiceInventory
+//			|	WHERE
+//			|		CustomerInvoiceInventory.Ref = &CurrentDocument
+//			|	
+//			|	GROUP BY
+//			|		CustomerInvoiceInventory.ProductsAndServices,
+//			|		CustomerInvoiceInventory.ProductsAndServices.MeasurementUnit,
+//			|		CustomerInvoiceInventory.MeasurementUnit,
+//			|		CustomerInvoiceInventory.VATRate,
+//			|		CustomerInvoiceInventory.Price,
+//			|		CustomerInvoiceInventory.Characteristic,
+//			|		CAST(CustomerInvoiceInventory.Content AS String(1000))) AS NestedSelect
+//			|WHERE
+//			|	&ServiceFilterCondition
+//			|
+//			|ORDER BY
+//			|	ID,
+//			|	LineNumber";
+//			
+//			If UseConversion Then
+//				
+//				Query.Text = StrReplace(Query.Text, "&Price_Parameter", 		"CAST(NestedSelect.Price * &ExchangeRate / &Multiplicity AS Number(15,2))");
+//				Query.Text = StrReplace(Query.Text, "&Amount_Parameter", 	"CAST(NestedSelect.Amount * &ExchangeRate / &Multiplicity AS Number(15,2))");
+//				Query.Text = StrReplace(Query.Text, "&VATAmount_Parameter", 	"CAST(NestedSelect.VATAmount * &ExchangeRate / &Multiplicity AS Number(15,2))");
+//				Query.Text = StrReplace(Query.Text, "&Total_Parameter", 	"CAST(NestedSelect.Total * &ExchangeRate / &Multiplicity AS Number(15,2))");
+//				
+//				Query.SetParameter("ExchangeRate",		Header.ExchangeRate);
+//				Query.SetParameter("Multiplicity",	Header.Multiplicity);
+//				
+//			Else
+//				
+//				Query.Text = StrReplace(Query.Text, "&Price_Parameter", 		"NestedSelect.Price");
+//				Query.Text = StrReplace(Query.Text, "&Amount_Parameter", 	"NestedSelect.Amount");
+//				Query.Text = StrReplace(Query.Text, "&VATAmount_Parameter", 	"NestedSelect.VATAmount");
+//				Query.Text = StrReplace(Query.Text, "&Total_Parameter", 	"NestedSelect.Total");
+//				
+//			EndIf;
+//			
+//			Query.Text = StrReplace(Query.Text, "&ServiceFilterCondition", 
+//				?(TemplateName = "TORG12", "NOT NestedSelect.ProductsAndServices.ProductsAndServicesType = VALUE(Enum.ProductsAndServicesTypes.Service)", "TRUE"));
+//			
+//			QueryInventory = Query.Execute().Unload();
+//			
+//			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_ExpenditureInvoice_TRAD12";
+//			
+//			Template = PrintManagement.PrintedFormsTemplate("Document.CustomerInvoice.PF_MXL_TORG12");
+//			
+//			TemplateAreaHeader				= Template.GetArea("Header");
+//			TemplateAreaTableHeader	= Template.GetArea("TabTitle");
+//			TemplateAreaRow				= Template.GetArea("String");
+//			TemplateAreaTotalByPage	= Template.GetArea("TotalByPage");
+//			TemplateAreaTotalAmount				= Template.GetArea("Total");
+//			TemplateAreaFooter				= Template.GetArea("Footer");
+//			
+//			// Displaying general header attributes
+//			
+//			InfoAboutVendor			= SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company,		Header.DocumentDate, , Header.BankAccount);
+//			InfoAboutShipper	= SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Consignor,Header.DocumentDate, ,);
+//			InfoAboutCustomer			= SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Counterparty,		Header.DocumentDate, , Header.CounterpartyBankAcc);
+//			InfoAboutConsignee	= SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Consignee,	Header.DocumentDate, ,);
+//			
+//			TemplateAreaHeader.Parameters.Fill(Header);
+//			
+//			If Header.DocumentDate < Date('20110101') Then
+//				DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
+//			Else
+//				DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
+//			EndIf;
+//			
+//			TemplateAreaHeader.Parameters.DocumentNumber = DocumentNumber;
+//			TemplateAreaHeader.Parameters.DocumentDate  = Header.DocumentDate;
+//			
+//			If Header.Company = Header.Consignor Then
+//				TemplateAreaHeader.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutVendor, "FullDescr,TIN,ActualAddress,PhoneNumbers,Fax,AccountNo,Bank,BIN,CorrAccount");
+//			Else
+//				TemplateAreaHeader.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutShipper, "FullDescr,TIN,ActualAddress,PhoneNumbers,Fax,AccountNo,Bank,BIN,CorrAccount");
+//			EndIf;
 
-			TemplateAreaHeader.Parameters.PresentationOfConsignee = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutConsignee,"FullDescr,TIN,ActualAddress,PhoneNumbers,AccountNo,Bank,BIN,CorrAccount");
-			TemplateAreaHeader.Parameters.VendorPresentation      = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutVendor);
-			TemplateAreaHeader.Parameters.PayerPresentation     = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCustomer);
+//			TemplateAreaHeader.Parameters.PresentationOfConsignee = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutConsignee,"FullDescr,TIN,ActualAddress,PhoneNumbers,AccountNo,Bank,BIN,CorrAccount");
+//			TemplateAreaHeader.Parameters.VendorPresentation      = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutVendor);
+//			TemplateAreaHeader.Parameters.PayerPresentation     = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCustomer);
 
-			// Displaying all sorts of codes
-			TemplateAreaHeader.Parameters.CompanyByOKPO     = InfoAboutShipper.CodeByOKPO;
-			TemplateAreaHeader.Parameters.ActivityKindByOKDP = "";
-			TemplateAreaHeader.Parameters.ConsigneeByARBOC = InfoAboutConsignee.CodeByOKPO;
-			TemplateAreaHeader.Parameters.VendorByOKPO  = InfoAboutVendor.CodeByOKPO;
-			TemplateAreaHeader.Parameters.PayerByRCEO = InfoAboutCustomer.CodeByOKPO;
-			TemplateAreaHeader.Parameters.BasisNumber   = "";
-			TemplateAreaHeader.Parameters.BasisDate    = "";
-			TemplateAreaHeader.Parameters.WayBillNumber = "";
-			TemplateAreaHeader.Parameters.WaybillDate  = "";
-			TemplateAreaHeader.Parameters.Basis = Header.StampBase;
-			
-			SpreadsheetDocument.Put(TemplateAreaHeader);
+//			// Displaying all sorts of codes
+//			TemplateAreaHeader.Parameters.CompanyByOKPO     = InfoAboutShipper.CodeByOKPO;
+//			TemplateAreaHeader.Parameters.ActivityKindByOKDP = "";
+//			TemplateAreaHeader.Parameters.ConsigneeByARBOC = InfoAboutConsignee.CodeByOKPO;
+//			TemplateAreaHeader.Parameters.VendorByOKPO  = InfoAboutVendor.CodeByOKPO;
+//			TemplateAreaHeader.Parameters.PayerByRCEO = InfoAboutCustomer.CodeByOKPO;
+//			TemplateAreaHeader.Parameters.BasisNumber   = "";
+//			TemplateAreaHeader.Parameters.BasisDate    = "";
+//			TemplateAreaHeader.Parameters.WayBillNumber = "";
+//			TemplateAreaHeader.Parameters.WaybillDate  = "";
+//			TemplateAreaHeader.Parameters.Basis = Header.StampBase;
+//			
+//			SpreadsheetDocument.Put(TemplateAreaHeader);
 
-			// Initializing page counter
-			PageNumber = 1;
+//			// Initializing page counter
+//			PageNumber = 1;
 
-			// Initialization of totals for the page
-			TotalPlacesOnPage       = 0;
-			TotalQuantityOnPage = 0;
-			TotalAmountOnPage      = 0;
-			TotalVATOnPage        = 0;
-			TotalAmountOfWithVATOnPage  = 0;
+//			// Initialization of totals for the page
+//			TotalPlacesOnPage       = 0;
+//			TotalQuantityOnPage = 0;
+//			TotalAmountOnPage      = 0;
+//			TotalVATOnPage        = 0;
+//			TotalAmountOfWithVATOnPage  = 0;
 
-			// Initialization of totals for the document
-			TotalPlaces       = 0;
-			TotalQuantity = 0;
-			TotalAmountWithVAT  = 0;
-			Total      = 0;
-			TotalVAT        = 0;
-			
-			// Initializing line counter
-			LineNumber     = 0;
-			LineCount = QueryInventory.Count();
-			
-			// Displaying multiline header parts
-			TemplateAreaTableHeader.Parameters.PageNumber = "Page " + PageNumber; 
-			SpreadsheetDocument.Put(TemplateAreaTableHeader);
-			
-			// Displaying multiline part of the document
-			For Each LinesSelection IN QueryInventory Do
+//			// Initialization of totals for the document
+//			TotalPlaces       = 0;
+//			TotalQuantity = 0;
+//			TotalAmountWithVAT  = 0;
+//			Total      = 0;
+//			TotalVAT        = 0;
+//			
+//			// Initializing line counter
+//			LineNumber     = 0;
+//			LineCount = QueryInventory.Count();
+//			
+//			// Displaying multiline header parts
+//			TemplateAreaTableHeader.Parameters.PageNumber = "Page " + PageNumber; 
+//			SpreadsheetDocument.Put(TemplateAreaTableHeader);
+//			
+//			// Displaying multiline part of the document
+//			For Each LinesSelection IN QueryInventory Do
 
-				LineNumber = LineNumber + 1;
+//				LineNumber = LineNumber + 1;
 
-				TemplateAreaRow.Parameters.Fill(LinesSelection);
-				
-				TemplateAreaRow.Parameters.Number = LineNumber;
-				
-				If Not ValueIsFilled(LinesSelection.PlacesQuantity) Then
-					
-					TemplateAreaRow.Parameters.PackagingKind 			= "";
-					TemplateAreaRow.Parameters.QuantityInOnePlace	= "";
-					
-				EndIf;
-				
-				If ValueIsFilled(LinesSelection.Content) Then
-					TemplateAreaRow.Parameters.InventoryItemDescription = LinesSelection.Content;
-				Else
-					TemplateAreaRow.Parameters.InventoryItemDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelection.InventoryItemDescription, 
-																		LinesSelection.Characteristic, LinesSelection.SKU);
-				EndIf;
-				
-				SumWithVAT = LinesSelection.Total;
-				
-				PlacesQuantity	= LinesSelection.PlacesQuantity;
-				
-				Factor = 1;
-				If TypeOf(LinesSelection.MeasurementUnitDocument) = Type("CatalogRef.UOM") Then
-					
-					Factor = LinesSelection.MeasurementUnitDocument.Factor;
-					
-				EndIf;
-				
-				Quantity		= LinesSelection.Quantity * Factor;
-				TemplateAreaRow.Parameters.Quantity = Quantity;
-				
-				VATAmount		= LinesSelection.VATAmount;
-				AmountWithoutVAT		= LinesSelection.Amount - ?(Header.AmountIncludesVAT, LinesSelection.VATAmount, 0);
-				
-				TemplateAreaRow.Parameters.SumWithVAT   = SumWithVAT;
-				TemplateAreaRow.Parameters.VATAmount    = VATAmount;
-				TemplateAreaRow.Parameters.VATRate   = LinesSelection.VATRate;
-				TemplateAreaRow.Parameters.AmountWithoutVAT = AmountWithoutVAT;
-				TemplateAreaRow.Parameters.Price        = AmountWithoutVAT / ?(Quantity = 0, 1, Quantity);
-				
-				// Check output
-				RowWithFooter = New Array;
-				If LineNumber = 1 Then
-					RowWithFooter.Add(TemplateAreaTableHeader);// if the first string, then should
-				EndIf;													// fit title
-				RowWithFooter.Add(TemplateAreaRow);
-				RowWithFooter.Add(TemplateAreaTotalByPage);
-				If LineNumber = LineCount Then			// if the last string, should
-					RowWithFooter.Add(TemplateAreaTotalAmount);	// fit and document footer
-					RowWithFooter.Add(TemplateAreaFooter);
-				EndIf;
+//				TemplateAreaRow.Parameters.Fill(LinesSelection);
+//				
+//				TemplateAreaRow.Parameters.Number = LineNumber;
+//				
+//				If Not ValueIsFilled(LinesSelection.PlacesQuantity) Then
+//					
+//					TemplateAreaRow.Parameters.PackagingKind 			= "";
+//					TemplateAreaRow.Parameters.QuantityInOnePlace	= "";
+//					
+//				EndIf;
+//				
+//				If ValueIsFilled(LinesSelection.Content) Then
+//					TemplateAreaRow.Parameters.InventoryItemDescription = LinesSelection.Content;
+//				Else
+//					TemplateAreaRow.Parameters.InventoryItemDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelection.InventoryItemDescription, 
+//																		LinesSelection.Characteristic, LinesSelection.SKU);
+//				EndIf;
+//				
+//				SumWithVAT = LinesSelection.Total;
+//				
+//				PlacesQuantity	= LinesSelection.PlacesQuantity;
+//				
+//				Factor = 1;
+//				If TypeOf(LinesSelection.MeasurementUnitDocument) = Type("CatalogRef.UOM") Then
+//					
+//					Factor = LinesSelection.MeasurementUnitDocument.Factor;
+//					
+//				EndIf;
+//				
+//				Quantity		= LinesSelection.Quantity * Factor;
+//				TemplateAreaRow.Parameters.Quantity = Quantity;
+//				
+//				VATAmount		= LinesSelection.VATAmount;
+//				AmountWithoutVAT		= LinesSelection.Amount - ?(Header.AmountIncludesVAT, LinesSelection.VATAmount, 0);
+//				
+//				TemplateAreaRow.Parameters.SumWithVAT   = SumWithVAT;
+//				TemplateAreaRow.Parameters.VATAmount    = VATAmount;
+//				TemplateAreaRow.Parameters.VATRate   = LinesSelection.VATRate;
+//				TemplateAreaRow.Parameters.AmountWithoutVAT = AmountWithoutVAT;
+//				TemplateAreaRow.Parameters.Price        = AmountWithoutVAT / ?(Quantity = 0, 1, Quantity);
+//				
+//				// Check output
+//				RowWithFooter = New Array;
+//				If LineNumber = 1 Then
+//					RowWithFooter.Add(TemplateAreaTableHeader);// if the first string, then should
+//				EndIf;													// fit title
+//				RowWithFooter.Add(TemplateAreaRow);
+//				RowWithFooter.Add(TemplateAreaTotalByPage);
+//				If LineNumber = LineCount Then			// if the last string, should
+//					RowWithFooter.Add(TemplateAreaTotalAmount);	// fit and document footer
+//					RowWithFooter.Add(TemplateAreaFooter);
+//				EndIf;
 
-				If LineNumber <> 1 AND Not SpreadsheetDocument.CheckPut(RowWithFooter) Then
-					
-					// Displaying results for the page
-					TemplateAreaTotalByPage.Parameters.ResultPagePlaces       = TotalPlacesOnPage;
-					TemplateAreaTotalByPage.Parameters.TotalPageCount = TotalQuantityOnPage;
-					TemplateAreaTotalByPage.Parameters.TotalAmountPerPage      = TotalAmountOnPage;
-					TemplateAreaTotalByPage.Parameters.VATByPageTotal        = TotalVATOnPage;
-					TemplateAreaTotalByPage.Parameters.TotalAmountWithVATByPage  = TotalAmountOfWithVATOnPage;
-					SpreadsheetDocument.Put(TemplateAreaTotalByPage);
-					
-					SpreadsheetDocument.PutHorizontalPageBreak();
-					
-					// Clear results for the page
-					TotalPlacesOnPage       = 0;
-					TotalQuantityOnPage = 0;
-					TotalAmountOnPage      = 0;
-					TotalVATOnPage        = 0;
-					TotalAmountOfWithVATOnPage  = 0;
-					
-					// Display table header
-					PageNumber = PageNumber + 1;
-					TemplateAreaTableHeader.Parameters.PageNumber = "Page " + PageNumber; 
-					SpreadsheetDocument.Put(TemplateAreaTableHeader);
-					
-				EndIf;
-					
-				SpreadsheetDocument.Put(TemplateAreaRow);
+//				If LineNumber <> 1 AND Not SpreadsheetDocument.CheckPut(RowWithFooter) Then
+//					
+//					// Displaying results for the page
+//					TemplateAreaTotalByPage.Parameters.ResultPagePlaces       = TotalPlacesOnPage;
+//					TemplateAreaTotalByPage.Parameters.TotalPageCount = TotalQuantityOnPage;
+//					TemplateAreaTotalByPage.Parameters.TotalAmountPerPage      = TotalAmountOnPage;
+//					TemplateAreaTotalByPage.Parameters.VATByPageTotal        = TotalVATOnPage;
+//					TemplateAreaTotalByPage.Parameters.TotalAmountWithVATByPage  = TotalAmountOfWithVATOnPage;
+//					SpreadsheetDocument.Put(TemplateAreaTotalByPage);
+//					
+//					SpreadsheetDocument.PutHorizontalPageBreak();
+//					
+//					// Clear results for the page
+//					TotalPlacesOnPage       = 0;
+//					TotalQuantityOnPage = 0;
+//					TotalAmountOnPage      = 0;
+//					TotalVATOnPage        = 0;
+//					TotalAmountOfWithVATOnPage  = 0;
+//					
+//					// Display table header
+//					PageNumber = PageNumber + 1;
+//					TemplateAreaTableHeader.Parameters.PageNumber = "Page " + PageNumber; 
+//					SpreadsheetDocument.Put(TemplateAreaTableHeader);
+//					
+//				EndIf;
+//					
+//				SpreadsheetDocument.Put(TemplateAreaRow);
 
-				// Increase total by page
-				TotalPlacesOnPage       = TotalPlacesOnPage       + PlacesQuantity;
-				TotalQuantityOnPage = TotalQuantityOnPage + Quantity;
-				TotalAmountOnPage      = TotalAmountOnPage      + AmountWithoutVAT;
-				TotalVATOnPage        = TotalVATOnPage        + VATAmount;
-				TotalAmountOfWithVATOnPage  = TotalAmountOfWithVATOnPage  + SumWithVAT;
+//				// Increase total by page
+//				TotalPlacesOnPage       = TotalPlacesOnPage       + PlacesQuantity;
+//				TotalQuantityOnPage = TotalQuantityOnPage + Quantity;
+//				TotalAmountOnPage      = TotalAmountOnPage      + AmountWithoutVAT;
+//				TotalVATOnPage        = TotalVATOnPage        + VATAmount;
+//				TotalAmountOfWithVATOnPage  = TotalAmountOfWithVATOnPage  + SumWithVAT;
 
-				// Increase total by document
-				TotalPlaces       = TotalPlaces       + PlacesQuantity;
-				TotalQuantity = TotalQuantity + Quantity;
-				Total      = Total      + AmountWithoutVAT;
-				TotalVAT        = TotalVAT        + VATAmount;
-				TotalAmountWithVAT  = TotalAmountWithVAT  + SumWithVAT;
+//				// Increase total by document
+//				TotalPlaces       = TotalPlaces       + PlacesQuantity;
+//				TotalQuantity = TotalQuantity + Quantity;
+//				Total      = Total      + AmountWithoutVAT;
+//				TotalVAT        = TotalVAT        + VATAmount;
+//				TotalAmountWithVAT  = TotalAmountWithVAT  + SumWithVAT;
 
-			EndDo;
+//			EndDo;
 
-			// Displaying results for the page
-			TemplateAreaTotalByPage.Parameters.ResultPagePlaces       = TotalPlacesOnPage;
-			TemplateAreaTotalByPage.Parameters.TotalPageCount = TotalQuantityOnPage;
-			TemplateAreaTotalByPage.Parameters.TotalAmountPerPage      = TotalAmountOnPage;
-			TemplateAreaTotalByPage.Parameters.VATByPageTotal        = TotalVATOnPage;
-			TemplateAreaTotalByPage.Parameters.TotalAmountWithVATByPage  = TotalAmountOfWithVATOnPage;
+//			// Displaying results for the page
+//			TemplateAreaTotalByPage.Parameters.ResultPagePlaces       = TotalPlacesOnPage;
+//			TemplateAreaTotalByPage.Parameters.TotalPageCount = TotalQuantityOnPage;
+//			TemplateAreaTotalByPage.Parameters.TotalAmountPerPage      = TotalAmountOnPage;
+//			TemplateAreaTotalByPage.Parameters.VATByPageTotal        = TotalVATOnPage;
+//			TemplateAreaTotalByPage.Parameters.TotalAmountWithVATByPage  = TotalAmountOfWithVATOnPage;
 
-			SpreadsheetDocument.Put(TemplateAreaTotalByPage);
-			
-			// Display totals on the full document
-			TemplateAreaTotalAmount.Parameters.TotalPlaces       = TotalPlaces;
-			TemplateAreaTotalAmount.Parameters.TotalQuantity = TotalQuantity;
-			TemplateAreaTotalAmount.Parameters.TotalAmount      = Total;
-			TemplateAreaTotalAmount.Parameters.TotalVAT        = TotalVAT;
-			TemplateAreaTotalAmount.Parameters.TotalAmountWithVAT  = TotalAmountWithVAT;
-			
-			SpreadsheetDocument.Put(TemplateAreaTotalAmount);
-			
-			// Display the footer of the document
-			ParameterValues = New Structure;
-			
-			ParameterValues.Insert("PowerOfAttorneyNumber", Header.PowerOfAttorneyNumber);
-			ParameterValues.Insert("PowerOfAttorneyDate", Header.PowerOfAttorneyDate);
-			ParameterValues.Insert("PowerOfAttorneyIssued", Header.PowerOfAttorneyIssued);
-			ParameterValues.Insert("PowerOfAttorneyThroughWhom", Header.PowerAttorneyPerson);
-			
-			HeadDescriptionFull = "";
-			SmallBusinessServer.SurnameInitialsByName(HeadDescriptionFull, String(Header.Head));
-			ParameterValues.Insert("HeadDescriptionFull",		HeadDescriptionFull);
-			ParameterValues.Insert("HeadPost", Header.HeadPosition);
-			
-			ChiefAccountantNameAndSurname = "";
-			SmallBusinessServer.SurnameInitialsByName(ChiefAccountantNameAndSurname, String(Header.ChiefAccountant));
-			ParameterValues.Insert("NameAndSurnameOfChiefAccountant",	ChiefAccountantNameAndSurname);
-			
-			WarehouseManSNP = "";
-			SmallBusinessServer.SurnameInitialsByName(WarehouseManSNP, String(Header.Released));
-			ParameterValues.Insert("WarehouseManSNP",		WarehouseManSNP);
-			ParameterValues.Insert("WarehousemanPosition",	Header.ReleasedPosition);
-			
-			ParameterValues.Insert("RecordsSequenceNumbersQuantityInWords",NumberInWords(LineCount, ,",,,,,,,,0"));
-			ParameterValues.Insert("TotalPlacesInWords",						?(TotalPlaces = 0, "", NumberInWords(TotalPlaces, ,",,,From,,,,,0"))); 
-			ParameterValues.Insert("AmountInWords",							WorkWithCurrencyRates.GenerateAmountInWords(TotalAmountWithVAT, Constants.NationalCurrency.Get()));
-			
-			FullDocumentDate = Format(Header.DocumentDate, "DF=""dd MMMM yyyy """"year""""""");
-			StringLength			= StrLen(FullDocumentDate);
-			FirstSeparator	= Find(FullDocumentDate," ");
-			SecondSeparator	= Find(Right(FullDocumentDate,StringLength - FirstSeparator), " ") + FirstSeparator;
-			
-			ParameterValues.Insert("DocumentDateDay", """" + Left(FullDocumentDate, FirstSeparator - 1) + """");
-			ParameterValues.Insert("DocumentDateMonth", Mid(FullDocumentDate, FirstSeparator + 1, SecondSeparator - FirstSeparator - 1));
-			ParameterValues.Insert("DocumentDateYear",	 Right(FullDocumentDate, StringLength - SecondSeparator));
-			
-			TemplateAreaFooter.Parameters.Fill(ParameterValues);
-			SpreadsheetDocument.Put(TemplateAreaFooter);
-			
-		ElsIf TemplateName = "M15" Then
-			
-			Query = New Query;
-			Query.SetParameter("CurrentDocument", CurrentDocument);
-			Query.Text =
-			"SELECT
-			|	CustomerInvoice.Date AS DocumentDate,
-			|	CustomerInvoice.Number AS Number,
-			|	CustomerInvoice.Company AS Heads,
-			|	CustomerInvoice.Company AS Company,
-			|	CustomerInvoice.BankAccount AS BankAccount,
-			|	CustomerInvoice.CounterpartyBankAcc AS CounterpartyBankAcc,
-			|	CustomerInvoice.Company.Prefix AS Prefix,
-			|	CustomerInvoice.StructuralUnit AS WarehouseDescription,
-			|	CustomerInvoice.Counterparty AS Counterparty,
-			|	CustomerInvoice.Contract.Presentation AS Basis,
-			|	CustomerInvoice.DocumentCurrency,
-			|	CustomerInvoice.AmountIncludesVAT,
-			|	CustomerInvoice.StructuralUnit.FRP AS FRP,
-			|	CustomerInvoice.Responsible.Ind AS Responsible,
-			|	CustomerInvoice.IncludeVATInPrice,
-			|	CustomerInvoice.ExchangeRate,
-			|	CustomerInvoice.Multiplicity,
-			|	CustomerInvoice.Head AS Head,
-			|	CustomerInvoice.HeadPosition AS HeadPosition,
-			|	CustomerInvoice.ChiefAccountant AS ChiefAccountant,
-			|	CustomerInvoice.Released AS Released,
-			|	CustomerInvoice.ReleasedPosition AS ReleasedPosition
-			|FROM
-			|	Document.CustomerInvoice AS CustomerInvoice
-			|WHERE
-			|	CustomerInvoice.Ref = &CurrentDocument";
-			Header = Query.Execute().Select();
+//			SpreadsheetDocument.Put(TemplateAreaTotalByPage);
+//			
+//			// Display totals on the full document
+//			TemplateAreaTotalAmount.Parameters.TotalPlaces       = TotalPlaces;
+//			TemplateAreaTotalAmount.Parameters.TotalQuantity = TotalQuantity;
+//			TemplateAreaTotalAmount.Parameters.TotalAmount      = Total;
+//			TemplateAreaTotalAmount.Parameters.TotalVAT        = TotalVAT;
+//			TemplateAreaTotalAmount.Parameters.TotalAmountWithVAT  = TotalAmountWithVAT;
+//			
+//			SpreadsheetDocument.Put(TemplateAreaTotalAmount);
+//			
+//			// Display the footer of the document
+//			ParameterValues = New Structure;
+//			
+//			ParameterValues.Insert("PowerOfAttorneyNumber", Header.PowerOfAttorneyNumber);
+//			ParameterValues.Insert("PowerOfAttorneyDate", Header.PowerOfAttorneyDate);
+//			ParameterValues.Insert("PowerOfAttorneyIssued", Header.PowerOfAttorneyIssued);
+//			ParameterValues.Insert("PowerOfAttorneyThroughWhom", Header.PowerAttorneyPerson);
+//			
+//			HeadDescriptionFull = "";
+//			SmallBusinessServer.SurnameInitialsByName(HeadDescriptionFull, String(Header.Head));
+//			ParameterValues.Insert("HeadDescriptionFull",		HeadDescriptionFull);
+//			ParameterValues.Insert("HeadPost", Header.HeadPosition);
+//			
+//			ChiefAccountantNameAndSurname = "";
+//			SmallBusinessServer.SurnameInitialsByName(ChiefAccountantNameAndSurname, String(Header.ChiefAccountant));
+//			ParameterValues.Insert("NameAndSurnameOfChiefAccountant",	ChiefAccountantNameAndSurname);
+//			
+//			WarehouseManSNP = "";
+//			SmallBusinessServer.SurnameInitialsByName(WarehouseManSNP, String(Header.Released));
+//			ParameterValues.Insert("WarehouseManSNP",		WarehouseManSNP);
+//			ParameterValues.Insert("WarehousemanPosition",	Header.ReleasedPosition);
+//			
+//			ParameterValues.Insert("RecordsSequenceNumbersQuantityInWords",NumberInWords(LineCount, ,",,,,,,,,0"));
+//			ParameterValues.Insert("TotalPlacesInWords",						?(TotalPlaces = 0, "", NumberInWords(TotalPlaces, ,",,,From,,,,,0"))); 
+//			ParameterValues.Insert("AmountInWords",							WorkWithCurrencyRates.GenerateAmountInWords(TotalAmountWithVAT, Constants.NationalCurrency.Get()));
+//			
+//			FullDocumentDate = Format(Header.DocumentDate, "DF=""dd MMMM yyyy """"year""""""");
+//			StringLength			= StrLen(FullDocumentDate);
+//			FirstSeparator	= Find(FullDocumentDate," ");
+//			SecondSeparator	= Find(Right(FullDocumentDate,StringLength - FirstSeparator), " ") + FirstSeparator;
+//			
+//			ParameterValues.Insert("DocumentDateDay", """" + Left(FullDocumentDate, FirstSeparator - 1) + """");
+//			ParameterValues.Insert("DocumentDateMonth", Mid(FullDocumentDate, FirstSeparator + 1, SecondSeparator - FirstSeparator - 1));
+//			ParameterValues.Insert("DocumentDateYear",	 Right(FullDocumentDate, StringLength - SecondSeparator));
+//			
+//			TemplateAreaFooter.Parameters.Fill(ParameterValues);
+//			SpreadsheetDocument.Put(TemplateAreaFooter);
+//			
+//[]		ElsIf TemplateName = "M15" Then
+//			
+//			Query = New Query;
+//			Query.SetParameter("CurrentDocument", CurrentDocument);
+//			Query.Text =
+//			"SELECT
+//			|	CustomerInvoice.Date AS DocumentDate,
+//			|	CustomerInvoice.Number AS Number,
+//			|	CustomerInvoice.Company AS Heads,
+//			|	CustomerInvoice.Company AS Company,
+//			|	CustomerInvoice.BankAccount AS BankAccount,
+//			|	CustomerInvoice.CounterpartyBankAcc AS CounterpartyBankAcc,
+//			|	CustomerInvoice.Company.Prefix AS Prefix,
+//			|	CustomerInvoice.StructuralUnit AS WarehouseDescription,
+//			|	CustomerInvoice.Counterparty AS Counterparty,
+//			|	CustomerInvoice.Contract.Presentation AS Basis,
+//			|	CustomerInvoice.DocumentCurrency,
+//			|	CustomerInvoice.AmountIncludesVAT,
+//			|	CustomerInvoice.StructuralUnit.FRP AS FRP,
+//			|	CustomerInvoice.Responsible.Ind AS Responsible,
+//			|	CustomerInvoice.IncludeVATInPrice,
+//			|	CustomerInvoice.ExchangeRate,
+//			|	CustomerInvoice.Multiplicity,
+//			|	CustomerInvoice.Head AS Head,
+//			|	CustomerInvoice.HeadPosition AS HeadPosition,
+//			|	CustomerInvoice.ChiefAccountant AS ChiefAccountant,
+//			|	CustomerInvoice.Released AS Released,
+//			|	CustomerInvoice.ReleasedPosition AS ReleasedPosition
+//			|FROM
+//			|	Document.CustomerInvoice AS CustomerInvoice
+//			|WHERE
+//			|	CustomerInvoice.Ref = &CurrentDocument";
+//			Header = Query.Execute().Select();
 
-			Header.Next();
+//			Header.Next();
 
-			Query = New Query;
-			Query.SetParameter("CurrentDocument", CurrentDocument);
-			
-			UseConversion = (NOT Header.DocumentCurrency = Constants.NationalCurrency.Get());
-			
-			Query.Text =
-			"SELECT
-			|	CustomerInvoiceInventory.ProductsAndServices AS ProductsAndServices,
-			|	CASE
-			|		WHEN (CAST(CustomerInvoiceInventory.ProductsAndServices.DescriptionFull AS String(1000))) = """"
-			|			THEN CustomerInvoiceInventory.ProductsAndServices.Description
-			|		ELSE CAST(CustomerInvoiceInventory.ProductsAndServices.DescriptionFull AS String(1000))
-			|	END AS InventoryItemDescription,
-			|	CustomerInvoiceInventory.Characteristic,
-			|	CAST(CustomerInvoiceInventory.Content AS String(1000)) AS Content,
-			|	CustomerInvoiceInventory.ProductsAndServices.Code AS InventoryItemCode,
-			|	CustomerInvoiceInventory.ProductsAndServices.SKU AS SKU,
-			|	CustomerInvoiceInventory.MeasurementUnit.Description AS MeasurementUnitDescription,
-			|	CustomerInvoiceInventory.ProductsAndServices.MeasurementUnit.Code AS MeasurementUnitCode,
-			|	CustomerInvoiceInventory.VATRate AS VATRate,
-			|	&Price_Parameter AS Price,
-			|	SUM(CustomerInvoiceInventory.Quantity) AS Quantity,
-			|	SUM(&Amount_Parameter) AS Amount,
-			|	SUM(&VATAmount_Parameter) AS VATAmount,
-			|	SUM(&Total_Parameter) AS Total,
-			|	MIN(CustomerInvoiceInventory.LineNumber) AS LineNumber
-			|FROM
-			|	Document.CustomerInvoice.Inventory AS CustomerInvoiceInventory
-			|WHERE
-			|	CustomerInvoiceInventory.Ref = &CurrentDocument
-			|	AND (NOT CustomerInvoiceInventory.ProductsAndServices.ProductsAndServicesType = VALUE(Enum.ProductsAndServicesTypes.Service))
-			|
-			|GROUP BY
-			|	CustomerInvoiceInventory.ProductsAndServices,
-			|	CustomerInvoiceInventory.MeasurementUnit,
-			|	CustomerInvoiceInventory.VATRate,
-			|	&Price_Parameter,
-			|	CustomerInvoiceInventory.Characteristic,
-			|	CAST(CustomerInvoiceInventory.Content AS String(1000)),
-			|	CustomerInvoiceInventory.ProductsAndServices.Code,
-			|	CustomerInvoiceInventory.ProductsAndServices.SKU,
-			|	CustomerInvoiceInventory.MeasurementUnit.Description,
-			|	CustomerInvoiceInventory.ProductsAndServices.MeasurementUnit.Code,
-			|	CASE
-			|		WHEN (CAST(CustomerInvoiceInventory.ProductsAndServices.DescriptionFull AS String(1000))) = """"
-			|			THEN CustomerInvoiceInventory.ProductsAndServices.Description
-			|		ELSE CAST(CustomerInvoiceInventory.ProductsAndServices.DescriptionFull AS String(1000))
-			|	END
-			|
-			|ORDER BY
-			|	LineNumber";
-			
-			If UseConversion Then
-				
-				Query.Text = StrReplace(Query.Text, "&Price_Parameter", 		"CAST(CustomerInvoiceInventory.Price * &ExchangeRate / &Multiplicity AS Number(15,2))");
-				Query.Text = StrReplace(Query.Text, "&Amount_Parameter", 	"CAST(CustomerInvoiceInventory.Amount * &ExchangeRate / &Multiplicity AS Number(15,2))");
-				Query.Text = StrReplace(Query.Text, "&VATAmount_Parameter", 	"CAST(CustomerInvoiceInventory.VATAmount * &ExchangeRate / &Multiplicity AS Number(15,2))");
-				Query.Text = StrReplace(Query.Text, "&Total_Parameter", 	"CAST(CustomerInvoiceInventory.Total * &ExchangeRate / &Multiplicity AS Number(15,2))");
-				
-				Query.SetParameter("ExchangeRate",		Header.ExchangeRate);
-				Query.SetParameter("Multiplicity",	Header.Multiplicity);
-				
-			Else
-				
-				Query.Text = StrReplace(Query.Text, "&Price_Parameter", 		"CustomerInvoiceInventory.Price");
-				Query.Text = StrReplace(Query.Text, "&Amount_Parameter", 	"CustomerInvoiceInventory.Amount");
-				Query.Text = StrReplace(Query.Text, "&VATAmount_Parameter", 	"CustomerInvoiceInventory.VATAmount");
-				Query.Text = StrReplace(Query.Text, "&Total_Parameter", 	"CustomerInvoiceInventory.Total");
-				
-			EndIf;
-			
-			LinesSelectionInventory = Query.Execute().Select();
-			
-			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_SalesOrder_M15";
+//			Query = New Query;
+//			Query.SetParameter("CurrentDocument", CurrentDocument);
+//			
+//			UseConversion = (NOT Header.DocumentCurrency = Constants.NationalCurrency.Get());
+//			
+//			Query.Text =
+//			"SELECT
+//			|	CustomerInvoiceInventory.ProductsAndServices AS ProductsAndServices,
+//			|	CASE
+//			|		WHEN (CAST(CustomerInvoiceInventory.ProductsAndServices.DescriptionFull AS String(1000))) = """"
+//			|			THEN CustomerInvoiceInventory.ProductsAndServices.Description
+//			|		ELSE CAST(CustomerInvoiceInventory.ProductsAndServices.DescriptionFull AS String(1000))
+//			|	END AS InventoryItemDescription,
+//			|	CustomerInvoiceInventory.Characteristic,
+//			|	CAST(CustomerInvoiceInventory.Content AS String(1000)) AS Content,
+//			|	CustomerInvoiceInventory.ProductsAndServices.Code AS InventoryItemCode,
+//			|	CustomerInvoiceInventory.ProductsAndServices.SKU AS SKU,
+//			|	CustomerInvoiceInventory.MeasurementUnit.Description AS MeasurementUnitDescription,
+//			|	CustomerInvoiceInventory.ProductsAndServices.MeasurementUnit.Code AS MeasurementUnitCode,
+//			|	CustomerInvoiceInventory.VATRate AS VATRate,
+//			|	&Price_Parameter AS Price,
+//			|	SUM(CustomerInvoiceInventory.Quantity) AS Quantity,
+//			|	SUM(&Amount_Parameter) AS Amount,
+//			|	SUM(&VATAmount_Parameter) AS VATAmount,
+//			|	SUM(&Total_Parameter) AS Total,
+//			|	MIN(CustomerInvoiceInventory.LineNumber) AS LineNumber
+//			|FROM
+//			|	Document.CustomerInvoice.Inventory AS CustomerInvoiceInventory
+//			|WHERE
+//			|	CustomerInvoiceInventory.Ref = &CurrentDocument
+//			|	AND (NOT CustomerInvoiceInventory.ProductsAndServices.ProductsAndServicesType = VALUE(Enum.ProductsAndServicesTypes.Service))
+//			|
+//			|GROUP BY
+//			|	CustomerInvoiceInventory.ProductsAndServices,
+//			|	CustomerInvoiceInventory.MeasurementUnit,
+//			|	CustomerInvoiceInventory.VATRate,
+//			|	&Price_Parameter,
+//			|	CustomerInvoiceInventory.Characteristic,
+//			|	CAST(CustomerInvoiceInventory.Content AS String(1000)),
+//			|	CustomerInvoiceInventory.ProductsAndServices.Code,
+//			|	CustomerInvoiceInventory.ProductsAndServices.SKU,
+//			|	CustomerInvoiceInventory.MeasurementUnit.Description,
+//			|	CustomerInvoiceInventory.ProductsAndServices.MeasurementUnit.Code,
+//			|	CASE
+//			|		WHEN (CAST(CustomerInvoiceInventory.ProductsAndServices.DescriptionFull AS String(1000))) = """"
+//			|			THEN CustomerInvoiceInventory.ProductsAndServices.Description
+//			|		ELSE CAST(CustomerInvoiceInventory.ProductsAndServices.DescriptionFull AS String(1000))
+//			|	END
+//			|
+//			|ORDER BY
+//			|	LineNumber";
+//			
+//			If UseConversion Then
+//				
+//				Query.Text = StrReplace(Query.Text, "&Price_Parameter", 		"CAST(CustomerInvoiceInventory.Price * &ExchangeRate / &Multiplicity AS Number(15,2))");
+//				Query.Text = StrReplace(Query.Text, "&Amount_Parameter", 	"CAST(CustomerInvoiceInventory.Amount * &ExchangeRate / &Multiplicity AS Number(15,2))");
+//				Query.Text = StrReplace(Query.Text, "&VATAmount_Parameter", 	"CAST(CustomerInvoiceInventory.VATAmount * &ExchangeRate / &Multiplicity AS Number(15,2))");
+//				Query.Text = StrReplace(Query.Text, "&Total_Parameter", 	"CAST(CustomerInvoiceInventory.Total * &ExchangeRate / &Multiplicity AS Number(15,2))");
+//				
+//				Query.SetParameter("ExchangeRate",		Header.ExchangeRate);
+//				Query.SetParameter("Multiplicity",	Header.Multiplicity);
+//				
+//			Else
+//				
+//				Query.Text = StrReplace(Query.Text, "&Price_Parameter", 		"CustomerInvoiceInventory.Price");
+//				Query.Text = StrReplace(Query.Text, "&Amount_Parameter", 	"CustomerInvoiceInventory.Amount");
+//				Query.Text = StrReplace(Query.Text, "&VATAmount_Parameter", 	"CustomerInvoiceInventory.VATAmount");
+//				Query.Text = StrReplace(Query.Text, "&Total_Parameter", 	"CustomerInvoiceInventory.Total");
+//				
+//			EndIf;
+//			
+//			LinesSelectionInventory = Query.Execute().Select();
+//			
+//			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_SalesOrder_M15";
 
-			Template = PrintManagement.PrintedFormsTemplate("Document.CustomerInvoice.PF_MXL_M15");
-			
-			TemplateAreaHeader = Template.GetArea("Header");
-			TemplateAreaTableHeader = Template.GetArea("TableTitle");
-			TemplateAreaRow = Template.GetArea("String");
-			TemplateAreaFooter = Template.GetArea("Footer");
-			
-			InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate, , Header.BankAccount);
-			InfoAboutConsignee = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Counterparty, Header.DocumentDate, , Header.CounterpartyBankAcc);
-			
-			TemplateAreaHeader.Parameters.Fill(Header);
-			
-			If Header.DocumentDate < Date('20110101') Then
-				DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
-			Else
-				DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-			EndIf;		
-			
-			TemplateAreaHeader.Parameters.DocumentNumber = DocumentNumber;
-			TemplateAreaHeader.Parameters.DocumentDate = Header.DocumentDate;
-			TemplateAreaHeader.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany);
-			TemplateAreaHeader.Parameters.CounterpartyDescription = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutConsignee,"FullDescr,");
-			TemplateAreaHeader.Parameters.CompanyByOKPO = InfoAboutCompany.CodeByOKPO;
-			
-			SpreadsheetDocument.Put(TemplateAreaHeader);
-			
-			// Displaying table title
-			SpreadsheetDocument.Put(TemplateAreaTableHeader);
-			
-			PageNumber = 1;
-			LineNumber = 0;
-			LineCount = LinesSelectionInventory.Count();
-			
-			// Initialize totals in document
-			TotalAmountWithoutVAT = 0;
-			TotalVATAmount = 0;
-			TotalWithVAT = 0;
-			
-			// Create array to check output
-			OutputedAreasArray = New Array;
-			
-			// Displaying multiline part of the document
-			While LinesSelectionInventory.Next() Do
-				
-				LineNumber = LineNumber + 1;
-				
-				// Check output
-				RowWithFooter = New Array;
-				If LineNumber = 1 Then
-					RowWithFooter.Add(TemplateAreaTableHeader); // if the first string, then should
-				EndIf;                                                   // fit title
-				RowWithFooter.Add(TemplateAreaRow);
-				If LineNumber = LineCount Then           // if the last string, should
-					RowWithFooter.Add(TemplateAreaFooter); // fit and document footer
-				EndIf;
+//			Template = PrintManagement.PrintedFormsTemplate("Document.CustomerInvoice.PF_MXL_M15");
+//			
+//			TemplateAreaHeader = Template.GetArea("Header");
+//			TemplateAreaTableHeader = Template.GetArea("TableTitle");
+//			TemplateAreaRow = Template.GetArea("String");
+//			TemplateAreaFooter = Template.GetArea("Footer");
+//			
+//			InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate, , Header.BankAccount);
+//			InfoAboutConsignee = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Counterparty, Header.DocumentDate, , Header.CounterpartyBankAcc);
+//			
+//			TemplateAreaHeader.Parameters.Fill(Header);
+//			
+//			If Header.DocumentDate < Date('20110101') Then
+//				DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
+//			Else
+//				DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
+//			EndIf;		
+//			
+//			TemplateAreaHeader.Parameters.DocumentNumber = DocumentNumber;
+//			TemplateAreaHeader.Parameters.DocumentDate = Header.DocumentDate;
+//			TemplateAreaHeader.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany);
+//			TemplateAreaHeader.Parameters.CounterpartyDescription = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutConsignee,"FullDescr,");
+//			TemplateAreaHeader.Parameters.CompanyByOKPO = InfoAboutCompany.CodeByOKPO;
+//			
+//			SpreadsheetDocument.Put(TemplateAreaHeader);
+//			
+//			// Displaying table title
+//			SpreadsheetDocument.Put(TemplateAreaTableHeader);
+//			
+//			PageNumber = 1;
+//			LineNumber = 0;
+//			LineCount = LinesSelectionInventory.Count();
+//			
+//			// Initialize totals in document
+//			TotalAmountWithoutVAT = 0;
+//			TotalVATAmount = 0;
+//			TotalWithVAT = 0;
+//			
+//			// Create array to check output
+//			OutputedAreasArray = New Array;
+//			
+//			// Displaying multiline part of the document
+//			While LinesSelectionInventory.Next() Do
+//				
+//				LineNumber = LineNumber + 1;
+//				
+//				// Check output
+//				RowWithFooter = New Array;
+//				If LineNumber = 1 Then
+//					RowWithFooter.Add(TemplateAreaTableHeader); // if the first string, then should
+//				EndIf;                                                   // fit title
+//				RowWithFooter.Add(TemplateAreaRow);
+//				If LineNumber = LineCount Then           // if the last string, should
+//					RowWithFooter.Add(TemplateAreaFooter); // fit and document footer
+//				EndIf;
 
-				If LineNumber <> 1 AND Not SpreadsheetDocument.CheckPut(RowWithFooter) Then
-					
-					// Display table header
-					PageNumber	= PageNumber + 1;
-					SpreadsheetDocument.PutHorizontalPageBreak();
-					TemplateAreaTableHeader.Parameters.PageNumber = "Page " + PageNumber; 
-					SpreadsheetDocument.Put(TemplateAreaTableHeader);
-					
-				EndIf;
-				
-				TemplateAreaRow.Parameters.Fill(LinesSelectionInventory);
-				
-				If ValueIsFilled(LinesSelectionInventory.Content) Then
-					TemplateAreaRow.Parameters.InventoryItemDescription = LinesSelectionInventory.Content;
-				Else
-					TemplateAreaRow.Parameters.InventoryItemDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItemDescription, 
-																		LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
-				EndIf;
+//				If LineNumber <> 1 AND Not SpreadsheetDocument.CheckPut(RowWithFooter) Then
+//					
+//					// Display table header
+//					PageNumber	= PageNumber + 1;
+//					SpreadsheetDocument.PutHorizontalPageBreak();
+//					TemplateAreaTableHeader.Parameters.PageNumber = "Page " + PageNumber; 
+//					SpreadsheetDocument.Put(TemplateAreaTableHeader);
+//					
+//				EndIf;
+//				
+//				TemplateAreaRow.Parameters.Fill(LinesSelectionInventory);
+//				
+//				If ValueIsFilled(LinesSelectionInventory.Content) Then
+//					TemplateAreaRow.Parameters.InventoryItemDescription = LinesSelectionInventory.Content;
+//				Else
+//					TemplateAreaRow.Parameters.InventoryItemDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItemDescription, 
+//																		LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
+//				EndIf;
 
-				SumWithVAT	= LinesSelectionInventory.Total;
-				VATAmount	= LinesSelectionInventory.VATAmount;
-				AmountWithoutVAT = LinesSelectionInventory.Amount - ?(Header.AmountIncludesVAT, LinesSelectionInventory.VATAmount, 0);
-				
-				Quantity = LinesSelectionInventory.Quantity;
-				Price = AmountWithoutVAT / Quantity;
-				
-				TemplateAreaRow.Parameters.Quantity = Quantity;
-				TemplateAreaRow.Parameters.SumWithVAT = SumWithVAT;
-				TemplateAreaRow.Parameters.AmountWithoutVAT = AmountWithoutVAT;
-				TemplateAreaRow.Parameters.VATAmount = VATAmount;
-				TemplateAreaRow.Parameters.Price = Price;
-				
-				SpreadsheetDocument.Put(TemplateAreaRow);
-				
-				TotalAmountWithoutVAT = TotalAmountWithoutVAT + AmountWithoutVAT;
-				TotalWithVAT = TotalWithVAT + SumWithVAT;
-				
-			EndDo;
-			
-			// Display the footer of the document
-			TemplateAreaFooter.Parameters.Fill(Header);
-			
-			ParameterValues = New Structure;
-			
-			HeadDescriptionFull = "";
-			SmallBusinessServer.SurnameInitialsByName(HeadDescriptionFull, String(Header.Head));
-			ParameterValues.Insert("HeadDescriptionFull",		HeadDescriptionFull);
-			ParameterValues.Insert("HeadPost", Header.HeadPosition);
-			
-			ChiefAccountantNameAndSurname = "";
-			SmallBusinessServer.SurnameInitialsByName(ChiefAccountantNameAndSurname, String(Header.ChiefAccountant));
-			ParameterValues.Insert("NameAndSurnameOfChiefAccountant",	ChiefAccountantNameAndSurname);
-			
-			WarehouseManSNP = "";
-			SmallBusinessServer.SurnameInitialsByName(WarehouseManSNP, String(Header.Released));
-			ParameterValues.Insert("WarehouseManSNP",		WarehouseManSNP);
-			ParameterValues.Insert("WarehousemanPosition",	Header.ReleasedPosition);
-			
-			ParameterValues.Insert("RecordsSequenceNumbersQuantityInWords",NumberInWords(LineCount, ,",,,,,,,,0"));
-			ParameterValues.Insert("AmountInWords",							WorkWithCurrencyRates.GenerateAmountInWords(TotalWithVAT, Constants.NationalCurrency.Get()));
-			ParameterValues.Insert("TotalVAT",									TotalWithVAT - TotalAmountWithoutVAT); 
-			
-			TemplateAreaFooter.Parameters.Fill(ParameterValues);
-			SpreadsheetDocument.Put(TemplateAreaFooter);
-			
-			// Set the layout parameters
-			SpreadsheetDocument.TopMargin = 0;
-			SpreadsheetDocument.LeftMargin = 0;
-			SpreadsheetDocument.BottomMargin = 0;
-			SpreadsheetDocument.RightMargin = 0;
-			SpreadsheetDocument.PageOrientation = PageOrientation.Landscape;
-			
+//				SumWithVAT	= LinesSelectionInventory.Total;
+//				VATAmount	= LinesSelectionInventory.VATAmount;
+//				AmountWithoutVAT = LinesSelectionInventory.Amount - ?(Header.AmountIncludesVAT, LinesSelectionInventory.VATAmount, 0);
+//				
+//				Quantity = LinesSelectionInventory.Quantity;
+//				Price = AmountWithoutVAT / Quantity;
+//				
+//				TemplateAreaRow.Parameters.Quantity = Quantity;
+//				TemplateAreaRow.Parameters.SumWithVAT = SumWithVAT;
+//				TemplateAreaRow.Parameters.AmountWithoutVAT = AmountWithoutVAT;
+//				TemplateAreaRow.Parameters.VATAmount = VATAmount;
+//				TemplateAreaRow.Parameters.Price = Price;
+//				
+//				SpreadsheetDocument.Put(TemplateAreaRow);
+//				
+//				TotalAmountWithoutVAT = TotalAmountWithoutVAT + AmountWithoutVAT;
+//				TotalWithVAT = TotalWithVAT + SumWithVAT;
+//				
+//			EndDo;
+//			
+//			// Display the footer of the document
+//			TemplateAreaFooter.Parameters.Fill(Header);
+//			
+//			ParameterValues = New Structure;
+//			
+//			HeadDescriptionFull = "";
+//			SmallBusinessServer.SurnameInitialsByName(HeadDescriptionFull, String(Header.Head));
+//			ParameterValues.Insert("HeadDescriptionFull",		HeadDescriptionFull);
+//			ParameterValues.Insert("HeadPost", Header.HeadPosition);
+//			
+//			ChiefAccountantNameAndSurname = "";
+//			SmallBusinessServer.SurnameInitialsByName(ChiefAccountantNameAndSurname, String(Header.ChiefAccountant));
+//			ParameterValues.Insert("NameAndSurnameOfChiefAccountant",	ChiefAccountantNameAndSurname);
+//			
+//			WarehouseManSNP = "";
+//			SmallBusinessServer.SurnameInitialsByName(WarehouseManSNP, String(Header.Released));
+//			ParameterValues.Insert("WarehouseManSNP",		WarehouseManSNP);
+//			ParameterValues.Insert("WarehousemanPosition",	Header.ReleasedPosition);
+//			
+//			ParameterValues.Insert("RecordsSequenceNumbersQuantityInWords",NumberInWords(LineCount, ,",,,,,,,,0"));
+//			ParameterValues.Insert("AmountInWords",							WorkWithCurrencyRates.GenerateAmountInWords(TotalWithVAT, Constants.NationalCurrency.Get()));
+//			ParameterValues.Insert("TotalVAT",									TotalWithVAT - TotalAmountWithoutVAT); 
+//			
+//			TemplateAreaFooter.Parameters.Fill(ParameterValues);
+//			SpreadsheetDocument.Put(TemplateAreaFooter);
+//			
+//			// Set the layout parameters
+//			SpreadsheetDocument.TopMargin = 0;
+//			SpreadsheetDocument.LeftMargin = 0;
+//			SpreadsheetDocument.BottomMargin = 0;
+//			SpreadsheetDocument.RightMargin = 0;
+//			SpreadsheetDocument.PageOrientation = PageOrientation.Landscape;
+//			
 		ElsIf TemplateName = "SalesReceipt" Then
 			
 			GenerateSalesReceipt(SpreadsheetDocument, CurrentDocument);
@@ -5875,63 +5875,43 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 	Var Errors;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "Consignment") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "Consignment", "Customer invoice", PrintForm(ObjectsArray, PrintObjects, "Consignment"));
-		
 	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "SaleInvoiceWithServices") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "SaleInvoiceWithServices", "Customer invoice (Services)", PrintForm(ObjectsArray, PrintObjects, "SaleInvoiceWithServices"));
-		
 	EndIf;
 	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "TORG12") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "TORG12", "TORG12 (Consignment note)", PrintForm(ObjectsArray, PrintObjects, "TORG12"));
-		
-	EndIf;
-	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "TRAD12WithServices") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "TRAD12WithServices", "TORG12 (Consignment note with services)", PrintForm(ObjectsArray, PrintObjects, "TRAD12WithServices"));
-
-	EndIf;
+	//If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "TORG12") Then
+	//	PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "TORG12", "TORG12 (Consignment note)", PrintForm(ObjectsArray, PrintObjects, "TORG12"));
+	//EndIf;
+	//
+	//If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "TRAD12WithServices") Then
+	//	PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "TRAD12WithServices", "TORG12 (Consignment note with services)", PrintForm(ObjectsArray, PrintObjects, "TRAD12WithServices"));
+	//EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "UniversalTransferDocument") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "UniversalTransferDocument", "Universal transfer document", PrintForm(ObjectsArray, PrintObjects, "UniversalTransferDocument"));
-		
 	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "ServicesAcceptanceCertificate") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "ServicesAcceptanceCertificate", "Services acceptance certificate", PrintForm(ObjectsArray, PrintObjects, "ServicesAcceptanceCertificate"));
-		
 	EndIf;
 	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "M15") Then
-		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "M15", "M15 (Invoice on materials issue)", PrintForm(ObjectsArray, PrintObjects, "M15"));
-		
-	EndIf;
+	//If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "M15") Then
+	//	PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "M15", "M15 (Invoice on materials issue)", PrintForm(ObjectsArray, PrintObjects, "M15"));
+	//EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "BoL") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "BoL", "1-T (Shipping document)", DataProcessors.PrintBOL.PrintForm(ObjectsArray, PrintObjects, PrintParameters));
-		
 	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "SalesReceipt") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "SalesReceipt", "Sales receipt", PrintForm(ObjectsArray, PrintObjects, "SalesReceipt"));
-		
 	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "MerchandiseFillingForm") Then
-		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "MerchandiseFillingForm", "Merchandise filling form", PrintForm(ObjectsArray, PrintObjects, "MerchandiseFillingForm"));
-		
 	EndIf;
 	
 	IsInvoiceForPayment = PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InvoiceForPayment");
@@ -5982,10 +5962,11 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 				PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, TemplateName, PFPresentation, New SpreadsheetDocument);
 				
 				MessageText = NStr("en='__________________
-		|%1 document.
-		|To generate printing form, it is required to select invoice for payment with document-base or specify customer order in the tabular section.';ru='__________________
-		|Документ %1.
-		|Для формирования печатной формы необходимо либо выбрать документом-основанием счет на оплату, либо указать в табличной части заказ покупателя.'");
+									|%1 document.
+									|To generate printing form, it is required to select invoice for payment with document-base or specify customer order in the tabular section.';
+									|ru='__________________
+									|Документ %1.
+									|Для формирования печатной формы необходимо либо выбрать документом-основанием счет на оплату, либо указать в табличной части заказ покупателя.'");
 				
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, PrintObject);
 				CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
@@ -5995,47 +5976,27 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 		EndDo;
 		
 		If CustomerOrdersArray.Count() > 0 Then
-			
 			If IsInvoiceForPayment Then
-				
 				SpreadsheetDocument = Documents.CustomerOrder.PrintInvoiceForPayment(CustomerOrdersArray, PrintObjects, DocumentKind);
-				
 			ElsIf IsInvoiceForPartialPayment Then
-				
 				SpreadsheetDocument = Documents.CustomerOrder.PrintInvoiceForPayment(CustomerOrdersArray, PrintObjects, DocumentKind);
-				
 			ElsIf IsInvoiceForPaymentWithFacsimileSignature Then
-				
 				SpreadsheetDocument = Documents.CustomerOrder.PrintInvoiceWithFacsimileSignature(CustomerOrdersArray, PrintObjects, DocumentKind);
-				
 			ElsIf IsInvoiceForPartialPaymentWithFacsimileSignature Then
-				
 				SpreadsheetDocument = Documents.CustomerOrder.PrintInvoiceWithFacsimileSignature(CustomerOrdersArray, PrintObjects, DocumentKind);
-				
 			EndIf;
-			
 			PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, TemplateName, PFPresentation, SpreadsheetDocument);
-			
 		EndIf;
 		
 		If ArrayInvoiceForPayment.Count() > 0 Then
-			
 			If IsInvoiceForPayment Then
-				
 				SpreadsheetDocument = Documents.InvoiceForPayment.PrintInvoiceForPayment(ArrayInvoiceForPayment, PrintObjects, DocumentKind);
-				
 			ElsIf IsInvoiceForPartialPayment Then
-				
 				SpreadsheetDocument = Documents.InvoiceForPayment.PrintInvoiceForPayment(ArrayInvoiceForPayment, PrintObjects, DocumentKind);
-				
 			ElsIf IsInvoiceForPaymentWithFacsimileSignature Then
-				
 				SpreadsheetDocument = Documents.InvoiceForPayment.PrintInvoiceWithFacsimileSignature(ArrayInvoiceForPayment, PrintObjects, DocumentKind);
-				
 			ElsIf IsInvoiceForPartialPaymentWithFacsimileSignature Then
-				
 				SpreadsheetDocument = Documents.InvoiceForPayment.PrintInvoiceWithFacsimileSignature(ArrayInvoiceForPayment, PrintObjects, DocumentKind);
-				
 			EndIf;
 			
 			PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, TemplateName, PFPresentation, SpreadsheetDocument);
@@ -6056,10 +6017,11 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 				PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CustomerInvoiceNote", "Account-texture", New SpreadsheetDocument);
 				
 				MessageText = NStr("en='__________________
-		|%1 document.
-		|Customer invoice note is not generated.';ru='__________________
-		|Документ %1.
-		|Счет-фактура не сформирована.'");
+									|%1 document.
+									|Customer invoice note is not generated.';
+									|ru='__________________
+									|Документ %1.
+									|Счет-фактура не сформирована.'");
 				
 				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, PrintObject);
 				CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
@@ -6073,17 +6035,13 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 		EndDo;
 		
 		If ArrayCustomerInvoiceNote.Count() > 0 Then
-			
 			PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CustomerInvoiceNote", "Account-texture", Documents.CustomerInvoiceNote.PrintForm(ArrayCustomerInvoiceNote, PrintObjects, False));
-			
 		EndIf;
 		
 	EndIf;
 	
 	If Errors <> Undefined Then
-		
 		CommonUseClientServer.ShowErrorsToUser(Errors);
-		
 	EndIf;
 	
 	// parameters of sending printing forms by email
@@ -6098,7 +6056,8 @@ EndProcedure
 //
 Procedure AddPrintCommands(PrintCommands) Export
 	
-	IdentifierValue = "ServicesAcceptanceCertificate,TORG12,TRAD12WithServices,M15,BoL,CustomerInvoiceNote,Consignment,SaleInvoiceWithServices,%1,MerchandiseFillingForm";
+	//IdentifierValue = "ServicesAcceptanceCertificate,TORG12,TRAD12WithServices,M15,BoL,CustomerInvoiceNote,Consignment,SaleInvoiceWithServices,%1,MerchandiseFillingForm";
+	IdentifierValue = "ServicesAcceptanceCertificate,BoL,CustomerInvoiceNote,Consignment,SaleInvoiceWithServices,%1,MerchandiseFillingForm";
 	IdentifierValue = StringFunctionsClientServer.PlaceParametersIntoString(IdentifierValue,
 		?(GetFunctionalOption("PaymentCalendar"), "InvoiceForPayment,InvoiceForPartialPayment,InvoiceForPaymentWithFacsimileSignature,InvoiceForPartialPaymentWithFacsimileSignature", "InvoiceForPayment,InvoiceForPaymentWithFacsimileSignature"));
 	
@@ -6114,23 +6073,23 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
 	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "TORG12";
-	PrintCommand.Presentation = NStr("en='TORG12 (Consignment note)';ru='ТОРГ12 (Товарная накладная)'");
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 7;
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "TRAD12WithServices";
-	PrintCommand.Presentation = NStr("en='TORG12 (Consignment note with services)';ru='ТОРГ12 (Товарная накладная с услугами)'");
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 10;
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "M15";
-	PrintCommand.Presentation = NStr("en='M15 (Invoice on materials issue)';ru='М15 (Накладная на отпуск материалов)'");
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 14;
+	//PrintCommand = PrintCommands.Add();
+	//PrintCommand.ID = "TORG12";
+	//PrintCommand.Presentation = NStr("en='TORG12 (Consignment note)';ru='ТОРГ12 (Товарная накладная)'");
+	//PrintCommand.CheckPostingBeforePrint = False;
+	//PrintCommand.Order = 7;
+	//
+	//PrintCommand = PrintCommands.Add();
+	//PrintCommand.ID = "TRAD12WithServices";
+	//PrintCommand.Presentation = NStr("en='TORG12 (Consignment note with services)';ru='ТОРГ12 (Товарная накладная с услугами)'");
+	//PrintCommand.CheckPostingBeforePrint = False;
+	//PrintCommand.Order = 10;
+	//
+	//PrintCommand = PrintCommands.Add();
+	//PrintCommand.ID = "M15";
+	//PrintCommand.Presentation = NStr("en='M15 (Invoice on materials issue)';ru='М15 (Накладная на отпуск материалов)'");
+	//PrintCommand.CheckPostingBeforePrint = False;
+	//PrintCommand.Order = 14;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "BoL";
@@ -6145,12 +6104,12 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 20;
 	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.Handler = "SmallBusinessClient.PrintUTD";
-	PrintCommand.ID = "UniversalTransferDocument";
-	PrintCommand.Presentation = NStr("en='Universal transfer document';ru='Универсальный передаточный документ'");
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 23;
+	//PrintCommand = PrintCommands.Add();
+	//PrintCommand.Handler = "SmallBusinessClient.PrintUTD";
+	//PrintCommand.ID = "UniversalTransferDocument";
+	//PrintCommand.Presentation = NStr("en='Universal transfer document';ru='Универсальный передаточный документ'");
+	//PrintCommand.CheckPostingBeforePrint = False;
+	//PrintCommand.Order = 23;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CustomerInvoiceNote";
