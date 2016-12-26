@@ -754,12 +754,13 @@ Procedure LoadFromFile(ExportableData, ExportParameters, Cancel) Export
 					Raise MessageText;
 				EndIf;
 			EndIf;
+						
+			FillPropertyValues(CatalogItem, TableRow);
 			
 			If UseAccessGroup Then
 				CatalogItem.AccessGroup = Catalogs.CounterpartiesAccessGroups.FindByDescription(TableRow.AccessGroup, False);
 			EndIf;
 			
-			FillPropertyValues(CatalogItem, TableRow);
 			If ValueIsFilled(TableRow.Parent) Then
 				Group = Catalogs.Counterparties.FindByDescription(TableRow.Parent);
 				If Group.IsEmpty() Then
