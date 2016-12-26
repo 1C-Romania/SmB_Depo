@@ -739,7 +739,7 @@ EndProcedure
 &AtClient
 Procedure CheckFileExistence(File, AdditionalParameters) Export
 	NotifyDescription = New NotifyDescription("AfterFileExistenceCheck", ThisForm, AdditionalParameters);
-	File.StartExistenceCheck(NOTifyDescription);
+	File.BeginCheckingExistence(NOTifyDescription);
 EndProcedure
 
 // Procedure continued (see above).
