@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -82,6 +82,26 @@
 			<id>tr</id>
 			<code>Turkish</code>
 			<description>Turkish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>hu</id>
+			<code>Hungarian</code>
+			<description>Hungarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>it</id>
+			<code>Italian</code>
+			<description>Italian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>es</id>
+			<code>Spanish</code>
+			<description>Spanish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sv</id>
+			<code>Swedish</code>
+			<description>Swedish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -248,7 +268,7 @@ Number,
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>0</endColumn>
-						<endColumnOffset>387</endColumnOffset>
+						<endColumnOffset>519</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -291,7 +311,7 @@ String, not longer than 25 characters</v8:content>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>1</endColumn>
-						<endColumnOffset>1437</endColumnOffset>
+						<endColumnOffset>924</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -334,7 +354,7 @@ String, not longer than 25 characters</v8:content>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>2</endColumn>
-						<endColumnOffset>1650</endColumnOffset>
+						<endColumnOffset>951</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -375,7 +395,7 @@ String, not longer than 25 characters</v8:content>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>3</endColumn>
-						<endColumnOffset>915</endColumnOffset>
+						<endColumnOffset>771</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -416,11 +436,11 @@ Allowed column value options: Inventory (default value) Service Work Operation K
 						<beginRow>1</beginRow>
 						<beginRowOffset>-21</beginRowOffset>
 						<endRow>0</endRow>
-						<endRowOffset>345</endRowOffset>
+						<endRowOffset>93</endRowOffset>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>4</endColumn>
-						<endColumnOffset>2946</endColumnOffset>
+						<endColumnOffset>2154</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -460,11 +480,11 @@ Unit code (String, not longer than 4 characters) or Short description of the uni
 						<beginRow>1</beginRow>
 						<beginRowOffset>-21</beginRowOffset>
 						<endRow>0</endRow>
-						<endRowOffset>135</endRowOffset>
+						<endRowOffset>93</endRowOffset>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>5</endColumn>
-						<endColumnOffset>1701</endColumnOffset>
+						<endColumnOffset>1710</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -507,7 +527,7 @@ String of unlimited length</v8:content>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>6</endColumn>
-						<endColumnOffset>1242</endColumnOffset>
+						<endColumnOffset>861</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -550,7 +570,7 @@ Item presentation for easy recognition in the list (string, not longer than 50 c
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>7</endColumn>
-						<endColumnOffset>1824</endColumnOffset>
+						<endColumnOffset>1260</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -593,7 +613,7 @@ and services classifier Product and Services Categories, containing products and
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>8</endColumn>
-						<endColumnOffset>2241</endColumnOffset>
+						<endColumnOffset>2607</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -638,7 +658,7 @@ and Service type (only for services of third-party companies) Company counterpar
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>9</endColumn>
-						<endColumnOffset>2133</endColumnOffset>
+						<endColumnOffset>2838</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -679,11 +699,11 @@ Numeric country code according to Countries Classifier (String up to 3 character
 						<beginRow>1</beginRow>
 						<beginRowOffset>-21</beginRowOffset>
 						<endRow>0</endRow>
-						<endRowOffset>177</endRowOffset>
+						<endRowOffset>135</endRowOffset>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>10</endColumn>
-						<endColumnOffset>1434</endColumnOffset>
+						<endColumnOffset>2127</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -726,7 +746,7 @@ Specifications for products manufacture, work performance (String not longer tha
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>11</endColumn>
-						<endColumnOffset>2289</endColumnOffset>
+						<endColumnOffset>1905</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -739,7 +759,7 @@ Specifications for products manufacture, work performance (String not longer tha
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Description</v8:content>
+							<v8:content>Definition</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -769,7 +789,7 @@ information (String of unlimited length)</v8:content>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>12</endColumn>
-						<endColumnOffset>579</endColumnOffset>
+						<endColumnOffset>561</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -820,7 +840,7 @@ Allowed column value
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>13</endColumn>
-						<endColumnOffset>3546</endColumnOffset>
+						<endColumnOffset>2577</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -865,7 +885,7 @@ Added value VAT rates applied by the company
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>14</endColumn>
-						<endColumnOffset>1164</endColumnOffset>
+						<endColumnOffset>777</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -912,7 +932,7 @@ value) FIFO</v8:content>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>15</endColumn>
-						<endColumnOffset>1464</endColumnOffset>
+						<endColumnOffset>1155</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -955,7 +975,7 @@ value) FIFO</v8:content>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>16</endColumn>
-						<endColumnOffset>1347</endColumnOffset>
+						<endColumnOffset>1362</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -998,7 +1018,7 @@ value) FIFO</v8:content>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>17</endColumn>
-						<endColumnOffset>3072</endColumnOffset>
+						<endColumnOffset>2724</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -1043,7 +1063,7 @@ groups of products and services (String, not longer than 50 characters)</v8:cont
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>18</endColumn>
-						<endColumnOffset>1560</endColumnOffset>
+						<endColumnOffset>1059</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -1088,7 +1108,7 @@ divisions, production divisions, warehouses Structural unit name. It is used to 
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
 						<endColumn>19</endColumn>
-						<endColumnOffset>2853</endColumnOffset>
+						<endColumnOffset>2613</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -1132,7 +1152,7 @@ divisions, production divisions, warehouses Structural unit name. It is used to 
 		</area>
 	</namedItem>
 	<namedItem xsi:type="NamedItemCells">
-		<name>Description</name>
+		<name>Definition</name>
 		<area>
 			<type>Rectangle</type>
 			<beginRow>0</beginRow>
