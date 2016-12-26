@@ -842,7 +842,7 @@ Procedure FillCellTemplateTitle(Cell, Text, Width, ToolTip, MandatoryField, Name
 	Cell.CurrentArea.DetailsParameter = Name;
 	Cell.CurrentArea.BackColor =  StyleColors.ReportHeaderBackColor;
 	Cell.CurrentArea.ColumnWidth = Width;
-	Cell.CurrentArea.Note.Text = ToolTip;
+	Cell.CurrentArea.Comment.Text = ToolTip;
 	If MandatoryField Then 
 		Cell.CurrentArea.Font = New Font(,,True);
 	Else
@@ -1781,7 +1781,7 @@ Procedure FormReportAboutImportBackground(ExportParameters, StorageAddress) Expo
 		Cell = TableReport.GetArea(LineNumber + 1, 1, LineNumber + 1, 1);
 		Cell.CurrentArea.Text = String.RowMatchResult;
 		Cell.CurrentArea.Details = String.MappingObject;
-		Cell.CurrentArea.Note.Text = String.ErrorDescription;
+		Cell.CurrentArea.Comment.Text = String.ErrorDescription;
 		If String.RowMatchResult = "Created" Then 
 			Cell.CurrentArea.TextColor = StyleColors.ResultSuccessColor;
 			CreatedQuantity = CreatedQuantity + 1;

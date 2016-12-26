@@ -594,7 +594,7 @@ Procedure TransferToImportDataNextStep()
 			ClosingFormConfirmation = True;
 			CloseFormAndReturnRefsArray();
 		Else
-			Items.AssistantPages.CurrentPage = Items.LongOperation;
+			Items.AssistantPages.CurrentPage = Items.LongActions;
 			WriteImportedDataClient();
 		EndIf;
 	EndIf;
@@ -998,7 +998,7 @@ Procedure ExecuteImportedDataMatchStepAfterCheck()
 	ExecuteImportedDataMatchStepOnServer(BackgroundJob);
 	
 	If BackgroundJob = True Then 
-		Items.AssistantPages.CurrentPage = Items.LongOperation;
+		Items.AssistantPages.CurrentPage = Items.LongActions;
 		LongActionsClient.InitIdleHandlerParameters(HandlerParameters);
 		AttachIdleHandler("BackgroundJobMatchOnClient", 1, True);
 		HandlerParameters.MaxInterval = 5;
@@ -1058,7 +1058,7 @@ Procedure WriteImportedDataClient()
 	WriteImportedDataReport(BackgroundJob);
 	
 	If BackgroundJob = True Then 
-		Items.AssistantPages.CurrentPage = Items.LongOperation;
+		Items.AssistantPages.CurrentPage = Items.LongActions;
 		LongActionsClient.InitIdleHandlerParameters(HandlerParameters);
 		AttachIdleHandler("BackgroundJobRecordOnClient", 1, True);
 		HandlerParameters.MaxInterval = 5;
@@ -1121,7 +1121,7 @@ Procedure ShowReport(Report)
 	TotalReportIncorrect = Report.Incorrect;
 	
 	Items.FilterReport.ChoiceList.Clear();
-	Items.FilterReport.ChoiceList.Add("AllItems", NStr("en='All (';ru='Все ('") + Report.TotalAmount + ")");
+	Items.FilterReport.ChoiceList.Add("AllItems", NStr("en='All (';ru='Все ('") + Report.Total + ")");
 	Items.FilterReport.ChoiceList.Add("New", NStr("en='New (';ru='Новые ('") + Report.Created+ ")");
 	Items.FilterReport.ChoiceList.Add("Updated", NStr("en='Updated (';ru='Обновленные ('") + Report.Updated+ ")");
 	Items.FilterReport.ChoiceList.Add("Skipped", NStr("en='Skipped (';ru='Пропущенные ('") + Report.Skipped+ ")");
