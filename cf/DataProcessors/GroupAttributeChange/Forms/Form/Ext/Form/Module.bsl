@@ -470,7 +470,7 @@ Procedure ImportHistoryOfOperations()
 	EndIf;
 	
 	For Each Setting IN ChangesHistory Do
-		OperationsHistoryList.Add(Setting.Update, Setting.Presentation);
+		OperationsHistoryList.Add(Setting.Change, Setting.Presentation);
 	EndDo;
 	
 EndProcedure
@@ -790,7 +790,7 @@ Procedure ProcessChangeResult(ResultOfChange = Undefined, ContinueProcessing = U
 		CurrentStateChanges.ErrorsCount = ErrorsCount + CurrentStateChanges.ErrorsCount;
 		CurrentStateChanges.CountOfChanged = CountOfChanged + CurrentStateChanges.CountOfChanged;
 		
-		If Not (CurrentStateChanges.StopChangingAtError AND ResultOfChange.HasErrors) Then
+		If Not (CurrentStateChanges.StopChangingAtError AND ResultOfChange.ThereAreErrors) Then
 			Break;
 		EndIf;
 		
@@ -922,7 +922,7 @@ Procedure GoToPageAllDone()
 	Items.Pages.CurrentPage = Items.AllDone;
 	Items.LabelSuccessfullyCompleted.Title = PlaceParametersIntoString(
 		NStr("en='Attributes of selected items were changed.
-		|Total modified items:% 1';ru='Реквизиты выбранных элементов были изменены.
+		|Total modified items:%1';ru='Реквизиты выбранных элементов были изменены.
 		|Всего изменено элементов: %1'"), CurrentStateChanges.CountOfChanged);
 	Items.FormChange.Title = NStr("en='Done';ru='Готово'");
 	Items.FormBack.Visible = True;
@@ -1032,7 +1032,7 @@ Procedure FillStateOfProcessed(ResultOfChange, ErrorsCount, CountOfChanged)
 	ErrorsCount = 0;
 	CountOfChanged = 0;
 	
-	For Each StateProcessedObject IN ResultOfChange.ProcessingState Do
+	For Each StateProcessedObject IN ResultOfChange.ProcessorState Do
 		LineNumber = -1;
 		If Not IsBlankString(StateProcessedObject.Value.ErrorCode) Then
 			ErrorsCount = ErrorsCount + 1;
@@ -1120,7 +1120,7 @@ Function ChangeAtServer(Val StopChangingAtError)
 	Else
 		JobDescription = NStr("en='Item group changing';ru='Групповое изменение элементов'");
 		
-		RunningMethod = "LongActionsPerformObjectModuleProcessingProcedure";
+		RunningMethod = "LongActions.ExecuteProcedureDataProcessorsObjectModule";
 		ParametersStructure = New Structure("DataProcessorName,MethodName,ExecuteParameters,IsExternalDataProcessor,AdditionalInformationProcessorRef",
 			DataProcessorName(), "RunChangeOfObjects", ParametersStructure, IsExternalDataProcessor, AdditionalInformationProcessorRef);
 		

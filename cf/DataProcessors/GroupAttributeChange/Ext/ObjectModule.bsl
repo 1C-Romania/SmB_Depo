@@ -99,8 +99,8 @@ Procedure RunChangeOfObjects(Parameters, ResultAddress) Export
 	ObjectsForChange = Parameters.ObjectsForChange.Get().Rows;
 	
 	ResultOfChange = New Structure("ThereAreErrors, ProcessorState");
-	ResultOfChange.HasErrors = False;
-	ResultOfChange.ProcessingState = New Map;
+	ResultOfChange.ThereAreErrors = False;
+	ResultOfChange.ProcessorState = New Map;
 	
 	If StopChangingAtError = Undefined Then
 		StopChangingAtError = AbortOnError;
@@ -418,8 +418,8 @@ Procedure FillResultOfChanges(Result, Refs, ErrorCode, ErrorInfo)
 	ChangeState.Insert("ErrorCode", ErrorCode);
 	ChangeState.Insert("ErrorInfo", ErrorInfo);
 	
-	Result.ProcessingState.Insert(Refs, ChangeState);
-	Result.HasErrors = True;
+	Result.ProcessorState.Insert(Refs, ChangeState);
+	Result.ThereAreErrors = True;
 	
 EndProcedure
 
@@ -439,7 +439,7 @@ Procedure FillChangeResultAdditionalProperties(Result, Refs,
 	ChangeState.Insert("ChangedAdditionalAttributesValues", AddObjectAttributesAreModified);
 	ChangeState.Insert("ChangedAdditionalInformationValues", AdditionalInformationObject);
 	
-	Result.ProcessingState.Insert(Refs, ChangeState);
+	Result.ProcessorState.Insert(Refs, ChangeState);
 	
 EndProcedure
 
