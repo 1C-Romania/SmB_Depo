@@ -2036,10 +2036,10 @@ Procedure AddStandardColumnsInMatchTable(TemporaryVT, MappingObjectStructure, Ad
 	If ValueIsFilled(MappingObjectStructure) Then 
 		If Not ValueIsFilled(MappingObjectStructure.Synonym) Then
 			ColumnsTitle = "";
-			If MappingObjectStructure.ObjectTypeMatchDescription.Types().Count() > 1 Then 
+			If MappingObjectStructure.ObjectMatchTypeDescription.Types().Count() > 1 Then 
 				ColumnsTitle = "Objects";
 			Else
-				ColumnsTitle = String(MappingObjectStructure.ObjectTypeMatchDescription.Types()[0]);
+				ColumnsTitle = String(MappingObjectStructure.ObjectMatchTypeDescription.Types()[0]);
 			EndIf;
 			
 		Else
