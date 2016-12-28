@@ -23,7 +23,7 @@ EndProcedure
 
 Procedure PresentationGetProcessing(Data, Presentation, StandardProcessing)
 	StandardProcessing  = False;
-	CurrentPresentation = RisePresentationsReUse.GetObjectPresentation(Data.Ref, RisePresentationsReUse.GetCurrentUserLanguageCode(),"UOMClassifier"); 
+	CurrentPresentation = PresentationsReUse.GetObjectPresentation(Data.Ref, PresentationsReUse.GetCurrentUserLanguageCode(),"UOMClassifier"); 
 	
 	Если CurrentPresentation <> Undefined Тогда
 		Presentation = CurrentPresentation;

@@ -42,7 +42,7 @@ EndProcedure
 Procedure PresentationGetProcessing(Data, Presentation, StandardProcessing)  	
 
 	StandardProcessing  = False;
-	CurrentPresentation = RisePresentationsReUse.GetObjectPresentation(Data.Ref, RisePresentationsReUse.GetCurrentUserLanguageCode(),"Currencies");
+	CurrentPresentation = PresentationsReUse.GetObjectPresentation(Data.Ref, PresentationsReUse.GetCurrentUserLanguageCode(),"Currencies");
 
 	Если CurrentPresentation <> Undefined Тогда
 		Presentation = CurrentPresentation;

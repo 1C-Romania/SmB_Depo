@@ -3,7 +3,7 @@
 Procedure PresentationsTableOnStartEdit(Item, NewRow, Clone)
 	
 	If NewRow Then
-		Items.PresentationsTable.CurrentData.LanguageCode = RisePresentationsReUse.GetCurrentUserLanguageCode();
+		Items.PresentationsTable.CurrentData.LanguageCode = PresentationsReUse.GetCurrentUserLanguageCode();
 	EndIf;
 	
 EndProcedure

@@ -1,24 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
-	<CommonForm uuid="06eb1a49-359c-4a27-9d78-f800549c1d25">
+	<CommonModule uuid="2f46b1c9-e6b4-4274-84a0-832a02f0ec5b">
 		<Properties>
-			<Name>RisePresentationsEditForm</Name>
+			<Name>PresentationsReUse</Name>
 			<Synonym>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Presentations edit form</v8:content>
+					<v8:content>Presentations</v8:content>
 				</v8:item>
 			</Synonym>
 			<Comment/>
-			<FormType>Managed</FormType>
-			<IncludeHelpInContents>false</IncludeHelpInContents>
-			<UsePurposes>
-				<v8:Value xsi:type="app:ApplicationUsePurpose">PersonalComputer</v8:Value>
-				<v8:Value xsi:type="app:ApplicationUsePurpose">MobileDevice</v8:Value>
-			</UsePurposes>
-			<UseStandardCommands>false</UseStandardCommands>
-			<ExtendedPresentation/>
-			<Explanation/>
+			<Global>false</Global>
+			<ClientManagedApplication>false</ClientManagedApplication>
+			<Server>true</Server>
+			<ExternalConnection>false</ExternalConnection>
+			<ClientOrdinaryApplication>false</ClientOrdinaryApplication>
+			<ServerCall>true</ServerCall>
+			<Privileged>false</Privileged>
+			<ReturnValuesReuse>DuringSession</ReturnValuesReuse>
 		</Properties>
-	</CommonForm>
+	</CommonModule>
 </MetaDataObject>
