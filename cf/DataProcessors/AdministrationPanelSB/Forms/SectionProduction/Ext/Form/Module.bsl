@@ -712,7 +712,7 @@ Function CancellationUncheckFunctionalOptionUseTechOperations()
 		
 	EndIf;
 	
-	Query.Text = "Select First 1 * From Catalog.ProductsAndServices AS CtlProductsAndServices Where CtlProductsAndServices.ProductsAndServicesType = Value(Enum.ProductsAndServices.Operation)";
+	Query.Text = "Select top 1 * From Catalog.ProductsAndServices AS CtlProductsAndServices Where CtlProductsAndServices.ProductsAndServicesType = Value(Enum.ProductsAndServicesTypes.Operation)";
 	
 	QueryResult = Query.Execute();
 		
