@@ -6,12 +6,6 @@ Var CreateSupplierPriceKind; // It is created for all new counterparties startin
 &AtClient
 Var CIData;
 
-&AtClient
-Var CheckResultInterval;
-
-&AtClient
-Var FillAttributesUsingTIN;
-
 #EndRegion
 
 #Region CommonUseProceduresAndFunctions
@@ -200,46 +194,6 @@ Procedure CheckChangesPossibility(Cancel)
 	
 EndProcedure
 
-&AtServer
-Procedure AddExtendedTooltipForFillingUsingTIN()
-	
-	// Check is always enabled in the service mode
-	If CommonUseReUse.DataSeparationEnabled() Then
-		Return;
-	EndIf;
-	
-	HasRightOnSettingsEditing = CounterpartiesCheck.HasRightOnSettingsEditing();
-	HasRightOnCheckingUsage  = CounterpartiesCheck.HasRightOnCheckingUsage();
-	CheckIsEnabled				  = CounterpartiesCheck.CounterpartiesCheckEnabled();
-	
-	If HasRightOnSettingsEditing Or HasRightOnCheckingUsage Then
-		
-		RowArray = New Array;
-		RowArray.Add(Chars.LF);
-		
-		If CheckIsEnabled Then
-			RowArray.Add(NStr("en='Check of the counterparties based on data is additionally enabled ';ru='Дополнительно включена проверка контрагентов по данным '"));
-		Else
-			RowArray.Add(NStr("en='You can additionally use the counterparty check based on data of ';ru='Дополнительно можно использовать проверку контрагентов по данным '"));
-		EndIf;
-		
-		RowArray.Add(New FormattedString(NStr("az='FTS.';bg='FTS.';de='FTS.';en='FTS.';et='FTS.';ka='FTS.';lt='FTS.';lv='FTS.';mn='FTS.';pl='FTS.';ro='FTS.';ru='FTS.';sl='FTS.';tr='FTS.'"), New Font(,,True)));
-		
-		If HasRightOnSettingsEditing Then
-			RowArray.Add(NStr("en='To configure the check it is necessary to go to ';ru='Для настройки проверки необходимо перейти в '"));
-			RowArray.Add(New FormattedString(NStr("az='Kökləmələr - kontragentlərin yoxlamasının kökləməsidir.';en='Settings - Counterparty check settings.';lv='Konfigurācijas - Kontrahentu pārbaudes konfigurācijas.';ru='Настройки - Настройки проверки контрагентов.'")
-				,,,,"CounterpartyVerificationsSetting"));
-		ElsIf HasRightOnCheckingUsage AND Not CheckIsEnabled Then
-			RowArray.Add(NStr("az='Yoxlamanın qurması kökləməsi üçün administratora müraciət edəcəksiniz.';en='To configure the check contact your administrator.';lv='Pārbaudes konfigurācijai vēršaties pie administratora';ru='Для настройки проверки обратитесь к администратору.'"));
-		EndIf;
-		
-		Items.FillAttributesWithTIN.ExtendedTooltip.Title = New FormattedString(
-			Items.FillAttributesWithTIN.ExtendedTooltip.Title, RowArray);
-			
-	EndIf;
-	
-EndProcedure
-
 &AtClientAtServerNoContext
 Procedure FormManagement(Form)
 	
@@ -288,13 +242,6 @@ Procedure HandleDuplicateChoiceSituation(Item)
 				  ,
 				  WhatToExecuteAfterClosure,
 				  FormWindowOpeningMode.LockOwnerWindow);
-	
-EndProcedure
-
-&AtClient
-Procedure HandleDuplicatesListFormClosure(ClosingResult, AdditionalParameters) Export
-	
-	CheckDuplicates(ThisForm);
 	
 EndProcedure
 
@@ -368,8 +315,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				Object.LegalEntityIndividual = ?(StrLen(Parameters.FillingText) = 10, Enums.LegalEntityIndividual.LegalEntity, Enums.LegalEntityIndividual.Ind);
 				Parameters.FillingText = Undefined;
 				
-				FillAttributesUsingTINAtServer();
-				
 			ElsIf GenerateDescriptionFullAutomatically Then
 				Object.DescriptionFull = Parameters.FillingText;
 			EndIf;
@@ -392,62 +337,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	//( elmi снимаем ограничение по длине TIN
-	//Items.TIN.TypeRestriction = New TypeDescription("String", , New StringQualifiers(10));
-	//) elmi
-	
-	AddExtendedTooltipForFillingUsingTIN();
-	
 	FormManagement(ThisForm);
 	
-	CheckTIN = True;
-	CheckKPP = True;
-	
-	StructureToCheckTINandKPP = StructureToCheckTINandKPP(ThisForm, CheckTIN, CheckKPP);
-	
-	ValidateTINandKPP(StructureToCheckTINandKPP, ThisForm);
-	
-	CheckDuplicates(ThisForm);
-	
-	// We received the check usage flag
-	UseChecksAllowed = CounterpartiesCheckServerCall.UseChecksAllowed();
-	
-	// If the counterparty is not checked and the check is possible, we start the counterparty check
-	If UseChecksAllowed Then
-		
-		CounterpartyState = CounterpartiesCheckServerCall.CurrentCounterpartyState(Object.Ref, Object.TIN, Object.KPP);
-		StorageAddress 		 = CounterpartiesCheck.StorageAddressWithRestoredCounterpartyState(Object.Ref, Object.TIN, Object.KPP, UUID);
-		
-		If ValueIsFilled(CounterpartyState) Then
-			DisplayCounterpartyCheckResult(ThisForm);
-		Else
-			CheckCounterparty(ThisForm);
-		EndIf;
-		
-	EndIf;
-	
 EndProcedure // OnCreateAtServer()
-
-// Event handler procedure OnOpen.
-//
-&AtClient
-Procedure OnOpen(Cancel)
-	
-	If Object.Ref.IsEmpty() Then
-		If Object.LegalEntityIndividual = LegalEntity Then
-			CurrentItem = Items.TIN;
-		Else
-			CurrentItem = Items.IndividualTIN;
-		EndIf;
-	EndIf;
-	
-	// If the counterparty state is not known, we are trying to define it
-	If CounterpartiesCheckIsPossible(ThisForm) AND Not ValueIsFilled(CounterpartyState) Then
-		CheckResultInterval = 1;
-		AttachIdleHandler("Attachable_ProcessCounterpartyCheckResult", CheckResultInterval, True);
-	EndIf;
-	
-EndProcedure
 
 // Procedure-handler of OnClose event.
 //
@@ -699,72 +591,12 @@ EndProcedure // DescriptionOnChange()
 Procedure LegalEntityIndividualOnChange(Item)
 	
 	If Object.LegalEntityIndividual = LegalEntity Then
-		//( elmi
-		//Object.TIN = Left(Object.TIN, 10);
-		//) elmi
 		Object.Individual = Undefined;
-	Else
-		Object.KPP = "";
 	EndIf;
-	
-	CheckTIN = True;
-	CheckKPP = True;
-	
-	StructureToCheckTINandKPP = StructureToCheckTINandKPP(ThisForm, CheckTIN, CheckKPP);
-	
-	ValidateTINandKPP(StructureToCheckTINandKPP, ThisForm);
-	
-	CheckDuplicates(ThisForm);
 	
 	FormManagement(ThisForm);
 	
 EndProcedure // LegalEntityIndividualOnChange()
-
-// Procedure - OnChange event handler of the TIN attribute
-//
-&AtClient
-Procedure TINOnChange(Item)
-	
-	CheckTIN = True;
-	CheckKPP = False;
-	
-	StructureToCheckTINandKPP = StructureToCheckTINandKPP(ThisForm, CheckTIN, CheckKPP);
-	
-	ValidateTINandKPP(StructureToCheckTINandKPP, ThisForm);
-	
-	CheckDuplicates(ThisForm);
-	
-	If ValueIsFilled(Object.TIN)
-		AND Object.TINEnteredCorrectly 
-		AND Not ValueIsFilled(Object.Description) Then
-		
-		ErrorDescription = "";
-		FillAttributesUsingTINAtServer(ErrorDescription);
-		
-	EndIf;
-	
-	RunCounterpartyCheck();
-	FillAttributesUsingTIN = False;
-	AttachIdleHandler("Attachable_AllowFillingAttributesUsingTIN", 0.2, True);
-	
-EndProcedure
-
-// Procedure - OnChange event handler of the KPP attribute
-//
-&AtClient
-Procedure KPPOnChange(Item)
-	
-	CheckTIN = False;
-	CheckKPP = True;
-	
-	StructureToCheckTINandKPP = StructureToCheckTINandKPP(ThisForm, CheckTIN, CheckKPP);
-	
-	ValidateTINandKPP(StructureToCheckTINandKPP, ThisForm);
-	
-	CheckDuplicates(ThisForm);
-	RunCounterpartyCheck();
-	
-EndProcedure
 
 // Procedure - SelectionBegin event handler of the BankAccountByDefault field.
 //
@@ -823,54 +655,9 @@ Procedure DefaultContractClearing(Item, StandardProcessing)
 	StandardProcessing = False;
 EndProcedure
 
-&AtClient
-Procedure FillAttributesWithTINExtendedTooltipProcessNavigationRefs(Item, URL, StandardProcessing)
-	ProcessLinkClick(Item, URL, StandardProcessing);
-EndProcedure
-
-// Procedure - URLProcessing event handler of the IncorrectTINExplanationLabel item
-//
-&AtClient
-Procedure LabelIncorrectTINExplanationsProcessNavigationRefs(Item, URL, StandardProcessing)
-	ProcessLinkClick(Item, URL, StandardProcessing);
-EndProcedure
-
-// Procedure - URLProcessing event handler of the IncorrectKPPExplanationLabel item
-//
-&AtClient
-Procedure LabelIncorrectKPPExplanationsProcessNavigationRefs(Item, URL, StandardProcessing)
-	ProcessLinkClick(Item, URL, StandardProcessing);
-EndProcedure
-
 #EndRegion
 
 #Region FormCommandsHandlers
-
-&AtClient
-Procedure FillAttributesWithTIN(Command)
-	
-	If Not FillAttributesUsingTIN Then
-		Return;
-	EndIf;
-	
-	If Not ValueIsFilled(Object.TIN) Then
-		ShowMessageBox(, NStr("en='TIN field is not filled';lv='Lauks ""NMIN"" nav aizpildīts';ru='Поле ""ИНН"" не заполнено'"));
-		CurrentItem = Items.TIN;
-		Return;
-	ElsIf Not Object.TINEnteredCorrectly Then
-		ShowMessageBox(, String(LabelExplanationsOfIncorrectTIN));
-		Return;
-	EndIf;
-	
-	If ValueIsFilled(Object.Description) Then
-		QuestionText = NStr("az='Perezapolnit cari rekvizitlər?';en='Refill current attributes?';lv='Aizpildīt no jauna tekošos rekvizītus?';ru='Перезаполнить текущие реквизиты?'");
-		NotifyDescription = New NotifyDescription("FillAttributesUsingTINEnd", ThisObject);
-		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
-	Else
-		ExecuteFillingAttributesUsingTIN();
-	EndIf;
-	
-EndProcedure
 
 &AtClient
 Procedure SendEmailToCounterparty(Command)
@@ -917,198 +704,7 @@ EndProcedure
 
 #EndRegion
 
-#Region TINandKPPCorrectness
-
-&AtClientAtServerNoContext
-Function StructureToCheckTINandKPP(Form, CheckTIN, CheckKPP)
-	
-	Object = Form.Object;
-	StructureToCheckTINandKPP = New Structure();
-	
-	StructureToCheckTINandKPP.Insert("TIN",							   Object.TIN);
-	StructureToCheckTINandKPP.Insert("KPP",							   Object.KPP);
-	StructureToCheckTINandKPP.Insert("ThisIsLegalEntity", 			   Object.LegalEntityIndividual = PredefinedValue("Enum.LegalEntityIndividual.LegalEntity"));
-	StructureToCheckTINandKPP.Insert("CheckTIN",					   CheckTIN);
-	StructureToCheckTINandKPP.Insert("CheckKPP",					   CheckKPP);
-	StructureToCheckTINandKPP.Insert("ColorHighlightIncorrectValues",  Form.ColorHighlightIncorrectValues);
-	//( elmi 
-	StructureToCheckTINandKPP.Insert("IsNotRussianCompany",		   	   Object.RegistrationCountry <> PredefinedValue("Catalog.WorldCountries.Russia"));
-	//) elmi
-
-	Return StructureToCheckTINandKPP;
-	
-EndFunction
-
-&AtClientAtServerNoContext
-Procedure ValidateTINandKPP(ParametersStructure, Form)
-	
-	ReturnedStructure = SmallBusinessClientServer.CheckTINKPPCorrectness(ParametersStructure);
-	
-	FillPropertyValues(ParametersStructure, ReturnedStructure);
-	
-	FillPropertyValues(Form, ReturnedStructure);
-	
-	If Not Form.ReadOnly Then
-		FillPropertyValues(Form.Object, ReturnedStructure);
-	EndIf;
-	
-EndProcedure
-
-&AtClientAtServerNoContext
-Function TINAndKPPAreCorrect(Form)
-	
-	Object = Form.Object;
-	ThisIsLegalEntity = Object.LegalEntityIndividual = Form.LegalEntity;
-	
-	If ThisIsLegalEntity Then
-		Result = Object.TINEnteredCorrectly AND (Object.KPPEnteredCorrectly Or Form.EmptyKPP);
-	Else
-		Result = Object.TINEnteredCorrectly;
-	EndIf;
-	
-	Return Result;
-	
-EndFunction
-
-#EndRegion
-
-#Region CheckingDuplicates
-
-&AtClientAtServerNoContext
-Procedure CheckDuplicates(Form)
-	
-	If Not Form.ReadOnly Then
-		
-		Object = Form.Object;
-		DuplicateItemsNumber = 0;
-// Rise { Bernavski N 2016-05-26
-		If TINAndKPPAreCorrect(Form)  OR SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.CurrentUser(),"SearchDuplicatesOfCounterpartyWithoutCheckingCorrectnessTINAndKPP") Then
-// Rise } Bernavski N 2016-05-26			
-			DuplicateItemsNumber = SearchDuplicatesServer(Object.TIN, Object.KPP, Object.Ref);
-			Form.ThereAreDuplicates = Not DuplicateItemsNumber = 0;
-		Else
-			Form.ThereAreDuplicates = False;
-		EndIf;
-		
-		WriteInformationLabelsForDuplicates(Form, DuplicateItemsNumber);
-		
-	EndIf;
-	
-EndProcedure
-
-&AtClientAtServerNoContext
-Procedure WriteInformationLabelsForDuplicates(Form, Val DuplicateItemsNumber)
-	
-	Object = Form.Object;
-	Items = Form.Items;
-	
-	ThisIsLegalEntity = Object.LegalEntityIndividual = Form.LegalEntity;
-	
-	If Form.ThereAreDuplicates Then
-		
-		DuplicatesMessageParametersStructure = New Structure;
-		
-		DuplicatesMessageParametersStructure.Insert("TINandKPP", ?(ThisIsLegalEntity, NStr("az='VÖENlər və KPP';bg='TIN and KPP';de='TIN and KPP';en='TIN and KPP';et='TIN and KPP';ka='TIN and KPP';lt='TIN and KPP';lv='NMIN un UUIK';mn='TIN and KPP';pl='TIN and KPP';ro='TIN and KPP';ru='ИНН и КПП';sl='TIN and KPP';tr='TIN and KPP'"), NStr("az='VÖEN';en='TIN';et='ИНН';lt='Reg. Nr.';lv='NMIN';ro='Nr. ORC:';ru='ИНН';tr='Vergi Kimlik No'")));
-		
-		If DuplicateItemsNumber = 1 Then
-			DuplicatesMessageParametersStructure.Insert("DuplicateItemsNumber", NStr("az='Bir';bg='един';de='eins';en='one';et='üks';ka='ერთ-ერთი';lt='uno';lv='Viens';mn='нэг';pl='jeden';ro='unul';ru='Один';sl='ena';tr='bir'"));
-			DuplicatesMessageParametersStructure.Insert("CounterpartyDeclension", NStr("az='kontragent';bg='контрагент';de='Kontrahent';en='counterparty';et='vastaspool';ka='კონტრაგენტის';lt='controparte';lv='kontrahents';mn='нөгөө тал';pl='kontrahenta';ro='contrapartidă';ru='контрагент';sl='nasprotne stranke';tr='karşı'"));
-		ElsIf DuplicateItemsNumber < 5 Then
-			DuplicatesMessageParametersStructure.Insert("DuplicateItemsNumber", DuplicateItemsNumber);
-			DuplicatesMessageParametersStructure.Insert("CounterpartyDeclension", NStr("az='kontragent';bg='контрагент';de='Kontrahent';en='counterparty';et='vastaspool';ka='კონტრაგენტის';lt='controparte';lv='kontrahents';mn='нөгөө тал';pl='kontrahenta';ro='contrapartidă';ru='контрагент';sl='nasprotne stranke';tr='karşı'"));
-		Else
-			DuplicatesMessageParametersStructure.Insert("DuplicateItemsNumber", DuplicateItemsNumber);
-			DuplicatesMessageParametersStructure.Insert("CounterpartyDeclension", NStr("az='müqabili';bg='контрагенти';de='Geschäftspartner';en='counterparties';et='vastaspoolte';ka='კონტრაგენტების';lt='controparti';lv='darījumu partneri';mn='талууд';pl='kontrahenci';ro='contrapărțile';ru='контрагенты';sl='nasprotne stranke';tr='karşı tarafın'"));
-		EndIf;
-		
-		//Begin Bernavski Natalia [07.04.2016] 
-		LabelTextOnDuplicates = NStr("en = 'With such [TINandKPP] there are [DuplicateItemsNumber] [CounterpartyDeclension]'");
-		//End Bernavski Natalia [07.04.2016] 
-	
-		LabelExplanationsOfIncorrectTIN = StringFunctionsClientServer.SubstituteParametersInStringByName(LabelTextOnDuplicates, DuplicatesMessageParametersStructure);
-		Form.LabelExplanationsOfIncorrectTIN = New FormattedString(LabelExplanationsOfIncorrectTIN,,Form.ColorHighlightIncorrectValues,,"ShowDoubles");
-		
-	Else
-		
-		If Object.TINEnteredCorrectly Then
-			Form.LabelExplanationsOfIncorrectTIN = "";
-		EndIf;
-		
-		If Object.KPPEnteredCorrectly Then
-			Form.LabelExplanationsOfIncorrectKPP = "";
-		EndIf;
-		
-	EndIf;
-	
-EndProcedure
-
-&AtServerNoContext
-Function SearchDuplicatesServer(Val TIN, Val KPP, Val Ref)
-	
-	DuplicateArray = Catalogs.Counterparties.CheckCatalogDuplicatesCounterpartiesByTINKPP(TrimAll(TIN), TrimAll(KPP));
-	
-	// Exclude the counterparty from the duplicates if there are no others
-	If DuplicateArray.Count() = 1 AND DuplicateArray[0] = Ref Then
-		DuplicateArray.Delete(0);
-	EndIf;
-	
-	Return DuplicateArray.Count();
-	
-EndFunction
-
-#EndRegion
-
 #Region CheckFTSCounterparty
-
-&AtClient
-Procedure RunCounterpartyCheck()
-	
-	// If TIN or KPP are incorrect or Check is disabled, do not run the check
-	If UseChecksAllowed Then
-		
-		CheckCounterparty(ThisForm);
-		
-		// Interrupt the previous check
-		CheckResultInterval = 1;
-		AttachIdleHandler("Attachable_ProcessCounterpartyCheckResult", CheckResultInterval, True);
-		
-	EndIf;
-	
-EndProcedure
-
-&AtClientAtServerNoContext
-Procedure CheckCounterparty(Form)
-	
-	Object = Form.Object;
-	
-	// Start a background job to check the counterparty
-	LaunchParameters = New Structure;
-	LaunchParameters.Insert("Counterparty", 	Object.Ref);
-	LaunchParameters.Insert("TIN", 			Object.TIN);
-	LaunchParameters.Insert("KPP", 			Object.KPP);
-	LaunchParameters.Insert("StorageAddress", Form.StorageAddress);
-	
-	CounterpartiesCheckServerCall.CheckCounterpartyOnChange(LaunchParameters);
-	
-EndProcedure
-
-&AtClientAtServerNoContext
-Procedure DisplayCounterpartyCheckResult(Form)
-	
-	Object = Form.Object;
-	
-	// Set header text
-	If CounterpartiesCheckIsPossible(Form) AND ValueIsFilled(Form.CounterpartyState) Then
-		
-		TINWarningText = CounterpartiesCheckServerCall.CounterpartyCheckResultPresentation(Object.Ref, Object.TIN, Object.KPP, 
-		Form.StorageAddress, Form.LabelExplanationsOfIncorrectTIN);
-		
-		Form.LabelExplanationsOfIncorrectTIN = TINWarningText;
-		Form.LabelExplanationsOfIncorrectKPP = Undefined;
-		
-	EndIf;
-	
-EndProcedure
 
 &AtClientAtServerNoContext
 Function CounterpartiesCheckIsPossible(Form)
@@ -1117,27 +713,9 @@ Function CounterpartiesCheckIsPossible(Form)
 		Return False;
 	EndIf;
 	
-	If Not TINAndKPPAreCorrect(Form) Then
-		Return False;
-	EndIf;
-	
 	Return True;
 
 EndFunction
-
-&AtClient
-Procedure ProcessLinkClick(Item, URL, StandardProcessing)
-	
-	StandardProcessing = False;
-	If Find(URL, "DetailsOnCounterpartiesCheck") > 0 Then
-		CounterpartiesCheckClient.OpenServiceManual(StandardProcessing);
-	ElsIf Find(URL, "CounterpartyVerificationsSetting") > 0 Then
-		OpenForm("CommonForm.CounterpartyVerificationsSetting", , , "CounterpartyVerificationsSetting");
-	Else
-		HandleDuplicateChoiceSituation(Item);
-	EndIf;
-	
-EndProcedure
 
 &AtServer
 Procedure SaveCounterpartyCheckResultServer()
@@ -1145,199 +723,6 @@ Procedure SaveCounterpartyCheckResultServer()
 	CounterpartiesCheck.SaveCounterpartiesCheckResult(Object, StorageAddress);
 	
 EndProcedure
-
-&AtClient
-Procedure Attachable_ProcessCounterpartyCheckResult()
-	
-	CounterpartyState = CounterpartiesCheckServerCall.CurrentCounterpartyState(Object.Ref, Object.TIN, Object.KPP, StorageAddress);
-	If Not ValueIsFilled(CounterpartyState) Then
-		// Check the result after 1,3 and 9 sec
-		If CheckResultInterval < 9 Then
-			CheckResultInterval = CheckResultInterval * 3;
-			AttachIdleHandler("Attachable_ProcessCounterpartyCheckResult", CheckResultInterval, True);
-			Return;
-		EndIf;
-	Else
-		// The result is received
-		CounterpartyStateChanged = True;
-		DisplayCounterpartyCheckResult(ThisForm);
-	EndIf;
-	
-EndProcedure
-
-#EndRegion
-
-#Region FillingCounterpartyUSRLE
-
-&AtClient
-Procedure ExecuteFillingAttributesUsingTIN()
-	
-	ErrorDescription = "";
-	FillAttributesUsingTINAtServer(ErrorDescription);
-	
-	// Check of the legal entity based on IFTS service data after filling the attributes (KPP may be changed)
-	If Object.LegalEntityIndividual = LegalEntity
-		AND CounterpartiesCheckIsPossible(ThisForm) 
-		AND Not ValueIsFilled(CounterpartyState) Then
-		CheckResultInterval = 1;
-		AttachIdleHandler("Attachable_ProcessCounterpartyCheckResult", CheckResultInterval, True);
-	EndIf;
-	
-	// Errors processor
-	If ValueIsFilled(ErrorDescription) Then
-		If ErrorDescription = "AuthenticationParametersAreNotSpecified" Then
-		
-			QuestionText = NStr("en='For automatic filling the
-		|counterparty attributes it is necessary to connect to the user online support.
-		|Connect now?';ru='Для автоматического заполнения
-		|реквизитов контрагентов необходимо подключиться к интернет-поддержке пользователей.
-		|Подключиться сейчас?'");
-			NotifyDescription = New NotifyDescription("EnableInternetSupport", ThisObject);
-			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
-		
-		Else
-			ShowMessageBox(, ErrorDescription);
-		EndIf;
-	EndIf;
-	
-EndProcedure
-
-&AtServer
-Procedure FillAttributesUsingTINAtServer(ErrorDescription = "")
-	
-	ThisIsLegalEntity = Object.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity;
-	If ThisIsLegalEntity Then
-		CounterpartyAttributes = ServiceDataCommonGovRecords.LegalEntityDetailsByTIN(Object.TIN);
-	Else
-		CounterpartyAttributes = ServiceDataCommonGovRecords.EntrepreneurDetailsByTIN(Object.TIN);
-	EndIf;
-	If ValueIsFilled(CounterpartyAttributes.ErrorDescription) Then
-		ErrorDescription = CounterpartyAttributes.ErrorDescription;
-		Return;
-	EndIf;
-	
-	FillPropertyValues(Object, CounterpartyAttributes);
-	Object.DescriptionFull = CounterpartyAttributes.AbbreviatedName;
-	
-	If ThisIsLegalEntity Then
-		
-		// Filling addresses
-		FillContactInformationItem(Catalogs.ContactInformationTypes.CounterpartyLegalAddress, CounterpartyAttributes.LegalAddress);
-		FillContactInformationItem(Catalogs.ContactInformationTypes.CounterpartyFactAddress, CounterpartyAttributes.LegalAddress, False);
-		
-		// Phone filling
-		FillContactInformationItem(Catalogs.ContactInformationTypes.CounterpartyPhone, CounterpartyAttributes.Phone);
-		
-		// Contact person filling
-		If CounterpartyAttributes.Head <> Undefined 
-			AND Not ValueIsFilled(Object.ContactPerson) Then
-			
-			ContactPersonData = CounterpartyAttributes.Head;
-			PresentationOfContactPerson = ContactPersonData.Surname
-				+ " " + ContactPersonData.Name
-				+ " " + ContactPersonData.Patronymic
-				+ ", " + ContactPersonData.Position;
-			
-		EndIf;
-		
-		// Check by KPP
-		CheckTIN = False;
-		CheckKPP = True;
-		
-		StructureToCheckTINandKPP = StructureToCheckTINandKPP(ThisForm, CheckTIN, CheckKPP);
-		
-		ValidateTINandKPP(StructureToCheckTINandKPP, ThisForm);
-		
-		CheckDuplicates(ThisForm);
-		
-		// Check of the legal entity based on IFTS service data after filling the attributes (KPP may be changed)
-		If UseChecksAllowed Then
-			
-			CounterpartyState = CounterpartiesCheckServerCall.CurrentCounterpartyState(
-				Object.Ref, Object.TIN, Object.KPP);
-			StorageAddress 		 = CounterpartiesCheck.StorageAddressWithRestoredCounterpartyState(
-				Object.Ref, Object.TIN, Object.KPP, UUID);
-			
-			If ValueIsFilled(CounterpartyState) Then
-				DisplayCounterpartyCheckResult(ThisForm);
-			Else
-				CheckCounterparty(ThisForm);
-			EndIf;
-			
-		EndIf;
-		
-	Else
-		
-		// Filling an ind. person
-		If Not ValueIsFilled(Object.Individual) Then
-			
-			IndData = CounterpartyAttributes;
-			ViewIndividuals = IndData.Surname
-				+ " " + IndData.Name
-				+ " " + IndData.Patronymic;
-			
-		EndIf;
-		
-	EndIf;
-	
-	FormManagement(ThisForm);
-	Modified = True;
-	
-EndProcedure
-
-&AtClient
-Procedure FillAttributesUsingTINEnd(Response, AdditParameters) Export
-	
-	If Response = DialogReturnCode.Yes Then
-		ExecuteFillingAttributesUsingTIN();
-	EndIf;
-	
-EndProcedure 
-
-&AtServer
-Procedure FillContactInformationItem(CIKind, DataStructure, Refill = True)
-	
-	If DataStructure = Undefined Then
-		Return;
-	EndIf;
-	
-	Filter  = New Structure("Kind", CIKind);
-	Rows = ThisForm.ContactInformationAdditionalAttributeInfo.FindRows(Filter);
-	RowData = ?(Rows.Count() = 0, Undefined, Rows[0]);
-	If RowData = Undefined Or (NOT Refill AND ValueIsFilled(ThisForm[RowData.AttributeName])) Then
-		Return;
-	EndIf;
-	FillPropertyValues(RowData, DataStructure);
-	RowData.FieldsValues = DataStructure.ContactInformation;
-	ThisForm[RowData.AttributeName] = DataStructure.Presentation;
-	
-EndProcedure
-
-&AtClient
-Procedure EnableInternetSupport(Response, AdditParameters) Export
-
-	If Response = DialogReturnCode.Yes Then
-		NotifyDescription = New NotifyDescription("ConnectOnlineUserSupportEnd", ThisObject, AdditParameters);
-		OnlineUserSupportClient.ConnectOnlineUserSupport(NOTifyDescription);
-	EndIf;
-
-EndProcedure
-
-&AtClient
-Procedure ConnectOnlineUserSupportEnd(Result, AdditParameters) Export
-
-	If Result <> Undefined Then
-		ExecuteFillingAttributesUsingTIN();
-	EndIf;
-
-EndProcedure
-
-&AtClient
-Procedure Attachable_AllowFillingAttributesUsingTIN()
-
-	FillAttributesUsingTIN = True;
-
-EndProcedure 
 
 #EndRegion
 
@@ -1446,50 +831,3 @@ EndProcedure
 // End ServiceTechnology.InformationCenter
 
 #EndRegion
-
-//( elmi
-#Region ELMI
-&AtClient
-Procedure RegistrationCountryOnChange(Item)
-	
-	CheckTIN = True;
-	CheckKPP = True;
-	
-	StructureToCheckTINandKPP = StructureToCheckTINandKPP(ThisForm, CheckTIN, CheckKPP);
-	
-	ValidateTINandKPP(StructureToCheckTINandKPP, ThisForm);
-	
-	CheckDuplicates(ThisForm);
-	
-	If ValueIsFilled(Object.TIN)
-		AND Object.TINEnteredCorrectly 
-		AND Not ValueIsFilled(Object.Description) Then
-		
-		ErrorDescription = "";
-		FillAttributesUsingTINAtServer(ErrorDescription);
-		
-	EndIf;
-	
-	RunCounterpartyCheck();
-	FillAttributesUsingTIN = False;
-	AttachIdleHandler("Attachable_AllowFillingAttributesUsingTIN", 0.2, True);
-	
-EndProcedure
-#EndRegion 
-//) elmi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-FillAttributesUsingTIN = True;
-

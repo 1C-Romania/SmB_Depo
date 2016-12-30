@@ -720,11 +720,11 @@
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Description</v8:content>
+											<v8:content>Presentation</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Наименование</v8:content>
+											<v8:content>Представление</v8:content>
 										</v8:item>
 									</Title>
 									<Width>35</Width>
@@ -737,26 +737,6 @@
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="TINContextMenu" id="34"/>
 									<ExtendedTooltip name="TINExtendedTooltip" id="167"/>
-								</LabelField>
-								<LabelField name="KPP" id="43">
-									<DataPath>List.KPP</DataPath>
-									<UserVisible>
-										<xr:Common>false</xr:Common>
-									</UserVisible>
-									<Width>10</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="KPPContextMenu" id="44"/>
-									<ExtendedTooltip name="KPPExtendedTooltip" id="168"/>
-								</LabelField>
-								<LabelField name="CodeByOKPO" id="37">
-									<DataPath>List.CodeByOKPO</DataPath>
-									<UserVisible>
-										<xr:Common>false</xr:Common>
-									</UserVisible>
-									<Width>10</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="NCBOCodeContextMenu" id="38"/>
-									<ExtendedTooltip name="NCBOCodeExtendedTooltip" id="173"/>
 								</LabelField>
 								<LabelField name="BankAccountByDefault" id="31">
 									<DataPath>List.BankAccountByDefault</DataPath>
@@ -776,11 +756,21 @@
 									<ContextMenu name="DefaultContractContextMenu" id="140"/>
 									<ExtendedTooltip name="DefaultContractExtendedTooltip" id="165"/>
 								</LabelField>
-								<LabelField name="FullDescr" id="104">
-									<DataPath>List.FullDescr</DataPath>
+								<LabelField name="LegalName" id="104">
+									<DataPath>List.LegalName</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Legal name</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Юридическое название</v8:content>
+										</v8:item>
+									</Title>
 									<Width>35</Width>
-									<ContextMenu name="FullDescrContextMenu" id="105"/>
-									<ExtendedTooltip name="FullDescrExtendedTooltip" id="169"/>
+									<ContextMenu name="LegalNameContextMenu" id="105"/>
+									<ExtendedTooltip name="LegalNameExtendedTooltip" id="169"/>
 								</LabelField>
 								<LabelField name="ContactPerson" id="39">
 									<DataPath>List.ContactPerson</DataPath>
@@ -1359,7 +1349,7 @@
 	Counterparties.IsFolder,
 	Counterparties.Description AS Description,
 	Counterparties.Code AS Code,
-	CAST(Counterparties.DescriptionFull AS String(250)) AS FullDescr,
+	CAST(Counterparties.DescriptionFull AS String(250)) AS LegalName,
 	Counterparties.LegalEntityIndividual,
 	Counterparties.TIN,
 	Counterparties.KPP,
