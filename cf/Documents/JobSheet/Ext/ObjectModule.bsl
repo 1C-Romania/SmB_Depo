@@ -3,11 +3,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 // EXPORT PROCEDURES AND FUNCTIONS OF DOCUMENT
 
-// Procedure fills crew members.
+// Procedure fills team members.
 //
-Procedure FillCrewMembers() Export
+Procedure FillTeamMembers() Export
 
-	If ValueIsFilled(Performer) AND TypeOf(Performer) = Type("CatalogRef.Crews") Then
+	If ValueIsFilled(Performer) AND TypeOf(Performer) = Type("CatalogRef.Teams") Then
 		
 		Query = New Query;
 		Query.Text = 
@@ -15,13 +15,13 @@ Procedure FillCrewMembers() Export
 		|	WorkgroupsContent.Employee,
 		|	1 AS LPF
 		|FROM
-		|	Catalog.Crews.Content AS WorkgroupsContent
+		|	Catalog.Teams.Content AS WorkgroupsContent
 		|WHERE
 		|	WorkgroupsContent.Ref = &Ref";
 		
 		Query.SetParameter("Ref", Performer);	
 		
-		CrewMembers.Load(Query.Execute().Unload());
+		TeamMembers.Load(Query.Execute().Unload());
 		
 	EndIf;	
 

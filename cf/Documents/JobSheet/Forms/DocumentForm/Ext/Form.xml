@@ -192,11 +192,11 @@
 									<ContextMenu name="TabNumberContextMenu" id="190"/>
 									<ExtendedTooltip name="TabNumberExtendedTooltip" id="191"/>
 								</InputField>
-								<Button name="FillCrewMembers" id="69">
+								<Button name="FillTeamMembers" id="69">
 									<Type>UsualButton</Type>
 									<SkipOnInput>true</SkipOnInput>
-									<CommandName>Form.Command.FillCrewMembers</CommandName>
-									<ExtendedTooltip name="FillCrewMembersExtendedTooltip" id="119"/>
+									<CommandName>Form.Command.FillTeamMembers</CommandName>
+									<ExtendedTooltip name="FillTeamMembersExtendedTooltip" id="119"/>
 								</Button>
 							</ChildItems>
 						</UsualGroup>
@@ -728,103 +728,103 @@
 						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="GroupContentTeam" id="51">
+				<Page name="GroupTeamMembers" id="51">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Crew members</v8:content>
+							<v8:content>Team members</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Состав бригады</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="GroupCrewMembersExtendedTooltip" id="145"/>
+					<ExtendedTooltip name="GroupTeamMembersExtendedTooltip" id="145"/>
 					<ChildItems>
-						<Table name="CrewMembers" id="52">
+						<Table name="TeamMembers" id="52">
 							<Representation>List</Representation>
 							<SkipOnInput>false</SkipOnInput>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
-							<DataPath>Object.CrewMembers</DataPath>
+							<DataPath>Object.TeamMembers</DataPath>
 							<SearchStringLocation>None</SearchStringLocation>
 							<ViewStatusLocation>None</ViewStatusLocation>
 							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="CrewMembersContextMenu" id="53"/>
-							<AutoCommandBar name="CrewMembersCommandBar" id="54">
+							<ContextMenu name="TeamMembersContextMenu" id="53"/>
+							<AutoCommandBar name="TeamMembersCommandBar" id="54">
 								<ChildItems>
-									<Button name="CrewMembersFillCrewMembers" id="70">
+									<Button name="TeamMembersFillTeamMembers" id="70">
 										<Type>CommandBarButton</Type>
 										<Representation>PictureAndText</Representation>
 										<SkipOnInput>true</SkipOnInput>
-										<CommandName>Form.Command.FillCrewMembers</CommandName>
-										<ExtendedTooltip name="CrewMembersFillCrewMembersExtendedTooltip" id="146"/>
+										<CommandName>Form.Command.FillTeamMembers</CommandName>
+										<ExtendedTooltip name="TeamMembersFillTeamMembersExtendedTooltip" id="146"/>
 									</Button>
 								</ChildItems>
 							</AutoCommandBar>
-							<ExtendedTooltip name="TeamListExtendedTooltip" id="147"/>
-							<SearchStringAddition name="CrewMembersSearchString" id="173">
+							<ExtendedTooltip name="TeamMembersExtendedTooltip" id="147"/>
+							<SearchStringAddition name="TeamMembersSearchString" id="173">
 								<AdditionSource>
-									<Item>CrewMembers</Item>
+									<Item>TeamMembers</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="CrewMembersSearchStringContextMenu" id="174"/>
-								<ExtendedTooltip name="CrewMembersSearchStringExtendedTooltip" id="175"/>
+								<ContextMenu name="TeamMembersSearchStringContextMenu" id="174"/>
+								<ExtendedTooltip name="TeamMembersSearchStringExtendedTooltip" id="175"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="CrewMembersStatusView" id="176">
+							<ViewStatusAddition name="TeamMembersViewStatus" id="176">
 								<AdditionSource>
-									<Item>CrewMembers</Item>
+									<Item>TeamMembers</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="CrewMembersStatusViewContextMenu" id="177"/>
-								<ExtendedTooltip name="CrewMembersStatusViewExtendedTooltip" id="178"/>
+								<ContextMenu name="TeamMembersViewStatusContextMenu" id="177"/>
+								<ExtendedTooltip name="TeamMembersViewStatusExtendedTooltip" id="178"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="CrewMembersSearchManagement" id="179">
+							<SearchControlAddition name="TeamMembersSearchControl" id="179">
 								<AdditionSource>
-									<Item>CrewMembers</Item>
+									<Item>TeamMembers</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="CrewMembersSearchManagementContextMenu" id="180"/>
-								<ExtendedTooltip name="CrewMembersSearchManagementExtendedTooltip" id="181"/>
+								<ContextMenu name="TeamMembersSearchControlContextMenu" id="180"/>
+								<ExtendedTooltip name="TeamMembersSearchControlExtendedTooltip" id="181"/>
 							</SearchControlAddition>
 							<ChildItems>
-								<InputField name="CrewMembersLineNumber" id="55">
-									<DataPath>Object.CrewMembers.LineNumber</DataPath>
+								<InputField name="TeamMembersLineNumber" id="55">
+									<DataPath>Object.TeamMembers.LineNumber</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>4</Width>
 									<Wrap>false</Wrap>
-									<ContextMenu name="CrewMembersLineNumberContextMenu" id="56"/>
-									<ExtendedTooltip name="CrewMembersLineNumberExtendedTooltip" id="148"/>
+									<ContextMenu name="TeamMembersLineNumberContextMenu" id="56"/>
+									<ExtendedTooltip name="TeamMembersLineNumberExtendedTooltip" id="148"/>
 								</InputField>
-								<InputField name="CrewContentEmployee" id="57">
-									<DataPath>Object.CrewMembers.Employee</DataPath>
+								<InputField name="TeamMembersEmployee" id="57">
+									<DataPath>Object.TeamMembers.Employee</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Wrap>false</Wrap>
-									<ContextMenu name="CrewMembersEmployeeContextMenu" id="58"/>
-									<ExtendedTooltip name="CrewMembersEmployeeExtendedTooltip" id="149"/>
+									<ContextMenu name="TeamMembersEmployeeContextMenu" id="58"/>
+									<ExtendedTooltip name="TeamMembersEmployeeExtendedTooltip" id="149"/>
 									<Events>
-										<Event name="OnChange">CrewMembersEmployeeOnChange</Event>
+										<Event name="OnChange">TeamMembersEmployeeOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="CrewMembersEmployeeCode" id="82">
-									<DataPath>Object.CrewMembers.Employee.Code</DataPath>
+								<InputField name="TeamMembersEmployeeCode" id="82">
+									<DataPath>Object.TeamMembers.Employee.Code</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>7</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
-									<ContextMenu name="CrewMembersEmployeeCodeContextMenu" id="83"/>
-									<ExtendedTooltip name="CrewMembersEmployeeCodeExtendedTooltip" id="150"/>
+									<ContextMenu name="TeamMembersEmployeeCodeContextMenu" id="83"/>
+									<ExtendedTooltip name="TeamMembersEmployeeCodeExtendedTooltip" id="150"/>
 								</InputField>
-								<InputField name="CrewMembersLPF" id="59">
-									<DataPath>Object.CrewMembers.LPF</DataPath>
+								<InputField name="TeamMembersLPF" id="59">
+									<DataPath>Object.TeamMembers.LPF</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>7</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
-									<ContextMenu name="CrewMembersLPFContextMenu" id="60"/>
-									<ExtendedTooltip name="CrewMembersLPFExtendedTooltip" id="151"/>
+									<ContextMenu name="TeamMembersLPFContextMenu" id="60"/>
+									<ExtendedTooltip name="TeamMembersLPFExtendedTooltip" id="151"/>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -1152,11 +1152,11 @@
 		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="FillCrewMembers" id="1">
+		<Command name="FillTeamMembers" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Fill workgroup roster</v8:content>
+					<v8:content>Fill team members</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1166,7 +1166,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Fill workgroup roster</v8:content>
+					<v8:content>Fill team members</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1177,7 +1177,7 @@
 				<xr:Ref>CommonPicture.FillByBasis</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
-			<Action>FillCrewMembers</Action>
+			<Action>FillTeamMembers</Action>
 			<Representation>Picture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>

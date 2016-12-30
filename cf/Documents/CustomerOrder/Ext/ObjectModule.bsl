@@ -8,7 +8,7 @@
 Procedure FillTabularSectionPerformersByResources(PerformersConnectionKey) Export
 	
 	EmployeeArray	= New Array();
-	ArrayOfCrews 		= New Array();
+	ArrayOfTeams 		= New Array();
 	For Each TSRow IN EnterpriseResources Do
 		
 		If ValueIsFilled(TSRow.EnterpriseResource) Then
@@ -18,9 +18,9 @@ Procedure FillTabularSectionPerformersByResources(PerformersConnectionKey) Expor
 				
 				EmployeeArray.Add(ResourceValue);
 				
-			ElsIf TypeOf(ResourceValue) = Type("CatalogRef.Crews") Then
+			ElsIf TypeOf(ResourceValue) = Type("CatalogRef.Teams") Then
 				
-				ArrayOfCrews.Add(ResourceValue);
+				ArrayOfTeams.Add(ResourceValue);
 				
 			EndIf;
 			
@@ -54,9 +54,9 @@ Procedure FillTabularSectionPerformersByResources(PerformersConnectionKey) Expor
 	|		WorkgroupsContent.Employee,
 	|		WorkgroupsContent.Employee.Description
 	|	FROM
-	|		Catalog.Crews.Content AS WorkgroupsContent
+	|		Catalog.Teams.Content AS WorkgroupsContent
 	|	WHERE
-	|		WorkgroupsContent.Ref IN(&ArrayOfCrews)) AS EmployeesTable
+	|		WorkgroupsContent.Ref IN(&ArrayOfTeams)) AS EmployeesTable
 	|		LEFT JOIN InformationRegister.AccrualsAndDeductionsPlan.SliceLast(
 	|				&ToDate,
 	|				Company = &Company
@@ -90,7 +90,7 @@ Procedure FillTabularSectionPerformersByResources(PerformersConnectionKey) Expor
 	Query.SetParameter("ToDate", Date);
 	Query.SetParameter("Company", Company);
 	Query.SetParameter("DocumentCurrency", DocumentCurrency);
-	Query.SetParameter("ArrayOfCrews", ArrayOfCrews);
+	Query.SetParameter("ArrayOfTeams", ArrayOfTeams);
 	Query.SetParameter("EmployeeArray", EmployeeArray);
 	
 	ResultsArray = Query.ExecuteBatch();
@@ -128,9 +128,9 @@ Procedure FillTabularSectionPerformersByResources(PerformersConnectionKey) Expor
 	
 EndProcedure // FillPerformersTabularSectionByResources()
 
-// Procedure fills the tabular section Performers by crews.
+// Procedure fills the tabular section Performers by teams.
 //
-Procedure FillTabularSectionPerformersByCrews(ArrayOfCrews, PerformersConnectionKey) Export
+Procedure FillTabularSectionPerformersByTeams(ArrayOfTeams, PerformersConnectionKey) Export
 	
 	Query = New Query;
 	Query.Text =
@@ -140,7 +140,7 @@ Procedure FillTabularSectionPerformersByCrews(ArrayOfCrews, PerformersConnection
 	|	AccrualsAndDeductionsPlanSliceLast.AccrualDeductionKind AS AccrualDeductionKind
 	|INTO TemporaryTableEmployeesAndAccrualDeductionSorts
 	|FROM
-	|	Catalog.Crews.Content AS WorkgroupsContent
+	|	Catalog.Teams.Content AS WorkgroupsContent
 	|		LEFT JOIN InformationRegister.AccrualsAndDeductionsPlan.SliceLast(
 	|				&ToDate,
 	|				Company = &Company
@@ -148,7 +148,7 @@ Procedure FillTabularSectionPerformersByCrews(ArrayOfCrews, PerformersConnection
 	|					AND AccrualDeductionKind IN (VALUE(Catalog.AccrualAndDeductionKinds.PieceRatePayment), VALUE(Catalog.AccrualAndDeductionKinds.PieceRatePaymentPercent), VALUE(Catalog.AccrualAndDeductionKinds.FixedAmount))) AS AccrualsAndDeductionsPlanSliceLast
 	|		ON WorkgroupsContent.Employee = AccrualsAndDeductionsPlanSliceLast.Employee
 	|WHERE
-	|	WorkgroupsContent.Ref IN(&ArrayOfCrews)
+	|	WorkgroupsContent.Ref IN(&ArrayOfTeams)
 	|;
 	|
 	|////////////////////////////////////////////////////////////////////////////////
@@ -176,7 +176,7 @@ Procedure FillTabularSectionPerformersByCrews(ArrayOfCrews, PerformersConnection
 	Query.SetParameter("ToDate", Date);
 	Query.SetParameter("Company", Company);
 	Query.SetParameter("DocumentCurrency", DocumentCurrency);
-	Query.SetParameter("ArrayOfCrews", ArrayOfCrews);
+	Query.SetParameter("ArrayOfTeams", ArrayOfTeams);
 	
 	ResultsArray = Query.ExecuteBatch();
 	EmployeesTable = ResultsArray[1].Unload();
@@ -211,7 +211,7 @@ Procedure FillTabularSectionPerformersByCrews(ArrayOfCrews, PerformersConnection
 		
 	EndIf;
 	
-EndProcedure // FillPerformersTabularSectionByCrews()
+EndProcedure // FillPerformersTabularSectionByTeams()
 
 // Procedure fills the Quantity column by free balances at warehouse.
 //

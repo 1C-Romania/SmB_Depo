@@ -10,29 +10,29 @@ Procedure InitializeDocumentData(DocumentRefJobSheet, StructureAdditionalPropert
 	
 	Query.Text =
 	("SELECT
-	 |	PieceworkCrewStaff.Employee,
+	 |	JobSheetTeamMembers.Employee,
 	 |	CASE
 	 |		WHEN TableAmountCWP.AmountLPF = 0
 	 |			THEN 0
-	 |		ELSE PieceworkCrewStaff.LPF / TableAmountCWP.AmountLPF
+	 |		ELSE JobSheetTeamMembers.LPF / TableAmountCWP.AmountLPF
 	 |	END AS Factor
 	 |INTO TableEmployees
 	 |FROM
-	 |	Document.JobSheet.CrewMembers AS PieceworkCrewStaff
+	 |	Document.JobSheet.TeamMembers AS JobSheetTeamMembers
 	 |		LEFT JOIN (SELECT
-	 |			SUM(PieceworkCrewStaff.LPF) AS AmountLPF,
-	 |			PieceworkCrewStaff.Ref AS Ref
+	 |			SUM(JobSheetTeamMembers.LPF) AS AmountLPF,
+	 |			JobSheetTeamMembers.Ref AS Ref
 	 |		FROM
-	 |			Document.JobSheet.CrewMembers AS PieceworkCrewStaff
+	 |			Document.JobSheet.TeamMembers AS JobSheetTeamMembers
 	 |		WHERE
-	 |			PieceworkCrewStaff.Ref = &Ref
+	 |			JobSheetTeamMembers.Ref = &Ref
 	 |		
 	 |		GROUP BY
-	 |			PieceworkCrewStaff.Ref) AS TableAmountCWP
-	 |		ON PieceworkCrewStaff.Ref = TableAmountCWP.Ref
+	 |			JobSheetTeamMembers.Ref) AS TableAmountCWP
+	 |		ON JobSheetTeamMembers.Ref = TableAmountCWP.Ref
 	 |WHERE
-	 |	PieceworkCrewStaff.Ref = &Ref
-	 |	AND (NOT PieceworkCrewStaff.Ref.Performer REFS Catalog.Employees)
+	 |	JobSheetTeamMembers.Ref = &Ref
+	 |	AND NOT JobSheetTeamMembers.Ref.Performer REFS Catalog.Employees
 	 |
 	 |UNION ALL
 	 |
@@ -78,7 +78,7 @@ Procedure InitializeDocumentData(DocumentRefJobSheet, StructureAdditionalPropert
 	 |	Document.JobSheet.Operations AS JobSheetOperations
 	 |		LEFT JOIN InformationRegister.CurrencyRates.SliceLast(
 	 |				&PointInTime,
-	 |				Currency In
+	 |				Currency IN
 	 |					(SELECT
 	 |						Constants.AccountingCurrency
 	 |					FROM
@@ -190,12 +190,12 @@ Procedure InitializeDocumentData(DocumentRefJobSheet, StructureAdditionalPropert
 	 |	JobSheetOperations.CustomerOrder,
 	 |	JobSheetOperations.StandardHours AS StandardHours,
 	 |	CASE
-	 |		WHEN VALUETYPE(JobSheetOperations.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	 |		WHEN VALUETYPE(JobSheetOperations.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	 |			THEN JobSheetOperations.QuantityPlan
 	 |		ELSE JobSheetOperations.QuantityPlan * JobSheetOperations.MeasurementUnit.Factor
 	 |	END AS QuantityPlan,
 	 |	CASE
-	 |		WHEN VALUETYPE(JobSheetOperations.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	 |		WHEN VALUETYPE(JobSheetOperations.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	 |			THEN JobSheetOperations.QuantityFact
 	 |		ELSE JobSheetOperations.QuantityFact * JobSheetOperations.MeasurementUnit.Factor
 	 |	END AS QuantityFact

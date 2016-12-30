@@ -1880,18 +1880,18 @@ Procedure FillTabularSectionPerformersByResourcesAtServer(PerformersConnectionKe
 	
 EndProcedure // FillTabularSectionPerformersByResourcesOnServer()
 
-// Procedure fills the tabular section Performers by crews.
+// Procedure fills the tabular section Performers by teams.
 //
 &AtServer
-Procedure FillTabularSectionPerformersByCrewsAtServer(ArrayOfCrews, PerformersConnectionKey = Undefined)
+Procedure FillTabularSectionPerformersByTeamsAtServer(ArrayOfTeams, PerformersConnectionKey = Undefined)
 	
 	Document = FormAttributeToValue("Object");
-	Document.FillTabularSectionPerformersByCrews(ArrayOfCrews, PerformersConnectionKey);
+	Document.FillTabularSectionPerformersByTeams(ArrayOfTeams, PerformersConnectionKey);
 	ValueToFormAttribute(Document, "Object");
 	
 	ReflectChangesByTablePerformers(PerformersConnectionKey);
 	
-EndProcedure // FillTabularSectionPerformersByCrewsOnServer()
+EndProcedure // FillTabularSectionPerformersByTeamsOnServer()
 
 // Procedure fills the column Reserve by free balances on stock.
 //
@@ -3739,7 +3739,7 @@ EndProcedure // FillByResourcesForAllWorks()
 // Procedure - command handler of the tabular section command panel.
 //
 &AtClient
-Procedure FillByCrewsForCurrentWorks(Command)
+Procedure FillByTeamsForCurrentWorks(Command)
 	
 	TabularSectionName = "TableWorks";
 	Cancel = SmallBusinessClient.BeforeAddToSubordinateTabularSection(ThisForm, TabularSectionName);
@@ -3755,17 +3755,17 @@ Procedure FillByCrewsForCurrentWorks(Command)
 	
 	OpenParameters = New Structure;
 	OpenParameters.Insert("MultiselectList", True);
-	ArrayOfCrews = Undefined;
+	ArrayOfTeams = Undefined;
 
-	OpenForm("Catalog.Crews.ChoiceForm", OpenParameters,,,,, New NotifyDescription("FillByCrewsForCurrentWorksEnd1", ThisObject));
+	OpenForm("Catalog.Teams.ChoiceForm", OpenParameters,,,,, New NotifyDescription("FillByTeamsForCurrentWorksEnd1", ThisObject));
 	
 EndProcedure
 
 &AtClient
-Procedure FillByCrewsForCurrentWorksEnd1(Result, AdditionalParameters) Export
+Procedure FillByTeamsForCurrentWorksEnd1(Result, AdditionalParameters) Export
 	
-	ArrayOfCrews = Result;
-	If ArrayOfCrews = Undefined Then
+	ArrayOfTeams = Result;
+	If ArrayOfTeams = Undefined Then
 		Return;
 	EndIf;
 	
@@ -3774,19 +3774,19 @@ Procedure FillByCrewsForCurrentWorksEnd1(Result, AdditionalParameters) Export
 	If SearchResult.Count() <> 0 Then
 		Response = Undefined;
 		
-		ShowQueryBox(New NotifyDescription("FillByCrewsForCurrentWorksEnd", ThisObject, New Structure("ArrayOfCrews, SearchResult", ArrayOfCrews, SearchResult)), NStr("en='Tabular section ""Performers"" for current work will be refilled! Continue the operation?';ru='Табличная часть """"Исполнители"""" для текущей работы будет перезаполнена! Продолжить выполнение операции?'"),
+		ShowQueryBox(New NotifyDescription("FillByTeamsForCurrentWorksEnd", ThisObject, New Structure("ArrayOfTeams, SearchResult", ArrayOfTeams, SearchResult)), NStr("en='Tabular section ""Performers"" for current work will be refilled! Continue the operation?';ru='Табличная часть """"Исполнители"""" для текущей работы будет перезаполнена! Продолжить выполнение операции?'"),
 		QuestionDialogMode.YesNo, 0);
 		Return;
 	EndIf;
 	
-	FillByCrewsForCurrentWorksFragment(ArrayOfCrews, SearchResult);
+	FillByTeamsForCurrentWorksFragment(ArrayOfTeams, SearchResult);
 	
 EndProcedure
 
 &AtClient
-Procedure FillByCrewsForCurrentWorksEnd(Result, AdditionalParameters) Export
+Procedure FillByTeamsForCurrentWorksEnd(Result, AdditionalParameters) Export
 	
-	ArrayOfCrews = AdditionalParameters.ArrayOfCrews;
+	ArrayOfTeams = AdditionalParameters.ArrayOfTeams;
 	SearchResult = AdditionalParameters.SearchResult;
 	
 	Response = Result;
@@ -3794,12 +3794,12 @@ Procedure FillByCrewsForCurrentWorksEnd(Result, AdditionalParameters) Export
 		Return;
 	EndIf;
 	
-	FillByCrewsForCurrentWorksFragment(ArrayOfCrews, SearchResult);
+	FillByTeamsForCurrentWorksFragment(ArrayOfTeams, SearchResult);
 	
 EndProcedure
 
 &AtClient
-Procedure FillByCrewsForCurrentWorksFragment(Val ArrayOfCrews, Val SearchResult)
+Procedure FillByTeamsForCurrentWorksFragment(Val ArrayOfTeams, Val SearchResult)
 	
 	Var IndexOfDeletion, PerformersConnectionKey, SearchString, FilterStr;
 	
@@ -3809,17 +3809,17 @@ Procedure FillByCrewsForCurrentWorksFragment(Val ArrayOfCrews, Val SearchResult)
 	EndDo;
 	
 	PerformersConnectionKey = Items.Performers.RowFilter["ConnectionKey"];
-	FillTabularSectionPerformersByCrewsAtServer(ArrayOfCrews, PerformersConnectionKey);
+	FillTabularSectionPerformersByTeamsAtServer(ArrayOfTeams, PerformersConnectionKey);
 	
 	FilterStr = New FixedStructure("ConnectionKey", Items.Performers.RowFilter["ConnectionKey"]);
 	Items.Performers.RowFilter = FilterStr;
 	
-EndProcedure // FillByCrewsForCurrentWorks()
+EndProcedure // FillByTeamsForCurrentWorks()
 
 // Procedure - command handler of the tabular section command panel.
 //
 &AtClient
-Procedure FillByCrewsForAllWorks(Command)
+Procedure FillByTeamsForAllWorks(Command)
 	
 	TabularSectionName = "TableWorks";
 	Cancel = SmallBusinessClient.BeforeAddToSubordinateTabularSection(ThisForm, TabularSectionName);
@@ -3829,59 +3829,59 @@ Procedure FillByCrewsForAllWorks(Command)
 	
 	OpenParameters = New Structure;
 	OpenParameters.Insert("MultiselectList", True);
-	ArrayOfCrews = Undefined;
+	ArrayOfTeams = Undefined;
 
-	OpenForm("Catalog.Crews.ChoiceForm", OpenParameters,,,,, New NotifyDescription("FillByCrewsForAllWorksEnd1", ThisObject));
+	OpenForm("Catalog.Teams.ChoiceForm", OpenParameters,,,,, New NotifyDescription("FillByTeamsForAllWorksEnd1", ThisObject));
 	
 EndProcedure
 
 &AtClient
-Procedure FillByCrewsForAllWorksEnd1(Result, AdditionalParameters) Export
+Procedure FillByTeamsForAllWorksEnd1(Result, AdditionalParameters) Export
 	
-	ArrayOfCrews = Result;
-	If ArrayOfCrews = Undefined Then
+	ArrayOfTeams = Result;
+	If ArrayOfTeams = Undefined Then
 		Return;
 	EndIf;
 	
 	If Object.Performers.Count() <> 0 Then
 		Response = Undefined;
 		
-		ShowQueryBox(New NotifyDescription("FillByCrewsForAllWorksEnd", ThisObject, New Structure("ArrayOfCrews", ArrayOfCrews)),
+		ShowQueryBox(New NotifyDescription("FillByTeamsForAllWorksEnd", ThisObject, New Structure("ArrayOfTeams", ArrayOfTeams)),
 			NStr("en='Tabular section ""Performers"" will be refilled! Continue the operation?';ru='Табличная часть ""Исполнители"" будет перезаполнена! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 	EndIf;
 	
-	FillByCrewsForAllWorksFragment(ArrayOfCrews);
+	FillByTeamsForAllWorksFragment(ArrayOfTeams);
 	
 EndProcedure
 
 &AtClient
-Procedure FillByCrewsForAllWorksEnd(Result, AdditionalParameters) Export
+Procedure FillByTeamsForAllWorksEnd(Result, AdditionalParameters) Export
 	
-	ArrayOfCrews = AdditionalParameters.ArrayOfCrews;
+	ArrayOfTeams = AdditionalParameters.ArrayOfTeams;
 	
 	Response = Result;
 	If Response = DialogReturnCode.No Then
 		Return;
 	EndIf;
 	
-	FillByCrewsForAllWorksFragment(ArrayOfCrews);
+	FillByTeamsForAllWorksFragment(ArrayOfTeams);
 	
 EndProcedure
 
 &AtClient
-Procedure FillByCrewsForAllWorksFragment(Val ArrayOfCrews)
+Procedure FillByTeamsForAllWorksFragment(Val ArrayOfTeams)
 	
 	Var FilterStr;
 	
 	Object.Performers.Clear();
 	
-	FillTabularSectionPerformersByCrewsAtServer(ArrayOfCrews);
+	FillTabularSectionPerformersByTeamsAtServer(ArrayOfTeams);
 	
 	FilterStr = New FixedStructure("ConnectionKey", Items.Performers.RowFilter["ConnectionKey"]);
 	Items.Performers.RowFilter = FilterStr;
 	
-EndProcedure // FillByCrewsForAllWorks()
+EndProcedure // FillByTeamsForAllWorks()
 
 // Procedure - EditByList command handler.
 //

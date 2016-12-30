@@ -331,6 +331,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -440,7 +444,7 @@
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:Type>cfg:CatalogRef.Crews</v8:Type>
+						<v8:Type>cfg:CatalogRef.Teams</v8:Type>
 						<v8:Type>cfg:CatalogRef.Employees</v8:Type>
 					</Type>
 					<PasswordMode>false</PasswordMode>
@@ -449,7 +453,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Performer related to the document processed. It is selected from the Employees or Crews catalogs</v8:content>
+							<v8:content>Performer related to the document processed. It is selected from the Employees or Teams catalogs</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -538,11 +542,11 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Currency</v8:content>
+							<v8:content>Document currency</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Вал.</v8:content>
+							<v8:content>Валюта документа</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -649,7 +653,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ведомость составил</v8:content>
+							<v8:content>Автор</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -700,7 +704,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Закрыта</v8:content>
+							<v8:content>Закрыт</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1654,21 +1658,21 @@
 			</TabularSection>
 			<TabularSection uuid="2b51eb4b-26b0-4869-bb64-3d71c8458b4f">
 				<InternalInfo>
-					<xr:GeneratedType name="DocumentTabularSection.JobSheet.CrewMembers" category="TabularSection">
+					<xr:GeneratedType name="DocumentTabularSection.JobSheet.TeamMembers" category="TabularSection">
 						<xr:TypeId>3dd57875-29ac-4628-91b7-900af4f1bd7e</xr:TypeId>
 						<xr:ValueId>46a10885-6a2d-403f-a886-2bbcb619af89</xr:ValueId>
 					</xr:GeneratedType>
-					<xr:GeneratedType name="DocumentTabularSectionRow.JobSheet.CrewMembers" category="TabularSectionRow">
+					<xr:GeneratedType name="DocumentTabularSectionRow.JobSheet.TeamMembers" category="TabularSectionRow">
 						<xr:TypeId>76dabe29-59a7-42fd-9bad-741a369fc212</xr:TypeId>
 						<xr:ValueId>5aaf58d6-4592-49fa-abaa-8fa09c36205a</xr:ValueId>
 					</xr:GeneratedType>
 				</InternalInfo>
 				<Properties>
-					<Name>CrewMembers</Name>
+					<Name>TeamMembers</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Crew members</v8:content>
+							<v8:content>Team members</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1679,7 +1683,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Tabular section indicates actual members of the crew executing the order</v8:content>
+							<v8:content>Tabular section indicates actual members of the team executing the order</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1739,7 +1743,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Employee of the crew</v8:content>
+									<v8:content>Employee of the team</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>

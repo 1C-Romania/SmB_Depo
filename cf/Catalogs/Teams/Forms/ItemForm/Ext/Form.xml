@@ -13,7 +13,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Description code</v8:content>
+					<v8:content>Description, code</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -23,7 +23,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Description code</v8:content>
+					<v8:content>Description, code</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -58,7 +58,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Crew members</v8:content>
+					<v8:content>Team members</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -68,11 +68,11 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Members group</v8:content>
+					<v8:content>Team members</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа состав</v8:content>
+					<v8:content>Состав бригады</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
@@ -127,7 +127,7 @@
 						<ExtendedTooltip name="ContentSearchControlExtendedTooltip" id="35"/>
 					</SearchControlAddition>
 					<ChildItems>
-						<InputField name="ContentOfficer" id="10">
+						<InputField name="ContentEmployee" id="10">
 							<DataPath>Object.Content.Employee</DataPath>
 							<EditMode>EnterOnInput</EditMode>
 							<Wrap>false</Wrap>
@@ -158,7 +158,7 @@
 	<Attributes>
 		<Attribute name="Object" id="1">
 			<Type>
-				<v8:Type>cfg:CatalogObject.Crews</v8:Type>
+				<v8:Type>cfg:CatalogObject.Teams</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>

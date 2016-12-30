@@ -2638,7 +2638,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 												<ToolTip>
 													<v8:item>
 														<v8:lang>en</v8:lang>
-														<v8:content>Performers fill by crews</v8:content>
+														<v8:content>Performers fill by teams</v8:content>
 													</v8:item>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
@@ -2659,11 +2659,11 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 													</Button>
 												</ChildItems>
 											</Popup>
-											<Popup name="ExecutorsFillByCrews" id="712">
+											<Popup name="ExecutorsFillByTeams" id="712">
 												<Title>
 													<v8:item>
 														<v8:lang>en</v8:lang>
-														<v8:content>Performers fill by crews</v8:content>
+														<v8:content>Performers fill by teams</v8:content>
 													</v8:item>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
@@ -2673,24 +2673,24 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 												<ToolTip>
 													<v8:item>
 														<v8:lang>en</v8:lang>
-														<v8:content>Performers fill by crews</v8:content>
+														<v8:content>Performers fill by teams</v8:content>
 													</v8:item>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
 														<v8:content>Исполнители заполнить по ресурсам</v8:content>
 													</v8:item>
 												</ToolTip>
-												<ExtendedTooltip name="ExecutorsFillByCrewsExtendedTooltip" id="928"/>
+												<ExtendedTooltip name="ExecutorsFillByTeamsExtendedTooltip" id="928"/>
 												<ChildItems>
-													<Button name="ExecutorsFillByCrewsForCurrentWorks" id="717">
+													<Button name="ExecutorsFillByTeamsForCurrentWorks" id="717">
 														<Type>CommandBarButton</Type>
-														<CommandName>Form.Command.FillByCrewsForCurrentWorks</CommandName>
-														<ExtendedTooltip name="ExecutorsFillByCrewsForCurrentWorksExtendedTooltip" id="929"/>
+														<CommandName>Form.Command.FillByTeamsForCurrentWorks</CommandName>
+														<ExtendedTooltip name="ExecutorsFillByTeamsForCurrentWorksExtendedTooltip" id="929"/>
 													</Button>
-													<Button name="ExecutorsFillByCrewsForAllWorks" id="715">
+													<Button name="ExecutorsFillByTeamsForAllWorks" id="715">
 														<Type>CommandBarButton</Type>
-														<CommandName>Form.Command.FillByCrewsForAllWorks</CommandName>
-														<ExtendedTooltip name="ExecutorsFillByCrewsForAllWorksExtendedTooltip" id="930"/>
+														<CommandName>Form.Command.FillByTeamsForAllWorks</CommandName>
+														<ExtendedTooltip name="ExecutorsFillByTeamsForAllWorksExtendedTooltip" id="930"/>
 													</Button>
 												</ChildItems>
 											</Popup>
@@ -4938,7 +4938,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 			<Action>FillMaterialsFromAllSpecifications</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
-		<Command name="FillByCrewsForCurrentWorks" id="25">
+		<Command name="FillByTeamsForCurrentWorks" id="25">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -4952,7 +4952,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Fill by crews for current work</v8:content>
+					<v8:content>Fill by teams for current work</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -5040,11 +5040,11 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 				<xr:Value name="Role.ReadIndividualsPersonalData">false</xr:Value>
 				<xr:Value name="Role.ReadIndividuals">false</xr:Value>
 			</Use>
-			<Action>FillByCrewsForCurrentWorks</Action>
+			<Action>FillByTeamsForCurrentWorks</Action>
 			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="FillByCrewsForAllWorks" id="26">
+		<Command name="FillByTeamsForAllWorks" id="26">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -5058,7 +5058,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Fill by crews for all works</v8:content>
+					<v8:content>Fill by teams for all works</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -5146,7 +5146,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 				<xr:Value name="Role.ReadIndividualsPersonalData">false</xr:Value>
 				<xr:Value name="Role.ReadIndividuals">false</xr:Value>
 			</Use>
-			<Action>FillByCrewsForAllWorks</Action>
+			<Action>FillByTeamsForAllWorks</Action>
 			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>

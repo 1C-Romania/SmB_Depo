@@ -51,12 +51,12 @@ Function GetTabNumber(Performer)
 EndFunction // GetCompanyDataOnChange()
 
 &AtServer
-// Procedure fills crew members.
+// Procedure fills team members.
 //
-Procedure FillCrewMembersAtServer()
+Procedure FillTeamMembersAtServer()
 
 	Document = FormAttributeToValue("Object");
-	Document.FillCrewMembers();
+	Document.FillTeamMembers();
 	ValueToFormAttribute(Document, "Object");
 	Modified = True;	
 
@@ -140,19 +140,19 @@ EndProcedure
 //
 Procedure SetVisibleAndEnabledFromExecutor()
 	
-	If TypeOf(Object.Performer) = Type("CatalogRef.Crews") Then
+	If TypeOf(Object.Performer) = Type("CatalogRef.Teams") Then
 		
-		Items.GroupContentTeam.Visible 				= True;
-		Items.FillCrewMembers.Visible 			= True;
+		Items.GroupTeamMembers.Visible 				= True;
+		Items.FillTeamMembers.Visible 			= True;
 		Items.TabNumber.Visible 						= False;
 		
 	Else
 		
-		Items.GroupContentTeam.Visible 				= False;
-		Items.FillCrewMembers.Visible 			= False;
+		Items.GroupTeamMembers.Visible 				= False;
+		Items.FillTeamMembers.Visible 			= False;
 		Items.TabNumber.Visible 						= True;
 		
-		Object.CrewMembers.Clear();
+		Object.TeamMembers.Clear();
 		
 	EndIf;
 	
@@ -196,8 +196,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.ClosingDate.AutoMarkIncomplete = Object.Closed;
 	
 	If Not Constants.FunctionalOptionUseJobSharing.Get() Then
-		If Items.Find("CrewMembersEmployeeCode") <> Undefined Then		
-			Items.CrewMembersEmployeeCode.Visible = False;		
+		If Items.Find("TeamMembersEmployeeCode") <> Undefined Then		
+			Items.TeamMembersEmployeeCode.Visible = False;		
 		EndIf;
 	EndIf;
 	
@@ -302,7 +302,7 @@ EndProcedure // CompanyOnChange()
 Procedure AssigneeOnChange(Item)
 	
 	SetVisibleAndEnabledFromExecutor();
-	Object.CrewMembers.Clear();
+	Object.TeamMembers.Clear();
 	
 	If TypeOf(Object.Performer) = Type("CatalogRef.Employees") Then
 		TabNumber = GetTabNumber(Object.Performer);
@@ -510,20 +510,20 @@ Procedure OperationsMeasurementUnitChoiceProcessing(Item, ValueSelected, Standar
 EndProcedure // InventoryMeasurementUnitChoiceProcessing()
 
 &AtClient
-// Procedure - handler of the OnChange event of the Employee attribute of the CrewMembers tabular section.
+// Procedure - handler of the OnChange event of the Employee attribute of the TeamMembers tabular section.
 //
-Procedure CrewMembersEmployeeOnChange(Item)
+Procedure TeamMembersEmployeeOnChange(Item)
 	
-	Items.CrewMembers.CurrentData.LPF = 1;
+	Items.TeamMembers.CurrentData.LPF = 1;
 	
 EndProcedure
 
 &AtClient
-// Procedure - command handler FillCrewMembers.
+// Procedure - command handler FillTeamMembers.
 //
-Procedure FillCrewMembers(Command)
+Procedure FillTeamMembers(Command)
 	
-	FillCrewMembersAtServer();
+	FillTeamMembersAtServer();
 	
 EndProcedure
 
