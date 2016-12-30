@@ -1398,13 +1398,6 @@ ORDER BY
 					</inputParameters>
 				</field>
 				<field xsi:type="DataSetFieldField">
-					<dataPath>ProductionSubdivision</dataPath>
-					<field>ProductionSubdivision</field>
-					<role>
-						<dcscom:dimension>true</dcscom:dimension>
-					</role>
-				</field>
-				<field xsi:type="DataSetFieldField">
 					<dataPath>ProductionSpecification</dataPath>
 					<field>ProductionSpecification</field>
 					<role>
@@ -1473,6 +1466,16 @@ ORDER BY
 							<v8:content>Единица
 изме-
 рения</v8:content>
+						</v8:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ProductionSubdepartment</dataPath>
+					<field>ProductionSubdepartment</field>
+					<title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Production subdepartment</v8:content>
 						</v8:item>
 					</title>
 				</field>
@@ -1549,10 +1552,6 @@ ORDER BY
 						<field>BatchProducts</field>
 					</field>
 					<field xsi:type="DataSetFieldField">
-						<dataPath>ProductionSubdivision</dataPath>
-						<field>ProductionSubdivision</field>
-					</field>
-					<field xsi:type="DataSetFieldField">
 						<dataPath>ProductionSpecification</dataPath>
 						<field>ProductionSpecification</field>
 					</field>
@@ -1572,6 +1571,16 @@ ORDER BY
 						<dataPath>UnOfMeasProducts</dataPath>
 						<field>UnOfMeasProducts</field>
 					</field>
+					<field xsi:type="DataSetFieldField">
+						<dataPath>ProductionSubdepartment</dataPath>
+						<field>ProductionSubdepartment</field>
+						<title xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Production subdepartment</v8:content>
+							</v8:item>
+						</title>
+					</field>
 					<dataSource>DataSource1</dataSource>
 					<query>SELECT ALLOWED
 	Inventory.ProductsAndServicesCorr AS Products,
@@ -1580,7 +1589,7 @@ ORDER BY
 	Inventory.CorrGLAccount AS ProductsGLAccount,
 	Inventory.CustomerCorrOrder AS CustomerOrderProducts,
 	Inventory.SpecificationCorr AS ProductionSpecification,
-	Inventory.StructuralUnitCorr AS ProductionSubdivision,
+	Inventory.StructuralUnitCorr AS ProductionSubdepartment,
 	Inventory.Company AS CompanyProducts,
 	CASE
 		WHEN Inventory.ProductsAndServices = VALUE(Catalog.ProductsAndServices.EmptyRef)
@@ -1596,16 +1605,16 @@ ORDER BY
 	Inventory.Specification AS Specification,
 	Inventory.ProductsAndServices.MeasurementUnit AS UnOfMeas,
 	Inventory.ProductsAndServicesCorr.MeasurementUnit AS UnOfMeasProducts
-	FROM
+FROM
 	AccumulationRegister.Inventory AS Inventory
-	WHERE
+WHERE
 	Inventory.RecordType = VALUE(AccumulationRecordType.Expense)
 	AND Inventory.ProductionExpenses
 	AND CASE
 			WHEN &amp;EndOfPeriod = DATETIME(1, 1, 1)
 				THEN Inventory.Period &gt;= &amp;BeginOfPeriod
-			ELSE Inventory.Period between &amp;BeginOfPeriod AND &amp;EndOfPeriod
-			END</query>
+			ELSE Inventory.Period BETWEEN &amp;BeginOfPeriod AND &amp;EndOfPeriod
+		END</query>
 				</item>
 				<item xsi:type="DataSetQuery">
 					<name>DataSet2</name>
@@ -1689,13 +1698,6 @@ ORDER BY
 						</role>
 					</field>
 					<field xsi:type="DataSetFieldField">
-						<dataPath>ProductionSubdivision</dataPath>
-						<field>ProductionSubdivision</field>
-						<role>
-							<dcscom:dimension>true</dcscom:dimension>
-						</role>
-					</field>
-					<field xsi:type="DataSetFieldField">
 						<dataPath>ProductionSpecification</dataPath>
 						<field>ProductionSpecification</field>
 						<role>
@@ -1713,10 +1715,23 @@ ORDER BY
 						<dataPath>UnOfMeasProducts</dataPath>
 						<field>UnOfMeasProducts</field>
 					</field>
+					<field xsi:type="DataSetFieldField">
+						<dataPath>ProductionSubdepartment</dataPath>
+						<field>ProductionSubdepartment</field>
+						<title xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Production subdepartment</v8:content>
+							</v8:item>
+						</title>
+						<role>
+							<dcscom:dimension>true</dcscom:dimension>
+						</role>
+					</field>
 					<dataSource>DataSource1</dataSource>
 					<query>SELECT ALLOWED
 	ProductReleaseTurnovers.Company AS CompanyProducts,
-	ProductReleaseTurnovers.StructuralUnit AS ProductionSubdivision,
+	ProductReleaseTurnovers.StructuralUnit AS ProductionSubdepartment,
 	ProductReleaseTurnovers.ProductsAndServices AS Products,
 	ProductReleaseTurnovers.Characteristic AS ProductCharacteristic,
 	ProductReleaseTurnovers.Batch AS BatchProducts,
@@ -1767,13 +1782,6 @@ FROM
 						</role>
 					</field>
 					<field xsi:type="DataSetFieldField">
-						<dataPath>ProductionSubdivision</dataPath>
-						<field>ProductionSubdivision</field>
-						<role>
-							<dcscom:dimension>true</dcscom:dimension>
-						</role>
-					</field>
-					<field xsi:type="DataSetFieldField">
 						<dataPath>Products</dataPath>
 						<field>Products</field>
 						<role>
@@ -1806,6 +1814,16 @@ FROM
 							<dcscom:dimension>true</dcscom:dimension>
 						</role>
 					</field>
+					<field xsi:type="DataSetFieldField">
+						<dataPath>ProductionSubdepartment</dataPath>
+						<field>ProductionSubdepartment</field>
+						<title xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Production subdepartment</v8:content>
+							</v8:item>
+						</title>
+					</field>
 					<dataSource>DataSource1</dataSource>
 					<query>SELECT ALLOWED
 	Inventory.ProductsAndServices AS Products,
@@ -1814,7 +1832,7 @@ FROM
 	Inventory.GLAccount AS ProductsGLAccount,
 	Inventory.CustomerOrder AS CustomerOrderProducts,
 	Inventory.Specification AS ProductionSpecification,
-	Inventory.StructuralUnit AS ProductionSubdivision,
+	Inventory.StructuralUnit AS ProductionSubdepartment,
 	Inventory.Company AS CompanyProducts,
 	"Intangible costs" AS ProductsAndServices,
 	"Processing services" AS GLAccount,
@@ -1831,7 +1849,7 @@ WHERE
 	AND CASE
 			WHEN &amp;EndOfPeriod = DATETIME(1, 1, 1)
 				THEN Inventory.Period &gt;= &amp;BeginOfPeriod
-			ELSE Inventory.Period between &amp;BeginOfPeriod AND &amp;EndOfPeriod
+			ELSE Inventory.Period BETWEEN &amp;BeginOfPeriod AND &amp;EndOfPeriod
 		END</query>
 				</item>
 			</dataSet>
@@ -1958,8 +1976,13 @@ WHERE
 				<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>ProductionSubdivision</dcsset:field>
-							<dcsset:title>Division</dcsset:title>
+							<dcsset:field>ProductionSubdepartment</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Department</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>Products</dcsset:field>
@@ -2024,7 +2047,7 @@ WHERE
 					</dcsset:dataParameters>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ProductionSubdivision</dcsset:field>
+							<dcsset:field>ProductionSubdepartment</dcsset:field>
 							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -2082,7 +2105,7 @@ WHERE
 					<dcsset:item xsi:type="dcsset:StructureItemGroup">
 						<dcsset:groupItems>
 							<dcsset:item xsi:type="dcsset:GroupItemField">
-								<dcsset:field>ProductionSubdivision</dcsset:field>
+								<dcsset:field>ProductionSubdepartment</dcsset:field>
 								<dcsset:groupType>Items</dcsset:groupType>
 								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -3992,8 +4015,17 @@ GROUP BY
 				<dcsset:settings>
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>ProductionSubdivision</dcsset:field>
-							<dcsset:title>Division</dcsset:title>
+							<dcsset:field>ProductionSubdepartment</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Department</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подразделение</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>Products</dcsset:field>
@@ -4096,7 +4128,7 @@ GROUP BY
 					<dcsset:item xsi:type="dcsset:StructureItemGroup">
 						<dcsset:groupItems>
 							<dcsset:item xsi:type="dcsset:GroupItemField">
-								<dcsset:field>ProductionSubdivision</dcsset:field>
+								<dcsset:field>ProductionSubdepartment</dcsset:field>
 								<dcsset:groupType>Items</dcsset:groupType>
 								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>

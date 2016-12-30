@@ -132,7 +132,7 @@ Procedure FillByFixedAssets(FillingData)
 	Query.Text = 
 	"SELECT
 	|	DepreciationParametersSliceLast.FixedAsset AS FixedAsset,
-	|	DepreciationParametersSliceLast.StructuralUnit AS Division,
+	|	DepreciationParametersSliceLast.StructuralUnit AS Department,
 	|	DepreciationParametersSliceLast.AmountOfProductsServicesForDepreciationCalculation AS AmountOfProductsServicesForDepreciationCalculation,
 	|	DepreciationParametersSliceLast.CostForDepreciationCalculation AS CostForDepreciationCalculation,
 	|	DepreciationParametersSliceLast.UsagePeriodForDepreciationCalculation AS UsagePeriodForDepreciationCalculation,
@@ -158,7 +158,7 @@ Procedure FillByFixedAssets(FillingData)
 		NewRow.CostForDepreciationCalculation = Selection.CostForDepreciationCalculation;
 		NewRow.GLExpenseAccount = Selection.GLExpenseAccount;
 		NewRow.BusinessActivity = Selection.BusinessActivity;
-		NewRow.StructuralUnit = Selection.Division;
+		NewRow.StructuralUnit = Selection.Department;
 		
 	EndIf;
 	

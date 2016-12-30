@@ -173,7 +173,7 @@ Procedure FillColumnReserveByBalances() Export
 	|						&Company,
 	|						&StructuralUnit,
 	|						CASE
-	|							WHEN &StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|							WHEN &StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|								THEN TableInventory.ProductsAndServices.ExpensesGLAccount
 	|							ELSE TableInventory.ProductsAndServices.InventoryGLAccount
 	|						END,
@@ -266,7 +266,7 @@ Procedure FillByProductionOrder(FillingData) Export
 	|	CASE
 	|		WHEN ProductionOrder.StructuralUnitReserve = VALUE(Catalog.StructuralUnits.EmptyRef)
 	|				AND (ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-	|					OR ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division))
+	|					OR ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department))
 	|			THEN ProductionOrder.StructuralUnit.TransferSource
 	|		ELSE ProductionOrder.StructuralUnitReserve
 	|	END AS StructuralUnitReserve,
@@ -337,15 +337,15 @@ Procedure FillUsingCustomerOrder(FillingData) Export
 	|	END AS CustomerOrder,
 	|	CustomerOrder.Company AS Company,
 	|	CASE
-	|		WHEN CustomerOrder.SalesStructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|		WHEN CustomerOrder.SalesStructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|			THEN CustomerOrder.SalesStructuralUnit
 	|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 	|	END AS StructuralUnit,
 	|	CASE
-	|		WHEN CustomerOrder.SalesStructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|		WHEN CustomerOrder.SalesStructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|				AND CustomerOrder.StructuralUnitReserve = VALUE(Catalog.StructuralUnits.EmptyRef)
 	|				AND (CustomerOrder.SalesStructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-	|					OR CustomerOrder.SalesStructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division))
+	|					OR CustomerOrder.SalesStructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department))
 	|			THEN CustomerOrder.SalesStructuralUnit.TransferSource
 	|		ELSE CustomerOrder.StructuralUnitReserve
 	|	END AS StructuralUnitReserve,
@@ -376,9 +376,9 @@ Procedure FillUsingCustomerOrder(FillingData) Export
 	FillPropertyValues(ThisObject, Selection);
 	
 	If Not ValueIsFilled(StructuralUnit) Then
-		SettingValue = SmallBusinessReUse.GetValueOfSetting("MainDivision");
+		SettingValue = SmallBusinessReUse.GetValueOfSetting("MainDepartment");
 		If Not ValueIsFilled(SettingValue) Then
-			StructuralUnit = Catalogs.StructuralUnits.MainDivision;
+			StructuralUnit = Catalogs.StructuralUnits.MainDepartment;
 		EndIf;
 	EndIf;
 	

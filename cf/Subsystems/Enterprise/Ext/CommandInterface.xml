@@ -210,6 +210,12 @@
 		</Command>
 	</CommandsPlacement>
 	<CommandsOrder>
+		<Command name="Catalog.StructuralUnits.Command.OpenDepartmentsList">
+			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
+		</Command>
+		<Command name="Catalog.StructuralUnits.Command.OpenWarehousesList">
+			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
+		</Command>
 		<Command name="ChartOfAccounts.Managerial.StandardCommand.OpenList">
 			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
 		</Command>
@@ -296,11 +302,11 @@
 		</Command>
 	</CommandsOrder>
 	<SubsystemsOrder>
+		<Subsystem>Subsystem.Enterprise.Subsystem.Enterprise</Subsystem>
 		<Subsystem>Subsystem.Enterprise.Subsystem.FinancialTransactions</Subsystem>
 		<Subsystem>Subsystem.Enterprise.Subsystem.Planning</Subsystem>
 		<Subsystem>Subsystem.Enterprise.Subsystem.FixedAssets</Subsystem>
 		<Subsystem>Subsystem.Enterprise.Subsystem.ElectronicDocuments</Subsystem>
-		<Subsystem>Subsystem.Enterprise.Subsystem.ReferenceInformation</Subsystem>
 	</SubsystemsOrder>
 	<GroupsOrder>
 		<Group>NavigationPanelImportant</Group>

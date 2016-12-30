@@ -13,7 +13,7 @@ Procedure BeforeWrite(Cancel, Replacing)
 	TextNumber				= NStr("en=',  No.%1';ru=',  No.%1'");
 	TextIssuanceDate			= NStr("en=', issued: %1 year';ru=', выдан: %1 года'");
 	TextValidityPeriod		= NStr("en=', valid till: %1 year';ru=', действует до: %1 года'");
-	TextDivisionCode	= NStr("en=', div. No.%1';ru=', № подр. %1'");
+	TextDepartmentCode	= NStr("en=', div. No.%1';ru=', № подр. %1'");
 	
 	For Each Record IN ThisObject Do
 		If Record.DocumentKind.IsEmpty() Then
@@ -27,7 +27,7 @@ Procedure BeforeWrite(Cancel, Replacing)
 				+ ?(ValueIsFilled(Record.IssueDate), StringFunctionsClientServer.PlaceParametersIntoString(TextIssuanceDate, Format(Record.IssueDate,"DF=dd MMMM yyyy'")), "")
 				+ ?(ValueIsFilled(Record.ValidityPeriod), StringFunctionsClientServer.PlaceParametersIntoString(TextValidityPeriod, Format(Record.ValidityPeriod,"DF=dd MMMM yyyy'")), "")
 				+ ?(ValueIsFilled(Record.WhoIssued), ", " + Record.WhoIssued, "")
-				+ ?(ValueIsFilled(Record.DivisionCode) AND Record.DocumentKind = Catalogs.IndividualsDocumentsKinds.LocalPassport, StringFunctionsClientServer.PlaceParametersIntoString(TextDivisionCode, Record.DivisionCode), "");
+				+ ?(ValueIsFilled(Record.DepartmentCode) AND Record.DocumentKind = Catalogs.IndividualsDocumentsKinds.LocalPassport, StringFunctionsClientServer.PlaceParametersIntoString(TextDepartmentCode, Record.DepartmentCode), "");
 			
 		EndIf;
 	EndDo;

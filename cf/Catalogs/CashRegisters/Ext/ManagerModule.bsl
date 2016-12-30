@@ -8,7 +8,7 @@ Function GetObjectAttributesBeingLocked() Export
 	Result.Add("CashCurrency");
 	Result.Add("Owner");
 	Result.Add("StructuralUnit");
-	Result.Add("Division");
+	Result.Add("Department");
 	Result.Add("CashCRType");
 	
 	Return Result;
@@ -60,7 +60,7 @@ Function GetCashRegisterAttributes(CashCR) Export
 	Query.Text =
 	"SELECT
 	|	CashRegisters.StructuralUnit AS StructuralUnit,
-	|	CashRegisters.Division AS Division,
+	|	CashRegisters.Department AS Department,
 	|	CashRegisters.Owner AS Company,
 	|	CashRegisters.StructuralUnit.RetailPriceKind AS PriceKind,
 	|	CashRegisters.StructuralUnit.RetailPriceKind.PriceIncludesVAT AS AmountIncludesVAT,
@@ -76,7 +76,7 @@ Function GetCashRegisterAttributes(CashCR) Export
 	Selection = Query.Execute().Select();
 	If Selection.Next() Then
 		StructuralUnit = Selection.StructuralUnit;
-		Division = Selection.Division;
+		Department = Selection.Department;
 		Company = Selection.Company;
 		PriceKind = Selection.PriceKind;
 		AmountIncludesVAT = Selection.AmountIncludesVAT;
@@ -84,7 +84,7 @@ Function GetCashRegisterAttributes(CashCR) Export
 		CashCRType = Selection.CashCRType;
 	Else
 		StructuralUnit = Undefined;
-		Division = Undefined;
+		Department = Undefined;
 		Company = Undefined;
 		PriceKind = Undefined;
 		AmountIncludesVAT = Undefined;
@@ -92,9 +92,9 @@ Function GetCashRegisterAttributes(CashCR) Export
 		CashCRType = Undefined;
 	EndIf;
 	
-	AttributesStructure = New Structure("StructuralUnit, Division, Company, PriceKind, AmountIncludesVAT, DocumentCurrency, CashCRType",
+	AttributesStructure = New Structure("StructuralUnit, Department, Company, PriceKind, AmountIncludesVAT, DocumentCurrency, CashCRType",
 		StructuralUnit,
-		Division,
+		Department,
 		Company,
 		PriceKind,
 		AmountIncludesVAT,

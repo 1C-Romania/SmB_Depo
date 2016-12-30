@@ -18,8 +18,8 @@ Procedure AllowEdit(Command)
 		Result.Add("StructuralUnit");
 	EndIf;
 	
-	If EnableEditDivision Then
-		Result.Add("Division");
+	If EnableEditDepartment Then
+		Result.Add("Department");
 	EndIf;
 	
 	Close(Result);

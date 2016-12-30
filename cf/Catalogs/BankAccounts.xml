@@ -1287,7 +1287,7 @@ of Central Bank permission to open the currency account</v8:content>
 			<Form>ListForm</Form>
 			<Form>ChoiceForm</Form>
 			<Form>GLAccountsEditForm</Form>
-			<Form>CompaniesBankAccountsListForm</Form>
+			<Form>ListFormCompaniesBankAccounts</Form>
 			<Form>ChoiceFormWithoutOwner</Form>
 			<Command uuid="cddc4403-7078-48d9-b165-4419f7f7b284">
 				<Properties>
@@ -1309,6 +1309,30 @@ of Central Bank permission to open the currency account</v8:content>
 					</CommandParameterType>
 					<ParameterUseMode>Single</ParameterUseMode>
 					<ModifiesData>true</ModifiesData>
+					<Representation>Auto</Representation>
+					<ToolTip/>
+					<Picture/>
+					<Shortcut/>
+				</Properties>
+			</Command>
+			<Command uuid="2750259c-4533-4748-a371-5d661cfe5229">
+				<Properties>
+					<Name>OpenListCompaniesBankAccounts</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bank accounts</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банковские счета</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Group>NavigationPanelOrdinary</Group>
+					<CommandParameterType/>
+					<ParameterUseMode>Single</ParameterUseMode>
+					<ModifiesData>false</ModifiesData>
 					<Representation>Auto</Representation>
 					<ToolTip/>
 					<Picture/>

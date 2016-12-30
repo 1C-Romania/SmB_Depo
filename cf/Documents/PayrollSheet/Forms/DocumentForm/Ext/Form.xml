@@ -11,11 +11,11 @@
 				<CommandName>Form.Command.FillByBalance</CommandName>
 				<ExtendedTooltip name="FillByBalancesExtendedTooltip" id="67"/>
 			</Button>
-			<Button name="FillByDivision" id="32">
+			<Button name="FillByDepartment" id="32">
 				<Type>CommandBarButton</Type>
 				<SkipOnInput>true</SkipOnInput>
-				<CommandName>Form.Command.FillByDivision</CommandName>
-				<ExtendedTooltip name="FillByDeparnmentExtendedTooltip" id="68"/>
+				<CommandName>Form.Command.FillByDepartment</CommandName>
+				<ExtendedTooltip name="FillByDepartmentExtendedTooltip" id="68"/>
 			</Button>
 			<ButtonGroup name="ImportantCommandsGroup" id="151">
 				<Title>
@@ -233,11 +233,11 @@
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
-						<UsualGroup name="GroupCounterpartyDivision" id="123">
+						<UsualGroup name="GroupCounterpartyDepartment" id="123">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Group company division</v8:content>
+									<v8:content>Group company department</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -247,7 +247,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Group company division</v8:content>
+									<v8:content>Group company department</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -257,7 +257,7 @@
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="GroupCounterpartyDivisionExtendedTooltip" id="124"/>
+							<ExtendedTooltip name="GroupCounterpartyDepartmentExtendedTooltip" id="124"/>
 							<ChildItems>
 								<InputField name="Company" id="125">
 									<DataPath>Object.Company</DataPath>
@@ -277,11 +277,11 @@
 									<InputHint>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Division</v8:content>
+											<v8:content>Department</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>разделение</v8:content>
+											<v8:content>Подразделение</v8:content>
 										</v8:item>
 									</InputHint>
 									<ContextMenu name="StructuralUnitContextMenu" id="129"/>
@@ -1007,11 +1007,11 @@
 			<Action>FillByBalance</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="FillByDivision" id="4">
+		<Command name="FillByDepartment" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Fill by division</v8:content>
+					<v8:content>Fill by department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1021,14 +1021,14 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Fill by division</v8:content>
+					<v8:content>Fill by department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Заполнить по подразделению</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>FillByDivision</Action>
+			<Action>FillByDepartment</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>

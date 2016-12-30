@@ -26,11 +26,11 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 	
 	FilterEmployee			= Settings.Get("FilterEmployee");
 	FilterCompany 		= Settings.Get("FilterCompany");
-	FilterDivision 		= Settings.Get("FilterDivision");
+	FilterDepartment 		= Settings.Get("FilterDepartment");
 	
 	SmallBusinessClientServer.SetListFilterItem(List, "Employees.Employee", FilterEmployee, ValueIsFilled(FilterEmployee));
 	SmallBusinessClientServer.SetListFilterItem(List, "Company", FilterCompany, ValueIsFilled(FilterCompany));
-	SmallBusinessClientServer.SetListFilterItem(List, "Employees.StructuralUnit", FilterDivision, ValueIsFilled(FilterDivision));
+	SmallBusinessClientServer.SetListFilterItem(List, "Employees.StructuralUnit", FilterDepartment, ValueIsFilled(FilterDepartment));
 	
 EndProcedure // OnLoadDataFromSettingsAtServer()
 
@@ -60,18 +60,18 @@ Procedure FilterCompanyOnChange(Item)
 	
 EndProcedure // FilterCompanyOnChange()
 
-// Procedure - event handler OnChange input field FilterDivision
+// Procedure - event handler OnChange input field FilterDepartment
 // IN procedure the situation is defined, when on change its
 // date document is in another document numbering period, and in
 // this case appropriates for document new unique number.
 // Overrides the corresponding form parameter.
 //
 &AtClient
-Procedure FilterDivisionOnChange(Item)
+Procedure FilterDepartmentOnChange(Item)
 	
-	SmallBusinessClientServer.SetListFilterItem(List, "Employees.StructuralUnit", FilterDivision, ValueIsFilled(FilterDivision));
+	SmallBusinessClientServer.SetListFilterItem(List, "Employees.StructuralUnit", FilterDepartment, ValueIsFilled(FilterDepartment));
 	
-EndProcedure // FilterDivisionOnChange()
+EndProcedure // FilterDepartmentOnChange()
 
 #EndRegion
 

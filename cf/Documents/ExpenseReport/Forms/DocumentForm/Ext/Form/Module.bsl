@@ -554,14 +554,14 @@ Function GetDataProductsAndServicesOnChange(StructureData)
 		StructureData.Insert("VATRate", StructureData.Company.DefaultVATRate);
 	EndIf;
 	
-	StructureData.Insert("ClearOrderAndDivision", False);
+	StructureData.Insert("ClearOrderAndDepartment", False);
 	StructureData.Insert("ClearBusinessActivity", False);
 	
 	If StructureData.ProductsAndServices.ExpensesGLAccount.TypeOfAccount <> Enums.GLAccountsTypes.Expenses
 	   AND StructureData.ProductsAndServices.ExpensesGLAccount.TypeOfAccount <> Enums.GLAccountsTypes.Incomings
 	   AND StructureData.ProductsAndServices.ExpensesGLAccount.TypeOfAccount <> Enums.GLAccountsTypes.UnfinishedProduction
 	   AND StructureData.ProductsAndServices.ExpensesGLAccount.TypeOfAccount <> Enums.GLAccountsTypes.IndirectExpenses Then
-		StructureData.ClearOrderAndDivision = True;
+		StructureData.ClearOrderAndDepartment = True;
 	EndIf;
 	
 	If StructureData.ProductsAndServices.ExpensesGLAccount.TypeOfAccount <> Enums.GLAccountsTypes.Expenses
@@ -678,16 +678,16 @@ Function GetDataStructuralUnitStartChoice(ProductsAndServices)
 	
 	StructureData = New Structure;
 	
-	AbilityToSpecifyDivisions = True;
+	AbilityToSpecifyDepartments = True;
 	
 	If ProductsAndServices.ExpensesGLAccount.TypeOfAccount <> Enums.GLAccountsTypes.Expenses
 	   AND ProductsAndServices.ExpensesGLAccount.TypeOfAccount <> Enums.GLAccountsTypes.Incomings
 	   AND ProductsAndServices.ExpensesGLAccount.TypeOfAccount <> Enums.GLAccountsTypes.UnfinishedProduction
 	   AND ProductsAndServices.ExpensesGLAccount.TypeOfAccount <> Enums.GLAccountsTypes.IndirectExpenses Then
-		AbilityToSpecifyDivisions = False;
+		AbilityToSpecifyDepartments = False;
 	EndIf;
 	
-	StructureData.Insert("AbilityToSpecifyDivisions", AbilityToSpecifyDivisions);
+	StructureData.Insert("AbilityToSpecifyDepartments", AbilityToSpecifyDepartments);
 	
 	Return StructureData;
 	
@@ -957,7 +957,7 @@ Procedure GetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName,
 		
 		If TabularSectionName = "Expenses" Then
 			
-			NewRow.StructuralUnit = MainDivision;
+			NewRow.StructuralUnit = MainDepartment;
 			
 		EndIf;
 		
@@ -1149,8 +1149,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainWarehouse");
 	MainWarehouse = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainWarehouse);
 	
-	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-	MainDivision = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+	MainDepartment = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 	
 	SpentTotalAmount = Object.Inventory.Total("Total") + Object.Expenses.Total("Total") + Object.Payments.Total("PaymentAmount");
 	
@@ -1594,7 +1594,7 @@ Procedure ExpensesOnStartEdit(Item, NewRow, Copy)
 	
 	If NewRow Then
 		TabularSectionRow = Items.Expenses.CurrentData;
-		TabularSectionRow.StructuralUnit = MainDivision;
+		TabularSectionRow.StructuralUnit = MainDepartment;
 	EndIf;	
 	
 EndProcedure // ExpensesOnStartEdit()
@@ -1618,7 +1618,7 @@ Procedure ExpensesProductsAndServicesOnChange(Item)
 	TabularSectionRow.VATRate = StructureData.VATRate;
 	TabularSectionRow.Content = "";
 	
-	If StructureData.ClearOrderAndDivision Then
+	If StructureData.ClearOrderAndDepartment Then
 		TabularSectionRow.StructuralUnit = Undefined;
 		TabularSectionRow.CustomerOrder = Undefined;
 	EndIf;
@@ -1781,8 +1781,8 @@ Procedure ExpensesStructuralUnitStartChoice(Item, ChoiceData, StandardProcessing
 	
 	StructureData = GetDataStructuralUnitStartChoice(TabularSectionRow.ProductsAndServices);
 	
-	If Not StructureData.AbilityToSpecifyDivisions Then
-		ShowMessageBox(, NStr("en='The division is not specified for this type of expense!';ru='Для этого расхода подразделение не указывается!'"));
+	If Not StructureData.AbilityToSpecifyDepartments Then
+		ShowMessageBox(, NStr("en='The department is not specified for this type of expense!';ru='Для этого расхода подразделение не указывается!'"));
 		StandardProcessing = False;
 	EndIf;
 	

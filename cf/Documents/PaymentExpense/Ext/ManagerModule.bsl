@@ -725,7 +725,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPaymentExpense, StructureAdd
 	|	&Company AS Company,
 	|	CASE
 	|		WHEN DocumentTable.Correspondence.TypeOfAccount = VALUE(Enum.GLAccountsTypes.Expenses)
-	|			THEN DocumentTable.Division
+	|			THEN DocumentTable.Department
 	|		ELSE UNDEFINED
 	|	END AS StructuralUnit,
 	|	CASE

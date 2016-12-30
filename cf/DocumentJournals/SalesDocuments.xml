@@ -396,23 +396,23 @@
 			</Column>
 			<Column uuid="94e4b6a3-eefb-466f-9244-bcbed82a0382">
 				<Properties>
-					<Name>Division</Name>
+					<Name>Department</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Division</v8:content>
+							<v8:content>Department</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>разделение</v8:content>
+							<v8:content>Подразделение</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Indexing>DontIndex</Indexing>
 					<References>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Division</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.Division</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.Division</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Department</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.Department</xr:Item>
+						<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.Department</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.SalesStructuralUnit</xr:Item>
 					</References>
 				</Properties>

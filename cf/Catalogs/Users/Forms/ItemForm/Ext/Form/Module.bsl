@@ -977,7 +977,7 @@ Procedure DefineActionsInForm()
 		If AccessLevel.ListManagement Then
 			// Responsible for the list of users and user groups.
 			// (in charge of the orders on hiring,
-			//  transferring, reappointment, creation of departments, divisions and work groups).
+			//  transferring, reappointment, creation of departments, departments and work groups).
 			ActionsInForm.InfobaseUserProperties = "Edit";
 			ActionsInForm.ContactInformation   = "Edit";
 			ActionsInForm.ItemProperties       = "Edit";

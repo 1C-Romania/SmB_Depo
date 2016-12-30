@@ -27,12 +27,12 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 	
 	FilterEmployee			= Settings.Get("FilterEmployee");
 	FilterCompany 		= Settings.Get("FilterCompany");
-	FilterDivision 		= Settings.Get("FilterDivision");
+	FilterDepartment 		= Settings.Get("FilterDepartment");
 	FilterRegistrationPeriod 	= Settings.Get("FilterRegistrationPeriod"); 
 	
 	SmallBusinessClientServer.SetListFilterItem(List, "AccrualsDeductions.Employee", FilterEmployee, ValueIsFilled(FilterEmployee));
 	SmallBusinessClientServer.SetListFilterItem(List, "Company", FilterCompany, ValueIsFilled(FilterCompany));
-	SmallBusinessClientServer.SetListFilterItem(List, "StructuralUnit", FilterDivision, ValueIsFilled(FilterDivision));
+	SmallBusinessClientServer.SetListFilterItem(List, "StructuralUnit", FilterDepartment, ValueIsFilled(FilterDepartment));
 	SmallBusinessClientServer.SetListFilterItem(List, "RegistrationPeriod", FilterRegistrationPeriod, ValueIsFilled(FilterRegistrationPeriod));
 	
 	RegistrationPeriodPresentation = Format(FilterRegistrationPeriod, "DF='MMMM yyyy'");
@@ -76,14 +76,14 @@ Procedure FilterCompanyOnChange(Item)
 EndProcedure
 
 &AtClient
-// Procedure - event handler OnChange input field FilterDivision.
+// Procedure - event handler OnChange input field FilterDepartment.
 // The procedure determines the situation when after changing the date
 // of a document this document is found in another period
 // of documents enumeration, and in this case the procedure assigns new unique number to the document.
 // Overrides the corresponding form parameter.
 //
-Procedure FilterDivisionOnChange(Item)
-	SmallBusinessClientServer.SetListFilterItem(List, "StructuralUnit", FilterDivision, ValueIsFilled(FilterDivision));
+Procedure FilterDepartmentOnChange(Item)
+	SmallBusinessClientServer.SetListFilterItem(List, "StructuralUnit", FilterDepartment, ValueIsFilled(FilterDepartment));
 EndProcedure
 
 &AtClient

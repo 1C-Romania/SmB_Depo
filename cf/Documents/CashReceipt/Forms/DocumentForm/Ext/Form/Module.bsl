@@ -948,7 +948,7 @@ EndFunction
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURES AND FUNCTIONS FOR CONTROL OF THE FORM APPEARANCE
 
-// The procedure sets the main division and the availability of "PrintReceipt" button.
+// The procedure sets the main department and the availability of "PrintReceipt" button.
 //
 &AtServer
 Procedure OperationKindOnChangeAtServer()
@@ -971,15 +971,15 @@ Procedure OperationKindOnChangeAtServer()
 	If OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.RetailIncomeAccrualAccounting")
 	 OR Not ValueIsFilled(OperationKind) Then
 		User = Users.CurrentUser();
-		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-		Object.Division = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+		Object.Department = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 	EndIf;
 	
 	FillVATRateByCompanyVATTaxation();
 	SetVisibleOfItemsDependsOnOperationKind();
 	SetCFItemWhenChangingTheTypeOfOperations();
 	
-EndProcedure // SetMainDivisionAndEnableReceiptPrint()
+EndProcedure // SetMainDepartmentAndEnableReceiptPrint()
 
 // Procedure sets the current page depending on the operation kind.
 //
@@ -1007,7 +1007,7 @@ Procedure ClearAttributesNotRelatedToOperation()
 		Object.Correspondence = Undefined;
 		Object.AdvanceHolder = Undefined;
 		Object.Document = Undefined;
-		Object.Division = Undefined;
+		Object.Department = Undefined;
 		Object.BusinessActivity = Undefined;
 		Object.CashCR = Undefined;
 		Object.StructuralUnit = Undefined;
@@ -1024,7 +1024,7 @@ Procedure ClearAttributesNotRelatedToOperation()
 		Object.Counterparty = Undefined;
 		Object.CashCR = Undefined;
 		Object.StructuralUnit = Undefined;
-		Object.Division = Undefined;
+		Object.Department = Undefined;
 		Object.BusinessActivity = Undefined;
 		Object.AccountingAmount = 0;
 		Object.ExchangeRate = 0;
@@ -1043,7 +1043,7 @@ Procedure ClearAttributesNotRelatedToOperation()
 		Object.AdvanceHolder = Undefined;
 		Object.Document = Undefined;
 		Object.StructuralUnit = Undefined;
-		Object.Division = Undefined;
+		Object.Department = Undefined;
 		Object.BusinessActivity = Undefined;
 		Object.AccountingAmount = 0;
 		Object.ExchangeRate = 0;
@@ -1079,7 +1079,7 @@ Procedure ClearAttributesNotRelatedToOperation()
 		Object.Document = Undefined;
 		Object.CashCR = Undefined;
 		Object.StructuralUnit = Undefined;
-		Object.Division = Undefined;
+		Object.Department = Undefined;
 		Object.BusinessActivity = Undefined;
 		Object.AccountingAmount = 0;
 		Object.ExchangeRate = 0;
@@ -1099,7 +1099,7 @@ Procedure ClearAttributesNotRelatedToOperation()
 		Object.Document = Undefined;
 		Object.CashCR = Undefined;
 		Object.StructuralUnit = Undefined;
-		Object.Division = Undefined;
+		Object.Department = Undefined;
 		Object.BusinessActivity = Undefined;
 		Object.ExchangeRate = ?(ValueIsFilled(ExchangeRate),
 			ExchangeRate,

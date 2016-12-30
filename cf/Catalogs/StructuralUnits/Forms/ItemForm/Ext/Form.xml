@@ -57,282 +57,234 @@
 		<InputField name="Description" id="3">
 			<DataPath>Object.Description</DataPath>
 			<EditMode>EnterOnInput</EditMode>
-			<Width>1</Width>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>30</MaxWidth>
 			<Wrap>false</Wrap>
 			<ContextMenu name="DescriptionContextMenu" id="4"/>
 			<ExtendedTooltip name="DescriptionExtendedTooltip" id="30"/>
 		</InputField>
-		<Pages name="Pages" id="40">
+		<UsualGroup name="Type" id="10">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Pages</v8:content>
+					<v8:content>Type</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Странницы</v8:content>
+					<v8:content>Тип</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Pages</v8:content>
+					<v8:content>Type</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Странницы</v8:content>
+					<v8:content>Тип</v8:content>
 				</v8:item>
 			</ToolTip>
-			<VerticalStretch>true</VerticalStretch>
-			<ExtendedTooltip name="PagesExtendedTooltip" id="41"/>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="TypeExtendedTooltip" id="31"/>
 			<ChildItems>
-				<Page name="GeneralInformationPage" id="42">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>General information</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Общая информация</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>General information page</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница общая информация</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="GeneralInformationPageExtendedTooltip" id="43"/>
-					<ChildItems>
-						<UsualGroup name="Type" id="10">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Type</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Тип</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Type</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Тип</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="TypeExtendedTooltip" id="31"/>
-							<ChildItems>
-								<InputField name="StructuralUnitType" id="7">
-									<DataPath>Object.StructuralUnitType</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Wrap>false</Wrap>
-									<ListChoiceMode>true</ListChoiceMode>
-									<ChooseType>false</ChooseType>
-									<ChoiceListButton>false</ChoiceListButton>
-									<ContextMenu name="TypeOfStructuralUnitContextMenu" id="8"/>
-									<ExtendedTooltip name="TypeOfStructuralUnitExtendedTooltip" id="32"/>
-									<Events>
-										<Event name="OnChange">StructuralUnitTypeOnChange</Event>
-									</Events>
-								</InputField>
-								<CheckBoxField name="OrderWarehouse" id="11">
-									<DataPath>Object.OrderWarehouse</DataPath>
-									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="OrderWarehouseContextMenu" id="12"/>
-									<ExtendedTooltip name="OrderWarehouseExtendedTooltip" id="33"/>
-									<Events>
-										<Event name="OnChange">OrderWarehouseOnChange</Event>
-									</Events>
-								</CheckBoxField>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="ParentCode" id="9">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Parent code</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Родитель код</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Parent code</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Родитель код</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ParentCodeExtendedTooltip" id="27"/>
-							<ChildItems>
-								<InputField name="Parent" id="5">
-									<DataPath>Object.Parent</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Wrap>false</Wrap>
-									<ContextMenu name="ParentContextMenu" id="6"/>
-									<ExtendedTooltip name="ParentExtendedTooltip" id="28"/>
-								</InputField>
-								<InputField name="Code" id="1">
-									<DataPath>Object.Code</DataPath>
-									<UserVisible>
-										<xr:Common>false</xr:Common>
-									</UserVisible>
-									<EditMode>EnterOnInput</EditMode>
-									<Wrap>false</Wrap>
-									<ContextMenu name="CodeContextMenu" id="2"/>
-									<ExtendedTooltip name="CodeExtendedTooltip" id="29"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<InputField name="Company" id="13">
-							<DataPath>Object.Company</DataPath>
-							<Wrap>false</Wrap>
-							<ContextMenu name="CounterpartyContextMenu" id="14"/>
-							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="34"/>
-						</InputField>
-						<InputField name="RetailPriceKind" id="17">
-							<DataPath>Object.RetailPriceKind</DataPath>
-							<ContextMenu name="RetailPriceTypeContextMenu" id="18"/>
-							<ExtendedTooltip name="RetailPriceTypeExtendedTooltip" id="35"/>
-							<Events>
-								<Event name="OnChange">RetailPriceKindOnChange</Event>
-							</Events>
-						</InputField>
-						<InputField name="FRP" id="15">
-							<DataPath>Object.FRP</DataPath>
-							<ContextMenu name="ICContextMenu" id="16"/>
-							<ExtendedTooltip name="ICExtendedTooltip" id="36"/>
-						</InputField>
-						<UsualGroup name="Automatic transfer" id="48">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Automatic transfer</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Автоперемещение</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Automatic transfer</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Автоперемещение</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Vertical</Group>
-							<Representation>NormalSeparation</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="AutomaticTransferExtendedTooltip" id="49"/>
-							<ChildItems>
-								<Button name="AutoTransferInventory" id="56">
-									<Type>Hyperlink</Type>
-									<CommandName>Form.Command.AutoTransferInventory</CommandName>
-									<ExtendedTooltip name="AutomaticInventoryTransferExtendedTooltip" id="57"/>
-								</Button>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="AdditionalAttributesPage" id="25">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Additional attributes</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Дополнительные реквизиты объекта</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Additional attributes</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Дополнительные реквизиты объекта</v8:content>
-								</v8:item>
-							</ToolTip>
-							<HorizontalStretch>true</HorizontalStretch>
-							<Group>Vertical</Group>
-							<Representation>NormalSeparation</Representation>
-							<ExtendedTooltip name="AdditionalAttributesPageExtendedTooltip" id="38"/>
-						</UsualGroup>
-					</ChildItems>
-				</Page>
-				<Page name="AdvancedPage" id="46">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Additionally</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Дополнительно</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Advanced page</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница дополнительно</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="AdvancedPageExtendedTooltip" id="47"/>
-				</Page>
-				<Page name="PageContactInformation" id="44">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Addresses</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Адреса</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Contact information page</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница контактная информация</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="ContactInformationPageExtendedTooltip" id="45"/>
-				</Page>
+				<InputField name="StructuralUnitType" id="7">
+					<DataPath>Object.StructuralUnitType</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>30</MaxWidth>
+					<Wrap>false</Wrap>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChooseType>false</ChooseType>
+					<ChoiceListButton>false</ChoiceListButton>
+					<ContextMenu name="TypeOfStructuralUnitContextMenu" id="8"/>
+					<ExtendedTooltip name="TypeOfStructuralUnitExtendedTooltip" id="32"/>
+					<Events>
+						<Event name="OnChange">StructuralUnitTypeOnChange</Event>
+					</Events>
+				</InputField>
+				<CheckBoxField name="OrderWarehouse" id="11">
+					<DataPath>Object.OrderWarehouse</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="OrderWarehouseContextMenu" id="12"/>
+					<ExtendedTooltip name="OrderWarehouseExtendedTooltip" id="33"/>
+					<Events>
+						<Event name="OnChange">OrderWarehouseOnChange</Event>
+					</Events>
+				</CheckBoxField>
 			</ChildItems>
-		</Pages>
+		</UsualGroup>
+		<UsualGroup name="ParentCode" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parent code</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Родитель код</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parent code</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Родитель код</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ParentCodeExtendedTooltip" id="27"/>
+			<ChildItems>
+				<InputField name="Parent" id="5">
+					<DataPath>Object.Parent</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>30</MaxWidth>
+					<Wrap>false</Wrap>
+					<ContextMenu name="ParentContextMenu" id="6"/>
+					<ExtendedTooltip name="ParentExtendedTooltip" id="28"/>
+				</InputField>
+				<InputField name="Code" id="1">
+					<DataPath>Object.Code</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<EditMode>EnterOnInput</EditMode>
+					<Wrap>false</Wrap>
+					<ContextMenu name="CodeContextMenu" id="2"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="29"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Company" id="13">
+			<DataPath>Object.Company</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>30</MaxWidth>
+			<Wrap>false</Wrap>
+			<ContextMenu name="CounterpartyContextMenu" id="14"/>
+			<ExtendedTooltip name="CounterpartyExtendedTooltip" id="34"/>
+		</InputField>
+		<InputField name="RetailPriceKind" id="17">
+			<DataPath>Object.RetailPriceKind</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>30</MaxWidth>
+			<ContextMenu name="RetailPriceTypeContextMenu" id="18"/>
+			<ExtendedTooltip name="RetailPriceTypeExtendedTooltip" id="35"/>
+			<Events>
+				<Event name="OnChange">RetailPriceKindOnChange</Event>
+			</Events>
+		</InputField>
+		<InputField name="FRP" id="15">
+			<DataPath>Object.FRP</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MaxWidth>30</MaxWidth>
+			<ContextMenu name="ICContextMenu" id="16"/>
+			<ExtendedTooltip name="ICExtendedTooltip" id="36"/>
+		</InputField>
+		<UsualGroup name="PageContactInformation" id="44">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Addresses, phones</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адреса, телефоны</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Contact information</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контактная информация</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<CollapsedRepresentationTitle>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Addresses, phones</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адреса, телефоны</v8:content>
+				</v8:item>
+			</CollapsedRepresentationTitle>
+			<ControlRepresentation>Picture</ControlRepresentation>
+			<Representation>None</Representation>
+			<ShowLeftMargin>false</ShowLeftMargin>
+			<ExtendedTooltip name="ContactInformationPageExtendedTooltip" id="45"/>
+		</UsualGroup>
+		<UsualGroup name="Automatic transfer" id="48">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Automatic transfer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Автоперемещение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Automatic transfer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Автоперемещение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="AutomaticTransferExtendedTooltip" id="49"/>
+			<ChildItems>
+				<Button name="AutoTransferInventory" id="56">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.AutoTransferInventory</CommandName>
+					<ExtendedTooltip name="AutomaticInventoryTransferExtendedTooltip" id="57"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="AdditionalAttributesPage" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional attributes</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные реквизиты</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional attributes</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные реквизиты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="AdditionalAttributesPageExtendedTooltip" id="38"/>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Object" id="1">
@@ -413,7 +365,7 @@
 			<Action>InventoryAutotransferClick</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.AccountingByCells</Item>
-				<Item>FunctionalOption.AccountingBySeveralDivisions</Item>
+				<Item>FunctionalOption.AccountingBySeveralDepartments</Item>
 				<Item>FunctionalOption.AccountingBySeveralWarehouses</Item>
 			</FunctionalOptions>
 		</Command>

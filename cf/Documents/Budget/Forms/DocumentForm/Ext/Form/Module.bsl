@@ -167,8 +167,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	User = Users.CurrentUser();
 	
-	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-	MainDivision = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+	MainDepartment = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 	
 	SmallBusinessClientServer.SetPictureForComment(Items.AdvancedPage, Object.Comment);
 	
@@ -352,7 +352,7 @@ Procedure IncomeAccountOnChange(Item)
 	If StructureData.AccountTypeOther Then
 		TabularSectionRow.StructuralUnit = Undefined;
 	ElsIf Not ValueIsFilled(TabularSectionRow.StructuralUnit) Then
-		TabularSectionRow.StructuralUnit = MainDivision;
+		TabularSectionRow.StructuralUnit = MainDepartment;
 	EndIf;
 			
 EndProcedure // IncomingsAccountOnChange()
@@ -389,7 +389,7 @@ Procedure ExpensesGLAccountOnChange(Item)
 	If StructureData.AccountTypeOther Then
 		TabularSectionRow.StructuralUnit = Undefined;
 	ElsIf Not ValueIsFilled(TabularSectionRow.StructuralUnit) Then
-		TabularSectionRow.StructuralUnit = MainDivision;
+		TabularSectionRow.StructuralUnit = MainDepartment;
 	EndIf;
 	
 EndProcedure // ExpensesGLAccountOnChange()

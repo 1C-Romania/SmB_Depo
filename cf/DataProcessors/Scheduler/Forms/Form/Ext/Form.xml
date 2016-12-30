@@ -1141,13 +1141,13 @@
 													<ContextMenu name="ListCloseContextMenu" id="201"/>
 													<ExtendedTooltip name="ListClosedExtendedTooltip" id="394"/>
 												</CheckBoxField>
-												<LabelField name="ListDivision" id="182">
-													<DataPath>List.Division</DataPath>
+												<LabelField name="ListDepartment" id="182">
+													<DataPath>List.Department</DataPath>
 													<UserVisible>
 														<xr:Common>false</xr:Common>
 													</UserVisible>
-													<ContextMenu name="UnitListContextMenu" id="183"/>
-													<ExtendedTooltip name="ListDivisionExtendedTooltip" id="407"/>
+													<ContextMenu name="ListDepartmentContextMenu" id="183"/>
+													<ExtendedTooltip name="ListDepartmentExtendedTooltip" id="407"/>
 												</LabelField>
 												<LabelField name="ListResponsible" id="180">
 													<DataPath>List.Responsible</DataPath>
@@ -2615,7 +2615,7 @@
 			THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder
 		ELSE DocumentJournalResourcesPlanningDocuments.Ref
 	END AS CustomerOrder,
-	DocumentJournalResourcesPlanningDocuments.Division,
+	DocumentJournalResourcesPlanningDocuments.Department,
 	DocumentJournalResourcesPlanningDocuments.Responsible,
 	DocumentJournalResourcesPlanningDocuments.Author,
 	DocumentJournalResourcesPlanningDocuments.Type,

@@ -1,17 +1,28 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Warehouses, departments</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Склады, подразделения</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="FormCommandBar" id="-1">
 		<ChildItems>
-			<Button name="CommandSetMainDivision" id="18">
+			<Button name="FormUseAsMainDepartment" id="18">
 				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.CommandSetMainDivision</CommandName>
-				<ExtendedTooltip name="CommandSetMainDivisionExtendedTooltip" id="20"/>
+				<CommandName>Form.Command.UseAsMainDepartment</CommandName>
+				<ExtendedTooltip name="FormUseAsMainDepartmentExtendedTooltip" id="20"/>
 			</Button>
-			<Button name="CommandSetMainWarehouse" id="19">
+			<Button name="FormUseAsMainWarehouse" id="19">
 				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.CommandSetMainWarehouse</CommandName>
-				<ExtendedTooltip name="CommandSetMainWarehouseExtendedTooltip" id="21"/>
+				<CommandName>Form.Command.UseAsMainWarehouse</CommandName>
+				<ExtendedTooltip name="FormUseAsMainWarehouseExtendedTooltip" id="21"/>
 			</Button>
 			<ButtonGroup name="GroupGlobalCommands" id="43">
 				<Title>
@@ -123,7 +134,26 @@
 				<ContextMenu name="ListSearchControlContextMenu" id="37"/>
 				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="38"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">ListOnActivateRow</Event>
+			</Events>
 			<ChildItems>
+				<PictureField name="IsMain" id="49">
+					<DataPath>List.IsMain</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.CompletelyCorrected16</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<Width>2</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.CompletelyCorrected16</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="IsMainContextMenu" id="50"/>
+					<ExtendedTooltip name="IsMainExtendedTooltip" id="51"/>
+				</PictureField>
 				<LabelField name="Description" id="4">
 					<DataPath>List.Description</DataPath>
 					<DefaultItem>true</DefaultItem>
@@ -152,11 +182,11 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>order.</v8:content>
+							<v8:content>Order.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>наряд.</v8:content>
+							<v8:content>Ордер.</v8:content>
 						</v8:item>
 					</Title>
 					<CheckBoxType>Auto</CheckBoxType>
@@ -188,7 +218,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>код</v8:content>
+							<v8:content>Код</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CodeContextMenu" id="7"/>
@@ -212,11 +242,50 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
+				<Field>List.StructuralUnitType</Field>
 				<Field>List.Ref</Field>
+				<Field>List.IsMain</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	CatalogStructuralUnits.Ref,
+	CatalogStructuralUnits.DeletionMark,
+	CatalogStructuralUnits.Parent,
+	CatalogStructuralUnits.Code,
+	CatalogStructuralUnits.Description,
+	CatalogStructuralUnits.StructuralUnitType,
+	CatalogStructuralUnits.OrderWarehouse,
+	CatalogStructuralUnits.Company,
+	CatalogStructuralUnits.FRP,
+	CatalogStructuralUnits.RetailPriceKind,
+	CatalogStructuralUnits.GLAccountInRetail,
+	CatalogStructuralUnits.MarkupGLAccount,
+	CatalogStructuralUnits.TransferSource,
+	CatalogStructuralUnits.TransferSourceCell,
+	CatalogStructuralUnits.TransferRecipient,
+	CatalogStructuralUnits.TransferRecipientCell,
+	CatalogStructuralUnits.RecipientOfWastes,
+	CatalogStructuralUnits.DisposalsRecipientCell,
+	CatalogStructuralUnits.WriteOffToExpensesSource,
+	CatalogStructuralUnits.WriteOffToExpensesSourceCell,
+	CatalogStructuralUnits.WriteOffToExpensesRecipient,
+	CatalogStructuralUnits.WriteOffToExpensesRecipientCell,
+	CatalogStructuralUnits.PassToOperationSource,
+	CatalogStructuralUnits.PassToOperationSourceCell,
+	CatalogStructuralUnits.PassToOperationRecipient,
+	CatalogStructuralUnits.PassToOperationRecipientCell,
+	CatalogStructuralUnits.ReturnFromOperationSource,
+	CatalogStructuralUnits.ReturnFromOperationSourceCell,
+	CatalogStructuralUnits.ReturnFromOperationRecipient,
+	CatalogStructuralUnits.ReturnFromOperationRecipientCell,
+	CatalogStructuralUnits.AdditionalAttributes,
+	CatalogStructuralUnits.ContactInformation,
+	CatalogStructuralUnits.Predefined,
+	CatalogStructuralUnits.Ref IN (&amp;MainStructuralUnits) AS IsMain
+FROM
+	Catalog.StructuralUnits AS CatalogStructuralUnits</QueryText>
 				<MainTable>Catalog.StructuralUnits</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -240,7 +309,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Hierarchy of types</v8:content>
+					<v8:content>Type hierarchy</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -251,54 +320,92 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="MainDepartment" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main department</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основное подразделение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="MainWarehouse" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Main warehouse</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основной склад</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="CommandSetMainDivision" id="2">
+		<Command name="UseAsMainDepartment" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Set main division</v8:content>
+					<v8:content>Use as main department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить основное подразделение</v8:content>
+					<v8:content>Использовать как основное подразделение</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Selected item will be populated to the user's documents by default</v8:content>
+					<v8:content>Main department will be set in new documents by default</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Выбранный элемент будет по умолчанию подставляться в документы пользователя</v8:content>
+					<v8:content>Основное подразделение будет по умолчанию подставляться в новые документы</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>CommandSetMainDivision</Action>
+			<Picture>
+				<xr:Ref>CommonPicture.CompletelyCorrected16</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UseAsMainDepartment</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
-		<Command name="CommandSetMainWarehouse" id="3">
+		<Command name="UseAsMainWarehouse" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Set main warehouse</v8:content>
+					<v8:content>Use as main warehouse</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить основной склад</v8:content>
+					<v8:content>Использовать как основной склад</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Selected item will be populated to the user's documents by default</v8:content>
+					<v8:content>Main warehouse will be set in new documents by default</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Выбранный элемент будет по умолчанию подставляться в документы пользователя</v8:content>
+					<v8:content>Основной склад будет по умолчанию подставляться в новые документы</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>CommandSetMainWarehouse</Action>
+			<Picture>
+				<xr:Ref>CommonPicture.CompletelyCorrected16</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>UseAsMainWarehouse</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
 	</Commands>

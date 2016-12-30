@@ -50,7 +50,7 @@
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Use these settings to customize accounting by companies, divisions, business activities, and enterprise resources.</v8:content>
+							<v8:content>Use these settings to customize accounting by companies, departments, business activities, and enterprise resources.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -217,7 +217,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Divisions</v8:content>
+					<v8:content>Departments</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -228,7 +228,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Divisions</v8:content>
+					<v8:content>Departments</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -242,12 +242,12 @@
 			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ExtendedTooltip name="SettingsOfSubdivisionsExtendedTooltip" id="158"/>
 			<ChildItems>
-				<CheckBoxField name="FunctionalOptionAccountingByMultipleDivisions" id="28">
-					<DataPath>ConstantsSet.FunctionalOptionAccountingByMultipleDivisions</DataPath>
+				<CheckBoxField name="FunctionalOptionAccountingByMultipleDepartments" id="28">
+					<DataPath>ConstantsSet.FunctionalOptionAccountingByMultipleDepartments</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Accounting by divisions </v8:content>
+							<v8:content>Accounting by departments </v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -257,12 +257,12 @@
 					<TitleLocation>Right</TitleLocation>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="FunctionalOptionAccountingByMultipleDivisionsContextMenu" id="29"/>
-					<ExtendedTooltip name="FunctionalOptionAccountingByMultipleDivisionsExtendedTooltip" id="160">
+					<ContextMenu name="FunctionalOptionAccountingByMultipleDepartmentsContextMenu" id="29"/>
+					<ExtendedTooltip name="FunctionalOptionAccountingByMultipleDepartmentsExtendedTooltip" id="160">
 						<Title formatted="false">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Enable this option to keep accounts of several divisions in the application. If you enable this option, you can specify divisions in documents.</v8:content>
+								<v8:content>Enable this option to keep accounts of several departments in the application. If you enable this option, you can specify departments in documents.</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -271,13 +271,13 @@
 						</Title>
 					</ExtendedTooltip>
 					<Events>
-						<Event name="OnChange">FunctionalOptionAccountingByMultipleDivisionsOnChange</Event>
+						<Event name="OnChange">FunctionalOptionAccountingByMultipleDepartmentsOnChange</Event>
 					</Events>
 				</CheckBoxField>
-				<Button name="CatalogStructuralUnitsDivision" id="33">
+				<Button name="CatalogStructuralUnitsDepartment" id="33">
 					<Type>Hyperlink</Type>
 					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.CatalogStructuralUnitsDivision</CommandName>
+					<CommandName>Form.Command.CatalogStructuralUnitsDepartment</CommandName>
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -289,11 +289,11 @@
 						</v8:item>
 					</Title>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<ExtendedTooltip name="CatalogStructuralUnitsDivisionExtendedTooltip" id="163">
+					<ExtendedTooltip name="CatalogStructuralUnitsDepartmentExtendedTooltip" id="163">
 						<Title formatted="false">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Go to the main division card or if the "Accounting by divisions" setting is enabled, go to the structural units catalog with the set filter by divisions.</v8:content>
+								<v8:content>Go to the main department card or if the "Accounting by departments" setting is enabled, go to the structural units catalog with the set filter by departments.</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -821,7 +821,7 @@ Key parameter. You can not disable this option if there is accounting data in th
 				<Field>ConstantsSet.FunctionalOptionAccountingCashMethodIncomeAndExpenses</Field>
 				<Field>ConstantsSet.FunctionalOptionAccountingByProjects</Field>
 				<Field>ConstantsSet.FunctionalOptionAccountingByMultipleWarehouses</Field>
-				<Field>ConstantsSet.FunctionalOptionAccountingByMultipleDivisions</Field>
+				<Field>ConstantsSet.FunctionalOptionAccountingByMultipleDepartments</Field>
 				<Field>ConstantsSet.FunctionalOptionAccountingByMultipleCompanies</Field>
 				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
 				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
@@ -874,7 +874,7 @@ Key parameter. You can not disable this option if there is accounting data in th
 			</ToolTip>
 			<Action>CatalogCompanies</Action>
 		</Command>
-		<Command name="CatalogStructuralUnitsDivision" id="3">
+		<Command name="CatalogStructuralUnitsDepartment" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -888,14 +888,14 @@ Key parameter. You can not disable this option if there is accounting data in th
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Open the "Structural units (divisions)" catalog</v8:content>
+					<v8:content>Open the "Structural units (departments)" catalog</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Открыть справочник "Структурные единицы (подразделения)"</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>CatalogStructuralUnitsDivision</Action>
+			<Action>CatalogStructuralUnitsDepartment</Action>
 		</Command>
 		<Command name="CatalogBusinessActivities" id="4">
 			<Title>

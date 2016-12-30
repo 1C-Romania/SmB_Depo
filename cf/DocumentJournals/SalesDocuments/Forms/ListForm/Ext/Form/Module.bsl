@@ -29,7 +29,7 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 	Company				 		= Settings.Get("Company");
 	DocumentTypePresentation 		= Settings.Get("DocumentTypePresentation");
 	Counterparty			 			= Settings.Get("Counterparty");
-	Division		 			= Settings.Get("Division");
+	Department		 			= Settings.Get("Department");
 	Responsible		 			= Settings.Get("Responsible");
 	
 	SelectedTypeOfDocument = DocumentTypes.FindByValue(DocumentTypePresentation);
@@ -42,7 +42,7 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 	SmallBusinessClientServer.SetListFilterItem(List, "Company", Company, ValueIsFilled(Company));
 	SmallBusinessClientServer.SetListFilterItem(List, "Type", ?(ValueIsFilled(DocumentType), Type("DocumentRef." + DocumentType), Undefined), ValueIsFilled(DocumentType));
 	SmallBusinessClientServer.SetListFilterItem(List, "Counterparty", Counterparty, ValueIsFilled(Counterparty));
-	SmallBusinessClientServer.SetListFilterItem(List, "Division", Division, ValueIsFilled(Division));
+	SmallBusinessClientServer.SetListFilterItem(List, "Department", Department, ValueIsFilled(Department));
 	SmallBusinessClientServer.SetListFilterItem(List, "Responsible", Responsible, ValueIsFilled(Responsible));
 	
 EndProcedure // OnLoadDataFromSettingsAtServer()
@@ -64,11 +64,11 @@ Procedure DocumentTypeOnChange(Item)
 EndProcedure
 
 &AtClient
-// Procedure - event handler OnChange of attribute Division.
+// Procedure - event handler OnChange of attribute Department.
 // 
-Procedure DivisionOnChange(Item)
+Procedure DepartmentOnChange(Item)
 	
-	SmallBusinessClientServer.SetListFilterItem(List, "Division", Division, ValueIsFilled(Division));
+	SmallBusinessClientServer.SetListFilterItem(List, "Department", Department, ValueIsFilled(Department));
 	
 EndProcedure
 
@@ -108,7 +108,7 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 		
 		ParametersStructure = New Structure();
 		ParametersStructure.Insert("Counterparty", Counterparty);
-		ParametersStructure.Insert("Division", Division);
+		ParametersStructure.Insert("Department", Department);
 		ParametersStructure.Insert("Company", Company);
 		
 		OpenForm("Document." + DocumentType + ".ObjectForm", New Structure("FillingValues", ParametersStructure));

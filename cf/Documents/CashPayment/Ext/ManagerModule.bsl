@@ -728,7 +728,7 @@ Procedure GenerateTablePayrollPayments(DocumentRefCashPayment, StructureAddition
 	|	&Company,
 	|	DocumentTable.Date,
 	|	VALUE(AccumulationRecordType.Expense),
-	|	DocumentTable.Division,
+	|	DocumentTable.Department,
 	|	DocumentTable.AdvanceHolder,
 	|	DocumentTable.CashCurrency,
 	|	DocumentTable.RegistrationPeriod,
@@ -746,7 +746,7 @@ Procedure GenerateTablePayrollPayments(DocumentRefCashPayment, StructureAddition
 	|
 	|GROUP BY
 	|	DocumentTable.Date,
-	|	DocumentTable.Division,
+	|	DocumentTable.Department,
 	|	DocumentTable.AdvanceHolder,
 	|	DocumentTable.CashCurrency,
 	|	DocumentTable.RegistrationPeriod,
@@ -816,7 +816,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCashPayment, StructureAdditi
 	|	&Company AS Company,
 	|	CASE
 	|		WHEN DocumentTable.CorrespondenceGLAccountType = VALUE(Enum.GLAccountsTypes.Expenses)
-	|			THEN DocumentTable.Division
+	|			THEN DocumentTable.Department
 	|		ELSE UNDEFINED
 	|	END AS StructuralUnit,
 	|	CASE
@@ -2407,7 +2407,7 @@ Procedure InitializeDocumentData(DocumentRefCashPayment, StructureAdditionalProp
 	|	DocumentTable.CashCR.GLAccount AS CashCRGLAccount,
 	|	DocumentTable.TaxKind AS TaxKind,
 	|	DocumentTable.TaxKind.GLAccount AS TaxKindGLAccount,
-	|	DocumentTable.Division AS Division,
+	|	DocumentTable.Department AS Department,
 	|	DocumentTable.BusinessActivity AS BusinessActivity,
 	|	DocumentTable.BusinessActivity.GLAccountRevenueFromSales AS BusinessActivityGLAccountOfRevenueFromSales,
 	|	DocumentTable.BusinessActivity.GLAccountCostOfSales AS BusinessActivityGLAccountOfSalesCost,

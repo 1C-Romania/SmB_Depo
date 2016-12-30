@@ -551,7 +551,7 @@ Procedure GenerateTableSales(DocumentRefReportToCommissioner, StructureAdditiona
 	|	TableSales.CustomerOrder AS CustomerOrder,
 	|	TableSales.Document AS Document,
 	|	TableSales.VATRate AS VATRate,
-	|	TableSales.DivisionSales AS Division,
+	|	TableSales.DepartmentSales AS Department,
 	|	TableSales.Responsible AS Responsible,
 	|	0 AS Quantity,
 	|	0 AS Amount,
@@ -573,7 +573,7 @@ Procedure GenerateTableSales(DocumentRefReportToCommissioner, StructureAdditiona
 	|	TableSales.CustomerOrder,
 	|	TableSales.Document,
 	|	TableSales.VATRate,
-	|	TableSales.DivisionSales,
+	|	TableSales.DepartmentSales,
 	|	TableSales.Responsible";
 	
 	QueryResult = Query.Execute();
@@ -595,7 +595,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReportToCommissioner, Struct
 	|	MAX(TableIncomeAndExpenses.LineNumber) AS LineNumber,
 	|	TableIncomeAndExpenses.Period AS Period,
 	|	TableIncomeAndExpenses.Company AS Company,
-	|	TableIncomeAndExpenses.DivisionSales AS StructuralUnit,
+	|	TableIncomeAndExpenses.DepartmentSales AS StructuralUnit,
 	|	TableIncomeAndExpenses.BusinessActivitySales AS BusinessActivity,
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales AS GLAccount,
@@ -630,7 +630,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReportToCommissioner, Struct
 	|GROUP BY
 	|	TableIncomeAndExpenses.Period,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.DivisionSales,
+	|	TableIncomeAndExpenses.DepartmentSales,
 	|	TableIncomeAndExpenses.BusinessActivitySales,
 	|	TableIncomeAndExpenses.CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales
@@ -1148,7 +1148,7 @@ Procedure InitializeDocumentData(DocumentRefReportToCommissioner, StructureAddit
 	|	ReportToPrincipalInventory.Ref.Contract AS Contract,
 	|	ReportToPrincipalInventory.Ref.Contract.SettlementsCurrency AS SettlementsCurrency,
 	|	ReportToPrincipalInventory.Ref.KeepBackComissionFee AS KeepBackComissionFee,
-	|	ReportToPrincipalInventory.Ref.Division AS DivisionSales,
+	|	ReportToPrincipalInventory.Ref.Department AS DepartmentSales,
 	|	ReportToPrincipalInventory.Ref.Responsible AS Responsible,
 	|	ReportToPrincipalInventory.ProductsAndServices.BusinessActivity AS BusinessActivitySales,
 	|	ReportToPrincipalInventory.ProductsAndServices.BusinessActivity.GLAccountRevenueFromSales AS AccountStatementSales,

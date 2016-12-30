@@ -476,7 +476,7 @@ Procedure UpdateScheduleChart()
 							|Resources: " + Selection.KeyResources + "
 							|Counterparty: " + Selection.Counterparty + "
 							|Responsible: " + Selection.Responsible + "
-							|Division: " + Selection.Division + "'");
+							|Department: " + Selection.Department + "'");
 		
 		Interval.Text  = ValueText;
 		
@@ -509,7 +509,7 @@ Function GetScheduleChart()
 	|			THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder.Counterparty
 	|		ELSE DocumentJournalResourcesPlanningDocuments.Counterparty
 	|	END AS Counterparty,
-	|	DocumentJournalResourcesPlanningDocuments.Division,
+	|	DocumentJournalResourcesPlanningDocuments.Department,
 	|	DocumentJournalResourcesPlanningDocuments.Responsible
 	|FROM
 	|	DocumentJournal.ResourcesPlanningDocuments AS DocumentJournalResourcesPlanningDocuments
@@ -1834,7 +1834,7 @@ Function GetResourcesWorkImportSchedule(ResourcesList, DaysArray)
 	|SELECT ALLOWED
 	|	NestedSelect.Ref,
 	|	NestedSelect.Counterparty AS Counterparty,
-	|	NestedSelect.Division,
+	|	NestedSelect.Department,
 	|	NestedSelect.Responsible,
 	|	NestedSelect.Start AS BeginTime,
 	|	NestedSelect.Finish AS EndTime,
@@ -1851,7 +1851,7 @@ Function GetResourcesWorkImportSchedule(ResourcesList, DaysArray)
 	|			ProductionOrderEnterpriseResources.Finish AS Finish,
 	|			ProductionOrderEnterpriseResources.Ref.CustomerOrder.Counterparty AS Counterparty,
 	|			ProductionOrderEnterpriseResources.Ref.Responsible AS Responsible,
-	|			ProductionOrderEnterpriseResources.Ref.StructuralUnit AS Division
+	|			ProductionOrderEnterpriseResources.Ref.StructuralUnit AS Department
 	|		FROM
 	|			Document.ProductionOrder.EnterpriseResources AS ProductionOrderEnterpriseResources
 	|		WHERE
@@ -2244,7 +2244,7 @@ Procedure RefreshChartOfResources()
 			ValueText = NStr("en='Import: " + Selection.Import + "
 								|Counterparty: " + Selection.Counterparty + "
 								|Responsible: " + Selection.Responsible + "
-								|Division: " + Selection.Division + "'");
+								|Department: " + Selection.Department + "'");
 			
 			Interval.Text  = ValueText;
 			
@@ -2281,7 +2281,7 @@ Function GetResourcesWorkImport(ResourcesList)
 	|	NestedSelect.EnterpriseResource AS Resource,
 	|	NestedSelect.Capacity AS Import,
 	|	NestedSelect.Counterparty AS Counterparty,
-	|	NestedSelect.Division,
+	|	NestedSelect.Department,
 	|	NestedSelect.Responsible
 	|FROM
 	|	(SELECT
@@ -2297,7 +2297,7 @@ Function GetResourcesWorkImport(ResourcesList)
 	|		ProductionOrderEnterpriseResources.Finish AS Finish,
 	|		ProductionOrderEnterpriseResources.Ref.CustomerOrder.Counterparty AS Counterparty,
 	|		ProductionOrderEnterpriseResources.Ref.Responsible AS Responsible,
-	|		ProductionOrderEnterpriseResources.Ref.StructuralUnit AS Division
+	|		ProductionOrderEnterpriseResources.Ref.StructuralUnit AS Department
 	|	FROM
 	|		Document.ProductionOrder.EnterpriseResources AS ProductionOrderEnterpriseResources
 	|	WHERE

@@ -68,14 +68,14 @@
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
-				<Table name="Divisions" id="22">
+				<Table name="Departments" id="22">
 					<CommandBarLocation>None</CommandBarLocation>
 					<SkipOnInput>false</SkipOnInput>
 					<Width>38</Width>
 					<UseAlternationRowColor>true</UseAlternationRowColor>
 					<EnableStartDrag>true</EnableStartDrag>
-					<DataPath>Divisions</DataPath>
-					<RowPictureDataPath>Divisions.DefaultPicture</RowPictureDataPath>
+					<DataPath>Departments</DataPath>
+					<RowPictureDataPath>Departments.DefaultPicture</RowPictureDataPath>
 					<SearchStringLocation>None</SearchStringLocation>
 					<ViewStatusLocation>None</ViewStatusLocation>
 					<SearchControlLocation>None</SearchControlLocation>
@@ -92,56 +92,56 @@
 					<ShowRoot>false</ShowRoot>
 					<AllowRootChoice>false</AllowRootChoice>
 					<UpdateOnDataChange>Auto</UpdateOnDataChange>
-					<ContextMenu name="DivisionsContextMenu" id="23"/>
-					<AutoCommandBar name="DivisionsCommandBar" id="24">
+					<ContextMenu name="DepartmentsContextMenu" id="23"/>
+					<AutoCommandBar name="DepartmentsCommandBar" id="24">
 						<Autofill>false</Autofill>
 					</AutoCommandBar>
-					<ExtendedTooltip name="DivisionsExtendedTooltip" id="35"/>
-					<SearchStringAddition name="DivisionsSearchString" id="45">
+					<ExtendedTooltip name="DepartmentsExtendedTooltip" id="35"/>
+					<SearchStringAddition name="DepartmentsSearchString" id="45">
 						<AdditionSource>
-							<Item>Divisions</Item>
+							<Item>Departments</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="DivisionsSearchStringContextMenu" id="46"/>
-						<ExtendedTooltip name="DivisionsSearchStringExtendedTooltip" id="47"/>
+						<ContextMenu name="DepartmentsSearchStringContextMenu" id="46"/>
+						<ExtendedTooltip name="DepartmentsSearchStringExtendedTooltip" id="47"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="DivisionsViewStatus" id="48">
+					<ViewStatusAddition name="DepartmentsViewStatus" id="48">
 						<AdditionSource>
-							<Item>Divisions</Item>
+							<Item>Departments</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="DivisionsViewStatusContextMenu" id="49"/>
-						<ExtendedTooltip name="DivisionsViewStatusExtendedTooltip" id="50"/>
+						<ContextMenu name="DepartmentsViewStatusContextMenu" id="49"/>
+						<ExtendedTooltip name="DepartmentsViewStatusExtendedTooltip" id="50"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="DivisionsSearchManagement" id="51">
+					<SearchControlAddition name="DepartmentsSearchControl" id="51">
 						<AdditionSource>
-							<Item>Divisions</Item>
+							<Item>Departments</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="DivisionsSearchManagementContextMenu" id="52"/>
-						<ExtendedTooltip name="DivisionsSearchManagementExtendedTooltip" id="53"/>
+						<ContextMenu name="DepartmentsSearchControlContextMenu" id="52"/>
+						<ExtendedTooltip name="DepartmentsSearchControlExtendedTooltip" id="53"/>
 					</SearchControlAddition>
 					<Events>
-						<Event name="OnActivateRow">DivisionsOnActivateRow</Event>
+						<Event name="OnActivateRow">DepartmentsOnActivateRow</Event>
 					</Events>
 					<ChildItems>
 						<LabelField name="Description" id="25">
-							<DataPath>Divisions.Ref</DataPath>
+							<DataPath>Departments.Ref</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Division</v8:content>
+									<v8:content>Department</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>разделение</v8:content>
+									<v8:content>Подразделение</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="DescriptionContextMenu" id="26"/>
 							<ExtendedTooltip name="DescriptionExtendedTooltip" id="36"/>
 						</LabelField>
 						<LabelField name="Code" id="27">
-							<DataPath>Divisions.Code</DataPath>
+							<DataPath>Departments.Code</DataPath>
 							<UserVisible>
 								<xr:Common>false</xr:Common>
 							</UserVisible>
@@ -396,11 +396,11 @@
 				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
 			</FunctionalOptions>
 		</Attribute>
-		<Attribute name="Divisions" id="3">
+		<Attribute name="Departments" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Divisions</v8:content>
+					<v8:content>Departments</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -419,7 +419,7 @@
 						<dcsset:item xsi:type="dcsset:FilterItemComparison">
 							<dcsset:left xsi:type="dcscor:Field">StructuralUnitType</dcsset:left>
 							<dcsset:comparisonType>Equal</dcsset:comparisonType>
-							<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.StructuralUnitsTypes.Division</dcsset:right>
+							<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.StructuralUnitsTypes.Department</dcsset:right>
 						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
@@ -437,11 +437,11 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
-		<Attribute name="AccountingBySeveralDivisions" id="4">
+		<Attribute name="AccountingBySeveralDepartments" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Accounting by multiple divisions</v8:content>
+					<v8:content>Accounting by multiple departments</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -452,11 +452,11 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="MainDivision" id="5">
+		<Attribute name="MainDepartment" id="5">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Main division</v8:content>
+					<v8:content>Main department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

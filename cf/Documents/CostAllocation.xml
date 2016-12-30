@@ -314,7 +314,7 @@
 			<Explanation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Document is used to display distribution account of tangible and other expenses per production output (job done) of the production division</v8:content>
+					<v8:content>Document is used to display distribution account of tangible and other expenses per production output (job done) of the production department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -377,11 +377,11 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Division</v8:content>
+							<v8:content>Department</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>разделение</v8:content>
+							<v8:content>Подразделение</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -394,7 +394,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Division where expenses are distributed</v8:content>
+							<v8:content>Department where expenses are distributed</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -414,7 +414,7 @@
 					<ChoiceParameterLinks/>
 					<ChoiceParameters>
 						<app:item name="Filter.StructuralUnitType">
-							<app:value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</app:value>
+							<app:value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</app:value>
 						</app:item>
 					</ChoiceParameters>
 					<QuickChoice>Auto</QuickChoice>
@@ -449,7 +449,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Cell Division</v8:content>
+							<v8:content>Cell Department</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>

@@ -9,7 +9,7 @@ Function ExecuteQuery()
 	Query = New Query;
 	Query.Text = 
 	"SELECT ALLOWED
-	|	EmployeesSliceLast.StructuralUnit AS Division,
+	|	EmployeesSliceLast.StructuralUnit AS Department,
 	|	AccrualsAndDeductions.Employee.Code AS EmployeeCode,
 	|	AccrualsAndDeductions.Employee AS Ind,
 	|	EmployeesSliceLast.Position AS Position,
@@ -48,7 +48,7 @@ Function ExecuteQuery()
 	|				Company = &Company
 	|					AND Currency = &Currency
 	|					AND RegistrationPeriod < &RegistrationPeriod
-	|					" + ?(NOT ValueIsFilled(Division), "", "AND StructuralUnit = &Division") + ") AS DebtAtEnd 
+	|					" + ?(NOT ValueIsFilled(Department), "", "AND StructuralUnit = &Department") + ") AS DebtAtEnd 
 	|		ON AccrualsAndDeductions.Employee = DebtAtEnd.Employee
 	|		LEFT JOIN InformationRegister.Employees.SliceLast(
 	|				&RegistrationEndOfPeriod, 
@@ -66,7 +66,7 @@ Function ExecuteQuery()
 	|					&RegistrationEndOfPeriod, 
 	|					Month, 
 	|					Company = &Company
-	|							" + ?(NOT ValueIsFilled(Division), "", "AND StructuralUnit = &Division") + "
+	|							" + ?(NOT ValueIsFilled(Department), "", "AND StructuralUnit = &Department") + "
 	|							AND TimeKind = VALUE(Catalog.WorkingHoursKinds.Work)) AS TimesheetTurnovers) AS Timesheet 
 	|			ON EmployeesSliceLast.Employee = Timesheet.Employee 
 	|				AND EmployeesSliceLast.Position = Timesheet.Position 
@@ -78,18 +78,18 @@ Function ExecuteQuery()
 	|			Company = &Company 
 	|				AND Currency = &Currency 
 	|				AND RegistrationPeriod = &RegistrationPeriod
-	|					" + ?(NOT ValueIsFilled(Division), "", "AND StructuralUnit = &Division") + ") AS DebtPayable 
+	|					" + ?(NOT ValueIsFilled(Department), "", "AND StructuralUnit = &Department") + ") AS DebtPayable 
 	|		ON AccrualsAndDeductions.Employee = DebtPayable.Employee
 	|WHERE 
 	|	AccrualsAndDeductions.Company = &Company 
 	|	AND AccrualsAndDeductions.RegistrationPeriod = &RegistrationPeriod 
-	|	AND AccrualsAndDeductions.Currency = &Currency" + ?(NOT ValueIsFilled(Division), "", "
-	|	And AccrualsAndDeductions.StructuralUnit = &Division") + "
+	|	AND AccrualsAndDeductions.Currency = &Currency" + ?(NOT ValueIsFilled(Department), "", "
+	|	And AccrualsAndDeductions.StructuralUnit = &Department") + "
 	|
 	|ORDER BY
 	|	EmployeePresentation, AccrualsAndDeductions.StartDate
 	|TOTALS
-	|	MAX(Division),
+	|	MAX(Department),
 	|	MAX(EmployeeCode),
 	|	MAX(Position),
 	|	SUM(AmountWithheld),
@@ -106,7 +106,7 @@ Function ExecuteQuery()
                       
 	Query.SetParameter("Currency", Currency);
 	Query.SetParameter("Company", Company); 
-	Query.SetParameter("Division", Division);
+	Query.SetParameter("Department", Department);
 	Query.SetParameter("RegistrationPeriod", RegistrationPeriod);
 	Query.SetParameter("RegistrationEndOfPeriod", EndOfMonth(RegistrationPeriod));
     
@@ -162,7 +162,7 @@ Procedure MakeExecute()
     SpreadsheetDocument.PageOrientation = PageOrientation.Landscape;
 	
     AreaDocumentHeader.Parameters.Company = Company.DescriptionFull;
-	AreaDocumentHeader.Parameters.Division = Division;
+	AreaDocumentHeader.Parameters.Department = Department;
 	AreaDocumentHeader.Parameters.DateD = CurrentDate();
 	AreaDocumentHeader.Parameters.FinancialPeriodFrom = RegistrationPeriod;
 	AreaDocumentHeader.Parameters.FinancialPeriodTo = EndOfMonth(RegistrationPeriod);
@@ -298,9 +298,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Company 		= SmallBusinessServer.GetCompany(Catalogs.Companies.MainCompany);
 	Currency 				= Constants.AccountingCurrency.Get();
 
-	If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
+	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
 		
-		Division = Catalogs.StructuralUnits.MainDivision;
+		Department = Catalogs.StructuralUnits.MainDepartment;
 		
 	EndIf;	
 	

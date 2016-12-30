@@ -70,7 +70,7 @@ EndProcedure
 
 // Procedure fills tabular section Employees by department.
 //
-Procedure FillByDivisionAtServer() Export
+Procedure FillByDepartmentAtServer() Export
 		
 	Query = New Query;
 	Query.Text = "SELECT DISTINCT

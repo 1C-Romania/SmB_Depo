@@ -708,7 +708,7 @@ Procedure GenerateTableInventory(DocumentRefInventoryTransfer, StructureAddition
 		EndIf;
 		
 		// If it is a passing to operation, transfer at zero cost and classify
-		// the cost itself as recipient-subdivisions costs.
+		// the cost itself as recipient-subdepartments costs.
 		If RowTableInventory.OperationKind = Enums.OperationKindsInventoryTransfer.TransferToOperation Then
 		   
 		   // It should be added, then receipt is only by

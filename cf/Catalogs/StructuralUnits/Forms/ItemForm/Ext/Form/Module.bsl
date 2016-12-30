@@ -1,28 +1,7 @@
 ﻿
-////////////////////////////////////////////////////////////////////////////////
-// SERVICE PROCEDURES AND FUNCTIONS
-
-&AtServerNoContext
-// Returns the data structure by received price kind
-//
-Function GetRetailPriceKindData(RetailPriceKind)
-	
-	DataStructure	 = New Structure;
-	
-	DataStructure.Insert("PriceKindDescription",	RetailPriceKind.Description);
-	DataStructure.Insert("NationalCurrency",	Constants.NationalCurrency.Get());
-	DataStructure.Insert("PriceCurrency", 			RetailPriceKind.PriceCurrency);
-	
-	Return DataStructure;
-	
-EndFunction //GetRetailPriceKindData()
-
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+#Region FormEventsHandlers
 
 &AtServer
-// Procedure - event handler OnCreateAtServer of the form.
-//
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	TypeOfStructuralUnitRetail = Enums.StructuralUnitsTypes.Retail;
@@ -47,9 +26,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EndIf;
 	EndIf;
 	
-	If Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
-		OR Object.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
-		Items.StructuralUnitType.ChoiceList.Add(Enums.StructuralUnitsTypes.Division);
+	If Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
+		OR Object.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
+		Items.StructuralUnitType.ChoiceList.Add(Enums.StructuralUnitsTypes.Department);
 	EndIf;
 	
 	If Not ValueIsFilled(Object.Ref)
@@ -87,11 +66,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	PropertiesManagement.OnCreateAtServer(ThisForm, Object, "AdditionalAttributesPage");
 	// End StandardSubsystems.Properties
 	
-EndProcedure // OnCreateAtServer()
+EndProcedure
 
 &AtServer
-// Event handler procedure OnReadAtServer
-//
 Procedure OnReadAtServer(CurrentObject)
 	
 	// StandardSubsystems.Properties
@@ -102,11 +79,9 @@ Procedure OnReadAtServer(CurrentObject)
 	ContactInformationManagement.OnReadAtServer(ThisForm, CurrentObject);
 	// End StandardSubsystems.ContactInformation
 	
-EndProcedure // OnReadAtServer()
+EndProcedure
 
 &AtClient
-// Procedure-handler of the NotificationProcessing event.
-//
 Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 	// Mechanism handler "Properties".
@@ -123,8 +98,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 EndProcedure // NotificationProcessing()
 
 &AtServer
-// Procedure-handler of the BeforeWriteAtServer event.
-//
 Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 		
 	// Mechanism handler "Properties".
@@ -134,11 +107,9 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	ContactInformationManagement.BeforeWriteAtServer(ThisForm, CurrentObject);
 	// End StandardSubsystems.ContactInformation
 	
-EndProcedure // BeforeWriteAtServer()
+EndProcedure
 
 &AtServer
-// Procedure-handler of the FillCheckProcessingAtServer event.
-//
 Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
 	// StandardSubsystems.Properties
@@ -149,24 +120,21 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	ContactInformationManagement.FillCheckProcessingAtServer(ThisForm, Object, Cancel);
 	// End StandardSubsystems.ContactInformation
 	
-EndProcedure // FillCheckProcessingAtServer()
+EndProcedure
 
 &AtServer
-// Procedure-handler  of the AfterWriteOnServer event.
-//
 Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
 	
 	// Handler of the subsystem prohibiting the object attribute editing.
 	ObjectsAttributesEditProhibition.LockAttributes(ThisForm);
 	
-EndProcedure // AfterWriteOnServer()
+EndProcedure
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF FORM ATTRIBUTES
+#EndRegion
+
+#Region FormItemsEventsHandlers
 
 &AtClient
-// Procedure - event handler OnChange field StructuralUnitType.
-//
 Procedure StructuralUnitTypeOnChange(Item)
 	
 	If ValueIsFilled(Object.StructuralUnitType) Then
@@ -196,11 +164,9 @@ Procedure StructuralUnitTypeOnChange(Item)
 		
 	EndIf;
 	
-EndProcedure // StructuralUnitTypeOnChange()
+EndProcedure
 
 &AtClient
-// Procedure - event handler Click field InventoryAutoTransfer.
-//
 Procedure InventoryAutotransferClick(Item)
 	
 	ParametersStructure = New Structure;
@@ -233,27 +199,6 @@ Procedure InventoryAutotransferClick(Item)
 EndProcedure // InventoryAutotransferClick()
 
 &AtClient
-Procedure AutomovementocksEndClick(FillingParameters,Parameters) Export
-	
-	If TypeOf(FillingParameters) = Type("Structure") Then
-		
-		FillPropertyValues(Object, FillingParameters);
-		
-		If Not Modified 
-			AND FillingParameters.Modified Then
-			
-			Modified = True;
-			
-		EndIf;
-		
-	EndIf;
-
-	
-EndProcedure
-
-&AtClient
-// Procedure - event handler Click field RetailPriceKind.
-//
 Procedure RetailPriceKindOnChange(Item)
 	
 	If Not ValueIsFilled(Object.RetailPriceKind) Then
@@ -282,6 +227,44 @@ Procedure OrderWarehouseOnChange(Item)
 	Items.RetailPriceKind.Enabled = Not Object.OrderWarehouse;
 	
 EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtServerNoContext
+Function GetRetailPriceKindData(RetailPriceKind)
+	
+	DataStructure	 = New Structure;
+	
+	DataStructure.Insert("PriceKindDescription",	RetailPriceKind.Description);
+	DataStructure.Insert("NationalCurrency",	Constants.NationalCurrency.Get());
+	DataStructure.Insert("PriceCurrency", 			RetailPriceKind.PriceCurrency);
+	
+	Return DataStructure;
+	
+EndFunction //GetRetailPriceKindData()
+
+&AtClient
+Procedure AutomovementocksEndClick(FillingParameters,Parameters) Export
+	
+	If TypeOf(FillingParameters) = Type("Structure") Then
+		
+		FillPropertyValues(Object, FillingParameters);
+		
+		If Not Modified 
+			AND FillingParameters.Modified Then
+			
+			Modified = True;
+			
+		EndIf;
+		
+	EndIf;
+
+	
+EndProcedure
+
+#EndRegion
 
 #Region LibrariesHandlers
 

@@ -190,13 +190,13 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	For Each RowsExpenses IN Expenses Do
 		
-		If GetFunctionalOption("AccountingBySeveralDivisions")
+		If GetFunctionalOption("AccountingBySeveralDepartments")
 		   AND (RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.UnfinishedProduction
 		 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.IndirectExpenses
 		 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Incomings
 		 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Expenses)
 		 AND Not ValueIsFilled(RowsExpenses.StructuralUnit) Then
-			MessageText = NStr("en='For products and services ""%ProductsAndServices%"" in the %LineNumber% line of list ""Expenses"" the attribute ""Division"" must be filled.';ru='Для номенклатуры ""%Номенклатура%"" указанной в строке %НомерСтроки% списка ""Расходы"", должен быть заполнен реквизит ""Подразделение"".'"
+			MessageText = NStr("en='For products and services ""%ProductsAndServices%"" in the %LineNumber% line of list ""Expenses"" the attribute ""Department"" must be filled.';ru='Для номенклатуры ""%Номенклатура%"" указанной в строке %НомерСтроки% списка ""Расходы"", должен быть заполнен реквизит ""Подразделение"".'"
 			);
 			MessageText = StrReplace(MessageText, "%ProductsAndServices%", TrimAll(String(RowsExpenses.ProductsAndServices))); 
 			MessageText = StrReplace(MessageText, "%LineNumber%",String(RowsExpenses.LineNumber));

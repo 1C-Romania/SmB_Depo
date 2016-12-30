@@ -215,7 +215,7 @@ Procedure SetCellVisible()
 		Items.Cell.Enabled = True;
 	EndIf;
 	
-	If Object.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
+	If Object.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
 		
 		Object.RetireInventoryFromOperation = True;
 		Items.WriteOffFrom.ToolTip  = "(decommissioning)";
@@ -431,12 +431,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SetCellVisible();
 	
 	// Setting the method of structural unit selection depending on FO.
-	If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
+	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
 		AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses.Get() Then
 		
 		Items.StructuralUnit.ListChoiceMode = True;
 		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
-		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		
 	EndIf;
 	

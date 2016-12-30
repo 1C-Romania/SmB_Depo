@@ -197,7 +197,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ПометкаУдаления</v8:content>
+							<v8:content>Пометка удаления</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -326,7 +326,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группировка</v8:content>
+							<v8:content>Группа</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -412,7 +412,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>код</v8:content>
+							<v8:content>Код</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -463,7 +463,7 @@
 			<DefaultObjectForm>Catalog.StructuralUnits.Form.ItemForm</DefaultObjectForm>
 			<DefaultFolderForm/>
 			<DefaultListForm>Catalog.StructuralUnits.Form.ListForm</DefaultListForm>
-			<DefaultChoiceForm>Catalog.StructuralUnits.Form.ChoiceForm</DefaultChoiceForm>
+			<DefaultChoiceForm>Catalog.StructuralUnits.Form.ListForm</DefaultChoiceForm>
 			<DefaultFolderChoiceForm/>
 			<AuxiliaryObjectForm/>
 			<AuxiliaryFolderForm/>
@@ -482,13 +482,13 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Ячейка структурной единицы</v8:content>
+					<v8:content>Структурная единица</v8:content>
 				</v8:item>
 			</ObjectPresentation>
 			<ExtendedObjectPresentation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Organizational and structural unit of the company</v8:content>
+					<v8:content>Structural unit</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -499,7 +499,7 @@
 			<ExtendedListPresentation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Organizational and structural units of the company</v8:content>
+					<v8:content>Structural units</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -509,7 +509,7 @@
 			<Explanation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Structural units of companies: administrative and managerial divisions, production divisions, warehouses</v8:content>
+					<v8:content>Structural units of companies: administrative and managerial departments, production departments, warehouses</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -543,7 +543,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Structural unit type: warehouse, production, administration division</v8:content>
+							<v8:content>Structural unit type: warehouse, production, administration department</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -931,7 +931,7 @@
 						<app:item name="Filter.StructuralUnitType">
 							<app:value xsi:type="v8:FixedArray">
 								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Warehouse</v8:Value>
-								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</v8:Value>
+								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</v8:Value>
 								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Retail</v8:Value>
 								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.RetailAccrualAccounting</v8:Value>
 							</app:value>
@@ -1032,7 +1032,7 @@
 						<app:item name="Filter.StructuralUnitType">
 							<app:value xsi:type="v8:FixedArray">
 								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Warehouse</v8:Value>
-								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</v8:Value>
+								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</v8:Value>
 								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Retail</v8:Value>
 								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.RetailAccrualAccounting</v8:Value>
 							</app:value>
@@ -1133,7 +1133,7 @@
 						<app:item name="Filter.StructuralUnitType">
 							<app:value xsi:type="v8:FixedArray">
 								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Warehouse</v8:Value>
-								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</v8:Value>
+								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</v8:Value>
 							</app:value>
 						</app:item>
 					</ChoiceParameters>
@@ -1326,7 +1326,7 @@
 					<ChoiceParameterLinks/>
 					<ChoiceParameters>
 						<app:item name="Filter.StructuralUnitType">
-							<app:value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</app:value>
+							<app:value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</app:value>
 						</app:item>
 					</ChoiceParameters>
 					<QuickChoice>Auto</QuickChoice>
@@ -1518,7 +1518,7 @@
 					<ChoiceParameterLinks/>
 					<ChoiceParameters>
 						<app:item name="Filter.StructuralUnitType">
-							<app:value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</app:value>
+							<app:value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</app:value>
 						</app:item>
 					</ChoiceParameters>
 					<QuickChoice>Auto</QuickChoice>
@@ -1614,7 +1614,7 @@
 					<ChoiceParameterLinks/>
 					<ChoiceParameters>
 						<app:item name="Filter.StructuralUnitType">
-							<app:value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</app:value>
+							<app:value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</app:value>
 						</app:item>
 					</ChoiceParameters>
 					<QuickChoice>Auto</QuickChoice>
@@ -2640,7 +2640,6 @@
 			</TabularSection>
 			<Form>ItemForm</Form>
 			<Form>ListForm</Form>
-			<Form>ChoiceForm</Form>
 			<Form>GLAccountsEditForm</Form>
 			<Command uuid="363ab20e-807c-4f1c-82e9-b95c18be08ae">
 				<Properties>
@@ -2662,6 +2661,54 @@
 					</CommandParameterType>
 					<ParameterUseMode>Single</ParameterUseMode>
 					<ModifiesData>true</ModifiesData>
+					<Representation>Auto</Representation>
+					<ToolTip/>
+					<Picture/>
+					<Shortcut/>
+				</Properties>
+			</Command>
+			<Command uuid="7dd0b1dc-fe4f-4e0c-8171-ace76932cb65">
+				<Properties>
+					<Name>OpenWarehousesList</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Warehouses</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Склады</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Group>NavigationPanelOrdinary</Group>
+					<CommandParameterType/>
+					<ParameterUseMode>Single</ParameterUseMode>
+					<ModifiesData>false</ModifiesData>
+					<Representation>Auto</Representation>
+					<ToolTip/>
+					<Picture/>
+					<Shortcut/>
+				</Properties>
+			</Command>
+			<Command uuid="8261ced1-d541-4454-aa11-f5952bd42b09">
+				<Properties>
+					<Name>OpenDepartmentsList</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Departments</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделения</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Group>NavigationPanelOrdinary</Group>
+					<CommandParameterType/>
+					<ParameterUseMode>Single</ParameterUseMode>
+					<ModifiesData>false</ModifiesData>
 					<Representation>Auto</Representation>
 					<ToolTip/>
 					<Picture/>

@@ -10,7 +10,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		Return;
 	EndIf;
 	
-	If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
+	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
 		
 		For Each RowTaxes IN Taxes Do
 			
@@ -18,7 +18,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 			 OR RowTaxes.Correspondence.TypeOfAccount = Enums.GLAccountsTypes.IndirectExpenses
 			 OR RowTaxes.Correspondence.TypeOfAccount = Enums.GLAccountsTypes.Incomings
 			 OR RowTaxes.Correspondence.TypeOfAccount = Enums.GLAccountsTypes.Expenses Then
-				RowTaxes.Division = Catalogs.StructuralUnits.MainDivision;
+				RowTaxes.Department = Catalogs.StructuralUnits.MainDepartment;
 			EndIf;
 			
 		EndDo;
@@ -50,13 +50,13 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	For Each RowTaxes IN Taxes Do
 		
-		If Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
+		If Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
 		   AND (RowTaxes.Correspondence.TypeOfAccount = Enums.GLAccountsTypes.UnfinishedProduction
 		 OR RowTaxes.Correspondence.TypeOfAccount = Enums.GLAccountsTypes.IndirectExpenses
 		 OR RowTaxes.Correspondence.TypeOfAccount = Enums.GLAccountsTypes.Incomings
 		 OR RowTaxes.Correspondence.TypeOfAccount = Enums.GLAccountsTypes.Expenses)
-		 AND Not ValueIsFilled(RowTaxes.Division) Then
-			MessageText = NStr("en='For cost account ""%Mail%"" specified in string %LineNumber% of list ""Taxes"", attribute ""Division"" must be filled.';ru='Для счета затрат ""%Корреспонденция%"" указанного в строке %НомерСтроки% списка ""Налоги"", должен быть заполнен реквизит ""Подразделение"".'"
+		 AND Not ValueIsFilled(RowTaxes.Department) Then
+			MessageText = NStr("en='For cost account ""%Mail%"" specified in string %LineNumber% of list ""Taxes"", attribute ""Department"" must be filled.';ru='Для счета затрат ""%Корреспонденция%"" указанного в строке %НомерСтроки% списка ""Налоги"", должен быть заполнен реквизит ""Подразделение"".'"
 			);
 			MessageText = StrReplace(MessageText, "%Correspondence%", TrimAll(String(RowTaxes.Correspondence))); 
 			MessageText = StrReplace(MessageText, "%LineNumber%",String(RowTaxes.LineNumber));
@@ -65,7 +65,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				MessageText,
 				"Taxes",
 				RowTaxes.LineNumber,
-				"Division",
+				"Department",
 				Cancel
 			);
 		EndIf;

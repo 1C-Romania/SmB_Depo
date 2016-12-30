@@ -290,27 +290,27 @@
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="GroupBankBICCorrAccountExtendedTooltip" id="107"/>
 									<ChildItems>
-										<InputField name="BankBIC" id="38">
-											<DataPath>BankBIC</DataPath>
+										<InputField name="SWIFTBank" id="38">
+											<DataPath>SWIFTBank</DataPath>
 											<Wrap>false</Wrap>
 											<ChoiceButton>true</ChoiceButton>
-											<ContextMenu name="BankBICContextMenu" id="39"/>
-											<ExtendedTooltip name="BankBICExtendedTooltip" id="108"/>
+											<ContextMenu name="SWIFTBankContextMenu" id="39"/>
+											<ExtendedTooltip name="SWIFTBankExtendedTooltip" id="108"/>
 											<Events>
-												<Event name="OnChange">BankBICOnChange</Event>
-												<Event name="StartChoice">BankBICStartChoice</Event>
-												<Event name="TextEditEnd">BIKBankTextEditEnd</Event>
-												<Event name="ChoiceProcessing">BankBICChoiceProcessing</Event>
+												<Event name="OnChange">SWIFTBankOnChange</Event>
+												<Event name="StartChoice">SWIFTBankStartChoice</Event>
+												<Event name="TextEditEnd">SWIFTBankTextEditEnd</Event>
+												<Event name="ChoiceProcessing">SWIFTBankChoiceProcessing</Event>
 											</Events>
 										</InputField>
-										<InputField name="BankCorrAccount" id="59">
-											<DataPath>BankCorrAccount</DataPath>
+										<InputField name="CorrAccountBank" id="59">
+											<DataPath>CorrAccountBank</DataPath>
 											<Wrap>false</Wrap>
-											<ContextMenu name="BankCorrAccountContextMenu" id="60"/>
-											<ExtendedTooltip name="BankCorrAccountExtendedTooltip" id="109"/>
+											<ContextMenu name="CorrAccountBankContextMenu" id="60"/>
+											<ExtendedTooltip name="CorrAccountBankExtendedTooltip" id="109"/>
 											<Events>
-												<Event name="TextEditEnd">CorrespondentAccountOfBankTextEditEnd</Event>
-												<Event name="ChoiceProcessing">CorrespondentAccountOfBankChoiceProcessing</Event>
+												<Event name="TextEditEnd">CorrAccountBankTextEditEnd</Event>
+												<Event name="ChoiceProcessing">CorrAccountBankChoiceProcessing</Event>
 											</Events>
 										</InputField>
 									</ChildItems>
@@ -512,26 +512,26 @@
 											<ShowTitle>false</ShowTitle>
 											<ExtendedTooltip name="GroupSettlementsBankBICCorrAccountExtendedTooltip" id="118"/>
 											<ChildItems>
-												<InputField name="BankBICForSettlements" id="53">
-													<DataPath>BankBICForSettlements</DataPath>
+												<InputField name="SWIFTBankForSettlements" id="53">
+													<DataPath>SWIFTBankForSettlements</DataPath>
 													<Wrap>false</Wrap>
 													<ChoiceButton>true</ChoiceButton>
-													<ContextMenu name="SettlementBankBICContextMenu" id="54"/>
-													<ExtendedTooltip name="SettlementBankBICExtendedTooltip" id="119"/>
+													<ContextMenu name="SWIFTBankForSettlementsContextMenu" id="54"/>
+													<ExtendedTooltip name="SWIFTBankForSettlementsExtendedTooltip" id="119"/>
 													<Events>
-														<Event name="StartChoice">BankBICForSettlementsStartChoice</Event>
-														<Event name="TextEditEnd">SettlementBankBICTextEditEnd</Event>
-														<Event name="ChoiceProcessing">SettlementsBankBICChoiceProcessing</Event>
+														<Event name="StartChoice">SWIFTBankForSettlementsStartChoice</Event>
+														<Event name="TextEditEnd">SWIFTBankForSettlementsTextEditEnd</Event>
+														<Event name="ChoiceProcessing">SWIFTBankForSettlementsChoiceProcessing</Event>
 													</Events>
 												</InputField>
-												<InputField name="BankCorrAccountForSettlements" id="55">
-													<DataPath>BankCorrAccountForSettlements</DataPath>
+												<InputField name="CorrAccountBankForSettlements" id="55">
+													<DataPath>CorrAccountBankForSettlements</DataPath>
 													<Wrap>false</Wrap>
-													<ContextMenu name="SettlementBankCorrAccountContextMenu" id="56"/>
-													<ExtendedTooltip name="SettlementBankCorrAccountExtendedTooltip" id="120"/>
+													<ContextMenu name="CorrAccountBankForSettlementsContextMenu" id="56"/>
+													<ExtendedTooltip name="CorrAccountBankForSettlementsExtendedTooltip" id="120"/>
 													<Events>
-														<Event name="TextEditEnd">CorrespondentAccountOfSettlementsBankTextEditEnd</Event>
-														<Event name="ChoiceProcessing">CorrespondentAccountOfBankForSettlementsChoiceProcessing</Event>
+														<Event name="TextEditEnd">CorrAccountBankForSettlementsTextEditEnd</Event>
+														<Event name="ChoiceProcessing">CorrAccountBankForSettlementsChoiceProcessing</Event>
 													</Events>
 												</InputField>
 											</ChildItems>
@@ -956,21 +956,21 @@
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
 		</Attribute>
-		<Attribute name="BankBIC" id="2">
+		<Attribute name="SWIFTBank" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>BIN</v8:content>
+					<v8:content>SWIFT</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>БИК</v8:content>
+					<v8:content>SWIFT</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
-					<v8:Length>9</v8:Length>
+					<v8:Length>11</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
@@ -1010,26 +1010,26 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="BankBICForSettlements" id="5">
+		<Attribute name="SWIFTBankForSettlements" id="5">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>BIN</v8:content>
+					<v8:content>SWIFT</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>БИК</v8:content>
+					<v8:content>SWIFT</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
-					<v8:Length>9</v8:Length>
+					<v8:Length>11</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="BankCorrAccountForSettlements" id="6">
+		<Attribute name="CorrAccountBankForSettlements" id="6">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -1048,7 +1048,7 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="BankCorrAccount" id="7">
+		<Attribute name="CorrAccountBank" id="7">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>

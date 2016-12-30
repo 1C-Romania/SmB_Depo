@@ -22,7 +22,7 @@ Procedure FillByReceiptCR(Val BasisDocument, FillingData)
 	|	ReceiptCR.CashCR AS CashCR,
 	|	ReceiptCR.CashCRSession AS CashCRSession,
 	|	ReceiptCR.StructuralUnit AS StructuralUnit,
-	|	ReceiptCR.Division AS Division,
+	|	ReceiptCR.Department AS Department,
 	|	ReceiptCR.Responsible AS Responsible,
 	|	ReceiptCR.DocumentAmount AS DocumentAmount,
 	|	ReceiptCR.AmountIncludesVAT AS AmountIncludesVAT,

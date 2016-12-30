@@ -263,11 +263,11 @@ Function PrepareStructureForGoodsServicesReceipt(StringForImport, ParseTree, Thi
 	DataForObject.Insert("Inventory" , Inventory);
 	
 	User = Users.CurrentUser();
-	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-	MainDivision = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+	MainDepartment = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 	
 	For Each String IN Expenses Do
-		String.StructuralUnit = MainDivision;
+		String.StructuralUnit = MainDepartment;
 		If ValueIsFilled(String.ProductsAndServices) Then
 			String.BusinessActivity = CommonUse.GetAttributeValue(String.ProductsAndServices, "BusinessActivity");
 		EndIf;
@@ -1556,7 +1556,7 @@ Function GetDataSellingProductsAndServices(ObjectReference) Export
 	|		ELSE UNDEFINED
 	|	END AS DocBasisDate,
 	|	NULL AS MutualSettlementsConduction,
-	|	GoodsServicesSale.Division AS Division,
+	|	GoodsServicesSale.Department AS Department,
 	|	GoodsServicesSale.DocumentCurrency,
 	|	GoodsServicesSale.ExchangeRate AS ExchangeRate,
 	|	GoodsServicesSale.Multiplicity AS Multiplicity,
@@ -1576,7 +1576,7 @@ Function GetDataSellingProductsAndServices(ObjectReference) Export
 	Query.SetParameter("CurrentDocument", 	ObjectReference);
 	Query.SetParameter("CutoffDate", 			ObjectReference.Date);
 	Query.SetParameter("Company", 		ObjectReference.Company);
-	Query.SetParameter("Division", 		ObjectReference.Division);
+	Query.SetParameter("Department", 		ObjectReference.Department);
 	Query.SetParameter("StructuralUnit", ObjectReference.StructuralUnit);
 	
 	Header = Query.Execute().Select();
@@ -1784,7 +1784,7 @@ Procedure FillParticipantsAttributesTORG12(PrintInfo, ParametersStructure) Expor
 	If PrintInfo.Company <> PrintInfo.Consignor Then
 		
 		FillExchangeParticipantInfo(ParametersStructure.InfoAboutShipper.Consignor, InfoAboutShipper, "Fact");
-		ParametersStructure.InfoAboutShipper.OrganizationDivision = PrintInfo.Division;
+		ParametersStructure.InfoAboutShipper.OrganizationDepartment = PrintInfo.Department;
 		
 	EndIf;
 	

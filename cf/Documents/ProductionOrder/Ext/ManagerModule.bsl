@@ -1274,7 +1274,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName = "")
 	|	ProductionOrder.CustomerOrder AS Order,
 	|	ProductionOrder.Start AS LaunchDate,
 	|	ProductionOrder.Finish AS DateOfIssue,
-	|	ProductionOrder.StructuralUnit AS Division,
+	|	ProductionOrder.StructuralUnit AS Department,
 	|	ProductionOrder.Company.Prefix AS Prefix,
 	|	ProductionOrder.Products.(
 	|		LineNumber AS LineNumber,

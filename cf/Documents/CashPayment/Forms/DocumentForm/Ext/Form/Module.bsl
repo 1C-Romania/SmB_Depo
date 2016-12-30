@@ -392,7 +392,7 @@ Function GetDataAdvanceHolderOnChange(AdvanceHolder, Date)
 	|	IndividualsDocumentsSliceLast.IssueDate,
 	|	IndividualsDocumentsSliceLast.ValidityPeriod,
 	|	IndividualsDocumentsSliceLast.WhoIssued,
-	|	IndividualsDocumentsSliceLast.DivisionCode,
+	|	IndividualsDocumentsSliceLast.DepartmentCode,
 	|	IndividualsDocumentsSliceLast.IsIdentityDocument,
 	|	IndividualsDocumentsSliceLast.Presentation,
 	|	IndividualsDocumentsSliceLast.DeleteDocumentKind
@@ -1096,7 +1096,7 @@ Procedure ClearAttributesNotRelatedToOperation()
 		Object.AdvanceHolder = Undefined;
 		Object.Document = Undefined;
 		Object.PayrollPayment.Clear();
-		Object.Division = Undefined;
+		Object.Department = Undefined;
 		Object.BusinessActivity = Undefined;
 		Object.RegistrationPeriod = Undefined;
 		Object.Order = Undefined;
@@ -1110,7 +1110,7 @@ Procedure ClearAttributesNotRelatedToOperation()
 		Object.Correspondence = Undefined;
 		Object.Counterparty = Undefined;
 		Object.TaxKind = Undefined;
-		Object.Division = Undefined;
+		Object.Department = Undefined;
 		Object.BusinessActivity = Undefined;
 		Object.Order = Undefined;
 		Object.RegistrationPeriod = Undefined;
@@ -1130,7 +1130,7 @@ Procedure ClearAttributesNotRelatedToOperation()
 		Object.Counterparty = Undefined;
 		Object.AdvanceHolder = Undefined;
 		Object.Document = Undefined;
-		Object.Division = Undefined;
+		Object.Department = Undefined;
 		If Not FunctionalOptionAccountingCashMethodIncomeAndExpenses Then
 			Object.BusinessActivity = Undefined;
 		EndIf;
@@ -1142,16 +1142,16 @@ Procedure ClearAttributesNotRelatedToOperation()
 		Object.Correspondence = Undefined;
 		Object.Counterparty = Undefined;
 		Object.Document = Undefined;
-		Object.Division = Undefined;
+		Object.Department = Undefined;
 		If Not FunctionalOptionAccountingCashMethodIncomeAndExpenses Then
 			Object.BusinessActivity = Undefined;
 		EndIf;
 		Object.Order = Undefined;
 		Object.CashCR = Undefined;
 		Object.PayrollPayment.Clear();
-		If Not ValueIsFilled(Object.Division) Then
-			SettingValue = SmallBusinessReUse.GetValueByDefaultUser(CurrentSystemUser, "MainDivision");
-			Object.Division = ?(ValueIsFilled(SettingValue), SettingValue, StructuralUnitDivision);
+		If Not ValueIsFilled(Object.Department) Then
+			SettingValue = SmallBusinessReUse.GetValueByDefaultUser(CurrentSystemUser, "MainDepartment");
+			Object.Department = ?(ValueIsFilled(SettingValue), SettingValue, StructuralUnitDepartment);
 		EndIf;
 		For Each TableRow IN Object.PaymentDetails Do
 			TableRow.Contract = Undefined;
@@ -1185,7 +1185,7 @@ Procedure ClearAttributesNotRelatedToOperation()
 		Object.Document = Undefined;
 		Object.TaxKind = Undefined;
 		Object.Correspondence = Undefined;
-		Object.Division = Undefined;
+		Object.Department = Undefined;
 		Object.BusinessActivity = Undefined;
 		Object.Order = Undefined;
 		Object.RegistrationPeriod = Undefined;
@@ -1204,7 +1204,7 @@ Procedure ClearAttributesNotRelatedToOperation()
 		Object.AdvanceHolder = Undefined;
 		Object.Document = Undefined;
 		Object.Correspondence = Undefined;
-		Object.Division = Undefined;
+		Object.Department = Undefined;
 		If Not FunctionalOptionAccountingCashMethodIncomeAndExpenses Then
 			Object.BusinessActivity = Undefined;
 		EndIf;
@@ -1289,11 +1289,11 @@ Procedure SetAttributesVisibleDependingOnCorrespondence()
 	
 	If Object.Correspondence.TypeOfAccount = Enums.GLAccountsTypes.Expenses Then
 		Items.BusinessActivity.Visible = True;
-		Items.Division.Visible = True;
+		Items.Department.Visible = True;
 		Items.Order.Visible = True;
-		If Not ValueIsFilled(Object.Division) Then
-			SettingValue = SmallBusinessReUse.GetValueByDefaultUser(CurrentSystemUser, "MainDivision");
-			Object.Division = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+		If Not ValueIsFilled(Object.Department) Then
+			SettingValue = SmallBusinessReUse.GetValueByDefaultUser(CurrentSystemUser, "MainDepartment");
+			Object.Department = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 		EndIf;
 	Else
 		If Object.OperationKind <> Enums.OperationKindsCashPayment.Taxes // for entering based on
@@ -1306,11 +1306,11 @@ Procedure SetAttributesVisibleDependingOnCorrespondence()
 			Object.BusinessActivity = Undefined;
 		EndIf;
 		If Object.OperationKind = Enums.OperationKindsCashPayment.Other Then
-			Object.Division = Undefined;
+			Object.Department = Undefined;
 		EndIf;
 		Object.Order = Undefined;
 		Items.BusinessActivity.Visible = False;
-		Items.Division.Visible = False;
+		Items.Department.Visible = False;
 		Items.Order.Visible = False;
 	EndIf;
 	
@@ -1388,7 +1388,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		StructureByCurrency.Multiplicity
 	);
 	
-	StructuralUnitDivision = Catalogs.StructuralUnits.MainDivision;
+	StructuralUnitDepartment = Catalogs.StructuralUnits.MainDepartment;
 	
 	SupplementOperationKindsChoiceList();
 	

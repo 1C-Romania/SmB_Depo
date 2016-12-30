@@ -22,7 +22,6 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Content>
-				<xr:Item xsi:type="xr:MDObjectRef">ChartOfAccounts.Managerial</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.TaxTypes</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.VATRates</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">CommonCommand.OpenEnteringOpeningBalances</xr:Item>
@@ -34,9 +33,6 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Calendars</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.BusinessActivities</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Companies</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Employees</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Catalog.StructuralUnits</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Individuals</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.ContactPersonsRoles</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.WorldCountries</xr:Item>
@@ -54,11 +50,11 @@
 			</Content>
 		</Properties>
 		<ChildObjects>
+			<Subsystem>Enterprise</Subsystem>
 			<Subsystem>FinancialTransactions</Subsystem>
 			<Subsystem>Planning</Subsystem>
 			<Subsystem>FixedAssets</Subsystem>
 			<Subsystem>ElectronicDocuments</Subsystem>
-			<Subsystem>ReferenceInformation</Subsystem>
 		</ChildObjects>
 	</Subsystem>
 </MetaDataObject>

@@ -1043,20 +1043,20 @@
 											</Title>
 											<ExtendedTooltip name="InsertPassportDataIssuingAuthorityExtendedTooltip" id="370"/>
 										</Button>
-										<Button name="InsertPassportDataDivisionCode" id="371">
+										<Button name="InsertPassportDataDepartmentCode" id="371">
 											<Type>CommandBarButton</Type>
-											<CommandName>Form.Command.InsertPassportDataDivisionCode</CommandName>
+											<CommandName>Form.Command.InsertPassportDataDepartmentCode</CommandName>
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>Division code</v8:content>
+													<v8:content>Department code</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
 													<v8:content>Код подразделения</v8:content>
 												</v8:item>
 											</Title>
-											<ExtendedTooltip name="InsertPassportDataDivisionCodeExtendedTooltip" id="372"/>
+											<ExtendedTooltip name="InsertPassportDataDepartmentCodeExtendedTooltip" id="372"/>
 										</Button>
 										<Button name="InsertPassportDataNumber" id="373">
 											<Type>CommandBarButton</Type>
@@ -2678,11 +2678,11 @@
 			</ToolTip>
 			<Action>InsertPassportDataIssuingAuthority</Action>
 		</Command>
-		<Command name="InsertPassportDataDivisionCode" id="43">
+		<Command name="InsertPassportDataDepartmentCode" id="43">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Insert passport data Division code</v8:content>
+					<v8:content>Insert passport data department code</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -2699,7 +2699,7 @@
 					<v8:content>Вставить паспортные данные</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>InsertPassportDataDivisionCode</Action>
+			<Action>InsertPassportDataDepartmentCode</Action>
 		</Command>
 		<Command name="InsertPassportDataNumber" id="44">
 			<Title>

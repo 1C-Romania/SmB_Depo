@@ -71,11 +71,11 @@ EndFunction // GetDataCharacteristicOnChange()
 &AtServerNoContext
 Function GetDataStructuralUnitOnChange(StructureData)
 	
-	If StructureData.Division.TransferRecipient.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse
-		OR StructureData.Division.TransferRecipient.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
+	If StructureData.Department.TransferRecipient.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse
+		OR StructureData.Department.TransferRecipient.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
 		
-		StructureData.Insert("ProductsStructuralUnit", StructureData.Division.TransferRecipient);
-		StructureData.Insert("ProductsCell", StructureData.Division.TransferRecipientCell);
+		StructureData.Insert("ProductsStructuralUnit", StructureData.Department.TransferRecipient);
+		StructureData.Insert("ProductsCell", StructureData.Department.TransferRecipientCell);
 		
 	Else
 		
@@ -84,11 +84,11 @@ Function GetDataStructuralUnitOnChange(StructureData)
 		
 	EndIf;
 	
-	If StructureData.Division.TransferSource.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse
-		OR StructureData.Division.TransferSource.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
+	If StructureData.Department.TransferSource.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse
+		OR StructureData.Department.TransferSource.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
 		
-		StructureData.Insert("InventoryStructuralUnit", StructureData.Division.TransferSource);
-		StructureData.Insert("CellInventory", StructureData.Division.TransferSourceCell);
+		StructureData.Insert("InventoryStructuralUnit", StructureData.Department.TransferSource);
+		StructureData.Insert("CellInventory", StructureData.Department.TransferSourceCell);
 		
 	Else
 		
@@ -97,13 +97,13 @@ Function GetDataStructuralUnitOnChange(StructureData)
 		
 	EndIf;
 	
-	StructureData.Insert("DisposalsStructuralUnit", StructureData.Division.RecipientOfWastes);
-	StructureData.Insert("DisposalsCell", StructureData.Division.DisposalsRecipientCell);
+	StructureData.Insert("DisposalsStructuralUnit", StructureData.Department.RecipientOfWastes);
+	StructureData.Insert("DisposalsCell", StructureData.Department.DisposalsRecipientCell);
 	
-	StructureData.Insert("OrderWarehouse", Not StructureData.Division.OrderWarehouse);
-	StructureData.Insert("OrderWarehouseOfProducts", Not StructureData.Division.TransferRecipient.OrderWarehouse);
-	StructureData.Insert("OrderWarehouseWaste", Not StructureData.Division.RecipientOfWastes.OrderWarehouse);
-	StructureData.Insert("OrderWarehouseOfInventory", Not StructureData.Division.TransferSource.OrderWarehouse);
+	StructureData.Insert("OrderWarehouse", Not StructureData.Department.OrderWarehouse);
+	StructureData.Insert("OrderWarehouseOfProducts", Not StructureData.Department.TransferRecipient.OrderWarehouse);
+	StructureData.Insert("OrderWarehouseWaste", Not StructureData.Department.RecipientOfWastes.OrderWarehouse);
+	StructureData.Insert("OrderWarehouseOfInventory", Not StructureData.Department.TransferSource.OrderWarehouse);
 	
 	Return StructureData;
 	
@@ -444,31 +444,31 @@ Procedure SetModeAndChoiceList()
 		Items.DisposalsCell.Enabled = False;
 	EndIf;
 	
-	If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
+	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
 		AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses.Get() Then
 		
 		Items.StructuralUnit.ListChoiceMode = True;
-		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 		
 		Items.ProductsStructuralUnitAssembling.ListChoiceMode = True;
-		Items.ProductsStructuralUnitAssembling.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.ProductsStructuralUnitAssembling.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		Items.ProductsStructuralUnitAssembling.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 		
 		Items.ProductsStructuralUnitDisassembling.ListChoiceMode = True;
-		Items.ProductsStructuralUnitDisassembling.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.ProductsStructuralUnitDisassembling.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		Items.ProductsStructuralUnitDisassembling.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 		
 		Items.InventoryStructuralUnitAssembling.ListChoiceMode = True;
-		Items.InventoryStructuralUnitAssembling.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.InventoryStructuralUnitAssembling.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		Items.InventoryStructuralUnitAssembling.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 		
 		Items.InventoryStructuralUnitDisassembling.ListChoiceMode = True;
-		Items.InventoryStructuralUnitDisassembling.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.InventoryStructuralUnitDisassembling.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		Items.InventoryStructuralUnitDisassembling.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 		
 		Items.DisposalsStructuralUnit.ListChoiceMode = True;
-		Items.DisposalsStructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.DisposalsStructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		Items.DisposalsStructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 		
 	EndIf;
@@ -1146,7 +1146,7 @@ Procedure StructuralUnitOnChange(Item)
 	If ValueIsFilled(Object.StructuralUnit) Then
 	
 		StructureData = New Structure();
-		StructureData.Insert("Division", Object.StructuralUnit);
+		StructureData.Insert("Department", Object.StructuralUnit);
 		
 		StructureData = GetDataStructuralUnitOnChange(StructureData);
 		

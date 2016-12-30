@@ -160,13 +160,6 @@
 			</inputParameters>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ProductionSubdivision</dataPath>
-			<field>ProductionSubdivision</field>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Products</dataPath>
 			<field>Products</field>
 			<role>
@@ -287,11 +280,27 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Division</dataPath>
-			<field>Division</field>
+			<dataPath>ProductionSubdepartment</dataPath>
+			<field>ProductionSubdepartment</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Production subdepartment</v8:content>
+				</v8:item>
+			</title>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
 			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Department</dataPath>
+			<field>Department</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Department</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<item xsi:type="DataSetQuery">
 			<name>ProductRelease</name>
@@ -351,13 +360,6 @@
 				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>ProductionSubdivision</dataPath>
-				<field>ProductionSubdivision</field>
-				<role>
-					<dcscom:dimension>true</dcscom:dimension>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>Products</dataPath>
 				<field>Products</field>
 				<role>
@@ -400,10 +402,23 @@
 					<dcscom:required>true</dcscom:required>
 				</role>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ProductionSubdepartment</dataPath>
+				<field>ProductionSubdepartment</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Production subdepartment</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
 			<dataSource>DataSource1</dataSource>
 			<query>SELECT ALLOWED
 	ProductReleaseTurnovers.Company AS CompanyProducts,
-	ProductReleaseTurnovers.StructuralUnit AS ProductionSubdivision,
+	ProductReleaseTurnovers.StructuralUnit AS ProductionSubdepartment,
 	ProductReleaseTurnovers.ProductsAndServices AS Products,
 	ProductReleaseTurnovers.Characteristic AS ProductCharacteristic,
 	ProductReleaseTurnovers.Batch AS BatchProducts,
@@ -501,10 +516,6 @@ FROM
 				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>ProductionSubdivision</dataPath>
-				<field>ProductionSubdivision</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>ProductsQuantity</dataPath>
 				<field>ProductsQuantity</field>
 			</field>
@@ -516,16 +527,29 @@ FROM
 				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Division</dataPath>
-				<field>Division</field>
-				<role>
-					<dcscom:dimension>true</dcscom:dimension>
-				</role>
+				<dataPath>ProductionSubdepartment</dataPath>
+				<field>ProductionSubdepartment</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Production subdepartment</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Department</dataPath>
+				<field>Department</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Department</v8:content>
+					</v8:item>
+				</title>
 			</field>
 			<dataSource>DataSource1</dataSource>
 			<query>SELECT ALLOWED
 	Inventory.Company AS CompanyProducts,
-	Inventory.StructuralUnitCorr AS ProductionSubdivision,
+	Inventory.StructuralUnitCorr AS ProductionSubdepartment,
 	Inventory.ProductsAndServicesCorr AS Products,
 	Inventory.CharacteristicCorr AS ProductCharacteristic,
 	Inventory.BatchCorr AS BatchProducts,
@@ -537,7 +561,7 @@ FROM
 	Inventory.ProductsAndServices AS ProductsAndServices,
 	Inventory.Characteristic AS Characteristic,
 	Inventory.Batch AS Batch,
-	Inventory.StructuralUnit AS Division,
+	Inventory.StructuralUnit AS Department,
 	Inventory.CustomerOrder AS CustomerOrder,
 	Inventory.GLAccount AS GLAccount,
 	Inventory.Specification AS Specification,
@@ -682,12 +706,6 @@ WHERE
 					<dcscor:parameter>EndOfPeriod</dcscor:parameter>
 					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
 					<dcsset:userSettingID>0ae2ea43-076b-44dd-9a2b-7083ac86a36c</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>TitleOutput</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>6013bbde-50f0-4b26-b439-cc36182df7fc</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>

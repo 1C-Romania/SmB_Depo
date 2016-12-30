@@ -82,8 +82,8 @@ EndProcedure
 //    * InsuranceNumberRPF  - String - (return value) employee INILA.
 //    * Position          - String - (return value) employee position in the company.
 //
-//    * Division      - String - (return value) separate
-//                           company division where employee works.
+//    * Department      - String - (return value) separate
+//                           company department where employee works.
 //
 //    * DocumentKind        - String - (return value) 21 or 91 rows. 21 - password,
 //                           91 - other document provided by the regulation of the Russian Federation (according to SPDUL).

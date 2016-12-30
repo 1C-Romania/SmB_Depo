@@ -305,7 +305,7 @@ Procedure RunControl(AdditionalProperties, Cancel)
 	If Not ResultsArray[0].IsEmpty() Then
 		QueryResultSelection = ResultsArray[0].Select();
 		While QueryResultSelection.Next() Do
-			MessageText = NStr("en='In row No.%Number% of the ""Employees"" tabular section the employee %Employee% is already working in the %StructuralUnit% division.';ru='В строке №%Номер% табл. части ""Сотрудники"" сотрудник %Сотрудник% уже работает в подразделении %СтруктурнаяЕдиница%.'");
+			MessageText = NStr("en='In row No.%Number% of the ""Employees"" tabular section the employee %Employee% is already working in the %StructuralUnit% department.';ru='В строке №%Номер% табл. части ""Сотрудники"" сотрудник %Сотрудник% уже работает в подразделении %СтруктурнаяЕдиница%.'");
 			MessageText = StrReplace(MessageText, "%Number%", QueryResultSelection.LineNumber); 
 			MessageText = StrReplace(MessageText, "%Employee%", QueryResultSelection.Employee); 
 			MessageText = StrReplace(MessageText, "%StructuralUnit%", QueryResultSelection.StructuralUnit);
@@ -323,7 +323,7 @@ Procedure RunControl(AdditionalProperties, Cancel)
 	If Not ResultsArray[1].IsEmpty() Then
 		QueryResultSelection = ResultsArray[1].Select();
 		While QueryResultSelection.Next() Do
-			MessageText = NStr("en='In row No.%Number% of the ""Employees"" tabular section for individual %Individual%, the employee %Employee% is already hired to a primary job in the %StructuralUnit% division.';ru='В строке №%Номер% табл. части ""Сотрудники"" для физлица %Физлицо% уже принят на основное место работы сотрудник %Сотрудник% в подразделение %СтруктурнаяЕдиница%.'");
+			MessageText = NStr("en='In row No.%Number% of the ""Employees"" tabular section for individual %Individual%, the employee %Employee% is already hired to a primary job in the %StructuralUnit% department.';ru='В строке №%Номер% табл. части ""Сотрудники"" для физлица %Физлицо% уже принят на основное место работы сотрудник %Сотрудник% в подразделение %СтруктурнаяЕдиница%.'");
 			MessageText = StrReplace(MessageText, "%Number%", QueryResultSelection.LineNumber); 
 			MessageText = StrReplace(MessageText, "%Employee%", QueryResultSelection.AdoptedEmployee); 
 			MessageText = StrReplace(MessageText, "%StructuralUnit%", QueryResultSelection.StructuralUnit); 

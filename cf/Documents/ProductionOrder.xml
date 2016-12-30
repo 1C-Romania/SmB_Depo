@@ -314,7 +314,7 @@
 			<Explanation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Kit orders to warehouse or production orders to division production</v8:content>
+					<v8:content>Kit orders to warehouse or production orders to department production</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -640,7 +640,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Division or warehouse - order performer</v8:content>
+							<v8:content>Department or warehouse - order performer</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -661,7 +661,7 @@
 					<ChoiceParameters>
 						<app:item name="Filter.StructuralUnitType">
 							<app:value xsi:type="v8:FixedArray">
-								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</v8:Value>
+								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</v8:Value>
 								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Warehouse</v8:Value>
 							</app:value>
 						</app:item>
@@ -1116,7 +1116,7 @@
 					<ChoiceParameters>
 						<app:item name="Filter.StructuralUnitType">
 							<app:value xsi:type="v8:FixedArray">
-								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</v8:Value>
+								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</v8:Value>
 								<v8:Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Warehouse</v8:Value>
 							</app:value>
 						</app:item>

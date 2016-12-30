@@ -157,7 +157,7 @@ Procedure FillByTemplate(PatternName)
 		AddRowToQueryParametersTable("EndOfPeriod", "End of period");
 		AddRowToQueryParametersTable("Employee", "Employee");
 		AddRowToQueryParametersTable("Company", "Company");
-		AddRowToQueryParametersTable("Division", "Division");
+		AddRowToQueryParametersTable("Department", "Department");
 		
 		Object.Query =
 		"SELECT
@@ -166,7 +166,7 @@ Procedure FillByTemplate(PatternName)
 		|	AccumulationRegister.WorkOrders.Turnovers(&BeginOfPeriod, &EndOfPeriod, Auto, ) AS Source
 		|WHERE
 		|	Source.Employee = &Employee
-		|	AND Source.StructuralUnit = &Division
+		|	AND Source.StructuralUnit = &Department
 		|	AND Source.Company = &Company";
 	
 	EndIf;

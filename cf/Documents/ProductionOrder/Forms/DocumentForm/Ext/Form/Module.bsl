@@ -83,7 +83,7 @@ EndFunction // GetDataCharacteristicOnChange()
 Function GetDataStructuralUnitOnChange(Warehouse)
 	
 	If Warehouse.TransferSource.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse
-		OR Warehouse.TransferSource.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
+		OR Warehouse.TransferSource.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
 		
 		Return Warehouse.TransferSource;
 		
@@ -101,7 +101,7 @@ EndFunction // GetDataStructuralUnitOnChange()
 Function GetDataStructuralUnitReserveOnChange(Warehouse)
 	
 	If Warehouse.TransferRecipient.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse
-		OR Warehouse.TransferRecipient.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
+		OR Warehouse.TransferRecipient.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
 		
 		Return Warehouse.TransferRecipient;
 		
@@ -194,20 +194,20 @@ EndProcedure // SetVisibleAndEnabled()
 &AtServer
 Procedure SetModeAndChoiceList()
 	
-	If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
+	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
 		AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses.Get() Then
 		
 		Items.StructuralUnit.ListChoiceMode = True;
-		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 		
 		Items.ProductionStructuralUnitReserve.ListChoiceMode = True;
 		Items.ProductionStructuralUnitReserve.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
-		Items.ProductionStructuralUnitReserve.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.ProductionStructuralUnitReserve.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		
 		Items.InventoryStructuralUnitReserve.ListChoiceMode = True;
 		Items.InventoryStructuralUnitReserve.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
-		Items.InventoryStructuralUnitReserve.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.InventoryStructuralUnitReserve.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		
 	EndIf;
 	

@@ -5490,8 +5490,8 @@ Function GenerateTORG12SellerFTSCML(DataTree)
 			FillXDTOProperty(CargoFrom, "CargoShpd", Consignor, , ErrorText);
 			CodeRCEAP = TreeAttributeValue(DataTree, "Consignor.OKPDCode");
 			FillXDTOProperty(CargoFrom, "RCEAP", CodeRCEAP, , ErrorText);
-			OrganizationDivision = TreeAttributeValue(DataTree, "Consignor.StructuralDivision");
-			FillXDTOProperty(CargoFrom, "StructDep", OrganizationDivision, , ErrorText);
+			OrganizationDepartment = TreeAttributeValue(DataTree, "Consignor.StructuralDepartment");
+			FillXDTOProperty(CargoFrom, "StructDep", OrganizationDepartment, , ErrorText);
 			FillXDTOProperty(PrInD, "CargoFrom", CargoFrom, , ErrorText);
 		EndIf;
 		
@@ -6366,8 +6366,8 @@ Function GenerateCorrectingDocumentCML(DataTree)
 			FillXDTOProperty(CargoFrom, "CargoShpd", Consignor, , ErrorText);
 			CodeOKPD = TreeAttributeValue(DataTree, "Consignor.OKPDCode");
 			FillXDTOProperty(CargoFrom, "RCEAP", CodeOKPD, , ErrorText);
-			OrganizationDivision = TreeAttributeValue(DataTree, "Consignor.StructuralDivision");
-			FillXDTOProperty(CargoFrom, "StructDep", OrganizationDivision, , ErrorText);
+			OrganizationDepartment = TreeAttributeValue(DataTree, "Consignor.StructuralDepartment");
+			FillXDTOProperty(CargoFrom, "StructDep", OrganizationDepartment, , ErrorText);
 			FillXDTOProperty(PrInD, "CargoFrom", CargoFrom, , ErrorText);
 		EndIf;
 		
@@ -7449,8 +7449,8 @@ Function DeleteFornTorg12CML(ParametersStructure)
 			If ValueIsFilled(ParametersStructure.InfoAboutShipper.CodeRCEAP) Then
 				FillXDTOProperty(CargoFrom, "RCEAP", ParametersStructure.InfoAboutShipper.CodeRCEAP, , ErrorText);
 			EndIf;
-			If ValueIsFilled(ParametersStructure.InfoAboutShipper.OrganizationDivision) Then
-				FillXDTOProperty(CargoFrom, "StructDep", ParametersStructure.InfoAboutShipper.OrganizationDivision,,
+			If ValueIsFilled(ParametersStructure.InfoAboutShipper.OrganizationDepartment) Then
+				FillXDTOProperty(CargoFrom, "StructDep", ParametersStructure.InfoAboutShipper.OrganizationDepartment,,
 					ErrorText);
 			EndIf;
 			FillXDTOProperty(PrInD, "CargoFrom", CargoFrom, , ErrorText);
@@ -11082,7 +11082,7 @@ Function Torg12StructureOfParameters(ThisIsInd)
 	
 	InfoAboutShipper = New Structure;
 	InfoAboutShipper.Insert("Consignor", ExchangeParticipantAttributesStructureFTS());
-	InfoAboutShipper.Insert("OrganizationDivision");
+	InfoAboutShipper.Insert("OrganizationDepartment");
 	InfoAboutShipper.Insert("CodeRCEAP");
 	
 	ParametersStructure.Insert("InfoAboutShipper", InfoAboutShipper);
@@ -13097,7 +13097,7 @@ Procedure ReadTORG12XDTO(ED, ParseTree, NewED, Error)
 	ShipperAdditParameters = New Structure;
 	Vendor = ED.Document.PrInD.Vendor;
 	If ED.Document.PrInD.CargoFrom <> Undefined AND ED.Document.PrInD.CargoFrom.CargoShpd <> Undefined Then
-		ShipperAdditParameters.Insert("OrganizationDivision", ED.Document.PrInD.CargoFrom.StructDep);
+		ShipperAdditParameters.Insert("OrganizationDepartment", ED.Document.PrInD.CargoFrom.StructDep);
 		ShipperAdditParameters.Insert("RCEAP", ED.Document.PrInD.CargoFrom.RCEAP);
 		Consignor = ED.Document.PrInD.CargoFrom.CargoShpd;
 		If Not ED.Document.PrInD.CargoFrom.CargoShpd.Contact = Undefined Then
@@ -15541,7 +15541,7 @@ Procedure ReadCorrectingDocumentXDTO(ED, ParseTree, NewED, Error)
 	ShipperAdditParameters = New Structure;
 	Vendor = ED.Document.PrInD.Vendor;
 	If ED.Document.PrInD.CargoFrom <> Undefined AND ED.Document.PrInD.CargoFrom.CargoShpd <> Undefined Then
-		ShipperAdditParameters.Insert("OrganizationDivision", ED.Document.PrInD.CargoFrom.StructDep);
+		ShipperAdditParameters.Insert("OrganizationDepartment", ED.Document.PrInD.CargoFrom.StructDep);
 		ShipperAdditParameters.Insert("RCEAP", ED.Document.PrInD.CargoFrom.RCEAP);
 		Consignor = ED.Document.PrInD.CargoFrom.CargoShpd;
 		If Not ED.Document.PrInD.CargoFrom.CargoShpd.Contact = Undefined Then
@@ -20440,7 +20440,7 @@ Function GetConsignmentDataToPrint(ObjectString, ParseTree)
 	
 	FillingDataHeader.Insert("InfoAboutConsignee", InfoAboutConsignee);
 	
-	FillingDataHeader.Insert("DivisionsPresentation", GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.StructuralDivision"));
+	FillingDataHeader.Insert("DepartmentsPresentation", GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.StructuralDepartment"));
 	
 	FillingDataHeader.Insert("BasisNumber", GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "NumberByCustomerData"));
 	FillingDataHeader.Insert("BasisDate", GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "DateByCustomerData"));
@@ -22552,7 +22552,7 @@ Function GetCorrectingDocumentDataToPrint(ObjectString, ParseTree)
 	
 	FillingDataHeader.Insert("InfoAboutConsignee", InfoAboutConsignee);
 	
-	FillingDataHeader.Insert("DivisionsPresentation", GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.StructuralDivision"));
+	FillingDataHeader.Insert("DepartmentsPresentation", GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.StructuralDepartment"));
 	FillingDataHeader.Insert("CompanyByOKPO", 		 FillingDataHeader.InfoAboutVendor.CodeByOKPO);
 	
 	FillingDataHeader.Insert("VendorPresentation",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.Name"));
@@ -27449,7 +27449,7 @@ Procedure ReadExtractSberbankXDTO(ED, ParseTree, NewED, Error)
 			DocumentAttributes.Add(Document.receiptDate,      "ReceiptDateInPayersBank");
 			DocumentAttributes.Add(Document.signDate,         "PayersBankStampDate");
 			DocumentAttributes.Add(Document.bankNumDoc,       "Number");
-			DocumentAttributes.Add(Document.branchCode,       "DivisionCode");
+			DocumentAttributes.Add(Document.branchCode,       "DepartmentCode");
 			DocumentAttributes.Add(Document.carryDate,        "DateCredited");
 			DocumentAttributes.Add(Document.dc,               "ApplicationSign");
 			DocumentAttributes.Add(Document.docCurr,          "PaymentCurrency");

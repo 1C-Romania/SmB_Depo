@@ -2482,7 +2482,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AdvanceHolder");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Correspondence");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "TaxKind");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Department");
 		
 		If Counterparty.DoOperationsByDocuments Then
 			For Each RowPaymentDetails IN PaymentDetails Do
@@ -2541,7 +2541,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Counterparty");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Correspondence");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "TaxKind");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Department");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Contract");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.AdvanceFlag");
@@ -2563,7 +2563,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.UnitConversionFactor");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.VATRate");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AdvanceHolder");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Department");
 		PaymentAmount = PayrollPayment.Total("PaymentAmount");
 		If PaymentAmount <> DocumentAmount Then
 			MessageText = NStr("en='Document amount: %DocumentAmount% %CashAssetsCurrency% does not correspond to the posted payments in the tabular section: %PaymentAmount% %CashAssetsCurrency%!';ru='Сумма документа: %СуммаДокумента% %ВалютаДенежныхСредств%, не соответствует сумме разнесенных платежей в табличной части: %СуммаПлатежа% %ВалютаДенежныхСредств%!'");
@@ -2586,7 +2586,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Counterparty");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "TaxKind");
 		If Correspondence.TypeOfAccount <> Enums.GLAccountsTypes.Expenses Then
-			SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
+			SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Department");
 		EndIf;
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Contract");
@@ -2601,7 +2601,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AdvanceHolder");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Counterparty");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Correspondence");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Department");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Contract");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.AdvanceFlag");

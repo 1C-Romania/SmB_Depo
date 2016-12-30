@@ -245,9 +245,9 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 				
 			ElsIf TypeOf(Selection.Recorder) = Type("DocumentRef.InventoryTransfer")
 				AND Selection.OperationKind = Enums.OperationKindsInventoryTransfer.Move
-				AND Selection.StructuralUnitCorr.StructuralUnitType <> Enums.StructuralUnitsTypes.Division Then
+				AND Selection.StructuralUnitCorr.StructuralUnitType <> Enums.StructuralUnitsTypes.Department Then
 				
-				ContentOperations = NStr("en='Products transferred to other division';ru='Продукция, переданная в другое подразделение'");
+				ContentOperations = NStr("en='Products transferred to other department';ru='Продукция, переданная в другое подразделение'");
 				
 			Else
 				

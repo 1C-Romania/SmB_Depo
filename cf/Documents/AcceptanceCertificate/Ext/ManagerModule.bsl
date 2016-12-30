@@ -28,7 +28,7 @@ Procedure GenerateTableInventory(DocumentRefAcceptanceCertificate, StructureAddi
 	|	SUM(TableInventory.Quantity) AS Quantity,
 	|	0 AS Amount,
 	|	SUM(TableInventory.VATAmount) AS VATAmount,
-	|	TableInventory.StructuralUnit AS Division,
+	|	TableInventory.StructuralUnit AS Department,
 	|	TableInventory.Responsible AS Responsible,
 	|	FALSE AS FixedCost,
 	|	TableInventory.GLAccountCost AS AccountDr,
@@ -228,7 +228,7 @@ Procedure GenerateTableInventory(DocumentRefAcceptanceCertificate, StructureAddi
 			
 			TableRowReceipt.SalesDocument = Undefined;
 			TableRowReceipt.OrderSales = Undefined;
-			TableRowReceipt.Division = Undefined;
+			TableRowReceipt.Department = Undefined;
 			TableRowReceipt.Responsible = Undefined;
 			
 			BalanceRowsArray = TableInventoryBalances.FindRows(StructureForSearch);
@@ -373,7 +373,7 @@ Procedure GenerateTableSales(DocumentRefAcceptanceCertificate, StructureAddition
 	|	TableSales.CustomerOrder AS CustomerOrder,
 	|	TableSales.Document AS Document,
 	|	TableSales.VATRate AS VATRate,
-	|	TableSales.StructuralUnit AS Division,
+	|	TableSales.StructuralUnit AS Department,
 	|	TableSales.Responsible AS Responsible,
 	|	SUM(TableSales.Quantity) AS Quantity,
 	|	SUM(TableSales.VATAmountSales) AS VATAmount,
@@ -448,7 +448,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefAcceptanceCertificate, Struc
 	|	TableIncomeAndExpenses.LineNumber AS LineNumber,
 	|	TableIncomeAndExpenses.Period AS Period,
 	|	TableIncomeAndExpenses.Company AS Company,
-	|	TableIncomeAndExpenses.DivisionSales AS StructuralUnit,
+	|	TableIncomeAndExpenses.DepartmentSales AS StructuralUnit,
 	|	TableIncomeAndExpenses.BusinessActivitySales AS BusinessActivity,
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales AS GLAccount,
@@ -469,7 +469,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefAcceptanceCertificate, Struc
 	|	TableIncomeAndExpenses.Period,
 	|	TableIncomeAndExpenses.LineNumber,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.DivisionSales,
+	|	TableIncomeAndExpenses.DepartmentSales,
 	|	TableIncomeAndExpenses.BusinessActivitySales,
 	|	TableIncomeAndExpenses.CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales
@@ -1350,7 +1350,7 @@ Procedure InitializeDocumentData(DocumentRefAcceptanceCertificate, StructureAddi
 	|	AcceptanceCertificateWorksAndServices.LineNumber AS LineNumber,
 	|	AcceptanceCertificateWorksAndServices.Ref.Date AS Period,
 	|	&Company AS Company,
-	|	AcceptanceCertificateWorksAndServices.Ref.Division AS StructuralUnit,
+	|	AcceptanceCertificateWorksAndServices.Ref.Department AS StructuralUnit,
 	|	AcceptanceCertificateWorksAndServices.Ref.Responsible AS Responsible,
 	|	AcceptanceCertificateWorksAndServices.ProductsAndServices.ExpensesGLAccount AS GLAccount,
 	|	AcceptanceCertificateWorksAndServices.ProductsAndServices AS ProductsAndServices,
@@ -1370,7 +1370,7 @@ Procedure InitializeDocumentData(DocumentRefAcceptanceCertificate, StructureAddi
 	|	AcceptanceCertificateWorksAndServices.Ref.Counterparty.GLAccountCustomerSettlements AS GLAccountCustomerSettlements,
 	|	AcceptanceCertificateWorksAndServices.Ref.Contract.SettlementsCurrency AS SettlementsCurrency,
 	|	AcceptanceCertificateWorksAndServices.Ref.Contract AS Contract,
-	|	AcceptanceCertificateWorksAndServices.Ref.Division AS DivisionSales,
+	|	AcceptanceCertificateWorksAndServices.Ref.Department AS DepartmentSales,
 	|	AcceptanceCertificateWorksAndServices.ProductsAndServices.BusinessActivity AS BusinessActivitySales,
 	|	AcceptanceCertificateWorksAndServices.ProductsAndServices.BusinessActivity.GLAccountRevenueFromSales AS AccountStatementSales,
 	|	AcceptanceCertificateWorksAndServices.ProductsAndServices.BusinessActivity.GLAccountCostOfSales AS GLAccountCost,
@@ -1529,7 +1529,7 @@ Procedure InitializeDocumentData(DocumentRefAcceptanceCertificate, StructureAddi
 	|			ELSE AcceptanceCertificateDiscountsMarkups.Amount * AcceptanceCertificateDiscountsMarkups.Ref.ExchangeRate * ManagCurrencyRates.Multiplicity / (ManagCurrencyRates.ExchangeRate * AcceptanceCertificateDiscountsMarkups.Ref.Multiplicity)
 	|		END AS NUMBER(15, 2)) AS Amount,
 	|	AcceptanceCertificateDiscountsMarkups.Ref.Date AS Period,
-	|	AcceptanceCertificateDiscountsMarkups.Ref.Division AS StructuralUnit
+	|	AcceptanceCertificateDiscountsMarkups.Ref.Department AS StructuralUnit
 	|INTO TemporaryTableAutoDiscountsMarkups
 	|FROM
 	|	Document.AcceptanceCertificate.DiscountsMarkups AS AcceptanceCertificateDiscountsMarkups

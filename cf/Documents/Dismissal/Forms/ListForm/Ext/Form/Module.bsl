@@ -26,7 +26,7 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 	
 	FilterEmployee			= Settings.Get("FilterEmployee");
 	FilterCompany 		= Settings.Get("FilterCompany");
-	FilterDivision 		= Settings.Get("FilterDivision");
+	FilterDepartment 		= Settings.Get("FilterDepartment");
 	
 	SmallBusinessClientServer.SetListFilterItem(List, "Employees.Employee", FilterEmployee, ValueIsFilled(FilterEmployee));
 	SmallBusinessClientServer.SetListFilterItem(List, "Company", FilterCompany, ValueIsFilled(FilterCompany));

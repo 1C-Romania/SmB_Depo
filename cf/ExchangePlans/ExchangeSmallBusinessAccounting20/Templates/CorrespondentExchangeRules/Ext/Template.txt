@@ -2291,8 +2291,8 @@ EndIf;</AfterImport>
 				<Values/>
 			</Rule>
 			<Rule>
-				<Code>Divisions</Code>
-				<Description>Catalog: Divisions companies</Description>
+				<Code>Departments</Code>
+				<Description>Catalog: Departments companies</Description>
 				<Order>1150</Order>
 				<SynchronizeByID>true</SynchronizeByID>
 				<SearchBySearchFieldsIfNotFoundByID>true</SearchBySearchFieldsIfNotFoundByID>
@@ -2325,7 +2325,7 @@ EndIf;</AfterImport>
 						<Code>4</Code>
 						<Description>Parent --&gt; Parent</Description>
 						<Order>200</Order>
-						<Source Name="Parent" Kind="Property" Type="CatalogRef.CompaniesDivisions"/>
+						<Source Name="Parent" Kind="Property" Type="CatalogRef.CompaniesDepartments"/>
 						<Receiver Name="Parent" Kind="Property" Type="CatalogRef.StructuralUnits"/>
 					</Property>
 					<Property>
@@ -2335,7 +2335,7 @@ EndIf;</AfterImport>
 						<Order>250</Order>
 						<Source Name="" Kind=""/>
 						<Receiver Name="StructuralUnitType" Kind="Attribute" Type="EnumRef.StructuralUnitsTypes"/>
-						<BeforeExport>Expression = "Enums.StructuralUnitsTypes.Division";</BeforeExport>
+						<BeforeExport>Expression = "Enums.StructuralUnitsTypes.Department";</BeforeExport>
 					</Property>
 					<Property Search="true">
 						<Code>6</Code>
@@ -3686,8 +3686,8 @@ EndIf;</BeforeExport>
 	EndIf;
 	
 	If Object.OperationKind = Enums.OperationKindsCashPayment.SalaryForEmployee
-		AND Not ValueIsFilled(Object.Division) Then
-		Object.Division = Catalogs.StructuralUnits.MainDivision;
+		AND Not ValueIsFilled(Object.Department) Then
+		Object.Department = Catalogs.StructuralUnits.MainDepartment;
 	EndIf;
 	
 	// Fill in VAT rate.
@@ -3763,13 +3763,13 @@ EndIf;</BeforeExport>
 						</Property>
 						<Property>
 							<Code>36</Code>
-							<Description> --&gt; Division</Description>
+							<Description> --&gt; Department</Description>
 							<Order>400</Order>
 							<Source Name="" Kind=""/>
-							<Receiver Name="Division" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
-							<ConversionRuleCode>Divisions                                     </ConversionRuleCode>
+							<Receiver Name="Department" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
+							<ConversionRuleCode>Departments                                     </ConversionRuleCode>
 							<BeforeExport>If Source.OperationKind = Enums.OperationKindsRKO.SalaryPayEmployee Then
-	Value = Source.PayrollSheet.CounterpartyDivision;
+	Value = Source.PayrollSheet.CounterpartyDepartment;
 Else
 	Value = Undefined;
 EndIf;</BeforeExport>
@@ -4858,10 +4858,10 @@ EndIf;</BeforeExport>
 			</Rule>
 			<Rule Disable="false">
 				<Code>UnitCompanies</Code>
-				<Description>Catalog "Companies divisions"</Description>
+				<Description>Catalog "Companies Departments"</Description>
 				<Order>1150</Order>
 				<Description>Filter data exchange: DoDump</Description>
-				<ConversionRuleCode>Divisions                                     </ConversionRuleCode>
+				<ConversionRuleCode>Departments                                     </ConversionRuleCode>
 				<DataSelectionVariant>StandardSelection</DataSelectionVariant>
 				<SelectionObject>CatalogRef.UnitCompanies</SelectionObject>
 			</Rule>

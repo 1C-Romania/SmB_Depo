@@ -6375,15 +6375,15 @@ Function Digest(FileName, EDAgreement) Export
 																	TSRow,
 																	"BankDocumentNumber");
 			FillingDataRows.Add(BankDocumentNumber, "ComTransInfo.BankNumDoc=");
-			DivisionCode = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
+			DepartmentCode = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
 																	ParseTree,
 																	TSRow,
-																	"DivisionCode");
-			DivisionCode = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
+																	"DepartmentCode");
+			DepartmentCode = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
 																	ParseTree,
 																	TSRow,
-																	"DivisionCode");
-			FillingDataRows.Add(DivisionCode, "ComTransInfo.BranchCode=");
+																	"DepartmentCode");
+			FillingDataRows.Add(DepartmentCode, "ComTransInfo.BranchCode=");
 			PostingDate = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
 																	ParseTree,
 																	TSRow,

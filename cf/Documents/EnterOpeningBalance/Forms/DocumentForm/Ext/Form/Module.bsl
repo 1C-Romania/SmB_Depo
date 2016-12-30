@@ -447,14 +447,14 @@ Procedure SetVisibleByFOUseProductionSubsystem()
 	If Constants.FunctionalOptionUseSubsystemProduction.Get() Then
 		
 		// Setting the method of structural unit selection depending on FO.
-		If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
+		If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
 			AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses.Get() Then
 			
 			Items.InventoryStructuralUnit.ListChoiceMode = True;
 			If ValueIsFilled(MainWarehouse) Then
 				Items.InventoryStructuralUnit.ChoiceList.Add(MainWarehouse);
 			EndIf;
-			Items.InventoryStructuralUnit.ChoiceList.Add(MainDivision);
+			Items.InventoryStructuralUnit.ChoiceList.Add(MainDepartment);
 			
 		EndIf;
 		
@@ -568,8 +568,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-	MainDivision = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+	MainDepartment = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 	
 	// Filling in the additional attributes of tabular section.
 	SetAccountsAttributesVisible(, , , , "AccountsPayable");
@@ -714,7 +714,7 @@ Procedure FixedAssetsOnStartEdit(Item, NewRow, Copy)
 	If NewRow Then
  
 		TabularSectionRow = Items.FixedAssets.CurrentData;
-		TabularSectionRow.StructuralUnit = MainDivision;
+		TabularSectionRow.StructuralUnit = MainDepartment;
 		
 	EndIf;
 	
@@ -802,7 +802,7 @@ Procedure DirectCostOnStartEdit(Item, NewRow, Copy)
 	If NewRow Then
  
 		TabularSectionRow = Items.DirectCost.CurrentData;
-		TabularSectionRow.StructuralUnit = MainDivision;
+		TabularSectionRow.StructuralUnit = MainDepartment;
 		
 	EndIf;
 	
@@ -822,7 +822,7 @@ Procedure InventoryOnStartEdit(Item, NewRow, Copy)
 		If ValueIsFilled(MainWarehouse) Then
 			TabularSectionRow.StructuralUnit = MainWarehouse;
 		Else
-			TabularSectionRow.StructuralUnit = MainDivision;
+			TabularSectionRow.StructuralUnit = MainDepartment;
 		EndIf;
 	EndIf;
 	
@@ -1470,7 +1470,7 @@ Procedure PayrollPaymentsOnStartEdit(Item, NewRow, Copy)
 		TabularSectionRow = Items.PayrollPayments.CurrentData;
 		TabularSectionRow.Currency = CurrencyByDefault;
 		
-		TabularSectionRow.StructuralUnit = MainDivision;
+		TabularSectionRow.StructuralUnit = MainDepartment;
 		
 	EndIf;
 	

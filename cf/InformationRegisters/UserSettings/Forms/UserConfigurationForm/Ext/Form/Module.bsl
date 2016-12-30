@@ -36,11 +36,11 @@ Procedure FillTree()
 	|	Settings.Parent,
 	|	Settings.Ref AS Setting,
 	|	Settings.IsFolder AS IsFolder,
-	|	Not Settings.IsFolder AS PictureNumber,
+	|	NOT Settings.IsFolder AS PictureNumber,
 	|	SettingsValue.Value,
 	|	Constants.FunctionalOptionAccountingByMultipleCompanies,
 	|	Constants.FunctionalOptionAccountingByMultipleWarehouses,
-	|	Constants.FunctionalOptionAccountingByMultipleDivisions
+	|	Constants.FunctionalOptionAccountingByMultipleDepartments
 	|FROM
 	|	ChartOfCharacteristicTypes.UserSettings AS Settings
 	|		LEFT JOIN InformationRegister.UserSettings AS SettingsValue
@@ -48,35 +48,35 @@ Procedure FillTree()
 	|			AND (SettingsValue.User = &User),
 	|	Constants AS Constants
 	|WHERE
-	|	Not Settings.DeletionMark
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.MainCompany)
-	|				AND Not Constants.FunctionalOptionAccountingByMultipleCompanies)
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.MainWarehouse)
-	|				AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses)
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.MainDivision)
-	|				AND Not Constants.FunctionalOptionAccountingByMultipleDivisions)
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.StatusOfNewCustomerOrder)
-	|				AND Not Constants.UseCustomerOrderStates)
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.StatusOfNewPurchaseOrder)
-	|				AND Not Constants.UsePurchaseOrderStates)
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.StatusOfNewProductionOrder)
-	|				AND Not Constants.UseProductionOrderStates)
+	|	NOT Settings.DeletionMark
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.MainCompany)
+	|				AND NOT Constants.FunctionalOptionAccountingByMultipleCompanies)
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.MainWarehouse)
+	|				AND NOT Constants.FunctionalOptionAccountingByMultipleWarehouses)
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.MainDepartment)
+	|				AND NOT Constants.FunctionalOptionAccountingByMultipleDepartments)
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.StatusOfNewCustomerOrder)
+	|				AND NOT Constants.UseCustomerOrderStates)
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.StatusOfNewPurchaseOrder)
+	|				AND NOT Constants.UsePurchaseOrderStates)
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.StatusOfNewProductionOrder)
+	|				AND NOT Constants.UseProductionOrderStates)
 	|	AND (Settings.Parent <> VALUE(ChartOfCharacteristicTypes.UserSettings.MultiplePickSetting)
-	|		OR Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UseNewSelectionMechanism))
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UsePerformerSalariesInJobOrder)
-	|				AND Not Constants.FunctionalOptionUseSubsystemPayroll)
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UsePerformerSalariesInJobOrder)
-	|				AND Not Constants.FunctionalOptionUseWorkSubsystem)
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UseMaterialsInJobOrder)
-	|				AND Not Constants.FunctionalOptionUseWorkSubsystem)
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UseConsumerMaterialsInJobOrder)
-	|				AND Not Constants.FunctionalOptionUseWorkSubsystem)
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UseProductsInJobOrder)
-	|				AND Not Constants.FunctionalOptionUseWorkSubsystem)
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.WorkKindPositionInJobOrder)
-	|				AND Not Constants.FunctionalOptionUseWorkSubsystem)
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.DataImportMethodFromExternalSources))
-	|	AND Not(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.DataImportFromExternalSources))
+	|			OR Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UseNewSelectionMechanism))
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UsePerformerSalariesInJobOrder)
+	|				AND NOT Constants.FunctionalOptionUseSubsystemPayroll)
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UsePerformerSalariesInJobOrder)
+	|				AND NOT Constants.FunctionalOptionUseWorkSubsystem)
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UseMaterialsInJobOrder)
+	|				AND NOT Constants.FunctionalOptionUseWorkSubsystem)
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UseConsumerMaterialsInJobOrder)
+	|				AND NOT Constants.FunctionalOptionUseWorkSubsystem)
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.UseProductsInJobOrder)
+	|				AND NOT Constants.FunctionalOptionUseWorkSubsystem)
+	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.WorkKindPositionInJobOrder)
+	|				AND NOT Constants.FunctionalOptionUseWorkSubsystem)
+	|	AND NOT Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.DataImportMethodFromExternalSources)
+	|	AND NOT Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.DataImportFromExternalSources)
 	|
 	|ORDER BY
 	|	IsFolder HIERARCHY,
@@ -129,10 +129,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If ValueIsFilled(User) Then
 			
-			MainDivision = ChartsOfCharacteristicTypes.UserSettings.MainDivision;
+			MainDepartment = ChartsOfCharacteristicTypes.UserSettings.MainDepartment;
 			MainWarehouse = ChartsOfCharacteristicTypes.UserSettings.MainWarehouse;
 			
-			ChoiceParametersDivision = Enums.StructuralUnitsTypes.Division;
+			ChoiceParametersDepartment = Enums.StructuralUnitsTypes.Department;
 			
 			ChoiceParametersWarehouse = New ValueList;
 			ChoiceParametersWarehouse.Add(Enums.StructuralUnitsTypes.Warehouse);
@@ -163,10 +163,10 @@ Procedure SettingsTreeBeforeRowChange(Item, Cancel)
 		Cancel = True;
 		Return;
 		
-	ElsIf Item.CurrentData.Setting = MainDivision Then
+	ElsIf Item.CurrentData.Setting = MainDepartment Then
 		
 		NewArray = New Array();
-		NewArray.Add(New ChoiceParameter("Filter.StructuralUnitType", ChoiceParametersDivision));
+		NewArray.Add(New ChoiceParameter("Filter.StructuralUnitType", ChoiceParametersDepartment));
 		Items.SettingsTreeValue.ChoiceParameters = New FixedArray(NewArray);;
 		
 	ElsIf Item.CurrentData.Setting = MainWarehouse Then

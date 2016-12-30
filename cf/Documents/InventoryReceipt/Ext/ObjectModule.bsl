@@ -86,7 +86,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		
 		// FO Use Production subsystem.
 		If Not Constants.FunctionalOptionUseSubsystemProduction.Get()
-			AND StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
+			AND StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
 			Raise NStr("en='You can not enter Inventory receipt basing on the inventory reconciliation, as the Production activity kind is not available!';ru='Нельзя ввести Оприходование запасов на основании инвентеризации запасов, т.к. недоступен вид деятельности Производство!'");
 		EndIf;
 		

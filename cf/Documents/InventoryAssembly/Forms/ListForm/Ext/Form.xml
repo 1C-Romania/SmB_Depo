@@ -36,8 +36,8 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="FastFiltersExtendedTooltip" id="146"/>
 			<ChildItems>
-				<InputField name="FilterDivision" id="51">
-					<DataPath>FilterDivision</DataPath>
+				<InputField name="FilterDepartment" id="51">
+					<DataPath>FilterDepartment</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -61,10 +61,10 @@
 							<v8:content>Изготовитель</v8:content>
 						</v8:item>
 					</InputHint>
-					<ContextMenu name="FilterSubdivisionContextMenu" id="52"/>
-					<ExtendedTooltip name="FilterSubdivisionExtendedTooltip" id="147"/>
+					<ContextMenu name="FilterDepartmentContextMenu" id="52"/>
+					<ExtendedTooltip name="FilterDepartmentExtendedTooltip" id="147"/>
 					<Events>
-						<Event name="OnChange">FilterDivisionOnChange</Event>
+						<Event name="OnChange">FilterDepartmentOnChange</Event>
 					</Events>
 				</InputField>
 				<InputField name="FilterCompany" id="55">
@@ -782,22 +782,22 @@
 				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
 			</FunctionalOptions>
 		</Attribute>
-		<Attribute name="FilterDivision" id="4">
+		<Attribute name="FilterDepartment" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Division</v8:content>
+					<v8:content>Department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>разделение</v8:content>
+					<v8:content>Подразделение</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
 			</Type>
 			<Save>
-				<Field>FilterDivision</Field>
+				<Field>FilterDepartment</Field>
 			</Save>
 		</Attribute>
 		<Attribute name="ListProductionOrders" id="5">

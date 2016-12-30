@@ -390,7 +390,7 @@ Procedure FillByPlan(Command)
 
 	If Not ValueIsFilled(Object.StructuralUnit) Then
         Message = New UserMessage();
-		Message.Text = NStr("en='The division is not filled! Completion is cancelled.';ru='Не заполнено подразделение! Заполнение отменено.'");
+		Message.Text = NStr("en='The department is not filled! Completion is cancelled.';ru='Не заполнено подразделение! Заполнение отменено.'");
 		Message.Field = "Object.StructuralUnit";
 		Message.Message();
 		Return;

@@ -155,10 +155,10 @@ Procedure FillByFixedAssets(FillingData)
 	NewRow.AccrueDepreciationInCurrentMonth = True;
 	
 	User = Users.CurrentUser();
-	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-	MainDivision = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+	MainDepartment = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 
-	NewRow.StructuralUnit = MainDivision;
+	NewRow.StructuralUnit = MainDepartment;
 	
 	
 EndProcedure // FillByFixedAssets()

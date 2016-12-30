@@ -171,7 +171,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReceiptCRReturn, StructureAd
 	|	TableIncomeAndExpenses.LineNumber AS LineNumber,
 	|	TableIncomeAndExpenses.Date AS Period,
 	|	TableIncomeAndExpenses.Company AS Company,
-	|	TableIncomeAndExpenses.Division AS StructuralUnit,
+	|	TableIncomeAndExpenses.Department AS StructuralUnit,
 	|	TableIncomeAndExpenses.BusinessActivity AS BusinessActivity,
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.GLAccountRevenueFromSales AS GLAccount,
@@ -194,7 +194,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReceiptCRReturn, StructureAd
 	|	TableIncomeAndExpenses.Date,
 	|	TableIncomeAndExpenses.LineNumber,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.Division,
+	|	TableIncomeAndExpenses.Department,
 	|	TableIncomeAndExpenses.BusinessActivity,
 	|	TableIncomeAndExpenses.CustomerOrder,
 	|	TableIncomeAndExpenses.GLAccountRevenueFromSales
@@ -270,7 +270,7 @@ Procedure GenerateTableSales(DocumentRefReceiptCRReturn, StructureAdditionalProp
 	|	TableSales.CustomerOrder AS CustomerOrder,
 	|	TableSales.Document AS Document,
 	|	TableSales.VATRate AS VATRate,
-	|	TableSales.Division AS Division,
+	|	TableSales.Department AS Department,
 	|	TableSales.Responsible AS Responsible,
 	|	-SUM(TableSales.Quantity) AS Quantity,
 	|	-SUM(TableSales.AmountVATPurchaseSale) AS VATAmount,
@@ -291,7 +291,7 @@ Procedure GenerateTableSales(DocumentRefReceiptCRReturn, StructureAdditionalProp
 	|	TableSales.CustomerOrder,
 	|	TableSales.Document,
 	|	TableSales.VATRate,
-	|	TableSales.Division,
+	|	TableSales.Department,
 	|	TableSales.Responsible";
 	
 	Query.SetParameter("CheckIssued", StructureAdditionalProperties.ForPosting.CheckIssued);
@@ -544,7 +544,7 @@ Procedure InitializeDocumentData(DocumentRefReceiptCRReturn, StructureAdditional
 	|	ReceiptCRInventory.Ref.DocumentCurrency AS DocumentCurrency,
 	|	&Company AS Company,
 	|	ReceiptCRInventory.Ref.StructuralUnit AS StructuralUnit,
-	|	ReceiptCRInventory.Ref.Division AS Division,
+	|	ReceiptCRInventory.Ref.Department AS Department,
 	|	ReceiptCRInventory.Ref.Responsible AS Responsible,
 	|	ReceiptCRInventory.ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
 	|	ReceiptCRInventory.ProductsAndServices.BusinessActivity AS BusinessActivity,

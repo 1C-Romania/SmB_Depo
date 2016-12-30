@@ -30,7 +30,7 @@ Procedure FillInfoAboutPersonalData(InfoTable) Export
 	NewInfo = InfoTable.Add();
 	NewInfo.Object			= "InformationRegister.IndividualsDocuments";
 	NewInfo.LoggedFields	= "Ind";
-	NewInfo.AccessFields		= "DocumentKind,Series,Number,IssueDate,ValidityPeriod,WhoIssued,DivisionCode,Presentation";
+	NewInfo.AccessFields		= "DocumentKind,Series,Number,IssueDate,ValidityPeriod,WhoIssued,DepartmentCode,Presentation";
 	NewInfo.DataArea		= "PassportData";
 	// End StandardSubsystems.Individuals
 	

@@ -76,8 +76,8 @@ Procedure SetEnabled(AttributePathToData = "")
 			CommonUseClientServer.SetFormItemProperty(Items, "CatalogCompanies", "Enabled", ConstantsSet.FunctionalOptionAccountingByMultipleCompanies);
 		EndIf;
 		
-		If AttributePathToData = "ConstantsSet.FunctionalOptionAccountingByMultipleDivisions" OR AttributePathToData = "" Then
-			CommonUseClientServer.SetFormItemProperty(Items, "CatalogStructuralUnitsDivision", "Enabled", ConstantsSet.FunctionalOptionAccountingByMultipleDivisions);
+		If AttributePathToData = "ConstantsSet.FunctionalOptionAccountingByMultipleDepartments" OR AttributePathToData = "" Then
+			CommonUseClientServer.SetFormItemProperty(Items, "CatalogStructuralUnitsDepartment", "Enabled", ConstantsSet.FunctionalOptionAccountingByMultipleDepartments);
 		EndIf;
 		
 		If AttributePathToData = "ConstantsSet.FunctionalOptionAccountingByMultipleBusinessActivities" OR AttributePathToData = "" Then
@@ -161,9 +161,9 @@ EndProcedure
 &AtServer
 Procedure ReturnFormAttributeValue(AttributePathToData, CurrentValue)
 	
-	If AttributePathToData = "ConstantsSet.FunctionalOptionAccountingByMultipleDivisions" Then
+	If AttributePathToData = "ConstantsSet.FunctionalOptionAccountingByMultipleDepartments" Then
 		
-		ThisForm.ConstantsSet.FunctionalOptionAccountingByMultipleDivisions = CurrentValue;
+		ThisForm.ConstantsSet.FunctionalOptionAccountingByMultipleDepartments = CurrentValue;
 		
 	ElsIf AttributePathToData = "ConstantsSet.FunctionalOptionAccountingByMultipleBusinessActivities" Then
 		
@@ -217,10 +217,10 @@ Function CancellationUncheckAccountingBySeveralBusinessActivities()
 	
 EndFunction // CancelDisableAccountingBySeveralBusinessActivities()
 
-// Check on the option disable possibility AccountingBySeveralDivisions.
+// Check on the option disable possibility AccountingBySeveralDepartments.
 //
 &AtServer
-Function CancellationUncheckAccountingBySeveralDivisions() 
+Function CancellationUncheckAccountingBySeveralDepartments() 
 	
 	ErrorText = "";
 	
@@ -231,23 +231,23 @@ Function CancellationUncheckAccountingBySeveralDivisions()
 		|	Catalog.StructuralUnits AS StructuralUnits
 		|WHERE
 		|	StructuralUnits.StructuralUnitType = &StructuralUnitType
-		|	AND StructuralUnits.Ref <> &MainDivision"
+		|	AND StructuralUnits.Ref <> &MainDepartment"
 	);
 	
-	Query.SetParameter("StructuralUnitType", Enums.StructuralUnitsTypes.Division);
-	Query.SetParameter("MainDivision", Catalogs.StructuralUnits.MainDivision);
+	Query.SetParameter("StructuralUnitType", Enums.StructuralUnitsTypes.Department);
+	Query.SetParameter("MainDepartment", Catalogs.StructuralUnits.MainDepartment);
 	
 	QueryResult = Query.Execute();
 	
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en='In base divisions are used different from the main! Disabling the option is prohibited!';ru='В базе используются подразделения, отличные от основного! Снятие опции запрещено!'");
+		ErrorText = NStr("en='In base departments are used different from the main! Disabling the option is prohibited!';ru='В базе используются подразделения, отличные от основного! Снятие опции запрещено!'");
 		
 	EndIf;
 	
 	Return ErrorText;
 	
-EndFunction // CancelDisableAccountingBySeveralDivisions()
+EndFunction // CancelDisableAccountingBySeveralDepartments()
 
 // Check on the option disable possibility FixedAssetsAccounting.
 //
@@ -295,13 +295,13 @@ EndFunction // CancelDisableFunctionalOptionAccountingFixedAssets()
 &AtServer
 Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 	
-	// If there are references on divisions unequal main division then it is not allowed to delete flag FunctionalOptionAccountingByMultipleDivisions
-	If AttributePathToData = "ConstantsSet.FunctionalOptionAccountingByMultipleDivisions" Then
+	// If there are references on departments unequal main department then it is not allowed to delete flag FunctionalOptionAccountingByMultipleDepartments
+	If AttributePathToData = "ConstantsSet.FunctionalOptionAccountingByMultipleDepartments" Then
 		
-		If Constants.FunctionalOptionAccountingByMultipleDivisions.Get() <> ConstantsSet.FunctionalOptionAccountingByMultipleDivisions
-			AND (NOT ConstantsSet.FunctionalOptionAccountingByMultipleDivisions) Then
+		If Constants.FunctionalOptionAccountingByMultipleDepartments.Get() <> ConstantsSet.FunctionalOptionAccountingByMultipleDepartments
+			AND (NOT ConstantsSet.FunctionalOptionAccountingByMultipleDepartments) Then
 			
-			ErrorText = CancellationUncheckAccountingBySeveralDivisions();
+			ErrorText = CancellationUncheckAccountingBySeveralDepartments();
 			If Not IsBlankString(ErrorText) Then
 				
 				Result.Insert("Field", 				AttributePathToData);
@@ -401,15 +401,15 @@ Procedure SettingAccountingOnCounterpartysCompanies(Command)
 	
 EndProcedure // SettingAccountingByCompanies()
 
-// Procedure - command handler CatalogStructuralUnitsDivision.
+// Procedure - command handler CatalogStructuralUnitsDepartment.
 //
 &AtClient
-Procedure CatalogStructuralUnitsDivision(Command)
+Procedure CatalogStructuralUnitsDepartment(Command)
 	
-	FilterStructure = New Structure("StructuralUnitType", PredefinedValue("Enum.StructuralUnitsTypes.Division"));
+	FilterStructure = New Structure("StructuralUnitType", PredefinedValue("Enum.StructuralUnitsTypes.Department"));
 	OpenForm("Catalog.StructuralUnits.ListForm", New Structure("Filter", FilterStructure));
 	
-EndProcedure // CatalogStructuralUnitsDivision()
+EndProcedure // CatalogStructuralUnitsDepartment()
 
 // Procedure - command handler CompanyCatalog.
 //
@@ -492,14 +492,14 @@ EndProcedure // OnClose()
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - EVENT HANDLERS OF FORM ATTRIBUTES
 
-// Procedure - event handler OnChange field FunctionalOptionAccountingByMultipleDivisions.
+// Procedure - event handler OnChange field FunctionalOptionAccountingByMultipleDepartments.
 //
 &AtClient
-Procedure FunctionalOptionAccountingByMultipleDivisionsOnChange(Item)
+Procedure FunctionalOptionAccountingByMultipleDepartmentsOnChange(Item)
 	
 	Attachable_OnAttributeChange(Item);
 	
-EndProcedure // FunctionalOptionAccountingByMultipleDivisionsOnChange()
+EndProcedure // FunctionalOptionAccountingByMultipleDepartmentsOnChange()
 
 // Procedure - event handler OnChange field FunctionalOptionAccountingByMultipleBusinessActivities.
 //

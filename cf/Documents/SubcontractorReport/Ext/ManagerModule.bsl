@@ -277,7 +277,7 @@ Procedure GenerateTableInventoryService(DocumentRefSubcontractorReport, Structur
 		EndIf;
 		
 		// If this is a production, then assign WIP received costs to products cost.
-		If RowTableInventory.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
+		If RowTableInventory.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
 				
 			// Service receipt to WIP.
 			TableRowReceipt = StructureAdditionalProperties.TableForRegisterRecords.TableInventory.Add();
@@ -472,7 +472,7 @@ Procedure DataInitializationByService(DocumentRefSubcontractorReport, StructureA
 	//) elmi
 	|		END AS NUMBER(15, 2)) AS AmountCur,
 	|	CASE
-	|		WHEN SubcontractorReport.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|		WHEN SubcontractorReport.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|			THEN SubcontractorReport.Expense.ExpensesGLAccount
 	|		ELSE SubcontractorReport.ProductsAndServices.InventoryGLAccount
 	|	END AS AccountDr,

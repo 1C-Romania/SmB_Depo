@@ -1601,10 +1601,10 @@ Procedure SetVisibleAndEnabled(ChangedTypeOperations = False)
 		EndDo;
 	EndIf;
 	
-	// Division.
+	// Department.
 	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer") Then
-		Items.Division.AutoChoiceIncomplete = True;
-		Items.Division.AutoMarkIncomplete = True;
+		Items.Department.AutoChoiceIncomplete = True;
+		Items.Department.AutoMarkIncomplete = True;
 	EndIf;
 	
 	// VAT Rate, VAT Amount, Total.
@@ -2708,11 +2708,11 @@ Procedure OperationKindOnChange(Item)
 	Object.Prepayment.Clear();
 	
 	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer") Then
-		Items.Division.AutoChoiceIncomplete = True;
-		Items.Division.AutoMarkIncomplete = True;
+		Items.Department.AutoChoiceIncomplete = True;
+		Items.Department.AutoMarkIncomplete = True;
 	Else
-		Items.Division.AutoChoiceIncomplete = False;
-		Items.Division.AutoMarkIncomplete = False;
+		Items.Department.AutoChoiceIncomplete = False;
+		Items.Department.AutoMarkIncomplete = False;
 		ClearMarkIncomplete();
 	EndIf;
 	

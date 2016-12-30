@@ -320,12 +320,12 @@ Procedure GenerateTableInventory(DocumentRefReportAboutRecycling, StructureAddit
 	|	TableInventory.Document AS Document,
 	|	TableInventory.Document AS SalesDocument,
 	|	TableInventory.CustomerOrder AS OrderSales,
-	|	TableInventory.DivisionSales AS Division,
+	|	TableInventory.DepartmentSales AS Department,
 	|	TableInventory.Responsible AS Responsible,
 	|	TableInventory.BusinessActivitySales AS BusinessActivity,
 	|	TableInventory.GLAccountCost AS GLAccountCost,
 	|	TableInventory.StructuralUnit AS StructuralUnit,
-	|	TableInventory.DivisionSales AS DivisionSales,
+	|	TableInventory.DepartmentSales AS DepartmentSales,
 	|	TableInventory.GLAccount AS GLAccount,
 	|	TableInventory.ProductsAndServices AS ProductsAndServices,
 	|	TableInventory.Characteristic AS Characteristic,
@@ -352,7 +352,7 @@ Procedure GenerateTableInventory(DocumentRefReportAboutRecycling, StructureAddit
 	|	TableInventory.BusinessActivitySales,
 	|	TableInventory.GLAccountCost,
 	|	TableInventory.StructuralUnit,
-	|	TableInventory.DivisionSales,
+	|	TableInventory.DepartmentSales,
 	|	TableInventory.GLAccount,
 	|	TableInventory.ProductsAndServices,
 	|	TableInventory.Characteristic,
@@ -361,7 +361,7 @@ Procedure GenerateTableInventory(DocumentRefReportAboutRecycling, StructureAddit
 	|	TableInventory.CustomerOrder,
 	|	TableInventory.Responsible,
 	|	TableInventory.Document,
-	|	TableInventory.DivisionSales,
+	|	TableInventory.DepartmentSales,
 	|	TableInventory.CustomerOrder,
 	|	TableInventory.GLAccountCost,
 	|	TableInventory.GLAccount";
@@ -576,7 +576,7 @@ Procedure GenerateTableInventory(DocumentRefReportAboutRecycling, StructureAddit
 				RowIncomeAndExpenses = StructureAdditionalProperties.TableForRegisterRecords.TableIncomeAndExpenses.Add();
 				FillPropertyValues(RowIncomeAndExpenses, RowTableInventory);
 				
-				RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DivisionSales;
+				RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DepartmentSales;
 				RowIncomeAndExpenses.GLAccount = RowTableInventory.GLAccountCost;
 				RowIncomeAndExpenses.AmountIncome = 0;
 				RowIncomeAndExpenses.AmountExpense = AmountToBeWrittenOff;
@@ -647,7 +647,7 @@ Procedure GenerateTableInventory(DocumentRefReportAboutRecycling, StructureAddit
 				RowIncomeAndExpenses = StructureAdditionalProperties.TableForRegisterRecords.TableIncomeAndExpenses.Add();
 				FillPropertyValues(RowIncomeAndExpenses, RowTableInventory);
 				
-				RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DivisionSales;
+				RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DepartmentSales;
 				RowIncomeAndExpenses.GLAccount = RowTableInventory.GLAccountCost;
 				RowIncomeAndExpenses.AmountIncome = 0;
 				RowIncomeAndExpenses.AmountExpense = AmountToBeWrittenOff;
@@ -736,7 +736,7 @@ Procedure GenerateTableSales(DocumentRefReportAboutRecycling, StructureAdditiona
 	|	TableSales.CustomerOrder AS CustomerOrder,
 	|	TableSales.Document AS Document,
 	|	TableSales.VATRate AS VATRate,
-	|	TableSales.DivisionSales AS Division,
+	|	TableSales.DepartmentSales AS Department,
 	|	TableSales.Responsible AS Responsible,
 	|	SUM(TableSales.Quantity) AS Quantity,
 	|	SUM(TableSales.VATAmountSales) AS VATAmount,
@@ -754,7 +754,7 @@ Procedure GenerateTableSales(DocumentRefReportAboutRecycling, StructureAdditiona
 	|	TableSales.CustomerOrder,
 	|	TableSales.Document,
 	|	TableSales.VATRate,
-	|	TableSales.DivisionSales,
+	|	TableSales.DepartmentSales,
 	|	TableSales.Responsible";
 	
 	QueryResult = Query.Execute();
@@ -1006,7 +1006,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReportAboutRecycling, Struct
 	|	TableIncomeAndExpenses.LineNumber AS LineNumber,
 	|	TableIncomeAndExpenses.Period AS Period,
 	|	TableIncomeAndExpenses.Company AS Company,
-	|	TableIncomeAndExpenses.DivisionSales AS StructuralUnit,
+	|	TableIncomeAndExpenses.DepartmentSales AS StructuralUnit,
 	|	TableIncomeAndExpenses.BusinessActivitySales AS BusinessActivity,
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales AS GLAccount,
@@ -1027,7 +1027,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReportAboutRecycling, Struct
 	|	TableIncomeAndExpenses.Period,
 	|	TableIncomeAndExpenses.LineNumber,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.DivisionSales,
+	|	TableIncomeAndExpenses.DepartmentSales,
 	|	TableIncomeAndExpenses.BusinessActivitySales,
 	|	TableIncomeAndExpenses.CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales
@@ -1614,7 +1614,7 @@ Procedure InitializeDocumentData(DocumentRefReportAboutRecycling, StructureAddit
 	|	ProcessingReportProducts.Ref.Contract AS Contract,
 	|	ProcessingReportProducts.Ref.Contract.SettlementsCurrency AS SettlementsCurrency,
 	|	&Company AS Company,
-	|	ProcessingReportProducts.Ref.Division AS DivisionSales,
+	|	ProcessingReportProducts.Ref.Department AS DepartmentSales,
 	|	ProcessingReportProducts.Ref.Responsible AS Responsible,
 	|	ProcessingReportProducts.ProductsAndServices.BusinessActivity AS BusinessActivitySales,
 	|	ProcessingReportProducts.ProductsAndServices.BusinessActivity.GLAccountRevenueFromSales AS AccountStatementSales,

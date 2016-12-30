@@ -32,7 +32,7 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 	
 	Company				 		= Settings.Get("Company");
 	DocumentTypePresentation 		= Settings.Get("DocumentTypePresentation");
-	Division			 		= Settings.Get("Division");
+	Department			 		= Settings.Get("Department");
 	Employee				 		= Settings.Get("Employee");
 	RegistrationPeriod 				= Settings.Get("RegistrationPeriod");
 	
@@ -45,7 +45,7 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 	
 	SmallBusinessClientServer.SetListFilterItem(List, "Company", Company, ValueIsFilled(Company));
 	SmallBusinessClientServer.SetListFilterItem(List, "Type", ?(ValueIsFilled(DocumentType), Type("DocumentRef." + DocumentType), Undefined), ValueIsFilled(DocumentType));
-	SmallBusinessClientServer.SetListFilterItem(List, "Division", Division, ValueIsFilled(Division));
+	SmallBusinessClientServer.SetListFilterItem(List, "Department", Department, ValueIsFilled(Department));
 	SmallBusinessClientServer.SetListFilterItem(List, "RegistrationPeriod", RegistrationPeriod, ValueIsFilled(RegistrationPeriod));
 	List.Parameters.SetParameterValue("Employee", Employee);
 	
@@ -126,11 +126,11 @@ Procedure RegistrationPeriodClearing(Item, StandardProcessing)
 EndProcedure //RegistrationPeriodClearing()
 
 &AtClient
-// Procedure - event handler OnChange of attribute Division.
+// Procedure - event handler OnChange of attribute Department.
 // 
-Procedure DivisionOnChange(Item)
+Procedure DepartmentOnChange(Item)
 	
-	SmallBusinessClientServer.SetListFilterItem(List, "Division", Division, ValueIsFilled(Division));
+	SmallBusinessClientServer.SetListFilterItem(List, "Department", Department, ValueIsFilled(Department));
 	
 EndProcedure
 
@@ -160,7 +160,7 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 		Cancel = True;
 		
 		ParametersStructure = New Structure();
-		ParametersStructure.Insert("StructuralUnit", Division);
+		ParametersStructure.Insert("StructuralUnit", Department);
 		ParametersStructure.Insert("RegistrationPeriod", RegistrationPeriod);
 		ParametersStructure.Insert("Company", Company);
 		

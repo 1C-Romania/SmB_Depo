@@ -1292,14 +1292,14 @@ Procedure CashCROnChangeAtServer()
 	
 	GetRefsToEquipment();
 	
-	Object.Division = Object.CashCR.Division;
+	Object.Department = Object.CashCR.Department;
 	
-	If Not ValueIsFilled(Object.Division) Then
+	If Not ValueIsFilled(Object.Department) Then
 		
 		User = Users.CurrentUser();
-		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-		MainDivision = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
-		Object.Division = MainDivision;
+		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+		MainDepartment = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
+		Object.Department = MainDepartment;
 		
 	EndIf;
 	

@@ -168,9 +168,9 @@ Function GenerateAccrualsTable()
 EndFunction // GenerateAccrualsTable()
 
 &AtServer
-// The procedure fills in the Employees tabular section with filter by division.
+// The procedure fills in the Employees tabular section with filter by department.
 //
-Procedure FillByDivision()
+Procedure FillByDepartment()
 
 	Object.AccrualsDeductions.Clear();
 	Object.IncomeTaxes.Clear();
@@ -489,7 +489,7 @@ Procedure FillByDivision()
 					NewRow.Size 					= Selection.Size;
 					
 					TypeOfAccount = Selection.GLExpenseAccount.TypeOfAccount;
-					If Object.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Division
+					If Object.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Department
 						AND  Not (TypeOfAccount = Enums.GLAccountsTypes.IndirectExpenses
 						OR TypeOfAccount = Enums.GLAccountsTypes.Expenses
 						OR TypeOfAccount = Enums.GLAccountsTypes.OtherCurrentAssets
@@ -649,7 +649,7 @@ Procedure FillByDivision()
 			StructureOfSelections.Insert("RegistrationPeriod", 		Object.RegistrationPeriod);
 			StructureOfSelections.Insert("Company", 			SmallBusinessServer.GetCompany(Object.Company));
 			StructureOfSelections.Insert("Currency", 				Object.DocumentCurrency);
-			StructureOfSelections.Insert("Division", 			Object.StructuralUnit);
+			StructureOfSelections.Insert("Department", 			Object.StructuralUnit);
 			StructureOfSelections.Insert("StructuralUnit", 	Object.StructuralUnit);
 			StructureOfSelections.Insert("PointInTime", 			EndOfDay(TabularSectionRow.EndDate));
 			StructureOfSelections.Insert("BeginOfPeriod", 			TabularSectionRow.StartDate);
@@ -701,7 +701,7 @@ Procedure FillByDivision()
 	
 	RefreshFormFooter();
 	
-EndProcedure // FillByDivision()
+EndProcedure // FillByDepartment()
 
 &AtServer
 // The procedure calculates the value of the accrual or deduction using the formula.
@@ -924,14 +924,14 @@ Procedure Calculate(Command)
 EndProcedure
 
 &AtClient
-// The procedure fills in the Employees tabular section with filter by division.
+// The procedure fills in the Employees tabular section with filter by department.
 //
 Procedure Fill(Command)
 	
 	If Not ValueIsFilled(Object.StructuralUnit) Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='The division is not filled! Document filling is cancelled.';ru='Не заполнено подразделение! Заполнение документа отменено.'");
+		Message.Text = NStr("en='The department is not filled! Document filling is cancelled.';ru='Не заполнено подразделение! Заполнение документа отменено.'");
 		Message.Field = "Object.StructuralUnit";
 		Message.Message();
 		
@@ -998,7 +998,7 @@ EndProcedure
 &AtClient
 Procedure FillFragment()
 	
-	FillByDivision();
+	FillByDepartment();
 	
 EndProcedure
 

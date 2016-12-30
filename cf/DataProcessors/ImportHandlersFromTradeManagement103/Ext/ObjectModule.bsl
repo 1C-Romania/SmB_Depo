@@ -565,8 +565,8 @@ Procedure OCR_AfterImport_CashRegisters(ExchangeFile, Cancel, Ref, Object, Objec
 		EndIf;
 	EndIf;
 	
-	If Not ValueIsFilled(Object.Division) Then
-		Object.Division = Catalogs.StructuralUnits.MainDivision;
+	If Not ValueIsFilled(Object.Department) Then
+		Object.Department = Catalogs.StructuralUnits.MainDepartment;
 	EndIf;
 
 EndProcedure
@@ -622,7 +622,7 @@ Procedure OCR_AfterImport_StructuralUnits(ExchangeFile, Cancel, Ref, Object, Obj
 
 EndProcedure
 
-Procedure OCR_AfterImport_Divisions(ExchangeFile, Cancel, Ref, Object, ObjectParameters, ObjectModified, 
+Procedure OCR_AfterImport_Departments(ExchangeFile, Cancel, Ref, Object, ObjectParameters, ObjectModified, 
                                            ObjectTypeName, ObjectFound, RecordSet) Export
 
 	If Not ValueIsFilled(Object.Company) Then
@@ -1913,7 +1913,7 @@ Procedure OCR_AfterImport_CustomerOrder(ExchangeFile, Cancel, Ref, Object, Objec
 	EndIf;
 	
 	If Not ValueIsFilled(Object.SalesStructuralUnit) Then
-		Object.SalesStructuralUnit = Catalogs.StructuralUnits.MainDivision; 
+		Object.SalesStructuralUnit = Catalogs.StructuralUnits.MainDepartment; 
 	EndIf;
 	
 	If Not ValueIsFilled(Object.ShipmentDate) Then
@@ -2096,7 +2096,7 @@ Procedure OCR_AfterImport_IndividualsDocuments(ExchangeFile, Cancel, Ref, Object
 	TextNumber				= NStr("en=',  %No';ru=',  %No'");
 	TextIssuanceDate			= NStr("en=', issued: %1 year';ru=', выдан: %1 года'");
 	TextValidityPeriod		= NStr("en=', valid till: %1 year';ru=', действует до: %1 года'");
-	TextDivisionCode	= NStr("en=', div. No.%1';ru=', № подр. %1'");
+	TextDepartmentCode	= NStr("en=', dep. No.%1';ru=', № подр. %1'");
 	
 	If Object.DocumentKind.IsEmpty() Then
 		Object.Presentation = "";
@@ -2109,7 +2109,7 @@ Procedure OCR_AfterImport_IndividualsDocuments(ExchangeFile, Cancel, Ref, Object
 			+ ?(ValueIsFilled(Object.IssueDate), StringFunctionsClientServer.PlaceParametersIntoString(TextIssuanceDate, Format(Object.IssueDate,"DF=dd MMMM yyyy'")), "")
 			+ ?(ValueIsFilled(Object.ValidityPeriod), StringFunctionsClientServer.PlaceParametersIntoString(TextValidityPeriod, Format(Object.ValidityPeriod,"DF=dd MMMM yyyy'")), "")
 			+ ?(ValueIsFilled(Object.WhoIssued), ", " + Object.WhoIssued, "")
-			+ ?(ValueIsFilled(Object.DivisionCode) AND Object.DocumentKind = Catalogs.IndividualsDocumentsKinds.LocalPassport, StringFunctionsClientServer.PlaceParametersIntoString(TextDivisionCode, Object.DivisionCode), "");
+			+ ?(ValueIsFilled(Object.DepartmentCode) AND Object.DocumentKind = Catalogs.IndividualsDocumentsKinds.LocalPassport, StringFunctionsClientServer.PlaceParametersIntoString(TextDepartmentCode, Object.DepartmentCode), "");
 		
 	EndIf;
 

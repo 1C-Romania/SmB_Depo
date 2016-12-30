@@ -1446,7 +1446,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 	|	CostAccounting.ProductsAndServices.BusinessActivity.GLAccountCostOfSales.TypeOfAccount AS BusinessActivitySalesSalesCostGLAccountAccountType,
 	|	CostAccounting.SalesDocument AS SalesDocument,
 	|	CostAccounting.OrderSales AS OrderSales,
-	|	CostAccounting.Division AS Division,
+	|	CostAccounting.Department AS Department,
 	|	CostAccounting.Responsible AS Responsible,
 	|	CostAccounting.VATRate AS VATRate,
 	|	CostAccounting.ProductionExpenses AS ProductionExpenses,
@@ -1520,7 +1520,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 	|	CostAccounting.ProductsAndServices.BusinessActivity.GLAccountCostOfSales.TypeOfAccount,
 	|	CostAccounting.SalesDocument,
 	|	CostAccounting.OrderSales,
-	|	CostAccounting.Division,
+	|	CostAccounting.Department,
 	|	CostAccounting.Responsible,
 	|	CostAccounting.VATRate,
 	|	CostAccounting.ProductionExpenses,
@@ -1572,7 +1572,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 	|	CostAccounting.BusinessActivitySalesSalesCostGLAccountAccountType AS BusinessActivitySalesSalesCostGLAccountAccountType,
 	|	CostAccounting.SalesDocument AS SalesDocument,
 	|	CostAccounting.OrderSales AS OrderSales,
-	|	CostAccounting.Division AS Division,
+	|	CostAccounting.Department AS Department,
 	|	CostAccounting.Responsible AS Responsible,
 	|	CostAccounting.VATRate AS VATRate,
 	|	CostAccounting.ProductionExpenses AS ProductionExpenses,
@@ -1665,7 +1665,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 					NewRow.Recorder = Ref;
 					NewRow.Company = SelectionDetailRecords.Company;
 					NewRow.CustomerOrder = SelectionDetailRecords.OrderSales;
-					NewRow.Division = SelectionDetailRecords.Division;
+					NewRow.Department = SelectionDetailRecords.Department;
 					NewRow.Responsible = SelectionDetailRecords.Responsible;
 					NewRow.ProductsAndServices = SelectionDetailRecords.ProductsAndServices;
 					NewRow.Characteristic = SelectionDetailRecords.Characteristic;
@@ -1679,7 +1679,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 					NewRow.Period = Date;
 					NewRow.Recorder = Ref;
 					NewRow.Company = SelectionDetailRecords.Company;
-					NewRow.StructuralUnit = SelectionDetailRecords.Division;
+					NewRow.StructuralUnit = SelectionDetailRecords.Department;
 					NewRow.CustomerOrder = SelectionDetailRecords.OrderSales;
 					NewRow.BusinessActivity = SelectionDetailRecords.BusinessActivitySales;
 					NewRow.GLAccount = SelectionDetailRecords.BusinessActivitySalesGLAccountOfSalesCost;
@@ -1869,7 +1869,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 	|	CostAccounting.CustomerCorrOrder AS CustomerCorrOrder,
 	|	CostAccounting.SalesDocument AS SalesDocument,
 	|	CostAccounting.OrderSales AS OrderSales,
-	|	CostAccounting.Division AS Division,
+	|	CostAccounting.Department AS Department,
 	|	CostAccounting.Responsible AS Responsible,
 	|	CostAccounting.VATRate AS VATRate,
 	|	CostAccounting.ProductionExpenses AS ProductionExpenses,
@@ -1945,7 +1945,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 	|	CostAccounting.CustomerCorrOrder,
 	|	CostAccounting.SalesDocument,
 	|	CostAccounting.OrderSales,
-	|	CostAccounting.Division,
+	|	CostAccounting.Department,
 	|	CostAccounting.Responsible,
 	|	CostAccounting.VATRate,
 	|	CostAccounting.ProductionExpenses,
@@ -2043,7 +2043,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 	|	NestedSelect.CustomerCorrOrder AS CustomerCorrOrder,
 	|	NestedSelect.SalesDocument AS SalesDocument,
 	|	NestedSelect.OrderSales AS OrderSales,
-	|	NestedSelect.Division AS Division,
+	|	NestedSelect.Department AS Department,
 	|	NestedSelect.Responsible AS Responsible,
 	|	NestedSelect.VATRate AS VATRate,
 	|	NestedSelect.ProductionExpenses AS ProductionExpenses,
@@ -2199,7 +2199,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 					NewRow.Recorder = Ref;
 					NewRow.Company = SelectionDetailRecords.Company;
 					NewRow.CustomerOrder = SelectionDetailRecords.OrderSales;
-					NewRow.Division = SelectionDetailRecords.Division;
+					NewRow.Department = SelectionDetailRecords.Department;
 					NewRow.Responsible = SelectionDetailRecords.Responsible;
 					NewRow.ProductsAndServices = SelectionDetailRecords.ProductsAndServices;
 					NewRow.Characteristic = SelectionDetailRecords.Characteristic;
@@ -2213,7 +2213,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 					NewRow.Period = Date;
 					NewRow.Recorder = Ref;
 					NewRow.Company = SelectionDetailRecords.Company;
-					NewRow.StructuralUnit = SelectionDetailRecords.Division;
+					NewRow.StructuralUnit = SelectionDetailRecords.Department;
 					NewRow.CustomerOrder = SelectionDetailRecords.OrderSales;
 					NewRow.BusinessActivity = SelectionDetailRecords.BusinessActivitySales;
 					NewRow.GLAccount = SelectionDetailRecords.BusinessActivitySalesGLAccountOfSalesCost;
@@ -2465,7 +2465,7 @@ Procedure CalculateCostOfReturns()
 	|	Inventory.OrderSales AS OrderSales,
 	|	Inventory.VATRate AS VATRate,
 	|	Inventory.SalesDocument AS SalesDocument,
-	|	Inventory.Division AS Division,
+	|	Inventory.Department AS Department,
 	|	Inventory.CorrGLAccount AS CorrGLAccount,
 	|	Inventory.Responsible AS Responsible,
 	|	CASE
@@ -2503,7 +2503,7 @@ Procedure CalculateCostOfReturns()
 	|	Inventory.OrderSales,
 	|	Inventory.VATRate,
 	|	Inventory.SalesDocument,
-	|	Inventory.Division,
+	|	Inventory.Department,
 	|	Inventory.CorrGLAccount,
 	|	Inventory.Responsible
 	|;
@@ -2525,7 +2525,7 @@ Procedure CalculateCostOfReturns()
 	|	ReturnsTable.Quantity AS ReturnQuantity,
 	|	ReturnsTable.Amount AS AmountOfRefunds,
 	|	ReturnsTable.SalesDocument AS SalesDocument,
-	|	ReturnsTable.Division AS Division,
+	|	ReturnsTable.Department AS Department,
 	|	ReturnsTable.VATRate AS VATRate,
 	|	ReturnsTable.Responsible AS Responsible,
 	|	ReturnsTable.ItsReturnOfLastPeriod AS ItsReturnOfLastPeriod,
@@ -2559,7 +2559,7 @@ Procedure CalculateCostOfReturns()
 	|	ReturnsTable.Quantity,
 	|	ReturnsTable.Amount,
 	|	ReturnsTable.SalesDocument,
-	|	ReturnsTable.Division,
+	|	ReturnsTable.Department,
 	|	ReturnsTable.VATRate,
 	|	ReturnsTable.Responsible,
 	|	ReturnsTable.ItsReturnOfLastPeriod,
@@ -2628,7 +2628,7 @@ Procedure CalculateCostOfReturns()
 			NewRow.Recorder = Ref;
 			NewRow.Company = SelectionDetailRecords.Company;
 			NewRow.CustomerOrder = SelectionDetailRecords.OrderSales;
-			NewRow.Division = SelectionDetailRecords.Division;
+			NewRow.Department = SelectionDetailRecords.Department;
 			NewRow.Responsible = SelectionDetailRecords.Responsible;
 			NewRow.ProductsAndServices = SelectionDetailRecords.ProductsAndServices;
 			NewRow.Characteristic = SelectionDetailRecords.Characteristic;
@@ -2642,7 +2642,7 @@ Procedure CalculateCostOfReturns()
 			NewRow.Period = Date;
 			NewRow.Recorder = Ref;
 			NewRow.Company = SelectionDetailRecords.Company;
-			NewRow.StructuralUnit = SelectionDetailRecords.Division;
+			NewRow.StructuralUnit = SelectionDetailRecords.Department;
 			NewRow.CustomerOrder = SelectionDetailRecords.OrderSales;
 			NewRow.BusinessActivity = SelectionDetailRecords.BusinessActivitySales;
 			NewRow.GLAccount = SelectionDetailRecords.BusinessActivitySalesGLAccountOfSalesCost;
@@ -2745,7 +2745,7 @@ Function GenerateDistributionBaseTable(DistributionBase, AccountingCountsArray, 
 		|	) AS ProductReleaseTurnovers
 		|WHERE
 		|	ProductReleaseTurnovers.Company = &Company
-		|	AND ProductReleaseTurnovers.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|	AND ProductReleaseTurnovers.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|	AND ProductReleaseTurnovers.ProductsAndServices.ProductsAndServicesType <> VALUE(Enum.ProductsAndServicesTypes.Service)";
 		
 		QueryText = StrReplace(QueryText, "// FilterByOrder", ?(ValueIsFilled(FilterByOrder), "And CustomerOrder IN (&OrdersArray)", ""));
@@ -2923,7 +2923,7 @@ Procedure DistributeCosts(Cancel, ErrorsTable)
 		
 		BypassByStructuralUnit = BypassByDistributionMethod.Select(QueryResultIteration.ByGroups);
 		
-		// Bypass on divisions.
+		// Bypass on departments.
 		While BypassByStructuralUnit.Next() Do
 			
 			FilterByStructuralUnit = BypassByStructuralUnit.StructuralUnit;
@@ -3174,7 +3174,7 @@ Function GenerateFinancialResultDistributionBaseTable(DistributionBase, FilterBy
 		|	SalesTurnovers.ProductsAndServices.BusinessActivity.GLAccountCostOfSales AS GLAccountCostOfSales,
 		|	SalesTurnovers.ProductsAndServices.BusinessActivity.ProfitGLAccount AS ProfitGLAccount,
 		|	// TextOfDatabase AS Base,
-		|	SalesTurnovers.Division AS StructuralUnit
+		|	SalesTurnovers.Department AS StructuralUnit
 		|FROM
 		|	AccumulationRegister.Sales.Turnovers(
 		|			&BegDate,
@@ -3188,7 +3188,7 @@ Function GenerateFinancialResultDistributionBaseTable(DistributionBase, FilterBy
 		|WHERE
 		|	SalesTurnovers.ProductsAndServices.BusinessActivity <> VALUE(Catalog.BusinessActivities.Other)";
 		
-		QueryText = StrReplace(QueryText, "// FilterByStructuralUnit", ?(ValueIsFilled(FilterByStructuralUnit), "AND Division IN (&StructuralUnitsArray)", ""));
+		QueryText = StrReplace(QueryText, "// FilterByStructuralUnit", ?(ValueIsFilled(FilterByStructuralUnit), "AND Department IN (&StructuralUnitsArray)", ""));
 		QueryText = StrReplace(QueryText, "// FilterByBusinessActivity", ?(ValueIsFilled(FilterByBusinessActivity), "And ProductsAndServices.BusinessActivity IN (&BusinessActivityArray)", ""));
 		QueryText = StrReplace(QueryText, "// FilterByOrder", ?(ValueIsFilled(FilterByOrder), "And CustomerOrder IN (&OrdersArray)", ""));
 		QueryText = StrReplace(QueryText, "// TextOfDatabase", TextOfDatabase);
@@ -3413,7 +3413,7 @@ Procedure CalculateFinancialResult(Cancel, ErrorsTable)
 		
 		BypassByStructuralUnit = BypassByDistributionMethod.Select(QueryResultIteration.ByGroups);
 		
-		// Bypass on divisions.
+		// Bypass on departments.
 		While BypassByStructuralUnit.Next() Do
 			
 			FilterByStructuralUnit = BypassByStructuralUnit.StructuralUnit;
@@ -3696,7 +3696,7 @@ Procedure CalculateCostPriceInRetailAccrualAccounting(Cancel, ErrorsTable)
 	|	RetailAmountAccounting.StructuralUnit AS StructuralUnit,
 	|	RetailAmountAccounting.Currency AS Currency,
 	|	RetailAmountAccounting.SalesDocument AS SalesDocument,
-	|	RetailAmountAccounting.SalesDocument.Division AS DocumentSalesUnit,
+	|	RetailAmountAccounting.SalesDocument.Department AS DocumentSalesUnit,
 	|	RetailAmountAccounting.SalesDocument.StructuralUnit.RetailPriceKind.PriceCurrency AS SalesDocumentStructuralUnitPriceTypeRetailCurrencyPrices,
 	|	RetailAmountAccounting.SalesDocument.BusinessActivity AS DocumentSalesBusinessActivity,
 	|	RetailAmountAccounting.SalesDocument.BusinessActivity.GLAccountCostOfSales AS DocumentSalesBusinessActivityGLAccountCost,
@@ -4728,7 +4728,7 @@ Procedure GroupRecordSetInventory(RegisterRecordSet)
 	|	Inventory.Specification,
 	|	Inventory.SpecificationCorr,
 	|	Inventory.OrderSales,
-	|	Inventory.Division,
+	|	Inventory.Department,
 	|	Inventory.Responsible,
 	|	Inventory.SalesDocument,
 	|	Inventory.VATRate,
@@ -4762,7 +4762,7 @@ Procedure GroupRecordSetInventory(RegisterRecordSet)
 	|	Inventory.Specification,
 	|	Inventory.SpecificationCorr,
 	|	Inventory.OrderSales,
-	|	Inventory.Division,
+	|	Inventory.Department,
 	|	Inventory.Responsible,
 	|	Inventory.SalesDocument,
 	|	Inventory.VATRate,
@@ -4800,7 +4800,7 @@ Procedure GroupRecordSetSales(RegisterRecordSet)
 	|	Sales.VATRate,
 	|	Sales.Company,
 	|	Sales.CustomerOrder,
-	|	Sales.Division,
+	|	Sales.Department,
 	|	Sales.Responsible,
 	|	SUM(Sales.Quantity) AS Quantity,
 	|	SUM(Sales.Amount) AS Amount,
@@ -4821,7 +4821,7 @@ Procedure GroupRecordSetSales(RegisterRecordSet)
 	|	Sales.VATRate,
 	|	Sales.Company,
 	|	Sales.CustomerOrder,
-	|	Sales.Division,
+	|	Sales.Department,
 	|	Sales.Responsible
 	|
 	|HAVING

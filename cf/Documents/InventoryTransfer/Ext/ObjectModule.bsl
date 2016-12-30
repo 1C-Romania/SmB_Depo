@@ -395,13 +395,13 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		|	TransferBetweenCells.Cell AS Cell,
 		|	CASE
 		|		WHEN TransferBetweenCells.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-		|				OR TransferBetweenCells.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|				OR TransferBetweenCells.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN TransferBetweenCells.StructuralUnit.TransferRecipient
 		|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 		|	END AS StructuralUnitPayee,
 		|	CASE
 		|		WHEN TransferBetweenCells.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-		|				OR TransferBetweenCells.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|				OR TransferBetweenCells.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN TransferBetweenCells.StructuralUnit.TransferRecipientCell
 		|		ELSE VALUE(Catalog.Cells.EmptyRef)
 		|	END AS CellPayee,
@@ -444,13 +444,13 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		|	InventoryAssembly.ProductsCell AS Cell,
 		|	CASE
 		|		WHEN InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-		|				OR InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|				OR InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN InventoryAssembly.ProductsStructuralUnit.TransferRecipient
 		|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 		|	END AS StructuralUnitPayee,
 		|	CASE
 		|		WHEN InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-		|				OR InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|				OR InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN InventoryAssembly.ProductsStructuralUnit.TransferRecipientCell
 		|		ELSE VALUE(Catalog.Cells.EmptyRef)
 		|	END AS CellPayee,
@@ -504,13 +504,13 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		|	InventoryAssembly.ProductsCell AS Cell,
 		|	CASE
 		|		WHEN InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-		|				OR InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|				OR InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN InventoryAssembly.ProductsStructuralUnit.TransferRecipient
 		|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 		|	END AS StructuralUnitPayee,
 		|	CASE
 		|		WHEN InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-		|				OR InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|				OR InventoryAssembly.ProductsStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN InventoryAssembly.ProductsStructuralUnit.TransferRecipientCell
 		|		ELSE VALUE(Catalog.Cells.EmptyRef)
 		|	END AS CellPayee,
@@ -563,13 +563,13 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		|	ProductionOrder.CustomerOrder AS CustomerOrder,
 		|	CASE
 		|		WHEN ProductionOrder.StructuralUnitReserve.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-		|				OR ProductionOrder.StructuralUnitReserve.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|				OR ProductionOrder.StructuralUnitReserve.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN ProductionOrder.StructuralUnitReserve
 		|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 		|	END AS StructuralUnit,
 		|	CASE
 		|		WHEN ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-		|				OR ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|				OR ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN ProductionOrder.StructuralUnit.TransferSourceCell
 		|		ELSE VALUE(Catalog.Cells.EmptyRef)
 		|	END AS Cell,
@@ -617,13 +617,13 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		|	ProductionOrder.Ref.CustomerOrder AS CustomerOrder,
 		|	CASE
 		|		WHEN ProductionOrder.StructuralUnitReserve.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-		|				OR ProductionOrder.StructuralUnitReserve.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|				OR ProductionOrder.StructuralUnitReserve.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN ProductionOrder.StructuralUnitReserve
 		|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 		|	END AS StructuralUnit,
 		|	CASE
 		|		WHEN ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-		|				OR ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|				OR ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN ProductionOrder.StructuralUnit.TransferSourceCell
 		|		ELSE VALUE(Catalog.Cells.EmptyRef)
 		|	END AS Cell,

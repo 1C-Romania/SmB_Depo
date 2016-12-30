@@ -1286,9 +1286,9 @@ Function FoundCreateCustomerOrder(ExchangeNode, XDTODataObject, DocumentsForDela
 	If Not ValueIsFilled(Object.SalesStructuralUnit) Then
 		Object.SalesStructuralUnit = SmallBusinessReUse.GetValueByDefaultUser(
 			Object.Author,
-			"MainDivision"
+			"MainDepartment"
 		);
-		Object.SalesStructuralUnit = ?(ValueIsFilled(Object.SalesStructuralUnit), Object.SalesStructuralUnit, Catalogs.StructuralUnits.MainDivision);
+		Object.SalesStructuralUnit = ?(ValueIsFilled(Object.SalesStructuralUnit), Object.SalesStructuralUnit, Catalogs.StructuralUnits.MainDepartment);
 		NeedToWriteObject = True;
 	EndIf;
 	
@@ -1658,12 +1658,12 @@ Function FindCreateCustomerInvoice(ExchangeNode, XDTODataObject, DocumentsForDel
 		NeedToWriteObject = True;
 	EndIf;
 	
-	If Not ValueIsFilled(Object.Division) Then
-		Object.Division = SmallBusinessReUse.GetValueByDefaultUser(
+	If Not ValueIsFilled(Object.Department) Then
+		Object.Department = SmallBusinessReUse.GetValueByDefaultUser(
 			Object.Author,
-			"MainDivision"
+			"MainDepartment"
 		);
-		Object.Division = ?(ValueIsFilled(Object.Division), Object.Division, Catalogs.StructuralUnits.MainDivision);
+		Object.Department = ?(ValueIsFilled(Object.Department), Object.Department, Catalogs.StructuralUnits.MainDepartment);
 		NeedToWriteObject = True;
 	EndIf;
 	

@@ -1,60 +1,166 @@
-﻿////////////////////////////////////////////////////////////////////////////////
-// PROCEDURES AND FUNCTIONS OF SAVING SETTINGS
+﻿
+#Region FormEventsHandlers
 
 &AtServer
-// Procedure saves the selected item in settings.
-//
-Procedure SetMainItem(SelectedItem, SettingName)
+Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	If SettingName = "MainWarehouse" 
-	   AND SelectedItem.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
-		Message = New UserMessage();
-		Message.Text = NStr("en='You can not choose division as the main warehouse!';ru='В качестве основного склада нельзя выбирать Подразделение!'");
-		Message.Message();
-		Return;
+	If Parameters.Property("AutoTest") Then
+		Return; // Return if the form for analysis is received..
 	EndIf;
-	If SettingName = "MainDivision"
-	   AND SelectedItem.StructuralUnitType <> Enums.StructuralUnitsTypes.Division Then
-		Message = New UserMessage();
-		Message.Text = NStr("en='You must choose division as main division!';ru='В качестве основного подразделения необходимо выбрать Подразделение!'");
-		Message.Message();
-		Return;
-	EndIf; 
-	If SelectedItem <> SmallBusinessReUse.GetValueOfSetting(SettingName) Then
-		SmallBusinessServer.SetUserSetting(SelectedItem, SettingName);
-		SmallBusinessServer.MarkMainItemWithBold(SelectedItem, List, SettingName);
-	EndIf;
+	
+	MainDepartment	= SmallBusinessReUse.GetValueOfSetting("MainDepartment");
+	MainWarehouse	= SmallBusinessReUse.GetValueOfSetting("MainWarehouse");
+	
+	MainStructuralUnits = New Array;
+	MainStructuralUnits.Add(MainDepartment);
+	MainStructuralUnits.Add(MainWarehouse);
+	List.Parameters.SetParameterValue("MainStructuralUnits", MainStructuralUnits);
+	
+	ShowDepartment	= True;
+	ShowWarehouse	= True;
+	
+	If Parameters.Filter.Property("StructuralUnitType") Then
 		
+		ShowDepartment	= False;
+		ShowWarehouse	= False;
+		
+		If TypeOf(Parameters.Filter.StructuralUnitType) = Type("EnumRef.StructuralUnitsTypes") Then
+			
+			ShowDepartment	= Parameters.Filter.StructuralUnitType = Enums.StructuralUnitsTypes.Department;
+			ShowWarehouse	= Not ShowDepartment;
+			
+		Else
+			
+			For Each ArrayItem In Parameters.Filter.StructuralUnitType Do
+				If ArrayItem = Enums.StructuralUnitsTypes.Department Then
+					ShowDepartment = True;
+				Else
+					ShowWarehouse = True;
+				EndIf;
+			EndDo;
+			
+		EndIf;
+		
+	EndIf;
+	
+	Title	= "";
+	If ShowWarehouse Then
+		Title	= NStr("en = 'Warehouses'; ru='Склады'");
+	EndIf;
+	If ShowDepartment Then
+		Title	= Title + ?(ValueIsFilled(Title),", ","") + NStr("en = 'Departments'; ru='Подразделения'");
+	EndIf;
+	
+	Items.FormUseAsMainDepartment.Visible	= ShowDepartment;
+	Items.FormUseAsMainWarehouse.Visible	= ShowWarehouse;
+	Items.OrderWarehouse.Visible			= ShowWarehouse;
+	
+	Items.Company.Visible = GetFunctionalOption("UseDataSynchronization");
+	
+	TypesHierarchy = False;
+	If Not (ShowWarehouse And ShowDepartment) Then
+		TypesHierarchy = CheckTypesHierarchy();
+	EndIf;
+	
+	// Set form settings for the case of the opening of the choice mode
+	Items.List.ChoiceMode		= Parameters.ChoiceMode;
+	Items.List.MultipleChoice	= ?(Parameters.CloseOnChoice = Undefined, False, Not Parameters.CloseOnChoice);
+	If Parameters.ChoiceMode Then
+		PurposeUseKey = PurposeUseKey + "ChoicePick";
+		WindowOpeningMode = FormWindowOpeningMode.LockOwnerWindow;
+	Else
+		PurposeUseKey = PurposeUseKey + "List";
+	EndIf;
+	
+	// StandardSubsystems.AdditionalReportsAndDataProcessors
+	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
+	// End StandardSubsystems.AdditionalReportsAndDataProcessors
+	
 EndProcedure
 
 &AtClient
-// Procedure - command execution handler CommandSetMainDivision.
-//
-Procedure CommandSetMainDivision(Command)
+Procedure OnOpen(Cancel)
 	
-	SelectedItem = Items.List.CurrentRow;
-	If ValueIsFilled(SelectedItem) Then
-		SetMainItem(SelectedItem, "MainDivision");
+	If TypesHierarchy Then
+		Items.List.Representation = TableRepresentation.List;
 	EndIf;
 	
 EndProcedure
 
+#EndRegion
+
+#Region FormItemsEventsHandlers
+
 &AtClient
-// Procedure - command execution handler CommandSetMainWarehouse.
-//
-Procedure CommandSetMainWarehouse(Command)
+Procedure ListOnActivateRow(Item)
 	
-	SelectedItem = Items.List.CurrentRow;
-	If ValueIsFilled(SelectedItem) Then
-		SetMainItem(SelectedItem, "MainWarehouse");
+	If TypeOf(Items.List.CurrentRow) <> Type("DynamicalListGroupRow")
+		And Items.List.CurrentData <> Undefined Then
+		
+		IsDepartment = Items.List.CurrentData.StructuralUnitType = PredefinedValue("Enum.StructuralUnitsTypes.Department");
+		Items.FormUseAsMainDepartment.Enabled	= Not Items.List.CurrentData.IsMain And IsDepartment;
+		Items.FormUseAsMainWarehouse.Enabled	= Not Items.List.CurrentData.IsMain And Not IsDepartment;
+		
 	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormCommandsHandlers
+
+&AtClient
+Procedure UseAsMainDepartment(Command)
+	
+	If TypeOf(Items.List.CurrentRow) = Type("DynamicalListGroupRow")
+		Or Items.List.CurrentData = Undefined
+		Or Items.List.CurrentData.IsMain
+		Or Items.List.CurrentData.StructuralUnitType <> PredefinedValue("Enum.StructuralUnitsTypes.Department") Then
+		
+		Return;
+	EndIf;
+	
+	SetMainStructuralUnit(Items.List.CurrentData.Ref, "MainDepartment");
+	Items.FormUseAsMainDepartment.Enabled	= Not Items.List.CurrentData.IsMain;
+	
+EndProcedure
+
+&AtClient
+Procedure UseAsMainWarehouse(Command)
+	
+	If TypeOf(Items.List.CurrentRow) = Type("DynamicalListGroupRow")
+		Or Items.List.CurrentData = Undefined
+		Or Items.List.CurrentData.IsMain
+		Or Items.List.CurrentData.StructuralUnitType = PredefinedValue("Enum.StructuralUnitsTypes.Department") Then
+		
+		Return;
+	EndIf;
+	
+	SetMainStructuralUnit(Items.List.CurrentData.Ref, "MainWarehouse");
+	Items.FormUseAsMainWarehouse.Enabled	= Not Items.List.CurrentData.IsMain;
+	
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtServer
+Procedure SetMainStructuralUnit(Val NewMainStructuralUnit, SettingName)
+	
+	SmallBusinessServer.SetUserSetting(NewMainStructuralUnit, SettingName);
+	
+	ThisObject[SettingName] = NewMainStructuralUnit;
+	
+	MainStructuralUnits = New Array;
+	MainStructuralUnits.Add(MainDepartment);
+	MainStructuralUnits.Add(MainWarehouse);
+	List.Parameters.SetParameterValue("MainStructuralUnits", MainStructuralUnits);
 	
 EndProcedure
 
 &AtServer
-// Function of checking the types hierarchy of structural units.
-//
-Function CheckTypeHierarchy()
+Function CheckTypesHierarchy()
 	
 	Query = New Query;
 	Query.Text =
@@ -73,90 +179,6 @@ Function CheckTypeHierarchy()
 		Return True;
 	EndIf;
 	
-EndFunction // CheckTypeHierarchy()
+EndFunction
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
-
-&AtServer
-// Procedure - OnCreateAtServer event handler.
-//
-Procedure OnCreateAtServer(Cancel, StandardProcessing)
-	
-	// Selection of main item
-	If Parameters.Filter.Property("StructuralUnitType") Then
-		
-		ShowWarehouse = False;
-		ShowDivision = False;
-		If TypeOf(Parameters.Filter.StructuralUnitType) = Type("FixedArray") Then
-			For Each ArrayElement IN Parameters.Filter.StructuralUnitType Do
-				If ArrayElement = Enums.StructuralUnitsTypes.Division Then
-					ShowDivision = True;
-				Else
-					ShowWarehouse = True;
-				EndIf;
-			EndDo;
-		Else
-			If Parameters.Filter.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
-				ShowDivision = True;
-			Else
-				ShowWarehouse = True;
-			EndIf;
-		EndIf; 
-		
-		CommonUseClientServer.SetFormItemProperty(Items, "CommandSetMainDivision", "Visible", ShowDivision);
-		CommonUseClientServer.SetFormItemProperty(Items, "CommandSetMainWarehouse", "Visible", ShowWarehouse);
-		If Not ShowWarehouse Then
-			
-			CommonUseClientServer.SetFormItemProperty(Items, "OrderWarehouse", "Visible", False);
-			
-		EndIf;
-		
-	Else
-		
-		ShowWarehouse = True;
-		ShowDivision = True;
-		
-	EndIf;
-	
-	SmallBusinessServer.MarkMainItemWithBold(SmallBusinessReUse.GetValueOfSetting("MainWarehouse"), List, "MainWarehouse");
-	SmallBusinessServer.MarkMainItemWithBold(SmallBusinessReUse.GetValueOfSetting("MainDivision"), List, "MainDivision");
-	
-	If Not GetFunctionalOption("UseDataSynchronization") Then
-		Items.Company.Visible = False;
-	EndIf;
-	
-	TypesHierarchy = False;
-	If Not (ShowWarehouse AND ShowDivision) Then
-		TypesHierarchy = CheckTypeHierarchy();
-	EndIf;
-	
-	// StandardSubsystems.AdditionalReportsAndDataProcessors
-	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
-	// End StandardSubsystems.AdditionalReportsAndDataProcessors
-	
-EndProcedure // OnCreateAtServer()
-
-&AtClient
-// Procedure - OnOpen form event handler
-//
-Procedure OnOpen(Cancel)
-	
-	If TypesHierarchy Then
-		Items.List.Representation = TableRepresentation.List;
-	EndIf;
-	
-EndProcedure // OnOpen()
-
-
-
-
-
-
-
-
-
-
-
-
-
+#EndRegion

@@ -199,11 +199,11 @@
 					<ContextMenu name="NumberListContextMenu" id="7"/>
 					<ExtendedTooltip name="NumberListExtendedTooltip" id="42"/>
 				</LabelField>
-				<LabelField name="ListDivision" id="12">
-					<DataPath>List.Division</DataPath>
+				<LabelField name="ListDepartment" id="12">
+					<DataPath>List.Department</DataPath>
 					<Width>20</Width>
-					<ContextMenu name="UnitListContextMenu" id="13"/>
-					<ExtendedTooltip name="ListDivisionExtendedTooltip" id="45"/>
+					<ContextMenu name="ListDepartmentContextMenu" id="13"/>
+					<ExtendedTooltip name="ListDepartmentExtendedTooltip" id="45"/>
 				</LabelField>
 				<LabelField name="EmployeesList" id="14">
 					<DataPath>List.Employee</DataPath>
@@ -255,7 +255,7 @@
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>SELECT
 	DocumentJournalTimeTrackingDocuments.Ref,
 	DocumentJournalTimeTrackingDocuments.Date,
@@ -263,7 +263,7 @@
 	DocumentJournalTimeTrackingDocuments.Number,
 	DocumentJournalTimeTrackingDocuments.Posted,
 	DocumentJournalTimeTrackingDocuments.Company,
-	DocumentJournalTimeTrackingDocuments.Division,
+	DocumentJournalTimeTrackingDocuments.Department,
 	DocumentJournalTimeTrackingDocuments.Employee,
 	DocumentJournalTimeTrackingDocuments.Comment,
 	DocumentJournalTimeTrackingDocuments.Type

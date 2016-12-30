@@ -350,15 +350,15 @@
 					<ContextMenu name="DocumentsTableOrganizationContextMenu" id="68"/>
 					<ExtendedTooltip name="DocumentsTableCompanyExtendedTooltip" id="113"/>
 				</InputField>
-				<InputField name="DocumentsTableDivision" id="49">
-					<DataPath>DocumentsTable.Division</DataPath>
+				<InputField name="DocumentsTableDepartment" id="49">
+					<DataPath>DocumentsTable.Department</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
 					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="DocumentsTableDivisionContextMenu" id="50"/>
-					<ExtendedTooltip name="DocumentsTableDivisionExtendedTooltip" id="114"/>
+					<ContextMenu name="DocumentsTableDepartmentContextMenu" id="50"/>
+					<ExtendedTooltip name="DocumentsTableDepartmentExtendedTooltip" id="114"/>
 				</InputField>
 				<InputField name="DocumentsTableResponsible" id="74">
 					<DataPath>DocumentsTable.Responsible</DataPath>
@@ -567,15 +567,15 @@
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
 					</FunctionalOptions>
 				</Column>
-				<Column name="Division" id="4">
+				<Column name="Department" id="4">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Division</v8:content>
+							<v8:content>Department</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>разделение</v8:content>
+							<v8:content>Подразделение</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -586,7 +586,7 @@
 						</v8:StringQualifiers>
 					</Type>
 					<FunctionalOptions>
-						<Item>FunctionalOption.AccountingBySeveralDivisions</Item>
+						<Item>FunctionalOption.AccountingBySeveralDepartments</Item>
 					</FunctionalOptions>
 				</Column>
 				<Column name="Company" id="5">

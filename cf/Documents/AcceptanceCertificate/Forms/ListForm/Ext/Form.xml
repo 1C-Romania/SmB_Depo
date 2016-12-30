@@ -58,8 +58,8 @@
 						<Event name="OnChange">FilterCounterpartyOnChange</Event>
 					</Events>
 				</InputField>
-				<InputField name="FilterDivision" id="41">
-					<DataPath>FilterDivision</DataPath>
+				<InputField name="FilterDepartment" id="41">
+					<DataPath>FilterDepartment</DataPath>
 					<TitleLocation>None</TitleLocation>
 					<OpenButton>false</OpenButton>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
@@ -67,24 +67,24 @@
 						<app:item name="Filter.StructuralUnitType">
 							<app:value xsi:type="FormChoiceListDesTimeValue">
 								<Presentation/>
-								<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</Value>
+								<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</Value>
 							</app:value>
 						</app:item>
 					</ChoiceParameters>
 					<InputHint>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Division</v8:content>
+							<v8:content>Department</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>разделение</v8:content>
+							<v8:content>Подразделение</v8:content>
 						</v8:item>
 					</InputHint>
-					<ContextMenu name="FilterSubdivisionContextMenu" id="42"/>
-					<ExtendedTooltip name="FilterSubdivisionExtendedTooltip" id="276"/>
+					<ContextMenu name="FilterDepartmentContextMenu" id="42"/>
+					<ExtendedTooltip name="FilterDepartmentExtendedTooltip" id="276"/>
 					<Events>
-						<Event name="OnChange">FilterDivisionOnChange</Event>
+						<Event name="OnChange">FilterDepartmentOnChange</Event>
 					</Events>
 				</InputField>
 				<InputField name="FilterResponsible" id="43">
@@ -443,11 +443,11 @@
 										</LabelField>
 									</ChildItems>
 								</ColumnGroup>
-								<LabelField name="Division" id="18">
-									<DataPath>List.Division</DataPath>
+								<LabelField name="Department" id="18">
+									<DataPath>List.Department</DataPath>
 									<Width>20</Width>
-									<ContextMenu name="DivisionContextMenu" id="19"/>
-									<ExtendedTooltip name="DivisionExtendedTooltip" id="305"/>
+									<ContextMenu name="DepartmentContextMenu" id="19"/>
+									<ExtendedTooltip name="DepartmentExtendedTooltip" id="305"/>
 								</LabelField>
 								<LabelField name="Company" id="8">
 									<DataPath>List.Company</DataPath>
@@ -874,25 +874,25 @@
 				<Field>FilterResponsible</Field>
 			</Save>
 		</Attribute>
-		<Attribute name="FilterDivision" id="5">
+		<Attribute name="FilterDepartment" id="5">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Division</v8:content>
+					<v8:content>Department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>разделение</v8:content>
+					<v8:content>Подразделение</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
 			</Type>
 			<Save>
-				<Field>FilterDivision</Field>
+				<Field>FilterDepartment</Field>
 			</Save>
 			<FunctionalOptions>
-				<Item>FunctionalOption.AccountingBySeveralDivisions</Item>
+				<Item>FunctionalOption.AccountingBySeveralDepartments</Item>
 			</FunctionalOptions>
 		</Attribute>
 		<Attribute name="ListCustomerOrders" id="6">

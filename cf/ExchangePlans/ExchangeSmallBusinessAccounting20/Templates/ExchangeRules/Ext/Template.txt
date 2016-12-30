@@ -1119,9 +1119,9 @@ EndIf;</AfterParametersImport>
 					</Value>
 					<Value>
 						<Code>4</Code>
-						<Description>Division --&gt;</Description>
+						<Description>Department --&gt;</Description>
 						<Order>200</Order>
-						<Source>Division</Source>
+						<Source>Department</Source>
 					</Value>
 				</Values>
 			</Rule>
@@ -2737,7 +2737,7 @@ EndIf;</AfterImport>
 			</Rule>
 			<Rule>
 				<Code>UnitCompanies</Code>
-				<Description>Catalog: Divisions companies</Description>
+				<Description>Catalog: Departments companies</Description>
 				<Order>900</Order>
 				<SynchronizeByID>true</SynchronizeByID>
 				<SearchBySearchFieldsIfNotFoundByID>true</SearchBySearchFieldsIfNotFoundByID>
@@ -2777,7 +2777,7 @@ EndIf;</AfterImport>
 						<Description>Parent --&gt; Parent</Description>
 						<Order>250</Order>
 						<Source Name="Parent" Kind="Property" Type="CatalogRef.StructuralUnits"/>
-						<Receiver Name="Parent" Kind="Property" Type="CatalogRef.CompaniesDivisions"/>
+						<Receiver Name="Parent" Kind="Property" Type="CatalogRef.CompaniesDepartments"/>
 						<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
 					</Property>
 				</Properties>
@@ -3216,10 +3216,10 @@ EndIf;</BeforeExport>
 					</Property>
 					<Property>
 						<Code>6</Code>
-						<Description>DivisionCode --&gt; DocumentCodeDivisions</Description>
+						<Description>DepartmentCode --&gt; DocumentCodeDepartments</Description>
 						<Order>300</Order>
-						<Source Name="DivisionCode" Kind="Resource" Type="String"/>
-						<Receiver Name="DocumentCodeDivisions" Kind="Resource" Type="String"/>
+						<Source Name="DepartmentCode" Kind="Resource" Type="String"/>
+						<Receiver Name="DocumentCodeDepartments" Kind="Resource" Type="String"/>
 					</Property>
 					<Property>
 						<Code>7</Code>
@@ -4074,10 +4074,10 @@ Execute(Algorithms.BuildingStructureOfContractCounterparty);</BeforeExport>
 						</Property>
 						<Property>
 							<Code>15</Code>
-							<Description>Division --&gt; DivisionCost</Description>
+							<Description>Department --&gt; DepartmentCost</Description>
 							<Order>650</Order>
-							<Source Name="Division" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
-							<Receiver Name="DivisionCost" Kind="Attribute" Type="CatalogRef.CompaniesDivisions"/>
+							<Source Name="Department" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
+							<Receiver Name="DepartmentCost" Kind="Attribute" Type="CatalogRef.CompaniesDepartments"/>
 							<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
 						</Property>
 						<Property>
@@ -6129,10 +6129,10 @@ Execute(Algorithms.BuildingStructureOfContractCounterparty);</BeforeExport>
 							</Property>
 							<Property>
 								<Code>24</Code>
-								<Description>SalesStructuralUnit --&gt; DivisionCost</Description>
+								<Description>SalesStructuralUnit --&gt; DepartmentCost</Description>
 								<Order>700</Order>
 								<Source Name="SalesStructuralUnit" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
-								<Receiver Name="DivisionCost" Kind="Attribute" Type="CatalogRef.CompaniesDivisions"/>
+								<Receiver Name="DepartmentCost" Kind="Attribute" Type="CatalogRef.CompaniesDepartments"/>
 								<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
 							</Property>
 							<Property>
@@ -6381,10 +6381,10 @@ EndIf;</AfterImport>
 							</Property>
 							<Property>
 								<Code>18</Code>
-								<Description>SalesStructuralUnit --&gt; DivisionCost</Description>
+								<Description>SalesStructuralUnit --&gt; DepartmentCost</Description>
 								<Order>450</Order>
 								<Source Name="SalesStructuralUnit" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
-								<Receiver Name="DivisionCost" Kind="Attribute" Type="CatalogRef.CompaniesDivisions"/>
+								<Receiver Name="DepartmentCost" Kind="Attribute" Type="CatalogRef.CompaniesDepartments"/>
 								<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
 							</Property>
 							<Property>
@@ -6466,10 +6466,10 @@ EndIf;</BeforeExport>
 								</Property>
 								<Property>
 									<Code>24</Code>
-									<Description> --&gt; DivisionCost</Description>
+									<Description> --&gt; DepartmentCost</Description>
 									<Order>400</Order>
 									<Source Name="" Kind=""/>
-									<Receiver Name="DivisionCost" Kind="Attribute" Type="CatalogRef.CompaniesDivisions"/>
+									<Receiver Name="DepartmentCost" Kind="Attribute" Type="CatalogRef.CompaniesDepartments"/>
 									<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
 									<BeforeExport>Value = Source.SalesStructuralUnit;</BeforeExport>
 								</Property>
@@ -9049,10 +9049,10 @@ EndIf;</BeforeProcessExport>
 		Object.Warehouse = ExchangeNodeForDataImport.Warehouse;
 	EndIf;
 		
-	If Not ValueIsFilled(Object.DivisionCost)
-		  AND ValueIsFilled(ExchangeNodeForDataImport.Division)
-		  AND ExchangeNodeForDataImport.Division.Owner = Object.Company Then
-		Object.DivisionCost = ExchangeNodeForDataImport.Division;
+	If Not ValueIsFilled(Object.DepartmentCost)
+		  AND ValueIsFilled(ExchangeNodeForDataImport.Department)
+		  AND ExchangeNodeForDataImport.Department.Owner = Object.Company Then
+		Object.DepartmentCost = ExchangeNodeForDataImport.Department;
 	EndIf;
 	
 	// Fill in GL account of expenses
@@ -9256,10 +9256,10 @@ EndIf;</BeforeExport>
 						</Property>
 						<Property>
 							<Code>23</Code>
-							<Description>StructuralUnit --&gt; DivisionCost</Description>
+							<Description>StructuralUnit --&gt; DepartmentCost</Description>
 							<Order>750</Order>
 							<Source Name="StructuralUnit" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
-							<Receiver Name="DivisionCost" Kind="Attribute" Type="CatalogRef.CompaniesDivisions"/>
+							<Receiver Name="DepartmentCost" Kind="Attribute" Type="CatalogRef.CompaniesDepartments"/>
 							<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
 							<BeforeExport>If Source.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse Then
 	Value = "";
@@ -12612,10 +12612,10 @@ EndIf;</AfterImport>
 						</Property>
 						<Property>
 							<Code>9</Code>
-							<Description>StructuralUnitPayee --&gt; DivisionCost</Description>
+							<Description>StructuralUnitPayee --&gt; DepartmentCost</Description>
 							<Order>350</Order>
 							<Source Name="StructuralUnitPayee" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
-							<Receiver Name="DivisionCost" Kind="Attribute" Type="CatalogRef.CompaniesDivisions"/>
+							<Receiver Name="DepartmentCost" Kind="Attribute" Type="CatalogRef.CompaniesDepartments"/>
 							<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
 						</Property>
 						<Property>
@@ -12717,10 +12717,10 @@ EndIf;</BeforeExport>
 							</Property>
 							<Property>
 								<Code>27</Code>
-								<Description> --&gt; DivisionCost</Description>
+								<Description> --&gt; DepartmentCost</Description>
 								<Order>400</Order>
 								<Source Name="" Kind=""/>
-								<Receiver Name="DivisionCost" Kind="Attribute" Type="CatalogRef.CompaniesDivisions"/>
+								<Receiver Name="DepartmentCost" Kind="Attribute" Type="CatalogRef.CompaniesDepartments"/>
 								<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
 								<BeforeExport>Value = Source.StructuralUnitPayee;</BeforeExport>
 							</Property>
@@ -12823,8 +12823,8 @@ EndIf;</BeforeExport>
 		Object.Warehouse = ExchangeNodeForDataImport.Warehouse;
 	EndIf;
 	
-	If Not ValueIsFilled(Object.DivisionCost) Then
-		Object.DivisionCost = ExchangeNodeForDataImport.Division;
+	If Not ValueIsFilled(Object.DepartmentCost) Then
+		Object.DepartmentCost = ExchangeNodeForDataImport.Department;
 	EndIf;
 	
 	// Fill in the header attributes
@@ -12959,12 +12959,12 @@ EndIf;</AfterImport>
 						</Property>
 						<Property>
 							<Code>22</Code>
-							<Description>StructuralUnit --&gt; DivisionCost</Description>
+							<Description>StructuralUnit --&gt; DepartmentCost</Description>
 							<Order>300</Order>
 							<Source Name="StructuralUnit" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
-							<Receiver Name="DivisionCost" Kind="Attribute" Type="CatalogRef.CompaniesDivisions"/>
+							<Receiver Name="DepartmentCost" Kind="Attribute" Type="CatalogRef.CompaniesDepartments"/>
 							<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
-							<BeforeExport>Cancel = Source.StructuralUnit.StructuralUnitType &lt;&gt; Enums.StructuralUnitsTypes.Division;</BeforeExport>
+							<BeforeExport>Cancel = Source.StructuralUnit.StructuralUnitType &lt;&gt; Enums.StructuralUnitsTypes.Department;</BeforeExport>
 						</Property>
 						<Property>
 							<Code>38</Code>
@@ -12973,7 +12973,7 @@ EndIf;</AfterImport>
 							<Source Name="ProductsStructuralUnit" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
 							<Receiver Name="Warehouse" Kind="Attribute" Type="CatalogRef.Warehouses"/>
 							<ConversionRuleCode>Warehouses                                            </ConversionRuleCode>
-							<BeforeExport>Cancel = Source.ProductsStructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Division;</BeforeExport>
+							<BeforeExport>Cancel = Source.ProductsStructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Department;</BeforeExport>
 						</Property>
 						<Property>
 							<Code>36</Code>
@@ -13418,7 +13418,7 @@ EndIf;</AfterImport>
 							<Description>StructuralUnitPayee --&gt; Location</Description>
 							<Order>300</Order>
 							<Source Name="StructuralUnitPayee" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
-							<Receiver Name="Location" Kind="Attribute" Type="CatalogRef.CompaniesDivisions"/>
+							<Receiver Name="Location" Kind="Attribute" Type="CatalogRef.CompaniesDepartments"/>
 							<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
 						</Property>
 						<Property>
@@ -13531,10 +13531,10 @@ EndIf;</AfterImport>
 						</Property>
 						<Property>
 							<Code>7</Code>
-							<Description>StructuralUnit --&gt; CounterpartyDivision</Description>
+							<Description>StructuralUnit --&gt; CounterpartyDepartment</Description>
 							<Order>350</Order>
 							<Source Name="StructuralUnit" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
-							<Receiver Name="CounterpartyDivision" Kind="Attribute" Type="CatalogRef.CompaniesDivisions"/>
+							<Receiver Name="CounterpartyDepartment" Kind="Attribute" Type="CatalogRef.CompaniesDepartments"/>
 							<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
 						</Property>
 						<Property>
@@ -13630,10 +13630,10 @@ EndIf;</AfterImport>
 						</Property>
 						<Property>
 							<Code>7</Code>
-							<Description>StructuralUnit --&gt; CounterpartyDivision</Description>
+							<Description>StructuralUnit --&gt; CounterpartyDepartment</Description>
 							<Order>300</Order>
 							<Source Name="StructuralUnit" Kind="Attribute" Type="CatalogRef.StructuralUnits"/>
-							<Receiver Name="CounterpartyDivision" Kind="Attribute" Type="CatalogRef.CompaniesDivisions"/>
+							<Receiver Name="CounterpartyDepartment" Kind="Attribute" Type="CatalogRef.CompaniesDepartments"/>
 							<ConversionRuleCode>UnitCompanies                          </ConversionRuleCode>
 						</Property>
 						<Property>
@@ -14469,13 +14469,13 @@ EndIf;</BeforeObjectExport>
   
 ElsIf Object.OperationKind = Enums.OperationKindsInventoryTransfer.Move
 	AND Object.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse
-	AND Object.StructuralUnitPayee.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
+	AND Object.StructuralUnitPayee.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
 		
 	OCRName = "RequestInvoice";
 	
 ElsIf Object.OperationKind = Enums.OperationKindsInventoryTransfer.WriteOffToExpenses
 	AND Object.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse
-	AND Object.StructuralUnitPayee.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
+	AND Object.StructuralUnitPayee.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
 	
 	OCRName = "RequestInvoice";
 	
@@ -14519,7 +14519,7 @@ If (Object.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Wareho
 	
 	OCRName = "ProductsWriteOff";
 	
-ElsIf Object.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Division
+ElsIf Object.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Department
 	AND Object.RetireInventoryFromOperation Then
 	
 	OCRName = "CancellationOfService";

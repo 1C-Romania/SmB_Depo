@@ -12,8 +12,8 @@ Function ExecuteQuery()
 	"SELECT ALLOWED
 	|	AccrualsAndDeductions.Employee AS Ind,
 	|	AccrualsAndDeductions.Employee.Code AS EmployeeCode,
-	|	AccrualsAndDeductions.StructuralUnit AS Division,
-	|	AccrualsAndDeductions.StructuralUnit.Description AS DivisionPresentation,
+	|	AccrualsAndDeductions.StructuralUnit AS Department,
+	|	AccrualsAndDeductions.StructuralUnit.Description AS DepartmentPresentation,
 	|	EmployeesSliceLast.Position AS Position,
 	|	CASE
 	|		WHEN AccrualsAndDeductions.AccrualDeductionKind.Type = VALUE(Enum.AccrualAndDeductionTypes.Accrual)
@@ -65,14 +65,14 @@ Function ExecuteQuery()
 	|				&RegistrationPeriod,
 	|				Company = &Company
 	|					AND Currency = &Currency
-	|					" + ?(Not ValueIsFilled(Division), "", "AND StructuralUnit = &Division") + ") AS DebtToBegin 
+	|					" + ?(Not ValueIsFilled(Department), "", "AND StructuralUnit = &Department") + ") AS DebtToBegin 
 	|		ON AccrualsAndDeductions.Employee = DebtToBegin.Employee 
 	|			AND AccrualsAndDeductions.StructuralUnit = DebtToBegin.StructuralUnit 
 	|		LEFT JOIN AccumulationRegister.PayrollPayments.Balance( 
 	|				&RegistrationEndOfPeriod, 
 	|				Company = &Company 
 	|					AND Currency = &Currency
-	|					" + ?(Not ValueIsFilled(Division), "", "AND StructuralUnit = &Division") + ") AS DebtAtEnd 
+	|					" + ?(Not ValueIsFilled(Department), "", "AND StructuralUnit = &Department") + ") AS DebtAtEnd 
 	|		ON AccrualsAndDeductions.Employee = DebtAtEnd.Employee 
 	|			AND AccrualsAndDeductions.StructuralUnit = DebtAtEnd.StructuralUnit 
 	|		LEFT JOIN InformationRegister.Employees.SliceLast(
@@ -85,8 +85,8 @@ Function ExecuteQuery()
 	|WHERE 
 	|	AccrualsAndDeductions.Company = &Company 
 	|	AND AccrualsAndDeductions.RegistrationPeriod = &RegistrationPeriod 
-	|	AND AccrualsAndDeductions.Currency = &Currency" + ?(Not ValueIsFilled(Division), "", "
-	|	AND AccrualsAndDeductions.StructuralUnit = &Division") + " " + ?(Not ValueIsFilled(Employee), "", "
+	|	AND AccrualsAndDeductions.Currency = &Currency" + ?(Not ValueIsFilled(Department), "", "
+	|	AND AccrualsAndDeductions.StructuralUnit = &Department") + " " + ?(Not ValueIsFilled(Employee), "", "
 	|	AND AccrualsAndDeductions.Employee = &Employee") + "
 	|
 	|GROUP BY
@@ -129,11 +129,11 @@ Function ExecuteQuery()
 	|	END
 	|
 	|ORDER BY
-	|	DivisionPresentation,
+	|	DepartmentPresentation,
 	|	EmployeePresentation,
 	|	StartDate
 	|TOTALS
-	|	MAX(DivisionPresentation),
+	|	MAX(DepartmentPresentation),
 	|	MAX(Position),
 	|	SUM(AmountAccrued),
 	|	SUM(AmountWithheld),
@@ -143,7 +143,7 @@ Function ExecuteQuery()
 	|	MAX(Name),
 	|	MAX(Patronymic)
 	|BY
-	|	Division,
+	|	Department,
 	|	Ind
 	|
 	|;
@@ -172,8 +172,8 @@ Function ExecuteQuery()
 	|			&RegistrationEndOfPeriod,
 	|			Record,
 	|			Company = &Company
-	|				AND Currency = &Currency" + ?(Not ValueIsFilled(Division), "", "
-	|				AND StructuralUnit = &Division") + " " + ?(Not ValueIsFilled(Employee), "", "
+	|				AND Currency = &Currency" + ?(Not ValueIsFilled(Department), "", "
+	|				AND StructuralUnit = &Department") + " " + ?(Not ValueIsFilled(Employee), "", "
 	|				AND Employee = &Employee") + ") AS PayrollPaymentsTurnovers
 	|WHERE 
 	|	(PayrollPaymentsTurnovers.Recorder REFS Document.PaymentExpense 
@@ -186,7 +186,7 @@ Function ExecuteQuery()
 	Query.SetParameter("Company", Company);
 	Query.SetParameter("RegistrationPeriod", RegistrationPeriod);
 	Query.SetParameter("RegistrationEndOfPeriod", EndOfMonth(RegistrationPeriod)); 
-	Query.SetParameter("Division", Division);
+	Query.SetParameter("Department", Department);
 	Query.SetParameter("Employee", Employee);
 	QueryResult = Query.ExecuteBatch();
 	
@@ -251,14 +251,14 @@ Procedure MakeExecute()
     AreaSpace.Parameters.TextPadding = "Company: " + Company;
 	SpreadsheetDocument.Put(AreaSpace);
 
-	SelectionSubdivision = QueryResult[0].Select(QueryResultIteration.ByGroups, "Division");
-	While SelectionSubdivision.Next() Do
+	SelectionSubDepartment = QueryResult[0].Select(QueryResultIteration.ByGroups, "Department");
+	While SelectionSubDepartment.Next() Do
 
-        AreaSpace.Parameters.TextPadding = "Division: " + SelectionSubdivision.Division;
+        AreaSpace.Parameters.TextPadding = "Department: " + SelectionSubDepartment.Department;
 		SpreadsheetDocument.Put(AreaSpace);
         SpreadsheetDocument.StartRowGroup();
 		
-		IndividualSelection = SelectionSubdivision.Select(QueryResultIteration.ByGroups, "Ind");
+		IndividualSelection = SelectionSubDepartment.Select(QueryResultIteration.ByGroups, "Ind");
 		While IndividualSelection.Next() Do
 
 			AreaHeader.Parameters.Title = "Payroll sheet for " + Format(RegistrationPeriod , "DF=""MMMM yyyy 'g.' """);
@@ -408,9 +408,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Currency 							= Constants.AccountingCurrency.Get();
 
-	If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
+	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
 		
-		Division = Catalogs.StructuralUnits.MainDivision;
+		Department = Catalogs.StructuralUnits.MainDepartment;
 		
 	EndIf;
 	

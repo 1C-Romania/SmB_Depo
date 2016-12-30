@@ -15,7 +15,7 @@ Procedure GenerateTableInventory(DocumentRefReportOnRetailSales, StructureAdditi
 	|	TableInventory.Company AS Company,
 	|	TableInventory.Document AS Document,
 	|	TableInventory.Document AS SalesDocument,
-	|	TableInventory.Division AS Division,
+	|	TableInventory.Department AS Department,
 	|	TableInventory.Responsible AS Responsible,
 	|	TableInventory.ProductsOnCommission AS ProductsOnCommission,
 	|	UNDEFINED AS OrderSales,
@@ -52,7 +52,7 @@ Procedure GenerateTableInventory(DocumentRefReportOnRetailSales, StructureAdditi
 	|	TableInventory.Date,
 	|	TableInventory.Company,
 	|	TableInventory.Document,
-	|	TableInventory.Division,
+	|	TableInventory.Department,
 	|	ISNULL(TableInventory.StructuralUnit, VALUE(Catalog.StructuralUnits.EmptyRef)),
 	|	ISNULL(TableInventory.StructuralUnitCorr, VALUE(Catalog.StructuralUnits.EmptyRef)),
 	|	TableInventory.InventoryGLAccount,
@@ -280,7 +280,7 @@ Procedure GenerateTableInventorySale(DocumentRefReportOnRetailSales, StructureAd
 				
 				FillPropertyValues(RowIncomeAndExpenses, RowTableInventory);
 				
-				RowIncomeAndExpenses.StructuralUnit = RowTableInventory.Division;
+				RowIncomeAndExpenses.StructuralUnit = RowTableInventory.Department;
 				RowIncomeAndExpenses.GLAccount = RowTableInventory.AccountDr;
 				
 				RowIncomeAndExpenses.AmountIncome = 0;
@@ -328,7 +328,7 @@ Procedure GenerateTableSales(DocumentRefReportOnRetailSales, StructureAdditional
 	|	TableSales.CustomerOrder AS CustomerOrder,
 	|	TableSales.Document AS Document,
 	|	TableSales.VATRate AS VATRate,
-	|	TableSales.Division AS Division,
+	|	TableSales.Department AS Department,
 	|	TableSales.Responsible AS Responsible,
 	|	SUM(TableSales.Quantity) AS Quantity,
 	|	SUM(TableSales.AmountVATPurchaseSale) AS VATAmount,
@@ -348,7 +348,7 @@ Procedure GenerateTableSales(DocumentRefReportOnRetailSales, StructureAdditional
 	|	TableSales.CustomerOrder,
 	|	TableSales.Document,
 	|	TableSales.VATRate,
-	|	TableSales.Division,
+	|	TableSales.Department,
 	|	TableSales.Responsible";
 	
 	Query.SetParameter("CompletePosting", StructureAdditionalProperties.ForPosting.CompletePosting);
@@ -461,7 +461,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReportOnRetailSales, Structu
 	|	TableIncomeAndExpenses.LineNumber AS LineNumber,
 	|	TableIncomeAndExpenses.Date AS Period,
 	|	TableIncomeAndExpenses.Company AS Company,
-	|	TableIncomeAndExpenses.Division AS StructuralUnit,
+	|	TableIncomeAndExpenses.Department AS StructuralUnit,
 	|	TableIncomeAndExpenses.BusinessActivity AS BusinessActivity,
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.GLAccountRevenueFromSales AS GLAccount,
@@ -484,7 +484,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReportOnRetailSales, Structu
 	|	TableIncomeAndExpenses.Date,
 	|	TableIncomeAndExpenses.LineNumber,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.Division,
+	|	TableIncomeAndExpenses.Department,
 	|	TableIncomeAndExpenses.BusinessActivity,
 	|	TableIncomeAndExpenses.CustomerOrder,
 	|	TableIncomeAndExpenses.GLAccountRevenueFromSales
@@ -998,7 +998,7 @@ Procedure InitializeDocumentData(DocumentRefReportOnRetailSales, StructureAdditi
 	|	RetailSalesReportInventory.Ref.CashCR.GLAccount AS CashCRGLAccount,
 	|	&Company AS Company,
 	|	VALUE(Document.CustomerOrder.EmptyRef) AS CustomerOrder,
-	|	RetailSalesReportInventory.Ref.Division AS Division,
+	|	RetailSalesReportInventory.Ref.Department AS Department,
 	|	RetailSalesReportInventory.Responsible AS Responsible,
 	|	RetailSalesReportInventory.ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
 	|	RetailSalesReportInventory.ProductsAndServices.BusinessActivity AS BusinessActivity,
@@ -1434,7 +1434,7 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		|	ReceiptCRInventory.DocumentCurrency AS DocumentCurrency,
 		|	ReceiptCRInventory.PriceKind AS PriceKind,
 		|	ReceiptCRInventory.CashCR AS CashCR,
-		|	ReceiptCRInventory.Division AS Division,
+		|	ReceiptCRInventory.Department AS Department,
 		|	ReceiptCRInventory.Responsible AS Responsible,
 		|	ReceiptCRInventory.Company AS Company,
 		|	ReceiptCRInventory.DiscountCard AS DiscountCard,
@@ -1457,7 +1457,7 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		|		ReceiptCRInventory.Ref.DocumentCurrency AS DocumentCurrency,
 		|		ReceiptCRInventory.Ref.PriceKind AS PriceKind,
 		|		ReceiptCRInventory.Ref.CashCR AS CashCR,
-		|		ReceiptCRInventory.Ref.Division AS Division,
+		|		ReceiptCRInventory.Ref.Department AS Department,
 		|		ReceiptCRInventory.Ref.Responsible AS Responsible,
 		|		ReceiptCRInventory.Ref.Company AS Company,
 		|		ReceiptCRInventory.Ref.DiscountCard AS DiscountCard,
@@ -1489,7 +1489,7 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		|		ReceiptCRInventory.Ref.DocumentCurrency,
 		|		ReceiptCRInventory.Ref.PriceKind,
 		|		ReceiptCRInventory.Ref.CashCR,
-		|		ReceiptCRInventory.Ref.Division,
+		|		ReceiptCRInventory.Ref.Department,
 		|		ReceiptCRInventory.Ref.Responsible,
 		|		ReceiptCRInventory.Ref.Company,
 		|		ReceiptCRInventory.Ref.DiscountCard,
@@ -1515,7 +1515,7 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		|	ReceiptCRInventory.PriceKind,
 		|	ReceiptCRInventory.CashCR,
 		|	ReceiptCRInventory.Company,
-		|	ReceiptCRInventory.Division,
+		|	ReceiptCRInventory.Department,
 		|	ReceiptCRInventory.Responsible,
 		|	ReceiptCRInventory.VATRate,
 		|	ReceiptCRInventory.DiscountCard,
@@ -1932,7 +1932,7 @@ Function GetCashCRSessionDescriptionStructure()
 	StatusCashCRSession.Insert("PriceKind");
 	StatusCashCRSession.Insert("Company");
 	StatusCashCRSession.Insert("Responsible");
-	StatusCashCRSession.Insert("Division");
+	StatusCashCRSession.Insert("Department");
 	StatusCashCRSession.Insert("StructuralUnit");
 	StatusCashCRSession.Insert("AmountIncludesVAT");
 	StatusCashCRSession.Insert("IncludeVATInPrice");
@@ -1958,7 +1958,7 @@ Function GetCashCRSessionStatus(CashCR) Export
 	|	RetailReport.PriceKind AS PriceKind,
 	|	RetailReport.Company AS Company,
 	|	RetailReport.Responsible AS Responsible,
-	|	RetailReport.Division AS Division,
+	|	RetailReport.Department AS Department,
 	|	RetailReport.StructuralUnit AS StructuralUnit,
 	|	RetailReport.AmountIncludesVAT AS AmountIncludesVAT,
 	|	RetailReport.IncludeVATInPrice AS IncludeVATInPrice,
@@ -2017,7 +2017,7 @@ Function GetCashCRSessionAttributesToDate(CashCR, DateTime) Export
 	|	RetailReport.PriceKind AS PriceKind,
 	|	RetailReport.Company AS Company,
 	|	RetailReport.Responsible AS Responsible,
-	|	RetailReport.Division AS Division,
+	|	RetailReport.Department AS Department,
 	|	RetailReport.StructuralUnit AS StructuralUnit,
 	|	RetailReport.AmountIncludesVAT AS AmountIncludesVAT,
 	|	RetailReport.IncludeVATInPrice AS IncludeVATInPrice,

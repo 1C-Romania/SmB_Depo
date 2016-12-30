@@ -362,22 +362,22 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 						
 						ControlPart = Mid(KPP, 5, 2);
 						
-						SeparateDivisionFlag = ControlPart = "02"
-						//Registration with the taxpayer - a Russian company at the location of its separate division depending on the division type 
+						SeparateDepartmentFlag = ControlPart = "02"
+						//Registration with the taxpayer - a Russian company at the location of its separate department depending on the department type 
 						or ControlPart = "03" //Registration with the taxpayer - a Russian company at the location of its branch that does not act as taxes and receipts payment organization 
-						or ControlPart = "04" //Registration with the taxpayer - a Russian company at the location of its separate division depending on the division type 
-						or ControlPart = "05" //Registration with the taxpayer - a Russian company at the location of its separate division depending on the division type
+						or ControlPart = "04" //Registration with the taxpayer - a Russian company at the location of its separate department depending on the department type 
+						or ControlPart = "05" //Registration with the taxpayer - a Russian company at the location of its separate department depending on the department type
 						or ControlPart = "30" //Russian company - the tax agent not considered as a taxpayer
-						or ControlPart = "31" //Registration with the taxpayer - a Russian company at the location of a separate subdivision in respect of which no registration procedure is not executed under paragraph 3 of Article 55 of the Russian Federation Civil Code that acts as taxes and receipts payment organization 
-						or ControlPart = "32" //Registration with the taxpayer - a Russian company at the location of a separate subdivision in respect of which no registration procedure is executed under paragraph 3 of Article 55 of the Russian Federation Civil Code that does not act as taxes and receipts payment organization 
+						or ControlPart = "31" //Registration with the taxpayer - a Russian company at the location of a separate subdepartment in respect of which no registration procedure is not executed under paragraph 3 of Article 55 of the Russian Federation Civil Code that acts as taxes and receipts payment organization 
+						or ControlPart = "32" //Registration with the taxpayer - a Russian company at the location of a separate subdepartment in respect of which no registration procedure is executed under paragraph 3 of Article 55 of the Russian Federation Civil Code that does not act as taxes and receipts payment organization 
 						or ControlPart = "43" //Registration with the Russian company at the location of its branch (similar to the old codes "02", "03" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ "Concerning the application of "SPPUNO" directory code) 
 						or ControlPart = "44" //Registration with the Russian company at the location of its representative office (similar to the old codes "04", "05" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ "Concerning the application of "SPPUNO" directory code) 
-						or ControlPart = "45";//Registration with the Russian company at the location of its separate division (similar to the old codes "31", "32" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ "Concerning the application of "SPPUNO" directory code)
+						or ControlPart = "45";//Registration with the Russian company at the location of its separate department (similar to the old codes "31", "32" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ "Concerning the application of "SPPUNO" directory code)
 						
-						MainDivisionFlag = ControlPart = "01" 
+						MainDepartmentFlag = ControlPart = "01" 
 						or ControlPart = "50" //At the place of registration as the largest taxpayer
 						or ControlPart = "51" //Registration with foreign companies’ branches 
-						or ControlPart = "52" //Registration with foreign companies divisions in the Russian Federation established by the foreign organization branch in a foreign country 
+						or ControlPart = "52" //Registration with foreign companies departments in the Russian Federation established by the foreign organization branch in a foreign country 
 						or ControlPart = "60" //Registration with foreign embassies
 						or ControlPart = "61" //Registration with the foreign countries consulates
 						or ControlPart = "62" //Registration with the representative office similar to diplomatic
@@ -394,7 +394,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 						or ControlPart = "83" //Registration of foreign and international companies as accounts of the "C" (current) types in the foreign currency are opened in the banks
 						or ControlPart = "84";//Registration of foreign and international companies as correspondent accounts are opened in the banks 
 						
-						If Not MainDivisionFlag and Not SeparateDivisionFlag Then
+						If Not MainDepartmentFlag and Not SeparateDepartmentFlag Then
 							
 							ReturnStructure.KPPEnteredCorrectly = False;
 							

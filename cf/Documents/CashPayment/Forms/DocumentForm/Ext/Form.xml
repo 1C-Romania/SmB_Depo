@@ -795,11 +795,11 @@
 								<Event name="OnChange">CorrespondenceOnChange</Event>
 							</Events>
 						</InputField>
-						<InputField name="Division" id="218">
-							<DataPath>Object.Division</DataPath>
+						<InputField name="Department" id="218">
+							<DataPath>Object.Department</DataPath>
 							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="DivisionContextMenu" id="219"/>
-							<ExtendedTooltip name="DivisionExtendedTooltip" id="973"/>
+							<ContextMenu name="DepartmentContextMenu" id="219"/>
+							<ExtendedTooltip name="DepartmentExtendedTooltip" id="973"/>
 						</InputField>
 						<InputField name="BusinessActivity" id="216">
 							<DataPath>Object.BusinessActivity</DataPath>
@@ -857,11 +857,11 @@
 								<Event name="Tuning">RegistrationPeriodTuning</Event>
 							</Events>
 						</InputField>
-						<InputField name="SalaryPayToEmployeeDivision" id="256">
-							<DataPath>Object.Division</DataPath>
+						<InputField name="SalaryPayToEmployeeDepartment" id="256">
+							<DataPath>Object.Department</DataPath>
 							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="EmployeeSalaryPaymentUnitContextMenu" id="257"/>
-							<ExtendedTooltip name="EmployeeSalaryPaymentDivisionExtendedTooltip" id="1005"/>
+							<ContextMenu name="SalaryPayToEmployeeDepartmentContextMenu" id="257"/>
+							<ExtendedTooltip name="SalaryPayToEmployeeDepartmentExtendedTooltip" id="1005"/>
 						</InputField>
 						<InputField name="EmployeeSalaryPayoffBusinessActivity" id="838">
 							<DataPath>Object.BusinessActivity</DataPath>
@@ -1661,11 +1661,11 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="StructuralUnitDivision" id="12">
+		<Attribute name="StructuralUnitDepartment" id="12">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Structural unit division</v8:content>
+					<v8:content>Structural unit department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

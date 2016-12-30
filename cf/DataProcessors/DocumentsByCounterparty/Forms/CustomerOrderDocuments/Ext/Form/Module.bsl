@@ -173,7 +173,7 @@ Procedure FillQueryTable(DataProcessorObject)
 	HeaderFields.Add("DocumentAmount");
 	HeaderFields.Add("OperationKind");
 	HeaderFields.Add("DocumentCurrency");
-	HeaderFields.Add("Division");
+	HeaderFields.Add("Department");
 	HeaderFields.Add("Company");
 	HeaderFields.Add("Responsible");
 	HeaderFields.Add("Comment");

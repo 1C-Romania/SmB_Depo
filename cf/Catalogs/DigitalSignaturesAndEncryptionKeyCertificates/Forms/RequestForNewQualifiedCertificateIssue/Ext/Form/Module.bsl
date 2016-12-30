@@ -669,7 +669,7 @@ Function FileDescriptionWithoutExtension()
 		FileDescriptionWithoutExtension = Surname + " " + Name + " " + Patronymic;
 	Else
 		FileDescriptionWithoutExtension = Surname + " " + Name + " " + Patronymic + ", " + AbbreviatedName
-			+ ?(ValueIsFilled(Division), ", " + Division, "") + ", " + Position;
+			+ ?(ValueIsFilled(Department), ", " + Department, "") + ", " + Position;
 	EndIf;
 	
 	Return FileDescriptionWithoutExtension;
@@ -1607,7 +1607,7 @@ Procedure ClearOwnerAttributes()
 	ClearAttribute("Patronymic");
 	ClearAttribute("InsuranceNumberRPF");
 	ClearAttribute("Position");
-	ClearAttribute("Division");
+	ClearAttribute("Department");
 	
 	If Items.DocumentKind1.ReadOnly Then
 		DocumentKind1 = 21;
@@ -1638,7 +1638,7 @@ Procedure OnChangingCertificateOwnerOnServer(Import = False)
 	Attributes.Insert("Patronymic");
 	Attributes.Insert("InsuranceNumberRPF");
 	Attributes.Insert("Position");
-	Attributes.Insert("Division");
+	Attributes.Insert("Department");
 	Attributes.Insert("DocumentKind1");
 	Attributes.Insert("DocumentNumber");
 	Attributes.Insert("DocumentWhoIssued");
@@ -1715,11 +1715,11 @@ Procedure OnChangingCertificateOwnerOnServer(Import = False)
 	
 	If ThisIsIndividualEntrepreneur Then
 		Items.Position.Visible = False;
-		Items.Division.Visible = False;
+		Items.Department.Visible = False;
 		Items.Employee.ReadOnly = True;
 	Else
 		Items.Position.Visible = True;
-		Items.Division.Visible = True;
+		Items.Department.Visible = True;
 		Items.Employee.ReadOnly = False;
 	EndIf;
 	
@@ -1737,10 +1737,10 @@ Procedure OnChangingCertificateOwnerOnServer(Import = False)
 	
 	If ThisIsIndividualEntrepreneur Then
 		Position = "";
-		Division = "";
+		Department = "";
 	Else
 		SetAttribute(Attributes, "Position");
-		SetAttribute(Attributes, "Division");
+		SetAttribute(Attributes, "Department");
 	EndIf;
 
 	SetAttribute(Attributes, "DocumentKind1", True);
@@ -3573,7 +3573,7 @@ Procedure FillAttributesStatements(All = False)
 	
 	If Not ThisIsIndividualEntrepreneur Then
 		FillAttribute("Position");
-		FillAttribute("Division");
+		FillAttribute("Department");
 	EndIf;
 	
 	String = RequestAttributes.Add();
@@ -3957,7 +3957,7 @@ Procedure WriteStatement()
 		UpdateValue(Content, "DocumentWhoIssued");
 		UpdateValue(Content, "DocumentIssueDate");
 		UpdateValue(Content, "Email");
-		UpdateValue(Content, "Division");
+		UpdateValue(Content, "Department");
 		// Saving of filled values if applicable.
 		UpdateValue(Content, "Application", Object.Application);
 		UpdateValue(Content, "ApplicationPresentation");
@@ -4724,9 +4724,9 @@ Function QueryDescriptionOnQualifiedCertificate(Fields)
 		Fields.Insert("O", Left(AbbreviatedName, 64));
 		ListOfParameters.Add("2.5.4.10", Fields.O);
 		
-		// Field OU - a separate division of an official.
-		If ValueIsFilled(Division) Then
-			Fields.Insert("OU", Left(Division, 64));
+		// Field OU - a separate department of an official.
+		If ValueIsFilled(Department) Then
+			Fields.Insert("OU", Left(Department, 64));
 			ListOfParameters.Add("2.5.4.11", Fields.OU);
 		EndIf;
 		

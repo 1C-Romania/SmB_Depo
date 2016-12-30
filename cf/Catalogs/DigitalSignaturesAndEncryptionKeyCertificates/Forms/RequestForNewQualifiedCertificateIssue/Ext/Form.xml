@@ -1201,13 +1201,13 @@
 													<ContextMenu name="AppointmentContextMenu" id="96"/>
 													<ExtendedTooltip name="PositionExtendedTooltip" id="97"/>
 												</InputField>
-												<InputField name="Division" id="98">
-													<DataPath>Division</DataPath>
+												<InputField name="Department" id="98">
+													<DataPath>Department</DataPath>
 													<ToolTip>
 														<v8:item>
 															<v8:lang>en</v8:lang>
 															<v8:content>Fill out if the owner of the
-certificate is in a separate subdivision with the actual address different from the actual address of the company.</v8:content>
+certificate is in a separate subdepartment with the actual address different from the actual address of the company.</v8:content>
 														</v8:item>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
@@ -1217,8 +1217,8 @@ certificate is in a separate subdivision with the actual address different from 
 													</ToolTip>
 													<ToolTipRepresentation>Button</ToolTipRepresentation>
 													<Width>15</Width>
-													<ContextMenu name="DivisionContextMenu" id="99"/>
-													<ExtendedTooltip name="DivisionExtendedTooltip" id="100"/>
+													<ContextMenu name="DepartmentContextMenu" id="99"/>
+													<ExtendedTooltip name="DepartmentExtendedTooltip" id="100"/>
 												</InputField>
 											</ChildItems>
 										</UsualGroup>
@@ -3250,15 +3250,15 @@ Required in rare cases to investigate mismatches in data.</v8:content>
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="Division" id="19">
+		<Attribute name="Department" id="19">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Division</v8:content>
+					<v8:content>Department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>разделение</v8:content>
+					<v8:content>Подразделение</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

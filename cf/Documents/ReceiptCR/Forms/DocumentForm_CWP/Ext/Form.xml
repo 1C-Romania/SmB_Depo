@@ -1742,12 +1742,12 @@
 																	<ContextMenu name="StructuralUnitContextMenu" id="1831"/>
 																	<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="1832"/>
 																</InputField>
-																<InputField name="Division" id="1833">
-																	<DataPath>Object.Division</DataPath>
+																<InputField name="Department" id="1833">
+																	<DataPath>Object.Department</DataPath>
 																	<TitleLocation>Top</TitleLocation>
 																	<EditMode>EnterOnInput</EditMode>
-																	<ContextMenu name="DivisionContextMenu" id="1834"/>
-																	<ExtendedTooltip name="DivisionExtendedTooltip" id="1835"/>
+																	<ContextMenu name="DepartmentContextMenu" id="1834"/>
+																	<ExtendedTooltip name="DepartmentExtendedTooltip" id="1835"/>
 																</InputField>
 																<InputField name="Responsible" id="1836">
 																	<DataPath>Object.Responsible</DataPath>
@@ -4288,7 +4288,7 @@
 	DocumentReceiptCR.AmountIncludesVAT,
 	DocumentReceiptCR.POSTerminal,
 	DocumentReceiptCR.DiscountMarkupKind,
-	DocumentReceiptCR.Division,
+	DocumentReceiptCR.Department,
 	DocumentReceiptCR.Author,
 	DocumentReceiptCR.Responsible,
 	DocumentReceiptCR.DiscountCard,
@@ -4369,7 +4369,7 @@
 	DocumentReceiptCRReturn.POSTerminal,
 	DocumentReceiptCRReturn.IncludeVATInPrice,
 	DocumentReceiptCRReturn.DiscountMarkupKind,
-	DocumentReceiptCRReturn.Division,
+	DocumentReceiptCRReturn.Department,
 	DocumentReceiptCRReturn.Author,
 	DocumentReceiptCRReturn.Responsible,
 	DocumentReceiptCRReturn.DiscountCard,

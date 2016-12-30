@@ -178,13 +178,6 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Division</dataPath>
-			<field>Division</field>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ExpensesCost</dataPath>
 			<field>ExpensesCost</field>
 		</field>
@@ -199,6 +192,16 @@
 					<v8:AllowedSign>Any</v8:AllowedSign>
 				</v8:NumberQualifiers>
 			</valueType>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Department</dataPath>
+			<field>Department</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Department</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<item xsi:type="DataSetQuery">
 			<name>Costs</name>
@@ -278,18 +281,24 @@
 				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Division</dataPath>
-				<field>Division</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>ExpensesCost</dataPath>
 				<field>ExpensesCost</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Department</dataPath>
+				<field>Department</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Department</v8:content>
+					</v8:item>
+				</title>
 			</field>
 			<dataSource>DataSource1</dataSource>
 			<query>SELECT ALLOWED
 	Inventory.Recorder AS Recorder,
 	Inventory.Company AS Company,
-	Inventory.StructuralUnitCorr AS Division,
+	Inventory.StructuralUnitCorr AS Department,
 	Inventory.ProductsAndServicesCorr AS Products,
 	Inventory.CharacteristicCorr AS ProductCharacteristic,
 	Inventory.BatchCorr AS BatchProducts,
@@ -306,12 +315,12 @@
 	Inventory.Quantity AS CostsQuantity,
 	0 AS ProductsQuantity,
 	Inventory.Specification AS Specification
-	FROM
+FROM
 	AccumulationRegister.Inventory AS Inventory
-	WHERE
+WHERE
 	Inventory.RecordType = VALUE(AccumulationRecordType.Expense)
 	AND Inventory.ProductionExpenses
-		AND Inventory.Period between &amp;BeginOfPeriod AND &amp;EndOfPeriod</query>
+	AND Inventory.Period BETWEEN &amp;BeginOfPeriod AND &amp;EndOfPeriod</query>
 		</item>
 		<item xsi:type="DataSetQuery">
 			<name>ServicesForProcessing</name>
@@ -375,21 +384,24 @@
 				</role>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Division</dataPath>
-				<field>Division</field>
-				<role>
-					<dcscom:dimension>true</dcscom:dimension>
-				</role>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>ExpensesCost</dataPath>
 				<field>ExpensesCost</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Department</dataPath>
+				<field>Department</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Department</v8:content>
+					</v8:item>
+				</title>
 			</field>
 			<dataSource>DataSource1</dataSource>
 			<query>SELECT ALLOWED
 	Inventory.Recorder AS Recorder,
 	Inventory.Company AS Company,
-	Inventory.StructuralUnit AS Division,
+	Inventory.StructuralUnit AS Department,
 	Inventory.ProductsAndServices AS Products,
 	Inventory.Characteristic AS ProductCharacteristic,
 	Inventory.Batch AS BatchProducts,
@@ -405,7 +417,7 @@ WHERE
 	Inventory.Recorder REFS Document.SubcontractorReport
 	AND Inventory.FixedCost
 	AND Inventory.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-	AND Inventory.Period between &amp;BeginOfPeriod AND &amp;EndOfPeriod</query>
+	AND Inventory.Period BETWEEN &amp;BeginOfPeriod AND &amp;EndOfPeriod</query>
 		</item>
 		<item xsi:type="DataSetObject">
 			<name>issue</name>
@@ -423,12 +435,12 @@ WHERE
 				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Division</dataPath>
-				<field>Division</field>
+				<dataPath>Department</dataPath>
+				<field>Department</field>
 				<title xsi:type="v8:LocalStringType">
 					<v8:item>
 						<v8:lang>en</v8:lang>
-						<v8:content>Division</v8:content>
+						<v8:content>Department</v8:content>
 					</v8:item>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
@@ -568,12 +580,12 @@ WHERE
 				</valueType>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>Division</dataPath>
-				<field>Division</field>
+				<dataPath>Department</dataPath>
+				<field>Department</field>
 				<title xsi:type="v8:LocalStringType">
 					<v8:item>
 						<v8:lang>en</v8:lang>
-						<v8:content>Division</v8:content>
+						<v8:content>Department</v8:content>
 					</v8:item>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
@@ -1184,7 +1196,7 @@ WHERE
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Division</dcsset:field>
+						<dcsset:field>Department</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>

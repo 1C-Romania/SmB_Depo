@@ -372,9 +372,9 @@ Function WhenImportingReportAboutRetailSales(Device, ArrayOfData) Export
 	ReportAboutRetailSalesObject.Company        = Selection.Company;
 	ReportAboutRetailSalesObject.Responsible      = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainResponsible");
 	ReportAboutRetailSalesObject.PositionResponsible = Enums.AttributePositionOnForm.InHeader;
-	ReportAboutRetailSalesObject.Division      = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainDivision");
-	If Not ValueIsFilled(ReportAboutRetailSalesObject.Division) Then
-		ReportAboutRetailSalesObject.Division      = Catalogs.StructuralUnits.MainDivision;
+	ReportAboutRetailSalesObject.Department      = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainDepartment");
+	If Not ValueIsFilled(ReportAboutRetailSalesObject.Department) Then
+		ReportAboutRetailSalesObject.Department      = Catalogs.StructuralUnits.MainDepartment;
 	EndIf;
 	ReportAboutRetailSalesObject.StructuralUnit = Selection.StructuralUnit;
 	ReportAboutRetailSalesObject.AmountIncludesVAT    = Selection.PriceIncludesVAT;

@@ -295,8 +295,8 @@ Procedure ProcessOperationKindChange()
 		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainWarehouse");
 		MainWarehouse = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainWarehouse);
 		
-		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-		MainDivision = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+		MainDepartment = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 		
 		If Object.OperationKind = Enums.OperationKindsInventoryTransfer.WriteOffToExpenses 
 			OR Object.OperationKind = Enums.OperationKindsInventoryTransfer.TransferToOperation Then
@@ -307,17 +307,17 @@ Procedure ProcessOperationKindChange()
 				
 			EndIf;
 			
-			If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
+			If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
 				
-				Object.StructuralUnitPayee = MainDivision;
+				Object.StructuralUnitPayee = MainDepartment;
 				
 			EndIf;
 			
 		ElsIf Object.OperationKind = Enums.OperationKindsInventoryTransfer.ReturnFromExploitation Then
 			
-			If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
+			If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
 				
-				Object.StructuralUnit = MainDivision;
+				Object.StructuralUnit = MainDepartment;
 				
 			EndIf;
 			
@@ -528,12 +528,12 @@ Procedure SetVisibleAndEnabled()
 	NewArray.Add(Enums.StructuralUnitsTypes.Retail);
 	NewArray.Add(Enums.StructuralUnitsTypes.RetailAccrualAccounting);
 	If Constants.FunctionalOptionUseSubsystemProduction.Get() Then
-		NewArray.Add(Enums.StructuralUnitsTypes.Division);
+		NewArray.Add(Enums.StructuralUnitsTypes.Department);
 	EndIf;
-	ArrayWarehouseSubdivisionRetail = New FixedArray(NewArray);
+	ArrayWarehouseSubdepartmentRetail = New FixedArray(NewArray);
 	
 	NewArray = New Array();
-	NewArray.Add(Enums.StructuralUnitsTypes.Division);
+	NewArray.Add(Enums.StructuralUnitsTypes.Department);
 	ArrayUnit = New FixedArray(NewArray);
 	
 	NewArray = New Array();
@@ -548,13 +548,13 @@ Procedure SetVisibleAndEnabled()
 		ThisForm.Items.Inventory.ChildItems.InventoryCustomerOrder.Visible = Not FunctionalOptionOrderTransferInHeader;
 		Items.InventoryPick.Visible = True;
 		
-		NewParameter = New ChoiceParameter("Filter.StructuralUnitType", ArrayWarehouseSubdivisionRetail);
+		NewParameter = New ChoiceParameter("Filter.StructuralUnitType", ArrayWarehouseSubdepartmentRetail);
 		NewArray = New Array();
 		NewArray.Add(NewParameter);
 		NewParameters = New FixedArray(NewArray);
 		ThisForm.Items.StructuralUnit.ChoiceParameters = NewParameters;
 		
-		NewParameter = New ChoiceParameter("Filter.StructuralUnitType", ArrayWarehouseSubdivisionRetail);
+		NewParameter = New ChoiceParameter("Filter.StructuralUnitType", ArrayWarehouseSubdepartmentRetail);
 		NewArray = New Array();
 		NewArray.Add(NewParameter);
 		NewParameters = New FixedArray(NewArray);
@@ -618,7 +618,7 @@ Procedure SetVisibleAndEnabled()
 			
 		EndIf;
 		
-		If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
+		If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
 			
 			Items.StructuralUnitPayee.Visible = False;
 			
@@ -665,7 +665,7 @@ Procedure SetVisibleAndEnabled()
 			
 		EndIf;
 		
-		If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
+		If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
 			
 			Items.StructuralUnitPayee.Visible = False;
 			
@@ -702,7 +702,7 @@ Procedure SetVisibleAndEnabled()
 			StringInventory.Reserve = 0;
 		EndDo;
 		
-		If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
+		If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
 			
 			Items.StructuralUnit.Visible = False;
 			
@@ -768,15 +768,15 @@ Procedure SetVisibleByFOUseProductionSubsystem()
 	If Constants.FunctionalOptionUseSubsystemProduction.Get() Then
 		
 		// Setting the method of structural unit selection depending on FO.
-		If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
+		If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
 			AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses.Get() Then
 			
 			Items.StructuralUnit.ListChoiceMode = True;
 			Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
-			Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+			Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 			
 			Items.StructuralUnitPayee.ListChoiceMode = True;
-			Items.StructuralUnitPayee.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+			Items.StructuralUnitPayee.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 			Items.StructuralUnitPayee.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 			
 		EndIf;

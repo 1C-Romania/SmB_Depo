@@ -103,7 +103,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName = "")
 		|	WorkOrder.PriceKind,
 		|	WorkOrder.Employee AS Employee,
 		|	WorkOrder.Employee.Code AS EmployeeCode,
-		|	WorkOrder.StructuralUnit AS Division,
+		|	WorkOrder.StructuralUnit AS Department,
 		|	EmployeesSliceLast.Position AS Position,
 		|	WorkOrder.DocumentAmount,
 		|	WorkOrder.WorkKindPosition,

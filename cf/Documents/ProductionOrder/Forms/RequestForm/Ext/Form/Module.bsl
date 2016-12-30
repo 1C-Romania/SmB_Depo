@@ -1204,11 +1204,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf; 
 	DocumentModified = False;
 	
-	If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
+	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
 		AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses.Get() Then
 		
 		Items.StructuralUnit.ListChoiceMode = True;
-		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 		
 	EndIf;

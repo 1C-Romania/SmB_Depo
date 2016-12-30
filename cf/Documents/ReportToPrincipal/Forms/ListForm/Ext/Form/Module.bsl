@@ -27,20 +27,20 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 	
 	Company		= Settings.Get("Company");
 	Counterparty		= Settings.Get("Counterparty");
-	Division	= Settings.Get("Division");
+	Department	= Settings.Get("Department");
 	
 	SmallBusinessClientServer.SetListFilterItem(List, "Company", Company, ValueIsFilled(Company));
 	SmallBusinessClientServer.SetListFilterItem(List, "Counterparty", Counterparty, ValueIsFilled(Counterparty));
-	SmallBusinessClientServer.SetListFilterItem(List, "Division", Division, ValueIsFilled(Division));
+	SmallBusinessClientServer.SetListFilterItem(List, "Department", Department, ValueIsFilled(Department));
 	
 EndProcedure // OnLoadDataFromSettingsAtServer()
 
 &AtClient
-// Procedure - event handler OnChange of attribute Division.
+// Procedure - event handler OnChange of attribute Department.
 // 
-Procedure DivisionOnChange(Item)
+Procedure DepartmentOnChange(Item)
 	
-	SmallBusinessClientServer.SetListFilterItem(List, "Division", Division, ValueIsFilled(Division));
+	SmallBusinessClientServer.SetListFilterItem(List, "Department", Department, ValueIsFilled(Department));
 	
 EndProcedure
 

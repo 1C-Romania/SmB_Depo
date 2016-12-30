@@ -1426,7 +1426,7 @@ Procedure IssueReceiptExecute(Command, GenerateSalesReceipt = False)
 	EndIf;
 	
 	If ValueIsFilled(StructureStateCashCRSession.CashCRSessionStatus) Then
-		FillPropertyValues(Object, StructureStateCashCRSession,, "Responsible, Division");
+		FillPropertyValues(Object, StructureStateCashCRSession,, "Responsible, Department");
 		BalanceInCashier = StructureStateCashCRSession.CashInPettyCash;
 		BalanceInCashierRow = ""+BalanceInCashier;
 	EndIf;
@@ -2178,7 +2178,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Object.DocumentCurrency = CashCR.CashCurrency;
 	EndIf;
 	Object.Company = Object.CashCR.Owner;
-	Object.Division = Object.CashCR.Division;
+	Object.Department = Object.CashCR.Department;
 	Object.Responsible = SmallBusinessReUse.GetValueByDefaultUser(User, "MainResponsible");
 	// End CWP
 	
@@ -2882,7 +2882,7 @@ Procedure Pay(Command)
 	EndIf;
 	
 	If ValueIsFilled(StructureStateCashCRSession.CashCRSessionStatus) Then
-		FillPropertyValues(Object, StructureStateCashCRSession,, "Responsible, Division");
+		FillPropertyValues(Object, StructureStateCashCRSession,, "Responsible, Department");
 	EndIf;
 	
 	If UseAutomaticDiscounts Then
@@ -3490,7 +3490,7 @@ Procedure CashCROnChangeAtServer(CashParameters)
 		Object.DocumentCurrency = CashCR.CashCurrency;
 	EndIf;
 	Object.Company = Object.CashCR.Owner;
-	Object.Division = Object.CashCR.Division;
+	Object.Department = Object.CashCR.Department;
 	Object.Responsible = SmallBusinessReUse.GetValueByDefaultUser(User, "MainResponsible");
 	
 	DocumentDate = Object.Date;

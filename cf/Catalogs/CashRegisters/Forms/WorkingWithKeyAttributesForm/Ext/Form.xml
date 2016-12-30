@@ -76,13 +76,13 @@
 			<ContextMenu name="AllowEditStructuralUnitContextMenu" id="24"/>
 			<ExtendedTooltip name="AllowEditStructuralUnitExtendedTooltip" id="40"/>
 		</CheckBoxField>
-		<CheckBoxField name="EnableEditDivision" id="28">
-			<DataPath>EnableEditDivision</DataPath>
+		<CheckBoxField name="EnableEditDepartment" id="28">
+			<DataPath>EnableEditDepartment</DataPath>
 			<TitleLocation>Right</TitleLocation>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>The division can not be changed if there are non-closed shifts.</v8:content>
+					<v8:content>The department can not be changed if there are non-closed shifts.</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -91,8 +91,8 @@
 			</ToolTip>
 			<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 			<CheckBoxType>Auto</CheckBoxType>
-			<ContextMenu name="AllowEditUnitContextMenu" id="29"/>
-			<ExtendedTooltip name="AllowEditDivisionExtendedTooltip" id="43"/>
+			<ContextMenu name="EnableEditDepartmentContextMenu" id="29"/>
+			<ExtendedTooltip name="EnableEditDepartmentExtendedTooltip" id="43"/>
 		</CheckBoxField>
 	</ChildItems>
 	<Attributes>
@@ -141,11 +141,11 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="EnableEditDivision" id="4">
+		<Attribute name="EnableEditDepartment" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Allow division editing</v8:content>
+					<v8:content>Allow department editing</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

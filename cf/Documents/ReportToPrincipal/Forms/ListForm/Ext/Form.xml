@@ -58,8 +58,8 @@
 						<Event name="OnChange">CounterpartyOnChange</Event>
 					</Events>
 				</InputField>
-				<InputField name="Division" id="46">
-					<DataPath>Division</DataPath>
+				<InputField name="Department" id="46">
+					<DataPath>Department</DataPath>
 					<TitleLocation>None</TitleLocation>
 					<Wrap>false</Wrap>
 					<OpenButton>false</OpenButton>
@@ -68,24 +68,24 @@
 						<app:item name="Filter.StructuralUnitType">
 							<app:value xsi:type="FormChoiceListDesTimeValue">
 								<Presentation/>
-								<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</Value>
+								<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</Value>
 							</app:value>
 						</app:item>
 					</ChoiceParameters>
 					<InputHint>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Division</v8:content>
+							<v8:content>Department</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>разделение</v8:content>
+							<v8:content>Подразделение</v8:content>
 						</v8:item>
 					</InputHint>
-					<ContextMenu name="DivisionContextMenu" id="47"/>
-					<ExtendedTooltip name="DivisionExtendedTooltip" id="52"/>
+					<ContextMenu name="DepartmentContextMenu" id="47"/>
+					<ExtendedTooltip name="DepartmentExtendedTooltip" id="52"/>
 					<Events>
-						<Event name="OnChange">DivisionOnChange</Event>
+						<Event name="OnChange">DepartmentOnChange</Event>
 					</Events>
 				</InputField>
 				<InputField name="Company" id="48">
@@ -466,13 +466,13 @@
 					<ContextMenu name="ListCommissionFeePercentContextMenu" id="29"/>
 					<ExtendedTooltip name="ListCommissionFeePercentExtendedTooltip" id="71"/>
 				</LabelField>
-				<LabelField name="ListDivision" id="90">
-					<DataPath>List.Division</DataPath>
+				<LabelField name="ListDepartment" id="90">
+					<DataPath>List.Department</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
-					<ContextMenu name="UnitListContextMenu" id="91"/>
-					<ExtendedTooltip name="ListDivisionExtendedTooltip" id="92"/>
+					<ContextMenu name="ListDepartmentContextMenu" id="91"/>
+					<ExtendedTooltip name="ListDepartmentExtendedTooltip" id="92"/>
 				</LabelField>
 				<LabelField name="ListResponsible" id="87">
 					<DataPath>List.Responsible</DataPath>
@@ -577,22 +577,22 @@
 				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
 			</FunctionalOptions>
 		</Attribute>
-		<Attribute name="Division" id="4">
+		<Attribute name="Department" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Division</v8:content>
+					<v8:content>Department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>разделение</v8:content>
+					<v8:content>Подразделение</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
 			</Type>
 			<FunctionalOptions>
-				<Item>FunctionalOption.AccountingBySeveralDivisions</Item>
+				<Item>FunctionalOption.AccountingBySeveralDepartments</Item>
 			</FunctionalOptions>
 		</Attribute>
 	</Attributes>

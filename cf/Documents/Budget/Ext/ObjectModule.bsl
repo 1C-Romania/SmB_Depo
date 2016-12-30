@@ -64,7 +64,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject, 
-					"Division is not indicated on string. Fillings is required for basic activity incomings.",
+					"Department is not indicated on string. Fillings is required for basic activity incomings.",
 					"Incomings",
 					LineIncome.LineNumber,
 					"StructuralUnit",
@@ -94,7 +94,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject, 
-					"Division is indicated on string. For the income from other types of business activity, filling is not required.",
+					"Department is indicated on string. For the income from other types of business activity, filling is not required.",
 					"Incomings",
 					LineIncome.LineNumber,
 					"StructuralUnit",
@@ -142,7 +142,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject, 
-					"Division is indicated on string. For expenses on other type of activities, filling is not required.",
+					"Department is indicated on string. For expenses on other type of activities, filling is not required.",
 					"Expenses",
 					RowsExpenses.LineNumber,
 					"StructuralUnit",
@@ -175,7 +175,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject, 
-					"Division is not indicated on string. Filling is required for cost of sales at basic activities.",
+					"Department is not indicated on string. Filling is required for cost of sales at basic activities.",
 					"Expenses",
 					RowsExpenses.LineNumber,
 					"StructuralUnit",

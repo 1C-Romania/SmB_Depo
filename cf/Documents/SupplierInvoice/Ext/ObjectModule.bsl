@@ -998,7 +998,7 @@ Procedure FillBySupplierInvoiceForPayment(FillingData)
 				
 			Else
 				
-				NewRow.StructuralUnit = FillingData.Division;
+				NewRow.StructuralUnit = FillingData.Department;
 				
 			EndIf;
 			
@@ -1207,13 +1207,13 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		For Each RowsExpenses IN Expenses Do
 			
-			If Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
+			If Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
 			   AND (RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.UnfinishedProduction
 			 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.IndirectExpenses
 			 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Incomings
 			 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Expenses)
 			 AND Not ValueIsFilled(RowsExpenses.StructuralUnit) Then
-				MessageText = NStr("en='For products and services ""%ProductsAndServices%"" specified in row %RowNumber% of list ""Services"" attribute ""Division"" must be filled in.';ru='Для номенклатуры ""%Номенклатура%"" указанной в строке %НомерСтроки% списка ""Услуги"", должен быть заполнен реквизит ""Подразделение"".'"
+				MessageText = NStr("en='For products and services ""%ProductsAndServices%"" specified in row %RowNumber% of list ""Services"" attribute ""Department"" must be filled in.';ru='Для номенклатуры ""%Номенклатура%"" указанной в строке %НомерСтроки% списка ""Услуги"", должен быть заполнен реквизит ""Подразделение"".'"
 				);
 				MessageText = StrReplace(MessageText, "%ProductsAndServices%", TrimAll(String(RowsExpenses.ProductsAndServices))); 
 				MessageText = StrReplace(MessageText, "%LineNumber%",String(RowsExpenses.LineNumber));

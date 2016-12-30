@@ -124,34 +124,6 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Division</dataPath>
-			<field>Division</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Division</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>разделение</v8:content>
-				</v8:item>
-			</title>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-			</role>
-			<inputParameters>
-				<dcscor:item>
-					<dcscor:parameter>ChoiceParameters</dcscor:parameter>
-					<dcscor:value xsi:type="dcscor:ChoiceParameters">
-						<dcscor:item>
-							<dcscor:choiceParameter>Filter.StructuralUnitType</dcscor:choiceParameter>
-							<dcscor:value xsi:type="dcscor:DesignTimeValue">Enum.StructuralUnitsTypes.Division</dcscor:value>
-						</dcscor:item>
-					</dcscor:value>
-				</dcscor:item>
-			</inputParameters>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Employee</dataPath>
 			<field>Employee</field>
 			<role>
@@ -330,6 +302,23 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Department</dataPath>
+			<field>Department</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Department</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
 		<dataSource>DataSource1</dataSource>
 		<query>SELECT ALLOWED
 	CASE
@@ -348,7 +337,7 @@
 	ChargingAndRetentionTurnOvers.HalfYearPeriod,
 	ChargingAndRetentionTurnOvers.YearPeriod,
 	ChargingAndRetentionTurnOvers.Company,
-	ChargingAndRetentionTurnOvers.StructuralUnit AS Division,
+	ChargingAndRetentionTurnOvers.StructuralUnit AS Department,
 	ChargingAndRetentionTurnOvers.Employee,
 	ChargingAndRetentionTurnOvers.RegistrationPeriod,
 	ChargingAndRetentionTurnOvers.Currency,
@@ -362,14 +351,14 @@
 	ChargingAndRetentionTurnOvers.AmountCurTurnover AS AccruedCur,
 	NULL AS Withheld,
 	NULL AS WithheldCur
-	FROM
+FROM
 	AccumulationRegister.AccrualsAndDeductions.Turnovers(, , Auto, ) AS ChargingAndRetentionTurnOvers
-	WHERE
+WHERE
 	ChargingAndRetentionTurnOvers.AccrualDeductionKind.Type = VALUE(Enum.AccrualAndDeductionTypes.Accrual)
 
-	UNION ALL
+UNION ALL
 
-	SELECT
+SELECT
 	CASE
 		WHEN ChargingAndRetentionTurnOvers.Recorder = UNDEFINED
 			THEN NULL
@@ -400,11 +389,11 @@
 	NULL,
 	ChargingAndRetentionTurnOvers.AmountTurnover,
 	ChargingAndRetentionTurnOvers.AmountCurTurnover
-	FROM
+FROM
 	AccumulationRegister.AccrualsAndDeductions.Turnovers(, , Auto, ) AS ChargingAndRetentionTurnOvers
-	WHERE
+WHERE
 	(ChargingAndRetentionTurnOvers.AccrualDeductionKind.Type = VALUE(Enum.AccrualAndDeductionTypes.Deduction)
-				OR ChargingAndRetentionTurnOvers.AccrualDeductionKind.Type = VALUE(Enum.AccrualAndDeductionTypes.Tax))</query>
+			OR ChargingAndRetentionTurnOvers.AccrualDeductionKind.Type = VALUE(Enum.AccrualAndDeductionTypes.Tax))</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Accrued</dataPath>
@@ -430,7 +419,6 @@
 		<group>HalfYearPeriod</group>
 		<group>SecondPeriod</group>
 		<group>HourPeriod</group>
-		<group>Division</group>
 		<group>Recorder</group>
 		<group>Employee</group>
 		<group>EmployeeCode</group>
@@ -454,7 +442,6 @@
 		<group>HalfYearPeriod</group>
 		<group>SecondPeriod</group>
 		<group>HourPeriod</group>
-		<group>Division</group>
 		<group>Recorder</group>
 		<group>Employee</group>
 		<group>EmployeeCode</group>
@@ -583,7 +570,7 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Employee</dcsset:field>
@@ -623,7 +610,7 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Division</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">Department</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
 					<dcsset:userSettingID>0d396c21-9b73-4b16-a707-d1317f46fc3f</dcsset:userSettingID>
@@ -667,7 +654,7 @@
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -717,7 +704,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Division</dcsset:field>
+						<dcsset:field>Department</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -784,7 +771,7 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Employee</dcsset:field>
@@ -827,7 +814,7 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Division</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">Department</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
 					<dcsset:userSettingID>0d396c21-9b73-4b16-a707-d1317f46fc3f</dcsset:userSettingID>
@@ -871,7 +858,7 @@
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -925,7 +912,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Division</dcsset:field>
+						<dcsset:field>Department</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>

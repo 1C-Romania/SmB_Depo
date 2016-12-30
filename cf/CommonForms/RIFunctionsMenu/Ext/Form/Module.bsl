@@ -13,8 +13,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	FOAccountingBySeveralWarehouses = GetFunctionalOption("AccountingBySeveralWarehouses");
 	Items.LabelWarehouses.Title = ?(FOAccountingBySeveralWarehouses, "Warehouses", "Warehouse");
 	
-	FOAccountingBySeveralDivisions = GetFunctionalOption("AccountingBySeveralDivisions");
-	Items.LabelDepartments.Title = ?(FOAccountingBySeveralDivisions, "Divisions", "Division");
+	FOAccountingBySeveralDepartments = GetFunctionalOption("AccountingBySeveralDepartments");
+	Items.LabelDepartments.Title = ?(FOAccountingBySeveralDepartments, "Departments", "Department");
 	
 	FOAccountingBySeveralBusinessActivities = GetFunctionalOption("AccountingBySeveralBusinessActivities");
 	Items.LabelBusinessActivities.Title = ?(FOAccountingBySeveralBusinessActivities, "Business activities", "Business activity");
@@ -33,10 +33,10 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 			FOMultipleCompaniesAccounting = Parameter.Value;
 			Items.LabelCompany.Title = ?(FOMultipleCompaniesAccounting, "Companies", "Company");
 			
-		ElsIf Source = "FunctionalOptionAccountingByMultipleDivisions" Then
+		ElsIf Source = "FunctionalOptionAccountingByMultipleDepartments" Then
 			
-			FOAccountingBySeveralDivisions = Parameter.Value;
-			Items.LabelDepartments.Title = ?(FOAccountingBySeveralDivisions, "Divisions", "Division");
+			FOAccountingBySeveralDepartments = Parameter.Value;
+			Items.LabelDepartments.Title = ?(FOAccountingBySeveralDepartments, "Departments", "Department");
 			
 		ElsIf Source = "FunctionalOptionAccountingByMultipleBusinessActivities" Then
 			
@@ -96,25 +96,25 @@ Procedure LableWarehousesClick(Item)
 	
 EndProcedure // LableWarehousesClick()
 
-// Procedure - command handler CatalogDivisions.
+// Procedure - command handler CatalogDepartments.
 //
 &AtClient
-Procedure LabelDivisionClick(Item)
+Procedure LabelDepartmentClick(Item)
 	
-	If FOAccountingBySeveralDivisions Then
+	If FOAccountingBySeveralDepartments Then
 		
-		FilterStructure = New Structure("StructuralUnitType", PredefinedValue("Enum.StructuralUnitsTypes.Division"));
+		FilterStructure = New Structure("StructuralUnitType", PredefinedValue("Enum.StructuralUnitsTypes.Department"));
 		
 		OpenForm("Catalog.StructuralUnits.ListForm", New Structure("Filter", FilterStructure));
 	
 	Else
 		
-		ParameterDivision = New Structure("Key", PredefinedValue("Catalog.StructuralUnits.MainDivision"));
-		OpenForm("Catalog.StructuralUnits.ObjectForm", ParameterDivision);
+		ParameterDepartment = New Structure("Key", PredefinedValue("Catalog.StructuralUnits.MainDepartment"));
+		OpenForm("Catalog.StructuralUnits.ObjectForm", ParameterDepartment);
 		
 	EndIf;
 	
-EndProcedure // LabelDivisionClick()
+EndProcedure // LabelDepartmentClick()
 
 // Procedure - command handler CatalogBusinessActivities.
 //
@@ -137,7 +137,7 @@ EndProcedure // LableBusinessActivitiesClick()
 &AtClient
 Procedure LabelCompaniesBankAccountsClick(Item)
 	
-	OpenForm("Catalog.BankAccounts.Form.CompaniesBankAccountsListForm");
+	OpenForm("Catalog.BankAccounts.Form.ListFormCompaniesBankAccounts");
 	
 EndProcedure // LabelCompaniesBankAccountsClick()
 

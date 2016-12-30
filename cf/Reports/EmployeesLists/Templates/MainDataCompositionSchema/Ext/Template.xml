@@ -227,31 +227,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Division</dataPath>
-			<field>Division</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Division</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>разделение</v8:content>
-				</v8:item>
-			</title>
-			<inputParameters>
-				<dcscor:item>
-					<dcscor:parameter>ChoiceParameters</dcscor:parameter>
-					<dcscor:value xsi:type="dcscor:ChoiceParameters">
-						<dcscor:item>
-							<dcscor:choiceParameter>Filter.StructuralUnitType</dcscor:choiceParameter>
-							<dcscor:value xsi:type="dcscor:DesignTimeValue">Enum.StructuralUnitsTypes.Division</dcscor:value>
-						</dcscor:item>
-					</dcscor:value>
-				</dcscor:item>
-			</inputParameters>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Works</dataPath>
 			<field>Works</field>
 			<title xsi:type="v8:LocalStringType">
@@ -292,10 +267,6 @@
 			<field>WhoIssued</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>DivisionCode</dataPath>
-			<field>DivisionCode</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Number</dataPath>
 			<field>Number</field>
 		</field>
@@ -315,6 +286,20 @@
 			<dataPath>IsIdentityDocument</dataPath>
 			<field>IsIdentityDocument</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DepartmentCode</dataPath>
+			<field>DepartmentCode</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Department</dataPath>
+			<field>Department</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Department</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>DataSource1</dataSource>
 		<query>SELECT ALLOWED
 	Employees.Parent AS GroupEmployee,
@@ -333,13 +318,13 @@
 	TabPhone.Presentation AS Phone,
 	EmployeesSliceLast.Recorder AS PersonnelRecordsRecorder,
 	EmployeesSliceLast.Company,
-	EmployeesSliceLast.StructuralUnit AS Division,
+	EmployeesSliceLast.StructuralUnit AS Department,
 	EmployeesSliceLast.Position,
 	EmployeesSliceLast.OccupiedRates,
 	EmployeesSliceLast.WorkSchedule,
 	EmployeesSliceLast.Period AS PeriodStaff,
 	CASE
-		WHEN EmployeesSliceLast.StructuralUnit IS NULL 
+		WHEN EmployeesSliceLast.StructuralUnit IS NULL
 				OR EmployeesSliceLast.StructuralUnit = VALUE(Catalog.StructuralUnits.EmptyRef)
 			THEN FALSE
 		ELSE TRUE
@@ -352,9 +337,9 @@
 	IndividualsDocumentsSliceLast.Series,
 	IndividualsDocumentsSliceLast.Number,
 	IndividualsDocumentsSliceLast.WhoIssued,
-	IndividualsDocumentsSliceLast.DivisionCode,
+	IndividualsDocumentsSliceLast.DepartmentCode,
 	IndividualsDocumentsSliceLast.IsIdentityDocument
-	FROM
+FROM
 	Catalog.Employees AS Employees
 		LEFT JOIN Catalog.Individuals.ContactInformation AS TabAddressForinformation
 		ON Employees.Ind.Ref = TabAddressForinformation.Ref
@@ -379,7 +364,7 @@
 		LEFT JOIN InformationRegister.IndividualsDescriptionFull.SliceLast AS IndividualsDescriptionFullSliceLast
 		ON Employees.Ind = IndividualsDescriptionFullSliceLast.Ind
 		LEFT JOIN InformationRegister.IndividualsDocuments.SliceLast AS IndividualsDocumentsSliceLast
-			ON Employees.Ind = IndividualsDocumentsSliceLast.Ind</query>
+		ON Employees.Ind = IndividualsDocumentsSliceLast.Ind</query>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
 		<name>DataSet2</name>
@@ -537,7 +522,7 @@ WHERE
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Division</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">Department</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
 					<dcsset:userSettingID>de9d8a3f-26ce-4bd7-adbb-d449494c0e23</dcsset:userSettingID>
@@ -576,7 +561,7 @@ WHERE
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -622,7 +607,7 @@ WHERE
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Division</dcsset:field>
+						<dcsset:field>Department</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -684,7 +669,7 @@ WHERE
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Division</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">Department</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
 					<dcsset:userSettingID>de9d8a3f-26ce-4bd7-adbb-d449494c0e23</dcsset:userSettingID>
@@ -720,7 +705,7 @@ WHERE
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -775,7 +760,7 @@ WHERE
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Division</dcsset:field>
+						<dcsset:field>Department</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -861,7 +846,7 @@ WHERE
 					<dcsset:field>WhoIssued</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>DivisionCode</dcsset:field>
+					<dcsset:field>DepartmentCode</dcsset:field>
 				</dcsset:item>
 				<dcsset:viewMode>Normal</dcsset:viewMode>
 				<dcsset:userSettingID>8e547df4-aa47-474e-8ebf-b35cb1cdc9f5</dcsset:userSettingID>
@@ -876,7 +861,7 @@ WHERE
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Division</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">Department</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
 					<dcsset:userSettingID>de9d8a3f-26ce-4bd7-adbb-d449494c0e23</dcsset:userSettingID>
@@ -927,7 +912,7 @@ WHERE
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -973,7 +958,7 @@ WHERE
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Division</dcsset:field>
+						<dcsset:field>Department</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1038,7 +1023,7 @@ WHERE
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Division</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">Department</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
 					<dcsset:userSettingID>de9d8a3f-26ce-4bd7-adbb-d449494c0e23</dcsset:userSettingID>
@@ -1074,7 +1059,7 @@ WHERE
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -1120,7 +1105,7 @@ WHERE
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Division</dcsset:field>
+						<dcsset:field>Department</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>

@@ -6,7 +6,7 @@
 //
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
-	If StructuralUnitType = Enums.StructuralUnitsTypes.Division
+	If StructuralUnitType = Enums.StructuralUnitsTypes.Department
 	 OR StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse Then
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "RetailPriceKind");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "GLAccountInRetail");

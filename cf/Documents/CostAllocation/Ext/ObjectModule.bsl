@@ -905,7 +905,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		|	CustomerOrder.Ref AS BasisDocument,
 		|	CustomerOrder.Company AS Company,
 		|	CASE
-		|		WHEN CustomerOrder.SalesStructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|		WHEN CustomerOrder.SalesStructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN CustomerOrder.SalesStructuralUnit
 		|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 		|	END AS StructuralUnit,
@@ -967,7 +967,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		|	CustomerOrder.Ref AS BasisDocument,
 		|	CustomerOrder.Company AS Company,
 		|	CASE
-		|		WHEN CustomerOrder.SalesStructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+		|		WHEN CustomerOrder.SalesStructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 		|			THEN CustomerOrder.SalesStructuralUnit
 		|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 		|	END AS StructuralUnit,

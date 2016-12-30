@@ -15,10 +15,10 @@ EndProcedure
 &AtServer
 // Procedure fills tabular section Employees by department.
 //
-Procedure FillByDivisionAtServer()	
+Procedure FillByDepartmentAtServer()	
 	
 	Document = FormAttributeToValue("Object");
-	Document.FillByDivisionAtServer();
+	Document.FillByDepartmentAtServer();
 	ValueToFormAttribute(Document, "Object");
 	
 EndProcedure
@@ -291,7 +291,7 @@ Procedure FillByBalance(Command)
 	If Not ValueIsFilled(Object.StructuralUnit) Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='The division is not filled!';ru='Не заполнено подразделение!'");
+		Message.Text = NStr("en='The department is not filled!';ru='Не заполнено подразделение!'");
 		Message.Field = "Object.StructuralUnit";
  		Message.Message();
 		
@@ -304,12 +304,12 @@ Procedure FillByBalance(Command)
 EndProcedure
 
 &AtClient
-Procedure FillByDivision(Command)
+Procedure FillByDepartment(Command)
 	
 	If Not ValueIsFilled(Object.StructuralUnit) Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='The division is not filled!';ru='Не заполнено подразделение!'");
+		Message.Text = NStr("en='The department is not filled!';ru='Не заполнено подразделение!'");
 		Message.Field = "Object.StructuralUnit";
  		Message.Message();
 		
@@ -317,7 +317,7 @@ Procedure FillByDivision(Command)
 		
 	EndIf;
 	
-	FillByDivisionAtServer();
+	FillByDepartmentAtServer();
 	
 EndProcedure
 

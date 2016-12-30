@@ -105,7 +105,7 @@ Procedure GenerateTableOutputAndPlanCosts(TableOutput, TablePlanCostsOnOutput, P
 	Query.Text = 
 	"SELECT ALLOWED
 	|	ProductReleaseTurnovers.Company AS Company,
-	|	ProductReleaseTurnovers.StructuralUnit AS Division,
+	|	ProductReleaseTurnovers.StructuralUnit AS Department,
 	|	ProductReleaseTurnovers.ProductsAndServices AS Products,
 	|	ProductReleaseTurnovers.Characteristic AS ProductCharacteristic,
 	|	ProductReleaseTurnovers.Batch AS BatchProducts,
@@ -126,7 +126,7 @@ Procedure GenerateTableOutputAndPlanCosts(TableOutput, TablePlanCostsOnOutput, P
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
 	|	ProductRelease.Company,
-	|	ProductRelease.Division,
+	|	ProductRelease.Department,
 	|	ProductRelease.Products,
 	|	ProductRelease.ProductCharacteristic,
 	|	ProductRelease.BatchProducts,
@@ -140,7 +140,7 @@ Procedure GenerateTableOutputAndPlanCosts(TableOutput, TablePlanCostsOnOutput, P
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT ALLOWED
 	|	ProductRelease.Company,
-	|	ProductRelease.Division,
+	|	ProductRelease.Department,
 	|	ProductRelease.Products,
 	|	ProductRelease.ProductCharacteristic,
 	|	ProductRelease.BatchProducts,
@@ -180,7 +180,7 @@ Procedure GenerateTableOutputAndPlanCosts(TableOutput, TablePlanCostsOnOutput, P
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
 	|	CompositionOutput.Company,
-	|	CompositionOutput.Division,
+	|	CompositionOutput.Department,
 	|	CompositionOutput.Products,
 	|	CompositionOutput.ProductCharacteristic,
 	|	CompositionOutput.BatchProducts,
@@ -275,7 +275,7 @@ Procedure ExplosionNodesSpecifications(TableNodeSpecificationToExplosion, TableP
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
 	|	PlannedCostsOnOutput.Company,
-	|	PlannedCostsOnOutput.Division,
+	|	PlannedCostsOnOutput.Department,
 	|	PlannedCostsOnOutput.Products,
 	|	PlannedCostsOnOutput.ProductCharacteristic,
 	|	PlannedCostsOnOutput.BatchProducts,
@@ -301,7 +301,7 @@ Procedure ExplosionNodesSpecifications(TableNodeSpecificationToExplosion, TableP
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
 	|	PlannedCostsOnOutput.Company,
-	|	PlannedCostsOnOutput.Division,
+	|	PlannedCostsOnOutput.Department,
 	|	PlannedCostsOnOutput.Products,
 	|	PlannedCostsOnOutput.ProductCharacteristic,
 	|	PlannedCostsOnOutput.BatchProducts,
@@ -340,7 +340,7 @@ Procedure ExplosionNodesSpecifications(TableNodeSpecificationToExplosion, TableP
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
 	|	CompositionOutput.Company,
-	|	CompositionOutput.Division,
+	|	CompositionOutput.Department,
 	|	CompositionOutput.Products,
 	|	CompositionOutput.ProductCharacteristic,
 	|	CompositionOutput.BatchProducts,
@@ -389,7 +389,7 @@ Procedure CalculateCostPricePlannedCostsOnOutput(TablePlanCostsOnOutput)
 	Query.Text = 
 	"SELECT
 	|	PlannedCostsOnOutput.Company AS Company,
-	|	PlannedCostsOnOutput.Division AS Division,
+	|	PlannedCostsOnOutput.Department AS Department,
 	|	PlannedCostsOnOutput.Products AS Products,
 	|	PlannedCostsOnOutput.ProductCharacteristic AS ProductCharacteristic,
 	|	PlannedCostsOnOutput.BatchProducts AS BatchProducts,
@@ -412,7 +412,7 @@ Procedure CalculateCostPricePlannedCostsOnOutput(TablePlanCostsOnOutput)
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT ALLOWED
 	|	Inventory.Company AS Company,
-	|	Inventory.StructuralUnitCorr AS Division,
+	|	Inventory.StructuralUnitCorr AS Department,
 	|	Inventory.ProductsAndServicesCorr AS Products,
 	|	Inventory.CharacteristicCorr AS ProductCharacteristic,
 	|	Inventory.BatchCorr AS BatchProducts,
@@ -448,7 +448,7 @@ Procedure CalculateCostPricePlannedCostsOnOutput(TablePlanCostsOnOutput)
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
 	|	PlannedCostsOnOutput.Company AS Company,
-	|	PlannedCostsOnOutput.Division AS Division,
+	|	PlannedCostsOnOutput.Department AS Department,
 	|	PlannedCostsOnOutput.Products AS Products,
 	|	PlannedCostsOnOutput.ProductCharacteristic AS ProductCharacteristic,
 	|	PlannedCostsOnOutput.BatchProducts AS BatchProducts,
@@ -468,7 +468,7 @@ Procedure CalculateCostPricePlannedCostsOnOutput(TablePlanCostsOnOutput)
 	|	TemporaryTablePlannedCostsForProduction AS PlannedCostsOnOutput
 	|		LEFT JOIN TemporaryTableCostForProduction AS ActualCostsOnOutput
 	|		ON PlannedCostsOnOutput.Company = ActualCostsOnOutput.Company
-	|			AND PlannedCostsOnOutput.Division = ActualCostsOnOutput.Division
+	|			AND PlannedCostsOnOutput.Department = ActualCostsOnOutput.Department
 	|			AND PlannedCostsOnOutput.Products = ActualCostsOnOutput.Products
 	|			AND PlannedCostsOnOutput.ProductCharacteristic = ActualCostsOnOutput.ProductCharacteristic
 	|			AND PlannedCostsOnOutput.BatchProducts = ActualCostsOnOutput.BatchProducts

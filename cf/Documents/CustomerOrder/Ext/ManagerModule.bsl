@@ -430,7 +430,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCustomerOrder, StructureAddi
 	|	TableIncomeAndExpenses.LineNumber AS LineNumber,
 	|	TableIncomeAndExpenses.Finish AS Period,
 	|	TableIncomeAndExpenses.Company AS Company,
-	|	TableIncomeAndExpenses.DivisionSales AS StructuralUnit,
+	|	TableIncomeAndExpenses.DepartmentSales AS StructuralUnit,
 	|	TableIncomeAndExpenses.BusinessActivitySales AS BusinessActivity,
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales AS GLAccount,
@@ -452,7 +452,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCustomerOrder, StructureAddi
 	|	TableIncomeAndExpenses.Finish,
 	|	TableIncomeAndExpenses.LineNumber,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.DivisionSales,
+	|	TableIncomeAndExpenses.DepartmentSales,
 	|	TableIncomeAndExpenses.BusinessActivitySales,
 	|	TableIncomeAndExpenses.CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales
@@ -464,7 +464,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCustomerOrder, StructureAddi
 	|	TableIncomeAndExpenses.LineNumber,
 	|	TableIncomeAndExpenses.Finish,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.DivisionSales,
+	|	TableIncomeAndExpenses.DepartmentSales,
 	|	TableIncomeAndExpenses.BusinessActivitySales,
 	|	TableIncomeAndExpenses.CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales,
@@ -486,7 +486,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCustomerOrder, StructureAddi
 	|	TableIncomeAndExpenses.Finish,
 	|	TableIncomeAndExpenses.LineNumber,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.DivisionSales,
+	|	TableIncomeAndExpenses.DepartmentSales,
 	|	TableIncomeAndExpenses.BusinessActivitySales,
 	|	TableIncomeAndExpenses.CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales
@@ -1146,7 +1146,7 @@ Procedure GenerateTableSales(DocumentRefCustomerOrder, StructureAdditionalProper
 	|	TableSales.CustomerOrder AS CustomerOrder,
 	|	TableSales.Document AS Document,
 	|	TableSales.VATRate AS VATRate,
-	|	TableSales.StructuralUnit AS Division,
+	|	TableSales.StructuralUnit AS Department,
 	|	TableSales.Responsible AS Responsible,
 	|	SUM(TableSales.Quantity) AS Quantity,
 	|	SUM(TableSales.VATAmountSales) AS VATAmount,
@@ -1180,7 +1180,7 @@ Procedure GenerateTableSales(DocumentRefCustomerOrder, StructureAdditionalProper
 	|	TableSales.CustomerOrder,
 	|	TableSales.Document,
 	|	TableSales.VATRate,
-	|	TableSales.DivisionSales,
+	|	TableSales.DepartmentSales,
 	|	TableSales.Responsible,
 	|	SUM(TableSales.Quantity),
 	|	SUM(TableSales.AmountVATPurchaseSale),
@@ -1200,7 +1200,7 @@ Procedure GenerateTableSales(DocumentRefCustomerOrder, StructureAdditionalProper
 	|	TableSales.CustomerOrder,
 	|	TableSales.Document,
 	|	TableSales.VATRate,
-	|	TableSales.DivisionSales,
+	|	TableSales.DepartmentSales,
 	|	TableSales.Responsible";
 	
 	QueryResult = Query.Execute();
@@ -1334,7 +1334,7 @@ Procedure GenerateTableInventoryWorks(DocumentRefCustomerOrder, StructureAdditio
 	|	TableInventory.Document AS Document,
 	|	TableInventory.Document AS SalesDocument,
 	|	TableInventory.CustomerOrder AS OrderSales,
-	|	TableInventory.DivisionSales AS Division,
+	|	TableInventory.DepartmentSales AS Department,
 	|	TableInventory.Responsible AS Responsible,
 	|	TableInventory.BusinessActivitySales AS BusinessActivity,
 	|	TableInventory.GLAccountCost AS GLAccountCost,
@@ -1391,7 +1391,7 @@ Procedure GenerateTableInventoryWorks(DocumentRefCustomerOrder, StructureAdditio
 	|	TableInventory.VATRate,
 	|	Constants.FunctionalOptionInventoryReservation,
 	|	TableInventory.Responsible,
-	|	TableInventory.DivisionSales,
+	|	TableInventory.DepartmentSales,
 	|	TableInventory.Document,
 	|	TableInventory.GLAccountCost,
 	|	TableInventory.GLAccount";
@@ -1421,7 +1421,7 @@ Procedure GenerateTableInventoryWorks(DocumentRefCustomerOrder, StructureAdditio
 			
 			TableRowReceipt.SalesDocument = Undefined;
 			TableRowReceipt.OrderSales = Undefined;
-			TableRowReceipt.Division = Undefined;
+			TableRowReceipt.Department = Undefined;
 			TableRowReceipt.Responsible = Undefined;
 			
 			QuantityBalance = 0;
@@ -1479,7 +1479,7 @@ Procedure GenerateTableInventoryMaterials(DocumentRefCustomerOrder, StructureAdd
 	|	TableInventory.CustomerOrder AS CustomerCorrOrder,
 	|	UNDEFINED AS SalesDocument,
 	|	UNDEFINED AS OrderSales,
-	|	UNDEFINED AS Division,
+	|	UNDEFINED AS Department,
 	|	UNDEFINED AS Responsible,
 	|	TableInventory.GLAccount AS AccountDr,
 	|	TableInventory.InventoryGLAccount AS AccountCr,
@@ -2713,10 +2713,10 @@ Procedure GenerateTableInventoryProducts(DocumentRefCustomerOrder, StructureAddi
 	|	TableInventory.Document AS Document,
 	|	TableInventory.Document AS SalesDocument,
 	|	TableInventory.Order AS OrderSales,
-	|	TableInventory.DivisionSales AS Division,
+	|	TableInventory.DepartmentSales AS Department,
 	|	TableInventory.Responsible AS Responsible,
 	|	TableInventory.BusinessActivitySales AS BusinessActivity,
-	|	TableInventory.DivisionSales AS DivisionSales,
+	|	TableInventory.DepartmentSales AS DepartmentSales,
 	|	TableInventory.GLAccountCost AS GLAccountCost,
 	|	TableInventory.CorrOrganization AS CorrOrganization,
 	|	ISNULL(TableInventory.StructuralUnit, VALUE(Catalog.StructuralUnits.EmptyRef)) AS StructuralUnit,
@@ -2760,7 +2760,7 @@ Procedure GenerateTableInventoryProducts(DocumentRefCustomerOrder, StructureAddi
 	|	TableInventory.Company,
 	|	TableInventory.Order,
 	|	TableInventory.BusinessActivitySales,
-	|	TableInventory.DivisionSales,
+	|	TableInventory.DepartmentSales,
 	|	TableInventory.Responsible,
 	|	TableInventory.CorrOrganization,
 	|	ISNULL(TableInventory.StructuralUnitCorr, VALUE(Catalog.StructuralUnits.EmptyRef)),
@@ -2784,7 +2784,7 @@ Procedure GenerateTableInventoryProducts(DocumentRefCustomerOrder, StructureAddi
 	|	TableInventory.GLAccount,
 	|	ISNULL(TableInventory.StructuralUnit, VALUE(Catalog.StructuralUnits.EmptyRef)),
 	|	TableInventory.Document,
-	|	TableInventory.DivisionSales,
+	|	TableInventory.DepartmentSales,
 	|	TableInventory.GLAccountCost,
 	|	TableInventory.GLAccount";
 	
@@ -3064,7 +3064,7 @@ Procedure GenerateTableInventoryProducts(DocumentRefCustomerOrder, StructureAddi
 				
 				TableRowExpense.OrderSales = Undefined;
 				TableRowExpense.SalesDocument = Undefined;
-				TableRowExpense.Division = Undefined;
+				TableRowExpense.Department = Undefined;
 				TableRowExpense.Responsible = Undefined;
 				TableRowExpense.VATRate = Undefined;
 				
@@ -3095,7 +3095,7 @@ Procedure GenerateTableInventoryProducts(DocumentRefCustomerOrder, StructureAddi
 				
 				TableRowReceipt.OrderSales = Undefined;
 				TableRowReceipt.SalesDocument = Undefined;
-				TableRowReceipt.Division = Undefined;
+				TableRowReceipt.Department = Undefined;
 				TableRowReceipt.Responsible = Undefined;
 				TableRowReceipt.VATRate = Undefined;
 				
@@ -3127,7 +3127,7 @@ Procedure GenerateTableInventoryProducts(DocumentRefCustomerOrder, StructureAddi
 						RowIncomeAndExpenses = StructureAdditionalProperties.TableForRegisterRecords.TableIncomeAndExpenses.Add();
 						FillPropertyValues(RowIncomeAndExpenses, RowTableInventory);
 						
-						RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DivisionSales;
+						RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DepartmentSales;
 						RowIncomeAndExpenses.CustomerOrder = DocumentRefCustomerOrder;
 						RowIncomeAndExpenses.GLAccount = RowTableInventory.GLAccountCost;
 						RowIncomeAndExpenses.AmountIncome = 0;
@@ -3211,7 +3211,7 @@ Procedure GenerateTableInventoryProducts(DocumentRefCustomerOrder, StructureAddi
 					RowIncomeAndExpenses = StructureAdditionalProperties.TableForRegisterRecords.TableIncomeAndExpenses.Add();
 					FillPropertyValues(RowIncomeAndExpenses, RowTableInventory);
 					
-					RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DivisionSales;
+					RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DepartmentSales;
 					RowIncomeAndExpenses.CustomerOrder = DocumentRefCustomerOrder;
 					RowIncomeAndExpenses.GLAccount = RowTableInventory.GLAccountCost;
 					RowIncomeAndExpenses.AmountIncome = 0;
@@ -3280,7 +3280,7 @@ Procedure GenerateTableInventoryProducts(DocumentRefCustomerOrder, StructureAddi
 						RowIncomeAndExpenses = StructureAdditionalProperties.TableForRegisterRecords.TableIncomeAndExpenses.Add();
 						FillPropertyValues(RowIncomeAndExpenses, RowTableInventory);
 						
-						RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DivisionSales;
+						RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DepartmentSales;
 						RowIncomeAndExpenses.CustomerOrder = DocumentRefCustomerOrder;
 						RowIncomeAndExpenses.GLAccount = RowTableInventory.GLAccountCost;
 						RowIncomeAndExpenses.AmountIncome = 0;
@@ -4268,7 +4268,7 @@ Procedure InitializeDocumentDataJobOrder(DocumentRefCustomerOrder, StructureAddi
 	|	JobOrderWorks.Ref.Counterparty.GLAccountCustomerSettlements AS GLAccountCustomerSettlements,
 	|	JobOrderWorks.Ref.Contract.SettlementsCurrency AS SettlementsCurrency,
 	|	JobOrderWorks.Ref.Contract AS Contract,
-	|	JobOrderWorks.Ref.SalesStructuralUnit AS DivisionSales,
+	|	JobOrderWorks.Ref.SalesStructuralUnit AS DepartmentSales,
 	|	JobOrderWorks.ProductsAndServices.BusinessActivity AS BusinessActivitySales,
 	|	JobOrderWorks.ProductsAndServices.BusinessActivity.GLAccountRevenueFromSales AS AccountStatementSales,
 	|	JobOrderWorks.ProductsAndServices.BusinessActivity.GLAccountCostOfSales AS GLAccountCost,
@@ -4343,7 +4343,7 @@ Procedure InitializeDocumentDataJobOrder(DocumentRefCustomerOrder, StructureAddi
 	|	JobOrderProducts.Ref.Start,
 	|	&Company AS Company,
 	|	UNDEFINED AS CorrOrganization,
-	|	JobOrderProducts.Ref.SalesStructuralUnit AS DivisionSales,
+	|	JobOrderProducts.Ref.SalesStructuralUnit AS DepartmentSales,
 	|	JobOrderProducts.Ref.Responsible AS Responsible,
 	|	JobOrderProducts.ProductsAndServices.BusinessActivity AS BusinessActivitySales,
 	|	JobOrderProducts.ProductsAndServices.BusinessActivity.GLAccountRevenueFromSales AS AccountStatementSales,

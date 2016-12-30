@@ -9,13 +9,13 @@ Procedure SetFilter()
 	
 	SmallBusinessClientServer.SetListFilterItem(List,"Company",Company);
 
-	If Not AccountingBySeveralDivisions Then
+	If Not AccountingBySeveralDepartments Then
 		
-		SmallBusinessClientServer.SetListFilterItem(List,"StructuralUnit",MainDivision);
+		SmallBusinessClientServer.SetListFilterItem(List,"StructuralUnit",MainDepartment);
 		
-	ElsIf Items.Divisions.CurrentData <> Undefined Then
+	ElsIf Items.Departments.CurrentData <> Undefined Then
 		
-		SmallBusinessClientServer.SetListFilterItem(List,"StructuralUnit",Items.Divisions.CurrentData.Ref);
+		SmallBusinessClientServer.SetListFilterItem(List,"StructuralUnit",Items.Departments.CurrentData.Ref);
 		
 	EndIf;
 	
@@ -55,13 +55,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	AccountingBySeveralDivisions = Constants.FunctionalOptionAccountingByMultipleDivisions.Get();
-	MainDivision = Catalogs.StructuralUnits.MainDivision;
-	If Not AccountingBySeveralDivisions Then
+	AccountingBySeveralDepartments = Constants.FunctionalOptionAccountingByMultipleDepartments.Get();
+	MainDepartment = Catalogs.StructuralUnits.MainDepartment;
+	If Not AccountingBySeveralDepartments Then
 		
-		Items.Divisions.Visible = False;
+		Items.Departments.Visible = False;
 		SmallBusinessClientServer.SetListFilterItem(List,"Company",Company);
-		SmallBusinessClientServer.SetListFilterItem(List,"StructuralUnit",MainDivision);
+		SmallBusinessClientServer.SetListFilterItem(List,"StructuralUnit",MainDepartment);
 		
 	EndIf;
 	
@@ -80,9 +80,9 @@ Procedure CompanyOnChange(Item)
 EndProcedure
 
 &AtClient
-// Procedure - OnActivateRow event processor of the Subdivisions table.
+// Procedure - OnActivateRow event processor of the Subdepartments table.
 //
-Procedure DivisionsOnActivateRow(Item)
+Procedure DepartmentsOnActivateRow(Item)
 	
 	SetFilter();
 	

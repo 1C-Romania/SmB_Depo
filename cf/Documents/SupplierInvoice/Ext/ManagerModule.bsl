@@ -59,9 +59,9 @@ Procedure GenerateTableInventory(DocumentRefPurchaseInvoice, StructureAdditional
 	|	END AS OrderSales,
 	|	CASE
 	|		WHEN TableInventory.OperationKind = VALUE(Enum.OperationKindsSupplierInvoice.ReturnFromCustomer)
-	|			THEN TableInventory.DivisionSales
+	|			THEN TableInventory.DepartmentSales
 	|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
-	|	END AS Division,
+	|	END AS Department,
 	|	CASE
 	|		WHEN TableInventory.Order REFS Document.PurchaseOrder
 	|				AND (TableInventory.OperationKind = VALUE(Enum.OperationKindsSupplierInvoice.ReceiptFromVendor)
@@ -165,7 +165,7 @@ Procedure GenerateTableInventory(DocumentRefPurchaseInvoice, StructureAdditional
 	|	END,
 	|	CASE
 	|		WHEN TableInventory.OperationKind = VALUE(Enum.OperationKindsSupplierInvoice.ReturnFromCustomer)
-	|			THEN TableInventory.DivisionSales
+	|			THEN TableInventory.DepartmentSales
 	|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 	|	END,
 	|	CASE
@@ -676,7 +676,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPurchaseInvoice, StructureAd
 	|	MIN(TableIncomeAndExpenses.LineNumber),
 	|	TableIncomeAndExpenses.Period,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.DivisionSales,
+	|	TableIncomeAndExpenses.DepartmentSales,
 	|	TableIncomeAndExpenses.BusinessActivitySales,
 	|	TableIncomeAndExpenses.Order,
 	|	TableIncomeAndExpenses.AccountStatementSales,
@@ -698,7 +698,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPurchaseInvoice, StructureAd
 	|GROUP BY
 	|	TableIncomeAndExpenses.Period,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.DivisionSales,
+	|	TableIncomeAndExpenses.DepartmentSales,
 	|	TableIncomeAndExpenses.BusinessActivitySales,
 	|	TableIncomeAndExpenses.Order,
 	|	TableIncomeAndExpenses.AccountStatementSales
@@ -710,7 +710,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPurchaseInvoice, StructureAd
 	|	MIN(TableIncomeAndExpenses.LineNumber),
 	|	TableIncomeAndExpenses.Period,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.DivisionSales,
+	|	TableIncomeAndExpenses.DepartmentSales,
 	|	TableIncomeAndExpenses.BusinessActivitySales,
 	|	TableIncomeAndExpenses.Order,
 	|	TableIncomeAndExpenses.GLAccountCost,
@@ -730,7 +730,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPurchaseInvoice, StructureAd
 	|GROUP BY
 	|	TableIncomeAndExpenses.Period,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.DivisionSales,
+	|	TableIncomeAndExpenses.DepartmentSales,
 	|	TableIncomeAndExpenses.BusinessActivitySales,
 	|	TableIncomeAndExpenses.Order,
 	|	TableIncomeAndExpenses.GLAccountCost
@@ -948,7 +948,7 @@ Procedure GenerateTableSales(DocumentRefPurchaseInvoice, StructureAdditionalProp
 	|		ELSE TableSales.BasisDocument
 	|	END AS Document,
 	|	TableSales.VATRate AS VATRate,
-	|	TableSales.DivisionSales AS Division,
+	|	TableSales.DepartmentSales AS Department,
 	|	TableSales.BasisDocument.Responsible AS Responsible,
 	|	-SUM(TableSales.Quantity) AS Quantity,
 	|	-SUM(TableSales.AmountVATPurchaseSale) AS VATAmount,
@@ -983,7 +983,7 @@ Procedure GenerateTableSales(DocumentRefPurchaseInvoice, StructureAdditionalProp
 	|		ELSE TableSales.BasisDocument
 	|	END,
 	|	TableSales.VATRate,
-	|	TableSales.DivisionSales,
+	|	TableSales.DepartmentSales,
 	|	TableSales.BasisDocument.Responsible";
 	
 	QueryResult = Query.Execute();
@@ -3473,9 +3473,9 @@ Procedure InitializeDocumentData(DocumentRefPurchaseInvoice, StructureAdditional
 	|	CASE
 	|		WHEN SupplierInvoiceInventory.Ref.BasisDocument REFS Document.CustomerInvoice
 	|				AND SupplierInvoiceInventory.Ref.BasisDocument <> VALUE(Document.CustomerInvoice.EmptyRef)
-	|			THEN SupplierInvoiceInventory.Ref.BasisDocument.Division
-	|		ELSE SupplierInvoiceInventory.Ref.Division
-	|	END AS DivisionSales,
+	|			THEN SupplierInvoiceInventory.Ref.BasisDocument.Department
+	|		ELSE SupplierInvoiceInventory.Ref.Department
+	|	END AS DepartmentSales,
 	|	SupplierInvoiceInventory.ProductsAndServices.BusinessActivity AS BusinessActivitySales,
 	|	SupplierInvoiceInventory.ProductsAndServices.BusinessActivity.GLAccountRevenueFromSales AS AccountStatementSales,
 	|	SupplierInvoiceInventory.ProductsAndServices.BusinessActivity.GLAccountCostOfSales AS GLAccountCost,

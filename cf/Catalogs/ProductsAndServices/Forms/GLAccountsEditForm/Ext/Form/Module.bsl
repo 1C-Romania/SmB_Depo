@@ -33,7 +33,7 @@ Function CancelGLAccountChange(Ref)
 	|	Inventory.SpecificationCorr,
 	|	Inventory.OrderSales,
 	|	Inventory.SalesDocument,
-	|	Inventory.Division,
+	|	Inventory.Department,
 	|	Inventory.Responsible,
 	|	Inventory.VATRate,
 	|	Inventory.FixedCost,

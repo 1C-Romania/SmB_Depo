@@ -190,20 +190,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Division</dataPath>
-			<field>Division</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Division</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>разделение</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ResidualCost</dataPath>
 			<field>ResidualCost</field>
 			<title xsi:type="v8:LocalStringType">
@@ -281,6 +267,16 @@
 				<dcscom:periodType>Additional</dcscom:periodType>
 			</role>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Department</dataPath>
+			<field>Department</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Department</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>DataSource1</dataSource>
 		<query>SELECT ALLOWED
 	CASE
@@ -305,7 +301,7 @@
 	FixedAssetsBalanceAndTurnovers.DepreciationExpense,
 	FixedAssetsBalanceAndTurnovers.FixedAsset.GLAccount AS GLAccount,
 	FixedAssetsBalanceAndTurnovers.FixedAsset.DepreciationAccount AS DepreciationAccount,
-	FixedAssetsParametersSliceLast.StructuralUnit AS Division,
+	FixedAssetsParametersSliceLast.StructuralUnit AS Department,
 	FixedAssetsBalanceAndTurnovers.CostReceipt - FixedAssetsBalanceAndTurnovers.CostExpense AS CostChanging,
 	FixedAssetsBalanceAndTurnovers.CostClosingBalance - FixedAssetsBalanceAndTurnovers.DepreciationClosingBalance AS ResidualCost,
 	FixedAssetsBalanceAndTurnovers.FixedAsset.Code AS InventoryNumber,
@@ -318,11 +314,11 @@
 	FixedAssetsBalanceAndTurnovers.QuarterPeriod,
 	FixedAssetsBalanceAndTurnovers.HalfYearPeriod,
 	FixedAssetsBalanceAndTurnovers.YearPeriod
-	FROM
+FROM
 	AccumulationRegister.FixedAssets.BalanceAndTurnovers(, , Auto, RegisterRecords, ) AS FixedAssetsBalanceAndTurnovers
 		LEFT JOIN InformationRegister.FixedAssetsParameters.SliceLast AS FixedAssetsParametersSliceLast
 		ON FixedAssetsBalanceAndTurnovers.Company = FixedAssetsParametersSliceLast.Company
-				AND FixedAssetsBalanceAndTurnovers.FixedAsset = FixedAssetsParametersSliceLast.FixedAsset</query>
+			AND FixedAssetsBalanceAndTurnovers.FixedAsset = FixedAssetsParametersSliceLast.FixedAsset</query>
 	</dataSet>
 	<totalField>
 		<dataPath>DepreciationClosingBalance</dataPath>
@@ -502,7 +498,7 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>FixedAsset</dcsset:field>
@@ -560,7 +556,7 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Division</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">Department</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
 					<dcsset:userSettingID>78f2aabc-614e-4c3e-afd3-5cbfa092ec0c</dcsset:userSettingID>
@@ -604,7 +600,7 @@
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -650,7 +646,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Division</dcsset:field>
+						<dcsset:field>Department</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -717,7 +713,7 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>FixedAsset</dcsset:field>
@@ -749,7 +745,7 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Division</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">Department</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:right xsi:type="dcscor:DesignTimeValue">Catalog.StructuralUnits.EmptyRef</dcsset:right>
 				</dcsset:item>
@@ -851,7 +847,7 @@
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Division</dcsset:field>
+					<dcsset:field>Department</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -897,7 +893,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Division</dcsset:field>
+						<dcsset:field>Department</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>

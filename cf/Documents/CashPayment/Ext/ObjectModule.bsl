@@ -1803,7 +1803,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AdvanceHolder");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Correspondence");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "TaxKind");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Department");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "RegistrationPeriod");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "CashCR");
 		
@@ -1864,7 +1864,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Counterparty");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Correspondence");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "TaxKind");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Department");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "RegistrationPeriod");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "CashCR");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails");
@@ -1888,7 +1888,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.UnitConversionFactor");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.VATRate");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AdvanceHolder");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Department");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "RegistrationPeriod");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "CashCR");
 		PaymentAmount = PayrollPayment.Total("PaymentAmount");
@@ -1929,7 +1929,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "RegistrationPeriod");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "CashCR");
 		If Correspondence.TypeOfAccount <> Enums.GLAccountsTypes.Expenses Then
-			SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
+			SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Department");
 		EndIf;
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Contract");
@@ -1944,7 +1944,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AdvanceHolder");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Counterparty");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Correspondence");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Department");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "RegistrationPeriod");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "TaxKind");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails");
@@ -1960,7 +1960,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AdvanceHolder");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Counterparty");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Correspondence");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Division");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Department");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "RegistrationPeriod");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "CashCR");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails");

@@ -118,7 +118,7 @@ Procedure FillSubjectProperties(Certificate)
 	PropertiesPresentation.Add("Settlement",  NStr("en='Settlement';ru='НаселПункт'"));
 	PropertiesPresentation.Add("Street",            NStr("en='Street';ru='Улица'"));
 	PropertiesPresentation.Add("Company",      NStr("en = 'Company'"));
-	PropertiesPresentation.Add("Division",    NStr("en='Division';ru='Подразделение'"));
+	PropertiesPresentation.Add("Department",    NStr("en='Department';ru='Подразделение'"));
 	PropertiesPresentation.Add("Position",        NStr("en='Position';ru='Position'"));
 	PropertiesPresentation.Add("Email", NStr("en='Email';ru='Электронное письмо'"));
 	PropertiesPresentation.Add("OGRN",             NStr("en='OGRN';ru='ОГРН'"));
@@ -152,7 +152,7 @@ Procedure FillIssuerProperties(Certificate)
 	PropertiesPresentation.Add("Settlement",NStr("en='Settlement';ru='НаселПункт'"));
 	PropertiesPresentation.Add("Street",    NStr("en='Street';ru='Улица'"));
 	PropertiesPresentation.Add("Company",   NStr("en='Company';ru='Организация'"));
-	PropertiesPresentation.Add("Division",  NStr("en='Division';ru='Подразделение'"));
+	PropertiesPresentation.Add("Department",  NStr("en='Department';ru='Подразделение'"));
 	PropertiesPresentation.Add("Email",		NStr("en='Email';ru='Электронное письмо'"));
 	PropertiesPresentation.Add("OGRN",      NStr("en='OGRN';ru='ОГРН'"));
 	PropertiesPresentation.Add("TIN",       NStr("en='TIN';ru='ИНН'"));

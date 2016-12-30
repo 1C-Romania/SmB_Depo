@@ -656,7 +656,7 @@ Function CalculateByCRCheck(Object, InputParameters)
 	CalculationParameters.Insert("Recorder"  , Object.Ref);
 	CalculationParameters.Insert("Shop"      , Object.StructuralUnit);
 	
-	CalculationParameters.Insert("SalesWarehouse"            , Object.Division);
+	CalculationParameters.Insert("SalesWarehouse"            , Object.Department);
 	//CalculationParameters.Insert("MinimumSalesPricesKind", ShopDetails.MinimumSalesPricesKind);
 	
 	CalculationParameters.Insert("Products",            Products);
@@ -721,7 +721,7 @@ Function CalculateByGoodsSales(Object, InputParameters)
 	CalculationParameters.Insert("Recorder"  , Object.Ref);
 	CalculationParameters.Insert("Shop"      , Object.StructuralUnit);
 	
-	CalculationParameters.Insert("SalesWarehouse"            , Object.Division);
+	CalculationParameters.Insert("SalesWarehouse"            , Object.Department);
 	//CalculationParameters.Insert("MinimumSalesPricesKind", ShopDetails.MinimumSalesPricesKind);
 	
 	CalculationParameters.Insert("Products",            Products);
@@ -772,7 +772,7 @@ Function CalculateByReportOnRecycling(Object, InputParameters)
 	CalculationParameters.Insert("Recorder"  , Object.Ref);
 	CalculationParameters.Insert("Shop"      , Object.StructuralUnit);
 	
-	CalculationParameters.Insert("SalesWarehouse"            , Object.Division);
+	CalculationParameters.Insert("SalesWarehouse"            , Object.Department);
 	//CalculationParameters.Insert("MinimumSalesPricesKind", ShopDetails.MinimumSalesPricesKind);
 	
 	CalculationParameters.Insert("Products",            Products);
@@ -817,7 +817,7 @@ Function CalculateByInvoiceForPayment(Object, InputParameters)
 	CalculationParameters.Insert("Recorder"  , Object.Ref);
 	CalculationParameters.Insert("Shop"      , Catalogs.StructuralUnits.EmptyRef());
 	
-	CalculationParameters.Insert("SalesWarehouse"            , Object.Division);
+	CalculationParameters.Insert("SalesWarehouse"            , Object.Department);
 	//CalculationParameters.Insert("MinimumSalesPricesKind", ShopDetails.MinimumSalesPricesKind);
 	
 	CalculationParameters.Insert("Products",            Products);
@@ -880,9 +880,9 @@ Function CalculateByWorkCompletionCertificate(Object, InputParameters)
 	CalculationParameters = New Structure;
 	CalculationParameters.Insert("DiscountsMarkups", GetDiscountsMarkupsTableForWholesale(Object, Object.Counterparty, InputParameters));
 	CalculationParameters.Insert("Recorder"  , Object.Ref);
-	CalculationParameters.Insert("Shop"      , Object.Division);
+	CalculationParameters.Insert("Shop"      , Object.Department);
 	
-	CalculationParameters.Insert("SalesWarehouse"            , Object.Division);
+	CalculationParameters.Insert("SalesWarehouse"            , Object.Department);
 	//CalculationParameters.Insert("MinimumSalesPricesKind", ShopDetails.MinimumSalesPricesKind);
 	
 	CalculationParameters.Insert("Products",            Products);

@@ -1001,7 +1001,7 @@
 		</property>
 		<property name="Consignor">
 			<typeDef xsi:type="ObjectType" base="d2p1:Counterparty">
-				<property name="OrganizationDivision" lowerBound="0">
+				<property name="OrganizationDepartment" lowerBound="0">
 					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="255"/>
 				</property>
 			</typeDef>

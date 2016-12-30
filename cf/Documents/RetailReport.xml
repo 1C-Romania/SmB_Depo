@@ -746,15 +746,15 @@
 			</Attribute>
 			<Attribute uuid="72ad8954-8e45-4d39-b8e7-9ac1c132f2a3">
 				<Properties>
-					<Name>Division</Name>
+					<Name>Department</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Division</v8:content>
+							<v8:content>Department</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>разделение</v8:content>
+							<v8:content>Подразделение</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -767,7 +767,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Responsible division</v8:content>
+							<v8:content>Responsible department</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -793,7 +793,7 @@
 					</ChoiceParameterLinks>
 					<ChoiceParameters>
 						<app:item name="Filter.StructuralUnitType">
-							<app:value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</app:value>
+							<app:value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</app:value>
 						</app:item>
 					</ChoiceParameters>
 					<QuickChoice>Auto</QuickChoice>

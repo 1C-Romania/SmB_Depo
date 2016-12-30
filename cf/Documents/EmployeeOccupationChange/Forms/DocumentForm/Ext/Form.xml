@@ -368,7 +368,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Group division</v8:content>
+											<v8:content>Group department</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -378,7 +378,7 @@
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Group division</v8:content>
+											<v8:content>Group department</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -387,12 +387,12 @@
 									</ToolTip>
 									<ExtendedTooltip name="GroupDivisionExtendedTooltip" id="116"/>
 									<ChildItems>
-										<InputField name="EmployeesFomerDivision" id="61">
+										<InputField name="EmployeesFomerDepartment" id="61">
 											<DataPath>Object.Employees.PreviousUnit</DataPath>
 											<ReadOnly>true</ReadOnly>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="EmployeesPreviousDivisionContextMenu" id="62"/>
-											<ExtendedTooltip name="EmployeesPreviousUnitExtendedTooltip" id="117"/>
+											<ContextMenu name="EmployeesFomerDepartmentContextMenu" id="62"/>
+											<ExtendedTooltip name="EmployeesFomerDepartmentExtendedTooltip" id="117"/>
 										</InputField>
 										<InputField name="EmployeesStructuralUnit" id="14">
 											<DataPath>Object.Employees.StructuralUnit</DataPath>
@@ -974,7 +974,7 @@
 							<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
 						</Type>
 						<FunctionalOptions>
-							<Item>FunctionalOption.AccountingBySeveralDivisions</Item>
+							<Item>FunctionalOption.AccountingBySeveralDepartments</Item>
 						</FunctionalOptions>
 					</Column>
 					<Column name="PreviousJobTitle" id="2">
@@ -1146,11 +1146,11 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="MainDivision" id="12">
+		<Attribute name="MainDepartment" id="12">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Main division</v8:content>
+					<v8:content>Main department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

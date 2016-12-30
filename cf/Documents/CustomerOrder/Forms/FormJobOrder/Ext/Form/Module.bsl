@@ -891,11 +891,11 @@ EndProcedure // FillVATRateByVATTaxation()
 //
 Function GetDataStructuralUnitOnChange(StructureData)
 	
-	If StructureData.Division.TransferSource.StructuralUnitType = PredefinedValue("Enum.StructuralUnitsTypes.Warehouse")
-		OR StructureData.Division.TransferSource.StructuralUnitType = PredefinedValue("Enum.StructuralUnitsTypes.Division") Then
+	If StructureData.Department.TransferSource.StructuralUnitType = PredefinedValue("Enum.StructuralUnitsTypes.Warehouse")
+		OR StructureData.Department.TransferSource.StructuralUnitType = PredefinedValue("Enum.StructuralUnitsTypes.Department") Then
 	
-		StructureData.Insert("InventoryStructuralUnit", StructureData.Division.TransferSource);
-		StructureData.Insert("CellInventory", StructureData.Division.TransferSourceCell);
+		StructureData.Insert("InventoryStructuralUnit", StructureData.Department.TransferSource);
+		StructureData.Insert("CellInventory", StructureData.Department.TransferSourceCell);
 
 	Else
 		
@@ -904,7 +904,7 @@ Function GetDataStructuralUnitOnChange(StructureData)
 		
 	EndIf;
 		
-	StructureData.Insert("OrderWarehouseOfInventory", Not StructureData.Division.TransferSource.OrderWarehouse);
+	StructureData.Insert("OrderWarehouseOfInventory", Not StructureData.Department.TransferSource.OrderWarehouse);
 	
 	Return StructureData;
 	
@@ -4403,7 +4403,7 @@ Procedure SalesStructuralUnitOnChange(Item)
 		If Not ValueIsFilled(Object.StructuralUnitReserve) Then
 			
 			StructureData = New Structure();
-			StructureData.Insert("Division", Object.SalesStructuralUnit);
+			StructureData.Insert("Department", Object.SalesStructuralUnit);
 			
 			StructureData = GetDataStructuralUnitOnChange(StructureData);
 			

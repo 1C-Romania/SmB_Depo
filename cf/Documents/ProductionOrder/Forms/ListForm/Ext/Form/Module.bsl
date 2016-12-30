@@ -162,12 +162,12 @@ EndProcedure // SetFilterCurrentWorks()
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
+	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
 		AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses.Get() Then
 		
-		Items.FilterDivision.ListChoiceMode = True;
-		Items.FilterDivision.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
-		Items.FilterDivision.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
+		Items.FilterDepartment.ListChoiceMode = True;
+		Items.FilterDepartment.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
+		Items.FilterDepartment.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 		
 	EndIf;
 	
@@ -219,7 +219,7 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 		Settings.Delete("FilterCompany");
 		Settings.Delete("FilterState");
 		Settings.Delete("FilterStatus");
-		Settings.Delete("FilterDivision");
+		Settings.Delete("FilterDepartment");
 		Settings.Delete("FilterActuality");
 		Settings.Delete("FilterResponsible");
 		
@@ -229,7 +229,7 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 		FilterState = Settings.Get("FilterState");
 		FilterStatus = Settings.Get("FilterStatus");
 		FilterResponsible = Settings.Get("FilterResponsible");
-		FilterDivision = Settings.Get("FilterDivision");
+		FilterDepartment = Settings.Get("FilterDepartment");
 		FilterActuality = Settings.Get("FilterActuality");
 		If Not ValueIsFilled(FilterActuality) Then
 			FilterActuality = "All";
@@ -246,7 +246,7 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 		
 		SmallBusinessClientServer.SetListFilterItem(List, "Company", FilterCompany, ValueIsFilled(FilterCompany));
 		SmallBusinessClientServer.SetListFilterItem(List, "Responsible", FilterResponsible, ValueIsFilled(FilterResponsible));
-		SmallBusinessClientServer.SetListFilterItem(List, "StructuralUnit", FilterDivision, ValueIsFilled(FilterDivision));
+		SmallBusinessClientServer.SetListFilterItem(List, "StructuralUnit", FilterDepartment, ValueIsFilled(FilterDepartment));
 		
 		If FilterActuality = "Except closed" Then
 			SmallBusinessClientServer.SetListFilterItem(List, "Closed", False);
@@ -313,14 +313,14 @@ Procedure FilterResponsibleOnChange(Item)
 EndProcedure
 
 &AtClient
-// Procedure - event handler OnChange input field FilterDivision.
+// Procedure - event handler OnChange input field FilterDepartment.
 // The procedure determines the situation when after changing the date
 // of a document this document is found in another period
 // of documents enumeration, and in this case the procedure assigns new unique number to the document.
 // Overrides the corresponding form parameter.
 //
-Procedure FilterDivisionOnChange(Item)
-	SmallBusinessClientServer.SetListFilterItem(List, "StructuralUnit", FilterDivision, ValueIsFilled(FilterDivision));
+Procedure FilterDepartmentOnChange(Item)
+	SmallBusinessClientServer.SetListFilterItem(List, "StructuralUnit", FilterDepartment, ValueIsFilled(FilterDepartment));
 EndProcedure
 
 &AtClient

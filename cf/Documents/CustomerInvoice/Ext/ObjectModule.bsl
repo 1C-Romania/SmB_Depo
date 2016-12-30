@@ -1252,7 +1252,7 @@ EndProcedure // BeforeWrite()
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If OperationKind = Enums.OperationKindsCustomerInvoice.SaleToCustomer Then
-		CheckedAttributes.Add("Division");
+		CheckedAttributes.Add("Department");
 	EndIf;
 	
 	If OperationKind = Enums.OperationKindsCustomerInvoice.ReturnToPrincipal

@@ -342,12 +342,12 @@ Procedure GenerateTableInventory(DocumentRefAgentReport, StructureAdditionalProp
 	|	TableInventory.Document AS Document,
 	|	TableInventory.Document AS SalesDocument,
 	|	TableInventory.CustomerOrder AS OrderSales,
-	|	TableInventory.DivisionSales AS Division,
+	|	TableInventory.DepartmentSales AS Department,
 	|	TableInventory.Responsible AS Responsible,
 	|	TableInventory.BusinessActivitySales AS BusinessActivity,
 	|	TableInventory.GLAccountCost AS GLAccountCost,
 	|	TableInventory.StructuralUnit AS StructuralUnit,
-	|	TableInventory.DivisionSales AS DivisionSales,
+	|	TableInventory.DepartmentSales AS DepartmentSales,
 	|	TableInventory.GLAccount AS GLAccount,
 	|	TableInventory.ProductsAndServices AS ProductsAndServices,
 	|	TableInventory.Characteristic AS Characteristic,
@@ -374,7 +374,7 @@ Procedure GenerateTableInventory(DocumentRefAgentReport, StructureAdditionalProp
 	|	TableInventory.BusinessActivitySales,
 	|	TableInventory.GLAccountCost,
 	|	TableInventory.StructuralUnit,
-	|	TableInventory.DivisionSales,
+	|	TableInventory.DepartmentSales,
 	|	TableInventory.GLAccount,
 	|	TableInventory.ProductsAndServices,
 	|	TableInventory.Characteristic,
@@ -384,7 +384,7 @@ Procedure GenerateTableInventory(DocumentRefAgentReport, StructureAdditionalProp
 	|	TableInventory.KeepBackComissionFee,
 	|	TableInventory.Responsible,
 	|	TableInventory.Document,
-	|	TableInventory.DivisionSales,
+	|	TableInventory.DepartmentSales,
 	|	TableInventory.CustomerOrder,
 	|	TableInventory.GLAccountCost,
 	|	TableInventory.GLAccount";
@@ -609,7 +609,7 @@ Procedure GenerateTableInventory(DocumentRefAgentReport, StructureAdditionalProp
 				RowIncomeAndExpenses = StructureAdditionalProperties.TableForRegisterRecords.TableIncomeAndExpenses.Add();
 				FillPropertyValues(RowIncomeAndExpenses, RowTableInventory);
 				
-				RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DivisionSales;
+				RowIncomeAndExpenses.StructuralUnit = RowTableInventory.DepartmentSales;
 				RowIncomeAndExpenses.GLAccount = RowTableInventory.GLAccountCost;
 				RowIncomeAndExpenses.AmountIncome = 0;
 				RowIncomeAndExpenses.AmountExpense = AmountToBeWrittenOff;
@@ -644,7 +644,7 @@ Procedure GenerateTableSales(DocumentRefAgentReport, StructureAdditionalProperti
 	|	TableSales.CustomerOrder AS CustomerOrder,
 	|	TableSales.Document AS Document,
 	|	TableSales.VATRate AS VATRate,
-	|	TableSales.DivisionSales AS Division,
+	|	TableSales.DepartmentSales AS Department,
 	|	TableSales.Responsible AS Responsible,
 	|	SUM(TableSales.Quantity) AS Quantity,
 	|	SUM(CASE
@@ -670,7 +670,7 @@ Procedure GenerateTableSales(DocumentRefAgentReport, StructureAdditionalProperti
 	|	TableSales.CustomerOrder,
 	|	TableSales.Document,
 	|	TableSales.VATRate,
-	|	TableSales.DivisionSales,
+	|	TableSales.DepartmentSales,
 	|	TableSales.Responsible";
 	
 	QueryResult = Query.Execute();
@@ -745,7 +745,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefAgentReport, StructureAdditi
 	|	MAX(TableIncomeAndExpenses.LineNumber) AS LineNumber,
 	|	TableIncomeAndExpenses.Period AS Period,
 	|	TableIncomeAndExpenses.Company AS Company,
-	|	TableIncomeAndExpenses.DivisionSales AS StructuralUnit,
+	|	TableIncomeAndExpenses.DepartmentSales AS StructuralUnit,
 	|	TableIncomeAndExpenses.BusinessActivitySales AS BusinessActivity,
 	|	TableIncomeAndExpenses.CustomerOrder AS CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales AS GLAccount,
@@ -773,7 +773,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefAgentReport, StructureAdditi
 	|GROUP BY
 	|	TableIncomeAndExpenses.Period,
 	|	TableIncomeAndExpenses.Company,
-	|	TableIncomeAndExpenses.DivisionSales,
+	|	TableIncomeAndExpenses.DepartmentSales,
 	|	TableIncomeAndExpenses.BusinessActivitySales,
 	|	TableIncomeAndExpenses.CustomerOrder,
 	|	TableIncomeAndExpenses.AccountStatementSales
@@ -1313,7 +1313,7 @@ Procedure InitializeDocumentData(DocumentRefAgentReport, StructureAdditionalProp
 	|	AgentReportInventory.Ref.Counterparty AS StructuralUnit,
 	|	AgentReportInventory.Ref.KeepBackComissionFee AS KeepBackComissionFee,
 	|	VALUE(Enum.ProductsReceiptTransferTypes.TransferToAgent) AS ReceptionTransmissionType,
-	|	AgentReportInventory.Ref.Division AS DivisionSales,
+	|	AgentReportInventory.Ref.Department AS DepartmentSales,
 	|	AgentReportInventory.Ref.Responsible AS Responsible,
 	|	AgentReportInventory.ProductsAndServices.BusinessActivity AS BusinessActivitySales,
 	|	AgentReportInventory.ProductsAndServices.BusinessActivity.GLAccountRevenueFromSales AS AccountStatementSales,

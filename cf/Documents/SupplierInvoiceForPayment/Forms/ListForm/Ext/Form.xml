@@ -568,13 +568,13 @@
 									<ContextMenu name="ListIncomingDocumentDateContextMenu" id="55"/>
 									<ExtendedTooltip name="ListIncomingDocumentDateExtendedTooltip" id="182"/>
 								</LabelField>
-								<LabelField name="ListDivision" id="247">
-									<DataPath>List.Division</DataPath>
+								<LabelField name="ListDepartment" id="247">
+									<DataPath>List.Department</DataPath>
 									<UserVisible>
 										<xr:Common>false</xr:Common>
 									</UserVisible>
-									<ContextMenu name="UnitListContextMenu" id="248"/>
-									<ExtendedTooltip name="ListDivisionExtendedTooltip" id="249"/>
+									<ContextMenu name="ListDepartmentContextMenu" id="248"/>
+									<ExtendedTooltip name="ListDepartmentExtendedTooltip" id="249"/>
 								</LabelField>
 								<LabelField name="ListResponsible" id="44">
 									<DataPath>List.Responsible</DataPath>
@@ -1151,7 +1151,7 @@
 		ELSE 0
 	END AS PaymentPercentage,
 	ISNULL(PaymentEvent.PaymentAmount, 0) + ISNULL(PaymentEvent.AdvanceAmount, 0) AS PaymentAmountTurnover,
-	DocumentInvoiceForPayment.Division
+	DocumentInvoiceForPayment.Department
 	FROM
 	Document.SupplierInvoiceForPayment AS DocumentInvoiceForPayment
 		LEFT JOIN InformationRegister.OrdersPaymentFact AS PaymentEvent

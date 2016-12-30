@@ -10,7 +10,7 @@ Procedure FillTableFixedAssets()
 	Query.Text = 
 	"SELECT
 	|	DepreciationParametersSliceLast.FixedAsset AS FixedAsset,
-	|	DepreciationParametersSliceLast.StructuralUnit AS Division,
+	|	DepreciationParametersSliceLast.StructuralUnit AS Department,
 	|	DepreciationParametersSliceLast.AmountOfProductsServicesForDepreciationCalculation AS AmountOfProductsServicesForDepreciationCalculation,
 	|	DepreciationParametersSliceLast.CostForDepreciationCalculation AS CostForDepreciationCalculation,
 	|	DepreciationParametersSliceLast.UsagePeriodForDepreciationCalculation AS UsagePeriodForDepreciationCalculation,
@@ -105,8 +105,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	User = Users.CurrentUser();
 	
-	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-	MainDivision = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+	MainDepartment = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 	
 	SmallBusinessClientServer.SetPictureForComment(Items.AdvancedPage, Object.Comment);
 	
@@ -187,7 +187,7 @@ Procedure FixedAssetsOnStartEdit(Item, NewRow, Copy)
 	
 	If NewRow Then
 		TabularSectionRow = Items.FixedAssets.CurrentData;
-		TabularSectionRow.StructuralUnit = MainDivision;
+		TabularSectionRow.StructuralUnit = MainDepartment;
 	EndIf;	
 	
 EndProcedure // FixedAssetsOnStartEdit()
@@ -243,7 +243,7 @@ Procedure FixedAssetsFixedAssetOnChange(Item)
 		Items.FixedAssets.CurrentData.GLExpenseAccount = FixedAssetsArray[0].GLExpenseAccount;
 		Items.FixedAssets.CurrentData.RevaluationAccount = PredefinedValue("ChartOfAccounts.Managerial.OtherIncome");
 		Items.FixedAssets.CurrentData.BusinessActivity = FixedAssetsArray[0].BusinessActivity;
-		Items.FixedAssets.CurrentData.StructuralUnit = FixedAssetsArray[0].Division;
+		Items.FixedAssets.CurrentData.StructuralUnit = FixedAssetsArray[0].Department;
 	Else
 		Items.FixedAssets.CurrentData.UsagePeriodForDepreciationCalculation = 0;
 		Items.FixedAssets.CurrentData.AmountOfProductsServicesForDepreciationCalculation = 0;

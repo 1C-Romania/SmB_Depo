@@ -102,8 +102,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	User = Users.CurrentUser();
 	
-	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-	MainDivision = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+	MainDepartment = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 	
 	SmallBusinessClientServer.SetPictureForComment(Items.AdvancedPage, Object.Comment);
 	
@@ -206,7 +206,7 @@ Procedure FixedAssetsOnStartEdit(Item, NewRow, Copy)
 	If NewRow Then
  
 		TabularSectionRow = Items.FixedAssets.CurrentData;
-		TabularSectionRow.StructuralUnit = MainDivision;
+		TabularSectionRow.StructuralUnit = MainDepartment;
 		
 	EndIf;
 	

@@ -134,11 +134,11 @@
 								<Event name="Tuning">RegistrationPeriodTuning</Event>
 							</Events>
 						</InputField>
-						<UsualGroup name="GroupCounterpartyDivision" id="2120">
+						<UsualGroup name="GroupCounterpartyDepartment" id="2120">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Group company division</v8:content>
+									<v8:content>Group company department</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -148,7 +148,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Group company division</v8:content>
+									<v8:content>Group company department</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -158,7 +158,7 @@
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="GroupCounterpartyDivisionExtendedTooltip" id="2121"/>
+							<ExtendedTooltip name="GroupCounterpartyDepartmentExtendedTooltip" id="2121"/>
 							<ChildItems>
 								<InputField name="Company" id="2122">
 									<DataPath>Object.Company</DataPath>
@@ -178,11 +178,11 @@
 									<InputHint>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Division</v8:content>
+											<v8:content>Department</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>разделение</v8:content>
+											<v8:content>Подразделение</v8:content>
 										</v8:item>
 									</InputHint>
 									<ContextMenu name="StructuralUnitContextMenu" id="2126"/>

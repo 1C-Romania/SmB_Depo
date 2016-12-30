@@ -8,7 +8,7 @@
 Function IndividualDocumentByType(Period, Individual, DocumentKind = Undefined) Export
 	
 	IndividualsDocuments = New Array;
-	DocumentData = New Structure("Individual, DocumentKind, Series, Number, IssueDate, ValidityPeriod, WhoIssued, DivisionCode, IsIdentityDocument, Presentation");
+	DocumentData = New Structure("Individual, DocumentKind, Series, Number, IssueDate, ValidityPeriod, WhoIssued, DepartmentCode, IsIdentityDocument, Presentation");
 	
 	If Not ValueIsFilled(Individual) Then
 		
@@ -32,7 +32,7 @@ Function IndividualDocumentByType(Period, Individual, DocumentKind = Undefined) 
 	|	,IndividualsDocumentsSliceLast.IssueDate AS IssueDate
 	|	,IndividualsDocumentsSliceLast.ValidityPeriod AS ValidityPeriod
 	|	,IndividualsDocumentsSliceLast.WhoIssued AS WhoIssued
-	|	,IndividualsDocumentsSliceLast.DivisionCode AS DivisionCode
+	|	,IndividualsDocumentsSliceLast.DepartmentCode AS DepartmentCode
 	|	,IndividualsDocumentsSliceLast.IsIdentityDocument AS IsIdentityDocument
 	|	,IndividualsDocumentsSliceLast.Presentation AS Presentation
 	|FROM

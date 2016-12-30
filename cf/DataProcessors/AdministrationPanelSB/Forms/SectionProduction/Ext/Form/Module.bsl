@@ -301,7 +301,7 @@ Function CancellationUncheckFunctionalOptionUseSubsystemProduction()
 	|FROM
 	|	Document.TransferBetweenCells AS TransferBetweenCells
 	|WHERE
-	|	TransferBetweenCells.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|	TransferBetweenCells.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|;
 	|
 	|////////////////////////////////////////////////////////////////////////////////
@@ -310,8 +310,8 @@ Function CancellationUncheckFunctionalOptionUseSubsystemProduction()
 	|FROM
 	|	Document.InventoryTransfer AS InventoryTransfer
 	|WHERE
-	|	((InventoryTransfer.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
-	|				OR InventoryTransfer.StructuralUnitPayee.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division))
+	|	((InventoryTransfer.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
+	|				OR InventoryTransfer.StructuralUnitPayee.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department))
 	|				AND InventoryTransfer.OperationKind = VALUE(Enum.OperationKindsInventoryTransfer.Move)
 	|			OR InventoryTransfer.GLExpenseAccount.TypeOfAccount = VALUE(Enum.GLAccountsTypes.IndirectExpenses))
 	|;
@@ -332,7 +332,7 @@ Function CancellationUncheckFunctionalOptionUseSubsystemProduction()
 	|FROM
 	|	Document.EnterOpeningBalance.Inventory AS EnterOpeningBalanceInventory
 	|WHERE
-	|	EnterOpeningBalanceInventory.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|	EnterOpeningBalanceInventory.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|
 	|UNION ALL
 	|
@@ -360,7 +360,7 @@ Function CancellationUncheckFunctionalOptionUseSubsystemProduction()
 	|FROM
 	|	Document.InventoryReceipt AS InventoryReceipt
 	|WHERE
-	|	InventoryReceipt.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|	InventoryReceipt.StructuralUnit.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|;
 	|
 	|////////////////////////////////////////////////////////////////////////////////
@@ -478,9 +478,9 @@ Function CancellationUncheckFunctionalOptionUseSubsystemProduction()
 	|FROM
 	|	Catalog.StructuralUnits AS StructuralUnits
 	|WHERE
-	|	(StructuralUnits.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
-	|			OR StructuralUnits.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
-	|			OR StructuralUnits.RecipientOfWastes.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division))";
+	|	(StructuralUnits.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
+	|			OR StructuralUnits.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
+	|			OR StructuralUnits.RecipientOfWastes.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department))";
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -519,24 +519,24 @@ Function CancellationUncheckFunctionalOptionUseSubsystemProduction()
 		
 	EndIf;
 	
-	// 6. Transfer between cells document (transfer - division).
+	// 6. Transfer between cells document (transfer - department).
 	If Not ResultsArray[5].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The infobase contains documents ""Transfer between cells"", where company structural unit has the Division type. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Перемещение по ячейкам"", где структурная единица компании имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The infobase contains documents ""Transfer between cells"", where company structural unit has the Department type. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Перемещение по ячейкам"", где структурная единица компании имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
-	// 7. The Inventory transfer document (division, indirect costs).
+	// 7. The Inventory transfer document (department, indirect costs).
 	If Not ResultsArray[6].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Inventory Transfer"" documents in the infobase, where structural unit of company having Division type and/or the account of expenses having type Indirect costs! Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Перемещение запасов"", где структурная единица компании имеет тип Подразделение и/или счет затрат имеет тип Косвенные затраты! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Inventory Transfer"" documents in the infobase, where structural unit of company having Department type and/or the account of expenses having type Indirect costs! Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Перемещение запасов"", где структурная единица компании имеет тип Подразделение и/или счет затрат имеет тип Косвенные затраты! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
-	// 8. Enter opening balance document (division, indirect costs).
+	// 8. Enter opening balance document (department, indirect costs).
 	If Not ResultsArray[7].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Enter opening balance"" documents in the infobase, where structural unit of the company has the Division type and/or the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Ввод начальных остатков"", где структурная единица компании имеет тип Подразделение и/или счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Enter opening balance"" documents in the infobase, where structural unit of the company has the Department type and/or the account of expenses has type Indirect costs or Unfinished production. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Ввод начальных остатков"", где структурная единица компании имеет тип Подразделение и/или счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
@@ -547,10 +547,10 @@ Function CancellationUncheckFunctionalOptionUseSubsystemProduction()
 		
 	EndIf;
 	
-	// 10. Document Inventory receipt (division).
+	// 10. Document Inventory receipt (department).
 	If Not ResultsArray[9].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Inventory receipt"" documents in the infobase, where structural company unit has the Division type. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Оприходование запасов"", где структурная единица компании имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Inventory receipt"" documents in the infobase, where structural company unit has the Department type. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют документы ""Оприходование запасов"", где структурная единица компании имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
@@ -603,10 +603,10 @@ Function CancellationUncheckFunctionalOptionUseSubsystemProduction()
 		
 	EndIf;
 	
-	// 18. Catalog Structural units (division).
+	// 18. Catalog Structural units (department).
 	If Not ResultsArray[17].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are items of catalog ""Structural unit"" in the infobase, where the autoshift parameter (shift, batching) has the Division type. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют элементы справочника ""Структурная единица"", где параметр автоперемещения (перемещение, комплектация) имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are items of catalog ""Structural unit"" in the infobase, where the autoshift parameter (shift, batching) has the Department type. Removal of the flag ""Production"" is prohibited!';ru='В информационной базе присутствуют элементы справочника ""Структурная единица"", где параметр автоперемещения (перемещение, комплектация) имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	

@@ -163,7 +163,7 @@ Procedure SetVisibleAtServer()
 	
 	Items.EmployeesFomerWorkSchedule.Visible 	= IsIsEmployeeOccupationChangeSalary;
 	Items.EmployeesFomerPosition.Visible 		= IsIsEmployeeOccupationChangeSalary;
-	Items.EmployeesFomerDivision.Visible	= IsIsEmployeeOccupationChangeSalary;
+	Items.EmployeesFomerDepartment.Visible	= IsIsEmployeeOccupationChangeSalary;
 	Items.EmployeesWorkSchedule.Visible 			= IsIsEmployeeOccupationChangeSalary;
 	Items.EmployeesPosition.Visible 				= IsIsEmployeeOccupationChangeSalary;
 	Items.EmployeesStructuralUnit.Visible 	= IsIsEmployeeOccupationChangeSalary;
@@ -250,11 +250,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	User = Users.CurrentUser();
 	
-	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-	MainDivision = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+	MainDepartment = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 	
-	If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
-		Items.EmployeesFomerDivision.Visible = False;
+	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
+		Items.EmployeesFomerDepartment.Visible = False;
 	EndIf;
 	
 	TaxAccounting = GetFunctionalOption("DoIncomeTaxAccounting");
@@ -556,7 +556,7 @@ Procedure EmployeesOnStartEdit(Item, NewRow, Copy)
 		SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "IncomeTaxes");
 		
 		TabularSectionRow = Items.Employees.CurrentData;
-		TabularSectionRow.StructuralUnit = MainDivision;
+		TabularSectionRow.StructuralUnit = MainDepartment;
 		
 	EndIf;
 
@@ -599,7 +599,7 @@ Procedure EmployeesEmployeeOnChange(Item)
 	CurrentData.PreviousWorkSchedule = EmployeeStructure.WorkSchedule;
 	
 	If Not ValueIsFilled(CurrentData.StructuralUnit) Then
-		CurrentData.StructuralUnit = MainDivision;
+		CurrentData.StructuralUnit = MainDepartment;
 	EndIf;	
 	
 EndProcedure

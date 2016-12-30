@@ -93,7 +93,7 @@ Function FillPosition(Structure)
 EndFunction // FillInPosition()
  
 &AtServer
-// The procedure fills in tabular section with division staff according to the production calendar.
+// The procedure fills in tabular section with department staff according to the production calendar.
 //
 Procedure FillTimesheet()
 	
@@ -568,7 +568,7 @@ EndProcedure
 Procedure Fill(Command)
 	
 	If Not ValueIsFilled(Object.StructuralUnit) Then
-		SmallBusinessClient.ShowMessageAboutError(Object, "Division is not specified.");
+		SmallBusinessClient.ShowMessageAboutError(Object, "Department is not specified.");
 		Return;
 	EndIf;
 	

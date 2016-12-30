@@ -1119,7 +1119,7 @@ Procedure DistributeFinancialResultThroughoutBase(DocumentRefBudget, StructureAd
 		
 		BypassByStructuralUnit = BypassByDistributionMethod.Select(QueryResultIteration.ByGroups);
 		
-		// Bypass on divisions.
+		// Bypass on departments.
 		While BypassByStructuralUnit.Next() Do
 			
 			FilterByStructuralUnit = BypassByStructuralUnit.StructuralUnit;

@@ -546,10 +546,10 @@ Procedure ConfigureReportsVariants(Settings) Export
 	Variant.Definition = NStr("en='The report shows employees earnings and deductions in currency with detailed earning/deduction type';ru='В отчете отражаются данные по начислениям и удержаниям сотрудников в валюте с детализацией до вида начисления/удержания'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.UFP, "Statement");
-	Variant.Definition = NStr("en='The report presents the data on changes in direct and indirect costs of the company. Data is presented in terms of divisions with the detalization by the customer orders';ru='Отчет предоставляет информацию об изменениях прямых и косвенных затрат предприятия. Данные представлены в разрезе подразделений с детализацией по заказам покупателей'");
+	Variant.Definition = NStr("en='The report presents the data on changes in direct and indirect costs of the company. Data is presented in terms of departments with the detalization by the customer orders';ru='Отчет предоставляет информацию об изменениях прямых и косвенных затрат предприятия. Данные представлены в разрезе подразделений с детализацией по заказам покупателей'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.UFP, "Balance");
-	Variant.Definition = NStr("en='The report presents data on the state of direct and indirect costs of the company. Data is presented in terms of divisions with the detalization by the customer orders';ru='Отчет предоставляет информацию о состоянии прямых и косвенных затрат предприятия. Данные представлены в разрезе подразделений с детализацией по заказам покупателей'");
+	Variant.Definition = NStr("en='The report presents data on the state of direct and indirect costs of the company. Data is presented in terms of departments with the detalization by the customer orders';ru='Отчет предоставляет информацию о состоянии прямых и косвенных затрат предприятия. Данные представлены в разрезе подразделений с детализацией по заказам покупателей'");
 	Variant.VisibleByDefault = False;
 	
 	Report = ReportsVariants.ReportDescription(Settings, Metadata.Reports.StandardBOM); //Variant does not exist, the description shall be set for report.
@@ -591,7 +591,7 @@ Procedure ConfigureReportsVariants(Settings) Export
 	Variant.Definition = NStr("en='The report presents plan/actual analysis of performed work, performed services, output of products';ru='Отчет предназначен для план-фактного анализа выполнения работ, оказания услуг, производства продукции'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SalesTargets, "Default");
-	Variant.Definition = NStr("en='The report shows information about planned items of goods sale, grouped by divisions';ru='В отчете отображаются данные о планируемых продажах номенклатуры, сгруппированные по подразделениям'");
+	Variant.Definition = NStr("en='The report shows information about planned items of goods sale, grouped by departments';ru='В отчете отображаются данные о планируемых продажах номенклатуры, сгруппированные по подразделениям'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PaymentCalendar, "Default");
 	Variant.Definition = NStr("en='Payment calendar';ru='Платежный календарь'");
@@ -659,11 +659,11 @@ Procedure ConfigureReportsVariants(Settings) Export
 		|Employee
 		|Position
 		|Rate
-		|Division Company';ru='Табельный номер Сотрудник Должность Тарифная ставка Подразделение Организация'");
+		|Department Company';ru='Табельный номер Сотрудник Должность Тарифная ставка Подразделение Организация'");
 	Report.SearchSettings.ParametersAndFiltersNames =
 		NStr("en='Registration
 		|period
-		|Division
+		|Department
 		|Currency Company';ru='Период
 		|регистрации
 		|Подразделение
@@ -671,18 +671,18 @@ Procedure ConfigureReportsVariants(Settings) Export
 	
 	Report = ReportsVariants.ReportDescription(Settings, Metadata.Reports.PayrollSheets);
 	ReportsVariants.SetOutputModeInReportPanels(Settings, Report, True);	
-	Report.Definition = NStr("en='The report generates statemets of earnings, selected and grouped by companies and divisions';ru='Отчет предоставляет возможность сформировать расчетные листки, отобранные и сгруппированные по организациям и подразделениям'");
+	Report.Definition = NStr("en='The report generates statemets of earnings, selected and grouped by companies and departments';ru='Отчет предоставляет возможность сформировать расчетные листки, отобранные и сгруппированные по организациям и подразделениям'");
 	Report.SearchSettings.FieldNames =
 		NStr("en='Employee
 		|code
 		|Employee
 		|Position
 		|Rate
-		|Division Company';ru='Табельный номер Сотрудник Должность Тарифная ставка Подразделение Организация'");
+		|Department Company';ru='Табельный номер Сотрудник Должность Тарифная ставка Подразделение Организация'");
 	Report.SearchSettings.ParametersAndFiltersNames =
 		NStr("en='Registration
 		|period
-		|Division
+		|Department
 		|Currency Employee';ru='Период
 		|регистрации
 		|Подразделение

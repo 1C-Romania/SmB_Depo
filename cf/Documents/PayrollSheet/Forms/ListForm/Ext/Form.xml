@@ -105,8 +105,8 @@
 						<Event name="OnChange">FilterCompanyOnChange</Event>
 					</Events>
 				</InputField>
-				<InputField name="FilterDivision" id="25">
-					<DataPath>FilterDivision</DataPath>
+				<InputField name="FilterDepartment" id="25">
+					<DataPath>FilterDepartment</DataPath>
 					<TitleLocation>None</TitleLocation>
 					<OpenButton>false</OpenButton>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
@@ -114,24 +114,24 @@
 						<app:item name="Filter.StructuralUnitType">
 							<app:value xsi:type="FormChoiceListDesTimeValue">
 								<Presentation/>
-								<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</Value>
+								<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</Value>
 							</app:value>
 						</app:item>
 					</ChoiceParameters>
 					<InputHint>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Division</v8:content>
+							<v8:content>Department</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>разделение</v8:content>
+							<v8:content>Подразделение</v8:content>
 						</v8:item>
 					</InputHint>
-					<ContextMenu name="FilterSubdivisionContextMenu" id="26"/>
-					<ExtendedTooltip name="FilterSubdivisionExtendedTooltip" id="35"/>
+					<ContextMenu name="FilterDepartmentContextMenu" id="26"/>
+					<ExtendedTooltip name="FilterDepartmentExtendedTooltip" id="35"/>
 					<Events>
-						<Event name="OnChange">FilterDivisionOnChange</Event>
+						<Event name="OnChange">FilterDepartmentOnChange</Event>
 					</Events>
 				</InputField>
 			</ChildItems>
@@ -383,11 +383,11 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Division</v8:content>
+							<v8:content>Department</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>разделение</v8:content>
+							<v8:content>Подразделение</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="StructuralUnitContextMenu" id="15"/>
@@ -516,15 +516,21 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
-		<Attribute name="FilterDivision" id="2">
+		<Attribute name="FilterDepartment" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Department</v8:content>
+				</v8:item>
+			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
 			</Type>
 			<Save>
-				<Field>FilterDivision</Field>
+				<Field>FilterDepartment</Field>
 			</Save>
 			<FunctionalOptions>
-				<Item>FunctionalOption.AccountingBySeveralDivisions</Item>
+				<Item>FunctionalOption.AccountingBySeveralDepartments</Item>
 			</FunctionalOptions>
 		</Attribute>
 		<Attribute name="FilterRegistrationPeriod" id="3">

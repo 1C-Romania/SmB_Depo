@@ -84,8 +84,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	User = Users.CurrentUser();
 	
-	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
-	MainDivision = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDivision);
+	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+	MainDepartment = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
 	
 	TaxAccounting = GetFunctionalOption("DoIncomeTaxAccounting");
 	CommonUseClientServer.SetFormItemProperty(Items, "CurrentEmployeeTaxes", "Visible", TaxAccounting);
@@ -225,7 +225,7 @@ Procedure EmployeesOnStartEdit(Item, NewRow, Copy)
 		TabularSectionRow = Items.Employees.CurrentData;
 		If Not ValueIsFilled(TabularSectionRow.StructuralUnit) Then
 			
-			TabularSectionRow.StructuralUnit = MainDivision;
+			TabularSectionRow.StructuralUnit = MainDepartment;
 			
 		EndIf;
 		

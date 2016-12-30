@@ -1206,7 +1206,7 @@ EndIf;</SearchFieldSequence>
 	Object.GLAccount = ChartsOfAccounts.Managerial.PettyCash;
 	Object.UseWithoutEquipmentConnection = True;
 	Object.CashCurrency = Constants.NationalCurrency.Get();
-	Object.Division = Catalogs.StructuralUnits.MainDivision;
+	Object.Department = Catalogs.StructuralUnits.MainDepartment;
 Else
 	If Not ValueIsFilled(Object.GLAccount) Then
 		Object.GLAccount = ChartsOfAccounts.Managerial.PettyCash;
@@ -1214,8 +1214,8 @@ Else
 	If Not ValueIsFilled(Object.CashCurrency) Then
 		Object.CashCurrency = Constants.NationalCurrency.Get();
 	EndIf;
-	If Not ValueIsFilled(Object.Division) Then
-		Object.Division = Catalogs.StructuralUnits.MainDivision;
+	If Not ValueIsFilled(Object.Department) Then
+		Object.Department = Catalogs.StructuralUnits.MainDepartment;
 	EndIf;
 EndIf;</AfterImport>
 				<SynchronizeByID>true</SynchronizeByID>
@@ -2078,7 +2078,7 @@ EndIf;
 
 If Not ObjectFound Then 
 	Object.Item = Catalogs.CashFlowItems.PaymentFromCustomers;
-	Object.Division = Catalogs.StructuralUnits.MainDivision;
+	Object.Department = Catalogs.StructuralUnits.MainDepartment;
 EndIf;
 
 If ValueIsFilled(Object.StructuralUnit) Then

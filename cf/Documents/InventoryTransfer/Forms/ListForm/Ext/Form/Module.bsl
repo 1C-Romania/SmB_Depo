@@ -8,15 +8,15 @@
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	// Setting the method of structural unit selection depending on FO.
-	If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
+	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
 		AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses.Get() Then
 		
 		Items.FilterRecipient.ListChoiceMode = True;
 		Items.FilterRecipient.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
-		Items.FilterRecipient.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.FilterRecipient.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		
 		Items.FilterWarehouse.ListChoiceMode = True;
-		Items.FilterWarehouse.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+		Items.FilterWarehouse.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 		Items.FilterWarehouse.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 		
 	EndIf;

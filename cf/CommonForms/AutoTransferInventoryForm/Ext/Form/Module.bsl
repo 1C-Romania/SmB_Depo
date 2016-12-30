@@ -100,7 +100,7 @@ Procedure SetVisibleAndEnabled()
 		WriteOffToExpensesSource = Undefined;
 		WriteOffToExpensesSourceCell = Undefined;
 		
-		If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
+		If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
 		
 			Items.WriteOffToExpensesRecipient.Visible = False;
 			Items.WriteOffToExpensesRecipientCell.Visible = False;
@@ -114,7 +114,7 @@ Procedure SetVisibleAndEnabled()
 		PassToOperationSource = Undefined;
 		PassToOperationSourceCell = Undefined;
 		
-		If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
+		If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
 		
 			Items.PassToOperationRecipient.Visible = False;
 			Items.PassToOperationRecipientCell.Visible = False;
@@ -128,7 +128,7 @@ Procedure SetVisibleAndEnabled()
 		ReturnFromOperationRecipient = Undefined;
 		ReturnFromOperationRecipientCell = Undefined;
 		
-		If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get() Then
+		If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get() Then
 		
 			Items.ReturnFromOperationSource.Visible = False;
 			Items.ReturnFromOperationSourceCell.Visible = False;
@@ -137,7 +137,7 @@ Procedure SetVisibleAndEnabled()
 			
 		EndIf;		
 		
-	ElsIf Parameters.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then	
+	ElsIf Parameters.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then	
 		
 		Items.WriteOffToExpensesRecipient.Visible = False;
 		Items.WriteOffToExpensesRecipientCell.Visible = False;
@@ -300,19 +300,19 @@ Procedure SetVisibleByFOUseProductionSubsystem()
 	If Constants.FunctionalOptionUseSubsystemProduction.Get() Then
 		
 		// Warehouse. Setting the method of structural unit selection depending on FO.
-		If Not Constants.FunctionalOptionAccountingByMultipleDivisions.Get()
+		If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
 			AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses.Get() Then
 			
 			Items.TransferSource.ListChoiceMode = True;
-			Items.TransferSource.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+			Items.TransferSource.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 			Items.TransferSource.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 			
 			Items.TransferRecipient.ListChoiceMode = True;
-			Items.TransferRecipient.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+			Items.TransferRecipient.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 			Items.TransferRecipient.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 			
 			Items.RecipientOfWastes.ListChoiceMode = True;
-			Items.RecipientOfWastes.ChoiceList.Add(Catalogs.StructuralUnits.MainDivision);
+			Items.RecipientOfWastes.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
 			Items.RecipientOfWastes.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
 		
 		EndIf;
@@ -343,7 +343,7 @@ Procedure SetVisibleByFOUseProductionSubsystem()
 			
 		EndIf;
 		
-		If Parameters.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
+		If Parameters.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
 			
 			Items.TransferAssemblingDisassembling.Visible = False;
 			

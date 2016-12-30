@@ -560,13 +560,13 @@
 									<ContextMenu name="ListBasisDocumentContextMenu" id="13"/>
 									<ExtendedTooltip name="ListBasisDocumentExtendedTooltip" id="151"/>
 								</LabelField>
-								<LabelField name="ListDivision" id="34">
-									<DataPath>List.Division</DataPath>
+								<LabelField name="ListDepartment" id="34">
+									<DataPath>List.Department</DataPath>
 									<UserVisible>
 										<xr:Common>false</xr:Common>
 									</UserVisible>
-									<ContextMenu name="UnitListContextMenu" id="35"/>
-									<ExtendedTooltip name="ListDivisionExtendedTooltip" id="165"/>
+									<ContextMenu name="ListDepartmentContextMenu" id="35"/>
+									<ExtendedTooltip name="ListDepartmentExtendedTooltip" id="165"/>
 								</LabelField>
 								<LabelField name="ListResponsible" id="44">
 									<DataPath>List.Responsible</DataPath>
@@ -1143,7 +1143,7 @@
 	DocumentInvoiceForPayment.AmountIncludesVAT,
 	DocumentInvoiceForPayment.PriceKind,
 	DocumentInvoiceForPayment.DiscountMarkupKind,
-	DocumentInvoiceForPayment.Division,
+	DocumentInvoiceForPayment.Department,
 	DocumentInvoiceForPayment.DocumentAmount,
 	DocumentInvoiceForPayment.PettyCash,
 	DocumentInvoiceForPayment.Responsible,

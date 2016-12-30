@@ -644,8 +644,8 @@ Procedure InsertPassportDataIssuingAuthority(Command)
 EndProcedure
 
 &AtClient
-Procedure InsertPassportDataDivisionCode(Command)
-	InsertInfobaseParameter(PredefinedValue("Enum.ContractsWithCounterpartiesTemplatesParameters.PassportData_DivisionCode"));
+Procedure InsertPassportDataDepartmentCode(Command)
+	InsertInfobaseParameter(PredefinedValue("Enum.ContractsWithCounterpartiesTemplatesParameters.PassportData_DepartmentCode"));
 EndProcedure
 
 &AtClient

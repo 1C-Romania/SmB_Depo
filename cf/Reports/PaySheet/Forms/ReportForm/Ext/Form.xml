@@ -58,20 +58,20 @@
 							<ContextMenu name="CounterpartyContextMenu" id="22"/>
 							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="34"/>
 						</InputField>
-						<InputField name="Division" id="17">
-							<DataPath>Division</DataPath>
+						<InputField name="Department" id="17">
+							<DataPath>Department</DataPath>
 							<Wrap>false</Wrap>
 							<ClearButton>true</ClearButton>
 							<ChoiceParameters>
 								<app:item name="Filter.StructuralUnitType">
 									<app:value xsi:type="FormChoiceListDesTimeValue">
 										<Presentation/>
-										<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Division</Value>
+										<Value xsi:type="xr:DesignTimeRef">Enum.StructuralUnitsTypes.EnumValue.Department</Value>
 									</app:value>
 								</app:item>
 							</ChoiceParameters>
-							<ContextMenu name="DivisionContextMenu" id="18"/>
-							<ExtendedTooltip name="DivisionExtendedTooltip" id="32"/>
+							<ContextMenu name="DepartmentContextMenu" id="18"/>
+							<ExtendedTooltip name="DepartmentExtendedTooltip" id="32"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -141,22 +141,22 @@
 				<Item>FunctionalOption.MultipleCompaniesAccounting</Item>
 			</FunctionalOptions>
 		</Attribute>
-		<Attribute name="Division" id="3">
+		<Attribute name="Department" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Division</v8:content>
+					<v8:content>Department</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>разделение</v8:content>
+					<v8:content>Подразделение</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.StructuralUnits</v8:Type>
 			</Type>
 			<FunctionalOptions>
-				<Item>FunctionalOption.AccountingBySeveralDivisions</Item>
+				<Item>FunctionalOption.AccountingBySeveralDepartments</Item>
 			</FunctionalOptions>
 		</Attribute>
 		<Attribute name="RegistrationPeriod" id="4">

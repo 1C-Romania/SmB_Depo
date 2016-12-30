@@ -3479,9 +3479,9 @@ Function FillOrderWithXDTODocumentData(DocumentObject, DocumentXDTO, OrderProper
 		EndIf;
 	EndIf;
 	
-	Division = GetDivisionOfOrderProperties(OrderProperties);
-	If ValueIsFilled(Division) Then
-		DocumentObject.SalesStructuralUnit = Division;
+	Department = GetDepartmentOfOrderProperties(OrderProperties);
+	If ValueIsFilled(Department) Then
+		DocumentObject.SalesStructuralUnit = Department;
 	EndIf;
 	
 	If ValueIsFilled(DocumentObject.Company) Then
@@ -3730,35 +3730,35 @@ Function GetCompanyFromOrderAttributes(OrderProperties)
 	
 EndFunction
 
-Function GetDivisionOfOrderProperties(OrderProperties)
+Function GetDepartmentOfOrderProperties(OrderProperties)
 	
-	DivisionProperty = OrderProperties.Get("Division");
-	Division = Catalogs.StructuralUnits.EmptyRef();
+	DepartmentProperty = OrderProperties.Get("Department");
+	Department = Catalogs.StructuralUnits.EmptyRef();
 	
-	If DivisionProperty <> Undefined
-		AND TypeOf(DivisionProperty) = Type("String")
-		AND DivisionProperty <> "" Then
+	If DepartmentProperty <> Undefined
+		AND TypeOf(DepartmentProperty) = Type("String")
+		AND DepartmentProperty <> "" Then
 		
 		Query = New Query;
 		Query.Text = 
 		"SELECT ALLOWED TOP 1
-		|	StructuralUnits.Ref AS Division
+		|	StructuralUnits.Ref AS Department
 		|FROM
 		|	Catalog.StructuralUnits AS StructuralUnits
 		|WHERE
 		|	StructuralUnits.Description = &Description
 		|	AND Not StructuralUnits.DeletionMark
-		|	AND StructuralUnits.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)";
+		|	AND StructuralUnits.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)";
 		
-		Query.SetParameter("Description", DivisionProperty);
+		Query.SetParameter("Description", DepartmentProperty);
 		Selection = Query.Execute().Select();
 		If Selection.Next() Then
-			Division = Selection.Division;
+			Department = Selection.Department;
 		EndIf;
 		
 	EndIf;
 	
-	Return Division;
+	Return Department;
 	
 EndFunction
 

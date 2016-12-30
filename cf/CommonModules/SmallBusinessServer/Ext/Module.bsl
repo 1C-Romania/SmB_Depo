@@ -294,27 +294,27 @@ Procedure FillDocumentHeader(Object,
 			
 			If IsDocumentAttribute("SalesStructuralUnit", DocumentMetadata) 
 				AND Not (ValueIsFilled(BasisParameter) AND ValueIsFilled(Object.SalesStructuralUnit)) Then
-				SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
+				SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
 				
 				If ValueIsFilled(SettingValue) Then
 					If Object.SalesStructuralUnit <> SettingValue Then
 						Object.SalesStructuralUnit = SettingValue;
 					EndIf;
 				Else
-					Object.SalesStructuralUnit = Catalogs.StructuralUnits.MainDivision;	
+					Object.SalesStructuralUnit = Catalogs.StructuralUnits.MainDepartment;	
 				EndIf;
 			EndIf;
 			
-			If IsDocumentAttribute("Division", DocumentMetadata) 
-				AND Not (FillingValues <> Undefined AND FillingValues.Property("Division") AND ValueIsFilled(FillingValues.Division))
-				AND Not (ValueIsFilled(BasisParameter) AND ValueIsFilled(Object.Division)) Then
-				SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
+			If IsDocumentAttribute("Department", DocumentMetadata) 
+				AND Not (FillingValues <> Undefined AND FillingValues.Property("Department") AND ValueIsFilled(FillingValues.Department))
+				AND Not (ValueIsFilled(BasisParameter) AND ValueIsFilled(Object.Department)) Then
+				SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
 				If ValueIsFilled(SettingValue) Then
-					If Object.Division <> SettingValue Then
-						Object.Division = SettingValue;
+					If Object.Department <> SettingValue Then
+						Object.Department = SettingValue;
 					EndIf;
 				Else
-					Object.Division = Catalogs.StructuralUnits.MainDivision;
+					Object.Department = Catalogs.StructuralUnits.MainDepartment;
 				EndIf;
 			EndIf;
 			
@@ -340,14 +340,14 @@ Procedure FillDocumentHeader(Object,
 				If IsDocumentAttribute("StructuralUnit", DocumentMetadata) 
 					AND Not (FillingValues <> Undefined AND FillingValues.Property("StructuralUnit") AND ValueIsFilled(FillingValues.StructuralUnit))
 					AND Not (ValueIsFilled(BasisParameter) AND ValueIsFilled(Object.StructuralUnit)) Then
-					SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
+					SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
 					If ValueIsFilled(SettingValue) 
 						AND StructuralUnitTypeToChoiceParameters("StructuralUnit", DocumentMetadata, SettingValue) Then
 						If Object.StructuralUnit <> SettingValue Then
 							Object.StructuralUnit = SettingValue;
 						EndIf;
 					Else
-						Object.StructuralUnit = Catalogs.StructuralUnits.MainDivision;	
+						Object.StructuralUnit = Catalogs.StructuralUnits.MainDepartment;	
 					EndIf;
 						
 				EndIf;
@@ -397,7 +397,7 @@ Procedure FillDocumentHeader(Object,
 			If DocumentMetadata.Name = "InventoryAssembly" Then
 				
 				// Structural unit.
-				SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
+				SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
 				If Not (FillingValues <> Undefined AND FillingValues.Property("StructuralUnit") AND ValueIsFilled(FillingValues.StructuralUnit))
 					AND Not (ValueIsFilled(BasisParameter)
 					AND ValueIsFilled(Object.StructuralUnit)) Then
@@ -407,7 +407,7 @@ Procedure FillDocumentHeader(Object,
 							Object.StructuralUnit = SettingValue;
 						EndIf;
 					Else
-						Object.StructuralUnit = Catalogs.StructuralUnits.MainDivision;	
+						Object.StructuralUnit = Catalogs.StructuralUnits.MainDepartment;	
 					EndIf;
 				EndIf;
 				
@@ -415,7 +415,7 @@ Procedure FillDocumentHeader(Object,
 				If Not (ValueIsFilled(BasisParameter) AND ValueIsFilled(Object.ProductsStructuralUnit)) Then
 					If ValueIsFilled(Object.StructuralUnit.TransferRecipient)
 						AND (Object.StructuralUnit.TransferRecipient.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse
-							OR Object.StructuralUnit.TransferRecipient.StructuralUnitType = Enums.StructuralUnitsTypes.Division) Then
+							OR Object.StructuralUnit.TransferRecipient.StructuralUnitType = Enums.StructuralUnitsTypes.Department) Then
 						Object.ProductsStructuralUnit = Object.StructuralUnit.TransferRecipient;
 						Object.ProductsCell = Object.StructuralUnit.TransferRecipientCell;
 					Else
@@ -427,7 +427,7 @@ Procedure FillDocumentHeader(Object,
 				If Not (ValueIsFilled(BasisParameter) AND ValueIsFilled(Object.InventoryStructuralUnit)) Then
 					If ValueIsFilled(Object.StructuralUnit.TransferSource)
 						AND (Object.StructuralUnit.TransferSource.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse
-							OR Object.StructuralUnit.TransferSource.StructuralUnitType = Enums.StructuralUnitsTypes.Division) Then
+							OR Object.StructuralUnit.TransferSource.StructuralUnitType = Enums.StructuralUnitsTypes.Department) Then
 						Object.InventoryStructuralUnit = Object.StructuralUnit.TransferSource;
 						Object.CellInventory = Object.StructuralUnit.TransferSourceCell;
 					Else
@@ -479,7 +479,7 @@ Procedure FillDocumentHeader(Object,
 			If DocumentMetadata.Name = "ProductionOrder" Then
 				
 				// Structural unit.
-				SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDivision");
+				SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
 				If Not (ValueIsFilled(BasisParameter) 
 					AND ValueIsFilled(Object.StructuralUnit))
 					AND Not (FillingValues <> Undefined AND FillingValues.Property("StructuralUnit") AND ValueIsFilled(FillingValues.StructuralUnit)) Then
@@ -489,7 +489,7 @@ Procedure FillDocumentHeader(Object,
 							Object.StructuralUnit = SettingValue;
 						EndIf;
 					Else
-						Object.StructuralUnit = Catalogs.StructuralUnits.MainDivision;	
+						Object.StructuralUnit = Catalogs.StructuralUnits.MainDepartment;	
 					EndIf;
 				EndIf;
 				
@@ -4037,7 +4037,7 @@ Function GetPassportDataAsString(DataStructure) Export
 	                      |	IndividualsDocumentsSliceLast.Series,
 	                      |	IndividualsDocumentsSliceLast.Number,
 	                      |	IndividualsDocumentsSliceLast.WhoIssued,
-	                      |	IndividualsDocumentsSliceLast.DivisionCode,
+	                      |	IndividualsDocumentsSliceLast.DepartmentCode,
 	                      |	IndividualsDocumentsSliceLast.IssueDate AS IssueDate
 	                      |FROM
 	                      |	InformationRegister.IndividualsDocuments.SliceLast(
@@ -4059,13 +4059,13 @@ Function GetPassportDataAsString(DataStructure) Export
 		Number              = PassportData.Number;
 		IssueDate         = PassportData.IssueDate;
 		WhoIssued           = PassportData.WhoIssued;
-		NumberUnits = PassportData.DivisionCode;
+		NumberUnits = PassportData.DepartmentCode;
 		
 		If Not (NOT ValueIsFilled(IssueDate)
 			AND Not ValueIsFilled(DocumentKind)
 			AND Not ValueIsFilled(Series + Number + WhoIssued + NumberUnits)) Then
 
-			PersonalDataList = NStr("en='%DocumentKind% Series: %Series%, No. %Number%, Issued: %DateIssued%, %IssuedBy%; division No. %DivisionNumber%';ru='%ВидДокумента% Серия: %Серия%, № %Номер%, Выдан: %ДатаВыдачи% года, %КемВыдан%; № подр. %НомерПодразделения%'");
+			PersonalDataList = NStr("en='%DocumentKind% Series: %Series%, No. %Number%, Issued: %DateIssued%, %IssuedBy%; department No. %DepartmentNumber%';ru='%ВидДокумента% Серия: %Серия%, № %Номер%, Выдан: %ДатаВыдачи% года, %КемВыдан%; № подр. %НомерПодразделения%'");
 			
 			PersonalDataList = StrReplace(PersonalDataList, "%DocumentKind%", ?(DocumentKind.IsEmpty(),"","" + DocumentKind + ", "));
 			PersonalDataList = StrReplace(PersonalDataList, "%Series%", Series);
@@ -4087,8 +4087,8 @@ EndFunction // GetPassportDataAsString()
 //
 Function GetStructuralUnitTypePresentation(StructuralUnitType)
 	
-	If StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
-		StructuralUnitTypePresentation = "to division";
+	If StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
+		StructuralUnitTypePresentation = "to department";
 	ElsIf StructuralUnitType = Enums.StructuralUnitsTypes.Retail
 		OR StructuralUnitType = Enums.StructuralUnitsTypes.RetailAccrualAccounting Then
 		StructuralUnitTypePresentation = "in retail warehouse";
@@ -4114,12 +4114,12 @@ Procedure ShowMessageAboutPostingToInventoryInWarehousesRegisterErrors(DocObject
 		
 	TitleInDetailsShow = True;
 	AccountingBySeveralWarehouses = Constants.FunctionalOptionAccountingByMultipleWarehouses.Get();
-	AccountingBySeveralDivisions = Constants.FunctionalOptionAccountingByMultipleDivisions.Get();
+	AccountingBySeveralDepartments = Constants.FunctionalOptionAccountingByMultipleDepartments.Get();
 	While RecordsSelection.Next() Do
 		
 		If TitleInDetailsShow Then
 			If (NOT AccountingBySeveralWarehouses AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse)
-				OR (NOT AccountingBySeveralDivisions AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Division)Then
+				OR (NOT AccountingBySeveralDepartments AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Department)Then
 				PresentationOfStructuralUnit = "";
 			Else
 				PresentationOfStructuralUnit = PresentationOfStructuralUnit(RecordsSelection.StructuralUnitPresentation, RecordsSelection.PresentationCell);
@@ -4155,11 +4155,11 @@ Procedure ShowMessageAboutPostingToInventoryInWarehousesRegisterErrorsAsList(Doc
 	MessagePattern = NStr("en='ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%, %StructuralUnitType% %StructuralUnitPresentation% Balance %BalanceQuantity% %MeasurementUnit%, Not Enough %Quantity% %MeasurementUnit%';ru='Номенклатура: %НоменклатураХарактеристикаПартия%, %ТипСтруктурнойЕдиницы% %СтруктурнаяЕдиницаПредставление% остаток %КоличествоОстаток% %ЕдиницаИзмерения%, недостаточно %Количество% %ЕдиницаИзмерения%'");
 		
 	AccountingBySeveralWarehouses = Constants.FunctionalOptionAccountingByMultipleWarehouses.Get();
-	AccountingBySeveralDivisions = Constants.FunctionalOptionAccountingByMultipleDivisions.Get();
+	AccountingBySeveralDepartments = Constants.FunctionalOptionAccountingByMultipleDepartments.Get();
 	While RecordsSelection.Next() Do
 		
 		If (NOT AccountingBySeveralWarehouses AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse)
-			OR (NOT AccountingBySeveralDivisions AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Division)Then
+			OR (NOT AccountingBySeveralDepartments AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Department)Then
 			PresentationOfStructuralUnit = "";
 		Else
 			PresentationOfStructuralUnit = PresentationOfStructuralUnit(RecordsSelection.StructuralUnitPresentation, RecordsSelection.PresentationCell);
@@ -4191,12 +4191,12 @@ Procedure ShowMessageAboutPostingToInventoryRegisterErrors(DocObject, RecordsSel
 	
 	TitleInDetailsShow = True;
 	AccountingBySeveralWarehouses = Constants.FunctionalOptionAccountingByMultipleWarehouses.Get();
-	AccountingBySeveralDivisions = Constants.FunctionalOptionAccountingByMultipleDivisions.Get();
+	AccountingBySeveralDepartments = Constants.FunctionalOptionAccountingByMultipleDepartments.Get();
 	While RecordsSelection.Next() Do
 		
 		If TitleInDetailsShow Then
 			If (NOT AccountingBySeveralWarehouses AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse)
-				OR (NOT AccountingBySeveralDivisions AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Division)Then
+				OR (NOT AccountingBySeveralDepartments AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Department)Then
 				PresentationOfStructuralUnit = "";
 			Else
 				PresentationOfStructuralUnit = TrimAll(RecordsSelection.StructuralUnitPresentation);
@@ -4238,11 +4238,11 @@ Procedure ShowMessageAboutPostingToInventoryRegisterErrorsAsList(DocObject, Reco
 	MessagePattern = NStr("en='ProductsAndServices: %ProductsAndServicesCharacteristicsBatch%, %StructuralUnitType%  %StructuralUnitPresentation%, balance %BalanceQuantity% %MeasurementUnit%, not enough %QuantityAndReserve% %MeasurementUnit%';ru='Номенклатура: %НоменклатураХарактеристикаПартия%, %ТипСтруктурнойЕдиницы% %СтруктурнаяЕдиницаПредставление%, остаток %КоличествоОстаток% %ЕдиницаИзмерения%, недостаточно %КоличествоИРезерв% %ЕдиницаИзмерения%'");
 		
 	AccountingBySeveralWarehouses = Constants.FunctionalOptionAccountingByMultipleWarehouses.Get();
-	AccountingBySeveralDivisions = Constants.FunctionalOptionAccountingByMultipleDivisions.Get();
+	AccountingBySeveralDepartments = Constants.FunctionalOptionAccountingByMultipleDepartments.Get();
 	While RecordsSelection.Next() Do
 		
 		If (NOT AccountingBySeveralWarehouses AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse)
-			OR (NOT AccountingBySeveralDivisions AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Division)Then
+			OR (NOT AccountingBySeveralDepartments AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Department)Then
 			PresentationOfStructuralUnit = "";
 		Else
 			PresentationOfStructuralUnit = TrimAll(RecordsSelection.StructuralUnitPresentation);
@@ -5121,7 +5121,7 @@ Procedure GetAccrualKindGLExpenseAccount(DataStructure) Export
 		If ValueIsFilled(DataStructure.StructuralUnit) Then
 			
 			TypeOfAccount = GLExpenseAccount.TypeOfAccount;
-			If DataStructure.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Division
+			If DataStructure.StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Department
 				AND Not (TypeOfAccount = Enums.GLAccountsTypes.IndirectExpenses
 					OR TypeOfAccount = Enums.GLAccountsTypes.Expenses
 					OR TypeOfAccount = Enums.GLAccountsTypes.OtherCurrentAssets
@@ -5658,7 +5658,7 @@ EndFunction // GetProductsAndServicesPresentationForPrinting()
 // Parameters:
 //  Company  - CatalogRef.Companies - company
 //                 by which a position and
-//  division of the employee is determined Individual      - CatalogRef.Individuals - individual
+//  department of the employee is determined Individual      - CatalogRef.Individuals - individual
 //                 on which CutoffDate data set
 //  is returned    - Date - date on which
 //  the DescriptionFullNameShort data is read    - Boolean - If True (by default), then
@@ -5671,13 +5671,13 @@ EndFunction // GetProductsAndServicesPresentationForPrinting()
 //                 "Name"
 //                 "Patronymic"
 //                 "Presentation (Full name)"
-//                 "Division"
+//                 "Department"
 //                 "DocumentKind"
 //                 "DocumentSeries"
 //                 "DocumentNumber"
 //                 "DocumentDateIssued"
 //                 "DocumentIssuedBy"
-//                 "DocumentDivisionCode".
+//                 "DocumentDepartmentCode".
 //
 Function IndData(Company, Ind, CutoffDate, NameAndSurnameShort = True) Export
 	
@@ -5690,7 +5690,7 @@ Function IndData(Company, Ind, CutoffDate, NameAndSurnameShort = True) Export
 	|	IndividualsDescriptionFullSliceLast.Surname,
 	|	IndividualsDescriptionFullSliceLast.Name,
 	|	IndividualsDescriptionFullSliceLast.Patronymic,
-	|	Employees.Division,
+	|	Employees.Department,
 	|	Employees.EmployeeCode,
 	|	Employees.Position,
 	|	IndividualsDocumentsSliceLast.DocumentKind AS DocumentKind1,
@@ -5698,7 +5698,7 @@ Function IndData(Company, Ind, CutoffDate, NameAndSurnameShort = True) Export
 	|	IndividualsDocumentsSliceLast.Number AS DocumentNumber,
 	|	IndividualsDocumentsSliceLast.IssueDate AS DocumentIssueDate,
 	|	IndividualsDocumentsSliceLast.WhoIssued AS DocumentWhoIssued,
-	|	IndividualsDocumentsSliceLast.DivisionCode AS DocumentCodeDivisions
+	|	IndividualsDocumentsSliceLast.DepartmentCode AS DocumentCodeDepartments
 	|FROM
 	|	(SELECT
 	|		Individuals.Ref AS Ind
@@ -5717,7 +5717,7 @@ Function IndData(Company, Ind, CutoffDate, NameAndSurnameShort = True) Export
 	|			Employees.Employee.Code AS EmployeeCode,
 	|			Employees.Employee.Ind AS Ind,
 	|			Employees.Position AS Position,
-	|			Employees.StructuralUnit AS Division
+	|			Employees.StructuralUnit AS Department
 	|		FROM
 	|			InformationRegister.Employees.SliceLast(
 	|					&CutoffDate,
@@ -5733,7 +5733,7 @@ Function IndData(Company, Ind, CutoffDate, NameAndSurnameShort = True) Export
 	Data = PersonalQuery.Execute().Select();
 	Data.Next();
 	
-	Result = New Structure("Surname, Name, Patronymic, Presentation, EmployeeCode, Position, Division, DocumentKind, DocumentSeries, DocumentNumber, DocumentIssueDate, DocumentWhoIssued, DocumentDivisionCode, DocumentPresentation");
+	Result = New Structure("Surname, Name, Patronymic, Presentation, EmployeeCode, Position, Department, DocumentKind, DocumentSeries, DocumentNumber, DocumentIssueDate, DocumentWhoIssued, DocumentDepartmentCode, DocumentPresentation");
 
 	FillPropertyValues(Result, Data);
 
@@ -6790,19 +6790,19 @@ Procedure DetermineSourcesPrintUPD(CommandParameter, SourcesPrint, UserMessages)
 		If TypeOf(DocumentPrint) = Type("DocumentRef.CustomerOrder") Then
 			
 			SourcesPrint.SourceName = "Document.CustomerOrder";
-			DivisionDocument = DocumentPrint.StructuralUnitReserve;
+			DepartmentDocument = DocumentPrint.StructuralUnitReserve;
 			IsVAT = (DocumentPrint.Works.Total("VATAmount") <> 0) OR (DocumentPrint.Inventory.Total("VATAmount") <> 0) OR ValueIsFilled(CustomerInvoiceNote);
 			
 		ElsIf TypeOf(DocumentPrint) = Type("DocumentRef.CustomerInvoice") Then
 			
 			SourcesPrint.SourceName = "Document.CustomerInvoice";
-			DivisionDocument = DocumentPrint.StructuralUnit;
+			DepartmentDocument = DocumentPrint.StructuralUnit;
 			IsVAT = (DocumentPrint.Inventory.Total("VATAmount") <> 0) OR ValueIsFilled(CustomerInvoiceNote);
 			
 		ElsIf TypeOf(DocumentPrint) = Type("DocumentRef.AcceptanceCertificate") Then
 			
 			SourcesPrint.SourceName = "Document.AcceptanceCertificate";
-			DivisionDocument = DocumentPrint.Division;
+			DepartmentDocument = DocumentPrint.Department;
 			IsVAT = (DocumentPrint.WorksAndServices.Total("VATAmount") <> 0) OR ValueIsFilled(CustomerInvoiceNote);
 			
 		EndIf;

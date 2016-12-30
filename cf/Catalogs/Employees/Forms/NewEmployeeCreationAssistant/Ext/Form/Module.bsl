@@ -32,10 +32,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	DivisionsAreUsed = GetFunctionalOption("AccountingBySeveralDivisions");
-	If Not DivisionsAreUsed Then
+	DepartmentsAreUsed = GetFunctionalOption("AccountingBySeveralDepartments");
+	If Not DepartmentsAreUsed Then
 		
-		EmploymentContractStructuralUnit = Catalogs.StructuralUnits.MainDivision;
+		EmploymentContractStructuralUnit = Catalogs.StructuralUnits.MainDepartment;
 		
 	EndIf;
 	
@@ -537,10 +537,10 @@ Function Attachable_PageEmploymentContract1_OnGoingNext(Cancel)
 		
 	EndIf;
 	
-	If DivisionsAreUsed
+	If DepartmentsAreUsed
 		AND Not ValueIsFilled(EmploymentContractStructuralUnit) Then
 		
-		MessageText = NStr("en='Fill in division.';ru='Необходимо заполнить подразделение.'");
+		MessageText = NStr("en='Fill in department.';ru='Необходимо заполнить подразделение.'");
 		CommonUseClientServer.AddUserError(Errors, "EmploymentContractStructuralUnit", MessageText, Undefined);
 		
 	EndIf;

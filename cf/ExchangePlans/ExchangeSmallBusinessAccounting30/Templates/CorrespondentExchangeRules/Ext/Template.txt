@@ -2300,9 +2300,9 @@ EndIf;</BeforeExport>
 EndIf;</BeforeExport>
 				<AfterImport>
 If ObjectFound
-	AND Object.StructuralUnitType = Enums.StructuralUnitsTypes.Division Then
+	AND Object.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
 	
-	Cancel = True; // do not import production warehouses created during the import to CA by SB division
+	Cancel = True; // do not import production warehouses created during the import to CA by SB department
 	
 EndIf;
 
@@ -2564,8 +2564,8 @@ EndIf;</AfterImport>
 				<Values/>
 			</Rule>
 			<Rule>
-				<Code>Divisions</Code>
-				<Description>Catalog: Divisions companies</Description>
+				<Code>Departments</Code>
+				<Description>Catalog: Departments companies</Description>
 				<Order>850</Order>
 				<SynchronizeByID>true</SynchronizeByID>
 				<ExchangeObjectPriority>below</ExchangeObjectPriority>
@@ -2597,9 +2597,9 @@ EndIf;</AfterImport>
 						<Code>4</Code>
 						<Description>Parent --&gt; Parent</Description>
 						<Order>200</Order>
-						<Source Name="Parent" Kind="Property" Type="CatalogRef.CompaniesDivisions"/>
+						<Source Name="Parent" Kind="Property" Type="CatalogRef.CompaniesDepartments"/>
 						<Receiver Name="Parent" Kind="Property" Type="CatalogRef.StructuralUnits"/>
-						<ConversionRuleCode>Divisions                                     </ConversionRuleCode>
+						<ConversionRuleCode>Departments                                     </ConversionRuleCode>
 					</Property>
 					<Property>
 						<Donotreplace>true</Donotreplace>
@@ -2608,7 +2608,7 @@ EndIf;</AfterImport>
 						<Order>250</Order>
 						<Source Name="" Kind=""/>
 						<Receiver Name="StructuralUnitType" Kind="Attribute" Type="EnumRef.StructuralUnitsTypes"/>
-						<BeforeExport>Expression = "Enums.StructuralUnitsTypes.Division";</BeforeExport>
+						<BeforeExport>Expression = "Enums.StructuralUnitsTypes.Department";</BeforeExport>
 					</Property>
 					<Property Search="true">
 						<Code>6</Code>
@@ -5661,10 +5661,10 @@ EndIf;</BeforeObjectExport>
 			</Rule>
 			<Rule Disable="false">
 				<Code>UnitCompanies</Code>
-				<Description>Catalog "Companies divisions"</Description>
+				<Description>Catalog "Companies departments"</Description>
 				<Order>1150</Order>
 				<Description>Filter data exchange: DoDump</Description>
-				<ConversionRuleCode>Divisions                                     </ConversionRuleCode>
+				<ConversionRuleCode>Departments                                     </ConversionRuleCode>
 				<DataSelectionVariant>StandardSelection</DataSelectionVariant>
 				<SelectionObject>CatalogRef.UnitCompanies</SelectionObject>
 			</Rule>

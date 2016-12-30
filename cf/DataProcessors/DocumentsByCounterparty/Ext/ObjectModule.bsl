@@ -387,17 +387,17 @@ Procedure AddAdditionalHeaderFields(QueryText, DocumentMetadata, AddHeaderFields
 
 			Text = StrReplace(FieldPattern, "%FieldName%", "REFPRESENTATION(HeaderTable." + FieldName +" ) ");
 
-		ElsIf FieldName = "Division"
+		ElsIf FieldName = "Department"
 			AND DocumentMetadata.Attributes.Find("SalesStructuralUnit") <> Undefined Then
 
 			Text = StrReplace(FieldPattern, "%FieldName%", "REFPRESENTATION(HeaderTable.SalesStructuralUnit) ");
-            Text = StrReplace(Text, "%FieldPseudonym%", "Division");
+            Text = StrReplace(Text, "%FieldPseudonym%", "Department");
 
-		ElsIf FieldName = "Division"
+		ElsIf FieldName = "Department"
 			AND DocumentMetadata.Attributes.Find("StructuralUnit") <> Undefined Then
 
 			Text = StrReplace(FieldPattern, "%FieldName%", "REFPRESENTATION(HeaderTable.StructuralUnit) ");
-            Text = StrReplace(Text, "%FieldPseudonym%", "Division");
+            Text = StrReplace(Text, "%FieldPseudonym%", "Department");
 
 		Else
 

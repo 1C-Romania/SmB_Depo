@@ -179,7 +179,7 @@ Procedure FillColumnReserveByReserves() Export
 	|						&Company,
 	|						&StructuralUnit,
 	|						CASE
-	|							WHEN &StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|							WHEN &StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|								THEN TableInventory.ProductsAndServices.ExpensesGLAccount
 	|							ELSE TableInventory.ProductsAndServices.InventoryGLAccount
 	|						END,
@@ -284,25 +284,25 @@ Procedure FillByProductionOrder(FillingData) Export
 	|	ProductionOrder.StructuralUnit AS StructuralUnit,
 	|	CASE
 	|		WHEN ProductionOrder.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-	|				OR ProductionOrder.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|				OR ProductionOrder.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|			THEN ProductionOrder.StructuralUnit.TransferRecipient
 	|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 	|	END AS ProductsStructuralUnit,
 	|	CASE
 	|		WHEN ProductionOrder.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-	|				OR ProductionOrder.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|				OR ProductionOrder.StructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|			THEN ProductionOrder.StructuralUnit.TransferRecipientCell
 	|		ELSE VALUE(Catalog.Cells.EmptyRef)
 	|	END AS ProductsCell,
 	|	CASE
 	|		WHEN ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-	|				OR ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|				OR ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|			THEN ProductionOrder.StructuralUnit.TransferSource
 	|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 	|	END AS InventoryStructuralUnit,
 	|	CASE
 	|		WHEN ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-	|				OR ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|				OR ProductionOrder.StructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|			THEN ProductionOrder.StructuralUnit.TransferSourceCell
 	|		ELSE VALUE(Catalog.Cells.EmptyRef)
 	|	END AS CellInventory,
@@ -621,25 +621,25 @@ Procedure FillUsingCustomerOrder(FillingData) Export
 	|	CustomerOrderInventory.Ref.SalesStructuralUnit AS StructuralUnit,
 	|	CASE
 	|		WHEN CustomerOrderInventory.Ref.SalesStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-	|				OR CustomerOrderInventory.Ref.SalesStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|				OR CustomerOrderInventory.Ref.SalesStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|			THEN CustomerOrderInventory.Ref.SalesStructuralUnit.TransferRecipient
 	|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 	|	END AS ProductsStructuralUnit,
 	|	CASE
 	|		WHEN CustomerOrderInventory.Ref.SalesStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-	|				OR CustomerOrderInventory.Ref.SalesStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|				OR CustomerOrderInventory.Ref.SalesStructuralUnit.TransferRecipient.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|			THEN CustomerOrderInventory.Ref.SalesStructuralUnit.TransferRecipientCell
 	|		ELSE VALUE(Catalog.Cells.EmptyRef)
 	|	END AS ProductsCell,
 	|	CASE
 	|		WHEN CustomerOrderInventory.Ref.SalesStructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-	|				OR CustomerOrderInventory.Ref.SalesStructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|				OR CustomerOrderInventory.Ref.SalesStructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|			THEN CustomerOrderInventory.Ref.SalesStructuralUnit.TransferSource
 	|		ELSE VALUE(Catalog.StructuralUnits.EmptyRef)
 	|	END AS InventoryStructuralUnit,
 	|	CASE
 	|		WHEN CustomerOrderInventory.Ref.SalesStructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Warehouse)
-	|				OR CustomerOrderInventory.Ref.SalesStructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Division)
+	|				OR CustomerOrderInventory.Ref.SalesStructuralUnit.TransferSource.StructuralUnitType = VALUE(Enum.StructuralUnitsTypes.Department)
 	|			THEN CustomerOrderInventory.Ref.SalesStructuralUnit.TransferSourceCell
 	|		ELSE VALUE(Catalog.Cells.EmptyRef)
 	|	END AS CellInventory,

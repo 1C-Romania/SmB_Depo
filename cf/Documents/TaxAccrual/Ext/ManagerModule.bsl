@@ -43,7 +43,7 @@ Procedure InitializeDocumentData(DocumentRefTaxAccrual, StructureAdditionalPrope
 	|		WHEN DocumentTable.Correspondence.TypeOfAccount = VALUE(Enum.GLAccountsTypes.OtherExpenses)
 	|				OR DocumentTable.Correspondence.TypeOfAccount = VALUE(Enum.GLAccountsTypes.OtherIncome)
 	|			THEN VALUE(Catalog.StructuralUnits.EmptyRef)
-	|		ELSE DocumentTable.Division
+	|		ELSE DocumentTable.Department
 	|	END AS StructuralUnit,
 	|	DocumentTable.Correspondence AS GLAccount,
 	|	CASE
@@ -120,7 +120,7 @@ Procedure InitializeDocumentData(DocumentRefTaxAccrual, StructureAdditionalPrope
 	|	END AS RecordType,
 	|	DocumentTable.Ref.Date AS Period,
 	|	&Company AS Company,
-	|	DocumentTable.Division AS StructuralUnit,
+	|	DocumentTable.Department AS StructuralUnit,
 	|	DocumentTable.Correspondence AS GLAccount,
 	|	DocumentTable.CustomerOrder AS CustomerOrder,
 	|	DocumentTable.Amount AS Amount,

@@ -37,7 +37,7 @@ Function GetGeneratedContractHTML(Object, Document = Undefined, ListOfParameters
 		If TypeOf(Parameter.Parameter) = Type("EnumRef.ContractsWithCounterpartiesTemplatesParameters") Then
 			If Parameter.Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_IssueDate
 				OR Parameter.Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_WhoIssued
-				OR Parameter.Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_DivisionCode
+				OR Parameter.Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_DepartmentCode
 				OR Parameter.Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_Number
 				OR Parameter.Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_Series
 				OR Parameter.Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_ValidityPeriod Then
@@ -494,7 +494,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 			|	IndividualsDocuments.IssueDate,
 			|	IndividualsDocuments.ValidityPeriod,
 			|	IndividualsDocuments.WhoIssued,
-			|	IndividualsDocuments.DivisionCode
+			|	IndividualsDocuments.DepartmentCode
 			|FROM
 			|	InformationRegister.IndividualsDocuments AS IndividualsDocuments
 			|WHERE
@@ -517,7 +517,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		PassportData.Insert("IssueDate", "");
 		PassportData.Insert("ValidityPeriod", "");
 		PassportData.Insert("WhoIssued", "");
-		PassportData.Insert("DivisionCode", "");
+		PassportData.Insert("DepartmentCode", "");
 		
 		While SelectionDetailRecords.Next() Do 
 			If ValueIsFilled(SelectionDetailRecords.Series) Then 
@@ -535,8 +535,8 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 			If ValueIsFilled(SelectionDetailRecords.WhoIssued) Then 
 				PassportData.WhoIssued = SelectionDetailRecords.WhoIssued;
 			EndIf;
-			If ValueIsFilled(SelectionDetailRecords.DivisionCode) Then 
-				PassportData.DivisionCode = SelectionDetailRecords.DivisionCode;
+			If ValueIsFilled(SelectionDetailRecords.DepartmentCode) Then 
+				PassportData.DepartmentCode = SelectionDetailRecords.DepartmentCode;
 			EndIf;
 		EndDo;
 		
@@ -544,7 +544,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		
 	ElsIf Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_IssueDate
 		OR Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_WhoIssued
-		OR Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_DivisionCode
+		OR Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_DepartmentCode
 		OR Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_Number
 		OR Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_Series
 		OR Parameter = Enums.ContractsWithCounterpartiesTemplatesParameters.PassportData_ValidityPeriod Then

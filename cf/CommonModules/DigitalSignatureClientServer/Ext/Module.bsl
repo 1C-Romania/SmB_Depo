@@ -33,9 +33,9 @@ EndFunction
 //   Patronymic - Boolean - include patronymic into the presentation.
 //
 // Returns:
-//   String   - presentation of the subject in the Surname Name, Company, Division, Position format.
+//   String   - presentation of the subject in the Surname Name, Company, Department, Position format.
 //              If it is impossible to define full name, then it is replaced with CommonName.
-//              Company, Division and Position may be missing if
+//              Company, Department and Position may be missing if
 //              they are not specified or it was impossible to define them.
 //
 Function SubjectPresentation(Certificate, Patronymic = True) Export
@@ -64,8 +64,8 @@ Function SubjectPresentation(Certificate, Patronymic = True) Export
 		If ValueIsFilled(Subject.Company) Then
 			Presentation = Presentation + ", " + Subject.Company;
 		EndIf;
-		If ValueIsFilled(Subject.Division) Then
-			Presentation = Presentation + ", " + Subject.Division;
+		If ValueIsFilled(Subject.Department) Then
+			Presentation = Presentation + ", " + Subject.Department;
 		EndIf;
 		If ValueIsFilled(Subject.Position) Then
 			Presentation = Presentation + ", " + Subject.Position;
@@ -86,7 +86,7 @@ EndFunction
 //
 // Returns:
 //   String - presentation of an issuer
-//            in the CommonName, Company, Division format Company and Division may be missing if they are not specified.
+//            in the CommonName, Company, Department format Company and Department may be missing if they are not specified.
 //
 Function PublisherRepresentation(Certificate) Export
 	
@@ -105,8 +105,8 @@ Function PublisherRepresentation(Certificate) Export
 		Presentation = Issuer.CommonName + ", " + Issuer.Company;
 	EndIf;
 	
-	If ValueIsFilled(Issuer.Division) Then
-		Presentation = Presentation + ", " + Issuer.Division;
+	If ValueIsFilled(Issuer.Department) Then
+		Presentation = Presentation + ", " + Issuer.Department;
 	EndIf;
 	
 	Return Presentation;
@@ -219,9 +219,9 @@ EndFunction
 //                          LP: Full or short company name.
 //                        - Undefined - required certificate property is not found.
 //
-//     * Division    - String(64) - retrieved from the OU field.
-//                          LE: in case of SKPEP release for the official - company division.
-//                              Division - this is a territorial entity
+//     * Department    - String(64) - retrieved from the OU field.
+//                          LE: in case of SKPEP release for the official - company department.
+//                              Department - this is a territorial entity
 //                              of a large company that is usually not filled in the certificate.
 //                        - Undefined - required certificate property is not found.
 //
@@ -273,7 +273,7 @@ Function CertificateSubjectProperties(Certificate) Export
 	Properties.Insert("Settlement");
 	Properties.Insert("Street");
 	Properties.Insert("Company");
-	Properties.Insert("Division");
+	Properties.Insert("Department");
 	Properties.Insert("Position");
 	Properties.Insert("Email");
 	Properties.Insert("OGRN");
@@ -309,7 +309,7 @@ Function CertificateSubjectProperties(Certificate) Export
 	EndIf;
 	
 	If Subject.Property("OU") Then
-		Properties.Division = PrepareString(Subject.OU);
+		Properties.Department = PrepareString(Subject.OU);
 	EndIf;
 	
 	If Subject.Property("E") Then
@@ -411,8 +411,8 @@ EndFunction
 //                          from the O full or short company name field.
 //                        - Undefined - required certificate property is not found.
 //
-//     * Division    - String(64) - retrieved from the OU company division field.
-//                            Division - this is a territorial entity
+//     * Department    - String(64) - retrieved from the OU company department field.
+//                            Department - this is a territorial entity
 //                            of a large company that is usually not filled in the certificate.
 //                        - Undefined - required certificate property is not found.
 //
@@ -436,7 +436,7 @@ Function CertificateIssuerProperties(Certificate) Export
 	Properties.Insert("Settlement");
 	Properties.Insert("Street");
 	Properties.Insert("Company");
-	Properties.Insert("Division");
+	Properties.Insert("Department");
 	Properties.Insert("Email");
 	Properties.Insert("OGRN");
 	Properties.Insert("TIN");
@@ -466,7 +466,7 @@ Function CertificateIssuerProperties(Certificate) Export
 	EndIf;
 	
 	If Issuer.Property("OU") Then
-		Properties.Division = PrepareString(Issuer.OU);
+		Properties.Department = PrepareString(Issuer.OU);
 	EndIf;
 	
 	If Issuer.Property("E") Then
