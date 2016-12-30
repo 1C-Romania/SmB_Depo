@@ -10,12 +10,6 @@
 				<CommandName>Form.Command.PickFromClassifier</CommandName>
 				<ExtendedTooltip name="FormToSelectClassifierExtendedTooltip" id="36"/>
 			</Button>
-			<Button name="RefreshFormOfClassifier" id="34">
-				<Type>CommandBarButton</Type>
-				<Visible>false</Visible>
-				<CommandName>Form.Command.UpdateFromClassifier</CommandName>
-				<ExtendedTooltip name="RefreshFormOfClassifierExtendedTooltip" id="37"/>
-			</Button>
 			<ButtonGroup name="GroupGlobalCommands" id="55">
 				<Title>
 					<v8:item>
@@ -63,7 +57,6 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">NotificationProcessing</Event>
-		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
 	</Events>
 	<ChildItems>
 		<Table name="List" id="7">
@@ -217,22 +210,6 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
-						<dcsset:item>
-							<dcsset:selection/>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ManualChanging</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:decimal">3</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>TextColor</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">style:HiddenReportOptionColor</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
@@ -240,55 +217,6 @@
 					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
 				</ListSettings>
 			</Settings>
-		</Attribute>
-		<Attribute name="StorageAddress" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Storage address</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Адрес хранилища</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="JobID" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Job ID</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Идентификатор задания</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>v8:UUID</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="BanksHaveBeenUpdatedFromClassifier" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Banks were updated from classifier</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Банки обновлялись из классификатора</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>
@@ -314,29 +242,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>PickFromClassifier</Action>
-		</Command>
-		<Command name="UpdateFromClassifier" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Synchronize</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Синхронизировать</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Update all banks from classifier</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Обновить все банки из классификатора</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>UpdateFromClassifier</Action>
 		</Command>
 		<Command name="ChangeSelected" id="3">
 			<Title>

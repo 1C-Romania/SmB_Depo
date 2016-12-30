@@ -130,21 +130,6 @@ Function GetBanksTableByAttributes(Field, Value) Export
 	
 EndFunction
 
-// Procedure initializes banks list update.
-//
-Procedure RefreshBanksFromClassifier(ParametersStructure, StorageAddress) Export
-	
-	BanksArray        = New Array();
-	DataForFilling = New Structure();
-	
-	SuccessfullyUpdated = WorkWithBanksOverridable.RefreshBanksFromClassifier(,
-		CommonUse.SessionSeparatorValue());
-	
-	DataForFilling.Insert("SuccessfullyUpdated",   SuccessfullyUpdated);
-	PutToTempStorage(DataForFilling, StorageAddress);
-	
-EndProcedure // UpdateBanksFromClassifier()
-
 #EndRegion 
 
 #Region ServiceProceduresAndFunctions
