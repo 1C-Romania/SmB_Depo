@@ -81,10 +81,10 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler.Procedure = "Catalogs.EDUsageAgreements.FillFormatsVersionsOfOutgoingEDAndPackage";
 	Handler.InitialFilling = False;
 	
-	Handler = Handlers.Add();
-	Handler.Version = "1.1.9.1";
-	Handler.Procedure = "Catalogs.DeleteDSCertificates.FillTimeActions";
-	Handler.InitialFilling = False;
+	//Handler = Handlers.Add();
+	//Handler.Version = "1.1.9.1";
+	//Handler.Procedure = "Catalogs.DeleteDSCertificates.FillTimeActions";
+	//Handler.InitialFilling = False;
 
 	Handler = Handlers.Add();
 	Handler.Version = "1.1.13.2";
@@ -121,11 +121,11 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler.Procedure = "Catalogs.EDUsageAgreements.UpdateOutgoingED207FormatVersion_208";
 	Handler.InitialFilling = False;
 	
-	Handler = Handlers.Add();
-	Handler.Version = "1.2.4.4";
-	Handler.Procedure = "Catalogs.DeleteDSCertificates.MoveCertificateSettings";
-	Handler.PerformModes = "Exclusive";
-	Handler.InitialFilling = False;
+	//Handler = Handlers.Add();
+	//Handler.Version = "1.2.4.4";
+	//Handler.Procedure = "Catalogs.DeleteDSCertificates.MoveCertificateSettings";
+	//Handler.PerformModes = "Exclusive";
+	//Handler.InitialFilling = False;
 	
 	Handler = Handlers.Add();
 	Handler.Version = "1.2.4.4";
@@ -495,45 +495,45 @@ Procedure ProcessAdjustingInvoiceNotes() Export
 		InfobaseUpdate.WriteObject(Object);
 	EndDo;
 	
-	Query = New Query;
-	Query.Text = "SELECT
-	               |	CertificatesDSDocumentKinds.Ref
-	               |INTO CertificatesExceptions
-	               |FROM
-	               |	Catalog.DeleteDSCertificates.DocumentKinds AS CertificatesDSDocumentKinds
-	               |WHERE
-	               |	CertificatesDSDocumentKinds.DocumentKind = VALUE(Enum.EDKinds.CorrectiveInvoiceNote)
-	               |	AND CertificatesDSDocumentKinds.UseToSign
-	               |	AND Not CertificatesDSDocumentKinds.Ref.DeletionMark
-	               |	AND Not CertificatesDSDocumentKinds.Ref.Revoked
-	               |;
-	               |
-	               |////////////////////////////////////////////////////////////////////////////////
-	               |SELECT
-	               |	CertificatesDSDocumentKinds.Ref
-	               |FROM
-	               |	Catalog.DeleteDSCertificates.DocumentKinds AS CertificatesDSDocumentKinds
-	               |WHERE
-	               |	CertificatesDSDocumentKinds.DocumentKind = VALUE(Enum.EDKinds.CustomerInvoiceNote)
-	               |	AND CertificatesDSDocumentKinds.UseToSign
-	               |	AND Not CertificatesDSDocumentKinds.Ref.DeletionMark
-	               |	AND Not CertificatesDSDocumentKinds.Ref.Revoked
-	               |	AND Not CertificatesDSDocumentKinds.Ref In
-	               |				(SELECT
-	               |					CertificatesExceptions.Ref
-	               |				FROM
-	               |					CertificatesExceptions)";
-	Selection = Query.Execute().Select();
-	While Selection.Next() Do
-		Certificate = Selection.Ref.GetObject();
-		RowCorrInvoice = Certificate.DocumentKinds.Find(Enums.EDKinds.CorrectiveInvoiceNote, "DocumentKind");
-		If RowCorrInvoice = Undefined Then
-			RowCorrInvoice = Certificate.DocumentKinds.Add();
-			RowCorrInvoice.DocumentKind = Enums.EDKinds.CorrectiveInvoiceNote;
-		EndIf;
-		RowCorrInvoice.UseToSign = True;
-		InfobaseUpdate.WriteObject(Certificate);
-	EndDo;
+	//Query = New Query;
+	//Query.Text = "SELECT
+	//               |	CertificatesDSDocumentKinds.Ref
+	//               |INTO CertificatesExceptions
+	//               |FROM
+	//               |	Catalog.DeleteDSCertificates.DocumentKinds AS CertificatesDSDocumentKinds
+	//               |WHERE
+	//               |	CertificatesDSDocumentKinds.DocumentKind = VALUE(Enum.EDKinds.CorrectiveInvoiceNote)
+	//               |	AND CertificatesDSDocumentKinds.UseToSign
+	//               |	AND Not CertificatesDSDocumentKinds.Ref.DeletionMark
+	//               |	AND Not CertificatesDSDocumentKinds.Ref.Revoked
+	//               |;
+	//               |
+	//               |////////////////////////////////////////////////////////////////////////////////
+	//               |SELECT
+	//               |	CertificatesDSDocumentKinds.Ref
+	//               |FROM
+	//               |	Catalog.DeleteDSCertificates.DocumentKinds AS CertificatesDSDocumentKinds
+	//               |WHERE
+	//               |	CertificatesDSDocumentKinds.DocumentKind = VALUE(Enum.EDKinds.CustomerInvoiceNote)
+	//               |	AND CertificatesDSDocumentKinds.UseToSign
+	//               |	AND Not CertificatesDSDocumentKinds.Ref.DeletionMark
+	//               |	AND Not CertificatesDSDocumentKinds.Ref.Revoked
+	//               |	AND Not CertificatesDSDocumentKinds.Ref In
+	//               |				(SELECT
+	//               |					CertificatesExceptions.Ref
+	//               |				FROM
+	//               |					CertificatesExceptions)";
+	//Selection = Query.Execute().Select();
+	//While Selection.Next() Do
+	//	Certificate = Selection.Ref.GetObject();
+	//	RowCorrInvoice = Certificate.DocumentKinds.Find(Enums.EDKinds.CorrectiveInvoiceNote, "DocumentKind");
+	//	If RowCorrInvoice = Undefined Then
+	//		RowCorrInvoice = Certificate.DocumentKinds.Add();
+	//		RowCorrInvoice.DocumentKind = Enums.EDKinds.CorrectiveInvoiceNote;
+	//	EndIf;
+	//	RowCorrInvoice.UseToSign = True;
+	//	InfobaseUpdate.WriteObject(Certificate);
+	//EndDo;
 	
 EndProcedure
 
@@ -557,7 +557,8 @@ Procedure FillDataAboutEDFProfileSettings() Export
 	While Selection.Next() Do
 		EDFSetup = Selection.Ref.GetObject();
 		EDFSetup.SetDeletionMark(True);
-		EDFSetup.Comment = NStr("en='##EDF setting is automatically marked for deletion during updating.';ru='##Настройка ЭДО помечена на удаление автоматически при обновлении.'");
+		EDFSetup.Comment = NStr("en='##EDF setting is automatically marked for deletion during updating.';
+								|ru='##Настройка ЭДО помечена на удаление автоматически при обновлении.'");
 		InfobaseUpdate.WriteObject(EDFSetup);
 	EndDo;
 	
@@ -669,26 +670,26 @@ Procedure FillDataAboutEDFProfileSettings() Export
 			
 			NewSettingsProfile.OutgoingDocuments.Sort("OutgoingDocument");
 			
-			If Selection.EDExchangeMethod <> Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom
-				AND IsUsedES Then
-				
-				Query = New Query;
-				Query.Text =
-				"SELECT ALLOWED DISTINCT
-				|	ESCertificates.Ref
-				|FROM
-				|	Catalog.DeleteDSCertificates AS ESCertificates
-				|WHERE
-				|	Not ESCertificates.DeletionMark
-				|	AND Not ESCertificates.Revoked
-				|	AND ESCertificates.Company = &Company";
-				Query.SetParameter("Company", Selection.Company);
-				SelectionOfCertificates = Query.Execute().Select();
-				While SelectionOfCertificates.Next() Do
-					NewRow = NewSettingsProfile.CompanySignatureCertificates.Add();
-					NewRow.Certificate = SelectionOfCertificates.Ref;
-				EndDo;
-			EndIf;
+			//If Selection.EDExchangeMethod <> Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom
+			//	AND IsUsedES Then
+			//	
+			//	Query = New Query;
+			//	Query.Text =
+			//	"SELECT ALLOWED DISTINCT
+			//	|	ESCertificates.Ref
+			//	|FROM
+			//	|	Catalog.DeleteDSCertificates AS ESCertificates
+			//	|WHERE
+			//	|	Not ESCertificates.DeletionMark
+			//	|	AND Not ESCertificates.Revoked
+			//	|	AND ESCertificates.Company = &Company";
+			//	Query.SetParameter("Company", Selection.Company);
+			//	SelectionOfCertificates = Query.Execute().Select();
+			//	While SelectionOfCertificates.Next() Do
+			//		NewRow = NewSettingsProfile.CompanySignatureCertificates.Add();
+			//		NewRow.Certificate = SelectionOfCertificates.Ref;
+			//	EndDo;
+			//EndIf;
 			
 			// ED exchange settings
 			If Selection.EDExchangeMethod = Enums.EDExchangeMethods.ThroughDirectory Then

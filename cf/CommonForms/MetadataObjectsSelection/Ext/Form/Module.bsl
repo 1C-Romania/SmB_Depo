@@ -379,21 +379,15 @@ Function NewRowOfTree(RowParameters, IsMetadataObject = False)
 	
 	Collection = RowParameters.Parent.GetItems();
 	NewRow = Collection.Add();
-	NewRow.Name                 = RowParameters.Name;
-	NewRow.Presentation       = ?(ValueIsFilled(RowParameters.Synonym), RowParameters.Synonym, RowParameters.Name);
-	NewRow.Check             = ?(Parameters.SelectedMetadataObjects.FindByValue(RowParameters.FullName) = Undefined, 0, 1);
-	NewRow.Picture            = RowParameters.Picture;
-	//( elmi  Lost in translation - fixed for  #17
-	//NewRow.FullName           = RowParameters.FullName;
-	NewRow.DescriptionFull    = RowParameters.FullName;
-    //) elmi  
-	NewRow.IsMetadataObject = IsMetadataObject;
+	NewRow.Name             = RowParameters.Name;
+	NewRow.Presentation     = ?(ValueIsFilled(RowParameters.Synonym), RowParameters.Synonym, RowParameters.Name);
+	NewRow.Check            = ?(Parameters.SelectedMetadataObjects.FindByValue(RowParameters.FullName) = Undefined, 0, 1);
+	NewRow.Picture          = RowParameters.Picture;
+	NewRow.FullName         = RowParameters.FullName;
+	NewRow.IsMetadataObject	= IsMetadataObject;
 	
 	If NewRow.IsMetadataObject 
-		//( elmi  Lost in translation - fixed for  #17
-		//AND NewRow.FullName = ChoiceInitialValue Then
-		  AND NewRow.DescriptionFull = ChoiceInitialValue Then
-		//) elmi    
+		AND NewRow.FullName = ChoiceInitialValue Then
 		CurrentRowIDOnOpen = NewRow.GetID();
 	EndIf;
 	
