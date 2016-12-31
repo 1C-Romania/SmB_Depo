@@ -62,296 +62,144 @@
 				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
-		<Pages name="GroupPages" id="50">
+		<UsualGroup name="PageCountry" id="52">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Pages</v8:content>
+					<v8:content>Page "Country"</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Страницы</v8:content>
+					<v8:content>Страница "Страна"</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Group pages</v8:content>
-				</v8:item>
-			</ToolTip>
-			<PagesRepresentation>None</PagesRepresentation>
-			<ExtendedTooltip name="GroupPagesExtendedTooltip" id="51"/>
+			<Group>Vertical</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="PageCountryExtendedTooltip" id="53"/>
 			<ChildItems>
-				<Page name="PageCountry" id="52">
+				<UsualGroup name="GroupCountry" id="18">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Page "Country"</v8:content>
+							<v8:content>Your country</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Страница "Страна"</v8:content>
+							<v8:content>Ваша страна</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="PageCountryExtendedTooltip" id="53"/>
-					<ChildItems>
-						<UsualGroup name="GroupCountry" id="18">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>1. Your country</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>1. Ваша страна</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Group country</v8:content>
-								</v8:item>
-							</ToolTip>
-							<HorizontalStretch>true</HorizontalStretch>
-							<Group>Vertical</Group>
-							<BackColor>#FFFBE3</BackColor>
-							<ExtendedTooltip name="GroupCountryExtendedTooltip" id="19"/>
-							<ChildItems>
-								<InputField name="Country" id="1">
-									<DataPath>Object.Country</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Your country</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Ваша страна</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>None</TitleLocation>
-									<ListChoiceMode>true</ListChoiceMode>
-									<ContextMenu name="CountryContextMenu" id="2"/>
-									<ExtendedTooltip name="CountryExtendedTooltip" id="3"/>
-									<Events>
-										<Event name="OnChange">CountryOnChange</Event>
-									</Events>
-								</InputField>
-								<LabelField name="Descriprion" id="4">
-									<DataPath>Object.Descriprion</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<Height>8</Height>
-									<ContextMenu name="DescriprionContextMenu" id="5"/>
-									<ExtendedTooltip name="DescriprionExtendedTooltip" id="6"/>
-								</LabelField>
-								<LabelDecoration name="TipOfChoiceCountry" id="20">
-									<Title formatted="true">
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>What affects the choice of the country?</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>На что влияет выбор страны?</v8:content>
-										</v8:item>
-									</Title>
-									<Hyperlink>true</Hyperlink>
-									<ContextMenu name="TipOfChoiceCountryContextMenu" id="21"/>
-									<ExtendedTooltip name="TipOfChoiceCountryExtendedTooltip" id="22"/>
-									<Events>
-										<Event name="URLProcessing">TipOfChoiceCountryURLProcessing</Event>
-									</Events>
-								</LabelDecoration>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="GroupGo" id="25">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Group go</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа Вперед</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Group go</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="GroupGoExtendedTooltip" id="26"/>
-							<ChildItems>
-								<LabelDecoration name="Decoration3" id="27">
-									<HorizontalStretch>true</HorizontalStretch>
-									<ContextMenu name="Decoration3ContextMenu" id="28"/>
-									<ExtendedTooltip name="Decoration3ExtendedTooltip" id="29"/>
-								</LabelDecoration>
-								<Button name="Go" id="23">
-									<Type>UsualButton</Type>
-									<DefaultButton>true</DefaultButton>
-									<DefaultItem>true</DefaultItem>
-									<Width>20</Width>
-									<CommandName>Form.Command.Go</CommandName>
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Go!</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Вперед!</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="GoExtendedTooltip" id="24"/>
-								</Button>
-								<LabelDecoration name="Decoration4" id="30">
-									<HorizontalStretch>true</HorizontalStretch>
-									<ContextMenu name="Decoration4ContextMenu" id="31"/>
-									<ExtendedTooltip name="Decoration4ExtendedTooltip" id="32"/>
-								</LabelDecoration>
-							</ChildItems>
-						</UsualGroup>
-					</ChildItems>
-				</Page>
-				<Page name="PageCompany" id="54">
-					<Title>
+					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Page "Company"</v8:content>
+							<v8:content>Group country</v8:content>
 						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница "Компания"</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="PageCompanyExtendedTooltip" id="55"/>
+					</ToolTip>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Vertical</Group>
+					<BackColor>#FFFBE3</BackColor>
+					<ExtendedTooltip name="GroupCountryExtendedTooltip" id="19"/>
 					<ChildItems>
-						<UsualGroup name="GroupCompany" id="56">
+						<InputField name="Country" id="1">
+							<DataPath>Object.Country</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>2. Your company</v8:content>
+									<v8:content>Your country</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>2. Ваша компания</v8:content>
+									<v8:content>Ваша страна</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
+							<TitleLocation>None</TitleLocation>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ContextMenu name="CountryContextMenu" id="2"/>
+							<ExtendedTooltip name="CountryExtendedTooltip" id="3"/>
+							<Events>
+								<Event name="OnChange">CountryOnChange</Event>
+							</Events>
+						</InputField>
+						<LabelField name="Descriprion" id="4">
+							<DataPath>Object.Descriprion</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<Height>8</Height>
+							<ContextMenu name="DescriprionContextMenu" id="5"/>
+							<ExtendedTooltip name="DescriprionExtendedTooltip" id="6"/>
+						</LabelField>
+						<LabelDecoration name="TipOfChoiceCountry" id="20">
+							<Title formatted="true">
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Group country</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Vertical</Group>
-							<BackColor>#FFFBE3</BackColor>
-							<ExtendedTooltip name="GroupCompanyExtendedTooltip" id="57"/>
-							<ChildItems>
-								<InputField name="DescriptionFull" id="67">
-									<DataPath>DescriptionFull</DataPath>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>You can change the company name later in "Companies"</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Вы можете изменить название компании позже в "Организации"</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-									<ContextMenu name="DescriptionFullContextMenu" id="68"/>
-									<ExtendedTooltip name="DescriptionFullExtendedTooltip" id="69"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="GroupCurrency" id="70">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>3. Currency</v8:content>
+									<v8:content>What affects the choice of the country?</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>3. Валюта</v8:content>
+									<v8:content>На что влияет выбор страны?</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Group country</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Vertical</Group>
-							<BackColor>#FFFBE3</BackColor>
-							<ExtendedTooltip name="GroupCurrencyExtendedTooltip" id="71"/>
-							<ChildItems>
-								<InputField name="AccountingCurrency" id="75">
-									<DataPath>AccountingCurrency</DataPath>
-									<ContextMenu name="AccountingCurrencyContextMenu" id="76"/>
-									<ExtendedTooltip name="AccountingCurrencyExtendedTooltip" id="77"/>
-								</InputField>
-								<InputField name="NationalCurrency" id="78">
-									<DataPath>NationalCurrency</DataPath>
-									<ContextMenu name="NationalCurrencyContextMenu" id="79"/>
-									<ExtendedTooltip name="NationalCurrencyExtendedTooltip" id="80"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<LabelDecoration name="Decoration1" id="91">
-							<VerticalStretch>true</VerticalStretch>
-							<ContextMenu name="Decoration1ContextMenu" id="92"/>
-							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="93"/>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="TipOfChoiceCountryContextMenu" id="21"/>
+							<ExtendedTooltip name="TipOfChoiceCountryExtendedTooltip" id="22"/>
+							<Events>
+								<Event name="URLProcessing">TipOfChoiceCountryURLProcessing</Event>
+							</Events>
 						</LabelDecoration>
-						<UsualGroup name="GroupFinish" id="81">
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupGo" id="25">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group go</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа Вперед</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group go</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupGoExtendedTooltip" id="26"/>
+					<ChildItems>
+						<LabelDecoration name="Decoration3" id="27">
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="Decoration3ContextMenu" id="28"/>
+							<ExtendedTooltip name="Decoration3ExtendedTooltip" id="29"/>
+						</LabelDecoration>
+						<Button name="Go" id="23">
+							<Type>UsualButton</Type>
+							<DefaultButton>true</DefaultButton>
+							<DefaultItem>true</DefaultItem>
+							<Width>20</Width>
+							<CommandName>Form.Command.Go</CommandName>
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Group Finish</v8:content>
+									<v8:content>Go!</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа Вперед</v8:content>
+									<v8:content>Вперед!</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Group go</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="GroupFinishExtendedTooltip" id="82"/>
-							<ChildItems>
-								<LabelDecoration name="Decoration5" id="83">
-									<HorizontalStretch>true</HorizontalStretch>
-									<ContextMenu name="Decoration5ContextMenu" id="84"/>
-									<ExtendedTooltip name="Decoration5ExtendedTooltip" id="85"/>
-								</LabelDecoration>
-								<Button name="Finish" id="94">
-									<Type>UsualButton</Type>
-									<Width>20</Width>
-									<CommandName>Form.Command.Finish</CommandName>
-									<ExtendedTooltip name="FinishExtendedTooltip" id="95"/>
-								</Button>
-								<LabelDecoration name="Decoration8" id="88">
-									<HorizontalStretch>true</HorizontalStretch>
-									<ContextMenu name="Decoration8ContextMenu" id="89"/>
-									<ExtendedTooltip name="Decoration8ExtendedTooltip" id="90"/>
-								</LabelDecoration>
-							</ChildItems>
-						</UsualGroup>
+							<ExtendedTooltip name="GoExtendedTooltip" id="24"/>
+						</Button>
+						<LabelDecoration name="Decoration4" id="30">
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="Decoration4ContextMenu" id="31"/>
+							<ExtendedTooltip name="Decoration4ExtendedTooltip" id="32"/>
+						</LabelDecoration>
 					</ChildItems>
-				</Page>
+				</UsualGroup>
 			</ChildItems>
-		</Pages>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Object" id="1">
@@ -432,64 +280,6 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
-		</Attribute>
-		<Attribute name="DescriptionFull" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Description full</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Полное наименование</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="AccountingCurrency" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Accounting currency</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Валюта учета</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="NationalCurrency" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>National currency</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Национальная валюта</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="InformationAboutCompany" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Information about company</v8:content>
-				</v8:item>
-			</Title>
-			<Type/>
 		</Attribute>
 	</Attributes>
 	<Commands>

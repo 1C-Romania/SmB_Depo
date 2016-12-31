@@ -201,6 +201,27 @@
 														</Title>
 														<ExtendedTooltip name="ДеревоМетаданныхПересчитатьВыгружаемыеПоСсылкеРасширеннаяПодсказка" id="62"/>
 													</Button>
+													<ButtonGroup name="ДеревоМетаданныхSettings" id="159">
+														<Title>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Settings</v8:content>
+															</v8:item>
+														</Title>
+														<ExtendedTooltip name="ДеревоМетаданныхSettingsExtendedTooltip" id="160"/>
+														<ChildItems>
+															<Button name="ДеревоМетаданныхSaveSettings" id="157">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.SaveSettings</CommandName>
+																<ExtendedTooltip name="ДеревоМетаданныхSaveSettingsExtendedTooltip" id="158"/>
+															</Button>
+															<Button name="ДеревоМетаданныхLoadSettings" id="161">
+																<Type>CommandBarButton</Type>
+																<CommandName>Form.Command.LoadSettings</CommandName>
+																<ExtendedTooltip name="ДеревоМетаданныхLoadSettingsExtendedTooltip" id="162"/>
+															</Button>
+														</ChildItems>
+													</ButtonGroup>
 												</ChildItems>
 											</AutoCommandBar>
 											<ExtendedTooltip name="ДеревоМетаданныхРасширеннаяПодсказка" id="42"/>
@@ -637,7 +658,7 @@
 	<Attributes>
 		<Attribute name="Объект" id="1">
 			<Type>
-				<v8:Type>cfg:ExternalDataProcessorObject.ВыгрузкаЗагрузкаДанныхXML</v8:Type>
+				<v8:Type>cfg:ExternalDataProcessorObject.DownloadUploadDataXML</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<Columns>
@@ -958,6 +979,45 @@
 				</v8:item>
 			</ToolTip>
 			<Action>НастройкиКонсолиЗапросов</Action>
+		</Command>
+		<Command name="SaveSettings" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save settings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранение настроек</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Save settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SaveSettings</Action>
+		</Command>
+		<Command name="LoadSettings" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Load settings</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузка настроек
+</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Load settings</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>LoadSettings</Action>
 		</Command>
 	</Commands>
 </Form>

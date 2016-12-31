@@ -727,4 +727,88 @@
 	
 КонецФункции
 
+&AtClient
+Procedure SaveSettings(Command)
+	
+	#If Not WebClient Then
+	ArrayOfChecked = New Array;
+	For Each UpperRow In Объект.ДеревоМетаданных.GetItems() Do
+		// This is upper level with name of configuration.
+		For Each MetadataRow In UpperRow.GetItems() Do
+			// This is level with name of metadata, for example Catalogs, constats and other.
+			Prefix = MetadataRow.ПолноеИмяМетаданных;
+			For Each ObjectRow In MetadataRow.GetItems() Do
+				// This is lower level with object.
+				If ObjectRow.Выгружать Then
+					ArrayOfChecked.Add(StrTemplate("%1.%2", Prefix, ObjectRow.ПолноеИмяМетаданных));
+				EndIf;
+			EndDo;
+		EndDo;
+	EndDo;
+	
+	If ArrayOfChecked.Count() = 0 Then
+		Return;
+	EndIf;
+	
+	TextDocument = New TextDocument;
+	For Each CheckedObject In ArrayOfChecked Do
+		TextDocument.AddLine(CheckedObject);
+	EndDo;
+	
+	FileDialog = New FileDialog(FileDialogMode.Save);
+	FileDialog.Filter = "*.txt";
+	FileDialog.DefaultExt = "txt";
+	FileDialog.FullFileName = NStr("ru='НастройкиВыгрузкиЗагрузки.txt';en='SettingsOfLoadUnload.txt'");
+	If FileDialog.Choose() Then
+		TextDocument.Write(FileDialog.FullFileName);
+	EndIf;
+	#EndIf
+
+EndProcedure
+
+&AtClient
+Procedure LoadSettings(Command)
+	
+	FileDialog = New FileDialog(FileDialogMode.Open);
+	FileDialog.Filter = "*.txt";
+	FileDialog.DefaultExt = "txt";
+	FileDialog.FullFileName = NStr("ru='НастройкиВыгрузкиЗагрузки.txt';en='SettingsOfLoadUnload.txt'");
+	If Not FileDialog.Choose() Then
+		Return;
+	EndIf;
+	
+	TextDocument = New TextDocument;
+	TextDocument.Read(FileDialog.FullFileName);
+	Structure = New Structure;
+	For Count = 1 To TextDocument.LineCount() Do
+		RowText = TextDocument.GetLine(Count);
+		PointPosition = StrFind(RowText, ".");
+		Metadata = Left(RowText, PointPosition-1);
+		ObjectData = StrReplace(RowText, Metadata + ".", "");
+		If Not Structure.Property(Metadata) Then
+			Structure.Insert(Metadata, New Array);
+		EndIf;
+		Structure[Metadata].Add(ObjectData); 
+	EndDo;
+	
+	For Each UpperRow In Объект.ДеревоМетаданных.GetItems() Do
+		// This is upper level with name of configuration.
+		For Each MetadataRow In UpperRow.GetItems() Do
+			// This is level with name of metadata, for example Catalogs, constats and other.
+			Prefix = MetadataRow.ПолноеИмяМетаданных;
+			If Not Structure.Property(Prefix) Then
+				Continue;
+			EndIf;
+			
+			For Each ObjectRow In MetadataRow.GetItems() Do
+				If Structure[Prefix].Find(ObjectRow.ПолноеИмяМетаданных) <> Undefined Then
+					ObjectRow.Выгружать = Истина;
+					УстановитьПометкиРодителей(ObjectRow, "Выгружать");
+				EndIf;
+			EndDo;
+		EndDo;
+	EndDo;
+	
+EndProcedure
+
 #КонецОбласти
