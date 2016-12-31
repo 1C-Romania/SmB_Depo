@@ -24,131 +24,39 @@ Function GetDriverHandler(DriverHandler, ImportedDriver) Export
 	If DriverHandler <> Undefined Then
 		
 		// Bar code scanners
-		If DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.Handler1CBarCodeScanners") Then
-			Return Peripherals1CBarcodeScannersClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.Handler1CBarCodeScannersNative") Then
-			Return PeripheralsUniversalDriverClientAsynchronously;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerScancodeBarCodeScanners") Then
-			Return PeripheralsScancodeBarcodeScannersClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerAtolBarCodeScanners") Then
-			Return PeripheralsAtolBarcodeScannersClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerHexagonBarCodeScanners") Then
-			Return PeripheralsUniversalDriverClient;
-		EndIf;
+		
 		// End Barcode scanners
 		
 		// Magnetic card readers
-		If DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.Handler1CMagneticCardReaders") Then
-			Return PeripheralsWithMagneticCardReaders1Client;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerAtolMagneticCardReaders") Then
-			Return PeripheralsAtolReadersMagneticCardClient;
-		EndIf;
+		
 		// End Mangnetic cards readers.
 
 		// Fiscal cash registers
-		If DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.Handler1CFiscalRegistersEmulator") Then
-			Return PeripheralsUniversalDriverClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerAtolFiscalRegisters") Then
-			Return PeripheralsAtolFiscalRegistersClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerATOLFiscalRegistersUniversal") Then
-			Return PeripheralsUniversalDriverClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerATOLFiscalRegisters8X") Then
-			Return PeripheralsUniversalDriverClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerVersionTFiscalRegisters") Then
-			Return PeripheralsVersionTCashRegistersClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerKKSFiscalRegisters") Then
-			Return PeripheralsKKSCashRegistersClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerShtrikhMFiscalRegisters") Then
-			Return PeripheralsShtrikhMFiscalRegistersClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerShtrikhMFiscalRegistersUniversal") Then
-			Return PeripheralsUniversalDriverClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerORIONFiscalRegisters") Then
-			Return PeripheralsORIONFiscalRegistersClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.Handler1CRarusFiscalRegistersFelix") Then
-			Return PeripheralsUniversalDriverClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.Handler1CRarusFiscalRegistersMobius") Then
-			Return PeripheralsUniversalDriverClient;
-		EndIf;
+		
 		// End Fiscal registers.
 
 		// Customer displays
-		If DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerATOLCustomerDisplays") Then
-			Return PeripheralsAtolCustomerDisplaysClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerScancodeCustomerDisplays") Then
-			Return PeripheralsScancodeCustomerDisplaysClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerShtrikhMCustomerDisplays") Then
-			Return PeripheralsShtrikhMCustomerDisplaysClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerKKSCustomerDisplays") Then
-			Return PeripheralsCCSKCustomerDisplaysClient;
-		EndIf;                 
+		
 		// End Customners displays
 		
 		// Data collection terminals
-		If DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerAtolDataCollectionTerminals") Then
-			Return PeripheralsAtolDataCollectionTerminalsClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerShtrikhMDataCollectionTerminals") Then
-			Return PeripheralsShtrikhMDataCollectionTerminalsClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerScancodeDataCollectionTerminals") Then
-			Return PeripheralsScancodeDataCollectionTerminalsClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerScancityDataCollectionTerminals") Then
-			Return PeripheralsScancityDataCollectionTerminalsClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerKleverensDataCollectionTerminals") Then
-			Return PeripheralsUniversalDriverClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerHexagonDataCollectionTerminals") Then
-			Return PeripheralsUniversalDriverClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerAtolDataCollectionTerminalsMobileLogistics") Then
-			Return PeripheralsUniversalDriverClient;
-		EndIf;
+		
 		// End Data collection terminals.
 		
 		// POS terminals
-		If DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerSBRFPOSTerminals") Then
-			Return PeripheralsSBRFPOSTerminalsClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerINPASPOSTerminalsPulsar") Then
-			Return PeripheralsINPASPulsarPOSTerminalsClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerINPASPOSTerminalsSmart") Then
-			Return PeripheralsINPASTerminalsSmartClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerINPASPOSTerminalsUNIPOS") Then
-			Return PeripheralsUniversalDriverClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerSoftCasePOSTerminals") Then
-			Return PeripheralsSoftCasePOSTerminalsClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerTRPOSPOSTerminals") Then
-			Return PeripheralsUniversalDriverClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerPrivatBankPOSTerminals") Then
-			Return PeripheralsUniversalDriverClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerUCSEFTPOSPOSTerminals") Then
-			Return PeripheralsUniversalDriverClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerGAZPROMBANKPOSTerminals") Then
-			Return PeripheralsUniversalDriverClient;
-		EndIf;
+		
 		// End POS-Terminals.
 		 
 		// Electronic scales
-		If DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerATOLElectronicScales") Then
-			Return PeripheralsAtolElectronicScalesClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerShtrikhMElectronicScales") Then
-			Return PeripheralsShtrikhMElectronicScalesClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerCASElectronicScales") Then
-			Return PeripheralsUniversalDriverClient;
-		EndIf;
+		
 		// End Electronic scales
 		
 		// Labels printing scales
-		If DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerACOMLabelPrintingScales") Then
-			Return PeripheralsACOMScalesWithLabelPrintingClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerScaleCASLabelPrintingScales") Then
-			Return PeripheralsScaleCASScalesWithLabelPrintingClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerShtrikhMLabelPrintingScales") Then
-			Return PeripheralsShtrikhMLabelPrintingScalesClient;
-		EndIf;
+		
 		// End  Scales with label.
 		
 		// CR offline
-		If DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerATOLFiscalRegistersOffline") Then
-			Return PeripheralsAtolCROfflineClient;
-		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerShtrikhMCashRegisterOffline") Then
-			Return PeripheralsShtrikhMCROfflineClient;
-		EndIf;
+		
 		// End CR offline
 		
 	EndIf;
