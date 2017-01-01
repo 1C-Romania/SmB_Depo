@@ -62,7 +62,8 @@ EndProcedure
 Procedure TipOfChoiceCountryURLProcessing(Item, FormattedStringURL, StandardProcessing)
 	
 	StandardProcessing = False;
-	ShowMessageBox(, NStr("ru='Здесь будет подсказка.'; en='This is tip'"));
+	ShowMessageBox(, NStr("ru='Здесь будет подсказка.'; 
+						  |en='This is tip'"));
 	
 EndProcedure
 
