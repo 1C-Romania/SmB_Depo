@@ -75,11 +75,11 @@ Procedure Go(Command)
 	If File.Exist() Then
 		// If file exist then fill data from file at server.
 		FillPredefinedDataAtServer(FileName);
+		Close();
 	Else
 		CommonUseClientServer.MessageToUser(
 			StrTemplate(NStr("ru='Файл %1 не найден.';en='File %1 was not found.'"), FileName));
 	EndIf;
-	Close();
 	
 EndProcedure
 

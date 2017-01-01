@@ -1,6 +1,6 @@
 ﻿Var Serializer;
 Var TableOfPredifined;
-Var СоответствиеЗаменыСсылок;
+Var MapReplaceOfRef;
 
 // Function start filling data for choisen country
 // 
@@ -9,142 +9,132 @@ Var СоответствиеЗаменыСсылок;
 //
 Procedure PredefinedDataAtServer(Val FileName) Export
 	
-	Файл = New Файл(FileName);
+	File = New File(FileName);
 	
-	If Файл.Расширение = ".fi" Then
+	If File.Extension = ".fi" Then
 		
-		ЧтениеXML = New ЧтениеFastInfoset;
-		ЧтениеXML.Прочитать();
-		ЧтениеXML.ОткрытьФайл(FileName);
+		XMLReader = New FastInfosetReader;
+		XMLReader.Read();
+		XMLReader.OpenFile(FileName);
 		
-		ЗаписьXML = New ЗаписьXML;
-		ИмяВременногоФайла = ПолучитьИмяВременногоФайла("xml");
-		ЗаписьXML.ОткрытьФайл(ИмяВременногоФайла, "UTF-8");
+		XMLWriter = New XMLWriter;
+		TempFileName = GetTempFileName("xml");
+		XMLWriter.OpenFile(TempFileName, "UTF-8");
 		
-		While ЧтениеXML.Прочитать() Do
+		While XMLReader.Read() Do
 			
-			ЗаписьXML.ЗаписатьТекущий(ЧтениеXML);
+			XMLWriter.WriteCurrent(XMLReader);
 			
 		EndDo;
 		
-		ЗаписьXML.Закрыть();
+		XMLWriter.Close();
 		
-		FileName = ИмяВременногоФайла;
+		FileName = TempFileName;
 		
 	EndIf;
 	
-	ЧтениеXML = New ЧтениеXML;
-	ЧтениеXML.ОткрытьФайл(FileName);
-	// проверка формата файла обмена
-	If Не ЧтениеXML.Прочитать()
-		Или ЧтениеXML.ТипУзла <> ТипУзлаXML.НачалоЭлемента
-		Или ЧтениеXML.ЛокальноеИмя <> "_1CV8DtUD"
-		Или ЧтениеXML.URIПространстваИмен <> "http://www.1c.ru/V8/1CV8DtUD/" Then
+	XMLReader = New XMLReader;
+	XMLReader.OpenFile(FileName);
+	If Not XMLReader.Read()
+		OR XMLReader.NodeType <> XMLNodeType.StartElement
+		OR XMLReader.LocalName <> "_1CV8DtUD"
+		OR XMLReader.NamespaceURI <> "http://www.1c.ru/V8/1CV8DtUD/" Then
 		
 		CommonUseClientServer.MessageToUser(NStr("ru = 'Неверный формат файла выгрузки'"));
 		Return;
 		
 	EndIf;
 	
-	If Не ЧтениеXML.Прочитать()
-		Или ЧтениеXML.ТипУзла <> ТипУзлаXML.НачалоЭлемента
-		Или ЧтениеXML.ЛокальноеИмя <> "Data" Then
+	If Not XMLReader.Read()
+		OR XMLReader.NodeType <> XMLNodeType.StartElement
+		OR XMLReader.LocalName <> "Data" Then
 		
 		CommonUseClientServer.MessageToUser(NStr("ru = 'Неверный формат файла выгрузки'"));
 		Return;
 		
 	EndIf;
 	
-	ЗагрузитьТаблицуПредопределенных(ЧтениеXML);
-	ЗаменитьСсылкиНаПредопределенные(FileName);
+	LoadTableOfPredifined(XMLReader);
+	ReplaceRefToPredefined(FileName);
 	
-	ЧтениеXML.ОткрытьФайл(FileName);
-	ЧтениеXML.Прочитать();
-	ЧтениеXML.Прочитать();
+	XMLReader.OpenFile(FileName);
+	XMLReader.Read();
+	XMLReader.Read();
 	
-	// чтение и запись в ИБ записанных в выгрузке объектов
-	If Не ЧтениеXML.Прочитать() Then 
+	If Not XMLReader.Read() Then 
 		
 		CommonUseClientServer.MessageToUser(NStr("ru = 'Неверный формат файла выгрузки'"));
 		Return;
 		
 	EndIf;
 	
-	Загружено = 0;
+	InitializateSerializatorXDTOWithAnnotationTypes();
 	
-	ИнициализироватьСериализаторXDTOСАннотациейТипов();
-	
-	While Serializer.ВозможностьЧтенияXML(ЧтениеXML) Do
+	While Serializer.CanReadXML(XMLReader) Do
 		
-		Попытка
-			ЗаписанноеЗначение = Serializer.ПрочитатьXML(ЧтениеXML);
-		Исключение
+		Try
+			WriteValue = Serializer.ReadXML(XMLReader);
+		Except
 			Raise;
-		КонецПопытки;
+		EndTry;
 		
-		Попытка // Планы обмена свойства ОбменДанными не имеют
-			ЗаписанноеЗначение.ОбменДанными.Загрузка = True;
-		Исключение
-		КонецПопытки;
+		Try
+			WriteValue.DataExchange.Load = True;
+		Except
+		EndTry;
 		
-		Попытка
-			ЗаписанноеЗначение.Записать();
-		Исключение
+		Try
+			WriteValue.Write();
+		Except
 			
-			ТекстОшибки = ОписаниеОшибки();
+			ErrorText = ErrorDescription();
 			
-			
-			Попытка
-				ТекстСообщения = NStr("ru = 'При загрузке объекта %1(%2) возникла ошибка:
+			Try
+				TextForMessage = NStr("ru = 'При загрузке объекта %1(%2) возникла ошибка:
 					|%3'");
-				ТекстСообщения = СтрШаблон(ТекстСообщения, ЗаписанноеЗначение, ТипЗнч(ЗаписанноеЗначение), ТекстОшибки);
-			Исключение
-				ТекстСообщения = NStr("ru = 'При загрузке данных возникла ошибка:
+				TextForMessage = StrTemplate(TextForMessage, WriteValue, TypeOf(WriteValue), ErrorText);
+			Except
+				TextForMessage = NStr("ru = 'При загрузке данных возникла ошибка:
 					|%1'");
-				ТекстСообщения = СтрШаблон(ТекстСообщения, ТекстОшибки);
-			КонецПопытки;
+				TextForMessage = StrTemplate(TextForMessage, ErrorText);
+			EndTry;
 			
-			CommonUseClientServer.MessageToUser(ТекстСообщения);
+			CommonUseClientServer.MessageToUser(TextForMessage);
 			
-			Загружено = Загружено - 1;
-			
-		КонецПопытки;	
-		
-		Загружено = Загружено + 1;
+		EndTry;
 		
 	EndDo;
 	
-	// проверка формата файла обмена
-	If ЧтениеXML.ТипУзла <> ТипУзлаXML.КонецЭлемента
-		Или ЧтениеXML.ЛокальноеИмя <> "Data" Then
+	If XMLReader.NodeType <> XMLNodeType.EndElement
+		OR XMLReader.LocalName <> "Data" Then
 		
 		CommonUseClientServer.MessageToUser(NStr("ru = 'Неверный формат файла выгрузки'"));
 		Return;
 		
 	EndIf;
 	
-	If Не ЧтениеXML.Прочитать()
-		Или ЧтениеXML.ТипУзла <> ТипУзлаXML.НачалоЭлемента
-		Или ЧтениеXML.ЛокальноеИмя <> "PredefinedData" Then
+	If Not XMLReader.Read()
+		OR XMLReader.NodeType <> XMLNodeType.StartElement
+		OR XMLReader.LocalName <> "PredefinedData" Then
 		
 		CommonUseClientServer.MessageToUser(NStr("ru = 'Неверный формат файла выгрузки'"));
 		Return;
 		
 	EndIf;
 	
-	ЧтениеXML.Пропустить();
+	XMLReader.Skip();
 	
-	If Не ЧтениеXML.Прочитать()
-		Или ЧтениеXML.ТипУзла <> ТипУзлаXML.КонецЭлемента
-		Или ЧтениеXML.ЛокальноеИмя <> "_1CV8DtUD"
-		Или ЧтениеXML.URIПространстваИмен <> "http://www.1c.ru/V8/1CV8DtUD/" Then
+	If Not XMLReader.Read()
+		OR XMLReader.NodeType <> XMLNodeType.EndElement
+		OR XMLReader.LocalName <> "_1CV8DtUD"
+		OR XMLReader.NamespaceURI <> "http://www.1c.ru/V8/1CV8DtUD/" Then
 		
 		CommonUseClientServer.MessageToUser(NStr("ru = 'Неверный формат файла выгрузки'"));
 		Return;
 		
 	EndIf;
 	
-	ЧтениеXML.Закрыть();
+	XMLReader.Close();
 	
 EndProcedure
 
@@ -153,76 +143,76 @@ EndProcedure
 Procedure InitializateTableOfPredifined()
 	
 	TableOfPredifined = New ValueTable;
-	TableOfPredifined.Columns.Add("ИмяТаблицы");
-	TableOfPredifined.Columns.Add("Ссылка");
-	TableOfPredifined.Columns.Add("ИмяПредопределенныхДанных");
+	TableOfPredifined.Columns.Add("TableName");
+	TableOfPredifined.Columns.Add("Ref");
+	TableOfPredifined.Columns.Add("PredefinedDataName");
 	
 EndProcedure
 
-Procedure ЗагрузитьТаблицуПредопределенных(ЧтениеXML)
+Procedure LoadTableOfPredifined(XMLReader)
 	
-	ЧтениеXML.Пропустить(); // При первом чтении пропускам основной блок данных
-	ЧтениеXML.Прочитать();
+	XMLReader.Skip();
+	XMLReader.Read();
 	
 	InitializateTableOfPredifined();
-	ВременнаяСтрока = TableOfPredifined.Добавить();
+	TempRow = TableOfPredifined.Add();
 	
-	СоответствиеЗаменыСсылок = New Соответствие;
+	MapReplaceOfRef = New Map;
 	
-	While ЧтениеXML.Прочитать() Do
+	While XMLReader.Read() Do
 		
-		If ЧтениеXML.ТипУзла = ТипУзлаXML.НачалоЭлемента Then
+		If XMLReader.NodeType = XMLNodeType.StartElement Then
 			
-			If ЧтениеXML.ЛокальноеИмя <> "item" Then
+			If XMLReader.LocalName <> "item" Then
 				
-				ВременнаяСтрока.ИмяТаблицы = ЧтениеXML.ЛокальноеИмя;
+				TempRow.TableName = XMLReader.LocalName;
 				
-				ТекстЗапроса = 
-				"ВЫБРАТЬ
-				|	Таблица.Ссылка КАК Ссылка
-				|ИЗ
-				|	" + ВременнаяСтрока.ИмяТаблицы + " КАК Таблица
-				|ГДЕ
-				|	Таблица.ИмяПредопределенныхДанных = &ИмяПредопределенныхДанных";
-				Query = New Query(ТекстЗапроса);
+				TextQuery = 
+				"Select
+				|	Table.Ref AS Ref
+				|From
+				|	" + TempRow.TableName + " AS Table
+				|Where
+				|	Table.PredefinedDataName = &PredefinedDataName";
+				Query = New Query(TextQuery);
 				
 			Else
 				
-				While ЧтениеXML.ПрочитатьАтрибут() Do
+				While XMLReader.ReadAttribute() Do
 					
-					ВременнаяСтрока[ЧтениеXML.ЛокальноеИмя] = ЧтениеXML.Значение;
+					TempRow[XMLReader.LocalName] = XMLReader.Value;
 					
 				EndDo;
 				
-				Query.УстановитьПараметр("ИмяПредопределенныхДанных", ВременнаяСтрока.ИмяПредопределенныхДанных);
+				Query.SetParameter("PredefinedDataName", TempRow.PredefinedDataName);
 				
-				РезультатЗапроса = Query.Выполнить();
-				If Не РезультатЗапроса.Пустой() Then
+				QueryResult = Query.Execute();
+				If Not QueryResult.IsEmpty() Then
 					
-					Выборка = РезультатЗапроса.Выбрать();
+					Selecter = QueryResult.Select();
 					
-					If Выборка.Количество() = 1 Then
+					If Selecter.Count() = 1 Then
 						
-						Выборка.Следующий();
+						Selecter.Next();
 						
-						СсылкаВБазе = XMLСтрока(Выборка.Ссылка);
-						СсылкаВФайле = ВременнаяСтрока.Ссылка;
+						RefInIB = XMLString(Selecter.Ref);
+						RefInFile = TempRow.Ref;
 						
-						If СсылкаВБазе <> СсылкаВФайле Then
+						If RefInIB <> RefInFile Then
 							
-							XMLТип = XMLTypeOfRef(Выборка.Ссылка);
+							XMLType = XMLTypeOfRef(Selecter.Ref);
 							
-							СоответствиеТипа = СоответствиеЗаменыСсылок.Получить(XMLТип);
+							MapType = MapReplaceOfRef.Get(XMLType);
 							
-							If СоответствиеТипа = Неопределено Then
+							If MapType = Undefined Then
 								
-								СоответствиеТипа = New Соответствие;
-								СоответствиеТипа.Вставить(СсылкаВФайле, СсылкаВБазе);
-								СоответствиеЗаменыСсылок.Вставить(XMLТип, СоответствиеТипа);
+								MapType = New Map;
+								MapType.Insert(RefInFile, RefInIB);
+								MapReplaceOfRef.Insert(XMLType, MapType);
 								
 							Else
 								
-								СоответствиеТипа.Вставить(СсылкаВФайле, СсылкаВБазе);
+								MapType.Insert(RefInFile, RefInIB);
 								
 							EndIf;
 							
@@ -231,8 +221,8 @@ Procedure ЗагрузитьТаблицуПредопределенных(Чт�
 					Else
 						
 						ExeptionText = NStr("ru = 'Обнаружено дублирование предопределенных элементов %1 в таблице %2!'");
-						ExeptionText = StrReplace(ExeptionText, "%1", ВременнаяСтрока.ИмяПредопределенныхДанных);
-						ExeptionText = StrReplace(ExeptionText, "%2", ВременнаяСтрока.ИмяТаблицы);
+						ExeptionText = StrReplace(ExeptionText, "%1", TempRow.PredefinedDataName);
+						ExeptionText = StrReplace(ExeptionText, "%2", TempRow.TableName);
 						
 						Raise ExeptionText;
 						
@@ -246,285 +236,263 @@ Procedure ЗагрузитьТаблицуПредопределенных(Чт�
 		
 	EndDo;
 	
-	ЧтениеXML.Закрыть();
+	XMLReader.Close();
 	
 EndProcedure
 
-// Возвращает менеджер объекта по полному имени объекта метаданных.
-// Ограничение: не обрабатываются точки маршрутов бизнес-процессов.
+// Return the manager object name of the object metadata.
+// Restriction: not handled-point routes business processes.
 //
-// Параметры:
-//  ПолноеИмя - Строка - полное имя объекта метаданных. Пример: "Справочник.Организации".
+// Parameters:
+// FullName - String - full name of metadata object. Example: "Catalogs.Organization."
 //
-// Возвращаемое значение:
-//  СправочникМенеджер, ДокументМенеджер.
+// Return value:
+// CatalogManager, DocumentManager.
 // 
-Function МенеджерОбъектаПоПолномуИмени(ПолноеИмя)
+Function ObjectManagerByFullName(FullName)
 	
-	ЧастиИмени = StrSplit(ПолноеИмя, ".");
+	NameParts = StrSplit(FullName, ".");
 	
-	If ЧастиИмени.Количество() >= 2 Then
-		КлассОМ = ЧастиИмени[0];
-		ИмяОМ = ЧастиИмени[1];
+	If NameParts.Count() >= 2 Then
+		ClassOM = NameParts[0];
+		NameOM = NameParts[1];
 	EndIf;
 	
-	//If ВРег(КлассОМ) = "СПРАВОЧНИК" Then
-	If ВРег(КлассОМ) = "CATALOG" Then
-		Менеджер = Справочники;
-	//ElseIf ВРег(КлассОМ) = "ПЛАНВИДОВХАРАКТЕРИСТИК" Then
-	ElsIf ВРег(КлассОМ) = "CHARTOFCHARACTERISTICTYPES" Then
-		Менеджер = ПланыВидовХарактеристик;
-	//ElseIf ВРег(КлассОМ) = "ПЛАНСЧЕТОВ" Then
-	ElsIf ВРег(КлассОМ) = "CHARTOFACCOUNTS" Then
-		Менеджер = ПланыСчетов;
-	//ElseIf ВРег(КлассОМ) = "ПЛАНВИДОВРАСЧЕТА" Then
-	ElsIf ВРег(КлассОМ) = "CHARTOFCALCULATIONTYPES" Then
-		Менеджер = ПланыВидовРасчета;
+	If ВРег(ClassOM) = "CATALOG" Then
+		Manager = Catalogs;
+	ElsIf ВРег(ClassOM) = "CHARTOFCHARACTERISTICTYPES" Then
+		Manager = ChartsOfCharacteristicTypes;
+	ElsIf ВРег(ClassOM) = "CHARTOFACCOUNTS" Then
+		Manager = ChartsOfAccounts;
+	ElsIf ВРег(ClassOM) = "CHARTOFCALCULATIONTYPES" Then
+		Manager = ChartsOfCalculationTypes;
 	EndIf;
 	
-	Return Менеджер[ИмяОМ];
+	Return Manager[NameOM];
 	
 EndFunction
 
-// Возвращает СериализаторXDTO с аннотацией типов.
+// Return XDTOSerializer with annotation type.
 //
-// Возвращаемое значение:
-//	СериализаторXDTO - сериализатор.
+// Return value:
+//	XDTOSerializer - Serializer.
 //
-Procedure ИнициализироватьСериализаторXDTOСАннотациейТипов()
+Procedure InitializateSerializatorXDTOWithAnnotationTypes()
 	
-	ТипыСАннотациейСсылок = ПредопределенныеТипыПриВыгрузке();
+	TypeWithAnotationsRef = PredifinedTypeForUnload();
 	
-	If ТипыСАннотациейСсылок.Количество() > 0 Then
+	If TypeWithAnotationsRef.Count() > 0 Then
 		
-		Фабрика = ПолучитьФабрикуСУказаниемТипов(ТипыСАннотациейСсылок);
-		Serializer = New СериализаторXDTO(Фабрика);
+		Factory = FactoryWithTypes(TypeWithAnotationsRef);
+		Serializer = New XDTOSerializer(Factory);
 		
 	Else
 		
-		Serializer = СериализаторXDTO;
+		Serializer = XDTOSerializer;
 		
 	EndIf;
 	
 EndProcedure
 
-Function ПредопределенныеТипыПриВыгрузке()
+Function PredifinedTypeForUnload()
 	
-	Типы = New Массив;
+	Types = New Array;
 	
-	For Each ОбъектМетаданных Из Метаданные.Справочники Do
-		Типы.Добавить(ОбъектМетаданных);
+	For Each MetadataObject Из Metadata.Catalogs Do
+		Types.Add(MetadataObject);
 	EndDo;
 	
-	For Each ОбъектМетаданных Из Метаданные.ПланыСчетов Do
-		Типы.Добавить(ОбъектМетаданных);
+	For Each MetadataObject Из Metadata.ChartsOfAccounts Do
+		Types.Add(MetadataObject);
 	EndDo;
 	
-	For Each ОбъектМетаданных Из Метаданные.ПланыВидовХарактеристик Do
-		Типы.Добавить(ОбъектМетаданных);
+	For Each MetadataObject Из Metadata.ChartsOfCharacteristicTypes Do
+		Types.Add(MetadataObject);
 	EndDo;
 	
-	For Each ОбъектМетаданных Из Метаданные.ПланыВидовРасчета Do
-		Типы.Добавить(ОбъектМетаданных);
+	For Each MetadataObject Из Metadata.ChartsOfCalculationTypes Do
+		Types.Add(MetadataObject);
 	EndDo;
 	
-	Return Типы;
+	Return Types;
 	
 EndFunction
 
-// Возвращает фабрику с указанием типов.
-//
-// Параметры:
-//	Типы - ФиксированныйМассив (Метаданные) - массив типов.
-//
-// Возвращаемое значение:
-//	ФабрикаXDTO - фабрика.
-//
-Function ПолучитьФабрикуСУказаниемТипов(Знач Типы)
+Function FactoryWithTypes(Val Types)
 	
-	НаборСхем = ФабрикаXDTO.ЭкспортСхемыXML("http://v8.1c.ru/8.1/data/enterprise/current-config");
-	Схема = НаборСхем[0];
-	Схема.ОбновитьЭлементDOM();
+	SchemaSet = XDTOFactory.ExportXMLSchema("http://v8.1c.ru/8.1/data/enterprise/current-config");
+	Schema = SchemaSet[0];
+	Schema.UpdateDOMElement();
 	
-	УказанныеТипы = New Соответствие;
-	For Each Тип Из Типы Do
-		УказанныеТипы.Вставить(XMLTypeOfRef(Тип), True);
+	SpecifiedTypes = New Map;
+	For Each Type Из Types Do
+		SpecifiedTypes.Insert(XMLTypeOfRef(Type), True);
 	EndDo;
 	
-	ПространствоИмен = New Соответствие;
-	ПространствоИмен.Вставить("xs", "http://www.w3.org/2001/XMLSchema");
-	РазыменовательПространствИменDOM = New РазыменовательПространствИменDOM(ПространствоИмен);
-	ТекстXPath = "/xs:schema/xs:complexType/xs:sequence/xs:element[starts-with(@type,'tns:')]";
+	NameSpace = New Map;
+	NameSpace.Insert("xs", "http://www.w3.org/2001/XMLSchema");
+	DOMNamespaceResolver = New DOMNamespaceResolver(NameSpace);
+	TextXPath = "/xs:schema/xs:complexType/xs:sequence/xs:element[starts-with(@type,'tns:')]";
 	
-	Запрос = Схема.ДокументDOM.СоздатьВыражениеXPath(ТекстXPath, РазыменовательПространствИменDOM);
-	Результат = Запрос.Вычислить(Схема.ДокументDOM);
+	Query = Schema.DOMDocument.CreateXPathExpression(TextXPath, DOMNamespaceResolver);
+	Result = Query.Evaluate(Schema.DOMDocument);
 
 	While True Do
 		
-		УзелПоля = Результат.ПолучитьСледующий();
-		If УзелПоля = Неопределено Then
-			Прервать;
+		Node = Result.IterateNext();
+		If Node = Undefined Then
+			Break;
 		EndIf;
-		АтрибутТип = УзелПоля.Атрибуты.ПолучитьИменованныйЭлемент("type");
-		ТипБезNSПрефикса = Сред(АтрибутТип.ТекстовоеСодержимое, СтрДлина("tns:") + 1);
+		TypeAttribute = Node.Attributes.GetNamedItem("type");
+		TypeWithoutNSPrefix = Mid(TypeAttribute.TextContent, StrLen("tns:") + 1);
 		
-		If УказанныеТипы.Получить(ТипБезNSПрефикса) = Неопределено Then
-			Продолжить;
+		If SpecifiedTypes.Get(TypeWithoutNSPrefix) = Undefined Then
+			Continue;
 		EndIf;
 		
-		УзелПоля.УстановитьАтрибут("nillable", "true");
-		УзелПоля.УдалитьАтрибут("type");
+		Node.SetAttribute("nillable", "true");
+		Node.RemoveAttribute("type");
 	EndDo;
 	
-	ЗаписьXML = New ЗаписьXML;
-	ИмяФайлаСхемы = ПолучитьИмяВременногоФайла("xsd");
-	ЗаписьXML.ОткрытьФайл(ИмяФайлаСхемы);
-	ЗаписьDOM = New ЗаписьDOM;
-	ЗаписьDOM.Записать(Схема.ДокументDOM, ЗаписьXML);
-	ЗаписьXML.Закрыть();
+	XMLWriter = New XMLWriter;
+	SchemeFileName = GetTempFileName("xsd");
+	XMLWriter.OpenFile(SchemeFileName);
+	DOMWriter = New DOMWriter;
+	DOMWriter.Write(Schema.DOMDocument, XMLWriter);
+	XMLWriter.Close();
 	
-	Фабрика = СоздатьФабрикуXDTO(ИмяФайлаСхемы);
+	Factory = CreateXDTOFactory(SchemeFileName);
 	
-	Попытка
-		УдалитьФайлы(ИмяФайлаСхемы);
-	Исключение
-	КонецПопытки;
+	Try
+		DeleteFiles(SchemeFileName);
+	Except
+	EndTry;
 	
-	Return Фабрика;
+	Return Factory;
 	
 EndFunction
 
-// Возвращает имя типа, который будет использован в xml файле для указанного объекта метаданных
-// Используется при поиске и замене ссылок при загрузке, при модификации схемы current-config при записи
-// 
-// Параметры:
-//  Значение - Объект метаданных или Ссылка
-//
-// Возвращаемое значение:
-//  Строка - Строка вида AccountingRegisterRecordSet.Хозрасчетный, описывающая объект метаданных 
-//
-Function XMLTypeOfRef(Знач Value)
+Function XMLTypeOfRef(Val Value)
 	
-	If ТипЗнч(Value) = Тип("ОбъектМетаданных") Then
-		ОбъектМетаданных = Value;
-		МенеджерОбъекта = МенеджерОбъектаПоПолномуИмени(ОбъектМетаданных.ПолноеИмя());
-		Ref = МенеджерОбъекта.ПолучитьСсылку();
+	If TypeOf(Value) = Type("MetadataObject") Then
+		MetadataObject = Value;
+		ObjectManager = ObjectManagerByFullName(MetadataObject.FullName());
+		Ref = ObjectManager.GetRef();
 	Else
-		ОбъектМетаданных = Value.Метаданные();
+		MetadataObject = Value.Metadata();
 		Ref = Value;
 	EndIf;
 	
-	If ОбъектОбразуетСсылочныйТип(ОбъектМетаданных) Then
+	If ObjectFormsReferenceType(MetadataObject) Then
 		
-		Return СериализаторXDTO.XMLТипЗнч(Ref).ИмяТипа;
+		Return XDTOSerializer.XMLTypeOf(Ref).TypeName;
 		
 	Else
 		
-		ExeptionText = NStr("ru = 'Ошибка при определении XMLТипа ссылки для объекта %1: объект не является ссылочным!'");
-		ExeptionText = StrReplace(ExeptionText, "%1", ОбъектМетаданных.ПолноеИмя());
+		ExceptionText = NStr("ru = 'Ошибка при определении XMLТипа ссылки для объекта %1: объект не является ссылочным!'");
+		ExceptionText = StrReplace(ExceptionText, "%1", MetadataObject.FullName());
 		
-		Raise ExeptionText;
+		Raise ExceptionText;
 		
 	EndIf;
 	
 EndFunction
 
-// Function определяет имеет ли переданный объект метаданных ссылочный тип
+// Function determines whether the passed metadata object reference type
 //
-// Return - True, If переданный объект метаданных имеет ссылочный тип, False - противном случае
-Function ОбъектОбразуетСсылочныйТип(ОбъектМД)
+Function ObjectFormsReferenceType(ObjectMD)
 	
-	If ОбъектМД = Неопределено Then
+	If ObjectMD = Undefined Then
 		Return False;
 	EndIf;
 	
-	If Метаданные.Справочники.Содержит(ОбъектМД)
-		ИЛИ Метаданные.Документы.Содержит(ОбъектМД)
-		ИЛИ Метаданные.ПланыВидовХарактеристик.Содержит(ОбъектМД)
-		ИЛИ Метаданные.ПланыСчетов.Содержит(ОбъектМД)
-		ИЛИ Метаданные.ПланыВидовРасчета.Содержит(ОбъектМД)
-		ИЛИ Метаданные.ПланыОбмена.Содержит(ОбъектМД)
-		ИЛИ Метаданные.БизнесПроцессы.Содержит(ОбъектМД)
-		ИЛИ Метаданные.Задачи.Содержит(ОбъектМД) Then
+	If Metadata.Catalogs.Contains(ObjectMD)
+		OR Metadata.Documents.Contains(ObjectMD)
+		OR Metadata.ChartsOfCharacteristicTypes.Contains(ObjectMD)
+		OR Metadata.ChartsOfAccounts.Contains(ObjectMD)
+		OR Metadata.ChartsOfCalculationTypes.Contains(ObjectMD)
+		OR Metadata.ExchangePlans.Contains(ObjectMD)
+		OR Metadata.BusinessProcesses.Contains(ObjectMD)
+		OR Metadata.Tasks.Contains(ObjectMD) Then
 		Return True;
 	EndIf;
 	
 	Return False;
 EndFunction
 
-Procedure ЗаменитьСсылкиНаПредопределенные(ИмяФайла)
+Procedure ReplaceRefToPredefined(FileName)
 	
-	ПотокЧтения = New ЧтениеТекста(ИмяФайла);
+	ReadFlow = New TextReader(FileName);
 	
-	ВременныйФайл = ПолучитьИмяВременногоФайла("xml");
+	TempFile = GetTempFileName("xml");
 	
-	ПотокЗаписи = New ЗаписьТекста(ВременныйФайл);
+	WriteFlow = New TextWriter(TempFile);
 	
-	// Константы для разбора текста
-	НачалоТипа = "xsi:type=""v8:";
-	ДлинаНачалаТипа = СтрДлина(НачалоТипа);
-	КонецТипа = """>";
-	ДлинаКонцаТипа = СтрДлина(КонецТипа);
+	// Constans for parse text
+	StartOfType = "xsi:type=""v8:";
+	LengthStartOfType = StrLen(StartOfType);
+	EndOfType = """>";
+	LengthEndOfType = StrLen(EndOfType);
 	
-	ИсходнаяСтрока = ПотокЧтения.ПрочитатьСтроку();
-	While ИсходнаяСтрока <> Неопределено Do
+	SourceRow = ReadFlow.ReadLine();
+	While SourceRow <> Undefined Do
 		
-		ОстатокСтроки = Неопределено;
+		RemainsOfRow = Undefined;
 		
-		ТекущаяПозиция = 1;
-		ПозицияТипа = Найти(ИсходнаяСтрока, НачалоТипа);
-		While ПозицияТипа > 0 Do
+		CurrentPosition = 1;
+		TypePosition = Find(SourceRow, StartOfType);
+		While TypePosition > 0 Do
 			
-			ПотокЗаписи.Записать(Сред(ИсходнаяСтрока, ТекущаяПозиция, ПозицияТипа - 1 + ДлинаНачалаТипа));
+			WriteFlow.Write(Mid(SourceRow, CurrentPosition, TypePosition - 1 + LengthStartOfType));
 			
-			ОстатокСтроки = Сред(ИсходнаяСтрока, ТекущаяПозиция + ПозицияТипа + ДлинаНачалаТипа - 1);
-			ТекущаяПозиция = ТекущаяПозиция + ПозицияТипа + ДлинаНачалаТипа - 1;
+			RemainsOfRow = Mid(SourceRow, CurrentPosition + TypePosition + LengthStartOfType - 1);
+			CurrentPosition = CurrentPosition + TypePosition + LengthStartOfType - 1;
 			
-			ПозицияКонцаТипа = Найти(ОстатокСтроки, КонецТипа);
-			If ПозицияКонцаТипа = 0 Then
-				Прервать;
+			EndOfTypePosition = Find(RemainsOfRow, EndOfType);
+			If EndOfTypePosition = 0 Then
+				Break;
 			EndIf;
 			
-			ИмяТипа = Лев(ОстатокСтроки, ПозицияКонцаТипа - 1);
-			СоответствиеЗамены = СоответствиеЗаменыСсылок.Получить(ИмяТипа);
-			If СоответствиеЗамены = Неопределено Then
-				ПозицияТипа = Найти(ОстатокСтроки, НачалоТипа);
-				Продолжить;
+			TypeName = Left(RemainsOfRow, EndOfTypePosition - 1);
+			MapReplace = MapReplaceOfRef.Get(TypeName);
+			If MapReplace = Undefined Then
+				TypePosition = Find(RemainsOfRow, StartOfType);
+				Continue;
 			EndIf;
 			
-			ПотокЗаписи.Записать(ИмяТипа);
-			ПотокЗаписи.Записать(КонецТипа);
+			WriteFlow.Write(TypeName);
+			WriteFlow.Write(EndOfType);
 			
-			ИсходнаяСсылкаXML = Сред(ОстатокСтроки, ПозицияКонцаТипа + ДлинаКонцаТипа, 36);
+			SourceRowXML = Mid(RemainsOfRow, EndOfTypePosition + LengthEndOfType, 36);
 			
-			НайденнаяСсылкаXML = СоответствиеЗамены.Получить(ИсходнаяСсылкаXML);
+			FindRowXML = MapReplace.Get(SourceRowXML);
 			
-			If НайденнаяСсылкаXML = Неопределено Then
-				ПотокЗаписи.Записать(ИсходнаяСсылкаXML);
+			If FindRowXML = Undefined Then
+				WriteFlow.Write(SourceRowXML);
 			Else
-				ПотокЗаписи.Записать(НайденнаяСсылкаXML);
+				WriteFlow.Write(FindRowXML);
 			EndIf;
 			
-			ТекущаяПозиция = ТекущаяПозиция + ПозицияКонцаТипа - 1 + ДлинаКонцаТипа + 36;
-			ОстатокСтроки = Сред(ОстатокСтроки, ПозицияКонцаТипа + ДлинаКонцаТипа + 36);
-			ПозицияТипа = Найти(ОстатокСтроки, НачалоТипа);
+			CurrentPosition = CurrentPosition + EndOfTypePosition - 1 + LengthEndOfType + 36;
+			RemainsOfRow = Mid(RemainsOfRow, EndOfTypePosition + LengthEndOfType + 36);
+			TypePosition = Find(RemainsOfRow, StartOfType);
 			
 		EndDo;
 		
-		If ОстатокСтроки <> Неопределено Then
-			ПотокЗаписи.ЗаписатьСтроку(ОстатокСтроки);
+		If RemainsOfRow <> Undefined Then
+			WriteFlow.WriteLine(RemainsOfRow);
 		Else
-			ПотокЗаписи.ЗаписатьСтроку(ИсходнаяСтрока);
+			WriteFlow.WriteLine(SourceRow);
 		EndIf;
 		
-		ИсходнаяСтрока = ПотокЧтения.ПрочитатьСтроку();
+		SourceRow = ReadFlow.ReadLine();
 		
 	EndDo;
 	
-	ПотокЧтения.Закрыть();
-	ПотокЗаписи.Закрыть();
+	ReadFlow.Close();
+	WriteFlow.Close();
 	
-	ИмяФайла = ВременныйФайл;
+	FileName = TempFile;
 	
 EndProcedure
 
