@@ -561,17 +561,8 @@ Procedure OnFormCreationAccessValues(Form,
 		FormItems.Add(Items);
 	EndIf;
 	
-	ErrorTitle =
-//{{MRG[ <-> ]
-		NStr("en='An error occurred"
-"in the OnCreateAccessValueForm procedure of the AccessManagement general module.';ru='Ошибка"
-"в процедуре ПриСозданииФормыЗначенияДоступа общего модуля УправлениеДоступом.'");
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//		NStr("en='An error occurred
-//		|in the OnCreateAccessValueForm procedure of the AccessManagement general module.';ru='Ошибка
-//		|в процедуре ПриСозданииФормыЗначенияДоступа общего модуля УправлениеДоступом.'");
-//}}MRG[ <-> ]
+	ErrorTitle = NStr("en='An error occurred in the OnCreateAccessValueForm procedure of the AccessManagement general module.';
+					  |ru='Ошибка в процедуре ПриСозданииФормыЗначенияДоступа общего модуля УправлениеДоступом.'");
 	
 	GroupsProperties = AccessValuesGroupsProperties(AccessValueType, ErrorTitle);
 	
@@ -584,28 +575,15 @@ Procedure OnFormCreationAccessValues(Form,
 	If TypeOf(AccessValuesGroup) <> GroupsProperties.Type Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF + Chars.LF +
-//{{MRG[ <-> ]
-			NStr("en='For access values of"
-"the ""%1"" type access kind ""%2"" is used"
-"with the values type ""%3"" specified in the overridable module."
-"But this type does not match the type ""%4"" in"
-"the access value form in the AccessGroup attribute.';ru='Для значений доступа"
-"типа ""%1"" используются вид доступа"
-"""%2"" с типом значений ""%3"", заданным в переопределяемом модуле."
-"Но этот тип не совпадает с типом ""%4"""
-"в форме значения доступа у реквизита ГруппаДоступа.'"),
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//			NStr("en='For access values of
-//		|the ""%1"" type access kind ""%2"" is used
-//		|with the values type ""%3"" specified in the overridable module.
-//		|But this type does not match the type ""%4"" in
-//		|the access value form in the AccessGroup attribute.';ru='Для значений доступа
-//		|типа ""%1"" используются вид доступа
-//		|""%2"" с типом значений ""%3"", заданным в переопределяемом модуле.
-//		|Но этот тип не совпадает с типом ""%4""
-//		|в форме значения доступа у реквизита ГруппаДоступа.'"),
-//}}MRG[ <-> ]
+			NStr("en='For access values of the ""%1"" type access kind ""%2"" is used
+					 |with the values type ""%3"" specified in the overridable module.
+					 |But this type does not match the type ""%4"" in
+					 |the access value form in the AccessGroup attribute.';
+				 |ru='Для значений доступа типа ""%1"" используются вид доступа
+					 |""%2"" с типом значений ""%3"", заданным в переопределяемом модуле.
+					 |Но этот тип не совпадает с типом ""%4""
+					 |в форме значения доступа у реквизита ГруппаДоступа.'"),
+
 			String(AccessValueType),
 			String(GroupsProperties.AccessKind),
 			String(GroupsProperties.Type),
@@ -660,8 +638,8 @@ Procedure OnFormCreationAccessValues(Form,
 		EndIf;
 	EndIf;
 	
-	NewChoiceParameter = New ChoiceParameter(
-		"Filter.Ref", New FixedArray(ValueGroupsForChanges));
+	NewChoiceParameter = New ChoiceParameter("Filter.Ref", 
+									New FixedArray(ValueGroupsForChanges));
 	
 	ChoiceParameters = New Array;
 	ChoiceParameters.Add(NewChoiceParameter);
@@ -688,16 +666,8 @@ EndProcedure
 Function AccessValuesGroupsAllowingAccessValuesChange(AccessValuesType, ReturnAll = False) Export
 	
 	ErrorTitle =
-//{{MRG[ <-> ]
-		NStr("en='An error occurred"
-"in the AccessValueGroupsAllowingAccessValuesChange procedure of the AccessManagement general module.';ru='Ошибка"
-"в процедуре ГруппыЗначенийДоступаРазрешающиеИзменениеЗначенийДоступа общего модуля УправлениеДоступом.'");
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//		NStr("en='An error occurred
-//		|in the AccessValueGroupsAllowingAccessValuesChange procedure of the AccessManagement general module.';ru='Ошибка
-//		|в процедуре ГруппыЗначенийДоступаРазрешающиеИзменениеЗначенийДоступа общего модуля УправлениеДоступом.'");
-//}}MRG[ <-> ]
+		NStr("en='An error occurred in the AccessValueGroupsAllowingAccessValuesChange procedure of the AccessManagement general module.';
+			 |ru='Ошибка в процедуре ГруппыЗначенийДоступаРазрешающиеИзменениеЗначенийДоступа общего модуля УправлениеДоступом.'");
 	
 	GroupsProperties = AccessValuesGroupsProperties(AccessValuesType, ErrorTitle);
 	
@@ -893,29 +863,12 @@ Procedure FillAccessValueSets(Val Object, Table, Val RefOnSubordinatedObject = U
 	
 	If Not SetsAreFilling Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-//{{MRG[ <-> ]
-			NStr("en='Wrong parameters."
-"Object type"
-"""%1"" is found in no subscription"
-"to events ""Write access"
-"value sets"", ""Write dependent access value sets"".';ru='Неверные параметры."
-"Тип"
-"объекта ""%1"" не найден ни"
-"в одной из подписок"
-"на события ""Записать наборы значений доступа"", ""Записать зависимые наборы значений доступа"".'"),
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//			NStr("en='Wrong parameters.
-//		|Object type
-//		|""%1"" is found in no subscription
-//		|to events ""Write access
-//		|value sets"", ""Write dependent access value sets"".';ru='Неверные параметры.
-//		|Тип
-//		|объекта ""%1"" не найден ни
-//		|в одной из подписок
-//		|на события ""Записать наборы значений доступа"", ""Записать зависимые наборы значений доступа"".'"),
-//}}MRG[ <-> ]
-			ValueTypeObject);
+			NStr("en='Wrong parameters. Object type ""%1"" is found in no subscription
+					 |to events ""Write access value sets"", ""Write dependent access value sets"".';
+				 |ru='Неверные параметры. Тип объекта ""%1"" не найден ни в одной из подписок
+					 |на события ""Записать наборы значений доступа"", ""Записать зависимые наборы значений доступа"".'"),
+
+		ValueTypeObject);
 	EndIf;
 	
 	Table = ?(TypeOf(Table) = Type("ValueTable"), Table, TableAccessValueSets());
@@ -1418,29 +1371,16 @@ Procedure ReplaceRightsInObjectRightSettings(RenamingsTable) Export
 					+ String.NewName;
 			EndDo;
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-//{{MRG[ <-> ]
-				NStr("en='An error occurred in"
-"the RenameRightInObjectRightsSettings procedure parameters of the AccessManagement general module."
-""
-"Settings of the following rights new names will"
-"be repeated: %1.';ru='Ошибка в"
-"параметрах процедуры ПереименоватьПравоВНастройкахПравОбъектов общего модуля УправлениеДоступом."
-""
-"После обновления будут повторяться настройки"
-"следующих новых имен прав: %1.'"),
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//				NStr("en='An error occurred in
-//		|the RenameRightInObjectRightsSettings procedure parameters of the AccessManagement general module.
-//		|
-//		|Settings of the following rights new names will
-//		|be repeated: %1.';ru='Ошибка в
-//		|параметрах процедуры ПереименоватьПравоВНастройкахПравОбъектов общего модуля УправлениеДоступом.
-//		|
-//		|После обновления будут повторяться настройки
-//		|следующих новых имен прав: %1.'"),
-//}}MRG[ <-> ]
-				RepeatedRightsNewNames);
+					NStr("en='An error occurred in the RenameRightInObjectRightsSettings procedure 
+							 |parameters of the AccessManagement general module.
+ 							 |
+							 |Settings of the following rights new names will be repeated: %1.';
+						 |ru='Ошибка в параметрах процедуры ПереименоватьПравоВНастройкахПравОбъектов 
+						 	 |общего модуля УправлениеДоступом.
+							 |
+							 |После обновления будут повторяться настройки следующих новых имен прав: %1.'"),
+
+			RepeatedRightsNewNames);
 		EndIf;
 		
 		ReplacementTable = ResultsOfQuery[ResultsOfQuery.Count()-1].Unload();
@@ -1591,42 +1531,26 @@ Procedure ClarifyAccessValueSets(ObjectReference, Table)
 		      OR String.AccessKind = "RightSettings" Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-//{{MRG[ <-> ]
-				NStr("en='Object ""%1"" generated access"
-"values set containing known access kind ""%2"" that should not be specified."
-""
-"Specify only special access"
-"kinds ""ReadingRight"", ""ChangingRight"" if they are used.';ru='Объект ""%1"""
-"сформировал набор значений доступа, содержащий известный вид доступа ""%2"", который не требуется указывать."
-""
-"Указывать требуется"
-"только специальные виды доступа ""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//				NStr("en='Object ""%1"" generated access
-//		|values set containing known access kind ""%2"" that should not be specified.
-//		|
-//		|Specify only special access
-//		|kinds ""ReadingRight"", ""ChangingRight"" if they are used.';ru='Объект ""%1""
-//		|сформировал набор значений доступа, содержащий известный вид доступа ""%2"", который не требуется указывать.
-//		|
-//		|Указывать требуется
-//		|только специальные виды доступа ""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
-//}}MRG[ <-> ]
+				NStr("en='Object ""%1"" generated access values set containing known 
+						 |access kind ""%2"" that should not be specified.
+						 |
+						 |Specify only special access
+						 |kinds ""ReadingRight"", ""ChangingRight"" if they are used.';
+					 |ru='Объект ""%1"" сформировал набор значений доступа, содержащий 
+					 	 |известный вид доступа ""%2"", который не требуется указывать.
+						 |
+						 |Указывать требуется только специальные виды доступа 
+						 |""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
+
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-//{{MRG[ <-> ]
-				NStr("en='Object ""%1"" generated access"
-"values set containing unknown access kind ""%2"".';ru='Объект ""%1"""
-"сформировал набор значений доступа, содержащий неизвестный вид доступа ""%2"".'"),
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//				NStr("en='Object ""%1"" generated access
-//		|values set containing unknown access kind ""%2"".';ru='Объект ""%1""
-//		|сформировал набор значений доступа, содержащий неизвестный вид доступа ""%2"".'"),
-//}}MRG[ <-> ]
+				NStr("en='Object ""%1"" generated access
+						 |values set containing unknown access kind ""%2"".';
+					 |ru='Объект ""%1"" сформировал набор значений доступа, 
+					 	 |содержащий неизвестный вид доступа ""%2"".'"),
+					 
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		EndIf;
@@ -1893,10 +1817,10 @@ Procedure FillTypeCodesAndSetStringsTable(TypesCodes, EnumCodes, SetStringsTable
 		+ 6; // Place for separators
 	
 	SetStringsTable = New ValueTable;
-	SetStringsTable.Columns.Add("RowID", New TypeDescription("String", New StringQualifiers(StringLengthID)));
-	SetStringsTable.Columns.Add("AccessKind",          New TypeDescription("String", New StringQualifiers(20)));
-	SetStringsTable.Columns.Add("AccessValue",     Metadata.DefinedTypes.AccessValue.Type);
-	SetStringsTable.Columns.Add("Adjustment",           New TypeDescription("CatalogRef.MetadataObjectIDs"));
+	SetStringsTable.Columns.Add("RowID", 	   New TypeDescription("String", New StringQualifiers(StringLengthID)));
+	SetStringsTable.Columns.Add("AccessKind",  New TypeDescription("String", New StringQualifiers(20)));
+	SetStringsTable.Columns.Add("AccessValue", Metadata.DefinedTypes.AccessValue.Type);
+	SetStringsTable.Columns.Add("Adjustment",  New TypeDescription("CatalogRef.MetadataObjectIDs"));
 	
 EndProcedure
 
@@ -2004,17 +1928,10 @@ Function AccessValuesGroupsProperties(AccessValueType, ErrorTitle)
 	If AccessTypeProperties = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
 			ErrorTitle + Chars.LF + Chars.LF +
-//{{MRG[ <-> ]
-			NStr("en='For the access values"
-"of the ""%1"" type access value groups are not used.';ru='Для значений"
-"доступа типа ""%1"" не используются группы значений доступа.'"),
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//			NStr("en='For the access values
-//		|of the ""%1"" type access value groups are not used.';ru='Для значений
-//		|доступа типа ""%1"" не используются группы значений доступа.'"),
-//}}MRG[ <-> ]
-			String(AccessValueType));
+			NStr("en='For the access values of the ""%1"" type access value groups are not used.';
+				 |ru='Для значений доступа типа ""%1"" не используются группы значений доступа.'"),
+
+		String(AccessValueType));
 	EndIf;
 	
 	GroupsProperties.Insert("AccessKind", AccessTypeProperties.Name);
