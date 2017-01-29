@@ -53,17 +53,3 @@ Procedure DeleteVersionsFromRegister(Val RecordList)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

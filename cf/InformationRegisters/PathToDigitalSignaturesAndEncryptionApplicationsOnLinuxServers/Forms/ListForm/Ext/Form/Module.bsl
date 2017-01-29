@@ -56,17 +56,3 @@ Procedure ListAfterDeletion(Item)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

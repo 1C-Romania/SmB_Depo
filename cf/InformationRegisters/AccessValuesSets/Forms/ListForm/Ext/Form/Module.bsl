@@ -57,17 +57,3 @@ Procedure SetConditionalAppearance()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -639,16 +639,3 @@ Procedure ExecuteDataExchangeForInfobaseNodeFinishLongOperation(
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

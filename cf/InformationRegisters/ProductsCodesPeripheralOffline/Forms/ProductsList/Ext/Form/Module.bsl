@@ -391,17 +391,3 @@ Function DeleteChangeRecordsAtServer(CodesArray, ErrorDescription = "")
 	Return ReturnValue;
 	
 EndFunction
-
-
-
-
-
-
-
-
-
-
-
-
-
-

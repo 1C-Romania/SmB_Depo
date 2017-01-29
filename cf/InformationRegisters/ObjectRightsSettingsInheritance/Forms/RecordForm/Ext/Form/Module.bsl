@@ -19,17 +19,3 @@ Procedure EnableEditingAbility(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

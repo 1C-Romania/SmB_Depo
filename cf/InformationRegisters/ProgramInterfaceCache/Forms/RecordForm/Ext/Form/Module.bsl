@@ -52,16 +52,3 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

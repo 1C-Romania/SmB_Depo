@@ -98,17 +98,3 @@ Procedure DeleteReminderEnd(QuestionResult, AdditionalParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

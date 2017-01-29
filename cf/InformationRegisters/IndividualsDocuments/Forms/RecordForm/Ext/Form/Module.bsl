@@ -19,20 +19,3 @@ Function IsPersonID(Ind, DocumentKind, Date)
 	Return InformationRegisters.IndividualsDocuments.IsPersonID(Ind, DocumentKind, Date);
 	
 EndFunction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

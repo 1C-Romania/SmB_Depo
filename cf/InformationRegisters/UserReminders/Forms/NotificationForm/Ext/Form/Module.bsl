@@ -355,17 +355,3 @@ Function TimeIntervalPresentation(Val TimeQuantity)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -163,17 +163,3 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 EndProcedure // FillCheckProcessingAtServer()
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

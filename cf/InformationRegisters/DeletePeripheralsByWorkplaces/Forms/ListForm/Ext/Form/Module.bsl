@@ -8,17 +8,3 @@ Procedure AddWorkplace(Command)
 	OpenForm("Catalog.Workplaces.Form.ItemForm", , ThisForm);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

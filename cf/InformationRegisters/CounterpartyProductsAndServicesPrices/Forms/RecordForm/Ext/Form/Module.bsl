@@ -92,21 +92,3 @@ Procedure PriceKindStartChoice(Item, ChoiceData, StandardProcessing)
 	EndIf;
 	
 EndProcedure // PriceKindStartChoice()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

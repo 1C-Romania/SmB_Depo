@@ -334,17 +334,3 @@ Procedure WriteTemplateAndClose()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

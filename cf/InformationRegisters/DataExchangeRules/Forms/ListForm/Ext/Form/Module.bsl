@@ -70,17 +70,3 @@ Procedure UseStandardRulesAtServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

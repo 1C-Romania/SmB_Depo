@@ -462,17 +462,3 @@ Function CommentEditIsAllowed(VersionAuthor)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

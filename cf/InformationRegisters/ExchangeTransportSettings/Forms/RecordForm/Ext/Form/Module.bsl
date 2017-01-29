@@ -374,17 +374,3 @@ Procedure CheckCOMConnectionEnd(Result, AdditionalParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

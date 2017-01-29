@@ -80,17 +80,3 @@ Procedure UpdateAuxilaryRegisterDataAtServer(HasChanges)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

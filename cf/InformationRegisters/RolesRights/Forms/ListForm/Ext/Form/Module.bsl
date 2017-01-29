@@ -64,17 +64,3 @@ Procedure RegisterDataUpdateOnServer(HasChanges)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

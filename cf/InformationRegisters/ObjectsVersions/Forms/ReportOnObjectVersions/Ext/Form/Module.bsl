@@ -1512,16 +1512,3 @@ Function StringDifferences(Row1, Row2, CheckedColumns)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

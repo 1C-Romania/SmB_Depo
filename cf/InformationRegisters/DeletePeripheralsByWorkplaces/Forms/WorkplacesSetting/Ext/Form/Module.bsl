@@ -41,17 +41,3 @@ Function DeviceWorkplace(Device)
 	Return Device.Workplace;
 
 EndFunction
-
-
-
-
-
-
-
-
-
-
-
-
-
-

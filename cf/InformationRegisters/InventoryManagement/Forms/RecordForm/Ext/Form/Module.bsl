@@ -21,17 +21,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf; 
 	
 EndProcedure // OnCreateAtServer()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

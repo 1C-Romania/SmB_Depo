@@ -1159,17 +1159,3 @@ Procedure RefreshSelectionsAndIgnored()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

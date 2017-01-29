@@ -516,17 +516,3 @@ Function CreateQueryOnExternalResourcesUse(Val Record)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

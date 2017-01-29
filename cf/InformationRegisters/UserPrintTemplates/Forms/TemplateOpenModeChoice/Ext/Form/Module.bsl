@@ -72,17 +72,3 @@ Procedure SaveSettingsOfTemplateOpeningMode(AskTemplateOpeningMode, TemplateOpen
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

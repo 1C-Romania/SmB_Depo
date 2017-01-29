@@ -49,17 +49,3 @@ Procedure AfterWrite(WriteParameters)
 	Notify("Record_EnterpriseResourcesKinds");
 	
 EndProcedure // AfterWrite()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

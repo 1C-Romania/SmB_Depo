@@ -157,17 +157,3 @@ Function UsersSynchronizationData()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

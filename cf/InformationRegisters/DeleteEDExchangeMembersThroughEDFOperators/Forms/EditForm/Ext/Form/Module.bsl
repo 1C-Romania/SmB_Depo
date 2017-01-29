@@ -17,17 +17,3 @@ Procedure ScheduleVersionOnChange(Item)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

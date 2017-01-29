@@ -505,17 +505,3 @@ Procedure UpdateEstimatedTimeReminders()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

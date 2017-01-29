@@ -847,17 +847,3 @@ Procedure CloseRulesImportForm(Result, AdditionalParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

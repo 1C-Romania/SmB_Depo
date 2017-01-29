@@ -33,17 +33,3 @@ Procedure ListBeforeDelete(Item, Cancel)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -12,17 +12,3 @@ Procedure OpenCommonTrasportSettings(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -267,17 +267,3 @@ Procedure ToCorrectPermissionDaysCount(Val ProhibitionDateDescription, Permissio
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

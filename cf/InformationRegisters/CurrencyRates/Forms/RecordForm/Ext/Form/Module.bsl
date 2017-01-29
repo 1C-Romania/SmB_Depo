@@ -82,17 +82,3 @@ Procedure FillCurrency()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

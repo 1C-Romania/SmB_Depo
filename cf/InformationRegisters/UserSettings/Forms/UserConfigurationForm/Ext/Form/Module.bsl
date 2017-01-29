@@ -184,20 +184,3 @@ Procedure SettingsTreeBeforeRowChange(Item, Cancel)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

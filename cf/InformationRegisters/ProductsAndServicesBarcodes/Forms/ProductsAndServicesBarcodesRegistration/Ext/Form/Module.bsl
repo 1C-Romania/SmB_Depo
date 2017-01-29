@@ -329,17 +329,3 @@ Procedure ProductsAndServicesBarcodesBeforeAddRow(Item, Cancel, Copy, Parent, Gr
 	Cancel = True;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

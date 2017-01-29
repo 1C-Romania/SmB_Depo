@@ -644,17 +644,3 @@ Function AutomaticClearingIsEnable()
 	Return False;
 EndFunction
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -507,17 +507,3 @@ Procedure SetCommandBarButtonsAvailability()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

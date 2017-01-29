@@ -129,17 +129,3 @@ Procedure IssueValue(Value, Text)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

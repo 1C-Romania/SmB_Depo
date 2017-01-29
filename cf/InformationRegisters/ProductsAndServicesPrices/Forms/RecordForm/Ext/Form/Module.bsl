@@ -196,23 +196,3 @@ Procedure PriceOnChange(Item)
 	Record.Price = RoundPrice(Record.Price, RoundingOrder, RoundUp);
 	
 EndProcedure // PriceOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

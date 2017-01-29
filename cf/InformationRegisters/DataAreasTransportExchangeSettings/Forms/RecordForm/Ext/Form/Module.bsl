@@ -105,17 +105,3 @@ Procedure SetFormItemsVisible()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

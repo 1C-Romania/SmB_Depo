@@ -18,16 +18,3 @@ Procedure OnOpen(Cancel)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

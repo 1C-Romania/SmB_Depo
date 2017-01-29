@@ -7,17 +7,3 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

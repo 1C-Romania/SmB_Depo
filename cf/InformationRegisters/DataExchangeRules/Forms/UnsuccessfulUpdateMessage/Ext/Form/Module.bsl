@@ -100,16 +100,3 @@ Function PagSubstituteWithHighlight(String, SearchSubstring, ReplacementSubrow)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

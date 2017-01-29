@@ -64,16 +64,3 @@ Procedure ChangeMarker(Mark)
 	DataChanged = True;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
