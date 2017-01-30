@@ -1,6 +1,145 @@
 ﻿
-////////////////////////////////////////////////////////////////////////////////
-// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
+#Region FormEventsHandlers
+
+&AtServer
+Procedure OnCreateAtServer(Cancel, StandardProcessing)
+	
+	UseBudgeting = Constants.FunctionalOptionUseBudgeting.Get();
+	
+	If Not ValueIsFilled(Object.Ref) Then
+		
+		If Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.FixedAssets")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Debitors")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.CashAssets") 
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Inventory")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.CreditInterestRates")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.OtherFixedAssets")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.OtherExpenses")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.CostOfGoodsSold") Then
+			Object.Type = AccountType.Active;
+		EndIf;
+		
+		If Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.DepreciationFixedAssets")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.LongtermObligations")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Incomings")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Capital") 
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Creditors")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.CreditsAndLoans")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.OtherIncome")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.ReserveAndAdditionalCapital")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.TradeMarkup") Then
+			Object.Type = AccountType.Passive;
+		EndIf;
+		
+		If Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.ProfitTax")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.UndistributedProfit")
+		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.ProfitLosses") Then
+			Object.Type = AccountType.ActivePassive;
+		EndIf;
+		
+	EndIf;
+	
+	TypeOfAccount = Object.TypeOfAccount;
+	
+EndProcedure // OnCreateAtServer()
+
+&AtClient
+Procedure OnOpen(Cancel)
+	
+	FormManagement();
+	
+EndProcedure
+
+&AtClient
+Procedure AfterWrite(WriteParameters)
+	
+	Notify("Write_ChartOfAccountsManagerial", Object.Ref);
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormItemsEventsHandlers
+
+// Procedure - OnChange event handler of the DistributionMethod entry field.
+//
+&AtClient
+Procedure DistributionModeOnChange(Item)
+	
+	If Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.DirectCost") Then
+		Items.Filter.Visible = True;
+	Else
+		Items.Filter.Visible = False;
+		Object.GLAccounts.Clear();
+	EndIf;
+
+EndProcedure // DistributionModeOnChange()
+
+// Procedure - OnChange event handler of the AccountType entry field.
+//
+&AtClient
+Procedure GLAccountTypeOnChange(Item)
+	
+	If TypeOfAccount = Object.TypeOfAccount Then
+		Return;
+	EndIf;
+	
+	Object.GLAccounts.Clear();
+	
+	FormManagement();
+	
+	If Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.UnfinishedProduction") Then
+		Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.DoNotDistribute");
+	ElsIf Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.IndirectExpenses") Then
+		Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.ProductionVolume");
+	ElsIf Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Expenses")
+		  OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Incomings")
+		  OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.OtherIncome")
+		  OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.OtherExpenses") Then
+		Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.SalesVolume");
+	Else
+		Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.DoNotDistribute");
+	EndIf;
+	
+	Items.Filter.Visible = Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.DirectCost");
+	
+	TypeOfAccount = Object.TypeOfAccount;
+	
+EndProcedure
+
+#EndRegion
+
+#Region CommandHandlers
+
+// Procedure - command handler Filter.
+//
+&AtClient
+Procedure Filter(Command)
+	
+	GLAccountsInStorageAddress = PlaceGLAccountsToStorage();
+	
+	FormParameters = New Structure(
+		"GLAccountsInStorageAddress",
+		GLAccountsInStorageAddress
+	);
+	
+	Notification = New NotifyDescription("FilterCompletion",ThisForm,GLAccountsInStorageAddress);
+	OpenForm("ChartOfAccounts.Managerial.Form.FilterForm", FormParameters,,,,,Notification);
+	
+EndProcedure // Filter()
+
+&AtClient
+Procedure FilterCompletion(Result,GLAccountsInStorageAddress) Export
+	
+	If Result = DialogReturnCode.OK Then
+		GetGLAccountsFromStorage(GLAccountsInStorageAddress);
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
 
 // The function moves the GLAccounts tabular section
 // to the temporary storage and returns the address
@@ -32,7 +171,7 @@ Procedure GetGLAccountsFromStorage(GLAccountsInStorageAddress)
 EndProcedure // GetPaymentDetailsFromStorage()
 
 &AtServer
-Procedure SetItemsVisible()
+Procedure FormManagement()
 	
 	UseBudgeting = Constants.FunctionalOptionUseBudgeting.Get();
 	If Object.TypeOfAccount = Enums.GLAccountsTypes.IndirectExpenses Then
@@ -95,143 +234,4 @@ Procedure SetItemsVisible()
 	
 EndProcedure
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - ACTIONS OF THE FORM COMMAND PANELS
-
-// Procedure - command handler Filter.
-//
-&AtClient
-Procedure Filter(Command)
-	
-	GLAccountsInStorageAddress = PlaceGLAccountsToStorage();
-	
-	FormParameters = New Structure(
-		"GLAccountsInStorageAddress",
-		GLAccountsInStorageAddress
-	);
-	
-	Notification = New NotifyDescription("FilterCompletion",ThisForm,GLAccountsInStorageAddress);
-	OpenForm("ChartOfAccounts.Managerial.Form.FilterForm", FormParameters,,,,,Notification);
-	
-EndProcedure // Filter()
-
-&AtClient
-Procedure FilterCompletion(Result,GLAccountsInStorageAddress) Export
-	
-	If Result = DialogReturnCode.OK Then
-		GetGLAccountsFromStorage(GLAccountsInStorageAddress);
-	EndIf;
-	
-EndProcedure
-
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
-
-// Procedure - OnCreateAtServer event handler.
-//
-&AtServer
-Procedure OnCreateAtServer(Cancel, StandardProcessing)
-	
-	If Not ValueIsFilled(Object.Ref) Then
-		
-		If Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.FixedAssets")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Debitors")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.CashAssets") 
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Inventory")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.CreditInterestRates")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.OtherFixedAssets")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.OtherExpenses")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.CostOfGoodsSold") Then
-			Object.Type = AccountType.Active;
-		EndIf;
-		
-		If Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.DepreciationFixedAssets")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.LongtermObligations")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Incomings")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Capital") 
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Creditors")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.CreditsAndLoans")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.OtherIncome")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.ReserveAndAdditionalCapital")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.TradeMarkup") Then
-			Object.Type = AccountType.Passive;
-		EndIf;
-		
-		If Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.ProfitTax")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.UndistributedProfit")
-		 OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.ProfitLosses") Then
-			Object.Type = AccountType.ActivePassive;
-		EndIf;
-		
-	EndIf;
-	
-	UseBudgeting = Constants.FunctionalOptionUseBudgeting.Get();
-	
-	SetItemsVisible();
-	
-	TypeOfAccount = Object.TypeOfAccount;
-	
-EndProcedure // OnCreateAtServer()
-
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF FORM ATTRIBUTES
-
-// Procedure - OnChange event handler of the DistributionMethod entry field.
-//
-&AtClient
-Procedure DistributionModeOnChange(Item)
-	
-	If Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.DirectCost") Then
-		Items.Filter.Visible = True;
-	Else
-		Items.Filter.Visible = False;
-		Object.GLAccounts.Clear();
-	EndIf;
-
-EndProcedure // DistributionModeOnChange()
-
-// Procedure - OnChange event handler of the AccountType entry field.
-//
-&AtClient
-Procedure GLAccountTypeOnChange(Item)
-	
-	If TypeOfAccount = Object.TypeOfAccount Then
-		Return;
-	EndIf;
-	
-	Object.GLAccounts.Clear();
-	
-	SetItemsVisible();
-	
-	If Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.UnfinishedProduction") Then
-		Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.DoNotDistribute");
-	ElsIf Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.IndirectExpenses") Then
-		Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.ProductionVolume");
-	ElsIf Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Expenses")
-		  OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.Incomings")
-		  OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.OtherIncome")
-		  OR Object.TypeOfAccount = PredefinedValue("Enum.GLAccountsTypes.OtherExpenses") Then
-		Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.SalesVolume");
-	Else
-		Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.DoNotDistribute");
-	EndIf;
-	
-	Items.Filter.Visible = Object.MethodOfDistribution = PredefinedValue("Enum.CostingBases.DirectCost");
-	
-	TypeOfAccount = Object.TypeOfAccount;
-	
-EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#EndRegion

@@ -70,7 +70,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>код</v8:content>
+							<v8:content>Код</v8:content>
 						</v8:item>
 					</Title>
 					<Wrap>false</Wrap>
@@ -101,13 +101,17 @@
 				</LabelField>
 				<LabelField name="MethodOfDistribution" id="18">
 					<DataPath>List.MethodOfDistribution</DataPath>
-					<Visible>false</Visible>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
 					<ContextMenu name="MethodOfDistributionContextMenu" id="19"/>
 					<ExtendedTooltip name="MethodOfDistributionExtendedTooltip" id="26"/>
 				</LabelField>
 				<LabelField name="ClosingAccount" id="20">
 					<DataPath>List.ClosingAccount</DataPath>
-					<Visible>false</Visible>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
 					<ContextMenu name="ClosingAccountContextMenu" id="21"/>
 					<ExtendedTooltip name="ClosingAccountExtendedTooltip" id="27"/>
 				</LabelField>
@@ -119,11 +123,11 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>OffBal.</v8:content>
+							<v8:content>Off-balance</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>OffBal.</v8:content>
+							<v8:content>Забалансовый</v8:content>
 						</v8:item>
 					</Title>
 					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
@@ -155,11 +159,11 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Currency.</v8:content>
+							<v8:content>Cur.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Валюта.</v8:content>
+							<v8:content>Вал.</v8:content>
 						</v8:item>
 					</Title>
 					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>

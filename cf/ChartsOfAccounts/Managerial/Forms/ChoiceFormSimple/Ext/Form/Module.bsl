@@ -1,4 +1,7 @@
-﻿&AtServer
+﻿
+#Region FormEventsHandlers
+
+&AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	FilterItem = List.SettingsComposer.FixedSettings.Filter.Items.Add(Type("DataCompositionFilterItem"));
@@ -46,6 +49,32 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 EndProcedure
+
+&AtClient
+Procedure OnOpen(Cancel)
+	
+	Items.Hierarchy.CurrentRow = CurHierarchyRow;
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormItemsEventsHandlers
+
+&AtClient
+Procedure HierarchyOnActivateRow(Item)
+	
+	If Items.Hierarchy.CurrentData <> Undefined
+	   AND CurHierarchy <> Items.Hierarchy.CurrentData.Value Then
+		SetFilterOnClient(Items.Hierarchy.CurrentData.Value);
+		CurHierarchy = Items.Hierarchy.CurrentData.Value;
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
 
 &AtServer
 Procedure AddHierarchy(GLAccountsTypes = Undefined, TypeOfAccount = Undefined)
@@ -176,34 +205,4 @@ Procedure SetFilterOnClient(TypeOfAccount = Undefined)
 	
 EndProcedure
 
-&AtClient
-Procedure HierarchyOnActivateRow(Item)
-	
-	If Items.Hierarchy.CurrentData <> Undefined
-	   AND CurHierarchy <> Items.Hierarchy.CurrentData.Value Then
-		SetFilterOnClient(Items.Hierarchy.CurrentData.Value);
-		CurHierarchy = Items.Hierarchy.CurrentData.Value;
-	EndIf;
-	
-EndProcedure
-
-&AtClient
-Procedure OnOpen(Cancel)
-	
-	Items.Hierarchy.CurrentRow = CurHierarchyRow;
-	
-EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#EndRegion

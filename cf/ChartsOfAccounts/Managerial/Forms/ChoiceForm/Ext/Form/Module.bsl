@@ -1,6 +1,21 @@
 ﻿
-////////////////////////////////////////////////////////////////////////////////
-// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
+#Region FormEventsHandlers
+
+&AtServer
+Procedure OnCreateAtServer(Cancel, StandardProcessing)
+	
+	If Not Constants.FunctionalOptionUseSubsystemProduction.Get() Then
+		
+		// FO Use Production subsystem.
+		SetVisibleByFOUseProductionSubsystem();
+		
+	EndIf;
+	
+EndProcedure // OnCreateAtServer()
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
 
 &AtServer
 // The procedure sets the form attributes
@@ -24,32 +39,4 @@ Procedure SetVisibleByFOUseProductionSubsystem()
 	
 EndProcedure // SetVisibleByFDUseProductionSubsystem()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
-
-// Procedure - Form event handler "OnCreateAtServer".
-//
-&AtServer
-Procedure OnCreateAtServer(Cancel, StandardProcessing)
-	
-	If Not Constants.FunctionalOptionUseSubsystemProduction.Get() Then
-		
-		// FO Use Production subsystem.
-		SetVisibleByFOUseProductionSubsystem();
-		
-	EndIf;
-	
-EndProcedure // OnCreateAtServer()
-
-
-
-
-
-
-
-
-
-
-
-
-
+#EndRegion

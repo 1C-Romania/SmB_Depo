@@ -64,7 +64,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Account Code</v8:content>
+							<v8:content>Account code</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -99,18 +99,18 @@
 					<ExtendedTooltip name="TypeAccountsExtendedTooltip" id="25"/>
 				</LabelField>
 				<CheckBoxField name="OffBalance" id="10">
-					<DataPath>1/5</DataPath>
+					<DataPath>List.OffBalance</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>OffBal.</v8:content>
+							<v8:content>Off-balance</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>OffBal.</v8:content>
+							<v8:content>Забалансовый</v8:content>
 						</v8:item>
 					</Title>
 					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
@@ -143,11 +143,11 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Currency.</v8:content>
+							<v8:content>Cur.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Валюта.</v8:content>
+							<v8:content>Вал.</v8:content>
 						</v8:item>
 					</Title>
 					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
@@ -220,7 +220,7 @@
 							<dcsset:appearance>
 								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 									<dcscor:parameter>BackColor</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">#FFFF00</dcscor:value>
+									<dcscor:value xsi:type="v8ui:Color">#FFFF99</dcscor:value>
 								</dcscor:item>
 							</dcsset:appearance>
 						</dcsset:item>
