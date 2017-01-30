@@ -649,8 +649,8 @@ Procedure WriteObject(VariantOfTextOfQuestion, ContinuationProcedureName, Additi
 	EndIf;
 	
 	Buttons = New ValueList;
-	Buttons.Add("Write", NStr("en = 'Write'"));
-	Buttons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
+	Buttons.Add("Write", NStr("en = 'Write'; ru = 'Записать'"));
+	Buttons.Add("Cancel", NStr("en = 'Cancel'; ru = 'Отмена'"));
 	
 	ShowQueryBox(
 		New NotifyDescription(
@@ -1289,17 +1289,3 @@ Procedure SetTitleOfFormatButton(Form)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

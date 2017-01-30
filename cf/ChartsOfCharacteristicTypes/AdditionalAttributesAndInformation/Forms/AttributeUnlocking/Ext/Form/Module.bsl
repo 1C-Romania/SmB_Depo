@@ -49,17 +49,3 @@ Procedure AllowEdit(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

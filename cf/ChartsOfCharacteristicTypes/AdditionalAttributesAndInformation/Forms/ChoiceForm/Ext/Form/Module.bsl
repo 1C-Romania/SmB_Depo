@@ -175,17 +175,3 @@ Procedure FillSelectedValues()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
