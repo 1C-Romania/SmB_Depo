@@ -344,16 +344,3 @@ Procedure DecorationInformationAboutSynchronizationWithERClick(Item)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

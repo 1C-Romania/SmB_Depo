@@ -166,21 +166,3 @@ Procedure CheckIntervalRemindersOnChange(Item)
 	Attachable_OnAttributeChange(Item);
 	
 EndProcedure // RemindersCheckIntervalOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -485,16 +485,3 @@ Function AreSubordinatesConstantsED(ParentConstantName, ParentConstantValue)
 	Return SubordinateConstants.Count() > 0;
 	
 EndFunction
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -226,21 +226,3 @@ Procedure ConfirmationOnApplicationExitOnChange(Item)
 	Attachable_OnAttributeChange(Item);
 	
 EndProcedure // ConfirmationOnApplicationExitOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

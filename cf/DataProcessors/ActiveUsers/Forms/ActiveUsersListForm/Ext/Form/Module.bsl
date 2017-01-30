@@ -541,17 +541,3 @@ Procedure DeleteInfobaseSessionsAtServer(AdministrationParameters, Filter)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

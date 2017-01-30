@@ -485,17 +485,3 @@ EndFunction
 Procedure DecorationInformationEDFClick(Item)
 	GotoURL("http://1c-dn.com/developer_tools/1c_subsystems_library/");
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -386,27 +386,3 @@ Procedure CompareVersionsOfFilesClickMethod(Item, StandardProcessing)
 	OpenForm("Enum.FileVersionComparisonMethods.ChoiceForm", , ThisForm);
 	
 EndProcedure // FilesVersionsComparisonMethodClick()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

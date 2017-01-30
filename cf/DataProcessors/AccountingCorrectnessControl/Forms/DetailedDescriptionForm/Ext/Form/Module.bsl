@@ -34,17 +34,3 @@ Procedure DetailedDescriptionTextDocumentCreated(Item)
 	EndDo; 	
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

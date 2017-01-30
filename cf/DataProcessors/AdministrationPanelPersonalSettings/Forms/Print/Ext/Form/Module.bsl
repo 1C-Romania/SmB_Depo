@@ -141,23 +141,3 @@ EndProcedure // OnClose()
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - EVENT HANDLERS OF FORM ATTRIBUTES
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

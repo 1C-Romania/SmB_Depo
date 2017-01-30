@@ -87,17 +87,3 @@ Procedure SaveAttributeValue(ItemName)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

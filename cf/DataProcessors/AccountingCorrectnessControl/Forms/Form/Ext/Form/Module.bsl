@@ -5772,22 +5772,3 @@ Procedure ExecuteProcedureOnWebClient(ProcedureCallText, CurArea, PredefineVaria
 	EndIf;	
 
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -346,20 +346,3 @@ Function ReceiveDecryptionValue(Details)
     Return ValueDetails;
 	
 EndFunction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
