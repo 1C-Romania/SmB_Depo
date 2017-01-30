@@ -29,16 +29,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ComposeResult();
 	
 EndProcedure // OnCreateAtServer()
-
-
-
-
-
-
-
-
-
-
-
-
-

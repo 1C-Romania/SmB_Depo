@@ -251,14 +251,14 @@ Procedure MakeExecute()
     AreaSpace.Parameters.TextPadding = "Company: " + Company;
 	SpreadsheetDocument.Put(AreaSpace);
 
-	SelectionSubDepartment = QueryResult[0].Select(QueryResultIteration.ByGroups, "Department");
-	While SelectionSubDepartment.Next() Do
+	SelectionSubdepartment = QueryResult[0].Select(QueryResultIteration.ByGroups, "Department");
+	While SelectionSubdepartment.Next() Do
 
-        AreaSpace.Parameters.TextPadding = "Department: " + SelectionSubDepartment.Department;
+        AreaSpace.Parameters.TextPadding = "Department: " + SelectionSubdepartment.Department;
 		SpreadsheetDocument.Put(AreaSpace);
         SpreadsheetDocument.StartRowGroup();
 		
-		IndividualSelection = SelectionSubDepartment.Select(QueryResultIteration.ByGroups, "Ind");
+		IndividualSelection = SelectionSubdepartment.Select(QueryResultIteration.ByGroups, "Ind");
 		While IndividualSelection.Next() Do
 
 			AreaHeader.Parameters.Title = "Payroll sheet for " + Format(RegistrationPeriod , "DF=""MMMM yyyy 'g.' """);
@@ -464,17 +464,3 @@ Procedure OnSaveUserSettingsAtServer(Settings)
 	ReportsVariants.OnSaveUserSettingsAtServer(ThisObject, Settings);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

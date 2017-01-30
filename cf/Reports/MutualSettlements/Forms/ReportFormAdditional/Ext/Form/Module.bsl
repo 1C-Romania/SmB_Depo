@@ -454,17 +454,3 @@ Procedure Setting(Command)
 	Items.SettingsComposerUserSettings.Visible = Items.Setting.Check;
 	
 EndProcedure // Setting()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

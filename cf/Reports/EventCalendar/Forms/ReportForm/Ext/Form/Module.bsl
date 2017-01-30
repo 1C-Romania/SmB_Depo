@@ -83,20 +83,3 @@ EndFunction // GetDetailsFieldValue()
 Procedure OnSaveUserSettingsAtServer(Settings)
 	ReportsVariants.OnSaveUserSettingsAtServer(ThisObject, Settings);
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

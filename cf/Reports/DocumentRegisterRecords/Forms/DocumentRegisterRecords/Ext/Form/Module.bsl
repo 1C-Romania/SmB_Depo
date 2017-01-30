@@ -532,20 +532,3 @@ Procedure MakeExecute()
 	GenerateReport();
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

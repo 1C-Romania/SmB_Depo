@@ -83,17 +83,3 @@ EndProcedure // OnLoadDataFromSettingsAtServer()
 Procedure OnSaveUserSettingsAtServer(Settings)
 	ReportsVariants.OnSaveUserSettingsAtServer(ThisObject, Settings);
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

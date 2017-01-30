@@ -498,20 +498,3 @@ Procedure ResultDetailDataProcessorEnd(ExecutedAction, ActionsPerformedByParamet
     EndIf;
     
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

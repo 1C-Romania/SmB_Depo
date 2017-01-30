@@ -64,20 +64,3 @@ Procedure OnOpen(Cancel)
 	ComposeResult();
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

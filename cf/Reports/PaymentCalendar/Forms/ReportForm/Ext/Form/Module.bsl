@@ -644,17 +644,3 @@ Procedure FuturePaymentsPeriodOnChange(Item)
 	OutputReport();
 	
 EndProcedure // FuturePaymentsPeriodOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

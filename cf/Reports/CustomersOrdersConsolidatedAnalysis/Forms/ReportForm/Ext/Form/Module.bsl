@@ -26,22 +26,3 @@ EndProcedure
 Procedure OnSaveUserSettingsAtServer(Settings)
 	ReportsVariants.OnSaveUserSettingsAtServer(ThisObject, Settings);
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

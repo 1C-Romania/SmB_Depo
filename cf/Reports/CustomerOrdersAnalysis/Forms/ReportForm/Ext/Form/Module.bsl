@@ -103,17 +103,3 @@ Procedure FilterByOrderStatusesOnChange(Item)
 	
 EndProcedure //FilterByOrderStatusesOnChange()
 //
-
-
-
-
-
-
-
-
-
-
-
-
-
-

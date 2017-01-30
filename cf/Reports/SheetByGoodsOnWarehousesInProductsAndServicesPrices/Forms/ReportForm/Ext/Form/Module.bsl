@@ -498,22 +498,3 @@ Procedure ResultDetailProcessing(Item, Details, StandardProcessing)
 	ProcessorDecryptionAtServer(Details, StandardProcessing);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

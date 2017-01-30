@@ -115,17 +115,3 @@ Procedure SetJobSchedule(Schedule)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

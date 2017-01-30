@@ -103,17 +103,3 @@ Procedure InitializeCustomReportSettings(Val DataParameters)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
