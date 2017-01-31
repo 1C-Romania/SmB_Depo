@@ -6449,7 +6449,7 @@ EndFunction // CheckTabularDocumentOutput()
 
 // Count sheets quantity in document
 //
-Function CheckAccountsInvoicePagePut(Spreadsheet, AreaCurRows, IsLastRow, Template, NumberWorksheet, InvoiceNumber, ItIsUniversalTransferDocument = False) Export
+Function CheckAccountsInvoicePagePut(Spreadsheet, AreaCurRows, IsLastRow, Template, NumberWorksheet, InvoiceNumber) Export
 	
 	// Check whether it is possible to output tabular document
 	RowWithFooter = New Array;
@@ -6458,9 +6458,6 @@ Function CheckAccountsInvoicePagePut(Spreadsheet, AreaCurRows, IsLastRow, Templa
 		// If it is the last string, then total and footer should fit
 		RowWithFooter.Add(Template.GetArea("Total"));
 		RowWithFooter.Add(Template.GetArea("Footer"));
-		If ItIsUniversalTransferDocument Then
-			RowWithFooter.Add(Template.GetArea("InvoiceFooter"));
-		EndIf;
 	EndIf;
 	
 	CheckResult = SpreadsheetDocumentFitsPage(Spreadsheet, RowWithFooter);
@@ -6741,151 +6738,6 @@ Procedure ChangeSubordinateInvoice(BasisDocument, Received = False) Export
 	InvoiceObject.Write();
 	
 EndProcedure
-
-// The procedure adds description of the customer invoice note to notify open forms.
-// 
-// During alert label-hyperlink in the form footer will be activated.
-//
-// DoumentBasis - DocumentRef type used during open form identification;
-// CustomerInvoiceNote - type DocumentRef, customer invoice note whose reference is a notification data source;
-// Definition - type Array. Fill in array with alert description. If it is not passed, a new array is created;
-//
-Procedure AddAccountYouCreatedInvoiceDetails(BasisDocument, CustomerInvoiceNote, Definition)
-	
-	If TypeOf(Definition) <> Type("Array") Then
-		
-		Definition = New Array;
-		
-	EndIf;
-	
-	DetailsOfNewAccountInvoice = New Array(3);
-	
-	DetailsOfNewAccountInvoice[0] = BasisDocument;
-	DetailsOfNewAccountInvoice[1] = CustomerInvoiceNote.Number;
-	DetailsOfNewAccountInvoice[2] = CustomerInvoiceNote.Date;
-	
-	Definition.Add(DetailsOfNewAccountInvoice);
-	
-EndProcedure // AddCreatedCustomerInvoiceNoteDescription()
-
-// Procedure defines the sources that should be used as printing manager
-//
-// If the taxation system is general, customer invoice note is required that
-// will be used as the source, otherwise, you can generate a layout from the current document
-//
-Procedure DetermineSourcesPrintUPD(CommandParameter, SourcesPrint, UserMessages)
-	
-	ArrayInvoice = New Array;
-	ArrayOfImplementationDocuments = New Array;
-	
-	For Each DocumentPrint IN CommandParameter Do
-		
-		IsVAT = False;
-		
-		// As customer invoice notes with the simplified
-		// system of taxation are not limited in SB, set the printing source not only by
-		// VAT in the document presence, but also by the customer invoice note document presence.
-		CustomerInvoiceNote = SmallBusinessServer.GetSubordinateInvoice(DocumentPrint, False);
-		
-		If TypeOf(DocumentPrint) = Type("DocumentRef.CustomerOrder") Then
-			
-			SourcesPrint.SourceName = "Document.CustomerOrder";
-			DepartmentDocument = DocumentPrint.StructuralUnitReserve;
-			IsVAT = (DocumentPrint.Works.Total("VATAmount") <> 0) OR (DocumentPrint.Inventory.Total("VATAmount") <> 0) OR ValueIsFilled(CustomerInvoiceNote);
-			
-		ElsIf TypeOf(DocumentPrint) = Type("DocumentRef.CustomerInvoice") Then
-			
-			SourcesPrint.SourceName = "Document.CustomerInvoice";
-			DepartmentDocument = DocumentPrint.StructuralUnit;
-			IsVAT = (DocumentPrint.Inventory.Total("VATAmount") <> 0) OR ValueIsFilled(CustomerInvoiceNote);
-			
-		ElsIf TypeOf(DocumentPrint) = Type("DocumentRef.AcceptanceCertificate") Then
-			
-			SourcesPrint.SourceName = "Document.AcceptanceCertificate";
-			DepartmentDocument = DocumentPrint.Department;
-			IsVAT = (DocumentPrint.WorksAndServices.Total("VATAmount") <> 0) OR ValueIsFilled(CustomerInvoiceNote);
-			
-		EndIf;
-		
-		If IsVAT Then
-			
-			CustomerInvoiceNote = ValidateExtractAccountsInvoices(SourcesPrint, DocumentPrint, UserMessages);
-			ArrayInvoice.Add(CustomerInvoiceNote);
-			
-		Else
-			
-			ArrayOfImplementationDocuments.Add(DocumentPrint);
-			
-		EndIf;
-		
-	EndDo;
-	
-	If ArrayInvoice.Count() > 0 Then
-		
-		SourcesPrint.CustomerInvoiceNote = ArrayInvoice;
-		
-	EndIf;
-	
-	If ArrayOfImplementationDocuments.Count() > 0 Then
-		
-		SourcesPrint.ImplementationDocuments = ArrayOfImplementationDocuments;
-		
-	EndIf;
-	
-EndProcedure // DetermineUTDPrintingSources()
-
-// Procedure fills in parameters for generating the Universal transfer document printed form
-//
-Procedure FillPrintParametersUPD(CommandParameter, SourcesPrint, UserMessages) Export
-	
-	DetermineSourcesPrintUPD(CommandParameter, SourcesPrint, UserMessages);
-	
-EndProcedure // FillPrintParametersUPD()
-
-// Function checks whether there is customer invoice note of the issued
-// 
-// IN case of its absence, CIN document (issued) will be created.
-//
-Function ValidateExtractAccountsInvoices(SourcesPrint, DocumentImplementation, UserMessages)
-	
-	CustomerInvoiceNote = SmallBusinessServer.GetSubordinateInvoice(DocumentImplementation, False);
-	
-	If CustomerInvoiceNote = Undefined Then
-		
-		NewInvoice = Documents.CustomerInvoiceNote.CreateDocument();
-		NewInvoice.Fill(DocumentImplementation);
-		NewInvoice.Date = CurrentSessionDate();
-		
-		Try 
-			
-			NewInvoice.Write(DocumentWriteMode.Write);
-			
-			MessageText = NStr("en='Subordinate document is generated Customer invoice note No %1 from %2.';ru='Сформирован подчиненный документ Cчет-фактура № %1 от %2.'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, NewInvoice.Number, NewInvoice.Date);
-			
-			CustomerInvoiceNote = NewInvoice.Ref;
-			
-			AddAccountYouCreatedInvoiceDetails(DocumentImplementation, NewInvoice.Ref, SourcesPrint.CreatedAccountsInvoice);
-			
-		Except
-			
-			MessageText = NStr("en='Cannot generate a subordinate document Customer invoice note for document %1';ru='Не удалось сформировать подчиненный документ Счет-фактура для документа %1'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, DocumentImplementation);
-			
-		EndTry;
-		
-		// It is not efficient to output messages immediately as the document window hides behind window OF "Print"
-		UserMessages.Add(MessageText);
-		
-	Else
-		
-		CustomerInvoiceNote = CustomerInvoiceNote.Ref;
-		
-	EndIf;
-	
-	Return CustomerInvoiceNote;
-	
-EndFunction // ValidateCustomerInvoiceNotesIssue()
 
 // Fills in attribute by CCD number.
 //

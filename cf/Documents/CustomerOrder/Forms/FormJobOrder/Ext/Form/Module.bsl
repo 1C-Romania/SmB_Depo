@@ -6742,17 +6742,3 @@ Procedure AutomaticDiscountsOnCreateAtServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

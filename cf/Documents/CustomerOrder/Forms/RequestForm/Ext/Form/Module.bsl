@@ -3457,17 +3457,3 @@ Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Expo
 EndProcedure // OpenPricesAndCurrencyFormEnd()
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

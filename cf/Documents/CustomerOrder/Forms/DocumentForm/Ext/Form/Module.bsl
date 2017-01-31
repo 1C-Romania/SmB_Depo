@@ -3953,17 +3953,3 @@ Procedure InventoryOnStartEdit(Item, NewRow, Copy)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

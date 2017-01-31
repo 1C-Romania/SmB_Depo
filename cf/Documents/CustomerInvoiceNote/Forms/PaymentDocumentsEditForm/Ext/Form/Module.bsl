@@ -23,20 +23,3 @@ Procedure OK(Command)
 	Close(DialogReturnCode.OK);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

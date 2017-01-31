@@ -2892,20 +2892,6 @@ EndProcedure
 
 #EndRegion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 &AtClient
 Procedure OnOpen(Cancel)
 	//( elmi # 08.5 

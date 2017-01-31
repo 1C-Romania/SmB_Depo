@@ -2197,24 +2197,6 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 		
 		InvoiceText = ValueSelected;
 		
-	ElsIf ChoiceSource.FormName = "DataProcessor.PrintBOL.Form.PrintInfo" Then
-		
-		For Each AttributeValues IN ValueSelected Do
-			
-			If AttributeValues.Key = "BankAccountOfTheCompany" Then
-				
-				Object.BankAccount = AttributeValues.Value;
-				
-			Else
-				
-				Object[AttributeValues.Key] = AttributeValues.Value;
-				
-			EndIf;
-			
-			Modified = True;
-			
-		EndDo;
-		
 	EndIf;
 	
 EndProcedure 
@@ -2555,79 +2537,6 @@ Procedure ChangeReserveClearReserve(Command)
 	EndDo;
 	
 EndProcedure // ChangeReserveFillByBalances()
-
-&AtClient
-// Procedure - PrintInfo command handler
-//
-// To improve the usability of printing function and increase the speed of form opening move secondary attributes to a separate form
-//
-Procedure StampAttributes(Command)
-	
-	ParametersStructure = New Structure();
-	
-	// Information about the current document
-	ParametersStructure.Insert("Date",						Object.Date);
-	ParametersStructure.Insert("Company",					Object.Company);
-	ParametersStructure.Insert("Counterparty",					Object.Counterparty);
-	ParametersStructure.Insert("StampBase",				Object.StampBase);
-	ParametersStructure.Insert("CounterpartyContract",			Object.Contract);
-	ParametersStructure.Insert("BasisDocument",			Object.BasisDocument);
-	ParametersStructure.Insert("Source",					"CustomerInvoice");
-	
-	OrdersArray = New Array;
-	If ValueIsFilled(Object.Order) Then
-		
-		OrdersArray.Add(Object.Order);
-		
-	EndIf;
-	
-	For Each TabularSectionRow IN Object.Inventory Do
-		
-		OrderInRow = Undefined;
-		If TabularSectionRow.Property("Order", OrderInRow)
-			AND ValueIsFilled(OrderInRow)
-			AND OrdersArray.Find(OrderInRow) = Undefined Then
-			
-			OrdersArray.Add(OrderInRow);
-			
-		EndIf;
-		
-	EndDo;
-	ParametersStructure.Insert("OrdersArray",				OrdersArray);
-	
-	// Bank accounts
-	ParametersStructure.Insert("BankAccountOfTheCompany",	Object.BankAccount);
-	ParametersStructure.Insert("CounterpartyBankAcc",	Object.CounterpartyBankAcc);
-	
-	// Logistics
-	ParametersStructure.Insert("Consignor",			Object.Consignor);
-	ParametersStructure.Insert("Consignee",				Object.Consignee);
-	ParametersStructure.Insert("ShippingAddress",				Object.ShippingAddress);
-	
-	// Carrier
-	ParametersStructure.Insert("Carrier",					Object.Carrier);
-	ParametersStructure.Insert("CarrierBankAccount",	Object.CarrierBankAccount);
-	ParametersStructure.Insert("DeliveryTerm",				Object.DeliveryTerm);
-	ParametersStructure.Insert("Driver",					Object.Driver);
-	ParametersStructure.Insert("Vehicle",					Object.Vehicle);
-	ParametersStructure.Insert("trailer",						Object.trailer);
-	
-	// Responsible individuals
-	ParametersStructure.Insert("Head",				Object.Head);
-	ParametersStructure.Insert("HeadPosition",		Object.HeadPosition);
-	ParametersStructure.Insert("ChiefAccountant",			Object.ChiefAccountant);
-	ParametersStructure.Insert("Released",					Object.Released);
-	ParametersStructure.Insert("ReleasedPosition",			Object.ReleasedPosition);
-	
-	// PowerOfAttorney
-	ParametersStructure.Insert("PowerOfAttorneyNumber",			Object.PowerOfAttorneyNumber);
-	ParametersStructure.Insert("PowerOfAttorneyDate",			Object.PowerOfAttorneyDate);
-	ParametersStructure.Insert("PowerOfAttorneyIssued",			Object.PowerOfAttorneyIssued);
-	ParametersStructure.Insert("PowerAttorneyPerson",			Object.PowerAttorneyPerson);
-	
-	OpenForm("DataProcessor.PrintBOL.Form", ParametersStructure, ThisForm);
-	
-EndProcedure // PrintInfo()
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - EVENT HANDLERS OF HEADER ATTRIBUTES
@@ -3912,17 +3821,3 @@ Procedure InventoryOrderOnChange(Item)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

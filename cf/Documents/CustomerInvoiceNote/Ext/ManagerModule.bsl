@@ -184,7 +184,7 @@ EndFunction // ThereIsStock()
 
 // Document printing procedure.
 //
-Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Export
+Function PrintForm(ObjectsArray, PrintObjects) Export
 	Var Errors;
 	
 	CustomerInvoiceNote1137UsageBegin = Constants.CustomerInvoiceNote1137UsageBegin.Get();
@@ -245,22 +245,6 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 	
 	While Header.Next() Do
 		
-		If ItIsUniversalTransferDocument 
-			AND Header.DocumentDate < Date('20130101') Then 
-			
-			MessageText = NStr("en='__________________
-		|Printing of the universal transmission document is available from January 1, 2013. 
-		|For the %1 document the print form is not generated.';ru='__________________
-		|Печать универсального передаточного документа доступна c 1 января 2013. 
-		|Для документа %1 печатная форма не сформирована.'");
-			
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Header.Ref);
-			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
-			
-			Continue;
-			
-		EndIf;
-		
 		If Not FirstDocument Then
 			SpreadsheetDocument.PutHorizontalPageBreak();
 		EndIf;
@@ -269,12 +253,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		PageCount = 1;
 		FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
 		
-		If ItIsUniversalTransferDocument Then
-			
-			//SpreadsheetDocument.PrintParametersKey = "PARAMETRS_PRINT_UniversalTransferDocument";
-			//Template = PrintManagement.PrintedFormsTemplate("Document.CustomerInvoiceNote.PF_MXL_UniversalTransferDocument");
-			
-		ElsIf Header.DocumentDate >= CustomerInvoiceNote1137UsageBegin Then
+		If Header.DocumentDate >= CustomerInvoiceNote1137UsageBegin Then
 			
 			SpreadsheetDocument.PrintParametersKey = "PRINT_PARAMETERS_Invoice_Invoice1137";
 			Template = PrintManagement.PrintedFormsTemplate("Document.CustomerInvoiceNote.PF_MXL_CustomerInvoiceNote1137");
@@ -331,8 +310,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			
 		UseConversion 		= Header.SettlementsInStandardUnits AND Not Header.Currency = Constants.NationalCurrency.Get();
 		
-		If Header.DocumentDate >= CustomerInvoiceNote1137UsageBegin 
-			AND Not ItIsUniversalTransferDocument Then
+		If Header.DocumentDate >= CustomerInvoiceNote1137UsageBegin Then
 			
 			TemplateArea = Template.GetArea("HeaderInformation");
 			SpreadsheetDocument.Put(TemplateArea);
@@ -349,34 +327,13 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
 		EndIf;
 		
-		If ItIsUniversalTransferDocument Then
-			
-			TemplateArea.Parameters.Number = DocumentNumber;
-			TemplateArea.Parameters.Date = Format(Header.DocumentDate, "DF=dd MMMM yyyy'")+ " g.";
-			
-		Else
-			
-			TemplateArea.Parameters.Number = "Invoice # " + DocumentNumber
+		TemplateArea.Parameters.Number = "Invoice # " + DocumentNumber
 					+ " dated " + Format(Header.DocumentDate, "DF=dd MMMM yyyy'")+ " g.";
-					
-		EndIf;
 		
-		If ItIsUniversalTransferDocument Then
-			
-			TemplateArea.Parameters.CorrectionNumber = "--";
-			TemplateArea.Parameters.DateOfCorrection = "--";
-			
-		Else
-			
-			If Header.DocumentDate >= CustomerInvoiceNote1137UsageBegin Then
-				
-				TemplateArea.Parameters.CorrectionNumber = "Correction No -- from --";
-				
-			EndIf;
-			
-		EndIf;
+		TemplateArea.Parameters.CorrectionNumber = "--";
+		TemplateArea.Parameters.DateOfCorrection = "--";
 		
-		TitleFields = ?(ItIsUniversalTransferDocument, "", "Seller: ");
+		TitleFields = "Seller: ";
 		If Header.DocumentDate < '20090609' Then
 			TemplateArea.Parameters.VendorPresentation =
 				TitleFields + SmallBusinessServer.CompaniesDescriptionFull(InfoAboutVendor, "FullDescr,");
@@ -394,10 +351,10 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 				
 		EndIf;
 		
-		TitleFields = ?(ItIsUniversalTransferDocument, "", "Address: ");
+		TitleFields = "Address: ";
 		TemplateArea.Parameters.VendorAddress = TitleFields + SmallBusinessServer.CompaniesDescriptionFull(InfoAboutVendor, "LegalAddress,");
 		
-		TitleFields = ?(ItIsUniversalTransferDocument, "", "To payment and settlement document ");
+		TitleFields = "To payment and settlement document ";
 		
 		LinesSelectionPaymentDocumentsDateNumber = Header.PaymentDocumentsDateNumber.Select();
 		If LinesSelectionPaymentDocumentsDateNumber.Count() = 0 Then
@@ -430,8 +387,8 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		
 		If ThisIsConsolidatedCustomerInvoice Then
 			
-			HeaderCustomerField = ?(ItIsUniversalTransferDocument, "", "Customer: ");
-			HeaderAddressField = ?(ItIsUniversalTransferDocument, "", "Address: ");
+			HeaderCustomerField = "Customer: ";
+			HeaderAddressField = "Address: ";
 			
 			CustomerPresentation = "";
 			CustomerAddressValue = "";
@@ -452,10 +409,10 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			
 		Else
 			
-			TitleFields = ?(ItIsUniversalTransferDocument, "", "Customer: ");
+			TitleFields = "Customer: ";
 			TemplateArea.Parameters.CustomerPresentation = TitleFields + SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCustomer, "FullDescr,");
 			
-			TitleFields = ?(ItIsUniversalTransferDocument, "", "Address: ");
+			TitleFields = "Address: ";
 			CustomerAddressValue = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCustomer, "LegalAddress,");
 			If IsBlankString(CustomerAddressValue) 
 				AND (Header.OperationKind <> Enums.OperationKindsCustomerInvoiceNote.Advance 
@@ -474,7 +431,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		If Header.OperationKind <> Enums.OperationKindsCustomerInvoiceNote.Advance 
 			OR Header.OperationKind = Enums.OperationKindsCustomerInvoiceNote.OnPrincipalAdvance Then
 			
-			TitleFields = ?(ItIsUniversalTransferDocument, "", NStr("en='Consignor and its address: ';ru='Consignor and its address: '"));
+			TitleFields = NStr("en='Consignor and its address: ';ru='Consignor and its address: '");
 			If Header.Same Then
 				
 				TemplateArea.Parameters.PresentationOfShipper = TitleFields + NStr("en='the same';ru='Он же'");
@@ -491,7 +448,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			
 			If ThisIsConsolidatedCustomerInvoice Then
 				
-				TitleFields = ?(ItIsUniversalTransferDocument, "", NStr("en='Consignee and its address: ';ru='Consignee and its address: '"));
+				TitleFields = NStr("en='Consignee and its address: ';ru='Consignee and its address: '");
 				PresentationOfConsignee  = "";
 				For Each String IN CustomersTable Do
 					
@@ -504,7 +461,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 				
 			Else
 				
-				TitleFields = ?(ItIsUniversalTransferDocument, "", NStr("en='Consignee and its address: ';ru='Consignee and its address: '"));
+				TitleFields = NStr("en='Consignee and its address: ';ru='Consignee and its address: '");
 				If ValueIsFilled(Header.Consignee) Then
 					
 					TemplateArea.Parameters.PresentationOfConsignee  = TitleFields + SmallBusinessServer.CompaniesDescriptionFull(InfoAboutConsignee, "FullDescr, ActualAddress,");
@@ -540,7 +497,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		If ValueIsFilled(KPP) Then
 			KPP = "/" + KPP;
 		EndIf;
-		TitleFields = ?(ItIsUniversalTransferDocument, "", "TIN/KPP seller: ");
+		TitleFields = "TIN/KPP seller: ";
 		TemplateArea.Parameters.VendorTIN = TitleFields + SmallBusinessServer.CompaniesDescriptionFull(InfoAboutVendor, "TIN,", False) + KPP;
 		
 		If ThisIsConsolidatedCustomerInvoice Then
@@ -560,7 +517,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 			EndDo;
 			
 				//   AlekS	need attention !!!
-			TitleFields = ?(ItIsUniversalTransferDocument, "", "TIN/KPP customer: ");
+			TitleFields = "TIN/KPP customer: ";
 			TemplateArea.Parameters.TINOfHBuyer = TitleFields + TIN_KPP_customer;
 			
 		Else
@@ -571,7 +528,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 				KPP = "/" + KPP;
 			EndIf;
 				//   AlekS	need attention !!!
-			TitleFields = ?(ItIsUniversalTransferDocument, "", "TIN/KPP customer: ");
+			TitleFields = "TIN/KPP customer: ";
 			TemplateArea.Parameters.TINOfHBuyer = TitleFields + SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCustomer, "TIN,", False) + KPP;
 			
 		EndIf;
@@ -579,7 +536,7 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		If Header.DocumentDate >= CustomerInvoiceNote1137UsageBegin Then
 			
 				//   AlekS	need attention !!!
-			TitleFields = ?(ItIsUniversalTransferDocument, "", "Currency: name, code ");
+			TitleFields = "Currency: name, code ";
 			
 			If Not ValueIsFilled(Header.Currency) 
 				OR UseConversion Then
@@ -744,11 +701,6 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 				TemplateArea.Parameters.Fill(Row);
 				
 				LineNumber = LineNumber + 1;
-				If ItIsUniversalTransferDocument Then
-					
-					TemplateArea.Parameters.LineNumber = LineNumber;
-					
-				EndIf;
 				
 				If ValueIsFilled(Row.Content) Then
 					
@@ -837,13 +789,6 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 						TemplateArea.Parameters.CCDPresentation = "--";
 						
 					EndIf;
-					
-				EndIf;
-				
-				If ItIsUniversalTransferDocument
-					AND Not SmallBusinessServer.CheckAccountsInvoicePagePut(SpreadsheetDocument, TemplateArea, (LineNumber = LineCount), Template, NumberWorksheet, DocumentNumber, ItIsUniversalTransferDocument) Then
-					
-					PageCount = PageCount + 1;
 					
 				EndIf;
 				
@@ -1007,15 +952,6 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		TemplateArea.Parameters.Fill(Heads);
 		TemplateArea.Parameters.Certificate = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutVendor, "Certificate,");
 		
-		If ItIsUniversalTransferDocument Then
-			
-			TemplateArea.Parameters.PagesNumber = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Document is drawn up for%1%2 %3';ru='Документ составлен на%1%2 %3'"), Chars.LF, PageCount,
-				SmallBusinessServer.FormOfMultipleNumbers(NStr("en='list';ru='список'"), NStr("en='Worksheets';ru='листах'"), NStr("en='Worksheets';ru='листах'"), PageCount)
-				);
-			
-		EndIf;
-		
 		If Not Header.DocumentDate >= CustomerInvoiceNote1137UsageBegin Then
 			
 			PutDashesToEmptyFields(TemplateArea);
@@ -1023,71 +959,6 @@ Function PrintForm(ObjectsArray, PrintObjects, ItIsUniversalTransferDocument) Ex
 		EndIf;
 		
 		SpreadsheetDocument.Put(TemplateArea);
-		
-		If ItIsUniversalTransferDocument Then
-			
-			TemplateArea = Template.GetArea("InvoiceFooter");
-			TemplateArea.Parameters.Fill(Header);
-			If TypeOf(Header.BasisDocument) = Type("DocumentRef.CustomerInvoice") Then
-				
-				If ValueIsFilled(Header.BasisDocument)
-					AND
-					(ValueIsFilled(Header.BasisDocument.PowerOfAttorneyIssued)
-						OR ValueIsFilled(Header.BasisDocument.PowerOfAttorneyDate)
-						OR ValueIsFilled(Header.BasisDocument.PowerAttorneyPerson)
-						OR ValueIsFilled(Header.BasisDocument.PowerOfAttorneyNumber))
-					Then
-					
-					TemplateArea.Parameters.Basis = 
-						Header.Basis + NStr("en='; by power of attorney No';ru='; по доверенности №'") + Header.BasisDocument.PowerOfAttorneyNumber 
-						+ NStr("en=' from ';ru=' от '") + Format(Header.BasisDocument.PowerOfAttorneyDate, "DLF=DD") 
-						+ NStr("en=' Paid ';ru=' Paid '") + Header.BasisDocument.PowerOfAttorneyIssued + " " 
-						+ Header.BasisDocument.PowerAttorneyPerson;
-					
-				EndIf;
-			
-			EndIf;
-			
-			TemplateArea.Parameters.ShipmentDateTransfer = Format(Header.DocumentDate, "DF='"" dd "" MMMM yyyy'");
-			
-			CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutVendor, "FullDescr,");
-			If Not IsBlankString(InfoAboutVendor.TIN) 
-				AND Not IsBlankString(InfoAboutVendor.KPP) Then
-				
-				CompanyPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN/KPP %2/%3';ru='%1, TIN/KPP %2/%3'"),
-					CompanyPresentation, InfoAboutVendor.TIN, InfoAboutVendor.KPP);
-				
-			ElsIf Not IsBlankString(InfoAboutVendor.TIN) Then
-				
-				CompanyPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN %2';ru='%1, ИНН %2'"),
-					CompanyPresentation, InfoAboutVendor.TIN);
-				
-			EndIf;
-			
-			TemplateArea.Parameters.CompanyPresentation = CompanyPresentation;
-			
-			PresentationOfCounterparty = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCustomer, "FullDescr,");
-			If Not IsBlankString(InfoAboutCustomer.TIN)
-				AND Not IsBlankString(InfoAboutCustomer.KPP) Then
-				
-				PresentationOfCounterparty = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN/KPP %2/%3';ru='%1, TIN/KPP %2/%3'"),
-					PresentationOfCounterparty, InfoAboutCustomer.TIN, InfoAboutCustomer.KPP);
-					
-			ElsIf Not IsBlankString(InfoAboutCustomer.TIN) Then
-				
-				PresentationOfCounterparty = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1, TIN %2';ru='%1, ИНН %2'"),
-					PresentationOfCounterparty, InfoAboutCustomer.TIN);
-				
-			EndIf;
-			
-			TemplateArea.Parameters.PresentationOfCounterparty = PresentationOfCounterparty;
-			
-			TemplateArea.Parameters.WarehousemanPosition = Heads.WarehouseMan_Position;
-			TemplateArea.Parameters.WarehouseManSNP = Heads.WarehouseManSNP;
-			
-			SpreadsheetDocument.Put(TemplateArea);
-			
-		EndIf;
 		
 		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, Header.Ref);
 		
@@ -1170,23 +1041,9 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "CustomerInvoiceNote") Then
 		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CustomerInvoiceNote", "Account-texture", PrintForm(ObjectsArray, PrintObjects, False));
+		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CustomerInvoiceNote", "Account-texture", PrintForm(ObjectsArray, PrintObjects));
 		
 	EndIf;
-	
-	//If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "UniversalTransferDocument") Then
-	//	
-	//	PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "UniversalTransferDocument", "Universal transfer document", PrintForm(ObjectsArray, PrintObjects, True));
-	//	
-	//	If TypeOf(PrintParameters) = Type("Structure")
-	//		AND PrintParameters.Property("Errors")
-	//		AND PrintParameters.Errors <> Undefined Then
-	//		
-	//		CommonUseClientServer.ShowErrorsToUser(PrintParameters.Errors);
-	//		
-	//	EndIf;
-	//	
-	//EndIf;
 	
 	// parameters of sending printing forms by email
 	SmallBusinessServer.FillSendingParameters(OutputParameters.SendingParameters, ObjectsArray, PrintFormsCollection);
@@ -1206,13 +1063,6 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
-	
-	//PrintCommand = PrintCommands.Add();
-	//PrintCommand.ID = "UniversalTransferDocument";
-	//PrintCommand.Presentation = NStr("en='Universal transfer document';ru='Универсальный передаточный документ'");
-	//PrintCommand.FormsList = "DocumentForm,ListForm";
-	//PrintCommand.CheckPostingBeforePrint = False;
-	//PrintCommand.Order = 4;
 	
 EndProcedure
 

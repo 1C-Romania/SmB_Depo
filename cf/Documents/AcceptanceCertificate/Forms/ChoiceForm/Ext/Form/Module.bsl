@@ -11,21 +11,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 EndProcedure // OnCreateAtServer()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 &AtClient
 Procedure OnOpen(Cancel)
 	

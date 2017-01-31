@@ -2555,10 +2555,6 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "Act", "Processing Service Report", PrintForm(ObjectsArray, PrintObjects, "Act"));
 	EndIf;
 	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "BoL") Then
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "BoL", "BILL OF LADING", DataProcessors.PrintBOL.PrintForm(ObjectsArray, PrintObjects, PrintParameters));
-	EndIf;
-	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "MerchandiseFillingForm") Then
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "MerchandiseFillingForm", "Merchandise filling form", PrintForm(ObjectsArray, PrintObjects, "MerchandiseFillingForm"));
 	EndIf;
@@ -2576,7 +2572,7 @@ EndProcedure
 Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "Act,BoL";
+	PrintCommand.ID = "Act";
 	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
@@ -2588,21 +2584,6 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "BoL";
-	PrintCommand.Presentation = NStr("en='1-T (Shipping document)';ru='1-Т (Товарно-транспортная накладная)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 10;
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.Handler = "SmallBusinessClient.PrintWayBill";
-	PrintCommand.ID = "CN";
-	PrintCommand.Presentation = NStr("en='Application #4 (consignment note)';ru='Приложение №4 (Транспортная накладная)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 14;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MerchandiseFillingForm";

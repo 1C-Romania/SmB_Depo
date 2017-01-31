@@ -453,7 +453,7 @@
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Контрагенты</v8:content>
+													<v8:content>Контрагент</v8:content>
 												</v8:item>
 											</Title>
 											<Width>30</Width>
@@ -472,7 +472,7 @@
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Контакт</v8:content>
+													<v8:content>Договор</v8:content>
 												</v8:item>
 											</Title>
 											<Width>20</Width>
@@ -558,18 +558,14 @@
 													<v8:lang>en</v8:lang>
 													<v8:content>Company</v8:content>
 												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Организация</v8:content>
+												</v8:item>
 											</Title>
 											<Width>20</Width>
 											<ContextMenu name="CounterpartyContextMenu" id="11"/>
 											<ExtendedTooltip name="CounterpartyExtendedTooltip" id="199"/>
-										</LabelField>
-										<LabelField name="" id="16">
-											<DataPath>List</DataPath>
-											<UserVisible>
-												<xr:Common>false</xr:Common>
-											</UserVisible>
-											<ContextMenu name="ContextMenu" id="17"/>
-											<ExtendedTooltip name="ExtendedTooltip" id="207"/>
 										</LabelField>
 										<LabelField name="Order" id="18">
 											<DataPath>List.Order</DataPath>
@@ -599,7 +595,7 @@
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Ответственный менеджер</v8:content>
+													<v8:content>Ответственный</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="ResponsibleContextMenu" id="35"/>
@@ -617,7 +613,7 @@
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Примечание</v8:content>
+													<v8:content>Комментарий</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="CommentContextMenu" id="39"/>
@@ -635,7 +631,7 @@
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Ведомость составил</v8:content>
+													<v8:content>Автор</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="AuthorContextMenu" id="43"/>
@@ -930,7 +926,7 @@
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Ведомость составил</v8:content>
+													<v8:content>Автор</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="ListCustomerOrdersAuthorContextMenu" id="71"/>
@@ -1008,7 +1004,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Контрагенты</v8:content>
+					<v8:content>Контрагент</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1023,6 +1019,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Company</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1043,7 +1043,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Склад, на который приходуются запасы</v8:content>
+					<v8:content>Склад</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1064,7 +1064,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Ответственный менеджер</v8:content>
+					<v8:content>Ответственный</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

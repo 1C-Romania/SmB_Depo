@@ -574,17 +574,3 @@ EndProcedure
 // End ServiceTechnology.InformationCenter
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

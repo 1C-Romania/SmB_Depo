@@ -136,17 +136,3 @@ Procedure BasisDocumentsBasisDocumentChoiceProcessing(Item, ValueSelected, Stand
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

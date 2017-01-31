@@ -1326,27 +1326,6 @@
 							<ChildItemsWidth>Equal</ChildItemsWidth>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="GroupDataToPrintExtendedTooltip" id="246"/>
-							<ChildItems>
-								<Button name="StampAttributes" id="247">
-									<Type>Hyperlink</Type>
-									<CommandName>Form.Command.StampAttributes</CommandName>
-									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-									<ExtendedTooltip name="StampAttributesExtendedTooltip" id="248">
-										<Width>58</Width>
-										<HorizontalStretch>false</HorizontalStretch>
-										<Title formatted="false">
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>Filling out the attributes used for printing the documents, for example, responsible persons, shipping company, consignor, brand of the car and trailer etc.</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Заполнение реквизитов, используемых для печати документов, например, ответственные лица, грузоперевозчик, грузоотправитель, марка автомобиля и прицепа и т.д.</v8:content>
-											</v8:item>
-										</Title>
-									</ExtendedTooltip>
-								</Button>
-							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
 				</Page>
@@ -2308,29 +2287,6 @@
 				<Item>FunctionalOption.InventoryReservation</Item>
 			</FunctionalOptions>
 			<ModifiesSavedData>true</ModifiesSavedData>
-		</Command>
-		<Command name="StampAttributes" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Attributes of stamp</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Реквизиты печати</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Attributes of stamp</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Реквизиты печати</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>StampAttributes</Action>
 		</Command>
 		<Command name="CommandFillBySpecification" id="12">
 			<Title>

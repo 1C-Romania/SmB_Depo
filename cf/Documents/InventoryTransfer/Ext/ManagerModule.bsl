@@ -2276,10 +2276,6 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "M11", "M-11", PrintForm(ObjectsArray, PrintObjects, "M11"));
 	EndIf;
 	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "BoL") Then
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "BoL", "BILL OF LADING", DataProcessors.PrintBOL.PrintForm(ObjectsArray, PrintObjects, PrintParameters));
-	EndIf;
-	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InventoryTransfer") Then
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InventoryTransfer", "Inventory transfer", PrintForm(ObjectsArray, PrintObjects, "InventoryTransfer"));
 	EndIf;
@@ -2310,21 +2306,6 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "BoL";
-	PrintCommand.Presentation = NStr("en='1-T (Shipping document)';ru='1-Т (Товарно-транспортная накладная)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 14;
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.Handler = "SmallBusinessClient.PrintWayBill";
-	PrintCommand.ID = "CN";
-	PrintCommand.Presentation = NStr("en='Application #4 (consignment note)';ru='Приложение №4 (Транспортная накладная)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 17;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InventoryTransfer";

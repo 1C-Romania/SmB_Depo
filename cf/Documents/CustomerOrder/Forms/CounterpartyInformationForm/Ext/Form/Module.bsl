@@ -16,17 +16,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndDo;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1034,37 +1034,6 @@ Procedure RefreshInscriptionsOnAccountsOpenInvoicesForms(InvoiceDetails)
 	
 EndProcedure // UpdateLabelsAboutOpenFormsCustomerInvoiceNotes()
 
-// Procedure - handler of the UniversalTransferDocument common command
-//
-Procedure GeneratePrintFormsUPD(CommandParameter) Export
-	
-	UserMessages = New Array;
-	SourcesPrint = New Structure("SourceName, CustomerInvoiceNote, ImplementationDocuments, CreatedCustomerInvoiceNotes", Undefined, Undefined, Undefined, Undefined);
-	
-	SmallBusinessServer.FillPrintParametersUPD(CommandParameter, SourcesPrint, UserMessages);
-	
-	If SourcesPrint.ImplementationDocuments <> Undefined Then
-		
-		PrintManagementClient.ExecutePrintCommand(SourcesPrint.SourceName, "UniversalTransferDocument", SourcesPrint.ImplementationDocuments, , SmallBusinessClient.GetTitleOfPrintedForms(SourcesPrint.ImplementationDocuments));
-		
-	EndIf;
-	
-	If SourcesPrint.CustomerInvoiceNote <> Undefined Then
-		
-		PrintManagementClient.ExecutePrintCommand("Document.CustomerInvoiceNote", "UniversalTransferDocument", SourcesPrint.CustomerInvoiceNote, Undefined, SmallBusinessClient.GetTitleOfPrintedForms(SourcesPrint.CustomerInvoiceNote));
-		RefreshInscriptionsOnAccountsOpenInvoicesForms(SourcesPrint.CreatedAccountsInvoice);
-		
-	EndIf;
-	
-	For Each Message IN UserMessages Do
-		
-		CommonUseClientServer.MessageToUser(Message);
-		
-	EndDo;
-	
-EndProcedure
-
-
 //////////////////////////////////////////////////////////////////////////////// 
 // PROCEDURES AND FUNCTIONS OF ADDITIONAL ATTRIBUTES SUBSYSTEM
 
@@ -1221,52 +1190,6 @@ Function GetTitleOfPrintedForms(CommandParameter) Export
 	Return Undefined;
 	
 EndFunction // GetPrintedFormTitle()
-
-///////////////////////////////////////////////////////////////////////////////// 
-// UTD formation function
-//
-// was calling from CustomerInvoice.ManagerModule  :
-	//PrintCommand.ID = "UniversalTransferDocument";
-	//PrintCommand.Presentation = NStr("en='Universal transfer document';ru='Универсальный передаточный документ'");
-//
-//Function PrintUTD(CommandParameter) Export
-//	Var Errors;
-//	
-//	ObjectArrayPrint = CommandParameter.PrintObjects;
-//	SmallBusinessServer.ValidateOperationKind(ObjectArrayPrint, Errors);
-//	
-//	If ObjectArrayPrint.Count() > 0 Then
-//		
-//		SmallBusinessClient.GeneratePrintFormsUPD(ObjectArrayPrint);
-//		
-//	EndIf;
-//	
-//	If Errors <> Undefined Then
-//		
-//		CommonUseClientServer.ShowErrorsToUser(Errors);
-//		
-//	EndIf;
-//	
-//	Return Undefined;
-//	
-//EndFunction // GeneratePrintingFormsUTD()
-
-///////////////////////////////////////////////////////////////////////////////// 
-// Application 4 formation function (TN)
-//
-Function PrintWayBill(CommandParameter) Export
-	
-	ObjectArrayPrint = CommandParameter.PrintObjects;
-	
-	If ObjectArrayPrint.Count() > 0 Then
-		
-		OpenForm("DataProcessor.PrintWayBill.Form", New Structure("Document", ObjectArrayPrint[0]));
-		
-	EndIf;
-	
-	Return Undefined;
-	
-EndFunction // PrintWayBill()
 
 // Processor procedure the "LabelPrinting" or "PriceTagCommand" command from documents 
 // - Goods movements
