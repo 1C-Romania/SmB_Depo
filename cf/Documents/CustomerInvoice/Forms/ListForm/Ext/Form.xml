@@ -449,11 +449,11 @@
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>Counterparty</v8:content>
+													<v8:content>Customer / Supplier</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Контрагент</v8:content>
+													<v8:content>Покупатель / Поставщик</v8:content>
 												</v8:item>
 											</Title>
 											<Width>30</Width>
@@ -566,6 +566,14 @@
 											<Width>20</Width>
 											<ContextMenu name="CounterpartyContextMenu" id="11"/>
 											<ExtendedTooltip name="CounterpartyExtendedTooltip" id="199"/>
+										</LabelField>
+										<LabelField name="BasisDocument" id="305">
+											<DataPath>List.BasisDocument</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ContextMenu name="BasisDocumentContextMenu" id="306"/>
+											<ExtendedTooltip name="BasisDocumentExtendedTooltip" id="307"/>
 										</LabelField>
 										<LabelField name="Order" id="18">
 											<DataPath>List.Order</DataPath>
@@ -746,7 +754,7 @@
 										<ExtendedTooltip name="ListCustomerOrdersSearchManagementExtendedTooltip" id="271"/>
 									</SearchControlAddition>
 									<ChildItems>
-										<LabelField name="ListOfCustomerOrdersDate" id="60">
+										<LabelField name="ListCustomerOrdersDate" id="60">
 											<DataPath>ListCustomerOrders.Date</DataPath>
 											<Width>8</Width>
 											<HorizontalStretch>false</HorizontalStretch>
@@ -760,8 +768,8 @@
 													<v8:content>DLF=D</v8:content>
 												</v8:item>
 											</Format>
-											<ContextMenu name="ListOfCustomerOrdersDateContextMenu" id="61"/>
-											<ExtendedTooltip name="ListOfCustomerOrdersDateExtendedTooltip" id="238"/>
+											<ContextMenu name="ListCustomerOrdersDateContextMenu" id="61"/>
+											<ExtendedTooltip name="ListCustomerOrdersDateExtendedTooltip" id="238"/>
 										</LabelField>
 										<LabelField name="ListCustomerOrdersNumber" id="64">
 											<DataPath>ListCustomerOrders.Number</DataPath>
@@ -778,16 +786,6 @@
 										</LabelField>
 										<LabelField name="ListCustomerOrdersOrderStatus" id="170">
 											<DataPath>ListCustomerOrders.OrderStatus</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Status</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Статус</v8:content>
-												</v8:item>
-											</Title>
 											<Width>20</Width>
 											<ContextMenu name="ListCustomerOrdersOrderStatusContextMenu" id="171"/>
 											<ExtendedTooltip name="ListCustomerOrdersOrderStatusExtendedTooltip" id="241"/>
@@ -873,14 +871,14 @@
 											<ContextMenu name="ListCustomerOrdersCompanyContextMenu" id="105"/>
 											<ExtendedTooltip name="ListCustomerOrdersCompanyExtendedTooltip" id="242"/>
 										</LabelField>
-										<LabelField name="ListOfCustomerOrdersDateShipment" id="84">
+										<LabelField name="ListCustomerOrdersDateShipment" id="84">
 											<DataPath>ListCustomerOrders.ShipmentDate</DataPath>
 											<UserVisible>
 												<xr:Common>false</xr:Common>
 											</UserVisible>
 											<Width>12</Width>
-											<ContextMenu name="ListOfCustomerOrdersDateShipmentContextMenu" id="85"/>
-											<ExtendedTooltip name="ListOfCustomerOrdersDateShipmentExtendedTooltip" id="248"/>
+											<ContextMenu name="ListCustomerOrdersDateShipmentContextMenu" id="85"/>
+											<ExtendedTooltip name="ListCustomerOrdersDateShipmentExtendedTooltip" id="248"/>
 										</LabelField>
 										<LabelField name="ListCustomerOrdersProject" id="108">
 											<DataPath>ListCustomerOrders.Project</DataPath>

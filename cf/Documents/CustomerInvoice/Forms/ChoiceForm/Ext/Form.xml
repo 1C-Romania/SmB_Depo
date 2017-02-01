@@ -131,11 +131,11 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Counterparty</v8:content>
+							<v8:content>Customer / Supplier</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Контрагенты</v8:content>
+							<v8:content>Покупатель / Поставщик</v8:content>
 						</v8:item>
 					</Title>
 					<Width>25</Width>
@@ -154,7 +154,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Контакт</v8:content>
+							<v8:content>Договор</v8:content>
 						</v8:item>
 					</Title>
 					<Width>20</Width>
@@ -200,7 +200,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Вал.</v8:content>
+									<v8:content>Валюта</v8:content>
 								</v8:item>
 							</Title>
 							<TitleLocation>None</TitleLocation>
@@ -250,17 +250,18 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Title>
 					<ContextMenu name="CounterpartyContextMenu" id="11"/>
 					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="47"/>
 				</LabelField>
-				<LabelField name="" id="16">
-					<DataPath>List</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<ContextMenu name="ContextMenu" id="17"/>
-					<ExtendedTooltip name="ExtendedTooltip" id="55"/>
+				<LabelField name="BasisDocument" id="85">
+					<DataPath>List.BasisDocument</DataPath>
+					<ContextMenu name="BasisDocumentContextMenu" id="86"/>
+					<ExtendedTooltip name="BasisDocumentExtendedTooltip" id="87"/>
 				</LabelField>
 				<LabelField name="Order" id="18">
 					<DataPath>List.Order</DataPath>
@@ -290,7 +291,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ответственный менеджер</v8:content>
+							<v8:content>Ответственный</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="ResponsibleContextMenu" id="35"/>
@@ -308,7 +309,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Примечание</v8:content>
+							<v8:content>Комментарий</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CommentContextMenu" id="39"/>
@@ -326,7 +327,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ведомость составил</v8:content>
+							<v8:content>Автор</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="AuthorContextMenu" id="43"/>
