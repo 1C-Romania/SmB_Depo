@@ -2266,17 +2266,3 @@ Function InformationAboutState(RFConstituentEntityName)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

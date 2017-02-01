@@ -154,17 +154,3 @@ Procedure NotifyOwner(Val Data, Cancel = False)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
