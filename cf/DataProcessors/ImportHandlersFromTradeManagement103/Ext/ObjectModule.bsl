@@ -528,10 +528,6 @@ Procedure OCR_AfterImport_BankAccounts(ExchangeFile, Cancel, Ref, Object, Object
 		Object.GLAccount = ChartsOfAccounts.Managerial.Bank;
 	EndIf;
 	
-	If Not ValueIsFilled(Object.KPPIndicationVersion) Then
-		Object.KPPIndicationVersion = Enums.KPPIndicationVariants.OnTransferOfTaxes;
-	EndIf;
-
 EndProcedure
 
 Procedure OCR_AfterImport_CashRegisters(ExchangeFile, Cancel, Ref, Object, ObjectParameters, ObjectModified, 

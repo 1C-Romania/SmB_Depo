@@ -85,18 +85,3 @@ Procedure DetermineBankPickNeedFromClassifier(ClosingResult, AdditionalParameter
 EndProcedure // DetermineBankPickNeedFromClassifier()
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

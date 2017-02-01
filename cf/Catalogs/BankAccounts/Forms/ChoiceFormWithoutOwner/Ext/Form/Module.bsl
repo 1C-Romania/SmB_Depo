@@ -1,6 +1,6 @@
 ﻿
-// Procedure - OnCreateAtServer event handler.
-//
+#Region FormEventsHandlers
+
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
@@ -13,13 +13,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	If Parameters.Filter.Property("Owner") Then
-		OwnerType = TypeOf(Parameters.Filter.Owner);
-		Items.AgreementOnDirectExchange.Visible =
-			GetFunctionalOption("UseEDExchangeWithBanks") AND OwnerType = Type("CatalogRef.Companies");
-	EndIf;
-	
 EndProcedure
+
+#EndRegion
+
+#Region FormItemsEventsHandlers
 
 &AtClient
 Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
@@ -28,16 +26,4 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
 EndProcedure
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#EndRegion

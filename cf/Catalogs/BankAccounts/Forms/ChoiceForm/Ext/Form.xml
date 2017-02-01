@@ -87,7 +87,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>код</v8:content>
+							<v8:content>Код</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CodeContextMenu" id="7"/>
@@ -124,7 +124,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Account No</v8:content>
+							<v8:content>Account number</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -164,7 +164,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Вал.</v8:content>
+							<v8:content>Валюта</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CashAssetsCurrencyContextMenu" id="11"/>
@@ -175,7 +175,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Account kind</v8:content>
+							<v8:content>Account type</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -184,16 +184,6 @@
 					</Title>
 					<ContextMenu name="AccountTypeContextMenu" id="17"/>
 					<ExtendedTooltip name="AccountTypeExtendedTooltip" id="27"/>
-				</LabelField>
-				<LabelField name="ExternalDataProcessor" id="44">
-					<DataPath>List.GLAccount</DataPath>
-					<ContextMenu name="ExternalDataProcessorContextMenu" id="45"/>
-					<ExtendedTooltip name="ExternalDataProcessorExtendedTooltip" id="46"/>
-				</LabelField>
-				<LabelField name="AgreementOnDirectExchange" id="41">
-					<DataPath>List.AgreementOnDirectExchange</DataPath>
-					<ContextMenu name="AgreementOnDirectExchangeContextMenu" id="42"/>
-					<ExtendedTooltip name="AgreementOnDirectExchangeExtendedTooltip" id="43"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -205,7 +195,8 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>List.IsCounterpartyAccount</Field>
+				<Field>List.IsCompanyAccount</Field>
+				<Field>1/64</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
@@ -228,21 +219,15 @@
 	CatalogBankAccount.DestinationText,
 	CatalogBankAccount.MonthOutputOption,
 	CatalogBankAccount.AmountWithoutCents,
-	CatalogBankAccount.PermissionNumberAndDate,
 	CatalogBankAccount.OpeningDate,
 	CatalogBankAccount.ClosingDate,
-	CatalogBankAccount.KPPIndicationVersion,
 	CASE
 		WHEN VALUETYPE(CatalogBankAccount.Owner) = TYPE(Catalog.Companies)
 			THEN TRUE
 		ELSE FALSE
-	END AS IsCounterpartyAccount,
-	EDUsageAgreements.AgreementStatus AS AgreementOnDirectExchange
+	END AS IsCompanyAccount
 FROM
-	Catalog.BankAccounts AS CatalogBankAccount
-		LEFT JOIN Catalog.EDUsageAgreements AS EDUsageAgreements
-		ON CatalogBankAccount.Bank = EDUsageAgreements.Counterparty
-			AND CatalogBankAccount.Owner = EDUsageAgreements.Company</QueryText>
+	Catalog.BankAccounts AS CatalogBankAccount</QueryText>
 				<MainTable>Catalog.BankAccounts</MainTable>
 				<ListSettings>
 					<dcsset:filter>

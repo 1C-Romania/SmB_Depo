@@ -12,16 +12,16 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	// Fill in BIC and corr.bank account.
-	FillInBankDetails(SWIFTBank, CorrAccountBank, DirectExchangeWithBanksAgreement, DirectMessageExchange, Object.Bank, Object.Owner);
+	// Fill SWIFT and corr. bank account.
+	FillBankDetails(SWIFTBank, CorrAccountBank, Object.Bank, Object.Owner);
 	
-	// Fill in BIC and corr.account of bank of settlements.
-	FillBIKAndCorrAccount(Object.AccountsBank, SWIFTBankForSettlements, CorrAccountBankForSettlements);
+	// Fill SWIFT and corr. account of bank of settlements.
+	FillSWIFTAndCorrAccount(Object.AccountsBank, SWIFTBankForSettlements, CorrAccountBankForSettlements);
 	
 	FormItemsManagement();
 	
 	If Not ValueIsFilled(Object.AccountType) Then
-		Object.AccountType = "Transactional";
+		Object.AccountType = "Current";
 	EndIf;
 	
 	FillInAccountViewListServer();
@@ -46,7 +46,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	// StandardSubsystems.PerformanceEstimation
 	
 	// If bank of settlements is not used, clear the bank value.
-	If Not SettlementBankUsed
+	If Not BankForSettlementsIsUsed
 		AND ValueIsFilled(Object.AccountsBank) Then
 		
 		Object.AccountsBank = Undefined;
@@ -92,7 +92,7 @@ EndProcedure
 &AtClient
 Procedure SWIFTBankStartChoice(Item, ChoiceData, StandardProcessing)
 	
-	OpenFormToSelectBank(True);
+	OpenBankChoiceForm(True);
 	
 EndProcedure // SWIFTBankStartChoice()
 
@@ -102,7 +102,7 @@ Procedure SWIFTBankChoiceProcessing(Item, ValueSelected, StandardProcessing)
 	StandardProcessing = False;
 	
 	Object.Bank = ValueSelected;
-	FillInBankDetails(SWIFTBank, CorrAccountBank, DirectExchangeWithBanksAgreement, DirectMessageExchange, Object.Bank, Object.Owner);
+	FillBankDetails(SWIFTBank, CorrAccountBank, Object.Bank, Object.Owner);
 	Object.Description = Left(TrimAll(Object.AccountNo) + ?(ValueIsFilled(Object.Bank), ", in " + String(Object.Bank), ""), 100);
 	
 	If IsBlankString(SWIFTBank) Then
@@ -122,7 +122,7 @@ Procedure SWIFTBankTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
 		
 		If StrLen(Text) > 11 Then
 			Message = New UserMessage;
-			Message.Text = NStr("en='Entered value exceeds the admissible length SWIFT 11 symbols.';ru='Введенное значение превышает допустимую длину SWIFT 11 символов!'");
+			Message.Text = NStr("en='Entered value exceeds the admissible length SWIFT 11 symbols.';ru='Введенное значение превышает допустимую длину SWIFT 11 символов.'");
 			Message.Message();
 			
 			StandardProcessing = False;
@@ -141,17 +141,17 @@ Procedure SWIFTBankTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
 			NotifyChanged(Type("CatalogRef.Banks"));
 			
 			Object.Bank = ListOfFoundBanks[0].Value;
-			FillInBankDetails(SWIFTBank, CorrAccountBank, DirectExchangeWithBanksAgreement, DirectMessageExchange, Object.Bank, Object.Owner);
+			FillBankDetails(SWIFTBank, CorrAccountBank, Object.Bank, Object.Owner);
 			
 		ElsIf ListOfFoundBanks.Count() > 1 Then
 			
 			NotifyChanged(Type("CatalogRef.Banks"));
 			
-			OpenFormToSelectBank(True, ListOfFoundBanks);
+			OpenBankChoiceForm(True, ListOfFoundBanks);
 			
 		Else
 			
-			OpenFormToSelectBank(True);
+			OpenBankChoiceForm(True);
 			
 		EndIf;
 		
@@ -161,7 +161,7 @@ Procedure SWIFTBankTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
 		
 	EndIf;
 	
-EndProcedure // SWIFTBankEndTextInput()
+EndProcedure // SWIFTBankTextEditEnd()
 
 &AtClient
 Procedure CorrAccountBankTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
@@ -174,17 +174,17 @@ Procedure CorrAccountBankTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
 			NotifyChanged(Type("CatalogRef.Banks"));
 			
 			Object.Bank = ListOfFoundBanks[0].Value;
-			FillInBankDetails(SWIFTBank, CorrAccountBank, DirectExchangeWithBanksAgreement, DirectMessageExchange, Object.Bank, Object.Owner);
+			FillBankDetails(SWIFTBank, CorrAccountBank, Object.Bank, Object.Owner);
 			
 		ElsIf ListOfFoundBanks.Count() > 1 Then
 			
 			NotifyChanged(Type("CatalogRef.Banks"));
 			
-			OpenFormToSelectBank(True, ListOfFoundBanks);
+			OpenBankChoiceForm(True, ListOfFoundBanks);
 			
 		Else
 			
-			OpenFormToSelectBank(True);
+			OpenBankChoiceForm(True);
 			
 		EndIf;
 		
@@ -194,7 +194,7 @@ Procedure CorrAccountBankTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
 		
 	EndIf;
 	
-EndProcedure // BankCorrAccountEndTextInput()
+EndProcedure // CorrAccountBankTextEditEnd()
 
 &AtClient
 Procedure CorrAccountBankChoiceProcessing(Item, ValueSelected, StandardProcessing)
@@ -202,15 +202,15 @@ Procedure CorrAccountBankChoiceProcessing(Item, ValueSelected, StandardProcessin
 	StandardProcessing = False;
 	
 	Object.Bank = ValueSelected;
-	FillInBankDetails(SWIFTBank, CorrAccountBank, DirectExchangeWithBanksAgreement, DirectMessageExchange, Object.Bank, Object.Owner);
+	FillBankDetails(SWIFTBank, CorrAccountBank, Object.Bank, Object.Owner);
 	Object.Description = Left(TrimAll(Object.AccountNo) + ?(ValueIsFilled(Object.Bank), ", in " + String(Object.Bank), ""), 100);
 	
-EndProcedure // CorrespondentAccountOfBankChoiceProcessing()
+EndProcedure // CorrAccountBankChoiceProcessing()
 
 &AtClient
 Procedure SWIFTBankForSettlementsStartChoice(Item, ChoiceData, StandardProcessing)
 	
-	OpenFormToSelectBank(False);
+	OpenBankChoiceForm(False);
 	
 EndProcedure // SWIFTBankForSettlementsStartChoice()
 
@@ -240,17 +240,17 @@ Procedure SWIFTBankForSettlementsTextEditEnd(Item, Text, ChoiceData, StandardPro
 			NotifyChanged(Type("CatalogRef.Banks"));
 			
 			Object.AccountsBank = ListOfFoundBanks[0].Value;
-			FillBIKAndCorrAccount(Object.AccountsBank,  SWIFTBankForSettlements, CorrAccountBankForSettlements);
+			FillSWIFTAndCorrAccount(Object.AccountsBank,  SWIFTBankForSettlements, CorrAccountBankForSettlements);
 			
 		ElsIf ListOfFoundBanks.Count() > 1 Then
 			
 			NotifyChanged(Type("CatalogRef.Banks"));
 			
-			OpenFormToSelectBank(False, ListOfFoundBanks);
+			OpenBankChoiceForm(False, ListOfFoundBanks);
 			
 		Else
 			
-			OpenFormToSelectBank(False);
+			OpenBankChoiceForm(False);
 			
 		EndIf;
 		
@@ -267,7 +267,7 @@ Procedure SWIFTBankForSettlementsChoiceProcessing(Item, ValueSelected, StandardP
 	
 	StandardProcessing = False;
 	
-	FillBIKAndCorrAccount(ValueSelected, SWIFTBankForSettlements, CorrAccountBankForSettlements);
+	FillSWIFTAndCorrAccount(ValueSelected, SWIFTBankForSettlements, CorrAccountBankForSettlements);
 	Object.AccountsBank = ValueSelected;
 	
 	If IsBlankString(SWIFTBankForSettlements) Then
@@ -289,17 +289,17 @@ Procedure CorrAccountBankForSettlementsTextEditEnd(Item, Text, ChoiceData, Stand
 			NotifyChanged(Type("CatalogRef.Banks"));
 			
 			Object.AccountsBank = ListOfFoundBanks[0].Value;
-			FillBIKAndCorrAccount(Object.AccountsBank,  SWIFTBankForSettlements, CorrAccountBankForSettlements);
+			FillSWIFTAndCorrAccount(Object.AccountsBank,  SWIFTBankForSettlements, CorrAccountBankForSettlements);
 			
 		ElsIf ListOfFoundBanks.Count() > 1 Then
 			
 			NotifyChanged(Type("CatalogRef.Banks"));
 			
-			OpenFormToSelectBank(False, ListOfFoundBanks);
+			OpenBankChoiceForm(False, ListOfFoundBanks);
 			
 		Else
 			
-			OpenFormToSelectBank(False);
+			OpenBankChoiceForm(False);
 			
 		EndIf;
 		
@@ -309,28 +309,27 @@ Procedure CorrAccountBankForSettlementsTextEditEnd(Item, Text, ChoiceData, Stand
 		
 	EndIf;
 	
-EndProcedure // SettlementsBankCorrAccountEndTextInput()
+EndProcedure // CorrAccountBankForSettlementsTextEditEnd()
 
 &AtClient
 Procedure CorrAccountBankForSettlementsChoiceProcessing(Item, ValueSelected, StandardProcessing)
 	
 	StandardProcessing = False;
 	
-	FillBIKAndCorrAccount(ValueSelected, SWIFTBankForSettlements, CorrAccountBankForSettlements);
+	FillSWIFTAndCorrAccount(ValueSelected, SWIFTBankForSettlements, CorrAccountBankForSettlements);
 	Object.AccountsBank = ValueSelected;
 	
-EndProcedure // SettlementsBankCorrAccountChoiceProcessing()
+EndProcedure // CorrAccountBankForSettlementsChoiceProcessing()
 
 &AtClient
-Procedure BankIsUsedForSettlementsOnChange(Item)
+Procedure BankForSettlementsIsUsedOnChange(Item)
 	
-	If SettlementBankUsed Then
-		Items.FolderPagesIndirectCalculations.CurrentPage = Items.FolderAccountingBank;
-	Else
-		Items.FolderPagesIndirectCalculations.CurrentPage = Items.GroupLabelIndirectCalculations;
-	EndIf;
+	Items.SWIFTBankForSettlements.Visible		= BankForSettlementsIsUsed;
+	Items.CorrAccountBankForSettlements.Visible	= BankForSettlementsIsUsed;
+	Items.BankForSettlements.Visible			= BankForSettlementsIsUsed;
+	Items.BankForSettlementsCity.Visible		= BankForSettlementsIsUsed;
 	
-EndProcedure // SettlementsBankIsUsedOnChange()
+EndProcedure // BankForSettlementsIsUsedOnChange()
 
 &AtClient
 Procedure EditPayerTextOnChange(Item)
@@ -370,43 +369,14 @@ Procedure CashAssetsCurrencyOnChange(Item)
 	
 EndProcedure
 
-&AtClient
-Procedure AccountNoTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
-	
-	#If WebClient Then
-		
-		If StrLen(Text) > 20 Then
-			Message = New UserMessage;
-			Message.Text = NStr("en='The entered value exceeds the permitted account number length of the 20 digits!';ru='Введенное значение превышает допустимую длину номера счета 20 символов!'");
-			Message.Message();
-			
-			StandardProcessing = False;
-		EndIf;
-		
-	#EndIf
-	
-EndProcedure
-
-&AtClient
-Procedure DirectExchangeMessageClick(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	
-	If ValueIsFilled(DirectExchangeWithBanksAgreement) Then
-		FormParameters = New Structure("Key, OpenWindowMode", DirectExchangeWithBanksAgreement, FormWindowOpeningMode.LockOwnerWindow);
-		OpenForm("Catalog.EDUsageAgreements.ObjectForm", FormParameters, ThisObject);
-	EndIf;
-	
-EndProcedure
-
 #EndRegion
 
 #Region ServiceProceduresAndFunctions
 
-// The procedure fills in the BIC and CorrAccount field values.
+// The procedure fills in the SWIFT and CorrAccount field values.
 //
 &AtServerNoContext
-Procedure FillBIKAndCorrAccount(Bank, Bin, CorrAccount)
+Procedure FillSWIFTAndCorrAccount(Bank, SWIFT, CorrAccount)
 	
 	If Not ValueIsFilled(Bank) Then
 		
@@ -414,10 +384,10 @@ Procedure FillBIKAndCorrAccount(Bank, Bin, CorrAccount)
 		
 	EndIf;
 	
-	Bin = Bank.Code;
+	SWIFT	= Bank.Code;
 	CorrAccount = Bank.CorrAccount;
 	
-EndProcedure // FillInBICAndCorrAccount()
+EndProcedure // FillSWIFTAndCorrAccount()
 
 // The procedure fills in the CorrespondentText field value.
 //
@@ -460,7 +430,7 @@ EndProcedure // FillInCorrespondentText()
 // The procedure opens a form with a list of banks for manual selection.
 //
 &AtClient
-Procedure OpenFormToSelectBank(IsBank, ListOfFoundBanks = Undefined)
+Procedure OpenBankChoiceForm(IsBank, ListOfFoundBanks = Undefined)
 	
 	FormParameters = New Structure;
 	FormParameters.Insert("CurrentRow", ?(IsBank, Object.Bank, Object.AccountsBank));
@@ -476,33 +446,7 @@ Procedure OpenFormToSelectBank(IsBank, ListOfFoundBanks = Undefined)
 	
 	OpenForm("Catalog.Banks.ChoiceForm", FormParameters, ?(IsBank, Items.SWIFTBank, Items.SWIFTBankForSettlements));
 	
-EndProcedure // OpenBankSelectionForm()
-
-&AtServerNoContext
-Function BankDiscontinued(BIN)
-	
-	Result = False;
-	
-	QueryText = 
-	"SELECT
-	|	RFBankClassifier.ActivityDiscontinued
-	|FROM
-	|	Catalog.RFBankClassifier AS RFBankClassifier
-	|WHERE
-	|	RFBankClassifier.Code = &BIN";
-	
-	Query = New Query;
-	Query.Text = QueryText;
-	Query.SetParameter("BIN", BIN);
-	
-	Selection = Query.Execute().Select();
-	If Selection.Next() Then
-		Result = Selection.ActivityDiscontinued;
-	EndIf;
-	
-	Return Result;
-	
-EndFunction
+EndProcedure // OpenBankChoiceForm()
 
 &AtServerNoContext
 Function GetListOfBanksByAttributes(Val Field, Val Value) Export
@@ -524,7 +468,7 @@ Function GetListOfBanksByAttributes(Val Field, Val Value) Export
 EndFunction
 
 &AtClientAtServerNoContext
-Function CheckCorrectnessOfAccountNumbers(Number, ForeignCurrencyAccount = False, ErrorText = "")
+Function CheckCorrectnessOfAccountNumbers(Number, ErrorText = "")
 
 	Result = True;
 	
@@ -533,12 +477,7 @@ Function CheckCorrectnessOfAccountNumbers(Number, ForeignCurrencyAccount = False
 	EndIf;
 	
 	ErrorText = "";
-	If Not ForeignCurrencyAccount AND StrLen(Number) <> 20 Then
-		
-		ErrorText = NStr("en='Perhaps, account number is specified incompletely';ru='Возможно номер счета указан не полностью'");
-		Result = False;
-		
-	ElsIf Not StringFunctionsClientServer.OnlyNumbersInString(Number) Then
+	If Not StringFunctionsClientServer.OnlyNumbersInString(Number) Then
 		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", " ") +
 			NStr("en='The bank account number must contain only digits.
@@ -581,7 +520,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 	
 	Var ErrorText;
 	
-	IsBank = (Field = "SWIFTBank") OR (Field = "BankCorrAccount");
+	IsBank = (Field = "SWIFTBank") OR (Field = "CorrAccountBank");
 	ClearValuesInAssociatedFieldsInForms(IsBank);
 	
 	If IsBlankString(TextForSearch) Then
@@ -590,7 +529,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 		
 		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
 			NStr("en='The ""%1"" field value is invalid.';ru='Поле ""%1"" заполнено не корректно.'"), 
-			?(Find(Field, "BIN") > 0, "BIN", "Corr. account")
+			?(Find(Field, "SWIFT") > 0, "SWIFT", "Corr. account")
 			);
 		
 		CommonUseClientServer.MessageToUser(MessageText,, Field);
@@ -631,7 +570,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 			
 		ElsIf SearchArea = "CorrAccount" Then
 			
-			If Not CheckCorrectnessOfAccountNumbers(TextForSearch, Currency, ErrorText) Then
+			If Not CheckCorrectnessOfAccountNumbers(TextForSearch, ErrorText) Then
 				ClearMessages();
 				CommonUseClientServer.MessageToUser(ErrorText,, Field);
 				Return Undefined;
@@ -652,18 +591,6 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 		ShowQueryBox(NOTifyDescription, QuestionText, Buttons,, "Select", NStr("en='Bank not found';ru='Банк не найден'"));
 		Return Undefined;
 		
-	ElsIf SearchArea = "Code" AND ListOfFoundBanks.Count() = 1 Then
-		
-		If Field = "SWIFTBankForSettlements" Then
-			
-			BanksIndirectSettlementsStopped = BankDiscontinued(TextForSearch);
-			
-		Else
-			
-			BankDiscontinued = BankDiscontinued(TextForSearch);
-			
-		EndIf;
-		
 	EndIf;
 	
 	Return ListOfFoundBanks;
@@ -676,13 +603,12 @@ EndFunction // FindBanks()
 Procedure FormItemsManagement()
 	
 	// Set using the bank of settlements.
-	SettlementBankUsed = ValueIsFilled(Object.AccountsBank);
+	BankForSettlementsIsUsed = ValueIsFilled(Object.AccountsBank);
 	
-	If SettlementBankUsed Then
-		Items.FolderPagesIndirectCalculations.CurrentPage = Items.FolderAccountingBank;
-	Else
-		Items.FolderPagesIndirectCalculations.CurrentPage = Items.GroupLabelIndirectCalculations;
-	EndIf;
+	Items.SWIFTBankForSettlements.Visible		= BankForSettlementsIsUsed;
+	Items.CorrAccountBankForSettlements.Visible	= BankForSettlementsIsUsed;
+	Items.BankForSettlements.Visible			= BankForSettlementsIsUsed;
+	Items.BankForSettlementsCity .Visible		= BankForSettlementsIsUsed;
 	
 	// Edit company name.
 	EditCorrespondentText = ValueIsFilled(Object.CorrespondentText);
@@ -695,14 +621,11 @@ Procedure FormItemsManagement()
 		FillCorrespondentText();
 	EndIf;
 	
-	// Set the current tab.
-	If TypeOf(Object.Owner) = Type("CatalogRef.Companies") Then
-		Items.GroupPages.CurrentPage = Items.GroupAccountAttributesOfCompany;
-	Else
-		Items.GroupPages.CurrentPage = Items.GroupCounterpartyAccountAttributes;
-	EndIf;
+	// Print settings
+	Items.GroupCompanyAccountAttributes.Visible			= (TypeOf(Object.Owner) = Type("CatalogRef.Companies"));
+	Items.GroupCounterpartyAccountAttributes.Visible	= Not (TypeOf(Object.Owner) = Type("CatalogRef.Companies"));
 	
-EndProcedure // ManageFormControls()
+EndProcedure // FormItemsManagement()
 
 // Function generates a bank account description.
 //
@@ -765,48 +688,14 @@ Procedure ClearValuesInAssociatedFieldsInForms(IsBank)
 	
 EndProcedure // ClearRelatedFields()
 
-// The procedure fills in the data on direct exchange with banks.
-//
-&AtServerNoContext
-Procedure FillInDirectExchangeSettings(DirectExchangeWithBanksAgreement, DirectMessageExchange, Val Bank, Val AccountOwner)
-
-	DirectMessageExchange = NStr("en = ''");
-	
-	If ValueIsFilled(Bank)
-		AND TypeOf(AccountOwner)=Type("CatalogRef.Companies") Then
-		
-		Query = New Query();
-		Query.Parameters.Insert("Bank", Bank);
-		Query.Parameters.Insert("Company", AccountOwner);
-		Query.Text =
-		"SELECT
-		|	EDUsageAgreements.Ref AS DirectExchangeWithBanksAgreement,
-		|	EDUsageAgreements.Counterparty,
-		|	EDUsageAgreements.AgreementStatus
-		|FROM
-		|	Catalog.EDUsageAgreements AS EDUsageAgreements
-		|WHERE
-		|	EDUsageAgreements.Counterparty = &Bank
-		|	AND EDUsageAgreements.Company = &Company";
-		Selection = Query.Execute().Select();
-		If Selection.Next() Then
-			DirectExchangeWithBanksAgreement = Selection.DirectExchangeWithBanksAgreement;
-			DirectMessageExchange = StringFunctionsClientServer.PlaceParametersIntoString(
-				NStr("en='Direct exchange agreement %1';ru='Соглашение о прямом обмене %1'"), Lower(Selection.AgreementStatus));
-		EndIf;
-	EndIf;
-	
-EndProcedure // FillInDirectExchangeSettings()
-
 // Fills in the bank details and direct exchange settings.
 //
 &AtServerNoContext
-Procedure FillInBankDetails(SWIFTBank, BankCorrAccount, DirectExchangeWithBanksAgreement, DirectMessageExchange, Val Bank, Val AccountOwner)
+Procedure FillBankDetails(SWIFTBank, CorrAccountBank, Val Bank, Val AccountOwner)
 
-	FillBIKAndCorrAccount(Bank, SWIFTBank, BankCorrAccount);
-	FillInDirectExchangeSettings(DirectExchangeWithBanksAgreement, DirectMessageExchange, Bank, AccountOwner);
+	FillSWIFTAndCorrAccount(Bank, SWIFTBank, CorrAccountBank);
 
-EndProcedure // FillInBankDetails()
+EndProcedure // FillBankDetails()
 
 #EndRegion
 
@@ -820,7 +709,7 @@ Procedure DetermineIfBankIsToBeSelectedFromCatalog(ClosingResult, AdditionalPara
 	
 	If ClosingResult = "Select" Then
 		
-		OpenFormToSelectBank(AdditionalParameters.IsBank);
+		OpenBankChoiceForm(AdditionalParameters.IsBank);
 		
 	EndIf;
 	
@@ -854,16 +743,3 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

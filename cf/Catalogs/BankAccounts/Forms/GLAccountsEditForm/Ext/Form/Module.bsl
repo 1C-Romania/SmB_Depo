@@ -1,9 +1,61 @@
 ﻿
-////////////////////////////////////////////////////////////////////////////////
-// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
+#Region FormEventsHandlers
 
-// Function checks GL account change option.
-//
+&AtServer
+Procedure OnCreateAtServer(Cancel, StandardProcessing)
+	
+	GLAccount = Parameters.GLAccount;
+	Ref = Parameters.Ref;
+	CompanyOwner = TypeOf(Ref.Owner) = Type("CatalogRef.Companies");
+	
+	If CancelGLAccountChange(Ref) Then
+		Items.GLAccountsGroup.ToolTip = NStr("en='There are transactions in base by this bank account! You can not change the GL account!';ru='В базе есть движения по этому банковскому счету! Изменение счета учета запрещено!'");
+		Items.GLAccountsGroup.Enabled = False;
+		Items.ByDefault.Visible = False;
+	EndIf;
+	
+EndProcedure // OnCreateAtServer()
+
+&AtClient
+Procedure OnOpen(Cancel)
+	
+	If Not CompanyOwner Then
+		Cancel = True;
+		ShowMessageBox(, NStr("en='GL accounts are edited only for bank accounts of companies!';ru='Счета учетов редактируются только для банковских счетов организаций!'"));
+	EndIf;
+
+EndProcedure
+
+#EndRegion
+
+#Region FormItemsEventsHandlers
+
+&AtClient
+Procedure GLAccountOnChange(Item)
+	
+	If Not ValueIsFilled(GLAccount) Then
+		GLAccount = PredefinedValue("ChartOfAccounts.Managerial.Bank");
+	EndIf;
+	NotifyAccountChange();
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormCommandsHandlers
+
+&AtClient
+Procedure ByDefault(Command)
+	
+	GLAccount = PredefinedValue("ChartOfAccounts.Managerial.Bank");
+	NotifyAccountChange();
+	
+EndProcedure // ByDefault()
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
 &AtServer
 Function CancelGLAccountChange(Ref)
 	
@@ -35,59 +87,6 @@ Function CancelGLAccountChange(Ref)
 
 EndFunction // CancelGLAccountChange()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
-
-// Procedure - event handler OnCreateAtServer of the form.
-//
-&AtServer
-Procedure OnCreateAtServer(Cancel, StandardProcessing)
-	
-	GLAccount = Parameters.GLAccount;
-	Ref = Parameters.Ref;
-	CompanyOwner = TypeOf(Ref.Owner) = Type("CatalogRef.Companies");
-	
-	If CancelGLAccountChange(Ref) Then
-		Items.GLAccountsGroup.ToolTip = NStr("en='There are transactions in base by this bank account! You can not change the GL account!';ru='В базе есть движения по этому банковскому счету! Изменение счета учета запрещено!'");
-		Items.GLAccountsGroup.Enabled = False;
-		Items.Default.Visible = False;
-	EndIf;
-	
-EndProcedure // OnCreateAtServer()
-
-&AtClient
-Procedure OnOpen(Cancel)
-	
-	If Not CompanyOwner Then
-		Cancel = True;
-		ShowMessageBox(, NStr("en='GL accounts are edited only for bank accounts of companies!';ru='Счета учетов редактируются только для банковских счетов организаций!'"));
-	EndIf;
-
-EndProcedure
-
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - ACTIONS OF THE FORM COMMAND PANELS
-
-// Procedure - command click handler Default.
-//
-&AtClient
-Procedure Default(Command)
-	
-	GLAccount = PredefinedValue("ChartOfAccounts.Managerial.Bank");
-	NotifyAccountChange();
-	
-EndProcedure // Default()
-
-&AtClient
-Procedure GLAccountOnChange(Item)
-	
-	If Not ValueIsFilled(GLAccount) Then
-		GLAccount = PredefinedValue("ChartOfAccounts.Managerial.Bank");
-	EndIf;
-	NotifyAccountChange();
-	
-EndProcedure
-
 &AtClient
 Procedure NotifyAccountChange()
 	
@@ -100,19 +99,4 @@ Procedure NotifyAccountChange()
 	
 EndProcedure
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#EndRegion

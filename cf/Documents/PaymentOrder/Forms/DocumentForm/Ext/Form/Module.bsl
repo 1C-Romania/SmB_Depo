@@ -298,7 +298,6 @@ Function GetCompanyDataOnChange(Company, BankAccount, Counterparty, Counterparty
 	//  Company bank account
 	ValueForStructure	= ?(BankAccount.Owner = Company, BankAccount, Company.BankAccountByDefault);
 	StructureData.Insert("BankAccount", 			ValueForStructure);
-	NeedInstructionsCustomerCPP = GetNeedToIndicateKPP(ValueForStructure, OperationKind);
 	
 	//  Currency
 	ValueForStructure	= ?(ValueIsFilled(ValueForStructure), ValueForStructure.CashCurrency, Constants.NationalCurrency.Get());
@@ -307,14 +306,10 @@ Function GetCompanyDataOnChange(Company, BankAccount, Counterparty, Counterparty
 	//  Counterparty bank account
 	ValueForStructure	= ?(ValueIsFilled(CounterpartyAccount) AND ValueForStructure = CounterpartyAccount.CashCurrency, CounterpartyAccount, Catalogs.BankAccounts.EmptyRef());
 	StructureData.Insert("CounterpartyAccount", 		ValueForStructure);
-	NecessityInstructionsCRRRecipient = GetNeedToIndicateKPP(ValueForStructure, OperationKind);
 	
 	StructureData.Insert("CorrespondentText", 	Company.BankAccountByDefault.CorrespondentText);
 	StructureData.Insert("PayerTIN", 			Company.TIN);
-	StructureData.Insert("PayerKPP", 			?(NeedInstructionsCustomerCPP, Company.KPP, ""));
 	StructureData.Insert("ThisIsInd", 				Company.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind);
-	
-	StructureData.Insert("PayeeKPP",			?(NecessityInstructionsCRRRecipient, Counterparty.KPP, ""));
 	
 	StructureData.Insert("TextBankForSettlements", GetTextBankForSettlement(StructureData.BankAccount));
 	
@@ -327,14 +322,11 @@ EndFunction // GetCompanyDataOnChange()
 &AtServerNoContext
 Function GetDataCompanyAccountOnChange(Company, AccountOfCompany, CurrencyBeforeChange, Date, OperationKind)
 	
-	NeedInstructionsKPP = GetNeedToIndicateKPP(AccountOfCompany, OperationKind);
-	
 	StructureData = New Structure();
 	StructureData.Insert("CorrespondentText", AccountOfCompany.CorrespondentText);
 	StructureData.Insert("DescriptionFull", ?(ValueIsFilled(AccountOfCompany), AccountOfCompany.Owner.DescriptionFull, ""));
 	StructureData.Insert("PayerDescriptionOnTaxTransfer", ?(ValueIsFilled(AccountOfCompany), AccountOfCompany.Owner.PayerDescriptionOnTaxTransfer, ""));
 	StructureData.Insert("CashCurrency", AccountOfCompany.CashCurrency);
-	StructureData.Insert("PayerKPP", ?(NeedInstructionsKPP, Company.KPP, ""));
 	
 	StructureData.Insert(
 		"CurrencyRateRepetition",
@@ -372,27 +364,6 @@ Function GetDataDateOnChange(DocumentRef, DateNew, DateBeforeChange)
 	
 EndFunction // GetDataDateOnChange()
 
-// Receives the need for KPP specification.
-//
-&AtServerNoContext
-Function GetNeedToIndicateKPP(CounterpartyAccount, OperationKind)
-	
-	If OperationKind = Enums.OperationKindsPaymentOrder.Payment Then
-		If CounterpartyAccount.KPPIndicationVersion = Enums.KPPIndicationVariants.InAllPaymentOrders Then
-			NeedInstructionsKPP = True;
-		Else
-			NeedInstructionsKPP = False;
-		EndIf;
-	ElsIf OperationKind = Enums.OperationKindsPaymentOrder.TaxTransfer Then
-		NeedInstructionsKPP = True;
-	Else
-		NeedInstructionsKPP = False;
-	EndIf;
-	
-	Return NeedInstructionsKPP;
-
-EndFunction // GetNeedToIndicateKPP()
-
 // It receives data set from server for the ContractOnChange procedure.
 //
 &AtServerNoContext
@@ -404,13 +375,10 @@ Function GetDataCounterpartyOnChange(Counterparty, DocumentCurrency, OperationKi
 		Catalogs.BankAccounts.EmptyRef()
 	);
 	
-	NeedInstructionsKPP = GetNeedToIndicateKPP(CounterpartyAccount, OperationKind);
-	
 	StructureData = New Structure();
 	StructureData.Insert("DescriptionFull", 	Counterparty.DescriptionFull);
 	StructureData.Insert("CounterpartyAccount", 	CounterpartyAccount);
 	StructureData.Insert("PayeeTIN", 		Counterparty.TIN);
-	StructureData.Insert("PayeeKPP", 		?(NeedInstructionsKPP, Counterparty.KPP, ""));
 	StructureData.Insert("PaymentDestination",	Counterparty.BankAccountByDefault.DestinationText);
 	StructureData.Insert("CorrespondentText",	Counterparty.BankAccountByDefault.CorrespondentText);
 	
@@ -425,12 +393,9 @@ EndFunction // GetDataCounterpartyOnChange()
 &AtServerNoContext
 Function GetDataCounterpartyAccountOnChange(Counterparty, CounterpartyAccount, OperationKind)
 	
-	NeedInstructionsKPP = GetNeedToIndicateKPP(CounterpartyAccount, OperationKind);
-	
 	StructureData = New Structure();
 	StructureData.Insert("PaymentDestination", CounterpartyAccount.DestinationText);
 	StructureData.Insert("CorrespondentText", CounterpartyAccount.CorrespondentText);
-	StructureData.Insert("PayeeKPP", ?(NeedInstructionsKPP, Counterparty.KPP, ""));
 	If ValueIsFilled(CounterpartyAccount.Owner) Then
 		StructureData.Insert("DescriptionFull", CounterpartyAccount.Owner.DescriptionFull);
 	Else
@@ -610,10 +575,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		If Not ValueIsFilled(Object.PayerTIN) Then
 			Object.PayerTIN = Object.Company.TIN;
 		EndIf;
-		If Not ValueIsFilled(Object.PayerKPP) Then
-			NeedInstructionsCustomerCPP = GetNeedToIndicateKPP(Object.BankAccount, Object.OperationKind);
-			Object.PayerKPP = ?(NeedInstructionsCustomerCPP, Object.Company.KPP, "");
-		EndIf;
 		If Not ValueIsFilled(Object.PayerText) Then
 			StructureData = New Structure(
 				"PayerDescriptionOnTaxTransfer, CorrespondentText, DescriptionFull, TextBankForSettlements",
@@ -629,7 +590,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 					Object.CounterpartyAccount = Object.Counterparty.BankAccountByDefault;
 			EndIf;
 			Object.PayeeTIN = Object.Counterparty.TIN;
-			Object.PayeeKPP = Object.Counterparty.KPP;
 			Object.PayeeText = ?(
 				ValueIsFilled(Object.CounterpartyAccount.CorrespondentText),
 				Object.CounterpartyAccount.CorrespondentText,
@@ -848,7 +808,6 @@ Procedure CompanyOnChange(Item)
 	Object.DocumentCurrency	= StructureData.DocumentCurrency;
 	Object.CounterpartyAccount	= StructureData.CounterpartyAccount;
 	Object.PayerTIN	= StructureData.PayerTIN;
-	Object.PayerKPP	= StructureData.PayerKPP;
 	
 	FillPayerText(StructureData);
 	
@@ -857,14 +816,8 @@ Procedure CompanyOnChange(Item)
 	If ValueIsFilled(Object.Company) Then
 		If String(Object.OperationKind) = "Tax payment" Then
 			Object.OKATOCode = StructureData.OKATOCode;
-			If ThisIsInd Then
-				Object.PayerKPP = 0;
-			EndIf;
 		Else
 			Object.OKATOCode = "";
-			If ThisIsInd Then
-				Object.PayerKPP = "";
-			EndIf;
 		EndIf;
 	Else
 		Object.BankAccount = "";
@@ -878,7 +831,6 @@ EndProcedure
 Procedure CompanyAccountOnChange(Item)
 	
 	StructureData = GetDataCompanyAccountOnChange(Object.Company, Object.BankAccount, Object.DocumentCurrency, Object.Date, Object.OperationKind);
-	Object.PayerKPP = StructureData.PayerKPP;
 	
 	If Not Object.DocumentCurrency = StructureData.CashCurrency Then
 		
@@ -993,18 +945,12 @@ Procedure OperationKindOnChange(Item)
 	SetVisibleEnabled();
 	StructureData = GetCompanyDataOnChange(Object.Company, Object.BankAccount, Object.Counterparty, Object.CounterpartyAccount, Object.OperationKind, Object.Date);
 	
-	Object.PayerKPP = StructureData.PayerKPP;
-	Object.PayeeKPP = StructureData.PayeeKPP;
-	
 	If Object.OperationKind = PredefinedValue("Enum.OperationKindsPaymentOrder.TaxTransfer") Then
 		Object.BKCode = "";
 		Object.OKATOCode = StructureData.OKATOCode;
 		Object.TransferToBudgetKind = PredefinedValue("Enum.BudgetTransferKinds.TaxPayment");
 		Object.VATRate = Undefined;
 		Object.VATAmount = Undefined;
-		If ThisIsInd Then
-			Object.PayerKPP = 0;
-		EndIf;
 		FillPaymentToBudgetByDefaultAttributes();
 		Object.PaymentIdentifier = "";
 		Items.PaymentIdentifier.Title = "WIN";
@@ -1021,9 +967,6 @@ Procedure OperationKindOnChange(Item)
 		PaymentYear = "";
 		PeriodOfPayment = "";
 		Object.TransferToBudgetKind = Undefined;
-		If ThisIsInd Then
-			Object.PayerKPP = "";
-		EndIf;
 		Object.PaymentIdentifier = "";
 		Items.PaymentIdentifier.Title = "UIP";
 	EndIf;
@@ -1072,7 +1015,6 @@ Procedure CounterpartyOnChange(Item)
 	
 	Object.CounterpartyAccount 	= StructureData.CounterpartyAccount;
 	Object.PayeeTIN	= StructureData.PayeeTIN;
-	Object.PayeeKPP	= StructureData.PayeeKPP;
 	FillTextRecipient(StructureData);
 	
 	PaymentDestination 		= StructureData.PaymentDestination;
@@ -1089,27 +1031,12 @@ Procedure CounterpartyAccountOnChange(Item)
 	
 	StructureData = GetDataCounterpartyAccountOnChange(Object.Counterparty, Object.CounterpartyAccount, Object.OperationKind);
 	
-	Object.PayeeKPP = StructureData.PayeeKPP;
 	FillTextRecipient(StructureData);
 	
 	PaymentDestination = StructureData.PaymentDestination;
 	GeneratePaymentDestination();
 	
 EndProcedure // BankAccountCounterpartyOnChange()
-
-// Procedure - OnChange event handler of the PayerKPP attribute.
-//
-&AtClient
-Procedure PayerKPPOnChange(Item)
-	
-	If ValueIsFilled(Object.Company)
-	AND Not ValueIsFilled(Object.PayerKPP)
-	AND String(Object.OperationKind) = "Tax payment"
-	AND ThisIsInd Then
-		Object.PayerKPP = 0;
-	EndIf;
-
-EndProcedure // PayerKPPOnChange()
 
 // Procedure - OnChange event handler of the DocumentAmount attribute.
 // IN the procedure, the PaymentDestination attribute is generated.

@@ -83,16 +83,10 @@ Procedure FillByPurchaseOrder(BasisDocument, Amount = Undefined)
 	|	DocumentTable.Ref.Counterparty AS Counterparty,
 	|	BankOfAccount.CounterpartyBankAcc AS CounterpartyAccount,
 	|	DocumentTable.Ref.Company.TIN AS PayerTIN,
-	|	CASE
-	|		WHEN BankOfAccount.CompanyBankAcc.KPPIndicationVersion = VALUE(Enum.KPPIndicationVariants.InAllPaymentOrders)
-	|			THEN DocumentTable.Ref.Company.KPP
-	|		ELSE """"
-	|	END AS PayerKPP,
 	|	DocumentTable.Ref.Counterparty.TIN AS PayeeTIN,
-	|	DocumentTable.Ref.Counterparty.KPP AS PayeeKPP,
-	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.CorrespondentText AS String(1000)) AS CorrespondentText,
-	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.DestinationText AS String(1000)) AS DestinationText,
-	|	CAST(DocumentTable.Ref.Counterparty.DescriptionFull AS String(1000)) AS DescriptionFull,
+	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.CorrespondentText AS STRING(1000)) AS CorrespondentText,
+	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.DestinationText AS STRING(1000)) AS DestinationText,
+	|	CAST(DocumentTable.Ref.Counterparty.DescriptionFull AS STRING(1000)) AS DescriptionFull,
 	|	SUM(CAST(DocumentTable.Total * CASE
 	|				WHEN DocumentTable.Ref.DocumentCurrency <> BankOfAccount.CompanyBankAcc.CashCurrency
 	|						AND CurrencyRatesOfDocument.Multiplicity <> 0
@@ -131,7 +125,7 @@ Procedure FillByPurchaseOrder(BasisDocument, Amount = Undefined)
 	|		ON DocumentTable.Ref = DocumentVATRate.Ref,
 	|	(SELECT TOP 1
 	|		CASE
-	|			WHEN Not PurchaseOrder.BankAccount = VALUE(Catalog.BankAccounts.EmptyRef)
+	|			WHEN NOT PurchaseOrder.BankAccount = VALUE(Catalog.BankAccounts.EmptyRef)
 	|				THEN PurchaseOrder.BankAccount
 	|			WHEN PurchaseOrder.DocumentCurrency = PurchaseOrder.Company.BankAccountByDefault.CashCurrency
 	|				THEN PurchaseOrder.Company.BankAccountByDefault
@@ -175,21 +169,15 @@ Procedure FillByPurchaseOrder(BasisDocument, Amount = Undefined)
 	|	DocumentTable.Ref.Company,
 	|	DocumentTable.Ref.Counterparty,
 	|	DocumentTable.Ref.Counterparty.TIN,
-	|	DocumentTable.Ref.Counterparty.KPP,
-	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.CorrespondentText AS String(1000)),
-	|	CAST(DocumentTable.Ref.Counterparty.DescriptionFull AS String(1000)),
-	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.DestinationText AS String(1000)),
+	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.CorrespondentText AS STRING(1000)),
+	|	CAST(DocumentTable.Ref.Counterparty.DescriptionFull AS STRING(1000)),
+	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.DestinationText AS STRING(1000)),
 	|	DocumentVATRate.DistinctRatesCount,
 	|	BankOfAccount.CompanyBankAcc,
 	|	BankOfAccount.DocumentCurrency,
 	|	BankOfAccount.CounterpartyBankAcc,
 	|	DocumentTable.Ref,
-	|	DocumentTable.Ref.Company.TIN,
-	|	CASE
-	|		WHEN BankOfAccount.CompanyBankAcc.KPPIndicationVersion = VALUE(Enum.KPPIndicationVariants.InAllPaymentOrders)
-	|			THEN DocumentTable.Ref.Company.KPP
-	|		ELSE """"
-	|	END";
+	|	DocumentTable.Ref.Company.TIN";
 	
 	QueryResult = Query.Execute();
 	
@@ -226,16 +214,10 @@ Procedure FillBySupplierInvoiceForPayment(BasisDocument, Amount = Undefined)
 	|	DocumentTable.Ref.Counterparty AS Counterparty,
 	|	BankOfAccount.CounterpartyBankAcc AS CounterpartyAccount,
 	|	DocumentTable.Ref.Company.TIN AS PayerTIN,
-	|	CASE
-	|		WHEN BankOfAccount.CompanyBankAcc.KPPIndicationVersion = VALUE(Enum.KPPIndicationVariants.InAllPaymentOrders)
-	|			THEN DocumentTable.Ref.Company.KPP
-	|		ELSE """"
-	|	END AS PayerKPP,
 	|	DocumentTable.Ref.Counterparty.TIN AS PayeeTIN,
-	|	DocumentTable.Ref.Counterparty.KPP AS PayeeKPP,
-	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.CorrespondentText AS String(1000)) AS CorrespondentText,
-	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.DestinationText AS String(1000)) AS DestinationText,
-	|	CAST(DocumentTable.Ref.Counterparty.DescriptionFull AS String(1000)) AS DescriptionFull,
+	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.CorrespondentText AS STRING(1000)) AS CorrespondentText,
+	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.DestinationText AS STRING(1000)) AS DestinationText,
+	|	CAST(DocumentTable.Ref.Counterparty.DescriptionFull AS STRING(1000)) AS DescriptionFull,
 	|	SUM(CAST(DocumentTable.Total * CASE
 	|				WHEN DocumentTable.Ref.DocumentCurrency <> BankOfAccount.CompanyBankAcc.CashCurrency
 	|						AND CurrencyRatesOfDocument.Multiplicity <> 0
@@ -318,21 +300,15 @@ Procedure FillBySupplierInvoiceForPayment(BasisDocument, Amount = Undefined)
 	|	DocumentTable.Ref.Company,
 	|	DocumentTable.Ref.Counterparty,
 	|	DocumentTable.Ref.Counterparty.TIN,
-	|	DocumentTable.Ref.Counterparty.KPP,
-	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.CorrespondentText AS String(1000)),
-	|	CAST(DocumentTable.Ref.Counterparty.DescriptionFull AS String(1000)),
-	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.DestinationText AS String(1000)),
+	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.CorrespondentText AS STRING(1000)),
+	|	CAST(DocumentTable.Ref.Counterparty.DescriptionFull AS STRING(1000)),
+	|	CAST(DocumentTable.Ref.Counterparty.BankAccountByDefault.DestinationText AS STRING(1000)),
 	|	DocumentVATRate.DistinctRatesCount,
 	|	BankOfAccount.CompanyBankAcc,
 	|	BankOfAccount.DocumentCurrency,
 	|	BankOfAccount.CounterpartyBankAcc,
 	|	DocumentTable.Ref,
-	|	DocumentTable.Ref.Company.TIN,
-	|	CASE
-	|		WHEN BankOfAccount.CompanyBankAcc.KPPIndicationVersion = VALUE(Enum.KPPIndicationVariants.InAllPaymentOrders)
-	|			THEN DocumentTable.Ref.Company.KPP
-	|		ELSE """"
-	|	END";
+	|	DocumentTable.Ref.Company.TIN";
 	
 	QueryResult = Query.Execute();
 	
@@ -385,13 +361,7 @@ Procedure FillByCashOutflowPlan(BasisDocument);
 	|	DocumentTable.BankAccount AS BankAccount,
 	|	NestedSelect.CounterpartyBankAcc AS CounterpartyAccount,
 	|	DocumentTable.Company.TIN AS PayerTIN,
-	|	CASE
-	|		WHEN DocumentTable.BankAccount.KPPIndicationVersion = VALUE(Enum.KPPIndicationVariants.InAllPaymentOrders)
-	|			THEN DocumentTable.Company.KPP
-	|		ELSE """"
-	|	END AS PayerKPP,
 	|	DocumentTable.Counterparty.TIN AS PayeeTIN,
-	|	DocumentTable.Counterparty.KPP AS PayeeKPP,
 	|	DocumentTable.DocumentCurrency AS DocumentCurrency,
 	|	DocumentTable.Counterparty AS Counterparty,
 	|	DocumentTable.Contract AS Contract,

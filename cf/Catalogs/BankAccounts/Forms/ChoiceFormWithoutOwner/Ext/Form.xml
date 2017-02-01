@@ -181,11 +181,6 @@
 					<ContextMenu name="CashAssetsCurrencyContextMenu" id="11"/>
 					<ExtendedTooltip name="CashAssetsCurrencyExtendedTooltip" id="26"/>
 				</LabelField>
-				<LabelField name="ExternalDataProcessor" id="44">
-					<DataPath>List.ExternalDataProcessor</DataPath>
-					<ContextMenu name="ExternalDataProcessorContextMenu" id="45"/>
-					<ExtendedTooltip name="ExternalDataProcessorExtendedTooltip" id="46"/>
-				</LabelField>
 				<LabelField name="AccountType" id="16">
 					<DataPath>List.AccountType</DataPath>
 					<Title>
@@ -201,11 +196,6 @@
 					<ContextMenu name="AccountTypeContextMenu" id="17"/>
 					<ExtendedTooltip name="AccountTypeExtendedTooltip" id="27"/>
 				</LabelField>
-				<LabelField name="AgreementOnDirectExchange" id="41">
-					<DataPath>List.AgreementOnDirectExchange</DataPath>
-					<ContextMenu name="AgreementOnDirectExchangeContextMenu" id="42"/>
-					<ExtendedTooltip name="AgreementOnDirectExchangeExtendedTooltip" id="43"/>
-				</LabelField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -216,7 +206,8 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>List.IsCounterpartyAccount</Field>
+				<Field>List.IsCompanyAccount</Field>
+				<Field>1/75</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
@@ -239,22 +230,15 @@
 	CatalogBankAccount.DestinationText,
 	CatalogBankAccount.MonthOutputOption,
 	CatalogBankAccount.AmountWithoutCents,
-	CatalogBankAccount.PermissionNumberAndDate,
 	CatalogBankAccount.OpeningDate,
 	CatalogBankAccount.ClosingDate,
-	CatalogBankAccount.KPPIndicationVersion,
 	CASE
 		WHEN VALUETYPE(CatalogBankAccount.Owner) = TYPE(Catalog.Companies)
 			THEN TRUE
 		ELSE FALSE
-	END AS IsCounterpartyAccount,
-	EDUsageAgreements.AgreementStatus AS AgreementOnDirectExchange,
-	CatalogBankAccount.ExternalDataProcessor
+	END AS IsCompanyAccount
 FROM
-	Catalog.BankAccounts AS CatalogBankAccount
-		LEFT JOIN Catalog.EDUsageAgreements AS EDUsageAgreements
-		ON CatalogBankAccount.Bank = EDUsageAgreements.Counterparty
-			AND CatalogBankAccount.Owner = EDUsageAgreements.Company</QueryText>
+	Catalog.BankAccounts AS CatalogBankAccount</QueryText>
 				<MainTable>Catalog.BankAccounts</MainTable>
 				<ListSettings>
 					<dcsset:filter>

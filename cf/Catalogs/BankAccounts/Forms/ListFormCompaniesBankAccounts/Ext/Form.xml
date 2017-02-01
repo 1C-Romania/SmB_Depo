@@ -189,11 +189,6 @@
 					<ContextMenu name="CashAssetsCurrencyContextMenu" id="11"/>
 					<ExtendedTooltip name="CashAssetsCurrencyExtendedTooltip" id="39"/>
 				</LabelField>
-				<LabelField name="ExternalDataProcessor" id="63">
-					<DataPath>List.ExternalDataProcessor</DataPath>
-					<ContextMenu name="ExternalDataProcessorContextMenu" id="64"/>
-					<ExtendedTooltip name="ExternalDataProcessorExtendedTooltip" id="65"/>
-				</LabelField>
 				<LabelField name="AccountNo" id="12">
 					<DataPath>List.AccountNo</DataPath>
 					<UserVisible>
@@ -216,6 +211,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="OwnerContextMenu" id="9"/>
@@ -253,11 +252,6 @@
 					<ContextMenu name="DateClosingContextMenu" id="23"/>
 					<ExtendedTooltip name="DateClosingExtendedTooltip" id="46"/>
 				</LabelField>
-				<LabelField name="AgreementOnDirectExchange" id="60">
-					<DataPath>List.AgreementOnDirectExchange</DataPath>
-					<ContextMenu name="AgreementOnDirectExchangeContextMenu" id="61"/>
-					<ExtendedTooltip name="AgreementOnDirectExchangeExtendedTooltip" id="62"/>
-				</LabelField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -288,17 +282,10 @@
 	CatalogBankAccount.DestinationText,
 	CatalogBankAccount.MonthOutputOption,
 	CatalogBankAccount.AmountWithoutCents,
-	CatalogBankAccount.PermissionNumberAndDate,
 	CatalogBankAccount.OpeningDate,
-	CatalogBankAccount.ClosingDate,
-	CatalogBankAccount.KPPIndicationVersion,
-	EDUsageAgreements.AgreementStatus AS AgreementOnDirectExchange,
-	CatalogBankAccount.ExternalDataProcessor
+	CatalogBankAccount.ClosingDate
 FROM
 	Catalog.BankAccounts AS CatalogBankAccount
-		LEFT JOIN Catalog.EDUsageAgreements AS EDUsageAgreements
-		ON CatalogBankAccount.Bank = EDUsageAgreements.Counterparty
-			AND CatalogBankAccount.Owner = EDUsageAgreements.Company
 WHERE
 	VALUETYPE(CatalogBankAccount.Owner) = TYPE(Catalog.Companies)</QueryText>
 				<MainTable>Catalog.BankAccounts</MainTable>
@@ -325,6 +312,10 @@ WHERE
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Company</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

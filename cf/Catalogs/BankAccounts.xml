@@ -200,7 +200,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ПометкаУдаления</v8:content>
+							<v8:content>Пометка удаления</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -415,7 +415,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>код</v8:content>
+							<v8:content>Код</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -490,7 +490,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Вал.</v8:content>
+							<v8:content>Валюта</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -538,7 +538,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Account No</v8:content>
+							<v8:content>Account number</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -646,7 +646,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Accounts Bank</v8:content>
+							<v8:content>Bank for settlements</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -702,7 +702,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Указывается счет учета</v8:content>
+							<v8:content>Счет учета</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -754,7 +754,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Account kind</v8:content>
+							<v8:content>Account type</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -922,7 +922,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Month Output Option</v8:content>
+							<v8:content>Month output option</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1006,64 +1006,6 @@
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
 					<FillValue xsi:type="xs:boolean">false</FillValue>
-					<FillChecking>DontCheck</FillChecking>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
-					<ChoiceParameters/>
-					<QuickChoice>Auto</QuickChoice>
-					<CreateOnInput>Auto</CreateOnInput>
-					<ChoiceForm/>
-					<LinkByType/>
-					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-					<Use>ForItem</Use>
-					<Indexing>DontIndex</Indexing>
-					<FullTextSearch>Use</FullTextSearch>
-				</Properties>
-			</Attribute>
-			<Attribute uuid="8d20b429-15e7-4999-9f28-07ce0768300e">
-				<Properties>
-					<Name>PermissionNumberAndDate</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Permission No. and date</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер и дата разрешения</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>30</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
-					</Type>
-					<PasswordMode>false</PasswordMode>
-					<Format/>
-					<EditFormat/>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Number and date
-of Central Bank permission to open the currency account</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Номер
-и дата разрешения ЦБ на открытие валютного счета</v8:content>
-						</v8:item>
-					</ToolTip>
-					<MarkNegatives>false</MarkNegatives>
-					<Mask/>
-					<MultiLine>false</MultiLine>
-					<ExtendedEdit>false</ExtendedEdit>
-					<MinValue xsi:nil="true"/>
-					<MaxValue xsi:nil="true"/>
-					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xs:string"/>
 					<FillChecking>DontCheck</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -1188,36 +1130,31 @@ of Central Bank permission to open the currency account</v8:content>
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Attribute>
-			<Attribute uuid="6f98a50f-4a13-47a9-b88c-227b642905f3">
+			<Attribute uuid="768ceb6d-423f-4fbc-957d-f14dec9e18ac">
 				<Properties>
-					<Name>KPPIndicationVersion</Name>
+					<Name>IBAN</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>KPP indication option</v8:content>
+							<v8:content>IBAN</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Вариант указания КПП</v8:content>
+							<v8:content>IBAN</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment/>
+					<Comment>International Bank Account Number</Comment>
 					<Type>
-						<v8:Type>cfg:EnumRef.KPPIndicationVariants</v8:Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>34</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
 					<EditFormat/>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>KPP indication version in the payment documents (used for generating print form)</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Вариант указания КПП в платежных документах (используется для формирования печатной формы)</v8:content>
-						</v8:item>
-					</ToolTip>
+					<ToolTip/>
 					<MarkNegatives>false</MarkNegatives>
 					<Mask/>
 					<MultiLine>false</MultiLine>
@@ -1225,7 +1162,7 @@ of Central Bank permission to open the currency account</v8:content>
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xr:DesignTimeRef">Enum.KPPIndicationVariants.EnumValue.InAllPaymentOrders</FillValue>
+					<FillValue xsi:type="xs:string"/>
 					<FillChecking>DontCheck</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -1317,7 +1254,7 @@ of Central Bank permission to open the currency account</v8:content>
 			</Command>
 			<Command uuid="2750259c-4533-4748-a371-5d661cfe5229">
 				<Properties>
-					<Name>OpenListCompaniesBankAccounts</Name>
+					<Name>OpenCompaniesBankAccountsListForm</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>

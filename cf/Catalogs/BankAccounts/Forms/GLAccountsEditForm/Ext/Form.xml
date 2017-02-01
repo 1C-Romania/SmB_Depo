@@ -16,9 +16,9 @@
 	<AutoCommandBar name="FormCommandBar" id="-1">
 		<Autofill>false</Autofill>
 		<ChildItems>
-			<Button name="Default" id="5">
+			<Button name="ByDefault" id="5">
 				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.Default</CommandName>
+				<CommandName>Form.Command.ByDefault</CommandName>
 				<Title>
 					<v8:item>
 						<v8:lang>en</v8:lang>
@@ -29,7 +29,7 @@
 						<v8:content>Восстановить по умолчанию</v8:content>
 					</v8:item>
 				</Title>
-				<ExtendedTooltip name="DefaultExtendedTooltip" id="11"/>
+				<ExtendedTooltip name="ByDefaultExtendedTooltip" id="11"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -101,7 +101,7 @@
 		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="Default" id="2">
+		<Command name="ByDefault" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -122,7 +122,7 @@
 					<v8:content>Восстановить счета учета по умолчанию</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>Default</Action>
+			<Action>ByDefault</Action>
 		</Command>
 	</Commands>
 </Form>

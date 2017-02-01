@@ -1,9 +1,6 @@
 ﻿
-////////////////////////////////////////////////////////////////////////////////
-// EVENT HANDLERS
+#Region FormEventsHandlers
 
-// Procedure - event handler OnCreateAtServer of the form.
-//
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
@@ -15,12 +12,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		MainCompany = SmallBusinessServer.GetPredefinedCompany();
 	EndIf;
 	
-	Items.AgreementOnDirectExchange.Visible = GetFunctionalOption("UseEDExchangeWithBanks");
-	
 EndProcedure // OnCreateAtServer()
 
-// Procedure - form event handler BeforeImportDataFromSettingsAtServer.
-//
 &AtServer
 Procedure BeforeImportDataFromSettingsAtServer(Settings)
 	
@@ -29,9 +22,11 @@ Procedure BeforeImportDataFromSettingsAtServer(Settings)
 	
 EndProcedure // BeforeImportDataFromSettingsAtServer()
 
+#EndRegion
+
+#Region FormItemsEventsHandlers
+
 &AtClient
-// Procedure - event handler OnChange of the Company attribute.
-//
 Procedure CompanyOnChange(Item)
 	
 	SmallBusinessClientServer.SetListFilterItem(List, "Owner", Company, ValueIsFilled(Company));
@@ -39,8 +34,6 @@ Procedure CompanyOnChange(Item)
 EndProcedure // CompanyOnChange()
 
 &AtClient
-// Procedure - list event handler BeforeAddStart.
-//
 Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
 	Cancel = True;
@@ -56,16 +49,4 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
 EndProcedure // ListBeforeAddRow()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#EndRegion

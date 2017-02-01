@@ -897,7 +897,6 @@ Function CreateCounterparty(StringCounterparty = Undefined) Export
 					
 				EndIf;
 				
-				NewAccount.KPPIndicationVersion = Enums.KPPIndicationVariants.InAllPaymentOrders;
 				NewAccount.AccountType = "Transactional";
 				NewAccount.CashCurrency = BankAccount.CashCurrency;
 				DescriptionString = TrimAll(NewAccount.AccountNo) + ?(ValueIsFilled(NewAccount.Bank), ", in " + String(NewAccount.Bank), "");

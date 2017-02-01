@@ -75,14 +75,14 @@
 						<Presentation>
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Transactional</v8:content>
+								<v8:content>Current</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
 								<v8:content>Расчетный</v8:content>
 							</v8:item>
 						</Presentation>
-						<Value xsi:type="xs:string">Transactional</Value>
+						<Value xsi:type="xs:string">Current</Value>
 					</xr:Value>
 				</xr:Item>
 				<xr:Item>
@@ -141,11 +141,11 @@
 			<ContextMenu name="AccountTypeContextMenu" id="18"/>
 			<ExtendedTooltip name="AccountTypeExtendedTooltip" id="104"/>
 		</InputField>
-		<UsualGroup name="NumberTypeCurrencyGroup" id="35">
+		<UsualGroup name="GroupNumberTypeCurrency" id="35">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Number, account kind, currency</v8:content>
+					<v8:content>Number, account type, currency</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -155,7 +155,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Number, account kind, currency</v8:content>
+					<v8:content>Number, account type, currency</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -166,7 +166,7 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="NumberKindCurrencyGroupExtendedTooltip" id="102"/>
+			<ExtendedTooltip name="GroupNumberTypeCurrencyExtendedTooltip" id="102"/>
 			<ChildItems>
 				<InputField name="AccountNo" id="9">
 					<DataPath>Object.AccountNo</DataPath>
@@ -176,13 +176,14 @@
 					<ExtendedTooltip name="AccountNumberExtendedTooltip" id="103"/>
 					<Events>
 						<Event name="OnChange">AccountNoOnChange</Event>
-						<Event name="TextEditEnd">AccountNoTextEditEnd</Event>
 					</Events>
 				</InputField>
 				<InputField name="CashCurrency" id="7">
 					<DataPath>Object.CashCurrency</DataPath>
 					<SkipOnInput>true</SkipOnInput>
 					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>10</MaxWidth>
 					<HorizontalStretch>false</HorizontalStretch>
 					<Wrap>false</Wrap>
 					<ContextMenu name="CashAssetsCurrencyContextMenu" id="8"/>
@@ -193,6 +194,11 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
+		<InputField name="IBAN" id="172">
+			<DataPath>Object.IBAN</DataPath>
+			<ContextMenu name="IBANContextMenu" id="173"/>
+			<ExtendedTooltip name="IBANExtendedTooltip" id="174"/>
+		</InputField>
 		<Pages name="Pages" id="146">
 			<Title>
 				<v8:item>
@@ -216,7 +222,7 @@
 			</ToolTip>
 			<ExtendedTooltip name="PagesExtendedTooltip" id="147"/>
 			<ChildItems>
-				<Page name="BankPage" id="148">
+				<Page name="PageBank" id="148">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -230,16 +236,16 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Bank page</v8:content>
+							<v8:content>Page bank</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Страница банк</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="BankPageExtendedTooltip" id="149"/>
+					<ExtendedTooltip name="PageBankExtendedTooltip" id="149"/>
 					<ChildItems>
-						<UsualGroup name="FolderOpenBankAccount" id="36">
+						<UsualGroup name="GroupOpenBankAccount" id="36">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
@@ -262,33 +268,33 @@
 							</ToolTip>
 							<Group>Vertical</Group>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="FolderOpenBankAccountExtendedTooltip" id="106"/>
+							<ExtendedTooltip name="GroupOpenBankAccountExtendedTooltip" id="106"/>
 							<ChildItems>
-								<UsualGroup name="GroupBankBICCorrAccount" id="37">
+								<UsualGroup name="GroupBankSWIFTCorrAccount" id="37">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>BIC, corr. bank account</v8:content>
+											<v8:content>SWIFT, corr. bank account</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>БИК, корр. счет банка</v8:content>
+											<v8:content>SWIFT, корр. счет банка</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>BIC, corr. bank account</v8:content>
+											<v8:content>SWIFT, corr. bank account</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>БИК, корр. счет банка</v8:content>
+											<v8:content>SWIFT, корр. счет банка</v8:content>
 										</v8:item>
 									</ToolTip>
 									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="GroupBankBICCorrAccountExtendedTooltip" id="107"/>
+									<ExtendedTooltip name="GroupBankSWIFTCorrAccountExtendedTooltip" id="107"/>
 									<ChildItems>
 										<InputField name="SWIFTBank" id="38">
 											<DataPath>SWIFTBank</DataPath>
@@ -348,17 +354,6 @@
 											<ContextMenu name="BankContextMenu" id="12"/>
 											<ExtendedTooltip name="BankExtendedTooltip" id="110"/>
 										</LabelField>
-										<LabelField name="DirectMessageExchange" id="161">
-											<DataPath>DirectMessageExchange</DataPath>
-											<TitleLocation>None</TitleLocation>
-											<HorizontalStretch>true</HorizontalStretch>
-											<Hiperlink>true</Hiperlink>
-											<ContextMenu name="DirectMessageExchangeContextMenu" id="162"/>
-											<ExtendedTooltip name="DirectExchangeMessageExtendedTooltip" id="163"/>
-											<Events>
-												<Event name="Click">DirectExchangeMessageClick</Event>
-											</Events>
-										</LabelField>
 									</ChildItems>
 								</UsualGroup>
 								<LabelField name="BankCity" id="42">
@@ -398,8 +393,8 @@
 								</LabelDecoration>
 							</ChildItems>
 						</UsualGroup>
-						<CheckBoxField name="SettlementBankUsed" id="47">
-							<DataPath>SettlementBankUsed</DataPath>
+						<CheckBoxField name="BankForSettlementsIsUsed" id="47">
+							<DataPath>BankForSettlementsIsUsed</DataPath>
 							<SkipOnInput>true</SkipOnInput>
 							<TitleLocation>Right</TitleLocation>
 							<ToolTip>
@@ -414,157 +409,118 @@
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="SettlementBankUsedContextMenu" id="48"/>
-							<ExtendedTooltip name="SettlementBankUsedExtendedTooltip" id="112">
+							<ContextMenu name="BankForSettlementsIsUsedContextMenu" id="48"/>
+							<ExtendedTooltip name="BankForSettlementsIsUsedExtendedTooltip" id="112">
 								<Width>72</Width>
 								<Height>2</Height>
 								<HorizontalStretch>false</HorizontalStretch>
 							</ExtendedTooltip>
 							<Events>
-								<Event name="OnChange">BankIsUsedForSettlementsOnChange</Event>
+								<Event name="OnChange">BankForSettlementsIsUsedOnChange</Event>
 							</Events>
 						</CheckBoxField>
-						<Pages name="FolderPagesIndirectCalculations" id="44">
-							<EnableContentChange>true</EnableContentChange>
-							<VerticalStretch>false</VerticalStretch>
-							<PagesRepresentation>None</PagesRepresentation>
-							<ExtendedTooltip name="FolderPagesIndirectSettlementsExtendedTooltip" id="113"/>
+						<UsualGroup name="GroupBankForSettlements" id="46">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group settlements bank</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа банк расчетов</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group settlements bank</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа банк расчетов</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupBankForSettlementsExtendedTooltip" id="116"/>
 							<ChildItems>
-								<Page name="GroupLabelIndirectCalculations" id="45">
+								<UsualGroup name="GroupBankForSettlementsSWIFTCorrAccount" id="51">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Group label indirect accounts</v8:content>
+											<v8:content>SWIFT, corr. settlements bank account</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа надпись непрямые расчеты</v8:content>
+											<v8:content>SWIFT, корр. счет банка расчетов</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Group label indirect accounts</v8:content>
+											<v8:content>SWIFT, corr. settlements bank account</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа надпись непрямые расчеты</v8:content>
+											<v8:content>SWIFT, корр. счет банка расчетов</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ExtendedTooltip name="GroupLabelIndirectSettlementsExtendedTooltip" id="114"/>
-									<ChildItems>
-										<LabelField name="IndirectEstimatesOfLabel" id="49">
-											<DataPath>IndirectEstimatesOfLabel</DataPath>
-											<TitleLocation>None</TitleLocation>
-											<TextColor>#333399</TextColor>
-											<ContextMenu name="IndirectEstimatesOfLabelContextMenu" id="50"/>
-											<ExtendedTooltip name="IndirectEstimatesOfLabelExtendedTooltip" id="115"/>
-										</LabelField>
-									</ChildItems>
-								</Page>
-								<Page name="FolderAccountingBank" id="46">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Group settlements bank</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа банк расчетов</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Group settlements bank</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа банк расчетов</v8:content>
-										</v8:item>
-									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="GroupSettlementsBankExtendedTooltip" id="116"/>
+									<ExtendedTooltip name="GroupBankForSettlementsSWIFTCorrAccountExtendedTooltip" id="118"/>
 									<ChildItems>
-										<UsualGroup name="GroupBankBICCorrAccountCalculations" id="51">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>BIC, corr. settlements bank account</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>БИК, корр. счет банка расчетов</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>BIC, corr. settlements bank account</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>БИК, корр. счет банка расчетов</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Horizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="GroupSettlementsBankBICCorrAccountExtendedTooltip" id="118"/>
-											<ChildItems>
-												<InputField name="SWIFTBankForSettlements" id="53">
-													<DataPath>SWIFTBankForSettlements</DataPath>
-													<Wrap>false</Wrap>
-													<ChoiceButton>true</ChoiceButton>
-													<ContextMenu name="SWIFTBankForSettlementsContextMenu" id="54"/>
-													<ExtendedTooltip name="SWIFTBankForSettlementsExtendedTooltip" id="119"/>
-													<Events>
-														<Event name="StartChoice">SWIFTBankForSettlementsStartChoice</Event>
-														<Event name="TextEditEnd">SWIFTBankForSettlementsTextEditEnd</Event>
-														<Event name="ChoiceProcessing">SWIFTBankForSettlementsChoiceProcessing</Event>
-													</Events>
-												</InputField>
-												<InputField name="CorrAccountBankForSettlements" id="55">
-													<DataPath>CorrAccountBankForSettlements</DataPath>
-													<Wrap>false</Wrap>
-													<ContextMenu name="CorrAccountBankForSettlementsContextMenu" id="56"/>
-													<ExtendedTooltip name="CorrAccountBankForSettlementsExtendedTooltip" id="120"/>
-													<Events>
-														<Event name="TextEditEnd">CorrAccountBankForSettlementsTextEditEnd</Event>
-														<Event name="ChoiceProcessing">CorrAccountBankForSettlementsChoiceProcessing</Event>
-													</Events>
-												</InputField>
-											</ChildItems>
-										</UsualGroup>
-										<LabelField name="AccountsBank" id="13">
-											<DataPath>Object.AccountsBank</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Bank</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Банк</v8:content>
-												</v8:item>
-											</Title>
-											<EditMode>EnterOnInput</EditMode>
-											<Hiperlink>true</Hiperlink>
-											<ContextMenu name="SettlementsBankContextMenu" id="14"/>
-											<ExtendedTooltip name="SettlementsBankExtendedTooltip" id="121"/>
-										</LabelField>
-										<LabelField name="AccountsBankCity" id="57">
-											<DataPath>Object.AccountsBank.City</DataPath>
-											<ContextMenu name="SettlementsBankCityContextMenu" id="58"/>
-											<ExtendedTooltip name="SettlementsBankCityExtendedTooltip" id="122"/>
-										</LabelField>
+										<InputField name="SWIFTBankForSettlements" id="53">
+											<DataPath>SWIFTBankForSettlements</DataPath>
+											<Wrap>false</Wrap>
+											<ChoiceButton>true</ChoiceButton>
+											<ContextMenu name="SWIFTBankForSettlementsContextMenu" id="54"/>
+											<ExtendedTooltip name="SWIFTBankForSettlementsExtendedTooltip" id="119"/>
+											<Events>
+												<Event name="StartChoice">SWIFTBankForSettlementsStartChoice</Event>
+												<Event name="TextEditEnd">SWIFTBankForSettlementsTextEditEnd</Event>
+												<Event name="ChoiceProcessing">SWIFTBankForSettlementsChoiceProcessing</Event>
+											</Events>
+										</InputField>
+										<InputField name="CorrAccountBankForSettlements" id="55">
+											<DataPath>CorrAccountBankForSettlements</DataPath>
+											<Wrap>false</Wrap>
+											<ContextMenu name="CorrAccountBankForSettlementsContextMenu" id="56"/>
+											<ExtendedTooltip name="CorrAccountBankForSettlementsExtendedTooltip" id="120"/>
+											<Events>
+												<Event name="TextEditEnd">CorrAccountBankForSettlementsTextEditEnd</Event>
+												<Event name="ChoiceProcessing">CorrAccountBankForSettlementsChoiceProcessing</Event>
+											</Events>
+										</InputField>
 									</ChildItems>
-								</Page>
+								</UsualGroup>
+								<LabelField name="BankForSettlements" id="13">
+									<DataPath>Object.AccountsBank</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Bank</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Банк</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Hiperlink>true</Hiperlink>
+									<ContextMenu name="BankForSettlementsContextMenu" id="14"/>
+									<ExtendedTooltip name="BankForSettlementsExtendedTooltip" id="121"/>
+								</LabelField>
+								<LabelField name="BankForSettlementsCity" id="57">
+									<DataPath>Object.AccountsBank.City</DataPath>
+									<ContextMenu name="BankForSettlementsCityContextMenu" id="58"/>
+									<ExtendedTooltip name="BankForSettlementsCityExtendedTooltip" id="122"/>
+								</LabelField>
 							</ChildItems>
-						</Pages>
+						</UsualGroup>
 					</ChildItems>
 				</Page>
-				<Page name="PrintSettingsPage" id="150">
+				<Page name="PagePrintSettings" id="150">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -578,295 +534,193 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Print settings page</v8:content>
+							<v8:content>Page print settings</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Страница настройка печати</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="PrintSettingsPageExtendedTooltip" id="151"/>
+					<ExtendedTooltip name="PagePrintSettingsExtendedTooltip" id="151"/>
 					<ChildItems>
-						<UsualGroup name="FolderPrintSetting" id="61">
+						<UsualGroup name="GroupCompanyAccountAttributes" id="63">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Payment documents print settings</v8:content>
+									<v8:content>Group company account attribures</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Настройки печати платежных поручений.</v8:content>
+									<v8:content>Группа реквизиты счета организации</v8:content>
 								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Payment documents print settings</v8:content>
+									<v8:content>Group company account attribures</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Настройки печати платежных поручений.</v8:content>
+									<v8:content>Группа реквизиты счета организации</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="FolderPrintSettingExtendedTooltip" id="123"/>
+							<ExtendedTooltip name="GroupCompanyAccountAttributesExtendedTooltip" id="125"/>
 							<ChildItems>
-								<Pages name="GroupPages" id="62">
-									<EnableContentChange>true</EnableContentChange>
+								<CheckBoxField name="EditTextOfPayer" id="86">
+									<DataPath>EditCorrespondentText</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Group pages</v8:content>
+											<v8:content>Edit company name</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа страницы</v8:content>
+											<v8:content>Редактировать текст наименования организации</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="EditTextOfPayerContextMenu" id="87"/>
+									<ExtendedTooltip name="EditTextOfPayerExtendedTooltip" id="126"/>
+									<Events>
+										<Event name="OnChange">EditPayerTextOnChange</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="PayerText" id="98">
+									<DataPath>CorrespondentText</DataPath>
+									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Group pages</v8:content>
+											<v8:content>Company Name in "Payer" Field</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа страницы</v8:content>
+											<v8:content>Текст наименования организации в поле "Плательщик"</v8:content>
 										</v8:item>
-									</ToolTip>
-									<PagesRepresentation>None</PagesRepresentation>
-									<ExtendedTooltip name="PagesGroupExtendedTooltip" id="124"/>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<Height>3</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<MultiLine>true</MultiLine>
+									<ContextMenu name="PayerTextContextMenu" id="99"/>
+									<ExtendedTooltip name="PayerTextExtendedTooltip" id="127"/>
+								</InputField>
+								<UsualGroup name="Group" id="64">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupExtendedTooltip" id="128"/>
 									<ChildItems>
-										<Page name="GroupAccountAttributesOfCompany" id="63">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Group company account attribures</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа реквизиты счета организации</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Group company account attribures</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа реквизиты счета организации</v8:content>
-												</v8:item>
-											</ToolTip>
-											<ExtendedTooltip name="GroupAccountAttributesOfCompanyExtendedTooltip" id="125"/>
-											<ChildItems>
-												<CheckBoxField name="EditTextOfPayer" id="86">
-													<DataPath>EditCorrespondentText</DataPath>
-													<Title>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>Edit company name</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Редактировать текст наименования организации</v8:content>
-														</v8:item>
-													</Title>
-													<TitleLocation>Right</TitleLocation>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="EditTextOfPayerContextMenu" id="87"/>
-													<ExtendedTooltip name="EditTextOfPayerExtendedTooltip" id="126"/>
-													<Events>
-														<Event name="OnChange">EditPayerTextOnChange</Event>
-													</Events>
-												</CheckBoxField>
-												<InputField name="PayerText" id="98">
-													<DataPath>CorrespondentText</DataPath>
-													<Title>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>Company Name in "Payer" Field</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Текст наименования организации в поле "Плательщик"</v8:content>
-														</v8:item>
-													</Title>
-													<TitleLocation>Top</TitleLocation>
-													<Height>3</Height>
-													<VerticalStretch>false</VerticalStretch>
-													<MultiLine>true</MultiLine>
-													<ContextMenu name="PayerTextContextMenu" id="99"/>
-													<ExtendedTooltip name="PayerTextExtendedTooltip" id="127"/>
-												</InputField>
-												<UsualGroup name="Group" id="64">
-													<Group>Horizontal</Group>
-													<Representation>None</Representation>
-													<ShowTitle>false</ShowTitle>
-													<ExtendedTooltip name="GroupExtendedTooltip" id="128"/>
-													<ChildItems>
-														<RadioButtonField name="KPPIndicationVersion" id="33">
-															<DataPath>Object.KPPIndicationVersion</DataPath>
-															<TitleLocation>Top</TitleLocation>
-															<EditMode>EnterOnInput</EditMode>
-															<RadioButtonType>Auto</RadioButtonType>
-															<ColumnsCount>1</ColumnsCount>
-															<ChoiceList>
-																<xr:Item>
-																	<xr:Presentation/>
-																	<xr:CheckState>0</xr:CheckState>
-																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																		<Presentation/>
-																		<Value xsi:type="xr:DesignTimeRef">Enum.KPPIndicationVariants.EnumValue.OnTransferOfTaxes</Value>
-																	</xr:Value>
-																</xr:Item>
-																<xr:Item>
-																	<xr:Presentation/>
-																	<xr:CheckState>0</xr:CheckState>
-																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																		<Presentation/>
-																		<Value xsi:type="xr:DesignTimeRef">Enum.KPPIndicationVariants.EnumValue.InAllPaymentOrders</Value>
-																	</xr:Value>
-																</xr:Item>
-															</ChoiceList>
-															<ContextMenu name="VariantSpecifyingKPPContextMenu" id="34"/>
-															<ExtendedTooltip name="VariantSpecifyingKPPExtendedTooltip" id="129"/>
-														</RadioButtonField>
-														<RadioButtonField name="MonthOutputOption" id="23">
-															<DataPath>Object.MonthOutputOption</DataPath>
-															<TitleLocation>Top</TitleLocation>
-															<EditMode>EnterOnInput</EditMode>
-															<RadioButtonType>Auto</RadioButtonType>
-															<ColumnsCount>1</ColumnsCount>
-															<ChoiceList>
-																<xr:Item>
-																	<xr:Presentation/>
-																	<xr:CheckState>0</xr:CheckState>
-																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																		<Presentation/>
-																		<Value xsi:type="xr:DesignTimeRef">Enum.MonthOutputTypesInDocumentDate.EnumValue.Number</Value>
-																	</xr:Value>
-																</xr:Item>
-																<xr:Item>
-																	<xr:Presentation/>
-																	<xr:CheckState>0</xr:CheckState>
-																	<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																		<Presentation/>
-																		<Value xsi:type="xr:DesignTimeRef">Enum.MonthOutputTypesInDocumentDate.EnumValue.InWords</Value>
-																	</xr:Value>
-																</xr:Item>
-															</ChoiceList>
-															<ContextMenu name="OutputOfMonthChoiceContextMenu" id="24"/>
-															<ExtendedTooltip name="OutputVariantOfMonthExtendedTooltip" id="130"/>
-														</RadioButtonField>
-													</ChildItems>
-												</UsualGroup>
-												<CheckBoxField name="AmountWithoutCents" id="25">
-													<DataPath>Object.AmountWithoutCents</DataPath>
-													<TitleLocation>Right</TitleLocation>
-													<EditMode>EnterOnInput</EditMode>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="AmountWithoutCentsContextMenu" id="26"/>
-													<ExtendedTooltip name="AmountWithoutCentsExtendedTooltip" id="131"/>
-												</CheckBoxField>
-											</ChildItems>
-										</Page>
-										<Page name="GroupCounterpartyAccountAttributes" id="65">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Group counterparty account details</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа реквизиты счета контрагента</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Group counterparty account details</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа реквизиты счета контрагента</v8:content>
-												</v8:item>
-											</ToolTip>
-											<ExtendedTooltip name="GroupCompanyAccountAttributesExtendedTooltip" id="132"/>
-											<ChildItems>
-												<CheckBoxField name="EditTextRecipient" id="88">
-													<DataPath>EditCorrespondentText</DataPath>
-													<Title>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>Edit counterparty (individual) description</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Редактировать текст наименования контрагента (физлица)</v8:content>
-														</v8:item>
-													</Title>
-													<TitleLocation>Right</TitleLocation>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="EditTextRecipientContextMenu" id="89"/>
-													<ExtendedTooltip name="EditTextRecipientExtendedTooltip" id="133"/>
-													<Events>
-														<Event name="OnChange">EditPayeeTextOnChange</Event>
-													</Events>
-												</CheckBoxField>
-												<InputField name="PayeeText" id="96">
-													<DataPath>CorrespondentText</DataPath>
-													<Title>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>Company (individual) name in "Payee" field</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Текст наименования контрагента (физлица) в поле "Получатель"</v8:content>
-														</v8:item>
-													</Title>
-													<TitleLocation>Top</TitleLocation>
-													<Height>2</Height>
-													<ContextMenu name="TextRecipientContextMenu" id="97"/>
-													<ExtendedTooltip name="TextRecipientExtendedTooltip" id="134"/>
-												</InputField>
-												<InputField name="DestinationText" id="94">
-													<DataPath>Object.DestinationText</DataPath>
-													<TitleLocation>Top</TitleLocation>
-													<Height>2</Height>
-													<ContextMenu name="DestinationTextContextMenu" id="95"/>
-													<ExtendedTooltip name="DestinationTextExtendedTooltip" id="135"/>
-												</InputField>
-												<RadioButtonField name="VariantSpecifyingKPP1" id="68">
-													<DataPath>Object.KPPIndicationVersion</DataPath>
-													<RadioButtonType>Auto</RadioButtonType>
-													<ColumnsCount>1</ColumnsCount>
-													<ChoiceList>
-														<xr:Item>
-															<xr:Presentation/>
-															<xr:CheckState>0</xr:CheckState>
-															<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																<Presentation/>
-																<Value xsi:type="xr:DesignTimeRef">Enum.KPPIndicationVariants.EnumValue.OnTransferOfTaxes</Value>
-															</xr:Value>
-														</xr:Item>
-														<xr:Item>
-															<xr:Presentation/>
-															<xr:CheckState>0</xr:CheckState>
-															<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																<Presentation/>
-																<Value xsi:type="xr:DesignTimeRef">Enum.KPPIndicationVariants.EnumValue.InAllPaymentOrders</Value>
-															</xr:Value>
-														</xr:Item>
-													</ChoiceList>
-													<ContextMenu name="VariantSpecifyingKPP1ContextMenu" id="69"/>
-													<ExtendedTooltip name="VariantSpecifyingKPP1ExtendedTooltip" id="136"/>
-												</RadioButtonField>
-											</ChildItems>
-										</Page>
+										<RadioButtonField name="MonthOutputOption" id="23">
+											<DataPath>Object.MonthOutputOption</DataPath>
+											<TitleLocation>Top</TitleLocation>
+											<EditMode>EnterOnInput</EditMode>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ColumnsCount>1</ColumnsCount>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.MonthOutputTypesInDocumentDate.EnumValue.Number</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Enum.MonthOutputTypesInDocumentDate.EnumValue.InWords</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="OutputOfMonthChoiceContextMenu" id="24"/>
+											<ExtendedTooltip name="OutputVariantOfMonthExtendedTooltip" id="130"/>
+										</RadioButtonField>
 									</ChildItems>
-								</Pages>
+								</UsualGroup>
+								<CheckBoxField name="AmountWithoutCents" id="25">
+									<DataPath>Object.AmountWithoutCents</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="AmountWithoutCentsContextMenu" id="26"/>
+									<ExtendedTooltip name="AmountWithoutCentsExtendedTooltip" id="131"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupCounterpartyAccountAttributes" id="65">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group counterparty account details</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа реквизиты счета контрагента</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group counterparty account details</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа реквизиты счета контрагента</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupCompanyAccountAttributesExtendedTooltip" id="132"/>
+							<ChildItems>
+								<CheckBoxField name="EditTextRecipient" id="88">
+									<DataPath>EditCorrespondentText</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Edit counterparty (individual) description</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Редактировать текст наименования контрагента (физлица)</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="EditTextRecipientContextMenu" id="89"/>
+									<ExtendedTooltip name="EditTextRecipientExtendedTooltip" id="133"/>
+									<Events>
+										<Event name="OnChange">EditPayeeTextOnChange</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="PayeeText" id="96">
+									<DataPath>CorrespondentText</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Company (individual) name in "Payee" field</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Текст наименования контрагента (физлица) в поле "Получатель"</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<Height>2</Height>
+									<ContextMenu name="TextRecipientContextMenu" id="97"/>
+									<ExtendedTooltip name="TextRecipientExtendedTooltip" id="134"/>
+								</InputField>
+								<InputField name="DestinationText" id="94">
+									<DataPath>Object.DestinationText</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<Height>2</Height>
+									<ContextMenu name="DestinationTextContextMenu" id="95"/>
+									<ExtendedTooltip name="DestinationTextExtendedTooltip" id="135"/>
+								</InputField>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
@@ -908,36 +762,6 @@
 							<ContextMenu name="DateClosingContextMenu" id="32"/>
 							<ExtendedTooltip name="DateClosingExtendedTooltip" id="141"/>
 						</InputField>
-						<InputField name="PermissionNumberAndDate" id="27">
-							<DataPath>Object.PermissionNumberAndDate</DataPath>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Number and date of Central Bank permission to open the currency account</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Номер и дата разрешения ЦБ на открытие валютного счета</v8:content>
-								</v8:item>
-							</ToolTip>
-							<ToolTipRepresentation>Button</ToolTipRepresentation>
-							<EditMode>EnterOnInput</EditMode>
-							<Width>10</Width>
-							<Height>1</Height>
-							<Wrap>false</Wrap>
-							<InputHint>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>to open a currency account</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>на открытие валютного счета</v8:content>
-								</v8:item>
-							</InputHint>
-							<ContextMenu name="PermissionNumberAndDateContextMenu" id="28"/>
-							<ExtendedTooltip name="PermissionNumberAndDateExtendedTooltip" id="142"/>
-						</InputField>
 						<InputField name="ExternalDataProcessor" id="166">
 							<DataPath>Object.ExternalDataProcessor</DataPath>
 							<ContextMenu name="ExternalDataProcessorContextMenu" id="167"/>
@@ -976,7 +800,7 @@
 			</Type>
 			<FillCheck>ShowError</FillCheck>
 		</Attribute>
-		<Attribute name="SettlementBankUsed" id="4">
+		<Attribute name="BankForSettlementsIsUsed" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -989,25 +813,6 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="IndirectEstimatesOfLabel" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Indirect settlements label</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Непрямые расчеты надпись</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="SWIFTBankForSettlements" id="5">
@@ -1101,11 +906,11 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="BankingDetails" id="11">
+		<Attribute name="BankAttributes" id="11">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Banking details</v8:content>
+					<v8:content>Bank attributes</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1114,11 +919,11 @@
 			</Title>
 			<Type/>
 		</Attribute>
-		<Attribute name="BankForSettlementAttributes" id="12">
+		<Attribute name="BankForSettlementsAttributes" id="12">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Bank attributes for settlements</v8:content>
+					<v8:content>Attributes of bank for settlements </v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1155,40 +960,6 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="DirectExchangeWithBanksAgreement" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Direct exchange with banks agreement</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Соглашение прямого обмена с банками</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.EDUsageAgreements</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="DirectMessageExchange" id="15">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Direct exchange message</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сообщение прямого обмена</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 	</Attributes>

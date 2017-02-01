@@ -2,83 +2,42 @@
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="FormCommandBar" id="-1">
-		<ChildItems>
-			<Button name="FormSetAsBankAccountByDefault" id="12">
-				<Type>CommandBarButton</Type>
-				<DefaultButton>true</DefaultButton>
-				<CommandName>Form.Command.SetAsBankAccountByDefault</CommandName>
-				<Title>
-					<v8:item>
-						<v8:lang>en</v8:lang>
-						<v8:content>Default bank account</v8:content>
-					</v8:item>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Банковский счет по умолчанию</v8:content>
-					</v8:item>
-				</Title>
-				<ExtendedTooltip name="FormIsSetAsDefaultAccountBankExtendedTooltip" id="13"/>
-			</Button>
-			<ButtonGroup name="GroupGlobalCommands" id="34">
-				<Title>
-					<v8:item>
-						<v8:lang>en</v8:lang>
-						<v8:content>Global commands group</v8:content>
-					</v8:item>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Группа глобальные команды</v8:content>
-					</v8:item>
-				</Title>
-				<ToolTip>
-					<v8:item>
-						<v8:lang>en</v8:lang>
-						<v8:content>Global commands group</v8:content>
-					</v8:item>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Группа глобальные команды</v8:content>
-					</v8:item>
-				</ToolTip>
-				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
-				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="35"/>
-				<ChildItems>
-					<Button name="CommonCommandObjectReports" id="36">
-						<Type>CommandBarButton</Type>
-						<CommandName>CommonCommand.ObjectReports</CommandName>
-						<DataPath>Items.List.CurrentData.Ref</DataPath>
-						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="37"/>
-					</Button>
-				</ChildItems>
-			</ButtonGroup>
-			<Button name="FormChangeForm" id="38">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-				<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="39"/>
-			</Button>
-			<Button name="FormHelp" id="40">
-				<Type>CommandBarButton</Type>
-				<OnlyInAllActions>false</OnlyInAllActions>
-				<CommandName>Form.StandardCommand.Help</CommandName>
-				<ExtendedTooltip name="FormHelpExtendedTooltip" id="41"/>
-			</Button>
-		</ChildItems>
+		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
 	</Events>
 	<ChildItems>
+		<CommandBar name="GroupCommandBar" id="51">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group command bar</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group command bar</v8:content>
+				</v8:item>
+			</ToolTip>
+			<CommandSource>Form</CommandSource>
+			<ExtendedTooltip name="GroupCommandBarExtendedTooltip" id="52"/>
+			<ChildItems>
+				<Button name="UseAsMain" id="53">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.UseAsMain</CommandName>
+					<ExtendedTooltip name="UseAsMainExtendedTooltip" id="54"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
 		<Table name="List" id="1">
-			<Representation>List</Representation>
 			<CommandBarLocation>None</CommandBarLocation>
-			<SkipOnInput>false</SkipOnInput>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<EnableStartDrag>true</EnableStartDrag>
 			<DataPath>List</DataPath>
 			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
-			<SearchStringLocation>CommandBar</SearchStringLocation>
-			<ViewStatusLocation>Top</ViewStatusLocation>
-			<SearchControlLocation>CommandBar</SearchControlLocation>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -89,7 +48,7 @@
 			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 			<RestoreCurrentRow>false</RestoreCurrentRow>
 			<TopLevelParent xsi:nil="true"/>
-			<ShowRoot>false</ShowRoot>
+			<ShowRoot>true</ShowRoot>
 			<AllowRootChoice>false</AllowRootChoice>
 			<UpdateOnDataChange>Auto</UpdateOnDataChange>
 			<ContextMenu name="ListContextMenu" id="2"/>
@@ -121,27 +80,35 @@
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeAddRow">ListBeforeAddRow</Event>
+				<Event name="OnActivateRow">ListOnActivateRow</Event>
 				<Event name="BeforeRowChange">ListBeforeRowChange</Event>
 			</Events>
 			<ChildItems>
-				<LabelField name="Code" id="6">
-					<DataPath>List.Code</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
+				<PictureField name="IsMainAccount" id="55">
+					<DataPath>List.IsMainAccount</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Code</v8:content>
+							<v8:content>Main</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>код</v8:content>
+							<v8:content>Основной</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="CodeContextMenu" id="7"/>
-					<ExtendedTooltip name="CodeExtendedTooltip" id="15"/>
-				</LabelField>
+					<TitleLocation>None</TitleLocation>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.CompletelyCorrected16</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<Width>2</Width>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.CompletelyCorrected16</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="IsMainAccountContextMenu" id="56"/>
+					<ExtendedTooltip name="IsMainAccountExtendedTooltip" id="57"/>
+				</PictureField>
 				<LabelField name="Description" id="4">
 					<DataPath>List.Description</DataPath>
 					<DefaultItem>true</DefaultItem>
@@ -158,6 +125,15 @@
 					<ContextMenu name="DescriptionContextMenu" id="5"/>
 					<ExtendedTooltip name="DescriptionExtendedTooltip" id="16"/>
 				</LabelField>
+				<InputField name="Owner" id="28">
+					<DataPath>List.Owner</DataPath>
+					<Visible>false</Visible>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="OwnerContextMenu" id="29"/>
+					<ExtendedTooltip name="OwnerExtendedTooltip" id="30"/>
+				</InputField>
 				<LabelField name="AccountType" id="31">
 					<DataPath>List.AccountType</DataPath>
 					<ContextMenu name="AccountTypeContextMenu" id="32"/>
@@ -181,6 +157,11 @@
 					<ContextMenu name="BankContextMenu" id="11"/>
 					<ExtendedTooltip name="BankExtendedTooltip" id="17"/>
 				</LabelField>
+				<LabelField name="AccountNo" id="58">
+					<DataPath>List.AccountNo</DataPath>
+					<ContextMenu name="AccountNoContextMenu" id="59"/>
+					<ExtendedTooltip name="AccountNoExtendedTooltip" id="60"/>
+				</LabelField>
 				<LabelField name="CashCurrency" id="8">
 					<DataPath>List.CashCurrency</DataPath>
 					<Title>
@@ -190,29 +171,67 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Вал.</v8:content>
+							<v8:content>Валюта</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CashAssetsCurrencyContextMenu" id="9"/>
 					<ExtendedTooltip name="CashAssetsCurrencyExtendedTooltip" id="18"/>
 				</LabelField>
-				<InputField name="Owner" id="28">
-					<DataPath>List.Owner</DataPath>
+				<LabelField name="OpeningDate" id="61">
+					<DataPath>List.OpeningDate</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Opened</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Открыт</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="OpeningDateContextMenu" id="62"/>
+					<ExtendedTooltip name="OpeningDateExtendedTooltip" id="63"/>
+				</LabelField>
+				<LabelField name="ClosingDate" id="64">
+					<DataPath>List.ClosingDate</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Closed</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Закрыт</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ClosingDateContextMenu" id="65"/>
+					<ExtendedTooltip name="ClosingDateExtendedTooltip" id="66"/>
+				</LabelField>
+				<LabelField name="Code" id="6">
+					<DataPath>List.Code</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
-					<ContextMenu name="OwnerContextMenu" id="29"/>
-					<ExtendedTooltip name="OwnerExtendedTooltip" id="30"/>
-				</InputField>
-				<LabelField name="ExternalDataProcessor" id="48">
-					<DataPath>List.GLAccount</DataPath>
-					<ContextMenu name="ExternalDataProcessorContextMenu" id="49"/>
-					<ExtendedTooltip name="ExternalDataProcessorExtendedTooltip" id="50"/>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Code</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="CodeContextMenu" id="7"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="15"/>
 				</LabelField>
-				<LabelField name="AgreementOnDirectExchange" id="45">
-					<DataPath>List.AgreementOnDirectExchange</DataPath>
-					<ContextMenu name="AgreementOnDirectExchangeContextMenu" id="46"/>
-					<ExtendedTooltip name="AgreementOnDirectExchangeExtendedTooltip" id="47"/>
+				<LabelField name="Ref" id="67">
+					<DataPath>List.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="RefContextMenu" id="68"/>
+					<ExtendedTooltip name="RefExtendedTooltip" id="69"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -225,38 +244,39 @@
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
 				<Field>List.Ref</Field>
+				<Field>List.Owner</Field>
+				<Field>List.IsMainAccount</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>SELECT
-	CatalogBankAccount.Ref,
-	CatalogBankAccount.DeletionMark,
-	CatalogBankAccount.Owner,
-	CatalogBankAccount.Code,
-	CatalogBankAccount.Description,
-	CatalogBankAccount.CashCurrency,
-	CatalogBankAccount.AccountNo,
-	CatalogBankAccount.Bank,
-	CatalogBankAccount.AccountsBank,
-	CatalogBankAccount.GLAccount,
-	CatalogBankAccount.AccountType,
-	CatalogBankAccount.CorrespondentText,
-	CatalogBankAccount.DestinationText,
-	CatalogBankAccount.MonthOutputOption,
-	CatalogBankAccount.AmountWithoutCents,
-	CatalogBankAccount.PermissionNumberAndDate,
-	CatalogBankAccount.OpeningDate,
-	CatalogBankAccount.ClosingDate,
-	CatalogBankAccount.KPPIndicationVersion,
-	CatalogBankAccount.Predefined,
-	CatalogBankAccount.PredefinedDataName,
-	EDUsageAgreements.AgreementStatus AS AgreementOnDirectExchange
+	CatalogBankAccounts.Ref,
+	CatalogBankAccounts.DeletionMark,
+	CatalogBankAccounts.Owner,
+	CatalogBankAccounts.Code,
+	CatalogBankAccounts.Description,
+	CatalogBankAccounts.CashCurrency,
+	CatalogBankAccounts.AccountNo,
+	CatalogBankAccounts.Bank,
+	CatalogBankAccounts.AccountsBank,
+	CatalogBankAccounts.GLAccount,
+	CatalogBankAccounts.AccountType,
+	CatalogBankAccounts.CorrespondentText,
+	CatalogBankAccounts.DestinationText,
+	CatalogBankAccounts.MonthOutputOption,
+	CatalogBankAccounts.AmountWithoutCents,
+	CatalogBankAccounts.OpeningDate,
+	CatalogBankAccounts.ClosingDate,
+	CatalogBankAccounts.Predefined,
+	CatalogBankAccounts.PredefinedDataName,
+	CASE
+		WHEN &amp;OwnerMainAccount = UNDEFINED
+			THEN CatalogBankAccounts.Ref = CatalogBankAccounts.Owner.BankAccountByDefault
+		ELSE CatalogBankAccounts.Ref = &amp;OwnerMainAccount
+	END AS IsMainAccount
 FROM
-	Catalog.BankAccounts AS CatalogBankAccount
-		LEFT JOIN Catalog.EDUsageAgreements AS EDUsageAgreements
-		ON CatalogBankAccount.Bank = EDUsageAgreements.Counterparty
-			AND CatalogBankAccount.Owner = EDUsageAgreements.Company</QueryText>
+	Catalog.BankAccounts AS CatalogBankAccounts</QueryText>
 				<MainTable>Catalog.BankAccounts</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -276,17 +296,33 @@ FROM
 				</ListSettings>
 			</Settings>
 		</Attribute>
-	</Attributes>
-	<Commands>
-		<Command name="SetAsBankAccountByDefault" id="1">
+		<Attribute name="AccountsOwner" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Set as a default bank account</v8:content>
+					<v8:content>Accounts owner</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Установить как банк счет по умолчанию</v8:content>
+					<v8:content>Владелец счетов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="UseAsMain" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use as main</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать как основной</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -299,7 +335,7 @@ FROM
 					<v8:content>Установить как банк счет по умолчанию</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>SetAsBankAccountByDefault</Action>
+			<Action>UseAsMain</Action>
 		</Command>
 	</Commands>
 </Form>

@@ -661,7 +661,7 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="PayerPayeeExtendedTooltip" id="162"/>
 							<ChildItems>
-								<UsualGroup name="PayeeTINKPPText" id="70">
+								<UsualGroup name="PayeeTINText" id="70">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -675,7 +675,7 @@
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>TIN, KPP of payee</v8:content>
+											<v8:content>TIN of payee</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -685,13 +685,13 @@
 									<Width>10</Width>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
-									<ExtendedTooltip name="PayeeTINKPPTextExtendedTooltip" id="168"/>
+									<ExtendedTooltip name="PayeeTINTextExtendedTooltip" id="168"/>
 									<ChildItems>
-										<UsualGroup name="TINKPPRecipient" id="236">
+										<UsualGroup name="TINRecipient" id="236">
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>TINKPPRecipient</v8:content>
+													<v8:content>TINRecipient</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -701,7 +701,7 @@
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>TINKPPRecipient</v8:content>
+													<v8:content>TINRecipient</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -710,7 +710,7 @@
 											</ToolTip>
 											<Group>Horizontal</Group>
 											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="PayeeTINKPPExtendedTooltip" id="237"/>
+											<ExtendedTooltip name="TINRecipientExtendedTooltip" id="237"/>
 											<ChildItems>
 												<InputField name="PayeeTIN" id="15">
 													<DataPath>Object.PayeeTIN</DataPath>
@@ -727,23 +727,6 @@
 													<Wrap>false</Wrap>
 													<ContextMenu name="TINOfRecipientContextMenu" id="16"/>
 													<ExtendedTooltip name="TINOfRecipientExtendedTooltip" id="169"/>
-												</InputField>
-												<InputField name="PayeeKPP" id="27">
-													<DataPath>Object.PayeeKPP</DataPath>
-													<Title>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>KPP</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>КПП</v8:content>
-														</v8:item>
-													</Title>
-													<HorizontalStretch>true</HorizontalStretch>
-													<Wrap>false</Wrap>
-													<ContextMenu name="KPPRecipientContextMenu" id="28"/>
-													<ExtendedTooltip name="KPPRecipientExtendedTooltip" id="170"/>
 												</InputField>
 											</ChildItems>
 										</UsualGroup>
@@ -768,7 +751,7 @@
 										</InputField>
 									</ChildItems>
 								</UsualGroup>
-								<UsualGroup name="PayerTINKPPText" id="69">
+								<UsualGroup name="PayerTINText" id="69">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -782,7 +765,7 @@
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Payer TIN / KPP</v8:content>
+											<v8:content>Payer TIN</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -792,13 +775,13 @@
 									<Width>10</Width>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
-									<ExtendedTooltip name="PayerTINKPPExtendedTextToolTip" id="163"/>
+									<ExtendedTooltip name="PayerTINTextExtendedTooltip" id="163"/>
 									<ChildItems>
-										<UsualGroup name="PayerTINKPP" id="234">
+										<UsualGroup name="GroupPayerTIN" id="234">
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>PayerTINKPP</v8:content>
+													<v8:content>PayerTIN</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -808,7 +791,7 @@
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>PayerTINKPP</v8:content>
+													<v8:content>PayerTIN</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -817,7 +800,7 @@
 											</ToolTip>
 											<Group>Horizontal</Group>
 											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="PayerTINKPPExtendedTooltip" id="235"/>
+											<ExtendedTooltip name="GroupPayerTINExtendedTooltip" id="235"/>
 											<ChildItems>
 												<InputField name="PayerTIN" id="13">
 													<DataPath>Object.PayerTIN</DataPath>
@@ -835,26 +818,6 @@
 													<Wrap>false</Wrap>
 													<ContextMenu name="PayerTINContextMenu" id="14"/>
 													<ExtendedTooltip name="PayerTINExtendedTooltip" id="164"/>
-												</InputField>
-												<InputField name="PayerKPP" id="25">
-													<DataPath>Object.PayerKPP</DataPath>
-													<Title>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>KPP</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>КПП</v8:content>
-														</v8:item>
-													</Title>
-													<HorizontalStretch>true</HorizontalStretch>
-													<Wrap>false</Wrap>
-													<ContextMenu name="PayerKPPContextMenu" id="26"/>
-													<ExtendedTooltip name="PayerKPPExtendedTooltip" id="165"/>
-													<Events>
-														<Event name="OnChange">PayerKPPOnChange</Event>
-													</Events>
 												</InputField>
 											</ChildItems>
 										</UsualGroup>

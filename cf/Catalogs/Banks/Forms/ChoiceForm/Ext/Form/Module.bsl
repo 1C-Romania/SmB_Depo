@@ -1,4 +1,5 @@
-﻿#Region FormEventsHandlers
+﻿
+#Region FormEventsHandlers
 
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
@@ -90,17 +91,3 @@ Procedure DetermineBankPickNeedFromClassifier(ClosingResult, AdditionalParameter
 EndProcedure // DetermineBankPickNeedFromClassifier()
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
