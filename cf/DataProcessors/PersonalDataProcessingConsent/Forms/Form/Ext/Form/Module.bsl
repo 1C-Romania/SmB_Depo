@@ -133,7 +133,7 @@ EndProcedure
 Function AgreementPrintData()
 	
 	SharedData = New Structure;
-	SharedData.Insert("ConformityDate", 		?(ValueIsFilled(ConformityDate), Format(ConformityDate, "DLF=DD"), NStr("en='«____»__________________.';ru='«____»__________________.'")));
+	SharedData.Insert("ConformityDate", 		?(ValueIsFilled(ConformityDate), Format(ConformityDate, "DLF=DD"), NStr("en='""____""__________________.';ru='""____""__________________.'")));
 	SharedData.Insert("Company", 		?(ValueIsFilled(Company), Company, NStr("en='<Company>';ru='<Организация>'")));
 	SharedData.Insert("CompanyAddress", 	?(ValueIsFilled(CompanyAddress), CompanyAddress, NStr("en=""<Company's address>"";ru='<Адрес организации>'")));
 	SharedData.Insert("ResponsibleForPersonalDataProcessing", ?(ValueIsFilled(ResponsibleForPersonalDataProcessing), ResponsibleForPersonalDataProcessing, NStr("en='<Responsible person full name>';ru='<ФИО ответственного лица>'")));

@@ -4,7 +4,7 @@
 //
 // This module contains export procedures of conversion event handlers and is intended for exchange rule debugging. 
 // After debugging it is recommended to
-// make corresponding handler corrections in the base "Data conversion 2.0» and generate the rule file once again.
+// make corresponding handler corrections in the base "Data conversion 2.0" and generate the rule file once again.
 //
 // /////////////////////////////////////////////////////////////////////////////
 // USED SHORT NAMES VARIABLES (ABBREVIATIONS)

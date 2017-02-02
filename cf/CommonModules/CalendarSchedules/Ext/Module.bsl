@@ -91,7 +91,7 @@ Function GetDatesArrayByCalendar(Val WorkSchedule, Val DateFrom, Val DaysArray, 
 	
 	While Selection.Next() Do
 		If Selection.DateInCalendar = Undefined Then
-			ErrorInfo = NStr("en='Business calendar ""%1"" is not filled in from date %2 for the specified number of business days.';ru='Производственный календарь «%1» не заполнен с даты %2 на указанное количество рабочих дней.'");
+			ErrorInfo = NStr("en='Business calendar ""%1"" is not filled in from date %2 for the specified number of business days.';ru='Производственный календарь ""%1"" не заполнен с даты %2 на указанное количество рабочих дней.'");
 			If CallingException Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					ErrorInfo,
@@ -273,7 +273,7 @@ Function GetDatesDiffByCalendar(Val WorkSchedule, Val StartDate, Val EndDate, Ca
 	
 	If Result.IsEmpty() Then
 		If CallingException Then
-			ErrorInfo = NStr("en='Work schedule ""%1"" is not filled for the period %2.';ru='График работы «%1» не заполнен на период %2.'");
+			ErrorInfo = NStr("en='Work schedule ""%1"" is not filled for the period %2.';ru='График работы ""%1"" не заполнен на период %2.'");
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
 				ErrorInfo,
 				WorkSchedule, PeriodPresentation(StartDate, EndOfDay(EndDate)));
@@ -430,7 +430,7 @@ Function SchedulesOfWorkOnPeriod(Graphics, StartDate, EndDate) Export
 		Return WorkSchedulesModule.SchedulesOfWorkOnPeriod(Graphics, StartDate, EndDate);
 	EndIf;
 	
-	Raise NStr("en='Subsystem ""Work schedules"" is not found.';ru='Подсистема «Графики работы» не обнаружена.'");
+	Raise NStr("en='Subsystem ""Work schedules"" is not found.';ru='Подсистема ""Графики работы"" не обнаружена.'");
 	
 EndFunction
 
@@ -447,7 +447,7 @@ Procedure CreateTSchedulesOfWorkOnPeriod(TempTablesManager, Graphics, StartDate,
 		Return;
 	EndIf;
 	
-	Raise NStr("en='Subsystem ""Work schedules"" is not found.';ru='Подсистема «Графики работы» не обнаружена.'");
+	Raise NStr("en='Subsystem ""Work schedules"" is not found.';ru='Подсистема ""Графики работы"" не обнаружена.'");
 	
 EndProcedure
 

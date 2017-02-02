@@ -789,7 +789,7 @@ Function DetermineTypeOfBarcode(Barcode) Export
 	EndIf;
 	
 	If BarCodeType= ""  Then // CODE128
-		// CODE128 ASCII characters 0 to 127 (figures  «0» to «9», letters «A» to «Z» and «a» to «z») and special characters;
+		// CODE128 ASCII characters 0 to 127 (figures  "0" to "9", letters "A" to "Z" and "a" to "z") and special characters;
 		CODE128 = True;
 		For Ct = 1 To LengthBarcode Do
 			CharTempCode = CharCode(Barcode, Ct);

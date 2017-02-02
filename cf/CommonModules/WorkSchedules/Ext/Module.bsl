@@ -104,7 +104,7 @@ Function DatesOnSchedule(Val WorkSchedule, Val DateFrom, Val DaysArray, Val Calc
 	
 	While Selection.Next() Do
 		If Selection.DateInCalendar = Undefined Then
-			ErrorInfo = NStr("en='Work schedule %1 is not filled from the date %2 for the specified number of days.';ru='График работы «%1» не заполнен с даты %2 на указанное количество рабочих дней.'");
+			ErrorInfo = NStr("en='Work schedule %1 is not filled from the date %2 for the specified number of days.';ru='График работы ""%1"" не заполнен с даты %2 на указанное количество рабочих дней.'");
 			If CallingException Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
 					ErrorInfo,

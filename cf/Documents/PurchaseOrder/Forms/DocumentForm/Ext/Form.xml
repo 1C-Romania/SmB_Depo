@@ -204,27 +204,27 @@
 										<Autofill>false</Autofill>
 									</ContextMenu>
 									<ExtendedTooltip name="StatusExtendedTooltip" id="379">
-										<Title formatted="true">
+										<Title formatted="false">
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>&lt;b&gt;Order state&lt;/&gt; is a set of parameters that define an order status,
+												<v8:content>Order state is a set of parameters that define an order status,
 for example, whether the order is complete or only awaiting appointment. It is determined by its state. 
 
 The status which was established for the order defines the behavior of the document. 
 
-&lt;b&gt;The following &lt;/&gt;&lt;b&gt;states are defined:&lt;/&gt; 
+The following states are defined: 
 
-• &lt;b&gt;In progress&lt;/&gt; - order data will be reflected in the account. 
-• &lt;b&gt;Completed&lt;/&gt; -set by a user on order fulfillment. 
-• &lt;b&gt;Canceled&lt;/&gt; - the order is not reflected in the account.
+• In progress - order data will be reflected in the account. 
+• Completed -set by a user on order fulfillment. 
+• Canceled - the order is not reflected in the account.
 
 Quick filter and color assignment for document view by status are available for orders list. 
 
-Color assignment for order state to a vendor is determined in the &lt;link SettingsAccountingPurchases&gt;Settings - Accounting settings - Purchases&lt;/&gt;.</v8:content>
+Color assignment for order state to a vendor is determined in the Settings - Accounting settings - Purchases.</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
-												<v8:content>«Состояние заказа» - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием.   Состояние, которое было установлено для заказа, определяет поведение документа.   Определены следующие состояния:  • В работе    – данные заказа будут отражаться в учете.  • Выполнен – устанавливается пользователем при выполнении заказа.  • Отменен    – заказ не отражается в учете.  Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям.   Назначение цвета для состояния заказа поставщику определяется в разделе Настройки - Настройки учета - Продажи.</v8:content>
+												<v8:content>"Состояние заказа" - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием.   Состояние, которое было установлено для заказа, определяет поведение документа.   Определены следующие состояния:  • "В работе"    – данные заказа будут отражаться в учете.  • "Выполнен" – устанавливается пользователем при выполнении заказа.  • "Отменен"    – заказ не отражается в учете.  Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям.   Назначение цвета для состояния заказа поставщику определяется в разделе Настройки - Настройки учета - Продажи.</v8:content>
 											</v8:item>
 										</Title>
 										<Events>
@@ -272,31 +272,31 @@ Color assignment for order state to a vendor is determined in the &lt;link Setti
 									<OpenButton>false</OpenButton>
 									<ContextMenu name="OrderStateContextMenu" id="149"/>
 									<ExtendedTooltip name="OrderStateExtendedTooltip" id="243">
-										<Title formatted="true">
+										<Title formatted="false">
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>&lt;b&gt;Order state&lt;/&gt; is a set of parameters that define an order status, for example, whether the order is complete or only awaiting appointment. It is determined by its state. User can
+												<v8:content>Order state is a set of parameters that define an order status, for example, whether the order is complete or only awaiting appointment. It is determined by its state. User can
 create any convenient conditions for statuses value work.
 
-&lt;b&gt;Each state is assigned with a status&lt;/&gt;
+Each state is assigned with a status
 
 
-&lt;b&gt;• &lt;/&gt;&lt;b&gt;Opened &lt;/&gt;–vorder will play the role of the advance application. 
-• &lt;b&gt;In progress&lt;/&gt; - order data will be reflected in the account. 
-• &lt;b&gt;Completed&lt;/&gt; -set by a user on order fulfillment. To close the order which
-has a Completed status you should select the &lt;b&gt;Closed&lt;/&gt; check box.
+• Opened –vorder will play the role of the advance application. 
+• In progress - order data will be reflected in the account. 
+• Completed -set by a user on order fulfillment. To close the order which
+has a Completed status you should select the Closed check box.
 
-To cancel an order with states "Opened" or "In progress", select the &lt;b&gt;Closed&lt;/&gt; check box.
+To cancel an order with states "Opened" or "In progress", select the Closed check box.
 
 Quick filter and color assignment for document view by status are available for orders list.
 States list content is determined by the contents of the States of vendor orders catalog. 
-Catalog is available on the eponymous hyperlink in section &lt;link SettingsAccountingPurchase&gt;Settings - Accounting settings - Purchase&lt;/&gt;.
+Catalog is available on the eponymous hyperlink in section Settings - Accounting settings - Purchase.
 
 State by default for new vendor order is determined in the user settings.</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
-												<v8:content>«Состояние заказа» - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием. Пользователь может создать любые удобные для работы значения состояний.  Каждому состоянию присваивается статус:  • Открыт – заказ будет играть роль предварительной заявки.  • В работе – данные заказа будут отражаться в учете.  • Выполнен – устанавливается пользователем при выполнении заказа. Для закрытия заказа, имеющего состояние «Выполнен», следует установить флажок «Закрыт».  Для отмены заказа, имеющего состояние «Открыт» или «В работе», следует установить флажок «Закрыт».  Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям. Состав списка состояний определяется содержимым справочника «Состояния заказов на производство».  Справочник доступен по одноименной гиперссылке в разделе Настройки - Настройки учета - Производство.  Состояние по умолчанию для нового заказа на производство определяется в настройках пользователя.</v8:content>
+												<v8:content>"Состояние заказа" - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием. Пользователь может создать любые удобные для работы значения состояний.  Каждому состоянию присваивается статус:  • "Открыт" – заказ будет играть роль предварительной заявки.  • "В работе" – данные заказа будут отражаться в учете.  • "Выполнен" – устанавливается пользователем при выполнении заказа. Для закрытия заказа, имеющего состояние "Выполнен", следует установить флажок "Закрыт".  Для отмены заказа, имеющего состояние "Открыт" или "В работе", следует установить флажок "Закрыт".  Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям. Состав списка состояний определяется содержимым справочника "Состояния заказов на производство".  Справочник доступен по одноименной гиперссылке в разделе Настройки - Настройки учета - Производство.  Состояние по умолчанию для нового заказа на производство определяется в настройках пользователя.</v8:content>
 											</v8:item>
 										</Title>
 										<Events>
