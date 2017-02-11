@@ -646,6 +646,33 @@
 											</Button>
 										</ChildItems>
 									</Popup>
+									<ButtonGroup name="GroupInventoryCopyRows" id="382">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group inventory copy rows</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group inventory copy rows</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="GroupInventoryCopyRowsExtendedTooltip" id="383"/>
+										<ChildItems>
+											<Button name="InventoryInventoryCopyRows" id="390">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.InventoryCopyRows</CommandName>
+												<ExtendedTooltip name="InventoryInventoryCopyRowsExtendedTooltip" id="391"/>
+											</Button>
+											<Button name="InventoryInventoryPasteRows" id="392">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.InventoryPasteRows</CommandName>
+												<ExtendedTooltip name="InventoryInventoryPasteRowsExtendedTooltip" id="393"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="InventoryExtendedTooltip" id="208"/>
@@ -906,6 +933,33 @@
 										<CommandName>Form.Command.LoadFromFileServices</CommandName>
 										<ExtendedTooltip name="ExpensesLoadFromFileServicesExtendedTooltip" id="378"/>
 									</Button>
+									<ButtonGroup name="GroupExpensesCopyRows" id="384">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group expenses copy rows</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group expenses copy rows</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="GroupExpensesCopyRowsExtendedTooltip" id="385"/>
+										<ChildItems>
+											<Button name="ExpensesExpensesCopyRows" id="386">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ExpensesCopyRows</CommandName>
+												<ExtendedTooltip name="ExpensesExpensesCopyRowsExtendedTooltip" id="387"/>
+											</Button>
+											<Button name="ExpensesExpensesPasteRows" id="388">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ExpensesPasteRows</CommandName>
+												<ExtendedTooltip name="ExpensesExpensesPasteRowsExtendedTooltip" id="389"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ExpensesExtendedTooltip" id="227"/>
@@ -2413,6 +2467,83 @@
 			<Action>LoadFromFileServices</Action>
 			<Representation>Picture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="InventoryCopyRows" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory copy rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory copy rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.CopyRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>InventoryCopyRows</Action>
+		</Command>
+		<Command name="InventoryPasteRows" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory paste rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory paste rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.PasteRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>InventoryPasteRows</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ExpensesCopyRows" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Expenses copy rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Expenses copy rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.CopyRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ExpensesCopyRows</Action>
+		</Command>
+		<Command name="ExpensesPasteRows" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Expenses paste rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Expenses paste rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.PasteRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ExpensesPasteRows</Action>
 		</Command>
 	</Commands>
 	<CommandInterface>

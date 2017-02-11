@@ -485,6 +485,33 @@
 										<CommandName>Form.Command.ProductsFillByOutput</CommandName>
 										<ExtendedTooltip name="FillByIssueExtendedTooltip" id="198"/>
 									</Button>
+									<ButtonGroup name="GroupProductsCopyRows" id="344">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group products copy rows</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group products copy rows</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="GroupProductsCopyRowsExtendedTooltip" id="345"/>
+										<ChildItems>
+											<Button name="ProductsProductsCopyRows" id="346">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ProductsCopyRows</CommandName>
+												<ExtendedTooltip name="ProductsProductsCopyRowsExtendedTooltip" id="347"/>
+											</Button>
+											<Button name="ProductsProductsPasteRows" id="348">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ProductsPasteRows</CommandName>
+												<ExtendedTooltip name="ProductsProductsPasteRowsExtendedTooltip" id="349"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ProductsExtendedTooltip" id="199"/>
@@ -729,6 +756,33 @@
 											</Button>
 										</ChildItems>
 									</Popup>
+									<ButtonGroup name="GroupInventoryCopyRows" id="350">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group inventory copy rows</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group inventory copy rows</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="GroupInventoryCopyRowsExtendedTooltip" id="351"/>
+										<ChildItems>
+											<Button name="InventoryInventoryCopyRows" id="352">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.InventoryCopyRows</CommandName>
+												<ExtendedTooltip name="InventoryInventoryCopyRowsExtendedTooltip" id="353"/>
+											</Button>
+											<Button name="InventoryInventoryPasteRows" id="354">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.InventoryPasteRows</CommandName>
+												<ExtendedTooltip name="InventoryInventoryPasteRowsExtendedTooltip" id="355"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="InventoryExtendedTooltip" id="219"/>
@@ -886,7 +940,37 @@
 									<SearchControlLocation>None</SearchControlLocation>
 									<RowFilter xsi:nil="true"/>
 									<ContextMenu name="InventoryDistributionContextMenu" id="122"/>
-									<AutoCommandBar name="InventoryDistributionCommandBar" id="123"/>
+									<AutoCommandBar name="InventoryDistributionCommandBar" id="123">
+										<ChildItems>
+											<ButtonGroup name="GroupInventoryDistributionCopyRows" id="356">
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Group inventory distribution copy rows</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Group inventory distribution copy rows</v8:content>
+													</v8:item>
+												</ToolTip>
+												<ExtendedTooltip name="GroupInventoryDistributionCopyRowsExtendedTooltip" id="357"/>
+												<ChildItems>
+													<Button name="InventoryDistributionInventoryDistributionCopyRows" id="358">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.InventoryDistributionCopyRows</CommandName>
+														<ExtendedTooltip name="InventoryDistributionInventoryDistributionCopyRowsExtendedTooltip" id="359"/>
+													</Button>
+													<Button name="InventoryDistributionInventoryDistributionPasteRows" id="360">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.InventoryDistributionPasteRows</CommandName>
+														<ExtendedTooltip name="InventoryDistributionInventoryDistributionPasteRowsExtendedTooltip" id="361"/>
+													</Button>
+												</ChildItems>
+											</ButtonGroup>
+										</ChildItems>
+									</AutoCommandBar>
 									<ExtendedTooltip name="InventoryDistributionExtendedTooltip" id="230"/>
 									<SearchStringAddition name="InventoryDistributionSearchString" id="286">
 										<AdditionSource>
@@ -1870,6 +1954,120 @@
 			</Picture>
 			<Action>ImportDataFromDCT</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ProductsCopyRows" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products copy rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products copy rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.CopyRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ProductsCopyRows</Action>
+		</Command>
+		<Command name="ProductsPasteRows" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products paste rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Products paste rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.PasteRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ProductsPasteRows</Action>
+		</Command>
+		<Command name="InventoryCopyRows" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory copy rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory copy rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.CopyRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>InventoryCopyRows</Action>
+		</Command>
+		<Command name="InventoryPasteRows" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory paste rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory paste rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.PasteRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>InventoryPasteRows</Action>
+		</Command>
+		<Command name="InventoryDistributionCopyRows" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory distribution copy rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory distribution copy rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.CopyRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>InventoryDistributionCopyRows</Action>
+		</Command>
+		<Command name="InventoryDistributionPasteRows" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory distribution paste rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Inventory distribution paste rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.PasteRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>InventoryDistributionPasteRows</Action>
 		</Command>
 	</Commands>
 </Form>

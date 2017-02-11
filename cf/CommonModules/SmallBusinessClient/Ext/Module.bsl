@@ -222,7 +222,11 @@ EndProcedure
 Procedure AddConnectionKeyToTabularSectionLine(DocumentForm) Export
 
 	TabularSectionRow = DocumentForm.Items[DocumentForm.TabularSectionName].CurrentData;
-    
+    //Rise { Aghabekyan 2017-02-11
+	If TabularSectionRow = Undefined Then
+		Return;
+	EndIf;
+	//Rise } Aghabekyan 2017-02-11
 	TabularSectionRow.ConnectionKey = CreateNewLinkKey(DocumentForm);		
         
 EndProcedure // AddConnectionKeyToTabularSectionRow()
@@ -240,6 +244,11 @@ Procedure AddConnectionKeyToSubordinateTabularSectionLine(DocumentForm, Subordin
 	SubordinateTbularSection = DocumentForm.Items[SubordinateTabularSectionName];
 	
 	StringSubordinateTabularSection = SubordinateTbularSection.CurrentData;
+	//Rise { Aghabekyan 2017-02-11
+	If StringSubordinateTabularSection = Undefined Then
+		Return;
+	EndIf;
+	//Rise } Aghabekyan 2017-02-11
 	StringSubordinateTabularSection.ConnectionKey = SubordinateTbularSection.RowFilter["ConnectionKey"];
 	
 	FilterStr = New FixedStructure("ConnectionKey", SubordinateTbularSection.RowFilter["ConnectionKey"]);

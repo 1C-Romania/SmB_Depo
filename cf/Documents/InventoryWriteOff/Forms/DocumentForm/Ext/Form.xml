@@ -402,6 +402,33 @@
 										<CommandName>Form.Command.Pick</CommandName>
 										<ExtendedTooltip name="InventoryPickExtendedTooltip" id="86"/>
 									</Button>
+									<ButtonGroup name="GroupInventoryCopyRows" id="128">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group inventory copy rows</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Group inventory copy rows</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="GroupInventoryCopyRowsExtendedTooltip" id="129"/>
+										<ChildItems>
+											<Button name="InventoryCopyRows" id="130">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.CopyRows</CommandName>
+												<ExtendedTooltip name="InventoryCopyRowsExtendedTooltip" id="131"/>
+											</Button>
+											<Button name="InventoryPasteRows" id="132">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.PasteRows</CommandName>
+												<ExtendedTooltip name="InventoryPasteRowsExtendedTooltip" id="133"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="InventoryExtendedTooltip" id="87"/>
@@ -818,6 +845,44 @@
 			</Picture>
 			<Action>ImportDataFromDCT</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="CopyRows" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Copy rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.CopyRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>InventoryCopyRows</Action>
+		</Command>
+		<Command name="PasteRows" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Paste rows</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Paste rows</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.PasteRows</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>InventoryPasteRows</Action>
 		</Command>
 	</Commands>
 </Form>

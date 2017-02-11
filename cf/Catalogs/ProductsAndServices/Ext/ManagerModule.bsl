@@ -394,7 +394,7 @@ Procedure LoadFromFile(ExportableData, ImportParameters, Cancel) Export
 			CatalogItem.MeasurementUnit = MeasurementUnit;
 			
 			CatalogItem.SKU = TableRow.SKU;
-			CatalogItem.Comment = TableRow.Definition;
+			CatalogItem.Comment = TableRow.Information;
 			
 			CatalogItem.InventoryGLAccount = ValueAccount(TableRow.InventoryGLAccount, ChartsOfAccounts.Managerial.RawMaterialsAndMaterials);
 			CatalogItem.ExpensesGLAccount =  ValueAccount(TableRow.ExpensesGLAccount, ChartsOfAccounts.Managerial.IndirectExpenses);

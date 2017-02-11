@@ -1032,9 +1032,78 @@ EndProcedure
 
 #EndRegion
 
+//Rise { Aghabekyan 2017-02-11
+#Region CopyPasteRows
 
+&AtClient
+Procedure InventoryCopyRows(Command)
+	CopyRowsTabularPart("Inventory");   
+EndProcedure
 
+&AtClient
+Procedure CopyRowsTabularPart(TabularPartName)
+	
+	If TabularPartCopyClient.CanCopyRows(Object[TabularPartName],Items[TabularPartName].CurrentData) Then
+		CountOfCopied = 0;
+		CopyRowsTabularPartAtSever(TabularPartName, CountOfCopied);
+		TabularPartCopyClient.NotifyUserCopyRows(CountOfCopied);
+	EndIf;
+	
+EndProcedure
 
+&AtServer 
+Procedure CopyRowsTabularPartAtSever(TabularPartName, CountOfCopied)
+	
+	TabularPartCopyServer.Copy(Object[TabularPartName], Items[TabularPartName].SelectedRows, CountOfCopied);
+	
+EndProcedure
+
+&AtClient
+Procedure InventoryPasteRows(Command)
+	PasteRowsTabularPart("Inventory"); 
+EndProcedure
+
+&AtClient
+Procedure PasteRowsTabularPart(TabularPartName)
+	
+	CountOfCopied = 0;
+	CountOfPasted = 0;
+	PasteRowsTabularPartAtServer(TabularPartName, CountOfCopied, CountOfPasted);
+	TabularPartCopyClient.NotifyUserPasteRows(CountOfCopied, CountOfPasted);
+	
+EndProcedure
+
+&AtServer
+Procedure PasteRowsTabularPartAtServer(TabularPartName, CountOfCopied, CountOfPasted)
+	
+	TabularPartCopyServer.Paste(Object, TabularPartName, Items, CountOfCopied, CountOfPasted);
+	ProcessPastedRowsAtServer(TabularPartName, CountOfPasted);
+	
+EndProcedure
+
+&AtServer
+Procedure ProcessPastedRowsAtServer(TabularPartName, CountOfPasted)
+	
+	Count = Object[TabularPartName].Count();
+	
+	For iterator = 1 To CountOfPasted Do
+		
+		Row = Object[TabularPartName][Count - iterator];
+		
+		StructData = New Structure;     	
+		StructData.Insert("ProductsAndServices",  Row.ProductsAndServices); 		
+		StructData = GetDataProductsAndServicesOnChange(StructData); 
+		
+		If Not ValueIsFilled(Row.MeasurementUnit) Then
+			Row.MeasurementUnit = StructData.MeasurementUnit;
+		EndIf;
+		
+	EndDo;
+	
+EndProcedure
+
+#EndRegion
+//Rise } Aghabekyan 2017-02-11
 
 
 
