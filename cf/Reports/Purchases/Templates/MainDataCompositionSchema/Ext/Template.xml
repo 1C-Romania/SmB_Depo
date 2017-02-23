@@ -207,20 +207,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Quantity</dataPath>
-			<field>Quantity</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Quantity</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Количество</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Amount</dataPath>
 			<field>Amount</field>
 			<title xsi:type="v8:LocalStringType">
@@ -244,7 +230,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Указывается сумма НДС</v8:content>
+					<v8:content>Сумма НДС</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -254,6 +240,30 @@
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
 			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Count</dataPath>
+			<field>Count</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Count</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountWithoutVAT</dataPath>
+			<field>AmountWithoutVAT</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount without VAT</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма без НДС</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<dataSource>DataSource1</dataSource>
 		<query>SELECT ALLOWED
@@ -282,15 +292,12 @@
 	PurchasingTurnovers.QuantityTurnover AS Count,
 	PurchasingTurnovers.AmountTurnover AS Amount,
 	PurchasingTurnovers.VATAmountTurnover AS VATAmount,
+	PurchasingTurnovers.AmountTurnover - PurchasingTurnovers.VATAmountTurnover AS AmountWithoutVAT,
 	PurchasingTurnovers.PurchaseOrder.Counterparty AS Counterparty,
 	PurchasingTurnovers.PurchaseOrder.Contract AS Contract
 	FROM
 		AccumulationRegister.Purchases.Turnovers(, , Auto, ) AS PurchasingTurnovers</query>
 	</dataSet>
-	<totalField>
-		<dataPath>Quantity</dataPath>
-		<expression>SUM(Count)</expression>
-	</totalField>
 	<totalField>
 		<dataPath>Amount</dataPath>
 		<expression>SUM(Amount)</expression>
@@ -298,6 +305,14 @@
 	<totalField>
 		<dataPath>VATAmount</dataPath>
 		<expression>SUM(VATAmount)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountWithoutVAT</dataPath>
+		<expression>Sum(AmountWithoutVAT)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Count</dataPath>
+		<expression>Sum(Count)</expression>
 	</totalField>
 	<parameter>
 		<name>BeginOfPeriod</name>
@@ -408,7 +423,13 @@
 					<dcsset:field>PurchaseOrder</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Quantity</dcsset:field>
+					<dcsset:field>Count</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>VATAmount</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Amount</dcsset:field>

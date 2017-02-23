@@ -188,7 +188,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Указывается сумма НДС</v8:content>
+					<v8:content>Сумма НДС</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -430,12 +430,16 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Department</dataPath>
-			<field>Department</field>
+			<dataPath>AmountWithoutVAT</dataPath>
+			<field>AmountWithoutVAT</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Department</v8:content>
+					<v8:content>Income without VAT</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доход без НДС</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -465,8 +469,8 @@
 			THEN VALUE(Catalog.StructuralUnits.EmptyRef)
 		WHEN SalesTurnovers.Document REFS Document.CustomerOrder
 			THEN SalesTurnovers.Document.SalesStructuralUnit
-		ELSE SalesTurnovers.Document.Department
-	END AS Department,
+		ELSE SalesTurnovers.Document.Division
+	END AS Division,
 	CASE
 		WHEN SalesTurnovers.Document REFS Document.CustomerOrder
 			THEN SalesTurnovers.Document.StructuralUnitReserve
@@ -477,6 +481,7 @@
 	SalesTurnovers.QuantityTurnover AS Quantity,
 	SalesTurnovers.AmountTurnover AS Amount,
 	SalesTurnovers.VATAmountTurnover AS VATAmount,
+	SalesTurnovers.AmountTurnover - SalesTurnovers.VATAmountTurnover AS AmountWithoutVAT,
 	SalesTurnovers.CostTurnover AS Cost,
 	SalesTurnovers.ProductsAndServices.ProductsAndServicesCategory AS ProductsAndServicesCategory
 FROM
@@ -484,7 +489,7 @@ FROM
 	</dataSet>
 	<calculatedField>
 		<dataPath>GrossProfit</dataPath>
-		<expression>IsNull(Amount, 0) - IsNull(Cost, 0)</expression>
+		<expression>IsNull(AmountWithoutVAT, 0) - IsNull(Cost, 0)</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
@@ -507,8 +512,8 @@ FROM
 	<calculatedField>
 		<dataPath>Profitability</dataPath>
 		<expression>CASE
-		WHEN IsNull(Amount, 0)  &lt;&gt; 0
-			THEN Amount - IsNull(Cost, 0) / Amount
+		WHEN IsNull(AmountWithoutVAT, 0)  &lt;&gt; 0
+			THEN AmountWithoutVAT - IsNull(Cost, 0) / AmountWithoutVAT
 		ELSE 0
 			END * 100</expression>
 		<title xsi:type="v8:LocalStringType">
@@ -586,11 +591,15 @@ FROM
 	<totalField>
 		<dataPath>Profitability</dataPath>
 		<expression>CASE
-		WHEN SUM(Amount) &lt;&gt; 0 THEN
-			(SUM(Amount)- SUM(Cost) ) * 100 
-			/ SUM(Amount)
+		WHEN SUM(AmountWithoutVAT) &lt;&gt; 0 THEN
+			(SUM(AmountWithoutVAT)- SUM(Cost) ) * 100 
+			/ SUM(AmountWithoutVAT)
 		ELSE "-"
 			END</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountWithoutVAT</dataPath>
+		<expression>Sum(AmountWithoutVAT)</expression>
 	</totalField>
 	<parameter>
 		<name>BeginOfPeriod</name>
@@ -857,6 +866,12 @@ END</dcsat:expression>
 					<dcsset:field>Quantity</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>VATAmount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Amount</dcsset:field>
 				</dcsset:item>
 				<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -1076,7 +1091,11 @@ END</dcsat:expression>
 					<dcsset:field>Quantity</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>Amount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Cost</dcsset:field>
@@ -1314,7 +1333,11 @@ END</dcsat:expression>
 					<dcsset:field>Quantity</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>Amount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:use>false</dcsset:use>
@@ -1598,7 +1621,11 @@ END</dcsat:expression>
 					<dcsset:field>Quantity</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>Amount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:use>false</dcsset:use>
@@ -1911,7 +1938,11 @@ END</dcsat:expression>
 					<dcsset:field>Quantity</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>Amount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:use>false</dcsset:use>
@@ -2351,7 +2382,11 @@ END</dcsat:expression>
 					<dcsset:field>Quantity</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>Amount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:use>false</dcsset:use>
@@ -2787,6 +2822,9 @@ END</dcsat:expression>
 					<dcsset:field>Amount</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Cost</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -3019,6 +3057,9 @@ END</dcsat:expression>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Amount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Cost</dcsset:field>
@@ -3282,6 +3323,9 @@ END</dcsat:expression>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Amount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Cost</dcsset:field>
@@ -3673,6 +3717,9 @@ END</dcsat:expression>
 					<dcsset:field>Amount</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Cost</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -4060,6 +4107,9 @@ END</dcsat:expression>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Amount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountWithoutVAT</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Cost</dcsset:field>
