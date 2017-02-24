@@ -123,20 +123,6 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Division</dataPath>
-			<field>Division</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Division</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>разделение</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Quantity</dataPath>
 			<field>Quantity</field>
 			<title xsi:type="v8:LocalStringType">
@@ -443,6 +429,20 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Department</dataPath>
+			<field>Department</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Department</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>DataSource1</dataSource>
 		<query>SELECT ALLOWED
 	SalesTurnovers.Recorder AS Recorder,
@@ -469,8 +469,8 @@
 			THEN VALUE(Catalog.StructuralUnits.EmptyRef)
 		WHEN SalesTurnovers.Document REFS Document.CustomerOrder
 			THEN SalesTurnovers.Document.SalesStructuralUnit
-		ELSE SalesTurnovers.Document.Division
-	END AS Division,
+		ELSE SalesTurnovers.Document.Department
+	END AS Department,
 	CASE
 		WHEN SalesTurnovers.Document REFS Document.CustomerOrder
 			THEN SalesTurnovers.Document.StructuralUnitReserve

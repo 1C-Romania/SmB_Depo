@@ -201,7 +201,8 @@ Function KDTable(ThisObject)
 		If TypeOf(CurrentKDNode) = Type("DataCompositionSettings") Then
 			Return CurrentKDNode.GroupAvailableFields;
 		Else
-			Return CurrentKDNode.GroupFields.AvailableFieldsGroupFields;
+			//ELMI 24.02.2017 Return CurrentKDNode.GroupFields.AvailableFieldsGroupFields;
+			Return CurrentKDNode.GroupFields.GroupFieldsAvailableFields;  //ELMI 24.02.2017 
 		EndIf;
 	EndIf;
 EndFunction
