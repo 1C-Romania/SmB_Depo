@@ -197,7 +197,7 @@ function initialize() {
     log(format("Script file: {0}", thisFileName));
     log(format("Update file quantity: {0}", cfgFileNames.length));
     for (var i = 0; i < cfgFileNames.length; i++)
-        log(format("{0}. {1}", i + 1, cfgFileNames[i]));
+        log(format("{0}. {1}", i + 1, cfgFileNames[i]));   //  >
 
     return 0;
 }
@@ -259,10 +259,10 @@ function write1CEventLogMonitor() {
         var text;
         while (!f.AtEndOfStream) {
             text = f.ReadLine();
-            while ((text.indexOf(successMarker) < 0) && (text.indexOf(errorMarker) < 0) && !f.AtEndOfStream)
+            while ((text.indexOf(successMarker) < 0) && (text.indexOf(errorMarker) < 0) && !f.AtEndOfStream)  //  > >
                 text += "\n" + f.ReadLine();
 
-            var failed = text.indexOf(errorMarker) > 0;
+            var failed = text.indexOf(errorMarker) > 0;                 // <
             log1CInternal(connection, text, failed);
         }
     }
@@ -416,12 +416,12 @@ function doTerminateSessionsAndBlockUsersHTA(connection) {
                     {
                         if (!connection.InfobaseConnections.ConnectionsBlockIsSet() ||
                         connection.InfobaseConnections.InfobaseSessionCount(false) <= 1) {
-                            disconnectionStep++;
-                            break;
+                            disconnectionStep++;   //  >
+                            break;   
                         }
 
                         var now = new Date();
-                        if (now - disconnectionInterval <= disconnectionStartDateTime) // if the wait interval didn't expire yet, we wait once again
+                        if (now - disconnectionInterval <= disconnectionStartDateTime) // if the wait interval didn't expire yet, we wait once again  >
                             return -1;
                         disconnectionStep++;
                         break;
@@ -434,13 +434,13 @@ function doTerminateSessionsAndBlockUsersHTA(connection) {
                         }
 
                         if (connection.InfobaseConnections.InfobaseSessionCount(false) <= 1)
-                            return 0;
+                            return 0;   //  >
 
                         // after lock start all user sessions should be	
                         // disabled if it didn't happen, try to interrupt connection forcibly.
                         doTerminateSessions(connection);
                         if (connection.InfobaseConnections.InfobaseSessionCount(false) > 1) {
-                            connection.InfobaseConnections.AllowUsersWork();
+                            connection.InfobaseConnections.AllowUsersWork();   //  <
                             var message = connection.InfobaseConnections.EnabledSessionsMessage();
                             log(message, true);
                             return 3;
@@ -506,9 +506,9 @@ function doTerminateSessionsAndBlockUsers() {
         if (connection.ValueIsFilled(startDateTime))
             while (now - interval <= startDateTime) {
                 if (!connection.GetConnectionsLock().Use)
-                    break;
+                    break;   //   >
                 if (connection.InfobaseConnections.InfobaseSessionCount(false) <= 1)
-                    break;
+                    break;   //  >
                 WScript.Sleep(18 * 1000); // Wait 18 seconds before the next check.
                 now = new Date();
             }
@@ -521,7 +521,7 @@ function doTerminateSessionsAndBlockUsers() {
         // after lock start all user sessions should be
         // disabled if it didn't happen, try to interrupt connections forcibly.
         doTerminateSessions(connection);
-        if (connection.InfobaseConnections.InfobaseSessionCount(false) > 1) {
+        if (connection.InfobaseConnections.InfobaseSessionCount(false) > 1) {   //  <
             connection.InfobaseConnections.AllowUsersWork();
             var message = connection.InfobaseConnections.EnabledSessionsMessage();
             log(message, true);

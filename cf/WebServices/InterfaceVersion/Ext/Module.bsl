@@ -1,5 +1,4 @@
-﻿
-/////////////////////////////////////////////////////////////////////////////////
+﻿////////////////////////////////////////////////////////////////////////////////
 // Versioning of interfaces.
 //
 
@@ -27,7 +26,7 @@
 //
 // 	// Consider versioning.
 // 	SupportedVersionArray
-// 		= StandardSubsystemsServer.GetSubsystemVersionArray(ConnectionParameters, 'FileTransferService");
+// 		= StandardSubsystemsServer.GetSubsystemVersionArray(ConnectionParameters, "FileTransferService");
 // 	If SupportedVersionArray.Find("1.0.2.1") = Undefined Then
 // 		HasVersion2Support = False;
 // 		Proxy = GetProxyFileTransfer(ConnectionParameters);

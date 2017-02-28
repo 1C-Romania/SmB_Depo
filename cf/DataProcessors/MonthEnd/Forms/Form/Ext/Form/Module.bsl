@@ -1,5 +1,4 @@
-﻿
-////////////////////////////////////////////////////////////////////////////////
+﻿////////////////////////////////////////////////////////////////////////////////
 // MODULE VARIABLES
 
 &AtClient
@@ -1193,7 +1192,8 @@ EndProcedure
 // LongActions
 
 &AtClient
-// Procedure-handler of the command "Abort month closing in long Operations
+/////////////////////////////////////////////////////////////////////////////
+// Procedure-handler of the command "Abort month closing in long Operations"
 //
 Procedure AbortClosingMonthInLongOperation(Command)
 	
@@ -1231,17 +1231,3 @@ Procedure ExecutePreliminaryAnalysis(Command)
 	OpenForm("DataProcessor.AccountingCorrectnessControl.Form.Form", FormParameters);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

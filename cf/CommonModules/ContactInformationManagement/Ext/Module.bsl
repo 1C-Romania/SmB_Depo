@@ -732,7 +732,7 @@ EndProcedure
 //   AddressInXML					 - String -  XML row of a contact information.
 //   CheckParameters	 - Structure, CatalogRef.ContactInformationTypes - check box of address check.
 //          AddressRussianOnly - Boolean - Address should be only Russian. By default is TRUE.
-//          AddressFormat - String - By which classifier to check "KLADR" or FIAS". By default is "KLADR".
+//          AddressFormat - String - By which classifier to check "KLADR" or "FIAS". By default is "KLADR".
 // Returns:
 //   Structure - contains structure with fields:
 //        * Result - String - Result Checks: "Correct", "NotChecked", "ContainsErrors".

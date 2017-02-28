@@ -107,74 +107,42 @@ Function IsRole(Val Role, Val ObjectReference = Undefined, Val User = Undefined)
 			
 			If Upper(String.AccessKind) = Upper("EditRight") Then
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-//{{MRG[ <-> ]
-				NStr("en='An error occurred in the HasRole function of the AccessManagement module."
-"In the access values set the EditingRight"
-"access kind is specified of table with ID ""%1""."
-"In the restriction role checks (as"
-"an additional right) can depend only on the Reading right.';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом."
-"В наборе значений доступа указан"
-"вид доступа ПравоИзменения таблицы с идентификтором ""%1""."
-"В ограничении проверки роли (как"
-"дополнительного права) может быть зависимость только от права Чтения.'"),
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
-//		|In the access values set the EditingRight
-//		|access kind is specified of table with ID ""%1"".
-//		|In the restriction role checks (as
-//		|an additional right) can depend only on the Reading right.';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом.
-//		|В наборе значений доступа указан
-//		|вид доступа ПравоИзменения таблицы с идентификтором ""%1"".
-//		|В ограничении проверки роли (как
-//		|дополнительного права) может быть зависимость только от права Чтения.'"),
-//}}MRG[ <-> ]
+				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
+						|In the access values set the EditingRight
+						|access kind is specified of table with ID ""%1"".
+						|In the restriction role checks (as
+						|an additional right) can depend only on the Reading right.';
+					 |ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом.
+						|В наборе значений доступа указан
+						|вид доступа ПравоИзменения таблицы с идентификтором ""%1"".
+						|В ограничении проверки роли (как
+						|дополнительного права) может быть зависимость только от права Чтения.'"),
 					String.AccessValue);
 			EndIf;
 		ElsIf AccessKindNames.Get(String.AccessKind) <> Undefined
 		      OR String.AccessKind = "RightSettings" Then
 			
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-//{{MRG[ <-> ]
-				NStr("en='An error occurred in the HasRole function of the AccessManagement module."
-"Access values set contains known access kind"
-"""%2"" that you should not specify."
-""
-"Specify only special access"
-"kinds ""ReadingRight"", ""ChangingRight"" if they are used.';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом."
-"Набор значений доступа содержит известный"
-"вид доступа ""%2"", который не требуется указывать."
-""
-"Указывать требуется"
-"только специальные виды доступа ""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
-//		|Access values set contains known access kind
-//		|""%2"" that you should not specify.
-//		|
-//		|Specify only special access
-//		|kinds ""ReadingRight"", ""ChangingRight"" if they are used.';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом.
-//		|Набор значений доступа содержит известный
-//		|вид доступа ""%2"", который не требуется указывать.
-//		|
-//		|Указывать требуется
-//		|только специальные виды доступа ""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
-//}}MRG[ <-> ]
+				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
+						|Access values set contains known access kind
+						|""%2"" that you should not specify.
+						|
+						|Specify only special access
+						|kinds ""ReadingRight"", ""ChangingRight"" if they are used.';
+					|ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом.
+						|Набор значений доступа содержит известный
+						|вид доступа ""%2"", который не требуется указывать.
+						|
+						|Указывать требуется
+						|только специальные виды доступа ""ПравоЧтения"", ""ПравоИзменения"", если они используются.'"),
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		Else
 			Raise StringFunctionsClientServer.PlaceParametersIntoString(
-//{{MRG[ <-> ]
-				NStr("en='An error occurred in the HasRole function of the AccessManagement module."
-"Access values set contains unknown access kind ""%2"".';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом."
-"Набор значений доступа содержит неизвестный вид доступа ""%2"".'"),
-//}}MRG[ <-> ]
-//{{MRG[ <-> ]
-//				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
-//		|Access values set contains unknown access kind ""%2"".';ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом.
-//		|Набор значений доступа содержит неизвестный вид доступа ""%2"".'"),
-//}}MRG[ <-> ]
+				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
+						|Access values set contains unknown access kind ""%2"".';
+					|ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом.
+						|Набор значений доступа содержит неизвестный вид доступа ""%2"".'"),
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		EndIf;
@@ -419,7 +387,8 @@ Function IsRight(Right, ObjectReference, User = Undefined) Export
 	
 	If RightsDescriptionFull = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Description of possible rights for table ""%1"" is not found';ru='Не найдено описание возможных прав для таблицы ""%1""'"),
+			NStr("en='Description of possible rights for table ""%1"" is not found';
+				 |ru='Не найдено описание возможных прав для таблицы ""%1""'"),
 			ObjectReference.Metadata().FullName());
 	EndIf;
 	
@@ -427,7 +396,8 @@ Function IsRight(Right, ObjectReference, User = Undefined) Export
 	
 	If RightDetails = Undefined Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Description of right ""%1"" for table ""%2"" is not found';ru='Не найдено описание права ""%1"" для таблицы ""%2""'"),
+			NStr("en='Description of right ""%1"" for table ""%2"" is not found';
+				 |ru='Не найдено описание права ""%1"" для таблицы ""%2""'"),
 			Right,
 			ObjectReference.Metadata().FullName());
 	EndIf;
@@ -615,7 +585,8 @@ Procedure OnFormCreationAccessValues(Form,
 	   AND NewCreation Then
 		
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Allowed ""%1"" are used while adding.';ru='Для добавления требуются разрешенные ""%1"".'"),
+			NStr("en='Allowed ""%1"" are used while adding.';
+				 |ru='Для добавления требуются разрешенные ""%1"".'"),
 			Metadata.FindByType(GroupsProperties.Type).Presentation());
 	EndIf;
 	
@@ -878,7 +849,8 @@ Procedure FillAccessValueSets(Val Object, Table, Val RefOnSubordinatedObject = U
 		// If you disable this condition, then scheduled
 		// job of data filling for access restriction will by cycled.
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Object ""%1"" generated access values empty set.';ru='Объект ""%1"" сформировал пустой набор значений доступа.'"),
+			NStr("en='Object ""%1"" generated access values empty set.';
+				 |ru='Объект ""%1"" сформировал пустой набор значений доступа.'"),
 			ValueTypeObject);
 	EndIf;
 	
@@ -1156,20 +1128,20 @@ EndProcedure
 // ProfileDescription.AccessGroups.Add("Users", "Preset");
 // ProfileDescription.AccessGroups.Add("EconomicOperations", "Preset");
 // ProfileDescription.AccessValues.Add("EconomicOperations",
-// 	"Enum.EconomicOperations.IssueCashToAdvanceHolder);
+// 	Enum.EconomicOperations.IssueCashToAdvanceHolder);
 // // ...
 // ProfilesDescription.Add(ProfileDescription);
 //
 Function AccessGroupProfileNewDescription() Export
 	
 	NewDetails = New Structure;
-	NewDetails.Insert("Name",             ""); // PredefinedDataName
+	NewDetails.Insert("Name", ""); // PredefinedDataName
 	                                               // is used to check the bind of supplied data to the predefined item.
-	NewDetails.Insert("ID",   ""); // IDSuppliedData
-	NewDetails.Insert("Description",    "");
-	NewDetails.Insert("Definition",        "");
-	NewDetails.Insert("Roles",            New Array);
-	NewDetails.Insert("AccessKinds",     New ValueList);
+	NewDetails.Insert("ID", ""); // IDSuppliedData
+	NewDetails.Insert("Description", "");
+	NewDetails.Insert("Definition", "");
+	NewDetails.Insert("Roles", New Array);
+	NewDetails.Insert("AccessKinds", New ValueList);
 	NewDetails.Insert("AccessValues", New ValueList);
 	
 	Return NewDetails;

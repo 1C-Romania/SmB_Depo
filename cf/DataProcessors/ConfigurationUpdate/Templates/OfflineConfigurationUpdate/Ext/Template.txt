@@ -71,7 +71,7 @@ if (cfgFileNames.length == 0)
 }
 else
 {
-	for(var cfgFileIndex = 0; cfgFileIndex < cfgFileNames.length; cfgFileIndex++)
+	for(var cfgFileIndex = 0; cfgFileIndex < cfgFileNames.length; cfgFileIndex++)  //  >
 	{
 	    setProgress(format("Import update file in the main base ({0}/{1})", cfgFileIndex + 1, cfgFileNames.length));
 	    ret = updateCfg(cfgFileNames[cfgFileIndex]);

@@ -510,7 +510,7 @@ EndProcedure
 // Checks that there is a link in the exceptions.
 Function LinkInLinkSearchExceptions(ExecuteParameters, TableRow)
 	// Definition of excluding rule for metadata object preventing the deletion:
-	// For the registers (so called "non-object tables″) - array of attributes for search in the records of the register.
+	// For the registers (so called "non-object tables″) - array of attributes for search in the records of the register."
 	// For reference types (so-called "object tables") - ready query for search in the attributes.
 	Rule = ExecuteParameters.ExcludingRules[TableRow.FindMetadata]; // Cache.
 	If Rule = Undefined Then

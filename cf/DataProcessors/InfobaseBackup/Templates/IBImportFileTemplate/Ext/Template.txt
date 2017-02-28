@@ -267,9 +267,9 @@ function write1CEventLogMonitor()
         {
             text = f.ReadLine();
             while ((text.indexOf(successMarker) < 0) && (text.indexOf(errorMarker) < 0) && !f.AtEndOfStream)
-               text += "\n" + f.ReadLine();
+               text += "\n" + f.ReadLine();   //  > >
 
-            var failed = text.indexOf(errorMarker) > 0;
+            var failed = text.indexOf(errorMarker) > 0;   //  <
             log1CInternal(connection, text, failed);
         }
     }
@@ -389,7 +389,7 @@ function backupDB()
 	catch(e)
 	{
 		retryCount++;
-		CollectGarbage();   // prevents exception out of memory
+		CollectGarbage();   // prevents exception out of memory   <
 		if (retryCount > 5) 
 		{
 			log(format("Error of transfer base file to a temporary directory (maybe there are active sessions to base file): {0}, {1}.", e.name, e.message), true);
@@ -436,7 +436,7 @@ function WaitUntilFinish()
 	FileSize = FileArchive.size / 1024;
 	
 	if (FileSize < 5)
-		return -1;
+		return -1;   //  >
 	
 	return 0;
 }

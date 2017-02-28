@@ -1685,9 +1685,9 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 							or ControlPart = "30" //Russian company - the tax agent not considered as a taxpayer
 							or ControlPart = "31" //Registration with the taxpayer - a Russian company at the location of a separate subdepartment in respect of which no registration procedure is not executed under paragraph 3 of Article 55 of the Russian Federation Civil Code that acts as taxes and receipts payment organization 
 							or ControlPart = "32" //Registration with the taxpayer - a Russian company at the location of a separate subdepartment in respect of which no registration procedure is executed under paragraph 3 of Article 55 of the Russian Federation Civil Code that does not act as taxes and receipts payment organization 
-							or ControlPart = "43" //Registration with the Russian company at the location of its branch (similar to the old codes "02", "03" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ "Concerning the application of "SPPUNO" directory code) 
-							or ControlPart = "44" //Registration with the Russian company at the location of its representative office (similar to the old codes "04", "05" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ "Concerning the application of "SPPUNO" directory code) 
-							or ControlPart = "45";//Registration with the Russian company at the location of its separate department (similar to the old codes "31", "32" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ "Concerning the application of "SPPUNO" directory code)
+							or ControlPart = "43" //Registration with the Russian company at the location of its branch (similar to the old codes "02", "03" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ Concerning the application of "SPPUNO" directory code) 
+							or ControlPart = "44" //Registration with the Russian company at the location of its representative office (similar to the old codes "04", "05" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ Concerning the application of "SPPUNO" directory code) 
+							or ControlPart = "45";//Registration with the Russian company at the location of its separate department (similar to the old codes "31", "32" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ Concerning the application of "SPPUNO" directory code)
 							
 						MainDepartmentFlag = ControlPart = "01" 
 							or ControlPart = "50" //At the place of registration as the largest taxpayer

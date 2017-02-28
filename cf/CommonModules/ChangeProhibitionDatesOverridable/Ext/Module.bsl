@@ -28,7 +28,7 @@ EndProcedure
 //   * DateField    - String - name of the object attribute or tabular section, for example, "Date", "Goods.ShipmentDate".
 //   * Section      - String - name of the predefined item "ChartOfCharacteristicTypesRef.ProhibitionDatesSections".
 //   * ObjectField - String - name of object attribute or tabular section attribute,
-//                            for example, "Organization", "Goods".Warehouse".
+//                            for example, "Organization", "Goods.Warehouse".
 //
 //  There is AddLine procedure in ChangeProhibitionDates common module for line adding.
 //

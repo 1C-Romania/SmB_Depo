@@ -6992,7 +6992,7 @@ EndFunction
 // Determines object conversion rule (OCR) by the receiver object type.
 // 
 // Parameters:
-//  RefTypeAsString - String - object type in a string presentation, for example, "CatalogRef.ProductsAndServices.
+//  RefTypeAsString - String - object type in a string presentation, for example, CatalogRef.ProductsAndServices.
 // 
 // Returns:
 //  MatchValue = Object conversion rule.

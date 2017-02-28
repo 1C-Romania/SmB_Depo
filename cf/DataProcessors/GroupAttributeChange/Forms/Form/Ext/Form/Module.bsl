@@ -2755,7 +2755,7 @@ EndFunction
 //    If the parameter is not specified, the function works in the mode of compatibility with its previous version:
 //     - for delimiter-space empty lines are not included in the result, for other
 //       delimiters empty lines are included in the result.
-//     E if Line parameter does not contain significant characters or doesn't contain any symbol (empty line),
+//     E if Line parameter does not contain significant characters or does not contain any symbol (empty line),
 //       then for delimiter-space the function result is an array containing one value ""
 //       (empty line) and for other delimiters the function result is the empty array.
 //
@@ -3546,7 +3546,7 @@ EndFunction
 //
 // Parameters:
 //  SubsystemFullName - String. Full metadata object name, subsystem without words "Subsystem.".
-//                        For example, StandardSubsystems.BasicFunctionality".
+//                        For example, StandardSubsystems.BasicFunctionality.
 //
 // Example of optional subsystem call:
 //
@@ -3819,26 +3819,11 @@ Function ValidateVersionAndPlatformCompatibilityMode()
 		AND Metadata.CompatibilityMode <> Metadata.ObjectProperties.CompatibilityMode["Version8_3_1"]
 		AND Metadata.CompatibilityMode <> Metadata.ObjectProperties.CompatibilityMode["Version8_3_2"]))) Then
 		
-		Raise NStr("en='DataProcessor is used to start
-		|on 1C:Enterprise 8.3 platform version with compatibility mode off or above';ru='Обработка предназначена
-		|для запуска на версии платформы 1С:Предприятие 8.3 с отключенным режимом совместимости или выше'");
+		Raise NStr("en='DataProcessor is used to start on 1C:Enterprise 8.3 platform version (or above) with compatibility mode off';
+					|ru='Обработка предназначена для запуска на версии платформы 1С:Предприятие 8.3 (или выше) с отключенным режимом совместимости'");
 		
 	EndIf;
 	
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

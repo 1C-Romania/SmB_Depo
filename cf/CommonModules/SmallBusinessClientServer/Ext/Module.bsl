@@ -1,17 +1,11 @@
-﻿
-//Procedure checks whether TIN and KPP
-//are entered correctly Takes
-//the Pass parameters structure - the
-// Mandatory keys structure
-//	of
-//	the
-//	structure
-//	TIN
-//	KPP
+﻿//////////////////////////////////////////////////
+// Procedure checks whether TIN and KPP are entered correctly 
+// Takes the Pass parameters structure - the Mandatory keys structure
+// of the structure TIN KPP
 // IsLegalEntity NoTINErrors NoKPPErrors
-//	Additional keys of the IncorrectValueHighlightColor structure
+// Additional keys of the IncorrectValueHighlightColor structure
 //
-//Returns a structure with variable set of keys only with the values corresponding to the check result.
+// Returns a structure with variable set of keys only with the values corresponding to the check result.
 Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 	
 	If ParametersStructure.Property("ColorHighlightIncorrectValues") Then
@@ -95,9 +89,8 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					
 					ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en='TIN of legal entity should consist of 10 digits';ru='ИНН юридического лица должен состоять из 10 цифр'"),,ColorHighlightIncorrectValues);
 					
-					TextForIncorrectTIN = NStr("en='%
-		|TIN does not contain 10 digits';ru='%1
-		|ИНН содержит не 10 цифр'");
+					TextForIncorrectTIN = NStr("en='%1 TIN does not contain 10 digits';
+												|ru='%1 ИНН содержит не 10 цифр'");
 					
 					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 					
@@ -109,9 +102,8 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					
 					ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en='Individual’s TIN should consist of 12 digits.';ru='ИНН физического лица должен состоять из 12 цифр'"),,ColorHighlightIncorrectValues);
 					
-					TextForIncorrectTIN = NStr("en='%
-		|TIN does not contain 12 digits';ru='%1
-		|ИНН содержит не 12 цифр'");
+					TextForIncorrectTIN = NStr("en='%1 TIN does not contain 12 digits';
+												|ru='%1 ИНН содержит не 12 цифр'");
 					
 					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 					
@@ -123,9 +115,8 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					
 					ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en='The first two TIN digits can not be ""00""';ru='Первые две цифры ИНН не могут быть ""00""'"),,ColorHighlightIncorrectValues);
 					
-					TextForIncorrectTIN = NStr("en='%1
-		|The first two TIN digits can not be ""00""';ru='%1
-		|Первые две цифры ИНН не могут быть ""00""'");
+					TextForIncorrectTIN = NStr("en='%1 The first two TIN digits can not be ""00""';
+												|ru='%1 Первые две цифры ИНН не могут быть ""00""'");
 					
 					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 					
@@ -141,9 +132,8 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 						
 						ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en='TIN should include only digits';ru='ИНН должен включать только цифры'"),,ColorHighlightIncorrectValues);
 						
-						TextForIncorrectTIN = NStr("en='%
-		|TIN includes not only digits';ru='%1
-		|ИНН содержит не только цифры'");
+						TextForIncorrectTIN = NStr("en='%1 TIN includes not only digits';
+													|ru='%1 ИНН содержит не только цифры'");
 						
 						ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 						
@@ -192,9 +182,8 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 								
 								ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en=""Legal entity's TIN is incorrect"";ru='ИНН юридического лица введен некорректно'"),,ColorHighlightIncorrectValues);
 								
-								TextForIncorrectTIN = NStr("en='%1
-		|TIN does not correspond to the format';ru='%1
-		|ИНН не соответствует формату'");
+								TextForIncorrectTIN = NStr("en='%1 TIN does not correspond to the format';
+															|ru='%1 ИНН не соответствует формату'");
 								
 								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 								
@@ -260,26 +249,19 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 								
 								ReturnStructure.LabelExplanationsOfIncorrectTIN = New FormattedString(NStr("en=""Individual's TIN is incorrect"";ru='ИНН физического лица введен некорректно'"),,ColorHighlightIncorrectValues);
 								
-								TextForIncorrectTIN = NStr("en='%1
-		|TIN does not correspond to the format';ru='%1
-		|ИНН не соответствует формату'");
+								TextForIncorrectTIN = NStr("en='%1 TIN does not correspond to the format';
+															|ru='%1 ИНН не соответствует формату'");
 								
 								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
 								
 								ReturnStructure.NoErrorsByTIN = False;
 								
 							EndIf;
-							
 						EndIf;
-						
 					EndIf;
-					
 				EndIf;
-				
 			EndIf;
-			
 		EndIf;
-		
 	EndIf;
 	
 	If ParametersStructure.CheckKPP Then
@@ -330,9 +312,8 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					
 					ReturnStructure.LabelExplanationsOfIncorrectKPP  = New FormattedString(NStr("en='KPP should contain 9 digits';ru='""КПП"" должен содержать 9 цифр'"),,ColorHighlightIncorrectValues);
 					
-					TextForIncorrectKPP = NStr("en='&1
-		|KPP does not contain 9 digits';ru='%1
-		|КПП содержит не 9 цифр'");
+					TextForIncorrectKPP = NStr("en='&1 KPP does not contain 9 digits';
+												|ru='%1 КПП содержит не 9 цифр'");
 					
 					ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
 					
@@ -348,9 +329,8 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 						
 						ReturnStructure.LabelExplanationsOfIncorrectKPP = New FormattedString(NStr("en='KPP should include only digits';ru='КПП должен включать только цифры'"),,ColorHighlightIncorrectValues);
 						
-						TextForIncorrectKPP = NStr("en='%
-		|KPP includes not only digits';ru='%1
-		|КПП содержит не только цифры'");
+						TextForIncorrectKPP = NStr("en='%1 KPP includes not only digits';
+													|ru='%1 КПП содержит не только цифры'");
 						
 						ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
 						
@@ -370,9 +350,9 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 						or ControlPart = "30" //Russian company - the tax agent not considered as a taxpayer
 						or ControlPart = "31" //Registration with the taxpayer - a Russian company at the location of a separate subdepartment in respect of which no registration procedure is not executed under paragraph 3 of Article 55 of the Russian Federation Civil Code that acts as taxes and receipts payment organization 
 						or ControlPart = "32" //Registration with the taxpayer - a Russian company at the location of a separate subdepartment in respect of which no registration procedure is executed under paragraph 3 of Article 55 of the Russian Federation Civil Code that does not act as taxes and receipts payment organization 
-						or ControlPart = "43" //Registration with the Russian company at the location of its branch (similar to the old codes "02", "03" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ "Concerning the application of "SPPUNO" directory code) 
-						or ControlPart = "44" //Registration with the Russian company at the location of its representative office (similar to the old codes "04", "05" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ "Concerning the application of "SPPUNO" directory code) 
-						or ControlPart = "45";//Registration with the Russian company at the location of its separate department (similar to the old codes "31", "32" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ "Concerning the application of "SPPUNO" directory code)
+						or ControlPart = "43" //Registration with the Russian company at the location of its branch (similar to the old codes "02", "03" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ Concerning the application of "SPPUNO" directory code) 
+						or ControlPart = "44" //Registration with the Russian company at the location of its representative office (similar to the old codes "04", "05" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ Concerning the application of "SPPUNO" directory code) 
+						or ControlPart = "45";//Registration with the Russian company at the location of its separate department (similar to the old codes "31", "32" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ Concerning the application of "SPPUNO" directory code)
 						
 						MainDepartmentFlag = ControlPart = "01" 
 						or ControlPart = "50" //At the place of registration as the largest taxpayer
@@ -400,24 +380,17 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 							
 							ReturnStructure.LabelExplanationsOfIncorrectKPP = New FormattedString(NStr("en='KPP does not correspond to format';ru='КПП не соответствует формату'"),,ColorHighlightIncorrectValues);
 							
-							TextForIncorrectKPP = NStr("en='%
-		|KPP does not correspond to the format';ru='%1
-		|КПП не соответствует формату'");
+							TextForIncorrectKPP = NStr("en='%1 KPP does not correspond to the format';
+														|ru='%1 КПП не соответствует формату'");
 							
 							ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
 							
 							ReturnStructure.NoErrorsByKPP = False;
-							
 						EndIf;
-						
 					EndIf;
-					
 				EndIf;
-				
 			EndIf;
-			
 		EndIf;
-		
 	EndIf;
 	
 	Return ReturnStructure;
@@ -1021,4 +994,3 @@ Function IsStateServicesExecutiveAccount(Val AccountNo, Period)
 		Or (BalanceAccount = "40703" AND PersonalAccountFlag = "4");
 	
 EndFunction
-

@@ -212,33 +212,25 @@ Function TextFillingErrors(FieldKind = "Field", MessageKind = "Filling",
 
 	If Upper(FieldKind) = "Field" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en='Field ""%1"" is not filled';ru='Поле ""%1"" не заполнено'");
+			Pattern = NStr("en='Field %1 is not filled';ru='Поле %1 не заполнено'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
-			Pattern = NStr("en='%1 field is filled in incorrectly.
-		|
-		|%4';ru='Поле ""%1"" заполнено некорректно.
-		|
-		|%4'");
+			Pattern = NStr("en='%1 field is filled incorrect. %4';
+						   |ru='Поле ""%1"" заполнено некорректно. %4'");
 		EndIf;
 	ElsIf Upper(FieldKind) = "Column" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en='%1 column is not filled in in %2 row of %3 list';ru='Не заполнена колонка ""%1"" в строке %2 списка ""%3""'");
+			Pattern = NStr("en='%1 column is not filled in in %2 row of %3 list';
+						   |ru='Не заполнена колонка %1 в строке %2 списка %3'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
-			Pattern = NStr("en='Column %1 is filled in incorrectly in %2 row of %3 list.
-		|
-		|%4';ru='Некорректно заполнена колонка ""%1"" в строке %2 списка ""%3"".
-		|
-		|%4'");
+			Pattern = NStr("en='Column %1 is filled in incorrectly in %2 row of %3 list. %4';
+						   |ru='Некорректно заполнена колонка %1 в строке %2 списка %3. %4'");
 		EndIf;
 	ElsIf Upper(FieldKind) = "LIST" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en='No row has been entered to list %3';ru='Не введено ни одной строки в список ""%3""'");
+			Pattern = NStr("en='No row has been entered to list %3';ru='Не введено ни одной строки в список %3'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
-			Pattern = NStr("en='List %3 is filled in incorrectly.
-		|
-		|%4';ru='Некорректно заполнен список ""%3"".
-		|
-		|%4'");
+			Pattern = NStr("en='List %3 is filled in incorrectly. %4';
+						   |ru='Некорректно заполнен список %3. %4'");
 		EndIf;
 	EndIf;
 
@@ -334,7 +326,8 @@ Procedure ExpandStructure(StructureReceiver, SourceStructure, WithReplacement = 
 				Continue;
 			Else
 				Raise StringFunctionsClientServer.PlaceParametersIntoString(
-					NStr("en='Source and receiver structures intersection by key %1.';ru='Пересечение структур источника и приемника по ключу ""%1"".'"),
+					NStr("en='Source and receiver structures intersection by key %1.';
+						 |ru='Пересечение структур источника и приемника по ключу %1.'"),
 					KeyAndValue.Key);
 			EndIf
 		EndIf;
@@ -745,25 +738,27 @@ Procedure SetSpreadsheetDocumentFieldState(SpreadsheetDocumentField, Status = "D
 		AND SpreadsheetDocumentField.Type = FormFieldType.SpreadsheetDocumentField Then
 		StatePresentation = SpreadsheetDocumentField.StatePresentation;
 		If Upper(Status) = "DONTUSE" Then
-			StatePresentation.Visible                      = False;
+			StatePresentation.Visible = False;
 			StatePresentation.AdditionalShowMode = AdditionalShowMode.DontUse;
-			StatePresentation.Picture                       = New Picture;
-			StatePresentation.Text                          = "";
+			StatePresentation.Picture = New Picture;
+			StatePresentation.Text    = "";
 		ElsIf Upper(Status) = "IRRELEVANCE" Then
-			StatePresentation.Visible                      = True;
+			StatePresentation.Visible = True;
 			StatePresentation.AdditionalShowMode = AdditionalShowMode.Irrelevance;
-			StatePresentation.Picture                       = New Picture;
-			StatePresentation.Text                          = NStr("en='Report is not generated. Click Create to generate the report.';ru='Отчет не сформирован. Нажмите ""Сформировать"" для получения отчета.'");;
+			StatePresentation.Picture = New Picture;
+			StatePresentation.Text    = NStr("en='Report is not generated. Click Create to generate the report.';ru='Отчет не сформирован. Нажмите ""Сформировать"" для получения отчета.'");;
 		ElsIf Upper(Status) = "REPORTCREATION" Then  
-			StatePresentation.Visible                      = True;
+			StatePresentation.Visible = True;
 			StatePresentation.AdditionalShowMode = AdditionalShowMode.Irrelevance;
-			StatePresentation.Picture                       = PictureLib.LongOperation48;
-			StatePresentation.Text                          = NStr("en='Generating the report...';ru='Отчет формируется...'");
+			StatePresentation.Picture = PictureLib.LongOperation48;
+			StatePresentation.Text    = NStr("en='Generating the report...';ru='Отчет формируется...'");
 		Else
-			Raise(NStr("en=""Invalid parameter value (parameter number '2')"";ru=""Недопустимое значение параметра (параметр номер '2')"""));
+			Raise(NStr("en='Invalid parameter value (parameter number 2)';
+					   |ru='Недопустимое значение параметра (параметр номер 2)'"));
 		EndIf;
 	Else
-		Raise(NStr("en=""Invalid parameter value (parameter number '1')"";ru=""Недопустимое значение параметра (параметр номер '1')"""));
+		Raise(NStr("en='Invalid parameter value (parameter number 1)';
+				   |ru='Недопустимое значение параметра (параметр номер 1)'"));
 	EndIf;
 	
 EndProcedure
@@ -809,12 +804,14 @@ Function CompareVersions(Val VersionString1, Val VersionString2) Export
 	Version1 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row1, ".");
 	If Version1.Count() <> 4 Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Wrong format of the VersionRow1 parameter: %1';ru='Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
+			NStr("en='Wrong format of the VersionRow1 parameter: %1';
+				 |ru='Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
 	EndIf;
 	Version2 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row2, ".");
 	If Version2.Count() <> 4 Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-	    	NStr("en='Wrong format of the VersionRow2 parameter: %1';ru='Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
+	    	NStr("en='Wrong format of the VersionRow2 parameter: %1';
+				 |ru='Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
 	EndIf;
 	
 	Result = 0;
@@ -844,12 +841,14 @@ Function CompareVersionsWithoutBatchNumber(Val VersionString1, Val VersionString
 	Version1 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row1, ".");
 	If Version1.Count() <> 3 Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-			NStr("en='Wrong format of the VersionRow1 parameter: %1';ru='Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
+			NStr("en='Wrong format of the VersionRow1 parameter: %1';
+				 |ru='Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
 	EndIf;
 	Version2 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row2, ".");
 	If Version2.Count() <> 3 Then
 		Raise StringFunctionsClientServer.PlaceParametersIntoString(
-	    	NStr("en='Wrong format of the VersionRow2 parameter: %1';ru='Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
+	    	NStr("en='Wrong format of the VersionRow2 parameter: %1';
+				 |ru='Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
 	EndIf;
 	
 	Result = 0;
@@ -988,10 +987,12 @@ Function InstallOuterDatabaseJoin(Parameters) Export
 	
 	#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 		IsLinux = CommonUse.ThisLinuxServer();
-		ErrorShortInfo = NStr("en='Direct connection to the infobase is unavailable on the server under OS Linux.';ru='Прямое подключение к информационной базе недоступно на сервере под управлением ОС Linux.'");
+		ErrorShortInfo = NStr("en='Direct connection to the infobase is unavailable on the server under OS Linux.';
+							  |ru='Прямое подключение к информационной базе недоступно на сервере под управлением ОС Linux.'");
 	#Else
 		IsLinux = IsLinuxClient();
-		ErrorShortInfo = NStr("en='Direct connection to the infobase is unavailable on client managed by Linux OS.';ru='Прямое подключение к информационной базе недоступно на клиенте под управлением ОС Linux.'");
+		ErrorShortInfo = NStr("en='Direct connection to the infobase is unavailable on client managed by Linux OS.';
+							  |ru='Прямое подключение к информационной базе недоступно на клиенте под управлением ОС Linux.'");
 	#EndIf
 	
 	If IsLinux Then
@@ -1005,7 +1006,8 @@ Function InstallOuterDatabaseJoin(Parameters) Export
 		COMConnector = New COMObject(COMConnectorName()); // "V83.COMConnector"
 	Except
 		Information = ErrorInfo();
-		ErrorMessageString = NStr("en='Unable to connect to another application: %1';ru='Не удалось подключиться к другой программе: %1'");
+		ErrorMessageString = NStr("en='Unable to connect to another application: %1';
+								  |ru='Не удалось подключиться к другой программе: %1'");
 		
 		Result.ErrorAttachingAddIn = True;
 		Result.DetailedErrorDescription     = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageString, DetailErrorDescription(Information));
@@ -1021,14 +1023,16 @@ Function InstallOuterDatabaseJoin(Parameters) Export
 	If FileModeWork Then
 		
 		If IsBlankString(Parameters.InfobaseDirectory) Then
-			ErrorMessageString = NStr("en='Infobase directory location has not been set.';ru='Не задано месторасположение каталога информационной базы.'");
+			ErrorMessageString = NStr("en='Infobase directory location has not been set.';
+									  |ru='Не задано месторасположение каталога информационной базы.'");
 			FillCheckingError = True;
 		EndIf;
 		
 	Else
 		
 		If IsBlankString(Parameters.PlatformServerName) Or IsBlankString(Parameters.InfobaseNameAtPlatformServer) Then
-			ErrorMessageString = NStr("en='Mandatory connection parameters are not specified: Server name""; Infobase name on server.';ru='Не заданы обязательные параметры подключения: ""Имя сервера""; ""Имя информационной базы на сервере"".'");
+			ErrorMessageString = NStr("en='Mandatory connection parameters are not specified: Server name; Infobase name on server.';
+									  |ru='Не заданы обязательные параметры подключения: Имя сервера; Имя информационной базы на сервере.'");
 			FillCheckingError = True;
 		EndIf;
 		
@@ -1188,8 +1192,8 @@ Function GetFullFileName(Val DirectoryName, Val FileName) Export
 	If Not IsBlankString(FileName) Then
 		
 		Slash = "";
-		If (Right(DirectoryName, 1) <> "\") AND (Right(DirectoryName, 1) <> "/") Then
-			Slash = ?(Find(DirectoryName, "\") = 0, "/", "\");
+		If (Right(DirectoryName, 1) <> "\") AND (Right(DirectoryName, 1) <> "/") Then       //  "
+			Slash = ?(Find(DirectoryName, "\") = 0, "/", "\");   //  "
 		EndIf;
 		
 		Return DirectoryName + Slash + FileName;
@@ -1227,7 +1231,7 @@ Function SplitFullFileName(Val FullFileName, IsFolder = False) Export
 	FileNameStructure = New Structure("DescriptionFull,Path,Name,Extension,BaseName");
 	
 	// Remove final slash from the full attachment file name and save the full name to the structure.
-	If IsFolder AND (Right(FullFileName, 1) = "/" Or Right(FullFileName, 1) = "\") Then
+	If IsFolder AND (Right(FullFileName, 1) = "/" Or Right(FullFileName, 1) = "\") Then   //  "
 		If IsFolder Then
 			FullFileName = Mid(FullFileName, 1, StrLen(FullFileName) - 1);
 		Else
@@ -1252,8 +1256,8 @@ Function SplitFullFileName(Val FullFileName, IsFolder = False) Export
 	EndIf;
 	
 	// Select a file path and attachment file name.
-	If Find(FullFileName, "/") > 0 Then
-		SeparatorPosition = StringFunctionsClientServer.FindCharFromEnd(FullFileName, "/");
+	If Find(FullFileName, "/") > 0 Then   //  " 
+		SeparatorPosition = StringFunctionsClientServer.FindCharFromEnd(FullFileName, "/");   // " 
 	ElsIf Find(FullFileName, "\") > 0 Then
 		SeparatorPosition = StringFunctionsClientServer.FindCharFromEnd(FullFileName, "\");
 	Else
@@ -1304,7 +1308,7 @@ Function URLStructure(Val URLString) Export
 	
 	// schema
 	Schema = "";
-	Position = Find(URLString, "://");
+	Position = Find(URLString, "://");   // " 
 	If Position > 0 Then
 		Schema = Lower(Left(URLString, Position - 1));
 		URLString = Mid(URLString, Position + 3);
@@ -1313,7 +1317,7 @@ Function URLStructure(Val URLString) Export
 	// Connection row and path on server.
 	ConnectionString = URLString;
 	PathAtServer = "";
-	Position = Find(ConnectionString, "/");
+	Position = Find(ConnectionString, "/");   //  " 
 	If Position > 0 Then
 		PathAtServer = Mid(ConnectionString, Position + 1);
 		ConnectionString = Left(ConnectionString, Position - 1);
@@ -1370,7 +1374,7 @@ Function SortStringByPointsAndSlashes(Val String) Export
 	
 	For CurrentPosition = 1 To StrLen(String) Do
 		CurrentChar = Mid(String, CurrentPosition, 1);
-		If CurrentChar = "." Or CurrentChar = "/" Or CurrentChar = "\" Then
+		If CurrentChar = "." Or CurrentChar = "/" Or CurrentChar = "\" Then   //  " 
 			CurrentFragment = Mid(String, StartPosition, CurrentPosition - StartPosition);
 			StartPosition = CurrentPosition + 1;
 			Fragments.Add(CurrentFragment);
@@ -1464,7 +1468,7 @@ Function PathSeparator(Platform = Undefined) Export
 		
 		Return "\";
 	Else
-		Return "/";
+		Return "/";   //  " 
 	EndIf;
 	
 EndFunction
@@ -1759,8 +1763,10 @@ Function ParseStringWithPostalAddresses(Val EmailAddressString, CallingException
 	
 	ProhibitedChars = "!#$%^&*()+`~|\/=";
 	
-	ProhibitedCharsMessage = NStr("en='Invalid character %1 in the email address %2';ru='Недопустимый символ ""%1"" в адресе электронной почты ""%2""'");
-	MessageInvalidEmailFormat = NStr("en='Incorrect email address % 1';ru='Некорректный адрес электронной почты ""%1""'");
+	ProhibitedCharsMessage = NStr("en='Invalid character %1 in the email address %2';
+								  |ru='Недопустимый символ %1 в адресе электронной почты %2'");
+	MessageInvalidEmailFormat = NStr("en='Incorrect email address %1';
+									 |ru='Некорректный адрес электронной почты %1'");
 	
 	SubstringArray = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(EmailAddressString,";",True);
 	SubstringArrayToProcess = New Array;
@@ -2460,21 +2466,15 @@ Procedure GetTreeRowIDByFieldValue(FieldName, RowID, TreeItemCollection, RowKey,
 		EndIf;
 		
 		If TreeRow[FieldName] = RowKey Then
-			
 			RowID = TreeRow.GetID();
-			
 			StopSearch = True;
-			
 			Return;
-			
 		EndIf;
 		
 		ItemCollection = TreeRow.GetItems();
 		
 		If ItemCollection.Count() > 0 Then
-			
 			GetTreeRowIDByFieldValue(FieldName, RowID, ItemCollection, RowKey, StopSearch);
-			
 		EndIf;
 		
 	EndDo;
@@ -2747,11 +2747,13 @@ Procedure CheckParameter(Val ProcedureOrFunctionName, Val ParameterName, Val Par
 			NStr("en='ProcedureOrFunctionName parameter value is invalid';ru='Недопустимо значение параметра ИмяПроцедурыИлиФункции'"), Context);
 			
 		NoProperty = NStr("en='Invalid parameter value %1 (Structure) in %2. 
-		|%3 property was expected in the structure (%4 type).';ru='Недопустимое значение параметра %1 (Структура) в %2. 
-		|В структуре ожидалось свойство %3 (тип %4).'");
+							|%3 property was expected in the structure (%4 type).';
+						  |ru='Недопустимое значение параметра %1 (Структура) в %2. 
+							|В структуре ожидалось свойство %3 (тип %4).'");
 		InvalidProperty = NStr("en='Invalid %1 property value in %2 parameter (Structure) in %3. 
-		|Expected: %4; passed value: %5 (%6 type).';ru='Недопустимое значение свойства %1 в параметре %2 (Структура) в %3. 
-		|Ожидалось: %4; передано значение: %5 (тип %6).'");
+									|Expected: %4; passed value: %5 (%6 type).';
+								|ru='Недопустимое значение свойства %1 в параметре %2 (Структура) в %3. 
+									|Ожидалось: %4; передано значение: %5 (тип %6).'");
 		For Each Property IN ExpectedPropertyTypes Do
 			
 			ExpectedPropertyName = Property.Key;

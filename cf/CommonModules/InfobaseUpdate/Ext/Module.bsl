@@ -109,7 +109,7 @@ Function NewUpdateHandlersTable() Export
 	Handlers.Columns.Add("HandlersManagement", New TypeDescription("Boolean"));
 	Handlers.Columns.Add("ExclusiveMode");
 	
-	// Outdated. Backward match up to edition 2.2".
+	// "Outdated. Backward match up to edition 2.2".
 	Handlers.Columns.Add("Optional");
 	
 	Return Handlers;
