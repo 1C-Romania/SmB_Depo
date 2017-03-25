@@ -417,7 +417,8 @@ Procedure RecalculateExchangeRateMultiplicitySettlementCurrency(StructureData)
 		
 		NotifyDescription = New NotifyDescription("QuestionOnRecalculatingPaymentCurrencyRateConversionFactorEnd", ThisObject, QuestionParameters);
 		
-		QuestionText = NStr("en = 'As of the date of document the settlement currency (" + CurrencyRateInLetters + ") exchange rate was specified.
+		QuestionText = NStr("ru = 'На дату документа у валюты расчетов (" + CurrencyRateInLetters + ") был задан курс.
+         							|Установить курс расчетов (" + RateNewCurrenciesInLetters + ") в соответствии с курсом валюты?';en = 'As of the date of document the settlement currency (" + CurrencyRateInLetters + ") exchange rate was specified.
 									|Set the settlements rate (" + RateNewCurrenciesInLetters + ") according to exchange rate?'");
 		
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -2899,4 +2900,4 @@ Procedure OnOpen(Cancel)
     //) elmi
 
 EndProcedure
-// Rise } Popov N 2016-05-25
+
