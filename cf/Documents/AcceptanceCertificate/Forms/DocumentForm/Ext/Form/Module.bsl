@@ -1236,7 +1236,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 			CalculatedDiscounts = True;
 			
 			Message = New UserMessage;
-			Message.Text = "Automatic discounts (markups) are calculated!";
+			Message.Text = NStr("ru = 'Автоматические скидки (наценки) рассчитаны!'; en = 'Automatic discounts (markups) are calculated!'");
 			Message.SetData(ThisObject);
 			Message.Message();
 			
