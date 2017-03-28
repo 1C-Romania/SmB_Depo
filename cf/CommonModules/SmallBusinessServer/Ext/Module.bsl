@@ -125,7 +125,8 @@ Procedure SetDesignDateColumn(DinList) Export
 	FilterItem.LeftValue		= New DataCompositionField("Date");
 	FilterItem.RightValue	= New StandardBeginningDate(StandardBeginningDateVariant.BeginningOfNextDay);
 	
-	DesignElement.Appearance.SetParameterValue("Format", "DF=Ch:mm");
+	//DesignElement.Appearance.SetParameterValue("Format", "DF=H:mm");
+	DesignElement.Appearance.SetParameterValue("Format", "DF=dd/MM/yyyy");
 	
 	MadeOutField = DesignElement.Fields.Items.Add();
 	MadeOutField.Field = New DataCompositionField("Date");
