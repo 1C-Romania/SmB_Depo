@@ -580,17 +580,3 @@ Procedure InitialAccessGroupsProfileFilling(Val UpdateAccessGroups)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

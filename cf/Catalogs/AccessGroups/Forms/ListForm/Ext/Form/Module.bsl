@@ -175,17 +175,3 @@ Procedure ListDrag(Item, DragParameters, StandardProcessing, String, Field)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

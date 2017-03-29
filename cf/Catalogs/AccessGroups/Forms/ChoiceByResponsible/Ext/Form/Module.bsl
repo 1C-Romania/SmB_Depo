@@ -178,17 +178,3 @@ Procedure OnChoose()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -106,16 +106,3 @@ Procedure SetFilter()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
