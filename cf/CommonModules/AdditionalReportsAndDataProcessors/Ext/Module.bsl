@@ -216,7 +216,7 @@ Procedure PrintByExternalSource(Ref, SourceParameters, PrintFormsCollection,
 	ExternalDataProcessorObject = GetObjectOfExternalDataProcessor(Ref);
 	
 	If ExternalDataProcessorObject = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='External processor ""%1"" (type ""%2"") is not served by the ""Additional reports and processors"" subsystem';ru='Внешняя обработка ""%1"" (тип ""%2"") не обслуживается подсистемой ""Дополнительные отчеты и обработки""'"),
 			String(Ref),
 			String(TypeOf(Ref)));
@@ -231,7 +231,7 @@ Procedure PrintByExternalSource(Ref, SourceParameters, PrintFormsCollection,
 	// Check whether all templates are generated.
 	For Each Str IN PrintFormsCollection Do
 		If Str.SpreadsheetDocument = Undefined Then
-			ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Print handler has not generated spreadsheet document for: %1';ru='В обработчике печати не был сформирован табличный документ для: %1'"),
 				Str.TemplateName);
 			Raise(ErrorMessageText);
@@ -943,7 +943,7 @@ EndProcedure
 //
 Procedure OnConnectingAdd1Report(Ref, ReportParameters, Result) Export
 	If Not GetFunctionalOption("UseAdditionalReportsAndDataProcessors") Then
-		ReportParameters.Errors = StringFunctionsClientServer.PlaceParametersIntoString(
+		ReportParameters.Errors = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Item ""%1"" is not enabled as the system ""%2"" is disabled in the application settings.
 		|To enable the subsystem contact the application administrator.';ru='Элемент ""%1"" не подключен, потому что подсистема ""%2"" отключена в настройках программы.
 		|Для включения подсистемы обратитесь к администратору программы.'"),
@@ -971,7 +971,7 @@ Procedure OnConnectingAdd1Report(Ref, ReportParameters, Result) Export
 		
 	Else
 		
-		ReportParameters.Errors = StringFunctionsClientServer.PlaceParametersIntoString(
+		ReportParameters.Errors = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Item %1 is not an additional report';ru='Элемент %1 не является дополнительным отчетом'"), 
 			"'"+ String(Ref) +"'");
 		
@@ -1944,7 +1944,7 @@ Function PresentationOfSection(Section) Export
 		PresentationOfSection = Metadata.Subsystems.Find(Section).Presentation();
 	EndIf;
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Section ""%1""';ru='Раздел %1'"), 
 		PresentationOfSection);
 EndFunction
@@ -2186,7 +2186,7 @@ Procedure WriteInJournal(Level, Ref, MessageText, Attribute1, Attribute2, Attrib
 		Level,
 		Metadata.Catalogs.AdditionalReportsAndDataProcessors,
 		Ref,
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			MessageText,
 			String(Attribute1),
 			String(Attribute2),
@@ -2502,7 +2502,7 @@ Function ExecuteExternalObjectCommand(ExternalObject, CommandID, CommandParamete
 	CommandDetails = AdditionalInformationOnExternalObject.Commands.Find(CommandID, "ID");
 	If CommandDetails = Undefined Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Command %1 is not found!';ru='Команда %1 не обнаружена!'"), CommandID);
 		
 	EndIf;
@@ -2683,7 +2683,7 @@ Function RegisterDataProcessor(Val Object, Val RegistrationParameters) Export
 	
 	If Not Object.IsNew() AND RegistrationData.Type <> Object.Type Then
 		Result.ErrorText = 
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Imported object kind (%1) does not correspond to the current one (%2).
 		|To import a new object, click Create.';ru='Вид загружаемого объекта (%1) не соответствует текущему (%2).
 		|Для загрузки нового объекта нажмите ""Создать"".'"),

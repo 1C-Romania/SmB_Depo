@@ -96,7 +96,7 @@ Function GetInformationAboutRules() Export
 	
 	InfoString = NStr("en='Registration rules of this infobase objects (%1) from %2';ru='Правила регистрации объектов этой информационной базы (%1) от %2'");
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(InfoString,
+	Return StringFunctionsClientServer.SubstituteParametersInString(InfoString,
 					GetConfigurationPresentationFromRegistrationRules(),
 					Format(Registration.CreationDateTime, "DLF = dd"));
 EndFunction
@@ -957,7 +957,7 @@ Procedure RunExchangePlanPresenceCheckup()
 	If Registration.ExchangePlanName <> ExchangePlanImportName Then
 		
 		ErrorDescription = NStr("en='In the registration rules the %1 exchange plan is specified but the import is performed for the %2 exchange plan.';ru='В правилах регистрации указан план обмена %1, а загрузка выполняется для плана обмена %2'");
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescription, Registration.ExchangePlanName, ExchangePlanImportName);
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(ErrorDescription, Registration.ExchangePlanName, ExchangePlanImportName);
 		MessageAboutProcessingError(5, ErrorDescription);
 		
 	EndIf;

@@ -208,7 +208,7 @@ EndFunction
 
 Procedure XMLReaderCallException(Val Fragment, Val ErrorText)
 	
-	Raise StringFunctionsClientServer.PlaceParametersIntoString(
+	Raise StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='An error occurred while reading data from file %1: while reading fragment 
 		|
 		|%2

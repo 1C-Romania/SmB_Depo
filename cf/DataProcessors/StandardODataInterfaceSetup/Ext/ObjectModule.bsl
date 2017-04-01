@@ -100,7 +100,7 @@ Procedure AddTreeSubstring(Val DescriptionFull, Val ReadOnly, Val Use, Val Depen
 	EndDo;
 	
 	If RowOwner = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unknown metadata object: %1';ru='Неизвестный объект метаданных: %1'"), DescriptionFull);
 	EndIf;
 	

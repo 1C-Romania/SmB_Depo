@@ -710,7 +710,7 @@ Procedure ReadDataSynchronizationSettings(Cancel)
 			Setting.CorrespondentEndPoint = ExchangePlans.MessageExchange.FindByCode(SettingFromServiceManager.CorrespondentEndPoint);
 			
 			If Setting.CorrespondentEndPoint.IsEmpty() Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Correspondent end point with the %1 script is not found.';ru='Не найдена конечная точка корреспондента с кодом ""%1"".'"),
 					SettingFromServiceManager.CorrespondentEndPoint);
 			EndIf;

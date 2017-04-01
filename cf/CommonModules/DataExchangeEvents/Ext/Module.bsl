@@ -979,7 +979,7 @@ Function ObjectModifiedForExchangePlan(Source, MetadataObject, ExchangePlanName,
 	Try
 		ObjectModified = ObjectModifiedForExchangePlanTryExcept(Source, MetadataObject, ExchangePlanName, WriteMode, RecordObjectChangeToExport);
 	Except
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error on defining object modification: %1';ru='Ошибка определения модифицированности объекта: %1'"),
 			DetailErrorDescription(ErrorInfo()));
 	EndTry;
@@ -1211,7 +1211,7 @@ Procedure ExecuteObjectRegistrationRulesForExchangePlans(ArrayOfNodesResult, Obj
 	Try
 		ExecuteObjectRegistrationRulesForExchangePlansTryExcept(ArrayOfNodesResult, Object, ExchangePlanName, AdditionalParameters);
 	Except
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while executing object registration for %1 exchange plan.
 		|Error
 		|description: %2';ru='Ошибка выполнения правил регистрации объектов для плана обмена %1.
@@ -2056,7 +2056,7 @@ Function RecordSetByType(MetadataObject)
 	Else
 		
 		MessageString = NStr("en='For the metadata object %1 the records set is not provided.';ru='Для объекта метаданных %1 не предусмотрено набора записей.'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, MetadataObject.FullName());
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, MetadataObject.FullName());
 		Raise MessageString;
 		
 	EndIf;
@@ -2839,7 +2839,7 @@ Procedure ProcessRegistrationRulesError(ExchangePlanName)
 	
 	If InfobaseUpdate.InfobaseUpdateInProgress()
 		AND InformationRegisters.DataExchangeRules.RulesFromFileUsed(ExchangePlanName) Then
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString("DataExchange=%1", ExchangePlanName);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString("DataExchange=%1", ExchangePlanName);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -3359,7 +3359,7 @@ Procedure RegisterDataProhibitionImportByDate(DataItem, Sender, ErrorInfo)
 		Else
 			
 			ErrorMessageString = NStr("en='%1 prohibited to import to the prohibited period.%2%2%3';ru='%1 запрещено загружать в запрещенный период.%2%2%3'");
-			ErrorMessageString = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageString,
+			ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString,
 				String(DataItem), Chars.LF, ErrorInfo);
 			ObjectVersioningType = "UnacceptedDataByProhibitionDateObjectNotExists";
 			

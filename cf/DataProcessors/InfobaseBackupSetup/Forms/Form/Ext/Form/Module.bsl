@@ -185,7 +185,7 @@ Procedure GoFromSetupPages()
 		InfobaseBackupClient.EnableBackupWaitHandler();
 		
 		SettingsFormName = "e1cib/app/%1";
-		SettingsFormName = StringFunctionsClientServer.PlaceParametersIntoString(SettingsFormName,
+		SettingsFormName = StringFunctionsClientServer.SubstituteParametersInString(SettingsFormName,
 		InfobaseBackupClient.BackupSettingsFormName());
 		
 		ShowUserNotification(NStr("en='Backup';ru='Резервное копирование'"), SettingsFormName,

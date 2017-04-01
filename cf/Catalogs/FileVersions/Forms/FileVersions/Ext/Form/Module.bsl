@@ -395,11 +395,11 @@ Procedure MarkToDeleteUnmark()
 	EndIf;
 	
 	If CurrentData.DeletionMark Then 
-		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'"),
 			String(CurrentData.Ref));
 	Else
-		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'"),
 			String(CurrentData.Ref));
 	EndIf;

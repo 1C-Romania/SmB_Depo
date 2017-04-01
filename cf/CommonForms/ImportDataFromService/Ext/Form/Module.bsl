@@ -62,7 +62,7 @@ Procedure RunImport(Val FileURL, Val ExportInformationAboutUsers)
 		SetExclusiveMode(False);
 		
 		WriteLogEventTemplate = NStr("en='An error occurred during data import:  ----------------------------------------- %1 -----------------------------------------';ru='При загрузке данных произошла ошибка: ----------------------------------------- %1 -----------------------------------------'");
-		WriteLogEventText = StringFunctionsClientServer.PlaceParametersIntoString(WriteLogEventTemplate, DetailErrorDescription(ErrorInfo));
+		WriteLogEventText = StringFunctionsClientServer.SubstituteParametersInString(WriteLogEventTemplate, DetailErrorDescription(ErrorInfo));
 
 		WriteLogEvent(
 			NStr("en='Data Import';ru='Загрузка данных'"),
@@ -77,7 +77,7 @@ Procedure RunImport(Val FileURL, Val ExportInformationAboutUsers)
 		|
 		|Расширенная информация для службы поддержки записана в журнал регистрации. Если Вам неизвестна причина ошибки - рекомендуется обратиться в службу технической поддержки, предоставив для расследования выгрузку журнала регистрации и файл, из которого предпринималась попытка ззагрузить данные.'");
 
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(ExceptionPattern, BriefErrorDescription(ErrorInfo));
+		Raise StringFunctionsClientServer.SubstituteParametersInString(ExceptionPattern, BriefErrorDescription(ErrorInfo));
 		
 	EndTry;
 	

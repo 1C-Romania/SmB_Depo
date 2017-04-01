@@ -146,7 +146,7 @@ Function ReportByObjectVersioning(ObjectReference, Val ObjectVersioning = Undefi
 	Else
 		ObjectDescription = VersionParsing(ObjectReference, VersionNumber);
 	EndIf;
-	Definition = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='No. %1 / (%2) / %3';ru='№ %1 / (%2) / %3'"), 
+	Definition = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='No. %1 / (%2) / %3';ru='№ %1 / (%2) / %3'"), 
 		VersionNumber, String(ObjectDescription.ChangeDate), TrimAll(String(ObjectDescription.AuthorOfChange)));
 	ObjectDescription.Insert("Definition", Definition);
 	ObjectDescription.Insert("VersionNumber", VersionNumber);
@@ -249,7 +249,7 @@ Procedure RefreshInformationAboutObjectsVersions(Parameters) Export
 				NStr("en='Versioning';ru='Версионирование'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error, RecordSet.Metadata(),
 				,
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Failed to update information about the No.%1 version of ""%2""
 		|object by reason of: %3';ru='Не удалось обновить сведения о версии №%1 объекта ""%2"" по причине:
 		|%3'", CommonUseClientServer.MainLanguageCode()),
@@ -261,7 +261,7 @@ Procedure RefreshInformationAboutObjectsVersions(Parameters) Export
 	
 	If Selection.Count() > 0 Then
 		If RecordsProcessed = 0 Then
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Procedure RefreshInformationAboutObjectsVersions failed to process some records of information register ObjectVersionings (skipped): %1';ru='Процедуре ОбновитьСведенияОВерсияхОбъектов не удалось обработать некоторые записи регистра сведений ВерсииОбъектов (пропущены): %1'"), 
 					Selection.Count());
 			Raise MessageText;
@@ -398,7 +398,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work.ThereIsWork      = InformationAboutLegacyVersions.DataSize > (1024 * 1024 * 1024);
 		Work.Presentation = NStr("en='Outdated versions of objects';ru='Устаревшие версии объектов'");
 		Work.Form         = "InformationRegister.ObjectVersioningSettings.Form.ObjectVersioning";
-		Work.ToolTip     = StringFunctionsClientServer.PlaceParametersIntoString(ToolTip, InformationAboutLegacyVersions.CountVersions, OutdatedDataSize);
+		Work.ToolTip     = StringFunctionsClientServer.SubstituteParametersInString(ToolTip, InformationAboutLegacyVersions.CountVersions, OutdatedDataSize);
 		Work.Owner      = Section;
 		
 	EndDo;
@@ -744,7 +744,7 @@ Procedure ValidateRightsForObjectModifying(MetadataObject)
 	
 	If Not PrivilegedMode() AND Not AccessRight("Update", MetadataObject)Then
 		MessageText = NStr("en='Not enough rights to change ""%1"".';ru='Недостаточно прав на изменение ""%1"".'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, MetadataObject.Presentation());
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, MetadataObject.Presentation());
 		Raise MessageText;
 	EndIf;
 	
@@ -828,7 +828,7 @@ Procedure OnTransitionToObjectVersioning(ObjectReference, Val VersionNumber) Exp
 	EndIf;
 	
 	Object.AdditionalProperties.Insert("ObjectVersioningCommentToVersion",
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Proceeding to the version #%1 from %2 has been performed';ru='Выполнен переход к версии №%1 от %2'"),
 		String(VersionNumber), Format(VersionDate, "DLF=DT")));
 	Object.AdditionalProperties.Insert("SkipChangeProhibitionCheck");
@@ -935,7 +935,7 @@ Function RestoreObjectByXML(Val AddressInTemporaryStorage = "", ErrorMessageText
 		|Technical information about error: %1';ru='Не удалось перейти на выбранную версию.
 		|Возможная причина: версия объекта была записана в другой версии программы.
 		|Техническая информация об ошибке: %1'");
-		ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageText, BriefErrorDescription(ErrorInfo()));
+		ErrorMessageText = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageText, BriefErrorDescription(ErrorInfo()));
 		Return Undefined;
 	EndTry;
 	
@@ -1170,7 +1170,7 @@ Procedure ClearObsoleteObjectsVersions() Export
 			Continue;
 		EndIf;
 		Condition = "(" + Condition + ")";
-		AdditionalConditions = AdditionalConditions + StringFunctionsClientServer.PlaceParametersIntoString(
+		AdditionalConditions = AdditionalConditions + StringFunctionsClientServer.SubstituteParametersInString(
 			"
 			|	%1
 			|	AND ObjectVersionings.VersionDate< &RemoveBoundary%2",
@@ -1313,7 +1313,7 @@ Function InformationAboutLegacyVersions() Export
 			Continue;
 		EndIf;
 		Condition = "(" + Condition + ")";
-		AdditionalConditions = AdditionalConditions + StringFunctionsClientServer.PlaceParametersIntoString(
+		AdditionalConditions = AdditionalConditions + StringFunctionsClientServer.SubstituteParametersInString(
 			"
 			|	%1
 			|	AND ObjectVersionings.VersionDate< &RemoveBoundary%2",
@@ -1378,7 +1378,7 @@ Function DataSizeString(Val DataSize) Export
 		DataSize = Round(DataSize, 0);
 	EndIf;
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='%1 %2';ru='%1 %2'"), DataSize, MeasurementUnit);
 	
 EndFunction

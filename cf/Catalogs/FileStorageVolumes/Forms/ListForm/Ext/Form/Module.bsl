@@ -51,7 +51,7 @@ Procedure StartMarkDeletionChange(CurrentData)
 	
 	QuestionContent = New Array;
 	QuestionContent.Add(PictureLib.Question32);
-	QuestionContent.Add(StringFunctionsClientServer.PlaceParametersIntoString(
+	QuestionContent.Add(StringFunctionsClientServer.SubstituteParametersInString(
 		QuestionText, CurrentData.Description));
 	
 	ShowQueryBox(

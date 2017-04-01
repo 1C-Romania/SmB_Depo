@@ -240,11 +240,11 @@ Function ClearingSettings()
 			
 		If UserCount = 1 Then
 			ExplanationWhoHasClearedSettings = NStr("en='of user ""%1""';ru='пользователя ""%1""'");
-			ExplanationWhoHasClearedSettings = StringFunctionsClientServer.PlaceParametersIntoString(
+			ExplanationWhoHasClearedSettings = StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationWhoHasClearedSettings, UsersWhomSettingsClearing.UserArray[0]);
 		Else
 			ExplanationWhoHasClearedSettings = NStr("en='%1 to users';ru='%1 пользователям'");
-			ExplanationWhoHasClearedSettings = StringFunctionsClientServer.PlaceParametersIntoString(
+			ExplanationWhoHasClearedSettings = StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationWhoHasClearedSettings, UserCount);
 		EndIf;
 		
@@ -269,7 +269,7 @@ Function ClearingSettings()
 			EndIf;
 			
 			ExplanationText = NStr("en='""%1"" cleared for %2';ru='""%1"" очищена у %2'");
-			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationText, SettingRepresentation, ExplanationWhoHasClearedSettings);
 			
 		Else
@@ -288,7 +288,7 @@ Function ClearingSettings()
 				Format(SettingsCount, "NFD=0") + " ");
 			
 			ExplanationText = NStr("en='Cleared %1 in %2';ru='Очищено %1 у %2'");
-			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationText, SubjectInWords, ExplanationWhoHasClearedSettings);
 		EndIf;
 		
@@ -298,7 +298,7 @@ Function ClearingSettings()
 		ClearAllSettings();
 		
 		ExplanationText = NStr("en='All the settings %1 are cleared';ru='Очищены все настройки %1'");
-		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationText, ExplanationWhoHasClearedSettings);
 		ShowUserNotification(
 			NStr("en='Clear settings';ru='Очистить настройки'"), , ExplanationText, PictureLib.Information32);

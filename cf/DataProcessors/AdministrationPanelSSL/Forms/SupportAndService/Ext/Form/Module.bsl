@@ -542,7 +542,7 @@ Procedure UpdateConfigurationUpdateSettings()
 	ElsIf ConfigurationUpdateOptions.CheckUpdateExistsOnStart = 1 Then
 		ApplicationTitleUpdates = NStr("en='Updates are checked automatically according to the scheduled: %1.';ru='Автоматическая проверка обновлений выполняется по расписанию: %1.'");
 		Schedule = CommonUseClientServer.StructureIntoSchedule(ConfigurationUpdateOptions.ScheduleOfUpdateExistsCheck);
-		ApplicationTitleUpdates = StringFunctionsClientServer.PlaceParametersIntoString(ApplicationTitleUpdates, Schedule);
+		ApplicationTitleUpdates = StringFunctionsClientServer.SubstituteParametersInString(ApplicationTitleUpdates, Schedule);
 	EndIf;
 	
 	ThisObject.Items.ApplicationUpdateSetup.ExtendedTooltip.Title = ApplicationTitleUpdates;

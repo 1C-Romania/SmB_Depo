@@ -22,7 +22,7 @@ Function InformationExchangeAbsoluteDirectory(Val Correspondent) Export
 	QueryResult = Query.Execute();
 	
 	If QueryResult.IsEmpty() Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Connection settings for the correspondent is not set ""%1"".';ru='Не заданы настройки подключения для корреспондента ""%1"".'"), String(Correspondent));
 	EndIf;
 	
@@ -35,7 +35,7 @@ Function InformationExchangeAbsoluteDirectory(Val Correspondent) Export
 	If IsBlankString(CommonInformationExchangeDirectory)
 		OR IsBlankString(InformationExchangeDirectoryRelative) Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Connection settings for the correspondent is not set ""%1"".';ru='Не заданы настройки подключения для корреспондента ""%1"".'"), String(Correspondent));
 	EndIf;
 	
@@ -167,7 +167,7 @@ Function TransportSettingsWS(Val Correspondent) Export
 	QueryResult = Query.Execute();
 	
 	If QueryResult.IsEmpty() Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Settings of the web service connection for the %1 correspondent are not specified.';ru='Не заданы настройки подключения веб-сервиса для корреспондента %1.'"),
 			String(Correspondent));
 	EndIf;

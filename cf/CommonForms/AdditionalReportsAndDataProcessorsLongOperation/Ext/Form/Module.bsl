@@ -31,7 +31,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			UUID,
 			"AdditionalReportsAndDataProcessors.RunCommand", 
 			BackgroundJobLaunchParameters,
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Executing the additional report or data processor ""%1"", command name ""%2""';ru='Выполнение дополнительного отчета или обработки ""%1"", имя команды ""%2""'"),
 				String(BackgroundJobLaunchParameters.AdditionalInformationProcessorRef),
 				BackgroundJobLaunchParameters.CommandID));

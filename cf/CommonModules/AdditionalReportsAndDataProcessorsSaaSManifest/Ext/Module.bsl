@@ -76,7 +76,7 @@ Function GenerateManifest(Val DataProcessorObject, Val VersionObject, Val Report
 	If ValueIsFilled(XDTOKind) Then
 		Manifest.Category = XDTOKind;
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 additional reports and processings type is not supported in the service model!';ru='Вид дополнительных отчетов и обработок %1 не поддерживается в модели сервиса!'"),
 			VersionObject.Type);
 	EndIf;
@@ -200,7 +200,7 @@ Function GenerateManifest(Val DataProcessorObject, Val VersionObject, Val Report
 			If ValueIsFilled(XDTOStartType) Then
 				XDTOCommand.StartupType = XDTOStartType;
 			Else
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='The %1 launch method of the additional reports and data processors is not supported in the service model!';ru='Способ запуска дополнительных отчетов и обработок %1 не поддерживается в модели сервиса!'"),
 					CommandDetails.StartVariant);
 			EndIf;

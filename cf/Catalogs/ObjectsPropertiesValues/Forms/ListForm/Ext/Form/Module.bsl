@@ -170,7 +170,7 @@ Procedure SetTitle()
 				TitleString = NStr("en='Select the %1 property value';ru='Выберите значение свойства %1'");
 			EndIf;
 			
-			TitleString = StringFunctionsClientServer.PlaceParametersIntoString(
+			TitleString = StringFunctionsClientServer.SubstituteParametersInString(
 				TitleString, String(CommonUse.ObjectAttributeValue(
 					Property, "Title")));
 		

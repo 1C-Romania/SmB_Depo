@@ -422,11 +422,11 @@ Function GetExchangeMessage()
 		GetMessageAboutError(1);
 		
 		MessageString = NStr("en='Exchange data folder on server:  ""%1""';ru='Каталог обмена информацией на сервере: ""%1""'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, FolderAtFTPServer);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, FolderAtFTPServer);
 		SupplementErrorMessage(MessageString);
 		
 		MessageString = NStr("en='Exchange message attachment file name: ""%1"" or ""%2""';ru='Имя файла сообщения обмена: ""%1"" или ""%2""'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, MessageFileTemplateName + ".xml", MessageFileTemplateName + ".zip");
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, MessageFileTemplateName + ".xml", MessageFileTemplateName + ".zip");
 		SupplementErrorMessage(MessageString);
 		
 		Return False;
@@ -648,7 +648,7 @@ Function RunFileDeleteAtFTPServer(Val FileName, ConnectionVerification = False)
 		|It is also recommended to see the FTP-server documentation to set up the support of the Cyrillic names files.';ru='Не удалось проверить подключение с помощью тестового файла ""%1"".
 		|Возможно, заданный каталог не существует или не доступен.
 		|Рекомендуется также обратиться к документации по FTP-серверу для настройки поддержки имен файлов с кириллицей.'");
-			ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, DataExchangeServer.FileNameOfVerificationOfConnection());
+			ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, DataExchangeServer.FileNameOfVerificationOfConnection());
 			SupplementErrorMessage(ErrorInfo);
 			
 		EndIf;
@@ -685,7 +685,7 @@ FTPServerName       = Undefined;
 FolderAtFTPServer = Undefined;
 
 ObjectName = NStr("en='Data processor: %1';ru='Обработка: %1'");
-ObjectName = StringFunctionsClientServer.PlaceParametersIntoString(ObjectName, Metadata().Name);
+ObjectName = StringFunctionsClientServer.SubstituteParametersInString(ObjectName, Metadata().Name);
 
 #EndRegion
 

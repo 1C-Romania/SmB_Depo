@@ -145,7 +145,7 @@ Procedure ExportCompanyAttributes(StorageAddress, UUID)
 			StorageAddress = PutToTempStorage(BinaryData, UUID);
 		Else
 			MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ErrorText);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ErrorText);
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
 																						ErrorText,
 																						ErrorText);
@@ -154,7 +154,7 @@ Procedure ExportCompanyAttributes(StorageAddress, UUID)
 	Except
 		
 		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),

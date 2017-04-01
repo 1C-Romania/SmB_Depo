@@ -42,24 +42,24 @@ Procedure SetTitle()
 	
 	If Not IsBlankString(PropertyName) Then
 		If ValueIsFilled(Object.Ref) Then
-			Title = StringFunctionsClientServer.PlaceParametersIntoString(
+			Title = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 (%2)';ru='%1 (%2)'"),
 				Object.Description,
 				PropertyName);
 		Else
-			Title = StringFunctionsClientServer.PlaceParametersIntoString(
+			Title = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 (Creating)';ru='%1 (Создание)'"), PropertyName);
 		EndIf;
 	Else
 		PropertyName = String(AttributeValues.Title);
 		
 		If ValueIsFilled(Object.Ref) Then
-			Title = StringFunctionsClientServer.PlaceParametersIntoString(
+			Title = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 (%2 property value group)';ru='%1 (Группа значений свойства %2)'"),
 				Object.Description,
 				PropertyName);
 		Else
-			Title = StringFunctionsClientServer.PlaceParametersIntoString(
+			Title = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Group of the %1 property values (Creation)';ru='Группа значений свойства %1 (Создание)'"), PropertyName);
 		EndIf;
 	EndIf;

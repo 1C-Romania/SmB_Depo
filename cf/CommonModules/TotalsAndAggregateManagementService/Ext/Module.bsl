@@ -395,7 +395,7 @@ Function ScheduleTasks1Default(Val Name)
 		Schedule.DayInMonth = 5;
 	Else
 		MessagePattern = NStr("en='Unknown name of a task %1';ru='Неизвестное имя задания %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Name);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Name);
 		Raise(MessageText);
 	EndIf;
 	

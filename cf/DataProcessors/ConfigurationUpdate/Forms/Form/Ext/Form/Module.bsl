@@ -50,7 +50,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	InformationOnAvailabilityOfConnections = InfobaseConnections.ConnectionInformation();
 	ThereAreActiveSessions = Not InformationOnAvailabilityOfConnections.ActiveConnectionsExist;
 	
-	Items.LabelConfigurationUpdateInProgressWhenDataExchangeWithHost.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.LabelConfigurationUpdateInProgressWhenDataExchangeWithHost.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		Items.LabelConfigurationUpdateInProgressWhenDataExchangeWithHost.Title, ExchangePlans.MasterNode());
 	
 	AuthenticationParameters = StandardSubsystemsServer.AuthenticationParametersOnSite();
@@ -636,7 +636,7 @@ Procedure GetAvailableUpdatesInInterval(Val VersionFrom, Val VersionBefore, File
 		NewCurrentVersionFrom = TableOfAvailableUpdatesConfiguration[0].Version;
 		If CurrentVersionFrom = NewCurrentVersionFrom AND NewCurrentVersionFrom <> VersionBefore Then
 			TableOfAvailableUpdatesConfiguration.Clear();
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An update to the version of %1 from the current version of %2 is unavailable';ru='Недоступно обновление на версию %1 с текущей версии %2'"), VersionBefore, VersionFrom);
 		EndIf;
 		CurrentVersionFrom	= NewCurrentVersionFrom;
@@ -914,7 +914,7 @@ Procedure BeforePageOpen(NewCurrentPage = Undefined)
 		|higher than <b>%1<b> version is required. It is required to <a href = ""HowToUpdatePlatform>update to a new platform version</a>, after that you can install this update.';ru='Для обновления на эту версию требуется платформа 1С:Предприятие
 		|не ниже версии <b>%1</b>. Необходимо <a href = ""КакОбновитьПлатформу"">перейти на новую версию платформы</a>,
 		|после чего можно будет установить это обновление.'");
-				TitleString = StringFunctionsClientServer.PlaceParametersIntoString(CaptionPattern, AvailableUpdateStructure.PlatformVersion);
+				TitleString = StringFunctionsClientServer.SubstituteParametersInString(CaptionPattern, AvailableUpdateStructure.PlatformVersion);
 				Items.DecorationUpdatePlatform.Title = StringFunctionsClientServer.FormattedString(TitleString);
 				
 				Items.DecorationUpdatePlatform.Visible = True;
@@ -1869,7 +1869,7 @@ Function PlanConfigurationChange()
 	ScriptMainFileName = GenerateUpdateScriptFiles(False);
 	
 	NameOfScriptToRun = DefineScriptName();
-	PathOfScriptToRun = StringFunctionsClientServer.PlaceParametersIntoString("%1 %2 //nologo ""%3"" /p1:""%4"" /p2:""%5""",
+	PathOfScriptToRun = StringFunctionsClientServer.SubstituteParametersInString("%1 %2 //nologo ""%3"" /p1:""%4"" /p2:""%5""",
 		NameOfScriptToRun, ?(ScriptDebugMode(), "//X //D", ""), ScriptMainFileName,
 		AdministrationParameters.PasswordAdministratorInfobase, AdministrationParameters.ClusterAdministratorPassword);
 	
@@ -1910,7 +1910,7 @@ Function CreateSchedulerTask(Val ApplicationFileName, Val DateTime)
 		
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents,
 			"Information", 
-			StringFunctionsClientServer.PlaceParametersIntoString(MessageText, ApplicationFileName, DateTime, CodeTasks));
+			StringFunctionsClientServer.SubstituteParametersInString(MessageText, ApplicationFileName, DateTime, CodeTasks));
 			
 	Except
 			
@@ -2073,7 +2073,7 @@ Function DeleteSchedulerTask(CodeTasks)
 		EndIf;
 		MessageText = NStr("en='The scheduler task has been successfully removed (task code: %1).';ru='Задача планировщика успешно удалена (код задачи: %1).'");
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, "Information",
-			StringFunctionsClientServer.PlaceParametersIntoString(MessageText, CodeTasks));
+			StringFunctionsClientServer.SubstituteParametersInString(MessageText, CodeTasks));
 		CodeTasks = 0;
 		
 		Return Result;
@@ -2144,7 +2144,7 @@ Function GetFileOfUpdateDescription()
 		|temporary file %1 %2';ru='Ошибка при удалении временного файла %1 %2'");
 		NameLogEvents =	ConfigurationUpdateClient.EventLogMonitorEvent();
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents,
-			"Error", StringFunctionsClientServer.PlaceParametersIntoString(MessageText, FileName,
+			"Error", StringFunctionsClientServer.SubstituteParametersInString(MessageText, FileName,
 			DetailErrorDescription(ErrorInfo())));
 	EndTry;
 	Return Undefined;
@@ -2188,7 +2188,7 @@ Function GetFileOfUpdateOrder()
 			
 		NameLogEvents = ConfigurationUpdateClient.EventLogMonitorEvent();
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents,
-			"Error", StringFunctionsClientServer.PlaceParametersIntoString(MessageText, FileName,
+			"Error", StringFunctionsClientServer.SubstituteParametersInString(MessageText, FileName,
 			DetailErrorDescription(ErrorInfo())));
 	EndTry;
 	Return Undefined;
@@ -2409,14 +2409,14 @@ Function GetUpdate(OutputMessages = True)
 					ErrorText = NStr("en='Failed to confirm the update authentication through the Internet
 		|due to: %1';ru='Не удалось подтвердить легальность получения обновления через
 		|Интернет по причине: %1'");
-					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, AuthenticationResult.ErrorText);
+					ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, AuthenticationResult.ErrorText);
 					Items.LegalityCheckErrorText.Title = ErrorText;
 					Return Pages.ConnectionToSite.Name;
 					
 				EndIf;
 				
 				// Display the message of the file exporting to the log.
-				Message = StringFunctionsClientServer.PlaceParametersIntoString(
+				Message = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en=' Get file %1 to %2';ru=' Получаем файл %1 в %2'"),
 						ConfigurationUpdateClient.GetUpdateParameters().AddressOfUpdatesServer + File.Value.Address,
 						? (IsBlankString(File.Value.LocalPath), Undefined, File.Value.LocalPath));
@@ -2455,7 +2455,7 @@ Function GetUpdate(OutputMessages = True)
 				EndIf;
 			Else
 				// Moving the message of the file copying to the log.
-				Message = StringFunctionsClientServer.PlaceParametersIntoString(
+				Message = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en=' Get file %1 to %2';ru=' Получаем файл %1 в %2'"), File.Value.Address, File.Value.LocalPath);
 				Items.LabelProgres.Title = Message;
 				EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), , Message);
@@ -2495,7 +2495,7 @@ Function CopyFile(FileNameSource, FileNamePurpose, OutputMessages = False)
 		CreateDirectory(ConfigurationUpdateClient.GetFileDir(FileNamePurpose));
 		FileCopy(FileNameSource, FileNamePurpose);
 	Except
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		Message = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error while
 		|copying: %1 (source:% 2; receiver: 3%)';ru='Ошибка
 		|при копировании: %1 (источник: %2; приемник: %3)'"), 
@@ -2630,7 +2630,7 @@ Procedure RunConfigurationUpdate()
 	WriteUpdateStatus(UserName(), True, False, False, ApplicationParameters["StandardSubsystems.MessagesForEventLogMonitor"]);
 	
 	LaunchString = "cmd /c """"%1"""" [p1]%2[/p1][p2]%3[/p2]";
-	LaunchString = StringFunctionsClientServer.PlaceParametersIntoString(LaunchString, ScriptMainFileName,
+	LaunchString = StringFunctionsClientServer.SubstituteParametersInString(LaunchString, ScriptMainFileName,
 		AdministrationParameters.PasswordAdministratorInfobase, AdministrationParameters.ClusterAdministratorPassword);
 	Shell = New COMObject("Wscript.Shell");
 	Shell.RegWrite("HKCU\Software\Microsoft\Internet Explorer\Styles\MaxScriptStatements", 1107296255, "REG_DWORD");

@@ -403,7 +403,7 @@ Procedure ExecuteDataImportFromExchangeMessageToCache(Cancel, RowIndexes)
 		If DataExchangeDataProcessor.ErrorFlag() Then
 			
 			NString = NStr("en='Errors occurred when loading the exchange message: %1';ru='При загрузке сообщения обмена возникли ошибки: %1'");
-			NString = StringFunctionsClientServer.PlaceParametersIntoString(NString, DataExchangeDataProcessor.ErrorMessageString());
+			NString = StringFunctionsClientServer.SubstituteParametersInString(NString, DataExchangeDataProcessor.ErrorMessageString());
 			CommonUseClientServer.MessageToUser(NString,,,, Cancel);
 			Return;
 		EndIf;
@@ -435,7 +435,7 @@ Procedure SupplementStatisticsTable(Cancel)
 		Except
 			
 			MessageString = NStr("en='Error: type ""%1"" is not defined.';ru='Ошибка: тип ""%1"" не определен.'");
-			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, TableRow.ObjectTypeAsString);
+			MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, TableRow.ObjectTypeAsString);
 			CommonUseClientServer.MessageToUser(MessageString,,,, Cancel);
 			Continue;
 			

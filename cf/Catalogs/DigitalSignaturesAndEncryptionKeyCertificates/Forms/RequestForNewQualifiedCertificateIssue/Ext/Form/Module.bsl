@@ -316,14 +316,14 @@ Procedure ApplicationChoiceProcessing(Item, ValueSelected, StandardProcessing)
 		Presentation = SuppliedApplicationPresentation(ApplicationsList, ValueSelected);
 		
 		If Not InfobaseUserWithFullAccess Then
-			ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
+			ShowMessageBox(, StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Application %1 is not added to the list of used applications yet.
 		|Contact your administrator.';ru='Программа %1 еще не добавлена в список используемых программ.
 		|Обратитесь к администратору.'"),
 					Presentation));
 			
 		ElsIf IsSubordinateDIBNode Then
-			ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
+			ShowMessageBox(, StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Application %1 is not added to the list of used applications yet.
 		|Add to infobase main node.';ru='Программа %1 еще не добавлена в список используемых программ.
 		|Выполните добавление в главном узле информационной базы.'"),
@@ -334,7 +334,7 @@ Procedure ApplicationChoiceProcessing(Item, ValueSelected, StandardProcessing)
 			Buttons.Add("DoNotAdd", NStr("en='Do not add';ru='Не добавлять'"));
 			ShowQueryBox(
 				New NotifyDescription("ApplicationSelectionProcessingContinuation", ThisObject, ValueSelected),
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Application %1 is not added to the list of used applications yet.
 		|Add?';ru='Программа %1 еще не добавлена в список используемых программ.
 		|Добавить?'"),
@@ -799,7 +799,7 @@ EndProcedure
 Procedure GoToPageStatementSending()
 	
 	If Not ValueIsFilled(Object.Application) Then
-		CommonUseClientServer.MessageToUser(StringFunctionsClientServer.PlaceParametersIntoString(
+		CommonUseClientServer.MessageToUser(StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Field ""Digital signature application"" is not filled out';ru='Поле ""Программа электронной подписи"" не заполнено'")), , "Application");
 		
 		Return;
@@ -1026,7 +1026,7 @@ EndProcedure
 &AtClientAtServerNoContext
 Procedure UpdateUpdateDateStatesInTitle(Form)
 	
-	Form.Items.RequestProcessingState.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Form.Items.RequestProcessingState.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Statement processing state (by % 1)';ru='Состояние обработки заявления (на %1)'"),
 		Format(Form.UpdateDateConditions, "DLF=DT"));
 	
@@ -1113,7 +1113,7 @@ Procedure UpdateCertificateInstallationDateInHeader(Form)
 		Return;
 	EndIf;
 	
-	Form.Items.ErrorCertificateSetup.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Form.Items.ErrorCertificateSetup.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Certificate setup error (at %1)';ru='Ошибка установки сертификата (на %1)'"),
 		Format(Form.DateCertificateInstallation, "DLF=DT"));
 	
@@ -2229,7 +2229,7 @@ Function ValidateAttribute(Cancel, AttributeName)
 	EndIf;
 	
 	If Not ValueIsFilled(ThisObject[AttributeName]) Then
-		CommonUseClientServer.MessageToUser(StringFunctionsClientServer.PlaceParametersIntoString(
+		CommonUseClientServer.MessageToUser(StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Field ""%1"" is not filled';ru='Поле ""%1"" не заполнено'"), TitleFields), , AttributeName, , Cancel);
 		
 		Return False;
@@ -2289,7 +2289,7 @@ Function SendStatement(ErrorDescription)
 		WebService = CCWebService();
 	Except
 		ErrorInfo = ErrorInfo();
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescriptionTemplate,
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(ErrorDescriptionTemplate,
 			BriefErrorDescription(ErrorInfo));
 		Return False;
 	EndTry;
@@ -2314,13 +2314,13 @@ Function SendStatement(ErrorDescription)
 		Response = WebService.SendPacket(StatementPackage);
 	Except
 		ErrorInfo = ErrorInfo();
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescriptionTemplate,
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(ErrorDescriptionTemplate,
 			BriefErrorDescription(ErrorInfo));
 		Return False;
 	EndTry;
 	
 	If Not ValueIsFilled(Response) Then
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescriptionTemplate,
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(ErrorDescriptionTemplate,
 			NStr("en='Server returned an empty response.';ru='Сервер вернул пустой ответ.'"));
 		Return False;
 	EndIf;
@@ -2355,7 +2355,7 @@ Function SendStatement(ErrorDescription)
 	EndIf;
 	
 	If ResultCode = "202" Then
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to check the contract for ITS (its.1c.ru)
 		|due to: ticket received for the user %1 is incorrect or obsolete.
 		|
@@ -2363,7 +2363,7 @@ Function SendStatement(ErrorDescription)
 			AuthenticationParametersOnSite.Login);
 		
 	ElsIf ResultCode = "206" Then
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Statement is not
 		|accepted due to: User %1 does not have a valid contract for ITS (its.1c.en).
 		|To conclude the contact, please contact the service company.
@@ -2371,7 +2371,7 @@ Function SendStatement(ErrorDescription)
 		|After concluding the contract please send the statement once again.';ru='Заявление не принято по причине: Пользователь %1 не имеет действующего договора на ИТС (its.1c.ru). Для заключения договора обратитесь в обслуживающую организацию.  После заключения договора отправьте заявление еще раз.'"),
 			AuthenticationParametersOnSite.Login);
 	Else
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescriptionTemplate,
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(ErrorDescriptionTemplate,
 			ErrorDescription);
 	EndIf;
 	
@@ -2405,7 +2405,7 @@ Function TicketToSupportSite(ErrorDescription)
 			BriefErrorDescription = NStr("en='Incorrect name of the user or password.';ru='Некорректное имя пользователя или пароль.'");
 			AuthenticationParametersOnSite = Undefined;
 		EndIf;
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to connect to support website
 		|due to:% 1';ru='Не удалось подключиться к
 		|сайту поддержки по причине: %1'"),
@@ -2689,7 +2689,7 @@ Function GetCertificate()
 	Except
 		ErrorInfo = ErrorInfo();
 		UpdateDateConditions = CurrentSessionDate();
-		RequestProcessingState = StringFunctionsClientServer.PlaceParametersIntoString(
+		RequestProcessingState = StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorDescriptionTemplate, BriefErrorDescription(ErrorInfo));
 		Return Undefined;
 	EndTry;
@@ -2697,7 +2697,7 @@ Function GetCertificate()
 	UpdateDateConditions = CurrentSessionDate();
 	
 	If Not ValueIsFilled(Response) Then
-		RequestProcessingState = StringFunctionsClientServer.PlaceParametersIntoString(
+		RequestProcessingState = StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorDescriptionTemplate, NStr("en='Server returned an empty response.';ru='Сервер вернул пустой ответ.'"));
 		Return Undefined;
 	EndIf;
@@ -2721,7 +2721,7 @@ Function GetCertificate()
 			FileNameAnswerPackage = GetTempFileName(".zip");
 			BinaryData.Write(FileNameAnswerPackage);
 		Else
-			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescriptionTemplate,
+			ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(ErrorDescriptionTemplate,
 				NStr("en='Server returned empty data.';ru='Сервер вернул пустые данные.'"));
 		EndIf;
 		
@@ -2732,7 +2732,7 @@ Function GetCertificate()
 		If DOMNode.Count() > 0 Then
 			ErrorDescription = DOMNode[0].TextContent;
 		Else
-			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Server returned an error code:% 1';ru='Сервер вернул код ошибки: %1'"), String(ResultCode));
 		EndIf;
 	EndIf;
@@ -2780,7 +2780,7 @@ Function GetCertificate()
 		EndIf;
 	Except
 		ErrorInfo = ErrorInfo();
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to parse server response
 		|due to: %1';ru='Не удалось разобрать
 		|ответ сервера по причине: %1'"),
@@ -2822,7 +2822,7 @@ Function GetCertificate()
 			FileNameAnswerPackage = GetTempFileName(".zip");
 			BinaryData.Write(FileNameAnswerPackage);
 		Else
-			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescriptionTemplate,
+			ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(ErrorDescriptionTemplate,
 				NStr("en='Server returned empty data.';ru='Сервер вернул пустые данные.'"));
 		EndIf;
 	Else
@@ -2830,7 +2830,7 @@ Function GetCertificate()
 		If DOMNode.Count() > 0 Then
 			ErrorDescription = DOMNode[0].TextContent;
 		Else
-			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Server returned an error code:% 1';ru='Сервер вернул код ошибки: %1'"), String(ResultCode));
 		EndIf;
 	EndIf;
@@ -2901,7 +2901,7 @@ Function GetCertificate()
 		EndIf;
 	Except
 		ErrorInfo = ErrorInfo();
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to parse server response
 		|due to: %1';ru='Не удалось разобрать
 		|ответ сервера по причине: %1'"),
@@ -3135,7 +3135,7 @@ EndProcedure
 Procedure SetCertificateAfterCheckingKeyContainerExistence(Exists, Context) Export
 	
 	If Not Exists Then
-		ErrorCertificateSetup = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorCertificateSetup = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to find the key container on the computer.
 		|Container name: ""%1"".
 		|Path to container: ""%2"".';ru='Не удалось найти контейнер ключа на компьютере.
@@ -3196,7 +3196,7 @@ Procedure SetCertificateAfterCertificateSearch(Result, Context) Export
 			SearchError =
 				NStr("en='Failed to find the personal certificate installed on your computer.';ru='Не удалось найти личный сертификат, установленный на компьютер.'");
 		Else
-			SearchError = StringFunctionsClientServer.PlaceParametersIntoString(
+			SearchError = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Failed to find a personal certificate installed on the
 		|computer due to: %1';ru='Не удалось найти личный сертификат, установленный
 		|на компьютер по причине: %1'"),
@@ -3260,7 +3260,7 @@ Procedure SetCertificateAfterRootCertificateSearch(Result, Context) Export
 			SearchError =
 				NStr("en='Failed to find the root certificate installed on your computer.';ru='Не удалось найти корневой сертификат, установленный на компьютер.'");
 		Else
-			SearchError = StringFunctionsClientServer.PlaceParametersIntoString(
+			SearchError = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Failed to find the root certificate installed on the
 		|computer due to: %1';ru='Не удалось найти корневой сертификат, установленный
 		|на компьютер по причине: %1'"),
@@ -3429,14 +3429,14 @@ Function RFStateNameByRecommendationsForDSVKC(StateCode)
 	String = AllRFStatesNames.GetLine(Number(StateCode));
 	
 	If Left(String, 3) <> StateCode + " " Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Region of the Russian Federation with code ""%1"" does not exist.';ru='Регион РФ с кодом ""%1"" не существует.'"), StateCode);
 	EndIf;
 	
 	String = TrimAll(Mid(String, 4));
 	
 	If Not ValueIsFilled(String) Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Name recommended for DSVKC is not yet assigned for the region of the Russian Federation with the code ""%1"".';ru='Для региона РФ с кодом ""%1"" имя, рекомендованное для СКПЭП, еще не назначено.'"),
 			StateCode);
 	EndIf;
@@ -3739,7 +3739,7 @@ Procedure SetAgreement()
 	HTMLText = Catalogs.DigitalSignaturesAndEncryptionKeyCertificates.GetTemplate(
 		"Agreement").GetText();
 	
-	HTMLText = StringFunctionsClientServer.PlaceParametersIntoString(HTMLText,
+	HTMLText = StringFunctionsClientServer.SubstituteParametersInString(HTMLText,
 		// Name of certifying center.
 		NStr("en='Scientific and production center ""1C"", LLC';ru='Scientific and production center ""1C"", LLC'"),
 		// Address of certification center regulations.
@@ -4189,7 +4189,7 @@ Procedure CreateKeyAndCertificateQueryAfterCallErrorCreateContainer(ErrorInfo, S
 	
 	Error = New Structure;
 	Error.Insert("ShowInstruction", True);
-	Error.Insert("ErrorDescription", StringFunctionsClientServer.PlaceParametersIntoString(
+	Error.Insert("ErrorDescription", StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Operation failed due
 		|to:% 1';ru='Не удалось
 		|выполнить операцию по причине: %1'"),
@@ -4211,7 +4211,7 @@ Procedure CreateKeyAndCertificateQueryAfterCallCreateContainer(Path, CallParamet
 	If Not ValueIsFilled(Path) Then
 		Rows = ApplicationsList.FindRows(New Structure("Ref", Object.Application));
 		If Rows[0].ID = "CryptoPro" Then
-			ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
+			ShowMessageBox(, StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Digital signature key is not created.
 		|
 		|It should be taken into account that in order
@@ -4762,7 +4762,7 @@ Function QueryDescriptionOnQualifiedCertificate(Fields)
 	// Key usage - Verification of client authenticity, Protected email.
 	KeyUsage = "1.3.6.1.5.5.7.3.2,1.3.6.1.5.5.7.3.4"; 
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		"pRequestInfo:{ CertAttrs:{%1} CertEnhKeyUsage:{%2} CertPolicies:{<1.2.643.100.113.1=>} dwKeyUsage:{240} SignTool:{%3} }",
 		Properties,
 		KeyUsage,
@@ -4915,7 +4915,7 @@ Procedure CreateCryptographyObjectAfterExternalComponentInstallationError(ErrorI
 	
 	ShowMessageBox(New NotifyDescription(
 			"CreateCryptographyObjectAfterErrorWarning", ThisObject, Context),
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to install additional external component
 		|due to: %1';ru='Не удалось установить дополнительную внешнюю
 		|компоненту по причине: %1'"),
@@ -4957,7 +4957,7 @@ Procedure CreateCryptographyObjectContinuation(Context)
 	Except
 		ErrorInfo = ErrorInfo();
 		Cryptography = Undefined;
-		ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
+		ShowMessageBox(, StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to create a cryptography object of external component
 		|due to:% 1';ru='Не удалось создать объект внешней компоненты для
 		|работы с криптографией по причине: %1'"),
@@ -4972,7 +4972,7 @@ Procedure CreateCryptographyObjectContinuation(Context)
 		Except
 			ErrorInfo = ErrorInfo();
 			Cryptography = Undefined;
-			ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
+			ShowMessageBox(, StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Failed to create an object of external component for binary data
 		|due to: %1';ru='Не удалось создать объект внешней компоненты для работы с
 		|двоичными данными по причине: %1'"),
@@ -5014,7 +5014,7 @@ Procedure CreateCryptographyObjectAfterCallErrorCreateCryptographyManager(ErrorI
 	
 	ShowMessageBox(New NotifyDescription(
 			"CreateCryptographyObjectAfterErrorWarning", ThisObject, Context),
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Digital signature application is not available through an
 		|external component due to: %1';ru='Программа электронной подписи не доступна
 		|через внешнюю компоненту по причине: %1'"),

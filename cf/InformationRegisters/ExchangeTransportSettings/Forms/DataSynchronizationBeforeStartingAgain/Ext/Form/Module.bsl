@@ -32,7 +32,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		|Technical information see <a href = ""EventLogMonitor"">Event log monitor</a>.';ru='Не удалось установить обновление программы, полученное из
 		|""%1"".
 		|Техническую информацию см. в <a href = ""ЖурналРегистрации"">Журнале регистрации</a>.'");
-	NodeNameLabel = StringFunctionsClientServer.PlaceParametersIntoString(NodeNameLabel, InfobaseNode.Description);
+	NodeNameLabel = StringFunctionsClientServer.SubstituteParametersInString(NodeNameLabel, InfobaseNode.Description);
 	Items.InformationLabelNodeName.Title = StringFunctionsClientServer.FormattedString(NodeNameLabel);
 	
 	SetEnabled();

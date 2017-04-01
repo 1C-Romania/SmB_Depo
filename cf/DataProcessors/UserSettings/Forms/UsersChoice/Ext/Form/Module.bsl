@@ -388,7 +388,7 @@ Procedure UpdateGroupTitle(Form, UsersGroup, UsersListRow, ValueMark)
 		UsersMarked = UsersGroup.UsersMarked;
 		UsersGroup.UsersMarked = ?(ValueMark, UsersMarked + 1, UsersMarked - 1);
 		UsersGroup.GroupDescriptionAndIsMarkedUsers = 
-			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 (%2)';ru='%1 (%2)'"),
+			StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1 (%2)';ru='%1 (%2)'"),
 			String(UsersGroup.Group), UsersGroup.UsersMarked);
 	EndIf;
 	

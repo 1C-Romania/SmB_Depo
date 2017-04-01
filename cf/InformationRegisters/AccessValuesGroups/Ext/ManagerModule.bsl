@@ -382,7 +382,7 @@ Procedure RefreshGroupsAccessValues(AccessValue, HasChanges)
 		|'");
 	
 	If AccessTypeProperties = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorTitle +
 			NStr("en='Access
 		|value groups usage is not set for the type ""%1"".';ru='Для
@@ -416,14 +416,14 @@ Procedure RefreshGroupsAccessValues(AccessValue, HasChanges)
 			MetadataTabularSection = TypeMetadata.TabularSections.Find("AccessGroups");
 			If MetadataTabularSection = Undefined
 			 OR MetadataTabularSection.Attributes.Find("AccessGroup") = Undefined Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorTitle +
 					NStr("en='AccessGroups special tabular
 		|section with the AccessGroup special
 		|attribute is not created in the access values type.""%1""';ru='У типа значений доступа ""%1"" не создана специальная табличная часть ГруппыДоступа со специальным реквизитом ГруппаДоступа.'"),
 					String(AccessValueType));
 			Else
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorTitle +
 					NStr("en='Unable to read
 		|the AccessGroup
@@ -440,14 +440,14 @@ Procedure RefreshGroupsAccessValues(AccessValue, HasChanges)
 			EndIf;
 		Else
 			If TypeMetadata.Attributes.Find("AccessGroup") = Undefined Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorTitle +
 					NStr("en='AccessGroup special attribute
 		|is not created in the access values type ""%1"".';ru='У типа
 		|значений доступа ""%1"" не создан специальный реквизит ГруппаДоступа.'"),
 					String(AccessValueType));
 			Else
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorTitle +
 					NStr("en='Unable to read
 		|the AccessGroup

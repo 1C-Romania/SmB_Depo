@@ -38,13 +38,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Title = NStr("en='Commands of creating the linked objects';ru='Команды создания связанных объектов'");
 	ElsIf KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.AdditionalInformationProcessor Then
 		ThisIsGlobalDataProcessors = True;
-		Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Additional data processors (%1)';ru='Дополнительные обработки (%1)'"), 
 			AdditionalReportsAndDataProcessors.PresentationOfSection(SectionReference));
 	ElsIf KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.AdditionalReport Then
 		ThisIsGlobalDataProcessors = True;
 		AreReports = True;
-		Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Additional reports (%1)';ru='Дополнительные отчеты (%1)'"), 
 			AdditionalReportsAndDataProcessors.PresentationOfSection(SectionReference));
 	EndIf;
@@ -193,7 +193,7 @@ Procedure RunDataProcessorByParameters()
 		Or DataProcessorData.StartVariant = PredefinedValue("Enum.AdditionalDataProcessorsCallMethods.ScriptInSafeMode") Then
 		
 		// Change of the form items
-		Items.ExplanatoryDecoration.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.ExplanatoryDecoration.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Command ""%1"" is being executed...';ru='Выполняется команда ""%1""...'"),
 			DataProcessorData.Presentation);
 		Items.Pages.CurrentPage = Items.DataProcessorExecutionPage;

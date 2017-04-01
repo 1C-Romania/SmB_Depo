@@ -233,7 +233,7 @@ Procedure SetUpNewDataExchangeOverExternalConnection(Cancel,
 		
 		If Cancel Then
 			Message = NStr("en='An error occurred when creating an exchange setting in the second infobase: %1';ru='При создании настройки обмена во второй информационной базе возникли ошибки: %1'");
-			Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, DataExchangeCreationAssistant.ErrorMessageString());
+			Message = StringFunctionsClientServer.SubstituteParametersInString(Message, DataExchangeCreationAssistant.ErrorMessageString());
 			Raise Message;
 		EndIf;
 		
@@ -258,7 +258,7 @@ Procedure SetUpNewDataExchangeOverExternalConnection(Cancel,
 		
 		If Cancel Then
 			Message = NStr("en='An error occurred when creating an exchange setting in the second infobase: %1';ru='При создании настройки обмена во второй информационной базе возникли ошибки: %1'");
-			Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, DataExchangeCreationAssistant.ErrorMessageString());
+			Message = StringFunctionsClientServer.SubstituteParametersInString(Message, DataExchangeCreationAssistant.ErrorMessageString());
 			Raise Message;
 		EndIf;
 		

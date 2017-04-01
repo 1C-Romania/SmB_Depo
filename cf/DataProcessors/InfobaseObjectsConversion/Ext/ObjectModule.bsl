@@ -728,7 +728,7 @@ Procedure ExecuteDataExport(DataProcessorForDataImport = Undefined) Export
 		If DataProcessorForDataImport().ErrorFlag() Then
 			
 			MessageString = NStr("en='OUTER JOIN: %1';ru='ВНЕШНЕЕ СОЕДИНЕНИЕ: %1'");
-			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, DataProcessorForDataImport().ErrorMessageString());
+			MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, DataProcessorForDataImport().ErrorMessageString());
 			WriteInExecutionProtocol(MessageString);
 			FinishExchangeProtocolLogging();
 			Return;
@@ -946,7 +946,7 @@ Procedure ExecuteDataImportToInformationBase(TableToImport) Export
 	
 	// Record in the events log monitor.
 	MessageString = NStr("en='Beginning of data exchange process for node: %1';ru='Начало процесса обмена данными для узла: %1'", CommonUseClientServer.MainLanguageCode());
-	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(ExchangeNodeForDataImport));
+	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(ExchangeNodeForDataImport));
 	WriteLogEventDataExchange(MessageString, EventLogLevel.Information);
 	
 	ExecuteSelectiveMessageReader(TableToImport);
@@ -959,7 +959,7 @@ Procedure ExecuteDataImportToInformationBase(TableToImport) Export
 	
 	// Record in the events log monitor.
 	MessageString = NStr("en='%1, %2; Processed %3 objects';ru='%1, %2; Обработано %3 объектов'", CommonUseClientServer.MainLanguageCode());
-	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
+	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 					ExchangeProcessResult(),
 					Enums.ActionsAtExchange.DataImport,
 					Format(CounterOfImportedObjects(), "NG=0"));
@@ -1479,7 +1479,7 @@ Procedure WriteObjectToIB(Object, Type, WriteObject = False, Val SendBack = Fals
 		AND Not CommonUseReUse.IsSeparatedMetadataObject(Object.Metadata().FullName(), CommonUseReUse.SupportDataSplitter()) Then
 		
 		ErrorMessageString = NStr("en='Attempt of undivided data modification (%1) in separated session.';ru='Попытка изменения неразделенных данных (%1) в разделенном сеансе.'");
-		ErrorMessageString = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageString, Object.Metadata().FullName());
+		ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, Object.Metadata().FullName());
 		
 		WriteInExecutionProtocol(ErrorMessageString,, False,,,, Enums.ExchangeExecutionResult.CompletedWithWarnings);
 		
@@ -3343,7 +3343,7 @@ Procedure WriteToFile(Node)
 		If DataProcessorForDataImport().ErrorFlag() Then
 			
 			MessageString = NStr("en='OUTER JOIN: %1';ru='ВНЕШНЕЕ СОЕДИНЕНИЕ: %1'");
-			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, DataProcessorForDataImport().ErrorMessageString());
+			MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, DataProcessorForDataImport().ErrorMessageString());
 			ExchangeExecutionResultExternalConnection = Enums.ExchangeExecutionResult[DataProcessorForDataImport().ExchangeExecutionResultString()];
 			WriteInExecutionProtocol(MessageString,,,,,, ExchangeExecutionResultExternalConnection);
 			Raise MessageString;
@@ -3370,7 +3370,7 @@ Function OpenExportFile()
 	Try
 		ExchangeFile.Open(ExchangeFileName, TextEncoding.UTF8);
 	Except
-		ErrorPresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while opening file for exchange message writing.
+		ErrorPresentation = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while opening file for exchange message writing.
 		|File name ""%1"".
 		|Error
 		|description: %2';ru='Ошибка при открытии файла для записи сообщения обмена.
@@ -3482,7 +3482,7 @@ Procedure ExchangeProtocolInitialization()
 		DataLogFile = Undefined;
 		MessageString = NStr("en='Write to the data protocol file failed: %1. Error description: %2';ru='Ошибка при попытке записи в файл протокола данных: %1. Описание ошибки: %2'",
 			CommonUseClientServer.MainLanguageCode());
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, ExchangeProtocolFileName, ErrorDescription());
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangeProtocolFileName, ErrorDescription());
 		WriteLogEventDataExchange(MessageString, EventLogLevel.Warning);
 	EndTry;
 	
@@ -5966,7 +5966,7 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 	Try
 		LockDataForEdit(MessageReader.Sender);
 	Except
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Setting lock on data exchange error.
 		|Data exchange may be performed by another session.
 		|
@@ -6071,7 +6071,7 @@ Procedure ExecuteAlgorithmAfterImportParameters(Val AlgorithmText)
 			If Not IsBlankString(CancelReason) Then
 				
 				MessageString = NStr("en='Denial of the exchange message import in the AfterParametersImport handler (conversion) as: %1';ru='Отказ от загрузки сообщения обмена в обработчике ПослеЗагрузкиПараметров (конвертация) по причине: %1'");
-				MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, CancelReason);
+				MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, CancelReason);
 				Raise MessageString;
 			Else
 				Raise NStr("en='Rejection from the exchange message import in the AfterImportOfParameters (conversion) processing.';ru='Отказ от загрузки сообщения обмена в обработчике ПослеЗагрузкиПараметров (конвертация).'");
@@ -6275,7 +6275,7 @@ Procedure DeleteDocumentRegisterRecords(DocumentObject)
 		If Not AccessRight("Update", Set.Metadata()) Then
 			// No rights to all register table.
 			ErrorMessage = NStr("en='Access violation: %1';ru='Нарушение прав доступа: %1'");
-			ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessage, RegisterRecordRow.Name);
+			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage, RegisterRecordRow.Name);
 			Raise ErrorMessage;
 			Return;
 		EndIf;
@@ -6298,7 +6298,7 @@ Procedure DeleteDocumentRegisterRecords(DocumentObject)
 			ErrorMessage = NStr("en='Operation is
 		|not executed: %1 %2';ru='Операция
 		|не выполнена: %1 %2'");
-			ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessage,
+			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage,
 				RegisterRecordRow.Name, BriefErrorDescription(ErrorInfo()));
 			Raise ErrorMessage;
 		EndTry;
@@ -7813,7 +7813,7 @@ Procedure ImportTabularSection(Object, TabularSectionName, DocumentTypeCommonInf
 		LR = GetProtocolRecordStructure(83, ErrorDescription());
 		LR.Object     = Object;
 		LR.ObjectType = TypeOf(Object);
-		LR.Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, TabularSectionName);
+		LR.Text = StringFunctionsClientServer.SubstituteParametersInString(Text, TabularSectionName);
 		WriteInExecutionProtocol(83, LR);
 		
 		deIgnore(ExchangeFile);
@@ -8327,7 +8327,7 @@ Procedure CommentsToObjectImport(NPP, Rulename, Source, ObjectType, GNPP = 0)
 		
 		MessageString = NStr("en='Import object No %1';ru='Загрузка объекта № %1'");
 		Number = ?(NPP <> 0, NPP, GNPP);
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, Number);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, Number);
 		
 		LR = GetProtocolRecordStructure();
 		
@@ -9576,7 +9576,7 @@ Function ReadObject(UUIDString = "")
 						WriteInExecutionProtocol(25, LR);
 						
 						MessageString = NStr("en='An error occurred while writing document: %1 Error description: %2';ru='Ошибка при записи документа: %1. Описание ошибки: %2'");
-						MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(Object), ErrorDescriptionString);
+						MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(Object), ErrorDescriptionString);
 						
 						// Object failed to be written in the normal mode - you should report it.
 						Raise MessageString;
@@ -9973,7 +9973,7 @@ Procedure DumpGroupOfProperties(Source, Receiver, IncomingData, OutgoingData, OC
 			
 		Except
 			
-			ErrorMessageString = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while creating temporary file for the data import.
+			ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while creating temporary file for the data import.
 		|File name ""%1"".
 		|Error
 		|description: %2';ru='Ошибка при создании временного файла для выгрузки данных.
@@ -11478,7 +11478,7 @@ Procedure CallEventsBeforeObjectExport(Object, Rule, Properties=Undefined, Incom
 		EndIf;
 		
 		EventName = NStr("en='ObjectExport: %1';ru='ВыгрузкаОбъекта: %1'");
-		EventName = StringFunctionsClientServer.PlaceParametersIntoString(EventName, ObjectPresentation);
+		EventName = StringFunctionsClientServer.SubstituteParametersInString(EventName, ObjectPresentation);
 		
 		WriteInExecutionProtocol(EventName, , False, 1, 7);
 		
@@ -11916,7 +11916,7 @@ Procedure DumpDataByRule(Rule) Export
 	If CommentObjectProcessingFlag Then
 		
 		MessageString = NStr("en='DATA EXPORT RULE: %1 (%2)';ru='ПРАВИЛО ВЫГРУЗКИ ДАННЫХ: %1 (%2)'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, TrimAll(Rule.Name), TrimAll(Rule.Description));
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, TrimAll(Rule.Name), TrimAll(Rule.Description));
 		WriteInExecutionProtocol(MessageString, , False, , 4);
 		
 	EndIf;
@@ -12318,7 +12318,7 @@ Procedure RunObjectRegistrationAttributesCheck(ChangeRecordAttributeTable)
 		Except
 			
 			MessageString = NStr("en='The object type is not defined: %1';ru='Тип объекта не определен: %1'");
-			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, TableRow.ObjectTypeAsString);
+			MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, TableRow.ObjectTypeAsString);
 			WriteInExecutionProtocol(MessageString);
 			Continue;
 			
@@ -12346,7 +12346,7 @@ Procedure RunObjectRegistrationAttributesCheck(ChangeRecordAttributeTable)
 						OR  IsCommonAttribute(Attribute.Key, MDObject.FullName(), CommonAttributesTable)) Then
 						
 						MessageString = NStr("en='""%1"" object header attributes are specified incorrectly. Attribute ""%2"" does not exist.';ru='Неправильно указаны реквизиты шапки объекта ""%1"". Реквизит ""%2"" не существует.'");
-						MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(MDObject), Attribute.Key);
+						MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(MDObject), Attribute.Key);
 						WriteInExecutionProtocol(MessageString);
 						
 					EndIf;
@@ -12358,7 +12358,7 @@ Procedure RunObjectRegistrationAttributesCheck(ChangeRecordAttributeTable)
 						OR  IsCommonAttribute(Attribute.Key, MDObject.FullName(), CommonAttributesTable)) Then
 						
 						MessageString = NStr("en='""%1"" object header attributes are specified incorrectly. Attribute ""%2"" does not exist.';ru='Неправильно указаны реквизиты шапки объекта ""%1"". Реквизит ""%2"" не существует.'");
-						MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(MDObject), Attribute.Key);
+						MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(MDObject), Attribute.Key);
 						WriteInExecutionProtocol(MessageString);
 						
 					EndIf;
@@ -12371,7 +12371,7 @@ Procedure RunObjectRegistrationAttributesCheck(ChangeRecordAttributeTable)
 			// Tabular section, standard tabular section, movements.
 			MetaTable  = ObjectsRegistrationAttributesMetaTabularSection(MDObject, TableRow.TabularSectionName);
 			If MetaTable = Undefined Then
-				WriteInExecutionProtocol(StringFunctionsClientServer.PlaceParametersIntoString(
+				WriteInExecutionProtocol(StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Tabular section (standard tabular section, movements) ""%1"" object ""%2"" does not exist.';ru='Табличная часть (стандартная табличная часть, движения) ""%1"" объекта ""%2"" не существует.'"),
 					TableRow.TabularSectionName, MDObject));
 				Continue;
@@ -12381,7 +12381,7 @@ Procedure RunObjectRegistrationAttributesCheck(ChangeRecordAttributeTable)
 			For Each Attribute IN TableRow.ChangeRecordAttributeStructure Do
 				
 				If Not AttributeFoundInObjectsRegistrationAttributesTabularSection(MetaTable, Attribute.Key) Then
-					WriteInExecutionProtocol(StringFunctionsClientServer.PlaceParametersIntoString(
+					WriteInExecutionProtocol(StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Attribute ""%3"" does not exist in the tabular section (standard tabular section, movements) ""%1"" of object ""%2"".';ru='Реквизит ""%3"" не существует в табличной части (стандартной табличной части, движениях) ""%1"" объекта ""%2"".'"),
 						TableRow.TabularSectionName, MDObject, Attribute.Key));
 					Break;
@@ -12619,7 +12619,7 @@ Function GetInformationAboutRules(AreCorrespondentRules = False) Export
 	SourceConfigurationPresentation = GetConfigurationPresentationFromExchangeRules("Source");
 	TargetConfigurationPresentation = GetConfigurationPresentationFromExchangeRules("Receiver");
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(InfoString,
+	Return StringFunctionsClientServer.SubstituteParametersInString(InfoString,
 							SourceConfigurationPresentation,
 							Format(Conversion.CreationDateTime, "DLF =DD"));
 EndFunction
@@ -13980,7 +13980,7 @@ Procedure ReadDataInModeExternalConnection(MessageReader)
 						If Not IsBlankString(CancelReason) Then
 							
 							MessageString = NStr("en='Data load canceled because: %1';ru='Загрузка данных отменена по причине: %1'");
-							MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, CancelReason);
+							MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, CancelReason);
 							Raise MessageString;
 						Else
 							Raise NStr("en='Data import is canceled';ru='Загрузка данных отменена'");
@@ -14066,7 +14066,7 @@ Procedure ReadExchangeData(MessageReader, DataAnalysis)
 		OR ExchangeNodeRecipient <> ExchangeNodeForDataImport Then
 		
 		MessageString = NStr("en='The node of exchange to import data is not found. Exchange plan: %1, Code: %2';ru='Не найден узел обмена для загрузки данных. План обмена: %1, Код: %2'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, ExchangePlanName(), FromWhomCode);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangePlanName(), FromWhomCode);
 		Raise MessageString;
 	EndIf;
 	

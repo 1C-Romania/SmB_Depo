@@ -63,7 +63,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		LabelText = NStr("en='The direct exchange agreement is signed with bank %1.
 		|The signed payment orders and bank statement request are sent from 1C:Small Business.';ru='С банком %1 действует соглашение о прямом обмене.
 		|Отправка подписанных платежных поручений и запрос банковской выписки осуществляется из 1С:Управление небольшой фирмой.'");
-		DirectMessageExchange = StringFunctionsClientServer.PlaceParametersIntoString(
+		DirectMessageExchange = StringFunctionsClientServer.SubstituteParametersInString(
 			LabelText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
 			
 		Items.ImportFile.Visible = False;

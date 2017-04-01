@@ -151,7 +151,7 @@ Procedure CheckDocumentsPosted(DocumentsArray, DocumentsPosted, FormSource = Und
 		MessagePattern = NStr("en='Document %1 is not posted: %2 Cannot generate ED.';ru='Документ %1 не проведен: %2 Формирование ЭД невозможно.'");
 		UnpostedDocuments = New Array;
 		For Each InformationAboutDocument IN DataAboutUnpostedDocuments Do
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 																	MessagePattern,
 																	String(InformationAboutDocument.Ref),
 																	InformationAboutDocument.ErrorDescription);
@@ -360,7 +360,7 @@ Procedure DocumentsCheckPostingRunContinue(Val Result, Val AdditionalParameters)
 		MessagePattern = NStr("en='Document %1 is not posted: %2 Cannot generate ED.';ru='Документ %1 не проведен: %2 Формирование ЭД невозможно.'");
 		UnpostedDocuments = New Array;
 		For Each InformationAboutDocument IN DataAboutUnpostedDocuments Do
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 																	MessagePattern,
 																	String(InformationAboutDocument.Ref),
 																	InformationAboutDocument.ErrorDescription);

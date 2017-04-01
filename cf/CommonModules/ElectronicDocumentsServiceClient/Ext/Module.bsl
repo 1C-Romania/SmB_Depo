@@ -520,7 +520,7 @@ Procedure CheckDS(Result, Parameters) Export
 		|document: %1 error occurred: %2';ru='При проверке подписи
 		|электронного
 		|документа: %1 произошла ошибка: %2'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								MessageText, Parameters.CheckedED, Result);
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 									OperationKind, MessageText, MessageText, 0);
@@ -596,7 +596,7 @@ Procedure GetNextSignatureStatus(Result, Parameters) Export
 		|document: %1 error occurred: %2';ru='При проверке подписи
 		|электронного
 		|документа: %1 произошла ошибка: %2'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								MessageText, Parameters.CheckedED, Result);
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 									OperationKind, MessageText, MessageText, 0);
@@ -1234,31 +1234,31 @@ Procedure OutputInformationAboutProcessedED(GeneratedCnt, ConfirmedCnt, Digitall
 			If ConfirmedCnt > 0 Then
 				If GeneratedCnt > 0 Then
 					Text = NStr("en='Generated: (%1), approved: (%2), signed: (%3), %4 packages: (%5)';ru='Сформировано: (%1), утверждено: (%2), подписано: (%3), %4 пакетов: (%5)'");
-					Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, GeneratedCnt, ConfirmedCnt,
+					Text = StringFunctionsClientServer.SubstituteParametersInString(Text, GeneratedCnt, ConfirmedCnt,
 						DigitallySignedCnt, AdditText, PreparedCnt);
 				Else
 					Text = NStr("en='Approved: (%1), signed: (%2), %3 packages: (%4)';ru='Утверждено: (%1), подписано: (%2), %3 пакетов: (%4)'");
-					Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, ConfirmedCnt, DigitallySignedCnt, AdditText,
+					Text = StringFunctionsClientServer.SubstituteParametersInString(Text, ConfirmedCnt, DigitallySignedCnt, AdditText,
 						PreparedCnt);
 				EndIf;
 			Else
 				Text = NStr("en='Signed: (%1), %2 packages: (%3)';ru='Подписано: (%1), %2 пакетов: (%3)'");
-				Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, DigitallySignedCnt, AdditText, PreparedCnt);
+				Text = StringFunctionsClientServer.SubstituteParametersInString(Text, DigitallySignedCnt, AdditText, PreparedCnt);
 			EndIf;
 		Else
 			If ConfirmedCnt > 0 Then
 				If GeneratedCnt > 0 Then
 					Text = NStr("en='Generated: (%1), approved: (%2), %3 packages: (%4)';ru='Сформировано: (%1), утверждено: (%2), %3 пакетов: (%4)'");
-					Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, GeneratedCnt,
+					Text = StringFunctionsClientServer.SubstituteParametersInString(Text, GeneratedCnt,
 						ConfirmedCnt, AdditText, PreparedCnt);
 				Else
 					Text = NStr("en='Approved: (%1), %2 packages: (%3)';ru='Утверждено: (%1), %2 пакетов: (%3)'");
-					Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, ConfirmedCnt, AdditText, PreparedCnt);
+					Text = StringFunctionsClientServer.SubstituteParametersInString(Text, ConfirmedCnt, AdditText, PreparedCnt);
 				EndIf;
 			Else
 				Text = NStr("en='%1 of packages: (%2)';ru='%1 пакетов: (%2)'");
 				Quantity = Max(PreparedCnt, SentCnt);
-				Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, AdditText, Quantity);
+				Text = StringFunctionsClientServer.SubstituteParametersInString(Text, AdditText, Quantity);
 			EndIf;
 		EndIf;
 	Else
@@ -1266,29 +1266,29 @@ Procedure OutputInformationAboutProcessedED(GeneratedCnt, ConfirmedCnt, Digitall
 			If ConfirmedCnt > 0 Then
 				If GeneratedCnt > 0 Then
 					Text = NStr("en='Generated: (%1), approved: (%2), signed: (%3)';ru='Сформировано: (%1), утверждено: (%2), подписано: (%3)'");
-					Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, GeneratedCnt, ConfirmedCnt,
+					Text = StringFunctionsClientServer.SubstituteParametersInString(Text, GeneratedCnt, ConfirmedCnt,
 						DigitallySignedCnt);
 				Else
 					Text = NStr("en='Approved: (%1), signed: (%2)';ru='Утверждено: (%1), подписано: (%2)'");
-					Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, ConfirmedCnt, DigitallySignedCnt);
+					Text = StringFunctionsClientServer.SubstituteParametersInString(Text, ConfirmedCnt, DigitallySignedCnt);
 				EndIf;
 			Else
 				Text = NStr("en='Signed: (%1)';ru='Подписано: (%1)'");
-				Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, DigitallySignedCnt);
+				Text = StringFunctionsClientServer.SubstituteParametersInString(Text, DigitallySignedCnt);
 			EndIf;
 		Else
 			If ConfirmedCnt > 0 Then
 				If GeneratedCnt > 0 Then
 					Text = NStr("en='Generated: (%1), approved: (%2)';ru='Сформировано: (%1), утверждено: (%2)'");
-					Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, GeneratedCnt, ConfirmedCnt);
+					Text = StringFunctionsClientServer.SubstituteParametersInString(Text, GeneratedCnt, ConfirmedCnt);
 				Else
 					Text = NStr("en='Approved: (%1)';ru='Утверждено: (%1)'");
-					Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, ConfirmedCnt);
+					Text = StringFunctionsClientServer.SubstituteParametersInString(Text, ConfirmedCnt);
 				EndIf;
 			Else
 				If GeneratedCnt > 0 Then
 					Text = NStr("en='Generated: (%1)';ru='Сформировано: (%1)'");
-					Text = StringFunctionsClientServer.PlaceParametersIntoString(Text, GeneratedCnt);
+					Text = StringFunctionsClientServer.SubstituteParametersInString(Text, GeneratedCnt);
 				Else
 					Text = NStr("en='There are no processed documents...';ru='Обработанных документов нет...'");
 				EndIf;
@@ -2049,7 +2049,7 @@ Procedure PreparePackagesForSending(Parameters)
 				OperationKind = NStr("en='Data encryption';ru='Шифрование данных'");
 				MessageText = NStr("An error occurred when encrypting data: %1");
 				BriefErrorDescription = BriefErrorDescription(ErrorDescription());
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 												MessageText, BriefErrorDescription);
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
@@ -2172,7 +2172,7 @@ Procedure SendGetEDComplete(Result, Parameters) Export
 	SentPackagesCnt = Parameters.SentPackagesCnt;
 	NewEDCount = Parameters.NewEDCount;
 	NotificationTemplate = NStr("en='Packages sent: (%1), packages received: (%2).';ru='Отправлено пакетов: (%1), получено пакетов: (%2).'");
-	NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationTemplate,
+	NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NotificationTemplate,
 		SentPackagesCnt, NewEDCount);
 	If TypeOf(Result) = Type("Number") Then
 		NotificationText = NotificationText + Chars.LF + NStr("en='Unpacked packages: %1.';ru='Распаковано пакетов: %1.'");
@@ -2453,7 +2453,7 @@ Procedure InformEDPackagesUnpackingResults(TotalUnpacked)
 	EndIf;
 	
 	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
-	NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+	NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 	NStr("en='Electronic documents unpacked: (%1)';ru='Распаковано электронных документов: (%1)'"), TotalUnpacked);
 	ShowUserNotification(NotificationTitle, , NotificationText);
 	
@@ -2791,7 +2791,7 @@ Procedure HandleEDDeviationCancellationComplete(Val Result, Val AdditionalParame
 	
 	If ValueIsFilled(Result) Then
 		Text = NStr("en='%1, %2: %3';ru='%1, %2: %3'");
-		CorrectionText = StringFunctionsClientServer.PlaceParametersIntoString(Text,
+		CorrectionText = StringFunctionsClientServer.SubstituteParametersInString(Text,
 			AdditionalParameters.Company, UsersClientServer.CurrentUser(), Result);
 		
 		If AdditionalParameters.Reject Then
@@ -3385,7 +3385,7 @@ Procedure SendAndReceiveDocumentsInBankAfterReceivingMarker(Result, Parameters) 
 		SentPackagesCnt = ReturnStructure.SentPackagesCnt;
 		ReceivedPacksQuantity = ReturnStructure.ReceivedPacksQuantity;
 		NotificationTemplate = NStr("en='Packages sent: (%1), packages received: (%2).';ru='Отправлено пакетов: (%1), получено пакетов: (%2).'");
-		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+		NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 					NotificationTemplate, SentPackagesCnt, ReceivedPacksQuantity);
 		
 		Notify("RefreshStateED");
@@ -3510,7 +3510,7 @@ Function SetiBank2CertificatePassword(XMLCertificate, Password) Export
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Setting certificate password';ru='Установка пароля сертификата'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -3567,7 +3567,7 @@ Procedure EstablishConnectioniBank2(EDAgreement, XMLCertificate, NotifyDescripti
 		|Код
 		|ошибки: %1 %2'");
 			ErrorDetails = InformationAboutErroriBank2();
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 			Operation = NStr("en='Setting proxy server settings';ru='Установка настроек прокси сервера'");
 			DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -3609,7 +3609,7 @@ Procedure EstablishConnectioniBank2(EDAgreement, XMLCertificate, NotifyDescripti
 		|Код
 		|ошибки: %1 %2'");
 			ErrorDetails = InformationAboutErroriBank2();
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 			Operation = NStr("en='Making a connection';ru='Установка соединения'");
 			DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -3650,7 +3650,7 @@ Function SetStoragePINCodeiBank2(StorageIdentifier, PinCode) Export
 		|Error code:
 		|%1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Setting PIN-code';ru='Установка PIN-кода'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -3764,7 +3764,7 @@ Function ConnectediBank2Storages() Export
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Search for storages';ru='Поиск хранилищ'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -3848,7 +3848,7 @@ Function SendQueryiBank2(TypeQuery, SendingData) Export
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Data sending';ru='Отправка данных'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -3886,7 +3886,7 @@ Function RequiredToSetStoragePINCodeiBank2(StorageIdentifier) Export
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Check the need to enter PIN code';ru='Проверка необходимости ввода PIN-кода'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -4031,7 +4031,7 @@ Procedure SigningEDiBank2(AuthenticationCompleted, Parameters) Export
 		|Код
 		|ошибки: %1 %2'");
 				ErrorDetails = InformationAboutErroriBank2();
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 				Operation = NStr("en='Receiving data scheme';ru='Получение схемы данных'");
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -4064,7 +4064,7 @@ Procedure SigningEDiBank2(AuthenticationCompleted, Parameters) Export
 		|Код
 		|ошибки: %1 %2'");
 				ErrorDetails = InformationAboutErroriBank2();
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 				Operation = NStr("en='Signing the documents';ru='Подписание документов'");
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -4134,7 +4134,7 @@ Procedure CheckiBank2SignaturesStatuses(AvailableStorage, Parameters) Export
 		|Код
 		|ошибки: %1 %2'");
 				ErrorDetails = InformationAboutErroriBank2();
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 				Operation = NStr("en='Signature check';ru='Проверка подписи'");
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -4289,7 +4289,7 @@ Function iBank2CertificateData(XMLCertificate) Export
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Receiving certificate data';ru='Получение данных сертификата'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -4315,7 +4315,7 @@ Procedure StartSendingiBank2Packages(ExternalAttachableModule, Parameters) Expor
 		Device = ConnectediBank2Storages();
 		If Device.Count() = 0 Then
 			MessageText = NStr("en='Bank key is not connected for data sending by EDF setting: %1';ru='К компьютеру не подключен банковский ключ для отправки данных по настройке ЭДО: %1'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Parameters.EDAgreement);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Parameters.EDAgreement);
 		Else
 			Parameters.Insert("Device", Device);
 			ContinueSendingiBank2PackagesRecursively(Parameters);
@@ -4598,7 +4598,7 @@ Procedure ContinueiBank2AgreementTest(Parameters)
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Authentication on bank resource';ru='Аутентификация на ресурсе банка.'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -4655,7 +4655,7 @@ Procedure ContinueAgreementTestAfterAutenticationiBank2(AuthenticationCompleted,
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Setting the signature';ru='Установка подписии'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -4682,7 +4682,7 @@ Procedure ContinueAgreementTestAfterAutenticationiBank2(AuthenticationCompleted,
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Signature check';ru='Проверка подписи'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -4834,7 +4834,7 @@ Procedure StartiBank2CertificatesTest(Parameters)
 		CertificateParameters = Item.Value;
 		
 		MessageText = NStr("en='Checking the certificate: %1';ru='Проверка сертификата: %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Item.Key);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Item.Key);
 		MessageToUser(MessageText, TargetID);
 		
 		Map = New Map;
@@ -4878,7 +4878,7 @@ Procedure StartiBank2CertificatesTest(Parameters)
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = InformationAboutErroriBank2();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Sending a test request';ru='Отправка тестового запроса'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -5083,7 +5083,7 @@ Function SetStoragePINCodeThroughAdditionalDataProcessor(ExternalAttachableModul
 		|Error code:
 		|%1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate,
 		                                                                         ErrorDetails.Code,
 		                                                                         ErrorDetails.Message);
 		Operation = NStr("en='Setting PIN-code';ru='Установка PIN-кода'");
@@ -5453,7 +5453,7 @@ Procedure StartSendingPackagesThroughAdditionalDataProcessor(ExternalAttachableM
 			EndIf;
 		Else
 			MessageText = NStr("en='Bank key is not connected for data sending by EDF setting: %1';ru='К компьютеру не подключен банковский ключ для отправки данных по настройке ЭДО: %1'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Parameters.EDAgreement);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Parameters.EDAgreement);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
 	EndIf;
@@ -5809,7 +5809,7 @@ Procedure SigningEDThroughAdditDataProcessor(AuthenticationCompleted, Parameters
 		|Код
 		|ошибки: %1 %2'");
 				ErrorDetails = ExternalAttachableModule.ErrorDetails();
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 				Operation = NStr("en='Receiving data scheme';ru='Получение схемы данных'");
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -5839,7 +5839,7 @@ Procedure SigningEDThroughAdditDataProcessor(AuthenticationCompleted, Parameters
 		|Код
 		|ошибки: %1 %2'");
 				ErrorDetails = ExternalAttachableModule.ErrorDetails();
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 				Operation = NStr("en='Signing the documents';ru='Подписание документов'");
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -5991,7 +5991,7 @@ Procedure CheckSignaturesStatusesThroughAdditionalDataProcessor(AvailableStorage
 		|Код
 		|ошибки: %1 %2'");
 					ErrorDetails = ExternalAttachableModule.ErrorDetails();
-					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+					MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 										ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 					Operation = NStr("en='Signature check';ru='Проверка подписи'");
 					DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -6181,7 +6181,7 @@ Function SetCertificatePasswordThroughAdditionalDataProcessor(ExternalAttachable
 		|Код
 		|ошибки: %1 %2'");
 			ErrorDetails = ExternalAttachableModule.ErrorDetails();
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 																ErrorTemplate,
 																ErrorDetails.Code,
 																ErrorDetails.Message);
@@ -6220,7 +6220,7 @@ Function StoragePINCodeIsSetThroughAdditionalDataProcessor(ExternalAttachableMod
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate,
 		                                                                         ErrorDetails.Code,
 		                                                                         ErrorDetails.Message);
 		Operation = NStr("en='Checking the existence of set PIN code';ru='Проверка наличия установленного PIN-кода'");
@@ -6275,7 +6275,7 @@ Function SendQueryThroughAdditionalDataProcessor(ExternalAttachableModule, XMLCe
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate,
 		                                                                         ErrorDetails.Code,
 		                                                                         ErrorDetails.Message);
 		Operation = NStr("en='Data sending';ru='Отправка данных'");
@@ -6310,7 +6310,7 @@ Function CertificateDataThroughAdditionalDataProcessor(ExternalAttachableModule,
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 															ErrorTemplate,
 															ErrorDetails.Code,
 															ErrorDetails.Message);
@@ -6361,7 +6361,7 @@ Procedure StartAgreementTestThroughAdditionalDataProcessor(Parameters) Export
 		CertificateParameters = Item.Value;
 		
 		MessageText = NStr("en='Checking the certificate: %1';ru='Проверка сертификата: %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Item.Key);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Item.Key);
 		MessageToUser(MessageText, TargetID);
 		
 		Map = New Map;
@@ -6403,7 +6403,7 @@ Procedure StartAgreementTestThroughAdditionalDataProcessor(Parameters) Export
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Sending a test request';ru='Отправка тестового запроса'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -6434,7 +6434,7 @@ Function ConnectedStoragesThroughAdditionalDataProcessor(ExternalAttachableModul
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Search for storages';ru='Поиск хранилищ'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -6498,7 +6498,7 @@ Procedure EstablishConnectionThroughAdditionalDataProcessor(EDAgreement, Externa
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Making a connection';ru='Установка соединения'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -6535,7 +6535,7 @@ Function RequiredToSetStoragePINCodeThroughAdditionalDataProcessor(ExternalAttac
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate,
 		                                                                         ErrorDetails.Code,
 		                                                                         ErrorDetails.Message);
 		Operation = NStr("en='Check the need to enter PIN code';ru='Проверка необходимости ввода PIN-кода'");
@@ -6612,7 +6612,7 @@ Procedure ContinueAgreementTestThroughAdditionalDataProcessorAfterAuthentication
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 															ErrorTemplate,
 															ErrorDetails.Code,
 															ErrorDetails.Message);
@@ -6642,7 +6642,7 @@ Procedure ContinueAgreementTestThroughAdditionalDataProcessorAfterAuthentication
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 															ErrorTemplate,
 															ErrorDetails.Code,
 															ErrorDetails.Message);
@@ -6806,7 +6806,7 @@ Function InitializeAdditionalDataProcessorInterface(EDAgreement, VersionHandling
 		|Код
 		|ошибки: %1 %2'");
 			ErrorDetails = AttachableModule.ErrorDetails();
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 			Operation = NStr("en='Initialization of external data processor';ru='Инициализация внешней обработки'");
 			DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -6825,7 +6825,7 @@ Function InitializeAdditionalDataProcessorInterface(EDAgreement, VersionHandling
 		|Код
 		|ошибки: %1 %2'");
 			ErrorDetails = AttachableModule.ErrorDetails();
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 			Operation = NStr("en='Initialization of external data processor';ru='Инициализация внешней обработки'");
 			DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -6859,7 +6859,7 @@ Function InitializeAdditionalDataProcessorInterface(EDAgreement, VersionHandling
 		|Код
 		|ошибки: %1 %2'");
 				ErrorDetails = AttachableModule.ErrorDetails();
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 									ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 				Operation = NStr("en='Completion of external data processor initialization';ru='Завершение инициализации внешней обработки'");
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -6939,7 +6939,7 @@ Procedure ContinueAgreementTestThroughAdditionalDataProcessor(Parameters)
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Authentication on bank resource';ru='Аутентификация на ресурсе банка.'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -7169,7 +7169,7 @@ Procedure AfterConnectingComponentDetermineSberbankSignaturesStatuses(Attachable
 		|verified: %1 Verification result: signature %2.';ru='Выполнение операции: Проверка подписи.
 		|Проверена подпись
 		|для электронного документа: %1 Результат проверки: подпись %2.'");
-				TextForLog = StringFunctionsClientServer.PlaceParametersIntoString(TextForLog,
+				TextForLog = StringFunctionsClientServer.SubstituteParametersInString(TextForLog,
 					ED, ?(ReturnCode = 0, "correct","incorrect"));
 				ElectronicDocumentsServiceCallServer.WriteToEventLogMonitor(TextForLog, 1, "Information", ED);
 			Except
@@ -7276,7 +7276,7 @@ Procedure AfterConnectingComponentSignSberbankED(AttachableModule, Parameters) E
 		Comment = NStr("en='Running: %1.
 		|Set the signature: %2, certificate: %3';ru='Выполнение операции: %1.
 		|Установил подпись: %2, сертификат: %3'");
-		Comment = StringFunctionsClientServer.PlaceParametersIntoString(
+		Comment = StringFunctionsClientServer.SubstituteParametersInString(
 														Comment,
 														Operation,
 														UsersClientServer.AuthorizedUser(),
@@ -7518,7 +7518,7 @@ Procedure DocumentsSendingDataProcessorSberbank(EDAgreement, ParametersOO) Expor
 	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 	
 	If ParametersOO.SentCnt > 0 Then
-		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+		NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 															NStr("en='Documents sent: (%1)';ru='Отправлено документов: (%1)'"),
 															ParametersOO.SentCnt);
 		PaymentOrder = PredefinedValue("Enum.EDKinds.PaymentOrder");
@@ -7704,7 +7704,7 @@ Procedure QueryExtractSberbank(EDAgreement, Company, StartDate, EndDate, Night =
 													PredefinedValue("Enum.EDKinds.QueryStatement"));
 	If AvailableCertificates.Count()=0 Then
 		MessageText = NStr("en='The proper signature certificate for <%1> company and <Statement request> document type is not found';ru='Не найден подходящий сертификат подписи для организации <%1> и вида документа <Запрос выписки>'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Company);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Company);
 		Message(MessageText, MessageStatus.Important);
 		Return;
 	EndIf;
@@ -8043,12 +8043,12 @@ Procedure CompleteAuthenticationOnSberbankToken(EDAgreement, AuthorizationComple
 			EndIf;
 		ElsIf AuthorizationResult = 28 Then
 			MessagePattern = NStr("en='PIN%1 is blocked';ru='PIN%1 заблокирован'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								MessagePattern, ValueFromCache("NumberContainer"));
 			CommonUseClientServer.MessageToUser(MessageText);
 		ElsIf AuthorizationResult = 27 Then
 			MessagePattern = NStr("en='PUK%1 is blocked';ru='PUK%1 заблокирован'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								MessagePattern, ValueFromCache("NumberContainer"));
 			CommonUseClientServer.MessageToUser(MessageText);
 		ElsIf AuthorizationResult = 25 Then
@@ -8118,7 +8118,7 @@ Function GetBusinessSystemNumber()
 		|Details in the event log.';ru='Ошибка при получении списка бизнес систем.
 		|Подробности в журнале регистрации.'");
 		ErrorText = NStr("en='When receving the list of business systems, component AddIn.Bicrypt returned %1 error code';ru='Компонента AddIn.Bicrypt при получении списка бизнес систем вернула код ошибки %1'");
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, Res);
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, Res);
 		Operation = NStr("en='Receiving the business system list.';ru='Получение списка бизнес систем.'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
 		ClearAuthorizationDataSberbank();

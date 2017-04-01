@@ -28,7 +28,7 @@ Procedure OpenNewForm(FormKind, ServerParameters, ClientParameters = Undefined,
 	FormsKinds = ",SigningData,DataEncryption,DataDetail, ,CertificateChoiceForSigningOrDecoding,CertificateCheck,";
 	
 	If Find(FormsKinds, "," + FormKind + ",") = 0 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error in the procedure OpenNewForm. FormKind ""% 1"" is not supported.';ru='Ошибка в процедуре ОткрытьНовуюФорму. ВидФормы ""%1"" не поддерживается.'"), FormKind);
 	EndIf;
 	

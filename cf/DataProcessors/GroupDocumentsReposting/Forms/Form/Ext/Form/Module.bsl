@@ -120,10 +120,10 @@ Procedure ShowResultOfReposting()
 		ErrorsMessageBox = NStr("en=' - no errors.';ru=' - ошибок не обнаружено.'");
 	Else
 		ErrorsMessageBox = NStr("en=' - failed to post documents: %1';ru=' - не удалось провести документов: %1'");
-		ErrorsMessageBox = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorsMessageBox = StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorsMessageBox, FailedToPost);
 	EndIf;
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		MessageText, DocumnetsPosted, ErrorsMessageBox);
 		
 	ShowMessageBox(Undefined,MessageText);

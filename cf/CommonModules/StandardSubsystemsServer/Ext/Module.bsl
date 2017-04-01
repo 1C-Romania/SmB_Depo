@@ -1347,7 +1347,7 @@ Procedure ValidateExchangePlanContent(Val ExchangePlanName) Export
 		
 		If EnableContent.Count() <> 0 Then
 			
-			DetailsExceptions1 = StringFunctionsClientServer.PlaceParametersIntoString(
+			DetailsExceptions1 = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The %1 exchange plan must include the following metadata objects: %2';ru='В состав плана обмена %1 должны входить следующие объекты метаданных: %2'"),
 				ExchangePlanName,
 				StringFunctionsClientServer.RowFromArraySubrows(PresentationMetadataObjects(EnableContent), ", "));
@@ -1356,7 +1356,7 @@ Procedure ValidateExchangePlanContent(Val ExchangePlanName) Export
 		
 		If ExcludeFromComposition.Count() <> 0 Then
 			
-			DetailsExceptions2 = StringFunctionsClientServer.PlaceParametersIntoString(
+			DetailsExceptions2 = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The exchange plan %1 must NOT include the following metadata objects: %2';ru='В состав плана обмена %1 НЕ должны входить следующие объекты метаданных: %2'"),
 				ExchangePlanName,
 				StringFunctionsClientServer.RowFromArraySubrows(PresentationMetadataObjects(ExcludeFromComposition), ", "));
@@ -1365,7 +1365,7 @@ Procedure ValidateExchangePlanContent(Val ExchangePlanName) Export
 		
 		If DisableAutoregistration.Count() <> 0 Then
 			
-			ExceptionDescription3 = StringFunctionsClientServer.PlaceParametersIntoString(
+			ExceptionDescription3 = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There should be no objects with the set auto-registration flag in the %1 exchange plan content.
 		|It is required to prohibit the auto-registration for the following metadata objects: %2';ru='В составе плана обмена %1 не должно быть объектов с установленным признаком авторегистрации.
 		|Требуется запретить авторегистрацию для следующих объектов метаданных: %2'"),
@@ -1952,7 +1952,7 @@ Procedure ClearTempFilesDirectory(PathToDirectory) Export
 			EventLogLevel.Warning,
 			,
 			,
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while clearing the directory of temporary files %1:%2';ru='Ошибка очистки каталога временных файлов ""%1"":%2'"),
 				PathToDirectory,
 				Chars.LF + DetailErrorDescription(ErrorInfo())));
@@ -2944,7 +2944,7 @@ Procedure DisablePredefinedItemsDeletionMarkupBeforeWriting(Source, Cancel) Expo
 		If OldProperties.PredefinedDataName <> ""
 		   AND OldProperties.DeletionMark <> True Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='It is unacceptable to mark
 		|the predefined item for deletion: %1';ru='Недопустимо помечать
 		|на удаление предопределенный элемент: ""%1"".'"),
@@ -2953,7 +2953,7 @@ Procedure DisablePredefinedItemsDeletionMarkupBeforeWriting(Source, Cancel) Expo
 		ElsIf OldProperties.PredefinedDataName = ""
 		        AND OldProperties.DeletionMark = True Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='It is unacceptable to connect the item marked
 		|for deletion with the name of the predefined: %1.';ru='Недопустимо связывать с именем предопределенного
 		|элемент, помеченный на удаление: ""%1"".'"),
@@ -2971,7 +2971,7 @@ Procedure DisablePredefinedItemsDeletionBeforeDeletion(Source, Cancel) Export
 		Return;
 	EndIf;
 	
-	Raise StringFunctionsClientServer.PlaceParametersIntoString(
+	Raise StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='It is unacceptable
 		|to delete the predefined item %1.';ru='Недопустимо
 		|удалять предопределенный элемент ""%1"".'"),
@@ -3116,7 +3116,7 @@ Procedure BeforeApplicationStart()
 	
 	// Check the main applicationming language installed in configuration.
 	If Metadata.ScriptVariant <> Metadata.ObjectProperties.ScriptVariant.English Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Variant of the %1 ultimate fallback language of configuration is not supported.
 		|It is required to use %2 language variant.';ru='Вариант встроенного языка конфигурации ""%1"" не поддерживается.
 		|Необходимо использовать вариант языка ""%2"".'"),
@@ -3128,7 +3128,7 @@ Procedure BeforeApplicationStart()
 	SystemInfo = New SystemInfo;
 	MinimalPlatformVersion = "8.3.5.1443";
 	If CommonUseClientServer.CompareVersions(SystemInfo.AppVersion, MinimalPlatformVersion) < 0 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='To start, 1C:Enterprise platform version should be %1 or greater.';ru='Для запуска необходима версия платформы 1С:Предприятие %1 или выше.'"), MinimalPlatformVersion);
 	EndIf;
 	
@@ -3156,7 +3156,7 @@ Procedure BeforeApplicationStart()
 	EndIf;
 	
 	If ValueIsFilled(UnavailableMode) Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Configuration compatibility mode with 1C:Enterprise version %1 is not supported.
 		|To start it, set the mode of compatibility
 		|with 1C:Enterprise version not less then 8 in configuration.3.5 or Do not use.';ru='Режим совместимости конфигурации с 1С:Предприятием версии %1 не поддерживается. Для запуска установите в конфигурации режим совместимости с 1С:Предприятием версии не ниже 8.3.5 или ""Не использовать"".'"),
@@ -3170,14 +3170,14 @@ Procedure BeforeApplicationStart()
 		Try
 			ZeroVersion = CommonUseClientServer.CompareVersions(Metadata.Version, "0.0.0.0") = 0;
 		Except
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The property of the Version configuration is filled in incorrectly: %1
 		|Correct format, for example: ""1.2.3.45"".';ru='Не правильно заполнено свойство конфигурации Версия: ""%1"".
 		|Правильный формат, например: ""1.2.3.45"".'"),
 				Metadata.Version);
 		EndTry;
 		If ZeroVersion Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The property of the Version configuration is filled in incorrectly: %1
 		|Version can not be the zero.';ru='Не правильно заполнено свойство конфигурации Версия: ""%1"".
 		|Версия не может быть нулевой.'"),
@@ -4104,7 +4104,7 @@ Procedure CheckUniquenessOfEventNames(Events)
 		If AllEvents.Get(Event) = Undefined Then
 			AllEvents.Insert(Event, True);
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while preparing the events list.
 		|
 		|Event
@@ -4202,7 +4202,7 @@ Function StandardDetailsEventHandlers(SubsystemDescriptions, HandlersEventsBySub
 				If TypeOf(Handler.Module) <> Type("String")
 				 OR Not ValueIsFilled(Handler.Module) Then
 					
-					Raise StringFunctionsClientServer.PlaceParametersIntoString(
+					Raise StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='AN error occurred while
 		|preparing %1 event handlers.
 		|
@@ -4218,7 +4218,7 @@ Function StandardDetailsEventHandlers(SubsystemDescriptions, HandlersEventsBySub
 				If ModulesHandlers[Event].Get(Handler.Module) = Undefined Then
 					ModulesHandlers[Event].Insert(Handler.Module, True);
 				Else
-					Raise StringFunctionsClientServer.PlaceParametersIntoString(
+					Raise StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='AN error occurred while
 		|preparing %1 event handlers.
 		|
@@ -4238,7 +4238,7 @@ Function StandardDetailsEventHandlers(SubsystemDescriptions, HandlersEventsBySub
 				If HandlersEvents [HandlerName] = Undefined Then
 					HandlersEvents .Insert(HandlerName, Event);
 				Else
-					Raise StringFunctionsClientServer.PlaceParametersIntoString(
+					Raise StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='AN error occurred while
 		|preparing %1 event handlers.
 		|

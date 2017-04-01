@@ -59,7 +59,7 @@ EndProcedure
 &AtClient
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Save changes in %1?';ru='Сохранить изменения в %1?'"), DocumentName);
 	NotifyDescription = New NotifyDescription("ConfirmAndClose", ThisObject);
 	CommonUseClient.ShowFormClosingConfirmation(NOTifyDescription, Cancel, QuestionText);

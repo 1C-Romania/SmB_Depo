@@ -547,7 +547,7 @@ Procedure SendMessageToRecipient(MessageChannel, MessageBody, Recipient, IsInsta
 		
 	ElsIf CommonUse.ObjectAttributeValue(Recipient, "Blocked") Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Attempt to send message to the locked end point ""%1"".';ru='Попытка отправки сообщения заблокированной конечной точке ""%1"".'"),
 			String(Recipient));
 	EndIf;

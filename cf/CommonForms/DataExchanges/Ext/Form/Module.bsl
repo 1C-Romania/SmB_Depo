@@ -534,7 +534,7 @@ Procedure UpdateSynchronizationsCount(SetExchangesQuantity)
 		Items.TitleDataExchangePausedWithUpdateRight,
 		Items.TitleDataExchangePausedNoRefreshingRight);
 		
-		TitleDataExchangePaused.Title = StringFunctionsClientServer.PlaceParametersIntoString(TitleDataExchangePaused.Title, DataExchangeServer.MasterNode());
+		TitleDataExchangePaused.Title = StringFunctionsClientServer.SubstituteParametersInString(TitleDataExchangePaused.Title, DataExchangeServer.MasterNode());
 		
 		If IsInRoleAddChangeOfDataExchanges Then
 			Items.Move(Items.PopupCreate, Items.CommandBar, Items.ListOfNodesStateGroupOfButtonsRunningDataExchange);
@@ -1031,7 +1031,7 @@ Function ConversionRulesAreCompatibleWithCurrentVersion(ExchangePlanName, ErrorD
 			
 			ErrorDescription = New Structure;
 			ErrorDescription.Insert("ErrorText", NStr("en='Data can not be synchronized because of using rules for the %1 applicatione. You should use rules from configuration or import correct rules set from file.';ru='Синхронизация данных не может быть выполнена, так как используются правила, предназначенные для программы ""%1"". Следует использовать правила из конфигурации или загрузить корректный комплект правил из файла.'"));
-			ErrorDescription.ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescription.ErrorText,
+			ErrorDescription.ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorDescription.ErrorText,
 				RulesInformation.ConfigurationSynonymInRules);
 			ErrorDescription.Insert("ErrorKind", "IncorrectConfiguration");
 			ErrorDescription.Insert("Picture", PictureLib.Error32);
@@ -1057,7 +1057,7 @@ Function ConversionRulesAreCompatibleWithCurrentVersion(ExchangePlanName, ErrorD
 				
 			EndIf;
 			
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, Metadata.Synonym,
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, Metadata.Synonym,
 					VersionInRulesWithoutAssembly, ConfigurationVersionWithoutAssembly);
 			
 			ErrorDescription = New Structure;

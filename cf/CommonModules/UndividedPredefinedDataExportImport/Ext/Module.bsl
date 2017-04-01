@@ -143,7 +143,7 @@ Procedure BeforeDataExport(Container) Export
 					
 				Else
 					
-					Raise StringFunctionsClientServer.PlaceParametersIntoString(
+					Raise StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='The %1 metadata object is not supported!';ru='Объект метаданных %1 не поддерживается!'"), MetadataObject.FullName());
 					
 				EndIf;
@@ -337,7 +337,7 @@ EndFunction
 
 Procedure RaiseExceptionFailedDefineField(Val FieldName, Val ObjectName)
 	
-	Raise StringFunctionsClientServer.PlaceParametersIntoString(
+	Raise StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Failed to make a query to get the %1 field value of the %2 metadata object!';ru='Не удалось построить запрос получения значения поля %1 объекта мтеданных %2!'"),
 		FieldName, ObjectName
 	);

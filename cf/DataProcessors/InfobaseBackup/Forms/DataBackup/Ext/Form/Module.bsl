@@ -55,7 +55,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Else
 		HeaderText = NStr("en='Last time the backup was executed: %1';ru='В последний раз резервное копирование проводилось: %1'");
 		LastCopyDate = Format(BackupSettings.DateOfLastBackup, "DLF=DDT");
-		HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(HeaderText, LastCopyDate);
+		HeaderText = StringFunctionsClientServer.SubstituteParametersInString(HeaderText, LastCopyDate);
 	EndIf;
 	Items.LabelLastBackupExecutionDate.Title = HeaderText;
 	
@@ -455,7 +455,7 @@ EndProcedure
 &AtServer
 Procedure CancelPreparation()
 	
-	Items.LabelItWasNotPossible.Title = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1.
+	Items.LabelItWasNotPossible.Title = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1.
 		|Preparation for a backup is canceled. Infobase is locked.';ru='%1.
 		|Подготовка к резервному копированию отменена. Информационная база разблокирована.'"),
 		InfobaseConnections.EnabledSessionsMessage());

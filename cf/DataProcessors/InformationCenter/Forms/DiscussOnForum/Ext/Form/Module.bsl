@@ -131,7 +131,7 @@ Procedure GenerateItemsNewComments(NewComments)
 		NewItemName                     = "SubjectWithNewComments" + String(Iteration);
 		NewItem                          = Items.Add(NewItemName, Type("FormDecoration"), Items.NewComments);
 		NewItem.Type                      = FormDecorationType.Label;
-		NewItem.Title                = StringFunctionsClientServer.PlaceParametersIntoString(SubjectTemplateWithNewComments, Comment.subject, String(Comment.messageCount));
+		NewItem.Title                = StringFunctionsClientServer.SubstituteParametersInString(SubjectTemplateWithNewComments, Comment.subject, String(Comment.messageCount));
 		NewItem.Hyperlink              = True;
 		NewItem.HorizontalStretch = True;
 		NewItem.SetAction("Click", "ClickOnThemeWithNewComments");

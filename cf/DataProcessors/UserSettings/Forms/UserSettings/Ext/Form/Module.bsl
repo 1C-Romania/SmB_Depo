@@ -296,7 +296,7 @@ EndProcedure
 Procedure ClearAllSettings(Command)
 	
 	QuestionText = NStr("en='Clear all the %1 user settings?';ru='Очистить все настройки у пользователя ""%1""?'");
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, UserRef);
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, UserRef);
 	QuestionButtons = New ValueList;
 	QuestionButtons.Add("Clear", NStr("en='Clear';ru='Очистить'"));
 	QuestionButtons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
@@ -310,7 +310,7 @@ EndProcedure
 Procedure ClearReportsAndAppearanceSettings(Command)
 	
 	QuestionText = NStr("en='Clear all report and appearance settings of the %1 user?';ru='Очистить все настройки отчетов и внешнего вида у пользователя ""%1""?'");
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, UserRef);
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, UserRef);
 	QuestionButtons = New ValueList;
 	QuestionButtons.Add("Clear", NStr("en='Clear';ru='Очистить'"));
 	QuestionButtons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
@@ -334,7 +334,7 @@ Procedure ClearAllUserSettings(Command)
 	QuestionText = NStr("en='All user settings will be cleared.
 		|Continue?';ru='Сейчас будут очищены все настройки всех пользователей.
 		|Продолжить?'");
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, UserRef);
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, UserRef);
 	QuestionButtons = New ValueList;
 	QuestionButtons.Add("ClearAll", NStr("en='Clear all';ru='Очистить все'"));
 	QuestionButtons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
@@ -378,7 +378,7 @@ Procedure CalculateSettingsCount()
 	SettingsCount = CountSettingsInTreeView(SettingsList);
 	
 	If SettingsCount <> 0 Then
-		Items.ReportsSettingsPage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.ReportsSettingsPage.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Reports settings (%1)';ru='Настройки отчетов (%1)'"), SettingsCount);
 	Else
 		Items.ReportsSettingsPage.Title = NStr("en='Report settings';ru='Настройки отчета'");
@@ -389,7 +389,7 @@ Procedure CalculateSettingsCount()
 	SettingsCount = CountSettingsInTreeView(SettingsList);
 	
 	If SettingsCount <> 0 Then
-		Items.AppearancePage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.AppearancePage.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Appearance (%1)';ru='Внешний вид (%1)'"), SettingsCount);
 	Else
 		Items.AppearancePage.Title = NStr("en='Appearance';ru='Оформление'");
@@ -400,7 +400,7 @@ Procedure CalculateSettingsCount()
 	SettingsCount = CountSettingsInTreeView(SettingsList);
 	
 	If SettingsCount <> 0 Then
-		Items.OtherSettingsPage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.OtherSettingsPage.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Other settings (%1)';ru='Прочие настройки (%1)'"), SettingsCount);
 	Else
 		Items.OtherSettingsPage.Title = NStr("en='Other settings';ru='Прочие настройки'");
@@ -683,10 +683,10 @@ Procedure Attachable_ExecuteNotifyProcessing()
 			SettingsNames = Left(SettingsNames, StrLen(SettingsNames)-2);
 			
 			If SettingsArray.Count() = 7 Then
-				ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+				ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='All the settings are copied %1';ru='Скопированы все настройки %1'"), ExplanationToWhomSettingsAreCopied);
 			Else
-				ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+				ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='%1 copied %2';ru='%1 скопированы %2'"), SettingsNames, ExplanationToWhomSettingsAreCopied);
 			EndIf;
 				
@@ -821,7 +821,7 @@ Procedure ClearAllSettingsEnd(Response, AdditionalParameters) Export
 	CommonUseClient.RefreshApplicationInterface();
 	
 	ExplanationText = NStr("en='All the %1 user settings have been cleared';ru='Очищены все настройки пользователя ""%1""'");
-	ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(ExplanationText, UserRef);
+	ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(ExplanationText, UserRef);
 	ShowUserNotification(
 		NStr("en='Clear settings';ru='Очистить настройки'"), , ExplanationText, PictureLib.Information32);
 	
@@ -843,7 +843,7 @@ Procedure ClearReportsAndAppearanceSettingsEnd(Response, AdditionalParameters) E
 	CommonUseClient.RefreshApplicationInterface();
 	
 	ExplanationText = NStr("en='All report and appearance settings of the %1 user have been cleared';ru='Очищены все настройки отчетов и внешнего вида у пользователя ""%1""'");
-	ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(ExplanationText, UserRef);
+	ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(ExplanationText, UserRef);
 	ShowUserNotification(
 		NStr("en='Clear settings';ru='Очистить настройки'"), , ExplanationText, PictureLib.Information32);
 	
@@ -1001,11 +1001,11 @@ Procedure NotifyAboutDeleting(SettingsCount, SettingName = Undefined, UserCount 
 	If SettingsCount = 1
 		AND UserCount = Undefined Then
 		ExplanationText = NStr("en='The %1 is cleared for the %2 user';ru='""%1"" очищена пользователю ""%2""'");
-		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationText, SettingName, String(UserRef));
 	ElsIf UserCount = Undefined Then
 		ExplanationText = NStr("en='The %1 is cleared for the %2 user';ru='""%1"" очищена пользователю ""%2""'");
-		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationText, SubjectInWords, String(UserRef));
 	EndIf;
 	
@@ -1016,11 +1016,11 @@ Procedure NotifyAboutDeleting(SettingsCount, SettingName = Undefined, UserCount 
 		
 		If SettingsCount = 1 Then
 			ExplanationText = NStr("en='""%1"" cleared %2';ru='""%1"" очищена %2'");
-			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationText, SettingName, ExplanationWhomSettingsCleared);
 		Else
 			ExplanationText = NStr("en='Cleared %1 %2';ru='Очищено %1 %2'");
-			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationText, SubjectInWords, ExplanationWhomSettingsCleared);
 		EndIf;
 		

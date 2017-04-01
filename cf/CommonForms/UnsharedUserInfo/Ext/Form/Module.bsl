@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		|this is a service account which is provided for the service administrators.';ru='Просмотр сведений о пользователе %1 не доступен, т.к. это 
 		|служебная учетная запись, предусмотренная для администраторов сервиса.'");
 	Items.SharedUser.Title = 
-		StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Parameters.Key.Description);
+		StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Parameters.Key.Description);
 	
 EndProcedure
 

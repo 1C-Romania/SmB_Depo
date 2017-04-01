@@ -66,12 +66,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If ReplaceReferences.Count() > 1 Then
-		Items.LabelSelectedType.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.LabelSelectedType.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Select one of the %1 items with which the selected values should be replaced.';ru='Выберите один из элементов ""%1"", на который следует заменить выбранные значения (%2):'"),
 			MainMetadata.Presentation(), ReplaceReferences.Count());
 	Else
 		Title = NStr("en='Item replacement';ru='Замена элемента'");
-		Items.LabelSelectedType.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.LabelSelectedType.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Select one of the %1 items with which %2 should be replaced.';ru='Выберите один из элементов ""%1"", на который следует заменить ""%2"":'"),
 			MainMetadata.Presentation(), ReplaceReferences[0].Ref);
 	EndIf;
@@ -261,7 +261,7 @@ Procedure FormTargetItemAndToolTip(Context)
 		|заменен на ""%1"" и помечен на удаление.'");
 		EndIf;
 			
-		ToolTipText = StringFunctionsClientServer.PlaceParametersIntoString(ToolTipText, Context.TargetItem);
+		ToolTipText = StringFunctionsClientServer.SubstituteParametersInString(ToolTipText, Context.TargetItem);
 		Context.Items.ToolTipSelectTargetItem.Title = StringFunctionsClientServer.FormattedString(ToolTipText);
 		
 	Else
@@ -282,7 +282,7 @@ Procedure FormTargetItemAndToolTip(Context)
 		|заменены на ""%2"" и помечен на удаление.'");
 		EndIf;
 			
-		ToolTipText = StringFunctionsClientServer.PlaceParametersIntoString(ToolTipText, 
+		ToolTipText = StringFunctionsClientServer.SubstituteParametersInString(ToolTipText, 
 			Count, Context.TargetItem);
 		Context.Items.ToolTipSelectTargetItem.Title = StringFunctionsClientServer.FormattedString(ToolTipText);
 		
@@ -300,12 +300,12 @@ Function EndingMessage()
 	
 	Count = ReplaceReferences.Count();
 	If Count = 1 Then
-		ResultText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ResultText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 item is replaced with %2';ru='Элемент ""%1"" заменен на ""%2""'"),
 			ReplaceReferences[0].Ref,
 			TargetItemResult);
 	Else
-		ResultText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ResultText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 items are replaced with %2';ru='Элементы (%1) заменены на ""%2""'"),
 			Count,
 			TargetItemResult);
@@ -318,7 +318,7 @@ EndFunction
 &AtClient
 Procedure FormLabelFailedReplacements()
 	
-	Items.ResultFailedReplacements.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.ResultFailedReplacements.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Unable to replace items (%1 from %2). IN some places of use, an automatic
 		|replacement for %3 can not be executed.';ru='Не удалось заменить элементы (%1 из %2). В некоторых местах использования не может быть произведена
 		|автоматическая замена на ""%3""'"),
@@ -582,10 +582,10 @@ Procedure InitializeReplacedReferences(Val RefArray)
 	
 	If Result[2].Unload().Count() = 0 Then
 		If QuantityRefs > 1 Then
-			ParametersErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ParametersErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Do not replace the selected items (%1) with anything.';ru='Выбранные элементы (%1) не на что заменить.'"), QuantityRefs);
 		Else
-			ParametersErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ParametersErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Do not replace the %1 item with anything.';ru='Выбранный элемент ""%1"" не на что заменить.'"), CommonUse.SubjectString(TargetItem));
 		EndIf;
 		Return;
@@ -685,7 +685,7 @@ Procedure StepSelectTargetItemBeforeNextAction(Val StepParameters, Val Additiona
 	
 	CurrentOwner = AttributeValue(CurrentData, "Owner");
 	If CurrentOwner <> ReplaceableLinksCommonOwner Then
-		ShowMessageBox( , StringFunctionsClientServer.PlaceParametersIntoString(
+		ShowMessageBox( , StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='You can not replace it with the object subordinate to another user.
 		|The selected item has %1 as an owner, and the replaced item has %2 as an owner.';ru='Нельзя заменять на элемент, подчиненный другому владельцу.
 		|У выбранного элемента владелец ""%1"", а у заменяемого - ""%2"".'"),
@@ -701,7 +701,7 @@ Procedure StepSelectTargetItemBeforeNextAction(Val StepParameters, Val Additiona
 	EndIf;
 	
 	// An attempt to replace with an item marked for deletion.
-	Text = StringFunctionsClientServer.PlaceParametersIntoString(
+	Text = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='%1 item is marked for deletion. Continue?';ru='Элемент %1 помечен на удаление. Продолжить?'"),
 		CurrentData.Ref
 	);
@@ -1052,7 +1052,7 @@ Procedure RunAssistant()
 					Try
 						Test = New NotifyDescription(HandlerName, ThisObject);
 					Except
-						Text = StringFunctionsClientServer.PlaceParametersIntoString(
+						Text = StringFunctionsClientServer.SubstituteParametersInString(
 							NStr("en='Error of %1 event handler creation for %2 page, %3 procedure is not defined';ru='Ошибка создания обработчика события %1 для страницы %2, не определена процедура %3'"),
 							NameActions, 
 							StepDescription.Page, 
@@ -1130,7 +1130,7 @@ EndProcedure
 Procedure GoToAssistantStep(Val IdentifierStep, Val TriggerEvents = False)
 	NextStep = AssistantStepNumberByIdentifier(IdentifierStep);
 	If NextStep = Undefined Then
-		Error = StringFunctionsClientServer.PlaceParametersIntoString(
+		Error = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 assistant step is not found';ru='Не найден шаг помощника %1'"),
 			IdentifierStep
 		);

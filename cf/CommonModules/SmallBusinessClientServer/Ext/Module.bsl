@@ -92,7 +92,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					TextForIncorrectTIN = NStr("en='%1 TIN does not contain 10 digits';
 												|ru='%1 ИНН содержит не 10 цифр'");
 					
-					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
+					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
 					
 					ReturnStructure.NoErrorsByTIN = False;
 					
@@ -105,7 +105,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					TextForIncorrectTIN = NStr("en='%1 TIN does not contain 12 digits';
 												|ru='%1 ИНН содержит не 12 цифр'");
 					
-					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
+					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
 					
 					ReturnStructure.NoErrorsByTIN = False;
 					
@@ -118,7 +118,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					TextForIncorrectTIN = NStr("en='%1 The first two TIN digits can not be ""00""';
 												|ru='%1 Первые две цифры ИНН не могут быть ""00""'");
 					
-					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
+					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
 					
 					ReturnStructure.NoErrorsByTIN = False;
 					
@@ -135,7 +135,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 						TextForIncorrectTIN = NStr("en='%1 TIN includes not only digits';
 													|ru='%1 ИНН содержит не только цифры'");
 						
-						ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
+						ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
 						
 						ReturnStructure.NoErrorsByTIN = False;
 						
@@ -185,7 +185,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 								TextForIncorrectTIN = NStr("en='%1 TIN does not correspond to the format';
 															|ru='%1 ИНН не соответствует формату'");
 								
-								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
+								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
 								
 								ReturnStructure.NoErrorsByTIN = False;
 								
@@ -252,7 +252,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 								TextForIncorrectTIN = NStr("en='%1 TIN does not correspond to the format';
 															|ru='%1 ИНН не соответствует формату'");
 								
-								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
+								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
 								
 								ReturnStructure.NoErrorsByTIN = False;
 								
@@ -315,7 +315,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 					TextForIncorrectKPP = NStr("en='&1 KPP does not contain 9 digits';
 												|ru='%1 КПП содержит не 9 цифр'");
 					
-					ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
+					ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectKPP, KPP);
 					
 					ReturnStructure.NoErrorsByKPP = False;
 					
@@ -332,7 +332,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 						TextForIncorrectKPP = NStr("en='%1 KPP includes not only digits';
 													|ru='%1 КПП содержит не только цифры'");
 						
-						ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
+						ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectKPP, KPP);
 						
 						ReturnStructure.NoErrorsByKPP = False;
 						
@@ -383,7 +383,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 							TextForIncorrectKPP = NStr("en='%1 KPP does not correspond to the format';
 														|ru='%1 КПП не соответствует формату'");
 							
-							ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
+							ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectKPP, KPP);
 							
 							ReturnStructure.NoErrorsByKPP = False;
 						EndIf;

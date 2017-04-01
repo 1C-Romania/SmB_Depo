@@ -110,7 +110,7 @@ Procedure MarkToDeleteAttachedFiles(FileOwner, DeletionMark)
 	Selection = Result.Select();
 	While Selection.Next() Do
 		If DeletionMark AND Not Selection.IsEditing.IsEmpty() Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='""%1"" can not be
 		|deleted, so. contains
 		|file ""%2"" taken for editing.';ru='""%1"" не может быть удален,

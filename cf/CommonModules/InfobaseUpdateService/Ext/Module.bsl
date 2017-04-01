@@ -370,19 +370,19 @@ Function RunInfobaseUpdate(UpdateParameters) Export
 	EndIf;
 	
 	If DataUpdateMode = "TransitionFromAnotherApplication" Then
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		Message = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Change configuration name to %1.
 		|You will be transited from another application.';ru='Изменилось имя конфигурации на ""%1"".
 		|Будет выполнен переход с другой программы.'"),
 			Metadata.Name);
 	ElsIf DataUpdateMode = "VersionUpdate" Then
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		Message = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Number of the configuration version: from %1 to %2.
 		|Infobase update will be performed.';ru='Изменился номер версии конфигурации: с ""%1"" на ""%2"".
 		|Будет выполнено обновление информационной базы.'"),
 			DataVersion, MetadataVersion);
 	Else 
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		Message = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The initial filling to the %1 version is in progress.';ru='Выполняется начальное заполнение данных до версии ""%1"".'"),
 			MetadataVersion);
 	EndIf;
@@ -481,7 +481,7 @@ Function RunInfobaseUpdate(UpdateParameters) Export
 		UnlockInfobase(IBBlock);
 	EndIf;
 
-	Message = StringFunctionsClientServer.PlaceParametersIntoString(
+	Message = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='The Infobase has been successfully updated to the version ""%1"".';ru='Обновление информационной базы на версию ""%1"" выполнено успешно.'"), MetadataVersion);
 	WriteInformation(Message);
 	
@@ -692,7 +692,7 @@ Function DataUpdateMode() Export
 		Message = NStr("en='Invalid value of the %1 parameter in %2. 
 		|Expected: %3; sent value: %4 (%5 type).';ru='Недопустимое значение параметра %1 в %2. 
 		|Ожидалось: %3; передано значение: %4 (тип %5).'");
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(Message,
+		Message = StringFunctionsClientServer.SubstituteParametersInString(Message,
 			"DataUpdateMode", "OnDefineDataUpdateMode", 
 			NStr("en='InitialFilling, VersionUpdate or TransferFromAnotherApplication';ru='НачальноеЗаполнение, ОбновлениеВерсии или ПереходСДругойПрограммы'"), 
 			DataUpdateMode, TypeOf(DataUpdateMode));
@@ -1007,7 +1007,7 @@ Function RunUpdateIteration(Val IterationUpdate, Val Parameters) Export
 			Else
 				MessagePattern = NStr("en='Failed to find the library update plan %1 from %2 version to %3 version';ru='Не найден план обновления библиотеки %1 с версии %2 на версию %3'");
 			EndIf;
-			Message = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, LibraryID,
+			Message = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, LibraryID,
 				CurrentIBVersion, MetadataVersion);
 			WriteInformation(Message);
 			
@@ -1036,7 +1036,7 @@ Function RunUpdateIteration(Val IterationUpdate, Val Parameters) Export
 			Else
 				Message = NStr("en='Library data is being updated from %3 version to %2.';ru='Выполняется обновление данных библиотеки %3 с версии %1 на версию %2.'");
 			EndIf;
-			Message = StringFunctionsClientServer.PlaceParametersIntoString(Message,
+			Message = StringFunctionsClientServer.SubstituteParametersInString(Message,
 				CurrentIBVersion, NewInfobaseVersion, LibraryID);
 		EndIf;
 		WriteInformation(Message);
@@ -1079,7 +1079,7 @@ Function RunUpdateIteration(Val IterationUpdate, Val Parameters) Export
 				Message = NStr("en='Library data is being updated from the %3 version to %2.';ru='Выполнено обновление данных библиотеки %3 с версии %1 на версию %2.'");
 			EndIf;
 			
-			Message = StringFunctionsClientServer.PlaceParametersIntoString(Message,
+			Message = StringFunctionsClientServer.SubstituteParametersInString(Message,
 			  CurrentIBVersion, NewInfobaseVersion, LibraryID);
 		EndIf;
 		WriteInformation(Message);
@@ -1274,7 +1274,7 @@ Function LockInfobase(IBBlock, ExceptWhenImpossibleLockIB)
 	EndTry;
 	
 	// Process unsuccessful attempt to set an exclusive mode.
-	Message = StringFunctionsClientServer.PlaceParametersIntoString(
+	Message = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Unable to update infobase:
 		|- Unable to set an
 		|exclusive mode - Configuration version does not include update without setting
@@ -1444,7 +1444,7 @@ Procedure GoFromAnotherApplication()
 		Except
 			
 			HandlerName = Handler.Procedure;
-			WriteError(StringFunctionsClientServer.PlaceParametersIntoString(
+			WriteError(StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred calling a transition
 		|handler
 		|from another
@@ -1712,7 +1712,7 @@ Procedure FormListDelayedUpdateHandlers(IterationsUpdate)
 					ErrorText = NStr("en='The delayed %1
 		|handler should not have the ExclusiveMode trait.';ru='У отложенного
 		|обработчика ""%1"" не должен быть установлен признак ""МонопольныйРежим"".'");
-					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+					ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 						ErrorText, RowHandlers.Procedure);
 					WriteError(ErrorText);
 					Raise ErrorText;
@@ -2513,13 +2513,13 @@ Procedure DisableUpdateHandlers(LibraryID, HandlersToExecute, MetadataVersion, H
 		ElsIf RunningHandler <> Undefined AND RunningHandler.Version <> "*"
 			AND DisabledHandler.Version = MetadataVersion Then
 			ErrorMessage = NStr("en='The handler of the %1 update can not be disabled as it is executed only during the change to the %2 version.';ru='Обработчик обновления %1 не может быть отключен, так как он выполняется только при переходе на версию %2'");
-			ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessage,
+			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage,
 				RunningHandler.Procedure, RunningHandler.Version);
 			
 			Raise ErrorMessage;
 		ElsIf RunningHandler = Undefined Then
 			ErrorMessage = NStr("en='The disabled update handler %1 does not exist';ru='Отключаемый обработчик обновления %1 не существует'");
-			ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessage,
+			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage,
 				DisabledHandler.Procedure);
 			
 			Raise ErrorMessage;
@@ -2556,7 +2556,7 @@ Procedure ExecuteHandlerUpdate(Handler, Parameters, AdditionalParameters)
 		
 		HandlerName = Handler.Procedure + "(" + ?(HandlerParameters = Undefined, "", "Parameters") + ")";
 		
-		WriteError(StringFunctionsClientServer.PlaceParametersIntoString(
+		WriteError(StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='During the call
 		|of
 		|the update
@@ -2690,7 +2690,7 @@ Procedure ValidateNestedTransaction(TransactionActiveOnExecutionStart, Processor
 		|In case of the active transactions opened above of the stack the exception is also to be located above of the stack.';ru='Ошибка выполнения обработчика
 		|обновления %1: Обработчиком обновления было поглощено исключение при активной внешней транзакции.
 		|При активных транзакциях, открытых выше по стеку, исключение также необходимо пробрасывать выше по стеку.'");
-				Comment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, ProcessorsName);
+				Comment = StringFunctionsClientServer.SubstituteParametersInString(CommentTemplate, ProcessorsName);
 				
 				WriteLogEvent(EventName, EventLogLevel.Error,,, Comment);
 				Raise(Comment);
@@ -2699,7 +2699,7 @@ Procedure ValidateNestedTransaction(TransactionActiveOnExecutionStart, Processor
 			CommentTemplate = NStr("en='An error occurred executing
 		|the %1 application handler: Handler of the update closed an extra transaction previously opened (up in a stack).';ru='Ошибка выполнения
 		|обработчика обновления %1: Обработчиком обновления была закрыта лишняя транзакция, открытая ранее (выше по стеку).'");
-			Comment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, ProcessorsName);
+			Comment = StringFunctionsClientServer.SubstituteParametersInString(CommentTemplate, ProcessorsName);
 			
 			WriteLogEvent(EventName, EventLogLevel.Error,,, Comment);
 			Raise(Comment);
@@ -2709,7 +2709,7 @@ Procedure ValidateNestedTransaction(TransactionActiveOnExecutionStart, Processor
 			CommentTemplate = NStr("en='An error occurred executing
 		|the %1 application handler: The transaction opened inside the handler remained active (was not closed or canceled).';ru='Ошибка выполнения
 		|обработчика обновления %1: Открытая внутри обработчика обновления транзакция осталась активной (не была закрыта или отменена).'");
-			Comment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, ProcessorsName);
+			Comment = StringFunctionsClientServer.SubstituteParametersInString(CommentTemplate, ProcessorsName);
 			
 			WriteLogEvent(EventName, EventLogLevel.Error,,, Comment);
 			Raise(Comment);
@@ -2735,7 +2735,7 @@ Procedure ValidateHandlersProperties(IterationUpdate)
 				ZeroVersion = CommonUseClientServer.CompareVersions(Handler.Version, "0.0.0.0") = 0;
 			Except
 				ZeroVersion = False;
-				ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+				ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Handler has filled the Version property wrong: %1.
 		|Right format, for example: 21.3.70.';ru='У обработчика не правильно заполнено свойство Версия: ""%1"".
 		|Правильный формат, например: ""2.1.3.70"".'"),
@@ -2743,7 +2743,7 @@ Procedure ValidateHandlersProperties(IterationUpdate)
 			EndTry;
 			
 			If ZeroVersion Then
-				ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+				ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Handler has filled the Version property wrong: %1.
 		|Version can not be the zero.';ru='У обработчика не правильно заполнено свойство Версия: ""%1"".
 		|Версия не может быть нулевой.'"),
@@ -2764,7 +2764,7 @@ Procedure ValidateHandlersProperties(IterationUpdate)
 			AND Handler.PerformModes <> "Exclusive"
 			AND Handler.PerformModes <> "Promptly"
 			AND Handler.PerformModes <> "Delay" Then
-			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en=""Handler's ExecutionMode property is filled wrong in the %1 handler.
 		|Allowed value: Exclusive, Deferred, Online."";ru='У обработчика ""%1"" не правильно заполнено свойство РежимВыполнения.
 		|Допустимое значение: ""Монопольно"", ""Отложенно"", ""Оперативно"".'"),
@@ -2787,13 +2787,13 @@ Procedure ValidateHandlersProperties(IterationUpdate)
 		If IterationUpdate.ThisMainConfiguration Then
 			ErrorTitle = NStr("en='Error in the configuration update handler property';ru='Ошибка в свойстве обработчика обновления конфигурации'");
 		Else
-			ErrorTitle = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorTitle = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Error in the property of the library update handler %1 of the %2 version';ru='Ошибка в свойстве обработчика обновления библиотеки %1 версии %2'"),
 				IterationUpdate.Subsystem,
 				IterationUpdate.Version);
 		EndIf;
 		
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorTitle + Chars.LF
 			+ NStr("en='(%1).';ru='(%1).'") + Chars.LF
 			+ Chars.LF
@@ -2821,7 +2821,7 @@ Function CountHandlersToCurrentVersion(IterationsUpdate)
 	EndDo;
 	
 	Message = NStr("en='To update application to a new version, the handlers will be executed: %1';ru='Для обновления программы на новую версию будут выполнены обработчики: %1'");
-	Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, HandlersCount);
+	Message = StringFunctionsClientServer.SubstituteParametersInString(Message, HandlersCount);
 	WriteInformation(Message);
 	
 	Return New Structure("TotalHandlers, CompletedHandlers", HandlersCount, 0);
@@ -2888,7 +2888,7 @@ Procedure WriteInformationAboutUpdate(Handler, HandlersExecutionProcess, InBackg
 	
 	If Not CommonUseReUse.DataSeparationEnabled() Then
 		Message = NStr("en='Update handler is being performed %1 (%2 of %3).';ru='Выполняется обработчик обновления %1 (%2 из %3).'");
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		Message = StringFunctionsClientServer.SubstituteParametersInString(
 			Message, Handler.Procedure,
 			HandlersExecutionProcess.CompletedHandlers, HandlersExecutionProcess.TotalHandlers);
 		WriteInformation(Message);
@@ -3217,7 +3217,7 @@ Function ExecutePendingUpdateHandler(DataAboutUpdate, ExecuteFailed = False)
 				HandlerName = UpdateHandler.HandlerName;
 				Try
 					MessageAboutRunningHandler = NStr("en='%1 update is in progress.';ru='Выполняется процедура обновления ""%1"".'");
-					MessageAboutRunningHandler = StringFunctionsClientServer.PlaceParametersIntoString(
+					MessageAboutRunningHandler = StringFunctionsClientServer.SubstituteParametersInString(
 						MessageAboutRunningHandler, HandlerName);
 					WriteLogEvent(EventLogMonitorEvent(), 
 							EventLogLevel.Information,,, MessageAboutRunningHandler);

@@ -85,7 +85,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 					           |%1'");
 			EndIf;
 			
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorTemplate, BriefErrorDescription(ErrorInfo));
 			
 			CommonUseClientServer.MessageToUser(

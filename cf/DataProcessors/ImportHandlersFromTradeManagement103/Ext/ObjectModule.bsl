@@ -2100,12 +2100,12 @@ Procedure OCR_AfterImport_IndividualsDocuments(ExchangeFile, Cancel, Ref, Object
 	Else
 		Object.Presentation = ""
 			+ Object.DocumentKind
-			+ ?(ValueIsFilled(Object.Series), StringFunctionsClientServer.PlaceParametersIntoString(TextSeries, Object.Series), "")
-			+ ?(ValueIsFilled(Object.Number), StringFunctionsClientServer.PlaceParametersIntoString(TextNumber, Object.Number), "")
-			+ ?(ValueIsFilled(Object.IssueDate), StringFunctionsClientServer.PlaceParametersIntoString(TextIssuanceDate, Format(Object.IssueDate,"DF=dd MMMM yyyy'")), "")
-			+ ?(ValueIsFilled(Object.ValidityPeriod), StringFunctionsClientServer.PlaceParametersIntoString(TextValidityPeriod, Format(Object.ValidityPeriod,"DF=dd MMMM yyyy'")), "")
+			+ ?(ValueIsFilled(Object.Series), StringFunctionsClientServer.SubstituteParametersInString(TextSeries, Object.Series), "")
+			+ ?(ValueIsFilled(Object.Number), StringFunctionsClientServer.SubstituteParametersInString(TextNumber, Object.Number), "")
+			+ ?(ValueIsFilled(Object.IssueDate), StringFunctionsClientServer.SubstituteParametersInString(TextIssuanceDate, Format(Object.IssueDate,"DF=dd MMMM yyyy'")), "")
+			+ ?(ValueIsFilled(Object.ValidityPeriod), StringFunctionsClientServer.SubstituteParametersInString(TextValidityPeriod, Format(Object.ValidityPeriod,"DF=dd MMMM yyyy'")), "")
 			+ ?(ValueIsFilled(Object.WhoIssued), ", " + Object.WhoIssued, "")
-			+ ?(ValueIsFilled(Object.DepartmentCode) AND Object.DocumentKind = Catalogs.IndividualsDocumentsKinds.LocalPassport, StringFunctionsClientServer.PlaceParametersIntoString(TextDepartmentCode, Object.DepartmentCode), "");
+			+ ?(ValueIsFilled(Object.DepartmentCode) AND Object.DocumentKind = Catalogs.IndividualsDocumentsKinds.LocalPassport, StringFunctionsClientServer.SubstituteParametersInString(TextDepartmentCode, Object.DepartmentCode), "");
 		
 	EndIf;
 

@@ -115,7 +115,7 @@ EndFunction
 Procedure UnknownChannelNameError(Val MessageChannel) Export
 	
 	MessagePattern = NStr("en='Unknown message channel name %1';ru='Неизвестное имя канала сообщений %1'");
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, MessageChannel);
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, MessageChannel);
 	Raise(MessageText);
 	
 EndProcedure
@@ -268,7 +268,7 @@ Procedure BeforeMessageSending(Val MessageChannel, Val MessageBody) Export
 					MessagePresentationForLog(Message));
 					
 				ErrorTemplate = NStr("en='Error at message sending. Data area %1 does not match the current one (%2).';ru='Ошибка при отправке сообщения. Область данных %1 не совпадает с текущей (%2).'");
-				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTemplate, 
+				ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate, 
 					Message.Body.Zone, CommonUse.SessionSeparatorValue());
 					
 				Raise(ErrorText);
@@ -398,7 +398,7 @@ EndFunction
 Function MessagePresentationForLog(Val Message)
 	
 	Pattern = NStr("en='Channel: %1';ru='Канал: %1'", CommonUseClientServer.MainLanguageCode());
-	Presentation = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
+	Presentation = StringFunctionsClientServer.SubstituteParametersInString(Pattern, 
 		ChannelNameByMessageType(Message.Body.Type()));
 		
 	Record = New XMLWriter;
@@ -406,12 +406,12 @@ Function MessagePresentationForLog(Val Message)
 	XDTOFactory.WriteXML(Record, Message.Header, , , , XMLTypeAssignment.Explicit);
 		
 	Pattern = NStr("en='Title: %1';ru='Заголовок: %1'", CommonUseClientServer.MainLanguageCode());
-	Presentation = Presentation + Chars.LF + StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
+	Presentation = Presentation + Chars.LF + StringFunctionsClientServer.SubstituteParametersInString(Pattern, 
 		Record.Close());
 		
 	If MessagesSaaSReUse.TypeAreaBody().IsDescendant(Message.Body.Type()) Then
 		Pattern = NStr("en='Data area: %1';ru='Область данных: %1'", CommonUseClientServer.MainLanguageCode());
-		Presentation = Presentation + Chars.LF + StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
+		Presentation = Presentation + Chars.LF + StringFunctionsClientServer.SubstituteParametersInString(Pattern, 
 			Format(Message.Body.Zone, "NZ=0; NG="));
 	EndIf;
 		
@@ -438,7 +438,7 @@ Procedure BroadcastMessageToCorrespondentIfNecessary(Message, Val InformationCon
 	
 	If Not InformationConnection.Property("URL") 
 			Or Not ValueIsFilled(InformationConnection.URL) Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='URL of the messages exchange service with the infobase %1 is not specified';ru='Не задан URL сервиса обмена сообщениями с информационной базой %1'"), RecipientPresentation);
 	EndIf;
 	
@@ -446,7 +446,7 @@ Procedure BroadcastMessageToCorrespondentIfNecessary(Message, Val InformationCon
 			InterfaceMessages.ProgramInterface, InformationConnection, RecipientPresentation);
 	
 	If CorrespondentVersion = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Correspondent %1 does not support the %2 interface messages versions receipt supported by the current infobase!';ru='Корреспондент %1 не поддерживает получение версий сообщений интерфейса %2, поддерживаемых текущей информационной базой!'"),
 			RecipientPresentation, InterfaceMessages.ProgramInterface);
 	EndIf;

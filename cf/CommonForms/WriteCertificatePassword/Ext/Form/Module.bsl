@@ -242,7 +242,7 @@ Function CheckSigning(Form, Application, CertificateData, Password, ErrorDescrip
 	Except
 		ErrorInfo = ErrorInfo();
 		ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
-			+ StringFunctionsClientServer.PlaceParametersIntoString(
+			+ StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Unable to check the signing using the %1 application because
 		|of: %2';ru='Не удалось пройти проверку подписания с помощью
 		|программы %1 по причине: %2'"),

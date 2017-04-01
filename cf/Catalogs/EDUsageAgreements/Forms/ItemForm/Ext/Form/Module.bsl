@@ -381,7 +381,7 @@ Procedure OutgoingDocumentsOnChange(Item)
 		Item.CurrentData.UseDS = False;
 		
 		MessagePattern = NStr("en='You can send the %1 document through the EDF operator only.';ru='Отправка документа %1 возможна только через оператора ЭДО.'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			Item.CurrentData.OutgoingDocument);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -525,10 +525,10 @@ Procedure FormManagement(Form)
 	
 	If Form.ThroughDirectory Then
 		CaptionPattern = NStr("en='Full path: %1';ru='Полный путь: %1'");
-		Items.ExplanationDirectoryInboxDocuments.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.ExplanationDirectoryInboxDocuments.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			CaptionPattern, CommonUseClientServer.GetFullFileName(
 			Form.PathToParentDirectoryEDFProfileSettings, Object.IncomingDocumentsDir));
-		Items.OutgoingDocumentsDirClarification.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.OutgoingDocumentsDirClarification.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			CaptionPattern, CommonUseClientServer.GetFullFileName(
 			Form.PathToParentDirectoryEDFProfileSettings, Object.OutgoingDocumentsDir));
 	EndIf;
@@ -758,14 +758,14 @@ Procedure GetUsedEDExchangeMethods(EDFProfileSettings = Undefined, CounterpartyI
 				"CompanyDescription");
 			CompanyDescription = CommonUse.ObjectAttributeValue(Object.Company, AttributeNameCompanyName);
 			If Not ValueIsFilled(Object.IncomingDocumentsDir) Then
-				Object.IncomingDocumentsDir = StrReplace(StringFunctionsClientServer.PlaceParametersIntoString(
+				Object.IncomingDocumentsDir = StrReplace(StringFunctionsClientServer.SubstituteParametersInString(
 					PatternName,
 					CommonUseClientServer.ReplaceProhibitedCharsInFileName(CounterpartyDescription, ""),
 					CommonUseClientServer.ReplaceProhibitedCharsInFileName(CompanyDescription, ""))," ", "");
 			EndIf;
 			
 			If Not ValueIsFilled(Object.OutgoingDocumentsDir) Then
-				Object.OutgoingDocumentsDir = StrReplace(StringFunctionsClientServer.PlaceParametersIntoString(
+				Object.OutgoingDocumentsDir = StrReplace(StringFunctionsClientServer.SubstituteParametersInString(
 					PatternName,
 					CommonUseClientServer.ReplaceProhibitedCharsInFileName(CompanyDescription, ""),
 					CommonUseClientServer.ReplaceProhibitedCharsInFileName(CounterpartyDescription, ""))," ", "");
@@ -788,14 +788,14 @@ Procedure GetUsedEDExchangeMethods(EDFProfileSettings = Undefined, CounterpartyI
 			CompanyDescription = CommonUse.ObjectAttributeValue(Object.Company, AttributeNameCompanyName);
 			
 			If Not ValueIsFilled(Object.IncomingDocumentsDirFTP) Then
-				Object.IncomingDocumentsDirFTP = StrReplace(StringFunctionsClientServer.PlaceParametersIntoString(
+				Object.IncomingDocumentsDirFTP = StrReplace(StringFunctionsClientServer.SubstituteParametersInString(
 					PatternName,
 					CommonUseClientServer.ReplaceProhibitedCharsInFileName(CounterpartyDescription, ""),
 					CommonUseClientServer.ReplaceProhibitedCharsInFileName(CompanyDescription, ""))," ", "");
 			EndIf;
 			
 			If Not ValueIsFilled(Object.OutgoingDocumentsDirFTP) Then
-				Object.OutgoingDocumentsDirFTP = StrReplace(StringFunctionsClientServer.PlaceParametersIntoString(
+				Object.OutgoingDocumentsDirFTP = StrReplace(StringFunctionsClientServer.SubstituteParametersInString(
 					PatternName,
 					CommonUseClientServer.ReplaceProhibitedCharsInFileName(CompanyDescription, ""),
 					CommonUseClientServer.ReplaceProhibitedCharsInFileName(CounterpartyDescription, ""))," ", "");
@@ -987,7 +987,7 @@ Procedure CounterpartyIdUsageUnique(Cancel)
 			MessagePattern = NStr("en='Counterparty
 		|identifier %1 is already used in EDF setting between counterparty %2 and company %3';ru='Идентификатор
 		|контрагента %1 уже используется в настройке ЭДО между контрагентом %2 и организацией %3'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Selection.CounterpartyID,
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Selection.CounterpartyID,
 			Selection.Counterparty, Selection.Company);
 			CommonUseClientServer.MessageToUser(MessageText, , , , Cancel);
 		EndDo;
@@ -1037,10 +1037,10 @@ Procedure TestLinksDirectExchangeAtServer(IncomingDocumentsDir, OutgoingDocument
 	Except
 		ResultTemplate = NStr("en='%1 %2';ru='%1 %2'");
 		ErrorText = ElectronicDocumentsServiceCallServer.GetMessageAboutError("107");
-		TestResult = StringFunctionsClientServer.PlaceParametersIntoString(ResultTemplate, ErrorText,
+		TestResult = StringFunctionsClientServer.SubstituteParametersInString(ResultTemplate, ErrorText,
 			BriefErrorDescription(ErrorInfo()));
 	EndTry;
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, TestResult);
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, TestResult);
 	MessageText = NStr("en='Exchange text by %1 profile.';ru='Тест обмена по профилю %1.'") + " " + MessageText;
 	MessageText = StrReplace(MessageText, "%1", EDFProfileSettings);
 	CommonUseClientServer.MessageToUser(MessageText);

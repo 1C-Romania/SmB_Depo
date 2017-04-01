@@ -461,7 +461,7 @@ Procedure CreateNewDataExchangeAtClient(Cancel)
 	Else
 		
 		ShowUserNotification(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='""%1""';ru='""%1""'"), Object.ExchangeNodeRef),,
 			NStr("en='New exchange node with WEB - site created successfully!';ru='Новый узел обмена с WEB - сайтом создан успешно!'"),
 			PictureLib.Information32);
@@ -588,18 +588,18 @@ Procedure InitializationOfDataExchangeAtClient()
 	ExchangeNode = Object.ExchangeNodeRef;
 	
 	Status(
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 started data exchange with site';ru='%1 начат обмен данными с сайтом'"),
 			Format(CurrentDate(), "DLF=DT"))
 		,,
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='by exchange node ""%1""...';ru='по узлу обмена ""%1""...'"),
 			ExchangeNode));
 	
 	ExchangeWithSite.RunExchange(ExchangeNode, NStr("en='Interactive exchange';ru='Интерактивный обмен'"));
 	
 	ShowUserNotification(
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 ""%2""';ru='%1 ""%2""'"),
 			Format(CurrentDate(), "DLF=DT"),
 			ExchangeNode) 

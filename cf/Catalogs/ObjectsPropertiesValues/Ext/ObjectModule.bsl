@@ -13,7 +13,7 @@ Procedure BeforeWrite(Cancel)
 			"AdditionalValuesOwner");
 		
 		If ValueIsFilled(AdditionalValuesOwner) Then
-			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Additional values for property
 		|""%1"" created on the model of property ""% 2"" shall be created for sample property.';ru='Дополнительные
 		|значения для свойства ""%1"", созданного по образцу свойства ""%2"" нужно создавать для свойства-образца.'"),

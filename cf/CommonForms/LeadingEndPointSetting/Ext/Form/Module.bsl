@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Read connection setting values.
 	FillPropertyValues(ThisObject, InformationRegisters.ExchangeTransportSettings.TransportSettingsWS(EndPoint));
 	
-	Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Setting the leading end point for ""%1""';ru='Установка ведущей конечной точки для ""%1""'"),
 		CommonUse.ObjectAttributeValue(EndPoint, "Description"));
 	

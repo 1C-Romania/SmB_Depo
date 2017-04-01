@@ -810,7 +810,7 @@ Function PostDocumentAtServer(DocumentRef)
 	Except
 		
 		ErrorText = NStr("en='Action (posting) is impossible to perform because the %1 document is locked by the user!';ru='Действие (проведение) не может быть выполнено, так как документ %1 заблокирован пользователем!'");
-		Return StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, DocumentRef);
+		Return StringFunctionsClientServer.SubstituteParametersInString(ErrorText, DocumentRef);
 		
 	EndTry;
 	
@@ -835,7 +835,7 @@ Function UndoPostingDocumentAtServer(DocumentRef)
 	Except
 		
 		ErrorText = NStr("en='Action (posting cancellation) can not be performed because the %1 document is locked by the user!';ru='Действие (отмена проведения) не может быть выполнено, так как документ %1 заблокирован пользователем!'");
-		Return StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, DocumentRef);
+		Return StringFunctionsClientServer.SubstituteParametersInString(ErrorText, DocumentRef);
 		
 	EndTry;
 	
@@ -860,7 +860,7 @@ Function SetDeletionMarkOfDocumentAtServer(DocumentRef)
 	Except
 		
 		ErrorText = NStr("en='Action (set / clear the deletion mark) can not be performed as the %1 document is locked by the user.';ru='Действие (установить / снять пометку удаления) не может быть выполнено, так как документ %1 заблокирован пользователем!'");
-		Return StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, DocumentRef);
+		Return StringFunctionsClientServer.SubstituteParametersInString(ErrorText, DocumentRef);
 		
 	EndTry;
 	
@@ -924,7 +924,7 @@ Procedure PostDocument(Command)
 		Except
 			
 			ErrorText = NStr("en='Failed to post the document %1!';ru='Не удалось провести документ %1!'");
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, CurrentDocument)
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, CurrentDocument)
 			
 		EndTry;
 		
@@ -957,7 +957,7 @@ Procedure UndoPostingDocument(Command)
 		Except
 			
 			ErrorText = NStr("en='Failed to cancel the document posting %1!';ru='Не удалось отменить проведение документа %1!'");;
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, CurrentDocument);
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, CurrentDocument);
 			
 		EndTry;
 		
@@ -990,7 +990,7 @@ Procedure SetDeletionMarkDocument(Command)
 		Except
 			
 			ErrorText = NStr("en='Failed to set the deletion mark for document %1.';ru='Не удалось установить пометку удаления на документ %1!'");
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, CurrentDocument);
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, CurrentDocument);
 			
 		EndTry;
 		
@@ -1022,7 +1022,7 @@ Procedure OpenDocument(Command)
 				
 				ErrorText = NStr("en='Document is already opened!';ru='Документ уже открыт!'");
 				CommonUseClientServer.MessageToUser(
-						StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, CurrentDocument)
+						StringFunctionsClientServer.SubstituteParametersInString(ErrorText, CurrentDocument)
 						);
 				
 			Else
@@ -1035,7 +1035,7 @@ Procedure OpenDocument(Command)
 			
 			ErrorText = NStr("en='Failed to open the document %1!';ru='Не удалось открыть документ %1!'");
 			CommonUseClientServer.MessageToUser(
-				StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, CurrentDocument)
+				StringFunctionsClientServer.SubstituteParametersInString(ErrorText, CurrentDocument)
 				);
 			
 		EndTry;
@@ -1067,7 +1067,7 @@ Procedure FindInList(Command)
 		
 		ErrorText = NStr("en='Failed to open the document %1 in list!';ru='Не удалось открыть в списке документ %1!'");
 		CommonUseClientServer.MessageToUser(
-			StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, CurrentDocument)
+			StringFunctionsClientServer.SubstituteParametersInString(ErrorText, CurrentDocument)
 			);
 		
 	EndTry;

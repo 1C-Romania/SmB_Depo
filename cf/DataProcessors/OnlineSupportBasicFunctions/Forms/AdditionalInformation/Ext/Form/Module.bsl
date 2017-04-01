@@ -597,7 +597,7 @@ Function MessageParametersToTechicalSupport()
 		InteractionContext.COPContext,
 		"login");
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		MessageText,
 		UserLogin,
 		CounterpartyName,
@@ -625,7 +625,7 @@ Function MessageParametersToTechicalSupport()
 		|----------------------------------------------- 
 		|С уважением, .'");
 	
-	MessageTextContinued = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageTextContinued = StringFunctionsClientServer.SubstituteParametersInString(
 		MessageTextContinued,
 		AddressPresentation,
 		WhereApplicationWasPurchased,

@@ -103,7 +103,7 @@ Procedure OutputReport(Ref)
 		Properties.Insert("ObjectPresentation",			NStr("en = 'External user group: %1'; ru = 'Группа внешних пользователей: %1'"));
 	EndIf;
 	
-	Properties.ObjectPresentation = StringFunctionsClientServer.PlaceParametersIntoString(
+	Properties.ObjectPresentation = StringFunctionsClientServer.SubstituteParametersInString(
 		Properties.ObjectPresentation, String(Ref));
 	
 	// Display title.
@@ -960,7 +960,7 @@ Procedure OutputReport(Ref)
 									Area.Parameters.ProfileOrAccessGroupPresentation =
 										DescriptionOfAccessGroup.AccessGroupPresentation
 										+ Chars.LF
-										+ StringFunctionsClientServer.PlaceParametersIntoString(
+										+ StringFunctionsClientServer.SubstituteParametersInString(
 											AccessGroupPresentationClarification,
 											ProfileDescription.ProfilePresentation,
 											TrimAll(ProfileRolesPresentation));
@@ -987,7 +987,7 @@ Procedure OutputReport(Ref)
 										Area.Parameters.AccessKind = AccessTypeDescription.AccessKind;
 										
 										Area.Parameters.AccessKindPresentation =
-											StringFunctionsClientServer.PlaceParametersIntoString(
+											StringFunctionsClientServer.SubstituteParametersInString(
 												AccessKindPresentationTemplate(
 													AccessTypeDescription, OwnersOfRightsSettings),
 												AccessTypeDescription.AccessKindPresentation);
@@ -1340,7 +1340,7 @@ Procedure OutputReport(Ref)
 									Area.Parameters.ProfileOrAccessGroupPresentation =
 										DescriptionOfAccessGroup.AccessGroupPresentation
 										+ Chars.LF
-										+ StringFunctionsClientServer.PlaceParametersIntoString(
+										+ StringFunctionsClientServer.SubstituteParametersInString(
 											AccessGroupPresentationClarification,
 											ProfileDescription.ProfilePresentation,
 											TrimAll(ProfileRolesPresentation));
@@ -1374,7 +1374,7 @@ Procedure OutputReport(Ref)
 										Area.Parameters.AccessKind = AccessTypeDescription.AccessKind;
 										
 										Area.Parameters.AccessKindPresentation =
-											StringFunctionsClientServer.PlaceParametersIntoString(
+											StringFunctionsClientServer.SubstituteParametersInString(
 												AccessKindPresentationTemplate(
 													AccessTypeDescription, OwnersOfRightsSettings),
 												AccessTypeDescription.AccessKindPresentation);
@@ -1821,7 +1821,7 @@ Function MetadataObjectsRightsRestrictionKinds()
 			If RightSettingsOwnerMetadata = Undefined Then
 				String.Presentation = NStr("en='Unknown access kind';ru='Неизвестный вид доступа'");
 			Else
-				String.Presentation = StringFunctionsClientServer.PlaceParametersIntoString(
+				String.Presentation = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Right settings for %1';ru='Настройки прав на %1'"), RightSettingsOwnerMetadata.Presentation());
 			EndIf;
 		ElsIf AccessManagementService.AccessKindIsUsed(String.AccessKind) Then

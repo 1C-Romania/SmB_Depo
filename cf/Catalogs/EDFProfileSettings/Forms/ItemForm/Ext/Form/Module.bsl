@@ -346,7 +346,7 @@ Procedure OutgoingDocumentsOnChange(Item)
 		Item.CurrentData.UseDS = False;
 		
 		MessagePattern = NStr("en='You can send the %1 document through the EDF operator only.';ru='Отправка документа %1 возможна только через оператора ЭДО.'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			Item.CurrentData.OutgoingDocument);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -602,10 +602,10 @@ Procedure CompleteSettingsProfileTest(Val Result, Val AdditionalParameters) Expo
 		Except
 			ResultTemplate = NStr("en='%1 %2';ru='%1 %2'");
 			ErrorText = ElectronicDocumentsServiceCallServer.GetMessageAboutError("107");
-			TestResult = StringFunctionsClientServer.PlaceParametersIntoString(ResultTemplate, ErrorText,
+			TestResult = StringFunctionsClientServer.SubstituteParametersInString(ResultTemplate, ErrorText,
 			BriefErrorDescription(ErrorInfo()));
 		EndTry;
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, TestResult);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, TestResult);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -631,10 +631,10 @@ Procedure CompleteSettingsProfileTest(Val Result, Val AdditionalParameters) Expo
 		Except
 			ResultTemplate = NStr("en='%1 %2';ru='%1 %2'");
 			ErrorText = ElectronicDocumentsServiceCallServer.GetMessageAboutError("107");
-			TestResult = StringFunctionsClientServer.PlaceParametersIntoString(ResultTemplate, ErrorText,
+			TestResult = StringFunctionsClientServer.SubstituteParametersInString(ResultTemplate, ErrorText,
 			BriefErrorDescription(ErrorInfo()));
 		EndTry;
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, TestResult);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, TestResult);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	

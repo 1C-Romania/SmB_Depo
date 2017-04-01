@@ -1317,7 +1317,7 @@ Function CatalogsNamesFilesStorage(FilesOwner, NotCallingException = False) Expo
 		
 		If Metadata.Catalogs.Find(KeyAndValue.Key) = Undefined Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while determining catalogs names to store files.
 		|In files owner of
 		|the type ""%1"" nonexistent catalog ""%2"" is specified.';ru='Ошибка при определении имен справочников для хранения файлов.
@@ -1328,7 +1328,7 @@ Function CatalogsNamesFilesStorage(FilesOwner, NotCallingException = False) Expo
 				
 		ElsIf Right(KeyAndValue.Key, StrLen("AttachedFiles"))<> "AttachedFiles" Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while determining catalogs names to store files.
 		|In files owner of
 		|the type ""%1"" catalog
@@ -1344,7 +1344,7 @@ Function CatalogsNamesFilesStorage(FilesOwner, NotCallingException = False) Expo
 			
 		ElsIf KeyAndValue.Value = True Then
 			If MainCatalogSpecified Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='An error occurred while determining catalogs names to store files.
 		|Files owner of the
 		|type ""%1"" has main catalog specified more than ones.';ru='Ошибка при определении имен справочников для хранения файлов.
@@ -1363,7 +1363,7 @@ Function CatalogsNamesFilesStorage(FilesOwner, NotCallingException = False) Expo
 			Return NamesOfCatalogs;
 		EndIf;
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while determining catalogs names to store files.
 		|Files owner of the
 		|type ""%1"" does not have catalogs to store files.';ru='Ошибка при определении имен справочников для хранения файлов.
@@ -1400,7 +1400,7 @@ Function CatalogNameStorageFiles(FilesOwner, CatalogName = "",
 			Return "";
 		EndIf;
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorTitle + Chars.LF +
 			NStr("en='Owner of file ""%1"" of
 		|the type ""%2"" does not have catalogs to store files.';ru='У владельца файлов
@@ -1418,7 +1418,7 @@ Function CatalogNameStorageFiles(FilesOwner, CatalogName = "",
 			Return "";
 		EndIf;
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorTitle + Chars.LF +
 			NStr("en='Owner of file ""%1"" of
 		|the type ""%2"" does not have catalog ""%3"" to store files.';ru='У владельца файлов
@@ -1449,7 +1449,7 @@ Function CatalogNameStorageFiles(FilesOwner, CatalogName = "",
 		|is not specified in owner of file ""%1"" of the type ""%2"".';ru='У владельца файлов
 		|""%1"" типа ""%2"" не указан основной справочник для хранения файлов.'") + Chars.LF;
 			
-	CauseErrors = StringFunctionsClientServer.PlaceParametersIntoString(
+	CauseErrors = StringFunctionsClientServer.SubstituteParametersInString(
 		TemplateErrorReasons, String(FilesOwner), String(TypeOf(FilesOwner)));
 		
 	ErrorText = ErrorTitle + Chars.LF
@@ -1866,7 +1866,7 @@ EndFunction
 //
 Function ErrorTextOnSavingFileInVolume(Val ErrorInfo, Val File)
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='An error occurred while saving
 		|file in volume: ""%1"".
 		|

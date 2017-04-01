@@ -470,7 +470,7 @@ Procedure FillByCashBankDocument(FillingData)
 		|Документ-основание:
 		|%1.'");
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessage, FillingData);
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage, FillingData);
 		
 		Raise ErrorMessage;
 		

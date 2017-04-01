@@ -151,7 +151,7 @@ Function ServerPlatformTypeAsString() Export
 		Return Undefined;
 	EndIf;
 	
-	Raise StringFunctionsClientServer.PlaceParametersIntoString(
+	Raise StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Unknown platform type  ""%1""';ru='Неизвестный тип платформы ""%1""'"),
 		String(SystemInfo.PlatformType));
 	

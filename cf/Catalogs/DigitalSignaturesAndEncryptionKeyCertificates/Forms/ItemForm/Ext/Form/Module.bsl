@@ -73,7 +73,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 			Continue;
 		EndIf;
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Field %1 is not filled.';ru='Поле %1 не заполнено.'"), Items[AttributeName].Title);
 		
 		CommonUseClientServer.MessageToUser(MessageText,, AttributeName,, Cancel);

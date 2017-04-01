@@ -38,19 +38,19 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ThisIsAdditionalInformation = Parameters.ThisIsAdditionalInformation;
 	
 	Items.IndividualValuesAttributeComment.Title =
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			Items.IndividualValuesAttributeComment.Title, CurrentSetOfProperties);
 	
 	Items.CommonAttributesValuesComment.Title =
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			Items.CommonAttributesValuesComment.Title, CurrentSetOfProperties);
 	
 	Items.SeparateDataValuesComment.Title =
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			Items.SeparateDataValuesComment.Title, CurrentSetOfProperties);
 	
 	Items.GeneralInformationValuesComment.Title =
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			Items.GeneralInformationValuesComment.Title, CurrentSetOfProperties);
 	
 EndProcedure

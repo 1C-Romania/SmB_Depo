@@ -77,7 +77,7 @@ Procedure OnOpen(Cancel)
 		Else
 			ErrorDetails = ElectronicDocumentsServiceClient.InformationAboutErroriBank2();
 		EndIf;
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Sending confirmation code of payment order';ru='Отправка кода подтверждения платежного поручения'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(

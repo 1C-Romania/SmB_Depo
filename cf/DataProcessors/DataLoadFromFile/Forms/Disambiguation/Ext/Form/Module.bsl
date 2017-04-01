@@ -30,7 +30,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EndTry;
 		
 		Items.VariantDisambiguation.Visible = False;
-		Items.DecorationHeader.Title = StringFunctionsClientServer.PlaceParametersIntoString(Items.DecorationHeader.Title, Parameters.Name);
+		Items.DecorationHeader.Title = StringFunctionsClientServer.SubstituteParametersInString(Items.DecorationHeader.Title, Parameters.Name);
 		Items.DecorationHeader.Visible = True;
 		Items.DecorationLoadFromFile.Visible = False;
 		Items.CatalogItems.CommandBar.ChildItems.CatalogItemsNewItem.Visible = False;
@@ -140,7 +140,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		If StrLen(RowWithValues) > 70 Then
 			RowWithValues = Left(RowWithValues, 70) + "...";
 		EndIf;
-		Items.DecorationHeaderRefSearch.Title = StringFunctionsClientServer.PlaceParametersIntoString(Items.DecorationHeaderRefSearch.Title,
+		Items.DecorationHeaderRefSearch.Title = StringFunctionsClientServer.SubstituteParametersInString(Items.DecorationHeaderRefSearch.Title,
 				 RowWithValues);
 	Else
 		CollapsedItemsQuantity = 0;

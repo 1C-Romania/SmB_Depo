@@ -37,7 +37,7 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 		If Not (Parameters.Property("DontUseClassifier") AND Parameters.DontUseClassifier = True) Then
 			If ValueIsFilled(Parameters.Filter.Owner) Then
 			// Add standard list by basic products and services UOM according to the classifier.
-				PresentationUOM = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 (storage unit)';ru='%1 (ед. хранения)'"),
+				PresentationUOM = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1 (storage unit)';ru='%1 (ед. хранения)'"),
 					ProductsAndServices.MeasurementUnit.Description);
 				StandardList.Insert(0, ProductsAndServices.MeasurementUnit, 
 					New FormattedString(PresentationUOM, New Font(,,True)));

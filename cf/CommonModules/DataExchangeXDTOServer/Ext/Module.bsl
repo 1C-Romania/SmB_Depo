@@ -154,7 +154,7 @@ Procedure ExchangeProtocolInitialization(ExchangeComponents, ExchangeProtocolFil
 			
 			MessageString = NStr("en='Write to the data protocol file failed: %1. Error description: %2';ru='Ошибка при попытке записи в файл протокола данных: %1. Описание ошибки: %2'",
 				CommonUseClientServer.MainLanguageCode());
-			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, ExchangeProtocolFileName, ErrorDescription());
+			MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangeProtocolFileName, ErrorDescription());
 			
 			WriteLogEventDataExchange(MessageString, ExchangeComponents, EventLogLevel.Warning);
 			
@@ -305,7 +305,7 @@ Function OCRByName(ExchangeComponents, Name) Export
 	
 	If ConversionRule = Undefined Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='OCR with the %1 name is not found.';ru='Не найдено ПКО с именем %1'"), Name);
 			
 	Else
@@ -370,7 +370,7 @@ Procedure ExecuteDataExport(ExchangeComponents) Export
 			Try
 				DataSelection = DataSelection(ExchangeComponents, DataProcessorRule);
 			Except
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Error of geting data selection algorithm.
 		|DER name:
 		|%1 Error description: %2';ru='Ошибка выполнения алгоритма получения выборки данных.
@@ -456,7 +456,7 @@ Function XDTOObjectFromXDTOData(
 			EndIf;
 			
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Unknown <%1> property type. Object type: %2';ru='Неизвестный тип свойства <%1>. Тип объекта: %2'"),
 				Property.Name,
 				String(XDTOType)
@@ -622,7 +622,7 @@ Function XDTODataFromIBData(ExchangeComponents, Source, Val ConversionRule, Expo
 			Receiver.Insert(ConversionRule.XDTOType.Properties[0].Name, Source.Value);
 			
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='XML-Schema error. One property should be set for a receiver.
 		|Source type:
 		|%1 Receiver type: %2';ru='Ошибка XML-схемы. Для приемника должно быть задано одно свойство.
@@ -1396,7 +1396,7 @@ Procedure OpenExportFile(ExchangeComponents, ExchangeFileName = "") Export
 		Try
 			LockDataForEdit(WriteMessage.Recipient);
 		Except
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Setting lock on data exchange error.
 		|Data exchange may be performed by another session.
 		|
@@ -1484,7 +1484,7 @@ Procedure OpenImportFile(ExchangeComponents, ExchangeFileName) Export
 		Except
 			
 			ErrorMessageString = NStr("en='Error when importing the files: %1';ru='Ошибка при загрузке данных: %1'");
-			ErrorMessageString = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageString, ErrorDescription());
+			ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, ErrorDescription());
 			WriteInExecutionProtocol(ExchangeComponents, ErrorMessageString);
 			Break;
 			
@@ -1542,7 +1542,7 @@ Procedure OpenImportFile(ExchangeComponents, ExchangeFileName) Export
 				Or SenderFromMessage <> ExchangeComponents.CorrespondentNode Then
 				
 				MessageString = NStr("en='The node of exchange to import data is not found. Exchange plan: %1, Code: %2';ru='Не найден узел обмена для загрузки данных. План обмена: %1, Код: %2'");
-				MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, ExchangePlanName, FromWhomCode);
+				MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangePlanName, FromWhomCode);
 				Raise MessageString;
 				
 			EndIf;
@@ -1556,7 +1556,7 @@ Procedure OpenImportFile(ExchangeComponents, ExchangeFileName) Export
 			// Check the basic format
 			ExchangePlanManager = ExchangePlanManager(ExchangeComponents.CorrespondentNode);
 			If ExchangePlanManager.ExchangeFormat() <> ExchangeFormat.BasicFormat Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Format of the %1 exchange message does not correspond to format of the %2 exchange plan.';ru='Формат сообщения обмена <%1> не соответствует формату плана обмена <%2>.'"),
 					ExchangeFormat.BasicFormat,
 					ExchangePlanManager.ExchangeFormat()
@@ -1565,7 +1565,7 @@ Procedure OpenImportFile(ExchangeComponents, ExchangeFileName) Export
 			
 			// Check format version of the exchange message.
 			If ExchangeFormatVersionsArray(ExchangeComponents.CorrespondentNode).Find(ExchangeFormat.Version) = Undefined Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Version of the <%1> message exchange format is not supported.';ru='Версия формата сообщения обмена <%1> не поддерживается.'"),
 					ExchangeFormat.Version
 				);
@@ -1745,7 +1745,7 @@ Procedure WriteObjectToIB(ExchangeComponents, Object, Type, WriteObject = False,
 		AND Not CommonUseReUse.IsSeparatedMetadataObject(Object.Metadata().FullName(), CommonUseReUse.SupportDataSplitter()) Then
 		
 		ErrorMessageString = NStr("en='Attempt to change undivided data (%1) in split mode.';ru='Попытка изменение неразделенных данных (%1) в разделенном режиме.'");
-		ErrorMessageString = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageString, Object.Metadata().FullName());
+		ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, Object.Metadata().FullName());
 		
 		ExchangeComponents.DataExchangeStatus.ExchangeProcessResult = Enums.ExchangeExecutionResult.CompletedWithWarnings;
 		WriteInExecutionProtocol(ExchangeComponents, ErrorMessageString,, False);
@@ -2145,7 +2145,7 @@ Function FormatVersionExchangeManager(Val InfobaseNode, Val FormatVersion) Expor
 	Result = ExchangeFormatVersions(InfobaseNode).Get(FormatVersion);
 	
 	If Result = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Conversion manager for <%1> exchange format version is not defined.';ru='Не определен Менеджер конвертации для версии формата обмена <%1>.'"),
 			FormatVersion
 		);
@@ -2205,12 +2205,12 @@ Function CompareVersions(Val VersionString1, Val VersionString2)
 	Row2 = ?(IsBlankString(VersionString2), "0.0", VersionString2);
 	Version1 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row1, ".");
 	If Version1.Count() < 2 OR Version1.Count() > 3 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Wrong format of the VersionRow1 parameter: %1';ru='Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
 	EndIf;
 	Version2 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row2, ".");
 	If Version2.Count() < 2 OR Version2.Count() > 3 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Wrong format of the VersionRow2 parameter: %1';ru='Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
 	EndIf;
 	
@@ -2861,7 +2861,7 @@ Function FindConversionRuleForValue(PredefinedDataConversionRules, Val Type, Val
 			
 		ElsIf FoundRules.Count() > 1 Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Conversion rules error of the predefined data.
 		|More than one conversion rule for the <%1> source type is specified.';ru='Ошибка правил конвертации предопределенных данных.
 		|Задано более одного правила конвертации для типа источника <%1>.'"),
@@ -2870,7 +2870,7 @@ Function FindConversionRuleForValue(PredefinedDataConversionRules, Val Type, Val
 			
 		EndIf;
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Conversion rules error of the predefined data.
 		|Rule conversion is undefined for the <% 1> source type.';ru='Ошибка правил конвертации предопределенных данных.
 		|Правило конвертации не определено для типа источника <%1>.'"),
@@ -2889,7 +2889,7 @@ Function FindConversionRuleForValue(PredefinedDataConversionRules, Val Type, Val
 			
 		ElsIf FoundRules.Count() > 1 Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Conversion rules error of the predefined data.
 		|More than one rule of conversion for the <%1> source type and the <%2> receiver type is specified.';ru='Ошибка правил конвертации предопределенных данных.
 		|Задано более одного правила конвертации для типа источника <%1> и типа приемника <%2>.'"),
@@ -2899,7 +2899,7 @@ Function FindConversionRuleForValue(PredefinedDataConversionRules, Val Type, Val
 			
 		EndIf;
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Conversion rules error of the predefined data.
 		|Conversion rule is not defined for a %1 source type and %2 receiver type.';ru='Ошибка правил конвертации предопределенных данных.
 		|Правило конвертации не определено для типа источника <%1> и типа приемника <%2>.'"),
@@ -2916,7 +2916,7 @@ Function XDTOEnumerationValue(Val ValueConversions, Val Value)
 	XDTODataValue = ValueConversions.Get(Value);
 	
 	If XDTODataValue = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Conversion rule for the value of predifined data is not found.
 		|Source value type:
 		|<%1> Source value: <%2>';ru='Не найдено правило конвертации для значения предопределенных данных.
@@ -3587,7 +3587,7 @@ Procedure DelayedObjectsFilling(ExchangeComponents)
 		Try
 			ExchangeManager.ExecuteModuleManagerProcedure(HandlerName, ParametersStructure);
 		Except
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Error executing the AfterAllDataConversion handler.
 		|Source type:
 		|%1 Error description: %2';ru='Ошибка выполнения обработчика ПослеКонвертацииВсехДанных.
@@ -3706,7 +3706,7 @@ Function ArrangeExchangeFormat(Val ExchangeFormat)
 	FormatItems = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(ExchangeFormat, "/");
 	
 	If FormatItems.Count() = 0 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Noncanonical name of the <%1> exchange format';ru='Неканоническое имя формата обмена <%1>'"),
 			ExchangeFormat
 		);
@@ -3760,7 +3760,7 @@ Function FindRefbyPublicIdidentifier(XDTOObjectUDID, ExchangeComponents, IBObjec
 			EndIf;
 		EndDo;
 		If  SuitableTypeRefsQuantity > 1 Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Several references are set for the %1 unique identifier and the %2 node.';ru='Для уникального идентификатора <%1> и узла <%2> назначено несколько ссылок.'"),
 				String(XDTOObjectUDID), String(ExchangeComponents.CorrespondentNode)
 				);
@@ -3954,7 +3954,7 @@ Function DERByXDTORefsType(ExchangeComponents, XDTORefType, ReturnEmptyValue = F
 			Return DataProcessorRule;
 		Else
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='DER for XDTO reference type is not found.
 		|XDTO reference type:
 		|%1 Error description: %2';ru='Не найдено ПОД для типа ссылки XDTO.
@@ -3981,7 +3981,7 @@ Function DERByXDTOObjectType(ExchangeComponents, XDTOObjectType, ReturnEmptyValu
 			Return DataProcessorRule;
 		Else
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='DER for XDTO object type is not found.
 		|XDTO object type:
 		|%1 Error description: %2';ru='Не найдено ПОД для типа объекта XDTO.
@@ -4005,7 +4005,7 @@ Function DERByMetadataObject(ExchangeComponents, MetadataObject)
 	
 	If DataProcessorRule = Undefined Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='DER for metadata objects is not found.
 		|Metadata object: %1';ru='Не найдено ПОД для объекта метаданных.
 		|Объект метаданных: %1'"),
@@ -4023,7 +4023,7 @@ Function DERByName(ExchangeComponents, Name)
 	
 	If DataProcessorRule = Undefined Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='DER with the %1 name is not found.';ru='Не найдено ПОД с именем %1'"), Name);
 			
 	Else
@@ -4059,7 +4059,7 @@ Procedure OnProcessDER(ExchangeComponents, DataProcessorRule, Val DataProcessorO
 	Try
 		ExchangeManager.ExecuteModuleManagerProcedure(DataProcessorRule.OnProcess, ParametersStructure);
 	Except
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error of the OnProcessing handler execution.
 		|Object:
 		|%1 Error description: %2';ru='Ошибка выполнения обработчика ПОД ПриОбработке.
@@ -4096,7 +4096,7 @@ Function DataSelection(ExchangeComponents, DataProcessorRule) Export
 		Try
 			DataSelection = ExchangeManager.ExecuteManagerModuleFunction(DataProcessorRule.DataSelection, ParametersStructure);
 		Except
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Error during the execution of the DER DataSelection handler.
 		|DER name:
 		|%1 Error description: %2';ru='Ошибка выполнения обработчика ПОД ВыборкаДанных.
@@ -4145,7 +4145,7 @@ Procedure OnDataSending(IBData, XDTOData, Val HandlerName, ExchangeComponents, E
 	Try
 		ExchangeManager.ExecuteModuleManagerProcedure(HandlerName, ParametersStructure);
 	Except
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error of the OnSendData handler.
 		|Object:
 		|%1 Error description: %2';ru='Ошибка выполнения обработчика ПриОтправкеДанных.
@@ -4181,7 +4181,7 @@ Procedure OnConvertXDTOData(XDTOData, ReceivedData, ExchangeComponents, Val Hand
 	Try
 		ExchangeManager.ExecuteModuleManagerProcedure(HandlerName, ParametersStructure);
 	Except
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error performing the OnConvertXDTOData handler.
 		|Source type:
 		|%1 Error description: %2';ru='Ошибка выполнения обработчика ПриКонвертацииДанныхXDTO.
@@ -4222,7 +4222,7 @@ Procedure BeforeReceivedDataWrite(ReceivedData, IBData, ExchangeComponents, Hand
 	Try
 		ExchangeManager.ExecuteModuleManagerProcedure(HandlerName, ParametersStructure);
 	Except
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error performing the BeforeReceivedDataWrite handler.
 		|Object:
 		|%1 Error description: %2';ru='Ошибка выполнения обработчика ПередЗаписьюПолученныхДанных.
@@ -4341,7 +4341,7 @@ Function ExchangeFormatVersions(Val InfobaseNode)
 	ExchangePlanManager(InfobaseNode).GetExchangeFormatVersions(ExchangeFormatVersions);
 	
 	If ExchangeFormatVersions.Count() = 0 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Versions of the exchange format are not specified.
 		|Names of an
 		|exchange plan: %1 Procedure: GetAllExchangeFormatVersions(<ExchangeFormatVersions>)';ru='Не заданы версии формата обмена.
@@ -4383,7 +4383,7 @@ Procedure CheckVersion(Val Version)
 	Versions = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Version, ".");
 	
 	If Versions.Count() = 0 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Noncanonical presentation of the exchange format version: <%1>.';ru='Неканоническое представление версии формата обмена: <%1>.'"),
 			Version
 		);

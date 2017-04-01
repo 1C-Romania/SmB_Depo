@@ -55,7 +55,7 @@ Procedure SetJobParameters(Task, Use, Parameters, Schedule) Export
 	ChackedDate = OriginalDate + MinInterval - 1;
 	If Schedule.ExecutionRequired(ChackedDate, OriginalDate) Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Schedule specified for the execution of additional report or data processor commands as jobs, should not be more than once in %1 seconds!';ru='Расписание, задаваемое для выполнения команд дополнительного отчета или обработки в качестве заданий, должно быть не чаще, чем 1 раз в %1 секунд!'"), MinInterval);
 		
 	EndIf;

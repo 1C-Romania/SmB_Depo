@@ -503,7 +503,7 @@ Procedure GoToPage(Page)
 		|Select suitable card.';ru='Обнаружено несколько дисконтных карт со штрихкодом ""%1"".
 		|Выберите подходящую карту.'");
 		EndIf;
-		LabelChoiceDiscountCard = StringFunctionsClientServer.PlaceParametersIntoString(Text, CardCode);
+		LabelChoiceDiscountCard = StringFunctionsClientServer.SubstituteParametersInString(Text, CardCode);
 	EndIf;
 	
 	GenerateFormTitle();
@@ -555,7 +555,7 @@ Function HandleReceivedCodeOnServer(Data, CardCodeType, Preprocessing, ThereAreF
 		NewRow = FoundDiscountCards.Add();
 		FillPropertyValues(NewRow, TSRow);
 		
-		NewRow.Description = String(TSRow.Ref) + ?(ValueIsFilled(TSRow.Counterparty) AND ValueIsFilled(TSRow.Ref), StringFunctionsClientServer.PlaceParametersIntoString(NStr("en=' Client: %1';ru=' Клиент: %1'"), String(TSRow.Counterparty)), "");
+		NewRow.Description = String(TSRow.Ref) + ?(ValueIsFilled(TSRow.Counterparty) AND ValueIsFilled(TSRow.Ref), StringFunctionsClientServer.SubstituteParametersInString(NStr("en=' Client: %1';ru=' Клиент: %1'"), String(TSRow.Counterparty)), "");
 		
 	EndDo;
 	
@@ -565,7 +565,7 @@ Function HandleReceivedCodeOnServer(Data, CardCodeType, Preprocessing, ThereAreF
 			NewRow = FoundDiscountCards.Add();
 			FillPropertyValues(NewRow, TSRow);
 			
-			NewRow.Description = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Register a new card: %1';ru='Зарегистрировать новую карту: %1'"), String(TSRow.CardKind))+?(TSRow.ThisIsMembershipCard, " (Named, ", " (")+TSRow.CardType+")";
+			NewRow.Description = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Register a new card: %1';ru='Зарегистрировать новую карту: %1'"), String(TSRow.CardKind))+?(TSRow.ThisIsMembershipCard, " (Named, ", " (")+TSRow.CardType+")";
 			
 		EndDo;
 	EndIf;
@@ -591,7 +591,7 @@ Procedure HandleReceivedCodeOnClient(Data, ReceivedCodeType, Preprocessing)
 		EndIf;
 		
 		CommonUseClientServer.MessageToUser(
-			StringFunctionsClientServer.PlaceParametersIntoString(MessageText, CardCode),
+			StringFunctionsClientServer.SubstituteParametersInString(MessageText, CardCode),
 			,
 			"CardCode");
 		
@@ -605,7 +605,7 @@ Procedure HandleReceivedCodeOnClient(Data, ReceivedCodeType, Preprocessing)
 			Text = NStr("en='Several discount cards with code ""%1"" are detected.
 		|Select suitable card.';ru='Обнаружено несколько дисконтных карт с кодом ""%1"".
 		|Выберите подходящую карту.'");
-			LabelChoiceDiscountCard = StringFunctionsClientServer.PlaceParametersIntoString(Text, CardCode);
+			LabelChoiceDiscountCard = StringFunctionsClientServer.SubstituteParametersInString(Text, CardCode);
 		Else // Only the kinds of cards for new card registration.
 			If CodeType = PredefinedValue("Enum.CardCodesTypes.Barcode") Then
 				Text = NStr("en='Card with barcode ""% 1"" is not registered.
@@ -616,7 +616,7 @@ Procedure HandleReceivedCodeOnClient(Data, ReceivedCodeType, Preprocessing)
 		|Select a suitable kind of card for registration of new discount card.';ru='Карта с магнитным кодом ""%1"" не зарегистрирована.
 		|Выберите подходящий вид карты для регистрации новой дисконтной карты.'");			   
 			EndIf;				   
-			LabelChoiceDiscountCard = StringFunctionsClientServer.PlaceParametersIntoString(Text, CardCode);
+			LabelChoiceDiscountCard = StringFunctionsClientServer.SubstituteParametersInString(Text, CardCode);
 		EndIf;
 	ElsIf FoundDiscountCards.Count() = 1 AND ThereAreFoundCards Then
 		ProcessDiscountCardChoice(FoundDiscountCards[0]);

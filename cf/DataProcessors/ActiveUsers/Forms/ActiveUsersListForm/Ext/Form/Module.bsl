@@ -403,12 +403,12 @@ Function FindRefByUserID(ID)
 					|	InfobaseUserID = &ID";
 					
 	QueryByUsersText = 
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 					QueryTextPattern,
 					"Catalog.Users");
 	
 	QueryTextForExternalUsers = 
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 					QueryTextPattern,
 					"Catalog.ExternalUsers");
 					
@@ -514,14 +514,14 @@ Procedure AfterSessionEnd(Result, AdditionalParameters) Export
 			
 			NotificationText = NStr("en='The %1 sessions is completed.';ru='Сеансы %1 завершены.'");
 			SessionNumbers = StringFunctionsClientServer.RowFromArraySubrows(AdditionalParameters.SessionNumbers);
-			NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText,
+			NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NotificationText,
 				SessionNumbers);
 			ShowUserNotification(NStr("en='Sessions end';ru='Завершение сеансов'"),, NotificationText);
 			
 		Else
 			
 			NotificationText = NStr("en='The %1 session is completed.';ru='Сеанс %1 завершен.'");
-			NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText,
+			NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NotificationText,
 			AdditionalParameters.SessionNumbers);
 			ShowUserNotification(NStr("en='Terminate session';ru='Завершить сеанс'"),, NotificationText);
 			

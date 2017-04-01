@@ -30,7 +30,7 @@ Function Parameters() Export
 	
 	If ValueIsFilled(ParameterPresentation) Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Information base updating error.
 		|Users work parameter is
 		|not filled: ""%1"".';ru='Ошибка обновления информационной базы.

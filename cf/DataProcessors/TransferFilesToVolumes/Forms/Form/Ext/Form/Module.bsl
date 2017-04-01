@@ -141,7 +141,7 @@ Procedure PerformFilesTransferToVolumesEnd(Response, ExecuteParameters) Export
 	VersionsInBaseSize = SizeInBytesOfDatabaseVersions / 1048576;
 	
 	If NumberOf <> 0 Then
-		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
+		WarningText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Files transfer to the volumes is completed.
 		|Transferred files: %1';ru='Завершен перенос файлов в тома.
 		|Перенесено файлов: %1'"),
@@ -151,7 +151,7 @@ Procedure PerformFilesTransferToVolumesEnd(Response, ExecuteParameters) Export
 	
 	If FileArrayWithErrors.Count() <> 0 Then
 		
-		Explanation = StringFunctionsClientServer.PlaceParametersIntoString(
+		Explanation = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Number of errors during transfer: %1';ru='Количество ошибок при переносе: %1'"),
 			FileArrayWithErrors.Count());
 			
@@ -307,7 +307,7 @@ Function MoveVersion(VersionStructure, MaximumFileSize, FileArrayWithErrors)
 		ANameForLog = VersionStructure.Text;
 		WriteLogEvent(NStr("en='Files. Error of the file transfer to the volume';ru='Файлы.Ошибка переноса файла в том'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,, FileRef,
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='When transferring to the file volume
 		|""%1""
 		|an error occurred:
@@ -323,7 +323,7 @@ Function MoveVersion(VersionStructure, MaximumFileSize, FileArrayWithErrors)
 	ANameForLog = VersionStructure.Text;
 	WriteLogEvent(NStr("en='Files. File transfer to the volume has started';ru='Файлы.Начат перенос файла в том'", CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,, FileRef,
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Start transfer to the file volume
 		|""%1"".';ru='Начат перенос в
 		|том файла ""%1"".'"),
@@ -379,7 +379,7 @@ Function MoveVersion(VersionStructure, MaximumFileSize, FileArrayWithErrors)
 		WriteLogEvent(
 			NStr("en='Files. Files transfer to the volume is completed';ru='Файлы.Завершен перенос файла в том'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,, FileRef,
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Transfer to the file volume is completed
 		|""%1"".';ru='Завершен перенос в том файла
 		|""%1"".'"), ANameForLog));
@@ -398,7 +398,7 @@ Function MoveVersion(VersionStructure, MaximumFileSize, FileArrayWithErrors)
 		
 		WriteLogEvent(NStr("en='Files. Error of the file transfer to the volume';ru='Файлы.Ошибка переноса файла в том'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,, FileRef,
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='When transferring to the file volume
 		|""%1""
 		|an error occurred:

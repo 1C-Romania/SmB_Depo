@@ -66,7 +66,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If Conflicting.Count() > 0 Then
 			Cancel = True;
 			If ItemCheck Then
-				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+				ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Name ""%1"" used by this report (data processor) is already used by another additional published report (data processor). 
 		|
 		|To continue it is necessary to change Publication kind from ""%2"" to ""%3"" or ""%4"".';ru='Имя ""%1"", используемое данным отчетом (обработкой), уже занято другим опубликованным дополнительным отчетом (обработкой). 
@@ -78,7 +78,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 					String(Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Disabled)
 				);
 			Else
-				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+				ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Name ""%1"" used by report (data processor) ""% 2"" already occupied by another published additional report (data processor).';ru='Имя ""%1"", используемое отчетом (обработкой) ""%2"", уже занято другим опубликованным дополнительным отчетом (обработкой).'"),
 					ObjectName,
 					CommonUse.ObjectAttributeValue(ThisObject.Ref, "Description")

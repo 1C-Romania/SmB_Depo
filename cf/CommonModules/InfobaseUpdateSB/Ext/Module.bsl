@@ -1334,7 +1334,7 @@ Procedure WriteCatalogObject(CatalogObject, Inform = False) Export
 	Else
 		FullCode = NStr("en='<without code>';ru='<без кода>'");
 	EndIf; 
-	MessageStr = StringFunctionsClientServer.PlaceParametersIntoString(MessageStr, CatalogObject.Metadata().Synonym, FullCode, CatalogObject.Description);
+	MessageStr = StringFunctionsClientServer.SubstituteParametersInString(MessageStr, CatalogObject.Metadata().Synonym, FullCode, CatalogObject.Description);
 
 	Try
 		CatalogObject.Write();
@@ -1345,7 +1345,7 @@ Procedure WriteCatalogObject(CatalogObject, Inform = False) Export
 	Except
 
 		MessageText = NStr("en='Failed to complete action: %1';ru='Не удалось завершить действие: %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, MessageStr);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, MessageStr);
 
 		CommonUseClientServer.MessageToUser(MessageText);
 
@@ -1433,7 +1433,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 		|TIN does not contain 10 digits';ru='%1
 		|ИНН содержит не 10 цифр'");
 					
-					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
+					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
 					
 					ReturnStructure.NoErrorsByTIN = False;
 					
@@ -1447,7 +1447,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 		|TIN does not contain 12 digits';ru='%1
 		|ИНН содержит не 12 цифр'");
 					
-					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
+					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
 					
 					ReturnStructure.NoErrorsByTIN = False;
 					
@@ -1465,7 +1465,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 		|TIN includes not only digits';ru='%1
 		|ИНН содержит не только цифры'");
 						
-						ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
+						ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
 						
 						ReturnStructure.NoErrorsByTIN = False;
 						
@@ -1516,7 +1516,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 		|TIN does not correspond to the format';ru='%1
 		|ИНН не соответствует формату'");
 								
-								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
+								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
 								
 								ReturnStructure.NoErrorsByTIN = False;
 								
@@ -1584,7 +1584,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 		|TIN does not correspond to the format';ru='%1
 		|ИНН не соответствует формату'");
 								
-								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectTIN, TIN);
+								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
 								
 								ReturnStructure.NoErrorsByTIN = False;
 								
@@ -1649,7 +1649,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 		|KPP does not contain 9 digits';ru='%1
 		|КПП содержит не 9 цифр'");
 					
-					ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
+					ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectKPP, KPP);
 					
 					ReturnStructure.NoErrorsByKPP = False;
 					
@@ -1667,7 +1667,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 		|KPP includes not only digits';ru='%1
 		|КПП содержит не только цифры'");
 						
-						ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
+						ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectKPP, KPP);
 						
 						ReturnStructure.NoErrorsByKPP = False;
 						
@@ -1719,7 +1719,7 @@ Function CheckTINKPPCorrectness(Val ParametersStructure) Export
 		|KPP does not correspond to the format';ru='%1
 		|КПП не соответствует формату'");
 							
-							ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.PlaceParametersIntoString(TextForIncorrectKPP, KPP);
+							ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectKPP, KPP);
 							
 							ReturnStructure.NoErrorsByKPP = False;
 							

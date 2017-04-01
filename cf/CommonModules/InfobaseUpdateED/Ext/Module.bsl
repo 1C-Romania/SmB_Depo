@@ -611,7 +611,7 @@ Procedure FillDataAboutEDFProfileSettings() Export
 			NewSettingsProfile = Catalogs.EDFProfileSettings.CreateItem();
 			
 			PatternName = NStr("en='%1, %2';ru='%1, %2'");
-			NewSettingsProfile.Description = StringFunctionsClientServer.PlaceParametersIntoString(PatternName,
+			NewSettingsProfile.Description = StringFunctionsClientServer.SubstituteParametersInString(PatternName,
 			Selection.Company, Selection.EDExchangeMethod);
 			
 			NewSettingsProfile.Company              = Selection.Company;

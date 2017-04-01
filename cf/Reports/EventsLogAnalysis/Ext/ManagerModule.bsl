@@ -614,7 +614,7 @@ Function IBUserName(UserRef) Export
 EndFunction
 
 Function RowWeekOfYear(DateOfYear)
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Week %1';ru='Неделя %1'"), WeekOfYear(DateOfYear));
 EndFunction
 
@@ -630,7 +630,7 @@ Procedure GenerateStringConcurrentSessions(ConcurrentSessions, MaxUserArray,
 		For Each UserName IN TemporaryArray Do
 			If UserName = Item Then
 				CounterNumberOfSessionsUser = CounterNumberOfSessionsUser + 1;
-				UserAndNumber = StringFunctionsClientServer.PlaceParametersIntoString(
+				UserAndNumber = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='%1 (%2)';ru='%1 (%2)'"), Item, CounterNumberOfSessionsUser);
 			EndIf;
 		EndDo;
@@ -744,7 +744,7 @@ Function GenerateReportForDurationJobsOfScheduledJobs(FillingParameters) Export
 				If Not TypeOf(Item) = Type("Number")
 					AND Not TypeOf(Item) = Type("Date") Then
 					Area = Template.GetArea("ScheduledJobList");
-					Area.Parameters.ScheduledJobList = StringFunctionsClientServer.PlaceParametersIntoString(
+					Area.Parameters.ScheduledJobList = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='%1 (session %2)';ru='%1 (сеанс %2)'"), Item, ArrayRoutineMaintenanceJobs.Get(IndexOfScheduledJobs+1));
 				ElsIf Not TypeOf(Item) = Type("Date")
 					AND Not TypeOf(Item) = Type("String") Then	
@@ -792,7 +792,7 @@ Function GenerateReportForDurationJobsOfScheduledJobs(FillingParameters) Export
 					Point.Details.Add(CommonDurationOfST);
 					Point.Details.Add(StartDate);
 					Point.Details.Add(EndDate);
-					PointName = StringFunctionsClientServer.PlaceParametersIntoString(
+					PointName = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='%1 (%2 from %3)';ru='%1 (%2 из %3)'"), Point.Value, 
 						StartingScheduledJobs, String(StringStartsCount.OfLaunches));
 					Point.Value = PointName;
@@ -830,7 +830,7 @@ Function GenerateReportForDurationJobsOfScheduledJobs(FillingParameters) Export
 			Interval = Value.Add();
 			Interval.Begin = RowScheduledJobs.DateLaunchJobs;
 			Interval.End	= RowScheduledJobs.EndDateJobs;
-			Interval.Text	= StringFunctionsClientServer.PlaceParametersIntoString(
+			Interval.Text	= StringFunctionsClientServer.SubstituteParametersInString(
 								NStr("en='%1 - %2';ru='%1 - %2'"), Format(Interval.Begin, "DLF=T"), Format(Interval.End, "DLF=T"));
 			SignChangeDots = False;
 			// Do not fill in decryption for background jobs.
@@ -852,7 +852,7 @@ Function GenerateReportForDurationJobsOfScheduledJobs(FillingParameters) Export
 		Point.Details.Add(CommonDurationOfST);
 		Point.Details.Add(StartDate);
 		Point.Details.Add(EndDate);	
-		PointName = StringFunctionsClientServer.PlaceParametersIntoString(
+		PointName = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 (%2 from %3)';ru='%1 (%2 из %3)'"), Point.Value, 
 				StartingScheduledJobs, String(StringStartsCount.OfLaunches));
 		Point.Value = PointName;
@@ -1059,7 +1059,7 @@ Function AmountAtSameTimeRoutineMaintenanceJobs(ParametersConcurrentSessions)
 		If CurrentDate <> DateAmountAtSameTimeScheduledJobs Then              
 			If TableRow <> Undefined Then
 			   	TableRow.AmountAtSameTimeRoutineMaintenanceJobs = AmountAtSameTimeRoutineMaintenanceJobs;
-				TableRow.DateAmountAtSameTimeScheduledJobs = StringFunctionsClientServer.PlaceParametersIntoString(
+				TableRow.DateAmountAtSameTimeScheduledJobs = StringFunctionsClientServer.SubstituteParametersInString(
 										NStr("en='%1 - %2';ru='%1 - %2'"), Format(CurrentDate, "DLF=T"), 
 										Format(EndOfHour(CurrentDate), "DLF=T"));
 				TableRow.ScheduledJobList = MaxArrayScheduledJobs;
@@ -1112,7 +1112,7 @@ Function AmountAtSameTimeRoutineMaintenanceJobs(ParametersConcurrentSessions)
 		
 	If AmountAtSameTimeRoutineMaintenanceJobs <> 0 Then
 		TableRow.AmountAtSameTimeRoutineMaintenanceJobs  = AmountAtSameTimeRoutineMaintenanceJobs;
-		TableRow.DateAmountAtSameTimeScheduledJobs = StringFunctionsClientServer.PlaceParametersIntoString(
+		TableRow.DateAmountAtSameTimeScheduledJobs = StringFunctionsClientServer.SubstituteParametersInString(
 								NStr("en='%1 - %2';ru='%1 - %2'"), Format(CurrentDate, "DLF=T"), 
 								Format(EndOfHour(CurrentDate), "DLF=T"));
 		TableRow.ScheduledJobList = MaxArrayScheduledJobs;
@@ -1410,19 +1410,19 @@ Function DurationOfScheduledJobs(DurationOfST)
 	If DurationOfST = 0 Then
 		 CommonDurationOfST = "0";
 	ElsIf DurationOfST <= 60 Then
-		CommonDurationOfST = StringFunctionsClientServer.PlaceParametersIntoString(
+		CommonDurationOfST = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 sec';ru='%1 сек'"), DurationOfST);
 	ElsIf 60 < DurationOfST <= 3600 Then
 		DurationMinutes  = Format(DurationOfST/60, "NFD=0");
 		DurationSeconds = Format((Format(DurationOfST/60, "NFD=2") - 
 											Int(DurationOfST/60)) * 60, "NFD=0");
-		CommonDurationOfST = StringFunctionsClientServer.PlaceParametersIntoString(
+		CommonDurationOfST = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 min %2 sec';ru='%1 мин %2 сек'"), DurationMinutes, DurationSeconds);
 	ElsIf DurationOfST > 3600 Then
 		DurationHours	 = Format(DurationOfST/60/60, "NFD=0");
 		DurationMinutes  = (Format(DurationOfST/60/60, "NFD=2") - Int(DurationOfST/60/60))*60;
 		DurationMinutes	 = Format(DurationMinutes, "NFD=0");
-		CommonDurationOfST = StringFunctionsClientServer.PlaceParametersIntoString(
+		CommonDurationOfST = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 h %2 min';ru='%1 ч %2 мин'"), DurationHours, DurationMinutes);
 	EndIf;
 	

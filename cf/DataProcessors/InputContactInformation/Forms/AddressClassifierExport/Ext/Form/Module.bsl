@@ -3,7 +3,7 @@
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Parameters.Property("StateNameForImporting") Then
-		Items.Label.Title = StringFunctionsClientServer.PlaceParametersIntoString(Items.Label.Title, Parameters.StateNameForImporting);
+		Items.Label.Title = StringFunctionsClientServer.SubstituteParametersInString(Items.Label.Title, Parameters.StateNameForImporting);
 	EndIf;
 EndProcedure
 

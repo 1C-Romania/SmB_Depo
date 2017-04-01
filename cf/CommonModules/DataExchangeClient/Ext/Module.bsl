@@ -736,7 +736,7 @@ Procedure PassFileToServerEndExtensionConnectionAfterFileExistenceCheck(Exists, 
 	If Not Exists Then
 		ListForPassParametersFilling.HasErrors = True;
 		Item = ListForPassParametersFilling.DataFiles[ListForPassParametersFilling.PositionNumber];
-		Item.ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		Item.ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File %1 does not exist or there is no access to it.';ru='Файл ""%1"" не существует или к нему нет доступа'"), Item.Name);
 			
 		// Go to the next file or complete list filling for passing.
@@ -768,7 +768,7 @@ Procedure PassFileToServerEndExtensionConnectionAfterCheckOnDirectory(IsDirector
 	
 	If IsDirectory Then
 		ListForPassParametersFilling.HasErrors = True;
-		Item.ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		Item.ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File %1 does not exist or there is no access to it.';ru='Файл ""%1"" не существует или к нему нет доступа'"), Item.Name);
 	Else
 		ListForPassParametersFilling.ListForPass.Add(New TransferableFileDescription(Item.Name));

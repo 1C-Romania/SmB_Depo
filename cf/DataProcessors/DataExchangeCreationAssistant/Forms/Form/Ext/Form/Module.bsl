@@ -285,7 +285,7 @@ Procedure OnOpen(Cancel)
 	
 	If CommonUseClient.OfferToCreateBackups() Then
 		
-		Text = StringFunctionsClientServer.PlaceParametersIntoString(
+		Text = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Before you configure the synchronization it is recommended to <a href=""%1"">back up<a>.';ru='Перед настройкой синхронизации рекомендуется сделать <a href = %1 >резервную копию данных</a>.'"),
 			"CreateBackup");
 		
@@ -1532,7 +1532,7 @@ Function ResultPresentationMessagesTransport()
 		Result = NStr("en='Parameters of connection to the
 		|application in the service: %1';ru='Параметры подключения
 		|к приложению в сервисе: %1'");
-		Result = StringFunctionsClientServer.PlaceParametersIntoString(Result, GetDescriptionOfSettingsOfExchangeTransport());
+		Result = StringFunctionsClientServer.SubstituteParametersInString(Result, GetDescriptionOfSettingsOfExchangeTransport());
 		
 	Else
 		
@@ -2556,7 +2556,7 @@ Procedure OnConnectingToCorrespondent(Cancel, Val CorrespondentVersion)
 	Except
 		CommonUseClientServer.MessageToUser(BriefErrorDescription(ErrorInfo()),,,, Cancel);
 		WriteErrorInEventLogMonitor(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='When executing the OnConnectingToCorrespondent handler, an error occurred:%1%2';ru='При выполнении обработчика ПриПодключенииККорреспонденту произошла ошибка:%1%2'"),
 				Chars.LF,
 				DetailErrorDescription(ErrorInfo())),
@@ -3189,7 +3189,7 @@ Function Attachable_AssistantPageExchangeSetupResults_OnOpen(Cancel, SkipPage, I
 		|infobase: %4 Prefix of the second infobase: %5';ru='%1%2%3Префикс
 		|этой информационной базы: %4 Префикс второй информационной базы: %5'");
 		
-		ExchangeSettingsResultPresentation = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
+		ExchangeSettingsResultPresentation = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 							ResultPresentationMessagesTransport(),
 							ResultPresentationFiltersAtNode(),
 							PresentationOfDefaultValueResultAtNode(),
@@ -3201,7 +3201,7 @@ Function Attachable_AssistantPageExchangeSetupResults_OnOpen(Cancel, SkipPage, I
 		// Display of exchange setup result.
 		MessageString = NStr("en='%1%2%3Prefix of this infobase: %4';ru='%1%2%3Префикс этой информационной базы: %4'");
 		
-		ExchangeSettingsResultPresentation = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
+		ExchangeSettingsResultPresentation = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 							ResultPresentationMessagesTransport(),
 							ResultPresentationFiltersAtNode(),
 							PresentationOfDefaultValueResultAtNode(),
@@ -3231,7 +3231,7 @@ Function Attachable_AssistantPageExchangeSetupResults_OnOpen_ExternalConnection(
 		
 	EndIf;
 	
-	ExchangeSettingsResultPresentation = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
+	ExchangeSettingsResultPresentation = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 						ResultPresentationMessagesTransport(),
 						ResultPresentationFiltersAtNode(),
 						PresentationOfDefaultValueResultAtNode(),

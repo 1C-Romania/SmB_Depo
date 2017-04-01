@@ -45,7 +45,7 @@ Procedure GetDocumentPresentation(Source, Data, Presentation, StandardProcessing
 		Status = NStr("en='(not posted)';ru='(не проведен)'");
 	EndIf;
 	
-	Presentation = StringFunctionsClientServer.PlaceParametersIntoString(
+	Presentation = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='%1 %2 from %3 %4';ru='%1 %2 от %3 %4'"),
 		Data.Ref.Metadata().Presentation(),
 		?(Data.Property("Number"), ObjectPrefixationClientServer.GetNumberForPrinting(Data.Number, True, True), ""),

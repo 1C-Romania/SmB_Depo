@@ -820,7 +820,7 @@ Function GetFileBinaryData(FileData)
 		If FileBinaryData = Undefined Then
 			
 			ErrorDescription = ErrorInfo();
-			WriteLogEvent(StringFunctionsClientServer.PlaceParametersIntoString(NSTr("en='GetPictureProc: failed to get file data %1 of products and services %2.';ru='GetPicture: не удалось получить данные файла %1 номенклатуры %2.'"),
+			WriteLogEvent(StringFunctionsClientServer.SubstituteParametersInString(NSTr("en='GetPictureProc: failed to get file data %1 of products and services %2.';ru='GetPicture: не удалось получить данные файла %1 номенклатуры %2.'"),
 				FileData.File,
 				FileData.ProductsAndServices),
 				EventLogLevel.Error,,,

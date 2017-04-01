@@ -110,7 +110,7 @@ Procedure WriteEmail(Parameters)
 		EMailForSending = Parameters.Whom;
 	EndIf;
 	
-	Items.TitleExplanation.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.TitleExplanation.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Email will be send to user technical support to the address %1';ru='Письмо будет отправлено в техподдержку пользователей на адрес %1'"),
 		EMailForSending);
 	
@@ -125,7 +125,7 @@ Procedure WriteEmail(Parameters)
 	EndIf;
 	
 	If IsBlankString(Message) Then
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		Message = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='<Enter email content>,
 		|
 		|Login: %1
@@ -174,7 +174,7 @@ Function TechnicalParametersText(OnStart)
 		|- вызов сервиса: %6.'")
 		+ Chars.LF;
 	
-	TechnicalParameters = StringFunctionsClientServer.PlaceParametersIntoString(
+	TechnicalParameters = StringFunctionsClientServer.SubstituteParametersInString(
 		TechnicalParameters,
 		String(OnlineUserSupportClientServer.ConfigurationName()),
 		String(OnlineUserSupportClientServer.ConfigurationVersion()),

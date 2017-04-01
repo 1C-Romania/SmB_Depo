@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	WriteLogEvent(InfobaseUpdate.EventLogMonitorEvent(), EventLogLevel.Error,
 		, , Parameters.DetailedErrorMessage);
 	
-	ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	ErrorMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='An error occurred while updating
 		|
 		|application version: %1';ru='При обновлении версии

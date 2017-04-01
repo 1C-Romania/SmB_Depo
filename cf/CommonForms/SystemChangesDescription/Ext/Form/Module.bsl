@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	Title = NStr("en = 'What's new in configuration %1'");
-	Title = StringFunctionsClientServer.PlaceParametersIntoString(Title, Metadata.Synonym);
+	Title = StringFunctionsClientServer.SubstituteParametersInString(Title, Metadata.Synonym);
 	
 	If ValueIsFilled(Parameters.UpdateBeginTime) Then
 		UpdateBeginTime = Parameters.UpdateBeginTime;
@@ -36,7 +36,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 
 	If DocumentSystemChangesDescription.TableHeight = 0 Then
-		Text = StringFunctionsClientServer.PlaceParametersIntoString(
+		Text = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Configuration has been successfully updated to the version %1';ru='Конфигурация успешно обновлена на версию %1'"), Metadata.Version);
 		DocumentSystemChangesDescription.Area("R1C1:R1C1").Text = Text;
 	EndIf;

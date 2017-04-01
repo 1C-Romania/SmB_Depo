@@ -25,7 +25,7 @@ Function LegalEntityDetailsByTIN(Val TIN) Export
 			Response = Proxy.getCorporationRequisitesByTIN(InputParameters);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='TIN %1:';ru='ИНН %1:'"), TIN)
 				+ Chars.LF + DetailErrorDescription(ErrorInfo);
 		EndTry;
@@ -86,7 +86,7 @@ Function EntrepreneurDetailsByTIN(Val TIN) Export
 			Response = Proxy.getEntrepreneurRequisitesByTIN(InputParameters);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='TIN %1:';ru='ИНН %1:'"), TIN)
 				+ Chars.LF + DetailErrorDescription(ErrorInfo);
 		EndTry;
@@ -170,7 +170,7 @@ Function LegalEntitiesDetailsByName(Val Description, Val StateCode = "", Val Add
 			Response = Proxy.getCorporationRequisitesByNameAndAddress(InputParameters);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Name - %1:';ru='Наименование - %1:'"), Description)
 				+ Chars.LF + DetailErrorDescription(ErrorInfo);
 		EndTry;
@@ -477,12 +477,12 @@ Procedure FillInPensionFundDetails(XDTODataObject, Attributes)
 		RegistrationInPFR = NewRegistrationInPensionFund();
 		
 		PFRRegistrationNumber = XDTODataObject.PensionFundRegistrationInfo.PensionFundRegistrationNumber;
-		PFRRegistrationNumber = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1-%2-%3';ru='%1-%2-%3'"), 
+		PFRRegistrationNumber = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1-%2-%3';ru='%1-%2-%3'"), 
 					Left(PFRRegistrationNumber, 3), Mid(PFRRegistrationNumber,4, 3), Right(PFRRegistrationNumber, 6));
 		RegistrationInPFR.PFRRegistrationNumber = PFRRegistrationNumber;
 		If XDTODataObject.PensionFundRegistrationInfo.PensionFundAgencyInfo <> Undefined Then
 			PFRBodyCode = XDTODataObject.PensionFundRegistrationInfo.PensionFundAgencyInfo.CodePF;
-			PFRBodyCode = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1-%2';ru='%1-%2'"), 
+			PFRBodyCode = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1-%2';ru='%1-%2'"), 
 				Left(PFRBodyCode, 3), Right(PFRBodyCode, 3));
 			RegistrationInPFR.PFRBodyCode          = PFRBodyCode;
 			RegistrationInPFR.PFRBodyName = XDTODataObject.PensionFundRegistrationInfo.PensionFundAgencyInfo.PensionFundName;
@@ -726,7 +726,7 @@ Procedure HandleServiceError(ErrorDescription, AttributesStructure)
 		EventText = NStr("en='Data receiving error';ru='Ошибка получения данных'", MainLanguageCode);
 		
 	ElsIf Find(ErrorDescription, "SERVER-3:") > 0 Then
-		ErrorText  = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText  = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to find data to fill out details by TIN %1';ru='Не удалось найти данные для заполнения реквизитов по ИНН %1'"),
 			AttributesStructure.TIN);
 		EventText = NStr("en='Data receiving error';ru='Ошибка получения данных'", MainLanguageCode);
@@ -740,7 +740,7 @@ Procedure HandleServiceError(ErrorDescription, AttributesStructure)
 		EventText = NStr("en='Data receiving error';ru='Ошибка получения данных'", MainLanguageCode);
 		
 	ElsIf Find(ErrorDescription, "SERVER-6:") > 0 Then
-		ErrorText  = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText  = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to find data to fill out details by TIN %1';ru='Не удалось найти данные для заполнения реквизитов по ИНН %1'"),
 			AttributesStructure.TIN);
 		EventText = NStr("en='Data receiving error';ru='Ошибка получения данных'", MainLanguageCode);

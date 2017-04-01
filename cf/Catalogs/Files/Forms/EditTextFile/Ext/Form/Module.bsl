@@ -136,7 +136,7 @@ Procedure SaveAs(Command)
 		FileData.FullDescrOfVersion, FileData.Extension);
 	
 	FileChoice.FullFileName = NameWithExtension;
-	Filter = StringFunctionsClientServer.PlaceParametersIntoString(
+	Filter = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='All files (*.%1)|*.%1';ru='Все файлы (*.%1)|*.%1'"), FileData.Extension, FileData.Extension);
 	FileChoice.Filter = Filter;
 	

@@ -90,7 +90,7 @@ Procedure ExportSettingsStandardStorages()
 				WriteLogEvent(
 					NStr("en='DataExportImport.SettingExportSkipped';ru='ВыгрузкаЗагрузкаДанных.ВыгрузкаНастройкиПропущена'", Metadata.DefaultLanguage.LanguageCode),
 					EventLogLevel.Warning,,,
-					StringFunctionsClientServer.PlaceParametersIntoString(
+					StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='The setting export is skipped as the setting can not
 		|be
 		|read:

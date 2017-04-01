@@ -268,7 +268,7 @@ Procedure SubsystemsTreeDrag(Item, DragParameters, StandardProcessing, String, F
 		EndIf;
 	EndIf;
 	
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 		QuestionTemplate,
 		ArrangementParameters.Variants.Presentation,
 		Format(ArrangementParameters.Variants.Total, "NG=0"),
@@ -547,7 +547,7 @@ Function PlaceOptionsInSubsystem(ArrangementParameters)
 			Else
 				Pattern = NStr("en='Successfully arranged in ""%1"".';ru='Успешно размещены в ""%1"".'");
 			EndIf;
-			OutputNotification.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+			OutputNotification.Title = StringFunctionsClientServer.SubstituteParametersInString(
 				Pattern,
 				ArrangementParameters.Receiver.FullPresentation);
 			OutputNotification.Text = ArrangementParameters.Variants.Presentation;
@@ -558,10 +558,10 @@ Function PlaceOptionsInSubsystem(ArrangementParameters)
 			Else
 				Pattern = NStr("en='Successfully arranged in ""%1"".';ru='Успешно размещены в ""%1"".'");
 			EndIf;
-			OutputNotification.Text = StringFunctionsClientServer.PlaceParametersIntoString(
+			OutputNotification.Text = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Reports variants (%1).';ru='Варианты отчетов (%1).'"),
 				Format(ArrangementParameters.Variants.Total, "NZ=0; NG=0"));
-			OutputNotification.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+			OutputNotification.Title = StringFunctionsClientServer.SubstituteParametersInString(
 				Pattern,
 				ArrangementParameters.Receiver.FullPresentation);
 		EndIf;
@@ -588,7 +588,7 @@ Function PlaceOptionsInSubsystem(ArrangementParameters)
 		
 		OutputWarning = ExecutionResult.OutputWarning;
 		OutputWarning.Use = True;
-		OutputWarning.Text = StringFunctionsClientServer.PlaceParametersIntoString(
+		OutputWarning.Text = StringFunctionsClientServer.SubstituteParametersInString(
 			Pattern,
 			Format(Placed, "NZ=0; NG=0"),
 			Format(ArrangementParameters.Variants.Total, "NZ=0; NG=0"));

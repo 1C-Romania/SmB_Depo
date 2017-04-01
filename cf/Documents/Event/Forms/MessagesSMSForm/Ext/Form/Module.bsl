@@ -357,7 +357,7 @@ Function GenerateCharacterQuantityLabel(SendTransliterated, val MessageText)
 	CharactersLeft      = CharactersInMessage - CharsCount % CharactersInMessage;
 	MessageTextTemplate = NStr("en='Message - %1, remained characters - %2';ru='Сообщение - %1, осталось символов - %2'");
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(MessageTextTemplate, MessageCount, CharactersLeft);
+	Return StringFunctionsClientServer.SubstituteParametersInString(MessageTextTemplate, MessageCount, CharactersLeft);
 	
 EndFunction
 

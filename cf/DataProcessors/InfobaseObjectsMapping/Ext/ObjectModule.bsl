@@ -186,7 +186,7 @@ Procedure ExecuteDataImportToInformationBase(Cancel, TableToImport) Export
 	
 	If DataExchangeDataProcessor.ErrorFlag() Then
 		NString = NStr("en='Errors occurred when loading the exchange message: %1';ru='При загрузке сообщения обмена возникли ошибки: %1'");
-		NString = StringFunctionsClientServer.PlaceParametersIntoString(NString, DataExchangeDataProcessor.ErrorMessageString());
+		NString = StringFunctionsClientServer.SubstituteParametersInString(NString, DataExchangeDataProcessor.ErrorMessageString());
 		CommonUseClientServer.MessageToUser(NString,,,, Cancel);
 		Return;
 	EndIf;
@@ -1903,7 +1903,7 @@ Function GetTableOfSourceInformationBase(Cancel)
 		If DataExchangeDataProcessor.ErrorFlag() Then
 			
 			NString = NStr("en='Errors occurred when loading the exchange message: %1';ru='При загрузке сообщения обмена возникли ошибки: %1'");
-			NString = StringFunctionsClientServer.PlaceParametersIntoString(NString, DataExchangeDataProcessor.ErrorMessageString());
+			NString = StringFunctionsClientServer.SubstituteParametersInString(NString, DataExchangeDataProcessor.ErrorMessageString());
 			CommonUseClientServer.MessageToUser(NString,,,, Cancel);
 			Return Undefined;
 		EndIf;
@@ -2065,7 +2065,7 @@ Procedure FillListByAdditionalParameters(TableFieldList)
 		EndIf;
 		
 		If Attribute = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='For metadata object ""%1"" attribute is not defined with name ""%2""';ru='Для объекта метаданных ""%1"" не определен реквизит с именем ""%2""'"),
 				MetadataObject.FullName(),
 				String(Item.Value));
@@ -2082,7 +2082,7 @@ Procedure FillListByAdditionalParameters(TableFieldList)
 		
 		If ThisIsOpenEndedString(Attribute) Then
 			
-			Presentation = StringFunctionsClientServer.PlaceParametersIntoString("%1 %2",
+			Presentation = StringFunctionsClientServer.SubstituteParametersInString("%1 %2",
 				?(IsBlankString(Attribute.Synonym), Attribute.Name, TrimAll(Attribute.Synonym)),
 				DataExchangeServer.OpenEndedString());
 		Else

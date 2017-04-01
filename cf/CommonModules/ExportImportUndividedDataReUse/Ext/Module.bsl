@@ -95,7 +95,7 @@ Function DependenciesUndividedMetadataObjects() Export
 						
 					Else
 						
-						Raise StringFunctionsClientServer.PlaceParametersIntoString(
+						Raise StringFunctionsClientServer.SubstituteParametersInString(
 							NStr("en='The %1 field is can not be used as a
 		|field of natural object key %2: as field type can be
 		|used object %3 which is
@@ -308,7 +308,7 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 	
 	If CommonUseSTL.ThisIsConstant(MetadataObject) Then
 		
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='As the value of divided constant %1 the
 		|references to undivided %2 object are used';ru='В качестве значения разделенной константы %1 используются ссылки на
 		|неразделенный объект %2'", Metadata.DefaultLanguage.LanguageCode),
@@ -318,7 +318,7 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 		
 	ElsIf CommonUseSTL.ThisIsReferenceData(MetadataObject) Then
 		
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='As the value of attribute %1 the divided  object %2
 		|the references to undivided object %3 are used';ru='В качестве значения реквизита %1 разделенного объекта %2 используются ссылки на
 		|неразделенный объект %3'", Metadata.DefaultLanguage.LanguageCode),
@@ -329,7 +329,7 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 		
 	ElsIf CommonUseSTL.ThisIsRecordSet(MetadataObject) Then
 		
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='As the value of measurement, resource or attribute %1 divided record set %2 the
 		|references to undivided object %3 are used';ru='В качестве значения измерения, ресурса или реквизита %1 разделенного набора записей %2 используются ссылки на
 		|неразделенный объект %3'", Metadata.DefaultLanguage.LanguageCode),
@@ -340,7 +340,7 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unexpected metadata object: %1!';ru='Неожиданный объект метаданных: %1!'", Metadata.DefaultLanguage.LanguageCode),
 			MetadataObject.FullName()
 		);
@@ -360,7 +360,7 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 		
 	EndIf;
 	
-	ErrorSupplement = StringFunctionsClientServer.PlaceParametersIntoString(
+	ErrorSupplement = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='In this case undivided %1 object is not included in the
 		|content of the common data types for which the execution of matching refs during exporting and importing is possible.
 		|This situation is unacceptable, as on importing of exported data in
@@ -385,7 +385,7 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 	
 	If Not OnExport Then
 		
-		ErrorSupplement = ErrorSupplement + StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorSupplement = ErrorSupplement + StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='
 		|If the correct matching refs of undivided IB data from which
 		|the data is exported and the IB in which the data is imported

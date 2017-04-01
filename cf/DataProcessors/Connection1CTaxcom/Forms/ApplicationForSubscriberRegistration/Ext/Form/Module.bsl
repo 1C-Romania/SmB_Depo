@@ -49,7 +49,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	ElsIf FormStatus = "show" Then
 		
-		HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
+		HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Application No%1 from %2';ru='Заявка №%1 от %2'"),
 			RequestNumber,
 			Format(RequestDate, "DF = mm dd yyyy y.  HH:mm:ss"));
@@ -759,7 +759,7 @@ Function MessageParametersToTechicalSupport()
 		InteractionContext.COPContext,
 		"login");
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		MessageText,
 		WhatFailed,
 		UserLogin,

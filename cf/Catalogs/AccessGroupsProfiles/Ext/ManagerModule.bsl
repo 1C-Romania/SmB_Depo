@@ -495,7 +495,7 @@ Function StandardProfileChanged(Profile) Export
 	For Each Role IN ProfileRolesDescription Do
 		RoleMetadata = Metadata.Roles.Find(Role);
 		If RoleMetadata = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Role ""%2"" is not
 		|found in metadata while checking supplied profile.';ru='При проверке
 		|поставляемого профиля ""%1"" роль ""%2"" не найдена в метаданных.'"),
@@ -861,7 +861,7 @@ Function ProvidedProfiles()
 		// Check whether there are roles in metadata.
 		For Each Role IN ProfileDescription.Roles Do
 			If AllRoles.Get(Role) = Undefined Then
-				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='In the proattachment description
 		|""%1 (%2)"" role ""%3"" is not found in metadata.';ru='В описании профиля
 		|""%1 (%2)"" роль ""%3"" не найдена в метаданных.'"),
@@ -870,7 +870,7 @@ Function ProvidedProfiles()
 					Role);
 			EndIf;
 			If Upper(Left(Role, StrLen("Profile"))) = Upper("Profile") Then
-				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='In the proattachment description
 		|""%1 (%2)"" invalid role ""%3"" is specified.';ru='В описании профиля
 		|""%1 (%2)"" указана недопустимая роль ""%3"".'"),
@@ -880,7 +880,7 @@ Function ProvidedProfiles()
 			EndIf;
 		EndDo;
 		If ProfilesProperties.Get(ProfileDescription.ID) <> Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Profile with ID ""%1"" already exists.';ru='Профиль с идентификатором ""%1"" уже существует.'"),
 				ProfileDescription.ID);
 		EndIf;
@@ -888,7 +888,7 @@ Function ProvidedProfiles()
 		ProfilesDescriptionArray.Add(ProfileDescription);
 		If ValueIsFilled(ProfileDescription.Name) Then
 			If ProfilesProperties.Get(ProfileDescription.Name) <> Undefined Then
-				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Profile with the name ""%1"" already exists.';ru='Профиль с именем ""%1"" уже существует.'"),
 					ProfileDescription.Name);
 			EndIf;
@@ -900,7 +900,7 @@ Function ProvidedProfiles()
 			AccessTypeName       = ItemOfList.Value;
 			AccessKindRefiner = ItemOfList.Presentation;
 			If AccessKindsProperties.ByNames.Get(AccessTypeName) = Undefined Then
-				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='In the profile
 		|description ""%1"" invalid access kind ""%3"" is specified.';ru='В описании профиля ""%1""
 		|указан несуществующий вид доступа ""%2"".'"),
@@ -914,7 +914,7 @@ Function ProvidedProfiles()
 			   AND AccessKindRefiner <> "Preset"
 			   AND AccessKindRefiner <> "InitiallyAllAllowed" Then
 				
-				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='In the profile
 		|description ""%1"" for the access kind ""2"" unknown refiner ""%3"" is specified.
 		|
@@ -953,7 +953,7 @@ Function ProvidedProfiles()
 			
 			AccessTypeProperties = AccessKindsProperties.ByNames.Get(AccessKind);
 			If AccessTypeProperties = Undefined Then
-				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='In the profile
 		|description ""%1"" invalid access kind
 		|""2"" is specified
@@ -982,7 +982,7 @@ Function ProvidedProfiles()
 			EndIf;
 			
 			If MetadataObject = Undefined Then
-				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='In the profile
 		|description ""%1"" for the
 		|access kind ""2"" specified access value
@@ -1005,7 +1005,7 @@ Function ProvidedProfiles()
 			EndTry;
 			
 			If AccessValueEmptyRef = Undefined Then
-				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='In the profile
 		|description ""%1"" for the
 		|access kind ""2"" not a reference
@@ -1025,7 +1025,7 @@ Function ProvidedProfiles()
 			If AccessKindPropertiesByType = Undefined
 			 OR AccessKindPropertiesByType.Name <> AccessKind Then
 				
-				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='In the profile
 		|description ""%1"" access value
 		|of the ""3"" type is specified that is not specified in the access kind ""%2"" properties.';ru='В описании профиля ""%1""
@@ -1039,7 +1039,7 @@ Function ProvidedProfiles()
 			EndIf;
 			
 			If AccessValuesTable.FindRows(Filter).Count() > 0 Then
-				Raise ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='In the profile
 		|description ""%1"" for access
 		|kind ""%2"" access value
@@ -1147,7 +1147,7 @@ Function UpdateProfileOfAccessGroups(ProfileProperties, DoNotUpdateUsersRoles = 
 		For Each Role IN ProfileRolesDescription(ProfileProperties) Do
 			RoleMetadata = Metadata.Roles.Find(Role);
 			If RoleMetadata = Undefined Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='While updating supplied profile
 		|""%1"" role ""%2"" is not found in metadata.';ru='При обновлении поставляемого
 		|профиля ""%1"" роль ""%2"" не найдена в метаданных.'"),

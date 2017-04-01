@@ -281,7 +281,7 @@ Procedure UsersGroupsDrag(Item, DragParameters, StandardProcessing, String, Fiel
 	If FolderIsMarkedForDelete Then
 		ActionsTemplate = ?(Move, NStr("en='Group ""%1"" is marked for deletion. %2';ru='Группа ""%1"" помечена на удаление. %2'"), 
 			NStr("en='Group ""%1"" is marked for deletion. %2';ru='Группа ""%1"" помечена на удаление. %2'"));
-		ActionWithUser = StringFunctionsClientServer.PlaceParametersIntoString(
+		ActionWithUser = StringFunctionsClientServer.SubstituteParametersInString(
 			ActionsTemplate, String(String), ActionWithUser);
 	EndIf;
 	
@@ -294,7 +294,7 @@ Procedure UsersGroupsDrag(Item, DragParameters, StandardProcessing, String, Fiel
 		Else
 			QuestionTemplate = NStr("en='%1 user %2 to this group?';ru='%1 пользователя ""%2"" в эту группу?'");
 		EndIf;
-		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 			QuestionTemplate, ActionWithUser, String(DragParameters.Value[0]),
 			String(String), String(Items.UsersGroups.CurrentRow));
 		
@@ -307,7 +307,7 @@ Procedure UsersGroupsDrag(Item, DragParameters, StandardProcessing, String, Fiel
 		Else
 			QuestionTemplate = NStr("en='%1 users (%2) to this group?';ru='%1 пользователей (%2) в эту группу?'");
 		EndIf;
-		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 			QuestionTemplate, ActionWithUser, UserCount,
 			String(String), String(Items.UsersGroups.CurrentRow));
 		
@@ -674,7 +674,7 @@ Procedure UpdateTitleFromListUsersAndGroupSelected()
 	
 	UserCount = SelectedUsersAndGroups.Count();
 	If UserCount <> 0 Then
-		Items.ListOfSelectedUsersAndGroups.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.ListOfSelectedUsersAndGroups.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			TitleSelectedUsersAndGroups, UserCount);
 	Else
 		

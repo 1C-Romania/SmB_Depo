@@ -349,7 +349,7 @@ Function TimeIntervalPresentation(Val TimeQuantity)
 		Return NStr("en='now';ru='сейчас'");
 	EndIf;
 	
-	Result = StringFunctionsClientServer.PlaceParametersIntoString(PresentationPattern, Result);
+	Result = StringFunctionsClientServer.SubstituteParametersInString(PresentationPattern, Result);
 	
 	Return Result;
 EndFunction

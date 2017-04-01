@@ -111,7 +111,7 @@ Procedure RefillDocument(CommandParameter, Source = Undefined, MappingAlreadyCom
 		|The operation is available only for unposted documents.';ru='Обработка документа %1.
 		|Операция возможна только для непроведенных документов!'");
 	For Each Document IN PostedDocumentsArray Do
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, Document);
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(Pattern, Document);
 		CommonUseClientServer.MessageToUser(ErrorText);
 	EndDo;
 	
@@ -136,7 +136,7 @@ Procedure RefillDocument(CommandParameter, Source = Undefined, MappingAlreadyCom
 	If AccordanceOfEDIOwners.Count() = 0 Then
 		For Each CurrentDocument IN RefArray Do
 			Pattern = NStr("en='Electronic document is not found for %1';ru='Электронный документ для %1 не найден'");
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, CurrentDocument);
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(Pattern, CurrentDocument);
 			CommonUseClientServer.MessageToUser(ErrorText);
 		EndDo;
 		Return;
@@ -275,7 +275,7 @@ Procedure OpenActualED(CommandParameter, Source = Undefined, OpenParameters = Un
 			
 		Else
 			TemplateText = NStr("en='%1. Actual electronic document is not found!';ru='%1. Актуальный электронный документ не найден!'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateText, CurItm);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(TemplateText, CurItm);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
 		
@@ -357,7 +357,7 @@ Procedure RunCommandDocumentForms(Object, Form, CommandName) Export
 				|Write and post?", "write. Write?");
 				
 				MessagePattern = NStr("en='Document is changed. To generate the electronic document it must be %1';ru='Документ изменен. Для формирования электронного документа его необходимо %1'");
-				QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, StrPosted);
+				QuestionText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, StrPosted);
 				
 				AdditionalParameters = New Structure();
 				AdditionalParameters.Insert("ObjectReference", Object.Ref);

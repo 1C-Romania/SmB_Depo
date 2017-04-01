@@ -135,7 +135,7 @@ Procedure OpenReportOrForm(CurrentItem, User, CurrentUser, FormNamePersonalSetti
 				
 				If ItemParent <> Undefined Then
 					WarningText = NStr("en='To  view this setting, open ""%1"" and go to form ""%2"".';ru='Для просмотра данной настройки необходимо открыть ""%1"" и затем перейти к форме ""%2"".'");
-					WarningText = StringFunctionsClientServer.PlaceParametersIntoString(WarningText,
+					WarningText = StringFunctionsClientServer.SubstituteParametersInString(WarningText,
 						ItemParent.Setting, ValueTreeItem.CurrentData.Setting);
 					ShowMessageBox(,WarningText);
 					Return;
@@ -210,12 +210,12 @@ Function GeneratingExplanationOnCopying(SettingRepresentation, SettingsCount, Ex
 		EndIf;
 		
 		ExplanationText = NStr("en='""%1"" copied %2';ru='""%1"" скопирована %2'");
-		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationText, SettingRepresentation, ExplanationToWhomSettingsAreCopied);
 	Else
 		SubjectInWords = GeneratingSettingsCountString(SettingsCount);
 		ExplanationText = NStr("en='Copied %1 %2';ru='Скопировано %1 %2'");
-		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationText, SubjectInWords, ExplanationToWhomSettingsAreCopied);
 	EndIf;
 	
@@ -236,11 +236,11 @@ Function ExplanationUsers(UserCount, User) Export
 	
 	If UserCount = 1 Then
 		ExplanationToWhomSettingsAreCopied = NStr("en='to user ""%1""';ru='пользователю ""%1""'");
-		ExplanationToWhomSettingsAreCopied = StringFunctionsClientServer.PlaceParametersIntoString(
+		ExplanationToWhomSettingsAreCopied = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationToWhomSettingsAreCopied, User);
 	Else
 		ExplanationToWhomSettingsAreCopied = NStr("en='%1 to users';ru='%1 пользователям'");
-		ExplanationToWhomSettingsAreCopied = StringFunctionsClientServer.PlaceParametersIntoString(
+		ExplanationToWhomSettingsAreCopied = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationToWhomSettingsAreCopied, UserCount);
 	EndIf;
 	

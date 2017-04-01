@@ -289,7 +289,7 @@ Procedure SendMailing(Command)
 			EndIf;
 		EndIf;
 		
-		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='It is successfully sent: %1 messages';ru='Успешно отправлено: %1 сообщений'"), SuccessfullySent);
+		NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='It is successfully sent: %1 messages';ru='Успешно отправлено: %1 сообщений'"), SuccessfullySent);
 		ShowUserNotification(NotificationText, GetURL(Object.Ref), String(Object.Ref), PictureLib.Information32);
 		If SuccessfullySent = Object.Recipients.Count() Then
 			Object.Status = PredefinedValue("Enum.SendingMailingsStages.Sent");
@@ -468,7 +468,7 @@ Procedure CheckEmailAddressCorrectness(Cancel)
 		Try
 			CommonUseClientServer.ParseStringWithPostalAddresses(RecipientRow.HowToContact);
 		Except
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Recipient email is specified incorrectly: %1, because of: %2';ru='Некорректно указан E-mail получателя: %1, по причине: %2'"),
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Recipient email is specified incorrectly: %1, because of: %2';ru='Некорректно указан E-mail получателя: %1, по причине: %2'"),
 				RecipientRow.Contact,
 				BriefErrorDescription(ErrorInfo()),
 				);
@@ -548,7 +548,7 @@ Function SendEmailMailing()
 			Successfully = True;
 			SuccessfullySent = SuccessfullySent + 1;
 		Except
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='It was not succeeded to send Email to the recipient: %1, because of: %2';ru='Не удалось отправить E-mail получателю: %1, по причине: %2'"),
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='It was not succeeded to send Email to the recipient: %1, because of: %2';ru='Не удалось отправить E-mail получателю: %1, по причине: %2'"),
 				RecipientRow.Contact,
 				BriefErrorDescription(ErrorInfo()),
 				);
@@ -617,7 +617,7 @@ Function SendSMSMailing()
 			Successfully = True;
 			SuccessfullySent = SuccessfullySent + 1;
 		Else
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='It was not succeeded to send SMS to the recipient: %1, because of: %2';ru='Не удалось отправить SMS получателю: %1, по причине: %2'"),
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='It was not succeeded to send SMS to the recipient: %1, because of: %2';ru='Не удалось отправить SMS получателю: %1, по причине: %2'"),
 				RecipientRow.Contact,
 				SendingResult.ErrorDescription,
 				);

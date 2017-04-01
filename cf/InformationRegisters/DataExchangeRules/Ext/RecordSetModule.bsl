@@ -57,13 +57,13 @@ Procedure ValidateExistenceOfFileExternalDataProcessors(VerifiedFileName, ThisIs
 	If Not CheckDirectory.Exist() Then
 		
 		MessageString = NStr("en='Directory ""%1"" is not found %2.';ru='Каталог ""%1"" не найден %2.'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, CheckDirectoryName, DirectoryLocation);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, CheckDirectoryName, DirectoryLocation);
 		Cancel = True;
 		
 	ElsIf Not FileOnDrive.Exist() Then 
 		
 		MessageString = NStr("en='File of external data processor ""%1"" is not found %2.';ru='Файл внешней обработки ""%1"" не найден %2.'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, VerifiedFileName, DirectoryLocation);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, VerifiedFileName, DirectoryLocation);
 		Cancel = True;
 		
 	Else
@@ -86,19 +86,19 @@ Procedure CheckExchangeLogFileAvailability(ExchangeProtocolFileName, Cancel)
 	If Not CheckDirectory.Exist() Then
 		
 		MessageString = NStr("en='Directory of exchange protocol file ""%1"" is not found.';ru='Каталог файла протокола обмена ""%1"" не найден.'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, CheckDirectoryName);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, CheckDirectoryName);
 		Cancel = True;
 		
 	ElsIf Not CreateVerificationFile(CheckDirectoryName, CheckFileName) Then
 		
 		MessageString = NStr("en='It was not succeeded to create the file in the exchange protocol folder: ""%1"".';ru='Не удалось создать файл в папке протокола обмена: ""%1"".'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, CheckDirectoryName);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, CheckDirectoryName);
 		Cancel = True;
 		
 	ElsIf Not DeleteCheckFile(CheckDirectoryName, CheckFileName) Then
 		
 		MessageString = NStr("en='It was not succeeded to delete the file in the exchange protocol folder: ""%1"".';ru='Не удалось удалить файл в папке протокола обмена: ""%1"".'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, CheckDirectoryName);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, CheckDirectoryName);
 		Cancel = True;
 		
 	Else

@@ -26,7 +26,7 @@ Procedure BeforeWrite(Cancel)
 	Result = Query.Execute();
 	If Not Result.IsEmpty() Then
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Mapping ""%1,%2,%3 - %4,%5"" is already in the catalog. Writing is cancelled.';ru='Соответствие ""%1,%2,%3 - %4,%5"" уже присутствует в справочнике. Запись отменена.'"),
 			Owner, SKU, ID, ProductsAndServices, Characteristic
 		);

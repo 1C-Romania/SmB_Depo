@@ -415,7 +415,7 @@ EndFunction
 //
 Function GenerateCommentsTitle(Val IdeaPresentation) Export 
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Comments: %1';ru='Комментарии: %1'"), IdeaPresentation.CommentsCount);
+	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Comments: %1';ru='Комментарии: %1'"), IdeaPresentation.CommentsCount);
 	
 EndFunction
 
@@ -429,7 +429,7 @@ EndFunction
 //
 Function GenerateImplementationDateTitle(Val IdeaPresentation) Export 
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Planned date of implementation:% 1';ru='Плановая дата реализации: %1'"), IdeaPresentation.PlanMadeDatePresentation);
+	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Planned date of implementation:% 1';ru='Плановая дата реализации: %1'"), IdeaPresentation.PlanMadeDatePresentation);
 	
 EndFunction
 
@@ -443,7 +443,7 @@ EndFunction
 //
 Function GenerateRejectionDate(Val IdeaPresentation) Export 
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Rejected: %1';ru='Отклонено: %1'"), Format(IdeaPresentation.ClosingDate, "DLF=DD"));
+	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Rejected: %1';ru='Отклонено: %1'"), Format(IdeaPresentation.ClosingDate, "DLF=DD"));
 	
 EndFunction
 
@@ -457,7 +457,7 @@ EndFunction
 //
 Function GenerateImplementationDate(Val IdeaPresentation) Export 
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Implemented: %1';ru='Реализовано: %1'"), Format(IdeaPresentation.ClosingDate, "DLF=DD"));
+	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Implemented: %1';ru='Реализовано: %1'"), Format(IdeaPresentation.ClosingDate, "DLF=DD"));
 	
 EndFunction
 
@@ -626,7 +626,7 @@ Function GenerateTextTemplateToTechnicalSupport() Export
 		|<p/>CursorPosition
 		|<p/>
 		|From respect, %1.'");
-	Pattern = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
+	Pattern = StringFunctionsClientServer.SubstituteParametersInString(Pattern, 
 			Users.CurrentUser().FullDescr());
 	
 	Return Pattern;
@@ -879,7 +879,7 @@ Function TexttemplateToSupport() Export
 		|<p/>CursorPosition
 		|<p/>
 		|From respect, %1.'");
-	Pattern = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, 
+	Pattern = StringFunctionsClientServer.SubstituteParametersInString(Pattern, 
 			Users.CurrentUser().FullDescr());
 	
 	Return Pattern;

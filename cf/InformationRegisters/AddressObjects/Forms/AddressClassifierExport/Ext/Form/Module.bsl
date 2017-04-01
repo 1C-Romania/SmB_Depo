@@ -396,7 +396,7 @@ Procedure RefreshInterfaceByCountImported()
 	ChosenStatesForExport = RFTerritorialEntities.FindRows( New Structure("Import", True) ).Count();
 	
 	// Import page
-	ImportingDescriptionText = StringFunctionsClientServer.PlaceParametersIntoString(
+	ImportingDescriptionText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Data of the selected states (%1) is loaded.';ru='Загружаются данные по выбранным регионам (%1)'"), ChosenStatesForExport 
 	);
 	

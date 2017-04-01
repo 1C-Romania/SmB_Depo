@@ -377,7 +377,7 @@ Procedure SetRowsQuantityDecorationText()
 		
 	EndIf;
 	
-	NewHeader = StringFunctionsClientServer.PlaceParametersIntoString(NewHeader, ParameterValue);
+	NewHeader = StringFunctionsClientServer.SubstituteParametersInString(NewHeader, ParameterValue);
 	Items.DecorationLineCount.Title = NewHeader;
 	
 EndProcedure

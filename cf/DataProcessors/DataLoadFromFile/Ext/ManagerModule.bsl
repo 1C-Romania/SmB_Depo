@@ -355,7 +355,7 @@ Function QueryString(QueryText, ObjectType, ObjectName, ColumnArray)
 		Else
 			UnionAllText = "";
 		EndIf;
-		QueryText = QueryText + UnionAllText + StringFunctionsClientServer.PlaceParametersIntoString(TextTemplate, ObjectName, ObjectType);
+		QueryText = QueryText + UnionAllText + StringFunctionsClientServer.SubstituteParametersInString(TextTemplate, ObjectName, ObjectType);
 	EndIf;
 	Return QueryText;
 	
@@ -578,19 +578,19 @@ Procedure InformationOnColumnsFromCatalogAttributes(ImportParameters, Informatio
 		If Attribute.Type.ContainsType(Type("Boolean")) Then 
 			ColumnTypeDescription = NStr("en='Check box, Yes or 1 / No or 0';ru='Флаг, Да или 1 / Нет или 0'");
 		ElsIf Attribute.Type.ContainsType(Type("Number")) Then 
-			ColumnTypeDescription =  StringFunctionsClientServer.PlaceParametersIntoString(
+			ColumnTypeDescription =  StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Number, Length: %1, Accuracy: %2';ru='Число, Длина: %1, Точность: %2'"),
 			String(Attribute.Type.NumberQualifiers.Digits),
 			String(Attribute.Type.NumberQualifiers.FractionDigits));
 		ElsIf Attribute.Type.ContainsType(Type("String")) Then
 			If Attribute.Type.StringQualifiers.Length > 0 Then
 				StringLength = String(Attribute.Type.StringQualifiers.Length);
-				ColumnTypeDescription =  StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='String, max. quantity of symbols: %1';ru='Строка, макс. количество символов: %1'"), StringLength);
+				ColumnTypeDescription =  StringFunctionsClientServer.SubstituteParametersInString(NStr("en='String, max. quantity of symbols: %1';ru='Строка, макс. количество символов: %1'"), StringLength);
 			Else
 				ColumnTypeDescription = NStr("en='Row of an unlimited length';ru='Строка неограниченной длины'");
 			EndIf;
 		ElsIf Attribute.Type.ContainsType(Type("Date")) Then
-			ColumnTypeDescription =  StringFunctionsClientServer.PlaceParametersIntoString(
+			ColumnTypeDescription =  StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1';ru='%1'"),String(Attribute.Type.DateQualifiers.DateFractions));
 		ElsIf Attribute.Type.ContainsType(Type("UUID")) Then 
 			ColumnTypeDescription = NStr("en='UUID';ru='UUID'");
@@ -628,7 +628,7 @@ Procedure CreateColumnStandardAttributes(InformationByColumns, CatalogMetadata, 
 	ColumnWidth = 11;
 	
 	If DataType = Type("String") Then 
-		TypePresentation = StringFunctionsClientServer.PlaceParametersIntoString(NStr("ru =  Row (no more than %1 characters)"), DescriptionOfType.StringQualifiers.Length);
+		TypePresentation = StringFunctionsClientServer.SubstituteParametersInString(NStr("ru =  Row (no more than %1 characters)"), DescriptionOfType.StringQualifiers.Length);
 		ColumnWidth = ?(DescriptionOfType.StringQualifiers.Length < 30, DescriptionOfType.StringQualifiers.Length + 1, 30);
 	ElsIf DataType = Type("Number") Then	
 		TypePresentation = NStr("en='Number';ru='Номер'");
@@ -1199,7 +1199,7 @@ Function ObjectManager(CorrelationObjectName)
 		ElsIf ObjectArray.ObjectType = "Catalog" Then
 			ObjectManager = Catalogs[ObjectArray.NameObject];
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 object is not found';ru='Объект ""%1"" не найден'"), CorrelationObjectName);
+			Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1 object is not found';ru='Объект ""%1"" не найден'"), CorrelationObjectName);
 		EndIf;
 		
 		Return ObjectManager;
@@ -1704,7 +1704,7 @@ Procedure WriteMatchedData(ExportParameters, StorageAddress) Export
 				CatalogItem = TableRow.MappingObject.GetObject();
 				TableRow.RowMatchResult = "Updated";
 				If CatalogItem = Undefined Then
-					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+					MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Products and services with %1 SKU do not exist.';ru='Номенклатура с артикулом %1 не существует.'"), TableRow.SKU);
 					Raise MessageText;
 				EndIf;

@@ -274,13 +274,13 @@ Procedure CheckSuppliedDataUniqueness(FillChecking = False, Cancel = False)
 		Selection = Query.Execute().Select();
 		If Selection.Count() > 1 Then
 			
-			BriefErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+			BriefErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while writing profile ""%1"".
 		|Supplied profile already exists:';ru='Ошибка при записи профиля ""%1"".
 		|Поставляемый профиль уже существует:'"),
 				Description);
 			
-			DetailErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+			DetailErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while writing profile ""%1"".
 		|Supplied data ID ""%2"" is already used in profile:';ru='Ошибка при записи профиля ""%1"".
 		|Идентификатор поставляемых данных ""%2"" уже используется в профиле:'"),

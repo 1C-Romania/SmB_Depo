@@ -193,7 +193,7 @@ Function GetUniqueNameWithPath(DirectoryName, FileName) Export
 			Try
 				CreateDirectory(FullSubDirectory);
 			Except
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='An error occurred when
 		|creating directory ""%1"": ""%2"".';ru='Ошибка при
 		|создании каталога ""%1"": ""%2"".'"),
@@ -246,7 +246,7 @@ Function CheckFileImportingPossibility(File,
 		SizeInMB     = File.Size() / (1024 * 1024);
 		SizeInMbMax = CommonSettings.MaximumFileSize / (1024 * 1024);
 		
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Size of the file
 		|""%1"" (%2 Mb) exceeds the maximum allowed file size (%3Mb).';ru='Размер файла
 		|""%1"" (%2 Мб) превышает максимально допустимый размер файла (%3 Мб).'"),
@@ -269,7 +269,7 @@ Function CheckFileImportingPossibility(File,
 	// Checking a file extension.
 	If Not CheckFileExtensionForImporting(File.Extension, False) Then
 		
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Cannot import files with extension ""%1"".
 		|Contact your administrator.';ru='Загрузка файлов с расширением ""%1"" запрещена.
 		|Обратитесь к администратору.'"),
@@ -310,7 +310,7 @@ Function CheckFileExtensionForImporting(FileExtension, CallingException = True) 
 	If FileExtensionInList(CommonSettings.ProhibitedExtensionsList, FileExtension) Then
 		
 		If CallingException Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Cannot import files with extension ""%1"".
 		|Contact your administrator.';ru='Загрузка файлов с расширением ""%1"" запрещена.
 		|Обратитесь к администратору.'"),
@@ -347,7 +347,7 @@ Procedure CheckFileSizeForImporting(File) Export
 				File.FullDescr, File.Extension);
 		EndIf;
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Size of the file
 		|""%1"" (%2 Mb) exceeds the maximum allowed file size (%3Mb).';ru='Размер файла
 		|""%1"" (%2 Мб) превышает максимально допустимый размер файла (%3 Мб).'"),
@@ -368,7 +368,7 @@ Function MessageStringAboutImpossibilityOfLockedFileSigning(FileRef = Undefined)
 	If FileRef = Undefined Then
 		Return NStr("en='Impossible to sign locked file.';ru='Нельзя подписать занятый файл.'");
 	Else
-		Return StringFunctionsClientServer.PlaceParametersIntoString(
+		Return StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Impossible to sign locked file: %1.';ru='Нельзя подписать занятый файл: %1.'"),
 			String(FileRef) );
 	EndIf;
@@ -382,7 +382,7 @@ Function MessageStringAboutImpossibilityOfEncryptedFileSigning(FileRef = Undefin
 	If FileRef = Undefined Then
 		Return NStr("en='Impossible to sign encrypted file.';ru='Нельзя подписать зашифрованный файл.'");
 	Else
-		Return StringFunctionsClientServer.PlaceParametersIntoString(
+		Return StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Impossible to sign encrypted file: 1.';ru='Нельзя подписать зашифрованный файл: %1.'"),
 						String(FileRef) );
 	EndIf;
@@ -396,7 +396,7 @@ EndFunction
 //
 Function NewFileCreationError(ErrorInfo) Export
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='An error occurred when creating a new file.
 		|
 		|%1';ru='Ошибка создания нового файла.
@@ -410,7 +410,7 @@ EndFunction
 Function ErrorFileIsNotFoundInFileStorage(FileName, SearchInVolume = True) Export
 	
 	If SearchInVolume Then
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error
 		|occurred while opening file ""%1"".
 		|
@@ -424,7 +424,7 @@ Function ErrorFileIsNotFoundInFileStorage(FileName, SearchInVolume = True) Expor
 		|Обратитесь к администратору.'"),
 			FileName);
 	Else
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error
 		|occurred while opening file ""%1"".
 		|

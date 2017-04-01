@@ -4809,7 +4809,7 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 									|Документ %1.
 									|Счет-фактура не сформирована.'");
 				
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, PrintObject);
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, PrintObject);
 				CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 				
 			Else

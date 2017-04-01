@@ -1225,7 +1225,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 		Cancel = True;
 		NotifyDescription = New NotifyDescription("BeforeWriteEnd", ThisObject, New Structure("WriteParameters", WriteParameters));
 		
-		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='While using the exchange you should reflect operation ""%1"" in ""Enterprise accounting"".
 		|
 		|Do you want to cancel the document record?';ru='При использовании обмена операцию ""%1"" рекомендуется отражать в ""Бухгалтерии предприятия"".

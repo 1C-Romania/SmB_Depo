@@ -180,7 +180,7 @@ Procedure ApplyRestrictionsSettings()
 		Item = Items[KeyAndValue.Key];
 		Item.MaxValue = RestrictionsSettings[KeyAndValue.Value];
 		Item.ToolTip = 
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				ToolTipTemplate, 
 				RestrictionsSettings[KeyAndValue.Value]);
 	EndDo;

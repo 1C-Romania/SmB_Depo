@@ -139,7 +139,7 @@ Function GenerateEDTakskomPackageAttachedFile(ExchangeStructure) Export
 			BinaryDataPackage = New BinaryData(ArchiveFileName);
 		Except
 			MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 				?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 				NStr("en='ED package generation - non-recurring transaction';ru='Формирование пакета ЭД - однократная сделка'"), DetailErrorDescription(ErrorInfo()),
@@ -149,7 +149,7 @@ Function GenerateEDTakskomPackageAttachedFile(ExchangeStructure) Export
 	Else
 		MessagePattern = NStr("en='During the generation %1 the
 		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ExchangeStructure.EDKind,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ExchangeStructure.EDKind,
 			ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -169,13 +169,13 @@ Function QuickExchangeNameSavedFile(EDOwner)
 			
 			AttributesStructure = CommonUse.ObjectAttributesValues(EDOwner, "Description");
 			FileTemplate = NStr("en='%1';ru='%1'");
-			FileDescription = StringFunctionsClientServer.PlaceParametersIntoString(FileTemplate, AttributesStructure.Description);
+			FileDescription = StringFunctionsClientServer.SubstituteParametersInString(FileTemplate, AttributesStructure.Description);
 			
 		Else
 			
 			AttributesStructure = CommonUse.ObjectAttributesValues(EDOwner, "Number, Date");		
 			FileTemplate = NStr("en='%1 # %2 date %3';ru='%1 № %2 от %3'");
-			FileDescription = StringFunctionsClientServer.PlaceParametersIntoString(FileTemplate, String(TypeOf(EDOwner)),
+			FileDescription = StringFunctionsClientServer.SubstituteParametersInString(FileTemplate, String(TypeOf(EDOwner)),
 															AttributesStructure.Number, Format(AttributesStructure.Date, "DLF=D"));
 		EndIf;
 		

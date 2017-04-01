@@ -187,7 +187,7 @@ Function MessageParametersToTechicalSupport()
 		|-----------------------------------------------
 		|С уважением, .'");
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		MessageText,
 		UserLogin,
 		RegistrationNumberPinCode,

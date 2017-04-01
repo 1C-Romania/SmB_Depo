@@ -221,7 +221,7 @@ Procedure UpdateCandidateUsagePlaces(Val DataRow)
 			EndIf;
 		EndDo;
 		
-		Items.CurrentDuplicateGroupDescription.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.CurrentDuplicateGroupDescription.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='For the %1 item duplicates (%2) are found';ru='Для элемента ""%1"" найдены дубли (%2)'"),
 			OriginalName, RowData.Quantity);
 		
@@ -238,13 +238,13 @@ Procedure UpdateCandidateUsagePlaces(Val DataRow)
 	);
 	
 	If RowData.Quantity = 0 Then
-		Items.CurrentDuplicateGroupDescription.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.CurrentDuplicateGroupDescription.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 item is not used';ru='Элемент ""%1"" не используется'"), 
 			RowData.Description);
 		
 		Items.UsagePlacesPages.CurrentPage = Items.GroupDetails;
 	Else
-		Items.CandidateUsagePlaces.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.CandidateUsagePlaces.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 usage places (%2)';ru='Места использования ""%1"" (%2)'"), 
 			RowData.Description, RowData.Quantity);
 		
@@ -307,7 +307,7 @@ Procedure UpdateUnprocessedDuplicatesUsagePlaces(Val DataRow)
 			EndIf;
 		EndDo;
 		
-		Items.CurrentDuplicateGroupDescription1.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.CurrentDuplicateGroupDescription1.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='For the %1 item duplicates (%2) are found';ru='Для элемента ""%1"" найдены дубли (%2)'"),
 			OriginalName, RowData.Quantity);
 		
@@ -325,13 +325,13 @@ Procedure UpdateUnprocessedDuplicatesUsagePlaces(Val DataRow)
 	UsagePlacesRaw.Load(Data);
 	
 	If RowData.Quantity = 0 Then
-		Items.CurrentDuplicateGroupDescription1.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.CurrentDuplicateGroupDescription1.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 item was successfully processed';ru='Элемент ""%1"" успешно обработан'"), 
 			RowData.Description);
 		
 		Items.UsagePlacesPagesRaw.CurrentPage = Items.GroupDetailsRaw;
 	Else
-		Items.CandidateUsagePlaces.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.CandidateUsagePlaces.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unable to substitute duplicates in some places (%1)';ru='Не удалось заменить дубли в некоторых местах (%1)'"), 
 			RowData.Quantity);
 		
@@ -726,7 +726,7 @@ Procedure ChangeMainItemHierarchically(Val RowData, Val Parent)
 	ChangeCandidatesMarksierarchically(RowData);
 	
 	// And change a group name
-	Parent.Description = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 (%2)';ru='%1 (%2)'"), 
+	Parent.Description = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1 (%2)';ru='%1 (%2)'"), 
 		RowData.Description, Parent.Quantity);
 EndProcedure
 
@@ -803,7 +803,7 @@ Function FillDuplicatesSearchResults(Val Data)
 		FoundDuplicatesStatusDescription = New FormattedString(Items.Information16.Picture, " ",
 			NStr("en='Duplicates by the specified conditions are not found';ru='Не обнаружено дублей по указанным условиям'"));
 	Else
-		FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.PlaceParametersIntoString(
+		FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Duplicates of items are found: %2 (among items: %1). All selected items will be marked for deletion and substituted for the originals in all usage places (marked with an arrow).';ru='Найдены дубли элементов: %2 (среди элементов: %1). Все отмеченные элементы будут помечены на удаление 
 		|и заменены во всех местах использования на оригиналы (отмечены стрелкой).'"),
 			TotalDuplicatesFound, TotalDuplicatesFound - TreeItems.Count()),
@@ -844,11 +844,11 @@ Function FillDuplicatesDeletetionResults(Val ErrorsTable)
 		If TotallyMain = 1 Then
 			// Many duplicates to one item.
 			If LastCandidate = Undefined Then
-				FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.PlaceParametersIntoString(
+				FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='All found duplicates (%1) are successfully merged';ru='Все найденные дубли (%1) успешно объединены'"), TotallyProcessed));
 			Else
 				LastCandidateRow = CommonUse.SubjectString(LastCandidate);
-				FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.PlaceParametersIntoString(
+				FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='All found duplicates (%1) are
 		|successfully merged to %2.';ru='Все найденные дубли (%1)
 		|успешно объединены в ""%2""'"),
@@ -856,7 +856,7 @@ Function FillDuplicatesDeletetionResults(Val ErrorsTable)
 			EndIf;
 		Else
 			// Many duplicates to many groups.
-			FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.PlaceParametersIntoString(
+			FoundDuplicatesStatusDescription = New FormattedString(StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='All found duplicates (%1) are successfully merged.
 		|Kept items (%2).';ru='Все найденные дубли (%1) успешно объединены.
 		|Оставлено элементов (%2).'"),
@@ -1746,7 +1746,7 @@ Procedure RunAssistant()
 					Try
 						Test = New NotifyDescription(HandlerName, ThisObject);
 					Except
-						Text = StringFunctionsClientServer.PlaceParametersIntoString(
+						Text = StringFunctionsClientServer.SubstituteParametersInString(
 							NStr("en='Error of %1 event handler creation for %2 page, %3 procedure is not defined';ru='Ошибка создания обработчика события %1 для страницы %2, не определена процедура %3'"),
 							NameActions, 
 							StepDescription.Page, 
@@ -1828,7 +1828,7 @@ EndProcedure
 Procedure GoToAssistantStep(Val IdentifierStep, Val TriggerEvents = False)
 	NextStep = AssistantStepNumberByIdentifier(IdentifierStep);
 	If NextStep = Undefined Then
-		Error = StringFunctionsClientServer.PlaceParametersIntoString(
+		Error = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 assistant step is not found';ru='Не найден шаг помощника %1'"),
 			IdentifierStep
 		);

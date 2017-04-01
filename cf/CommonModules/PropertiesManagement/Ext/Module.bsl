@@ -139,7 +139,7 @@ Procedure FillCheckProcessing(Form, Cancel, CheckedAttributes) Export
 				
 				CommonUseClientServer.AddUserError(Errors,
 					String.AttributeNameValue,
-					StringFunctionsClientServer.PlaceParametersIntoString(
+					StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Field ""%1"" is not filled.';ru='Поле ""%1"" не заполнено.'"), String.Description),
 					"");
 			EndIf;

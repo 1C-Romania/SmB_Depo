@@ -93,7 +93,7 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 		// "Export documents starting from January 1, 2009."
 		NString = NStr("en='Beginning with %1';ru='Начиная с %1'");
 		
-		DocumentsDumpStartDateRestriction = StringFunctionsClientServer.PlaceParametersIntoString(NString, Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DLF=DD"));
+		DocumentsDumpStartDateRestriction = StringFunctionsClientServer.SubstituteParametersInString(NString, Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DLF=DD"));
 		
 	Else
 		
@@ -108,7 +108,7 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 		
 		NString = NStr("en='Only by Companies: %1';ru='Только по организациям: %1'");
 		
-		RestrictionFilterByCompanies = StringFunctionsClientServer.PlaceParametersIntoString(NString, FilterPresentationRow);
+		RestrictionFilterByCompanies = StringFunctionsClientServer.SubstituteParametersInString(NString, FilterPresentationRow);
 		
 	Else
 		
@@ -126,7 +126,7 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 	ParameterArray.Add(DocumentsDumpStartDateRestriction);
 	ParameterArray.Add(RestrictionFilterByCompanies);
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoStringFromArray(NString, ParameterArray);
+	Return StringFunctionsClientServer.SubstituteParametersInStringFromArray(NString, ParameterArray);
 	
 EndFunction
 

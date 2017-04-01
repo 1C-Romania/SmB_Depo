@@ -340,7 +340,7 @@ Procedure SessionParametersSetting(Val ParameterName, SpecifiedParameters) Expor
 			Except
 				RollbackTransaction();
 				
-				ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				ErrorMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Authorization not executed. System work will be complete.
 		|User: %1 is not found in the ""Users"" catalog.
 		|
@@ -611,7 +611,7 @@ Procedure ProcessRolesInterface(Action, Parameters) Export
 	ElsIf Action = "FillRoles" Then
 		FillRoles(Parameters);
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error in the UsersService procedure.RolesInterfaceProcessor()
 		|Incorrect value of the Action parameter: %1.';ru='Ошибка в процедуре ПользователиСлужебный.ОбработатьИнтерфейсРолей() Неверное значение параметра Действие: ""%1"".'"),
 			Action);
@@ -1236,7 +1236,7 @@ Function PasswordStringStoredValue(Val Password,
 		TempInfobaseUser.StandardAuthentication = True;
 		TempInfobaseUser.Password = Password;
 		
-		TempInfobaseUser.Name = StringFunctionsClientServer.PlaceParametersIntoString(
+		TempInfobaseUser.Name = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Temporary user (%1)';ru='Временный пользователь (%1)'"),
 			New UUID);
 		
@@ -1443,7 +1443,7 @@ Procedure BeginOfDBUserProcessing(UserObject,
 	IBUserDescription = AdditionalProperties.IBUserDescription;
 	
 	If Not IBUserDescription.Property("Action") Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while writing user %1.
 		|In the IBUserDescription parameter the Action property is not specified.';ru='Ошибка при записи пользователя ""%1"".
 		|В параметре ОписаниеПользователяИБ не указано свойство Действие.'"),
@@ -1453,7 +1453,7 @@ Procedure BeginOfDBUserProcessing(UserObject,
 	If IBUserDescription.Action <> "Write"
 	   AND IBUserDescription.Action <> "Delete" Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while writing user %1.
 		|In the IBUserDescription
 		|parameter incorrect value is specified %2 of the Action property.';ru='Ошибка при записи пользователя ""%1"".
@@ -1505,7 +1505,7 @@ Procedure BeginOfDBUserProcessing(UserObject,
 		ProcessingParameters.Insert("IBUserSetting");
 		
 		If ProcessingParameters.OldIBUserExist Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while writing user %1.
 		|You can not match IB user with to
 		|user in the directory with which another IB user is already matched.';ru='Ошибка при записи пользователя ""%1"".
@@ -1521,7 +1521,7 @@ Procedure BeginOfDBUserProcessing(UserObject,
 			UserObject.Ref,
 			FoundUser) Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while writing user %1.
 		|You can not match IB user to this user
 		|in the directory as it is already matched to another
@@ -1961,7 +1961,7 @@ Function CheckIBUserFullName(Val IBUserDescription, Cancel) Export
 					
 					ErrorText = NStr("en='Name (for login) is already occupied.';ru='Имя (для входа) уже занято.'");
 				Else
-					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+					ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Name (for login) is not available %1.';ru='Имя (для входа) уже занято для пользователя ""%1"".'"),
 						String(FoundUser));
 				EndIf;
@@ -2650,7 +2650,7 @@ Procedure RefreshRolesOfExternalUsers(Val ExternalUserArray = Undefined) Export
 		Selection = Query.Execute().Select();
 		While Selection.Next() Do
 			
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='While updating external
 		|user
 		|roles %1
@@ -2779,7 +2779,7 @@ Function AuthorizationObjectInUse(Val AuthorizationObjectRef,
 	
 	Result = Table.Count() > 0;
 	If Result Then
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='External user connected to object %1 already exists.';ru='Уже существует внешний пользователь, связанный с объектом ""%1"".'"),
 			AuthorizationObjectRef);
 		EndIf;
@@ -2934,7 +2934,7 @@ Function UserTransferToNewGroup(UserArray, GroupSource,
 			NameRoamingUser = "";
 		EndIf;
 		GroupDescription = CommonUse.ObjectAttributeValue(GroupReceiver, "Description");
-		UserMessage.Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		UserMessage.Message = StringFunctionsClientServer.SubstituteParametersInString(
 			MessageText, NameRoamingUser, GroupDescription);
 		UserMessage.HasErrors = True;
 		Return UserMessage;
@@ -3110,7 +3110,7 @@ Function GeneratingMessageToUser(UserArray, GroupReceiver,
 		AuthorizationObjectTypePresentationItem = Metadata.FindByType(TypeOf(GroupReceiver.TypeOfAuthorizationObjects)).Synonym;
 		
 		GroupDescription = CommonUse.ObjectAttributeValue(GroupReceiver, "Description");
-		UserMessage = StringFunctionsClientServer.PlaceParametersIntoString(
+		UserMessage = StringFunctionsClientServer.SubstituteParametersInString(
 			UserMessage, Subject, GroupDescription, Lower(AuthorizationObjectTypePresentationItem));
 		
 		UserNotification.Message = UserMessage;
@@ -3147,7 +3147,7 @@ Function GeneratingMessageToUser(UserArray, GroupReceiver,
 	EndIf;
 	
 	If UserMessage <> Undefined Then
-		UserMessage = StringFunctionsClientServer.PlaceParametersIntoString(
+		UserMessage = StringFunctionsClientServer.SubstituteParametersInString(
 			UserMessage, RowObject, StringAction, GroupDescription);
 	EndIf;
 	
@@ -3867,7 +3867,7 @@ Function MessageTextUserNotFoundInCatalog(UserName)
 		|Обратитесь к администратору.'");
 	EndIf;
 	
-	ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageText, UserName);
+	ErrorMessageText = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageText, UserName);
 	
 	Return ErrorMessageText;
 	
@@ -4472,7 +4472,7 @@ Procedure CheckUserRights(IBUser, CheckMode)
 			TableString = Record.Close();
 			
 			If RoleDescription.IsDeletedRole Then
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Attempt to change roles content in user
 		|%1
 		|with role %2 providing rights on
@@ -4484,7 +4484,7 @@ Procedure CheckUserRights(IBUser, CheckMode)
 					Role.Presentation(),
 					TableString);
 			Else
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Attempt to assign to user
 		|%1
 		|invalid role %2 providing rights on
@@ -4510,7 +4510,7 @@ Procedure CheckUserRights(IBUser, CheckMode)
 			For Each Right IN UnavailableRoleProperty.Rights Do
 				
 				If RoleDescription.IsDeletedRole Then
-					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+					MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Attempt to change roles content in user
 		|%1
 		|with role %2 providing right %3.';ru='Попытка изменить состав ролей у
@@ -4520,7 +4520,7 @@ Procedure CheckUserRights(IBUser, CheckMode)
 						Role.Presentation(),
 						Right);
 				Else
-					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+					MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Attempt to assign to user
 		|%1
 		|invalid role %2 providing right %3.';ru='Попытка назначить пользователю
@@ -4547,17 +4547,17 @@ Procedure CheckUserRights(IBUser, CheckMode)
 	AddedRoles = FoundUnavailableRoles.FindRows(Filter);
 	
 	If DeletedRoles.Count() = 1 Then
-		RemovalMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		RemovalMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unable to delete unavailable user role %1.';ru='Невозможно удалить недоступную роль у пользователя ""%1"".'"),
 			IBUser.FullName);
 	ElsIf DeletedRoles.Count() > 1 Then
-		RemovalMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		RemovalMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unable to delete unavailable user roles  %1.';ru='Невозможно удалить недоступные роли у пользователя ""%1"".'"),
 			IBUser.FullName);
 	EndIf;
 	
 	If AddedRoles.Count() = 1 Then
-		AddingMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		AddingMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Role %2 can not be
 		|added to user %1.';ru='Пользователю ""%1""
 		|не может быть добавлена роль ""%2"".'"),
@@ -4570,7 +4570,7 @@ Procedure CheckUserRights(IBUser, CheckMode)
 			Roles = Roles + "
 			|" + RoleDescription.Role.Presentation();
 		EndDo;
-		AddingMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		AddingMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Roles can not be added to user %1: %2.';ru='Пользователю ""%1"" не могут быть добавлены роли:%2.'"), 
 			IBUser.FullName,
 			Roles);
@@ -5083,7 +5083,7 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 	If TypeOf(UserObject) = Type("CatalogObject.Users")
 	   AND AttributesToLock.Service <> UserObject.Service Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while writing user %1.
 		|Service attribute is not allowed to change in the subscriptions on the events.';ru='Ошибка при записи пользователя ""%1"".
 		|Реквизит Служебный не допускается изменять в подписках на события.'"),
@@ -5091,7 +5091,7 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 	EndIf;
 	
 	If AttributesToLock.Prepared <> UserObject.Prepared Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while writing user %1.
 		|Prepared attribute can not be changed in the events subscriptions.';ru='Ошибка при записи пользователя ""%1"".
 		|Реквизит Подготовлен не допускается изменять в подписках на события.'"),
@@ -5099,7 +5099,7 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 	EndIf;
 	
 	If AutoAttributes.InfobaseUserID <> UserObject.InfobaseUserID Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while writing user %1.
 		|Attribute InfobaseUserID can not be changed.
 		|Attribute update is performed automatically.';ru='Ошибка при записи пользователя ""%1"".
@@ -5111,7 +5111,7 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 	If Not CommonUse.DataMatch(AutoAttributes.InfobaseUserProperties,
 				UserObject.InfobaseUserProperties) Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while writing user %1.
 		|Attribute InfobaseUserProperties can not be changed.
 		|Attribute update is performed automatically.';ru='Ошибка при записи пользователя ""%1"".
@@ -5126,7 +5126,7 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 	   AND UserObject.DeletionMark = True
 	   AND Users.CanLogOnToApplication(UserObject.InfobaseUserID) Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while writing user %1.
 		|You can not mark for deletion a user who is allowed to log in the application.';ru='Ошибка при записи пользователя ""%1"".
 		|Нельзя помечать на удаление пользователя, которому разрешен вход в программу.'"),
@@ -5137,7 +5137,7 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 	   AND UserObject.NotValid = True
 	   AND Users.CanLogOnToApplication(UserObject.InfobaseUserID) Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while writing user %1.
 		|Unable to mark user who is allowed to log in application as invalid.';ru='Ошибка при записи пользователя ""%1"".
 		|Нельзя пометить недействительным пользователя, которому разрешен вход в программу.'"),
@@ -5148,7 +5148,7 @@ Procedure CheckUserAttributesChanges(UserObject, ProcessingParameters)
 	   AND UserObject.Prepared = True
 	   AND Users.CanLogOnToApplication(UserObject.InfobaseUserID) Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while writing user %1.
 		|Unable to mark as ready a user who is allowed to log in the application.';ru='Ошибка при записи пользователя ""%1"".
 		|Нельзя пометить подготовленным пользователя, которому разрешен вход в программу.'"),

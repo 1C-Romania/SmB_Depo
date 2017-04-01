@@ -537,7 +537,7 @@ Procedure RefillComments()
 			Continue;
 		EndIf;
 		PreviousComment = CurrentComment;
-		CommentString = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate,
+		CommentString = StringFunctionsClientServer.SubstituteParametersInString(CommentTemplate,
 				Selection.Date, Selection.User, Selection.EDStatus, Selection.Responsible, CurrentComment);
 		Array.Add(CommentString);
 		FirstComment = False;
@@ -2143,7 +2143,7 @@ Procedure ConfirmPaymentCompleteThroughAdditionalProcessing(Val Result, Val Addi
 		|Код
 		|ошибки: %1 %2'");
 			ErrorDetails = ExternalAttachableModule.ErrorDetails();
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 																ErrorTemplate,
 																ErrorDetails.Code,
 																ErrorDetails.Message);
@@ -2467,7 +2467,7 @@ Procedure ExecuteConfirmPaymentThroughAdditionalProcessing(AuthenticationComplet
 		|Код
 		|ошибки: %1 %2'");
 		ErrorDetails = ExternalAttachableModule.ErrorDetails();
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 															ErrorTemplate,
 															ErrorDetails.Code,
 															ErrorDetails.Message);

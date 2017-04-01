@@ -72,7 +72,7 @@ Procedure ConnectCorrespondent(Message, Sender)
 		
 		// We send a message to the error service manager
 		ErrorPresentation = NStr("en='The end point does not correspond to the expected one. The code of the expected end point is %1. Current end point code %2.';ru='Конечная точка не соответствует ожидаемой. Код ожидаемой конечной точки %1. Код текущей конечной точки %2.'");
-		ErrorPresentation = StringFunctionsClientServer.PlaceParametersIntoString(ErrorPresentation,
+		ErrorPresentation = StringFunctionsClientServer.SubstituteParametersInString(ErrorPresentation,
 			Body.SenderId,
 			MessageExchangeInternal.ThisNodeCode());
 		
@@ -114,7 +114,7 @@ Procedure ConnectCorrespondent(Message, Sender)
 		If Cancel Then // We send a message to the error service manager
 			
 			ErrorPresentation = NStr("en=""Error of connecting the exchange correspondent's end point. End point code of the exchange correspondent %1."";ru='Ошибка подключения конечной точки корреспондента обмена. Код конечной точки корреспондента обмена %1.'");
-			ErrorPresentation = StringFunctionsClientServer.PlaceParametersIntoString(ErrorPresentation,
+			ErrorPresentation = StringFunctionsClientServer.SubstituteParametersInString(ErrorPresentation,
 				Body.RecipientId);
 			
 			WriteLogEvent(EventLogMonitorMessageTextConnectionCorrespondent(),
@@ -145,7 +145,7 @@ Procedure ConnectCorrespondent(Message, Sender)
 		|Настройки подключения веб-сервиса не соответствуют ожидаемым.
 		|Код ожидаемой конечной точки корреспондента обмена %1.
 		|Код подключенной конечной точки корреспондента обмена %2.'");
-			ErrorPresentation = StringFunctionsClientServer.PlaceParametersIntoString(ErrorPresentation,
+			ErrorPresentation = StringFunctionsClientServer.SubstituteParametersInString(ErrorPresentation,
 				Body.RecipientId,
 				ConnectedCorrespondentCode);
 			
@@ -189,7 +189,7 @@ Procedure ConnectCorrespondent(Message, Sender)
 		|end point is %1 The code of the exchange correspondent's end point is %2"";ru='Ошибка обновления параметров подключения этой конечной точки и конечной точки корреспондента обмена.
 		|Код этой
 		|конечной токи %1 Код конечной точки корреспондента обмена %2'");
-			ErrorPresentation = StringFunctionsClientServer.PlaceParametersIntoString(ErrorPresentation,
+			ErrorPresentation = StringFunctionsClientServer.SubstituteParametersInString(ErrorPresentation,
 				MessageExchangeInternal.ThisNodeCode(),
 				Body.RecipientId);
 			
@@ -233,7 +233,7 @@ Procedure SetTransportSettings(Message, Sender)
 	
 	If Correspondent.IsEmpty() Then
 		MessageString = NStr("en='Correspondent end point with the %1 script is not found.';ru='Не найдена конечная точка корреспондента с кодом ""%1"".'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, Body.RecipientId);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, Body.RecipientId);
 		Raise MessageString;
 	EndIf;
 	

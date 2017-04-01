@@ -667,7 +667,7 @@ Function FullNameOfServiceUser(Val ID = Undefined) Export
 		EndIf;
 		
 		SequenceNumber = Format(InformationRegisters.UnseparatedUsers.SequenceNumberIBUser(ID), "NFD=0; NG=0");
-		Result = StringFunctionsClientServer.PlaceParametersIntoString(Result, SequenceNumber);
+		Result = StringFunctionsClientServer.SubstituteParametersInString(Result, SequenceNumber);
 		
 	EndIf;
 	
@@ -697,7 +697,7 @@ Function IsSharedInfobaseUser()
 			
 			If Not UserRegisteredAsUnseparated(UserID) Then
 				
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='User with the %1 identifier is not registered as undivided!';ru='Пользователь с идентификатором %1 не зарегистрирован в качестве неразделенного!'"),
 					String(UserID)
 				);

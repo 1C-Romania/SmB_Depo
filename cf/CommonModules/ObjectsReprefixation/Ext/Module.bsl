@@ -1041,7 +1041,7 @@ Function ObjectNewCode(Val NewCodeFormat, Val Code, Val ThisIsDocument, Object)
 		MessageString = NStr("en='Cannot convert %1 object %2.
 		|Not long enough %1. Minimal length %1 of the object must be %3 symbols.';ru='Преобразование %1 объекта %2 не может быть выполнено.
 		|Недостаточная длина %1. Минимальная длина %1 объекта должна составлять %3 символов.'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 					?(ThisIsDocument, NStr("en='Numbers';ru='номера'"), NStr("en='code';ru='кода'")),
 					String(Object),
 					String(StrLen(NewFullPrefix) + StrLen(CodeAsString)));
@@ -1057,7 +1057,7 @@ Function ObjectNewCode(Val NewCodeFormat, Val Code, Val ThisIsDocument, Object)
 	Else
 		
 		FormatString = "ND=%1; NLZ=; NG=0";
-		FormatString = StringFunctionsClientServer.PlaceParametersIntoString(FormatString, String(CodeLengthWithLeadingZeros));
+		FormatString = StringFunctionsClientServer.SubstituteParametersInString(FormatString, String(CodeLengthWithLeadingZeros));
 		CodeWithLeadingZeros = Format(CodeByNumber, FormatString);
 		
 	EndIf;
@@ -1080,7 +1080,7 @@ Function NewCodeBaseObjectCodeu(Val NewCodeFormat, Val BasicCode, Val ThisIsDocu
 		MessageString = NStr("en='Cannot convert %1 object %2.
 		|Not long enough %1. Minimal length %1 of the object must be %3 symbols.';ru='Преобразование %1 объекта %2 не может быть выполнено.
 		|Недостаточная длина %1. Минимальная длина %1 объекта должна составлять %3 символов.'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 					?(ThisIsDocument, NStr("en='Numbers';ru='номера'"), NStr("en='code';ru='кода'")),
 					String(Object),
 					String(StrLen(NewFullPrefix) + StrLen(BasicCode)));

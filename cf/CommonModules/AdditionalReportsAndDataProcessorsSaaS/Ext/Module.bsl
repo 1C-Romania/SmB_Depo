@@ -851,7 +851,7 @@ Procedure AdditionalProcessingBeforeWrite(Source, Cancel) Export
 			
 			If SourceProp <> ResultAttribute Then
 				
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Invalid attempt of the %1 attribute value modification for the %2 additional processing received from the directory of the service manager additional processings!';ru='Недопустимая попытка изменения значения реквизита %1 для дополнительной обработки %2, полученной из каталога дополнительных обработок менеджера сервиса!'"), 
 					ControlledAttribute, Source.Description);
 				
@@ -1047,7 +1047,7 @@ Procedure OnGetSafeModeSessionsPermissions(Val SessionKey, PermissionDescription
 			
 		Else
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Supplied processing for the launch key %1 has not been found!';ru='Не обнаружена поставляемая обработка для ключа запуска %1!'"),
 				String(SessionKey));
 			
@@ -1252,7 +1252,7 @@ Procedure UpdateSettingsUsedByDataProcessors(Val Ref) Export
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Additional processing with the %1 ID is not supplied.';ru='Дополнительная обработка с идентификатором %1 не является поставляемой!'"),
 			String(Ref.UUID()));
 		

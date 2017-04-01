@@ -2394,7 +2394,7 @@ Function CreateRefillVendorsProductsAndServices(ObjectString, ParseTree) Export
 	Try
 		NewEl.Write();
 	Except
-		Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Creating of the catalog item %1.';ru='Создание элемента справочника %1.'"), "Supplier products and services"); 
+		Text = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Creating of the catalog item %1.';ru='Создание элемента справочника %1.'"), "Supplier products and services"); 
 		WriteLogEvent(Text, EventLogLevel.Error,,,DetailErrorDescription(ErrorInfo()));		
 		Raise;
 	EndTry;

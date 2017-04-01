@@ -162,7 +162,7 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 		TemplateArea.Parameters.LineNumber = LineNumber;
 		TemplateArea.Parameters.Recorder = Selection.Recorder;
 		
-		ProductsName = StringFunctionsClientServer.PlaceParametersIntoString("%1 (%2)",
+		ProductsName = StringFunctionsClientServer.SubstituteParametersInString("%1 (%2)",
 			Selection.ProductsKind, TrimAll(Selection.ProductsAndServices));
 		
 		If Selection.RecordType = AccumulationRecordType.Receipt

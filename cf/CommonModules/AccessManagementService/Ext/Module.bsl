@@ -617,7 +617,7 @@ Procedure OnAuthorizationAdministratorOnStart(Administrator) Export
 	
 	// Administrator will be automatically added to access group Administrators at authorization.
 	If Not Users.InfobaseUserWithFullAccess(, Not CommonUseReUse.DataSeparationEnabled()) Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Insufficient rights to
 		|add user ""%1"" to access group Administrators.';ru='Недостаточно
 		|прав для добавления пользователя ""%1"" в группу доступа Администраторы.'"),
@@ -835,7 +835,7 @@ Procedure UpdateUsersRoles(Val Users1 = Undefined,
 								EventLogLevel.Error,
 								,
 								,
-								StringFunctionsClientServer.PlaceParametersIntoString(
+								StringFunctionsClientServer.SubstituteParametersInString(
 									NStr("en='When updating the roles
 		|of user
 		|""%1"", role ""%2"" of
@@ -2008,7 +2008,7 @@ Function GetAccessValueSetsOfTabularSection(Object) Export
 	ValueTypeObject = TypeOf(Object);
 	
 	If Object.Metadata().TabularSections.Find("AccessValuesSets") = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Wrong parameters.
 		|""Access value sets""
 		|tabular section is not found in object of the type ""%1"".';ru='Неверные параметры.
@@ -2063,7 +2063,7 @@ Procedure RecordSetsOfAccessValues(Val Object, HasChanges = Undefined) Export
 		"RecordSetsOfAccessValues").Get(ValueTypeObject) <> Undefined;
 	
 	If Not SetsRecord Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Wrong parameters.
 		|Object type
 		|""%1"" is not found in the
@@ -2078,7 +2078,7 @@ Procedure RecordSetsOfAccessValues(Val Object, HasChanges = Undefined) Export
 		"InformationRegister.AccessValuesSets.Dimension.Object");
 	
 	If ObjectPossibleTypes.Get(TypeOf(ObjectReference)) = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while writing
 		|access value sets: type ""%1"" is not
 		|specified in the AccessValueSets information register in the Object dimension.';ru='Ошибка при записи
@@ -2101,7 +2101,7 @@ Procedure RecordSetsOfAccessValues(Val Object, HasChanges = Undefined) Export
 				"FillAccessValueSetsOfTabularSections").Get(ValueTypeObject) <> Undefined;
 			
 			If Not TabularSectionFilledIn Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Wrong parameters.
 		|Object type
 		|""%1"" is not found in the
@@ -2194,7 +2194,7 @@ Procedure RecordDependentSetsOfAccessValues(Val Object) Export
 		"RecordDependentSetsOfAccessValues").Get(ValueTypeObject) <> Undefined;
 	
 	If Not ItIsLeadingObject Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Wrong parameters.
 		|Object type
 		|""%1"" is not found in the
@@ -2230,7 +2230,7 @@ Procedure UpdateSetsOfAccessValues(ObjectReference, HasChanges = Undefined) Expo
 	
 	If Not SetsRecord Then
 		Raise(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Wrong parameters.
 		|Object type
 		|""%1"" is not found in the
@@ -2243,7 +2243,7 @@ Procedure UpdateSetsOfAccessValues(ObjectReference, HasChanges = Undefined) Expo
 	
 	If Metadata.InformationRegisters.AccessValuesSets.Dimensions.Object.Type.Types().Find(TypeOf(ObjectReference)) = Undefined Then
 		Raise(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while writing
 		|access value sets: type ""%1"" is not
 		|specified in the AccessValueSets information register in the Object dimension';ru='Ошибка при записи
@@ -2638,7 +2638,7 @@ Procedure SetCriteriaForQuery(Val Query, Val Values, Val ParameterNameValues, Va
 		EndIf;
 		IndexOfSeparator = Find(CurrentRow, ":");
 		If IndexOfSeparator = 0 Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while executing the AccessManagement procedure.SetFilterCriteriaInQuery().
 		|
 		|In the ParameterNameFilterConditionsFieldName parameter separator (colon)
@@ -3239,7 +3239,7 @@ Function MetadataObjectEmptyRef(MetadataObjectDesc) Export
 		ObjectManager = CommonUse.ObjectManagerByFullName(MetadataObject.FullName());
 		EmptyRef = ObjectManager.EmptyRef();
 	Except
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred
 		|in the MetadataObjectEmptyRef function of the AccessManagementService general module.
 		|
@@ -3832,7 +3832,7 @@ Procedure OnChangeSetsOfAccessValues(Val ObjectReference)
 				UnlockDataForEdit(RefOnDependentObject);
 			Except
 				BriefErrorDescription = BriefErrorDescription(ErrorInfo());
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='An error occurred while updating dependent
 		|access values set
 		|of
@@ -3855,7 +3855,7 @@ Procedure FillParameters(InputParameters, Val AllParameters, Val MandatoryParame
 	ElsIf InputParameters = Undefined Then
 		Parameters = New Structure;
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Incorrect properties set type ""%1"".
 		|Allowed types: Structure, Undefined.';ru='Некорректный тип набора свойств ""%1"".
 		|Допустимые типы: Структура, Неопределено.'"),
@@ -3864,7 +3864,7 @@ Procedure FillParameters(InputParameters, Val AllParameters, Val MandatoryParame
 	
 	For Each KeyAndValue IN Parameters Do
 		If Not AllParameters.Property(KeyAndValue.Key) Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 non-existent parameter is specified';ru='Указан несуществующий параметр %1'"), KeyAndValue.Key);
 		EndIf;
 		AllParameters[KeyAndValue.Key] = Parameters[KeyAndValue.Key];
@@ -3875,7 +3875,7 @@ Procedure FillParameters(InputParameters, Val AllParameters, Val MandatoryParame
 		
 		For Each KeyAndValue IN MandatoryParameters Do
 			If Not Parameters.Property(KeyAndValue.Key) Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='%1 mandatory parameter is not specified';ru='Не указан обязательный параметр %1'"), KeyAndValue.Key);
 			EndIf;
 		EndDo;
@@ -4629,7 +4629,7 @@ Procedure ExceptWithErrorSearchRecords(Parameters)
 		If ChangesRow.RowChangeKind <>  1
 		   AND ChangesRow.RowChangeKind <> -1 Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred
 		|in the UpdateRecordSets procedure of the AccessManagementService general module.
 		|

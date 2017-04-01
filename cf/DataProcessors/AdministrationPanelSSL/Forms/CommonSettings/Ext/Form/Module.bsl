@@ -113,7 +113,7 @@ EndProcedure
 Procedure ShowCurrentSessionTime(Command)
 	
 	ShowMessageBox(,
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Session time: %1
 		|On server: %2
 		|On client: %3 

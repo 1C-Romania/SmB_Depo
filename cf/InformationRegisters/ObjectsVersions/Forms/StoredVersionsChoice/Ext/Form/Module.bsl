@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If ObjectVersioning.LastVersionNumber(Ref) = 0 Then
 		Items.MainPage.CurrentPage = Items.VersionsForCompareThereAreNo;
-		Items.NoneOfVersions.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.NoneOfVersions.Title = StringFunctionsClientServer.SubstituteParametersInString(
 	       NStr("en='There are no previous versions: ""%1"".';ru='Предыдущие версии отсутствуют: ""%1"".'"),
 	       String(Ref));
 	EndIf;
@@ -156,7 +156,7 @@ Procedure GoToSelectedVersion(CancelPosting = False)
 	If Result = "RecoveryError" Then
 		CommonUseClientServer.MessageToUser(ErrorMessageText);
 	ElsIf Result = "PostingError" Then
-		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Version was not changed due to: 
 		|%1
 		|Change to the selected version and cancel the posting?';ru='Переход на версию не был выполнен по причине:
@@ -206,7 +206,7 @@ Function GoToVersionServer(Ref, VersionNumber, UndoPosting = False)
 	EndIf;
 	
 	Object.AdditionalProperties.Insert("ObjectVersioningCommentToVersion",
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Proceeding to the version #%1 from %2 has been performed';ru='Выполнен переход к версии №%1 от %2'"),
 			String(VersionNumber),
 			Format(Information.VersionDate, "DLF=DT")) );

@@ -211,7 +211,7 @@ Procedure BeforeStartIBUserProcessor(UserObject, ProcessingParameters) Export
 		
 		If ValueIsFilled(OldUser.ServiceUserID) Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while writing user %1.
 		|You can not modify
 		|the service user ID already set in a catalog item.';ru='Ошибка при записи пользователя ""%1"".
@@ -229,7 +229,7 @@ Procedure BeforeStartIBUserProcessor(UserObject, ProcessingParameters) Export
 				FoundUser,
 				True) Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while writing user %1.
 		|You can not
 		|set the service
@@ -283,7 +283,7 @@ Procedure BeforeEndUserIBUserProcessor(UserObject, ProcessingParameters) Export
 	AutoAttributes = ProcessingParameters.AutoAttributes;
 	
 	If AutoAttributes.ServiceUserID <> UserObject.ServiceUserID Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while writing user %1.
 		|Changing the ServiceUserID attribute is not permitted.
 		|Attribute update is performed automatically.';ru='Ошибка при записи пользователя ""%1"".
@@ -642,7 +642,7 @@ Function XDTOObjectAccessRightsToActionsWithServiceUser(Factory, XDTOObjectAcces
 				AccessRightsOfXDTOObject.Object.ContactType);
 			If CIKind = Undefined Then
 				MessagePattern = NStr("en='An unknown contact information type was received: %1';ru='Получен неизвестный вид контактной информации: %1'");
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 					MessagePattern, AccessRightsOfXDTOObject.Object.ContactType);
 				Raise(MessageText);
 			EndIf;
@@ -656,7 +656,7 @@ Function XDTOObjectAccessRightsToActionsWithServiceUser(Factory, XDTOObjectAcces
 			EndDo;
 		Else
 			MessagePattern = NStr("en='An unknown type of access objects was received: %1';ru='Получен неизвестный тип объектов доступа: %1'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				MessagePattern, CommonUse.XDTOTypePresentation(AccessRightsOfXDTOObject.Object.Type()));
 			Raise(MessageText);
 		EndIf;

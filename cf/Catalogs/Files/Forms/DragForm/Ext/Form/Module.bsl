@@ -159,7 +159,7 @@ Procedure FillFileList(FilePath, Val TreeItems, TopLevelItem, DirectoriesOnly = 
 		Path = MovedFile.FullName + CommonUseClientServer.PathSeparator();
 		
 		If TopLevelItem = True Then
-			Status(StringFunctionsClientServer.PlaceParametersIntoString(
+			Status(StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There is a collection
 		|of directory information ""%1"".
 		|Please, wait.';ru='Идет

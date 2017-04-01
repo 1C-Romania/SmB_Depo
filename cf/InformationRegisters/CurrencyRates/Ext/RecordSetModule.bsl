@@ -189,7 +189,7 @@ Function CurrencyRateAccordingToFormula(Currency, Formula, Period)
 		If RateCalculationErrorByFormula[Currency] = Undefined Then
 			RateCalculationErrorByFormula.Insert(Currency, True);
 			ErrorInfo = ErrorInfo();
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Exchange rate of ""%1"" currency is not calculated according to formula ""%2"":';ru='Расчет курса валюты ""%1"" по формуле ""%2"" не выполнен:'", CommonUseClientServer.MainLanguageCode()), Currency, Formula);
 			CommonUseClientServer.MessageToUser(ErrorText + Chars.LF + BriefErrorDescription(ErrorInfo), Currency, "Object.RateCalculationFormula");
 			If AdditionalProperties.Property("UpdateDependentCurrencyRate") Then

@@ -202,7 +202,7 @@ Procedure ExecuteDataImport() Export
 		DataExchangeXDTOServer.ReadData(ExchangeComponents);
 	Except
 		MessageString = NStr("en='Error when importing the files: %1';ru='Ошибка при загрузке данных: %1'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, ErrorDescription());
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ErrorDescription());
 		DataExchangeXDTOServer.WriteInExecutionProtocol(ExchangeComponents, MessageString,,,,,True);
 		ExchangeComponents.ErrorFlag = True;
 	EndTry;
@@ -257,14 +257,14 @@ Procedure ExecuteDataImportToInformationBase(TableToImport) Export
 	
 	// Record in the events log monitor.
 	MessageString = NStr("en='Beginning of data exchange process for node: %1';ru='Начало процесса обмена данными для узла: %1'", CommonUseClientServer.MainLanguageCode());
-	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(ExchangeNodeForDataImport));
+	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(ExchangeNodeForDataImport));
 	DataExchangeXDTOServer.WriteLogEventDataExchange(MessageString, ExchangeComponents, EventLogLevel.Information);
 	
 	DataExchangeXDTOServer.ReadData(ExchangeComponents, TableToImport);
 	
 	// Record in the events log monitor.
 	MessageString = NStr("en='%1, %2; Processed %3 objects';ru='%1, %2; Обработано %3 объектов'", CommonUseClientServer.MainLanguageCode());
-	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
+	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 					ExchangeComponents.DataExchangeStatus.ExchangeProcessResult,
 					Enums.ActionsAtExchange.DataImport,
 					Format(ExchangeComponents.CounterOfImportedObjects, "NG=0"));
@@ -347,7 +347,7 @@ Procedure RunExchangeMessageAnalysis(AnalysisParameters = Undefined) Export
 		
 	Except
 		MessageString = NStr("en='Error when analyzing the data: %1';ru='Ошибка при анализе данных: %1'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, ErrorDescription());
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ErrorDescription());
 		DataExchangeXDTOServer.WriteInExecutionProtocol(ExchangeComponents, MessageString,,,,,True);
 	EndTry;
 	

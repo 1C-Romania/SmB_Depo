@@ -19,7 +19,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SystemInfo = New SystemInfo;
 	
 	TextCondition = ?(Parameters.Done, NStr("en='Required';ru='Required'"), NStr("en='recommended';ru='рекомендуемые'"));
-	Items.Version.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.Version.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		Items.Version.Title, TextCondition, SystemInfo.AppVersion);
 	
 	If Parameters.Done Then

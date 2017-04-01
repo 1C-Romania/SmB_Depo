@@ -137,12 +137,12 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 		If String.Check AND Left(String.Synonym, 1) = "?" Then
 			CommonUseClientServer.AddUserError(Errors,
 				"Roles[%1].RolesSynonym",
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Role ""%1"" is not found in the metadata.';ru='Роль ""%1"" не найдена в метаданных.'"),
 					String.Synonym),
 				"Roles",
 				TreeItems.IndexOf(String),
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Role ""%2"" in row %1 is not found in the metadata.';ru='Роль ""%2"" в строке %1 не найдена в метаданных.'"),
 					"%1", String.Synonym));
 		EndIf;

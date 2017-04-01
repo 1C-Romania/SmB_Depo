@@ -136,10 +136,10 @@ Function GetFileOfUpdateAvailabilityCheck(Val OutputMessages = True, CheckUpdate
 		|%1';ru='Не удалось создать временный каталог для проверки наличия обновлений.
 		|%1'");
 			EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Error",
-				StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, DetailErrorDescription(ErrorInfo)),, 
+				StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, DetailErrorDescription(ErrorInfo)),, 
 				True);
 				
-			ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, 
+			ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, 
 				BriefErrorDescription(ErrorInfo));
 			If OutputMessages Then
 				ShowMessageBox(, ErrorInfo);
@@ -154,7 +154,7 @@ Function GetFileOfUpdateAvailabilityCheck(Val OutputMessages = True, CheckUpdate
 		New Structure("PathForSave", ? (IsBlankString(TempFile), Undefined, TempFile)));
 		
 	If Result.Status <> True Then
-		ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unable to check for updates.
 		|%1';ru='Не удалось проверить наличие обновлений.
 		|%1'"), Result.ErrorInfo);
@@ -498,7 +498,7 @@ Procedure CheckUpdateExistsViaInternet(OutputMessages = False, UpdateAvailableFo
 	EndIf;
 	
 	MessageText = NStr("en='New version of configuration is now available on the Internet:% 1.';ru='Обнаружена более новая версия конфигурации в Интернете: %1.'");
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Parameters.LastConfigurationVersion);
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Parameters.LastConfigurationVersion);
 	EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Information", MessageText);
 	
 	Parameters.UpdateSource = 0;
@@ -927,7 +927,7 @@ Function LegalityCheckServiceDescription()
 		WSDLText = Response.GetBodyAsString();
 		
 	Except
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while creating the description of the web service.
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while creating the description of the web service.
 		|Unable to receive WSDL-description from server of update import legality check (%1): %2.';ru='Ошибка при создании описания веб-сервиса.
 		|Не удалось получить WSDL-описание с сервера проверки легальности скачивания обновления (%1): %2.'"),
 			WSDLAddress, DetailErrorDescription(ErrorInfo()));
@@ -941,7 +941,7 @@ Function LegalityCheckServiceDescription()
 	Try
 		DOMDocument = DOMBuilder.Read(XMLReader);
 	Except
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while describing web service (%1).
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while describing web service (%1).
 		|An error occurred while reading web service WSDL-description of update import legality check: %2.';ru='Ошибка при создании описания веб-сервиса (%1).
 		|Ошибка чтения WSDL-описания веб-сервиса проверки легальности скачивания обновления: %2.'"),
 			WSDLAddress, DetailErrorDescription(ErrorInfo()));
@@ -953,7 +953,7 @@ Function LegalityCheckServiceDescription()
 	SchemeNodes = DOMDocument.GetElementByTagName("wsdl:types");
 	If SchemeNodes.Count() = 0 Then
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while describing web service (%1).
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while describing web service (%1).
 		|An error occurred while reading web service
 		|WSDL-description of update import legality check: There is no data types description item (<wsdl:types ...>).';ru='Ошибка при создании описания веб-сервиса (%1).
 		|Ошибка чтения WSDL-описания веб-сервиса проверки легальности скачивания обновления:
@@ -965,7 +965,7 @@ Function LegalityCheckServiceDescription()
 	SchemeDescriptionNode = SchemeNodes[0].FirstSubsidiary;
 	If SchemeDescriptionNode = Undefined Then
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while describing web service (%1).
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while describing web service (%1).
 		|An error occurred while reading web service
 		|WSDL-description of update import legality check: There is no data types description item (<xs:schema ...>)';ru='Ошибка при создании описания веб-сервиса (%1).
 		|Ошибка чтения WSDL-описания веб-сервиса
@@ -980,7 +980,7 @@ Function LegalityCheckServiceDescription()
 		ServiceDataScheme = SchemeBuilder.CreateXMLSchema(SchemeDescriptionNode);
 	Except
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while describing web service (%1).
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while describing web service (%1).
 		|An error occurred while creating data schema from web service
 		|WSDL-description of update import legality check: %2';ru='Ошибка при создании описания веб-сервиса (%1).
 		|Ошибка при создании схемы данных из WSDL-описания
@@ -996,7 +996,7 @@ Function LegalityCheckServiceDescription()
 		ServiceFactory = New XDTOFactory(SchemaSet);
 	Except
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while describing web service (%1).
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while describing web service (%1).
 		|An error occurred while creating XDTO factory from web service WSDL-description of update import legality check: %2';ru='Ошибка при создании описания веб-сервиса (%1).
 		|Ошибка при создании фабрики XDTO из WSDL-описания веб-сервиса проверки легальности скачивания обновления: %2'"),
 			WSDLAddress, DetailErrorDescription(ErrorInfo()));
@@ -1013,7 +1013,7 @@ Function LegalityCheckServiceDescription()
 	OfURIService = DOMNodeAttributeValue(RootElement, "targetNamespace");
 	If Not ValueIsFilled(OfURIService) Then
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while describing web service (%1).
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while describing web service (%1).
 		|An error occurred while reading web service
 		|WSDL-description of update import legality check: There is no names space URI in WSDL-description.';ru='Ошибка при создании описания веб-сервиса (%1).
 		|Ошибка чтения WSDL-описания веб-сервиса
@@ -1028,7 +1028,7 @@ Function LegalityCheckServiceDescription()
 	ServicesNodes = RootElement.GetElementByTagName("wsdl:service");
 	If ServicesNodes.Count() = 0 Then
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while describing web service (%1).
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while describing web service (%1).
 		|An error occurred while reading web service
 		|WSDL-description of update import legality check: There is no web services description in WSDL-description (<wsdl:service ...>).';ru='Ошибка при создании описания веб-сервиса (%1).
 		|Ошибка чтения WSDL-описания веб-сервиса проверки легальности скачивания обновления:
@@ -1045,7 +1045,7 @@ Function LegalityCheckServiceDescription()
 	
 	If PortsNodes.Count() = 0 Then
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while describing web service (%1).
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while describing web service (%1).
 		|An error occurred while reading web service
 		|WSDL-description of update import legality check: There is no ports description in WSDL-description (<wsdl:port ...>).';ru='Ошибка при создании описания веб-сервиса (%1).
 		|Ошибка чтения WSDL-описания веб-сервиса проверки легальности скачивания обновления:
@@ -1075,7 +1075,7 @@ Function LegalityCheckServiceDescription()
 	
 	If Not ValueIsFilled(PortAddress) Then
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while describing web service (%1).
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while describing web service (%1).
 		|An error occurred while reading
 		|web service WSDL-description of online user support: Unable to determine URL of the service specified port (%2).';ru='Ошибка при создании описания веб-сервиса (%1).
 		|Ошибка чтения WSDL-описания
@@ -1121,7 +1121,7 @@ Function ServiceAvailable(LegalityCheckServiceDescription)
 		ResponseBody = SendSOAPQuery(EnvelopeText, LegalityCheckServiceDescription);
 	Except
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while calling the isReady operation of service (%1): %2';ru='Ошибка при вызове операции isReady сервиса (%1): %2'"),
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while calling the isReady operation of service (%1): %2';ru='Ошибка при вызове операции isReady сервиса (%1): %2'"),
 			LegalityCheckServiceDescription.WSDLAddress, DetailErrorDescription(ErrorInfo()));
 		Raise ErrorMessage;
 		
@@ -1156,7 +1156,7 @@ Function ServiceAvailable(LegalityCheckServiceDescription)
 	If TypeOf(Value) = Type("Structure") Then
 		
 		// Description of SOAP exception is returned.
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while calling the
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while calling the
 		|isReady operation of service (%1) SOAP error: %2';ru='Ошибка при вызове операции
 		|isReady сервиса (%1) Ошибка SOAP: %2'"), LegalityCheckServiceDescription.WSDLAddress, DescriptionSOAPExceptionToRow(Value));
 		Raise ErrorMessage;
@@ -1202,7 +1202,7 @@ Function RefreshReceivedLegally(QueryParameters, LegalityCheckServiceDescription
 		ResponseBody = SendSOAPQuery(EnvelopeText, LegalityCheckServiceDescription);
 	Except
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while calling the process operation of service (%1): %2';ru='Ошибка при вызове операции process сервиса (%1): %2'"),
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while calling the process operation of service (%1): %2';ru='Ошибка при вызове операции process сервиса (%1): %2'"),
 			LegalityCheckServiceDescription.WSDLAddress, DetailErrorDescription(ErrorInfo()));
 		Raise ErrorMessage;
 		
@@ -1389,7 +1389,7 @@ Function ReadResponseInSOAPEnvelope(ResponseBody, LegalityCheckServiceDescriptio
 		
 	Except
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred
 		|while
 		|reading SOAP:
 		|%1 Response body: %2';ru='Ошибка
@@ -1407,7 +1407,7 @@ Function ReadResponseInSOAPEnvelope(ResponseBody, LegalityCheckServiceDescriptio
 			ExceptionDetails = ReadServiceExceptionsDescription(ResponseReading);
 		Except
 			
-			ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred
+			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred
 		|while
 		|reading SOAP:
 		|%1 Response body: %2';ru='Ошибка
@@ -1418,7 +1418,7 @@ Function ReadResponseInSOAPEnvelope(ResponseBody, LegalityCheckServiceDescriptio
 			
 		EndTry;
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='SOAP-Server error occurred while processing query: %1';ru='Ошибка SOAP-Сервера при обработке запроса: %1'"), DescriptionSOAPExceptionToRow(ExceptionDetails));
 		Raise ErrorMessage;
 		
@@ -1428,7 +1428,7 @@ Function ReadResponseInSOAPEnvelope(ResponseBody, LegalityCheckServiceDescriptio
 		Value = LegalityCheckServiceDescription.XDTOFactory.ReadXML(ResponseReading, ValueType);
 	Except
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='An error occurred while reading object
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while reading object
 		|(%1)
 		|in the
 		|SOAP envelope: %2 Response body: %3';ru='Ошибка чтения объекта
@@ -1503,16 +1503,16 @@ Function DescriptionSOAPExceptionToRow(ExceptionSOAP)
 	
 	Result = "";
 	If Not IsBlankString(ExceptionSOAP.FaultCode) Then
-		Result = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Error code: %1';ru='Код ошибки: %1'"), ExceptionSOAP.FaultCode);
+		Result = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Error code: %1';ru='Код ошибки: %1'"), ExceptionSOAP.FaultCode);
 	EndIf;
 	
 	If Not IsBlankString(ExceptionSOAP.FaultString) Then
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Error string: %1';ru='Строка ошибки: %1'"), ExceptionSOAP.FaultString);
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Error string: %1';ru='Строка ошибки: %1'"), ExceptionSOAP.FaultString);
 		Result = Result + Chars.LF + ErrorText;
 	EndIf;
 	
 	If Not IsBlankString(ExceptionSOAP.FaultActor) Then
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Error source: %1';ru='Источник ошибки: %1'"), ExceptionSOAP.FaultActor);
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Error source: %1';ru='Источник ошибки: %1'"), ExceptionSOAP.FaultActor);
 		Result = Result + Chars.LF + ErrorText;
 	EndIf;
 	

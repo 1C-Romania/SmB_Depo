@@ -49,11 +49,11 @@ Procedure WriteExecutionTimeUpdate(UpdateBeginTime, UpdateEndTime) Export
 	Seconds = TimeInSeconds - Hours * 3600 - Minutes * 60;
 	
 	DurationHours = ?(Hours = 0, "",
-		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 hour';ru='%1 час'"), Hours));
+		StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1 hour';ru='%1 час'"), Hours));
 	DurationMinutes = ?(Minutes = 0, "",
-		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 min';ru='%1 мин'"), Minutes));
+		StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1 min';ru='%1 мин'"), Minutes));
 	DurationSeconds = ?(Seconds = 0, "",
-		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 sec';ru='%1 сек'"), Seconds));
+		StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1 sec';ru='%1 сек'"), Seconds));
 	DurationOfUpdate = DurationHours + " " + DurationMinutes + " " + DurationSeconds;
 	DataAboutUpdate.DurationOfUpdate = TrimAll(DurationOfUpdate);
 	

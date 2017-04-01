@@ -159,7 +159,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			FieldWarningsOnOpen = "Country";
 		EndIf;
 		WarningTextOnOpen = WarningTextOnOpen
-			+ StringFunctionsClientServer.PlaceParametersIntoString(
+			+ StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 country is not in the catalog of the world countries.';ru='Страна ""%1"" отсутствует в справочнике стран мира.'"), OriginalCountryPresentation);
 	EndIf;
 			
@@ -207,7 +207,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				If InformationAboutState.Imported = False Then
 					ClassifierAvailability = New Structure("Cancel, BriefErrorDescription");
 					ClassifierAvailability.Cancel = True;
-					ClassifierAvailability.BriefErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+					ClassifierAvailability.BriefErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='You should export the address information for the %1 state (in the %2 menu).';ru='Необходимо загрузить адресные сведения по региону ""%1"" (в меню ""%2"").'"), 
 						XDTOContact.Content.Content.RFTerritorialEntity,
 						?(ThisTaxi, NStr("en='More';ru='Еще'"), NStr("en='All actions';ru='Все действия'")));
@@ -349,7 +349,7 @@ Procedure IndexChoiceProcessing(Item, ValueSelected, StandardProcessing)
 			QuestionText = QuestionText + NStr("en='  - the code is applied to the state where the address information is absent in the application;';ru='  - индекс относится к региону, по которому в программе отсутствуют адресные сведения;'") + Chars.LF;
 			QuestionText = QuestionText + NStr("en='  - address information loaded into the application are obsolete;';ru='  - адресные сведения, загруженные в программу, устарели;'") + Chars.LF;
 			QuestionText = QuestionText + NStr("en='  - the code is entered incorrectly.';ru='  - индекс введен некорректно.'");
-			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, Format(ValueSelected.IndexOf, "NGS=' '; NG=0"));
+			QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, Format(ValueSelected.IndexOf, "NGS=' '; NG=0"));
 			Buttons = New ValueList;
 			Buttons.Add(DialogReturnCode.Yes, NStr("en='Update the classifier';ru='Обновить классификатор'"));
 			Buttons.Add(DialogReturnCode.Cancel, NStr("en='Cancel';ru='Отменить'"));
@@ -357,7 +357,7 @@ Procedure IndexChoiceProcessing(Item, ValueSelected, StandardProcessing)
 		Else
 			If Not PickByIndexAvailable Then
 				MessageText = NStr("en='The code %1 is not found in the address classifier';ru='Индекс %1 не найден в адресном классификаторе'");
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Format(ValueSelected.IndexOf, "NGS=' '; NG=0"));
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Format(ValueSelected.IndexOf, "NGS=' '; NG=0"));
 				CommonUseClientServer.MessageToUser(MessageText,,, "Object.IndexOf");
 			Else
 				CheckClassifierAvailability(ValueSelected);
@@ -538,7 +538,7 @@ Procedure SettlementChoiceProcessing(Item, ValueSelected, StandardProcessing)
 		If CanImportClassifier AND StateNotImported Then
 			// Offer to import a classifier.
 			ContactInformationManagementClient.OfferExportClassifier(
-				StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Data for ""%1"" is not imported.';ru='Данные для ""%1"" не загружены.'"), ValueSelected.Presentation), 
+				StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Data for ""%1"" is not imported.';ru='Данные для ""%1"" не загружены.'"), ValueSelected.Presentation), 
 				ValueSelected.Presentation);
 		EndIf;
 		

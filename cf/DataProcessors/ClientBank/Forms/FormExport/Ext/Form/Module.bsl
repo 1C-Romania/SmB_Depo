@@ -720,7 +720,7 @@ Procedure FormManagementOnServer()
 		AND ValueIsFilled(DirectExchangeWithBanksAgreement) Then
 		
 		TemplateText = NStr("en='Direct exchange agreement acts from %1: payment orders will be sent in bank by 1C:Company';ru='С %1 действует соглашение о прямом обмене: платежные поручения будут отправлены в банк из 1С:Управление небольшой фирмой'");
-		LabelText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
+		LabelText = StringFunctionsClientServer.SubstituteParametersInString(TemplateText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
 		DirectMessageExchange = LabelText;
 	EndIf;
 

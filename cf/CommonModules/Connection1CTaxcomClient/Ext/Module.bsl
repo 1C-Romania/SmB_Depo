@@ -374,7 +374,7 @@ Procedure DecryptControlDSMarkerServer(
 	Except
 		// Error occurred receiving marker binary data from base64 row
 		OnlineUserSupportClient.EndBusinessProcess(InteractionContext);
-		MessageForRegistrationLog = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageForRegistrationLog = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error occurred checking the certificate owner authenticity. Unable to receive marker binary data.
 		|%1';ru='Ошибка при проверке подлинности владельца сертификата. Не удалось получить двоичные данные маркера (markerED).
 		|%1'"),
@@ -549,7 +549,7 @@ Function TechnicalEDFParametersText(InteractionContext, Val Certificate = Undefi
 		CertificateThumbprint = "";
 	EndIf;
 	
-	TechnicalParameters = StringFunctionsClientServer.PlaceParametersIntoString(
+	TechnicalParameters = StringFunctionsClientServer.SubstituteParametersInString(
 		TechnicalParameters,
 		CertificateThumbprint);
 	
@@ -567,7 +567,7 @@ Function TechnicalEDFParametersText(InteractionContext, Val Certificate = Undefi
 		|ошибки: %1, - описание ошибки: %2'");
 		
 		TechnicalParameters = TechnicalParameters
-			+ StringFunctionsClientServer.PlaceParametersIntoString(
+			+ StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorDataPage,
 				ErrorCode,
 				ErrorText);

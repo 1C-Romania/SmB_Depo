@@ -48,7 +48,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		Items.GroupPagesHeader.CurrentPage = Items.GroupPageHeaderAdd;
 		Items.GroupPagesFooter.CurrentPage = Items.GroupPageFooterAdd;
-		Items.DecorationTitleHeaderAdd.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.DecorationTitleHeaderAdd.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			Items.DecorationTitleHeaderAdd.Title,
 			ObjectTypePresentation,
 			MetadataObject.Presentation()
@@ -58,7 +58,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		Items.GroupPagesHeader.CurrentPage = Items.GroupHeaderPageDelete;
 		Items.GroupPagesFooter.CurrentPage = Items.GroupFooterPageDelete;
-		Items.DecorationTitleHeaderDelete.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.DecorationTitleHeaderDelete.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			Items.DecorationTitleHeaderDelete.Title,
 			ObjectTypePresentation,
 			MetadataObject.Presentation()
@@ -66,7 +66,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	ThisObject.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	ThisObject.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		ThisObject.Title, MetadataObject.Presentation());
 	
 	// Filling of tree
@@ -142,7 +142,7 @@ Procedure AddTreeSubstring(Tree, Val MetadataObject)
 	EndDo;
 	
 	If RowOwner = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unknown metadata object: %1';ru='Неизвестный объект метаданных: %1'"), DescriptionFull);
 	EndIf;
 	

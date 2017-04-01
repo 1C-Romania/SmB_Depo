@@ -33,12 +33,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			
 			StringOfVersionsNumber = Left(StringOfVersionsNumber, StrLen(StringOfVersionsNumber) - 2);
 			
-			Title = StringFunctionsClientServer.PlaceParametersIntoString(
+			Title = StringFunctionsClientServer.SubstituteParametersInString(
 			                 NStr("en='Versions comparison ""%1"" (No.No. %2)';ru='Сравнение версий ""%1"" (№№ %2)'"),
 			                 CommonUse.SubjectString(ObjectReference),
 			                 StringOfVersionsNumber);
 		Else
-			Title = StringFunctionsClientServer.PlaceParametersIntoString(
+			Title = StringFunctionsClientServer.SubstituteParametersInString(
 			                 NStr("en='Object version ""%1"" No.%2';ru='Версия объекта ""%1"" №%2'"),
 			                 ObjectReference,
 			                 String(ComparedVersions[0]));
@@ -1048,7 +1048,7 @@ EndFunction
 Function GetDescriptionByVersion(VersionNumber)
 	
 	InfoAboutVersions = ObjectVersioning.InfoAboutObjectVersion(ObjectReference, VersionNumber);
-	Definition = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='No. %1 / (%2) / %3';ru='№ %1 / (%2) / %3'"), 
+	Definition = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='No. %1 / (%2) / %3';ru='№ %1 / (%2) / %3'"), 
 		VersionNumber, String(InfoAboutVersions.VersionDate), TrimAll(String(InfoAboutVersions.VersionAuthor)));
 	InfoAboutVersions.Insert("Definition", Definition);
 	

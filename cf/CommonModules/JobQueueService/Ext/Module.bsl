@@ -231,7 +231,7 @@ Procedure JobProcessingPlanning() Export
 		
 		If CommonUseReUse.IsSeparatedConfiguration() AND CommonUseReUse.IsSeparatedMetadataObject(CatalogJobs.CreateItem().Metadata().FullName(), CommonUseReUse.SupportDataSplitter()) Then
 			
-			QueryText = QueryText + StringFunctionsClientServer.PlaceParametersIntoString(
+			QueryText = QueryText + StringFunctionsClientServer.SubstituteParametersInString(
 			"SELECT
 			|	Queue.DataAreaAuxiliaryData AS DataArea,
 			|	Queue.Ref AS ID,
@@ -262,7 +262,7 @@ Procedure JobProcessingPlanning() Export
 			
 		Else
 			
-			QueryText = QueryText + StringFunctionsClientServer.PlaceParametersIntoString(
+			QueryText = QueryText + StringFunctionsClientServer.SubstituteParametersInString(
 			"SELECT
 			|	-1 AS DataArea,
 			|	Queue.Ref AS ID,
@@ -367,7 +367,7 @@ Procedure ProcessJobQueue(BackgroundJobKey) Export
 		
 		If CommonUseReUse.IsSeparatedConfiguration() AND CommonUse.IsSeparatedMetadataObject(CatalogJobs.CreateItem().Metadata().FullName(), CommonUseReUse.SupportDataSplitter()) Then
 			
-			QueryText = QueryText + StringFunctionsClientServer.PlaceParametersIntoString(
+			QueryText = QueryText + StringFunctionsClientServer.SubstituteParametersInString(
 			"SELECT
 			|	Queue.DataAreaAuxiliaryData AS DataArea,
 			|	Queue.Ref AS ID,
@@ -409,7 +409,7 @@ Procedure ProcessJobQueue(BackgroundJobKey) Export
 			
 		Else
 			
-			QueryText = QueryText + StringFunctionsClientServer.PlaceParametersIntoString(
+			QueryText = QueryText + StringFunctionsClientServer.SubstituteParametersInString(
 			"SELECT
 			|	-1 AS DataArea,
 			|	Queue.Ref AS ID,
@@ -515,7 +515,7 @@ Procedure ProcessJobQueue(BackgroundJobKey) Export
 						AND Selection.RefsTemplate = Undefined Then
 					
 					MessagePattern = NStr("en='Template of the queue job with %1 ID has not been found';ru='На найден шаблон задания очереди с идентификатором %1'");
-					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Selection.Pattern);
+					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Selection.Pattern);
 					WriteLogEvent(NStr("en='Jobs queue.Execution';ru='Очередь заданий.Выполнение'", 
 						CommonUseClientServer.MainLanguageCode()), 
 						EventLogLevel.Error,
@@ -620,7 +620,7 @@ Procedure HandleError(Val Task, Val ErrorInfoExecutionJobs = Undefined) Export
 		|Псевдоним метода: %1 Метод
 		|обработчика ошибок:
 		|%2 По причине: %3'");
-		TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
+		TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(
 			CommentTemplate,
 			HandlerErrorsParameters.JobMethodName,
 			HandlerErrorsParameters.MethodName,
@@ -692,7 +692,7 @@ Procedure RemoveErrorDataProcessorsJobs(Val CallParameters, Val ErrorInfo = Unde
 		|%1 Level of recursion: %2';ru='Был выполнен обработчик снятие заданий.
 		|Псевдоним
 		|метода: %1 Уровень рекурсии: %2'");
-			TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
+			TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(
 				CommentTemplate,
 				HandlerErrorsParameters.JobMethodName,
 				RecursionCounter);
@@ -740,7 +740,7 @@ Procedure ExecuteConfigurationMethod(MethodName, Parameters = Undefined)
 	
 	If TransactionActive() Then
 		
-		ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Before you start executing %1 handler, there are active transactions.';ru='Перед стартом выполнения обработчика %1 есть активные транзакции!'"),
 				MethodName);
 			
@@ -766,7 +766,7 @@ Procedure ExecuteConfigurationMethod(MethodName, Parameters = Undefined)
 			EndDo;
 			
 			MessagePattern = NStr("en='After the %1 handler was completed the transaction has not been closed';ru='По завершении выполнения обработчика %1 не была закрыта транзакция'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, MethodName);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, MethodName);
 			WriteLogEvent(NStr("en='Queue of scheduled jobs.Execution';ru='Очередь регламентных заданий.Выполнение'", 
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error, 
@@ -778,7 +778,7 @@ Procedure ExecuteConfigurationMethod(MethodName, Parameters = Undefined)
 		
 		If Not(DelimiterSet) AND CommonUse.UseSessionSeparator() Then
 			
-			ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='While completing %1 handler session separation was not disabled.';ru='По завершении выполнения обработчика %1 не было выключено разделение сеанса!'"),
 				MethodName);
 			
@@ -793,7 +793,7 @@ Procedure ExecuteConfigurationMethod(MethodName, Parameters = Undefined)
 			
 		ElsIf DelimiterSet AND SeparatorValue <> SaaSOperations.SessionSeparatorValue() Then
 			
-			ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='While completing %1 handler execution session separator value was changed.';ru='По завершении выполнения обработчика %1 было изменено значение разделителя сеанса!'"),
 				MethodName);
 			
@@ -1022,7 +1022,7 @@ Procedure ExecuteHandlerTasks(Pattern, Alias, Parameters)
 	MethodName = JobQueueServiceReUse.AccordanceMethodNamesToAliases().Get(Upper(Alias));
 	If MethodName = Undefined Then
 		MessagePattern = NStr("en='The %1 method is not allowed for calling through jobs queue.';ru='Метод %1 не разрешен к вызову через очередь заданий.'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Alias);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Alias);
 		Raise(MessageText);
 	EndIf;
 	
@@ -1420,7 +1420,7 @@ Procedure ScheduleSchTask(Val Selection)
 				AND Selection.Pattern = Undefined Then
 				
 				MessagePattern = NStr("en='The %1 template of queued job is not found';ru='На найден шаблон задания очереди %1'");
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Task.Pattern);
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Task.Pattern);
 				
 				WriteLogEvent(NStr("en='Jobs queue.Planning';ru='Очередь заданий.Планирование'", 
 					CommonUseClientServer.MainLanguageCode()), 
@@ -1512,7 +1512,7 @@ Procedure ScheduleSchTask(Val Selection)
 					If ValueIsFilled(Task.Pattern) Then // Job by template without schedule.
 						
 						MessagePattern = NStr("en='The schedule was not found for the %1 queue jobs template';ru='Для шаблон заданий очереди %1 не найдено расписание'");
-						MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Task.Pattern);
+						MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Task.Pattern);
 						WriteLogEvent(NStr("en='Jobs queue.Planning';ru='Очередь заданий.Планирование'", 
 							CommonUseClientServer.MainLanguageCode()), 
 							EventLogLevel.Error,

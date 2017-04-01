@@ -292,7 +292,7 @@ Function SeparatedMetadataObjects(Val Delimiter) Export
 	
 	CommonAttributeMetadata = Metadata.CommonAttributes.Find(Delimiter);
 	If CommonAttributeMetadata = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Common attribute %1 is not found in configuration!';ru='Общий реквизит %1 не обнаружен в конфигурации!'"), Delimiter);
 	EndIf;
 	
@@ -336,7 +336,7 @@ Function SeparatedMetadataObjects(Val Delimiter) Export
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Data separation is not used for the common attribute %1!';ru='Для общего реквизита %1 не используется разделение данных!'"), Delimiter);
 		
 	EndIf;
@@ -351,7 +351,7 @@ Function SeparatedMetadataObjects(Val Delimiter) Export
 		If SequenceMetadata.Documents.Count() = 0 Then
 			
 			MessagePattern = NStr("en='No document is included into the %1 sequence.';ru='В последовательность %1 не включено ни одного документа.'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, SequenceMetadata.Name);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, SequenceMetadata.Name);
 			WriteLogEvent(NStr("en='Separated metadata objects receipt';ru='Получение разделенных объектов метаданных'", 
 				CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, 
 				SequenceMetadata, , MessageText);
@@ -385,7 +385,7 @@ Function SeparatedMetadataObjects(Val Delimiter) Export
 		If DocumentJournalMetadata.RegisteredDocuments.Count() = 0 Then
 			
 			MessagePattern = NStr("en='No one document is included to the log %1.';ru='В журнал %1 не включено ни одного документа.'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, DocumentJournalMetadata.Name);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, DocumentJournalMetadata.Name);
 			WriteLogEvent(NStr("en='Separated metadata objects receipt';ru='Получение разделенных объектов метаданных'", 
 				CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, 
 				DocumentJournalMetadata, , MessageText);
@@ -491,7 +491,7 @@ Function CacheVersionsData(Val ID, Val DataType, Val ReceivingParameters, Val Us
 			RequiredRereadData = True;
 		Else
 			JobMethodName = "CommonUse.UpdateVersionCacheData";
-			DescriptionSchTask = StringFunctionsClientServer.PlaceParametersIntoString(
+			DescriptionSchTask = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Versions cache update. %1 record identifier. Data type %2';ru='Обновление кэша версий. Идентификатор записи %1. Тип данных %2.'"),
 				ID,
 				DataType);
@@ -563,7 +563,7 @@ Function CacheVersionsData(Val ID, Val DataType, Val ReceivingParameters, Val Us
 		|%1 Data type: %2';ru='Ошибка при обновлении кэша версий. Данные не получены.
 		|Идентификатор
 		|записи: %1 Тип данных: %2'");
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 					MessagePattern, ID, DataType);
 					
 				Raise(MessageText);
@@ -618,7 +618,7 @@ Function InterfaceOptions() Export
 	Except
 		ErrorInfo = ErrorInfo();
 		EventName = NStr("en='Interface setting';ru='Настройка интерфейса'", CommonUseClientServer.MainLanguageCode());
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while receiving
 		|interface options: %1';ru='При получении опций интерфейса
 		|произошла ошибка: %1'"),

@@ -571,7 +571,7 @@ Function SecurityProfile(Val ClusterAdministrationParameters, Val ProfileName) E
 	SecurityProfiles = GetSecurityProfiles(ClusterIdentifier, ClusterAdministrationParameters, Filter);
 	
 	If SecurityProfiles.Count() <> 1 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Security profile %2 is not registered in server cluster %1 .';ru='В кластере серверов %1 не зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Security profile %2 is not registered in server cluster %1 .';ru='В кластере серверов %1 не зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
 	EndIf;
 	
 	Result = SecurityProfiles[0];
@@ -624,7 +624,7 @@ Procedure CreateSecurityProfile(Val ClusterAdministrationParameters, Val Securit
 	SecurityProfiles = GetSecurityProfiles(ClusterIdentifier, ClusterAdministrationParameters, Filter);
 	
 	If SecurityProfiles.Count() = 1 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Security profile %2 is already registered in server cluster %1.';ru='В кластере серверов %1 уже зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Security profile %2 is already registered in server cluster %1.';ru='В кластере серверов %1 уже зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
 	EndIf;
 	
 	UpdateSecurityProfilesProperties(ClusterAdministrationParameters, SecurityProfileProperties, False);
@@ -650,7 +650,7 @@ Procedure SetSecurityProfileProperties(Val ClusterAdministrationParameters, Val 
 	SecurityProfiles = GetSecurityProfiles(ClusterIdentifier, ClusterAdministrationParameters, Filter);
 	
 	If SecurityProfiles.Count() <> 1 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Security profile %2 is not registered in server cluster %1 .';ru='В кластере серверов %1 не зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Security profile %2 is not registered in server cluster %1 .';ru='В кластере серверов %1 не зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
 	EndIf;
 	
 	UpdateSecurityProfilesProperties(ClusterAdministrationParameters, SecurityProfileProperties, True);
@@ -720,7 +720,7 @@ Function GetCluster(Val ClusterAdministrationParameters)
 	If Clusters.Count() = 1 Then
 		Return Clusters[0].Get("cluster");
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Servers cluster with %1 port is not found';ru='Не обнаружен кластер серверов с портом %1'"), ClusterAdministrationParameters.ClusterPort);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Servers cluster with %1 port is not found';ru='Не обнаружен кластер серверов с портом %1'"), ClusterAdministrationParameters.ClusterPort);
 	EndIf;
 	
 EndFunction
@@ -795,7 +795,7 @@ Function GetInfobase(Val ClusterIdentifier, Val ClusterAdministrationParameters,
 	If Infobases.Count() = 1 Then
 		Return Infobases[0].Get("infobase");
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Infobase %2 is not registered in server cluster %1.';ru='В кластере серверов %1 не зарегистрирована информационная база %2!'"), ClusterIdentifier, InformationBaseAdministrationParameters.NameInCluster);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Infobase %2 is not registered in server cluster %1.';ru='В кластере серверов %1 не зарегистрирована информационная база %2!'"), ClusterIdentifier, InformationBaseAdministrationParameters.NameInCluster);
 	EndIf;
 	
 EndFunction
@@ -1604,7 +1604,7 @@ Function RunCommand(Val Pattern, Val ClusterAdministrationParameters, Val Parame
 	ClientFile = New File(Client);
 	If Not ClientFile.Exist() Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unable to run operation of the servers cluster administration as: file %1 is not found.
 		|
 		|To administer cluster via administer server (ras), you need to

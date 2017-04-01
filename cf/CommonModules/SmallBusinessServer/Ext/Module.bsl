@@ -1683,7 +1683,7 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 				
 				Counterparty = Item.Value.Owner;
 				BasisTemplate = NStr("en='Found: Contact person ""%1"" - %2';ru='Найдено: Контактное лицо ""%1"" - %2'");
-				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Description);
+				Basis = StringFunctionsClientServer.SubstituteParametersInString(BasisTemplate, Item.Value, Item.Description);
 				
 			// Individuals
 			ElsIf Item.Metadata = Metadata.Catalogs.Individuals Then
@@ -1693,7 +1693,7 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 					
 					For Each TableRow IN FoundCounterpartiesTable Do
 						BasisTemplate = NStr("en='Find: Individual ""%1"" of the contact person ""%2"" - %3';ru='Найдено: Физическое лицо ""%1"" контактного лица ""%2"" - %3'");
-						Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, TableRow.Presentation, Item.Description);
+						Basis = StringFunctionsClientServer.SubstituteParametersInString(BasisTemplate, Item.Value, TableRow.Presentation, Item.Description);
 						If Not AddCounterpartyToListOfFoundByFulltextSearch(CounterpartiesList, TableRow.Counterparty, Basis, ItemRef) Then
 							Return NStr("en='Too many results, refine query.';ru='Слишком много результатов, уточните запрос.'");
 						EndIf;
@@ -1706,14 +1706,14 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 				
 				Counterparty = Item.Value.Owner;
 				BasisTemplate =  NStr("en='Found: Contract ""%1"" - %2';ru='Найдено: Договор ""%1"" - %2'");
-				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Description);
+				Basis = StringFunctionsClientServer.SubstituteParametersInString(BasisTemplate, Item.Value, Item.Description);
 				
 			// Bank accounts
 			ElsIf Item.Metadata = Metadata.Catalogs.BankAccounts Then
 				
 				Counterparty = Item.Value.Owner;
 				BasisTemplate =  NStr("en='Found: Bank account ""%1"" - %2';ru='Найдено: Банковский счет ""%1"" - %2'");
-				Basis = StringFunctionsClientServer.PlaceParametersIntoString(BasisTemplate, Item.Value, Item.Description);
+				Basis = StringFunctionsClientServer.SubstituteParametersInString(BasisTemplate, Item.Value, Item.Description);
 				
 			ElsIf Not ValueIsFilled(Item.Value.Counterparty) Then
 				
@@ -6502,7 +6502,7 @@ Procedure ValidateOperationKind(CommandParameter, Errors) Export
 		|Печать универсального передаточного документа доступна c 1 января 2013. 
 		|Для документа %1 печатная форма не сформирована.'");
 			
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, DocumentRef);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, DocumentRef);
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 			
 			CommandParameter.Delete(Counter);
@@ -6514,7 +6514,7 @@ Procedure ValidateOperationKind(CommandParameter, Errors) Export
 		|%1, 
 		|т.к. действие доступно только для заказ-нарядов!'");
 			
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, DocumentRef);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, DocumentRef);
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 			
 			CommandParameter.Delete(Counter);
@@ -6527,7 +6527,7 @@ Procedure ValidateOperationKind(CommandParameter, Errors) Export
 		|Для печати универсального передаточного документа необходимо заполнить контрагента. 
 		|Для документа %1 печатная форма не сформирована.'");
 			
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, DocumentRef);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, DocumentRef);
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 			
 			CommandParameter.Delete(Counter);
@@ -7132,7 +7132,7 @@ Procedure FillSubjectSendingText(SendingParameters, ObjectsArray, PrintFormsColl
 		EndIf;
 	EndIf;
 	
-	Subject = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 %2 %3';ru='%1 %2 %3'"),
+	Subject = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1 %2 %3';ru='%1 %2 %3'"),
 		DocumentTitlePresentation,
 		PresentationForWhom,
 		PresentationFromWhom
@@ -9909,7 +9909,7 @@ Function ClearDataInDatabase() Export
 	Try
 		CommonUse.LockInfobase();
 	Except
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		Message = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to install the monopoly mode (%1)';ru='Не удалось установить монопольный режим (%1)'"),
 			BriefErrorDescription(ErrorInfo()));
 		Return False;

@@ -103,7 +103,7 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 		PeriodPresentation = "";
 		
 		If ValueIsFilled(FilterSsettingsAtNode.DocumentsDumpStartDate) Then
-			PeriodPresentation = StringFunctionsClientServer.PlaceParametersIntoString(
+			PeriodPresentation = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en=', beginning with %1';ru=', начиная с %1'"),
 				Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DLF=DD"));
 		Else
@@ -152,7 +152,7 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 			FilterPresentationRow = StringFunctionsClientServer.GetStringFromSubstringArray(
 				FilterSsettingsAtNode.Companies.Company,
 				"; ");
-			CompaniesPresentation = StringFunctionsClientServer.PlaceParametersIntoString(
+			CompaniesPresentation = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Only by companies: %1.';ru='Только по организациям: %1.'"),
 				FilterPresentationRow);
 		Else
@@ -164,7 +164,7 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 			FilterPresentationRow = StringFunctionsClientServer.GetStringFromSubstringArray(
 				FilterSsettingsAtNode.Warehouses.Warehouse,
 				"; ");
-			WarehousesPresentation = StringFunctionsClientServer.PlaceParametersIntoString(
+			WarehousesPresentation = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Only by warehouses: %1.';ru='Только по складам: %1.'"),
 				FilterPresentationRow);
 		Else
@@ -400,7 +400,7 @@ EndFunction
 Function CorrespondentInfobaseDataTransferRestrictionDetails(FilterSsettingsAtNode, CorrespondentVersion, SettingID) Export
 	
 	If ValueIsFilled(FilterSsettingsAtNode.DocumentsDumpStartDate) Then
-		DocumentsDumpStartDateRestriction = StringFunctionsClientServer.PlaceParametersIntoString(
+		DocumentsDumpStartDateRestriction = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Beginning with %1';ru='Начиная с %1'"),
 			Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DLF=DD"));
 	Else
@@ -412,7 +412,7 @@ Function CorrespondentInfobaseDataTransferRestrictionDetails(FilterSsettingsAtNo
 		FilterPresentationRow = StringFunctionsClientServer.GetStringFromSubstringArray(
 			FilterSsettingsAtNode.Companies.Company,
 			"; ");
-		RestrictionFilterByCompanies = StringFunctionsClientServer.PlaceParametersIntoString(
+		RestrictionFilterByCompanies = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Only by Companies: %1';ru='Только по организациям: %1'"),
 			FilterPresentationRow);
 	Else

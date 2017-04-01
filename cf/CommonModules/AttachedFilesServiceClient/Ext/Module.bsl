@@ -73,7 +73,7 @@ Function PutFileToStorage(Val PathToFile, Val FormID) Export
 	
 	If Not PutFiles(FilesToPlace, PlacedFiles, , False, FormID) Then
 		CommonUseClientServer.MessageToUser(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Error when
 		|placing
 		|the %1 file into a temporary storage.';ru='Ошибка
@@ -171,7 +171,7 @@ Procedure PlaceSelectedFilesIntoWebStorageEnd(Result, Address, SelectedFileName,
 		Extension = PathStrings[PathStrings.Count()-1];
 		BaseName = PathStrings[PathStrings.Count()-2];
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error when
 		|placing
 		|the %1 file into a temporary storage.';ru='Ошибка
@@ -256,7 +256,7 @@ Procedure PlaceEditedFileOnDriveIntoCompletedStorageRoom(InformationAboutFile, A
 		Return;
 	EndIf;
 	
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Name of
 		|the
 		|selected file ""%1"" differs from the
@@ -321,7 +321,7 @@ Procedure SelectFileOnDriveAndPlaceIntoStorageExtensionRequested(FileOperationsE
 		FileChoice.Multiselect = False;
 		FileChoice.FullFileName = FileData.Description + "." + FileData.Extension;
 		FileChoice.Extension = FileData.Extension;
-		FileChoice.Filter = StringFunctionsClientServer.PlaceParametersIntoString(
+		FileChoice.Filter = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='All files (*.%1)|*.%1';ru='Все файлы (*.%1)|*.%1'"), FileData.Extension);
 		
 		InformationAboutFile = Undefined;
@@ -435,7 +435,7 @@ Procedure OpenDirectoryWithFileExtensionRequested(FileOperationsExtensionConnect
 		FullPath = UserWorkingDirectory + FileData.RelativePath + FileData.FileName;
 		File = New File(FullPath);
 		If Not File.Exist() Then
-			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+			QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='File
 		|""%1"" is absent in the working directory.
 		|
@@ -552,7 +552,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 		Action.Insert("Action", "CreateDirectory");
 		Action.Insert("File", Context.FileDir);
 		Action.Insert("ErrorTitle", Context.ErrorTitle +
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Directory is not created due to:';ru='Создание каталога не выполнено по причине:'"), Context.FileDir));
 		ActionsWithFile.Add(Action);
 		
@@ -561,7 +561,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 		Action.Insert("File",  Context.FullFileName);
 		Action.Insert("Properties", New Structure("ReadOnly", False));
 		Action.Insert("ErrorTitle", Context.ErrorTitle +
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The ""View only"" property of the file is not changed due to:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
 		ActionsWithFile.Add(Action);
 		
@@ -569,7 +569,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 		Action.Insert("Action", "Delete");
 		Action.Insert("File", Context.FullFileName);
 		Action.Insert("ErrorTitle", Context.ErrorTitle +
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='File is not deleted due to:';ru='Удаление файла не выполнено по причине:'"), Context.FullFileName));
 		ActionsWithFile.Add(Action);
 		
@@ -578,7 +578,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 		Action.Insert("File",     Context.FullFileName);
 		Action.Insert("Source", Context.FullNameOfThePlacedFile);
 		Action.Insert("ErrorTitle", Context.ErrorTitle +
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='File is not copied due to:';ru='Копирование файла не выполнено по причине:'"), Context.FullFileName));
 		ActionsWithFile.Add(Action);
 	EndIf;
@@ -588,7 +588,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("File",  Context.FullFileName);
 	Action.Insert("Properties", New Structure("ReadOnly", True));
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The ""View only"" property of the file is not changed due to:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
@@ -602,7 +602,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("File",  Context.FullFileName);
 	Action.Insert("Properties", Context.FileProperties);
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File property is not got due to:';ru='Получение свойств файла не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
@@ -686,7 +686,7 @@ Procedure GetAttachedFile(Notification, AttachedFile, FormID, AdditionalParamete
 		
 		Result = New Structure;
 		Result.Insert("FullFileName", "");
-		Result.Insert("ErrorDescription", Context.ErrorTitle + StringFunctionsClientServer.PlaceParametersIntoString(
+		Result.Insert("ErrorDescription", Context.ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The %1 user is already editing the file.';ru='Файл уже редактирует пользователь %1.'"), String(Context.FileData.IsEditing)));
 		ExecuteNotifyProcessing(Context.Notification, Result);
 		Return;
@@ -737,7 +737,7 @@ Procedure GetAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("Action", "CreateDirectory");
 	Action.Insert("File", Context.FileDir);
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Directory is not created due to:';ru='Создание каталога не выполнено по причине:'"), Context.FileDir));
 	ActionsWithFile.Add(Action);
 	
@@ -746,7 +746,7 @@ Procedure GetAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("File",  Context.FullFileName);
 	Action.Insert("Properties", New Structure("ReadOnly", False));
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The ""View only"" property of the file is not changed due to:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
@@ -754,7 +754,7 @@ Procedure GetAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("Action", "Delete");
 	Action.Insert("File", Context.FullFileName);
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File is not deleted due to:';ru='Удаление файла не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
@@ -774,7 +774,7 @@ Procedure GetAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("File",  Context.FullFileName);
 	Action.Insert("Properties", FileProperties);
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File property is not set due to:';ru='Установка свойств файла не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
@@ -942,7 +942,7 @@ EndProcedure
 Procedure GetEncryptedData(ResultHandler, Val AttachedFile, Val FileData, Val FormID) Export
 	
 	If FileData.Encrypted Then
-		ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
+		ShowMessageBox(, StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The
 		|file ""%1"" is already encrypted.';ru='Файл
 		|""%1"" уже зашифрован.'"), String(AttachedFile)));
@@ -1021,7 +1021,7 @@ Procedure NotifyAboutChangeAndDeleteFileInWorkDirectory(Val AttachedFile, Val Fi
 	If CommonUseClient.SubsystemExists("StandardSubsystems.DigitalSignature") Then
 		ModuleDigitalSignatureClient = CommonUseClient.CommonModule("DigitalSignatureClient");
 		ModuleDigitalSignatureClient.InformAboutObjectEncryption(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='File: %1';ru='Файл: %1'"), AttachedFile));
 	EndIf;
 	
@@ -1188,7 +1188,7 @@ Procedure NotifyAboutFileDecrypting(Val AttachedFile) Export
 	EndIf;
 	ModuleDigitalSignatureClient = CommonUseClient.CommonModule("DigitalSignatureClient");
 	ModuleDigitalSignatureClient.InformAboutObjectDecryption(
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File: %1';ru='Файл: %1'"), AttachedFile));
 	
 EndProcedure
@@ -1243,7 +1243,7 @@ Procedure PlaceSelectedFilesToStorage(Val SelectedFiles,
 		
 		If Not PutFiles(FilesToPlace, PlacedFiles, , False, FormID) Then
 			CommonUseClientServer.MessageToUser(
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Error when
 		|placing
 		|the %1 file into a temporary storage.';ru='Ошибка
@@ -1295,7 +1295,7 @@ Procedure UpdateStateAboutFileSaving(Val SelectedFiles, Val File, Val CurrentPos
 		Else
 			IndicatorPercent = CurrentPosition * 100 / SelectedFiles.Count();
 			
-			LabelMore = StringFunctionsClientServer.PlaceParametersIntoString(
+			LabelMore = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The %1 file is being saved (%2 Mb)...';ru='Сохраняется файл ""%1"" (%2 Мб) ...'"), File.Name, SizeInMB);
 				
 			StatusText = NStr("en='Several files saving.';ru='Сохранение нескольких файлов.'");
@@ -1304,12 +1304,12 @@ Procedure UpdateStateAboutFileSaving(Val SelectedFiles, Val File, Val CurrentPos
 		EndIf;
 	Else
 		If CurrentPosition = Undefined Then
-			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The %1 file
 		|(%2 Mb) is saved.';ru='Сохранение
 		|файла ""%1"" (%2 Мб) завершено.'"), File.Name, SizeInMB);
 		Else
-			ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Is Saved file ""%1"" (%2 MB).
 		|You Are Welcome, please wait...';ru='Сохраняется файл ""%1"" (%2 Мб).
 		|Пожалуйста, подождите...'"), File.Name, SizeInMB);
@@ -1496,7 +1496,7 @@ Procedure SaveFileAsExtensionRequested(FileOperationsExtensionConnected, Additio
 		FileChoice.Multiselect = False;
 		FileChoice.FullFileName = FileData.FileName;
 		FileChoice.DefaultExt = FileData.Extension;
-		FileChoice.Filter = StringFunctionsClientServer.PlaceParametersIntoString(
+		FileChoice.Filter = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='All files (*.%1)|*.%1';ru='Все файлы (*.%1)|*.%1'"), FileData.Extension);
 		
 		If Not FileChoice.Choose() Then
@@ -1506,7 +1506,7 @@ Procedure SaveFileAsExtensionRequested(FileOperationsExtensionConnected, Additio
 		SizeInMB = FileData.Size / (1024 * 1024);
 		
 		ExplanationText =
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The %1 file (%2
 		|Mb) is being saved. Please wait...';ru='Сохраняется файл ""%1"" (%2 Мб) Пожалуйста, подождите.'"),
 				FileData.FileName, 
@@ -1616,7 +1616,7 @@ Procedure OpenFileByApplication(Val FileNameToOpen, FileData)
 			RunApp(FileNameToOpen);
 		Except
 			ErrorInfo = ErrorInfo();
-			ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
+			ShowMessageBox(, StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='While opening
 		|the
 		|%1 file

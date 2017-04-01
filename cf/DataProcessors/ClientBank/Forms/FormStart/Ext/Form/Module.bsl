@@ -216,7 +216,7 @@ Procedure RefreshFilterBankAccounts()
 		EndIf;
 		
 		Items.FilterByAccount.Title = 
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Bank account: %1';ru='Банковский счет: %1'"),
 				Object.BankAccount);
 	Else

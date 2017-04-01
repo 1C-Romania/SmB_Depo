@@ -47,7 +47,7 @@ Procedure OnOpen(Cancel)
 		Else
 			ErrorDetails = ElectronicDocumentsServiceClient.InformationAboutErroriBank2();
 		EndIf;
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Receiving bank certificates';ru='Получение банковских сертификатов'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -187,7 +187,7 @@ Procedure ContinueReceivingCertificate(Authentication, Parameters) Export
 		Else
 			ErrorDetails = ElectronicDocumentsServiceClient.InformationAboutErroriBank2();
 		EndIf;
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Receiving additional certificate data';ru='Получение дополнительных данных сертификата'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());

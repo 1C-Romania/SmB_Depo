@@ -47,7 +47,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	CalculateTotalsOn = CurrentSessionDate();
 	
-	Items.DescriptionSettingPeriod.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.DescriptionSettingPeriod.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		Items.DescriptionSettingPeriod.Title,
 		Format(EndOfPeriod(AddMonth(CalculateTotalsOn, -1)), "DLF=D"),
 		Format(EndOfPeriod(CalculateTotalsOn), "DLF=D"));
@@ -978,7 +978,7 @@ Procedure GetOptimumAggregateClient()
 			Else
 				Filter = "";
 			EndIf;
-			Filter = StringFunctionsClientServer.PlaceParametersIntoString(Filter, Extension);
+			Filter = StringFunctionsClientServer.SubstituteParametersInString(Filter, Extension);
 			SaveFileDialog = New FileDialog(FileDialogMode.Save);
 			SaveFileDialog.FullFileName = Result.FileName;
 			SaveFileDialog.Filter = Filter;
@@ -1077,7 +1077,7 @@ Function GetOptimumAggregatesServer()
 			FullFileName = ItemOfList.Value;
 			ShortFileName = ItemOfList.Presentation + ".xml";
 		Else
-			ShortFileName = StringFunctionsClientServer.PlaceParametersIntoString(
+			ShortFileName = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Optimal aggregates of accumulation registers %1.zip';ru='Оптимальные агрегаты регистров накопления %1.zip'"),
 				Format(CurrentSessionDate(), "DF=yyyy-MM-dd"));
 			FullFileName = TempFilesDir + ShortFileName;
@@ -1106,7 +1106,7 @@ Function GetOptimumAggregatesServer()
 		If HasErrors Then
 			StandardSubsystemsClientServer.DisplayWarning(
 				Result,
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Cannot get optimal aggregates of the accumulation register ""%1"".';ru='Не удалось получить оптимальные агрегаты регистра накопления ""%1"".'"),
 					RegisterName),
 				DetailedErrorsText);
@@ -1114,7 +1114,7 @@ Function GetOptimumAggregatesServer()
 			StandardSubsystemsClientServer.DisplayNotification(
 				Result,
 				NStr("en='Optimal aggregates are successfully received.';ru='Оптимальные агрегаты успешно получены.'"),
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='%1 (accumulation register)';ru='%1 (регистр накопления)'"),
 					RegisterName),
 				PictureLib.Successfully32);
@@ -1129,7 +1129,7 @@ Function GetOptimumAggregatesServer()
 		// Partially successfully.
 		StandardSubsystemsClientServer.DisplayWarning(
 			Result,
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Aggregates for %1 and %2 registers are successfully received.
 		|Not received: %3.';ru='Агрегаты успешно получены для %1 из %2 регистров.
 		|Не получены: %3.'"),
@@ -1142,7 +1142,7 @@ Function GetOptimumAggregatesServer()
 		StandardSubsystemsClientServer.DisplayNotification(
 			Result,
 			NStr("en='Aggregates are successfully received.';ru='Агрегаты успешно получены.'"),
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Accumulation registers (%1)';ru='Регистры накопления (%1)'"),
 				Successfully),
 			PictureLib.Successfully32);
@@ -1335,7 +1335,7 @@ Function ChangeServerAggregates(Val ServerParameters)
 			ManagerRegister.ClearAggregates();
 			
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Incorrect parameter name: %1';ru='Неправильное имя параметра: %1'"),
 				ServerParameters.Action);
 		EndIf;

@@ -681,7 +681,7 @@ Function CreateImportFile(Val DocumentsTable)
 					MessageText = NStr("en='Not managed to import the signature for
 		|the electronic document ""%1"", created on the basis of the document ""%2""!';ru='Не удалось выгрузить подпись для электронного документа ""%1"",
 		|сформированного на основании документа ""%2""!'");
-					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, ED, VTRow.Document);
+					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, ED, VTRow.Document);
 					CommonUseClientServer.MessageToUser(MessageText);
 				Else
 					SignatureFileFound = True;
@@ -695,7 +695,7 @@ Function CreateImportFile(Val DocumentsTable)
 				MessageText = NStr("en='Not managed to import the
 		|electronic document ""%1"",created on the basis of the document ""%2""!';ru='Не удалось выгрузить подпись для электронного документа ""%1"",
 		|сформированного на основании документа ""%2""!'");
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, ED, VTRow.IBDocument);
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, ED, VTRow.IBDocument);
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 			If Not(DataFileFound AND SignatureFileFound) Then
@@ -837,7 +837,7 @@ Function ImportDescriptionFile(Company, VTInventory, DirectoryAddress)
 		Return True;
 	Except
 		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Creating ED import into 1C Accounting';ru='Формирование выгрузки ЭД в 1с-Отчетность'"),
 																					DetailErrorDescription(ErrorInfo()),

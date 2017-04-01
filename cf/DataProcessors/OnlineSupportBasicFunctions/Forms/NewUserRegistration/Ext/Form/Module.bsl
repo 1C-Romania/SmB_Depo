@@ -159,7 +159,7 @@ Function MessageParametersToTechicalSupport()
 	
 	MessageText = NStr("en='Dear Sir or Madam, I can not register a new user to connect Internet Support. Please help me to solve the issue. Login: %1 Email: %2 Last name: %3 Name: %4 Patronymic: %5 City: %6 Phone: %7 Place of employment: %8. %TechnicalParameters% ----------------------------------------------- Best regards, .';ru='Здравствуйте! У меня не получается зарегистрировать нового пользователя для подключения Интернет-поддержки. Прошу помочь разобраться с проблемой. Логин: %1 E-mail: %2 Фамилия: %3 Имя: %4 Отчество: %5 Город: %6 Телефон: %7 Место работы: %8. %ТехническиеПараметры% ----------------------------------------------- С уважением, .'");
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		MessageText,
 		Login,
 		Email,

@@ -179,7 +179,7 @@ Procedure UpdateQueueJobsByTemplates(Parameters = Undefined) Export
 				RowTemplate = AddedModified.Find(Selection.Pattern, "Ref");
 				If RowTemplate = Undefined Then
 					MessagePattern = NStr("en='Job template %1 has not been found when the updating';ru='При обновлении не найден шаблон задания %1'");
-					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Selection.Ref);
+					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Selection.Ref);
 					Raise(MessageText);
 				EndIf;
 				

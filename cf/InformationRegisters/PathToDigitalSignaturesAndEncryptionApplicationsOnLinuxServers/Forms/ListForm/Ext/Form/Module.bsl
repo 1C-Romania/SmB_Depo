@@ -9,7 +9,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Application = Parameters.Filter.Application;
 		
 		AutoTitle = False;
-		Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Paths to the application %1 on Linux servers';ru='Пути к программе %1 на серверах Linux'"), Application);
 		
 		Items.ListApplication.Visible = False;

@@ -20,7 +20,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	//If
 	//	ValueIsFilled(Agreement) And Agreement.AgreementState <> Enum.AgreementStatesED.Acts Then
 	//	
-	//	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	//	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 	//		NStr("en='You can not send a directory for an agreement with the ""%1"" state!';ru='Нельзя отправить каталог для соглашения с состоянием ""%1""!'"), Agreement.AgreementState);
 	//	
 	//	Raise MessageText;

@@ -897,7 +897,7 @@ Function GetTempFileNameForPrintForm(TemplateName, Extension, UsedFilesNames)
 	FileNamePattern = "%1%2.%3";
 	
 	TempFileName = CommonUseClientServer.ReplaceProhibitedCharsInFileName(
-		StringFunctionsClientServer.PlaceParametersIntoString(FileNamePattern, TemplateName, "", Extension));
+		StringFunctionsClientServer.SubstituteParametersInString(FileNamePattern, TemplateName, "", Extension));
 		
 	UsageNumber = ?(UsedFilesNames[TempFileName] <> Undefined,
 							UsedFilesNames[TempFileName] + 1,
@@ -908,7 +908,7 @@ Function GetTempFileNameForPrintForm(TemplateName, Extension, UsedFilesNames)
 	// If the name has been previously used, we add counter at the end of the name
 	If UsageNumber > 1 Then
 		TempFileName = CommonUseClientServer.ReplaceProhibitedCharsInFileName(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				FileNamePattern,
 				TemplateName,
 				" (" + UsageNumber + ")",

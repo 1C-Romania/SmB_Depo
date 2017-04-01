@@ -2579,7 +2579,7 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 			Result.Add(GroupOfErrorsOfAddress("PresentationNotCorrespondsSetOfFields",
 				NStr("en='Address does not match the values in the fields set.';ru='Адрес не соответствует значениям в наборе полей.'")));
 			AddErrorFillAddresses(Result[0], "",
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='Address presentation for the %1 contact information kind differs from data in the address.';ru='Представление адреса для вида контактной информации ""%1"" отличается от данных в адресе.'"),
 					String(InformationKind.Description)));
 		EndIf;
@@ -2664,19 +2664,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		Field = "RFTerritorialEntity";
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(State)) Then
 			AddErrorFillAddresses(NoReductionInFields, "RFTerritorialEntity",
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='Abbreviation is not specified in the ""%1"" state name.';ru='Не указано сокращение в названии региона ""%1"".'"), State
 				), NStr("en='State';ru='Состояние'"));
 		EndIf;
 		If StrLen(State) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='State name ""%1"" should be shorter than 50 characters.';ru='Название региона ""%1"" должно быть короче 50 символов.'"), State
 				), NStr("en='State';ru='Состояние'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(State, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='State name ""%1"" does not have Cyrillic characters.';ru='В названии региона ""%1"" есть не кириллические символы.'"), State
 				), NStr("en='State';ru='Состояние'"));
 		EndIf
@@ -2688,19 +2688,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		Field = ContactInformationManagementClientServerReUse.RegionXPath();
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(Region)) Then
 			AddErrorFillAddresses(NoReductionInFields, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='Abbreviation in the ""%1"" region name is not specified.';ru='Не указано сокращение в названии района ""%1"".'"), Region
 				), NStr("en='Region';ru='Регион'"));
 		EndIf;
 		If StrLen(Region) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='Region name ""%1"" should be shorter than 50 characters.';ru='Название района ""%1"" должно быть короче 50 символов.'"), Region
 				), NStr("en='Region';ru='Регион'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(Region, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='Region name ""%1"" has non-Cyrillic characters.';ru='В названии района ""%1"" есть не кириллические символы.'"), Region
 				), NStr("en='Region';ru='Регион'"));
 		EndIf;
@@ -2712,19 +2712,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		Field = "City";
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(City)) Then
 			AddErrorFillAddresses(NoReductionInFields, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='Abbreviation is not specified in the %1 city name.';ru='Не указано сокращение в названии города ""%1"".'"), City
 				), NStr("en='City';ru='Город'"));
 		EndIf;
 		If StrLen(City) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='%1 city name should be shorter than 50 characters.';ru='Название города ""%1"" должно быть короче 50 символов.'"), City
 				), NStr("en='City';ru='Город'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(City, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='%1 city name has non-Cyrillic characters.';ru='В названии города ""%1"" есть не кириллические символы.'"), City
 				), NStr("en='City';ru='Город'"));
 		EndIf;
@@ -2736,19 +2736,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		Field = "Settlement";
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(Settlement)) Then
 			AddErrorFillAddresses(NoReductionInFields, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='Abbreviation in the %1 locality name is not specified.';ru='Не указано сокращение в названии населенного пункта ""%1"".'"), Settlement
 				), NStr("en='Settlement';ru='НаселПункт'"));
 		EndIf;
 		If StrLen(Settlement) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='The name of the %1 locality should contain less than 50 characters.';ru='Название населенного пункта ""%1"" должно быть короче 50 символов.'"), Settlement
 				), NStr("en='Settlement';ru='НаселПункт'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(Settlement, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='In the %1 locality name, there are non-Cyrilic characters.';ru='В названии населенного пункта ""%1"" есть не кириллические символы.'"), Settlement
 				), NStr("en='Settlement';ru='НаселПункт'"));
 		EndIf;
@@ -2760,19 +2760,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		Field = "Street";
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(Street)) Then
 			AddErrorFillAddresses(NoReductionInFields, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='Abbreviation is not specified in the %1 street name.';ru='Не указано сокращение в названии улицы ""%1"".'"), Street
 				), NStr("en='Street';ru='Улица'"));
 		EndIf;
 		If StrLen(Region) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='%1 street name should be shorter than 50 characters.';ru='Название улицы ""%1"" должно быть короче 50 символов.'"), Street
 				), NStr("en='Street';ru='Улица'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(Street, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='%1 street name has non-Cyrillic characters.';ru='В названии улицы ""%1"" есть не кириллические символы.'"), Street
 				), NStr("en='Street';ru='Улица'"));
 		EndIf;
@@ -2784,19 +2784,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		Field = "Street";
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(AdditionalItem)) Then
 			AddErrorFillAddresses(NoReductionInFields, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='Abbreviation of an %1 additional item is not specified';ru='Не указано сокращение у дополнительного элемента ""%1"".'"), AdditionalItem
 				), NStr("en='Street';ru='Улица'"));
 		EndIf;
 		If StrLen(Region) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='Name of the %1 additional item must be shorter than 50 characters.';ru='Название дополнительного элемента ""%1"" должно быть короче 50 символов.'"), AdditionalItem
 				), NStr("en='AdditionalItem';ru='AdditionalItem'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(AdditionalItem, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='There are non-cyrillic characters in the name of the %1 additional item.';ru='В названии дополнительного элемента ""%1"" есть не кириллические символы.'"), AdditionalItem
 				), NStr("en='AdditionalItem';ru='AdditionalItem'"));
 		EndIf;
@@ -2817,7 +2817,7 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 	For Each DataBuildings In BuildingsPremises.Buildings Do
 		If StrLen(DataBuildings.Value) > 10 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, DataBuildings.PathXPath,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='%1 field value should be shorter than 10 characters.';ru='Значение поля ""%1"" должно быть короче 10 символов.'"), DataBuildings.Type
 				), DataBuildings.Type);
 		EndIf;
@@ -2825,7 +2825,7 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 	For Each DataPremises In BuildingsPremises.Units Do
 		If StrLen(DataPremises.Value) > 10 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, DataPremises.PathXPath,
-				StringFunctionsClientServer.PlaceParametersIntoString( 
+				StringFunctionsClientServer.SubstituteParametersInString( 
 					NStr("en='%1 field value should be shorter than 10 characters.';ru='Значение поля ""%1"" должно быть короче 10 символов.'"), DataPremises.Type
 				), DataPremises.Type);
 		EndIf;

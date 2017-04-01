@@ -380,7 +380,7 @@ Procedure ReadScannerSettings()
 		Return;
 	EndIf;
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Collecting information on scanner ""%1""...';ru='Идет сбор сведений о сканере ""%1""...'"), DeviceName);
 	
 	Status(MessageText);

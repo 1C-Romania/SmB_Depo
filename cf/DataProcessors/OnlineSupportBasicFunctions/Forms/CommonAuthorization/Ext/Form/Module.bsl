@@ -246,7 +246,7 @@ Function MessageParametersToTechicalSupport()
 	Result = New Structure;
 	Result.Insert("Subject", NStr("en='Online support. Authorization.';ru='Интернет-поддержка. Авторизация.'"));
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Hello!
 		|I can not authorize and connect to online support.
 		|My login and password are entered correctly. Please help me to solve the issue.

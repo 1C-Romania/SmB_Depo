@@ -125,21 +125,21 @@ Function ExternalComponentsKitFilesControlSums(Val TemplateName) Export
 		Template = ObjectManager.GetTemplate(NameStructure[3]);
 		
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to generate a permission to use"
 "an external component: incorrect template name %1!';ru='Не удалось сформировать разрешение"
 "на использование внешней компоненты: некорректное имя макета %1!'"), TemplateName);
 	EndIf;
 	
 	If Template = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to generate the permission to use"
 "the external component delivered with the template 1%: template% 1 is not found in the configuration content!';ru='Не удалось сформировать разрешение"
 "на использование внешней компоненты, поставляемой в макете %1: макет %1 не обнаружден в составе конфигурации!'"), TemplateName);
 	EndIf;
 	
 	If Metadata.FindByFullName(TemplateName).TemplateType <> Metadata.ObjectProperties.TemplateType.BinaryData Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to generate a permission for the"
 "use of the external component: template %1 does not contain binary data!';ru='Не удалось сформировать разрешение"
 "на использование внешней компоненты: макет %1 не содержит двоичных данных!'"), TemplateName);
@@ -161,7 +161,7 @@ Function ExternalComponentsKitFilesControlSums(Val TemplateName) Export
 	EndDo;
 	
 	If IsBlankString(ManifestFile) Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to generate the permission to use"
 "the external component delivered with the template %1: file MANIFEST.XML is not found in the archive!';ru='Не удалось сформировать разрешение"
 "на использование внешней компоненты, поставляемой в макете %1: в архиве не обнаружен файл MANIFEST.XML!'"), TemplateName);
@@ -606,7 +606,7 @@ Procedure OnWriteServiceData(Object) Export
 	
 	If WorkInSafeMode.SafeModeIsSet() Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Record of object %1 is not available: set safe mode: %2!';ru='Запись объекта %1 недоступна: установлен безопасный режим: %2!'"),
 			Object.Metadata().FullName(),
 			SafeMode()

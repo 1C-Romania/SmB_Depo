@@ -654,7 +654,7 @@ Function GetReadObjectConversionRules(Val ExchangePlanName, ReceiveCorrespondent
 	|	AND DataExchangeRules.RulesImported
 	|";
 	
-	QueryText = StringFunctionsClientServer.PlaceParametersIntoString(QueryText,
+	QueryText = StringFunctionsClientServer.SubstituteParametersInString(QueryText,
 		?(ReceiveCorrespondentRules, "ReadOutRulesCorrespondent", "ReadOutRules"));
 	
 	Query = New Query;
@@ -783,7 +783,7 @@ Function GetBinaryDataFromConfigurationTemplate(Cancel, ExchangePlanName, Templa
 	Except
 		
 		MessageString = NStr("en='An error while receiving the configuration template %1 for the exchnage plan of %2 has occurred';ru='Ошибка получения макета конфигурации %1 для плана обмена %2'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, TemplateName, ExchangePlanName);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, TemplateName, ExchangePlanName);
 		DataExchangeServer.ShowMessageAboutError(MessageString, Cancel);
 		Return Undefined;
 		
@@ -933,7 +933,7 @@ Function ConversionRulesAreCompatibleWithCurrentVersion(ExchangePlanName, ErrorD
 		
 		ErrorDescription = New Structure;
 		ErrorDescription.Insert("ErrorText", NStr("en='Rules can not be imported as they are designed for application ""%1"". You should use rules from configuration or import correct rules set from file.';ru='Правила не могут быть загружены, т.к. они предназначены для программы ""%1"". Следует использовать правила из конфигурации или загрузить корректный комплект правил из файла.'"));
-		ErrorDescription.ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorDescription.ErrorText,
+		ErrorDescription.ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorDescription.ErrorText,
 		RulesData.ConfigurationSynonymInRules);
 		ErrorDescription.Insert("ErrorKind", "IncorrectConfiguration");
 		ErrorDescription.Insert("Picture", PictureLib.Error32);
@@ -959,7 +959,7 @@ Function ConversionRulesAreCompatibleWithCurrentVersion(ExchangePlanName, ErrorD
 			
 		EndIf;
 		
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, Metadata.Synonym,
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, Metadata.Synonym,
 			VersionInRulesWithoutAssembly, ConfigurationVersionWithoutAssembly);
 		
 		ErrorDescription = New Structure;

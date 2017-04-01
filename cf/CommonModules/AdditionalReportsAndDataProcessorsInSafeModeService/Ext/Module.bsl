@@ -307,7 +307,7 @@ Function ExecuteScriptSafeMode(Val SessionKey, Val Script, Val ExecutableObject,
 			
 		Else
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Unknown action type for this step of the script: %1';ru='Неизвестный вид действия для этапа сценария: %1'"),
 				ScriptStep.ActionKind);
 			
@@ -352,7 +352,7 @@ Function ExecuteScriptSafeMode(Val SessionKey, Val Script, Val ExecutableObject,
 				
 			Else
 				
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Unknown parameter for this step of the script: %1';ru='Неизвестный параметр для этапа сценария: %1'"),
 					MethodParameter.Type);
 				
@@ -484,7 +484,7 @@ Function GeneratePermissionPresentation(Val permissions) Export
 			PresentationPermissions = PresentationPermissions + " (" + PresentationParameters + ")";
 		EndIf;
 		
-		Result = Result + StringFunctionsClientServer.PlaceParametersIntoString(
+		Result = Result + StringFunctionsClientServer.SubstituteParametersInString(
 			"<LI><FONT size=2>%1 <A href=""%2"">%3</A></FONT>",
 			PresentationPermissions,
 			"internal:" + TypePermissions,
@@ -518,11 +518,11 @@ Function GenerateDetailedPermissionsDescription(Val TypePermissions, Val Permiss
 	
 	Result = Result + "<P><FONT size=2><A href=""internal:home"">&lt;&lt; Back k list permissions</A></FONT></P>";
 	
-	Result = Result + StringFunctionsClientServer.PlaceParametersIntoString(
+	Result = Result + StringFunctionsClientServer.SubstituteParametersInString(
 		"<P><STRONG><FONT size=4>%1</FONT></STRONG></P>",
 		PresentationPermissions);
 	
-	Result = Result + StringFunctionsClientServer.PlaceParametersIntoString(
+	Result = Result + StringFunctionsClientServer.SubstituteParametersInString(
 		"<P><FONT size=2>%1%2</FONT></P>", DetailsPermissions, ?(
 			HasParameters,
 			NStr("en=' with following restrictions:';ru=' со следующими ограничениями:'"),
@@ -539,17 +539,17 @@ Function GenerateDetailedPermissionsDescription(Val TypePermissions, Val Permiss
 			
 			If ValueIsFilled(ParameterValue) Then
 				
-				ParameterDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+				ParameterDescription = StringFunctionsClientServer.SubstituteParametersInString(
 					Parameter.Definition, ParameterValue);
 				
 			Else
 				
-				ParameterDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+				ParameterDescription = StringFunctionsClientServer.SubstituteParametersInString(
 					"<B>%1</B>", Parameter.DescriptionOfAnyValue);
 				
 			EndIf;
 			
-			Result = Result + StringFunctionsClientServer.PlaceParametersIntoString(
+			Result = Result + StringFunctionsClientServer.SubstituteParametersInString(
 				"<LI><FONT size=2>%1</FONT>", ParameterDescription);
 			
 		EndDo;
@@ -561,7 +561,7 @@ Function GenerateDetailedPermissionsDescription(Val TypePermissions, Val Permiss
 	DetailsOfConsequences = "";
 	If DetailsPermissions.Property("Effects", DetailsOfConsequences) Then
 		
-		Result = Result + StringFunctionsClientServer.PlaceParametersIntoString(
+		Result = Result + StringFunctionsClientServer.SubstituteParametersInString(
 			"<P><FONT size=2><EM>%1</EM></FONT></P>",
 			DetailsOfConsequences);
 		
@@ -582,7 +582,7 @@ EndFunction
 // Only for internal use.
 Function PermissionIsNotGrantedTextOfException(Val SessionKey, Val TypeRequiredPermissions)
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Aditional report or processing %1 is not granted permission (%2)%3!';ru='Дополнительному отчету или обработке %1 не предоставлено разрешение {%2}%3!'"),
 			String(SessionKey), TypeRequiredPermissions.NamespaceURI, TypeRequiredPermissions.Name);
 	
@@ -591,7 +591,7 @@ EndFunction
 // Only for internal use.
 Function PermissionIsNotGrantedTextOfExceptionForLimiter(Val SessionKey, Val TypeRequiredPermissions, Val CheckedRestriction, Val Limiter)
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='For additional report or data
 		|processor %1 the {%2}%3 permission
 		|is not granted when delimiter %4 is %5.';ru='Для дополнительного отчета
@@ -605,7 +605,7 @@ EndFunction
 // Only for internal use.
 Function ExceptionTextNotInstalledLimiterIsRequired(Val SessionKey, Val TypeRequiredPermissions, Val CheckedRestriction)
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='When the {%2}%3 permission was
 		|granted for additional report or data processor %1, mandatory delimiter %4 was not specified.';ru='Для дополнительного отчета
 		|или обработки %1 при предоставлении разрешения {%2}%3 не был указан обязательный ограничитель %4!'"),

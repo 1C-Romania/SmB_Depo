@@ -4019,7 +4019,7 @@ Procedure CommonProhibitionDateWithDescriptionOnChange(Val Context, CalculatePro
 			Context.PermissionDaysCount = 0;
 		EndIf;
 		Context.Items.AutomaticalDateExplanation.Title =
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Change of data is forbidden to %1';ru='Запрещено изменение данных по %1'") + LabelText,
 				Format(Context.ProhibitionDate, "DLF=D"),
 				Format(PermissionTerm, "DLF=D"),
@@ -4195,7 +4195,7 @@ EndFunction
 &AtClient
 Function QuestionTextDeleteAllProhibitionDatesExceptDatesForAllUsers()
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Delete all prohibition dates except specified %1?';ru='Удалить все даты запрета, кроме установленных %1?'"),
 		ValueForAllUsers);
 	
@@ -4211,7 +4211,7 @@ EndFunction
 &AtClient
 Function MessageTextValueForAllUsersNotChange()
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Value %1 does not change.';ru='Значение %1 не изменяется.'"),
 		PresentationTextForAllUsers(ThisObject));
 	
@@ -4220,7 +4220,7 @@ EndFunction
 &AtClient
 Function MessageTextCommentForAllUsersNotChange()
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Comment %1 does not change.';ru='Комментарий %1 не изменяется.'"),
 		PresentationTextForAllUsers(ThisObject));
 	
@@ -4236,7 +4236,7 @@ EndFunction
 &AtClientAtServerNoContext
 Function MessageTextProhibitionDateSettingNotUsed(ProhibitionDateSettingToForm, ProhibitionDateSettingInDatabase)
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Prohibition date setting
 		|""%1"" is not set, therefore, prohibition date setting will be saved ""%2"".';ru='Установка
 		|даты запрета ""%1"" не настроена, поэтому будет сохранена установка даты запрета ""%2"".'"),
@@ -4249,7 +4249,7 @@ EndFunction
 Function MessageTextSpecifiedModeNotUsed(SpecifiedModeInForm, SpecifiedModeInDataBase, CurrentUser, Form)
 	
 	If PurposeForAll(CurrentUser) Then
-		Return StringFunctionsClientServer.PlaceParametersIntoString(
+		Return StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Prohibition date specification
 		|method ""%1"" is not set
 		|for ""%2"", therefore, prohibition date specification method will be saved ""%3"".';ru='Способ
@@ -4259,7 +4259,7 @@ Function MessageTextSpecifiedModeNotUsed(SpecifiedModeInForm, SpecifiedModeInDat
 			PresentationTextForAllUsers(Form),
 			SpecifiedModeInDataBase);
 	Else
-		Return StringFunctionsClientServer.PlaceParametersIntoString(
+		Return StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Prohibition date specification
 		|method ""%1"" is not set for
 		|""%1"", therefore, prohibition date specification method will be saved ""%3"".';ru='Способ
@@ -4289,7 +4289,7 @@ EndFunction
 &AtClient
 Function QuestionTextDeleteProhibitionDatesForAllUsers()
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Delete prohibition dates %1?';ru='Удалить даты запрета %1?'"), Lower(ValueForAllUsers));
 	
 EndFunction
@@ -4332,7 +4332,7 @@ EndFunction
 &AtClient
 Function MessageTextForAllUsersProhibitionDatesIsNotSet()
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='%1 prohibition dates are not set.';ru='%1 даты запрета не установлены.'"), ValueForAllUsers);
 	
 EndFunction
@@ -4455,7 +4455,7 @@ EndFunction
 &AtClient
 Function MessageTextForAllUsersSectionsAlwaysShow()
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='%1 sections always shown.';ru='%1 разделы всегда показываются.'"), ValueForAllUsers);
 	
 EndFunction
@@ -4470,7 +4470,7 @@ EndFunction
 &AtClient
 Function MessageTextForAllUsersCommonDateAlwaysShow()
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='%1 <Common date> always shown.';ru='%1 <Общая дата> всегда показывается.'"), ValueForAllUsers);
 	
 EndFunction

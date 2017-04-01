@@ -46,12 +46,12 @@ Procedure CheckReferencesToObjectAfterCheckConfirmation(Response, Parameters) Ex
 			MessageText = NStr("en='Item ""%1"" is already used in other places in the application.
 		|It is not recommended to allow editing due to the risk of data misalignment.';ru='Элемент ""%1"" уже используется в других местах в программе.
 		|Не рекомендуется разрешать редактирование из-за риска рассогласования данных.'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Parameters.RefArray[0]);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Parameters.RefArray[0]);
 		Else
 			MessageText = NStr("en='Selected items (%1) are already used in other places in the application.
 		|It is not recommended to allow editing due to the risk of data misalignment.';ru='Выбранные элементы (%1) уже используются в других местах в программе.
 		|Не рекомендуется разрешать редактирование из-за риска рассогласования данных.'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Parameters.RefArray.Count());
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Parameters.RefArray.Count());
 		EndIf;
 		
 		Buttons = New ValueList;
@@ -66,7 +66,7 @@ Procedure CheckReferencesToObjectAfterCheckConfirmation(Response, Parameters) Ex
 			ShowUserNotification(NStr("en='Attributes editing is allowed';ru='Редактирование реквизитов разрешено'"),
 				GetURL(Parameters.RefArray[0]), Parameters.RefArray[0]);
 		Else
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Editing object attributes (%1) is allowed';ru='Разрешено редактирование реквизитов объектов (%1)'"), Parameters.RefArray.Count());
 			ShowUserNotification(NStr("en='Attributes editing is allowed';ru='Редактирование реквизитов разрешено'"),, MessageText);
 		EndIf;

@@ -27,22 +27,22 @@ Procedure SetAdvancedApplicationCaption(OnLaunch = False) Export
 		If IsBlankString(TrimAll(CaptionPresentation)) Then
 			If ClientParameters.Property("DataAreaPresentation") Then
 				CaptionPattern = "%1 / %2 / %3";
-				ApplicationCaption = StringFunctionsClientServer.PlaceParametersIntoString(CaptionPattern, 
+				ApplicationCaption = StringFunctionsClientServer.SubstituteParametersInString(CaptionPattern, 
 					ClientParameters.DataAreaPresentation, ConfigurationPresentation, 
 					UserPresentation);
 			Else
 				CaptionPattern = "%1 / %2";
-				ApplicationCaption = StringFunctionsClientServer.PlaceParametersIntoString(CaptionPattern, 
+				ApplicationCaption = StringFunctionsClientServer.SubstituteParametersInString(CaptionPattern, 
 					ConfigurationPresentation, UserPresentation);
 			EndIf;
 		Else
 			CaptionPattern = "%1 / %2 / %3";
-			ApplicationCaption = StringFunctionsClientServer.PlaceParametersIntoString(CaptionPattern, 
+			ApplicationCaption = StringFunctionsClientServer.SubstituteParametersInString(CaptionPattern, 
 				TrimAll(CaptionPresentation), UserPresentation, ConfigurationPresentation);
 		EndIf;
 	Else
 		CaptionPattern = "%1 / %2";
-		ApplicationCaption = StringFunctionsClientServer.PlaceParametersIntoString(CaptionPattern, 
+		ApplicationCaption = StringFunctionsClientServer.SubstituteParametersInString(CaptionPattern, 
 			NStr("en='Separators are not installed';ru='Не установлены разделители'"), ClientParameters.DetailedInformation);
 	EndIf;
 	

@@ -340,7 +340,7 @@ Function PermissionsTableRow(Val PermissionTable, Val Filter, Val AddWithout = T
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Violation of lines uniqueness in the permissions table with filter %1';ru='Нарушение уникальности строк в таблице разрешений по отбору %1'"),
 			CommonUse.ValueToXMLString(Filter));
 		

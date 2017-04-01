@@ -408,7 +408,7 @@ Function GetFileFromInternet(Val SessionKey, Val URL, Val Port = 0, Val UserName
 			ErrorInfo = ErrorInfo();
 			ErrorInfo = NStr("en='Error while creating FTP-connection with server %1';ru='Ошибка при создании FTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorInfo, ServerName, DetailErrorDescription(ErrorInfo));
 		EndTry;
 			
@@ -425,7 +425,7 @@ Function GetFileFromInternet(Val SessionKey, Val URL, Val Port = 0, Val UserName
 			ErrorInfo = ErrorInfo();
 			ErrorInfo = NStr("en='Error when creating the HTTP-conection with the server %1:';ru='Ошибка при создании HTTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
+			Raise StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
 				DetailErrorDescription(ErrorInfo));
 		EndTry;
 	EndIf;
@@ -438,7 +438,7 @@ Function GetFileFromInternet(Val SessionKey, Val URL, Val Port = 0, Val UserName
 		ErrorInfo = ErrorInfo();
 		ErrorInfo = NStr("en='Error while receiving file form server %1:';ru='Ошибка при получении файла с сервера %1:'") + Chars.LF + "%2";
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
+		Raise StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
 			DetailErrorDescription(ErrorInfo));
 	EndTry;
 	
@@ -515,7 +515,7 @@ Function ImportFileInInternet(Val SessionKey, Val BinaryDataAddress, Val URL, Va
 			ErrorInfo = ErrorInfo();
 			ErrorInfo = NStr("en='Error while creating FTP-connection with server %1';ru='Ошибка при создании FTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorInfo, ServerName, DetailErrorDescription(ErrorInfo));
 		EndTry;
 			
@@ -532,7 +532,7 @@ Function ImportFileInInternet(Val SessionKey, Val BinaryDataAddress, Val URL, Va
 			ErrorInfo = ErrorInfo();
 			ErrorInfo = NStr("en='Error when creating the HTTP-conection with the server %1:';ru='Ошибка при создании HTTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
+			Raise StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
 				DetailErrorDescription(ErrorInfo));
 		EndTry;
 	EndIf;
@@ -543,7 +543,7 @@ Function ImportFileInInternet(Val SessionKey, Val BinaryDataAddress, Val URL, Va
 		ErrorInfo = ErrorInfo();
 		ErrorInfo = NStr("en='An error occurred when transferring the file to server %1:';ru='Ошибка при передаче файла на сервер %1:'") + Chars.LF + "%2";
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
+		Raise StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
 			DetailErrorDescription(ErrorInfo));
 	EndTry;
 	
@@ -775,7 +775,7 @@ Procedure CheckCorrectnessOfMethodNameOfExternalObject(Val MethodName)
 		
 		If Find(MethodName, ForbiddenSymbol) > 0 Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 is not a correct method name for the COM-object or the external component object!';ru='%1 не является корректным именем метода для COM-объекта или объекта внешней компоненты!'"),
 				MethodName);
 			

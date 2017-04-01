@@ -939,10 +939,10 @@ Procedure DefineUserInconsistenciesWithUserIB(WriteParameters = Undefined)
 		If IBUserFullName <> Object.Description Then
 			FoundDifferencesCanBeResolvedWithoutAdministrator = True;
 			
-			RefineFullName = StringFunctionsClientServer.PlaceParametersIntoString(
+			RefineFullName = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Full name ""%1""';ru='Полное имя ""%1""'"), IBUserFullName);
 			
-			PropertiesAdjustment.Insert(0, StringFunctionsClientServer.PlaceParametersIntoString(
+			PropertiesAdjustment.Insert(0, StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Full name ""%1""';ru='Полное имя ""%1""'"), IBUserFullName));
 		EndIf;
 		
@@ -974,7 +974,7 @@ Procedure DefineUserInconsistenciesWithUserIB(WriteParameters = Undefined)
 				StringPropertyClarification = StringPropertyClarification + CurrentRow;
 			EndIf;
 			Items.PropertiesMismatchNote.Title =
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='The following infobase user properties differ from those specified
 		|in this form: %1.';ru='Следующие свойства пользователя информационной базы отличаются
 		|от указанных в этой форме: %1.'"), StringPropertyClarification)

@@ -76,7 +76,7 @@ Function GetAppliedCatalogName(CatalogName) Export
 	AppliedCatalogName = AccordanceCatalogs.Get(CatalogName);
 	If AppliedCatalogName = Undefined Then // match is not specified
 		MessagePattern = NStr("en='In the applied solution code it is necessary to specify the correspondence for the %1 catalog.';ru='В коде прикладного решения необходимо указать соответствие для справочника %1.'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, CatalogName);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, CatalogName);
 		ElectronicDocumentsService.WriteEventOnEDToEventLogMonitor(MessageText,
 			2, EventLogLevel.Warning);
 	EndIf;
@@ -113,7 +113,7 @@ Function FindEnumeration(Val EnumerationName, EnumerationPresentation) Export
 	AppliedEnumerationName = AccordanceEnum.Get(EnumerationName);
 	If AppliedEnumerationName = Undefined Then // match is not specified
 		MessagePattern = NStr("en='In the applied solution code it is necessary to specify the matching for enumeration %1.';ru='В коде прикладного решения необходимо указать соответствие для перечисления %1.'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, EnumerationName);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, EnumerationName);
 		ElectronicDocumentsService.WriteEventOnEDToEventLogMonitor(MessageText,
 			2, EventLogLevel.Warning);
 	ElsIf ValueIsFilled(AppliedEnumerationName) Then // a value is set
@@ -189,7 +189,7 @@ Function GetObjectKeyAttributesTable(ObjectName) Export
 
 	If Not ValueIsFilled(KeyAttributesStructure) Then
 		MessagePattern = NStr("en='Key attributes structure is not defined for the %1 object.';ru='Не определена структура ключевых реквизитов для объекта %1.'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ObjectName);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ObjectName);
 		Raise(MessageText);
 	EndIf;
 	
@@ -404,7 +404,7 @@ Function GetMessageAboutError(ErrorCode, ThirdPartyErrorDescription = "") Export
 	
 	ElectronicDocumentsOverridable.ChangeMessageAboutError(ErrorCode, ErrorInfo);
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ErrorCode, ErrorInfo);
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ErrorCode, ErrorInfo);
 	
 	Return MessageText;
 	

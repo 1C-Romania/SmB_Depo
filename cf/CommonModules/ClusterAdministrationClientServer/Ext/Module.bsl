@@ -1297,7 +1297,7 @@ Function AdministrationManager(Val AdministrationParameters)
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unknown type of connection: %1!';ru='Неизвестный тип подключения: %1!'"), AdministrationParameters.ConnectionType);
 		
 	EndIf;

@@ -111,7 +111,7 @@ Procedure DeleteFile(Val FullPathToFile) Export
 	
 	ContentRow = Content.Find(FullPathToFile, "DescriptionFull");
 	If ContentRow = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File %1 is not found in the container content.';ru='Файл %1 не найден в составе контейнера!'"), FullPathToFile);
 	Else
 		
@@ -128,7 +128,7 @@ Procedure ReplaceFile(Val NameInContainer, Val FullPathToFile, Val DeleteReplace
 	
 	SourceFileRow = Content.Find(NameInContainer, "Name");
 	If SourceFileRow = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File with identifier %1 is not found in the container.';ru='Файл с идентификатором %1 не найден в составе контейнера!'"), NameInContainer);
 	Else
 		
@@ -295,7 +295,7 @@ Function GetRandomFile(Val DataType = Undefined) Export
 	
 	Files = GetFilesFromSet(DataExportImportService.CustomData() , DataType);
 	If Files.Count() = 0 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Arbitrary file with data type %1 does not exist in the export.';ru='В выгрузке отсутствует произвольный файл с типом данным %1!'"),
 			DataType
 		);
@@ -374,7 +374,7 @@ Function GetFullFileName(Val RelativeFileName) Export
 	ContentRow = Content.Find(RelativeFileName, "Name");
 	
 	If ContentRow = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File with relative name %1 is not found in the container.';ru='В контейнере не обнаружен файл с относительным именем %1!'"),
 			RelativeFileName
 		);
@@ -391,7 +391,7 @@ Function GetRelativeFileName(Val FullFileName) Export
 	ContentRow = Content.Find(FullFileName, "DescriptionFull");
 	
 	If ContentRow = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File %1 is not found in the container.';ru='В контейнере не обнаружен файл %1!'"),
 			FullFileName
 		);

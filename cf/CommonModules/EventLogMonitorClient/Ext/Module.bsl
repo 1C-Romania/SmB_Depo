@@ -88,12 +88,12 @@ Procedure OpenDataForViewing(CurrentData) Export
 		If CurrentData.Event = "_$Data$_.Delete" Then 
 			// this - deletion event
 			WarningText =
-					StringFunctionsClientServer.PlaceParametersIntoString(
+					StringFunctionsClientServer.SubstituteParametersInString(
 						WarningText,
 						NStr("en='Data is deleted from IB';ru='Данные удалены из информационной базы'"));
 		Else
 			WarningText =
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 						WarningText,
 						NStr("en='Maybe, data was deleted from info base';ru='Возможно, данные удалены из информационной базы'"));
 		EndIf;

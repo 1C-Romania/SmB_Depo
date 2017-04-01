@@ -1400,13 +1400,13 @@ EndFunction
 Procedure AddFormTypeToPresentation(Object, Form, FormName)
 	
 	If Form = Object.DefaultListForm Then
-		FormName = StringFunctionsClientServer.PlaceParametersIntoString(
+		FormName = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (list)';ru='%1 (список)'"), FormName);
 	ElsIf Form = Object.DefaultChoiceForm Then
-		FormName = StringFunctionsClientServer.PlaceParametersIntoString(
+		FormName = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (choice)';ru='%1 (выбор)'"), FormName);
 	ElsIf Form = Object.DefaultFolderForm Then
-		FormName = StringFunctionsClientServer.PlaceParametersIntoString(
+		FormName = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (group)';ru='%1 (группа)'"), FormName);
 	EndIf;
 	
@@ -1415,13 +1415,13 @@ EndProcedure
 Procedure AddPresentationFormAvtogeneriruemojForms(Object, Form, FormName)
 	
 	If Form = "ListForm" Then
-		FormName = StringFunctionsClientServer.PlaceParametersIntoString(
+		FormName = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (list)';ru='%1 (список)'"), FormName);
 	ElsIf Form = "ChoiceForm" Then
-		FormName = StringFunctionsClientServer.PlaceParametersIntoString(
+		FormName = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (choice)';ru='%1 (выбор)'"), FormName);
 	ElsIf Form = "FolderChoiceForm" Then
-		FormName = StringFunctionsClientServer.PlaceParametersIntoString(
+		FormName = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (group)';ru='%1 (группа)'"), FormName);
 	EndIf;
 	

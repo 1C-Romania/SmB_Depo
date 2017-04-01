@@ -1041,7 +1041,7 @@ Procedure FillListOfUserTypes()
 			
 			UserTypes.Add(
 				ReferenceTypeDescription.AdjustValue(Undefined),
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='External users (%1)';ru='Внешние пользователи (%1)'"),
 					TypeMetadata.Synonym));
 		EndDo;
@@ -1051,7 +1051,7 @@ Procedure FillListOfUserTypes()
 	
 	UsersTypePresentation =
 		?(FoundItem = Undefined,
-		  StringFunctionsClientServer.PlaceParametersIntoString(
+		  StringFunctionsClientServer.SubstituteParametersInString(
 		      NStr("en='Unknown type ""%1""';ru='Неизвестный тип ""%1""'"),
 		      String(TypeOf(Object.UsersType))),
 		  FoundItem.Presentation);

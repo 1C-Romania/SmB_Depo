@@ -148,7 +148,7 @@ Function CryptographyManagerAlgorithmsSet(ApplicationDescription, Manager, Error
 	Except
 		Manager = Undefined;
 		// The platform uses the general Unknown cryptography algorithm message. Required more specific.
-		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.PlaceParametersIntoString(
+		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unknown %1 signature algorithm is selected.';ru='Выбран неизвестный алгоритм подписи ""%1"".'"), SignAlgorithm), True);
 		Return False;
 	EndTry;
@@ -159,7 +159,7 @@ Function CryptographyManagerAlgorithmsSet(ApplicationDescription, Manager, Error
 	Except
 		Manager = Undefined;
 		// The platform uses the general Unknown cryptography algorithm message. Required more specific.
-		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.PlaceParametersIntoString(
+		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unknown %1 hashing algorithm is selected.';ru='Выбран неизвестный алгоритм хеширования ""%1"".'"), HashAlgorithm), True);
 		Return False;
 	EndTry;
@@ -170,7 +170,7 @@ Function CryptographyManagerAlgorithmsSet(ApplicationDescription, Manager, Error
 	Except
 		Manager = Undefined;
 		// The platform uses the general Unknown cryptography algorithm message. Required more specific.
-		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.PlaceParametersIntoString(
+		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unknown %1 encryption algorithm is selected.';ru='Выбран неизвестный алгоритм шифрования ""%1"".'"), EncryptionAlgorithm), True);
 		Return False;
 	EndTry;
@@ -191,7 +191,7 @@ EndProcedure
 Function CryptographyManagerApplicationNameMatch(ApplicationDescription, ApplicationNameReceived, Errors, IsServer) Export
 	
 	If ApplicationNameReceived <> ApplicationDescription.ApplicationName Then
-		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.PlaceParametersIntoString(
+		CryptographyManagerAddError(Errors, ApplicationDescription.Ref, StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Another application with the %1 name is received.';ru='Получена другая программа с именем ""%1"".'"), ApplicationNameReceived), IsServer, True);
 		Return False;
 	EndIf;

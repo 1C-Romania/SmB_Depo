@@ -1850,7 +1850,7 @@ Function ExportFile(FileData, Parameters, ErrorDescription) Export
 		If FileBinaryData = Undefined Then
 			
 			AddErrorDescriptionFull(ErrorDescription, 
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Failed to receive file data %1 of products and services %2';ru='Не удалось получить данные файла %1 номенклатуры %2'"),
 					FileData.File,
 					Parameters.ProductsAndServicesSelection.ProductsAndServices));
@@ -1897,7 +1897,7 @@ Function ExportFile(FileData, Parameters, ErrorDescription) Export
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription, ExceptionalErrorDescription(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Failed to create the directory %1. ProductsAndServices: %2';ru='Не удалось создать каталог %1. Номенклатура: %2'"),
 				FileDir,
 				Parameters.ProductsAndServicesSelection.ProductsAndServices))
@@ -1916,7 +1916,7 @@ Function ExportFile(FileData, Parameters, ErrorDescription) Export
 	Except
 		
 		AddErrorDescriptionFull(ErrorDescription, ExceptionalErrorDescription(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Failed to record the %1 file to the disk. ProductsAndServices: %2';ru='Не удалось записать файл %1 на диск. Номенклатура: %2'"),
 				FullFileName,
 				Parameters.ProductsAndServicesSelection.ProductsAndServices))
@@ -2956,7 +2956,7 @@ Function CreateUpdateOrders(XDTODocuments, PreviouslyImportedOrders, StatisticsS
 			OR Not Lower(DocumentXDTO.BusinessTransaction) = "product order" Then
 			
 			AddErrorDescriptionFull(ErrorDescription,
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Error in node value <Document>.<BusinessTransaction> of XML document (%1)';ru='Ошибка в значении узла <Документ>.<ХозОперация> документа XML (%1)'"),
 					DocumentXDTO.BusinessTransaction));
 			
@@ -2967,7 +2967,7 @@ Function CreateUpdateOrders(XDTODocuments, PreviouslyImportedOrders, StatisticsS
 		If Not XDTOPropertyIsFilled(DocumentXDTO.Currency) Then
 			
 			AddErrorDescriptionFull(ErrorDescription,
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Error in node value <Document>.<Currency> of XML document (%1)';ru='Ошибка в значении узла <Документ>.<Валюта> документа XML (%1)'"),
 					DocumentXDTO.Currency));
 				
@@ -3038,7 +3038,7 @@ Function CreateUpdateOrders(XDTODocuments, PreviouslyImportedOrders, StatisticsS
 			
 			StatisticsStructure.Skipped.Add(DocumentObject.Ref);
 			
-			Message = StringFunctionsClientServer.PlaceParametersIntoString(
+			Message = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 is ignored since exist the documents entered according to the order.';ru='%1 пропущен, т.к. существуют документы, введенные на основании заказа.'"),
 				DocumentObject.Ref);
 			
@@ -3046,7 +3046,7 @@ Function CreateUpdateOrders(XDTODocuments, PreviouslyImportedOrders, StatisticsS
 			
 			If UpdateCreateAdditionalOrderInfo(DocumentObject.Ref, OrderProperties, ErrorDescription) Then
 				
-				Message = StringFunctionsClientServer.PlaceParametersIntoString(
+				Message = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Order %1 properties updated.';ru='Свойства заказа %1 обновлены.'"),
 					DocumentObject.Ref);
 				
@@ -3514,13 +3514,13 @@ Function FillOrderWithXDTODocumentData(DocumentObject, DocumentXDTO, OrderProper
 	EndIf;
 	
 	If Not Parameters.ExchangeOverWebService Then
-		Comment = StringFunctionsClientServer.PlaceParametersIntoString(
+		Comment = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en=', % %No';ru=', % %No'"),
 			DocumentXDTO.Number,
 			?(Parameters.ExportToSite, Parameters.ConnectionSettings.Server, "(Site)")
 		);
 	Else
-		Comment = StringFunctionsClientServer.PlaceParametersIntoString(
+		Comment = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en=', % %No';ru=', % %No'"), 
 			DocumentXDTO.Number, 
 			"(Site)"
@@ -3911,7 +3911,7 @@ Function IdentifyCounterparty(DocumentObject, DocumentXDTO, Parameters, ErrorDes
 			EndIf;
 			
 			TextOfMessageFoundFewCounterparties = 
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en=' by TIN: %1, KPP: %2';ru=' по ИНН: %1, КПП: %2'"),
 					TIN, KPP);
 			
@@ -5831,7 +5831,7 @@ Function SetConnectionWithServer(ConnectionParameters, ErrorDescription)
 		
 		AddErrorDescriptionFull(ErrorDescription,
 			ExceptionalErrorDescription(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Failed to connect the server %1:%2. Verify the correctness of the address server, port, user name and a password.';ru='Не удалось установить соединение с сервером %1:%2. Проверьте правильность адреса сервера, порт, имя пользователя и пароль.'"),
 				ConnectionParameters.Server,
 				ConnectionParameters.Port)
@@ -6752,7 +6752,7 @@ Procedure DisplayListOfDocumentsForLog(Definition, DocumentArray)
 		EndIf;
 		
 		Definition = Definition + Chars.LF + Chars.NBSp + Chars.NBSp
-			+ StringFunctionsClientServer.PlaceParametersIntoString(
+			+ StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='# %1 date %2 (# %3 date %4 on site)';ru='№ %1 от %2 (№ %3 от %4 на сайте)'"),
 				Doc.Number,
 				Doc.Date,

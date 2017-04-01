@@ -924,7 +924,7 @@ Procedure PostOrdersServer()
 			
 		Else
 			
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Cannot post the %1 document.';ru='Не удалось провести документ: %1.'"), String(DocumentObject));
 			
 			Message = New UserMessage;
@@ -983,7 +983,7 @@ Procedure OrdersDeleteServer()
 			StringsArrayForDelete.Add(TableRow);
 		Except
 			
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Cannot mark the %1 document for deletion.';ru='Не удалось пометить на удаление документ: %1.'"), String(DocumentObject));
 			
 			Message = New UserMessage;

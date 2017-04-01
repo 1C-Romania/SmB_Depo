@@ -14,7 +14,7 @@ Procedure CheckInadmissibleSymbolsInUserNameWSProxy(Val UserName) Export
 		MessageString = NStr("en='The %1 user name contains invalid characters.
 		|User name must not contain %2 symbols.';ru='В имени пользователя %1 содержатся недопустимые символы.
 		|Имя пользователя не должно содержать символы %2.'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 			UserName, InadmissibleSymbolsInUserNameWSProxy());
 		Raise MessageString;
 	EndIf;

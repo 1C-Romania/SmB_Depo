@@ -43,7 +43,7 @@ Procedure BeforeObjectExport(Container, ObjectExportManager, Serializer, Object,
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Metadata object %1 can not be processed by handler ServiceUsersInBTCSaaS.BeforeObjectExport().';ru='Объект метаданных %1 не может быть обработан обработчиком ПользователиСлужебныйВМоделиСервисаБТС.ПередВыгрузкойОбъекта()!'"),
 			Object.Metadata().FullName());
 		
@@ -67,7 +67,7 @@ Procedure AfterObjectExport(Container, ObjectExportManager, Serializer, Object, 
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Metadata object %1 can not be processed by handler ServiceUsersInBTCSaaS.BeforeObjectExport().';ru='Объект метаданных %1 не может быть обработан обработчиком ПользователиСлужебныйВМоделиСервисаБТС.ПередВыгрузкойОбъекта()!'"),
 			Object.Metadata().FullName());
 		

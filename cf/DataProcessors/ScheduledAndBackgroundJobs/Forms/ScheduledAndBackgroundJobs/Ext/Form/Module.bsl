@@ -208,7 +208,7 @@ Procedure ExecuteScheduledJobManually(Command)
 			
 			ShowUserNotification(
 				NStr("en='Scheduled job procedure is running';ru='Запущена процедура регламентного задания'"), ,
-				StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1.
+				StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1.
 		|Procedure is launched in the background job %2';ru='%1.
 		|Процедура запущена в фоновом задании %2'"),
 					CurrentData.Description,
@@ -223,7 +223,7 @@ Procedure ExecuteScheduledJobManually(Command)
 				"ShowMessageAboutScheduledJobManualProcessingCompletion", 0.1, True);
 		ElsIf ExecuteParameters.ProcedureAlreadyExecuting Then
 			EventsAboutErrorsArray.Add(
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Scheduled job procedure
 		|  ""%1"" is already in progress in %2 session, opened %3.';ru='Процедура
 		|  регламентного задания ""%1"" уже выполняется в сеансе %2, открытом %3.'"),
@@ -240,7 +240,7 @@ Procedure ExecuteScheduledJobManually(Command)
 	
 	ErrorsCount = EventsAboutErrorsArray.Count();
 	If ErrorsCount > 0 Then
-		TextAboutErrorsTitle = StringFunctionsClientServer.PlaceParametersIntoString(
+		TextAboutErrorsTitle = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Jobs have been performed with errors (%1 of %2)';ru='Задания выполнены с ошибками (%1 из %2)'"),
 			Format(ErrorsCount, "NG="),
 			Format(SelectedRows.Count(), "NG="));
@@ -583,7 +583,7 @@ Procedure ShowMessageAboutScheduledJobManualProcessingCompletion()
 		ShowUserNotification(
 			NStr("en='Scheduled job procedure has been completed';ru='Выполнена процедура регламентного задания'"),
 			,
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1.
 		|The procedure has been completed at the background job %2';ru='%1.
 		|Процедура завершена в фоновом задании %2'"),

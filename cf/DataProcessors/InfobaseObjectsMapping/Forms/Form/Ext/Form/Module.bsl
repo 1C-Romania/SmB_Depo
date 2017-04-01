@@ -106,7 +106,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.DataForThisApplication.Title = ThisApplicationName;
 	Items.SecondApplicationData.Title = SecondApplicationName;
 	
-	Items.Explanation.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.Explanation.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='To match data
 		|""%1"" to data ""%2"", use the ""Match automatically"" command..."".
 		|Remaining unmatched data can be linked with each other manually.';ru='Для сопоставления данных ""%1""
@@ -957,7 +957,7 @@ Procedure RunUserFieldsTaskCheck(Cancel, UserFields)
 		
 		// Value can not be greater than the set one.
 		MessageString = NStr("en='Reduce the fields number (you can select no more than %1 fields)';ru='Уменьшите количество полей (можно выбирать не более %1 полей)'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, String(MaximumQuantityOfCustomFields()));
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(MaximumQuantityOfCustomFields()));
 		
 		CommonUseClientServer.MessageToUser(MessageString,,"Object.TableFieldsList",, Cancel);
 		

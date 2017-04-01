@@ -463,7 +463,7 @@ Procedure GenerateMessageText(DisplacedUsersArray, UserNotification, NotMovedUse
 			UserNotification.WholeTextMessages = NStr("en='Following users have not been included to the groups:';ru='Следующие пользователи не были включены в группы:'") +
 				Chars.LF + Chars.LF + RowUsers;
 		EndIf;
-		UserNotification.Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		UserNotification.Message = StringFunctionsClientServer.SubstituteParametersInString(
 			UserMessage, Subject);
 		UserNotification.HasErrors = True;
 		
@@ -471,14 +471,14 @@ Procedure GenerateMessageText(DisplacedUsersArray, UserNotification, NotMovedUse
 	ElsIf UserCount = 1 Then
 		DescriptionOfUser = CommonUse.ObjectAttributeValue(DisplacedUsersArray[0], "Description");
 		UserMessage = NStr("en='Groups content of user ""%1"" is changed';ru='Изменен состав групп у пользователя ""%1""'");
-		UserNotification.Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		UserNotification.Message = StringFunctionsClientServer.SubstituteParametersInString(
 			UserMessage, DescriptionOfUser);
 	ElsIf UserCount > 1 Then
 		
 		UserMessage = NStr("en='Groups content is changed at %1';ru='Изменен состав групп у %1'");
 		RowObject = UsersService.WordEndingGenerating(
 			UserCount, NStr("en='of user,users,users,,,,,,0';ru='пользователя,пользователей,пользователей,,,,,,0'"));
-		UserNotification.Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		UserNotification.Message = StringFunctionsClientServer.SubstituteParametersInString(
 			UserMessage, RowObject);
 		
 	EndIf;

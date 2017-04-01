@@ -29,7 +29,7 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	ProductQuantity = Products.Count();
 	If ProductQuantity > 0 Then
 		If Products[ProductQuantity-1].Code > CurrentObject.MaximumCode AND CurrentObject.MaximumCode <> 0 Then
-			CommonUseClientServer.MessageToUser(StringFunctionsClientServer.PlaceParametersIntoString(
+			CommonUseClientServer.MessageToUser(StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='In tabular section ""Products"", rows with a code that exceeds the maximum allowed value is detected: %1. Modify a maximum code or reduce the number of goods for the export using the filter.';ru='В табличной части ""Товары"" найдены строки с кодом, превышающим максимальное допустимое значение: %1. Измените максимальный код или уменьшите количество товаров к выгрузке при помощи отбора.'"), CurrentObject.MaximumCode),,"Products",,Cancel);
 			Return;
 		EndIf;

@@ -167,10 +167,10 @@ Procedure ToViewEDServer(EDStructure, Cancel)
 		If CardFile = Undefined Or InformationFile = Undefined Then
 			
 			MessagePattern = NStr("en='Error occurred when reading data from the ""%1No."" file (see details in the event log).';ru='Возникла ошибка при чтении данных из файла ""%1№"" (подробности см. в Журнале регистрации).'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, EDStructure.FileName);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, EDStructure.FileName);
 			
 			MessagePattern = NStr("en='""%1"" file does not contain electronic documents.';ru='Файл ""%1"" не содержит электронных документов.'");
-			ErrorPresentation = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, EDStructure.FileName);
+			ErrorPresentation = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, EDStructure.FileName);
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
 			ErrorPresentation,
 			MessageText);
@@ -384,7 +384,7 @@ Function CreateDocumentForIB(FormData, MessageText, Write = False)
 		Except
 			
 			MessagePattern = NStr("en='%1. %2 ';ru='%1. %2 '");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 				ErrorInfo().Definition,
 				BriefErrorDescription(ErrorInfo()));
 

@@ -110,7 +110,7 @@ Procedure Attachable_CheckJobExecution()
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NStr("en='Address classifier update';ru='Обновление адресного классификатора'", CommonUseClientServer.MainLanguageCode()),
 			"Error", DetailErrorDescription(ErrorInfo()), , True);
 			
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Address classifier update is interrupted.
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Address classifier update is interrupted.
 		|Look for details in event log.';ru='Обновление адресного классификатора прервана.
 		|Подробности см. в журнале регистрации.'"));
 			

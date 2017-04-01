@@ -129,7 +129,7 @@ Procedure OwnerWorkingDirectoryStartChoice(Item, ChoiceData, StandardProcessing)
 			// You are not authorized to create a directory or such path is absent.
 			
 			ErrorText 
-				= StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Incorrect path or no access to directory ""%1""';ru='Неверный путь или отсутствуют права на запись в каталог ""%1""'"),
+				= StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Incorrect path or no access to directory ""%1""';ru='Неверный путь или отсутствуют права на запись в каталог ""%1""'"),
 				DirectoryName);
 			
 			CommonUseClientServer.MessageToUser(ErrorText, , "WorkingDirectory");

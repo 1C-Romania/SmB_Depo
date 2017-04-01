@@ -35,7 +35,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If AllPublicationsBesidesUnused.Count() > 1 Then
 		
-		ArrayPresentation = StringFunctionsClientServer.PlaceParametersIntoString(
+		ArrayPresentation = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 or %2';ru='%1 или %2'"),
 			String(AllPublicationsBesidesUnused[0]),
 			String(AllPublicationsBesidesUnused[1]));
@@ -302,10 +302,10 @@ Function PublicationChange(PublicationVariant)
 	If SelectedRows.Count() = 1 Then
 		ObjectName = CommonUse.ObjectAttributeValue(SelectedRows[0], "Description");
 		MessageText = NStr("en='Additional report (data processor)  ""%1"" publication is changed';ru='Изменена публикация дополнительного отчета (обработки) ""%1""'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, ObjectName);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, ObjectName);
 	Else
 		MessageText = NStr("en='Additional reports (data processors) %1 publication is changed';ru='Изменена публикация у %1 дополнительных отчетов (обработок)'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, SelectedRows.Count());
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, SelectedRows.Count());
 	EndIf;
 	
 	OutputNotification = NewExecutionResult.OutputNotification;
@@ -332,7 +332,7 @@ Procedure ListChangeMarkToDelete()
 	Else
 		QuestionText = NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'");
 	EndIf;
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, TableRow.Description);
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, TableRow.Description);
 	
 	Handler = New NotifyDescription("ListChangeMarkToDeleteAfterConfirmation", ThisObject, Context);
 	ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo);

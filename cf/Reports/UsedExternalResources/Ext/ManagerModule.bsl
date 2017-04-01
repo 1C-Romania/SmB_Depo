@@ -143,14 +143,14 @@ Function PresentationRequestsPermissionsToUseExternalResources(Val Administratio
 			
 			If AsRequired Then
 				
-				HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
+				HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='For %1 ""%2"" it is required to use the following external resources:';ru='Для %1 ""%2"" требуется использование следующих внешних ресурсов:'"),
 					Lower(Dictionary.Genitive),
 					ModuleName);
 				
 			Else
 				
-				HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
+				HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='For %1 ""%2"" the following permissions to use external resources will be granted:';ru='Для %1 ""%2"" будут предоставлены следующие разрешения на использование внешних ресурсов:'"),
 					Lower(Dictionary.Genitive),
 					ModuleName);
@@ -186,7 +186,7 @@ Function PresentationRequestsPermissionsToUseExternalResources(Val Administratio
 				Raise NStr("en='Incorrect request of permissions';ru='Некорректный запрос разрешений'");
 			EndIf;
 			
-			HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
+			HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='The following permissions for external resources use previously provided to %1 ""%2"" will be deleted:';ru='Будут удалены следующие ранее предоставленные для %1 ""%2"" разрешения на использование внешних ресурсов:'"),
 					Lower(Dictionary.Genitive),
 					ModuleName);
@@ -249,7 +249,7 @@ Procedure GenerateOperationsPresentation(SpreadsheetDocument, Val Template, Val 
 				
 			EndIf;
 			
-			HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
+			HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Security profile for %1 ""%2"" will be deleted.';ru='Будет удален профиль безопасности для %1 ""%2"".'"),
 					Lower(Dictionary.Genitive),
 					ModuleName);

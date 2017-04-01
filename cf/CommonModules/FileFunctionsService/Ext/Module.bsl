@@ -413,7 +413,7 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 				
 				If NewSize > VolumeRef.MaximumSize Then
 					
-					Raise StringFunctionsClientServer.PlaceParametersIntoString(
+					Raise StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Maximal volume size (%1 Mb) is exceeded.';ru='Превышен максимальный размер тома (%1 Мб).'"),
 						VolumeRef.MaximumSize);
 				EndIf;
@@ -462,7 +462,7 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 		|""%1"" в том ""%2"" (%3): ""%4"".'");
 			
 			AllErrorsDetailedDescription = AllErrorsDetailedDescription
-				+ StringFunctionsClientServer.PlaceParametersIntoString(
+				+ StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorDescriptionTemplate,
 					FileName,
 					String(VolumeRef),
@@ -470,7 +470,7 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 					DetailErrorDescription(ErrorInfo));
 			
 			AllErrorsShortDescription = AllErrorsShortDescription
-				+ StringFunctionsClientServer.PlaceParametersIntoString(
+				+ StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorDescriptionTemplate,
 					FileName,
 					String(VolumeRef),
@@ -498,13 +498,13 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 	WriteLogEvent(
 		NStr("en='Files. File adding';ru='Файлы.Добавление файла'", CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Error,,,
-		StringFunctionsClientServer.PlaceParametersIntoString(MessageAboutErrorTemplate, AllErrorsDetailedDescription));
+		StringFunctionsClientServer.SubstituteParametersInString(MessageAboutErrorTemplate, AllErrorsDetailedDescription));
 	
 	If Users.InfobaseUserWithFullAccess() Then
-		ExceptionString = StringFunctionsClientServer.PlaceParametersIntoString(MessageAboutErrorTemplate,	AllErrorsShortDescription);
+		ExceptionString = StringFunctionsClientServer.SubstituteParametersInString(MessageAboutErrorTemplate,	AllErrorsShortDescription);
 	Else
 		// Message to ordinary user.
-		ExceptionString = StringFunctionsClientServer.PlaceParametersIntoString(
+		ExceptionString = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to add
 		|the file: ""%1.%2"".
 		|
@@ -965,7 +965,7 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 	
 	If BaseFile.Exist() Then
 		CommonUseClientServer.MessageToUser(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='File ""%1"" already exists.
 		|Enter another attachment file name.';ru='Файл ""%1"" уже существует.
 		|Введите другое имя файла.'"),
@@ -986,7 +986,7 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 		
 		If File.Exist() Then
 			CommonUseClientServer.MessageToUser(
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='File ""%1"" already exists.
 		|Enter another attachment file name.';ru='Файл ""%1"" уже существует.
 		|Введите другое имя файла.'"),
@@ -1106,7 +1106,7 @@ Function CreateServerInitialImageAtServer(Node, ConnectionString, PathToArchiveW
 		File = New File(FilePath);
 		If File.Exist() Then
 			CommonUseClientServer.MessageToUser(
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='File ""%1"" already exists.
 		|Enter another attachment file name.';ru='Файл ""%1"" уже существует.
 		|Введите другое имя файла.'"),
@@ -1369,7 +1369,7 @@ Procedure ExtractTextFromFilesOnServer() Export
 				EventLogLevel.Error,
 				,
 				,
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='During scheduled text extraction from
 		|file
 		|""%1"" an

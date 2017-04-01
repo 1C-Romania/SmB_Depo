@@ -387,11 +387,11 @@ Function GetExchangeMessage()
 		GetMessageAboutError(3);
 		
 		MessageString = NStr("en='Exchange data folder:  ""%1""';ru='Каталог обмена информацией: ""%1""'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, InformationExchangeDirectoryName());
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, InformationExchangeDirectoryName());
 		SupplementErrorMessage(MessageString);
 		
 		MessageString = NStr("en='Exchange message attachment file name: ""%1"" or ""%2""';ru='Имя файла сообщения обмена: ""%1"" или ""%2""'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, MessageFileTemplateName + ".xml", MessageFileTemplateName + ".zip");
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, MessageFileTemplateName + ".xml", MessageFileTemplateName + ".zip");
 		SupplementErrorMessage(MessageString);
 		
 		Return False;
@@ -490,7 +490,7 @@ Function RunCopyingFile(Val SourceFileName, Val TargetFileName)
 	Except
 		
 		MessageString = NStr("en='Error when copying file from %1 to %2. Error description: %3';ru='Ошибка при копировании файла из %1 в %2. Описание ошибки: %3'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString,
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 							SourceFileName,
 							TargetFileName,
 							BriefErrorDescription(ErrorInfo()));
@@ -579,7 +579,7 @@ TemporaryDirectoryOfExchangeMessages = Undefined;
 ExchangeMessageTemporaryFile    = Undefined;
 
 ObjectName = NStr("en='Data processor: %1';ru='Обработка: %1'");
-ObjectName = StringFunctionsClientServer.PlaceParametersIntoString(ObjectName, Metadata().Name);
+ObjectName = StringFunctionsClientServer.SubstituteParametersInString(ObjectName, Metadata().Name);
 
 #EndRegion
 

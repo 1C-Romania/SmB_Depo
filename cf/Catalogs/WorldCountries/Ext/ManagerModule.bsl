@@ -166,7 +166,7 @@ Procedure RefreshWorldCountriesByClassifier(Val Add = False) Export
 			CommitTransaction();
 		Except
 			Info = ErrorInfo();
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Error of recording of the country of the world %1 (code% 2) when updating the classifier, 3%';ru='Ошибка записи страны мира %1 (код %2) при обновлении классификатора, %3'"),
 				Selection.Code, Selection.Description, BriefErrorDescription(Info));
 			WriteLogEvent(InfobaseUpdate.EventLogMonitorEvent(), 
@@ -368,7 +368,7 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 			|WHERE
 			|	Classifier.%1 LIKE &SearchString
 			|	AND (
-			|		" + StringFunctionsClientServer.PlaceParametersIntoString(SelectionTemplate, "Classifier") + "
+			|		" + StringFunctionsClientServer.SubstituteParametersInString(SelectionTemplate, "Classifier") + "
 			|	)
 			|ORDER BY
 			|Classifier.%1
@@ -397,7 +397,7 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 			|	AND Classifier.Description = WorldCountries.Description
 			|WHERE 
 			|	(WorldCountries.%1 LIKE &SearchString OR Classifier.%1 LIKE &SearchString)
-			|	AND (" + StringFunctionsClientServer.PlaceParametersIntoString(SelectionTemplate, "Classifier") + ") AND (" + StringFunctionsClientServer.PlaceParametersIntoString(SelectionTemplate, "WorldCountries") + ") ORDER BY ISNULL(WorldCountries.%1, Classifier.%1)
+			|	AND (" + StringFunctionsClientServer.SubstituteParametersInString(SelectionTemplate, "Classifier") + ") AND (" + StringFunctionsClientServer.SubstituteParametersInString(SelectionTemplate, "WorldCountries") + ") ORDER BY ISNULL(WorldCountries.%1, Classifier.%1)
 			|";
 	EndIf;
 	
@@ -424,10 +424,10 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 	Query.SetParameter("SearchString", EncloseSimilarityChars(Parameters.SearchString) + "%");
 	
 	For Each FieldData IN NamesOfFields.FieldList Do
-		Query.Text = StringFunctionsClientServer.PlaceParametersIntoString(QueryPattern, 
+		Query.Text = StringFunctionsClientServer.SubstituteParametersInString(QueryPattern, 
 			FieldData.Name,
-			StringFunctionsClientServer.PlaceParametersIntoString(FieldData.PresentationPattern, "Classifier"),
-			StringFunctionsClientServer.PlaceParametersIntoString(FieldData.PresentationPattern, "WorldCountries"),
+			StringFunctionsClientServer.SubstituteParametersInString(FieldData.PresentationPattern, "Classifier"),
+			StringFunctionsClientServer.SubstituteParametersInString(FieldData.PresentationPattern, "WorldCountries"),
 		);
 		
 		Result = Query.Execute();

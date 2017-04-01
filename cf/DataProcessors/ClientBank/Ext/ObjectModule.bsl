@@ -801,7 +801,7 @@ Function CreateCounterparty(StringCounterparty = Undefined) Export
 		
 		Message = New UserMessage;
 		
-		Message.Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Counterparty (%1) is created.';ru='Контрагент (%1) создан.'"), StringCounterparty.Presentation);
+		Message.Text = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Counterparty (%1) is created.';ru='Контрагент (%1) создан.'"), StringCounterparty.Presentation);
 		
 		Message.Message();
 		
@@ -926,7 +926,7 @@ Function CreateCounterparty(StringCounterparty = Undefined) Export
 			
 			Message = New UserMessage;
 			
-			Message.Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 bank account added (%2).';ru='%1 добавлен банковский счет (%2).'"), PresentationOfCounterparty, AccountNo);
+			Message.Text = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1 bank account added (%2).';ru='%1 добавлен банковский счет (%2).'"), PresentationOfCounterparty, AccountNo);
 			
 			Message.Message();
 			

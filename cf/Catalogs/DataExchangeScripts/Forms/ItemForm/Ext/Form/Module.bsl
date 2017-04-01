@@ -25,7 +25,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Catalogs.DataExchangeScripts.AddDumpToDataExchangeScripts(Object, InfobaseNode);
 		
 		Description = NStr("en='Synchronization script for %1';ru='Сценарий синхронизации для %1'");
-		Object.Description = StringFunctionsClientServer.PlaceParametersIntoString(Description, String(InfobaseNode));
+		Object.Description = StringFunctionsClientServer.SubstituteParametersInString(Description, String(InfobaseNode));
 		
 		JobSchedule = Catalogs.DataExchangeScripts.ScheduledJobDefaultSchedule();
 		
@@ -257,7 +257,7 @@ Procedure ExecuteDataExchangeAtClient()
 	OutputState = (LineCount > 1);
 	
 	MessageString = NStr("en='Running %1 for %2';ru='Выполняется %1 для %2'");
-	MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, 
+	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, 
 							String(CurrentData.RunningAction),
 							String(CurrentData.InfobaseNode));
 	//

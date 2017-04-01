@@ -59,7 +59,7 @@ Function PublicIdentifierByObjectRef(InfobaseNode, ObjectReference) Export
 		Selection.Next();
 		Return TrimAll(Selection.ID);
 	ElsIf Selection.Count() > 1 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Several unique identifiers are assigned for <%1> reference and <%2> node.';ru='Для ссылки <%1> и узла <%2> назначено несколько уникальных идентификаторов.'"),
 				String(ObjectReference), String(InfobaseNode)
 				);

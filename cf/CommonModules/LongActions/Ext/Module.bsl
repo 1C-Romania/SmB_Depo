@@ -282,7 +282,7 @@ Procedure ExecuteProcedureDataProcessorsObjectModule(Parameters, StorageAddress)
 	Except
 		WriteLogEvent(NStr("en='Safe execution of the processor method';ru='Безопасное выполнение метода обработки'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Method name ""%1"" does not correspond to the requirements of the variable names formation.';ru='Имя метода ""%1"" не соответствует требованиям образования имен переменных.'"),
 			MethodName);
 	EndTry;

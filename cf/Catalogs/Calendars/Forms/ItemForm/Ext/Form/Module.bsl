@@ -343,7 +343,7 @@ Procedure CurrentYearNumberOnChange(Item)
 	WriteScheduleData = False;
 	
 	If ModifiedResults Then
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							NStr("en='Write modified data for %1 year?';ru='Записать измененные данные за %1 год?'"), 
 							Format(PreviousYearNumber, "NG=0"));
 		
@@ -571,7 +571,7 @@ Function ScheduleForDayPresentation(Form, DayNumber)
 			Continue;
 		EndIf;
 		IntervalsPresentation = IntervalsPresentation 
-			+ StringFunctionsClientServer.PlaceParametersIntoString("%1-%2, ", 
+			+ StringFunctionsClientServer.SubstituteParametersInString("%1-%2, ", 
 				Format(TimetableString.BeginTime, "DF=HH:mm; DP="), 
 				Format(TimetableString.EndTime, "DF=HH:mm; DP="));
 		If Not ValueIsFilled(TimetableString.EndTime) Then
@@ -589,7 +589,7 @@ Function ScheduleForDayPresentation(Form, DayNumber)
 	
 	Hours = Round(Seconds / 3600, 1);
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='% p. (%2)';ru='%1 ч. (%2)'"), Hours, IntervalsPresentation);
+	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='% p. (%2)';ru='%1 ч. (%2)'"), Hours, IntervalsPresentation);
 	
 EndFunction
 
@@ -656,7 +656,7 @@ Procedure ClarifyOccupancyGraphics(Form)
 		Form.RequiresFill = True;
 	Else	
 		If Not ValueIsFilled(Form.Object.PlanningHorizon) Then
-			Form.OccupancyInformationText = StringFunctionsClientServer.PlaceParametersIntoString(
+			Form.OccupancyInformationText = StringFunctionsClientServer.SubstituteParametersInString(
 													NStr("en='Work schedule is filled to %1';ru='График работы заполнен до %1'"), 
 													Format(Form.DateOccupancyRate, "DLF=D"));
 		Else											
@@ -666,7 +666,7 @@ Procedure ClarifyOccupancyGraphics(Form)
 				CurrentDate = CurrentSessionDate();
 			#EndIf
 			EndPlanningHorizon = AddMonth(CurrentDate, Form.Object.PlanningHorizon);
-			Form.OccupancyInformationText = StringFunctionsClientServer.PlaceParametersIntoString(
+			Form.OccupancyInformationText = StringFunctionsClientServer.SubstituteParametersInString(
 													NStr("en='Work schedule is filled till %1, in terms of the planning horizon the schedule must be filled till %2';ru='График работы заполнен до %1, с учетом горизонта планирования график должен быть заполнен до %2'"), 
 													Format(Form.DateOccupancyRate, "DLF=D"),
 													Format(EndPlanningHorizon, "DLF=D"));

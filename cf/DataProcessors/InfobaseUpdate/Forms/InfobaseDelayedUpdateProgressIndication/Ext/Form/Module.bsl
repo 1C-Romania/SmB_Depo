@@ -38,7 +38,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	FileInfobase = CommonUse.FileInfobase();
 	
 	If ValueIsFilled(UpdateEndTime) Then
-		Items.InformationRefreshEnabledCompleted.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.InformationRefreshEnabledCompleted.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			Items.InformationRefreshEnabledCompleted.Title,
 			Metadata.Version,
 			Format(UpdateEndTime, "DLF=D"),
@@ -46,7 +46,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			DataAboutUpdate.DurationOfUpdate);
 	Else
 		TitleRefreshCompleted = NStr("en='Application version has been successfully updated to the %1 version';ru='Версия программы успешно обновлена на версию %1'");
-		Items.InformationRefreshEnabledCompleted.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.InformationRefreshEnabledCompleted.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			TitleRefreshCompleted,
 			Metadata.Version);
 	EndIf;
@@ -72,7 +72,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		DataAboutUpdate = InfobaseUpdateService.DataOnUpdatingInformationBase();
 		CaptionPattern = NStr("en='Additional data processing procedures have been completed %1 in %2';ru='Дополнительные процедуры обработки данных завершены %1 в %2'");
 		Items.InformationPostponedUpdateCompleted1.Title = 
-		StringFunctionsClientServer.PlaceParametersIntoString(CaptionPattern, 
+		StringFunctionsClientServer.SubstituteParametersInString(CaptionPattern, 
 			Format(DataAboutUpdate.EndTimeDeferredUpdate, "DLF=D"),
 			Format(DataAboutUpdate.EndTimeDeferredUpdate, "DLF=T"));
 		
@@ -111,7 +111,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	HideExtraGroupsOnForm(Parameters.OpenFromAdministrationPanel);
 	
 	Items.OpenListOfPendingHandlers.Title = MessageText;
-	Items.InformationTitle.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.InformationTitle.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Additional data processing procedures to the %1 version are being executed
 		|The work with these files is temporarily limited';ru='Выполняются дополнительные процедуры обработки данных
 		|на версию %1 Работа с этими данными временно ограничена'"), Metadata.Version);
@@ -326,7 +326,7 @@ Procedure RefreshPageRefreshCompleted(DataAboutUpdate)
 	MessageText = MessageAboutUpdateResult(DataAboutUpdate);
 	
 	Items.InformationPostponedUpdateCompleted1.Title = 
-		StringFunctionsClientServer.PlaceParametersIntoString(CaptionPattern, 
+		StringFunctionsClientServer.SubstituteParametersInString(CaptionPattern, 
 			Format(DataAboutUpdate.EndTimeDeferredUpdate, "DLF=D"),
 			Format(DataAboutUpdate.EndTimeDeferredUpdate, "DLF=T"));
 	
@@ -368,7 +368,7 @@ Function MessageAboutUpdateResult(DataAboutUpdate)
 		MessageText = NStr("en='Not all the procedures were completed (completed %1 of %2)';ru='Не все процедуры удалось выполнить (выполнено %1 из %2)'");
 		Items.PictureInformation1.Picture = PictureLib.Error32;
 	EndIf;
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		MessageText, SuccessfullyCompletedHandlers, TotalHandlers);
 	
 EndFunction
@@ -395,7 +395,7 @@ Procedure RefreshInformationAboutUpdate(DataAboutUpdate, RefreshEnabledCompleted
 		RefreshEnabledCompleted = True;
 	EndIf;
 	
-	Items.InformationStateUpdate.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.InformationStateUpdate.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Completed: %1 of %2';ru='Выполнено: %1 из %2'"),
 		CompletedHandlers,
 		TotalHandlers);

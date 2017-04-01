@@ -97,7 +97,7 @@ Procedure WriteAuthorizationSettingsForStandardODataInterface(Val AuthorizationS
 			
 			IBUserDescription.Delete("Password");
 			
-			Comment = StringFunctionsClientServer.PlaceParametersIntoString(
+			Comment = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Record of the user for standard OData interface is done. Description of IB user: ------------------------------------------- %1 ------------------------------------------- Result: ------------------------------------------- %2 -------------------------------------------';ru='Выполнена запись пользователя для стандартного интерфейса OData. Описание пользователя ИБ: ------------------------------------------- %1 ------------------------------------------- Результат: ------------------------------------------- %2 -------------------------------------------'"),
 				CommonUse.ValueToXMLString(IBUserDescription),
 				StandardInterfaceUserOData.AdditionalProperties.IBUserDescription.ActionResult
@@ -117,7 +117,7 @@ Procedure WriteAuthorizationSettingsForStandardODataInterface(Val AuthorizationS
 			
 			IBUserDescription.Delete("Password");
 			
-			Comment = StringFunctionsClientServer.PlaceParametersIntoString(
+			Comment = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Error occurred at recording of the user of standard OData interface. Description of IB user: ------------------------------------------- %1 ------------------------------------------- Error text: ------------------------------------------- %2 -------------------------------------------';ru='При записи пользователя для стандартного интерфейса OData произошла ошибка. Описание пользователя ИБ: ------------------------------------------- %1 ------------------------------------------- Текст ошибки: ------------------------------------------- %2 -------------------------------------------'"),
 				CommonUse.ValueToXMLString(IBUserDescription),
 				DetailErrorDescription(ErrorInfo())
@@ -310,7 +310,7 @@ Procedure CheckODataRoleContent() Export
 	
 	If Errors.Count() > 0 Then
 		
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Errors in the content of role rights were detected %1:';ru='Обнаружены ошибки в составе прав роли %1:'"),
 			RoleForStandardODataInterface().Name);
 		

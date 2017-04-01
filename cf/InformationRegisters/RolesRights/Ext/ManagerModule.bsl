@@ -310,7 +310,7 @@ Function MetadataObjectID(TableIdentifiers, MetadataObject)
 	
 	TableRow = TableIdentifiers.Find(FullName, "FullName");
 	If TableRow = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID().
 		|
 		|For the metadata

@@ -431,7 +431,7 @@ Procedure OnTransferringToFolderExecution(TransportParameters, Attachments) Expo
 		TableRow.FileRef = File.Ref;
 	EndDo;
 	
-	Comment = StringFunctionsClientServer.PlaceParametersIntoString(
+	Comment = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Report mailing %1 from %2';ru='Рассылка отчетов %1 от %2'"),
 		"'"+ TransportParameters.Mailing +"'",
 		Format(TransportParameters.ExecutionDate, "DLF=DT"));

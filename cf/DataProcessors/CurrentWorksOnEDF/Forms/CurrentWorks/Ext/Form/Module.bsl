@@ -1694,7 +1694,7 @@ Procedure NotifyAboutResults(CountOfDigitallySigned, PreparedCnt, SentCnt)
 		
 		HeaderText = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 		DigitallySignedTotalQty = CountOfDigitallySigned;
-		StatusText = StringFunctionsClientServer.PlaceParametersIntoString(StatusText, DigitallySignedTotalQty, Quantity);
+		StatusText = StringFunctionsClientServer.SubstituteParametersInString(StatusText, DigitallySignedTotalQty, Quantity);
 		
 		ShowUserNotification(HeaderText, , StatusText);
 		Notify("RefreshStateED");
@@ -1749,7 +1749,7 @@ Procedure SendInvitationsServer(PostedInvitations, EDFSettingsProfilesMatchToMar
 			MessagePattern = NStr("en='To send recipient invitations for ED
 		|exchange %1, you need to fill email.';ru='Для отправки приглашения к обмену
 		|ЭД для получателя %1 необходимо заполнить электронную почту.'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 				EDFSettingsParametersStructure.Counterparty);
 			CommonUseClientServer.MessageToUser(MessageText);
 			
@@ -1764,7 +1764,7 @@ Procedure SendInvitationsServer(PostedInvitations, EDFSettingsProfilesMatchToMar
 			MessagePattern = NStr("en='To send recipient invitations for ED
 		|exchange %1, you need to fill TIN.';ru='Для отправки приглашения к обмену
 		|ЭД для получателя %1 необходимо заполнить ИНН.'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 				EDFSettingsParametersStructure.Counterparty);
 			CommonUseClientServer.MessageToUser(MessageText);
 			
@@ -1943,7 +1943,7 @@ Procedure RejectInvitationsAlert(Result, AdditionalParameters) Export
 		AcceptRejectContactViaOperatorEDOAtServer(RejectedInvitationsQuantity, ProfilesAndCertificatesParametersMatch, False);
 		
 		MessagePattern = NStr("en='Invitations rejected: %1';ru='Отклонено приглашений: %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, RejectedInvitationsQuantity);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, RejectedInvitationsQuantity);
 		
 		ShowUserNotification(HeaderText, , MessageText);
 		
@@ -1976,7 +1976,7 @@ Procedure AcceptInvitationsAlert(Result, AdditionalParameters) Export
 		AcceptRejectContactViaOperatorEDOAtServer(AcceptedInvitationsQuantity, ProfilesAndCertificatesParametersMatch, True);
 		
 		MessagePattern = NStr("en='Invitations received: %1';ru='Принято приглашений: %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, AcceptedInvitationsQuantity);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, AcceptedInvitationsQuantity);
 		
 		ShowUserNotification(HeaderText, , MessageText);
 		
@@ -2009,7 +2009,7 @@ Procedure SendInvitationNotification(Result, AdditionalParameters) Export
 		SendInvitationsServer(PostedInvitations, ProfilesAndCertificatesParametersMatch);
 		
 		MessagePattern = NStr("en='Invitations sent: %1';ru='Отправлено приглашений: %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, PostedInvitations);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, PostedInvitations);
 		
 		ShowUserNotification(HeaderText, , MessageText);
 		
@@ -2040,7 +2040,7 @@ Procedure SendPackagesAlert(Result, AdditionalParameters) Export
 													ProfilesAndCertificatesParametersMatch);
 
 	NotificationTemplate = NStr("en='Packages sent: (%1).';ru='Отправлено пакетов: (%1).'");
-	NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationTemplate, CountSent);
+	NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NotificationTemplate, CountSent);
 	
 	Notify("RefreshStateED");
 		

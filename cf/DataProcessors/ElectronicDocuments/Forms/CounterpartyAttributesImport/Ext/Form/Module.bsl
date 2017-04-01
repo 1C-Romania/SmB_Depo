@@ -15,7 +15,7 @@ Procedure ParseFileOnServer();
 	Except
 		XMLObject.Close();
 		MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			TempFile, BriefErrorDescription(ErrorInfo()));
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
 																					DetailErrorDescription(ErrorInfo()),

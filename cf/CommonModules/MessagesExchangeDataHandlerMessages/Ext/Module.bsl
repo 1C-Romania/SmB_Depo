@@ -99,7 +99,7 @@ Procedure CreateDataExchangeInInfobase(Sender, Settings, FilterSsettingsAtNode, 
 		CorrespondentEndPoint = ExchangePlans.MessageExchange.FindByCode(Settings.CorrespondentEndPoint);
 		
 		If CorrespondentEndPoint.IsEmpty() Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Correspondent end point with the %1 script is not found.';ru='Не найдена конечная точка корреспондента с кодом ""%1"".'"),
 				Settings.CorrespondentEndPoint);
 		EndIf;

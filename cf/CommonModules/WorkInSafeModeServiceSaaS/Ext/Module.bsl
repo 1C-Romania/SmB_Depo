@@ -451,7 +451,7 @@ Function PermissionsTableRow(Val PermissionTable, Val Filter, Val AddWithout = T
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Violation of lines uniqueness in the permissions table with filter %1';ru='Нарушение уникальности строк в таблице разрешений по отбору %1'"),
 			CommonUse.ValueToXMLString(Filter));
 		
@@ -624,7 +624,7 @@ Procedure AddPermission(Val SoftwareModuleType, Val SoftwareModuleID, Val OwnerT
 	
 	If Manager.Selected() Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Duplication of permissions
 		|by key
 		|fields: -SowtwareModuleType: %1
@@ -688,7 +688,7 @@ Procedure DeletePermission(Val SoftwareModuleType, Val SoftwareModuleID, Val Own
 		
 		If Manager.AuthorizationBody <> CommonUse.ObjectXDTOInXMLString(Resolution) Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Collection of
 		|permissions by
 		|the keys: -SowtwareModuleType:
@@ -712,7 +712,7 @@ Procedure DeletePermission(Val SoftwareModuleType, Val SoftwareModuleID, Val Own
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Attempt to delete
 		|a nonexistent permission:
 		|-SowtwareModuleType: %1
@@ -940,7 +940,7 @@ Function PackageProcessingResult(Val PackageIdentifier) Export
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Package of queries %1 not found';ru='Не найден пакет запросов %1'"), PackageIdentifier);
 		
 	EndIf;
@@ -980,7 +980,7 @@ Function PackageProcessingState(Val PackageIdentifier)
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Package of queries %1 not found';ru='Не найден пакет запросов %1'"), PackageIdentifier);
 		
 	EndIf;
@@ -1065,7 +1065,7 @@ Function SerializeQueriesOnExternalResourcesUse(Val QueryIDs) Export
 				
 			Else
 				
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Software module is not serialized by the key: - Type: 1% - Identifier: %2';ru='Не сериализован программный модуль по ключу: - Тип: %1 - Идентификатор: %2'"),
 					Selection.SoftwareModuleType,
 					Selection.SoftwareModuleID);

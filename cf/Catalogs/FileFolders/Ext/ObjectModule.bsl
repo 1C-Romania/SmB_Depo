@@ -14,7 +14,7 @@ Procedure BeforeWrite(Cancel)
 	If IsNew() Or CurrentFolder.Parent <> Parent Then
 		// Check right "Adding".
 		If Not FileOperationsService.IsRight("FoldersUpdate", Parent) Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='You haven''t enough rights to add subfolders in file folder ""%1"".';ru='Недостаточно прав для добавления подпапок в папку файлов ""%1"".'"),
 				String(Parent));
 		EndIf;
@@ -24,7 +24,7 @@ Procedure BeforeWrite(Cancel)
 		
 		// Check right "Deletion mark".
 		If Not FileOperationsService.IsRight("FoldersUpdate", Ref) Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='You haven''t enough rights to change file folders ""%1"".';ru='Недостаточно прав для изменения папки файлов ""%1"".'"),
 				String(Ref));
 		EndIf;
@@ -48,7 +48,7 @@ Procedure BeforeWrite(Cancel)
 		Selection = Result.Select();
 		While Selection.Next() Do
 			If Not Selection.IsEditing.IsEmpty() Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 				                     NStr("en='Folder %1 can''t be deleted, so. it it contains file ""%2"" locked for editing.';ru='Папку %1 нельзя удалить, т.к. она содержит файл ""%2"", занятый для редактирования.'"),
 				                     String(Ref),
 				                     String(Selection.Ref));

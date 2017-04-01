@@ -143,7 +143,7 @@ Procedure UsagePlacesBeforeDeletion(Item, Cancel)
 	Refs = CurrentData.Ref;
 	Code    = String(CurrentData.Code);
 	
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Remove the %1 item from the to merge list?';ru='Удалить из списка для объединения элемент ""%1""?'"),
 		String(Refs) + ?(IsBlankString(Code), "", " (" + Code + ")" ));
 	
@@ -474,7 +474,7 @@ Procedure FormMergingToolTip()
 		|и заменены во всех местах использования на ""%2"" (отмечен стрелкой).'");
 	EndIf;
 		
-	ToolTipText = StringFunctionsClientServer.PlaceParametersIntoString(ToolTipText, UsagePlaces.Count()-1, MainItem);
+	ToolTipText = StringFunctionsClientServer.SubstituteParametersInString(ToolTipText, UsagePlaces.Count()-1, MainItem);
 	Items.ToolTipSelectMainItem.Title = StringFunctionsClientServer.FormattedString(ToolTipText);
 	
 EndProcedure
@@ -482,7 +482,7 @@ EndProcedure
 &AtClient
 Function EndingMessage()
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Items (%1) are merged to %2';ru='Элементы (%1) объединены в ""%2""'"),
 		UsagePlaces.Count(),
 		MainItem);
@@ -492,7 +492,7 @@ EndFunction
 &AtClient
 Procedure FormLabelFailedReplacements()
 	
-	Items.ResultFailedReplacements.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.ResultFailedReplacements.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Items merging was not executed. IN some places of use an automatic
 		|replacement with %1 can not be executed.';ru='Объединение элементов не выполнено. В некоторых местах использования не может быть произведена
 		|автоматическая замена на ""%1"".'"),
@@ -570,7 +570,7 @@ Procedure FillUsagePlaces(Val UsageTable)
 	// Update titles
 	Presentation = ?(MainItem=Undefined, "", MainItem.Metadata().Presentation());
 	
-	HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
+	HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Merge %1 items to one';ru='Объединение элементов %1 в один'"),
 		Presentation
 	);
@@ -1186,7 +1186,7 @@ Procedure RunAssistant()
 					Try
 						Test = New NotifyDescription(HandlerName, ThisObject);
 					Except
-						Text = StringFunctionsClientServer.PlaceParametersIntoString(
+						Text = StringFunctionsClientServer.SubstituteParametersInString(
 							NStr("en='Error of %1 event handler creation for %2 page, %3 procedure is not defined';ru='Ошибка создания обработчика события %1 для страницы %2, не определена процедура %3'"),
 							NameActions, 
 							StepDescription.Page, 
@@ -1267,7 +1267,7 @@ EndProcedure
 Procedure GoToAssistantStep(Val IdentifierStep, Val TriggerEvents = False)
 	NextStep = AssistantStepNumberByIdentifier(IdentifierStep);
 	If NextStep = Undefined Then
-		Error = StringFunctionsClientServer.PlaceParametersIntoString(
+		Error = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 assistant step is not found';ru='Не найден шаг помощника %1'"),
 			IdentifierStep
 		);

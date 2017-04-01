@@ -43,7 +43,7 @@ Procedure OnOpen(Cancel)
 		|можно скачать с %1 или найти в %2'");
 	
 	TemplateUpdatesDirectory = NStr("en='directory of the %1 application delivery';ru='каталоге поставки программы ""%1""'");
-	TemplateUpdatesDirectory = StringFunctionsClientServer.PlaceParametersIntoString(TemplateUpdatesDirectory, ApplicationName);
+	TemplateUpdatesDirectory = StringFunctionsClientServer.SubstituteParametersInString(TemplateUpdatesDirectory, ApplicationName);
 	
 	TemplateUserWebsite = NStr("en='Users support website of 1C:Enterprise 8 system';ru='сайта поддержки пользователей системы ""1C:Предприятие 8""'");
 	If Not IsBlankString(LocationRulesSet.PathToRulesSetFileOnUsersWebsite) Then

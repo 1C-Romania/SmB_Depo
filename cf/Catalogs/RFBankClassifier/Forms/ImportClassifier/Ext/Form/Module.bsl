@@ -186,7 +186,7 @@ Procedure ImportResult()
 	
 	ClassifierImportParameters = GetFromTempStorage(StorageAddress);
 	
-	EventName = StringFunctionsClientServer.PlaceParametersIntoString(
+	EventName = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Banks classifier import. %1.';ru='Загрузка классификатора банков. %1.'"), Source);
 	
 	If ClassifierImportParameters["ImportCompleted"] Then
@@ -217,7 +217,7 @@ Procedure Attachable_CheckJobExecution()
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NStr("en='Import banks classifier';ru='Загрузка классификатора банков'", CommonUseClientServer.MainLanguageCode()),
 			"Error", DetailErrorDescription(ErrorInfo()), , True);
 			
-		Items.ExplanationText.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.ExplanationText.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Bank classifier import is aborted
 		|by the reason of: %1
 		|Details see in events log monitor.';ru='Загрузка классификатора

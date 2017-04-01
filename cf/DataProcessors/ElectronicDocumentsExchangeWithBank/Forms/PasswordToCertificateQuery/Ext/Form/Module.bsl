@@ -216,7 +216,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			EDOwner = Undefined;
 			If TypeOf(ElectronicDocument) = Type("DocumentRef.EDPackage") Then
 				AttributesStructure = CommonUse.ObjectAttributesValues(ElectronicDocument, "Number, Date");
-				HyperlinkText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateHyperlink,
+				HyperlinkText = StringFunctionsClientServer.SubstituteParametersInString(TemplateHyperlink,
 					String(TypeOf(ElectronicDocument)),
 					AttributesStructure.Number, Format(AttributesStructure.Date, "DLF=D"));
 				AttributesStructure.Insert("EDOwner", ElectronicDocument);
@@ -230,13 +230,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				If TypeOf(AttributesStructure.FileOwner) = Type("CatalogRef.EDUsageAgreements") Then
 					If AttributesStructure.EDKind = Enums.EDKinds.ProductsDirectory Then
 						TemplateHyperlink = NStr("en='%1 %2 from %3';ru='%1 %2 от %3'");
-						HyperlinkText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateHyperlink,
+						HyperlinkText = StringFunctionsClientServer.SubstituteParametersInString(TemplateHyperlink,
 							AttributesStructure.EDKind, AttributesStructure.Company,
 							Format(AttributesStructure.SenderDocumentDate, "DLF=D"));
 					ElsIf AttributesStructure.EDKind = Enums.EDKinds.QueryStatement Then
 						HyperlinkText = String(ElectronicDocument);
 					Else
-						HyperlinkText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateHyperlink,
+						HyperlinkText = StringFunctionsClientServer.SubstituteParametersInString(TemplateHyperlink,
 							AttributesStructure.EDKind, AttributesStructure.SenderDocumentNumber,
 							Format(AttributesStructure.SenderDocumentDate, "DLF=D"));
 					EndIf;
@@ -247,11 +247,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 					OperationKind = NStr("en='Service electronic documents signing';ru='Подписание служебных электронных документов'");
 					
 					TemplateHyperlink = NStr("en='%1';ru='%1'");
-					HyperlinkText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateHyperlink,
+					HyperlinkText = StringFunctionsClientServer.SubstituteParametersInString(TemplateHyperlink,
 						AttributesStructure.EDKind);
 				Else
 					OwnerAttributes = CommonUse.ObjectAttributesValues(AttributesStructure.FileOwner, "Number, Date");
-					HyperlinkText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateHyperlink,
+					HyperlinkText = StringFunctionsClientServer.SubstituteParametersInString(TemplateHyperlink,
 						String(TypeOf(AttributesStructure.FileOwner)),
 						OwnerAttributes.Number, Format(OwnerAttributes.Date, "DLF=D"));
 				EndIf;
@@ -267,7 +267,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				NewRow.EDOwner          = KeyAndValue.Value.FileOwner;
 			EndDo;
 			TemplateHyperlink = NStr("en='Electronic documents (%1)';ru='Электронные документы (%1)'");
-			HyperlinkText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateHyperlink,
+			HyperlinkText = StringFunctionsClientServer.SubstituteParametersInString(TemplateHyperlink,
 				Parameters.ObjectsForProcessings.Count());
 		EndIf;
 		

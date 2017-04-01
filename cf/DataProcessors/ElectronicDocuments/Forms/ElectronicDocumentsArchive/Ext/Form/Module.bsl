@@ -365,7 +365,7 @@ Procedure CommandSendNotification(SentPackagesCnt, AdditionalParameters) Export
 	
 	If ValueIsFilled(SentPackagesCnt) Then
 	
-		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+		NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Number of sent packages: (%1)';ru='Отправлено пакетов: (%1)'"), SentPackagesCnt);
 	EndIf;
 	

@@ -261,7 +261,7 @@ Procedure Attachable_FieldChoiceProcessing(Item, ValueSelected, StandardProcessi
 				If CanImportClassifier AND StateNotImported Then
 					// Offer to import a classifier.
 					ContactInformationManagementClient.OfferExportClassifier(
-						StringFunctionsClientServer.PlaceParametersIntoString(
+						StringFunctionsClientServer.SubstituteParametersInString(
 							NStr("en='Data for ""%1"" is not imported.';ru='Данные для ""%1"" не загружены.'"), ValueSelected.Presentation
 						),
 						ValueSelected.Presentation

@@ -52,7 +52,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 		Cancel = True;
 	ElsIf ReportsVariants.DescriptionIsBooked(Context.ReportRef, VariantRef, OptionName) Then
 		CommonUseClientServer.MessageToUser(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='""%1"" is occupied, you must specify another Description.';ru='""%1"" занято, необходимо указать другое Наименование.'"),
 				OptionName
 			),
@@ -288,7 +288,7 @@ Procedure ExecuteBatch(Result, Package) Export
 			Variant = Found[0];
 			If Not RightVariantModification(Variant, RightVariantSettings(Variant, Context.FullRightsForVariants)) Then
 				ErrorText = NStr("en='The rights are not sufficient to change the variant ""%1"", it is necessary to select another variant or change the Description.';ru='Недостаточно прав для изменения варианта ""%1"", необходимо выбрать другой вариант или изменить Наименование.'");
-				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, OptionName);
+				ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, OptionName);
 				CommonUseClientServer.MessageToUser(ErrorText, , "OptionName");
 				Return;
 			EndIf;
@@ -303,7 +303,7 @@ Procedure ExecuteBatch(Result, Package) Export
 					QuestionText = NStr("en='Replace previously saved report variant ""%1""?';ru='Заменить ранее сохраненный вариант отчета ""%1""?'");
 					DefaultButton = DialogReturnCode.Yes;
 				EndIf;
-				QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, OptionName);
+				QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, OptionName);
 				Package.CurrentStep = "QueryOnRewriting";
 				Handler = New NotifyDescription("ExecuteBatch", ThisObject, Package);
 				ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo, 60, DefaultButton);
@@ -368,7 +368,7 @@ Procedure OpenVariantForModification()
 	EndIf;
 	If Not RightVariantSettings(Variant, Context.FullRightsForVariants) Then
 		WarningText = NStr("en='The access rights are not sufficient to change the variant ""%1"".';ru='Недостаточно прав доступа для изменения варианта ""%1"".'");
-		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(WarningText, Variant.Description);
+		WarningText = StringFunctionsClientServer.SubstituteParametersInString(WarningText, Variant.Description);
 		ShowMessageBox(, WarningText);
 		Return;
 	EndIf;
@@ -536,7 +536,7 @@ Procedure CheckAndWriteOnServer(Package)
 	
 	If VariantIsNew AND ReportsVariants.DescriptionIsBooked(Context.ReportRef, VariantRef, OptionName) Then
 		ErrorText = NStr("en='""%1"" is occupied, you must specify another Description.';ru='""%1"" занято, необходимо указать другое Наименование.'");
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, OptionName);
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, OptionName);
 		CommonUseClientServer.MessageToUser(ErrorText, , "OptionName");
 		Package.Cancel = True;
 		Return;
@@ -647,7 +647,7 @@ Procedure FillVariantsList()
 			ReportObject = ExternalReports.Create(Context.ReportName);
 		Except
 			ReportsVariants.ErrorByVariant(Undefined,
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Failed to receive a predefined
 		|variants list of the external report ""%1"":';ru='Не удалось получить
 		|список предопределенных вариантов внешнего отчета ""%1"":'"),

@@ -10,7 +10,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	ExchangeRateDate = BegOfDay(CurrentSessionDate());
 	Items.ExchangeRate.Title = 
-		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en = 'Rate on %1"),
+		StringFunctionsClientServer.SubstituteParametersInString(NStr("en = 'Rate on %1"),
 			Format(CurrentSessionDate(), "DLF=DD"));
 	Items.ExchangeRate.ToolTip = Items.ExchangeRate.Title;
 	List.Parameters.SetParameterValue ("EndOfPeriod", ExchangeRateDate);

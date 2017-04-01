@@ -372,7 +372,7 @@ Procedure NotifyUserAboutBackingUp(VariantNotifications) Export
 	ElsIf VariantNotifications = "YetNotConfigured" Then
 		
 		SettingsFormName = "e1cib/app/%1";
-		SettingsFormName = StringFunctionsClientServer.PlaceParametersIntoString(
+		SettingsFormName = StringFunctionsClientServer.SubstituteParametersInString(
 			SettingsFormName, BackupSettingsFormName());
 			
 		ExplanationText = NStr("en='Recommended to set info base backup.';ru='Рекомендуется настроить резервное копирование информационной базы.'"); 

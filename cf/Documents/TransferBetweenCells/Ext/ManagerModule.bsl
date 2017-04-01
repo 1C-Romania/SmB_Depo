@@ -276,7 +276,7 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 	EndIf;
 	
 	InventoryTransferredCountInWords = 
-		StringFunctionsClientServer.PlaceParametersIntoString(InventoryTransferredCountInWords
+		StringFunctionsClientServer.SubstituteParametersInString(InventoryTransferredCountInWords
 			,DocumentHeader.Cell
 			,?(TotalsSelection.PositionsQuantity = Undefined, 0, TotalsSelection.PositionsQuantity)
 			,NumberInWords(?(TotalsSelection.TotalQuantity = Undefined, 0, TotalsSelection.TotalQuantity), "L= ru_RU;SN=true;FN=false;FS=false", "unit, unit, units, f, , , , , 0")

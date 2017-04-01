@@ -507,7 +507,7 @@ Procedure ExecuteObjectMethod(Val Object, Val MethodName, Val Parameters = Undef
 	Try
 		Test = New Structure(MethodName, MethodName);
 	Except
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Incorrect parameter value MethodName (%1)';ru='Некорректное значение параметра ИмяМетода (%1)'"),
 			MethodName);
 	EndTry;
@@ -551,14 +551,14 @@ Procedure ValidateConfigurationMethodName(Val MethodName) Export
 	// Check preconditions for the format ExportProcedureName.
 	NameParts = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(MethodName, ".");
 	If NameParts.Count() <> 2 AND NameParts.Count() <> 3 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Wrong parameter format MethodName (%1)';ru='Неправильный формат параметра ИмяМетода (%1)'"),
 			MethodName);
 	EndIf;
 	
 	ObjectName = NameParts[0];
 	If NameParts.Count() = 2 AND Metadata.CommonModules.Find(ObjectName) = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Wrong format of the
 		|parameter MethodName (%1): General module ""%2"" is not found.';ru='Неправильный
 		|формат параметра ИмяМетода (%1): Не найден общий модуль ""%2"".'"),
@@ -574,7 +574,7 @@ Procedure ValidateConfigurationMethodName(Val MethodName) Export
 			Manager = Undefined;
 		EndTry;
 		If Manager = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Incorrect format of
 		|the parameter MethodName (%1): manager of the object ""%2"" is not found.';ru='Неправильный
 		|формат параметра ИмяМетода (%1): Не найден менеджер объекта ""%2"".'"),
@@ -592,7 +592,7 @@ Procedure ValidateConfigurationMethodName(Val MethodName) Export
 	Except
 		WriteLogEvent(NStr("en='Safe method execution';ru='Безопасное выполнение метода'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Incorrect format of
 		|parameter MethodName (%1): Method name ""%2"" does not correspond to the requirements of generation of procedures and functions names.';ru='Неправильный
 		|формат параметра ИмяМетода (%1): Имя метода ""%2"" не соответствует требованиям образования имен процедур и функций.'"),
@@ -635,7 +635,7 @@ Procedure CheckPossibilityToExecuteSessionSettingsSetupHandlers() Export
 				
 			Else
 				
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Cannot execute handlers of session parameters setup due to: security profile %1 is absent in servers cluster of 1C:Enterprise or it is prohibited to use it as security profile of safe mode.
 		|
 		|For restoration of the application it is required to disable the use of security profile through the cluster console and reconfigure security profiles using configuration interface (corresponding commands are located in the section of application settings';ru='Невозможно выполнение обработчиков установки параметров сеанса по причине: профиль безопасности %1 отсутствует в кластере серверов 1С:Предприятия, или для него запрещено использование в качестве профиля безопасности безопасного режима.
@@ -655,7 +655,7 @@ Procedure CheckPossibilityToExecuteSessionSettingsSetupHandlers() Export
 			
 			// Profile of IB is available for execution of handlers, but it is impossible to set privileged mode.
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='It is impossible to execute handlers of session parameters setup due to: security profile %1 does not contain a permission to set privileged mode. It may have been edited through the cluster console.
 		|
 		|For restoration of the application it is required to disable the use of security profile through the cluster console and reconfigure security profiles using configuration interface (corresponding commands are located in the section of application settings';ru='Невозможно выполнение обработчиков установки параметров сеанса по причине: профиль безопасности %1 не содержит разрешения на установку привилегированного режима. Возможно, он был отредактирован через консоль кластера.
@@ -676,7 +676,7 @@ Procedure CheckPossibilityToExecuteSessionSettingsSetupHandlers() Export
 			
 		Except
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Cannot execute handlers of session parameters setup due to: %1.
 		|
 		|Maybe a security profile was set for infobase through the cluster console which does not allow to execute external modules without setup of safe mode. IN this case, to restore application operation, it is required to disable the use of security profile through the cluster console and reconfigure security profiles using configuration interface (corresponding commands are located in the section of application settings).At the same time, the application will be automatically configured for shared use with enabled security profiles.';ru='Невозможно выполнение обработчиков установки параметров сеанса по причине: %1.
@@ -855,7 +855,7 @@ Function ObjectManagerByName(Name)
 		EndIf;
 	EndIf;
 	
-	Raise StringFunctionsClientServer.PlaceParametersIntoString(
+	Raise StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Failed to get a manager for the object ""%1""';ru='Не удалось получить менеджер для объекта ""%1""'"), Name);
 	
 EndFunction
@@ -875,7 +875,7 @@ Function PossibleToExecuteSessionParametersSetupHandlersWithoutSafeModeInstallat
 		
 		WriteLogEventTemplate = NStr("en='During installation of session parameters an error occurred: -------------------------------------------------------------------------------------------- %1 -------------------------------------------------------------------------------------------- Launch of the application is not possible.';ru='При установке параметров сеанса произошла ошибка: -------------------------------------------------------------------------------------------- %1 -------------------------------------------------------------------------------------------- Запуск программы будет невозможен.'");
 		
-		WriteLogEventText = StringFunctionsClientServer.PlaceParametersIntoString(
+		WriteLogEventText = StringFunctionsClientServer.SubstituteParametersInString(
 			WriteLogEventTemplate, DetailErrorDescription(ErrorInfo()));
 		
 		WriteLogEvent(

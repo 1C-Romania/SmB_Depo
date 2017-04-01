@@ -240,9 +240,9 @@ Function GetFileFromInternet(Val URL, Val SaveSetting, Val ConnectionOptions = U
 			ErrorInfo = ErrorInfo();
 			ErrorInfo = NStr("en='Failed to set FTP connection with the server %1:';ru='Не удалось установить FTP-соединение с сервером %1:'") + Chars.LF + "%2";
 			
-			WriteErrorInEventLogMonitor(StringFunctionsClientServer.PlaceParametersIntoString(
+			WriteErrorInEventLogMonitor(StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorInfo, ServerName, DetailErrorDescription(ErrorInfo)));
-			ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName,
+			ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName,
 					BriefErrorDescription(ErrorInfo));
 			Return GenerateResult(False, ErrorInfo);
 		EndTry;
@@ -255,9 +255,9 @@ Function GetFileFromInternet(Val URL, Val SaveSetting, Val ConnectionOptions = U
 			ErrorInfo = ErrorInfo();
 			ErrorInfo = NStr("en='Failed to set HTTP connection with the server %1:';ru='Не удалось установить HTTP-соединение с сервером %1:'") + Chars.LF + "%2";
 			WriteErrorInEventLogMonitor(
-				StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
+				StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
 					DetailErrorDescription(ErrorInfo)));
-			ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
+			ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
 					BriefErrorDescription(ErrorInfo));
 			Return GenerateResult(False, ErrorInfo);
 		EndTry;
@@ -294,7 +294,7 @@ Function GetFileFromInternet(Val URL, Val SaveSetting, Val ConnectionOptions = U
 		ErrorInfo = NStr("en='Failed to receive the file from the server %1:';ru='Не удалось получить файл с сервера %1:'") + Chars.LF + "%2";
 		If RecordError Then
 			WriteErrorInEventLogMonitor(
-				StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo, ServerName, 
+				StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
 				DetailErrorDescription(ErrorInfo)));
 		EndIf;
 		Return GenerateResult(False, BriefErrorDescription(ErrorInfo));

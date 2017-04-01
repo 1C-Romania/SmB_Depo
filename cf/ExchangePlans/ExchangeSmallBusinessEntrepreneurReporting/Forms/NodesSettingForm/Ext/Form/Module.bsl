@@ -92,7 +92,7 @@ Procedure GetContextDetails()
 	
 	// Document export start date
 	If ValueIsFilled(DocumentsDumpStartDate) Then
-		DocumentsDumpStartDateDetails = StringFunctionsClientServer.PlaceParametersIntoString(
+		DocumentsDumpStartDateDetails = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Data will be synchronized, starting from %1';ru='Данные будут синхронизироваться, начиная с %1'"),
 			Format(DocumentsDumpStartDate, "DLF=DD")
 		);

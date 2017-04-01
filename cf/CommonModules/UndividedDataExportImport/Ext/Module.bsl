@@ -229,7 +229,7 @@ Procedure ReferencesUseControlUndividedDataInSeparated() Export
 	Except
 		
 		ErrorText = BriefErrorDescription(ErrorInfo());
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='There are errors in the structure of configuration metadata: %1';ru='Обнаружены ошибки в структуре метаданных конфигурации: %1'", Metadata.DefaultLanguage.LanguageCode),
 			ErrorText
 		);
@@ -247,7 +247,7 @@ Procedure FillingControlNaturalKeyFieldsForUndividedObjects() Export
 	Except
 		
 		ErrorText = BriefErrorDescription(ErrorInfo());
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='There are errors in the structure of configuration metadata: %1';ru='Обнаружены ошибки в структуре метаданных конфигурации: %1'", Metadata.DefaultLanguage.LanguageCode),
 			ErrorText
 		);
@@ -483,7 +483,7 @@ Procedure UndividedDataReferencesControlOnExport(Container, Object, FieldsForUnd
 			EndIf;
 			
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The %1 metadata object is not supported!';ru='Объект метаданных %1 не поддерживается!'", Metadata.DefaultLanguage.LanguageCode),
 				FullMetadataObjectName
 			);
@@ -581,7 +581,7 @@ Procedure UndividedDataReferenceControlOnExport(Container, Val CheckedRefs, Val 
 		|%5
 		|---------------------------------------------------------------------------------------------------------------------------'");
 	
-	ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+	ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 		ErrorTemplate,
 		MetadataObject,
 		SourceMetadataObject,

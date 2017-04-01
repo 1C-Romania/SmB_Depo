@@ -951,7 +951,7 @@ Procedure AddAdditionalSetsOfTabularLayoutParts(SourceItems, AddingParameters)
 	
 	ObjectMetadata = Metadata.FindByFullName(NameOfAddedTables);
 	If ObjectMetadata = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The %1 incorrect name of metadata for registration at the %2 node';ru='Некорректное имя метаданных ""%1"" для регистрации на узле ""%2""'"),
 				NameOfAddedTables, InfobaseNode);
 	EndIf;

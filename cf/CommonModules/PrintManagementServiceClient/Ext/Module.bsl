@@ -157,7 +157,7 @@ Procedure CheckDocumentsPostingDocumentsPosting(QuestionResult, AdditionalParame
 	UnpostedDocuments = New Array;
 	For Each InformationAboutDocument IN DataAboutUnpostedDocuments Do
 		CommonUseClientServer.MessageToUser(
-			StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, String(InformationAboutDocument.Ref), 
+			StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, String(InformationAboutDocument.Ref), 
 				InformationAboutDocument.ErrorDescription), InformationAboutDocument.Ref);
 		UnpostedDocuments.Add(InformationAboutDocument.Ref);
 	EndDo;

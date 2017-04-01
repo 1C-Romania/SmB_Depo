@@ -371,7 +371,7 @@ EndProcedure
 Procedure AskQuestionOnWorkEnd(MessageText) Export
 	
 	QuestionText = NStr("en='%1 End work?';ru='%1 Завершить работу?'");
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, MessageText);
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, MessageText);
 	NotifyDescription = New NotifyDescription("AskQuestionOnWorkEndEnd", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 30, DialogReturnCode.Yes);
 	

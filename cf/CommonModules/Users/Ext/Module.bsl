@@ -780,7 +780,7 @@ Function ReadIBUser(Val ID,
 	EndIf;
 	
 	If IBUser = Undefined Then
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The user of the ""%1"" infobase is not found.';ru='Пользователь информационной базы ""%1"" не найден.'"), ID);
 		Return False;
 	EndIf;
@@ -1171,7 +1171,7 @@ Procedure CopyInfobaseUserProperties(Receiver,
 					   AND Receiver[Property] <> PropertyValue Then
 					
 						If StrLen(PropertyValue) > 64 Then
-							Raise StringFunctionsClientServer.PlaceParametersIntoString(
+							Raise StringFunctionsClientServer.SubstituteParametersInString(
 								NStr("en='An error occurred while
 		|writing infobase user Name
 		|(for login): %1 exceeds 64 characters length.';ru='Ошибка записи пользователя
@@ -1180,7 +1180,7 @@ Procedure CopyInfobaseUserProperties(Receiver,
 								PropertyValue);
 							
 						ElsIf Find(PropertyValue, ":") > 0 Then
-							Raise StringFunctionsClientServer.PlaceParametersIntoString(
+							Raise StringFunctionsClientServer.SubstituteParametersInString(
 								NStr("en='An error occurred while
 		|writing infobase user Name
 		|(for login): %1 contains disallowed character :.';ru='Ошибка записи пользователя
@@ -1415,7 +1415,7 @@ Procedure FindAmbiguousInfobaseUsers(Val User,
 				EndIf;
 				
 				ErrorDescription = ErrorDescription
-					+ StringFunctionsClientServer.PlaceParametersIntoString(
+					+ StringFunctionsClientServer.SubstituteParametersInString(
 						?(ServiceUserID,
 						NStr("en='Service user with
 		|the identifier %2 corresponds to more than one item in the Users catalog:';ru='Пользователю
@@ -1435,7 +1435,7 @@ Procedure FindAmbiguousInfobaseUsers(Val User,
 				ErrorDescription = ErrorDescription + ",";
 			EndIf;
 			ErrorDescription = ErrorDescription
-				+ StringFunctionsClientServer.PlaceParametersIntoString(
+				+ StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='
 		|	""%1"" with %2 reference ID';ru='
 		|	""%1"" с идентификатором ссылки %2'"),
@@ -1504,7 +1504,7 @@ Function ErrorDescriptionOnIBUserWrite(ErrorTemplate,
 			EventLogLevel.Error,
 			,
 			,
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorTemplate,
 				"""" + NameForEntering + """ ("
 				+ ?(ValueIsFilled(InfobaseUserID),
@@ -1516,7 +1516,7 @@ Function ErrorDescriptionOnIBUserWrite(ErrorTemplate,
 				  DetailErrorDescription(ErrorInfo))));
 	EndIf;
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		ErrorTemplate,
 		"""" + NameForEntering + """",
 		?(ErrorInfo = Undefined,

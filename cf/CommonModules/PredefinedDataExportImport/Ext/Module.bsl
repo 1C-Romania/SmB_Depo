@@ -257,7 +257,7 @@ Function MatchRefs(Container, RefsMappingManager, SourceRefsTable) Export
 					
 				Else
 					
-					Raise StringFunctionsClientServer.PlaceParametersIntoString(
+					Raise StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='The duplicates of predefined items %1 in the table %2 are found!';ru='Обнаружено дублирование предопределенных элементов %1 в таблице %2!'", Metadata.DefaultLanguage.LanguageCode),
 						TableRowSourceLinks.PredefinedDataName,
 						TableRowSourceLinks[ColumnName].Metadata().FullName()

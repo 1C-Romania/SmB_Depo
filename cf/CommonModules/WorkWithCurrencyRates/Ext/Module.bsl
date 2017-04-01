@@ -537,7 +537,7 @@ Function ImportCurrencyRateFromFile(Val Currency, Val PathToFile, Val ImportBegi
 		ExplanationAboutExporting = NStr("en='Not all currency exchange rates have been exported for %1 - %2.';ru='Загружены не все курсы по валюте %1 - %2.'");
 	EndIf;
 	
-	ExplanationAboutExporting = StringFunctionsClientServer.PlaceParametersIntoString(
+	ExplanationAboutExporting = StringFunctionsClientServer.SubstituteParametersInString(
 									ExplanationAboutExporting,
 									Currency.Code,
 									Currency.Description);
@@ -709,7 +709,7 @@ Function CurrencyRatesImportByParameters(Val Currencies, Val ImportBeginOfPeriod
 			DeleteFiles(Result.Path);
 			OperationStatus = IsBlankString(ExplainingMessage);
 		Else
-			ExplainingMessage = StringFunctionsClientServer.PlaceParametersIntoString(
+			ExplainingMessage = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Unable to receive data file with exchange rates
 		|%1
 		|- %2): %3 There may not be an access to website with exchange rates or non-existent currency is specified.';ru='Невозможно получить файл данных с

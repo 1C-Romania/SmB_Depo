@@ -1089,13 +1089,13 @@ Function NewSecurityProfileDescription(Val SoftwareModuleType, Val SoftwareModul
 	EndIf;
 	
 	If SoftwareModuleType = Catalogs.MetadataObjectIDs.EmptyRef() Then
-		Return StringFunctionsClientServer.PlaceParametersIntoString(Pattern, InfobaseName,
+		Return StringFunctionsClientServer.SubstituteParametersInString(Pattern, InfobaseName,
 			NStr("en='Security profile for the infobase';ru='Профиль безопасности для информационной базы'"), InfobaseConnectionString());
 	Else
 		ProgramModule = WorkInSafeModeService.RefFromPermissionsRegister(SoftwareModuleType, SoftwareModuleID);
 		Dictionary = WorkInSafeModeService.ExternalModuleManager(ProgramModule).ExternalModuleContainerDictionary();
 		ModuleName = CommonUse.ObjectAttributeValue(ProgramModule, "Description");
-		Return StringFunctionsClientServer.PlaceParametersIntoString(Pattern, InfobaseName, Dictionary.Nominative, ModuleName);
+		Return StringFunctionsClientServer.SubstituteParametersInString(Pattern, InfobaseName, Dictionary.Nominative, ModuleName);
 	EndIf;
 	
 EndFunction

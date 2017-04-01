@@ -191,7 +191,7 @@ Procedure CorrectFileName(FileName, DeleteIncorrectSymbols = False) Export
 	
 	StrException = CommonUseClientServer.GetProhibitedCharsInFileName();
 	
-	ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+	ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='File name can not have symbols: %1';ru='В имени файла не должно быть следующих символов: %1'"), StrException);
 	
 	Result = True;
@@ -284,7 +284,7 @@ Procedure ReceiveUserDataWorkingDirectoryAfterReceiptError(ErrorInfo, StandardPr
 	
 	Result = New Structure;
 	Result.Insert("Directory", "");
-	Result.Insert("ErrorDescription", StringFunctionsClientServer.PlaceParametersIntoString(
+	Result.Insert("ErrorDescription", StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Failed to get working directory of user data
 		|due to: %1';ru='Не удалось получить рабочий каталог данных
 		|пользователя по причине: %1'"), BriefErrorDescription(ErrorInfo)));

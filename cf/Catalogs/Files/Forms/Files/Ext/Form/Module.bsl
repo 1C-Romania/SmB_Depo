@@ -360,7 +360,7 @@ Procedure FindFilesOrFolders()
 	Result = FindFilesOrFoldersServer();
 	
 	If Result = "FoundNothing" Then
-		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
+		WarningText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File or folder with
 		|%1 in the name or code is not found';ru='Не удалось найти
 		|файл или папку, наименование или код которых содержит ""%1"".'"),
@@ -871,7 +871,7 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 				
 				If DraggingValue.Count() = 1 Then
 					NotificationTitle = NStr("en='File copied.';ru='Файл скопирован.'");
-					NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+					NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='%1
 		|file has been copied to the %2 folder';ru='Файл
 		|""%1"" скопирован в папку ""%2""'"),
@@ -879,7 +879,7 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 						String(FolderForAdding));
 				Else
 					NotificationTitle = NStr("en='Files are copied.';ru='Файлы скопированы.'");
-					NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+					NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Files (%1 units) have been copied to the %2 folder';ru='Файлы (%1 шт.) скопированы в папку ""%2""'"),
 						DraggingValue.Count(),
 						String(FolderForAdding));
@@ -897,7 +897,7 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 				
 				If DraggingValue.Count() = 1 Then
 					NotificationTitle = NStr("en='File has been moved';ru='Файл перенесен.'");
-					NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+					NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='The
 		|file ""%1"" was moved to the folder ""%2""';ru='Файл
 		|""%1"" перенесен в папку ""%2""'"),
@@ -905,7 +905,7 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 						String(FolderForAdding));
 				Else
 					NotificationTitle = NStr("en='Files have been moved.';ru='Файлы перенесены.'");
-					NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+					NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Files (%1) moved to folder %2';ru='Файлы (%1 шт.) перенесены в папку ""%2""'"),
 						String(DraggingValue.Count()),
 						String(FolderForAdding));
@@ -929,7 +929,7 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 			If DraggingValue.Count() = 1 Then
 				Items.Folders.CurrentRow = DraggingValue[0];
 				NotificationTitle = NStr("en='Folder has been moved.';ru='Папка перенесена.'");
-				NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+				NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Folder
 		|""%1"" moved to ""%2""';ru='Папка
 		|""%1"" перенесена в папку ""%2""'"),
@@ -937,7 +937,7 @@ Procedure DraggingToFolder(FolderForAdding, DraggingValue, Action)
 					String(FolderForAdding));
 			Else
 				NotificationTitle = NStr("en='Folders have been moved.';ru='Папки перенесены.'");
-				NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+				NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Folders (%1 pcs.)  moved to folder ""%2""';ru='Папки (%1 шт.) перенесены в папку ""%2""'"),
 					String(DraggingValue.Count()),
 					String(FolderForAdding));

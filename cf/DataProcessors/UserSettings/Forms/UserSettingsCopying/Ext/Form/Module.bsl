@@ -351,7 +351,7 @@ Procedure CopySettings(CommandName)
 		EndIf;
 			
 		ExplanationText = NStr("en='All the settings are copied %1';ru='Скопированы все настройки %1'");
-		ExplanationText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationText, ExplanationToWhomSettingsAreCopied);
 		ShowUserNotification(
 			NStr("en='Copying of settings';ru='Копирование настроек'"), , ExplanationText, PictureLib.Information32);

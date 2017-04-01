@@ -7,7 +7,7 @@ Procedure CreateScenario(InfobaseNode, Schedule = Undefined) Export
 	Cancel = False;
 	
 	Description = NStr("en='Automatic data synchronization with %1';ru='Автоматическая синхронизация данных с %1'");
-	Description = StringFunctionsClientServer.PlaceParametersIntoString(Description,
+	Description = StringFunctionsClientServer.SubstituteParametersInString(Description,
 			CommonUse.ObjectAttributeValue(InfobaseNode, "Description"));
 	
 	ExchangeTransportKind = InformationRegisters.ExchangeTransportSettings.ExchangeMessageTransportKindByDefault(InfobaseNode);
@@ -185,7 +185,7 @@ Procedure SetScheduledJobParameters(ScheduledJobObject, JobSchedule, CurrentObje
 	ScheduledJobParameters.Add(CurrentObject.Code);
 	
 	ScheduledJobDescription = NStr("en='Executing exchange by the script: %1';ru='Выполнение обмена по сценарию: %1'");
-	ScheduledJobDescription = StringFunctionsClientServer.PlaceParametersIntoString(ScheduledJobDescription, TrimAll(CurrentObject.Description));
+	ScheduledJobDescription = StringFunctionsClientServer.SubstituteParametersInString(ScheduledJobDescription, TrimAll(CurrentObject.Description));
 	
 	ScheduledJobObject.Description  = Left(ScheduledJobDescription, 120);
 	ScheduledJobObject.Use = CurrentObject.UseScheduledJob;
@@ -217,7 +217,7 @@ Procedure WriteScheduledJob(Cancel, ScheduledJobObject)
 	Except
 		
 		MessageString = NStr("en='An error occurred while saving exchanges execution schedule. Detailed error description: %1';ru='Произошла ошибка при сохранении расписания выполнения обменов. Подробное описание ошибки: %1'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, BriefErrorDescription(ErrorInfo()));
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, BriefErrorDescription(ErrorInfo()));
 		DataExchangeServer.ShowMessageAboutError(MessageString, Cancel);
 		
 	EndTry;

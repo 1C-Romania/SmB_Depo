@@ -219,7 +219,7 @@ Procedure AddDeferredHandler(HandlerLine, HandlersAreNotExecuted, PerformedAllPr
 		ListRow.InformationAboutUpdateProcedure = NStr("en='Procedure ""%1"" of data processor was not executed yet.';ru='Процедура ""%1"" обработки данных еще не выполнялась.'");
 	EndIf;
 	
-	ListRow.InformationAboutUpdateProcedure = StringFunctionsClientServer.PlaceParametersIntoString(
+	ListRow.InformationAboutUpdateProcedure = StringFunctionsClientServer.SubstituteParametersInString(
 		ListRow.InformationAboutUpdateProcedure, HandlerLine.HandlerName);
 	
 EndProcedure

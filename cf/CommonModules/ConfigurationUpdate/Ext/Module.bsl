@@ -413,11 +413,11 @@ Procedure SendNotificationAboutUpdate(Val UserName, Val AddressOfDestination, Va
 	
 	Subject = ? (SuccessfulRefresh, NStr("en='Successful configuration update ""%1"", version %2';ru='Успешное обновление конфигурации ""%1"", версия %2'"), 
 		NStr("en='Error configuration updating ""%1"", %2 version';ru='Ошибка обновления конфигурации ""%1"", версия %2'"));
-	Subject = StringFunctionsClientServer.PlaceParametersIntoString(Subject, Metadata.BriefInformation, Metadata.Version);
+	Subject = StringFunctionsClientServer.SubstituteParametersInString(Subject, Metadata.BriefInformation, Metadata.Version);
 	
 	Details = ?(SuccessfulRefresh, NStr("en='Configuration update completed successfully';ru='Обновление конфигурации завершено успешно.'"), 
 		NStr("en='Errors occurred while updating configuration. Details are written to the events log monitor.';ru='При обновлении конфигурации произошли ошибки. Подробности записаны в журнал регистрации.'"));
-	Text = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1
+	Text = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1
 		|
 		|Configuration:
 		|%2 Version:

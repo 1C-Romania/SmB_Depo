@@ -164,7 +164,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	// Tax kind
 	If ValueIsFilled(DefaultValuesAtNode.TaxKind) Then
 		NString = NStr("en='Tax type: %1';ru='Вид налога: %1'");
-		Definition = StringFunctionsClientServer.PlaceParametersIntoString(NString, String(DefaultValuesAtNode.TaxKind));
+		Definition = StringFunctionsClientServer.SubstituteParametersInString(NString, String(DefaultValuesAtNode.TaxKind));
 	Else
 		Definition = "Tax kind is not specified";
 	EndIf;
@@ -174,7 +174,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	// Cash flow item (expense)
 	If ValueIsFilled(DefaultValuesAtNode.ExpenseItem) Then
 		NString = NStr("en='Cash flow item (expense): %2';ru='Статья ДДС (расход): %2'");
-		Definition = StringFunctionsClientServer.PlaceParametersIntoString(NString, , String(DefaultValuesAtNode.ExpenseItem));
+		Definition = StringFunctionsClientServer.SubstituteParametersInString(NString, , String(DefaultValuesAtNode.ExpenseItem));
 	Else
 		Definition = "Cash flow item (expense) is not specified";
 	EndIf;
@@ -184,7 +184,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	// Cash flow item (Income)
 	If ValueIsFilled(DefaultValuesAtNode.DebitItem) Then
 		NString = NStr("en='Cash flow item (income): %3';ru='Статья ДДС (приход): %3'");
-		Definition = StringFunctionsClientServer.PlaceParametersIntoString(NString, , , String(DefaultValuesAtNode.DebitItem));
+		Definition = StringFunctionsClientServer.SubstituteParametersInString(NString, , , String(DefaultValuesAtNode.DebitItem));
 	Else
 		Definition = "Cash flow item (Income) is not specified";
 	EndIf;
@@ -194,7 +194,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	// PettyCash
 	If ValueIsFilled(DefaultValuesAtNode.PettyCash) Then
 		NString = NStr("en='Petty cash: %4';ru='Касса: %4'");
-		Definition = StringFunctionsClientServer.PlaceParametersIntoString(NString, , , , String(DefaultValuesAtNode.PettyCash));
+		Definition = StringFunctionsClientServer.SubstituteParametersInString(NString, , , , String(DefaultValuesAtNode.PettyCash));
 	Else
 		Definition = "Petty cash is not specified";
 	EndIf;
@@ -204,7 +204,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	// Cash register
 	If ValueIsFilled(DefaultValuesAtNode.CashCR) Then
 		NString = NStr("en='Cash Register: %5';ru='Касса ККМ: %5'");
-		Definition = StringFunctionsClientServer.PlaceParametersIntoString(NString, , , , , String(DefaultValuesAtNode.CashCR));
+		Definition = StringFunctionsClientServer.SubstituteParametersInString(NString, , , , , String(DefaultValuesAtNode.CashCR));
 	ElsIf Constants.FunctionalOptionAccountingRetail.Get() Then
 		Definition = "CashCR is not specified";
 	Else
@@ -226,7 +226,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 		|%5'"
 	);
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoStringFromArray(NString, ParameterArray);
+	Return StringFunctionsClientServer.SubstituteParametersInStringFromArray(NString, ParameterArray);
 EndFunction
 
 // Returns the command presentation of a new data exchange creation.

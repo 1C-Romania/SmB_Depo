@@ -41,7 +41,7 @@ Function SendSMS(RecipientNumbers, Text, SenderName, Login, Val Password) Export
 					,
 					DetailErrorDescription(ErrorInfo()));
 				Result.ErrorDescription = Result.ErrorDescription 
-										 + StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='SMS to the number %1 has not been sent';ru='SMS на номер %1 не отправлено'"), Item)
+										 + StringFunctionsClientServer.SubstituteParametersInString(NStr("en='SMS to the number %1 has not been sent';ru='SMS на номер %1 не отправлено'"), Item)
 										 + ": " + BriefErrorDescription(ErrorInfo())
 										 + Chars.LF;
 			EndTry;

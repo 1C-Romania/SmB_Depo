@@ -832,7 +832,7 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 				If OldValueType.ContainsType(Type("CatalogRef.ObjectsPropertiesValuesHierarchy"))
 				   AND Not Object.ValueType.ContainsType(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) Then
 					
-					WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
+					WarningText = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='It is impossible
 		|to delet the type ""%1"", as additional values are already input.
 		|It is necessary to delete additional input values first.
@@ -852,7 +852,7 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 				ElsIf OldValueType.ContainsType(Type("CatalogRef.ObjectsPropertiesValues"))
 				        AND Not Object.ValueType.ContainsType(Type("CatalogRef.ObjectsPropertiesValues")) Then
 					
-					WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
+					WarningText = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='It is impossible
 		|to delet the type ""%1"", as additional values are already input.
 		|It is necessary to delete additional input values first.
@@ -878,7 +878,7 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 			
 			If Not OldValueType.ContainsType(Type("CatalogRef.ObjectsPropertiesValuesHierarchy")) Then
 				
-				WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
+				WarningText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='It is impossible to
 		|use ""%1""
 		|and ""%2"" value types simultaneously.
@@ -897,7 +897,7 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 					,
 					"CatalogRef.ObjectsPropertiesValuesHierarchy");
 			Else
-				WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
+				WarningText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='It is impossible to
 		|use ""%1""
 		|and ""%2"" value types simultaneously.
@@ -974,7 +974,7 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 		EndIf;
 		
 		Items.ClarificationOfValuesListComment.Title =
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				SpecificationTemplate, PropertiesOfOwner.Title, String(PropertiesOfOwner.PropertySet)) + "  ";
 	EndIf;
 	
@@ -1013,7 +1013,7 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 				Else
 					SpecificationTemplate = NStr("en='Attribute is included in the set: %1';ru='Реквизит входит в набор: %1'");
 				EndIf;
-				TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
+				TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(
 					SpecificationTemplate, TrimAll(ListOfSets[0].Presentation));
 			Else
 				If ListOfSets.Count() > 1 Then
@@ -1034,7 +1034,7 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 						StringSets = TrimAll(Mid(StringSets, Position + 1));
 					EndDo;
 					
-					TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
+					TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(
 						SpecificationTemplate, Format(ListOfSets.Count(), "NG="), StringSets);
 				Else
 					If Object.ThisIsAdditionalInformation Then
@@ -1043,7 +1043,7 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 						SpecificationTemplate = NStr("en='Common attribiute is included in the set: %1';ru='Общий реквизит входит в набор: %1'");
 					EndIf;
 					
-					TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
+					TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(
 						SpecificationTemplate, TrimAll(ListOfSets[0].Presentation));
 				EndIf;
 			EndIf;
@@ -1223,7 +1223,7 @@ Function NameIsAlreadyUsed(Val Title, Val CurrentProperty, Val PropertySet, NewD
 		EndIf;
 	EndIf;
 	
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 		QuestionText + NStr("en='
 		|
 		|It is recommended

@@ -144,11 +144,11 @@ Procedure CheckReferencesToObject(Val ContinuationProcessor, Val RefArray, Val S
 	If RefArray.Count() = 1 Then
 		ObjectsPresentation = RefArray[0];
 	Else
-		ObjectsPresentation = StringFunctionsClientServer.PlaceParametersIntoString( 
+		ObjectsPresentation = StringFunctionsClientServer.SubstituteParametersInString( 
 			NStr("en='selected items (%1)';ru='выбранных элементов (%1)'"), RefArray.Count());
 	EndIf;
 	
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, AttributesPresentation, ObjectsPresentation);
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, AttributesPresentation, ObjectsPresentation);
 	
 	Parameters = New Structure;
 	Parameters.Insert("RefArray", RefArray);

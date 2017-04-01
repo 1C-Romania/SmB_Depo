@@ -83,7 +83,7 @@ Function RefreshCreateBanksWIB(Refs, IgnoreManualChanging)
 			If Not ValueIsFilled(BankObject.Parent) Then
 				EventName = ?(EventName = "",
 					NStr("en='Pick from ACC';ru='Подбор из классификатора'"), EventName);
-				ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+				ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Failed to obtain the parent from the item with BIC %1';ru='Не смогли получить родителя у элемента с БИК %1'"), TrimAll(ParametersObject.Code));
 				WriteLogEvent(EventName, 
 					EventLogLevel.Error,,, ErrorText);

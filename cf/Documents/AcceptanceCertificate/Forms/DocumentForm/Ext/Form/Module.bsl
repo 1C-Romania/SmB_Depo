@@ -2279,7 +2279,7 @@ Procedure DiscountCardIsSelected(DiscountCard)
 		ShowUserNotification(
 			NStr("en='Counterparty is filled and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
 			GetURL(DiscountCard),
-			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='The counterparty is filled out in the document and discount card %1 is read';ru='В документе заполнен контрагент и считана дисконтная карта %1'"), DiscountCard),
+			StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The counterparty is filled out in the document and discount card %1 is read';ru='В документе заполнен контрагент и считана дисконтная карта %1'"), DiscountCard),
 			PictureLib.Information32);
 	ElsIf Object.Counterparty <> DiscountCardOwner AND Not DiscountCardOwner.IsEmpty() Then
 		
@@ -2294,7 +2294,7 @@ Procedure DiscountCardIsSelected(DiscountCard)
 		ShowUserNotification(
 			NStr("en='Discount card read';ru='Считана дисконтная карта'"),
 			GetURL(DiscountCard),
-			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Discount card %1 is read';ru='Считана дисконтная карта %1'"), DiscountCard),
+			StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Discount card %1 is read';ru='Считана дисконтная карта %1'"), DiscountCard),
 			PictureLib.Information32);
 	EndIf;
 	

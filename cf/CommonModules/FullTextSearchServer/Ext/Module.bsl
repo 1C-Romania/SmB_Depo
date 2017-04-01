@@ -97,7 +97,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	Work.ThereIsWork       = (DaysSinceLastUpdate >= 1 AND Not FullTextSearch.IndexTrue());
 	Work.Presentation  = NStr("en='Full-text search index is outdated';ru='Индекс полнотекстового поиска устарел'");
 	Work.Form          = "DataProcessor.AdministrationPanelSSL.Form.FullTextSearchAndTextsExtractionManagement";
-	Work.ToolTip      = StringFunctionsClientServer.PlaceParametersIntoString(
+	Work.ToolTip      = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Last update %1 ago';ru='Последнее обновление %1 назад'"), Interval);
 	Work.Owner       = Section;
 	
@@ -214,7 +214,7 @@ Procedure LogRecord(JournalLevel = Undefined, CommentWithParameters = "",
 	// Comment for the events log monitor.
 	TextForLog = CommentWithParameters;
 	If Parameter1 <> Undefined Then
-		TextForLog = StringFunctionsClientServer.PlaceParametersIntoString(
+		TextForLog = StringFunctionsClientServer.SubstituteParametersInString(
 			TextForLog, Parameter1, Parameter2, Parameter3);
 	EndIf;
 	If TypeOf(ErrorInfo) = Type("ErrorInfo") Then

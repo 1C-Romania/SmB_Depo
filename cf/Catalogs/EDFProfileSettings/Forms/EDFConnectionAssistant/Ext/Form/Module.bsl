@@ -544,7 +544,7 @@ Procedure EDFProfileSettingsTest()
 					CompanyEmail, Undefined, ErrorInfo, AdditionalMessage);
 			
 			If ValueIsFilled(ErrorInfo) Then
-				CommonUseClientServer.MessageToUser(StringFunctionsClientServer.PlaceParametersIntoString(
+				CommonUseClientServer.MessageToUser(StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Verification of the account parameters
 		|is complete with errors: %1';ru='Проверка параметров учетной записи завершилась с ошибками:
 		|%1'"), ErrorInfo ),,
@@ -586,7 +586,7 @@ Procedure SaveParameters(DataSaved)
 		NewSettingsProfile = Catalogs.EDFProfileSettings.CreateItem();
 		
 		PatternName = NStr("en='%1, %2';ru='%1, %2'");
-		NewSettingsProfile.Description = StringFunctionsClientServer.PlaceParametersIntoString(PatternName,
+		NewSettingsProfile.Description = StringFunctionsClientServer.SubstituteParametersInString(PatternName,
 			Company, EDExchangeMethod);
 			
 		NewSettingsProfile.Company              = Company;
@@ -855,7 +855,7 @@ Procedure CheckFile(FTPConnection, ErrorText)
 	If Not ResultRow = TestString Then
 		MessagePattern = NStr("en='%1 %2.';ru='%1 %2.'");
 		MessageText = ElectronicDocumentsServiceCallServer.GetMessageAboutError("126");
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, MessageText,
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, MessageText,
 			FTPConnection.GetCurrentDirectory());
 		Return;
 	EndIf;

@@ -114,7 +114,7 @@ Procedure ExtractAll(Command)
 		PortionSize = 0; // extract all
 		ExtractionOfTextsClient(PortionSize);
 		
-		ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
+		ShowMessageBox(, StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Text extraction from
 		|all files with not extract text is completed.
 		|
@@ -151,7 +151,7 @@ Procedure UpdateOfCountdown()
 	// database and is used only on client for information purposes therefore it isn't necessary to replace with CurrentSessionDate.
 	Left = ExtractionStartForecastedTime - CurrentDate();
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Text extraction will start in %1 sec';ru='До начала извлечения текстов осталось %1 сек'"),
 		Left);
 	
@@ -221,7 +221,7 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 				
 				ErrorDescriptionInfo = BriefErrorDescription(ErrorInfo());
 				
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='An unknown error occurred while
 		|extracting text from  file ""%1""';ru='Во время извлечения текста из файла ""%1"" произошла неизвестная ошибка'"),
 					String(FileOrFileVersion));
@@ -237,7 +237,7 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 			
 		EndDo;
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Text extraction is completed.
 		|Number of processed files: %1';ru='Извлечение текста завершено.
 		|Обработано файлов: %1'"),
@@ -249,7 +249,7 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 		
 		ErrorDescriptionInfo = BriefErrorDescription(ErrorInfo());
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An unknown error occurred while
 		|extracting text from  file ""%1""';ru='Во время извлечения текста из файла ""%1"" произошла неизвестная ошибка'"),
 			String(FileOrFileVersion));

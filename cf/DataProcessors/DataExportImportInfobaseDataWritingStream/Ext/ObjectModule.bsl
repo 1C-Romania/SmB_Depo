@@ -74,7 +74,7 @@ Procedure WriteInfobaseDataObject(Object, Artifacts) Export
 			Char(65533)
 		);
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while exporting object %1: %2';ru='При выгрузке объекта %1 произошла ошибка: %2'"),
 			Object,
 			InitialErrorTextWithoutInvalidCharacters

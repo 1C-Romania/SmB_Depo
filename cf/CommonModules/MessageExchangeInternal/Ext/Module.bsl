@@ -289,7 +289,7 @@ Procedure OnDataImport(StandardProcessing,
 						ExchangeMessageAcceptedInPart = True;
 						Continue;
 					Else
-						Raise StringFunctionsClientServer.PlaceParametersIntoString(
+						Raise StringFunctionsClientServer.SubstituteParametersInString(
 							NStr("en='The application failed to exchange the messages due to the following reason: the %1 data field is blocked!';ru='Не удалось выполнить обмен сообщениями по причине: область данных %1 заблокирована!'"),
 							DataArea);
 					EndIf;
@@ -461,7 +461,7 @@ Procedure ProcessSystemMessageQueue(Filter = Undefined) Export
 			
 		EndIf;
 		
-		Subquery =  StringFunctionsClientServer.PlaceParametersIntoString(
+		Subquery =  StringFunctionsClientServer.SubstituteParametersInString(
 			"SELECT
 			|	MessagesTable.DataAreaAuxiliaryData AS DataArea,
 			|	MessagesTable.Ref AS Ref,
@@ -578,7 +578,7 @@ Procedure ProcessSystemMessageQueue(Filter = Undefined) Export
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 				WriteLogEvent(ThisSubsystemEventLogMonitorMessageText(),
 						EventLogLevel.Error,,,
-						StringFunctionsClientServer.PlaceParametersIntoString(
+						StringFunctionsClientServer.SubstituteParametersInString(
 							NStr("en='Error of processing of message %1: %2';ru='Ошибка обработки сообщения %1: %2'"),
 							MessageTitle.MessageChannel, DetailErrorDescription));
 			EndTry;
@@ -613,7 +613,7 @@ Procedure ProcessSystemMessageQueue(Filter = Undefined) Export
 			
 			If ProcessMessageInUndividedData AND CommonUseReUse.DataSeparationEnabled() AND CommonUseReUse.CanUseSeparatedData() Then
 				
-				ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				ErrorMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='For processing of the %1 message channel the session separation was not disabled!';ru='После обработки сообщения канала %1 не было выключено разделение сеанса!'"),
 					MessageTitle.MessageChannel);
 				
@@ -992,7 +992,7 @@ Procedure SerializeDataFromStream(Sender, Stream, ImportedObjects, DataReadInPar
 						DataReadInPart = True;
 						Continue;
 					Else
-						Raise StringFunctionsClientServer.PlaceParametersIntoString(
+						Raise StringFunctionsClientServer.SubstituteParametersInString(
 							NStr("en='The application failed to exchange the messages due to the following reason: the %1 data field is blocked!';ru='Не удалось выполнить обмен сообщениями по причине: область данных %1 заблокирована!'"),
 							DataArea);
 					EndIf;
@@ -1285,7 +1285,7 @@ Procedure ConnectEndPointAtSender(Cancel,
 	If Not EndPointNode.IsEmpty() Then
 		Cancel = True;
 		ErrorMessageString = NStr("en='The endpoint is already connected to the infobase; point description: %1';ru='Конечная точка уже подключена к информационной базе; наименование точки: %1'", CommonUseClientServer.MainLanguageCode());
-		ErrorMessageString = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageString, CommonUse.ObjectAttributeValue(EndPointNode, "Description"));
+		ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, CommonUse.ObjectAttributeValue(EndPointNode, "Description"));
 		WriteLogEvent(EndPointConnectionEventLogMonitorMessageText(), EventLogLevel.Error,,, ErrorMessageString);
 		Return;
 	EndIf;

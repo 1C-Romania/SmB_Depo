@@ -531,7 +531,7 @@ Procedure FillCheckProcessingAtServer(Form, Object, Cancel) Export
 				If RequiredFilling AND IsBlankString(Presentation) Then
 					
 					MessageText = NStr("en='Field ""%1"" is not filled.';ru='Поле ""%1"" не заполнено.'");
-					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, InformationKind.Description);
+					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, InformationKind.Description);
 					CommonUseClientServer.MessageToUser(MessageText,,Field);
 					CurrentLevelErrors = 2;
 					
@@ -566,7 +566,7 @@ Procedure FillCheckProcessingAtServer(Form, Object, Cancel) Export
 			Then
 				
 				MessageText = NStr("en='Field ""%1"" is not filled.';ru='Поле ""%1"" не заполнено.'");
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, InformationKind.Description);
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, InformationKind.Description);
 				CommonUseClientServer.MessageToUser(MessageText,,,AttributeName);
 				CurrentLevelErrors = 2;
 				
@@ -1279,7 +1279,7 @@ EndFunction
 //
 Function ObjectContactInformationTable(Ref, ContactInformationKind) Export
 	
-	Query = New Query(StringFunctionsClientServer.PlaceParametersIntoString("
+	Query = New Query(StringFunctionsClientServer.SubstituteParametersInString("
 		|SELECT 
 		|	Data.RowIdTableParts AS LineNumber,
 		|	Data.Presentation                     AS Presentation,

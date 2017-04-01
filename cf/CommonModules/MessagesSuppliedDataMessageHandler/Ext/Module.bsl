@@ -192,7 +192,7 @@ Procedure ImportData(Val HandleXML) Export
 				EventLogLevel.Error, ,
 				, DetailErrorDescription(ErrorInfo())
 				+ Chars.LF + SuppliedData.GetDataDescription(Handle)
-				+ Chars.LF + StringFunctionsClientServer.PlaceParametersIntoString(
+				+ Chars.LF + StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Handler code: %1';ru='Код обработчика: %1'"), Handler.ProcessorCode));
 				
 			WriteRawData.AttemptCount = WriteRawData.AttemptCount + 1;
@@ -288,7 +288,7 @@ Procedure NotifyAboutCancelProcessing(Val Handler, Val Handle)
 			CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Information, ,
 			, SuppliedData.GetDataDescription(Handle)
-			+ Chars.LF + StringFunctionsClientServer.PlaceParametersIntoString(
+			+ Chars.LF + StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Handler code: %1';ru='Код обработчика: %1'"), Handler.ProcessorCode));
 	
 	Except
@@ -297,7 +297,7 @@ Procedure NotifyAboutCancelProcessing(Val Handler, Val Handle)
 			EventLogLevel.Error, ,
 			, DetailErrorDescription(ErrorInfo())
 			+ Chars.LF + SuppliedData.GetDataDescription(Handle)
-			+ Chars.LF + StringFunctionsClientServer.PlaceParametersIntoString(
+			+ Chars.LF + StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Handler code: %1';ru='Код обработчика: %1'"), Handler.ProcessorCode));
 	EndTry;
 

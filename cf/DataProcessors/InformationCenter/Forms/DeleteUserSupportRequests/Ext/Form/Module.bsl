@@ -155,7 +155,7 @@ EndFunction
 Function GetTemplateRangeExports(Range)
 
 	Pattern = "%1 - %2";
-	Pattern = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, Range.Begin, Range.End);
+	Pattern = StringFunctionsClientServer.SubstituteParametersInString(Pattern, Range.Begin, Range.End);
 	
 	Return Pattern;
 	

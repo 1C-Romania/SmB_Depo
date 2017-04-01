@@ -106,7 +106,7 @@ Function IsRole(Val Role, Val ObjectReference = Undefined, Val User = Undefined)
 			EndIf;
 			
 			If Upper(String.AccessKind) = Upper("EditRight") Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
 						|In the access values set the EditingRight
 						|access kind is specified of table with ID ""%1"".
@@ -122,7 +122,7 @@ Function IsRole(Val Role, Val ObjectReference = Undefined, Val User = Undefined)
 		ElsIf AccessKindNames.Get(String.AccessKind) <> Undefined
 		      OR String.AccessKind = "RightSettings" Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
 						|Access values set contains known access kind
 						|""%2"" that you should not specify.
@@ -138,7 +138,7 @@ Function IsRole(Val Role, Val ObjectReference = Undefined, Val User = Undefined)
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred in the HasRole function of the AccessManagement module.
 						|Access values set contains unknown access kind ""%2"".';
 					|ru='Ошибка в функции ЕстьРоль модуля УправлениеДоступом.
@@ -386,7 +386,7 @@ Function IsRight(Right, ObjectReference, User = Undefined) Export
 		).PossibleRightsForObjectRightsSettings.ByTypes.Get(TypeOf(ObjectReference));
 	
 	If RightsDescriptionFull = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Description of possible rights for table ""%1"" is not found';
 				 |ru='Не найдено описание возможных прав для таблицы ""%1""'"),
 			ObjectReference.Metadata().FullName());
@@ -395,7 +395,7 @@ Function IsRight(Right, ObjectReference, User = Undefined) Export
 	RightDetails = RightsDescriptionFull.Get(Right);
 	
 	If RightDetails = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Description of right ""%1"" for table ""%2"" is not found';
 				 |ru='Не найдено описание права ""%1"" для таблицы ""%2""'"),
 			Right,
@@ -543,7 +543,7 @@ Procedure OnFormCreationAccessValues(Form,
 	EndIf;
 	
 	If TypeOf(AccessValuesGroup) <> GroupsProperties.Type Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorTitle + Chars.LF + Chars.LF +
 			NStr("en='For access values of the ""%1"" type access kind ""%2"" is used
 					 |with the values type ""%3"" specified in the overridable module.
@@ -584,7 +584,7 @@ Procedure OnFormCreationAccessValues(Form,
 	If ValueGroupsForChanges.Count() = 0
 	   AND NewCreation Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Allowed ""%1"" are used while adding.';
 				 |ru='Для добавления требуются разрешенные ""%1"".'"),
 			Metadata.FindByType(GroupsProperties.Type).Presentation());
@@ -833,7 +833,7 @@ Procedure FillAccessValueSets(Val Object, Table, Val RefOnSubordinatedObject = U
 		|WriteDependentAccessValueSets").Get(ValueTypeObject) <> Undefined;
 	
 	If Not SetsAreFilling Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Wrong parameters. Object type ""%1"" is found in no subscription
 					 |to events ""Write access value sets"", ""Write dependent access value sets"".';
 				 |ru='Неверные параметры. Тип объекта ""%1"" не найден ни в одной из подписок
@@ -848,7 +848,7 @@ Procedure FillAccessValueSets(Val Object, Table, Val RefOnSubordinatedObject = U
 	If Table.Count() = 0 Then
 		// If you disable this condition, then scheduled
 		// job of data filling for access restriction will by cycled.
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Object ""%1"" generated access values empty set.';
 				 |ru='Объект ""%1"" сформировал пустой набор значений доступа.'"),
 			ValueTypeObject);
@@ -1342,7 +1342,7 @@ Procedure ReplaceRightsInObjectRightSettings(RenamingsTable) Export
 					+ ?(ValueIsFilled(RepeatedRightsNewNames), "," + Chars.LF, "")
 					+ String.NewName;
 			EndDo;
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='An error occurred in the RenameRightInObjectRightsSettings procedure 
 							 |parameters of the AccessManagement general module.
  							 |
@@ -1502,7 +1502,7 @@ Procedure ClarifyAccessValueSets(ObjectReference, Table)
 		ElsIf AccessKindNames.Get(String.AccessKind) <> Undefined
 		      OR String.AccessKind = "RightSettings" Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Object ""%1"" generated access values set containing known 
 						 |access kind ""%2"" that should not be specified.
 						 |
@@ -1517,7 +1517,7 @@ Procedure ClarifyAccessValueSets(ObjectReference, Table)
 				TypeOf(ObjectReference),
 				String.AccessKind);
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Object ""%1"" generated access
 						 |values set containing unknown access kind ""%2"".';
 					 |ru='Объект ""%1"" сформировал набор значений доступа, 
@@ -1898,7 +1898,7 @@ Function AccessValuesGroupsProperties(AccessValueType, ErrorTitle)
 		).AccessKindsProperties.AccessValuesWithGroups.ByTypes.Get(AccessValueType);
 	
 	If AccessTypeProperties = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorTitle + Chars.LF + Chars.LF +
 			NStr("en='For the access values of the ""%1"" type access value groups are not used.';
 				 |ru='Для значений доступа типа ""%1"" не используются группы значений доступа.'"),

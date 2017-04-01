@@ -248,7 +248,7 @@ Procedure ExecuteExchangeRatesImport()
 		BackgroundJobID = BackgroundJobsCleanup[0].UUID;
 	Else
 		ResultAddress = PutToTempStorage(Undefined, UUID);
-		BackgroundJobDescription = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Launch manually: %1';ru='Запуск вручную: %1'"), ScheduledJob.Metadata.Synonym);
+		BackgroundJobDescription = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Launch manually: %1';ru='Запуск вручную: %1'"), ScheduledJob.Metadata.Synonym);
 		
 		ImportParameters = New Structure;
 		ImportParameters.Insert("BeginOfPeriod", Object.ImportBeginOfPeriod);
@@ -331,7 +331,7 @@ Procedure ImportResultProcessing()
 			Buttons = New ValueList;
 			Buttons.Add("Details", NStr("en='Details...';ru='Подробнее...'"));
 			Buttons.Add("Continue", NStr("en='Continue';ru='Продолжить'"));
-			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Failed to import exchange rates  (%1).';ru='Не удалось загрузить курсы валют (%1).'"), ErrorsCount);
+			QuestionText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Failed to import exchange rates  (%1).';ru='Не удалось загрузить курсы валют (%1).'"), ErrorsCount);
 			NotifyDescription = New NotifyDescription("ImportResultProcessingWhenAnsweringQuestion", ThisObject, ErrorPresentation);
 			ShowQueryBox(NOTifyDescription, QuestionText, Buttons);
 		Else

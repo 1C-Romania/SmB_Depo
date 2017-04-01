@@ -991,7 +991,7 @@ Procedure FillEncryptionError(Error, ErrorDescription, ApplicationDescription, E
 	Error.Errors.Add(CurrentError);
 	
 	ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
-		+ StringFunctionsClientServer.PlaceParametersIntoString(
+		+ StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to pass the encryption check using the appliaction %1
 		|for the following reason: %2';ru='Не удалось пройти проверку шифрования с помощью программы %1 по причине:
 		|%2'"),
@@ -1011,7 +1011,7 @@ Procedure FillDecryptionError(Error, ErrorDescription, ApplicationDescription, E
 	Error.Errors.Add(CurrentError);
 	
 	ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
-		+ StringFunctionsClientServer.PlaceParametersIntoString(
+		+ StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Failed to pass the decryption check using the application %1
 		|for the following reason: %2';ru='Не удалось пройти проверку расшифровки с
 		|помощью программы %1 по причине: %2'"),
@@ -1034,7 +1034,7 @@ Procedure FillSignatureError(Error, ErrorDescription, ApplicationDescription, Er
 	Error.Errors.Add(CurrentError);
 	
 	ErrorDescription = ErrorDescription + Chars.LF + Chars.LF
-		+ StringFunctionsClientServer.PlaceParametersIntoString(
+		+ StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unable to check the signing using the %1 application because
 		|of: %2';ru='Не удалось пройти проверку подписания с помощью
 		|программы %1 по причине: %2'"),

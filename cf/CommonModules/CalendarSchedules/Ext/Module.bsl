@@ -93,7 +93,7 @@ Function GetDatesArrayByCalendar(Val WorkSchedule, Val DateFrom, Val DaysArray, 
 		If Selection.DateInCalendar = Undefined Then
 			ErrorInfo = NStr("en='Business calendar ""%1"" is not filled in from date %2 for the specified number of business days.';ru='Производственный календарь ""%1"" не заполнен с даты %2 на указанное количество рабочих дней.'");
 			If CallingException Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorInfo,
 					WorkSchedule, Format(DateFrom, "DLF=D"));
 			Else
@@ -181,7 +181,7 @@ Function GetDatesDiffByCalendar(Val WorkSchedule, Val StartDate, Val EndDate, Ca
 			|SELECT
 			|	DATETIME(%1)";
 		EndIf;
-		QueryText = QueryText + StringFunctionsClientServer.PlaceParametersIntoString(
+		QueryText = QueryText + StringFunctionsClientServer.SubstituteParametersInString(
 										TemplateAssociation, Format(ScheduleDate, "DF='yyyy, MM, d'"));
 	EndDo;
 	
@@ -274,7 +274,7 @@ Function GetDatesDiffByCalendar(Val WorkSchedule, Val StartDate, Val EndDate, Ca
 	If Result.IsEmpty() Then
 		If CallingException Then
 			ErrorInfo = NStr("en='Work schedule ""%1"" is not filled for the period %2.';ru='График работы ""%1"" не заполнен на период %2.'");
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorInfo,
 				WorkSchedule, PeriodPresentation(StartDate, EndOfDay(EndDate)));
 		Else
@@ -393,7 +393,7 @@ Function GetWorkingDaysDates(Schedule, BeginningDates, GetPreceding = False, Cal
 				Continue;
 			EndIf;
 			If CallingException Then
-				ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(
+				ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(
 									NStr("en='Unable to define the closest work date for the %1 date, perhaps, the work schedule is not filled.';ru='Невозможно определить ближайшую рабочую дату для даты %1, возможно, график работы не заполнен.'"), 
 									Format(Selection.Date, "DLF=D"));
 				Raise(ErrorMessage);

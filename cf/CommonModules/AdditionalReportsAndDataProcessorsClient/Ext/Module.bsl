@@ -133,7 +133,7 @@ Procedure RunCommandInBackground(CommandID, CommandParameters, Form) Export
 		
 		ErrorText = NStr("en='Incorrect parameter value ""AdditionalDataProcessorRef"":';ru='Некорректное значение параметра ""ДополнительнаяОбработкаСсылка"":'") + Chars.LF;
 		If WrongType Then
-			ErrorText = ErrorText + StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorText = ErrorText + StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Type transferred ""%1"", expected ""%2"".';ru='Передан тип ""%1"", ожидался ""%2"".'"),
 				String(TypeOf(AdditionalInformationProcessorRef)),
 				String(Type("CatalogRef.AdditionalReportsAndDataProcessors")));
@@ -320,7 +320,7 @@ Procedure RunOpenOfProcessingForm(ExecuteCommand, Form, DestinationObjects) Expo
 		ExternalDataProcessor = AdditionalReportsAndDataProcessorsServerCall.GetObjectOfExternalDataProcessor(ExecuteCommand.Ref);
 		ProcessingForm = ExternalDataProcessor.GetForm(, Form);
 		If ProcessingForm = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='For the report or data processor ""%1"" the
 		|main form is not assigned or the main form is not intended to be launched in the usual application.
 		|Command ""%2"" can not be run.';ru='Для отчета или обработки ""%1"" не
@@ -359,7 +359,7 @@ Procedure RunClientMethodOfDataProcessor(ExecuteCommand, Form, DestinationObject
 		ExternalDataProcessor = AdditionalReportsAndDataProcessorsServerCall.GetObjectOfExternalDataProcessor(ExecuteCommand.Ref);
 		ProcessingForm = ExternalDataProcessor.GetForm(, Form);
 		If ProcessingForm = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='For the report or data processor ""%1"" the
 		|main form is not assigned or the main form is not intended to be launched in the usual application.
 		|Command ""%2"" can not be run.';ru='Для отчета или обработки ""%1"" не

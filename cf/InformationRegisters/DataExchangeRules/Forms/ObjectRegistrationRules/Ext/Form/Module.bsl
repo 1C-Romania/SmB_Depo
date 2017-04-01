@@ -170,7 +170,7 @@ Procedure RefreshRulesTemplateChoiceList()
 		
 	Else
 		
-		Items.MainGroup.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.MainGroup.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			Items.MainGroup.Title, Metadata.ExchangePlans[Record.ExchangePlanName].Synonym);
 		
 	EndIf;

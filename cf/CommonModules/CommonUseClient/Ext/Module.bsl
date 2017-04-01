@@ -420,7 +420,7 @@ Function CommonModule(Name) Export
 	
 #If Not WebClient Then
 	If TypeOf(Module) <> Type("CommonModule") Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Common module ""%1"" is not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Common module ""%1"" is not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
 	EndIf;
 #EndIf
 	

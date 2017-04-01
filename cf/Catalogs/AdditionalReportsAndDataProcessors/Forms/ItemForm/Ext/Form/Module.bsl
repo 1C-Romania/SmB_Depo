@@ -237,7 +237,7 @@ Procedure AdditionalReportVariantsBeforeDelete(Item, Cancel)
 	EndIf;
 	
 	QuestionText = NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'");
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, Variant.Description);
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, Variant.Description);
 	
 	AdditionalParameters = New Structure;
 	AdditionalParameters.Insert("Variant", Variant);
@@ -732,7 +732,7 @@ Procedure OpenOption()
 	
 	If Not ValueIsFilled(Variant.Ref) Then
 		ErrorText = NStr("en='Report variant ""%1"" is not registered.';ru='Вариант отчета ""%1"" не зарегистрирован.'");
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, Variant.Description);
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, Variant.Description);
 		ShowMessageBox(, ErrorText);
 	Else
 		ShowValue(, Variant.Ref);
@@ -752,7 +752,7 @@ Procedure EditScheduledJob(ChoiceMode = False, CheckBoxChanged = False)
 		ErrorText = NStr("en='Startup option command
 		|""%1"" can not be used in scheduled jobs.';ru='Команда с
 		|вариантом запуска ""%1"" не может использоваться в регламентных заданиях.'");
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, String(ItemCommand.StartVariant));
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, String(ItemCommand.StartVariant));
 		ShowMessageBox(, ErrorText);
 		If CheckBoxChanged Then
 			ItemCommand.ScheduledJobUse = Not ItemCommand.ScheduledJobUse;
@@ -895,7 +895,7 @@ Function UsersQuickAccessPresentation(UserCount)
 		QuickAccessView = NStr("en='%1 of users';ru='%1 пользователей'");
 	EndIf;
 	
-	QuickAccessView = StringFunctionsClientServer.PlaceParametersIntoString(
+	QuickAccessView = StringFunctionsClientServer.SubstituteParametersInString(
 		QuickAccessView, 
 		Format(UserCount, "NG=0"));
 	
@@ -1030,7 +1030,7 @@ Procedure SetVisibleEnabled(Registration = False)
 			Items.PageVariants.Title = NStr("en='Report variants';ru='Варианты отчета'");
 		Else
 			Items.PagesVariants.CurrentPage = Items.VariantsShow;
-			Items.PageVariants.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+			Items.PageVariants.Title = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Report variants (%1)';ru='Варианты отчета (%1)'"),
 				Format(VariantCount, "NG="));
 		EndIf;
@@ -1048,7 +1048,7 @@ Procedure SetVisibleEnabled(Registration = False)
 		NumberOfVisibleLayers = NumberOfVisibleLayers + 1;
 		
 		Items.PageCommands.Visible = True;
-		Items.PageCommands.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.PageCommands.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Commands (%1)';ru='Команды (%1)'"),
 			Format(CommandsCount, "NG="));
 		
@@ -1098,7 +1098,7 @@ Procedure SetVisibleEnabled(Registration = False)
 		
 		Items.PagesVariantsPermissionCommands.CurrentPage = Items.PermissionPage;
 		Items.PermissionPage.Visible = True;
-		Items.PermissionPage.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.PermissionPage.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Permissions (%1)';ru='Разрешения (%1)'"),
 			Format(NumberOfPermissions, "NG="));
 		
@@ -1116,11 +1116,11 @@ Procedure SetVisibleEnabled(Registration = False)
 			Items.PagesSafeModeWithPermissions.CurrentPage = Items.PageUnsafeModeWithPermissions;
 		ElsIf TypeOf(SafeMode) = Type("String") Then
 			Items.PagesSafeModeWithPermissions.CurrentPage = Items.PagePersonalSecurityProfile;
-			Items.DecorationPersonalSecurityProfileLabel.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+			Items.DecorationPersonalSecurityProfileLabel.Title = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Additional report or data processor will connect to
 		|application using ""personal"" security profile %1 which  allows only following operations:';ru='Дополнительный отчет или обработка будет подключаться к программе с использованием ""персонального"" профиля безопасности %1, в котором будут разрешены только следующие операции:'"), SafeMode);
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 is not the correct connection mode for additional reports and data processors that require permissions to use security profiles!';ru='%1 не является корректным режимом подключения для дополнительных отчетов и обработок, требующих разрешений на использование профилей безопасности!'"),
 				SafeMode);
 		EndIf;
@@ -1312,7 +1312,7 @@ Procedure FillCommands(SavedCommands = Undefined)
 				ItemCommand.ScheduledJobPresentation = DisabledSchedulePresentation();
 			EndIf;
 		Else
-			ItemCommand.ScheduledJobPresentation = StringFunctionsClientServer.PlaceParametersIntoString(
+			ItemCommand.ScheduledJobPresentation = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Not applicable for commands with ""%1"" launch variant';ru='Не применимо для команд с вариантом запуска ""%1""'"),
 				String(ItemCommand.StartVariant));
 		EndIf;

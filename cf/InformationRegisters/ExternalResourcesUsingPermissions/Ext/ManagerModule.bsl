@@ -154,7 +154,7 @@ Procedure AddPermission(Val SoftwareModuleType, Val SoftwareModuleID, Val OwnerT
 	
 	If Manager.Selected() Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Duplication of permissions
 		|by key
 		|fields: -SowtwareModuleType: %1
@@ -216,7 +216,7 @@ Procedure DeletePermission(Val SoftwareModuleType, Val SoftwareModuleID, Val Own
 		
 		If Manager.AuthorizationBody <> CommonUse.ObjectXDTOInXMLString(Resolution) Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Permissions
 		|position by
 		|keys: - ProgramModuleType:
@@ -240,7 +240,7 @@ Procedure DeletePermission(Val SoftwareModuleType, Val SoftwareModuleID, Val Own
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Attempt to delete
 		|a nonexistent permission:
 		|-SowtwareModuleType: %1

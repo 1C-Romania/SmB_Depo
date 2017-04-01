@@ -65,7 +65,7 @@ Procedure LockCurrentDataArea(Val CheckNoOtherSessions = False, Val SeparatedLoc
 				CommentTemplate = NStr("en='Cannot lock the data area
 		|as %1';ru='Не удалось установить блокировку
 		|области данных по причине: %1'");
-				TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, 
+				TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(CommentTemplate, 
 					DetailErrorDescription(ErrorInfo()));
 				WriteLogEvent(
 					NStr("en='Data area locking';ru='Блокировка области данных'", CommonUseClientServer.MainLanguageCode()),
@@ -77,7 +77,7 @@ Procedure LockCurrentDataArea(Val CheckNoOtherSessions = False, Val SeparatedLoc
 				TextPattern = NStr("en='Cannot lock the data area
 		|as %1';ru='Не удалось установить блокировку
 		|области данных по причине: %1'");
-				Text = StringFunctionsClientServer.PlaceParametersIntoString(TextPattern, 
+				Text = StringFunctionsClientServer.SubstituteParametersInString(TextPattern, 
 					BriefErrorDescription(ErrorInfo()));
 					
 				Raise(Text);
@@ -118,14 +118,14 @@ Procedure LockCurrentDataArea(Val CheckNoOtherSessions = False, Val SeparatedLoc
 					TextSessions = TextSessions + ", ";
 				EndIf;
 				
-				TextSessions = TextSessions + StringFunctionsClientServer.PlaceParametersIntoString(
+				TextSessions = TextSessions + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='%1 (session - %2)';ru='%1 (сеанс - %2)'", CommonUseClientServer.MainLanguageCode()),
 					ConflictSession.User.Name,
 					Format(ConflictSession.SessionNumber, "NG=0"));
 				
 			EndDo;
 			
-			ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The operation can not be executed as Other users are working in the application: %1';ru='Операция не может быть выполнена, т.к. в приложении работают другие пользователи: %1'",
 					CommonUseClientServer.MainLanguageCode()),
 				TextSessions);
@@ -1025,11 +1025,11 @@ Procedure ProcessInformationAboutWebServiceError(Val ErrorInfo, Val SubsystemNam
 		SubsystemName = Metadata.Subsystems.StandardSubsystems.Subsystems.SaaS.Name;
 	EndIf;
 	
-	EventName = StringFunctionsClientServer.PlaceParametersIntoString(
+	EventName = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='%1.An error occurred while calling the web service operation';ru='%1.Ошибка вызова операции web-сервиса'", CommonUseClientServer.MainLanguageCode()),
 		SubsystemName);
 	
-	ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+	ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='An error occurred when calling operation %1 of web service %2: %3';ru='Ошибка при вызове операции %1 веб-сервиса %2: %3'", CommonUseClientServer.MainLanguageCode()),
 		OperationName,
 		WebServiceName,
@@ -1141,7 +1141,7 @@ Procedure CheckPossibilityToUseConfigurationSaaS() Export
 	
 	If STLDescription = Undefined Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='1C:Service technology library is not implemented in the configuration.
 		|The configuration can not be used in the service model without this library implementation.
 		|
@@ -1159,7 +1159,7 @@ Procedure CheckPossibilityToUseConfigurationSaaS() Export
 		
 		If CommonUseClientServer.CompareVersions(STLVersion, RequiredSTLVersion()) < 0 Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='To use configuration in the service model with the current
 		|SSL version, it is required to update used version of the 1C:Library of service technology library.
 		|
@@ -1182,7 +1182,7 @@ EndProcedure
 //
 Procedure CallExceptionNotAvailableSTLSubsystem(Val SubsystemName) Export
 	
-	Raise StringFunctionsClientServer.PlaceParametersIntoString(
+	Raise StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Cannot perform the operation as subsystem ""%1"" is not implemented in the configuration.
 		|This subsystem is input to the library of service technology content that should be embedded separately to the configuration content.
 		|Check whether subsystem ""%1"" exists and is correctly implemented.';ru='Невозможно выполнить операцию по причине - в конфигурации не внедрена подсистема ""%1"".
@@ -1913,7 +1913,7 @@ Function ParametersSelections(Val FullMetadataObjectName) Export
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='ParametersSelections () function must not be used for the %1 object.';ru='Функция ПараметрыВыборки() не должна использоваться для объекта %1.'"),
 			FullMetadataObjectName);
 		
@@ -1990,11 +1990,11 @@ Function GetRecordManagerOfDataAreas(Val DataArea, Val Status)
 		
 		If Not RecordManager.Selected() Then
 			MessagePattern = NStr("en='Data area %1 not found';ru='Область данных %1 не найдена'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, DataArea);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, DataArea);
 			Raise(MessageText);
 		ElsIf RecordManager.Status <> Status Then
 			MessagePattern = NStr("en='Data area status %1 is not equal to ""%2""';ru='Статус области данных %1 не равен ""%2""'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, DataArea, Status);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, DataArea, Status);
 			Raise(MessageText);
 		EndIf;
 		
@@ -2656,7 +2656,7 @@ Function PutFileToStorage(Val AddressDataFile, Val ConnectionParameters, Val Fil
 			If FileProperties.Exist() Then
 				FileCopy(FileProperties.DescriptionFull, FullFileName);
 			Else
-				Raise(StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise(StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Adding a file to the storage. File %1 has not been found.';ru='Добавление файла в хранилище. Не найден файл %1.'"), FileProperties.DescriptionFull));
 			EndIf;
 		Else
@@ -2945,7 +2945,7 @@ Function FileTransferServiceProxyDescription(Val ConnectionParameters)
 		ServiceName = BaseServiceName + "_" + StrReplace(InterfaceVersion, ".", "_");
 	EndIf;
 	
-	ServiceAddress = ConnectionParameters.URL + StringFunctionsClientServer.PlaceParametersIntoString("/ws/%1?wsdl", ServiceName);
+	ServiceAddress = ConnectionParameters.URL + StringFunctionsClientServer.SubstituteParametersInString("/ws/%1?wsdl", ServiceName);
 	
 	Proxy = CommonUse.WSProxy(ServiceAddress, 
 		"http://www.1c.ru/SaaS/1.0/WS", ServiceName, , UserName, UserPassword, 600);
@@ -3065,7 +3065,7 @@ Function StructuralObjectToXDTOObject(Val StructuralTypeValue)
 	StructuralType = TypeOf(StructuralTypeValue);
 	
 	If Not StructuralTypeToSerialize(StructuralType) Then
-		ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 type is not a structural one or its serialization is not currently supported.';ru='Тип %1 не является структурным или его сериализация в настоящее время не поддерживается.'"),
 			StructuralType);
 		Raise(ErrorInfo);
@@ -3178,7 +3178,7 @@ Function XDTOObjectToStructuralObject(XDTODataObject)
 	EndIf;
 	
 	If Not StructuralTypeToSerialize(StructuralType) Then
-		ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 type is not a structural one or its serialization is not currently supported.';ru='Тип %1 не является структурным или его сериализация в настоящее время не поддерживается.'"),
 			StructuralType);
 		Raise(ErrorInfo);
@@ -3389,7 +3389,7 @@ Function ImportAreaOfSuppliedData(Val DataArea, Val ExportFileID, Val Variant, M
 			DataTransferStandard.Write(ExportFileName);
 			DataFileFound = True;
 		Else
-			MessageAboutFatalError = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageAboutFatalError = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Specified file of initial data is not applicable for this configuration.
 		|Descriptor of file: %1';ru='Указанный файл начальных данных не подходит для данной конфигурации.
 		|Дескриптор файла: %1'"),
@@ -3851,7 +3851,7 @@ Procedure ControlUndividedDataWhenUpdating() Export
 					Continue;
 				EndIf;
 				
-				MetadataObjectType = Type(StringFunctionsClientServer.PlaceParametersIntoString(
+				MetadataObjectType = Type(StringFunctionsClientServer.SubstituteParametersInString(
 					AssistantTypeMetadataObjects, ControlledMetadataObject.Name));
 				
 				ControlRequired = True;
@@ -3925,7 +3925,7 @@ Procedure ControlUndividedDataWhenUpdating() Export
 			
 		EndDo;
 		
-		CalledExceptions.Add(StringFunctionsClientServer.PlaceParametersIntoString(
+		CalledExceptions.Add(StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='All metadata objects that do not belong to SSL
 		|separators (%1) should be included in the events subscriptions (%2)
 		|that control the failure of writing the undivided data in the divided sessions.
@@ -3951,7 +3951,7 @@ Procedure ControlUndividedDataWhenUpdating() Export
 			
 		EndDo;
 		
-		CalledExceptions.Add(StringFunctionsClientServer.PlaceParametersIntoString(
+		CalledExceptions.Add(StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='All configuration metadata objects should be separated by no more than one SSL separator (%1).
 		|The following objects do not meet this criteria: %2';ru='Все объекты метаданных конфигурации должны быть разделены не более чем одним разделителем БСП (%1).
 		|Следующие объекты не удовлетворяют этому критерию: %2'"),
@@ -4008,7 +4008,7 @@ Procedure ControlDelimitersOnUpgrading() Export
 	
 	If OrderOfApplicationData <= InternalDataOrder Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Configuration metadata structure rupture is found: common
 		|attribute %1 must be located in the configuration metadata
 		|tree up to the common attribute %2 in order.';ru='Обнаружено нарушение структуры метаданных

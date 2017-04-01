@@ -85,7 +85,7 @@ Function GetMessageText(FieldKind = "Field", MessageKind = "Filling",
 		EndIf;
 	EndIf;
 
-	Return StringFunctionsClientServer.PlaceParametersIntoString(Pattern, Parameter1, Parameter2, Parameter3, Parameter4);
+	Return StringFunctionsClientServer.SubstituteParametersInString(Pattern, Parameter1, Parameter2, Parameter3, Parameter4);
 
 EndFunction
 
@@ -141,7 +141,7 @@ Function FilledAttributesSettingsEDFWithBanks(Object, IsTest = False) Export
 		
 	If IsTest AND Object.AgreementStatus <> StatusUsed Then
 		MessageText = NStr("en='This EDF setting is only active for status %1';ru='Данная настройка ЭДО будет активна только в статусе %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, StatusUsed);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, StatusUsed);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	

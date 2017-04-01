@@ -107,7 +107,7 @@ Function EnableOnServer()
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en = 'File %1 is not a file of an external report or data processor"), DataProcessorFileName);
 		
 	EndIf;

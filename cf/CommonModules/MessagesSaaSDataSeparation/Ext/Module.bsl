@@ -87,7 +87,7 @@ Procedure OnMessageSending(MessageChannel, MessageBody, MessageObject) Export
 			
 			If CommonUse.SessionSeparatorValue() <> Message.Body.Zone Then
 				MessagePattern = NStr("en='Attempt to send the message on behalf of the area %1 from the area %2';ru='Попытка отправить сообщение от имени области %1 из области %2'");
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, 
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, 
 					Message.Body.Zone, 
 					CommonUse.SessionSeparatorValue());
 				Raise(MessageText);

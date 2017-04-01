@@ -90,7 +90,7 @@ Function ExecuteDataExchangeScenarioActionInFirstInfobase(ScenarioRowIndex, Data
 		EndTry;
 		
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unknown data exchange mode %1';ru='Неизвестный режим обмена данными %1'"), String(ExchangeMode)
 		);
 	EndIf;
@@ -144,7 +144,7 @@ Function ExecuteDataExchangeScenarioActionInSecondInfobase(ScenarioRowIndex, Dat
 		EndTry;
 		
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unknown data exchange mode %1';ru='Неизвестный режим обмена данными %1'"), String(ExchangeMode)
 		);
 	EndIf;

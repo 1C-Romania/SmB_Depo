@@ -176,7 +176,7 @@ Procedure NotifyUser(DigitallySignedCnt, PreparedCnt, SentCnt)
 		Quantity = PreparedCnt;
 	EndIf;
 	HeaderText = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
-	StatusText = StringFunctionsClientServer.PlaceParametersIntoString(StatusText, DigitallySignedCnt, Quantity);
+	StatusText = StringFunctionsClientServer.SubstituteParametersInString(StatusText, DigitallySignedCnt, Quantity);
 	ShowUserNotification(HeaderText, , StatusText);
 	
 	Notify("RefreshStateED");

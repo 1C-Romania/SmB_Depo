@@ -3399,7 +3399,7 @@ Procedure FieldsTablesChangeNodeVariantStructure(TableName, RowIdentifier, Table
 	Else
 		FormParameters.Insert("Title", NStr("en='Set %1 grouping of the %2 report.';ru='Настройка группировки ""%1"" отчета ""%2""'"));
 	EndIf;
-	FormParameters.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	FormParameters.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		FormParameters.Title,
 		TableRow.Presentation,
 		OptionName

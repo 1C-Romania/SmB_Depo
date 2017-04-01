@@ -19,7 +19,7 @@
 Function IfYouCanLockFile(FileData, ErrorString = "") Export
 	
 	If FileData.DeletionMark = True Then
-		ErrorString = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorString = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Impossible to
 		|occupy file ""%1"", so. it is marked for deleting.';ru='Нельзя занять файл ""%1"",
 		|т.к. он помечен на удаление.'"),
@@ -29,7 +29,7 @@ Function IfYouCanLockFile(FileData, ErrorString = "") Export
 	
 	Result = FileData.IsEditing.IsEmpty() Or FileData.CurrentUserIsEditing;  
 	If Not Result Then
-		ErrorString = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorString = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File
 		|""%1"" is already locked
 		|for editing by the user ""%2"" with %3.';ru='Файл ""%1""

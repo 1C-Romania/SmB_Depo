@@ -381,7 +381,7 @@ Procedure AdditionalProcessingBeforeWrite(Source, Cancel) Export
 		
 		If (Source.DeletionMark OR Source.Publication = Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Disabled) AND ThisIsDataProcessorService(Source.Ref) Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Additional report or the %1 data processor was exported from the service and can not be disabled from the offline workplace!
 		|To delete an additional report or data processor, it is
 		|necessary to disable the service in application and synchronize data of the offline workplace with the service.';ru='Дополнительный отчет или обработка %1 был загружен из сервиса и не может быть отключен из автономного рабочего места!

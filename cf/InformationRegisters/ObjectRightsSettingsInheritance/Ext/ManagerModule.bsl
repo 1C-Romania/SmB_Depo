@@ -88,7 +88,7 @@ Procedure UpdateOwnerParents(RightSettingsOwner, HasChanges, UpdateHierarchy = F
 		+ Chars.LF;
 	
 	If PossibleRights.ByTypes.Get(OwnerType) = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorTitle +
 			NStr("en='For %1
 		|type the usage of objects rights settings is not set.';ru='Для

@@ -28,14 +28,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	// We set form title.
 	Title = NStr("en='Data synchronization with ""%1""';ru='Синхронизация данных с ""%1""'");
-	Title = StringFunctionsClientServer.PlaceParametersIntoString(Title, String(InfobaseNode));
+	Title = StringFunctionsClientServer.SubstituteParametersInString(Title, String(InfobaseNode));
 	
 	IsInRoleAddChangeOfDataExchanges = Users.RolesAvailable("DataSynchronizationSetting");
 	IsInRoleFullAccess = Users.InfobaseUserWithFullAccess();
 	
 	Items.PanelUpdateNeeded.CurrentPage           = ?(IsInRoleFullAccess, Items.NeededFullRightsUpdate, Items.LimitedRightsUpdateNeeded);
-	Items.TextNeededUpdateFullRights.Title       = StringFunctionsClientServer.PlaceParametersIntoString(Items.TextNeededUpdateFullRights.Title, InfobaseNode);
-	Items.TextUpdateNeededLimitedRights.Title = StringFunctionsClientServer.PlaceParametersIntoString(Items.TextUpdateNeededLimitedRights.Title, InfobaseNode);
+	Items.TextNeededUpdateFullRights.Title       = StringFunctionsClientServer.SubstituteParametersInString(Items.TextNeededUpdateFullRights.Title, InfobaseNode);
+	Items.TextUpdateNeededLimitedRights.Title = StringFunctionsClientServer.SubstituteParametersInString(Items.TextUpdateNeededLimitedRights.Title, InfobaseNode);
 	
 	Items.PasswordForgotten.Visible = Not IsBlankString(AddressForAccountPasswordRecovery);
 	

@@ -149,7 +149,7 @@ Procedure RunScript(Command)
 	EndIf;
 	
 	Message = NStr("en='Data is being synchronized according to script ""%1""...';ru='Синхронизируются данные по сценарию ""%1""...'");
-	Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, String(CurrentData.Ref));
+	Message = StringFunctionsClientServer.SubstituteParametersInString(Message, String(CurrentData.Ref));
 	
 	Status(Message);
 	

@@ -688,7 +688,7 @@ Procedure ShowStatisticsByMatchLoadFromFile()
 	
 	DataAboutMatch = MatchStatistics();
 	
-	TextAll = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='All (%)';ru='Все (%1)'"), Statistics.TotalAmount);
+	TextAll = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='All (%)';ru='Все (%1)'"), Statistics.TotalAmount);
 	
 	Items.CreateIfNotMatched.Title = NStr("en='Unmatched (';ru='Несопоставленные ('") + Statistics.Unmatched + ")";
 	Items.UpdateExisting.Title = NStr("en='Matched items (';ru='Сопоставленные элементы ('") + String(Statistics.Matched) + ")";
@@ -696,16 +696,16 @@ Procedure ShowStatisticsByMatchLoadFromFile()
 	ChoiceList = Items.FilterComparisonTable.ChoiceList;
 	ChoiceList.Clear();
 	ChoiceList.Add("All", TextAll, True);
-	ChoiceList.Add("Unmapped", StringFunctionsClientServer.PlaceParametersIntoString(
+	ChoiceList.Add("Unmapped", StringFunctionsClientServer.SubstituteParametersInString(
 	NStr("en='Unmatched (%1 and %2)';ru='Несопоставленные (%1 из %2)'"), Statistics.Unmatched, Statistics.TotalAmount));
-	ChoiceList.Add("Mapped", StringFunctionsClientServer.PlaceParametersIntoString(
+	ChoiceList.Add("Mapped", StringFunctionsClientServer.SubstituteParametersInString(
 	NStr("en='Matched (%1 from %2)';ru='Сопоставленные (%1 из %2)'"), Statistics.Matched, Statistics.TotalAmount));
-	ChoiceList.Add("Ambiguous", StringFunctionsClientServer.PlaceParametersIntoString(
+	ChoiceList.Add("Ambiguous", StringFunctionsClientServer.SubstituteParametersInString(
 	NStr("en='Ambiguous (%1 from %2)';ru='Неоднозначные (%1 из %2)'"), Statistics.Ambiguous, Statistics.TotalAmount));
 	
 	If Statistics.Ambiguous > 0 Then 
 		Items.DescriptionAmbiguity.Visible=True;
-		Items.DescriptionAmbiguity.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.DescriptionAmbiguity.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='(ambiguities: %1)';ru='(неоднозначностей: %1)'"), Statistics.Ambiguous);
 	Else 
 		Items.DescriptionAmbiguity.Visible=False;
@@ -940,13 +940,13 @@ Procedure ExecuteImportedDataMatchStepAfterMatchOnServer()
 	
 	If ImportType = "AppliedImport" Then
 		MatchDataAppliedImport(MappingTable);
-		Items.ExplanationForAppliedImport.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.ExplanationForAppliedImport.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		Items.ExplanationForAppliedImport.Title, CatalogPresentation(CorrelationObjectName));
 	ElsIf ImportType = "OuterImport" Then
 		MatchDataExternalProcessing(MappingTable);
 	EndIf;
 	
-	Items.ExplanationForAppliedImport.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.ExplanationForAppliedImport.Title = StringFunctionsClientServer.SubstituteParametersInString(
 	Items.ExplanationForAppliedImport.Title, CatalogPresentation(CorrelationObjectName));
 	
 	ValueToFormAttribute(MappingTable, "DataMatchingTable");
@@ -1202,19 +1202,19 @@ Procedure ExecuteImportedDataMatchStepClient()
 		
 		If Statistics.Matched > 0 Then
 			TextFound = NStr("en='From %1 entered rows to a list will be inserted: %2.';ru='Из %1 введенных строк в список будут вставлены: %2.'");
-			Items.LabelResultComparison.Title = StringFunctionsClientServer.PlaceParametersIntoString(TextFound,
+			Items.LabelResultComparison.Title = StringFunctionsClientServer.SubstituteParametersInString(TextFound,
 				Statistics.TotalAmount, Statistics.Matched);
 			
 			If Statistics.Ambiguous > 0 AND Statistics.NotFound > 0 Then 
 				TextNotFound = NStr("en='11 lines will be ignored:';ru='11 строк будут пропущены:'") + Chars.LF + "  - " + NStr("en='No data in the application: %1';ru='Нет данных в программе: %1'") 
 					+ Chars.LF + "  - " +NStr("en='Several variants for insert: %2';ru='Несколько вариантов для вставки: %2'");
-				TextNotFound = StringFunctionsClientServer.PlaceParametersIntoString(TextNotFound, Statistics.NotFound, Statistics.Ambiguous);
+				TextNotFound = StringFunctionsClientServer.SubstituteParametersInString(TextNotFound, Statistics.NotFound, Statistics.Ambiguous);
 			ElsIf Statistics.Ambiguous > 0 Then
 				TextNotFound = NStr("en='Rows that have several variants in the application will be skipped: %1';ru='Строки, для которых в программе имеется несколько вариантов, будут пропущены: %1'");
-				TextNotFound = StringFunctionsClientServer.PlaceParametersIntoString(TextNotFound, Statistics.Ambiguous);
+				TextNotFound = StringFunctionsClientServer.SubstituteParametersInString(TextNotFound, Statistics.Ambiguous);
 			ElsIf Statistics.NotFound > 0 Then
 				TextNotFound = NStr("en='Rows that do not have relevant data in the application will be skipped: %1';ru='Строки, для которых в программе нет соответствующих данных, будут пропущены: %1'");
-				TextNotFound = StringFunctionsClientServer.PlaceParametersIntoString(TextNotFound, Statistics.NotFound);
+				TextNotFound = StringFunctionsClientServer.SubstituteParametersInString(TextNotFound, Statistics.NotFound);
 			EndIf;
 			TextNotFound = TextNotFound + Chars.LF + NStr("en='To view skipped rows and select data for insert, click Next.';ru='Для просмотра пропущенных строк и подбора данных для вставки нажмите ""Далее"".'");
 			Items.DecorationNotFoundAndAmbiguity.Title = TextNotFound;
@@ -1431,8 +1431,8 @@ Procedure WriteImportedDataReport(BackgroundJob = False)
 		ValueToFormAttribute(MatchedData, "DataMatchingTable");
 	EndIf;
 	
-	Items.OpenCatalogAfterAssistantClosing.Title = StringFunctionsClientServer.PlaceParametersIntoString(Items.OpenCatalogAfterAssistantClosing.Title, CatalogPresentation(CorrelationObjectName));
-	Items.ImportReportExplanation.Title = StringFunctionsClientServer.PlaceParametersIntoString(Items.ImportReportExplanation.Title, CatalogPresentation(CorrelationObjectName));
+	Items.OpenCatalogAfterAssistantClosing.Title = StringFunctionsClientServer.SubstituteParametersInString(Items.OpenCatalogAfterAssistantClosing.Title, CatalogPresentation(CorrelationObjectName));
+	Items.ImportReportExplanation.Title = StringFunctionsClientServer.SubstituteParametersInString(Items.ImportReportExplanation.Title, CatalogPresentation(CorrelationObjectName));
 	
 	ReportType = "AllItems";
 	
@@ -1804,7 +1804,7 @@ Function ObjectManager(CorrelationObjectName)
 		ElsIf ObjectArray.ObjectType = "Catalog" Then
 			ObjectManager = Catalogs[ObjectArray.NameObject];
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='%1 object is not found';ru='Объект ""%1"" не найден'"), CorrelationObjectName);
+			Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1 object is not found';ru='Объект ""%1"" не найден'"), CorrelationObjectName);
 		EndIf;
 		
 		Return ObjectManager;

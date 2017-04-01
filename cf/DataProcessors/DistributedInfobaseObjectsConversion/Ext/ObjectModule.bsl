@@ -334,7 +334,7 @@ Procedure ReadPriorityChangesFromExchangeMessages(Val MessageReader, CommonDataN
 			TypeExchangePlanObject = Type("ExchangePlanObject." + ExchangePlanName);
 			
 			If NonUniqueRecordsAreFound("Catalog.MetadataObjectIDs") Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NonUniqueRecordErrorTemplate(),
 					NStr("en='Before exporting of the
 		|metadata object IDs non unique records were found in catalog.';ru='Перед загрузкой идентификаторов объектов метаданных
@@ -380,7 +380,7 @@ Procedure ReadPriorityChangesFromExchangeMessages(Val MessageReader, CommonDataN
 			EndDo;
 			
 			If Cancel Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Import of important changes is not completed.
 		|While importing predefined items, non-unique records were found.
 		|For the following reasons the continuation is impossible.
@@ -398,7 +398,7 @@ Procedure ReadPriorityChangesFromExchangeMessages(Val MessageReader, CommonDataN
 					EventLogLevel.Error,
 					,
 					,
-					StringFunctionsClientServer.PlaceParametersIntoString(
+					StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='While importing predefined items, non-unique records were found.
 		|%1';ru='При загрузке предопределенных элементов найдены не уникальные записи.
 		|%1'"),
@@ -533,7 +533,7 @@ Procedure AddPredefinedItemDoubleDescription(WrittenObject, PredefinedItemDouble
 		If FoundRefs.Get(Selection.Ref) = Undefined Then
 			FoundRefs.Insert(Selection.Ref, 1);
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NonUniqueRecordErrorTemplate(),
 				NStr("en='While importing predefined items, non-unique records were found.';ru='При загрузке предопределенных элементов найдены не уникальные записи.'"));
 		EndIf;
@@ -576,7 +576,7 @@ Procedure AddPredefinedItemDoubleDescription(WrittenObject, PredefinedItemDouble
 		EndIf;
 		PredefinedItemDoubles = PredefinedItemDoubles + Chars.LF
 			+ Table + "." + PredefinedDataName + Chars.LF
-			+ StringFunctionsClientServer.PlaceParametersIntoString(
+			+ StringFunctionsClientServer.SubstituteParametersInString(
 				Pattern,
 				String(Ref.UUID()),
 				DuplicateReferenceIds)

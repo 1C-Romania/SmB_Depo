@@ -105,7 +105,7 @@ Procedure ContinueCountdown()
 			NewHeader = (
 				IdleButtonTitle
 				+ " ("
-				+ StringFunctionsClientServer.PlaceParametersIntoString(
+				+ StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='left %1 sec.';ru='осталось %1 сек.'"),
 				String(ExpectationCounter))
 				+ ")");

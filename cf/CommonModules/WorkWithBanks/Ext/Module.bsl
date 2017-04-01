@@ -167,7 +167,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work.ThereIsWork       = Result.ClassifierObsolete;
 		Work.Important         = Result.ClassifierOverdue;
 		Work.Presentation  = NStr("en='Banks classifier is outdated';ru='Классификатор банков устарел'");
-		Work.ToolTip      = StringFunctionsClientServer.PlaceParametersIntoString(
+		Work.ToolTip      = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Last update %1 ago';ru='Последнее обновление %1 назад'"), Result.OverdueAmountAsString);
 		Work.Form          = "Catalog.RFBankClassifier.Form.ImportClassifier";
 		Work.FormParameters = New Structure("OpenFromList", True);
@@ -266,7 +266,7 @@ Procedure SupplementMessageText(ClassifierImportParameters) Export
 	
 	If ClassifierImportParameters["Exported"] > 0 Then
 		
-		MessageText = MessageText + StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = MessageText + StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='
 		|New updated: %1.';ru='
 		|Загружено новых: %1.'"), ClassifierImportParameters["Exported"]);
@@ -275,7 +275,7 @@ Procedure SupplementMessageText(ClassifierImportParameters) Export
 	
 	If ClassifierImportParameters["Updated"] > 0 Then
 		
-		MessageText = MessageText + StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = MessageText + StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='
 		|Records updated: %1.';ru='
 		|Обновлено записей: %1.'"), ClassifierImportParameters["Updated"]);
@@ -710,7 +710,7 @@ Function ClassifierFilesReceived(FolderWithFiles)
 		File = New File(FileName);
 		If Not File.Exist() Then
 			WriteErrorInEventLogMonitor(
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='File %1 has not been found';ru='Не найден файл %1'"),
 					FileName));
 			Result = False;

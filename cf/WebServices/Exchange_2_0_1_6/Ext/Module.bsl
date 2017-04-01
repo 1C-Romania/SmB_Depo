@@ -129,7 +129,7 @@ Function CreateDataExchange(ExchangePlanName, ParameterString, SetupXDTOFilter, 
 	
 	If Cancel Then
 		Message = NStr("en='An error occurred when creating an exchange setting in the second infobase: %1';ru='При создании настройки обмена во второй информационной базе возникли ошибки: %1'");
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, DataExchangeCreationAssistant.ErrorMessageString());
+		Message = StringFunctionsClientServer.SubstituteParametersInString(Message, DataExchangeCreationAssistant.ErrorMessageString());
 		Raise Message;
 	EndIf;
 	
@@ -146,7 +146,7 @@ Function CreateDataExchange(ExchangePlanName, ParameterString, SetupXDTOFilter, 
 	
 	If Cancel Then
 		Message = NStr("en='An error occurred when creating an exchange setting in the second infobase: %1';ru='При создании настройки обмена во второй информационной базе возникли ошибки: %1'");
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, DataExchangeCreationAssistant.ErrorMessageString());
+		Message = StringFunctionsClientServer.SubstituteParametersInString(Message, DataExchangeCreationAssistant.ErrorMessageString());
 		Raise Message;
 	EndIf;
 	
@@ -245,13 +245,13 @@ Function GetFilePart(TransferId, PartNumber, PartData)
 	If FileNames.Count() = 0 Then
 		
 		MessagePattern = NStr("en='Fragment %1 of transfer session with the %2 ID is not found';ru='Не найден фрагмент %1 сессии передачи с идентификатором %2'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, String(PartNumber), String(TransferId));
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, String(PartNumber), String(TransferId));
 		Raise(MessageText);
 		
 	ElsIf FileNames.Count() > 1 Then
 		
 		MessagePattern = NStr("en='Several fragments %1 of the transfer session with the %2 ID have been found';ru='Найдено несколько фрагментов %1 сессии передачи с идентификатором %2'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, String(PartNumber), String(TransferId));
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, String(PartNumber), String(TransferId));
 		Raise(MessageText);
 		
 	EndIf;
@@ -309,7 +309,7 @@ Function SaveFileFromParts(TransferId, PartQuantity, FileId)
 		|in application settings parameters ""Directory of temporary files for Linux"" and ""Directory of temporary files for Windows"" are specified.';ru='Не найден фрагмент %1 сессии передачи с идентификатором %2.
 		|Необходимо убедиться, что в настройках программы заданы параметры
 		|""Каталог временных файлов для Linux"" и ""Каталог временных файлов для Windows"".'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, String(PartNumber), String(TransferId));
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, String(PartNumber), String(TransferId));
 			Raise(MessageText);
 		EndIf;
 		
@@ -575,7 +575,7 @@ Function RegisterDataForInitialExport(Val ExchangePlanName, Val NodeCode, LongOp
 	
 	If Not ValueIsFilled(InfobaseNode) Then
 		Message = NStr("en='Exchange plan node is not found; %1 exchange plan name; %2 node code';ru='Не найден узел плана обмена; имя плана обмена %1; код узла %2'");
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(Message, ExchangePlanName, NodeCode);
+		Message = StringFunctionsClientServer.SubstituteParametersInString(Message, ExchangePlanName, NodeCode);
 		Raise Message;
 	EndIf;
 	
@@ -652,9 +652,9 @@ Function FindFileOfPart(Val Directory, Val FileNumber)
 	
 	For CountNumberOfBits = CountNumberOfBitsCiesla(FileNumber) To 5 Do
 		
-		FormatString = StringFunctionsClientServer.PlaceParametersIntoString("ND=%1; NLZ=; NG=0", String(CountNumberOfBits));
+		FormatString = StringFunctionsClientServer.SubstituteParametersInString("ND=%1; NLZ=; NG=0", String(CountNumberOfBits));
 		
-		FileName = StringFunctionsClientServer.PlaceParametersIntoString("data.zip.%1", Format(FileNumber, FormatString));
+		FileName = StringFunctionsClientServer.SubstituteParametersInString("data.zip.%1", Format(FileNumber, FormatString));
 		
 		FileNames = FindFiles(Directory, FileName);
 		

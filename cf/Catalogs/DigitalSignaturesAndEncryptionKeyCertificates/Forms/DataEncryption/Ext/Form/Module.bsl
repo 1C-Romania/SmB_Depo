@@ -286,14 +286,14 @@ Procedure FillEncryptionCertificatesFromSet(CertificatesSetDescription)
 		For Each String IN Rows Do
 			CertificateData = Selection.CertificateData.Get();
 			If TypeOf(CertificateData) <> Type("BinaryData") Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='""%1"" certificate data was not found in the catalog';ru='Данные сертификата ""%1"" не найдены в справочнике'"), Selection.Presentation);
 			EndIf;
 			Try
 				CryptoCertificate = New CryptoCertificate(CertificateData);
 			Except
 				ErrorInfo = ErrorInfo();
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='""% 1"" certificate data in the catalog is
 		|not correct by reason of: %2';ru='Данные сертификата ""%1"" в справочнике
 		|не корректны по причине: %2'"),
@@ -637,7 +637,7 @@ Function CertificatesProperties(Val Refs, Val FormID)
 		
 		CertificateData = Selection.CertificateData.Get();
 		If TypeOf(CertificateData) <> Type("BinaryData") Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='""%1"" certificate data was not found in the catalog';ru='Данные сертификата ""%1"" не найдены в справочнике'"), Selection.Description);
 		EndIf;
 		
@@ -645,7 +645,7 @@ Function CertificatesProperties(Val Refs, Val FormID)
 			CryptoCertificate = New CryptoCertificate(CertificateData);
 		Except
 			ErrorInfo = ErrorInfo();
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='""% 1"" certificate data in the catalog is
 		|not correct by reason of: %2';ru='Данные сертификата ""%1"" в справочнике
 		|не корректны по причине: %2'"),

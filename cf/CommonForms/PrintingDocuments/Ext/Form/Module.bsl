@@ -18,7 +18,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Check of input parameters.
 	If Not ValueIsFilled(Parameters.DataSource) Then 
 		CommonUseClientServer.Validate(TypeOf(Parameters.CommandParameter) = Type("Array") Or CommonUse.ReferenceTypeValue(Parameters.CommandParameter),
-			StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Invalid value of the CommandParameter parameter when calliing the PrintManagementClient.ExecutePrintCommand method.
+			StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Invalid value of the CommandParameter parameter when calliing the PrintManagementClient.ExecutePrintCommand method.
 		|Expected: Array, AnyRef.
 		|Transferred: %1';ru='Недопустимое значение параметра ПараметрКоманды при вызове метода УправлениеПечатьюКлиент.ВыполнитьКомандуПечати.
 		|Ожидалось: Массив, ЛюбаяСсылка.
@@ -1212,7 +1212,7 @@ Function GetTempFileNameForPrintForm(TemplateName, Extension, UsedFilesNames)
 	FileNamePattern = "%1%2.%3";
 	
 	TempFileName = CommonUseClientServer.ReplaceProhibitedCharsInFileName(
-		StringFunctionsClientServer.PlaceParametersIntoString(FileNamePattern, TemplateName, "", Extension));
+		StringFunctionsClientServer.SubstituteParametersInString(FileNamePattern, TemplateName, "", Extension));
 		
 	UsageNumber = ?(UsedFilesNames[TempFileName] <> Undefined,
 							UsedFilesNames[TempFileName] + 1,
@@ -1223,7 +1223,7 @@ Function GetTempFileNameForPrintForm(TemplateName, Extension, UsedFilesNames)
 	// If the name has been previously used, add counter at the end of the name.
 	If UsageNumber > 1 Then
 		TempFileName = CommonUseClientServer.ReplaceProhibitedCharsInFileName(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				FileNamePattern,
 				TemplateName,
 				" (" + UsageNumber + ")",

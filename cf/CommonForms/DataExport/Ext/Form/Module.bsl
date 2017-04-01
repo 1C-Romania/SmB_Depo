@@ -264,7 +264,7 @@ EndProcedure
 Procedure HandleError(Val ShortPresentation, Val DetailedPresentation)
 	
 	WriteLogEventTemplate = NStr("en='An error occurred while exporting the data: ----------------------------------------- %1 -----------------------------------------';ru='При выгрузке данных произошла ошибка: ----------------------------------------- %1 -----------------------------------------'");
-	WriteLogEventText = StringFunctionsClientServer.PlaceParametersIntoString(WriteLogEventTemplate, DetailedPresentation);
+	WriteLogEventText = StringFunctionsClientServer.SubstituteParametersInString(WriteLogEventTemplate, DetailedPresentation);
 	
 	WriteLogEvent(
 		NStr("en='Data export';ru='Экспорт данных'"),
@@ -279,7 +279,7 @@ Procedure HandleError(Val ShortPresentation, Val DetailedPresentation)
 		|
 		|Расширенная информация для службы поддержки записана в журнал регистрации. Если Вам неизвестна причина ошибки - рекомендуется обратиться в службу технической поддержки, предоставив для расследования информационную базу и выгрузку журнала регистрации.'");
 	
-	Raise StringFunctionsClientServer.PlaceParametersIntoString(ExceptionPattern, ShortPresentation);
+	Raise StringFunctionsClientServer.SubstituteParametersInString(ExceptionPattern, ShortPresentation);
 	
 EndProcedure
 

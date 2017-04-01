@@ -111,7 +111,7 @@ Procedure BeforeWrite(Cancel)
 			Raise
 				NStr("en='Cannot add a subgroup to predetermined group ""All external users"".';ru='Невозможно добавить подгруппу к предопределенной группе ""Все внешние пользователи"".'");
 		ElsIf Parent.AllAuthorizationObjects Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Cannot add a subgroup to group %1 because it includes all users.';ru='Невозможно добавить подгруппу к группе ""%1"", так как в число ее участников входят все пользователи.'"), Parent);
 		EndIf;
 		
@@ -146,7 +146,7 @@ Procedure BeforeWrite(Cancel)
 			
 				Selection = QueryResult.Select();
 				Selection.Next();
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Group ""%1"" already exists and includes all users of the ""%2"" kind.';ru='Уже существует группа ""%1"", в число участников которой входят все пользователи вида ""%2"".'"),
 					Selection.RefPresentation,
 					TypeOfAuthorizationObjects.Metadata().Synonym);
@@ -163,7 +163,7 @@ Procedure BeforeWrite(Cancel)
 			If ParentAuthorizationObjectType <> Undefined
 			   AND ParentAuthorizationObjectType <> TypeOfAuthorizationObjects Then
 				
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Kind of participants shall be
 		|""%1"" as in the upstream group of external users ""%2"".';ru='Вид участников группы должен
 		|быть ""%1"", как у вышестоящей группы внешних пользователей ""%2"".'"),
@@ -188,7 +188,7 @@ Procedure BeforeWrite(Cancel)
 			
 			QueryResult = Query.Execute();
 			If Not QueryResult.IsEmpty() Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Cannot change a kind
 		|of participants of group ""%1"" as it has subgroups.';ru='Невозможно изменить
 		|вид участников группы ""%1"", так как у нее имеются подгруппы.'"),
@@ -227,7 +227,7 @@ Procedure BeforeWrite(Cancel)
 					OtherAuthorizationObjectTypePresentation =
 						Selection.TypeOfAuthorizationObjects.Metadata().Synonym;
 				EndIf;
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Cannot change a kind
 		|of participants of group ""%1"" as it has subgroup ""%2"" with another kind of participants ""%3"".';ru='Невозможно
 		|изменить вид участников группы ""%1"", так как у нее имеется подгруппа ""%2"" с другим видом участников ""%3"".'"),

@@ -219,7 +219,7 @@ Procedure PutFileWithAlertExtensionSizeAlert(Size, AdditionalParameters) Export
 	
 	If Not TotalFilesSizeIsOptimal(Size) Then 
 		WarningText = NStr("en='Unable to add file. Selected files size exceeds the limit in %1 MB';ru='Не удалось добавить файл. Размер выбранных файлов превышает предел в %1 Мб'");
-		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(WarningText, MaximalFileSize);
+		WarningText = StringFunctionsClientServer.SubstituteParametersInString(WarningText, MaximalFileSize);
 		ClearMessages();
 		ShowMessageToUser(WarningText);
 	EndIf;
@@ -291,7 +291,7 @@ Procedure PlaceFilesWithoutExtensionAtServer(StorageAddress, FileName)
 	FileSize = NewFile.Size();
 	If Not TotalFilesSizeIsOptimal(FileSize) Then 
 		WarningText = NStr("en='Selected files size exceeds the limit in %1 MB';ru='Размер выбранных файлов превышает предел в %1 Мб'");
-		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(WarningText, MaximalFileSize);
+		WarningText = StringFunctionsClientServer.SubstituteParametersInString(WarningText, MaximalFileSize);
 		ShowMessageToUser(WarningText);
 		DeleteFromTempStorage(StorageAddress);
 		Return;

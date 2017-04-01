@@ -223,7 +223,7 @@ Procedure SelectFileAfterConnectionFileOperationsExtension(Attached, Context) Ex
 	Dialog = New FileDialog(FileDialogMode.Open);
 	Dialog.Multiselect = False;
 	Dialog.Title = NStr("en='Select digital signature file';ru='Выберите файл электронной подписи'");
-	Dialog.Filter = StringFunctionsClientServer.PlaceParametersIntoString(
+	Dialog.Filter = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Signature files (*.%1)|*.%1|All files(*.*)|*.*';ru='Файлы подписи (*.%1)|*.%1|Все файлы(*.*)|*.*'"),
 		DigitalSignatureClientServer.PersonalSettings().ExtensionForSignatureFiles);
 	
@@ -309,7 +309,7 @@ Procedure SelectFileAfterObtainingCertificatesFromSignaturesError(ErrorInfo, Sta
 	
 	StandardProcessing = False;
 	
-	ErrorOnClient = New Structure("ErrorDescription", StringFunctionsClientServer.PlaceParametersIntoString(
+	ErrorOnClient = New Structure("ErrorDescription", StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='An error occurred when getting certificates from a signature file: %1';ru='При получении сертификатов из файла подписи произошла ошибка: %1'"),
 		BriefErrorDescription(ErrorInfo)));
 	
@@ -369,7 +369,7 @@ Function AddRowAtServer(Address, FileName, AddNewRow, ErrorOnServer, SignatureDa
 		Certificates = CryptoManager.GetCertificatesFromSignature(SignatureData);
 	Except
 		ErrorInfo = ErrorInfo();
-		ErrorOnServer.Insert("ErrorDescription", StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorOnServer.Insert("ErrorDescription", StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred when getting certificates from a signature file: %1';ru='При получении сертификатов из файла подписи произошла ошибка: %1'"),
 			BriefErrorDescription(ErrorInfo)));
 		Return False;

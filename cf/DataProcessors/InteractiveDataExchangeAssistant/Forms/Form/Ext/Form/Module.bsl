@@ -632,7 +632,7 @@ Procedure ExportAdditionFilterHistorySelectionFromMenu(Val SelectedItem, Val Add
 		// Selected a variant - name of the previously saved setting.
 		
 		HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
-		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Restore settings ""%1""?';ru='Восстановить настройки ""%1""?'"), SettingRepresentation);
 		
 		NotifyDescription = New NotifyDescription("ExportAdditionFiltersHistoryEnd", ThisObject, SettingRepresentation);
@@ -737,7 +737,7 @@ Procedure AfterFileExistenceCheck(Exist, AdditionalParameters) Export
 		NotifyDescription = New NotifyDescription("DetermineIsDirectory", ThisForm, AdditionalParameters);
 		File.StartCheckingIsDirectory(NOTifyDescription);
 	Else
-		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
+		WarningText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Directory ""%1"" does not exist or there is no access to it.';ru='Каталог ""%1"" не существует или к нему нет доступа.'"),
 			AdditionalParameters.DirectoryName
 		);
@@ -754,7 +754,7 @@ Procedure DetermineIsDirectory(IsDirectory, AdditionalParameters) Export
 		NotifyDescription = New NotifyDescription("OpenDirectoryWithFile", ThisForm, AdditionalParameters);
 		BeginRunningApplication(NOTifyDescription, AdditionalParameters.DirectoryName);
 	Else
-		WarningText = StringFunctionsClientServer.PlaceParametersIntoString(
+		WarningText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='""%1"" is a file, not a directory.';ru='""%1"" является файлом, а не каталогом.'"),
 			AdditionalParameters.DirectoryName
 		);

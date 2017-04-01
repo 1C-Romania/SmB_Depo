@@ -193,7 +193,7 @@ Function CryptoManager(Operation, ShowError = True, ErrorDescription = "", Appli
 		ErrorTitle = NStr("en='Unable to get certificates on %1 server because:';ru='Не удалось получить сертификаты на сервере %1 по причине:'");
 		
 	ElsIf Operation <> "" Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error in the CryptographyManager function.
 		|Wrong of the %1 Operation parameter value.';ru='Ошибка в функции МенеджерКриптографии.
 		|Неверное значение параметра Операция ""%1"".'"), Operation);
@@ -206,7 +206,7 @@ Function CryptoManager(Operation, ShowError = True, ErrorDescription = "", Appli
 		ErrorTitle = NStr("en='Unable to run an operation on the %1 server because:';ru='Не удалось выполнить операцию на сервере %1 по причине:'");
 	EndIf;
 	
-	ErrorTitle = StringFunctionsClientServer.PlaceParametersIntoString(ErrorTitle, ComputerName);
+	ErrorTitle = StringFunctionsClientServer.SubstituteParametersInString(ErrorTitle, ComputerName);
 	
 	ErrorProperties = New Structure;
 	ErrorProperties.Insert("ErrorTitle", ErrorTitle);
@@ -222,7 +222,7 @@ Function CryptoManager(Operation, ShowError = True, ErrorDescription = "", Appli
 		ErrorProperties.Insert("ApplicationsSetting", True);
 		
 	ElsIf ValueIsFilled(Application) Then
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 application is not available or installed.';ru='Программа %1 не доступна или не установлена.'"), Application);
 	Else
 		ErrorText = NStr("en='No application is available or installed.';ru='Ни одна из программ не доступна или не установлена.'");
@@ -311,7 +311,7 @@ Function GetCertificateByImprint(Imprint, InPersonalStorageOnly,
 	EndIf;
 	
 	If ValueIsFilled(ErrorPresentation) Then
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Certificate is not found
 		|on the server because: %1
 		|';ru='Сертификат
@@ -1264,7 +1264,7 @@ Procedure FillCertificateAdditionalProperties(Form)
 		ErrorInfo = ErrorInfo();
 		Certificate = Form.Certificate;
 		Form.Certificate = Undefined;
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error of the
 		|infobase occurred while receiving %1
 		|certificate data: %2';ru='При получении

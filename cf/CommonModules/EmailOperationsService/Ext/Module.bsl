@@ -667,7 +667,7 @@ Procedure FillAttachedAttachments(Attachments, AttachmentName, InternetMailMessa
 		AttachmentsTextName = "";
 		While AttachmentsTextName = "" Or Attachments.Get(AttachmentsTextName) <> Undefined Do
 			IndexOf = IndexOf + 1;
-			AttachmentsTextName = StringFunctionsClientServer.PlaceParametersIntoString("%1 - (%2).%3", AttachmentName, IndexOf, Extension);
+			AttachmentsTextName = StringFunctionsClientServer.SubstituteParametersInString("%1 - (%2).%3", AttachmentName, IndexOf, Extension);
 		EndDo;
 		Attachments.Insert(AttachmentsTextName, InternetMailTexts.Data);
 	EndDo;
@@ -820,7 +820,7 @@ Procedure CheckPossibilityOfSendingAndReceivingOfEmails(UserAccount, PasswordPar
 		Try
 			CheckPossibilityOfSendingTestMessages(UserAccount, PasswordParameter);
 		Except
-			ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(
 									NStr("en='Error when sending a message: %1';ru='Ошибка при отправке сообщения: %1'"),
 									BriefErrorDescription(ErrorInfo()) );
 		EndTry;
@@ -838,7 +838,7 @@ Procedure CheckPossibilityOfSendingAndReceivingOfEmails(UserAccount, PasswordPar
 			EndIf;
 			
 			ErrorInfo = ErrorInfo
-								+ StringFunctionsClientServer.PlaceParametersIntoString(
+								+ StringFunctionsClientServer.SubstituteParametersInString(
 										NStr("en='Access error to the incoming message server: %1';ru='Ошибка доступа к серверу входящих сообщений: %1'"),
 										BriefErrorDescription(ErrorInfo()) );
 		EndTry;

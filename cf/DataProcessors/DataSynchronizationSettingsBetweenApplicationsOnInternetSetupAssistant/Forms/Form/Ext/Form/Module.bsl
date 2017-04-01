@@ -74,8 +74,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	CorrespondentTables = DataExchangeServer.CorrespondentTablesForValuesByDefault(ExchangePlanName, CorrespondentVersion);
 	
 	// Set the assistant title
-	Title = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Setting the data synchronization with ""%1""';ru='Настройка синхронизации данных с ""%1""'"), CorrespondentDescription);
-	Items.DataSynchronizationDescription.Title = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Description of data synchronization with ""%1""';ru='Описание синхронизации данных с ""%1""'"), CorrespondentDescription);
+	Title = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Setting the data synchronization with ""%1""';ru='Настройка синхронизации данных с ""%1""'"), CorrespondentDescription);
+	Items.DataSynchronizationDescription.Title = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Description of data synchronization with ""%1""';ru='Описание синхронизации данных с ""%1""'"), CorrespondentDescription);
 	
 	EventLogMonitorEventDataSyncronizationSetting = DataExchangeSaaS.EventLogMonitorEventDataSyncronizationSetting();
 	
@@ -98,7 +98,7 @@ Procedure OnOpen(Cancel)
 	
 	If CommonUseClient.OfferToCreateBackups() Then
 		
-		Text = StringFunctionsClientServer.PlaceParametersIntoString(
+		Text = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Before you configure the synchronization it is recommended to <a href=""%1"">back up<a>.';ru='Перед настройкой синхронизации рекомендуется сделать <a href = %1 >резервную копию данных</a>.'"),
 			"CreateBackup");
 		
@@ -1556,7 +1556,7 @@ Procedure ImportParametersAccountingCorrespondent(Cancel, ErrorInfo = "", Corres
 		
 		If IsBlankString(CorrespondentErrorMessage) Then
 			CorrespondentErrorMessage = NStr("en='Accounting parameters are not set in application ""%1"".';ru='Не заданы параметры учета в приложении ""%1"".'");
-			CorrespondentErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(CorrespondentErrorMessage, CorrespondentDescription);
+			CorrespondentErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(CorrespondentErrorMessage, CorrespondentDescription);
 		EndIf;
 		
 		// Accounting parameters of this application

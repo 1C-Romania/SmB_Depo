@@ -148,7 +148,7 @@ Procedure Initialization() Export
 	MessagesInitialization();
 	
 	MessageSubject = "Exchange message (%1)"; // String can not be localized.
-	MessageSubject = StringFunctionsClientServer.PlaceParametersIntoString(MessageSubject, MessageFileTemplateName);
+	MessageSubject = StringFunctionsClientServer.SubstituteParametersInString(MessageSubject, MessageFileTemplateName);
 	
 	mBodyMessageIsSimple	= NStr("en='Data exchange message';ru='Сообщение обмена данными'");
 	mBodyMessageIsCompressed	= NStr("en='Data exchange compressed message';ru='Сжатое сообщение обмена данными'");
@@ -405,7 +405,7 @@ Function GetExchangeMessage()
 		GetMessageAboutError(104);
 		
 		MessageString = NStr("en='No message with header ""%1"" has been found';ru='Не обнаружены письма с заголовком: ""%1""'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, MessageSubject);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, MessageSubject);
 		SupplementErrorMessage(MessageString);
 		
 		Return False;
@@ -611,7 +611,7 @@ TemporaryDirectoryOfExchangeMessages = Undefined;
 ExchangeMessageTemporaryFile    = Undefined;
 
 ObjectName = NStr("en='Data processor: %1';ru='Обработка: %1'");
-ObjectName = StringFunctionsClientServer.PlaceParametersIntoString(ObjectName, Metadata().Name);
+ObjectName = StringFunctionsClientServer.SubstituteParametersInString(ObjectName, Metadata().Name);
 
 #EndRegion
 

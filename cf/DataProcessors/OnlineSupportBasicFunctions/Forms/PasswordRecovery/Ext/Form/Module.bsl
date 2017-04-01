@@ -120,7 +120,7 @@ Function MessageParametersToTechicalSupport()
 	Result.Insert("Subject"       , NStr("en='Online support. Password recovery.';ru='Интернет-поддержка. Восстановление пароля.'"));
 	Result.Insert("FromWhom"     , Email);
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en=""Hello! 
 		|I can't recover my password to connect InternetSupport. 
 		|Please help me to solve the problem. 

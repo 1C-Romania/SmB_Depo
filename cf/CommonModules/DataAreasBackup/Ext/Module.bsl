@@ -536,7 +536,7 @@ Procedure ErrorCreatingCopies(Val JobParameters, Val ErrorInfo) Export
 		Event = NStr("en='Creating Error';ru='Ошибка создания'", CommonUseClientServer.MainLanguageCode());
 	EndIf;
 	
-	TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(
+	TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(
 		CommentTemplate,
 		Format(CommonUse.SessionSeparatorValue(), "NZ=0; NG="),
 		JobParameters.TryNumber,
@@ -930,7 +930,7 @@ Function GetZoneBackupSettings(Val DataArea = Undefined) Export
 		MessagePattern = NStr("en='An error occurred while receiving
 		|backup: %1.';ru='Ошибка при получении настроек
 		|резервного копирования: %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ErrorInfo);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ErrorInfo);
 		Raise(MessageText);
 	EndIf;
 	
@@ -972,7 +972,7 @@ Procedure SetZoneBackupSettings(Val DataArea, Val BackupSettings) Export
 		MessagePattern = NStr("en='An error occurred while saving
 		|backup settings: %1.';ru='Ошибка при сохранении настроек
 		|резервного копирования: %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ErrorInfo);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ErrorInfo);
 		Raise(MessageText);
 	EndIf;
 	

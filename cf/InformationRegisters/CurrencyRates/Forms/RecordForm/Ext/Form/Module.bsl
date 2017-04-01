@@ -71,7 +71,7 @@ Procedure FillCurrency()
 	SelectionOfCurrency = Query.Execute().Select();
 	
 	While SelectionOfCurrency.Next() Do
-		PresentationOfCurrency = StringFunctionsClientServer.PlaceParametersIntoString("%1 (%2)", SelectionOfCurrency.Description, SelectionOfCurrency.SymbolicCode);
+		PresentationOfCurrency = StringFunctionsClientServer.SubstituteParametersInString("%1 (%2)", SelectionOfCurrency.Description, SelectionOfCurrency.SymbolicCode);
 		Items.CurrencyList.ChoiceList.Add(SelectionOfCurrency.Ref, PresentationOfCurrency);
 		If SelectionOfCurrency.Ref = Record.Currency Then
 			CurrencyLabel = PresentationOfCurrency;

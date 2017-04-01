@@ -34,12 +34,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ElsIf DataUpdateMode = "TransitionFromAnotherApplication" Then
 		Title = NStr("en='Transition from another application';ru='Переход с другой программы'");
 		Items.RunMode.CurrentPage = Items.TransitionFromAnotherApplication;
-		Items.MessageTextTransitionFromAnotherApplication.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.MessageTextTransitionFromAnotherApplication.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			Items.MessageTextTransitionFromAnotherApplication.Title, Metadata.Synonym);
 	Else
 		Title = NStr("en='Application version update';ru='Обновление версии программы'");
 		Items.RunMode.CurrentPage = Items.ApplicationVersionUpdate;
-		Items.MessageTextUpdatedConfiguration.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.MessageTextUpdatedConfiguration.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			Items.MessageTextUpdatedConfiguration.Title, Metadata.Synonym, Metadata.Version);
 	EndIf;
 	

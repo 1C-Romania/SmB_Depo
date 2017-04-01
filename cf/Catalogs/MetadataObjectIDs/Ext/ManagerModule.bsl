@@ -458,7 +458,7 @@ Procedure ImportDataToSubordinateNode(Objects) Export
 			Else
 				ImportedProperty.Ref = Object.GetNewObjectRef();
 				If Not ValueIsFilled(ImportedProperty.Ref) Then
-					Raise StringFunctionsClientServer.PlaceParametersIntoString(
+					Raise StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='An error occurred while importing metadata objects IDs.
 		|Unable to import new item in which ref of
 		|a new one is not specified: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных.
@@ -548,7 +548,7 @@ Procedure ImportDataToSubordinateNode(Objects) Export
 			// Check whether there are no duplicates among the imported items.
 			
 			If DescriptionFullsImported.Get(Lower(Object.FullName)) <> Undefined Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='An error occurred while importing metadata objects IDs.
 		|Unable to import two items in which full
 		|name matches: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных.
@@ -563,7 +563,7 @@ Procedure ImportDataToSubordinateNode(Objects) Export
 			   AND MetadataObjectKey <> Type("Undefined") Then
 				
 				If ImportedKeys.Get(MetadataObjectKey) <> Undefined Then
-					Raise StringFunctionsClientServer.PlaceParametersIntoString(
+					Raise StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='An error occurred while importing metadata objects IDs.
 		|Unable to import two items in which metadata object
 		|key matches: ""%1"".';ru='Ошибка загрузки идентификаторов объектов метаданных.
@@ -574,7 +574,7 @@ Procedure ImportDataToSubordinateNode(Objects) Export
 				ImportedKeys.Insert(MetadataObjectKey);
 				
 				If ImportedProperty.MetadataObjectByKey <> ImportedProperty.MetadataObjectByDescriptionFull Then
-					Raise StringFunctionsClientServer.PlaceParametersIntoString(
+					Raise StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='An error occurred while importing metadata objects IDs.
 		|Unable to import item metadata object of
 		|which  ""%1"" does not correspond to the full name ""%2"".';ru='Ошибка загрузки идентификаторов объектов метаданных.
@@ -1058,7 +1058,7 @@ Procedure CheckObjectsBeforeWriting(Object, AutoUpdate = False) Export
 		
 		If Object.IsNew() Then
 			
-			CallExceptionByError(StringFunctionsClientServer.PlaceParametersIntoString(
+			CallExceptionByError(StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='It is possible to
 		|create new metadata object ID only automatically while updating catalog data.';ru='Создание нового
 		|идентификатора объекта метаданных возможно только автоматически при обновлении данных справочника.'"),
@@ -1066,7 +1066,7 @@ Procedure CheckObjectsBeforeWriting(Object, AutoUpdate = False) Export
 				
 		ElsIf FullNameChangeIsProhibited(Object) Then
 			
-			CallExceptionByError(StringFunctionsClientServer.PlaceParametersIntoString(
+			CallExceptionByError(StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='While changing metadata object ID
 		|full name ""%1"" was specified that
 		|can be set only automatically while updating catalog data.';ru='При изменении идентификатора объекта
@@ -1076,7 +1076,7 @@ Procedure CheckObjectsBeforeWriting(Object, AutoUpdate = False) Export
 		
 		ElsIf FullNameIsUsed(Object.FullName, Object.Ref) Then
 			
-			CallExceptionByError(StringFunctionsClientServer.PlaceParametersIntoString(
+			CallExceptionByError(StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='While changing metadada object ID
 		|full name is
 		|specified ""%1"" that is used in the catalog.';ru='При изменении идентификатора объекта
@@ -1516,14 +1516,14 @@ Function MetadataFindByFullName(FullName)
 			If Subsystem = Undefined Then
 				Return Undefined;
 			EndIf;
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while searching for a child subsystem by a full name (while searching ""%1"" was found ""%2"").
 		|Do not give subsystems the same names or use the recent platform version.';ru='Ошибка при поиске дочерней подсистемы по полному имени (при поиске ""%1"" была найдена ""%2"").
 		|Не следует называть подсистемы одинаково, либо использовать более новую версию платформы.'"),
 				FullName,
 				MetadataObject.FullName());
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while searching for metadata by a full name (while searching ""%1"" was found ""%2"").';ru='Ошибка при поиске объекта метаданных по полному имени (при поиске ""%1"" был найден ""%2"").'"),
 				FullName,
 				MetadataObject.FullName());

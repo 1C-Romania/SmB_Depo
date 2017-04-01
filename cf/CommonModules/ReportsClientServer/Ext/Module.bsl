@@ -1994,7 +1994,7 @@ Function ParametersOfCopying(PointType, Collection)
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Copy %1 items is not supported';ru='Копирование элементов ""%1"" не поддерживается'"),
 			PointType);
 		

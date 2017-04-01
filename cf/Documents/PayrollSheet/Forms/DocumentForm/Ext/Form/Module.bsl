@@ -179,7 +179,7 @@ Procedure ProcessChangesOnButtonPricesAndCurrenciesEnd(Result, AdditionalParamet
 	
 	// Fill in form data.
 	PricesAndCurrency = NStr("en='Doc %1 • Beg. %2';ru='Док %1 • Нач. %2'");
-	PricesAndCurrency = StringFunctionsClientServer.PlaceParametersIntoString(PricesAndCurrency, TrimAll(String(Object.DocumentCurrency)), TrimAll(String(Object.SettlementsCurrency)));
+	PricesAndCurrency = StringFunctionsClientServer.SubstituteParametersInString(PricesAndCurrency, TrimAll(String(Object.DocumentCurrency)), TrimAll(String(Object.SettlementsCurrency)));
 	
 EndProcedure // ProcessChangesByButtonPricesAndCurrencies()
 
@@ -233,7 +233,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	// Fill in form data.
 	PricesAndCurrency = NStr("en='Doc. %1 • Beg. %2';ru='Док. %1 • Нач. %2'");
-	PricesAndCurrency = StringFunctionsClientServer.PlaceParametersIntoString(PricesAndCurrency, TrimAll(String(Object.DocumentCurrency)), TrimAll(String(Object.SettlementsCurrency)));
+	PricesAndCurrency = StringFunctionsClientServer.SubstituteParametersInString(PricesAndCurrency, TrimAll(String(Object.DocumentCurrency)), TrimAll(String(Object.SettlementsCurrency)));
 	
 	SetVisibleFromCurrency();
 	

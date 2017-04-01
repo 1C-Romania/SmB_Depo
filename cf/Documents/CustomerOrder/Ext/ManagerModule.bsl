@@ -5527,7 +5527,7 @@ Function ArePerformersWithEmptyAccrualSum(Performers) Export
 		If Performer.AccruedAmount = 0 Then
 			
 			SingleErrorText = 
-				StringFunctionsClientServer.PlaceParametersIntoString(MessageTextTemplate, Performer.Employee.Description, Performer.LineNumber);
+				StringFunctionsClientServer.SubstituteParametersInString(MessageTextTemplate, Performer.Employee.Description, Performer.LineNumber);
 			
 			CommonUseClientServer.AddUserError(
 				Errors, 
@@ -5648,7 +5648,7 @@ Procedure PresentationReceiveDataProcessor(Data, Presentation, StandardProcessin
 		TitlePresentation = NStr("en='Customer order';ru='Заказ покупателя'");
 	EndIf;
 	
-	Presentation = StringFunctionsClientServer.PlaceParametersIntoString(
+	Presentation = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='%1 %2 from %3 %4';ru='%1 %2 от %3 %4'"),
 		TitlePresentation,
 		?(Data.Property("Number"), ObjectPrefixationClientServer.GetNumberForPrinting(Data.Number, True, True), ""),

@@ -266,7 +266,7 @@ Procedure AnalysisFilesAvailabilityInDirectoryClassifierEnd(StatePostCode, Addit
 			ErrorInfo = ErrorInfo + NStr("en='Up to date address information can be exported on #EMPTY LINK#';ru='Актуальные адресные сведения можно загрузить по адресу http://its.1c.ru/download/fias'");
 			
 			CommonUseClientServer.AddUserError(AdditionalParameters.Result.Errors, AdditionalParameters.ErrorField,
-				StringFunctionsClientServer.PlaceParametersIntoString(ErrorInfo,
+				StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo,
 				KeyValue.Value, AdditionalParameters.MissingFiles[KeyValue.Key]), Undefined);
 		EndDo;
 		

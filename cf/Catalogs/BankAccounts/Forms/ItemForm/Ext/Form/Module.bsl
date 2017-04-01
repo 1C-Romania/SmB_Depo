@@ -527,7 +527,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 		
 		ClearMessages();
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The ""%1"" field value is invalid.';ru='Поле ""%1"" заполнено не корректно.'"), 
 			?(Find(Field, "SWIFT") > 0, "SWIFT", "Corr. account")
 			);
@@ -565,7 +565,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 				
 			EndIf;
 			
-			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+			QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The bank with SWIFT ""%1"" was not found in the Banks catalog';ru='Банк с SWIFT ""%1"" не найден в справочнике банков'"), TextForSearch);
 			
 		ElsIf SearchArea = "CorrAccount" Then
@@ -576,7 +576,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 				Return Undefined;
 			EndIf;
 			
-			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+			QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Bank with corr. account ""%1"" was not found in the Banks catalog';ru='Банк с корр. счетом ""%1"" не найден в справочнике банков'"), TextForSearch);
 			
 		EndIf;

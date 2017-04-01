@@ -133,7 +133,7 @@ Procedure RunAutomaticDataMapping(Parameters, TemporaryStorageAddress) Export
 	MessageParameters = DataExchangeServer.GetExchangeMessageToTemporaryDirectory(
 		Cancel, Correspondent, Undefined);
 	If Cancel Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='When receiving the exchange message out of the external resource for the correspondent ""%1"" the errors have occurred.';ru='Возникли ошибки при получении сообщения обмена из внешнего ресурса для корреспондента ""%1"".'"),
 			String(Correspondent));
 	EndIf;
@@ -149,7 +149,7 @@ Procedure RunAutomaticDataMapping(Parameters, TemporaryStorageAddress) Export
 	Cancel = False;
 	InteractiveDataExchangeAssistant.RunExchangeMessageAnalysis(Cancel);
 	If Cancel Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Errors have occurred at the exchange message analysis ""%1"".';ru='Возникли ошибки при анализе сообщения обмена для корреспондента ""%1"".'"),
 			String(Correspondent));
 	EndIf;
@@ -158,7 +158,7 @@ Procedure RunAutomaticDataMapping(Parameters, TemporaryStorageAddress) Export
 	Cancel = False;
 	InteractiveDataExchangeAssistant.RunAutomaticMappingByDefaultAndGetMappingStats(Cancel);
 	If Cancel Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Errors have occurred when executing the automatic data mapping, received from the correspondent ""%1"".';ru='Возникли ошибки при выполнении автоматического сопоставления данных, полученных от корреспондента ""%1"".'"),
 			String(Correspondent));
 	EndIf;
@@ -193,7 +193,7 @@ Procedure SynchronizeCatalogs(Parameters, TemporaryStorageAddress) Export
 	Cancel = False;
 	DataExchangeSaaS.ExecuteDataImport(Cancel, Correspondent);
 	If Cancel Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Errors have occurred during the catalogs import from the correspondent %1.';ru='Возникли ошибки в процессе загрузки справочников от корреспондента %1.'"),
 			String(Correspondent));
 	EndIf;
@@ -202,7 +202,7 @@ Procedure SynchronizeCatalogs(Parameters, TemporaryStorageAddress) Export
 	Cancel = False;
 	DataExchangeSaaS.ExecuteDataExport(Cancel, Correspondent);
 	If Cancel Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='There were errors when exporting the catalogs for the %1 correspondent.';ru='Возникли ошибки в процессе выгрузки справочников для корреспондента %1.'"),
 			String(Correspondent));
 	EndIf;
@@ -250,7 +250,7 @@ Procedure GetStatsComparison(Parameters, TemporaryStorageAddress) Export
 	Cancel = False;
 	InteractiveDataExchangeAssistant.GetObjectMappingStatsByString(Cancel, Parameters.RowIndexes);
 	If Cancel Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='When receiving the statistics information for the correspondent the errors have occurred ""%1"".';ru='Возникли ошибки при получении информации статистики для корреспондента ""%1"".'"),
 			String(Parameters.Correspondent));
 	EndIf;

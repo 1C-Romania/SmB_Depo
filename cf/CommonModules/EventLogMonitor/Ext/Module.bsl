@@ -163,11 +163,11 @@ Procedure ReadEventLogMonitorEvents(ReportParameters, StorageAddress) Export
 			
 			If LogEvent.Data <> Undefined Then
 				If LogEvent.Data.Property("Right") Then
-					LogEvent.Data = StringFunctionsClientServer.PlaceParametersIntoString(
+					LogEvent.Data = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Right: %1';ru='Право: %1'"), 
 						LogEvent.Data.Right);
 				Else
-					LogEvent.Data = StringFunctionsClientServer.PlaceParametersIntoString(
+					LogEvent.Data = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Action: %1%2';ru='Действие: %1%2'"), 
 						LogEvent.Data.Action, ?(LogEvent.Data.Data = Undefined, "", ", ...") );
 				EndIf;
@@ -210,7 +210,7 @@ Procedure ReadEventLogMonitorEvents(ReportParameters, StorageAddress) Export
 			If LogEvent.Data <> Undefined Then
 				LogEvent.Data.Property("Name", IBUserName);
 			EndIf;
-			LogEvent.Data = StringFunctionsClientServer.PlaceParametersIntoString(
+			LogEvent.Data = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Name: %1, ...';ru='Имя: %1, ...'"),
 				IBUserName);
 			
@@ -225,7 +225,7 @@ Procedure ReadEventLogMonitorEvents(ReportParameters, StorageAddress) Export
 			LogEvent.UserName = Users.UnspecifiedUserFullName();
 			
 		ElsIf InfobaseUsers.FindByUUID(LogEvent.User) = Undefined Then
-			LogEvent.UserName = StringFunctionsClientServer.PlaceParametersIntoString(
+			LogEvent.UserName = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 <Deleted>';ru='%1 <Удален>'"),
 				LogEvent.UserName);
 		EndIf;
@@ -436,12 +436,12 @@ Procedure AddRestrictionToFilterPresentation(EventLogMonitorFilter, FilterPresen
 		
 		If RestrictionName = "Event" AND RestrictionsList.Count() > 5 Then
 			
-			Restriction = FilterPresentation + StringFunctionsClientServer.PlaceParametersIntoString(
+			Restriction = FilterPresentation + StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Event (%1)';ru='События (%1)'"), RestrictionsList.Count());
 			
 		ElsIf RestrictionName = "Session" AND RestrictionsList.Count() > 3 Then
 			
-			Restriction = StringFunctionsClientServer.PlaceParametersIntoString(
+			Restriction = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Sessions (%1)';ru='Сеансы (%1)'"), RestrictionsList.Count());
 			
 		Else

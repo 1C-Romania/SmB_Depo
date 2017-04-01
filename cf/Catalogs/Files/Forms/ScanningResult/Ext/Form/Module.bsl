@@ -761,7 +761,7 @@ Procedure ConvertEnumsToParametersAndGetPresentation()
 	Presentation = Presentation + String(MultiPageStorageFormat);
 	Presentation = Presentation + ". ";
 	
-	Presentation = Presentation + StringFunctionsClientServer.PlaceParametersIntoString(
+	Presentation = Presentation + StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Resolution: %1 dpi. %2.';ru='Разрешение: %1 dpi. %2.'") + " ",
 		String(Resolution), String(ChromaticityEnum));
 	
@@ -858,7 +858,7 @@ EndProcedure
 &AtClient
 Function MessageTextErrorsInPDFConversions(ResultFile)
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='File ""%1"" is not found.
 		|Check whether application ImageMagick
 		|is installed and a correct path to

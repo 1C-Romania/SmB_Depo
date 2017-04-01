@@ -749,7 +749,7 @@ Procedure LoadFromFile(ExportableData, ExportParameters, Cancel) Export
 				TableRow.RowMatchResult = "Updated";
 				
 				If CatalogItem = Undefined Then
-					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+					MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Counterparty with %1 name does not exists.';ru='Контрагента с наименованием %1 не существует.'"), TableRow.Description);
 					Raise MessageText;
 				EndIf;

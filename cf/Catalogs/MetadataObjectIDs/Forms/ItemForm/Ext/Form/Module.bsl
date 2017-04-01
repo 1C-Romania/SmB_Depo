@@ -44,7 +44,7 @@ Procedure FullNameWhenChanging(Item)
 	
 	If FullName <> Object.FullName Then
 		Object.FullName = FullName;
-		ShowMessageBox(, StringFunctionsClientServer.PlaceParametersIntoString(
+		ShowMessageBox(, StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Metadata object is not found by full name:
 		|%1.';ru='Объект метаданных не найден по
 		|полному имени: %1.'"),

@@ -106,7 +106,7 @@ Procedure CheckPossibilityToUseConfigurationSaaS() Export
 	
 	If SSLDescription = Undefined Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The configuration does not include embedded 1C:Standard Subsystems Library.
 		|The configuration can not be used in the service model if this library is not embedded.
 		|
@@ -124,7 +124,7 @@ Procedure CheckPossibilityToUseConfigurationSaaS() Export
 		
 		If CommonUseClientServer.CompareVersions(SSLVersion, RequiredSSLVersion()) < 0 Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='To use the configuration in the service model with
 		|the current version of 1C:Service Technology Library,
 		|update the used version of 1C:Standard Subsystem Library!

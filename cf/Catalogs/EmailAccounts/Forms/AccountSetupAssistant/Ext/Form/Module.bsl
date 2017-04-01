@@ -368,7 +368,7 @@ Procedure SetCurrentPageItems()
 	EndIf;
 	
 	If CurrentPage = Items.AccountConfiguredSuccessfully Then
-		Items.LabelAccountConfiguredSuccessfully.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.LabelAccountConfiguredSuccessfully.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Account parameters
 		|setting is complete.';ru='Настройка
 		|параметров учетной записи %1 завершена.'"), EmailAddress);

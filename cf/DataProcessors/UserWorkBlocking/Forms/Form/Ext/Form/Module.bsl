@@ -148,7 +148,7 @@ Procedure Apply(Command)
 		|Продолжить?'");
 			EndIf;
 			Notification = New NotifyDescription("ApplyEnd", ThisObject, "Confirmation");
-			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+			QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 			QuestionText, Object.LockBegin - 900, Object.LockBegin);
 			ShowQueryBox(Notification, QuestionText, QuestionDialogMode.OKCancel,,, QuestionTitle);
 		EndIf;
@@ -404,7 +404,7 @@ EndProcedure
 &AtClientAtServerNoContext
 Procedure UpdateLockState(Form)
 	
-	Form.Items.Status.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Form.Items.Status.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Please wait...
 		|User operation is terminated. Active sessions left: %1';ru='Пожалуйста, подождите..
 		|Работа пользователей завершается. Осталось активных сеансов: %1'"),

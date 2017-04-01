@@ -193,14 +193,14 @@ EndProcedure
 Function PredefinedJobScheduleID(PredefinedName)
 	PredefinedMetadata = Metadata.ScheduledJobs.Find(PredefinedName);
 	If PredefinedMetadata = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Scheduled job ""%1"" is not found in the metadata.';ru='Регламентное задание ""%1"" не найдено в метаданных.'"),
 			PredefinedName);
 	EndIf;
 	
 	ScheduledJob = ScheduledJobs.FindPredefined(PredefinedMetadata);
 	If ScheduledJob = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Scheduled job ""%1"" is not found.';ru='Регламентное задание ""%1"" не найдено.'"),
 			PredefinedName);
 	EndIf;

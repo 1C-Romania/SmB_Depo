@@ -46,7 +46,7 @@ Function GetExternalUserAuthorizationObject(ExternalUser = Undefined) Export
 	
 	If ValueIsFilled(AuthorizationObject) Then
 		If UsersService.AuthorizationObjectInUse(AuthorizationObject, ExternalUser) Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Database error:
 		|Authorization object ""%1"" (%2)
 		|is set for several external users.';ru='Ошибка в базе данных:
@@ -56,7 +56,7 @@ Function GetExternalUserAuthorizationObject(ExternalUser = Undefined) Export
 				TypeOf(AuthorizationObject));
 		EndIf;
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Database error:
 		|For the ""%1"" external user the authorization object is not set.';ru='Ошибка
 		|в базе данных: Для внешнего пользователя ""%1"" не задан объект авторизации.'"),

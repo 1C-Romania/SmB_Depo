@@ -93,14 +93,14 @@ Procedure SetExchangeStep1(Message, Sender)
 		If Not IsBlankString(ThisNodeCode)
 			AND ThisNodeCode <> Body.Code Then
 			MessageString = NStr("en='Predefined node code in this application %1 does not correspond to the expected %2. Exchange plan: %3';ru='Код предопределенного узла в этом приложении ""%1"" не соответствует ожидаемому ""%2"". План обмена: %3'");
-			MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, ThisNodeCode, Body.Code, Body.ExchangePlan);
+			MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ThisNodeCode, Body.Code, Body.ExchangePlan);
 			Raise MessageString;
 		EndIf;
 		
 		CorrespondentEndPoint = ExchangePlans.MessageExchange.FindByCode(Body.EndPoint);
 		
 		If CorrespondentEndPoint.IsEmpty() Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Correspondent end point with the %1 script is not found.';ru='Не найдена конечная точка корреспондента с кодом ""%1"".'"),
 				Body.EndPoint);
 		EndIf;
@@ -137,7 +137,7 @@ Procedure SetExchangeStep1(Message, Sender)
 		Cancel = False;
 		DataExchangeSaaS.ExecuteDataExport(Cancel, Correspondent);
 		If Cancel Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There were errors when exporting the catalogs for the %1 correspondent.';ru='Возникли ошибки в процессе выгрузки справочников для корреспондента %1.'"),
 				String(Correspondent));
 		EndIf;
@@ -246,7 +246,7 @@ Procedure ImportExchangeMessage(Message, Sender)
 		Cancel = False;
 		DataExchangeSaaS.ExecuteDataImport(Cancel, Correspondent);
 		If Cancel Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Errors have occurred during the catalogs import from the correspondent %1.';ru='Возникли ошибки в процессе загрузки справочников от корреспондента %1.'"),
 				String(Correspondent));
 		EndIf;
@@ -440,7 +440,7 @@ Function ExchangeCorrespondent(Val ExchangePlanName, Val Code)
 	
 	If Not ValueIsFilled(Result) Then
 		MessageString = NStr("en='Exchange plan node is not found; %1 exchange plan name; %2 node code';ru='Не найден узел плана обмена; имя плана обмена %1; код узла %2'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, ExchangePlanName, Code);
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangePlanName, Code);
 		Raise MessageString;
 	EndIf;
 	

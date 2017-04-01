@@ -155,7 +155,7 @@ Function Read(Val ObjectReference) Export
 	RightsDescriptionFull = PossibleRights.ByTypes.Get(TypeOf(ObjectReference));
 	
 	If RightsDescriptionFull = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error in the InformationRegisters procedure.ObjectRightsSettings.Read()
 		|
 		|Wrong value of the RefToObject %1 parameter.
@@ -249,7 +249,7 @@ Function Read(Val ObjectReference) Export
 			Setting.ParentSettings = String.ParentSettings;
 		EndIf;
 		If Settings.Columns.Find(String.Right) = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Error in the InformationRegisters procedure.ObjectRightsSettings.Read()
 		|
 		|the %2 right
@@ -298,7 +298,7 @@ Procedure Write(Val ObjectReference, Val Settings, Val Inherit) Export
 	RightsDescriptionFull = PossibleRights.ByRefsTypes.Get(TypeOf(ObjectReference));
 	
 	If RightsDescriptionFull = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error in the InformationRegisters procedure.ObjectRightsSettings.Read()
 		|
 		|Wrong value of the RefToObject %1 parameter.
@@ -456,7 +456,7 @@ Procedure UpdateAuxiliaryRegisterData(HasChanges = Undefined) Export
 		RightsDescriptionFull     = KeyAndValue.Value;
 		
 		If EmptyRefsRightsOwner.Get(TypeOwnerRight) = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Error in
 		|the UpdateSubordinateRegisterData procedure of the manager module of the ObjectsRightsSettings information register.
 		|
@@ -777,7 +777,7 @@ Function PossibleRights()
 		MetadataObjectOwner = Metadata.FindByFullName(PossibleRight.RightsOwner);
 		
 		If MetadataObjectOwner = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorTitle + NStr("en='Owner of %1 rights is not found.';ru='Не найден владелец прав ""%1"".'"),
 				PossibleRight.RightsOwner);
 		EndIf;
@@ -799,7 +799,7 @@ Function PossibleRights()
 				MetadataObjectOwner);
 			
 			If RightsOwnersDefinedType.Get(ReferenceType) = Undefined Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorTitle +
 					NStr("en='Type of the
 		|%1 rights owner is not specified in the Owner of rights settings defined type.';ru='Тип
@@ -811,7 +811,7 @@ Function PossibleRights()
 			      OR SubscriptionTypesWriteAccessValuesSets.Get(ObjectType) <> Undefined)
 			    AND AccessValuesDefinedType.Get(ReferenceType) = Undefined Then
 				
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorTitle +
 					NStr("en='Type of the
 		|%1 rights owner is not specified in
@@ -832,7 +832,7 @@ Function PossibleRights()
 			EndIf;
 			
 			If AccessKindsProperties.ByValuesTypes.Get(ReferenceType) <> Undefined Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorTitle +
 					NStr("en='Type of the
 		|%1 rights owner can not be used
@@ -844,7 +844,7 @@ Function PossibleRights()
 			EndIf;
 			
 			If AccessKindsProperties.ByGroupsAndValuesTypes.Get(ReferenceType) <> Undefined Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorTitle +
 					NStr("en='Type of the
 		|%1 rights owner can not be used as
@@ -856,7 +856,7 @@ Function PossibleRights()
 			EndIf;
 			
 			If SubscriptionTypesUpdateAccessValuesGroups.Get(ObjectType) = Undefined Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorTitle +
 					NStr("en='Type of the
 		|%1 rights owner is not specified in the subscription to the Update groups of access values event.';ru='Тип
@@ -880,7 +880,7 @@ Function PossibleRights()
 		EndIf;
 		
 		If OwnerRights.Get(PossibleRight.Name) <> Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorTitle +
 				NStr("en='For the %1
 		|rights owner the %2 right is defined again.';ru='Для владельца
@@ -984,7 +984,7 @@ Procedure FillIDs(Property, PossibleRight, ErrorTitle, SeparateTables, Additiona
 		|В этом случае отдельных таблиц указывать не нужно.'")
 				EndIf;
 				
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorTitle + ErrorDescription,
 					AdditionalParameters.RightsOwner,
 					PossibleRight.Name);
@@ -1006,7 +1006,7 @@ Procedure FillIDs(Property, PossibleRight, ErrorTitle, SeparateTables, Additiona
 		|Однако символ ""*"" уже указан в таблицах для изменения для права ""%3"".'")
 				EndIf;
 				
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorTitle + ErrorDescription,
 					AdditionalParameters.RightsOwner,
 					PossibleRight.Name,
@@ -1027,7 +1027,7 @@ Procedure FillIDs(Property, PossibleRight, ErrorTitle, SeparateTables, Additiona
 		|Однако это не имеет смысла, т.к. право Чтение может зависеть только от права Чтение.
 		|Имеет смысл использовать только символ ""*"".'");
 				
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorTitle + ErrorDescription,
 				AdditionalParameters.RightsOwner,
 				PossibleRight.Name,
@@ -1045,7 +1045,7 @@ Procedure FillIDs(Property, PossibleRight, ErrorTitle, SeparateTables, Additiona
 		|прав ""%1"" для права ""%2"" не найдена таблица для изменения ""%3"".'")
 			EndIf;
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorTitle + ErrorDescription,
 				AdditionalParameters.RightsOwner,
 				PossibleRight.Name,

@@ -187,7 +187,7 @@ Procedure RefreshInterfaceByCountCleaned()
 	SelectedStatesToClear = RFTerritorialEntities.FindRows( New Structure("Clear", True) ).Count();
 	
 	// Import page
-	ClearingDescriptionText = StringFunctionsClientServer.PlaceParametersIntoString(
+	ClearingDescriptionText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Data of the selected states are cleared (%1)';ru='Очищаются данные выбранных регионов (%1)'"), SelectedStatesToClear
 	);
 	

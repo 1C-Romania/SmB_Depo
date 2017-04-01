@@ -410,11 +410,11 @@ Procedure RefreshFormTitle()
 	
 	If Object.Direction = Enums.EDDirections.Outgoing Then
 		HeaderText = NStr("en='Outgoing document %1 from %2';ru='Исходящий документ %1 от %2'");
-		Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Title = StringFunctionsClientServer.SubstituteParametersInString(
 			HeaderText, Object.Number, Object.Date);
 	Else
 		HeaderText = NStr("en='The incoming document %1 from %2';ru='Входящий документ %1 от %2'");
-		Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Title = StringFunctionsClientServer.SubstituteParametersInString(
 			HeaderText, Object.Number, Object.Date);
 	EndIf;
 
@@ -618,7 +618,7 @@ Procedure AfterSendingEDP(Result, AdditionalParameters) Export
 	EndIf;
 	
 	If Quantity > 0 Then
-		StatusText = StringFunctionsClientServer.PlaceParametersIntoString(StatusText, Quantity);
+		StatusText = StringFunctionsClientServer.SubstituteParametersInString(StatusText, Quantity);
 		HeaderText = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 		ShowUserNotification(HeaderText, , StatusText);
 	EndIf;
@@ -1008,7 +1008,7 @@ Procedure AddCertificateToTrusted(SignatureData)
 	
 	If SignatureData <> Undefined AND SignatureData.MissingInList Then
 		Text = NStr("en='Do you want to add the %1 certificate to the list of expected counterparty certificates?';ru='Добавить сертификат %1 в список ожидаемых сертификатов контрагента?'");
-		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(Text, SignatureData.CertificateIsIssuedTo);
+		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(Text, SignatureData.CertificateIsIssuedTo);
 		AdditParameters = New Structure("CurrentData, SignatureData", Items.DS.CurrentData, SignatureData);
 		NotifyDescription = New NotifyDescription("HandleQuestionAnswerByCertificate", ThisObject, AdditParameters);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);

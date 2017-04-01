@@ -41,7 +41,7 @@ Procedure RefreshDataRegister(HasChanges = Undefined, CheckOnly = False) Export
 		
 		MetadataObject = Metadata.FindByFullName(String.SubordinateTable);
 		If MetadataObject = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred
 		|in the OnFillingAccessRightDependencies procedure of the AccessManagementOverridable general module.
 		|
@@ -56,7 +56,7 @@ Procedure RefreshDataRegister(HasChanges = Undefined, CheckOnly = False) Export
 		
 		MetadataObject = Metadata.FindByFullName(String.MasterTable);
 		If MetadataObject = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred
 		|in the OnFillingAccessRightDependencies procedure of the AccessManagementOverridable general module.
 		|

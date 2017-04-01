@@ -4696,7 +4696,7 @@ Procedure DiscountCardIsSelected(DiscountCard)
 	ShowUserNotification(
 		NStr("en='Discount card read';ru='Считана дисконтная карта'"),
 		GetURL(DiscountCard),
-		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Discount card %1 is read';ru='Считана дисконтная карта %1'"), DiscountCard),
+		StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Discount card %1 is read';ru='Считана дисконтная карта %1'"), DiscountCard),
 		PictureLib.Information32);
 	
 	DiscountCardIsSelectedAdditionally(DiscountCard);

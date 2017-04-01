@@ -220,7 +220,7 @@ Procedure StandardSetDeletionMark(Command)
 		EndIf;
 	EndIf;
 	
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 		QuestionText, ThisObject.Object.Ref);
 		
 	NotifyDescription = New NotifyDescription("StandardSetNoteDeletionResponseReceived", ThisObject);
@@ -597,7 +597,7 @@ EndProcedure
 Procedure UpdateTitle()
 	
 	If ValueIsFilled(ThisObject.Object.Ref) Then
-		Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (Attached file)';ru='%1 (Присоединенный файл)'"), String(ThisObject.Object.Ref));
 	Else
 		Title = NStr("en='Attached file (Creating)';ru='Присоединенный файл (Создание)'")

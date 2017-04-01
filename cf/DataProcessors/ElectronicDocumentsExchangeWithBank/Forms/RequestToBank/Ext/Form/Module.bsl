@@ -295,12 +295,12 @@ Procedure ProcessStatementQueryResult()
 	
 	If SentCnt > 0 Then
 		NotificationText = NStr("en='Documents sent: (%1)';ru='Отправлено документов: (%1)'");
-		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText, SentCnt);
+		NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NotificationText, SentCnt);
 	EndIf;
 	
 	If ReceivedNumber > 0 Then
 		NotificationText = NotificationText
-		+ StringFunctionsClientServer.PlaceParametersIntoString(NStr("en=', received documents: (%1)';ru=', получено документов: (%1)'"), ReceivedNumber);
+		+ StringFunctionsClientServer.SubstituteParametersInString(NStr("en=', received documents: (%1)';ru=', получено документов: (%1)'"), ReceivedNumber);
 	EndIf;
 	
 	Notify("RefreshStateED");
@@ -350,7 +350,7 @@ Procedure ProcessEDStateQueryResult()
 	
 	If SentCnt > 0 Then
 		NotificationText = NStr("en='Documents sent: (%1)';ru='Отправлено документов: (%1)'");
-		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText, SentCnt);
+		NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NotificationText, SentCnt);
 	EndIf;
 	
 	Notify("RefreshStateED");
@@ -530,7 +530,7 @@ Procedure HandleStatementReceiptResult()
 	
 	
 	If ReceivedNumber > 0 Then
-		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+		NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Received documents: (%1)';ru='Получено документов: (%1)'"), ReceivedNumber);
 	EndIf;
 	
@@ -587,7 +587,7 @@ Procedure HandleNotificationsOnEDStateReceiptResult()
 	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
 	
 	If ReceivedNumber > 0 Then
-		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+		NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Received documents: (%1)';ru='Получено документов: (%1)'"), ReceivedNumber);
 	EndIf;
 	
@@ -633,7 +633,7 @@ Procedure GetStatementThroughAdditionalDataProcessor()
 	StartDateString    = Format(Parameters.StartDate,    "DLF=D");
 	EndDateString = Format(Parameters.EndDate, "DLF=D");
 	EDName = NStr("en='Bank statement for period from 1% to %2';ru='Выписка банка за период с %1 по %2'");
-	EDName = StringFunctionsClientServer.PlaceParametersIntoString(
+	EDName = StringFunctionsClientServer.SubstituteParametersInString(
 						EDName, StartDateString, EndDateString);
 	ReceivedNumber = 0;
 	
@@ -683,7 +683,7 @@ Procedure GetStatementThroughAdditionalDataProcessor()
 		NotificationText = NStr("en='No received documents';ru='Полученных документов нет'");
 	Else
 		NotificationText = NStr("en='Received documents: (%1)';ru='Получено документов: (%1)'");
-		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText, ReceivedNumber);
+		NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NotificationText, ReceivedNumber);
 	EndIf;
 		
 	Notify("RefreshStateED");
@@ -753,7 +753,7 @@ Procedure GetBankStatementiBank2() Export
 	StartDateString = Format(Parameters.StartDate, "DLF=D");
 	EndDateString = Format(Parameters.EndDate, "DLF=D");
 	EDName = NStr("en='Bank statement for period from 1% to %2';ru='Выписка банка за период с %1 по %2'");
-	EDName = StringFunctionsClientServer.PlaceParametersIntoString(
+	EDName = StringFunctionsClientServer.SubstituteParametersInString(
 						EDName, StartDateString, EndDateString);
 	ReceivedNumber = 0;
 	
@@ -798,7 +798,7 @@ Procedure GetBankStatementiBank2() Export
 		NotificationText = NStr("en='No received documents';ru='Полученных документов нет'");
 	Else
 		NotificationText = NStr("en='Received documents: (%1)';ru='Получено документов: (%1)'");
-		NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(NotificationText, ReceivedNumber);
+		NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NotificationText, ReceivedNumber);
 	EndIf;
 		
 	Notify("RefreshStateED");

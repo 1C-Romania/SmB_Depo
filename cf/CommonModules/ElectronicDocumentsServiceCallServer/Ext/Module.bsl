@@ -677,7 +677,7 @@ Function AddDataByEDPackage(EDPackage,
 		|%1 Package contains electronic digital signatures. The cryptofacility is required to be on the computer to unpack';ru='Ошибка
 		|распаковки
 		|пакета: %1 Пакет содержит электронные цифровые подписи. Для распаковки требуется наличие криптосредства на компьютере.'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, EDPackage);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, EDPackage);
 
 		If Not IsCryptofacilityOnClient = Undefined Then
 			CommonUseClientServer.MessageToUser(MessageText);
@@ -851,7 +851,7 @@ Function AddDataByEDPackage(EDPackage,
 						EndIf;
 					Except
 						MessagePattern = NStr("en='%1 (for more information, see Events log monitor)';ru='%1 (подробности см. в Журнале регистрации)'");
-						MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+						MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 						BriefErrorDescription(ErrorInfo()));
 						ProcessExceptionByEDOnServer(NStr("en='creation of any ED';ru='создание произвольного ЭД'"),
 							DetailErrorDescription(ErrorInfo()), MessageText);
@@ -1396,7 +1396,7 @@ Function EDPackagesSending(Val ArrayPackageED, Val CertificatesAgreementsAndPara
 				If CountSent <> CountToSend Then
 					MessagePattern = NStr("en='Unable to send EDF to operator ""%1"".';ru='Не удалось отправить оператору ЭДО ""%1"".'");
 
-					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, EDPackage);
+					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, EDPackage);
 					
 					CommonUseClientServer.MessageToUser(MessageText);
 					RollbackTransaction();
@@ -1524,7 +1524,7 @@ Function EDPackagesSending(Val ArrayPackageED, Val CertificatesAgreementsAndPara
 					
 					If ValueIsFilled(ErrorText) Then
 						OperationKindTemplate = NStr("en='Send ED pack by agreement: %1, %2 exchange method';ru='Отправка пакета ЭД по соглашению: %1, способ обмена %2'");
-						OperationKind = StringFunctionsClientServer.PlaceParametersIntoString(
+						OperationKind = StringFunctionsClientServer.SubstituteParametersInString(
 							OperationKindTemplate, EDPackageAttributes.EDFSetup, EDPackageAttributes.EDExchangeMethod);
 						MessageText = ErrorText;
 						ElectronicDocumentsService.ProcessBankPackSendingError(ED, OperationKind, ErrorText, MessageText);
@@ -1552,13 +1552,13 @@ Function EDPackagesSending(Val ArrayPackageED, Val CertificatesAgreementsAndPara
 			MessagePattern = NStr("en='An error occurred while sending pack by setting:
 		|%1, exchange method: %2 %3 (for more information, see The events log monitor).';ru='Ошибка отправки пакета по настройке:
 		|%1, способ обмена: %2 %3 (подробности см. в Журнале регистрации).'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 																MessagePattern,
 																EDPackageAttributes.EDFSetup,
 																EDPackageAttributes.EDExchangeMethod,
 																BriefErrorDescription(ErrorInfo()));
 			OperationKindTemplate = NStr("en='send ED pack by agreement: %1, %2 exchange method';ru='отправка пакета ЭД по соглашению: %1, способ обмена %2'");
-			OperationKind = StringFunctionsClientServer.PlaceParametersIntoString(
+			OperationKind = StringFunctionsClientServer.SubstituteParametersInString(
 																OperationKindTemplate,
 																EDPackageAttributes.EDFSetup,
 																EDPackageAttributes.EDExchangeMethod);
@@ -1779,7 +1779,7 @@ Procedure MarkElectronicDocumentsForDeletionByOwner(Ref) Export
 				FileObject.Lock();
 			Except
 				Pattern = NStr("en='Unable to lock %1 object';ru='Не удалось заблокировать объект %1'");
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, FileObject);
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(Pattern, FileObject);
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 				OperationKind = NStr("en='Mark for electronic documents deletion';ru='Пометка на удаление электронных документов'");
 				ProcessExceptionByEDOnServer(OperationKind, DetailErrorDescription, MessageText, 5);
@@ -1955,13 +1955,13 @@ Function EDStateText(RefToOwner, Hyperlink) Export
 				AgreementState = CommonUse.GetAttributeValue(EDParameters.EDFSetup, "AgreementState");
 				If AgreementState = Enums.EDAgreementStates.CheckingTechnicalCompatibility Then
 					TemplateEDState = NStr("en='%1 (technical compatibility check)';ru='%1 (проверка технической совместимости)'");
-					EDStateText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateEDState, EDStateText);
+					EDStateText = StringFunctionsClientServer.SubstituteParametersInString(TemplateEDState, EDStateText);
 				EndIf;
 			Else
 				
 				If ValueIsFilled(EDStateText) Then
 					TemplateEDState = NStr("en='%1 (EDF setting is not connected)';ru='%1 (настройка ЭДО не подключена)'");
-					EDStateText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateEDState, EDStateText);
+					EDStateText = StringFunctionsClientServer.SubstituteParametersInString(TemplateEDState, EDStateText);
 					Hyperlink = True;
 				Else
 					
@@ -2124,7 +2124,7 @@ Function GetFileBinaryData(ED, SignatureCertificate) Export
 			MessageText = NStr("en='Operation is canceled. It is required to
 		|fill in fields: ""Surname"", ""Name"" in the %1 certificate';ru='Операция отменена. Необходимо заполнить поля: ""Фамилия"", ""Имя""
 		|в сертификате %1.'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, SignatureCertificate);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, SignatureCertificate);
 			Raise MessageText;
 		EndIf;
 		
@@ -2853,7 +2853,7 @@ Function PerformActionsByED(Val RefsToObjectArray,
 				If EDExchangeMethod = Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom Then
 					MessagePattern = NStr("en='In EDF settings profile:
 		|%1 no available DS certificate is found.';ru='В профиле настроек ЭДО: %1 не найден ни один из доступных сертификатов ЭП.'");
-					MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, EDFProfileSettings);
+					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, EDFProfileSettings);
 					CommonUseClientServer.MessageToUser(MessageText);
 				EndIf;
 			ElsIf AdditParameters.Property("CryptographySettingsError", CryptographySettingsError)
@@ -4401,7 +4401,7 @@ Procedure UnpackEDBankPack(EDPackage, ReturnData) Export
 						Else
 							OperationKind = NStr("en='Read notification of electronic document state';ru='Чтение извещения о состоянии электронного документа'");
 							Problem = NStr("en='Electronic document is not found by ID: %1';ru='Не найден электронный документ по идентификатору: %1'");
-							Problem = StringFunctionsClientServer.PlaceParametersIntoString(Problem, IDOwner);
+							Problem = StringFunctionsClientServer.SubstituteParametersInString(Problem, IDOwner);
 							ProcessExceptionByEDOnServer(OperationKind, Problem, , 1);
 							Continue;
 						EndIf;
@@ -4467,7 +4467,7 @@ Procedure UnpackEDBankPack(EDPackage, ReturnData) Export
 								DocumentName = StrReplace(QueryName, NStr("en='Query statement';ru='Запрос выписки'"), NStr("en='Bank statement for period';ru='Выписка банка за период'"));
 							Else
 								DocumentName = NStr("en='Bank statement dated %1';ru='Выписка банка от %1'");
-								DocumentName = StringFunctionsClientServer.PlaceParametersIntoString(
+								DocumentName = StringFunctionsClientServer.SubstituteParametersInString(
 													DocumentName, Format(CurrentSessionDate(), "DLF=D"));
 							EndIf;
 							AttachedFile = AttachedFiles.AddFile(FileOwner, DocumentName, "xml",
@@ -4512,7 +4512,7 @@ Procedure UnpackEDBankPack(EDPackage, ReturnData) Export
 						Else
 							OperationKind = NStr("en='Read bank statement';ru='Чтение выписки банка'");
 							Problem = NStr("en='Statement request is not found by ID: %1';ru='Не найден запрос выписки по идентификатору: %1'");
-							Problem = StringFunctionsClientServer.PlaceParametersIntoString(Problem, IDOwner);
+							Problem = StringFunctionsClientServer.SubstituteParametersInString(Problem, IDOwner);
 							ProcessExceptionByEDOnServer(OperationKind, Problem, , 1);
 							Continue;
 						EndIf;
@@ -4534,7 +4534,7 @@ Procedure UnpackEDBankPack(EDPackage, ReturnData) Export
 		|the %1 pack (for more information, see Events log monitor).';ru='Возникла ошибка при
 		|разборе пакета %1 (подробности см. в Журнале регистрации).'");
 			BriefErrorDescription = BriefErrorDescription(ErrorInfo());
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								MessagePattern, EDPackage, BriefErrorDescription);
 		EndIf;
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -4661,7 +4661,7 @@ Function BankSessionID(Val EDAgreement, Val AuthenticationParameters, SMSAuthent
 	
 	If Response.StateCode <> 200 Then
 		Pattern = NStr("en='Internet error (%1)';ru='Ошибка работы с Интернет (%1)'");
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, Response.StateCode);
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(Pattern, Response.StateCode);
 		CommonUseClientServer.MessageToUser(ErrorMessage);
 		DeleteFiles(ResultFileName);
 		Return Undefined;
@@ -4734,7 +4734,7 @@ Procedure GetEDFromBankAsynchronousExchange(Val AuthorizationParameters, ReturnD
 		Headers.Insert("SID", Parameters.MarkerTranscribed);
 	Else
 		Pattern = NStr("en='An error occurred in the process of authentication on service by address (%1)';ru='Ошибка аутентификации на сервисе по адресу (%1)'");
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, AgreementAttributes.ServerAddress);
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(Pattern, AgreementAttributes.ServerAddress);
 		CommonUseClientServer.MessageToUser(ErrorMessage);
 		ReturnData.Insert("IsError", True);
 		ReturnData.Insert("MessageText", ErrorMessage);
@@ -4761,7 +4761,7 @@ Procedure GetEDFromBankAsynchronousExchange(Val AuthorizationParameters, ReturnD
 		MessageText = NStr("en='An error occurred while getting new documents list from bank.
 		|%1';ru='При получении списка новых документов из банка произошла ошибка.
 		|%1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, BriefErrorDescription);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, BriefErrorDescription);
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 		OperationKind = NStr("en='Get new documents list from the bank';ru='Получение списка новых документов из банка'");
 		ProcessExceptionByEDOnServer(OperationKind, DetailErrorDescription, MessageText, 1);
@@ -4777,7 +4777,7 @@ Procedure GetEDFromBankAsynchronousExchange(Val AuthorizationParameters, ReturnD
 			ReturnData.Insert("IsError", True);
 		Else
 			Pattern = NStr("en='Internet error (%1)';ru='Ошибка работы с Интернет (%1)'");
-			ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, Response.StateCode);
+			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(Pattern, Response.StateCode);
 			DeleteFiles(ResultFileName);
 			CommonUseClientServer.MessageToUser(ErrorMessage);
 			ReturnData.Insert("IsError", True);
@@ -4801,7 +4801,7 @@ Procedure GetEDFromBankAsynchronousExchange(Val AuthorizationParameters, ReturnD
 		MessageText = NStr("en='An error occurred while reading document from bank.
 		|%1';ru='При чтении документа из банка произошла ошибка.
 		|%1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, BriefErrorDescription);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, BriefErrorDescription);
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 		OperationKind = NStr("en='Read new documents list';ru='Чтение списка новых документов'");
 		ProcessExceptionByEDOnServer(OperationKind, DetailErrorDescription, MessageText, 1);
@@ -4898,7 +4898,7 @@ Procedure GetEDFromBankAsynchronousExchange(Val AuthorizationParameters, ReturnD
 			MessageText = NStr("en='An error occurred while getting document from bank.
 		|%1';ru='При получении документа из банка произошла ошибка.
 		|%1'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, BriefErrorDescription);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, BriefErrorDescription);
 			DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 			OperationKind = NStr("en='Get new package from bank by ID';ru='Получение нового пакета из банка по идентификатору'");
 			ProcessExceptionByEDOnServer(OperationKind, DetailErrorDescription, MessageText, 1);
@@ -4910,7 +4910,7 @@ Procedure GetEDFromBankAsynchronousExchange(Val AuthorizationParameters, ReturnD
 		
 		If Response.StateCode <> 200 Then
 			Pattern = NStr("en='Internet error (%1)';ru='Ошибка работы с Интернет (%1)'");
-			ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, Response.StateCode);
+			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(Pattern, Response.StateCode);
 			DeleteFiles(ResultFileName);
 			ReturnData.Insert("IsError", True);
 			ReturnData.Insert("MessageText", ErrorMessage);
@@ -4957,7 +4957,7 @@ Procedure GetEDFromBankAsynchronousExchange(Val AuthorizationParameters, ReturnD
 			MessageText = NStr("en='An error occurred while writing documents receipt date.
 		|%1';ru='При записи даты получения документов произошла ошибка:.
 		|%1'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, BriefErrorDescription);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, BriefErrorDescription);
 			DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 			OperationKind = NStr("en='Save the last document receipt date';ru='Сохранение последней даты получения документов'");
 			ProcessExceptionByEDOnServer(OperationKind, DetailErrorDescription, MessageText, 1);
@@ -5020,7 +5020,7 @@ Function BankSessionIDBySMS(Val EDAgreement, Val SessionID, OneTimePassword) Exp
 	
 	If Response.StateCode <> 200 Then
 		Pattern = NStr("en='Internet error (%1)';ru='Ошибка работы с Интернет (%1)'");
-		ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(Pattern, Response.StateCode);
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(Pattern, Response.StateCode);
 		CommonUseClientServer.MessageToUser(ErrorMessage);
 		DeleteFiles(ResultFileName);
 		Return Undefined;
@@ -5125,7 +5125,7 @@ Function SendEDStatusQuery(Val AuthorizationParameters, ED) Export
 	Except
 		BriefErrorDescription = BriefErrorDescription(ErrorInfo());
 		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 										MessagePattern, BriefErrorDescription);
 		Operation = NStr("en='ED formation';ru='Формирование ЭД'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -5256,7 +5256,7 @@ Procedure SendQueryProbeToBank(Val EDAgreement, Val SessionID, QueryPosted) Expo
 	Except
 		BriefErrorDescription = BriefErrorDescription(ErrorInfo());
 		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 										MessagePattern, BriefErrorDescription);
 		Operation = NStr("en='ED formation';ru='Формирование ЭД'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -5487,7 +5487,7 @@ Function ConnectExternalDataProcessor(Val EDAgreement, Val CurrentVersion = Unde
 	
 	If Not ProcessorEnabled Then
 		MessageText = NStr("en='Additional data processor in the agreement on using the direct exchange with bank is not selected: %1.';ru='Не выбрана дополнительная обработка в соглашении об использовании прямого обмена с банком: %1.'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, EDAgreement);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, EDAgreement);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -5536,7 +5536,7 @@ Procedure DeleteIDRequest(EDAgreement, ID, EDKind) Export
 	Except
 		MessagePattern = NStr("en='%1. (see details in Event log monitor).';ru='%1. (подробности см. в Журнале регистрации).'");
 		BriefErrorDescription = BriefErrorDescription(ErrorInfo());
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 										MessagePattern, BriefErrorDescription);
 		Operation = NStr("en='Delete bank request ID';ru='Удаление идентификатора запроса банка'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -5586,7 +5586,7 @@ Function InformationAboutSignatureCertificateSberbank(Imprint)
 		
 		//Issuer = "EMAILADDRESS=%1, OID.2.5.4.33=%2, CN=%3, OU=%4, O=%5, C=%6";  // TODO
 		Issuer = "EMAILADDRESS=%1, OID.2.5.4.33=Testing, CN=%2, OU=%3, O=%4, C=%5";
-		Issuer = StringFunctionsClientServer.PlaceParametersIntoString(Issuer, Certificate.Issuer.E,// Testing,
+		Issuer = StringFunctionsClientServer.SubstituteParametersInString(Issuer, Certificate.Issuer.E,// Testing,
 						Certificate.Issuer.CN, Certificate.Issuer.OU, Certificate.Issuer.O, Certificate.Issuer.C);
 		
 		ReturnStructure.Insert("SN", Certificate.SerialNumber);
@@ -5823,7 +5823,7 @@ Function QueryTextNightIssue(IDRequest, CompanyID, DS, SignatureCertificate) Exp
 	Except
 		
 		MessagePattern = NStr("en='%1. (see details in Event log monitor).';ru='%1. (подробности см. в Журнале регистрации).'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 															MessagePattern,
 															BriefErrorDescription(ErrorInfo()));
 		ProcessExceptionByEDOnServer(
@@ -6817,7 +6817,7 @@ Function QueriesOnDocumentsDataProcessorsStatesArray(EDAgreement, EDKind) Export
 		Except
 			
 			MessagePattern = NStr("en='%1. (see details in Event log monitor).';ru='%1. (подробности см. в Журнале регистрации).'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 															MessagePattern,
 															BriefErrorDescription(ErrorInfo()));
 			ProcessExceptionByEDOnServer(
@@ -7042,7 +7042,7 @@ Procedure GenerateEDQueryAccountstatements(EDAgreement, StartDate, EndDate, ED) 
 	FileURL = PutToTempStorage(FileBinaryData);
 	
 	FileName = "Statement request from %1 to %2";
-	FileName = StringFunctionsClientServer.PlaceParametersIntoString(FileName, Format(StartDate, "DLF=D"), Format(EndDate, "DLF=D"));
+	FileName = StringFunctionsClientServer.SubstituteParametersInString(FileName, Format(StartDate, "DLF=D"), Format(EndDate, "DLF=D"));
 	CreationTimeED = CurrentSessionDate();
 	
 	ED = AttachedFiles.AddFile(
@@ -7872,7 +7872,7 @@ Function TransferLetterWithAttachments(EDPackage, AccordanceOfAttachments)
 		Text = NStr("en='An error occurred while sending message to email server by %1 EDF settings profile.
 		|%2';ru='Ошибка при отправке сообщения на сервер электронной почты по профилю настроек ЭДО %1.
 		|%2'");
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 																	Text,
 																	EDPackageAttributes.EDFProfileSettings,
 																	ErrorText);
@@ -7882,7 +7882,7 @@ Function TransferLetterWithAttachments(EDPackage, AccordanceOfAttachments)
 		|(подробности см. в Журнале регистрации).'"); 
 								
 
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								MessagePattern,
 								EDPackageAttributes.EDFProfileSettings,
 								Enums.EDExchangeMethods.ThroughEMail);
@@ -8019,7 +8019,7 @@ Procedure DeleteInaccessibleForGeneratingEDObjects(RefArray)
 		IndexOf = RefArray.Find(Result.ObjectReference);
 		RefArray.Delete(IndexOf);
 		MessagePattern = NStr("en='For the %1 document, an actual electronic document already exists.';ru='Для документа %1 уже есть актуальный электронный документ.'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Result.ObjectReference);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Result.ObjectReference);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndDo;
 
@@ -8834,7 +8834,7 @@ Procedure DetermineUnprocessedObjects(ObjectsSettings, ArrayOfUncultivatedObject
 		|Not required to perform the actions with the electronic document.';ru='Обработка %1.
 		|Не требуется выполнения действий с электронным документом.'");
 		EndIf;
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Result.ObjectReference);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Result.ObjectReference);
 		CommonUseClientServer.MessageToUser(MessageText, Result.ObjectReference);
 	EndDo;
 	
@@ -9260,7 +9260,7 @@ Function SignEDWithAppointedCertificate(AddedFiles,
 				MessagePattern = NStr("en='An error occurred while signing on server. You should test cryptography certificate for: %1.
 		|%2';ru='Ошибка подписи на сервере. Необходимо провести тест сертификата криптографии для: %1.
 		|%2'");
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, SignatureCertificate,
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, SignatureCertificate,
 					BriefErrorDescription(ErrorInfo()));
 				ProcessExceptionByEDOnServer(
 						NStr("en='digitally signing';ru='установка подписи ЭП'"),
@@ -9825,7 +9825,7 @@ Function DetermineBindingObject(DocumentParametersStructure)
 			ReturnValue = EDOwnerRef.FileOwner;
 		Else
 			ErrorText = NStr("en='ED incoming binding object (%1) is not found by ID: %2';ru='Не найден объект привязки входящего ЭД(%1) по идентификатору: %2'");
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 										ErrorText,
 										DocumentParametersStructure.EDKind,
 										DocumentParametersStructure.OwnerEDId);
@@ -10774,7 +10774,7 @@ Procedure FillEDSigerData(FileName, Company, SignatureCertificate, EDKind)
 		// Check whether TIN mandatory field is filled in for SP
 		If Not DataLegalIndividual.Property("TIN") OR StrLen(DataLegalIndividual.TIN) <> 12 Then
 			MessagePattern = NStr("en='Operation is canceled. ""TIN"" field is filled in incorretly in the %1 company.';ru='Операция отменена. Не корректно заполнено поле ""ИИН"" в организации %1.'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Company);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Company);
 			
 			Raise MessageText;
 		EndIf;
@@ -10790,7 +10790,7 @@ Procedure FillEDSigerData(FileName, Company, SignatureCertificate, EDKind)
 		// Check whether TIN mandatory field is filled in for LE
 		If Not DataLegalIndividual.Property("TIN") OR StrLen(DataLegalIndividual.TIN) <> 10 Then
 			MessagePattern = NStr("en='Operation is canceled. ""TIN"" field is filled in incorretly in the %1 company.';ru='Операция отменена. Не корректно заполнено поле ""ИИН"" в организации %1.'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Company);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Company);
 			
 			Raise MessageText;
 		EndIf;
@@ -11074,7 +11074,7 @@ Procedure ValidateCertificateValidityPeriod(Certificate) Export
 		ErrorText = NStr("en='The certificate validity period
 		|is being expired %1 It is required to get a new one';ru='Заканчивается срок
 		|действия сертификата %1 Необходимо получить новый'");
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(ErrorText, String(Certificate));
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, String(Certificate));
 		ProcessExceptionByEDOnServer(Operation, ErrorText);
 	EndIf;
 	
@@ -11211,7 +11211,7 @@ Function GenerateServiceED(EDKindsArray, EDKind, CorrectionText = "") Export
 				OR EDParameters.VersionPointTypeED = Enums.EDVersionElementTypes.PrimaryED) Then
 				
 				MessagePattern = NStr("en='For the %1 ED type the Notification of receipt generation is not provided.';ru='Для типа ЭД %1 не предусмотрено формирование Извещения о получении.'");
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 					EDParameters.VersionPointTypeED);
 				CommonUseClientServer.MessageToUser(MessageText);
 				Return "";
@@ -11355,7 +11355,7 @@ Function DefineUnpackingParameters(Val RefsToDocumentsArray) Export
 		If SelectionPackages.PackageStatus <> Enums.EDPackagesStatuses.ToUnpacking Then
 			
 			MessagePattern = NStr("en = '%1 pack status differs from ""For unpacking"" value.");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, SelectionPackages.Ref);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, SelectionPackages.Ref);
 			CommonUseClientServer.MessageToUser(MessageText);
 			Continue;
 		EndIf;
@@ -11451,7 +11451,7 @@ Function DefineUnpackingParameters(Val RefsToDocumentsArray) Export
 								"CertificateParameters", CertificateAttributes(SelectionPackages.CompanyCertificateForDetails));
 						Else
 							MessagePattern = NStr("en='Decryption certificate is not specified for: %1.';ru='Не указан сертификат расшифровки для: %1.'");
-							MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, SelectionPackages.Ref);
+							MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, SelectionPackages.Ref);
 							Continue;
 						EndIf;
 						
@@ -11512,7 +11512,7 @@ Function DefineUnpackingParameters(Val RefsToDocumentsArray) Export
 							SelectionPackages.CompanyCertificateForDetails));
 						Else
 							MessagePattern = NStr("en='Decryption certificate is not specified for: %1.';ru='Не указан сертификат расшифровки для: %1.'");
-							MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, SelectionPackages.Ref);
+							MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, SelectionPackages.Ref);
 							DeleteFiles(FolderForUnpacking);
 							Continue;
 						EndIf;
@@ -11525,7 +11525,7 @@ Function DefineUnpackingParameters(Val RefsToDocumentsArray) Export
 				XMLObject.Close();
 				
 				MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 					CardFile.FullName, BriefErrorDescription(ErrorInfo()));
 					ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"), DetailErrorDescription(ErrorInfo()),
 						MessageText);
@@ -11569,7 +11569,7 @@ Function StatementQueryCMLXDTO(StartDate, EndDate, BankAccountsArray, Bank)
 		
 	Except
 		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
 			DetailErrorDescription(ErrorInfo()), MessageText, 1);
@@ -11607,7 +11607,7 @@ Function StatementQueriesArray(EDAgreement, Company, Bank, StartDate, EndDate, B
 	
 	MessagePattern = NStr("en='Statement request from %1 to %2';ru='Запрос выписки с %1 по %2'");
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		MessagePattern, Format(StartDate, "DLF=D"), Format(EndDate, "DLF=D"));
 		
 	FileName = StringFunctionsClientServer.StringInLatin(MessageText);
@@ -11707,7 +11707,7 @@ Function StatementQueriesArrayAsync(EDAgreement, Company, Bank, CompanyID, Start
 		Except
 			BriefErrorDescription = BriefErrorDescription(ErrorInfo());
 			MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 										MessagePattern, BriefErrorDescription);
 			Operation = NStr("en='ED formation';ru='Формирование ЭД'");
 			DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -11725,7 +11725,7 @@ Function StatementQueriesArrayAsync(EDAgreement, Company, Bank, CompanyID, Start
 		
 		MessagePattern = NStr("en='Statement request from %1 to %2';ru='Запрос выписки с %1 по %2'");
 	
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			MessagePattern, Format(StartDate, "DLF=D"), Format(EndDate, "DLF=D"));
 	
 		ED = AttachedFiles.AddFile(EDAgreement, MessageText, "xml", CurrentSessionDate(), CurrentSessionDate(),
@@ -11904,7 +11904,7 @@ Function IncomingEDBankData(EDAgreement, FileName)
 	Except
 		If Users.InfobaseUserWithFullAccess( , , False) Then
 			MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern,
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 				FileName, BriefErrorDescription(ErrorInfo()));
 		EndIf;
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -11922,7 +11922,7 @@ Function BankResponseErrorMessageText(Error)
 		|%3: %4';ru='Получена ошибка из банка (%1). Код ошибки %2.
 		|%3: %4'");
 	Date = Format(CurrentSessionDate(), "DLF=DT");
-	ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+	ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 		ErrorTemplate, Date, Error.Code, Error.Description, Error.MoreInfo);
 	
 	Return ErrorText;
@@ -12088,7 +12088,7 @@ Function DataForSendingToBank(Refs, BankApplication)
 			ReturnData.Insert(AgreementSelection.EDAgreement, DataStructure);
 		Else
 			MessagePattern = NStr("en='Certificates in agreement on direct exchange with %1 bank usage are not specified';ru='Не указаны сертификаты в соглашении об использовании прямого обмена с банком %1'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 										MessagePattern, AgreementSelection.EDAgreement);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;

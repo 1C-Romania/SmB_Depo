@@ -227,7 +227,7 @@ Function MessageParametersToTechicalSupport()
 		InteractionContext.COPContext,
 		"login");
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		MessageText,
 		UserLogin,
 		RegistrationNumberRegNumber);

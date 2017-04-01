@@ -20,7 +20,7 @@ Function GetFileBinaryData(Val AttachedFile) Export
 		
 	FileObject = AttachedFile.GetObject();
 	CommonUseClientServer.Validate(FileObject <> Undefined, 
-		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Attached file is not found ""%1"" (%2)';ru='Не найден присоединенный файл ""%1"" (%2)'"),
+		StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Attached file is not found ""%1"" (%2)';ru='Не найден присоединенный файл ""%1"" (%2)'"),
 			String(AttachedFile), AttachedFile.Metadata()));
 	
 	SetPrivilegedMode(True);
@@ -43,7 +43,7 @@ Function GetFileBinaryData(Val AttachedFile) Export
 			Return Selection.StoredFile.Get();
 		Else
 			// Record in the event log.
-			ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There is no binary data in
 		|
 		|the AttachedFiles register Ref to file: ""%1"".';ru='Двоичные данные файла отсутствуют в регистре ПрисоединенныеФайлы
@@ -119,7 +119,7 @@ Function GetFileData(Val AttachedFile,
 		
 	FileObject = AttachedFile.GetObject();
 	CommonUseClientServer.Validate(FileObject <> Undefined, 
-		StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Attached file is not found ""%1"" (%2)';ru='Не найден присоединенный файл ""%1"" (%2)'"),
+		StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Attached file is not found ""%1"" (%2)';ru='Не найден присоединенный файл ""%1"" (%2)'"),
 			String(AttachedFile), AttachedFile.Metadata()));
 	
 	If ForEditing AND Not ValueIsFilled(FileObject.IsEditing) Then
@@ -323,7 +323,7 @@ Function AddFile(Val FilesOwner,
 		MessagePattern = NStr("en='An error occurred while adding
 		|attached file ""%1"": %2';ru='Ошибка при добавлении
 		|присоединенного файла ""%1"": %2'");
-		CommentEventLogMonitor = StringFunctionsClientServer.PlaceParametersIntoString(
+		CommentEventLogMonitor = StringFunctionsClientServer.SubstituteParametersInString(
 			MessagePattern,
 			BaseName + "." + ExtensionWithoutDot,
 			DetailErrorDescription(ErrorInfo));
@@ -336,7 +336,7 @@ Function AddFile(Val FilesOwner,
 			,
 			CommentEventLogMonitor);
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			MessagePattern,
 			BaseName + "." + ExtensionWithoutDot,
 			BriefErrorDescription(ErrorInfo));
@@ -787,7 +787,7 @@ Procedure PerformActionsBeforeWriteAttachedFile(Source, Cancel) Export
 	
 	If Not ValueIsFilled(Source.FileOwner) Then
 		
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Owner in file is
 		|not filled in ""%1"".';ru='Не заполнен
 		|владелец в файле ""%1"".'"),
@@ -1012,7 +1012,7 @@ Function ErrorTextOnFileReceiving(Val ErrorInfo, Val File)
 	ErrorInfo = BriefErrorDescription(ErrorInfo);
 	
 	If File <> Undefined Then
-		ErrorInfo = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1
 		|
 		|Ref to file: ""%2"".';ru='%1
@@ -1098,7 +1098,7 @@ Procedure MarkToDeleteAttachedFiles(Val Source, CatalogName = Undefined)
 		
 		While Selection.Next() Do
 			If Source.DeletionMark AND ValueIsFilled(Selection.IsEditing) Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='""%1"" can not be
 		|deleted, so. contains attached
 		|file ""%2"" taken for editing.';ru='""%1"" не может быть удален,

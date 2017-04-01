@@ -32,18 +32,18 @@ Procedure CommandDataProcessorEnd(Result, AdditionalParameters) Export
     EndIf;
     
     Status(
-    StringFunctionsClientServer.PlaceParametersIntoString(
+    StringFunctionsClientServer.SubstituteParametersInString(
     NStr("en='%1 started data exchange with site';ru='%1 начат обмен данными с сайтом'"),
     Format(CurrentDate(), "DLF=DT"))
     ,,
-    StringFunctionsClientServer.PlaceParametersIntoString(
+    StringFunctionsClientServer.SubstituteParametersInString(
     NStr("en='by exchange node ""%1""...';ru='по узлу обмена ""%1""...'"),
     ExchangeNode));
     
     ExchangeWithSite.RunExchange(ExchangeNode, NStr("en='Interactive exchange';ru='Интерактивный обмен'"), False);
     
     ShowUserNotification(
-    StringFunctionsClientServer.PlaceParametersIntoString(
+    StringFunctionsClientServer.SubstituteParametersInString(
     NStr("en='%1 ""%2""';ru='%1 ""%2""'"),
     Format(CurrentDate(), "DLF=DT"),
     ExchangeNode) 

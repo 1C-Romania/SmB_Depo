@@ -447,11 +447,11 @@ Procedure OnAddParametersJobsClientLogicStandardSubsystemsRunning(Parameters) Ex
 	CurrentMode = LockParameters.CurrentDataAreaMode;
 	
 	If ValueIsFilled(CurrentMode.End) Then
-		LockPeriod = StringFunctionsClientServer.PlaceParametersIntoString(
+		LockPeriod = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='for period from %1 to %2';ru='на период с %1 по %2'"),
 			CurrentMode.Begin, CurrentMode.End);
 	Else
-		LockPeriod = StringFunctionsClientServer.PlaceParametersIntoString(
+		LockPeriod = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='from %1';ru='с %1'"), CurrentMode.Begin);
 	EndIf;
 	If ValueIsFilled(CurrentMode.Message) Then
@@ -459,7 +459,7 @@ Procedure OnAddParametersJobsClientLogicStandardSubsystemsRunning(Parameters) Ex
 	Else
 		LockReason = NStr("en='to post the scheduled works';ru='для проведения регламентных работ'");
 	EndIf;
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Application administator set %1 %2 users work lock.
 		|
 		|Application is temporarily unavailable.';ru='Администратором приложения установлена блокировка работы пользователей %1 %2.
@@ -469,7 +469,7 @@ Procedure OnAddParametersJobsClientLogicStandardSubsystemsRunning(Parameters) Ex
 	Parameters.Insert("DataAreaSessionsLocked", MessageText);
 	MessageText = "";
 	If Users.InfobaseUserWithFullAccess() Then
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Application administator set %1 %2 users work lock.
 		|
 		|Do you want to enter to the locked application?';ru='Администратором приложения установлена блокировка работы пользователей %1 %2.
@@ -564,23 +564,23 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	If LockParameters.Use Then
 		If CurrentSessionDate < LockParameters.Begin Then
 			If LockParameters.End <> Date(1, 1, 1) Then
-				Message = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Planned from %1 to %2';ru='Запланирована с %1 по %2'"), 
+				Message = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Planned from %1 to %2';ru='Запланирована с %1 по %2'"), 
 					Format(LockParameters.Begin, "DLF=DT"), Format(LockParameters.End, "DLF=DT"));
 			Else
-				Message = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Planned from %1';ru='Запланирована с %1'"), 
+				Message = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Planned from %1';ru='Запланирована с %1'"), 
 					Format(LockParameters.Begin, "DLF=DT"));
 			EndIf;
 			Importance = False;
 		ElsIf LockParameters.End <> Date(1, 1, 1) AND CurrentSessionDate > LockParameters.End AND LockParameters.Begin <> Date(1, 1, 1) Then
 			Importance = False;
-			Message = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Invalid (expired %1)';ru='Не действует (истек срок %1)'"), 
+			Message = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Invalid (expired %1)';ru='Не действует (истек срок %1)'"), 
 				Format(LockParameters.End, "DLF=DT"));
 		Else
 			If LockParameters.End <> Date(1, 1, 1) Then
-				Message = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='from %1 to %2';ru='с %1 по %2'"), 
+				Message = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='from %1 to %2';ru='с %1 по %2'"), 
 					Format(LockParameters.Begin, "DLF=DT"), Format(LockParameters.End, "DLF=DT"));
 			Else
-				Message = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='from %1';ru='с %1'"), 
+				Message = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='from %1';ru='с %1'"), 
 					Format(LockParameters.Begin, "DLF=DT"));
 			EndIf;
 			Importance = True;
@@ -699,7 +699,7 @@ Function GenerateLockMessage(Val Message, Val KeyCode) Export
 		|Для того чтобы разрешить работу пользователей, воспользуйтесь консолью кластера серверов или запустите
 		|""1С:Предприятие"" с параметрами: ENTERPRISE %2 /CРазрешитьРаботуПользователей /UC%3'");
 	EndIf;
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText,
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText,
 		InfobaseConnectionsClientServer.TextForAdministrator(), InfobasePathString, 
 		NStr("en='<permission code>';ru='<код разрешения>'"));
 	
@@ -875,7 +875,7 @@ Function InformationAboutLockingSessions(MessageText = "") Export
 	InformationAboutLockingSessions.Insert("NumberOfSessions", InfobaseSessions.Count());
 	
 	If LockSessionsPresent Then
-		Message = StringFunctionsClientServer.PlaceParametersIntoString(
+		Message = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='There are active sessions
 		|of work with application that can not
 		|be

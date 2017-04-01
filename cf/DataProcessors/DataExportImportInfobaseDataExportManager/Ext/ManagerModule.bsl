@@ -27,7 +27,7 @@ Procedure ExportInfobaseData(Container, Handlers, Serializer) Export
 				EventLogLevel.Information,
 				MetadataObject,
 				,
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Export of metadata object %1 is skipped as it is
 		|included in the metadata object list excluded from data export and import';ru='Выгрузка данных объекта метаданных %1 пропущена, т.к. он включен в
 		|список объектов метаданных, исключаемых из выгрузки и загрузки данных'", Metadata.DefaultLanguage.LanguageCode),

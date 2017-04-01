@@ -18,7 +18,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Raise NStr("en='Main node is restored.';ru='Главный узел установлен.'");
 	EndIf;
 	
-	Items.WarningText.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.WarningText.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		Items.WarningText.Title, String(MasterNode));
 	
 EndProcedure

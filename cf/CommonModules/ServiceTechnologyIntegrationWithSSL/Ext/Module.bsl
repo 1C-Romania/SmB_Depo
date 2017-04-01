@@ -196,14 +196,14 @@ EndFunction
 ////////////////////////////////////////////////////////////////////////////////
 // StringFunctionsClientServer
 
-// See StringFunctionsClientServer.PlaceParametersIntoString()
+// See StringFunctionsClientServer.SubstituteParametersInString()
 //
 Function PlaceParametersIntoString(Val LookupString,
 	Val Parameter1, Val Parameter2 = Undefined, Val Parameter3 = Undefined,
 	Val Parameter4 = Undefined, Val Parameter5 = Undefined, Val Parameter6 = Undefined,
 	Val Parameter7 = Undefined, Val Parameter8 = Undefined, Val Parameter9 = Undefined) Export
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(LookupString,
+	Return StringFunctionsClientServer.SubstituteParametersInString(LookupString,
 		Parameter1, Parameter2, Parameter3, Parameter4, Parameter5, Parameter6, Parameter7, Parameter8, Parameter9);
 	
 EndFunction

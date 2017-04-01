@@ -386,7 +386,7 @@ Procedure FillVariantsList()
 			ReportObject = ExternalReports.Create(ReportInformation.ReportName);
 		Except
 			ReportsVariants.ErrorByVariant(Undefined,
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Failed to receive a predefined
 		|variants list of the external report ""%1"":';ru='Не удалось получить
 		|список предопределенных вариантов внешнего отчета ""%1"":'"),

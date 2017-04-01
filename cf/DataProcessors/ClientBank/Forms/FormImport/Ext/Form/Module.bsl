@@ -1481,7 +1481,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				EventLogLevel.Error,
 				,
 				,
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The temporary file saving to the disk is failed by reason: %1';ru='Не удалось сохранение временного файла на диск по причине: %1'"),
 				ErrorDescription()));
 				Return;
@@ -1537,7 +1537,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		DirectExchangeWithBanksAgreement = Parameters.DirectExchangeWithBanksAgreement;
 		If ValueIsFilled(DirectExchangeWithBanksAgreement) Then
 			TemplateText = NStr("en='The direct exchange agreement is effectife from %1: bank statement will be imported to 1C:Small Business directly from the bank';ru='С %1 действует соглашение о прямом обмене: банковская выписка будет загружена в 1С:Управление небольшой фирмой напрямую из банка'");
-			LabelText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
+			LabelText = StringFunctionsClientServer.SubstituteParametersInString(TemplateText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
 			DirectMessageExchange = LabelText;
 		EndIf;
 	EndIf;

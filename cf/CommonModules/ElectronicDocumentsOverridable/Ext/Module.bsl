@@ -463,7 +463,7 @@ Procedure FillDataByAssignmentDeed(ObjectReference, EDStructure, DataTree) Expor
 	
 	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerInvoice.SaleToCustomer Then
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;
@@ -611,7 +611,7 @@ Procedure FillDataOnTrad21SellerFTS(ObjectReference, EDStructure, DataTree) Expo
 	
 	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerInvoice.SaleToCustomer Then
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;
@@ -797,7 +797,7 @@ Procedure FillDataByAct501PerformerFTS(ObjectReference, EDStructure, DataTree) E
 	TabularSection = DocumentData.WorkTable;
 	
 	If TabularSection.Count() = 0 Then
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='The document does not contain data for ED generaton ""%1""';ru='Документ не содержит данных для формирования ЭД ""%1""'"),
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The document does not contain data for ED generaton ""%1""';ru='Документ не содержит данных для формирования ЭД ""%1""'"),
 			EDStructure.EDKind);
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
@@ -843,7 +843,7 @@ Procedure FillDataByAct501PerformerFTS(ObjectReference, EDStructure, DataTree) E
 		
 		If Not ValueIsFilled(String.ProductsAndServices) Then
 			MessageText = NStr("en='In the %1 string of the %2 tabular section the products and services are not filled. To transfer an electronic document, it is necessary to fill out the products and services.';ru='В строке %1 табличной части %2 не заполнена номенклатура. Для передачи электронного документа заполнение номенклатуры обязательно.'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, String.LineNumber, String.TabularSectionName);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, String.LineNumber, String.TabularSectionName);
 			CommonUseClientServer.MessageToUser(MessageText, ObjectReference);
 			Continue;
 		EndIf;
@@ -919,7 +919,7 @@ Procedure PrepareDataByTorg12(ObjectReference, EDStructure, ParametersStructure)
 	
 	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerInvoice.SaleToCustomer Then
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;
@@ -930,7 +930,7 @@ Procedure PrepareDataByTorg12(ObjectReference, EDStructure, ParametersStructure)
 	HeaderAttributes  = DocumentData.HeaderAttributes;
 	
 	If DocumentData.ProductsTable.Count() = 0 Then
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='The document does not contain data for ED generaton ""%1""';ru='Документ не содержит данных для формирования ЭД ""%1""'"),
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The document does not contain data for ED generaton ""%1""';ru='Документ не содержит данных для формирования ЭД ""%1""'"),
 			EDStructure.EDKind);
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
@@ -1072,7 +1072,7 @@ Procedure PrepareDataByInvoice(ObjectReference, EDStructure, ParametersStructure
 	
 	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerInvoiceNote.Sale Then
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;
@@ -1405,7 +1405,7 @@ Procedure PrepareDataByProductsOrder(ObjectReference, EDStructure, ParametersStr
 	
 	If ObjectReference.OperationKind <> Enums.OperationKindsPurchaseOrder.OrderForPurchase Then
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;
@@ -1492,7 +1492,7 @@ Procedure PrepareDataByProductsOrder(ObjectReference, EDStructure, ParametersStr
 		If Selection.ID = Undefined Then
 			
 			CommonUseClientServer.MessageToUser(
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Failed to map the products and services ""%1"" with the products and services of the supplier';ru='Не удалось сопоставить номенклатуру ""%1"" с номенклатурой поставщика'"),
 					String(Selection.ProductsAndServices) + ?(ValueIsFilled(Selection.Characteristic), "(" + Selection.Characteristic + ")", "") 
 																		)
@@ -1575,7 +1575,7 @@ Procedure PrepareDataByOnOrderResponce(ObjectReference, EDStructure, ParametersS
 	
 	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerOrder.OrderForSale Then
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;
@@ -2188,11 +2188,11 @@ Function FillCounterpartyAttributes(AttributesStructure) Export
 		Message = New UserMessage();
 		
 		If RefNew <> Undefined Then
-			Message.Text = StringFunctionsClientServer.PlaceParametersIntoString(
+			Message.Text = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='New counterparty ""%1"" was successfully created.';ru='Новый контрагент ""%1"" был успешно создан.'"),
 				Counterparty.Description);
 		Else
-			Message.Text = StringFunctionsClientServer.PlaceParametersIntoString(
+			Message.Text = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Data of counterparty ""%1"" is refilled.';ru='Данные контрагента ""%1"" перезаполнены.'"),
 				Counterparty.Description);
 		EndIf;
@@ -3216,7 +3216,7 @@ Procedure CheckSourcesReadiness(DocumentsArray, FormSource = Undefined) Export
 		If Found <> Undefined Then
 			DocumentsArray.Delete(Found);
 			CommonUseClientServer.MessageToUser(
-				StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, String(Document)), 
+				StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, String(Document)), 
 				Document);
 		EndIf;
 	EndDo;
@@ -3242,7 +3242,7 @@ Procedure CheckSourcesReadiness(DocumentsArray, FormSource = Undefined) Export
 		If Found <> Undefined Then
 			DocumentsArray.Delete(Found);
 			CommonUseClientServer.MessageToUser(
-				StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, String(UnpostedDocument.Ref)), 
+				StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, String(UnpostedDocument.Ref)), 
 																		UnpostedDocument.Ref);
 		EndIf;
 	EndDo;
@@ -3904,7 +3904,7 @@ Procedure FillInDataByInvoiceFTS(ObjectReference, EDStructure, DataTree) Export
 	
 	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerInvoiceNote.Sale Then
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;

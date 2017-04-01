@@ -878,7 +878,7 @@ Procedure WriteReasonIntoResult(ExecuteParameters, TableRow)
 		If Metadata.Constants.Contains(TableRow.FindMetadata) Then
 			Cause.DetectedType = Type("ConstantValueManager." + TableRow.FindMetadata.Name);
 		Else
-			Cause.FoundReference = StringFunctionsClientServer.PlaceParametersIntoString(
+			Cause.FoundReference = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Unresolved references are found (%1)';ru='Обнаружены неразрешимые ссылки (%1)'"),
 				TableRow.FindMetadata.Presentation());
 			Cause.DetectedType = Type("String");
@@ -1017,7 +1017,7 @@ Procedure ClientMarkCollectionBypassProgress(ExecuteParameters, CollectionName)
 		Else
 			Pattern = NStr("en='Processed: %1 out of %2 objects, out of this quantity not removed: %3.';ru='Обработано: %1 из %2 объектов, из них не удалено: %3.'");
 		EndIf;
-		Text = StringFunctionsClientServer.PlaceParametersIntoString(
+		Text = StringFunctionsClientServer.SubstituteParametersInString(
 			Pattern,
 			Format(ExecuteParameters.Number, "NZ=0; NG="),
 			Format(ExecuteParameters.Total, "NZ=0; NG="),
@@ -1025,14 +1025,14 @@ Procedure ClientMarkCollectionBypassProgress(ExecuteParameters, CollectionName)
 		
 	ElsIf CollectionName = "RepeatedlyDeleted" Then
 		
-		Text = StringFunctionsClientServer.PlaceParametersIntoString(
+		Text = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Follow-up check of not deleted objects: %1 out of %2.';ru='Повторная проверка не удаленных объектов: %1 из %2.'"),
 			Format(ExecuteParameters.Number, "NZ=0; NG="),
 			Format(ExecuteParameters.Total, "NZ=0; NG="));
 		
 	ElsIf CollectionName = "ImpedingRemoval" Then
 		
-		Text = StringFunctionsClientServer.PlaceParametersIntoString(
+		Text = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Analysis of the objects preventing deletion: %1 out of %2.';ru='Анализ объектов, препятствующих удалению: %1 из %2.'"),
 			Format(ExecuteParameters.Number, "NZ=0; NG="),
 			Format(ExecuteParameters.Total, "NZ=0; NG="));

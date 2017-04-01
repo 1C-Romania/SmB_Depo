@@ -154,7 +154,7 @@ Procedure ExecuteConnectedPrintCommand(Val Command, Val Form, Val Source) Export
 		AND (Source.Ref.IsEmpty() Or Form.Modified) Then
 		
 		If Source.Ref.IsEmpty() Then
-			QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+			QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Data is still not recorded.
 		|Execution of action ""%1"" is possible only after data is recorded.
 		|Data will be written.';ru='Данные еще не записаны.
@@ -408,7 +408,7 @@ Function TemplateArea(Val RefsOnTemplate, Val DetailsOfArea) Export
 			Area = PrintManagementMSWordClient.GetMSWordTemplateArea(RefsOnTemplate, DetailsOfArea.AreaName, 1, 0);
 		Else
 			Raise
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='The area type is not specified or is specified incorrectly: %1.';ru='Тип области не указан или указан не корректно: %1.'"), DetailsOfArea.AreaType);
 		EndIf;
 		
@@ -427,7 +427,7 @@ Function TemplateArea(Val RefsOnTemplate, Val DetailsOfArea) Export
 			Area = PrintManagementOOWriterClient.GetTemplateArea(RefsOnTemplate, DetailsOfArea.AreaName);
 		Else
 			Raise
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='The area type is not specified or is specified incorrectly: %1.';ru='Тип области не указан или указан не корректно: %1.'"), DetailsOfArea.AreaName);
 		EndIf;
 		
@@ -511,7 +511,7 @@ Procedure JoinArea(Val PrintForm,
 		ErrorInfo = TrimAll(BriefErrorDescription(ErrorInfo()));
 		ErrorInfo = ?(Right(ErrorInfo, 1) = ".", ErrorInfo, ErrorInfo + ".");
 		ErrorInfo = ErrorInfo + " " +
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='An error occurred while printing the area ""%1""  from the template.';ru='Ошибка при попытке вывести область ""%1"" из макета.'"),
 					TemplateArea.DetailsOfArea.AreaName);
 		Raise ErrorInfo;
@@ -784,7 +784,7 @@ Function CheckDocumentsPosted(DocumentsArray, FormSource = Undefined) Export
 		UnpostedDocuments = New Array;
 		For Each InformationAboutDocument IN DataAboutUnpostedDocuments Do
 			CommonUseClientServer.MessageToUser(
-				StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, String(InformationAboutDocument.Ref), 
+				StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, String(InformationAboutDocument.Ref), 
 					InformationAboutDocument.ErrorDescription), InformationAboutDocument.Ref);
 			UnpostedDocuments.Add(InformationAboutDocument.Ref);		
 		EndDo;

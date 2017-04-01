@@ -518,7 +518,7 @@ Function OfflineWorkplaceDescriptionByDefault()
 	
 	Result = NStr("en='Offline work - %1';ru='Автономная работа - %1'");
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(Result, UserFullName());
+	Return StringFunctionsClientServer.SubstituteParametersInString(Result, UserFullName());
 EndFunction
 
 // For internal use

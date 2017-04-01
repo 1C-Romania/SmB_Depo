@@ -176,7 +176,7 @@ Function AccessKindsProperties()
 	For Each AccessKind IN AccessKinds Do
 		
 		If AllAccessKindNames[Upper(AccessKind.Name)] <> Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorTitle +
 				NStr("en='Access kind name ""%1"" is already determined.';ru='Имя вида доступа ""%1"" уже определено.'"),
 				AccessKind.Name);
@@ -358,7 +358,7 @@ Procedure FillAccessValuesWithGroups(String, AccessValuesWithGroups, Properties,
 	If Parameters.SubscriptionTypesUpdateAccessValuesGroups.Get(ObjectType) = Undefined
 	   AND Not CommonUse.IsEnum(ValuesTypeMetadata) Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			Parameters.ErrorTitle +
 			NStr("en='Access value type ""%1"" that uses
 		|value groups is not specified in the subscription to the ""Update access value groups"" event.';ru='Тип значения доступа ""%1"",
@@ -391,7 +391,7 @@ Procedure CheckType(AccessKind, Type, AllTypes, Parameters, GroupTypesCheck = Fa
 		If GroupTypesCheck Then
 			Return;
 		EndIf;
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			Parameters.ErrorTitle +
 			NStr("en='For the access kind ""%1"" access values type is not specified.';ru='Для вида доступа ""%1"" не указан тип значений доступа.'"),
 			AccessKind.Name);
@@ -410,7 +410,7 @@ Procedure CheckType(AccessKind, Type, AllTypes, Parameters, GroupTypesCheck = Fa
 		|But it is not reference type.';ru='Тип ""%1"" указан, как тип значений, для вида доступа ""%2"".
 		|Однако это не тип ссылки.'");
 		EndIf;
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			Parameters.ErrorTitle + ErrorDescription, Type, AccessKind.Name);
 	EndIf;
 	
@@ -446,7 +446,7 @@ Procedure CheckType(AccessKind, Type, AllTypes, Parameters, GroupTypesCheck = Fa
 	
 	If AllTypes.Get(Type) <> Undefined Then
 		If Not (ForSameAccessTypeNoError AND AccessKind.Name = AllTypes.Get(Type)) Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				Parameters.ErrorTitle + ErrorDescription, Type, AllTypes.Get(Type), AccessKind.Name);
 		EndIf;
 	ElsIf Not CheckIntersection Then
@@ -470,7 +470,7 @@ Procedure CheckType(AccessKind, Type, AllTypes, Parameters, GroupTypesCheck = Fa
 	EndIf;
 	
 	If ValueIsFilled(ErrorDescription) Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			Parameters.ErrorTitle + ErrorDescription,
 			Type,
 			AccessKind.Name);

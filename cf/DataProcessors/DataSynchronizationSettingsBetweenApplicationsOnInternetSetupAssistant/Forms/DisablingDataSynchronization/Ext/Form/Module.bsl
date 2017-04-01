@@ -19,12 +19,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	EventLogMonitorEventDataSyncronizationSetting = DataExchangeSaaS.EventLogMonitorEventDataSyncronizationSetting();
 	
-	Items.LabelWarnings.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.LabelWarnings.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Disable data
 		|synchronization from % 1?';ru='Отключить синхронизацию данных
 		|с ""%1""?'"), Parameters.CorrespondentDescription);
 	
-	Items.TitleInformational.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.TitleInformational.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Data
 		|synchronization with % 1 is disabled.';ru='Синхронизация данных
 		|с ""%1"" отключена.'"), Parameters.CorrespondentDescription);

@@ -56,7 +56,7 @@ EndProcedure
 // 
 Procedure FillDataVendorVersionExt(Result) Export
 	
-	Result.Data = StringFunctionsClientServer.PlaceParametersIntoString(
+	Result.Data = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='SSL %1';ru='БСП %1'"), StandardSubsystemsServer.LibraryVersion()
 	);
 	
@@ -2450,7 +2450,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 	
 	StateImportedToAddressInformation = InformationAboutState(Address.RFTerritorialEntity).Imported;
 	If StateImportedToAddressInformation = Undefined Then 
-			AddAddressCheckingErrorByClassifier(CheckingError, "RFTerritorialEntity", StringFunctionsClientServer.PlaceParametersIntoString(
+			AddAddressCheckingErrorByClassifier(CheckingError, "RFTerritorialEntity", StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 state does not exist';ru='Регион ""%1"" не существует'"), 
 				Address.RFTerritorialEntity
 			));
@@ -2863,7 +2863,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 	QueryResult = Query.Execute();
 	If QueryResult.IsEmpty() Then
 		// No state
-		AddAddressCheckingErrorByClassifier(CheckingError, "RFTerritorialEntity", StringFunctionsClientServer.PlaceParametersIntoString(
+		AddAddressCheckingErrorByClassifier(CheckingError, "RFTerritorialEntity", StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='RF territorial entity (state) %1 is not found in the address classifier';ru='Субъект РФ (регион) ""%1"" не найден в адресном классификаторе'"), RFTerritorialEntity.Description + " " + RFTerritorialEntity.Abbr));
 		Return Result;
 		
@@ -2876,21 +2876,21 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 	For Each Record In HousesRecords Do;
 	
 		If CheckRegion AND Not Record.RegionFound Then
-			AddAddressCheckingErrorByClassifier(CheckingError, "District", StringFunctionsClientServer.PlaceParametersIntoString(
+			AddAddressCheckingErrorByClassifier(CheckingError, "District", StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There is no %1 county in the address classifier.';ru='Округ ""%1"" отсутствует в адресном классификаторе'"), 
 				District.Description + " " + District.Abbr
 			));
 		EndIf;
 		
 		If CheckRegion AND Not Record.RegionFound Then
-			AddAddressCheckingErrorByClassifier(CheckingError, "PrRayMO/Region", StringFunctionsClientServer.PlaceParametersIntoString(
+			AddAddressCheckingErrorByClassifier(CheckingError, "PrRayMO/Region", StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There is no %1 region in the address classifier.';ru='Район ""%1"" отсутствует в адресном классификаторе'"), 
 				Region.Description + " " + Region.Abbr
 			));
 		EndIf;
 		
 		If CheckCity AND Not Record.CityFound Then
-			AddAddressCheckingErrorByClassifier(CheckingError, "City", StringFunctionsClientServer.PlaceParametersIntoString(
+			AddAddressCheckingErrorByClassifier(CheckingError, "City", StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There is no %1 city in the address classifier.';ru='Город ""%1"" отсутствует в адресном классификаторе'"), 
 				City.Description + " " + City.Abbr
 			));
@@ -2898,14 +2898,14 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		
 			
 		If CheckUrbanDistrict AND Not Record.UrbanRegionFound Then
-			AddAddressCheckingErrorByClassifier(CheckingError, "UrbDistrict", StringFunctionsClientServer.PlaceParametersIntoString(
+			AddAddressCheckingErrorByClassifier(CheckingError, "UrbDistrict", StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There is no %1 urban district in an address classifier';ru='Внутригородской район ""%1"" отсутствует в адресном классификаторе'"), 
 				UrbanDistrict.Description + " " + UrbanDistrict.Abbr
 			));
 		EndIf;
 			
 		If CheckSettlement AND Not Record.SettlementFound Then
-			AddAddressCheckingErrorByClassifier(CheckingError, "Settlement", StringFunctionsClientServer.PlaceParametersIntoString(
+			AddAddressCheckingErrorByClassifier(CheckingError, "Settlement", StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There is no settlement %1 in the address classifier.';ru='Населенный пункт ""%1"" отсутствует в адресном классификаторе'"), 
 				Settlement.Description + " " + Settlement.Abbr
 			));
@@ -2915,13 +2915,13 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 			ObjectHistory = AddressObjectHistory(Street.Description, Street.Abbr, Record);
 			If ObjectHistory.Count() > 0 Then 
 				For Each RowObject In ObjectHistory Do
-					AddAddressCheckingErrorByClassifier(CheckingError, "Street", StringFunctionsClientServer.PlaceParametersIntoString(
+					AddAddressCheckingErrorByClassifier(CheckingError, "Street", StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='%1 street was renamed as %2';ru='Улица ""%1"" была переименована в ""%2""'"), 
 					RowObject.Value, RowObject.Presentation
 					));
 				EndDo;
 			Else
-				AddAddressCheckingErrorByClassifier(CheckingError, "Street", StringFunctionsClientServer.PlaceParametersIntoString(
+				AddAddressCheckingErrorByClassifier(CheckingError, "Street", StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='There is no %1 street in the address classifier.';ru='Улица ""%1"" отсутствует в адресном классификаторе'"), 
 					Street.Description + " " + Street.Abbr
 				));
@@ -2929,14 +2929,14 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		EndIf;
 			
 		If CheckAdditional AND Not Record.AdditionalFound Then
-			AddAddressCheckingErrorByClassifier(CheckingError, "Additional", StringFunctionsClientServer.PlaceParametersIntoString(
+			AddAddressCheckingErrorByClassifier(CheckingError, "Additional", StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There is no %1 additional item in an address classifier';ru='Дополнительный элемент ""%1""отсутствует в адресном классификаторе'"), 
 				Additional.Description + " " + Additional.Abbr
 			));
 		EndIf;
 			
 		If CheckSubordinate AND Not Record.SubordinateFound Then
-			AddAddressCheckingErrorByClassifier(CheckingError, "subordinated", StringFunctionsClientServer.PlaceParametersIntoString(
+			AddAddressCheckingErrorByClassifier(CheckingError, "subordinated", StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There is no %1 subordinate item in the address classifier';ru='Подчиненный элемент ""%1"" отсутствует в адресном классификаторе'"), 
 				subordinated.Description + " " + subordinated.Abbr
 			));
@@ -2992,7 +2992,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		
 		BuildingDescriptionByFIASMatching = BuildingDescriptionByFIASMatching(BuildingsAndFacilities);
 		If ValueIsFilled(BuildingDescriptionByFIASMatching) Then
-			AddAddressCheckingErrorByClassifier(CheckingError, "subordinated", StringFunctionsClientServer.PlaceParametersIntoString(
+			AddAddressCheckingErrorByClassifier(CheckingError, "subordinated", StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='There is no %1 in the address classifier';ru='""%1"" отсутствует в адресном классификаторе'"), BuildingDescriptionByFIASMatching(BuildingsAndFacilities)
 			));
 		EndIf;
@@ -3021,7 +3021,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 	
 		// Check index
 	If Not CorrectIndex AND ValueIsFilled(IndexOf) Then
-		AddAddressCheckingErrorByClassifier(CheckingError, "IndexOf", StringFunctionsClientServer.PlaceParametersIntoString(
+		AddAddressCheckingErrorByClassifier(CheckingError, "IndexOf", StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='ZipCode ""%1"" in the address classifier does not correspond to the entered address';ru='Индекс ""%1"" в адресном классификаторе не соответствует введенному адресу'"), IndexOf));
 	EndIf;
 	
@@ -4485,7 +4485,7 @@ Procedure SetStreetLevelsByAddressParts(SettlementIdentifier, PartsAddresses) Ex
 		NameTables = "AddressObject"+ String(IndexOf);
 		RowSelect = RowSelect + SeparatorSelect + NameTables + ".ID AS " + NameTables + "ID, " + 
 							NameTables + ".Level AS " + NameTables + "Level " ;
-		RowFrom = RowFrom + StringFunctionsClientServer.PlaceParametersIntoString(Pattern, NameTables, PartAddresses.Description, PartAddresses.Abbr);
+		RowFrom = RowFrom + StringFunctionsClientServer.SubstituteParametersInString(Pattern, NameTables, PartAddresses.Description, PartAddresses.Abbr);
 		SeparatorSelect = ", ";
 	EndDo;
 	
@@ -5219,7 +5219,7 @@ Procedure TransferOutdatedDataClassifier(RFTerritorialEntitiesCodes)
 	For Each RFTerritorialEntity In RFTerritorialEntitiesCodes Do
 		
 		SerialNumber = SerialNumber + 1;
-		LongActions.TellProgress( , StringFunctionsClientServer.PlaceParametersIntoString(
+		LongActions.TellProgress( , StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Actualization of information about state %1-%2 (%3 is left) ...';ru='Актуализация сведений о регионе ""%1 - %2"" (осталось %3) .'"), 
 			RFTerritorialEntity, AddressClassifier.StateNameByCode(RFTerritorialEntity),
 			Format(TerritorialEntityTotally - SerialNumber, "NZ=")));
@@ -5719,7 +5719,7 @@ Function KLADRRangeDescription(Definition, DataTables)
 	
 	TypesVariants = DataTables.ServiceAddressData.FindRows(Filter);
 	If TypesVariants.Count() = 0 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error occurred during searching the type of range for %1';ru='Ошибка поиска типа диапазона для %1'"), Definition
 		);
 	EndIf;
@@ -6149,7 +6149,7 @@ Procedure ImportAddressClassifier(RFTerritorialEntitiesCodes, FilesDescription, 
 		
 		SerialNumber = SerialNumber + 1;
 		If AlertAboutProgress Then
-			LongActions.TellProgress( , StringFunctionsClientServer.PlaceParametersIntoString(
+			LongActions.TellProgress( , StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Import %1 - %2 state (%3 left) ...';ru='Загрузка региона ""%1 - %2"" (осталось %3) ...'"), 
 				RFTerritorialEntity, AddressClassifier.StateNameByCode(RFTerritorialEntity),
 				Format(TerritorialEntityTotally - SerialNumber, "NZ=")));
@@ -6320,7 +6320,7 @@ Procedure ClearAddressesClassifier(RFTerritorialEntitiesCodes) Export
 	For Each RFTerritorialEntity In RFTerritorialEntitiesCodes Do
 		
 		SerialNumber = SerialNumber + 1;
-		LongActions.TellProgress( , StringFunctionsClientServer.PlaceParametersIntoString(
+		LongActions.TellProgress( , StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Clear %1 - %2 state (%3 left) ...';ru='Очистка региона ""%1 - %2"" (осталось %3) ...'"), 
 			RFTerritorialEntity, AddressClassifier.StateNameByCode(RFTerritorialEntity),
 			Format(TerritorialEntityTotally - SerialNumber, "NZ=")
@@ -6547,7 +6547,7 @@ Function LastImportDescription() Export
 		Presentation = NStr("en='Address classifier was imported yesterday.';ru='Адресный классификатор был загружен позавчера.'");
 			
 	Else
-		Presentation = StringFunctionsClientServer.PlaceParametersIntoString(
+		Presentation = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Address classifier was imported %1 ago.';ru='Адресный классификатор был загружен %1 назад.'"), CommonUse.TimeIntervalAsString(EndOfPeriod, BeginOfPeriod)
 		);
 		
@@ -7061,7 +7061,7 @@ Function RFTerritorialEntityImportFile(RFTerritorialEntityCode, FileDirectory, K
 	EndDo;
 	
 	If XDTORecordType = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The list of records in the %2 type is not found in the %1 file.';ru='В файле ""%1"" не найден список записей в типе %2'"), Result.FullName, Result.XDTOType
 		);
 	EndIf;
@@ -7092,7 +7092,7 @@ Function RFTerritorialEntityImportFile(RFTerritorialEntityCode, FileDirectory, K
 		// Position yourself to the next node.
 		ReadingFile.Read();
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Root node %2 is not found in %1 file';ru='В файле ""%1"" не найден корневой узел %2'"), Result.FullName, DescribingNodeName
 		);
 	EndIf;
@@ -7266,7 +7266,7 @@ Procedure DeleteTemporaryFile(FullFileName) Export
 		DeleteFiles(FullFileName)
 	Except
 		WriteLogEvent(EventLogMonitorEvent(), EventLogLevel.Warning,
-			,, StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Unable to delete a temporary file %1 as: %2';
+			,, StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Unable to delete a temporary file %1 as: %2';
 			|ru='Невозможно удалить временный файл %1 как: %2'"), FullFileName, DetailErrorDescription(ErrorInfo())));
 	EndTry
 	

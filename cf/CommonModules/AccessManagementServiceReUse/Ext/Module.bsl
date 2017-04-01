@@ -37,7 +37,7 @@ Function Parameters() Export
 	
 	If ValueIsFilled(ParameterPresentation) Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Information base updating error.
 		|Access limitation parameter is
 		|not filled in: ""%1"".';ru='Ошибка обновления информационной базы.
@@ -116,18 +116,18 @@ Function ConstantRightsRestrictionKindsOfMetadataObjects() Export
 				EndIf;
 				
 				If Metadata.FindByFullName(Table) = Undefined Then
-					ErrorExplanation = StringFunctionsClientServer.PlaceParametersIntoString(
+					ErrorExplanation = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Not found table ""%1"".';ru='Не найдена таблица ""%1"".'"),
 						Table);
 				
 				ElsIf Right <> "Read" AND Right <> "Update" Then
-					ErrorExplanation = StringFunctionsClientServer.PlaceParametersIntoString(
+					ErrorExplanation = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Not found right ""%1"".';ru='Не найдено право ""%1"".'"),
 						Right);
 				
 				ElsIf Upper(AccessKind) = Upper("Object") Then
 					If Metadata.FindByFullName(ObjectTable) = Undefined Then
-						ErrorExplanation = StringFunctionsClientServer.PlaceParametersIntoString(
+						ErrorExplanation = StringFunctionsClientServer.SubstituteParametersInString(
 							NStr("en='Not found object table ""%1"".';ru='Не найдена таблица объекта ""%1"".'"),
 							ObjectTable);
 					Else
@@ -138,7 +138,7 @@ Function ConstantRightsRestrictionKindsOfMetadataObjects() Export
 					
 				ElsIf Upper(AccessKind) = Upper("RightSettings") Then
 					If Metadata.FindByFullName(ObjectTable) = Undefined Then
-						ErrorExplanation = StringFunctionsClientServer.PlaceParametersIntoString(
+						ErrorExplanation = StringFunctionsClientServer.SubstituteParametersInString(
 							NStr("en='Rights settings owner table is not found ""%1"".';ru='Не найдена таблица владельца настроек прав ""%1"".'"),
 							ObjectTable);
 					Else
@@ -148,7 +148,7 @@ Function ConstantRightsRestrictionKindsOfMetadataObjects() Export
 					EndIf;
 				
 				ElsIf AccessKindsByNames.Get(AccessKind) = Undefined Then
-					ErrorExplanation = StringFunctionsClientServer.PlaceParametersIntoString(
+					ErrorExplanation = StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='Not found access kind ""%1"".';ru='Не найден вид доступа ""%1"".'"),
 						AccessKind);
 				Else
@@ -158,7 +158,7 @@ Function ConstantRightsRestrictionKindsOfMetadataObjects() Export
 			EndIf;
 			
 			If ValueIsFilled(ErrorExplanation) Then
-				Raise(StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise(StringFunctionsClientServer.SubstituteParametersInString(
 						NStr("en='An error occurred in kind description string of
 		|the metadata object right restriction: ""%1"".
 		|

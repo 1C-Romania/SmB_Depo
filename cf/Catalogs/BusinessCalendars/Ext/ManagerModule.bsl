@@ -628,7 +628,7 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 		SelectionByQuarter = SelectionByYear.Select(QueryResultIteration.ByGroups);
 		While SelectionByQuarter.Next() Do
 			NumberOfQuarter = Template.GetArea("Quarter");
-			NumberOfQuarter.Parameters.NumberOfQuarter = StringFunctionsClientServer.PlaceParametersIntoString(
+			NumberOfQuarter.Parameters.NumberOfQuarter = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 Quarter';ru='%1 квартал'"), SelectionByQuarter.QuarterWeek);
 			SpreadsheetDocument.Put(NumberOfQuarter);
 			
@@ -730,7 +730,7 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 			ColumnOfMonth.Parameters.WorkingTime24 	= WorkingTime42Kv;
 			ColumnOfMonth.Parameters.CalendarDays 	= CalendarDaysQ;
 			ColumnOfMonth.Parameters.WorkDays 		= WorkingDaysQr;
-			ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.PlaceParametersIntoString(
+			ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 Quarter';ru='%1 квартал'"), SelectionByQuarter.QuarterWeek);
 			SpreadsheetDocument.Join(ColumnOfMonth);
 			
@@ -743,7 +743,7 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 				ColumnOfMonth.Parameters.WorkingTime24 	= WorkingTime24HalfYear1;
 				ColumnOfMonth.Parameters.CalendarDays 	= HalfYearCalendarDays1;
 				ColumnOfMonth.Parameters.WorkDays 		= WeekdaysHalfYear1;
-				ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.PlaceParametersIntoString(
+				ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='%1 half-year';ru='%1 полугодие'"), SelectionByQuarter.QuarterWeek / 2);
 				SpreadsheetDocument.Join(ColumnOfMonth);
 			EndIf;
@@ -757,7 +757,7 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 		ColumnOfMonth.Parameters.WorkingTime24 	= WorkingTime24Year;
 		ColumnOfMonth.Parameters.CalendarDays 	= CalendarDaysOfYear;
 		ColumnOfMonth.Parameters.WorkDays 		= WorkingDaysOfYear;
-		ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.PlaceParametersIntoString(
+		ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 year';ru='%1 год'"), Format(SelectionByYear.YearCalendar, "NG="));
 		SpreadsheetDocument.Join(ColumnOfMonth);
 		
@@ -767,7 +767,7 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 	ColumnOfMonth.Parameters.WorkingTime40 	= WorkingTime40Year;
 	ColumnOfMonth.Parameters.WorkingTime36 	= WorkingTime36Year;
 	ColumnOfMonth.Parameters.WorkingTime24 	= WorkingTime24Year;
-	ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.PlaceParametersIntoString(
+	ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='%1 year';ru='%1 год'"), Format(YearNumber, "NG="));
 	SpreadsheetDocument.Put(ColumnOfMonth);
 	

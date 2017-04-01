@@ -504,7 +504,7 @@ Function PrintedFormsTemplate(FullPathToTemplate) Export
 		PathToMetadata = StrGetLine(PartsWays, 1);
 		PathToMetadataObject = StrGetLine(PartsWays, 2);
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Layout ""%1"" is not found. Operation is aborted.';ru='Макет ""%1"" не найден. Операция прервана.'"), FullPathToTemplate);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Layout ""%1"" is not found. Operation is aborted.';ru='Макет ""%1"" не найден. Операция прервана.'"), FullPathToTemplate);
 	EndIf;
 	
 	Query = New Query;
@@ -539,7 +539,7 @@ Function PrintedFormsTemplate(FullPathToTemplate) Export
 	EndIf;
 	
 	If Result = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Layout ""%1"" is not found. Operation is aborted.';ru='Макет ""%1"" не найден. Операция прервана.'"), FullPathToTemplate);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Layout ""%1"" is not found. Operation is aborted.';ru='Макет ""%1"" не найден. Операция прервана.'"), FullPathToTemplate);
 	EndIf;
 		
 	Return Result;
@@ -1156,7 +1156,7 @@ Function GeneratePrintForms(Val PrintManagerName, Val TemplateNames, Val Objects
 		For Each PrintFormDescription IN TemporaryCollectionForOnePrintForm Do
 			CommonUseClientServer.Validate(
 				TypeOf(PrintFormDescription.Copies) = Type("Number") AND PrintFormDescription.Copies > 0,
-				StringFunctionsClientServer.PlaceParametersIntoString(
+				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Specify a number of instances for print form ""%1"".';ru='Не задано количество экземпляров для печатной формы ""%1"".'"),
 					?(IsBlankString(PrintFormDescription.TemplateSynonym), PrintFormDescription.TemplateName, PrintFormDescription.TemplateSynonym)));
 		EndDo;
@@ -1180,7 +1180,7 @@ Function GeneratePrintForms(Val PrintManagerName, Val TemplateNames, Val Objects
 		
 		// Calling an exception if an error occurs.
 		If Cancel Then
-			ErrorMessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorMessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='When generating print form ""%1"", an error occurred. Contact your administrator.';ru='При формировании печатной формы ""%1"" возникла ошибка. Обратитесь к администратору.'"), TemplateName);
 			Raise ErrorMessageText;
 		EndIf;
@@ -1551,7 +1551,7 @@ Function RequiredAttributesString(DocumentData, MessageText)
 	For Each Item IN MandatoryAttributes Do
 		If Not ValueIsFilled(DocumentData[Item.Key]) Then
 			MessageText = NStr("en='Required attribute is not filled in: %1';ru='Не заполнен обязательный реквизит: %1'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Item.Key);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Item.Key);
 			Return "";
 		EndIf;
 		
@@ -1568,7 +1568,7 @@ Function RequiredAttributesString(DocumentData, MessageText)
 		|be shorter than 300 characters: ""%2""';ru='Невозможно создать
 		|QR-код для документа %1 Строка обязательных реквизитов
 		|должна быть меньше 300 символов: ""%2""'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(Pattern,
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(Pattern,
 		                                                                         DocumentData.Ref,
 		                                                                         MandatoryData);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -1745,7 +1745,7 @@ Function PostingRightAvailable(DocumentsList) Export
 EndFunction
 
 Procedure MessagePrintingFormIsUnavailable(Object)
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Print %1 is not performed: the selected print form is unavailable.';ru='Печать %1 не выполнена: выбранная печатная форма недоступна.'"),
 		Object);
 	CommonUseClientServer.MessageToUser(MessageText, Object);

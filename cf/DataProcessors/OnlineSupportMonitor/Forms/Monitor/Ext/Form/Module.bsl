@@ -279,7 +279,7 @@ Function MessageParametersToTechicalSupportUpdate()
 		InteractionContext.COPContext,
 		"regnumber");
 	
-	MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		MessageText,
 		UserLogin,
 		RegNumber);

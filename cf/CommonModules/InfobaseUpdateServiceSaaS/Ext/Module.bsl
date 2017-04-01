@@ -138,7 +138,7 @@ Procedure GenerateDataAreaUpdatePlan(LibraryID, AllHandlers,
 					EmptyUpdatePlan = False;
 					
 					CommentTemplate = NStr("en='Configuration version update has been performed before the %1 library version update';ru='Обновление версии конфигурации было выполнено до обновления версии библиотеки %1'");
-					TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, Selection.Name);
+					TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(CommentTemplate, Selection.Name);
 					WriteLogEvent(
 						InfobaseUpdate.EventLogMonitorEvent(),
 						EventLogLevel.Error,
@@ -159,7 +159,7 @@ Procedure GenerateDataAreaUpdatePlan(LibraryID, AllHandlers,
 					EmptyUpdatePlan = False;
 					
 					CommentTemplate = NStr("en='Library update plan %1 has not been found';ru='Не найден план обновления библиотеки %1'");
-					TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, Selection.Name);
+					TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(CommentTemplate, Selection.Name);
 					WriteLogEvent(
 						InfobaseUpdate.EventLogMonitorEvent(),
 						EventLogLevel.Error,
@@ -176,7 +176,7 @@ Procedure GenerateDataAreaUpdatePlan(LibraryID, AllHandlers,
 					CommentTemplate = NStr("en='Incorrect library update plan
 		|is found %1 An update to version plan is required %2, an update to version plan is found %3';ru='Обнаружен некорректный
 		|план обновления библиотеки %1 Требуется план обновления на версию %2, найден план для обновления на версию %3'");
-					TextOfComment = StringFunctionsClientServer.PlaceParametersIntoString(CommentTemplate, Selection.Name);
+					TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(CommentTemplate, Selection.Name);
 					WriteLogEvent(
 						InfobaseUpdate.EventLogMonitorEvent(),
 						EventLogLevel.Error,

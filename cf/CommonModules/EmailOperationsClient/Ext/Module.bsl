@@ -213,13 +213,13 @@ Procedure CheckPossibilityOfSendingAndReceivingOfEmails(ResultHandler, UserAccou
 	EmailOperationsServerCall.CheckPossibilityOfSendingAndReceivingOfEmails(UserAccount, PasswordParameter, ErrorInfo, AdditionalMessage);
 	
 	If ValueIsFilled(ErrorInfo) Then
-		ShowMessageBox(ResultHandler, StringFunctionsClientServer.PlaceParametersIntoString(
+		ShowMessageBox(ResultHandler, StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Account parameters have been checked
 		|with errors: %1';ru='Проверка параметров учетной
 		|записи завершилась с ошибками: %1'"), ErrorInfo ),,
 			NStr("en='Check email account';ru='Проверка учетной записи'"));
 	Else
-		ShowMessageBox(ResultHandler, StringFunctionsClientServer.PlaceParametersIntoString(
+		ShowMessageBox(ResultHandler, StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Account parameters have been checked successfully. %1';ru='Проверка параметров учетной записи завершилась успешно. %1'"),
 			AdditionalMessage),,
 			NStr("en='Check email account';ru='Проверка учетной записи'"));

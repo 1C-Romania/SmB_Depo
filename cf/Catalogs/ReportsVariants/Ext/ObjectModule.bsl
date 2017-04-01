@@ -14,7 +14,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Description <> "" AND ReportsVariants.DescriptionIsBooked(Report, Ref, Description) Then
 		Cancel = True;
 		CommonUseClientServer.MessageToUser(
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='""%1"" is occupied, you must specify another name.';ru='""%1"" занято, необходимо указать другое наименование.'"),
 				Description
 			),
@@ -52,11 +52,11 @@ Procedure BeforeWrite(Cancel)
 		If DescriptionIsBooked OR VariantKeyIsBooked Then
 			ErrorText = NStr("en='Error of unchecking the report variant deletion mark:';ru='Ошибка снятия пометки удаления варианта отчета:'");
 			If DescriptionIsBooked Then
-				ErrorText = ErrorText + StringFunctionsClientServer.PlaceParametersIntoString(
+				ErrorText = ErrorText + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Name ""%1"" is already occupied with another variant of this report.';ru='Наименование ""%1"" уже занято другим вариантом этого отчета.'"),
 					Description);
 			Else
-				ErrorText = ErrorText + StringFunctionsClientServer.PlaceParametersIntoString(
+				ErrorText = ErrorText + StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Variant key ""%1"" is already occupied with another variant of this report.';ru='Ключ варианта ""%1"" уже занят другим вариантом этого отчета.'"),
 					VariantKey);
 			EndIf;
@@ -92,7 +92,7 @@ Procedure IndexSettings()
 		Try
 			ReportsVariants.IndexSchemaContent(ThisObject);
 		Except
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Failed to index the ""%1"" variant scheme of the ""%2"" report:';ru='Не удалось проиндексировать схему варианта ""%1"" отчета ""%2"":'"),
 				VariantKey,
 				String(Report));
@@ -180,7 +180,7 @@ Function ReportsTypesMatch()
 EndFunction
 
 Function ControversialFieldValues(FieldName1, FieldName2)
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Conflicting values of fields ""%1"" and ""%2"".';ru='Противоречивые значения полей ""%1"" и ""%2""'"),
 		FieldName1,
 		FieldName2

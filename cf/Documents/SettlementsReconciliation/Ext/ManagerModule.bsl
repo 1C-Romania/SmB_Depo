@@ -331,7 +331,7 @@ Function CompanyAccountingDocumentDescription(DocumentRef, DocumentNumber = "" ,
 	If DocumentRef = Undefined Then
 		
 		DescriptionString =  NStr("en='Accounting document No %1 from %2 y.';ru='Расчетный документ № %1 от %2 г.'");
-		DescriptionString = StringFunctionsClientServer.PlaceParametersIntoString(DescriptionString, 
+		DescriptionString = StringFunctionsClientServer.SubstituteParametersInString(DescriptionString, 
 			?(IsBlankString(DocumentNumber), NStr("en='_______';ru='_______'"), ObjectPrefixationClientServer.GetNumberForPrinting(DocumentNumber, False, True)), 
 			?(ValueIsFilled(DocumentDate), Format(DocumentDate, "DLF=D"), NStr("en='___.___.________';ru='___.___.________'"))
 			);
@@ -416,7 +416,7 @@ Function CounterpartyAccountingDocumentDescription(DocumentRef, Val DocumentNumb
 	If DocumentRef = Undefined Then
 		
 		DescriptionString = NStr("en='Accounting document No %1 from %2 y.';ru='Расчетный документ № %1 от %2 г.'");
-		DescriptionString = StringFunctionsClientServer.PlaceParametersIntoString(DescriptionString, DocumentNumber, DocumentDate);
+		DescriptionString = StringFunctionsClientServer.SubstituteParametersInString(DescriptionString, DocumentNumber, DocumentDate);
 		
 		Return DescriptionString;
 		
@@ -825,7 +825,7 @@ Function GeneratePrintFormCertificateWithoutDifferences(DocumentPrint, PrintObje
 		TemplateParameters = New Structure;
 		
 		DrawingUpDatePresentation = NStr("en='Document is generated %1';ru='Документ сформирован %1'");
-		DrawingUpDatePresentation = StringFunctionsClientServer.PlaceParametersIntoString(DrawingUpDatePresentation, Format(Header.Date, "DLF=DD"));
+		DrawingUpDatePresentation = StringFunctionsClientServer.SubstituteParametersInString(DrawingUpDatePresentation, Format(Header.Date, "DLF=DD"));
 		TemplateParameters.Insert("DrawingUpDatePresentation", DrawingUpDatePresentation);
 		
 		InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.Date);
@@ -845,12 +845,12 @@ Function GeneratePrintFormCertificateWithoutDifferences(DocumentPrint, PrintObje
 		If ValueIsFilled(Header.BeginOfPeriod) Then
 			
 			PeriodPresentation = NStr("en='in period from %1 to %2';ru='в период с %1 по %2'");
-			PeriodPresentation = StringFunctionsClientServer.PlaceParametersIntoString(PeriodPresentation, Format(Header.BeginOfPeriod, "DLF=DD"), Format(Header.EndOfPeriod, "DLF=DD"));
+			PeriodPresentation = StringFunctionsClientServer.SubstituteParametersInString(PeriodPresentation, Format(Header.BeginOfPeriod, "DLF=DD"), Format(Header.EndOfPeriod, "DLF=DD"));
 			
 		Else
 			
 			PeriodPresentation = NStr("en='as on %1';ru='по состоянию на %1'");
-			PeriodPresentation = StringFunctionsClientServer.PlaceParametersIntoString(PeriodPresentation, Format(Header.EndOfPeriod, "DLF=DD"));
+			PeriodPresentation = StringFunctionsClientServer.SubstituteParametersInString(PeriodPresentation, Format(Header.EndOfPeriod, "DLF=DD"));
 			
 		EndIf;
 		TemplateParameters.Insert("PeriodPresentation", PeriodPresentation);
@@ -1062,7 +1062,7 @@ Function GeneratePrintFormCertificateWithCounterpartyData(DocumentPrint, PrintOb
 		TemplateParameters = New Structure;
 		
 		DrawingUpDatePresentation = NStr("en='Document is generated %1';ru='Документ сформирован %1'");
-		DrawingUpDatePresentation = StringFunctionsClientServer.PlaceParametersIntoString(DrawingUpDatePresentation, Format(Header.Date, "DLF=DD"));
+		DrawingUpDatePresentation = StringFunctionsClientServer.SubstituteParametersInString(DrawingUpDatePresentation, Format(Header.Date, "DLF=DD"));
 		TemplateParameters.Insert("DrawingUpDatePresentation", DrawingUpDatePresentation);
 		
 		InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.Date);
@@ -1082,12 +1082,12 @@ Function GeneratePrintFormCertificateWithCounterpartyData(DocumentPrint, PrintOb
 		If ValueIsFilled(Header.BeginOfPeriod) Then
 			
 			PeriodPresentation = NStr("en='in period from %1 to %2';ru='в период с %1 по %2'");
-			PeriodPresentation = StringFunctionsClientServer.PlaceParametersIntoString(PeriodPresentation, Format(Header.BeginOfPeriod, "DLF=DD"), Format(Header.EndOfPeriod, "DLF=DD"));
+			PeriodPresentation = StringFunctionsClientServer.SubstituteParametersInString(PeriodPresentation, Format(Header.BeginOfPeriod, "DLF=DD"), Format(Header.EndOfPeriod, "DLF=DD"));
 			
 		Else
 			
 			PeriodPresentation = NStr("en='as on %1';ru='по состоянию на %1'");
-			PeriodPresentation = StringFunctionsClientServer.PlaceParametersIntoString(PeriodPresentation, Format(Header.EndOfPeriod, "DLF=DD"));
+			PeriodPresentation = StringFunctionsClientServer.SubstituteParametersInString(PeriodPresentation, Format(Header.EndOfPeriod, "DLF=DD"));
 			
 		EndIf;
 		TemplateParameters.Insert("PeriodPresentation", PeriodPresentation);

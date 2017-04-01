@@ -88,7 +88,7 @@ Procedure FillInAllAllowedPresentation(Form, AccessTypeDescription, AddValuesNum
 			NumberInWords,
 			Format(ValueCount, "NG="));
 		
-		Presentation = StringFunctionsClientServer.PlaceParametersIntoString(
+		Presentation = StringFunctionsClientServer.SubstituteParametersInString(
 			?(AccessTypeDescription.AllAllowed,
 				NStr("en='All allowed, except of %1';ru='Все разрешены, кроме %1'"),
 				NStr("en='All restricted, except of %1';ru='Все запрещены, кроме %1'")),
@@ -202,7 +202,7 @@ Procedure OnChangeCurrentAccessKind(Form) Export
 		EndIf;
 		
 		// Update of the field LabelAccessKind.
-		Form.AccessTypeLabel = StringFunctionsClientServer.PlaceParametersIntoString(
+		Form.AccessTypeLabel = StringFunctionsClientServer.SubstituteParametersInString(
 			PatternLabel, String(CurrentData.AccessKindPresentation));
 		
 		FillInAllAllowedPresentation(Form, CurrentData);

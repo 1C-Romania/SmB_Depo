@@ -119,7 +119,7 @@ Function ManagingApplicationServiceUtilizedVersion(Val UserPassword = "") Export
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Correspondent %1 does not support interface %2!';ru='Корреспондент %1 не поддерживает интерфейс %2!'"),
 			ConnectionParameters.URL,
 			InterfaceName

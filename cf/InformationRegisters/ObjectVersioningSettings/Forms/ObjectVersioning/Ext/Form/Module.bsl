@@ -511,7 +511,7 @@ Procedure RunScheduledJob()
 	If BackgroundJobsCleanup.Count() > 0 Then
 		BackgroundJobID = BackgroundJobsCleanup[0].UUID;
 	Else
-		BackgroundJobDescription = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Launch manually: %1';ru='Запуск вручную: %1'"), ScheduledJobMetadata.Synonym);
+		BackgroundJobDescription = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Launch manually: %1';ru='Запуск вручную: %1'"), ScheduledJobMetadata.Synonym);
 		BackgroundJob = BackgroundJobs.Execute(ScheduledJobMetadata.MethodName, , , BackgroundJobDescription);
 		BackgroundJobID = BackgroundJob.UUID;
 	EndIf;
@@ -591,7 +591,7 @@ Procedure DisplayInformationAboutOutdatedVersions()
 	
 	Items.Clear.Visible = InformationAboutLegacyVersions.DataSize > 0;
 	If InformationAboutLegacyVersions.DataSize > 0 Then
-		Items.InformationAboutLegacyVersions.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Items.InformationAboutLegacyVersions.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Total outdated versions: %1 (%2)';ru='Всего устаревших версий: %1 (%2)'"),
 			InformationAboutLegacyVersions.CountVersions,
 			InformationAboutLegacyVersions.DataSizeString);

@@ -250,7 +250,7 @@ Procedure CheckDocumentsUniqueness(TabularSectionDocuments, CheckResult, ErrorTe
 		|%1 %2 уже существует действующее соглашение между
 		|участниками %3 - %4: %5.
 		|'");
-					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+					ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 						ErrorText, DocumentInOtherAgreements.DocumentType,
 						?(ChecksIncomingDocuments, "Incoming", "Outgoing"),
 						Object.Company, 
@@ -287,7 +287,7 @@ EndProcedure
 Procedure ChangeCaptionDirectionDocuments()
 	
 	MessagePattern = NStr("en='From: %1, to: %2';ru='От кого: %1, кому: %2'");
-	TitleDocumentsDirection = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, 
+	TitleDocumentsDirection = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, 
 		Object.Company, Object.Counterparty);
 	
 EndProcedure

@@ -578,7 +578,7 @@ Procedure CheckDocumentsUniqueness(TabularSectionDocuments, CheckResult, ErrorTe
 		|%1 %2 уже существует действующее соглашение между
 		|участниками %3 - %4: %5.
 		|'");
-					ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+					ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 						ErrorText, 
 						DocumentInOtherAgreements.DocumentType, 
 						"Outgoing", 
@@ -996,7 +996,7 @@ Function ImportCertificateOnServer(CertificateStructure, ErrorDescription)
 			If NewCertificate.Subject.Property("SN") Then
 				
 				TemplateOwnerNameAndSurname = NStr("en='%1 %2';ru='%1 %2'");
-				NameAndSurnameOfOwner = StringFunctionsClientServer.PlaceParametersIntoString(TemplateOwnerNameAndSurname,
+				NameAndSurnameOfOwner = StringFunctionsClientServer.SubstituteParametersInString(TemplateOwnerNameAndSurname,
 					NewCertificate.Subject.SN, NewCertificate.Subject.GN);
 			ElsIf NewCertificate.Subject.Property("CN") Then
 				

@@ -1303,7 +1303,7 @@ EndFunction
 //
 Function GenerateObtainingErrorTextFileFromVolumeForAdministrator(FunctionErrorInfo, FileRef) Export
 	
-	Return StringFunctionsClientServer.PlaceParametersIntoString(
+	Return StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Ref to the file: ""%1"".
 		|""%2"".';ru='Ссылка на файл: ""%1"".
 		|""%2"".'"),

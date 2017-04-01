@@ -385,7 +385,7 @@ Procedure SetDeletionMark(Command)
 		|на удаление файл ""%1""?'");
 	EndIf;
 	
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(QuestionText, CurrentData.Ref);
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, CurrentData.Ref);
 	
 	NotifyDescription = New NotifyDescription("SetDeletionMarkResponseReceived", ThisObject, CurrentData);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);

@@ -6,7 +6,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
-	Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Quick access to command ""%1""';ru='Быстрый доступ к команде ""%1""'"),
 		Parameters.CommandPresentation);
 	

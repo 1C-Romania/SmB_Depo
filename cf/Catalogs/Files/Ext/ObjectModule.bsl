@@ -16,7 +16,7 @@ Procedure BeforeWrite(Cancel)
 	
 	If Not ValueIsFilled(FileOwner) Then
 		
-		ErrorDescription = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Owner in file is
 		|not filled in ""%1"".';ru='Не заполнен
 		|владелец в файле ""%1"".'"),
@@ -40,7 +40,7 @@ Procedure BeforeWrite(Cancel)
 	If IsNew() Then
 		// Check right "Adding".
 		If Not FileOperationsService.IsRight("FilesAdd", FileOwner) Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The rights are not sufficient to add the file into folder ""%1"".';ru='Недостаточно прав для добавления файлов в папку ""%1"".'"),
 				String(FileOwner));
 		EndIf;
@@ -102,14 +102,14 @@ Procedure BeforeWrite(Cancel)
 			
 			// Check right "Deletion mark".
 			If Not FileOperationsService.IsRight("FileDeletionMark", FileOwner) Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='The rights are not sufficient to mark the file for deletion in folder ""%1"".';ru='Недостаточно прав для пометки файлов на удаление в папке ""%1"".'"),
 					String(FileOwner));
 			EndIf;
 			
 			// Try set deletion mark.
 			If DeletionMarkIsMarked AND Not IsEditing.IsEmpty() Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Cannot delete
 		|file ""%1"", so. it is locked for editing by user ""%2"".';ru='Нельзя удалить файл ""%1"",
 		|т.к. он занят для редактирования пользователем ""%2""'"),
@@ -122,7 +122,7 @@ Procedure BeforeWrite(Cancel)
 		VIBDescription = VIBDescription();
 		If FullDescr <> VIBDescription Then 
 			If Not IsEditing.IsEmpty() Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='File can not be
 		|renamed ""%1"", so. it is locked for editing by user ""%2"".';ru='Нельзя переименовать файл ""%1"",
 		|т.к. он занят для редактирования пользователем ""%2"".'"),

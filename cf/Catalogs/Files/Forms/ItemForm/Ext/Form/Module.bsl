@@ -137,7 +137,7 @@ Procedure OnOpen(Cancel)
 	DescriptionBeforeWrite = Object.Description;
 	
 	If Not Parameters.BasisFile.IsEmpty() AND BasisFileDigitallySigned Then
-		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='File ""%1"" is signed.
 		|Once the DS data is copied into a new file, it will be unavailable for editing.
 		|
@@ -175,7 +175,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		If NewFile AND NewFileWritten AND (NOT FileEdited) Then
 			If Not AnswerToQuestionReceivedOpenForEditing Then
 				Cancel = True;
-				QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+				QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Open file ""%1"" for editing?';ru='Открыть файл ""%1"" для редактирования?'"),
 					TrimAll(Object.FullDescr));
 				Handler = New NotifyDescription("BeforeCloseAfterAnswerToQuestionOpenForEditing", ThisObject);
@@ -1033,7 +1033,7 @@ Procedure FillListOfSignatures()
 	If DigitalSignatures.Count() = 0 Then
 		HeaderText = NStr("en='Digital signatures';ru='Электронные подписи'");
 	Else
-		HeaderText = StringFunctionsClientServer.PlaceParametersIntoString(
+		HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='DigitalSignatures (%1)';ru='Электронные подписи (%1)'"),
 			Format(DigitalSignatures.Count(), "NG="));
 	EndIf;

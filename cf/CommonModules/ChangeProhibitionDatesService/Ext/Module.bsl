@@ -585,7 +585,7 @@ Function GetRegisterFields(DataSources, Table) Export
 			DataSource.DataField, ".");
 		
 		If Fields.Count() = 0 Then
-			Raise(StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise(StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The date field for
 		|the table ""%1"" in data source
 		|for changing prohibition check is not specified.';ru='Для проверки
@@ -593,7 +593,7 @@ Function GetRegisterFields(DataSources, Table) Export
 		|источнике данных для таблицы ""%1"" не задано поле даты.'"),
 				Table));
 		ElsIf Not ValueIsFilled(Fields[0]) Then
-			Raise(StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise(StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The date field for
 		|the table ""%1"" in data source
 		|for changing prohibition check is specified incorrectly: %2.';ru='Для проверки
@@ -612,7 +612,7 @@ Function GetRegisterFields(DataSources, Table) Export
 				DataSource.ObjectField, ".");
 			
 			If Not ValueIsFilled(Fields[0]) Then
-				Raise(StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise(StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Object field for the
 		|table ""%1"" in data source for
 		|changing prohibition check is specified incorrectly: %2.';ru='Для проверки
@@ -841,7 +841,7 @@ Function GetDataSources(Filter)
 	DataSources = TablesDataSources.FindRows(Filter);
 	
 	If DataSources.Count() = 0 Then
-		Raise(StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise(StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Data sources for table ""%1""
 		|for changing prohibition check are not found.';ru='Для проверки запрета изменения не найдены
 		|источники данных для таблицы ""%1"".'"),
@@ -861,7 +861,7 @@ Procedure AddField(MetadataObject,
 	
 	Fields = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Field, ".");
 	If Fields.Count() = 0 Then
-		Raise(StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise(StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The %2 is not
 		|specified in the data source for
 		|table ""%1"" for changing prohibition check.';ru='Для проверки запрета изменения в источнике данных для таблицы ""%1"" не задано %2.'"),
@@ -869,7 +869,7 @@ Procedure AddField(MetadataObject,
 			FieldTypeForMessages));
 		
 	ElsIf Not ValueIsFilled(Fields[0]) Then
-		Raise(StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise(StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The %2 in the
 		|data source for table ""%1"" for
 		|changing prohibition check is specified incorrectly: ""%3"".';ru='Для проверки
@@ -886,7 +886,7 @@ Procedure AddField(MetadataObject,
 	
 	If MetadataObject.TabularSections.Find(Fields[0]) <> Undefined Then
 		If Fields.Count() = 1 Then
-			Raise(StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise(StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The %2 in the
 		|data source for table ""%1"" for
 		|changing prohibition check
@@ -898,7 +898,7 @@ Procedure AddField(MetadataObject,
 				FieldTypeForMessages,
 				Field));
 		ElsIf Not ValueIsFilled(Fields[1]) Then
-			Raise(StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise(StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The %2 in the
 		|data source for table ""%1"" for
 		|changing prohibition check

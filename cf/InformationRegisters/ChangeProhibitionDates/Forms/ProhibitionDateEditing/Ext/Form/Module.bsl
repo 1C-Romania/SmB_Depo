@@ -193,7 +193,7 @@ Procedure CommonProhibitionDateWithDescriptionOnChange(Val Context, CalculatePro
 			Context.PermissionDaysCount = 0;
 		EndIf;
 		Context.Items.AutomaticalDateExplanation.Title =
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Change of data is forbidden to %1';ru='Запрещено изменение данных по %1'") + LabelText,
 				Format(Context.ProhibitionDate, "DLF=D"),
 				Format(PermissionTerm, "DLF=D"),

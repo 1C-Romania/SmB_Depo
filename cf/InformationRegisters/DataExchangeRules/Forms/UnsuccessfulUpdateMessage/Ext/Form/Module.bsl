@@ -32,7 +32,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		RulesType = NStr("en='registration';ru='регистрационный'");
 	EndIf;
 	
-	Items.TextRulesFromFile.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.TextRulesFromFile.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		Items.TextRulesFromFile.Title, ExchangePlanSynonym, RulesType);
 	
 	UpdateBeginTime = Parameters.UpdateBeginTime;

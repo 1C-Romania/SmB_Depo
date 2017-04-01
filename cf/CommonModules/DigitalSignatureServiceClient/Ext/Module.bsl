@@ -55,7 +55,7 @@ Procedure OpenCertificateContinuation(Context)
 		Context.CertificateAddress = PutToTempStorage(Context.CertificateData);
 		
 	ElsIf TypeOf(Context.CertificateData) <> Type("String") Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred calling the OpenCertificate procedure
 		|of the DigitalSignatureClient general module: Incorrect value of the  %1 CertificateData parameter.';ru='Ошибка при вызове процедуры ОткрытьСертификат общего модуля ЭлектроннаяПодписьКлиент: Некорректное значение параметра ДанныеСертификата ""%1"".'"), String(Context.CertificateData));
 	
@@ -345,7 +345,7 @@ Procedure SaveSignatureAfterConnectingFileOperationsExtension(Attached, Context)
 	
 	FileOpeningDialog = New FileDialog(FileDialogMode.Save);
 	
-	Filter = StringFunctionsClientServer.PlaceParametersIntoString(
+	Filter = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Digital signature files (*.%1)|*.%1|All files (*.*)|*.*';ru='Файлы электронных подписей (*.%1)|*.%1|Все файлы (*.*)|*.*'"),
 		ExtensionForSignatureFiles);
 	
@@ -505,7 +505,7 @@ Procedure GetCertificateByThumbprintEnd(Certificate, ErrorPresentation, Context)
 	EndIf;
 	
 	If ValueIsFilled(ErrorPresentation) Then
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Certificate is not found
 		|on the computer as: %1';ru='Сертификат
 		|не найден на компьютере по причине: %1'"),
@@ -940,7 +940,7 @@ Procedure CreateCryptographyManagerAfterWorkWithCryptographyExpansionConnection(
 		ErrorTitle = "";
 		
 	ElsIf Operation <> "" Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Error in the CryptographyManager function.
 		|Wrong of the %1 Operation parameter value.';ru='Ошибка в функции МенеджерКриптографии.
 		|Неверное значение параметра Операция ""%1"".'"), Operation);
@@ -1132,7 +1132,7 @@ Procedure CreateCryptographyManagerAfterCycle(Context) Export
 		ErrorProperties.Insert("ApplicationsSetting", True);
 	Else
 		If ValueIsFilled(Context.Application) Then
-			ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1 application is not available and not installed on the computer.';ru='Программа %1 не доступна или не установлена на компьютере.'"), Context.Application);
 		Else
 			ErrorText = NStr("en='None of the applications is available or installed on the computer.';ru='Ни одна из программ не доступна или не установлена на компьютере.'");
@@ -1657,7 +1657,7 @@ Procedure SetDataPresentation(ClientParameters, ServerParameters) Export
 	
 	If CurrentPresentationsList.Count() > 1 Then
 		ServerParameters.Insert("DataPresentationOpens", True);
-		ServerParameters.Insert("DataPresentation", StringFunctionsClientServer.PlaceParametersIntoString(
+		ServerParameters.Insert("DataPresentation", StringFunctionsClientServer.SubstituteParametersInString(
 			DataDescription.SetPresentation, DataDescription.DataSet.Count()));
 	Else
 		ServerParameters.Insert("DataPresentationOpens",

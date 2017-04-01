@@ -38,7 +38,7 @@ Function EDFProfileSettingsIsUnique() Export
 		|%1; Идентификатор организации - %2; Способ обмена - %3;'");
 		Selection = Result.Select();
 		Selection.Next();
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 														MessagePattern,
 														ThisObject.Company,
 														ThisObject.CompanyID,

@@ -132,7 +132,7 @@ Procedure SaveFolder()
 		
 	EndIf;
 	
-	Status(StringFunctionsClientServer.PlaceParametersIntoString(
+	Status(StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Folder ""%1"" is being exported...
 		|Please, wait.';ru='Выполняется экспорт папки ""%1""...
 		|Пожалуйста, подождите.'"),
@@ -152,7 +152,7 @@ Procedure ExportEnd(Result, ExecuteParameters) Export
 		PathToSave = ExportDirectory;
 		CommonUseServerCall.CommonSettingsStorageSave("ExportFolderName", "ExportFolderName",  PathToSave);
 		
-		Status(StringFunctionsClientServer.PlaceParametersIntoString(
+		Status(StringFunctionsClientServer.SubstituteParametersInString(
 		             NStr("en='Folder ""%1"" has been
 		|successfully exported into a directory on disk ""%2"".';ru='Успешно завершен
 		|экспорт папки ""%1"" в каталог на диске ""%2"".'"),
@@ -486,7 +486,7 @@ EndProcedure
 Procedure BypassFileTree9(ExecuteParameters)
 	ExecuteParameters.Insert("FileOnDrive", New File(ExecuteParameters.FullFileName));
 	If ExecuteParameters.FileOnDrive.Exist() AND ExecuteParameters.FileOnDrive.IsDirectory() Then
-		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Folder
 		|with
 		|the same name exists instead of file ""%1"".
@@ -547,7 +547,7 @@ Procedure BypassFileTree11(ExecuteParameters)
 			ExecuteParameters.Result = DialogReturnCode.Yes;
 		Else
 			If Not ExecuteParameters.CommonParameters.ForAllFiles Then
-				MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Folder ""%1""
 		|already contains file
 		|""%2"", size of the existing file = %3 bytes, date modified is %4.
@@ -656,10 +656,10 @@ Procedure BypassFileTree14(ExecuteParameters)
 	SizeInMB = ExecuteParameters.WritingFile.Size / (1024 * 1024);
 	
 	// Update progress bar.
-	TitleState = StringFunctionsClientServer.PlaceParametersIntoString(
+	TitleState = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Export Folders ""%1""';ru='Экспорт папки ""%1""'"),
 		ExecuteParameters.WritingFile.FolderDescription);
-	StateText = StringFunctionsClientServer.PlaceParametersIntoString(
+	StateText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='File ""%1""
 		|is being saved on the disk (%2 Mb)...';ru='Сохраняется
 		|на диск файл ""%1"" (%2 Мб)...'"),
@@ -708,7 +708,7 @@ EndProcedure
 Procedure BypassFileTree15(ErrorInfo, ExecuteParameters)
 	// A file error occurred when writing the file
 	// and changing its attributes.
-	QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='An error
 		|occurred while writing file ""%1"".
 		|

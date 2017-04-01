@@ -157,7 +157,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 			CommonUseClientServer.MessageToUser(
 				CommonUseClientServer.TextFillingErrors("Column", "Filling", "Contact", Contacts.IndexOf(RowContacts) + 1, "Parties"),
 				,
-				StringFunctionsClientServer.PlaceParametersIntoString("Contacts[%1].Contact", Contacts.IndexOf(RowContacts)),
+				StringFunctionsClientServer.SubstituteParametersInString("Contacts[%1].Contact", Contacts.IndexOf(RowContacts)),
 				,
 				Cancel
 			);

@@ -234,7 +234,7 @@ Function TextFillingErrors(FieldKind = "Field", MessageKind = "Filling",
 		EndIf;
 	EndIf;
 
-	Return StringFunctionsClientServer.PlaceParametersIntoString(Pattern, FieldName, LineNumber, ListName, MessageText);
+	Return StringFunctionsClientServer.SubstituteParametersInString(Pattern, FieldName, LineNumber, ListName, MessageText);
 
 EndFunction
 
@@ -325,7 +325,7 @@ Procedure ExpandStructure(StructureReceiver, SourceStructure, WithReplacement = 
 			If WithReplacement = False Then
 				Continue;
 			Else
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Source and receiver structures intersection by key %1.';
 						 |ru='Пересечение структур источника и приемника по ключу %1.'"),
 					KeyAndValue.Key);
@@ -803,13 +803,13 @@ Function CompareVersions(Val VersionString1, Val VersionString2) Export
 	Row2 = ?(IsBlankString(VersionString2), "0.0.0.0", VersionString2);
 	Version1 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row1, ".");
 	If Version1.Count() <> 4 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Wrong format of the VersionRow1 parameter: %1';
 				 |ru='Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
 	EndIf;
 	Version2 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row2, ".");
 	If Version2.Count() <> 4 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 	    	NStr("en='Wrong format of the VersionRow2 parameter: %1';
 				 |ru='Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
 	EndIf;
@@ -840,13 +840,13 @@ Function CompareVersionsWithoutBatchNumber(Val VersionString1, Val VersionString
 	Row2 = ?(IsBlankString(VersionString2), "0.0.0", VersionString2);
 	Version1 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row1, ".");
 	If Version1.Count() <> 3 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Wrong format of the VersionRow1 parameter: %1';
 				 |ru='Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
 	EndIf;
 	Version2 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row2, ".");
 	If Version2.Count() <> 3 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 	    	NStr("en='Wrong format of the VersionRow2 parameter: %1';
 				 |ru='Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
 	EndIf;
@@ -1010,8 +1010,8 @@ Function InstallOuterDatabaseJoin(Parameters) Export
 								  |ru='Не удалось подключиться к другой программе: %1'");
 		
 		Result.ErrorAttachingAddIn = True;
-		Result.DetailedErrorDescription     = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageString, DetailErrorDescription(Information));
-		Result.ErrorShortInfo       = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageString, BriefErrorDescription(Information));
+		Result.DetailedErrorDescription     = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, DetailErrorDescription(Information));
+		Result.ErrorShortInfo       = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, BriefErrorDescription(Information));
 		
 		Return Result;
 	EndTry;
@@ -1085,8 +1085,8 @@ Function InstallOuterDatabaseJoin(Parameters) Export
 		ErrorMessageString = NStr("en='Unable to connect to another application: %1';ru='Не удалось подключиться к другой программе: %1'");
 		
 		Result.ErrorAttachingAddIn = True;
-		Result.DetailedErrorDescription     = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageString, DetailErrorDescription(Information));
-		Result.ErrorShortInfo       = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessageString, BriefErrorDescription(Information));
+		Result.DetailedErrorDescription     = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, DetailErrorDescription(Information));
+		Result.ErrorShortInfo       = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, BriefErrorDescription(Information));
 		
 	EndTry;
 	
@@ -1815,23 +1815,23 @@ Function ParseStringWithPostalAddresses(Val EmailAddressString, CallingException
 					
 					For SearchIndexNS = 1 To StrLen(Accumulator) Do
 						If Find(ProhibitedChars, Mid(Accumulator, SearchIndexNS, 1)) > 0 AND CallingException Then
-							Raise StringFunctionsClientServer.PlaceParametersIntoString(
+							Raise StringFunctionsClientServer.SubstituteParametersInString(
 							                  ProhibitedCharsMessage,Mid(Accumulator, SearchIndexNS, 1),AddressString);
 						EndIf;
 					EndDo;
 					
 					Accumulator = Accumulator + Char;
 				ElsIf ParsingPhase = 2 AND CallingException Then
-					Raise StringFunctionsClientServer.PlaceParametersIntoString(
+					Raise StringFunctionsClientServer.SubstituteParametersInString(
 					                  MessageInvalidEmailFormat,AddressString);
 				ElsIf ParsingPhase = 3 AND CallingException Then
-					Raise StringFunctionsClientServer.PlaceParametersIntoString(
+					Raise StringFunctionsClientServer.SubstituteParametersInString(
 					                  MessageInvalidEmailFormat,AddressString);
 				EndIf;
 			Else
 				If ParsingPhase = 2 OR ParsingPhase = 3 Then
 					If Find(ProhibitedChars, Char) > 0 AND CallingException Then
-						Raise StringFunctionsClientServer.PlaceParametersIntoString(
+						Raise StringFunctionsClientServer.SubstituteParametersInString(
 						                  ProhibitedCharsMessage,Char,AddressString);
 					EndIf;
 				EndIf;
@@ -1849,10 +1849,10 @@ Function ParseStringWithPostalAddresses(Val EmailAddressString, CallingException
 		EndIf;
 		
 		If IsBlankString(MailAddress) AND (NOT IsBlankString(FullNameAddressee)) AND CallingException Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 			                  MessageInvalidEmailFormat, FullNameAddressee);
 		ElsIf StrOccurrenceCount(MailAddress, "@") <> 1 AND CallingException Then 
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 			                  MessageInvalidEmailFormat,MailAddress);
 		EndIf;
 		
@@ -2696,7 +2696,7 @@ Procedure Validate(Val Condition, Val Message = "", Val CheckContext = "") Expor
 		EndIf;
 		If Not IsBlankString(CheckContext) Then
 			ErrorMessage = ErrorMessage + " " +
-				StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='in %1';ru='in %1'"), CheckContext);
+				StringFunctionsClientServer.SubstituteParametersInString(NStr("en='in %1';ru='in %1'"), CheckContext);
 		EndIf;
 		Raise ErrorMessage;
 	EndIf;
@@ -2737,7 +2737,7 @@ Procedure CheckParameter(Val ProcedureOrFunctionName, Val ParameterName, Val Par
 		|Ожидалось: %3; передано значение: %4 (тип %5).'");
 	Validate((ThisTypeDescription AND ExpectedTypes.ContainsType(TypeOf(ParameterValue)))
 		Or (NOT ThisTypeDescription AND ExpectedTypes = TypeOf(ParameterValue)), 
-		StringFunctionsClientServer.PlaceParametersIntoString(InvalidParameter, 
+		StringFunctionsClientServer.SubstituteParametersInString(InvalidParameter, 
 			ParameterName, ProcedureOrFunctionName, ExpectedTypes, 
 			?(ParameterValue <> Undefined, ParameterValue, NStr("en='Undefined';ru='Неопределено'")), TypeOf(ParameterValue)));
 			
@@ -2761,13 +2761,13 @@ Procedure CheckParameter(Val ProcedureOrFunctionName, Val ParameterName, Val Par
 			PropertyValue = Undefined;
 			
 			Validate(ParameterValue.Property(ExpectedPropertyName, PropertyValue), 
-				StringFunctionsClientServer.PlaceParametersIntoString(NoProperty, 
+				StringFunctionsClientServer.SubstituteParametersInString(NoProperty, 
 					ParameterName, ProcedureOrFunctionName, ExpectedPropertyName, ExpectedPropertyType));
 					
 			ThisTypeDescription = TypeOf(ExpectedPropertyType) = Type("TypeDescription");
 			Validate((ThisTypeDescription AND ExpectedPropertyType.ContainsType(TypeOf(PropertyValue)))
 				Or (NOT ThisTypeDescription AND ExpectedPropertyType = TypeOf(PropertyValue)), 
-				StringFunctionsClientServer.PlaceParametersIntoString(InvalidProperty, 
+				StringFunctionsClientServer.SubstituteParametersInString(InvalidProperty, 
 					ExpectedPropertyName, ParameterName, ProcedureOrFunctionName, ExpectedPropertyType, 
 					?(PropertyValue <> Undefined, PropertyValue, NStr("en='Undefined';ru='Неопределено'")), TypeOf(PropertyValue)));
 					

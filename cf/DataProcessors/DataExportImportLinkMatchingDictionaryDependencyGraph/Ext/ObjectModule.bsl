@@ -130,7 +130,7 @@ Function MetadataObject(Val DescriptionFull)
 	MetadataObject = Metadata.FindByFullName(DescriptionFull);
 	If MetadataObject = Undefined Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Metadata object %1 does not exist in the current configuration. The object exists in the data file.';ru='В текущей конфигурации отсутствует объект метаданных %1, присутствующих в файле данных!'"),
 			DescriptionFull
 		);
@@ -167,7 +167,7 @@ Function Vertex(Val MetadataObject, Val ExceptionIfNotExist = True)
 		
 		If ExceptionIfNotExist Then
 			
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='No vertex for metadata object %1 in the graph.';ru='В графе отсутствует вершина для объекта метаданных %1!'"),
 				MetadataObject.FullName());
 			
@@ -179,7 +179,7 @@ Function Vertex(Val MetadataObject, Val ExceptionIfNotExist = True)
 		
 	Else
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Non-unique graph for metadata object %1.';ru='Нарушение уникальности граф для объекта метаданных %1!'"),
 			MetadataObject.FullName());
 		

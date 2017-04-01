@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		).PossibleRightsForObjectRightsSettings;
 	
 	If PossibleRights.ByRefsTypes[TypeOf(ObjectReference)] = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Access rights
 		|are not set for the %1 type objects.';ru='Права
 		|доступа не настраиваются для объектов типа ""%1"".'"),
@@ -731,7 +731,7 @@ Procedure FillCheckProcessing(Cancel)
 				MessageText = NStr("en='Setting for the %1 users group already exists.';ru='Настройка для группы пользователей ""%1"" уже есть.'");
 			EndIf;
 			CommonUseClientServer.MessageToUser(
-				StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Filter.User),
+				StringFunctionsClientServer.SubstituteParametersInString(MessageText, Filter.User),
 				,
 				"RightGroups[" + Format(LineNumber, "NG=0") + "].User",
 				,
@@ -781,7 +781,7 @@ Procedure CheckOnPosibilityOfRightsChanging(Cancel, CheckOfDeletion = False)
 		
 		Cancel = True;
 		
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='These rights are inherited, they can be changed in
 		|the form of rights setting of the higher %1 folder.';ru='Эти права унаследованы, их можно изменить
 		|в форме настройки прав вышестоящей папки ""%1"".'"),
@@ -789,7 +789,7 @@ Procedure CheckOnPosibilityOfRightsChanging(Cancel, CheckOfDeletion = False)
 		
 		If CheckOfDeletion Then
 			MessageText = MessageText + Chars.LF + Chars.LF
-				+ StringFunctionsClientServer.PlaceParametersIntoString(
+				+ StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='To delete all inherited rights,
 		|clear the %1 check box.';ru='Для удаления всех унаследованных
 		|прав следует снять флажок ""%1"".'"),

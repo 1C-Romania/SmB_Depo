@@ -274,7 +274,7 @@ Procedure ExportAdditionFilterHistorySelectionFromMenu(Val SelectedItem, Val Add
 		// Selected a variant - name of the previously saved setting.
 		
 		HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
-		QuestionText = StringFunctionsClientServer.PlaceParametersIntoString(
+		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Restore settings ""%1""?';ru='Восстановить настройки ""%1""?'"), SettingRepresentation
 		);
 		
@@ -311,7 +311,7 @@ EndProcedure
 &AtServer
 Procedure SetCorrespondentToTitle(TitleOwner)
 	
-	TitleOwner.Title = StringFunctionsClientServer.PlaceParametersIntoString(TitleOwner.Title, String(Object.InfobaseNode));
+	TitleOwner.Title = StringFunctionsClientServer.SubstituteParametersInString(TitleOwner.Title, String(Object.InfobaseNode));
 	
 EndProcedure
 

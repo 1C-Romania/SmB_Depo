@@ -20,7 +20,7 @@
 Function CertificatePresentation(Certificate, Patronymic = False, ValidityPeriod = True) Export
 	
 	Return SubjectPresentation(Certificate, Patronymic) + ", "
-		+ StringFunctionsClientServer.PlaceParametersIntoString(
+		+ StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='up to %1';ru='до %1'"), Format(Certificate.EndDate, "DF=MM.yyyy"));
 	
 EndFunction

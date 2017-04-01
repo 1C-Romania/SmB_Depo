@@ -180,25 +180,28 @@ Function SplitStringIntoWordArray(Val String, WordSeparators = Undefined) Export
 	
 EndFunction
 
-// It substitutes the parameters into the string. Max possible parameters quantity - 9.
-// Parameters in the line are specified as %<parameter number>. Parameter numbering starts with one.
+// Substitutes the parameters in the string. The maximum number of the parameters is 9.
+// Parameters in the string are specified as %<parameter number>. Parameter numbering starts
+// with 1.
 //
 // Parameters:
-//  LookupString  - String - String template with parameters (inclusions of "%ParameterName" type);
-//  Parameter<n>        - String - substituted parameter.
+// SubstitutionString – String – string pattern that includes parameters in the following
+//                      format: %ParameterName;
+// Parameter<n>       - String - parameter to be substituted.
 //
 // Returns:
-//  String   - text string with substituted parameters.
+//  String – string with substituted parameters.
 //
 // Example:
-//  PlaceParametersIntoString(NStr("en='%1 went to %2';ru='%1 пошел в %2'"), "John", "Zoo") = "John went to the Zoo".
+//  SubstituteParametersInString(NStr("en='%1 went to %2'"), "John", "a zoo") = "John went to a zoo".
 //
-Function PlaceParametersIntoString(Val LookupString,
-	Val Parameter1, Val Parameter2 = Undefined, Val Parameter3 = Undefined,
+Function SubstituteParametersInString(Val SubstitutionString,
+	Val Parameter1,	Val Parameter2 = Undefined, Val Parameter3 = Undefined,
 	Val Parameter4 = Undefined, Val Parameter5 = Undefined, Val Parameter6 = Undefined,
-	Val Parameter7 = Undefined, Val Parameter8 = Undefined, Val Parameter9 = Undefined) Export
-	
-	UseAlternativeAlgorithm = 
+	Val Parameter7 = Undefined, Val Parameter8 = Undefined, Val Parameter9 = Undefined) Export	
+ 
+ 	UseAlternativeAlgorithm = 
+
 		Find(Parameter1, "%")
 		Or Find(Parameter2, "%")
 		Or Find(Parameter3, "%")
@@ -210,55 +213,59 @@ Function PlaceParametersIntoString(Val LookupString,
 		Or Find(Parameter9, "%");
 		
 	If UseAlternativeAlgorithm Then
-		LookupString = SubstituteParametersInStringAlternateAlgorithm(LookupString, Parameter1,
-			Parameter2, Parameter3, Parameter4, Parameter5, Parameter6, Parameter7, Parameter8, Parameter9);
+		SubstitutionString = SubstituteParametersInStringAlternativeAlgorithm(SubstitutionString, Parameter1,
+			Parameter2, Parameter3,  Parameter4, Parameter5,  Parameter6, Parameter7,  Parameter8, Parameter9);
 	Else
-		LookupString = StrReplace(LookupString, "%1", Parameter1);
-		LookupString = StrReplace(LookupString, "%2", Parameter2);
-		LookupString = StrReplace(LookupString, "%3", Parameter3);
-		LookupString = StrReplace(LookupString, "%4", Parameter4);
-		LookupString = StrReplace(LookupString, "%5", Parameter5);
-		LookupString = StrReplace(LookupString, "%6", Parameter6);
-		LookupString = StrReplace(LookupString, "%7", Parameter7);
-		LookupString = StrReplace(LookupString, "%8", Parameter8);
-		LookupString = StrReplace(LookupString, "%9", Parameter9);
+		SubstitutionString = StrReplace(SubstitutionString, "%1",  Parameter1);
+		SubstitutionString = StrReplace(SubstitutionString, "%2",  Parameter2);
+		SubstitutionString = StrReplace(SubstitutionString, "%3",  Parameter3);
+		SubstitutionString = StrReplace(SubstitutionString, "%4",  Parameter4);
+		SubstitutionString = StrReplace(SubstitutionString, "%5",  Parameter5);
+		SubstitutionString = StrReplace(SubstitutionString, "%6",  Parameter6);
+		SubstitutionString = StrReplace(SubstitutionString, "%7",  Parameter7);
+		SubstitutionString = StrReplace(SubstitutionString, "%8",  Parameter8);
+		SubstitutionString = StrReplace(SubstitutionString, "%9",  Parameter9);
 	EndIf;
 	
-	Return LookupString;
+	Return SubstitutionString;	
+	
 EndFunction
 
-// It substitutes the parameters into the string. Parameters quantity in row is not limited.
-// Parameters in the line are specified as %<parameter number>. Parameter
-// numbering starts with one.
+// Substitutes the parameters in the string. The number of the parameters in the string is
+// unlimited.
+// Parameters in the string are specified as %<parameter number>. Parameter numbering 
+// starts with 1.
 //
 // Parameters:
-//  LookupString  - String - String template with parameters (listings of the type %1);
-//  ParameterArray   - Array - Strings array that correspond to parameters in the substitution row.
+// SubstitutionString – String – string pattern that includes parameters in the following
+//                      format: %ParameterNumber;
+// ParameterArray     - Array - array of strings that corresponds to the parameters in the
+//                      substitution string.
 //
 // Returns:
-//   String - String with input parameters.
+//  String – string with substituted parameters.
 //
 // Example:
-//  ParametersArray = New Array;
+//  ParameterArray = New Array;
 //  ParameterArray = ParameterArray.Add("John");
-//  ParameterArray = ParameterArray.Add("Zoo");
+//  ParameterArray = ParameterArray.Add("a zoo");
 //
-//  String = PlaceParametersIntoString(NStr("en='%1 went to %2';ru='%1 пошел в %2'"), ParameterArray);
+// String = SubstituteParametersInString(NStr("en='%1 went to %2'"), ParameterArray);
 //
-Function PlaceParametersIntoStringFromArray(Val LookupString, Val ParameterArray) Export
+Function SubstituteParametersInStringFromArray(Val SubstitutionString, Val ParameterArray) Export
 	
-	ResultRow = LookupString;
+	ResultString = SubstitutionString;
 	
-	IndexOf = ParameterArray.Count();
-	While IndexOf > 0 Do
-		Value = ParameterArray[IndexOf-1];
+	Index = ParameterArray.Count();
+	While Index > 0 Do
+		Value = ParameterArray[Index - 1];
 		If Not IsBlankString(Value) Then
-			ResultRow = StrReplace(ResultRow, "%" + Format(IndexOf, "NG="), Value);
+			ResultString = StrReplace(ResultString, "%" + Format(Index, "NG="), Value);
 		EndIf;
-		IndexOf = IndexOf - 1;
+		Index = Index - 1;
 	EndDo;
 	
-	Return ResultRow;
+	Return ResultString;
 	
 EndFunction
 
@@ -704,9 +711,9 @@ Function ConvertNumberToRomanNumeral(ArabicNumber, UseLatinChars = True) Export
 	Tens	= Number(Mid(ArabicNumber, 2, 1));
 	Hundreds	= Number(Mid(ArabicNumber, 1, 1));
 	
-	RomanNumber = RomanNumber + ConvertDigitToRomanNumeral(Hundreds,   c100, c500, c1000);
-	RomanNumber = RomanNumber + ConvertDigitToRomanNumeral(Tens, c10,  c50,  c100);
-	RomanNumber = RomanNumber + ConvertDigitToRomanNumeral(Units, c1,   c5,   c10);
+	RomanNumber = RomanNumber + ConvertDigitIntoRomanNotation(Hundreds,   c100, c500, c1000);
+	RomanNumber = RomanNumber + ConvertDigitIntoRomanNotation(Tens, c10,  c50,  c100);
+	RomanNumber = RomanNumber + ConvertDigitIntoRomanNotation(Units, c1,   c5,   c10);
 	
 	Return RomanNumber;
 	
@@ -1066,25 +1073,25 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region InternalProceduresAndFunctions
 
-// Converts digits to the Roman numeric style. 
+// Converting the Arabic numerals into a Roman ones. 
 //
-// Parameters:
-// Digit - Number - digit from 0 to 9.
-//  RomanOne, RomanFive, RomanTen - String - characters corresponding to the Roman numbers.
+// Parameters
+//  Digit                         - Number - numeral from 0 to 9;
+//  RomanOne, RomanFive, RomanTen - String - characters representing Roman numerals.
 //
-// Returned
-// value String - digit in Roman notation.
+// Returns
+// String - characters in the Roman notation.
 //
 // Example: 
-// ConvertDigitToRomanNumeral(7,"I","V","X") = "VII".
+// ConvertDigitIntoRomanNotation(7,"I","V","X") = "VII".
 //
-Function ConvertDigitToRomanNumeral(Digit, RomanOne, RomanFive, RomanTen)
+Function ConvertDigitIntoRomanNotation(Digit, RomanOne, RomanFive, RomanTen)
 	
 	RomanDigit="";
 	If Digit = 1 Then
-		RomanDigit = RomanOne
+		RomanDigit = RomanOne;
 	ElsIf Digit = 2 Then
 		RomanDigit = RomanOne + RomanOne;
 	ElsIf Digit = 3 Then
@@ -1106,50 +1113,54 @@ Function ConvertDigitToRomanNumeral(Digit, RomanOne, RomanFive, RomanTen)
 	
 EndFunction
 
-// It inserts parameters into the string taking into account that you can use substitution words %1, %2 etc. in  parameters
-Function SubstituteParametersInStringAlternateAlgorithm(Val LookupString,
+// Substitutes parameters in the string for %1, %2, and so on.
+Function SubstituteParametersInStringAlternativeAlgorithm(Val SubstitutionString,
 	Val Parameter1, Val Parameter2 = Undefined, Val Parameter3 = Undefined,
 	Val Parameter4 = Undefined, Val Parameter5 = Undefined, Val Parameter6 = Undefined,
 	Val Parameter7 = Undefined, Val Parameter8 = Undefined, Val Parameter9 = Undefined)
 	
 	Result = "";
-	Position = Find(LookupString, "%");
+	Position = Find(SubstitutionString, "%");
 	While Position > 0 Do 
-		Result = Result + Left(LookupString, Position - 1);
-		CharAfterPercent = Mid(LookupString, Position + 1, 1);
-		SetParameter = "";
+		Result = Result + Left(SubstitutionString, Position - 1);
+		CharAfterPercent = Mid(SubstitutionString, Position + 1, 1);
+		ParameterToSubstitute = "";
 		If CharAfterPercent = "1" Then
-			SetParameter =  Parameter1;
+			ParameterToSubstitute =  Parameter1;
 		ElsIf CharAfterPercent = "2" Then
-			SetParameter =  Parameter2;
+			ParameterToSubstitute =  Parameter2;
 		ElsIf CharAfterPercent = "3" Then
-			SetParameter =  Parameter3;
+			ParameterToSubstitute =  Parameter3;
 		ElsIf CharAfterPercent = "4" Then
-			SetParameter =  Parameter4;
+			ParameterToSubstitute =  Parameter4;
 		ElsIf CharAfterPercent = "5" Then
-			SetParameter =  Parameter5;
+			ParameterToSubstitute =  Parameter5;
 		ElsIf CharAfterPercent = "6" Then
-			SetParameter =  Parameter6;
+			ParameterToSubstitute =  Parameter6;
 		ElsIf CharAfterPercent = "7" Then
-			SetParameter =  Parameter7
+			ParameterToSubstitute =  Parameter7
 		ElsIf CharAfterPercent = "8" Then
-			SetParameter =  Parameter8;
+			ParameterToSubstitute =  Parameter8;
 		ElsIf CharAfterPercent = "9" Then
-			SetParameter =  Parameter9;
+			ParameterToSubstitute =  Parameter9;
 		EndIf;
-		If SetParameter = "" Then
+		If ParameterToSubstitute = "" Then
 			Result = Result + "%";
-			LookupString = Mid(LookupString, Position + 1);
+			SubstitutionString = Mid(SubstitutionString, Position + 1);
 		Else
-			Result = Result + SetParameter;
-			LookupString = Mid(LookupString, Position + 2);
+			Result = Result + ParameterToSubstitute;
+			SubstitutionString = Mid(SubstitutionString, Position + 2);
 		EndIf;
-		Position = Find(LookupString, "%");
+		Position = Find(SubstitutionString, "%");
 	EndDo;
-	Result = Result + LookupString;
+	Result = Result + SubstitutionString;
 	
 	Return Result;
 EndFunction
+ 
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
 
 Function AccordanceOfCyrillicAndLatinCodepages()
 	// Transliteration used in international passports 1997-2010.

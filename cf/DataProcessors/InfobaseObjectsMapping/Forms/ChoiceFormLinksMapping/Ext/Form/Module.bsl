@@ -34,10 +34,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	ObjectToMap = Parameters.ObjectToMap;
 	
-	Items.ObjectToMap.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.ObjectToMap.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Object in ""%1""';ru='Объект в ""%1""'"), Parameters.Application1);
 		
-	Items.Header.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+	Items.Header.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Object in ""%1""';ru='Объект в ""%1""'"), Parameters.Application2);
 	
 	// Make and prepare the choice table on a form.

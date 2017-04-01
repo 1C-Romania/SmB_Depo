@@ -22,12 +22,12 @@ Procedure BeforeWrite(Cancel, Replacing)
 		Else
 			Record.Presentation = ""
 				+ Record.DocumentKind
-				+ ?(ValueIsFilled(Record.Series), StringFunctionsClientServer.PlaceParametersIntoString(TextSeries, Record.Series), "")
-				+ ?(ValueIsFilled(Record.Number), StringFunctionsClientServer.PlaceParametersIntoString(TextNumber, Record.Number), "")
-				+ ?(ValueIsFilled(Record.IssueDate), StringFunctionsClientServer.PlaceParametersIntoString(TextIssuanceDate, Format(Record.IssueDate,"DF=dd MMMM yyyy'")), "")
-				+ ?(ValueIsFilled(Record.ValidityPeriod), StringFunctionsClientServer.PlaceParametersIntoString(TextValidityPeriod, Format(Record.ValidityPeriod,"DF=dd MMMM yyyy'")), "")
+				+ ?(ValueIsFilled(Record.Series), StringFunctionsClientServer.SubstituteParametersInString(TextSeries, Record.Series), "")
+				+ ?(ValueIsFilled(Record.Number), StringFunctionsClientServer.SubstituteParametersInString(TextNumber, Record.Number), "")
+				+ ?(ValueIsFilled(Record.IssueDate), StringFunctionsClientServer.SubstituteParametersInString(TextIssuanceDate, Format(Record.IssueDate,"DF=dd MMMM yyyy'")), "")
+				+ ?(ValueIsFilled(Record.ValidityPeriod), StringFunctionsClientServer.SubstituteParametersInString(TextValidityPeriod, Format(Record.ValidityPeriod,"DF=dd MMMM yyyy'")), "")
 				+ ?(ValueIsFilled(Record.WhoIssued), ", " + Record.WhoIssued, "")
-				+ ?(ValueIsFilled(Record.DepartmentCode) AND Record.DocumentKind = Catalogs.IndividualsDocumentsKinds.LocalPassport, StringFunctionsClientServer.PlaceParametersIntoString(TextDepartmentCode, Record.DepartmentCode), "");
+				+ ?(ValueIsFilled(Record.DepartmentCode) AND Record.DocumentKind = Catalogs.IndividualsDocumentsKinds.LocalPassport, StringFunctionsClientServer.SubstituteParametersInString(TextDepartmentCode, Record.DepartmentCode), "");
 			
 		EndIf;
 	EndDo;
@@ -83,7 +83,7 @@ Procedure OnWrite(Cancel, Replacing)
 	While Selection.Next() Do
 		Cancel = True;
 		
-		CommonUseClientServer.MessageToUser(StringFunctionsClientServer.PlaceParametersIntoString(MessageText, Format(Selection.Period, "DLF=D"), Selection.Ind));
+		CommonUseClientServer.MessageToUser(StringFunctionsClientServer.SubstituteParametersInString(MessageText, Format(Selection.Period, "DLF=D"), Selection.Ind));
 	EndDo;
 	
 EndProcedure

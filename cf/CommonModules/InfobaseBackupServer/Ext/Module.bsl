@@ -513,7 +513,7 @@ Function CurrentBackupSetting() Export
 				Schedule = CommonUseClientServer.StructureIntoSchedule(BackupSettings.CopyingSchedule);
 				If Not IsBlankString(Schedule) Then
 					CurrentSetting = NStr("en='Backup is executed on a regular basis according to the schedule: %1';ru='Резервное копирование выполняется регулярно по расписанию: %1'");
-					CurrentSetting = StringFunctionsClientServer.PlaceParametersIntoString(CurrentSetting, Schedule);
+					CurrentSetting = StringFunctionsClientServer.SubstituteParametersInString(CurrentSetting, Schedule);
 				EndIf;
 			EndIf;
 			

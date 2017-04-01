@@ -254,7 +254,7 @@ Procedure RefreshFormTitle()
 	EndIf;
 	
 	If Action = "Change" Then
-		Title = StringFunctionsClientServer.PlaceParametersIntoString(
+		Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (Scheduled job)';ru='%1 (Регламентное задание)'"), Presentation);
 	Else
 		Title = NStr("en='Scheduled job (creating)';ru='Регламентное задание (создание)'");

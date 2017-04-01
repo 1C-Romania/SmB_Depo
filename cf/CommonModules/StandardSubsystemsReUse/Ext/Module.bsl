@@ -33,7 +33,7 @@ Function ProgramEventsParameters() Export
 	
 	If ValueIsFilled(ParameterPresentation) Then
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Information base updating error.
 				|Service events parameter is not filled in: %1.';
 				 |ru='Ошибка обновления информационной базы.
@@ -77,7 +77,7 @@ Function SubsystemDescriptions() Export
 		EndIf;
 		
 		CommonUseClientServer.Validate(SubsystemDescriptions.ByNames.Get(Description.Name) = Undefined,
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while preparing subsystems descriptions: 
 				    |in the subsystem description (see the procedure %1.OnAddSubsystem)
 					|subsystem name %2 is specified which has already been registered.';
@@ -112,7 +112,7 @@ Function SubsystemDescriptions() Export
 		Description = SubsystemDescriptions.ByNames[Metadata.Name];
 		
 		CommonUseClientServer.Validate(Description.Version = Metadata.Version,
-			StringFunctionsClientServer.PlaceParametersIntoString(
+			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while preparing subsystems descriptions: 
 					|version %2 of the configuration %1 (see the procedure %3.OnAddSubsystem)
 					|does not match configuration version in metadata %4.';
@@ -139,7 +139,7 @@ Function SubsystemDescriptions() Export
 			For Each DependentSubsystem IN KeyAndValue.Value Do
 				DependentSubsystems = Chars.LF + DependentSubsystem;
 			EndDo;
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while preparing subsystems descriptions: 
 					|subsystem %1 is not found required for subsystems: %2';
 					 |ru='Ошибка при подготовке описаний подсистем: 
@@ -386,7 +386,7 @@ Function MetadataObjectID(FullMetadataObjectName) Export
 	If Exporting.Count() = 0 Then
 		// If identifier is not found by the full name, the full name may have been specified with an error.
 		If Metadata.FindByFullName(FullMetadataObjectName) = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID().
 					|
 					|Metadata object is not found by the full name: %1.';
@@ -395,7 +395,7 @@ Function MetadataObjectID(FullMetadataObjectName) Export
 					|Объект метаданных не найден по полному имени: %1.'"),
 				FullMetadataObjectName);
 		EndIf;
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID().
 				|
 				|For the metadata object %1 an
@@ -407,7 +407,7 @@ Function MetadataObjectID(FullMetadataObjectName) Export
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 			FullMetadataObjectName);
 	ElsIf Exporting.Count() > 1 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID().
 				|
 				|For the metadata object %1 several
@@ -424,7 +424,7 @@ Function MetadataObjectID(FullMetadataObjectName) Export
 	CheckResult = Catalogs.MetadataObjectIDs.MetadataObjectKeyCorrespondsDescriptionFull(Exporting[0]);
 	If CheckResult.NotCorresponds Then
 		If CheckResult.MetadataObject = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID().
 					|
 					|For the metadata object %1 an identifier is found in
@@ -436,7 +436,7 @@ Function MetadataObjectID(FullMetadataObjectName) Export
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 				FullMetadataObjectName);
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID().
 					|
 					|For the metadata object %1 an identifier is found in
@@ -627,10 +627,10 @@ Function PreparedByHandlersOfServerEvents(Event, Service = False, FirstTry = Tru
 	
 	If Handlers = Undefined Then
 		If Service Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Server service event is not found %1.';ru='Не найдено серверное служебное событие %1.'"), Event);
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Server event is not found %1.';ru='Не найдено серверное событие %1.'"), Event);
 		EndIf;
 	EndIf;

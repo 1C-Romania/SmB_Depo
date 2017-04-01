@@ -66,7 +66,7 @@ Function ObjectAttributesValues(Ref, Val Attributes) Export
 			AttributesStructure.Insert(StrReplace(Attribute, ".", ""), Attribute);
 		EndDo;
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Invalid type of Attributes second parameter: %1';ru='Неверный тип второго параметра Реквизиты: %1'"),
 			String(TypeOf(Attributes)));
 	EndIf;
@@ -1071,7 +1071,7 @@ Function IdenticalCollections(RowsCollection1, RowsCollection2, ColumnNames = ""
 			EndIf;
 		Else
 			ErrorMessage = NStr("en='For the collection of the %1 type it is necessary to specify the name of the fields by which the matching is performed';ru='Для коллекции типа %1 необходимо указать имена полей, по которым производится сравнение'");
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessage, TypeOf(RowsCollection1));
+			Raise StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage, TypeOf(RowsCollection1));
 		EndIf;
 	Else
 		ColumnsToCompare = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(ColumnNames);
@@ -1509,7 +1509,7 @@ Function COMConnectorIdentifier(Val COMConnectorName) Export
 	EndIf;
 	
 	ErrorMessage = NStr("en='CLSID is not set for class %1';ru='На задан CLSID для класса %1'");
-	ErrorMessage = StringFunctionsClientServer.PlaceParametersIntoString(ErrorMessage, COMConnectorName);
+	ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage, COMConnectorName);
 	Raise ErrorMessage;
 	
 EndFunction
@@ -1611,7 +1611,7 @@ Function SubjectString(SubjectRef) Export
 			If IsBlankString(ObjectPresentation) Then
 				ObjectPresentation = SubjectRef.Metadata().Presentation();
 			EndIf;
-			Result = StringFunctionsClientServer.PlaceParametersIntoString(
+			Result = StringFunctionsClientServer.SubstituteParametersInString(
 				"%1 (%2)", String(SubjectRef), ObjectPresentation);
 		EndIf;
 	EndIf;
@@ -2601,7 +2601,7 @@ Function ObjectManagerByFullName(FullName) Export
 		EndTry;
 	EndIf;
 	
-	Raise StringFunctionsClientServer.PlaceParametersIntoString(
+	Raise StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Unknown type of metadata object ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), FullName);
 	
 EndFunction
@@ -2769,7 +2769,7 @@ Function ObjectKindByKind(Type) Export
 		Return "Enum";
 	
 	Else
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='InvalidValueTypeParameter%1';ru='Неверный тип значения параметра (%1)'"), String(Type));
 	
 	EndIf;
@@ -2916,7 +2916,7 @@ Function MetadataObjectID(MetadataObjectDesc) Export
 		
 		MetadataObject = Metadata.FindByType(MetadataObjectDesc);
 		If MetadataObject = Undefined Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID().
 		|
 		|Metadata object is not
@@ -2969,7 +2969,7 @@ Function MetadataObjectByID(ID) Export
 	Exporting = Query.Execute().Unload();
 	
 	If Exporting.Count() = 0 Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID().
 		|
 		|Identifier
@@ -2986,7 +2986,7 @@ Function MetadataObjectByID(ID) Export
 	If CheckResult.NotCorresponds Then
 		If CheckResult.MetadataObject = Undefined Then
 			If CheckResult.MetadataObjectKey = Undefined Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID().
 		|
 		|Nonexistent
@@ -3002,7 +3002,7 @@ Function MetadataObjectByID(ID) Export
 					String(ID),
 					Exporting[0].FullName);
 			Else
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID().
 		|
 		|%1
@@ -3016,7 +3016,7 @@ Function MetadataObjectByID(ID) Export
 					String(ID));
 			EndIf;
 		Else
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectID().
 		|
 		|Identifier
@@ -3035,7 +3035,7 @@ Function MetadataObjectByID(ID) Export
 	EndIf;
 	
 	If Exporting[0].DeletionMark Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID().
 		|
 		|%1
@@ -3075,7 +3075,7 @@ Procedure AddRenaming(Total, IBVersion, FormerFullName, NewFullName, LibraryID =
 		NStr("en='An error occurred in the OnAddMetadataObjectsRenaming procedure of the CommonUseOverridable common module.';ru='Ошибка в процедуре ПриДобавленииПереименованийОбъектовМетаданных общего модуля ОбщегоНазначенияПереопределяемый.'");
 	
 	If FormerCollectionName <> NewCollectionName Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorTitle + Chars.LF + Chars.LF
 			+ NStr("en='Types names of the renamed metadata object do not match.
 		|Previous
@@ -3096,7 +3096,7 @@ Procedure AddRenaming(Total, IBVersion, FormerFullName, NewFullName, LibraryID =
 		ValidTypesList = ?(ValueIsFilled(ValidTypesList),
 			Left(ValidTypesList, StrLen(ValidTypesList) - 1), "");
 		
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			ErrorTitle + Chars.LF + Chars.LF
 			+ NStr("en='It is not required to describe renaming for
 		|metadata object type %1 as information about metadata object of this type is updated automatically.
@@ -4764,7 +4764,7 @@ Function GetInterfaceVersionsViaExternalConnection(ExternalConnection, Val Inter
 		MessageString = NStr("en='Correspondent does not support the subsystems interfaces versioning.
 		|Error description: %1';ru='Корреспондент не поддерживает версионирование интерфейсов подсистем.
 		|Описание ошибки: %1'");
-		MessageString = StringFunctionsClientServer.PlaceParametersIntoString(MessageString, DetailErrorDescription(ErrorInfo()));
+		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, DetailErrorDescription(ErrorInfo()));
 		WriteLogEvent(NStr("en='Interface versions receiving';ru='Получение версий интерфейса'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , MessageString);
 		
@@ -4877,7 +4877,7 @@ Function CommonModule(Name) Export
 	EndIf;
 	
 	If TypeOf(Module) <> Type("CommonModule") Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Common module ""%1"" is not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
 	EndIf;
 	
@@ -5048,7 +5048,7 @@ Function PrepareDataCacheVersions(Val DataType, Val ReceivingParameters) Export
 		Data = GetWSDL(ReceivingParameters[0], ReceivingParameters[1], ReceivingParameters[2], ReceivingParameters[3]);
 	Else
 		TextPattern = NStr("en='Unknown data type of versions cache: %1';ru='Неизвестный тип данных кэша версий: %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(TextPattern, DataType);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(TextPattern, DataType);
 		Raise(MessageText);
 	EndIf;
 	
@@ -5347,7 +5347,7 @@ Function GetWSDL(Val Address, Val UserName, Val Password, Val Timeout)
 		|
 		|Возможно, адрес
 		|файла описания указан неверно: %1'");
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, Address);
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Address);
 		Raise(MessageText);
 	EndIf;
 	Definitions = Undefined;
@@ -5410,7 +5410,7 @@ Procedure CheckingDataFixed(Data, DataInValueOfFixedTypes = False)
 		EndIf;
 	EndIf;
 	
-	Raise StringFunctionsClientServer.PlaceParametersIntoString(
+	Raise StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='An error occurred in the FixedData function of the CommonUse common module.
 		|Data of the %1 type can not be recorded.';ru='Ошибка в функции ФиксированныеДанные общего модуля ОбщегоНазначения.
 		|Данные типа ""%1"" не могут быть зафиксированы.'"),
@@ -5553,7 +5553,7 @@ Function ManagerServerModule(Name)
 	EndIf;
 	
 	If Not ObjectFound Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 metadata object
 		|is not found or manager module receipt is not supported for it.';ru='Объект метаданных
 		|""%1"" не найден, либо для него не поддерживается получение модуля менеджера.'"), Name);
@@ -6748,7 +6748,7 @@ Procedure WriteObject(Val Object, Val WriteParameters)
 	If AttributesTest.Hierarchical Or AttributesTest.ExtDimensionTypes <> Undefined Then 
 		
 		If Object.Parent = Object.Ref Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Circular reference occurs in the hierarchy during recording %1.';ru='При записи ""%1"" возникает циклическая ссылка в иерархии.'"),
 				String(Object));
 			EndIf;
@@ -6759,7 +6759,7 @@ Procedure WriteObject(Val Object, Val WriteParameters)
 	For Each MetaOwner In AttributesTest.Owners Do
 		
 		If Object.Owner = Object.Ref Then
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='A circular reference occurs in subordination during writing %1.';ru='При записи ""%1"" возникает циклическая ссылка в подчинении.'"),
 				String(Object));
 		EndIf;
@@ -6860,7 +6860,7 @@ Procedure ReplaceRefWithLongTransaction(ReplacementResult, Val Ref, Val Replacem
 		Block.Lock();
 	Except
 		// Add record about an unsuccessful attempt to lock the result.
-		Error = StringFunctionsClientServer.PlaceParametersIntoString(
+		Error = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Unable to lock all usage places %1';ru='Не удалось заблокировать все места использования %1'"),
 			Ref
 		);
@@ -7036,7 +7036,7 @@ Function EvaluateDataValueByPath(Val Data, Val DataPath)
 			Test[AttributeName] = -1;
 			FillPropertyValues(Test, InterimResult);
 			If Test[AttributeName] = Undefined Then
-				Raise StringFunctionsClientServer.PlaceParametersIntoString(
+				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='An error occurred while calculating %1 for object %2. Attribute %3 is not found';ru='Ошибка вычисления %1 для объекта %2. Реквизит %3 не найден'"),
 					DataPath, Data, AttributeName 
 				);

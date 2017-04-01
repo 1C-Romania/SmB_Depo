@@ -1588,7 +1588,7 @@ Function TempFileStorageDirectory() Export
 		|parameter value %1 is specified in the application settings.';ru='Каталог временных файлов не существует.
 		|Необходимо убедиться, что в настройках
 		|программы задано правильное значение параметра ""%1"".'");
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(MessagePattern, ConstantRepresentation);
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ConstantRepresentation);
 			Raise(MessageText);
 			
 		EndIf;

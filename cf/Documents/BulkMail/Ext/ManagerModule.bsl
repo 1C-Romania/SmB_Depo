@@ -26,7 +26,7 @@ Procedure PresentationReceiveDataProcessor(Data, Presentation, StandardProcessin
 		Status = "(" + Lower(Data.Status) + ")";
 	EndIf;
 	
-	Presentation = StringFunctionsClientServer.PlaceParametersIntoString(
+	Presentation = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='%1 %2: %3 %4 %5';ru='%1 %2: %3 %4 %5'"),
 		TitlePresentation,
 		Data.SendingMethod,

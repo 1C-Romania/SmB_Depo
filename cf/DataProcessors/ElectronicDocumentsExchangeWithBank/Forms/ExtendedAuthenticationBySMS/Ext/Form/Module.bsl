@@ -76,7 +76,7 @@ Procedure Done(Command)
 			Else
 				ErrorDetails = ElectronicDocumentsServiceClient.InformationAboutErroriBank2();
 			EndIf;
-			MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 			Operation = NStr("en='SMS authentication';ru='SMS аутентификация'");
 			DetailErrorDescription = DetailErrorDescription(ErrorInfo());
@@ -130,7 +130,7 @@ Procedure SendSMS()
 		Else
 			ErrorDetails = ElectronicDocumentsServiceClient.InformationAboutErroriBank2();
 		EndIf;
-		MessageText = StringFunctionsClientServer.PlaceParametersIntoString(
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
 		Operation = NStr("en='Making a connection';ru='Установка соединения'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(

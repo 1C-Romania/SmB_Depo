@@ -399,7 +399,7 @@ Procedure ShowConnectionsNotRemovedOnClient()
 			NotRemovedToolTip = " ";
 		Else
 			CurrentPage = Items.ReasonNotRemovedPage;
-			NotRemovedToolTip = StringFunctionsClientServer.PlaceParametersIntoString(
+			NotRemovedToolTip = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Oject ""%1"" (%2) usage locations:';ru='Места использования объекта ""%1"" (%2):'"),
 				TreeRow.Presentation,
 				Format(TreeRow.ConnectionsCount, "NZ=0; NG=")
@@ -1136,7 +1136,7 @@ Procedure BackgroundJobImportResult(Result)
 			Items.FormPages.CurrentPage = Items.PageDeleteNotRequired;
 		ElsIf NotRemovedQuantity = 0 Then
 			Items.FormPages.CurrentPage = Items.PageSuccessfullyCompleted;
-			NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+			NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Removing marked objects successfully completed.
 		|Objects deleted: %1.';ru='Удаление помеченных объектов успешно завершено.
 		|Удалено объектов: %1.'"),
@@ -1145,7 +1145,7 @@ Procedure BackgroundJobImportResult(Result)
 			Items.LabelSuccessfullyCompleted.Title = NotificationText;
 		Else
 			Items.FormPages.CurrentPage = Items.PageReasonsRemovingUnavailable;
-			NotificationText = StringFunctionsClientServer.PlaceParametersIntoString(
+			NotificationText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Marked objects are deleted.
 		|Objects deleted:
 		|%1, Not deleted: %2.';ru='Удаление помеченных объектов завершено.
@@ -1157,12 +1157,12 @@ Procedure BackgroundJobImportResult(Result)
 			NotificationPicture = PictureLib.Warning32;
 			
 			If DeletedQuantity = 0 Then
-				Items.LabelResultPartialRemoval.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+				Items.LabelResultPartialRemoval.Title = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Failed to delete objects marked for deletion (%1):';ru='Не получилось удалить объекты, помеченные на удаление (%1):'"),
 					Format(NOTRemovedQuantity, "NZ=0; NG=")
 				);
 			Else
-				Items.LabelResultPartialRemoval.Title = StringFunctionsClientServer.PlaceParametersIntoString(
+				Items.LabelResultPartialRemoval.Title = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Deleted successfully: %1 from %2, the rest of the objects are not deleted (%3):';ru='Успешно удалено: %1 из %2, остальные объекты не удалены (%3):'"),
 					Format(DeletedQuantity, "NZ=0; NG="),
 					Format(DeletedQuantity+NotRemovedQuantity, "NZ=0; NG="),

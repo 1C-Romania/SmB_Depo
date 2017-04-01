@@ -170,7 +170,7 @@ Function ReportDescription(OptionsTree, ReportValueOrMetadata) Export
 	EndIf;
 	
 	If RowReport = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while
 		|receiving report description ""%1"", it is not connected to subsystem ""%2""';ru='Ошибка получения
 		|описания отчета ""%1"", он не подключен к подсистеме ""%2""'"),
@@ -209,7 +209,7 @@ Function VariantDesc(OptionsTree, ReportTreeRowOrValueOrMetadata, VariantKey) Ex
 	EndIf;
 	
 	If RowOption = Undefined Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Variant ""%1"" is not found for report ""%2"".';ru='Вариант ""%1"" не найден для отчета ""%2"".'"),
 			VariantKey,
 			RowReport.Metadata.Name);
@@ -941,12 +941,12 @@ Function ConnectReportObject(ReferenceOfVariantOrReport) Export
 	EndIf;
 	
 	If Result.Ref = Undefined Then
-		Result.Errors = StringFunctionsClientServer.PlaceParametersIntoString(
+		Result.Errors = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Report variant ""%1"" is not found in the application';ru='Вариант отчета ""%1"" не найден в программе'"),
 			String(ReferenceOfVariantOrReport));
 		Return Result;
 	ElsIf TypeOf(Result.Ref) = Type("String") Then
-		Result.Errors = StringFunctionsClientServer.PlaceParametersIntoString(
+		Result.Errors = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='For the variant ""%1"" report ""%2"" is written as external and can not be connected from the application';ru='Для варианта ""%1"" отчет ""%2"" записан как внешний и не может быть подключен из программы'"),
 			String(ReferenceOfVariantOrReport),
 			Result.Ref);
@@ -957,7 +957,7 @@ Function ConnectReportObject(ReferenceOfVariantOrReport) Export
 		Result.Name = CommonUse.ObjectAttributeValue(Result.Ref, "Name");
 		Result.Metadata = Metadata.Reports.Find(Result.Name);
 		If Result.Metadata = Undefined Then
-			Result.Errors = StringFunctionsClientServer.PlaceParametersIntoString(
+			Result.Errors = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='For variant ""%1"" report ""%2"" is not found in the application';ru='Для варианта ""%1"" отчет ""%2"" не найден в программе'"),
 				String(ReferenceOfVariantOrReport),
 				Result.Name);
@@ -988,7 +988,7 @@ EndFunction
 Procedure OnWriteAdditionalReport(CurrentObject, Cancel, ExternalObject) Export
 	
 	If Not ReportsVariantsReUse.AddRight() Then
-		ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='You are not authorized to write variants of additional report ""%1"".';ru='Недостаточно прав доступа для записи вариантов дополнительного отчета ""%1"".'"),
 			CurrentObject.Description);
 		ErrorByVariant(CurrentObject.Ref, ErrorText);
@@ -1494,7 +1494,7 @@ Function ReportVariantsTreesSettingsConfigurations() Export
 						Try
 							Variant.SystemInfo.Insert("DCSettings", DCSettingsVariant.Settings);
 						Except
-							ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+							ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 								NStr("en='Unable to read variant settings ""%1"" of report ""%2"":';ru='Не удалось прочитать настройки варианта ""%1"" отчета ""%2"":'"),
 								Variant.VariantKey,
 								ReportMetadata.Name)
@@ -1651,7 +1651,7 @@ Function KeysChanges()
 		Found = Changes.FindRows(New Structure("MetadataReport, VariantOldName", Update.ReportMetadata, Update.ActualOptionName));
 		If Found.Count() > 0 Then
 			Conflict = Found[0];
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while registering changes
 		|of report variant name ""%1"": Relevant variant
 		|name ""%2"" (old name ""%3"") is also an old name ""%4"" (relevant name ""%5"").';ru='Ошибка регистрации изменений имени
@@ -1666,7 +1666,7 @@ Function KeysChanges()
 		Found = Changes.FindRows(New Structure("MetadataReport, VariantOldName", Update.ReportMetadata, Update.OldOptionName));
 		If Found.Count() > 2 Then
 			Conflict = Found[1];
-			Raise StringFunctionsClientServer.PlaceParametersIntoString(
+			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='An error occurred while registring report
 		|variant name ""%1"": Old variant name ""%2""
 		|(relevant name ""%3"") is listed as an
@@ -1722,14 +1722,14 @@ Function GenerateInformationAboutReportByDescriptionFull(ReportFullName) Export
 				NStr("en='Report ""%1"" is not found in application, it will be covered as external one.';ru='Отчет ""%1"" не найден в программе, он будет значиться как внешний.'"),
 				ReportFullName);
 		ElsIf Not AccessRight("view", Result.ReportMetadata) Then
-			Result.ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+			Result.ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='You have no rights to access report ""%1"".';ru='Недостаточно прав доступа к отчету ""%1"".'"),
 				ReportFullName);
 		EndIf;
 	ElsIf Upper(Prefix) = "ExternalReport" Then
 		// You do not need to receive metadata and checks.
 	Else
-		Result.ErrorText = StringFunctionsClientServer.PlaceParametersIntoString(
+		Result.ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='For report “%1” it is impossible to define type (prefix is not set).';ru='Для отчета ""%1"" невозможно определить тип (не установлен префикс).'"),
 			ReportFullName);
 		Return Result;
@@ -2049,7 +2049,7 @@ Procedure ErrorByVariant(Variant, Message, Attribute1 = Undefined, Attribute2 = 
 		EventLogLevel.Error,
 		Metadata.Catalogs.ReportsVariants,
 		Variant,
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			Message,
 			String(Attribute1),
 			String(Attribute2),
@@ -2063,7 +2063,7 @@ Procedure InformationByOption(Variant, Message, Attribute1 = Undefined, Attribut
 		EventLogLevel.Information,
 		Metadata.Catalogs.ReportsVariants,
 		Variant,
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			Message,
 			String(Attribute1),
 			String(Attribute2),
@@ -2077,7 +2077,7 @@ Procedure WarningByOption(Variant, Message, Attribute1 = Undefined, Attribute2 =
 		EventLogLevel.Warning,
 		Metadata.Catalogs.ReportsVariants,
 		Variant,
-		StringFunctionsClientServer.PlaceParametersIntoString(
+		StringFunctionsClientServer.SubstituteParametersInString(
 			Message,
 			String(Attribute1),
 			String(Attribute2),

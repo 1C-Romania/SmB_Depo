@@ -657,7 +657,7 @@ Procedure FillInformationAboutSubsystemsAndSetTitle()
 	EndDo;
 	
 	If CurrentSectionRef = Catalogs.MetadataObjectIDs.EmptyRef() Then
-		Raise StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Section ""%1"" is not connected to the ""%2"" subsystem.See
 		|ReportsVariantsPredefined module, DetermineSectionsWithReportsVariants procedure.';ru='Раздел ""%1"" не подключен к подсистеме ""%2"".См. модуль ВариантыОтчетовПереопределяемый, процедуру ОпределитьРазделыСВариантамиОтчетов.'"),
 			Parameters.PathToSubsystem,

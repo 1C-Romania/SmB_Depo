@@ -585,7 +585,7 @@ Function GetDataForChecking(PreliminaryData)
 	DataSources = TablesDataSources.FindRows(Filter);
 	
 	If DataSources.Count() = 0 Then
-		Raise(StringFunctionsClientServer.PlaceParametersIntoString(
+		Raise(StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Data sources for table ""%1""
 		|for change prohibition check are not found.';ru='Для проверки запрета
 		|изменения не найдены источники данных для таблицы ""%1"".'"),
@@ -977,7 +977,7 @@ Function DataChangeOrImportProhibitionFound(Query,
 						Text = Text + " " + NStr("en='(general prohibition date is established)';ru='(установлена общая дата запрета)'");
 					EndIf;
 				EndIf;
-				Text = StringFunctionsClientServer.PlaceParametersIntoString(
+				Text = StringFunctionsClientServer.SubstituteParametersInString(
 						Text,
 						Format(Checking.Date, "DLF=D"),
 						Checking.Section,
@@ -1095,7 +1095,7 @@ Function GetDataPresentation(DataId, DataTable)
 		EndIf;
 	EndIf;
 	
-	DataPresentation = StringFunctionsClientServer.PlaceParametersIntoString(
+	DataPresentation = StringFunctionsClientServer.SubstituteParametersInString(
 		DataPresentation, MetadataObject.Synonym);
 	
 	Return DataPresentation;
