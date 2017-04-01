@@ -173,16 +173,3 @@ Procedure GLExpenseAccountOnChange(Item)
 EndProcedure // GLExpenseAccountOnChange()
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

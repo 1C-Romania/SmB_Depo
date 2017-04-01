@@ -161,17 +161,3 @@ Procedure MoveUsers(Receiver, Source, ArrayOfDruggedItems)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -383,17 +383,3 @@ Procedure UnlockAndChangeObjectsDeletionMark(Context, ChangeMark)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

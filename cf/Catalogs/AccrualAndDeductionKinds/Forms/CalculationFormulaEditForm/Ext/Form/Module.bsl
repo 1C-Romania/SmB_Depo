@@ -69,17 +69,3 @@ EndProcedure // CalculationsParametersSelection()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

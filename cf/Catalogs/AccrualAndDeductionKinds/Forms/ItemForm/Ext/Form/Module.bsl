@@ -159,16 +159,3 @@ EndProcedure // Connected_AllowObjectAttributeEdit()
 // End
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

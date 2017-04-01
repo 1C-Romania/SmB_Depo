@@ -393,31 +393,33 @@ EndProcedure
 &AtServer
 Procedure ConfigureRepresentationSets()
 	
-	CommandCreate                      = Commands.Find("Create");
-	CommandCreateBySample             = Commands.Find("CreateSample");
-	CommandCreateCommon                 = Commands.Find("CreateCommon");
-	CommandCopy                  = Commands.Find("Copy");
-	CommandChange                     = Commands.Find("Change");
-	CommandMarkToDelete           = Commands.Find("MarkToDelete");
-	CommandMoveUp             = Commands.Find("MoveUp");
-	CommandMoveDown              = Commands.Find("MoveDown");
+	CommandCreate			= Commands.Find("Create");
+	CommandCreateBySample	= Commands.Find("CreateSample");
+	CommandCreateCommon		= Commands.Find("CreateCommon");
+	CommandCopy				= Commands.Find("Copy");
+	CommandChange			= Commands.Find("Change");
+	CommandMarkToDelete		= Commands.Find("MarkToDelete");
+	CommandMoveUp			= Commands.Find("MoveUp");
+	CommandMoveDown			= Commands.Find("MoveDown");
 	
 	If ThisIsSetOfAdditionalInformation Then
-		Title = NStr("en='Additional data';ru='Дополнительные сведения'");
+		Title = NStr("ru = 'Дополнительные сведения'; en = 'Custom data'");
 		
-		CommandCreate.ToolTip          = NStr("en='Create the unique information';ru='Создать уникальное сведение'");
-		CommandCreate.Title          = NStr("en='NewItem';ru='NewItem'");
-		CommandCreate.ToolTip          = NStr("en='Create the unique information';ru='Создать уникальное сведение'");
-		CommandCreateBySample.Title = NStr("en='By sample...';ru='По образцу...'");
-		CommandCreateBySample.ToolTip = NStr("en='Create information by sample (common values list)';ru='Создать сведение по образцу (общий список значений)'");
-		CommandCreateCommon.Title     = NStr("en='Common...';ru='Общий...'");
-		CommandCreateCommon.ToolTip     = NStr("en='Select common information of the existing';ru='Выбрать общее сведение из существующих'");
+		CommandCreate.ToolTip	= NStr("ru = 'Создать уникальное сведение'; en = 'Create a unique data'");
+		CommandCreate.Title		= NStr("ru = 'Новое'; en = 'New'");
+		CommandCreate.ToolTip	= NStr("ru = 'Создать уникальное сведение'; en = 'Create a unique data'");
 		
-		CommandCopy.ToolTip        = NStr("en='Create new informatiom by copying the current one';ru='Создать новое сведение копированием текущего'");
-		CommandChange.ToolTip           = NStr("en='Change (or open) the current information';ru='Изменить (или открыть) текущее сведение'");
-		CommandMarkToDelete.ToolTip = NStr("en='Mark current information for deletion (Del)';ru='Пометить текущее сведение на удаление (Del)'");
-		CommandMoveUp.ToolTip   = NStr("en='Move current attribute up';ru='Переместить текущий реквизит вверх'");
-		CommandMoveDown.ToolTip    = NStr("en='Place the current information to the bottom';ru='Переместить текущее сведение вниз'");
+		CommandCreateBySample.Title		= NStr("ru = 'По образцу'; en = 'By sample'");
+		CommandCreateBySample.ToolTip	= NStr("ru = 'Создать сведение по образцу (общий список значений)'; en = 'Create a data by sample (common list of values)'");
+		
+		CommandCreateCommon.Title	= NStr("ru = 'Общий...'; en = 'Common...'");
+		CommandCreateCommon.ToolTip	= NStr("ru = 'Выбрать общее сведение из существующих'; en = 'Select a common data from the existing ones'");
+		
+		CommandCopy.ToolTip			= NStr("ru = 'Создать новое сведение копированием текущего'; en = 'Create a new data by copying the current ones'");
+		CommandChange.ToolTip		= NStr("ru = 'Изменить (или открыть) текущее сведение'; en = 'Change (or open) the current data'");
+		CommandMarkToDelete.ToolTip	= NStr("ru = 'Пометить текущее сведение на удаление (Del)'; en = 'Mark the current data for deletion (Del)'");
+		CommandMoveUp.ToolTip		= NStr("ru = 'Переместить текущее сведение вверх'; en = 'Move the current data up'");
+		CommandMoveDown.ToolTip		= NStr("ru = 'Переместить текущее сведение вниз'; en = 'Move the current data down'");
 		
 		MetadataTabularSection =
 			Metadata.Catalogs.AdditionalAttributesAndInformationSets.TabularSections.AdditionalInformation;
@@ -428,29 +430,29 @@ Procedure ConfigureRepresentationSets()
 		Items.PropertiesRequiredToFill.Visible = False;
 		
 		Items.PropertiesValueType.ToolTip =
-			NStr("en='Types of the value which can be entered when filling the information.';ru='Типы значения, которое можно ввести при заполнении сведения.'");
+			NStr("ru = 'Типы значения, которое можно ввести при заполнении сведения.'; en = 'Value types that can be entered when filling the data.'");
 		
 		Items.PropertiesSharedValues.ToolTip =
-			NStr("en='Information uses the list of the sample information values.';ru='Сведение использует список значений сведения-образца.'");
+			NStr("ru = 'Сведение использует список значений сведения-образца.'; en = 'The data uses the data-sample value list.'");
 		
-		Items.PropertiesCommon.Title = NStr("en='Common';ru='Общий'");
-		Items.PropertiesCommon.ToolTip = NStr("en='Common additional information used
-		|in several sets of additional information.';ru='Общее дополнительное сведение,
-		|которое используется в нескольких наборах дополнительных сведений.'");
+		Items.PropertiesCommon.Title	= NStr("ru = 'Общее'; en = 'Common'");
+		Items.PropertiesCommon.ToolTip	= NStr("ru = 'Общее дополнительное сведение, которое используется в
+		                                              |нескольких наборах дополнительных сведений.'; en = 'Common custom data used in several additional data sets.'");
 	Else
-		Title = NStr("en='Additional attributes';ru='Дополнительные реквизиты объекта'");
-		CommandCreate.Title          = NStr("en = 'New'");
-		CommandCreate.ToolTip          = NStr("en='Create the unique attribute';ru='Создать уникальный реквизит'");
-		CommandCreateBySample.Title = NStr("en='By sample...';ru='По образцу...'");
-		CommandCreateBySample.ToolTip = NStr("en='Create attribute by sample (common values list)';ru='Создать реквизит по образцу (общий список значений)'");
-		CommandCreateCommon.Title     = NStr("en='Common...';ru='Общий...'");
-		CommandCreateCommon.ToolTip     = NStr("en='Select common attribute of the existing';ru='Выбрать общий реквизит из существующих'");
+		Title = NStr("en='Custom fields';ru='Дополнительные реквизиты'");
+		CommandCreate.Title		= NStr("ru='Новый';en='New'");
+		CommandCreate.ToolTip	= NStr("ru = 'Создать уникальный реквизит'; en = 'Create a unique field'");
 		
-		CommandCopy.ToolTip        = NStr("en='Create new attribute by copying the current one';ru='Создать новый реквизит копированием текущего'");
-		CommandChange.ToolTip           = NStr("en='Change (or open) the current attribute';ru='Изменить (или открыть) текущий реквизит'");
-		CommandMarkToDelete.ToolTip = NStr("en='Mark current attribute for deletion (Del)';ru='Пометить текущий реквизит на удаление (Del)'");
-		CommandMoveUp.ToolTip   = NStr("en='Move current attribute up';ru='Переместить текущий реквизит вверх'");
-		CommandMoveDown.ToolTip    = NStr("en='Place the current attribute to the bottom';ru='Переместить текущий реквизит вниз'");
+		CommandCreateBySample.Title		= NStr("ru = 'По образцу'; en = 'By sample'");
+		CommandCreateBySample.ToolTip	= NStr("ru = 'Создать реквизит по образцу (общий список значений)'; en = 'Create a field by sample (common list of values)'");
+		CommandCreateCommon.Title		= NStr("ru = 'Общий...'; en = 'Common...'");
+		CommandCreateCommon.ToolTip     = NStr("ru = 'Выбрать общий реквизит из существующих'; en = 'Select a common field from the existing ones'");
+		
+		CommandCopy.ToolTip			= NStr("ru = 'Создать новый реквизит копированием текущего'; en = 'Create a new field by copying the current one'");
+		CommandChange.ToolTip		= NStr("ru = 'Изменить (или открыть) текущий реквизит'; en = 'Edit (or open) the current field'");
+		CommandMarkToDelete.ToolTip	= NStr("ru = 'Пометить текущий реквизит на удаление (Del)'; en = 'Mark the current field for deletion (Del)'");
+		CommandMoveUp.ToolTip		= NStr("ru = 'Переместить текущий реквизит вверх'; en = 'Move the current field up'");
+		CommandMoveDown.ToolTip		= NStr("ru = 'Переместить текущий реквизит вниз'; en = 'Move the current field down'");
 		
 		MetadataTabularSection =
 			Metadata.Catalogs.AdditionalAttributesAndInformationSets.TabularSections.AdditionalAttributes;
@@ -463,15 +465,14 @@ Procedure ConfigureRepresentationSets()
 			Metadata.ChartsOfCharacteristicTypes.AdditionalAttributesAndInformation.Attributes.FillObligatory.ToolTip;
 		
 		Items.PropertiesValueType.ToolTip =
-			NStr("en='Value types which can be entered when filling the attribute.';ru='Типы значения, которое можно ввести при заполнении реквизита.'");
+			NStr("ru = 'Типы значения, которое можно ввести при заполнении реквизита.'; en = 'Value types that can be entered when filling the attribute.'");
 		
 		Items.PropertiesSharedValues.ToolTip =
-			NStr("en='Attribute uses the list of the sample atrribute values.';ru='Реквизит использует список значений реквизита-образца.'");
+			NStr("ru = 'Реквизит использует список значений реквизита-образца.'; en = 'The attribute uses the attribute-sample value list.'");
 		
-		Items.PropertiesCommon.Title = NStr("en='Common';ru='Общий'");
-		Items.PropertiesCommon.ToolTip = NStr("en='Common additional attribute used
-		|in several sets of additional attributes.';ru='Общий дополнительный реквизит,
-		|который используется в нескольких наборах дополнительных реквизитов.'");
+		Items.PropertiesCommon.Title	= NStr("ru = 'Общий'; en = 'Common'");
+		Items.PropertiesCommon.ToolTip	= NStr("ru = 'Общий дополнительный реквизит, который используется в
+		                                              |нескольких наборах дополнительных реквизитов.'; en = 'A common custom field used in several custom field sets.'");
 	EndIf;
 	
 	Query = New Query;
@@ -1111,17 +1112,3 @@ Procedure ChangeDeletionMarkAndValuesOwner(CurrentSet, CurrentProperty, Deletion
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
