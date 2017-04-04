@@ -175,6 +175,14 @@
 						</Button>
 					</ChildItems>
 				</UsualGroup>
+				<InputField name="HomeCountry" id="1979">
+					<DataPath>ConstantsSet.HomeCountry</DataPath>
+					<ContextMenu name="HomeCountryContextMenu" id="1980"/>
+					<ExtendedTooltip name="HomeCountryExtendedTooltip" id="1981"/>
+					<Events>
+						<Event name="OnChange">HomeCountryOnChange</Event>
+					</Events>
+				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="GroupOpenContactInformationTypes" id="1642">
@@ -875,11 +883,11 @@ a separate form that is opened by a special command.</v8:content>
 				<Field>ConstantsSet.PostponeEditProhibitionDate</Field>
 				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
 				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
+				<Field>ConstantsSet.HomeCountry</Field>
 				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
 				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
 				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
 				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
-				<Field>ConstantsSet.CurrencyQuotationType.Ref</Field>
 				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
 				<Field>ConstantsSet.ActivityKind.Ref</Field>
 			</UseAlways>

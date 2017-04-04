@@ -989,11 +989,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
 	
-	// Temporarily.
-	//( elmi # 08.5
-	//Object.IncludeVATInPrice = True; 
-	//) elmi
-	
 	If Not ValueIsFilled(Object.Ref) Then
 		GetChoiceListOfPaymentCardKinds();
 	EndIf;
@@ -1016,10 +1011,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		StructureByCurrency.ExchangeRate
 	);
 	Multiplicity = ?(
-	     //( elmi # 08.5
-	    //StructureByCurrency.ExchangeRate = 0,
-		  StructureByCurrency.Multiplicity = 0,
-		//) elmi
+		StructureByCurrency.ExchangeRate = 0,
 		1,
 		StructureByCurrency.Multiplicity
 	);

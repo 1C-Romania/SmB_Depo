@@ -60,6 +60,11 @@ Procedure ApplicationTimeZoneStartChoice(Item, ChoiceData, StandardProcessing)
 	EndIf;
 EndProcedure
 
+&AtClient
+Procedure HomeCountryOnChange(Item)
+	Attachable_OnAttributeChange(Item);
+EndProcedure
+
 // StandardSubsystems.ObjectVersioning
 &AtClient
 Procedure UseObjectVersioningOnChange(Item)

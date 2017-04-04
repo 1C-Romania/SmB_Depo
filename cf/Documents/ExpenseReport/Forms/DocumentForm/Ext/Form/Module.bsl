@@ -18,10 +18,7 @@ Procedure FillByDocument(BasisDocument)
 		StructureByCurrency.ExchangeRate
 	);
 	Object.Multiplicity = ?(
-	    //( elmi # 08.5
-	    //StructureByCurrency.ExchangeRate = 0,
-	    StructureByCurrency.Multiplicity = 0,
-		//) elmi
+		StructureByCurrency.ExchangeRate = 0,
 		1,
 		StructureByCurrency.Multiplicity
 	);
@@ -1202,11 +1199,6 @@ Procedure OnOpen(Cancel)
 	EquipmentManagerClientOverridable.StartConnectingEquipmentOnFormOpen(ThisForm, "BarCodeScanner");
 	// End Peripherals
 	
-	//( elmi # 08.5
-    SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment"); //?? - PaymentsRatio, PaymentRate
-    //) elmi
-	
-	
 EndProcedure // OnOpen()
 
 // Procedure - event handler OnClose.
@@ -1980,27 +1972,11 @@ Procedure PaymentsPaymentAmountOnChange(Item)
 		TabularSectionRow.Multiplicity
 	);
 	
-	//( elmi # 08.5
-	//TabularSectionRow.ExchangeRate = ?(
-	//	TabularSectionRow.SettlementsAmount = 0,
-	//	1,
-	//	TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * Object.ExchangeRate
-	//);
-	If SmallBusinessServer.IndirectQuotationInUse() Then 
-		TabularSectionRow.Multiplicity = ?(
-			TabularSectionRow.PaymentAmount = 0,
-			1,
-			TabularSectionRow.SettlementsAmount / TabularSectionRow.PaymentAmount * Object.Multiplicity
-		);
-	Else
-		TabularSectionRow.ExchangeRate = ?(
-			TabularSectionRow.SettlementsAmount = 0,
-			1,
-			TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * Object.ExchangeRate
-		);
-	EndIf;
-	//( elmi # 08.5
-	
+	TabularSectionRow.ExchangeRate = ?(
+		TabularSectionRow.SettlementsAmount = 0,
+		1,
+		TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * Object.ExchangeRate
+	);
 	SpentTotalAmount = Object.Inventory.Total("Total") + Object.Expenses.Total("Total") + Object.Payments.Total("PaymentAmount");
 	
 EndProcedure // PaymentsPaymentAmountOnChange()

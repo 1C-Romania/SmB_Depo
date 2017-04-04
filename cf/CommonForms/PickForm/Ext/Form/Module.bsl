@@ -2569,16 +2569,3 @@ Procedure AfterQuantityAndPriceRequestAddProductToCart(ClosingResult, Additional
 EndProcedure // DetermineNeedForDocumentFillByBasis()
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

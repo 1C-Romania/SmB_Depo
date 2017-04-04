@@ -1316,10 +1316,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	RateNationalCurrency = StructureByCurrency.ExchangeRate;
 	RepetitionNationalCurrency = StructureByCurrency.Multiplicity;
 	
-	//( elmi #11
-	//Object.IncludeVATInPrice = True;  
-	//) elmi
-	
 	If Not ValueIsFilled(Object.Ref)
 		AND Not ValueIsFilled(Parameters.Basis) 
 		AND Not ValueIsFilled(Parameters.CopyingValue) Then
@@ -1464,11 +1460,6 @@ Procedure OnOpen(Cancel)
 	EquipmentManagerClientOverridable.StartConnectingEquipmentOnFormOpen(ThisForm, "BarCodeScanner");
 	// End Peripherals
 	
-	
-    //( elmi # 08.5 
-	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");
-   //) elmi
-
 EndProcedure // OnOpen()
 
 &AtClient
@@ -2364,42 +2355,6 @@ Procedure PrepaymentPaymentAmountOnChange(Item)
 		  / TabularSectionRow.SettlementsAmount
 		  * Object.ExchangeRate
 	);
-	
-	
-	//( elmi # 08.5
-	//TabularSectionRow.Multiplicity = 1;
-	//
-	//TabularSectionRow.ExchangeRate =
-	//	?(TabularSectionRow.SettlementsAmount = 0,
-	//		1,
-	//		TabularSectionRow.PaymentAmount
-	//	  / TabularSectionRow.SettlementsAmount
-	//	  * Object.ExchangeRate
-	//);
-   TabularSectionRow.Multiplicity = ?(
-		TabularSectionRow.Multiplicity = 0,
-		1,
-		TabularSectionRow.Multiplicity
-	);
-	If SmallBusinessServer.IndirectQuotationInUse() Then
-		TabularSectionRow.Multiplicity =
-			?(TabularSectionRow.PaymentAmount = 0,
-				1,
-				TabularSectionRow.SettlementsAmount
-			  / TabularSectionRow.PaymentAmount
-			  * Object.Multiplicity
-		);
-	Else
-		TabularSectionRow.ExchangeRate =
-			?(TabularSectionRow.SettlementsAmount = 0,
-				1,
-				TabularSectionRow.PaymentAmount
-			  / TabularSectionRow.SettlementsAmount
-			  * Object.ExchangeRate
-		);
-	EndIf;
-	//) elmi
-	
 	
 EndProcedure
 

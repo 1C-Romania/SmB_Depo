@@ -363,17 +363,3 @@ Procedure SetLableTitleAndCommandMarkAvailableToAll()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

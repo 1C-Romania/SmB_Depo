@@ -727,16 +727,3 @@ Procedure ConfigureLabelOnDiscountCard()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

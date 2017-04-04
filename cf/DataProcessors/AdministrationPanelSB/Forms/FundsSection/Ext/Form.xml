@@ -202,29 +202,6 @@
 								</Title>
 							</ExtendedTooltip>
 						</Button>
-						<InputField name="CurrencyQuotationType" id="260">
-							<DataPath>ConstantsSet.CurrencyQuotationType</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Currency quotation type</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<ContextMenu name="CurrencyQuotationTypeContextMenu" id="261"/>
-							<ExtendedTooltip name="CurrencyQuotationTypeExtendedTooltip" id="262">
-								<Title formatted="true">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>The direct quotation shows the quantity of the domestic currency you can get in exchange for a unit of a foreign currency, i.e. it is the price of one unit of the foreign currency expressed in the domestic currency. The indirect quotation is the opposite of the direct quotation, and it shows the quantity of the foreign currency you can get in exchange for a unit of the domestic currency, i.e. it is the price of one unit of the domestic currency expressed in the foreign currency.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">CurrencyQuotationTypeOnChange</Event>
-							</Events>
-						</InputField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="Group2" id="100">
@@ -706,6 +683,56 @@ This option allows keeping payment schedule, a tool for short term planning of c
 				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
+		<UsualGroup name="SettingsAdditionally" id="263">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additionally</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительно</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additionally</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительно</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Width>82</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>NormalSeparation</Representation>
+			<ExtendedTooltip name="SettingsAdditionallyExtendedTooltip" id="264"/>
+			<ChildItems>
+				<CheckBoxField name="FunctionalOptionUseBankCharges" id="265">
+					<DataPath>ConstantsSet.FunctionalOptionUseBankCharges</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bank charges</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Банковские комиссии</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="FunctionalOptionUseBankChargesContextMenu" id="266"/>
+					<ExtendedTooltip name="FunctionalOptionUseBankChargesExtendedTooltip" id="267"/>
+					<Events>
+						<Event name="OnChange">FunctionalOptionUseBankChargesOnChange</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="RunMode" id="1">
@@ -745,14 +772,13 @@ This option allows keeping payment schedule, a tool for short term planning of c
 				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
 				<Field>ConstantsSet.NationalCurrency</Field>
 				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
+				<Field>ConstantsSet.FunctionalOptionUseBankCharges</Field>
 				<Field>ConstantsSet.FunctionalCurrencyTransactionsAccounting</Field>
 				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
 				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency</Field>
 				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
 				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
 				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
-				<Field>ConstantsSet.CurrencyQuotationType.Ref</Field>
-				<Field>ConstantsSet.CurrencyQuotationType</Field>
 				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
 				<Field>ConstantsSet.ActivityKind.Ref</Field>
 				<Field>ConstantsSet.AccountingCurrency</Field>

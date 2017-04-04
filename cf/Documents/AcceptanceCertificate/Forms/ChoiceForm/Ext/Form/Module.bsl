@@ -10,14 +10,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SmallBusinessServer.SetDesignDateColumn(List);
 	
 EndProcedure // OnCreateAtServer()
-
-&AtClient
-Procedure OnOpen(Cancel)
-	
-	//( elmi # 08.5 
-	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "List");
-    //) elmi
-
-	
-	
-EndProcedure

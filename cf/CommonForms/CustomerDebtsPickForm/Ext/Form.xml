@@ -57,8 +57,8 @@
 				<LabelField name="Company" id="21">
 					<DataPath>SubsidiaryCompany</DataPath>
 					<TitleLocation>None</TitleLocation>
-					<ContextMenu name="CounterpartyContextMenu" id="22"/>
-					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="171"/>
+					<ContextMenu name="CompanyContextMenu" id="22"/>
+					<ExtendedTooltip name="CompanyExtendedTooltip" id="171"/>
 				</LabelField>
 				<LabelField name="Counterparty" id="18">
 					<DataPath>Counterparty</DataPath>
@@ -240,6 +240,9 @@
 						</InputField>
 						<InputField name="DebtsListMultiplicity" id="161">
 							<DataPath>DebtsList.Multiplicity</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
 							<EditMode>EnterOnInput</EditMode>
 							<Width>9</Width>
 							<ContextMenu name="DebtsListMultiplicityContextMenu" id="162"/>
@@ -403,6 +406,9 @@
 						</InputField>
 						<InputField name="FilteredDebtsMultiplicity" id="111">
 							<DataPath>FilteredDebts.Multiplicity</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
 							<Width>9</Width>
 							<Wrap>false</Wrap>
 							<ContextMenu name="FilteredDebtsMultiplicityContextMenu" id="112"/>
@@ -510,7 +516,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Контрагенты</v8:content>
+					<v8:content>Контрагент</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -522,6 +528,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Company</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -646,7 +656,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
@@ -664,7 +679,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
@@ -911,7 +931,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
@@ -929,7 +954,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>

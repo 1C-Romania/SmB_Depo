@@ -30,7 +30,7 @@ Procedure DetermineSectionsWithReportVariants(Sections) Export
 	Sections.Add(Metadata.Subsystems.InventoryAndPurchasing, NStr("en='Inventory and purchasing';ru='Запасы и закупки'"));
 	Sections.Add(Metadata.Subsystems.Services, NStr("en = 'Service'"));
 	Sections.Add(Metadata.Subsystems.KittingAndProduction, NStr("en='Production';ru='Производство'"));
-	Sections.Add(Metadata.Subsystems.CashAssets, NStr("en='Cash assets';ru='Денежные средства'"));
+	Sections.Add(Metadata.Subsystems.Finances, NStr("en='Finances';ru='Деньги'"));
 	Sections.Add(Metadata.Subsystems.PayrollAndHumanResources, NStr("en='Payroll and Human Resources';ru='Зарплата и персонал'"));
 	Sections.Add(Metadata.Subsystems.Enterprise, NStr("en='Enterprise';ru='Предприятие'"));
 	Sections.Add(Metadata.Subsystems.Analysis, NStr("en='Analysis';ru='Анализ'"));
@@ -439,6 +439,9 @@ Procedure ConfigureReportsVariants(Settings) Export
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssetsForecast, "Planfact analysis (cur.)");
 	Variant.Definition = NStr("en='The report shows cash flow plan/actual analysis in cash currency';ru='Отчет показывает план-фактный анализ движения денежных средств в валюте денежных средств'");
+	
+	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.BankCharges, "BankCharges");
+	Variant.Definition = NStr("ru = 'Отчет показывает информацию по расходам на банковские комиссии'; en = 'The report shows information on expenses for bank charges'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PlannedCashBalance, "Default");
 	Variant.Definition = NStr("en='Report shows information on planned cash balances in selected currency';ru='Отчет показывает информацию о планируемых остатках денежных средств в выбранной валюте'");
@@ -862,6 +865,23 @@ Procedure ConfigureReportsVariants(Settings) Export
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AutomaticDiscounts, "AutomaticDiscounts");
 	Variant.Definition = NStr("en='The report presents the data on granted automatic discounts in total amounts over a certain period of time';ru='Отчет отображает сведения о предоставленных автоматических скидках в суммовом выражении за определенный период времени'");	
 	// End AutomaticDiscounts
+	
+	// Other settlements
+	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SettlementsOnOtherOperations, "Statement");
+	Variant.Definition = НСтр("ru = 'В отчете отображаются сведения о прочих расчетах компании, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами.'; en = 'The report shows information about other settlements of the company, including orders and contracts, in which deals were made between the company and counterparties.'");
+	Variant.VisibleByDefault = False;
+	
+	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SettlementsOnOtherOperations, "Balances");
+	Variant.Definition = НСтр("ru = 'В отчете отображаются сведения о прочих расчетах компании, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами.'; en = 'The report shows information about other settlements of the company, including orders and contracts, in which deals were made between the company and counterparties.'");
+	Variant.VisibleByDefault = False;
+	
+	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SettlementsOnOtherOperations, "StatementInCurrency");
+	Variant.Definition = НСтр("ru = 'В отчете отображаются сведения о прочих расчетах компании в валюте расчетов, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами.'; en = 'The report shows information about other settlements of the company in the settlement currency, including orders and contracts, in which deals were made between the company and counterparties.'");
+	
+	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SettlementsOnOtherOperations, "BalancesInCurrency");
+	Variant.Definition = НСтр("ru = 'В отчете отображаются сведения о прочих расчетах компании в валюте расчетов, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами.'; en = 'The report shows information about other settlements of the company in the settlement currency, including orders and contracts, in which deals were made between the company and counterparties.'");
+	Variant.VisibleByDefault = False;
+	// End Other settlements
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SegmentComposition, "SegmentCompositionContext");
 	Variant.Definition = NStr("en='Report displays the current content of the counterparties segment';ru='Отчет отображает текущий состав сегмента контрагентов'");

@@ -527,7 +527,7 @@
 			<Language>Turkish</Language>
 			<Subsystem>Analysis</Subsystem>
 			<Subsystem>AttachedFilesService</Subsystem>
-			<Subsystem>CashAssets</Subsystem>
+			<Subsystem>Finances</Subsystem>
 			<Subsystem>CounterpartiesCheck</Subsystem>
 			<Subsystem>DataImportFromExternalSources</Subsystem>
 			<Subsystem>ElectronicInteraction</Subsystem>
@@ -663,6 +663,7 @@
 			<CommonPicture>ContactInformationForNavigateLink</CommonPicture>
 			<CommonPicture>ContactInformationIrrelevant</CommonPicture>
 			<CommonPicture>ControlledEventsCollection152FL</CommonPicture>
+			<CommonPicture>CopyRows</CommonPicture>
 			<CommonPicture>CountIsReviewed</CommonPicture>
 			<CommonPicture>CWP_ExpandAdditionalPanel</CommonPicture>
 			<CommonPicture>CWP_MinimizeAdditionalPanel</CommonPicture>
@@ -745,6 +746,7 @@
 			<CommonPicture>FillByBasis</CommonPicture>
 			<CommonPicture>FilledField</CommonPicture>
 			<CommonPicture>FillForm</CommonPicture>
+			<CommonPicture>FinancesSubsystem</CommonPicture>
 			<CommonPicture>FinishTemplateEditing</CommonPicture>
 			<CommonPicture>Flag</CommonPicture>
 			<CommonPicture>Folder</CommonPicture>
@@ -755,7 +757,6 @@
 			<CommonPicture>FullJustification</CommonPicture>
 			<CommonPicture>FullTextSearchBack</CommonPicture>
 			<CommonPicture>FullTextSearchNext</CommonPicture>
-			<CommonPicture>FundsSection</CommonPicture>
 			<CommonPicture>GanttDiagramPicture</CommonPicture>
 			<CommonPicture>Gear</CommonPicture>
 			<CommonPicture>GetWeight</CommonPicture>
@@ -872,6 +873,7 @@
 			<CommonPicture>PaperClipCollection</CommonPicture>
 			<CommonPicture>ParametersAndFiltersIcons</CommonPicture>
 			<CommonPicture>PartiallyCorrected16</CommonPicture>
+			<CommonPicture>PasteRows</CommonPicture>
 			<CommonPicture>PayrollSection</CommonPicture>
 			<CommonPicture>PDFFormat</CommonPicture>
 			<CommonPicture>PeripheralReportWithoutBlanking</CommonPicture>
@@ -1024,8 +1026,6 @@
 			<CommonPicture>WithoutBorder</CommonPicture>
 			<CommonPicture>WorkingDirectoryByDefault</CommonPicture>
 			<CommonPicture>WriteSMS</CommonPicture>
-			<CommonPicture>CopyRows</CommonPicture>
-			<CommonPicture>PasteRows</CommonPicture>
 			<Interface>Administrative</Interface>
 			<Interface>Common</Interface>
 			<Interface>Full</Interface>
@@ -1529,6 +1529,8 @@
 			<CommonModule>MessagesSaaSReUse</CommonModule>
 			<CommonModule>MessagesSuppliedDataMessageHandler</CommonModule>
 			<CommonModule>MobileApplicationExchangeGeneral</CommonModule>
+			<CommonModule>ObjectFillingSB</CommonModule>
+			<CommonModule>ObjectFillingSBOverridable</CommonModule>
 			<CommonModule>ObjectPrefixationClientServer</CommonModule>
 			<CommonModule>ObjectPrefixationClientServerOverridable</CommonModule>
 			<CommonModule>ObjectPrefixationEvents</CommonModule>
@@ -1585,6 +1587,7 @@
 			<CommonModule>PickProductsAndServicesInDocumentsReUse</CommonModule>
 			<CommonModule>PredefinedDataExportImport</CommonModule>
 			<CommonModule>PredefinedDataExportImportReUse</CommonModule>
+			<CommonModule>PresentationsReUse</CommonModule>
 			<CommonModule>PrintManagement</CommonModule>
 			<CommonModule>PrintManagementClient</CommonModule>
 			<CommonModule>PrintManagementClientReUse</CommonModule>
@@ -1661,6 +1664,8 @@
 			<CommonModule>StringFunctionsClientServer</CommonModule>
 			<CommonModule>SuppliedData</CommonModule>
 			<CommonModule>SuppliedDataOverridable</CommonModule>
+			<CommonModule>TabularPartCopyClient</CommonModule>
+			<CommonModule>TabularPartCopyServer</CommonModule>
 			<CommonModule>TotalsAndAggregateManagementService</CommonModule>
 			<CommonModule>TranslationXDTO</CommonModule>
 			<CommonModule>TranslationXDTOOverridable</CommonModule>
@@ -1711,10 +1716,9 @@
 			<CommonModule>WorkWithCurrencyRatesGlobal</CommonModule>
 			<CommonModule>WorkWithCurrencyRatesOverridable</CommonModule>
 			<CommonModule>WorkWithCurrencyRatesServerCall</CommonModule>
+			<CommonModule>WorkWithProductsClientServer</CommonModule>
+			<CommonModule>WorkWithProductsServer</CommonModule>
 			<CommonModule>WorkWithScannerClient</CommonModule>
-			<CommonModule>PresentationsReUse</CommonModule>
-			<CommonModule>TabularPartCopyClient</CommonModule>
-			<CommonModule>TabularPartCopyServer</CommonModule>
 			<CommonAttribute>DataAreaAuxiliaryData</CommonAttribute>
 			<CommonAttribute>DataAreaBasicData</CommonAttribute>
 			<ExchangePlan>ExchangeRetailSmallBusiness</ExchangePlan>
@@ -1994,6 +1998,7 @@
 			<FunctionalOption>UseAdditionalReports</FunctionalOption>
 			<FunctionalOption>UseAdditionalReportsAndDataProcessors</FunctionalOption>
 			<FunctionalOption>UseAutomaticDiscountsMarkups</FunctionalOption>
+			<FunctionalOption>UseBankCharges</FunctionalOption>
 			<FunctionalOption>UseBatches</FunctionalOption>
 			<FunctionalOption>UseBudgeting</FunctionalOption>
 			<FunctionalOption>UseCharacteristics</FunctionalOption>
@@ -2032,6 +2037,7 @@
 			<FunctionalOption>UseTechOperations</FunctionalOption>
 			<FunctionalOption>UseUserReminders</FunctionalOption>
 			<FunctionalOption>UseUsersGroups</FunctionalOption>
+			<FunctionalOption>UseVAT</FunctionalOption>
 			<FunctionalOption>UseWorkSubsystem</FunctionalOption>
 			<FunctionalOption>VerifyDigitalSignaturesAtServer</FunctionalOption>
 			<FunctionalOption>WorkInLocalMode</FunctionalOption>
@@ -2046,8 +2052,6 @@
 			<DefinedType>FilesOwner</DefinedType>
 			<DefinedType>RightSettingsOwner</DefinedType>
 			<DefinedType>SafeMode</DefinedType>
-			<DefinedType>ExchangeRate</DefinedType>
-			<DefinedType>Multiplicity</DefinedType>
 			<CommonCommand>AccessRights</CommonCommand>
 			<CommonCommand>AdditionalInformationCommandBar</CommonCommand>
 			<CommonCommand>AdditionalInformationNavigationPanel</CommonCommand>
@@ -2185,7 +2189,7 @@
 			<CommonCommand>Remind</CommonCommand>
 			<CommonCommand>ReportByMovements</CommonCommand>
 			<CommonCommand>ReportsPanel_Analysis</CommonCommand>
-			<CommonCommand>ReportsPanel_CashAssets</CommonCommand>
+			<CommonCommand>ReportsPanel_Finances</CommonCommand>
 			<CommonCommand>ReportsPanel_Enterprise</CommonCommand>
 			<CommonCommand>ReportsPanel_InventoryAndPurchasing</CommonCommand>
 			<CommonCommand>ReportsPanel_KittingAndProduction</CommonCommand>
@@ -2202,7 +2206,6 @@
 			<CommonCommand>UserInfo</CommonCommand>
 			<CommonCommand>WhatNewsPageInVideoVersion</CommonCommand>
 			<CommonCommand>WriteCertificatePassword</CommonCommand>
-			<CommonCommand>OpenPresentationsEditForm</CommonCommand>
 			<CommandGroup>DataExchangeExecution</CommandGroup>
 			<CommandGroup>DataExchangeParameters</CommandGroup>
 			<CommandGroup>ED</CommandGroup>
@@ -2314,6 +2317,7 @@
 			<Constant>FunctionalOptionTransferInventoryOnSafeCustody</Constant>
 			<Constant>FunctionalOptionTransferRawMaterialsForProcessing</Constant>
 			<Constant>FunctionalOptionUseAutomaticDiscountsMarkups</Constant>
+			<Constant>FunctionalOptionUseBankCharges</Constant>
 			<Constant>FunctionalOptionUseBatches</Constant>
 			<Constant>FunctionalOptionUseBudgeting</Constant>
 			<Constant>FunctionalOptionUseCharacteristics</Constant>
@@ -2326,7 +2330,9 @@
 			<Constant>FunctionalOptionUseSubsystemPayroll</Constant>
 			<Constant>FunctionalOptionUseSubsystemProduction</Constant>
 			<Constant>FunctionalOptionUseTechOperations</Constant>
+			<Constant>FunctionalOptionUseVAT</Constant>
 			<Constant>FunctionalOptionUseWorkSubsystem</Constant>
+			<Constant>HomeCountry</Constant>
 			<Constant>ImportDataExchangeMessage</Constant>
 			<Constant>InfobaseAdministrationParameters</Constant>
 			<Constant>InfobaseIdentifier</Constant>
@@ -2401,10 +2407,10 @@
 			<Constant>UseAdditionalAttributesAndInformation</Constant>
 			<Constant>UseAdditionalReportsAndDataProcessors</Constant>
 			<Constant>UseAdditionalReportsDirectoryAndDataprocessorsSaaS</Constant>
+			<Constant>UseCounterpartiesVerification</Constant>
 			<Constant>UseCommonAdditionalAttributesAndInformation</Constant>
 			<Constant>UseCommonAdditionalValues</Constant>
 			<Constant>UseCounterpartiesAccessGroups</Constant>
-			<Constant>UseCounterpartiesVerification</Constant>
 			<Constant>UseCustomerOrderStates</Constant>
 			<Constant>UseDataSynchronization</Constant>
 			<Constant>UseDataSynchronizationInLocalMode</Constant>
@@ -2432,7 +2438,6 @@
 			<Constant>UseUsersGroups</Constant>
 			<Constant>VendorPaymentDueDate</Constant>
 			<Constant>VerifyDigitalSignaturesAtServer</Constant>
-			<Constant>CurrencyQuotationType</Constant>
 			<CommonForm>AccessRights</CommonForm>
 			<CommonForm>AccessRightsSimplified</CommonForm>
 			<CommonForm>AccessToPersonalDataEventsRegistrationSettings</CommonForm>
@@ -2549,7 +2554,6 @@
 			<CommonForm>VendorsAdvancesAndDebtsPickForm</CommonForm>
 			<CommonForm>VolumesFileArchivePathSelection</CommonForm>
 			<CommonForm>WriteCertificatePassword</CommonForm>
-			<CommonForm>PresentationsEditForm</CommonForm>
 			<Catalog>AccessGroups</Catalog>
 			<Catalog>AccessGroupsProfiles</Catalog>
 			<Catalog>AccrualAndDeductionKinds</Catalog>
@@ -2559,6 +2563,7 @@
 			<Catalog>AlcoholicProductsVendorLicenses</Catalog>
 			<Catalog>AutomaticDiscounts</Catalog>
 			<Catalog>BankAccounts</Catalog>
+			<Catalog>BankCharges</Catalog>
 			<Catalog>Banks</Catalog>
 			<Catalog>BulkMailAttachedFiles</Catalog>
 			<Catalog>BusinessActivities</Catalog>
@@ -2582,8 +2587,8 @@
 			<Catalog>CounterpartyContracts</Catalog>
 			<Catalog>CounterpartyContractsAttachedFiles</Catalog>
 			<Catalog>CounterpartyPriceKind</Catalog>
-			<Catalog>Currencies</Catalog>
 			<Catalog>CustomerInvoiceNoteAttachedFiles</Catalog>
+			<Catalog>Currencies</Catalog>
 			<Catalog>CustomerOrderAttachedFiles</Catalog>
 			<Catalog>CustomerOrderStates</Catalog>
 			<Catalog>DataAreasMessages</Catalog>
@@ -2663,8 +2668,8 @@
 			<Catalog>SuppliedAdditionalReportsAndDataProcessors</Catalog>
 			<Catalog>SuppliedData</Catalog>
 			<Catalog>SupplierInvoiceAttachedFiles</Catalog>
-			<Catalog>SupplierInvoiceForPaymentAttachedFiles</Catalog>
 			<Catalog>SupplierInvoiceNoteAttachedFiles</Catalog>
+			<Catalog>SupplierInvoiceForPaymentAttachedFiles</Catalog>
 			<Catalog>SuppliersProductsAndServices</Catalog>
 			<Catalog>SystemMessages</Catalog>
 			<Catalog>Tags</Catalog>
@@ -2793,15 +2798,18 @@
 			<Enum>CashCRSessionStatuses</Enum>
 			<Enum>CashCRTypes</Enum>
 			<Enum>CertificateIssueRequestState</Enum>
+			<Enum>ChargeTypes</Enum>
 			<Enum>CommissionFeeCalculationMethods</Enum>
 			<Enum>CompanyActivityKinds</Enum>
 			<Enum>ConnectionChannelTypes</Enum>
 			<Enum>ContactInformationTypes</Enum>
 			<Enum>ContractKinds</Enum>
-			<Enum>CostingBases</Enum>
 			<Enum>CounterpartiesCheckStates</Enum>
-			<Enum>CounterpartiesIdentificationMethods</Enum>
+			<Enum>ContractsWithCounterpartiesTemplatesParameters</Enum>
 			<Enum>CounterpartyExistenceStates</Enum>
+			<Enum>CostingBases</Enum>
+			<Enum>CounterpartiesIdentificationMethods</Enum>
+			<Enum>LegalEntityIndividual</Enum>
 			<Enum>CurrencyRateSetMethods</Enum>
 			<Enum>DataAreaStatuses</Enum>
 			<Enum>DataExchangeProblemTypes</Enum>
@@ -2860,11 +2868,10 @@
 			<Enum>InfobaseTypes</Enum>
 			<Enum>InfobaseUsageModes</Enum>
 			<Enum>InventoryMovementTypes</Enum>
+			<Enum>KPPIndicationVariants</Enum>
 			<Enum>InventoryReplenishmentMethods</Enum>
 			<Enum>InventoryValuationMethods</Enum>
 			<Enum>JobStates</Enum>
-			<Enum>KPPIndicationVariants</Enum>
-			<Enum>LegalEntityIndividual</Enum>
 			<Enum>LicenseKindsOnAlcoholicProducts</Enum>
 			<Enum>MagneticCardsTemplateFields</Enum>
 			<Enum>MonthOutputTypesInDocumentDate</Enum>
@@ -2897,7 +2904,6 @@
 			<Enum>OperationsAdministrationSecurityProfiles</Enum>
 			<Enum>OrderStatuses</Enum>
 			<Enum>PaperSizes</Enum>
-			<Enum>ContractsWithCounterpartiesTemplatesParameters</Enum>
 			<Enum>PaymentApprovalStatuses</Enum>
 			<Enum>PerformanceLevels</Enum>
 			<Enum>Periodicity</Enum>
@@ -2948,7 +2954,6 @@
 			<Enum>WorkScheduleFillingMethods</Enum>
 			<Enum>WorkScheduleTypes</Enum>
 			<Enum>YesNo</Enum>
-			<Enum>CurrencyQuotationType</Enum>
 			<Report>AccessRights</Report>
 			<Report>AccountsPayable</Report>
 			<Report>AccountsPayableAgingRegister</Report>
@@ -2962,6 +2967,7 @@
 			<Report>AvailabilityAnalysis</Report>
 			<Report>BalanceEstimation</Report>
 			<Report>BalanceSheet</Report>
+			<Report>BankCharges</Report>
 			<Report>CashAssets</Report>
 			<Report>CashAssetsForecast</Report>
 			<Report>CashFlow</Report>
@@ -3030,6 +3036,7 @@
 			<Report>SalesReportTORG29</Report>
 			<Report>SalesTargets</Report>
 			<Report>SegmentComposition</Report>
+			<Report>SettlementsOnOtherOperations</Report>
 			<Report>SheetByGoodsOnWarehousesInProductsAndServicesPrices</Report>
 			<Report>StaffList</Report>
 			<Report>StandardBOM</Report>
@@ -3056,6 +3063,7 @@
 			<DataProcessor>ClientBank</DataProcessor>
 			<DataProcessor>ConfigurationUpdate</DataProcessor>
 			<DataProcessor>Connection1CTaxcom</DataProcessor>
+			<DataProcessor>InputContactInformation</DataProcessor>
 			<DataProcessor>CounterpartyPriceLists</DataProcessor>
 			<DataProcessor>CurrencyRatesImportProcess</DataProcessor>
 			<DataProcessor>CurrentWorks</DataProcessor>
@@ -3112,7 +3120,6 @@
 			<DataProcessor>InfobaseUpdate</DataProcessor>
 			<DataProcessor>InformationCenter</DataProcessor>
 			<DataProcessor>InformationOnStart</DataProcessor>
-			<DataProcessor>InputContactInformation</DataProcessor>
 			<DataProcessor>InstructionOnUsageCounterpartiesCheck</DataProcessor>
 			<DataProcessor>InteractiveDataExchangeAssistant</DataProcessor>
 			<DataProcessor>InteractiveDataExchangeInModelServiceAssistant</DataProcessor>
@@ -3309,6 +3316,7 @@
 			<AccumulationRegister>AccrualsAndDeductions</AccumulationRegister>
 			<AccumulationRegister>AdvanceHolderPayments</AccumulationRegister>
 			<AccumulationRegister>AutomaticDiscountsApplied</AccumulationRegister>
+			<AccumulationRegister>BankCharges</AccumulationRegister>
 			<AccumulationRegister>CashAssets</AccumulationRegister>
 			<AccumulationRegister>CashAssetsForecast</AccumulationRegister>
 			<AccumulationRegister>CashInCashRegisters</AccumulationRegister>
@@ -3344,6 +3352,7 @@
 			<AccumulationRegister>Sales</AccumulationRegister>
 			<AccumulationRegister>SalesByDiscountCards</AccumulationRegister>
 			<AccumulationRegister>SalesTargets</AccumulationRegister>
+			<AccumulationRegister>SettlementsWithOtherCounterparties</AccumulationRegister>
 			<AccumulationRegister>TaxesSettlements</AccumulationRegister>
 			<AccumulationRegister>Timesheet</AccumulationRegister>
 			<AccumulationRegister>WorkOrders</AccumulationRegister>

@@ -137,7 +137,7 @@
 									<v8:content>Multiplicity</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Width>8</Width>
+							<Width>4</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<Wrap>false</Wrap>
 							<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
@@ -277,6 +277,12 @@
 						</CheckBoxField>
 						<CheckBoxField name="IncludeVATInPrice" id="23">
 							<DataPath>IncludeVATInPrice</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<Enabled>false</Enabled>
+							<ReadOnly>true</ReadOnly>
+							<SkipOnInput>true</SkipOnInput>
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
@@ -422,7 +428,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 			<FunctionalOptions>
 				<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
@@ -440,7 +451,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 			<FunctionalOptions>
 				<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
@@ -488,7 +504,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 				</Column>
 				<Column name="Multiplicity" id="3">
@@ -503,7 +524,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 				</Column>
 			</Columns>
@@ -520,7 +546,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="MultiplicityBeforeChange" id="25">
@@ -535,7 +566,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="DocumentDate" id="1">

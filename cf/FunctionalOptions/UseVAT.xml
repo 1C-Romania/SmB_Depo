@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+	<FunctionalOption uuid="47bf6a1f-7167-4466-a8a3-294263209c6c">
+		<Properties>
+			<Name>UseVAT</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use VAT</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать НДС</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<Location>Constant.FunctionalOptionUseVAT</Location>
+			<PrivilegedGetMode>true</PrivilegedGetMode>
+			<Content>
+				<xr:Object>Document.CustomerOrder.Attribute.VATTaxation</xr:Object>
+				<xr:Object>Document.CustomerOrder.Attribute.AmountIncludesVAT</xr:Object>
+				<xr:Object>Document.CustomerOrder.Attribute.IncludeVATInPrice</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Inventory.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Inventory.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.PaymentCalendar.Attribute.PayVATAmount</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Works.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.CustomerOrder.TabularSection.Works.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.CustomerInvoice.Attribute.VATTaxation</xr:Object>
+				<xr:Object>Document.CustomerInvoice.Attribute.IncludeVATInPrice</xr:Object>
+				<xr:Object>Document.CustomerInvoice.Attribute.AmountIncludesVAT</xr:Object>
+				<xr:Object>Document.CustomerInvoice.TabularSection.Inventory.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.CustomerInvoice.TabularSection.Inventory.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.InvoiceForPayment.Attribute.VATTaxation</xr:Object>
+				<xr:Object>Document.InvoiceForPayment.Attribute.AmountIncludesVAT</xr:Object>
+				<xr:Object>Document.InvoiceForPayment.TabularSection.Inventory.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.InvoiceForPayment.TabularSection.Inventory.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.InvoiceForPayment.TabularSection.PaymentCalendar.Attribute.PayVATAmount</xr:Object>
+				<xr:Object>Document.PaymentReceipt.Attribute.VATTaxation</xr:Object>
+				<xr:Object>Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.PaymentExpense.Attribute.VATTaxation</xr:Object>
+				<xr:Object>Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.PaymentOrder.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.PaymentOrder.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.CashPayment.Attribute.VATTaxation</xr:Object>
+				<xr:Object>Document.CashPayment.TabularSection.PaymentDetails.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.CashPayment.TabularSection.PaymentDetails.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.CashReceipt.Attribute.VATTaxation</xr:Object>
+				<xr:Object>Document.CashReceipt.TabularSection.PaymentDetails.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.CashReceipt.TabularSection.PaymentDetails.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.SupplierInvoice.Attribute.VATTaxation</xr:Object>
+				<xr:Object>Document.SupplierInvoice.Attribute.AmountIncludesVAT</xr:Object>
+				<xr:Object>Document.SupplierInvoice.Attribute.IncludeVATInPrice</xr:Object>
+				<xr:Object>Document.SupplierInvoice.TabularSection.Inventory.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.SupplierInvoice.TabularSection.Inventory.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.SupplierInvoice.TabularSection.Expenses.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.SupplierInvoice.TabularSection.Expenses.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.PurchaseOrder.Attribute.VATTaxation</xr:Object>
+				<xr:Object>Document.PurchaseOrder.Attribute.AmountIncludesVAT</xr:Object>
+				<xr:Object>Document.PurchaseOrder.Attribute.IncludeVATInPrice</xr:Object>
+				<xr:Object>Document.PurchaseOrder.TabularSection.Inventory.Attribute.VATRate</xr:Object>
+				<xr:Object>Document.PurchaseOrder.TabularSection.Inventory.Attribute.VATAmount</xr:Object>
+				<xr:Object>Document.PurchaseOrder.TabularSection.PaymentCalendar.Attribute.PayVATAmount</xr:Object>
+			</Content>
+		</Properties>
+	</FunctionalOption>
+</MetaDataObject>

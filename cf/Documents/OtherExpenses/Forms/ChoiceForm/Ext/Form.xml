@@ -130,6 +130,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Title>
 					<ContextMenu name="CounterpartyContextMenu" id="9"/>
 					<ExtendedTooltip name="CompanyExtendedTooltip" id="32"/>
@@ -148,14 +152,14 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Склад, на который приходуются запасы</v8:content>
+							<v8:content>Склад</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="StructuralUnitContextMenu" id="11"/>
 					<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="34"/>
 				</LabelField>
 				<LabelField name="Correspondence" id="12">
-					<DataPath>1/10</DataPath>
+					<DataPath>List.Correspondence</DataPath>
 					<ContextMenu name="CorrespondenceContextMenu" id="13"/>
 					<ExtendedTooltip name="CorrespondenceExtendedTooltip" id="35"/>
 				</LabelField>
@@ -171,7 +175,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Примечание</v8:content>
+							<v8:content>Комментарий</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CommentContextMenu" id="15"/>

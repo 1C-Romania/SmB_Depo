@@ -248,6 +248,9 @@
 						</InputField>
 						<InputField name="AdvancesListMultiplicity" id="166">
 							<DataPath>AdvancesList.Multiplicity</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
 							<EditMode>EnterOnInput</EditMode>
 							<Width>9</Width>
 							<ContextMenu name="AdvancesListMultiplicityContextMenu" id="167"/>
@@ -435,6 +438,9 @@
 						</InputField>
 						<InputField name="PrepaymentMultiplicity" id="113">
 							<DataPath>Prepayment.Multiplicity</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
 							<Width>9</Width>
 							<Wrap>false</Wrap>
 							<AutoMarkIncomplete>true</AutoMarkIncomplete>
@@ -629,7 +635,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
@@ -647,7 +658,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
@@ -725,7 +741,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="RepetitionNationalCurrency" id="13">
@@ -740,7 +761,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="ExchangeRate" id="14">
@@ -755,7 +781,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="Multiplicity" id="15">
@@ -770,7 +801,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="DocumentCurrency" id="16">
@@ -800,7 +836,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="AccountingCurrencyMultiplicity" id="19">
@@ -815,7 +856,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="AccountingCurrency" id="20">
@@ -871,7 +917,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Контрагенты</v8:content>
+					<v8:content>Контрагент</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1117,7 +1163,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>
@@ -1135,7 +1186,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<FunctionalOptions>
 						<Item>FunctionalOption.CurrencyTransactionsAccounting</Item>

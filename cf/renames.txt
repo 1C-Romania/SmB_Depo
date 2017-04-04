@@ -7,6 +7,7 @@ AccumulationRegisters\AccountsReceivable.xml-->AccumulationRegisters\AccountsRec
 AccumulationRegisters\AccrualsAndDeductions.xml-->AccumulationRegisters\AccrualsAndDeductions.xml
 AccumulationRegisters\AdvanceHolderPayments.xml-->AccumulationRegisters\AdvanceHolderPayments.xml
 AccumulationRegisters\AutomaticDiscountsApplied.xml-->AccumulationRegisters\AutomaticDiscountsApplied.xml
+AccumulationRegisters\BankCharges.xml-->AccumulationRegisters\BankCharges.xml
 AccumulationRegisters\CashAssets.xml-->AccumulationRegisters\CashAssets.xml
 AccumulationRegisters\CashAssetsForecast.xml-->AccumulationRegisters\CashAssetsForecast.xml
 AccumulationRegisters\CashInCashRegisters.xml-->AccumulationRegisters\CashInCashRegisters.xml
@@ -42,6 +43,7 @@ AccumulationRegisters\RetailAmountAccounting.xml-->AccumulationRegisters\RetailA
 AccumulationRegisters\Sales.xml-->AccumulationRegisters\Sales.xml
 AccumulationRegisters\SalesByDiscountCards.xml-->AccumulationRegisters\SalesByDiscountCards.xml
 AccumulationRegisters\SalesTargets.xml-->AccumulationRegisters\SalesTargets.xml
+AccumulationRegisters\SettlementsWithOtherCounterparties.xml-->AccumulationRegisters\SettlementsWithOtherCounterparties.xml
 AccumulationRegisters\TaxesSettlements.xml-->AccumulationRegisters\TaxesSettlements.xml
 AccumulationRegisters\Timesheet.xml-->AccumulationRegisters\Timesheet.xml
 AccumulationRegisters\WorkOrders.xml-->AccumulationRegisters\WorkOrders.xml
@@ -104,6 +106,7 @@ Catalogs\AlcoholicProductsKinds.xml-->Catalogs\AlcoholicProductsKinds.xml
 Catalogs\AlcoholicProductsVendorLicenses.xml-->Catalogs\AlcoholicProductsVendorLicenses.xml
 Catalogs\AutomaticDiscounts.xml-->Catalogs\AutomaticDiscounts.xml
 Catalogs\BankAccounts.xml-->Catalogs\BankAccounts.xml
+Catalogs\BankCharges.xml-->Catalogs\BankCharges.xml
 Catalogs\Banks.xml-->Catalogs\Banks.xml
 Catalogs\BulkMailAttachedFiles.xml-->Catalogs\BulkMailAttachedFiles.xml
 Catalogs\BusinessActivities.xml-->Catalogs\BusinessActivities.xml
@@ -400,6 +403,17 @@ Catalogs\BankAccounts\Forms\ListForm\Ext\Form.xml-->Catalogs\BankAccounts\Forms\
 Catalogs\BankAccounts\Forms\ListForm\Ext\Form\Module.bsl-->Catalogs\BankAccounts\Forms\ListForm\Ext\Form\Module.bsl
 Catalogs\BankAccounts\Forms\ListFormCompaniesBankAccounts\Ext\Form.xml-->Catalogs\BankAccounts\Forms\ListFormCompaniesBankAccounts\Ext\Form.xml
 Catalogs\BankAccounts\Forms\ListFormCompaniesBankAccounts\Ext\Form\Module.bsl-->Catalogs\BankAccounts\Forms\ListFormCompaniesBankAccounts\Ext\Form\Module.bsl
+Catalogs\BankCharges\Commands\OpenAccountsEditingForm\Ext\CommandModule.bsl-->Catalogs\BankCharges\Commands\OpenAccountsEditingForm\Ext\CommandModule.bsl
+Catalogs\BankCharges\Forms\ChoiceForm.xml-->Catalogs\BankCharges\Forms\ChoiceForm.xml
+Catalogs\BankCharges\Forms\GLAccountsEditForm.xml-->Catalogs\BankCharges\Forms\GLAccountsEditForm.xml
+Catalogs\BankCharges\Forms\ItemForm.xml-->Catalogs\BankCharges\Forms\ItemForm.xml
+Catalogs\BankCharges\Forms\ListForm.xml-->Catalogs\BankCharges\Forms\ListForm.xml
+Catalogs\BankCharges\Forms\ChoiceForm\Ext\Form.xml-->Catalogs\BankCharges\Forms\ChoiceForm\Ext\Form.xml
+Catalogs\BankCharges\Forms\GLAccountsEditForm\Ext\Form.xml-->Catalogs\BankCharges\Forms\GLAccountsEditForm\Ext\Form.xml
+Catalogs\BankCharges\Forms\GLAccountsEditForm\Ext\Form\Module.bsl-->Catalogs\BankCharges\Forms\GLAccountsEditForm\Ext\Form\Module.bsl
+Catalogs\BankCharges\Forms\ItemForm\Ext\Form.xml-->Catalogs\BankCharges\Forms\ItemForm\Ext\Form.xml
+Catalogs\BankCharges\Forms\ItemForm\Ext\Form\Module.bsl-->Catalogs\BankCharges\Forms\ItemForm\Ext\Form\Module.bsl
+Catalogs\BankCharges\Forms\ListForm\Ext\Form.xml-->Catalogs\BankCharges\Forms\ListForm\Ext\Form.xml
 Catalogs\Banks\Ext\Help.xml-->Catalogs\Banks\Ext\Help.xml
 Catalogs\Banks\Ext\ManagerModule.bsl-->Catalogs\Banks\Ext\ManagerModule.bsl
 Catalogs\Banks\Ext\ObjectModule.bsl-->Catalogs\Banks\Ext\ObjectModule.bsl
@@ -2462,7 +2476,6 @@ CommonCommands\OpenMutualSettlementsReport.xml-->CommonCommands\OpenMutualSettle
 CommonCommands\OpenObjectConversionRules.xml-->CommonCommands\OpenObjectConversionRules.xml
 CommonCommands\OpenObjectRegistrationRules.xml-->CommonCommands\OpenObjectRegistrationRules.xml
 CommonCommands\OpenPeripherals.xml-->CommonCommands\OpenPeripherals.xml
-CommonCommands\OpenPresentationsEditForm.xml-->CommonCommands\OpenPresentationsEditForm.xml
 CommonCommands\OpenRIFunctionsMenu.xml-->CommonCommands\OpenRIFunctionsMenu.xml
 CommonCommands\OpenServiceFunctionsMenu.xml-->CommonCommands\OpenServiceFunctionsMenu.xml
 CommonCommands\OpenUFP.xml-->CommonCommands\OpenUFP.xml
@@ -2477,8 +2490,8 @@ CommonCommands\ReportByMovements.xml-->CommonCommands\ReportByMovements.xml
 CommonCommands\ReportsPanelAdministration.xml-->CommonCommands\ReportsPanelAdministration.xml
 CommonCommands\ReportsPanelSetupAndAdministration.xml-->CommonCommands\ReportsPanelSetupAndAdministration.xml
 CommonCommands\ReportsPanel_Analysis.xml-->CommonCommands\ReportsPanel_Analysis.xml
-CommonCommands\ReportsPanel_CashAssets.xml-->CommonCommands\ReportsPanel_CashAssets.xml
 CommonCommands\ReportsPanel_Enterprise.xml-->CommonCommands\ReportsPanel_Enterprise.xml
+CommonCommands\ReportsPanel_Finances.xml-->CommonCommands\ReportsPanel_Finances.xml
 CommonCommands\ReportsPanel_InventoryAndPurchasing.xml-->CommonCommands\ReportsPanel_InventoryAndPurchasing.xml
 CommonCommands\ReportsPanel_KittingAndProduction.xml-->CommonCommands\ReportsPanel_KittingAndProduction.xml
 CommonCommands\ReportsPanel_MarketingAndSales.xml-->CommonCommands\ReportsPanel_MarketingAndSales.xml
@@ -2617,7 +2630,6 @@ CommonCommands\OpenMutualSettlementsReport\Ext\CommandModule.bsl-->CommonCommand
 CommonCommands\OpenObjectConversionRules\Ext\CommandModule.bsl-->CommonCommands\OpenObjectConversionRules\Ext\CommandModule.bsl
 CommonCommands\OpenObjectRegistrationRules\Ext\CommandModule.bsl-->CommonCommands\OpenObjectRegistrationRules\Ext\CommandModule.bsl
 CommonCommands\OpenPeripherals\Ext\CommandModule.bsl-->CommonCommands\OpenPeripherals\Ext\CommandModule.bsl
-CommonCommands\OpenPresentationsEditForm\Ext\CommandModule.bsl-->CommonCommands\OpenPresentationsEditForm\Ext\CommandModule.bsl
 CommonCommands\OpenRIFunctionsMenu\Ext\CommandModule.bsl-->CommonCommands\OpenRIFunctionsMenu\Ext\CommandModule.bsl
 CommonCommands\OpenServiceFunctionsMenu\Ext\CommandModule.bsl-->CommonCommands\OpenServiceFunctionsMenu\Ext\CommandModule.bsl
 CommonCommands\OpenUFP\Ext\CommandModule.bsl-->CommonCommands\OpenUFP\Ext\CommandModule.bsl
@@ -2632,8 +2644,8 @@ CommonCommands\ReportByMovements\Ext\CommandModule.bsl-->CommonCommands\ReportBy
 CommonCommands\ReportsPanelAdministration\Ext\CommandModule.bsl-->CommonCommands\ReportsPanelAdministration\Ext\CommandModule.bsl
 CommonCommands\ReportsPanelSetupAndAdministration\Ext\CommandModule.bsl-->CommonCommands\ReportsPanelSetupAndAdministration\Ext\CommandModule.bsl
 CommonCommands\ReportsPanel_Analysis\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_Analysis\Ext\CommandModule.bsl
-CommonCommands\ReportsPanel_CashAssets\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_CashAssets\Ext\CommandModule.bsl
 CommonCommands\ReportsPanel_Enterprise\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_Enterprise\Ext\CommandModule.bsl
+CommonCommands\ReportsPanel_Finances\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_Finances\Ext\CommandModule.bsl
 CommonCommands\ReportsPanel_InventoryAndPurchasing\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_InventoryAndPurchasing\Ext\CommandModule.bsl
 CommonCommands\ReportsPanel_KittingAndProduction\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_KittingAndProduction\Ext\CommandModule.bsl
 CommonCommands\ReportsPanel_MarketingAndSales\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_MarketingAndSales\Ext\CommandModule.bsl
@@ -2728,7 +2740,6 @@ CommonForms\PeripheralsFormSetting.xml-->CommonForms\PeripheralsFormSetting.xml
 CommonForms\PersonalSettings.xml-->CommonForms\PersonalSettings.xml
 CommonForms\PickForm.xml-->CommonForms\PickForm.xml
 CommonForms\PickupCCDNumbers.xml-->CommonForms\PickupCCDNumbers.xml
-CommonForms\PresentationsEditForm.xml-->CommonForms\PresentationsEditForm.xml
 CommonForms\PricesAndCurrencyForm.xml-->CommonForms\PricesAndCurrencyForm.xml
 CommonForms\PrintFormSaving.xml-->CommonForms\PrintFormSaving.xml
 CommonForms\PrintingDocuments.xml-->CommonForms\PrintingDocuments.xml
@@ -3011,8 +3022,6 @@ CommonForms\PickForm\Ext\Form\Module.bsl-->CommonForms\PickForm\Ext\Form\Module.
 CommonForms\PickForm\Ext\Help\en.html-->CommonForms\PickForm\Ext\Help\en.html
 CommonForms\PickupCCDNumbers\Ext\Form.xml-->CommonForms\PickupCCDNumbers\Ext\Form.xml
 CommonForms\PickupCCDNumbers\Ext\Form\Module.bsl-->CommonForms\PickupCCDNumbers\Ext\Form\Module.bsl
-CommonForms\PresentationsEditForm\Ext\Form.xml-->CommonForms\PresentationsEditForm\Ext\Form.xml
-CommonForms\PresentationsEditForm\Ext\Form\Module.bsl-->CommonForms\PresentationsEditForm\Ext\Form\Module.bsl
 CommonForms\PricesAndCurrencyForm\Ext\Form.xml-->CommonForms\PricesAndCurrencyForm\Ext\Form.xml
 CommonForms\PricesAndCurrencyForm\Ext\Help.xml-->CommonForms\PricesAndCurrencyForm\Ext\Help.xml
 CommonForms\PricesAndCurrencyForm\Ext\Form\Module.bsl-->CommonForms\PricesAndCurrencyForm\Ext\Form\Module.bsl
@@ -3453,6 +3462,8 @@ CommonModules\MessagesSaaSOverridable.xml-->CommonModules\MessagesSaaSOverridabl
 CommonModules\MessagesSaaSReUse.xml-->CommonModules\MessagesSaaSReUse.xml
 CommonModules\MessagesSuppliedDataMessageHandler.xml-->CommonModules\MessagesSuppliedDataMessageHandler.xml
 CommonModules\MobileApplicationExchangeGeneral.xml-->CommonModules\MobileApplicationExchangeGeneral.xml
+CommonModules\ObjectFillingSB.xml-->CommonModules\ObjectFillingSB.xml
+CommonModules\ObjectFillingSBOverridable.xml-->CommonModules\ObjectFillingSBOverridable.xml
 CommonModules\ObjectPrefixationClientServer.xml-->CommonModules\ObjectPrefixationClientServer.xml
 CommonModules\ObjectPrefixationClientServerOverridable.xml-->CommonModules\ObjectPrefixationClientServerOverridable.xml
 CommonModules\ObjectPrefixationEvents.xml-->CommonModules\ObjectPrefixationEvents.xml
@@ -3638,6 +3649,8 @@ CommonModules\WorkWithCurrencyRatesClientServer.xml-->CommonModules\WorkWithCurr
 CommonModules\WorkWithCurrencyRatesGlobal.xml-->CommonModules\WorkWithCurrencyRatesGlobal.xml
 CommonModules\WorkWithCurrencyRatesOverridable.xml-->CommonModules\WorkWithCurrencyRatesOverridable.xml
 CommonModules\WorkWithCurrencyRatesServerCall.xml-->CommonModules\WorkWithCurrencyRatesServerCall.xml
+CommonModules\WorkWithProductsClientServer.xml-->CommonModules\WorkWithProductsClientServer.xml
+CommonModules\WorkWithProductsServer.xml-->CommonModules\WorkWithProductsServer.xml
 CommonModules\WorkWithScannerClient.xml-->CommonModules\WorkWithScannerClient.xml
 CommonModules\AccessManagement\Ext\Module.bsl-->CommonModules\AccessManagement\Ext\Module.bsl
 CommonModules\AccessManagementOverridable\Ext\Module.bsl-->CommonModules\AccessManagementOverridable\Ext\Module.bsl
@@ -3971,6 +3984,8 @@ CommonModules\MessagesSaaSOverridable\Ext\Module.bsl-->CommonModules\MessagesSaa
 CommonModules\MessagesSaaSReUse\Ext\Module.bsl-->CommonModules\MessagesSaaSReUse\Ext\Module.bsl
 CommonModules\MessagesSuppliedDataMessageHandler\Ext\Module.bsl-->CommonModules\MessagesSuppliedDataMessageHandler\Ext\Module.bsl
 CommonModules\MobileApplicationExchangeGeneral\Ext\Module.bsl-->CommonModules\MobileApplicationExchangeGeneral\Ext\Module.bsl
+CommonModules\ObjectFillingSB\Ext\Module.bsl-->CommonModules\ObjectFillingSB\Ext\Module.bsl
+CommonModules\ObjectFillingSBOverridable\Ext\Module.bsl-->CommonModules\ObjectFillingSBOverridable\Ext\Module.bsl
 CommonModules\ObjectPrefixationClientServer\Ext\Module.bsl-->CommonModules\ObjectPrefixationClientServer\Ext\Module.bsl
 CommonModules\ObjectPrefixationClientServerOverridable\Ext\Module.bsl-->CommonModules\ObjectPrefixationClientServerOverridable\Ext\Module.bsl
 CommonModules\ObjectPrefixationEvents\Ext\Module.bsl-->CommonModules\ObjectPrefixationEvents\Ext\Module.bsl
@@ -4156,6 +4171,8 @@ CommonModules\WorkWithCurrencyRatesClientServer\Ext\Module.bsl-->CommonModules\W
 CommonModules\WorkWithCurrencyRatesGlobal\Ext\Module.bsl-->CommonModules\WorkWithCurrencyRatesGlobal\Ext\Module.bsl
 CommonModules\WorkWithCurrencyRatesOverridable\Ext\Module.bsl-->CommonModules\WorkWithCurrencyRatesOverridable\Ext\Module.bsl
 CommonModules\WorkWithCurrencyRatesServerCall\Ext\Module.bsl-->CommonModules\WorkWithCurrencyRatesServerCall\Ext\Module.bsl
+CommonModules\WorkWithProductsClientServer\Ext\Module.bsl-->CommonModules\WorkWithProductsClientServer\Ext\Module.bsl
+CommonModules\WorkWithProductsServer\Ext\Module.bsl-->CommonModules\WorkWithProductsServer\Ext\Module.bsl
 CommonModules\WorkWithScannerClient\Ext\Module.bsl-->CommonModules\WorkWithScannerClient\Ext\Module.bsl
 CommonPictures\AccessIconsToReportSettings.xml-->CommonPictures\AccessIconsToReportSettings.xml
 CommonPictures\AccountControlResults.xml-->CommonPictures\AccountControlResults.xml
@@ -4292,6 +4309,7 @@ CommonPictures\FileIconCollection.xml-->CommonPictures\FileIconCollection.xml
 CommonPictures\FillByBasis.xml-->CommonPictures\FillByBasis.xml
 CommonPictures\FilledField.xml-->CommonPictures\FilledField.xml
 CommonPictures\FillForm.xml-->CommonPictures\FillForm.xml
+CommonPictures\FinancesSubsystem.xml-->CommonPictures\FinancesSubsystem.xml
 CommonPictures\FinishTemplateEditing.xml-->CommonPictures\FinishTemplateEditing.xml
 CommonPictures\Flag.xml-->CommonPictures\Flag.xml
 CommonPictures\Folder.xml-->CommonPictures\Folder.xml
@@ -4302,7 +4320,6 @@ CommonPictures\ForwardEmail.xml-->CommonPictures\ForwardEmail.xml
 CommonPictures\FullJustification.xml-->CommonPictures\FullJustification.xml
 CommonPictures\FullTextSearchBack.xml-->CommonPictures\FullTextSearchBack.xml
 CommonPictures\FullTextSearchNext.xml-->CommonPictures\FullTextSearchNext.xml
-CommonPictures\FundsSection.xml-->CommonPictures\FundsSection.xml
 CommonPictures\GanttDiagramPicture.xml-->CommonPictures\GanttDiagramPicture.xml
 CommonPictures\Gear.xml-->CommonPictures\Gear.xml
 CommonPictures\GetWeight.xml-->CommonPictures\GetWeight.xml
@@ -4842,6 +4859,8 @@ CommonPictures\FilledField\Ext\Picture.xml-->CommonPictures\FilledField\Ext\Pict
 CommonPictures\FilledField\Ext\Picture\Picture.png-->CommonPictures\FilledField\Ext\Picture\Picture.png
 CommonPictures\FillForm\Ext\Picture.xml-->CommonPictures\FillForm\Ext\Picture.xml
 CommonPictures\FillForm\Ext\Picture\Picture.png-->CommonPictures\FillForm\Ext\Picture\Picture.png
+CommonPictures\FinancesSubsystem\Ext\Picture.xml-->CommonPictures\FinancesSubsystem\Ext\Picture.xml
+CommonPictures\FinancesSubsystem\Ext\Picture\Picture.png-->CommonPictures\FinancesSubsystem\Ext\Picture\Picture.png
 CommonPictures\FinishTemplateEditing\Ext\Picture.xml-->CommonPictures\FinishTemplateEditing\Ext\Picture.xml
 CommonPictures\FinishTemplateEditing\Ext\Picture\Picture.png-->CommonPictures\FinishTemplateEditing\Ext\Picture\Picture.png
 CommonPictures\Flag\Ext\Picture.xml-->CommonPictures\Flag\Ext\Picture.xml
@@ -4862,8 +4881,6 @@ CommonPictures\FullTextSearchBack\Ext\Picture.xml-->CommonPictures\FullTextSearc
 CommonPictures\FullTextSearchBack\Ext\Picture\Picture.png-->CommonPictures\FullTextSearchBack\Ext\Picture\Picture.png
 CommonPictures\FullTextSearchNext\Ext\Picture.xml-->CommonPictures\FullTextSearchNext\Ext\Picture.xml
 CommonPictures\FullTextSearchNext\Ext\Picture\Picture.png-->CommonPictures\FullTextSearchNext\Ext\Picture\Picture.png
-CommonPictures\FundsSection\Ext\Picture.xml-->CommonPictures\FundsSection\Ext\Picture.xml
-CommonPictures\FundsSection\Ext\Picture\Picture.png-->CommonPictures\FundsSection\Ext\Picture\Picture.png
 CommonPictures\GanttDiagramPicture\Ext\Picture.xml-->CommonPictures\GanttDiagramPicture\Ext\Picture.xml
 CommonPictures\GanttDiagramPicture\Ext\Picture\Picture.png-->CommonPictures\GanttDiagramPicture\Ext\Picture\Picture.png
 CommonPictures\Gear\Ext\Picture.xml-->CommonPictures\Gear\Ext\Picture.xml
@@ -5460,7 +5477,6 @@ Constants\ControlBalancesDuringCreationCRReceipts.xml-->Constants\ControlBalance
 Constants\ControlBalancesOnPosting.xml-->Constants\ControlBalancesOnPosting.xml
 Constants\CopyDataAreasFromPrototype.xml-->Constants\CopyDataAreasFromPrototype.xml
 Constants\CreateDigitalSignaturesAtServer.xml-->Constants\CreateDigitalSignaturesAtServer.xml
-Constants\CurrencyQuotationType.xml-->Constants\CurrencyQuotationType.xml
 Constants\CustomerInvoiceNote1137UsageBegin.xml-->Constants\CustomerInvoiceNote1137UsageBegin.xml
 Constants\CustomerOrdersCompletedStatus.xml-->Constants\CustomerOrdersCompletedStatus.xml
 Constants\CustomerOrdersInProgressStatus.xml-->Constants\CustomerOrdersInProgressStatus.xml
@@ -5537,6 +5553,7 @@ Constants\FunctionalOptionTransferGoodsOnCommission.xml-->Constants\FunctionalOp
 Constants\FunctionalOptionTransferInventoryOnSafeCustody.xml-->Constants\FunctionalOptionTransferInventoryOnSafeCustody.xml
 Constants\FunctionalOptionTransferRawMaterialsForProcessing.xml-->Constants\FunctionalOptionTransferRawMaterialsForProcessing.xml
 Constants\FunctionalOptionUseAutomaticDiscountsMarkups.xml-->Constants\FunctionalOptionUseAutomaticDiscountsMarkups.xml
+Constants\FunctionalOptionUseBankCharges.xml-->Constants\FunctionalOptionUseBankCharges.xml
 Constants\FunctionalOptionUseBatches.xml-->Constants\FunctionalOptionUseBatches.xml
 Constants\FunctionalOptionUseBudgeting.xml-->Constants\FunctionalOptionUseBudgeting.xml
 Constants\FunctionalOptionUseCharacteristics.xml-->Constants\FunctionalOptionUseCharacteristics.xml
@@ -5549,7 +5566,9 @@ Constants\FunctionalOptionUsePeripherals.xml-->Constants\FunctionalOptionUsePeri
 Constants\FunctionalOptionUseSubsystemPayroll.xml-->Constants\FunctionalOptionUseSubsystemPayroll.xml
 Constants\FunctionalOptionUseSubsystemProduction.xml-->Constants\FunctionalOptionUseSubsystemProduction.xml
 Constants\FunctionalOptionUseTechOperations.xml-->Constants\FunctionalOptionUseTechOperations.xml
+Constants\FunctionalOptionUseVAT.xml-->Constants\FunctionalOptionUseVAT.xml
 Constants\FunctionalOptionUseWorkSubsystem.xml-->Constants\FunctionalOptionUseWorkSubsystem.xml
+Constants\HomeCountry.xml-->Constants\HomeCountry.xml
 Constants\ImportDataExchangeMessage.xml-->Constants\ImportDataExchangeMessage.xml
 Constants\InfobaseAdministrationParameters.xml-->Constants\InfobaseAdministrationParameters.xml
 Constants\InfobaseIdentifier.xml-->Constants\InfobaseIdentifier.xml
@@ -7542,10 +7561,8 @@ DataProcessors\UserWorkBlocking\Forms\Form\Ext\Form.xml-->DataProcessors\UserWor
 DataProcessors\UserWorkBlocking\Forms\Form\Ext\Form\Module.bsl-->DataProcessors\UserWorkBlocking\Forms\Form\Ext\Form\Module.bsl
 DataProcessors\XDTOObjectsConversion\Ext\ObjectModule.bsl-->DataProcessors\XDTOObjectsConversion\Ext\ObjectModule.bsl
 DefinedTypes\AccessValue.xml-->DefinedTypes\AccessValue.xml
-DefinedTypes\ExchangeRate.xml-->DefinedTypes\ExchangeRate.xml
 DefinedTypes\ExternalUser.xml-->DefinedTypes\ExternalUser.xml
 DefinedTypes\FilesOwner.xml-->DefinedTypes\FilesOwner.xml
-DefinedTypes\Multiplicity.xml-->DefinedTypes\Multiplicity.xml
 DefinedTypes\RightSettingsOwner.xml-->DefinedTypes\RightSettingsOwner.xml
 DefinedTypes\SafeMode.xml-->DefinedTypes\SafeMode.xml
 DocumentJournals\BankDocuments.xml-->DocumentJournals\BankDocuments.xml
@@ -7833,6 +7850,8 @@ Documents\CashPayment\Forms\DocumentForm\Ext\Form.xml-->Documents\CashPayment\Fo
 Documents\CashPayment\Forms\DocumentForm\Ext\Form\Module.bsl-->Documents\CashPayment\Forms\DocumentForm\Ext\Form\Module.bsl
 Documents\CashPayment\Forms\ListForm\Ext\Form.xml-->Documents\CashPayment\Forms\ListForm\Ext\Form.xml
 Documents\CashPayment\Forms\ListForm\Ext\Form\Module.bsl-->Documents\CashPayment\Forms\ListForm\Ext\Form\Module.bsl
+Documents\CashPayment\Templates\PF_MXL_CashExpenseVoucher.xml-->Documents\CashPayment\Templates\PF_MXL_CashExpenseVoucher.xml
+Documents\CashPayment\Templates\PF_MXL_CashExpenseVoucher\Ext\Template.xml-->Documents\CashPayment\Templates\PF_MXL_CashExpenseVoucher\Ext\Template.xml
 Documents\CashReceipt\Ext\Help.xml-->Documents\CashReceipt\Ext\Help.xml
 Documents\CashReceipt\Ext\ManagerModule.bsl-->Documents\CashReceipt\Ext\ManagerModule.bsl
 Documents\CashReceipt\Ext\ObjectModule.bsl-->Documents\CashReceipt\Ext\ObjectModule.bsl
@@ -7846,6 +7865,8 @@ Documents\CashReceipt\Forms\DocumentForm\Ext\Form.xml-->Documents\CashReceipt\Fo
 Documents\CashReceipt\Forms\DocumentForm\Ext\Form\Module.bsl-->Documents\CashReceipt\Forms\DocumentForm\Ext\Form\Module.bsl
 Documents\CashReceipt\Forms\ListForm\Ext\Form.xml-->Documents\CashReceipt\Forms\ListForm\Ext\Form.xml
 Documents\CashReceipt\Forms\ListForm\Ext\Form\Module.bsl-->Documents\CashReceipt\Forms\ListForm\Ext\Form\Module.bsl
+Documents\CashReceipt\Templates\PF_MXL_CashReceiptVoucher.xml-->Documents\CashReceipt\Templates\PF_MXL_CashReceiptVoucher.xml
+Documents\CashReceipt\Templates\PF_MXL_CashReceiptVoucher\Ext\Template.xml-->Documents\CashReceipt\Templates\PF_MXL_CashReceiptVoucher\Ext\Template.xml
 Documents\CashTransfer\Ext\Help.xml-->Documents\CashTransfer\Ext\Help.xml
 Documents\CashTransfer\Ext\ManagerModule.bsl-->Documents\CashTransfer\Ext\ManagerModule.bsl
 Documents\CashTransfer\Ext\ObjectModule.bsl-->Documents\CashTransfer\Ext\ObjectModule.bsl
@@ -8924,6 +8945,7 @@ Enums\CashAssetTypes.xml-->Enums\CashAssetTypes.xml
 Enums\CashCRSessionStatuses.xml-->Enums\CashCRSessionStatuses.xml
 Enums\CashCRTypes.xml-->Enums\CashCRTypes.xml
 Enums\CertificateIssueRequestState.xml-->Enums\CertificateIssueRequestState.xml
+Enums\ChargeTypes.xml-->Enums\ChargeTypes.xml
 Enums\CommissionFeeCalculationMethods.xml-->Enums\CommissionFeeCalculationMethods.xml
 Enums\CompanyActivityKinds.xml-->Enums\CompanyActivityKinds.xml
 Enums\ConnectionChannelTypes.xml-->Enums\ConnectionChannelTypes.xml
@@ -8934,7 +8956,6 @@ Enums\CostingBases.xml-->Enums\CostingBases.xml
 Enums\CounterpartiesCheckStates.xml-->Enums\CounterpartiesCheckStates.xml
 Enums\CounterpartiesIdentificationMethods.xml-->Enums\CounterpartiesIdentificationMethods.xml
 Enums\CounterpartyExistenceStates.xml-->Enums\CounterpartyExistenceStates.xml
-Enums\CurrencyQuotationType.xml-->Enums\CurrencyQuotationType.xml
 Enums\CurrencyRateSetMethods.xml-->Enums\CurrencyRateSetMethods.xml
 Enums\DataAreaStatuses.xml-->Enums\DataAreaStatuses.xml
 Enums\DataExchangeProblemTypes.xml-->Enums\DataExchangeProblemTypes.xml
@@ -9448,6 +9469,7 @@ FunctionalOptions\UseAdditionalPrintForms.xml-->FunctionalOptions\UseAdditionalP
 FunctionalOptions\UseAdditionalReports.xml-->FunctionalOptions\UseAdditionalReports.xml
 FunctionalOptions\UseAdditionalReportsAndDataProcessors.xml-->FunctionalOptions\UseAdditionalReportsAndDataProcessors.xml
 FunctionalOptions\UseAutomaticDiscountsMarkups.xml-->FunctionalOptions\UseAutomaticDiscountsMarkups.xml
+FunctionalOptions\UseBankCharges.xml-->FunctionalOptions\UseBankCharges.xml
 FunctionalOptions\UseBatches.xml-->FunctionalOptions\UseBatches.xml
 FunctionalOptions\UseBudgeting.xml-->FunctionalOptions\UseBudgeting.xml
 FunctionalOptions\UseCharacteristics.xml-->FunctionalOptions\UseCharacteristics.xml
@@ -9486,6 +9508,7 @@ FunctionalOptions\UseSubsystemProduction.xml-->FunctionalOptions\UseSubsystemPro
 FunctionalOptions\UseTechOperations.xml-->FunctionalOptions\UseTechOperations.xml
 FunctionalOptions\UseUserReminders.xml-->FunctionalOptions\UseUserReminders.xml
 FunctionalOptions\UseUsersGroups.xml-->FunctionalOptions\UseUsersGroups.xml
+FunctionalOptions\UseVAT.xml-->FunctionalOptions\UseVAT.xml
 FunctionalOptions\UseWorkSubsystem.xml-->FunctionalOptions\UseWorkSubsystem.xml
 FunctionalOptions\VerifyDigitalSignaturesAtServer.xml-->FunctionalOptions\VerifyDigitalSignaturesAtServer.xml
 FunctionalOptions\WorkInLocalMode.xml-->FunctionalOptions\WorkInLocalMode.xml
@@ -9771,10 +9794,7 @@ InformationRegisters\CounterpartyProductsAndServicesPrices\Forms\RecordForm\Ext\
 InformationRegisters\CurrencyRates\Ext\Help.xml-->InformationRegisters\CurrencyRates\Ext\Help.xml
 InformationRegisters\CurrencyRates\Ext\RecordSetModule.bsl-->InformationRegisters\CurrencyRates\Ext\RecordSetModule.bsl
 InformationRegisters\CurrencyRates\Ext\Help\en.html-->InformationRegisters\CurrencyRates\Ext\Help\en.html
-InformationRegisters\CurrencyRates\Forms\ListForm.xml-->InformationRegisters\CurrencyRates\Forms\ListForm.xml
 InformationRegisters\CurrencyRates\Forms\RecordForm.xml-->InformationRegisters\CurrencyRates\Forms\RecordForm.xml
-InformationRegisters\CurrencyRates\Forms\ListForm\Ext\Form.xml-->InformationRegisters\CurrencyRates\Forms\ListForm\Ext\Form.xml
-InformationRegisters\CurrencyRates\Forms\ListForm\Ext\Form\Module.bsl-->InformationRegisters\CurrencyRates\Forms\ListForm\Ext\Form\Module.bsl
 InformationRegisters\CurrencyRates\Forms\RecordForm\Ext\Form.xml-->InformationRegisters\CurrencyRates\Forms\RecordForm\Ext\Form.xml
 InformationRegisters\CurrencyRates\Forms\RecordForm\Ext\Form\Module.bsl-->InformationRegisters\CurrencyRates\Forms\RecordForm\Ext\Form\Module.bsl
 InformationRegisters\DataAreaDataExchangeStatus\Ext\ManagerModule.bsl-->InformationRegisters\DataAreaDataExchangeStatus\Ext\ManagerModule.bsl
@@ -10228,6 +10248,7 @@ Reports\AutomaticDiscounts.xml-->Reports\AutomaticDiscounts.xml
 Reports\AvailabilityAnalysis.xml-->Reports\AvailabilityAnalysis.xml
 Reports\BalanceEstimation.xml-->Reports\BalanceEstimation.xml
 Reports\BalanceSheet.xml-->Reports\BalanceSheet.xml
+Reports\BankCharges.xml-->Reports\BankCharges.xml
 Reports\CashAssets.xml-->Reports\CashAssets.xml
 Reports\CashAssetsForecast.xml-->Reports\CashAssetsForecast.xml
 Reports\CashFlow.xml-->Reports\CashFlow.xml
@@ -10296,6 +10317,7 @@ Reports\SalesPlanActualAnalysis.xml-->Reports\SalesPlanActualAnalysis.xml
 Reports\SalesReportTORG29.xml-->Reports\SalesReportTORG29.xml
 Reports\SalesTargets.xml-->Reports\SalesTargets.xml
 Reports\SegmentComposition.xml-->Reports\SegmentComposition.xml
+Reports\SettlementsOnOtherOperations.xml-->Reports\SettlementsOnOtherOperations.xml
 Reports\SheetByGoodsOnWarehousesInProductsAndServicesPrices.xml-->Reports\SheetByGoodsOnWarehousesInProductsAndServicesPrices.xml
 Reports\StaffList.xml-->Reports\StaffList.xml
 Reports\StandardBOM.xml-->Reports\StandardBOM.xml
@@ -10388,6 +10410,9 @@ Reports\BalanceSheet\Ext\ManagerModule.bsl-->Reports\BalanceSheet\Ext\ManagerMod
 Reports\BalanceSheet\Ext\Help\en.html-->Reports\BalanceSheet\Ext\Help\en.html
 Reports\BalanceSheet\Templates\MainDataCompositionSchema.xml-->Reports\BalanceSheet\Templates\MainDataCompositionSchema.xml
 Reports\BalanceSheet\Templates\MainDataCompositionSchema\Ext\Template.xml-->Reports\BalanceSheet\Templates\MainDataCompositionSchema\Ext\Template.xml
+Reports\BankCharges\Ext\ObjectModule.bsl-->Reports\BankCharges\Ext\ObjectModule.bsl
+Reports\BankCharges\Templates\MainDataCompositionSchema.xml-->Reports\BankCharges\Templates\MainDataCompositionSchema.xml
+Reports\BankCharges\Templates\MainDataCompositionSchema\Ext\Template.xml-->Reports\BankCharges\Templates\MainDataCompositionSchema\Ext\Template.xml
 Reports\CashAssets\Ext\Help.xml-->Reports\CashAssets\Ext\Help.xml
 Reports\CashAssets\Ext\ManagerModule.bsl-->Reports\CashAssets\Ext\ManagerModule.bsl
 Reports\CashAssets\Ext\ObjectModule.bsl-->Reports\CashAssets\Ext\ObjectModule.bsl
@@ -10881,6 +10906,9 @@ Reports\SegmentComposition\Commands\SegmentComposition\Ext\CommandModule.bsl-->R
 Reports\SegmentComposition\Ext\ObjectModule.bsl-->Reports\SegmentComposition\Ext\ObjectModule.bsl
 Reports\SegmentComposition\Templates\MainDataCompositionSchema.xml-->Reports\SegmentComposition\Templates\MainDataCompositionSchema.xml
 Reports\SegmentComposition\Templates\MainDataCompositionSchema\Ext\Template.xml-->Reports\SegmentComposition\Templates\MainDataCompositionSchema\Ext\Template.xml
+Reports\SettlementsOnOtherOperations\Ext\ObjectModule.bsl-->Reports\SettlementsOnOtherOperations\Ext\ObjectModule.bsl
+Reports\SettlementsOnOtherOperations\Templates\MainDataCompositionSchema.xml-->Reports\SettlementsOnOtherOperations\Templates\MainDataCompositionSchema.xml
+Reports\SettlementsOnOtherOperations\Templates\MainDataCompositionSchema\Ext\Template.xml-->Reports\SettlementsOnOtherOperations\Templates\MainDataCompositionSchema\Ext\Template.xml
 Reports\SheetByGoodsOnWarehousesInProductsAndServicesPrices\Ext\Help.xml-->Reports\SheetByGoodsOnWarehousesInProductsAndServicesPrices\Ext\Help.xml
 Reports\SheetByGoodsOnWarehousesInProductsAndServicesPrices\Ext\ManagerModule.bsl-->Reports\SheetByGoodsOnWarehousesInProductsAndServicesPrices\Ext\ManagerModule.bsl
 Reports\SheetByGoodsOnWarehousesInProductsAndServicesPrices\Ext\ObjectModule.bsl-->Reports\SheetByGoodsOnWarehousesInProductsAndServicesPrices\Ext\ObjectModule.bsl
@@ -11375,12 +11403,12 @@ Styles\Default.xml-->Styles\Default.xml
 Styles\Default\Ext\Style.xml-->Styles\Default\Ext\Style.xml
 Subsystems\Analysis.xml-->Subsystems\Analysis.xml
 Subsystems\AttachedFilesService.xml-->Subsystems\AttachedFilesService.xml
-Subsystems\CashAssets.xml-->Subsystems\CashAssets.xml
 Subsystems\CounterpartiesCheck.xml-->Subsystems\CounterpartiesCheck.xml
 Subsystems\DataImportFromExternalSources.xml-->Subsystems\DataImportFromExternalSources.xml
 Subsystems\ElectronicInteraction.xml-->Subsystems\ElectronicInteraction.xml
 Subsystems\Enterprise.xml-->Subsystems\Enterprise.xml
 Subsystems\ExchangeWithSites.xml-->Subsystems\ExchangeWithSites.xml
+Subsystems\Finances.xml-->Subsystems\Finances.xml
 Subsystems\InventoryAndPurchasing.xml-->Subsystems\InventoryAndPurchasing.xml
 Subsystems\KittingAndProduction.xml-->Subsystems\KittingAndProduction.xml
 Subsystems\MarketingAndSales.xml-->Subsystems\MarketingAndSales.xml
@@ -11417,16 +11445,6 @@ Subsystems\Analysis\Subsystems\Planning\Ext\CommandInterface.xml-->Subsystems\An
 Subsystems\Analysis\Subsystems\Production\Ext\CommandInterface.xml-->Subsystems\Analysis\Subsystems\Production\Ext\CommandInterface.xml
 Subsystems\Analysis\Subsystems\Sales\Ext\CommandInterface.xml-->Subsystems\Analysis\Subsystems\Sales\Ext\CommandInterface.xml
 Subsystems\Analysis\Subsystems\Warehouse\Ext\CommandInterface.xml-->Subsystems\Analysis\Subsystems\Warehouse\Ext\CommandInterface.xml
-Subsystems\CashAssets\Ext\CommandInterface.xml-->Subsystems\CashAssets\Ext\CommandInterface.xml
-Subsystems\CashAssets\Subsystems\Analysis.xml-->Subsystems\CashAssets\Subsystems\Analysis.xml
-Subsystems\CashAssets\Subsystems\Bank.xml-->Subsystems\CashAssets\Subsystems\Bank.xml
-Subsystems\CashAssets\Subsystems\PaymentCalendar.xml-->Subsystems\CashAssets\Subsystems\PaymentCalendar.xml
-Subsystems\CashAssets\Subsystems\PettyCash.xml-->Subsystems\CashAssets\Subsystems\PettyCash.xml
-Subsystems\CashAssets\Subsystems\ReferenceInformation.xml-->Subsystems\CashAssets\Subsystems\ReferenceInformation.xml
-Subsystems\CashAssets\Subsystems\Bank\Ext\CommandInterface.xml-->Subsystems\CashAssets\Subsystems\Bank\Ext\CommandInterface.xml
-Subsystems\CashAssets\Subsystems\PaymentCalendar\Ext\CommandInterface.xml-->Subsystems\CashAssets\Subsystems\PaymentCalendar\Ext\CommandInterface.xml
-Subsystems\CashAssets\Subsystems\PettyCash\Ext\CommandInterface.xml-->Subsystems\CashAssets\Subsystems\PettyCash\Ext\CommandInterface.xml
-Subsystems\CashAssets\Subsystems\ReferenceInformation\Ext\CommandInterface.xml-->Subsystems\CashAssets\Subsystems\ReferenceInformation\Ext\CommandInterface.xml
 Subsystems\ElectronicInteraction\Subsystems\ElectronicDocuments.xml-->Subsystems\ElectronicInteraction\Subsystems\ElectronicDocuments.xml
 Subsystems\ElectronicInteraction\Subsystems\ElectronicDocuments\Ext\CommandInterface.xml-->Subsystems\ElectronicInteraction\Subsystems\ElectronicDocuments\Ext\CommandInterface.xml
 Subsystems\ElectronicInteraction\Subsystems\ElectronicDocuments\Ext\Help.xml-->Subsystems\ElectronicInteraction\Subsystems\ElectronicDocuments\Ext\Help.xml
@@ -11440,6 +11458,7 @@ Subsystems\Enterprise\Subsystems\Enterprise.xml-->Subsystems\Enterprise\Subsyste
 Subsystems\Enterprise\Subsystems\FinancialTransactions.xml-->Subsystems\Enterprise\Subsystems\FinancialTransactions.xml
 Subsystems\Enterprise\Subsystems\FixedAssets.xml-->Subsystems\Enterprise\Subsystems\FixedAssets.xml
 Subsystems\Enterprise\Subsystems\Planning.xml-->Subsystems\Enterprise\Subsystems\Planning.xml
+Subsystems\Enterprise\Subsystems\SettlementsOnOtherOperations.xml-->Subsystems\Enterprise\Subsystems\SettlementsOnOtherOperations.xml
 Subsystems\Enterprise\Subsystems\ElectronicDocuments\Ext\CommandInterface.xml-->Subsystems\Enterprise\Subsystems\ElectronicDocuments\Ext\CommandInterface.xml
 Subsystems\Enterprise\Subsystems\Enterprise\Ext\CommandInterface.xml-->Subsystems\Enterprise\Subsystems\Enterprise\Ext\CommandInterface.xml
 Subsystems\Enterprise\Subsystems\FinancialTransactions\Ext\CommandInterface.xml-->Subsystems\Enterprise\Subsystems\FinancialTransactions\Ext\CommandInterface.xml
@@ -11447,6 +11466,17 @@ Subsystems\Enterprise\Subsystems\FixedAssets\Ext\CommandInterface.xml-->Subsyste
 Subsystems\Enterprise\Subsystems\FixedAssets\Ext\Help.xml-->Subsystems\Enterprise\Subsystems\FixedAssets\Ext\Help.xml
 Subsystems\Enterprise\Subsystems\FixedAssets\Ext\Help\en.html-->Subsystems\Enterprise\Subsystems\FixedAssets\Ext\Help\en.html
 Subsystems\Enterprise\Subsystems\Planning\Ext\CommandInterface.xml-->Subsystems\Enterprise\Subsystems\Planning\Ext\CommandInterface.xml
+Subsystems\Enterprise\Subsystems\SettlementsOnOtherOperations\Ext\CommandInterface.xml-->Subsystems\Enterprise\Subsystems\SettlementsOnOtherOperations\Ext\CommandInterface.xml
+Subsystems\Finances\Ext\CommandInterface.xml-->Subsystems\Finances\Ext\CommandInterface.xml
+Subsystems\Finances\Subsystems\Analysis.xml-->Subsystems\Finances\Subsystems\Analysis.xml
+Subsystems\Finances\Subsystems\Bank.xml-->Subsystems\Finances\Subsystems\Bank.xml
+Subsystems\Finances\Subsystems\PaymentCalendar.xml-->Subsystems\Finances\Subsystems\PaymentCalendar.xml
+Subsystems\Finances\Subsystems\PettyCash.xml-->Subsystems\Finances\Subsystems\PettyCash.xml
+Subsystems\Finances\Subsystems\ReferenceInformation.xml-->Subsystems\Finances\Subsystems\ReferenceInformation.xml
+Subsystems\Finances\Subsystems\Bank\Ext\CommandInterface.xml-->Subsystems\Finances\Subsystems\Bank\Ext\CommandInterface.xml
+Subsystems\Finances\Subsystems\PaymentCalendar\Ext\CommandInterface.xml-->Subsystems\Finances\Subsystems\PaymentCalendar\Ext\CommandInterface.xml
+Subsystems\Finances\Subsystems\PettyCash\Ext\CommandInterface.xml-->Subsystems\Finances\Subsystems\PettyCash\Ext\CommandInterface.xml
+Subsystems\Finances\Subsystems\ReferenceInformation\Ext\CommandInterface.xml-->Subsystems\Finances\Subsystems\ReferenceInformation\Ext\CommandInterface.xml
 Subsystems\InventoryAndPurchasing\Ext\CommandInterface.xml-->Subsystems\InventoryAndPurchasing\Ext\CommandInterface.xml
 Subsystems\InventoryAndPurchasing\Subsystems\Analysis.xml-->Subsystems\InventoryAndPurchasing\Subsystems\Analysis.xml
 Subsystems\InventoryAndPurchasing\Subsystems\InventoryAndWarehouse.xml-->Subsystems\InventoryAndPurchasing\Subsystems\InventoryAndWarehouse.xml

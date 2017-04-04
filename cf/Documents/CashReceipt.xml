@@ -32,7 +32,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Приходный кассовый ордер</v8:content>
+					<v8:content>Поступление в кассу</v8:content>
 				</v8:item>
 			</Synonym>
 			<Comment/>
@@ -164,7 +164,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ПометкаУдаления</v8:content>
+							<v8:content>Пометка удаления</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -314,6 +314,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.AccountsPayable</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.IncomeAndExpensesRetained</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.IncomeAndExpensesUndistributed</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.SettlementsWithOtherCounterparties</xr:Item>
 			</RegisterRecords>
 			<PostInPrivilegedMode>true</PostInPrivilegedMode>
 			<UnpostInPrivilegedMode>true</UnpostInPrivilegedMode>
@@ -330,7 +331,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Приходный кассовый ордер</v8:content>
+					<v8:content>Поступления в кассу</v8:content>
 				</v8:item>
 			</ListPresentation>
 			<ExtendedListPresentation/>
@@ -354,6 +355,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -404,7 +409,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Примечание</v8:content>
+							<v8:content>Комментарий</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -561,7 +566,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Элемент</v8:content>
+							<v8:content>Статья</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -718,7 +723,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Application</v8:content>
+							<v8:content>Attachment</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -777,7 +782,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Контрагенты</v8:content>
+							<v8:content>Контрагент</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -824,7 +829,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>AdvanceHolder</v8:content>
+							<v8:content>Advance holder</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -879,7 +884,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>документ</v8:content>
+							<v8:content>Документ</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1243,7 +1248,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ячейка структурной единицы</v8:content>
+							<v8:content>Структурная единица</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1522,7 +1527,7 @@
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xr:DesignTimeRef">Enum.VATTaxationTypes.EnumValue.TaxableByVAT</FillValue>
+					<FillValue xsi:type="xr:DesignTimeRef">Enum.VATTaxationTypes.EnumValue.NotTaxableByVAT</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -1546,7 +1551,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ведомость составил</v8:content>
+							<v8:content>Автор</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1649,7 +1654,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Acquiring Rate</v8:content>
+							<v8:content>Acquiring rate</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1658,7 +1663,12 @@
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -1687,7 +1697,7 @@
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
 					<ChoiceParameters/>
-					<QuickChoice>Auto</QuickChoice>
+					<QuickChoice>DontUse</QuickChoice>
 					<CreateOnInput>Use</CreateOnInput>
 					<ChoiceForm/>
 					<LinkByType/>
@@ -1706,12 +1716,17 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Multiplicity</v8:content>
+							<v8:content>Кратность</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
-						<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
@@ -1738,7 +1753,7 @@
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
 					<ChoiceParameters/>
-					<QuickChoice>Auto</QuickChoice>
+					<QuickChoice>DontUse</QuickChoice>
 					<CreateOnInput>Use</CreateOnInput>
 					<ChoiceForm/>
 					<LinkByType/>
@@ -1766,7 +1781,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Payment Details</v8:content>
+							<v8:content>Payment details</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1824,7 +1839,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Контакт</v8:content>
+									<v8:content>Договор</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -1879,7 +1894,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Является ли платеж авансом</v8:content>
+									<v8:content>Аванс</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -1928,7 +1943,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>документ</v8:content>
+									<v8:content>Документ</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2057,12 +2072,17 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Курс валюты</v8:content>
+									<v8:content>Курс</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
-								<v8:TypeSet>cfg:DefinedType.ExchangeRate</v8:TypeSet>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>10</v8:Digits>
+									<v8:FractionDigits>4</v8:FractionDigits>
+									<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+								</v8:NumberQualifiers>
 							</Type>
 							<PasswordMode>false</PasswordMode>
 							<Format/>
@@ -2089,7 +2109,7 @@
 							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 							<ChoiceParameterLinks/>
 							<ChoiceParameters/>
-							<QuickChoice>Auto</QuickChoice>
+							<QuickChoice>DontUse</QuickChoice>
 							<CreateOnInput>Use</CreateOnInput>
 							<ChoiceForm/>
 							<LinkByType/>
@@ -2108,12 +2128,17 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Multiplicity</v8:content>
+									<v8:content>Кратность</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
 							<Type>
-								<v8:TypeSet>cfg:DefinedType.Multiplicity</v8:TypeSet>
+								<v8:Type>xs:decimal</v8:Type>
+								<v8:NumberQualifiers>
+									<v8:Digits>10</v8:Digits>
+									<v8:FractionDigits>0</v8:FractionDigits>
+									<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+								</v8:NumberQualifiers>
 							</Type>
 							<PasswordMode>false</PasswordMode>
 							<Format/>
@@ -2140,7 +2165,7 @@
 							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 							<ChoiceParameterLinks/>
 							<ChoiceParameters/>
-							<QuickChoice>Auto</QuickChoice>
+							<QuickChoice>DontUse</QuickChoice>
 							<CreateOnInput>Use</CreateOnInput>
 							<ChoiceForm/>
 							<LinkByType/>
@@ -2159,7 +2184,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Сумма платежа (итог)</v8:content>
+									<v8:content>Сумма платежа</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2215,7 +2240,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Ставка НДС номенклатуры</v8:content>
+									<v8:content>% НДС</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2318,7 +2343,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Порядок</v8:content>
+									<v8:content>Заказ</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2370,7 +2395,7 @@
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Invoice for payment</v8:content>
+									<v8:content>Proforma invoice</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -2492,7 +2517,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Дополнительные реквизиты объекта</v8:content>
+							<v8:content>Дополнительные реквизиты</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -2695,6 +2720,7 @@
 					</Attribute>
 				</ChildObjects>
 			</TabularSection>
+			<Template>PF_MXL_CashReceiptVoucher</Template>
 		</ChildObjects>
 	</Document>
 </MetaDataObject>

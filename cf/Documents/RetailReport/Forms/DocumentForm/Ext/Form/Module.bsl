@@ -720,21 +720,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Object.Responsible = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainResponsible");
 	EndIf;
 	
-	// Temporarily.
-	//( elmi #11
-	//Object.IncludeVATInPrice = True;      
-	//) elmi
-	
 	CashCRType = Catalogs.CashRegisters.GetCashRegisterAttributes(Object.CashCR).CashCRType;
 	Items.GroupCashCRSession.Visible = CashCRType = Enums.CashCRTypes.FiscalRegister;
 	
 	StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", Object.DocumentCurrency));
 	ExchangeRate = ?(
-	   //( elmi # 08.5
-       //StructureByCurrency.ExchangeRate = 0,
-	    StructureByCurrency.Multiplicity = 0,
-       //) elmi
-
+		StructureByCurrency.ExchangeRate = 0,
 		1,
 		StructureByCurrency.ExchangeRate
 	);

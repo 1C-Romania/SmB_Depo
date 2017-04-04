@@ -1828,11 +1828,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	// Temporarily.
-	//( elmi #11
-	//Object.IncludeVATInPrice = True;  
-	//) elmi
-	
 	// Generate price and currency label.
 	CurrencyTransactionsAccounting = GetFunctionalOption("CurrencyTransactionsAccounting");
 	LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, Rate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
@@ -2083,13 +2078,6 @@ Procedure OnOpen(Cancel)
 	// Peripherals
 	EquipmentManagerClientOverridable.StartConnectingEquipmentOnFormOpen(ThisForm, "BarCodeScanner");
 	// End Peripherals
-	
-		
-   //( elmi # 08.5 
-	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");
-   //) elmi
-
-
 	
 EndProcedure // OnOpen()
 

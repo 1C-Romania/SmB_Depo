@@ -17,7 +17,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		ExternalUsers = ?(
 			TypeOf(Parameters.User) = Type("CatalogRef.ExternalUsers"), True, False);
 		
-		Items.FormWriteAndClose.Title = NStr("en = 'Write'");
+		Items.FormWriteAndClose.Title = NStr("ru = 'Записать'; en = 'Write'");
 		
 		OpenFromUserCardMode = True;
 	Else
@@ -28,7 +28,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	UserCount = UserArray.Count();
 	If UserCount = 0 Then
-		Raise NStr("en='No one user is selected.';ru='Не выбрано ни одного пользователя.'");
+		Raise NStr("ru = 'Не выбрано ни одного пользователя.'; en = 'No one user is selected.'");
 	EndIf;
 	
 	UsersType = Undefined;
@@ -39,17 +39,17 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		UserTypeFromArray = TypeOf(UserFromArray);
 		If UserTypeFromArray <> Type("CatalogRef.Users")
 			AND UserTypeFromArray <> Type("CatalogRef.ExternalUsers") Then
-			Raise NStr("en='The command can not be run for the specified object.';ru='Команда не может быть выполнена для указанного объекта.'");
+			Raise NStr("ru='Команда не может быть выполнена для указанного объекта.'; en='The command can not be run for the specified object.'");
 		EndIf;
 		
 		If UsersType <> UserTypeFromArray Then
-			Raise NStr("en='Command can not be executed for two different kinds of the users at the same time.';ru='Команда не может быть выполнена сразу для двух разных видов пользователей.'");
+			Raise NStr("ru = 'Команда не может быть выполнена сразу для двух разных видов пользователей.'; en = 'Command can not be executed for two different kinds of the users at the same time.'");
 		EndIf;
 	EndDo;
 		
 	If UserCount > 1
 		AND Parameters.User = Undefined Then
-		Title = NStr("en='User groups';ru='Группы пользователя'");
+		Title = NStr("ru='Группы пользователей'; en='User groups'");
 		Items.GroupsTreeMark.ThreeState = True;
 	EndIf;
 	
@@ -538,17 +538,3 @@ Procedure WriteAndCloseEnd()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

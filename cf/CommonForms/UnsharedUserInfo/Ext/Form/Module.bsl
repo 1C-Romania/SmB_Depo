@@ -16,17 +16,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Parameters.Key.Description);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

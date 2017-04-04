@@ -72,20 +72,10 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler.InitialFilling = False;
 	
 	Handler = Handlers.Add();
-	Handler.Version = "1.1.7.1";
-	Handler.Procedure = "Catalogs.EDUsageAgreements.TransferCertificateAuthorizationInTP";
-	Handler.InitialFilling = False;
-	
-	Handler = Handlers.Add();
 	Handler.Version = "1.1.7.4";
 	Handler.Procedure = "Catalogs.EDUsageAgreements.FillFormatsVersionsOfOutgoingEDAndPackage";
 	Handler.InitialFilling = False;
 	
-	//Handler = Handlers.Add();
-	//Handler.Version = "1.1.9.1";
-	//Handler.Procedure = "Catalogs.DeleteDSCertificates.FillTimeActions";
-	//Handler.InitialFilling = False;
-
 	Handler = Handlers.Add();
 	Handler.Version = "1.1.13.2";
 	Handler.Procedure = "InformationRegisters.DeleteEDExchangeMembersThroughEDFOperators.ReplaceFrom1On2RegulationsVersionEDF";
@@ -120,12 +110,6 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler.Version = "1.2.2.2";
 	Handler.Procedure = "Catalogs.EDUsageAgreements.UpdateOutgoingED207FormatVersion_208";
 	Handler.InitialFilling = False;
-	
-	//Handler = Handlers.Add();
-	//Handler.Version = "1.2.4.4";
-	//Handler.Procedure = "Catalogs.DeleteDSCertificates.MoveCertificateSettings";
-	//Handler.PerformModes = "Exclusive";
-	//Handler.InitialFilling = False;
 	
 	Handler = Handlers.Add();
 	Handler.Version = "1.2.4.4";
@@ -669,27 +653,6 @@ Procedure FillDataAboutEDFProfileSettings() Export
 			EndDo;
 			
 			NewSettingsProfile.OutgoingDocuments.Sort("OutgoingDocument");
-			
-			//If Selection.EDExchangeMethod <> Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom
-			//	AND IsUsedES Then
-			//	
-			//	Query = New Query;
-			//	Query.Text =
-			//	"SELECT ALLOWED DISTINCT
-			//	|	ESCertificates.Ref
-			//	|FROM
-			//	|	Catalog.DeleteDSCertificates AS ESCertificates
-			//	|WHERE
-			//	|	Not ESCertificates.DeletionMark
-			//	|	AND Not ESCertificates.Revoked
-			//	|	AND ESCertificates.Company = &Company";
-			//	Query.SetParameter("Company", Selection.Company);
-			//	SelectionOfCertificates = Query.Execute().Select();
-			//	While SelectionOfCertificates.Next() Do
-			//		NewRow = NewSettingsProfile.CompanySignatureCertificates.Add();
-			//		NewRow.Certificate = SelectionOfCertificates.Ref;
-			//	EndDo;
-			//EndIf;
 			
 			// ED exchange settings
 			If Selection.EDExchangeMethod = Enums.EDExchangeMethods.ThroughDirectory Then

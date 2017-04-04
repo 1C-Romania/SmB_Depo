@@ -425,11 +425,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
 	
-	// Temporarily.
-	//( elmi #11
-	//Object.IncludeVATInPrice = True;  
-	//) elmi
-	
 	CashCRUseWithoutEquipmentConnection = Object.CashCR.UseWithoutEquipmentConnection;
 	
 	If ValueIsFilled(Object.ReceiptCRNumber)
@@ -467,12 +462,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		StructureByCurrency.ExchangeRate
 	);
 	Multiplicity = ?(
-		//( elmi # 08.5
-	    //StructureByCurrency.ExchangeRate = 0,
-		  StructureByCurrency.Multiplicity = 0,
-		//) elmi
-
-
+		StructureByCurrency.ExchangeRate = 0,
 		1,
 		StructureByCurrency.Multiplicity
 	);

@@ -76,6 +76,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
 		<Event name="OnReadAtServer">OnReadAtServer</Event>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
 	</Events>
@@ -131,14 +132,25 @@
 							<BackColor>style:ManagingFieldBackgroundColor</BackColor>
 							<ContextMenu name="CorrespondenceContextMenu" id="6"/>
 							<ExtendedTooltip name="CorrespondenceExtendedTooltip" id="56"/>
+							<Events>
+								<Event name="OnChange">CorrespondenceOnChange</Event>
+							</Events>
 						</InputField>
-						<InputField name="StructuralUnit" id="3">
-							<DataPath>Object.StructuralUnit</DataPath>
-							<SkipOnInput>true</SkipOnInput>
-							<EditMode>EnterOnInput</EditMode>
-							<Wrap>false</Wrap>
-							<ContextMenu name="StructuralUnitContextMenu" id="4"/>
-							<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="55"/>
+						<InputField name="Counterparty" id="102">
+							<DataPath>Object.Counterparty</DataPath>
+							<ContextMenu name="CounterpartyContextMenu" id="103"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="104"/>
+							<Events>
+								<Event name="OnChange">CounterpartyOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="Contract" id="105">
+							<DataPath>Object.Contract</DataPath>
+							<ContextMenu name="ContractContextMenu" id="106"/>
+							<ExtendedTooltip name="ContractExtendedTooltip" id="107"/>
+							<Events>
+								<Event name="StartChoice">ContractStartChoice</Event>
+							</Events>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -163,6 +175,7 @@
 							<v8:content>Группа шапки дополнительно</v8:content>
 						</v8:item>
 					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -197,7 +210,8 @@
 								<InputField name="Number" id="30">
 									<DataPath>Object.Number</DataPath>
 									<SkipOnInput>true</SkipOnInput>
-									<Width>12</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>10</MaxWidth>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
 									<InputHint>
@@ -216,17 +230,8 @@
 								<InputField name="Date" id="32">
 									<DataPath>Object.Date</DataPath>
 									<SkipOnInput>true</SkipOnInput>
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>dated</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>от</v8:content>
-										</v8:item>
-									</Title>
-									<Width>12</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>14</MaxWidth>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
 									<ContextMenu name="DateContextMenu" id="33"/>
@@ -247,6 +252,24 @@
 								<Event name="OnChange">CompanyOnChange</Event>
 							</Events>
 						</InputField>
+						<InputField name="StructuralUnit" id="3">
+							<DataPath>Object.StructuralUnit</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<EditMode>EnterOnInput</EditMode>
+							<Wrap>false</Wrap>
+							<ContextMenu name="StructuralUnitContextMenu" id="4"/>
+							<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="55"/>
+						</InputField>
+						<CheckBoxField name="OtherSettlementsAccounting" id="108">
+							<DataPath>Object.OtherSettlementsAccounting</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="OtherSettlementsAccountingContextMenu" id="109"/>
+							<ExtendedTooltip name="OtherSettlementsAccountingExtendedTooltip" id="110"/>
+							<Events>
+								<Event name="OnChange">OtherSettlementsAccountingOnChange</Event>
+							</Events>
+						</CheckBoxField>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -259,7 +282,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Странницы</v8:content>
+					<v8:content>Страницы</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -269,7 +292,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Странницы</v8:content>
+					<v8:content>Страницы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<ExtendedTooltip name="PagesExtendedTooltip" id="82"/>
@@ -300,6 +323,7 @@
 						<Table name="Expenses" id="10">
 							<Representation>List</Representation>
 							<SkipOnInput>false</SkipOnInput>
+							<HeightInTableRows>5</HeightInTableRows>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
@@ -344,25 +368,29 @@
 									<ContextMenu name="ExpensesLineNumberContextMenu" id="14"/>
 									<ExtendedTooltip name="ExpensesLineNumberExtendedTooltip" id="58"/>
 								</InputField>
-								<InputField name="CostsGlExpenseAccount" id="15">
+								<InputField name="ExpensesGLExpenseAccount" id="15">
 									<DataPath>Object.Expenses.GLExpenseAccount</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Wrap>false</Wrap>
-									<ContextMenu name="CostsGlExpenseAccountContextMenu" id="16"/>
-									<ExtendedTooltip name="CostsGlExpenseAccountExtendedTooltip" id="59"/>
+									<ContextMenu name="ExpensesGLExpenseAccountContextMenu" id="16"/>
+									<ExtendedTooltip name="ExpensesGLExpenseAccountExtendedTooltip" id="59"/>
+									<Events>
+										<Event name="OnChange">ExpensesGLExpenseAccountOnChange</Event>
+									</Events>
 								</InputField>
-								<InputField name="AmountExpenses" id="21">
+								<InputField name="ExpensesAmount" id="21">
 									<DataPath>Object.Expenses.Amount</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>15</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
-									<ContextMenu name="ExpensesSumContextMenu" id="22"/>
-									<ExtendedTooltip name="ExpensesSumExtendedTooltip" id="60"/>
+									<ContextMenu name="ExpensesAmountContextMenu" id="22"/>
+									<ExtendedTooltip name="ExpensesAmountExtendedTooltip" id="60"/>
 								</InputField>
 								<InputField name="ExpensesBusinessActivity" id="17">
 									<DataPath>Object.Expenses.BusinessActivity</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<Width>26</Width>
 									<Wrap>false</Wrap>
 									<ContextMenu name="ExpensesBusinessActivityContextMenu" id="18"/>
 									<ExtendedTooltip name="ExpensesBusinessActivityExtendedTooltip" id="61"/>
@@ -374,78 +402,32 @@
 									<ContextMenu name="ExpensesCustomerOrderContextMenu" id="20"/>
 									<ExtendedTooltip name="ExpensesCustomerOrderExtendedTooltip" id="62"/>
 								</InputField>
+								<InputField name="ExpensesCounterparty" id="111">
+									<DataPath>Object.Expenses.Counterparty</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ExpensesCounterpartyContextMenu" id="112"/>
+									<ExtendedTooltip name="ExpensesCounterpartyExtendedTooltip" id="113"/>
+									<Events>
+										<Event name="OnChange">ExpensesCounterpartyOnChange</Event>
+										<Event name="StartChoice">ExpensesCounterpartyStartChoice</Event>
+									</Events>
+								</InputField>
+								<InputField name="ExpensesContract" id="114">
+									<DataPath>Object.Expenses.Contract</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ExpensesContractContextMenu" id="115"/>
+									<ExtendedTooltip name="ExpensesContractExtendedTooltip" id="116"/>
+									<Events>
+										<Event name="StartChoice">ExpensesContractStartChoice</Event>
+									</Events>
+								</InputField>
 							</ChildItems>
 						</Table>
-						<UsualGroup name="Footer" id="27">
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Footer</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Подвал</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="FooterExtendedTooltip" id="63"/>
-							<ChildItems>
-								<LabelDecoration name="Decoration1" id="89">
-									<HorizontalStretch>true</HorizontalStretch>
-									<ContextMenu name="Decoration1ContextMenu" id="90"/>
-									<ExtendedTooltip name="Decoration1ExtendedTooltip" id="91"/>
-								</LabelDecoration>
-								<UsualGroup name="Totals" id="38">
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Totals</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Итоги</v8:content>
-										</v8:item>
-									</ToolTip>
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<BackColor>style:TotalsGroupBackground</BackColor>
-									<ExtendedTooltip name="TotalsExtendedTooltip" id="65"/>
-									<ChildItems>
-										<InputField name="CostsTotalAmount" id="36">
-											<DataPath>Object.Expenses.TotalAmount</DataPath>
-											<ReadOnly>true</ReadOnly>
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Amount</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Сумма</v8:content>
-												</v8:item>
-											</Title>
-											<Width>9</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ChoiceButton>false</ChoiceButton>
-											<ClearButton>false</ClearButton>
-											<SpinButton>false</SpinButton>
-											<OpenButton>false</OpenButton>
-											<CreateButton>false</CreateButton>
-											<TextEdit>false</TextEdit>
-											<ChoiceListButton>false</ChoiceListButton>
-											<ContextMenu name="CostsTotalAmountContextMenu" id="37"/>
-											<ExtendedTooltip name="CostsTotalAmountExtendedTooltip" id="66"/>
-										</InputField>
-									</ChildItems>
-								</UsualGroup>
-							</ChildItems>
-						</UsualGroup>
 					</ChildItems>
 				</Page>
-				<Page name="AdvancedPage" id="85">
+				<Page name="PageAdditionally" id="85">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -459,36 +441,15 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Advanced page</v8:content>
+							<v8:content>Page additionally</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Страница дополнительно</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="AdvancedPageExtendedTooltip" id="86"/>
+					<ExtendedTooltip name="PageAdditionallyExtendedTooltip" id="86"/>
 					<ChildItems>
-						<InputField name="Comment" id="8">
-							<DataPath>Object.Comment</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<EditMode>EnterOnInput</EditMode>
-							<MultiLine>true</MultiLine>
-							<InputHint>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Comment</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Примечание</v8:content>
-								</v8:item>
-							</InputHint>
-							<ContextMenu name="CommentContextMenu" id="9"/>
-							<ExtendedTooltip name="CommentExtendedTooltip" id="64"/>
-							<Events>
-								<Event name="OnChange">CommentOnChange</Event>
-							</Events>
-						</InputField>
 						<LabelField name="DocumentAuthor" id="46">
 							<DataPath>Object.Author</DataPath>
 							<ToolTip>
@@ -503,10 +464,6 @@
 							</ToolTip>
 							<Width>35</Width>
 							<HorizontalStretch>false</HorizontalStretch>
-							<Border width="1">
-								<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
-							</Border>
-							<TextColor>#993300</TextColor>
 							<ContextMenu name="AuthorDocumentContextMenu" id="47"/>
 							<ExtendedTooltip name="DocumentAuthorExtendedTooltip" id="71"/>
 						</LabelField>
@@ -514,6 +471,120 @@
 				</Page>
 			</ChildItems>
 		</Pages>
+		<UsualGroup name="Footer" id="27">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FooterExtendedTooltip" id="63"/>
+			<ChildItems>
+				<InputField name="Comment" id="8">
+					<DataPath>Object.Comment</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>64</MaxWidth>
+					<Height>1</Height>
+					<MultiLine>true</MultiLine>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="CommentContextMenu" id="9"/>
+					<ExtendedTooltip name="CommentExtendedTooltip" id="64"/>
+				</InputField>
+				<UsualGroup name="FooterRight" id="117">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Footer right</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подвал право</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Footer right</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подвал право</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="FooterRightExtendedTooltip" id="118"/>
+					<ChildItems>
+						<UsualGroup name="Totals" id="38">
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Totals</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Итоги</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<BackColor>style:TotalsGroupBackground</BackColor>
+							<ExtendedTooltip name="TotalsExtendedTooltip" id="65"/>
+							<ChildItems>
+								<InputField name="CostsTotalAmount" id="36">
+									<DataPath>Object.Expenses.TotalAmount</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Amount</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма</v8:content>
+										</v8:item>
+									</Title>
+									<Width>9</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ClearButton>false</ClearButton>
+									<SpinButton>false</SpinButton>
+									<OpenButton>false</OpenButton>
+									<CreateButton>false</CreateButton>
+									<TextEdit>false</TextEdit>
+									<ChoiceListButton>false</ChoiceListButton>
+									<ContextMenu name="CostsTotalAmountContextMenu" id="37"/>
+									<ExtendedTooltip name="CostsTotalAmountExtendedTooltip" id="66"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Object" id="1">
@@ -525,12 +596,31 @@
 			<UseAlways>
 				<Field>Object.RegisterRecords</Field>
 			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Object.Expenses">
+					<Column name="TypeOfAccount" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Account type</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Тип счета</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:EnumRef.GLAccountsTypes</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
 		</Attribute>
-		<Attribute name="SubsidiaryCompany" id="2">
+		<Attribute name="Company" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>SubsidiaryCompany</v8:content>
+					<v8:content>Company</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -568,6 +658,51 @@
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Разрешено проведение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="OtherSettlementsAccounting" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other settlements accounting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Учет прочих расчетов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TypeOfAccount" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account type</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип счета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.GLAccountsTypes</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DoOperationsByContracts" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Do operations by contracts</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вести расчеты по договорам</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

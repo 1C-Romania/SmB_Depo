@@ -1363,41 +1363,15 @@ Procedure PrepaymentPaymentAmountOnChange(Item)
 		TabularSectionRow.ExchangeRate
 	);
 	
-		
-	//( elmi # 08.5
-	//TabularSectionRow.Multiplicity = 1;
-	//
-	//TabularSectionRow.ExchangeRate =
-	//	?(TabularSectionRow.SettlementsAmount = 0,
-	//		1,
-	//		TabularSectionRow.PaymentAmount
-	//	  / TabularSectionRow.SettlementsAmount
-	//	  * Object.ExchangeRate
-	//);
-   TabularSectionRow.Multiplicity = ?(
-		TabularSectionRow.Multiplicity = 0,
-		1,
-		TabularSectionRow.Multiplicity
+	TabularSectionRow.Multiplicity = 1;
+	
+	TabularSectionRow.ExchangeRate =
+		?(TabularSectionRow.SettlementsAmount = 0,
+			1,
+			TabularSectionRow.PaymentAmount
+		  / TabularSectionRow.SettlementsAmount
+		  * Object.ExchangeRate
 	);
-	If SmallBusinessServer.IndirectQuotationInUse() Then
-		TabularSectionRow.Multiplicity =
-			?(TabularSectionRow.PaymentAmount = 0,
-				1,
-				TabularSectionRow.SettlementsAmount
-			  / TabularSectionRow.PaymentAmount
-			  * Object.Multiplicity
-		);
-	Else
-		TabularSectionRow.ExchangeRate =
-			?(TabularSectionRow.SettlementsAmount = 0,
-				1,
-				TabularSectionRow.PaymentAmount
-			  / TabularSectionRow.SettlementsAmount
-			  * Object.ExchangeRate
-		);
-	EndIf;
-	//) elmi
-
 	
 EndProcedure
 
@@ -1475,25 +1449,3 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&AtClient
-Procedure OnOpen(Cancel)
-	
-	//( elmi # 08.5 
-	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");
-    //) elmi
-
-EndProcedure

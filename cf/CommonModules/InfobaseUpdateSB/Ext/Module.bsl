@@ -57,19 +57,6 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler.InitialFilling = True;
 	Handler.Procedure = "InfobaseUpdateSB.FirstLaunch";
 	
-	Handler = Handlers.Add();
-	Handler.PerformModes = "Delay";
-	Handler.Version = "1.5.3.6";
-	Handler.Procedure = "InfobaseUpdateSB.ChangesProhibitionsSectionsDatesUpdate";
-	Handler.Comment = NStr("en='Update changes ban dates sections. 
-		|Starting with version 1.5.3 an ability appeared to separately manage the dates of the ban to change the documents Customer order, Vendor order.';ru='Обновление разделов дат запрет изменений.  Начиная с версии 1.5.3 появилась возможность раздельно управлять датами запрета изменений для документов Заказ покупателя, Заказ поставщику.'");
-		
-	Handler = Handlers.Add();
-	Handler.PerformModes = "Delay";
-	Handler.Version = "1.5.3.26";
-	Handler.Procedure = "InfobaseUpdateSB.TransferDataFromRemoteObjects";
-	Handler.Comment = NStr("en='Transfers data from remote metadata objects of alcoholic products account.';ru='Переносит данные из удаленных объектов метаданных учета алкогольной продукции.'");
-	
 EndProcedure
 
 // Called before the procedures-handlers of IB data update.

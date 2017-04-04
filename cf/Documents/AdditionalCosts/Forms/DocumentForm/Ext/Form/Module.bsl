@@ -841,10 +841,7 @@ Function PlacePrepaymentToStorage()
 		Object.Prepayment.Unload(,
 			"Document,
 			|SettlementsAmount,
-			//( elmi # 08.5
-			//|Rate,
 			|ExchangeRate,
-			//) elmi
 			|Multiplicity,
 			|PaymentAmount"),
 		UUID
@@ -908,11 +905,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", NationalCurrency));
 	RateNationalCurrency = StructureByCurrency.ExchangeRate;
 	RepetitionNationalCurrency = StructureByCurrency.Multiplicity;
-	
-	// Temporarily.
-	//( elmi #11
-	//Object.IncludeVATInPrice = True;  
-	//) elmi
 	
 	If Not ValueIsFilled(Object.Ref)
 		AND Not ValueIsFilled(Parameters.Basis)
@@ -1158,24 +1150,15 @@ Procedure EditPrepaymentOffset(Command)
 	SelectionParameters = New Structure(
 		"AddressPrepaymentInStorage,
 		|Pick,
-		//( elmi # 08.5
-		//|ThereIsOrder,
 		|IsOrder,
-		//) elmi
 		|OrderInHeader,
 		|Company,
 		|Order,
 		|Date,
-		//( elmi # 08.5
-		//|Refs,
 		|Ref,
-		//) elmi
 		|Counterparty,
 		|Contract,
-		//( elmi # 08.5
-		//|Rate,
 		|ExchangeRate,
-		//) elmi
 		|Multiplicity,
 		|DocumentCurrency,
 		|DocumentAmount",
@@ -1836,42 +1819,15 @@ Procedure PrepaymentPaymentAmountOnChange(Item)
 		TabularSectionRow.ExchangeRate
 	);
 	
-	//( elmi # 08.5
-	//TabularSectionRow.Multiplicity = 1;
-	//
-	//TabularSectionRow.ExchangeRate =
-	//	?(TabularSectionRow.SettlementsAmount = 0,
-	//		1,
-	//		TabularSectionRow.PaymentAmount
-	//	  / TabularSectionRow.SettlementsAmount
-	//	  * Object.ExchangeRate
-	//);
-	 	TabularSectionRow.Multiplicity = ?(
-		TabularSectionRow.Multiplicity = 0,
-		1,
-		TabularSectionRow.Multiplicity
+	TabularSectionRow.Multiplicity = 1;
+	
+	TabularSectionRow.ExchangeRate =
+		?(TabularSectionRow.SettlementsAmount = 0,
+			1,
+			TabularSectionRow.PaymentAmount
+		  / TabularSectionRow.SettlementsAmount
+		  * Object.ExchangeRate
 	);
-	If SmallBusinessServer.IndirectQuotationInUse() Then
-		TabularSectionRow.Multiplicity =
-	    		?(TabularSectionRow.PaymentAmount = 0,
-				1,
-				TabularSectionRow.SettlementsAmount
-			  / TabularSectionRow.PaymentAmount
-			  * Object.Multiplicity
-		);
-	Иначе
-		TabularSectionRow.Курс =
-			?(TabularSectionRow.SettlementsAmount = 0,
-				1,
-				TabularSectionRow.PaymentAmount
-			  / TabularSectionRow.SettlementsAmount
-			  * Object.ExchangeRate
-		);
-	КонецЕсли;
-
-	
-	
-	
 	
 EndProcedure
 
@@ -1920,27 +1876,3 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-&AtClient
-Procedure OnOpen(Cancel)
-	
-    //( elmi # 08.5 
-	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");  
-   //) elmi
-   
-EndProcedure
-

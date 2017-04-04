@@ -554,22 +554,9 @@ Procedure FunctionalOptionAccountingFixedAssetsOnChange(Item)
 	
 EndProcedure // FunctionalOptionAccountingFixedAssetsOnChange()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+&AtClient
+Procedure FunctionalOptionUseVATOnChange(Item)
+	
+	Attachable_OnAttributeChange(Item);
+	
+EndProcedure

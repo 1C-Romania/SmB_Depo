@@ -54,12 +54,6 @@ Procedure OnOpen(Cancel)
 	
 	CalculateAmountTotal();
 	
-	//( elmi # 08.5 
-	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "DebtsList");
-	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "FilteredDebts");
-	//) elmi
-
-	
 EndProcedure // OnOpen()
 
 // Procedure calculates the total amount.
@@ -414,10 +408,7 @@ Procedure FillPaymentDetails()
 		StructureByCurrency.ExchangeRate
 	);
 	Multiplicity = ?(
-	    //( elmi # 08.5
-	    //StructureByCurrency.ExchangeRate = 0,
-	    StructureByCurrency.Multiplicity = 0,
-		//) elmi
+		StructureByCurrency.ExchangeRate = 0,
 		1,
 		StructureByCurrency.Multiplicity
 	);
@@ -609,17 +600,3 @@ Procedure FilteredDebtsBeforeAddingStart(Item, Cancel, Copy, Parent, Group)
 	Cancel = True;
 	
 EndProcedure // FilteredDebtsBeforeAddingStart()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

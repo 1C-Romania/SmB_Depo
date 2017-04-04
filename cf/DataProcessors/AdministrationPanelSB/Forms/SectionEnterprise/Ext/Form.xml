@@ -786,6 +786,37 @@ Key parameter. You can not disable this option if there is accounting data in th
 						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
+				<UsualGroup name="Group11" id="214">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group11ExtendedTooltip" id="215"/>
+					<ChildItems>
+						<CheckBoxField name="FunctionalOptionUseVAT" id="216">
+							<DataPath>ConstantsSet.FunctionalOptionUseVAT</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Use VAT</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Использовать НДС</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FunctionalOptionUseVATContextMenu" id="217"/>
+							<ExtendedTooltip name="FunctionalOptionUseVATExtendedTooltip" id="218"/>
+							<Events>
+								<Event name="OnChange">FunctionalOptionUseVATOnChange</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
@@ -816,6 +847,7 @@ Key parameter. You can not disable this option if there is accounting data in th
 				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
 				<Field>ConstantsSet.NationalCurrency</Field>
 				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
+				<Field>ConstantsSet.FunctionalOptionUseVAT</Field>
 				<Field>ConstantsSet.FunctionalOptionUseBudgeting</Field>
 				<Field>ConstantsSet.FunctionalOptionAccountingFixedAssets</Field>
 				<Field>ConstantsSet.FunctionalOptionAccountingCashMethodIncomeAndExpenses</Field>
@@ -827,7 +859,6 @@ Key parameter. You can not disable this option if there is accounting data in th
 				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
 				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
 				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
-				<Field>ConstantsSet.CurrencyQuotationType.Ref</Field>
 				<Field>ConstantsSet.ControlBalancesOnPosting</Field>
 				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
 				<Field>ConstantsSet.ArchiveCRReceiptsOnCloseCashCRSession</Field>

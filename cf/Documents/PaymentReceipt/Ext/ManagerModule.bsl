@@ -8,12 +8,12 @@ Procedure GenerateTableCashAssets(DocumentRefPaymentReceipt, StructureAdditional
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
-	Query.SetParameter("Ref", DocumentRefPaymentReceipt);
-	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
-	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("CashFundsReceipt", NStr("en='Cash receipt';ru='Приходный кассовый ордер'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("Ref",					DocumentRefPaymentReceipt);
+	Query.SetParameter("PointInTime",			New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
+	Query.SetParameter("ControlPeriod",			StructureAdditionalProperties.ForPosting.PointInTime.Date);
+	Query.SetParameter("Company",				StructureAdditionalProperties.ForPosting.Company);
+	Query.SetParameter("CashFundsReceipt",		NStr("ru = 'Приходный кассовый ордер'; en = 'Cash receipt'",		Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("ExchangeDifference",	NStr("ru = 'Курсовая разница'; en = 'Exchange rate difference'",	Metadata.DefaultLanguage.LanguageCode));
 	
 	Query.Text =
 	"SELECT
@@ -37,6 +37,7 @@ Procedure GenerateTableCashAssets(DocumentRefPaymentReceipt, StructureAdditional
 	|WHERE
 	|	(DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.FromAdvanceHolder)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.Other)
+	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.OtherSettlements)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.CurrencyPurchase)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.Taxes))
 	|
@@ -77,6 +78,38 @@ Procedure GenerateTableCashAssets(DocumentRefPaymentReceipt, StructureAdditional
 	|	TemporaryTablePaymentDetails.BankAccount,
 	|	TemporaryTablePaymentDetails.BankAccountCashGLAccount,
 	|	TemporaryTablePaymentDetails.CashCurrency
+	|
+	|UNION ALL
+	|
+	|SELECT
+	|	1,
+	|	TableBankCharges.PostingContent,
+	|	VALUE(AccumulationRecordType.Expense),
+	|	TableBankCharges.Period,
+	|	TableBankCharges.Company,
+	|	VALUE(Enum.CashAssetTypes.Noncash),
+	|	TableBankCharges.Item,
+	|	TableBankCharges.BankAccount,
+	|	TableBankCharges.GLAccount,
+	|	TableBankCharges.Currency,
+	|	SUM(TableBankCharges.Amount),
+	|	SUM(TableBankCharges.AmountCur),
+	|	SUM(TableBankCharges.Amount),
+	|	SUM(TableBankCharges.AmountCur)
+	|FROM
+	|	TemporaryTableBankCharges AS TableBankCharges
+	|WHERE
+	|	(TableBankCharges.Amount <> 0
+	|			OR TableBankCharges.AmountCur <> 0)
+	|
+	|GROUP BY
+	|	TableBankCharges.PostingContent,
+	|	TableBankCharges.Company,
+	|	TableBankCharges.Period,
+	|	TableBankCharges.Item,
+	|	TableBankCharges.BankAccount,
+	|	TableBankCharges.GLAccount,
+	|	TableBankCharges.Currency
 	|
 	|INDEX BY
 	|	Company,
@@ -499,11 +532,11 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPaymentReceipt, StructureAdd
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
-	Query.SetParameter("Ref", DocumentRefPaymentReceipt);
-	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
+	Query.SetParameter("Ref", 					DocumentRefPaymentReceipt);
+	Query.SetParameter("Company", 				StructureAdditionalProperties.ForPosting.Company);
+	Query.SetParameter("PointInTime", 			New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
+	Query.SetParameter("IncomeReflection",		NStr("ru = 'Отражение доходов'; en = 'Income accounting'",			Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("ExchangeDifference",	NStr("ru = 'Курсовая разница'; en = 'Exchange rate difference'",	Metadata.DefaultLanguage.LanguageCode));
 	
 	Query.Text =
 	"SELECT
@@ -525,6 +558,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPaymentReceipt, StructureAdd
 	|	(DocumentTable.CorrespondenceGLAccountType = VALUE(Enum.GLAccountsTypes.Incomings)
 	|			OR DocumentTable.CorrespondenceGLAccountType = VALUE(Enum.GLAccountsTypes.OtherIncome))
 	|	AND (DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.Other)
+	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.OtherSettlements)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.CurrencyPurchase))
 	|
 	|UNION ALL
@@ -663,6 +697,60 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPaymentReceipt, StructureAdd
 	|FROM
 	|	TemporaryTableOfExchangeRateDifferencesAccountsPayable AS DocumentTable
 	|
+	|UNION ALL
+	|
+	|SELECT
+	|	6,
+	|	1,
+	|	TableBankCharges.Period,
+	|	TableBankCharges.Company,
+	|	UNDEFINED,
+	|	UNDEFINED,
+	|	VALUE(Catalog.BusinessActivities.Other),
+	|	TableBankCharges.GLExpenseAccount,
+	|	TableBankCharges.PostingContent,
+	|	0,
+	|	TableBankCharges.Amount,
+	|	TableBankCharges.Amount
+	|FROM
+	|	TemporaryTableBankCharges AS TableBankCharges
+	|WHERE
+	|	TableBankCharges.Amount <> 0
+	|
+	|UNION ALL
+	|
+	|SELECT
+	|	7,
+	|	DocumentTable.LineNumber,
+	|	DocumentTable.Date,
+	|	DocumentTable.Company,
+	|	UNDEFINED,
+	|	UNDEFINED,
+	|	VALUE(Catalog.BusinessActivities.Other),
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN VALUE(ChartOfAccounts.Managerial.OtherIncome)
+	|		ELSE VALUE(ChartOfAccounts.Managerial.OtherExpenses)
+	|	END,
+	|	&ExchangeDifference,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN DocumentTable.ExchangeRateDifferenceAmount
+	|		ELSE 0
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN 0
+	|		ELSE -DocumentTable.ExchangeRateDifferenceAmount
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN DocumentTable.ExchangeRateDifferenceAmount
+	|		ELSE -DocumentTable.ExchangeRateDifferenceAmount
+	|	END
+	|FROM
+	|	ExchangeDifferencesTemporaryTableOtherSettlements AS DocumentTable
+	|
 	|ORDER BY
 	|	Ordering,
 	|	LineNumber";
@@ -684,10 +772,10 @@ Procedure GenerateTableManagerial(DocumentRefPaymentReceipt, StructureAdditional
 	Query.SetParameter("Ref", DocumentRefPaymentReceipt);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
-	Query.SetParameter("Content", NStr("en='Cash as received from any account';ru='Оприходование денежных средств с произвольного счета'"));
-	Query.SetParameter("TaxReturn", NStr("en='Tax return';ru='Возврат налога'"));
-	Query.SetParameter("ContentCurrencyPurchase", NStr("en='Currency purchase';ru='Покупка валюты'"));
+	Query.SetParameter("ExchangeDifference",		NStr("ru = 'Курсовая разница'; en = 'Exchange rate difference'",	Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("Content",					NStr("ru = 'Оприходование денежных средств с произвольного счета'; en = 'Cash as received from any account'",	Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("TaxReturn",					NStr("ru = 'Возврат налога'; en = 'Tax return'",		Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("ContentCurrencyPurchase",	NStr("ru = 'Покупка валюты'; en = 'Currency purchase'",	Metadata.DefaultLanguage.LanguageCode));
 	
 	Query.Text =
 	"SELECT
@@ -723,7 +811,7 @@ Procedure GenerateTableManagerial(DocumentRefPaymentReceipt, StructureAdditional
 	|			WHEN DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.CurrencyPurchase)
 	|				THEN &ContentCurrencyPurchase
 	|			ELSE &Content
-	|		END AS String(100)) AS Content
+	|		END AS STRING(100)) AS Content
 	|FROM
 	|	TemporaryTableHeader AS DocumentTable
 	|WHERE
@@ -761,7 +849,7 @@ Procedure GenerateTableManagerial(DocumentRefPaymentReceipt, StructureAdditional
 	|		ELSE 0
 	|	END,
 	|	DocumentTable.Amount,
-	|	CAST(&TaxReturn AS String(100))
+	|	CAST(&TaxReturn AS STRING(100))
 	|FROM
 	|	TemporaryTableHeader AS DocumentTable
 	|WHERE
@@ -1036,6 +1124,120 @@ Procedure GenerateTableManagerial(DocumentRefPaymentReceipt, StructureAdditional
 	|FROM
 	|	TemporaryTableExchangeRateLossesBanking AS DocumentTable
 	|
+	|UNION ALL
+	|
+	|SELECT
+	|	10,
+	|	1,
+	|	DocumentTable.Period,
+	|	DocumentTable.Company,
+	|	VALUE(Catalog.PlanningPeriods.Actual),
+	|	DocumentTable.GLExpenseAccount,
+	|	DocumentTable.GLAccount,
+	|	CASE
+	|		WHEN DocumentTable.GLExpenseAccount.Currency
+	|			THEN DocumentTable.Currency
+	|		ELSE UNDEFINED
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.GLAccount.Currency
+	|			THEN DocumentTable.Currency
+	|		ELSE UNDEFINED
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.GLExpenseAccount.Currency
+	|			THEN DocumentTable.AmountCur
+	|		ELSE 0
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.GLAccount.Currency
+	|			THEN DocumentTable.AmountCur
+	|		ELSE 0
+	|	END,
+	|	DocumentTable.Amount,
+	|	DocumentTable.PostingContent
+	|FROM
+	|	TemporaryTableBankCharges AS DocumentTable
+	|WHERE
+	|	(DocumentTable.Amount <> 0
+	|			OR DocumentTable.AmountCur <> 0)
+	|
+	|UNION ALL
+	|
+	|SELECT
+	|	11,
+	|	1,
+	|	DocumentTable.Date,
+	|	DocumentTable.Company,
+	|	VALUE(Catalog.PlanningPeriods.Actual),
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN DocumentTable.GLAccount
+	|		ELSE VALUE(ChartOfAccounts.Managerial.OtherExpenses)
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN VALUE(ChartOfAccounts.Managerial.OtherIncome)
+	|		ELSE DocumentTable.GLAccount
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|				AND DocumentTable.GLAccount.Currency
+	|			THEN DocumentTable.Currency
+	|		ELSE UNDEFINED
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount < 0
+	|				AND DocumentTable.GLAccount.Currency
+	|			THEN DocumentTable.Currency
+	|		ELSE UNDEFINED
+	|	END,
+	|	0,
+	|	0,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN DocumentTable.ExchangeRateDifferenceAmount
+	|		ELSE -DocumentTable.ExchangeRateDifferenceAmount
+	|	END,
+	|	&ExchangeDifference
+	|FROM
+	|	ExchangeDifferencesTemporaryTableOtherSettlements AS DocumentTable
+	|
+	|UNION ALL
+	|
+	|SELECT
+	|	15,
+	|	DocumentTable.LineNumber,
+	|	DocumentTable.Date,
+	|	DocumentTable.Company,
+	|	VALUE(Catalog.PlanningPeriods.Actual),
+	|	DocumentTable.BankAccount.GLAccount,
+	|	DocumentTable.GLAccount,
+	|	CASE
+	|		WHEN DocumentTable.BankAccount.GLAccount.Currency
+	|			THEN DocumentTable.CashCurrency
+	|		ELSE UNDEFINED
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.GLAccount.Currency
+	|			THEN DocumentTable.Currency
+	|		ELSE UNDEFINED
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.BankAccount.GLAccount.Currency
+	|			THEN DocumentTable.PaymentAmount
+	|		ELSE 0
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.GLAccount.Currency
+	|			THEN DocumentTable.AmountCur
+	|		ELSE 0
+	|	END,
+	|	DocumentTable.Amount,
+	|	DocumentTable.PostingContent
+	|FROM
+	|	TemporaryTableOtherSettlements AS DocumentTable
+	|
 	|ORDER BY
 	|	Ordering,
 	|	LineNumber";
@@ -1102,6 +1304,7 @@ Procedure GenerateTableIncomeAndExpensesCashMethod(DocumentRefPaymentReceipt, St
 	|WHERE
 	|	&IncomeAndExpensesAccountingCashMethod
 	|	AND (DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.Other)
+	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.OtherSettlements)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.CurrencyPurchase))
 	|
 	|UNION ALL
@@ -1132,7 +1335,22 @@ Procedure GenerateTableIncomeAndExpensesCashMethod(DocumentRefPaymentReceipt, St
 	|FROM
 	|	TemporaryTableTableDeferredIncomeAndExpenditure AS Table
 	|WHERE
-	|	Table.AmountExpense > 0";
+	|	Table.AmountExpense > 0
+	|
+	|UNION ALL
+	|
+	|SELECT
+	|	Table.Period,
+	|	Table.Company,
+	|	VALUE(Catalog.BusinessActivities.Other),
+	|	Table.Item,
+	|	0,
+	|	Table.Amount
+	|FROM
+	|	TemporaryTableBankCharges AS Table
+	|WHERE
+	|	&IncomeAndExpensesAccountingCashMethod
+	|	AND Table.Amount <> 0";
 	
 	QueryResult = Query.Execute();
 	
@@ -1754,10 +1972,10 @@ Procedure InitializeDocumentData(DocumentRefPaymentReceipt, StructureAdditionalP
 	|	SUM(DocumentTable.SettlementsAmount) AS SettlementsAmount,
 	|	SUM(DocumentTable.PaymentAmount) AS PaymentAmount,
 	|	CASE
-	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = Type(Document.PaymentReceiptPlan)
+	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = TYPE(Document.PaymentReceiptPlan)
 	|				AND DocumentTable.PlanningDocument <> VALUE(Document.PaymentReceiptPlan.EmptyRef)
 	|			THEN DocumentTable.PlanningDocument
-	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = Type(Document.CashTransferPlan)
+	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = TYPE(Document.CashTransferPlan)
 	|				AND DocumentTable.PlanningDocument <> VALUE(Document.CashTransferPlan.EmptyRef)
 	|			THEN DocumentTable.PlanningDocument
 	|		WHEN DocumentTable.InvoiceForPayment.SchedulePayment
@@ -1804,10 +2022,10 @@ Procedure InitializeDocumentData(DocumentRefPaymentReceipt, StructureAdditionalP
 	|	DocumentTable.Ref.Date,
 	|	DocumentTable.Contract.SettlementsCurrency,
 	|	CASE
-	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = Type(Document.PaymentReceiptPlan)
+	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = TYPE(Document.PaymentReceiptPlan)
 	|				AND DocumentTable.PlanningDocument <> VALUE(Document.PaymentReceiptPlan.EmptyRef)
 	|			THEN DocumentTable.PlanningDocument
-	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = Type(Document.CashTransferPlan)
+	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = TYPE(Document.CashTransferPlan)
 	|				AND DocumentTable.PlanningDocument <> VALUE(Document.CashTransferPlan.EmptyRef)
 	|			THEN DocumentTable.PlanningDocument
 	|		WHEN DocumentTable.InvoiceForPayment.SchedulePayment
@@ -1867,10 +2085,16 @@ Procedure InitializeDocumentData(DocumentRefPaymentReceipt, StructureAdditionalP
 	Query.Execute();
 	
 	// Register record table creation by account sections.
+	// Bank charges
+	GenerateTableBankCharges(DocumentRefPaymentReceipt, StructureAdditionalProperties);
+	// End Bank charges
 	GenerateTableCashAssets(DocumentRefPaymentReceipt, StructureAdditionalProperties);
 	GenerateAdvanceHolderPaymentsTable(DocumentRefPaymentReceipt, StructureAdditionalProperties);
 	GenerateTableCustomerAccounts(DocumentRefPaymentReceipt, StructureAdditionalProperties);
 	GenerateTableAccountsPayable(DocumentRefPaymentReceipt, StructureAdditionalProperties);
+	// Other settlements
+	GenerateTableSettlementsWithOtherCounterparties(DocumentRefPaymentReceipt, StructureAdditionalProperties);
+	// End Other settlements
 	GenerateTableIncomeAndExpenses(DocumentRefPaymentReceipt, StructureAdditionalProperties);
 	GenerateTableTaxesSettlements(DocumentRefPaymentReceipt, StructureAdditionalProperties);
 	GenerateTableIncomeAndExpensesUndistributed(DocumentRefPaymentReceipt, StructureAdditionalProperties);
@@ -2009,6 +2233,197 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	
 EndProcedure
+
+#EndRegion
+
+#Region OtherSettlements
+
+Procedure GenerateTableSettlementsWithOtherCounterparties(DocumentRefPaymentReceipt, StructureAdditionalProperties)
+	
+	Query = New Query;
+	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
+	
+	Query.SetParameter("Company",						StructureAdditionalProperties.ForPosting.Company);
+	Query.SetParameter("AccountingForOtherOperations",	NStr("ru = 'Учет расчетов по прочим операциям'; en = 'Accounting for other operations'",	Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("Comment",						NStr("ru = 'Уменьшение долга контрагента'; en = 'Decrease company debt'", Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("Ref",							DocumentRefPaymentReceipt);
+	Query.SetParameter("PointInTime",					New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
+	Query.SetParameter("ControlPeriod",					StructureAdditionalProperties.ForPosting.PointInTime.Date);
+	Query.SetParameter("ExchangeRateDifference",		NStr("ru = 'Курсовая разница'; en = 'Exchange rate difference'", Metadata.DefaultLanguage.LanguageCode));
+	
+	Query.Text =
+	"SELECT
+	|	TemporaryTablePaymentDetails.LineNumber AS LineNumber,
+	|	&Company AS Company,
+	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|	TemporaryTablePaymentDetails.Counterparty AS Counterparty,
+	|	TemporaryTablePaymentDetails.Contract AS Contract,
+	|	CASE
+	|		WHEN TemporaryTablePaymentDetails.DoOperationsByDocuments
+	|			THEN CASE
+	|					WHEN TemporaryTablePaymentDetails.Document = VALUE(Document.CustomerOrder.EmptyRef)
+	|							OR TemporaryTablePaymentDetails.Document = VALUE(Document.PurchaseOrder.EmptyRef)
+	|							OR TemporaryTablePaymentDetails.Document = UNDEFINED
+	|						THEN &Ref
+	|					ELSE TemporaryTablePaymentDetails.Document
+	|				END
+	|		ELSE UNDEFINED
+	|	END AS Document,
+	|	CASE
+	|		WHEN TemporaryTablePaymentDetails.DoOperationsByOrders
+	|			THEN TemporaryTablePaymentDetails.Order
+	|		ELSE VALUE(Document.CustomerOrder.EmptyRef)
+	|	END AS Order,
+	|	TemporaryTablePaymentDetails.SettlementsCurrency AS Currency,
+	|	TemporaryTableHeader.CashCurrency AS CashCurrency,
+	|	TemporaryTablePaymentDetails.Date AS Date,
+	|	SUM(TemporaryTablePaymentDetails.PaymentAmount) AS PaymentAmount,
+	|	SUM(TemporaryTablePaymentDetails.AccountingAmount) AS Amount,
+	|	SUM(TemporaryTablePaymentDetails.SettlementsAmount) AS AmountCur,
+	|	SUM(TemporaryTablePaymentDetails.AccountingAmount) AS AmountForBalance,
+	|	SUM(TemporaryTablePaymentDetails.SettlementsAmount) AS AmountCurForBalance,
+	|	&AccountingForOtherOperations AS PostingContent,
+	|	&Comment AS Comment,
+	|	TemporaryTableHeader.Correspondence AS GLAccount,
+	|	TemporaryTableHeader.BankAccount AS BankAccount,
+	|	TemporaryTablePaymentDetails.Date AS Period
+	|INTO TemporaryTableOtherSettlements
+	|FROM
+	|	TemporaryTablePaymentDetails AS TemporaryTablePaymentDetails
+	|		INNER JOIN TemporaryTableHeader AS TemporaryTableHeader
+	|		ON (TRUE)
+	|WHERE
+	|	TemporaryTablePaymentDetails.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.OtherSettlements)
+	|
+	|GROUP BY
+	|	TemporaryTablePaymentDetails.LineNumber,
+	|	TemporaryTablePaymentDetails.Counterparty,
+	|	TemporaryTablePaymentDetails.Contract,
+	|	TemporaryTablePaymentDetails.SettlementsCurrency,
+	|	TemporaryTableHeader.CashCurrency,
+	|	TemporaryTablePaymentDetails.Date,
+	|	CASE
+	|		WHEN TemporaryTablePaymentDetails.DoOperationsByDocuments
+	|			THEN CASE
+	|					WHEN TemporaryTablePaymentDetails.Document = VALUE(Document.CustomerOrder.EmptyRef)
+	|							OR TemporaryTablePaymentDetails.Document = VALUE(Document.PurchaseOrder.EmptyRef)
+	|							OR TemporaryTablePaymentDetails.Document = UNDEFINED
+	|						THEN &Ref
+	|					ELSE TemporaryTablePaymentDetails.Document
+	|				END
+	|		ELSE UNDEFINED
+	|	END,
+	|	CASE
+	|		WHEN TemporaryTablePaymentDetails.DoOperationsByOrders
+	|			THEN TemporaryTablePaymentDetails.Order
+	|		ELSE VALUE(Document.CustomerOrder.EmptyRef)
+	|	END,
+	|	TemporaryTableHeader.Correspondence,
+	|	TemporaryTableHeader.BankAccount,
+	|	TemporaryTablePaymentDetails.Date";
+	
+	QueryResult = Query.Execute();
+	
+	Query.Text =
+	"SELECT
+	|	TemporaryTableOtherSettlements.GLAccount AS GLAccount,
+	|	TemporaryTableOtherSettlements.Company AS Company,
+	|	TemporaryTableOtherSettlements.Counterparty AS Counterparty,
+	|	TemporaryTableOtherSettlements.Contract AS Contract
+	|FROM
+	|	TemporaryTableOtherSettlements AS TemporaryTableOtherSettlements";
+	
+	QueryResult = Query.Execute();
+	
+	DataLock 			= New DataLock;
+	LockItem 			= DataLock.Add("AccumulationRegister.SettlementsWithOtherCounterparties");
+	LockItem.Mode 		= DataLockMode.Exclusive;
+	LockItem.DataSource	= QueryResult;
+	
+	For Each QueryResultColumn IN QueryResult.Columns Do
+		LockItem.UseFromDataSource(QueryResultColumn.Name, QueryResultColumn.Name);
+	EndDo;
+	DataLock.Lock();
+	
+	QueryNumber = 0;
+	
+	Query.Text = SmallBusinessServer.GetQueryTextExchangeRateDifferencesAccountingForOtherOperations(Query.TempTablesManager, QueryNumber);
+	ResultsArray = Query.ExecuteBatch();
+	
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSettlementsWithOtherCounterparties", ResultsArray[QueryNumber].Unload());
+	
+EndProcedure // GenerateTableSettlementsWithOtherCounterparties()
+
+#EndRegion
+
+#Region BankCharges
+	
+// Generates a table of values that contains the data for the register.
+// Saves the tables of values in the properties of the structure "AdditionalProperties".
+//
+Procedure GenerateTableBankCharges(DocumentRefPaymentReceipt, StructureAdditionalProperties)
+	
+	Query = New Query;
+	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
+	
+	Query.SetParameter("Ref",					DocumentRefPaymentReceipt);
+	Query.SetParameter("PointInTime",			New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
+	Query.SetParameter("Company",				StructureAdditionalProperties.ForPosting.Company);
+	Query.SetParameter("AccountingCurrency",	Constants.AccountingCurrency.Get());
+	Query.SetParameter("CashCurrency",			DocumentRefPaymentReceipt.CashCurrency);
+	Query.SetParameter("BankCharge",			NStr("ru = 'Банковская комиссия'; en = 'Bank charge'",	Metadata.DefaultLanguage.LanguageCode));
+	
+	Query.Text =
+	"SELECT
+	|	DocumentTable.Date AS Period,
+	|	&Company AS Company,
+	|	DocumentTable.BankAccount AS BankAccount,
+	|	DocumentTable.CashCurrency AS Currency,
+	|	DocumentTable.BankCharge AS BankCharge,
+	|	DocumentTable.BankChargeItem AS Item,
+	|	DocumentTable.BankCharge.GLAccount AS GLAccount,
+	|	DocumentTable.BankCharge.GLExpenseAccount AS GLExpenseAccount,
+	|	&BankCharge AS PostingContent,
+	|	CASE
+	|		WHEN DocumentTable.OperationKind = VALUE(Enum.OperationKindsPaymentReceipt.CurrencyPurchase)
+	|			THEN DocumentTable.BankChargeAmount
+	|		ELSE CAST(DocumentTable.BankChargeAmount * CashCurrencyRatesSliceLast.ExchangeRate * AccountingCurrencyRatesSliceLast.Multiplicity / (AccountingCurrencyRatesSliceLast.ExchangeRate * CashCurrencyRatesSliceLast.Multiplicity) AS NUMBER(15, 2))
+	|	END AS Amount,
+	|	DocumentTable.BankChargeAmount AS AmountCur
+	|INTO TemporaryTableBankCharges
+	|FROM
+	|	Document.PaymentReceipt AS DocumentTable
+	|		LEFT JOIN TemporaryTableCurrencyRatesSliceLatest AS AccountingCurrencyRatesSliceLast
+	|		ON (AccountingCurrencyRatesSliceLast.Currency = &AccountingCurrency)
+	|		LEFT JOIN TemporaryTableCurrencyRatesSliceLatest AS CashCurrencyRatesSliceLast
+	|		ON (CashCurrencyRatesSliceLast.Currency = &CashCurrency)
+	|WHERE
+	|	DocumentTable.Ref = &Ref";
+	
+	Query.Execute();
+
+	Query.Text = 
+	"SELECT
+	|	TemporaryTableBankCharges.Period,
+	|	TemporaryTableBankCharges.Company,
+	|	TemporaryTableBankCharges.BankAccount,
+	|	TemporaryTableBankCharges.Currency,
+	|	TemporaryTableBankCharges.BankCharge,
+	|	TemporaryTableBankCharges.Item,
+	|	TemporaryTableBankCharges.PostingContent,
+	|	TemporaryTableBankCharges.Amount,
+	|	TemporaryTableBankCharges.AmountCur
+	|FROM
+	|	TemporaryTableBankCharges AS TemporaryTableBankCharges
+	|WHERE
+	|	(TemporaryTableBankCharges.Amount <> 0
+	|			OR TemporaryTableBankCharges.AmountCur <> 0)";
+	
+	QueryResult	= Query.Execute();
+	
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableBankCharges", QueryResult.Unload());
+	
+EndProcedure // GenerateTableBankCharges()
 
 #EndRegion
 

@@ -2309,10 +2309,7 @@ Function PlacePrepaymentToStorage()
 		Object.Prepayment.Unload(,
 			"Document,
 			|SettlementsAmount,
-			//( elmi # 08.5
-			//|Rate,
 			|ExchangeRate,
-			//) elmi
 			|Multiplicity,
 			|PaymentAmount"),
 		UUID
@@ -2671,25 +2668,16 @@ Procedure EditPrepaymentOffset(Command)
 	SelectionParameters = New Structure(
 		"AddressPrepaymentInStorage,
 		|Pick,
-		//( elmi # 08.5
-		//|ThereIsOrder,
 		|IsOrder,
-		//) elmi
 		|ThereIsOrder,
 		|OrderInHeader,
 		|Company,
 		|Order,
 		|Date,
-		//( elmi # 08.5
-		//|Refs,
 		|Ref,
-		//) elmi
 		|Counterparty,
 		|Contract,
-		//( elmi # 08.5
-		//|Rate,
 		|ExchangeRate,
-		//) elmi
 		|Multiplicity,
 		|DocumentCurrency,
 		|DocumentAmount",
@@ -3043,13 +3031,6 @@ Procedure OnOpen(Cancel)
 	Else
 		Items.WOGroupPaymentCalendarAsListAsString.CurrentPage = Items.WOGroupPaymentCalendarAsString;
 	EndIf;
-	
-	
-    //( elmi # 08.5 
-	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "Prepayment");
-   //) elmi
-
-	
 	
 EndProcedure // OnOpen()
 
@@ -5922,36 +5903,16 @@ Procedure PrepaymentPaymentAmountOnChange(Item)
 		TabularSectionRow.ExchangeRate
 	);
 	
+	TabularSectionRow.Multiplicity = 1;
 	
-	//( elmi # 08.5
-	//TabularSectionRow.Multiplicity = 1;
-	//
-	//TabularSectionRow.ExchangeRate =
-	//	?(TabularSectionRow.SettlementsAmount = 0,
-	//		1,
-	//		TabularSectionRow.PaymentAmount
-	//	  / TabularSectionRow.SettlementsAmount
-	//	  * Object.ExchangeRate
-	//);
-   TabularSectionRow.Multiplicity = ?(
-		TabularSectionRow.Multiplicity = 0,
-		1,
-		TabularSectionRow.Multiplicity
+	TabularSectionRow.ExchangeRate =
+		?(TabularSectionRow.SettlementsAmount = 0,
+			1,
+			TabularSectionRow.PaymentAmount
+		  / TabularSectionRow.SettlementsAmount
+		  * Object.ExchangeRate
 	);
-	If SmallBusinessServer.IndirectQuotationInUse() Then
-		TabularSectionRow.Multiplicity =
-			?(TabularSectionRow.PaymentAmount = 0,
-				1,
-				TabularSectionRow.SettlementsAmount/ TabularSectionRow.PaymentAmount * Object.Multiplicity
-		);
-	Else
-		TabularSectionRow.ExchangeRate =
-			?(TabularSectionRow.SettlementsAmount = 0,
-				1,
-				TabularSectionRow.PaymentAmount  / TabularSectionRow.SettlementsAmount * Object.ExchangeRate
-		);
-	EndIf;
-	//) elmi
+	
 EndProcedure
 
 #EndRegion

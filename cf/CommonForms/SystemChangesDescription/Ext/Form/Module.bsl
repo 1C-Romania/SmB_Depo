@@ -191,17 +191,3 @@ Procedure ScheduledJobsAreDisconnectionNavigationRefDataProcessorEnd(Result, Add
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

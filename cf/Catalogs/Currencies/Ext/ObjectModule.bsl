@@ -137,17 +137,8 @@ Procedure UpdateExchangeRate(SubordinateCurrency)
 			
 			NewCurrencySetRecord = RecordSet.Add();
 			NewCurrencySetRecord.Currency    = SubordinateCurrency.Ref;
-			//( elmi # 08.5
-			//NewCurrencySetRecord.Multiplicity = Selection.Multiplicity;
-			//NewCurrencySetRecord.ExchangeRate      = Selection.ExchangeRate + Selection.ExchangeRate * Markup / 100;
-			Если SmallBusinessServer.IndirectQuotationInUse() Тогда
-				NewCurrencySetRecord.Multiplicity = Selection.Multiplicity + Selection.Multiplicity * Markup / 100;;
-				NewCurrencySetRecord.ExchangeRate = Selection.ExchangeRate;
-			Иначе
-				NewCurrencySetRecord.Multiplicity = Selection.Multiplicity;
-				NewCurrencySetRecord.ExchangeRate = Selection.ExchangeRate + Selection.ExchangeRate * Markup / 100;
-			КонецЕсли;	
-    		//) elmi
+			NewCurrencySetRecord.Multiplicity = Selection.Multiplicity;
+			NewCurrencySetRecord.ExchangeRate      = Selection.ExchangeRate + Selection.ExchangeRate * Markup / 100;
 			NewCurrencySetRecord.Period    = Selection.Period;
 			
 		EndDo;

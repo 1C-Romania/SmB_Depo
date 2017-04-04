@@ -25,7 +25,7 @@ Procedure GetSectionsWithAdditionalInformationProcessors(Sections) Export
 	Sections.Add(Metadata.Subsystems.InventoryAndPurchasing);
 	Sections.Add(Metadata.Subsystems.Services);
 	Sections.Add(Metadata.Subsystems.KittingAndProduction);
-	Sections.Add(Metadata.Subsystems.CashAssets);
+	Sections.Add(Metadata.Subsystems.Finances);
 	Sections.Add(Metadata.Subsystems.PayrollAndHumanResources);
 	Sections.Add(Metadata.Subsystems.Enterprise);
 	Sections.Add(Metadata.Subsystems.Analysis);
@@ -53,7 +53,7 @@ Procedure GetSectionsWithAdditionalReports(Sections) Export
 	Sections.Add(Metadata.Subsystems.InventoryAndPurchasing);
 	Sections.Add(Metadata.Subsystems.Services);
 	Sections.Add(Metadata.Subsystems.KittingAndProduction);
-	Sections.Add(Metadata.Subsystems.CashAssets);
+	Sections.Add(Metadata.Subsystems.Finances);
 	Sections.Add(Metadata.Subsystems.PayrollAndHumanResources);
 	Sections.Add(Metadata.Subsystems.Enterprise);
 	Sections.Add(Metadata.Subsystems.Analysis);

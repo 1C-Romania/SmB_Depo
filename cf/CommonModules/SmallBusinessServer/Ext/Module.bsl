@@ -2898,6 +2898,23 @@ Procedure ReflectInventoryByCCD(AdditionalProperties, RegisterRecords, Cancel) E
 	
 EndProcedure
 
+// Moves accumulation register BankCharges.
+//
+Procedure ReflectBankCharges(AdditionalProperties, RegisterRecords, Cancel) Export
+	
+	TableBankCharges = AdditionalProperties.TableForRegisterRecords.TableBankCharges;
+	
+	If Cancel
+	 OR TableBankCharges.Count() = 0 Then
+		Return;
+	EndIf;
+	
+	BankChargesRegistering = RegisterRecords.BankCharges;
+	BankChargesRegistering.Write = True;
+	BankChargesRegistering.Load(TableBankCharges);
+	
+EndProcedure
+
 // Moves accounting register Management.
 //
 Procedure ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel) Export
@@ -10101,10 +10118,7 @@ Procedure FillPaymentDetailsExpense(CurrentObject, Counterparty = Undefined, Def
 			StructureByCurrency.ExchangeRate
 		);
 		Multiplicity = ?(
-		    //( elmi # 08.5
-		    //StructureByCurrency.ExchangeRate = 0,
-			StructureByCurrency.Multiplicity = 0,
-			//) elmi 
+			StructureByCurrency.ExchangeRate = 0,
 			1,
 			StructureByCurrency.Multiplicity
 		);
@@ -10350,10 +10364,7 @@ Procedure FillPaymentDetailsReceipt(CurrentObject, Counterparty = Undefined, Def
 			StructureByCurrency.ExchangeRate
 		);
 		Multiplicity = ?(
-		    //( elmi # 08.5
-		    //StructureByCurrency.ExchangeRate = 0,
-			StructureByCurrency.Multiplicity = 0,
-			//) elmi 
+			StructureByCurrency.ExchangeRate = 0,
 			1,
 			StructureByCurrency.Multiplicity
 		);
@@ -11104,21 +11115,206 @@ Function FindQuerySchemaSource(Sources, TablePseudonym, TableType = Undefined) E
 	
 EndFunction
 
-//( elmi # 08.5
-Function IndirectQuotationInUse() Экспорт
+Function GetFunctionalOptionValue(Name) Export
 	
-   QuotationType = SmallBusinessReUse.GetCurrencyQuotationType();
-   
-   If  ValueIsFilled(QuotationType) Then
-	   
-	   Return  QuotationType = Enums.CurrencyQuotationType.IndirectQuote ;
-	   
-   Else
-	   
-	   Return False;     //Direct quote
-	   
-   Endif
-   
-EndFunction
-//) elmi
+	Return GetFunctionalOption(Name);
+	
+EndFunction // GetFunctionalOptionValue()
 
+#Region OtherSettlements
+	
+// Moves accumulation register SettlementsWithOtherCounterparties.
+//
+Procedure ReflectSettlementsWithOtherCounterparties(AdditionalProperties, RegisterRecords, Cancel) Export
+	
+	TableSettlementsWithOtherCounterparties = AdditionalProperties.TableForRegisterRecords.TableSettlementsWithOtherCounterparties;
+	
+	If Cancel
+	 OR TableSettlementsWithOtherCounterparties.Count() = 0 Then
+		Return;
+	EndIf;
+	
+	SettlementsWithOtherCounterpartiesRegistering = RegisterRecords.SettlementsWithOtherCounterparties;
+	SettlementsWithOtherCounterpartiesRegistering.Write = True;
+	SettlementsWithOtherCounterpartiesRegistering.Load(TableSettlementsWithOtherCounterparties);
+	
+EndProcedure
+
+Function GetQueryTextExchangeRateDifferencesAccountingForOtherOperations(TempTablesManager, QueryNumber) Export
+	
+	QueryNumber = 2;
+	
+	QueryText =
+	"SELECT
+	|	AcccountsBalances.Company AS Company,
+	|	AcccountsBalances.Counterparty AS Counterparty,
+	|	AcccountsBalances.Contract AS Contract,
+	|	AcccountsBalances.GLAccount AS GLAccount,
+	|	SUM(AcccountsBalances.AmountBalance) AS AmountBalance,
+	|	SUM(AcccountsBalances.AmountCurBalance) AS AmountCurBalance
+	|INTO TemporaryTableBalancesAfterPosting
+	|FROM
+	|	(SELECT
+	|		TemporaryTable.Company AS Company,
+	|		TemporaryTable.Counterparty AS Counterparty,
+	|		TemporaryTable.Contract AS Contract,
+	|		TemporaryTable.GLAccount AS GLAccount,
+	|		TemporaryTable.AmountForBalance AS AmountBalance,
+	|		TemporaryTable.AmountCurForBalance AS AmountCurBalance
+	|	FROM
+	|		TemporaryTableOtherSettlements AS TemporaryTable
+	|	
+	|	UNION ALL
+	|	
+	|	SELECT
+	|		TableBalances.Company,
+	|		TableBalances.Counterparty,
+	|		TableBalances.Contract,
+	|		TableBalances.GLAccount,
+	|		ISNULL(TableBalances.AmountBalance, 0),
+	|		ISNULL(TableBalances.AmountCurBalance, 0)
+	|	FROM
+	|		AccumulationRegister.SettlementsWithOtherCounterparties.Balance(
+	|				&PointInTime,
+	|				(Company, Counterparty, Contract, GLAccount) IN
+	|					(SELECT DISTINCT
+	|						TemporaryTableOtherSettlements.Company,
+	|						TemporaryTableOtherSettlements.Counterparty,
+	|						TemporaryTableOtherSettlements.Contract,
+	|						TemporaryTableOtherSettlements.GLAccount
+	|					FROM
+	|						TemporaryTableOtherSettlements)) AS TableBalances
+	|	
+	|	UNION ALL
+	|	
+	|	SELECT
+	|		DocumentRegisterRecords.Company,
+	|		DocumentRegisterRecords.Counterparty,
+	|		DocumentRegisterRecords.Contract,
+	|		DocumentRegisterRecords.GLAccount,
+	|		CASE
+	|			WHEN DocumentRegisterRecords.RecordType = VALUE(AccumulationRecordType.Receipt)
+	|				THEN -ISNULL(DocumentRegisterRecords.Amount, 0)
+	|			ELSE ISNULL(DocumentRegisterRecords.Amount, 0)
+	|		END,
+	|		CASE
+	|			WHEN DocumentRegisterRecords.RecordType = VALUE(AccumulationRecordType.Receipt)
+	|				THEN -ISNULL(DocumentRegisterRecords.AmountCur, 0)
+	|			ELSE ISNULL(DocumentRegisterRecords.AmountCur, 0)
+	|		END
+	|	FROM
+	|		AccumulationRegister.SettlementsWithOtherCounterparties AS DocumentRegisterRecords
+	|	WHERE
+	|		DocumentRegisterRecords.Recorder = &Ref
+	|		AND DocumentRegisterRecords.Period <= &ControlPeriod) AS AcccountsBalances
+	|
+	|GROUP BY
+	|	AcccountsBalances.Company,
+	|	AcccountsBalances.Counterparty,
+	|	AcccountsBalances.Contract,
+	|	AcccountsBalances.GLAccount
+	|
+	|INDEX BY
+	|	Company,
+	|	Counterparty,
+	|	Contract,
+	|	GLAccount
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT DISTINCT
+	|	1 AS LineNumber,
+	|	&ControlPeriod AS Date,
+	|	TableAccounts.Company AS Company,
+	|	TableAccounts.Counterparty AS Counterparty,
+	|	TableAccounts.Contract AS Contract,
+	|	TableAccounts.GLAccount AS GLAccount,
+	|	ISNULL(TableBalances.AmountCurBalance, 0) * CurrencyRatesAccountsSliceLast.ExchangeRate * CurrencyRatesSliceLast.Multiplicity / (CurrencyRatesSliceLast.ExchangeRate * CurrencyRatesAccountsSliceLast.Multiplicity) - ISNULL(TableBalances.AmountBalance, 0) AS ExchangeRateDifferenceAmount,
+	|	TableAccounts.Currency AS Currency
+	|INTO ExchangeDifferencesTemporaryTableOtherSettlements
+	|FROM
+	|	TemporaryTableOtherSettlements AS TableAccounts
+	|		LEFT JOIN TemporaryTableBalancesAfterPosting AS TableBalances
+	|		ON TableAccounts.Company = TableBalances.Company
+	|			AND TableAccounts.Counterparty = TableBalances.Counterparty
+	|			AND TableAccounts.Contract = TableBalances.Contract
+	|			AND TableAccounts.GLAccount = TableBalances.GLAccount
+	|		LEFT JOIN InformationRegister.CurrencyRates.SliceLast(
+	|				&PointInTime,
+	|				Currency IN
+	|					(SELECT
+	|						ConstantDefaultCurrency.Value
+	|					FROM
+	|						Constant.AccountingCurrency AS ConstantDefaultCurrency)) AS CurrencyRatesSliceLast
+	|		ON (TRUE)
+	|		LEFT JOIN InformationRegister.CurrencyRates.SliceLast(
+	|				&PointInTime,
+	|				Currency IN
+	|					(SELECT DISTINCT
+	|						TemporaryTableOtherSettlements.Currency
+	|					FROM
+	|						TemporaryTableOtherSettlements)) AS CurrencyRatesAccountsSliceLast
+	|		ON TableAccounts.Contract.SettlementsCurrency = CurrencyRatesAccountsSliceLast.Currency
+	|WHERE
+	|	(ISNULL(TableBalances.AmountCurBalance, 0) * CurrencyRatesAccountsSliceLast.ExchangeRate * CurrencyRatesSliceLast.Multiplicity / (CurrencyRatesSliceLast.ExchangeRate * CurrencyRatesAccountsSliceLast.Multiplicity) - ISNULL(TableBalances.AmountBalance, 0) >= 0.005
+	|			OR ISNULL(TableBalances.AmountCurBalance, 0) * CurrencyRatesAccountsSliceLast.ExchangeRate * CurrencyRatesSliceLast.Multiplicity / (CurrencyRatesSliceLast.ExchangeRate * CurrencyRatesAccountsSliceLast.Multiplicity) - ISNULL(TableBalances.AmountBalance, 0) <= -0.005)
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	1 AS Order,
+	|	DocumentTable.LineNumber AS LineNumber,
+	|	DocumentTable.Date AS Period,
+	|	DocumentTable.RecordType AS RecordType,
+	|	DocumentTable.Company AS Company,
+	|	DocumentTable.Counterparty AS Counterparty,
+	|	DocumentTable.Contract AS Contract,
+	|	DocumentTable.GLAccount AS GLAccount,
+	|	DocumentTable.Amount AS Amount,
+	|	DocumentTable.AmountCur AS AmountCur,
+	|	DocumentTable.Currency,
+	|	DocumentTable.PostingContent,
+	|	DocumentTable.Comment
+	|FROM
+	|	TemporaryTableOtherSettlements AS DocumentTable
+	|
+	|UNION ALL
+	|
+	|SELECT
+	|	2,
+	|	DocumentTable.LineNumber,
+	|	DocumentTable.Date,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN VALUE(AccumulationRecordType.Receipt)
+	|		ELSE VALUE(AccumulationRecordType.Expense)
+	|	END,
+	|	DocumentTable.Company,
+	|	DocumentTable.Counterparty,
+	|	DocumentTable.Contract,
+	|	DocumentTable.GLAccount,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN DocumentTable.ExchangeRateDifferenceAmount
+	|		ELSE -DocumentTable.ExchangeRateDifferenceAmount
+	|	END,
+	|	0,
+	|	DocumentTable.Currency,
+	|	&ExchangeRateDifference,
+	|	""""
+	|FROM
+	|	ExchangeDifferencesTemporaryTableOtherSettlements AS DocumentTable
+	|
+	|ORDER BY
+	|	Order,
+	|	LineNumber
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|DROP TemporaryTableBalancesAfterPosting";
+		
+	Return QueryText;
+	
+EndFunction // GetQueryTextExchangeDifferenceAccountingForOtherOperations()
+
+#EndRegion

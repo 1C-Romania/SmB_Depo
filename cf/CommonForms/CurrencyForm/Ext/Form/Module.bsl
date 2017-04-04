@@ -243,16 +243,3 @@ Procedure RepetitionDocumentCurrenciesOnChange(Item)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-

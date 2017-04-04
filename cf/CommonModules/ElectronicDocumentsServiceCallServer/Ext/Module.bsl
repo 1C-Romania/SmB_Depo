@@ -12164,7 +12164,6 @@ Function IdentifiersArrayBankStatements(EDStatement)
 
 EndFunction
 
-
 #Region _SSL_AttachedFilesServiceServerCall
 
 // Receives all file signatures.

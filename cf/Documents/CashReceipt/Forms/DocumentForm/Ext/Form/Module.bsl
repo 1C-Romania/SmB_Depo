@@ -1,5 +1,970 @@
-﻿&AtClient
-Var UpdateSubordinatedInvoice;
+﻿
+#Region FormEventHandlers
+
+&AtServer
+Procedure OnCreateAtServer(Cancel, StandardProcessing)
+	
+	InformationCenterServer.OutputContextReferences(ThisForm, Items.InformationReferences);
+	
+	SmallBusinessServer.FillDocumentHeader(
+		Object,
+		,
+		Parameters.CopyingValue,
+		Parameters.Basis,
+		PostingIsAllowed,
+		Parameters.FillingValues
+	);
+	
+	If Object.PaymentDetails.Count() = 0 Then
+		Object.PaymentDetails.Add();
+		Object.PaymentDetails[0].PaymentAmount = Object.DocumentAmount;
+	EndIf;
+	
+	DocumentObject = FormAttributeToValue("Object");
+	If DocumentObject.IsNew()
+	AND Not ValueIsFilled(Parameters.CopyingValue) Then
+		If ValueIsFilled(Parameters.BasisDocument) Then
+			DocumentObject.Fill(Parameters.BasisDocument);
+			ValueToFormAttribute(DocumentObject, "Object");
+		EndIf;
+		If Not ValueIsFilled(Object.PettyCash) Then
+			Object.PettyCash = Catalogs.PettyCashes.GetPettyCashByDefault(Object.Company);
+			Object.CashCurrency = ?(ValueIsFilled(Object.PettyCash.CurrencyByDefault), Object.PettyCash.CurrencyByDefault, Object.CashCurrency);
+		EndIf;
+		If ValueIsFilled(Object.Counterparty)
+		   AND Object.PaymentDetails.Count() > 0
+		   AND Not ValueIsFilled(Parameters.BasisDocument) Then
+			If Not ValueIsFilled(Object.PaymentDetails[0].Contract) Then
+				Object.PaymentDetails[0].Contract = Object.Counterparty.ContractByDefault;
+			EndIf;
+			If ValueIsFilled(Object.PaymentDetails[0].Contract) Then
+				ContractCurrencyRateRepetition = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", Object.PaymentDetails[0].Contract.SettlementsCurrency));
+				Object.PaymentDetails[0].ExchangeRate = ?(ContractCurrencyRateRepetition.ExchangeRate = 0, 1, ContractCurrencyRateRepetition.ExchangeRate);
+				Object.PaymentDetails[0].Multiplicity = ?(ContractCurrencyRateRepetition.Multiplicity = 0, 1, ContractCurrencyRateRepetition.Multiplicity);
+			EndIf;
+		EndIf;
+		SetCFItem();
+	EndIf;
+	
+	// Form attributes setting.
+	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
+	StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", Object.CashCurrency));
+	
+	ExchangeRate = ?(
+		StructureByCurrency.ExchangeRate = 0,
+		1,
+		StructureByCurrency.ExchangeRate
+	);
+	Multiplicity = ?(
+		StructureByCurrency.ExchangeRate = 0,
+		1,
+		StructureByCurrency.Multiplicity
+	);
+	
+	StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", Constants.AccountingCurrency.Get()));
+	
+	AccountingCurrencyRate = ?(
+		StructureByCurrency.ExchangeRate = 0,
+		1,
+		StructureByCurrency.ExchangeRate
+	);
+	AccountingCurrencyMultiplicity = ?(
+		StructureByCurrency.ExchangeRate = 0,
+		1,
+		StructureByCurrency.Multiplicity
+	);
+	
+	SupplementOperationKindsChoiceList();
+	
+	If Not ValueIsFilled(Object.Ref)
+	   AND Not ValueIsFilled(Parameters.Basis)
+	   AND Not ValueIsFilled(Parameters.CopyingValue) Then
+		FillVATRateByCompanyVATTaxation();
+	Else
+		SetVisibleOfVATTaxation();
+	EndIf;
+	
+	If Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT Then
+		DefaultVATRate = Object.Company.DefaultVATRate;
+	ElsIf Object.VATTaxation = Enums.VATTaxationTypes.NotTaxableByVAT Then
+		DefaultVATRate = SmallBusinessReUse.GetVATRateWithoutVAT();
+	Else
+		DefaultVATRate = SmallBusinessReUse.GetVATRateZero();
+	EndIf;
+	
+	OperationKind = Object.OperationKind;
+	CashCurrency = Object.CashCurrency;
+	
+	DocumentDate = Object.Date;
+	If Not ValueIsFilled(DocumentDate) Then
+		DocumentDate = CurrentDate();
+	EndIf;
+	
+	PrintReceiptEnabled = False;
+	
+	Button = Items.Find("PrintReceipt");
+	If Button <> Undefined Then
+		
+		If Object.OperationKind = Enums.OperationKindsCashReceipt.FromCustomer Then
+			PrintReceiptEnabled = True;
+		EndIf;
+		
+		Button.Enabled = PrintReceiptEnabled;
+		Items.Decoration3.Visible = PrintReceiptEnabled;
+		Items.ReceiptCRNumber.Visible = PrintReceiptEnabled;
+		
+	EndIf;
+	
+	AccountingCurrency = Constants.AccountingCurrency.Get();
+	
+	// Fill in tabular section while entering a document from the working place.
+	If TypeOf(Parameters.FillingValues) = Type("Structure")
+	   AND Parameters.FillingValues.Property("FillDetailsOfPayment")
+	   AND Parameters.FillingValues.FillDetailsOfPayment Then
+		
+		TabularSectionRow = Object.PaymentDetails[0];
+		
+		TabularSectionRow.PaymentAmount = Object.DocumentAmount;
+		TabularSectionRow.ExchangeRate = ?(
+			TabularSectionRow.ExchangeRate = 0,
+			1,
+			TabularSectionRow.ExchangeRate
+		);
+		
+		TabularSectionRow.Multiplicity = ?(
+			TabularSectionRow.Multiplicity = 0,
+			1,
+			TabularSectionRow.Multiplicity
+		);
+		
+		TabularSectionRow.SettlementsAmount = SmallBusinessServer.RecalculateFromCurrencyToCurrency(
+			TabularSectionRow.PaymentAmount,
+			ExchangeRate,
+			TabularSectionRow.ExchangeRate,
+			Multiplicity,
+			TabularSectionRow.Multiplicity
+		);
+		
+		If Not ValueIsFilled(TabularSectionRow.VATRate) Then
+			TabularSectionRow.VATRate = DefaultVATRate;
+		EndIf;
+		
+		TabularSectionRow.VATAmount = TabularSectionRow.PaymentAmount - (TabularSectionRow.PaymentAmount) / ((TabularSectionRow.VATRate.Rate + 100) / 100);
+		
+	EndIf;
+	
+	SetVisibilityItemsDependenceOnOperationKind();
+	SetVisibilitySettlementAttributes();
+	
+	SmallBusinessClientServer.SetPictureForComment(Items.Additionally, Object.Comment);
+	
+	// StandardSubsystems.ObjectVersioning
+	ObjectVersioning.OnCreateAtServer(ThisForm);
+	// End StandardSubsystems.ObjectVersioning
+	
+	// StandardSubsystems.AdditionalReportsAndDataProcessors
+	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
+	// End StandardSubsystems.AdditionalReportsAndDataProcessors
+	
+	// StandardSubsystems.Printing
+	PrintManagement.OnCreateAtServer(ThisForm, Items.ImportantCommandsGroup);
+	// End StandardSubsystems.Printing
+	
+	// StandardSubsystems.Properties
+	 PropertiesManagement.OnCreateAtServer(ThisForm, , "AdditionalAttributesGroup");
+	// End StandardSubsystems.Properties
+	
+EndProcedure
+
+&AtClient
+Procedure OnOpen(Cancel)
+	
+	SetChoiceParameterLinksAvailableTypes();
+	SetCurrentPage();
+	
+EndProcedure
+
+&AtClient
+Procedure NotificationProcessing(EventName, Parameter, Source)
+	
+	If EventName = "AfterRecordingOfCounterparty" Then
+		If ValueIsFilled(Parameter)
+		   AND Object.Counterparty = Parameter Then
+			SetVisibilitySettlementAttributes();
+		EndIf;
+	EndIf;
+	
+	// StandardSubsystems.Properties
+	If PropertiesManagementClient.ProcessAlerts(ThisForm, EventName, Parameter) Then
+		UpdateAdditionalAttributesItems();
+	EndIf;
+	// End StandardSubsystems.Properties
+	
+EndProcedure
+
+&AtServer
+Procedure OnReadAtServer(CurrentObject)
+	
+	ChangeProhibitionDates.ObjectOnReadAtServer(ThisForm, CurrentObject);
+	
+	// StandardSubsystems.Properties
+	PropertiesManagement.OnReadAtServer(ThisForm, CurrentObject);
+	// End StandardSubsystems.Properties
+	
+EndProcedure
+
+&AtClient
+Procedure BeforeWrite(Cancel, WriteParameters)
+	
+	// StandardSubsystems.PerformanceEstimation
+	PerformanceEstimationClientServer.StartTimeMeasurement("DocumentCashReceiptPosting");
+	// StandardSubsystems.PerformanceEstimation
+	
+EndProcedure
+
+&AtServer
+Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
+	
+	If WriteParameters.WriteMode = DocumentWriteMode.Posting Then
+		
+		MessageText = "";
+		CheckContractToDocumentConditionAccordance(Object.PaymentDetails, MessageText, Object.Ref, Object.Company, Object.Counterparty, Object.OperationKind, Cancel);
+		
+		If MessageText <> "" Then
+			
+			Message = New UserMessage;
+			Message.Text = ?(Cancel, NStr("en='Document is not posted! ';ru='Документ не проведен! '") + MessageText, MessageText);
+			Message.Message();
+			
+			If Cancel Then
+				Return;
+			EndIf;
+			
+		EndIf;
+		
+	EndIf;
+	
+	// StandardSubsystems.Properties
+	PropertiesManagement.BeforeWriteAtServer(ThisForm, CurrentObject);
+	// End StandardSubsystems.Properties
+	
+EndProcedure
+
+&AtClient
+Procedure AfterWrite(WriteParameters)
+	
+	LineCount = Object.PaymentDetails.Count();
+	
+	// Notification about payment.
+	NotifyAboutBillPayment = False;
+	NotifyAboutOrderPayment = False;
+	
+	For Each CurRow IN Object.PaymentDetails Do
+		NotifyAboutBillPayment = ?(
+			NotifyAboutBillPayment,
+			NotifyAboutBillPayment,
+			ValueIsFilled(CurRow.InvoiceForPayment)
+		);
+		NotifyAboutOrderPayment = ?(
+			NotifyAboutOrderPayment,
+			NotifyAboutOrderPayment,
+			ValueIsFilled(CurRow.Order)
+		);
+	EndDo;
+	
+	If NotifyAboutBillPayment Then
+		Notify("NotificationAboutBillPayment");
+	EndIf;
+	
+	If NotifyAboutOrderPayment Then
+		Notify("NotificationAboutOrderPayment");
+	EndIf;
+	
+	Notify("NotificationAboutChangingDebt");
+	
+EndProcedure
+
+&AtServer
+Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
+	
+	// StandardSubsystems.Properties
+	PropertiesManagement.FillCheckProcessing(ThisForm, Cancel, CheckedAttributes);
+	// End StandardSubsystems.Properties
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormItemEventHandlers
+
+#Region OtherSettlements
+
+&AtClient
+Procedure OtherSettlementsCorrespondenceOnChange(Item)
+	
+	If Correspondence <> Object.Correspondence Then
+		SetVisibilityAttributesDependenceOnCorrespondence();
+		Correspondence = Object.Correspondence;
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#EndRegion
+
+#Region FormItemEventHandlersTablePaymentDetails
+
+&AtClient
+Procedure PaymentDetailsOtherSettlementsBeforeDeleteRow(Item, Cancel)
+	
+	If Object.PaymentDetails.Count() = 1 Then
+		Cancel = True;
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure PaymentDetailsOtherSettlementsContractOnChange(Item)
+	
+	ProcessOnChangeCounterpartyContractOtherSettlements();
+	
+EndProcedure
+
+&AtClient
+Procedure PaymentDetailsOtherSettlementsContractStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	If Object.Counterparty.IsEmpty() Then
+		StandardProcessing = False;
+		
+		Message = New UserMessage;
+		Message.Text = NStr("ru = 'Сначала выберите контрагента'; en = 'First select the counterparty'");
+		Message.Field = "Object.Counterparty";
+		Message.Message();
+		
+		Return;
+	EndIf;
+	
+	ProcessStartChoiceCounterpartyContractOtherSettlements(Item, StandardProcessing);
+	
+EndProcedure
+
+&AtClient
+Procedure PaymentDetailsOtherSettlementsSettlementsAmountOnChange(Item)
+	
+	CalculatePaymentAmountAtClient(Items.PaymentDetailsOtherSettlements.CurrentData);
+	
+	If Object.PaymentDetails.Count() = 1 Then
+		Object.DocumentAmount = Object.PaymentDetails[0].PaymentAmount;
+	EndIf;
+
+EndProcedure
+
+&AtClient
+Procedure PaymentDetailsOtherSettlementsExchangeRateOnChange(Item)
+		
+	CalculatePaymentAmountAtClient(Items.PaymentDetailsOtherSettlements.CurrentData);
+	
+	If Object.PaymentDetails.Count() = 1 Then
+		Object.DocumentAmount = Object.PaymentDetails[0].PaymentAmount;
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure PaymentDetailsOtherSettlementsMultiplicityOnChange(Item)
+		
+	CalculatePaymentAmountAtClient(Items.PaymentDetailsOtherSettlements.CurrentData);
+	
+	If Object.PaymentDetails.Count() = 1 Then
+		Object.DocumentAmount = Object.PaymentDetails[0].PaymentAmount;
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure PaymentDetailsOtherSettlementsPaymentAmountOnChange(Item)
+	
+	TablePartRow = Items.PaymentDetailsOtherSettlements.CurrentData;
+	
+	TablePartRow.ExchangeRate = ?(
+		TablePartRow.ExchangeRate = 0,
+		1,
+		TablePartRow.ExchangeRate
+	);
+	TablePartRow.Multiplicity = ?(
+		TablePartRow.Multiplicity = 0,
+		1,
+		TablePartRow.Multiplicity
+	);
+	
+	TablePartRow.ExchangeRate = ?(
+		TablePartRow.SettlementsAmount = 0,
+		1,
+		TablePartRow.PaymentAmount / TablePartRow.SettlementsAmount * ExchangeRate
+	);
+	
+	If Not ValueIsFilled(TablePartRow.VATRate) Then
+		TablePartRow.VATRate = DefaultVATRate;
+	EndIf;
+	
+	CalculateVATAmountAtClient(TablePartRow);
+	
+EndProcedure
+
+&AtClient
+Procedure PaymentDetailsOtherSettlementsVATRateOnChange(Item)
+	
+	TablePartRow = Items.PaymentDetailsOtherSettlements.CurrentData;
+	CalculateVATAmountAtClient(TablePartRow);
+
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtClient
+Procedure CalculatePaymentAmountAtClient(TablePartRow, ColumnName = "")
+	
+	StructureData = GetDataPaymentDetailsContractOnChange(
+			Object.Date,
+			TablePartRow.Contract
+		);
+		
+	TablePartRow.ExchangeRate = ?(
+		TablePartRow.ExchangeRate = 0,
+		?(StructureData.ContractCurrencyRateRepetition.ExchangeRate =0, 1, StructureData.ContractCurrencyRateRepetition.ExchangeRate),
+		TablePartRow.ExchangeRate
+	);
+	TablePartRow.Multiplicity = ?(
+		TablePartRow.Multiplicity = 0,
+		1,
+		TablePartRow.Multiplicity
+	);
+	
+	If TablePartRow.SettlementsAmount = 0 Then
+		TablePartRow.PaymentAmount = 0;
+		TablePartRow.ExchangeRate = StructureData.ContractCurrencyRateRepetition.ExchangeRate;
+	ElsIf Object.CashCurrency = StructureData.SettlementsCurrency Then
+		TablePartRow.PaymentAmount = TablePartRow.SettlementsAmount;
+	ElsIf TablePartRow.PaymentAmount = 0 Or
+		(ColumnName = "ExchangeRate" Or ColumnName = "Multiplicity") Then
+		If TablePartRow.ExchangeRate = 0 Then
+			TablePartRow.PaymentAmount = 0;
+		Else
+			TablePartRow.PaymentAmount = SmallBusinessClient.RecalculateFromCurrencyToCurrency(
+				TablePartRow.SettlementsAmount,
+				TablePartRow.ExchangeRate,
+				ExchangeRate,
+				TablePartRow.Multiplicity,
+				Multiplicity
+			);
+		EndIf;
+	Else
+		TablePartRow.ExchangeRate = ?(
+			TablePartRow.SettlementsAmount = 0 Or TablePartRow.PaymentAmount = 0,
+			StructureData.ContractCurrencyRateRepetition.ExchangeRate, //TablePartRow.ExchangeRate,
+			TablePartRow.PaymentAmount / TablePartRow.SettlementsAmount * ExchangeRate
+		);
+		TablePartRow.Multiplicity = ?(
+			TablePartRow.SettlementsAmount = 0 Or TablePartRow.PaymentAmount = 0,
+			StructureData.ContractCurrencyRateRepetition.Multiplicity,
+			TablePartRow.Multiplicity
+		);
+	EndIf;
+	
+	If Not ValueIsFilled(TablePartRow.VATRate) Then
+		TablePartRow.VATRate = DefaultVATRate;
+	EndIf;
+	
+	CalculateVATAmountAtClient(TablePartRow);
+	
+EndProcedure // CalculatePaymentAmountAtClient()
+
+&AtClient
+Procedure CalculateVATAmountAtClient(TablePartRow)
+	
+	VATRate = SmallBusinessReUse.GetVATRateValue(TablePartRow.VATRate);
+	
+	TablePartRow.VATRate = TablePartRow.PaymentAmount - (TablePartRow.PaymentAmount) / ((VATRate + 100) / 100);
+	
+EndProcedure // CalculateVATAmountAtClient()
+
+&AtServerNoContext
+Function GetChoiceFormParameters(Document, Company, Counterparty, Contract, OperationKind)
+	
+	ContractTypesList = Catalogs.CounterpartyContracts.GetContractKindsListForDocument(Document, OperationKind);
+	
+	FormParameters = New Structure;
+	FormParameters.Insert("ControlContractChoice", Counterparty.DoOperationsByContracts);
+	FormParameters.Insert("Counterparty", Counterparty);
+	FormParameters.Insert("Company", Company);
+	FormParameters.Insert("ContractKinds", ContractTypesList);
+	FormParameters.Insert("CurrentRow", Contract);
+	
+	Return FormParameters;
+	
+EndFunction
+
+&AtServerNoContext
+Function GetDataPaymentDetailsContractOnChange(Date, Contract, PlanningDocument = Undefined)
+	
+	StructureData = New Structure;
+	
+	StructureData.Insert(
+		"ContractCurrencyRateRepetition",
+		InformationRegisters.CurrencyRates.GetLast(
+			Date,
+			New Structure("Currency", Contract.SettlementsCurrency)
+		)
+	);
+	StructureData.Insert("SettlementsCurrency", Contract.SettlementsCurrency);
+	
+	Return StructureData;
+	
+EndFunction // GetDataPaymentDetailsContractOnChange()
+
+&AtServer
+Procedure OperationKindOnChangeAtServer()
+	
+	SetChoiceParameterLinksAvailableTypes();
+	
+	SetVisibilityPrintReceipt();
+	
+	If OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.RetailIncomeAccrualAccounting")
+	 OR Not ValueIsFilled(OperationKind) Then
+		User = Users.CurrentUser();
+		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
+		Object.Department = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
+	EndIf;
+	
+	// Other settlement
+	If Object.OperationKind = Enums.OperationKindsCashReceipt.OtherSettlements Then
+		DefaultVATRate			= SmallBusinessReUse.GetVATRateWithoutVAT();
+		DefaultVATRateNumber	= SmallBusinessReUse.GetVATRateValue(DefaultVATRate);
+		Object.PaymentDetails[0].VATRate = DefaultVATRate;
+	// End Other settlement
+	Else
+		FillVATRateByCompanyVATTaxation();
+	EndIf;
+		
+	SetVisibilityItemsDependenceOnOperationKind();
+	SetCFItemWhenChangingTheTypeOfOperations();
+	
+EndProcedure // OperationKindOnChangeAtServer()
+
+&AtClient
+Procedure ProcessOnChangeCounterpartyContractOtherSettlements()
+	
+	TablePartRow = Items.PaymentDetailsOtherSettlements.CurrentData;
+	
+	If ValueIsFilled(TablePartRow.Contract) Then
+		StructureData = GetDataPaymentDetailsContractOnChange(
+			Object.Date,
+			TablePartRow.Contract,
+			TablePartRow.PlanningDocument
+		);
+		TablePartRow.ExchangeRate = ?(
+			StructureData.ContractCurrencyRateRepetition.ExchangeRate = 0,
+			1,
+			StructureData.ContractCurrencyRateRepetition.ExchangeRate
+		);
+		TablePartRow.Multiplicity = ?(
+			StructureData.ContractCurrencyRateRepetition.Multiplicity = 0,
+			1,
+			StructureData.ContractCurrencyRateRepetition.Multiplicity
+		);
+		
+	EndIf;
+	
+	TablePartRow.SettlementsAmount = SmallBusinessClient.RecalculateFromCurrencyToCurrency(
+		TablePartRow.PaymentAmount,
+		ExchangeRate,
+		TablePartRow.ExchangeRate,
+		Multiplicity,
+		TablePartRow.Multiplicity
+	);
+	
+EndProcedure // ProcessOnChangeCounterpartyContractOtherSettlements()
+
+&AtClient
+Procedure ProcessStartChoiceCounterpartyContractOtherSettlements(Item, StandardProcessing)
+	
+	TablePartRow = Items.PaymentDetailsOtherSettlements.CurrentData;
+	If TablePartRow = Undefined Then
+		Return;
+	EndIf;
+	
+	FormParameters = GetChoiceFormParameters(Object.Ref, Object.Company, Object.Counterparty, TablePartRow.Contract, Object.OperationKind);
+	If FormParameters.ControlContractChoice Then
+		
+		StandardProcessing = False;
+		OpenForm("Catalog.CounterpartyContracts.Form.ChoiceForm", FormParameters, Item);
+		
+	EndIf;
+	
+EndProcedure // ProcessStartChoiceCounterpartyContractOtherSettlements()
+
+&AtServer
+Procedure SetChoiceParametersForAccountingOtherSettlementsAtServerForAccountItem()
+
+	Item = Items.OtherSettlementsCorrespondence;
+	
+	ChoiceParametersItem	= New Array;
+	FilterByAccountType		= New Array;
+
+	For Each Parameter In Item.ChoiceParameters Do
+		If Parameter.Name = "Filter.TypeOfAccount" Тогда
+			FilterByAccountType.Add(Enums.GLAccountsTypes.Debitors);
+			FilterByAccountType.Add(Enums.GLAccountsTypes.Creditors);
+			
+			ChoiceParametersItem.Add(New ChoiceParameter("Filter.TypeOfAccount", New FixedArray(FilterByAccountType)));
+		Else
+			ChoiceParametersItem.Add(Parameter);
+		EndIf;
+	EndDo;
+	
+	Item.ChoiceParameters = New FixedArray(ChoiceParametersItem);
+	
+EndProcedure
+
+&AtServer
+Procedure SetChoiceParametersOnMetadataForAccountItem()
+
+	Item = Items.OtherSettlementsCorrespondence;
+	
+	ChoiceParametersItem	= New Array;
+	FilterByAccountType		= New Array;
+	
+	ChoiceParametersFromMetadata = Object.Ref.Metadata().Attributes.Correspondence.ChoiceParameters;
+	For Each Parameter In ChoiceParametersFromMetadata Do
+		ChoiceParametersItem.Add(Parameter);
+	EndDo;
+	
+	Item.ChoiceParameters = New FixedArray(ChoiceParametersItem);
+	
+EndProcedure
+
+&AtServer
+Procedure SetVisibilityAttributesDependenceOnCorrespondence()
+	
+	SetVisibilityPlanningDocument();
+	
+EndProcedure // SetVisibilityAttributesDependenceOnCorrespondence()
+
+&AtServer
+Procedure SetVisibilityItemsDependenceOnOperationKind()
+	
+	Items.PaymentDetailsPaymentAmount.Visible					= GetFunctionalOption("CurrencyTransactionsAccounting");
+	Items.OtherSettlementsPaymentAmount.Visible					= GetFunctionalOption("CurrencyTransactionsAccounting");
+	Items.PaymentDetailsOtherSettlementsPaymentAmount.Visible	= GetFunctionalOption("CurrencyTransactionsAccounting");
+	
+	Items.SettlementsWithCounterparty.Visible		= False;
+	Items.SettlementsWithAdvanceHolder.Visible		= False;
+	Items.RetailIncome.Visible						= False;
+	Items.RetailIncomeAccrualAccounting.Visible		= False;
+	Items.CurrencyPurchase.Visible					= False;
+	Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible	= False;
+	Items.OtherSettlements.Visible					= False;
+	Items.RetailIncomePaymentDetailsVATRate.Visible	= False;
+	Items.RetailRevenueDetailsOfPaymentAmountOfVat.Visible	= False;
+	Items.VATTaxation.Visible		= False;
+	Items.PlanningDocuments.Title	= NStr("ru = 'Планирование'; en = 'Planning'");
+	Items.DocumentAmount.Width	= 14;
+	Items.AdvanceHolder.Visible	= False;
+	Items.Counterparty.Visible	= False;
+	
+	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.FromCustomer") Then
+		
+		Items.SettlementsWithCounterparty.Visible	= True;
+		Items.PaymentDetailsPickup.Visible			= True;
+		Items.PaymentDetailsFillDetails.Visible		= True;
+		
+		Items.Counterparty.Visible	= True;
+		Items.Counterparty.Title	= NStr("ru = 'Покупатель'; en = 'Customer'");
+		Items.VATTaxation.Visible	= True;
+		
+		NewArray = New Array();
+		NewConnection = New ChoiceParameterLink("Filter.Counterparty", "Object.Counterparty");
+		NewArray.Add(NewConnection);
+		NewConnections = New FixedArray(NewArray);
+		Items.PaymentDetailsInvoiceForPayment.ChoiceParameterLinks = NewConnections;
+		
+		Items.PaymentAmount.Visible		= True;
+		Items.PaymentAmount.Title		=  NStr("ru = 'Сумма платежа'; en = 'Payment amount'");
+		Items.SettlementsAmount.Visible	= Not GetFunctionalOption("CurrencyTransactionsAccounting");
+		
+		Items.VATAmount.Visible	= Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;
+		
+	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.FromVendor") Then
+		
+		Items.SettlementsWithCounterparty.Visible	= True;
+		Items.PaymentDetailsPickup.Visible			= False;
+		Items.PaymentDetailsFillDetails.Visible		= False;
+		
+		Items.Counterparty.Visible	= True;
+		Items.Counterparty.Title	= NStr("ru = 'Поставщик'; en = 'Supplier'");
+		Items.VATTaxation.Visible	= True;
+		
+		NewArray = New Array();
+		NewConnection = New ChoiceParameterLink("Filter.Counterparty", "Object.Counterparty");
+		NewArray.Add(NewConnection);
+		NewConnections = New FixedArray(NewArray);
+		Items.PaymentDetailsInvoiceForPayment.ChoiceParameterLinks = NewConnections;
+		
+		Items.PaymentAmount.Visible		= True;
+		Items.PaymentAmount.Title		= NStr("ru = 'Сумма платежа'; en = 'Payment amount'");
+		Items.SettlementsAmount.Visible	= Not GetFunctionalOption("CurrencyTransactionsAccounting");
+		
+		Items.VATAmount.Visible	= Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;
+		
+	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.FromAdvanceHolder") Then
+		
+		Items.VATTaxation.Visible					= False;
+		Items.SettlementsWithAdvanceHolder.Visible	= True;
+		
+		Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible	= GetFunctionalOption("PaymentCalendar");
+		
+		Items.AdvanceHolder.Visible	= True;
+		Items.DocumentAmount.Width	= 13;
+		
+		Items.PaymentAmount.Visible		= GetFunctionalOption("PaymentCalendar");
+		Items.PaymentAmount.Title		= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.SettlementsAmount.Visible	= False;
+		Items.VATAmount.Visible			= False;
+		
+	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.RetailIncome") Then
+		
+		Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible	= GetFunctionalOption("PaymentCalendar");
+		
+		Items.RetailIncome.Visible	= True;
+		Items.VATTaxation.Visible	= True;
+		Items.RetailIncomePaymentDetailsVATRate.Visible			= Object.VATTaxation <> Enums.VATTaxationTypes.NotTaxableByVAT;
+		Items.RetailRevenueDetailsOfPaymentAmountOfVat.Visible	= Object.VATTaxation <> Enums.VATTaxationTypes.NotTaxableByVAT;
+		
+		If GetFunctionalOption("PaymentCalendar") Then
+			Items.PlanningDocuments.Title = NStr("ru = 'Планирование, НДС'; en = 'Planning, VAT'");
+		Else
+			Items.PlanningDocuments.Title = NStr("ru = 'НДС'; en = 'VAT'");
+		EndIf;
+		
+		Items.PaymentAmount.Visible		= GetFunctionalOption("PaymentCalendar");
+		Items.PaymentAmount.Title		= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.SettlementsAmount.Visible = False;
+		Items.VATAmount.Visible			= Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;
+		
+	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.RetailIncomeAccrualAccounting") Then
+		
+		Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible	= GetFunctionalOption("PaymentCalendar");
+		
+		Items.RetailIncomeAccrualAccounting.Visible	= True;
+		Items.VATTaxation.Visible					= True;
+		Items.RetailIncomePaymentDetailsVATRate.Visible			= Object.VATTaxation <> Enums.VATTaxationTypes.NotTaxableByVAT;
+		Items.RetailRevenueDetailsOfPaymentAmountOfVat.Visible	= Object.VATTaxation <> Enums.VATTaxationTypes.NotTaxableByVAT;
+		
+		If GetFunctionalOption("PaymentCalendar") Then
+			Items.PlanningDocuments.Title = NStr("ru = 'Планирование, НДС'; en = 'Planning, VAT'");
+		Else
+			Items.PlanningDocuments.Title = NStr("ru = 'НДС'; en = 'VAT'");
+		EndIf;
+		
+		Items.PaymentAmount.Visible		= GetFunctionalOption("PaymentCalendar");
+		Items.PaymentAmount.Title		= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.SettlementsAmount.Visible = False;
+		Items.VATAmount.Visible			= Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;
+		
+	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.CurrencyPurchase") Then
+		
+		Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible	= GetFunctionalOption("PaymentCalendar");
+		
+		Items.CurrencyPurchase.Visible	= True;
+		
+		Items.PaymentAmount.Visible 		= GetFunctionalOption("PaymentCalendar");
+		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.PaymentAmountCurrency.Visible	= Items.PaymentAmount.Visible;
+		Items.SettlementsAmount.Visible		= False;
+		Items.VATAmount.Visible				= False;
+		
+	// Other settlements	
+	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.Other") Then
+		
+		Items.OtherSettlements.Visible	= True;
+		
+		Items.PaymentAmount.Visible 		= GetFunctionalOption("PaymentCalendar");
+		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.PaymentAmountCurrency.Visible	= Items.PaymentAmount.Visible;
+		Items.SettlementsAmount.Visible		= False;
+		Items.VATAmount.Visible				= False;
+		
+		Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible	= GetFunctionalOption("PaymentCalendar");
+		
+		Items.PageOtherSettlementsAsList.Visible	= False;
+		Items.GroupAttributesFirstRow.Visible		= False;
+		SetVisibilityAttributesDependenceOnCorrespondence();
+		
+	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.OtherSettlements") Then
+		
+		Items.OtherSettlements.Visible	= True;
+		
+		Items.PaymentAmount.Visible			= False;
+		Items.PaymentAmount.Title			= NStr("ru='Сумма платежа'; en = 'Payment amount'");
+		Items.PaymentAmountCurrency.Visible	= Items.PaymentAmount.Visible;
+		Items.SettlementsAmount.Visible		= False;
+		Items.VATAmount.Visible				= False;
+		
+		Items.Counterparty.Visible	= True;
+		Items.Counterparty.Title	= NStr("ru = 'Контрагент'; en = 'Counterparty'");
+		Items.PageOtherSettlementsAsList.Visible	= True;
+		Items.OtherSettlementsContract.Visible		= Object.Counterparty.DoOperationsByContracts;
+		Items.GroupAttributesFirstRow.Visible		= True;
+		SetVisibilityAttributesDependenceOnCorrespondence();
+		
+		If Object.PaymentDetails.Count() > 0 Then
+			ID = Object.PaymentDetails[0].GetID();
+			Items.PaymentDetailsOtherSettlements.CurrentRow = ID;
+		EndIf;
+		
+	// End Other settlements	
+	Else
+		
+		Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible = GetFunctionalOption("PaymentCalendar");
+		Items.OtherSettlements.Visible = True;
+		
+		Items.PaymentAmount.Visible = True;
+		Items.PaymentAmount.Title = NStr("en='Amount (Plan)';ru='Сумма (план)'");
+		Items.SettlementsAmount.Visible = False;
+		Items.VATAmount.Visible = False;
+		
+	EndIf;
+	
+	SetVisibilityPlanningDocument();
+	
+EndProcedure // ItemsSetVisibleDependingOnOperationKind()
+
+&AtServer
+Procedure SetVisibilityPlanningDocument()
+	
+	If Object.OperationKind = Enums.OperationKindsCashReceipt.FromCustomer
+		OR Object.OperationKind = Enums.OperationKindsCashReceipt.FromVendor
+		OR (NOT GetFunctionalOption("PaymentCalendar")
+		AND Items.RetailIncomePaymentDetailsVATRate.Visible = False
+		AND Items.RetailRevenueDetailsOfPaymentAmountOfVat.Visible = False) Then
+		Items.PlanningDocuments.Visible = False;
+	// Other settlements
+	ElsIf Object.OperationKind = Enums.OperationKindsCashReceipt.OtherSettlements Then
+		Items.PlanningDocuments.Visible = False;
+	// End Other settlements
+	Else
+		Items.PlanningDocuments.Visible = True;
+	EndIf;
+	
+EndProcedure // SetVisibilityPlanningDocument()
+
+&AtServer
+Procedure SetVisibilitySettlementAttributes()
+	
+	CounterpartyDoOperationsByContracts = Object.Counterparty.DoOperationsByContracts;
+	
+	Items.PaymentDetailsContract.Visible			= CounterpartyDoOperationsByContracts;
+	Items.PaymentDetailsDocument.Visible			= Object.Counterparty.DoOperationsByDocuments;
+	Items.PaymentDetailsOrder.Visible				= Object.Counterparty.DoOperationsByOrders;
+	Items.PaymentDetailsInvoiceForPayment.Visible	= Object.Counterparty.TrackPaymentsByBills;
+	
+	// Other settlements
+	Items.OtherSettlementsContract.Visible = CounterpartyDoOperationsByContracts;
+	// End Other settlements
+	
+EndProcedure // SetVisibilitySettlementAttributes()
+
+#EndRegion
+
+#Region ExternalFormViewManagement
+
+&AtServer
+Procedure SetVisibilityPrintReceipt()
+	
+	PrintReceiptEnabled = False;
+	
+	Button = Items.Find("PrintReceipt");
+	If Button <> Undefined Then
+		
+		If Object.OperationKind = Enums.OperationKindsCashReceipt.FromCustomer Then
+			PrintReceiptEnabled = True;
+		EndIf;
+		
+		Button.Enabled = PrintReceiptEnabled;
+		Items.Decoration3.Visible = PrintReceiptEnabled;
+		Items.ReceiptCRNumber.Visible = PrintReceiptEnabled;
+		
+	EndIf;
+	
+EndProcedure
+
+&AtServer
+Procedure SetChoiceParameterLinksAvailableTypes()
+	
+	// Other settlemets
+	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.OtherSettlements") Then
+		SetChoiceParametersForAccountingOtherSettlementsAtServerForAccountItem();
+	Else
+		SetChoiceParametersOnMetadataForAccountItem();
+	EndIf;
+	// End Other settlemets
+	
+	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.FromCustomer") Then
+		
+		Array = New Array();
+		Array.Add(Type("DocumentRef.FixedAssetsTransfer"));
+		Array.Add(Type("DocumentRef.AcceptanceCertificate"));
+		Array.Add(Type("DocumentRef.SupplierInvoice"));
+		Array.Add(Type("DocumentRef.CustomerInvoice"));
+		Array.Add(Type("DocumentRef.CustomerOrder"));
+		Array.Add(Type("DocumentRef.AgentReport"));
+		Array.Add(Type("DocumentRef.ProcessingReport"));
+		Array.Add(Type("DocumentRef.Netting"));
+		
+		ValidTypes = New TypeDescription(Array, , );
+		Items.PaymentDetails.ChildItems.PaymentDetailsDocument.TypeRestriction = ValidTypes;
+		
+		ValidTypes = New TypeDescription("DocumentRef.CustomerOrder", , );
+		Items.PaymentDetailsOrder.TypeRestriction = ValidTypes;
+		
+		ValidTypes = New TypeDescription("DocumentRef.InvoiceForPayment", , );
+		Items.PaymentDetailsInvoiceForPayment.TypeRestriction = ValidTypes;
+		
+		Items.PaymentDetailsDocument.ToolTip = NStr("ru = 'Оплачиваемый документ отгрузки товаров, работ и услуг контрагенту'; en = 'Paid document of shipment of goods, works and services to a counterparty'");
+		
+		
+	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.FromVendor") Then
+		
+		Array = New Array();
+		Array.Add(Type("DocumentRef.ExpenseReport"));
+		Array.Add(Type("DocumentRef.CashPayment"));
+		Array.Add(Type("DocumentRef.PaymentExpense"));
+		Array.Add(Type("DocumentRef.Netting"));
+		Array.Add(Type("DocumentRef.AdditionalCosts"));
+		Array.Add(Type("DocumentRef.ReportToPrincipal"));
+		Array.Add(Type("DocumentRef.SubcontractorReport"));
+		Array.Add(Type("DocumentRef.SupplierInvoice"));
+		Array.Add(Type("DocumentRef.CustomerInvoice"));
+		
+		ValidTypes = New TypeDescription(Array, , );
+		Items.PaymentDetailsDocument.TypeRestriction = ValidTypes;
+		
+		ValidTypes = New TypeDescription("DocumentRef.PurchaseOrder", , );
+		Items.PaymentDetailsOrder.TypeRestriction = ValidTypes;
+		
+		ValidTypes = New TypeDescription("DocumentRef.SupplierInvoiceForPayment", , );
+		Items.PaymentDetailsInvoiceForPayment.TypeRestriction = ValidTypes;
+		
+		Items.PaymentDetailsDocument.ToolTip = NStr("ru = 'Документ расчетов с контрагентом, по которому осуществляется возврат денежных средств'; en = 'Document of settlements with counterparty according to which cash assets are returned'");
+		
+	EndIf;
+	
+EndProcedure // SetAvailableTypesSelectionParameterLinks()
+
+#EndRegion
 
 ////////////////////////////////////////////////////////////////////////////////
 // GENERAL PURPOSE PROCEDURES AND FUNCTIONS
@@ -61,8 +1026,9 @@ Procedure SupplementOperationKindsChoiceList()
 	EndIf;
 	
 	Items.OperationKind.ChoiceList.Add(Enums.OperationKindsCashReceipt.Other);
+	Items.OperationKind.ChoiceList.Add(Enums.OperationKindsCashReceipt.OtherSettlements);
 	
-EndProcedure // AdditOperationKindsChoiceList()
+EndProcedure // SupplementOperationKindsChoiceList()
 
 // Procedure calls the data processor for document filling by basis.
 //
@@ -75,7 +1041,7 @@ Procedure FillByDocument(BasisDocument)
 	Modified = True;
 	
 	SetVisibleOfVATTaxation();
-	SetAccountsAttributesVisible();
+	SetVisibilitySettlementAttributes();
 	
 EndProcedure // FillByDocument()
 
@@ -319,23 +1285,11 @@ Function GetDataCounterpartyOnChange(Counterparty, Company, Date)
 		Counterparty.TrackPaymentsByBills
 	);
 	
-	SetAccountsAttributesVisible();
+	SetVisibilitySettlementAttributes();
 	
 	Return StructureData;
 	
 EndFunction // GetDataCounterpartyOnChange()
-
-// Procedure sets settlement attributes visible.
-//
-&AtServer
-Procedure SetAccountsAttributesVisible()
-	
-	Items.PaymentDetailsContract.Visible = Object.Counterparty.DoOperationsByContracts;
-	Items.PaymentDetailsDocument.Visible = Object.Counterparty.DoOperationsByDocuments;
-	Items.PaymentDetailsOrder.Visible = Object.Counterparty.DoOperationsByOrders;
-	Items.PaymentDetailsInvoiceForPayment.Visible = Object.Counterparty.TrackPaymentsByBills;
-	
-EndProcedure // SetAccountsAttributesVisible()
 
 // It receives data set from the server for the CurrencyCashOnChange procedure.
 //
@@ -368,25 +1322,6 @@ Function GetDataAdvanceHolderOnChange(AdvanceHolder)
 	Return StructureData;
 	
 EndFunction // GetDataAdvanceHolderOnChange()
-
-// It receives data set from server for the ContractOnChange procedure.
-//
-&AtServerNoContext
-Function GetDataPaymentDetailsContractOnChange(Date, Contract)
-	
-	StructureData = New Structure;
-	
-	StructureData.Insert(
-		"ContractCurrencyRateRepetition",
-		InformationRegisters.CurrencyRates.GetLast(
-			Date,
-			New Structure("Currency", Contract.SettlementsCurrency)
-		)
-	);
-	
-	Return StructureData;
-	
-EndFunction // GetDataPaymentDetailsContractOnChange()
 
 // It receives data set from server for the ContractOnChange procedure.
 //
@@ -548,7 +1483,7 @@ Procedure FillVATRateByVATTaxation(RestoreRatesOfVAT = True)
 		
 	EndIf;
 	
-	SetVisiblePlanningDocuments();
+	SetVisibilityPlanningDocument();
 	
 EndProcedure // FillVATRateByVATTaxation()
 
@@ -600,161 +1535,6 @@ Procedure SetVisibleOfVATTaxation()
 	EndIf;
 	
 EndProcedure // SetVisibleVATTaxation()
-
-// Procedure sets the Taxation field visible.
-//
-&AtServer
-Procedure SetVisiblePlanningDocuments()
-	
-	If Object.OperationKind = Enums.OperationKindsCashReceipt.FromCustomer
-		OR Object.OperationKind = Enums.OperationKindsCashReceipt.FromVendor
-		OR (NOT GetFunctionalOption("PaymentCalendar")
-		AND Items.RetailIncomePaymentDetailsVATRate.Visible = False
-		AND Items.RetailRevenueDetailsOfPaymentAmountOfVat.Visible = False) Then
-		Items.PlanningDocuments.Visible = False;
-	Else
-		Items.PlanningDocuments.Visible = True;
-	EndIf;
-	
-EndProcedure // SetVisibleVATTaxation()
-
-// Procedure sets the items visible depending on the operation kind.
-//
-&AtServer
-Procedure SetVisibleOfItemsDependsOnOperationKind()
-	
-	Items.SettlementsWithCounterparty.Visible = False;
-	Items.SettlementsWithAdvanceHolder.Visible = False;
-	Items.RetailIncome.Visible = False;
-	Items.RetailIncomeAccrualAccounting.Visible = False;
-	Items.CurrencyPurchase.Visible = False;
-	Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible = False;
-	Items.OtherSettlements.Visible = False;
-	Items.RetailIncomePaymentDetailsVATRate.Visible = False;
-	Items.RetailRevenueDetailsOfPaymentAmountOfVat.Visible = False;
-	Items.VATTaxation.Visible = False;
-	Items.PlanningDocuments.Title = NStr("en='Planning';ru='Планирование'");
-	Items.DocumentAmount.Width = 14;
-	Items.AdvanceHolder.Visible = False;
-	Items.Counterparty.Visible = False;
-	Items.InvoiceText.Visible = False;
-	
-	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.FromCustomer") Then
-		
-		Items.SettlementsWithCounterparty.Visible = True;
-		Items.PaymentDetailsPickup.Visible = True;
-		Items.PaymentDetailsFillDetails.Visible = True;
-		Items.Counterparty.Visible = True;
-		Items.Counterparty.Title = "Customer";
-		Items.InvoiceText.Visible = True;
-		Items.VATTaxation.Visible = True;
-		NewArray = New Array();
-		NewConnection = New ChoiceParameterLink("Filter.Counterparty", "Object.Counterparty");
-		NewArray.Add(NewConnection);
-		NewConnections = New FixedArray(NewArray);
-		Items.PaymentDetailsInvoiceForPayment.ChoiceParameterLinks = NewConnections;
-		
-		Items.PaymentAmount.Visible = True;
-		Items.PaymentAmount.Title = NStr("en='Payment amount';ru='Сумма платежа (итог)'");
-		Items.SettlementsAmount.Visible = Not GetFunctionalOption("CurrencyTransactionsAccounting");
-		Items.VATAmount.Visible = Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;
-		
-	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.FromVendor") Then
-		
-		Items.SettlementsWithCounterparty.Visible = True;
-		Items.PaymentDetailsPickup.Visible = False;
-		Items.PaymentDetailsFillDetails.Visible = False;
-		Items.Counterparty.Visible = True;
-		Items.Counterparty.Title = "Vendor";
-		Items.InvoiceText.Visible = True;
-		Items.VATTaxation.Visible = True;
-		NewArray = New Array();
-		NewConnection = New ChoiceParameterLink("Filter.Counterparty", "Object.Counterparty");
-		NewArray.Add(NewConnection);
-		NewConnections = New FixedArray(NewArray);
-		Items.PaymentDetailsInvoiceForPayment.ChoiceParameterLinks = NewConnections;
-		
-		Items.PaymentAmount.Visible = True;
-		Items.PaymentAmount.Title = NStr("en='Payment amount';ru='Сумма платежа (итог)'");
-		Items.SettlementsAmount.Visible = Not GetFunctionalOption("CurrencyTransactionsAccounting");
-		Items.VATAmount.Visible = Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;
-		
-	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.FromAdvanceHolder") Then
-		
-		Items.VATTaxation.Visible = False;
-		Items.SettlementsWithAdvanceHolder.Visible = True;
-		Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible = GetFunctionalOption("PaymentCalendar");
-		Items.AdvanceHolder.Visible = True;
-		Items.DocumentAmount.Width = 13;
-		
-		Items.PaymentAmount.Visible = True;
-		Items.PaymentAmount.Title = NStr("en='Amount (Plan)';ru='Сумма (план)'");
-		Items.SettlementsAmount.Visible = False;
-		Items.VATAmount.Visible = False;
-		
-	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.RetailIncome") Then
-		
-		Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible = GetFunctionalOption("PaymentCalendar");
-		Items.RetailIncome.Visible = True;
-		Items.VATTaxation.Visible = True;
-		Items.RetailIncomePaymentDetailsVATRate.Visible = Object.VATTaxation <> Enums.VATTaxationTypes.NotTaxableByVAT;
-		Items.RetailRevenueDetailsOfPaymentAmountOfVat.Visible = Object.VATTaxation <> Enums.VATTaxationTypes.NotTaxableByVAT;
-		
-		If GetFunctionalOption("PaymentCalendar") Then
-			Items.PlanningDocuments.Title = NStr("en='Planning, VAT';ru='Планирование, НДС'");
-		Else
-			Items.PlanningDocuments.Title = NStr("en='VAT';ru='НДС'");
-		EndIf;
-		
-		Items.PaymentAmount.Visible = True;
-		Items.PaymentAmount.Title = NStr("en='Amount (Plan)';ru='Сумма (план)'");
-		Items.SettlementsAmount.Visible = False;
-		Items.VATAmount.Visible = Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;
-		
-	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.RetailIncomeAccrualAccounting") Then
-		
-		Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible = GetFunctionalOption("PaymentCalendar");
-		Items.RetailIncomeAccrualAccounting.Visible = True;
-		Items.VATTaxation.Visible = True;
-		Items.RetailIncomePaymentDetailsVATRate.Visible = Object.VATTaxation <> Enums.VATTaxationTypes.NotTaxableByVAT;
-		Items.RetailRevenueDetailsOfPaymentAmountOfVat.Visible = Object.VATTaxation <> Enums.VATTaxationTypes.NotTaxableByVAT;
-		
-		If GetFunctionalOption("PaymentCalendar") Then
-			Items.PlanningDocuments.Title = NStr("en='Planning, VAT';ru='Планирование, НДС'");
-		Else
-			Items.PlanningDocuments.Title = NStr("en='VAT';ru='НДС'");
-		EndIf;
-		
-		Items.PaymentAmount.Visible = True;
-		Items.PaymentAmount.Title = NStr("en='Amount (Plan)';ru='Сумма (план)'");
-		Items.SettlementsAmount.Visible = False;
-		Items.VATAmount.Visible = Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;
-		
-	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.CurrencyPurchase") Then
-		
-		Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible = GetFunctionalOption("PaymentCalendar");
-		Items.CurrencyPurchase.Visible = True;
-		
-		Items.PaymentAmount.Visible = True;
-		Items.PaymentAmount.Title = NStr("en='Amount (Plan)';ru='Сумма (план)'");
-		Items.SettlementsAmount.Visible = False;
-		Items.VATAmount.Visible = False;
-		
-	Else
-		
-		Items.AdvanceHolderPaymentsPaymentDetailsPaymentAmount.Visible = GetFunctionalOption("PaymentCalendar");
-		Items.OtherSettlements.Visible = True;
-		
-		Items.PaymentAmount.Visible = True;
-		Items.PaymentAmount.Title = NStr("en='Amount (Plan)';ru='Сумма (план)'");
-		Items.SettlementsAmount.Visible = False;
-		Items.VATAmount.Visible = False;
-		
-	EndIf;
-	
-	SetVisiblePlanningDocuments();
-	
-EndProcedure // ItemsSetVisibleDependingOnOperationKind()
 
 // Procedure executes actions while changing counterparty contract.
 //
@@ -909,24 +1689,6 @@ Procedure CheckContractToDocumentConditionAccordance(Val TSPaymentDetails, Messa
 	
 EndProcedure
 
-// It gets counterparty contract selection form parameter structure.
-//
-&AtServerNoContext
-Function GetChoiceFormParameters(Document, Company, Counterparty, Contract, OperationKind)
-	
-	ContractTypesList = Catalogs.CounterpartyContracts.GetContractKindsListForDocument(Document, OperationKind);
-	
-	FormParameters = New Structure;
-	FormParameters.Insert("ControlContractChoice", Counterparty.DoOperationsByContracts);
-	FormParameters.Insert("Counterparty", Counterparty);
-	FormParameters.Insert("Company", Company);
-	FormParameters.Insert("ContractKinds", ContractTypesList);
-	FormParameters.Insert("CurrentRow", Contract);
-	
-	Return FormParameters;
-	
-EndFunction
-
 // Gets the default contract depending on the settlements method.
 //
 &AtServerNoContext
@@ -947,39 +1709,6 @@ EndFunction
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURES AND FUNCTIONS FOR CONTROL OF THE FORM APPEARANCE
-
-// The procedure sets the main department and the availability of "PrintReceipt" button.
-//
-&AtServer
-Procedure OperationKindOnChangeAtServer()
-	
-	PrintReceiptEnabled = False;
-	
-	Button = Items.Find("PrintReceipt");
-	If Button <> Undefined Then
-		
-		If Object.OperationKind = Enums.OperationKindsCashReceipt.FromCustomer Then
-			PrintReceiptEnabled = True;
-		EndIf;
-		
-		Button.Enabled = PrintReceiptEnabled;
-		Items.Decoration3.Visible = PrintReceiptEnabled;
-		Items.ReceiptCRNumber.Visible = PrintReceiptEnabled;
-		
-	EndIf;
-	
-	If OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.RetailIncomeAccrualAccounting")
-	 OR Not ValueIsFilled(OperationKind) Then
-		User = Users.CurrentUser();
-		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainDepartment");
-		Object.Department = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainDepartment);
-	EndIf;
-	
-	FillVATRateByCompanyVATTaxation();
-	SetVisibleOfItemsDependsOnOperationKind();
-	SetCFItemWhenChangingTheTypeOfOperations();
-	
-EndProcedure // SetMainDepartmentAndEnableReceiptPrint()
 
 // Procedure sets the current page depending on the operation kind.
 //
@@ -1122,352 +1851,6 @@ Procedure ClearAttributesNotRelatedToOperation()
 	
 EndProcedure // ClearAttributesNotRelatedToOperation()
 
-// Procedure sets selection parameter links and available types.
-//
-&AtClient
-Procedure SetChoiceParameterLinksAvailableTypes()
-	
-	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.FromCustomer") Then
-		
-		Array = New Array();
-		Array.Add(Type("DocumentRef.FixedAssetsTransfer"));
-		Array.Add(Type("DocumentRef.AcceptanceCertificate"));
-		Array.Add(Type("DocumentRef.SupplierInvoice"));
-		Array.Add(Type("DocumentRef.CustomerInvoice"));
-		Array.Add(Type("DocumentRef.CustomerOrder"));
-		Array.Add(Type("DocumentRef.AgentReport"));
-		Array.Add(Type("DocumentRef.ProcessingReport"));
-		Array.Add(Type("DocumentRef.Netting"));
-		
-		ValidTypes = New TypeDescription(Array, , );
-		Items.PaymentDetails.ChildItems.PaymentDetailsDocument.TypeRestriction = ValidTypes;
-		
-		ValidTypes = New TypeDescription("DocumentRef.CustomerOrder", , );
-		Items.PaymentDetailsOrder.TypeRestriction = ValidTypes;
-		
-		ValidTypes = New TypeDescription("DocumentRef.InvoiceForPayment", , );
-		Items.PaymentDetailsInvoiceForPayment.TypeRestriction = ValidTypes;
-		
-		Items.PaymentDetailsDocument.Title = "Shipment document";
-		Items.PaymentDetailsDocument.ToolTip = "Paid document of shipment of goods, works and services to a counterparty";
-		
-		
-	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.FromVendor") Then
-		
-		Array = New Array();
-		Array.Add(Type("DocumentRef.ExpenseReport"));
-		Array.Add(Type("DocumentRef.CashPayment"));
-		Array.Add(Type("DocumentRef.PaymentExpense"));
-		Array.Add(Type("DocumentRef.Netting"));
-		Array.Add(Type("DocumentRef.AdditionalCosts"));
-		Array.Add(Type("DocumentRef.ReportToPrincipal"));
-		Array.Add(Type("DocumentRef.SubcontractorReport"));
-		Array.Add(Type("DocumentRef.SupplierInvoice"));
-		Array.Add(Type("DocumentRef.CustomerInvoice"));
-		
-		ValidTypes = New TypeDescription(Array, , );
-		Items.PaymentDetailsDocument.TypeRestriction = ValidTypes;
-		
-		ValidTypes = New TypeDescription("DocumentRef.PurchaseOrder", , );
-		Items.PaymentDetailsOrder.TypeRestriction = ValidTypes;
-		
-		ValidTypes = New TypeDescription("DocumentRef.SupplierInvoiceForPayment", , );
-		Items.PaymentDetailsInvoiceForPayment.TypeRestriction = ValidTypes;
-		
-		Items.PaymentDetailsDocument.Title = "Accounts document";
-		Items.PaymentDetailsDocument.ToolTip = "Document of settlements with counterparty according to which cash assets are returned";
-		
-	EndIf;
-	
-EndProcedure // SetAvailableTypesSelectionParameterLinks()
-
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
-
-// Procedure - selection handler.
-//
-&AtClient
-Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
-	
-	If ChoiceSource.FormName = "Document.CustomerInvoiceNote.Form.DocumentForm" Then
-		InvoiceText = ValueSelected;
-	EndIf;
-	
-EndProcedure 
-
-// Procedure - event handler of the form NotificationProcessing.
-//
-&AtClient
-Procedure NotificationProcessing(EventName, Parameter, Source)
-	
-	If EventName = "RefreshOfTextAboutInvoice" Then
-		If TypeOf(Parameter) = Type("Structure") Then
-			If Parameter.BasisDocument = Object.Ref Then
-				InvoiceText = Parameter.Presentation;
-			EndIf;
-		EndIf;
-	EndIf;
-	
-	If EventName = "AfterRecordingOfCounterparty" Then
-		If ValueIsFilled(Parameter)
-		   AND Object.Counterparty = Parameter Then
-			SetAccountsAttributesVisible();
-		EndIf;
-	EndIf;
-	
-	// StandardSubsystems.Properties
-	If PropertiesManagementClient.ProcessAlerts(ThisForm, EventName, Parameter) Then
-		UpdateAdditionalAttributesItems();
-	EndIf;
-	// End StandardSubsystems.Properties
-	
-EndProcedure //NotificationProcessing()
-
-// Procedure - OnCreateAtServer event handler.
-//
-&AtServer
-Procedure OnCreateAtServer(Cancel, StandardProcessing)
-	
-	InformationCenterServer.OutputContextReferences(ThisForm, Items.InformationReferences);
-	
-	SmallBusinessServer.FillDocumentHeader(
-		Object,
-		,
-		Parameters.CopyingValue,
-		Parameters.Basis,
-		PostingIsAllowed,
-		Parameters.FillingValues
-	);
-	
-	If Object.PaymentDetails.Count() = 0 Then
-		Object.PaymentDetails.Add();
-		Object.PaymentDetails[0].PaymentAmount = Object.DocumentAmount;
-	EndIf;
-	
-	DocumentObject = FormAttributeToValue("Object");
-	If DocumentObject.IsNew()
-	AND Not ValueIsFilled(Parameters.CopyingValue) Then
-		If ValueIsFilled(Parameters.BasisDocument) Then
-			DocumentObject.Fill(Parameters.BasisDocument);
-			ValueToFormAttribute(DocumentObject, "Object");
-		EndIf;
-		If Not ValueIsFilled(Object.PettyCash) Then
-			Object.PettyCash = Catalogs.PettyCashes.GetPettyCashByDefault(Object.Company);
-			Object.CashCurrency = ?(ValueIsFilled(Object.PettyCash.CurrencyByDefault), Object.PettyCash.CurrencyByDefault, Object.CashCurrency);
-		EndIf;
-		If ValueIsFilled(Object.Counterparty)
-		   AND Object.PaymentDetails.Count() > 0
-		   AND Not ValueIsFilled(Parameters.BasisDocument) Then
-			If Not ValueIsFilled(Object.PaymentDetails[0].Contract) Then
-				Object.PaymentDetails[0].Contract = Object.Counterparty.ContractByDefault;
-			EndIf;
-			If ValueIsFilled(Object.PaymentDetails[0].Contract) Then
-				ContractCurrencyRateRepetition = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", Object.PaymentDetails[0].Contract.SettlementsCurrency));
-				Object.PaymentDetails[0].ExchangeRate = ?(ContractCurrencyRateRepetition.ExchangeRate = 0, 1, ContractCurrencyRateRepetition.ExchangeRate);
-				Object.PaymentDetails[0].Multiplicity = ?(ContractCurrencyRateRepetition.Multiplicity = 0, 1, ContractCurrencyRateRepetition.Multiplicity);
-			EndIf;
-		EndIf;
-		SetCFItem();
-	EndIf;
-	
-	// Form attributes setting.
-	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
-	StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", Object.CashCurrency));
-	
-	ExchangeRate = ?(
-		StructureByCurrency.ExchangeRate = 0,
-		1,
-		StructureByCurrency.ExchangeRate
-	);
-	Multiplicity = ?(
-	    //( elmi # 08.5
-	    //StructureByCurrency.ExchangeRate = 0,
-		  StructureByCurrency.Multiplicity = 0,
-		//) elmi
-		1,
-		StructureByCurrency.Multiplicity
-	);
-	
-	StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", Constants.AccountingCurrency.Get()));
-	
-	AccountingCurrencyRate = ?(
-		StructureByCurrency.ExchangeRate = 0,
-		1,
-		StructureByCurrency.ExchangeRate
-	);
-	AccountingCurrencyMultiplicity = ?(
-	    //( elmi # 08.5
-	    //StructureByCurrency.ExchangeRate = 0,
-		  StructureByCurrency.Multiplicity = 0,
-		//) elmi
-		1,
-		StructureByCurrency.Multiplicity
-	);
-	
-	SupplementOperationKindsChoiceList();
-	
-	If Not ValueIsFilled(Object.Ref)
-	   AND Not ValueIsFilled(Parameters.Basis)
-	   AND Not ValueIsFilled(Parameters.CopyingValue) Then
-		FillVATRateByCompanyVATTaxation();
-	Else
-		SetVisibleOfVATTaxation();
-	EndIf;
-	
-	If Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT Then
-		DefaultVATRate = Object.Company.DefaultVATRate;
-	ElsIf Object.VATTaxation = Enums.VATTaxationTypes.NotTaxableByVAT Then
-		DefaultVATRate = SmallBusinessReUse.GetVATRateWithoutVAT();
-	Else
-		DefaultVATRate = SmallBusinessReUse.GetVATRateZero();
-	EndIf;
-	
-	OperationKind = Object.OperationKind;
-	CashCurrency = Object.CashCurrency;
-	
-	SmallBusinessServer.SetTextAboutInvoice(ThisForm);
-	
-	DocumentDate = Object.Date;
-	If Not ValueIsFilled(DocumentDate) Then
-		DocumentDate = CurrentDate();
-	EndIf;
-	
-	PrintReceiptEnabled = False;
-	
-	Button = Items.Find("PrintReceipt");
-	If Button <> Undefined Then
-		
-		If Object.OperationKind = Enums.OperationKindsCashReceipt.FromCustomer Then
-			PrintReceiptEnabled = True;
-		EndIf;
-		
-		Button.Enabled = PrintReceiptEnabled;
-		Items.Decoration3.Visible = PrintReceiptEnabled;
-		Items.ReceiptCRNumber.Visible = PrintReceiptEnabled;
-		
-	EndIf;
-	
-	AccountingCurrency = Constants.AccountingCurrency.Get();
-	
-	// Fill in tabular section while entering a document from the working place.
-	If TypeOf(Parameters.FillingValues) = Type("Structure")
-	   AND Parameters.FillingValues.Property("FillDetailsOfPayment")
-	   AND Parameters.FillingValues.FillDetailsOfPayment Then
-		
-		TabularSectionRow = Object.PaymentDetails[0];
-		
-		TabularSectionRow.PaymentAmount = Object.DocumentAmount;
-		TabularSectionRow.ExchangeRate = ?(
-			TabularSectionRow.ExchangeRate = 0,
-			1,
-			TabularSectionRow.ExchangeRate
-		);
-		
-		TabularSectionRow.Multiplicity = ?(
-			TabularSectionRow.Multiplicity = 0,
-			1,
-			TabularSectionRow.Multiplicity
-		);
-		
-		TabularSectionRow.SettlementsAmount = SmallBusinessServer.RecalculateFromCurrencyToCurrency(
-			TabularSectionRow.PaymentAmount,
-			ExchangeRate,
-			TabularSectionRow.ExchangeRate,
-			Multiplicity,
-			TabularSectionRow.Multiplicity
-		);
-		
-		If Not ValueIsFilled(TabularSectionRow.VATRate) Then
-			TabularSectionRow.VATRate = DefaultVATRate;
-		EndIf;
-		
-		TabularSectionRow.VATAmount = TabularSectionRow.PaymentAmount - (TabularSectionRow.PaymentAmount) / ((TabularSectionRow.VATRate.Rate + 100) / 100);
-		
-	EndIf;
-	
-	SetVisibleOfItemsDependsOnOperationKind();
-	SetAccountsAttributesVisible();
-	
-	SmallBusinessClientServer.SetPictureForComment(Items.Additionally, Object.Comment);
-	
-	// StandardSubsystems.ObjectVersioning
-	ObjectVersioning.OnCreateAtServer(ThisForm);
-	// End StandardSubsystems.ObjectVersioning
-	
-	// StandardSubsystems.AdditionalReportsAndDataProcessors
-	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
-	// End StandardSubsystems.AdditionalReportsAndDataProcessors
-	
-	// StandardSubsystems.Printing
-	PrintManagement.OnCreateAtServer(ThisForm, Items.ImportantCommandsGroup);
-	// End StandardSubsystems.Printing
-	
-	// StandardSubsystems.Properties
-	 PropertiesManagement.OnCreateAtServer(ThisForm, , "AdditionalAttributesGroup");
-	// End StandardSubsystems.Properties
-	
-EndProcedure // OnCreateAtServer()
-
-// Procedure - OnReadAtServer event handler.
-//
-&AtServer
-Procedure OnReadAtServer(CurrentObject)
-	
-	ChangeProhibitionDates.ObjectOnReadAtServer(ThisForm, CurrentObject);
-	
-	// StandardSubsystems.Properties
-	PropertiesManagement.OnReadAtServer(ThisForm, CurrentObject);
-	// End StandardSubsystems.Properties
-	
-EndProcedure // OnReadAtServer()
-
-// Procedure - event handler AfterWriting.
-//
-&AtClient
-Procedure AfterWrite(WriteParameters)
-	
-	LineCount = Object.PaymentDetails.Count();
-	
-	// Notification about payment.
-	NotifyAboutBillPayment = False;
-	NotifyAboutOrderPayment = False;
-	
-	For Each CurRow IN Object.PaymentDetails Do
-		NotifyAboutBillPayment = ?(
-			NotifyAboutBillPayment,
-			NotifyAboutBillPayment,
-			ValueIsFilled(CurRow.InvoiceForPayment)
-		);
-		NotifyAboutOrderPayment = ?(
-			NotifyAboutOrderPayment,
-			NotifyAboutOrderPayment,
-			ValueIsFilled(CurRow.Order)
-		);
-	EndDo;
-	
-	If NotifyAboutBillPayment Then
-		Notify("NotificationAboutBillPayment");
-	EndIf;
-	
-	If NotifyAboutOrderPayment Then
-		Notify("NotificationAboutOrderPayment");
-	EndIf;
-	
-	Notify("NotificationAboutChangingDebt");
-	
-	If Not InvoiceText = "Enter invoice note"
-		AND ?(NOT UpdateSubordinatedInvoice = Undefined, UpdateSubordinatedInvoice, False) Then
-		
-		ShowQueryBox(New NotifyDescription("AfterWriteEnding", ThisObject),
-			NStr("en='Changes were made in the document. Is it required to fill in the subordinate invoice once again?';ru='В документе были произведены изменения. Требуется ли повторно заполнить подчиненный Счет-фактуру?'"),
-			QuestionDialogMode.YesNo
-		);
-		Return;
-		
-	EndIf;
-	
-EndProcedure // AfterWrite()
-
 &AtClient
 Procedure AfterWriteEnding(Result, AdditionalParameters) Export
 	
@@ -1477,75 +1860,6 @@ Procedure AfterWriteEnding(Result, AdditionalParameters) Export
 		SmallBusinessServer.ChangeSubordinateInvoice(Object.Ref);
 		Notify("UpdateIBDocumentAfterFilling");
 	EndIf;
-	
-EndProcedure
-
-// Procedure - event handler OnOpen.
-// The current page is set in the procedure depending on the operation.
-//
-&AtClient
-Procedure OnOpen(Cancel)
-	
-	SetChoiceParameterLinksAvailableTypes();
-	SetCurrentPage();
-	
-    //( elmi # 08.5 
-	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "PaymentDetails");
-   //) elmi
-	
-EndProcedure // OnOpen()
-
-//Procedure - event handler of the form BeforeWrite
-//
-&AtClient
-Procedure BeforeWrite(Cancel, WriteParameters)
-	
-	// StandardSubsystems.PerformanceEstimation
-	PerformanceEstimationClientServer.StartTimeMeasurement("DocumentCashReceiptPosting");
-	// StandardSubsystems.PerformanceEstimation
-	
-	UpdateSubordinatedInvoice = Modified;
-	
-EndProcedure
-
-// Procedure-handler of the BeforeWriteAtServer event.
-//
-&AtServer
-Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
-	
-	If WriteParameters.WriteMode = DocumentWriteMode.Posting Then
-		
-		MessageText = "";
-		CheckContractToDocumentConditionAccordance(Object.PaymentDetails, MessageText, Object.Ref, Object.Company, Object.Counterparty, Object.OperationKind, Cancel);
-		
-		If MessageText <> "" Then
-			
-			Message = New UserMessage;
-			Message.Text = ?(Cancel, NStr("en='Document is not posted! ';ru='Документ не проведен! '") + MessageText, MessageText);
-			Message.Message();
-			
-			If Cancel Then
-				Return;
-			EndIf;
-			
-		EndIf;
-		
-	EndIf;
-	
-	// StandardSubsystems.Properties
-	PropertiesManagement.BeforeWriteAtServer(ThisForm, CurrentObject);
-	// End StandardSubsystems.Properties
-	
-EndProcedure // BeforeWriteAtServer()
-
-// Procedure-handler of the FillCheckProcessingAtServer event.
-//
-&AtServer
-Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
-	
-	// StandardSubsystems.Properties
-	PropertiesManagement.FillCheckProcessing(ThisForm, Cancel, CheckedAttributes);
-	// End StandardSubsystems.Properties
 	
 EndProcedure
 
@@ -1873,16 +2187,6 @@ EndProcedure // FillDetails()
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - EVENT HANDLERS OF HEADER ATTRIBUTES
-
-// Procedure - clicking handler on the hyperlink InvoiceText.
-//
-&AtClient
-Procedure InvoiceNoteTextClick(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	SmallBusinessClient.OpenInvoice(ThisForm);
-	
-EndProcedure //InvoiceNoteTextClick()
 
 // Procedure - event handler OnChange of the Counterparty input field.
 //
@@ -2299,28 +2603,11 @@ Procedure PaymentDetailsPaymentAmountOnChange(Item)
 		TabularSectionRow.Multiplicity
 	);
 	
-	//( elmi # 08.5
-	//TabularSectionRow.ExchangeRate = ?(
-	//	TabularSectionRow.SettlementsAmount = 0,
-	//	1,
-	//	TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * ExchangeRate
-	//);
-	If SmallBusinessServer.IndirectQuotationInUse() Then
-		TabularSectionRow.Multiplicity = ?(
-			TabularSectionRow.PaymentAmount = 0,
-			1,
-			TabularSectionRow.SettlementsAmount / TabularSectionRow.PaymentAmount * Multiplicity
-		);
-	Else
-		TabularSectionRow.ExchangeRate = ?(
-			TabularSectionRow.SettlementsAmount = 0,
-			1,
-			TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * ExchangeRate
-		);
-	EndIF;
-    //) elmi
-	
-	
+	TabularSectionRow.ExchangeRate = ?(
+		TabularSectionRow.SettlementsAmount = 0,
+		1,
+		TabularSectionRow.PaymentAmount / TabularSectionRow.SettlementsAmount * ExchangeRate
+	);
 	
 	If Not ValueIsFilled(TabularSectionRow.VATRate) Then
 		TabularSectionRow.VATRate = DefaultVATRate;
@@ -2525,19 +2812,7 @@ Procedure UpdateAdditionalAttributesItems()
 	PropertiesManagement.UpdateAdditionalAttributesItems(ThisForm);
 	
 EndProcedure // UpdateAdditionalAttributeItems()
+
 // End StandardSubsystems.Properties
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

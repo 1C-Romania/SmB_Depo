@@ -37,6 +37,7 @@ Procedure GenerateTableCashAssets(DocumentRefCashPayment, StructureAdditionalPro
 	|WHERE
 	|	(DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.ToAdvanceHolder)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.Other)
+	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.OtherSettlements)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.TransferToCashCR)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.Taxes)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.SalaryForEmployee))
@@ -839,7 +840,8 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCashPayment, StructureAdditi
 	|WHERE
 	|	(DocumentTable.Correspondence.TypeOfAccount = VALUE(Enum.GLAccountsTypes.Expenses)
 	|			OR DocumentTable.Correspondence.TypeOfAccount = VALUE(Enum.GLAccountsTypes.OtherExpenses))
-	|	AND DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.Other)
+	|	AND (DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.Other)
+	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.OtherSettlements))
 	|
 	|UNION ALL
 	|
@@ -1045,6 +1047,40 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCashPayment, StructureAdditi
 	|FROM
 	|	TemporaryTableExchangeRateLossesCashAssetsInRetailCashes AS DocumentTable
 	|
+	|UNION ALL
+	|
+	|SELECT
+	|	8,
+	|	DocumentTable.LineNumber,
+	|	DocumentTable.Date,
+	|	DocumentTable.Company,
+	|	UNDEFINED,
+	|	UNDEFINED,
+	|	VALUE(Catalog.BusinessActivities.Other),
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN VALUE(ChartOfAccounts.Managerial.OtherIncome)
+	|		ELSE VALUE(ChartOfAccounts.Managerial.OtherExpenses)
+	|	END,
+	|	&ExchangeDifference,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN DocumentTable.ExchangeRateDifferenceAmount
+	|		ELSE 0
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN 0
+	|		ELSE -DocumentTable.ExchangeRateDifferenceAmount
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN DocumentTable.ExchangeRateDifferenceAmount
+	|		ELSE -DocumentTable.ExchangeRateDifferenceAmount
+	|	END
+	|FROM
+	|	ExchangeDifferencesTemporaryTableOtherSettlements AS DocumentTable
+	|
 	|ORDER BY
 	|	Order,
 	|	LineNumber";
@@ -1101,7 +1137,7 @@ Procedure GenerateTableManagerial(DocumentRefCashPayment, StructureAdditionalPro
 	|		ELSE 0
 	|	END AS AmountCurCr,
 	|	DocumentTable.Amount AS Amount,
-	|	CAST(&Content AS String(100)) AS Content
+	|	CAST(&Content AS STRING(100)) AS Content
 	|FROM
 	|	TemporaryTableHeader AS DocumentTable
 	|WHERE
@@ -1138,7 +1174,7 @@ Procedure GenerateTableManagerial(DocumentRefCashPayment, StructureAdditionalPro
 	|		ELSE 0
 	|	END,
 	|	DocumentTable.Amount,
-	|	CAST(&ContentTransferToCashCR AS String(100))
+	|	CAST(&ContentTransferToCashCR AS STRING(100))
 	|FROM
 	|	TemporaryTableHeader AS DocumentTable
 	|WHERE
@@ -1175,7 +1211,7 @@ Procedure GenerateTableManagerial(DocumentRefCashPayment, StructureAdditionalPro
 	|		ELSE 0
 	|	END,
 	|	DocumentTable.Amount,
-	|	CAST(&TaxPay AS String(100))
+	|	CAST(&TaxPay AS STRING(100))
 	|FROM
 	|	TemporaryTableHeader AS DocumentTable
 	|WHERE
@@ -1567,6 +1603,82 @@ Procedure GenerateTableManagerial(DocumentRefCashPayment, StructureAdditionalPro
 	|FROM
 	|	TemporaryTableExchangeDifferencesPayrollPayments AS DocumentTable
 	|
+	|UNION ALL
+	|
+	|SELECT
+	|	14,
+	|	1,
+	|	DocumentTable.Date,
+	|	DocumentTable.Company,
+	|	VALUE(Catalog.PlanningPeriods.Actual),
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN DocumentTable.GLAccount
+	|		ELSE VALUE(ChartOfAccounts.Managerial.OtherExpenses)
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN VALUE(ChartOfAccounts.Managerial.OtherIncome)
+	|		ELSE DocumentTable.GLAccount
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|				AND DocumentTable.GLAccount.Currency
+	|			THEN DocumentTable.Currency
+	|		ELSE UNDEFINED
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount < 0
+	|				AND DocumentTable.GLAccount.Currency
+	|			THEN DocumentTable.Currency
+	|		ELSE UNDEFINED
+	|	END,
+	|	0,
+	|	0,
+	|	CASE
+	|		WHEN DocumentTable.ExchangeRateDifferenceAmount > 0
+	|			THEN DocumentTable.ExchangeRateDifferenceAmount
+	|		ELSE -DocumentTable.ExchangeRateDifferenceAmount
+	|	END,
+	|	&ExchangeDifference
+	|FROM
+	|	ExchangeDifferencesTemporaryTableOtherSettlements AS DocumentTable
+	|
+	|UNION ALL
+	|
+	|SELECT
+	|	15,
+	|	DocumentTable.LineNumber,
+	|	DocumentTable.Date,
+	|	DocumentTable.Company,
+	|	VALUE(Catalog.PlanningPeriods.Actual),
+	|	DocumentTable.GLAccount,
+	|	DocumentTable.PettyCash.GLAccount,
+	|	CASE
+	|		WHEN DocumentTable.GLAccount.Currency
+	|			THEN DocumentTable.Currency
+	|		ELSE UNDEFINED
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.PettyCash.GLAccount.Currency
+	|			THEN DocumentTable.CashCurrency
+	|		ELSE UNDEFINED
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.GLAccount.Currency
+	|			THEN DocumentTable.AmountCur
+	|		ELSE 0
+	|	END,
+	|	CASE
+	|		WHEN DocumentTable.PettyCash.GLAccount.Currency
+	|			THEN DocumentTable.PaymentAmount
+	|		ELSE 0
+	|	END,
+	|	DocumentTable.Amount,
+	|	DocumentTable.PostingContent
+	|FROM
+	|	TemporaryTableOtherSettlements AS DocumentTable
+	|
 	|ORDER BY
 	|	Order,
 	|	LineNumber";
@@ -1637,6 +1749,7 @@ Procedure GenerateTableIncomeAndExpensesCashMethod(DocumentRefCashPayment, Struc
 	|WHERE
 	|	&IncomeAndExpensesAccountingCashMethod
 	|	AND (DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.Other)
+	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.OtherSettlements)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.Salary)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.SalaryForEmployee)
 	|			OR DocumentTable.OperationKind = VALUE(Enum.OperationKindsCashPayment.Taxes))
@@ -2310,10 +2423,10 @@ Procedure InitializeDocumentData(DocumentRefCashPayment, StructureAdditionalProp
 	|	SUM(DocumentTable.SettlementsAmount) AS SettlementsAmount,
 	|	SUM(DocumentTable.PaymentAmount) AS PaymentAmount,
 	|	CASE
-	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = Type(Document.CashOutflowPlan)
+	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = TYPE(Document.CashOutflowPlan)
 	|				AND DocumentTable.PlanningDocument <> VALUE(Document.CashOutflowPlan.EmptyRef)
 	|			THEN DocumentTable.PlanningDocument
-	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = Type(Document.CashTransferPlan)
+	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = TYPE(Document.CashTransferPlan)
 	|				AND DocumentTable.PlanningDocument <> VALUE(Document.CashTransferPlan.EmptyRef)
 	|			THEN DocumentTable.PlanningDocument
 	|		WHEN DocumentTable.InvoiceForPayment.SchedulePayment
@@ -2366,10 +2479,10 @@ Procedure InitializeDocumentData(DocumentRefCashPayment, StructureAdditionalProp
 	|	DocumentTable.Ref.Date,
 	|	DocumentTable.Contract.SettlementsCurrency,
 	|	CASE
-	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = Type(Document.CashOutflowPlan)
+	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = TYPE(Document.CashOutflowPlan)
 	|				AND DocumentTable.PlanningDocument <> VALUE(Document.CashOutflowPlan.EmptyRef)
 	|			THEN DocumentTable.PlanningDocument
-	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = Type(Document.CashTransferPlan)
+	|		WHEN VALUETYPE(DocumentTable.PlanningDocument) = TYPE(Document.CashTransferPlan)
 	|				AND DocumentTable.PlanningDocument <> VALUE(Document.CashTransferPlan.EmptyRef)
 	|			THEN DocumentTable.PlanningDocument
 	|		WHEN DocumentTable.InvoiceForPayment.SchedulePayment
@@ -2418,7 +2531,12 @@ Procedure InitializeDocumentData(DocumentRefCashPayment, StructureAdditionalProp
 	|	DocumentTable.AdvanceHolder.SettlementsHumanResourcesGLAccount AS AdvanceHolderPersonnelGLAccount,
 	|	DocumentTable.RegistrationPeriod AS RegistrationPeriod,
 	|	DocumentTable.AdvanceHolder.AdvanceHoldersGLAccount AS AdvanceHolderAdvanceHoldersGLAccount,
-	|	DocumentTable.Document AS Document
+	|	DocumentTable.Document AS Document,
+	|	CASE
+	|		WHEN DocumentTable.OperationKind = VALUE(Перечисление.OperationKindsCashPayment.OtherSettlements)
+	|			THEN TRUE
+	|		ELSE FALSE
+	|	END AS AccountingOtherSettlements
 	|INTO TemporaryTableHeader
 	|FROM
 	|	Document.CashPayment AS DocumentTable
@@ -2438,6 +2556,9 @@ Procedure InitializeDocumentData(DocumentRefCashPayment, StructureAdditionalProp
 	GenerateTableAccountsPayable(DocumentRefCashPayment, StructureAdditionalProperties);
 	GenerateTableCustomerAccounts(DocumentRefCashPayment, StructureAdditionalProperties);
 	GenerateTablePayrollPayments(DocumentRefCashPayment, StructureAdditionalProperties);
+	// Other settlements
+	GenerateTableSettlementsWithOtherCounterparties(DocumentRefCashPayment, StructureAdditionalProperties);
+	// End Other settlements
 	GenerateTableIncomeAndExpenses(DocumentRefCashPayment, StructureAdditionalProperties);
 	GenerateTableTaxesSettlements(DocumentRefCashPayment, StructureAdditionalProperties);
 	GenerateTableManagerial(DocumentRefCashPayment, StructureAdditionalProperties);
@@ -2640,17 +2761,6 @@ EndProcedure // RunControl()
 
 #Region PrintInterface
 
-// Function generates field SumRubKop for print form.
-//
-Function DollarsCents(Amount)
-	
-	Rub = Int(Amount);
-	cop = ROUND(100 * (Amount - Rub), 0, 1);
-	SumOfRubCop = "" + Rub + " USD " + Int(cop/10) + (cop - 10 * Int(cop / 10)) + " cop.";
-	Return SumOfRubCop;
-	
-EndFunction // RublesKopecks()
-
 // Procedure forms and displays a printable document form by the specified layout.
 //
 // Parameters:
@@ -2660,9 +2770,137 @@ EndFunction // RublesKopecks()
 //
 Function PrintForm(ObjectsArray, PrintObjects)
 	
-	//SpreadsheetDocument = New SpreadsheetDocument;
-	//
-	//Return SpreadsheetDocument;
+	Var Errors;
+	
+	SpreadsheetDocument = New SpreadsheetDocument;
+	SpreadsheetDocument.PrintParametersKey = "PrintParameters_CashPayment";
+	
+	FirstDocument = True;
+	
+	For Each CurrentDocument IN ObjectsArray Do
+		
+		If Not FirstDocument Then
+			SpreadsheetDocument.PutHorizontalPageBreak();
+		EndIf;
+		FirstDocument = False;
+		
+		FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
+	
+		Query = New Query();
+		Query.SetParameter("CurrentDocument", CurrentDocument);
+		
+		Query.Text = 
+		"SELECT
+		|	CashPayment.Number AS DocumentNumber,
+		|	CashPayment.Date AS DocumentDate,
+		|	CashPayment.Company AS Company,
+		|	CashPayment.Company.LegalEntityIndividual AS LegalEntityIndividual,
+		|	CashPayment.Company.Prefix AS Prefix,
+		|	CashPayment.Company.DescriptionFull AS CompanyPresentation,
+		|	CashPayment.Issue AS Issue,
+		|	CashPayment.Basis AS Basis,
+		|	CashPayment.DocumentAmount AS DocumentAmount,
+		|	CashPayment.ByDocument AS DocumentAttributesWhichIdentifiesPerson,
+		|	CashPayment.PettyCash.GLAccount.Code AS CreditSubAccount,
+		|	CashPayment.CashCurrency AS CashCurrency,
+		|	CASE
+		|		WHEN CashPayment.OperationKind = VALUE(Enum.OperationKindsCashPayment.ToCustomer)
+		|				OR CashPayment.OperationKind = VALUE(Enum.OperationKindsCashPayment.Vendor)
+		|				OR CashPayment.OperationKind = VALUE(Enum.OperationKindsCashPayment.OtherSettlements)
+		|			THEN CashPayment.Counterparty.DescriptionFull
+		|		WHEN CashPayment.OperationKind = VALUE(Enum.OperationKindsCashPayment.ToAdvanceHolder)
+		|				OR CashPayment.OperationKind = VALUE(Enum.OperationKindsCashPayment.SalaryForEmployee)
+		|			THEN CashPayment.AdvanceHolder.Description
+		|		ELSE CashPayment.Issue
+		|	END AS Recipient
+		|FROM
+		|	Document.CashPayment AS CashPayment
+		|WHERE
+		|	CashPayment.Ref = &CurrentDocument";
+		
+		Header = Query.Execute().Select();
+		
+		Header.Next();
+		
+		SpreadsheetDocument.PrintParametersKey = "PRINT_PARAMETERS_CashPayment_CashExpenseVoucher";
+		Template = GetTemplate("PF_MXL_CashExpenseVoucher");
+		
+		If Template.Areas.Find("TitleWithLogo") <> Undefined
+			AND Template.Areas.Find("TitleWithoutLogo") <> Undefined Then
+			
+			If ValueIsFilled(Header.Company.LogoFile) Then
+				
+				TemplateArea = Template.GetArea("TitleWithLogo");
+				TemplateArea.Parameters.Fill(Header);
+				
+				PictureData = AttachedFiles.GetFileBinaryData(Header.Company.LogoFile);
+				If ValueIsFilled(PictureData) Then
+					
+					TemplateArea.Drawings.Logo.Picture = New Picture(PictureData);
+					
+				EndIf;
+				
+			Else // If images are not selected, print regular header
+				
+				TemplateArea = Template.GetArea("TitleWithoutLogo");
+				TemplateArea.Parameters.Fill(Header);
+				
+			EndIf;
+			
+			SpreadsheetDocument.Put(TemplateArea);
+			
+		Else
+			
+			MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
+			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
+			
+		EndIf;
+		
+		InfoAboutCompany	= SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate, ,);
+		
+		TemplateArea = Template.GetArea("HeaderPayer");
+		
+		TemplateArea.Parameters.Fill(Header);
+		
+		PayerPresentation	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr");
+		
+		TemplateArea.Parameters.PayerPresentation	= PayerPresentation;
+		TemplateArea.Parameters.PayerAddress		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "LegalAddress");
+		TemplateArea.Parameters.PayerPhoneFax		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "PhoneNumbers,Fax");
+		TemplateArea.Parameters.PayerEmail			= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "Email");
+		
+		SpreadsheetDocument.Put(TemplateArea);
+		
+		TemplateArea = Template.GetArea("HeaderRecipient");
+		
+		TemplateArea.Parameters.Recipient	= TrimAll(Header.Recipient);
+		If ValueIsFilled(Header.Issue)
+			And TrimAll(Header.Issue) <> TrimAll(Header.Recipient) Then
+		
+			TemplateArea.Parameters.Issue	= TrimAll(Header.Issue);
+		
+		EndIf;
+		
+		SpreadsheetDocument.Put(TemplateArea);
+		
+		TemplateArea = Template.GetArea("PaymentBasis");
+		TemplateArea.Parameters.Fill(Header);
+		SpreadsheetDocument.Put(TemplateArea);
+		
+		TemplateArea = Template.GetArea("TotalAmount");
+		TemplateArea.Parameters.Total	= Format(Header.DocumentAmount,"NFD=2") + " " + Header.CashCurrency;
+		SpreadsheetDocument.Put(TemplateArea);
+		
+		TemplateArea = Template.GetArea("Footer");
+		SpreadsheetDocument.Put(TemplateArea);
+		
+		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, CurrentDocument.Ref);
+		
+	EndDo;
+	
+	SpreadsheetDocument.FitToPage = True;
+	
+	Return SpreadsheetDocument;
 	
 EndFunction // PrintForm()
 
@@ -2679,6 +2917,14 @@ EndFunction // PrintForm()
 //
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
+	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "CashExpenseVoucher") Then
+		
+		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CashExpenseVoucher", NStr("ru = 'Расходный кассовый ордер'; en = 'Cash voucher'"), PrintForm(ObjectsArray, PrintObjects));
+		
+	EndIf;
+	
+	// parameters of sending printing forms by email
+	SmallBusinessServer.FillSendingParameters(OutputParameters.SendingParameters, ObjectsArray, PrintFormsCollection);
 
 EndProcedure
 
@@ -2689,8 +2935,134 @@ EndProcedure
 //
 Procedure AddPrintCommands(PrintCommands) Export
 	
+	PrintCommand = PrintCommands.Add();
+	PrintCommand.ID							= "CashExpenseVoucher";
+	PrintCommand.Presentation				= NStr("ru = 'Расходный кассовый ордер'; en = 'Cash voucher'");
+	PrintCommand.FormsList					= "DocumentForm,ListForm";
+	PrintCommand.CheckPostingBeforePrint	= False;
+	PrintCommand.Order						= 1;
 	
 EndProcedure
+
+#EndRegion
+
+#Region OtherSettlements
+
+Procedure GenerateTableSettlementsWithOtherCounterparties(DocumentRefCashPayment, StructureAdditionalProperties)
+	
+	Query = New Query;
+	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
+	
+	Query.SetParameter("Company",						StructureAdditionalProperties.ForPosting.Company);
+	Query.SetParameter("AccountingForOtherOperations",	NStr("ru = 'Учет расчетов по прочим операциям'; en = 'Accounting for other operations'",	Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("Comment",						NStr("ru = 'Увеличение долга контрагента'; en = 'Increase company debt'", Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("Ref",							DocumentRefCashPayment);
+	Query.SetParameter("PointInTime",					New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
+	Query.SetParameter("ControlPeriod",					StructureAdditionalProperties.ForPosting.PointInTime.Date);
+	Query.SetParameter("ExchangeRateDifference",		NStr("ru = 'Курсовая разница'; en = 'Exchange rate difference'", Metadata.DefaultLanguage.LanguageCode));
+	
+	Query.Text =
+	"SELECT
+	|	TemporaryTablePaymentDetails.LineNumber AS LineNumber,
+	|	&Company AS Company,
+	|	VALUE(AccumulationRecordType.Receipt) AS RecordType,
+	|	TemporaryTablePaymentDetails.Counterparty AS Counterparty,
+	|	TemporaryTablePaymentDetails.Contract AS Contract,
+	|	CASE
+	|		WHEN TemporaryTablePaymentDetails.DoOperationsByDocuments
+	|			THEN CASE
+	|					WHEN TemporaryTablePaymentDetails.Document = VALUE(Document.CustomerOrder.EmptyRef)
+	|							OR TemporaryTablePaymentDetails.Document = VALUE(Document.PurchaseOrder.EmptyRef)
+	|							OR TemporaryTablePaymentDetails.Document = UNDEFINED
+	|						THEN &Ref
+	|					ELSE TemporaryTablePaymentDetails.Document
+	|				END
+	|		ELSE UNDEFINED
+	|	END AS Document,
+	|	CASE
+	|		WHEN TemporaryTablePaymentDetails.DoOperationsByOrders
+	|			THEN TemporaryTablePaymentDetails.Order
+	|		ELSE VALUE(Document.CustomerOrder.EmptyRef)
+	|	END AS Order,
+	|	TemporaryTablePaymentDetails.SettlementsCurrency AS Currency,
+	|	TemporaryTableHeader.CashCurrency AS CashCurrency,
+	|	TemporaryTablePaymentDetails.Date AS Date,
+	|	SUM(TemporaryTablePaymentDetails.PaymentAmount) AS PaymentAmount,
+	|	SUM(TemporaryTablePaymentDetails.AccountingAmount) AS Amount,
+	|	SUM(TemporaryTablePaymentDetails.SettlementsAmount) AS AmountCur,
+	|	SUM(TemporaryTablePaymentDetails.AccountingAmount) AS AmountForBalance,
+	|	SUM(TemporaryTablePaymentDetails.SettlementsAmount) AS AmountCurForBalance,
+	|	&AccountingForOtherOperations AS PostingContent,
+	|	&Comment AS Comment,
+	|	TemporaryTableHeader.Correspondence AS GLAccount,
+	|	TemporaryTableHeader.PettyCash AS PettyCash,
+	|	TemporaryTablePaymentDetails.Date AS Period
+	|INTO TemporaryTableOtherSettlements
+	|FROM
+	|	TemporaryTablePaymentDetails AS TemporaryTablePaymentDetails
+	|		INNER JOIN TemporaryTableHeader AS TemporaryTableHeader
+	|		ON (TemporaryTableHeader.AccountingOtherSettlements)
+	|WHERE
+	|	TemporaryTablePaymentDetails.OperationKind = VALUE(Enum.OperationKindsCashPayment.OtherSettlements)
+	|
+	|GROUP BY
+	|	TemporaryTablePaymentDetails.LineNumber,
+	|	TemporaryTablePaymentDetails.Counterparty,
+	|	TemporaryTablePaymentDetails.Contract,
+	|	TemporaryTablePaymentDetails.SettlementsCurrency,
+	|	TemporaryTableHeader.CashCurrency,
+	|	TemporaryTablePaymentDetails.Date,
+	|	CASE
+	|		WHEN TemporaryTablePaymentDetails.DoOperationsByDocuments
+	|			THEN CASE
+	|					WHEN TemporaryTablePaymentDetails.Document = VALUE(Document.CustomerOrder.EmptyRef)
+	|							OR TemporaryTablePaymentDetails.Document = VALUE(Document.PurchaseOrder.EmptyRef)
+	|							OR TemporaryTablePaymentDetails.Document = UNDEFINED
+	|						THEN &Ref
+	|					ELSE TemporaryTablePaymentDetails.Document
+	|				END
+	|		ELSE UNDEFINED
+	|	END,
+	|	CASE
+	|		WHEN TemporaryTablePaymentDetails.DoOperationsByOrders
+	|			THEN TemporaryTablePaymentDetails.Order
+	|		ELSE VALUE(Document.CustomerOrder.EmptyRef)
+	|	END,
+	|	TemporaryTableHeader.Correspondence,
+	|	TemporaryTableHeader.PettyCash,
+	|	TemporaryTablePaymentDetails.Date";
+	
+	QueryResult = Query.Execute();
+	
+	Query.Text =
+	"SELECT
+	|	TemporaryTableOtherSettlements.GLAccount AS GLAccount,
+	|	TemporaryTableOtherSettlements.Company AS Company,
+	|	TemporaryTableOtherSettlements.Counterparty AS Counterparty,
+	|	TemporaryTableOtherSettlements.Contract AS Contract
+	|FROM
+	|	TemporaryTableOtherSettlements AS TemporaryTableOtherSettlements";
+	
+	QueryResult = Query.Execute();
+	
+	DataLock 			= New DataLock;
+	LockItem 			= DataLock.Add("AccumulationRegister.SettlementsWithOtherCounterparties");
+	LockItem.Mode 		= DataLockMode.Exclusive;
+	LockItem.DataSource	= QueryResult;
+	
+	For Each QueryResultColumn IN QueryResult.Columns Do
+		LockItem.UseFromDataSource(QueryResultColumn.Name, QueryResultColumn.Name);
+	EndDo;
+	DataLock.Lock();
+	
+	QueryNumber = 0;
+	
+	Query.Text = SmallBusinessServer.GetQueryTextExchangeRateDifferencesAccountingForOtherOperations(Query.TempTablesManager, QueryNumber);
+	ResultsArray = Query.ExecuteBatch();
+	
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSettlementsWithOtherCounterparties", ResultsArray[QueryNumber].Unload());
+	
+EndProcedure // GenerateTableSettlementsWithOtherCounterparties()
 
 #EndRegion
 

@@ -454,32 +454,9 @@ Procedure FunctionalOptionPaymentCalendarOnChange(Item)
 	
 EndProcedure // FunctionalOptionPaymentCalendarOnChange()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//( elmi # 08.5
 &AtClient
-Procedure CurrencyQuotationTypeOnChange(Item)
+Procedure FunctionalOptionUseBankChargesOnChange(Item)
 	
 	Attachable_OnAttributeChange(Item);
 	
 EndProcedure
-//) elmi

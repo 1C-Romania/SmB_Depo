@@ -184,40 +184,6 @@ Procedure FillFormatsVersions() Export
 	
 EndProcedure
 
-// Handler of the update BED 1.1.7.1 
-// Transfers the DS certificate from the attribute of "Certificate of authorization" to the tabular section "CompanySignatureCertificates".
-//
-Procedure TransferCertificateAuthorizationInTP() Export
-	
-	Query = New Query;
-	Query.Text =
-	"SELECT
-	|	EDUsageAgreements.Ref,
-	|	EDUsageAgreements.DeleteSubscriberCertificate
-	|FROM
-	|	Catalog.EDUsageAgreements AS EDUsageAgreements
-	|WHERE
-	|	Not EDUsageAgreements.DeletionMark
-	|	AND EDUsageAgreements.EDExchangeMethod = &EDExchangeMethod";
-	
-	Query.SetParameter("EDExchangeMethod", Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom);
-	Selection = Query.Execute().Select();
-	
-	While Selection.Next() Do
-		
-		DSCertificate = Selection.DeleteSubscriberCertificate;
-		If ValueIsFilled(DSCertificate) Then
-			EDAgreement = Selection.Ref.GetObject();
-			NewRow = EDAgreement.CompanySignatureCertificates.Append();
-			NewRow.Certificate = DSCertificate;
-			EDAgreement.DeleteSubscriberCertificate = Undefined;
-			InfobaseUpdate.WriteObject(EDAgreement);
-		EndIf;
-		
-	EndDo;
-	
-EndProcedure
-
 // Handler of the update BED 1.1.7.4 
 // Executes filling the format version in the tabular section of OutgoingDocuments.
 //

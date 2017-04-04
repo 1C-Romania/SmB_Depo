@@ -19,29 +19,11 @@ Procedure AddAndCalculateAdvanceRow(SettlementsAmount, CurrentRow)
 	NewRow.ExchangeRate = ?(NewRow.ExchangeRate = 0, 1, NewRow.ExchangeRate);
 	NewRow.Multiplicity = ?(NewRow.Multiplicity = 0, 1, NewRow.Multiplicity);
 	
-
-	//( elmi # 08.5
-	//NewRow.ExchangeRate = ?(
-	//	NewRow.SettlementsAmount = 0,
-	//	1,
-	//	CurrentRow.AccountingAmount / CurrentRow.SettlementsAmount * RateAccountingCurrency
-	//);
-	If SmallBusinessServer.IndirectQuotationInUse() Then
-		NewRow.Multiplicity = ?(
-		NewRow.AccountingAmount = 0,
+	NewRow.ExchangeRate = ?(
+		NewRow.SettlementsAmount = 0,
 		1,
-		CurrentRow.SettlementsAmount / CurrentRow.AccountingAmount * AccountingCurrencyMultiplicity
-		);
-	Else
-		NewRow.ExchangeRate = ?(
-		NewRow.AccountingAmount = 0,
-		1,
-		CurrentRow.AccountingAmount / CurrentRow.AccountingAmount * RateAccountingCurrency
-		);
-	EndIf;
-	//) elmi
-	
-	
+		CurrentRow.AccountingAmount / CurrentRow.SettlementsAmount * RateAccountingCurrency
+	);
 	
 	If Not CurrencyTransactionsAccounting Then
 		NewRow.AccountingAmount = CurrentRow.SettlementsAmount;
@@ -179,13 +161,6 @@ Procedure OnOpen(Cancel)
 	
 	CalculateAmountsTotal();
 	
-	//( elmi # 08.5 
-	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "AdvancesDebtsList");
-	SmallBusinessClient.RenameTitleExchangeRateMultiplicity( ThisForm, "ListFilteredAdvancesAndDebts");
-    //) elmi
-	
-    
-	
 EndProcedure // OnOpen()
 
 // Procedure - OK button click handler.
@@ -314,7 +289,7 @@ EndProcedure // ListFilteredAdvancesAndDebtsRateOnChange()
 // the ListFilteredAdvancesAndDebts tabular section event handler. Calculates the amount of the payment.
 //
 &AtClient
-Procedure ListFilteredAdvancesAndDebtsMultiplicityOnChange(Item)
+Procedure ListFilteredAdvancesAndDebtsRepetitionOnChange(Item)
 	
 	TabularSectionRow = Items.ListFilteredAdvancesAndDebts.CurrentData;
 	CalculateAccountingSUM(TabularSectionRow);
@@ -335,39 +310,15 @@ Procedure ListFilteredAdvancesAndDebtsAccountingAmountOnChange(Item)
 		TabularSectionRow.ExchangeRate
 	);
 	
-	//( elmi # 08.5
-	//TabularSectionRow.Multiplicity = 1;
-	//TabularSectionRow.ExchangeRate =
-	//	?(TabularSectionRow.SettlementsAmount = 0,
-	//		1,
-	//		TabularSectionRow.RateAccountingCurrency
-	//	  / TabularSectionRow.SettlementsAmount
-	//	  * RateAccountingCurrency
-	//);
-	 	TabularSectionRow.Multiplicity = ?(
-		TabularSectionRow.Multiplicity = 0,
-		1,
-		TabularSectionRow.Multiplicity
-	);
-	If SmallBusinessServer.IndirectQuotationInUse() Then
-		TabularSectionRow.Multiplicity =
-			?(TabularSectionRow.RateAccountingCurrency = 0,
-				1,
-				TabularSectionRow.SettlementsAmount
-			  / TabularSectionRow.RateAccountingCurrency
-			  * AccountingCurrencyMultiplicity
-		);
-	Else
-		TabularSectionRow.ExchangeRate =
-			?(TabularSectionRow.SettlementsAmount = 0,
-				1,
-				TabularSectionRow.RateAccountingCurrency
-			  / TabularSectionRow.SettlementsAmount
-			  * RateAccountingCurrency
-		);
-	EndIf;
-	//) elmi
+	TabularSectionRow.Multiplicity = 1;
 	
+	TabularSectionRow.ExchangeRate =
+		?(TabularSectionRow.SettlementsAmount = 0,
+			1,
+			TabularSectionRow.AccountingAmount
+		  / TabularSectionRow.SettlementsAmount
+		  * RateAccountingCurrency
+	);
 	
 EndProcedure // ListFilteredAdvancesAndDebtsPaymentAmountOnChange()
 
@@ -657,16 +608,3 @@ Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Expo
 EndProcedure // OpenPricesAndCurrencyFormEnd()
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -25,10 +25,7 @@ Procedure FillPaymentDetails() Export
 		StructureByCurrency.ExchangeRate
 	);
 	CurrencyUnitConversionFactor = ?(
-	    //( elmi # 08.5
-	    //StructureByCurrency.ExchangeRate = 0,
-		  StructureByCurrency.Multiplicity = 0,
-		//) elmi
+		StructureByCurrency.ExchangeRate = 0,
 		1,
 		StructureByCurrency.Multiplicity
 	);
@@ -2206,31 +2203,6 @@ Procedure FillVATRateByVATTaxation(TabularSectionRow)
 	
 EndProcedure // FillVATRateByVATTaxation()
 
-// Posting cancellation procedure at subordinate customer invoice note
-//
-Procedure SubordinatedInvoiceControl()
-	
-	InvoiceStructure = SmallBusinessServer.GetSubordinateInvoice(Ref);
-	If Not InvoiceStructure = Undefined Then
-		
-		CustomerInvoiceNote	 = InvoiceStructure.Ref;
-		If CustomerInvoiceNote.Posted Then
-			
-			MessageText = NStr("en='As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится счет фактура %ПредставлениеСчетФактуры%.'");
-			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Cash receipt on account No " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
-			
-			CommonUseClientServer.MessageToUser(MessageText);
-			
-			InvoiceObject = CustomerInvoiceNote.GetObject();
-			InvoiceObject.Write(DocumentWriteMode.UndoPosting);
-			
-		EndIf;
-		
-	EndIf;
-	
-EndProcedure //SubordinateInvoiceControl()
-
 ////////////////////////////////////////////////////////////////////////////////
 // EVENT HANDLERS
 
@@ -2248,7 +2220,19 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		AND Not ValueIsFilled(TSRow.Contract) Then
 			TSRow.Contract = Counterparty.ContractByDefault;
 		EndIf;
+		
+		// Other settlements
+		If (OperationKind = Enums.OperationKindsPaymentReceipt.OtherSettlements)
+			And TSRow.VATRate.IsEmpty() Then
+			TSRow.VATRate	= SmallBusinessReUse.GetVATRateWithoutVAT();
+			TSRow.VATAmount	= 0;
+		EndIf;
+		// End Other settlements
 	EndDo;
+	
+	// Bank charges
+	BringDataToConsistentState();
+	// End Bank charges
 	
 EndProcedure // BeforeWrite()
 
@@ -2413,6 +2397,42 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.VATRate");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "TaxKind");
 		
+	// Other settlements
+	ElsIf OperationKind = Enums.OperationKindsPaymentReceipt.OtherSettlements Then
+		
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AdvanceHolder");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Counterparty");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Document");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "BusinessActivity");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AccountingAmount");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "ExchangeRate");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Multiplicity");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Contract");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.AdvanceFlag");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.SettlementsAmount");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.ExchangeRate");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Multiplicity");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.VATRate");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "TaxKind");
+		
+		PaymentAmount = PaymentDetails.Total("PaymentAmount");
+		If PaymentAmount <> DocumentAmount Then
+			MessageText = NStr("ru = 'Сумма документа: %DocumentAmount% %CashCurrency%, не соответствует сумме разнесенных платежей в табличной части: %PaymentAmount% %CashCurrency%!'; en = 'Document amount: %DocumentAmount% %CashCurrency% does not match with the posted payments in the tabular section:  %PaymentAmount% %CashCurrency%!'");
+			MessageText = StrReplace(MessageText, "%DocumentAmount%", String(DocumentAmount));
+			MessageText = StrReplace(MessageText, "%PaymentAmount%", String(PaymentAmount));
+			MessageText = StrReplace(MessageText, "%CashCurrency%", String(Строка(CashCurrency)));
+			SmallBusinessServer.ShowMessageAboutError(
+				ThisObject,
+				MessageText,
+				,
+				,
+				"DocumentAmount",
+				Cancel
+			);
+		EndIf;
+		
+	// End Other settlements	
 	Else
 		
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AdvanceHolder");
@@ -2431,6 +2451,16 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.VATRate");
 		
 	EndIf;
+	
+	// Bank charges
+	If Not UseBankCharges Then
+	
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "BankCharge");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "BankChargeItem");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "BankChargeAmount");
+	
+	EndIf;
+	// End Bank charges
 	
 EndProcedure // FillCheckProcessing()
 
@@ -2460,6 +2490,12 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectIncomeAndExpensesUndistributed(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectIncomeAndExpensesRetained(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
+	// Bank charges
+	SmallBusinessServer.ReflectBankCharges(AdditionalProperties, RegisterRecords, Cancel);
+	// End Bank charges
+	// Other settlements
+	SmallBusinessServer.ReflectSettlementsWithOtherCounterparties(AdditionalProperties, RegisterRecords, Cancel);
+	// End Other settlements
 	
 	// Writing of record sets
 	SmallBusinessServer.WriteRecordSets(ThisObject);
@@ -2487,13 +2523,26 @@ Procedure UndoPosting(Cancel)
 	// Control of occurrence of a negative balance.
 	Documents.PaymentReceipt.RunControl(Ref, AdditionalProperties, Cancel, True);
 	
-	// Subordinate customer invoice note
-	If Not Cancel Then
-		
-		SubordinatedInvoiceControl();
-		
+EndProcedure // UndoPosting()
+
+#Region ServiceProceduresAndFunctions
+
+#Region BankCharges
+
+Procedure BringDataToConsistentState()
+	
+	If Not UseBankCharges Then
+	
+		BankCharge			= Catalogs.BankCharges.EmptyRef();
+		BankChargeItem		= Catalogs.CashFlowItems.EmptyRef();
+		BankChargeAmount	= 0;
+	
 	EndIf;
 	
-EndProcedure // UndoPosting()
+EndProcedure
+
+#EndRegion
+
+#EndRegion
 
 #EndIf
